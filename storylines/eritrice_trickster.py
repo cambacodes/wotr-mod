@@ -332,6 +332,12 @@ SCENES.append(reaction("Nenio", P + "react.nenio_tabled", (RETURNED,),
 
 def integrate(payload):
     """Register the new relationship's own derived keys. Scenes are added by expansion.py; world keys bind on demand."""
+    # The paid apology arrangement brings her to the sitting that records her return.
+    # Register only this route's existing acquisition, before shared contact guards.
+    from storylines import earned_presence
+    earned_presence.PRESENCE_BOOTSTRAPS["eritrice"] = {LOST: {
+        "Flag": P + "apology_arranged",
+        "Reason": "The paid special sitting brings her to Drezen before the spoken apology records reconciliation."}}
     payload.setdefault("Presences", {}).update(PRESENCES)
     integrate_drezen_readings(payload)
     integrate_standing_grudge(payload)

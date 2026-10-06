@@ -9394,6 +9394,16 @@
         {
           "scene": "dorgelinda.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "dorgelinda.ledger.cellar_settlement",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "dorgelinda.ledger.changed_columns",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
         }
       ],
       "absence_variants": [],
@@ -10534,16 +10544,147 @@
         {
           "scene": "eritrice.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "eritrice.trickster.visit_delayed",
+          "letter": true,
+          "provenance": "contracts-r2a: correspondence/history of a delivered letter"
+        },
+        {
+          "scene": "eritrice.minutes.extraction_account",
+          "letter": true,
+          "provenance": "contracts-r2a: correspondence/history of a delivered letter"
+        },
+        {
+          "scene": "eritrice.council.expulsion_hearing",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.aid_heard",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.aid_cancelled",
+          "letter": true,
+          "provenance": "contracts-r2a: correspondence/history of a delivered letter"
+        },
+        {
+          "scene": "eritrice.council.second_morning",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.protection_cancelled",
+          "letter": true,
+          "provenance": "contracts-r2a: correspondence/history of a delivered letter"
+        },
+        {
+          "scene": "eritrice.trickster.council.second_reading.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.trickster.council.third_reading.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.point_one.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.the_convening.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.quill.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.adjourned.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.the_record.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.a_standing_item.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.minutes.the_blank_line.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.accurate_minutes.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.the_six_hundred_and_thirteenth.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.twice_nightly.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.personal_privilege.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.where_the_chair_goes_home.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.the_fair_copy.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "eritrice.council.second_morning.drezen",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
         }
       ],
       "absence_variants": [
         {
           "scene": "eritrice.trickster.fought.tabled",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "eritrice.trickster.special_sitting",
+          "reason": "Existing earned recovery meeting: arranged apology or standing-grudge/letter invitation brings her to Drezen; the apology records the existing return. Requiring that return before this meeting would prevent its producer."
+        },
+        {
+          "scene": "eritrice.trickster.react.nenio_first_morning",
+          "reason": "Nenio discusses the already recorded first morning; Eritrice is not staged here."
+        },
+        {
+          "scene": "eritrice.trickster.react.nenio_second_morning",
+          "reason": "Nenio discusses the already recorded second morning; Eritrice is not staged here."
         }
       ],
-      "presences": [],
-      "acquisition_presences": [],
+      "presences": [
+        "eritrice.presence"
+      ],
+      "acquisition_presences": [
+        "eritrice.presence"
+      ],
       "guests": [
         "guest.eritrice",
         "owed.eritrice"
@@ -10954,9 +11095,41 @@
         {
           "scene": "areelu.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "areelu.trickster.finale.company",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "areelu.trickster.report.inn",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "areelu.trickster.finale.unraised",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
         }
       ],
-      "absence_variants": [],
+      "absence_variants": [
+        {
+          "scene": "areelu.trickster.afterlogue.spared_wager",
+          "reason": "Retrospective account to Pharasma in the native afterlogue; exact wager/survival or Commander-return selector retained, no currently living woman staged."
+        },
+        {
+          "scene": "areelu.trickster.afterlogue.mortal_wager",
+          "reason": "Retrospective account to Pharasma in the native afterlogue; exact wager/survival or Commander-return selector retained, no currently living woman staged."
+        },
+        {
+          "scene": "areelu.trickster.afterlogue.return_witch",
+          "reason": "Retrospective account to Pharasma in the native afterlogue; exact wager/survival or Commander-return selector retained, no currently living woman staged."
+        },
+        {
+          "scene": "areelu.trickster.afterlogue.return_mortal",
+          "reason": "Retrospective account to Pharasma in the native afterlogue; exact wager/survival or Commander-return selector retained, no currently living woman staged."
+        }
+      ],
       "presences": [],
       "acquisition_presences": [],
       "guests": [
@@ -11247,6 +11420,26 @@
         {
           "scene": "chadali.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "chadali.trickster.react.ember_penny",
+          "letter": true,
+          "provenance": "contracts-r2a: correspondence/history of a delivered letter"
+        },
+        {
+          "scene": "chadali.trickster.after.market_wager",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "chadali.trickster.after.market_wager_visit",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "chadali.trickster.epilogue.company",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
         }
       ],
       "absence_variants": [
@@ -15040,6 +15233,11 @@
         {
           "scene": "eliandra.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "eliandra.trickster.ch5.return_from_fords",
+          "letter": false,
+          "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
         }
       ],
       "absence_variants": [

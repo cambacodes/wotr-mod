@@ -65,6 +65,45 @@ class ContractTests(unittest.TestCase):
         self.assertEqual([], departure_lint.check(self.story))
         self.assertEqual([], payoff_lint.check(self.story))
 
+    def test_round2_surfaces_keep_presence_separate_from_recovery_and_history(self):
+        scenes = {s["Id"]: s for s in self.story["Scenes"]}
+        for sid in ("eritrice.council.expulsion_hearing",
+                    "eritrice.council.aid_heard",
+                    "eritrice.council.second_morning",
+                    "eritrice.minutes.the_record.drezen"):
+            self.assertIn("eritrice.present_now", scenes[sid]["Requires"])
+        for sid in ("eritrice.trickster.visit_delayed",
+                    "eritrice.minutes.extraction_account",
+                    "eritrice.council.aid_cancelled",
+                    "eritrice.council.protection_cancelled"):
+            self.assertIn("eritrice.reachable_by_letter", scenes[sid]["Requires"])
+        recovery = scenes["eritrice.trickster.special_sitting"]
+        self.assertNotIn("eritrice.present_now", recovery["Requires"])
+        self.assertTrue(any("eritrice.trickster.returned" in c.get("Set", [])
+                            for n in recovery["Nodes"] for c in n["Choices"]))
+        contact = self.story["Presences"]["eritrice.presence"]
+        bootstrap = self.story["PresenceExceptions"]["eritrice.presence"]
+        self.assertEqual("eritrice.trickster.apology_arranged",
+                         bootstrap["Overrides"]["eritrice.lost_at_council"]["Flag"])
+        self.assertNotIn("eritrice.present_now", contact["Requires"])
+        self.assertIn("eritrice.epoch_redeparted", contact["Forbids"])
+        self.assertIn("eritrice.returned_actor_lost", contact["Forbids"])
+        for sid in ("eritrice.trickster.react.nenio_first_morning",
+                    "eritrice.trickster.react.nenio_second_morning",
+                    "areelu.trickster.afterlogue.return_witch",
+                    "areelu.trickster.afterlogue.return_mortal"):
+            self.assertFalse(any(k.endswith(".present_now")
+                                 for k in scenes[sid]["Requires"]))
+
+    def test_round2_areelu_company_requires_earned_courtship(self):
+        for sid in ("areelu.trickster.finale.company", "areelu.trickster.report.inn"):
+            story = copy.deepcopy(self.story)
+            scene = next(s for s in story["Scenes"] if s["Id"] == sid)
+            self.assertIn("areelu.present_now", scene["Requires"])
+            scene["Requires"].remove("areelu.payoff.ordinary")
+            self.assertTrue(any(sid in error and "missing payoff contract" in error
+                                for error in payoff_lint.check(story)))
+
     def test_native_selector_cannot_drop_final_replacement_gates(self):
         story = copy.deepcopy(self.story)
         target, spec = next((key, spec) for key, spec in story["NativeEpilogueEdits"].items()

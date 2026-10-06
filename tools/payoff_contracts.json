@@ -1161,6 +1161,16 @@
           "predicate": "areelu.lastcall.callable",
           "classification": "specific incurred debt/creditor call; current cost or deed contract, independent of courtship",
           "provenance": "derived from the existing Last Call callable cost groups and their resolved/closed negatives"
+        },
+        {
+          "scene": "areelu.trickster.finale.company",
+          "predicate": "areelu.payoff.ordinary",
+          "provenance": "contracts-r2a: accepted raised wager earns this ordinary lovers scene; retains its survival, refusal and closure gates"
+        },
+        {
+          "scene": "areelu.trickster.report.inn",
+          "predicate": "areelu.payoff.ordinary",
+          "provenance": "contracts-r2a: accepted raised wager earns this ordinary lovers scene; retains its survival, refusal and closure gates"
         }
       ],
       "residuals": [
