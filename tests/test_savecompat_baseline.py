@@ -74,6 +74,31 @@ class SaveCompatibilityTests(unittest.TestCase):
         after["Scenes"][0]["Nodes"][0]["Choices"].append({"Text": "Stay"})
         self.assertTrue(savecompat.check(after, baseline))
 
+    def test_explicit_suffix_preserves_legacy_exit_with_appended_branch(self):
+        before = sample()
+        scene = before["Scenes"][0]
+        scene["Owner"] = "Epilogue"
+        scene["Nodes"][0]["Choices"] = [{"Text": "Continue"}]
+        baseline = savecompat.inventory(before)
+        after = copy.deepcopy(before)
+        choices = after["Scenes"][0]["Nodes"][0]["Choices"]
+        choices[0].update(Id="continue", Text="Leave")
+        choices.append({"Text": "Stay", "Next": "end"})
+        self.assertEqual([], savecompat.check(after, baseline))
+        choices[0]["Id"] = "replacement"
+        self.assertTrue(savecompat.check(after, baseline))
+
+    def test_codas_keep_their_original_registration_anchors(self):
+        from expansion import make_expansion
+        ids = [scene["Id"] for scene in make_expansion()["Scenes"]]
+        for anchor, coda, following in (
+            ("nenio.trickster.epilogue.scholar", "nenio.lastcall.page", "nenio.trickster.react.sosiel_point_five"),
+            ("terendelev.trickster.epilogue.rest", "terendelev.lastcall.page", "terendelev.trickster.react.galfrey.letter_awning"),
+        ):
+            with self.subTest(coda=coda):
+                self.assertEqual(ids.index(anchor) + 1, ids.index(coda))
+                self.assertLess(ids.index(coda), ids.index(following))
+
     def test_inline_host_identity_cannot_disappear(self):
         before = sample()
         before["Scenes"][0].update(ReturnToList=True, AnswerLists=["host.one", "host.two"])

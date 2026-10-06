@@ -2,7 +2,7 @@
 
 Identity rules mirror Main.BuildScene: ordinary answers use their index;
 single, inert terminal epilogue answers use the legacy ``continue`` suffix.
-Choice Id metadata is also retained, but does not override the runtime key.
+Choice Id metadata overrides the suffix for BuildScene answers, as in the runtime.
 """
 import json
 from pathlib import Path
@@ -29,7 +29,7 @@ def choice_identities(scene, node):
             choice.get(key) for key in
             ("Next", "Check", "Requires", "Forbids", "Set", "Abort", "Revive"))
     prefix = "answer.%s.%s." % (scene["Id"], node["Id"])
-    return [dict(Id=choice.get("Id"), GuidFor=prefix + ("continue" if legacy else str(index)))
+    return [dict(Id=choice.get("Id"), GuidFor=prefix + (choice.get("Id") or ("continue" if legacy else str(index))))
             for index, choice in enumerate(choices)]
 
 
@@ -72,7 +72,8 @@ def check(story, baseline=None):
                 failures.append("Choice count shrank: %s (%d -> %d)" %
                                 (location, len(old_choices), len(current)))
             for index, (old, new) in enumerate(zip(old_choices, current)):
-                if old != new:
+                # An explicit suffix may preserve an implicit old identity; pre-existing Id metadata stays frozen.
+                if old["GuidFor"] != new["GuidFor"] or old["Id"] is not None and old["Id"] != new["Id"]:
                     failures.append("Choice identity changed: %s[%d] (%r -> %r)" %
                                     (location, index, old, new))
     return failures

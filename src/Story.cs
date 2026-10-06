@@ -564,6 +564,8 @@ namespace Tirabade
 
     public sealed class Choice
     {
+        // Optional answer suffix for preserving a legacy ending identity after appending choices.
+        public string? Id;
         public string Text = "Continue";
         public string? Next;
         public bool Abort;
@@ -2129,6 +2131,17 @@ namespace Tirabade
                         throw new InvalidOperationException("Invalid speaker unit (a BlueprintUnit GUID, not combined with \"conversant\"): " + scene.Id + "/" + node.Id);
                     if (!nodes.Add(node.Id) || string.IsNullOrWhiteSpace(node.Text) && !paragraphs || node.Choices.Count == 0)
                         throw new InvalidOperationException("Invalid node: " + scene.Id + "/" + node.Id);
+                }
+                foreach (var node in scene.Nodes)
+                {
+                    var answerIds = new HashSet<string>();
+                    for (int i = 0; i < node.Choices.Count; i++)
+                    {
+                        var id = node.Choices[i].Id ?? i.ToString();
+                        if (string.IsNullOrWhiteSpace(id) || !answerIds.Add(id)
+                            || node.Choices[i].Id != null && (scene.ReturnToList || scene.ContinueBefore != null))
+                            throw new InvalidOperationException("Invalid answer identity: " + scene.Id + "/" + node.Id);
+                    }
                 }
                 foreach (var node in scene.Nodes)
                     foreach (var choice in node.Choices)

@@ -204,7 +204,9 @@ internal static class PacingPP4Tests
             var choice = start[at];
             check(choice.Next == "court_" + stance && Rules.Match(choice.Requires, choice.Forbids, At(story, 5, Cast + "." + stance))
                   && !Rules.Match(choice.Requires, choice.Forbids, At(story, 5, Cast + ".declined"))
-                  && N(rounds, "court_" + stance).Choices[0].Next == "rounds", "ward_rounds: the " + stance + " recall is wrong.");
+                  && N(rounds, "court_" + stance).Choices[0].Next == "rounds"
+                  && N(rounds, "court_" + stance).Choices[0].Requires.Contains("kiana.trickster.ward_guests_home"),
+                "ward_rounds: the " + stance + " recall lost its saved target or release gate.");
         }
 
         // P3: all five callers retain their saved rounds answer and append the

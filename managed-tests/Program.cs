@@ -710,6 +710,11 @@ internal static class Program
         Check(legacyAscentExit != null, "Legacy ascent ending exit identity disappeared: answer.areelu.trickster.finale.ascended.end.continue");
         Check(legacyAscentExit!.OnSelect.Actions.Length == 0 && legacyAscentExit.NextCue.Cues.Count == 0,
             "Legacy ascent ending exit mutates progress or continues");
+        var ascentPage = (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(Id("page.areelu.trickster.finale.ascended.end"));
+        Check(ReferenceEquals(ascentPage.Answers[0].Get(), legacyAscentExit), "Saved ascent exit is not the displayed first answer");
+        Check(ascentPage.Answers[1].Guid == Id("answer.areelu.trickster.finale.ascended.end.1")
+            && ((BlueprintAnswer)ascentPage.Answers[1].Get()).NextCue.Cues.Single().Guid == Id("page.areelu.trickster.finale.ascended.asc_night"),
+            "Appended ascent night lost its positional identity or destination");
         foreach (var scene in story.Scenes.Where(s => s.NativeReturnCue == null && !s.ReturnToList && s.ContinueBefore == null))
         {
             var dialog = ResourcesLibrary.TryGetBlueprint(Id("dialog." + scene.Id)) as BlueprintDialog;
@@ -734,7 +739,12 @@ internal static class Program
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
-                bool plainEnding = genericEndingExits.Contains(nodeId);
+                // The frozen contracts cover old exits; new inert one-answer pages use the same runtime rule.
+                var sole = node.Choices.Count == 1 ? node.Choices[0] : null;
+                bool plainEnding = genericEndingExits.Contains(nodeId) || ending && sole != null
+                    && sole.Id == null && sole.Text == "Continue" && sole.Next == null && sole.Check == null
+                    && sole.Requires.Length == 0 && sole.Forbids.Length == 0 && sole.Set.Length == 0
+                    && !sole.Abort && sole.Revive == null;
                 if (plainEnding)
                     Check(ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                         && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
@@ -769,6 +779,14 @@ internal static class Program
                 {
                     var choice = node.Choices[i];
                     var answer = (BlueprintAnswer)page.Answers[i].Get();
+                    Check(answer.AssetGuid == Id("answer." + nodeId + "." + (choice.Id ?? i.ToString())), "Choice identity changed: " + nodeId);
+                    if (ending && choice.Id == "continue")
+                    {
+                        Check(answer.ShowConditions.Conditions.Length == 0 && answer.SelectConditions.Conditions.Length == 0
+                            && answer.OnSelect.Actions.Length == 0 && answer.NextCue.Cues.Count == 0,
+                            "Preserved ending exit gained gates, effects or a continuation: " + nodeId);
+                        continue;
+                    }
                     Check(answer.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition shown && ReferenceEquals(shown.Choice, choice) && ReferenceEquals(shown.Owner, answer), "Choice lost its visibility guard or owner: " + nodeId);
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();

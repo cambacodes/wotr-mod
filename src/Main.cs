@@ -827,22 +827,21 @@ namespace Tirabade
                 var answers = page is BlueprintBookPage book ? book.Answers : ((BlueprintCue)page).Answers;
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
-                // Preserve saved terminal answer IDs while building authored ending branches normally.
-                if (ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
-                    && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
-                    && node.Choices[0].Set.Length == 0 && node.Choices[0].Text == "Continue"
-                    && !node.Choices[0].Abort && node.Choices[0].Revive == null)
-                {
-                    var next = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + ".continue");
-                    InitializeAnswer(next);
-                    next.Text = Text(next.name, "Continue");
-                    answers.Add(Ref<BlueprintAnswerBaseReference>(next));
-                    continue;
-                }
                 for (int i = 0; i < node.Choices.Count; i++)
                 {
                     var choice = node.Choices[i];
-                    var answer = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + "." + i);
+                    // Keep inert legacy exits inert, including an explicitly preserved .continue in a branched ending.
+                    if (ending && (choice.Id == "continue" || node.Choices.Count == 1 && choice.Id == null && choice.Text == "Continue")
+                        && choice.Next == null && choice.Check == null && choice.Requires.Length == 0 && choice.Forbids.Length == 0
+                        && choice.Set.Length == 0 && !choice.Abort && choice.Revive == null)
+                    {
+                        var next = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + ".continue");
+                        InitializeAnswer(next);
+                        next.Text = Text(next.name, choice.Text);
+                        answers.Add(Ref<BlueprintAnswerBaseReference>(next));
+                        continue;
+                    }
+                    var answer = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + "." + (choice.Id ?? i.ToString()));
                     InitializeAnswer(answer);
                     answer.Text = Text(answer.name, choice.Text);
                     answer.ShowConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
