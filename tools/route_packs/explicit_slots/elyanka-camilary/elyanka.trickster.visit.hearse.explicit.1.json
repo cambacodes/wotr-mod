@@ -1,0 +1,19 @@
+{
+  "voice": "ELYANKA: imperious, precise, greedy, dryly contemptuous, possessive. An old Ustalavic noblewoman and priestess who despises mortality while enjoying luxury; hungry for Urgathoa's adoption, never reformed by affection. Express conflicted appetite through action and brief remarks, not diagnosis, maxims or negotiated etiquette. Write new dialogue, not quotations from this brief.",
+  "facts": [
+    "Canon: tall old woman, tangled gray hair, imperious face, plain worn gray robe, no jewelry; royal bearing, bird-like eyes and strong white teeth.",
+    "Canon: priestess of Urgathoa and Whispering Way envoy; remains mortal and bitter about delayed adoption; cult teaching is passed in whispers.",
+    "Authored staging, not a canon physical fact: Ch5 Trickster romance, post-Iz Drezen dead-house yard, black velvet hearse built in Caliphas; mourning candles outside, horses stabled.",
+    "No canon genital characteristics, ancestry, exact height, youthful body or age are asserted. Present-day Elyanka and Commander are adults. Youth recollections are outside this slot."
+  ],
+  "scene": "Non-graphic intimacy staging brief for the reserved slot elyanka.trickster.visit.hearse.explicit.1. Enter from existing threshold after her rough kiss, robe unpinning and their mutual pull into the velvet; exit to existing morning. Only Elyanka and the awake, willing Commander are present. Required beats: she initiates closeness; her contempt for warm mortality persists alongside desire; reciprocal corpse claims remain future debts, not control over a living body; the war continues outside; end before describing sexual acts. Keep any bodily reference compatible with either Commander. No partner interruption, corpse participation, intoxication, sleep contact, new vow, reconciliation or commitment receipt. This is their one first-night transition; all later encounters are returns. Default when unfilled: {n}She catches your mouth again and draws you into the black velvet. Outside, the sentry calls the watch. Before dawn, the mourning candles burn down to their sockets.{/n}",
+  "last_line": "N: Before dawn, the mourning candles burn down to their sockets.",
+  "speakers": {
+    "E": "Elyanka",
+    "N": "Narrator"
+  },
+  "example": "N: Elyanka closes the carriage door with her heel.\nE: Your watch can manage one night without inspecting my yard.\nN: The next call passes along the wall above them.",
+  "commander_variants": ["a man", "a woman"],
+  "min_lines": 6,
+  "max_lines": 10
+}

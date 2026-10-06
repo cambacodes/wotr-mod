@@ -128,6 +128,19 @@ internal static class ElyankaTricksterTests
         check(mine.All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
             "Path fit (v1): an Elyanka scene is not Trickster-gated (every scene is T).");
 
+        // Runtime Complete expands transitive derived inputs; a suffix-only scan cannot establish independence.
+        foreach (var funeral in new[] { "king", "partisans_a", "partisans_b", "fye" })
+        {
+            var lostWitnesses = World(story, 5, "trickster", "trickster.ever", "iz.done",
+                "elyanka.funeral." + funeral, "anevia_gone", "irabeth_dead");
+            check(Avail(door, lostWitnesses), "Trk_Elyanka_Coexistence: historical funeral " + funeral + " needs live witnesses.");
+        }
+        foreach (var seelah in new[] { new string[0], new[] { "seelah.in_party" }, new[] { "seelah_dead" } })
+        {
+            var independentTest = World(story, 5, new[] { "trickster.ever", Owned, "iomedae.closed" }.Concat(seelah).ToArray());
+            check(Avail(dead, independentTest), "Trk_Elyanka_Coexistence: the corpse test needs Iomedae's romance open.");
+        }
+
         // Trk_Elyanka_Door: 72 hours after the first funeral telling (latched), after Iz, on the live Trickster path.
         var heard = World(story, 5, "trickster", "trickster.ever", "elyanka.funeral.partisans_a", "iz.done");
         foreach (var native in new[] { "trickster", "trickster.ever", "elyanka.funeral.partisans_a", "iz.done", "chapter_later", "elyanka.present_now" }) heard.Times.Remove(native);
@@ -222,9 +235,14 @@ internal static class ElyankaTricksterTests
         // Trk_Elyanka_Beats: the courtship spreads over Chapter 5 (and one Chapter 6 visit), optional, after the sale.
         var beats = own.Where(s => s.Id.StartsWith(P + "beat.", StringComparison.Ordinal)).ToArray();
         var ch6 = S(P + "ch6.collateral");
+        var finalCamp = World(story, 6, "trickster.ever", Owned);
+        finalCamp.Area = "10c4b0e2af186ba46ab4d238d00a40a8";
+        var insideThreshold = Program.Copy(finalCamp);
+        insideThreshold.Area = "22c6a99913fe5bb46b2e6011aaf93368";
+        check(!Avail(ch6, insideThreshold), "Trk_Elyanka_Camp: collateral delivery escaped ThresholdOutdoor.");
         check(beats.Length >= 18 && beats.Where(b => b.Id != P + "beat.whisper").All(b => b.Optional && b.Remote && b.Requires.Contains(Bier) || b.Requires.Contains(P + "daeran_ally"))
               && !S(P + "beat.whisper").Optional && S(P + "beat.whisper").Requires.Contains(Tested) && claims.Requires.Contains(P + "beat.whisper")
-              && ch6.Chapters.SequenceEqual(new[] { 6 }) && Avail(ch6, World(story, 6, "trickster.ever", Owned)),
+              && ch6.Chapters.SequenceEqual(new[] { 6 }) && Avail(ch6, finalCamp),
             "Trk_Elyanka_Beats: a courtship beat is not optional, not after the sale, or the Chapter 6 visit is missing.");
         check(Avail(S(P + "beat.king_bill"), World(story, 5, "trickster.ever", Owned, Bier, P + "mourners", "fool_king.crowned"))
               && !Avail(S(P + "beat.king_bill"), World(story, 5, "trickster.ever", Owned, Bier)),
@@ -273,6 +291,7 @@ internal static class ElyankaTricksterTests
         var yesFirst = Take(claims, t, "rites", 0, Committed);
         var marched = Program.Copy(yesFirst);
         marched.Chapter = 6;
+        marched.Area = "10c4b0e2af186ba46ab4d238d00a40a8";
         marched.Hour += 30;
         Rules.Complete(story, marched);
         var coll = S(P + "ch6.collateral");
@@ -313,7 +332,7 @@ internal static class ElyankaTricksterTests
         abroad.Area = "00000000000000000000000000000000";
         check(s5.Has(Bier) && !Avail(hearse, abroad) && hearse.Areas.SequenceEqual(new[] { "2570015799edf594daf2f076f2f975d8" })
               && own.Where(x => x.Id != P + "beat.courier" && x.Id != P + "ch6.collateral").All(x => x.Areas.SequenceEqual(new[] { "2570015799edf594daf2f076f2f975d8" }))
-              && S(P + "beat.courier").Areas.Length == 0 && S(P + "ch6.collateral").Areas.Length == 0,
+              && S(P + "beat.courier").Areas.Length == 0 && S(P + "ch6.collateral").Areas.SequenceEqual(new[] { "10c4b0e2af186ba46ab4d238d00a40a8" }),
             "Trk_Elyanka_Spine: the chain does not run in order, or a Drezen encounter plays at a rest outside Drezen.");
 
         // Rendered endings (audit r3): exactly one unpaid line per surviving ending; the claim page never promises collection
