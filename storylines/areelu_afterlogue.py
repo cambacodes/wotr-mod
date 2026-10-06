@@ -48,7 +48,7 @@ def line(id, text):
 
 line(LINE_SPARED, '"I was defeated. The victor spared my life, and then did something I had not predicted: kept it. Not as a '
      'boon, and not as charity, but the way one keeps a wager that has not been settled. I lived out my remaining days '
-     'across a hallway from {mf|him|her}, observing, needed by one, discovered by no one else."')
+     'across a hallway from {mf|him|her}, observing, in company I chose, and never relieved of my purpose."')
 line(LINE_MORTAL, '"I was defeated, and the one I had tried to transform made a joke of my death and collected my power '
      'instead. I lived the rest of my days as a mortal woman under {mf|his|her} roof, without magic, still taking notes. My '
      'experiment did not end in failure. It ended in a result I had not predicted, and I never finished writing it up."')

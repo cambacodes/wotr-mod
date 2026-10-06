@@ -216,7 +216,8 @@ internal static class AreeluTricksterTests
         var lateWorld = World(story, 6, "trickster", "trickster.ever", Primed, Lens, Late);
         check(Available(late, lateWorld), "Trk_Areelu_LateThreshold: unavailable.");
         var lateOut = Program.Walk(late, lateWorld).Where(r => r.Has(late.Id)).ToList();
-        check(lateOut.Any(r => r.Has(Struck) && r.Has(Late) && r.Has(Named)) && lateOut.Any(r => r.Has(Closed)), "Trk_Areelu_LateThreshold: flags.");
+        check(lateOut.Any(r => r.Has(Struck) && r.Has(Late) && !r.Has(Named)) && lateOut.All(r => !r.Has(Named))
+              && lateOut.Any(r => r.Has(Closed)), "Trk_Areelu_LateThreshold: terms must not name an unoffered stake.");
         var latePages = new HashSet<string>();
         Program.Walk(raised, lateOut.First(r => r.Has(Struck)), (page, _) => latePages.Add(page));
         check(Available(raised, lateOut.First(r => r.Has(Struck))) && latePages.Contains("late_raise"), "The raised wager forgets the late terms.");
@@ -315,7 +316,7 @@ internal static class AreeluTricksterTests
         // Sol INT (r1): a returned Nenio (G6(b)) is at breakfast exactly once; a dissolved one never.
         var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated"); // eng8-q8a: existing new vessel
         // eng7-f2: identify the narrative paragraph independently of display markup.
-        int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.Replace("{n}", "").Replace("{/n}", "").StartsWith("Nenio arrived at breakfast"));
+        int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.Replace("{n}", "").Replace("{/n}", "").StartsWith("At breakfast Nenio looks"));
         // end eng7-f2
         check(Breakfast(rewriteWorld) == 1 && Breakfast(nenioBack) == 1 && Breakfast(With(story, rewriteWorld, "nenio.dead")) == 0
               && Breakfast(With(story, nenioBack, "nenio.dissolved")) == 0, "A returned Nenio misses breakfast, or appears twice.");
@@ -373,8 +374,9 @@ internal static class AreeluTricksterTests
         }
         // Sol PP8 r1 (CAN): a stake named only at Threshold is never recalled as named in her cell.
         var lateRaise = new HashSet<string>();
-        Program.Walk(raised, lateOut.First(r => r.Has(Struck) && r.Has(Named)), (page, _) => lateRaise.Add(page));
-        check(!lateRaise.Contains("priced_known"), "The raised wager recalls a cell naming that never happened.");
+        Program.Walk(raised, lateOut.First(r => r.Has(Struck) && !r.Has(Named)), (page, _) => lateRaise.Add(page));
+        check(!lateRaise.Contains("priced_known") && !lateRaise.Contains("priced_agreed") && lateRaise.Contains("priced"),
+            "The ordinary late raise must name work here, without recalling a prior agreement.");
         var priorLien = S(P + "finale.prior_lien");
         var burned = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", Struck, Bet, Committed, Named, Drawn);
         check(burned.Has(P + "commander_burned") && !burned.Has("trickster.cheated_death") && Available(priorLien, burned)
