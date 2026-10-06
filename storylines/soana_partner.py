@@ -140,10 +140,11 @@ def commitments(scenes):
             if stance == EXCLUSIVE:
                 continuation["Text"] = '[Leave. She has refused your demand.]'
                 continuation["Set"].extend(("soana.closed", "soana.trickster.refused"))
+                continuation["Id"] = "refused"
             else:
                 response["Paragraphs"] = deepcopy(future)
                 continuation["Set"].extend((stance, DECIDED))
-                continuation["Id"] = "continue"
+                continuation["Id"] = "accept"  # new node: not a legacy exit, so it may carry the stance effects
             response["Choices"] = [continuation]
             page["Choices"].append(c(text, response["Id"], flags=() if stance == EXCLUSIVE else (stance, DECIDED), forbids=(DECIDED,)))
             event["Nodes"].append(response)
