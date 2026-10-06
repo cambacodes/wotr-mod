@@ -928,6 +928,8 @@ def polish_sister_consumers(payload):
 
     def split(scene, target, departed_text, absent_text):
         nodes = {nd["Id"]: nd for nd in scene["Nodes"]}
+        if target + "_departed" in nodes:
+            return
         original = nodes[target]
         for node in list(scene["Nodes"]):
             for choice in list(node["Choices"]):
@@ -974,6 +976,8 @@ def polish_sister_consumers(payload):
         nodes = {nd["Id"]: nd for nd in scene["Nodes"]}
         prefix = "" if scene["Id"] == H + "guild.kept" else "eng8.guild."
         target = prefix + "sister"
+        if target + "_departed" in nodes:
+            continue
         # The copied Chapter 6 reports predate participant integration. Read the
         # same engine current participant at every copied incoming edge too.
         if prefix:
@@ -1008,3 +1012,79 @@ def polish_sister_consumers(payload):
             for choice in node["Choices"]:
                 if choice.get("Next") == prefix + "pivot":
                     choice["Forbids"] = [HEPZ_BACK if f == current else f for f in choice["Forbids"]]
+
+
+# Round 2: optional work, private appetite and consequences keep separate receipts.
+def _round2_guild():
+    scenes={s["Id"]:s for s in SCENES}
+    def nodes(suffix):
+        return {nd["Id"]:nd for nd in scenes[H+suffix]["Nodes"]}
+    ns=nodes("beat.ear")
+    for choice in list(ns["start"]["Choices"]):
+        if choice.get("Next") != "road":
+            continue
+        old=_polish_copy.deepcopy(choice)
+        choice["Requires"].append(GREY_IN)
+        choice["Forbids"].extend([GREY_DEAD,GREY_KICKED,"greybor.away"])
+        for required,forbidden in (([],[GREY_IN]),([GREY_IN,GREY_DEAD],[]),([GREY_IN,GREY_KICKED],[GREY_DEAD]),([GREY_IN,"greybor.away"],[GREY_DEAD,GREY_KICKED])):
+            twin=_polish_copy.deepcopy(old)
+            twin["Next"]="road_rumour"
+            twin["Requires"].extend(required)
+            twin["Forbids"].extend(forbidden)
+            ns["start"]["Choices"].append(twin)
+    scenes[H+"beat.ear"]["Nodes"].append(hz("road_rumour", '''"Your soldiers tell the crossroads story. They say a beaten demon took an ear and left the crusader thanking her. The dwarf's old account has grown in the telling. I have grown too. They now give me six knives." {n}She bares her teeth.{/n} "At least they remember who took the trophy."''',c("Continue","ask")))
+    ns=nodes("beat.cup")
+    ns["guessed"]["Text"]=ns["guessed"]["Text"].replace("You pick one.","You take the cup she offered.")
+    ns["swap"]["Text"]='''"Clever. Yozz always gave the clever answer." {n}She pours the offered wine onto the cobbles, where it hisses, then fills the empty cup from the other. While she turns them, her claw brushes both rims. She drinks first and hands you the cup she originally offered.{/n}
+"Fresh wine. A smaller dose, on the rims. You let me handle your cup again, mortal. That was careless. We will both have bad dreams tonight." {n}She smiles over her empty cup.{/n} "I shall blame you for mine."'''
+    ns=nodes("beat.question")
+    ns["sick"]["Text"]='''"Your colour is back. The quartermaster heard you were sick and decided it was the cook. My people watched him sweat until the second bell." {n}She laughs.{/n} "A kitchen full of knives, and he suspected the stew. Your war deserves better enemies than that fool."'''
+    ns["sick"]["Choices"].append(c('"It was your cup. Tell your people to clear the cook."',"cook_cleared"))
+    scenes[H+"beat.question"]["Nodes"].append(hz("cook_cleared",'''"Very well. They will tell him who poisoned you. He may find that less comforting than you expect." {n}She tilts her head.{/n} "Now answer my question, mortal."''',c("Continue","start")))
+    ns["dreams"]["Text"]='''"Did you dream? I did. You stood in my hall holding both cups and refusing to drink either." {n}Her lip curls.{/n} "I woke furious. Next time I shall leave the wine out of it and hear you answer sober."'''
+    ns=nodes("beat.ramparts")
+    original=ns["ask"]
+    original["Text"]='''"You heard about Yozz, and the cell, and what they paid for me. You still come looking." {n}She watches a supply cart labour beneath the wall.{/n} "I want a name for the person who did that. Before the crusade. Before the Wound. What were you, mortal?"'''
+    ns["start"]["Choices"][0]["Requires"].extend([YOZZ,SISTER,LABYRINTH])
+    for i,key in enumerate((YOZZ,SISTER,LABYRINTH)):
+        ns["start"]["Choices"].append(c("Continue","ask_first",requires=(YOZZ,SISTER,LABYRINTH)[:i],forbids=(key,)))
+    twin=_polish_copy.deepcopy(original)
+    twin.update(Id="ask_first",Text='''"You offered me an ear while my knives waited for me to fail. You gave it, and lived to let me boast." {n}She watches a supply cart below.{/n} "I want to know who I made that bargain with. Before the crusade, before the Wound. What were you, mortal?"''')
+    scenes[H+"beat.ramparts"]["Nodes"].append(twin)
+    ns["end"]["Text"]='''{n}At the corner tower she takes a folded slip from her collar. One name, your name, with an empty space beside it.{/n}
+"A client offered enough for you to buy every knife in the Lower City. I kept the offer. I wanted to look at it while I said no." {n}She tears the slip across the price-space and keeps the name.{/n} "They can hire someone else. I shall kill that one too."
+{n}Her hand closes on your coat; below you a sentry calls the relief.{/n} "Stay here a little longer."'''
+    ns["take"]["Text"]='''"You are smiling." {n}She catches your coat and draws you close enough to feel her mouth against your cheek.{/n} "Good. Let the sentry see who refused that money."'''
+    ns=nodes("letter.first")
+    ns["read"]["Text"]='''"Mortal.
+You left for your war without saying goodbye. My people found you before your quartermaster had finished pitching the tents.
+I have refused three offers for your head this week. They were generous. I kept the names of those who made them.
+Come back to Drezen. I want another visit, and I do not mean a report from your surgeon. Until then, turn your bed away from the door. You keep giving my rivals ideas."'''
+    ns=nodes("beat.second_night")
+    slot=H+"beat.second_night.explicit.1"
+    ns["cut"]["Choices"][0]["Next"]=slot
+    scenes[H+"beat.second_night"]["Nodes"].append(nar(slot,
+        "{n}In the dark she draws you back to her. The watch changes beyond the door; neither of you answers its call. The morning bell rings beyond the shutter.{/n}",c("Continue","after"))) # Brief: return/deepening in Drezen, morning watch hears aftermath.
+
+_round2_guild()
+
+
+# The folded reports and sister conversation are wholly route-owned. Prepare
+# their current/departed/history branches before assembly. guild.kept's shared
+# sister_absent appender still needs the coordinator's post-inventory hook.
+from storylines import horzalah_trickster as _round2_route
+_round2_payload={"Scenes":_polish_copy.deepcopy([*_round2_route.SCENES,*SCENES])}
+polish_sister_consumers(_round2_payload)
+for _prepared in _round2_payload["Scenes"]:
+    if _prepared["Id"] not in (H+"unmet.knife",H+"late.at_night",H+"beat.sister"):
+        continue
+    _host=next(s for s in [*_round2_route.SCENES,*SCENES] if s["Id"]==_prepared["Id"])
+    _host["Nodes"]=_prepared["Nodes"]
+
+# Sweep the same coy verdict across the optional judgement siblings.
+for _scene in SCENES:
+    for _node in _scene["Nodes"]:
+        _node["Text"]=_node["Text"].replace(
+            "I have not decided whether I do.", "I prefer to hear you choose for yourself. My masters can admire their own work.").replace(
+            "I have not decided whether that is a kindness or an insult. I think I will let it be both.",
+            "You have seen it. Now look higher. I did not uncover my throat to lose your eyes.")

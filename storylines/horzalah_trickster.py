@@ -411,7 +411,7 @@ SCENES.append(scene(H + "late.at_night", "A night without sleep", "Horzalah", 5,
        c("[Call the guard.]", "guard"),
        c('[Offer her a better story] "They\'d smell a head. They won\'t smell an ear. Take a piece of me home and tell them you let me live to wear the loss."',
          "take", requires=(LET_GO,))),
-    hz("take", '''{n}She looks at you for the length of three slow breaths. Then she sits down on the edge of your bed, as if her legs had decided it for her.{/n}
+    hz("take", '''{n}She looks at you for the length of three slow breaths. Then she sits down on the edge of your bed, and lays the knife across her knees.{/n}
 "I hate you," {n}she says, conversationally.{/n} "I want you to know that. I will hate you for this for longer than your whole line will live." {n}She takes a fistful of your hair.{/n} "The left one. Everyone who looks you in the face will see where it was."''',
        c("[Turn your head for her.]", "cut")),
     nar("cut", '''{n}The knife is small and very sharp. There is a sound like a boot going through thin ice, and then a cold place on the side of your skull that is suddenly very large, and then the pain, all at once, filling the whole left side of the world. Your blood goes everywhere. It is a great deal of blood for one ear.{/n}
@@ -474,7 +474,7 @@ SCENES.append(scene(H + "guild.kept", "The Guild bowed to the box", "Horzalah", 
        c('[Hear what she wants] "Because you came. You didn\'t have to. What do you want?"', "wants6", requires=("chapter.six",))),
     hz("wants", '''{n}When she speaks it is slowly, as if she were reading terms off a contract she had not written.{/n}
 "I want to come and go in your city as I please, and have no one follow me. I want to stand where I like. I want your soldiers to step off the path when I walk it, and not to know why." {n}Her eyes go to the side of your head.{/n} "And I want to look at that whenever I choose, because it is mine."
-"Everything I have ever had, I took. My Guild. Yozz's household. My own name back. I do not know what to do with a thing that was handed to me." {n}She turns toward the air, which is already beginning to fold.{/n} "I am going to stand in your street and think about it. Do not have me watched."''',
+"Everything I have ever had, I took. My Guild. Yozz's household. My own name back. You offered this. I mean to find out what else you offer, and whether I want it." {n}She turns toward the air, which is already beginning to fold.{/n} "I am going to stand in your street and think about it. Do not have me watched."''',
        c('"Nobody will watch you."', flags=(RETURNED, WANTS))),
     hz("free", '''{n}She stares at you as if you had struck her. Then, slowly, she laughs, and it breaks somewhere in the middle.{/n}
 "You are giving me the door. You. Everyone I have ever belonged to kept me as long as I was useful, and you are giving me the door before I have been any use at all." {n}She draws herself up.{/n}
@@ -1040,7 +1040,7 @@ _together["Paragraphs"].extend([
     p("""{n}After the war the Commander returned the thin knife she had given up in their lesson. Horzalah hung it above her bed. She said a weapon with that much of the Commander on it belonged close at hand. The Commander slept beneath it.{/n}""", requires=(CAME, P_KNIFE)),
     p("""{n}After the war, Horzalah brought the Commander to her rooms above the old Alushinyrra hall. She dropped her collar across a strongbox and caught the Commander by the open shirt.{/n}
 "The Guild can wait. You have kept me waiting long enough."
-{n}Her mouth found the scar beside the Commander's ear. The last leather laces fell loose under their hands; she pulled the Commander against her bare skin, then down onto the bed. The lamp went dark. At the watch bell she opened the door herself and told the waiting assassin to come back with a better offer.{/n}""", forbids=(CHAMBER,)),
+{n}Her mouth found the scar beside the Commander's ear. The last leather laces fell loose under their hands; she pulled the Commander against her bare skin, then down onto the bed. The lamp went dark. She opened the door herself and told the waiting assassin to come back with a better offer.{/n}""", forbids=(CHAMBER,)),
 ])
 _polish_scenes[H + "epilogue.mourned"]["Nodes"][0]["Paragraphs"].append(
     p("{n}For three days she left the small box on its shelf. On the fourth she took it down, looked at the white ribbon, and put it back without untying the bow.{/n}", requires=(EAR,)))
@@ -1065,3 +1065,121 @@ _no_ear["Nodes"][0]["Choices"][0]["Set"].append(H + "react.greybor_amateur")
 SCENES.append(_no_ear)
 tag(_no_ear["Id"], "T")
 _polish_scenes[H + "react.greybor_amateur"]["Forbids"].append(_no_ear["Id"])
+
+
+# Round 2 authored situations: the Guild's scrutiny opens a choice, never buys it.
+# Native evidence: YozzDying 0042/0049, Mercy Cue_4/0007, Demon Yozz_HailNewLord 0007.
+def _round2_situations():
+    scenes = {s["Id"]: s for s in SCENES}
+    def nodes(suffix):
+        return {nd["Id"]: nd for nd in scenes[H + suffix]["Nodes"]}
+
+    # Injury is incurred on display. Reopening resumes the unpaid remainder.
+    for suffix, opening in (("mercy.gift", "guess"), ("unmet.knife", "start")):
+        ns = nodes(suffix)
+        ns["cut"]["EnterSet"] = [EAR]
+        for choice in ns[opening]["Choices"]:
+            choice["Forbids"].append(EAR)
+        ns[opening]["Choices"].append(c("[Finish the bargain.]", "box", requires=(EAR,), forbids=(PRIMED,)))
+    ns = nodes("unmet.knife")
+    ns["start"]["Text"] = "{n}The lamp has gone out beside your bed. The watch waits beyond your door.{/n}"
+    arrival = "{n}A tall, lean figure stands in the dark with a knife. Horzalah wakes the lamp with a touch.{/n}"
+    for nid in ("met", "met_first", "stranger"):
+        ns[nid]["Text"] = arrival + "\n" + ns[nid]["Text"]
+    for suffix in ("unmet.knife", "late.at_night"):
+        ns = nodes(suffix)
+        ns["eng8.guild.arrival"]["Text"] = "{n}Two days later, at the Threshold camp, the watch is preparing for the assault. The air folds beside your lamp. Horzalah steps out with the ribboned box.{/n}"
+        ns["eng8.guild.start"]["Text"] = "{n}Her close-cut black leather bears no road dust. She lifts your hair with two fingers and examines what is missing.{/n}"
+    for suffix, prefix in (("guild.kept", ""), ("unmet.knife", "eng8.guild."), ("late.at_night", "eng8.guild.")):
+        ns = nodes(suffix)
+        ns[prefix + "hall"]["Text"] = '''"They passed it from hand to hand. One sniffed it. The one in my chair asked whether you were still alive. I told him to come here and count the scars himself." {n}She smiles.{/n} "He put my chair back. He did not volunteer."
+"The Guild bowed to the box." {n}She taps the lid with one claw.{/n} "Father has sent no answer. His silence was all I needed from him."
+"I brought the box back to Yozz's old hall in Alushinyrra. We still take city contracts there; I keep rooms above them. The masters want to know why I keep coming to Drezen. They think a lover might be cheaper to buy than a mistress is to kill. I shall let them see how wrong they are."'''
+        ns[prefix + "pivot"]["Text"] = '''{n}She sets the box beside your war maps and keeps her hand on the lid.{/n}
+"The chair is mine again. Your ear helped me keep it. It did not purchase anything else." {n}Her eyes travel over you.{/n} "My masters would like to know what I am doing here. So would I. Tell me what you want before I decide whether to come back."'''
+    ns = nodes("ch4.scar")
+    ns["you"]["Text"] = '''{n}The projection flickers. Her hand drops from her throat.{/n} "At me? Yozz inspected his purchase often enough. His guests were less discreet."
+{n}Her eyes catch yours and hold them.{/n} "You have a room full of corpses to admire, mortal. Yet you waste my time looking here. I will remember where you looked. Now ask your question."'''
+    # The social risk, rather than passive waiting, carries both commitment roads.
+    for suffix in ("commit.collar", "commit.collar_night"):
+        ns = nodes(suffix)
+        ns["word"]["Text"] = "{n}You lower your hand. She turns toward you at once, leaving the unfastened collar hanging from her fingers.{/n}"
+        ns["word2"]["Text"] = '''{n}She takes your hand and presses it to the pale scar. Her pulse beats hard beneath your fingers.{/n} "There. I chose where it goes."
+"The masters asked whether I meant to sell you back to your crusade. I could name a fine price. I told them to keep their gold."'''
+        ns["word3"]["Text"] = '''"I want you, mortal. I intend to have you in my own rooms, and walk you past those knives alive in the morning. They can swallow it or choke." {n}She draws close, her mouth beside your wounded ear.{/n}
+"Tomorrow night I will come for you. Not for your head. Leave your councils waiting. I shall have waited quite enough."'''
+        ns["word3"]["Choices"][0]["Text"] = "[Draw her closer.]"
+    # Both twins have already been constructed before these prose changes.
+    for suffix in ("commit.her_move", "commit.her_move_night"):
+        ns=nodes(suffix)
+        ns["decided"]["Text"] = '''"My masters offered to find me a lover who would be easier to manage. A grateful one. They know several." {n}Her lip curls.{/n} "I told them I had already chosen, and their next suggestion had better concern a contract."
+"You reached like a buyer. I disliked it. I still want you. Try to understand both things this time."'''
+        ns["yes"]["Text"] = '''{n}She pulls you against her, catching your mouth in a brief, hard kiss. Then she releases your hand and steps back.{/n} "Tomorrow night. My rooms. You will come down the front stair afterwards, where my masters can see you. Let them wonder what I kept you for."'''
+    ns=nodes("visit.chamber")
+    # Each branch keeps its finite-night/possessive answer, then meets one slot.
+    slot=H + "visit.chamber.explicit.1"
+    for nid in ("cut", "cut_tonight"):
+        ns[nid]["Choices"][0]["Next"] = slot
+    scenes[H + "visit.chamber"]["Nodes"].append(nar(slot,
+        "{n}She draws you against her bare skin and reaches for the lamp. Below, the killers wait. The watch bell sounds below the room.{/n}",
+        c("Continue", "morning")))  # Brief: chosen first night; the masters wait below.
+    # Preserve the legacy terminal answer's Set, Next and effects exactly.
+    bridge="\n{n}At the street threshold she opens a fold in the air. Beyond it waits the room you left, its lamp still burning. She watches you cross, then shuts the passage with a sweep of her hand.{/n}"
+    ns["morning"]["Text"] = "{n}There is no dawn in the windowless room. At the bell she is already at the black-glass mirror, buckling on her collar. She takes your hand and walks you down the main stair, past the city contracts and the masters working below.{/n}"
+    ns["doorway"]["Text"] += bridge
+    ns["morning2"]["Choices"][0]["Text"] = '"I\'ll be waiting."'
+    # The non-kiss exit needs its own passage without changing its terminal identity.
+    ns["morning2"]["Text"] += "\n{n}She opens a passage at the doorway to the quarters you left. Her hand stays raised while you linger beside her.{/n}"
+    ns["doorway"]["Text"] = ns["doorway"]["Text"].replace("At the street threshold she opens a fold in the air.", "The fold at the street threshold widens.")
+
+    # Unpaid closures collect uncertainty, not the con's reward.
+    page=nodes("epilogue.closed")["page"]
+    page["Text"] = "{n}The Commander never saw Horzalah again. For years the night watch was doubled on the Commander's order. Nothing came through the door. The Commander slept badly anyway.{/n}"
+    page.setdefault("Paragraphs", []).extend([
+        p("{n}The masters who had bowed to her trophy continued to take her orders. The Commander heard that much from the Isles, and nothing more.{/n}", requires=(PRIMED, RETURNED)),
+        p("{n}Rumours from the Isles named new killers and old grudges. None said whether Horzalah still held her chair. The Commander had given her no story with which to keep it.{/n}", forbids=(PRIMED,)),
+        p("{n}She had taken the ear and gone home with her story. Whether her masters accepted it, the Commander never learned.{/n}", requires=(PRIMED,), forbids=(RETURNED,)),
+    ])
+    page=nodes("epilogue.mourned")["page"]
+    page["Text"] = "{n}News of the Knight Commander's death reached the Midnight Isles. Someone carried it to Horzalah. No answer came back to Drezen.{/n}"
+    page["Paragraphs"][1]["Requires"].append(EAR)
+    page["Paragraphs"][2]["Requires"].extend([PRIMED, RETURNED])
+    page["Paragraphs"].extend([
+        p("{n}At headquarters, Horzalah heard the news before her masters did. When they brought it to her, she sent them back to their contracts.{/n}", requires=(PRIMED, RETURNED)),
+        p("{n}The crusaders had last heard her threaten the Commander through a shut door. They knew nothing of her fortunes after she left, or what the death cost her.{/n}", forbids=(PRIMED,)),
+        p("{n}Her trophy had left Drezen before the death. No report of its reception had returned.{/n}", requires=(PRIMED,), forbids=(RETURNED,)),
+    ])
+    page=nodes("epilogue.decided")["page"]
+    page["Text"]=page["Text"].replace("She did not say what she had decided.", '\"I chose you. Now keep still,\" she said.')
+
+    # Paragraph slots live only on epilogue pages; exits remain legacy terminals.
+    page=nodes("epilogue.together")["page"]
+    deferred=page["Paragraphs"][-1]
+    deferred["Text"] = '''{n}After the war, Horzalah brought the Commander to her rooms above the old Alushinyrra hall. She dropped her collar across a strongbox and caught the Commander's open shirt.{/n}
+"The Guild can wait. You have kept me waiting long enough."
+{n}Her mouth found the scar beside the missing ear. She pulled the last leather laces loose herself and drew the Commander down onto the bed.{/n}'''
+    slot=p("{n}Bare skin met bare skin; Horzalah pulled the Commander closer and put out the lamp. A watch bell rings in the old hall.{/n}", forbids=(CHAMBER,))
+    slot["Id"]=H + "epilogue.together.explicit.1"  # Brief: delayed first night, no prewar stair receipt.
+    page["Paragraphs"].extend([slot,
+        p("{n}She opened the door herself and told the waiting assassin to come back with a better offer. Later she sent the Commander home through her passage. She returned to Drezen the next week with a new city contract to complain about.{/n}", forbids=(CHAMBER,)),
+        p("{n}After the war she brought the Commander back to the room above the strongboxes. The familiar bell interrupted their kiss. Horzalah told the messenger to wait downstairs, and shut the door again.{/n}", requires=(CHAMBER,)),
+    ])
+    page=nodes("epilogue.commit")["page"]
+    start=page["Text"].index("{n}That night she stayed.")
+    page["Text"]=page["Text"][:start].replace("the spring after the Threshold", "that first spring")
+    page["Paragraphs"].append(p('''{n}That first night in Drezen she stayed. The collar lay across the war maps while the Commander loosened her leathers. Horzalah pulled the last laces free herself, her mouth on the Commander's mouth.{/n}
+"Enough waiting, mortal. I want the rest of you."
+{n}She drew the Commander onto the bed.{/n}'''))
+    slot=p("{n}She pressed close against the Commander's open shirt and reached past their shoulder to snuff the candle. Bootsteps stop outside the Commander's door.{/n}")
+    slot["Id"]=H + "epilogue.commit.explicit.1"  # Brief: her spring decision, first night, breakfast interruption follows.
+    page["Paragraphs"].extend([slot,p("{n}By morning the collar was fastened again. Horzalah sent the sentry for breakfast, then shut the door in his face. The councils waited until she had eaten. She left to run her Guild and returned a fortnight later, demanding the same room and a less inquisitive watch.{/n}")])
+    nodes("react.greybor_morning")["start"]["Text"]=nodes("react.greybor_morning")["start"]["Text"].replace("Greybor does not look up from the whetstone.", "Greybor lays the whetstone down and studies the scar beside your ear.")
+
+_round2_situations()
+
+
+# Every page granting the completed con's authority reads the actual receipts.
+# These are existing bargain/report debts, not another test of affection.
+for _suffix in ("together", "commit", "unanswered", "decided", "left_free", "ally", "scarred"):
+    _page_scene=next(s for s in SCENES if s["Id"]==H+"epilogue."+_suffix)
+    _page_scene["Requires"]=list(dict.fromkeys([*_page_scene["Requires"],PRIMED,EAR,RETURNED]))

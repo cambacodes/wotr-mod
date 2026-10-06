@@ -1,0 +1,16 @@
+{
+  "voice": "HORZALAH: proud, vicious, acquisitive, sexually direct and suspicious of being purchased; sharp contempt, economical commands, malicious amusement, competitive pleasure. She enjoys control and may willingly yield for a moment when it pleases her. Affection does not redeem her, end slavery or make her a crusader. Do not quote source dialogue or repeat sample sentences. Invent fresh, concise speech; no HR negotiations, maxims, therapy, narrator judgement or modern slang.",
+  "scene": "VERIFIED CANON: she is Baphomet's daughter and Hepzamirah's younger sister, formerly an advance-payment concubine to Yozz; later she claims Yozz and his Guild as property. Her Ch4 projection is tall, extremely emaciated, with shackle marks and flaming seals; native Ch5 dialogue says the seals are lifted. The collar-shaped throat scar and shrewd evil eyes with dark flames are attested. Do not claim Ch4 emaciation is an erotic ideal or invent a Ch5 recovery. No verified detail of genital anatomy, breasts, horns, wings, tail, scent, or species sexual mechanics is supplied. Do not invent those details. Her costume, claw staging, paid ear trophy, rooms and romance are authored route continuity, not additional native physical facts. No partner, slave or family member participates.\nTrickster Ch5; Commander's quarters in Drezen, after an already played first Guild-room night. Two adult lovers alone and lucid; watch outside, war maps on table. This is a return and deepening, never another first night. Authored continuity: collar on the Worldwound map, ear still missing, she arrived willingly and began the kiss. REQUIRED BEATS: host/guest rivalry; her appetite for being in the crusader's room; echo the chosen initiative without changing it (draw branch: she accepted being turned toward the bed; wait branch: she chose to stand still during undressing, then chose to pull Commander beneath her). Common slot must allow either completed lead-in and introduce no mandatory role. Treat her willingness as present pleasure, never purchase or obedience. Mutual sexual intimacy and a brief vicious joke about the watch, without making guards participants. End at morning bell. Next node: she sits on map table dressing, needles the sentries and promises to send for Commander. No poisoning, intoxication, new mechanics or sexual past invented. Intended act: consensual sex between the two adults, adapted to the selected Commander anatomy; no compulsory permanent power role. Keep anatomy consistent with the selected variant, without asserting unsupported species anatomy.",
+  "last_line": "N: The morning bell rings beyond the shutter.",
+  "speakers": {
+    "H": "Horzalah"
+  },
+  "example": "N: She drops her collar across the war map and pulls you close.\nH: Your sentries are welcome to count the hours. You are busy.\nN: She kisses you before the candle guttering beside the bed can distract her.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "slot_id": "horzalah.trickster.beat.second_night.explicit.1"
+}
