@@ -1041,7 +1041,7 @@ yard(GIFT, "Rent, in advance", '"You wanted to see me?"', [
     hz("owe", '''"*That is the point.*" {n}She repeats it with a great deal of scorn.{/n} "Crusaders. You would give everything and ask nothing and call it love, and then wonder why nobody knows what you are worth."
 "I owe you. I have decided. You will take it, and you will wear it, and you will stop arguing with a gift from the daughter of Baphomet." {n}She ties it round your neck herself, too tight, and then loosens it.{/n}''',
        c("[Wear it.]", flags=(P + "gift_worn",))),
-    nar("kiss", '''{n}She lets you, for exactly as long as she decides, which is longer than you expected. Then she takes the gift out of your hands and ties it round your neck herself, over the place where you kissed her, too tight, and loosens it, and steps back.{/n}''',
+    nar("kiss", '''{n}She lets you, for exactly as long as she decides, which is longer than you expected. Then she takes the gift out of your hands and ties it round your neck herself, against your collarbone, too tight, and loosens it, and steps back.{/n}''',
         c("Continue", "kiss_say")),
     hz("kiss_say", '''"That is not how you thank someone for rent," {n}she says.{/n} "But I will allow it. This once. Do not tell the smith."''',
        c("[Wear it.]")),
