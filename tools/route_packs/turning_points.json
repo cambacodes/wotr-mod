@@ -94,5 +94,36 @@
    3,
    5
   ]
+ },
+ "dorgelinda": {
+  "device_class": "canon_lowest_point",
+  "setting": "Drezen Logistics office, second supply book after shortage and recovery councils",
+  "payoff_shape": "she owns illicit reserve accounting, closes the work book and chooses the dented-cup night",
+  "canon_hooks": [
+   {
+    "guid": "d723cd2d6fe7ad04496b7f73555d6b7c",
+    "path": "World/Crusade/RankUps/Logistics/Logistics_2/Cue_0079.jbp",
+    "key": "7a061d4b-330c-4211-841c-0a717ca1a259",
+    "native_excerpt": "\"Now, yes, there will be some skimmin' here and there, within reason, that's a given. It's in their nature, bless their grubby hands. But what matters is they'll be stealin' after they get the soldiers everythin' that's needed — or they'll be given the sack in no time!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "d94aa015becda004ea2484ea8a50fff7",
+    "path": "World/Crusade/RankUps/Logistics/Logistics_2/Cue_0001.jbp",
+    "key": "f2a337eb-155f-4e38-b755-150941bd46b0",
+    "native_excerpt": "\"Hail, Commander!\" {n}A middle-aged dwarf, who has clearly seen some combat, salutes you with one barely-moving, bone-dry hand. On her face are huge, scarred claw marks. A black eye patch covers one eye, but she is watching you with the other, intent and somber.{/n} \"Dorgelinda Stranglehold, chair of the Logistics Council, at your service. We've got ourselves an ugly situation that requires your decision.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "e247ef321268e0f4da5f20edb24985f5",
+    "path": "World/Crusade/RankUps/Logistics/Logistics_6/Cue_0001.jbp",
+    "key": "5993f67e-01af-4aa4-9d52-362cfc807fff",
+    "native_excerpt": "{n}Dorgelinda is looking at you with undisguised awe.{/n} \"Well, I'll be! You really did come back from the Abyss itself! Commander, you amaze me! Well, if you're doing miracles now, maybe you can pull our logistics out of the Abyss while you're at it? Because in your absence, that's exactly where it's gone, all the way to the bottom. We have a shortage of — quite literally — everything!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
  }
 }

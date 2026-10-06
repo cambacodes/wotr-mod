@@ -87,7 +87,8 @@ SEEN_CUES = {
     HUSHED: ["76349e9bb678de3468e70c87c8e777ae"],        # Logistics_5/Cue_0045 (Woljif's verdict: hushed up, sent away)
     REDEEMED: ["75690b4f1e8fa734b8699b454c9137d2"],      # Logistics_5/Cue_0046 (Arueshalae's verdict: a chance to atone)
 }
-DERIVED = {P + "late_committed": [["trickster.ever", METHODS]], HANGED: [[HANGED_LANN], [HANGED_WENDUAG]]}
+DERIVED = {P + "late_committed": [["trickster.ever", COMMITTED, "dorgelinda.outcome.accepted"]],
+           "dorgelinda.outcome.accepted": [[COMMITTED]], HANGED: [[HANGED_LANN], [HANGED_WENDUAG]]}
 RENAMED = {"dorgelinda.weekly_count": P + "after.weekly_count", "dorgelinda.fellows_methods": P + "after.fellows_methods",
            "dorgelinda.commit": P + "after.commit", "dorgelinda.ending_committed": P + "epilogue.committed"}
 
@@ -157,8 +158,7 @@ SCENES.append(scene(P + "tribunal.recount", "Nothing's missing", "Dorgelinda", 3
 
 office(P + "office.stocktake", "Nothing's missing",
     '[Count it again, slowly] "Quartermaster, count the stores again. Nothing\'s missing. It was used, quietly."', [
-    d("start", '''"Missin'? Commander, we're missin' the floor of the warehouse. Her Majesty squeezed Mendev dry to march on Iz, and what she left us, the Abyss had."
-{n}The clerk counts anyway, aloud, while she drums the fingers of her good hand on the desk. Most of the shortage is the war's. One line is her clerks' own, dated the week your party left for the Abyss: four crates of cold-iron arrowheads and a wagon of salt pork, issued to the Commander's party, no receipt after.{/n}''',
+    d("start", '''"Your party's Abyss issue. Arrowheads and salt pork. No receipt." {n}She opens the ledger at the week you left. A clerk sets the current council returns alongside it; she pushes them aside to expose the unexplained issue.{/n} "The war's losses are in those returns. This line's yours. Account for it."''',
       c('[Sign under the Abyss issue: "Received, and used, quietly. All of it."]', "sign")),
     d("sign", '''{n}She watches your hand move under the line, past the arrowheads, past the pork, down the whole long column of what is not there. Her grip tightens on the edge of the book.{/n}
 "...So that's where it all went. Into the Abyss. Quietly. Nobody can audit the Abyss, and you know it."
@@ -305,32 +305,31 @@ office(P + "after.weekly_count", "Weekly count", '"Right on time. Boots off the 
 # --- The pivotal beat (Chapter 5): the Fellows' second book. ------------------------------------------------------------
 
 office(P + "after.fellows_methods", "The second book", '"Shut the door. No, all the way."', [
-    nar("door", '''{n}She waits until the latch has caught, then waits again until the footsteps in the corridor have gone past. Outside, a supply sergeant is shouting at a cart that will not shout back.{/n}''',
-        c("Continue", "measures", requires=(HARD_MEASURES,)),
-        c("Continue", "conscience", requires=(CONSCIENCE,), forbids=(HARD_MEASURES,)),
+    nar("door", '''{n}She waits for the latch and the clerks' footsteps to fall silent. Outside, the sergeant orders a carrier to unload a crate at the boot-issue bench. Dorgelinda spreads the day's returns across her desk.{/n}''',
+        c("Continue", "measures", requires=(HARD_MEASURES,), forbids=(CONSCIENCE,)),
+        c("Continue", "conscience", requires=(CONSCIENCE,)),
         c("Continue", "crumbs", forbids=(HARD_MEASURES, CONSCIENCE))),
-    d("measures", '''"I put it to you at the council already. Requisitions. Donations for the war of faith." {n}Her voice goes flat on the word.{/n} "I'm puttin' something worse to you now, here, where nobody's takin' minutes."''',
+    d("measures", '''"The requisitions filled the warehouses. The folk we took it from haven't forgotten." {n}She touches her own signature on a return.{/n} "This one wasn't your order. It was mine."''',
       c("Continue", "start")),
     d("conscience", '''"You were right, at the council. You wouldn't turn us into the Fellows of the Crusade, and the donations came in after, and the warehouses are near full. I hate it. I've never been so wrong and so fed in the same month. Hear me anyway."''',
       c("Continue", "start_surplus")),
-    d("start_surplus", '''{n}She lays a second ledger on top of the first. It is thinner, and older, and the hand in it is not hers.{/n}
-"The Fellows kept this. It came to me in a sack of oats, the way their things do. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. I've read it three times. It's good work." {n}She taps the cover.{/n}
-"Charity runs dry, Commander. Next winter the warehouses'll be bare again and the donors'll have found a new war to feel good about. So I'm askin' you while we're fat. Do we keep a second book, against the lean year? Or do I burn it while I can afford to?"''',
-      c('"Keep your hands clean. I\'ll keep mine dirty for both of us."', "clean"),
+    d("start_surplus", '''{n}The second book is in her own hand. She puts a depot return beside it: a crate written off in transit, now waiting at her issue bench. Through the open hatch you see the sergeant lift out sound boots. A bottle lies beneath them.{/n}
+"Mine. Boots for the lads. Bottle for me." {n}She takes the bottle herself and sets it apart.{/n} "They'll sign for every pair. I'll not pretend they drank my share."
+"These are my connections and my figures. The donations cover this month. This is for the reserves. Do we keep the book, or burn the scheme while we can afford to?"''',
+      c('"Burn the scheme. I\'ll stand behind my own issues."', "clean"),
       c('"Do it. Their methods. Your books."', "dirty")),
-    d("crumbs", '''"Her Majesty squeezed Mendev dry to march on Iz. There's nothin' left to buy honest. I checked. Twice. Then I stopped checkin', 'cause it was makin' me sick."''',
+    d("crumbs", '''"There's still companies waitin' for their issue. I've been callin' in old debts across Mendev." {n}She pulls a thin book from beneath the returns.{/n} "Here's what came of it. Not all of it goes in the council minutes."''',
       c("Continue", "start")),
-    d("start", '''{n}She lays a second ledger on top of the first. It is thinner, and older, and the hand in it is not hers.{/n}
-"The Fellows kept this. It came to me in a sack of oats, the way their things do, and I've had it in my drawer since, readin' it at night like some folk read scripture. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. A weight discrepancy here, some cargo that dried out there. I've read it three times. It's good work." {n}She taps the cover.{/n}
-"You're the one person in Drezen I can say that to. You put your name under stores nobody could find and never blinked. So I'm askin' you. Do we keep a second book?"''',
-      c('"Keep your hands clean. I\'ll keep mine dirty for both of us."', "clean"),
+    d("start", '''{n}The second book is in her own hand. She puts a depot return beside it: a crate written off in transit, now waiting at her issue bench. Through the open hatch you see the sergeant lift out sound boots. A bottle lies beneath them.{/n}
+"Mine. Boots for the lads. Bottle for me." {n}She takes the bottle herself and sets it apart.{/n} "They'll sign for every pair. I'll not pretend they drank my share."
+"These are my connections and my figures. Do we keep this book, or burn the scheme before I use it again?"''',
+      c('"Burn the scheme. I\'ll stand behind my own issues."', "clean"),
       c('"Do it. Their methods. Your books."', "dirty")),
-    d("clean", '''{n}She turns her head so the one eye has you square, the way she sights down a row of barrels for the one that's leaking.{/n}
-"That's a fool's bargain, Commander. You carry the dirt and I get to keep my hands." {n}She puts the thin book in the stove and watches it catch, the pages curling one after another like something that wants to live.{/n}
-"I'll take it. Don't think I don't know what it cost."''',
+    d("clean", '''"Carry your own issue, Commander. You don't get to rub my name off mine." {n}She removes the signed returns before putting the thin book in the stove.{/n} "No second account, then. The boots still go to the lads. Their receipts stay with my signature."
+{n}She watches the pages catch, then puts the bottle on her shelf.{/n} "I'm savin' that. Come back when the carts are in. If you want a drink with me."''',
       c("[Leave it there.]", flags=(METHODS, CLEAN))),
-    d("dirty", '''"Their book. My hand." {n}She copies the first line into a fresh ledger, in a smaller script than her own. Her grip does not waver.{/n}
-"Bless their grubby hands. They had a system. Now it's ours, and it'll be kept better than they ever kept it." {n}She does not look at you.{/n} "If this goes wrong, it's your name at the top. You're used to that."''',
+    d("dirty", '''"My book. My hand." {n}She writes the recovered crate into the reserve account, then pins the soldiers' issue receipts to the original return.{/n} "Your name covers what you drew. Mine covers this. Nerosyan can ask us both."
+{n}She closes the book and puts the bottle on her shelf.{/n} "Come back after the carts. I'd like to drink that with you. Not as payment, mind."''',
       c("[Leave it there.]", flags=(METHODS, DIRTY), crusade=("Materials", 150), alignment=("Evil", 1))),
 ], requires=("trickster.ever", COUNTED), forbids=(METHODS,), delay=24, chapters=(5,))
 
@@ -349,9 +348,9 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
         c("Continue", "recall_clean", requires=(CLEAN,)),
         c("Continue", "recall_dirty", requires=(DIRTY,), forbids=(CLEAN,)),
         c("Continue", "recall", forbids=(CLEAN, DIRTY))),
-    d("recall_clean", '''"You kept your hands dirty so I didn't have to. I noticed. I notice everythin'. Eventually."''',
+    d("recall_clean", '''"No second book. My originals are still there, and so are yours. I'm glad you didn't try to take mine off me."''',
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
-    d("recall_dirty", '''"And we kept their book. Better than they did. I don't know yet what that makes us, and I've stopped askin' at night."''',
+    d("recall_dirty", '''"The reserve's entered. The lads signed for their boots. If Nerosyan asks, it'll have my figures as well as yours."''',
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
     d("recall", '''"You've been through my stores like weather, Commander. I've written every bit of it down."''',
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
@@ -361,10 +360,10 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
 {n}She looks at you squarely.{/n} "Is it me you're comin' for, Commander? Or have you got another damned shortage?"''', *ASK),
     d("yes", '''{n}She reaches across the desk and catches your hand. Her grip is firm; when you lean closer, she kisses you hard enough to leave you tasting the drink on her lips.{/n} "Then stay. I want you at my table. And in my bed when the carts'll bloody well let us."
 {n}She fills her dented cup and pushes it toward you.{/n} "Armed, armoured and fed. Tonight it's three. Cup's yours. Drink. My rooms are behind the stores. Come after the last cart."''',
-      c("[Stay while she writes.]", flags=(COMMITTED,))),
+      c("[Take her cup and stay.]", flags=(COMMITTED,))),
     d("yes_boots", '''{n}She checks the boots and writes them as paid. Then she sets the pen down, takes your hand and pulls you close for a hard kiss.{/n} "Debt's done. This isn't part of it."
 {n}She fills her dented cup and stands it inside the left boot.{/n} "Armed, armoured and fed. Three out of three. Cup's yours now. Drink, then bring those to my rooms after the last cart. I want you there."''',
-      c("[Stay while she writes.]", flags=(COMMITTED, BOOTS_PAID), crusade=("Materials", -200))),
+      c("[Take her cup and stay.]", flags=(COMMITTED, BOOTS_PAID), crusade=("Materials", -200))),
     d("not_yet", '''"No, I don't." {n}She shuts the book, gently, which is worse than hard.{/n}
 "And I'm not sayin' yes to a line I can't balance, Commander. Not today. Come back when you'll tell me where it went. All of it. Then ask me again."''',
       c("[Leave the ledger with her.]", flags=(DECLINED,))),
@@ -375,14 +374,17 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
 
 office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
     d("price", '''"Where did it go. All of it. Every line in your name, from the first." {n}The pen is already in her hand. She has turned to a clean page, which in her office is the closest thing to a courtesy.{/n}''',
-      c("[Tell her everything, and let her strike it from the stores.]", "told", crusade=("Materials", -100)),
+      c("[Tell her everything, and let her strike it from the stores.]", "told", flags=(TOLD_ALL,), crusade=("Materials", -100)),
       c('"Not all of it. Anything else."', "no")),
     d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances, which it has not done since the day you first signed it.{/n}
 "There. Was that so hard." {n}She puts the pen down, takes her own dented cup off the shelf, and stands it on the balanced page, empty.{/n} "Now ask."''',
-      c('"The account\'s settled. I still want you, Dorgelinda."', flags=(COMMITTED, TOLD_ALL))),
+      c('"The account\'s settled. I still want you, Dorgelinda."', "accepted"),
+      c("[Leave her to her work.]", forbids=("trickster.now",), abort=True)),
     d("no", '''"Then we're done, Commander." {n}She rules a line under your column, the only line she has ever drawn in anger.{/n}
 "I'll keep the book. Not you."''',
       c("[Go.]", flags=(CLOSED,))),
+    d("accepted", '''"Aye. I want you at my table. Come here." {n}She catches your collar with her good hand and kisses you. Then she fills the dented cup and puts it in your hand.{/n} "That's yours. My rooms, after the last cart. I'll be waitin'."''',
+      c("[Take the cup and stay.]", flags=(COMMITTED, TOLD_ALL))),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED,), delay=72, chapters=(5,))
 
 
@@ -412,7 +414,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "DorgelindaEpilogue", 6, "", [
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))   # Q9 r3: the spring visit needs the Commander back
 
 SCENES.append(scene(P + "epilogue.declined", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}Dorgelinda Stranglehold shipped the Logistics Council's ledgers to Nerosyan after the war, all but one. The Commander's column she kept, unbalanced, on her own shelf. She had said to come back when the Commander would tell her where it all went. She kept the shelf clear, in case.{/n}''')],
+    nar("page", '''{n}Dorgelinda shipped the Logistics Council's ledgers to Nerosyan after the war, all but one. The Commander's unexplained issue stayed on her shelf. Her personal question had gone unanswered; she returned to supplying the soldiers still in Drezen.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), **EP))
 
 
