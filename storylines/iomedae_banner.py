@@ -16,7 +16,8 @@ from storylines.iomedae_trickster import (
     ORDER_BANNER, HERALD_SAVED, HERALD_FELL, HERALD_FOUGHT, NENIO, DREAM_BANNER, SENT_AWAY, QUESTION_SENT, ASKED_WHOSE, ASKED_MIND,
     ASKED_BACK, HERALD_ANSWERED, BRIDGE_SEEN, TESTED, WORD_ARODEN, WORD_LIAR, WORD_PLEASE, TEST_DONE, SLIP_BURNED,
     BRIDGE_TOLD, DREAMS_TOLD, ABYSS_SILENCE, SUMMIT_ASKED, PLAN, HERALD_DREAM, SPOKEN, DISPUTED, DECLINED, MORTAL_SEEN,
-    EVE_SEEN, BRIDGE_KNOWN, FALSE_FACE, QUEEN_SAW, io, nar, remote, tag)
+    EVE_SEEN, BRIDGE_KNOWN, FALSE_FACE, QUEEN_SAW, CALLED, COURTED, PERSONAL, POSTPONED, EVE_PERSONAL,
+    HERALD_HEAVEN, HERALD_EXILED, HERALD_SPITE, HERALD_ACCOUNTED, io, nar, remote, tag)
 
 SCENES = []
 
@@ -281,11 +282,11 @@ at_herald(E + "herald.legend", "The Acts", 4, '"Tell me about your lady. Before 
         c("Continue", "acts")),
     herald("acts", '''"The Acts count eleven feats before the Starstone. The chroniclers quarrel over the order, and she does not settle it, because she will not discuss them. I will tell you what every novice is told." {n}He counts on gauntleted fingers.{/n}
 "She broke her sword against the Whispering Tyrant's sorceries, and prayed over the pieces, and made it whole with her own hand, and that was the sixth. She talked a dead knight into his rest with no weapon drawn. She laid her cloak across a gorge, and her company crossed over on it, with the bridge burned and the dead behind them."''',
-        c('"And then she burned the cloak behind her."', "burned"),
+        c('"And then she burned the cloak behind her."', "burned", requires=(BRIDGE_SEEN,)),
         c('"Did she ever say how she did it?"', "how"),
         c('"Thank you. That\'s all I wanted."', flags=(BRIDGE_TOLD,))),
     herald("burned", '''"That is not in the Acts." {n}He looks at you as if you had quoted to him a letter he had written and never sent.{/n} "Where did you hear it?"''',
-        c("[Tell him about the dreams.]", "dreams"),
+        c("[Tell him about the dreams.]", "dreams", requires=(BRIDGE_SEEN,)),
         c('"Somebody in a tavern."', "tavern")),
     herald("tavern", '''"Then it was a very well-read tavern." {n}He lets it go, though you can see what it costs him to let anything go in this city.{/n} "Keep your secrets, Champion. The Abyss will try to have them out of you soon enough."''',
         c("Continue", flags=(BRIDGE_TOLD,))),
@@ -309,9 +310,9 @@ at_herald(E + "herald.doubt", "A fortress", 4, '"You\'ve been watching me differ
         c('[Tell the truth] "Both. I don\'t know yet which is winning."', "both"),
         c('"I\'m not using her. I\'m trying to understand her."', "understand"),
         c('[Joke] "Can\'t it be both? She\'s very well fortified."', "joke")),
-    herald("both", '''{n}The herald closes his eyes, briefly, like a man who has been struck and has decided not to acknowledge it.{/n} "That is the most honest answer I have had in this city, and I wish you had lied." {n}He opens them.{/n} "She will not be used, Champion. Better generals than you have tried, and gods besides. But she may be loved. I have seen it happen once or twice, to mortals who did not deserve it either."''',
+    herald("both", '''{n}His wings draw close against his back.{/n} "Then remember whom you are asking. My lady may hear a plea and refuse it. Neither her banner nor my prayers can give you her answer."''',
         c("Continue", "pray")),
-    herald("understand", '''"Understanding is a kind of siege, when it is done by someone like you." {n}He keeps his eyes on the city, and his voice is gentle.{/n} "I do not say that to wound you. I say it because it is what I would have said of myself, once, before she taught me better."''',
+    herald("understand", '''"Then speak to her plainly, when the time comes. She has enough enemies looking for weaknesses." {n}He watches the city below.{/n} "I would rather carry an honest question to her."''',
         c("Continue", "pray")),
     herald("joke", '''{n}He does not laugh. He does not reproach you either; he only waits, with a patience that is worse than either, until the joke has finished dying in the perfumed air.{/n} "When you joke, it is because the true answer embarrasses you. I do not think you have ever been embarrassed by a fortress."''',
         c("Continue", "pray")),
@@ -328,9 +329,7 @@ remote(E + "abyss.silence", "No banner here", [
     nar("start", '''{n}In the Abyss you sleep in snatches, in a borrowed room that smells of perfume laid over something going bad, and the dreams that come are the city's: sweet and heavy, and every one of them wants something from you.{/n}
 {n}None of them is hers. The banner is a world away on its pole over Drezen, and whatever it remembers, it is remembering to empty stone. You had not known you were used to it until you woke with your hand closed on nothing, reaching for a staff that was not there.{/n}''',
         c("Continue", "cold")),
-    nar("cold", '''{n}You make yourself think it through the way you would think through anybody's weakness, your own included. It is what you would do to an enemy commander who had started writing letters to a woman across the lines: find the letters, read them, and decide whether the man was compromised.{/n}
-{n}A relic of a goddess has been showing you her life. Her herald says she watches you, and she has not answered a single question. Her banner has taken more interest in you than she has. And here you are in the Abyss, being lied to by experts, and the one thing in your life that has never lied to you is a flag's memory of a woman in the rain.{/n}
-{n}The verdict, if you were writing it about someone else, would be short: compromised. You would recommend that the officer be watched, and kept away from the enemy's letters. You find you do not care to recommend it.{/n}''',
+    nar("cold", '''{n}You miss the rain, the weight of her hand on a soldier's shoulder. A shout outside brings you upright with your weapon in your hand. Only another quarrel in the street. You lie down again, awake now, with no banner overhead and the smell of the Abyss in your bedclothes.{/n}''',
         c("[Count the days back to Drezen.]", flags=(ABYSS_SILENCE,)),
         c("[Put it out of your mind. There is a demon queen to deal with.]", flags=(ABYSS_SILENCE,))),
 ], requires=(DREAM_BANNER,), forbids=(ABYSS_SILENCE,), delay=48, chapters=(4,), kind="memory")
@@ -452,9 +451,12 @@ remote(E + "dream.summit", "The truth in the square", [
 remote(E + "dream.herald", "Her herald", [
     nar("start", '''{n}It is not the banner dreaming. You know it at once, the way you know a face from a portrait of it.{/n}
 {n}There is no rain, no gorge, nobody's hands. There is a white space like the inside of a cloud, and a voice in it, and the voice is speaking to you.{/n}''',
-        c("Continue", "saved", requires=(HERALD_SAVED,)),
-        c("Continue", "fell", requires=(HERALD_FELL,), forbids=(HERALD_SAVED,)),
-        c("Continue", "fought", requires=(HERALD_FOUGHT,), forbids=(HERALD_SAVED, HERALD_FELL))),
+        c("Continue", "saved", requires=(HERALD_HEAVEN,), forbids=(HERALD_SPITE,)),
+        c("Continue", "fell", requires=(HERALD_FELL,), forbids=(HERALD_SAVED, HERALD_SPITE)),
+        c("Continue", "fought", requires=(HERALD_FOUGHT,), forbids=(HERALD_SAVED, HERALD_FELL, HERALD_SPITE)),
+        c("Continue", "exiled", requires=(HERALD_EXILED,), forbids=(HERALD_SPITE,)),
+        c("Continue", "saved_unknown", requires=(HERALD_SAVED,), forbids=(HERALD_HEAVEN, HERALD_EXILED, HERALD_SPITE)),
+        c("Continue", "spite", requires=(HERALD_SPITE,))),
     io("fought", '''"You fought him."
 {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "In Baphomet's prison, at the end, what was left of him wanted the fight more than it wanted saving, and he told you so, and you gave it to him. I heard him ask. I will not pretend I would have answered him the same way."
 {n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him."''',
@@ -470,7 +472,7 @@ remote(E + "dream.herald", "Her herald", [
 {n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him."''',
        c("Continue", "stopped", forbids=(SPOKEN,)),
        c("Continue", "known", requires=(SPOKEN,))),
-    io("known", '''"I came to tell you that myself, and not through a banner, because it is not a thing to be told through cloth." {n}The white does not waver.{/n} "He served me faithfully, and at the end badly, which was my fault. I will not have his ending carried to you by a flag. That is all. I have a war, and so, still, do you."''',
+    io("known", '''"I came to speak of him myself. He served me faithfully. I let him mistake you for my chosen, and left him to discover the truth in Baphomet's prison." {n}Her voice stays level.{/n} "That fault is mine. Your decisions there are yours. I will not confuse the two."''',
        c('"Thank you for telling me."', flags=(HERALD_DREAM,)),
        c("[Say nothing, and let her go.]", flags=(HERALD_DREAM,))),
     io("stopped", '''"My herald's dying prayer told me what had been done to you. Until then, I watched without intervening." {n}The white draws closer.{/n} "I have stopped observing."''',
@@ -479,10 +481,21 @@ remote(E + "dream.herald", "Her herald", [
        c("[Say nothing, and listen.]", "listen")),
     io("precedent", '''"I am. Do not make me regret the precedent."''',
        c("Continue", flags=(HERALD_DREAM, SPOKEN))),
-    io("now", '''"Because now I know what you are, and what was done to you, and what it will cost. I was not willing to speak to a stranger." {n}A pause.{/n} "You are not one. My banner saw to that, without asking me."''',
+    io("now", '''"Because now I know what was done to you, and what closing the Wound will cost. I will speak to you myself."''',
        c("Continue", flags=(HERALD_DREAM, SPOKEN))),
-    io("listen", '''{n}She lets the silence go on, as if she were testing whether you would break it. You do not. When she speaks again there is something in the voice that might be approval, if goddesses approved of such small things.{/n} "Good. Most people talk to fill a silence. You wait to see what is in it."''',
+    io("listen", '''{n}You wait. When she speaks again her voice has lost its carrying battlefield pitch.{/n} "I had more to say than I expected. Thank you for hearing it."''',
        c("Continue", flags=(HERALD_DREAM, SPOKEN))),
+    io("exiled", '''"You returned his heart. He chose exile, not Heaven. I have not received him, and I will not summon him merely to ease my conscience. He must find his way back." {n}A silence.{/n} "You gave him that chance. I came to acknowledge it."''',
+       c("Continue", "stopped", forbids=(SPOKEN,)), c("Continue", "known", requires=(SPOKEN,))),
+    io("saved_unknown", '''"You gave him back his heart. What he makes of that mercy is still his to decide. I will not claim his gratitude for myself."''',
+       c("Continue", "stopped", forbids=(SPOKEN,)), c("Continue", "known", requires=(SPOKEN,))),
+    io("spite", '''"You killed him because you disliked him." {n}The white is harsh and empty.{/n} "Baphomet had already broken him. You chose to make his last moment serve your spite. Do not call that mercy before me."''',
+       c('[Own it] "It was cruelty. I will not pretend otherwise, or use his death to boast of my victories."', "accounted"),
+       c('"He deserved it."', "dismissed")),
+    io("accounted", '''"Then keep that answer when your soldiers praise what happened in that prison. Tell them what you did. I will hear your case; I have not absolved you."''',
+       c("[Wake.]", flags=(HERALD_ACCOUNTED, HERALD_DREAM, SPOKEN))),
+    io("dismissed", '''"Then there is nothing personal left for us to discuss." {n}Her voice ceases. You wake with the Worldwound's light against your shutter.{/n}''',
+       c("[Wake.]", flags=(CLOSED, HERALD_DREAM))),
 ], requires=(STARTED, KEY_LATCH), forbids=(HERALD_DREAM,), delay=24, chapters=(5,),
     RequiresAnyGroups=[[HERALD_SAVED, HERALD_FELL, HERALD_FOUGHT]])
 
@@ -504,19 +517,17 @@ remote(E + "dream.mortal", "What the banner did not see", [
        c('"Is this you, or a memory of you?"', "which")),
     io("which", '''"It is me, choosing to look as I did. There is a difference, and it is the whole of the difference." {n}She moves over on the rock again, pointedly.{/n}''',
        c("[Sit beside her.]", "hand")),
-    io("hand", '''{n}She takes off the gauntlet finger by finger and gives you her hand the way one hands over a weapon for inspection. The knuckles are scarred white. There is a notch out of the heel of the palm where a blade once went through the leather.{/n}
-"The Whispering Tyrant's dead did that. I kept it when I kept everything else." {n}Her thumb moves once across the back of your hand. It is a small thing, and she watches it happen as though it were a large one.{/n} "I was mortal a long time before I was not. I remember hunger, and cold, and being so tired that I slept standing. I remember wanting. I did not expect to be reminded of it, at this remove, by a Trickster who argues like a canon lawyer."''',
+    io("hand", '''{n}She removes the gauntlet and gives you her hand. Her thumb moves across your knuckles; she watches your face as she does it.{/n} "I remember hunger, cold, sleeping on my feet. Wanting someone close at the end of a march." {n}Her fingers tighten.{/n} "You have reminded me of that."''',
        c("[Put your mouth to the notch in her palm.]", "palm"),
        c('"Then let me remind you properly."', "properly"),
        c('"What did you want, back then?"', "wanted")),
     io("palm", '''{n}Her breath goes out of her short, as if you had struck her somewhere she had forgotten was undefended. She does not take the hand away. She turns it, slowly, until your mouth is in the hollow of her palm and her fingers are along your cheek.{/n}''',
        c("Continue", "kiss")),
-    io("properly", '''"Properly." {n}The word amuses her more than it ought to. It is the most human thing you have seen her do, and she knows it, and does not hide it.{/n} "You have a very high opinion of your abilities, Commander. I have watched you use them on demons, and on queens, and on a king who calls a tavern his throne room. I am not sure I wish to be added to the list."''',
+    io("properly", '''"Properly." {n}Her mouth curves, but her hand stays in yours.{/n} "You have a high opinion of your abilities, Commander. Show me whether it is deserved."''',
        c('"It\'s been accurate so far."', "kiss")),
     io("wanted", '''"Sleep. Dry boots. That the people behind me would live until morning." {n}She looks at you sidelong.{/n} "And other things, which were no one's business, and are now apparently yours."''',
        c("[Take her face in your hands.]", "kiss")),
-    nar("kiss", '''{n}Her fingers come up to your jaw. They are rough, and they read your face the way a scholar reads a carved inscription, letter by letter. When she draws you in, it is with the unhurried certainty of a woman who has never in her life begun a thing she did not mean to finish. Her mouth is warm and tastes of cold air and smoke, and it is the least holy kiss you can imagine, and she does not end it until she has had enough of it.{/n}
-{n}Your hand finds the buckle of her breastplate at her side. She covers it with her own and does not move it away. She does not let the buckle open either.{/n}''',
+    nar("kiss", '''{n}Her rough fingers close at your jaw and draw you in. She kisses you hard, her other hand against your back, holding you until you answer. Your fingers find the breastplate buckle at her side. She covers them with her hand. The buckle stays shut.{/n}''',
         c("Continue", "not_here")),
     io("not_here", '''"Not in a dream." {n}Her forehead is against yours. Her voice is not quite steady, and she lets you hear that it is not.{/n} "When it happens I will not have it be something you were asleep for. Wake up, Commander. I have a war, and so do you."''',
        c("[Wake.]", flags=(MORTAL_SEEN,)),
@@ -550,10 +561,11 @@ remote(E + "silence", "No answer", [
 remote(E + "dream.questions", "Not in any report", [
     nar("start", '''{n}The white again, and her voice in it. Tonight she has brought into the dream something she has never brought before: a question that is not about the war.{/n}''',
         c("Continue", "ask")),
-    io("ask", '''"I have watched you since Drezen and argued with you on a roof, and I do not know where you were born." {n}The voice is almost diffident, which is so unlike it that you nearly laugh.{/n} "Tell me something that is in no report."''',
+    io("ask", '''"My priests send reports of your victories. They tell me nothing of the person who has to sleep after them." {n}She pauses.{/n} "Tell me something you would not send to a chaplain."''',
        c('"I was nobody. Then I was the Commander. There wasn\'t much in between."', "nobody"),
        c('"I stole things, before. Never anything that couldn\'t be spared."', "stole"),
-       c('"You first."', "first")),
+       c('"You first."', "first"),
+       c('"Leave it at the war. I have orders to finish."', "professional")),
     io("nobody", '''"Then tell me what you remember of being nobody. My priests know the victories. I had to learn to hold a sword before I could win any of them. You may ask about that."''',
        c("Continue", "hers")),
     io("stole", '''"Tell me what you took, and who had to do without it."''',
@@ -561,15 +573,14 @@ remote(E + "dream.questions", "Not in any report", [
        c('"A kiss. Not from you. Yet."', "kiss")),
     io("horse", '''"Good." {n}Just that, and then, after a moment, as if it had been pried out of her:{/n} "That was a good thing to steal."''',
        c("Continue", "hers")),
-    io("kiss", '''"Yet." {n}The white seems to warm by a degree, like a room in which somebody has decided not to be offended.{/n} "You are very sure of your abilities, Commander. I have said so before. I will probably say it again."''',
+    io("kiss", '''"A kiss is not loot, Commander." {n}You hear a brief, dry amusement.{/n} "Try that boast on someone less likely to question it."''',
        c("Continue", "hers")),
     io("first", '''"I asked first." {n}A pause.{/n} "Very well. You asked a fair question. I will answer it."''',
        c("Continue", "hers")),
-    io("hers", '''"Then here is one of mine, which is in no report either." {n}The white warms, very slightly.{/n}
-"Before a battle I ate bread and a raw onion, like a carter, because an old sergeant told me that a knight who could keep food down before a fight could do anything. I have not eaten an onion since the Starstone." {n}The voice considers this with apparent surprise.{/n} "I miss them. That is the kind of thing I do not say to my herald."''',
+    io("hers", '''"Before a battle I ate bread and a raw onion, because an old sergeant told me to keep my strength up. I checked everyone else's straps before my own." {n}Her voice drops.{/n} "I remember the onion better than some of the battles. I have not eaten one since the Starstone."''',
        c('"What else do you miss?"', "miss"),
        c('"I\'ll bring you one. Afterwards."', "onion")),
-    io("miss", '''"Being tired in the ordinary way. Being wrong about small things, where it did not matter. Rain." {n}A pause.{/n} "Being touched without its meaning anything to anyone but the two people concerned. Gods do not get that. Everything we touch becomes a relic, or a scandal."''',
+    io("miss", '''"Rain against my face. Sleep after a march." {n}The pause lasts longer this time.{/n} "A hand on my skin because someone wanted me. Not a blessing. That has become difficult to find."''',
        c('"Then I\'ll try to be a scandal."', "fear")),
     io("onion", '''"Afterwards." {n}She repeats the word as if weighing it on a scale.{/n} "You say it as though you expect there to be one. I have not decided that, and neither, I think, have you."''',
        c('"No. But I\'m planning for it."', "fear")),
@@ -577,24 +588,25 @@ remote(E + "dream.questions", "Not in any report", [
        c('"That you won\'t come, and I\'ll have been right to go anyway."', "right"),
        c('"That you will, and I won\'t know what to do with it."', "will"),
        c('"Being forgotten wouldn\'t be so bad. Being remembered wrong would."', "wrong")),
-    io("right", '''"Then you understand what I have promised, and what I have not." {n}Her voice is quiet.{/n} "At the Wound, you will choose. So will I."''',
-       c("[Sleep.]")),
-    io("will", '''"Then we will have the same problem, and we will argue about it." {n}Something that is nearly a laugh.{/n} "I find I am looking forward to that more than I should."''',
-       c("[Sleep.]")),
-    io("wrong", '''"Then give them something true to remember." {n}The white begins to thin.{/n} "I will remember this conversation. Sleep, Commander."''',
-       c("[Sleep.]")),
-], requires=(COMMITTED,), forbids=(), delay=48, chapters=(5,))
+    io("right", '''"Then keep going for the reason you would go without me." {n}Her voice comes nearer.{/n} "I came tonight to hear your answer. Yours. I will come again."''',
+       c("[Sleep.]", flags=(PERSONAL,))),
+    io("will", '''"You could begin by letting me find out for myself." {n}A short laugh.{/n} "I sought this conversation, Commander. I mean to return to it."''',
+       c("[Sleep.]", flags=(PERSONAL,))),
+    io("wrong", '''"Then I shall remember what you told me, rather than what your chaplains write." {n}Her voice lingers as the white thins.{/n} "I came for that. Sleep. We will speak again."''',
+       c("[Sleep.]", flags=(PERSONAL,))),
+    io("professional", '''"Then finish them. I will hear the banner's case when you bring it." {n}The white withdraws. The orders are still beside your bed when you wake.{/n}''', c("[Wake.]")),
+], requires=(STARTED, KEY_LATCH, CALLED), forbids=(PERSONAL, DECLINED, CLOSED, HERALD_SPITE), delay=0, chapters=(5,),
+    ForbidOverrides={HERALD_SPITE: HERALD_ACCOUNTED})
 
 
 # --- Chapter 6. The night before Threshold: she has not decided; neither has the Commander. ---------------------------------
 
 remote(E + "dream.eve", "The night before", [
-    nar("open", '''{n}The last camp before Threshold.{/n}''',
+    nar("open", '''{n}At your rest, the Worldwound's light catches the edges of your papers. The final orders still need your seal.{/n}''',
         c("Continue", "o_start", requires=(COMMITTED, E + "cost.buried_to_the_world")),
         c("Continue", "start", forbids=(COMMITTED,)),
         c("Continue", "start", requires=(COMMITTED,), forbids=(E + "cost.buried_to_the_world",))),
-    nar("o_start", '''{n}You conceded, on the platform, that the world would keep its grave. Tonight, in the last camp before Threshold, you find out what that costs in ink.{/n}
-{n}A Commander going into the Wound leaves orders: who commands after, what is to be done with the army, who is to be told. Every Commander in the history of the crusades who has written such orders has hoped, while writing them, that they would be burned unread. You are writing them knowing that they will be read, and obeyed, and that you will have to stand somewhere at the back of a crowd and watch them obeyed, and say nothing.{/n}''',
+    nar("o_start", '''{n}You conceded that, if she brings you back, the world will keep its grave. You write orders for your death: the next command, the army's disposition, the people to be told. If there is a hidden return, you will have to watch those orders obeyed without speaking.{/n}''',
         c("Continue", "o_write")),
     nar("o_write", '''{n}You write the ordinary things first. The dispositions of the army. The debts the crusade owes to merchants who were paid in promises. The names of soldiers who deserve better than they have had. None of it is hard. You have always been good at telling other people what to do.{/n}
 {n}Then you come to the part where a Commander writes something for the people who will mourn, and your pen stops.{/n}''',
@@ -605,23 +617,24 @@ remote(E + "dream.eve", "The night before", [
         c("Continue", "o_seal")),
     nar("o_grand", '''{n}It comes easily, which should worry you. Fire and sacrifice and the dawn of a new age; the Wound closed by the one it was opened to destroy. The chaplains will weep. It is magnificent, and it is a lie by emphasis, and you think of a goddess who will not lie even by emphasis, and you tear it up, and write three lines instead, and they are true.{/n}''',
         c("Continue", "o_seal")),
-    nar("o_blank", '''{n}You leave it blank. Let them fill it with whatever they need; people always do. The dead are not consulted about their eulogies, and you are, in every way that the world will ever be told about, going to be dead.{/n}''',
+    nar("o_blank", '''{n}You leave the space blank. If you die, the chaplains will find their own words. If she answers and you return, you will still have to hear them.{/n}''',
         c("Continue", "o_seal")),
-    nar("o_seal", '''{n}You seal it and give it to the quartermaster, to be opened if the Commander does not come back from the Wound. He takes it the way a man takes something hot. You do not tell him that he will open it either way.{/n}''',
+    nar("o_seal", '''{n}You seal the orders and hand them to the quartermaster, to be opened if the Commander does not return. He takes them carefully. You cannot tell him whether he will need them.{/n}''',
         c('[Go to bed.]', "start")),
-    nar("start", '''{n}The tents are quiet in the last camp before Threshold. Beyond them, the Worldwound stains the sky. You shut your eyes. The dark gives way to white, and her voice reaches you before sleep does.{/n}''',
+    nar("start", '''{n}You lie down with the Worldwound's light against your closed eyes. White replaces it. Her voice reaches you before sleep does.{/n}''',
         c("Continue", "committed", requires=(COMMITTED,)),
         c("Continue", "declined", requires=(DECLINED,), forbids=(COMMITTED,)),
         c("Continue", "unargued", forbids=(COMMITTED, DECLINED, E + "argument_only")),
-        c("Continue", "argued", requires=(E + "argument_only",), forbids=(COMMITTED, DECLINED))),
-    io("argued", '''"Tomorrow." {n}The white is very still tonight.{/n}
+        c("Continue", "argued", requires=(E + "argument_only",), forbids=(COMMITTED, DECLINED, POSTPONED)),
+        c("Continue", "eve.reason", requires=(POSTPONED,), forbids=(COMMITTED, DECLINED))),
+    io("argued", '''"At the Wound." {n}The white is still.{/n}
 "You took the argument and left the rest on the roof, and I have let it lie there. Hear me exactly: the argument stands. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, as you will."''',
        c("Continue", "others")),
-    io("committed", '''"Tomorrow." {n}The white is smaller tonight, as if she were keeping it close.{/n}
-"I conceded the argument, and it stands. But hear me exactly, because tomorrow there will be no time for it. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will."''',
+    io("committed", '''"At the Wound." {n}Her voice stays close.{/n}
+"I conceded the argument, and it stands. But hear me exactly, because at the edge there will be little time. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will."''',
        c("Continue", "others")),
     io("declined", '''"You know why I left your roof." {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}
-"Tomorrow you will stand at the Wound with my banner, and I will be there. Show me. That is all I have left to say to you, and it is not little."''',
+"If you bring my banner to the Wound, I will be there. Show me. That is all I have left to say to you, and it is not little."''',
        c("Continue", "others")),
     io("unargued", '''"You have not brought your case before me. I know what the war has cost you." {n}A pause.{/n} "If you bring my sign to the Wound, make your case there. Briefly. The Worldwound will not wait for us."''',
        c("Continue", "others")),
@@ -634,7 +647,7 @@ remote(E + "dream.eve", "The night before", [
     io("starstone", '''"I do not speak of the Test." {n}At once, and not unkindly: a door closed by someone who has closed it many times.{/n} "Not to my herald, not to my priests, and not to you. What happens there is between the one who goes in and the Stone."
 {n}A pause.{/n} "I will tell you what I did the night before the gorge, which is the nearest thing I have. I ate an onion. I checked the straps on forty sets of armour that were not mine. I slept for an hour, sitting up. And I did not decide anything, because I had already decided, and there was no use in doing it twice."''',
        c('"Then I\'ll do the same."', "same")),
-    io("same", '''"Check your straps," {n}she says.{/n} "And sleep. I will be there in the morning. That much I have decided."''',
+    io("same", '''"Check your straps," {n}she says.{/n} "And sleep. I will be there when you reach the Wound. That much I have decided."''',
        c("[Sleep.]", flags=(EVE_SEEN,))),
     io("if_not", '''"Then you will have died closing the Worldwound, and I will bow my head to it, and mean it." {n}The white does not waver.{/n} "I will not tell you tonight that I would grieve less than I would."''',
        c("[Sleep.]", flags=(EVE_SEEN,))),
@@ -642,5 +655,13 @@ remote(E + "dream.eve", "The night before", [
        c("[Sleep.]", flags=(EVE_SEEN,))),
     io("now", '''"I could. I will not. If I decided tonight, I would be deciding about a Commander who has not yet walked up to the edge." {n}Dry as dust:{/n} "I have met a great many people who were brave the night before."''',
        c("[Sleep.]", flags=(EVE_SEEN,))),
-], requires=(STARTED, KEY_LATCH), forbids=(EVE_SEEN,), delay=0, chapters=(6,),
+    io("eve.reason", '''"We left a question on the platform." {n}Her voice is close, without its court pitch.{/n} "Why me? You have asked for my banner, my intervention. What do you want of me when there is no Wound between us?"''',
+       c('"You kept checking the soldiers behind you. I want to know who takes care of you when the march ends."', "eve.answer", requires=(DREAM_BANNER,)),
+       c('"You told me a truth I hated. I want you beside me even when we disagree."', "eve.answer"),
+       c('"The bridge is enough. Leave the other question."', "eve.professional")),
+    io("eve.answer", '''"I have no intention of making disagreement easy for you." {n}She falls silent, then speaks nearer still.{/n} "But I came back to ask. I wanted an answer that concerned me, and you have given one. When we meet at the Wound, ask me in person."''',
+       c("Continue", "others", flags=(EVE_PERSONAL,))),
+    io("eve.professional", '''"Then we leave it. The argument stands."''', c("Continue", "others")),
+], requires=(STARTED, KEY_LATCH), forbids=(EVE_SEEN, HERALD_SPITE), delay=0, chapters=(6,),
+    ForbidOverrides={HERALD_SPITE: HERALD_ACCOUNTED},
     RequiresAnyGroups=[[BANNER_HELD, ORDER_BANNER]])
