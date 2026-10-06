@@ -1058,6 +1058,10 @@ def integrate(payload):
             # The registered endings narrate RanRomance visits a Trickster-chain Commander never had; the chain's own pages play.
             s["Forbids"].append(CHAIN)
 
+    # Round 2a: own commitment stances, partner continuity and own Last Call entry.
+    from storylines import minagho_chivarro_stance
+    minagho_chivarro_stance.integrate(payload)
+
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
 _LIVE_PRODUCERS = {
