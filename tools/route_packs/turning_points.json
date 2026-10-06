@@ -1,0 +1,33 @@
+{
+  "herrax": {
+    "device_class": "another_character_intervenes",
+    "setting": "Ten Thousand Delights coin arch and locked private floor",
+    "payoff_shape": "madam punishes the would-be successor then admits an unpaid guest; rival serves breakfast",
+    "canon_hooks": [
+      {
+        "guid": "68082e7d83b156f4d9a32d06040a8d29",
+        "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0063.jbp",
+        "key": "0bdaf1f8-0c4d-4cda-8966-6caf0d82547d",
+        "native_excerpt": "\"With this, every arch will recognize you as my favored guest and teleport you here. If you wish to spend the night, have some fun, or restock your supplies, come to me. Don't waste your time on my little crooks.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "3b1d82209acd4c044906fea6ee2d1d29",
+        "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0192.jbp",
+        "key": "1f9b58f8-420d-4eff-b1ac-afafd5f29b04",
+        "native_excerpt": "{n}With a chuckle, the incubus reluctantly confesses.{/n} \"Seize power? Well, I did try... Have you seen Herrax? After our fight, I looked much worse than that. I had to spend a great deal of gold on healers to restore my appearance. Don't let Herrax's scars fool you — she keeps them to remind us what we looked like after she finished with us...\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "d6955c2acf6ae4141966111db0592279",
+        "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0052.jbp",
+        "key": "6dd56d0c-ab0c-490f-a0d0-75fb2fe4330d",
+        "native_excerpt": "\"Indeed, I have several items that were.... forgotten here by our clientele.\" {n}Some of the 'forgotten items' Herrax is selling are stained with blood, and two of the rings bear the characteristic scratches of being cut off a dead body along with the fingers.{/n}",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      4
+    ]
+  }
+}
