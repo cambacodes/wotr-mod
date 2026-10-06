@@ -99,42 +99,770 @@
       "Target": "8f6017d8d3bc5ec46b15773947e80c70",
       "Field": "NativeEpilogueEdits",
       "Outcomes": [
-        "wenduag.trickster.epilogue.pack"
+        "wenduag.trickster.epilogue.native_pack",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.secret_exposed"
       ],
       "Replacements": [
-        "wenduag.trickster.epilogue.native_pack"
+        "wenduag.trickster.epilogue.native_pack",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.secret_exposed"
       ]
     },
     {
       "Target": "86bf0569a9029ae4b8c9d300a41e5739",
       "Field": "NativeEpilogueEdits",
       "Outcomes": [
-        "wenduag.trickster.epilogue.native_commander_back"
+        "wenduag.trickster.epilogue.native_commander_back",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_exposed"
       ],
       "Replacements": [
-        "wenduag.trickster.epilogue.native_commander_back"
+        "wenduag.trickster.epilogue.native_commander_back",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_exposed"
       ]
     },
     {
       "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
       "Field": "NativeEpilogueEdits",
       "Outcomes": [
-        "wenduag.trickster.epilogue.pack",
-        "wenduag.trickster.epilogue.native_commander_back"
+        "wenduag.trickster.epilogue.native_greybor",
+        "wenduag.trickster.epilogue.native_greybor_back",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.secret_exposed.uncommitted"
       ],
       "Replacements": [
         "wenduag.trickster.epilogue.native_greybor",
-        "wenduag.trickster.epilogue.native_greybor_back"
+        "wenduag.trickster.epilogue.native_greybor_back",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dead.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.secret_exposed.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.share_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.share_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.exclusive_pending.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.exclusive_answered.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.secret_kept.uncommitted",
+        "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.secret_exposed.uncommitted"
       ]
     },
     {
       "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
       "Field": "NativeEpilogueEdits",
       "Outcomes": [
-        "wenduag.trickster.epilogue.pack"
+        "wenduag.trickster.epilogue.native_ember",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.secret_exposed"
       ],
       "Replacements": [
-        "wenduag.trickster.epilogue.native_ember"
+        "wenduag.trickster.epilogue.native_ember",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.dead.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.unknown.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.secret_exposed",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.unchosen",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.share_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.share_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.exclusive_pending",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.exclusive_answered",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.secret_kept",
+        "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.secret_exposed"
       ]
     }
   ],
@@ -1456,6 +2184,1730 @@
   "SharedLossGuards": [
     {
       "Outcome": "wenduag.trickster.epilogue.native_commander_back",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dead.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.unknown.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.unknown.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.unknown.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.unknown.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.unknown.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.unknown.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ascent.partner.in_party_dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dead.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.unknown.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.unknown.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.unknown.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.unknown.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.unknown.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.unknown.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_pack.partner.in_party_dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dead.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.unknown.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back.partner.in_party_dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dead.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.unknown.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.unknown.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.unknown.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.unknown.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.unknown.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.unknown.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor.partner.in_party_dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dead.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.unknown.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.dismissed_absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.share_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.share_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.exclusive_pending.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.exclusive_answered.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.secret_kept.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_greybor_back.partner.in_party_dismissed_absent.secret_exposed.uncommitted",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dead.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.unknown.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.unknown.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.unknown.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.unknown.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.unknown.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.unknown.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.dismissed_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_absent.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed.secret_exposed",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.unchosen",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.share_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.share_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.exclusive_pending",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.exclusive_answered",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.secret_kept",
+      "Source": "wenduag.trickster.epilogue.pack"
+    },
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_ember.partner.in_party_dismissed_absent.secret_exposed",
       "Source": "wenduag.trickster.epilogue.pack"
     }
   ]

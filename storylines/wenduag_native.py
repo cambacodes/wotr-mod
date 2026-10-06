@@ -48,6 +48,8 @@ def integrate(payload):
     # eng8-q8b end
     payload["Scenes"].extend(copy.deepcopy(SCENES))
     register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS)
+    from storylines import wenduag_partner_stance
+    wenduag_partner_stance.integrate(payload)
 
 
 # eng8-q8e begin: authored reconciliations of retained partnership, never redemption.

@@ -182,6 +182,25 @@ class ShippedNativeMigrationTests(unittest.TestCase):
         # eng8-q8e end
         for module in (devarra_native, kiana_native, camellia_native, areelu_afterlogue, wenduag_native, galfrey_queen_slide, arueshalae_rounds):
             for cue, expected in module.NATIVE_EPILOGUE_EDITS.items():
+                if module is wenduag_native:
+                    actual = payload["NativeEpilogueEdits"][cue]
+                    originals = [expected, *expected.get("Variants", [])]
+                    variants = [actual, *actual.get("Variants", [])]
+                    self.assertEqual([v["Replacement"] for v in originals],
+                                     [v["Replacement"] for v in variants[:len(originals)]])
+                    for before, after in zip(originals, variants):
+                        self.assertEqual({k: v for k, v in before.items() if k not in ("When", "Variants")},
+                                         {k: v for k, v in after.items() if k not in ("When", "Variants")})
+                    bases = [v["Replacement"] for v in originals]
+                    for variant in variants:
+                        self.assertTrue(any(variant["Replacement"] == base or
+                                            variant["Replacement"].startswith(base + ".partner.") for base in bases))
+                        if ("NativeEpilogueEdits", cue) in rows:
+                            self.assertEqual(variant["When"], ending_when(scenes[variant["Replacement"]]))
+                        else:
+                            self.assertTrue(all(any(set(group) <= set(when) for group in expected["When"])
+                                                for when in variant["When"]))
+                    continue
                 self.assertEqual(payload["NativeEpilogueEdits"][cue], final_spec("NativeEpilogueEdits", cue, expected), cue)
         for cue, expected in camellia_native.NATIVE_EPILOGUE_SUPPRESSIONS.items():
             self.assertEqual(payload["NativeEpilogueSuppressions"][cue], final_spec("NativeEpilogueSuppressions", cue, expected), cue)
