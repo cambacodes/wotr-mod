@@ -112,6 +112,46 @@ PRESENCES = {HUB: dict(Unit="e46927657a79db64ea30758db3f42bb9", Area="2570015799
 # eng7-f6d end
 
 
+PATH_PROSE = {'Angel': {'boundary': '{n}She sets down the pen.{/n} "The men trust what they see in you. That makes the orders no '
+                       'lighter. I would like one evening when we need not speak for them."',
+           'stayed': '{n}She checks the last seal and turns her chair toward you.{/n} "There. Sit closer. I have spent '
+                     'enough of the evening looking at a map."'},
+ 'Azata': {'boundary': '{n}She smooths the folded dispatch.{/n} "This is a ration order. If the seal is broken, a '
+                       'hungry quartermaster will call it a forgery. Make your birds from my scrap paper."',
+           'stayed': '{n}She puts a spoiled draft beside your elbow.{/n} "That one may fly. This one goes to the '
+                     'supply wagons." {n}Her mouth curves.{/n} "You can amuse me after it is signed."'},
+ 'Aeon': {'boundary': '{n}Her hand rests on the ledger.{/n} "You altered Drezen\'s history. I must still answer for '
+                      'the orders I give now. When you speak to me, do not look through me at a woman you expected to '
+                      'find."',
+          'stayed': '{n}She opens today\'s muster.{/n} "These men are here. Their next march is our concern." {n}She '
+                    'brings her chair beside yours.{/n} "So is this conversation. Begin with what you want to say '
+                    'today."'},
+ 'Trickster': {'boundary': '{n}She taps the impossible date.{/n} "Explain this before it reaches the garrison. They '
+                           'must know which orders to obey. If you wanted to see me, you could have knocked."',
+               'stayed': '{n}She corrects the date and keeps the decree.{/n} "The clerk will have my correction. You '
+                         'may have the chair. Try to leave both where they belong."'},
+ 'Demon': {'boundary': '{n}She draws back from your wrist.{/n} "The men outside heard the anger in your voice. I will '
+                       'not have it brought into my council and called strength. Tell me what happened before we speak '
+                       'of anything else."',
+           'stayed': '{n}She stays standing beside the dispatch table.{/n} "I shall hear the report. We are at war, '
+                     'and I need to know what you intend. Do not mistake my staying for approval."'},
+ 'Devil': {'boundary': '{n}She leaves the contract untouched.{/n} "We chose that night. I shall not deny it. Nor shall '
+                       'I sign away my judgment because of it. Speak plainly; you have no need of a contract to tell '
+                       'me what you want."',
+           'stayed': '{n}She returns the contract.{/n} "I have heard you. The orders still need my seal." {n}She takes '
+                     'her pen.{/n} "What follows between us is not settled by what happened before."'},
+ 'Dragon': {'boundary': '{n}She regards you, then the map.{/n} "The men will stare. Let them. I need to know whether '
+                        'the Commander who gave this order still intends to keep it."',
+            'stayed': '{n}She moves the map between your chairs.{/n} "Show me how you intend to lead the column. '
+                      'Afterwards you may tell me what the change feels like. I have been waiting to ask."'},
+ 'Legend': {'boundary': '{n}She keeps your hand, feeling your pulse.{/n} "You gave up power the army had learned to '
+                        'depend on. We shall have to change its plans. I would also like to know whether you have '
+                        'slept."',
+            'stayed': '{n}She sets a chair beside hers.{/n} "Sit. The dispatch can wait while you tell me." {n}Her '
+                      'fingers stay around yours.{/n} "Tomorrow I shall expect the Commander. Tonight I should like an '
+                      'answer from you."'}}
+
+
 def path_scene(path, opening, extra_requires=(), extra_forbids=()):
     key = path.lower()
     SCENES.append(scene(
@@ -122,23 +162,14 @@ def path_scene(path, opening, extra_requires=(), extra_forbids=()):
         '"May I keep you company while you work?"',
         [
             n("start", "Galfrey", opening,
-              c('"I will answer as your partner, not as your commander."', "boundary"),
-              c('"You can stop here. I will not turn this into another duty."', "leave")),
-            n("boundary", "Galfrey", '''{n}Galfrey studies you for a long moment. The discipline in her posture eases by a fraction, not because the question is settled, but because you have left it hers to settle.{/n}
-"That distinction matters. People hear the crown before they hear me. Sometimes I do too."
-{n}She takes your hand, thumb resting against your pulse. Her gaze stays on your face as she brings your knuckles to her lips, a deliberate, unhurried kiss.{/n}
-"I have wanted this. I am still allowed to want it on my own terms. Tonight, I want you to stay while I finish these papers. Afterward, if I still want your mouth, I will ask for it plainly."
-{n}The warmth in her smile is private, but not apologetic.{/n}
-"Can you bear to be wanted without making a conquest of it?"''',
-              c('"I can stay while you finish. Then you can decide whether you want me near."', "stayed"),
-              c('"I will give you space to decide."', "leave")),
-            n("leave", "Galfrey", '''{n}She lets your hand go without anger.{/n}
-"Thank you. There is enough in my life that turns a request into an obligation. I will not add us to that list."
-{n}She returns to the papers. The conversation ends without a hidden penalty or a promise she did not make.{/n}''',
+              c('"Say what you came to say."' if path in ('Demon', 'Devil') else '"I\'ll stay while you finish."', "boundary"),
+              c('"I\'ll leave you to the orders."', "leave")),
+            n("boundary", "Galfrey", PATH_PROSE[path]['boundary'],
+              c('"I hear you."' if path in ('Demon', 'Devil') else '"Go on."', "stayed"),
+              c('"We can speak another time."', "leave")),
+            n("leave", "Galfrey", '{n}Galfrey draws the next dispatch toward her and breaks its seal.{/n} "Another time, then. I have men waiting for these orders."',
               c("Leave her to her work.", abort=True)),
-            n("stayed", "Galfrey", '''{n}She considers the offer, then moves one paper aside to clear a place for you.{/n}
-"Stay, then. It is company, not an answer to every question between us."
-{n}She finishes the work at her own pace. When the last seal is set, she keeps your hand in hers and decides whether to kiss you again.{/n}''',
+            n("stayed", "Galfrey", PATH_PROSE[path]['stayed'],
               c("Return to the campaign.")),
         ],
         requires=("galfrey.native_active", f"path.{key}", *extra_requires),
@@ -151,12 +182,9 @@ def path_scene(path, opening, extra_requires=(), extra_forbids=()):
     ))
 
 
-path_scene("Angel", '''{n}Galfrey finishes signing the last order, then sets down the pen with the care of someone putting away a blade.{/n}
-"The soldiers know what I expect of them. I am learning that the person beside me should not have to guess."''')
-path_scene("Azata", '''{n}Galfrey catches you folding a dispatch into a paper bird. She unfolds it and saves the seal before allowing herself a laugh.{/n}
-"You make a game of everything. I need to know you can keep a promise when nobody is watching."''')
-path_scene("Aeon", '''{n}Galfrey closes the ledger between you. Her finger remains on the line recording her authority.{/n}
-"You changed Drezen's past. That does not give you jurisdiction over what I feel, or what I choose to do with it."''', extra_requires=("galfrey.aeon_history_changed",))
+path_scene("Angel", '{n}Galfrey signs the last marching order and sets down her pen.{/n} "The forward companies leave at dawn. I hope you brought something else to discuss."')
+path_scene("Azata", '{n}Galfrey takes the half-folded dispatch from your hands and smooths it beside its broken seal.{/n} "Commander. The supply wagons are waiting for this."')
+path_scene("Aeon", '{n}She closes the ledger, her finger still on the line recording her authority.{/n} "Drezen has changed. The orders on this desk still need my signature."', extra_requires=("galfrey.aeon_history_changed",))
 TRICKSTER_MISSED_COURTSHIP_PLAN = {
     "status": "unimplemented and required",
     "native_anchor_candidate": "GalfreyArrives/Answer_0001 invites Galfrey to the Commander's military and political council; the Trickster has separate native council stages.",
@@ -165,16 +193,11 @@ TRICKSTER_MISSED_COURTSHIP_PLAN = {
 }
 
 
-path_scene("Trickster", '''{n}A decree on Galfrey's desk bears her seal and an impossible date. She turns it toward you, eyes sharp with suspicion rather than amusement.{/n}
-"You could make this disappear with a joke. I need to know whether you can leave the truth standing when the lie would benefit you."''')
-path_scene("Demon", '''{n}Galfrey watches the anger leave your hands before reaching for you. Her fingers close around your wrist, steady but not submissive.{/n}
-"The force of your path is plain. I will not call it safety by pretending it is harmless. Can you stop when I ask, even when no one else can make you?"''')
-path_scene("Devil", '''{n}Galfrey sees the contract beside the royal papers and pushes it back without touching the signature line.{/n}
-"The night we chose does not settle what comes next. I will not pretend our paths are compatible. I am asking whether you want to speak with me before either of us decides what must end."''', extra_requires=("galfrey.devil_after_sex",), extra_forbids=("galfrey.devil_incompatibility_seen",))
-path_scene("Dragon", '''{n}Galfrey's gaze lingers on the traces of power your transformation has left, then returns to your eyes.{/n}
-"You have become something the old laws cannot easily describe. I need to know you still understand a promise between two people."''')
-path_scene("Legend", '''{n}The room feels smaller without the mythic storm around you. Galfrey notices the quiet and reaches for your hand, not your title.{/n}
-"Whatever remains after the war, I want it chosen in daylight. I will not have my life decided for me as a reward."''')
+path_scene("Trickster", '{n}She turns a decree toward you. It bears her seal and an impossible date.{/n} "My seal. Your handiwork, I presume?"')
+path_scene("Demon", '{n}Galfrey watches your clenched hands. When she takes your wrist, her grip is firm.{/n} "What happened, Commander?"')
+path_scene("Devil", '{n}She pushes the contract away from the royal papers without touching its signature line.{/n} "A contract? I had hoped you had brought news from the front."', extra_requires=("galfrey.devil_after_sex",), extra_forbids=("galfrey.devil_incompatibility_seen",))
+path_scene("Dragon", '{n}Her gaze follows the traces of your transformation, then returns to your face.{/n} "The scouts\' reports are here. Can you still use that chair?"')
+path_scene("Legend", '{n}She studies you a moment, then offers her hand across the dispatches.{/n} "You have been difficult to find, Commander. Sit down."')
 
 
 # eng7-f6d: draft-only binding; expansion.py does not import this module.

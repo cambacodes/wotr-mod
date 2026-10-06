@@ -93,22 +93,37 @@ class DraftContractTests(unittest.TestCase):
         from tools import player_text_lint, text_structure_lint
         for name in ("galfrey_all_path_continuation", "terendelev_continuation"):
             story = {"Scenes": self.inventory[name]["scenes"]}
-            self.assertTrue(player_text_lint.check(story, draft=True)["review"])
+            reviews = player_text_lint.check(story, draft=True)["review"]
+            if name == "galfrey_all_path_continuation":
+                self.assertEqual(reviews, [])  # Reviewed Galfrey prose is repaired, still dormant.
+            else:
+                self.assertTrue(reviews)
         result = text_structure_lint.check({"Scenes": self.inventory["terendelev_continuation"]["scenes"]}, draft=True)
         self.assertEqual(result["hard"], [])
 
     def test_every_mapped_draft_text_finding_has_a_diagnostic(self):
-        import json
+        import copy, json
         from pathlib import Path
         from tools import player_text_lint, text_structure_lint
         manuscript = {"Scenes": [s for d in self.inventory.values() for s in d.get("scenes", [])]}
         player = player_text_lint.check(manuscript, draft=True)["review"]
         structure = text_structure_lint.check(manuscript, draft=True)
+        galfrey = {s["Id"]: s for s in self.inventory["galfrey_all_path_continuation"]["scenes"]}
         findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text(encoding="utf-8"))["findings"]
         for f in findings:
             if f.get("item_id") not in {"E-Q7-20", "E-Q7-21"} or not f["snapshot_evidence"].get("draft_finding"):
                 continue
             if f["item_id"] == "E-Q7-21":
-                self.assertTrue(any(r["scene"] == f["scene"] for r in player), f["id"])
+                if f["scene"] in galfrey:
+                    self.assertFalse(any(r["scene"] == f["scene"] for r in player), f["id"])
+                    # Keep a negative for every repaired path: the old assurance
+                    # remains detectable if it is reintroduced into that scene.
+                    broken = copy.deepcopy(galfrey[f["scene"]])
+                    broken["Nodes"][0]["Text"] += "\n{n}There are no hidden penalties.{/n}"
+                    diagnostics = player_text_lint.check({"Scenes": [broken]}, draft=True)["review"]
+                    self.assertTrue(any(r["scene"] == f["scene"] and r["code"] == "tooling-residue"
+                                        for r in diagnostics), f["id"])
+                else:
+                    self.assertTrue(any(r["scene"] == f["scene"] for r in player), f["id"])
             else:
                 self.assertFalse(any(r["scene"] == f["scene"] for r in structure["hard"]), f["id"])
