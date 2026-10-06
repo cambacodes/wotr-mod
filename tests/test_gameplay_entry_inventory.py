@@ -14,7 +14,7 @@ class GameplayEntryInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
-        cls.contract = json.loads((ROOT / 'tools/gameplay_entry_inventory_contracts.json').read_text())
+        cls.contract = json.loads((ROOT / 'tools/gameplay_entry_inventory_contracts.json').read_text(encoding="utf-8"))
 
     def test_production_entries_and_helpers(self):
         self.assertEqual([], hub_attachment_lint.gameplay_entry_lint(self.story))
@@ -49,16 +49,16 @@ class GameplayEntryInventoryTests(unittest.TestCase):
             for name in ('Program', 'CamelliaTricksterTests', 'NenioTricksterTests', 'HorzalahTricksterTests'):
                 (dest / (name + '.cs')).write_bytes((ROOT / 'tests' / (name + '.cs')).read_bytes())
             program = dest / 'Program.cs'
-            original = program.read_text()
+            original = program.read_text(encoding="utf-8")
             for witness in ('Rules.EnterNode(node, state)', 'Rules.ChoiceAvailable(c, state)',
                             'Rules.PaymentExitAvailable(node, state)',
                             'next.CrusadeResources[cost.Resource] = balance + cost.Amount'):
-                program.write_text(original.replace(witness, 'REMOVED', 1))
+                program.write_text(original.replace(witness, 'REMOVED', 1), encoding="utf-8")
                 self.assertTrue(acceptance_walker_inventory.lint(temp), witness)
-            program.write_text(original)
+            program.write_text(original, encoding="utf-8")
             for route in acceptance_walker_inventory.ROUTES:
                 path = dest / (route + 'TricksterTests.cs')
-                source = path.read_text()
-                path.write_text(source.replace('Program.WalkVia(scene, w, node, index)', 'Program.Walk(scene, w)'))
+                source = path.read_text(encoding="utf-8")
+                path.write_text(source.replace('Program.WalkVia(scene, w, node, index)', 'Program.Walk(scene, w)'), encoding="utf-8")
                 self.assertTrue(acceptance_walker_inventory.lint(temp), route)
-                path.write_text(source)
+                path.write_text(source, encoding="utf-8")

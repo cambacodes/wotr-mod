@@ -19,7 +19,7 @@ HUB_REACTIONS = {**dict.fromkeys(HUBS, REACTIONS), CH6_HUB: REACTIONS[:1]}
 
 # eng8-q8f: manual reading is never an in-world entry witness.
 def gameplay_entry_lint(story):
-    contract = json.loads((Path(__file__).with_name('gameplay_entry_inventory_contracts.json')).read_text())
+    contract = json.loads((Path(__file__).with_name('gameplay_entry_inventory_contracts.json')).read_text(encoding="utf-8"))
     scenes = {s['Id']: s for s in story['Scenes']}
     if (contract['scope'] not in story.get('Relationships', {})
             and not any(s.get('Relationship') == contract['scope'] for s in scenes.values())):

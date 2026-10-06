@@ -15,7 +15,7 @@ class LeftTricksterConsumerLintTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8"))
-        cls.contract = json.loads((ROOT / "tools/left_trickster_consumer_contracts.json").read_text())
+        cls.contract = json.loads((ROOT / "tools/left_trickster_consumer_contracts.json").read_text(encoding="utf-8"))
 
     def test_all_registered_consumers_and_native_twins_are_guarded(self):
         self.assertEqual(earned_presence_lint.left_trickster_consumers(self.story), [])

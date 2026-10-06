@@ -17,7 +17,7 @@ class HarnessFixtureSetupTests(unittest.TestCase):
             # Compile only the policy half of the runtime probe, without Unity/game types.
             probe = (ROOT / "harness/src/ProductionPresenceProbe.cs").read_text(encoding="utf-8").split("    internal sealed partial class HarnessRunner")[0]
             probe = "\n".join(line for line in probe.splitlines() if not line.startswith("using Kingmaker") and line != "using UnityEngine;") + "\n}\n"
-            (temp / "ProductionPolicy.cs").write_text(probe)
+            (temp / "ProductionPolicy.cs").write_text(probe, encoding="utf-8")
             # F5 adds case validation to HarnessPlan; compile its real game-free
             # model alongside the F7 policy, rather than stubbing the dependency.
             cases = (ROOT / 'harness/Probes/NativeEpilogueInventoryProbe.cs').read_text(encoding='utf-8')
@@ -33,7 +33,7 @@ class HarnessFixtureSetupTests(unittest.TestCase):
             project.write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType>'
                                '<TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable></PropertyGroup>'
                                '<ItemGroup>' + links + '<Reference Include="Newtonsoft.Json"><HintPath>'
-                               + str(newtonsoft) + '</HintPath></Reference></ItemGroup></Project>')
+                               + str(newtonsoft) + '</HintPath></Reference></ItemGroup></Project>', encoding="utf-8")
             (temp / "Program.cs").write_text('''using System;
 using System.Linq;
 using RRT.TestHarness;
@@ -78,7 +78,7 @@ if (!r.Passed) throw new Exception("matching reload rejected");
 r.ProductionAfterReload=new ProductionPresenceProbe { Wanted=true, ActorId="different", WalkableGap=0.1f, Drift=0.1f, ApproachDistance=1f, Clickable=true };
 r.Evaluate(); if (r.Passed) throw new Exception("changed actor accepted");
 Console.WriteLine("PASS fixture setup and production observation controls");
-''')
+''', encoding="utf-8")
             env = dict(os.environ)
             env.pop("BaseIntermediateOutputPath", None)
             env.pop("BaseOutputPath", None)

@@ -43,8 +43,8 @@ def main():
                        RRT_GAME_DIR='/wrath', RRT_TEST_BUILD_ROOT=str(temp / 'build'),
                        RRT_TEST_STORY=str(ROOT / 'development/Story.json'))
             story_path = temp / 'Story.json'
-            story = json.loads((ROOT / 'development/Story.json').read_text())
-            story_path.write_text(json.dumps(story))
+            story = json.loads((ROOT / 'development/Story.json').read_text(encoding="utf-8"))
+            story_path.write_text(json.dumps(story), encoding="utf-8")
 
             def command(cmd):
                 start = time.perf_counter()
@@ -62,7 +62,7 @@ def main():
                     if failed and 'Ran ' in receipt and 'FAILED (' in receipt:
                         assert 'FAIL:' in receipt or 'AssertionError' in receipt, (name, 'infrastructure error', receipt)
                 evidence.append(dict(mutation=name, results=results, scope=scope, fast_detector=detector))
-                args.json.write_text(json.dumps(evidence, indent=2) + '\n')
+                args.json.write_text(json.dumps(evidence, indent=2) + '\n', encoding="utf-8")
                 print(name + ': expected outcomes confirmed', flush=True)
 
             def python_case(module, method, setup):
@@ -125,7 +125,7 @@ def main():
                         scene['Id'] = sid + '.wrong'
                         changed['ForesightConsumers'][scene['Id']] = changed['ForesightConsumers'].pop(sid)
                         name = 'consumer: rename scene and registry together'
-                    story_path.write_text(json.dumps(changed))
+                    story_path.write_text(json.dumps(changed), encoding="utf-8")
                     setup = ('import copy,json; from pathlib import Path; from tests import test_foresight_echo as t; '
                         'consumer_fixture=json.loads(Path(' + repr(str(story_path)) + ').read_text()); '
                         't.fresh_story=lambda:copy.deepcopy(consumer_fixture); '
@@ -138,7 +138,7 @@ def main():
                     record(name, dict(generator_oracle=old, independent_contract=new),
                            dict(generator_oracle=False, independent_contract=True),
                            ['storylines/foresight.py'], 'tests.test_foresight_echo')
-                path.write_bytes(original); story_path.write_text(json.dumps(story))
+                path.write_bytes(original); story_path.write_text(json.dumps(story), encoding="utf-8")
                 if args.only == 'consumer':
                     return 0
 
@@ -222,10 +222,10 @@ def main():
                 changed = json.loads(json.dumps(story))
                 for edit in changed['NativeAnswerEdits'].values():
                     if edit['Relationship']=='kiana': edit['When']=groups
-                story_path.write_text(json.dumps(changed))
+                story_path.write_text(json.dumps(changed), encoding="utf-8")
                 record(name, dict(self_reference=old, runtime=rules('KianaNativeReconciliationTests')),
                        dict(self_reference=False,runtime=True), ['storylines/kiana_native.py'], 'KianaNativeReconciliationTests')
-            story_path.write_text(json.dumps(story))
+            story_path.write_text(json.dumps(story), encoding="utf-8")
             source = scratch / 'src/Story.cs'
             source_bytes = source.read_bytes()
             for name, old, new in (
@@ -260,7 +260,7 @@ def main():
                     changed = json.loads(json.dumps(story))
                     rel = changed['Relationships'][route]
                     rel['StartedFlag'],rel[field] = rel[field],rel['StartedFlag']
-                    story_path.write_text(json.dumps(changed))
+                    story_path.write_text(json.dumps(changed), encoding="utf-8")
                     record(route+': swap StartedFlag/'+field, dict(retained=rules(suite)), dict(retained=True),
                            ['storylines/'+route+'_trickster.py'], suite)
         finally:

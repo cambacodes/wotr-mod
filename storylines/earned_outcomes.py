@@ -15,7 +15,7 @@ from tools.crossroute_checks import late_commitment as policy
 from tools.crossroute_checks.common import Proof, blocks, lit, scene_context, dependencies, verify
 
 CONTRACTS = json.loads((Path(__file__).resolve().parents[1] /
-                       "tools/earned_outcome_inventory_contracts.json").read_text())
+                       "tools/earned_outcome_inventory_contracts.json").read_text(encoding="utf-8"))
 
 
 def integrate(payload):

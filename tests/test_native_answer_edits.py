@@ -79,7 +79,7 @@ class NativeAnswerContractTests(unittest.TestCase):
             temp = Path(directory)
             for name in ("fixtures", "runtime"):
                 shutil.copyfile(ROOT / ("tests/native_f1_" + name + ".cs.txt"), temp / (name + ".cs"))
-            (temp / "native.json").write_text(json.dumps({g: record["data"] for g, record in self.found.items()}))
+            (temp / "native.json").write_text(json.dumps({g: record["data"] for g, record in self.found.items()}), encoding="utf-8")
             sources = ("Story.cs", "NativeAnswerEdit.cs", "NativeEpilogueEdit.cs", "NativeQ3Recovery.cs", "NativeGate.cs", "ParentEndingGuard.cs")
             links = ''.join(f'<Compile Include="{ROOT / "src" / name}" />' for name in sources)
             references = ''.join(f'<Reference Include="{p.stem}"><HintPath>{p}</HintPath><Private>false</Private></Reference>'
@@ -89,7 +89,7 @@ class NativeAnswerContractTests(unittest.TestCase):
             project = temp / "Runtime.csproj"
             project.write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType>'
                 '<TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable></PropertyGroup><ItemGroup>'
-                + links + references + '</ItemGroup></Project>')
+                + links + references + '</ItemGroup></Project>', encoding="utf-8")
             result = subprocess.run(["dotnet", "run", "--project", str(project), "-c", "Release", "--", str(game_dir()), str(temp / "native.json")],
                 cwd=temp, env=dict(os.environ, DOTNET_CLI_TELEMETRY_OPTOUT="1"), text=True,
                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)

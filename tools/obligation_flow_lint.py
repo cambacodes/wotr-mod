@@ -161,7 +161,7 @@ def lint(story, contracts=None, drafts=None):
 
 # eng8-q8h begin: retained save graphs are not live successful plans.
 def rescue_endpoint_errors(story, contracts=None):
-    contracts = contracts or json.loads(Path(__file__).with_name("rescue_endpoint_inventory_contracts.json").read_text())
+    contracts = contracts or json.loads(Path(__file__).with_name("rescue_endpoint_inventory_contracts.json").read_text(encoding="utf-8"))
     scenes = {s["Id"]: s for s in story.get("Scenes", [])}
     errors = []
     for sid in contracts["retired_offers"]:

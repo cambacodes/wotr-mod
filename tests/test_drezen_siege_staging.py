@@ -88,7 +88,7 @@ class DrezenSiegeStagingTests(unittest.TestCase):
         self.assertEqual({f["node"] for f in findings(story)}, {"start"})
 
     def test_generated_mapped_scene_uses_map_and_original_mutation_fails(self):
-        story = json.loads(Path(__file__).resolve().parents[1].joinpath("development/Story.json").read_text())
+        story = json.loads(Path(__file__).resolve().parents[1].joinpath("development/Story.json").read_text(encoding="utf-8"))
         scene = copy.deepcopy(next(s for s in story["Scenes"] if s["Id"] == "wenduag.trickster.early.walls"))
         minimal = {"Relationships": {"wenduag": {"StartedFlag": "wenduag.started", "ClosedFlag": "wenduag.closed", "CommittedFlag": "wenduag.committed"}}, "Scenes": [scene]}
         self.assertEqual(findings(minimal), [])

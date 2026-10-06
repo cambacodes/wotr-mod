@@ -1014,7 +1014,7 @@ s("ending_aeon", "A life not remembered", "AeonEpilogue", 0, "", [
 
 
 def make_story():
-    etudes = json.loads((ROOT / "data/etudes.json").read_text())
+    etudes = json.loads((ROOT / "data/etudes.json").read_text(encoding="utf-8"))
     aliases = {
         "anevia_dead": "AneviaDead", "irabeth_dead": "IrabethDead",
         "anevia_gone": "AneviaGone", "irabeth_gone": "IrabethGone",

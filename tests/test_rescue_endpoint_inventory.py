@@ -12,8 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 class RescueEndpointInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.contracts = json.loads((ROOT / 'tools/rescue_endpoint_inventory_contracts.json').read_text())
-        payload = json.loads((ROOT / 'development/Story.json').read_text())
+        cls.contracts = json.loads((ROOT / 'tools/rescue_endpoint_inventory_contracts.json').read_text(encoding="utf-8"))
+        payload = json.loads((ROOT / 'development/Story.json').read_text(encoding="utf-8"))
         ids = set(cls.contracts['retired_offers']) | set(cls.contracts['live_plan'].values())
         cls.story = {'Scenes': [s for s in payload['Scenes'] if s['Id'] in ids]}
 

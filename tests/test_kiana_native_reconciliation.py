@@ -68,11 +68,11 @@ class KianaNativeArchiveTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='rrt-eng7-f6b-native-') as directory:
             temp = Path(directory)
             shutil.copyfile(ROOT / 'tests/native_f6b_runtime.cs.txt', temp / 'Runtime.cs')
-            (temp / 'native.json').write_text(json.dumps({g: r['data'] for g, r in self.found.items()}))
+            (temp / 'native.json').write_text(json.dumps({g: r['data'] for g, r in self.found.items()}), encoding="utf-8")
             (temp / 'story.json').write_text(json.dumps(dict(Scenes=kiana_native.SCENES,
                 Relationships={'kiana': dict(StartedFlag='kiana.started', ClosedFlag='kiana.closed', CommittedFlag='kiana.committed')},
                 NativeEpilogueEdits=kiana_native.NATIVE_EPILOGUE_EDITS,
-                Derived={'trickster.now': [['trickster', '!legend']]})))
+                Derived={'trickster.now': [['trickster', '!legend']]})), encoding="utf-8")
             sources = ['Story.cs', 'NativeEpilogueEdit.cs', 'NativeCueTextEdit.cs', 'NativeQ3Recovery.cs', 'ParentEndingGuard.cs']
             links = ''.join(f'<Compile Include="{ROOT / "src" / name}" />' for name in sources)
             refs = ''.join(f'<Reference Include="{p.stem}"><HintPath>{p}</HintPath><Private>false</Private></Reference>'
@@ -82,7 +82,7 @@ class KianaNativeArchiveTests(unittest.TestCase):
             project = temp / 'Runtime.csproj'
             project.write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType>'
                               '<TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable></PropertyGroup><ItemGroup>'
-                              + links + refs + '</ItemGroup></Project>')
+                              + links + refs + '</ItemGroup></Project>', encoding="utf-8")
             result = subprocess.run(['dotnet', 'run', '--project', str(project), '-c', 'Release', '--', str(game_dir()),
                                      str(temp / 'native.json'), str(temp / 'story.json')], cwd=temp,
                                     env=dict(os.environ, DOTNET_CLI_TELEMETRY_OPTOUT='1'), text=True,

@@ -21,7 +21,7 @@ NEGATIVE = re.compile(r"(?:^|[._])(?:lost|loss|apart|unfinished|refused|declined
 # authored public repair. nenio_trickster.py: TAMPERED contaminates the control;
 # REPLICATED records the already-authored replication. These are readings of
 # shipped conditions, not new reconciliation requirements or mechanics.
-CONTRACTS = json.loads((Path(__file__).resolve().parents[1] / "earned_outcome_inventory_contracts.json").read_text())
+CONTRACTS = json.loads((Path(__file__).resolve().parents[1] / "earned_outcome_inventory_contracts.json").read_text(encoding="utf-8"))
 AUDITED_ELIGIBILITY = {k: tuple(v) for k, v in CONTRACTS["refusal_control"].items()}
 
 
@@ -141,7 +141,7 @@ def acceptance_inventory_check(model, blocks, proof):
     out = []
     choices = {(b.scene["Id"], b.node["Id"], b.slot): b for b in blocks if b.slot.startswith("choice")}
     # eng8-q8h begin: readiness must not prove acceptance; consumers must be feasible.
-    inventory = json.loads((Path(__file__).resolve().parents[1] / "late_acceptance_inventory2_contracts.json").read_text())
+    inventory = json.loads((Path(__file__).resolve().parents[1] / "late_acceptance_inventory2_contracts.json").read_text(encoding="utf-8"))
     for key, groups in inventory["acceptance"].items():
         route = key.split(".")[0]
         if route not in model.rels:

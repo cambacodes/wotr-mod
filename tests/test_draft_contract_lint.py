@@ -21,7 +21,7 @@ class DraftContractTests(unittest.TestCase):
             path = Path(scratch) / 'drafts.json'
             broken = {'draft': {'scenes': [{'Id': 'draft', 'Remote': True, 'Nodes': [
                 {'Id': 'start', 'Choices': [{'Next': 'lost'}]}]}]}}
-            path.write_text(json.dumps(dict(root=str(lint.ROOT.resolve()), modules=broken)))
+            path.write_text(json.dumps(dict(root=str(lint.ROOT.resolve()), modules=broken)), encoding="utf-8")
             with patch.dict(lint.os.environ, RRT_GATE_DRAFT_INVENTORY=str(path)):
                 first = lint.inventory()
                 self.assertTrue(any(r['code'] == 'missing-target' for r in lint.check(first)))

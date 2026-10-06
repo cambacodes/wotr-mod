@@ -319,7 +319,7 @@ class ReportingTests(unittest.TestCase):
     def test_strict_baseline_and_new_text(self):
         with tempfile.TemporaryDirectory(prefix="rrt-crossroute-") as tmp:
             story, baseline, report, text = [Path(tmp) / name for name in ("Story.json", "baseline.json", "report.json", "report.txt")]
-            story.write_text(json.dumps(fixture("{n}Seelah stands by the fire.{/n}")))
+            story.write_text(json.dumps(fixture("{n}Seelah stands by the fire.{/n}")), encoding="utf-8")
             args = ["--story", str(story), "--baseline", str(baseline), "--json", str(report), "--text", str(text)]
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(lint.main(args), 0)
@@ -328,7 +328,7 @@ class ReportingTests(unittest.TestCase):
                 self.assertEqual(lint.main(args + ["--strict"]), 0)
                 data = json.loads(story.read_text(encoding="utf-8"))
                 data["Scenes"][0]["Nodes"][0]["Text"] += " A different unguarded beat."
-                story.write_text(json.dumps(data))
+                story.write_text(json.dumps(data), encoding="utf-8")
                 self.assertEqual(lint.main(args + ["--strict"]), 1)
             self.assertIn("L1", text.read_text(encoding="utf-8"))
             self.assertTrue(json.loads(report.read_text(encoding="utf-8"))["new_findings"])

@@ -14,8 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 class LateAcceptanceInventory2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / 'development/Story.json').read_text())
-        cls.inventory = json.loads((ROOT / 'tools/late_acceptance_inventory2_contracts.json').read_text())
+        cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding="utf-8"))
+        cls.inventory = json.loads((ROOT / 'tools/late_acceptance_inventory2_contracts.json').read_text(encoding="utf-8"))
 
     def errors(self, story):
         model = V.Model(story)

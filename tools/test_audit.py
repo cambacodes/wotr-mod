@@ -104,7 +104,7 @@ def main():
                 output = Path(scratch) / (str(i) + '.json')
                 run = subprocess.run([sys.executable, '-B', str(Path(__file__).resolve()), 'python',
                     '--json', str(output), '--tests', *names], capture_output=True, text=True)
-                return run, json.loads(output.read_text()) if output.exists() else None
+                return run, json.loads(output.read_text(encoding="utf-8")) if output.exists() else None
             with ThreadPoolExecutor(max_workers=count) as pool:
                 results = list(pool.map(run_batch, enumerate(batches)))
             for run, result in results:
@@ -150,7 +150,7 @@ def main():
                 with log.open('w') as out:
                     run = subprocess.run(command, cwd=ROOT, stdout=out, stderr=subprocess.STDOUT)
                 rows.append(dict(lint=path.name, seconds=time.perf_counter() - begin,
-                                 exit=run.returncode, tail=log.read_text(errors='replace').splitlines()[-4:]))
+                                 exit=run.returncode, tail=log.read_text(errors='replace', encoding="utf-8").splitlines()[-4:]))
                 print(f'{path.name}: {rows[-1]["seconds"]:.3f}s (exit {run.returncode})', flush=True)
         data = dict(seconds=time.perf_counter() - started, rows=rows)
         code = 0  # an inventory records existing advisory debt; gate policies are unchanged

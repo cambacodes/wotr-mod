@@ -66,7 +66,7 @@ class PlayerTextInventory2Tests(unittest.TestCase):
     def test_reviewed_continuation_is_exact_not_a_blanket_exception(self):
         sid = "targona.the_unscheduled_door"
         # Exercise the recorded exception even after the live letter is corrected.
-        policy = json.loads(player.EXCEPTIONS.read_text())
+        policy = json.loads(player.EXCEPTIONS.read_text(encoding="utf-8"))
         text = next(e["text"] for e in policy["eng8-q8c"]["speech_boundary_exceptions"]
                     if e["scene"] == sid and e["location"] == "start")
         self.assertFalse(structure.check(payload(text, sid))["review"])
@@ -75,7 +75,7 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         self.assertTrue(structure.check(payload(text, sid), exceptions={})["review"])
 
     def test_meaningful_age_distinctions_require_whole_surface_review(self):
-        policy = json.loads(player.EXCEPTIONS.read_text())
+        policy = json.loads(player.EXCEPTIONS.read_text(encoding="utf-8"))
         for exception in [e for e in policy["exceptions"] if e["code"] == "age-certification"]:
             story = payload(exception["text"], exception["scene"], exception["location"])
             self.assertFalse([r for r in player.check(story)["review"] if r["code"] == "age-certification"])

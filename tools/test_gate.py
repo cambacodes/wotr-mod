@@ -64,9 +64,9 @@ def main():
                                         stdout=out, stderr=subprocess.STDOUT)
             elapsed = time.perf_counter() - begin
             stages.append(dict(stage=label, seconds=elapsed, exit=result.returncode,
-                               receipt=log.read_text(errors='replace').splitlines()[-4:]))
+                               receipt=log.read_text(errors='replace', encoding="utf-8").splitlines()[-4:]))
             if result.returncode:
-                print(log.read_text(errors='replace'), file=sys.stderr)
+                print(log.read_text(errors='replace', encoding="utf-8"), file=sys.stderr)
                 raise subprocess.CalledProcessError(result.returncode, command)
             print(f'PASS {label}: {elapsed:.2f}s', flush=True)
         # Verifier and Python controls inspect the same unintegrated drafts.
@@ -144,8 +144,8 @@ def main():
         elapsed = time.perf_counter() - started
         if args.json:
             args.json.write_text(json.dumps(dict(mode='FULL' if args.full else 'FAST', seconds=elapsed,
-                selection=plan, stages=stages, rules=json.loads((scratch / 'rules-times.json').read_text()),
-                python=json.loads((scratch / 'python-times.json').read_text()) if not args.full else None), indent=2) + '\n')
+                selection=plan, stages=stages, rules=json.loads((scratch / 'rules-times.json').read_text(encoding="utf-8")),
+                python=json.loads((scratch / 'python-times.json').read_text(encoding="utf-8")) if not args.full else None), indent=2) + '\n', encoding="utf-8")
     print(f'PASS {"FULL" if args.full else "FAST"}: {elapsed:.2f}s')
     return 0
 

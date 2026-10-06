@@ -21,7 +21,7 @@ class EngineQ8eTests(unittest.TestCase):
     def setUpClass(cls):
         import expansion
         cls.story = fresh_story()
-        cls.implicit = json.loads((ROOT / 'tools/implicit_participant_inventory_contracts.json').read_text())
+        cls.implicit = json.loads((ROOT / 'tools/implicit_participant_inventory_contracts.json').read_text(encoding="utf-8"))
 
     def implicit_findings(self, story, scene):
         model = V.Model(story)
@@ -99,7 +99,7 @@ class EngineQ8eTests(unittest.TestCase):
 
     def test_parent_mod_departure_checker_is_preserved(self):
         policy = endings.ending_contracts()['ParentPolicy']
-        source = (ROOT / 'reference/canon-review/aranka-AranEpil.cs').read_text()
+        source = (ROOT / 'reference/canon-review/aranka-AranEpil.cs').read_text(encoding="utf-8")
         self.assertIn('"' + policy['Etude'] + '", negate: true', source)
         self.assertIn('"' + policy['Target'] + '")).Conditions.Conditions[0] = conditionsBuilder4.Build()', source)
 
@@ -107,7 +107,7 @@ class EngineQ8eTests(unittest.TestCase):
         import re
         from tools import kiana_native_policy
         source_path = ROOT / 'src/NativeEpilogueEdit.cs'
-        source = source_path.read_text()
+        source = source_path.read_text(encoding="utf-8")
         read_text = Path.read_text
         for target in endings.ending_contracts()['IdentityPreservingTargets']:
             bad_source = re.sub(r'(\["' + target + r'"\] = new Evidence.*?), textOnly: true', r'\1', source, count=1, flags=re.S)

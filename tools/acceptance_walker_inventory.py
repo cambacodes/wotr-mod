@@ -11,7 +11,7 @@ def lint(root=ROOT):
     errors = []
     for route in ROUTES:
         name = 'tests/' + route + 'TricksterTests.cs'
-        text = (Path(root) / name).read_text()
+        text = (Path(root) / name).read_text(encoding="utf-8")
         helper = re.search(r'List<Snapshot> Through\([^\n]+\)\s*\{(.*?)\n        \}', text, re.S)
         if not helper or 'Program.WalkVia(scene, w, node, index)' not in helper[1]:
             errors.append(name + ': claimed edges must use WalkVia')
@@ -19,7 +19,7 @@ def lint(root=ROOT):
             errors.append(name + ': final flags cannot establish a claimed edge')
         if 'void Visit(' in text:
             errors.append(name + ': route-local walker bypasses production processing')
-    walker = (Path(root) / 'tests/Program.cs').read_text()
+    walker = (Path(root) / 'tests/Program.cs').read_text(encoding="utf-8")
     walker = walker[walker.index('private static List<(Snapshot state, bool via)> WalkPaths'):]
     walker = walker[:walker.index('// eng7-l13: the same generic')]
     for witness in ('Rules.EnterNode(node, state)', 'Rules.ChoiceAvailable(c, state)',
