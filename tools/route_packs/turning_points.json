@@ -1,0 +1,34 @@
+{
+  "konomi": {
+    "device_class": "bargain",
+    "setting": "Drezen attaché office after council recess, fan laid across the closed ledger",
+    "payoff_shape": "sealed private letters alongside continuing public Crown dissent",
+    "canon_hooks": [
+      {
+        "guid": "4652e02184bd4494e8680a466714bbd5",
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0034.jbp",
+        "key": "72094ade-5fb1-4ef2-99b4-b6c70338b5cc",
+        "native_excerpt": "\"Spoken like a true politician, Commander. Very well, let us talk price.\" {n}Lady Konomi looks at you with a smug, somewhat predatory smile.{/n} \"I can guarantee you that, in return for your loyalty, the Royal Council will ensure the stability of equipment deliveries in the future. Quite convenient, don't you think — having no one twisting your arm with threats of supply shortages?\" {n}She glances at you with an obvious hint.{/n}",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "9ee914535aa169240b3a840465a43d55",
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0008.jbp",
+        "key": "632d08ce-1c4f-4eb0-a056-ea4599f49ecd",
+        "native_excerpt": "{n}A sharp-looking kitsune gives you a quick, businesslike bow.{/n} \"Commander, the matters before us are urgent, so let's not stand on ceremony. I am Lady Konomi, the official attaché of {g|Nerosyan}Nerosyan{/g}. Here are my credentials.\" {n}She presents a scroll adorned with Galfrey's seal.{/n} \"Her Majesty has instructed me to lead your headquarters' Diplomatic Council.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "efe7fee421301b84aaff22a3b9dba4cf",
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038.jbp",
+        "key": "d21d2901-e480-476d-aafa-ad1eb048c0d7",
+        "native_excerpt": "{n}Lady Konomi shrugs.{/n} \"I'm a child of a passionate and curious people. We live everywhere, you are just... not always aware of our existence.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}
