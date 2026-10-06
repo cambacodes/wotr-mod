@@ -62,5 +62,37 @@
    3,
    5
   ]
+ },
+ "devarra": {
+  "device_class": "bargain",
+  "setting": "Drezen north-ridge watchtower after Ivory Sanctum, unfinished rescue fable",
+  "payoff_shape": "annual non-sword-arm bite and crescent morning mark, then counted story installments",
+  "canon_hooks": [
+   {
+    "guid": "294462fbf68f995409fe6325d3739c57",
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0028_EndOfTart.jbp",
+    "key": "ca4b91d7-6644-469e-aac7-1689312b42b0",
+    "native_excerpt": "{n}The dragon keeps quiet. Finally she speaks, her voice loud and demanding:{/n} \"How interesting. What happened next?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "a6793a08b5d24f04ca6268fb74f10dac",
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0002.jbp",
+    "key": "07ec4e7c-60a1-4a9a-a0ad-d9fab6de7bd0",
+    "native_excerpt": "\"You again? Come to finish me off? Was this old dotard a part of your plan to distract me as well? I will devour you whole, and your deaths will be slow and agonizing, you parasites!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "3d5e59ddc658eb947874a1cac31dd6a4",
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0012.jbp",
+    "key": "299a066f-511a-4984-9655-319154abe456",
+    "native_excerpt": "{n}The dragon turns toward you in astonishment.{/n} \"What? You again? You sent this miserable old dotard to distract me with his chatter while you sneak up on me?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
  }
 }

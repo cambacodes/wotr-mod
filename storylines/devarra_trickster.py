@@ -107,7 +107,9 @@ DEBT = P + "debt_claimed"
 LEGACY = "devarra.dead.latched"            # a pre-redesign save: she died, and the moult returned her
 RETIRED = (P + "dead.lair_story", P + "dead.setup", P + "dead.storytellers_version", P + "dead.woken")
 # R2-6: read by Last Call only (epilogue pages set no flags), so it is bound here rather than on demand.
-DERIVED = {P + "late_committed": [["trickster.ever", TESTED]],
+# Pending judgment supplies no campaign chair. The engine retains route outcome guards.
+DERIVED = {P + "late_committed": [["trickster.ever", TESTED, "devarra.outcome.deferred_judgment"]],
+           "devarra.outcome.deferred_judgment": [["chapter.six"]],
            FLOWN: [["trickster.ever", PACT, ESCAPE_SEEN], ["trickster.ever", PACT, ESCAPED]],
            LEASH: [[FLOWN, "devarra.golems_deactivated"]]}
 LATCHES = {ESCAPE_SEEN: ["devarra.escaped"], GOLEMS_MET: ["devarra.golems_met"]}
@@ -641,6 +643,7 @@ SCENES.append(scene(P + "epilogue.sacrifice", "", "DevarraEpilogue", 6, "", [
 def integrate(payload):
     """World keys (death etudes, egg fates, the golem and lair cues, the latch, the Storyteller's death) bind on demand in
     trickster_world; the late commit is bound here because no scene reads it yet."""
+    payload.setdefault("DerivedForbids", {})["devarra.outcome.deferred_judgment"] = [LEFT_HUNGRY]
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
     # Option A: the latches, the golem cues and the reviewed native gates; the moult device is retired by gating.
@@ -686,3 +689,8 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+
+# Authored round-2 set pieces; append-only repairs, with no new eligibility mechanics.
+from storylines.devarra_round2 import polish_spine
+polish_spine(SCENES)
