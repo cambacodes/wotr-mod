@@ -75,7 +75,9 @@ internal static class NocticulaAcquiredHarborTests
         foreach (var history in histories)
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed" });
+            initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed",
+                // Isolate the existing channel/harbor matrix; new on-page terms have their own route tests.
+                "nocticula.partner_terms", "nocticula.partner_stance.share" });
             initial.Flags.UnionWith(history);
             var entry = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
             check(entry.Length == 1, "Acquired harbor fixture lacks a unique native-history entry.");

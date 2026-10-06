@@ -151,7 +151,16 @@ internal static class NocticulaTricksterTests
         check(Program.Walk(callIn, onTime).Any(r => !r.Has(callIn.Id) && !r.Has(Returned)), "The call-in cannot be left for later.");
 
         // Trk_Nocticula_Commit / _CommitDeclined: her test, her yes, her no.
-        var returned = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Returned, Paid);
+        var unnegotiated = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Returned, Paid);
+        check(!Rules.Available(story, epCommit, unnegotiated), "A late romance bypasses the Shamira terms.");
+        var stanceOutcomes = Program.Walk(chair, unnegotiated);
+        check(stanceOutcomes.Where(r => r.Has("noct.complete")).All(r => r.Has("nocticula.partner_terms")
+              && new[] { "share", "exclusive", "secret" }.Count(s => r.Has("nocticula.partner_stance." + s)) == 1)
+              && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.share") && r.Has("noct.complete"))
+              && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.secret") && r.Has("noct.complete"))
+              && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.exclusive") && r.Has("noct.closed") && !r.Has("noct.complete")),
+              "Nocticula partner stances lost an accepted or refused branch.");
+        var returned = With(story, unnegotiated, "nocticula.partner_terms", "nocticula.partner_stance.share");
         check(Rules.Available(story, chair, returned) && Rules.Available(story, epCommit, returned), "Trk_Nocticula_Commit: availability.");
         var chaired = Program.Walk(chair, returned);
         var yes = chaired.Where(r => r.Has("noct.complete")).ToList();
@@ -287,7 +296,7 @@ internal static class NocticulaTricksterTests
         foreach (var (road, flag) in new (string, string?)[] { ("m_floor", PrimedShadow), ("m_late", Late), ("m_base", null) })
         {
             var seen = new HashSet<string>();
-            var w6 = World(story, 6, "trickster", "trickster.ever", Returned, Paid);
+            var w6 = World(story, 6, "trickster", "trickster.ever", Returned, Paid, "nocticula.partner_terms", "nocticula.partner_stance.share");
             Program.Walk(epCommit, flag == null ? w6 : With(story, w6, flag), (id, _) => seen.Add(id));
             check(seen.Contains(road) && seen.Count(x => x.StartsWith("m_", StringComparison.Ordinal)) == 1 && seen.Contains("refused_page"),
                 "The late commit's reason on the " + road + " road is not its own, or there is no refusal.");

@@ -25,7 +25,8 @@ internal static class NocticulaConcessionTests
         var native = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.SeenCues.Keys)
             .Concat(story.SelectedAnswers.Keys).Concat(story.CompletedQuests.Keys).Concat(story.StartedDialogs.Keys).ToHashSet();
         check(concession.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => c.Revive == null
-            && c.Set.All(flag => flag.StartsWith("noct.acq.", StringComparison.Ordinal) && !native.Contains(flag))),
+            && c.Set.All(flag => (flag.StartsWith("noct.acq.", StringComparison.Ordinal)
+                || flag.StartsWith("nocticula.partner_", StringComparison.Ordinal)) && !native.Contains(flag))),
             "Concession writes native history or requests actor recovery.");
 
         string[][] histories = {
@@ -50,7 +51,9 @@ internal static class NocticulaConcessionTests
         foreach (var history in histories)
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed" });
+            initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed",
+                // Isolate the existing channel/harbor matrix; new on-page terms have their own route tests.
+                "nocticula.partner_terms", "nocticula.partner_stance.share" });
             initial.Flags.UnionWith(history);
             var available = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
             check(available.Length == 1, "Concession fixture does not select exactly one native-history entry.");
@@ -188,7 +191,7 @@ internal static class NocticulaConcessionTests
         check(checkedSuccesses == 72 && checkedFailures == 72 && manualInquiries == 72 && wrapperCallbacks == 144,
             "Concession did not exercise every investigation method and both wrapper producers.");
         foreach (var scene in concession)
-            check(reached[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id)), "Concession missed delivered nodes: " + scene.Id);
+            check(reached[scene.Id].SetEquals(scene.Nodes.Where(n => !n.Id.StartsWith("partner_", StringComparison.Ordinal)).Select(n => n.Id)), "Concession missed delivered nodes: " + scene.Id);
         Console.WriteLine("Nocticula assembled concession: 6 native histories, 36 played trials, 216 agreements, 576 closures; all 35 concession nodes reached. Native execution and prose chronology are not proved by this walker.");
     }
 }

@@ -448,6 +448,8 @@ def integrate(payload):
                                   forbids=tuple(f for f in choice["Forbids"] if f != KEPT)))
         hand["Nodes"].append(n("scent_" + target, "Nocticula", SCENT_LINE, c("Continue", target), portrait="Nocticula"))
 
+    from storylines import nocticula_partners
+    nocticula_partners.integrate(payload)
 
 # --- Court scenes (ledger row 11: Nocticula owns all four; optional; never Forbid, close or set another route's flags) ---
 # Canon: Vellexia "has reigned as the leader of Alushinyrra's aristocrats" (enGB 82d99a5c); with her gone "the highest seat

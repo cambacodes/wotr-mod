@@ -15571,6 +15571,7 @@
       "Chapter": 6,
       "Flags": [
         "nocticula.outcome.route_open",
+        "nocticula.partner_terms",
         "nocticula.trickster.returned",
         "trickster.ever",
         "trickster.now"
@@ -15585,6 +15586,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "nocticula.partner_terms",
         "nocticula.trickster.declined",
         "trickster.ever"
       ],
