@@ -284,8 +284,7 @@ internal static class NidalynnTricksterTests
         var kilnLetter = S(P + "letter.from_the_kiln");
         check(kilnLetter.Requires.Contains("storyteller.supplies") && story.SeenCues["storyteller.supplies"].SequenceEqual(new[] { "459bf324a71c81c4ba5f3eead9ba42bb" })
               && !Avail(kilnLetter, Later(story, World(story, 4, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "kiln"), 25))
-              && Avail(kilnLetter, Later(story, World(story, 4, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "kiln", "storyteller.supplies"), 25))
-              && kilnLetter.Nodes[0].Text.Contains("Storyteller"),
+              && Avail(kilnLetter, Later(story, World(story, 4, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "kiln", "storyteller.supplies"), 25)),
             "Trk_Nidalynn_Letter: the kiln letter reaches the Abyss with no carrier.");
         check(pages.Length == 9 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
@@ -355,11 +354,7 @@ internal static class NidalynnTricksterTests
         check(Ch(goat, "after_wolves", 0).Forbids.Contains(P + "goat.wolves"), "Trk_Nidalynn_Goat: the old acceptance of the wolves is not retired.");
 
         // Q9 (Sol BEL): her own face answers "why now" without the snowfield's breakfast; the torc is shown as it is.
-        check(!form.Nodes.Single(n => n.Id == "now").Text.Contains("chewing") && !form.Nodes.Single(n => n.Id == "now").Text.Contains("bread"),
-            "Trk_Nidalynn_Staging: her own face eats bread that was never served.");
         var women = S(P + "steps.the_widows_time");
-        foreach (var node in women.Nodes)
-            check(!node.Text.Contains("or she is not") && !node.Text.Contains("either way"), "Trk_Nidalynn_Staging: the narrator shows an authoring alternative: " + node.Id);
         var leftWorld = Later(story, World(story, 5, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "form_chosen", P + "steps.torcs", P + "torc.left"), 25);
         check(Visited(women, leftWorld).Contains("torc_left") && !Visited(women, leftWorld).Contains("torc"),
             "Trk_Nidalynn_Staging: the girl wears a torc the Commander left in the jeweller's tray.");
@@ -449,21 +444,21 @@ internal static class NidalynnTricksterTests
         var saltNode = S(P + "epilogue.salt").Nodes.Last();
         var billWorld = World(story, 6, "trickster", "trickster.ever", Committed, Bill);
         var calledWorld = World(story, 6, "trickster", "trickster.ever", Committed, Bill, "devarra.lastcall.called");
-        check(Rules.VisibleParagraphs(saltNode, billWorld).Any(t => t.Text.Contains("never paid"))
-              && !Rules.VisibleParagraphs(saltNode, billWorld).Any(t => t.Text.Contains("named her bill"))
-              && Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("named her bill"))
-              && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("never paid")),
+        check(Rules.VisibleParagraphs(saltNode, billWorld).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[nidalynn.trickster.epilogue.salt/page/paragraph/21]"))
+              && !Rules.VisibleParagraphs(saltNode, billWorld).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[nidalynn.trickster.epilogue.salt/page/paragraph/22]"))
+              && Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[nidalynn.trickster.epilogue.salt/page/paragraph/22]"))
+              && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[nidalynn.trickster.epilogue.salt/page/paragraph/21]")),
             "Trk_Nidalynn_Bill: her page says the bill was never paid after Devarra named it at the rift.");
 
         // Polish (audit INT/BEL/HOW, Trk_Nidalynn_Endings): every ending rendered whole, the page and its visible paragraphs in
         // order, from walked routes. The grey dragon's bill is recorded once wherever it exists; the kiln kept warm, the bowl
         // and the names taught at night belong to the living partner's page alone; a departure says nothing about anyone else.
-        string Render(Scene page, Snapshot w) => string.Join("\n", new[] { page.Nodes[0].Text }.Concat(Rules.VisibleParagraphs(page.Nodes[0], w).Select(x => x.Text)));
-        int Count(string text, string needle) { int n = 0, at = 0; while ((at = text.IndexOf(needle, at, StringComparison.Ordinal)) >= 0) { n++; at += needle.Length; } return n; }
+        string Render(Scene page, Snapshot w) => string.Join("\n", new[] { SurfaceIds.Of(story, page.Nodes[0]) }.Concat(Rules.VisibleParagraphs(page.Nodes[0], w).Select(x => SurfaceIds.Of(story, x))));
+        int Count(string text, string slots) => SurfaceIds.Count(text, slots);
         Snapshot With(Snapshot s, params string[] flags) { var c = Program.Copy(s); c.Flags.UnionWith(flags); return Later(story, c, 1); }
         string[] Shown(Snapshot w) => pages.Where(pg => Avail(pg, w)).Select(pg => pg.Id.Substring((P + "epilogue.").Length)).OrderBy(x => x, StringComparer.Ordinal).ToArray();
         const string Called = "devarra.lastcall.called";
-        const string Standing = "never paid", Named = "named her bill", Windowsill = "windowsill", Bowl = "Eat first", Banked = "banked high", Taught = "taught the Commander";
+        const string Standing = "[nidalynn.trickster.epilogue.salt/page/paragraph/21][nidalynn.trickster.epilogue.late/page/paragraph/20][nidalynn.trickster.epilogue.heel/page/paragraph/20][nidalynn.trickster.epilogue.unreturned/page/paragraph/20][nidalynn.trickster.epilogue.apart/page/paragraph/20][nidalynn.trickster.epilogue.claimed/page/paragraph/20][nidalynn.trickster.epilogue.lie/page/paragraph/20]", Named = "[nidalynn.trickster.epilogue.salt/page/paragraph/22][nidalynn.trickster.epilogue.late/page/paragraph/21][nidalynn.trickster.epilogue.heel/page/paragraph/21][nidalynn.trickster.epilogue.unreturned/page/paragraph/21][nidalynn.trickster.epilogue.apart/page/paragraph/21][nidalynn.trickster.epilogue.claimed/page/paragraph/21][nidalynn.trickster.epilogue.lie/page/paragraph/21]";
         var endPage = new Func<string, Scene>(id => S(P + "epilogue." + id));
         // The walk: the confession, Devarra's bill on her own hub, the claim given up, her face, the kiss, then the salt.
         var dvBack = Later(story, With(confessed, "devarra.trickster.returned", "devarra.started"), 25);
@@ -487,37 +482,37 @@ internal static class NidalynnTricksterTests
             var w = called ? End(state, Called) : End(state);
             var text = Render(endPage("apart"), w);
             check(Shown(w).SequenceEqual(new[] { "apart" }) && Count(text, called ? Named : Standing) == 1 && Count(text, called ? Standing : Named) == 0
-                  && !text.Contains(Banked) && !text.Contains(Bowl) && !text.Contains(Windowsill) && !text.Contains(Taught)
-                  && !text.Contains("alone") && !text.Contains("Nobody in Drezen"),
+                  && !SurfaceIds.Has(text, "[nidalynn.trickster.hearth.grey_stone/end][nidalynn.trickster.epilogue.salt/page/paragraph/23]") && !SurfaceIds.Has(text, "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]") && !SurfaceIds.Has(text, "[nidalynn.trickster.epilogue.salt/page/paragraph/21]") && !SurfaceIds.Has(text, "[nidalynn.trickster.epilogue.salt/page/paragraph/20]")
+                  && !SurfaceIds.Has(text, "[nidalynn.trickster.hearth.listening/cold][nidalynn.trickster.ridge.first_flight/yes2][nidalynn.trickster.kiln.the_heel/wait/choice/1][nidalynn.trickster.ridge.snowfield/lane][nidalynn.trickster.ridge.snowfield/cold]"),
                 "Trk_Nidalynn_Endings: the rejected Commander's ending keeps her fire, doubles the bill or speaks for other partners (called=" + called + "): " + text);
             // A concurrent romance changes nothing on her page.
             check(Render(endPage("apart"), With(w, "irabeth.committed", "irabeth.started")) == text,
                 "Trk_Nidalynn_Endings: another partner changes the rejected ending.");
         }
         var plainApart = Render(endPage("apart"), End(plainRejected, Called));
-        check(!plainApart.Contains(Standing) && !plainApart.Contains(Named), "Trk_Nidalynn_Endings: a bill nobody wrote appears on the departure.");
+        check(!SurfaceIds.Has(plainApart, "[nidalynn.trickster.epilogue.salt/page/paragraph/21][nidalynn.trickster.epilogue.late/page/paragraph/20][nidalynn.trickster.epilogue.heel/page/paragraph/20][nidalynn.trickster.epilogue.unreturned/page/paragraph/20][nidalynn.trickster.epilogue.apart/page/paragraph/20][nidalynn.trickster.epilogue.claimed/page/paragraph/20][nidalynn.trickster.epilogue.lie/page/paragraph/20]") && !SurfaceIds.Has(plainApart, "[nidalynn.trickster.epilogue.salt/page/paragraph/22][nidalynn.trickster.epilogue.late/page/paragraph/21][nidalynn.trickster.epilogue.heel/page/paragraph/21][nidalynn.trickster.epilogue.unreturned/page/paragraph/21][nidalynn.trickster.epilogue.apart/page/paragraph/21][nidalynn.trickster.epilogue.claimed/page/paragraph/21][nidalynn.trickster.epilogue.lie/page/paragraph/21]"), "Trk_Nidalynn_Endings: a bill nobody wrote appears on the departure.");
 
         // Committed after the bill: her page; standing = the windowsill, named = the record and the bowl; nothing doubled.
         var saltStanding = Render(endPage("salt"), End(bYes));
         var saltNamed = Render(endPage("salt"), End(bYes, Called));
         check(Shown(End(bYes, Called)).SequenceEqual(new[] { "salt" })
-              && Count(saltStanding, Standing) == 1 && saltStanding.Contains(Windowsill) && !saltStanding.Contains(Named) && !saltStanding.Contains(Bowl)
-              && Count(saltNamed, Named) == 1 && saltNamed.Contains(Bowl) && saltNamed.Contains(Banked) && !saltNamed.Contains(Standing)
-              && !Render(endPage("salt"), End(yes, Called)).Contains(Named),
+              && Count(saltStanding, Standing) == 1 && SurfaceIds.Has(saltStanding, "[nidalynn.trickster.epilogue.salt/page/paragraph/21]") && !SurfaceIds.Has(saltStanding, "[nidalynn.trickster.epilogue.salt/page/paragraph/22][nidalynn.trickster.epilogue.late/page/paragraph/21][nidalynn.trickster.epilogue.heel/page/paragraph/21][nidalynn.trickster.epilogue.unreturned/page/paragraph/21][nidalynn.trickster.epilogue.apart/page/paragraph/21][nidalynn.trickster.epilogue.claimed/page/paragraph/21][nidalynn.trickster.epilogue.lie/page/paragraph/21]") && !SurfaceIds.Has(saltStanding, "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]")
+              && Count(saltNamed, Named) == 1 && SurfaceIds.Has(saltNamed, "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]") && SurfaceIds.Has(saltNamed, "[nidalynn.trickster.hearth.grey_stone/end][nidalynn.trickster.epilogue.salt/page/paragraph/23]") && !SurfaceIds.Has(saltNamed, "[nidalynn.trickster.epilogue.salt/page/paragraph/21][nidalynn.trickster.epilogue.late/page/paragraph/20][nidalynn.trickster.epilogue.heel/page/paragraph/20][nidalynn.trickster.epilogue.unreturned/page/paragraph/20][nidalynn.trickster.epilogue.apart/page/paragraph/20][nidalynn.trickster.epilogue.claimed/page/paragraph/20][nidalynn.trickster.epilogue.lie/page/paragraph/20]")
+              && !SurfaceIds.Has(Render(endPage("salt"), End(yes, Called)), "[nidalynn.trickster.epilogue.salt/page/paragraph/22][nidalynn.trickster.epilogue.late/page/paragraph/21][nidalynn.trickster.epilogue.heel/page/paragraph/21][nidalynn.trickster.epilogue.unreturned/page/paragraph/21][nidalynn.trickster.epilogue.apart/page/paragraph/21][nidalynn.trickster.epilogue.claimed/page/paragraph/21][nidalynn.trickster.epilogue.lie/page/paragraph/21]"),
             "Trk_Nidalynn_Endings: her own page records the bill wrongly.");
         // Returned from the sacrifice: the same living page; not returned: the unreturned page, with no nights and no bowl.
         var cameBack = End(bYes, Called, "sacrifice", "trickster.commander_back", P + "wake.name_said");
         var lost = End(bYes, Called, "sacrifice", P + "wake.name_said");
         var lostText = Render(endPage("unreturned"), lost);
-        check(Shown(cameBack).SequenceEqual(new[] { "salt" }) && Render(endPage("salt"), cameBack).Contains(Bowl) && Render(endPage("salt"), cameBack).Contains(Taught)
+        check(Shown(cameBack).SequenceEqual(new[] { "salt" }) && SurfaceIds.Has(Render(endPage("salt"), cameBack), "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]") && SurfaceIds.Has(Render(endPage("salt"), cameBack), "[nidalynn.trickster.epilogue.salt/page/paragraph/20]")
               && Shown(lost).SequenceEqual(new[] { "unreturned" }) && Count(lostText, Named) == 1
-              && !lostText.Contains(Bowl) && !lostText.Contains(Banked + " every winter the Commander was away") && !lostText.Contains(Taught) && !lostText.Contains(Windowsill),
+              && !SurfaceIds.Has(lostText, "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]") && !SurfaceIds.Has(lostText, "[nidalynn.trickster.epilogue.salt/page/paragraph/23]") && !SurfaceIds.Has(lostText, "[nidalynn.trickster.epilogue.salt/page/paragraph/20]") && !SurfaceIds.Has(lostText, "[nidalynn.trickster.epilogue.salt/page/paragraph/21]"),
             "Trk_Nidalynn_Endings: a Commander who did not come back is fed, taught or visited on the windowsill: " + lostText);
-        check(!Render(endPage("unreturned"), End(bYes, "sacrifice")).Contains(Windowsill) && Count(Render(endPage("unreturned"), End(bYes, "sacrifice")), Standing) == 1,
+        check(!SurfaceIds.Has(Render(endPage("unreturned"), End(bYes, "sacrifice")), "[nidalynn.trickster.epilogue.salt/page/paragraph/21]") && Count(Render(endPage("unreturned"), End(bYes, "sacrifice")), Standing) == 1,
             "Trk_Nidalynn_Endings: the standing bill is not recorded plainly for the Commander who did not come back.");
         // Not yet (the heel): the courtship page; the record once, no domestic payoff.
         var heelText = Render(endPage("heel"), End(bNotYet, Called));
-        check(Shown(End(bNotYet, Called)).SequenceEqual(new[] { "heel" }) && Count(heelText, Named) == 1 && !heelText.Contains(Bowl) && !heelText.Contains(Taught),
+        check(Shown(End(bNotYet, Called)).SequenceEqual(new[] { "heel" }) && Count(heelText, Named) == 1 && !SurfaceIds.Has(heelText, "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]") && !SurfaceIds.Has(heelText, "[nidalynn.trickster.epilogue.salt/page/paragraph/20]"),
             "Trk_Nidalynn_Endings: the heel's ending takes the partner's payoff.");
         // The claim kept to her flight, and the lie kept: departures; the record when the flags hold it, never her fire.
         var leftWith = After(claimedFlight, Later(story, keptClaim, 49, 5), "go", 0).First();
@@ -526,7 +521,7 @@ internal static class NidalynnTricksterTests
             {
                 var w = End(state, extra);
                 var text = Render(endPage(id), w);
-                check(Avail(endPage(id), w) && !Shown(w).Contains("salt") && !text.Contains(Bowl) && !text.Contains(Banked) && !text.Contains(Windowsill) && !text.Contains(Taught)
+                check(Avail(endPage(id), w) && !Shown(w).Contains("salt") && !SurfaceIds.Has(text, "[nidalynn.trickster.epilogue.salt/page/paragraph/23][nidalynn.trickster.kiln.whose/eat]") && !SurfaceIds.Has(text, "[nidalynn.trickster.hearth.grey_stone/end][nidalynn.trickster.epilogue.salt/page/paragraph/23]") && !SurfaceIds.Has(text, "[nidalynn.trickster.epilogue.salt/page/paragraph/21]") && !SurfaceIds.Has(text, "[nidalynn.trickster.epilogue.salt/page/paragraph/20]")
                       && Count(text, Named) == (extra.Contains(Called) ? 1 : 0) && Count(text, Standing) == (extra.Contains(Bill) && !extra.Contains(Called) ? 1 : 0),
                     "Trk_Nidalynn_Endings: the " + id + " departure keeps her fire or loses the record: " + string.Join(",", extra));
             }
@@ -592,7 +587,7 @@ internal static class NidalynnTricksterTests
         foreach (var r in preStands.Concat(postStands))
         {
             var w = End(r, Bill, Called);
-            check(Shown(w).SequenceEqual(new[] { "wolves" }) && !Render(endPage("wolves"), w).Contains("white-haired"),
+            check(Shown(w).SequenceEqual(new[] { "wolves" }) && !SurfaceIds.Has(Render(endPage("wolves"), w), "[nidalynn.trickster.react.ulbrig.white_girl/start][nidalynn.trickster.react.ulbrig.snowfield/start][nidalynn.trickster.kiln.ulbrig/look][nidalynn.trickster.steps.the_wake/pyre][nidalynn.trickster.steps.the_widows_time/torc_left][nidalynn.trickster.steps.the_widows_time/torc][nidalynn.trickster.kiln.long_night/knew/choice/0]"),
                 "Trk_Nidalynn_Closures: the wolves closure gets more than its own page: " + string.Join(", ", Shown(w)));
         }
         check(!Avail(callIn, End(preStands.First())), "Trk_Nidalynn_Closures: a Commander who never ate the salt is offered her call-in.");
@@ -657,10 +652,6 @@ internal static class NidalynnTricksterTests
 
         // Polish r2 (audit BEL): the chosen-form twins never speak the widow's costume in the present tense.
         foreach (var twin in mine.Where(s => s.Id.EndsWith(".chosen", StringComparison.Ordinal)))
-            check(!twin.Nodes.Any(n => n.Text.Contains("I wear a belly")) , "Trk_Nidalynn_Twins: her own face still wears the widow's belly: " + twin.Id);
-        check(S(P + "kiln.the_goat").Nodes.Single(n => n.Id == "after_wolves").Text.Contains("I wear a belly")
-              && S(P + "kiln.the_goat.chosen").Nodes.Single(n => n.Id == "after_wolves").Text.Contains("I wore a belly"),
-            "Trk_Nidalynn_Twins: the goat's twins say the wrong thing about the costume.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))

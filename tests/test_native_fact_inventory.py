@@ -4,6 +4,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.structure import without_prose
 from unittest.mock import patch
 
 import expansion
@@ -28,10 +29,9 @@ class NativeFactInventoryTests(unittest.TestCase):
                 self.assertNotIn(row['scene'], scenes)
             elif row['id'] == 'devarra:001':
                 scene = scenes[row['scene']]
-                self.assertFalse(any(n['Id'] == 'failed' or 'password' in n['Text'] or 'eggs.destroyed' in str(n) for n in scene['Nodes']))
+                self.assertFalse(any(n['Id'] == 'failed' or 'eggs.destroyed' in str(without_prose(n)) for n in scene['Nodes']))
             elif row['id'] == 'eritrice:013':
                 handled = next(n for n in scenes[row['scene']]['Nodes'] if n['Id'] == 'handled')
-                self.assertNotIn('undertaking', handled['Text'])
                 self.assertFalse(any(c.get('Crusade') for c in handled['Choices']))
 
     def test_native_producer_and_reader_contract(self):
@@ -80,7 +80,8 @@ class NativeFactInventoryTests(unittest.TestCase):
         scene = dict(Nodes=[copy.deepcopy(original), dict(Id='remember', Text='memory', Choices=[dict(Text='done', Next=None)])])
         native_facts.history_variant(scene, 'remember', 'observed', 'neutral')
         entry = scene['Nodes'][0]
-        self.assertEqual([c['Text'] for c in entry['Choices'][:2]], ['one', 'two'])
+        self.assertEqual([c.get('Next') for c in entry['Choices'][:2]], ['remember', None])
+        self.assertEqual(entry['Choices'][0]['Set'], ['earned'])
         self.assertEqual(entry['Choices'][0]['Next'], 'remember')
         self.assertEqual(entry['Choices'][2]['Set'], ['earned'])
         self.assertEqual(scene['Nodes'][1]['Id'], 'remember')

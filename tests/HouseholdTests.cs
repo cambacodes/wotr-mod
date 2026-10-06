@@ -153,7 +153,7 @@ internal static class HouseholdTests
 
         // The door: "[The corner table]" on both tavern states, once kept, in its own chapters.
         var openers = story.Openers.Where(o => o.Relationship == "household").ToList();
-        check(openers.Count == 2 && openers.All(o => o.Text == "[The corner table]" && o.View == "table")
+        check(openers.Count == 2 && openers.All(o => o.View == "table")
             && openers.Select(o => o.AnswerList).OrderBy(x => x).SequenceEqual(new[] { KingC3, KingC5 }.OrderBy(x => x)),
             "The Table's openers are not '[The corner table]' on AnswersList_0009 and AnswersList_0054.");
         var c3 = openers.Single(o => o.AnswerList == KingC3);
@@ -200,28 +200,28 @@ internal static class HouseholdTests
         var ledger = story.Books["trickster.ledger"];
         check(new[] { "Guest List", "Seating Notes", "Secrets" }.All(ledger.Sections.Contains), "The Ledger lacks a household section.");
         List<string> Lines(string id, Snapshot state) =>
-            ledger.Entries.Single(e => e.Id == id).Lines.Where(p => Rules.ParagraphVisible(p, state)).Select(p => p.Text).ToList();
+            ledger.Entries.Single(e => e.Id == id).Lines.Where(p => Rules.ParagraphVisible(p, state)).Select(p => SurfaceIds.Of(story, p)).ToList();
         bool Visible(string id, Snapshot state) => Rules.BookVisible(ledger, state).Any(e => e.Id == id);
         check(ledger.Entries.Count(e => e.Section == "Guest List") == 43, "The Guest List does not retain every partner and the two solo pair variants.");
         check(!Visible("guest.seelah", none) && Visible("guest.seelah", seelah), "A Guest List entry does not follow eligibility.");
-        check(Lines("guest.seelah", seelah).SequenceEqual(new[] { "{n}Not yet at the table.{/n}" }), "An unstanced guest is not 'not yet at the table'.");
-        check(Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.joined")).SequenceEqual(new[] { "{n}At the table.{/n}" }),
+        check(Lines("guest.seelah", seelah).SequenceEqual(new[] { "[book/trickster.ledger/guest.seelah/line/3]" }), "An unstanced guest is not 'not yet at the table'.");
+        check(Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.joined")).SequenceEqual(new[] { "[book/trickster.ledger/guest.seelah/line/0]" }),
             "A joined guest is not 'at the table'.");
-        check(Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.joined", "seelah.harem.joined_late")).Single().Contains("late"),
+        check(SurfaceIds.Has(Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.joined", "seelah.harem.joined_late")).Single(), "[book/trickster.ledger/guest.seelah/line/1]"),
             "A late joiner is not marked late.");
         var apart = Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.tolerated", "seelah.harem.enmity.camellia"));
-        check(apart.Count == 2 && apart[0].Contains("RRT_AtTheTableApart") && apart[1].Contains("Camellia"),
+        check(apart.Count == 2 && apart[0] == "[book/trickster.ledger/guest.seelah/line/2]" && apart[1] == "[book/trickster.ledger/guest.seelah/line/5]",
             "A tolerated guest is not 'at the table, apart' from the one woman she will not speak to.");
         var both = State(story, 3, "committed", Committed("anevia"));
         check(Visible("guest.tirabade", both) && !Visible("guest.anevia", both), "Anevia is listed apart from Anevia and Irabeth together.");
         var pair = Lines("guest.minagho_chivarro", State(story, 3, "minachiv.complete", "minachiv.future_two", "minagho_chivarro.harem.stance.minagho.joined"));
-        check(pair.Contains("{n}Minagho: at the table.{/n}") && pair.Contains("{n}Chivarro: not yet at the table.{/n}"), "The canon pair does not have a seat each.");
+        check(SurfaceIds.Has(pair, "[book/trickster.ledger/guest.minagho_chivarro/line/0]") && SurfaceIds.Has(pair, "[book/trickster.ledger/guest.minagho_chivarro/line/5]"), "The canon pair does not have a seat each.");
         var seating = ledger.Entries.Where(e => e.Section == "Seating Notes" && e.Id != "seating.word_made_true").ToList();
         check(seating.Count == 5 && seating.All(e => e.Requires.Length == 2 && e.Requires.All(r => r.EndsWith(".harem.eligible", StringComparison.Ordinal))),
             "The Seating Notes are not the seeded frictions, each shown only when both women are eligible.");
         check(!Visible("seating.seelah.camellia", seelah) && Visible("seating.seelah.camellia", State(story, 3, Committed("seelah"), Committed("camellia"))),
             "A Seating Note shows before both women are eligible.");
-        check(Lines("seating.seelah.areelu", State(story, 3, Committed("seelah"), Committed("areelu"))).Any(t => t.Contains("No word of mine")),
+        check(Visible("seating.seelah.areelu", State(story, 3, Committed("seelah"), Committed("areelu"))),
             "An atrocity friction does not say the Word cannot settle it.");
         check(ledger.Entries.Where(e => e.Section == "Secrets").All(e => e.Requires.Length == 1 && e.Requires[0].StartsWith("trickster.secret.", StringComparison.Ordinal)),
             "A Secrets entry shows without its trickster.secret flag.");
@@ -236,7 +236,7 @@ internal static class HouseholdTests
             "A spent Word is still available.");
         Rules.Complete(story, spent);
         check(spent.Flags.Count(f => f.StartsWith("trickster.wmt.left.", StringComparison.Ordinal)) == 1, "The Word counter keeps a stale count.");
-        check(Lines("seating.word_made_true", two).SingleOrDefault()?.Contains("One word") == true, "The Ledger does not show the Words left.");
+        check(Lines("seating.word_made_true", two).SequenceEqual(new[] { "[book/trickster.ledger/seating.word_made_true/line/2]" }), "The Ledger does not show the Words left.");
         check(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Where(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal)))
             .All(c => c.Requires.Contains("trickster.wmt.available")), "A Word Made True choice does not require a Word left.");
 

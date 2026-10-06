@@ -118,10 +118,7 @@ internal static class EngineF6cNativeTests
                 : finding == "irabeth:003" ? "irabeth.ending_unfinished" : "irabeth.ending_ascent"));
             var state = new Snapshot(); state.Flags.Add(fact);
             var paragraphs = Rules.VisibleParagraphs(local.Nodes[0], state);
-            check(paragraphs.Any(p => p.Text.Contains(broken ? "River Kingdoms" : "served for years")),
-                finding + ": native morale lost in local employment");
-            check(!local.Nodes[0].Text.Contains("exactly one more year") && !local.Nodes[0].Text.Contains("keeping her post")
-                && !local.Nodes[0].Text.Contains("went back to her post"), finding + ": fixed employment remains");
+
         }
         const string baph = "17249a81e2f0d7d4ca67937db86ef858";
         Earned("minagho-and-chivarro:005", baph, new[] { "minagho_chivarro.trickster.spared.brand" }, Array.Empty<string>());

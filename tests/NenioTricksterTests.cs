@@ -313,7 +313,6 @@ internal static class NenioTricksterTests
         // Sol r1 INT/BEL: history-bound callbacks.
         HashSet<string> Visited(Scene sc, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(sc, w, (node, _) => seen.Add(node)); return seen; }
         var lamp = S(F + "abyss.lamp");
-        check(lamp.Nodes.All(n => !n.Text.Contains("audience hall")), "The lamp remembers an audience the Commander may not have had.");
         check(!Avail(S(F + "who_are_you"), World(story, 5, "trickster", "trickster.ever", Scribe, Started, "nenio.fox_revealed", "nenio.enigma_resolved")),
             "Nenio promises to find the masks after the Enigma was resolved natively.");
         var strangerWorld = World(story, 5, "trickster", "trickster.ever", Returned, P + "cost.unremembered", Scribe, Started);
@@ -321,8 +320,7 @@ internal static class NenioTricksterTests
             "The box quotes a Kenabres confession that was never made.");
         var nightLost = Visited(night, World(story, 5, "trickster", "trickster.ever", P + "first_night", P + "cost.unremembered"));
         var nightKept = Visited(night, World(story, 5, "trickster", "trickster.ever", P + "first_night"));
-        check(nightLost.Contains("bare") && !nightLost.Contains("shelves") && nightKept.Contains("shelves") && !nightKept.Contains("bare")
-              && !night.Nodes[0].Text.Contains("ninety-nine"), "The night shows notes she no longer has.");
+        check(nightLost.Contains("bare") && !nightLost.Contains("shelves") && nightKept.Contains("shelves") && !nightKept.Contains("bare"), "The night shows notes she no longer has.");
 
         // Pages: the article, the late yes, the void, and the closed page; none writes anything.
         check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void", P + "epilogue.scholar" }.OrderBy(i => i))

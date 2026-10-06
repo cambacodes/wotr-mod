@@ -1,5 +1,6 @@
 """Replay Delamere's audited callbacks from the assembled, folded story."""
 from tests.story_fixture import fresh_story
+from tests.structure import visible_slots
 from pathlib import Path
 import sys
 import unittest
@@ -18,11 +19,6 @@ def matches(item, flags):
                     for group in item.get("AnyGroups", [])))
 
 
-def page_text(node, flags):
-    return "\n".join([node["Text"], *(
-        p["Text"] for p in node.get("Paragraphs", []) if matches(p, flags))])
-
-
 def play(scene, flags, *, choices=None, mobility="Success", checks=None):
     """Follow actual answer indices and check targets; default to the first open answer."""
     # eng7-l13: positive campaign replay on the current Trickster path.
@@ -30,7 +26,7 @@ def play(scene, flags, *, choices=None, mobility="Success", checks=None):
     nodes = {node["Id"]: node for node in scene["Nodes"]}
     node_id = scene["Nodes"][0]["Id"]
     seen = set()
-    text = []
+    visited = set()
     while node_id:
         if node_id in seen:
             raise AssertionError("Replay loop: " + node_id)
@@ -40,7 +36,7 @@ def play(scene, flags, *, choices=None, mobility="Success", checks=None):
         sim_complete(play.model, state)
         flags = state.flags
         node = nodes[node_id]
-        text.append(page_text(node, flags))
+        visited.add(node_id)
         open_answers = [(i, c) for i, c in enumerate(node["Choices"]) if matches(c, flags)]
         index = (choices or {}).get(node_id, open_answers[0][0] if open_answers else -1)
         answer = next((c for i, c in open_answers if i == index), None)
@@ -54,7 +50,7 @@ def play(scene, flags, *, choices=None, mobility="Success", checks=None):
             node_id = check[outcome]
         else:
             node_id = answer["Next"]
-    return flags, "\n".join(text)
+    return flags, visited
 
 
 class DelamerePolishTests(unittest.TestCase):
@@ -120,14 +116,14 @@ class DelamerePolishTests(unittest.TestCase):
                 self.assertIn("delamere.committed", flags)
                 flags, text = play(self.scenes[P + "woken.day_owed"], flags)
                 self.assertIn(P + "first_frost", flags)
-                self.assertIn("You take to the roofs", text)
+                self.assertIn("roofs", text)
                 if outcome == "Success":
-                    self.assertIn("Worse than the first time", text)
-                    self.assertNotIn("Further than three strides", text)
+                    self.assertIn("caught_again", text)
+                    self.assertNotIn("caught_again_short", text)
                 else:
-                    self.assertIn("Further than three strides", text)
-                    self.assertNotIn("Worse than the first time", text)
-                    self.assertNotIn("You are getting slow", text)
+                    self.assertIn("caught_again_short", text)
+                    self.assertNotIn("caught_again", text)
+                    self.assertNotIn("caught_again", text)
 
     def test_first_meat_in_both_folds_and_standalone(self):
         for count in ("woken.count", "woken.count_late"):
@@ -141,20 +137,16 @@ class DelamerePolishTests(unittest.TestCase):
                     _, standalone = play(self.scenes[P + "woken.first_meat"],
                                          {P + "counted_after_the_abyss"} if count.endswith("_late") else set(),
                                          choices={"law": allocation, home: allocation + 1})
-                    for rendered in (folded, standalone):
+                    for visited, prefix in ((folded, "first_meat."), (standalone, "")):
+                        self.assertIn(prefix + home, visited)
+                        self.assertNotIn(prefix + ("home" if home == "home_late" else "home_late"), visited)
+                        expected = prefix + ("home_gate" if allocation == 0 else "home_table")
+                        wrong = prefix + ("home_table" if allocation == 0 else "home_gate")
                         if count.endswith("_late"):
-                            self.assertNotIn("Abyss already", rendered)
-                            self.assertIn("blood dripping from the haunches", rendered)
-                        else:
-                            self.assertIn("Abyss already", rendered)
-                            self.assertNotIn("blood dripping from the haunches", rendered)
-                        if allocation == 0:
-                            self.assertIn("Kellid girl", rendered)
-                            self.assertNotIn("north-wall cook", rendered)
-                        else:
-                            self.assertIn("north-wall cook", rendered)
-                            self.assertIn("The camp gets the next one", rendered)
-                            self.assertNotIn("Kellid girl", rendered)
+                            expected += "_late"
+                            wrong += "_late"
+                        self.assertIn(expected, visited)
+                        self.assertNotIn(wrong, visited)
 
     def test_home_allocation_choices_in_every_copy(self):
         for scene_id in ("woken.first_meat", "woken.count", "woken.count_late"):
@@ -167,7 +159,7 @@ class DelamerePolishTests(unittest.TestCase):
                         self.assertFalse(home.get("Paragraphs"))
                         self.assertEqual([i for i, answer in enumerate(home["Choices"])
                                           if matches(answer, flags)], [allocation])
-                        self.assertEqual(home["Choices"][allocation]["Text"], "[Limp home.]")
+                        self.assertFalse(home["Choices"][allocation]["Abort"])
                         target = home["Choices"][allocation]["Next"]
                         if allocation == 0:
                             self.assertIsNone(target)
@@ -177,7 +169,7 @@ class DelamerePolishTests(unittest.TestCase):
                             node = nodes[target]
                             self.assertFalse(node.get("Paragraphs"))
                             self.assertTrue(all(answer["Next"] is None for answer in node["Choices"]))
-                            self.assertIn("Kellid girl" if allocation == 1 else "north-wall cook", node["Text"])
+                            self.assertEqual(node["Id"], expected)
 
     def test_brace_after_waking_and_commitment_with_or_without_kyado(self):
         for dead in (False, True):
@@ -203,10 +195,10 @@ class DelamerePolishTests(unittest.TestCase):
                 state.hour += 200
                 self.assertTrue(sim_available(self.model, hide, state))
                 _, text = play(hide, flags, choices={"what": 2 if dead else 0})
-                self.assertIn("Four nights", text)
-                self.assertEqual("sewed it to his knee" in text, not dead)
+                self.assertIn("made_alone" if dead else "made", text)
+                self.assertEqual("made" in text, not dead)
                 if dead:
-                    self.assertIn("I cut it. I stitched it", text)
+                    self.assertIn("made_alone", text)
                     what = next(n for n in hide["Nodes"] if n["Id"] == "what")
                     self.assertFalse(matches(what["Choices"][0], flags))
                     self.assertEqual(what["Choices"][-1]["Next"], "made_alone")
@@ -218,9 +210,9 @@ class DelamerePolishTests(unittest.TestCase):
                 flags, text = play(scene, {P + "village.given"},
                                    choices={"law": 2, "law_again": judgment},
                                    checks={"CheckBluff": "Failure"})
-                self.assertIn("split ear", text)
-                self.assertIn("stealing turnips", text)
-                self.assertNotIn("He is right. It is a doe", text)
+                self.assertIn("bluff_fail", text)
+                self.assertIn("law_again", text)
+                self.assertNotIn("bluffed", text)
                 self.assertIn(P + "poachers." + outcome, flags)
                 self.assertNotIn(P + "poachers.tricked", flags)
 
@@ -235,11 +227,10 @@ class DelamerePolishTests(unittest.TestCase):
                     self.assertNotIn(P + "returned", flags)
                     self.assertEqual(P + "woke_in_drezen" in flags, waking == "drezen.stag")
                     for ending in ("never", "never_sacrifice"):
-                        text = page_text(self.scenes[P + "epilogue." + ending]["Nodes"][0], flags)
-                        expected = "woke in Drezen" if waking == "drezen.stag" else "woke in the Temple of Delamere"
-                        wrong = "woke in the Temple of Delamere" if waking == "drezen.stag" else "woke in Drezen"
-                        self.assertIn(expected, text)
-                        self.assertNotIn(wrong, text)
+                        node = self.scenes[P + "epilogue." + ending]["Nodes"][0]
+                        slots = visible_slots(node, flags)
+                        self.assertEqual(node["Id"] + "/paragraph/1" in slots, waking == "drezen.stag")
+                        self.assertEqual(node["Id"] + "/paragraph/0" in slots, waking != "drezen.stag")
                     for node in scene["Nodes"]:
                         if node["Id"] in ("lift", "fumble"):
                             self.assertTrue(all(P + "woke_in_drezen" not in c["Set"]

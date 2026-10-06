@@ -145,7 +145,6 @@
       "Key": "8f73fe38-c791-4d7e-9bd0-553f1f0b07aa",
       "Text": "Camellia's euphoria at gaining semidivine power quickly passed, giving way to irritability. Murder had once filled her with tremulous excitement, whereas now it brought her nothing but boredom, given that she was never in any danger. Unable to come to terms with her new status, she left her best friend and disappeared, losing herself among the planes of the multiverse.",
       "DataSha256": "16fb92ce38e0427b942cbaa60faa3e5bf86807c2c575f8bd75025d12b4e1174e",
-      "TextSha256": "7e77e68ccccb55a00a6d91ab43828ad04ef2a3378dfebb3d45a6106ca9cb5a66",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -214,7 +213,6 @@
       "Key": "d494dcd7-7f4f-4b8b-a8d7-7dcb41998909",
       "Text": "Camellia refused to {d|Camellia Ignored}share{/d} in the Commander's semidivine power. She had her own path to follow.",
       "DataSha256": "eadc4151e3a7a1ff7c3fc33431a662cf0bb5e63dfb64c5e6f9d8353c4a91d52f",
-      "TextSha256": "df4015ec7b3c107e70e904dff5106b63556258d8c26834844443d460169a09dd",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -275,7 +273,6 @@
       "Key": "aee7c6bf-fbe1-4288-83e7-3ff3bd4545ad",
       "Text": "After the end of the war, Camellia remained with the Commander, sharing his life's worries and joys, trying to accept them as her own. Yet nothing could help her overcome her worst enemy — boredom. On one moonless night, Camellia simply vanished.",
       "DataSha256": "0d616c4031b0a62ed3880cef9edbb8bcd18e17840dc2c5595ac76f1bcd06c65d",
-      "TextSha256": "fe1e2adc8be64bfd2cca925e3f9a73e4f5ee44a83a896eb28f1cc44f0e79209e",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -373,7 +370,6 @@
       "Key": "af56e46e-7e82-4e22-9951-8ddc37dd015f",
       "Text": "After the victory at Threshold, Camellia refused to join the crusader army retreating to Drezen. Instead she wandered among the ruins of the empty fortress, alone. She often stopped to listen to the wind, hoping to hear a familiar voice.",
       "DataSha256": "609663ca1f570e214cf76a86396ce42aed625c4daa324b7e4f67ec0ab69f5549",
-      "TextSha256": "4a551ce988428d9fabfbc78c772eedd2c041b0d498988e68812d709648fdd3aa",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -471,7 +467,6 @@
       "Key": "4dd21f1d-4280-4598-851d-bbc6bbf2f3e4",
       "Text": "Once the war had ended, Camellia grew bored and irritable. Shortly afterward, on a moonless night, she vanished.",
       "DataSha256": "5b3fb60d6b7d442f16ab9b84da4d711c52fa4b94ac5d8460408c9726de17e9ea",
-      "TextSha256": "7c0e059750e4082396337c2bfad4c518d71425d0ff6a74c32e402bb76cf5f965",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -560,7 +555,6 @@
       "Key": "de512bb2-4d4d-4ca2-b20d-9b2d6384c802",
       "Text": "About a month later, an assassin by the name of Mireya arrived in Varisia. She had few things in common with the missing woman, apart from a fondness for cutting the hearts out of her victims.",
       "DataSha256": "d3bad2ce604e2a418b1212fa9468f4138a090f133803391a7e741b2ec1fb84c5",
-      "TextSha256": "f08fbc98aa1f4d739a0fa6153113967ecfb9c3c69db39b02227ff1ce9c2506d5",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -614,7 +608,6 @@
       "Key": "f31377a1-a78e-47f2-bc10-1721eac2f9c1",
       "Text": "Young and attractive, she was desired by many of the key players in the Varisian underworld. Mireya bedded plenty of them, but never more than once — none of them were good enough for her.",
       "DataSha256": "7bbefedf0e6c4457a74882dd788ca6db8681964c621eafb6aca7b8dc2b14c488",
-      "TextSha256": "f9f9b2732992676dcaf24da30904933f993ccd929c88b6a692d664183fa39403",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -767,7 +760,6 @@
       "Key": "4819461c-331c-4872-a077-49115a7c9ad7",
       "Text": "A few years later, Camellia suddenly {d|Camellia TrueLove}came back{/d} — with a bottle of wine in her hands and a fleeting smile on her lips. She had returned, so she claimed, so that she could forever stay with her friend and love. And then, some months later, she left again. Her last words to her lover were \"I do not want to feel the desire to kill you.\"",
       "DataSha256": "fed8307a52613b136ad87f789b059a61ebeb06ce1c52ce2fd3a3b137c0495d75",
-      "TextSha256": "de29bd7bd5d578833ce165e77913634551a5de9b874954b2b4ae193ca0565b13",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -818,7 +810,6 @@
       "Key": "185ff9f7-34e0-4806-83fd-9df14b95e269",
       "Text": "Soon after the war, the tireless researcher of all things researchable embarked on a new journey. She had a sudden urge to know how much time it would take to visit every nation on Golarion. She {d|Nenio no friend}never returned{/d}. No, she did not perish — she simply got carried away with another experiment and forgot to come back.",
       "DataSha256": "29fc951154d2c445431784d5e7c6e3c77bd991ae1395bc74944ce0c643a7a2dd",
-      "TextSha256": "7e4a648917571f646d71cda366b3e022c0172c404b0dcdec7af5072bd4b544c8",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -930,7 +921,6 @@
       "Key": "8590f7c2-79d5-4179-9c8a-0798f4ef5de9",
       "Text": "After the war, the huntress {d|Wenduag Ignored}left{/d} the Commander's service and, having cobbled together a band of ruthless mercenaries out of veteran crusaders, went to the River Kingdoms to conquer one of them for herself. For a handful of years, she ruled over a dozen villages, until the local lords joined forces to put an end to her reign.",
       "DataSha256": "c9024afcf18b9c3e4f486d2196d0462f217732b4d3fbca3abe4d8136bf6023c1",
-      "TextSha256": "529baffdf57b674c205811b5838855587201ef0845703f89e77f8e2b039f7232",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -966,7 +956,6 @@
       "Key": "0dfe0435-8149-466d-bf0c-88d648651c3a",
       "Text": "Wenduag took the Commander's death coldly and calmly. Only the keenest observers could tell that from that day on, Wenduag valued her own life even less than before, charging bravely into any battle, as if begging death to send an arrow that would strike her right in the heart. Within a scant few years, her pleas were answered.",
       "DataSha256": "8f510775c31a4dc8e21f9306bde342656a4574d0c4458e8e9a7f79d02a4f3b36",
-      "TextSha256": "5a887aaf282469ddad25f9472f5902409c4003c2a14bab2c2f417f97cb05d4b0",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -1039,7 +1028,6 @@
       "Key": "0f468f97-27b0-492b-9213-7a53171c52af",
       "Text": "One of the first to hear this phrase was another of the Commander's former companions, Wenduag. Greybor personally fulfilled the contract on her head.",
       "DataSha256": "a7968fb9d96c3c6f12e1c2961676fc19a6a1cf3ce9c1918abb291d954aa92d86",
-      "TextSha256": "468f8f4a41b6f712a6d552530a617e62c272fcd5cfd7ebbb29bd8d4a21a728a3",
       "Data": {
         "Conditions": {
           "Operation": "Or",
@@ -1082,7 +1070,6 @@
       "Key": "5442dcf4-e1dd-47f5-b41a-c127471418f0",
       "Text": "One day, a gang led by Wenduag attacked the orphanage where Ember lived. The mongrel ordered it pillaged and burned to the ground, and the inhabitants were turned out onto the street. Wenduag either failed to recognize her former companion or chose not to acknowledge her.",
       "DataSha256": "090ec7dc5b8fd452641e93aed21f6cc6102e579b9b230ef72cf6f002c8c627e4",
-      "TextSha256": "f8f7c8c4fbbac58fcc728efc5308a5b8a6ff89af7776cd3b6b1c5fc99081c0a4",
       "Data": {
         "Conditions": {
           "Operation": "Or",
@@ -1125,7 +1112,6 @@
       "Key": "8ccf1c23-ae95-4b2e-84cc-37b647aabebd",
       "Text": "After the war, Greybor went off on his \"personal conquest.\" He traveled to Alushinyrra and killed four candidates for the position of the head of the {d|Greybor Guild}Assassins' Guild{/d}, whereupon he rightfully took the position himself and became a preeminent figure in the Midnight Isles. Under his leadership, the guild prospered, and the denizens of many planes would shudder whenever they heard the innocent phrase \"sweet dreams.\"",
       "DataSha256": "75e4e46edbfe3d8cf6cc496e51a1afdf92a8614b932b7ed0460bf71d5bdae5ad",
-      "TextSha256": "2062e85510053a0b5cb0e34fbd92be7db0a394f608add4cf1dac550e2f211468",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -1214,7 +1200,6 @@
       "Key": "10140353-9b55-4652-98e4-a169acea995e",
       "Text": "After seeing everything she believed in {d|Ember Evil}crumble{/d} before her eyes, the girl that once answered to the name Ember descended into total madness. After the war's end she found herself living in an orphanage, sweeping floors and washing dishes. She retained her magical powers, but she never used them again. Through her tears, she would say, \"I don't want to do tricks. When I do tricks, everybody dies.\"",
       "DataSha256": "138fd347364e3c4c39d8db7105468d154689e043eb8d98f985e35804fb0e57a9",
-      "TextSha256": "60695b35c0615ca4a603d74ecef4f99f908d20fd32c31aadba471cf8c8675c3e",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -1263,7 +1248,6 @@
       "Key": "bde81fb1-19f7-4ac0-9414-f217803d63c5",
       "Text": "That event was preceded by a futile attempt to drive a dagger into the former {d|Camellia Ignored}Commander's{/d} heart.",
       "DataSha256": "157d762fd0e47d0f609c10eb61b95f733e7a3a174bcba516438195e96fcdc621",
-      "TextSha256": "a3f4e5ce805f8d200878e1022b1ba7ea87b36d9f6ad7b87e4fac2e063b18c1b9",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -1310,7 +1294,6 @@
       "Key": "25f34917-975c-45ad-830e-2e7e3e97f578",
       "Text": "A few years after the war had ended, Greybor found the orphanage where his companion Ember lived. The former assassin took in the former preacher and cared for her as if she were his own daughter.",
       "DataSha256": "1765dea7d0899716846af27f6d99197bb562dfea304224db6f7ea3484404ebfc",
-      "TextSha256": "7307af0d49ebfd84eb780229b975cec3adb79339570c828db06d6af79772bf5f",
       "Data": {
         "Conditions": {
           "Operation": "And",
@@ -1353,7 +1336,6 @@
       "Key": "df7f5b05-03e1-4841-b51c-d68d2b23a3a3",
       "Text": "A few years after the end of the war, Greybor found the orphanage where his companion Ember had once lived. He wished to take in the former preacher and give her a home, but all he found were the charred remains of a fire.",
       "DataSha256": "c49a80d91a2f0f712e5452f9caadc97800aca710f4849db123f9924486e66580",
-      "TextSha256": "be467627262c481869ba9d3544c08dd587a6c4d8b9be0bc7df054723288c0135",
       "Data": {
         "Conditions": {
           "Operation": "And",

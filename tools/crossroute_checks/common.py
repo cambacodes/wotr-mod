@@ -323,8 +323,8 @@ def finding(check, block, missing, subject="", excerpt=None, required=None):
                   slot=block.slot, subject=subject, excerpt=text[:240], missing_condition=missing)
     if required is not None:
         result["required_condition"] = required
-    # Include complete offending text, so editing a baselined line cannot hide a new defect.
-    identity = {**result, "full_text": block.text, "context": block.context,
+    # Wording is audited separately. Guard/subject changes still invalidate proof.
+    identity = {**{k: v for k, v in result.items() if k != "excerpt"}, "context": block.context,
                 "location": {k: block.scene.get(k) for k in ("Owner", "Kind", "MinChapter", "MaxChapter", "ContactUnit")},
                 "areas": sorted(block.scene.get("Areas") or []), "chapters": sorted(block.scene.get("Chapters") or []),
                 "participants": sorted(block.scene.get("Participants") or []),

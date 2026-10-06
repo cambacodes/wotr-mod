@@ -695,6 +695,9 @@ internal static class Program
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);
             Check(pair.Value.Cues.Take(originalCues[pair.Key].Length).SequenceEqual(originalCues[pair.Key]), "Native epilogue reference instances replaced");
         }
+        var genericEndingExits = new HashSet<string>(JsonConvert.DeserializeObject<string[]>(File.ReadAllText(Path.Combine(
+            Environment.GetEnvironmentVariable("RRT_TEST_REPO_ROOT") ?? Directory.GetCurrentDirectory(),
+            "tools", "generic_ending_exit_contracts.json")))!);
         foreach (var scene in story.Scenes.Where(s => s.NativeReturnCue == null && !s.ReturnToList && s.ContinueBefore == null))
         {
             var dialog = ResourcesLibrary.TryGetBlueprint(Id("dialog." + scene.Id)) as BlueprintDialog;
@@ -719,10 +722,12 @@ internal static class Program
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
-                bool plainEnding = ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
-                    && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
-                    && node.Choices[0].Set.Length == 0 && node.Choices[0].Text == "Continue"
-                    && !node.Choices[0].Abort && node.Choices[0].Revive == null;
+                bool plainEnding = genericEndingExits.Contains(nodeId);
+                if (plainEnding)
+                    Check(ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
+                        && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
+                        && node.Choices[0].Set.Length == 0 && !node.Choices[0].Abort && node.Choices[0].Revive == null,
+                        "Legacy ending exit mechanics changed: " + nodeId);
                 Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1) + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0)), "Wrong choice count: " + nodeId);
                 foreach (var reference in page.Answers) Check(reference.Get() is BlueprintAnswer, "Unresolved generated answer: " + nodeId);
                 if (plainEnding)

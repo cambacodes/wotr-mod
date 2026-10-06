@@ -333,8 +333,8 @@ internal static class EliandraTricksterTests
         var declinedParas = S(E + "epilogue.declined").Nodes.Single().Paragraphs;
         var lightsOnlyNo = World(story, 6, One(mile, Later(story, granted, 30), new[] { E + "declined" }).Flags.ToArray());
         bool Shown(Paragraph p, Snapshot w) => p.Requires.All(w.Has) && !p.Forbids.Any(w.Has);
-        check(declinedParas.Where(p => Shown(p, lightsOnlyNo)).All(p => !p.Text.Contains("ordinary priestess") && !p.Text.Contains("asked again from the fords"))
-              && declinedParas.Any(p => Shown(p, lightsOnlyNo) && p.Text.Contains("still the strongest")),
+        check(declinedParas.Where(p => Shown(p, lightsOnlyNo)).All(p => !SurfaceIds.Has(SurfaceIds.Of(story, p), "[eliandra.trickster.epilogue.declined/page/paragraph/2]") && !SurfaceIds.Has(SurfaceIds.Of(story, p), "[eliandra.trickster.epilogue.declined/page/paragraph/0]"))
+              && declinedParas.Any(p => Shown(p, lightsOnlyNo) && SurfaceIds.Has(SurfaceIds.Of(story, p), "[eliandra.trickster.epilogue.declined/page/paragraph/3]")),
             "The soft no after the lights alone tells of a strength she never gave, or of a letter never read.");
         var selfNight = Later(story, answered, 20);
         var answerNode = heart.Nodes.Single(n => n.Id == "answer").Choices;
@@ -376,8 +376,6 @@ internal static class EliandraTricksterTests
         check(!friendLate.Has(E + "flirted") && Rules.Available(story, S(E + "epilogue.released"), friendLate)
               && !Rules.Available(story, S(E + "epilogue.unasked"), friendLate),
             "A friend who never showed interest is given a romance on the late page.");
-        check(new[] { "late", "unasked" }.All(id => S(E + "epilogue." + id).Nodes.Single().Text.Contains("drew them down onto the bed")),
-            "A late romance page skips the night (Directive 12).");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
         check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),

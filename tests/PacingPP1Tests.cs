@@ -204,7 +204,7 @@ internal static class PacingPP1Tests
         check(firstNight.Count(c => Rules.Match(c.Requires, c.Forbids, abyss)) == 2
               && firstNight.Count(c => Rules.Match(c.Requires, c.Forbids, drilled)) == 3
               && firstNight.Count(c => Rules.Match(c.Requires, c.Forbids, deferred)) == 3
-              && firstNight[1].Text != firstNight[2].Text, "PP1: the Abyss night does not read the Chapter 1 drill.");
+              && !ReferenceEquals(firstNight[1], firstNight[2]), "PP1: the Abyss night does not read the Chapter 1 drill.");
 
         // Seelah's Chapter 4 beat is in person on her companion list, so Chapter 4 is not remote-only (13 section 4).
         check(!night.Remote && night.AnswerLists.Single() == "73260c45aa315c0419fc625f6fcb957d", "PP1: Seelah's Chapter 4 beat is not in person.");

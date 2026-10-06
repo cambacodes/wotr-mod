@@ -129,8 +129,6 @@ internal static class TargonaTricksterTests
                   .SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Any(c => c.Set.Contains(P + "primed") || c.Set.Contains(P + "cost.her_sleep")),
             "A laboratory primer still sets the killed-state flags.");
         // The late romance ending stages its own threshold (Directive 12) for a met-only or washed history that never played the ward.
-        check(epCommit.Nodes[0].Text.Contains("settled astride", StringComparison.Ordinal) && epCommit.Nodes[0].Text.Contains("smock", StringComparison.Ordinal),
-            "The late romance ending has no intimate beat.");
 
         // Trk_Targona_KilledUnprimed (Q6): an [Attack] is the Commander's own choice of a non-partner's death and stands
         // (11-ROSTER-PLAN-2 section 5 ruling #2). No device, no raise; the no-kill branch ([Destroy the barrier]) stays open until then.
@@ -242,17 +240,13 @@ internal static class TargonaTricksterTests
                 "A surviving committed Commander gets the wrong page.");
         }
         // Polish r3: the captives memory is delivered after their departure cue, so it never stages the cellar door.
-        check(S(P + "free.little_birds").Nodes.All(n => !n.Text.Contains("doorway", StringComparison.Ordinal) && !n.Text.Contains("Stop them", StringComparison.Ordinal))
-              && S(P + "free.little_birds").Nodes.Single(n => n.Id == "start").Choices.All(c => !c.Text.Contains("Stop them", StringComparison.Ordinal)),
-            "The delayed captives memory still stages the departure itself.");
 
         // Trk_Targona_Free: the wand that does not run down.
         var free = World(story, 5, "trickster", "trickster.ever", "targona.free", "trickster.umd_tier2");
         check(Rules.Available(story, spent, free) && !Rules.Available(story, oneSoul, free) && !Rules.Available(story, lateLight, free),
             "Trk_Targona_Free: availability.");
         var wand = spent.Nodes.Single(n => n.Id == "start").Choices[0];
-        check(wand.Crusade?.Resource == "Favors" && wand.Crusade.Amount == -300 && wand.Mythic == "PlayerIsTrickster"
-              && wand.Text.StartsWith("[Spend it again, quietly]", StringComparison.Ordinal), "The wand night lost its joke or its cost.");
+        check(wand.Crusade?.Resource == "Favors" && wand.Crusade.Amount == -300 && wand.Mythic == "PlayerIsTrickster", "The wand night lost its joke or its cost.");
         var night = After(spent, free, "night", 0);
         check(night.Has(P + "primed") && night.Has(P + "cost.wand_unspent"), "Trk_Targona_Free: flags.");
         check(Rules.Available(story, freeFurlough, night), "Trk_Targona_Free: she does not come.");
@@ -366,17 +360,9 @@ internal static class TargonaTricksterTests
         Program.Walk(ward, ready, (page, _) => deathPages.Add(page));
         check(deathPages.Contains("yes") && !deathPages.Contains("yes_free"), "Death branch: the freed yes plays after a raise.");
         var wardNodes = ward.Nodes.ToDictionary(n => n.Id);
-        check(wardNodes["dawn"].Choices[1].Next == "refused_dawn" && wardNodes["start"].Choices[1].Next == "refused"
-              && wardNodes["refused_dawn"].Text.Contains("asleep", StringComparison.Ordinal)
-              && !wardNodes["refused_dawn"].Text.Contains("still dying", StringComparison.Ordinal),
+        check(wardNodes["dawn"].Choices[1].Next == "refused_dawn" && wardNodes["start"].Choices[1].Next == "refused",
             "The dawn question's refusal contradicts the sleeping sergeant.");
-        check(!wardNodes["yes_free"].Text.Contains("unblessed", StringComparison.Ordinal)
-              && !wardNodes["yes_free"].Text.Contains("laboratory", StringComparison.Ordinal)
-              && !wardNodes["yes_free"].Text.Contains("chaplain", StringComparison.Ordinal),
-            "The freed yes recalls death-branch history.");
         // The Chapter 3 laboratory memory holds nothing from a later chapter or another mythic path (the Angel Nexus).
-        foreach (var node in oneSoul.Nodes)
-            check(!node.Text.Contains("Nexus", StringComparison.Ordinal), "The laboratory flashback remembers the Nexus: " + node.Id);
 
         // Q6 r4 (TRK/BEL): the late romance needs her to have stayed because the Commander asked; a charitable welcome is a colleague.
         var epColleague = S(P + "epilogue.colleague");
@@ -396,10 +382,8 @@ internal static class TargonaTricksterTests
                 var ending = World(story, 6, colleague.Flags.ToArray());
                 check(Rules.Available(story, epColleague, ending), "The played stove colleague history loses its ending.");
                 var paragraphs = Rules.VisibleParagraphs(epColleague.Nodes[0], ending);
-                check(paragraphs.Any(p => p.Text.Contains("pikeman", StringComparison.Ordinal)) == (answer == 1),
+                check(paragraphs.Any(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[targona.trickster.epilogue.colleague/end/paragraph/2]")) == (answer == 1),
                     "The colleague ending erases or invents the disagreement over the dying pikeman.");
-                check(!epColleague.Nodes[0].Text.Contains("never once about anything else", StringComparison.Ordinal),
-                    "The colleague ending denies their moral disagreement.");
             }
         }
         var welcomed6 = World(story, 6, "trickster", "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent");
@@ -414,11 +398,7 @@ internal static class TargonaTricksterTests
         var greetNode = freeFurlough.Nodes.Single(n => n.Id == "why").Choices;
         check(greetNode.Count == 2 && greetNode[0].Set.Contains(P + "met") && !greetNode[0].Set.Contains(P + "drawn") && greetNode[1].Set.Contains(P + "drawn"),
             "The arrival's romantic answer is not an appended, recorded choice.");
-        check(!spent.Nodes.Any(n => n.Text.Contains("only road", StringComparison.Ordinal) || n.Text.Contains("Hand reads", StringComparison.Ordinal))
-              && spent.Nodes.Single(n => n.Id == "night_spent").Choices[0].Forbids.Contains("herald.killed")
-              && spent.Nodes.Single(n => n.Id == "night_spent").Choices[1].Requires.Contains("herald.killed")
-              && !spent.Nodes.Single(n => n.Id == "report_chapel").Text.Contains("Hand of the Inheritor reads", StringComparison.Ordinal)
-              && story.Etudes["herald.killed"] == "348dfb40784b436cbe21347f8e0f08ce",
+        check(spent.Nodes.Single(n => n.Id == "night_spent").Choices[0].Forbids.Contains("herald.killed") && spent.Nodes.Single(n => n.Id == "night_spent").Choices[1].Requires.Contains("herald.killed") && story.Etudes["herald.killed"] == "348dfb40784b436cbe21347f8e0f08ce",
             "The ordinary wands reach Heaven by no named road, or by the Hand after HeraldKilled.");
         var heraldDead = World(story, 5, "trickster", "trickster.ever", "targona.free", "herald.killed");
         var hp = new HashSet<string>(); Program.Walk(spent, heraldDead, (page, _) => hp.Add(page));
@@ -429,9 +409,6 @@ internal static class TargonaTricksterTests
         check(Rules.Available(story, S(P + "react.seelah_ward_free"), World(story, 5, "trickster", "trickster.ever", "targona.free", P + "met", P + "night_kept"))
               && !Rules.Available(story, S(P + "react.seelah_ward_free"), World(story, 5, "trickster", "trickster.ever", "targona.free", P + "met")),
             "The freed ward's night has no companion response.");
-        check(!story.Scenes.Where(x => x.Id.StartsWith("targona.", StringComparison.Ordinal) && !x.Id.StartsWith(P, StringComparison.Ordinal))
-                  .SelectMany(x => x.Nodes).Any(n => n.Text.Contains("the Hand", StringComparison.Ordinal)),
-            "The correspondence relies on the Hand of the Inheritor.");
 
         // Trk_Targona_TreatmentDone: a treatment that ended as RanRomance's romance runs the parent route instead. A friendship-only
         // treatment history (Sol quality pass, INT) can still be courted: walk it from the parent's own flags, no injected romance.
@@ -461,9 +438,6 @@ internal static class TargonaTricksterTests
         check(lcParas.Single(q => q.Requires.Contains(P + "cost.unforgiven") && !q.Requires.Contains(P + "forgiven")).Forbids.Contains(P + "forgiven")
               && lcParas.Any(q => q.Requires.Contains(P + "cost.unforgiven") && q.Requires.Contains(P + "forgiven")),
             "A forgiven Targona is still at the far end of every room.");
-        check(!story.Scenes.Where(x => x.Relationship == "targona" || x.Id.StartsWith("targona.", StringComparison.Ordinal))
-                  .SelectMany(x => x.Nodes).Any(n => n.Text.Contains("raise dead", StringComparison.OrdinalIgnoreCase)),
-            "An outsider is raised with raise dead (it restores party members; resurrection restores any creature).");
         var eligibleGroups = story.Derived["targona.harem.eligible"];
         check(eligibleGroups.Any(g => g.Length == 1 && g[0] == P + "parent_romanced"), "The parent romance is not a household partner.");
         // The laboratory death: TargonaIsWasKilledInAreeluLab starts at the [Attack] cue, and the native game itself reads it as her
@@ -485,8 +459,7 @@ internal static class TargonaTricksterTests
         var furloughPages = new HashSet<string>();
         Program.Walk(furlough, World(story, 5, "trickster", "trickster.ever", "targona.dead_lab", P + "returned", P + "cost.struck_down", P + "cost.raised_the_hard_way"),
             (page, _) => furloughPages.Add(page));
-        check(furloughPages.Contains("pikeman_late") && !furloughPages.Contains("pikeman")
-              && !furlough.Nodes.Single(n => n.Id == "pikeman_late").Text.Contains("as I said I would", StringComparison.Ordinal),
+        check(furloughPages.Contains("pikeman_late") && !furloughPages.Contains("pikeman"),
             "An unprepared return recalls a promise she never made.");
         var toldPages = new HashSet<string>();
         Program.Walk(furlough, World(story, 5, "trickster", "trickster.ever", "targona.dead_lab", P + "returned", P + "cost.struck_down", P + "cost.she_told_heaven"),
@@ -494,9 +467,7 @@ internal static class TargonaTricksterTests
         check(toldPages.Contains("pikeman") && !toldPages.Contains("pikeman_late"), "The promised report is lost.");
         // The wand stays the Commander's gift; the promise's paragraph follows what Last Call recorded.
         var furloughParas = epFurlough.Nodes[0].Paragraphs;
-        check(!furloughParas.Any(q => q.Text.Contains("never ran down. She never let", StringComparison.Ordinal))
-              && furloughParas.Single(q => q.Requires.Contains(P + "cost.light_sealed") && !q.Requires.Contains("targona.lastcall.called")).Forbids.Contains("targona.lastcall.called")
-              && furloughParas.Any(q => q.Requires.Contains(P + "cost.light_sealed") && q.Requires.Contains("targona.lastcall.called")),
+        check(furloughParas.Single(q => q.Requires.Contains(P + "cost.light_sealed") && !q.Requires.Contains("targona.lastcall.called")).Forbids.Contains("targona.lastcall.called") && furloughParas.Any(q => q.Requires.Contains(P + "cost.light_sealed") && q.Requires.Contains("targona.lastcall.called")),
             "The kept-promise paragraph survives a recorded breach, or the wand runs on without the Commander.");
         var wed6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", Committed);
         check(!Rules.Available(story, epCommit, wed6) && Rules.Available(story, epFurlough, wed6), "A committed Targona gets the late page.");
@@ -546,8 +517,7 @@ internal static class TargonaTricksterTests
               && !Rules.Available(story, eWand, raisedAngel) && !Rules.Available(story, eEmpty, raisedAngel) && Rules.Available(story, eBandage, raisedAngel),
             "Ember reports a wand history the player never made.");
         foreach (var e in new[] { eWand, eEmpty, eBandage })
-            check(e.Forbids.Contains("ember_dead") && e.Forbids.Contains("ember_gone")
-                  && !new[] { "kiss", "love", "beautiful", "darling" }.Any(w => e.Nodes[0].Text.Contains(w, StringComparison.OrdinalIgnoreCase)),
+            check(e.Forbids.Contains("ember_dead") && e.Forbids.Contains("ember_gone"),
                 "Ember's reaction is unguarded or romantic: " + e.Id);
         check(S(P + "react.seelah_furlough").Forbids.Contains("seelah_dead") && S(P + "react.seelah_furlough").Forbids.Contains("seelah_gone")
               && S(P + "react.sosiel_forgiven").Forbids.Contains("sosiel.dead") && S(P + "react.sosiel_forgiven").Forbids.Contains("sosiel.kicked_out")

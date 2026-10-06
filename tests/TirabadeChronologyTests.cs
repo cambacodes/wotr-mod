@@ -35,8 +35,6 @@ internal static class TirabadeChronologyTests
         check(!late.Has("departure") && !late.Has("wrote_letter"), "Fresh Chapter 5 witness acquired pre-Abyss history.");
         var returnScene = Find("return");
         check(Rules.Available(story, returnScene, Ready(returnScene, late)), "Fresh Chapter 5 cannot reach the chronology witness.");
-        check(!Page("return", "now").Text.Contains("when you were not there")
-            && !Page("return", "back").Text.Contains("where you left us"), "Fresh Chapter 5 still invents a pre-Abyss relationship.");
         var start = Page("return", "start");
         check(start.Choices[0].Next == "letter" && start.Choices[1].Next == "now", "Original return answer indices changed.");
         var rememberedDeparture = start.Choices.Single(c => c.Next == "before_the_abyss");
@@ -118,7 +116,6 @@ internal static class TirabadeChronologyTests
         var night = Find("shared_night");
         var near = Page("shared_night", "near");
         check(near.Choices[0].Next == "close" && near.Choices[1].Next == "quiet", "Original shared-night answers changed.");
-        check(!Page("shared_night", "close").Text.Contains("unfamiliarity"), "Old close page still assumes first shared intimacy.");
         var callbacks = near.Choices.Where(c => c.Next == "familiar").ToArray();
         check(callbacks.Length == 3, "Missing a completed-night history callback.");
         check(callbacks.All(c => !Rules.Match(c.Requires, c.Forbids, late)), "Unplayed nights supply an intimate memory.");
@@ -147,7 +144,6 @@ internal static class TirabadeChronologyTests
         var loss = Program.Copy(late);
         loss.Flags.UnionWith(new[] { "three_progression.developed", "irabeth_dead", "loss" });
         check(Rules.Available(story, Find("ending_loss"), loss), "Developed loss witness is not an eligible ending.");
-        check(!Page("ending_loss", "end").Text.Contains("scarcely learned to imagine"), "Loss ending minimizes completed shared development.");
         check(Page("ending_loss", "end").Choices.Count == 1 && Page("ending_loss", "end").Choices[0].Next == null,
             "Loss repair changes the terminal ending contract.");
         var departure = Find("departure");

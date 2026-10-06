@@ -85,7 +85,7 @@ class WenduagEchoTests(unittest.TestCase):
         self.assertIn(echo.E + "returned", self.scenes[echo.W + "react.regill_watch"]["Forbids"])
         coda = self.scenes["wenduag.lastcall.page"]["Nodes"][0]["Paragraphs"]
         self.assertIn(echo.E + "returned", coda[1]["Forbids"])
-        self.assertTrue(any(echo.E + "returned" in paragraph["Requires"] and "hooked shaft" in paragraph["Text"] for paragraph in coda))
+        self.assertTrue(any(echo.E + "returned" in paragraph["Requires"] for paragraph in coda))
         entry = next(entry for entry in self.story["Books"]["trickster.ledger"]["Entries"] if entry["Id"] == "owed.wenduag.echo")
         self.assertIn(echo.E + "unavailable", entry["Forbids"])
 

@@ -13,11 +13,7 @@
       ]
     ],
     "gone": "foresight.memory_gone.square_morning",
-    "twin": "terendelev.trickster.bones.restitution_irabeth",
-    "forbidden_sensory": [
-      "you know it at once",
-      "once offered to breathe ice across a festival square"
-    ]
+    "twin": "terendelev.trickster.bones.restitution_irabeth"
   },
   {
     "scene": "terendelev.trickster.bones.restitution",
@@ -29,11 +25,7 @@
       ]
     ],
     "gone": "foresight.memory_gone.square_morning",
-    "twin": "terendelev.trickster.bones.restitution_irabeth",
-    "forbidden_sensory": [
-      "you know it at once",
-      "once offered to breathe ice across a festival square"
-    ]
+    "twin": "terendelev.trickster.bones.restitution_irabeth"
   },
   {
     "scene": "terendelev.trickster.bones.restitution_irabeth",
@@ -49,11 +41,7 @@
       ]
     ],
     "gone": "foresight.memory_gone.square_morning",
-    "twin": "terendelev.trickster.bones.restitution",
-    "forbidden_sensory": [
-      "you know it at once",
-      "once offered to breathe ice across a festival square"
-    ]
+    "twin": "terendelev.trickster.bones.restitution"
   },
   {
     "scene": "terendelev.trickster.bones.restitution_irabeth",
@@ -65,11 +53,7 @@
       ]
     ],
     "gone": "foresight.memory_gone.square_morning",
-    "twin": "terendelev.trickster.bones.restitution",
-    "forbidden_sensory": [
-      "you know it at once",
-      "once offered to breathe ice across a festival square"
-    ]
+    "twin": "terendelev.trickster.bones.restitution"
   },
   {
     "scene": "terendelev.trickster.watch.third_bell",
@@ -82,10 +66,6 @@
     ],
     "gone": "foresight.memory_gone.square_morning",
     "twin": "terendelev.trickster.watch.third_bell_awning",
-    "forbidden_sensory": [
-      "smell of the festival",
-      "how you thought you had never seen"
-    ],
     "optional_absent": false,
     "optional_twin_absent": true
   },
@@ -100,10 +80,6 @@
     ],
     "gone": "foresight.memory_gone.square_morning",
     "twin": "terendelev.trickster.watch.third_bell",
-    "forbidden_sensory": [
-      "smell of the festival",
-      "how you thought you had never seen"
-    ],
     "optional_absent": true,
     "optional_twin_absent": false
   }

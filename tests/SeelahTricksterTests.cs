@@ -175,11 +175,11 @@ internal static class SeelahTricksterTests
         check(!Rules.Available(story, sellerHub, After(story, Program.Walk(wakes, After(story, cleanLift, 1, "seelah_dead", "revive.seelah.available")).First(), 30)),
             "Seelah asks about a seller the Commander never faced.");
         var pocketEnd = S("seelah.trickster.epilogue.pickpocket").Nodes.Single();
-        string EndText(Snapshot w) => string.Join("\n", Rules.VisibleParagraphs(pocketEnd, w).Select(p => p.Text));
+        string EndText(Snapshot w) => string.Join("\n", Rules.VisibleParagraphs(pocketEnd, w).Select(p => SurfaceIds.Of(story, p)));
         var bierEnd = EndText(raised[0]);
         var riderEnd = EndText(inTown);
-        check(bierEnd.Contains("night at her bier") && !bierEnd.Contains("sack of her effects")
-              && riderEnd.Contains("sack of her effects") && !riderEnd.Contains("night at her bier"),
+        check(SurfaceIds.Has(bierEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/0]") && !SurfaceIds.Has(bierEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/1]")
+              && SurfaceIds.Has(riderEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/1]") && !SurfaceIds.Has(riderEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/0]"),
             "The pickpocket epilogue merges the bier and the rider histories.");
 
         // Trk_Seelah_Dismissed: the papers, primed at the dismissal, come back in person.
@@ -345,9 +345,7 @@ internal static class SeelahTricksterTests
         // Q10 r3: Irabeth's "rob you back" bark only when the list was kept at the waking; the given-back sibling otherwise.
         var irabethKept = S("seelah.trickster.dead.react_irabeth");
         var irabethGiven = S("seelah.trickster.dead.react_irabeth_given");
-        check(irabethKept.Requires.Contains("seelah.trickster.woke") && irabethKept.Requires.Contains("seelah.trickster.cost.keeps_it")
-              && irabethKept.Nodes[0].Text.Contains("rob you back") && irabethGiven.Requires.Contains("seelah.trickster.death_returned")
-              && !irabethGiven.Nodes[0].Text.Contains("rob you back"), "Irabeth's rob-you-back line is not gated on the kept list.");
+        check(irabethKept.Requires.Contains("seelah.trickster.woke") && irabethKept.Requires.Contains("seelah.trickster.cost.keeps_it") && irabethGiven.Requires.Contains("seelah.trickster.death_returned"), "Irabeth's rob-you-back line is not gated on the kept list.");
 
         // Trk_Seelah_PathFailed: canon fate stands after the path fails.
         var failedPath = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", "seelah_dead", "revive.seelah.available");

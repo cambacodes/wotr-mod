@@ -49,7 +49,7 @@ internal static class PresenceBootstrapInventoryTests
                 if (choice.Crusade != null) next.CrusadeResources![choice.Crusade.Resource] += choice.Crusade.Amount;
                 foreach (var flag in choice.Set)
                     if (next.Flags.Add(flag)) next.Times[flag] = next.Hour;
-                var route = new List<string>(selected) { node.Id + "[" + node.Choices.IndexOf(choice) + "]: " + choice.Text };
+                var route = new List<string>(selected) { node.Id + "[" + node.Choices.IndexOf(choice) + "]: " + SurfaceIds.Of(story, choice) };
                 foreach (var target in Rules.NextNodes(choice))
                     if (Visit(target, next, new HashSet<string>(path), route)) return true;
                 if (choice.Next == null && choice.Check == null && !choice.Abort && next.Has(output) && !without.Any(next.Has))

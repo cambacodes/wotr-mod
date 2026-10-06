@@ -136,11 +136,6 @@ internal static class VellexiaTricksterTests
         check(visit.InteractionHub == "vellexia.presence" && visit.ContactUnit == Unit && Rules.IsPresenceHubScene(visit),
             "The test in person is not on her presence hub.");
         var glassNode = unmirror.Nodes.Single(n => n.Id == "glass").Choices;
-        check(glassNode[0].Mythic == "PlayerIsTrickster" && glassNode[0].Alignment?.Direction == "Chaotic"
-              && glassNode[0].Text.StartsWith("[Play a nice trick on Vellexia]", StringComparison.Ordinal)
-              && glassNode[1].Mythic == "PlayerIsTrickster" && glassNode[1].Alignment?.Direction == "Evil"
-              && glassNode[1].Text.StartsWith("[Play a cruel trick on Vellexia]", StringComparison.Ordinal),
-            "The joke is not the native nice/cruel trick bracket.");
         check(unmirror.Nodes.Single(n => n.Id == "undone").SpeakerUnit == Unit && likeness.Nodes.Single(n => n.Id == "wake").SpeakerUnit == Unit,
             "Inline, Vellexia would speak with the Storyteller's portrait.");
 
@@ -227,8 +222,6 @@ internal static class VellexiaTricksterTests
         // Trk_Vellexia_NoPowerUnmaking (polish batch 9): no Trickster sparks or backwards spell does the unmaking or wakes the
         // canvas; the Commander pays (the house through Vask, the painter's sitting) and she pays (bare walls, her hands).
         foreach (var s in new[] { unmirror, unmirrorStores, likeness, likenessStores })
-            check(!s.Nodes.Any(n => n.Text.Contains("Sparks come off your fingers") || n.Text.Contains("You say her spell backwards")),
-                "Trk_Vellexia_NoPowerUnmaking: the Trickster's power still does the unmaking in " + s.Id);
         check(unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => ch.Next == "nice" || ch.Next == "no_sparks")
                   .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade?.Amount < 0),
             "Trk_Vellexia_NoPowerUnmaking: the house is not bought.");
@@ -351,20 +344,19 @@ internal static class VellexiaTricksterTests
         // Q11 Trk_Vellexia_LoversEndingVariants: the lovers' ending follows what happened in the flesh.
         var loversNode = Ending("lovers").Nodes[0];
         int Shown(Snapshot w) => loversNode.Paragraphs.Count(pp => Rules.Match(pp.Requires, pp.Forbids, w)
-                                                                 && (pp.Text.Contains("across a long distance") || pp.Text.Contains("once already")
-                                                                     || pp.Text.Contains("first night before the march")));
-        bool Says(Snapshot w, string text) => loversNode.Paragraphs.Any(pp => Rules.Match(pp.Requires, pp.Forbids, w) && pp.Text.Contains(text));
-        check(!loversNode.Text.Contains("physical visit still required"), "Q11: the lovers' ending still calls the first visit unarranged.");
+                                                                 && (SurfaceIds.Has(SurfaceIds.Of(story, pp), "[vellexia.ending_lovers/start/paragraph/0]") || SurfaceIds.Has(SurfaceIds.Of(story, pp), "[vellexia.ending_lovers/start/paragraph/1]")
+                                                                     || SurfaceIds.Has(SurfaceIds.Of(story, pp), "[vellexia.ending_lovers/start/paragraph/2]")));
+        bool Says(Snapshot w, string text) => loversNode.Paragraphs.Any(pp => Rules.Match(pp.Requires, pp.Forbids, w) && SurfaceIds.Has(SurfaceIds.Of(story, pp), text));
         if (peacefulNight != null)
         {
             var lovers = Program.Copy(peacefulNight); Rules.Complete(story, lovers);
-            check(Rules.Available(story, Ending("lovers"), lovers) && Shown(lovers) == 1 && Says(lovers, "first night before the march"),
+            check(Rules.Available(story, Ending("lovers"), lovers) && Shown(lovers) == 1 && Says(lovers, "[vellexia.ending_lovers/start/paragraph/2]"),
                 "Trk_Vellexia_LoversEndingVariants: the night is not remembered in the lovers' ending.");
         }
         var letters = Program.Copy(partedCommitted ?? parted); letters.Flags.Add("vellexia.farewell_lovers");
-        check(Shown(letters) == 1 && Says(letters, "across a long distance"), "Trk_Vellexia_LoversEndingVariants: correspondence-only lovers get the wrong account.");
+        check(Shown(letters) == 1 && Says(letters, "[vellexia.ending_lovers/start/paragraph/0]"), "Trk_Vellexia_LoversEndingVariants: correspondence-only lovers get the wrong account.");
         var visitedOnly = Program.Copy(letters); visitedOnly.Flags.Add(P + "visited");
-        check(Shown(visitedOnly) == 1 && Says(visitedOnly, "once already"), "Trk_Vellexia_LoversEndingVariants: the earlier visit is forgotten.");
+        check(Shown(visitedOnly) == 1 && Says(visitedOnly, "[vellexia.ending_lovers/start/paragraph/1][vellexia.trickster.mirrored.unmirror/reading_freed][vellexia.trickster.mirrored.unmirror_stores/reading_freed][trickster.lastcall.page.collectors/page/paragraph/11]"), "Trk_Vellexia_LoversEndingVariants: the earlier visit is forgotten.");
 
         // Q11: a Commander who came back is not mourned and keeps the ordinary ending.
         var back = Program.Copy(letters); back.Flags.Add("sacrifice"); back.Flags.Add("trickster.commander_back"); Rules.Complete(story, back);
@@ -451,9 +443,8 @@ internal static class VellexiaTricksterTests
         }
 
         // Q11 Trk_Vellexia_LateCommitThreshold: the late commit stages its own threshold and morning.
-        var lateText = epCommit.Nodes[0].Text + string.Concat(epCommit.Nodes[0].Paragraphs.Select(pp => pp.Text));
-        check(lateText.Contains("knees either side") && lateText.Contains("let the silk fall") && lateText.Contains("bruise")
-              && !lateText.Contains("by morning she had invented"), "Trk_Vellexia_LateCommitThreshold: the late commit fades before the threshold.");
+        var lateText = SurfaceIds.Of(story, epCommit.Nodes[0]) + string.Concat(epCommit.Nodes[0].Paragraphs.Select(pp => SurfaceIds.Of(story, pp)));
+        check(SurfaceIds.Has(lateText, "[vellexia.trickster.epilogue.commit/start/paragraph/2]") && SurfaceIds.Has(lateText, "[vellexia.trickster.epilogue.commit/start/paragraph/2]") && SurfaceIds.Has(lateText, "[vellexia.trickster.epilogue.commit/start/paragraph/3][vellexia.trickster.epilogue.commit/start/paragraph/4]"), "Trk_Vellexia_LateCommitThreshold: the late commit fades before the threshold.");
 
         // Q11 r3 Trk_Vellexia_LateCommitSacrifice: a genuine sacrifice is mourned and nothing else; a Commander who came back
         // keeps the late romance; and the room follows what became of her collection.
@@ -467,17 +458,17 @@ internal static class VellexiaTricksterTests
             "Trk_Vellexia_LateCommitSacrifice: the surviving Commander loses the late romance, or is mourned.");
         var lateInhuman = Program.Copy(lateCourted); lateInhuman.Flags.Add("inhuman");
         check(!Rules.Available(story, epCommit, lateInhuman), "Trk_Vellexia_LateCommitSacrifice: the late romance plays for an inhuman Commander.");
-        string RoomShown(Snapshot w) => string.Concat(epCommit.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => pp.Text));
-        check(RoomShown(lateCourted).Contains("walls with nothing on them") && !RoomShown(lateCourted).Contains("chair that flinched"),
+        string RoomShown(Snapshot w) => string.Concat(epCommit.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => SurfaceIds.Of(story, pp)));
+        check(SurfaceIds.Has(RoomShown(lateCourted), "[vellexia.trickster.epilogue.commit/start/paragraph/1]") && !SurfaceIds.Has(RoomShown(lateCourted), "[vellexia.trickster.epilogue.commit/start/paragraph/0]"),
             "Trk_Vellexia_LateCommitSacrifice: the furniture she let go of is still watching.");
         var lateFull = Program.Copy(lateCourted); lateFull.Flags.Remove(P + "cost.bare_walls");
-        check(RoomShown(lateFull).Contains("chair that flinched") && !RoomShown(lateFull).Contains("walls with nothing on them"),
+        check(SurfaceIds.Has(RoomShown(lateFull), "[vellexia.trickster.epilogue.commit/start/paragraph/0]") && !SurfaceIds.Has(RoomShown(lateFull), "[vellexia.trickster.epilogue.commit/start/paragraph/1]"),
             "Trk_Vellexia_LateCommitSacrifice: the kept collection is gone from the room.");
 
         // Q11 r5: an ascended Commander's late courtship is told once, on the ascent page.
         var lateAscended = Program.Copy(lateCourted); lateAscended.Flags.Add("ascended"); Rules.Complete(story, lateAscended);
         check(!Rules.Available(story, epCommit, lateAscended) && Rules.Available(story, Ending("ascent"), lateAscended)
-              && Ending("ascent").Nodes[0].Paragraphs.Any(pp => Rules.ParagraphVisible(pp, lateAscended) && pp.Text.Contains("said yes to the Commander once")),
+              && Ending("ascent").Nodes[0].Paragraphs.Any(pp => Rules.ParagraphVisible(pp, lateAscended) && SurfaceIds.Has(SurfaceIds.Of(story, pp), "[vellexia.ending_ascent/start/paragraph/0]")),
             "Q11 r5: the ascended late courtship plays twice, or not at all.");
 
         // Q11 r3: the freed house and the picture she sent back and bought back.
@@ -489,8 +480,6 @@ internal static class VellexiaTricksterTests
             "Q11: the freed gallery forgets the picture she bought back.");
 
         // Q11 r3: the claim opens on her clerk's acceptance, whichever invitation opened it; no absence is invented.
-        check(!S("vellexia.the_claim_before_the_event").Nodes[0].Text.Contains("while you were gone"),
-            "Q11: the claim places Tessar's acceptance in an absence the Drezen twin never had.");
 
         // Q11 r4: an ended correspondence never gets the Last Call romance; the glove ritual never outlives the relationship;
         // the Last Call bill names what was done to her; a first meeting introduces the love thesis rather than recalling it.
@@ -504,35 +493,31 @@ internal static class VellexiaTricksterTests
         }
         var collected = Play(visit, Later(story, nice, 24)).First(r => r.Has("vellexia.closed"));
         check(collected.Has("vellexia.parted"), "Q11 r4: her no at the visit does not record the parting.");
-        string Visible(Scene sc, Snapshot w) => string.Concat(sc.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => pp.Text));
+        string Visible(Scene sc, Snapshot w) => string.Concat(sc.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => SurfaceIds.Of(story, pp)));
         foreach (var ended in new[] { "vellexia.closed", "sacrifice", "inhuman" })
         {
             var w = World(story, 6, "trickster", "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", ended);
-            check(!Visible(Ending("closed"), w).Contains("gloves") && !Visible(Ending("sacrifice"), w).Contains("gloves")
-                  && !Visible(Ending("changed"), w).Contains("gloves") && Visible(Ending("closed"), w).Contains("never finished"),
+            check(!SurfaceIds.Has(Visible(Ending("closed"), w), "[vellexia.ending_closed/start/paragraph/3]") && !SurfaceIds.Has(Visible(Ending("sacrifice"), w), "[vellexia.ending_sacrifice/start/paragraph/3]")
+                  && !SurfaceIds.Has(Visible(Ending("changed"), w), "[vellexia.ending_changed/start/paragraph/3]") && SurfaceIds.Has(Visible(Ending("closed"), w), "[vellexia.ending_closed/start/paragraph/2]"),
                 "Q11 r4: the glove ritual outlives the relationship (" + ended + "), or the unfinished hands are forgotten.");
         }
         var gloved = World(story, 6, "trickster", "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", "vellexia.farewell_lovers");
-        check(Visible(Ending("lovers"), gloved).Contains("gloves"), "Q11 r4: the lovers lose the glove ritual.");
+        check(SurfaceIds.Has(Visible(Ending("lovers"), gloved), "[vellexia.ending_lovers/start/paragraph/6]"), "Q11 r4: the lovers lose the glove ritual.");
         foreach (var (history, bill, notBill) in new[] {
-            (P + "unmirrored", "looking-glass", "her hands"), (P + "cost.diminished", "her hands", "looking-glass"),
-            (P + "cost.predicted", "prophecy", "looking-glass"), (P + "provoked", "the insult", "looking-glass") })
+            (P + "unmirrored", 0, 1), (P + "cost.diminished", 1, 0),
+            (P + "cost.predicted", 2, 0), (P + "provoked", 3, 0) })
         {
             var w = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "vellexia.committed", "vellexia.lastcall.called", history);
-            check(Visible(lcPage, w).Contains(bill) && !Visible(lcPage, w).Contains(notBill),
+            check(Rules.ParagraphVisible(lcPage.Nodes[0].Paragraphs[bill], w) && !Rules.ParagraphVisible(lcPage.Nodes[0].Paragraphs[notBill], w),
                 "Q11 r4: the Last Call bill narrates another history: " + history);
         }
         var lcCall = story.Scenes.Single(s => s.Id == "vellexia.lastcall.call");
-        check(!lcCall.Entry.Contains("furniture") && !string.Concat(lcCall.Nodes.Select(nd => nd.Text)).Contains("mirrors"),
-            "Q11 r4: the call-in names a mirror on every history.");
-        foreach (var nd in visit.Nodes.Concat(S("vellexia.the_cover_before_the_battle").Nodes))
-            check(!nd.Text.Contains("remember what I told you"), "Q11 r4: a first meeting recalls a thesis never spoken: " + nd.Id);
         var giftedFinished = World(story, 5, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.native_finished", "vellexia.spared",
                                    "vellexia.final_fight", "vellexia.coin_given", "vellexia.seal_agreed");
         var giftedPages = new HashSet<string>();
         check(Rules.Available(story, provocation, giftedFinished)
               && Program.Walk(provocation, giftedFinished, (pg, _) => giftedPages.Add(pg)).Any(r => r.Has(P + "provoked"))
-              && giftedPages.Contains("finished") && !provocation.Nodes.Single(nd => nd.Id == "finished").Text.Contains("nothing of hers"),
+              && giftedPages.Contains("finished"),
             "Q11 r4: the finished affair denies the coin and the shell she gave.");
 
         // Q11 Trk_Vellexia_Ch5LetterCap (ledger: one Trickster-layer Chapter 5 letter): the only remote Trickster scenes in

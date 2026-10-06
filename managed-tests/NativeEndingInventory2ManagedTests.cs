@@ -32,9 +32,9 @@ internal static partial class NativeEpilogueEditManagedTests
                 var conditions = cue.Conditions; var onShow = cue.OnShow; var onStop = cue.OnStop; var continuation = cue.Continue;
                 NativeCueTextEdit.Attach(cue, () => {
                     int selected = Rules.SelectNativeEditVariant(story, variants, scenes, state);
-                    return selected < 0 ? null : scenes[selected]!.Nodes[0].Text;
+                    return selected < 0 ? null : scenes[selected]!.Id;
                 });
-                check(NativeCueTextEdit.Display(cue, "native") == scenes[v]!.Nodes[0].Text && NativeCueTextEdit.SuppressVoice(cue),
+                check(NativeCueTextEdit.Display(cue, "native") == scenes[v]!.Id && NativeCueTextEdit.SuppressVoice(cue),
                     "Q8-06 earned native text/voice not reconciled: " + target);
                 check(cue.AssetGuid == BlueprintGuid.Parse(target) && ReferenceEquals(conditions, cue.Conditions)
                     && ReferenceEquals(onShow, cue.OnShow) && ReferenceEquals(onStop, cue.OnStop) && ReferenceEquals(continuation, cue.Continue),

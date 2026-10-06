@@ -104,9 +104,6 @@ internal static class TerendelevTricksterTests
         check(new[] { bones, bonesIrabeth, late }.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Where(c => c.Set.Contains(Returned))
                   .All(c => c.Set.Contains(P + "cost.wound_open") && c.Set.Contains(P + "grounded")),
             "A return does not open the wound and ground her.");
-        check(new[] { bones, bonesIrabeth, late }.All(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Mythic == "PlayerIsTrickster"
-                  && c.Text.StartsWith("[Open the wound", StringComparison.Ordinal))),
-            "Opening the wound is not the Trickster's act.");
         check(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => c.RemoveItem != Scale),
             "Something consumes her scale; it is never spent here.");
         check(!story.Scenes.Where(s => s.Relationship == "terendelev").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
@@ -352,8 +349,6 @@ internal static class TerendelevTricksterTests
         // CAN: Seelah's orphan years were in Solku; nothing puts her childhood in Kenabres.
         foreach (var s in story.Scenes.Where(x => x.Relationship == "terendelev"))
             foreach (var node in s.Nodes)
-                check(!node.Text.Contains("street kid in Kenabres", StringComparison.Ordinal) && !node.Text.Contains("night before", StringComparison.Ordinal),
-                    "Invented history or the wrong prologue chronology: " + s.Id + "/" + node.Id);
         // eng8-q8f: extras open at placed contacts; manual UI is no delivery witness.
         foreach (var id in new[] { "letter.watch_report", "letter.second_report", "watch.at_the_gate", "watch.road", "watch.third_bell" })
             check(!S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))

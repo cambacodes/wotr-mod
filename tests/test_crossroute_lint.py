@@ -316,7 +316,7 @@ class LeftTricksterTests(unittest.TestCase):
 
 
 class ReportingTests(unittest.TestCase):
-    def test_strict_baseline_and_new_text(self):
+    def test_strict_baseline_allows_wording_but_rejects_new_context(self):
         with tempfile.TemporaryDirectory(prefix="rrt-crossroute-") as tmp:
             story, baseline, report, text = [Path(tmp) / name for name in ("Story.json", "baseline.json", "report.json", "report.txt")]
             story.write_text(json.dumps(fixture("{n}Seelah stands by the fire.{/n}")))
@@ -328,6 +328,9 @@ class ReportingTests(unittest.TestCase):
                 self.assertEqual(lint.main(args + ["--strict"]), 0)
                 data = json.loads(story.read_text(encoding="utf-8"))
                 data["Scenes"][0]["Nodes"][0]["Text"] += " A different unguarded beat."
+                story.write_text(json.dumps(data))
+                self.assertEqual(lint.main(args + ["--strict"]), 0)
+                data["Scenes"][0]["Requires"] = ["unrelated.history"]
                 story.write_text(json.dumps(data))
                 self.assertEqual(lint.main(args + ["--strict"]), 1)
             self.assertIn("L1", text.read_text(encoding="utf-8"))

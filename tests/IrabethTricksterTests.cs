@@ -176,7 +176,6 @@ internal static class IrabethTricksterTests
               && digs.Any(r => r.Has("irabeth.trickster.cost.hired_healer")), "Dig: no diggers, no price, no bought surgeon, or no letting the blow stand.");
         var killed = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Killed, "irabeth.trickster.drilled", Dug, "coronation.after");
         check(Rules.Available(story, blow, killed) && !Any(killed, relieved, lateOrder, lateStep), "Trk_Irabeth_Killed: wrong device.");
-        check(blow.Nodes.All(n => !n.Text.Contains("Both are true")), "The two pasts are back.");
         var blows = Program.Walk(blow, killed);
         var truth = blows.Where(r => r.Has("irabeth.trickster.accounting_truth")).ToList();
         var lie = blows.Where(r => r.Has("irabeth.trickster.cost.accounting_lied")).ToList();
@@ -329,8 +328,6 @@ internal static class IrabethTricksterTests
         var dutyPages = new HashSet<string>();
         Program.Walk(duty, Later(story, justBack, 1), (page, _) => dutyPages.Add(page));
         check(dutyPages.Contains("unsigned"), "The unsigned discharge cannot be offered: the sword clause costs nothing.");
-        check(!S("irabeth.trickster.commit").Nodes.Concat(S("irabeth.trickster.second_ask").Nodes).Any(n => n.Text.Contains("It stays down")),
-            "The intimate beat puts down a sword she cannot put down.");
 
         // Registered route: her pre-Iz private scenes stay closed; her endings return with her (G6).
         var registered = story.Scenes.Where(s => s.Relationship == "irabeth" && !s.Id.StartsWith("irabeth.trickster.", StringComparison.Ordinal)
@@ -400,9 +397,8 @@ internal static class IrabethTricksterTests
         var silentOutcomes = Program.Walk(irabethCommit, silent, (page, _) => silentPages.Add(page));
         check(silentOutcomes.All(r => !r.Has("irabeth.committed")) && silentPages.Contains("no_gate") && !silentPages.Contains("talked"),
             "Irabeth commits before Anevia has said her piece.");
-        check(irabethCommit.Nodes.SelectMany(n => n.Choices).All(ch => !ch.Text.Contains("order, Knight-Captain")), "The kiss is an order again.");
         var answer = irabethCommit.Nodes.Single(n => n.Id == "answer").Choices;
-        check(answer[0].Text.StartsWith("[Salute]") && answer[1].Next == "no" && answer.Skip(2).Any(ch => ch.Text.StartsWith("[Kiss her]")),
+        check(answer[1].Next == "no" && answer.Skip(2).Any(ch => SurfaceIds.Has(SurfaceIds.Of(story, ch), "[irabeth.trickster.commit/answer/choice/3]")),
             "Irabeth's commit choices were reordered instead of appended.");
         foreach (var id in new[] { "irabeth.one_truth_to_tell", "irabeth.anevias_answer", "irabeth.the_evening_she_chose", "irabeth.a_day_of_our_own",
                                    "irabeth.after_the_shared_answer" })

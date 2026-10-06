@@ -45,13 +45,13 @@ internal static class LastCallHistoryInventoryTests
             Refresh(end);
             return end;
         }
-        string Text(string scene, Snapshot w) => string.Join(" ", S(scene).Nodes[0].Text,
-            string.Join(" ", Rules.VisibleParagraphs(S(scene).Nodes[0], w).Select(p => p.Text)));
+        string Text(string scene, Snapshot w) => string.Join(" ", SurfaceIds.Of(story, S(scene).Nodes[0]),
+            string.Join(" ", Rules.VisibleParagraphs(S(scene).Nodes[0], w).Select(p => SurfaceIds.Of(story, p))));
         string Book(string id, Snapshot w)
         {
             var e = story.Books["trickster.ledger"].Entries.Single(x => x.Id == id);
-            return Rules.BookEntryVisible(e, w) ? e.Text + " " + string.Join(" ", e.Lines
-                .Where(p => Rules.ParagraphVisible(p, w)).Select(p => p.Text)) : "";
+            return Rules.BookEntryVisible(e, w) ? SurfaceIds.Of(story, e) + " " + string.Join(" ", e.Lines
+                .Where(p => Rules.ParagraphVisible(p, w)).Select(p => SurfaceIds.Of(story, p))) : "";
         }
         void Finish(Snapshot w, bool closed, bool heroic)
         {
@@ -81,26 +81,26 @@ internal static class LastCallHistoryInventoryTests
             w = Play(S("arsinoe.lastcall.call"), w, "call", 0);
             Finish(w, closed, heroic);
             var text = Text("arsinoe.lastcall.page", w);
-            check(text.Contains("before it burst") == burst, "q8g incorrect cauldron condition");
-            check(text.Contains("Slightly used") == (pledge == 1 && !closed), "q8g false Worldwound pledge/open callback");
-            check(text.Contains("only scorched earth") == (pledge == 1 && closed), "q8g missing closed pledged-Wound discharge");
-            check(text.Contains("released the lien") == (pledge == 0), "q8g still security not released");
-            check(text.Contains("word had been the collateral") == (pledge == 2), "q8g wrong word pledge");
-            check(text.Contains("from the deceased") == heroic, "q8g false recorded-death payment");
+            check(SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/1]") == burst, "q8g incorrect cauldron condition");
+            check(SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/6]") == (pledge == 1 && !closed), "q8g false Worldwound pledge/open callback");
+            check(SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/7]") == (pledge == 1 && closed), "q8g missing closed pledged-Wound discharge");
+            check(SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/2]") == (pledge == 0), "q8g still security not released");
+            check(SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/3]") == (pledge == 2), "q8g wrong word pledge");
+            check(SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/4]") == heroic, "q8g false recorded-death payment");
             var creditors = Text("trickster.lastcall.page.collectors", w);
-            check(creditors.Contains("cauldron lease") && !creditors.Contains("lien attached itself"), "q8g Abadar creditor invents territory");
+            check(SurfaceIds.Has(creditors, "[trickster.lastcall.page.collectors/page/paragraph/7]"), "q8g Abadar creditor invents territory");
         }
         foreach (bool heroic in new[] { false, true })
         {
             var plain = World(6, "arsinoe.committed"); Finish(plain, heroic, heroic);
             check(Rules.Available(story, S("arsinoe.lastcall.page"), plain), "q8g ordinary no-lease coda blocked");
             var text = Text("arsinoe.lastcall.page", plain);
-            check(!text.Contains("cauldron") && !text.Contains("collateral") && !text.Contains("payment"), "q8g no-lease financial history leaked");
+            check(!SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/0][arsinoe.lastcall.page/page/paragraph/1]") && !SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/3][arsinoe.lastcall.page/page/paragraph/6]") && !SurfaceIds.Has(text, "[arsinoe.lastcall.page/page/paragraph/4]"), "q8g no-lease financial history leaked");
             check(!plain.Has("arsinoe.lastcall.callable"), "q8g ordinary courtship creates lease debt");
         }
         var uncalledLease = Program.Copy(lease); Finish(uncalledLease, false, false);
         check(!Rules.JournalEntrySettled(story.Relationships["lastcall"].JournalEntries.Single(e => e.Id == "debt.abadar"), uncalledLease)
-            && !Book("debt.abadar", uncalledLease).Contains("Settled"), "q8g Last Call activity discharges an uncalled lease");
+            && !SurfaceIds.Has(Book("debt.abadar", uncalledLease), "[book/trickster.ledger/debt.abadar/line/1]"), "q8g Last Call activity discharges an uncalled lease");
 
         // Offering-only is a valid friendship debt, without daily courtship.
         var friend = Play(S("eliandra.trickster.ch5.last_rite"), World(5, "eliandra.met_ch5", "eliandra.trickster.observed"), "after", 0);
@@ -108,14 +108,13 @@ internal static class LastCallHistoryInventoryTests
         check(!friend.Has("eliandra.committed") && friend.Has("eliandra.lastcall.callable"), "q8g offering-only friendship debt lost");
         var friendshipTrace = new List<string>();
         Program.Walk(S("eliandra.lastcall.call"), friend, (node, state) => friendshipTrace.Add(node));
-        check(!friendshipTrace.Contains("daily") && !Book("owed.eliandra", friend).Contains("every morning"), "q8g friend receives daily courtship");
-        check(!Book("owed.eliandra", friend).Contains("no longer exists"), "q8g offering destroys cave");
+        check(!friendshipTrace.Contains("daily") && !SurfaceIds.Has(Book("owed.eliandra", friend), "[book/trickster.ledger/owed.eliandra/line/2]"), "q8g friend receives daily courtship");
         var dailyStart = Program.Copy(friend); dailyStart.Chapter = 5;
         var daily = Play(S("eliandra.trickster.ch5.first_mile"), dailyStart, "ask", 0);
         daily.Chapter = 6; Refresh(daily);
         var dailyTrace = new List<string>();
         Program.Walk(S("eliandra.lastcall.call"), daily, (node, state) => dailyTrace.Add(node));
-        check(dailyTrace.Contains("daily") && Book("owed.eliandra", daily).Contains("every morning"), "q8g earned daily courtship missing");
+        check(dailyTrace.Contains("daily") && SurfaceIds.Has(Book("owed.eliandra", daily), "[book/trickster.ledger/owed.eliandra/line/2]"), "q8g earned daily courtship missing");
 
         // A constructed cairn and partnership do not put a stone in a pocket.
         var cairn = World(5, "wenduag.committed", "wenduag.in_party", "wenduag.q3_spared", "wenduag.trickster.cairn_built", "wenduag.trickster.court.cairn");
@@ -123,22 +122,22 @@ internal static class LastCallHistoryInventoryTests
         var tokenFree = new List<string>();
         check(Rules.Available(story, S("wenduag.lastcall.call"), cairn), "q8g token-free partner call blocked");
         Program.Walk(S("wenduag.lastcall.call"), cairn, (node, state) => tokenFree.Add(node));
-        check(!tokenFree.Contains("stone") && !Book("owed.wenduag", cairn).Contains("pocket"), "q8g built cairn grants stone");
+        check(!tokenFree.Contains("stone") && !SurfaceIds.Has(Book("owed.wenduag", cairn), "[book/trickster.ledger/owed.wenduag/line/2]"), "q8g built cairn grants stone");
         cairn.Chapter = 5;
         var pocket = Play(S("wenduag.trickster.court.morning"), Program.Copy(cairn), "end", 1);
         pocket.Chapter = 6; Refresh(pocket);
         var stoneTrace = new List<string>();
         Program.Walk(S("wenduag.lastcall.call"), pocket, (node, state) => stoneTrace.Add(node));
-        check(stoneTrace.Contains("stone") && Book("owed.wenduag", pocket).Contains("pocket"), "q8g actually carried stone missing");
+        check(stoneTrace.Contains("stone") && SurfaceIds.Has(Book("owed.wenduag", pocket), "[book/trickster.ledger/owed.wenduag/line/2]"), "q8g actually carried stone missing");
         var table = Play(S("wenduag.trickster.court.morning"), Program.Copy(cairn), "end", 0);
         check(!table.Has("wenduag.trickster.morning.pocket"), "q8g table exchange fabricated pocket receipt");
         var native = World(6, "wenduag.in_party", "wenduag.romance_finished.latched");
         Finish(native, false, true);
         var nativeText = Text("wenduag.lastcall.page", native);
-        check(!nativeText.Contains("own cairn") && !nativeText.Contains("sung for her") && !nativeText.Contains("flat grey stone"),
+        check(!SurfaceIds.Has(nativeText, "[wenduag.lastcall.page/page/paragraph/6]") && !SurfaceIds.Has(nativeText, "[wenduag.lastcall.page/page/paragraph/1]") && !SurfaceIds.Has(nativeText, "[wenduag.lastcall.page/page/paragraph/0]"),
             "q8g native partner invents a burial or stone history");
         Finish(pocket, false, true);
-        check(Text("wenduag.lastcall.page", pocket).Contains("own cairn"), "q8g earned cairn history lost");
+        check(SurfaceIds.Has(Text("wenduag.lastcall.page", pocket), "[wenduag.lastcall.page/page/paragraph/6]"), "q8g earned cairn history lost");
 
         // Dog-only and stolen personal soul share debt, never personal history.
         var dog = Play(S("kiana.trickster.awake.dog_collar"), World(5, "kiana.q2_done"), "bark", 0);
@@ -153,14 +152,14 @@ internal static class LastCallHistoryInventoryTests
             check(accepted.Has(Freed) && accepted.Has(Pardon), "q8g accepted release lacks enacted receipts");
             Finish(refused, false, false); Finish(accepted, false, false);
             var refusalText = Text("kiana.lastcall.page", refused);
-            check(!refusalText.Contains("met every coach"), "q8g refusal gets happy release");
-            check(refusalText.Contains("quicker to free her") == source.Has("kiana.soul_lost"), "q8g dog rescue invents Kiana soul rescue");
-            check(refusalText.Contains("dog came home first") == source.Has("kiana.trickster.dog_saved"), "q8g dog-specific grievance missing");
-            check(Text("kiana.lastcall.page", accepted).Contains("met every coach"), "q8g enacted release lacks happy coda");
-            check(!Text("kiana.ending_promised", accepted).Contains("pouch never came back"), "q8g released guests remain unresolved in ending");
-            check(Text("kiana.ending_promised", refused).Contains("pouch never came back"), "q8g refusal erases unresolved pouch");
+            check(!SurfaceIds.Has(refusalText, "[kiana.lastcall.page/page/paragraph/0]"), "q8g refusal gets happy release");
+            check(SurfaceIds.Has(refusalText, "[kiana.lastcall.page/page/paragraph/1]") == source.Has("kiana.soul_lost"), "q8g dog rescue invents Kiana soul rescue");
+            check(SurfaceIds.Has(refusalText, "[kiana.lastcall.page/page/paragraph/3]") == source.Has("kiana.trickster.dog_saved"), "q8g dog-specific grievance missing");
+            check(SurfaceIds.Has(Text("kiana.lastcall.page", accepted), "[kiana.lastcall.page/page/paragraph/0]"), "q8g enacted release lacks happy coda");
+            check(!SurfaceIds.Has(Text("kiana.ending_promised", accepted), "[kiana.ending_promised/start/paragraph/0][kiana.ending_promised/start/paragraph/1]"), "q8g released guests remain unresolved in ending");
+            check(SurfaceIds.Has(Text("kiana.ending_promised", refused), "[kiana.ending_promised/start/paragraph/0][kiana.ending_promised/start/paragraph/1]"), "q8g refusal erases unresolved pouch");
             var oldCalled = Program.Copy(refused); oldCalled.Flags.Add("kiana.lastcall.called"); Refresh(oldCalled);
-            check(!oldCalled.Has(Recovered) && !Text("kiana.lastcall.page", oldCalled).Contains("met every coach"), "q8g old called flag grants rescue");
+            check(!oldCalled.Has(Recovered) && !SurfaceIds.Has(Text("kiana.lastcall.page", oldCalled), "[kiana.lastcall.page/page/paragraph/0]"), "q8g old called flag grants rescue");
         }
         // Already recovered guests settle only the old bill: no second rescue.
         var nativeRecovery = Program.Copy(dog);

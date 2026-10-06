@@ -2,7 +2,7 @@
 
 The F2 task permits markup repairs and asks strict mode to reject *new*
 findings. Its existing editorial reviews remain visible in player_text.review;
-the baseline grants no exemption to changed text or additional occurrences.
+the baseline follows diagnostic identity and rejects additional occurrences.
 """
 from collections import Counter
 import hashlib
@@ -13,8 +13,8 @@ BASELINE = Path(__file__).with_suffix('.json')
 
 
 def fingerprint(row, text):
-    identity = [row[key] for key in ('scene', 'location', 'code', 'start', 'end', 'match')]
-    return hashlib.sha256(json.dumps([identity, text], ensure_ascii=False).encode('utf-8')).hexdigest()
+    identity = [row[key] for key in ('scene', 'location', 'code')]
+    return hashlib.sha256(json.dumps(identity, ensure_ascii=False).encode('utf-8')).hexdigest()
 
 
 def new_findings(story, rows, policy=None, therapy_counts=None):

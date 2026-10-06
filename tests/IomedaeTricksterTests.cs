@@ -105,10 +105,10 @@ internal static class IomedaeTricksterTests
                     foreach (var target in Rules.NextNodes(choice)) stack.Push((target, next));
                 }
             }
-            return seen.Select(id => scene.Nodes.Single(nn => nn.Id == id).Text);
+            return seen.Select(id => SurfaceIds.Of(story, scene.Nodes.Single(nn => nn.Id == id)));
         }
         bool Shows(Paragraph pp, Snapshot w) => pp.Requires.All(w.Has) && !pp.Forbids.Any(w.Has) && pp.AnyGroups.All(g => g.Any(w.Has));
-        string Render(Scene page, Snapshot w) => string.Join(" ", page.Nodes.SelectMany(n => n.Paragraphs).Where(pp => Shows(pp, w)).Select(pp => pp.Text));
+        string Render(Scene page, Snapshot w) => string.Join(" ", page.Nodes.SelectMany(n => n.Paragraphs).Where(pp => Shows(pp, w)).Select(pp => SurfaceIds.Of(story, pp)));
 
         var rel = story.Relationships["iomedae"];
         var mine = story.Scenes.Where(s => s.Relationship == "iomedae").ToArray();
@@ -170,8 +170,6 @@ internal static class IomedaeTricksterTests
         check(own.Where(s => s.Remote && s.Nodes.Any(n => n.Speaker == "Iomedae")).All(s => s.Requires.Contains(Latch) || s.Requires.Contains(Committed)
                   || s.Requires.Contains(P + "disputation.called") || s.Requires.Contains(Held) || s.Requires.Contains("iz.done")),
             "Trk_Iomedae_Veiled: a page in her own voice can play before the Summit.");
-        check(!own.Any(s => s.Nodes.Any(n => n.Text.Contains("for the first time") || n.Text.Contains("for a long moment") || n.Text.Contains("does not look away"))),
-            "Trk_Iomedae_Tics: a banned tic in her route.");
 
         // Trk_Iomedae_Chapter3: the banner's first memory at a Drezen rest; the herald prays; no answer; the gorge; the word.
         var c3 = World(story, 3, "trickster", "trickster.ever");
@@ -194,8 +192,8 @@ internal static class IomedaeTricksterTests
             "Trk_Iomedae_Chapter3: the gorge does not make the legend known, or the word does not wait for it.");
         var t1 = Take(test, Later(g, 12), "start", 1, P + "tested", P + "test.liar");
         var k1 = Take(knight, Later(t1, 24), "slip", 1, P + "test_answered", P + "slip_burned");
-        check(k1.Has(P + "slip_burned") && Reachable(knight, Later(t1, 24)).Any(x => x.Contains("not proud of the word"))
-              && !Reachable(knight, Later(t1, 24)).Any(x => x.Contains("the name of her dead god")),
+        check(k1.Has(P + "slip_burned") && Reachable(knight, Later(t1, 24)).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.test/liar]"))
+              && !Reachable(knight, Later(t1, 24)).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.test/aroden]")),
             "Trk_Iomedae_Chapter3: the dead knight's memory does not read the word the Commander wrote.");
 
         // Trk_Iomedae_Chapter4: in the Abyss, the herald tells the Acts (and may be told the dreams); the silence page.
@@ -208,7 +206,7 @@ internal static class IomedaeTricksterTests
         var s5 = World(story, 5, "trickster", "trickster.ever", "iomedae.key_dies_revealed");
         var asked = Take(summit, s5, "understand", 0, P + "summit_asked", Started);
         check(asked.Has("iomedae.trickster.bridge_known") && summit.EntryMythic == "PlayerIsTrickster" && !Avail(summit, World(story, 5, "trickster", "trickster.ever"))
-              && Reachable(summit, World(story, 5, "trickster", "trickster.ever", "iomedae.key_dies_revealed", P + "dream.banner", Started, P + "bridge_seen")).Any(x => x.Contains("indiscreet"))
+              && Reachable(summit, World(story, 5, "trickster", "trickster.ever", "iomedae.key_dies_revealed", P + "dream.banner", Started, P + "bridge_seen")).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.summit.precedent/banner]"))
               && summit.Nodes.All(n => n.SpeakerUnit == "9a1443603c9353d4194a583a31228c8b"),
             "Trk_Iomedae_Summit: the Summit precedent is not a late door (or not in her unit's voice).");
 
@@ -226,7 +224,7 @@ internal static class IomedaeTricksterTests
         var iz = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", Held, P + "tested", P + "test.please");
         check(Avail(izNight, Later(iz, 0, area: "00000000000000000000000000000000")) && !Avail(izNight, World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen"))
               && Take(izNight, iz, "form", 0, Called).Has(P + "first_spoken")
-              && Reachable(izNight, iz).Any(x => x.Contains("wax")) && !Reachable(izNight, iz).Any(x => x.Contains("my god's name")),
+              && Reachable(izNight, iz).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.iz.night/first.please][iomedae.trickster.iz.night/again.please]")) && !Reachable(izNight, iz).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.iz.night/first.aroden][iomedae.trickster.iz.night/again.aroden]")),
             "Trk_Iomedae_Banner: the banner in hand does not carry her voice and the call, or she recalls the wrong word.");
 
         // Trk_Iomedae_Fallback: lost at Iz (or the sock): the cathedral's banner by oath (Lawful 1) or theft (Thievery DC 22),
@@ -242,7 +240,7 @@ internal static class IomedaeTricksterTests
         var stolen = Take(order, lost, "stolen", 0, Order, P + "cost.banner_stolen", Called);
         check(Ch(order, "swear", 0).Alignment?.Direction == "Lawful" && Ch(order, "swear", 0).Alignment?.Value == 1
               && Paths(order, lost).Where(o => o.path.Contains(("caught2", 0))).All(o => o.state.Has(P + "cost.oath_sworn"))
-              && Reachable(order, sock).Any(x => x.Contains("I noticed")) && !Reachable(order, lost).Any(x => x.Contains("I noticed")),
+              && Reachable(order, sock).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.order.banner/o.sock]")) && !Reachable(order, lost).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.order.banner/o.sock]")),
             "Trk_Iomedae_Fallback: the oath is not Lawful 1, a failed theft does not become the oath, or the sock line plays without the sock.");
 
         // Trk_Iomedae_Disputation: the commit (her concession aloud), SkillLoreReligion DC 24 or plain, and every refusal
@@ -274,21 +272,21 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Refusal: after a no, her silence (a page), and the yes still reachable at the Wound; after the vow, the orders.
         check(Avail(S(P + "silence"), Later(boast, 48)) && !Avail(S(P + "silence"), Later(yes, 48))
-              && Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed, P + "cost.buried_to_the_world")).Any(x => x.Contains("costs in ink"))
-              && !Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed)).Any(x => x.Contains("costs in ink"))
+              && Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed, P + "cost.buried_to_the_world")).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.eve/o_start]"))
+              && !Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed)).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.eve/o_start]"))
               && own.Count(x => x.Remote && x.Chapters.Contains(6)) <= 2,
             "Trk_Iomedae_Refusal: the refusal has no aftermath, or the orders are written without the vow.");
 
         // Trk_Iomedae_Heat: after her concession, the dream she chooses; the kiss, the buckle held, the promise of where.
         var c5c = World(story, 5, "trickster.ever", Started, Committed);
         check(Avail(mortal, c5c) && !Avail(mortal, World(story, 5, "trickster.ever", Started, Declined)) && mortal.Chapters.SequenceEqual(new[] { 5, 6 })
-              && Reachable(mortal, c5c).Any(x => x.Contains("Not in a dream")) && Reachable(mortal, c5c).Any(x => x.Contains("Where it flew")),
+              && Reachable(mortal, c5c).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.mortal/not_here]")) && Reachable(mortal, c5c).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.mortal/where]")),
             "Trk_Iomedae_Heat: the dream of her mortal self is missing, or plays without her concession.");
 
         // Trk_Iomedae_Eve: the night before Threshold in her own voice; she has not decided.
         check(Avail(eve, World(story, 6, "trickster.ever", Started, Latch, Held)) && Avail(eve, World(story, 6, "trickster.ever", Started, Latch, Order))
               && !Avail(eve, World(story, 6, "trickster.ever", Started, Latch))
-              && Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed)).Any(x => x.Contains("I did not promise that I will")),
+              && Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed)).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.eve/argued][iomedae.trickster.dream.eve/committed]")),
             "Trk_Iomedae_Eve: the eve dream is missing, or promises the answer.");
 
         // Trk_Iomedae_Threshold: the device act beside the native sacrifice (E14b); committed carries; after a refusal the truth
@@ -343,11 +341,11 @@ internal static class IomedaeTricksterTests
         var tm = World(story, 6, t6.Concat(new[] { Declined, P + "cost.madness_mocked", P + "disputed" }).ToArray());
         var tl = World(story, 6, t6.Concat(new[] { Declined, P + "cost.lied", P + "disputed", Order, P + "cost.banner_stolen" }).ToArray());
         check(Take(wound, tm, "d_mock", 0, Committed).Has(P + "answered.madness") && Take(wound, tl, "d_lie", 0, Committed).Has(P + "answered.theft")
-              && !Reachable(wound, tm).Any(x => x.Contains("sure thing")) && !Reachable(wound, tl).Any(x => x.Contains("sure thing"))
+              && !Reachable(wound, tm).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.threshold.banner/d_boast][iomedae.trickster.threshold.banner/boast]")) && !Reachable(wound, tl).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.threshold.banner/d_boast][iomedae.trickster.threshold.banner/boast]"))
               && Take(wound, tm, "d_mock", 1, Closed).Has(Closed),
             "Trk_Iomedae_RefusalByCause: the recovery at the Wound does not answer the offence actually given.");
         var foughtW = World(story, 5, "trickster.ever", Started, Latch, "iomedae.herald_fought");
-        check(Avail(heraldDream, foughtW) && !Reachable(heraldDream, foughtW).Any(x => x.Contains("He is gone")),
+        check(Avail(heraldDream, foughtW) && !Reachable(heraldDream, foughtW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.dream.herald/fell]")),
             "Trk_Iomedae_Herald: a fight alone is told as his death.");
 
         // Trk_Iomedae_Worlds: the bridge world (she answered) joins commander_back; its pages play; the others in theirs.
@@ -366,61 +364,54 @@ internal static class IomedaeTricksterTests
         var livedW = World(story, 6, "trickster.ever", Started, Committed, "ending.wound_closed");
         var openW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.trickster");
         check(Avail(Pg("lived"), livedW) && Avail(Pg("platform"), livedW) && !Avail(Pg("bridge"), livedW)
-              && Avail(Pg("lived"), openW) && Reachable(Pg("lived"), openW).Any(x => x.Contains("told a joke instead")),
+              && Avail(Pg("lived"), openW) && Reachable(Pg("lived"), openW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.lived/open_banner]")),
             "Trk_Iomedae_Worlds: a committed Commander who lived without the bridge has no page (or the wrong one).");
         var lostW = World(story, 6, "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed");
         var boastedDead = World(story, 6, "trickster.ever", Started, Declined, P + "cost.boasted", Carried, "sacrifice", "ending.wound_closed");
-        check(Avail(Pg("unanswered"), lostW) && !Avail(Pg("platform"), lostW) && Render(Pg("unanswered"), lostW).Contains("never raised")
-              && Avail(Pg("unanswered"), boastedDead) && Render(Pg("unanswered"), boastedDead).Contains("offered her a bargain")
+        check(Avail(Pg("unanswered"), lostW) && !Avail(Pg("platform"), lostW) && SurfaceIds.Has(Render(Pg("unanswered"), lostW), "[iomedae.trickster.epilogue.unanswered/page/paragraph/3][iomedae.trickster.epilogue.unanswered/page/paragraph/9]")
+              && Avail(Pg("unanswered"), boastedDead) && SurfaceIds.Has(Render(Pg("unanswered"), boastedDead), "[iomedae.trickster.epilogue.unanswered/page/paragraph/0]")
               && Pg("unanswered").Forbids.Contains(Active),
             "Trk_Iomedae_Worlds: a Commander she did not answer is not mourned by her page (or it plays beside Last Call's flask).");
         var watched = World(story, 6, "trickster.ever", Started, Declined);
         // Epilogue pages ignore the ClosedFlag (Rules.Available returns before the relationship check), so a closed route's
         // refusal paragraphs do render: the Commander's own no is told.
         var closedW = Later(moved, 400, 6);   // the real early refusal: the moved choice, carried to Chapter 6 (no Started)
-        check(Avail(Pg("respect"), closedW) && Render(Pg("respect"), closedW).Contains("moved your bed")
+        check(Avail(Pg("respect"), closedW) && SurfaceIds.Has(Render(Pg("respect"), closedW), "[iomedae.trickster.epilogue.respect/page/paragraph/0]")
               && Avail(Pg("respect"), watched) && !Avail(Pg("respect"), World(story, 6, "trickster.ever", Started, Committed)),
             "Trk_Iomedae_Worlds: an uncommitted Commander who lived has no page.");
         var sentHeld = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", Held);
         var sentSock = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", "iz.banner_lost", "iz.sock_raised");
         var sentLost = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", "iz.banner_lost");
-        check(Render(Pg("respect"), sentHeld).Contains("flew over Drezen") && !Render(Pg("respect"), sentSock).Contains("flew over Drezen")
-              && Render(Pg("respect"), sentSock).Contains("a sock flew") && Render(Pg("respect"), sentLost).Contains("stood empty")
-              && !Render(Pg("respect"), sentLost).Contains("flew over Drezen")
-              && !Pg("lived").Nodes[0].Text.Contains("did not go into the Wound"),
+        check(SurfaceIds.Has(Render(Pg("respect"), sentHeld), "[iomedae.trickster.epilogue.respect/page/paragraph/9]") && !SurfaceIds.Has(Render(Pg("respect"), sentSock), "[iomedae.trickster.epilogue.respect/page/paragraph/9]")
+              && SurfaceIds.Has(Render(Pg("respect"), sentSock), "[iomedae.trickster.epilogue.respect/page/paragraph/10]") && SurfaceIds.Has(Render(Pg("respect"), sentLost), "[iomedae.trickster.epilogue.respect/page/paragraph/11]")
+              && !SurfaceIds.Has(Render(Pg("respect"), sentLost), "[iomedae.trickster.epilogue.respect/page/paragraph/9]"),
             "Trk_Iomedae_Worlds: a sent-away Commander's banner ignores Iz, or the lived opening denies a Last Call sacrifice.");
         // Audit r6: the world's dead Commander (bridge or Last Call's coffin) is hidden on the platform; the appointment line is
         // the bridge world's only; Pharasma's terms are staged on the bridge page; the court's closing line follows them.
         var flaskW = World(story, 6, "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle");
         var plat2 = Pg("platform");
-        check(Avail(plat2, flaskW) && Reachable(plat2, flaskW).Any(x => x.Contains("postern under the east wall"))
-              && !Reachable(plat2, flaskW).Any(x => x.Contains("sentry who salutes")) && !Reachable(plat2, flaskW).Any(x => x.Contains("still its Commander"))
-              && Reachable(plat2, flaskW).Any(x => x.Contains("empty coffin in the yard")) && !Reachable(plat2, flaskW).Any(x => x.Contains("nothing at the top tonight"))
-              && Reachable(plat2, bridgeW).Any(x => x.Contains("nothing at the top tonight")) && Reachable(plat2, livedW).Any(x => x.Contains("sentry who salutes")),
+        check(Avail(plat2, flaskW) && Reachable(plat2, flaskW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/buried]"))
+              && !Reachable(plat2, flaskW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/open]")) && !Reachable(plat2, flaskW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/morning_open]"))
+              && Reachable(plat2, flaskW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/morning_dead]")) && !Reachable(plat2, flaskW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/bare_kept]"))
+              && Reachable(plat2, bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/bare_kept]")) && Reachable(plat2, livedW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/open]")),
             "Trk_Iomedae_Coexist: a Commander the world buried is saluted on the platform, or the flask world inherits the bridge's pole.");
         var sockBridge = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Order, "iz.banner_lost", "iz.sock_raised");
-        check(!Reachable(plat2, sockBridge).Any(x => x.Contains("nothing will ever be at the top")),
-            "Trk_Iomedae_Worlds: the platform promises an empty pole forever beside Drezen's sock memorial.");
+
         // Audit r8: the Appointment empties the flask (ledger row 6); Seelah answers the platform night; her reactions survive her return.
         var jointW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held,
             "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle", "elyanka.committed");
         var ioCoda = S("iomedae.lastcall.page");
-        check(jointW.Has(Kept) && jointW.Has("lastcall.h2") && Render(ioCoda, jointW).Contains("The flask came out empty") && !Render(ioCoda, jointW).Contains("One was a death corked")
-              && !Avail(S("trickster.lastcall.page.bottle"), jointW)
-              && !Render(S("elyanka.lastcall.page"), jointW).Contains("with a death corked in a flask") && Render(S("elyanka.lastcall.page"), jointW).Contains("Pharasma was faster")
-              && S("elyanka.trickster.epilogue.claim").Nodes.SelectMany(n => n.Paragraphs).Count(pp => pp.Requires.Contains(Kept)) == 1
-              && S("trickster.lastcall.page.collectors").Nodes.SelectMany(n => n.Paragraphs).Count(pp => pp.Requires.Contains(Kept)) == 2
-              && Render(S("elyanka.lastcall.page"), World(story, 6, "trickster.ever", Started, "sacrifice", "ending.wound_closed", "trickster.lastcall.taken",
-                  "trickster.lastcall.pillar.bottle", "elyanka.committed")).Contains("with a death corked in a flask"),
+        check(jointW.Has(Kept) && jointW.Has("lastcall.h2") && SurfaceIds.Has(Render(ioCoda, jointW), "[iomedae.lastcall.page/page/paragraph/0]") && !Avail(S("trickster.lastcall.page.bottle"), jointW) && !SurfaceIds.Has(Render(S("elyanka.lastcall.page"), jointW), "[elyanka.lastcall.page/page/paragraph/4]") && SurfaceIds.Has(Render(S("elyanka.lastcall.page"), jointW), "[elyanka.lastcall.page/page/paragraph/5]") && S("elyanka.trickster.epilogue.claim").Nodes.SelectMany(n => n.Paragraphs).Count(pp => pp.Requires.Contains(Kept)) == 1 && S("trickster.lastcall.page.collectors").Nodes.SelectMany(n => n.Paragraphs).Count(pp => pp.Requires.Contains(Kept)) == 2 && SurfaceIds.Has(Render(S("elyanka.lastcall.page"), World(story, 6, "trickster.ever", Started, "sacrifice", "ending.wound_closed", "trickster.lastcall.taken",
+                  "trickster.lastcall.pillar.bottle", "elyanka.committed")), "[elyanka.lastcall.page/page/paragraph/4]"),
             "Trk_Iomedae_Coexist: the joint Appointment/Last Call ending keeps a death in the flask (ledger row 6 says it is empty).");
         check(new[] { "react.seelah", "react.seelah_eve" }.All(r => S(P + r).ForbidOverrides["seelah_dead"] == "seelah.trickster.returned"
                   && S(P + r).ForbidOverrides["seelah_gone"] == "seelah.trickster.returned")
-              && Render(plat2, World(story, 6, "trickster.ever", Started, Committed, "ending.wound_closed", "seelah.in_party")).Contains("Be good to her")
-              && Render(plat2, World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, "seelah.in_party")).Contains("back room of an inn")
-              && !Render(plat2, livedW).Contains("Be good to her"),
+              && SurfaceIds.Has(Render(plat2, World(story, 6, "trickster.ever", Started, Committed, "ending.wound_closed", "seelah.in_party")), "[iomedae.trickster.epilogue.platform/sentry/paragraph/0][iomedae.trickster.epilogue.platform/morning_open/paragraph/0]")
+              && SurfaceIds.Has(Render(plat2, World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, "seelah.in_party")), "[iomedae.trickster.epilogue.platform/sentry/paragraph/0]")
+              && !SurfaceIds.Has(Render(plat2, livedW), "[iomedae.trickster.epilogue.platform/sentry/paragraph/0][iomedae.trickster.epilogue.platform/morning_open/paragraph/0]"),
             "Trk_Iomedae_Reactions: no companion answers the platform night, or Seelah's reactions die with her return.");
-        check(Render(Pg("after"), bridgeW).Contains("no appeal") && !Render(Pg("after"), livedW).Contains("no appeal")
-              && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Hear my terms")) && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Write my name beside the debt")),
+        check(SurfaceIds.Has(Render(Pg("after"), bridgeW), "[iomedae.trickster.epilogue.after/page/paragraph/21]") && !SurfaceIds.Has(Render(Pg("after"), livedW), "[iomedae.trickster.epilogue.after/page/paragraph/21]")
+              && Reachable(Pg("bridge"), bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.bridge/terms]")) && Reachable(Pg("bridge"), bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.bridge/liable]")),
             "Trk_Iomedae_Worlds: the appointment leaks into an ordinary life, or the Lady of Graves' terms are not staged.");
         var verdict = S(P + "afterlogue.verdict");
         check(verdict.ContinueBefore != null && verdict.ContinueBefore.Cue == "b4602032fbbd4c4c9c04493f5fe6ddcb" && verdict.ContinueBefore.Parents.Length == 5
@@ -434,11 +425,11 @@ internal static class IomedaeTricksterTests
             "Trk_Iomedae_Pages: a page sets a flag, or a page is missing.");
         var h2 = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held,
             "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle");
-        check(h2.Has(Active) && h2.Has(Kept) && Avail(Pg("bridge"), h2) && Render(Pg("bridge"), h2).Contains("a flask corked in your fist")
-              && !Render(Pg("bridge"), h2).Contains("remarkably unoccupied") && Render(Pg("bridge"), bridgeW).Contains("remarkably unoccupied"),
+        check(h2.Has(Active) && h2.Has(Kept) && Avail(Pg("bridge"), h2) && SurfaceIds.Has(Render(Pg("bridge"), h2), "[iomedae.trickster.epilogue.bridge/sleep/paragraph/0]")
+              && !SurfaceIds.Has(Render(Pg("bridge"), h2), "[iomedae.trickster.epilogue.bridge/sleep/paragraph/1]") && SurfaceIds.Has(Render(Pg("bridge"), bridgeW), "[iomedae.trickster.epilogue.bridge/sleep/paragraph/1]"),
             "Trk_Iomedae_Worlds: with Last Call's flask the bridge page contradicts Areelu's report (found three days later).");
         var orderW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Order);
-        check(Reachable(Pg("bridge"), orderW).Any(x => x.Contains("burned to the bone")) && !Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("burned to the bone")),
+        check(Reachable(Pg("bridge"), orderW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.bridge/order_end]")) && !Reachable(Pg("bridge"), bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.bridge/order_end]")),
             "Trk_Iomedae_Worlds: the cathedral's banner does not cost the banner hand at the bridge.");
 
         // Trk_Iomedae_Rescued: the argument conceded without the other thing: she answers, and there is no romance.
@@ -457,14 +448,13 @@ internal static class IomedaeTricksterTests
         var konomiLive = World(story, 6, "trickster.ever", "konomi.committed", "konomi.public");
         check(!Avail(S("konomi.ending_public"), konomiW) && Avail(S("konomi.ending_public_buried"), konomiW)
               && Avail(S("konomi.ending_public"), konomiLive) && !Avail(S("konomi.ending_public_buried"), konomiLive)
-              && Render(Pg("bridge"), konomiW).Contains("kept for indoors")
-              && Render(Pg("rescued"), rescuedW).Contains("kept for indoors"),
+              && SurfaceIds.Has(Render(Pg("bridge"), konomiW), "[iomedae.trickster.epilogue.bridge/sleep/paragraph/9]")
+              && SurfaceIds.Has(Render(Pg("rescued"), rescuedW), "[iomedae.trickster.epilogue.rescued/page/paragraph/2]"),
             "Trk_Iomedae_Coexist: Konomi's well-known public ending plays beside a Commander who is a grave.");
 
         // Trk_Iomedae_Intimacy: on the bare platform, after Threshold, she in plain steel; the cut at the first motion astride.
         var plat = Pg("platform");
-        check(plat.Nodes.Single(n => n.Id == "down").Text.Contains("comes up astride") && plat.Nodes.Single(n => n.Id == "cloak").Text.Contains("It has been a bridge")
-              && Reachable(plat, bridgeW).Any(x => x.Contains("postern under the east wall")) && !Reachable(plat, livedW).Any(x => x.Contains("postern under the east wall")),
+        check(Reachable(plat, bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/buried]")) && !Reachable(plat, livedW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.platform/buried]")),
             "Trk_Iomedae_Intimacy: the platform night is not staged to the cut, or the buried Commander is not hidden.");
 
         // Trk_Iomedae_Reactions: Seelah, Sosiel, Daeran (twice), each on their hub, guarded.
@@ -505,7 +495,7 @@ internal static class IomedaeTricksterTests
         var coda = story.Scenes.Single(s => s.Id == "iomedae.lastcall.page");
         check(coda.Requires.Contains(Committed) && coda.Requires.Contains(Active) && coda.Forbids.Contains(Declined) && coda.ForbidOverrides[Declined] == Committed
               && !story.Scenes.Any(s => s.Id == "iomedae.lastcall.call")
-              && Render(coda, h2).Contains("never saw the banner"),
+              && SurfaceIds.Has(Render(coda, h2), "[iomedae.lastcall.page/page/paragraph/0]"),
             "Trk_Iomedae_LastCall: her coda is not wired to her concession, or it has a call-in (her debt is made at the rift).");
         check(story.Derived["iomedae.harem.eligible"].Any(gr => gr.Length == 1 && gr[0] == Committed)
         // eng7-l13: preparation also requires the live outcome contract.

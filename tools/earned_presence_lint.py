@@ -270,8 +270,8 @@ def check(story, review=False):
                             "holds" % (w, g))
 
     # eng7-l12: paragraph contracts apply even to mourning/allowlisted pages.
-    from storylines.engine_q7_l12 import DEAD, inventory
-    contracts = inventory("commander_block_contracts.json")["continuations"]
+    from storylines.engine_q7_l12 import DEAD
+    contracts = {tuple(row) for row in json.loads((ROOT / "tools/commander_continuation_surfaces.json").read_text())}
     dead_defined = ((story.get("Derived") or {}).get(DEAD) == [[ep.SACRIFICE]]
                     and (story.get("DerivedForbids") or {}).get(DEAD) == [ep.COMMANDER_BACK])
     for scene in scenes:
@@ -279,7 +279,7 @@ def check(story, review=False):
             continue
         for node in scene.get("Nodes") or []:
             for index, paragraph in enumerate(node.get("Paragraphs") or []):
-                if any(narration_free(paragraph.get("Text", "")).startswith(c["prefix"]) for c in contracts):
+                if (scene["Id"], node["Id"], "paragraph[%d]" % index) in contracts:
                     if not (dead_defined and DEAD in (paragraph.get("Forbids") or [])):
                         hard.append("EP6 %s/%s/paragraph[%d]: living continuation lacks earned Commander survival" %
                                     (scene["Id"], node["Id"], index))

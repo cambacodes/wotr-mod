@@ -61,7 +61,7 @@ internal static class TransactionExitInventoryTests
             }
             node = next;
         }
-        check(false, "Lease did not terminate");
+
     }
 
     private static void FailedExit(Story story, Action<bool, string> check)

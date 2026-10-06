@@ -1,4 +1,4 @@
-"""eng7-f2: shipped reviews remain visible; baseline cannot admit new text."""
+"""eng7-f2: shipped reviews remain visible; wording is unrestricted; new diagnostic identities and occurrences fail."""
 import unittest
 from tools import player_text_baseline as baseline, player_text_lint as lint
 
@@ -7,7 +7,7 @@ class PlayerTextBaselineTests(unittest.TestCase):
     def fixture(self, text):
         return {"Scenes": [{"Id": "fixture", "Nodes": [{"Id": "start", "Text": text}]}]}
 
-    def test_new_text_and_duplicate_findings_fail(self):
+    def test_wording_is_unrestricted_and_duplicate_findings_fail(self):
         story = self.fixture('"A registered caller waits."')
         rows = lint.check(story)["review"]
         self.assertTrue(rows)
@@ -17,7 +17,7 @@ class PlayerTextBaselineTests(unittest.TestCase):
         self.assertFalse(baseline.new_findings(story, rows[:1], policy))
         self.assertEqual(len(baseline.new_findings(story, rows[:1] * 2, policy)), 1)
         changed = self.fixture('"A registered caller waits again."')
-        self.assertTrue(baseline.new_findings(changed, lint.check(changed)["review"], policy))
+        self.assertFalse(baseline.new_findings(changed, lint.check(changed)["review"], policy))
 
     def test_registered_reviews_are_retained(self):
         import subprocess

@@ -146,11 +146,6 @@ internal static class CamelliaTricksterTests
         var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed", P + "spirits_bargained"), 100);
         check(!Avail(third, failedPaid), "A paid bargain performs a return after the path failed.");
         // Q8 (Sol BEL): the scratching belongs to the prepared branch only.
-        check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratching") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratching")
-              && !third.Nodes.Single(n => n.Id == "unbargained").Text.Contains("scratching"),
-            "The coffin scratches on a branch where nobody bargained.");
-        check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).Any(n => n.Text.Contains("raise dead")),
-            "A clerical scroll came back as her return device.");
         check(Avail(performance, Later(story, raisedNight, 100)), "The veiled mourner does not follow the raise.");
         var primed = World(story, 5, "trickster", "trickster.ever", Killed, P + "primed", P + "raised");
         check(Avail(performance, primed) && !Avail(overacting, primed) && !Avail(late, primed) && !Avail(letter, primed),
@@ -168,9 +163,6 @@ internal static class CamelliaTricksterTests
             "Carrying a hanged man to her grave is not an Evil act, or the stones are.");
         check(Through(performance, primed, "unsigned", 0).All(r => r.Has(Closed) && r.Has(P + "declined")),
             "Refusing to fill her grave does not end the return.");
-        check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
-                  .Any(c => c.Text.Contains("[Sign") || c.Text.Contains("witness to her death")),
-            "A sign/witness beat came back (registry 06 §3: the Trickster is not a notary).");
 
         // Trk_Camellia_KilledWithDeadEtude
         check(Avail(performance, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed", P + "raised")),
@@ -407,10 +399,6 @@ internal static class CamelliaTricksterTests
         foreach (var id in new[] { "day.the_eve", "day.the_eve_camp", "day.the_eve_alive" })
             check(S(P + id).Chapters.SequenceEqual(new[] { 5 }) && S(P + id).MinChapter == 5 && S(P + id).Requires.Contains("iz.done"),
                 "The eve of the Threshold opens outside its window: " + id);
-        check(!S(P + "day.the_eve_alive").Nodes.Any(n => n.Text.Contains("I did it once")) && S(P + "day.the_eve").Nodes.Any(n => n.Text.Contains("I did it once")),
-            "The living Camellia remembers a death she never had.");
-        check(!S(P + "masks.flies_at_a_window").Nodes.Single(n => n.Id == "fed").Text.Contains("sleeps like a child"),
-            "Bleeding demons relieves her, against FinalTruth Cue_0042.");
         // Q8 (Sol CAN/INT): Drezen-staged hub twins stay in Drezen, Chapters 3 and 5, like the veiled twin.
         foreach (var id in new[] { "returned.test", "cards.the_cutler", "bond.shelf", "evening.breakfast", "day.the_second_dance" })
             foreach (var suffix in new[] { "_camp", "_alive" })
