@@ -54,7 +54,7 @@ internal static class EritriceTricksterTests
         var pages = story.Scenes.Where(s => s.Relationship == "eritrice" && s.Owner == "EritriceEpilogue").ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "eritrice" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "eritrice" && !s.Reaction && s.Owner == "Eritrice").ToArray();
-        var sittings = own.Where(s => s.Id.StartsWith(M, StringComparison.Ordinal) || s.Id.StartsWith(K, StringComparison.Ordinal)).ToArray();
+        var sittings = own.Where(s => s.Id != K + "chadalis_essence").Where(s => s.Id.StartsWith(M, StringComparison.Ordinal) || s.Id.StartsWith(K, StringComparison.Ordinal)).ToArray();
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
         Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
         // The outcomes of a walk that took the named choice of the named node.
@@ -110,7 +110,7 @@ internal static class EritriceTricksterTests
         check(motion.Nodes.Single(n => n.Id == "declared").Choices.Count == 2
               && Choice(motion, "declared", 0).Requires.Contains("eritrice.chair_usurped") && Choice(motion, "declared", 1).Forbids.Contains("eritrice.chair_usurped"),
             "The motion does not recognise the usurped chair of Council_3 (Cue_0045).");
-        foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
+        foreach (var hall in own.Where(s => !Rules.IsRemote(s) && s.Id != K + "chadalis_essence"))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
                   && hall.Chapters.All(c => c >= 3 && c <= 5) && hall.Forbids.Contains("eritrice.lost_at_council"),
                 "A hall scene is not on her private list in Chapters 3-5 behind the sealed-hall guard: " + hall.Id);
@@ -377,6 +377,74 @@ internal static class EritriceTricksterTests
         check(keyWays.Any(r => r.Has(M + "key_forgiven")) && keyWays.Any(r => r.Has(M + "key_used")), "The key's pivotal split does not play in Chapter 4.");
         check(Program.Walk(S(M + "stay_in_your_seats"), chapterFour).Any(r => r.Has(M + "temper_warned"))
               && Program.Walk(S(M + "stay_in_your_seats"), chapterFour).Any(r => r.Has(M + "temper_fed")), "The walk-out's outcomes do not play in Chapter 4.");
+        // Reviewed polish: the record names the reading that actually carried.
+        var record = S(M + "the_record");
+        foreach (var completion in new[] { P + "council.second_reading", P + "council.third_reading" })
+        {
+            var w = World(story, 5, "trickster", "trickster.ever", "eritrice.committed", M + "adjourned", completion);
+            var reads = record.Nodes.Single(n => n.Id == "start").Choices.Where(c => c.Text == "[Read over her shoulder.]" && Rules.ChoiceAvailable(c, w)).ToArray();
+            check(reads.Length == 1, "The morning has two readings, or none: " + completion);
+            var target = completion.EndsWith("third_reading", StringComparison.Ordinal) ? "read_third" : "read";
+            check(reads.Single().Next == target && record.Nodes.Single(n => n.Id == target).Text.Contains(completion.EndsWith("third_reading", StringComparison.Ordinal) ? "third reading" : "second reading"),
+                "The record names an unplayed reading: " + completion);
+            check(Play(record, w).Any(r => r.Has(M + "night_minuted")) && Play(record, w).Any(r => r.Has(M + "night_left_blank")), "A reading variant loses a record outcome.");
+        }
+        var mixedReadings = World(story, 5, "trickster.ever", P + "council.second_reading", P + "council.third_reading");
+        check(!Rules.ChoiceAvailable(Choice(record, "start", 2), mixedReadings) && Rules.ChoiceAvailable(Choice(record, "start", 3), mixedReadings), "Third reading does not take precedence.");
+        var request = S(K + "a_lie_for_the_chair");
+        check(Choice(request, "want", 0).Set.SequenceEqual(new[] { K + "lied_for_her" })
+              && Choice(request, "want", 1).Set.SequenceEqual(new[] { K + "refused_to_lie_for_her" })
+              && Choice(request, "want", 2).Set.SequenceEqual(new[] { K + "truth_for_chadali" }), "Private approaches changed order or masquerade as public actions.");
+        foreach (var blocker in new[] { "eritrice.closed", "council.fought" })
+            check(!Rules.Available(story, request, World(story, 5, "trickster", "trickster.ever", "eritrice.started", M + "point_one", "council.cauldron_given", blocker)), "A request outlives its opportunity: " + blocker);
+        foreach (var aidMoved in new[] { false, true })
+        {
+            var flags = new List<string> { "trickster.ever", "eritrice.started", M + "point_one" };
+            if (aidMoved) flags.Add("eritrice.aid_moved");
+            var w = World(story, 5, flags.ToArray());
+            var aid = S(K + "a_sound_proposition");
+            check(Choice(aid, "forget", 0).Set.Length == 0 && aid.Nodes.Single(n => n.Id == "forget").Text.Contains("No aid granted")
+                  && Play(aid, w).Any(r => !r.Has(K + "aid_first")), "Withdrawing aid fabricates a later obligation or payment.");
+        }
+        var pendingTruth = Rules.VisibleParagraphs(pageMet.Nodes[0], World(story, 6, "trickster.ever", "eritrice.committed", K + "truth_for_chadali"));
+        check(pendingTruth.Any(p => p.Text.Contains("It was never entered there as spoken")) && !pendingTruth.Any(p => p.Text.Contains("Eritrice stated that she did not want Chadali hurt")), "A truth draft becomes a public declaration.");
+        var pendingLie = Rules.VisibleParagraphs(pageMet.Nodes[0], World(story, 6, "trickster.ever", "eritrice.committed", K + "lied_for_her"));
+        check(pendingLie.Any(p => p.Text.Contains("a public statement was not")), "A promise is reported as a delivered lie.");
+        var silenceText = pageCommit.Nodes.Single(n => n.Id == "silence").Text;
+        check(!silenceText.Contains("only unanswered") && silenceText.Contains("She did not enter an answer"), "Silence invents uniqueness or an affirmative answer.");
+
+        // This scene remains staged until the coordinator supplies E14b append placement.
+        // The same rules acceptance runs when that reviewed hook is enabled.
+        var publicScene = story.Scenes.FirstOrDefault(s => s.Id == K + "chadalis_essence");
+        if (publicScene != null)
+        {
+            check(publicScene.ReturnToList && publicScene.NativeReturnCue == null && publicScene.AnswerLists.SequenceEqual(new[] { "2e2e6dd9c2bf7d748972de8d5a65b8ad" })
+                  && publicScene.DelayHours == 0 && publicScene.Requires.Contains("trickster"), "The intervention changes its native host, replay behavior or path.");
+            foreach (var approach in new[] { "lied_for_her", "refused_to_lie_for_her", "truth_for_chadali" })
+            {
+                var w = World(story, 5, "trickster", "trickster.ever", K + "a_lie_for_the_chair", K + approach);
+                check(Rules.Available(story, publicScene, w), "A selected public approach is unavailable: " + approach);
+                check(publicScene.Nodes[0].Choices.Count(c => Rules.ChoiceAvailable(c, w)) == 1, "A public approach has competing branches: " + approach);
+                var results = Play(publicScene, w);
+                check(results.Count > 0, "A public branch cannot complete: " + approach);
+                var expected = approach == "lied_for_her" ? new[] { "lie_for_chadali_spoken", "lie_for_chadali_withdrawn" }
+                    : approach == "refused_to_lie_for_her" ? new[] { "protection_for_chadali_spoken" } : new[] { "truth_for_chadali_spoken" };
+                foreach (var receipt in expected)
+                    check(results.Any(r => r.Has(K + receipt)), "The public action has no performed receipt: " + receipt);
+                foreach (var result in results)
+                {
+                    check(expected.Count(f => result.Has(K + f)) == 1 && !result.Has("chadali.essence_given") && !result.Has("eritrice.essence_given") && !result.Has("eritrice.committed"), "A public action grants extraction, commitment or competing receipts.");
+                    check(!Rules.Available(story, publicScene, Later(story, result, 0)), "A public intervention can be performed twice.");
+                }
+                foreach (var blocker in new[] { "council.walked_out", "eritrice.essence_given", "eritrice.closed", "council.fought", "trickster.failed", "crossroute.chadali.unavailable" })
+                    check(!Rules.Available(story, publicScene, World(story, 5, "trickster", "trickster.ever", K + "a_lie_for_the_chair", K + approach, blocker)), "An intervention outlives the Council or path: " + blocker);
+            }
+            foreach (var chapter in new[] { 3, 4, 6 })
+                check(!Rules.Available(story, publicScene, World(story, chapter, "trickster", "trickster.ever", K + "a_lie_for_the_chair", K + "lied_for_her")), "The intervention occurs outside the final sitting.");
+            check(!Rules.Available(story, publicScene, World(story, 5, "trickster.ever", K + "a_lie_for_the_chair", K + "lied_for_her"))
+                  && !Rules.Available(story, publicScene, World(story, 5, "trickster", "trickster.ever", K + "a_lie_for_the_chair")), "A public approach is invented for a former Trickster or a skipped request.");
+        }
+
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }
