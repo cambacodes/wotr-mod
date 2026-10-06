@@ -177,6 +177,10 @@ internal static class AneviaTricksterTests
             check(commitLeftPages.Contains("left") && commitLeftPages.Contains("morning_left") && !commitLeftPages.Contains("widow")
                   && !commitLeftPages.Contains("morning") && leftCommit.Any(r => r.Has("anevia.committed")),
                 "Both left: the commit treats a living, departed Beth as dead, or cannot commit.");
+            check(leftCommit.Any(r => r.Has("anevia.partner_stance.share") && r.Has("anevia.committed") && !r.Has("anevia.closed"))
+                  && leftCommit.Any(r => r.Has("anevia.partner_stance.exclusive") && r.Has("anevia.closed") && !r.Has("anevia.committed"))
+                  && leftCommit.Any(r => r.Has("anevia.partner_stance.secret") && r.Has("anevia.partner_lie_exposed") && r.Has("anevia.closed")),
+                "Both left: an absent wife's letter is mistaken for a live cameo and suppresses a stance.");
         }
 
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
@@ -234,7 +238,21 @@ internal static class AneviaTricksterTests
             var pages = new HashSet<string>();
             var outcomes = Program.Walk(commit, ask, (page, _) => pages.Add(page));
             // Two openings ([Ask her to stay] / [Say nothing and wait]) lead to the same terms.
-            check(outcomes.Count(r => r.Has("anevia.committed")) == (bethBack ? 4 : 2), "The kiss is offered in the widow world, or missing after Beth's return.");
+            if (!bethBack)
+                check(outcomes.Count(r => r.Has("anevia.committed")) == 2
+                      && outcomes.All(r => !r.Has("anevia.partner_stance.share") && !r.Has("anevia.partner_stance.exclusive") && !r.Has("anevia.partner_stance.secret")),
+                    "Widow commitment invents a living-wife stance.");
+            else
+            {
+                check(outcomes.Any(r => r.Has("anevia.committed") && r.Has("anevia.partner_stance.share") && !r.Has("anevia.closed")),
+                    "A living wife prevents negotiated sharing.");
+                check(outcomes.Any(r => r.Has("anevia.partner_stance.exclusive") && r.Has("anevia.closed") && !r.Has("anevia.committed")),
+                    "An exclusive demand overrides Anevia's refusal.");
+                check(outcomes.Any(r => r.Has("anevia.partner_stance.secret") && r.Has("anevia.committed") && r.Has("anevia.partner_lie_exposed") && r.Has("anevia.closed")),
+                    "The discovered affair loses its commitment or its consequence.");
+                check(outcomes.Where(r => r.Has("anevia.closed")).All(r => !r.Has("irabeth.closed") && !r.Has("tirabade.group_closed")),
+                    "Anevia's stance closes another relationship.");
+            }
             check(pages.Contains("threshold") && pages.Contains(bethAsked ? "morning_back" : bethBack ? "morning_quiet" : "morning")
                   && pages.Contains("coats") == listening
                   && pages.Contains(bethAsked ? "share" : bethBack ? "share_quiet" : "widow"), "Commit skips the intimate beat or a variant.");
@@ -397,7 +415,9 @@ internal static class AneviaTricksterTests
             "Anevia's devices are presented as the wrong kind (setup/wardrobe/confession visits; fetched and the twin letters).");
         // The kept closet opens onto her room once: setup finds the room and does not open it.
         var stayed = World(story, 6, "anevia.lover", "anevia.committed", "anevia.developed");
-        check(Rules.VisibleParagraphs(S("anevia.ending_kept").Nodes.Last(), stayed).Length == 0, "Trickster paragraphs leak onto an Anevia who stayed.");
+        var stayedParagraphs = Rules.VisibleParagraphs(S("anevia.ending_kept").Nodes.Last(), stayed);
+        check(stayedParagraphs.Length == 1 && stayedParagraphs.All(p => !p.Requires.Contains(Returned)),
+            "The stayed ending loses its current wife state or leaks a Trickster return paragraph.");
         var widowed = World(story, 6, "irabeth_dead", "anevia_gone", "anevia.lover");
         check(Rules.Available(story, S("anevia.ending_gone"), widowed)
               && !Rules.Available(story, S("anevia.ending_gone"), World(story, 6, "irabeth_dead", "anevia_gone", "anevia.lover", Returned)),

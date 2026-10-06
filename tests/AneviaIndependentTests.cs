@@ -223,6 +223,25 @@ internal static class AneviaIndependentTests
         }
         check(Rules.Available(story, Get("ending_aeon"), developed!), "Aeon-only dispatcher has no independent memory-ending page.");
 
+        // Round 2a: earn the affair at the same commitment, then expose it at
+        // the existing farewell. No foreign romance or native fate is changed.
+        var secret = Play("a_key_that_is_hers", noFarewell,
+            state => state.Has("anevia.partner_stance.secret"));
+        check(secret.Has("anevia.committed") && !secret.Has("anevia.partner_stance.share"),
+            "Secret commitment records two current stances.");
+        secret.Hour += 1000;
+        var discovered = Program.Walk(Get("the_last_ordinary_thing"), secret,
+            (page, partial) => seen.Add("anevia.the_last_ordinary_thing/" + page));
+        check(discovered.Where(state => state.Has("anevia.the_last_ordinary_thing"))
+            .All(state => state.Has("anevia.partner_lie_exposed") && state.Has("anevia.closed") && state.Has("anevia.parted")),
+            "Farewell lets a discovered affair keep the romance for free.");
+        check(discovered.All(state => !state.Has("irabeth.closed") && !state.Has("irabeth_dead")),
+            "Affair fallout changes Irabeth's route or native fate.");
+        var demands = Program.Walk(Get("a_key_that_is_hers"), noFarewell);
+        check(demands.Any(state => state.Has("anevia.partner_stance.exclusive") && state.Has("anevia.closed")
+            && !state.Has("anevia.committed")), "Exclusive demand grants Anevia instead of her refusal.");
+        check(promised.Has("anevia.partner_stance.share"), "Negotiated commitment loses its share stance.");
+
         // The Trickster layer (AneviaTricksterTests) is judged by its own suite.
         foreach (var scene in story.Scenes.Where(s => s.Relationship == "anevia" && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                                                      && !s.Id.StartsWith("anevia.trickster.", StringComparison.Ordinal)

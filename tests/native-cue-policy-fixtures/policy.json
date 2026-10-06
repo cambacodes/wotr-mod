@@ -24,7 +24,10 @@
         [
           "trickster.ever",
           "anevia.trickster.returned",
-          "anevia.committed"
+          "anevia.committed",
+          "!anevia.partner_stance.share",
+          "!anevia.partner_stance.exclusive",
+          "!anevia.partner_stance.secret"
         ]
       ],
       "KeepNativeImage": true,
@@ -34,7 +37,1742 @@
           "When": [
             [
               "trickster.ever",
-              "anevia.trickster.returned"
+              "anevia.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_0_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_0_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_0_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_0_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_1_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_1_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_1_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_1_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_2_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_2_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_2_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_2_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_3_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_dead",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_3_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_dead",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_3_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_3_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_4_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_4_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_4_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_4_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_5_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_5_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_5_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_5_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_6_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_6_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_6_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_6_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_7_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_7_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_7_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_7_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_8_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_8_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_8_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_8_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_9_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_9_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_9_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_9_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_10_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_10_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_10_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_10_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_11_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_11_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_11_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_11_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_12_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_12_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_12_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed.partner_12_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_0_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_0_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_0_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_0_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_1_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_1_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_1_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_1_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_2_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_2_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_2_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_2_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_3_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_dead",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_3_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_dead",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_3_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_3_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_4_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_4_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_4_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_4_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_5_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_5_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_5_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_5_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_6_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_6_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_6_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_6_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_7_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_7_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_7_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_7_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_8_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_8_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_8_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_8_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_9_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_9_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_9_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_9_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_10_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_10_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_10_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_10_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.cost.dug_out",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_11_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_11_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_11_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_11_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_gone",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_12_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_12_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_12_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left.partner_12_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth_away",
+              "irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out"
             ]
           ],
           "KeepNativeImage": true
@@ -63,7 +1801,10 @@
           "trickster.ever",
           "anevia.trickster.returned",
           "anevia.committed",
-          "irabeth.trickster.returned"
+          "irabeth.trickster.returned",
+          "!anevia.partner_stance.share",
+          "!anevia.partner_stance.exclusive",
+          "!anevia.partner_stance.secret"
         ]
       ],
       "KeepNativeImage": false,
@@ -74,7 +1815,10 @@
             [
               "trickster.ever",
               "anevia.trickster.returned",
-              "irabeth.trickster.returned"
+              "irabeth.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.secret"
             ]
           ],
           "KeepNativeImage": false
@@ -86,6 +1830,9 @@
               "trickster.ever",
               "anevia.trickster.returned",
               "anevia.committed",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.secret",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record"
@@ -99,6 +1846,9 @@
             [
               "trickster.ever",
               "anevia.trickster.returned",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.secret",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record"
@@ -113,6 +1863,938 @@
               "trickster.ever",
               "irabeth.trickster.returned",
               "!anevia.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_0_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_0_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_0_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_0_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_7_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.share"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_7_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_7_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_7_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_8_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.share",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_8_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_8_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_together.partner_8_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_0_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.share",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_0_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_0_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_0_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_7_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.share"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_7_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_7_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_7_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_8_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.share",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_8_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_gone",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_8_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "!irabeth_gone",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back.partner_8_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_3_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.share"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_3_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_3_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_3_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_4_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.share",
+              "!irabeth_dead"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_4_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_4_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_4_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_5_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_5_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_5_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_5_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_6_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_6_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_6_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed.partner_6_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_3_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.share"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_3_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.exclusive",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_3_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_3_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_dead",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_4_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.share",
+              "!irabeth_dead"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_4_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_4_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_4_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_gone",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_5_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_5_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_5_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_5_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "irabeth_away",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_6_0",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.share",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_6_1",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.exclusive",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_stance.share",
+              "!anevia.partner_stance.secret"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_6_2",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away",
+              "!anevia.partner_lie_exposed"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow.partner_6_3",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record",
+              "anevia.partner_stance.secret",
+              "anevia.partner_lie_exposed",
+              "!irabeth_dead",
+              "!irabeth_gone",
+              "!irabeth_away"
             ]
           ],
           "KeepNativeImage": true
