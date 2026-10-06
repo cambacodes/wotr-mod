@@ -985,28 +985,36 @@ EL_DAILY = "eliandra.committed"
 
 _arsinoe = _history_partners["arsinoe"]
 _arsinoe["deal"] = [[AR + "cost.lien"]]
-_arsinoe["opener"] = "{n}Arsinoe met the Commander after Threshold. She put the counting-room key away and took the Commander's hand.{/n}"
+_arsinoe["opener"] = '{n}Arsinoe reopened her shop after Threshold. Her customers found her as exacting as before, and rather less willing to work past closing.{/n}'
 _arsinoe["paragraphs"] = (
-    page_p("The cauldron went back across her counter as leased. She checked it twice, then entered the discharge with a receipt.",
+    page_p('The diamond was returned under the clause Arsinoe had signed. She entered the receipt in Drezen and released the security against its loss.',
            requires=(called("arsinoe"), AR + "cost.lien"), forbids=("arsinoe.siphon_burst",)),
-    page_p("The cauldron was handed back at the rift as leased, a breath before it burst. What burst was the temple's property, consumed in its intended use. Arsinoe entered the discharge with a receipt.",
+    page_p('At the rift, the diamond was handed back a breath before it burst. The return preceded the destruction. Arsinoe entered the discharge to the letter of the lease and released the security against loss.',
            requires=(called("arsinoe"), AR + "cost.lien", "arsinoe.siphon_burst")),
-    page_p("The Fool King's still had been pledged. With the account settled, Arsinoe released the lien. The barrel baron still invited her to audit the tap on the first of every month. She seldom left sober.",
-           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_still")),
-    page_p("The Commander's word had been the collateral. Abadar's clerks entered it at face value, which amused them, and then found that it held, which did not.",
+    page_p("The still's lien was released with the lease account. The barrel baron invited Arsinoe to visit again. She accepted, inspected the beer at length, and charged the temple nothing for the report.",
+           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_still", "fool_king.available"), forbids=("fool_king.gone",)),
+    page_p('The Commander\'s word had secured the loss account. With that account settled, Arsinoe marked the pledge "Released" and returned its copy with the lease.',
            requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_word")),
-    page_p("The First Vault does not recognize death as grounds for default, nor for refusing payment from the deceased. She took the Commander's payment anyway, and entered it without comment.",
+    page_p("The Commander's death still appeared in the record. Arsinoe entered the payment beneath it, checked the receipt, and closed the lease account. She left correcting the death notice to the clerks whose business it was.",
            requires=(called("arsinoe"), AR + "cost.lien", ON_RECORD)),
-    page_p("Arsinoe closed the Commander's lease account in a counting-room that smelled of ink and scorched air. She checked every figure twice, closed the book, and laughed.",
+    page_p("Arsinoe checked the loss account and the rental balance in a counting-room still smelling of scorched air. The lease's return clause and every concession were honored. She closed the account and handed back the cancelled document. The stone's title remained unproven; Absalom would have to answer that question without another payment from the Commander.",
            requires=(called("arsinoe"), AR + "cost.lien")),
-    page_p('When the clerks asked what the Worldwound was now worth as collateral, Arsinoe told them "Slightly used," and would not be moved.',
+    page_p('The Worldwound had been entered as "slightly used." Arsinoe kept a copy of the released lien. The clerks were welcome to object to its wording; they could no longer collect against it.',
            requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_worldwound"), forbids=("ending.wound_closed",)),
-    page_p("The Worldwound had been pledged. Now there was only scorched earth where it had been. Arsinoe struck the discharged lien from the ledger and shut the book.",
+    page_p('Arsinoe marked the Worldwound lien "Discharged; collateral withdrawn by closure." She kept the document. She did not claim the land where the rift had been.',
            requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_worldwound", "ending.wound_closed")),
 )
 _abadar = _history_debts["abadar"]
 _abadar["groups"] = [[AR + "cost.lien"]]
-_abadar["page_called"] = "The church of Abadar collected the cauldron lease to the letter. The First Vault entered its discharge and released the pledged security. The receipt bore the date of Threshold."
+_abadar["ledger_text"] = "The provisional lease secures the diamond against total loss. Rent follows the agreed renewal dates, including any grace. Returning the stone whole releases the loss security; the rental balance has its own account."
+_abadar["page_called"] = "The church of Abadar collected according to Arsinoe's lease. The return was entered, the loss claim discharged, and the security released. The clerks checked the dates twice before putting away their pens."
+
+_arsinoe["paragraphs"] += (
+    page_p("The still's lien was released with the lease account. Arsinoe filed the old inspection reports with the cancelled document.",
+           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_still", "fool_king.gone")),
+    page_p('After Threshold, Arsinoe set a second cup beside her own. No account lay beneath it. She had an evening to keep with the Commander, and a shop full of customers who could wait until opening time.', requires=("arsinoe.committed",), forbids=(AR + "cost.lien",)),
+    page_p('The invitation given before the final march was kept in the spring. Arsinoe came in her good robes, and the Commander opened the door. The next appointment was made before she left.', requires=(AR + "late_committed",), forbids=("arsinoe.future_spoken",)),
+)
 
 _eliandra = _history_partners["eliandra"]
 _eliandra["ledger_text"] = "I knelt across Eliandra's basin and gave Pulura my sight of her lights. The lights are still there. Eliandra can read them to me; I can no longer see them."

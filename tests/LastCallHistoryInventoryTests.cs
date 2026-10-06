@@ -82,13 +82,13 @@ internal static class LastCallHistoryInventoryTests
             Finish(w, closed, heroic);
             var text = Text("arsinoe.lastcall.page", w);
             check(text.Contains("before it burst") == burst, "q8g incorrect cauldron condition");
-            check(text.Contains("Slightly used") == (pledge == 1 && !closed), "q8g false Worldwound pledge/open callback");
-            check(text.Contains("only scorched earth") == (pledge == 1 && closed), "q8g missing closed pledged-Wound discharge");
-            check(text.Contains("released the lien") == (pledge == 0), "q8g still security not released");
-            check(text.Contains("word had been the collateral") == (pledge == 2), "q8g wrong word pledge");
-            check(text.Contains("from the deceased") == heroic, "q8g false recorded-death payment");
+            check(text.Contains("slightly used") == (pledge == 1 && !closed), "q8g false Worldwound pledge/open callback");
+            check(text.Contains("collateral withdrawn by closure") == (pledge == 1 && closed), "q8g missing closed pledged-Wound discharge");
+            check(text.Contains("still's lien was released") == (pledge == 0), "q8g still security not released");
+            check(text.Contains("word had secured the loss account") == (pledge == 2), "q8g wrong word pledge");
+            check(text.Contains("death still appeared in the record") == heroic, "q8g false recorded-death payment");
             var creditors = Text("trickster.lastcall.page.collectors", w);
-            check(creditors.Contains("cauldron lease") && !creditors.Contains("lien attached itself"), "q8g Abadar creditor invents territory");
+            check(creditors.Contains("Arsinoe's lease") && !creditors.Contains("lien attached itself"), "q8g Abadar creditor invents territory");
         }
         foreach (bool heroic in new[] { false, true })
         {

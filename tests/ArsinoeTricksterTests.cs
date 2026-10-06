@@ -143,7 +143,7 @@ internal static class ArsinoeTricksterTests
             var node = story.Scenes.Single(s => s.Id == id).Nodes[0];
             foreach (string pledge in new[] { "arsinoe.trickster.cost.collateral_word", "arsinoe.trickster.cost.collateral_still" })
             {
-                var with = World(story, pledge); var without = World(story);
+                var with = World(story, pledge, "fool_king.crowned"); var without = World(story, "fool_king.crowned");
                 check(Rules.VisibleParagraphs(node, with).Count(p => p.Requires.Contains(pledge)) == 1
                       && Rules.VisibleParagraphs(node, without).All(p => !p.Requires.Contains(pledge)),
                     "Pledge " + pledge + " is never collected on " + id);
@@ -158,9 +158,14 @@ internal static class ArsinoeTricksterTests
                 "Collector paragraph missing on " + id);
         }
 
-        // Reactions: exactly the two allocated reactors, both reading the lien.
+        // Allocation is by reactor identity; Konomi has two independent occasions.
         var reactions = story.Scenes.Where(s => s.Relationship == "arsinoe" && s.Reaction).ToArray();
-        check(reactions.Length == 2 && reactions.All(r => r.Requires.Contains("arsinoe.trickster.cost.lien")), "Arsinoe reactions changed.");
+        check(reactions.Select(r => r.Owner).ToHashSet().SetEquals(new[] { "Konomi", "Socothbenoth" }), "Arsinoe reactor allocation changed.");
+        check(reactions.Single(r => r.Id == "arsinoe.trickster.cauldron_seen.react_konomi").Requires.Contains("arsinoe.trickster.cost.lien"),
+            "Konomi's original lien occasion lost its trigger.");
+        check(!reactions.Single(r => r.Id == "arsinoe.trickster.after_hours.react_konomi").Requires.Contains("arsinoe.trickster.cost.lien"),
+            "Actual intimacy requires an unrelated lease.");
+        ArsinoePolishTests.Run(story, check);
 
         // Sol INT (2026-09-30): Konomi hears of the lien in her office only; her Trickster return reopens a dismissal.
         var konomi = reactions.Single(r => r.Id == "arsinoe.trickster.cauldron_seen.react_konomi");
@@ -257,17 +262,17 @@ internal static class ArsinoeTricksterTests
         var roofOffer = lateCommit.Nodes.Single(n => n.Id == "offer");
         string OfferText(Snapshot st) => string.Join(" ", Rules.VisibleParagraphs(roofOffer, st).Select(p => p.Text));
         var roofText = OfferText(roofOnly);
-        check(roofText.Contains("a roof, once") && !roofText.Contains("innkeeper") && !roofText.Contains("walk I made")
-              && !roofText.Contains("Tovin's shop") && !roofText.Contains("line about late payments"),
+        check(roofText.Contains("There was a roof") && !roofText.Contains("innkeeper") && !roofText.Contains("doorway with the carved face")
+              && !roofText.Contains("table in Tovin's shop") && !roofText.Contains("payments late"),
             "Roof-only late offer recalls evenings that were never played.");
-        check(OfferText(flirted).Contains("line about late payments") && !OfferText(flirted).Contains("a roof, once"),
+        check(OfferText(flirted).Contains("payments late") && !OfferText(flirted).Contains("There was a roof"),
             "Lease-flirt late offer borrows the roof history.");
         var booked = Program.Copy(roofOnly); booked.Flags.Add("arsinoe_first_impression");
-        check(OfferText(booked).Contains("innkeeper") && !OfferText(booked).Contains("walk I made"), "Book callback wrong.");
+        check(OfferText(booked).Contains("innkeeper") && !OfferText(booked).Contains("doorway with the carved face"), "Book callback wrong.");
         var tabled = Program.Copy(booked); tabled.Flags.UnionWith(new[] { "arsinoe_hours_of_her_own", "arsinoe.next_table" });
-        check(OfferText(tabled).Contains("Tovin's shop") && !OfferText(tabled).Contains("walk I made"), "Table callback wrong.");
+        check(OfferText(tabled).Contains("Tovin's shop") && !OfferText(tabled).Contains("doorway with the carved face"), "Table callback wrong.");
         var walked = Program.Copy(booked); walked.Flags.UnionWith(new[] { "arsinoe_hours_of_her_own", "arsinoe.next_walk" });
-        check(OfferText(walked).Contains("walk I made") && !OfferText(walked).Contains("Tovin's shop"), "Walk callback wrong.");
+        check(OfferText(walked).Contains("doorway with the carved face") && !OfferText(walked).Contains("table in Tovin's shop"), "Walk callback wrong.");
         // A Chapter 5 fresh entry reaches the roof within the post-Coronation budget (168 h).
         int roofHours = new[] { "arsinoe_city_on_paper", "arsinoe_printers_view", "arsinoe_roofs" }.Sum(id => story.Scenes.Single(s => s.Id == id).DelayHours);
         check(roofHours <= 168, "Post-Coronation entry cannot reach the late-commit beat in 168 h: " + roofHours);
@@ -284,10 +289,10 @@ internal static class ArsinoeTricksterTests
             if (called) st.Flags.Add("arsinoe.lastcall.called");
             var shown = Rules.VisibleParagraphs(bill, st).Where(p => p.Requires.Length + p.Forbids.Length > 0 && !p.Requires.Any(r => r.Contains("collateral"))).ToArray();
             check(shown.Length == 1, "Burst cauldron page has no single fate variant (active=" + active + ", called=" + called + ")");
-            check(shown.All(p => p.Text.Contains("unopened") == !active && p.Text.Contains("handed it") == called), "Burst page contradicts Last Call.");
+            check(shown.All(p => (p.Text.Contains("unpaid") || p.Text.Contains("account remained open")) == !called && p.Text.Contains("handed back") == called), "Burst page contradicts Last Call.");
             var whole = World(story, "trickster.ever", "arsinoe.trickster.cost.lien");
             if (active) whole.Flags.Add("lastcall.active");
-            check(Rules.VisibleParagraphs(potNode, whole).Count(p => p.Text.Contains("still paying")) == (active ? 0 : 1), "Returned cauldron page contradicts Last Call.");
+            check(Rules.VisibleParagraphs(potNode, whole).Count(p => p.Text.Contains("exact bill")) == 1, "Returned cauldron page contradicts Last Call.");
         }
 
         // Sol r4 BEL: no collateral or arrears paragraph has a dead Commander visit or pay; a Commander brought back does.
@@ -299,9 +304,10 @@ internal static class ArsinoeTricksterTests
             if (back) st.Flags.Add("ending.trickster");
             Rules.Complete(story, st);
             var text = string.Join(" ", Rules.VisibleParagraphs(node, st).Select(p => p.Text));
-            check(text.Contains("The Commander came") == back && text.Contains("never called in") == !back, "Pledged word ignores death on " + id);
+            check(!text.Contains("The Commander came") && text.Contains("estate") == !back,
+                "Collateral invents a personal appointment or ignores death on " + id);
             if (id.EndsWith("pot_returned"))
-                check(text.Contains("still paying") == back && text.Contains("Nobody paid it") == !back, "Arrears ignore death.");
+                check(text.Contains("exact bill") == back && text.Contains("estate") == !back, "Rental accounting ignores death.");
         }
 
         // Sol r2 INT: the Kiana wedding line (added to this scene by kiana_trickster.integrate) reads her route's robbery,
@@ -327,7 +333,7 @@ internal static class ArsinoeTricksterTests
         foreach (bool closedWound in new[] { false, true })
         {
             var st = World(story, "trickster.ever", "arsinoe.trickster.primed", "arsinoe.trickster.cost.lien",
-                "arsinoe.trickster.cost.collateral_worldwound", "arsinoe.trickster.cost.collateral_word");
+                "arsinoe.trickster.cost.collateral_worldwound");
             st.Chapter = 6;
             if (life != "alive") st.Flags.Add("sacrifice");
             if (life == "back") st.Flags.Add("ending.trickster");
@@ -339,12 +345,12 @@ internal static class ArsinoeTricksterTests
             var text = string.Join(" ", epilogues.Where(e => Rules.Available(story, e, st))
                 .SelectMany(e => e.Nodes).SelectMany(n => new[] { n.Text }.Concat(Rules.VisibleParagraphs(n, st).Select(p => p.Text))));
             string what = life + "/" + lc + "/burst=" + burst + "/closed=" + closedWound;
-            bool settled = text.Contains("paid by noon") || text.Contains("paid the arrears the next morning") || text.Contains("Released on payment");
-            bool owed = text.Contains("still paying") || text.Contains("not yet foreclosed") || text.Contains("Nobody paid it") || text.Contains("came back unopened");
+            bool settled = text.Contains("discharged the loss claim") || text.Contains("settled the separate rental account");
+            bool owed = text.Contains("account remained unpaid") || text.Contains("unpaid loss account") || text.Contains("came back unopened");
             check(!(settled && owed), "Arsinoe's account is both settled and owed: " + what);
             check(!text.Contains("Account satisfied"), "Wound closure claims the rent account satisfied: " + what);
             check(lc != "called" || !text.Contains("not yet foreclosed"), "A called-in lien still threatens foreclosure: " + what);
-            check(lc == "none" || !owed, "Last Call leaves the account owed: " + what);
+            check(lc != "called" || !owed, "A called lease leaves the account owed: " + what);
             bool alive = life != "dead" || lc != "none";
             check(!text.Contains("The Commander came.") || alive, "A dead Commander answers the called word: " + what);
         }
