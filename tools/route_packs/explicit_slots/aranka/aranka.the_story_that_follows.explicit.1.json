@@ -1,0 +1,17 @@
+{
+  "voice": "ARANKA: Desnan singer and competitive bard; effusive, vain about her singing, playful, quick to laugh and quick to defend her work. Frank desire, teasing rather than solemn reassurance. She initiates closeness and keeps her chosen work and travel. Warmth does not erase her moral anger. Use new concise dialogue; musical diction sparingly, no maxims, no therapy language. Canon facts: she sings Starward Gaze received from Desna's servants in Elysium; she later arranges it and encourages Thall to sing. Physical details not established by those facts must not be invented; no assumed waking wings or fixed Commander anatomy.",
+  "scene": "Chapter 5, sheltered hollow behind the existing island wall, after the authorship argument; private or both accepted choice only. Only Aranka and the Commander, established lovers; the travelers have left. User-supplied consensual sexual encounter insertion; non-graphic continuity brief. Required beats: she keeps her song and wants touch, her frank initiative and remaining irritation belong together, the cloak stays on the grass. The deferral bypasses this entirely. No lover interruption, guilt about an invented Thall affair, shared dream or magical privacy. Resume hollow_morning with her indecent moon-verse humming and the charcoal lines on the Commander's hand; no duplicate first night.",
+  "last_line": "N: The grass beyond the cloak is wet with dew.",
+  "speakers": {
+    "A": "Aranka",
+    "N": "Narrator"
+  },
+  "example": "N: Aranka puts her lute safely out of reach, then catches your sleeve.\nA: There. Now you can stop admiring the instrument.",
+  "commander": "the Commander",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16
+}

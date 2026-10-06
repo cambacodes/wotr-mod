@@ -51,48 +51,35 @@ s("the_wrong_refrain", "The wrong refrain", '"What were you singing just now?"',
 "That is becoming a problem."
 {n}She takes your hand, draws you closer, and kisses the corner of your mouth.{/n}
 "Hello, my darling! Kiss me again before you go hunting demons in my verses."
-"The singing?"
 "My singing. I taught someone a tune, and now everyone knows it except me. They have improved it. I keep hearing about battles I never put in it. In one version you throw a demon through the moon."
-"Only one?"
 "It was a short verse."
 {n}She slips her hand into the crook of your elbow and turns toward a quieter patch of grass. Her pace is easy, but she keeps testing a little run of notes under her breath.{/n}''',
         c('"Tell me what happened to your song."', "history"),
         c('"Save that song for me. I will come back when I can hear it through."', abort=True)),
     n("history", "Aranka", '''{n}She tips her head back to look at the sky, then at you.{/n}
 "Have you heard my new tune? Can you sing the last line? And how long can I keep you before the crusade steals you?"
-"You're asking several."
 "I have a poor technique. Stay anyway."''',
         c('"How has life been since choosing to be a Dream Warden?"', "keeper", requires=("aranka.ran_keep_final",), forbids=("aranka.ran_release_final",)),
         c('"How does it feel to have given up the compass?"', "traveler", requires=("aranka.ran_release_final",))),
-    n("keeper", "Aranka", '''"Larger. Occasionally larger than I know what to do with. I can be halfway through a perfectly ordinary afternoon and remember a color I don't have a name for. Then somebody wants to know whose cup I've taken."
-{n}She lifts the cup in her free hand and examines its base.{/n}
-"This one is mine. I checked."
-"Do you regret becoming a Dream Warden?"
-"No! But I have songs to finish before Reverie carries me off again. Even Elysium can wait for a good last verse."
-{n}She gives your arm a small squeeze.{/n}
-"And I want you here when no demons are chasing us. I have much better uses for that handsome mouth."
-"I brought the same face."
-"Good. I have been practicing what to do with it."''',
+    n("keeper", "Aranka", '''"Larger! I keep remembering colors I cannot name. Then somebody asks whose cup I have stolen."
+{n}She checks the cup's base, laughs, and sets it beside the music.{/n}
+"Mine, this time. Becoming a Dream Warden has not cured my bad habits. Nor finished this song. Even Elysium can wait for the last verse."
+{n}She tugs you close enough to kiss, then turns back to the rehearsal sheet.{/n}
+"The crusade can have you later. First, listen."''',
         c('"Have you been thinking about your first flight in the dream?"', "flight", requires=("aranka.ran_wing_dream",)),
         c('"Start with the song."', "song")),
     n("flight", "Aranka", '''"Far too much. Every time I try to describe it, I sound as if I am inventing a more impressive version. The wings, the light, the moment when the ground became somewhere I could choose to leave."
 {n}She spreads her hands, searching for the size of the feeling.{/n}
 "Then I woke and needed my boots. It was rather difficult to be patient with them."
-"You did wonder how long the wings would take outside the dream."
 "I did. I am not going to solve that by leaping off the island. Please look less alarmed. I have an excellent imagination and occasionally use it before doing something foolish."
 {n}She looks up, smiling to herself.{/n}
 "I want to sing it! But every verse comes out like a solemn hymn. I was flying, not attending my own funeral."
 {n}Her gaze returns to you.{/n}
 "Today I shall practice being delighted nearer the ground."''', c('"Let me hear what you are working on now."', "song")),
-    n("traveler", "Aranka", '''"I still reach for it sometimes. That's embarrassing. You would think handing something over in person would persuade my hand that it was gone."
-{n}She spreads her fingers against the sunlight, then curls them around yours.{/n}
-"I gave up the compass. Oh, I miss Reverie and those impossible roads! But I have not gone hunting for it under my pillow."
-"Reverie did make an adventure sound splendid."
-"And somehow I was always more magnificent when she told it! There is a verse in that, if I can keep myself from believing it."
-{n}She swings your joined hands once.{/n}
-"I am here. There is work I want to do here. When we can travel again, I intend to get lost somewhere that has never heard your title. You can come if you promise to be interesting when nobody bows."
-"A difficult demand."
-"I believe in you."''', c('"Tell me what you want to make here."', "song")),
+    n("traveler", "Aranka", '''"I still reach for the compass. Look!" {n}Her fingers close on empty air; she catches your hand instead.{/n}
+"I gave it up. I miss Reverie and those impossible roads, but I have songs to finish here. No point searching under my pillow."
+{n}She folds a corner of the music to mark a troublesome bar.{/n}
+"After the war, somewhere that has never heard your title! I shall find a tune neither of us knows. Today I have this one, and you are going to hear it."''', c('"Tell me what you want to make here."', "song")),
     n("song", "Aranka", '''{n}She sings four quiet lines. The melody seems about to climb into a triumphant finish, then steps down instead.{/n}
 "The swallow turns above the road,
 The traveler turns below.
@@ -101,17 +88,14 @@ Ask at the door who knows."
 {n}For a moment you hear the voices from the path fitting their louder ending into the same place.{/n}
 "A woman named Sella taught me the first bit. She used to sing while hanging washing between the wagons. A few of the others knew different verses. I thought we could make an evening out of it. People singing what they've carried here. No grand story about how delighted everyone is to be at war."
 "There is room beside 'Starward Gaze' for a song that doesn't know where it is going yet. I'd like to hear what happens when we give it some company."
-"And someone changed the ending."
-"Several someones. I'm not furious that they changed it. That is how songs travel. But now a man has asked me to perform the famous version, with you standing beside me. Apparently the song needs a real Commander to keep the moon in place."
+"People changed the ending. I'm not furious about that. That is how songs travel. But now a man has asked me to perform the famous version, with you standing beside me. Apparently the song needs a real Commander to keep the moon in place."
 {n}She plucks a stalk of grass and knots it loosely around her finger.{/n}
 "I could sing it beautifully. They would cheer. Sella would never get to finish the verse she brought. I would rather try something less certain."''', c('"What are you considering?"', "venues")),
     n("venues", "Aranka", '''"One open circle. Everyone can come, the singers can hear one another, and we might persuade the loudest people that listening is part of an evening. Or we take the songs around in little groups. A handful of listeners at a time. Fewer people, but nobody has to compete with a crowd to be heard."
-"Which do you want?"
-"Both, obviously. I also want another pair of lungs and a morning in which nobody recognizes me. I can manage one of those things at a time."
+"I want both. I also want another pair of lungs and a morning in which nobody recognizes me. I can manage one of those things at a time."
 {n}She turns the knotted stalk around her finger.{/n}
 "Come sing with us! No marching orders. I want a listener who can hear a crooked tune, and a Commander brave enough to sing one."
-"You make an attractive offer."
-"I haven't reached the attractive part. Afterwards I shall monopolize you for an entirely unreasonable length of time."
+"And afterwards I want you beside me. I have been thinking about your mouth all afternoon."
 {n}The grass ring comes apart as she shows it to you. She laughs and drops it into the grass.{/n}
 "There. Already too ambitious."''',
         c('"Try the open circle. I will help you earn their attention."', flags=("aranka.extension_started", "aranka.open_circle", "aranka.rehearsal_agreed")),
@@ -131,7 +115,6 @@ s("where_the_breath_goes", "Where the breath goes", '"Is this a good time to lis
         c('"Could each of you show me your part on its own?"', "separate"),
         c('"My head is full of the war today. Save the next rehearsal for me."', abort=True)),
     n("heard", "Aranka", '''{n}Rovan lifts the sticks when Sella draws breath. Aranka has already begun the next phrase by then. Sella follows her instead of taking the breath she prepared, and the last words hurry out in a cluster.{/n}
-"Aranka. You're giving her less time than she takes when she sings alone."
 {n}Aranka looks surprised, then sings the two lines under her breath. She catches herself at the same place.{/n}
 "Oh. I have been filling the gap because I know what comes next."
 "I need the gap," {n}Sella says.{/n} "It isn't empty on my side."
@@ -142,8 +125,7 @@ s("where_the_breath_goes", "Where the breath goes", '"Is this a good time to lis
     n("missed", "Aranka", '''{n}You follow the beat with your heel and suggest that Rovan come in sooner. He tries. This time the sticks interrupt Sella's first word. She stops, begins again, then shakes her head.{/n}
 "I can't find it now."
 {n}Aranka holds up a hand. Rovan lowers the sticks. The little silence feels much larger than the mistake.{/n}
-"That was mine," {n}you say.{/n}
-"Yes, and I followed you straight into it! Rovan, put down the sticks. Sella, give me that phrase again."
+"I followed you straight into that! Rovan, put down the sticks. Sella, give me that phrase again."
 {n}Sella rubs her throat. She has been forcing the phrase to fit for longer than you realized.{/n}
 "I'll need to stop for today. I don't want to lose my voice proving I can follow an instruction."
 {n}Aranka gives her the last water in the flask, then asks her to hum only the beginning. Listening without joining, she finally hears where Sella takes her breath.{/n}
@@ -157,7 +139,6 @@ s("where_the_breath_goes", "Where the breath goes", '"Is this a good time to lis
 "That's where you might come in," {n}Sella says.{/n} "Let me get used to having a door knocked on while I'm singing about it."
 {n}They laugh. Rebuilding the harmony takes most of the rehearsal. You listen for the words while Aranka tries the phrase again, then beams at you when all three parts land together.{/n}
 "You have been extraordinarily patient," {n}she says when they stop.{/n}
-"Should I demand a solo?"
 "Absolutely not. We have made such progress."''', c('[Ask Rovan which part he wants to keep.]', "rovan", flags=("aranka.timing_patient",))),
     n("rovan", "Aranka", '''{n}Rovan turns the sticks between his fingers.{/n}
 "I don't mind keeping time. I mind everyone introducing me as the man who used to sing. They look so sorry that I end up comforting them. Then they ask whether I've tried a priest. Yes. Several. I know what my throat can do today."
@@ -169,21 +150,11 @@ s("where_the_breath_goes", "Where the breath goes", '"Is this a good time to lis
 "Excellent. We need a little suspense."
 {n}When he leaves, Aranka picks up the stick he forgot and calls him back. He returns at a theatrical crawl, retrieves it, and leaves with the dignity of a man who knows everyone watched.{/n}
 "I had a whole speech ready about courage," {n}she admits to you.{/n} "He would have hated it."
-"You could use it on me."
-"No. You receive too many. I shall tell you something dreadful about your singing instead."''', c('"You are very sure you can improve my singing."', "lesson")),
-    n("lesson", "Aranka", '''"An omission I intend to correct."
-{n}She stands in front of you and gives you the first three notes. The third is higher than you expect. Your attempt makes her eyes brighten with a pleasure she is trying very hard to disguise.{/n}
-"Again. And stop watching my mouth as if it might provide the answer."
-"It is distracting."
-"Then imagine how difficult this is for me."
-{n}She comes closer and lays two fingers against your side. "Fill your lungs here." As you draw breath, her own voice catches and she laughs.{/n}
-"There," {n}she says softly.{/n} "That was better."
-"Was it?"
-"I was listening to a different thing."
-{n}Her fingers lift. She steps back far enough to give the lesson a chance, then offers the notes once more. This time she lets your imperfect version finish before answering it.{/n}
-"One line for you, or a place where I can see that admiring face? I intend to be splendid. You may applaud either way."
-{n}She catches your collar between finger and thumb and straightens it with unnecessary care.{/n}
-"This is the part of the rehearsal I have prepared best."''',
+"You receive too many speeches already. I shall tell you something dreadful about your singing instead."''', c('"You are very sure you can improve my singing."', "lesson")),
+    n("lesson", "Aranka", '''{n}She gives you three notes. You miss the highest; she bites back a laugh and tries again. Her fingers press your ribs just as you draw breath. This time she misses her own note.{/n}
+"Oh! That's your fault. Stand there. Farther. I mean to finish this rehearsal."
+{n}She steps back and gives you the phrase again. Beyond her shoulder, Sella is waiting with the open song sheet and Rovan taps an impatient beat.{/n}
+"One line for you, or a seat among the listeners? Decide before they sack their splendid conductor."''',
         c('"Give me one line. I will learn it before the performance."', flags=("aranka.sings_line", "aranka.rehearsal_kept")),
         c('"Find me among the listeners. I will be paying attention."', flags=("aranka.listens_close", "aranka.rehearsal_kept"))),
 ], "aranka.rehearsal_agreed")
@@ -207,8 +178,7 @@ s("the_name_missing", "The name missing from the song", '"You said someone wante
 "Yes."
 {n}Neris turns and looks straight at you.{/n}
 "I'm not asking you to find him. I have asked enough people who needed me to believe they could. I'm asking her to stop singing that I was rescued by a man who wasn't there."
-"Were you alone at the gate?"
-"For a while. A woman with a broken cart took me with her. I didn't learn her name. There wasn't time to ask everyone to become part of a song."
+"I was alone until a woman with a broken cart took me with her. I didn't learn her name. There wasn't time to ask everyone to become part of a song."
 {n}Aranka's face changes. She had begun to reach for a thought; she lets it go.{/n}
 "I sang it wrong. Deren comes out of the verse."
 {n}Neris loosens her grip on the cloak. It takes her a moment to believe that the argument has ended.{/n}''', c('[Stay while Aranka tells her what she will change.]', "correction")),
@@ -218,38 +188,31 @@ s("the_name_missing", "The name missing from the song", '"You said someone wante
 {n}Neris nods once. "I will be nearby until tomorrow if you forget any of it." She gathers her cloak and walks away. Aranka watches her go.{/n}
 {n}Aranka watches the empty space where she stood.{/n}
 "I liked that verse. I was pleased with it. I could hear people singing it before I'd finished."
-"You can still write something else."
 "And now I could sing a fine verse about my own mistake and have them clap for that! Oh, no. I have had quite enough of that cleverness."
 {n}She rubs both hands over her face, then drops them.{/n}
 "Listen. I have two endings, and neither is going to smuggle him back through that door."''', c('[Listen to the two endings she is considering.]', "endings")),
     n("endings", "Aranka", '''{n}The first version ends with the traveler reaching a lighted house. The door opens, but the words do not say who stands behind it. Aranka lets the final chord rest without filling the silence.{/n}
 "That is as far as the singer knows," {n}she says.{/n} "We can stop there."
 {n}The second gives the last question to the listeners. Each may answer with the name of someone they actually met on the road, or let the question pass. The melody leaves enough room for an awkward answer.{/n}
-"That could become a mess," {n}you say.{/n}
 "A tremendous mess. Somebody will say a horse. Somebody will say your name and expect a speech. But someone might remember the woman with the cart. Or their own person, who did something worth remembering without doing it beautifully."
-"You cannot know what they will say."
-"That is what makes me want to try it. It is also what makes me want to sit under a tree and sing to myself."
+"I cannot know what they will say. That makes me want to try it. It is also what makes me want to sit under a tree and sing to myself."
 {n}She tests the unresolved chord again. You can hear her liking it.{/n}
 "Choose what you would want to hear. I need an answer from a listener, not a pardon."''',
         c('"Leave the door open. Let the unfinished question stand."', "door"),
         c('"Give the last question to the listeners. Make room for an answer you cannot rehearse."', "answers")),
     n("door", "Aranka", '''{n}She sings it once without looking at you. The last note hangs for a moment above the grass. No one rushes to finish it.{/n}
 "I'll need to teach the others not to tidy that up. Rovan will want one more tap. I will want one more word."
-"Will you resist?"
-"With great and visible suffering."
+"I shall leave out that last word, with great and visible suffering."
 {n}The joke is small, but it brings her back toward you. She takes your hand and folds it between both of hers.{/n}
 "You heard that dreadful verse and stayed to hear the better one. I shall have to sing it well enough to deserve such devotion!"
-"I notice when you charm me."
-"Not always. I keep records."
+"You missed a compliment there. I keep records."
 {n}She touches your fingers to her lips, then releases them before you can ask for evidence.{/n}
 "Come back for the performance. I would like at least one person to know why the ending sounds unfinished."''', c('[Promise to hear the song as she now intends it.]', flags=("aranka.ending_door", "aranka.song_revised"))),
     n("answers", "Aranka", '''{n}She sings the question toward you, then waits. You give her the name of someone who once helped you without waiting to be asked. The name fits badly into the tune. Aranka repeats it anyway, changing the rhythm until the person seems to belong there.{/n}
 "Like that," {n}she says.{/n} "No polishing the name into something easier."
-"You will have to work quickly."
 "I like that part. When it goes well, it feels as if a song has opened a window. When it goes badly, I shall look at you until you rescue me with the name of a horse."
 {n}She leans into you, smiling now without losing the weariness around her eyes.{/n}
 "They will still be singing the old verse tomorrow, curse it."
-"I know."
 "Then I shall sing this one louder. And if a horse saves the evening, I shall give it a solo."
 {n}Her mouth brushes your cheek.{/n}
 "Come and see which one we manage."''', c('[Promise to hear what the listeners bring.]', flags=("aranka.ending_answers", "aranka.song_revised"))),
@@ -258,7 +221,6 @@ s("the_name_missing", "The name missing from the song", '"You said someone wante
 s("an_evening_uncommanded", "An evening uncommanded", '"Are we ready to begin?"', [
     n("start", "Aranka", '''{n}Aranka is warming her voice with a tune that sounds suspiciously like the one she used to tease you during rehearsal. Sella answers from several paces away. She has also brought a familiar solo to follow the new piece, and is quietly testing its opening notes. Rovan turns a stick over the back of his hand, catches it, and looks around to make sure somebody saw.{/n}
 "You came," {n}Aranka says.{/n}
-"I said I would."
 "And here you are! Oh, I have been saving the best part for you."
 {n}She catches your hand and kisses you before Sella can pretend she is not watching. Rovan supplies a single solemn tap.{/n}
 "No accompaniment for that part," {n}Aranka tells him.{/n}
@@ -269,7 +231,6 @@ s("an_evening_uncommanded", "An evening uncommanded", '"Are we ready to begin?"'
         c('[Listen for the space you found by taking the parts separately.]', "ready_patient", requires=("aranka.timing_patient",)),
         c('"I cannot stay today. Please do not hold the beginning for me."', abort=True)),
     n("ready_heard", "Aranka", '''"We used the time to learn Sella's other verse," {n}Aranka says.{/n} "She knew one about a traveler who arrived home with the wrong husband. I am almost certain it was meant to be comic."
-"Almost?"
 "She sings it with great conviction. Rovan says he knows the husband. I no longer trust either of them."
 {n}Sella gives you a broad smile. Her first breath falls exactly where you heard it during rehearsal. This time Aranka waits for it, then joins her without needing to look.{/n}''', c('[Take your place for the evening.]', "venue")),
     n("ready_missed", "Aranka", '''"She rested it," {n}Aranka says.{/n} "We had another short rehearsal after that. I let her begin alone, and we kept the upper part lower."
@@ -279,7 +240,6 @@ s("an_evening_uncommanded", "An evening uncommanded", '"Are we ready to begin?"'
 {n}He raises both sticks with such solemn menace that Sella laughs. Aranka waits until the laughter has loosened her shoulders before giving her the next note.{/n}''', c('[Take your place for the shorter arrangement.]', "venue")),
     n("ready_patient", "Aranka", '''{n}The pause is still there. Sella takes it without looking apologetic, and Rovan waits for her instead of chasing Aranka's faster version.{/n}
 "We tried it with someone walking past," {n}Aranka says.{/n} "She stopped long enough to hear the last line. Then she asked for the beginning. I am taking that as encouragement."
-"Did you sing it for her?"
 "We did. She corrected a word. Apparently her grandmother's traveler carried a basket, not a bag. We have agreed to leave room for regional luggage."
 {n}Sella has the air of a woman who has won a very small argument and intends to enjoy it.{/n}''', c('[Take your place for the evening.]', "venue")),
     n("venue", "Aranka", '''{n}Before beginning, Aranka lifts her face into the wind.{/n}
@@ -354,7 +314,6 @@ s("the_song_afterwards", "The song afterwards", '"How did the evening leave you?
 "I danced," {n}she tells you.{/n} "This is a much better explanation than whatever heroic story you were preparing. Sit down before I make you hear the whole account."
 {n}She pulls you close enough to kiss, then studies your face.{/n}
 "I have been wanting to do that since I woke. I tried being industrious first. It was disappointing."
-"What became of the singers?"
 "Sella has been asked to teach her version to two people who had only heard mine. Rovan has acquired a pupil who wants to learn the trick with the sticks. He is pretending the pupil must earn it through years of devotion."
 {n}She looks pleased, then rubs her ankle once more.{/n}
 "Neris said the correction was clear. She did not applaud. Fair enough, though my vanity suffered dreadfully."
@@ -368,58 +327,46 @@ s("the_song_afterwards", "The song afterwards", '"How did the evening leave you?
         c('[Hear what the misplaced speech cost.]', "ceremony", requires=("aranka.crowd_ceremony",)),
         c('[Hear what happened after you moved aside.]', "listeners", requires=("aranka.crowd_listened",))),
     n("welcomed", "Aranka", '''"You gave us the room, and then you stopped talking. I know how tempting that can be to forget when people are pleased to hear you."
-"I was looking forward to hearing you."
 "I noticed. It was distracting in an extremely useful way."
 {n}She reaches across your lap for her boot, thinks better of it, and leaves her hand there.{/n}
 "The man who wanted the moon song stayed for the last dance. He asked Sella whether she knew something faster. He used her name. That may be my favorite result."
-"Not the applause?"
 "I enjoyed the applause. I am not so virtuous that I forgot it. But I have heard applause that meant people were glad they had seen someone famous. This felt like they had heard something they might carry away."
 {n}She presses your knee lightly.{/n}
 "I won't employ you as my permanent announcer. You would become unbearable. But I liked having you there."''', c('"What do you want to do next?"', "plans")),
     n("ceremony", "Aranka", '''"I was angry with you for about half a song. Then I was busy. This morning I discovered I was still a little angry, which was inconvenient because I also wanted to kiss you."
-"You cut a piece because of my speech."
-"Yes. Sella's solo. She had been looking forward to it. I promised I would come and hear it another day, without a grand occasion attached."
+"I cut Sella's solo after your speech. She had been looking forward to it. I promised I would come and hear it another day, without a grand occasion attached."
 {n}Aranka turns her hand palm up between you.{/n}
 "Next time, sing that speech to me first. I shall cut it down to four lines, and Sella will have her solo back."
-"Four lines? I should like to see you manage it."
-"Gladly. Now kiss me before I put the speech to music!"
+"Now kiss me before I put the speech to music!"
 {n}The kiss begins with laughter and slows. When she draws back she is still a little cross, and enjoying it.{/n}''', c('"What would you like to make after this?"', "plans")),
     n("listeners", "Aranka", '''"Fewer people stayed than I hoped. I was disappointed. Then Sella started, and I stopped counting them."
-"You sounded as if you were enjoying yourself."
 "I was. Rovan said it felt like playing for people rather than playing at a wall made of noise. He has become poetic. I fear our influence."
 {n}She touches your sleeve, smoothing a crease that returns as soon as she lets it go.{/n}
 "I wanted the whole island listening! Then Sella sang, and the little crowd sang back. Oh, we shall have to do that again."
-"Would you choose the smaller audience again?"
 "Some evenings. Other evenings I shall want to be adored by hundreds. I hope you are prepared for this shocking inconsistency."
 {n}She tilts her face toward yours.{/n}
 "Today one attentive person will do nicely."''', c('"Tell your attentive person what comes next."', "plans")),
     n("plans", "Aranka", '''"There is a traveling singer I used to know who could hear a tune once and make you think he had written it. I envied him horribly. I spent a whole summer trying to learn that trick."
-"Did you?"
 "Enough to become annoying. Not enough to stop working. I want that again. A place where I am the person listening at the back because I don't know the song."
 {n}She turns toward you, serious beneath the warmth.{/n}
 "When the war allows it, I am taking the road again! I love these people, but there are songs beyond Mendev that I have never heard."
-"Including me."
-"Yes, you too! I shall miss you outrageously. Then you will find me in some strange inn, and I shall demand every story you have saved for me."
+"I shall miss you outrageously. Then you will find me in some strange inn, and I shall demand every story you have saved for me."
 {n}She traces a line along your palm, then closes your fingers over her own.{/n}
 "And I want more evenings before that happens. I am not saying goodbye while sitting on your hand."''',
         c('"After the war, I shall walk a stretch of that road with you."', "road"),
         c('"My campaign may keep me here. Bring your tales back to me."', "meeting")),
     n("road", "Aranka", '''"A stretch! With you beside me, I might even forgive a road full of hills."
-"You have objections to hills?"
-"Only when I am carrying everything I swore I couldn't live without. You may have to watch me part with a third pair of shoes. It will be very moving."
+"Hills are worse when I am carrying everything I swore I couldn't live without. You may have to watch me part with a third pair of shoes. It will be very moving."
 {n}She rests her cheek against your shoulder.{/n}
 "We can choose the road when the war is done. Somewhere warm! Somewhere with a tune I have never heard and an innkeeper who does not know your title."
-"And until then?"
 "Until then I would like one evening with you that does not involve an audience. You can tell me a completely unimportant thing, and I shall pay it far too much attention."
 {n}She lifts her head and kisses the place just below your ear.{/n}
 "I have been saving some attention."''', c('[Promise to return for an evening alone.]', flags=("aranka.future_road", "aranka.after_song_kept"))),
     n("meeting", "Aranka", '''{n}She turns your hand over and kisses your palm.{/n}
 "Then you must endure my letters! I shall describe every splendid place until you become unbearably jealous."
-"I do want you."
 "And I want you! I shall send tales from the road, and you must tell me which ones sound too magnificent to be true."
 {n}She smiles, then nudges your shoulder with hers.{/n}
 "But today you are right here, and I am tired of talking about roads."
-"You began it."
 "I am versatile. I can begin something else."
 {n}Her kiss is slow enough to make the afternoon feel briefly larger. When she steps back, she keeps your hand.{/n}
 "Come for an evening when nobody needs us to sing. I want to find out how long I can keep your attention without saying anything clever."''', c('[Promise another evening together.]', flags=("aranka.future_meetings", "aranka.after_song_kept"))),
@@ -430,33 +377,24 @@ s("no_encore_needed", "No encore needed", '"You promised an evening without a pe
 "You look suspiciously prepared to be useful. Put that expression away. We are going for a walk."
 {n}She leads you along a quiet part of the island path, keeping well back from the edge. The light is changing across the grass. For a while she talks about nothing more consequential than a bird that stole something brightly colored and then seemed unable to decide what to do with it.{/n}
 "I admired its ambition. Its planning needed work."
-"An artist you recognize."
-"Cruel. Accurate, but cruel."
+"Its mistakes were remarkably like mine."
 {n}At a sheltered hollow she puts down the shoes and spreads the shawl beside her. When you sit, she settles close enough that your shoulders touch.{/n}
 "There. I have brought you somewhere without a chorus. If you hear one, it is entirely your fault."''',
         c('[Stay with her as the light changes.]', "remember"),
         c('"The war has stolen this evening. Save your walk for my next visit."', abort=True)),
     n("remember", "Aranka", '''{n}She takes your hand and works her fingers between yours, looking out over the grass.{/n}
 "I keep thinking about the rehearsal. The part where everyone stopped trying to make the song happen quickly."
-"You were impatient."
-"Dreadfully. I could hear the finished thing in my head. I wanted the others to catch up to it. Then they did something I hadn't imagined, and I liked that better."
+"I was dreadfully impatient. I could hear the finished thing in my head. I wanted the others to catch up to it. Then they did something I hadn't imagined, and I liked that better."
 {n}She turns toward you.{/n}
 "Oh, I have imagined tonight already! You were dazzled by me in every version. A very promising beginning."
-"And how did your evening begin?"
-"You looked at me much as you are doing now. That part was promising."
+"That look you are giving me now? That was in it too."
 {n}Her free hand comes to rest against your chest. She waits, enjoying the nearness rather than pretending the touch was accidental.{/n}''',
         c('"And Reverie? We still owe her a visit."', "reverie", requires=("aranka.ran_reverie_partner", "aranka.ran_keep_final"), forbids=("aranka.ran_release_final",)),
         c('"I have been admiring that mouth all evening."', "desire")),
-    n("reverie", "Aranka", '''{n}Aranka smiles before answering.{/n}
-"She asked how lovers in the waking world find time for anything else. I told her to come and watch us argue over a song!"
-"That sounds like you."
-"She thought we should sing to each other all night. I liked the idea until she offered to supply the chorus."
-{n}Aranka's thumb moves over your knuckles.{/n}
-"Next time she shall have her chorus. Tonight I want you all to myself."
-{n}She looks toward the deepening sky, then back at you with a quick, mischievous smile.{/n}
-"And when I tell her I spent the evening being kissed, I hope to have a very good account."
-"You haven't yet."
-"A terrible flaw in the story. We should attend to it."''', c('[Return to the woman beside you.]', "desire")),
+    n("reverie", "Aranka", '''{n}Aranka begins a phrase, then stops with a smile you recognize from the dream.{/n}
+"That belongs to Reverie's cocoon. I almost put it in the rehearsal song! She would have wanted the last word. And several encores."
+{n}She folds that sheet beneath the others.{/n}
+"I still mean to visit her. The compass and those promises are not settled by a kiss here. Tonight I want an evening with you. When we see her again, I shall tell her so myself."''', c('[Return to the woman beside you.]', "desire")),
     # Authored clarification of the one-sided Thall hint (DesnaAdepts/Cue_0004-0005).
     # All three extension commitments below pass through this node.
     n("desire", "Aranka", '''{n}She draws back a little, smiling.{/n} "And before you mistake my teasing Thall for a courtship — my Wallflower is a fellow Desnan from Kenabres, with a splendid voice and his nose always in a scroll! I wanted him to sing with me. We were never lovers." {n}Her fingers tighten in your collar.{/n} "You, on the other hand..."
@@ -466,84 +404,59 @@ s("no_encore_needed", "No encore needed", '"You promised an evening without a pe
 "I rather like suspense when I know who I am waiting for. Don't make me wait long."
 {n}The shawl has slipped from beneath one elbow. She retrieves it, laughing at the small interruption, and rests her forehead against yours.{/n}
 "There. All the romance in the world, and I still sat on a root."''',
-        c('"Stay with me tonight. Somewhere with a roof and a door."', "night"),
+        c('"Stay with me tonight. Somewhere with a roof and a door."', "night_initiation"),
         c('"Kiss me here. I have to leave tonight, but I have time now."', "kiss"),
         c('"I want the quiet evening and your hand in mine. Let us leave the rest for another time."', "quiet")),
-    n("night", "Aranka", '''"A brilliant proposal. I knew there was a reason to bring you."
-{n}She kisses you, then gathers her shoes and gets to her feet. You have not let go of her hand, and she bends for another kiss. The second kiss lasts long enough for the shoes to fall from under her arm.{/n}
-"Those have become inconvenient," {n}she says.{/n}
-"You need them for the walk."
-"I have been reminded of another inconvenience."
-{n}You retrieve the shoes while she folds the shawl. She walks beside you rather than pulling you along, letting the anticipation survive the distance. Once you reach the private shelter she has arranged for the evening, she takes you through the curtain by your belt.{/n}
-{n}Inside she kicks the shoes into a corner, pulls the laces of her dress loose with one hand and yours with the other, and laughs into your mouth when the shawl tangles round both of you. She does not stop to untangle it. She sinks back onto the bedding and pulls you down after her by the collar, her knees coming up on either side of you and her heels hooking behind your thighs, and hums the first phrase of the rehearsal song against your throat.{/n}
-{n}Later she lies against you, tracing a wandering line along your arm. She hums three notes and stops.{/n}
-"No encore," {n}you remind her.{/n}
+    n("night", "Aranka", '''{n}Later she lies against you, tracing a wandering line along your arm. She hums three notes and stops.{/n}
 "That was entirely private."
 {n}In the morning she finds one shoe beneath the bedding and accuses it of following the two of you for improper reasons. You leave after a slow goodbye, with the song from rehearsal returning to you in fragments and the warmth of her mouth easier to remember than any finished verse.{/n}''', c('[Stay the night with her.]', flags=("aranka.extension_night", "aranka.extension_kept"))),
     n("kiss", "Aranka", '''{n}She answers with a kiss that makes good use of the time. Her hand settles at your neck; the other draws you nearer until the shawl shifts between you. When she pulls back, she looks pleased enough to make you laugh.{/n}
 "What?"
-"You seem to approve."
 "I am considering a repeat performance."
-"You promised there would be none."
 "An unfortunate choice of words."
 {n}She kisses you again, slowly. You stay close as the light fades. She tells you about an innkeeper who charged extra for a painted window, and interrupts your answering story with a delighted laugh.{/n}
 {n}When it is time to leave, she folds the shawl and puts on her shoes. She walks back with you until your paths divide.{/n}
-"Come and find me when you can," {n}she says.{/n} "I want to hear what you have been doing, even if none of it rhymes."
+"Bring me the news. I'll do the rhyming," {n}she says.{/n} "I want to hear what you have been doing, even if none of it rhymes."
 {n}Her goodbye kiss almost begins another conversation. She lets you go with a laugh and a last squeeze of your hand.{/n}''', c('[Leave with another visit wanted.]', flags=("aranka.extension_kiss", "aranka.extension_kept"))),
-    n("quiet", "Aranka", '''{n}She kisses your knuckles instead and settles against your shoulder.{/n}
-"Then I shall have to be interesting in other ways. Fortunately I have prepared a number of opinions about birds."
-"All admiring?"
-"One extremely critical. You will know when we reach it."
-{n}You spend a while discovering that she has, in fact, noticed a remarkable amount about the small thefts taking place around the camp. Her imitation of an outraged bird is so exact that something in the grass answers it. She breaks into delighted laughter and refuses to try again.{/n}
-{n}Later she tucks your joined hands under the shawl. When you tell her about something you miss, she listens, then steals the best line for a verse.{/n}
-"I would like to be there when you have that again," {n}she says.{/n}
-"I would like that too."
-{n}You stay until the air cools, then walk back together. There is a little reluctance in the way she releases your hand, and pleasure in the way she looks at you before turning away.{/n}
-"That was a good evening," {n}she says.{/n} "I had not imagined the bird."''', c('[Stay until the air cools, then walk back with her.]', flags=("aranka.extension_quiet", "aranka.extension_kept"))),
+    n("quiet", "Aranka", '''{n}She kisses your knuckles and settles against your shoulder. The shawl covers your joined hands.{/n}
+"Then I shall have to be interesting in other ways. Fortunately I have an opinion about every bird on this island."
+{n}She imitates the thief you saw on the path. Something in the grass answers; she laughs so hard she cannot finish. The distant camp bugle draws her eyes toward the tents.{/n}
+"They want you back. Stay until the light goes. I haven't finished insulting that bird."
+{n}When the air cools, she walks back with you, still holding your hand. At the fork she pulls you close for a last kiss.{/n}''', c('[Stay until the air cools, then walk back with her.]', flags=("aranka.extension_quiet", "aranka.extension_kept"))),
 ], "aranka.after_song_kept", delay=48)
 
 # The first six visits resolve one island project, not the whole relationship.
 # These later conversations let the established lovers disagree about fame,
 # authorship and the Commander's power without turning Aranka into an admirer.
 s("the_story_that_follows", "The story that follows", '\"I heard a new version of the song.\"', [
-    n("start", "Aranka", '''{n}Aranka sits on a low stone wall with one boot planted beside her. She turns a cup in her hands while two travelers cross the island path below. One tells the other that the Commander persuaded a song to change its own ending. The moon has apparently testified.{/n}
-"I thought I had corrected that verse," {n}she says.{/n}
-"You did. This is a new verse. It has me bargaining with the moon. I did not know it could be so easily persuaded."
-"Perhaps it heard you sing."
-{n}She smiles, but does not laugh.{/n}
-"I know how this happens. A tale leaves its maker and comes back with a brighter coat. I like a bright coat. I don't like people deciding the woman who wrote the song is only there to make the Commander more interesting."
-{n}She takes your hand. Her thumb circles once over your knuckles. She is waiting to see which way you jump.{/n}''',
+    n("start", "Aranka", '''{n}Aranka sits on the island wall with a cup in her hands. Below, two travelers argue over a new verse: the Commander bargained with the moon, and it changed the song's ending.{/n}
+"The moon! I spent all that time correcting the refrain, and they have given it a speaking part."
+{n}She puts the cup down hard enough to spill it.{/n}
+"I like a good boast. I even like your boasts. But Sella brought that song out of Kenabres. I will not have her drowned out again."
+{n}She points down the path. The travelers are about to pass out of earshot.{/n}''',
         c('"Let us sing them a moon so ridiculous that even those two cannot mistake it for a history."', "trickster", requires=("trickster",)),
         c('"We can tell the travelers the song is yours and leave the story there."', "correct"),
         c('"Let the rumor go. Sing them something better."', "let_go")),
-    n("trickster", "Aranka", '''"You want to add another lie to the pile." {n}She studies you.{/n} "A very clever one, I expect."
-"A moon that demands applause and refuses to rise without it. Nobody will take that for a battle report."
-"And if they only remember the moon?"
-"Then we tell them again."
-{n}She lets go of your hand and points down the path after the travelers.{/n}
-"I love a good trick! But those two will carry the funniest verse down the road, and I shall be left trying to sing over it."
-"I can take the blame."
-"Then mock your own moon! This is my song. I am singing the last verse, and you are not making me your bait."
-{n}She folds her arms and looks toward the path.{/n}''',
+    n("trickster", "Aranka", '''"Another lie? A moon so vain it won't rise without applause? Oh, I could make it unbearable!"
+{n}She starts to laugh, then glances after the travelers.{/n}
+"But they will carry the funniest verse down the road. Sella gets forgotten, and I spend another week chasing my own song."
+{n}She folds her arms.{/n}
+"Mock your own moon. I sing the real refrain afterwards, and I get the last word."''',
         c('"Then you take the last verse. I will sing the ridiculous moon."', "game"),
         c('"Keep your song. I can find another joke."', "correct", flags=("aranka.story_restraint",))),
     n("game", "Aranka", '''"Oh, that moon will be unbearable! Sing your nonsense, and then I shall give them the real refrain."
 {n}She reaches for your hand again, and squeezes it hard enough to make the point.{/n}
-"You look pleased," {n}you say.{/n}
 "Of course I do! I have a magnificent moon to sing and a menace with an excellent speaking voice to kiss."
-"Can it be both?"
-"It can. But first I am going to make that moon sound insufferable."''',
+"First I am going to make that moon sound insufferable."''',
         c('[Hail the travelers.]', "shared")),
     n("correct", "Aranka", '''"Oh, what a dull ending for the moon! Still, my song will sound much better without it."
 {n}She jumps down from the wall and brushes her knee against yours.{/n}
 "You have left me with an excellent song and nothing to quarrel about. Most inconsiderate! Come closer."
-"You could start with annoyed."
-"No. I have other plans for my mouth."''',
+"I have other plans for my mouth."''',
         c('[Stay with Aranka as the travelers walk on.]', "quietly", flags=("aranka.story_restraint",))),
     n("let_go", "Aranka", '''"A new song is not a correction," {n}Aranka says.{/n} "But it might be an answer. I don't want to spend every evening chasing the first people who heard a bad verse."
 {n}She leans her shoulder against yours. Her smile returns, small and a little tired.{/n}
 "Let it travel. I will write the next one for the people who are willing to listen. You can sit beside me and try not to become the chorus."
-"I will do my best."
 "Sing something better than your best, then! But let me finish my verse first."''',
         c('[Stay beside her and leave the travelers undisturbed.]', "quietly", flags=("aranka.story_left_alone",))),
     n("shared", "Aranka", '''{n}You hail the travelers and announce a new song about a moon so vain it refuses to rise without applause. Aranka is already on her feet.{/n}
@@ -558,17 +471,14 @@ s("the_story_that_follows", "The story that follows", '\"I heard a new version o
 {n}She catches your face between her hands and kisses you, smiling against your mouth.{/n}
 "You can still be a menace. Just don't sing over the quiet ones."''',
         c('[Tell her what you want from the woman who keeps challenging you.]', "desire", flags=("aranka.story_conversation_done",))),
-    n("desire", "Aranka", '''"Keep surprising me! But when I am singing, let me finish the verse. You can have the whole moon afterwards."
-"I can do both."
-"Then sing it! A duet needs two voices."
-{n}She catches your collar between two fingers and draws you closer. This time the smile is unmistakably inviting.{/n}
-"Now, what did you mean about making another mess together?"''',
+    n("desire", "Aranka", '''"Keep surprising me! And let me finish my verse before you steal the moon."
+{n}She catches your collar between two fingers and draws you closer. Her thumb brushes the skin at your throat.{/n}
+"Now. Was that another road you wanted, or have I talked long enough for one evening?"''',
         c('"I meant I want you. Here, with no audience."', "private"),
         c('"I meant I want you beside me when the next impossible thing happens."', "road"),
         c('"I meant both."', "both")),
     n("private", "Aranka", '''"Good," {n}she says.{/n} "I have been listened to all evening. I would like to be touched now."
 {n}Her hand settles at the back of your neck and she kisses you as if she had rehearsed it, which, knowing her, she has. Then she draws you off the path into the sheltered hollow behind the wall, unpins her cloak and lets it fall on the grass, and pulls you down onto it after her, her fingers already busy with your buckles and one knee hooked over your hip.{/n}
-"No performance?" {n}you manage.{/n}
 "Not one anyone else gets to hear," {n}she says against your mouth, and drags your shirt up over your head.{/n}''',
         c('[Draw her close as she strips off your shirt.]', "hollow_morning"),
         c('[Catch her hands, laughing. "Another night."]', flags=("aranka.story_conversation_done",))),
@@ -576,7 +486,6 @@ s("the_story_that_follows", "The story that follows", '\"I heard a new version o
 "Don't wash that," {n}she says.{/n} "I haven't copied it out yet."''',
         c('[Keep the verse on your hand.]', flags=("aranka.story_conversation_done",))),
     n("road", "Aranka", '''"That sounds lovely," {n}she says.{/n} "It also sounds like the sort of plan that eats every afternoon we have left."
-"I can make room for the quiet ones."
 "You can make room for me to sing on the way. Loudly. Badly, at dawn. Those are my terms."
 {n}She kisses you, warm and unhurried, then rests her forehead against yours.{/n}
 "Come and find me when the impossible thing is over. I'll have written a verse about it, and you will hate how flattering it is."''',
@@ -631,7 +540,6 @@ s("the_next_verse", "The next verse", '\"I wanted to ask how the story traveled.
 "Give me three days. I shall have a verse worth copying by then, and you had better bring a steady hand."''',
         c('[Promise to return after three days.]', flags=("aranka.after_story_deferred",))),
     n("specific", "Aranka", '''"Three copies! One for Sella, one for Rovan, one for my satchel. Let them carry the song as far as they like, so long as they remember who wrote it."
-"And your road?"
 "Ten days on the road! I know three Desnan camps along the traders' route, and their singers owe me a verse each. I shall catch you on the way if your campaign lets you escape."
 {n}She smiles like a woman who has just been handed a well-tuned lute.{/n}
 "Help me finish the copies this afternoon. In two days I set out for the first camp!"''',
@@ -641,16 +549,13 @@ s("the_next_verse", "The next verse", '\"I wanted to ask how the story traveled.
 s("the_song_and_the_road", "The song and the road", '\"You said you chose the first road.\"', [
     n("start", "Aranka", '''{n}When you return, Aranka has three finished copies beside her on the wall. Sella and Rovan are named above their parts. The original is folded in her satchel.{/n}
 "The first copy goes to Sella. The second to Rovan. The third stays with me until I have heard what the camps want to add."
-"And the ten days?"
 "Three camps along the traders' route, and ten days of songs! I know their singers. They will have a new verse for me, or I shall make them dance until they invent one."
 {n}She pushes a blank margin and the pen across the wall at you.{/n}''',
         c('[Write the singers\' names in the margins.]', "copies", requires=("aranka.relationship_plan",))),
-    n("copies", "Aranka", '''"You have not put your name on it," {n}she says, checking the margin.{/n}
-"It is your song."
-"And the moon?"
-"The moon can write its own song."
-{n}She reads the credits once more, makes a small, savage correction to Rovan's rhythm note, then seals each sheet in its own fold.{/n}
-"Tomorrow I leave for the first camp. Expect a letter full of outrageous boasts! If I forget to write, you may scold me when I bring the songs back."''',
+    n("copies", "Aranka", '''{n}She checks the names, makes a small, savage correction to Rovan's rhythm note, then seals each sheet in its own fold.{/n}
+"Today I leave for the first camp. Expect outrageous boasts! Ten days, three camps, and a satchel that will come back heavier."
+{n}She shoulders the satchel, then puts it down again to catch your collar.{/n}
+"I nearly forgot something."''',
         c('[Kiss her goodbye and wish her a splendid audience.]')),
 ], "aranka.relationship_plan", delay=48)
 
@@ -663,8 +568,7 @@ s("the_deferred_answer", "The deferred answer", '\"I came back to the question.\
     n("plan", "Aranka", '''"Much better! Start with my name, and make the letters magnificent."
 {n}She takes your hand, and then the rest of you, and kisses you hard enough to knock the bag over.{/n}
 "We shall finish the copies, and then I have three camps to visit along the traders' route. Ten days! I know their singers, and I mean to come back with a satchel full of verses."
-"Then write me a song from the road."
-"Good. Now I get to miss you, which is excellent for the writing."''',
+"Now I get to miss you, which is excellent for the writing."''',
         c('[Write the credits and help make the copies before kissing her goodbye.]', flags=("aranka.relationship_plan",))),
     n("not_yet", "Aranka", '''"Oh, that campaign! It swallows every tune I try to teach you. I shall finish this one before it swallows mine."
 {n}She kisses your cheek, quick and fond and a little cross.{/n}
@@ -700,3 +604,23 @@ def _finish_branches(id, branches, shared):
 _finish_branches("where_the_breath_goes", ("heard", "missed", "separate"), ("rovan", "lesson"))
 _finish_branches("an_evening_uncommanded", ("welcomed", "ceremony", "step_aside"),
                  ("part", "sing", "listen", "ending", "door", "answers"))
+
+
+# Round-2 slots are state-free; all original terminal receipts stay in place.
+next(s for s in SCENES if s["Id"] == "aranka.no_encore_needed")["Nodes"].extend([
+    n("night_initiation", "Aranka", '''"A brilliant proposal. I knew there was a reason to bring you."
+{n}She kisses you, then gathers her shoes and gets to her feet. You have not let go of her hand, and she bends for another kiss. The second kiss lasts long enough for the shoes to fall from under her arm.{/n}
+"Those have become inconvenient," {n}she says.{/n}
+"I have been reminded of another inconvenience."
+{n}You retrieve the shoes while she folds the shawl. She walks beside you rather than pulling you along, letting the anticipation survive the distance. Once you reach the private shelter she has arranged for the evening, she takes you through the curtain by your belt.{/n}
+{n}Inside she kicks the shoes into a corner, pulls the laces of her dress loose with one hand and yours with the other, and laughs into your mouth when the shawl tangles round both of you. She does not stop to untangle it. She sinks back onto the bedding and pulls you down after her by the collar, her knees coming up on either side of you and her heels hooking behind your thighs, and hums the first phrase of the rehearsal song against your throat.{/n}''', c("Continue", "aranka.no_encore_needed.explicit.1"), portrait="Aranka"),
+    # User-supplied established-lovers insertion, followed by the old night aftermath.
+    n("aranka.no_encore_needed.explicit.1", "Narrator", "{n}She pulls you into the tangled shawl, laughing against your mouth. Later, Aranka reaches for the shawl without letting go of your hand.{/n}", c("Continue", "night"), portrait="Aranka"),
+])
+
+_hollow = next(s for s in SCENES if s["Id"] == "aranka.the_story_that_follows")
+next(node for node in _hollow["Nodes"] if node["Id"] == "private")["Choices"][0]["Next"] = "aranka.the_story_that_follows.explicit.1"
+# User-supplied hollow insertion; the existing deferral never traverses this slot.
+_hollow["Nodes"].append(n("aranka.the_story_that_follows.explicit.1", "Narrator",
+    "{n}Aranka pulls you onto the cloak, her laughter lost against your throat. The grass beyond the cloak is wet with dew.{/n}",
+    c("Continue", "hollow_morning"), portrait="Aranka"))

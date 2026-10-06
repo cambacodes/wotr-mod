@@ -1,0 +1,17 @@
+{
+  "voice": "ARANKA: Desnan singer and competitive bard; effusive, vain about her singing, playful, quick to laugh and quick to defend her work. Frank desire, teasing rather than solemn reassurance. She initiates closeness and keeps her chosen work and travel. Warmth does not erase her moral anger. Use new concise dialogue; musical diction sparingly, no maxims, no therapy language. Canon facts: she sings Starward Gaze received from Desna's servants in Elysium; she later arranges it and encourages Thall to sing. Physical details not established by those facts must not be invented; no assumed waking wings or fixed Commander anatomy.",
+  "scene": "Chapter 5, existing private shelter on the living island, after the offered walk and her visible desire. Only Aranka and the Commander; they are already parent-route lovers. Night choice only, never kiss-only or quiet. User-supplied consensual sexual encounter insertion; non-graphic continuity brief. Required beats: she initiates the return to privacy, dropped shoes and tangled shawl carry delighted impatience, she enjoys closeness without making professional help its price. Reverie is not summoned; no waking wings are inferred from a dream. Resume the existing later exchange, missing shoe and morning goodbye. Preserve original terminal flags, no first-night reset.",
+  "last_line": "N: Later, Aranka reaches for the shawl without letting go of your hand.",
+  "speakers": {
+    "A": "Aranka",
+    "N": "Narrator"
+  },
+  "example": "N: Aranka puts her lute safely out of reach, then catches your sleeve.\nA: There. Now you can stop admiring the instrument.",
+  "commander": "the Commander",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16
+}

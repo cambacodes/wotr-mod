@@ -9,6 +9,10 @@ using Tirabade;
 // reactions.
 internal static class ArankaTricksterTests
 {
+    // Only the prescribed scene-specific insertion address differs between siblings.
+    private static string? SlotShape(Scene scene, string? id) =>
+        id == scene.Id + ".explicit.1" ? "explicit.1" : id;
+
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string Unit = "430cba7801b149b4e8494ace6baf4f7c";
     private const string Fye = "0f12118177d102f428a3b30b15b132eb";
@@ -156,9 +160,9 @@ internal static class ArankaTricksterTests
                   && t.Relationship == s.Relationship && t.Requires.SequenceEqual(s.Requires)
                   && t.Forbids.SequenceEqual(s.Forbids.Append(s.Id)) && t.TricksterDevice == s.TricksterDevice
                   && t.TricksterState == s.TricksterState && t.InteractionHub == s.InteractionHub && t.ContactUnit == s.ContactUnit
-                  && t.Remote == s.Remote && t.Nodes.Select(n => n.Id).SequenceEqual(s.Nodes.Select(n => n.Id))
-                  && t.Nodes.SelectMany(n => n.Choices).Select(c => c.Next + "|" + string.Join(",", c.Set))
-                      .SequenceEqual(s.Nodes.SelectMany(n => n.Choices).Select(c => c.Next + "|" + string.Join(",", c.Set)))
+                  && t.Remote == s.Remote && t.Nodes.Select(n => SlotShape(t, n.Id)).SequenceEqual(s.Nodes.Select(n => SlotShape(s, n.Id)))
+                  && t.Nodes.SelectMany(n => n.Choices).Select(c => SlotShape(t, c.Next) + "|" + string.Join(",", c.Set))
+                      .SequenceEqual(s.Nodes.SelectMany(n => n.Choices).Select(c => SlotShape(s, c.Next) + "|" + string.Join(",", c.Set)))
                   && !ReferenceEquals(t.Nodes[0], s.Nodes[0]) && !t.Nodes.Any(n => n.Text.Contains('@')),
                 "A Chapter 5 twin drifted from its Chapter 3 beat: " + t.Id);
             check(story.Scenes.Count(x => x.Id == t.Id) == 1, "A Chapter 5 twin is duplicated: " + t.Id);
@@ -173,7 +177,7 @@ internal static class ArankaTricksterTests
             check(y.InteractionHub == "aranka.presence.yard" && y.ContactUnit == YardUnit && Rules.IsPresenceHubScene(y)
                   && y.Requires.Contains(FyeGone) && y.Requires.Except(new[] { FyeGone }).SequenceEqual(s.Requires)
                   && y.Forbids.SequenceEqual(s.Forbids) && y.DelayHours == s.DelayHours && y.Chapters.SequenceEqual(s.Chapters)
-                  && y.Nodes.Select(n => n.Id).SequenceEqual(s.Nodes.Select(n => n.Id))
+                  && y.Nodes.Select(n => SlotShape(y, n.Id)).SequenceEqual(s.Nodes.Select(n => SlotShape(s, n.Id)))
                   && y.Nodes.SelectMany(n => n.Choices).Select(c => string.Join(",", c.Set)).SequenceEqual(s.Nodes.SelectMany(n => n.Choices).Select(c => string.Join(",", c.Set))) && !y.Nodes.Any(n => n.Text.Contains('@')),
                 "The yard copy drifted from its counter scene: " + y.Id);
         }
