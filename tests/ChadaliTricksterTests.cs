@@ -255,6 +255,34 @@ internal static class ChadaliTricksterTests
               && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "paid_back")).Forbids.Contains(F + "paid_back")
               && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
             "The romance pages contradict the Last Call call-in or the repaid loan.");
+        // R1:chadali:004: dispatch completes the sitting without personal delivery credit.
+        // WalkVia records the chosen answer, rather than inferring it from the final flags.
+        var shrine = Sc(S + "a_parcel_for_the_shrine");
+        var shrineWorld = World(story, 3, "trickster", "trickster.ever", "chadali.started", W + "her_worshippers");
+        check(Rules.Available(story, shrine, shrineWorld), "The earned shrine sitting is unavailable.");
+        var personalPlaque = paras[29];
+        check(personalPlaque.Requires.Contains(S + "carried_the_parcel"), "The shrine plaque lost its personal-delivery condition.");
+        foreach (var branch in new[] { (node: "start", index: 0), (node: "what", index: 0), (node: "what", index: 1) })
+        {
+            var deliveries = Program.WalkVia(shrine, shrineWorld, branch.node, branch.index);
+            bool personal = branch.index == 0;
+            check(deliveries.Count == 1 && deliveries.All(r => r.Has(shrine.Id) && r.Has(S + "carried_the_parcel") == personal),
+                "The selected shrine deliverer disagrees with completion or credit: " + branch);
+            foreach (var delivery in deliveries)
+            {
+                var epilogue = Later(story, delivery, 100, 6);
+                epilogue.Flags.Add("chadali.committed");
+                Rules.Complete(story, epilogue);
+                check(Rules.Available(story, pageNight, epilogue)
+                      && Rules.VisibleParagraphs(pageNight.Nodes[0], epilogue).Contains(personalPlaque) == personal,
+                    "The selected shrine deliverer receives the wrong plaque: " + branch);
+                check(!Rules.Available(story, shrine, Later(story, delivery, 100)), "The dispatched parcel can be replayed.");
+            }
+        }
+        var dispatch = Choice(shrine, "runner", 0);
+        check(dispatch.Text == "[Send the runner.]" && dispatch.Next == null && !dispatch.Abort && dispatch.Set.Length == 0,
+            "The runner does not complete dispatch without personal delivery.");
+
         // Sol r3 INT: a live, unprimed Trickster whose hall closed in peace is reached by a priced wager by post; a soft no whose hall
         // sealed before the seed keeps its later ask on the late page (no extra letter, Sol r3 COX).
         var lateWager = Sc(P + "council.late_wager");

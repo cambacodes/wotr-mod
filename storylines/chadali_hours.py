@@ -250,7 +250,7 @@ hour(NUMBER, "Zero", '"What are you writing?"', [
       c('"Why is yours zero?"', "zero")),
     ch("zero", """{n}She tries to fold the list away. You put your hand on it.{/n}
 "Because I haven't got any left." {n}She says it to the table.{/n} "Every morning since the coin, I've been sending you mine. Not the Council's share. Mine. The bit I keep for myself. I thought nobody would notice. I'm chance; who checks whether chance is lucky?"
-"That's why I lost my earring. That's why the tray. I've been having unlucky days for weeks, and they're getting worse, and I don't mind." {n}Her chin lifts.{/n} "You're at the front. I'm in a hall with cookies. It's arithmetic." """,
+"That's why I lost my earring. That's why the tray. I keep having unlucky days, and they're getting worse, and I don't mind." {n}Her chin lifts.{/n} "You're at the front. I'm in a hall with cookies. It's arithmetic." """,
       c('"Stop. Take it back. All of it."', "back"),
       c('"Half. You keep half, or I\'ll find a way to send it back myself."', "half", flags=(LUCK_GIVEN_BACK,)),
       c("[Say nothing. Let her keep giving it.]", "keep", flags=(LUCK_KEPT_GIVING,))),
@@ -310,7 +310,7 @@ hour(NEVER_MET, "Pretend we never met", '"You look worried."', [
       c("[Let her hold your hand.]")),
     ch("promise", '''{n}Her whole face changes, slowly, like the sky over Elysium when it decides to be a different colour.{/n}
 "Promise?" {n}The little finger.{/n}
-{n}You link it. She holds on for a long time.{/n} "Then there'll be two of us. Two is your number. I knew it was a good one." {n}She sniffs, and laughs, and wipes her eyes on her sleeve.{/n} "When they all pretend, we'll have the only real copy."''',
+{n}You link it. She holds on for a long time.{/n} "Then there'll be two of us. That's a good number. I'm keeping it." {n}She sniffs, and laughs, and wipes her eyes on her sleeve.{/n} "When they all pretend, we'll have the only real copy."''',
       c("[Hold on.]")),
 ], requires=(STARTED, "council.cauldron_given"), forbids=(NEVER_MET,), chapters=(5,))
 

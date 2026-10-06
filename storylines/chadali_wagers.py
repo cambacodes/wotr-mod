@@ -295,7 +295,7 @@ wager(QUESTIONS, "Odious questions", '"Are you still cross about my questions?"'
       c("Continue", "asked", requires=(ODIOUS,)),
       c("Continue", "fresh", forbids=(ODIOUS,))),
     ch("asked", '''"Oh. Those questions." {n}She chews furiously for a moment, exactly the way she did the first time.{/n}
-"You asked if you didn't have to take responsibility any more, because chance would clean up after you." {n}She swallows.{/n} "You ruined my mood. It came back. It usually does."
+"You asked me a horrid question, and I told you to stop." {n}She swallows.{/n} "You ruined my mood. It came back. It usually does."
 "Then I started on a worse one, all by myself. If a brick falls on a child, whose luck was that? I've been thinking about the brick one."''',
       c('"And?"', "brick")),
     ch("fresh", '''"You never asked me the horrible ones. Other people do. Eritrice, mostly, in session, when she wants to make a point." {n}She makes a face.{/n}

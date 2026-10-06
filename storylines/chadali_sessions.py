@@ -111,9 +111,8 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
     ch("right", '''"Maybe!" {n}Brightly.{/n} "I bake. I send luck. I clap at meetings. It's not very exciting, if you're a thing that's seen the end of worlds."
 {n}Then she looks at you, and her head tilts.{/n} "But you're not dull. I've watched Shyka watching you. They lean forward when you talk, and Shyka never leans forward for anybody. I think you make the dull futures interesting. I think you're the only reason they still come to our meetings."''',
       c("Continue", "bet")),
-    ch("afraid", '''{n}She blinks at you. Then she sits up very straight, and her bracelets clink, and she looks, for a moment, genuinely formidable.{/n}
-"Oh. Yes. I should be, shouldn't I?" {n}She considers the empty chair with new interest.{/n} "They see a page, and then I happen, and the page is wrong. That's what I'm for. That's what I've always been for."
-"I forgot. Being on a Council with them makes you forget. They talk about the future as if it's already written, and you start to believe it's already written, and then you stop happening."''',
+    ch("afraid", '''"Oh, I should!" {n}She sits up straight, her bracelets clinking, and considers the empty chair.{/n} "I can try, can't I? Let them look bored. I'll make a bet on it, and they can decide whether to laugh."
+"Nobody at this table wants to lose a bet. Not even Shyka. Especially not to me." {n}The dimples return.{/n}''',
       c("Continue", "bet")),
     ch("bet", '''"Let's make a bet." {n}She leans across the table, eyes shining.{/n}
 "Next time you see Shyka, do something they didn't see coming. Anything. Something small. Something silly. And if they laugh, you win." {n}She holds out her hand.{/n} "And if they don't laugh, it means they saw it, and then I win, and you owe me a very dull cookie."''',
@@ -123,7 +122,7 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
       c("[Let go of her hand.]")),
     ch("here", '''{n}She opens her mouth, and closes it, and goes pink all the way up to the white flowers in her hair.{/n}
 "That's... cheating. That's not a bet, that's flirting in a bet's clothes." {n}She does not let go of your hand.{/n}
-"...They didn't see it. I know they didn't. I didn't see it either." {n}Very quietly:{/n} "That's the most interesting future I've ever been in."''',
+"...I didn't see it coming. Don't tell Shyka. They'll say they did and spoil it." {n}Very quietly:{/n} "That's the most interesting future I've ever been in."''',
       c("[Hold on.]")),
 ], requires=(BORN,), forbids=(FORESEEN,))
 
@@ -188,7 +187,7 @@ session(SONG, "A drinking song", '"Are you... singing?"', [
 session(SHRINE, "A parcel for the shrine", '"You want me to carry something?"', [
     ch("start", '''{n}She is holding out a parcel, bigger than her usual ones, wrapped in yellow silk and tied with far too many knots.{/n}
 "For my shrine. In Drezen. There's a little one, by the grain market, with a crack in the step. Three priests and a dog." {n}She presses it into your arms.{/n}
-"I can't take it myself. I don't go down there; it'd frighten them, having me turn up, and they'd feel they had to cook." {n}She looks at the parcel, not at you.{/n} "Would you? You walk past it every day. I've seen you."''',
+"I can't take it myself. I don't go down there; it'd frighten them, having me turn up, and they'd feel they had to cook." {n}She looks at the parcel, not at you.{/n} "Would you? I want them to meet you."''',
       c('"Of course."', "yes", flags=(CARRIED_PARCEL,)),
       c('"What\'s in it?"', "what")),
     ch("what", '''"Cookies. And a letter. And a new bowl for the dog." {n}She counts on her fingers.{/n} "And a little bit of luck, knotted into the string. Not much. Just enough so the step doesn't crack any further."
@@ -198,10 +197,10 @@ session(SHRINE, "A parcel for the shrine", '"You want me to carry something?"', 
     ch("yes", '''{n}Her whole face lights up.{/n} "You'll knock! Oh, they'll faint. Brother Anand will faint, and the dog will bark, and Sister Mira will try to give you tea."
 "Drink the tea. It's terrible. It's the worst tea in Drezen." {n}She squeezes your arm.{/n} "Tell them it came from me. Tell them I'm well. Tell them I think about them every morning, all three of them, and the dog."''',
       c("Continue", "close")),
-    ch("runner", '''"Oh." {n}She takes that in, and nods, and her smile goes a little crooked.{/n}
-"No, you're right. You're the Commander. You can't go knocking on little doors with cracks in the steps." {n}She pats the parcel.{/n}
-"A runner, then. A fast one. Tell them to knock loudly; the dog's a bit deaf." {n}She lets go of it slowly.{/n} "It'll still get there. That's what counts. Mostly."''',
-      c("Continue", "close")),
+    ch("runner", '''"Can't be seen!" {n}Chadali takes the parcel back.{/n} "There are three priests and a dog. Which one do you think will sell your secrets?"
+{n}She unties the silk, takes out the note and scratches out a line.{/n} "There. Now it says you sent it. It doesn't say you knocked."
+"A runner, then. A fast one. Tell them to knock loudly; the dog's a bit deaf." {n}She reties the parcel and pushes it across the table.{/n} "And the bowl is for the dog. Nobody is to put incense in it."''',
+      c("[Send the runner.]")),
     ch("close", '''"Thank you." {n}She says it very simply, without any flourish.{/n} "I'm usually the one carrying things. It's very nice to watch somebody else do it badly."''',
       c("[Carry it.]")),
 ], requires=(PRAYERS,), forbids=(SHRINE,))
@@ -309,14 +308,14 @@ session(OLD_FELLOW_AGAIN, "The old fellow, again", '"You\'ve been watching Cobbl
       c('"Stop, then. You were right to want to."', "stop", flags=(COBBLE_FREED,)),
       c('"He still votes against me."', "votes"),
       c('"You\'re not asking. Then why tell me?"', "why")),
-    ch("votes", '''"Then out-argue him!" {n}Fierce, sudden, bracelets clashing.{/n} "You out-argue everybody! You out-argued Eritrice about a coin!"
-"I made an old fellow miserable for weeks because my lucky charm told me to, and it was the easiest thing I've ever done, and that's what frightens me." {n}She takes a breath.{/n} "I'm stopping. You can be cross. I'll bake you something anyway."''',
+    ch("votes", '''"Then out-argue him!" {n}Fierce, sudden, bracelets clashing.{/n} "You out-argue everybody! Use your tongue instead of my luck!"
+"I kept making an old fellow miserable because my lucky charm told me to, and it was the easiest thing I've ever done, and that's what frightens me." {n}She takes a breath.{/n} "I'm stopping. You can be cross. I'll bake you something anyway."''',
       c('"...Stop. You\'re right."', "stop", flags=(COBBLE_FREED,)),
       c('"Then I\'ll be cross."', "cross", flags=(COBBLE_FREED,))),
     ch("why", '''"Because we're... because I'm yours." {n}She says it plainly.{/n} "And you should know when I've decided to do something you won't like. That's fair. I'd want to know."
 "But I'm still chance. I'm not your chance. I'm just... near you." {n}Her chin lifts.{/n} "He gets his mornings back. Starting tomorrow."''',
       c('"Starting tomorrow."', "stop", flags=(COBBLE_FREED,))),
-    ch("stop", '''{n}Her shoulders come down, a whole inch, as if she had been carrying something up a flight of stairs for weeks.{/n}
+    ch("stop", '''{n}Her shoulders come down, a whole inch, as if she had just set down a heavy sack.{/n}
 "Oh, thank you." {n}She is almost crying.{/n} "I'd have done it anyway. But it's so much nicer when you say it too." {n}She wipes her eyes.{/n}
 "I'm going to bake him an apology. He'll say 'Phrr'. I'll know what it means."''',
       c("[Let her go and bake.]")),
