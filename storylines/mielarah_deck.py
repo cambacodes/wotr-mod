@@ -59,6 +59,7 @@ ARCADE_TEXT = (
     ("beside the tiefling's stall", "among the jewellers' counters"),
     ("the trader has put a bucket under it", "a jeweller has put a bucket under it"),
     ("cobbles", "flagstones"),
+    ("The tiefling trader makes a small noise", "A jeweller makes a small noise"),
 )
 
 
@@ -74,7 +75,13 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
     on each hub, each forbidding the other's completion."""
     for hub, suffix, extra in PLACES:
         twin = id + ("" if suffix else ".arcade")
-        SCENES.append(scene(id + suffix, title, "Mielarah", 5, entry, arcade(copy.deepcopy(nodes)) if suffix else copy.deepcopy(nodes),
+        delivery = arcade(copy.deepcopy(nodes)) if suffix else copy.deepcopy(nodes)
+        if id in (D + "wheel", D + "quarterdeck"):
+            threshold = next(node for node in delivery if node["Id"] == "threshold")
+            threshold["Choices"][0]["Next"] = "explicit.1"
+            # Explicit brief: first night on her coat, after her initiation; sleep before morning.
+            delivery.append(nar("explicit.1", "{n}She draws you down onto her coat, her mouth still on yours. The watch stays forward; above the rail, the lashed wheel holds its course. When the cold wakes you, she has pulled the coat over you both.{/n}", c("Continue")))
+        SCENES.append(scene(id + suffix, title, "Mielarah", 5, entry, delivery,
                             requires=("trickster.ever", CONTACT, *requires, *extra),
                             forbids=(CLOSED, KILLED, twin, *forbids), delay=delay, last=5, Relationship=REL, Chapters=[5],
                             Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub, **copy.deepcopy(fields)))
@@ -90,7 +97,7 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
         c("Continue", "fourth", requires=(SHIP_LOST,)),
         c("Continue", "charter", forbids=(LANDFALL, RETURNED, SHIP_LOST))),
     mi("third", '''"Through the Worldwound, yes. As promised." {n}She points up with her pencil, without looking. High over the citadel, small as a toy against the clouds, a ship hangs at anchor in the sky: Starcatcher the Third, her sails furled, her lanterns lit in the afternoon.{/n}
-"The sky over the Wound is the colour of a week-old bruise and full of things with wings. My crew prayed to four gods on the way through. One of them answered, but I couldn't tell you which." {n}She ticks a line.{/n} "Cold iron from the Isles, Abyssal salts for your alchemists, and forty-one people from Alushinyrra who wanted any sky but that one. I set them down outside the walls. Your gate sergeant was very rude about it."''',
+"The sky over the Wound is the colour of a week-old bruise and full of things with wings. My crew prayed to four gods on the way through. One of them answered, but I couldn't tell you which." {n}She ticks a line.{/n} "Cold iron from the Isles, Abyssal salts for your alchemists, and six passengers from Alushinyrra who wanted any sky but that one. I set them down outside the walls. Your gate sergeant was very rude about it."''',
        c("Continue", "oskel_told", requires=(MEANT,), forbids=(*OSKEL_ALIVE, PAID)),
        c("Continue", "oskel_paid", requires=(PAID,), forbids=OSKEL_ALIVE),
        c("Continue", "body", forbids=(MEANT,)),
@@ -103,13 +110,13 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
        c("Continue", "body")),
     mi("scarf", '''{n}She is wearing the scarf high around her throat, even here, even in the Drezen afternoon. Above the citadel a ship rides at anchor in the sky, her lanterns lit: Starcatcher the Third.{/n}
 "Through the Worldwound, yes. With a new crew, hired in Alushinyrra at double wages. I have not put a hand in any of their heads yet." {n}She ticks a line.{/n} "I'm told the captains of the Midnight Isles have been laughing about Vazglar. Kerz sent me a length of good hemp rope, tied in a bow, with his compliments. I sold it. It fetched a decent price."
-{n}Her pencil moves on down the page.{/n} "Cold iron, Abyssal salts for your alchemists, and forty-one people from Alushinyrra who wanted any sky but that one. I set them down outside your walls."''',
+{n}Her pencil moves on down the page.{/n} "Cold iron, Abyssal salts for your alchemists, and six passengers from Alushinyrra who wanted any sky but that one. I set them down outside your walls."''',
        c("Continue", "body")),
     mi("fourth", '''"Through the Worldwound, yes. In that." {n}She points up, and does not bother to hide the pride or the wince. High over the citadel a ship hangs at anchor in the sky: small, broad in the beam, patched in three colours of canvas, with a new name painted on her bow in letters much too large for her.{/n}
 "Starcatcher the Fourth. Twenty years old, she leaks like a colander, and she rolls in a crosswind like a drunk bishop. Five hands, all of them new, all of them paid in advance, none of them within two strides of me." {n}She ticks a line.{/n} "She got us through the Wound. I have decided that she is beautiful, and I'll hear no argument."''',
        c("Continue", "body")),
     mi("charter", '''"Through the Worldwound, yes, as chartered." {n}She points up with her pencil. High over the citadel a ship hangs at anchor in the sky: Starcatcher the Third, lanterns lit in the afternoon.{/n}
-"You went to Colyphyr with another captain and came back alive, which I understand is a thing you make a habit of. I have decided not to take it personally. I am a professional." {n}She ticks a line, a little harder than it needs.{/n} "Cold iron, Abyssal salts for your alchemists, and forty-one people from Alushinyrra who wanted any sky but that one. I set them down outside your walls. Your gate sergeant was very rude about it."''',
+"You went to Colyphyr with another captain and came back alive, which I understand is a thing you make a habit of. I have decided not to take it personally. I am a professional." {n}She ticks a line, a little harder than it needs.{/n} "Cold iron, Abyssal salts for your alchemists, and six passengers from Alushinyrra who wanted any sky but that one. I set them down outside your walls. Your gate sergeant was very rude about it."''',
        c("Continue", "body")),
     mi("body", '''"Your city is at war, Commander. I can smell it from up there: pitch and horses and too many people in too few streets. So it has a use for an honest ship." {n}She lowers her voice, though nobody is near enough to hear; nobody is ever near enough.{/n}
 "It also has a use for a cursed one, apparently, since you asked me here. Three days, and a porter has dropped a crate of my cold iron on his own foot, and a cart horse has bolted in this square and put a man through a shop window. Nobody dead." {n}Her mouth tightens.{/n} "Yet. That is the most accurate word in my vocabulary. Yet."''',
@@ -117,7 +124,7 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
        c('"You keep everyone at arm\'s length out here."', "arms")),
     mi("circle", '''{n}The tiefling trader makes a small noise, as if you had stepped off a roof.{/n}
 "Nobody comes inside the circle." {n}She does not step back. She has to lift her chin a little to look at you, and looks at you over the folded bill of lading.{/n} "Everybody in this city has heard the rule by now. The porters have. And you walk in anyway."
-"Brave, or careless. I keep saying that about you. I am beginning to think it is a single word in some language I don't speak."''',
+"Hold this end of the bill, then. You are inside the circle; you might as well be useful." {n}She shifts the paper between you, keeping your shoulder beside hers.{/n}''',
        c("Continue", "moored")),
     mi("arms", '''"Out here, and everywhere." {n}She taps the bill of lading against the edge of a crate.{/n} "In Alushinyrra, nobody minded. People die in Alushinyrra of all sorts of things; my contribution was hardly noticed. Here, they notice. Your crusaders cross themselves when I pass. A priest of Iomedae has asked me, very politely, to buy my bread at a different baker."
 {n}She does not seem hurt by it. She seems to find it correct.{/n}''',
@@ -140,14 +147,14 @@ deck(D + "nearest", "The nearest", '"I came to see the ship."', [
     nar("start", '''{n}You step through a door of salt light behind the tiefling's stall and fall over the step, exactly as promised, onto a deck a hundred fathoms above Drezen. The wind up here is clean and very cold. The city below is a map of itself.{/n}
 {n}Mielarah does not show you the ship. She takes you into her cabin, which is small and brass-bound and scrupulously neat, and shuts the door, and pours two cups of something, and sits down on the far side of her chart table.{/n}''',
         c("Continue", "dead", requires=(OSKEL_DEAD,), forbids=(CUT_DOWN,)),
-        c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
-        c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, OSKEL_DEAD)),
-        c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, OSKEL_DEAD)),
+        c("Continue", "alive", requires=(MINDER, PAID, TOLD), forbids=OSKEL_ALIVE),
+        c("Continue", "alive", requires=(MINDER, SECRET_KNOWN), forbids=(TOLD, *OSKEL_ALIVE)),
+        c("Continue", "secret", requires=(MINDER,), forbids=(TOLD, SECRET_KNOWN, *OSKEL_ALIVE)),
         c("Continue", "none", requires=(PATTERN,), forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK)),
         c("Continue", "dead_cut", requires=(CUT_DOWN, OSKEL_DEAD)),
         c("Continue", "marked", requires=(ZYPHUS_MARK,), forbids=(OSKEL_DEAD,)),
         c("Continue", "none_unread", forbids=(MINDER, OSKEL_DEAD, CUT_DOWN, ZYPHUS_MARK, PATTERN))),
-    mi("none_unread", '''"I worked something out on the way back from Colyphyr." {n}She opens the sailcloth book at the front, and turns it round so that you can read it.{/n} "Not who died. Where they were standing. The steward, on the stair below me. My mate, across the binnacle. The girl with the apples, across her counter, taking my copper. Every one of them was the nearest thing to me when it happened. Six years, and I never once added up where they stood."
+    mi("none_unread", '''"I have been going through my records." {n}She opens the sailcloth book at the front, and turns it round so that you can read it.{/n} "Not who died. Where they were standing. The steward, on the stair below me. My mate, across the binnacle. The girl with the apples, across her counter, taking my copper. Every one of them was the nearest thing to me when it happened. Six years, and I never once added up where they stood."
 "Nearest. It takes the nearest." {n}She shuts the book.{/n} "I have been thinking about little else. And the thing I keep coming back to is not the rule. It's you. You're a Trickster, the broadsheets say; the kind that makes a joke and the world goes along with it." {n}She lifts her eyes.{/n} "So tell me, honestly. What would you have done with it, if I had flown you anywhere with a hanging at the end?"''',
        c('"I\'d have put the most dangerous man on your ship at your elbow. And let it take him."', "honest",
          flags=(WOULD, PATTERN)),
@@ -255,7 +262,7 @@ deck(D + "best_job", "The best job in the whole world", '"You said you\'d show m
 "Of course I want to fly into it. I'm an aeronaut. It's the finest thing there is: the ship on her ear and the rain coming sideways and the whole sky trying to throw you out of it." {n}The laugh goes out of her.{/n} "And every time I see weather now I hear a spade, somewhere behind me, in wet earth. So I turn the wheel before I've decided to."''',
        c("Continue", "home")),
     mi("home", '''"There." {n}Drezen comes up under the keel again, roofs and smoke and the citadel's knuckle.{/n} "That is what she can do. That is the best job in the whole world, and I have spent six years doing half of it."
-{n}She glances at you sidelong, as the anchor-chains go down.{/n} "You held her very well, for a landsman. Don't let it go to your head. She was being polite."''',
+{n}She glances at you sidelong, as the anchor-chains go down.{/n} "You held her very well, for a landsman. Mind the compass while you congratulate yourself. She was being polite."''',
        c('"She was. So were you."', flags=(FLOWN,)),
        c('"Next time, the storm."', flags=(FLOWN,))),
 ], requires=(RECKONED,), forbids=(FLOWN,), delay=24)
@@ -402,18 +409,18 @@ deck(D + "market", "Nearest, in Drezen", '"Something happened in the market."', 
 # --- 6. The wheel (the commit): she lets go in flight, and the Commander holds the course. ---------------------------
 
 INTIMACY = [
-    nar("lash", '''{n}She takes a becket from its peg and lashes the wheel, two turns and a hitch, without looking at her hands, the way she has done it a thousand times on a thousand quiet watches. The ship settles on her course like a cat on a sill.{/n}
+    nar("lash", '''{n}She takes a becket from its peg and lashes the wheel, two turns and a hitch, without looking at her hands, the way she has done it a thousand times on a thousand quiet watches. She checks the compass, then the forward watch. Starcatcher holds steady.{/n}
 {n}Up here, above the clouds, there is nobody. The watch is forward, the crew below; the quarterdeck is open to the whole sky, and the whole sky is stars. It is very cold. Her breath smokes, and so does yours.{/n}
 "Six years," {n}she says, and does not finish it, and puts her hands on your coat.{/n}''',
         c("[Kiss her.]", "kiss"),
         c('"Six years of what?"', "years")),
     mi("years", '''"Six years of watching people edge away." {n}She works the buckles of your coat, pulls it open, and presses her cold fingers beneath your collar.{/n} "I have had enough of distances, Commander. I want your mouth on mine." {n}She draws you against her.{/n} "Stop talking."''',
        c("[Kiss her.]", "kiss")),
-    nar("kiss", '''{n}She kisses the way she flies: carefully for exactly as long as it takes to be sure of the weather, and then not carefully at all. Her mouth is cold and then it isn't. She tastes of the brandy in her cabin, and she makes a sound against your mouth that is half laugh and half something much older than laughing, like a woman surfacing.{/n}
-{n}Her hat goes. You don't see where. Her hands are in your hair and then under your coat and then pushing the coat off your shoulders, and the cold comes in and she follows it, pressing close, as if she means to make up the whole six years in one night on a quarterdeck with the stars for a ceiling.{/n}''',
+    nar("kiss", '''{n}Her mouth warms against yours. She catches your lower lip, then kisses you harder, both hands under your coat. Her hat strikes the planks. She leaves it there.{/n}
+{n}A shout comes from the forward watch: steady wind. She listens, nods, and pulls your coat off your shoulders. Her fingers return beneath your collar at once.{/n}''',
         c("[Undo her coat.]", "coat")),
     nar("coat", '''{n}Her captain's coat has more buttons than any garment has a right to, and she laughs at you for the second half of them and then does the last three herself, impatiently, and shrugs it off and drops it in the lee of the rail, brass buttons rattling on the planks.{/n}
-{n}Under it she is thin, and warm, and shivering, and not from the cold. There is a white scar along her ribs from something with claws and another, round and old, on her shoulder. You find them both with your mouth. She arches into it and says your name against your skin, impatiently, drawing you closer.{/n}''',
+{n}She presses against you, warm through her shirt. Your mouth finds her throat; she tips her head back, then catches your collar and brings your mouth to hers again. Her fingers fumble once at a buckle. She swears under her breath and tries again.{/n}''',
         c("Continue", "threshold")),
     mi("threshold", '''{n}She pulls you down with her onto the coat and the cold planks, into the lee of the rail, and the ship sways under you both, and she holds on as if you might be the thing that rolls overboard.{/n}
 "If anything falls," {n}she breathes against your throat, fierce and unsteady,{/n} "a block, a spar, a star, I don't care, if anything falls tonight I want it to fall on both of us. Do you hear me? Both of us or neither."
@@ -436,7 +443,7 @@ deck(D + "wheel", "Hold her", '"You are taking Starcatcher out tonight?"', [
         c("Continue", "spade_first", forbids=(STORM,))),
     mi("spade_first", '''"Do you hear it?" {n}She has to shout.{/n} "Tell me you hear it."
 {n}And you do: under the wind, patient and slow and very far down, the sound of a spade going into wet earth. Once. Again.{/n}
-"This is how the First went down. Weather like this, and that sound under it, and I walked away from her and nobody else did." {n}Her knuckles are white on the spokes. The ship is shuddering.{/n} "I have been afraid for six years that one day it will come up behind me at a wheel and my hands will open on their own. I can feel them wanting to."
+"This is how the First went down. Weather like this, and that sound under it, and I walked away from her and counted the dead afterwards." {n}Her knuckles are white on the spokes. The ship is shuddering.{/n} "I have been afraid for six years that one day it will come up behind me at a wheel and my hands will open on their own. I can feel them wanting to."
 "So listen to me." {n}She turns her head, and her eyes are wide and very clear.{/n} "I'm going to let go. On purpose, before they do it for me. Take her. Hold her."''',
         c("Continue", "letgo")),
     mi("spade", '''"Do you hear it?" {n}She has to shout.{/n} "Tell me you hear it."
@@ -791,35 +798,35 @@ WOUNDED_LEFT = D + "wounded_left"
 deck(D + "wounded", "Those in distress", '"A column was cut up in the Wound. They need a ship."', [
     nar("start", '''{n}They do. A supply column was caught in the open two days north of the walls, in the red-lit badlands where nothing good grows, and the riders who got back say there are forty men lying in a dry streambed with a demon warband between them and the wagons.{/n}
 {n}Mielarah hears it from you beside the tiefling's stall, standing in her circle of empty cobbles, and her face does the complicated thing and then does not settle on courtesy at all.{/n}
-"Forty wounded," {n}she says,{/n} "in a hold the length of my ship, for a day and a night, with me at the wheel."''',
+"Forty wounded," {n}she says,{/n} "and six passenger places. Five stretchers if you come. We shall have to keep flying until they are all out."''',
         c("Continue", "sum", forbids=(P + "rock.slavers_refused",)),
        c("Continue", "sum_refused", requires=(P + "rock.slavers_refused",))),
-    mi("sum", '''"You know what happens near me. So do I." {n}She is speaking fast, and very evenly.{/n} "Forty men who can't walk, packed in a hold, and every one of them near me for a day and a night. A stretcher slips. A lantern falls. A splinter in the wrong place, a fever that should have broken. I'd land at Drezen with thirty-five. With thirty."
-"And my code says I never ignore those in distress." {n}Her hands have gone still at her sides.{/n} "I can keep them forward and stay at the wheel. It still puts forty wounded aboard a cursed ship. Tell me what you would do. Quickly."''',
-       c('"Fly. Put them in the forward hold, as far from the wheel as the ship allows. I\'ll stand between you and them the whole way."', "carry",
+    mi("sum", '''"You know what happens near me. So do I." {n}She is speaking fast, and very evenly.{/n} "Six at a time. Another landing under arrows for every load. A stretcher slips. A lantern falls. A splinter in the wrong place, a fever that should have broken. We may go for forty and bring home thirty-five. Thirty."
+"And my code says I never ignore those in distress." {n}Her hands have gone still at her sides.{/n} "I can keep them forward and stay at the wheel. Every sortie still puts wounded men aboard a cursed ship. Tell me what you would do. Quickly."''',
+       c('"Fly. Put them in the forward hold, as far from the wheel as the ship allows. I\'ll stay at your elbow on every sortie."', "carry",
          flags=(WOUNDED, WOUNDED_CARRIED)),
        c('"Leave them to the wagons. Five dead on your ship is five your curse took. You don\'t owe the Wound that."', "left",
          flags=(WOUNDED, WOUNDED_LEFT))),
-    nar("carry", '''{n}She flies. You go with her.{/n}
-{n}The forty come up out of the dry streambed on ropes and stretchers, under arrows, while Starcatcher hangs twenty feet over the rocks with her captain at the wheel and every hand she has hauling. They go into the forward hold, as far from the helm as the ship allows. You stand amidships, on the line between the wheel and the hatch, for a day and a night, and every time a sailor or a surgeon has to pass aft, they pass you first.{/n}
-{n}A block comes down from the foreyard in the night. It hits the deck beside you, and bounces, and goes over the side. A lantern gutters in the hold and does not fall. One man dies of his wound before Drezen, as he would have died in the streambed. Thirty-nine come home.{/n}''',
+    nar("carry", '''{n}She flies. You go with her. Three lanterns above the red badlands mark the ship to the men below; she orders them lowered close to the streambed before the first landing.{/n}
+{n}Five stretchers on each load, leaving your place at the helm. The crew haul from the forward hatch, beyond your station; the surgeon stays with the patients. You remain half a stride from Mielarah through loading, flight and unloading. When a line jams aft, she brings the ship down before anyone approaches.{/n}
+{n}A block falls beside your boot on the fourth sortie and bounces overboard. The lanterns stay lit. By dawn the streambed is empty. One man dies of his wound before the hospital, despite the surgeon's work. Thirty-nine come home.{/n}''',
         c("Continue", "home")),
     mi("home", '''{n}She brings Starcatcher down over the hospital yard at dawn and stands at the wheel while the stretchers go out, and does not come down off the quarterdeck until the last one is gone.{/n}
 "Thirty-nine." {n}Her voice is hoarse. She has not sat down in a day and a night.{/n} "I counted them off. I count everything. Thirty-nine."
-"And one, who would have died anyway. I asked the surgeon twice. I made him swear it on his mother." {n}She looks at you, standing where you stood all night.{/n} "You were between me and them the whole way. Everything that came, came to you first. And it missed." {n}She shakes her head, slowly.{/n} "I'm going to have to write a paper about you, Commander. The Arcanamirium will think I've gone mad."''',
+"And one, who would have died anyway. I asked the surgeon twice. I made him swear it on his mother." {n}She looks at you, standing where you stood all night.{/n} "You stayed nearest on every flight. The block fell beside you, not into the stretchers. It missed. I am recording what happened, not promising what happens next." {n}She shakes her head, slowly.{/n} "I'm going to have to write a paper about you, Commander. The Arcanamirium will think I've gone mad."''',
        c("[Help her down the ladder.]")),
     mi("left", '''{n}She stares at you. You watch her hear it, and hear it again, and put it down on the scale beside the other thing, and watch the scale not move.{/n}
 "The wagons." {n}Very quietly.{/n} "The wagons are two days away and there's a warband in the road."
-"No. You're right, and it's sensible, and I'm going anyway." {n}She is already turning toward the portal.{/n} "I'll put them in the forward hold. I'll lash myself to the wheel and I won't come off the quarterdeck. If the curse takes five, it takes five, and I'll write their names down, and they'll be five names instead of forty." {n}At the portal she stops.{/n} "My code has three lines, Commander. I don't get to keep only the convenient ones. Neither, I think, do you."''',
+"No. You're right, and it's sensible, and I'm going anyway." {n}She is already turning toward the portal.{/n} "Six on each flight. I'll put them forward. I'll lash myself to the wheel and I won't come off the quarterdeck. If the curse takes five, it takes five, and I'll write their names down, and they'll be five names instead of forty." {n}At the portal she stops.{/n} "My code has three lines, Commander. I don't get to keep only the convenient ones. Neither, I think, do you."''',
        c("Continue", "alone")),
-    nar("alone", '''{n}She goes without you. Starcatcher is gone for a day and a night, and comes back over the hospital yard at dawn, and the stretchers go out one at a time while her captain stands at the wheel and counts them.{/n}
+    nar("alone", '''{n}She goes without you. Starcatcher comes and goes through a day and a night, six stretchers at most on each flight. At dawn her last load reaches the hospital yard. Her captain stands at the wheel while the surgeon counts the survivors.{/n}
 {n}Thirty-six. You hear it from the surgeon, not from her. She does not come down from her ship that day, or the next.{/n}''',
         c("[Let her be.]")),
 
     mi("sum_refused", '''"Forty wounded, and a warband between them and the wagons. I am going."
 {n}She takes the loading list from her coat and turns it over.{/n} "I told you I would not ask you about my code again. I have not changed my mind. The wounded go in the forward hold, as far from the wheel as I can put them."
-"I am asking whether you will come. Stand between me and the hatch while we bring them home. You know what might fall on you."''',
-       c('"Fly. Put them in the forward hold, as far from the wheel as the ship allows. I\'ll stand between you and them the whole way."', "carry",
+"I am asking whether you will come. Stand at my elbow on every sortie while we bring them home. You know what might fall on you."''',
+       c('"Fly. Put them in the forward hold, as far from the wheel as the ship allows. I\'ll stay at your elbow on every sortie."', "carry",
          flags=(WOUNDED, WOUNDED_CARRIED)),
        c('"You will have to fly without me."', "left_refused", flags=(WOUNDED, WOUNDED_LEFT))),
 
@@ -931,3 +938,44 @@ deck(D + "names", "Accurate records", '"You wrote his name down. The boy under t
        c("Continue", "last_page")),
 
 ], requires=(MARKET,), forbids=(NAMES,), delay=12)
+
+
+# Round 2 authored situations: variants append to the frozen node/answer inventory.
+def _round2_deck():
+    for beat in SCENES:
+        nodes = {node["Id"]: node for node in beat["Nodes"]}
+        stem = beat["Id"].removesuffix(".arcade")
+        if stem == D + "nearest":
+            nodes["myself"]["Text"] = '"You would have stood there yourself." {n}She puts her cup down and reaches across the chart table. Her fingers stop short of your wrist.{/n} "Then tomorrow you can stand beside the helm while I show you what that means. I shall be flying. You will be keeping your feet."'
+        if stem == D + "wheel":
+            # The existing emergence still leads to her own kiss, after the weather.
+            emerge = next(node for node in beat["Nodes"] if any(c.get("Next") == "above" for c in node["Choices"]))
+            emerge["Choices"][0]["Forbids"] += [P + "repeated", D + "wounded_carried"]
+            emerge["Choices"].extend([
+                c("Continue", "above_repeat", requires=(P + "repeated",)),
+                c("Continue", "above_rescue", requires=(D + "wounded_carried",), forbids=(P + "repeated",)),
+            ])
+            for nid, opening in (
+                ("above_repeat", '"The knife in the Bad Luck, and now this. In that weather."'),
+                ("above_rescue", '"The block over the streambed, and now another. You stayed nearest both times."'),
+            ):
+                beat["Nodes"].append(mi(nid, '{n}She looks from the split block to your boot. Her hands are still open.{/n} ' + opening + ' {n}She lays two fingers over your hand on the spokes, correcting the course. She leaves them there.{/n} "I wanted to know whether I could let go without losing my ship. I did. Stay there, Commander. I am captain again; I have decided."', c("[Kiss her.]", "kiss_first"), c('"I am staying."', "kiss_first")))
+            nodes["home_after"]["Text"] = '"You kept my ship off the bottom. I can hardly quarrel with that." {n}She brings Starcatcher down toward the city lights. When your sleeve brushes hers, she shifts to the other side of the wheel.{/n} "There is cargo tomorrow. Come if you want to talk about cargo. I am done with weather tonight."'
+        if stem == D + "morning":
+            nodes["start"]["Choices"][0]["Forbids"] += [P + "repeated", D + "wounded_carried"]
+            nodes["start"]["Choices"].extend([
+                c("Continue", "block_repeat", requires=(P + "repeated",)),
+                c("Continue", "block_rescue", requires=(D + "wounded_carried",), forbids=(P + "repeated",)),
+            ])
+            for nid, memory in (("block_repeat", '"We watched the knife miss in the Bad Luck. I kept thinking about that."'), ("block_rescue", '"I saw a block miss you while we brought the wounded home. I kept thinking about that."')):
+                beat["Nodes"].append(mi(nid, memory + ''' {n}She crouches beside the broken pulley.{/n} "Last night you were asleep. You rolled over and dragged my coat with you, and this struck the place your head had been. No watch, no hand on a spoke. I lay there listening to you breathe."
+{n}She looks up, tired and flushed.{/n} "I wanted to wake you. For something rather less scholarly than this. But I wanted to hear you go on breathing more."''', c('[Joke] "I rolled over. That is the whole trick."', "joke"), c('"Come here."', "come")))
+        if stem == D + "captains":
+            nodes["kerz"]["Text"] = nodes["kerz"]["Text"].replace('I have never been so insulted in my life.', 'Kerz can keep his compliments. I will choose my own crew.')
+            nodes["rates"]["Text"] = '''"Your passage? Nothing. The quartermasters still pay for theirs. Cold iron does not become lighter because I like your mouth." {n}She folds the loading list and tucks it into her coat.{/n} "One hour ashore. Then I have a ship to load."
+{n}After that hour she walks you back to the mooring, correcting your account of the squall with increasing indignation.{/n} "Port spoke. Your left hand. I was there, Commander." {n}She catches your collar and kisses you hard enough to interrupt your answer, then steps onto the ladder.{/n} "Now let me work. I shall be back before your quartermaster learns to count."'''
+        if stem == D + "the_place":
+            for nid in ("stand", "joke"):
+                nodes[nid]["Text"] = nodes[nid]["Text"].replace('her hand finds your sleeve and stays there', 'her hand finds your waist and draws you against her').replace('finds your sleeve exactly where it expects to', 'finds your waist and draws you against her')
+
+_round2_deck()

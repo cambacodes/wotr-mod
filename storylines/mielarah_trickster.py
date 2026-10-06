@@ -137,6 +137,7 @@ HUB_FAILED = HUB + ".failed"
 
 BINDINGS = {
     "Etudes": {},
+    "CompletedQuests": {P + "colyphyr.completed": "f10653a2a7032214a9dd3039d156f55d"},
     "SeenCues": {HIRED: ["a67acc05e448a134aa2e4de0a30c5a15"],           # Tumberd/Cue_0075 (the portal to her deck)
                  LANN_HEARD: ["b8605cacc05f3ed4d81dd2c6a2f69b72"]},   # Tumberd/Cue_0079 "...the best job in the whole world." (to Lann)
     "StartedDialogs": {VOYAGE: "a07f6d1f93531e048928c5c9de328a92"},     # AirAdventures_BookEvent
@@ -165,7 +166,8 @@ RELATIONSHIP = dict(
 )
 
 DERIVED = {
-    CONTACT: [[LANDFALL], [RETURNED], [CHARTER, KERZ], [CHARTER, NOCTA]],
+    CONTACT: [[LANDFALL], [P + "returned_third"], [RETURNED, P + "fourth.arrived"], [CHARTER, KERZ], [CHARTER, NOCTA]],
+    P + "returned_third": [[RETURNED]],
     LATE_COMMITTED: [["trickster.ever", COMMITTED]],     # Sol INT: a first flight is not a commitment; only the wheel is
     D + "oskel_settled": [[D + "stern"], [D + "oskel_spoke"]],
 }
@@ -395,7 +397,7 @@ tavern(P + "tavern.captains", "Other ships", '"There are other ships for hire in
 "Got-Stabbed. He has been stabbed more times than anyone can count and it has not improved him. He tortures his prisoners for the pleasure of it and his passengers for the profit. On Golarion even the Shackles pirates would hang him from the yardarm, and they are not particular." {n}She puts the cup down.{/n}
 "He will get you to Colyphyr, probably. He is good in a fight. Ask him what he keeps in the little box in his cabin, if you ever want to stop sleeping."''',
        c('"And what does it cost to sail with you?"', "cost")),
-    mi("cost", '''"A hundred and fifty thousand in gold, unless you convince me your mission is noble, in which case I am a fool and it is less." {n}The quick smile.{/n} "And the curse. You know the curse. Some of my crew will die on the way, of stupid things, because they will be standing near me when stupid things happen. That is the honest price."
+    mi("cost", '''"A hundred and fifty thousand in gold, unless you convince me your mission is noble, in which case I am a fool and it is less." {n}The quick smile.{/n} "And the curse. Zyphus's herald cursed me after I took his captives out of Abaddon. Some of my crew will die on the way, of stupid things, because they will be standing near me when stupid things happen. That is the honest price."
 "The others will not tell you their honest price. That is the difference between us. I will carry you where you are going, I will not steal your boots, I will not sell you to anybody, and I will tell you to your face exactly how many people I expect to bury on the way." {n}She spreads her hands.{/n} "Two, on a good voyage. Four, on a bad one."''',
        c('[Flirt] "And how many passengers?"', "passengers", flags=(CAPTAINS_HEARD,)),
        c('"That\'s a fair price. I\'ll think about it."', "think", flags=(CAPTAINS_HEARD,))),
@@ -481,7 +483,7 @@ tavern(P + "tavern.charter", "A charter for after", '"When this is over, Drezen 
 SCENES.append(scene(P + "colyphyr.landfall", "Landfall", "Mielarah", 4, '"Before you go back to your crew. A word."', [
     nar("start", '''{n}The crew are lashing Starcatcher to the stalagmites. Somewhere in the dark above the rocks, the thing that almost ate you on the approach is still circling, and every sailor on the deck keeps half an eye on the sky.{/n}
 {n}Mielarah has taken off her hat. Without it she looks younger and more tired, and she is looking at you as if you were a column of figures that has, against all expectation, added up.{/n}''',
-        c("Continue", "told", requires=(TOLD,)),
+        c("Continue", "told", requires=(MINDER, PAID, TOLD)),
         c("Continue", "lied", requires=(MINDER,), forbids=(TOLD,)),
         c("Continue", "voyage", forbids=(MINDER,))),
     mi("told", '''"He's alive." {n}She nods along the deck, to where Oskel is coiling a line, never more than two strides from her. He has been at her elbow for the whole voyage, on his own stool, bought with her gold.{/n}
@@ -505,7 +507,7 @@ SCENES.append(scene(P + "colyphyr.landfall", "Landfall", "Mielarah", 4, '"Before
        c("Continue", "tally", forbids=(PATTERN,)),
        c("Continue", "close", requires=(PATTERN,))),
     mi("amulets", '''{n}Her hand goes, without her meaning it to, to the pocket of her coat where the amulets are kept.{/n}
-"You demanded that I calm them, and I did. Twenty men, all at once, like dolls on one string." {n}She takes the hand away.{/n} "The one who started it walked to the rail and stepped off. I felt him wake up halfway down. I will feel that for the rest of my life."
+"You demanded that I calm them, and I did. Twenty men, all at once, like dolls on one string." {n}She takes the hand away.{/n} "The one who started it walked to the rail and stepped off. I felt him wake a second before he hit the water. He tried to open his wings. I will feel that for the rest of my life."
 "You did the right thing as captain. I did the right thing as captain. It is a thing I would pay a great deal never to have done."''',
        c("Continue", "tally", forbids=(PATTERN,)),
        c("Continue", "close", requires=(PATTERN,))),
@@ -557,7 +559,7 @@ remote(P + "colyphyr.letter", "A letter through a small door", [
        c("[Put the letter away and don't answer.]", flags=(CLOSED,))),
     nar("answered", '''{n}You write three lines. The small door opens beside your pack before the ink is dry, and takes them.{/n}''',
         c("[Close the pack.]")),
-], requires=("trickster.ever", ARRIVED), forbids=(LANDFALL, KILLED), delay=72, kind="letter")
+], requires=("trickster.ever", ARRIVED, P + "colyphyr.finished"), forbids=(LANDFALL, KILLED), delay=72, kind="letter")
 
 
 # --- 4. The raid: the curse takes the man on the rope (the device's payoff; her return, in person, in Chapter 4). ---
@@ -604,8 +606,8 @@ remote(P + "raid.rope", "The man on the rope", [
     mi("deflect", '''"My curse took him." {n}She says it back to you without heat.{/n} "Your hand put him there. A curse is a rock, Commander. You are the one who steered."
 "Don't do that. You're better than that, and I have no patience left for people who are worse than they need to be."''',
        c("Continue", "shovel")),
-    mi("shovel", '''"There's something else." {n}She hesitates, which you have not seen her do.{/n} "The night after, I dreamt of a spade. Not digging for me. It has never dug for me. It was digging somewhere else, slowly, like a man who has all the time in the world."
-"I have met the Gravedragger once, in Abaddon, and I took a party of Pathfinders out of his hands. He never forgave it. I think he has noticed that somebody else has started stealing from him." {n}She looks at you.{/n} "I think it was digging for you."''',
+    mi("shovel", '''"There's something else." {n}She hesitates, which you have not seen her do.{/n} "The next watch, there was grey grit beneath the wheel. A spade scraped below the deck. We were over open water. I checked the sound myself."
+"I have met the Gravedragger once, in Abaddon, and I took a party of Pathfinders out of his hands. He never forgave it. I think he has noticed that somebody else has started stealing from him." {n}She looks at you.{/n} "The grit lay where you had stood. I entered that too."''',
        c('"Let it dig."', "north"),
        c('"Then I\'ll have to keep standing where it can\'t reach me."', "north")),
     mi("north", '''"Brave, or careless. I keep saying that about you." {n}She stands, and the portal brightens behind her.{/n}
@@ -892,7 +894,7 @@ remote(P + "storm.survivor", "The survivor", [
     mi("blamed", '''{n}She takes it without flinching. You suspect she has said it to herself every hour since the hatch cover.{/n}
 "Yes. I did. You gave a stupid order and I carried it out, and then I let go." {n}Her jaw sets.{/n} "Since I was fourteen, and I let go. Say it as often as you like; you can't say it more often than I do."''',
        c("Continue", "fourth")),
-    mi("fourth", '''"Something else, since we're being honest. On the hatch cover, the second night, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere far off, slowly, like a man with all the time in the world."
+    mi("fourth", '''"Something else, since we're being honest. On the hatch cover, the second night, I heard a spade beneath the water. When I reached land there was grey grit in my pockets. I entered it in the log."
 "I think the Gravedragger has noticed you, Commander. You lived through that voyage. Now you have sent for me. He has had enough reasons to dislike you." {n}She gets up.{/n}
 "You paid me a fare to Colyphyr and I didn't earn it. So I'm going to spend it. There is a sloop for sale in Alushinyrra, twenty years old and ugly as sin, and she will be Starcatcher the Fourth by the end of the month. And then I'm going to fly her north, to Drezen, and deliver you the rest of what you paid for."''',
        c('"I\'ll be waiting."', "go"),
@@ -986,8 +988,8 @@ SCENES.append(reaction("Lann", P + "react.lann_captain", (FLOWN,),
     portrait="Lann"))
 
 SCENES.append(reaction("Lann", P + "react.lann_spade", (NOTICED, MORNING),
-    '''"Commander, don't laugh. Last night I dreamt about a man digging. Not a grave. Just digging, very slow, somewhere a long way down." {n}Lann scratches his ear.{/n}
-"Mongrels don't dream much. I asked the captain about it. She went white and told me to sleep on the other side of the barracks from you. Is that a joke? Nobody ever tells me the jokes."''',
+    '''"Commander, don't laugh. I heard a spade under the captain's deck. I went below to look. There was nothing beneath us but sky." {n}Lann scratches his ear.{/n}
+"I asked the captain about it. She went white and told me to sleep on the other side of the barracks from you. Is that a joke? Nobody ever tells me the jokes."''',
     answer_list=LANN_HUB, forbids=LANN_GUARD, chapter=5, last=5, Chapters=[5], entry='"Something bothering you?"',
     portrait="Lann"))
 
@@ -1002,7 +1004,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
         c("[Close the book.]"),
         paragraphs=(
             p("{n}Oskel's name was painted on the stern under the ship's own, in small white letters that were renewed every spring. She never explained it to passengers. The Commander never asked her to.{/n}", requires=(OSKEL_DEAD,)),
-            p("{n}Oskel stayed aboard as bosun for eleven years and never once stood at her elbow again. When he retired to a quiet life on a quiet plane, it was on gold she paid him, and the last thing he said to the Commander was \"I know what I was for.\" It was not unkind. It was not kind either.{/n}", requires=(MEANT,), forbids=(OSKEL_DEAD,)),
+            p("{n}Oskel stayed aboard as bosun for eleven years and never once stood at her elbow again. Mielarah paid for the bosun\'s retirement on a quiet plane. At their farewell Oskel told the Commander, \"I know what I was for.\" It was not unkind. It was not kind either.{/n}", requires=(MEANT,), forbids=(OSKEL_DEAD,)),
             p("{n}Starcatcher the Fourth was an ugly sloop and stayed one. Her captain refused every offer to replace her. \"This one,\" she said, \"I keep.\"{/n}", requires=(SHIP_LOST,)),
             p("{n}Her crew served without amulets. Some of them deserted. Most of them stayed, and when they fought on deck it was over cards, and she let them.{/n}", requires=(FREED,)),
             p("{n}She kept the lacquered box on the shelf over her bunk for the rest of her flying life, and used it on any sailor who drew steel on her deck: one watch under the amulet, in front of everyone, and his name in the log. Never more than that. She never let the Commander forget who had asked for more.{/n}", requires=(TIGHTENED,)),
@@ -1019,8 +1021,8 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
             p("{n}In Drezen they still tell the story of the Commander who walked through the market every week at the cursed captain's elbow, under the cornices and the scaffolds, on purpose, and never once had so much as a pot of geraniums fall on them.{/n}", requires=(D + "escorted",)),
             p("{n}She never forgot that the Commander had once offered to walk a condemned man beside her through a market like a dog on a leash. She forgave it, eventually. She kept a record of it anyway.{/n}", requires=(D + "offered_prisoner",)),
             p("{n}Some nights, when she could not sleep, she would take the half of a split ironwood block out of the Commander's coat pocket and turn it over in her hands, and put it back.{/n}", requires=(D + "last_night",), forbids=(OSKEL_DEAD,)),
-            p("{n}Thirty-nine soldiers of the crusade came home from the Worldwound in her forward hold, and every one of them, when they could walk again, came to the hospital yard to stand under her ship and wave their hats at it. She never once came down to them. She counted the hats.{/n}", requires=(D + "wounded_carried",)),
-            p("{n}She flew into the Wound for thirty-six soldiers without the Commander, and brought them home, and wrote four names in her book. It was a long time before she let the Commander read that page.{/n}", requires=(D + "wounded_left",)),
+            p("{n}Thirty-nine soldiers of the crusade came home from the Worldwound in successive loads of five in her forward hold, and every one of them, when they could walk again, came to the hospital yard to stand under her ship and wave their hats at it. She never once came down to them. She counted the hats.{/n}", requires=(D + "wounded_carried",)),
+            p("{n}She flew into the Wound for forty soldiers without the Commander, six at a time, and brought thirty-six home, and wrote four names in her book. It was a long time before she let the Commander read that page.{/n}", requires=(D + "wounded_left",)),
             p("{n}At the back of the book of her dead there was a page for the living, headed in her small hand: chose to stand there. It held one name for a long time. Later it held others, and she kept every one of them as carefully as the front.{/n}", requires=(D + "named",)),
             p("{n}And somewhere far below the clouds, patient as a man with all the time in the world, a spade went on digging for the Commander. It is digging still. It has not yet been allowed to finish.{/n}", requires=(NOTICED,)),
         )),
@@ -1049,8 +1051,8 @@ SCENES.append(scene(P + "epilogue.unfinished", "", "MielarahEpilogue", 6, "", [
         c("[Let her fly.]", "fly")),
     nar("climb", '''{n}She did not help you up. She stood at the top with her hands behind her back and watched you climb it the way she watched every new hand climb, for the mistake, and when you reached the rail she put your hands on the spokes and took hers away. That evening she took Starcatcher into the first squall line she could find, and through it, and stood at your elbow the whole way, nearest, laughing.{/n}'''),
     nar("fly", '''{n}She nodded, as if a column of figures had come out the way she expected, and the ladder went up after her. Starcatcher was over the horizon by evening. For years afterwards a bill of lading reached Drezen every spring for one passenger, fare paid, berth unassigned, with the place at the captain's elbow marked on the deck plan in her small upright hand.{/n}'''),
-], requires=("trickster.ever", MARKET), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+], requires=("trickster.ever", MARKET), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice", OSKEL_DEAD, MEANT),
+    ForbidOverrides={"sacrifice": "trickster.commander_back", OSKEL_DEAD: D + "oskel_settled", MEANT: D + "oskel_settled"}, **EP))
 
 
 # Sol quality pass (TRK): the hanging with nobody posted was recovered inside a retrospective memory (the rescue the player
@@ -1195,6 +1197,9 @@ def integrate(payload):
         if s["Id"] in RETIRED:
             s["Forbids"].append("trickster.ever")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    payload.setdefault("DerivedForbids", {})[P + "returned_third"] = [SHIP_LOST]
+    payload.setdefault("DerivedForbids", {})[P + "charter.direct"] = [P + "charter.posted"]
+    payload.setdefault("Latches", {})[P + "colyphyr.finished"] = [P + "colyphyr.completed"]
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != [list(g) for g in groups]:
@@ -1222,3 +1227,139 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+
+# Round 2 authored travel and consequence receipts. These do not purchase affection.
+C5 = P + "chapter_five"
+FOURTH_ARRIVED = P + "fourth.arrived"
+SEARCH_LAUNCHED = P + "raid.search_launched"
+BINDINGS["Etudes"][C5] = "5b01aa690202e584888dfc600a4aac0a"
+
+def _round2_route():
+    by = {beat["Id"]: beat for beat in SCENES}
+    storm = by[P + "storm.word"]
+    nodes = {node["Id"]: node for node in storm["Nodes"]}
+    nodes["start"]["Text"] = '{n}You saw her hands open on the wheel. Starcatcher struck the Ishiar; the crew scattered toward the horizon, those who had wings. Nobody saw what became of the captain.{/n}\n{n}A surviving deckhand has brought an account of her earlier wrecks: the First lost in a storm, the captain unhurt. No one has brought an account of this one.{/n}'
+    nodes["unknown"]["Text"] = '{n}The deckhand knows why the crew feared her: she rescued Pathfinders from the Gravedragger in Abaddon, and he cursed her. Accidents kill people close to her; she walks away. It is his joke. The sailor supplies names and stations, not a bearing in the Ishiar.{/n}'
+    nodes["known"]["Text"] = '{n}The deckhand\'s account fits the pattern you worked out: someone close to her dies; she escapes. It is reason to look, not proof that she survived. The Isles have ports and taverns where a rescued captain might leave word.{/n}'
+    for node in storm["Nodes"]:
+        for answer in node["Choices"]:
+            if answer.get("Next") == "paid":
+                answer["Forbids"].append(C5)
+                twin = copy.deepcopy(answer)
+                twin["Next"] = "paid_post"
+                twin["Forbids"].remove(C5)
+                twin["Requires"].append(C5)
+                node["Choices"].append(twin)
+                break
+    storm["Nodes"].append(nar("paid_post", '{n}The portal-merchant takes your fee and the deckhand\'s account for a diviner in Alushinyrra. The reply comes through his post, crusted with salt: a hatch cover south of the wreck, a living woman swearing in three languages. No claim that she has reached a port yet.{/n}', c("[Leave word in the aeronauts' taverns: the passenger lived, and is waiting for the captain.]", flags=(WORD, LATE))))
+    # Chapter 4 remains the local meeting. Chapter 5 is an exchange through existing post.
+    survivor = by[P + "storm.survivor"]
+    survivor["Chapters"] = [4]
+    survivor["MaxChapter"] = 4
+    reply = copy.deepcopy(survivor)
+    reply.update(Id=P + "storm.survivor_drezen", MinChapter=5, MaxChapter=5, Chapters=[5], Kind="letter")
+    rn = {node["Id"]: node for node in reply["Nodes"]}
+    rn["start"]["Text"] = '{n}The portal-merchant brings her reply from the Isles, on the back of a sailmaker\'s invoice. Salt has blurred the prices. Her hand is upright and unmistakable.{/n} "The Bad Luck gave me your message. The passenger lived. Somebody pinned it over the bar with a knife. So did the captain, Commander. Read the rest before you decide you are pleased."'
+    rn["wheel"]["Text"] = rn["wheel"]["Text"].replace('{n}She sits, carefully, as if the ground might pitch.{/n}', '{n}The next line has been written twice, the first attempt scored out.{/n}')
+    rn["oskel"]["Text"] = '"Oskel caught the wheel when I opened my hands. He held her for a whole minute. Then the mainmast came across the helm. It did not touch me. He was nearest. You knew he would be."'
+    rn["worked_out"]["Text"] = '"You told me a cursed captain needed a bodyguard. Three days on a hatch cover gave me time to examine that. You wanted someone for the curse to take. I shall remember what you called him."'
+    rn["hatch"]["Text"] = '"Three days under a hatch cover. On the fourth a fishing skiff took me aboard. On the fifth its mast snapped and killed the man who pulled me out. I have lost the Third and her crew. Send your answer through this post. I have been rehearsing both halves since that mast broke."'
+    rn["owned"]["Text"] = '"Your answer reached me. The wrong order. Yes, it was. And I obeyed it, then failed at it. I shall argue about those two things when I see you."'
+    rn["blamed"]["Text"] = '"Your answer reached me. Yes, I let go. I have said it to myself every hour since the wreck. You gave a stupid order and I carried it out, then opened my hands. Neither of us gets to omit our part."'
+    rn["fourth"]["Text"] = '"The Fourth is a sloop for sale here, twenty years old and ugly as sin. Your fare is going into her fittings. She will be ready by the end of the month. Then a fortnight north, if the Wound lets me keep a course. I will bring her myself. This letter is not delivery of your cargo."'
+    rn["go"]["Text"] = '"Through the Worldwound. I have decided. Keep your hospital yard clear for my cargo, and keep someone sensible nearest you until I reach it. M."'
+    SCENES.append(reply)
+    # A separate delayed physical hub lets her arrive without spending a third mail delivery.
+    arrival_hub = "mielarah.presence.fourth_arrival"
+    PRESENCES[arrival_hub] = dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="right", Distance=7.5), Requires=["trickster.ever", RETURNED, SHIP_LOST], Forbids=[CLOSED, KILLED, FOURTH_ARRIVED], MinChapter=5, MaxChapter=5, DelayHours=1080, AnswerLists=[], Dialog="hub", Greeting='{n}A patched sloop hangs above the hospital yard. Below her, Mielarah is arguing with a porter over a damp cargo list.{/n}')
+    arrival_fallback = "mielarah.presence.fourth_arrival_arcade"
+    PRESENCES[arrival_fallback] = dict(PRESENCES[arrival_hub], Forbids=list(PRESENCES[arrival_hub]["Forbids"]), At=dict(NearUnit=JEWELER, Side="right", Distance=6.5), Requires=["trickster.ever", RETURNED, SHIP_LOST, arrival_hub + ".failed"], Greeting='{n}A patched sloop hangs above the hospital yard. Mielarah has brought a damp cargo list to the jewellers\' counters.{/n}')
+    PRESENCES[arrival_hub]["Forbids"].append(arrival_hub + ".failed")
+    for suffix, hub in (("", arrival_hub), (".arcade", arrival_fallback)):
+        SCENES.append(scene(P + "fourth.arrival" + suffix, "Starcatcher the Fourth", "Mielarah", 5, '"You brought her north."', [mi("start", '"A month fitting her, a fortnight flying her, and your porter calls her a floating sieve." {n}She points up at the patched sails.{/n} "He is correct. She still delivered the medicine dry. I shall count it out myself before I let him touch anything."\n{n}She looks you over, then holds the list where you can read it beside her.{/n} "There. Delivered. Now you may ask about the ship."', c("[Help her count the crates.]", flags=(FOURTH_ARRIVED,)))], requires=("trickster.ever", RETURNED, SHIP_LOST), forbids=(FOURTH_ARRIVED, CLOSED, KILLED), delay=1080, last=5, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub))
+    # Date the northern raid search from actual departure, not from the old hanging.
+    late = by[P + "raid.overboard_drezen"]
+    ln = {node["Id"]: node for node in late["Nodes"]}
+    ln["go"]["Text"] = '{n}Oskel takes the wheel. Starcatcher leaves Drezen\'s walls behind and turns south over the Wound. A fortnight outward, then the bearing the herald sold you, then a fortnight home. Her lanterns dwindle into the red sky.{/n}'
+    ln["go"]["Choices"][0]["Set"].append(SEARCH_LAUNCHED)
+    ln["blind"]["Text"] = '{n}The grey figure vanishes. Oskel spends a fortnight reaching the Ishiar, eleven days searching, and a fortnight flying home. He returns to Drezen with her hat and no captain. He gives you the hat without a word.{/n}'
+    ashore = by[P + "raid.ashore"]
+    ashore["Forbids"].append(SEARCH_LAUNCHED)
+    returned = copy.deepcopy(ashore)
+    returned.update(Id=P + "raid.ashore_drezen", MinChapter=5, MaxChapter=5, Chapters=[5], DelayHours=720)
+    returned["Requires"].append(SEARCH_LAUNCHED)
+    returned["Forbids"].remove(SEARCH_LAUNCHED)
+    an = {node["Id"]: node for node in returned["Nodes"]}
+    an["start"]["Text"] = '{n}A month after Starcatcher left Drezen, her lanterns return above the walls. Oskel comes down first. The captain follows, holding the ladder carefully. Her throat is bound in a scarf; when she speaks, each word scrapes.{/n} "Two weeks out, two days finding the rock, two weeks back. I have heard what you paid. You shall hear what came back."'
+    an["north"]["Text"] = '"The healers say the rasp stays. Half my spells need a clear voice. I shall learn them again." {n}She points to the ship over your walls.{/n} "Oskel brought her back through the Wound. I stood my watches. That crossing is done; I am not promising it in a letter. Your city needs medicine, and I need wages for the men who went to find me."'
+    SCENES.append(returned)
+    # The existing warning becomes a witnessed night-watch threat, through her presence.
+    warning = by[P + "spade.dream"]
+    warning.pop("Remote", None)
+    warning.pop("Kind", None)
+    warning.update(Entry='"There is grey grit on your quarterdeck."', Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=HUB)
+    wn = {node["Id"]: node for node in warning["Nodes"]}
+    wn["start"]["Text"] = '{n}Grey grit lies in a narrow strip beside the brass binnacle. From below the planks comes a slow scraping sound, though the ship hangs a hundred fathoms above Drezen.{/n}\n{n}Mielarah holds the lantern over it. She does not touch it.{/n} "Since the night together. The watch heard it too. I made them enter the hour in the log."'
+    wn["measure"]["Text"] = '{n}A knotted grey cord lies across the grit, your length. Mielarah lifts the lamp. The cord tightens without a hand upon it; the scraping stops, then starts again.{/n} "He has your measure. Do not give him your hand as well."'
+    wn["wake"]["Text"] = '{n}No answer comes. When you coil the cord to move it off the deck, grey grit sticks beneath your nails. Mielarah brings water and watches you scrub. It takes three washings. Below the ship, the hospital lanterns are being lit.{/n}'
+    alternate = copy.deepcopy(warning)
+    alternate.update(Id=P + "spade.watch_arcade", InteractionHub=HUB_FB)
+    alternate["Requires"].append(HUB_FAILED)
+    SCENES.append(alternate)
+    # Real ending state and working return. Conditional prose remains epilogue-only.
+    ep = by[P + "epilogue.committed"]["Nodes"][0]
+    ep["Text"] = '{n}Mielarah kept Starcatcher flying. Her cargo lists still carried medicine and cold iron; the passenger limit still provoked arguments at every quay. She remained a magister of the Arcanamirium who refused slaves and kept an exact account of the dead.{/n}'
+    ep["Paragraphs"][:0] = [
+        p('{n}With the Wound closed, her routes lengthened: Absalom, the Mwangi, the Shackles. She returned to Drezen between voyages and found the Commander waiting below the ladder. She caught the familiar coat collar, kissed its wearer, and handed down the next cargo list.{/n}', requires=("ending.wound_closed",)),
+        p('{n}While the Wound remained, Drezen still needed defending. Starcatcher returned to its hospital yard with medicine and wounded soldiers. The Commander climbed aboard between loads; Mielarah leaned into the greeting kiss before calling her hands back to work.{/n}', forbids=("ending.wound_closed", "ending.trickster_allplanes", "ending.trickster_allplanes_fw")),
+        p('{n}Starcatcher returned to the Crossroads with her holds emptied and another course to argue over. Mielarah put the chart between herself and the Commander, close enough that their shoulders touched, and stayed there after they had settled the heading.{/n}', any_groups=(("ending.trickster_allplanes", "ending.trickster_allplanes_fw"),), forbids=("ending.wound_closed",)),
+        p('{n}At her elbow the Commander stood nearest, by choice. She checked the rigging before every flight and counted everyone off afterwards. A missed block had never persuaded her to stop checking.{/n}'),
+    ]
+    for eid in ("late", "unfinished"):
+        end = by[P + "epilogue." + eid]
+        en = {node["Id"]: node for node in end["Nodes"]}
+        en["page"]["Text"] = en["page"]["Text"].replace('The war ended', 'The march to Threshold ended').replace('a column of figures', 'the course')
+        en["climb"]["Text"] += '\n{n}On the return to Drezen she stayed at the helm while the Commander climbed down. "I shall be back after the next load," she called. The ladder remained lowered until both feet reached the ground.{/n}'
+        no = "stay" if eid == "late" else "fly"
+        en[no]["Text"] += '\n{n}She returned each spring with actual cargo, not only the bill. She left the ladder down while her crew unloaded, and took the wheel again when no passenger climbed it.{/n}'
+    # Continuity is paid on-page without changing the legacy inert climb exit.
+    en = {node["Id"]: node for node in by[P + "epilogue.unfinished"]["Nodes"]}
+    # Scene-level SETTLED already collects any owed debt; this text names that receipt.
+    en["climb"]["Paragraphs"] = [p('{n}Before casting off she checked the white name beneath Starcatcher\'s on the stern. Oskel\'s place had been accounted for. She did not sail with his name left blank.{/n}', requires=(OSKEL_DEAD, D + "oskel_settled")), p('{n}Oskel had asked his question and heard the answer. The bosun took the forward station; Mielarah checked it before letting the Commander touch the wheel.{/n}', requires=(MEANT, D + "oskel_settled"), forbids=(OSKEL_DEAD,))]
+
+_round2_route()
+
+
+# Posted charter acceptance reserves work. The captain still has to bring the ship.
+DERIVED[P + "charter.direct"] = [[CHARTER, KERZ], [CHARTER, NOCTA]]
+DERIVED[CONTACT] = [[LANDFALL], [P + "returned_third"], [RETURNED, FOURTH_ARRIVED], [P + "charter.direct"], [CHARTER, P + "charter.arrived"]]
+for _charter in SCENES:
+    if _charter["Id"] in (P + "charter.letter", P + "charter.rumour"):
+        for _node in _charter["Nodes"]:
+            for _answer in _node["Choices"]:
+                if CHARTER in _answer["Set"]:
+                    _answer["Set"].append(P + "charter.posted")
+for _suffix, _anchor in (("", TIEFLING), (".arcade", JEWELER)):
+    _hub = "mielarah.presence.charter_arrival" + ("_arcade" if _suffix else "")
+    PRESENCES[_hub] = dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=_anchor, Side="right", Distance=7.5), Requires=["trickster.ever", CHARTER, P + "charter.posted"], Forbids=[CLOSED, KILLED, P + "charter.arrived"], MinChapter=5, MaxChapter=5, DelayHours=336, AnswerLists=[], Dialog="hub", Greeting='{n}Starcatcher\'s flag hangs above the walls. Her captain has come down with the cargo list and a coil of rope.{/n}')
+    if _suffix:
+        PRESENCES[_hub]["Requires"].append("mielarah.presence.charter_arrival.failed")
+    else:
+        PRESENCES[_hub]["Forbids"].append(_hub + ".failed")
+    SCENES.append(scene(P + "charter.arrival" + _suffix, "The charter delivered", "Mielarah", 5, '"You brought Starcatcher through the Wound."', [mi("start", '"Eleven days flying, three holding off a bad wind. Your advance bought passage. It did not buy weather." {n}She hands you the list, keeping her hold on the other end.{/n} "Cold iron. Medicine. Six passengers. The soldiers at your gate were rude about all three. I shall speak to your quartermaster myself."\n{n}She looks up at the ship before looking back at you.{/n} "You can see her now. That is delivery, Commander. Not the letter."', c("[Help her unload.]", flags=(P + "charter.arrived",)))], requires=("trickster.ever", CHARTER, P + "charter.posted"), forbids=(P + "charter.arrived", CLOSED, KILLED), delay=336, last=5, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=_hub))
+
+
+# The arrival hubs and the normal trade hubs cannot spawn the same captain together.
+for _hub, _presence in PRESENCES.items():
+    if _hub.startswith(("mielarah.presence.fourth_arrival", "mielarah.presence.charter_arrival")):
+        _presence["Forbids"].append(CONTACT)
+        if "charter_arrival" in _hub:
+            _presence["Forbids"].append(SHIP_LOST)
+for _beat in SCENES:
+    if _beat["Id"] == P + "epilogue.committed":
+        for _paragraph in _beat["Nodes"][0]["Paragraphs"]:
+            if D + "escorted" in _paragraph["Requires"]:
+                _paragraph["Text"] = '{n}In Drezen Mielarah still sent for her escort before coming down. The Commander walked at her elbow while she watched every scaffold they passed. The city remembered the boy who had carried her rope.{/n}'
+            if D + "offered_prisoner" in _paragraph["Requires"]:
+                _paragraph["Text"] = '{n}When a porter stepped too close, she stopped unloading and sent him forward. The Commander had once offered her a prisoner for that station. She never let anyone be posted there again.{/n}'
