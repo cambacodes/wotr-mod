@@ -660,3 +660,52 @@ ending("arsinoe_ending_swarm", "A service that was never a vow", '''{n}Whatever 
 ending("arsinoe_ending_aeon", "A city outside their shared hours", '''{n}The rewritten world had no obligation to preserve the particular evenings in which Arsinoe and the Commander had learned to want each other's company. Their repair, their conversations, and the room they had known belonged to a history the change did not leave intact.{/n}
 {n}Arsinoe's life beyond it was her own. A different meeting might have become many things, but none could be claimed by reciting an invitation she had never made in that world.{/n}''',
     ("arsinoe.campaign_lover",), owner="AeonEpilogue")
+
+
+# Round 2: fresh powers require the current path, never a retained historical flag.
+_stone = next(s for s in SCENES if s["Id"] == "arsinoe_a_stone_in_hand")
+for _page in _stone["Nodes"]:
+    for _choice in _page["Choices"]:
+        if _choice.get("Next") == "possibility":
+            _choice["Requires"] = ["trickster.now" if f == "trickster" else f for f in _choice["Requires"]]
+
+# The window night keeps its old terminal node/answer/effects; staging precedes it.
+_window = next(s for s in SCENES if s["Id"] == "arsinoe_the_window_opens")
+_w = {page["Id"]: page for page in _window["Nodes"]}
+_stage = _w["night"]["Text"].split('{n}In the morning,')[0].strip()
+_w["night"]["Text"] = '''{n}In the morning, the shop is still shuttered an hour after opening. Arsinoe's robes hang over the chair; she is trying to find a fastening beneath them. She gives up long enough to kiss you, then smooths your collar without making it much more respectable.{/n}
+"They will talk. Let them. I have a customer who will insist that the price of a scroll has offended him personally."
+{n}She sets a second cup beside her own. The knocking comes again. She finishes her drink before turning the sign.{/n}
+"Come back after closing. The window will still open."'''
+_w["start"]["Choices"][3]["Next"] = "window_invitation"
+_w["start"]["Choices"][3]["Forbids"].append("arsinoe.trickster.intimacy_seen")
+_w["start"]["Choices"].append(c(_w["start"]["Choices"][3]["Text"], "window_return",
+    requires=("arsinoe.campaign_lover", "arsinoe.trickster.intimacy_seen")))
+_window["Nodes"].extend([
+    n("window_invitation", "Arsinoe", _stage, c("Continue", "arsinoe_the_window_opens.explicit.1")),
+    n("window_return", "Arsinoe", _stage.replace('Stay. I have wanted to ask. I kept finding something wrong with the room.',
+      'Stay again. This time I have fixed the window instead of complaining about it.'),
+      c("Continue", "arsinoe_the_window_opens.explicit.1")),
+    # Explicit slot W: her chosen display; the repaired room is a return, not a reward.
+    n("arsinoe_the_window_opens.explicit.1", "Arsinoe", '''{n}Arsinoe pulls you close on the bed. Her mouth finds yours again; beyond the open window a patrol calls the hour. She listens, then draws you down with her.{/n}
+"Leave the lamp burning."''', c("Continue", "night")),
+])
+
+# Her future question concerns the company already shared, not payment for a repair.
+_terms = next(s for s in SCENES if s["Id"] == "arsinoe_what_she_asks")
+_t = {page["Id"]: page for page in _terms["Nodes"]}
+_t["start"]["Text"] = _t["start"]["Text"].replace(
+    'So I shall ask you what I would ask anyone whose business I wanted. What are you offering me, Commander? On the roof you gave me one answer. Terms are revisited when the goods improve, and I believe they have.',
+    'I want these evenings. I also want to know what you mean by coming back. The room is repaired; that settles the room. It does not settle us.')
+_t["promise_kiss"]["Text"] = _t["promise_kiss"]["Text"].replace('A very satisfactory beginning to a difficult promise.', 'I mean to enjoy holding you to that promise.')
+
+# Endings collect a return, without promoting a promised visit into a played night.
+_ends = {s["Id"]: s["Nodes"][0] for s in SCENES if s["Id"].startswith('arsinoe_ending_')}
+_ends["arsinoe_ending_kept"]["Text"] += '\n{n}After one journey Arsinoe returned dusty and cross about an inn. She left her bags by the door and kissed the Commander before reporting the full extent of its failures. The following morning she opened her shop herself; by closing time she had more to tell.{/n}'
+_ends["arsinoe_ending_open"]["Text"] += '\n{n}After a visit elsewhere she came back with a book she wanted to dispute. The Commander arrived before she had unpacked it. She cleared the chair herself and pulled them down beside her.{/n}'
+_ends["arsinoe_ending_unfinished"]["Text"] = _ends["arsinoe_ending_unfinished"]["Text"].replace(
+    'She hoped the answer would include a day when they could sit together.',
+    'The reply named a day. She met the Commander at the stair, the letter still tucked into her sleeve, and led the way up to supper. They had an evening to spend, and no settled future to announce.')
+_ends["arsinoe_ending_promised"]["Text"] = _ends["arsinoe_ending_promised"]["Text"].replace(
+    'For now she sent the invitation and went back to work, listening more closely than usual whenever someone came up the stair.',
+    'The answer came with a date. When the Commander returned she put away her work, took their hand and brought them upstairs. The window still needed attention; she had no intention of spending their visit on it.')

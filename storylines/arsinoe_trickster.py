@@ -155,7 +155,7 @@ def living(text, requires=(), forbids=(), any_groups=()):
 def personal(text, requires=(), forbids=(), any_groups=()):
     # An ordinary open future is already a relationship; no extra promise.
     return (living(text, (*requires, "arsinoe.campaign_lover"), (*forbids, *OPEN), any_groups)
-            + living(text, (*requires, ACCEPTED), (*forbids, *OPEN, "arsinoe.campaign_lover"), any_groups))
+            + living(text, (*requires, ACCEPTED), (*forbids, *OPEN, "arsinoe.campaign_lover", "arsinoe.future_spoken"), any_groups))
 
 
 WORD_RETURNED = ('{n}Arsinoe drew a line through the Commander\'s pledged word when the stone came back whole. '
@@ -509,3 +509,75 @@ for _node in _late["Nodes"]:
     if _node["Id"] in ("morning", "table"):
         _node.setdefault("Paragraphs", []).append(p('{n}Lady Konomi\'s next letter to Arsinoe requested letters of credit for Mendevian merchants. Below the figures she asked that the Council\'s orders be filled before Arsinoe\'s private appointments. Arsinoe answered with her rates. Konomi\'s reply arrived promptly: "Let us talk price."{/n}',
             requires=(LATE_ACCEPTED, KONOMI_KNOWN, KONOMI_POST)))
+
+
+# Round 2 receipts: nights record events, never acceptance or commitment.
+DERIVED[INTIMACY].append(["arsinoe.unprofitable_night_shared"])
+_prior_integrate = integrate
+def integrate(payload):
+    _prior_integrate(payload)
+    # A settled ordinary future supersedes the earlier invitation for every reader.
+    payload.setdefault("DerivedForbids", {})[LATE_COMMITTED] = ["arsinoe.future_spoken"]
+
+# Business recollections do not stage Konomi in Arsinoe's shop.
+_collection = next(s for s in SCENES if s["Id"] == COLLECTION)
+_col = {page["Id"]: page for page in _collection["Nodes"]}
+_col["stay"]["Choices"][1]["Next"] = "personal_offer"
+_collection["Nodes"].append(n("personal_offer", "Arsinoe", '''{n}Arsinoe taps the renewal date, then rests her hand beside yours.{/n}
+"The payments will be punctual. Another evening with you is a different offer. I should like it."
+{n}She folds the lease and puts it away.{/n}
+"Ask me after closing. I am tired of being interrupted at the interesting part."''', c()))
+_col["threshold"]["Text"] = _col["threshold"]["Text"].replace('Well? I have had enough of watching you admire the stone.',
+    'I have had enough of watching you admire the stone. Look at me.')
+_col["threshold"]["Choices"][0]["Next"] = "arsinoe.trickster.cauldron.collection.explicit.1"
+# Explicit slot C: secured till, cleared counter, personal invitation; lien unchanged.
+_collection["Nodes"].append(n("arsinoe.trickster.cauldron.collection.explicit.1", "Arsinoe", '''{n}Arsinoe kisses you on the cleared counter, holding you close while the till stays locked beneath it. The ledger slips against the wall; she leaves it there and draws you back to her.{/n}
+"The ledger stays shut tonight."''', c("Continue", "morning")))
+
+# Arrival is established in the existing accepted paragraphs, before any recall.
+_offer = _late["Nodes"][0]
+_arrival = '{n}The spring after Threshold, Arsinoe came to the Commander\'s door in her good robes, hair pinned up, gold eyes steady. When the door opened, she stepped inside and laid her gloves on the table.{/n}\n'
+_offer["Paragraphs"][0]["Text"] = _arrival + _offer["Paragraphs"][0]["Text"]
+_offer["Paragraphs"][1]["Text"] = _arrival + '"There was a roof above Tovin\'s shop. Separate chairs, bread, cheese, and far too many buildings to point at. Then I took your hand, and kept it until he brought the lamp. I wanted another evening even then."'
+_offer["Paragraphs"][7]["Text"] = '"Tonight is the evening we kept. I intend to keep rather more of them."'
+_ln = {page["Id"]: page for page in _late["Nodes"]}
+_ln["night"]["Choices"][0]["Next"] = "arsinoe.trickster.late.commit.explicit.1"
+_ln["morning"]["Text"] = '''{n}In the morning Arsinoe sat at the Commander's table in her shift, drinking from the better cup. She put it down when the Commander stirred, crossed the room and slid back beside them.{/n}
+"I have time for this. Stop looking at the door."
+{n}She kissed them, then rested her cheek against their shoulder. When she finally rose, her hair was thoroughly disordered. She pinned it up at the mirror and came back for a last kiss before opening the shop.{/n}
+"Supper next time. I shall bring something worth being late for."'''
+_table_text = _ln["table"]["Text"]
+_ln["table"]["Text"] = '''{n}The next morning Arsinoe returned from opening the shop with bread still warm from the oven. She put it on the table and took the Commander's hand before they could reach for it.{/n}
+"The customers have their scrolls. Now I want my breakfast."
+{n}She kissed them, sat down beside them and named their next evening. Her shop's queue learned which morning of the month it would be wise to come later.{/n}'''
+_offer["Choices"][1]["Next"] = "deferred_evening"
+_late["Nodes"].extend([
+    # Explicit slot L: impatience with fastenings after an accepted physical arrival.
+    late("arsinoe.trickster.late.commit.explicit.1", '''{n}Arsinoe pushes the discarded robes away with her foot and comes back into your arms. Her kiss leaves her breathless; she draws you down to the bed and reaches for you.{/n}
+"Tomorrow, you may tell me how patient I was."''', c("Continue", "morning")),
+    late("deferred_evening", '''{n}At supper she took the Commander's hand across the table and kissed them firmly before sitting back.{/n}
+"Tonight we eat. The rest in a month. I can afford four weeks, and I intend to enjoy looking forward to them."
+{n}Four weeks later she came back after closing, carrying the bottle she had promised. She set it beside the supper dishes and began undoing her collar before either cup was filled.{/n}
+"I kept the date. Now put that down and come to me."
+{n}She caught the Commander's sleeve, kissed them and led them toward the bed.{/n}''', c("Continue", "arsinoe.trickster.late.commit.explicit.2")),
+    # Explicit slot D: kept four-week appointment, distinct from immediate arrival.
+    late("arsinoe.trickster.late.commit.explicit.2", '''{n}Arsinoe leaves the unopened bottle on the table. Her hands move from your collar to your waist as she pulls you into a kiss; she draws you down with her, all her careful preparations abandoned within reach.{/n}
+"You have kept me waiting long enough."''', c("Continue", "table")),
+])
+
+
+# Returning intimacy uses the union of played mornings; no first-night reward repeats.
+_col["stay"]["Choices"][0]["Forbids"].append(INTIMACY)
+_col["stay"]["Choices"].append(c(_col["stay"]["Choices"][0]["Text"], "threshold_return",
+    requires=("arsinoe.campaign_lover", INTIMACY), flags=(STAYS, "arsinoe.started")))
+_collection["Nodes"].append(n("threshold_return", "Arsinoe",
+    _col["threshold"]["Text"].replace('This is outside the lease. Close the curtains.',
+    'I want you here again. Outside the lease, as before. Close the curtains.'),
+    c("Continue", "arsinoe.trickster.cauldron.collection.explicit.1")))
+_offer["Choices"][0]["Forbids"].append(INTIMACY)
+_offer["Choices"].append(c(_offer["Choices"][0]["Text"], "late_return",
+    requires=(LATE_ACCEPTED, INTIMACY)))
+_late["Nodes"].append(late("late_return", _ln["night"]["Text"].replace(
+    'I waited for the campaign to end. These fastenings have had quite enough of my patience.',
+    'I remember waking beside you. I have had quite enough patience during the campaign.'),
+    c("Continue", "arsinoe.trickster.late.commit.explicit.1")))

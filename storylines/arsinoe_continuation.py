@@ -350,14 +350,12 @@ s("arsinoe_the_unprofitable_hour", "No notice on the door",
     n("game", "Arsinoe", '''{n}You choose the simple paper board from your first afternoon, or as close to it as either of you remembers. Arsinoe insists on a fixed gate. You agree, after extracting a promise that she will not call the moving one visionary when it favors her.{/n}
 {n}The first round is quick. The second develops an awkward middle in which both of you would prefer the other to make a mistake. Arsinoe reaches for a piece, stops, and looks up at you.{/n}
 "I had a plan to spend this evening being effortlessly charming. I now discover that I would rather win."
-"You can attempt both."
 "Your confidence is touching."
 {n}She makes the move. It is a good one. You spend a comfortable stretch of silence trying to undo its consequences, while she drinks and makes no effort to rescue you from them.{/n}
 {n}When the round ends, she leaves the pieces where they fell and turns her chair toward yours.{/n}''',
       c('"Was the evening what you wanted?"', "answer")),
     n("story", "Arsinoe", '''{n}You find the hero at the window and read on. He leaps for a roof much too far away, then survives by means of a hanging banner that neither of you remembers being mentioned. Arsinoe examines the earlier page to make certain the author has not earned this escape by stealth.{/n}
 "No banner. I am inclined to leave him on the pavement."
-"The princess would be disappointed."
 "The princess has endured worse disappointments. She has listened to him speak."
 {n}You trade parts. Your princess demands an explanation; Arsinoe's hero offers one so magnificently inadequate that you both have to stop. The room feels smaller in the pleasant way a room does when laughter no longer needs to carry to anyone outside it.{/n}
 {n}Eventually she marks the page with a clean slip and closes the booklet.{/n}
@@ -409,9 +407,59 @@ s("arsinoe_the_unprofitable_hour", "No notice on the door",
     n("friend", "Arsinoe", '''"As am I. I have missed this sort of company more than I realized."
 {n}She divides the last of the drink between your cups, giving you the fuller one with the absent fairness of someone who has stopped keeping a formal account of hospitality.{/n}
 "You have given me an unfortunate appetite for bad literature and small victories. I shall have to explain to Neral why a priest of Abadar spent so long disputing a toll owed by a brass merchant."
-"Tell her it is a study of disputed ownership."
 "She would believe that. We must be more honest with her."
 {n}The laughter lasts into the tidying. Arsinoe lets you help with the cups and does not turn the offer into a debt. At the door, she reminds you that the next courtyard invitation will be an invitation, not a duty.{/n}
 "And this room is available for quieter company. Come when you have a story, or when you would rather listen to one."''',
       c("Thank her for the evening and say good night.", flags=("arsinoe.continuation_kept",))),
 ], "arsinoe_another_hour")
+
+
+# Authored round-2 situation: her private expenditure precedes her invitation.
+_another = next(s for s in SCENES if s["Id"] == "arsinoe_another_hour")
+_a = {page["Id"]: page for page in _another["Nodes"]}
+_a["accounts"]["Text"] = '''{n}Arsinoe turns the paper over. Neral's receipt is pinned to it. Beneath the workshop charge, someone has written TEMPLE MONEY? in a different hand.{/n}
+"A guest thought the temple had paid for our company. Another thought we charged him twice. Neral showed him his one receipt. I showed him mine. He preferred his first account of the evening."
+{n}She draws a line beneath her own expenditure.{/n}
+"The temple pays for healing and worship. My share pays for my pleasures. Neral has received every coin we promised her."'''
+_a["alone"]["Text"] = '''{n}She puts away Neral's paid account, then takes out a wrapped bottle and a strip of fine cloth. The cloth gleams gold against her wrist.{/n}
+"Good drink. Silk I certainly did not need. I bought both with my own money, after paying my share. I have decided to spend the rest badly."
+{n}Her eyes move from the silk to you.{/n}
+"The others can arrange tomorrow's reading. Neral will keep them from borrowing her good tools as props. I want you alone, without somebody trying to buy an audience between two moves."
+{n}She names an evening when she can close at the usual hour.{/n}
+"Come then. I intend to enjoy what I bought."'''
+_a["invitation"]["Text"] = '''{n}Arsinoe folds the receipt and tucks it away. A parcel of silk and a bottle wait beneath it.{/n}
+"Then I invite you because I want you. Neral has her money, and the guests can choose their own reading next time. I have bought myself something beautiful to wear and something good to drink. Neither appears in the temple's accounts."
+{n}She holds the silk against her throat, watching you.{/n}
+"Come when I close. I would like your attention for rather more than my choice of chairs."'''
+
+_hour = next(s for s in SCENES if s["Id"] == "arsinoe_the_unprofitable_hour")
+_h = {page["Id"]: page for page in _hour["Nodes"]}
+_h["start"]["Text"] = '''{n}Arsinoe shuts the shop at the agreed hour. Behind it, the table holds two cups, the bottle she showed you and a game beside an open book. The window sticks when she tries to open it. She leaves it for tomorrow.{/n}
+"If the alarm sounds, I shall answer. Until then, somebody else can watch Drezen's walls."
+{n}The silk at her throat is the cloth she bought. She notices you looking, and takes her time removing the outer robes. A clasp catches her hair; she frees it and puts it beside the lamp.{/n}
+"Well chosen, I think. I mean to enjoy your opinion of it."'''
+_h["answer"]["Text"] = '''"Yes. I wanted an evening I did not have to arrange for everyone else."
+{n}She pushes the cups aside and turns toward you. Her knee brushes yours beneath the table.{/n}
+"I spent half the reading waiting to be alone with you. That was discourteous to the author. Fortunately, he was not there."
+{n}She leaves the clasp where it lies.{/n}
+"I shall have to decide what to pack when I next travel. Tonight I would rather stay here."'''
+_h["uncertain"]["Text"] = '''"Then we have tonight. I would rather have that than a grand promise you cannot keep."
+{n}She moves her chair closer. Outside, a patrol's boots pass the shutter; she listens until they turn toward the wall, then gives you her attention again.{/n}
+"I have work tomorrow. So have you. I expect we can survive wasting the rest of this evening."'''
+_h["kiss"]["Text"] = '''{n}Arsinoe meets your kiss with her hand against your cheek. The second is hers; she holds you close until the chair creaks beneath you. She laughs against your mouth and gets to her feet, drawing you up with her.{/n}
+"This furniture is intolerable. I should have spent more on it."
+{n}She kisses you again beside the table. The book lies open, the drinks unfinished. Her fingers catch in your collar.{/n}
+"You could stay. I have no intention of reading another page tonight."'''
+# The old kiss-and-leave exit keeps its position and effects. Overnight is optional.
+_h["kiss"]["Choices"].append(c('"Then I will stay."', "arsinoe_the_unprofitable_hour.explicit.1"))
+# Explicit slot U: her chosen finery, unfinished drink, initiative; no future promise.
+_hour["Nodes"].extend([
+    n("arsinoe_the_unprofitable_hour.explicit.1", "Arsinoe", '''{n}Arsinoe leaves the book on the table and draws you to the bed. You kiss her as she loosens the silk at her throat; she lets it fall and pulls you down beside her. The lamp stays lit as she reaches for you.{/n}
+"The shop can wait until morning."''', c("Continue", "private_morning")),
+    n("private_morning", "Arsinoe", '''{n}In the morning, Arsinoe searches beneath the bed for her clasp. You find it caught in your discarded collar. She takes it, then bends to kiss you before pinning up her hair.{/n}
+"I chose it carefully. Next time I shall choose something harder to lose."
+{n}A customer knocks at the shutter. She looks toward the sound, then gives you one more kiss.{/n}
+"Yes, I heard him. Come back when there is no queue. I want to finish our argument."
+{n}She opens the shop herself. The bottle remains half full upstairs.{/n}''',
+      c('[Leave her to her customers.]', flags=("arsinoe.continuation_kept", "arsinoe.continuation_kiss", "arsinoe.unprofitable_night_shared"))),
+])

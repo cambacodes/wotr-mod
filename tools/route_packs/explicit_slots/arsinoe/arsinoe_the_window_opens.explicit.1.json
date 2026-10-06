@@ -1,0 +1,16 @@
+{
+  "voice": "Arsinoe: composed, proud, observant, competitive, practical, dryly amused; enjoys beauty and being admired, can be impatient when desire interrupts careful arrangements. Her clerical dignity survives private appetite. Speak briefly and directly; no therapy vocabulary, maxims, devotional sex magic or constant billing jokes. Canon facts: aasimar priestess of Abadar from Absalom, traveler formerly resident in the Stolen Lands, helping Drezen; dusky face, molten-gold eyes, gold-embroidered clerical robes (VendorArsinoe Cue_0001/Cue_0016). No established partner. Do not invent hair color, body measurements, special sexual physiology, previous lovers or celibacy vows. Write new dialogue, do not reuse the example.",
+  "scene": "Chapter 5, Trickster run, Drezen, Arsinoe’s room beside the repaired window. Current campaign_lover history and the existing night choice apply. She turned the carved face away, deliberately displayed her chosen robes, and invited the Commander to stay with the lamp on. Plan private sexual intimacy in non-graphic terms. Required beats: her pride in being looked at, reciprocal eagerness, the open window and a war still unresolved. This may be a first shared night or a return after the played unprofitable-hour/collection night; never assert first time universally. Do not replay lease inspection or commitment. End before the existing morning, second cup, queue and sign turning.",
+  "last_line": "A: Leave the lamp burning.",
+  "speakers": {
+    "A": "Arsinoe"
+  },
+  "example": "N: Arsinoe lays the book face down and catches your sleeve before you can reach for it.\nA: You can quarrel with the author tomorrow. Come here.",
+  "commander": "Use the selected Commander variant; keep physical references accurate without assuming gender from title or pronouns.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16
+}
