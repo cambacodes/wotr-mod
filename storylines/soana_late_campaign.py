@@ -5,6 +5,7 @@ New people, temporary rites and local incidents exist in dialogue, not world-sta
 """
 from copy import deepcopy
 from story_format import c, n, scene
+from storylines import soana_partner
 
 SCENES = []
 ACTOR = "64805abb52739e44280a758f850b300c"
@@ -666,7 +667,7 @@ def ending(id, title, text, requires=(), forbids=(), any_flags=(), owner="Epilog
 ORDINARY = (*LOSS, "soana.closed", "inhuman", "ascended", "sacrifice")
 ending("kept_life", "A life with an open path", '''{n}The Commander returned with time to stay. Boots and a travel bundle took their place beside Soana's blanket. She moved them out of the damp, then scolded their owner for putting them where she had left them. On some afternoons the tools lay untouched while two cups stood empty beside the water pot.{/n}
 {n}Messages came up the path when fighting delayed a visit. Soana read them twice and cursed the weather, the roads or the messenger's slowness. When the Commander arrived, there was smoked fish by the fire and a dry blanket laid out. She complained about the appetite that would devour both her stores and her evening.{/n}
-{n}The bark addressed to Corven stayed under its weight. No news came with it. Sometimes a flower lay beside the writing until its petals dried. Soana called the Commander beloved when she was pleased and something much sharper when boots tracked mud into the cave.{/n}
+{n}Soana called the Commander beloved when she was pleased and something much sharper when boots tracked mud into the cave.{/n}
 {n}After rain she inspected the thorn. When the hollow wanted guarding she rubbed fresh ash into its cuts; otherwise it lay pale and silent. Visitors watched for the stones. From the cave, on a good evening, her laughter carried farther than the warning ever had.{/n}''',
     requires=("soana.late_campaign_kept", "soana.committed"), forbids=ORDINARY)
 ending("chosen_visits", "The next invitation", '''{n}The Commander's belongings still traveled in a pack. Visits came when the roads and the fighting allowed. Soana demanded dates, cursed missed ones and looked down the path when an arrival was due. A delayed message might earn its bearer a scolding intended for someone else.{/n}
@@ -731,3 +732,8 @@ unfinished_loss["Nodes"][0]["Text"] = '''{n}News from Wintersun came before the 
 unfinished_loss["Nodes"][-1]["Text"] = '''{n}The forest was lost before the visits reached their farewell. The warning line could keep one approach; the sealed shrine had held one danger. Beyond them the hazel and the hollow failed. Young trees no longer lifted leaves over the bare soil.{/n}
 {n}The Commander remembered a carrier set down by the water pot, Soana's stick rapping the ground and the sharp voice that had called a visitor back to sit. The road still reached the cave. Beyond its upper bend lay no harvest to quarrel over.{/n}'''
 SCENES.append(unfinished_loss)
+
+# Partner stance is part of the existing commitment; choices and pages append only.
+soana_partner.commitments(SCENES)
+soana_partner.endings(SCENES)
+SCENES.append(deepcopy(soana_partner.BROKEN_EPILOGUE))

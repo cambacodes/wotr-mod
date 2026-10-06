@@ -2250,8 +2250,26 @@
             {
               "state": "unknown_absent",
               "evidence": [],
-              "when": null,
-              "note": "No native death, divorce, departure or return observer found. Past-tense memories do not prove death. No unit/etude named Corven; retain uncertainty."
+              "when": [["!soana.partner.corven_known_alive"]],
+              "note": "Reviewed uncertainty: no native death, divorce, departure or return observer. Past-tense memories do not prove death. Authored confirmation requires the private marriage memory in soana.partner.homecoming or returned_letter (including earned-return twins); a signature alone is unverified. Revised-Aeon receipts concern only the erased history."
+            },
+            {
+              "state": "authored_alive_together",
+              "evidence": [],
+              "when": [["soana.partner.corven_together"]],
+              "note": "Authored Trickster-only homecoming: paid escort, one-week journey, private memory and Corven's on-page terms. His marriage remains even when the Commander rejects those terms; never a native fate claim."
+            },
+            {
+              "state": "authored_alive_separated",
+              "evidence": [],
+              "when": [["soana.partner.corven_separated"]],
+              "note": "Authored Trickster-only separation: Corven ends the marriage in homecoming or his delivered answer in returned_letter. He lives south; Soana also ends the Commander's romance. Never inferred from his old absence."
+            },
+            {
+              "state": "authored_alive_distant",
+              "evidence": [],
+              "when": [["soana.partner.corven_distant"]],
+              "note": "Authored Trickster-only returned-letter outcome: Corven is verified alive and remains her distant husband pending Soana's direct answer; the Commander's romance has ended. Revised-Aeon continuity records only the erased history."
             }
           ],
           "note": "",

@@ -1,0 +1,153 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Tirabade;
+
+internal static class SoanaPartnerTests
+{
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        const string K = "soana.partner.";
+        const string Unit = "64805abb52739e44280a758f850b300c";
+        const string Area = "0a5654e7dc18f074d9356009d55eb51b";
+        const string Returned = "soana.trickster.returned";
+        var loss = new[] { "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" };
+        Scene S(string name, bool returned) => story.Scenes.Single(s => s.Id == K + name + (returned ? ".returned" : ""));
+        Snapshot World(bool returned, string stance, int finances = 100)
+        {
+            var w = new Snapshot { Chapter = 5, Hour = 5000, Area = Area,
+                CrusadeResources = new Dictionary<string, int> { ["Finances"] = finances } };
+            w.AvailableContacts.Add(Unit);
+            w.Flags.UnionWith(new[] { "trickster", "trickster.ever", "soana.committed", stance });
+            if (returned) w.Flags.UnionWith(loss.Concat(new[] { Returned }));
+            else w.Flags.Add("soana.after_quest");
+            Rules.Complete(story, w);
+            foreach (var f in w.Flags) w.Times[f] = 4500;
+            return w;
+        }
+        Snapshot Later(Snapshot w, int hours)
+        {
+            var next = Program.Copy(w); next.Hour += hours; Rules.Complete(story, next); return next;
+        }
+        var allPages = new HashSet<string>();
+        foreach (bool returned in new[] { false, true })
+        foreach (string stance in new[] { "soana.partner_stance.share", "soana.partner_stance.secret" })
+        {
+            var dispatch = S("dispatch", returned);
+            var home = S("homecoming", returned);
+            var exposed = S("returned_letter", returned);
+            var initial = World(returned, stance);
+            check(Rules.Available(story, dispatch, initial), "Corven dispatch has no earned living host.");
+            check(!Rules.Available(story, S("dispatch", !returned), initial), "Corven dispatch uses the wrong native/returned host.");
+            foreach (string blocked in new[] { "soana.closed", "inhuman", "trickster.failed", "legend", "swarm" })
+            {
+                var w = Program.Copy(initial); w.Flags.Add(blocked);
+                // Main rebuilds derived current-path evidence from native readers.
+                w.Flags.Remove("trickster.now"); Rules.Complete(story, w);
+                check(!Rules.Available(story, dispatch, w), "Corven's new lead ignores " + blocked);
+            }
+            foreach (var missing in new[] { "trickster", "soana.committed" })
+            {
+                var w = Program.Copy(initial); w.Flags.Remove(missing);
+                w.Flags.Remove("trickster.now"); Rules.Complete(story, w);
+                check(!Rules.Available(story, dispatch, w), "Corven's new lead is free without " + missing);
+            }
+            if (!returned)
+                foreach (string flag in loss)
+                {
+                    var w = Program.Copy(initial); w.Flags.Add(flag); Rules.Complete(story, w);
+                    check(!Rules.Available(story, dispatch, w), "Dead Soana gets Corven's letter: " + flag);
+                }
+            var noStance = Program.Copy(initial); noStance.Flags.Remove(stance);
+            check(!Rules.Available(story, dispatch, noStance), "Corven's dispatch opens without an answered stance.");
+            var absent = Program.Copy(initial); absent.AvailableContacts.Clear();
+            check(!Rules.Available(story, dispatch, absent), "Corven's lead invents Soana's contact.");
+            var outcomes = Program.Walk(dispatch, initial, (id, _) => allPages.Add(dispatch.Id + "/" + id));
+            var paid = outcomes.Single(w => w.Has(K + "pursued"));
+            check(paid.CrusadeResources!["Finances"] == 25 && !paid.Has(K + "corven_known_alive"),
+                "Corven pursuit is unpaid or a signature becomes a living husband.");
+            check(!Rules.Available(story, home, Later(paid, 167)) && Rules.Available(story, home, Later(paid, 168)),
+                "Corven's paid journey ignores its week.");
+            foreach (var unpaid in outcomes.Where(w => !w.Has(K + "pursued")))
+                check(!Rules.Available(story, home, Later(unpaid, 1000)), "Corven walks home after a held or burned letter.");
+            foreach (var w in Program.Walk(home, Later(paid, 168), (id, _) => allPages.Add(home.Id + "/" + id)))
+            {
+                check(w.Has(K + "corven_known_alive"), "Corven's homecoming leaves his current state unknown.");
+                if (stance.EndsWith("share", StringComparison.Ordinal))
+                    check(w.Has(K + "corven_together") && !w.Has(K + "corven_separated") && !w.Has(K + "affair_exposed"),
+                        "Negotiated Corven terms become a secret affair.");
+                else
+                    check(w.Has(K + "corven_separated") && w.Has(K + "affair_exposed") && w.Has(K + "romance_ended")
+                          && w.Has("soana.closed"), "Corven forgives the affair for free.");
+            }
+            var burned = outcomes.Single(w => w.Has(K + "buried"));
+            check(!Rules.Available(story, exposed, Later(burned, 71)) && Rules.Available(story, exposed, Later(burned, 72)),
+                "The burned dispatch is discovered without its return journey.");
+            foreach (var w in Program.Walk(exposed, Later(burned, 72), (id, _) => allPages.Add(exposed.Id + "/" + id)))
+            {
+                string state = stance.EndsWith("share", StringComparison.Ordinal) ? "corven_distant" : "corven_separated";
+                check(w.Has(K + "corven_known_alive") && w.Has(K + state) && w.Has(K + "romance_ended") && w.Has("soana.closed"),
+                    "The burned-letter disclosure loses Corven or leaves the romance free.");
+                check(w.Has(K + "affair_exposed") == stance.EndsWith("secret", StringComparison.Ordinal),
+                    "A secret confession does not reach Corven.");
+                check(Rules.Available(story, story.Scenes.Single(s => s.Id == K + "epilogue.broken"), w),
+                    "Corven's breakup has no ending.");
+                var ending = story.Scenes.Single(s => s.Id == K + "epilogue.broken");
+                foreach (var final in Program.Walk(ending, w, (id, _) => allPages.Add(ending.Id + "/" + id)))
+                    check(final.Has(ending.Id), "Corven's breakup page has no terminal answer.");
+            }
+            foreach (var w in Program.Walk(dispatch, World(returned, stance, 74)))
+                check(!w.Has(K + "pursued"), "Corven's escort is free when its debit is unaffordable.");
+        }
+        foreach (bool returned in new[] { false, true })
+        {
+            var late = story.Scenes.Single(s => s.Id == "soana.trickster.epilogue." + (returned ? "commit" : "luck_late"));
+            var w = World(returned, "soana.partner_stance.share");
+            w.Flags.ExceptWith(new[] { "soana.committed", "soana.partner_stance.share" });
+            w.Flags.UnionWith(returned ? new[] { "soana.trickster.accounting_invited" }
+                                      : new[] { "soana.trickster.luck_kept", "soana.trickster.cost.die_in_her_bowl", "soana.trickster.luck_tested" });
+            Rules.Complete(story, w);
+            check(Rules.Available(story, late, w), "Stance choices changed the postwar invitation gate.");
+            var reached = new HashSet<string>();
+            var results = Program.Walk(late, w, (id, _) => reached.Add(id));
+            check(results.Count == 3, "A postwar invitation lost a stance or left a selectable bypass.");
+            foreach (var final in results)
+            {
+                var stances = new[] { "share", "exclusive", "secret" }.Count(s => final.Has("soana.partner_stance." + s));
+                check(stances == 1 && final.Has(K + "agreed") && !final.Has("soana.committed"),
+                    "A postwar invitation loses its stance or rewrites its existing commitment contract.");
+                check(final.Has("soana.closed") == final.Has("soana.partner_stance.exclusive"),
+                    "Soana's postwar exclusivity refusal gives the Commander a lover.");
+            }
+            foreach (var page in late.Nodes)
+                check(reached.Contains(page.Id), "Unplayed postwar stance page: " + late.Id + "/" + page.Id);
+        }
+        // Main supplies ChapterFlag during the postwar book. The structural
+        // partner audit also admits chapter zero on this old MinChapter=0 page.
+        foreach (bool trickster in new[] { false, true })
+        foreach (bool known in new[] { false, true })
+        {
+            if (known && !trickster) continue;
+            var w = new Snapshot { Chapter = 6 };
+            w.Flags.UnionWith(new[] { "chapter_later", "soana.committed", "soana.late_campaign_kept", "soana.partner_stance.share" });
+            if (trickster) w.Flags.UnionWith(new[] { "trickster", "trickster.ever" });
+            if (known) w.Flags.UnionWith(new[] { K + "corven_known_alive", K + "corven_together" });
+            Rules.Complete(story, w);
+            var ending = story.Scenes.Single(s => s.Id == "soana.ending_kept_life");
+            check(Rules.Available(story, ending, w), "Partner continuity changes kept-life postwar eligibility.");
+            var visible = Rules.VisibleParagraphs(ending.Nodes[0], w);
+            check(visible.Any(p => known ? p.Requires.Contains(K + "corven_together")
+                                        : p.Forbids.Contains(K + "corven_known_alive")),
+                "Kept-life hides Corven's state in a runtime postwar history.");
+        }
+        foreach (var s in story.Scenes.Where(s => s.Id.StartsWith(K, StringComparison.Ordinal)))
+            foreach (var page in s.Nodes)
+                check(allPages.Contains(s.Id + "/" + page.Id), "Unplayed Corven page: " + s.Id + "/" + page.Id);
+        // Exercise the full runner's prerequisite-only fixture for these new
+        // pages too, including a save with no other romance history supplied.
+        var previouslyPlayed = story.Scenes.Where(s => !s.Id.StartsWith(K, StringComparison.Ordinal))
+            .Select(s => s.Id).ToHashSet();
+        Program.CheckDraftScenes(previouslyPlayed);
+        Console.WriteLine("PASS: Soana partner stance, paid native/returned Corven journeys, disclosure and breakup.");
+    }
+}
