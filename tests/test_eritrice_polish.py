@@ -97,7 +97,8 @@ class EritricePolishTests(unittest.TestCase):
 
     def test_missed_native_opportunity_does_not_reopen_on_return(self):
         base = ("trickster", "trickster.ever", council.K + "a_lie_for_the_chair", council.LIED_FOR_HER)
-        for blocker in ("council.walked_out", "eritrice.essence_given", "eritrice.lost_at_council",
+        for blocker in ("council.walked_out", "council.debrief_motion", minutes.EXTRACTED,
+                        "eritrice.essence_given", "eritrice.lost_at_council",
                         "eritrice.closed", "trickster.failed", council.PUBLIC):
             for returned in ((), ("eritrice.trickster.returned",)):
                 self.assertFalse(verify.sim_available(self.model, self.scene, self.world(*base, blocker, *returned)))

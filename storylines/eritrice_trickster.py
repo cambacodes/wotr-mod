@@ -11,8 +11,8 @@ hostility and a sealed hall, not death.
 
 F10 root: the usurped chair (Council_3/Answer_0039 -> Cue_0045). The Commander calls the vote, casts it and declares
 it carried, acting as chair without appointment, as once before in front of the whole Council. She keeps her minutes
-true, so she records exactly that, "the chair did not object in time", and chooses not to object after the fact. Her private dialog sits on the hall spawner and her unit has no dialog component, so every physical
-scene is a hall scene on Council_Eritrice/AnswersList_0002; once the hall is sealed she can only write. The courtship
+true, so she records exactly that, "the chair did not object in time", and chooses not to object after the fact. Her private dialog sits on the hall spawner. AUTHORED round 2 retains the hall readings
+and adds an earned Drezen spawn-copy/hub visit after correspondence; courier delivery never records bodily arrival. The courtship
 that the spine opens is eritrice_minutes (the standing debate).
 """
 from story_format import c, n, p, reaction, scene
@@ -55,8 +55,8 @@ DEBATED = "eritrice.minutes.quill"
 
 RELATIONSHIP = dict(
     Title="Motion carried",
-    Description=("Eritrice keeps the minutes of the Council, and she does not write lies. She wrote down my motion from "
-                 "the floor as carried, so, by her own law, it was. The chair now owes me a private debate."),
+    Description=("Eritrice keeps the minutes of the Council, and she does not write lies. She recorded my unauthorized motion "
+                 "and censured me. She chose to hear a private debate; her vote remains her own."),
     Objective="Debate Eritrice, point by point",
     Guidance=("On the Trickster path, move a motion from the floor in a private audience with Eritrice in the Council "
               "hall, then return after a Council session has been minuted. The debate continues in the hall in "
@@ -125,9 +125,9 @@ SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Mad
 SCENES.append(scene(P + "council.private_debate", "The minutes stand", "Eritrice", 3, '"About my motion, Madam Chair."', [
     nar("start", '''{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time." The censure beneath it is entered in full, and there is a small neat tick beside it that is not in her hand.{/n}''',
         c("Continue", "record")),
-    e("record", '''"Alichino's tick. He reads everything that might one day be useful." {n}Her claws tap the scroll, once for each word.{/n}
-"I have read that line every night since, asking myself why I did not object. My element is truth, the truth that only honest debate can reach, and the truth is the one I gave you: I wanted to hear the debate."
-"Now: the debate. Point by point, until one of us concedes. I have never lost an argument, Commander. I have been at this table longer than your crusade has had a name."''',
+    e("record", '''"Alichino\'s tick. He reads everything that might one day be useful." {n}She presses a claw beside the censure, then draws the lamp between you.{/n}
+"The censure stands. So does my invitation. You did not win the chair\'s vote by making her write down a motion."
+{n}She sits close enough that her sleeve brushes yours.{/n} "The crusade needs an answer before another village burns. You think my table is too slow. I think your swords leave the question open. Begin there."''',
       c("Continue.", "honest"),
       c('[Win the vote with a trick] "I move the question be called. The ayes have it: I heard them."', "trick")),
     e("honest", '''{n}A low growl, not entirely displeased.{/n} "Objection noted. ...Sustained. ...Overruled."
@@ -156,13 +156,14 @@ hall(P + "council.second_reading", "The second reading", '"You called for a seco
 {n}She does not look up from the blank line.{/n} "The chair will hear the case for. Then the chair will vote. The chair votes last, and the chair is not bound to agree with the floor. Proceed."''', *READING),
     e("start_lied", '''"The chair calls a second reading. The minutes of the first also record that you lied to carry it."
 {n}She reads the line aloud, flatly, the way she reads Alichino's apologies for absence.{/n} "'The Commander attempted to carry a vote by acclamation of the Commander.' The case for will have to overcome that. Proceed."''', *READING),
-    e("case", '''{n}She listens with the quill laid flat beside the scroll, as if she had put down a weapon. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}
-"The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on."''',
+    e("case", '''"You want me beside you. You also want my vote when the Worldwound asks for a life. Those are different questions."
+{n}She lays the quill flat and turns her hand palm upward beside yours.{/n} "I may argue against you tomorrow. I intend to. I still want you to come back to this table. There is your case for, Commander. Call the question if it is yours too."''',
       c('[Call the question] "Then call the question."', "carried", flags=(COMMITTED,)),
       c('[Ask her to vote for you] "You decide. For both of us."', "refused")),
     e("carried", '''"All those in favour."
-{n}She raises her own hand. The hall is silent. She writes the rest of the heading, and it takes her a long time, because her hand is not steady: "...the chair and the Commander be, henceforth, one another's."{/n}
-"Carried." {n}Her voice has dropped to something close to a purr.{/n} "I voted aye before you had finished speaking. I have never once in my existence voted before the floor had finished. I do not care."''',
+{n}She raises her own hand, then writes: "...the chair and the Commander be, henceforth, one another\'s." She sands the line before taking your hand; her claws curl carefully around it.{/n}
+"Carried. My aye. Do not lend it to Alichino, or to the crusade."
+{n}She draws you closer, her whiskers grazing your cheek.{/n} "Stay. I have wanted to stop talking for some time."''',
       c("[Stay while she sands the line.]")),
     e("refused", '''"The chair does not vote on behalf of the floor, and the chair does not carry motions by trickery. Not this one."
 {n}She rolls the scroll closed, gently.{/n} "The chair declines to put the question. It may be moved again, once, when the mover is ready to stand behind it."''',
@@ -180,9 +181,9 @@ hall(P + "council.third_reading", "The third reading", '"The motion, Madam Chair
       c('[Argue the case against yourself, and hold nothing back] "Then hear it. All of it."', "aye",
         flags=(COMMITTED, ON_RECORD)),
       c('[Withdraw the motion] "No."', "withdrawn", flags=(CLOSED,))),
-    e("aye", '''{n}You make the case against yourself: the reasons to distrust a mortal fighting this war, the truth you might withhold, the things you might do if the crusade demanded them. Eritrice listens with her claws sheathed. Twice she growls. You do not turn the argument into a joke.{/n}
-"That was the strongest case against that has ever been made at this table. It was also true, every word, and you knew what it would cost you to say it to me, of all the creatures in the multiverse." {n}She lifts her own hand.{/n}
-"The chair votes aye, against the case. Carried. The chair will remember every word of it, and will never once use one."''',
+    e("aye", '''{n}You make the adverse case: the war may demand a secret, a trick, or a sacrifice she will oppose. Eritrice hears it without reaching for her dagger.{/n}
+"Yes. You could put your army before my judgment. I could put the Crossroads before your life. Neither belongs in small print."
+{n}She raises her hand.{/n} "Aye. I want you knowing that. I will keep the case against in my private record. I will not make a weapon of it."''',
       c("[Take her hand.]")),
     e("withdrawn", '''"Then the motion is withdrawn. For good." {n}She rules a line across the heading, one clean stroke.{/n}
 "The chair does not hear a case the floor will not make."''',
@@ -245,14 +246,14 @@ letter(P + "fought.tabled", "Point of order", [
     e("ruling_betrayal", '''{n}The answer is longer, and written with a steadier hand.{/n} "No point of order. The chair notes it, because it is the first letter in this correspondence that has not tried to be clever. You chose the Lady in Shadow over this Council and would again. That is a true statement, and the chair does not strike true statements."
 "It is not an apology. It is, however, admissible. The chair rules that the grudge may be tabled on the same terms as any other: a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge on every agenda for as long as there is an agenda, read aloud whenever you are present. Choose."''',
       c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
-        flags=(RETURNED, GRUDGE, ESSENCE, APOLOGISED)),
+        flags=(P + "apology_arranged", GRUDGE, ESSENCE)),
       c('[Let the grudge stand on every agenda] "Read it every time. I\'ll be there to hear it."',
         flags=(RETURNED, GRUDGE, ESSENCE, ON_AGENDA)),
       c('[Move to strike the grudge] "Then I move the grudge be struck from the record."', "struck")),
     e("ruling", '''{n}The answer is longer, and written with a steadier hand.{/n} "Point of order noted. It is, regrettably, correct: 'contribute your essence or I'll take it by force' was the chair's own motion. The chair rules that the grudge may be tabled. Tabled, Commander, not withdrawn."
 "The chair imposes terms. Either you make a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge stands on every agenda for as long as there is an agenda, and the chair reads it aloud whenever you are present. Choose."''',
       c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
-        flags=(RETURNED, GRUDGE, ESSENCE, APOLOGISED)),
+        flags=(P + "apology_arranged", GRUDGE, ESSENCE)),
       c('[Let the grudge stand on every agenda] "Read it every time. I\'ll be there to hear it."',
         flags=(RETURNED, GRUDGE, ESSENCE, ON_AGENDA)),
       c('[Move to strike the grudge] "Then I move the grudge be struck from the record."', "struck")),
@@ -331,8 +332,114 @@ SCENES.append(reaction("Nenio", P + "react.nenio_tabled", (RETURNED,),
 
 def integrate(payload):
     """Register the new relationship's own derived keys. Scenes are added by expansion.py; world keys bind on demand."""
+    payload.setdefault("Presences", {}).update(PRESENCES)
+    integrate_drezen_readings(payload)
+    integrate_standing_grudge(payload)
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != groups:
             raise ValueError("Conflicting binding: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+
+# ROUND 2 AUTHORED: an earned visit is separate from a delivered letter or a paid arrangement.
+DREZEN = "2570015799edf594daf2f076f2f975d8"
+VISIT = P + "special_sitting"
+CONTACT = P + "visit_invited"
+DERIVED[CONTACT] = [[P + "apology_arranged"], [ON_AGENDA], [P + "council.minutes_letter", STARTED], [P + "council.late_motion", STARTED]]
+PRESENCES = {"eritrice.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy",
+    At=dict(NearUnit="da4c28dd01413694f82b08b728a8c6e5", Offset=[8.0, -5.0]),
+    Requires=["trickster.ever", CONTACT], Forbids=[CLOSED], MinChapter=5, MaxChapter=5,
+    AnswerLists=[], Dialog="hub", Greeting='"There you are. My hall is closed; Drezen has a table. Bring the minutes."')}
+SCENES.append(scene(VISIT, "A special sitting", "Eritrice", 5, '"You came to Drezen."', [
+    nar("open", '{n}Eritrice has brought the public minutes, still bound in amethyst silk. She stands beside the borrowed table, leaving your chair empty.{/n}',
+      c("[Begin the special sitting.]", "apology", requires=(P + "apology_arranged",), forbids=(APOLOGISED,)),
+      c("[Hear the standing grudge.]", "grudge", requires=(ON_AGENDA,)),
+      c("[Take your place.]", "friendly", forbids=(P + "apology_arranged", ON_AGENDA)),
+      c("[Take your place.]", "friendly", requires=(APOLOGISED,), forbids=(ON_AGENDA,))),
+    e("apology", '"The special sitting is open. Your words will be read into the public minutes and circulated with them. The old Council need not be here to read its record." {n}She uncaps the ink.{/n} "Say what you did. Do not say we died."',
+      c('"I struck the Council unconscious and let its essences be taken. I apologize for doing it to you."', "apology_record", flags=(RETURNED, APOLOGISED))),
+    e("apology_record", '"Entered as spoken. The grudge is tabled. Not erased." {n}She sands the apology and places it before the account of the extraction.{/n} "I came to hear you say it. Now I have. We may speak again."', c("[Stay for the next item.]")),
+    e("grudge", '"The Commander struck this Council unconscious and let its essences be taken." {n}She reads the whole entry, then puts the scroll down.{/n} "That is the standing item. You agreed to hear it. Now we can attend to the rest. I have brought a fresh page."', c("[Stay for the next item.]")),
+    e("friendly", '"The minutes arrived first. I arrived today. Enter both dates." {n}She draws your chair closer to the table.{/n} "The crusade has kept us writing across a sealed door. I would rather hear your next objection to my face."', c("[Sit with her.]")),
+], requires=("trickster.now", CONTACT), forbids=(CLOSED, VISIT),
+    ContactUnit=UNIT, Areas=[DREZEN], InteractionHub="eritrice.presence", Relationship="eritrice", last=5, TricksterDevice=True, TricksterState=LOST))
+
+# Correspondence remains the fallback if the loaded-area placement really fails.
+letter(P + "visit_delayed", "The unopened ink", [
+    e("delayed", '"I cannot reach the table I arranged in Drezen. The sitting is delayed. Your letter remains a letter; an apology promised remains promised. Send the next point by courier. I will answer it."', c("[Continue the correspondence.]")),
+], requires=("trickster.ever", CONTACT, "eritrice.presence.failed"), forbids=(CLOSED, VISIT, P + "visit_delayed"))
+
+# Keep the original late ending answer and exit mechanics; S3 is an identified paragraph.
+_late_page = next(s for s in SCENES if s["Id"] == P + "epilogue.commit")
+_aye = next(x for x in _late_page["Nodes"] if x["Id"] == "aye")
+_initiation, _morning = _aye["Text"].split('\n', 1)
+_aye["Text"] = _initiation
+_slot = p('{n}She kisses the Commander again, drawing them down onto the desk with her. Her robe lies over the back of the chair. The scroll rests safely beyond their reach.{/n}')
+_slot["Id"] = P + "epilogue.commit.explicit.1"  # S3: user's fill process; later aye, same terminal answer.
+_aye.setdefault("Paragraphs", []).extend((_slot, p(_morning)))
+_aye["Paragraphs"].append(p('{n}Nenio inspected the ink on the breakfast cloth. "An unusual place for a transcript." Eritrice covered the private page with her hand. "An incomplete observation." Nenio requested access to the evidence. The chair refused.{/n}',
+    requires=("nenio.present_now",)))
+_aye["Paragraphs"].append(p('{n}After her next journey Eritrice returned with fresh ink and put her robe over the same chair. She kissed the Commander before opening the reports. "Now. Where were we?"{/n}'))
+
+# Genuine native hub presence is the host; intimacy is not inferred from the invitation.
+for _id, _receipt, _line in (
+    ("first_morning", "eritrice.minutes.the_record", '"Two broken inkwells? I require the force that broke them." {n}Nenio opens her notebook.{/n} "Eritrice refused to reproduce the event. She growled. That is also data."'),
+    ("second_morning", "eritrice.council.second_morning", '"Her second transcript has a stain over the verb. She claims it is none of my business." {n}Nenio looks up.{/n} "Is the stain reproducible?"'),
+):
+    SCENES.append(reaction("Nenio", P + "react.nenio_" + _id, (_receipt,), _line,
+        answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=3, last=5, Chapters=[3, 5],
+        ForbidOverrides=NENIO_BACK, entry='"About Eritrice\'s private minutes..."', portrait="Nenio"))
+
+# Separate receipt for her rendered late aye; legacy ending exits stay byte-for-byte mechanical equivalents.
+_aye["EnterSet"] = [P + "late_accepted"]
+
+def integrate_drezen_readings(payload):
+    """Append hub versions of the existing readings; original completion receipts still prevent a second first night."""
+    import copy
+    allowed = {
+        "eritrice.minutes.point_one", "eritrice.minutes.the_convening", "eritrice.minutes.quill",
+        P + "council.second_reading", P + "council.third_reading",
+        "eritrice.minutes.the_blank_line", "eritrice.minutes.adjourned", "eritrice.minutes.the_record",
+        "eritrice.minutes.a_standing_item", "eritrice.council.personal_privilege",
+        "eritrice.council.accurate_minutes", "eritrice.council.the_fair_copy",
+        "eritrice.council.the_six_hundred_and_thirteenth", "eritrice.council.twice_nightly",
+        "eritrice.council.second_morning", "eritrice.council.where_the_chair_goes_home",
+    }
+    for original in list(payload["Scenes"]):
+        if original["Id"] not in allowed:
+            continue
+        visit = copy.deepcopy(original)
+        visit["Id"] += ".drezen"
+        visit["MinChapter"] = visit["MaxChapter"] = 5
+        visit["Chapters"] = [5]
+        visit["AnswerLists"] = []
+        visit.pop("NativeReturnCue", None)
+        visit["InteractionHub"] = "eritrice.presence"
+        visit["ContactUnit"] = UNIT
+        visit["Areas"] = [DREZEN]
+        visit["Requires"].append(VISIT)
+        # The special sitting, after the existing reconciliation, earns this host.
+        visit["Forbids"] = [f for f in visit["Forbids"] if f != LOST] + [original["Id"], visit["Id"]]
+        for node in visit["Nodes"]:
+            node["Text"] = node["Text"].replace("the hall", "the borrowed room").replace("The hall", "The borrowed room").replace("Council's long table", "borrowed long table").replace("Council's table", "borrowed table")
+            for choice in node["Choices"]:
+                if choice["Next"] is None and not choice["Abort"]:
+                    choice["Set"].append(original["Id"])
+        payload["Scenes"].append(visit)
+
+# Read a standing grudge in every subsequent real sitting, without another fee or forgiveness test.
+def integrate_standing_grudge(payload):
+    import copy
+    for sitting in payload["Scenes"]:
+        if sitting.get("Relationship") != "eritrice" or sitting.get("Owner") != "Eritrice" or sitting.get("Remote") or sitting.get("Reaction"):
+            continue
+        if sitting["Id"] == VISIT or sitting["Id"] == P + "council.motion":
+            continue
+        first = sitting["Nodes"][0]
+        prior = copy.deepcopy(first["Choices"])
+        # Existing answer indices remain in place. The standing-item path appends.
+        for choice in first["Choices"]:
+            choice["Forbids"].append(ON_AGENDA)
+        first["Choices"].append(c("[Hear the standing item.]", "standing_grudge", requires=(ON_AGENDA,)))
+        sitting["Nodes"].append(e("standing_grudge",
+            '"Standing item: the Commander struck this Council unconscious and let its essences be taken." {n}She reads the account to its end, then marks today\'s date beside it.{/n} "Heard. Now the next item."', *prior))

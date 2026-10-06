@@ -1,0 +1,16 @@
+{
+  "voice": "ERITRICE: empyreal lord of truth; proud, exact, impatient with falsehood, physically decisive, capable of anger. Formal diction gives way to short, frank admissions of want in private. Dry procedural humor is occasional, never a substitute for bodily feeling. She keeps her independent judgment about the crusade. Do not write her as a demon, a counselor, a helpless pupil or a redeemed saint. Write new dialogue; do not reuse the example.",
+  "speakers": {
+    "E": "Eritrice",
+    "N": "Narrator"
+  },
+  "example": "N: Eritrice sets the scroll beyond your reach and keeps hold of your sleeve.\nE: The minutes can wait.\nN: She draws you back into the kiss.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18,
+  "scene": "AUTHORED staged encounter, Trickster path, Chapter 3 or 5, accessible Council hall after an actual first night and its morning. Only Eritrice and the Commander are present. Continue the selected repeat-night invitation from legacy carried: close bodily contact, kissing, loosened belt, scroll fallen from the table. This is a consensual return to established intimacy, supplied separately by the user's chosen fill process; never a first encounter, apology reward or new commitment. Required beats: familiar mutual appetite; Eritrice initiates with impatience; she deliberately leaves the private scroll where it fell; one brief procedural joke at most; her promised morning record remains unpaid until the following actual morning. No humiliation, coercion, invented observer, demonic characterization or magical anatomy. Native physical facts are lion-headed identity and claws; do not specify unsupported bodily features. Commander anatomy variants must not add Commander speech. End before clothing gathering and her subsequent ink line.",
+  "last_line": "N: The fallen scroll stays where it is until morning."
+}

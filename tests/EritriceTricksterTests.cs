@@ -67,9 +67,7 @@ internal static class EritriceTricksterTests
         // The outcomes of a walk that took the named choice of the named node.
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Choice(scene, node, index);
-            var hits = Program.Walk(scene, w).Where(r => chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
-                                                          && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))).ToList();
+            var hits = Program.WalkVia(scene, w, node, index);
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -117,7 +115,7 @@ internal static class EritriceTricksterTests
         check(motion.Nodes.Single(n => n.Id == "declared").Choices.Count == 2
               && Choice(motion, "declared", 0).Requires.Contains("eritrice.chair_usurped") && Choice(motion, "declared", 1).Forbids.Contains("eritrice.chair_usurped"),
             "The motion does not recognise the usurped chair of Council_3 (Cue_0045).");
-        foreach (var hall in own.Where(s => !Rules.IsRemote(s) && s.Id != K + "chadalis_essence"))
+        foreach (var hall in own.Where(s => !Rules.IsRemote(s) && s.Id != K + "chadalis_essence" && s.ContactUnit == null))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
                   && hall.Chapters.All(c => c >= 3 && c <= 5) && hall.Forbids.Contains("eritrice.lost_at_council"),
                 "A hall scene is not on her private list in Chapters 3-5 behind the sealed-hall guard: " + hall.Id);
@@ -195,14 +193,15 @@ internal static class EritriceTricksterTests
         check(Rules.Available(story, pageCommit, Later(story, bonded, 100, 6)), "Trk_Eritrice_LateMotion: the late commit page is not reachable.");
 
         // Trk_Eritrice_Fought.
-        var fought = World(story, 5, "trickster", "trickster.ever", "council.fought", "eritrice.lost_at_council.latched");
+        var fought = World(story, 5, "trickster", "trickster.ever", "council.fought", "eritrice.lost_at_council.latched", "eritrice.threatened_by_force");
         check(Rules.Available(story, tabled, fought) && !Rules.Available(story, motion, fought) && !Rules.Available(story, debate, fought)
               && !sittings.Any(s => Rules.Available(story, s, fought)),
             "Trk_Eritrice_Fought: the sealed hall still opens, or the grudge letter does not come.");
         check(Choice(tabled, "stranger", 0).Mythic == "PlayerIsTrickster" && Choice(tabled, "lover", 0).Mythic == "PlayerIsTrickster",
             "Trk_Eritrice_Fought: the point of order is not a Trickster answer.");
         var apology = First(tabled, fought, "ruling", 0);
-        check(apology.Has(P + "returned") && apology.Has(P + "cost.grudge") && apology.Has(P + "cost.apologised")
+        check(!apology.Has(P + "returned") && apology.Has(P + "cost.grudge") && !apology.Has(P + "cost.apologised")
+              && apology.Has(P + "apology_arranged")
               && Choice(tabled, "ruling", 0).Crusade?.Amount == -200,
             "Trk_Eritrice_Fought: the formal apology is not paid for.");
         check(First(tabled, fought, "ruling", 1).Has(P + "cost.grudge_on_agenda"), "Trk_Eritrice_Fought: the grudge cannot stand on the agenda.");
@@ -261,7 +260,7 @@ internal static class EritriceTricksterTests
         check(Reaches(World(story, 5, "trickster.ever", P + "declined"), M + "the_blank_line"), "Her soft no has no sitting of its own.");
 
         // Reactions: exactly Chadali and Nenio, behind their guards.
-        check(reactions.Length == 3 && reactions.All(r => r.Nodes.Count == 1)
+        check(reactions.Length == 5 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Where(r => r.Owner == "Chadali").All(r => r.Forbids.Contains("chadali.lost_at_council"))
               && reactions.Where(r => r.Owner == "Nenio").All(r => r.Forbids.Contains("nenio.dead") && r.Forbids.Contains("nenio.sent_away")),
             "The reactions are not exactly Chadali and Nenio behind their guards.");
@@ -274,7 +273,7 @@ internal static class EritriceTricksterTests
         check(story.SeenCues["eritrice.shyka_dull_future"].SequenceEqual(new[] { "1d1c4855bacf5a94fb1e84b7ae8424a3" })
               && Choice(eldest, "start", 1).Requires.Contains("eritrice.shyka_dull_future") && Choice(eldest, "start", 1).Next == "like"
               && Choice(eldest, "start", 3).Forbids.Contains("eritrice.shyka_dull_future") && Choice(eldest, "start", 3).Next == "like_early"
-              && Choice(eldest, "start", 0).Requires.Contains(M + "the_cipher") && Choice(eldest, "start", 2).Forbids.Contains(M + "the_cipher"),
+              && Choice(eldest, "start", 0).Requires.Contains(M + "exercise_promised") && Choice(eldest, "start", 2).Forbids.Contains(M + "exercise_promised"),
             "The Eldest's version recalls the second Lexicon or the cipher before they happen.");
         // CAN: the committed page opens outcome-neutral; the denial of acquaintance is only the ceased ending's.
         check(pageMet.Nodes[0].Paragraphs.Where(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[eritrice.trickster.epilogue.we_did_meet/page/paragraph/0]")).All(p => p.Requires.Contains("council.epilogue_ceased")),
@@ -314,7 +313,7 @@ internal static class EritriceTricksterTests
               && Choice(tabled, "stranger", 1).Forbids.Contains("eritrice.threatened_by_force") && Choice(tabled, "lover", 1).Next == "ruling_betrayal",
             "The point of order cites a threat the Commander never heard.");
         var alliedNoThreat = World(story, 5, "trickster", "trickster.ever", "council.fought_nocta_allied", "eritrice.lost_at_council.latched");
-        check(Program.Walk(tabled, alliedNoThreat).Any(r => r.Has(P + "returned") && r.Has(P + "cost.apologised")),
+        check(Program.WalkVia(tabled, alliedNoThreat, "ruling_betrayal", 0).Any(r => r.Has(P + "apology_arranged") && !r.Has(P + "cost.apologised")),
             "The allied betrayal has no priced reconciliation.");
         // Sol r3. CAN: the late surety is her condition for this petition, not Council law; the Lexicon's wound waits for the key
         // proposal; Socothbenoth flirts only while he attends. BEL/COX: no lovers asserted as fact; a sole partner is believed.
@@ -331,8 +330,8 @@ internal static class EritriceTricksterTests
 
         var voted = S(K + "the_motion_to_expel_voted");
         foreach (var flag in new[] { K + "alichino_handled", K + "argued_own_case", K + "chair_recused" })
-            check(Rules.Available(story, voted, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one", K + "a_motion_to_expel", flag)),
-                "The motion to expel is never resolved: " + flag);
+            check(Rules.Available(story, voted, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one", K + "a_motion_to_expel", K + "expulsion_hearing", flag)),
+                "The performed expulsion hearing has no report: " + flag);
         // Sol verify sweep (r5): the book line only if she said it; the Crossroads paragraphs only where the Crossroads was made;
         // the grudge and Alichino's absence at sessions only while the Council convenes.
         check(S(K + "a_certain_book").Requires.Contains("eritrice.certain_book_said")
@@ -383,7 +382,7 @@ internal static class EritriceTricksterTests
         check(Choice(request, "want", 0).Set.SequenceEqual(new[] { K + "lied_for_her" })
               && Choice(request, "want", 1).Set.SequenceEqual(new[] { K + "refused_to_lie_for_her" })
               && Choice(request, "want", 2).Set.SequenceEqual(new[] { K + "truth_for_chadali" }), "Private approaches changed order or masquerade as public actions.");
-        foreach (var blocker in new[] { "eritrice.closed", "council.fought" })
+        foreach (var blocker in new[] { "eritrice.closed", "council.fought", "council.walked_out", "council.debrief_motion", M + "extracted" })
             check(!Rules.Available(story, request, World(story, 5, "trickster", "trickster.ever", "eritrice.started", M + "point_one", "council.cauldron_given", blocker)), "A request outlives its opportunity: " + blocker);
         foreach (var aidMoved in new[] { false, true })
         {
