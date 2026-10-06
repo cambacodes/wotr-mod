@@ -54,4 +54,11 @@ class PlayerTextTests(unittest.TestCase):
         for finding in findings:
             if finding.get("item_id") == "E-Q7-21" and finding["route"] == "arsinoe":
                 node = finding["problem"].split()[1]
-                self.assertTrue(any(r["scene"] == finding["scene"] and r["location"] == node for r in rows), finding["id"])
+                rewritten = {("arsinoe_price_of_an_evening", "charge"),
+                             ("arsinoe_two_doors", "comparison"),
+                             ("arsinoe_a_stone_in_hand", "after_possibility")}
+                reported = any(r["scene"] == finding["scene"] and r["location"] == node for r in rows)
+                if (finding["scene"], node) in rewritten:
+                    self.assertFalse(reported, finding["id"])
+                else:
+                    self.assertTrue(reported, finding["id"])

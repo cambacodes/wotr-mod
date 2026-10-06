@@ -18,11 +18,10 @@ def s(id, title, entry, nodes, previous, delay=24):
 s("arsinoe_your_hours", "The Commander's questionable taste",
   '"You wanted to know what interests me. I have something to show you."', [
     n("start", "Arsinoe", '''{n}Arsinoe finishes writing a price on a narrow strip of paper. She gives it to her customer, answers a final question about the scroll, and waits until the man has left before turning toward you.{/n}
-"I did. And I have resisted the temptation to prepare a list of suitable answers."
+"The army has had its scrolls, and the temple has had my morning. Show me what you choose when nobody is demanding it."
 {n}She takes her outdoor cloak from its peg. A thread has caught around the fastening; she frees it with a practiced turn of one fingernail.{/n}
 "I can spare the next hour. If your interest requires a week in the saddle, you must give me a little more notice. If it requires my professional opinion, I reserve the right to be disappointed."
-{n}Her smile takes the sting from the qualification.{/n}
-"Show me what you choose when nobody is asking you to choose on their behalf."''',
+{n}Her smile takes the sting from the qualification.{/n}''',
       c('"A game. One that is over before anyone starts calling it a campaign."', "game"),
       c('"An outrageously bad adventure story. I want someone to enjoy it with."', "story"),
       c('"I need to postpone our hour."', abort=True)),
@@ -71,7 +70,7 @@ s("arsinoe_your_hours", "The Commander's questionable taste",
       c('"I already like your heroine."', flags=("arsinoe.interest_stories",))),
     n("story_aunt", "Arsinoe", '''{n}You begin with the boat. Arsinoe insists on establishing who owns it. You propose that the aunt stole it; she counters that an accomplice with a boat is a much better investment than one with romantic intentions and no practical skills.{/n}
 {n}Between you, the aunt acquires a new name and a destination neither of you has visited. She sells only enough silver to reach it. The rest she keeps, because the story has not yet provided a reason for her to become sensible.{/n}
-"And there we should leave her," {n}Arsinoe says.{/n} "Before we make her open an inn. Every respectable ending threatens a woman with an inn."
+"And there we should leave her," {n}Arsinoe says.{/n} "Before we spend her stolen silver on an inn. I like her better in the boat."
 {n}She returns the booklet reluctantly.{/n}
 "Next time I will bring something. It has a beautiful board, a set of rules that appear to contradict one another, and a history I may have paid too much to hear. You can decide whether the seller belongs in our next story."''',
       c('"I look forward to meeting him at a safe distance."', flags=("arsinoe.interest_stories",))),
@@ -82,7 +81,8 @@ s("arsinoe_borrowed_court", "The seven merchants",
   '"Did you find the game you promised?"', [
     n("start", "Arsinoe", '''{n}Arsinoe has wrapped the board in a length of faded green cloth. She lifts one corner to show you inlaid streets, seven little brass merchants, and a square of pale wood at the center.{/n}
 "It has survived considerably more journeys than its instructions. I have arranged somewhere we can spread it out."
-{n}The place is a locksmith's courtyard a few streets away. Its owner, Neral, is a broad-shouldered adult woman with a burn scar on her wrist and a habit of shutting drawers with her hip. She shows you a table beneath a patched awning.{/n}
+{n}The place is a locksmith's courtyard a few streets away. Its owner, Neral, is a broad-shouldered woman with a burn scar on her wrist and a habit of shutting drawers with her hip. She shows you a table beneath a patched awning.{/n}
+{n}A repaired lock lies beside Neral's tools, its case scored where someone tried to force it during the occupation.{/n}
 "Two hours," {n}Neral says.{/n} "If you want more chairs, fetch them yourselves. I am not closing the workshop."
 "Nor would I ask you to."
 {n}Arsinoe has paid for the table. She accepts your offer to carry the board, but declines to let you reimburse her. It is her turn to bring something.{/n}''',
@@ -162,9 +162,7 @@ s("arsinoe_price_of_an_evening", "A place at the table",
       c('"I would prefer a small private invitation this time."', "terms")),
     n("charge", "Arsinoe", '''"Because Neral is spending her evening here instead of upstairs with her supper. Because the lamps burn oil. Because I would like this to happen again without requiring a generous person's purse every time."
 {n}Arsinoe taps the total, not hard, but with unmistakable conviction.{/n}
-"A price can keep a door open. I have seen free doors close when the person paying for them left."
-"And people may stay away because they cannot pay."
-"Yes. That is the part I have not solved."
+"Neral repairs locks for people trying to keep a roof over their heads in a demon war. I will not ask her to lose an evening's wages for my amusement. Some people will stay away because they cannot pay. I have not solved that part."
 {n}For a moment she looks tired of the calculation. Then she draws the paper back.{/n}
 "We could have a private evening instead. Invite only as many as we can comfortably host. I would enjoy it, although it would not become the little establishment I was imagining. I want you to understand that I was imagining one. It was not merely a device to give you a pleasant surprise."''',
       c('"Then let us discuss what we can actually offer."', "terms")),
@@ -194,11 +192,11 @@ s("arsinoe_courtyard_company", "Company after closing",
     n("start", "Arsinoe", '''{n}Neral has hung a lamp at each end of the awning. The workshop is shut, though the courtyard still smells faintly of hot metal. Arsinoe stands on a low stool to straighten a wick, and hands you the chimney before you can offer advice from the ground.{/n}
 "There. Now we shall be able to see our terrible decisions."
 {n}The game waits on one table; a small stack of reading material lies on the other. Cups and a jug occupy the least level surface, which Neral has corrected with a folded scrap of leather.{/n}
-{n}Nobody has made a speech. Nobody has hung a crusader banner over the door. Arsinoe climbs down and looks around with the anxious satisfaction of a host who has not yet discovered what she forgot.{/n}
+{n}A patrol passes the courtyard without stopping. Arsinoe climbs down from the stool and checks the six places once more.{/n}
 "We should begin before I think of another improvement."''',
       c("Welcome the arriving customers.", "public", requires=("arsinoe.evening_public",)),
       c("Welcome the invited company.", "private", requires=("arsinoe.evening_private",))),
-    n("public", "Arsinoe", '''{n}The two paid guest places fill. One guest is a wheelwright, who pauses to admire the workshop's door hinge before sitting down. One of the two places Arsinoe has covered goes to a quiet older laundress; the other goes to a young adult courier who asks twice whether he needs to give his employer's name. Neral tells him he needs only a chair.{/n}
+    n("public", "Arsinoe", '''{n}The two paid guest places fill. One guest is a wheelwright, who pauses to admire the workshop's door hinge before sitting down. One of the two places Arsinoe has covered goes to a quiet older laundress; the other goes to a young courier who asks twice whether he needs to give his employer's name. Neral tells him he needs only a chair.{/n}
 {n}A paying guest recognizes you and begins,{/n} "Since I have the opportunity..."
 "You have the opportunity to choose a brass merchant," {n}Arsinoe says, offering him the board.{/n} "Official business keeps different hours."
 {n}He considers arguing, notices the other guests watching, and selects the locksmith instead.{/n}
@@ -206,11 +204,11 @@ s("arsinoe_courtyard_company", "Company after closing",
       c("Explain the reconstructed toll rule.", "original_game", requires=("arsinoe.game_reconstructed",)),
       c("Explain the missing rule and resume the recorded position.", "uncertain_game", requires=("arsinoe.game_unresolved",)),
       c("Explain the courtyard version.", "house_game", requires=("arsinoe.game_house",))),
-    n("private", "Arsinoe", '''{n}Arsinoe's acquaintances arrive separately: an older laundress who sometimes brings her mending, an adult courier who delivers purchases, and a wheelwright who once spent most of an afternoon explaining the disadvantages of three kinds of axle. Neral brings her own cup and takes the sixth place.{/n}
+    n("private", "Arsinoe", '''{n}Arsinoe's acquaintances arrive separately: an older laundress who sometimes brings her mending, a courier who delivers purchases, and a wheelwright who once spent most of an afternoon explaining the disadvantages of three kinds of axle. Neral brings her own cup and takes the sixth place.{/n}
 "I was promised no professional questions," {n}she tells the wheelwright.{/n}
 "I have brought none."
-"You are looking at the hinge."
-"It is a handsome hinge."
+{n}"You are looking at the hinge," Neral says.{/n}
+{n}"It is a handsome hinge," the wheelwright replies.{/n}
 {n}The small company laughs. There is less distance between the chairs than you expected, and no easy way to remain a guest of honor. Arsinoe gives you the cloth merchant and asks whether you remember where it belongs.{/n}
 {n}The courier settles his satchel beneath his feet. Neral turns the board so that nobody has to read its streets upside down. It is time to explain which rules this company will inherit.{/n}''',
       c("Explain the reconstructed toll rule.", "original_game", requires=("arsinoe.game_reconstructed",)),
@@ -285,7 +283,7 @@ s("arsinoe_another_hour", "What the evening cost",
 {n}One side lists the courtyard's costs. The other contains changes to the game, three suggestions for readings, and a complaint about the height of the chairs.{/n}
 "Neral says the chairs are exactly the height they were when we accepted them. I fear her case is strong."
 {n}She makes space beside the paper. Her manner is easy, but she has plainly been considering more than chair legs.{/n}
-"We tried the arrangement we chose. It gave us a useful answer. Not an answer I could have obtained by staring at my original notice."''',
+"Neral was paid, and we managed an evening while Drezen still needed defending. I count that as a useful trial."''',
       c('"Did the earlier hour help?"', "earlier", requires=("arsinoe.company_earlier",)),
       c('"Did keeping the quiet hour work?"', "quiet", requires=("arsinoe.company_quiet",))),
     n("earlier", "Arsinoe", '''"The courier finished a complete game. He was delighted, except that he lost. The wheelwright could not come. Neral interrupted a particularly fine sentence with a hammer, and I had to begin it three times."
@@ -326,7 +324,7 @@ s("arsinoe_another_hour", "What the evening cost",
 {n}She puts the account away and rests her hands on the table.{/n}
 "I want to hear you disagree with a story. Or watch you make a clever move and pretend not to be pleased with yourself. I have learned that I enjoy both."
 {n}She says it lightly, and then does not smile, so that you will know she meant it.{/n}
-"I am used to making plans for a place. A place does not refuse. You might. So: come back on an ordinary day, Commander, and let me have you to myself."
+"I have spent all day arranging chairs for people who may not come. I would rather spend the next evening with you. So: come back on an ordinary day, Commander, and let me have you to myself."
 {n}She names an evening when her business can close at its usual hour.{/n}''',
       c('"Then I will come for that evening."', flags=("arsinoe.private_hour_invited",))),
     n("invitation", "Arsinoe", '''{n}Arsinoe considers the distinction, then inclines her head.{/n}
@@ -345,7 +343,7 @@ s("arsinoe_the_unprofitable_hour", "No notice on the door",
     n("start", "Arsinoe", '''{n}Arsinoe closes at the hour you agreed. She checks the fastening once, then takes you to a small room behind her working space. A clean cloth covers the table. There are two cups, something cold to drink, and no account waiting beneath either plate.{/n}
 "I have been very restrained. You may admire it."
 {n}She has removed the outer layer of her formal robes. The simpler garment beneath is no less carefully kept, but she sits in it without attending to every fold. Her hair catches on a small fastening; she frees it and leaves the clasp beside the lamp.{/n}
-"There. I am off duty. Within reason. If the building catches fire, I will permit an interruption."
+"If the alarm bell rings, I shall answer it. Until then, I am off duty."
 {n}Outside, someone calls a price across the street. Arsinoe pours your drink and lets the call pass unanswered.{/n}''',
       c("Set out a game.", "game", requires=("arsinoe.interest_games",)),
       c("Open the adventure story.", "story", requires=("arsinoe.interest_stories",))),

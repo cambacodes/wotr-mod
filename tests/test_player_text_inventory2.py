@@ -19,22 +19,20 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         cls.story = expansion.make_expansion()
         cls.surfaces = {(s, n): t for s, n, t, _, _ in player.surfaces(cls.story)}
 
-    def test_all_four_mapped_age_labels_are_exact_visible_diagnostics(self):
+    def test_all_four_mapped_age_labels_are_removed_with_diagnostic_controls(self):
         rows = player.check(self.story)["review"]
-        mapped = (("arsinoe_borrowed_court", "start", "broad-shouldered adult woman"),
-                  ("arsinoe_courtyard_company", "public", "young adult courier"),
-                  ("arsinoe_courtyard_company", "private", "an adult courier"),
-                  ("arsinoe_after_rain", "passage", "stocky adult woman"))
-        for sid, loc, wording in mapped:
+        mapped = (("arsinoe_borrowed_court", "start", "broad-shouldered adult woman", "broad-shouldered woman"),
+                  ("arsinoe_courtyard_company", "public", "young adult courier", "young courier"),
+                  ("arsinoe_courtyard_company", "private", "an adult courier", "a courier"),
+                  ("arsinoe_after_rain", "passage", "stocky adult woman", "stocky woman"))
+        for sid, loc, old, wording in mapped:
             with self.subTest(scene=sid, location=loc):
                 text = self.surfaces[sid, loc]
                 self.assertIn(wording, text)
+                self.assertNotIn(old, text)
                 found = [r for r in rows if (r["scene"], r["location"], r["code"]) == (sid, loc, "age-certification")]
-                self.assertEqual(len(found), 1)
-                self.assertEqual(text[found[0]["start"]:found[0]["end"]], "adult")
-                fixed = payload(text.replace("adult ", ""), sid, loc)
-                self.assertFalse([r for r in player.check(fixed)["review"] if r["code"] == "age-certification"])
-                # This diagnostic debt cannot permit a changed or extra label.
+                self.assertEqual(found, [])
+                # Removing a mapped label cannot permit a changed or extra label.
                 changed = payload(text + " {n}An adult courier arrives.{/n}", sid, loc)
                 self.assertTrue([r for r in baseline.new_findings(changed, player.check(changed)["review"])
                                  if r["code"] == "age-certification"])
@@ -42,15 +40,18 @@ class PlayerTextInventory2Tests(unittest.TestCase):
     def test_missing_collection_closer_and_valid_controls(self):
         sid = "arsinoe.trickster.cauldron.collection"
         text = self.surfaces[sid, "start"]
-        self.assertIn('I do not do that. So."\n', text)
+        closer = 'What are you pledging?"'
+        self.assertIn(closer, text)
         self.assertEqual(structure.spans(text), ([], []))
-        broken = text.replace('I do not do that. So."\n', 'I do not do that. So.\n')
+        continuation = '\n{n}She waits.{/n}\n"Answer me."'
+        self.assertEqual(structure.spans(text + continuation), ([], []))
+        broken = text.replace(closer, 'What are you pledging?') + continuation
         rows = structure.check(payload(broken, sid), draft=True)["review"]
         self.assertEqual(len(rows), 1)
         row = rows[0]
         self.assertEqual(row["code"], "speech-boundary-review")
         self.assertTrue(row["draft"])
-        self.assertTrue(row["match"].startswith('"The roads south'))
+        self.assertTrue(row["match"].startswith('"Now. You mean to take it to Threshold'))
         for text in ('"First paragraph.\n"Second paragraph."',
                      '"First paragraph,\n"Second paragraph," {n}she says.{/n} "The last."',
                      '"Stay," {n}she says.{/n} "Here."',

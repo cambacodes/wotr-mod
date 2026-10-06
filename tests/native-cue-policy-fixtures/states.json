@@ -13793,8 +13793,8 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "arsinoe.trickster.late_committed",
-        "trickster.now"
+        "arsinoe.trickster.late_accepted",
+        "arsinoe.trickster.late_ready"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "arsinoe.trickster.late.commit"

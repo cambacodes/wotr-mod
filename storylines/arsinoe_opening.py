@@ -45,7 +45,7 @@ def s(id, title, entry, nodes, requires=(), delay=24):
 
 s("arsinoe_city_on_paper", "A handsome city", '"What is that picture?"', [
     n("start", "Arsinoe", '''{n}Arsinoe holds a sheet by its corners, keeping it well clear of the edge of her table. Beneath a grandly lettered DREZEN, little figures stroll past an uninterrupted row of handsome houses. Every shutter hangs straight. Every roof is whole.{/n}
-"An achievement. Someone has repaired half the city without troubling a single mason."
+"An achievement. Someone has repaired the damage of a demon occupation without troubling a single mason."
 {n}She tilts the sheet toward you. Its colors catch the light.{/n}
 "A printer brought samples for sale. I bought this one. I was going to return it, but I find that I rather like looking at it. This puts me in an embarrassing position."
 {n}A small handwritten note is tucked beneath the picture.{/n}
@@ -69,7 +69,7 @@ s("arsinoe_city_on_paper", "A handsome city", '"What is that picture?"', [
 {n}Arsinoe waits until you set the sheet down.{/n}
 "Then we shall ask. I will be interested to discover whether the man knows which city he has sold me."
 {n}She adds a question beneath her note instead of a place name.{/n}
-"I have bought things on a convincing description before. I have also sold scrolls to people who were certain they knew how to use them. Questions are cheaper."''', c('[Return the picture.]', "invitation", flags=("arsinoe.print_source_uncertain",))),
+"I have bought things on a convincing description before. I have also sold scrolls to people who were certain they knew how to use them. I would rather ask him than buy another false view."''', c('[Return the picture.]', "invitation", flags=("arsinoe.print_source_uncertain",))),
     n("ask", "Arsinoe", '''"He shall. Without a regiment at his back, if we can manage it."
 {n}She folds the note once.{/n}
 "I dislike being taken for a fool. That is a private grievance. Your arrival at his counter would be a public event unless we take care. I want an answer, not a confession obtained by frightening a man who has never spoken to you."
@@ -123,12 +123,11 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
 {n}Arsinoe lets the answer stand for a moment.{/n}
 "Thank you. Now we can discuss what to do with it. Can you draw a view of your own?"''', c('[Hear his proposal.]', "proposal")),
     n("explanation", "Arsinoe", '''"An old plate," {n}Tovin says.{/n} "It came with the press. The name was gone. I added a title and had the sheets colored."
-"Did you mean it as a proposal for what Drezen might become?"
-"I meant to sell pictures. Soldiers send them home. People like to show where they've been."
-{n}Arsinoe turns the sheet toward him.{/n}
-"Then it matters where they have been. You sold this to me without saying it was an invented view."
+{n}"Did you mean it as a proposal for what Drezen might become?" Arsinoe asks.{/n}
+"I meant to sell pictures. Crusaders send them home. Some want their families to believe they have reached somewhere worth defending."
+{n}Arsinoe turns the sheet toward him. "Then it matters where they have been. You sold this to me without saying it was an invented view."{/n}
 "I can return the money."
-"You can. But first I should like to hear whether you can draw."''', c('[Wait for his answer.]', "proposal")),
+{n}"You can. But first I should like to hear whether you can draw." Arsinoe waits for his answer.{/n}''', c('[Wait for his answer.]', "proposal")),
     n("proposal", "Tovin", '''"Buildings. Well enough. Faces give me trouble."
 {n}He takes a board from behind the counter. On it is a rough study of his own street. A leaning chimney has been drawn twice, once as it stands and once corrected to the vertical.{/n}
 "I was going to make this straight."
@@ -201,7 +200,7 @@ s("arsinoe_roofs", "An evening above the street", '"You offered to show me the v
 {n}A woman below has wedged a board across her sill and arranged several pots along it. The pots do not match. One holds a plant that has grown tall enough to need a supporting stick.{/n}
 "She has very little room. She has made some."
 {n}Arsinoe pours for you, then for herself.{/n}
-"I like the great buildings too. I will not pretend to prefer a cracked flowerpot to a good colonnade. But a city needs people who expect to be here when something grows. Otherwise it is merely a place where an army has stopped."''', c('[Look along the roofs with her.]', "leaving")),
+"I like the great buildings too. I will not pretend to prefer a cracked flowerpot to a good colonnade. With demons beyond the walls, she has still planted something she expects to see grow. I should like Tovin to draw that."''', c('[Look along the roofs with her.]', "leaving")),
     n("trouble", "Arsinoe", '''"A reasonable amount. I wanted a pleasant evening, so I arranged one."
 {n}She passes you a cup.{/n}
 "I have attended celebrations with magnificent vows and nothing fit to drink. I have also seen people make a feast with almost no money because they thought about what their guests would actually enjoy."
@@ -312,7 +311,7 @@ s("arsinoe_first_impression", "What the picture leaves out", '"Has Tovin brought
 {n}"I should have liked him to agree. At least I know what he disagrees with."{/n}''', c('"What would you draw?"', "hers")),
     n("hers", "Arsinoe", '''"Badly? Almost anything. Well? I have never learned."
 {n}She finds an unused corner of a sheet and draws a rectangle, then another. A street begins to emerge, suspiciously regular.{/n}
-"There should be enough room for two carts to pass. Proper drains. A place to sit that does not belong to a tavern. And trees that someone has agreed to water."
+"Room for two carts. Drains that work. A place to rest that does not charge for beer. We have soldiers coming back wounded and people living in half a house; I should like to build something for them besides another barricade."
 {n}She pauses over the little drawing.{/n}
 "I would enjoy seeing this built. I would also enjoy sitting beneath one of those trees with a book while someone else admired the drainage."
 {n}She adds a small bench. It takes three attempts to make its legs stop resembling a ladder.{/n}''',
@@ -388,7 +387,7 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 {n}She answers before you have quite finished speaking, then laughs at herself.{/n}
 "I have been sufficiently composed for one evening. You may know that I was hoping you would ask."
 {n}She takes a step nearer. The book presses lightly against her side as she lifts her free hand toward yours.{/n}
-"I intend to kiss you before I go. You may object now."''',
+"Come closer. I have been thinking about your mouth instead of listening to my own good advice."''',
       c('[Kiss her.]', "kiss"),
       c('"Hold my hand a moment. I would like that tonight."', "hand")),
     n("kiss", "Narrator", '''{n}She comes close enough that you feel the warmth of her before her lips touch yours. The first kiss is brief. When you stay near, she smiles and kisses you again, less cautiously.{/n}

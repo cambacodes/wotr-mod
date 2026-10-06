@@ -159,7 +159,7 @@ internal static class TransactionInventory2Tests
                 var grace = page.Paragraphs.Where(p => p.Requires.Contains(Grace)).ToArray();
                 check(grace.Length > 0 && grace.Any(p => Rules.ParagraphVisible(p, state)) == success,
                     "Settlement does not recognize earned grace: " + id);
-                check(grace.Any(p => p.Text.Contains("three seasonal renewals")), "Grace changed the promised duration");
+                check(grace.Any(p => p.Text.Contains("three renewals waived") || p.Text.Contains("three waived renewals")), "Grace changed the promised duration");
                 check(!success || Rules.VisibleParagraphs(page, state).All(p => !p.Text.Contains("never once suggested a discount")),
                     "Settlement contradicts the earned concession");
             }

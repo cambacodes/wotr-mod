@@ -25,15 +25,15 @@ s("arsinoe_after_rain", "The water under the step",
 {n}Arsinoe pulls a chair from beneath her table. Its seat holds a damp shoe, a folded stocking, and a little heap of grit. Her other foot is very firmly planted in a dry slipper.{/n}
 "The passage beside the cooper's yard is the shortest way here. This morning I discovered that its third step has become a fountain. An unannounced improvement."
 {n}She shakes the stocking once and hangs it over the chair back.{/n}
-"I have asked the people on either side to close it until someone has looked beneath the paving. They both tell me that the passage belongs to the other. The cooper does, however, consider its ownership quite settled when somebody wishes to leave a cart there."
+"I have asked the people on either side to close it until someone has looked beneath the paving. They both tell me that the passage belongs to the other. The cooper does, however, consider its ownership quite settled when somebody wishes to leave a cart there. People take that stair on their way to my scrolls. I have enough wounded crusaders to attend without a wall falling on the ones who can still walk."
 {n}She retrieves her outdoor cloak.{/n}
 "I have found a mason willing to examine it. Would you come? I can promise an improvement on the smell of this stocking. I cannot promise a pleasant afternoon."''',
       c('"Show me the offended staircase."', "passage"),
       c('"Another time. Keep people off it until then."', abort=True)),
     n("passage", "Narrator", '''{n}Arsinoe changes into dry walking shoes before you leave. The passage is a narrow flight between two high walls. A rope has been stretched across each end. Somebody has hung an empty pail from the nearer one, making the warning difficult to overlook.{/n}
-{n}The mason waits on the upper landing, outside the rope. She is a stocky adult woman with white dust in the seams of her hands. A measuring rod rests against her shoulder.{/n}
+{n}The mason waits on the upper landing, outside the rope. She is a stocky woman with white dust in the seams of her hands. A measuring rod rests against her shoulder.{/n}
 "Orvena," {n}Arsinoe says.{/n} "The Commander has offered us an opinion. We are under no obligation to accept it."
-"Good. I get enough opinions. What I need is somebody to keep the far end clear while I work."
+{n}"Good," Orvena says. "I get enough opinions. What I need is somebody to keep the far end clear while I work."{/n}
 {n}You take turns directing the few approaching pedestrians around the longer way. Orvena lowers a weighted cord through the open joint beneath the third tread. When she draws it out, the weight carries dark, wet silt.{/n}
 "There used to be a drain through here. It has stopped going where it ought. I can open the step, but first I want to know whether that wall has moved with it."
 {n}She indicates a pale streak near the base of the cooper's wall. From the landing it could be fresh mortar, or a deposit left by the water.{/n}''',
@@ -99,7 +99,7 @@ s("arsinoe_two_doors", "The people on either side",
 "And I cannot close my yard while you decide," {n}Senn replies.{/n}
 "Your wall may decide first," {n}Orvena says.{/n}
 {n}Arsinoe asks the mason to separate the urgent work from the later paving. Then she asks each neighbor what they can pay now, before anybody begins discussing what a good person would offer.{/n}
-{n}The smaller sum is still too large. Senn can supply cartage and stone from a demolished shed. Edris can pay in installments. Neither contribution will feed Orvena's crew through the first week.{/n}
+{n}The smaller sum is still too large. Senn can supply cartage and stone from a demolished shed. Edris can pay in installments. Neither contribution will feed Orvena's crew through the first week, with Drezen already provisioning an army.{/n}
 "I can advance the difference," {n}Arsinoe says.{/n} "But I want an arrangement we can examine after the noise of today's meeting has gone away."''',
       c('"You would become their creditor. Do you want that?"', "creditor"),
       c('"Could the urgent part be done while the rest waits?"', "stages"),
@@ -109,7 +109,7 @@ s("arsinoe_two_doors", "The people on either side",
 "It would be a loan for the agreed work, with dates they can meet. No interest for this small sum, and no claim on their homes if they miss a payment. I have no wish to become a landlord by means of a broken pipe."
 "Then why would we pay?" {n}Senn asks, too quickly.{/n}
 {n}Arsinoe turns to him.{/n}
-"Because you would have agreed to. Because I shall ask. Because a city in which every promise requires a threat is expensive to live in. If these answers are inadequate, you need not accept my money."
+"Because you would have agreed to. Because I shall ask. You have a written estimate, dates you can meet, and a priestess who will ask for her money. I expect you to keep the agreement. If these answers are inadequate, you need not accept my money."
 {n}Senn looks at Edris. She does not rescue him.{/n}
 "I asked badly," {n}he says at last.{/n}
 "You did. It was useful to hear before I lent it."''',
@@ -132,8 +132,7 @@ s("arsinoe_two_doors", "The people on either side",
     n("comparison", "Arsinoe", '''{n}The alternatives take shape. Arsinoe can advance enough to let the crew finish the whole repair, accepting the trouble of collecting two modest debts. Or she can contribute a smaller gift toward the urgent work, leaving the upper paving for a later paid visit.{/n}
 {n}Both neighbors accept either arrangement. Orvena writes down what each includes, and what it leaves out. She refuses Senn's request to promise a completion date before she has lifted the rest of the stone.{/n}
 "Well, Commander," {n}Arsinoe says quietly, while the others compare the two pages.{/n} "You have listened to more than my complaint about a wet foot. Let me have your judgment."
-"And if we disagree?"
-"I prefer the loan. A loan makes them keep their word, and a city runs on kept words. But I can afford either arrangement, and you have seen what each will leave unfinished."''',
+"I prefer the loan. They would have dates to meet, and I would have a signed agreement to collect against. But I can afford either arrangement, and you have seen what each will leave unfinished."''',
       c('"Advance the repair cost. I will help you face the awkward conversations afterward."', "loan"),
       c('"Pay a neighbor\'s share and do the urgent work first. Leave the larger promise for later."', "staged")),
     n("loan", "Arsinoe", '''{n}Arsinoe names her maximum before the agreement is signed. Anything discovered beyond it will require another discussion. Orvena approves this more readily than the neighbors do.{/n}
@@ -157,12 +156,12 @@ s("arsinoe_two_doors", "The people on either side",
 
 s("arsinoe_a_stone_in_hand", "The mason's spoiled piece",
   '"How is Orvena getting on?"', [
-    n("start", "Arsinoe", '''"The drain is going very well. Her afternoon is not. Come and look."
+    n("start", "Arsinoe", '''"The drain is carrying water instead of undermining the wall. A modest victory, but it has no casualties. Orvena's afternoon has gone less well. Come and look."
 {n}At the passage, Orvena has left the crew securing a channel that now carries water cleanly away from the wall. She sits under an awning with a small stone block in her lap. One corner has broken off. The broken piece rests on the ground beside her boot.{/n}
-"A practice piece," {n}she explains.{/n} "For a buyer who wanted a carved border. I made the leaves too deep. He can buy something else."
+"A practice piece," {n}Orvena explains.{/n} "For a buyer who wanted a carved border. I made the leaves too deep. He can buy something else."
 {n}The surviving leaves curl around a shallow recess. A little face should have looked out between them. Its mouth is a rough notch, unfinished.{/n}
 "You might finish it for yourself," {n}Arsinoe says.{/n}
-"I could eat it for myself too, if my teeth were better. I have paid work."
+{n}"I could eat it for myself too, if my teeth were better," Orvena says. "I have paid work."{/n}
 {n}There is no anger in the answer, which seems to trouble Arsinoe more than anger would. She asks the price of the spoiled piece. Orvena gives a very small figure, then objects when Arsinoe offers to pay it.{/n}
 "Do not buy my mistakes because you feel sorry for me."
 "Then tell me whether you want to sell a small stone I would like to own. I have not asked you to disguise the missing corner."''',
@@ -186,7 +185,7 @@ s("arsinoe_a_stone_in_hand", "The mason's spoiled piece",
 "I wanted the small face. I should be careful about supplying her with a grander reason to sell it to me."''',
       c('"I would like to try carving something. Something very small."', "try"),
       c('"I would rather watch someone who knows what she is doing."', "watch"),
-      c('[Trickster] "What if the spoiled corner could show her the cut she has not made yet?"', "possibility", requires=("trickster",))),
+      c('[Trickster] "Let me show Orvena a design for that broken corner."', "possibility", requires=("trickster",))),
     n("try", "Arsinoe", '''{n}Arsinoe arranges a short lesson after Orvena's paid work. The mason gives you a soft offcut, a blunt point, and the repeated instruction to keep your other hand out of the way.{/n}
 {n}Your proposed leaf develops a shape that Arsinoe politely declines to name. Her own attempt breaks along the stem. Orvena places both beside a clean example and shows where you pressed instead of guiding the tool.{/n}
 "You are both accustomed to getting a result when you insist," {n}she says.{/n} "Stone does not find that interesting."
@@ -205,31 +204,28 @@ s("arsinoe_a_stone_in_hand", "The mason's spoiled piece",
 {n}You sit with Arsinoe while the mason finishes. Work continues in the passage behind you. Water strikes the repaired channel with a steady little sound, quite different from the dripping that first brought you here.{/n}
 {n}When the stone is ready, Arsinoe wraps it in an old cloth. She lets you carry it while she looks for a comfortable way to hold its awkward weight.{/n}''',
       c('"Take it back with her."', flags=("arsinoe.stone_watched", "arsinoe.stone_chosen"))),
-    n("possibility", "Arsinoe", '''{n}Arsinoe stops walking.{/n}
-"Show her a possible cut, or make her remember learning one? Those are very different proposals."
-{n}You describe a moment made to arrive out of order: the stone might briefly display a finished face, then return to its present shape. Orvena could examine it, reject it, or use what she saw. Her hands would still do the work.{/n}
-"Ask her," {n}Arsinoe says.{/n} "And tell her what you cannot promise. I will watch."
-{n}Orvena listens without putting down her tools.{/n}
-"If it starts talking, you take it away. If it merely shows me something, I will look. I am not agreeing to carve whatever it happens to show."
-{n}You place the broken corner beside the block. For an instant its shadow falls toward the sun. The empty notch becomes a laughing mouth. A leaf curls across the fracture, making the absent corner part of the border instead of hiding it.{/n}
-{n}Then the shadow turns back. The block is rough and broken again. Orvena has already reached for her marking chalk.{/n}''',
+    n("possibility", "Arsinoe", '''{n}Arsinoe looks back toward the awning.{/n}
+"Orvena is holding the chisel. I should begin with her opinion."
+{n}The mason listens with her tools still in her lap.{/n}
+"If it starts talking, you take it away. Otherwise, show me."
+{n}You set the broken corner beside the block and trace a leaf in the air above it. A bright outline hangs against the stone: a leaf curled across the fracture, a laughing mouth beneath it. The crack remains visible through the image.{/n}
+"The leaf is useful," {n}Orvena says.{/n} "Hold it there while I mark it."
+{n}She chalks two lines onto the rough stone. When you lower your hand, the image disappears. The unfinished notch has not changed.{/n}''',
       c('"Let her decide what to keep."', "after_possibility")),
-    n("after_possibility", "Arsinoe", '''"The leaf is useful," {n}Orvena says.{/n} "The mouth is smug. I can improve that."
-{n}She draws a line across the broken corner, then wipes half of it away and begins again. Arsinoe waits until the mason has returned to her own work before speaking.{/n}
-"I expected to dislike that. I dislike being shown a finished thing as though the only task remaining were obedience. But she has already altered it."
-"Does that make it acceptable?"
-"For this willing woman and this stone, yes. Do not expand my answer into permission to rearrange everyone else's disappointments."
-{n}She studies you with an interest that is warmer than her caution.{/n}
-"I have spent much of my life asking people to imagine a better place. You made one small possibility visible. I can admire that without deciding that every surprise is wise."
-{n}Later, Orvena finishes a face distinctly different from the glimpse. Its smile is crooked. The missing corner remains. She charges Arsinoe the agreed price and declines to provide a discount for assistance from the future.{/n}
-"An entirely reasonable position," {n}Arsinoe says, and laughs when you agree a little too solemnly.{/n}''',
+    n("after_possibility", "Arsinoe", '''"The mouth was smug. I can improve it," {n}Orvena says.{/n}
+{n}She wipes away half her chalk line and begins again. Arsinoe waits until the chisel is moving.{/n}
+"She has changed your leaf already. Good. I paid for Orvena's work, Commander, and I still expect to receive it."
+{n}Later, the finished face has a crooked smile and a missing corner. Orvena charges the agreed price. When you glance at the sum, she taps the chisel.{/n}
+"You held up a picture. I cut the stone."
+{n}Arsinoe pays her, then holds out the wrapping cloth to you.{/n}
+"Carry it carefully. I have bought quite enough broken stone today."''',
       c('"Carry home the face Orvena actually chose to make."', flags=("arsinoe.stone_possibility", "arsinoe.stone_chosen"))),
 ], "arsinoe_two_doors")
 
 
 s("arsinoe_the_first_cart", "What the repair leaves behind",
   '"Is the passage ready?"', [
-    n("start", "Arsinoe", '''"Ready for the work we agreed to pay for. Orvena has been very precise about that."
+    n("start", "Arsinoe", '''"Ready for the work we paid for. People can reach the market without going round half the fortress. Orvena has been quite precise about what remains."
 {n}Arsinoe walks with you to the passage. A shallow stream runs from a bucket into the repaired channel. Orvena watches where it emerges below; the cooper watches the dry patch beside his wall with the anxious pride of a man who has decided the result was his idea.{/n}
 "You can admire it later," {n}the mason tells him.{/n} "Stand where I can see whether the tread shifts."
 {n}He obeys. Nothing moves. Orvena repeats the test with two of her crew, then marks the date on the underside of a spare stone she is leaving for future repairs.{/n}
@@ -274,7 +270,7 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
 "It is open to your feet," {n}Edris says.{/n} "Try delivering a smaller barrel."
 {n}Orvena intervenes before that becomes a discussion of each other's customers. She leaves them with a written price that will remain valid for a stated period, then gathers her tools.{/n}
 {n}Arsinoe watches a woman lead two laden companions carefully past the barrier.{/n}
-"This is what I paid for. I keep wanting to pay for the rest, which is exactly how a gift becomes a habit and a habit becomes a tithe nobody agreed to."
+"This is what I paid for. I keep wanting to pay for the rest, but I have already spent the sum I agreed to give."
 {n}She turns to you.{/n}
 "How did it look from where you stood?"''',
       c('"People can use a safe passage again. Let that be an improvement."', "heard"),
@@ -298,7 +294,7 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
       c('"Go home with her."', "home")),
     n("expected_staged", "Arsinoe", '''"Sulking."
 {n}She looks at the ugly upper landing, then at you, with the expression of a woman who has been caught complaining in public and intends to go on doing it.{/n}
-"I chose the cheaper repair. I know I chose it. I would choose it again, because a gift that keeps growing becomes a tithe. That does not oblige me to admire the landing. It is hideous, and I shall say so every time I climb it."
+"I chose the cheaper repair. I know I chose it. I would choose it again, because it was the gift I could afford. That does not oblige me to admire the landing. It is hideous, and I shall say so every time I climb it."
 {n}She takes your arm for the lower steps anyway.{/n}
 "Walk with me. You may admire it on my behalf."''',
       c('"Go home with her."', "home")),
@@ -411,7 +407,7 @@ s("arsinoe_before_the_road", "Something that travels well",
 {n}She rises to fetch a small, soft pouch from a drawer. Inside is a thin metal cup, plain except for a dent near the rim.{/n}
 "I carried this for years. It does not improve what you drink from it, despite what I was told when I bought it. But it fits in a bag, and I have not yet managed to break it."
 {n}She offers it to you.{/n}
-"Take it if it will be useful. I have been trying to think of a gift that would not require you to protect it from your life."''',
+"Take it if it will be useful. I wanted to give you something that would survive a march in your baggage."''',
       c('"I would like something of yours to carry."', "cup"),
       c('"Keep it. Tell me something I can remember instead."', "memory")),
     n("cup", "Arsinoe", '''{n}The dent catches beneath your thumb. Arsinoe notices.{/n}
@@ -507,7 +503,7 @@ s("arsinoe_where_she_stays", "The road she has not taken",
       c('"Is it the work you want, or the chance to begin again?"', "begin")),
     n("dull_stone", "Arsinoe", '''"A stone." {n}She looks frankly delighted.{/n} "Under your bedroll. Three nights. And you were too tired to move it."
 {n}She laughs, catches herself, and then decides not to apologize for it.{/n}
-"That is the most ordinary thing anyone has ever brought me back from anywhere. People bring me silk. People bring me relics with three owners and no receipts." {n}She tucks her hand into the crook of your arm.{/n} "I shall think of your stone whenever someone at the council tells me the Abyss is beyond mortal understanding. It is not. It is lumpy."''',
+"That is considerably less grand than the gifts people usually bring me. People bring me silk. People bring me relics with three owners and no receipts." {n}She tucks her hand into the crook of your arm.{/n} "I shall think of your stone whenever someone at the council tells me the Abyss is beyond mortal understanding. It is not. It is lumpy."''',
       c('"Is it the work you want, or the chance to begin again?"', "begin")),
     n("dull_laugh", "Arsinoe", '''"A bad joke." {n}She weighs it with the gravity she gives a contract.{/n} "At a fire. In the Abyss. With nothing coming out of the dark."
 {n}She nods slowly.{/n}
@@ -578,17 +574,14 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
 {n}When the evening ends, she walks you to the door. The window remains open behind her.{/n}
 "Come again. I have decided not to require a new excuse every time I want this."''',
       c('"Promise another ordinary evening."', flags=("arsinoe.campaign_developed", "arsinoe.last_evening_kept"))),
-    n("night", "Arsinoe", '''"I do. I have wanted to ask for some time, and I kept finding reasons to improve the room first. The room has had enough of my attention."
-{n}She reaches past you and turns the little stone face toward the wall. Then she takes your hand and puts it at the clasp of her collar, and holds it there, and watches you with those gold eyes until you understand that she means for you to open it.{/n}
-"Slowly. I have waited long enough to be allowed to enjoy the waiting."
-{n}Her robes are the robes of a priestess who has never once been underdressed in public, and there are a great many fastenings. She knows every one of them. She lets you find them yourself, and laughs, low, when one defeats you, and does not help. When the last of them gives, she steps out of the cloth without looking down at it and draws you to the bed by the belt.{/n}
-{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she wants you to see her; she has not spent all those years choosing robes to be undressed in the dark. Her mouth is warm, her hands are not shy, and she pulls you down onto the bed with her and wraps her legs around you and draws you close, her eyes open the whole time.{/n}
-{n}She is not quiet about what she wants, and she is very precise about it: here, and slower, and *there*, in a voice gone low and unsteady at the edges. Her heels press into the backs of your thighs. She catches your face in both hands to keep your eyes on hers, says your name once, and brings her hips up to meet you.{/n}
-{n}Later, the room is quiet, and the window is open, and Arsinoe's hand finds yours under the cover.{/n}
-"I am glad you asked. I am gladder that I did."
-{n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}
-{n}When you come down, the shop is still shuttered, an hour past its opening, and there is a queue at the door. Arsinoe looks at it, and at the second cup she has set out on the counter without comment, and does not hurry.{/n}
-"The first late opening of my career. They will talk. Let them; I have given them nothing else to talk about in years. There. Now you may go and be impressive. I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive."''',
+    n("night", "Arsinoe", '''"Stay. I have wanted to ask. I kept finding something wrong with the room."
+{n}Arsinoe turns the little stone face toward the wall and puts your hand on her collar clasp.{/n}
+"Slowly. I chose these robes with considerable care. You may give taking them off the same attention."
+{n}She watches you undo the fastenings. At the last one she catches your wrist, kisses the inside of it, and lets the cloth fall. She stands in the lamplight with her hair loose, making no move to cover herself.{/n}
+"Leave the lamp. I want to see you looking."
+{n}Her kiss is slow until your hands close on her waist. Then she draws you to the bed by your belt. Her skin is warm beneath your palms; her breath catches against your mouth. She pulls you over her, holds your gaze, and reaches between you.{/n}
+{n}In the morning, the shop is still shuttered an hour after opening. Arsinoe sets a second cup beside her own and kisses you before turning the sign.{/n}
+"An hour late. They will talk. Let them. You may go and be impressive now; I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive."''',
       c('"Leave with a kiss and the promise of another visit."', flags=("arsinoe.campaign_developed", "arsinoe.last_evening_kept", "arsinoe.night_shared"))),
     n("slow", "Arsinoe", '''{n}Arsinoe sits beside the open window and asks about your day. You tell her something you have been meaning to say, and find yourself adding another detail because she has asked the right question.{/n}
 {n}Later she tells you about the letter she wrote. She had expected refusing the distant appointment to feel like an ending. Instead, it has left her wanting to arrange things in the room she intends to keep. She asks your opinion of a shelf, and accepts your disagreement without immediately defending the wall against it.{/n}
@@ -617,11 +610,11 @@ def ending(id, title, text, requires, forbids=(), owner="Epilogue"):
 
 ORDINARY = ("arsinoe.closed", "swarm", "true_lich", "sacrifice", "ascended")
 ending("arsinoe_ending_kept", "A city with an open window", '''{n}Arsinoe remained in Drezen by choice. The work was plentiful, and she continued to disagree with those who assumed a priest of Abadar would be satisfied merely because a sum balanced. Some transactions were foolish at any price. Some improvements were worth making before anyone knew how to profit from them.{/n}
-{n}The Commander knew the room behind her working space, the little carved face, and the window Arsinoe preferred to leave open. There were invitations made with days to spare and visits that began with a knock when both happened to be free. The war and its aftermath stole a good many evenings. Arsinoe entered each one in a small book by the bed, as owed, and never once collected.{/n}
+{n}The Commander knew the room behind her working space, the little carved face, and the window Arsinoe preferred to leave open. There were invitations made with days to spare and visits that began with a knock when both happened to be free. The war and its aftermath stole a good many evenings. Arsinoe kept the invitations in a small book by the bed, including the ones the war had interrupted. She made fresh arrangements when there was time.{/n}
 {n}Arsinoe still looked up when someone described a city she had never seen. She wanted journeys, and a life that did not have to be packed away every time she took one. Whenever a road was mentioned at supper, she had the maps out before anyone had finished the sentence.{/n}
 {n}The repaired passage became ordinary enough to go unnoticed. Arsinoe would occasionally pause on its third step and smile. When the Commander asked what had amused her, she sometimes answered with the whole story and sometimes with a kiss.{/n}''',
     ("arsinoe.committed", "arsinoe.campaign_developed"), ORDINARY)
-ending("arsinoe_ending_open", "The invitation she renewed", '''{n}Arsinoe and the Commander kept each other's company without a contract, which she called the most expensive arrangement in Drezen and the only one she had never tried to renegotiate. An invitation could be accepted or put off. What she would not forgive was a week spent airing the good cushion for someone who had never meant to come.{/n}
+ending("arsinoe_ending_open", "The invitation she renewed", '''{n}Arsinoe and the Commander kept each other's company without a contract, and she continued to ask plainly for the evenings she wanted. An invitation could be accepted or put off. What she would not forgive was a week spent airing the good cushion for someone who had never meant to come.{/n}
 {n}She remained in Drezen and made the room by the window increasingly her own. The Commander knew where to sit, which cup she preferred, and how quickly an innocent remark about a building could become an argument worth enjoying. Some visits ended at the door. Others lasted until the shop opened late, and the queue outside drew its own conclusions.{/n}
 {n}Other cities still wrote to her, and she still read their letters with interest. For the time being, she liked hearing a familiar step on the repaired stair, and finding that she still wanted to open the door.{/n}''',
     ("arsinoe.open_future", "arsinoe.campaign_developed"), (*ORDINARY, "arsinoe.committed"))
@@ -629,7 +622,7 @@ ending("arsinoe_ending_unfinished", "The evenings still to come", '''{n}Arsinoe 
 {n}One morning she began a note while waiting for a customer. She meant to offer an evening, but found herself describing something amusing that had happened in the street. By the time she reached the invitation, the page was nearly full.{/n}
 {n}Arsinoe read it over, crossed out an unnecessary apology for its length, and sent it. There were still things she wanted to hear from the Commander. She hoped the answer would include a day when they could sit together.{/n}''',
     ("arsinoe.open_future",), (*ORDINARY, "arsinoe.campaign_developed", "arsinoe.committed"))
-ending("arsinoe_ending_promised", "The promise before the next visit", '''{n}Arsinoe and the Commander had chosen a lasting courtship before the last campaign left them with arrangements still to make. She remembered the promise clearly. So, on difficult days, did the Commander. It did not provide a date for the next visit, but it made the waiting a debt, and Arsinoe had never in her life let a debt go uncollected.{/n}
+ending("arsinoe_ending_promised", "The promise before the next visit", '''{n}Arsinoe and the Commander had chosen a lasting courtship before the last campaign left them with arrangements still to make. She remembered the promise clearly. So, on difficult days, did the Commander. Arsinoe sent another invitation, with the date left for the Commander to fill in.{/n}
 {n}Arsinoe kept the small stone face by her window. Once, while dusting beneath it, she caught herself rehearsing what she would say when the Commander arrived. The conversation went exceptionally well in the empty room. She laughed, put the cloth away, and wrote a note that left room for an answer she had not supplied.{/n}
 {n}She wanted the next evening, and the argument after it, and the one after that. For now she sent the invitation and went back to work, listening more closely than usual whenever someone came up the stair.{/n}''',
     ("arsinoe.committed", "arsinoe.campaign_lover"), (*ORDINARY, "arsinoe.campaign_developed"))
