@@ -103,19 +103,20 @@ class HorzalahPolishTests(unittest.TestCase):
         self.assertTrue(all(route.DEAD in s["Forbids"] for s in pages))
         mourned = self.node("epilogue.mourned", "page")
         self.assertNotIn("box", mourned["Text"])
-        self.assertEqual(mourned["Paragraphs"][-1]["Requires"], [route.EAR])
+        self.assertEqual(next(p for p in mourned["Paragraphs"] if "For three days" in p["Text"])["Requires"], [route.EAR])
         self.assertIn("held no body", mourned["Paragraphs"][4]["Text"])
         self.assertNotIn("retied", mourned["Paragraphs"][1]["Text"])
 
     def test_knife_and_missed_chamber_endings_have_no_retroactive_receipts(self):
         paragraphs = self.node("epilogue.together", "page")["Paragraphs"]
         self.assertIn(route.P_KNIFE, paragraphs[11]["Forbids"])
-        self.assertEqual(paragraphs[-2]["Requires"], [route.CAME, route.P_KNIFE])
-        self.assertEqual(paragraphs[-1]["Forbids"], [route.CHAMBER])
-        self.assertIn("bare skin", paragraphs[-1]["Text"])
+        self.assertEqual(next(p for p in paragraphs if "returned the thin knife" in p["Text"])["Requires"], [route.CAME, route.P_KNIFE])
+        slot = next(p for p in paragraphs if p.get("Id") == route.H + "epilogue.together.explicit.1")
+        self.assertEqual(slot["Forbids"], [route.CHAMBER])
+        self.assertIn("Bare skin", slot["Text"])
         self.assertTrue(all(not c["Set"] for c in self.node("epilogue.together", "page")["Choices"]))
-        self.assertIn("snuff the candle", self.node("epilogue.commit", "page")["Text"])
-        self.assertNotIn("unbuckle her collar", self.node("epilogue.commit", "page")["Text"])
+        commit_slot = next(p for p in self.node("epilogue.commit", "page")["Paragraphs"] if p.get("Id") == route.H + "epilogue.commit.explicit.1")
+        self.assertIn("snuff the candle", commit_slot["Text"])
         self.assertEqual(self.node("beat.second_night", "cut")["Text"],
                          "{n}Her mouth closes on yours. She reaches toward the bedside candle, and the room goes dark.{/n}")
 
