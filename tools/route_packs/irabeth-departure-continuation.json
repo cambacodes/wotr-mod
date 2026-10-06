@@ -1,0 +1,597 @@
+{
+  "status": "AUTHORED, NOT REGISTERED: requires authorized shared runtime work",
+  "device_class": "another_character_intervenes",
+  "setting": "Drezen company desk beside the throne-room guardroom, wife's answered dispatch",
+  "payoff_shape": "military discharge to Anevia followed by Irabeth's off-duty request",
+  "superseding_rule": "No additional obedience quest, fees, approval score or reconciliation requirement.",
+  "shared_dependencies": [
+    "src/Story.cs ValidateDepartureVisit: allow the four specifically named continuation scenes and mixed epilogue; route-local stance effects are not native state.",
+    "src/Story.cs Available: time the continuation from its actual predecessor, retaining existing delay hours.",
+    "src/Main.cs IrabethMeetingLease: a separate bounded lease after her own invitation, not the completed first-hour lease.",
+    "tools/departure_contracts.json: register correspondence, new bounded visit and explicit departed epilogue without restoring commission or general presence.",
+    "Trickster-only dependent native departure slide: retain humiliation and nightmares; acknowledge private contact without reinstatement."
+  ],
+  "Scenes": [
+    {
+      "Id": "irabeth.return_invitation",
+      "Title": "The answer she sends first",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Irabeth's next letter arrives with a cart number underlined twice.{/n}\n{n}\"The carter answered me. His load was turned back before it reached Drezen. Your supplier charged for goods received, and your officer detained the man for failing to deliver them. Ask the officer who turned him back.\"{/n}\n{n}Below the account she has written: \"You said you wanted my judgment. This is it. Tell me what happened when you used it.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her correction to the quartermaster.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_supplier_inquiry"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the letter unanswered for now.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth_gone",
+        "irabeth.return_private_hour_kept",
+        "irabeth.return_correspondence_available"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "inhuman",
+        "swarm",
+        "true_lich",
+        "closed",
+        "irabeth.closed",
+        "irabeth.return_meeting_declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "AfterDeparture": "irabeth",
+      "Remote": true,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "irabeth.return_supplier_answer",
+      "Title": "The cart that never arrived",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Irabeth found the cart number. Let us hear the supplier.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The quartermaster brings the officer and the supplier to the yard. The supplier gives the carter's name as proof of delivery; the officer says he turned that same cart back when a patrol reported cultists on the road.{/n}\n{n}Irabeth's underlined number matches both accounts. The quartermaster opens the gate book. The load never passed through it.{/n}\n{n}The supplier reaches for his invoice. You keep it on the table. The officer admits that the detention order was entered later, without his earlier instruction beside it. The carter has spent three days waiting in a guardroom for refusing an order he had actually obeyed.{/n}",
+          "Choices": [
+            {
+              "Text": "[Release the carter and enter the officer's instruction beside the detention order.]",
+              "Next": "correct",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the inquiry open until you can hear the carter yourself.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "correct",
+          "Speaker": "Narrator",
+          "Text": "{n}The carter walks out with his cart number and the cancellation in his hand. The quartermaster strikes the delivery charge, signs the correction, and leaves the false claim attached to it for the investigators.{/n}\n{n}The supplier leaves under escort. The officer remains to explain why he concealed his own order from the clerk who wrote the detention.{/n}\n{n}You send Irabeth the entire account, including that question. Her advice has produced a correction she can check, not a flattering report of how readily you agreed with her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send the corrected account and the carter's acknowledgment.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_advice_used"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth_gone",
+        "irabeth.return_invitation",
+        "irabeth.return_supplier_inquiry",
+        "irabeth.return_correspondence_available"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "inhuman",
+        "swarm",
+        "true_lich",
+        "closed",
+        "irabeth.closed",
+        "irabeth.return_meeting_declined"
+      ],
+      "DelayHours": 12,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "AfterDeparture": "irabeth",
+      "Remote": false,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "8692bff6041c47a0b13158d5977f291b",
+      "AnswerLists": [
+        "fa57cf97ea01bf34e9a30f6ad444381e"
+      ]
+    },
+    {
+      "Id": "irabeth.return_own_invitation",
+      "Title": "An invitation without a requisition",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The courier brings a short letter. Irabeth checked the cancellation with the carter; he has reached home.{/n}\n{n}\"The correction stands. Keep the original order where the next officer can find it. I will not come back to enforce it for you.\"{/n}\n{n}The second paragraph has been crossed out and begun again.{/n}\n{n}\"I am coming through Drezen after the next courier. I would like an evening with you. No account this time. I have finished the book, and I have an argument about its forest which I would rather have in person.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept her evening as a private visit.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_invitation"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Thank her, but decline another visit.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth_gone",
+        "irabeth.return_supplier_answer",
+        "irabeth.return_advice_used",
+        "irabeth.return_correspondence_available"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "inhuman",
+        "swarm",
+        "true_lich",
+        "closed",
+        "irabeth.closed",
+        "irabeth.return_meeting_declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "AfterDeparture": "irabeth",
+      "Remote": true,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "irabeth.return_private_visit",
+      "Title": "Her road through Drezen",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You agreed to hear me. May we speak?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth leaves a travelling pack beside the chair. There is no uniform in it. She holds up the book, then puts it down without opening it.{/n}\n\"I used the forest as an excuse. A poor one. You noticed.\"\n{n}She smiles, briefly, then looks at you straight.{/n}\n\"I wanted another evening. With you. That doesn't put me back under your command. I am still leaving in the morning.\"",
+          "Choices": [
+            {
+              "Text": "\"And Anevia?\"",
+              "Next": "wife",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep her company, without asking for more.]",
+              "Next": "friend",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I expected my Knight-Captain back.\"",
+              "Next": "rank",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "wife",
+          "Speaker": "Irabeth",
+          "Text": "\"I asked her before I packed.\"\n{n}Irabeth takes a folded note from the book and hands it over. Anevia has written across the margin in a much less patient hand.{/n}\n\"'Beth comes home. You get an evening, not her commission. And stop sending her puzzles when you mean invitations.'\"\n{n}Irabeth folds it again.{/n}\n\"She wants the next evening with me. So do I. Now I want your answer. An evening with Irabeth. Can you manage that?\"",
+          "Choices": [
+            {
+              "Text": "\"Yes. The arrangement you both offered.\"",
+              "Next": "yes",
+              "Set": [
+                "irabeth.partner_stance.share"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Leave her. Stay here with me.\"",
+              "Next": "exclusive",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell her nothing next time.\"",
+              "Next": "secret",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Company. I would like that, and no more.\"",
+              "Next": "friend",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "exclusive",
+          "Speaker": "Irabeth",
+          "Text": "\"No. You asked for my judgment and then asked me to abandon it at the door. Anevia is my wife. I am going home to her.\"\n{n}She lifts the pack onto her knee.{/n}\n\"You can still have the evening I offered.\"",
+          "Choices": [
+            {
+              "Text": "\"Then we keep her place in it.\"",
+              "Next": "yes",
+              "Set": [
+                "irabeth.partner_stance.share"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Accept her refusal and let her leave.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_declined",
+                "irabeth.partner_stance.exclusive"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "secret",
+          "Speaker": "Irabeth",
+          "Text": "\"No. I left Drezen with her. She has earned better than a lie about why I came back through it.\"\n{n}She closes the book.{/n}\n\"Ask for what I offered. Or leave it.\"",
+          "Choices": [
+            {
+              "Text": "\"Keep it honest.\"",
+              "Next": "yes",
+              "Set": [
+                "irabeth.partner_stance.share"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her leave.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_declined",
+                "irabeth.partner_stance.secret_refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "yes",
+          "Speaker": "Irabeth",
+          "Text": "\"Good.\"\n{n}She sets down the pack and comes round the chair. Her hand closes behind your neck; her kiss is firm, unhurried, and followed by a small, exasperated laugh.{/n}\n\"I spent half the road deciding how to ask. Come here. We have an evening to waste.\"",
+          "Choices": [
+            {
+              "Text": "[Stay close and hear her argument about the forest.]",
+              "Next": "morning",
+              "Set": [
+                "irabeth.return_personal_yes"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Irabeth",
+          "Text": "{n}In the morning she fastens the travelling pack. From the window comes the noise of the garrison assembling; she glances toward it, then shoulders the pack.{/n}\n\"They have an officer. I have a road.\"\n{n}She gives you one more kiss at the door.{/n}\n\"Next time, send an invitation. I can still say no to it.\"\n{n}She leaves for home. Nobody carries a new commission after her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Walk her to the road, then let her go.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_visit_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "friend",
+          "Speaker": "Irabeth",
+          "Text": "\"Then listen. That forest could not feed half the army the writer marched through it.\"\n{n}She opens the book and finds the offending passage. The evening goes pleasantly enough for her to miss the first bell. She goes back to her lodging before the second.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the evening at friendship.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_friend",
+                "irabeth.return_personal_visit_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "rank",
+          "Speaker": "Irabeth",
+          "Text": "{n}She lifts the pack again.{/n}\n\"Then you should have read my letter. Goodnight, Commander.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "irabeth.return_personal_declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth_gone",
+        "irabeth.return_own_invitation",
+        "irabeth.return_personal_invitation",
+        "irabeth.return_meeting_arrived",
+        "irabeth.return_meeting_accepted"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "inhuman",
+        "swarm",
+        "true_lich",
+        "closed",
+        "irabeth.closed",
+        "irabeth.return_meeting_declined"
+      ],
+      "DelayHours": 12,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "AfterDeparture": "irabeth",
+      "Remote": false,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "irabeth.return_epilogue",
+      "Title": "The road she kept",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth",
+          "Paragraphs": [
+            {
+              "Text": "{n}Irabeth never resumed her commission in Drezen. The corrected account stayed with the quartermaster. Her letters came from the road, with no rank beneath the signature.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "sacrifice"
+              ],
+              "AnyGroups": [],
+              "ForbidOverrides": {
+                "sacrifice": "trickster.commander_back"
+              }
+            },
+            {
+              "Text": "{n}After the war she came through Drezen again, dusty and cross about a flooded road. The Commander met her at the gate. She kissed a familiar mouth before beginning her complaint, then insisted on hearing what had happened to the carter.{/n}\n{n}She left again for the home she kept with Anevia. There were more visits, and letters when a visit could not happen. The betrayal at the Coronation stayed between them; she never called an evening its pardon.{/n}",
+              "Requires": [
+                "irabeth.return_personal_yes"
+              ],
+              "Forbids": [
+                "sacrifice",
+                "ascended",
+                "anevia_dead"
+              ],
+              "AnyGroups": [],
+              "ForbidOverrides": {
+                "sacrifice": "trickster.commander_back"
+              }
+            },
+            {
+              "Text": "{n}They stayed correspondents. Irabeth sent the passages she objected to, along with invitations to argue about them. The Commander answered. Her wife kept her place at the other end of every journey.{/n}",
+              "Requires": [
+                "irabeth.return_personal_friend"
+              ],
+              "Forbids": [
+                "sacrifice",
+                "ascended",
+                "anevia_dead"
+              ],
+              "AnyGroups": [],
+              "ForbidOverrides": {
+                "sacrifice": "trickster.commander_back"
+              }
+            },
+            {
+              "Text": "{n}When the Commander died, Irabeth wrote no invitation. She kept the last answer inside the book, and went home to mourn without a military audience.{/n}",
+              "Requires": [
+                "sacrifice"
+              ],
+              "Forbids": [
+                "trickster.commander_back",
+                "ascended"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}After the ascension she addressed her letters to the same name, not the new temple. She still served Iomedae. She expected her own letters to be answered, however far the road had become.{/n}",
+              "Requires": [
+                "ascended"
+              ],
+              "Forbids": [
+                "sacrifice"
+              ],
+              "AnyGroups": [],
+              "ForbidOverrides": {
+                "sacrifice": "trickster.commander_back"
+              }
+            },
+            {
+              "Text": "{n}When Anevia died, Irabeth kept her wedding ring. The next invitation was for company; she made no promise on behalf of the woman she had lost.{/n}",
+              "Requires": [
+                "anevia_dead"
+              ],
+              "Forbids": [
+                "sacrifice"
+              ],
+              "AnyGroups": [],
+              "ForbidOverrides": {
+                "sacrifice": "trickster.commander_back"
+              }
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth_gone",
+        "irabeth.return_personal_visit_kept"
+      ],
+      "Forbids": [
+        "irabeth_dead",
+        "irabeth.closed",
+        "inhuman",
+        "swarm",
+        "true_lich"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "irabeth",
+      "AfterDeparture": "irabeth"
+    }
+  ]
+}

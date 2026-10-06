@@ -399,9 +399,9 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
 
 # --- After the return: the test, the commit, her no ---------------------------------------------------------------
 
-# Q12 (Sol BEL): with no lover's history behind her, the killed history needs a reason for desire, not only vigilance. She
-# watches the Commander read the Iz line aloud at the muster, the one thing she would have done herself, and she is the one
-# who moves. Required (DRAWN) before her own trust test on that branch; a lover's history already has its grounds.
+# Round 2: the public account earns scrutiny, not a kiss. Her correction of the
+# withdrawal is heard in this existing audience. DRAWN retains its save identity
+# and existing watch reader; no extra obedience quest, fee or approval score.
 DRAWN = "irabeth.trickster.drawn"
 physical("irabeth.trickster.killed.the_roll", "The roll of the dead", '"I\'ll read the roll tonight."', [
     nar("start", '''{n}The roll of the week's dead is read in the throne room at the evening muster, as it always is, by a clerk. Tonight you take the list out of the clerk's hands and read it yourself: every name, rank and company, and how each one died. At the head of the old page, never corrected, is the line from Iz, and you read that too, in the same voice. "Knight-Captain Irabeth Tirabade. Struck down by the Commander."{/n}
@@ -409,17 +409,17 @@ physical("irabeth.trickster.killed.the_roll", "The roll of the dead", '"I\'ll re
       c("Continue", "stair")),
     i("stair", '''{n}She finds you on the back stair afterwards, where the torches are out, and takes you by the wrist hard enough to hurt.{/n}
 "You read it out. In front of my company. In front of recruits who think the sun comes up out of your boots." {n}Her grip does not ease.{/n} "Every officer I ever served under would have let the clerk lose that line. You read it like any other."
-{n}Then she pulls you in by the wrist and kisses you, once, furious, with her sword hilt jammed between your ribs and hers, and lets go.{/n}
-"That's the first thing you've done since Iz that I'd have done myself. Don't read anything into it."''',
-      c('[Catch her wrist before she goes] "Too late."', "caught", flags=(DRAWN,)),
+{n}She releases your wrist and lays a company dispatch against your chest. "The withdrawal. You wanted them to hold the road. I pulled them back when their shields split. The order is mine. Put that on the record too."{/n}
+"You read the truth. Good. Now hear my report. I will contradict you again if I have to."''',
+      c('[Take the dispatch.] "Your correction stays on the record."', "caught", flags=(DRAWN,)),
       c('[Let her go] "Goodnight, Knight-Captain."', "gone", flags=(DRAWN,)),
       c('"That was a mistake, Knight-Captain."', "mistake")),
-    i("caught", '''{n}She stops. She looks at your hand on her wrist, then at you, and for one breath she leans in.{/n}
-"Not on a back stair like a pair of recruits." {n}She takes her wrist back, unhurried.{/n} "If you want something from me, Commander, you'll ask for it where I can see your hands."''',
+    i("caught", '''{n}She watches you read the withdrawal order. Your name is above hers; her correction remains below it.{/n}
+"Good. We lost the road. We kept the soldiers." {n}She takes back the dispatch and folds it.{/n} "If you want something else from me, ask when this report is finished. Without the rank."''',
       c('"Goodnight, Knight-Captain."')),
     nar("gone", '''{n}She goes down the stair two steps at a time and does not look back. On the landing below she stops for a moment with one hand flat on the wall, as if the stone had moved, and then she is gone.{/n}''',
       c('"Goodnight."')),
-    i("mistake", '''"Probably." {n}She salutes, precisely.{/n} "I make one a year. That was this year's."''',
+    i("mistake", '''"Probably." {n}She salutes, precisely.{/n} "It was still my decision. The men are alive to complain about it."''',
       c('"Dismissed."', abort=True)),
 ], requires=("trickster.ever", RETURNED, BLOW, "irabeth.trickster.back_on_duty"),
    forbids=("irabeth.lover", DRAWN, BLOW_STANDS, "irabeth.committed"), delay=24)
@@ -430,10 +430,10 @@ physical("irabeth.trickster.killed.the_watch", "Under her sword", '"Knight-Capta
     i("start", '''{n}She is in the guardroom off the throne room, where the night watch sleeps in shifts. One cot is made up. Beside it is a stool, and she is sitting on the stool with the sword across her knees.{/n}
 "You want something from me. I can see it on you. Before you ask it, you're going to sleep here. Tonight. Unarmed. And I'm going to sit on this stool with this until the bell, and you're going to find out whether you can close your eyes."
 "I did, at Iz. I closed them for one breath, and you struck. Your turn."''',
-      c('[Unbuckle your sword belt, hand it to her, and lie down]', "night", flags=(TRUSTED,)),
+      c('[Put any weapons on the shelf and lie down unarmed.]', "night", flags=(TRUSTED,)),
       c('"Not tonight."', abort=True)),
     nar("night", '''{n}You lie down. She does not move. The lamp burns low; the watch changes twice beyond the door. Every time you open your eyes she is exactly where she was, the blade across her knees, watching you the way she watches a road at night.{/n}
-{n}Near dawn you sleep, properly, for an hour. When you wake she has laid your belt and its gear across your chest and gone. On the stool is a scrap of duty roster with one line on it, in her square hand: "Slept. Didn't die. Neither did I."{/n}''',
+{n}Near dawn you sleep, properly, for an hour. When you wake she has gone. Nothing on the shelf has been touched. On the stool is a scrap of duty roster with one line on it, in her square hand: "Slept. Didn't die. Neither did I."{/n}''',
       c('"Neither did I."')),
 ], requires=("trickster.ever", RETURNED, BLOW, "irabeth.trickster.back_on_duty"),
    forbids=(TRUSTED, BLOW_STANDS, "irabeth.committed"), delay=24, RequiresAnyGroups=[["irabeth.lover", DRAWN]])
@@ -463,7 +463,7 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
 ], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=24)
 
 THRESHOLD = '''{n}Irabeth pulls you through the side door into her roster room. She sweeps the duty lists off the desk, unbuckles her sword belt, and lays it along the far edge, the hilt within reach. Then she swears, short and furious, at a breastplate buckle.{/n}
-"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. Slowly. I want to remember it."
+"I've wanted you here all evening. I'm done pretending the reports need another look. Take the rest off me, Commander. Slowly. I want to remember it."
 {n}Gauntlet, then vambrace. Her fingers fumble at the breastplate and she lets you finish. The plate hits the floor. She opens her arming coat; old scars lie pale across hot skin and hard muscle. She catches your mouth, her tusks grazing your lip, then hauls you onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt.{/n}'''
 
 MORNING_NOTE = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
@@ -472,24 +472,24 @@ MORNING_NOTE = '''{n}At dawn the watch changes under the window. Irabeth is back
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
 MORNING_HOME = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
-"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail, and she'll get most of them."
+"I am going home before the inspection. Nevi has my morning. You have had my night."
 {n}You buckle the gauntlet for her. She picks up the sword belt and fastens it herself.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-REASONS_NEW = '''"You lay down under my sword and handed me yours. I've served three commanders. Not one of them would have done it, and every one of them would have been right not to."
+REASONS_NEW = '''"You lay down unarmed under my sword. I've served three commanders. Not one of them would have done it, and every one of them would have been right not to."
 {n}Her jaw sets.{/n}
-"And since that back stair I've wanted you. I didn't before Iz. I don't like that I do now, and I'm not going to thank you for it."'''
+"I wanted to see whether you could hear me without reaching for an order. Tonight I want you to stay. That is my answer, not your reward for reading a name."'''
 
-REASONS_TEXT = '''"You lay down under my sword and handed me yours. Nobody at Iz would have bet on that. Least of all me."
+REASONS_TEXT = '''"You lay down unarmed under my sword. Nobody at Iz would have bet on that. Least of all me."
 {n}Her jaw sets.{/n}
 "And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."'''
 
 THRESHOLD_BLOW = '''{n}She takes you into the roster room, sweeps the duty lists off the desk, and lays her sword belt along the far edge. She keeps a hand on the hilt until you look at it.{/n}
 "Take the rest off me, Commander. Slowly. And leave that where it is."
-{n}Gauntlet, then vambrace. The breastplate comes away beneath your hands. She opens her arming coat, exposing hot skin and hard muscle, old scars and the wound you left at Iz. She presses your palm over it and holds it there. Her kiss is fierce; she catches your lower lip between her teeth before letting you breathe. Then she pulls you down onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt. The sword lies beside her hand.{/n}'''
+{n}Gauntlet, then vambrace. The breastplate comes away beneath your hands. She opens her arming coat, exposing hot skin and hard muscle, old scars and the wound you left at Iz. Her fingers stop yours at the edge of the wound. She looks at you until you meet her eyes, then guides your hand to her shoulder. Her kiss is fierce; she catches your lower lip between her teeth before letting you breathe. Then she pulls you down onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt. The sword lies beside her hand.{/n}'''
 
 MORNING_HOUSE = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
-"Nevi will know the second I walk into the kitchen. She'll laugh at me, and then she'll put me to work on the bread and ask questions until it's proved."
+"I promised Nevi breakfast. I am going home, and I am telling her myself. Do not send a runner to fetch me."
 {n}You buckle the gauntlet for her. She picks up the sword belt and fastens it herself.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
@@ -753,12 +753,12 @@ Galfrey."
     # She stops Irabeth in the market instead, and Irabeth reports it on her own hub: inline, no delivery.
     reaction("Irabeth", "irabeth.trickster.dead.react_kitrane", (RETURNED, "galfrey.trickster.returned"),
              '''"A knight of the Green Crows stopped me in the market this morning. Grey hood. Old sword." {n}Irabeth's voice is very level.{/n} "She looked at me the way she looks at a dispatch she's been waiting a week for, and she said, 'You were dead, Knight Tirabade. So was I. Neither of us is to make a habit of it.' Then she bought me a pie and walked off."
-{n}She sets the pie, untouched, on the duty roster.{/n} "I've taken orders in that voice since I was a squire, Commander. I'm not going to say whose it is. I'm going to eat the pie."''',
+{n}She sets the pie, untouched, on the duty roster.{/n} "I heard that voice when the Queen knighted me, Commander. I'm not going to say whose it is. I'm going to eat the pie."''',
              answer_list=HUB, forbids=(KILLED,), chapter=5, last=5, delay=24, entry='"Anything to report, Knight-Captain?"',
              Chapters=[5]),
     reaction("Irabeth", "irabeth.trickster.killed.react_kitrane", (RETURNED, KILLED, "galfrey.trickster.returned"),
              '''"A knight of the Green Crows stopped me in the market this morning. Grey hood. Old sword." {n}Irabeth's voice is very level.{/n} "She looked at the seam in my surcoat, and then at me, and she said, 'I am told your Commander struck you down at Iz and then had you brought back. I have been put down and taken up again myself, lately. It does less for one's opinion of the hand that did it than one would like.' Then she walked off."
-{n}Her hand rests on the pommel at her hip.{/n} "I've taken orders in that voice since I was a squire, Commander. I'm not going to say whose it is. I'm going to think about what she said for a week."''',
+{n}Her hand rests on the pommel at her hip.{/n} "I heard that voice when the Queen knighted me, Commander. I'm not going to say whose it is. I'm going to think about what she said for a week."''',
              answer_list=HUB, chapter=5, last=5, delay=24, entry='"Anything to report, Knight-Captain?"', Chapters=[5]),
     reaction("Seelah", "irabeth.trickster.killed.react_seelah", ("irabeth.trickster.blow_rewritten",),
              '''{n}Seelah's hands are shaking. She hides them behind her back, the way she did as a novice.{/n}
@@ -794,6 +794,8 @@ def integrate(payload):
     pre-Iz private scenes (they stay closed after IrabethDead, as before)."""
     from storylines import irabeth_partner_stance
     irabeth_partner_stance.integrate(payload)
+    from storylines import irabeth_round2
+    irabeth_round2.integrate(payload)
     rel = payload["Relationships"]["irabeth"]
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}

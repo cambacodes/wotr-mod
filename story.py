@@ -157,7 +157,7 @@ s("i_hands", "The work of hands", "Irabeth", 2,
       c('"Would you like help with the needle?"', "help")),
     n("help", "Irabeth", '''"If you can find the hole without stabbing either of us."
 {n}She gives you the needle. The thread has frayed at the end; you trim it, feed it through, and return it. A tiny service, scarcely worth mentioning. Her thanks are oddly serious.{/n}
-"Most people offer to do the whole thing for me, or tell me I should have someone else do it. This is mine. I would like to remain capable of tending to my own belongings."''', c('"I understand."', "ordinary")),
+"Thank you. Now let me finish it. I have a company to inspect, and I refuse to do it with my thumb sticking out."''', c('"I understand."', "ordinary")),
     n("useful", "Irabeth", '''"They have. Though I have just managed to sew the thumb shut."
 {n}She shows you the offending stitch, then cuts it. Her embarrassment gives way to a small, stubborn smile.{/n}
 "A sword hilt, a frightened horse, an opponent's wrist. I generally know what to do with my hands. This needle is making a poor witness for me."
@@ -165,8 +165,8 @@ s("i_hands", "The work of hands", "Irabeth", 2,
 "I had hoped to make a better impression than a woman defeated by her own clothing."''', c('"You can be more than one thing."', "ordinary")),
     n("look", "Irabeth", '''{n}Irabeth holds still. Her thumb rests against the place where the needle pricked her.{/n}
 "Then perhaps you should not look at me like that."
-{n}The words are firmer than her voice. She does not ask what you meant. She knows, and the knowledge has disordered something she had thought securely put away.{/n}
-"No. That was unfair. You are not responsible for making me comfortable with a compliment."
+{n}The words are firmer than her voice. Her needle stops halfway through the stitch. She looks at your mouth, then down at her hand.{/n}
+"No. I snapped because I liked it. Give me the glove before I say anything worse."
 {n}She reaches for the glove again, but leaves her bare hand on the table between you.{/n}''', c('"I can give you space."', "ordinary", flags=("i_interest",))),
     n("ordinary", "Irabeth", '''"Anevia would have drawn a face on the thumb by now. Given it a name. Addressed all further complaints to it."
 {n}Irabeth looks at the glove and laughs despite herself.{/n}
@@ -358,7 +358,7 @@ s("i_crossing", "No order given", "Irabeth", 3,
 "It mattered to me. I do not know what I am going to do with that. But it mattered."
 {n}She does not ask for absolution, and you do not offer it.{/n}''', c('[Say good night.]', flags=("i_affair",))),
     n("gentle", "Irabeth", '''{n}She nods and lets her arms loosen around you. There is disappointment in her face, but no wounded pride.{/n}
-"Yes. We can choose where to stop, even after we have failed to choose where to begin."
+"Yes. Stay a moment, though. I am not quite ready to let go."
 {n}She kisses your hand before releasing it. The gesture is so unguarded that it stays with you after she has gone.{/n}''', c('[Say good night.]', flags=("i_affair",))),
     n("refuse", "Irabeth", '''{n}Irabeth's expression clears. Whatever uncertainty brought her here has found an answer.{/n}
 "Then you should seek it from someone else. I will serve the crusade. I will not purchase affection with my obedience."
@@ -430,7 +430,7 @@ s("i_morning", "What an oath cannot answer", "Irabeth", 3,
 "I would like to reach for you now. Instead I am standing here trying to rehearse an answer for my wife. She deserves to hear it before I find a prettier version."''', c('"What happens now?"', "tell")),
     n("tell", "Irabeth", '''"We tell her. Together, if you are willing. I am not asking you to speak for me. I am asking you not to leave her wondering which of us is telling the part that makes us look better."
 {n}She studies you with a frankness that allows neither consolation nor evasion.{/n}
-"Until then, no stolen evenings. I am not punishing either of us. I need to know that we can bear wanting something without immediately taking it."''',
+"Until then, no stolen evenings. I have to look Nevi in the face. I will not kiss her with another lie in my mouth."''',
       c('"I will be there, and I will tell the truth."', flags=("i_will_tell",)),
       c('"Before that, you should know that Anevia and I have also been involved."', "both", requires=("a_affair",))),
     n("both", "Irabeth", '''{n}Irabeth draws a breath and cannot quite finish it. Her eyes remain fixed on yours.{/n}
@@ -1065,7 +1065,7 @@ s("i_self", "A strength she can set down", "Irabeth", 3,
 "Anevia tells me that I sometimes accept tenderness as if it were medical treatment. Something necessary which I should endure without complaint."
 {n}Her smile returns beneath your hand.{/n}
 "I am attempting to improve."
-{n}When she kisses you, she does not apologize for wanting to continue. When you pause, she waits. There is no test concealed in either response.{/n}''',
+{n}She catches your sleeve when you draw back, kisses you again, and leaves her hand warm against your neck.{/n}''',
       c('[Spend the rest of the evening close to her.]', "end"),
       c('"Read me another terrible passage first."', "read")),
     n("read", "Irabeth", '''"You have a cruel streak."
