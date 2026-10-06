@@ -13,7 +13,7 @@ Every scene sits on her presence in the smith's yard (hepzamirah_trickster.PRESE
 - her voice: "Enjoy it while you can. Today I'm dead, tomorrow you will be too." (Cue_0030 dbbcd068).
 Her villainy stays: she bargains, threatens, collects heads and enjoys it. Her affection, when it comes, is possessive.
 """
-from story_format import c, n, scene
+from story_format import c, n, p, scene
 from storylines import hepzamirah_trickster as core
 from storylines.hepzamirah_trickster import (ARMED, BESTED, BLOOD, BLOODLINE_KEPT, CALL_FORBIDDEN, CALL_SWORN, CLOSED,
                                               COMMITTED, CONFINED, RELEASED, COURIER_KILLED, COWED, CS, EMBASSY,                                               EVE_PROMISE, EYE_BURNED, EYE_KEPT, FAVOUR_OWED, FIRST, FLOWERS_KEPT,
@@ -186,13 +186,15 @@ yard(CHAPLAINS, "The chaplains' petition", '"The chaplains came to me about you.
     hz("cowed_say", '''"Oh," {n}she says, and she is smiling; it pulls the scar tight and it is not a kind thing.{/n} "Oh, that was *lovely*. Did you see his hands? Forty names, and you sent them away like a cook sends away a beggar."
 "My father's archpriests spoke to the faithful like that. I thought mortals could not do it. I thought you were all apologies." {n}She tests the point of the spike on her own thumb, and watches the red bead rise.{/n} "Do it again sometime. Somewhere I can watch properly."''',
        c("[Leave her smiling.]")),
-    nar("embassy", '''{n}The chaplains stare at you. The smith's apprentice, in the doorway, makes a noise he turns into a cough. The eldest chaplain says, carefully, that an embassy must represent a power. You tell him it represents the Leavable Prison, which is a sovereign cell in the Ivory Labyrinth recognised by at least one lich, and has its own ambassador. The Favors of the court's clerks will be spent for a week making it so on paper. The chaplains go, bewildered, to consult a canon lawyer who does not exist.{/n}''',
+    nar("embassy", '''{n}The eldest chaplain refuses to bow. An embassy needs a foreign power, he says; a name over a bedroom binds no court in Nerosyan. The court clerk nevertheless records your designation. For a week, favors will go into making the order hold inside Drezen.{/n}
+{n}Hepzamirah takes the petition from the chaplain's hand. He leaves to protest to the court, watching her until he reaches the gate.{/n}''',
         c("Continue", "embassy_say")),
     hz("embassy_say", '''{n}She has put down the pick. She is looking at you as if you were a new kind of creature in the flesh market, one she cannot yet price.{/n}
 "An *embassy*." {n}She tries the word the way she tried the onion.{/n} "You stole a wall and called it a door. You stole a body and called it a flat. Now you steal a bedroom and call it a country."
 "My father would have killed you for this in the first hour. He would have been right to. You are dangerous, clown. You make the names do things." {n}She takes up the pick again.{/n} "I am the ambassador, I suppose. What does an ambassador do?"''',
-       c('"Whatever she likes. That\'s the point of an embassy."', "embassy_end")),
-    hz("embassy_end", '''"Whatever she likes." {n}She rolls it round her mouth.{/n} "Then the first act of the Embassy of the Leavable Prison is to declare the chaplains' petition a hostile document, and to burn it." {n}She holds out her hand, palm up, for it. You find you still have it.{/n}''',
+       c('"Here, my order protects her rooms. Elsewhere she carries her own blade."', "embassy_end")),
+    hz("embassy_end", '''"Your order." {n}She rolls the petition tight and holds it over the forge until the signatures catch.{/n} "Then they can petition you again. I will be here to answer."
+{n}The chaplain watches the last of his forty names burn from the gate.{/n}''',
        c("[Give her the petition.]")),
 ], requires=("trickster.ever", RET, FIRST, PICK), forbids=(), delay=24)   # Q8: she grinds the pick here
 
@@ -329,15 +331,14 @@ yard(FLOWERS, "Wildflowers", '"Ember\'s been visiting you."', [
         c("Continue", "ember")),
     em("ember", '''"I brought her the blue ones today. The blue ones don't mind being thrown." {n}Ember smiles up at you.{/n} "She told me I was a stupid little elf who ought to be put in a jar myself. But she didn't throw them. I think she's getting used to them."''',
        c("Continue", "hep")),
-    hz("hep", '''"I am not getting *used* to anything." {n}The whetstone stops.{/n} "She comes every day. She sits there. She tells me things about the weather and about a cat. In the Labyrinth she looked at my ghost and said, *you poor thing*, and I would have torn her throat out if I had had hands."
-"I have told her what I did to my mother. I have told her about the markets in Alushinyrra. She listened to all of it, and then she asked me if I liked blue." {n}Her hand is white on the whetstone.{/n} "Explain her to me, clown. You brought her. What is she for?"''',
+    hz("hep", '''"I am not getting used to anything." {n}The whetstone stops.{/n} "She comes here, tells me about the weather and a cat, and calls me a poor thing. I could tear her throat out. She brings another jar."
+"I told her about my mother. About the flesh markets. She listened, then asked if I liked blue." {n}She grips the stone.{/n} "Explain her to me, clown."''',
        c('"She isn\'t for anything. She just thinks nobody should be alone."', "alone"),
        c('"She\'s for you to leave alone. Hurt her and our terms are done."', "warned")),
-    hz("alone", '''"Nobody should be alone." {n}She says it as if it were a line of scripture in a religion she has only heard described.{/n} "Everybody is alone. He set his children against each other. You saw what survived."
-{n}Ember, on her bucket, is humming.{/n}
-"She told me," {n}Hepzamirah says, lower,{/n} "that compassion is not an apple. That if you give it to someone you do not take it away from anyone else. It is the stupidest thing I have ever heard. It is not how anything works. Everything I ever had, I took from someone."''',
+    hz("alone", '''"Nobody should be alone." {n}She glances at Ember, humming on her bucket.{/n} "Tell that to my father's jailers. They would have found her company very useful."
+"She keeps giving me things. There is nothing left for me to take. I cannot stand it."''',
        c("Continue", "keep")),
-    hz("warned", '''{n}The good eye comes round to you, and for a moment it is exactly the eye of the woman in Colyphyr who promised to drag you naked behind her army.{/n}
+    hz("warned", '''{n}The good eye comes round to you, and the soldiers at the gate find something else to watch.{/n}
 "You think I would hurt *her*?" {n}Then, surprisingly, the look turns to contempt.{/n} "There is nothing to take from her. She has nothing she will not give away. Hurting her would be like robbing a beggar who keeps handing you his bowl."
 "No. I will not hurt her. I will throw her jars over the wall until she stops. She will not stop." {n}She sounds almost tired, which she has not allowed herself since the Labyrinth.{/n}''',
        c("Continue", "keep")),
@@ -361,7 +362,7 @@ yard(HORN, "The broken horn", '"The smith says you asked for a saw."', [
        c('[Take the saw.]', "cut"),
        c('"Leave it. It\'s yours. He wanted you to hate it."', "leave")),
     nar("cut", '''{n}She sits on the trough and bends her head, and puts her forehead against your chest so that the stump is under your hands, and holds very still. The horn is warm and heavy and smells of her. The saw goes through the splinters like green wood.{/n}
-{n}Halfway through she makes a sound in her throat that is not pain, and her hands close on your hips and hold on, hard, the way a woman holds a rail on a ship in weather. You keep sawing. She does not let go until the last splinter falls.{/n}''',
+{n}Halfway through her teeth close on a curse. Her hands grip your hips to hold her head steady. You keep sawing. She does not let go until the last splinter falls.{/n}''',
         c("Continue", "cut_say")),
     hz("cut_say", '''{n}She lifts her head. Her face is quite composed except for the breathing.{/n}
 "Level?" {n}She touches it. It is.{/n} "Level." {n}Her hands are still on your hips. She seems to notice this some time after you do, and looks down at them with the same interest with which she looked at her own red blood, and does not move them.{/n}
@@ -419,7 +420,7 @@ yard(CALL, "The archpriestess's call", '"You were praying. Out loud."', [
 {n}She stops before she reaches the end of it. She stays kneeling for a while afterwards, breathing hard, both hands flat on the flagstones.{/n}''',
         c("Continue", "call")),
     hz("call", '''"When he made me his archpriestess, he said the title would grant me protection of a rare kind," {n}she says, without looking up.{/n} "Every archpriest of a demon lord may summon their master in their hour of need, and the master must answer. He cannot refuse."
-"I called him once. In Colyphyr, with your crusaders at my throat. And he came, because he had to. He came to betray me, for his new favourite, that bitch Vorlesh, who has my place now." {n}She looks at her hands.{/n} "So I do not know if I am still his archpriestess. I do not know if the call is still mine. I got as far as his name just now. Then I stopped."''',
+"I called him once. In Colyphyr, with your crusaders at my throat. And he came, because he had to. He came to betray me. Vorlesh's work was worth more to him than I was." {n}She looks at her hands.{/n} "So I do not know if I am still his archpriestess. I do not know if the call is still mine. I got as far as his name just now. Then I stopped."''',
        c('"What happens if it\'s still yours?"', "if")),
     hz("if", '''"Then one day I say the end of the rite, and he comes, again, because he must. Here, or wherever I am standing. This time I will not be on my knees in a mine asking him to save me." {n}She lifts her head, and the good eye is bright.{/n}
 "This time he will look at me. Properly. I will ask him why he came to kill me instead, and whatever he answers, I will try to kill him."
@@ -428,7 +429,7 @@ yard(CALL, "The archpriestess's call", '"You were praying. Out loud."', [
        c('"You gave me terms. Your father is yours. I won\'t touch it."', "hers"),
        c('[Forbid it] "Not while you\'re under my roof. I won\'t have Baphomet in Drezen."', "forbidden", flags=(CALL_FORBIDDEN,))),
     hz("sworn", '''{n}She stares at you. Then she laughs, and it goes on too long, and at the end of it she wipes her good eye with the heel of her hand.{/n}
-"Where he can see you. A mortal, a clown, Areelu's walking experiment, standing beside the daughter he threw away, grinning at the Lord of Beasts." {n}She shakes her head slowly.{/n} "He would hate that more than the dying. He would hate it more than the pick."
+"Where he can see you. A mortal, a clown, Areelu's work, walking, standing beside the daughter he threw away, grinning at the Lord of Beasts." {n}She shakes her head slowly.{/n} "He would hate that more than the dying. He would hate it more than the pick."
 "Yes. Stand there. I will hold you to it." {n}She stands, and takes up the pick.{/n} "Not today. After the Wound. I will not give him your army to hide behind. Keep yourself useful until then."''',
        c("[Leave it there.]")),
     hz("hers", '''"Mine." {n}She tests the word, as she tested everything.{/n} "You remembered whose quarry he is. Good. I will remember too."
@@ -512,8 +513,8 @@ yard(EYE, "Something you will not like", '"You\'re back."', [
 
 # --- 13. The eve: the Threshold, and where her soul goes if this body dies. ----------------------------------------------
 
-yard(EVE, "Before the Threshold", '"Tomorrow, then."', [
-    *lead([("eve", nar, '''{n}The crusade marches at dawn. The yard is full of the noise of it: wagons, the smith's hammer going all night, the chaplains singing somewhere across the city. She has sharpened the pick until the spike shines. She is sitting on the trough with it across her knees, not doing anything, which you have never once seen her do.{/n}''', None),
+yard(EVE, "Before the Threshold", '"When we march."', [
+    *lead([("eve", nar, '''{n}The wagons for the Threshold are being repaired. When the crusade marches, they will need to hold. The yard is full of wagons, the smith's hammer going all night, the chaplains singing somewhere across the city. She has sharpened the pick until the spike shines. She is sitting on the trough with it across her knees, not doing anything, which you have never once seen her do.{/n}''', None),
            ("eve_eye", nar, '''{n}The crystal-cutter's lens hangs round her neck on its cord. She keeps touching it, the way soldiers touch a charm.{/n}''', EYE_BURNED),
            ("eve_sworn", hz, '''"Remember that you swore. Where he can see you. Not tomorrow. After."''', CALL_SWORN)],
           "soul"),
@@ -535,7 +536,7 @@ yard(EVE, "Before the Threshold", '"Tomorrow, then."', [
 "Remember this face. Both sides. If he tears it apart again, I want you to know exactly what you are avenging." {n}The good eye opens.{/n} "And you will come for me. Say it."''',
        c('"I\'ll come."', "last", flags=(EVE_PROMISE,))),
     hz("last", '''{n}She stands, and takes up the pick, and puts her free hand on the back of your neck, hard, the way she held your wrist the day she stayed.{/n}
-"First," {n}she says.{/n} "I go first. Into Deskari's mouth, into Areelu's labyrinth of a lab, into whatever the Worldwound has left. You come behind me with your jokes, and when it is over you will find me standing on something large and dead, and you will make a joke about it, and I will pretend to hate it."
+"First," {n}she says.{/n} "I go first. Into Deskari's mouth, into Areelu's laboratory, into whatever the Worldwound has left. You come behind me with your jokes, and when it is over you will find me standing on something large and dead, and you will make a joke about it, and I will pretend to hate it."
 "That is the plan. This time I choose what the victory is for." {n}She lets go.{/n} "Go and sleep, clown. I will keep watch. I do not need to sleep tonight. I have had enough of dark corners."''',
        c("[Leave her keeping watch.]")),
 ], requires=("trickster.ever", COMMITTED, MORNING), any_groups=[[EYE, CALL]], delay=24)
@@ -587,24 +588,22 @@ yard(MARKET, "Stock that bit", '"There\'s a woman at the gate asking for you."',
 
 # --- 15. The sister: Horzalah, the canary, and the verdict of the Lord of Beasts. ----------------------------------------
 
-yard(SISTER, "The weaker branch", '"You mentioned Horzalah."', [
+yard(SISTER, "The weaker branch", '"Tell me about Horzalah."', [
     *lead([("canary", nar, '''{n}There is a dead canary on the trough. A real one, from the cage the quartermaster keeps in the stores for the damp. Hepzamirah is looking at it with an expression you cannot read.{/n}''', None),
            ("canary_seen", hz, '''"You were there, in Colyphyr, when she sent me hers. A dead bird in a box with a ribbon, that opened its beak and spoke in her voice: *We meet again, sister*. Then it turned into a flaming spear and flew at my face." {n}She touches the ridge of scar.{/n} "Not this side. The other. I healed that one."''', "horzalah.gift_delivered")],
           "sister"),
-    *lead([("sister", hz, '''"Horzalah." {n}She says the name as if it were something she had bitten on.{/n} "My sister, by our father. The two of his brood he bothered to set against each other. *Horzalah is stronger in a fight, but Hepzamirah is more cunning and vicious.* That is what he used to say, when he said anything about us at all."''', None),
+    *lead([("sister", hz, '''"Horzalah's name." {n}She says the name as if it were something she had bitten on.{/n} "My sister, by our father. The two of his brood he bothered to set against each other. *Horzalah is stronger in a fight, but Hepzamirah is more cunning and vicious.* That is what he used to say, when he said anything about us at all."''', None),
            ("sister_told", hz, '''"He said it to you too, didn't he, in his prison? *Which is why she prevailed.* He compliments me to crusaders, in a cage, after he has killed me."''', "baphomet.named_horzalah")],
           "sister_state"),
     nar("sister_state", '''{n}She turns the dead canary over with one fingernail.{/n}''',
         c("Continue", "state_dead", requires=("horzalah.dead",)),
         c("Continue", "state_alive", forbids=("horzalah.dead",))),
-    hz("state_dead", '''"And she is dead now too. You saw to that, or your crusade did." {n}She pokes the canary with one fingernail.{/n} "She called on him, at the end, when she was losing. He did not answer. He would call that a virtue."
-"Dead, and he still compares us. I would have preferred to settle it myself."''',
+    hz("state_dead", '''"Dead too, unless somebody has stolen her back." {n}She pokes the bird.{/n} "I wanted to settle it myself. Father will still compare us. Death never stopped his arithmetic."''',
        c("Continue", "ask")),
-    hz("state_alive", '''"And she is still walking about somewhere, the weaker branch, with her own horns and a crusade that did not kill her. I hear she called on him, when she was losing. He did not answer." {n}She pokes the canary with one fingernail.{/n}
-"She called, and he ignored her. I called, and he came, and killed me. She had the better bargain. He must find that very tidy."''',
+    hz("state_alive", '''"Somewhere she is still making enough noise for both of us. I wonder whether he answers her now."
+{n}She turns the bird with one finger.{/n} "He answered me. Look what that bought."''',
        c("Continue", "ask")),
-    hz("ask", '''{n}She picks up the canary by one foot and holds it up to the light, turning it.{/n}
-"Tell me, clown. You have met us both now. Your crusade has fought her army and eaten my rations. Which of us would you have chosen, if you were him?"''',
+    hz("ask", '''"You have one of us in your yard." {n}She lifts the dead bird by its foot.{/n} "Which would you have chosen, if you were him? Think before you flatter me."''',
        c('"Neither. That\'s the point. He shouldn\'t have been choosing."', "neither"),
        c('"You. You went under."', "you"),
        c('[Grin] "The canary. It had better timing."', "canary_joke")),
@@ -612,8 +611,8 @@ yard(SISTER, "The weaker branch", '"You mentioned Horzalah."', [
 {n}She drops the canary back on the trough.{/n} "Then you would have had two knives at your throat instead of one. He at least knew what he was breeding."''',
        c("[Leave it there.]")),
     hz("you", '''{n}She is quiet, and the forge ticks as it cools.{/n}
-"Yes. I went under. Horzalah never did. She charged at everything like a siege ram, and when a wall did not fall, she charged it again." {n}Something like pride moves in her voice, and then something like grief.{/n} "And he chose me for it, and then he killed me for losing one fight. So the choosing was worth nothing. You see? You flatter me with the same coin he did."
-{n}She drops the canary back on the trough.{/n} "Do not do that again. Or do. I have not decided."''',
+"Yes. I went under. Horzalah used to charge at everything like a siege ram, and when a wall did not fall, she charged it again." {n}Something like pride moves in her voice, and then something like grief.{/n} "And he chose me for it, and then he killed me for losing one fight. So the choosing was worth nothing. You see? You flatter me with the same coin he did."
+{n}She drops the canary back on the trough.{/n} "Try flattering me with his words again and I will make you swallow them."''',
        c("[Leave it there.]")),
     hz("canary_joke", '''{n}For a moment she is perfectly still. Then she laughs, suddenly and helplessly, and has to put the canary down.{/n}
 "The *canary*. Yes. It had very good timing." {n}She wipes her good eye.{/n} "Say that where she can hear you, clown. I want to watch her face."''',
@@ -654,7 +653,7 @@ yard(DRILL, "Her way", '"The sergeants are complaining about you."', [
     nar("field", '''{n}On the parade ground below the citadel, forty of the crusade's heavy infantry are lying in the mud. Some of them are groaning. One of them is laughing, in the high way that men laugh when something has frightened them past fear. Hepzamirah stands in the middle of them with the pick over her shoulder and not a speck of mud on her.{/n}
 {n}A sergeant with a bloody nose meets you at the edge of the field. She asked to see how the crusade meets a charge, he says. So they showed her. Then she showed them.{/n}''',
         c("Continue", "hep")),
-    hz("hep", '''"Your infantry meet a charge like a village meets a flood," {n}she says, walking over.{/n} "They stand in a line and pray it will go round them. Deskari's children will not go round. Nor will whatever that bitch Vorlesh has breeding in her pits."
+    hz("hep", '''"Your infantry meet a charge like a village meets a flood," {n}she says, walking over.{/n} "They stand in a line and pray it will go round them. Deskari's children will not go round. Nor will the things grown from Vorlesh's work in those pits."
 "In my father's armies, the front rank knew exactly what a charge feels like, because I made them take one every morning, from me. By the second week they stopped praying and started bracing. By the fourth they were killing things." {n}She flicks mud off the spike.{/n} "Give me your shock troops for a week before the Threshold. Every morning. Half of them will hate me. The other half will live."''',
        c('[Give her the troops] "A week. Every morning. Nobody dies in training."', "given", flags=(P + "drilled_troops",)),
        c('[Give her the troops] "A week. Her way. If some break, better here than at the Threshold."', "harsh",
@@ -680,7 +679,7 @@ def mutasafen(id, text, *choices, **kw):
 
 
 yard(LETTER2, "Farewell, princess", '"You have a letter."', [
-    nar("letter", '''{n}It came in the ordinary post, with the requisitions from Nerosyan, addressed to *Her Highness the Tenant, care of the Commander*. She has not opened it. It lies on the trough, and she is looking at it the way she looked at the canary.{/n}''',
+    nar("letter", '''{n}It came in the ordinary post, with the requisitions from Nerosyan, addressed to *Her Highness the Tenant, care of the Commander*. She has not opened it. It lies on the trough. She holds its edge down with one nail, as if it might move.{/n}''',
         c("Continue", "open")),
     hz("open", '''"His hand. I would know it on a tombstone. He wrote to me once before, in Colyphyr, to say goodbye. *Farewell, princess.* He was very proud of that letter. He left it on my table where I would find it after he had stolen my army."
 "Read it to me, clown. I do not want his words in my own mouth."''',
@@ -707,18 +706,18 @@ M."''',
        c("[Send it.]")),
     hz("silence", '''"Let him wonder." {n}She thinks about it.{/n} "Yes. He hates not knowing more than he hates losing. My father taught me that about him. It is the only useful thing my father ever taught me about anyone."
 {n}She puts the letter in the pocket of her borrowed coat, unburned.{/n} "I will keep it, though. For when I find him. I will want to read it to him."''',
-       c("[Leave her with it.]")),
+       c("[Leave her with it.]", flags=(P + "princess_letter_kept",))),
     nar("burn", '''{n}You put it in the forge. It curls and goes, and for a moment the princess on the first line burns bright before the rest. She watches until there is nothing but a flake of grey on the coals.{/n}''',
         c("Continue", "burn_say")),
     hz("burn_say", '''"Good," {n}she says.{/n} "I did not want to be *princess* in my own yard."''',
-       c("[Leave her by the forge.]")),
+       c("[Leave her by the forge.]", flags=(P + "princess_letter_burned",))),
 ], requires=("trickster.ever", RET, CS), delay=24)
 
 
 # --- 19. Vorlesh: the witch who took her place, and whose experiment the Commander is. -------------------------------------
 
-yard(VORLESH, "Areelu's experiment", '"You were talking about Areelu."', [
-    hz("chest", '''"Mutasafen called you *Areelu's last experiment*." {n}She is lying on the trough on her back with the pick propped against it, looking at the sky over the Worldwound.{/n} "In his first reply to you, about the vial. Walking around unexamined. He meant it as a joke. He does not make jokes."
+yard(VORLESH, "Areelu's experiment", '"Tell me about Areelu."', [
+    hz("chest", '''"Mutasafen called you *Areelu's work, walking*." {n}She is lying on the trough on her back with the pick propped against it, looking at the sky over the Worldwound.{/n} "In his first reply to you, about the vial. Walking around unexamined. He meant it as a joke. He does not make jokes."
 "Whatever burns in you, clown, the thing your chaplains call a miracle, he thinks that bitch Vorlesh had a hand in it. I have watched you in the yard. I think he is right."''',
        c("Continue", "vorlesh")),
     hz("vorlesh", '''"She took my place, you know. At my father's side. While I was bleeding in Colyphyr, he was helping *her*. I called him, and he came, and he killed me for her, because she was precious to him."
@@ -758,7 +757,7 @@ yard(SORTIE, "The spearhead", '"You went out with the sortie."', [
        c('[Stitch it yourself] "Then I\'ll do it. Not a priest. Me."', "stitch"),
        c('[Order the chaplain] "Heal her, Father. That\'s an order, and it\'s mine to give."', "order"),
        c('"Your terms. Your blood."', "hers")),
-    nar("stitch", '''{n}She lets you. That is the second surprise; the first was that she walked back at all. You clean it with the smith's strong spirit, which makes her swear in the language of the rite, and you close it with the quartermaster's needle and waxed thread, badly, and she watches every stitch with the good eye as if memorising your hands.{/n}
+    nar("stitch", '''{n}She pulls the coat clear of the wound and holds it there. You clean it with the smith's strong spirit, which makes her swear in the language of the rite, and you close it with the quartermaster's needle and waxed thread, badly, and she watches every stitch with the good eye as if memorising your hands.{/n}
 {n}Her skin is fever-hot under your fingers. Once, when the needle goes deep, her hand closes on the back of your neck and stays there until you tie off.{/n}''',
         c("Continue", "stitch_say")),
     hz("stitch_say", '''"Crooked," {n}she says, looking at it.{/n} "You sew like a clown too."
@@ -816,10 +815,10 @@ yard(FORGE, "The Nexus", '"The smith spoke to you."', [
 {n}He takes the tongs from her and lays the billet on the anvil.{/n} "I still won't pray for her. But I'll let her hold the tongs."''',
           c("Continue", "hep")),
     hz("hep", '''"In Colyphyr there were forges that ran day and night," {n}she says, watching him strike.{/n} "Under the mountain. My father's mines, and the Nexus, where the portals are. Your crusade stopped the crystal-mining there for a while. I was very angry with you about it at the time."
-"I ran those mines. Every forge, every shaft, every slave on every chain. I know what iron sounds like when it is being lied to." {n}She nods at the anvil.{/n} "His iron tells the truth. That is rare, in a crusader's forge. Most of them hammer as if the Inheritor were watching and they wanted to look busy."''',
+"I ran those mines. Every forge, every shaft, every slave on every chain. I know what iron sounds like when it is being lied to." {n}She nods at the anvil.{/n} "His iron tells the truth. That is rare, in a crusader's forge. Most of them hammer for the priests of the Inheritor watching and they wanted to look busy."''',
        c('"You ran the Nahyndrian mines."', "crystals"),
        c('"You two are getting on."', "on")),
-    hz("crystals", '''"The crystals. Yes." {n}Her voice goes flat and careful, the voice of a quartermaster, not a priestess.{/n} "Nahyndrian crystals, the crystallized blood of dead demon lords. Vorlesh learned what could be made with them, and Mutasafen used her work on my army. My father wanted them dug, so I dug them. Mutasafen helped me obtain them. He wrote to me that he had."
+    hz("crystals", '''"The crystals. Yes." {n}Her voice goes flat and careful, the voice of a quartermaster, not a priestess.{/n} "Nahyndrian crystals, the crystallized blood of dead demon lords. Vorlesh's work showed what could be made with them, and Mutasafen used her work on my army. My father wanted them dug, so I dug them. Mutasafen helped me obtain them. He wrote to me that he had."
 "The army you are fighting, clown, somebody dug out of the ground on somebody's orders, and a great deal of it was me." {n}She shrugs.{/n} "I am not sorry. I am only telling you, since you asked, and since you are the one who will have to fight what we dug."''',
        c("[Watch the smith work.]")),
     hz("on", '''"Getting on." {n}She considers the phrase.{/n} "He hates me. I despise him. He is the only man in Drezen who does not pretend otherwise, and so I can stand next to him for an hour without wanting to kill him."
@@ -831,26 +830,26 @@ yard(FORGE, "The Nexus", '"The smith spoke to you."', [
 # --- 23. The weapon: Mutasafen's secret, and what it would do to the Commander. ----------------------------------------
 
 yard(WEAPON, "His deadliest weapon", '"You look worried. It doesn\'t suit you."', [
-    hz("worried", '''"I am not worried. I am thinking. It looks the same on this face." {n}She is turning the crystal-cutter's lens in her fingers, or the scalpel, or nothing at all; she has been turning something for an hour.{/n}
-"His first letter to me, in Colyphyr. The one he left on my table. There was a line in it I laughed at. He wrote that he was close to perfecting his deadliest weapon: a way to take away, for a time, the powers that the Nahyndrian crystals give. Poison, a spell, an object. He would not say which. He wanted me to think about it and shudder."''',
+    hz("worried", '''"I am not worried. I am thinking." {n}She rubs the fading maker's mark on her wrist with her thumb.{/n}
+"His letter in Colyphyr promised a weapon that would strip the crystals' gifts for a time. Poison, spell, some toy of his — he kept that part to himself. He wanted me to shudder. I laughed. I should have read it twice."''',
        c("Continue", "why")),
     hz("why", '''"I did not shudder. I thought: what a small, clever, useless thing, to take the crystals' gifts away. Who would you use it on?"
-{n}She looks at you with the good eye.{/n} "And then you came into my father's prison with a power in you that is not a crusader's, and not a demon's, and Mutasafen called you Areelu's last experiment, and asked for a vial of your blood."
+{n}She looks at you with the good eye.{/n} "And then you came into my father's prison with a power in you that is not a crusader's, and not a demon's, and Mutasafen called you Areelu's work, walking, and asked for a vial of your blood."
 "I think I know who he will use it on, clown. I think he has wanted your blood for a long time, and not for science."''',
        c('[Trickster] "Then we give him a target he can\'t hit. I\'ve been renaming things since the prison."', "trick"),
        c('"Then we find him before he finishes it."', "hunt"),
        c('"Let him try."', "try")),
     hz("trick", '''"Rename yourself." {n}She almost smiles.{/n} "You would, too. You would stand in front of his weapon and tell it you were somebody else, and it would believe you, because your words hold and his do not."
-"I have seen you do it to a wall and a body. I have not seen you do it to yourself." {n}She puts whatever she was turning away.{/n} "Do not try it on yourself unless you must, clown. I would not know how to find you afterwards."''',
+"I have seen you do it to a wall and a body. I have not seen you do it to yourself." {n}She stops rubbing her wrist.{/n} "Do not try it on yourself unless you must, clown. I would not know how to find you afterwards."''',
        c("Continue", "vow")),
     hz("hunt", '''"Find him." {n}She nods slowly.{/n} "Yes. That is what I have been doing. That is what the cave was. One body fewer, one bench fewer, one more place he has to rebuild in."
 "When I go next, I will go for the bench where he keeps the weapon. If he has one." {n}She looks north.{/n} "He always kept his best work closest to his bed. I used to tease him about it. I remember everything I ever teased anyone about."''',
        c("Continue", "vow")),
-    hz("try", '''"*Let him try.*" {n}She repeats it with enormous scorn, and then, surprisingly, a little tenderness.{/n} "That is what my father said about Areelu, I expect, and now look at him."
+    hz("try", '''"*Let him try.*" {n}She repeats it with enormous scorn, and then, surprisingly, a little tenderness.{/n} "I expect he treated Areelu's work with the same contempt. Look at him now."
 "You are a clown and a thief and the luckiest mortal I have ever seen, and I do not trust luck. I trust knives." {n}She taps the haft of the pick.{/n} "So I will be the knife, and you may be lucky behind me."''',
        c("Continue", "vow")),
     hz("vow", '''"Hear me, clown. This is not a term. It is a vow, and it is mine." {n}She puts one hand flat on your chest, over the place where whatever burns in you burns.{/n}
-"If he takes your gifts away, I will be here when they go. If he puts you on his bench, I will take the bench apart around him. That is all. You do not need to answer it. Vows are not questions."''',
+"If he takes your gifts away, I will be here when they go. If he puts you on his bench, I will take the bench apart around him. He will have to reach through me to take you. I want him to try."''',
        c("[Put your hand over hers.]", flags=(P + "weapon_vow",))),
 ], requires=("trickster.ever", COMMITTED, EYE), delay=24)
 
@@ -893,7 +892,7 @@ yard(SECOND_NIGHT, "Crooked", '"How\'s the scar?"', [
         c("Continue", "scar_ask", requires=(P + "scar_given",)),
         c("Continue", "healed_ask", requires=(P + "cost.healed_against_terms",)),
         c("Continue", "plain", forbids=(P + "scar_given", P + "cost.healed_against_terms"))),
-    hz("scar_ask", '''"Crooked," {n}she says.{/n} "Your crooked stitches. I have been looking at them all day." {n}She takes your hand and puts it on them, low on her side, under the borrowed coat. The skin there is fever-hot and the stitches are ridged under your fingers.{/n} "I know where they are. Tonight you will learn."''',
+    hz("scar_ask", '''"Crooked." {n}She takes your hand and lays it beside the closed seam low on her side. Your fingers rest clear of the stitches; she keeps them there.{/n} "Your work. Leave it crooked. Tonight I want you closer."''',
        c("Continue", "pull")),
     hz("healed_ask", '''"Clean," {n}she says, and her mouth twists.{/n} "Your chaplain's work. Not a mark. As if the spear had never been." {n}She takes your hand and puts it on the place, low on her side, under the borrowed coat. The skin is smooth and fever-hot.{/n} "I hate it. So you will have to give me something else there, clown. I will not have a body that forgets."''',
        c("Continue", "pull")),
@@ -902,7 +901,7 @@ yard(SECOND_NIGHT, "Crooked", '"How\'s the scar?"', [
     nar("pull", '''{n}She takes you by the wrist, the way she always does, and pulls you over the threshold, into the warm dark that smells of iron and forge-smoke and her, and kicks the broken door shut behind you with her heel, and it bangs in its frame and swings open again, because it cannot be locked, and she laughs against your throat.{/n}
 {n}Her hands are rough and very sure. She finds every buckle you are wearing and does not bother with most of them. The stump of her horn catches in your hair and she does not stop for it. When her mouth finds yours it is hungry, and not gentle, and she bears you down onto the mended cot, which creaks like a ship, and holds you there with one broad hand flat on your chest, and looks down at you in the dark with the eye that can see.{/n}''',
         c("Continue", "down")),
-    hz("down", '''"The priest had his turn with your prayers," {n}she says.{/n} "Tonight I want your mouth occupied."
+    hz("down", '''"Enough prayers tonight," {n}she says, drawing your face toward hers.{/n} "Come here."
 {n}She tears the borrowed coat open and lets it fall, drags your shirt loose, and lowers herself onto you, bare and fever-hot from shoulder to knee. Her hand catches your thigh and pulls you hard against her as she bends her head to your mouth.{/n}''',
         c("[Pull her down to you.]", flags=(P + "second_night",))),
 ], requires=("trickster.ever", COMMITTED, SORTIE), delay=12)
@@ -913,7 +912,7 @@ yard(SECOND_NIGHT, "Crooked", '"How\'s the scar?"', [
 yard(EMBER_ASKS, "Happy", '"Ember wanted me to ask you something."', [
     nar("ember", '''{n}Ember is sitting on the upturned bucket again, and Hepzamirah is sitting on the trough, and there is a jar of blue flowers between them that nobody has thrown. They have plainly been sitting like this for some time. Ember looks up at you with great seriousness.{/n}''',
         c("Continue", "ember_say")),
-    em("ember_say", '''"I asked her if she was happy now. She said happy is a word for elves and dogs. So I asked her if she was less sad than in the Labyrinth, and she didn't answer." {n}Ember turns to Hepzamirah.{/n} "I think you should tell {mf|him|her}. You tell {mf|him|her} everything else. The smith's boy says you shout it through the wall."''',
+    em("ember_say", '''"I asked her if she was happy now. She said happy is a word for elves and dogs. So I asked her if she was less sad now, and she didn't answer." {n}Ember turns to Hepzamirah.{/n} "I think you should tell {mf|him|her}. You tell {mf|him|her} everything else. You shout when you talk to each other."''',
        c("Continue", "hep")),
     hz("hep", '''"The smith's boy is going to lose his ears." {n}Hepzamirah does not look at either of you.{/n}
 "Less sad." {n}She tests it.{/n} "In the Labyrinth I was hiding in a corner from men who used to kiss my feet, with half my head gone, listening to an angel scream. Now I sit in a smithy and a small elf brings me flowers I throw over the wall, and a clown comes in the evening and tells me jokes, and I break the furniture."
@@ -930,7 +929,7 @@ yard(EMBER_ASKS, "Happy", '"Ember wanted me to ask you something."', [
 # --- 27. The name: what she calls the Commander, and what she will be called. -----------------------------------------
 
 yard(NAMES, "Names", '"You never use my name."', [
-    hz("names", '''"Your name." {n}She considers it.{/n} "No. I do not. I call you clown, because it was the first true thing I knew about you, in my father's prison."
+    hz("names", '''"Your name." {n}She considers it.{/n} "No. I do not. I call you clown. You have done nothing to lose the title."
 "Names are not small things, where I come from. My father owned his brood the way a breeder owns stock, and he used our names like leashes. I wore mine as if it were a crown."''',
        c("Continue", "her")),
     hz("her", '''{n}She is quiet for a while.{/n}
@@ -977,7 +976,7 @@ Hepzamirah."''',
        c('"Cut the last line. He doesn\'t get to hear you begging to be missed."', "cut"),
        c('"Keep it. For the day you call him. Read it to his face."', "keep")),
     hz("altar", '''"Burn it on an altar." {n}She stares at you.{/n} "You would have me pray to him. With *this*."
-{n}Then she laughs, and it is not the ugly laugh; it is almost delighted.{/n} "Oh, yes. A prayer that is a curse. His priests would find it in the ashes and not dare read it to him, and not dare not. I would have given my other eye for a prayer like that in Colyphyr." {n}She folds it.{/n} "There is an old shrine of his under the east wall. Your watch never found it. I did. I will use it."''',
+{n}Then she laughs, and it is not the ugly laugh; it is almost delighted.{/n} "Oh, yes. A prayer that is a curse. His priests would find it in the ashes and not dare read it to him, and not dare not. I would have given my other eye for a prayer like that in Colyphyr." {n}She folds it.{/n} "There is an old shrine under the east wall. Your watch has stripped it, but the stone still knows his name. I will use it."''',
        c("[Leave her to it.]", flags=(P + "letter_burned",))),
     hz("cut", '''{n}She reads the last line twice, and her thumb stops on it.{/n}
 "*Who you do not miss.*" {n}She draws the pen through it, once, hard enough to tear.{/n} "Yes. Let him wonder. He taught me to keep an enemy hungry."
@@ -999,7 +998,7 @@ ROOM_LEADS = [
     ("room_note", nar, '''{n}Pinned to the wall with a cultist's knife is a note in your own hand: RETURNED TO SENDER.{/n}''', P + "cult_trapped"),
     ("room_jar", nar, '''{n}The jar of blue flowers stands on the sill. They have been changed. You did not see who changed them.{/n}''', FLOWERS_KEPT),
     ("room_lens", nar, '''{n}The crystal-cutter's lens hangs on its cord from the bedpost.{/n}''', EYE_BURNED),
-    ("room_letter", nar, '''{n}Mutasafen's first letter to her in Drezen is tucked into the frame of the broken door, unburned, for the day she finds him.{/n}''', P + "unmade_refused"),
+    ("room_letter", nar, '''{n}Mutasafen's first letter to her in Drezen is tucked into the frame of the broken door, unburned, for the day she finds him.{/n}''', P + "princess_letter_kept"),
     ("room_splinters", nar, '''{n}On a shelf, in a row, are the splinters you sawed off her horn, laid out in order of size, like trophies.{/n}''', HORN_CUT),
 ]
 yard(ROOM, "What she keeps", '"Can I come in?"', [
@@ -1041,7 +1040,7 @@ yard(GIFT, "Rent, in advance", '"You wanted to see me?"', [
     hz("owe", '''"*That is the point.*" {n}She repeats it with a great deal of scorn.{/n} "Crusaders. You would give everything and ask nothing and call it love, and then wonder why nobody knows what you are worth."
 "I owe you. I have decided. You will take it, and you will wear it, and you will stop arguing with a gift from the daughter of Baphomet." {n}She ties it round your neck herself, too tight, and then loosens it.{/n}''',
        c("[Wear it.]", flags=(P + "gift_worn",))),
-    nar("kiss", '''{n}She lets you, for exactly as long as she decides, which is longer than you expected. Then she takes the gift out of your hands and ties it round your neck herself, against your collarbone, too tight, and loosens it, and steps back.{/n}''',
+    nar("kiss", '''{n}She catches your collar and keeps you in the kiss until your hand tightens on her shoulder. Only then does she let you breathe. Then she takes the gift out of your hands and ties it round your neck herself, against your collarbone, too tight, and loosens it, and steps back.{/n}''',
         c("Continue", "kiss_say")),
     hz("kiss_say", '''"That is not how you thank someone for rent," {n}she says.{/n} "But I will allow it. This once. Do not tell the smith."''',
        c("[Wear it.]")),
@@ -1061,7 +1060,7 @@ yard(COUNCIL, "At the map table", '"The generals want you gone from the council.
     general("general", '''"Commander. With the greatest respect. This creature was her father's archpriestess. She commanded demon armies against this crusade for years. Whatever she tells us about the Worldwound, she could be telling us so that we march into a trap." {n}He does not look at her.{/n} "We cannot plan the Threshold around her word."''',
             c("Continue", "hep")),
     hz("hep", '''"He is right," {n}she says, before you can.{/n} "I could be. I would, if I still served my father. I have led armies into traps shaped exactly like this one." {n}She taps the map, at the approach to the Threshold.{/n}
-"So listen to what I tell you, and then test it, as you would test anything a traitor told you. That is what I would do. Deskari's children come in swarms, not ranks, and they come from above; your pikes are pointed the wrong way. Vorlesh's creatures come from below, from the pits, at night. Your scouts watch the horizon. Nobody watches the ground."
+"So listen to what I tell you, and then test it, as you would test anything a traitor told you. That is what I would do. Deskari's children come in swarms, not ranks, and they come from above; your pikes are pointed the wrong way. The creatures grown from Vorlesh's work come from below, from the pits, at night. Your scouts watch the horizon. Nobody watches the ground."
 "I am not asking to be trusted. I am telling your generals where to look. If they look and find nothing, hang me."''',
        c('[Back her] "You heard her. Test every word. Then use it."', "backed", flags=(P + "council_heard",)),
        c('[Use her] "Take her intelligence, general. She marches in the first rank, where you can watch her."', "used",
@@ -1129,7 +1128,7 @@ yard(NEROSYAN, "A letter from court", '"Nerosyan has written about us."', [
        c('"Tell the court the Commander keeps no cupboards. The levies can come or not."', "public", crusade=("Favors", -150),
          flags=(P + "court_defied",)),
        c('"Tell the court it will be discreet. Until the Threshold."', "discreet", flags=(P + "cost.discreet",)),
-       c('[Trickster] "Tell the court she\'s the Ambassador of a sovereign cell. Diplomatic relations are none of its business."', "embassy_reply",
+       c('[Trickster] "Tell the court my embassy order stands. Record your objection beside it."', "embassy_reply",
          requires=(EMBASSY,), mythic="Trickster")),
     hz("public", '''{n}The clerk writes it down with a shaking hand, and goes. She watches him to the gate.{/n}
 "You will pay for that," {n}she says.{/n} "Spears, and favours, and lords who will smile at you at the victory feast and remember. I know that arithmetic too. I ran my father's court."
@@ -1139,8 +1138,8 @@ yard(NEROSYAN, "A letter from court", '"Nerosyan has written about us."', [
 "Until the Threshold," {n}she says.{/n} "Very well. I will be discreet. I will not break any furniture that can be heard from the east wall." {n}Her mouth twists.{/n}
 "But understand what you bought with it, clown. You hide me for their levies. Remember what you sold, when they ask for more."''',
        c("[Leave it there.]")),
-    hz("embassy_reply", '''{n}The clerk opens his mouth, and shuts it, and writes it down, and reads it back, and his face goes through several stages of a man learning something about canon law that his masters in Nerosyan will not enjoy.{/n}
-"*Diplomatic relations.*" {n}She says it after he has gone, very slowly, as if tasting an unfamiliar wine.{/n} "You made our bed a matter of state. They cannot touch it without starting a war with a cell in my father's prison." {n}The scarred smile.{/n} "The lords will still delay their levies, and your treasury will pay for the spears they keep back. But they will not know why they are angry. That is worth the price."''',
+    hz("embassy_reply", '''{n}The clerk writes down the claim. The message will reach Nerosyan as your order, without a claim of agreement from the court. The levies will still be delayed. He leaves with the letter under his arm.{/n}
+"A matter of state." {n}She bares her teeth at his back.{/n} "You made them write down whose bed I use. Now they can argue over it in council. Your treasury buys the missing spears; your name keeps my door open. Do not pretend the sign does it."''',
        c("[Leave it there.]", crusade=("Finances", -300), flags=(P + "court_defied",))),
 ], requires=("trickster.ever", COMMITTED, KNOWN), delay=48)
 
@@ -1157,7 +1156,7 @@ yard(TREATY, "Articles of the Embassy", '"You wanted to see the Commander. Offic
        c('"Article the seventh: the Commander goes first into the Embassy\'s bed."', "bed", flags=(P + "treaty_signed",)),
        c('"Article the seventh: either party may leave. Neither party will."', "leave", flags=(P + "treaty_signed",))),
     hz("back", '''"*Comes back.*" {n}She writes it in, slowly.{/n} "That is your prayer again. You keep trying to put your prayer into my treaties."
-"Very well. It is written. It binds nobody in Nerosyan, and I know it; the only court that recognises my embassy is one lich in a stolen cell. It binds you and me. Break it, clown, and I will not sue. I will walk out through the door you made Leavable, and take the pick, and every name I know in your crusade's cellars, to whoever pays best. If I die at the Threshold I will be in breach, and you may sue my ghost." {n}She signs it with the point of the pick's spike, dipped in the forge-ash.{/n}''',
+"Very well. It is written. It binds nobody in Nerosyan, and I know it; your order holds at the yard gate, and nowhere beyond your reach. It binds you and me. Break it, clown, and I will not sue. I will walk out through the door you made Leavable, and take the pick, and every name I know in your crusade's cellars, to whoever pays best." {n}She signs it with the point of the pick's spike, dipped in the forge-ash.{/n}''',
        c("[Sign it.]")),
     hz("bed", '''{n}She laughs aloud, and the smith's hammer stops.{/n}
 "Goes *first*. You would put that in a treaty, in writing, on vellum, where your court could read it." {n}She writes it in, grinning, with an elaborate flourish.{/n} "It is a very badly drafted article. It does not say first *before whom*. We will have to test it."
@@ -1167,3 +1166,93 @@ yard(TREATY, "Articles of the Embassy", '"You wanted to see the Commander. Offic
 {n}She writes it in, hard, and signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick.{/n} "Sign it where I can see your hand."''',
        c("[Sign it.]")),
 ], requires=("trickster.ever", COMMITTED, EMBASSY), delay=24)
+
+
+# Round 2 authored continuations: provenance and the results of promises
+# already made in this route. Optional scenes create no new romance gates.
+def _r2_scene(sid):
+    return next(s for s in SCENES if s["Id"] == sid)
+
+
+def _r2_node(sid, nid):
+    return next(v for v in _r2_scene(sid)["Nodes"] if v["Id"] == nid)
+
+
+for _armed_scene in (BLOODLINE, FLOWERS, CORNER):
+    _r2_scene(_armed_scene)["Requires"].append(PICK)
+for _ember_scene in (FLOWERS, EMBER_ASKS):
+    _r2_scene(_ember_scene)["Requires"].append("ember.present_now")
+    _r2_scene(_ember_scene)["Forbids"].append("ember.native_devastated")
+
+# Separate SeenCues: pity and the apple exchange are not interchangeable.
+_r2_node(FLOWERS, "ember")["Choices"][0]["Next"] = "pity_history"
+_r2_scene(FLOWERS)["Nodes"].extend([
+    nar("pity_history", '{n}Hepzamirah stops the whetstone as Ember speaks.{/n}',
+        c("Continue", "pity_recalled", requires=(P + "heard_ember_pity",)),
+        c("Continue", "hep", forbids=(P + "heard_ember_pity",))),
+    hz("pity_recalled", '"In his prison you called me a poor thing. You have a body to lose, elf. I had none, and still they hurt me."',
+       c("Continue", "hep")),
+    hz("apple_recalled", '"Compassion is not an apple, you said. Give it to one and you do not rob another." {n}She sets the whetstone beside the jar.{/n} "Everything I had, I took. I am keeping these. Do not tell me what it means."',
+       c("Continue", "keep")),
+])
+_r2_node(FLOWERS, "alone")["Choices"][0]["Next"] = "apple_history"
+_r2_scene(FLOWERS)["Nodes"].append(nar("apple_history", '{n}Ember hums. Hepzamirah looks from the jar to her empty hands.{/n}',
+    c("Continue", "apple_recalled", requires=(P + "heard_ember_apple",)),
+    c("Continue", "keep", forbids=(P + "heard_ember_apple",))))
+
+# Altar-road rent collects surviving accomplices from the known raid.
+_r2_node(RENT, "sack")["Choices"][0]["Next"] = "rent_history"
+_r2_scene(RENT)["Nodes"].extend([
+    nar("rent_history", '{n}She nudges the wet sack with her boot.{/n}',
+        c("Continue", "rent_after_altar", requires=(core.ALTAR,)),
+        c("Continue", "sack_say", forbids=(core.ALTAR,))),
+    hz("rent_after_altar", '"The men your watch missed. The cellar under the grain exchange had friends outside it. I followed one home. He recognized me and knelt. That made the next part easier." {n}She loosens the bell-rope.{/n} "Rent. One priest in the sack, two accomplices tied in the stripped cellar. The altar was already yours; these were still his."',
+       c("Continue", "choose")),
+])
+
+# Saved hunt outcome nodes now finish the departure, not the expedition.
+_r2_node(HUNT, "shadow")["Text"] = '{n}You saddle a horse after she leaves. On the north road you keep the city\'s dust between you and her pack. The pick never lowers from her shoulder.{/n}'
+_r2_node(HUNT, "caught")["Text"] = '{n}You follow her through the north gate. Her head turns at the sound of your horse; then she rides on. You have already broken the term.{/n}'
+_r2_node(HUNT, "shadow")["Choices"][0]["Set"].append(P + "hunt.shadowed")
+_r2_node(HUNT, "caught")["Choices"][0]["Set"].append(P + "hunt.caught")
+_r2_node(HUNT, "caught")["Choices"][0]["Text"] = "[Keep your distance.]"
+
+def _hunt_report(suffix, hours, flag, text):
+    # The native tavern list remains usable while her forge hub is absent.
+    SCENES.append(scene(P + suffix, "The north road", "Hepzamirah", 5,
+        '"Any word from the north road?"', [nar("report", text, c("[Return to the city.]"))],
+        requires=("trickster.ever", RET, HUNT, flag), forbids=(CLOSED, EYE), delay=hours,
+        last=5, optional=True, Relationship="hepzamirah", Chapters=[5],
+        AnswerLists=["6dccfd39947ef4242a8afbe36b21a46c"], ReturnToList=True,
+        ReturnText="{n}The watch has no further word from the north road.{/n}", Areas=[core.DREZEN]))
+
+_hunt_report("bond.hunt_shadow", 72, P + "hunt.shadowed",
+    '{n}You return ahead of her. On the second night you watched her go down from the black ridge with her lantern. The vrocks screamed; she stayed in the cave long after they stopped. You left before she climbed back out. Her room is still empty. She has not returned.{/n}')
+_hunt_report("bond.hunt_caught", 24, P + "hunt.caught",
+    '{n}You return to Drezen alone. Last night she stepped beside your fire with the pick across her shoulders. "One day, clown. You could not keep one term for one day. Go home. Come down this road again and I bring you back across my shoulders." She waited until you turned your horse. The forge room remains empty.{/n}')
+
+# Explicit slot: later encounter; stitched/healed/plain setup remains intact.
+_r2_node(SECOND_NIGHT, "down")["Choices"][0]["Next"] = SECOND_NIGHT + ".explicit.1"
+_r2_scene(SECOND_NIGHT)["Nodes"].append(nar(SECOND_NIGHT + ".explicit.1",
+    '{n}She catches your mouth again and draws you close. Behind you, the broken door swings open; she lets it.{/n}',
+    c("Continue")))
+
+# One physical result per military promise, with the original decision clock.
+yard(P + "flesh.drill_result", "Seven mornings", '"The week is up."', [
+    nar("field", '{n}The sergeant lays seven marked tallies on the trough. Across the yard the surviving line braces at Hepzamirah\'s raised haft without waiting for a prayer.{/n}',
+        c("Continue", "harsh", requires=(P + "drilled_harsh",)),
+        c("Continue", "supervised", forbids=(P + "drilled_harsh",))),
+    hz("supervised", '"Nobody died. Your sergeant counted after every charge." {n}She plants the pick against the trough.{/n} "Bruises, a broken tooth, and feet that stay planted. Better. Do not tell them they have won a battle; I have not given them one yet."',
+       c("[Return the regiment to its sergeants.]")),
+    hz("harsh", '{n}The sergeant\'s casualty list separates those still drilling from those sent to the infirmary: smashed fingers, a broken knee, two soldiers unfit to march. She reads it without lowering her eyes.{/n} "These held. Those broke. You told me my way, clown. Here is what it cost."',
+       c("[Take the casualty list.]")),
+], requires=("trickster.ever", RET, "hepzamirah.present_now", DRILL, P + "drilled_troops"), delay=168)
+
+yard(P + "bond.scouts_result", "Under the approach", '"The scouts tested your warning."', [
+    nar("report", '{n}The scouts have brought a rubbing from a split stone under the approach: claw marks underneath, fresh earth pushed up through the crack. Beside it are revised watches and orders to lower the second rank\'s pikes when the ground moves. The general has removed the plume from his helmet.{/n}',
+        c("Continue", "plume")),
+    hz("plume", '"No appetite, general?" {n}She plucks a feather and lays it on his report. He signs the watch order and takes the feather with him.{/n} "He looked. He found it. Now he can send men who watch their feet. I want them alive behind me; dead soldiers are poor shields."',
+       c("[Send the orders to the captains.]")),
+], requires=("trickster.ever", RET, "hepzamirah.present_now", COUNCIL, P + "council_heard"), delay=24)
+
+PATH_FIT = {s["Id"]: "T" for s in SCENES}

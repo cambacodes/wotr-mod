@@ -193,8 +193,11 @@ internal static class HepzamirahTricksterTests
         // Trk_Hepzamirah_Deed: the Commander left the Labyrinth without either steal; his horned mark cut into the Commander's own arm on his altar, priced.
         var deed = S(P + "ghost.deed_by_fire");
         var walkedPast = World(story, 5, "trickster", "trickster.ever", "hepzamirah.dead", "baphomet.parley.latched");
-        check(Rules.IsRemote(deed) && deed.TricksterDevice && deed.DelayHours == 72 && deed.Requires.Contains("trickster"),
-            "Trk_Hepzamirah_Deed: the post-Labyrinth fallback is not a live-path Trickster device, three days later.");
+        check(!Rules.IsRemote(deed) && deed.Areas.SequenceEqual(new[] { Drezen })
+              && deed.AnswerLists.SequenceEqual(new[] { "6dccfd39947ef4242a8afbe36b21a46c" })
+              && deed.NativeReturnCue == "7b050ba0745bf144e815632e39b34853"
+              && deed.TricksterDevice && deed.DelayHours == 72 && deed.Requires.Contains("trickster"),
+            "Trk_Hepzamirah_Deed: the post-Labyrinth fallback is not a physical Drezen live-path Trickster device, three days later.");
         check(Rules.Available(story, deed, walkedPast), "Trk_Hepzamirah_Deed: the deed does not open after the Labyrinth.");
         var burned = After(deed, walkedPast, "deed", 0).First();
         check(burned.Has(P + "primed") && burned.Has(P + "cost.altar") && burned.Has(P + "cost.late") && burned.Has(P + "cost.horned_scar")
@@ -287,12 +290,14 @@ internal static class HepzamirahTricksterTests
         var dawn = S(B + "morning");
         check(Rules.Available(story, dawn, Later(story, lovers, 6)) && !Rules.Available(story, dawn, fed), "The morning after comes before the night.");
         var threshold = terms.Nodes.Single(n => n.Id == "threshold");
-        check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == null,
-            "The terms fade before the approach, or the cut does not land on the threshold.");
+        check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == P + "body.terms.explicit.1"
+              && terms.Nodes.Single(n => n.Id == P + "body.terms.explicit.1").Choices.Single().Next == null,
+            "The terms do not reach the supplied first-night heated cut.");
         var crooked = S(B + "crooked");
         var down = crooked.Nodes.Single(n => n.Id == "down");
-        check(down.Choices.Count == 1 && down.Choices[0].Next == null,
-            "The second night does not stage the approach, or runs past the cut.");
+        check(down.Choices.Count == 1 && down.Choices[0].Next == B + "crooked.explicit.1"
+              && crooked.Nodes.Single(n => n.Id == B + "crooked.explicit.1").Choices.Single().Next == null,
+            "The second night does not reach the supplied later-night heated cut.");
         foreach (var banned in new[] { "thrust", "inside her", "inside you", "climax", "moan", "naked" })
             check(new[] { terms, crooked }.All(s => s.Nodes.All(n => !n.Text.Contains(banned, StringComparison.OrdinalIgnoreCase))),
                 "Her nights narrate past the cut: " + banned);
