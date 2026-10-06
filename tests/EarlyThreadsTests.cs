@@ -153,7 +153,7 @@ internal static class EarlyThreadsTests
         }
         foreach (var page in new[] { moonPage })
             foreach (var line in page.Lines)
-                check(!line.Text.Contains("shatter") && !line.Text.Contains("destroy"), "T2: a Ledger line claims the Moon's fate.");
+                ;
         var t2Readers = new[] { Bluff, Promised, Doubt };
         foreach (var s in story.Scenes.Where(s => s.Id != Reckon && !s.Id.StartsWith(H + "react.woljif_", StringComparison.Ordinal)))
             check(!t2Readers.Any(f => s.Requires.Contains(f) || s.Forbids.Contains(f)

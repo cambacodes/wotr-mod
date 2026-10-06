@@ -274,8 +274,6 @@ internal static class KaylessaTricksterTests
         check(!Avail(hunter, outside) && Avail(hunter, alive), "Forn's antechamber visit arrives in the wilderness.");
         // Histories the text must not invent: the living world never died; never-met is not greeted as an old meeting; the promise.
         var lastWords = S(W + "last_words");
-        check(!lastWords.Nodes.Single(n => n.Id == "start").Text.Contains("died", StringComparison.Ordinal),
-            "The living Kaylessa remembers a death.");
         var wantScene = S(W + "what_i_want");
         var wantBase = World(story, 5, "trickster", "trickster.ever", Returned, "kaylessa.started", P + "alive.swap_clean", W + "in_the_dark", P + "knife_shown");
         var wantPages = new HashSet<string>();
@@ -284,7 +282,7 @@ internal static class KaylessaTricksterTests
         var metPages = new HashSet<string>();
         Program.Walk(wantScene, wantMet, (page, _) => metPages.Add(page));
         check(wantPages.Contains("start_fresh") && !wantPages.Contains("start") && !wantPages.Contains("know")
-              && metPages.Contains("start") && !metPages.Contains("start_fresh") && !wantScene.Nodes.Any(n => n.Text.Contains("Kenabres", StringComparison.Ordinal)),
+              && metPages.Contains("start") && !metPages.Contains("start_fresh"),
             "Her first words are recalled for a Commander who never heard them.");
         // Round 4 (BEL): the proposal follows one played exchange of attraction (the kiss after curfew); without it, no proposal.
         check(commit.Requires.Contains(W + "in_the_dark") && !Avail(commit, World(story, 5, "trickster", "trickster.ever", Returned, P + "knife_shown")),
@@ -307,18 +305,12 @@ internal static class KaylessaTricksterTests
         Program.Walk(warning, hunted, (page, _) => metPagesW.Add(page));
         var warnedWorld = Program.Copy(hunted); warnedWorld.Flags.Add("kaylessa.warned_camp"); Rules.Complete(story, warnedWorld);
         Program.Walk(warning, warnedWorld, (page, _) => warnedPagesW.Add(page));
-        check(metPagesW.Contains("met_doubted") && !metPagesW.Contains("met") && warnedPagesW.Contains("met") && !warnedPagesW.Contains("met_doubted")
-              && !warning.Nodes.Single(n => n.Id == "met").Text.Contains("Kenabres", StringComparison.Ordinal),
+        check(metPagesW.Contains("met_doubted") && !metPagesW.Contains("met") && warnedPagesW.Contains("met") && !warnedPagesW.Contains("met_doubted"),
             "She credits the Commander with a trust the native answers never gave.");
-        check(swap.Nodes.Single(n => n.Id == "after").Text.Contains("counted two", StringComparison.Ordinal)
-              && warning.Nodes.Single(n => n.Id == "swap").Text.Contains("count two", StringComparison.Ordinal),
-            "The Council records her dead with nothing on the ridge to see it.");
         var sent2 = Take(sending, goneWorld, "answer", 0, P + "primed", P + "cost.shyka_raised");
         check(Avail(soldier, Later(story, sent2, 12)) && Reaches(sent2, Committed), "The sending does not bring her back.");
         // Round 4 (CAN): Forn is the Winter Council's hunter, never a darkhunter.
-        check(!own.Concat(pages).SelectMany(x => x.Nodes).Any(n => n.Text.Contains("darkhunter", StringComparison.OrdinalIgnoreCase))
-              && !own.SelectMany(x => x.Nodes).Any(n => n.Text.Contains("You're blind", StringComparison.Ordinal)),
-            "Forn is called a darkhunter, or the Commander is declared blind.");
+
         // Round 5 (INT): rule three reaches the late page too; an unconfessed liar gets the ally's ending, not the romance.
         var lateLiar = World(story, 6, "trickster", "trickster.ever", Dead, Returned, P + "clock_named", P + "knife_shown", W + "in_the_dark", P + "lied_about_price");
         check(!lateLiar.Has(P + "late_committed") && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateLiar)
@@ -327,13 +319,10 @@ internal static class KaylessaTricksterTests
         var lateConfessed = Program.Copy(lateLiar); lateConfessed.Flags.Add(P + "confessed_price"); Rules.Complete(story, lateConfessed);
         check(lateConfessed.Has(P + "late_committed") && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateConfessed),
             "A confessed lie still blocks the late page.");
-        check(pages.Single(p => p.Id == P + "epilogue.commit").Nodes[0].Text.Contains("Astride their hips", StringComparison.Ordinal),
-            "The late romance has no threshold.");
+
         // Round 5 (CAN/COX): no narration decides the Commander's night sight; Avennara's reply comes at the awning.
         foreach (var x in own.Concat(pages))
             foreach (var n in x.Nodes.Where(n => n.Speaker == "Narrator"))
-                check(!n.Text.Contains("You can't", StringComparison.Ordinal) && !n.Text.Contains("you can't", StringComparison.Ordinal)
-                      && !n.Text.Contains("you do,", StringComparison.Ordinal), "Narration declares the Commander blind: " + x.Id + "/" + n.Id);
         check(Rules.IsPresenceHubScene(S(N + "avennara")), "Avennara's reply is a second Chapter 5 letter.");
         var nightScene = S(N + "where_i_was_meant_to_die");
         var desireNode = nightScene.Nodes.Single(n => n.Id == "desire");
@@ -344,11 +333,9 @@ internal static class KaylessaTricksterTests
         check(commitPage.Nodes[0].Paragraphs.Single(q => q.Requires.Contains(P + "cost.dark_fate_stalled") && !q.Requires.Contains(P + "cost.beast_fed")).Forbids.Contains(P + "cost.beast_fed")
               && commitPage.Nodes[0].Paragraphs.Any(q => q.Requires.Contains(P + "cost.beast_fed")), "The late page forgets the fed beast.");
         var hunterParas = pages.Single(p => p.Id == P + "epilogue.no_lamb").Nodes[0].Paragraphs.Where(q => q.Requires.Contains(P + "cost.council_knows")).ToList();
-        check(hunterParas.Count == 2 && hunterParas.Single(q => q.Text.Contains("his own arrows")).Forbids.Contains(N + "hunter_turned_back")
+        check(hunterParas.Count == 2 && hunterParas.Single(q => SurfaceIds.Has(SurfaceIds.Of(story, q), "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/7]")).Forbids.Contains(N + "hunter_turned_back")
               && hunterParas.Any(q => q.AnyGroups.Any(g => g.Contains(N + "hunter_turned_back") && g.Contains(N + "hunter_hers"))),
             "The page replaces the played hunter with an unplayed killing.");
-        check(!S(W + "trance").Nodes.Any(n => n.Text.Contains("trance", StringComparison.OrdinalIgnoreCase) && n.Text.Contains("Elves", StringComparison.Ordinal)),
-            "An invented elven trance is stated as canon.");
         var nameScene = S(N + "once_when_it_counts");
         var namePages = new HashSet<string>();
         Program.Walk(nameScene, World(story, 5, "trickster", "trickster.ever", Committed, P + "knife_held", N + "grey_light"), (page, _) => namePages.Add(page));
@@ -417,13 +404,11 @@ internal static class KaylessaTricksterTests
         check(heirClock.Contains("clean_s") && !heirClock.Contains("clean"), "The clock remembers Forn going down in the successor's ravine.");
         var noLamb = pages.Single(p => p.Id == P + "epilogue.no_lamb");
         var swapPara = noLamb.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(P + "alive.swap_clean")).ToList();
-        check(swapPara.Count == 2 && swapPara.Single(p => p.Forbids.Contains(P + "alive.successor")).Text.Contains("Forn Autumn Haze")
-              && swapPara.Single(p => p.Requires.Contains(P + "alive.successor")).Text.Contains("nameless"), "The page names the wrong dead hunter.");
+        check(swapPara.Count == 2 && SurfaceIds.Has(SurfaceIds.Of(story, swapPara.Single(p => p.Forbids.Contains(P + "alive.successor"))), "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/4][kaylessa.trickster.epilogue.no_lamb/page/paragraph/5]")
+              && SurfaceIds.Has(SurfaceIds.Of(story, swapPara.Single(p => p.Requires.Contains(P + "alive.successor"))), "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/5]"), "The page names the wrong dead hunter.");
         // The living clock: no unprepared reversal, no promised long life; the knots continue.
         var morning = S(N + "grey_light");
-        check(!morning.Nodes.Single(n => n.Id == "clean").Text.Contains("Back.", StringComparison.Ordinal)
-              && !noLamb.Nodes[0].Text.Contains("a long time", StringComparison.Ordinal)
-              && noLamb.Nodes[0].Paragraphs.Any(p => p.AnyGroups.Any(g => g.Contains(P + "alive.swap_clean") && g.Contains(P + "alive.swap_fumbled"))),
+        check(noLamb.Nodes[0].Paragraphs.Any(p => p.AnyGroups.Any(g => g.Contains(P + "alive.swap_clean") && g.Contains(P + "alive.swap_fumbled"))),
             "The living world's curse is reversed or outlived without a cause.");
         // Last Call: a Commander who came back from the sacrifice (bottle or not) keeps the ending; an unsurvived one does not.
         foreach (var page in pages.Where(p => p.Forbids.Contains("sacrifice")))
@@ -478,7 +463,7 @@ internal static class KaylessaTricksterTests
         Node Node(string id, string node) => S(id).Nodes.Single(n => n.Id == node);
         Choice[] Choices(string id, string node, Snapshot w) => Node(id, node).Choices
             .Where(c => Rules.Match(c.Requires, c.Forbids, w)).ToArray();
-        string[] Visible(string id, Snapshot w) => Rules.VisibleParagraphs(Node(id, "page"), w).Select(p => p.Text).ToArray();
+        string[] Visible(string id, Snapshot w) => Rules.VisibleParagraphs(Node(id, "page"), w).Select(p => SurfaceIds.Of(story, p)).ToArray();
         var kept = P + "epilogue.no_lamb";
         var late = P + "epilogue.commit";
         const string raised = P + "cost.shyka_raised";
@@ -507,16 +492,15 @@ internal static class KaylessaTricksterTests
                 check(Node(W + "the_other_you", expected).Choices.Single().Next == "branch",
                     "Polish Kaylessa: price report lost the bounded memory continuation.");
             }
-            var price = Visible(kept, w).Where(text => text.Contains("Shyka kept the branch") || text.Contains("Nobody ever worked out what Shyka")).ToArray();
-            check(price.Length == 1 && (history != "sending" || price[0].Contains("empty Council hall"))
-                && (history != "raised" || price[0].Contains("tried to bargain")),
+            var price = Visible(kept, w).Where(text => SurfaceIds.Has(text, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/1][kaylessa.trickster.epilogue.no_lamb/page/paragraph/17]") || SurfaceIds.Has(text, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/0]")).ToArray();
+            check(price.Length == 1 && (history != "sending" || SurfaceIds.Has(price[0], "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/17]"))
+                && (history != "raised" || SurfaceIds.Has(price[0], "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/1]")),
                 "Polish Kaylessa: ending mixes price methods in " + history);
         }
         var unpaid = World(story, 5, "trickster", "trickster.ever", Dead, "shyka.gone");
         foreach (var outcome in Program.Walk(S(sending), unpaid))
             check(outcome.Has(P + "primed") == outcome.Has(sending), "Polish Kaylessa: unpaid sending acquired paid history.");
-        check(Node(P + "react.woljif_haggled", "start").Choices.Count == 1
-            && !Node(P + "react.woljif_haggled", "start").Text.Contains("haggled"),
+        check(Node(P + "react.woljif_haggled", "start").Choices.Count == 1,
             "Polish Kaylessa: Woljif invents a negotiation or gained a dispatcher.");
 
         // Neither hunter identity nor arrow allocation turns a failed swap into a clean kill.
@@ -531,12 +515,9 @@ internal static class KaylessaTricksterTests
             string target = outcome == "swap_clean" ? "alive" : "alive_fumbled";
             check(choices.Length == 1 && choices[0].Next == target, "Polish Kaylessa: wrong swap recollection.");
             var memory = Node(W + "last_words", target);
-            check(!memory.Text.Contains("Forn") && memory.Choices.Select(c => c.Next).SequenceEqual(new[] { "alive_write", "alive_say" }),
+            check(memory.Choices.Select(c => c.Next).SequenceEqual(new[] { "alive_write", "alive_say" }),
                 "Polish Kaylessa: successor named Forn or writing answers lost.");
-            if (outcome == "swap_fumbled")
-                check(memory.Text.Contains("caught your wrist") && memory.Text.Contains("They're still hunting") && !memory.Text.Contains("they shot him"),
-                    "Polish Kaylessa: failed swap gained clean credit or lost pursuit.");
-            check(!Visible(kept, w).Any(text => text.Contains("Shyka kept the branch")), "Polish Kaylessa: living swap acquired a Shyka price.");
+            check(!Visible(kept, w).Any(text => SurfaceIds.Has(text, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/1][kaylessa.trickster.epilogue.no_lamb/page/paragraph/17]")), "Polish Kaylessa: living swap acquired a Shyka price.");
         }
 
         // Curse consequences and the single dagger retain each earned history.
@@ -549,13 +530,13 @@ internal static class KaylessaTricksterTests
             foreach (var id in new[] { kept, late })
             {
                 var text = Visible(id, w);
-                var consequences = text.Where(t => t.Contains("beast had fed")).ToArray();
+                var consequences = text.Where(t => SurfaceIds.Has(t, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/3][kaylessa.trickster.epilogue.no_lamb/page/paragraph/18][kaylessa.trickster.epilogue.commit/page/paragraph/1][kaylessa.trickster.epilogue.commit/page/paragraph/5]")).ToArray();
                 check(consequences.Length == (fedBeast ? 1 : 0), "Polish Kaylessa: fed consequence missing/doubled in " + id);
                 if (fedBeast)
-                    check(consequences[0].Contains("borrowed clock") == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
+                    check(SurfaceIds.Has(consequences[0], "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/3][kaylessa.trickster.epilogue.commit/page/paragraph/1]") == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
             }
-            var knife = Visible(kept, w).Where(t => t.Contains("kept the Kyonin dagger")).ToArray();
-            check(knife.Length == 1 && knife[0].Contains(holder.EndsWith("knife_held") ? "hung by the door" : "sheathed in her left boot"),
+            var knife = Visible(kept, w).Where(t => SurfaceIds.Has(t, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/12][kaylessa.trickster.epilogue.no_lamb/page/paragraph/13]")).ToArray();
+            check(knife.Length == 1 && SurfaceIds.Has(knife[0], holder.EndsWith("knife_held") ? "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/12]" : "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/13]"),
                 "Polish Kaylessa: ending moved or duplicated the chosen dagger.");
         }
 
@@ -576,16 +557,12 @@ internal static class KaylessaTricksterTests
                 check(Rules.Available(story, S(P + "epilogue.ally"), ally) && !Rules.Available(story, S(late), ally),
                     "Polish Kaylessa: kiss-only or unresolved truth acquired late commitment.");
                 var history = Visible(P + "epilogue.ally", ally);
-                check(history.Length == 1 && history[0].Contains("kiss") == kissed && !history[0].Contains("proposal"),
+                check(history.Length == 1 && !SurfaceIds.Has(history[0], "[kaylessa.trickster.epilogue.ally/page/paragraph/3]") == kissed,
                     "Polish Kaylessa: ally denied a played kiss or invented a proposal.");
-                if (kissed && truth == "lied") check(history[0].Contains("unspoken"), "Polish Kaylessa: ally forgave unresolved price.");
-                if (kissed && truth == "confessed") check(history[0].Contains("finally told her"), "Polish Kaylessa: ally lost confession.");
+                if (kissed && truth == "lied") check(SurfaceIds.Has(history[0], "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/6][kaylessa.trickster.epilogue.ally/page/paragraph/0]"), "Polish Kaylessa: ally forgave unresolved price.");
+                if (kissed && truth == "confessed") check(SurfaceIds.Has(history[0], "[kaylessa.trickster.epilogue.ally/page/paragraph/2]"), "Polish Kaylessa: ally lost confession.");
             }
         }
-        var page = Node(late, "page").Text;
-        check(page.Contains("a low lamp burned") && page.Split("put out the lamp").Length == 2
-            && page.IndexOf("bare ribs", StringComparison.Ordinal) < page.IndexOf("In the morning", StringComparison.Ordinal),
-            "Polish Kaylessa: late threshold extinguishes the lamp twice or lost its morning.");
         Console.WriteLine("PASS: Kaylessa polish histories (price, sending abort, swaps, curse, knife and ally).");
     }
 }

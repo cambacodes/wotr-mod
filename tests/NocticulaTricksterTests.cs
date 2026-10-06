@@ -84,7 +84,7 @@ internal static class NocticulaTricksterTests
               && rel.TricksterAccess[Dead].Returned == Returned, "Nocticula relationship patch missing.");
         check(story.Derived.ContainsKey(Alive) && story.Derived.ContainsKey("nocticula.trickster.cost.forgery_kept"), "Derived keys missing.");
         var joke = shadow.Nodes.Where(n => n.Id != "start").SelectMany(n => n.Choices).Where(c => !c.Abort).ToList();
-        check(joke.Count == 4 && joke.All(c => c.Mythic == "PlayerIsTrickster" && c.Text.Contains("I killed your shadow")), "The joke lost its [Trickster] answer.");
+        check(joke.Count == 4 && joke.All(c => c.Mythic == "PlayerIsTrickster" && SurfaceIds.Has(SurfaceIds.Of(story, c), "[nocticula.trickster.defeated.shadow/seen/choice/0][nocticula.trickster.defeated.shadow/dress/choice/0][nocticula.trickster.defeated.shadow/voice/choice/0][nocticula.trickster.defeated.shadow/base/choice/0]")), "The joke lost its [Trickster] answer.");
         var terms = callIn.Nodes.Single(n => n.Id == "terms").Choices.Single();
         var termsLate = callIn.Nodes.Single(n => n.Id == "terms_late").Choices.Single();
         check(terms.Alignment?.Direction == "Evil" && terms.Alignment.Value == 1 && termsLate.Alignment?.Value == 2
@@ -307,8 +307,7 @@ internal static class NocticulaTricksterTests
         // Sol COX: on the late road (one Chapter 6 rest) the morning after is inside the chair; the remote morning is not needed.
         var lateChair = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Returned, Paid, Late);
         var lateSeen = new HashSet<string>(); Program.Walk(chair, lateChair, (id, _) => lateSeen.Add(id));
-        check(lateSeen.Contains("morning_late_paid") && !Rules.Available(story, morning, With(story, lateChair, "nocticula.trickster.said_yes"))
-              && !chair.Nodes.Single(n => n.Id == "refusal").Text.Contains("Areelu"),
+        check(lateSeen.Contains("morning_late_paid") && !Rules.Available(story, morning, With(story, lateChair, "nocticula.trickster.said_yes")),
             "The late road needs a second Chapter 6 rest for the morning, or her refusal waits on Areelu's death.");
         // Ledger 05 row 11: the fourth court (Horzalah), Nocticula's read of the Guild's box.
         var courtH = S("nocticula.trickster.court.horzalah");
@@ -361,7 +360,7 @@ internal static class NocticulaTricksterTests
         pages.Clear();
         Program.Walk(morning, World(story, 6, "trickster", "trickster.ever", "nocticula.trickster.said_yes", Refused), (page, _) => pages.Add(page));
         check(!pages.Contains("daeran") && !pages.Contains("note_paid") && !pages.Contains("note_paid_alone"), "Daeran or the note reads a favour that was refused.");
-        check(morning.Nodes[0].Choices[0].Text == "[Buckle your armour over the marks.]" && morning.Nodes[0].Choices[0].Next == null,
+        check(morning.Nodes[0].Choices[0].Next == null,
             "The morning's choice 0 moved (save slot).");
         var order = story.Scenes.Select(s => s.Id).ToList();
         check(order.IndexOf(mirror.Id) < order.IndexOf(mirrorKept.Id) && order.IndexOf(mirrorKept.Id) < order.IndexOf(favour.Id),

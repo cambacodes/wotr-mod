@@ -138,7 +138,7 @@ def main():
                     command = [sys.executable, '-c',
                         'import importlib,json; from pathlib import Path; '
                         'm=importlib.import_module(' + repr('tools.' + path.stem) + '); '
-                        's=json.loads(Path("development/Story.json").read_text()); '
+                        's=json.loads(Path("development/Story.json").read_text(encoding="utf-8")); '
                         'r=m.check(s); print("checked", len(r))']
                 # Use the actual default contract for non-story metadata lints.
                 elif '"--story"' in text or "'--story'" in text:

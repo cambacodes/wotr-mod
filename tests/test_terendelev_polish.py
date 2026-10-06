@@ -99,7 +99,7 @@ class TerendelevPolishDraftTests(unittest.TestCase):
             sold = talk["Choices"][4]
             self.assertEqual(sold["Next"], "gap.gate")
             self.assertIn(foresight.GONE_SQUARE, sold["Requires"])
-            self.assertIn("survivors", sold["Text"])
+            self.assertEqual(talk["Choices"].index(sold), 4)
 
 
 if __name__ == "__main__":

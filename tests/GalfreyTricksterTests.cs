@@ -213,7 +213,7 @@ internal static class GalfreyTricksterTests
         check(!Rules.Available(story, oath, Later(story, morning, 10)) && Rules.Available(story, oath, Later(story, morning, 12)),
             "Trk_Galfrey_Kitrane: the oath has not reserved the earlier 12-hour courtship wait.");
         var yes = One(oath, Later(story, morning, 50), new[] { Committed }, P + "sworn");
-        check(oath.Nodes.Single(n => n.Id == "crowd").Choices.Any(c => c.Text.StartsWith("[Refuse her oath", StringComparison.Ordinal) && c.Next == "refuse"),
+        check(oath.Nodes.Single(n => n.Id == "crowd").Choices.Any(c => SurfaceIds.Has(SurfaceIds.Of(story, c), "[galfrey.trickster.commit.oath/crowd/choice/0]") && c.Next == "refuse"),
             "Trk_Galfrey_Kitrane: the commit is not the Commander refusing her oath.");
         var night = One(tent, Later(story, yes, 10), new[] { P + "tent_seen", P + "morning_drill" });
         var beats = new[] { "armour", "buckles", "mail", "want", "bed", "cut", "after", "morning", "drill" };

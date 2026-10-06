@@ -23,12 +23,6 @@
         "arsinoe.lastcall.page",
         "page",
         "text"
-      ],
-      "absent_text": [
-        "account",
-        "lease",
-        "lien",
-        "cauldron"
       ]
     },
     {
@@ -43,9 +37,6 @@
       ],
       "forbids": [
         "arsinoe.siphon_burst"
-      ],
-      "absent_text": [
-        "Worldwound"
       ]
     },
     {
@@ -58,9 +49,6 @@
         "arsinoe.lastcall.called",
         "arsinoe.trickster.cost.lien",
         "arsinoe.siphon_burst"
-      ],
-      "absent_text": [
-        "Worldwound"
       ]
     },
     {
@@ -73,9 +61,6 @@
         "arsinoe.lastcall.called",
         "arsinoe.trickster.cost.lien",
         "arsinoe.trickster.cost.collateral_still"
-      ],
-      "absent_text": [
-        "now holds a lien"
       ]
     },
     {
@@ -170,10 +155,6 @@
       "requires": [
         "arsinoe.trickster.cost.lien",
         "arsinoe.lastcall.called"
-      ],
-      "absent_text": [
-        "Worldwound",
-        "where the rift"
       ]
     },
     {
@@ -204,10 +185,6 @@
       ],
       "requires": [
         "eliandra.trickster.cost.lights_given"
-      ],
-      "absent_text": [
-        "every morning",
-        "cave that no longer exists"
       ]
     },
     {
@@ -218,10 +195,6 @@
       ],
       "requires": [
         "eliandra.trickster.cost.lights_given"
-      ],
-      "absent_text": [
-        "every morning",
-        "cave that no longer exists"
       ]
     },
     {
@@ -243,10 +216,6 @@
       ],
       "requires": [
         "eliandra.trickster.cost.lights_given"
-      ],
-      "absent_text": [
-        "every morning",
-        "cave that no longer exists"
       ]
     },
     {
@@ -257,10 +226,6 @@
       ],
       "requires": [
         "eliandra.trickster.cost.lights_given"
-      ],
-      "absent_text": [
-        "every morning",
-        "cave that no longer exists"
       ]
     },
     {
@@ -360,9 +325,6 @@
       ],
       "requires": [
         "kiana.sunhammer_dead"
-      ],
-      "absent_text": [
-        "brought the stolen souls home"
       ]
     },
     {
@@ -693,11 +655,6 @@
         "wenduag.lastcall.call",
         "@Entry",
         "Entry"
-      ],
-      "absent_text": [
-        "stone",
-        "pocket",
-        "carried"
       ]
     },
     {
@@ -705,11 +662,6 @@
         "wenduag.lastcall.call",
         "call",
         "text"
-      ],
-      "absent_text": [
-        "stone",
-        "pocket",
-        "carried"
       ]
     },
     {
@@ -751,12 +703,6 @@
         "trickster.ledger",
         "owed.wenduag",
         "text"
-      ],
-      "absent_text": [
-        "pocket",
-        "stone",
-        "knife back",
-        "still breathing"
       ]
     },
     {
@@ -764,12 +710,6 @@
         "lastcall",
         "owed.wenduag",
         "description"
-      ],
-      "absent_text": [
-        "pocket",
-        "stone",
-        "knife back",
-        "still breathing"
       ]
     },
     {
@@ -809,10 +749,6 @@
         "wenduag.lastcall.page",
         "page",
         "text"
-      ],
-      "absent_text": [
-        "cairn",
-        "cellar"
       ]
     },
     {

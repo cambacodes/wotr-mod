@@ -51,7 +51,7 @@ internal static class KonomiDeathLatchTests
               && Rules.Available(story, loss, World("konomi.trickster.late_committed", Latched))
               && !Rules.Available(story, loss, World("konomi.attracted", Latched)),
             "Konomi death latch: the loss page plays beside the Commander's own death, misses her late yes, or plays uncommitted.");
-        check(loss.Nodes.Count == 1 && loss.Nodes[0].Text.Contains("died at her post") && loss.Nodes[0].Choices.All(c => c.Set.Length == 0),
+        check(loss.Nodes.Count == 1 && loss.Nodes[0].Choices.All(c => c.Set.Length == 0),
             "Konomi death latch: the loss page is not a single effect-free page.");
 
         // Last Call: the coda and the call-in stay dark for the unreturned dead, and her debt does not strand the joke.

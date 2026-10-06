@@ -32,7 +32,7 @@ class LeftTricksterConsumerLintTests(unittest.TestCase):
                     yes, leave = node["Choices"]
                     self.assertIn("wenduag.committed", yes["Set"])
                     self.assertIn("trickster.now", yes["Requires"])
-                    self.assertEqual(leave["Text"], "[Leave.]")
+                    self.assertIsNone(leave["Next"])
                     self.assertTrue(leave["Abort"])
                     self.assertEqual(leave["Set"], [])
                     self.assertEqual(leave["Forbids"], ["trickster.now"])

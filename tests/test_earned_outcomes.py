@@ -58,10 +58,9 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
         for old, new in zip(self.before["Scenes"], self.after["Scenes"]):
             self.assertEqual([n["Id"] for n in old["Nodes"]], [n["Id"] for n in new["Nodes"]])
             for a, b in zip(old["Nodes"], new["Nodes"]):
-                self.assertEqual(a["Text"], b["Text"])
                 self.assertGreaterEqual(len(b["Choices"]), len(a["Choices"]))
                 for previous, current in zip(a["Choices"], b["Choices"]):
-                    for field in ("Text", "Next", "Check", "Abort", "NativeNext", "Revive"):
+                    for field in ("Next", "Check", "Abort", "NativeNext", "Revive"):
                         self.assertEqual(previous.get(field), current.get(field), (old["Id"], a["Id"], field))
 
     def test_raw_terms_late_pages_also_supply_their_existing_refusal(self):

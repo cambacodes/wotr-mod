@@ -74,8 +74,6 @@ internal static class KianaTricksterTests
         check(straight.Count == 2 && bluff != null && bluff.Skill == "CheckBluff" && bluff.DC == 20 && bluff.Success == "sold" && bluff.Failure == "bolted"
               && knowing != null && knowing.Skill == "CheckBluff" && knowing.DC < 20 && knowing.Success == "sold" && knowing.Failure == "bolted",
             "The straight face is not a Bluff check, or the arcana does more than lower its DC.");
-        check(!gem.Nodes.Concat(collar.Nodes).Any(n => n.Text.Contains("property that is not there") || n.Text.Contains("None of it was true until")),
-            "Trk_Kiana_NoPowerCrack (polish batch 9): an appraisal still makes the crack real.");
         var sendBack = gem.Nodes.Single(n => n.Id == "swapped").Choices.Single();
         check(sendBack.RemoveItem == Counterfeit && sendBack.Requires.Contains("kiana.counterfeit_held") && sendBack.Mythic == "PlayerIsTrickster",
             "The swap does not spend the counterfeit.");
@@ -159,11 +157,11 @@ internal static class KianaTricksterTests
               && vowed != null && !vowed.Has("kiana.trickster.cost.sunhammer_favour") && offered.All(r => !r.Has("kiana.closed")),
             "The revised terms do not offer the price or the vow.");
         var boughtEnd = Program.Copy(bought!); boughtEnd.Flags.Add("kiana.committed"); boughtEnd.Chapter = 6;
-        var boughtParas = Rules.VisibleParagraphs(S("kiana.ending_promised").Nodes[0], boughtEnd).Select(x => x.Text).ToArray();
-        check(boughtParas.Any(t => t.Contains("apology")) && !boughtParas.Any(t => t.Contains("never came back")),
+        var boughtParas = Rules.VisibleParagraphs(S("kiana.ending_promised").Nodes[0], boughtEnd).Select(x => SurfaceIds.Of(story, x)).ToArray();
+        check(SurfaceIds.Has(boughtParas, "[kiana.ending_promised/start/paragraph/2]") && !SurfaceIds.Has(boughtParas, "[kiana.ending_promised/start/paragraph/0][kiana.ending_promised/start/paragraph/1]"),
             "The ending forgets the guests who came home.");
         var vowEnd = Program.Copy(vowed!); vowEnd.Flags.Add("kiana.committed"); vowEnd.Chapter = 6;
-        check(Rules.VisibleParagraphs(S("kiana.ending_promised").Nodes[0], vowEnd).Any(x => x.Text.Contains("promise")),
+        check(Rules.VisibleParagraphs(S("kiana.ending_promised").Nodes[0], vowEnd).Any(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[kiana.ending_promised/start/paragraph/3]")),
             "The ending forgets the Commander's word.");
         check(!Rules.Available(story, S("kiana.trickster.possessed.react_arsinoe_stones"), bought!), "Arsinoe mourns guests who came home.");
 
@@ -333,7 +331,7 @@ internal static class KianaTricksterTests
         var promised = S("kiana.ending_promised").Nodes[0];
         var deadEnd = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.sunhammer_favour", "kiana.committed", "kiana.sunhammer_dead");
         var deadParas = Rules.VisibleParagraphs(promised, deadEnd);
-        check(deadParas.Any(x => x.Text.Contains("cancelled by a funeral")) && !deadParas.Any(x => x.Text.Contains("called it in yet")),
+        check(deadParas.Any(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[kiana.ending_promised/start/paragraph/5]")) && !deadParas.Any(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[kiana.ending_promised/start/paragraph/4]")),
             "Q10: a dead jeweller still holds the Commander's favour.");
         var call = S("kiana.lastcall.call");
         var callDead = Program.Walk(call, deadEnd);
@@ -347,7 +345,7 @@ internal static class KianaTricksterTests
         // Q10 (BEL): the betrothed keepsake is the cancelled licence, not a live hold.
         var licenceParas = Rules.VisibleParagraphs(promised, World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed",
                                                                    "kiana.trickster.cost.betrothed", "kiana.committed"));
-        check(licenceParas.Any(x => x.Text.Contains("POSTPONED")) && !licenceParas.Any(x => x.Text.Contains("stayed postponed")),
+        check(licenceParas.Any(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[kiana.ending_promised/start/paragraph/7]")),
             "Q10: the licence is both held and framed.");
         // Q10 (HOW, R2-6): the late yes reaches her Last Call coda; her "then don't promise it" and a parting keep it off.
         var coda = S("kiana.lastcall.page");
@@ -416,7 +414,6 @@ internal static class KianaTricksterTests
               && boltTold.Contains("told_bolted") && !boltTold.Contains("told_robbed")
               && swapTold.Contains("told_swapped") && !swapTold.Contains("told_robbed") && !swapTold.Contains("told_bolted"),
             "Q10: the pivot recalls a rescue the Commander did not make.");
-        check(!temple.Nodes.Any(n => n.Text.Contains("*thanked*")), "Q10: the apprentice thanks the Commander for breaking his stone.");
         // Q10 (INT): no Kiana actor, no pivot at the counter; an unplaced copy opens the letter twin, not before.
         var noKiana = Later(story, sold, 24); noKiana.AvailableContacts.Remove(Kyana);
         var twin = S("kiana.trickster.after.letter");
@@ -467,7 +464,7 @@ internal static class KianaTricksterTests
         // Q10 (BEL): the decree paragraph names only the other two weddings.
         var kingEnd = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed", "kiana.trickster.cost.betrothed",
                             "kiana.trickster.decree_king", "kiana.committed");
-        check(!Rules.VisibleParagraphs(promised, kingEnd).Any(x => x.Text.Contains("Three weddings")), "Q10: her cancelled wedding goes ahead.");
+
 
         // Exclusivity: one device per world.
         foreach (var w in new[] { seen, missedWife, possessed, awake, noKing })

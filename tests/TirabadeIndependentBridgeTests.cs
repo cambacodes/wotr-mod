@@ -36,6 +36,8 @@ internal static class TirabadeIndependentBridgeTests
                 {
                     var comparison = JsonSerializer.Deserialize<Choice>(JsonSerializer.Serialize(newPage.Choices[i], options), options)!;
                     comparison.Forbids = comparison.Forbids.Where(flag => flag != negotiated).ToArray();
+                    // Localization is independent of the saved answer contract.
+                    comparison.Text = oldPage.Choices[i].Text;
                     check(JsonSerializer.Serialize(comparison, options) == JsonSerializer.Serialize(oldPage.Choices[i], options),
                         "Bridge changed a legacy answer beyond excluding the mutually exclusive new history: " + prior.Id + "/" + oldPage.Id + "/" + i);
                 }

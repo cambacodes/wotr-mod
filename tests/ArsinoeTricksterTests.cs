@@ -260,19 +260,19 @@ internal static class ArsinoeTricksterTests
         roofFriend.Chapter = 6;
         check(!Rules.Available(story, lateCommit, roofFriend), "Friendship is reopened as a late romance.");
         var roofOffer = lateCommit.Nodes.Single(n => n.Id == "offer");
-        string OfferText(Snapshot st) => string.Join(" ", Rules.VisibleParagraphs(roofOffer, st).Select(p => p.Text));
+        string OfferText(Snapshot st) => string.Join(" ", Rules.VisibleParagraphs(roofOffer, st).Select(p => SurfaceIds.Of(story, p)));
         var roofText = OfferText(roofOnly);
-        check(roofText.Contains("There was a roof") && !roofText.Contains("innkeeper") && !roofText.Contains("doorway with the carved face")
-              && !roofText.Contains("table in Tovin's shop") && !roofText.Contains("payments late"),
+        check(SurfaceIds.Has(roofText, "[arsinoe.trickster.late.commit/offer/paragraph/1]") && !SurfaceIds.Has(roofText, "[arsinoe.trickster.late.commit/offer/paragraph/2]") && !SurfaceIds.Has(roofText, "[arsinoe.trickster.late.commit/offer/paragraph/4]")
+              && !SurfaceIds.Has(roofText, "[arsinoe.trickster.late.commit/offer/paragraph/3]") && !SurfaceIds.Has(roofText, "[arsinoe.trickster.late.commit/offer/paragraph/0]"),
             "Roof-only late offer recalls evenings that were never played.");
-        check(OfferText(flirted).Contains("payments late") && !OfferText(flirted).Contains("There was a roof"),
+        check(SurfaceIds.Has(OfferText(flirted), "[arsinoe.trickster.late.commit/offer/paragraph/0]") && !SurfaceIds.Has(OfferText(flirted), "[arsinoe.trickster.late.commit/offer/paragraph/1]"),
             "Lease-flirt late offer borrows the roof history.");
         var booked = Program.Copy(roofOnly); booked.Flags.Add("arsinoe_first_impression");
-        check(OfferText(booked).Contains("innkeeper") && !OfferText(booked).Contains("doorway with the carved face"), "Book callback wrong.");
+        check(SurfaceIds.Has(OfferText(booked), "[arsinoe.trickster.late.commit/offer/paragraph/2]") && !SurfaceIds.Has(OfferText(booked), "[arsinoe.trickster.late.commit/offer/paragraph/4]"), "Book callback wrong.");
         var tabled = Program.Copy(booked); tabled.Flags.UnionWith(new[] { "arsinoe_hours_of_her_own", "arsinoe.next_table" });
-        check(OfferText(tabled).Contains("Tovin's shop") && !OfferText(tabled).Contains("doorway with the carved face"), "Table callback wrong.");
+        check(SurfaceIds.Has(OfferText(tabled), "[arsinoe.trickster.late.commit/offer/paragraph/3]") && !SurfaceIds.Has(OfferText(tabled), "[arsinoe.trickster.late.commit/offer/paragraph/4]"), "Table callback wrong.");
         var walked = Program.Copy(booked); walked.Flags.UnionWith(new[] { "arsinoe_hours_of_her_own", "arsinoe.next_walk" });
-        check(OfferText(walked).Contains("doorway with the carved face") && !OfferText(walked).Contains("table in Tovin's shop"), "Walk callback wrong.");
+        check(SurfaceIds.Has(OfferText(walked), "[arsinoe.trickster.late.commit/offer/paragraph/4]") && !SurfaceIds.Has(OfferText(walked), "[arsinoe.trickster.late.commit/offer/paragraph/3]"), "Walk callback wrong.");
         // A Chapter 5 fresh entry reaches the roof within the post-Coronation budget (168 h).
         int roofHours = new[] { "arsinoe_city_on_paper", "arsinoe_printers_view", "arsinoe_roofs" }.Sum(id => story.Scenes.Single(s => s.Id == id).DelayHours);
         check(roofHours <= 168, "Post-Coronation entry cannot reach the late-commit beat in 168 h: " + roofHours);
@@ -289,10 +289,15 @@ internal static class ArsinoeTricksterTests
             if (called) st.Flags.Add("arsinoe.lastcall.called");
             var shown = Rules.VisibleParagraphs(bill, st).Where(p => p.Requires.Length + p.Forbids.Length > 0 && !p.Requires.Any(r => r.Contains("collateral"))).ToArray();
             check(shown.Length == 1, "Burst cauldron page has no single fate variant (active=" + active + ", called=" + called + ")");
-            check(shown.All(p => (p.Text.Contains("unpaid") || p.Text.Contains("account remained open")) == !called && p.Text.Contains("handed back") == called), "Burst page contradicts Last Call.");
+            check(shown.All(p => SurfaceIds.Has(SurfaceIds.Of(story, p),
+                    "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/0][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/1]") == !called
+                  && SurfaceIds.Has(SurfaceIds.Of(story, p), "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/2]") == called),
+                "Burst page contradicts Last Call.");
             var whole = World(story, "trickster.ever", "arsinoe.trickster.cost.lien");
             if (active) whole.Flags.Add("lastcall.active");
-            check(Rules.VisibleParagraphs(potNode, whole).Count(p => p.Text.Contains("exact bill")) == 1, "Returned cauldron page contradicts Last Call.");
+            check(Rules.VisibleParagraphs(potNode, whole).Count(p => SurfaceIds.Has(SurfaceIds.Of(story, p),
+                "[arsinoe.trickster.epilogue.pot_returned/end/paragraph/0][arsinoe.trickster.epilogue.pot_returned/end/paragraph/3]")) == 1,
+                "Returned cauldron page contradicts Last Call.");
         }
 
         // Sol r4 BEL: no collateral or arrears paragraph has a dead Commander visit or pay; a Commander brought back does.
@@ -303,11 +308,10 @@ internal static class ArsinoeTricksterTests
             var st = World(story, "trickster.ever", "arsinoe.trickster.cost.lien", "arsinoe.trickster.cost.collateral_word", "sacrifice");
             if (back) st.Flags.Add("ending.trickster");
             Rules.Complete(story, st);
-            var text = string.Join(" ", Rules.VisibleParagraphs(node, st).Select(p => p.Text));
-            check(!text.Contains("The Commander came") && text.Contains("estate") == !back,
-                "Collateral invents a personal appointment or ignores death on " + id);
+            var text = string.Join(" ", Rules.VisibleParagraphs(node, st).Select(p => SurfaceIds.Of(story, p)));
+            check(SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/3][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/4][arsinoe.trickster.epilogue.pot_returned/end/paragraph/4][arsinoe.trickster.epilogue.pot_returned/end/paragraph/5][irabeth.lastcall.page/page/paragraph/0]") == back && SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/5][arsinoe.trickster.epilogue.pot_returned/end/paragraph/6]") == !back, "Pledged word ignores death on " + id);
             if (id.EndsWith("pot_returned"))
-                check(text.Contains("exact bill") == back && text.Contains("estate") == !back, "Rental accounting ignores death.");
+                check(SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.pot_returned/end/paragraph/0][arsinoe.trickster.epilogue.pot_returned/end/paragraph/1][arsinoe.trickster.epilogue.pot_returned/end/paragraph/9][arsinoe.trickster.epilogue.pot_returned/end/paragraph/10]") == back && SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.pot_returned/end/paragraph/2]") == !back, "Arrears ignore death.");
         }
 
         // Sol r2 INT: the Kiana wedding line (added to this scene by kiana_trickster.integrate) reads her route's robbery,
@@ -343,16 +347,17 @@ internal static class ArsinoeTricksterTests
             if (closedWound) st.Flags.Add("ending.wound_closed");
             Rules.Complete(story, st);
             var text = string.Join(" ", epilogues.Where(e => Rules.Available(story, e, st))
-                .SelectMany(e => e.Nodes).SelectMany(n => new[] { n.Text }.Concat(Rules.VisibleParagraphs(n, st).Select(p => p.Text))));
+                .SelectMany(e => e.Nodes).SelectMany(n => new[] { SurfaceIds.Of(story, n) }.Concat(Rules.VisibleParagraphs(n, st).Select(p => SurfaceIds.Of(story, p)))));
             string what = life + "/" + lc + "/burst=" + burst + "/closed=" + closedWound;
-            bool settled = text.Contains("discharged the loss claim") || text.Contains("settled the separate rental account");
-            bool owed = text.Contains("account remained unpaid") || text.Contains("unpaid loss account") || text.Contains("came back unopened");
+            bool settled = SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/2]") || SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.pot_returned/end/paragraph/11][arsinoe.trickster.epilogue.pot_returned/end/paragraph/14]");
+            bool owed = SurfaceIds.Has(text,
+                "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/0][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/1][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/7]"
+                + "[arsinoe.trickster.epilogue.pot_returned/end/paragraph/2][arsinoe.trickster.epilogue.foreclosure/end/paragraph/0][arsinoe.trickster.epilogue.foreclosure/end/paragraph/1]");
             check(!(settled && owed), "Arsinoe's account is both settled and owed: " + what);
-            check(!text.Contains("Account satisfied"), "Wound closure claims the rent account satisfied: " + what);
-            check(lc != "called" || !text.Contains("not yet foreclosed"), "A called-in lien still threatens foreclosure: " + what);
+            check(lc != "called" || !SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.foreclosure/end/paragraph/0][arsinoe.trickster.epilogue.foreclosure/end/paragraph/1]"), "A called-in lien still threatens foreclosure: " + what);
             check(lc != "called" || !owed, "A called lease leaves the account owed: " + what);
             bool alive = life != "dead" || lc != "none";
-            check(!text.Contains("The Commander came.") || alive, "A dead Commander answers the called word: " + what);
+            check(!SurfaceIds.Has(text, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/3][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/4][arsinoe.trickster.epilogue.pot_returned/end/paragraph/4][arsinoe.trickster.epilogue.pot_returned/end/paragraph/5]") || alive, "A dead Commander answers the called word: " + what);
         }
 
         // Sol COX/HOW: the courtship spine fits the shared chain ceiling (ledger: 504 h) at its minimum delays.

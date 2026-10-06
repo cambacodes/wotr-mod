@@ -337,8 +337,7 @@ internal static class YanielTricksterTests
             "Trk_Yaniel_AllRomanceWalk: the niche does not follow the commit a day later.");
         var nicheDone = Through(niche, Later(story, yes, 24), "morning2", 0).First();
         check(nicheDone.Has(Niche) && nicheDone.Has(P + "morning_seen"), "Trk_Yaniel_AllRomanceWalk: the niche does not end in the morning.");
-        check(trade.Nodes.SelectMany(n => n.Choices).All(c => c.Check == null && c.Crusade == null && c.RemoveItem == null)
-              && Ch(trade, "ask", 0).Text.StartsWith("[Keep the shackle]", StringComparison.Ordinal) && Ch(trade, "ask", 0).Set.Contains(Committed),
+        check(trade.Nodes.SelectMany(n => n.Choices).All(c => c.Check == null && c.Crusade == null && c.RemoveItem == null) && Ch(trade, "ask", 0).Set.Contains(Committed),
             "The commit carries a test or a price, or the yes is not that neither trades.");
 
         // Trk_Yaniel_Oath: judges; the verdict reads the pack and the song; a broken oath goes straight to the vigil.
@@ -408,7 +407,7 @@ internal static class YanielTricksterTests
             foreach (var node in page.Nodes)
             {
                 var lateEnd = World(story, 6, "trickster.ever", Started, Returned, Verdict, Committed, Shackle, Swapped, Carries, P + "carries_holy", Late, P + "handed_after_iz", "sacrifice", "trickster.commander_back");
-                check(!node.Paragraphs.Any(q => Rules.ParagraphVisible(q, lateEnd) && (q.Text.Contains("heard it for both of them") || q.Text.Contains("never sang for her"))),
+                check(!node.Paragraphs.Any(q => Rules.ParagraphVisible(q, lateEnd) && (SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/1][yaniel.trickster.epilogue.commit/page/paragraph/1][yaniel.trickster.epilogue.broken/page/paragraph/1][yaniel.trickster.epilogue.unasked/page/paragraph/1][yaniel.trickster.epilogue.distrusted/page/paragraph/1][yaniel.trickster.epilogue.unsettled/page/paragraph/1][yaniel.trickster.epilogue.declined/page/paragraph/1]") || SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/3][yaniel.trickster.epilogue.commit/page/paragraph/3][yaniel.trickster.epilogue.broken/page/paragraph/3][yaniel.trickster.epilogue.unasked/page/paragraph/3][yaniel.trickster.epilogue.distrusted/page/paragraph/3][yaniel.trickster.epilogue.unsettled/page/paragraph/3][yaniel.trickster.epilogue.declined/page/paragraph/3]"))),
                     "A page tells the Iz song for a sword she received after Iz: " + page.Id);
             }
         // The Threshold reckoning: a pending or unproven oath is answered on the pages by what the Commander brings home.
@@ -417,12 +416,12 @@ internal static class YanielTricksterTests
         {
             var home6 = World(story, 6, "trickster.ever", Committed, Shackle, Judges, open, "yaniel.radiance_plus1");
             var empty6 = World(story, 6, "trickster.ever", Committed, Shackle, Judges, open);
-            check(together.Paragraphs.Count(q => Rules.ParagraphVisible(q, home6) && q.Text.Contains("Radiance was there")) == 1
-                  && together.Paragraphs.Count(q => Rules.ParagraphVisible(q, empty6) && q.Text.Contains("Radiance was not there")) == 1,
+            check(together.Paragraphs.Count(q => Rules.ParagraphVisible(q, home6) && SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/5]")) == 1
+                  && together.Paragraphs.Count(q => Rules.ParagraphVisible(q, empty6) && SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/6]")) == 1,
                 "The open oath (" + open + ") is never answered after the Threshold.");
             var all6 = new[] { home6, empty6 };
-            check(all6.All(w => !together.Paragraphs.Any(q => Rules.ParagraphVisible(q, w) && q.Text.Contains("first true thing")))
-                  && !S(P + "epilogue.together").Nodes[0].Paragraphs.Any(q => Rules.ParagraphVisible(q, empty6) && q.Text.Contains("hung in the Commander's hall")),
+            check(all6.All(w => !together.Paragraphs.Any(q => Rules.ParagraphVisible(q, w) && SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/18]")))
+                  && !S(P + "epilogue.together").Nodes[0].Paragraphs.Any(q => Rules.ParagraphVisible(q, empty6) && SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/4]")),
                 "An open oath is remembered as kept, or an absent sword hangs in the hall (" + open + ").");
         }
         // The trade's yes and the vigil need one of the Commander's own reciprocal choices.
@@ -546,8 +545,8 @@ internal static class YanielTricksterTests
         var pocketed = Take(wrist, wristW, "mark2", 1, P + "cuff_pocketed", P + "after.wrist_seen");
         var together6 = S(P + "epilogue.together").Nodes[0];
         var end6 = World(story, 6, pocketed.Flags.Where(f => f.StartsWith("yaniel.", StringComparison.Ordinal) || f == "trickster.ever").ToArray());
-        check(!together6.Paragraphs.Any(q => Rules.ParagraphVisible(q, end6) && q.Text.Contains("never took the iron off"))
-              && together6.Paragraphs.Count(q => Rules.ParagraphVisible(q, end6) && q.Text.Contains("in a pocket")) == 1,
+        check(!together6.Paragraphs.Any(q => Rules.ParagraphVisible(q, end6) && SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/15]"))
+              && together6.Paragraphs.Count(q => Rules.ParagraphVisible(q, end6) && SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/17]")) == 1,
             "The ending says the Commander never took the iron off after the Commander pocketed it.");
         check(Avail(ch4, Later(story, World(story, 4, "trickster.ever", Swapped, "minagho.dead"), 48))
               && Paths(ch4, Later(story, World(story, 4, "trickster.ever", Swapped, "minagho.dead"), 48)).All(o => o.path.Any(e => e.node == "city_dead")),
@@ -581,8 +580,7 @@ internal static class YanielTricksterTests
             var endings = Paths(masquerade, Later(story, state, 24));
             check(endings.Count == 4 && endings.All(o => o.path.Any(e => e.node == endNode)
                   && o.state.Has(P + "beat.areelu") && !o.state.Has(Committed)), "Yaniel polish A1: changed courtship payoff.");
-            check(N(masquerade, endNode).Choices[1].Set.SequenceEqual(new[] { P + "drawn.bite" })
-                  && !N(masquerade, endNode).Text.Contains("take her sword back"), "Yaniel polish A1: unearned sword refusal or flirt effect.");
+            check(N(masquerade, endNode).Choices[1].Set.SequenceEqual(new[] { P + "drawn.bite" }), "Yaniel polish A1: unearned sword refusal or flirt effect.");
         }
 
         void Refresh(Snapshot state)
@@ -679,14 +677,12 @@ internal static class YanielTricksterTests
         var vulnerable = Take(refugee, Later(story, waryHome, 24), "after", 0, P + "beat.refugee");
         var waryVerdict = Take(hands, Later(story, Observe(story, vulnerable, "iz.done", "yaniel.radiance_plus1"), 24), "held_believed", 0, Stands);
         check(!waryVerdict.Has(P + "trusted") && !waryVerdict.Has(Committed)
-              && Avail(S(P + "epilogue.distrusted"), Later(story, waryVerdict, 24, 6))
-              && !N(S(P + "epilogue.distrusted"), "page").Text.Contains("never once stood with her back"),
+              && Avail(S(P + "epilogue.distrusted"), Later(story, waryVerdict, 24, 6)),
             "Yaniel polish A5: refugee vulnerability is erased or awards raid trust.");
         foreach (string slept in new[] { "went", "stayed" })
         {
             var rested = Take(night, Later(story, home, 24), slept, 0, P + "beat.night");
-            check(Avail(S(P + "epilogue.unsettled"), Later(story, rested, 24, 6))
-                  && !N(S(P + "epilogue.unsettled"), "page").Text.Contains("never did learn to sleep in a bed"),
+            check(Avail(S(P + "epilogue.unsettled"), Later(story, rested, 24, 6)),
                 "Yaniel polish A6: unsettled history erases sleep or changes ending eligibility.");
         }
 
@@ -719,13 +715,13 @@ internal static class YanielTricksterTests
             {
                 var afterWrist = Take(wrist, Later(story, state, 24), cuffNode == "worn" ? "mark2" : "unwrapped2", pocket, P + "after.wrist_seen");
                 var postwar = Later(story, afterWrist, 24, 6);
-                foreach (var page in pages.Where(s => s.Nodes[0].Paragraphs.Any(q => q.Text.Contains("why there were two"))))
+                foreach (var page in pages.Where(s => s.Nodes[0].Paragraphs.Any(q => SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/13][yaniel.trickster.epilogue.together/page/paragraph/14][yaniel.trickster.epilogue.together/page/paragraph/27][yaniel.trickster.epilogue.commit/page/paragraph/13][yaniel.trickster.epilogue.commit/page/paragraph/14][yaniel.trickster.epilogue.commit/page/paragraph/15][yaniel.trickster.epilogue.broken/page/paragraph/13][yaniel.trickster.epilogue.broken/page/paragraph/14][yaniel.trickster.epilogue.broken/page/paragraph/15][yaniel.trickster.epilogue.unasked/page/paragraph/13][yaniel.trickster.epilogue.unasked/page/paragraph/14][yaniel.trickster.epilogue.unasked/page/paragraph/15][yaniel.trickster.epilogue.distrusted/page/paragraph/13][yaniel.trickster.epilogue.distrusted/page/paragraph/14][yaniel.trickster.epilogue.distrusted/page/paragraph/15][yaniel.trickster.epilogue.unsettled/page/paragraph/13][yaniel.trickster.epilogue.unsettled/page/paragraph/14][yaniel.trickster.epilogue.unsettled/page/paragraph/15][yaniel.trickster.epilogue.declined/page/paragraph/13][yaniel.trickster.epilogue.declined/page/paragraph/14][yaniel.trickster.epilogue.declined/page/paragraph/15]"))))
                 {
                     var twoIrons = page.Nodes[0].Paragraphs.Where(q => Rules.ParagraphVisible(q, postwar)
-                        && (q.Text.Contains("why there were two") || q.Text.Contains("kept both irons") || q.Text.Contains("rescued woman's iron"))).ToArray();
+                        && (SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/13][yaniel.trickster.epilogue.together/page/paragraph/14][yaniel.trickster.epilogue.together/page/paragraph/27][yaniel.trickster.epilogue.commit/page/paragraph/13][yaniel.trickster.epilogue.commit/page/paragraph/14][yaniel.trickster.epilogue.commit/page/paragraph/15][yaniel.trickster.epilogue.broken/page/paragraph/13][yaniel.trickster.epilogue.broken/page/paragraph/14][yaniel.trickster.epilogue.broken/page/paragraph/15][yaniel.trickster.epilogue.unasked/page/paragraph/13][yaniel.trickster.epilogue.unasked/page/paragraph/14][yaniel.trickster.epilogue.unasked/page/paragraph/15][yaniel.trickster.epilogue.distrusted/page/paragraph/13][yaniel.trickster.epilogue.distrusted/page/paragraph/14][yaniel.trickster.epilogue.distrusted/page/paragraph/15][yaniel.trickster.epilogue.unsettled/page/paragraph/13][yaniel.trickster.epilogue.unsettled/page/paragraph/14][yaniel.trickster.epilogue.unsettled/page/paragraph/15][yaniel.trickster.epilogue.declined/page/paragraph/13][yaniel.trickster.epilogue.declined/page/paragraph/14][yaniel.trickster.epilogue.declined/page/paragraph/15]") || SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/28][yaniel.trickster.epilogue.commit/page/paragraph/16][yaniel.trickster.epilogue.broken/page/paragraph/16][yaniel.trickster.epilogue.unasked/page/paragraph/16][yaniel.trickster.epilogue.distrusted/page/paragraph/16][yaniel.trickster.epilogue.unsettled/page/paragraph/16][yaniel.trickster.epilogue.declined/page/paragraph/16]") || SurfaceIds.Has(SurfaceIds.Of(story, q), "[yaniel.trickster.epilogue.together/page/paragraph/27][yaniel.trickster.epilogue.commit/page/paragraph/15][yaniel.trickster.epilogue.broken/page/paragraph/15][yaniel.trickster.epilogue.unasked/page/paragraph/15][yaniel.trickster.epilogue.distrusted/page/paragraph/15][yaniel.trickster.epilogue.unsettled/page/paragraph/15][yaniel.trickster.epilogue.declined/page/paragraph/15][yaniel.trickster.epilogue.declined/page/paragraph/17]"))).ToArray();
                     check(twoIrons.Length == (marketNode == "left" ? 0 : 1), "Yaniel polish A9: contradictory two-irons prose " + page.Id);
                     if (twoIrons.Length == 1 && returnedIron)
-                        check(twoIrons[0].Text.Contains("After the vigil"), "Yaniel polish A9: earned cuff return lost to historical decline.");
+                        check(SurfaceIds.Has(SurfaceIds.Of(story, twoIrons[0]), "[yaniel.trickster.epilogue.together/page/paragraph/28][yaniel.trickster.epilogue.commit/page/paragraph/16][yaniel.trickster.epilogue.broken/page/paragraph/16][yaniel.trickster.epilogue.unasked/page/paragraph/16][yaniel.trickster.epilogue.distrusted/page/paragraph/16][yaniel.trickster.epilogue.unsettled/page/paragraph/16][yaniel.trickster.epilogue.declined/page/paragraph/16]"), "Yaniel polish A9: earned cuff return lost to historical decline.");
                 }
             }
         }

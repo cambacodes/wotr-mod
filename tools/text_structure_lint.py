@@ -5,6 +5,10 @@ from tools.player_text_lint import surfaces
 from tools.player_text_lint import EXCEPTIONS
 
 
+def markup_shape(text):
+    return re.findall(r'\{/?n\}|["“”]|\n', text)
+
+
 def spans(text, speaker="Narrator", kind="node"):
     hard, review = [], []
     depth, last = 0, 0
@@ -111,7 +115,7 @@ def check(story, draft=False, exceptions=None):
             for code, start, end in rows:
                 if code == "speech-boundary-review" and any(
                     e.get("scene") == sid and e.get("location") == location and e.get("code") == code
-                    and e.get("text") == text and e.get("reason")
+                    and e.get("markup_shape") == markup_shape(text) and e.get("reason")
                     for e in policy.get("eng8-q8c", {}).get("speech_boundary_exceptions", [])):
                     continue
                 result[level].append(dict(scene=sid, location=location, code=code, start=start, end=end,

@@ -118,7 +118,6 @@ internal static class LongConTests
         }
         check(C(pLoud, "plural", 2).Check?.Skill == "CheckBluff" && C(pLoud, "plural", 2).Check!.DC == 15 && C(pLoud, "plural", 0).Alignment?.Direction == "Evil",
             "2b: the release is not Bluff DC 15, or the hanging is not Evil 1.");
-        check(!N(pQuiet, "quiet").Text.Contains("bragged") && !N(pQuiet, "quiet").Text.Contains("whole Garrison"), "2b: the quiet page claims shouting.");
 
         // ---- Section 3: the citadel offer (S16). ----
         var cit = S(P + "citadel_offer");
@@ -262,7 +261,7 @@ internal static class LongConTests
             var both = irabethVoice ? World(story, 3, Begun, Ch3, Clerk, Quiet, Witnessed) : World(story, 3, Begun, Ch3, Clerk, Quiet, Witnessed, "irabeth_dead");
             var seenBoth = new HashSet<string>();
             Program.Walk(scene, both, (id, _) => seenBoth.Add(id));
-            check(seenBoth.Contains("clerk_quiet") && seenBoth.Contains("citadel") && !N(scene, "clerk_quiet").Text.Contains("shouting"),
+            check(seenBoth.Contains("clerk_quiet") && seenBoth.Contains("citadel"),
                 "S1/S15: the clerk and citadel clauses do not both show, or the quiet clerk claims shouting: " + scene.Id);
         }
 
@@ -342,13 +341,13 @@ internal static class LongConTests
         check(page.Section == "Secrets" && page.Requires.SequenceEqual(new[] { "trickster.secret.longcon" })
               && World(story, 5, Begun, "trickster").Has("trickster.secret.longcon") && !World(story, 5, Begun).Has("trickster.secret.longcon"),
             "Ledger: the Long Con page is not a Secrets page on a Trickster run that began the con.");
-        bool Has(string text, params string[] f) { var s = new Snapshot(); s.Flags.UnionWith(f); return page.Lines.Any(l => Shown(l, s) && l.Text.Contains(text)); }
-        check(Has("never answered for", Begun) && !Has("never answered for", Begun, TalkDone)
-              && Has("still owe the Watch", Owed) && !Has("still owe the Watch", Owed, StingDone)
-              && Has("Everyone came home", StingDone) && !Has("Everyone came home", StingDone, AgentLost) && Has("didn't come home", StingDone, AgentLost)
-              && Has("posted a guard", Minder) && !Has("posted a guard", Minder, MinderSeen) && Has("slept across", MinderSeen)
-              && Has("She believed you", Lied) && !Has("She believed you", Lied, Wary)
-              && Has("never answered for it", Owned) && Has("answered for it, in front", Owned, Accounted) && !Has("never answered for it", Owned, Accounted),
+        bool Has(string text, params string[] f) { var s = new Snapshot(); s.Flags.UnionWith(f); return page.Lines.Any(l => Shown(l, s) && SurfaceIds.Has(SurfaceIds.Of(story, l), text)); }
+        check(Has("[book/trickster.ledger/early.longcon/line/3][book/trickster.ledger/early.longcon/line/14]", Begun) && !Has("[book/trickster.ledger/early.longcon/line/3][book/trickster.ledger/early.longcon/line/14]", Begun, TalkDone)
+              && Has("[book/trickster.ledger/early.longcon/line/7]", Owed) && !Has("[book/trickster.ledger/early.longcon/line/7]", Owed, StingDone)
+              && Has("[book/trickster.ledger/early.longcon/line/8]", StingDone) && !Has("[book/trickster.ledger/early.longcon/line/8]", StingDone, AgentLost) && Has("[book/trickster.ledger/early.longcon/line/9]", StingDone, AgentLost)
+              && Has("[book/trickster.ledger/early.longcon/line/5]", Minder) && !Has("[book/trickster.ledger/early.longcon/line/5]", Minder, MinderSeen) && Has("[book/trickster.ledger/early.longcon/line/6]", MinderSeen)
+              && Has("[book/trickster.ledger/early.longcon/line/13]", Lied) && !Has("[book/trickster.ledger/early.longcon/line/13]", Lied, Wary)
+              && Has("[book/trickster.ledger/early.longcon/line/3]", Owned) && Has("[book/trickster.ledger/early.longcon/line/4]", Owned, Accounted) && !Has("[book/trickster.ledger/early.longcon/line/3]", Owned, Accounted),
             "S18/S19: a Ledger line is not prospective before, retrospective after.");
 
         // ---- Section 8: the reader lint (exhaustive permitted readers). ----

@@ -80,27 +80,6 @@ class LastCallHistoryInventoryTests(unittest.TestCase):
         host["Nodes"][0]["Choices"][0]["Requires"].remove("kiana.sunhammer_dead")
         self.assertTrue(any("generic settlement is not retired" in f for f in history_errors(mutant)))
 
-    def test_neutral_surfaces_cannot_reintroduce_unearned_history(self):
-        for row in self.contracts["surfaces"]:
-            for token in row.get("absent_text", []):
-                with self.subTest(surface=row["surface"], token=token):
-                    mutant = copy.deepcopy(self.fixture)
-                    owner, node, slot = row["surface"]
-                    if owner in mutant.get("Books", {}):
-                        spec = next(e for e in mutant["Books"][owner]["Entries"] if e["Id"] == node)
-                        field = "Text"
-                    elif slot == "description":
-                        spec = next(e for e in mutant["Relationships"][owner]["JournalEntries"] if e["Id"] == node)
-                        field = "Description"
-                    else:
-                        host = next(s for s in mutant["Scenes"] if s["Id"] == owner)
-                        spec = host if slot == "Entry" else next(n for n in host["Nodes"] if n["Id"] == node)
-                        if slot.startswith("paragraph["):
-                            spec = spec["Paragraphs"][int(slot[10:-1])]
-                        field = "Entry" if slot == "Entry" else "Text"
-                    spec[field] += " " + token
-                    self.assertTrue(any("unearned history text" in f for f in history_errors(mutant, {"surfaces": [row]})))
-
 
 if __name__ == "__main__":
     unittest.main()

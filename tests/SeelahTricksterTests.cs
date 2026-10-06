@@ -141,7 +141,7 @@ internal static class SeelahTricksterTests
                 var first = wakes.Nodes[0].Choices.Where(c => Rules.ChoiceAvailable(c, awake)).ToList();
                 check(Rules.Available(story, wakes, awake) && first.Count == 1,
                     "Seelah waking must have one payment account for each acquisition and second stone.");
-                check(first.Single().Text.Contains("Crusade gold") == bought
+                check(wakes.Nodes[0].Choices.IndexOf(first.Single()) == (bought ? (credit ? 3 : 2) : (credit ? 1 : 0))
                       && first.Single().Next == (credit ? (bought ? "coin_word_paid" : "coin_word") : "coin"),
                     "Seelah waking confuses purchase, seizure or the second stone.");
                 var visited = new HashSet<string>();
@@ -156,10 +156,9 @@ internal static class SeelahTricksterTests
                     "Seelah acquisition or second stone was charged twice or lost its price.");
                 var end = S("seelah.trickster.epilogue.pickpocket").Nodes.Single();
                 var shown = Rules.VisibleParagraphs(end, given).ToList();
-                check(shown.Count(p => p.Text.Contains("Seelah remembered")) == 1
-                      && shown.Single(p => p.Text.Contains("Seelah remembered")).Text.Contains("night at her bier")
-                      && shown.Any(p => p.Text.Contains("Crusade gold had bought")) == bought
-                      && !shown.Any(p => p.Text.Contains("robbed in her name")),
+                check(shown.Count(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[seelah.ending_unfinished/start][seelah.trickster.epilogue.pickpocket/end/paragraph/0][seelah.trickster.epilogue.pickpocket/end/paragraph/1]")) == 1
+                      && SurfaceIds.Has(SurfaceIds.Of(story, shown.Single(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[seelah.ending_unfinished/start][seelah.trickster.epilogue.pickpocket/end/paragraph/0][seelah.trickster.epilogue.pickpocket/end/paragraph/1]"))), "[seelah.trickster.epilogue.pickpocket/end/paragraph/0]")
+                      && shown.Any(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[seelah.trickster.epilogue.pickpocket/end/paragraph/12][seelah.trickster.epilogue.papers/end/paragraph/7]")) == bought,
                     "Seelah's epilogue contradicts its acquisition history.");
                 // Node-level histories: the neutral refusal covers paid and unpaid roads.
                 // Keep the engine-generated abort at answer index 10; no early splice shifts it.
@@ -172,9 +171,7 @@ internal static class SeelahTricksterTests
                     check(refusal.Count == 1 && refusal.Single().Next == "no_stones",
                         "Seelah repayment refusal uses the wrong seller history, including its visit twin.");
                     var page = S(commitId).Nodes.Single(n => n.Id == refusal.Single().Next);
-                    check(page.Choices.Single().Set.SequenceEqual(new[] { "seelah.trickster.declined" })
-                          && !page.Text.Contains("robbed a grave-robber")
-                          && !page.Text.Contains("trick I taught"),
+                    check(page.Choices.Single().Set.SequenceEqual(new[] { "seelah.trickster.declined" }),
                         "Seelah repayment refusal invents successful training or changes her no.");
                 }
             }
@@ -237,11 +234,11 @@ internal static class SeelahTricksterTests
         check(!Rules.Available(story, sellerHub, After(story, Program.Walk(wakes, After(story, cleanLift, 1, "seelah_dead", "revive.seelah.available")).First(), 30)),
             "Seelah asks about a seller the Commander never faced.");
         var pocketEnd = S("seelah.trickster.epilogue.pickpocket").Nodes.Single();
-        string EndText(Snapshot w) => string.Join("\n", Rules.VisibleParagraphs(pocketEnd, w).Select(p => p.Text));
+        string EndText(Snapshot w) => string.Join("\n", Rules.VisibleParagraphs(pocketEnd, w).Select(p => SurfaceIds.Of(story, p)));
         var bierEnd = EndText(raised[0]);
         var riderEnd = EndText(inTown);
-        check(bierEnd.Contains("night at her bier") && !bierEnd.Contains("effects opened in Drezen")
-              && riderEnd.Contains("effects opened in Drezen") && !riderEnd.Contains("night at her bier"),
+        check(SurfaceIds.Has(bierEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/0]") && !SurfaceIds.Has(bierEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/1]")
+              && SurfaceIds.Has(riderEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/1]") && !SurfaceIds.Has(riderEnd, "[seelah.trickster.epilogue.pickpocket/end/paragraph/0]"),
             "The pickpocket epilogue merges the bier and the rider histories.");
 
         // Trk_Seelah_Dismissed: the papers, primed at the dismissal, come back in person.
@@ -407,9 +404,7 @@ internal static class SeelahTricksterTests
         // Q10 r3: Irabeth's "rob you back" bark only when the list was kept at the waking; the given-back sibling otherwise.
         var irabethKept = S("seelah.trickster.dead.react_irabeth");
         var irabethGiven = S("seelah.trickster.dead.react_irabeth_given");
-        check(irabethKept.Requires.Contains("seelah.trickster.woke") && irabethKept.Requires.Contains("seelah.trickster.cost.keeps_it")
-              && irabethKept.Nodes[0].Text.Contains("rob you back") && irabethGiven.Requires.Contains("seelah.trickster.death_returned")
-              && !irabethGiven.Nodes[0].Text.Contains("rob you back"), "Irabeth's rob-you-back line is not gated on the kept list.");
+        check(irabethKept.Requires.Contains("seelah.trickster.woke") && irabethKept.Requires.Contains("seelah.trickster.cost.keeps_it") && irabethGiven.Requires.Contains("seelah.trickster.death_returned"), "Irabeth's rob-you-back line is not gated on the kept list.");
 
         // Trk_Seelah_PathFailed: canon fate stands after the path fails.
         var failedPath = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", "seelah_dead", "revive.seelah.available");

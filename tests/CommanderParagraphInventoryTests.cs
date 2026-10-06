@@ -17,14 +17,14 @@ internal static class CommanderParagraphInventoryTests
                 "irabeth_dead", gate, "anevia.trickster.gate_seen", "anevia.trickster.hand_taken" });
             state.Flags.Remove("anevia.trickster.late_committed"); // derive it from the earned gates
             Rules.Complete(story, state);
-            var text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => p.Text));
-            check(!text.Contains("conversation from the gate picked up") && !text.Contains("carrying both their packs")
-                && !text.Contains("made the Commander keep it too") && !text.Contains("second kind of love"), "l12 living future after fatal sacrifice: " + gate);
+            var text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => SurfaceIds.Of(story, p)));
+            check(!SurfaceIds.Has(text, "[anevia.ending_sacrifice/end/paragraph/7]") && !SurfaceIds.Has(text, "[anevia.ending_sacrifice/end/paragraph/8]")
+                && !SurfaceIds.Has(text, "[anevia.ending_sacrifice/end/paragraph/9]"), "l12 living future after fatal sacrifice: " + gate);
             state.Flags.Remove("irabeth.trickster.returned");
             state = Fresh(story, state);
             Rules.Complete(story, state);
-            text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => p.Text));
-            check(!text.Contains("then one winter night she didn't"), "l12 dead Commander enters widow's bed: " + gate);
+            text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => SurfaceIds.Of(story, p)));
+            check(!SurfaceIds.Has(text, "[anevia.ending_sacrifice/end/paragraph/12]"), "l12 dead Commander enters widow's bed: " + gate);
             state.Flags.Add("ending.trickster_allplanes");
             state.Flags.UnionWith(new[] { "irabeth.trickster.returned", "anevia.open_future", "anevia.developed" });
             state = Fresh(story, state);
@@ -35,11 +35,11 @@ internal static class CommanderParagraphInventoryTests
             var livingScene = story.Scenes.Single(s => s.Id == "anevia.ending_open");
             check(Rules.Available(story, livingScene, state), "l12 earned-return living sibling unavailable");
             var living = livingScene.Nodes.Single(n => n.Id == "end");
-            text = string.Join(" ", Rules.VisibleParagraphs(living, state).Select(p => p.Text));
+            text = string.Join(" ", Rules.VisibleParagraphs(living, state).Select(p => SurfaceIds.Of(story, p)));
             if (gate.EndsWith("late_committed"))
-                check(text.Contains("conversation from the gate picked up"), "l12 earned-return reunion overblocked");
+                check(SurfaceIds.Has(text, "[anevia.ending_open/end/paragraph/7]"), "l12 earned-return reunion overblocked");
             if (gate.EndsWith("terms_kept"))
-                check(text.Contains("made the Commander keep it too"), "l12 earned-return door rule overblocked");
+                check(SurfaceIds.Has(text, "[anevia.ending_open/end/paragraph/9]"), "l12 earned-return door rule overblocked");
         }
     }
 

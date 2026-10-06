@@ -53,16 +53,20 @@ class MemoryCallbackTests(unittest.TestCase):
                             if any(set(group).issubset(flags) for group in groups):
                                 flags.add(key)
                         flags.update(old["Requires"])
-                        candidates = [old] + [c for c in nodes[via]["Choices"] if c.get("Next") == "gap." + contract["node"]
-                                               and c["Text"] == old["Text"]]
-                        # call has two entries with distinct text; select this incoming edge only.
+                        incoming = [i for n, i in contract["vias"] if n == via]
+                        alternatives = [c for c in nodes[via]["Choices"]
+                                        if c.get("Next") == "gap." + contract["node"]]
+                        self.assertEqual(len(alternatives), len(incoming))
+                        twin = alternatives[incoming.index(index)]
+                        self.assertEqual(lint.structural(twin), lint.structural({
+                            **old, "Next": "gap." + contract["node"],
+                            "Requires": list(dict.fromkeys(old["Requires"] + ["trickster.ever", contract["gone"]])),
+                            "Forbids": [f for f in old["Forbids"] if f != contract["gone"]]}))
+                        candidates = [old, twin]
                         shown = [c for c in candidates if set(c["Requires"]).issubset(flags) and not set(c["Forbids"]) & flags]
                         self.assertEqual(len(shown), 1, (contract["scene"], via, price, heard))
-                        text = nodes[shown[0]["Next"]]["Text"]
-                        if f.GONE_SQUARE in flags:
-                            self.assertFalse(any(term in text for term in contract["forbidden_sensory"]))
-                        else:
-                            self.assertEqual(text, nodes[contract["node"]]["Text"])
+                        expected = "gap." + contract["node"] if f.GONE_SQUARE in flags else contract["node"]
+                        self.assertEqual(shown[0]["Next"], expected)
 
     def test_guard_continuation_and_twin_mutations(self):
         contracts = json.loads(lint.CONTRACTS.read_text(encoding="utf-8"))
@@ -76,7 +80,7 @@ class MemoryCallbackTests(unittest.TestCase):
                     via, index = contract["vias"][0]
                     nodes[via]["Choices"][index]["Forbids"].remove(contract["gone"])
                 elif mutation == "gap":
-                    nodes["gap." + contract["node"]]["Text"] += contract["forbidden_sensory"][0]
+                    nodes["gap." + contract["node"]]["Id"] = "missing_gap"
                 else:
                     nodes["gap." + contract["node"]]["Choices"] = []
                 self.assertTrue(lint.check(story, [contract])["hard"], mutation)

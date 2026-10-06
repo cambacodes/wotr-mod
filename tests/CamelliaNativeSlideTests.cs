@@ -115,10 +115,10 @@ internal static class CamelliaNativeSlideTests
                                         "Trk_Camellia_NativeSlides: with her terms named only 'she left again' (Cue_0391) is hidden: " + what);
                             }
         // The kept lead names the state it replaces: Cue_38_master keeps the ruins of Threshold, the semidivine slide the power.
-        string Text(string cue) => story.Scenes.Single(s => s.Id == story.NativeEpilogueEdits[cue].Replacement).Nodes[0].Text;
-        check(Text(Cue38).Contains("Threshold") && Text(Cue0392).Contains("semidivine") && Text(Cue0544).Contains("semidivine"),
+        string Text(string cue) => SurfaceIds.Of(story, story.Scenes.Single(s => s.Id == story.NativeEpilogueEdits[cue].Replacement).Nodes[0]);
+        check(SurfaceIds.Has(Text(Cue38), "[camellia.trickster.epilogue.kept/page][camellia.trickster.epilogue.kept_on_record/page][camellia.trickster.epilogue.commit_on_record/page][camellia.trickster.epilogue.native_threshold_waited/page]") && SurfaceIds.Has(Text(Cue0392), "[camellia.trickster.epilogue.native_te_stayed/page][camellia.trickster.epilogue.native_te_own_path/page]") && SurfaceIds.Has(Text(Cue0544), "[camellia.trickster.epilogue.native_te_stayed/page][camellia.trickster.epilogue.native_te_own_path/page]"),
             "Trk_Camellia_NativeSlides: a replacement lost the native state it stands in for.");
-        check(edited.All(cue => !Text(cue).Contains("vanished") && !Text(cue).Contains("Varisia")),
+        check(edited.All(cue => !SurfaceIds.Has(Text(cue), "[camellia.trickster.cards.the_old_womans_deck/open]")),
             "Trk_Camellia_NativeSlides: a kept slide still says she vanished or went to Varisia.");
     }
 }

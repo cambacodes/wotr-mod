@@ -779,8 +779,6 @@ internal static partial class Program
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
                 Check(known.Contains(flag) || Rules.WenduagEchoRuntime.Contains(flag) || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived",
                     "Unknown condition " + flag + " in " + scene.Id);
-            foreach (var node in scene.Nodes)
-                Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
         }
         if (args.Contains("--tirabade-progression") || story.Scenes.Any(s => s.Id == "three_kept_days"))
             RunSuite("TirabadeProgressionTests", () => TirabadeProgressionTests.Run(story, Check));

@@ -31,9 +31,9 @@ internal static class ParagraphTests
         var node = page.Nodes[0];
         var state = new Snapshot { Chapter = 6 };
         state.Flags.UnionWith(page.Requires);
-        check(Rules.VisibleParagraphs(node, state).Select(p => p.Text).SequenceEqual(new[] { "She kept the wardrobe.", "Alone." }), "Base world paragraphs wrong.");
+        check(Rules.VisibleParagraphs(node, state).SequenceEqual(new[] { node.Paragraphs[0], node.Paragraphs[3] }), "Base world paragraphs wrong.");
         state.Flags.UnionWith(new[] { "trickster.lastcall.pillar.bottle", "anevia.lastcall.called", "irabeth.trickster.returned" });
-        check(Rules.VisibleParagraphs(node, state).Select(p => p.Text).SequenceEqual(new[] { "She kept the wardrobe.", "The bottle.", "The creditors." }),
+        check(Rules.VisibleParagraphs(node, state).SequenceEqual(new[] { node.Paragraphs[0], node.Paragraphs[1], node.Paragraphs[2] }),
             "Paragraphs not shown in authored order under their conditions.");
         // LastCall_Paragraphs_Nonempty: every world satisfying the page's Requires shows at least one paragraph.
         var rng = new Random(7);

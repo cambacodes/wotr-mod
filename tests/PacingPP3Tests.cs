@@ -190,7 +190,7 @@ internal static class PacingPP3Tests
             var scene = S(night);
             var start = scene.Nodes.Single(n => n.Id == "start");
             foreach (var recall in scene.Nodes.Where(n => n.Id.StartsWith("siege_", StringComparison.Ordinal)))
-                check(recall.Choices.Select(c => c.Text + "|" + c.Next).SequenceEqual(start.Choices.Take(4).Select(c => c.Text + "|" + c.Next))
+                check(recall.Choices.Select(c => c.Next).SequenceEqual(start.Choices.Take(4).Select(c => c.Next))
                       && recall.Choices.Take(3).All(c => c.Set.Contains("nurah.trickster.released") && c.Set.Contains("nurah.trickster.accepted"))
                       && recall.Choices[3].Set.Contains("nurah.closed"), night + "/" + recall.Id + ": the recalled night changes her question's answers.");
         }

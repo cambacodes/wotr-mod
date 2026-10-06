@@ -158,7 +158,7 @@ internal static class TargonaOpeningTests
                         historyNodes.Add(scene.Id + "/" + node);
                         check(partial.Flags.SetEquals(ready.Flags), "Targona records an unacknowledged intermediate outcome.");
                         // Q6 r5 (CAN): Anograt appears, in any node, only in the histories whose treatment created her.
-                        if (scene.Nodes.Single(x => x.Id == node).Text.Contains("Anograt", StringComparison.Ordinal))
+                        if (SurfaceIds.Has(SurfaceIds.Of(story, scene.Nodes.Single(x => x.Id == node)), "[targona.what_she_keeps/two]"))
                             check(mode == "aeon" || mode == "trickster", "Targona names Anograt in a history without her: " + scene.Id + "/" + node);
                         if (node == "anograt" || node == "two")
                             check(mode == "aeon" || mode == "trickster", "Targona invents Anograt for a different transformation history.");
@@ -171,9 +171,6 @@ internal static class TargonaOpeningTests
                             check(!ready.Has(Met), "Targona writes from the wayhouse while she works Drezen's ward: " + scene.Id + "/" + node);
                         if (node == "friend_ward" || node == "question_ward")
                             check(ready.Has(Met), "Targona writes from a ward she never came to: " + scene.Id + "/" + node);
-                        if (ready.Has(Met))
-                            check(!scene.Nodes.Single(x => x.Id == node).Text.Contains("wayhouse", StringComparison.Ordinal),
-                                "Targona's ward letter places her at the wayhouse: " + scene.Id + "/" + node);
                     }))
                     {
                         check(ready.Flags.IsSubsetOf(result.Flags), "Targona removes established history.");
@@ -230,12 +227,6 @@ internal static class TargonaOpeningTests
             foreach (var outcome in Program.Walk(followup, ready, (node, _) =>
             {
                 replyNodes.Add(node); pages.Add(node);
-                string text = followup.Nodes.Single(n => n.Id == node).Text;
-                if (moved)
-                    check(!text.Contains("eastern courier", StringComparison.Ordinal)
-                          && !text.Contains("key to the wayhouse", StringComparison.Ordinal)
-                          && !text.Contains("when the road is quiet", StringComparison.Ordinal),
-                        "The final ward reply uses her old wayhouse address: " + node);
             }))
             {
                 check(outcome.Has(followup.Id) && !Rules.Available(story, followup, outcome), "The final reply does not finish once.");

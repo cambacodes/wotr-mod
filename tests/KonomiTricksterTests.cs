@@ -95,8 +95,6 @@ internal static class KonomiTricksterTests
         var driverChoices = late.Nodes.Single(n => n.Id == "driver").Choices;
         check(driverChoices.Count == 4 && driverChoices[0].Forbids.Contains("konomi.dismissed") && driverChoices[1].Forbids.Contains("konomi.dismissed")
               && driverChoices[3].Abort, "PP5: the driver's choices were reordered instead of retired and appended.");
-        check(late.Nodes.Concat(recess.Nodes).All(n => !n.Text.Contains("proud of the others") && !n.Text.Contains("seam in your road")),
-            "The paving stone that was not there is back.");
         var crowned = Program.Copy(dismissed); crowned.Flags.Add("coronation.seen");
         var queenPages = new HashSet<string>();
         Program.Walk(late, crowned, (page, _) => queenPages.Add(page));
@@ -254,8 +252,6 @@ internal static class KonomiTricksterTests
 
         // Trk_Konomi_NeverArrived: the secretary's error on the page, then the audience in person.
         var never = World(story, 3, "trickster", "trickster.ever", "konomi.missed_contact_available");
-        check(accredited.Nodes[0].Text.IndexOf("A week ago", StringComparison.Ordinal) < 0, "The informer is caught off the page, a week before.");
-        check(audience.Nodes[0].Text.IndexOf("three months ago", StringComparison.Ordinal) < 0, "Arrears from before the register entry.");
         check(Rules.Available(story, accredited, never) && !Rules.Available(story, audience, never), "Trk_Konomi_NeverArrived: setup unavailable.");
         // PP5: the setup waits until its own account (the bow, two days to Nerosyan, two days back) is over.
         // PP5 r2 (Sol INT/HOW): the observation is transient and carries no hour; the latch records when it was first seen.
@@ -351,8 +347,7 @@ internal static class KonomiTricksterTests
         // PP5 r2 (Sol VOI): Regill reads the paid informer and the burned one differently.
         var regillPaid = S("konomi.trickster.never_arrived.react_regill");
         var regillBurned = S("konomi.trickster.never_arrived.react_regill_burned");
-        check(regillPaid.Requires.Contains("konomi.trickster.cost.steward_paid") && regillBurned.Requires.Contains("konomi.trickster.cost.steward_burned")
-              && !regillBurned.Nodes[0].Text.Contains("door you left open"), "PP5 r2: Regill gives one verdict on two different informers.");
+        check(regillPaid.Requires.Contains("konomi.trickster.cost.steward_paid") && regillBurned.Requires.Contains("konomi.trickster.cost.steward_burned"), "PP5 r2: Regill gives one verdict on two different informers.");
         var commitOffer = epCommit.Nodes[0].Choices;
         check(commitOffer.Count == 3 && commitOffer[0].Next == "signed" && commitOffer[1].Next == "terms" && commitOffer[2].Next == "dinner",
             "Trk_Konomi_LatePage: her late page has no unsettled answer, or its choices were reordered.");

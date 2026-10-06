@@ -60,17 +60,17 @@ internal static class BookTests
         // replay. Only labels travel: the edge carries no flag, cost, check, revival or native effect.
         var replay = Letter("l.replay", "Konomi", 3,
             new Node { Id = "start", Text = "Dear Commander", Choices = new List<Choice> {
-                new Choice { Text = "Answer warmly", Next = "warm", Set = new[] { "konomi.warm" } },
-                new Choice { Text = "Try your luck", Check = new SkillCheck { Skill = "SkillPersuasion", DC = 20, Success = "won", Failure = "lost" } },
-                new Choice { Text = "Burn it", Set = new[] { "konomi.closed" } },
-                new Choice { Text = "Answer warmly", Next = "warm" } } },
-            new Node { Id = "warm", Text = "She smiles", Choices = new List<Choice> { new Choice { Text = "Seal it", Next = "missing" } } },
+                new Choice { Text = "answer.warm", Next = "warm", Set = new[] { "konomi.warm" } },
+                new Choice { Text = "answer.skill", Check = new SkillCheck { Skill = "SkillPersuasion", DC = 20, Success = "won", Failure = "lost" } },
+                new Choice { Text = "answer.burn", Set = new[] { "konomi.closed" } },
+                new Choice { Text = "answer.warm", Next = "warm" } } },
+            new Node { Id = "warm", Text = "She smiles", Choices = new List<Choice> { new Choice { Text = "answer.seal", Next = "missing" } } },
             new Node { Id = "won", Text = "Won", Choices = new List<Choice> { new Choice() } },
             new Node { Id = "lost", Text = "Lost", Choices = new List<Choice> { new Choice() } });
         var edges = Rules.ReplayEdges(replay, replay.Nodes[0]);
-        check(edges.Count == 3 && edges[0] == ("Answer warmly", "warm") && edges[1] == ("Try your luck", "won") && edges[2] == ("Burn it", null),
+        check(edges.Count == 3 && edges[0] == ("answer.warm", "warm") && edges[1] == ("answer.skill", "won") && edges[2] == ("answer.burn", null),
             "Replay edges are wrong: " + string.Join(";", edges));
-        check(Rules.ReplayEdges(replay, replay.Nodes[1]).Single() == ("Seal it", null), "A replay edge to a missing node does not end the replay.");
+        check(Rules.ReplayEdges(replay, replay.Nodes[1]).Single() == ("answer.seal", null), "A replay edge to a missing node does not end the replay.");
         var before = new HashSet<string>(state.Flags);
         foreach (var node in replay.Nodes) Rules.ReplayEdges(replay, node);
         check(state.Flags.SetEquals(before), "Replaying a letter changed the state.");
