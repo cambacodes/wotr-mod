@@ -1,0 +1,28 @@
+{
+  "status": "ESCALATE: coordinator application required; shared catalogs were not edited",
+  "payoff_contracts.json/routes/areelu/surfaces/append": [
+    {"scene": "areelu.trickster.finale.company", "predicate": "areelu.payoff.ordinary"},
+    {"scene": "areelu.trickster.report.inn", "predicate": "areelu.payoff.ordinary"}
+  ],
+  "departure_contracts.json/women/areelu/surfaces/append": [
+    {"scene": "areelu.trickster.finale.company", "letter": false},
+    {"scene": "areelu.trickster.report.inn", "letter": false},
+    {"scene": "areelu.trickster.afterlogue.spared_wager", "letter": false},
+    {"scene": "areelu.trickster.afterlogue.mortal_wager", "letter": false},
+    {"scene": "areelu.trickster.afterlogue.return_witch", "letter": false},
+    {"scene": "areelu.trickster.afterlogue.return_mortal", "letter": false}
+  ],
+  "departure_contracts.json/women/areelu/absence_variants/append": [
+    {"scene": "areelu.trickster.finale.unraised", "provenance": "Historical exact settlement without romantic company; body fate has its own scene gates"}
+  ],
+  "historical_surface_reclassification": {
+    "file": "tools/departure_contracts.json",
+    "move_from_surfaces_to_absence_variants": [
+      "areelu.trickster.finale.unnamed",
+      "areelu.trickster.finale.stake_only",
+      "areelu.trickster.finale.report_stands"
+    ],
+    "reason": "These are retrospective death/settlement accounts. The blanket present_now injection suppresses their dead-woman branches after the audited native availability blockers are registered. Remove the injected present_now gate from these history accounts; keep their own exact fate gates."
+  },
+  "separate_receipt_correction": "Replace the shared wager-only late entitlement and household reader with accepted raised-wager history. Do not change creditor-call or historical-debt entitlement."
+}

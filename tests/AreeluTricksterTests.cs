@@ -53,6 +53,8 @@ internal static class AreeluTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Area = "2570015799edf594daf2f076f2f975d8", Hour = 5000 };
         state.Flags.UnionWith(flags);
+        // Route fate fixtures include the current native path observation.
+        if (chapter == 6 && flags.Contains("trickster.ever") && flags.Contains(Struck)) state.Flags.Add("trickster");
         // These positive predicate fixtures represent an already accepted route.
         // Coarse-key negatives are independent in PayoffDepartureRulesTests.
         foreach (var rel in story.Relationships)
@@ -100,7 +102,7 @@ internal static class AreeluTricksterTests
         var stakeOnlyPage = S(P + "finale.stake_only");
         var stands = S(P + "finale.report_stands");
         var ascended = S(P + "finale.ascended");
-        var report = new[] { "rooms", "hunters", "grey", "graft", "sarkoris", "participation", "wound", "crossroads", "prison",
+        var report = new[] { "rooms", "hunters", "grey", "graft", "sarkoris", "inn", "participation", "wound", "crossroads", "prison",
                              "cult", "incursion", "dagger", "lady", "visitors", "name", "promise", "afterword" }
             .Select(id => S(P + "report." + id)).ToArray();
         var nenio = S(P + "react.nenio_two_drafts");
@@ -110,7 +112,7 @@ internal static class AreeluTricksterTests
 
         // Relationship, hooks and shape.
         var rel = story.Relationships["areelu"];
-        check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed && rel.UnavailableFlags.Length == 0,
+        check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed && new[] { "areelu.sacrifice_trickster", "areelu.dead_fight", "areelu.incinerated", "areelu.sacrifice_wound", "areelu.sacrifice_before" }.All(rel.UnavailableFlags.Contains),
             "Areelu relationship flags drifted.");
         check(izBet.AnswerLists.SequenceEqual(new[] { "09b8d5eb5dae3634d9dc3d8c7bdd6e9d" }) && izBet.NativeReturnCue == "c000ae3d47250b943953b1bd25333f30"
               && izBet.EntryMythic == "PlayerIsTrickster", "The Iz bet left AreeluIntro/AnswersList_0002.");
@@ -130,7 +132,7 @@ internal static class AreeluTricksterTests
         check(ours.Count(s => Rules.IsRemote(s)) == 2 && lens.Forbids.Contains(Primed) && watched.Requires.Contains(Bet),
             "Areelu has more than one Chapter 5 letter on a path.");
         check(rewrite.EpilogueSequence == "PlayerFinalChoice" && rewrite.EpilogueAfter == TricksterPage, "The rewrite is not after BookPage_0147.");
-        var chain = new[] { rewrite, after, unnamed, survived }.Concat(report).ToArray();
+        var chain = new[] { rewrite, after, unnamed, survived, S(P + "finale.company") }.Concat(report).ToArray();
         for (int i = 1; i < chain.Length; i++)
             check(chain[i].EpilogueSequence == "PlayerFinalChoice" && chain[i].EpilogueAfter == "scene:" + chain[i - 1].Id,
                 "The report chain is out of order at " + chain[i].Id);
@@ -285,7 +287,7 @@ internal static class AreeluTricksterTests
         var stakeOnly = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", Struck, Bet, StakeOnly);
         check(Available(stakeOnlyPage, stakeOnly) && !Available(rewrite, stakeOnly), "The stake-only page failed.");
         var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Named, Drawn);
-        check(lateCommit.Has(P + "late_committed") && Available(rewrite, lateCommit), "The late commit (R2-6) does not reach the rewrite.");
+        check(!Available(rewrite, lateCommit) && !report.Any(s => Available(s, lateCommit)), "An unraised wager receives accepted company.");
         check(Available(ascended, World(story, 6, "trickster.ever", "areelu.ascended", Struck, Bet, Committed)), "The ascended page failed.");
 
         // Sol INT: the missed-entry world (no Iz bet, no lens) has its own Threshold wager, at her harshest terms.
@@ -304,6 +306,12 @@ internal static class AreeluTricksterTests
         var coldFinale = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Unprimed, Committed, Named, WoundCeded, Drawn);
         check(Available(rewrite, coldFinale) && Available(report[0], coldFinale), "The unprimed commit does not reach the rewrite and the report.");
 
+        // Round two: no extraction renegotiation and no wager-only romance.
+        check(!Available(raised, With(story, cellNamed, Drawn)), "Collected graft can be renegotiated.");
+        var unraisedLiving = World(story, 6, "trickster.ever", "sacrifice", "ending.trickster", Struck, Bet);
+        check(!Available(S(P + "finale.company"), unraisedLiving) && !report.Any(s => Available(s, unraisedLiving)),
+            "A survival wager supplies chosen company without her acceptance.");
+        check(Available(S(P + "finale.company"), punchline), "Accepted ordinary survival lacks immediate company.");
         // Sol INT: the punchline after the graft was drawn: she lives, and the body follows the extraction.
         var drawnPunchline = With(story, punchline, Named, WoundCeded, Drawn);
         check(Available(survived, drawnPunchline) && Available(report.Single(s => s.Id.EndsWith(".grey")), drawnPunchline)
@@ -321,6 +329,7 @@ internal static class AreeluTricksterTests
         check(Available(survived, fw) && fwH1.Has("lastcall.h1") && SurfaceIds.Has(ShykaLine(fw), "[areelu.trickster.finale.survived/end/paragraph/3]") && !SurfaceIds.Has(ShykaLine(fw), "[areelu.trickster.finale.survived/end/paragraph/4]")
               && SurfaceIds.Has(ShykaLine(fwH1), "[areelu.trickster.finale.survived/end/paragraph/4]") && !SurfaceIds.Has(ShykaLine(fwH1), "[areelu.trickster.finale.survived/end/paragraph/3]"),
             "The Shyka paragraph contradicts the Last Call H1 page.");
+        check(!Available(report.Single(s => s.Id.EndsWith(".wound")), fwH1), "H1 reopens its corked wound.");
         // Sol INT (r1): a returned Nenio (G6(b)) is at breakfast exactly once; a dissolved one never.
         var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated"); // eng8-q8a: existing new vessel
         // eng7-f2: identify the conditional breakfast paragraph by its ordered slot.
