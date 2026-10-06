@@ -15,6 +15,9 @@ SHARE = "kiana.partner_stance.share"
 EXCLUSIVE = "kiana.partner_stance.exclusive"
 SECRET = "kiana.partner_stance.secret"
 EXPOSED = "kiana.partner_secret_exposed"
+CAREFUL = "kiana.partner.careful_letters"
+TRAIL = "kiana.partner.kept_private_page"
+DISCREET = "kiana.partner.no_letter_trail"
 DEAD = "kiana.elan.death_known"
 LIVE = "kiana.elan.present"
 DEATH_CUES = ["5736cff83ea67644bb11346947b1eb2f", "10eb3a708933ebc4c865ed9ae6e72805",
@@ -28,7 +31,7 @@ def page(id, speaker, text, *answers):
 
 def stance_nodes(flags):
     """Append one commitment conversation to each existing commitment host."""
-    return [
+    nodes = [
         page("partner_terms", "Kiana", '''"A splendid promise. Before we call it settled: Elan. My knight, with his duties and his dreadful handwriting. He is still in my life."
 {n}She keeps the pen between her fingers.{/n}
 "I wanted to tell him. Then I kept waiting for your invitations instead. Now tell me what you are asking for."''',
@@ -71,7 +74,7 @@ def stance_nodes(flags):
              c('"Keep a chair for me. I will come back."', flags=(*flags, EXCLUSIVE, "kiana.separated", "kiana.partner_breakup_spoken"))),
         page("partner_refuse", "Kiana", '''"Then you can expect an empty chair. Elan never ordered me to love him. I am damned if I shall leave him for someone who does."
 {n}She folds the page before you can sign it.{/n}
-"Go, Commander. I have a letter to write."''',
+"Withdraw it, and you can still have the evenings I offered. On his terms. I have a letter to write."''',
              c('[Leave her.]', flags=(EXCLUSIVE, "kiana.closed", "kiana.stayed_married"))),
         page("partner_secret", "Kiana", '''"The evenings he cannot give me. Don't make that sound like his fault."
 {n}She turns her ring inward, then turns it back.{/n}
@@ -87,6 +90,34 @@ def stance_nodes(flags):
 {n}She takes the page back.{/n}
 "I have made quite enough people wait for an honest answer."''', c('[End the courtship.]', flags=("kiana.closed",))),
     ]
+    demand = next(node for node in nodes if node["Id"] == "partner_demand")
+    demand["Choices"][0]["Next"] = "partner_answer"
+    nodes.extend([
+        page("partner_answer", "Kiana", '''{n}Kiana looks at the script, then at the case by her chair.{/n}
+"Wait for my answer, then. No speech for me to repeat."''',
+             c('[Hear her choice.]', "partner_breakup", requires=("kiana.company", "kiana.rehearsed")),
+             c('[Hear her choice.]', "partner_breakup", requires=("kiana.trickster.met", "kiana.rehearsed"), forbids=("kiana.company",)),
+             c('[Hear her choice.]', "partner_not_yet", forbids=("kiana.rehearsed",)),
+             c('[Hear her choice.]', "partner_not_yet", requires=("kiana.rehearsed",), forbids=("kiana.company", "kiana.trickster.met"))),
+        page("partner_not_yet", "Kiana", '''"No. You have seen me with the wine and the ribbon loose. That isn't a life together yet."
+{n}She draws Elan's letter from beneath the script.{/n}
+"He waited through the crusade and the nightmare in that damned ring. I haven't decided I want to leave him. I will not send him away because you want an answer tonight."''',
+             c('"Then tell him. I will share, on his terms."', "partner_share"),
+             c('"Keep our evenings quiet instead."', "partner_secret"),
+             c('"I will not share you. We end it."', "partner_stop", flags=(EXCLUSIVE, "kiana.stayed_married"))),
+    ])
+    secret = next(node for node in nodes if node["Id"] == "partner_secret")
+    refusal = next(node for node in nodes if node["Id"] == "partner_refuse")
+    if "kiana.trickster.late_yes" in flags and "kiana.committed" in flags:
+        secret["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
+        refusal["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
+    refusal["Choices"].extend((
+        c('"I withdraw it. Tell him, and let him answer us."', "partner_share"),
+        c('"Keep the evenings secret instead."', "partner_secret")))
+    secret["Choices"].append(c('[Return every private page. No letters or gifts left in the house.]',
+        flags=(*flags, SECRET, "kiana.affair", CAREFUL)))
+    secret["Text"] += '\n"If you want him to find nothing, you give the pages back. No little keepsakes under the script. I shall miss rereading them after you go."'
+    return nodes
 
 
 def partner_paragraphs():
@@ -123,6 +154,8 @@ def integrate(payload):
     payload["SeenCues"] = {**payload.get("SeenCues", {}), "kiana.elan.death_seen": DEATH_CUES[:]}
     payload["Etudes"] = {**payload.get("Etudes", {}), LIVE: "e5e3765b11eec1244a2137c2999f00d1"}
     payload.setdefault("Derived", {})[DEAD] = [["kiana.elan.death_seen"]]
+    payload["Derived"][DISCREET] = [[CAREFUL]]
+    payload.setdefault("DerivedForbids", {})[DISCREET] = [TRAIL]
 
     answer = by_id["kiana.answer"]
     start = answer["Nodes"][0]
@@ -237,7 +270,7 @@ def integrate(payload):
 {n}She follows Elan. The page stays in his fist.{/n}''',
                 c('[Let her go.]', flags=(EXPOSED, "kiana.closed", "kiana.stayed_married"))),
         ], Relationship="kiana", AnswerLists=[AFTERMATH_LIST], ReturnToList=True,
-        requires=("trickster.now", SECRET), forbids=(EXPOSED, "kiana.closed", DEAD, "kiana.separated", "sacrifice"), optional=True)
+        requires=("trickster.now", SECRET), forbids=(EXPOSED, DISCREET, "kiana.closed", DEAD, "kiana.separated", "sacrifice"), optional=True)
     payload["Scenes"].append(discovery)
 
     # The ordinary Q3 entry courts her after that reunion. Its existing Seelah
@@ -245,7 +278,11 @@ def integrate(payload):
     seelah = by_id["kiana.seelah"]
     seelah["Nodes"][0]["Choices"][1]["Forbids"].append(SECRET)
     seelah["Nodes"][0]["Choices"].append(c('"Elan still does not know. What has Kiana told you?"',
-        "partner_discovery", requires=(SECRET,), forbids=(EXPOSED, DEAD)))
+        "partner_discovery", requires=(SECRET,), forbids=(EXPOSED, DEAD, DISCREET)))
+    quiet = copy.deepcopy(seelah["Nodes"][0]["Choices"][1])
+    quiet["Forbids"].remove(SECRET)
+    quiet["Requires"].extend((SECRET, DISCREET))
+    seelah["Nodes"][0]["Choices"].append(quiet)
     seelah["Nodes"].extend([
         n("partner_discovery", "Seelah", '''"Less than Elan did. He found one of your letters tucked into the play. He asked me whether I knew what it meant."
 {n}Seelah's face is hard.{/n}
@@ -259,6 +296,20 @@ def integrate(payload):
 {n}Her name is written without its customary flourish.{/n}''',
             c('[Put away the letters. Let her go.]', flags=(EXPOSED, "kiana.closed", "kiana.stayed_married"))),
     ])
+    # Keeping the existing farewell page abandons the no-keepsakes precaution.
+    # The old answer and index remain for histories without the hidden affair.
+    for host in payload["Scenes"]:
+        if host.get("Relationship") != "kiana":
+            continue
+        for node in host["Nodes"]:
+            for answer in list(node["Choices"]):
+                if "kiana.farewell_kept" not in answer.get("Set", ()):
+                    continue
+                souvenir = copy.deepcopy(answer)
+                answer["Forbids"].append(SECRET)
+                souvenir["Requires"].append(SECRET)
+                souvenir["Set"].append(TRAIL)
+                node["Choices"].append(souvenir)
 
     for host in payload["Scenes"]:
         if host.get("Relationship") != "kiana" and host["Id"] != "kiana.lastcall.page":

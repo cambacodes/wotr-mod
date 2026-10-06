@@ -26,7 +26,9 @@ internal static class NocticulaConcessionTests
             .Concat(story.SelectedAnswers.Keys).Concat(story.CompletedQuests.Keys).Concat(story.StartedDialogs.Keys).ToHashSet();
         check(concession.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => c.Revive == null
             && c.Set.All(flag => (flag.StartsWith("noct.acq.", StringComparison.Ordinal)
-                || flag.StartsWith("nocticula.partner_", StringComparison.Ordinal)) && !native.Contains(flag))),
+                || flag.StartsWith("nocticula.partner_", StringComparison.Ordinal)
+                || flag == "nocticula.partner.exclusive_chosen"
+                || flag == "nocticula.partner.letters_burned") && !native.Contains(flag))),
             "Concession writes native history or requests actor recovery.");
 
         string[][] histories = {

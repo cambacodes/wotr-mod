@@ -24,6 +24,14 @@ internal static class KianaPartnerTests
         state = Earn("kiana.marriage", state, "kiana.waited");
         state = Earn("kiana.answer", state, "kiana.partner_unsettled");
         state = Earn("kiana.date", state, "kiana.lovers");
+        var unrehearsed = Program.Walk(S("kiana.morning"), state);
+        check(!unrehearsed.Any(r => r.Has("kiana.partner_stance.exclusive") && r.Has("kiana.committed"))
+              && unrehearsed.Any(r => r.Has("kiana.partner_stance.exclusive") && r.Has("kiana.closed"))
+              && unrehearsed.Any(r => r.Has("kiana.partner_stance.share") && r.Has("kiana.committed")),
+            "Skipping the shared rehearsal loses refusal/back-down or buys exclusivity.");
+        state = Earn("kiana.stagecraft", state, "kiana.rehearsed");
+        check((state.Has("kiana.company") || state.Has("kiana.trickster.met")) && state.Has("kiana.rehearsed"),
+            "Played company/rehearsal history lost its proof before commitment.");
         state.Hour += 200;
         foreach (string id in new[] { "kiana.morning", "kiana.trickster.late_question" })
         {
@@ -56,6 +64,9 @@ internal static class KianaPartnerTests
                     "Discovery gives free forgiveness or silently breaks the marriage");
             var dead = Program.Copy(affair); dead.Flags.Add("kiana.elan.death_seen"); Rules.Complete(story, dead);
             check(!Rules.Available(story, discovery, dead), "Dead Elan appears at discovery");
+            var careful = outcomes.First(r => r.Has("kiana.partner.careful_letters") && r.Has("kiana.committed"));
+            Rules.Complete(story, careful);
+            check(!Rules.Available(story, discovery, careful), "Returned private pages still manufacture discovery");
         }
         check(story.SeenCues["kiana.elan.death_seen"].Contains("10eb3a708933ebc4c865ed9ae6e72805"), "Death evidence is missing");
         Console.WriteLine("PASS: Kiana earned share/exclusive/secret, refusal, native discovery and death negatives.");

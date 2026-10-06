@@ -28,6 +28,9 @@ SHARED = "wenduag.partner.share_answered"
 SEPARATED = "wenduag.partner.separated"
 DISCOVERED = "wenduag.partner.secret_discovered"
 ACK = "wenduag.partner.acknowledged"
+EARNED = "wenduag.partner.exclusive_earned"
+REFUSED = "wenduag.partner.exclusive_refused"
+CAREFUL = "wenduag.partner.scent_hidden"
 E = W + "echo.abyss."
 
 
@@ -37,7 +40,7 @@ def _attendance(present, absent):
 
 
 def _claim_nodes():
-    return [
+    nodes = [
         wd("partner_intro", '''{n}Wenduag hooks a finger into your collar, but stops short of pulling.{/n} "Lann used to share my bed in Neathholm. Other hunters, too, when I liked the look of them. He was never my husband." {n}She glances at Brask squirming on the floor.{/n} "Lann always wanted someone worth following. I knew how to make him jealous. Now you want a claim on me. How much of one?"''',
            c('"Keep Lann, if he wants you. He hears it from us."', "partner_share_call", forbids=("lann.dead",)),
            c('"End it with Lann. I want you for myself."', "partner_exclusive_offer", forbids=("lann.dead",)),
@@ -84,6 +87,22 @@ def _claim_nodes():
            c('"Yes. Let him find out for himself."', "want", flags=(SECRET, ACK)),
            c('"No. We tell him."', "partner_share_call")),
     ]
+    next(node for node in nodes if node["Id"] == "partner_intro")["Choices"][1]["Next"] = "partner_exclusive_answer"
+    nodes.extend([
+        wd("partner_exclusive_answer", '''{n}Wenduag studies your face, her hand still in your collar.{/n} "You've seen what I do when somebody offers me more. Do you think you've given me a reason to stay?"''',
+           c("Continue", "partner_exclusive_offer", requires=(EARNED,)),
+           c("Continue", "partner_exclusive_refused", forbids=(EARNED,))),
+        wd("partner_exclusive_refused", '''"No. Lann's a good hunter. I won't send him away because you've decided that keeping me alive bought you every night."
+{n}Her thumb presses your throat.{/n} "Take the nights I give you. He may still knock on my door after you leave. Or walk out. Brask will keep bleeding while you decide."''',
+           c('"I withdraw it. Tell Lann I will share."', "partner_share_call"),
+           c('"Keep our nights secret instead."', "partner_secret"),
+           c('"Then you get no claim on me. We end it."', flags=(EXCLUSIVE, REFUSED, CLOSED))),
+    ])
+    secret = next(node for node in nodes if node["Id"] == "partner_secret")
+    secret["Choices"].append(c('[Wash and change before returning to Lann. Keep her scent out of the barracks.]', "want",
+                               flags=(SECRET, ACK, CAREFUL)))
+    secret["Text"] += '\n"Cold water before dawn, then. No wearing my smell like a trophy. I liked the thought of him catching it."'
+    return nodes
 
 
 def ending_paragraphs():
@@ -110,8 +129,9 @@ def ending_paragraphs():
           requires=(COMMITTED, SHARE), forbids=(SHARED, "lann.dead")),
         p("{n}At the Commander's demand, Wenduag had ended her nights with Lann. Lann had heard it from her own mouth. Lann still followed the Commander. He never knocked at her door after the watch.{/n}",
           requires=(EXCLUSIVE, SEPARATED, LANN_IN), forbids=LANN_GONE),
-        p("{n}Wenduag had accepted the Commander's exclusive claim while Lann was absent. She would no longer take him to bed. He had given no answer, and none was put in his mouth.{/n}",
+        p("{n}The Commander had demanded Wenduag alone. Her answer had bought no word from him; none was put in his mouth.{/n}",
           requires=(EXCLUSIVE,), forbids=(SEPARATED, "lann.dead")),
+        p("{n}Wenduag had refused the exclusive claim. The Commander insisted and lost her bed. Lann's place remained his to accept; she had promised him no new loyalty.{/n}", requires=(EXCLUSIVE, REFUSED)),
         p("{n}The Commander had hidden the claim on Wenduag from Lann. He caught her scent after their night together and ended his own nights with her. Lann still fought beside the Commander, but would share no private jokes with either lover.{/n}",
           requires=(COMMITTED, SECRET, DISCOVERED, LANN_IN), forbids=LANN_GONE),
         p("{n}The Commander's claim on Wenduag was still concealed from Lann. No accusation had reached the lovers; no pardon had been asked or given.{/n}",
@@ -129,7 +149,7 @@ def ending_paragraphs():
         p("{n}Lann had answered the offer to share Wenduag. After he left the company, there was no news of another visit to her bed.{/n}",
           requires=(COMMITTED, SHARE, SHARED), forbids=("lann.dead",), any_groups=(("lann.kicked_out", "lann.plot_absent"),)),
         p("{n}With Lann dead, the Commander's offer to share Wenduag could remain only an offer. Their nights in Neathholm were over.{/n}", requires=(COMMITTED, SHARE, "lann.dead")),
-        p("{n}Lann was dead now. Wenduag had answered the demand by giving up Lann's bed. Her agreement with the Commander still stood.{/n}", requires=(EXCLUSIVE, "lann.dead")),
+        p("{n}Lann was dead now. Wenduag had answered the exclusive demand herself; no new answer could come from her former lover.{/n}", requires=(EXCLUSIVE, "lann.dead")),
         p("{n}The Commander had concealed the claim on Wenduag. Lann was dead now; neither lover had received a pardon from him.{/n}", requires=(COMMITTED, SECRET, "lann.dead")),
         p("{n}The Commander made no new bargain about Lann. Wenduag's old cave lovers had never promised each other exclusivity.{/n}", forbids=STANCES),
         p("{n}They had spoken of Lann, but the Commander had never accepted Wenduag's claim. There were no nights with the Commander to share or conceal.{/n}",
@@ -245,6 +265,8 @@ def _native_variants(payload, scenes):
 
 
 def integrate(payload):
+    payload.setdefault("Derived", {})[EARNED] = [["trickster.now", flag] for flag in
+        ("wenduag.romance_finished.latched", W + "cairn.water")]
     payload.setdefault("Derived", {})[HERE] = [[LANN_IN]]
     payload.setdefault("DerivedForbids", {})[HERE] = list(LANN_GONE)
     scenes = {item["Id"]: item for item in payload["Scenes"]}
@@ -260,9 +282,25 @@ def integrate(payload):
     discovery = reaction("Lann", W + "react.lann_secret", tuple(morning["Requires"]) + (SECRET,),
         '''{n}Lann waits at the cellar stair. He draws a breath as you approach.{/n} "You smell like her. Every neather down there knows. Did you think I wouldn't?" {n}He looks toward the dark below.{/n} "She never promised me one bed. But you let me stand beside you like a fool while you hid this. I thought we were past that." {n}His voice hardens.{/n} "Tell Wendu I'm not coming tonight. Or any other night. I'll fight your war, Commander. Find someone else to laugh with after it."''',
         answer_list=LANN_HUB, relationship="wenduag", entry='"You have something to say, Lann?"',
-        chapter=5, last=5, portrait="Lann", forbids=LANN_GONE + (CLOSED, DISCOVERED),
+        chapter=5, last=5, portrait="Lann", forbids=LANN_GONE + (CLOSED, DISCOVERED, CAREFUL),
         flags=(DISCOVERED, SEPARATED, KNOWN), Chapters=[5])
     payload["Scenes"].append(discovery)
+    quiet = copy.deepcopy(discovery)
+    quiet["Id"] = W + "react.lann_secret_quiet"
+    # Two pages make this a hub conversation, not an E6 one-page reaction.
+    quiet["Reaction"] = False
+    quiet["Requires"].append(CAREFUL)
+    quiet["Forbids"].remove(CAREFUL)
+    quiet["Entry"] = '"The night watch was quiet, Lann?"'
+    quiet["Nodes"][0]["Text"] = '''{n}Lann waits by the cellar stair with his bow. Your hair is wet; the clean shirt clings coldly to your back.{/n}
+"Nothing to report. Wendu's hunters came in before dawn. Tell her to stop leaving bloody arrows in the wash trough."
+{n}He shoulders the bow and goes to the muster. Wenduag watches from the stair below. She bares her teeth when you fail to come back down.{/n}'''
+    quiet["Nodes"][0]["Choices"][0]["Set"] = []
+    caught = copy.deepcopy(discovery["Nodes"][0])
+    caught["Id"] = "caught"
+    quiet["Nodes"][0]["Choices"].append(c('[Go back down to Wenduag. Return to Lann without washing again.]', "caught"))
+    quiet["Nodes"].append(caught)
+    payload["Scenes"].append(quiet)
 
     # A claim disclosure reveals survival but does not pay the old cairn debt.
     # Keep those conversations and all their answer indices, with a new entrance

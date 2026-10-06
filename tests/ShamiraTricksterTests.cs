@@ -330,12 +330,14 @@ internal static class ShamiraTricksterTests
             "Trk_Shamira_Commit: something is spoken in the game.");
         var stanceOutcomes = Through(harem, hw, "search", 0).ToArray();
         check(stanceOutcomes.All(r => r.Has(P + "lost_on_purpose")
-              && ((r.Has(Committed) && (r.Has("shamira.partner_stance.share") || r.Has("shamira.partner_stance.secret")))
+              && ((r.Has(Committed) && (r.Has("shamira.partner_stance.share") || r.Has("shamira.partner_stance.secret")
+                      || r.Has("shamira.partner.exclusive_chosen")))
                   || (r.Has(Closed) && r.Has("shamira.partner_stance.exclusive")))),
             "Trk_Shamira_Commit: commitment bypasses partner terms or a refused exclusive demand.");
         check(stanceOutcomes.Any(r => r.Has(Committed) && !r.Has(Closed))
-              && stanceOutcomes.Any(r => r.Has(Closed) && !r.Has(Committed)),
-            "Trk_Shamira_Commit: no accepted terms or no exclusive refusal.");
+              && stanceOutcomes.Any(r => r.Has(Closed) && !r.Has(Committed)) == !hw.Has("shamira.partner.exclusive_earned")
+              && stanceOutcomes.Any(r => r.Has(Committed) && r.Has("shamira.partner.exclusive_chosen")) == hw.Has("shamira.partner.exclusive_earned"),
+            "Trk_Shamira_Commit: answer ignores honest capture and the untraced theft.");
         check(Through(harem, hw, "search", 1).All(r => r.Has(P + "ally") && !r.Has(Committed) && !r.Has(Closed)), "Trk_Shamira_Won: winning is not the soft no.");
         check(Through(harem, hw, "search", 2).All(r => r.Has(Closed) && !r.Has(Committed)), "Trk_Shamira_Thrown: throwing her out is not the hard no.");
         var committers = own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed))).Select(s => s.Id).ToArray();

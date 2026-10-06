@@ -8,7 +8,8 @@ Cue_0004_NewMarh (d9057361) says she can take him to the Abyss.
 Authored additions: the living demon keeps the retained plant in her bedroom;
 she shows the correspondence to him, or conceals it until her existing visit.
 The returned tenant cannot bring him out of the Sanctum. No plant is restored,
-killed or retrieved here. Exclusivity is refused, not a native-fate switch.
+killed or retrieved here. Earned exclusivity severs her lover's claim to the
+bed; the living plant remains her possession. A memory pays for that choice.
 The judged chief answers by letter and stays with his people. No reunion is
 asserted. Unobserved fates remain unknown, including on a tenant history.
 """
@@ -21,6 +22,9 @@ SHARE, EXCLUSIVE, SECRET = (PREFIX + x for x in ("share", "exclusive", "secret")
 READY = "jerribeth.partner_terms_chosen"
 EXPOSED = "jerribeth.partner_secret_exposed"
 REFUSED = "jerribeth.partner_exclusive_refused"
+EARNED = "jerribeth.partner.exclusive_earned"
+CHOSEN = "jerribeth.partner.exclusive_chosen"
+CAREFUL = "jerribeth.partner.careful"
 RETURNED = "jerribeth.trickster.returned"
 PLANT = "jerribeth.marhevok_in_sanctum"
 DEAD = "jerribeth.marhevok_dead"
@@ -137,6 +141,35 @@ def terms_nodes(origins):
     nodes.append(j(resume, '"Now. What were you going to promise me?"',
         *(c('[Return to the offer.]', "partner_continue_" + origin, requires=(receipt, READY))
           for origin, receipt in origins.items())))
+    # Authored severance of a lover's claim, not a change to Marhevok's fate.
+    for fate in descriptions:
+        offer = next(node for node in nodes if node["Id"] == "partner_" + fate)
+        offer["Choices"][1]["Next"] = "partner_answer_" + fate
+        answer = [c("Continue", "partner_demand_" + fate)]
+        if fate in ("plant", "chief", "dead"):
+            answer[0]["Forbids"].extend((EARNED,))
+            answer.append(c("Continue", "partner_choose_" + fate, requires=(EARNED,)))
+            reaction = {
+                "plant": '''{n}She lifts the pot. A vine catches her wrist; she cuts it off and lets it fall.{/n}
+"You have given me something worth keeping. I can clear a bedroom."
+{n}She carries Marhevok beyond the curtain. His eyes follow her; the bud shuts when she leaves him on a shelf.{/n}
+"Alive. Mine. But no longer my lover, and no longer beside my bed. Do not mistake that for mercy."
+{n}Her claw taps the frame.{/n} "One memory of yours in exchange. I choose when. You have heard how I collect."''',
+                "chief": '''"You have given me something I want. I have told Marhevok I shall not ask for his devotion again."
+{n}She reads his reply aloud.{/n}
+"Then leave my people alone too," {n}he has written.{/n} "I will not answer another summons."
+{n}She laughs.{/n} "He thinks he has dismissed me. Let him. You owe me one memory instead. My choice, when I collect."''',
+                "dead": '''"Marhevok is dead. I cannot give you his dismissal. I can give you mine: no other lover while our promise holds."
+{n}Her laugh scratches inside your ear.{/n} "You have made yourself useful, and rather harder to replace. One memory, Commander. My choice. I shall take it when it hurts."''',
+            }[fate]
+            nodes.append(j("partner_choose_" + fate, reaction,
+                c('"I accept the claim. Keep your promise."', resume,
+                  flags=(EXCLUSIVE, READY, CHOSEN, "jerribeth.trickster.forfeit_named", "jerribeth.trickster.cost.forfeit")),
+                c('"Keep him. I will share instead."', "partner_share_" + fate)))
+        nodes.append(j("partner_answer_" + fate, '"Let me consider what you have given me, Commander."', *answer))
+        secret = next(node for node in nodes if node["Id"] == "partner_secret_" + fate)
+        secret["Choices"].append(c('[Keep to the closed frame. No names in letters, no invitation to your bed.]', resume,
+                                   flags=(SECRET, READY, CAREFUL)))
     return nodes
 
 
@@ -206,9 +239,23 @@ def install_discovery(scene, node_ids):
             twin["Set"] = [receipt]
             twin["Requires"] = [*twin["Requires"], SECRET]
             twin["Forbids"] = [*twin["Forbids"], EXPOSED]
+            # Accepting the existing bodily invitation breaks frame-only secrecy.
+            # A private correspondence continuation is appended below.
             node["Choices"].append(twin)
     if not origins:
         return
+    for origin in origins:
+        node = next(node for node in scene["Nodes"] if node["Id"] == origin)
+        private = copy.deepcopy(continuations[list(origins).index(origin)])
+        private["Id"] = "partner_private_" + origin
+        private["Text"] = '''"No names in letters, no account of my bed. I shall talk to you and get nothing better for my trouble. How dreary."
+{n}Her laugh scratches inside your ear.{/n}
+"You may still entertain me, Commander. Tell me which demon your scouts caught lying today. I shall keep the letters unsigned. You keep this evening to conversation."'''
+        # A quiet evening ends at this receipt; it cannot run into the bodily visit.
+        private["Choices"] = ([c('[Keep the evening to conversation.]', "collected")]
+                              if scene.get("Owner", "").endswith("Epilogue") else
+                              [c('[Keep the evening to conversation.]', flags=(scene["Id"], "jerribeth.trickster.visited"))])
+        scene["Nodes"].append(private)
     nodes = [j("partner_discovery", '"Before you come closer. Something you asked me to keep quiet."',
         *(c('"What have you done?"', "partner_exposed_" + fate, **guard)
           for fate, guard in fate_guards().items()))]
@@ -318,9 +365,13 @@ def partner_paragraphs(aeon=False):
     }
     paragraphs = [p("{n}" + text + "{/n}", **guard)
                   for fate, guard in fate_guards().items() for text in (texts[fate],)]
+    plant = paragraphs[2]
+    plant["Forbids"].append(CHOSEN)
+    paragraphs.append(p("{n}Marhevok lived in his pot on a shelf beyond Jerribeth's bedroom curtain. She had cut the vine that caught her wrist when she carried him there. He remained her captive possession; she had ended his place beside her bed.{/n}", requires=(PLANT, CHOSEN), forbids=(DEAD, CHIEF, RETURNED)))
     paragraphs += [
         p("{n}The Commander had chosen to share her evenings. That bargain kept Marhevok's claim in view; it did not make his captivity willing or his farewell an invitation to return.{/n}", requires=(SHARE,)),
         p("{n}The demand for Jerribeth alone had met her refusal. She kept her possessions and her memories; the Commander lost her evenings.{/n}", requires=(EXCLUSIVE, REFUSED)),
+        p("{n}Jerribeth had severed Marhevok's claim to her bed, without changing his fate. She kept the Commander alone as her lover, and the promised memory as her price. She named that debt whenever the Commander spoke as though the bargain had made her obedient.{/n}", requires=(EXCLUSIVE, CHOSEN)),
         p("{n}The Commander had chosen secrecy. Where Marhevok still lived beyond their reach, he had never been told; no silence of his was counted as agreement.{/n}", requires=(SECRET,), forbids=(EXPOSED,)),
         p("{n}The secret had been exposed. Marhevok had struck the frame with a vine; Jerribeth had cut it loose. The sap dried on the frame. She never cleaned it off for the Commander.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.plant")),
         p("{n}Jerribeth had exposed the secret in a message to Marhevok. The Wintersun chief refused to receive another account of her bed. She kept Marhevok's letter. No more came. The Commander was left with the lover who had broken their bargain.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.chief")),
@@ -331,6 +382,8 @@ def partner_paragraphs(aeon=False):
 
 def integrate(payload):
     payload.setdefault("Etudes", {}).update(ETUDES)
+    payload.setdefault("Derived", {})[EARNED] = [["trickster.now", flag] for flag in
+        ("jerribeth.shared_work", "jerribeth.counter_spoils_settled", "jerribeth.trickster.cost.forfeit")]
     scenes = {s["Id"]: s for s in payload["Scenes"]}
     install_terms(scenes["jerribeth.future"], {"future_entry"})
     install_terms(scenes["jerribeth.trickster.epilogue.commit"], set(), late=True)
@@ -339,6 +392,15 @@ def integrate(payload):
     install_discovery(scenes["jerribeth.trickster.epilogue.commit"], {"signed", "signed_mind"})
     install_shared_witness(scenes["jerribeth.trickster.visit"], {"arrival_terms"})
     install_shared_witness(scenes["jerribeth.trickster.epilogue.commit"], {"signed"})
+    # Add precaution answers after the older discovery/witness appenders, keeping
+    # every answer they exported in merge-b10 at its original index.
+    for event in (scenes["jerribeth.future"], scenes["jerribeth.trickster.visit"], scenes["jerribeth.trickster.epilogue.commit"]):
+        pages = {node["Id"]: node for node in event["Nodes"]}
+        for key in list(pages):
+            if key.startswith("partner_private_"):
+                origin = key.removeprefix("partner_private_")
+                pages[origin]["Choices"].append(c('[Keep the evening private. No account of your bed reaches Marhevok.]', key,
+                                                  requires=(SECRET, CAREFUL), forbids=(EXPOSED,)))
     for scene in payload["Scenes"]:
         if scene.get("Relationship") == "jerribeth" and scene.get("Owner", "").endswith("Epilogue"):
             for node in scene["Nodes"]:

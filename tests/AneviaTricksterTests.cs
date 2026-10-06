@@ -177,10 +177,12 @@ internal static class AneviaTricksterTests
             check(commitLeftPages.Contains("left") && commitLeftPages.Contains("morning_left") && !commitLeftPages.Contains("widow")
                   && !commitLeftPages.Contains("morning") && leftCommit.Any(r => r.Has("anevia.committed")),
                 "Both left: the commit treats a living, departed Beth as dead, or cannot commit.");
-            check(leftCommit.Any(r => r.Has("anevia.partner_stance.share") && r.Has("anevia.committed") && !r.Has("anevia.closed"))
-                  && leftCommit.Any(r => r.Has("anevia.partner_stance.exclusive") && r.Has("anevia.closed") && !r.Has("anevia.committed"))
-                  && leftCommit.Any(r => r.Has("anevia.partner_stance.secret") && r.Has("anevia.partner_lie_exposed") && r.Has("anevia.closed")),
-                "Both left: an absent wife's letter is mistaken for a live cameo and suppresses a stance.");
+            check(leftCommit.Any(r => r.Has("anevia.partner_stance.share") && r.Has("anevia.committed") && !r.Has("anevia.closed")),
+                "Both left: sharing loses the absent wife's letter.");
+            check(leftCommit.Any(r => r.Has("anevia.partner_stance.exclusive") && r.Has("anevia.closed") && !r.Has("anevia.committed")),
+                "Both left: exclusivity bypasses the refusal.");
+            check(leftCommit.Any(r => r.Has("anevia.partner_stance.secret") && r.Has("anevia.partner_lie_exposed") && r.Has("anevia.closed")),
+                "Both left: the careless affair loses discovery.");
         }
 
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.

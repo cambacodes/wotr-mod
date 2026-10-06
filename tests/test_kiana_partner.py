@@ -49,7 +49,7 @@ class KianaPartnerTests(unittest.TestCase):
         data = self.payload()
         for sid in ("kiana.morning", "kiana.trickster.late_question", "kiana.trickster.late_question_letter", "kiana.trickster.epilogue.commit"):
             host = next(s for s in data["Scenes"] if s["Id"] == sid)
-            outcomes = walk(host["Nodes"], "partner_terms", {partner.OPEN})
+            outcomes = walk(host["Nodes"], "partner_terms", {partner.OPEN, "kiana.company", "kiana.rehearsed"})
             for stance in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET):
                 accepted = [s for s in outcomes if stance in s and "kiana.closed" not in s]
                 self.assertTrue(accepted, sid + ": " + stance)
@@ -96,7 +96,7 @@ class KianaPartnerTests(unittest.TestCase):
 
     def test_after_reunion_courtship_can_discover_through_existing_seelah_event(self):
         seelah = next(s for s in self.payload()["Scenes"] if s["Id"] == "kiana.seelah")
-        entrance = seelah["Nodes"][0]["Choices"][-1]
+        entrance = next(a for a in seelah["Nodes"][0]["Choices"] if a.get("Next") == "partner_discovery")
         self.assertEqual(entrance["Next"], "partner_discovery")
         self.assertTrue(holds(entrance, {partner.SECRET}))
         self.assertFalse(holds(entrance, {partner.SECRET, partner.DEAD}))

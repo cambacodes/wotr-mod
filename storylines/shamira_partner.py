@@ -23,6 +23,9 @@ EXPOSED = "shamira.partner.secret_exposed"
 PAID = "shamira.partner.public_claim"
 BROKEN = "shamira.partner.affair_ended"
 KNOWN = "shamira.partner.nocticula_knows"
+EARNED = "shamira.partner.exclusive_earned"
+CHOSEN = "shamira.partner.exclusive_chosen"
+CAREFUL = "shamira.partner.leave_before_court"
 DEAD = "noct.dead"
 HIDING = "noct.defeated_not_dead"
 RETURNED = "nocticula.trickster.returned"
@@ -51,7 +54,7 @@ def terms_nodes(late=False):
     yes = () if late else (COMMITTED,)
     next_yes = "partner_late_won" if late else "rise"
     no = "partner_late_no" if late else None
-    return [
+    nodes = [
         n("partner_status", "Narrator", "{n}Shamira holds you at arm's length. Her attention has gone past you, toward the doors of her Harem.{/n}",
           *state_choices("partner_status_")),
         sh("partner_status_alive", '''"Nocticula's palace still sends orders to my city. My lady will hear that I am back, and whom I have brought home."''', c("Continue", "partner_start")),
@@ -91,6 +94,32 @@ def terms_nodes(late=False):
 {n}Her hand closes on the back of your neck.{/n} "Do not grow tedious about it. Either of you."''',
            c("[Kiss her.]", next_yes, flags=(SHARE, PAID, *yes))),
     ]
+    next(node for node in nodes if node["Id"] == "partner_start")["Choices"][1]["Next"] = "partner_answer"
+    next(node for node in nodes if node["Id"] == "partner_demand")["Text"] += '\n"Withdraw it, and you stand beside me in her city. You hear me call it hers. That is the price of staying."'
+    nodes.extend([
+        sh("partner_answer", '"You want my answer? Hold still." {n}Her hand closes over your pulse.{/n}',
+           c("Continue", "partner_chosen", requires=(EARNED,)),
+           c("Continue", "partner_demand", forbids=(EARNED,))),
+        sh("partner_chosen", '''"You told me what you had done. Then you cheated Ramisa out of the flesh I am wearing. I could use a lover who can do that again."
+{n}Shamira pulls your hand against her breast. The heat in her borrowed skin comes from your dreams.{/n}
+"Nocticula came for me once. You came when there was no throne to win. Very well. My bed is yours alone. My ambitions are not. I shall tell her myself, and you will stand here while she answers."''',
+           *state_choices("partner_chosen_")),
+        noct("partner_chosen_alive", '''{n}Shamira's message returns with the point of a pin driven through her name.{/n} "Dismiss me from your bed if you wish. You will still answer my summons as steward. Your mortal has won a pillow. Let neither of you mistake it for a throne."
+{n}Shamira pulls the pin out with her teeth.{/n} "She heard me."''', c("Continue", "partner_chosen_yes")),
+        noct("partner_chosen_hiding", '''{n}A note comes back in Nocticula's hand.{/n} "My absence has made you bold. Keep your mortal. You will discover what remains between us when I summon my steward."
+{n}Shamira folds it and puts it beneath the throne cushion.{/n} "She heard me. And she hates it."''', c("Continue", "partner_chosen_yes")),
+        noct("partner_chosen_returned", '''{n}Nocticula's reply comes as a shadow above the letter.{/n} "You have flesh again, and find me inconvenient. How quickly you remember yourself. Keep your lover. I still have a steward to summon."
+{n}Shamira's fingers pass through the shadow. Her mouth hardens.{/n} "She heard me."''', c("Continue", "partner_chosen_yes")),
+        sh("partner_chosen_dead", '''"No reply. I have named what I am ending. I will not invent an answer from her to make this easy."
+{n}She leaves the letter by the throne.{/n} "If she answers, she will hear the same words."''', c("Continue", "partner_chosen_yes")),
+        sh("partner_chosen_yes", '''{n}She draws you between her knees.{/n} "You will still feed this body. I shall still reach into your dreams. If you hoped to shut that door by shutting hers, you have made a very bad bargain."
+{n}Her mouth catches yours; the throne's arm digs into your back.{/n} "Now show me why I made it."''',
+           c('[Kiss her.]', next_yes, flags=(EXCLUSIVE, CHOSEN, *yes))),
+    ])
+    secret = next(node for node in nodes if node["Id"] == "partner_secret")
+    secret["Choices"].append(c('[Keep the wardrobe passage private. Leave before the court returns.]', next_yes,
+        flags=(SECRET, CAREFUL, *yes), forbids=("shamira.trickster.cost.ramisa_story", "nocticula.trickster.secret_known.shamira")))
+    return nodes
 
 
 def discovery_nodes(late=False):
@@ -129,7 +158,7 @@ def discovery_nodes(late=False):
 def partner_paragraphs(condition="body"):
     """Current partner position plus chosen terms, on every ending surface."""
     whereabouts = {
-        "body": "Shamira had returned to her Harem in flesh. Nocticula still claimed her as her chosen lover; Shamira still coveted her throne.",
+        "body": "Shamira had returned to her Harem in flesh. Nocticula had claimed her as her chosen lover; Shamira still coveted her throne.",
         "alive": "Shamira remained in the Harem of Ardent Dream, Nocticula's chosen lover and ambitious steward.",
         "mind": "Shamira had no body to bring to Nocticula's bed. What remained of the Ardent Dream was inside the Commander's mind; her old lover had no place there.",
         "gone": "Shamira was gone. Nocticula's chosen lover had left no body that could answer a summons to her bed.",
@@ -145,7 +174,8 @@ def partner_paragraphs(condition="body"):
           ("Shamira still wanted her old lover, and still wanted her throne, but there was no body to bring to her bed. Their messages carried invitations and threats in the same hand." if condition in ("body", "alive") else
            "Her former lover Shamira could offer no body in return. What had passed between them remained a claim without a bed.") + "{/n}", requires=(RETURNED, "trickster.now")),
         p("{n}Nocticula's palace had sent an answer through a projection while the Commander's tricks still had power. Her old lover's shadow had survived the loss of that power; no flesh had been restored to her.{/n}", requires=(RETURNED,), forbids=("trickster.now",)),
-        p('''{n}The Commander had demanded Shamira give up her old lover. Shamira had refused. Their romance went no further; her old lover's place had never been the Commander's to give away.{/n}''', requires=(EXCLUSIVE,)),
+        p('''{n}The Commander had demanded Shamira give up her old lover. Shamira had refused. Their romance went no further; her old lover's place had never been the Commander's to give away.{/n}''', requires=(EXCLUSIVE,), forbids=(CHOSEN,)),
+        p('''{n}Shamira had ended Nocticula's claim to her bed, after the Commander brought her back through a theft Ramisa never traced. While they shared that bed, she had taken the Commander's dreams to feed her body. She had kept her plans for the city; no promise about its throne had come with her invitation.{/n}''', requires=(EXCLUSIVE, CHOSEN)),
         p('''{n}The Commander had chosen to share Shamira with her old lover. The bargain named the Commander's place in the Harem and her lady's rule over the city; Shamira had spoken the latter through her teeth. Neither woman surrendered her appetite or her ambitions.{/n}''', requires=(SHARE, PAID)),
         p('''{n}The Commander had agreed to keep her old lover's place if she returned. With no answer from her, there had been no bargain to claim she accepted.{/n}''', requires=(SHARE,), forbids=(PAID,)),
         p('''{n}The Commander had chosen a secret affair with Shamira. Her old lover had received no confession; the Harem's servants had something valuable to sell. Her claim remained, and the secret remained an unpaid risk.{/n}''', requires=(SECRET,), forbids=(EXPOSED,)),
@@ -199,6 +229,7 @@ def late_current_paragraphs(node):
 
 
 def integrate(payload):
+    payload.setdefault("Derived", {})[EARNED] = [["trickster.now", P + "told_honest", P + "ramisa_fooled"]]
     scenes = {s["Id"]: s for s in payload["Scenes"]}
     # Sweep sibling claims that put Nocticula on her throne after defeat.
     for suffix in ("", "_awning"):
@@ -248,6 +279,11 @@ def integrate(payload):
         nodes["steps"]["Text"] = nodes["steps"]["Text"].replace(
             "she says aloud, and it is the only word spoken in the Harem that night.", "she says against your mouth.")
         s["Nodes"].extend(terms_nodes())
+        nodes["go"]["Choices"].append(c('[Dress and leave through the wardrobe before the third bell.]', "partner_private_exit",
+                                        requires=(SECRET, CAREFUL)))
+        s["Nodes"].append(sh("partner_private_exit", '''{n}You fasten your coat while the musicians are still outside. Shamira catches the last buckle.{/n} "No place beside my throne tonight. Is that still what you want?"
+{n}She kisses the bite she left at your throat, then pulls the collar over it.{/n} "Go, then. My court shall see me alone. Next time, the wardrobe again. No procession through my city."
+{n}The latch closes before the servants come in.{/n}''', c('[Go home before anyone sees you.]')))
         # Use the existing third-bell court, before any departure through the arch.
         for source in ("fool", "guest", "equal", "steward"):
             for choice in nodes[source]["Choices"]:
@@ -294,6 +330,9 @@ def integrate(payload):
         n("partner_late_no", "Narrator", '''{n}Shamira returned to her Harem. The Commander had a debt to her body, and no welcome in her bed.{/n}''', paragraphs=partner_paragraphs()),
     ])
     late["Nodes"].extend(discovery_nodes(late=True))
+    won = next(node for node in late["Nodes"] if node["Id"] == "partner_late_won")
+    won["Choices"].append(c('[Dress and leave before the court returns.]', "partner_late_private", requires=(SECRET, CAREFUL)))
+    late["Nodes"].append(n("partner_late_private", "Narrator", '''{n}The Commander left through the wardrobe before the third bell. No servant saw a second coat by Shamira's throne. She kept the court waiting alone, angry that the secret had cost her the pleasure of showing her lover off.{/n}''', paragraphs=partner_paragraphs()))
 
     door = scenes[P + "epilogue.closed_door"]
     door.setdefault("ForbidOverrides", {})[COMMITTED] = BROKEN
@@ -316,7 +355,7 @@ def integrate(payload):
                 if "nocticula.trickster.secret_known.shamira" in para.get("Requires", []):
                     para["Forbids"].extend([DEAD, HIDING, RETURNED, SHARE, EXPOSED])
     for node in late["Nodes"][1:]:
-        if node["Id"] not in ("partner_late_end", "partner_late_no"):
+        if node["Id"] not in ("partner_late_end", "partner_late_no", "partner_late_private"):
             node.setdefault("Paragraphs", []).extend(late_current_paragraphs(node["Id"]))
 
     # Last Call builds its coda after this route. Change only Shamira's entry,

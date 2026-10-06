@@ -14,6 +14,9 @@ P = "nocticula.partner_stance."
 TERMS = "nocticula.partner_terms"
 EXPOSED = "nocticula.partner_secret_exposed"
 REFUSED = "nocticula.partner_exclusive_refused"
+EARNED = "nocticula.partner.exclusive_earned"
+CHOSEN = "nocticula.partner.exclusive_chosen"
+CAREFUL = "nocticula.partner.letters_burned"
 KILLED = "shamira.killed"
 RETURNED = "shamira.trickster.returned"
 BODY = "shamira.trickster.embodied"
@@ -106,6 +109,31 @@ def terms_nodes(prefix, resume, closed):
                        '"Shamira is dead. Keep it from her courtiers, then. They still sell what they learn about my bed. Keep your mouth shut if you intend to give them nothing."')
         out.append(nt(base + ".secret", secret_text,
                       c('[Keep the affair private.]', resume, flags=(TERMS, P + "secret"))))
+    for state, _, _ in STATES:
+        base = prefix + "." + state
+        name = next(node for node in out if node["Id"] == prefix + ".name." + state)
+        name["Choices"][1]["Next"] = base + ".answer"
+        out.append(nt(base + ".answer", '"You have asked for a great deal. Let us see what you have brought me."',
+            c("Continue", base + ".chosen", requires=(EARNED,)),
+            c("Continue", base + ".exclusive", forbids=(EARNED,))))
+        # Every response is delivered from her CURRENT form. The partner's body
+        # is never conjured for a breakup, nor is its survival newly inferred.
+        response = ('{n}Shamira\'s answer burns across the letter.{/n} "You dismiss me from your bed? Keep your mortal. You will still hear from my Harem when your city displeases me."'
+                    if state in ("alive", "body") else
+                    '{n}Shamira\'s voice strikes behind your eyes.{/n} "Very well, my lady. I have a place where your lover cannot shut the door on me."'
+                    if state == "mind" else
+                    '{n}The message to Shamira\'s court brings no answer from its mistress. Nocticula does not call the silence agreement.{/n}')
+        out.append(nt(base + ".chosen", '''"You have brought me something worth keeping. My brother's schemes are tiresome; someone who can cost him an advantage is rather less so."
+{n}Her answering mark cuts across Shamira's name.{/n}
+"No invitations to my bed for her. Or for another lover while I keep this promise. My city remains my city. You remain the person who brings me what others would hide. That part will become inconvenient."
+''' + response + '''
+{n}Nocticula's smile bares the edge of a tooth.{/n} "Come here. I want to see how much pleasure you take in being wanted."''',
+            c('[Accept her claim and the work already owed.]', resume, flags=(TERMS, P + "exclusive", CHOSEN)),
+            c('"Let her keep her place. I will share."', base + ".share")))
+        secret = next(node for node in out if node["Id"] == base + ".secret")
+        if state != "mind":
+            secret["Choices"].append(c('[Burn the private invitations before anyone else can read them. Take no marked gifts.]', resume,
+                flags=(TERMS, P + "secret", CAREFUL), forbids=("nocticula.trickster.secret_known.shamira",)))
     return out
 
 
@@ -141,6 +169,7 @@ def discovery(scene_, page, index):
     twin.update(Next=prefix, Set=[], Abort=False)
     twin["Requires"].append(P + "secret")
     twin["Forbids"].append(EXPOSED)
+    twin["Forbids"].append(CAREFUL)
     node["Choices"].append(twin)
     # Two appended continuations replace the old exit only while a secret is unexposed.
     answer["Forbids"].append(P + "secret")
@@ -148,6 +177,21 @@ def discovery(scene_, page, index):
     seen["Forbids"].remove(P + "secret")
     seen["Requires"].extend((P + "secret", EXPOSED))
     node["Choices"].append(seen)
+    private = deepcopy(seen)
+    private["Requires"].remove(EXPOSED)
+    private["Requires"].append(CAREFUL)
+    private["Forbids"].append(EXPOSED)
+    private["Next"] = prefix + ".hidden"
+    private["Set"] = []
+    private.pop("NativeNext", None)
+    node["Choices"].append(private)
+    node["Choices"].append(c('[Keep the signed invitation. Let the clerk carry the next one.]', prefix,
+                             requires=(P + "secret", CAREFUL), forbids=(EXPOSED,)))
+    hidden_exit = deepcopy(answer)
+    hidden_exit["Forbids"].remove(P + "secret")
+    hidden = nt(prefix + ".hidden", '''{n}The invitation curls in the lamp flame before the morning clerk arrives. No seal leaves the room; no marked gift goes to the Harem.{/n}
+"You would have enjoyed keeping that," {n}Nocticula writes on the answering scrap.{/n} "Burn this too. You may come when I summon you. You may not keep a pretty collection for her servants to buy."
+{n}You feed the last scrap to the flame. There is nothing for the courier to carry.{/n}''', hidden_exit)
     scene_["Nodes"].append(nt(prefix, '"Your private invitation has acquired an answer. Read it before you send another."',
                               *dispatch(prefix, prefix + ".")))
     for state, _, _ in STATES:
@@ -165,6 +209,7 @@ def discovery(scene_, page, index):
     finish = deepcopy(answer)
     finish["Forbids"].remove(P + "secret")
     scene_["Nodes"].append(nt(prefix + ".fallout", '"So much for discretion. No more letters beyond the business already agreed. When I want your company, I shall summon you. You may arrive, or let me wonder whose door you used instead."\n{n}She withdraws the invitation. The war dispatch beside it remains unanswered.{/n}', finish))
+    scene_["Nodes"].append(hidden)
 
 
 def ending_paragraphs(nocticula_dead=False):
@@ -182,7 +227,8 @@ def ending_paragraphs(nocticula_dead=False):
         if nocticula_dead and state == "alive":
             text = '{n}Shamira\'s court remained in the Harem of Ardent Dream. Its mistress had been Nocticula\'s chosen lover and would-be rival. After Nocticula\'s death, the Harem shut its doors to mourners. Its courtiers began buying reports from the other islands.{/n}'
         if state == "alive":
-            out.append(p(text, requires=req, forbids=(*bad, EXPOSED)))
+            out.append(p(text, requires=req, forbids=(*bad, EXPOSED, CHOSEN)))
+            out.append(p('{n}Shamira remained in her Harem. Nocticula had ended her claim to the royal bed. The dismissal had cost Nocticula her favorite; Shamira had kept the Harem and answered the Lady in Shadow\'s orders with threats of her own.{/n}', requires=(*req, CHOSEN), forbids=bad))
             separated = ('{n}Shamira\'s court remained in the Harem of Ardent Dream. Before Nocticula\'s death, its mistress had closed her doors to her former lover over the exposed affair. The courtiers kept their copies of the invitations and began buying reports from the other islands.{/n}' if nocticula_dead else
                          '{n}Shamira\'s court remained in the Harem of Ardent Dream. Its mistress had closed her doors to Nocticula over the exposed affair. She was alive, separated from her former lover, and still buying intelligence about the Lady in Shadow\'s throne.{/n}')
             out.append(p(separated, requires=(*req, EXPOSED), forbids=bad))
@@ -196,6 +242,7 @@ def ending_paragraphs(nocticula_dead=False):
                  requires=("nocticula.partner_passenger_lost",), forbids=(BODY,)))
     out.extend((
         p('{n}The Commander had chosen to share Nocticula\'s company. Shamira\'s name remained part of that bargain, with her answer where she could still give one; no claim on the Midnight Isles came with it.{/n}', requires=(P + "share",)),
+        p("{n}Nocticula had chosen the Commander alone as her lover. She had bound that promise to the work the Commander already owed her, and dismissed Shamira from her bed. She had asked for the Commander's time and service, and given no claim on her throne.{/n}", requires=(P + "exclusive", CHOSEN)),
         p('{n}The Commander had demanded exclusivity. Nocticula refused the claim. Until her death, she had kept her own choice of lovers.{/n}' if nocticula_dead else
           '{n}The Commander had demanded exclusivity. Nocticula refused the claim. Her bed and her throne remained hers to dispose of.{/n}', requires=(P + "exclusive", REFUSED)),
         p('{n}The Commander had asked for a secret affair. Its private invitations were evidence in a court that sold pillow talk.{/n}', requires=(P + "secret",), forbids=(EXPOSED,)),
@@ -234,6 +281,11 @@ def late_discovery_paragraphs():
 
 
 def integrate(payload):
+    payload.setdefault("Derived", {})[EARNED] = [
+        ["trickster.now", "noct.acq.concession_delivered"],
+        ["trickster.now", "noct.parent_active", "noct.socoth_plan_exposed"],
+        ["trickster.now", "nocticula.trickster.cost.shade_paid"],
+    ]
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     for s in list(payload["Scenes"]):
         if s["Id"] == "noct.second_door" or s["Id"].startswith("noct.second_door.acquired."):

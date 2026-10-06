@@ -9175,7 +9175,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 765. **Soana: A name on the southern road** — Wintersun. <!-- rrt-step {"scene":"soana.partner.dispatch","chapter":5,"day":110,"completed":true,"choices":[["start",1]]} -->
    Scene `soana.partner.dispatch`; chapters 3–5 (only 3, 5); wait at least 0h after the latest prerequisite; complete.
    Open: "A captive courier has a letter addressed to you."
-   Need all: `trickster.now`, `trickster.ever`, `soana.committed`, `soana.after_quest`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.trickster.returned`, `soana.closed`, `inhuman`, `soana.partner.pursued`, `soana.partner.held`, `soana.partner.buried`; Need one of: `soana.partner_stance.share`, `soana.partner_stance.secret`.
+   Need all: `trickster.now`, `trickster.ever`, `soana.committed`, `soana.after_quest`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.trickster.returned`, `soana.closed`, `inhuman`, `soana.partner.pursued`, `soana.partner.held`, `soana.partner.buried`; Need one of: `soana.partner_stance.share`, `soana.partner_stance.secret`, `soana.partner_stance.exclusive`.
    Native answer-list host: `2b1776f3e398685479ff6b16290b4cc2`.
    Actor must be physically available: `64805abb52739e44280a758f850b300c`.
    - `soana.partner.dispatch/start/1` — [Keep the letter with your dispatches until after the fighting.]; records `soana.partner.held`
@@ -9311,7 +9311,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 778. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"wenduag.trickster.react.lann_secret","chapter":5,"day":110,"completed":true,"choices":[["start",0]]} -->
    Scene `wenduag.trickster.react.lann_secret`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You have something to say, Lann?"
-   Need all: `trickster.ever`, `wenduag.trickster.court.cairn`, `lann.in_party`, `trickster.now`, `wenduag.trickster.with_you`, `wenduag.partner_stance.secret`; Blocked by: `lann.dead`, `lann.kicked_out`, `lann.plot_absent`, `wenduag.closed`, `wenduag.partner.secret_discovered`.
+   Need all: `trickster.ever`, `wenduag.trickster.court.cairn`, `lann.in_party`, `trickster.now`, `wenduag.trickster.with_you`, `wenduag.partner_stance.secret`; Blocked by: `lann.dead`, `lann.kicked_out`, `lann.plot_absent`, `wenduag.closed`, `wenduag.partner.secret_discovered`, `wenduag.partner.scent_hidden`.
    Native answer-list host: `66385ad77fa743e4bb1234078dbd804c`.
    - `wenduag.trickster.react.lann_secret/start/0` — Continue; records `wenduag.partner.secret_discovered`, `wenduag.partner.separated`, `wenduag.partner.lann_knows`
 
@@ -12343,7 +12343,7 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `soana.trickster.returned.terms/no/0` — [Go]; records `soana.trickster.declined`
 - `soana.trickster.returned.terms/fool/0` — [Go]; records `soana.closed`, `soana.trickster.refused`
 - `soana.trickster.returned.second_ask/price/1` — [Take your hand back] "No. Not like this."; records `soana.closed`, `soana.trickster.refused`
-- `soana.trickster.returned.second_ask/partner_exclusive_price/0` — [Leave. She has refused your demand.]; records `soana.partner_stance.exclusive`, `soana.closed`, `soana.trickster.refused`
+- `soana.trickster.returned.second_ask/partner_exclusive_price/0` — [Leave. She has refused your demand.]; records `soana.partner_stance.exclusive`, `soana.closed`, `soana.trickster.refused`, `soana.partner.agreed`
 - `soana.trickster.returned.rebind/price/1` — "No. Not this. Not my life on your knot."; records `soana.trickster.rebind_declined`
 - `soana.trickster.returned.accounting/camellia/2` — "I won't answer for it. I'm leaving."; records `soana.closed`, `soana.trickster.refused`, `soana.trickster.accounting_refused`
 - `soana.trickster.returned.accounting/own/2` — "I won't answer for it. I'm leaving."; records `soana.closed`, `soana.trickster.refused`, `soana.trickster.accounting_refused`
@@ -12359,17 +12359,19 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `soana.trickster.missed.bowl/no/0` — [Go]; records `soana.trickster.declined`
 - `soana.trickster.missed.bowl/taken/0` — [Go]; records `soana.closed`, `soana.trickster.refused`
 - `soana.trickster.missed.second_ask/start/1` — "No. That one stays with me."; records `soana.closed`, `soana.trickster.refused`
-- `soana.trickster.missed.second_ask/partner_exclusive_start/0` — [Leave. She has refused your demand.]; records `soana.partner_stance.exclusive`, `soana.closed`, `soana.trickster.refused`
-- `soana.trickster.epilogue.commit/partner_exclusive_start/0` — [Leave. She has refused your demand.]; records `soana.closed`, `soana.trickster.refused`
-- `soana.trickster.epilogue.luck_late/partner_exclusive_start/0` — [Leave. She has refused your demand.]; records `soana.closed`, `soana.trickster.refused`
+- `soana.trickster.missed.second_ask/partner_exclusive_start/0` — [Leave. She has refused your demand.]; records `soana.partner_stance.exclusive`, `soana.closed`, `soana.trickster.refused`, `soana.partner.agreed`
+- `soana.trickster.epilogue.commit/partner_exclusive_start/0` — [Leave. She has refused your demand.]; records `soana.closed`, `soana.trickster.refused`, `soana.partner_stance.exclusive`, `soana.partner.agreed`
+- `soana.trickster.epilogue.luck_late/partner_exclusive_start/0` — [Leave. She has refused your demand.]; records `soana.closed`, `soana.trickster.refused`, `soana.partner_stance.exclusive`, `soana.partner.agreed`
 - `soana.partner.homecoming/leave/0` — [Leave her with her husband.]; records `soana.partner.corven_together`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.homecoming/separated/0` — [Take your things. Neither marriage nor romance survives the lie.]; records `soana.partner.corven_separated`, `soana.partner.affair_exposed`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.returned_letter/answer_share/0` — [Leave. Her marriage awaits his answer; your romance has ended.]; records `soana.partner.corven_distant`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.returned_letter/answer_secret/0` — [Leave with Corven's answer delivered. Both bonds have broken.]; records `soana.partner.corven_separated`, `soana.partner.affair_exposed`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
+- `soana.partner.returned_letter/answer_exclusive/0` — [Leave. The marriage has ended; burning his letter cost you the romance.]; records `soana.partner.corven_separated`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.homecoming.returned/leave/0` — [Leave her with her husband.]; records `soana.partner.corven_together`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.homecoming.returned/separated/0` — [Take your things. Neither marriage nor romance survives the lie.]; records `soana.partner.corven_separated`, `soana.partner.affair_exposed`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.returned_letter.returned/answer_share/0` — [Leave. Her marriage awaits his answer; your romance has ended.]; records `soana.partner.corven_distant`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 - `soana.partner.returned_letter.returned/answer_secret/0` — [Leave with Corven's answer delivered. Both bonds have broken.]; records `soana.partner.corven_separated`, `soana.partner.affair_exposed`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
+- `soana.partner.returned_letter.returned/answer_exclusive/0` — [Leave. The marriage has ended; burning his letter cost you the romance.]; records `soana.partner.corven_separated`, `soana.partner.romance_ended`, `soana.closed`, `soana.trickster.refused`, `soana.partner.corven_known_alive`
 
 ### arsinoe: A city worth staying in
 
@@ -15090,7 +15092,9 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `wenduag.trickster.abyss.back/stay_dead/0` — Continue; records `wenduag.closed`, `wenduag.trickster.stay_dead_ordered`
 - `wenduag.trickster.street.back/stay_dead/0` — Continue; records `wenduag.closed`, `wenduag.trickster.stay_dead_ordered`
 - `wenduag.trickster.court.claim/no/0` — Continue; records `wenduag.closed`, `wenduag.trickster.court.claim_refused`
+- `wenduag.trickster.court.claim/partner_exclusive_refused/2` — "Then you get no claim on me. We end it."; records `wenduag.partner_stance.exclusive`, `wenduag.partner.exclusive_refused`, `wenduag.closed`
 - `wenduag.trickster.court.claim_in_person/no/0` — Continue; records `wenduag.closed`, `wenduag.trickster.court.claim_refused`
+- `wenduag.trickster.court.claim_in_person/partner_exclusive_refused/2` — "Then you get no claim on me. We end it."; records `wenduag.partner_stance.exclusive`, `wenduag.partner.exclusive_refused`, `wenduag.closed`
 - `wenduag.trickster.echo.abyss.return/start/2` — "Leave Drezen."; records `wenduag.closed`, `wenduag.trickster.echo.abyss.departed`
 
 ### iomedae: Her Own Bridge
