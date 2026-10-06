@@ -462,18 +462,18 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
         flags=("irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her"))),
 ], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=24)
 
-THRESHOLD = '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, a hand's width from where she stands, because she swore it would be there. Then she swears again, short and furious, at nothing in particular.{/n}
+THRESHOLD = '''{n}Irabeth pulls you through the side door into her roster room. She sweeps the duty lists off the desk, unbuckles her sword belt, and lays it along the far edge, the hilt within reach. Then she swears, short and furious, at a breastplate buckle.{/n}
 "I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. Slowly. I want to remember it."
-{n}Gauntlet, then vambrace. Her hands stop working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door into her roster room, where nobody sits at the desk but her. She sweeps the duty lists off it with one arm, pulls you down onto the desk with her, and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
+{n}Gauntlet, then vambrace. Her fingers fumble at the breastplate and she lets you finish. The plate hits the floor. She opens her arming coat; old scars lie pale across hot skin and hard muscle. She catches your mouth, her tusks grazing your lip, then hauls you onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt.{/n}'''
 
-MORNING_NOTE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
+MORNING_NOTE = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
 "Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can."
-{n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
+{n}You buckle the gauntlet for her. She picks up the sword belt and fastens it herself.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
+MORNING_HOME = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
 "Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail, and she'll get most of them."
-{n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
+{n}You buckle the gauntlet for her. She picks up the sword belt and fastens it herself.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
 REASONS_NEW = '''"You lay down under my sword and handed me yours. I've served three commanders. Not one of them would have done it, and every one of them would have been right not to."
@@ -484,13 +484,13 @@ REASONS_TEXT = '''"You lay down under my sword and handed me yours. Nobody at Iz
 {n}Her jaw sets.{/n}
 "And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."'''
 
-THRESHOLD_BLOW = '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, where she can reach it from anywhere in the room, and looks at you while she does it so that you understand exactly why.{/n}
-"Take the rest off me, Commander. Slowly. If your hands go anywhere near that door, I'll know."
-{n}Gauntlet, then vambrace. Under the arming coat she is scar and muscle and heat, and the newest scar is under her ribs, where your blow took her. She puts your palm flat over it and holds it there, and kisses you like a dare. Then she drags you through the side door into her roster room, sweeps the duty lists off the desk with one arm, pulls you down onto it with her and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
+THRESHOLD_BLOW = '''{n}She takes you into the roster room, sweeps the duty lists off the desk, and lays her sword belt along the far edge. She keeps a hand on the hilt until you look at it.{/n}
+"Take the rest off me, Commander. Slowly. And leave that where it is."
+{n}Gauntlet, then vambrace. The breastplate comes away beneath your hands. She opens her arming coat, exposing hot skin and hard muscle, old scars and the wound you left at Iz. She presses your palm over it and holds it there. Her kiss is fierce; she catches your lower lip between her teeth before letting you breathe. Then she pulls you down onto the cleared desk with her, hooks a leg behind yours, and reaches for your belt. The sword lies beside her hand.{/n}'''
 
-MORNING_HOUSE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
+MORNING_HOUSE = '''{n}At dawn the watch changes under the window. Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.{/n}
 "Nevi will know the second I walk into the kitchen. She'll laugh at me, and then she'll put me to work on the bread and ask questions until it's proved."
-{n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
+{n}You buckle the gauntlet for her. She picks up the sword belt and fastens it herself.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
 def her_answer(mornings):

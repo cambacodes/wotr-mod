@@ -313,7 +313,7 @@ s("the_question_outside_duty", "The question she did not owe you",
 {n}She stands and puts the chair back behind the desk. There is nothing left to argue.{/n}''', c('[Accept her refusal.]', flags=("irabeth.closed",))),
     n("friend", "Irabeth", '''"Yes. Better now than later."
 {n}She takes a moment before she gets up. When she does, she offers her hand like a sergeant closing a parley, brief and firm.{/n}
-"I like your company. That stands. It doesn't need to be the start of something to be worth having."''', c('[Remain friends with Irabeth.]', flags=("irabeth.closed",))),
+"Damn. I had hoped for the other answer. I'm glad you told me now."''', c('[Remain friends with Irabeth.]', flags=("irabeth.closed",))),
 ], any_of=("irabeth.first_hour_kept", "irabeth.courtship_requested"),
     forbids=("i_affair", "trying", "committed", "irabeth.personal_ready", "irabeth.spousal_conversation_requested", "irabeth.absence_wait"))
 
@@ -677,10 +677,10 @@ s("the_sealed_account", "What the watch was protecting",
     n("lieutenant", "Irabeth", '''"I have removed him from independent seizure decisions until he has completed a review with another officer. He remains on patrol. He will take no testimony from Brena again."
 {n}She gathers the spare sheets.{/n}
 "He thinks I should either clear him or remove him entirely. A clean judgment would be easier to carry. I have given him work and restrictions instead."
-"Do you trust him?"
-"With a frightened recruit in a burning building? Yes. With a woman who makes him feel foolish? Not yet. I need officers to be more than the best thing they have ever done."
+{n}You ask whether she trusts him.{/n}
+"With a frightened recruit in a burning building? Yes. With a woman who makes him feel foolish? Not yet. He stays on patrol. Seizures go through another officer until the review is done. Brena has had enough of him."
 {n}She looks toward the small purse, now lighter than when you arrived.{/n}
-"I also need to be able to keep a capable officer without inventing a defense for every mistake he makes. That is the part I shall be asked to explain to people who did not see the wagon."
+"The officers will ask why I kept him. I'll show them the restrictions. Hadran can argue with those for a change."
 {n}Her mouth sets.{/n}
 "Let them ask. I have the account."''', c('[Leave the report with her own signature on it.]', "private")),
     n("private", "Irabeth", '''{n}At the doorway she catches your sleeve, lightly enough that you can keep walking if you wish.{/n}
@@ -800,21 +800,21 @@ s("the_cost_afterward", "The part the report did not finish",
     n("sealed", "Irabeth", '''"The warehouse inquiry has continued. Ordel has identified a second delivery point. I cannot tell you that the whole business is ended. It has given the investigators somewhere useful to look."
 {n}She touches the split practice grip.{/n}
 "These have not been repaired. Two groups will share the sound weapons. I shall hear complaints. I have written the reason down so that nobody invents a shortage caused by Brena's compensation. The detention caused it. Paying for the detention merely made the loss visible."
-"And Brena?"
+{n}You ask how Brena has fared.{/n}
 "She has finished the delayed work. She declined a request to attend an officers' discussion of supply rules. The clerk had described her as a satisfied claimant. I corrected the description."
 {n}Irabeth rubs a thumb along the sound sword's binding.{/n}
 "She sent a message that was mostly unflattering. It ended with a price for new grips. A fair price. I have accepted it."
 {n}Her smile is small.{/n}
-"She may dislike me and still do good work. I have no intention of requiring affection from my suppliers."''', c('"And what do the officers say about your decision?"', "officers")),
+"Hadran can explain the wait to his recruits. Brena has done enough explaining."''', c('"And what do the officers say about your decision?"', "officers")),
     n("open", "Irabeth", '''"Ordel has found work with a different carrier. The pay is worse. He brought the final account himself so I could see the difference."
 {n}She folds her hands between her knees.{/n}
 "The warehouse has changed its delivery arrangements. The investigators have lost the easy trail. They have other methods. Slower ones. I was asked whether clearing one smith was worth it."
-"What did you say?"
-"That if we mean to charge people the cost of being suspected, we should stop calling our inquiries protection. Then I went back to my room and was furious about how much harder the investigation had got."
+{n}You ask what she told them.{/n}
+"That we'd held good iron for two days. Then I went back to my room and was furious about losing Ordel's way into the warehouse."
 {n}She says it flatly, and does not ask you to fix it.{/n}
 "Brena has taken another watch order. She says she prefers knowing how to make us answer. Ordel says he preferred his old wage. The boy and his sister are safe with their aunt. None of that cancels the rest."
 {n}She draws the damaged sword toward her and examines the grip.{/n}
-"I can defend the decision. I don't have to like all of it."''', c('"What will you do when the next officer has to make the same choice?"', "officers")),
+"I signed the order. I'll answer for Ordel's lost access too."''', c('"What will you do when the next officer has to make the same choice?"', "officers")),
     n("officers", "Irabeth", '''"I have drafted an instruction. A seizure must name the grounds, record the owner's answer as given and have a review time attached to it. A missing document is a question to investigate. It is not permission to keep asking until the owner gives up."
 {n}She hands you the short page. The last paragraph concerns protected sources.{/n}
 "That part is harder. I can make an officer record that evidence has been withheld. I cannot make every source safe to expose. I want a second officer to review those cases, one who did not order the seizure."
@@ -833,7 +833,7 @@ s("the_cost_afterward", "The part the report did not finish",
 "I mean to be unpleasantly well prepared. I may even enjoy that part."''', c('[Ask what help she actually wants.]', "help")),
     n("support", "Irabeth", '''"I would welcome the support. Leave the instruction in my name. I want the responsibility where I can answer for it."
 {n}She takes a clean sheet and writes a space for your endorsement beneath her signature.{/n}
-"They may say I obtained it because you enjoy my company. Some would say that about any woman you listened to. I will not make my work less effective to satisfy an accusation that changes shape whenever it is answered."
+"They'll say I got your signature because you enjoy my company. Let them. If they find a bad clause, I'll hear it at the meeting."
 {n}She looks up.{/n}
 "Read it again before you sign. If you disagree with the review period, say so. I do not want to find out that a private kindness has put a poor instruction into the watch's hands."
 {n}You review the wording together. She accepts one clarification and argues against another until you understand why she wants it left in. The endorsement goes beneath a document you have actually considered.{/n}''', c('[Ask what she wants after the meeting.]', "help")),
@@ -909,7 +909,7 @@ s("without_an_account", "No account of the day required",
     n("private", "Narrator", '''{n}You shove the window shut. Irabeth kicks the blanket off the bench onto the floorboards, then turns back to you and drags her shirt over her head in one soldierly pull, as if it had been disobeying orders. Old scars run white across her ribs and shoulders. She watches your face while you look.{/n}
 {n}"Don't just inspect it, Commander."{/n}
 {n}Her hands go to your belt. She is quicker with buckles than anyone you have ever met; she does armour for a living. She sinks down onto the blanket, pulls you down after her with a grip that does not ask twice and rolls you under her, her weight settling over your hips as her mouth comes down on yours.{/n}
-{n}The bell for the night watch is ringing across the rooftops when she next lifts her head. Irabeth goes very still and listens to it the way other people listen for their names.{/n}
+{n}Later, the bell for the night watch is ringing across the rooftops when she lifts her head. Irabeth goes very still and listens to it the way other people listen for their names.{/n}
 {n}"That's the roll. I sign it. Every night for two years, I've signed it." She drops back onto the blanket. "Hadran will sign it. Hadran will enjoy signing it. Hadran will tell everyone."{/n}
 {n}She glares at the ceiling a moment longer. Then she reaches past you for the bread, tears off the heel and gives you the larger half.{/n}
 {n}"Let him."{/n}''', c('[Stay until it is time to leave together.]', "end")),
@@ -956,10 +956,10 @@ s("after_the_shared_answer", "The invitation that remained",
     n("terms", "Irabeth", '''"Knowing where you are when you're not with me. Your hand on my back when nobody's looking. And a good row now and then without either of us deciding it means we never should have started."
 {n}She puts her palm flat on the bench between you.{/n}
 "And days with actual dates on them. I won't have this be a conversation we keep repeating instead of making appointments."
-"What about other people?"
+{n}You ask where other lovers would fit.{/n}
 "Love who you like. I'm Nevi's wife; that doesn't change. If you and she have something of your own, that's between you two. I answer for me."
 {n}Her smile comes back, small and stubborn.{/n}
-"Right now I want you at a ridiculous recitation I volunteered for. After that, a dispute over a wagon of cold iron. Two invitations. I'm learning to have more than one interest without apologising for it."''', c('"Yes. To both invitations, and to you."', "yes")),
+"Right now I want you at the recitation. After that, there's a wagon of cold iron to argue over. You may enjoy the duke more. I certainly do."''', c('"Yes. To both invitations, and to you."', "yes")),
     n("yes", "Narrator", '''{n}She takes your hand. The touch is familiar, the relief in her face less guarded than she probably intended.{/n}
 {n}"Good. I have spent enough time rehearsing the question."{/n}
 {n}You sit together while she describes the guard, the duke and the missing wool. She gives the duke an offended cough and laughs when you immediately recognize the sort of man she means.{/n}
@@ -1118,7 +1118,7 @@ s("the_person_who_returns", "The person at the door",
     n("end", "Irabeth", '''{n}She returns to the desk only long enough to take a small sheet from beneath the work papers. It names Sella and an hour, with two alternative days beneath it.{/n}
 "She gave me alternatives because I kept saying that something might happen. Apparently something may also happen to her. I found the reminder helpful and mildly offensive."
 {n}You choose a day together. Irabeth puts it where she will have to see it before accepting another appointment.{/n}
-"There. A future small enough to put on a page, and large enough that I want it."''',
+"There. Sella's expecting us. Don't let me give the hour away to another report."''',
       c('[Keep the day.]', flags=("irabeth.return_kept",))),
 ], requires=("irabeth.private_evening_kept",), chapters=(5,), delay=48)
 
@@ -1180,17 +1180,17 @@ s("when_the_instruction_is_used", "A rule in somebody else's hands",
     n("sealed_end", "Irabeth", '''"The repaired grips have arrived. The training groups are no longer sharing quite so resentfully. Brena charged what she quoted and refused to reduce the price for the watch. I paid it."
 {n}She points to the next line.{/n}
 "Ordel's information led the investigators to a stored lot of false bars. That lot has been seized and tested. I will not tell you it means every bad supplier is gone. It means those bars will not be issued as sound metal."
-"Will Brena hear that?"
-"If she asks. I am not sending the news to prove she ought to like what we did. Her complaint remains attached to the account. I have not renamed it gratitude because the investigation produced something useful."
+{n}You ask whether Brena will hear about the seized bars.{/n}
+"If she asks. Her complaint stays in the account. Those bars belong in the warehouse inquiry. They don't cancel the two days we kept her wagon."
 {n}Irabeth folds the update.{/n}
 "That is where the matter stands. I can close my part of the file without pretending nobody paid for it."''', c('[Leave the case at work.]', "end")),
     n("open_end", "Irabeth", '''"Ordel has accepted the final payment for his lost commission. It does not make his new work as profitable. He knows I know. He has stopped bringing the difference to my door every week."
 {n}She shows you the last paragraph.{/n}
 "The investigators traced one false shipment through its buyer instead of the warehouse. It took longer. They recovered less than they hoped. The recovered lot has been tested and kept out of issue."
-"And Brena?"
+{n}You ask how matters stand with Brena.{/n}
 "Her next delivery was checked by quantity and returned to her forge before noon. She sent Vela a note explaining three ways to improve the tally. Vela used two. I believe that is the closest thing to praise we are likely to receive."
 {n}Irabeth folds the update.{/n}
-"I still prefer a course that protects a source when we can do so honestly. I also know what opening the account allowed us to correct. I do not need to stop believing one to admit the other."''', c('[Let the case close.]', "end")),
+"I'd still rather have kept Ordel in that warehouse. We lost his access. Brena got the original pages, and Vela used her corrections. Put all of that in the account."''', c('[Let the case close.]', "end")),
     n("end", "Irabeth", '''{n}Back at headquarters she ties the completed papers together. The changed form remains out for copying. She places the case on the finished side of the shelf and leaves it there.{/n}
 "Now I would like to see Sella's road drawings. I am going to ask a question whose answer need not improve military readiness."
 {n}She turns toward you with a look of deliberate challenge.{/n}
@@ -1257,7 +1257,7 @@ s("a_road_she_would_choose", "A road without an assignment",
 {n}You find a low step where she can put the onions down. She sits beside you, still smiling at the gate she has chosen not to conquer.{/n}''', c('[Enjoy having time to get something wrong.]', "want")),
     n("want", "Irabeth", '''"I want a trip like this. Longer. Better views. Fewer onions."
 {n}She puts her hand down next to yours on the step.{/n}
-"I want to pick some of the road, pick it wrong, and laugh about it before we find another. A wrong turn's a wrong turn. It isn't a verdict on me."
+"I want to choose a road, get it wrong, and have you beside me while I swear at the map. We can find the right turning after."
 {n}She looks at the drawing in her lap.{/n}
 "I won't stop being a knight. I like most of it. But I want to be able to hand my post to someone for a fortnight without the whole citadel acting as if I'd deserted."
 {n}She looks up at you.{/n}
@@ -1269,13 +1269,13 @@ s("a_road_she_would_choose", "A road without an assignment",
 {n}She takes your hand and holds on, as if that makes it official.{/n}
 "There'll be work. There'll be my marriage, and whoever else you've got. We may never share a roof, and I won't pretend otherwise. But I'll keep finding you days. Actual days, not speeches."
 {n}The smile comes out shy, which on her is startling.{/n}
-"I want that journey. And after, I want to come home and argue about which parts were worth the rain. I want enough plain history with you that nobody needs a war to explain why we stayed."
+"I want that journey. Then we'll come home, dry our boots, and argue about which inns were worth the rain. Next time I want you at the table when we choose the road."
 {n}She leans in and kisses you, there on the step, and one of the onions rolls away down the lane.{/n}''', c('[Kiss her back and let the onion go.]', "end", flags=("irabeth.committed",))),
     n("open", "Irabeth", '''"I can want that without pretending you offered more."
 {n}She looks at your hand near hers a moment, then takes it.{/n}
 "Another day, then. Maybe the road. If one of us starts wanting more than the other can give, we say so. Out loud. I've no stomach for sulking."
 {n}She smiles.{/n}
-"For now I've got someone to get lost with near an onion seller. Worse foundations have held up houses."
+"For now I've got your hand and no report to finish. Stay a while."
 {n}She leans against you a moment, and asks nothing more of it than that.{/n}''', c('[Lean back against her.]', "end")),
     n("friend", "Irabeth", '''{n}She breathes in, and lets it go before she answers.{/n}
 "Damn. I wanted the other answer."
