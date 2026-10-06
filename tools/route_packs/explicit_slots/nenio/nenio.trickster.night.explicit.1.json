@@ -1,0 +1,30 @@
+{
+  "voice": "NENIO: imperious curiosity; precise, literal, impatient; scientific vocabulary used instinctively, not as an endless joke; scholarly vanity; frank about bodily observations; awkward at an unfamiliar desire but quick to investigate; hunger expressed through action and abrupt corrections; owns the decision to participate; retains her independent research ambitions. Write new dialogue. No therapy language, lyrical maxims, modern agreement choreography, sentimental cure, or recycled sentences.",
+  "facts": "Female kitsune scholar and author of the unfinished Encyclopedia Golarionnica. Canon describes her physical age as approximately four thousand years; this does not establish that duration of conscious scholarship. Canon establishes selective forgetting, intrusive curiosity about bites, and a personal friendship experiment that did not establish copulation. Do not describe hair, eye or skin colour, form-specific features, or anatomy not supplied by the host. The Commander variant must not be inferred from pronouns alone.",
+  "scene": "SCENE: Trickster path, Chapter 3 or 5, Drezen citadel's authored manuscript storeroom. Only Nenio and the Commander, both awake and willing. Her own selective-forgetting result and invitation have already earned this visit. On a tampered history the confession and separate clean timed result have already occurred. Wrist counting, a chosen kiss, coat removal and stopping the watch measurement have already been staged. Continue their first chosen sexual encounter at its threshold on the blanket; no repeat introduction, kiss-as-consent test or new promise. Keep the abandoned watch and research sheets as immediate surroundings, not instruments that impose pleasure or a result. Shelf contents are supplied by the played branch: do not restore traded notes. Use no extra tail/form detail unless supplied by the existing reveal branch. The later morning is a separately delivered existing scene. No flag, timer or new condition is produced by the prose. Act planned for the user-filled slot: consensual intercourse, with positioning and anatomy adapted to the supplied Commander variant. Required beats: Both characters' participation remains visibly active; Nenio initiates or answers rather than being a passive specimen. Her curiosity briefly attempts an observation, then her appetite interrupts it; avoid a clinical lecture or constant counting. Retain her literal, proud voice and the particular experiment situation, without implying an obligation to copulate. Private experience stays hers; do not publish intimate findings, assign a spouse, or make another woman a witness. Do not settle the name stake, Sphinx debt, manuscript loss, probation or Kenabres account through intimacy. End exactly at last_line; do not supply the morning, a second first-night reward, or a promise of automatic forever. Alternative host of the same event; never render alongside its sibling. Supplied facts are canon constraints; the room and romantic event are labelled authored. The example demonstrates tags and voice only and is not required dialogue.",
+  "required_beats": [
+    "Both characters' participation remains visibly active; Nenio initiates or answers rather than being a passive specimen.",
+    "Her curiosity briefly attempts an observation, then her appetite interrupts it; avoid a clinical lecture or constant counting.",
+    "Retain her literal, proud voice and the particular experiment situation, without implying an obligation to copulate.",
+    "Private experience stays hers; do not publish intimate findings, assign a spouse, or make another woman a witness.",
+    "Do not settle the name stake, Sphinx debt, manuscript loss, probation or Kenabres account through intimacy.",
+    "End exactly at last_line; do not supply the morning, a second first-night reward, or a promise of automatic forever."
+  ],
+  "last_line": "K: Leave it. I want you here.",
+  "speakers": {
+    "K": "Nenio",
+    "C": "Commander"
+  },
+  "example": "N: Nenio moves the pencil beyond your reach and catches your hand instead.\nK: I have finished taking notes. Come closer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "slot_id": "nenio.trickster.night.explicit.1",
+  "host_scene": "nenio.trickster.night",
+  "anchor": "watch: act threshold, preserving terminal actions",
+  "default_text": "{n}Nenio pulls you down onto the blanket and kisses you hard enough to interrupt her own breath. The watch ticks beside her discarded coat. She reaches for it, changes her mind, and draws you closer instead.{/n} \"Leave it. I want you here.\"",
+  "continuity": "Alternative host of the same event; never render alongside its sibling. Supplied facts are canon constraints; the room and romantic event are labelled authored. The example demonstrates tags and voice only and is not required dialogue."
+}

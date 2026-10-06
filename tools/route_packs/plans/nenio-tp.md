@@ -1,0 +1,121 @@
+# Nenio turning-point sheet — planning only
+
+Base inspected: integration checkout `f2fa495` (claude/merge-b10 lineage), `storylines/nenio_trickster.py`, `nenio_folios.py`, and all 105 Nenio scenes in `development/Story.json`; no generation or execution gates run.
+Findings below use **F1 #1–115**, numbered in array order in `neniof1.json`. Requested `neniop1.json` is absent; supplemental `neniopol.json` (P #1–6) was read, but is not represented as the missing p1 or a complete audit union.
+
+## 1. Implemented progression and earnings
+
+- **Entry, Ch3/5:** `nenio.folio.dictation` offers the follower's job; accepting dictation earns `scribe` + `started`, not affection. Living returns enter through `away.correction`; recreated returns through `dead.market` or `killed.stranger`, then her employment offer.
+- **Build-up:** a completed later folio earns derived `margin`; dictation, the Architect dispute, pulse, rhymes, teeth and page one let her pursue a useful follower. Pulse/teeth require prior folio receipts; optional friendship, fox-form and memory callbacks must read their own native receipts.
+- **Ch4 build-up:** travelling Nenio measures the Abyss's shadow, sleeps against the follower, and invites a private annual drink; Drezen visitors receive her local report. These are different histories; the drink expressly postpones deciding until sober.
+- **Fate pivot, Ch5:** `taken.riddle` on FoxMyself takes a checked, voluntarily offered name-stake and Nenio's own answer; it contributes ONE native argument, returning to Cue_0019 or Cue_0020 according to prior argument history. Failure/refusal preserves native alternatives; dissolution has no override.
+- **Romantic TURNING POINT:** `commit.hypothesis` requires `started`, `scribe`, `margin`; a hypothesis lets HER choose an overnight forgetting trial, while a dictated declaration aborts. `test_running` earns the 24-hour result; the clean result invites intimacy or, if pressed, she postpones (`declined`) and reviews after 72 hours.
+- **Contaminated trial:** legacy reminders earn `tampered`, never a yes; she voids the result. `commit.replication` requires her decline + tampering, takes confession and accepts her retest; `replication_result` waits 24 hours from confession before SHE invites intimacy. Denial/demand closes.
+- **Payoff:** her invitation plus the Commander's acceptance earns `committed` + `first_night`; `night` follows after 4 hours, `morning` after 6, then longitudinal work and the working-draft gift. Closure, pending Kenabres judgment, unreturned loss and dissolved state block applicable romance payoffs.
+- **Late payoff:** `late_committed` now derives from an accepted `test_running`, not employment alone; her postwar visit concludes that pending experiment. Committed publication, unfinished/void study, closed study, pending judgment and employment-only scholar endings retain distinct outcomes.
+- **Return limits:** manuscript/answer bargains or her correction/probation establish existing earned returns, never forgiveness or attraction. Keep deliberate kill/dismissal histories' consequences and legitimate refusal; do not introduce automatic recovery or reinterpret binding contexts (1)–(5).
+
+## 2. Her decision at each romantic step
+
+- **Employment / repeated dictation:** she recruits a follower for the Encyclopedia and chooses to retain their annotations; this is scholarly access. Keep the player's refusal/retry exits; neither `started` nor `margin` means she agreed to romance.
+- **Pulse kiss:** she tightens her grip, then suspends the measurement; make her visibly draw the follower closer before the kiss rather than remain only a passive specimen. Retain the suspension and corrected ticking-watch consequence (F1 #75–77).
+- **Tail touch:** she lets the tail hold the wrist and reacts to withdrawal; retain that choice, fox-reveal gate and her insistence on recording the observation. No forced fox form or automatic intimacy for unrevealed histories.
+- **Teeth / arm kiss:** she offers her forearm and, after the control kiss, explicitly asks for the bite; accepting or postponing remains the Commander's choice. Her record must distinguish the performed bite from a control-only trial (F1 #78–80).
+- **Abyss shoulder:** sleep creates no agreement; after waking she decides whether to keep the inserted line or the shared silence. Keep the scene nonsexual and let her waking correction carry its significance.
+- **Annual drink:** she selects her witness, keeps hold of the sleeve, and refuses a decision while drunk. Preserve the sober hypothesis/result as the decision; neither wine nor a truth-loosener earns commitment.
+- **Page one / gift:** she chooses attribution, keeps or leaves the blank, and offers the bound working draft for survival; holding her hands is reciprocated. These are her scholarly/personal choices, not a replacement confession or a paid yes.
+- **Hypothesis:** “Conclusions are observed ... not dictated” is her on-page no; she defines the test and clean conditions. Keep all aborts and her authority over its interpretation.
+- **Clean result / review:** she takes the pulse and invites the follower into her room; the appended pressure answer reaches her postponement. `commit.review` supplies her own later invitation; retain this implemented fix across all three hosts (F1 #17–19).
+- **Replication:** confession identifies interference, not forgiveness; she demands a clean trial and can end the study if pressed. The separate timed result contains her invitation; no commitment in the confession scene (F1 #92–94).
+- **Night / morning:** she stops counting, pushes the watch aside and says “I want this”; next morning SHE declares the study ongoing and returns to the war map. Keep the Commander's existing exits and the cut at the start of explicit acts.
+- **Kenabres reckoning:** `kenabres_judgment` lets her choose continued work without forgiveness, or reject a demanded pardon; existing pending-state handling pauses conclusions. Do not invent an extra confession requirement for histories in which she has not asked (F1 #57–64, #102).
+- **Late visit:** she brings the completed result, catches the collar and owns her desire; frame it as her pursuit after an already accepted experiment, not a retroactive unasked confession (F1 #98–99).
+- **Partners:** the canon-partners design names no live/possible partner for Nenio. No invented spouse, triangle, stance flags or breakup requirement.
+
+## 3. Stated debts and collection by every payoff
+
+- **Name for name (F1 #2–6):** `name_gone` correctly reads `cost.name_filed`, but `after_enigma` still asserts off-page filing before awarding that receipt. Reuse this existing scene to show her filing on-page, preserve its exits/receipt, and distinguish staked/unfiled from filed until completion; do not add a second device event.
+- **Name consequence:** hypothesis already has kept/staked/filed forks; morning and publication retain the blank. Keep the loss permanent where paid, without unsupported nights/counts or a convenient rediscovery; native Cue_0032's thanks must occur before filing.
+- **Clean experiment (F1 #17–19, #89–94):** result/clean review/replication now collect her independent decision; retain their receipts in every committed/late outcome. Replace void-days' “three days from now” with “when I have finished” so the optional scene cannot promise a second unimplemented wait.
+- **Sphinx's answer (F1 #86–88):** return creates `owes_an_answer`; `debt.collection` collects paid/evaded/defaulted after the night, while publication explicitly carries unpaid debt if collection was skipped. Keep all four consequences; replace the list's unearned week with duration-free preparation.
+- **Sphinx's silence clause:** evasion requires the clause negotiated at the original bargain; ordinary silence in `who_are_you` does not earn it. Keep default's confiscated draft and paid-answer loss; no free loophole, no softened Sphinx.
+- **Surrendered notes (F1 #109–114):** bound-working-draft wording is now consistent; keep loss/rebuilding visible in return, gift and publication. Recheck all twins; do not call the unpublished trunks ninety-nine completed volumes (canon completion ceiling, C2).
+- **Theft disclosure:** telling her names the sale and makes her furious; silence leaves her hunting a thief. Retain both recorded consequences; do not turn rescue into consent or add an unrequested mandatory reconciliation condition.
+- **Kenabres account (F1 #59–64, #102):** `told` creates pending judgment, and the existing delayed judgment collects her promise to reread; approving publication requires an actual judgment-scene receipt. No automatic pardon for recreation; keep the lie/closed-box states distinct.
+- **Probation:** `cost.demoted` is her price for returning to correct the Commander; publication retains annual extensions. Do not erase the price at commitment, or make a research invitation restore native party recruitment.
+- **Private annual drink / private observations:** her witness must not publish the drinking confidence; intimate notes stay private despite the Encyclopedia's public work. Keep those distinctions in morning/publication, with no added secrecy meter or mechanic.
+- **Working-draft gift:** carry its actual scene receipt in the late ending, preserve the defaulted-debt exception, and avoid claiming the Commander held it on a run that skipped the gift.
+- **Post-Threshold question:** longitudinal/after promises another question; pay it in the existing living publication/late-visit text using the selected-answer history, not a new mandatory scene. A dead, unreturned Commander receives no living reunion.
+
+## 4. Audit devices / unearned payoffs and exact replacements
+
+Citation aliases below were checked directly against `/wrath/blueprints.zip` and `/wrath/Wrath_Data/StreamingAssets/Localization/enGB.json`; authored additions are proposals, not claims of native content.
+
+| Alias | Native blueprint → AssetId → enGB key (grounding) |
+|---|---|
+| C1 | CompanionDialogues/Nenio/Cue_0008 → `e13d149310c60af4e94830317bcb99b7` → `f273b476-78fc-47db-9f76-70180a9f4cff` (follower takes dictation). |
+| C2 | Nenio/Cue_0109 → `3f72fd9266851ca488a1e1ad5697f102` → `3247870d-5102-448b-9ed3-56dd76f06590`; Cue_0106 → `3d6e7389e9b4aba4989e93c18b050202` → `13a3319f-8c38-4b46-bdef-cbbe24b53189` (≤1% written; hundred projected volumes). |
+| C3 | Nenio/Cue_0066 → `0a69a72dcd091fc4ca17ac086ea66799` → `25e2cc38-ef62-487f-808d-794f4b7fef13`; Cue_0052 → `0c8451322966c5d46aaf6b7e683a3c92` → `64ab9f49-64aa-45c4-ab49-de4e9155e184` (selective forgetting; irrelevant name). |
+| C4 | Nenio/Answer_0353 → `01c4851b6b8f27146a0c3b70a9e50096` → `c5e67178-5a88-4ed4-b940-ca4acf74282b`; Cue_0367 → `b95a7017fd1cc6b40a23b9e7e9c54c88` → `3a237038-ac48-4a49-be8d-b1a4fc20e529` (point five; native relief at refusing). |
+| C5 | Nenio/Cue_0374 → `c1390044127cbbf428e7fb96cde940dc` → `689af992-c5ba-49ae-ad5d-165f4478f68e`; common Cue_0372 → `b0a9f1ed31f114b42bb4abc8fbda29e3` → `1dd2535b-3f68-449b-babd-be6df414e595` (sketch callback is not implied by common conclusion). |
+| C6 | Q1MoreThanNothing/FoxReveal/Cue_0055 → `61a91899971e5ca43921a3854b2412bd` → `2188a2f0-a05d-4de4-8950-1ef61ccb198b`; Cue_0002 → `7d29724d9ce02e846a3ec101dfd5db06` → `7f22eabd-ca80-4d6f-ada7-a8291a77d6ab` (statue riddle; absent answer). |
+| C7 | c5/AreshkagalTomb/FoxMyself/AnswersList_0004 → `d0eed6e4ca8dd5f478810c3ee59228de`; Cue_0032 → `c214b2d290676f344a9227a2711393a6` → `4fe78e24-71e8-4a97-b753-253a93c96ab2` (native Enigma resolution/thanks). |
+| C8 | c5/AreshkagalTomb/AreshkaConfrontation/Cue_0018 → `80d919d8f4f9fbf4b84d3a93c2645a9e` → `85340c7a-4998-4eb8-8822-637d448082d4`; Cue_0024 → `a589c0969d264884ea661e214306c6bf` → `41996a42-442f-469a-bfb1-61f7df564436` (recreated vessel; service bargain). |
+| C9 | c1/MeetNenioSE/NenioJoin/Cue_0062 → `8735d2087d3723b47b3692ea9dfa16df` → `6d55ff93-aa7a-4a23-8748-49208eddb050`; Cue_0063 → `d611e716c4ceac643b68bad6416678f9` → `9389dade-e39b-488e-90e9-a998bf4cbf75`; Answer_0051 → `e12b082441b0cc94599cb70b15684601` → `5efb1f13-23a3-4f3d-92cf-239dd2ba2bd9` (refused recruitment ≠ escort; explicit attack). |
+| C10 | Nenio/Cue_0028 → `3f9250674b4b8964583cd43c1dc2b7c4` → `5dccf4d2-3b8c-44bb-8dc4-792830b45b96`; Cue_0288 → `1c227b4093d74df489234b8e541a8b3e` → `cc1dd02e-ed34-4bed-9b00-bd16f034fb1a`; Cue_0321 → `54ce8fab48409ca4eac54c02e95c6c71` → `dfbe1bca-f49c-45b8-b1f6-383bfe0ef054` (optional poetry/gossip). |
+| C11 | Nenio/Cue_0123 → `4bf05cfd05bf6d5439d28fbb1363ebad` → `d308d207-dc47-47cf-9a41-e227b6d78c4a`; Cue_0186 → `dbf0926d5c9f0204bad965038debcf18` → `5121f5d9-afd6-4b12-8c3e-6354b7cb863d` (intrusive physical curiosity/personal experiment). |
+| C12 | Epilogues/Cue_0422 → `aff8b6e936259164cb2314c825bdc186` → `8c2992c4-1aeb-46d6-bc26-84d02aac6cad`; Cue_0423 → `b6c0fb4c102cfb84f83a772e2dbb8a14` → `185ff9f7-34e0-4806-83fd-9df14b95e269` (native friend eighteen-month return vs no return). |
+| C13 | ThresholdExterior/CompanionFarewells/NenioFarewell/Cue_0007 → `240e6a0b130026a4d8558897b53e7f4d` → `b0fa80af-a8e8-4f2d-8d0e-a8da7e395133` (optional Threshold publication promise). |
+
+- **F1 #1; P #1 — ambiguous riddle:** already replaced by the two genuinely shared clauses plus Religion repair; preserve C6/C7 checks and one-argument return. No statement that the Sphinx herself is nothing; a failed riddle is not a successful riddle arbitrarily rejected.
+- **F1 #2–6 — invisible filing:** toolbox “her own ritual/experiment” in the existing post-Enigma conversation (AUTHORED, C3/C7); she performs the voluntary memory filing before its receipt. Keep staked/unfiled interval, native thanks and hypothesis forks; no Shyka page or affection award.
+- **F1 #7–16 — absent historical subjects blocking research:** toolbox small existing dialogue, grounded in her public scholarship (C1 and Nenio/Cue_0077, `10ce567be4aea8e4bbbd00bd844b6950`, key `2c3eaff5-bfda-4d10-ad13-6e400be95b31`). Remove only generated Galfrey/Areelu/Nocticula historical-mention presence guards, including article paragraphs; living speakers still require actual presence. **Shared generator escalation.**
+- **F1 #17–19 — effortless clean yes:** already replaced with her clean postponement and own later pursuit (`commit.review`; toolbox she pursues, C3/C11). Preserve the substantive result/pressure consequence without adding attraction scores or new costs.
+- **F1 #29–36, #45–49 — convenient optional memories:** toolbox existing-dialogue corrections (C4/C5/C9/C10). Current branch-specific sketch/refusal, poetry, gossip and recruitment wording is largely repaired; retain receipt/memory forks through every twin and night callback, rather than force one native history.
+- **F1 #29 — portable citadel:** restore `Areas=[DrezenCapital:2570015799edf594daf2f076f2f975d8]` after the final `meet` replacement; the original restriction is currently lost. AUTHORED requisitioned storeroom among the draft shelves is a Ch3/5 Drezen setting, not a travelling camp.
+- **F1 #50, #73–74 — false-report compulsion / instant reply:** toolbox good-intent nudge using scouts' Worldwound measurements (AUTHORED, C1/C9). Current accurate report has its own exit and an explicit redraw choice; keep it, remove calendar jumps, and let her correction/probation be her counter-move, not romantic assent.
+- **F1 #51–58 — invented biography / absolving killer:** current neutral demon anecdote, return-specific page-one biography and fact-only killing account repair these. Keep C8/C9 recruitment/recreation distinctions; a purported mitigating motive is the Commander's claim, never narrator-certified canon.
+- **F1 #59–64, #102 — off-page pardon:** toolbox canon-born exposed injury (C9), in existing Kenabres judgment follow-up; current rereading/pending-state solution is retained. Her decision is continued scrutiny, not forgiveness; approving ending reads the judgment receipt.
+- **F1 #65–72, #81–88 — free calendar/history:** toolbox current local observations (C1/C2), not extra arrivals, chapters or waits. Nine-day/fortnight return jumps and wartime absence were removed; keep neutral arrival/report, remove remaining market “weeks” and Sphinx-list “week” claims, and align longitudinal sample with its 48-hour window.
+- **F1 #75–80 — free experiment result:** pulse now correctly admits failure to stop the ticking watch; preserve it. In teeth/record append a control-only branch when `teeth.bitten` is absent; only actual biting gets the completed-bite conclusion (C11).
+- **F1 #89–94 — counterfeit appointment / overnight:** toolbox existing experiment (C3); replication now has a separate timed result, so retain that repair and remove the void-days appointment mismatch. No new mandatory folio, timer surcharge or condition on her yes.
+- **F1 #95–99; P #5 — invented farewell / confession:** publication and pending-test late visit now have neutral openings. Make scholar departure location-neutral too; C13 governs any farewell callback, C1/C3 grounds her self-directed postwar scholarly return.
+- **F1 #100–101, #115 — duplicate / contradictory native payoff:** toolbox native ending rewrite (AUTHORED, C12), Trickster-only, preserving native friends' eighteen-month chronology or coherently replacing BOTH selected cues. Give native replacements and appended supplements distinct text; one reunion/publication, consequences once; shared dispatch requires escalation if route-local ownership cannot solve it.
+- **F1 #109–114 — finished-volumes windfall:** already changed to one bound working draft plus trunks of unpublished notes (C2); retain consistent return/gift/endings. Do not invent ninety-nine completed volumes or an acquisition quest.
+- **P #3–4 — absent wartime history / fixed height:** current report/stranger wording is local and height-independent; retain for Ch5 newcomers and short Commanders. Nineteen spaces in current notes is not nineteen witnessed sessions (C1).
+- **P #6 — Guest List after employment/loss:** read actual committed or qualified accepted-test outcome and current earned-presence predicates, never `started` alone; the integration now narrows late eligibility. Check book-entry guards separately; any remaining Guest List edit belongs to the shared owner and is escalated.
+
+## 5. Proposed uniqueness-registry entry (coordinator applies; no registry edit here)
+
+- **Device class:** `self-directed selective-forgetting experiment`; the Commander offers relevance as a hypothesis, while Nenio selects the method, detects interference, and owns the result.
+- **Setting:** Ch3/5 Drezen manuscript room for the private overnight trial and consummation; her companion hub or established market/arcade presence delivers the result. Enigma riddle is a separate fate device, not the romantic trigger.
+- **Payoff shape:** `retained subject / deliberately blank name / lifelong private longitudinal study`; the public Encyclopedia grows while her intimate observations stay unpublished, and the morning sends the Commander back to the war.
+- **Why hers:** C1/C3/C4/C11 establish the follower, relevance filter, failed friendship experiment and bodily curiosity; the earned name-stake can sharpen the blank without being required for affection. No generic rescue-to-love, accidental aphrodisiac, consent contract or redeemed scientist.
+- **Uniqueness check:** 06 registry already assigns Nenio this forgetting spine; no other row names this class/setting. `tools/route_packs/turning_points.json` is absent in this checkout; reserve this proposed tuple with the coordinator before implementation, without changing the one-file scope.
+- **Foresight:** no Nenio echo slot exists and none is proposed. Shyka's page may gate only a separately earned fate device where already required; it never supplies a memory, consent, affection or a justification from another life.
+
+## 6. Heat / voice class fixes
+
+- **F1 #20–28, #103–108; P #2:** desk barrier, “never a variable,” count-loss absolutes and repeated exceptional hesitation were repaired in commitment/night/gift. Sweep pulse, morning, longitudinal and all twins for the same unsupported “never before” class; replace labels with the immediate gesture, not a timid-scientist personality.
+- **F1 #37–44; P #4:** colour-independent poem, pencil-stroke evidence and stationary stranger now avoid fixed eye colour, shaving and height. Preserve portrait/ancestry-neutral specifics; no genericizing her appetite for measuring bodies.
+- **Heat:** F1 finds the ceiling/cut appropriate, not a reason to redesign it. Preserve wrist/pulse, bare shoulder/tattoo, her active kiss, abandoned watch and direct desire; cut before explicit acts and keep morning consequences, including the pending-test late visit.
+- **Register:** her delight, impatience, selfish science and admiration of Areelu remain intact; costs do not rehabilitate her into a counsellor. Remove blanket novelty/maxim narration; no HR choreography, fourth wall, fate vision or narrator commentary on the writing.
+
+## 7. Ordered implementation / review checklist (not executed)
+
+1. Obtain missing `neniop1.json`; union it with F1 and retain the numbered class mapping above. Confirm integration has not already repaired each residual; update planning/spec claims from final source/export, not earlier notes.
+2. Snapshot scene/node IDs, choice order, ending exit GUIDs/mechanics and byte-level line endings before any later code work. Never rename, delete, reorder or repurpose saved identities; new choices append, retired answers remain gated with targets intact.
+3. Fix on-page filing in existing `after_enigma`, preserving native Cue_0032 before it and all old exits; verify NAME_STAKED without NAME_FILED cannot read lost-name text. Retain repaired hypothesis forks.
+4. Restore Drezen area guard in the final night registration; append the bitten/control-only record routing without replacing existing answers. Remove unsupported market/list/appointment duration wording and scholar Threshold origin.
+5. Retain clean postponement/review, timed replication-result and pending Kenabres judgment across hub/visitor/arcade; test debt collection and every ending against actual receipts. No new gate, cost or reconciliation demand beyond the cited debt/agency fixes.
+6. Coordinator fixes historical-mention generator guards and verifies Guest List after employment-only, closure, dissolution, unreturned death/departure and qualified returns; preserve actual present-character guards and unrelated routes.
+7. Resolve both native epilogue cues with Trickster-only authored rewrites and a single-dispatch publication/reunion strategy. **Legacy ending exits keep identity + mechanics**; native fallback stays intact elsewhere, supplements carry distinct consequences, conditional paragraphs occur only on epilogue pages.
+8. Review canon branches: native friend/no-friend, refused/sketched point five, seen/unseen poetry/gossip, normal/recreated/unremembered/probation, failed/refused riddle, staked/filed, clean/postponed/tampered/retested, pending judgment, each Sphinx debt result, short Commander, unrelated romances closed, non-Trickster, sacrifice with/without earned return.
+9. Future implementer runs authorized expansion/tests/strict verifier/rules checks after code edits and audits against ≥91 per dimension; this planning job runs none. No temporary files, build products or audit artifacts are created in the repo.
+
+## ESCALATE / limits
+
+- Missing required p1 prevents certifying a complete p1/f1 union; supplemental P is explicitly identified, not substituted.
+- Shared historical-mention guards, Guest List/Last Call ownership, and duplicate ending dispatch may require shared code: coordinator handles them; this job changes only this sheet. Reserve the uniqueness entry centrally.
+- User instructions conflict on commit/gates: the task-specific HARD planning rule prohibits all gates; the final explicit “Do not git commit” is followed, so the sheet is left reviewable and uncommitted.
+- This sheet proposes only audit/debt repairs; no new mechanics, romance requirements, return entitlement, echo, partner or dark Commander scheme. Existing tampering/lie branches remain saved failure histories; v1 additions use good-intent nudges and her counter-moves.

@@ -1,0 +1,34 @@
+{
+  "nenio": {
+    "device_class": "experiment_or_ritual",
+    "setting": "Drezen manuscript room during her private overnight selective-forgetting trial",
+    "payoff_shape": "retained subject with deliberately blank public name, private lifelong longitudinal study",
+    "canon_hooks": [
+      {
+        "guid": "0a69a72dcd091fc4ca17ac086ea66799",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0066.jbp",
+        "key": "25e2cc38-ef62-487f-808d-794f4b7fef13",
+        "native_excerpt": "\"This is just one of my many talents! The secret is to stop thinking about the thing you want to forget. And the main thing is not to remember anything you don't need. To filter it. To get right to the essence. I'll teach you someday. Unless I forget.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "0c8451322966c5d46aaf6b7e683a3c92",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0052.jbp",
+        "key": "64ab9f49-64aa-45c4-ab49-de4e9155e184",
+        "native_excerpt": "\"On the grand scale of world history, your name is irrelevant. I have no reason to remember it.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "e13d149310c60af4e94830317bcb99b7",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0008.jbp",
+        "key": "f273b476-78fc-47db-9f76-70180a9f4cff",
+        "native_excerpt": "\"Hand in hand, we will unravel the greatest mysteries inaccessible to the minds of ordinary people. Just imagine it — I, leading the way, proudly staring into the faces of the gods themselves, and you, my loyal follower, walking behind me every step of the way, writing down my deepest thoughts and admiring the profundity of my intellect!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}

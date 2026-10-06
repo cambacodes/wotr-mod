@@ -259,7 +259,13 @@ internal static class NenioTricksterTests
         // Trk_Nenio_Night: the threshold and the morning, the reactors, and the study after.
         var nightWorld = Later(story, yes, 4);
         check(Avail(night, nightWorld) && !Rules.IsRemote(night) && !night.Optional, "Trk_Nenio_Night: the night does not follow her yes.");
-        var slept = Take(night, nightWorld, "watch", 0, P + "night");
+        // The old terminal retains its saved index; the active continuation visits the slot.
+        var slotId = night.Id + ".explicit.1";
+        check(Ch(night, "watch", 0).Forbids.Contains("trickster.ever")
+              && Ch(night, "watch", 1).Next == slotId
+              && Ch(night, slotId, 0).Set.SequenceEqual(Ch(night, "watch", 0).Set),
+            "Nenio slot changed the legacy exit effects or has no appended continuation.");
+        var slept = Take(night, nightWorld, slotId, 0, P + "night");
         check(Avail(morning, Later(story, slept, 6)), "Trk_Nenio_Night: the morning does not follow.");
         var after = Take(morning, Later(story, slept, 6), "war", 0, P + "morning_after");
         check(Avail(S(F + "longitudinal"), Later(story, after, 48)), "Trk_Nenio_Night: the study does not continue after the morning.");
