@@ -1072,3 +1072,64 @@ for _eng8_suffix, _eng8_entry in (
         AnswerLists=['88cfebc7c46549aba284036a26e9eade'],
         Areas=['7847c3e3537104f4694167af0b9fcd0e'], Entry=_eng8_entry)
 # end eng8-q8d
+
+
+# Round 2 authored departure histories: native observations, never new eligibility.
+ORCHARD_ESCAPE = W + "orchard.escape_seen"
+ORCHARD_DYRA = W + "orchard.dyra_retreat_seen"
+BINDINGS["SeenCues"].update({
+    ORCHARD_ESCAPE: ["58d935390d9efc842814c1568ee72901"],
+    ORCHARD_DYRA: ["c04f08ae1806ab941864a97da25b90d3"],
+})
+_hunt = next(s for s in SCENES if s["Id"] == W + "exile.ch5_hunt")
+def _r2_node(item, id):
+    return next(node for node in item["Nodes"] if node["Id"] == id)
+_r2_node(_hunt, "start")["Text"] = ('{n}The south-postern watch reports snares in the burnt orchards. '
+    'A hooded hunter buys salt with hare skins and keeps out of bowshot of the walls. '
+    'The cellar neathers will not name her. If you want Wenduag back, you will have to go alone.{/n}')
+_her = _r2_node(_hunt, "her")
+_her["Text"] = ('"Look who came out of {mf|his|her} walls." {n}She rests the spear across her knees.{/n} '
+    '"No guards. You came a long way to see whether I still bite."')
+_old = list(_her["Choices"])
+for _answer in _old:
+    _answer["Forbids"].extend([ORCHARD_ESCAPE, ORCHARD_DYRA])
+_her["Choices"].extend([
+    c("Continue", "escape_account", requires=(ORCHARD_ESCAPE,)),
+    c("Continue", "dyra_account", requires=(ORCHARD_DYRA,), forbids=(ORCHARD_ESCAPE,)),
+])
+_hunt["Nodes"].extend([
+    wd("escape_account", '"I offered him your head. You spoiled that, so I used the ring and ran." '
+       '{n}She bares her teeth.{/n} "I came back with the expedition traffic. Nobody counted the hunters behind the wagons. '
+       'Now I eat hares while your soldiers eat each other\'s dust. What do you want?"', c("Continue", "offer")),
+    wd("dyra_account", '"You and Sull had me cornered after Dyra. The ring got me out." '
+       '{n}Her hand tightens on the spear.{/n} "The caravans brought me this far. I left them before the gate. '
+       'A snare feeds me better than begging to be taken back. So why are you here?"', c("Continue", "offer")),
+])
+_offer = _r2_node(_hunt, "offer")
+_offer["Choices"][2]["Forbids"].extend([ORCHARD_ESCAPE, ORCHARD_DYRA])
+_offer["Choices"].extend([
+    c('"Savamelekh is dead. There is still room for you in Drezen."', "terms", requires=(SAVA_DEAD,)),
+    c('"You ran. I came to hear what you want now."', "terms", requires=(ORCHARD_ESCAPE,)),
+    c('"No ring this time. Tell me whether you want to come back."', "terms", requires=(ORCHARD_DYRA,), forbids=(ORCHARD_ESCAPE,)),
+])
+_r2_node(_hunt, "back")["Text"] = ('{n}She drops from the wall, spear in hand.{/n} '
+    '"Now. I want your watch to see me walk in beside you." '
+    '{n}She leads you through the orchards to the postern. The sentry reaches for the alarm bell, '
+    'sees you at her shoulder, and lets the rope fall. Wenduag shows him her teeth and walks inside.{/n} '
+    '"Come down the stair when you want me. Alone."')
+
+# Returned Yaniel is a changed history, not a woman conjured into this conversation.
+_yaniel = next(s for s in SCENES if s["Id"] == W + "early.yaniel")
+for _answer in _r2_node(_yaniel, "start")["Choices"]:
+    _answer["Forbids"].append("yaniel.trickster.returned")
+_r2_node(_yaniel, "start")["Choices"].append(c("Continue", "returned_yaniel", requires=("yaniel.trickster.returned",)))
+_yaniel["Nodes"].extend([
+    conv("returned_yaniel", '"You killed the paladin. Now she lives again." {n}Wenduag studies your hands.{/n} '
+         '"Your knights will still follow her name. You went to all that trouble to bring a rival back. Why?"',
+         c('"I killed an ally. I brought her back to fight the demons."', "returned_ally"),
+         c('"A strong ally is worth the risk."', "returned_strength")),
+    conv("returned_ally", '"And she knows whose hand killed her." {n}She snorts.{/n} '
+         '"I would keep watching her sword. She remembers your hand in the Fane."', c("Continue", flags=(W + "yaniel.watched",))),
+    conv("returned_strength", '"Worth the risk." {n}Her teeth show.{/n} '
+         '"Good. Just remember she gets to decide when you have stopped being worth hers."', c("Continue", flags=(W + "yaniel.watched",))),
+])

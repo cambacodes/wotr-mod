@@ -98,8 +98,10 @@ class WenduagPolishTests(unittest.TestCase):
             primary = self.scenes[W + "court." + suffix]
             twin = self.scenes[primary["Id"] + ".native_visit"]
             def topology(scene):
-                return {n["Id"]: (n["Speaker"],
-                    {(a.get("Next"), tuple(f for f in a.get("Set", ()) if f != primary["Id"]))
+                def address(id):
+                    return id.replace(".native_visit.explicit.", ".explicit.") if id else id
+                return {address(n["Id"]): (n["Speaker"],
+                    {(address(a.get("Next")), tuple(f for f in a.get("Set", ()) if f != primary["Id"]))
                      for a in n["Choices"] if a.get("Next") != "remembered"})
                     for n in scene["Nodes"] if n["Id"] != "remembered"}
             # The engine inventory adds a saved primary-only unavailable-participant
@@ -113,6 +115,65 @@ class WenduagPolishTests(unittest.TestCase):
                 for answer in node["Choices"]:
                     if not any(answer.get(k) for k in ("Next", "Check", "Abort")):
                         self.assertIn(primary["Id"], answer.get("Set", ()))
+
+    def test_departure_accounts_and_immediate_orchard_arrival(self):
+        hunt = self.scenes[W + "exile.ch5_hunt"]
+        her = self.node("exile.ch5_hunt", "her")
+        for flags, target in ((set(), "nobody"),
+                              ({W + "orchard.escape_seen"}, "escape_account"),
+                              ({W + "orchard.dyra_retreat_seen"}, "dyra_account"),
+                              ({W + "orchard.escape_seen", W + "orchard.dyra_retreat_seen"}, "escape_account")):
+            self.assertEqual([target], [a["Next"] for a in self.enabled(her, flags)])
+        self.assertNotIn("Tomorrow", self.node("exile.ch5_hunt", "back")["Text"])
+        self.assertIn("walks inside", self.node("exile.ch5_hunt", "back")["Text"])
+        offers = self.enabled(self.node("exile.ch5_hunt", "offer"), {"savamelekh.dead"})
+        self.assertFalse(any(a.get("Next") == "sava" for a in offers))
+        self.assertTrue(any("Savamelekh is dead" in a["Text"] for a in offers))
+        self.assertEqual("c04f08ae1806ab941864a97da25b90d3",
+                         self.story["SeenCues"][W + "orchard.dyra_retreat_seen"][0])
+
+    def test_slots_are_single_encounters_and_later_gong_return_needs_first_night(self):
+        for twin in ("", ".native_visit"):
+            suffix = "court.cairn" + twin
+            slot = self.node(suffix, W + suffix + ".explicit.1")
+            for flags, target in ((set(), "cut"), ({E + "returned"}, "cut_echo")):
+                self.assertEqual([target], [a["Next"] for a in self.enabled(slot, flags)])
+            for id in ("saw", "stronger"):
+                node = self.node("court.gongs" + twin, id)
+                before = self.enabled(node, set())
+                after = self.enabled(node, {W + "court.cairn"})
+                self.assertEqual(1, len(before))
+                self.assertFalse(before[0].get("Next"))
+                self.assertEqual([W + "court.gongs" + twin + ".explicit.1"], [a["Next"] for a in after])
+
+    def test_restored_yaniel_wins_over_killed_and_freed_memories(self):
+        for suffix in ("early.yaniel", "court.yaniel", "court.yaniel.native_visit"):
+            flags = {"yaniel.trickster.returned", "yaniel.freed", "yaniel.killed"}
+            self.assertEqual(["returned_yaniel"],
+                             [a["Next"] for a in self.enabled(self.node(suffix, "start"), flags)])
+            # Shared captor-presence guards remain a separately reported blocker.
+            # The route can override its own early-discussion flag for changed news.
+            if suffix != "early.yaniel":
+                self.assertEqual("yaniel.trickster.returned",
+                                 self.scenes[W + suffix]["ForbidOverrides"][W + "early.yaniel"])
+
+    def test_echo_has_one_funeral_and_discovery_has_her_response(self):
+        page = self.scenes["wenduag.lastcall.page"]["Nodes"][0]
+        flags = {"lastcall.dead_on_record", E + "returned"}
+        funerals = [p for p in page["Paragraphs"] if "lastcall.dead_on_record" in p.get("Requires", ())
+                    and set(p.get("Requires", ())) <= flags and not set(p.get("Forbids", ())) & flags]
+        self.assertEqual(1, len(funerals))
+        for suffix in ("react.lann_secret", "react.lann_secret_quiet"):
+            scene = self.scenes[W + suffix]
+            self.assertFalse(scene.get("Reaction"))
+            response = next(n for n in scene["Nodes"] if n["Id"] == "fallout")
+            self.assertIn("No more knocking", response["Text"])
+            self.assertIn("muster", response["Text"])
+            self.assertEqual("Lann", response["Speaker"])
+        quiet = self.node("react.lann_secret_quiet", "start")["Choices"]
+        self.assertFalse(quiet[0].get("Next"))
+        self.assertEqual([], quiet[0]["Set"])
+        self.assertEqual("caught", quiet[1]["Next"])
 
 
 if __name__ == "__main__":

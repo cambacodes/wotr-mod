@@ -68,7 +68,7 @@ visit(W + "court.trial", "Weak things die in their sleep", [
         c("Continue", "which_kept", forbids=(RETURNED,))),
     wd("which_back", '''"You put me under stones, {mf|master|mistress}, and I dug. Now it's your turn. Are you a weak thing?"''',
         c("Continue", "which")),
-    wd("which_kept", '''{n}She shifts her weight, and the knife slides a finger's width along your neck without cutting.{/n} "You kept me at your side when everybody in this citadel told you not to. Everybody here thinks that makes you soft." {n}Her breath is warm on your ear.{/n} "I want to know if they're right. Show me."''',
+    wd("which_kept", '''{n}She shifts her weight, and the knife slides a finger's width along your neck without cutting.{/n} "You kept me at your side. Your soldiers watch me pass and look at you as if you had let a wolf through the gate." {n}Her breath is warm on your ear.{/n} "I want to know if they're right. Show me."''',
         c("Continue", "which")),
     nar("which", '''{n}Her weight is on your breastbone and her knife is on your throat, and she is waiting, perfectly still, to see what you do.{/n}''',
         c('[Heave her off you and roll clear.]', check=dict(Skill="SkillAthletics", DC=26, Success="won", Failure="lost")),
@@ -256,7 +256,7 @@ _remote.pop("Kind", None)
 _remote["ContactUnit"] = UNIT
 _remote["InteractionHub"] = PRESENCE
 _remote["Entry"] = '"What have you got there?"'
-_remote["Nodes"][0] = n("start", "Narrator", '''{n}She does not answer. She stands, and steps aside, and there behind her in the angle of the wall, out of sight of the street, something heavy lies bound hand and foot, and grunts.{/n}
+_remote["Nodes"][0] = n("start", "Narrator", '''{n}Boots scrape the postern steps. Wenduag drags a bound man into the wall angle by his collar and drops him at your feet. The watch above cannot see him, but his muffled curses carry.{/n}
 {n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}
 {n}Wenduag puts her foot on his back, the way a hunter rests a foot on a kill, and pushes back her hood.{/n} "Not out here. Take his feet."
 {n}Between you, you carry him up the back stair of the citadel like a rolled carpet, past a sentry who finds something very interesting in the ceiling, and into your quarters, and she drops him on your floor and shuts the door with her heel.{/n}''', c("Continue", "her"))
@@ -295,7 +295,7 @@ visit(W + "court.cairn", "In the dark, the strong one decides", [
 "Good," {n}she says, against the edge.{/n} "Keep it there." {n}And with her other hand, one-handed, without looking, she begins to unlace her own leathers.{/n}''',
         c("Continue", "cut", flags=(W + "cairn.knife_held",))),
     nar("roll", '''{n}You find her wrists in the dark, both of them, and she lets you, for exactly as long as it takes you to turn her against the cairn, and then she laughs and twists and it is you against the stones again, with her forearm across your collarbones and her whole weight leaning on it.{/n}
-"Nice try." {n}Her teeth close on the side of your throat, hard enough to mark, and let go.{/n} "Again." {n}You try again. This time it takes her longer. By the third time neither of you has anything left on above the waist, and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}''',
+"Nice try." {n}Her teeth close on the side of your throat, hard enough to mark, and let go.{/n} "Again." {n}You try again. This time it takes her longer. By the third time your clothes lie in a heap beside the lamp, and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}''',
         c("Continue", "cut", flags=(W + "cairn.rolled",))),
     wd("cut", '''{n}Her bare skin is hot against yours. She kisses you hard, one hand gripping the back of your neck. When she pulls away, her teeth drag over your lower lip.{/n} "Still want to see?" {n}You catch her hips and draw her closer. Her knee presses between your thighs; she laughs against your mouth, breathless.{/n} "Now, uplander. Put those hands to work." {n}High above the catacombs, a bell begins to strike.{/n}''',
         c("Continue", flags=(CAIRN_SEEN,))),
@@ -414,7 +414,7 @@ visit(W + "court.neathers", "The weak get eaten", [
     nar("start", '''{n}She takes you down to the cellars in the middle of the afternoon and stops at the mouth of the furthest one without going in.{/n}
 {n}There is an old neather lying on a pile of straw inside: a man with a grey muzzle and milky eyes and a cough that shakes his whole body. His ribs show. Beside him somebody has left a bowl of broth and a wooden cup of water, both untouched, and a spear with a cracked shaft that he will never throw again.{/n}''',
         c("Continue", "her")),
-    wd("her", '''"Old Tuhk. He was the best trapper in Neathholm when I was small. He taught me to set a snare." {n}Her voice is quite matter-of-fact.{/n} "Lung rot, from the damp down here, or from the tunnels before; it doesn't matter which. He'll die by the spring. Before that he'll eat a winter's food and give it to the rot, and cough on the little ones, and one or two of them will get it, and they'll die in the summer." {n}She folds her arms.{/n} "Sull would feed him to the last crumb and let the cough take three children with him, and call that the tribe. That's why the tribe is still living in a hole." {n}Her lip curls.{/n} "I'd walk him down to the deep tunnels tonight and leave him there with his spear. It's kinder than the cough, and the little ones eat his share. I\'ve carried his share down this stair every day. Tonight I\'d carry him down instead."''',
+    wd("her", '''"Old Tuhk. He was the best trapper in Neathholm when I was small. He taught me to set a snare." {n}Her voice is quite matter-of-fact.{/n} "Lung rot. He eats nothing and coughs on the little ones. Your chaplain says he can drive the sickness out. He wants Tuhk upstairs, away from the children, with a bed and someone to feed him. While the soldiers wait for those same beds." {n}She folds her arms.{/n} "Sull would keep handing him broth until we were all hungry. I know what a winter does to a hunter who cannot hunt." {n}Her lip curls.{/n} "I'd walk him down to the deep tunnels tonight and leave him there with his spear. Then the little ones eat his share. Your priest wants to spend soldiers' prayers on him instead. I\'ve carried his share down this stair every day. Tonight I\'d carry him down instead."''',
         c("Continue", "ask")),
     wd("ask", '''{n}She looks at you sideways.{/n} "The hunters down here do what I say now. I made them; it took three fights and a bitten ear. But they're in your city, under your roof, and your chaplains come down here sometimes with their bread and their prayers." {n}Her yellow eyes are steady.{/n} "So I'm asking. I'm asking you, because I'm yours. Tonight I walk him down the oldest stair, past my cairn, and leave him in the dark with his spear. Or I don't. Say which."''',
         c('"Do it. It\'s your tribe, and your arithmetic."', "cull", alignment=("Evil", 1)),
@@ -425,10 +425,9 @@ visit(W + "court.neathers", "The weak get eaten", [
 "Yes." {n}Then, lower:{/n} "Nobody ever said *do it* to me out loud before, so that somebody else carried half." {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}
 {n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}''',
         c("Continue", flags=(W + "neathers.culled",))),
-    wd("forbid", '''{n}Her face hardens.{/n} "You'd let him cough to death slowly, instead of quickly. And take the little ones with him." {n}She stares at you as if you had said something in a language she only half speaks.{/n} "That's the uplander way. Keep everyone breathing, however badly, however long. Call it mercy."
-{n}She is angry. She holds it for a while, and then, visibly, she puts it down.{/n} "All right. Your city. Your law. He stays." {n}She looks at the old man.{/n} "But when the little ones start coughing, {mf|master|mistress}, you come down here and you look at them. You don't get to say *no* and then not look."''',
+    wd("forbid", '''"Then you come down here when he coughs. You don't get to say no and forget him." {n}Her fingers tighten around the cracked spear.{/n} "I'll move the children to the next cellar. Your chaplain can try his prayer down here when he comes with the bread. But I'm not carrying Tuhk up past your soldiers while you stand here giving orders." {n}She thrusts the spear back into the straw.{/n} "Your city. He stays."''',
         c("Continue", flags=(W + "neathers.forbidden",))),
-    wd("infirmary", '''"A bed from the war chest. For him." {n}Wenduag looks from Tuhk\'s cracked spear to the stair.{/n} "Your chaplains will scrub him and pray over him. He\'ll hate that." {n}She crouches beside the straw.{/n} "But the bed will be dry. And he\'ll stop coughing on the little ones." {n}She lifts him; he coughs against her shoulder.{/n} "I\'ll carry him. Tell the priest to save his sermon."''',
+    wd("infirmary", '''"A bed from the war chest. For him." {n}Wenduag looks from Tuhk\'s cracked spear to the stair.{/n} "Your chaplains will scrub him and pray over him. He\'ll hate that." {n}She crouches beside the straw.{/n} "Let the priest drive the rot out first. A dry bed won't do that. I'll watch him try." {n}She lifts him; he coughs against her shoulder.{/n} "I\'ll carry him. Tell the priest to save his sermon."''',
         c("Continue", flags=(W + "neathers.infirmary",))),
 ], requires=(COMMITTED,), optional=True)
 
@@ -523,7 +522,7 @@ EPI = "WenduagEpilogue"
 SAC = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 COMMON = (
-    p("{n}The Commander told Lann the truth before anyone in the cellars could. Lann stayed through the war and after. Years later, Lann admitted that the confession was the only reason to remain in the Commander's company. Lann never quite forgave the Commander.{/n}", requires=(LANN_PAID,), forbids=LANN_GONE),
+    p("{n}The Commander told Lann the truth before anyone in the cellars could. Lann stayed through the war and after. The confession kept this quarrel from swallowing their friendship. His people and the war still needed him. Lann never quite forgave the Commander.{/n}", requires=(LANN_PAID,), forbids=LANN_GONE),
     p("{n}A woman in the cellars told Lann that Wenduag lived. Lann asked the Commander and got the truth, late. Lann stayed through the war and after, but every doubtful answer brought another question. The Commander had to meet Lann's eyes while answering.{/n}", requires=(LANN_PAID_LATE,), forbids=LANN_GONE),
     p("{n}The Commander refused to tell Lann the truth about the cairn. Lann stayed and fought, but stopped making jokes in the Commander's hearing.{/n}", requires=(LANN_OWED,), forbids=LANN_GONE),
     p("{n}Lann asked the Commander for the truth about Wenduag. The Commander lied again, and Lann accepted the answer. Wenduag called it the Commander's lie, and refused to carry it.{/n}", requires=(LANN_LIED_AGAIN,), forbids=(W + "lann.disbelieved",) + LANN_GONE),
@@ -548,10 +547,10 @@ COMMITTED_PARAS = (
     p("{n}Sergeant Brask served out the war on the far wall of the lower town, as far from the cellar stair as Drezen allowed, and never again used the word *mongrel*. His hand healed crooked. He learned to salute with the other one.{/n}", requires=(GIVEN,)),
     p("{n}Sergeant Brask kept the south gate until the end of the war, and every neather who came through the postern after dark was let through with a nod. He never said her name again after that one time on his knees, but everyone who had heard him say it remembered, and so did he.{/n}", requires=(KNELT,)),
     p("{n}Sergeant Brask kept the south gate until the end of the war, with a thin white line across the back of his sword hand where every man who saluted him could see it. He never told anyone how he got it. He did not have to.{/n}", requires=(STRUCK,)),
-    p("{n}Old Tuhk went down the oldest stair one night with his cracked spear in his hands, and did not come back up, and his share fed the cellars through the winter. Nobody coughed in the furthest cellar that summer. She never spoke of it again, but she never again asked the Commander for anything she could decide herself, either.{/n}", requires=(W + "neathers.culled",)),
-    p("{n}Old Tuhk died in a chaplain's bed in the spring, warm and dry, with a priest of Iomedae praying over him in a language he did not understand and Wenduag sitting at the foot of the bed with her arms folded, glaring at the priest. She said afterwards that it was a stupid way to die. She went back every day until it was over.{/n}", requires=(W + "neathers.infirmary",)),
-    p("{n}Two of the little ones in the cellars caught the cough that winter. The Commander went down and looked at them, every time she said to, and one of them lived. She counted that as a draw.{/n}", requires=(W + "neathers.forbidden",)),
-    p("{n}Wenduag left a hare's head on Vellexia's pillow and a knife in her door. Vellexia returned both, pinning the head to Wenduag's bed. The next time the huntress followed her into a dark corridor, the succubus caught her wrist and pulled her close. \"You brought the knife. Must I do everything else?\" Wenduag laughed, drew the blade with her free hand and cut the clasp from Vellexia's gown. Vellexia caught that hand too. \"Better. Now put it away.\" Wenduag did. When the door closed behind them, she was still laughing.{/n}", requires=(W + "vellexia.hunted", "participant.vellexia.available"), forbids=("vellexia.dead",)),
+    p("{n}Old Tuhk went down the oldest stair one night with his cracked spear in his hands, and did not come back up, and his share fed the cellars through the winter. The chaplain came looking for Tuhk the next day. Wenduag told him where she had left him; he went down with a lamp and returned without him. She never spoke of it again, but she never again asked the Commander for anything she could decide herself, either.{/n}", requires=(W + "neathers.culled",)),
+    p("{n}The first prayer failed to lift Tuhk's sickness. Wenduag carried his cracked spear to the infirmary the next morning and stood beside the bed until the chaplain tried again. The cough broke. By spring he was setting snares in the citadel yard. She took half his catch and told him his bed had been expensive.{/n}", requires=(W + "neathers.infirmary",)),
+    p("{n}Wenduag moved the children away from Tuhk's straw. The visiting chaplain drove out his sickness, but hunger had left him too weak to rise. The Commander came down with broth; Wenduag made sure of it. By spring he could sit beside a snare. She complained about every hare he failed to catch.{/n}", requires=(W + "neathers.forbidden",)),
+    p("{n}Wenduag left a hare's head on Vellexia's pillow and a knife in her door. Vellexia returned both, pinning the head to Wenduag's bed. The next time the huntress followed her into a dark corridor, the succubus caught her wrist and pulled her close. \"You brought the knife. Must I do everything else?\" Wenduag laughed, drew the blade with her free hand and cut the clasp from Vellexia's gown. Vellexia caught that hand too. \"Better. Now put it away.\" Wenduag put the blade away and caught Vellexia by the waist. The succubus pulled her into the alcove, her open gown brushing the huntress's hands. Wenduag answered her kiss and drew her closer. Before dawn, the huntress returned to her den with the red ribbon between her teeth.{/n}", requires=(W + "vellexia.hunted", "participant.vellexia.available"), forbids=("vellexia.dead",)),
     p("{n}Under the Commander's roof, Wenduag kept her knife away from Vellexia. The succubus made a point of asking whether she had grown tame. Wenduag showed her the knife whenever the Commander was out of earshot.{/n}", requires=(W + "vellexia.left", "participant.vellexia.available"), forbids=("vellexia.dead",)),
     p("{n}Some nights, when the war let them, she took the Commander out through the south postern barefoot with a spear and no light, and they came back before dawn with blood on their chins and nothing to say to anyone.{/n}", any_groups=((W + "hunt.ate", W + "hunt.cooked"),)),
     p("{n}She never once used the Commander's name where anyone could hear, and she stopped saying *master* altogether. When she needed to call the Commander she whistled, her own whistle, one note up and one down, and the Commander came, and everybody who saw it pretended not to have.{/n}"),
@@ -637,7 +636,7 @@ _trial["Nodes"].extend([
 
 _cairn = _polish_scene("court.cairn")
 _polish_node(_cairn, "knife")["Choices"][0]["Next"] = "knife_down"
-_cairn["Nodes"].append(nar("knife_down", '{n}You lay the knife on the top stone. Her hands close over yours and pull them against her bare waist. She catches your lower lip between her teeth as you draw her closer.{/n}', c("Continue", "cut")))
+_cairn["Nodes"].append(nar("knife_down", '{n}You lay the knife on the top stone. Her hands close over yours and pull them against her bare waist. Together you strip off the remaining clothes, dropping them beside the lamp. She catches your lower lip between her teeth as you draw her closer.{/n}', c("Continue", "cut")))
 
 _regill = _polish_scene("react.regill_watch")
 # E6 reactions are one-node only. This existing host uses the standard native dialogue contract.
@@ -667,6 +666,61 @@ for _paragraph in COMMON:
             _paragraph["Forbids"] = list(dict.fromkeys(_paragraph["Forbids"] + list(_lann_priority[:_rank])))
             break
 
+
+# Round 2 situation work precedes native-hub cloning; saved nodes/answers remain.
+_reckoning = _polish_node(_trial, "reckoning")
+_reckoning["Choices"][0].update(Text='"I spared you to fight him, not to pretend you kept your word. Show me what you choose now."', Next="reckoning_answer")
+_trial["Nodes"].append(wd("reckoning_answer", '"Then watch. I took his offer because I wanted what he fed me. '
+    'You left me alive after I lost. I want to know what you do when I come at you with my own knife." '
+    '{n}She shifts her knee off your ribs, leaving you room to move.{/n}', c("Continue", "her")))
+
+_stinger = _polish_scene("court.stinger")
+_take = _polish_node(_stinger, "take")
+_take["Choices"][0]["Forbids"].append(DEATH_PROMISED)
+_take["Choices"].append(c("Continue", "tail_debt", requires=(DEATH_PROMISED,), flags=(STINGER_GIVEN,)))
+_stinger["Nodes"].append(wd("tail_debt",
+    '"The tail is mine now. You still owe me what you promised. I wanted my knife in him." '
+    '{n}She tucks the wrapped stinger beneath her arm.{/n} "I will pick something else. Something big."',
+    c("Continue", flags=(PROMISE_OWED,))))
+
+_morning = _polish_scene("court.morning")
+for _index, _target in enumerate(("stone_shown", "stone_kept")):
+    _polish_node(_morning, "end")["Choices"][_index]["Next"] = _target
+_morning["Nodes"].extend([
+    wd("stone_shown", '{n}She pushes the pot toward you, then turns the stone under one finger.{/n} '
+       '"From my cairn. I cut it while you slept." {n}She puts it back in your palm and closes your fingers over it.{/n} '
+       '"Keep it. I came back with supper, not to ask for it. Eat before I finish yours too."', c("Continue")),
+    wd("stone_kept", '{n}Her hand slips into your pocket and finds the stone. She leaves it there.{/n} '
+       '"Good. You haven\'t traded it for another medal." {n}She pulls you down beside her and pushes the pot between you.{/n} '
+       '"A hare. No sergeant tonight. Eat."', c("Continue")),
+])
+
+_yaniel = _polish_scene("court.yaniel")
+for _answer in _polish_node(_yaniel, "start")["Choices"]:
+    _answer["Forbids"].append("yaniel.trickster.returned")
+_polish_node(_yaniel, "start")["Choices"].append(c("Continue", "returned_yaniel", requires=("yaniel.trickster.returned",)))
+_yaniel["Nodes"].extend([
+    wd("returned_yaniel", '"The paladin lives again. You killed her and then brought her back." '
+       '{n}She tilts her head.{/n} "Even after what we said about her. She could still take your knights from you. '
+       'You must want her sword very badly."',
+       c('"We need her against the demons. I answered for what I did."', "returned_answer"),
+       c('"I can stand having someone strong beside me."', "returned_answer")),
+    wd("returned_answer", '"Beside you. Until she chooses differently." {n}Her fingers close on your sleeve.{/n} '
+       '"I\'ll watch her. If she bites you, I want to see."', c("Continue", flags=(W + "yaniel.watched",))),
+])
+# A prior early discussion may suppress its repeat, but must not suppress changed news.
+_yaniel["ForbidOverrides"] = {W + "early.yaniel": "yaniel.trickster.returned"}
+_polish_node(_polish_scene("court.vellexia"), "hunt")["Text"] = (
+    '"Nobody dies. You\'re no fun." {n}She slides off the parapet, watching the window.{/n} '
+    '"A hare\'s head on her pillow. My knife in her door. Let\'s see what she sends back." '
+    '{n}Up above, Vellexia opens the shutters. She drops a red ribbon; Wenduag catches it.{/n} '
+    '"If you insist on skulking beneath my window, huntress, bring something better than vermin." '
+    '{n}Wenduag winds the ribbon around her fist.{/n} "She saw. Good."')
+_polish_node(_polish_scene("epilogue.pack"), "page")["Text"] += (
+    '\n{n}After a long hunt she came back through the south postern with food over her shoulder. '
+    'She found the Commander at the maps, took the chair beside them and put her bloody hand on the table. '
+    '"Move the Wound. Supper goes here."{/n}')
+
 # --- Registration -------------------------------------------------------------------------------------------------------------
 
 def integrate(payload):
@@ -684,6 +738,7 @@ def integrate(payload):
         payload["Derived"][key] = [list(g) for g in groups]
     from storylines import wenduag_echo
     wenduag_echo.integrate(payload)
+    _round2_slots(payload)
 
 # eng7-l08: E-Q7-17 / wenduag:048,053. The cited visits use the
 # existing Wenduag actor and hub instead of consuming more rest pages.
@@ -750,3 +805,53 @@ for _consumer in SCENES:
                 _answer["Requires"] = list(dict.fromkeys([*_answer.get("Requires", []), "trickster.now"]))
                 _node["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
 # eng8-q8b end
+
+
+def _round2_slots(payload):
+    """Authored reserved passages; legacy terminal answers still own completion."""
+    scenes = {s["Id"]: s for s in payload["Scenes"]}
+    # These old native-hub answers used to terminate before the new stone reply.
+    # Keep their original primary-completion effects at the same saved indices.
+    morning = scenes[W + "court.morning.native_visit"]
+    for answer in _polish_node(morning, "end")["Choices"][:2]:
+        if W + "court.morning" not in answer["Set"]:
+            answer["Set"].append(W + "court.morning")
+    for twin in ("", ".native_visit"):
+        cairn = scenes[W + "court.cairn" + twin]
+        slot = cairn["Id"] + ".explicit.1"
+        for node in cairn["Nodes"]:
+            for answer in node["Choices"]:
+                if answer.get("Next") in ("cut", "cut_echo"):
+                    answer["Next"] = slot
+        # EXPLICIT SLOT: chosen first night on her cairn; knife down, lamp out.
+        cairn["Nodes"].append(wd(slot,
+            '{n}She drags you close by the hips. You kiss her back; her breath catches and she bears you down against the stones. '
+            'Your hands find her bare hips. She draws you between her knees and pulls you into another kiss. '
+            'Above the stair, the watch bell sounds.{/n}',
+            c("Continue", "cut", forbids=(W + "echo.abyss.returned",)),
+            *([c("Continue", "cut_echo", requires=(W + "echo.abyss.returned",))]
+              if any(node["Id"] == "cut_echo" for node in cairn["Nodes"]) else [])))
+        _polish_node(cairn, "cut")["Text"] = ('{n}Afterward she lies against you on the cold stone, your coat over both of you. '
+            'When you shift, her fingers tighten on your wrist.{/n} "Not yet. The maps can wait."')
+        if any(node["Id"] == "cut_echo" for node in cairn["Nodes"]):
+            _polish_node(cairn, "cut_echo")["Text"] = ('{n}Afterward her hand finds yours in the dark and holds it against the stones.{/n} '
+            '"Caught." {n}She laughs into your neck and stays there.{/n}')
+        gongs = scenes[W + "court.gongs" + twin]
+        slot = gongs["Id"] + ".explicit.1"
+        for id in ("saw", "stronger"):
+            terminal = _polish_node(gongs, id)["Choices"][0]
+            terminal["Forbids"].append(CAIRN_SEEN)
+            successor = copy.deepcopy(terminal)
+            successor["Forbids"].remove(CAIRN_SEEN)
+            successor["Requires"].append(CAIRN_SEEN)
+            successor["Next"] = slot
+            # Completion is still delivered by the slot's outgoing answer.
+            successor["Set"] = [flag for flag in successor["Set"] if flag != W + "court.gongs"]
+            _polish_node(gongs, id)["Choices"].append(successor)
+        # EXPLICIT SLOT: later return down the stair; no repeated first night.
+        completion = (W + "court.gongs",) if twin else ()
+        gongs["Nodes"].append(wd(slot,
+            '{n}She leads you off the wall, past the sentry carrying fresh arrows, and down the back stair. '
+            'At its foot she pushes you against the stone and kisses you. Your hands find her waist; she catches them and pulls you onward.{/n} '
+            '"You know the way now. Hurry." {n}When the watch changes, she is still beside you.{/n}',
+            c("Continue", flags=completion)))

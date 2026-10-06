@@ -50,15 +50,15 @@ def _claim_nodes():
            c("Continue", "want", flags=(ACK,))),
         wd("partner_share_call", '''"So I get to keep both? Greedy Commander." {n}Her thumb presses against your lower lip.{/n} "Lann may not like it. He likes being chosen. Let's hear him say it."''',
            *_attendance("partner_share_arrival", "partner_share_away")),
-        wd("partner_share_arrival", '''{n}She opens the door and sends the sentry for Lann. When he arrives, she plants herself beside you, her hand still in your collar.{/n} "I'm taking the Commander to bed. You can still come to mine, Lann. If you can stop scowling long enough."''',
+        wd("partner_share_arrival", '''{n}She opens the door and sends the sentry for Lann. When he arrives, she plants herself beside you, her hand still in your collar.{/n} "I chose the winner, Lann. I'm taking the Commander to bed. You can still come to mine, if you stop scowling."''',
            c("Continue", "partner_share_shock", requires=(RETURNED,),
-             forbids=(LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned")),
+             forbids=(LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned", W + "orchard_return")),
            c("Continue", "partner_share_lann", forbids=(RETURNED,)),
            *[c("Continue", "partner_share_lann", requires=(RETURNED, receipt))
-             for receipt in (LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned")]),
+             for receipt in (LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned", W + "orchard_return")]),
         lann("partner_share_shock", '''{n}Lann stops in the doorway. His eyes move from her face to yours.{/n} "She's alive. And this is how you tell me?" {n}His hand tightens on the doorpost.{/n} "We'll talk about that, Commander. All of it. You owe me more than a look at her teeth." {n}Wenduag bares them anyway.{/n}''',
              c("Continue", "partner_share_lann")),
-        lann("partner_share_lann", '''"You always did know how to make a man feel welcome, Wendu." {n}He looks past her at the blood on Brask's shirt, then at you.{/n} "I'm not claiming her. Never did. But I'm not crawling into a bed to prove I'm braver than you, either. If I come, it's because I want her." {n}His crooked smile returns, briefly.{/n} "And if she sells you to a demon, don't expect me to help her count the money."''',
+        lann("partner_share_lann", '''"Convenient, choosing the winner after the fight. You always did know how to make a man feel welcome, Wendu." {n}He looks past her at the blood on Brask's shirt, then at you.{/n} "I'm not claiming her. Never did. But I'm not crawling into a bed to prove I'm braver than you, either. If I come, it's because I want her." {n}His crooked smile returns, briefly.{/n} "And if she sells you to a demon, don't expect me to help her count the money."''',
              c('"No contests over her bed. That goes for all of us."', "partner_share_reply")),
         wd("partner_share_reply", '''"Hear that, Lann? You can still come hunting. Try not to shoot the Commander." {n}Lann gives her a flat look.{/n} "Try not to give me a reason." {n}He leaves. She watches him go, then pulls your collar taut.{/n} "He'll come when he wants to. Now tell me what you want done with this one."''',
            c("Continue", "want", flags=(SHARE, SHARED, KNOWN, ACK))),
@@ -69,15 +69,15 @@ def _claim_nodes():
            c('"Keep him, if he agrees. I withdraw the demand."', "partner_share_call")),
         wd("partner_exclusive_call", '''"Beside me. Good." {n}She lets go of your collar and looks toward the door.{/n}''',
            *_attendance("partner_exclusive_arrival", "partner_exclusive_away")),
-        wd("partner_exclusive_arrival", '''{n}She sends the sentry for Lann. When he arrives, she takes your hand and lays it on her hip.{/n} "No more nights with me, Lann. I've chosen this one. Don't come knocking after the watch."''',
+        wd("partner_exclusive_arrival", '''{n}She sends the sentry for Lann. When he arrives, she takes your hand and lays it on her hip.{/n} "I chose the winner, Lann. No more nights with me. Don't come knocking after the watch."''',
            c("Continue", "partner_exclusive_shock", requires=(RETURNED,),
-             forbids=(LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned")),
+             forbids=(LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned", W + "orchard_return")),
            c("Continue", "partner_exclusive_lann", forbids=(RETURNED,)),
            *[c("Continue", "partner_exclusive_lann", requires=(RETURNED, receipt))
-             for receipt in (LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned")]),
+             for receipt in (LANN_PAID, LANN_PAID_LATE, LANN_OWED, LANN_LIED_AGAIN, E + "returned", W + "orchard_return")]),
         lann("partner_exclusive_shock", '''"Alive." {n}Lann says it once, looking at her, then turns on you.{/n} "You let me believe she was dead. And now you've brought me here to tell me whose bed she's in." {n}He draws a breath through his nose.{/n} "I'm going to hear the rest, Commander. Don't think this settles it."''',
              c("Continue", "partner_exclusive_lann")),
-        lann("partner_exclusive_lann", '''{n}Lann's jaw works. He looks at her hand over yours.{/n} "Right. No knocking. I can manage that." {n}He turns to you.{/n} "I follow you into battles I know we shouldn't survive. Now you're asking me to step aside for you here, too. Fine. She said it herself. But you'd better be able to stay when she makes it hard. That's the part she never thinks anyone can do."''',
+        lann("partner_exclusive_lann", '''{n}Lann's jaw works. He looks at her hand over yours.{/n} "The winner. You waited until after the fight to choose. Right. No knocking. I can manage that." {n}He turns to you.{/n} "I follow you into battles I know we shouldn't survive. Now you're asking me to step aside for you here, too. Fine. She said it herself. But you'd better be able to stay when she makes it hard. That's the part she never thinks anyone can do."''',
              c('"I heard you, Lann."', "partner_exclusive_reply")),
         wd("partner_exclusive_reply", '''{n}Lann shuts the door. Wenduag listens to his footsteps until they fade.{/n} "He didn't ask me twice. Good." {n}She turns back and presses your hand harder against her hip.{/n} "I chose. Now you choose. Your sergeant's getting blood on the floor."''',
            c("Continue", "want", flags=(EXCLUSIVE, SEPARATED, KNOWN, ACK))),
@@ -284,6 +284,21 @@ def integrate(payload):
         answer_list=LANN_HUB, relationship="wenduag", entry='"You have something to say, Lann?"',
         chapter=5, last=5, portrait="Lann", forbids=LANN_GONE + (CLOSED, DISCOVERED, CAREFUL),
         flags=(DISCOVERED, SEPARATED, KNOWN), Chapters=[5])
+
+    # Supported hub dialogue: Lann hears an answer before making his own parting.
+    discovery["Reaction"] = False
+    first = discovery["Nodes"][0]["Choices"][0]
+    first.update(Text='"I hid the claim. You deserved to hear it from me."', Next="fallout")
+    discovery["Nodes"][0]["Choices"].append(c(
+        '"She never promised you one bed. I should still have told you."', "fallout",
+        flags=(DISCOVERED, SEPARATED, KNOWN)))
+    discovery["Nodes"].append(lann("fallout",
+        '{n}Wenduag comes up the stair with a hare over her shoulder. Lann steps out of her way.{/n} '
+        '"No more knocking, Wendu. And no more jokes about what you hide from me." '
+        '{n}He leaves for the muster. She watches him go.{/n}', c("Continue", "wenduag_reply")))
+    discovery["Nodes"].append(wd("wenduag_reply",
+        '"He can keep his nights. I have supper here." '
+        '{n}She thrusts the hare into your hands, harder than she needs to.{/n}', c("Continue")))
     payload["Scenes"].append(discovery)
     quiet = copy.deepcopy(discovery)
     quiet["Id"] = W + "react.lann_secret_quiet"
@@ -295,11 +310,14 @@ def integrate(payload):
     quiet["Nodes"][0]["Text"] = '''{n}Lann waits by the cellar stair with his bow. Your hair is wet; the clean shirt clings coldly to your back.{/n}
 "Nothing to report. Wendu's hunters came in before dawn. Tell her to stop leaving bloody arrows in the wash trough."
 {n}He shoulders the bow and goes to the muster. Wenduag watches from the stair below. She bares her teeth when you fail to come back down.{/n}'''
-    quiet["Nodes"][0]["Choices"][0]["Set"] = []
+    # Preserve the careful-secret exit at index 0 and unwashed return at index 1.
+    quiet["Nodes"][0]["Choices"] = [quiet["Nodes"][0]["Choices"][0]]
+    quiet["Nodes"][0]["Choices"][0].update(Text="Continue", Next=None, Set=[])
     caught = copy.deepcopy(discovery["Nodes"][0])
     caught["Id"] = "caught"
     quiet["Nodes"][0]["Choices"].append(c('[Go back down to Wenduag. Return to Lann without washing again.]', "caught"))
-    quiet["Nodes"].append(caught)
+    # Preserve quiet/start and caught before appending the new aftermath node.
+    quiet["Nodes"] = [quiet["Nodes"][0], caught, *copy.deepcopy(discovery["Nodes"][1:])]
     payload["Scenes"].append(quiet)
 
     # A claim disclosure reveals survival but does not pay the old cairn debt.
@@ -338,6 +356,13 @@ def integrate(payload):
                     para["Forbids"].append(KNOWN)
             node.setdefault("Paragraphs", []).extend(ending_paragraphs())
 
+    for item in payload["Scenes"]:
+        if item.get("Relationship") == "wenduag" and item["Owner"].endswith("Epilogue") and item["Id"] not in native_ids:
+            item["Nodes"][0]["Paragraphs"].append(p(
+                '{n}Savamelekh was dead. The Commander had never brought Savamelekh\'s stinger down the stair, '
+                'or answered Wenduag\'s demand to do the killing herself.{/n}',
+                requires=(W + "death_promised", "savamelekh.dead"), forbids=(W + "court.stinger",)))
+
     _native_variants(payload, scenes)
 
     from storylines import lastcall_partners
@@ -354,4 +379,26 @@ def integrate(payload):
             para["Forbids"].extend(flag for flag in LANN_GONE if flag not in para["Forbids"])
             if "They waited together" in para["Text"]:
                 para["Forbids"].append(DISCOVERED)
+
+    for para in part["paragraphs"]:
+        if "dead_on_record" in " ".join(para["Requires"]):
+            para["Text"] = para["Text"].replace("The world buried the Commander with an empty coffin and a great deal of singing.",
+                "At the Commander's funeral, Wenduag kept to the shadow of the cellar stair.")
+            para["Text"] = para["Text"].replace("The world buried the Commander, with an empty coffin and a great deal of singing.",
+                "At the Commander's funeral, Wenduag kept to the shadow of the cellar stair.")
+        if "wenduag.romance_finished.latched" in para["Requires"] and COMMITTED in para["Forbids"]:
+            para["Text"] = ('{n}Wenduag had stayed beside the Commander through Savamelekh\'s lair and past it. '
+                'After the war she came back from hunting, shoved the maps aside and ate at the Commander\'s table. '
+                'When she finished, she pulled the Commander away from it.{/n}')
+    for para in part["paragraphs"]:
+        para["Text"] = para["Text"].replace("Lann, who had never once gone down the cellar stair, came down it at dawn and found her sitting on the cairn",
+            "Lann, who had kept away from the cellar stair, came down at dawn and found her waiting at its foot")
     part["paragraphs"].extend(ending_paragraphs())
+    part["paragraphs"].extend([
+        p('{n}Savamelekh was dead. She had not forgotten the killing promised to her, or the stinger nobody had brought down the stair.{/n}',
+          requires=(W + "death_promised", "savamelekh.dead"), forbids=(W + "court.stinger",)),
+        p('{n}She still carried the deep stroke in her side. Her finger found the seam once while she waited. '
+          'She had not forgotten whose hand made it, or her promise to pay it back.{/n}', requires=(W + "cost.stroke_deep",)),
+        p('{n}The promised killing was still owed. Savamelekh\'s severed stinger had not paid it. '
+          'Wenduag kept her spear beside the stair and her next choice of prey to herself.{/n}', requires=(W + "promise.owed",)),
+    ])

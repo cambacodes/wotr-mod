@@ -1,20 +1,22 @@
 """Echo-origin histories and inherited text/identity compatibility, without exporting files."""
 from tests.story_fixture import fresh_story
+import json
+from pathlib import Path
+import subprocess
 import unittest
 
-import expansion
 from storylines import wenduag_echo as echo
 
 
 class WenduagEchoTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        integrate = echo.integrate
-        try:
-            echo.integrate = lambda payload: None
-            cls.before = expansion.make_expansion()
-        finally:
-            echo.integrate = integrate
+        # Engine round 3 requires the echo departure page during finalization.
+        # Compare against the actual integration export instead of assembling an
+        # impossible payload with its required integration disabled.
+        cls.before = json.loads(subprocess.check_output(
+            ["git", "show", "HEAD:development/Story.json"],
+            cwd=Path(__file__).resolve().parents[1]))
         cls.story = fresh_story()
         cls.scenes = {scene["Id"]: scene for scene in cls.story["Scenes"]}
 
@@ -30,14 +32,15 @@ class WenduagEchoTests(unittest.TestCase):
                              [node["Id"] for node in current["Nodes"] if node["Id"] in old_node_ids])
             for old_node in original["Nodes"]:
                 new_node = next(node for node in current["Nodes"] if node["Id"] == old_node["Id"])
+                self.assertGreaterEqual(len(new_node["Choices"]), len(old_node["Choices"]))
                 for index, old_choice in enumerate(old_node["Choices"]):
-                    # Primary origin selectors reserve their already-serialized echo index;
-                    # the new orchard answer follows it. Native twins append their echo.
-                    if (not original["Id"].endswith(".native_visit")
-                            and old_choice.get("Next") in ("which_orchard", "own_orchard", "plain_orchard")):
-                        index += 1
                     new_choice = new_node["Choices"][index]
-                    for field in ("Text", "Next", "Set", "Abort", "Check"):
+                    # Prose and incoming links may be polished while indices and
+                    # effects remain saved references. Ending exits keep both.
+                    fields = ("Set", "Abort", "Check", "Crusade", "Revive", "NativeNext", "StartEtude")
+                    if original["Owner"].endswith("Epilogue"):
+                        fields += ("Text", "Next")
+                    for field in fields:
                         self.assertEqual(old_choice.get(field), new_choice.get(field),
                                          f"{original['Id']}/{old_node['Id']}[{index}]/{field}")
 
