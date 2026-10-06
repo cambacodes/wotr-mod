@@ -39,6 +39,8 @@ rest-delivered visits (she comes to the Commander) with her portrait key. Kyado'
 path (Cue_0059_AngelReinf -> ZanedraKilledByKyado -> Cue_0085 starts KyadoTraderInDrezen), so no Trickster run has it.
 The courtship is delamere_woods.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
@@ -57,6 +59,12 @@ TOMB_VISITED = "delamere.tomb_visited"             # StartedDialogs TombOfDelame
 REMAINS = "delamere.remains_finished"              # Etude DelameresRemainsFinished (trickster_world)
 CRYPT_KNOWN = "delamere.crypt_known"               # Derived: kyado.initiated or kyado.crypt_door_seen (trickster_world)
 INITIATED = "kyado.initiated"                      # SeenCue Cue_0094_TrickReinf (ledger 05 row 7)
+DREZEN = "2570015799edf594daf2f076f2f975d8"
+TEMPLE = "bb6d82794aae9d94d9cc94d1a05e5f20"
+KYADO_DEAD_AT_WAKE = P + "kyado.dead_at_wake"
+KYADO_ALIVE_AT_WAKE = P + "kyado.alive_at_wake"
+ZANEDRA_KILLED = P + "zanedra.native_killed"
+ZANEDRA_WEST_HEARD = P + "zanedra.west_heard"
 KYADO_DEAD = "kyado.dead"                          # UnlockableFlag KyadoDead
 RELICS_TAKEN = "delamere.relics_taken"             # UnlockableFlag GotDelamereLoot (Cue_0052 / Cue_0056 OnStop)
 RELICS_CURSED = "delamere.relics_taken_forced"     # SelectedAnswers TombOfDelamere/Answer_0048 (the forced tomb's relics)
@@ -130,10 +138,10 @@ DERIVED = {
     LIVING_WOKEN: [[LIVING_WAKE], [RETURNED], [DECLINED, CLOSED, LIMP]],
 }
 BINDINGS = {
-    "UnlockableFlags": {RELICS_TAKEN: "3de8e7db06d4b9043bddfa77888ecfa5"},     # GotDelamereLoot
+    "UnlockableFlags": {ZANEDRA_KILLED: "d2b8c3609b202124fb39a364e20ae76b", RELICS_TAKEN: "3de8e7db06d4b9043bddfa77888ecfa5"},     # GotDelamereLoot
     "SelectedAnswers": {RELICS_CURSED: "3357022e6d1c5e047a0075a223606210"},    # TombOfDelamere_BookEvent/Answer_0048
     "InventoryItems": {BOW_HELD: BOW_ITEM, CURSED_BOW_HELD: CURSED_BOW_ITEM},
-    "SeenCues": {ERASTIL_ANSWERED: "a58f2095249a44549a4dfd2d60a9b6e1", OPENED_FORCED: "a70275fb77f483847a68fe01586091ec",
+    "SeenCues": {ZANEDRA_WEST_HEARD: "cb268637168a0d3478bec0d97f10215c", ERASTIL_ANSWERED: "a58f2095249a44549a4dfd2d60a9b6e1", OPENED_FORCED: "a70275fb77f483847a68fe01586091ec",
                  OPENED_PEACEFUL: "4a58ea0622eb9924abb1579306f5a395",
                  # PP10: the Storyteller's offer to fetch supplies through his portal (StoryTeller_MainDialogue/Cue_0629,
                  # "When I return to Golarion, I will buy some travel necessities", 19609f8b; shown while Chapter04 plays).
@@ -563,14 +571,14 @@ epilogue("caught", '''{n}Delamere the Blessed hunted the woods below her temple 
          requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}At the first frost after Threshold she came for her day in the middle of the Commander's own victory feast, through a window, and took them out over the rooftops in front of half the crusade. Nobody at that table ever forgot it.{/n}''', requires=(FIRST_FROST,)),))
 
-epilogue("late", '''{n}The war ended before the second hunt was run to its end, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and dropped the meat on the table in front of the Commander's guests.{/n}
-"My woods," {n}she said.{/n} "Tonight. I will not make it easy." {n}She did not. The Commander caught her all the same, a little before dawn, in a blind below her temple where the embers were still warm, and she let herself be caught, and after that nobody asked the Commander where they went at the first frost every year.{/n}''',
+epilogue("late", '''{n}The war ended before the second hunt was run to its end, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and sent the venison to the camp fires before taking the Commander by the sleeve.{/n}
+"My woods," {n}she said.{/n} "Tonight. I will not make it easy." {n}She did not. The Commander caught her all the same, under the new moon, in a blind below her temple where the embers were still warm, and she let herself be caught. She drew the Commander down onto the warm hide and pulled loose the lacing of her own leathers. "You kept me waiting through a war. Come here."{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), **SURVIVED, paragraphs=(
              # Polish r4 (Sol BEL): the Commander who reached her blind and let her run.
              p('''{n}She had stood in that blind once already, in the war, with the embers between them, and been told to run. "Another new moon," she had said. It came after Threshold, and she ran faster, as she had promised, and it did her no good at all.{/n}''', requires=(HUNT_POSTPONED,)),
          ) + EPILOGUE_PARAGRAPHS)
 
-epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. Delamere heard it at her temple from a Mendevian runner, and sent him away with a hare for his trouble, and went down into the crypt alone.{/n}
+epilogue("sacrifice", '''{n}The Commander died closing the Wound. A Mendevian runner brought the news to her temple. Delamere listened past him for a second footfall, then sent him away with a hare for his trouble and went down into the crypt alone.{/n}
 {n}She did not weep; she had used that up. At the first frost she took the old horn down from its peg and carried it up to the ridge above Drezen, where she had once made a fire and waited for a stag with a limp, and she sat there until dawn with the horn across her knees, and did not blow it. The hunters say she goes up every year. They say the day she was owed is the only debt she ever forgave.{/n}''',
          requires=("sacrifice",), forbids=(CLOSED, "trickster.commander_back"), paragraphs=EPILOGUE_PARAGRAPHS,
          RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]])
@@ -609,11 +617,49 @@ epilogue("apart_sacrifice", '''{n}Delamere the Blessed kept to the woods below h
 
 epilogue("never_sacrifice", "", requires=("sacrifice", DECLINED, CLOSED), forbids=(RETURNED, "trickster.commander_back"),
          paragraphs=REFUSAL_PARAGRAPHS + (
-             p('''{n}The Commander did not come back from the Threshold, and took the limp and its reason down with them.{/n}'''),))
+             p('''{n}The Commander died closing the Wound; no hunter ever learned the reason for that crooked track.{/n}'''),))
 
-epilogue("unfinished_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war. The Commander did not come back from the Threshold. On the first cold night after the news, the sentries on Drezen's wall heard a stag roar in the hills, once, far too close to the city, and in the morning there were tracks under the Commander's empty window, going round and round, and then going away. They did not come again.{/n}''',
+epilogue("unfinished_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war. The Commander died at Threshold. Delamere's next hunt had no answering footfall. On the first cold night after the news, the sentries on Drezen's wall heard a stag roar in the hills, once, far too close to the city, and in the morning there were tracks under the Commander's empty window, going round and round, and then going away. They did not come again.{/n}''',
          requires=("sacrifice", RETURNED), forbids=(COMMITTED, CLOSED, LATE_COMMITTED, "trickster.commander_back"),
          paragraphs=EPILOGUE_PARAGRAPHS)
+
+# Round 2: snapshot native lifetime on the successful waking, before refusal.
+# Append living-prior variants; every old roar answer keeps its saved index.
+for _scene in SCENES:
+    if _scene["Id"] in (P + "crypt.stag", P + "crypt.stag_alone", P + "crypt.stag_late", P + "drezen.stag"):
+        _roar = next(node for node in _scene["Nodes"] if node["Id"] == "roar")
+        for _answer in list(_roar["Choices"]):
+            _alive = copy.deepcopy(_answer)
+            _answer["Requires"].append(KYADO_DEAD)
+            _answer["Set"].append(KYADO_DEAD_AT_WAKE)
+            _alive["Forbids"].append(KYADO_DEAD)
+            _alive["Set"].append(KYADO_ALIVE_AT_WAKE)
+            _roar["Choices"].append(_alive)
+    if _scene["Id"] == P + "drezen.stag":
+        _scene["Areas"] = [DREZEN]
+    if _scene["Id"] == P + "epilogue.late":
+        # Explicit slot: first chosen encounter on the hide; anatomy variants in brief.
+        _slot = p('{n}She draws the hide over you both, her mouth still on yours as the fire sinks. At dawn she takes up her bow and leads you home.{/n}')
+        _slot["Id"] = P + "epilogue.late.explicit.1"
+        _scene["Nodes"][0]["Paragraphs"].insert(0, _slot)
+        _scene["Nodes"][0]["Paragraphs"].insert(1, p(
+            '{n}On the road home she stopped at a moved stake. "The volunteers need water," she said, "and their neighbours need the path to it. I marked it too close to the hearth." She pulled the stake herself and waited for the household to come out and argue.{/n}',
+            requires=(VILLAGE_GIVEN,)))
+        _scene["Nodes"][0]["Paragraphs"].insert(2, p(
+            '{n}On the road home a woman met them beside a heap of bundles. "You sent her here," Delamere told the Commander. "I chose her. Now she has to move her hearth again." She took up the first bundle. The woman followed her, cursing, and Delamere answered every word.{/n}',
+            requires=(VILLAGE_FORCED,)))
+        _scene["Nodes"][0]["Paragraphs"].insert(3, p(
+            '{n}At Drezen the camp carts blocked the well path. Delamere halted the Commander there. "You kept them here. Make your captain clear it." When the carts moved she went back to her temple; the city still stank, even after that night.{/n}',
+            requires=(VILLAGE_REFUSED,)))
+        _scene["Nodes"][0]["Paragraphs"].insert(4, p(
+            '{n}Two of Drezen\'s elders were disputing the same patch beside the well when the lovers came down the road. Delamere put her bow between them. "I chose you both. I will hear you both." The Commander waited beside her while they marked a passage in the mud.{/n}',
+            requires=(VILLAGE_CLANS,)))
+        _scene["Nodes"][0]["Paragraphs"].insert(5, p(
+            '{n}She kept her home below the temple. At the first frost she came for her day. The Commander ran again, and she caught them again, then walked home beside them. The next year she came earlier. Neither ever called the hunt finished.{/n}'))
+    if _scene["Id"].startswith(P + "epilogue."):
+        _scene["Nodes"][0].setdefault("Paragraphs", []).append(p(
+            '{n}Delamere kept the cord she had used to measure the brace. Beside that work she had heard the names at the Commander\'s fire, one by one. She remembered them; a name was no promise to eat at their hearth.{/n}',
+            requires=(P + "hide_brace",)))
 
 
 def integrate(payload):

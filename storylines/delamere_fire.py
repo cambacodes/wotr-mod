@@ -25,6 +25,7 @@
   household line (05 voice note a_village_not_a_city): she will know every name at the Commander's fire.
 """
 from story_format import c
+from storylines.delamere_trickster import DREZEN, TEMPLE
 from storylines.delamere_trickster import (BOW_RETURNED, CLOSED, COMMITTED, ERASTIL_ANSWERED, KYADO_JUDGED, KYADO_SPOKEN, KEPT_QUIET, LIMP, P,
                                            NAMES, POACHERS_HERS, POACHERS_PROVOST, POACHERS_TRICKED, PROCLAIMED,
                                            RETURNED, STAG_TOLD, YEW_BOW, dl, kyado, nar)
@@ -56,7 +57,7 @@ HIDE = P + "hide_brace"
 # --- The white stag (the device, in her own voice) -------------------------------------------------------------------
 
 visit(P + "woken.white_stag", "The white stag", [
-    nar("fire", '''{n}She has made a fire on the ridge above Drezen, in a fold of the hill where she can see the city's lamps and not smell its gutters, and there is a hare on a green stick over it. When you come limping up out of the dark she does not turn round. She moves over on her log to make room.{/n}''',
+    nar("fire", '''{n}Back at Drezen, you leave the road below the wall and climb toward her fire. She has made it on the ridge above the city, in a fold of the hill where she can see the city's lamps and not smell its gutters, and there is a hare on a green stick over it. When you come limping up out of the dark she does not turn round. She moves over on her log to make room.{/n}''',
         c("[Sit.]", "owe")),
     dl("owe", '''"Eat." {n}She tears the hare in two and gives you the bigger half, which from her is a speech.{/n} "You blew that horn over me without knowing what I was aiming at. You should hear it from the one who was doing the aiming. I owe you that, I think. For the leg."''',
         c('"Tell me about the white stag."', "stag"),
@@ -91,7 +92,7 @@ visit(P + "woken.white_stag", "The white stag", [
 {n}She reaches over and lays her hand flat on your thigh, over the place where the arrow went in.{/n} "Your leg is where it went. It had been waiting a very long time."''',
         c('"You kept a promise for centuries. I\'ve never kept one for a week."', "week"),
         c('"I\'m glad it was my leg."', "glad")),
-    dl("week", '''"Then you had better start." {n}She takes her hand back and throws another stick on the fire.{/n} "Start with a small one. Promise me you will come back to this fire tomorrow night and eat another hare." {n}She waits.{/n} "Come. It is a very small promise. Even a jester can keep a small one."''',
+    dl("week", '''"Then start tomorrow." {n}She shifts her hand from your thigh to the empty place beside her on the log.{/n} "Another hare. Same fire. I will keep this seat."''',
         c('"I promise."', "promised", flags=(STAG_TOLD,))),
     dl("glad", '''"Liar." {n}But she does not take the hand away.{/n} "A kind one. I will allow it, tonight." {n}She looks into the fire for a while, and so do you, and neither of you says anything, and the city's lamps go out one by one below the hill.{/n}''',
         c("[Stay until the fire burns down.]", flags=(STAG_TOLD,))),
@@ -169,7 +170,7 @@ visit(P + "woken.jester", "Defenceless", [
 # --- A demon in her woods (Chapter 5; optional) ------------------------------------------------------------------------
 
 visit(P + "woken.demon", "Be the stag again", [
-    nar("sign", '''{n}She is waiting at the edge of her woods at dusk with two fresh tracks drawn in the mud at her feet: one a deer's, one something else. The second has three toes, and a spur behind, and it has been pressed down deep, as though whatever made it were much heavier than anything that size should be.{/n}''',
+    nar("sign", '''{n}A charcoal-burner's boy brings Delamere's summons: a demon is taking people below her temple. From Drezen you ride to the temple before dusk; from the temple yard you follow the boy down the local path. She is waiting at the trees with a deer's track and a three-toed print drawn in the mud.{/n}''',
         c("Continue", "babau")),
     dl("babau", '''"It came out of the Wound nine nights ago. It has taken a charcoal-burner and two goats, and the goats it did not bother to eat." {n}She scuffs the track out with her boot.{/n} "I have lost it four times. It goes through shadows the way a fish goes through water, and it is patient. Patient as me." {n}Her mouth tightens.{/n} "I need it to come to me. So I need something it wants more than it wants to stay hidden."''',
         c('"And what does it want?"', "want")),
@@ -179,8 +180,9 @@ visit(P + "woken.demon", "Be the stag again", [
         c('"Where do you want me?"', "where")),
     dl("bait", '''"I want to use you as a stag. You were a very good one once." {n}She checks her fletching, one arrow at a time.{/n} "If you would rather, I will go back to losing it in the shadows while it eats the next charcoal-burner. It is your country. You choose what it costs."''',
         c('"Where do you want me?"', "where")),
-    nar("where", '''{n}The clearing is grey under a thin moon, ringed with the tumbled stones of a village that was a village before there was a crusade. You walk out into the middle of it and stand among the stones, and then, because standing is not what she asked for, you begin to walk. Slowly. Badly. Favouring the leg.{/n}
-{n}The woods around you have gone completely silent.{/n}''',
+    nar("where", '''{n}You drag a false limp trail away from the charcoal pits toward the open stones. Delamere follows it six paces, then stops, taps a heel-mark with her boot and looks at your bad leg.{/n}
+"Wrong foot, stag. And you brushed those leaves against the wind." {n}She moves her bow to the other side of the clearing.{/n} "Leave it. It may make the thing pause. But dead tracks do not bleed. Walk for it. Keep your eyes off my trees."
+{n}You step out among the stones, favouring the leg. Behind you the woods go silent.{/n}''',
         c('[Stealth: walk as prey walks, and do not look toward the trees where she is waiting]',
           check=dict(Skill="SkillStealth", DC=22, Success="clean", Failure="scent", CommanderOnly=True))),
     nar("clean", '''{n}You do not look toward her trees. Not once. You limp from stone to stone like a thing too tired and hurt to care who hears it, and the silence thickens, and thickens, and then there is a shape in the moonlight that was not there before, low and long and grey, with too many joints in its arms, coming at you across the clearing without a sound.{/n}
@@ -307,8 +309,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
 visit(P + "woken.names", "The names", [
     nar("wall", '''{n}She has taken the lamp from its hook in the crypt and hung it on the carved stag's antler, which Kyado would think was sacrilege and she thinks is what antlers are for. Below it the wall is scored with lines of old Kellid letters, cut small and deep with a chisel she must have borrowed from someone who has not noticed yet. Stone dust lies in drifts along the floor. Her hands are white with it to the wrist.{/n}''',
         c('"What are you carving?"', "names")),
-    dl("names", '''"Names." {n}She does not stop.{/n} "I told you I would count them. The ones I can remember. I wake in the night now with a name in my mouth, like a pip, and if I do not cut it before morning it is gone again."
-{n}She taps the first line with the chisel.{/n} "The Stone Hares. That is their mark, the hare with its ears back. Under it, everyone of theirs I knew. Old Tsergun, who kept the ford. His wife, who could not keep a secret. Their girl who tracked foxes. She has no name on the wall yet. I cannot find it."''',
+    dl("names", '''"Tell me their names." {n}She sits back on her heels, the cord across her lap.{/n} "Everyone you bring to your fire. I will hear what they have done from their own mouths when we meet. I may dislike them. I will know them."''',
         c('"How many so far?"', "how_many"),
         c("[Look along the wall.]", "look")),
     nar("look", '''{n}The lines go on further than the lamp reaches. There is a hare, and a crooked ash tree, and a mark like an otter, and a mark like three stones, and under every mark a column of names. Some are cut clean. Some have been started and scratched through and started again.{/n}''',
@@ -366,21 +367,20 @@ visit(P + "woken.hide", "The hide", [
     nar("tight", '''{n}When she is done she sits back on her heels and looks at her work. The brace runs from below your knee to the arch of your foot, laced up the outside with gut, to carry the weight the torn thigh above it will not. Over the shin she has stitched a small mark into the hide in red thread: an arrow, flying, with nothing in front of it.{/n}
 {n}"Stand," she says. You stand. The ankle holds. She watches you walk to the window and back, and something in her face eases that you did not know was tight.{/n}''',
         c("Continue", "count")),
-    dl("count", '''"Good. Now hear me, because there is a thing I have been meaning to say, and I say things badly indoors." {n}She stays on her knees on your floor. It does not make her look any smaller.{/n}
-"I have walked this city, stag, the way I used to walk my valleys. I have heard what they say in your yard, and in the King's tavern, and on the walls. There are a great many people who think they have a claim on you: soldiers, priests, petitioners, the whole crowding hive of it. Some of them are right."''',
+    dl("count", '''"Good." {n}She watches you flex the braced ankle, then looks up.{/n} "Now your time. The soldiers have it all day. I want some before you fall asleep. I have heard who comes to this room. I mean to hear their names from you."''',
         c('"Does that bother you?"', "bother"),
         c('"I\'m not going to lie to you about it."', "no_lie")),
-    dl("bother", '''"Bother me?" {n}She considers it honestly, as she considers everything.{/n} "In my day a hunter who brought meat to one hearth and not the rest was a thief, whatever he called it. A hunter who fed every hearth in the village was doing his work." {n}She shrugs.{/n} "I will not be a hearth you visit when the others are cold. That is all. I will be fed, or I will go and feed myself. I have done it before."''',
+    dl("bother", '''"Sometimes." {n}She pulls the lace flat against your shin.{/n} "If you come to my fire after everyone else has tired you out, I will send you home. Bring me yourself, stag. Awake. Hungry. I have no use for the scraps."''',
         c("Continue", "names")),
-    dl("no_lie", '''"No. You have lied to me once, or you have not, and either way you know what it cost." {n}She looks at you levelly.{/n} "I did not ask for the truth. I told you I have been counting. I know already." {n}A shrug.{/n} "In my day a hunter who fed every hearth in the village was doing his work. I will not be a hearth you visit when the others are cold. That is all."''',
+    dl("no_lie", '''"Then do not." {n}She rests her palm against the brace.{/n} "And do not promise me a night you mean to give someone else. I will go hunting while you sort it out. There is plenty of meat in my woods."''',
         c("Continue", "names")),
     dl("names", '''"One thing more." {n}She gets up, stiffly, and brushes off her knees.{/n} "When I ask you their names, you tell me. All of them. Every one who sits at your fire. I do not need to like them. I may not. But I will not live in a village where I do not know who is sleeping next door, and what they did in the bad winter." {n}Her mouth twitches.{/n} "That is not jealousy, whatever the bards will say. It is how a village lives."''',
         c('"You\'ll have every name you ask for."', "promise"),
         c('"And if you don\'t like what they did in the bad winter?"', "winter")),
-    dl("winter", '''"Then I will tell them so, to their faces, and they will tell me what I did in mine, and we will both be right." {n}She almost smiles.{/n} "That is how a village works, stag. Nobody likes anybody very much. Everybody knows everybody. And when the wolves come down, everybody takes a spear."''',
+    dl("winter", '''"Then I will ask them about it. To their faces." {n}She winds the cord around her hand.{/n} "They can ask what I did to the families I sent into the snow. I have an answer. They had better have one too."''',
         c("Continue", "promise")),
     dl("promise", '''"And hear the rest, so you do not mistake me. Knowing them is not sitting down with them. When I have looked each of them in the face, I will decide whether I eat at your fire, or at mine, with you coming to me. That is mine to choose. Not yours, and not theirs." {n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside her jerkin, over her heart, where a city woman would keep a letter.{/n} "I will keep the measure. In case you grow." {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}
-"You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh." {n}She goes.{/n}''',
+"You wear my work against your skin. Tomorrow, when you lace it, remember whose hands were there tonight." {n}She catches your chin for a brief, hard kiss.{/n} "Mine. Come to my fire while you still have something left for them." {n}She goes.{/n}''',
         c("[Lace it looser, for the night.]", flags=(HIDE,))),
     # Authored: a prior who died before her waking cannot have helped with the brace.
     dl("made_alone", '"I cut it. I stitched it. Whose hands did you think these were?" {n}She is lacing as she talks, quick and rough, the way she cut the arrow out.{/n} "Four nights. My eyes are not what they were. A needle is a harder thing to aim than an arrow."',
@@ -391,7 +391,7 @@ visit(P + "woken.hide", "The hide", [
 # --- Doe in fawn (optional): crusade poachers in her woods, and whose law judges them ------------------------------------
 
 visit(P + "woken.poachers", "Doe in fawn", [
-    nar("trees", '''{n}A charcoal-burner's boy brings you out to the woods below her temple at a run, and will not say why, only that the Blessed "has got three of yours, and she's being very calm about it".{/n}
+    nar("trees", '''{n}A charcoal-burner's boy brings word from the woods below her temple. If he finds you in Drezen, you ride to the temple and leave the horse there; from its yard the boy takes you downhill at a run, and will not say why, only that the Blessed "has got three of yours, and she's being very calm about it".{/n}
 {n}She has. Three crusaders in Mendevian surcoats sit in the leaf litter with their backs to three oaks and their wrists tied behind the trunks with their own bowstrings. Their bows lie snapped in a neat pile. Between them and her, on the grass, lies a doe, gutted, and beside the doe, on a fold of her own hide, what came out of her: a fawn, unborn, not much bigger than a cat.{/n}''',
         c("Continue", "calm")),
     dl("calm", '''"Stag." {n}She does not look round. She is sitting on a stump with her bow across her knees, and her voice is perfectly pleasant.{/n} "Yours, I think. They told me so, very loudly, when I took their bows. The crusade. The Commander. They told me whose meat they were fetching and whose name would hang me if I touched them."
@@ -457,3 +457,23 @@ from storylines import delamere_trickster as _trickster, delamere_woods as _wood
 
 PATH_FIT = {s["Id"]: "T" for s in _trickster.SCENES + _woods.SCENES + SCENES}
 PATH_FIT_V2 = {}
+
+# Round 2: local arrivals precede woods encounters; distant dungeon rests do not.
+for _scene in SCENES:
+    if _scene["Id"] in (P + "woken.white_stag", P + "woken.glory", P + "woken.jester",
+                        P + "woken.old_deadeye", P + "woken.hide"):
+        _scene["Areas"] = [DREZEN]
+    elif _scene["Id"] == P + "woken.names":
+        _scene["Areas"] = [TEMPLE]
+    elif _scene["Id"] in (P + "woken.demon", P + "woken.poachers"):
+        _scene["Areas"] = [DREZEN, TEMPLE]
+    if _scene["Id"] == P + "woken.hide":
+        _names = next(node for node in _scene["Nodes"] if node["Id"] == "names")
+        # Speak the names locally; no invented household meeting or eligibility.
+        _names["Choices"][0]["Text"] = '[Name those who share your fire.] "You will hear every name."'
+        _names["Choices"][0]["Next"] = "names_paid"
+        _winter = next(node for node in _scene["Nodes"] if node["Id"] == "winter")
+        _winter["Choices"][0]["Next"] = "names_paid"
+        _scene["Nodes"].append(dl("names_paid",
+            '{n}You give the names, one by one. She repeats each, slowly, and knots the cord when she has heard the last.{/n} "Good. When I come to your fire, introduce me. I will do my own asking."',
+            c("Continue", "promise")))
