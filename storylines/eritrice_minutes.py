@@ -233,9 +233,9 @@ minutes(QUILL, "The quill", '"Can I ask about the quill?"', [
 {n}At last:{/n} "You could have written anything. Anything at all, and I would have had to keep it, because I promised to keep the minutes true, and a line in your hand would be a true record of what you wrote." {n}She turns the quill over.{/n}
 "You gave it back." {n}Her whiskers twitch.{/n} "I had a rule ready for whatever impertinence you wrote. You have left the chair holding an unused rule. I resent it, and I respect it, and I am minuting both."''',
       c("Continue", "close")),
-    e("close", '''{n}She rolls the scroll up, slowly, and does not look at you while she does it.{/n}
-"You returned to the table. You heard the objections, and you kept arguing. I had expected you to grow bored or call the whole Council useless." {n}She works at the ribbon.{/n} "You have not grown bored of me."
-{n}She ties the scroll, and her claws fumble the knot, which you have never seen them do.{/n} "I think you know what I am going to ask you next. Do not answer. I have not asked it yet, and when I do, I want to have the courage to ask it properly."''',
+    e("close", '''{n}She rolls the scroll slowly. Her fingers fumble the ribbon.{/n}
+"You came back. I want you to come back again. That is the part I can enter without disputing it."
+{n}She leaves the knot unfinished and looks at you.{/n} "I have another question. Not about the crusade, and not for the Council. Do not answer before I ask."''',
       c("[Leave the hall without answering.]")),
 ], requires=(CONVENING,), forbids=(QUILL,))
 
@@ -379,26 +379,23 @@ minutes(CIPHERED, "What the truth could not read", '"You looked at the Lexicon p
 "There is something hidden within these pages. A cipher. I held them up close, and at a distance, and from every angle, and I could not read it. Alichino wanted a key. Shyka could read it, and would not." {n}Her voice is perfectly level.{/n} "The title promises a paradox. It has not helped me read the pages."''',
       c('"You wanted it to be true or false. It\'s both."', "both"),
       c('"You read for the truth. Areelu wrote for the lie."', "lie")),
-    e("both", '''"Both." {n}She says the word as if it were in a language she had heard of but never spoken.{/n}
-"A paradox. The Lexicon of Paradox. I read the title, and then I read the pages as if the title were an exaggeration." {n}Her claws rest on the glass.{/n}
-"I have spent my whole existence finding the one truth that refutes a lie. It never occurred to me that the lie might need to be true as well, to be read. Everything I cannot read, I cannot read because I will not believe two things at once."''',
+    e("both", '''"Which two claims? A contradiction does not become legible because you call it a paradox."
+{n}She puts a claw on the glass covering the Lexicon.{/n} "Shyka read these pages. I did not. That tells us something about this cipher, not about the worth of truth. Give me an argument I can test."''',
       c("Continue", "humbled")),
-    e("lie", '''"She wrote it for someone who lies." {n}A slow, terrible understanding.{/n} "Of course. A cipher is a locked room, and a lock is made to keep out an honest hand. Alichino could not see into it either, for all his glasses."
-"If there is a way in, you may find it. I cannot see past the contradiction. Tell me what you make of it." {n}She leaves the pages turned toward you.{/n}''',
+    e("lie", '''"Areelu concealed her work. That is not proof that every honest reader must fail. Shyka read it, and kept the reading to themself."
+{n}She turns the book toward you.{/n} "If you have deciphered it, tell me what you actually found. Otherwise we shall mark the pages unread. I will not put your guess in the minutes as Areelu\'s intention."''',
       c("Continue", "humbled")),
-    e("humbled", '''"I have a request, and it is not a point." {n}She lifts the glass off the pages.{/n}
-"Teach me. Not the cipher. I do not want Areelu's secrets; I have read enough of what she did with them. Teach me to hold two things true for long enough to see what lies behind them. Once. So that I know what it feels like."''',
+    e("humbled", '''"Here is the inference I distrust: if Areelu intended the Worldwound, it cannot be a mistake."
+{n}She lifts the glass and sets the book aside.{/n} "Test it with me. Leave the cipher out of the argument; we have not opened it by talking."''',
       c('"Close your eyes. Tell me something you know is true, and something you know is false."', "teach"),
       c('"No. You\'d stop being you."', "refuse")),
-    e("teach", '''{n}She closes her eyes, and her whiskers tremble with the effort of keeping them closed.{/n}
-"True: the Worldwound is a mistake. False: the Worldwound can be a door." {n}A long pause.{/n} "...Both. Both at once. It is a mistake, and it is a door, and the crossroads is what you get if you do not choose."
-{n}Her eyes open, and they are wet, which you did not know they could be.{/n}
-"That was horrible. Do it again next week."''',
-      c("[Promise to.]", flags=(CONCEDED,))),
-    e("refuse", '''"You think so little of me." {n}But she does not sound angry. She sounds, of all things, uncertain.{/n}
-"Perhaps you are right. Perhaps the only reason I am any use at all is that I cannot do what you do." {n}She lays the glass back down over the pages, precisely.{/n}
-"Keep reading ciphers for me, then. And tell me the truth about what they say. That, I can do. I will write it down."''',
-      c("[Promise to.]")),
+    e("teach", '''"Areelu intended to open it. She did not therefore intend every consequence. Nor does intention make a deed right."
+{n}She crosses out a line in her notes, firmly.{/n} "I rejected her conclusion and used her premise. That was the error. A deliberate wound can still be a mistake. Its correction will take more than a refutation."
+{n}She pushes the notes between you.{/n} "Next week, bring me a better objection. The cipher stays unread by me."''',
+      c("[Promise to.]", flags=(CONCEDED, M + "exercise_promised"))),
+    e("refuse", '''"No. Disagreement does not unmake me."
+{n}She lays the glass back over the pages.{/n} "I will test my inference myself. If you learn what the hidden pages say, give me their meaning plainly. I need evidence, Commander, not flattery."''',
+      c("[Promise to.]", flags=(M + "reading_promised",))),
 ], requires=(POINT_ONE, CIPHER), forbids=(CIPHERED,), chapters=(5,))
 
 
@@ -423,7 +420,7 @@ minutes(AT_WORST, "At worst", '"About the key. About naming me."', [
     e("lover", '''"You want to know whether I meant it." {n}Her voice is very even, the way it is when she is holding a session together by force of will.{/n}
 "I proposed you as the key. In front of the whole Council, as if I were reading out the agenda. And I have voted aye on you, Commander, in this hall. Both are in my minutes, in the same hand." {n}Her claws are dug into the edge of the table. The wood has split under two of them.{/n}''',
       c("Continue", "truth")),
-    e("truth", '''"I will not lie to you. It is the one thing I have never done, and I will not begin now to make this easier for either of us."
+    e("truth", '''"I will answer this question plainly. I will not make the proposal sound kinder than it was."
 {n}She lifts her head.{/n} "Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind."
 {n}Her hands are flat on the table, and she does not take them away, and she does not look down.{/n} "The proposal was sound. I will not withdraw it. Tell me what you are going to do about it."''', *KEY_CHOICES),
     e("forgive", '''{n}She stares at you as if you had spoken in a language she did not know she understood.{/n}
@@ -545,8 +542,9 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
 minutes(RECORD, "The record", '"You\'re writing already?"', [
     nar("open", '''{n}Morning, or what passes for it in the hall. She is sitting at the head of the table in yesterday's simple gown with the robe of office over her shoulders like a blanket, and she is writing. There is ink on her fingers, and on the table, and on you. Two inkwells did not survive the night.{/n}''',
         c("Continue", "start")),
-    e("start", '''"I keep the minutes." {n}She does not look up.{/n} "Every session. That was a session. I adjourned it myself, at the end, and you seconded. Twice."
-{n}She dips the quill.{/n} "I have written the date and the members present. I am now at the point where I must decide what was said. I would like your view, since you said a good deal of it."''',
+    e("start", '''{n}Before you can look at the page, she catches your sleeve and pulls you close. Her kiss is slower in the morning; she lets you go with visible reluctance.{/n}
+"My back aches. Your armour is under Alichino\'s chair. I shall enjoy watching you retrieve it."
+{n}She returns to the page, still holding your sleeve.{/n} "Date and members present: entered. The rest belongs in a private appendix. Shall I write it, or leave the acts unrecorded? I will not write that we only debated."''',
       c('"Write it all. It was true."', "all"),
       c('"Leave it blank. Some things aren\'t for the record."', "blank"),
       c('[Read over her shoulder.]', "read", forbids=("eritrice.trickster.council.third_reading",)),
@@ -555,9 +553,9 @@ minutes(RECORD, "The record", '"You\'re writing already?"', [
 "You see my difficulty. \'Enacted\' is true. It says very little about what you did to my table."''',
       c('"Then write it all."', "all"),
       c('"Then leave the rest blank."', "blank")),
-    e("all", '''{n}She writes. It takes some time. She does not use the smaller hand she keeps for her private notes; she uses the upright one, the one the Council reads.{/n}
-"There." {n}She sands it, and her whiskers are twitching.{/n} "The chair has never before written the word 'purred' in the minutes of this Council. The chair has now written it three times." {n}She rolls the scroll and ties it.{/n}
-"If Alichino ever reads this, I will take it by force. I say so knowing exactly what I am saying."''',
+    e("all", '''{n}She takes a separate sheet and writes in her upright hand: "I wanted the Commander. I dismissed the servants, and took my lover to my table." Her whiskers lift as she adds the next lines.{/n}
+"There. A full private record. The Council gets the date and the members present. Alichino gets no appendix."
+{n}She folds it into her gown, against her skin.{/n} "He may dispute my rulings. He does not get to read how I purred."''',
       c("[Kiss the ink off her fingers.]", flags=(MINUTED,))),
     e("blank", '''{n}The quill stops. She simply looks at the empty space under the date.{/n}
 {n}Slowly, as if arguing it with herself:{/n} "An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened." {n}She writes, at last, in a small tight hand: "The chair was otherwise occupied."{/n}
@@ -566,7 +564,7 @@ minutes(RECORD, "The record", '"You\'re writing already?"', [
     e("read_third", '{n}You lean over her shoulder. Beneath the date, in her upright hand: "Private session. Present: the chair; the Commander. Business: the motion carried at third reading, enacted." The quill hovers over the next line.{/n}\n"You see my difficulty. \'Enacted\' is true. It says very little about what you did to my table."',
       c('"Then write it all."', "all"),
       c('"Then leave the rest blank."', "blank")),
-], requires=(ADJOURNED,), forbids=(RECORD,), delay=6)
+], requires=(M + "night",), forbids=(RECORD,), delay=6)
 
 
 # --- 14. A standing item: after the war. ----------------------------------------------------------------------------
@@ -627,7 +625,7 @@ EPILOGUE_PARAGRAPHS = [
     (MINUTED, "{n}The minutes of one private session were sealed by the chair and marked \"not to be read by Alichino\". Alichino read them. For a decade afterwards he avoided every room she was in, and when at last he could not, he did not meet her eyes.{/n}", (), ("council.epilogue_convened",)),
     (OMITTED, '''{n}Among her minutes was an entry that read only "The chair was otherwise occupied." She annotated it, in her smallest hand: "Learned from the Commander. Not regretted."{/n}'''),
     (AFTER_WAR, "{n}The standing item remained on every agenda for as long as there were agendas: what the Commander intends to do after the war. The answer was entered anew every session, in two hands. It never changed much.{/n}"),
-    ((URGED, ESSENCE_GIVEN), "{n}She gave her essence to the cauldron, and afterwards she told the Commander that it had been excruciating, because she had promised to say so.{/n}"),
+    ((URGED, M + "pain_reported"), "{n}She gave her essence to the cauldron, and afterwards she told the Commander that it had been excruciating, because she had promised to say so.{/n}"),
     (PROMISED, "{n}The Commander's promise that nobody would take anything from her by force was entered in her minutes the week the cauldron came. She kept the page folded down.{/n}"),
     (M + "temper_warned", "{n}In the Commander's hand, in the margin of a session that ended in overturned chairs: \"The Commander warned the chair.\" She read it more often than anyone knew.{/n}"),
 ]
@@ -640,6 +638,7 @@ def integrate(payload):
         if have is not None and have != cues:
             raise ValueError("Conflicting binding: " + key)
         payload["SeenCues"][key] = list(cues)
+    payload.setdefault("Etudes", {})[M + "lexicon_deciphered"] = "716fb3c200abcc04c817d5061bd54155"
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["eritrice.trickster.epilogue.we_did_meet"]["Nodes"][0]
     for flag, text, *extra in EPILOGUE_PARAGRAPHS:
@@ -647,3 +646,49 @@ def integrate(payload):
         more = extra[0] if extra else ()
         forb = extra[1] if len(extra) > 1 else ()
         page.setdefault("Paragraphs", []).append(p(text, requires=req + tuple(more), forbids=forb))
+
+# ROUND 2 AUTHORED: extraction is performed at the mandatory debrief, not the optional pain question.
+EXTRACTED = M + "extracted"
+PAIN_REPORTED = M + "pain_reported"
+SEEN_CUES[EXTRACTED] = ["f4a908e91c5c447418fa52ddc589184f"]
+for _s in SCENES:
+    if _s["Id"] == ESSENCE:
+        _s["Forbids"].extend((EXTRACTED, "council.debrief_motion"))
+    if _s["Id"] == ADJOURNED:
+        # S1: user's fill process continues the mutual first encounter; public scroll stays aside.
+        _cut = next(x for x in _s["Nodes"] if x["Id"] == "cut")
+        _cut["Choices"][0]["Next"] = ADJOURNED + ".explicit.1"
+        _s["Nodes"].append(nar(ADJOURNED + ".explicit.1",
+            '{n}She draws you against her, her gown slipping free, and the last light goes out. The scroll lies untouched at the far end of the table.{/n}', c("[...]")))
+
+SCENES.append(scene(M + "extraction_account", "The contribution", "Eritrice", 5, "", [
+    e("account", '"You told me to contribute, and I said I would tell you what it cost. It was excruciating. I held the cauldron until it was done. Do not improve that word in your reply."\n{n}Below it she has entered the date of the contribution, distinct from the date of this letter.{/n}',
+      c('[Answer her account plainly.]', flags=(PAIN_REPORTED,))),
+], requires=("trickster.ever", URGED, EXTRACTED), forbids=(CLOSED, LOST, PAIN_REPORTED),
+    Remote=True, Relationship="eritrice", delay=6, last=5))
+
+# No promise about knowledge turns into a deciphered Lexicon or a discovered motive by scene completion.
+for _s in SCENES:
+    if _s["Id"] == CIPHERED:
+        _start = _s["Nodes"][0]
+        _start["Choices"].append(c('"I have deciphered the hidden pages. We can discuss the actual text."', "readable", requires=(M + "lexicon_deciphered",)))
+        _s["Nodes"].append(e("readable", '"Then our states differ: you have read it; I have not. Shyka read it and withheld the reading." {n}She draws a fresh page toward her.{/n} "Give me the account when you can. I will put your name beside it. It is evidence, not my own reading."', c("[Return to her argument.]", "humbled")))
+
+# Optional knowledge promises are collected within the existing future discussion, never used to buy an aye.
+for _s in SCENES:
+    if _s["Id"] == AT_WORST:
+        next(x for x in _s["Nodes"] if x["Id"] == "truth")["Text"] += '\n"I still have not read the hidden pages myself. If you promised me an account, do not confuse that promise with a reading already delivered."'
+    if _s["Id"] == STANDING:
+        _start = _s["Nodes"][0]
+        _start["Choices"].extend((
+            c('"First, the account of the hidden pages I promised you."', "reading_account",
+                requires=(M + "reading_promised", M + "lexicon_deciphered"), forbids=(M + "reading_reported",)),
+            c('"You asked for another exercise. Let us test the inference about Areelu."', "exercise_again",
+                requires=(M + "exercise_promised",), forbids=(M + "exercise_paid",)),
+        ))
+        _s["Nodes"].extend((
+            nar("reading_account", '{n}You give her the account of the deciphered pages, distinguishing their contents from your conclusions. She takes notes, then reads the account back, stopping wherever the two differ.{/n}\n"Your reading, entered under your name. Mine remains unfinished. Now we can dispute the evidence instead of the title."',
+                c("[Return to the standing item.]", "start", flags=(M + "reading_reported",))),
+            e("exercise_again", '"A deliberate design cannot be a mistake. That was my inference." {n}She draws a line through it again on the fresh page.{/n} "No. Intention does not guarantee the result, or excuse it. This objection holds. I shall put it beside the Crossroads draft too."\n{n}She pushes her chair nearer yours.{/n} "There is your second exercise. Now answer the question I actually called this sitting for."',
+                c("[Return to her question.]", "start", flags=(M + "exercise_paid",))),
+        ))
