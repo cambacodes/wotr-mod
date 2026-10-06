@@ -348,3 +348,6 @@ def integrate(payload):
     for para in sacrifice["Paragraphs"]:
         if "kiana.widowed" in para["Requires"]:
             para["Requires"] = [DEAD]
+
+    from storylines import kiana_round2
+    kiana_round2.integrate(payload)
