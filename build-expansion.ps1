@@ -41,6 +41,11 @@ try {
     # Static gate (GLOBAL-15): structure, dead gates, TypeIds, native bindings, released-save references.
     & $pythonPath tools/rrt_verify.py --strict --quiet --story development/Story.json --game $GameDir
     if ($LASTEXITCODE) { throw 'Static verification failed (tools/rrt_verify_report.txt)' }
+    # Engine round 3: earned payoffs and departure/return epochs.
+    & $pythonPath tools/payoff_lint.py --strict
+    if ($LASTEXITCODE) { throw 'Payoff contract lint failed' }
+    & $pythonPath tools/departure_lint.py --strict
+    if ($LASTEXITCODE) { throw 'Departure lint failed' }
     # FULL preflight: every Python test, including save guards, L1-L6 and the ideal run.
     & $pythonPath -m unittest discover -s tests -p 'test_*.py' -q
     if ($LASTEXITCODE) { throw 'Full Python test gate failed' }
