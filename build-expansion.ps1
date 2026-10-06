@@ -14,6 +14,9 @@ try {
     $pythonPath = (Get-Command $Python -ErrorAction Stop).Source
     $dotnetPath = Join-Path $env:LOCALAPPDATA 'RanRomanceTools/dotnet/dotnet.exe'
     if (!(Test-Path -LiteralPath $dotnetPath)) { $dotnetPath = (Get-Command dotnet -ErrorAction Stop).Source }
+    # Python tests shell out to dotnet by name; expose the resolved SDK on PATH for this run.
+    $previousPath = $env:PATH
+    $env:PATH = (Split-Path -Parent $dotnetPath) + [IO.Path]::PathSeparator + $env:PATH
     $env:PYTHONHASHSEED = '0'
     $env:RRT_GAME_DIR = $GameDir
     $env:RRT_PYTHON = $pythonPath
@@ -154,5 +157,6 @@ try {
     $env:RRT_PYTHON = $previousPython
     $env:RRT_PARENT_BINDINGS = $previousBindings
     $env:RRT_TEST_EXPANDED_EPILOGUE = $previousExpandedEpilogue
+    if ($previousPath) { $env:PATH = $previousPath }
     Pop-Location
 }
