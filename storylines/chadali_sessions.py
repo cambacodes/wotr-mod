@@ -70,7 +70,7 @@ def session(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3
 # --- 1. What you said about me (to Alichino, or to Cobblehoof). -----------------------------------------------------
 
 session(OVERHEARD, "What you said about me", '"You look like you\'ve been told something."', [
-    nar("open", '''{n}There is no parcel. Chadali is sitting at the Council table with her hands flat on the wood, very straight, like a petitioner who has come to hear a verdict. In front of her lies a small black notebook that is not hers.{/n}''',
+    nar("open", '{n}There is no parcel. Chadali sits at the table, her hands flat on the wood. She waits until you have stopped moving.{/n}',
         c("Continue", "alichino", requires=(SAID_BABBLING,)),
         c("Continue", "cobblehoof", requires=(SAID_CRAZY,), forbids=(SAID_BABBLING,))),
     ch("alichino", '''"Alichino left this for me. He said it was 'in my interest to be informed'." {n}She opens the little black book to a page marked with a cookie crumb and reads, in a careful, flat voice:{/n}
@@ -83,13 +83,9 @@ session(OVERHEARD, "What you said about me", '"You look like you\'ve been told s
       c('[Trickster] "I said what they wanted to hear, to see what they\'d give me for it."', "trick", flags=(SAID_IT_TO_USE_THEM,)),
       c('"I meant it. Then. I didn\'t know you."', "meant", flags=(MEANT_IT,)),
       c('"I\'m sorry. It was cruel, and I said it to get something."', "sorry", flags=(SAID_IT_TO_USE_THEM,))),
-    ch("trick", '''"To see what they'd give you." {n}She repeats it slowly.{/n} "You used me as a coin. To buy them."
-{n}For a moment she is very quiet. Then, to your surprise, she nods.{/n} "That's the Council. Everybody here trades everybody. I just thought I was the one thing nobody traded, because I'm so silly nobody would want me."
-"You found a use for my silliness. That's clever. I hate it." {n}She pushes the black book away.{/n} "Tell me next time. Before. I'll babble on purpose. I'm very good at it."''',
+    ch("trick", '"To see what they\'d give you. You used me to buy them." {n}She holds your eyes.{/n} "Next time you want a distraction, ask me. I\'ll babble on purpose. I won\'t enjoy hearing afterwards that you called me mad."\n"And don\'t say that\'s how this Council works. I know how it works."',
       c("Continue", "close")),
-    ch("meant", '''{n}She takes that like a blow, and does not flinch, which is worse to watch than if she had.{/n}
-"Then." {n}A breath.{/n} "Then it was true, for you, then. And now you know me, and you don't mean it." {n}She thinks about it with visible effort.{/n}
-"I babble. I know I babble. Eritrice has a special mark in her minutes for it: a little squiggle. I've seen it." {n}Her mouth wobbles.{/n} "I'd rather be babbling than frightened. That's all it is, mostly."''',
+    ch("meant", '{n}She takes that like a blow, and does not flinch, which is worse to watch than if she had.{/n}\n"Then." {n}A breath.{/n} "Then it was true, for you, then. And now you know me, and you don\'t mean it." {n}She thinks about it with visible effort.{/n}\n"I babble. I know I babble. I remember Eritrice marking the minutes with a little squiggle. I\'ve seen it." {n}Her mouth wobbles.{/n} "I\'d rather be babbling than frightened. That\'s all it is, mostly."',
       c('"I know that now."', "close")),
     ch("sorry", '''"Sorry." {n}She tastes the word.{/n} "It was cruel. You said it to get something. Those are both true." {n}She nods, slowly.{/n}
 "Did you get it?" {n}Genuinely curious, through the hurt.{/n} "The thing you wanted. Was it worth it?"
@@ -108,21 +104,16 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
 "They talk about futures as if they'd been to them already and found them disappointing. Some are dull, they say. They say it kindly. Shyka is always kind when they're being horrible."''',
       c('"Are they right?"', "right"),
       c('"Futures are just odds. You\'re chance. You should be the one they\'re afraid of."', "afraid")),
-    ch("right", '''"Maybe!" {n}Brightly.{/n} "I bake. I send luck. I clap at meetings. It's not very exciting, if you're a thing that's seen the end of worlds."
-{n}Then she looks at you, and her head tilts.{/n} "But you're not dull. I've watched Shyka watching you. They lean forward when you talk, and Shyka never leans forward for anybody. I think you make the dull futures interesting. I think you're the only reason they still come to our meetings."''',
+    ch("right", '"They might be. That doesn\'t mean I have to help them be right." {n}She draws a cookie from her sleeve, then another.{/n} "I\'ve been changing the spice. Next time they visit, they can guess it. If they know everything already, let them say it before they bite."',
       c("Continue", "bet")),
-    ch("afraid", '''"Oh, I should!" {n}She sits up straight, her bracelets clinking, and considers the empty chair.{/n} "I can try, can't I? Let them look bored. I'll make a bet on it, and they can decide whether to laugh."
-"Nobody at this table wants to lose a bet. Not even Shyka. Especially not to me." {n}The dimples return.{/n}''',
+    ch("afraid", '"I\'m chance. I haven\'t forgotten!" {n}She taps the cookie.{/n} "I\'ve been planning a test. A small one. They can know the end of the world and still get breakfast wrong."',
       c("Continue", "bet")),
-    ch("bet", '''"Let's make a bet." {n}She leans across the table, eyes shining.{/n}
-"Next time you see Shyka, do something they didn't see coming. Anything. Something small. Something silly. And if they laugh, you win." {n}She holds out her hand.{/n} "And if they don't laugh, it means they saw it, and then I win, and you owe me a very dull cookie."''',
+    ch("bet", '"You bring the cookie to Shyka. I\'ll choose the spice." {n}She holds out her hand.{/n} "If they laugh, you win one of mine. If they don\'t, I get one of yours. That won\'t prove what they foresaw. It will prove whether they\'ll play."\n"And don\'t bring your cook\'s best. I want the one you made."',
       c('[Shake on it.] "Something they didn\'t see coming."', "shake", flags=(UNFORESEEN,)),
       c('"What if what they didn\'t see coming is me, here, with you?"', "here", flags=(UNFORESEEN,))),
     ch("shake", '''{n}Her hand closes on yours with surprising strength.{/n} "Done. Oh, I hope they laugh. I love it when Shyka laughs. It sounds like crockery falling down a very long staircase."''',
       c("[Let go of her hand.]")),
-    ch("here", '''{n}She opens her mouth, and closes it, and goes pink all the way up to the white flowers in her hair.{/n}
-"That's... cheating. That's not a bet, that's flirting in a bet's clothes." {n}She does not let go of your hand.{/n}
-"...I didn't see it coming. Don't tell Shyka. They'll say they did and spoil it." {n}Very quietly:{/n} "That's the most interesting future I've ever been in."''',
+    ch("here", '"That\'s flirting in a bet\'s clothes." {n}She turns pink, then catches your hand herself.{/n} "I like it. Shyka can make their own guesses about us. I haven\'t asked them."',
       c("[Hold on.]")),
 ], requires=(BORN,), forbids=(FORESEEN,))
 
@@ -185,36 +176,28 @@ session(SONG, "A drinking song", '"Are you... singing?"', [
 # --- 5. A parcel for the shrine. --------------------------------------------------------------------------------------
 
 session(SHRINE, "A parcel for the shrine", '"You want me to carry something?"', [
-    ch("start", '''{n}She is holding out a parcel, bigger than her usual ones, wrapped in yellow silk and tied with far too many knots.{/n}
-"For my shrine. In Drezen. There's a little one, by the grain market, with a crack in the step. Three priests and a dog." {n}She presses it into your arms.{/n}
-"I can't take it myself. I don't go down there; it'd frighten them, having me turn up, and they'd feel they had to cook." {n}She looks at the parcel, not at you.{/n} "Would you? I want them to meet you."''',
+    ch("start", '{n}Two messages lie beside a parcel: the provisioner\'s demand for a seized cache, and a petition from Chadali\'s shrine by Drezen\'s grain market. She has untied the yellow silk to show you the goods.{/n}\n"The army wants its rations. My priests want relief for the people coming off those walls. They\'ve both claimed the whole lot. There isn\'t a whole lot twice."\n"Look with me. Before somebody calls it a miracle and sends everybody home hungry."',
       c('"Of course."', "yes", flags=(CARRIED_PARCEL,)),
       c('"What\'s in it?"', "what")),
-    ch("what", '''"Cookies. And a letter. And a new bowl for the dog." {n}She counts on her fingers.{/n} "And a little bit of luck, knotted into the string. Not much. Just enough so the step doesn't crack any further."
-"And..." {n}She hesitates.{/n} "And a note that says the parcel came by way of the Commander. So they know you walked it down. I want them to know you."''',
+    ch("what", '"Dry rations, flour and honey. The provisioner lent me a little oven and a tray to see what could be cooked. He wants them back before the next ration issue."\n{n}She opens the messages.{/n} "Your seal is on the cache. My priests know that. Don\'t pretend these sacks fell out of Elysium."',
       c('"I\'ll take it. And I\'ll knock."', "yes", flags=(CARRIED_PARCEL,)),
       c('"I\'ll send a runner. I can\'t be seen at a shrine."', "runner")),
-    ch("yes", '''{n}Her whole face lights up.{/n} "You'll knock! Oh, they'll faint. Brother Anand will faint, and the dog will bark, and Sister Mira will try to give you tea."
-"Drink the tea. It's terrible. It's the worst tea in Drezen." {n}She squeezes your arm.{/n} "Tell them it came from me. Tell them I'm well. Tell them I think about them every morning, all three of them, and the dog."''',
+    ch("yes", '{n}You open the sacks together. The dry rations meet the army\'s stated claim; the flour and honey remain. You answer each message as though its objection has forced precisely this division. Chadali watches, then takes the pen.{/n}\n"Very clever. Now put the actual amounts in both letters. Neither gets to think they own the other\'s share."\n{n}She knots the relief parcel.{/n} "I\'ll bake the surplus. You take this to the shrine. Tell them who sent it. And knock!"',
       c("Continue", "close")),
-    ch("runner", '''"Can't be seen!" {n}Chadali takes the parcel back.{/n} "There are three priests and a dog. Which one do you think will sell your secrets?"
-{n}She unties the silk, takes out the note and scratches out a line.{/n} "There. Now it says you sent it. It doesn't say you knocked."
-"A runner, then. A fast one. Tell them to knock loudly; the dog's a bit deaf." {n}She reties the parcel and pushes it across the table.{/n} "And the bowl is for the dog. Nobody is to put incense in it."''',
+    ch("runner", '"A runner, then." {n}She writes the division herself: rations to the army, flour and honey to the shrine. Both letters name the Commander\'s cache.{/n} "The borrowed oven and tray come back after I\'ve baked. Tell the provisioner I said so. No luck in place of his equipment."',
       c("[Send the runner.]")),
-    ch("close", '''"Thank you." {n}She says it very simply, without any flourish.{/n} "I'm usually the one carrying things. It's very nice to watch somebody else do it badly."''',
+    ch("close", '{n}She tests the parcel\'s knot, then gives it back.{/n} "There. Both claimants know what they\'re getting. And I have honey left. Come tomorrow. I want you here when I open the oven."',
       c("[Carry it.]")),
 ], requires=(PRAYERS,), forbids=(SHRINE,))
 
 
 # --- 6. Two patrons: Eritrice. ---------------------------------------------------------------------------------------
 
-session(PATRONS, "Two beautiful ladies", '"You and Eritrice..."', [
-    ch("start", '''"Socothbenoth calls us 'two beautiful ladies'." {n}She giggles.{/n} "It makes Eritrice furious. She says it's irrelevant to the agenda. She writes it down anyway."
-"The patron of debate and the patron of serendipity. We're opposites. She plans everything and I plan nothing. She writes everything down and I forget everything. She never lies and I..." {n}She stops.{/n} "Well. I tell very small lies. About cookies. Mostly."''',
+session(PATRONS, "Two beautiful ladies", '"Tell me about Eritrice."', [
+    ch("start", '"Socothbenoth calls us \'two beautiful ladies\'." {n}She giggles.{/n} "I remember Eritrice protesting that it was irrelevant to the agenda. She wrote it down anyway."\n"The patron of debate and the patron of serendipity. We\'re opposites. She plans everything and I plan nothing. She writes everything down and I forget everything. She never lies and I..." {n}She stops.{/n} "Well. I tell very small lies. About cookies. Mostly."',
       c('"Are you friends?"', "friends"),
       c('"She agreed with you once. In the first session."', "agreed")),
-    ch("agreed", '''"She did!" {n}Chadali sits up, delighted.{/n} "She said, 'I think I agree with Chadali.' In front of everyone. I nearly fell off my chair. I've never been agreed with by Eritrice before or since."
-"I think she was so surprised she wrote it down twice." {n}She sighs happily.{/n} "It was the best day."''',
+    ch("agreed", '"She did!" {n}Chadali sits up, delighted.{/n} "She said, \'I think I agree with Chadali.\' In front of everyone. I nearly fell off my chair. I hadn\'t heard her agree with me before that."\n"I think she was so surprised she wrote it down twice." {n}She sighs happily.{/n} "It was the best day."',
       c('"Are you friends?"', "friends")),
     ch("friends", '''{n}She thinks about it for a long time, turning her bracelet.{/n}
 "She thinks I'm silly. I think she's lonely. We're both right." {n}Softly.{/n} "She's been at this table longer than anyone, holding it together with her claws. Nobody brings her anything. So I bring her cookies, and she says she doesn't eat sweet things, and then they're gone."
@@ -236,15 +219,11 @@ session(PATRONS, "Two beautiful ladies", '"You and Eritrice..."', [
 # --- 7. What chance wishes for (after the commit). ---------------------------------------------------------------
 
 session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
-    ch("start", '''"Me?" {n}She is honestly startled, a cookie halfway to her mouth.{/n} "Nobody asks me that. I'm the one people wish to. It'd be like asking a well what it wants to throw a coin into."
-{n}She puts the cookie down and thinks about it, properly, for so long that the lamp needs trimming.{/n}
-"I wish to be surprised." {n}She says it slowly, as if finding it out.{/n} "I'm chance. I've seen every way a coin can land and every way this Council can argue. Very little surprises me any more. You do. You keep happening sideways."''',
-      c('[Trickster] [Make a flower appear from behind her ear. One of hers, stolen earlier.]', "flower", flags=(SURPRISED_HER,)),
+    ch("start", '"Me?" {n}She puts down the cookie.{/n} "Usually there\'s a petition under that question. Let me see your hands."\n{n}She turns them over, smiling.{/n} "A surprise. A small one. The Council\'s been arguing about the Wound all afternoon. I\'d like something they can\'t argue about."',
+      c('[Trickster] [Palm a flower while she studies your other hand, then bring it from behind her ear.]', "flower", flags=(SURPRISED_HER,)),
       c('[Tell her something you\'ve never told anyone.]', "secret", flags=(SURPRISED_HER,)),
       c('"I can\'t surprise you on purpose. That\'s not how it works."', "purpose")),
-    ch("flower", '''{n}You reach behind her ear and bring back a white flower, one of her own, that you took from her hair an hour ago while she was talking about oranges.{/n}
-{n}She gasps, and snatches at her hair, and finds the gap, and bursts out laughing.{/n} "You stole it! When? I didn't feel a thing! Nobody touches my flowers without my noticing!"
-{n}She holds the flower as if it were a jewel.{/n} "That's a good surprise. A very good one. Stealing something and giving it back. That's the nicest kind of trick."''',
+    ch("flower", '{n}As Chadali inspects one hand, the other slips a flower from the loose strand beside her cheek. You bring it round behind her ear and offer it. She feels the gap, catches your wrist, and laughs.{/n}\n"Just now! While I was watching the wrong hand." {n}She takes the flower.{/n} "Do it again. No, wait. I\'ll watch both this time."',
       c("Continue", "close")),
     ch("secret", '''{n}You tell her. It does not matter what; it is something you have not said aloud to anyone, not to your companions, not to yourself in the dark. It is not a large thing. It is a true one.{/n}
 {n}Chadali listens without clapping. When you finish, she is very still.{/n} "Oh," {n}she says.{/n} "Oh. I didn't know that." {n}Wonderingly:{/n} "I didn't know that. I'm chance, and I didn't know."''',
@@ -258,10 +237,9 @@ session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
       c('"Stay the night."', "stay")),
     ch("bake", '''"Something new!" {n}She claps.{/n} "Oh, that's dangerous. I'll probably burn it. You'll have to eat it anyway." {n}She is already muttering about spices.{/n}''',
       c("[Leave her plotting.]")),
-    ch("tell", '''{n}She leans close and whispers it. It is about a meteor shower, and a party, and an azata who was there when she opened her eyes and whom she has never been able to find again.{/n}
-"I still look," {n}she says.{/n} "Every time the sky does something silly. That's the only thing I've ever looked for. Until you."''',
+    ch("tell", '{n}She speaks close to your ear, of the party beneath the meteor shower and an azata who danced beside her when she first opened her eyes.{/n} "I never found that one again. I still look when I go home. There were so many people dancing."\n{n}She leans against you, her bracelets resting on your arm.{/n}',
       c("[Hold her.]")),
-    ch("stay", '''"That isn't a wish, that's just asking." {n}But she is already pulling the cushions out from under the table, where she has apparently been keeping them.{/n} "Granted. Obviously. Wish for something harder next time."''',
+    ch("stay", '"Granted." {n}She pulls the familiar cushions out from under the table and catches your sleeve.{/n} "I\'ve been waiting for you to ask. Help me with these, then come here."',
       c("[Stay.]")),
 ], requires=(NIGHT,), forbids=(WISH,))
 
@@ -288,14 +266,12 @@ session(BETTING_LIVES, "You bet with people", '"You\'ve heard about the feint."'
     ch("silent", '''{n}You say nothing. You do not take a cookie. You sit, on your side of the long table, and let the silence be as long as it needs to be.{/n}
 {n}After a long time she gets up and comes round, and sits down next to you, and does not touch you, and then does.{/n} "Names," {n}she says.{/n} "Tell me their names. If you're going to bet their lives, you can remember whom you're betting."''',
       c("Continue", "felt", flags=(FELT_IT,))),
-    ch("job", '''"Then do it slower." {n}Instantly.{/n} "Or do it worse. I don't care. Win by a bit less. Nobody will write you a song about the feint."
-{n}She stands up.{/n} "I'm going to go and be sad about them, since you won't. That's my job, then. Somebody has to." {n}She takes the unopened parcel with her. At the door she stops.{/n} "Come back tomorrow. I'll have finished being sad. I'll need you to have started."''',
+    ch("job", '"Then I\'m still angry." {n}She takes the unopened parcel.{/n} "You don\'t have to sit here. You do have to know whom you sent. Until you do, don\'t ask me to make you feel better about it."',
       c("[Let her go.]")),
     ch("refuse", '''"...Oh." {n}She looks at the unopened parcel as if it had done something surprising.{/n} "It will cost you. A longer march. More of the other kind of dying, the slow kind, in the snow, where nobody writes the names down at all."
 "I don't know if that's better. I'm chance; I never know if it's better." {n}She unties the ribbon.{/n} "But you looked at it, here, where I could see, and you decided it yourself. That's all I wanted. Eat a cookie. You're going to need your strength for the long way round."''',
       c("[Eat one.]")),
-    ch("felt", '''{n}She holds your hand on the table between you, tightly, and does not say it is all right, because it is not.{/n}
-"They were lucky, you know. In a way." {n}Very quietly.{/n} "Their Commander knew their faces. Most soldiers don't get that much luck."''',
+    ch("felt", '{n}You open the company roll between you. Sergeant Venn, spearman Oris, scout Dessa: you read each name aloud, all the way to the last. Chadali repeats the names she catches herself stumbling over. Then she holds your hand beside the signed order.{/n}\n"Now you know whom you\'re sending. So do I. Bring this back afterwards. I want to know who returned."',
       c("[Hold on.]")),
 ], requires=(MORNING,), forbids=(BETTING_LIVES,))
 
@@ -308,8 +284,7 @@ session(OLD_FELLOW_AGAIN, "The old fellow, again", '"You\'ve been watching Cobbl
       c('"Stop, then. You were right to want to."', "stop", flags=(COBBLE_FREED,)),
       c('"He still votes against me."', "votes"),
       c('"You\'re not asking. Then why tell me?"', "why")),
-    ch("votes", '''"Then out-argue him!" {n}Fierce, sudden, bracelets clashing.{/n} "You out-argue everybody! Use your tongue instead of my luck!"
-"I kept making an old fellow miserable because my lucky charm told me to, and it was the easiest thing I've ever done, and that's what frightens me." {n}She takes a breath.{/n} "I'm stopping. You can be cross. I'll bake you something anyway."''',
+    ch("votes", '"Then out-argue him!" {n}Her bracelets clash.{/n} "You balanced that coin without my help. You can answer an old fellow without making him trip on every step."\n"Ever since you told me to, I\'ve kept this up. I\'m stopping now. He gets his mornings back."',
       c('"...Stop. You\'re right."', "stop", flags=(COBBLE_FREED,)),
       c('"Then I\'ll be cross."', "cross", flags=(COBBLE_FREED,))),
     ch("why", '''"Because we're... because I'm yours." {n}She says it plainly.{/n} "And you should know when I've decided to do something you won't like. That's fair. I'd want to know."
@@ -402,3 +377,39 @@ def integrate(payload):
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
     page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+
+
+# Actual orders and actual names are distinct receipts.
+_bet = next(sc for sc in SCENES if sc["Id"] == BETTING_LIVES)
+_bn = {nd["Id"]: nd for nd in _bet["Nodes"]}
+for _choice in _bn["start"]["Choices"][:3]:
+    _choice["Set"].append(S + "feint_signed")
+_bn["start"]["Choices"][3]["Set"].append(S + "feint_refused")
+_bn["start"]["Choices"][3]["Crusade"] = dict(Resource="Finances", Amount=-100)
+_bn["start"]["Choices"].append(c('"Wait. I need the company roll before I decide."', abort=True))
+for _id in ("command", "wanted", "silent"):
+    _bn[_id]["Choices"][0]["Text"] = "[Read every name on the company roll aloud.]"
+    _bn[_id]["Choices"][0]["Set"].append(S + "names_recounted")
+
+# The reporter supplies either a book or spoken words, never both by inference.
+_report = next(sc for sc in SCENES if sc["Id"] == OVERHEARD)
+_rn = {nd["Id"]: nd for nd in _report["Nodes"]}
+for _id in ("trick", "meant", "sorry"):
+    _rn[_id]["Choices"][0]["Requires"].append(SAID_BABBLING)
+    _rn[_id]["Choices"].append(c("Continue", "close_cobblehoof", requires=(SAID_CRAZY,), forbids=(SAID_BABBLING,)))
+_rn["close"]["Choices"][0]["Set"].append(S + "notebook_returned")
+_report["Nodes"].append(ch("close_cobblehoof", '"Tell the old fellow I heard him. And tell him I answered you myself." {n}She moves her chair back towards yours.{/n} "He can dislike my answer. He does not get to make it for me."', c("[Carry her answer back.]", flags=(S + "oral_reply",))))
+EPILOGUE_PARAGRAPHS[:] = [(S + "notebook_returned" if flag == SAID_IT_TO_USE_THEM else flag, text) for flag, text in EPILOGUE_PARAGRAPHS]
+ROUND2_PARAGRAPHS = [
+    (S + "oral_reply", '{n}Cobblehoof received her answer in words, and answered "Phrr." Chadali kept visiting his chair to argue her own case.{/n}'),
+    (S + "feint_signed", '{n}The company went out under the signed order. After the fighting Chadali brought the casualty roll to the Commander, and would not accept a victory toast in its place.{/n}'),
+    (S + "feint_refused", '{n}The army took the longer road. The extra supplies cost a hundred crowns; the snow cost lives. Chadali helped the returning wounded and did not call the march lucky.{/n}'),
+]
+_shr = next(sc for sc in SCENES if sc["Id"] == SHRINE)
+for _nd in _shr["Nodes"]:
+    if _nd["Id"] in ("yes", "runner"):
+        _nd["Choices"][0]["Set"].append(S + "cache_allocated")
+_wish = next(sc for sc in SCENES if sc["Id"] == WISH)
+# Explicit brief: later chosen night, familiar cushions, her impatient invitation.
+_wish["Nodes"].append(ch(WISH + ".explicit.1", '{n}She pulls the familiar cushions into place, catches your sleeve and draws you down beside her. Her mouth meets yours before you can finish speaking.{/n} "You\'re staying."', c("[Stay.]")))
+next(nd for nd in _wish["Nodes"] if nd["Id"] == "stay")["Choices"][0]["Next"] = WISH + ".explicit.1"

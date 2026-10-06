@@ -68,9 +68,7 @@ internal static class ChadaliTricksterTests
         // The outcomes of a walk that took the named choice of the named node.
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Choice(scene, node, index);
-            var hits = Program.Walk(scene, w).Where(r => chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
-                                                          && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))).ToList();
+            var hits = Program.WalkVia(scene, w, node, index);
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -120,23 +118,23 @@ internal static class ChadaliTricksterTests
               && Choice(orange, "open", 1).Forbids.Contains("council.orange_called")
               && Choice(orange, "open", 2).Requires.Contains("council.orange_called") && Choice(orange, "open", 2).Next == "start_edge",
             "The payoff does not let the Commander plant the orange on the page (Council_5-1/Cue_0020), or leave the bag alone.");
-        foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
+        foreach (var hall in own.Where(s => !Rules.IsRemote(s) && s.InteractionHub != "chadali.presence.market"))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
                   && hall.Chapters.All(c => c >= 3 && c <= 5) && hall.Forbids.Contains("chadali.lost_at_council"),
                 "A hall scene is not on her private list in Chapters 3-5 behind the sealed-hall guard: " + hall.Id);
         foreach (var remote in new[] { letter, lucky })
             check(Rules.IsRemote(remote) && remote.MinChapter == 5 && remote.MaxChapter == 5, "A sealed-hall letter is not a Chapter 5 letter: " + remote.Id);
-        check(own.Count(Rules.IsRemote) == 3, "Chadali has letters beyond the spec's one-per-branch budget (orange, 'Lucky you', the late wager; one per branch).");
+        check(own.Count(Rules.IsRemote) == 4, "Chadali has correspondence beyond three branch letters and the single failed-anchor market visit.");
         check(lucky.TricksterDevice && lucky.TricksterState == "chadali.lost_at_council" && lucky.Requires.Contains("trickster")
               && lucky.Requires.Contains("chadali.lost_at_council.latched"),
             "'Lucky you' is not the ER-2 device of the lost-at-council state.");
         check(second.Requires.Contains("chadali.started") && second.Requires.Contains(W + "the_real_wager") && second.NativeReturnCue == null,
             "The second cookie is not a physical entry that waits for the real wager.");
-        check(pages.Length == 3 && pages.All(p => p.MinChapter == 6 && p.EpilogueAfter == null
+        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.EpilogueAfter == null
                                                    && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
-            "The epilogue pages are not three effect-free, unanchored Chapter 6 pages (appended in authored order, as Eritrice, Nocticula and Dorgelinda).");
+            "The epilogue pages are not four effect-free, unanchored Chapter 6 pages (appended in authored order, as Eritrice, Nocticula and Dorgelinda).");
         check(story.Derived[P + "late_committed"].Length == 2, "The late-commit derived key is missing.");
-        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "stay", "half", "coin", "penny" }),
+        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { P + "epilogue.commit.explicit.1", "half", "coin", "penny", "friend" }),
             "The late-commit page does not let the Commander answer her (stay, half the orange, the coin, or the posted penny; PP6).");
 
         // Trk_Chadali_Coin.
@@ -213,7 +211,16 @@ internal static class ChadaliTricksterTests
 
         // Trk_Chadali_Fought_Epilogue.
         // eng7-l13: new late yes fixtures observe current Trickster power.
-        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned", P + "courted");
+        var market = Sc(P + "after.market_wager");
+        var renewed = World(story, 5, "trickster", "trickster.ever", "council.fought", P + "returned");
+        var unreadyEnding = Later(story, renewed, 100, 6);
+        check(!Rules.ChoiceAvailable(Choice(pageCommit, "page", 0), unreadyEnding)
+              && Rules.ChoiceAvailable(Choice(pageCommit, "page", 4), unreadyEnding),
+            "Reconciliation alone offers intimacy, or withholds friendship.");
+        var invited = First(market, renewed, "carried", 0);
+        check(invited.Has(P + "return_test.ready") && invited.Has(P + "late_romantic_intent"),
+            "The actual market invitation did not earn late courtship.");
+        var ending = Later(story, invited, 100, 6);
         check(Rules.Available(story, pageCommit, ending) && !Rules.Available(story, pageDeclined, ending),
             "Trk_Chadali_Fought_Epilogue: the late commit page is not the only page.");
         check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", W + "bet_her"))
@@ -247,11 +254,11 @@ internal static class ChadaliTricksterTests
             "The needle's apology recalls a promise never made.");
         // BEL: the feint is a proposal the Commander signs or refuses on the page.
         var feint = Sc(S + "you_bet_with_people");
-        check(feint.Nodes.Single(n => n.Id == "start").Choices.Count == 4 && Choice(feint, "start", 3).Next == "refuse",
+        check(feint.Nodes.Single(n => n.Id == "start").Choices.Count == 5 && Choice(feint, "start", 3).Next == "refuse",
             "The feint is an atrocity the player never chose.");
         // BEL/COX: the committed page agrees with a called Last Call (the coin fell once) and with a loan paid back in the hall.
         var paras = pageNight.Nodes[0].Paragraphs;
-        check(paras.Any(p => p.Requires.Contains("chadali.lastcall.called")) && paras.Where(p => p.Requires.Contains(P + "cost.luck_owed")).Count() == 2 && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "paid_back")).Forbids.Contains(F + "paid_back") && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
+        check(paras.Any(p => p.Requires.Contains("chadali.lastcall.called")) && paras.Where(p => p.Requires.Contains(P + "cost.luck_owed")).Count() == 2 && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "loan_returned")).Forbids.Contains(F + "loan_returned") && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
             "The romance pages contradict the Last Call call-in or the repaid loan.");
         // R1:chadali:004: dispatch completes the sitting without personal delivery credit.
         // WalkVia records the chosen answer, rather than inferring it from the final flags.
@@ -278,7 +285,7 @@ internal static class ChadaliTricksterTests
             }
         }
         var dispatch = Choice(shrine, "runner", 0);
-        check(dispatch.Next == null && !dispatch.Abort && dispatch.Set.Length == 0,
+        check(dispatch.Next == null && !dispatch.Abort && !dispatch.Set.Contains(S + "carried_the_parcel") && dispatch.Set.Contains(S + "cache_allocated"),
             "The runner does not complete dispatch without personal delivery.");
 
         // Sol r3 INT: a live, unprimed Trickster whose hall closed in peace is reached by a priced wager by post; a soft no whose hall
@@ -348,7 +355,7 @@ internal static class ChadaliTricksterTests
             check(Reaches(committed5, id), "Post-commit sitting unreachable: " + id);
 
         // Reactions: exactly Eritrice and Ember, behind their guards; Eritrice's own Chadali reaction honours her return.
-        check(reactions.Length == 3 && reactions.All(r => r.Nodes.Count == 1)
+        check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Where(r => r.Owner == "Eritrice").All(r => r.Forbids.Contains("eritrice.lost_at_council"))
               && reactions.Where(r => r.Owner == "Ember").All(r => r.Forbids.Contains("ember_dead") && r.Forbids.Contains("ember_gone")),
             "The reactions are not exactly Eritrice and Ember behind their guards.");
@@ -427,7 +434,7 @@ internal static class ChadaliTricksterTests
         }
         check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", W + "bet_her")), "The lucky night is lost for a Commander who never fought her.");
         var lateOpen = pageCommit.Nodes.Single(n => n.Id == "page").Choices;
-        check(lateOpen.Count == 4 && lateOpen[2].Next == "coin" && lateOpen[2].Requires.Contains(P + "primed")
+        check(lateOpen.Count == 5 && lateOpen[2].Next == "coin" && lateOpen[2].Requires.Contains(P + "primed")
               && lateOpen[3].Next == "penny" && lateOpen[3].Requires.Contains(P + "cost.late_wager") && lateOpen[3].Forbids.Contains(P + "primed"),
             "The late page hands back a keepsake the Commander never gave her.");
         Console.WriteLine("PASS: Chadali Trickster (Trk_Chadali_*): coin, orange, second cookie, the seed, the sealed hall's letters, 'Lucky you' and the wagers.");

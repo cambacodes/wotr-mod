@@ -103,8 +103,7 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
 "If I say no and you've promised, then you have to choose between me and bringing Elysium into your crossroads." {n}A breath.{/n} "Don't promise me that. Promise me something you can keep."''',
       c('"I\'ll keep it. I\'ll find the other way."', "keep", flags=(PROMISED_SAFE,)),
       c('"Then I promise to be there, whatever happens."', "there")),
-    ch("truth", '''"It will hurt." {n}She repeats it, and nods, slowly, and her chin firms.{/n}
-"Thank you. Everyone else is being nice to me, or mean to me. Alichino says it will be 'a formality'. Cobblehoof says 'Phrr'. You just said it will hurt." {n}She lets out a shaky laugh.{/n} "That's the first thing anyone's said about it that I could hold."''',
+    ch("truth", '"A piece of my being. Not just a sore arm." {n}She grips the ring.{/n} "Shyka said they have done it before. That doesn\'t tell me how much I\'ll lose, or when it comes back."\n"Stay while I ask them. If there\'s no other way, I want to hear that before anybody brings the needle."',
       c("Continue", "brave")),
     ch("looking", '''"Looking." {n}She seizes the word like a cookie.{/n} "You're always looking. You found the way into the Lexicon when none of us could. You found the coin's edge."
 {n}Then her face does something complicated.{/n} "But you put the coin there. It didn't stand up by itself." {n}A long silence.{/n} "Are you going to put another way there, too? Make it up? Because if you do, and it's a trick, and it doesn't work, I'll have hoped for nothing, and I'll never forgive you."''',
@@ -144,9 +143,7 @@ fortune(FAIR, "A great big fair", '"About your fair..."', [
 "You're doing it again. You're making me look at things. Now it's the souls." {n}Her voice rises.{/n} "Why can't I have one nice thing without you holding it up to the light and showing me the crack?"''',
       c('"Because you\'d want to know. If it were your fair and your crack."', "know", flags=(SAW_THE_FAIR,)),
       c('"You can. I\'m sorry. Have your fair."', "fair_kept")),
-    ch("know", '''{n}She glares at you. It is not a very good glare; she has not had much practice.{/n}
-"...Yes." {n}Grudgingly.{/n} "I'd want to know. It's my fair." {n}She uncrosses her arms.{/n}
-"Then no souls. No selling. Not one. If Alichino wants a stall, he can sell lollipops." {n}She nods, fiercely.{/n} "I'll tell Eritrice to write it down. She likes rules. She'll write it in red."''',
+    ch("know", '{n}She glares at you. It is not a very good glare; she has not had much practice.{/n}\n"...Yes." {n}Grudgingly.{/n} "I\'d want to know. It\'s my fair." {n}She uncrosses her arms.{/n}\n"Then no souls. No selling. Not one. If Alichino wants a stall, he can sell lollipops." {n}She nods, fiercely.{/n} "I\'ll write the rule myself. In red. Alichino can object when he gets here."',
       c("Continue", "close")),
     ch("fair_kept", '''"Thank you." {n}She sniffs, and then smiles, and then does not smile.{/n}
 "And there won't be any souls at it. Not because you said so. Because it's my fair, and I decide what's sold there." {n}Her chin comes up.{/n} "I'll watch the devil's stall myself. With a very big lollipop."''',
@@ -265,12 +262,9 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
 {n}You cross the cushions to her, and take the last white flower out of her hair, and put it behind your own ear.{/n}
 {n}She stares at you. Then she laughs, low and breathless, nothing like the bright laugh of the Council sessions.{/n} "Oh. That. Yes. I forgot to let you do something."''',
       c("[Kiss her.]", "kiss")),
-    ch("hands", '''{n}Her hands are warm and shaking, and they stop shaking when you hold them.{/n}
-"Perfectly." {n}She tries the word out, and decides it suits her.{/n} "Yes. It was. Everyone else says 'lucky'. They say 'what a nice surprise'. Tonight wasn't a surprise; tonight was me." {n}She looks up at you, and her eyes in the candlelight are very dark.{/n}
-"I wanted it to be on purpose. Tonight. All of it. I wanted you to know I meant it."''',
+    ch("hands", '{n}Her warm hands stop shaking in yours. She draws them to her waist.{/n} "I wanted you here tonight. Stop admiring the candles. They\'re not going anywhere."',
       c("[Kiss her.]", "kiss")),
-    ch("kiss", '''{n}She tastes of honey. Of course she does. She kisses the way she laughs, all at once and with her whole body, up on her toes with both hands knotted in your sleeves, and when she runs out of breath she does not stop so much as pause and begin again.{/n}
-{n}Her bracelets are cold against the back of your neck and her mouth is hot, and she makes a small astonished sound, as if something unexpectedly wonderful had happened to her, which, you slowly understand, it has.{/n}''',
+    ch("kiss", '{n}She rises on her toes and kisses you hard, both hands knotted in your sleeves. Her bracelets touch the back of your neck, cold against the heat of her mouth. When she pauses for breath, she keeps you close.{/n} "That buckle. Get rid of it."',
       c("Continue", "silk")),
     ch("silk", '''{n}She is soft everywhere your hands go, and warm, and nowhere near as patient as she was trying to look. The yellow silk slides off one round shoulder, and she does not catch it. She is busy with your buckles, and cursing them, sweetly and inventively, in a language that sounds like birdsong and is obviously filthy.{/n}
 "Whoever made this armour," {n}she says,{/n} "has never been kissed. Not once. I can tell. It's in the straps."''',
@@ -306,9 +300,7 @@ fortune(MORNING, "Burnt edges", '"Is something burning?"', [
     ch("bed", '''"The oven cannot wait. The oven is on fire." {n}It is, a little. She throws a cushion at it, which does not help, and then a bucket of water she seems to have had ready, which does.{/n}
 {n}In the steam she turns round, soot on her nose, and says, very seriously:{/n} "Now the oven can wait."''',
       c('"Was it lucky, last night?"', "not_luck")),
-    ch("not_luck", '''{n}She shakes her head, and the knot of hair comes down.{/n}
-"No. It wasn't luck. You didn't leave it to chance, and I didn't leave it to chance, and it was still the most surprising thing that's ever happened to me." {n}She pushes the smoking tray away with her foot.{/n}
-"I think that's what the other kind of luck is. The kind you make." {n}A pause.{/n} "Don't tell Eritrice I said that. She'll say it's a contradiction and write it down."''',
+    ch("not_luck", '{n}She pushes the smoking tray out of reach and catches your wrist.{/n} "I wanted to stay beside you. Instead I got up to make breakfast, and look what happened."\n{n}She pulls you down for a kiss, soot and all.{/n} "Tomorrow you wake me before you go. I want a proper goodbye. Then come back before supper."',
       c("[Kiss the soot off her nose.]")),
 ], requires=(NIGHT,), forbids=(MORNING,), delay=6)
 
@@ -336,7 +328,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
     ch("giving", '''"I'm always giving it away because that's what it's for!" {n}She stamps her foot. Somewhere far away, you are certain, something unlucky happens to someone who deserved it.{/n}
 "You don't get to decide where it goes. Not mine. You decide where the army goes, and where the money goes, and where half of Golarion goes. Leave me this."''',
       c("Continue", "choose")),
-    ch("choose", '''"Promise me you'll stop." {n}She holds out her little finger.{/n} "Not the tricks. I love the tricks. The tricks where you pretend to be me."''',
+    ch("choose", '"No more orders wearing my name." {n}She holds out her little finger.{/n} "I\'ll tell her what I asked you to do. She gets her thanks back to give to the right person. You can help with the roof openly."',
       c("[Link fingers.] \"I'll stop.\"", "stopped", flags=(NO_MORE_RIGGING,)),
       c('"I can\'t promise that. If I see your people going hungry, I\'ll act."', "kept", flags=(KEPT_RIGGING,))),
     ch("stopped", '''{n}She shakes on it, once, firmly, and some tension goes out of her shoulders that you had not known was there.{/n}
@@ -399,17 +391,14 @@ fortune(RIBBON, "A yellow ribbon", '"What\'s this for?"', [
 # --- 11. Sharing. ------------------------------------------------------------------------------------------------------
 
 fortune(SHARING, "Sharing", '"Something\'s on your mind."', [
-    ch("start", '''"Eritrice says you are over-committed." {n}She says it lightly, plucking at a cushion.{/n} "She says it as if it were a motion out of order. Socothbenoth says it as if it were a joke. Alichino says it as if it were a price: the whole crusade holds a mortgage on you, he says, and I'm a very late creditor."
-"They're right about the numbers. Every one of them." {n}She looks up.{/n} "I don't care about the numbers."''',
+    ch("start", '"I remember Eritrice saying you are over-committed." {n}She says it lightly, plucking at a cushion.{/n} "She says it as if it were a motion out of order. Socothbenoth says it as if it were a joke. Alichino says it as if it were a price: the whole crusade holds a mortgage on you, he says, and I\'m a very late creditor."\n"They\'re right about the numbers. Every one of them." {n}She looks up.{/n} "I don\'t care about the numbers."',
       c('"Then what\'s on your mind?"', "mind")),
     ch("mind", '''{n}She hesitates, and the hesitation goes on for long enough that you understand it is serious.{/n}
 "I don't want to be last." {n}Small, and very clear.{/n} "Not first. I don't need first. First is for people who count. I just don't want to be the one you come to when there's nothing left of you. The crumbs at the bottom of the parcel."
 {n}Her fingers have stopped on the cushion.{/n} "Is that selfish? Alichino would say it's selfish and send me an invoice for it. I've decided I don't care what Alichino would say."''',
       c('"It isn\'t selfish. You won\'t be last."', "not_last", flags=(NOT_LAST,)),
       c('"Sometimes you will be. The war takes most of me."', "war")),
-    ch("not_last", '''"Promise?" {n}She holds out her little finger.{/n}
-{n}You link it. She holds on a while, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}
-"There. I asked for something, and I got it, and nobody had to lose for it. That's my favourite kind of luck." {n}She flops back onto the cushions.{/n} "I'm going to do it again. Often. Alichino should be very worried."''',
+    ch("not_last", '{n}She hooks her little finger round yours, then pulls your hand to her lips.{/n} "Tomorrow, before supper. Come while you can still taste a cookie."\n{n}She makes room beside her on the cushions.{/n} "I\'ve saved this evening too. Lie down. The war can knock."',
       c("[Lie down beside her.]")),
     ch("war", '''{n}She takes that, and turns it over, the way she turns her ring.{/n}
 "Then I'll share with the war too. It can have the most of you. I'll have the best of you." {n}Firmly.{/n} "That's a different thing. The war doesn't know how to tell the difference, and I do."
@@ -500,3 +489,25 @@ def integrate(payload):
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
     page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+
+
+# Repayment belongs to the transfer, not to visiting the accounts scene.
+LOAN_RETURNED = F + "loan_returned"
+_pay = next(sc for sc in SCENES if sc["Id"] == REPAID)
+for _choice in next(nd for nd in _pay["Nodes"] if nd["Id"] == "owed")["Choices"]:
+    _choice["Set"].append(LOAN_RETURNED)
+_rig = next(sc for sc in SCENES if sc["Id"] == RIGGED)
+_rign = {nd["Id"]: nd for nd in _rig["Nodes"]}
+# No loaded-dice promise is presumed: this is a new offered gesture.
+_honey = next(sc for sc in SCENES if sc["Id"] == NIGHT)
+# Explicit brief: her prepared first night, hot kiss, cold bracelets, armour discarded.
+_honey["Nodes"].append(ch(NIGHT + ".explicit.1", '{n}Chadali draws you close among the cushions, her bracelets cold against your neck. She kisses you again, impatient with the last buckle.{/n} "Come here, lucky charm."', c("Continue", "cut")))
+next(nd for nd in _honey["Nodes"] if nd["Id"] == "look")["Choices"][0]["Next"] = NIGHT + ".explicit.1"
+_morning = next(sc for sc in SCENES if sc["Id"] == MORNING)
+_mn = {nd["Id"]: nd for nd in _morning["Nodes"]}
+_mn["not_luck"]["Choices"][0]["Next"] = "equipment_check"
+_morning["Nodes"].extend([
+    nar("equipment_check", '{n}Chadali straightens her robe as footsteps pass the outer door.{/n}', c("Continue", "equipment_return", requires=("chadali.sessions.cache_allocated",)), c("[Kiss her again.]", forbids=("chadali.sessions.cache_allocated",))),
+    ch("equipment_return", '{n}A knock follows. The provisioner wants his oven and tray for the ration issue. Chadali opens the door herself, yellow robe hastily knotted, and hands him the cleaned tray.{/n} "All of it is here. The oven too. Mind the hot side!" {n}She waits until he has wheeled it away, then comes back to you.{/n} "There goes my windfall. Next time I bake a smaller batch. You can come and help me eat it."', c("[Kiss the soot off her nose.]")),
+])
+EPILOGUE_PARAGRAPHS[:] = [(flag, '{n}Before supper, the Commander returned to the place she had saved. Chadali shut the door on the reports and set a whole cookie beside the plate. The next visits kept that time; she was often out helping her worshippers before it.{/n}' if flag == NOT_LAST else text) for flag,text in EPILOGUE_PARAGRAPHS]

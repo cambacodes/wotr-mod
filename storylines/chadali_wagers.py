@@ -101,9 +101,7 @@ wager(RECIPE, "The recipe", '"What is actually in these cookies?"', [
     ch("close", '''"Ooh." {n}She squints at you.{/n} "That isn't a guess, that's a clever person's way of not guessing. The honey is from Elysium, yes. From the meadows by the river, where the bees have never once been stung by anything."
 "But honey isn't the spice, and you knew it, and you wriggled." {n}She wags a plump finger with a white-gold ring on it.{/n} "Half a secret, then. Only half, for half a guess."''',
       c('"Which half?"', "half")),
-    ch("right", '''{n}Chadali goes very still. Then she laughs, and covers her mouth, and laughs through her fingers.{/n}
-"How did you know? Nobody knows! Eritrice thinks it's nutmeg. She wrote it down!"
-{n}She lowers her voice to a whisper, although there is nobody in the hall.{/n} "Every batch, I hold my breath over the bowl and think of something lucky that happened to somebody. That's all. That's the spice. It doesn't do anything, really. It just makes them taste like mornings."''',
+    ch("right", '{n}Chadali goes very still. Then she laughs, and covers her mouth, and laughs through her fingers.{/n}\n"How did you know? Nobody knows! I remember Eritrice guessing nutmeg. She wrote it down!"\n{n}She lowers her voice to a whisper, although there is nobody in the hall.{/n} "Every batch, I hold my breath over the bowl and think of something lucky that happened to somebody. That\'s all. That\'s the spice. It doesn\'t do anything, really. It just makes them taste like mornings."',
       c('"And the secret I won?"', "secret", flags=(GUESSED,))),
     ch("secret", '''"A secret. A real one." {n}She thinks about it for a long time, turning a bracelet round and round her wrist.{/n}
 "I burn them. Sometimes. A whole tray, black as a demon's boots. And I don't throw them away, because that would be unlucky, so I eat them all myself, alone, in the kitchen, and I tell everyone the next batch is the good one." {n}Her dimples come back.{/n} "Nobody knows that. Not even my priests. Now you do. You're the only one."''',
@@ -132,8 +130,7 @@ wager(BORN, "Born lucky", '"You said you were born by chance."', [
 "...What I'll do is sulk. For a little while. Then I'll forgive you, because I always do, and you'll have to live with that."''',
       c('"I\'m sorry. That was mean."', "sorry"),
       c('"Isn\'t that what I am to you? Everything lining up at once?"', "lined_up")),
-    ch("odds", '''"I asked Cobblehoof once. He said 'Phrr', which I think means he tried to work it out and gave up." {n}She giggles.{/n}
-"Eritrice worked it out properly. She has it written down somewhere. It's a number with so many noughts in it that she had to turn the scroll sideways." {n}She leans forward.{/n} "Do you know what I said to her? I said, 'But I'm here anyway.' And she wrote that down too. She writes everything down."''',
+    ch("odds", '"I asked Cobblehoof once. He said \'Phrr\', which I think means he tried to work it out and gave up." {n}She giggles.{/n}\n"I asked Eritrice once. She worked it out properly. She has it written down somewhere. It\'s a number with so many noughts in it that she had to turn the scroll sideways." {n}She leans forward.{/n} "Do you know what I said to her? I said, \'But I\'m here anyway.\' And she wrote that down too. She writes everything down."',
       c("Continue", "here_anyway")),
     ch("saw", '''{n}Her face goes soft and far away.{/n}
 "Colours. So many colours. The aurora was yellow, and the moon was going dark, and the stars were falling, all of them, like somebody had tipped the sky over to see what was underneath." {n}She hugs herself.{/n}
@@ -190,21 +187,15 @@ wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
       c('"I\'m not a charm. I\'m a person. I bleed, and I choose."', "person"),
       c('"I don\'t mind being cute. I mind being an ornament."', "ornament"),
       c('[Flirt] "Whose charm, exactly?"', "whose")),
-    ch("person", '''{n}The hand stops on your cheek. She takes it back, slowly, and folds it with the other in her lap.{/n}
-"I know you bleed." {n}Her voice has gone quiet.{/n} "I've seen the lists. Eritrice reads them out. I cover my ears, and she reads them louder."
-"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I don't want to. I'm chance; I make the odds better, I heal what I can reach, I make people stronger, and I can't do any of it while I'm counting your wounds." {n}She looks at her hands.{/n} "Is it very rude? It feels rude, now you've said it."''',
+    ch("person", '{n}Her hand drops from your cheek.{/n} "I know. The crossbowman\'s brother wasn\'t the only one on those walls. Her sergeant came to my shrine with a crushed hand. I healed what I could. He still can\'t draw a bow."\n"You can object to the name. Don\'t tell me I haven\'t seen blood." {n}She folds her hands.{/n} "I call you lucky because I want you coming back through that door. In one piece, preferably."',
       c('"It\'s rude. Keep doing it anyway."', "anyway", flags=(CHARMED,)),
       c('"Think about it. The bleeding. Somebody at this table has to."', "think", flags=(NOT_A_CHARM,))),
-    ch("ornament", '''"An ornament!" {n}She is scandalised.{/n} "Ornaments sit on shelves! You've never sat on anything in your life except a horse and my good chair, which you didn't ask about."
-{n}Then she hears herself, and has the grace to look a little embarrassed.{/n} "...I did pat your cheek. In front of Alichino. Twice."
-"All right. Not an ornament. A charm is something you carry with you because it helps. That's different. That's much better." {n}She peers at you.{/n} "Isn't it?"''',
+    ch("ornament", '"An ornament! Ornaments sit on shelves. You bring field reports and blood into my hall." {n}She draws her hand back.{/n} "I did pat your cheek. Twice. All right. I\'ll stop that. The name stays until you find me a better one."',
       c('"A charm doesn\'t get a say."', "think", flags=(NOT_A_CHARM,)),
       c('"It\'s better. Carry me, then."', "anyway", flags=(CHARMED,))),
-    ch("whose", '''"Whose?" {n}She opens her mouth, and closes it, and the dimples come and go and come again.{/n}
-"The Council's," {n}she says firmly.{/n} "Obviously." {n}A pause.{/n} "Mostly the Council's." {n}Another pause, longer.{/n} "Eritrice says you can't own a lucky charm, you can only be lucky enough to have one nearby. She says it's in the rules. I think she made that rule up to stop me buying one."''',
+    ch("whose", '"Whose?" {n}She opens her mouth, and closes it, and the dimples come and go and come again.{/n}\n"The Council\'s," {n}she says firmly.{/n} "Obviously." {n}A pause.{/n} "Mostly the Council\'s." {n}Another pause, longer.{/n} "I remember Eritrice saying you can\'t own a lucky charm, you can only be lucky enough to have one nearby. She says it\'s in the rules. I think she made that rule up to stop me buying one."',
       c('"Then stay nearby."', "anyway", flags=(CHARMED,))),
-    ch("think", '''"You want me to think about it." {n}She takes a long breath through her nose, the way you might before diving into cold water.{/n}
-"All right. I'll think about it. I'll think about you bleeding and choosing and being a person who might not come back." {n}Her hands are fists in the yellow silk.{/n} "I'll hate it. I'll do it anyway. I'll still bake for you. I'll just bake knowing."''',
+    ch("think", '"I do think about it!" {n}The bracelets clash as she folds her arms.{/n} "Tomorrow I\'ll send strength to the sergeant\'s good hand. He can hold a spear with it. That\'s something I can do."\n{n}She looks at you again.{/n} "And you can tell me when the name makes you angry. Without giving me a lecture. I get enough of those here."',
       c("Continue", "close")),
     ch("anyway", '''"Good." {n}Her dimples are back, deep enough to lose a coin in.{/n}
 "Then I'll keep saying it, and you'll keep being it, and we'll both pretend it's the reason things go well, when really it's you getting up very early and being clever." {n}She taps your nose.{/n} "I know that, you know. I just prefer my way of saying it."''',
@@ -298,8 +289,7 @@ wager(QUESTIONS, "Odious questions", '"Are you still cross about my questions?"'
 "You asked me a horrid question, and I told you to stop." {n}She swallows.{/n} "You ruined my mood. It came back. It usually does."
 "Then I started on a worse one, all by myself. If a brick falls on a child, whose luck was that? I've been thinking about the brick one."''',
       c('"And?"', "brick")),
-    ch("fresh", '''"You never asked me the horrible ones. Other people do. Eritrice, mostly, in session, when she wants to make a point." {n}She makes a face.{/n}
-"'If chance helps everyone, does chance help the demons?' 'If a brick falls on a child, whose luck was that?'" {n}She puts the cookie down.{/n} "I've been thinking about the brick one."''',
+    ch("fresh", '"You never asked me the horrible ones. Other people do. I remember Eritrice asking them in session." {n}She makes a face.{/n}\n"\'If chance helps everyone, does chance help the demons?\' \'If a brick falls on a child, whose luck was that?\'" {n}She puts the cookie down.{/n} "I\'ve been thinking about the brick one."',
       c('"And?"', "brick")),
     ch("brick", '''{n}She is quiet for so long that the lamp gutters.{/n}
 "There was a girl in Kenabres. Before the fall. She used to leave me honey on a windowsill, a spoonful, every morning, on a saucer with a crack in it." {n}Her voice is very even.{/n}
@@ -346,8 +336,7 @@ wager(KNUCKLEBONES, "Knucklebones", '"You brought dice?"', [
 "You won," {n}she says brightly.{/n} "All of them. Well done."
 {n}She is still smiling when you leave. You are almost at the door before you realise that she has not once, the whole hour, called you her lucky charm.{/n}''',
       c("[Go.]")),
-    ch("fair", '''"That," {n}she says, sweeping the bones back into the cup,{/n} "is the best game I've had in a hundred years."
-"You know why? Because I didn't know who'd win. Nobody at this table ever lets me not know. Alichino counts, Shyka knows, Eritrice writes it down before it happens." {n}She hugs the cup to her chest.{/n} "You let me not know. Or you let me see you cheat. Either's fine. Both's a present."''',
+    ch("fair", '"That," {n}she says, sweeping the bones back into the cup,{/n} "is the best game I\'ve had in a hundred years."\n"You know why? Because I didn\'t know who\'d win. Nobody at this table ever lets me not know. Alichino counts, Shyka knows, I remember Eritrice writing down a tally before a throw." {n}She hugs the cup to her chest.{/n} "You let me not know. Or you let me see you cheat. Either\'s fine. Both\'s a present."',
       c("[Take your cookies.]")),
 ], requires=(RECIPE,), forbids=(KNUCKLEBONES,))
 
@@ -449,30 +438,24 @@ wager(LOADED, "Loaded dice", '"You\'ve been quiet with me since the knucklebones
 # --- 12. The real wager: the last beat before the question. --------------------------------------------------------
 
 wager(REAL_WAGER, "The real wager", '"You wanted to make a proper bet?"', [
-    nar("open", '''{n}There are no cookies tonight. The Council table is bare except for the coin, standing on its edge where she keeps it, and one white flower from her hair laid beside it.{/n}''',
+    nar("open", '{n}Field reports lie at the far end of the Council table. At her end, Chadali puts one finger against the balanced coin and deliberately lays it flat. Beside it she sets a white flower from her hair.{/n}',
         c("Continue", "start")),
-    ch("start", '''"A proper one." {n}She has her hands folded in her lap, very still, which is not like her.{/n}
-"We've made lots of little bets. Cookies and trays and devils coming to meetings. You win most of them, because you make them happen." {n}She looks at the coin.{/n}
-"I want to make one you can't make happen. Something you can't balance or load or arrange. You have to bet on something that's only up to me."''',
+    ch("start", '"A proper one." {n}She leaves her finger on the sun face.{/n} "You confessed how you balanced this. You came here with those awful reports, and stayed. Now there\'s a question you keep not asking."\n"You can\'t arrange the answer. Not with an orange, not with a loaded die. I answer it."',
       c('"What\'s the bet?"', "bet")),
-    ch("bet", '''"You bet that when you ask me the question you've been not-asking, I'll say yes." {n}She says it all in one breath.{/n}
-"If you win, you win. If you lose, you lose, and you can't do anything about it, and you just have to lose, like a mortal at a dice table." {n}Her chin lifts.{/n} "And you have to put something on it. Something that costs you. Otherwise it's just wishing."''',
+    ch("bet", '"You bet that when you ask whether I want you, I\'ll say yes." {n}She takes her finger off the coin.{/n} "If I say no, I collect. Luck means the luck you\'ve put into our private wagers. I\'ll spend that share elsewhere. Not your soldiers\' luck. Coin means no more balancing game between us."\n"Pick. And don\'t pick what you think will make me say yes."',
       c('"My luck. All of it. Whatever you think I\'ve got."', "stake", flags=(BET_ON_HER,)),
       c('"The coin. I\'ll never balance anything for you again."', "stake", flags=(BET_ON_HER,)),
       c('"I don\'t bet on people."', "people")),
-    ch("people", '''"Yes, you do." {n}Flat, with the finger raised.{/n} "You bet on your soldiers every day. You bet on the ones in your tent. You bet on that little witch with the fire in her hands. You just don't call it betting, because then you'd have to admit you might lose."
-{n}The finger comes down.{/n} "Call it betting. For me. Once."''',
+    ch("people", '"Then don\'t bet on owning me. You can\'t." {n}The raised finger stops your reply.{/n} "This is your wager, your loss. My answer. I haven\'t sold it to you."\n{n}She nudges the flower towards you.{/n} "Well? Or shall we leave it tonight?"',
       c('"...My luck. All of it."', "stake", flags=(BET_ON_HER,)),
       c('"Not tonight."', "not_tonight")),
-    ch("stake", '''{n}She lets out a long breath, and the stillness goes out of her all at once; she is bouncing again, very slightly, in her chair.{/n}
-"Done! It's a bet! You can't take it back, and you can't cheat, and you can't make it happen." {n}She claps, once.{/n}
-"Now you have to wait. And then you have to ask. And then you have to find out, like everybody else in the whole multiverse finds out things." {n}She picks up the white flower and tucks it behind your ear.{/n} "Isn't it wonderful? Isn't it terrifying?"''',
+    ch("stake", '{n}She breathes out, then pushes the flat coin between you.{/n} "Done. It stays down until I\'ve answered. No tricks with that one."\n{n}She tucks the flower behind your ear; her fingers linger there.{/n} "Come back with the question. I\'m going to be dreadful company until you do."',
       c('"Both."', "both")),
     ch("both", '''"Both!" {n}She laughs, and the laugh wobbles at the end.{/n} "Heads and tails at once. Like the coin."
 "Go away now. Come back with the question. I'll bake. I'll bake the best batch I've ever baked, and I won't burn a single one, and if I do I'll eat them all myself and never tell you."''',
       c("[Go, and come back.]")),
     ch("not_tonight", '''"Then not tonight." {n}She nods, as if this too were fair.{/n}
-"The coin will keep standing. It's very patient. So am I, mostly." {n}She looks at the flower on the table, and leaves it there.{/n} "Come back when you'll bet."''',
+"Leave it down tonight. I can stand it up when I want to." {n}She looks at the flower on the table, and leaves it there.{/n} "Come back when you'll bet."''',
       c("[Go.]", abort=True)),
 ], requires=(GLOOMY, WOUND), forbids=(REAL_WAGER, COMMITTED), delay=24)
 
@@ -484,15 +467,12 @@ FLAT = W + "a_coin_lying_flat"
 wager(FLAT, "A coin lying flat", '"Is the question still open?"', [
     nar("open", '''{n}The coin is lying flat on the Council table, and nobody has stood it back up. Heads up: the sun.{/n}''',
         c("Continue", "start")),
-    ch("start", '''"I knocked it over." {n}She is not looking at it.{/n} "On purpose. I wanted to see if it would stand up again by itself, if I believed very hard. It didn't. I believed very hard for a whole night."
-"That's how I know it was you. All of it. Every time." {n}She turns her bracelet.{/n} "I said no. Not today. I meant it. I still mean it today."''',
+    ch("start", '"I laid it down. On purpose." {n}Chadali taps the sun face.{/n} "I could stand it up. I don\'t want to. I said no, and I meant it."\n"You\'ve paid the wager. That doesn\'t mean I\'ve changed my answer."',
       c('"What would tomorrow take?"', "tomorrow"),
       c('"Then I\'ll wait."', "wait")),
-    ch("tomorrow", '''"Something that isn't a trick." {n}She finally looks at you.{/n}
-"I don't know what. That's the terrible part. I'm chance, and I don't know. You'll have to find it." {n}She picks up the coin and holds it out.{/n} "Don't stand it up. Just hold it."''',
+    ch("tomorrow", '"Something that isn\'t another throw." {n}She cups the flat coin in her hand.{/n} "A place for me, perhaps. I\'m still thinking. Don\'t stand this up while I do."',
       c("[Hold it, and don't stand it up.]", "wait")),
-    ch("wait", '''"Good." {n}Her fingers brush yours as the coin changes hands, and stay a moment longer than they need to.{/n}
-"I'm still cross. I'm also still here. Both." {n}A small smile.{/n} "Heads and tails."''',
+    ch("wait", '{n}She sets the coin down again, keeping it on her side of the table.{/n} "I\'m still cross. I\'m also still here. You can come and talk to me without trying to win."',
       c("[Go.]")),
 ], requires=(DECLINED,), forbids=(FLAT, COMMITTED))
 
@@ -525,3 +505,15 @@ def integrate(payload):
     page.setdefault("Paragraphs", []).extend(
         p(text, requires=(flag,), forbids=(("chadali.sessions.cobblehoof_freed_by_her",) if flag == COBBLE_CURSED else ()))
         for flag, text in EPILOGUE_PARAGRAPHS)
+
+
+# Round 2: record the selected liability; both refusal roads collect it in the spine.
+_real = next(s for s in SCENES if s["Id"] == REAL_WAGER)
+_wn = {nd["Id"]: nd for nd in _real["Nodes"]}
+for _id, _index, _stake in (("bet", 0, "stake_luck"), ("bet", 1, "stake_coin"), ("people", 0, "stake_luck")):
+    _wn[_id]["Choices"][_index]["Set"].append(W + _stake)
+_wn["not_tonight"]["Choices"][0]["Abort"] = True
+_gloom = next(s for s in SCENES if s["Id"] == GLOOMY)
+_gn = {nd["Id"]: nd for nd in _gloom["Nodes"]}
+_gn["hope"]["Choices"][0]["Set"].append(W + "commander_hoped_aloud")
+_gn["cant"]["Choices"][0]["Set"].append(W + "chadali_hoped_aloud")

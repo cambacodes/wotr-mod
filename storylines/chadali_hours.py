@@ -101,9 +101,7 @@ hour(EARRING, "An unlucky day", '"Are you... crawling under the table?"', [
 # --- 3. Our new friend: the first sessions. ------------------------------------------------------------------------
 
 hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
-    ch("start", '''"Of course I do! I remember everything that makes me happy, and it made me very happy." {n}She settles in, like someone about to tell a favourite story.{/n}
-"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. Eritrice asked you questions. Shyka laughed at something nobody else could see. Cobblehoof said 'Phrr'."
-"And I looked at you and said, just look how cute they are! They'll be our lucky charm!" {n}Her eyes gleam.{/n} "And everyone laughed. And I was right."''',
+    ch("start", '"Of course I do! I remember everything that makes me happy, and it made me very happy." {n}She settles in, like someone about to tell a favourite story.{/n}\n"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. I remember Eritrice asking you questions. Shyka laughed at something nobody else could see. Cobblehoof said \'Phrr\'."\n"And I looked at you and said, just look how cute they are! They\'ll be our lucky charm!" {n}Her eyes gleam.{/n} "And everyone laughed. And I was right."',
       c('"Why did you defend me? You\'d never met me."', "why"),
       c('"You decided that fast?"', "fast")),
     ch("fast", '''"Faster!" {n}She claps.{/n} "I decided before you'd sat down. You came through the door and stood there looking at all of us, a demon lord and a devil and a hippogriff and the Eldest and two empyreal lords, and you weren't frightened at all. You were counting the exits."
@@ -117,8 +115,7 @@ hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
     ch("votes", '''"I know!" {n}She covers her face.{/n} "You asked for material aid and I said I'd be happy to help even without the votes, and I was sorry I couldn't. I was so sorry. I sent you good wishes instead." {n}Through her fingers:{/n} "That's a terrible thing to send an army."
 {n}She lowers her hands.{/n} "But I meant them. Every one. That's all I had that day. Now I have cookies, and you." {n}She beams.{/n} "I'm much better equipped."''',
       c("Continue", "helped", flags=(FIRST_SIGHT,))),
-    ch("helped", '''"Good." {n}She says it very firmly, as if settling an old account.{/n} "Then I was right, and everybody who laughed at me in the first session was wrong, and I'm going to remind them at the next one."
-"Eritrice will minute it. She'll put the little squiggle."''',
+    ch("helped", '"Good." {n}She says it very firmly, as if settling an old account.{/n} "Then I was right, and everybody who laughed at me in the first session was wrong, and I\'m going to remind them at the next one."\n"I\'ll put the little squiggle on my own copy. They\'ll hate that."',
       c("[Leave her pleased with herself.]")),
 ], requires=(CHARM,), forbids=(FIRST,))
 
@@ -139,19 +136,13 @@ hour(SOCOTH, "Who brought you", '"Socothbenoth was here. I passed him on the sta
 "And then he asked me for a favour." {n}She looks at the flowers, not at you.{/n} "One night, he wouldn't say which, he wants all of my luck. Every morning's worth, all at once, sent to him and nobody else. He said it was for family. He said it would make someone very, very surprised." """,
       c('"And the crusade? That night, it gets nothing."', "crusade"),
       c('"Do you want to do it?"', "want")),
-    ch("crusade", """"Nothing." {n}She nods, too quickly.{/n} "I thought of that. Then he smiled, and I stopped thinking of it. He's very good at that." {n}Her mouth tightens.{/n}
-"You know what it's for. I can see it on you. You always know what everyone at this table wants." {n}She holds your eyes.{/n} "Tell me. Or don't. But if you don't, I'll know you chose not to." """,
+    ch("crusade", '"Nothing. That\'s why I haven\'t agreed." {n}She picks a fallen petal off the table.{/n} "My worshippers need it too. Eleven darlings and a bunch of flowers don\'t settle that."\n"He wouldn\'t name the night. You know him better than I do. What\'s he hiding?"',
       *TELL),
-    ch("want", """"I want to be asked for things." {n}Honestly, and a little ashamed of it.{/n} "Nobody asks me for anything real. They ask for cookies. He asked me for something that matters, and I liked it, and I don't know whether he meant it or whether he just knew I'd like it."
-"You know what it's for." {n}She holds your eyes.{/n} "Tell me. Or don't. But if you don't, I'll know you chose not to." """,
+    ch("want", '"I want to know what he\'s buying." {n}Her ring turns once.{/n} "He asked for everything, and wouldn\'t tell me why. That\'s a very bad bet."\n"My priests ask for healing. The crusade asks for strength. His flowers are lovely. They still haven\'t answered my question."',
       *TELL),
-    ch("truth", """{n}She goes quite still. Then she picks up the warm-country flowers and puts them, very carefully, in the bin by the door, stem first.{/n}
-"His sister. Of course. Everybody's somebody is never in the room." {n}Her voice is small and hard.{/n} "He wanted me to be a weapon and call it a present. And I nearly said yes, because he said 'darling' eleven times."
-"I'll tell him no. Nicely. With a cookie. He'll know exactly what the cookie means." {n}She looks at you.{/n} "Thank you for telling me. You didn't have to. Most people at this table would have let me find out afterwards." """,
+    ch("truth", '{n}She puts the flowers in the bin, stem first.{/n} "His sister. Of course. She\'s dangerous enough without my helping him spring something on her."\n"I\'ll tell him no. He can call me darling twelve times if he likes." {n}She pulls a sheet of paper towards her.{/n} "Stay. I want you to hear what I actually write."',
       c("[Stay while she writes her no.]")),
-    ch("use", """{n}She looks at you, and something careful comes into her face that was not there before.{/n}
-"Let him owe us." {n}She repeats it slowly.{/n} "You're spending me. Like a coin. On a bet you won't tell me the stakes of." {n}She nods.{/n} "All right. I'll do it. I'm very good at luck, and you're very good at knowing what it's for."
-"But I noticed." {n}She picks up one of his flowers and turns it.{/n} "I'll always notice, now, when you're spending me. I just wanted you to know that I noticed." """,
+    ch("use", '"Let him owe us? First he tells me the night and what he means to do." {n}She plucks one flower out of the bunch.{/n} "He can have one morning\'s share if I like the answer. The rest goes where I send it."\n"And he owes help to my worshippers, not another bouquet. You may take a favour for the introduction. You don\'t get to promise my luck."',
       c("[Leave her with the flowers.]")),
 ], requires=(STARTED,), forbids=(SOCOTH,))
 
@@ -221,19 +212,13 @@ hour(SCAR, "For luck", '"It\'s only a scratch."', [
 "I said I heal some. You're some." {n}She lays both palms over the wound.{/n} "This will feel strange. Don't make a joke. If you make a joke I'll laugh and it'll go crooked."''',
       c("[Don't make a joke.]", "heal"),
       c('"Leave a scar."', "scar")),
-    ch("scar", '''{n}She looks up, startled.{/n} "A scar? Why would you want a scar? I can make it like it never happened."
-"Because it happened." {n}Your words, and she hears them.{/n}
-{n}She considers it, kneeling there with her hands over your wound.{/n} "...All right. A little one. A lucky one. The shape of something nice."''',
+    ch("scar", '"A scar?" {n}She looks up from the wound.{/n} "Well. A little one, then. It won\'t make you proof against the next blade. Hold still."',
       c("Continue", "heal", flags=(SCAR_KEPT,))),
-    ch("heal", '''{n}It does feel strange. It is not warmth and it is not light. It is the feeling of a door closing quietly somewhere far away, and the draught stopping.{/n}
-{n}When she takes her hands away, the wound is closed. There is a thin pale line across your skin where it was, and when you look closely, it curves at one end, very slightly, like the edge of a coin.{/n}
-"There." {n}She is a little breathless, and her hands are shaking now that the work is done.{/n}''',
+    ch("heal", '{n}The pulling pain eases under her palms. When Chadali lifts them, the wound has closed. She lets out the breath she was holding.{/n} "There. Try moving. Slowly!"',
       c("Continue", "after")),
-    ch("after", '''"Don't come to me bleeding again without warning me first." {n}She sits back on her heels.{/n} "I nearly dropped a whole tray. I nearly screamed. I'm an empyreal lord; I'm not supposed to scream at scratches."
-{n}Then, quieter, her hand still resting on the new scar:{/n} "Come to me first. Before the healers. I'm better, and I'm closer, and I want to know."''',
+    ch("after", '"Warn me next time. I nearly dropped a tray." {n}Her hand rests beside the healed wound.{/n} "And if you\'re bleeding like this, go to the nearest healer. Even if it isn\'t me. I\'ll be cross about that later, when you\'re alive to hear it."',
       c('"First. Before the healers."', "close")),
-    ch("close", '''{n}She bends and kisses the scar, very lightly, and then scrambles up and busies herself with the bloody bandage so that you cannot see her face.{/n}
-"For luck," {n}she says, to the bandage.{/n}''',
+    ch("close", '{n}She kisses the healed skin, then looks up and catches your eye. Her fingers tighten briefly on your knee before she gathers the bandage.{/n} "For luck. Now let me get rid of this dreadful thing."',
       c("[Let her fuss.]")),
 ], requires=(NIGHT,), forbids=(SCAR,))
 
@@ -245,8 +230,7 @@ LUCK_GIVEN_BACK = H + "luck_given_back"
 LUCK_KEPT_GIVING = H + "luck_kept_giving"
 
 hour(NUMBER, "Zero", '"What are you writing?"', [
-    ch("start", """"A list." {n}She turns the paper round. A column of names, a number beside each: Eritrice one, Cobblehoof twelve, Alichino six hundred and sixty-six, "which he chose himself, which is cheating". Your name, and beside it, underlined three times, a two.{/n}
-{n}At the very bottom, in the same round hand, is her own name. Beside it is a nought.{/n}""",
+    ch("start", '"A list." {n}She turns the paper round. A column copied from earlier sessions: she remembers Eritrice choosing one, Cobblehoof twelve, Alichino six hundred and sixty-six, "which he chose himself, which is cheating". Your name, and beside it, underlined three times, a two.{/n}\n{n}At the very bottom, in the same round hand, is her own name. Beside it is a nought.{/n}',
       c('"Why is yours zero?"', "zero")),
     ch("zero", """{n}She tries to fold the list away. You put your hand on it.{/n}
 "Because I haven't got any left." {n}She says it to the table.{/n} "Every morning since the coin, I've been sending you mine. Not the Council's share. Mine. The bit I keep for myself. I thought nobody would notice. I'm chance; who checks whether chance is lucky?"
@@ -257,9 +241,7 @@ hour(NUMBER, "Zero", '"What are you writing?"', [
     ch("back", """"No." {n}The flat voice, the finger with the ring.{/n} "You don't get to decide that. It's mine. That's the whole point of it being mine."
 {n}Then she hears herself, and her finger wavers.{/n} "...You're doing the thing. Telling me when I'm spending myself." {n}She lets out a long breath.{/n} "Half. I'll keep half. That's the most I'll give you. Don't argue with an empyreal lord about arithmetic." """,
       c("[Don't argue.]", "half", flags=(LUCK_GIVEN_BACK,))),
-    ch("half", """{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}
-"There. One. That's Eritrice's number. She'll be furious." {n}A wet little laugh.{/n}
-"I'm keeping one because I decided to, not because you told me to. Write that down somewhere." {n}She folds the list into her sleeve.{/n} "One is a perfectly respectable number. Eritrice has built a whole Council on it." """,
+    ch("half", '{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}\n"There. One. Like the number I remember Eritrice choosing." {n}A wet little laugh.{/n}\n"I\'m keeping one because I decided to, not because you told me to. Write that down somewhere." {n}She folds the list into her sleeve.{/n} "One is a perfectly respectable number. I remember Eritrice building a whole Council on it." ',
       c("[Leave her with her one.]")),
     ch("keep", """{n}You say nothing. She watches you say nothing, and understands it, and nods once.{/n}
 "All right." {n}Brightly, and it costs her.{/n} "You need it more. You're at the front. That's true."
@@ -273,19 +255,16 @@ hour(NUMBER, "Zero", '"What are you writing?"', [
 SEAT = H + "the_seat_beside_her"
 
 hour(SEAT, "The seat beside her", '"You saved me a seat."', [
-    nar("open", '''{n}The session has ended and the others have gone, but the evidence is still there: two chairs pushed so close together at the end of the table that their arms touch, and a single cookie on the seat of one of them, exactly where someone would have to move it to sit down.{/n}''',
+    nar("open", '{n}The session is over. Chadali pushes an empty chair beside hers and puts a cookie on the seat. The war reports remain spread across the table.{/n}',
         c("Continue", "start")),
-    ch("start", '''"I did!" {n}Utterly unrepentant.{/n} "Eritrice said seating is by precedence. I said my precedence is that I got here first and put a cookie on it. She said that's not a rule. I said it is now."
-"And then I held your hand under the table for the entire session, and you let me." {n}She goes pink.{/n} "Did you know Shyka could see? Shyka can always see. They laughed at exactly the wrong moment, and everybody looked at me, and I had to pretend I'd been thinking of something funny."''',
+    ch("start", '"I\'ve saved you a seat. Move the cookie before you sit on it." {n}She holds out her hand beside the chair.{/n} "And this. If you\'re staying."',
       c('"What were you thinking of?"', "thinking"),
       c('"Should we be more careful?"', "careful")),
-    ch("thinking", '''"Your thumb." {n}Instantly, and then she claps both hands over her mouth.{/n}
-{n}Through her fingers, muffled:{/n} "That's not what I should have said. I should have said 'the future of the Worldwound'. That's what an empyreal lord would have said." {n}She lowers her hands.{/n} "But it was your thumb. It kept going round and round. I missed the whole vote. I don't know what we decided. I think I voted yes."''',
+    ch("thinking", '"Your thumb." {n}She answers at once, then covers her mouth with her free hand.{/n} "I was going to say the Worldwound. But you\'re doing that with your thumb, and I\'m trying very hard to think about something else."',
       c("Continue", "close")),
-    ch("careful", '''"Careful?" {n}She looks honestly baffled.{/n} "Why? Everyone already knows. Alichino's written it in his book. Socothbenoth calls us 'darlings' now, both at once. Cobblehoof pretends not to see, which is how he says he's happy for you."
-"Eritrice minuted it." {n}She giggles.{/n} "She wrote, 'The patron of serendipity was observed to be holding hands with the Commander. The chair notes that this is not on the agenda.' And then she underlined 'not'. She never underlines anything."''',
+    ch("careful", '"Careful?" {n}She squeezes your fingers.{/n} "The session\'s over. Let the others think what they like when they come back. I won\'t let go just because somebody wants this chair."',
       c("Continue", "close")),
-    ch("close", '''"Sit with me at every session. Until the hall closes." {n}She picks up the cookie from the chair and holds it out.{/n} "That's not a bet. That's just asking. I'm learning how."''',
+    ch("close", '"Next session, come here." {n}She points at the chair beside hers.{/n} "If they argue, I\'ll argue back. You\'ll have to help with the Worldwound. I can\'t hold your hand and do everything."',
       c("[Take the cookie, and the seat.]")),
 ], requires=(COMMITTED,), forbids=(SEAT,))
 
@@ -296,21 +275,15 @@ NEVER_MET = H + "pretend_we_never_met"
 REMEMBERED = H + "promised_to_remember"
 
 hour(NEVER_MET, "Pretend we never met", '"You look worried."', [
-    ch("start", '''"I'm not worried. I'm thinking about the end." {n}She is sitting very still, looking at the long table and its seven chairs.{/n}
-"The Council's nearly done. One way or another. And when it's done, I know what they'll do. I've seen councils end before." {n}Quietly.{/n} "They'll pretend it never happened. All of them. Alichino because it's convenient, and Cobblehoof because it's embarrassing, and Socothbenoth because he'll be busy, and Shyka because they'll find a better story."
-"Eritrice won't. She'll have the minutes. But she'll stop reading them."''',
+    ch("start", '"I\'m not worried. I\'m thinking about the end." {n}She is sitting very still, looking at the long table and its seven chairs.{/n}\n"The Council\'s nearly done. One way or another. And when it\'s done, I know what they\'ll do. I\'ve seen councils end before." {n}Quietly.{/n} "They\'ll pretend it never happened. All of them. Alichino because it\'s convenient, and Cobblehoof because it\'s embarrassing, and Socothbenoth because he\'ll be busy, and Shyka because they\'ll find a better story."\n"I remember Eritrice keeping every scrap of minutes. I hope she keeps those too, whatever she says in public."',
       c('"And you?"', "you"),
       c('"I won\'t pretend."', "promise", flags=(REMEMBERED,))),
-    ch("you", '''"Me?" {n}She smiles, a little wistfully.{/n} "I'll remember everything. I always do. I'll send them all cookies every year, and they'll send them back, and I'll pretend I don't mind."
-"That's my job. Remembering the nice parts, even when everyone else has decided it wasn't nice." {n}She looks at you.{/n} "I just don't want to be the only one. It's lonely, being the only one who remembers a party."''',
+    ch("you", '"I\'ll deny it too, if anybody asks." {n}She rubs a crumb off the table.{/n} "But at home, on the anniversary, I want cookies and somebody who remembers why there are seven chairs. Will you come?"',
       c('"You won\'t be. I won\'t pretend."', "promise", flags=(REMEMBERED,)),
       c('"I can\'t promise what the war will leave of me."', "war")),
-    ch("war", '''"No." {n}She nods.{/n} "No, you can't. That's fair. That's the most honest thing anyone's said at this table in weeks."
-{n}She takes your hand.{/n} "Then I'll remember for both of us, and if you ever come back, I'll tell you what you missed. I'll make it sound much better than it was. That's allowed. That's what remembering is for."''',
+    ch("war", '"No. You can\'t promise that." {n}She offers her hand.{/n} "I\'ll keep the date anyway. If you come back, there\'ll be a chair. If you don\'t, I\'ll be cross with an empty one."',
       c("[Let her hold your hand.]")),
-    ch("promise", '''{n}Her whole face changes, slowly, like the sky over Elysium when it decides to be a different colour.{/n}
-"Promise?" {n}The little finger.{/n}
-{n}You link it. She holds on for a long time.{/n} "Then there'll be two of us. That's a good number. I'm keeping it." {n}She sniffs, and laughs, and wipes her eyes on her sleeve.{/n} "When they all pretend, we'll have the only real copy."''',
+    ch("promise", '{n}She holds out her little finger. When you link it, she grips hard.{/n} "Then two of us remember. Privately. No speeches in the square. You come to my table and eat."',
       c("[Hold on.]")),
 ], requires=(STARTED, "council.cauldron_given"), forbids=(NEVER_MET,), chapters=(5,))
 
@@ -327,7 +300,7 @@ EPILOGUE_PARAGRAPHS = [
     (LUCK_KEPT_GIVING, "{n}She never did keep any luck for herself. The Commander won nearly everything, and never let themself ask why, and she lost earrings, and trays, and once a whole summer's honey, and never said a word.{/n}"),
     (SOCOTH_REFUSED, "{n}Socothbenoth never asked her for a favour again. He sent flowers every year anyway, from somewhere warm, with a note that said only \"No hard feelings, darling.\" She put them in the bin, stem first, every year, and smiled.{/n}"),
     (SOCOTH_OBLIGED, "{n}Socothbenoth owed the Commander a favour for the rest of his long existence, and never quite knew how he had come to owe it. Chadali knew. She never said.{/n}"),
-    (REMEMBERED, "{n}When the Council's members pretended that they had never met, two of them did not. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}"),
+    (REMEMBERED, "{n}When the Council's members publicly pretended they had never met, Chadali joined in. In private, she kept the date. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}"),
     (SCAR_KEPT, "{n}The Commander carried a thin pale scar for the rest of their life, curved at one end like the edge of a coin. She touched it for luck, every time, without asking.{/n}"),
 ]
 
@@ -348,4 +321,40 @@ def integrate(payload):
           requires=(SOCOTH_REFUSED,), any_groups=[list(gone)]),
         p("{n}Socothbenoth vanished still owing the Commander a favour. Chadali called it the luckiest debt anyone ever skipped out on, and kept the note of it in her cookie tin.{/n}",
           requires=(SOCOTH_OBLIGED,), any_groups=[list(gone)]),
+    ])
+
+
+# Treatment provenance: keep the old healing destinations and branch on the actual scar request.
+_scar = next(s for s in SCENES if s["Id"] == SCAR)
+_hn = {nd["Id"]: nd for nd in _scar["Nodes"]}
+_hn["scar"]["Choices"][0]["Next"] = "heal_scar"
+_scar["Nodes"].extend([
+    ch("heal_scar", '{n}A thin pale line remains, curving at one end like the edge of a coin. Chadali runs one finger beside it.{/n} "The little one you asked for. No more collecting them!"', c("Continue", "after_scar")),
+    ch("after_scar", '{n}Her palm rests beside the new scar.{/n} "That mark is enough. Next time, the nearest healer. I want you alive when you come through this door."', c("Continue", "close_scar")),
+    ch("close_scar", '{n}She kisses the scar, catches your eye and smiles before gathering the bloody bandage.{/n} "For luck."', c("[Let her fuss.]")),
+])
+_seat = next(s for s in SCENES if s["Id"] == H + "the_seat_beside_her")
+_sn = {nd["Id"]: nd for nd in _seat["Nodes"]}
+for _choice in _sn["start"]["Choices"]:
+    _choice["Text"] = '[Take the seat and her hand.] ' + _choice["Text"]
+_sn["start"]["Choices"].append(c('"Another time. The reports need me."', abort=True))
+_hn["after"]["Choices"][0]["Text"] = '"The nearest healer. I promise."'
+
+# Append new paragraphs after all old route paragraphs; existing consumer
+# inventories keep their positions. No historical guess summons its speaker.
+_integrate_hours = integrate
+def integrate(payload):
+    _integrate_hours(payload)
+    from story_format import p
+    from storylines import chadali_trickster as spine, chadali_sessions as sessions
+    page = next(sc for sc in payload["Scenes"] if sc["Id"] == "chadali.trickster.epilogue.lucky_night")["Nodes"][0]
+    page["Paragraphs"].extend(spine.ROUND2_PARAGRAPHS)
+    page["Paragraphs"].extend(p(text, requires=(flag,)) for flag,text in sessions.ROUND2_PARAGRAPHS)
+    for para in page["Paragraphs"]:
+        if "chadali.wagers.hoped_aloud" in para["Requires"]:
+            para["Requires"] = ["chadali.wagers.commander_hoped_aloud", "ending.wound_closed"]
+    page["Paragraphs"].extend([
+        p('{n}After the fighting at Threshold ended, Chadali repeated the hopeful words the Commander had spoken in the dark hall. "You said it before you knew how. I kept it."{/n}', requires=("chadali.wagers.commander_hoped_aloud",), forbids=("ending.wound_closed",)),
+        p('{n}The night the Wound closed, Chadali repeated the hope she had spoken when the Commander could not: they would win, though she did not yet know how. "That one was mine," she said. "You stayed to hear it."{/n}', requires=("chadali.wagers.chadali_hoped_aloud", "ending.wound_closed")),
+        p('{n}After the fighting at Threshold ended, Chadali repeated her own words from the dark hall. The Commander had stayed when she said them. She remembered that too.{/n}', requires=("chadali.wagers.chadali_hoped_aloud",), forbids=("ending.wound_closed",)),
     ])
