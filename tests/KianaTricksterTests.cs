@@ -138,7 +138,7 @@ internal static class KianaTricksterTests
         // Trk_Kiana_NoQ3: the latch holds after Seelah left; the pivot follows a day later on Arsinoe's hub.
         var noQ3 = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "seelah_gone");
         check(Rules.Available(story, gem, noQ3) && !Any(noQ3, collar, postponed, waited), "Trk_Kiana_NoQ3: device unavailable.");
-        var sold = gemOut.First(r => r.Has("kiana.trickster.cost.guests_robbed") && !r.Has("kiana.trickster.cost.courier_marked"));
+        var sold = Program.Walk(gem, noQ3).First(r => r.Has("kiana.trickster.cost.guests_robbed") && !r.Has("kiana.trickster.cost.courier_marked"));
         check(sold.Has("kiana.trickster.primed") && sold.Has("kiana.history_married"), "Trk_Kiana_NoQ3: wrong flags.");
         check(!Rules.Available(story, temple, Later(story, sold, 23)) && Rules.Available(story, temple, Later(story, sold, 24)),
             "Trk_Kiana_NoQ3: the pivot ignores its day.");
@@ -218,6 +218,8 @@ internal static class KianaTricksterTests
         check(!paid.Has("kiana.trickster.cost.guests_robbed") && !paid.Has("kiana.trickster.primed"), "Trk_Kiana_AwakePaid: wrong flags.");
         check(Pages(temple, Later(story, dog, 24)).Contains("told_dog") && Pages(temple, Later(story, paid, 24)).Contains("ransomed_awake"),
             "The awake pivot opens on the wrong state.");
+        check(Rules.Available(story, temple, Later(story, dog, 24)) && Rules.Available(story, temple, Later(story, paid, 24)),
+            "Awake no-Q3: the actual dead-Seelah history cannot enter the temple.");
         var s3 = Later(story, Program.Walk(temple, Later(story, dog, 24)).First(r => !r.Has("kiana.closed")), 48);
         check(Rules.Available(story, S("kiana.stagecraft"), s3) && Rules.Available(story, S("kiana.marriage"), s3), "Trk_Kiana_Stagecraft_S3 failed.");
 

@@ -1,0 +1,33 @@
+{
+  "kiana": {
+    "device_class": "another_character_intervenes",
+    "setting": "Drezen borrowed vampire-court room, Elan's reply interrupting her rehearsal",
+    "payoff_shape": "princess drops the performance and writes an honest guest's exit with her husband's state carried",
+    "canon_hooks": [
+      {
+        "guid": "a819e8c85ef23324bb0d8117bb9d7df3",
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp",
+        "key": "1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+        "native_excerpt": "\"Yes, it feels good to be married.\" {n}Kiana smiles.{/n} \"Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "466c4a8957da5f14fa958d1718b4a552",
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp",
+        "key": "7841b453-df78-4bec-9758-e8daf7622dc4",
+        "native_excerpt": "\"Oh, stop it! My friends and I are completely harmless 'vampires.' We won't bite!\" {n}Kiana laughs musically.{/n} \"Truth be told, we chose the theme of {g|Ustalav}Ustalav{/g} because it lets us wear beautiful dresses, light candles, and drink red wine all evening, pretending that it's blood. I personally can't think of a better way to celebrate my wedding!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "716683517058beb4ead374bd16b22ff0",
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0013.jbp",
+        "key": "00b5c029-c3bb-43d6-a672-84b172ea6f6e",
+        "native_excerpt": "\"If it weren't for soldiers like me, a lot of families would lose their loved ones. It won't be long before the demons are defeated... I truly believe our victory is near. But for now, I must keep on fighting.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}
