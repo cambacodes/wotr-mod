@@ -1,0 +1,20 @@
+{
+  "voice": "IRABETH: direct, dutiful, stubborn; protective of soldiers; dry humor, brief soldierly swearing, awkward admitting desire but decisive once she does. A paladin with faith and independent judgment. Tenderness and appetite coexist with love for her wife. No therapy language, lectures, maxims, rank as sexual entitlement or generic domineering persona. Write new dialogue; do not reuse the example.",
+  "facts": "Canon: half-orc paladin of Iomedae, green skin and fangs (NPC_Common/Irabeth/Cue_0017, Cue_0020, Cue_0206). Canon: facial scar; asks not to revisit the episode (Answer_0070/Cue_0071). Do not invent other scars, measurements, genital details or wound locations as canon facts. Canon: married to Anevia, whom she loves and calls her staunchest ally (Cue_0047/Cue_0048). Commander may be a man or a woman; no anatomy or pronouns inferred from rank. Room staging, Commander romance and sexual encounter are authored, not native history.",
+  "scene": "SCENE: Trickster-route planning slot for a consensual sexual encounter between Irabeth and the Commander. Chapter 5, the Commander's existing room, partner_lasting_0_night. Irabeth told Anevia the courtship ended, then returned. This is the existing secret affair, not an accepted arrangement. Required dramatic beats: Desire, guilt about the deliberate lie and her choice to stay. Do not make her evil, passive or innocent of deception. No interruption by Anevia. The next scene is the false-watch morning. This brief supplies situation and continuity only; no explicit prose is supplied in this planning pass. Continuity: Exact last_line once at the end. Tagged N narration and I dialogue; Commander speaks through player choices, never embedded invented speech. No extra speakers or offscreen arrivals. Do not set flags, invent vows, add costs, alter spouse state or infer commitment. Existing branch and next node retain ownership.",
+  "last_line": "N: Before the dawn muster, Irabeth reaches for her belt.",
+  "speakers": {
+    "I": "Irabeth"
+  },
+  "example": "N: Irabeth puts the report aside and catches your sleeve.\nI: Leave the dispatch. I have had enough of it tonight.\nN: She draws you into a kiss, then laughs when someone calls the watch outside.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "irabeth.a_road_she_would_choose.explicit.1",
+  "default_text": "{n}Irabeth closes the door and stays with you. Before dawn, she reaches for her ring.{/n}",
+  "continuity": "Exact last_line once at the end. Tagged N narration and I dialogue; Commander speaks through player choices, never embedded invented speech. No extra speakers or offscreen arrivals. Do not set flags, invent vows, add costs, alter spouse state or infer commitment. Existing branch and next node retain ownership."
+}

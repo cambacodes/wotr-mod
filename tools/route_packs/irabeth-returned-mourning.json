@@ -1,0 +1,102 @@
+{
+  "status": "AUTHORED, NOT REGISTERED: shared payoff/departure inventory required",
+  "finding": "F1 HOW: new returned lovers have no empty-chair ending after an unreturned Commander sacrifice",
+  "integration": "Append this scene, classify its mourning and wife-state paragraphs in tools/payoff_contracts.json and tools/departure_contracts.json, and retain the existing legacy sacrifice owner. Do not manufacture a Commander return or Irabeth presence.",
+  "Scenes": [
+    {
+      "Id": "irabeth.trickster.epilogue.empty_chair",
+      "Title": "The desk she left clear",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Relationship": "irabeth",
+      "Requires": [
+        "trickster.ever",
+        "irabeth.trickster.returned",
+        "irabeth.committed",
+        "sacrifice",
+        "irabeth.present_now"
+      ],
+      "Forbids": [
+        "irabeth.lover",
+        "irabeth.campaign_kept",
+        "irabeth.closed",
+        "irabeth_gone",
+        "irabeth_dead",
+        "trickster.commander_back",
+        "ascended",
+        "inhuman",
+        "swarm",
+        "true_lich"
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "DelayHours": 0,
+      "Optional": false,
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Portrait": "Irabeth",
+          "Text": "{n}Irabeth stood at attention through the Commander's memorial. After the hymn she cleared the roster-room desk herself. She put the company reports back on it, and left the chair empty.{/n}\n{n}She kept her vow until the Wound was shut. The final report named every loss. She did not let the clerk omit the Commander.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Paragraphs": [
+            {
+              "Text": "{n}She came home to Anevia after the memorial. Nevi took the helmet from her hands, set it on the kitchen floor, and pulled her into a chair. They stayed there until the loaf in the oven burned. Neither woman rose to save it.{/n}",
+              "Requires": [
+                "anevia.present_now"
+              ],
+              "Forbids": [
+                "anevia_dead",
+                "anevia_gone",
+                "anevia.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Anevia had returned as far as the gate. Irabeth went out to her with the discharge in her hand and no personal question left to ask the Commander. They took the south road together.{/n}",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.present_now"
+              ],
+              "Forbids": [
+                "anevia_dead"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Her wife remained somewhere down the south road. Irabeth sent the news herself. She folded the letter, then sat over the empty desk until the watch changed.{/n}",
+              "Requires": [
+                "anevia_gone"
+              ],
+              "Forbids": [
+                "anevia_dead",
+                "anevia.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Anevia was dead. Irabeth kept her wedding ring on while she packed the Commander's last report. In the morning she went back to the company and read the names again, without leaving either one out.{/n}",
+              "Requires": [
+                "anevia_dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

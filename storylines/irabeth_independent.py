@@ -451,7 +451,7 @@ s("anevias_answer", "The answer only Anevia could give",
 s("the_evening_she_chose", "An invitation in her own name",
   '"I have spoken with Anevia. I would like your answer now."', [
     n("start", "Irabeth", '''{n}Irabeth has laid two cups beside a jug of water. She notices you looking at them and gives a small, embarrassed shrug.{/n}
-"I thought of wine. Then I thought of spending the conversation wondering whether the wine had made either of us more agreeable. Water is less ambitious."
+"Water. I have the first inspection tomorrow, and Hadran can smell wine through a closed helmet. He would enjoy himself far too much."
 {n}She pours, gives you a cup and sits.{/n}
 "Anevia told me what she said. I agree with the terms. I want to keep the time I have promised her. I want to make time for you, with an actual day attached to it."
 {n}She takes a drink before continuing.{/n}
@@ -465,7 +465,7 @@ s("the_evening_she_chose", "An invitation in her own name",
 "You make it sound magnificent."
 "I have been imagining it rather extravagantly. The absence of a desk has become important."
 {n}She reaches across the space between you, palm upward.{/n}
-"Come with me. Hear the guard. Tell me something you want from an evening, even if it has nothing to do with my plans. Then, if we both still want to, I would like to kiss you."
+"Come with me. Hear the guard. Laugh if I am dreadful. I have been wanting to kiss you all afternoon."
 {n}She stops, hears herself starting a second paragraph, and laughs.{/n}
 "That is the invitation. Answer before I add a clause."''', c('"Yes. I would like that evening."', "room")),
     n("old", "Irabeth", '''"I want to stop making the door the most important object in a room."
@@ -1438,7 +1438,7 @@ ending("changed", "A choice she did not follow", [
 ], any_of=("inhuman", "swarm", "true_lich"), forbids=("irabeth_dead", "irabeth_gone"))
 
 ending("ascent", "The distance beyond the map", [
-    n("end", "Narrator", '''{n}When the Commander ascended, the priests of the new cult came to Irabeth for stories of their god. She told them about the night the Commander laughed so hard at the duke that a chair broke, and which inns the Commander could not abide. The priests stopped coming.{/n}
+    n("end", "Narrator", '''{n}When the Commander ascended, the priests of the new cult came to Irabeth for stories of their god. She told them about her own embarrassment at wanting an evening with the Commander, and how long she took to ask for it. The priests stopped coming.{/n}
 {n}She went on praying to Iomedae, keeping her post and taking her leave at the lake. Some nights she said a few words up at the sky that were not prayers, and she never told anyone what they were.{/n}'''),
 ], requires=("ascended",), forbids=("irabeth_dead", "irabeth_gone", "inhuman", "swarm", "true_lich"))
 

@@ -81,6 +81,10 @@ def cover_endings(scenes):
                     paragraphs.append(p(page["Text"], forbids=(SECRET,)))
                     page["Text"] = '{n}Irabeth kept her wedding ring. What the Commander had promised did not undo her marriage.{/n}'
                 paragraphs.extend(ending_paragraphs())
+    # Round-2 receipts follow the existing employment and wife-state inventory;
+    # their addition must not move a published conditional paragraph address.
+    from storylines import irabeth_round2
+    irabeth_round2.ending_additions(scenes)
 
 
 def cover_native(payload):
