@@ -205,7 +205,7 @@ internal static class IomedaeTricksterTests
             "Trk_Iomedae_Chapter3: the dead knight's memory does not read the word the Commander wrote.");
 
         // Trk_Iomedae_Chapter4: in the Abyss, the herald tells the Acts (and may be told the dreams); the silence page.
-        var c4 = World(story, 4, "trickster", "trickster.ever", Started, P + "dream.banner");
+        var c4 = World(story, 4, "trickster", "trickster.ever", Started, P + "dream.banner", P + "bridge_seen");
         check(Avail(legend, c4) && legend.Chapters.SequenceEqual(new[] { 4 }) && Take(legend, c4, "dreams", 0, P + "dreams_told").Has(P + "bridge_told")
               && Avail(silence, c4) && !Avail(silence, World(story, 4, "trickster", "trickster.ever")),
             "Trk_Iomedae_Chapter4: the Abyss has no beat for her (the herald's Acts, the silence).");
@@ -254,7 +254,17 @@ internal static class IomedaeTricksterTests
         // Trk_Iomedae_Disputation: the commit (her concession aloud), SkillLoreReligion DC 24 or plain, and every refusal
         // player-caused (the boast, the mocked madness, the lie about the theft); never after a yes or a no.
         // eng7-l13: new disputation commitments require current power.
-        var ready = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called);
+        var noPersonal = World(story, 5, "trickster", "trickster.ever", Started, Latch,
+            P + "bridge_seen", "iz.done", Held, Called, P + "dream.summit", P + "dream.herald");
+        check(!noPersonal.Has(P + "courted") && Paths(disp, noPersonal).All(o => !o.state.Has(Committed))
+              && Paths(disp, noPersonal).Any(o => o.state.Has(P + "concession.postponed")),
+            "Trk_Iomedae_R2: war conversations grant personal commitment instead of postponing it.");
+        var noPersonalWound = World(story, 6, "trickster", "trickster.ever", Started, Latch,
+            Held, P + "disputed", P + "argument_only");
+        check(Paths(wound, noPersonalWound).All(o => !o.state.Has(Committed))
+              && Paths(wound, noPersonalWound).Any(o => o.state.Has(P + "rescue_only")),
+            "Trk_Iomedae_R2: the argument-only pickup bypasses her personal exchange.");
+        var ready = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called, P + "personal_exchange");
         check(!Avail(disp, Later(ready, 0, area: "00000000000000000000000000000000")) && disp.Areas.SequenceEqual(new[] { Drezen }) && disp.DelayHours == 24
               && disp.Chapters.SequenceEqual(new[] { 5 }),
             "Trk_Iomedae_Disputation: the disputation plays away from the platform, or outside Chapter 5.");
@@ -270,11 +280,11 @@ internal static class IomedaeTricksterTests
         var boast = Take(disp, ready, "refuse", 0, Declined, P + "cost.boasted");
         check(!boast.Has(Committed) && !boast.Has(Closed) && !Avail(disp, Later(boast, 30)) && !Avail(disp, Later(yes, 30)),
             "Trk_Iomedae_Disputation: the boast is not a soft no (declined, not closed), or the disputation replays.");
-        var mad = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called, "iomedae.reproached");
+        var mad = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called, "iomedae.reproached", P + "personal_exchange");
         check(Take(disp, mad, "mocked", 0, Declined).Has(P + "cost.madness_mocked") && Take(disp, mad, "will", 0, Committed).Has(P + "answered.madness")
               && Paths(disp, ready).All(o => !o.path.Any(e => e.node == "madness")),
             "Trk_Iomedae_Disputation: the Trickster ultimate is not a fourth objection (answered, or mocked), or it is raised without it.");
-        var thief = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Order, P + "cost.banner_stolen", Called);
+        var thief = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Order, P + "cost.banner_stolen", Called, P + "personal_exchange");
         check(Take(disp, thief, "lied", 0, Declined).Has(P + "cost.lied") && Take(disp, thief, "will", 0, Committed).Has(P + "answered.theft"),
             "Trk_Iomedae_Disputation: a stolen banner is not answered for (or the lie does not end it).");
 
@@ -315,7 +325,7 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Threshold: the device act beside the native sacrifice (E14b); committed carries; after a refusal the truth
         // concedes at the Wound (the reachable yes, no price) and a joke closes; never argued, the argument is made there.
-        var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken", P + "dream.summit", P + "dream.herald" };
+        var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken", P + "dream.summit", P + "dream.herald", P + "personal_exchange" };
         var tc = World(story, 6, t6.Concat(new[] { Committed }).ToArray());
         var td = World(story, 6, t6.Concat(new[] { Declined, P + "cost.boasted", P + "disputed" }).ToArray());
         var tn = World(story, 6, t6);
@@ -341,7 +351,7 @@ internal static class IomedaeTricksterTests
         // Trk_Iomedae_ArgumentOnly (audit r5, BEL): the Commander may take the argument and decline the rest; the Wound honours
         // that (rescue only), and the Commander may still take the rest up there.
         var argOnly = Take(disp, ready, "argument_only", 0, P + "argument_only");
-        var ta = World(story, 6, "trickster", "trickster.ever", Started, Latch, Held, P + "disputed", P + "argument_only");
+        var ta = World(story, 6, "trickster", "trickster.ever", Started, Latch, Held, P + "disputed", P + "argument_only", P + "personal_exchange");
         var taRescue = Take(wound, ta, "argued", 0, P + "rescue_only", Carried);
         check(argOnly.Has(P + "disputed") && !argOnly.Has(Committed) && !argOnly.Has(Declined) && !Avail(disp, Later(argOnly, 30))
               && !taRescue.Has(Committed) && Take(wound, ta, "decide", 0, Committed, Carried).Has(P + "cost.buried_to_the_world")
@@ -352,7 +362,7 @@ internal static class IomedaeTricksterTests
         check(!Paths(wound, abbreviated).Any(o => o.state.Has(Committed)) && Paths(wound, abbreviated).Any(o => o.state.Has(P + "rescue_only"))
               && !Paths(wound, abbreviated).Any(o => o.path.Any(e => e.node == "other_yes")),
             "Trk_Iomedae_Threshold: a disputation refused at the first objection still earns the romance at the Wound.");
-        string[] courted = { P + "dream.summit", P + "dream.herald" };
+        string[] courted = { P + "personal_exchange" };
         var reproachedW = World(story, 6, new[] { "trickster", "trickster.ever", Started, Latch, Held, "iomedae.reproached" }.Concat(courted).ToArray());
         var stolenW = World(story, 6, new[] { "trickster", "trickster.ever", Started, Latch, Order, P + "cost.banner_stolen" }.Concat(courted).ToArray());
         var bothW = World(story, 6, new[] { "trickster", "trickster.ever", Started, Latch, Order, P + "cost.banner_stolen", "iomedae.reproached" }.Concat(courted).ToArray());
@@ -406,9 +416,9 @@ internal static class IomedaeTricksterTests
         var sentHeld = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", Held);
         var sentSock = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", "iz.banner_lost", "iz.sock_raised");
         var sentLost = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", "iz.banner_lost");
-        check(SurfaceIds.Has(Render(Pg("respect"), sentHeld), "[iomedae.trickster.epilogue.respect/page/paragraph/9]") && !SurfaceIds.Has(Render(Pg("respect"), sentSock), "[iomedae.trickster.epilogue.respect/page/paragraph/9]")
-              && SurfaceIds.Has(Render(Pg("respect"), sentSock), "[iomedae.trickster.epilogue.respect/page/paragraph/10]") && SurfaceIds.Has(Render(Pg("respect"), sentLost), "[iomedae.trickster.epilogue.respect/page/paragraph/11]")
-              && !SurfaceIds.Has(Render(Pg("respect"), sentLost), "[iomedae.trickster.epilogue.respect/page/paragraph/9]"),
+        check(SurfaceIds.Has(Render(Pg("respect"), sentHeld), "[iomedae.trickster.epilogue.respect/page/paragraph/11]") && !SurfaceIds.Has(Render(Pg("respect"), sentSock), "[iomedae.trickster.epilogue.respect/page/paragraph/11]")
+              && SurfaceIds.Has(Render(Pg("respect"), sentSock), "[iomedae.trickster.epilogue.respect/page/paragraph/12]") && SurfaceIds.Has(Render(Pg("respect"), sentLost), "[iomedae.trickster.epilogue.respect/page/paragraph/13]")
+              && !SurfaceIds.Has(Render(Pg("respect"), sentLost), "[iomedae.trickster.epilogue.respect/page/paragraph/11]"),
             "Trk_Iomedae_Worlds: a sent-away Commander's banner ignores Iz, or the lived opening denies a Last Call sacrifice.");
         // Audit r6: the world's dead Commander (bridge or Last Call's coffin) is hidden on the platform; the appointment line is
         // the bridge world's only; Pharasma's terms are staged on the bridge page; the court's closing line follows them.
@@ -434,7 +444,7 @@ internal static class IomedaeTricksterTests
               && SurfaceIds.Has(Render(plat2, World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, "seelah.in_party")), "[iomedae.trickster.epilogue.platform/sentry/paragraph/0]")
               && !SurfaceIds.Has(Render(plat2, livedW), "[iomedae.trickster.epilogue.platform/sentry/paragraph/0][iomedae.trickster.epilogue.platform/morning_open/paragraph/0]"),
             "Trk_Iomedae_Reactions: no companion answers the platform night, or Seelah's reactions die with her return.");
-        check(SurfaceIds.Has(Render(Pg("after"), bridgeW), "[iomedae.trickster.epilogue.after/page/paragraph/21]") && !SurfaceIds.Has(Render(Pg("after"), livedW), "[iomedae.trickster.epilogue.after/page/paragraph/21]")
+        check(SurfaceIds.Has(Render(Pg("after"), bridgeW), "[iomedae.trickster.epilogue.after/page/paragraph/25]") && !SurfaceIds.Has(Render(Pg("after"), livedW), "[iomedae.trickster.epilogue.after/page/paragraph/25]")
               && Reachable(Pg("bridge"), bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.bridge/terms]")) && Reachable(Pg("bridge"), bridgeW).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.epilogue.bridge/liable]")),
             "Trk_Iomedae_Worlds: the appointment leaks into an ordinary life, or the Lady of Graves' terms are not staged.");
         var verdict = S(P + "afterlogue.verdict");
@@ -473,7 +483,7 @@ internal static class IomedaeTricksterTests
         check(!Avail(S("konomi.ending_public"), konomiW) && Avail(S("konomi.ending_public_buried"), konomiW)
               && Avail(S("konomi.ending_public"), konomiLive) && !Avail(S("konomi.ending_public_buried"), konomiLive)
               && SurfaceIds.Has(Render(Pg("bridge"), konomiW), "[iomedae.trickster.epilogue.bridge/sleep/paragraph/9]")
-              && SurfaceIds.Has(Render(Pg("rescued"), rescuedW), "[iomedae.trickster.epilogue.rescued/page/paragraph/2]"),
+              && SurfaceIds.Has(Render(Pg("rescued"), rescuedW), "[iomedae.trickster.epilogue.rescued/page/paragraph/9]"),
             "Trk_Iomedae_Coexist: Konomi's well-known public ending plays beside a Commander who is a grave.");
 
         // Trk_Iomedae_Intimacy: on the bare platform, after Threshold, she in plain steel; the cut at the first motion astride.
@@ -519,7 +529,8 @@ internal static class IomedaeTricksterTests
         w7.Flags.Add(Held); w7.Times[Held] = w7.Hour; w7.Flags.Add("iz.done"); w7.Times["iz.done"] = w7.Hour;
         Rules.Complete(story, w7);
         var w8 = Take(izNight, Later(w7, 6), "win", 0, Called);
-        var w9 = Take(disp, Later(w8, 24, area: Drezen), "rain", 0, Committed);
+        var personalW = Take(S(P + "dream.questions"), w8, "right", 0, P + "personal_exchange");
+        var w9 = Take(disp, Later(personalW, 24, area: Drezen), "rain", 0, Committed);
         var w10 = Take(mortal, Later(w9, 24), "where", 0, P + "mortal_seen");
         var w11 = Take(eve, Later(w10, 24, chapter: 6), "there", 0, P + "eve_seen");
         var w12 = Take(wound, Later(w11, 12), "go", 0, Carried);
