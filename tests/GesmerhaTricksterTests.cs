@@ -383,7 +383,10 @@ internal static class GesmerhaTricksterTests
         foreach (var (sc, cut, after) in new[] { (asks, "private", "after_private"), (room, "night", "after_night"), (room, "first_night", "after_first_night") })
         {
             var beat = sc.Nodes.Single(x => x.Id == cut);
-            check(beat.Choices.Count == 1 && beat.Choices[0].Next == after,
+            var slotId = sc.Id + ".explicit." + (cut == "first_night" ? "2" : "1");
+            var slot = sc.Nodes.Single(x => x.Id == slotId);
+            check(beat.Choices.Count == 1 && beat.Choices[0].Next == slotId
+                  && slot.Choices.Count == 1 && slot.Choices[0].Next == after && slot.Choices[0].Set.Length == 0,
                 "An intimate beat fades early or carries its own aftermath: " + sc.Id + "/" + cut);
         }
         check(room.Nodes.Single(x => x.Id == "first_kiss").Choices.Any(c => c.Next == "first_night")

@@ -291,7 +291,7 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
       c('"Friendship. That is what I want from you."', "friends")),
     n("terms", "Gesmerha", '''"Good. I had carved three speeches for your refusal. I will burn them."
 {n}She moves closer and finds your shoulder with the back of her fingers, and stays there.{/n}
-"Two things, before I stop being able to think. The first. A commander has a great many people who want a piece of the day. Never promise me an evening and then give it away. I will know. I can hear a guilty step across a whole yard."
+"Two things, before I stop being able to think. The first. A commander has a great many people who want a piece of the day. Never promise me an evening and then give it away. I will know. I will be waiting with supper going cold."
 {n}Her hand rests against your collar.{/n}
 "My people come first. If the clan needs me on a road, I go, and you do not sulk. If I choose to stay somewhere you cannot follow, you do not pack my tools for me while I am still making up my mind."
 "That is all. My grandmother had eleven conditions for her husband, and he broke nine of them. I am asking for two."''',
@@ -303,11 +303,10 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
 "The door," {n}she says against your mouth.{/n} "Or this bench, until the light goes. Say which. I have waited long enough."''',
       c('"The door."', "private"),
       c('"The bench. Just this, today."', "hold")),
-    n("private", "Gesmerha", '''{n}You bar the workshop door. She hears the bar drop and is already on her feet with a hand out. She takes yours and leads you past the low crosspiece she no longer needs to think about, to the pallet behind the curtain where she sleeps among the offcuts.{/n}
-"I refuse to begin by explaining you to a healer," {n}she says.{/n} "Mind the shelf."
-{n}Then she does not wait. She has your belt open by feel faster than you could have managed it yourself, and pushes the rest of your clothes off you with the impatience of a woman stripping bark. Her own shift she pulls over her head in one motion and drops somewhere among the shavings. Her hands go everywhere, reading you the way she reads a new block: the scars, the old breaks, the places that jump under her palm. She finds each one and does not stop to ask about it.{/n}
-"You are not what I carved in my head," {n}she says.{/n} "Better grain."
-{n}She pushes you down onto the pallet and follows, settling astride you with her knees hard against your ribs and her loosened hair falling around both your faces, and she reaches down between you with the same sure hand she uses on a chisel.{/n}''',
+    n("private", "Gesmerha", '''{n}You bar the workshop door. Gesmerha takes your hand and leads you to the pallet behind the curtain, ducking beneath the low shelf.{/n}
+"Mind your head. I refuse to explain this to a healer."
+{n}She kisses you before you can answer. Her fingers work your belt loose; your hands find the hem of her shift and she pulls it off herself. She presses close, warm skin against yours, then draws you down onto the pallet.{/n}
+"Stay. The clan has had me since dawn. I want this afternoon."''',
       c('[Continue]', "after_private")),
     n("hold", "Gesmerha", '''"Come nearer, then. I have plans for this bench."
 {n}She hauls your arm around her shoulders and settles its weight where she wants it. When your fingers find the tie in her hair, she catches them.{/n}
@@ -332,7 +331,7 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
 "I would rather say it."
 "Good."
 {n}She sends you for the game. Before you have set it down, she speaks again.{/n}
-"And do not think I will stand at this bench unchanged until you make up your mind. Wood seasons. So do women."
+"And do not think I will stand at this bench unchanged until you make up your mind. I may have a different answer by then."
 {n}She finds her pieces by touch and sets them within reach.{/n}
 "Now. Show me whether you have learned anything about that outer row."''',
       c('[Play, and leave the larger answer open.]', flags=("gesmerha.campaign_kept", "gesmerha.campaign_slow"))),
@@ -361,15 +360,10 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
 "Eventually."
 "So am I, eventually. At present I would not get up for the Lady of the Sun herself."''', c('[Stay until she is ready to get up.]', "road_private")),
     # The road page again for the private path: flags are set only on terminal choices, so this copy records the afternoon.
-    n("road_private", "Gesmerha", '''"When you ride out for somewhere I cannot reach," {n}she says after a while,{/n} "do not make the goodbye into a speech. Tell me what you can. Leave the rest to the spirits."
-"You expect a long absence?"
-"I expect your road does not ask my leave."
-{n}She lifts your joined hands and kisses your knuckles.{/n}
-"If I can send word, I will. If no word comes, it is only the road. Do not read omens into it. Wintersun read omens for twenty years, and look what that bought us."
-"And when I come back?"
-"Knock. I will open the door with no dignity at all. But knock."
-{n}She settles your hands in her lap again.{/n}
-"Today you are here. There is no sense in starting your absence early."''',
+    n("road_private", "Gesmerha", '''{n}She lifts your joined hands and kisses your knuckles. The barred door rattles once; she ignores it.{/n}
+"When your army takes you somewhere I cannot reach, tell me what you can. I will miss this. Do not send someone else's fine words to explain why I should not."
+{n}She tucks your arm back around her and settles against you.{/n}
+"For now, let them knock."''',
       c('"Then today is ours."', flags=("gesmerha.campaign_kept", "gesmerha.lover", "gesmerha.committed", "gesmerha.afternoon_shared"))),
 ], "gesmerha.singing_kept")
 
@@ -572,17 +566,17 @@ ending("unmet_again", "The afternoon remembered", '''{n}The road did not bring t
           "wanted and made the Commander answer plainly, and a game neither of them finished often enough. What she would have "
           "said at another meeting stayed hers. The Commander kept the last afternoon as it had been, the awkward parts "
           "included.{/n}", forbids=(CATCHUP, FIRSTMET)),
-        p("{n}There had been one afternoon, and it began with a lie: ten afternoons at her board that had never happened. She "
-          "heard it in the Commander's feet, sat the liar down at her half-cut board anyway, and caught a hand going to a square "
-          "nobody should have known. The Commander lost the eleventh game and paid for the pieces. There was meant to be a "
-          "twelfth. The road did not bring it, and she kept the count at one.{/n}", requires=(CATCHUP, TRICK)),
-        p("{n}There had been one afternoon, and it began with a lie about ten others, owned before she had finished calling it "
+        p("{n}Their last game began with a lie: ten afternoons invented to obtain another visit. She "
+          "caught it, set out the pieces, explained the outer-row rule, and stopped a hand making a move "
+          "she had just forbidden. The Commander lost and paid for the pieces. There was meant to be another "
+          "game. The road did not bring it; she kept the real visits in mind, not the invented ten.{/n}", requires=(CATCHUP, TRICK)),
+        p("{n}Their last visit began with a lie about ten afternoons, owned before she had finished calling it "
           "one. Honest liars pay for the pieces too, she said, and the Commander paid, and sat. She had meant to count the "
-          "afternoons from that one. The road did not bring a second, and she kept the count at one.{/n}",
+          "real visits. The false ten did not erase them. The road did not bring another.{/n}",
           requires=(CATCHUP,), forbids=(TRICK,)),
         p("{n}There had been one afternoon, late in the war, at a bench the Commander had walked past before without stopping. "
           "Two lost games, the pieces paid for, and a blind woman learning a new step. She had meant to count the afternoons "
-          "from that one. The road did not bring a second, and she kept the count at one.{/n}", requires=(FIRSTMET,)),
+          "from that one. The road did not bring another game.{/n}", requires=(FIRSTMET,)),
     ), **SURVIVED)
 ending("loss", "The answering voice", '''{n}Gesmerha died. Neither the game nor the songs could answer in her place. People who remembered her sometimes quarrelled over a line she had sung, and for a moment the quarrel left room for the correction that would not come.{/n}
 {n}The Commander's memories were less orderly than a tribute. Her temper at being interrupted. Her hand held out to be met. The exact pause before she said she wanted something, and then said it anyway.{/n}
