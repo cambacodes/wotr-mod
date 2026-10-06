@@ -299,12 +299,11 @@ s("a_crossing", "A door left unlatched", "Anevia", 3,
 "I'm telling you because I won't have you think this is an arrangement she's agreed to. It isn't."''',
       c('"I understand. I still want to stay."', "kiss"),
       c('"Then I should go."', "leave")),
-    n("kiss", "Anevia", '''{n}Anevia comes to you slowly enough that you could step aside. When you do not, she puts a hand against your cheek and studies your face with the same unsettling concentration she gives a locked door.{/n}
-"Last chance to ask for a report instead."
-{n}You answer by drawing closer. Her first kiss is brief. She breaks it herself, searching your expression, then kisses you again with the hesitation gone. For a little while the only thing either of you says is the other's name.{/n}
-{n}A sound in the corridor makes her stiffen. She turns toward it before she can stop herself. Footsteps pass. No one knocks.{/n}
-"That's going to happen every time, isn't it?"
-{n}She is not asking about the footsteps.{/n}''',
+    n("kiss", "Anevia", '''{n}Anevia catches your face between her hands and kisses you. Her thumb stays against your jaw when she breaks away.{/n}
+"Spent all bloody day thinkin' about that."
+{n}Boots scrape outside. She stops breathing. A runner calls for the evening dispatches; the aide farther down the passage answers him. Anevia waits until the boots pass, then lets her forehead fall against your shoulder.{/n}
+"Beth knows when those reports leave. Better than I do, some days."
+{n}She lifts her head and kisses you again, hard enough to interrupt her next excuse.{/n}''',
       c('"We can stop."', "stop"),
       c('[Stay with her. Let the evening pass in private.]', "night")),
     n("night", "Anevia", '''{n}She goes back to the door. Her hand rests on the wood, not the latch, and she leaves it unbarred: anybody could walk in, and she wants you to know she knows it. When she turns round, whatever she was arguing with herself about has been settled.{/n}
@@ -313,10 +312,11 @@ s("a_crossing", "A door left unlatched", "Anevia", 3,
 {n}She walks you backwards until the edge of the bed catches your knees, pushes you down onto it and follows, one knee either side of your hips. Her hands flatten on your chest. For a heartbeat she holds there, breathing hard, as if memorizing the moment for a report she will never file. Then she leans down, her hair falling around both your faces, and drags you up against her.{/n}
 {n}Later, she dresses in silence. She puts her scarf on twice before she is satisfied with how it sits. At the door she presses her forehead briefly to yours.{/n}
 "I wanted that. Whatever happens, I won't make you carry the lie that I didn't."
-{n}Then she leaves to go home to the woman who trusts her.{/n}''', c('[Let her leave.]', flags=("a_affair",))),
+{n}She checks the passage and goes home. The dispatches have already gone; her wife will know that much.{/n}''', c('[Let her leave.]', flags=("a_affair",))),
     n("stop", "Anevia", '''{n}She keeps her hand against your face for a moment longer, then lowers it.{/n}
 "We should've said that ten minutes ago."
-{n}Her voice is soft, without blame. You have crossed a boundary even if you refuse to cross the next one. She does not ask you to pretend otherwise.{/n}
+{n}She glances toward the passage where the runner went, then picks up her scarf.{/n}
+"Still kissed you. Still gotta go home and look her in the face."
 "I'll see you tomorrow. I don't know what I'll say. But I'll see you."''', c('[Leave for tonight.]', flags=("a_affair",))),
     n("leave", "Anevia", '''{n}Anevia steps aside. Her hand drops from the latch.{/n}
 "All right."

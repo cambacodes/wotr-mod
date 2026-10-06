@@ -72,9 +72,32 @@ def refusal_nodes(prefix, back):
 
 def discovery_nodes(prefix):
     return [n(prefix + "discovered", "Narrator", DISCOVERY,
-              c("Continue", prefix + "over"), portrait="Irabeth"),
+              c("Continue", prefix + "over", forbids=("irabeth.present_now",)),
+              c('[Face Irabeth with Anevia.]', prefix + "two_reports", requires=("irabeth.present_now",)), portrait="Irabeth"),
             n(prefix + "over", "Anevia", FALLOUT,
-              c('[Let her go home.]', flags=(EXPOSED, "anevia.closed", "anevia.parted")), portrait="Anevia")]
+              c('[Let her go home.]', flags=(EXPOSED, "anevia.closed", "anevia.parted")), portrait="Anevia"),
+            n(prefix + "two_reports", "Irabeth", '''{n}Irabeth puts two sheets on the table. The patrol dispatch bears the watch captain's receipt. Beside it lies Anevia's account of an evening spent sorting those same dispatches.{/n}
+"They were delivered before supper. You were very precise about when you finished, Nevi. Too precise."
+{n}Anevia reaches for the second sheet. Irabeth keeps her hand on it.{/n}
+"I will not change a watch list to cover this. I will not make a spectacle of our marriage in court, either. Which of you decided I would be easiest to manage?"''',
+              c('"I knew she was lying to you. I stayed anyway."', prefix + "how_long"),
+              c('[Lie] "We needed privacy for crusade business."', prefix + "no_alibi"), portrait="Irabeth"),
+            n(prefix + "no_alibi", "Irabeth", '''"Then name the business. Put it in the report. Sign it."
+{n}Anevia pushes the private sheet back toward her wife.{/n}
+"Beth. There wasn't any. I wanted to stay with the Commander. Don't let us turn it into work."
+{n}Irabeth looks at you once, then turns to her wife.{/n}''',
+              c('[Let Anevia answer for herself.]', prefix + "how_long"), portrait="Irabeth"),
+            n(prefix + "how_long", "Irabeth", '''"How long?"
+"The reports were done. I stayed. I kept thinkin' I could get home before you started wonderin'—" {n}Anevia stops when her wife lifts a hand.{/n}
+"How long, Nevi?" {n}Irabeth asks.{/n}
+{n}Anevia gives her the evenings, one by one. Irabeth listens without looking at the Commander.{/n}
+"Wanted it," {n}Anevia says.{/n} "Still do. That ain't an excuse."
+{n}Irabeth folds the private account and leaves the patrol report on the table.{/n}
+"The patrols go out as ordered. Commander, you will receive their reports. Stay away from our house."
+{n}She looks at Anevia.{/n}
+"Are you coming home?"
+"Yeah. With you."''',
+              c('[Let them leave together.]', prefix + "over"), portrait="Irabeth")]
 
 
 def ordinary_commit(book):
@@ -163,7 +186,8 @@ def gate_commit(book):
                 additions[-2]["Text"] = ("{n}You lean in and tell her the secret she demanded. She listens without a smile, "
                     "then closes her empty hand as if she were pocketing something valuable.{/n}\n" + additions[-2]["Text"])
             additions.extend(discovery_nodes(prefix))
-            additions[-2]["Text"] = "{n}At dawn Anevia comes back from the road with a folded note. She lays it between you and stands away from the bed.{/n}\n" + DISCOVERY
+            discovered = next(page for page in additions if page["Id"] == prefix + "discovered")
+            discovered["Text"] = "{n}At dawn Anevia comes back from the road with a folded note. She lays it between you and stands away from the bed.{/n}\n" + DISCOVERY
             # Reserve the second legacy lost-power exit emitted by earned_outcomes.
             page["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
             quiet = live_answers('[Keep the affair to Irabeth\'s absence with the Queen. Leave no false dispatches.]',

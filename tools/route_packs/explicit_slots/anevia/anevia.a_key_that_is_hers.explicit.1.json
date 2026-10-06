@@ -1,0 +1,26 @@
+{
+  "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
+  "facts": [
+    "Anevia is a woman and Irabeth Tirabade's wife.",
+    "Anevia works as a scout and investigator alongside the Eagle Watch.",
+    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
+    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
+  ],
+  "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 5, her authored leased room in Drezen. Honest share, after her lease offer and accepted invitation. Deepening rather than a second first-night reward; Beth keeps the marital home and agreed nights. Keep the key on its hook, her initiative and impatient knots. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
+  "last_line": "N: The key is still on its hook when the carts begin passing below.",
+  "speakers": {
+    "A": "Anevia"
+  },
+  "example": "N: Anevia catches your collar and brings you close.\nA: Took you long enough.\nN: She kisses you before you can answer.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "anevia.a_key_that_is_hers.explicit.1",
+  "source_node": "night",
+  "default_text": "{n}Anevia draws you down onto her bed. The key hangs beside the door, where she put it.{/n}",
+  "continuation": "Existing key_morning node and its commitment/future/share terminal effects unchanged."
+}

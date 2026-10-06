@@ -66,11 +66,16 @@ def integrate(payload):
     bread = "anevia.trickster.native.bread_returned"
     line(bread, "anevia", '"I\'ll break her off a steaming piece '
          'and watch her try to eat it without burning her fingers. She\'ll pretend it doesn\'t hurt. Stubborn bloody woman."',
-         ("trickster.now", "irabeth.trickster.returned"), 5)
+         ("trickster.ever",), 5)
+    # Authored survival persists after loss of power; reconciliation is separate.
+    next(book for book in payload["Scenes"] if book["Id"] == bread)["RequiresAnyGroups"] = [[
+        "irabeth.trickster.returned", "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record"]]
     declare(payload, source=__name__, target="ec1219cf3a664baab8987200e0fe1aa7", target_type="cue", action="REPLACE",
             spec=dict(Parent="97efeec1d2aa45a4cab6111d14767825", Dialog="de4cc2dd71694b842be37b75d1705b83",
                       Key="f0c8aaa0-bdc0-468a-9301-9815c5ac52c0", Replacement=bread,
-                      When=[["trickster.now", "irabeth.trickster.returned"]], KeepNativeImage=False, Variants=[]))
+                      When=[["trickster.ever", flag] for flag in (
+                          "irabeth.trickster.returned", "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record")],
+                      KeepNativeImage=False, Variants=[]))
 
     lead = ("Captain Mielarah protests the raid, calling the Commander a pirate. Her sailors surround her, grinning. "
             "A slip noose falls over her head before she can cast a spell. ")
