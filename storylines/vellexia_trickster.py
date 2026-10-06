@@ -18,7 +18,7 @@ lets go of all (Cue_0075: undoing her work leaves "bare walls"). She chooses a m
 empty one. The Commander buys the house out from under her through Orrel Vask (Finances), so that holding on keeps
 nothing but her own prison; she lets go, and pays with the whole collection (cost.bare_walls). Likeness: the portrait's
 older receptive charm (vellexia_opening: the silver wire, the pale stone, the three notches) holds what stayed of her.
-The Commander has Vask fetch the artist who sold it to her and pays his real fee, a three-day sitting: he paints the
+The Commander has Vask fetch the artist who sold it to her and pays his real fee, a one-night sitting: he paints the
 part of the Commander nobody has seen and keeps it to sell (cost.sat_for_painter). He opens the charm to the first
 notch, "a portrait that contradicts its subject", and never paints the hands (cost.diminished). Both are authored and
 labelled so; no Trickster ability does either step.
@@ -135,7 +135,7 @@ def stores(id, title, entry, nodes, requires, forbids, delay, **extra):
 # --- State mirrored: the joke told backwards (F08) ------------------------------------------------------------------
 
 letter("vellexia.trickster.mirrored.speaks", "Compensation", [
-    nar("start", '''{n}The Nexus, the night after the prank. Two of your people have come back from the Upper City with her dust sheet folded over one arm, as if it were evidence.{/n}
+    nar("start", '''{n}At the Nexus, word arrives from the Upper City. Two of your people have come back from the Upper City with her dust sheet folded over one arm, as if it were evidence.{/n}
 {n}The mirror is still standing in her salon. The looters who went in after her guests fled came out again quickly, and would not say why.{/n}''',
       c("Continue", "finnean", requires=("finnean.objected",)),
       c("Continue", "crate", forbids=("finnean.objected",))),
@@ -155,16 +155,16 @@ letter("vellexia.trickster.mirrored.speaks", "Compensation", [
    TricksterDevice=True, TricksterState=MIRROR)
 
 stores("vellexia.trickster.mirrored.fetch", "A mirror nobody will loot", '"Garms, what is that bottle doing on your counter?"', [
-    nar("start", '''{n}"Sample," Wilcer Garms says, and pushes a bottle of Alushinyrran red and a folded note across the counter as if both might bite. "From a cambion named Orrel Vask, down at the rift camp. He moves furniture between the Upper City and anyone who pays. The note's for you."{/n}
-{n}A certain mirror, his note says, is still standing in a certain empty salon. The looters will not touch it, because it watches them. He has had it crated at the rift camp for a week already, against the chance that somebody would pay. He names a price, and then, in a second hand, a surcharge "for the eyes".{/n}''',
+    nar("start", '''{n}"Sample," Wilcer Garms says, pushing a bottle of Alushinyrran red and a folded note across the counter. "From a cambion named Orrel Vask, down at the rift camp. He moves furniture between the Upper City and anyone who pays. The note's for you."{/n}
+{n}Vask found the mirror in Lady Vellexia's empty salon. The looters would not touch it: it watched them. His porters have since crated it at the rift camp, where it has waited a week for a buyer. He names a price, then a surcharge "for the eyes".{/n}''',
       c('[Pay the haulers double to bring it out] "Double, if it arrives uncracked. It\'s a lady."', "paid",
         crusade=("Finances", -200)),
-      c('[Let the Upper City keep its mirror] "Somebody else can look at her."', "left")),
+      c('[Leave the crate with Vask] "Somebody else can look at her."', "left")),
     nar("paid", '''{n}Vask's crate comes up from the rift camp the next morning, packed in straw that is warm to the touch. He will not unload it himself. His porters set it down in the corner of your stores and back away from it as if it had spoken.{/n}
 {n}Perhaps it had. None of them will say.{/n}''',
       c('"Put it in the stores. I\'ll deal with her."', flags=(PRIMED, LATE, STARTED))),
     nar("left", '''{n}You send Vask a single line: no. He sends back a single line of his own, which is his invoice for the letter.{/n}
-{n}In Alushinyrra, a mirror stands under a sheet in an empty salon, and goes on standing there.{/n}''',
+{n}The mirror remains in his crate at the rift camp. The straw pressed against the glass is still warm.{/n}''',
       c('"Pay the man for his ink."', flags=(DECLINED,))),
 ], ("trickster.ever", MIRROR, DEAD), (PRIMED, DECLINED, RETURNED), 0,
    TricksterDevice=True, TricksterState=MIRROR)
@@ -196,8 +196,9 @@ def unmirror_nodes():
         nar("no_sparks_cruel", '''{n}Whatever the Trickster's road once put in your hands is gone. You do not need it. You only have to walk away.{/n}''',
             c("Continue", "cruel")),
         nar("nice", '''{n}You hold the paper up to the haze so that she can read it. Orrel Vask's hand, Orrel Vask's seal, and under them an inventory eleven pages long: the contents of one salon in the Upper City, lately the property of a lady presumed dead, knocked down at the looters' auction to the crusade's agent for rather more than the looters expected and rather less than the frame of this mirror is worth. Every chair. Every lamp. Every footstool that used to be a juggler.{/n}
-{n}"They're mine now," you tell her. "Every one of them is still furniture, and you haven't cast a thing since the night you became glass. So somebody's still holding your spell closed, and there's only one of you in there. You could let go whenever you liked. Letting go of one is letting go of all of them, and you'd sooner be a mirror in a full house than a woman in an empty one." You fold the paper. "It isn't your house any more. Hold on, and you're holding my furniture for me, in a crate, in the dark. Let go."{/n}
+{n}You show her the inventory: every chair still holds a victim, although she has cast nothing since the prank. If the spells are joined, she could release them and herself together. The paper makes the rest plain. The house and its collection belong to you. She can stay shut in your crate, guarding furniture she no longer owns, or let go.{/n}
 {n}The haze goes very still. For a while nothing happens at all, and you begin to wonder whether you have read her wrong. Then, from inside the glass, very quietly and very precisely, she says a word you do not catch, and then another: her spell, the last word first, the way she would say it to a juggler she had finished being bored by. The haze curdles into a shoulder, a knee, a fistful of blonde hair, and then an extremely angry succubus is sitting on the floor in a heap of mahogany splinters.{/n}
+{n}The footstool beside the frame becomes a trembling figure and scrambles for the door.{/n}
 {n}Far away in the Upper City, in a salon with nobody in it, a great many chairs stand up.{/n}''',
             c("Continue", "undone")),
         glass("undone", '''"How thrilling. You bought me out of my own house. Nobody has ever bought me."
@@ -205,7 +206,7 @@ def unmirror_nodes():
 "You will show me how you put me in there, and then you will do it again, slowly, so I can learn it. And then, sweetheart, we will discuss what you owe me for my furniture. You paid a looter for it, and I let it go, and I heard every chair in my house walk out of the door. Every one. That was mine to spend, and you made me spend it."''',
           c('"Welcome back, Lady Vellexia."', flags=NICE_FLAGS)),
         nar("nice_freed", '''{n}You hold the paper up to the haze so that she can read it. Orrel Vask's hand, Orrel Vask's seal: one manor in the Upper City, lately the property of a lady presumed dead, stripped to the plaster, knocked down at the looters' auction to the crusade's agent over the bid of a Fleshmarket factor who wanted it for a slave pen. Walls, roof, stairs. Nothing inside them.{/n}
-{n}"It's yours again the day you come out and sign for it," you tell her. "Stay in there, and I sell it to the factor on the first of next month, and you can watch from my stores. You untied your whole house once because I asked. This one's only you."{/n}
+{n}The deed gives her back walls, roof and stairs as soon as she comes out and signs. Otherwise, the Fleshmarket factor gets the manor on the first of next month, while she watches from your stores. She has already released her guests; this time only she remains to be freed.{/n}
 {n}The haze goes very still. For a while nothing happens at all. Then, from inside the glass, very quietly and very precisely, she says her own spell, the last word first. The haze curdles into a shoulder, a knee, a fistful of blonde hair, and then an extremely angry succubus is sitting on the floor in a heap of mahogany splinters, holding out one hand for the pen.{/n}''',
             c("Continue", "undone_freed")),
         glass("undone_freed", '''"A house. You bought me an empty house, and I came out of a mirror for it, like a cat for a saucer." {n}She signs without reading, which you suspect she has never done in her life, and shakes a splinter out of her sleeve.{/n}
@@ -224,8 +225,9 @@ storyteller("vellexia.trickster.mirrored.unmirror", "The joke told backwards",
 "Mahogany that remembers being skin. She was bored, Commander. Then she was surprised. Then she was this." {n}He lets the sheet fall back halfway.{/n}''',
            c("Continue", "reading", forbids=(FREED,)),
            c("Continue", "reading_freed", requires=(FREED,))),
-    teller("reading", '''"I read the story forwards, and there is an odd page in it. Everything her spell ever made in that house is still furniture, and she has cast nothing since she became glass. Somebody is still holding the spell closed. There is only one person in that glass."
-"She could let go. She has not. Letting go of one of them is letting go of all of them, and I think she would sooner be a mirror in a full house than a woman in an empty one. That is her story, Commander. I cannot change a story. I only notice where it could be bought."''',
+    teller("reading", '''{n}A salon footstool is wedged beside the frame. As the haze tightens, its carved feet scrape against the crate. They go still when the haze does.{/n}
+"She has cast nothing since she became glass, yet her victims remain furniture."
+"I think the workings are still joined. She may be able to release this one as she releases the others. But she would lose her collection. Offer her something she values more than keeping it."''',
            c("Continue", "glass")),
     teller("reading_freed", '''"I read the story forwards, and there is an odd page in it. She let her guests go once already, at your asking; every chair in that house walked out of the door before you ever played your joke on her. So she knows how to untie her own work, and this is her own work, whoever said it aloud. She has not untied it."
 "I think I know why. The house she would walk back into has been stripped to the plaster by looters, and the Upper City has already held her memorial feast. A demon of the Upper City with nothing is not a lady, Commander. She is a meal. A mirror, at least, is worth something. That is her story. I cannot change a story. I only notice where it could be bought."''',
@@ -242,7 +244,7 @@ stores("vellexia.trickster.mirrored.unmirror_stores", "Behind the lamp oil",
 {n}There is nobody left in Drezen who reads the stories in things, so you will have to read this one yourself.{/n}''',
         c("Continue", "reading", forbids=(FREED,)),
         c("Continue", "reading_freed", requires=(FREED,))),
-    nar("reading", '''{n}Every chair she ever made is still a chair, and she has cast nothing since she became glass. Somebody is still holding her spell closed, and there is only one person in there. She could let go. Letting go of one is letting go of all of them, and she would sooner be a mirror in a full house than a woman in an empty one.{/n}''',
+    nar("reading", '''{n}A salon footstool is wedged beside the frame. As the haze tightens, its carved feet scrape against the crate. They go still when the haze does. Her victims remain furniture although she has cast nothing since the prank. The workings may still be joined. If releasing herself also releases them, she would come home to bare walls. She has not done it.{/n}''',
         c("Continue", "glass")),
     nar("reading_freed", '''{n}She let her guests go once already, at your asking, before you ever played your joke on her; she knows how to untie her own work, and this is her own work, whoever said it aloud. She has not untied it. The house she would walk back into has been stripped to the plaster, and the Upper City has held her memorial feast. A demon of the Upper City with nothing is not a lady. She is a meal. A mirror, at least, is worth something.{/n}''',
         c("Continue", "glass")),
@@ -254,7 +256,7 @@ stores("vellexia.trickster.mirrored.unmirror_stores", "Behind the lamp oil",
 # --- State killed_by_sword: the unfinished likeness (F08) ------------------------------------------------------------
 
 letter("vellexia.trickster.sword.portrait", "The one with no hands", [
-    nar("start", '''{n}The Nexus, the night she died. Her manor is being stripped before it is cold. Your people bring back an inventory, because you asked for one.{/n}''',
+    nar("start", '''{n}At the Nexus, word arrives that looters are stripping her manor. Your people bring back an inventory, because you asked for one.{/n}''',
       c("Continue", "freed", requires=("vellexia.slaves_freed",), forbids=("vellexia.returned_picture",)),
       c("Continue", "gallery", forbids=("vellexia.slaves_freed", "vellexia.returned_picture")),
       c("Continue", "bought_back", requires=("vellexia.returned_picture",), forbids=("vellexia.slaves_freed",)),
@@ -306,7 +308,7 @@ LIKENESS_FLAGS = (RETURNED, DIMINISHED, PRESUMED, KNOWN, STARTED)
 def likeness_nodes():
     return [
         nar("spell", '''{n}Orrel Vask, it turns out, has had the man who made it waiting in the rift camp for a week, meaning to sell him to whoever bought the portrait; he brings him up the hill within the hour, for the price of a second warhorse: a thin man with paint under his nails and a very good coat, the same artist who once sold Lady Vellexia a portrait that would reveal a part of her she had never seen. He looks at the canvas and goes grey.{/n}
-{n}"The older work under mine is a receptive charm," he says. "It keeps whatever looks into it longest. She looked into it every day from the morning it arrived; she told me so, to complain about it. I had set the last notch so that it would only show her what she liked." He turns the frame over. The pale stone in its silver wire is warm. "Something of her stayed in it. Not enough to wake. It fills the likeness the way water fills a cracked cup. If the charm is opened all the way, it does what the first maker wanted: a portrait that contradicts its subject. Its subject is dead." He looks at you. "I will not do it for crowns. Crowns I can get from anybody."{/n}
+{n}"The older work under mine is a receptive charm," he says. "It keeps something of whoever looks into it longest. She kept looking; she complained to me that it never showed her anything new. I had set the last notch to hide what she would dislike." He turns the frame over. The pale stone in its silver wire is warm. "Something of her is still here. My paint has given it her shape. The first notch opens the older charm. What it kept may take that shape, but I cannot promise the shape will hold." He looks at you. "I will not do it for crowns. Crowns I can get from anybody."{/n}
 {n}His fee is a sitting. One night, you in his chair from dusk until the lamps gutter, with the older charm open on the easel beside you, so that he can paint the part of you that you have never seen and keep it, and sell it when he likes, to whom he likes. You have heard what he thinks his customers' privacy is worth. You sit.{/n}
 {n}In the small hours he sets down his brush, turns her frame over, moves the catch to the first notch, and steps back as if from a fire. The canvas takes on the weight of flesh. Paint becomes a throat, a breath, a woman sitting up in the lamplight with her skirts still wet at the hem. He never reached the hands the first time. He does not reach them now.{/n}''',
             c("Continue", "wake", flags=(SAT,))),
@@ -334,7 +336,9 @@ storyteller("vellexia.trickster.sword.likeness", "The unfinished likeness",
            c('"She told me herself: a crude copy leaves something behind. This is a very crude copy."', "foresight",
              requires=("vellexia.bungler_explained",)),
            c('[Wrap it up again] "Not yet."', abort=True)),
-    teller("foresight", '''"Did she." {n}The old elf looks at the canvas again, as if it had interrupted him.{/n} "Then you are not guessing. You are collecting on something she said to you. That is a different kind of story, and I do not think it ends kindly for anyone in it."''',
+    teller("foresight", '''"She was speaking of Finnean, Commander. This is a different working."
+{n}The old elf touches the silver wire at the back of the frame.{/n}
+"Something remains in it. I cannot tell you how much. Find the painter who sold it to her. He worked over this older charm; he may know how to open it."''',
            *LIKENESS_CHOICES,
            c('[Wrap it up again] "Not yet."', abort=True)),
     *likeness_nodes(),
@@ -355,7 +359,7 @@ stores("vellexia.trickster.sword.likeness_stores", "Paint that watches",
 # --- State never_visited: an invitation to a party she has not yet decided to throw (F11) ---------------------------
 
 letter("vellexia.trickster.never_visited.invitation", "A party in your honour", [
-    nar("start", '''{n}Officers over Alushinyrran red in Drezen, the night the walls hold. The wine came up through the rifts with a cambion factor named Orrel Vask, who sells the Upper City its gossip on the way back down.{/n}
+    nar("start", '''{n}Officers over Alushinyrran red in Drezen, on a quiet night on the walls. The wine came up through the rifts with a cambion factor named Orrel Vask, who sells the Upper City its gossip on the way back down.{/n}
 {n}Somebody asks whether you met the famous Lady Vellexia while you were in the Abyss. The one who collects guests, and keeps the ones who bore her as furniture.{/n}''',
       c('[Boast about the Upper City, and tip the wine-factor to carry it word for word] "Lady Vellexia? Charming. She\'s throwing a party in my honour. She just doesn\'t know it yet."',
         "card", mythic="Trickster", crusade=("Finances", -100)),
@@ -364,7 +368,7 @@ letter("vellexia.trickster.never_visited.invitation", "A party in your honour", 
 {n}Lady Vellexia, it seems, keeps a page of her own at the rift camp, to hear whatever is said about her in Drezen. Before the night is out the boy is back, with lilac on his cuffs and a card he will not let anyone else touch. It invites you to a party that its hostess, by her own admission in the postscript, has not yet decided to throw.{/n}
 {n}"Tell me who told you I would," the postscript ends. "I should like to have them upholstered."{/n}''',
       c('"Tell her I\'ll come."', flags=(ENTRY, PRIMED, PREDICTED, KNOWN, STARTED))),
-    nar("silent", '''{n}The table moves on to the siege. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}''',
+    nar("silent", '''{n}The table moves on to the war. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}''',
       c('"Pour."', flags=(DECLINED,))),
 ], requires=("trickster", "chapter_later"), forbids=("vellexia.greeted", DEAD, ENTRY, DECLINED), delay=0)
 
@@ -389,7 +393,7 @@ letter("vellexia.trickster.reacquire.provocation", "Bored, by report", [
     nar("sent", '''{n}Vask goes grey under the cambion red, repeats it back to you twice, and asks for his fee in advance. Then he whistles up the boy who carries his ledgers through the rifts, and sends your words down the camp road before his nerve can fail.{/n}
 {n}The boy is back before the last bottle is empty, with lilac on his cuffs and one finger splinted. Lady Vellexia, it seems, keeps a page of her own at the rift camp to hear whatever is said about her in Drezen. Her answer is not a card and not a letter. It is a single line the boy has been made to learn by heart: "Tell the crusader I am coming to see what boredom looks like, and that I shall know if it lies to me again."{/n}''',
       c('"Let her come."', flags=(PROVOKED, KNOWN, STARTED))),
-    nar("silent", '''{n}The table moves on to the siege. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}''',
+    nar("silent", '''{n}The table moves on to the war. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}''',
       c('"Pour."', flags=(DECLINED,))),
 ], requires=("trickster", "trickster.ever", "vellexia.greeted"),
     forbids=(DEAD, MIRROR, "vellexia.early_fight", "vellexia.final_fight", "vellexia.native_coercion", KNOWN, PROVOKED, ENTRY,
@@ -473,7 +477,7 @@ def visit_nodes(place_text, where):
 "Predict me, sweetheart. What do I do next?"''',
           c('[Tell her how it was done] "A wine-factor, a boast, and a ledger boy who runs faster than gossip. That\'s all a prophecy is."', "gave"),
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
-        v("provoked", '''"Bored." {n}She says the word as if tasting a wine she means to send back.{/n} "You sent word with a wine-factor that I bore you. The whole Upper City has heard it. I have had to come to a siege to find out whether it is true, and I broke your messenger's finger on the way, which you may add to my bill."
+        v("provoked", '''"Bored." {n}She says the word as if tasting a wine she means to send back.{/n} "You sent word with a wine-factor that I bore you. The whole Upper City has heard it. I have had to come to your war to find out whether it is true, and I broke your messenger's finger on the way, which you may add to my bill."
 {n}She looks you over the way she looks over furniture she has not yet decided to keep.{/n} "Bore me, then. I dare you. Tell me how you got me here."''',
           c('[Tell her how it was done] "A wine-factor and one lie about your vanity. It brought you across three portals."', "gave"),
           c('[Keep the trick] "A trick explained is a trick spent. Guess."', "kept")),
@@ -540,7 +544,7 @@ def visit_nodes(place_text, where):
 
 SCENES.append(scene("vellexia.trickster.after.visit", "Among the shelves", "Vellexia", 5,
     '"Lady Vellexia. Drezen suits you better than I expected."', visit_nodes(
-        '''{n}She is sitting among the Storyteller's shelves in the middle of a siege as if they were her salon, in a borrowed cloak with the lining turned out to show the silk, a book open face-down on her knee. Every soldier who passes the door is pretending not to look at her. The Storyteller has put a clean cup at her elbow and is standing as far from it as his shelves allow.{/n}''',
+        '''{n}She is sitting among the Storyteller's shelves with the war outside as if they were her salon, in a borrowed cloak with the lining turned out to show the silk, a book open face-down on her knee. Every soldier who passes the door is pretending not to look at her. The Storyteller has put a clean cup at her elbow and is standing as far from it as his shelves allow.{/n}''',
         "shelves"),
     requires=("trickster.ever",), forbids=(*OWN, KEPT, VISITED), delay=24, last=5, optional=True, Relationship="vellexia",
     Areas=[DREZEN], Chapters=[5], ContactUnit=UNIT, InteractionHub="vellexia.presence",
@@ -606,12 +610,12 @@ letter("vellexia.trickster.after.voice", "Bare walls", [
 # --- The glass (the cruel branch): kept, never committed ----------------------------------------------------------------
 
 letter("vellexia.trickster.glass.uncovered", "Everyone looks at her", [
-    nar("start", '''{n}The mirror hangs in your quarters, because nowhere else in Drezen will have it. The servants dust it with their eyes shut. On the eve of the march it is the last thing you see before you blow out the lamp.{/n}
-{n}You lift the cloth anyway.{/n}''',
+    nar("start", '''{n}The mirror hangs in your quarters, because nowhere else in Drezen will have it. The servants dust it with their eyes shut. Each night it is the last thing you see before you blow out the lamp.{/n}
+{n}Tonight you lift the cloth.{/n}''',
       c("Continue", "speaks")),
     v("speaks", '''"There you are." {n}The eyes in the haze are exactly where they were the day you left her there, and they have not blinked since.{/n}
-"You look tired. You look frightened. You look at me every night before you sleep, did you know that? Everyone looks at me. You saw to it."
-"I have counted every one of your breaths since the Storyteller's shop, sweetheart. I will count the last one."''',
+"You look tired," {n}she says.{/n} "You look frightened. You look at me every night before you sleep, did you know that? Everyone looks at me. You saw to it."
+"I have counted every one of your breaths since you hung me here, sweetheart. I will count the last one."''',
       c('[Cover the glass.]', "covered")),
     nar("covered", '''{n}The cloth goes back over the glass. Under it, the haze does not go still.{/n}''',
       c('"Goodnight, Lady Vellexia."', flags=("vellexia.farewell_kept",))),
@@ -620,23 +624,26 @@ letter("vellexia.trickster.glass.uncovered", "Everyone looks at her", [
 
 # --- After the commit: less glass between us (the intimate beat, Directive 12) -----------------------------------------
 
-stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know before the march, Garms?"', [
+stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know tonight, Garms?"', [
     nar("start", '''{n}"A lady came up the rift road at dusk with no papers and three portals' worth of dust on her hem," Wilcer Garms says, and does not look up from his ledger. "The sentries let her through. None of them can say why. She asked which door was yours. I told her. I'm not proud of it."{/n}
-{n}The night before the march. The wind off the Worldwound rattles the shutters of your quarters, and when you turn from the lamp she is already inside, standing by your bed in a dress the colour of a fresh bruise.{/n}''',
+{n}The wind off the Worldwound rattles the shutters of your quarters. When you turn from the lamp, Vellexia is already inside, standing by your bed in a dress the colour of a fresh bruise.{/n}''',
       c("Continue", "hands", requires=(DIMINISHED,)),
       c("Continue", "arrived", forbids=(DIMINISHED,))),
-    v("arrived", '''"You march in the morning, into something nobody comes back from twice. I dislike waiting to find out whether I shall be bored by your corpse." {n}She takes the lamp out of your hand and sets it down.{/n}
-"You asked me to come. I said you would not know the night. So I came through three portals and a rift camp that smells of mules, and here you are, not knowing it. Less glass between us, sweetheart."''',
+    v("arrived", '''"I dislike waiting to find out whether I shall be bored by your corpse." {n}She takes the lamp from you and sets it down.{/n}
+"Three portals and a rift camp that smells of mules. You had better be worth the journey, sweetheart. Less glass between us. I intend to enjoy the difference."''',
       c("Continue", "threshold")),
-    v("hands", '''"You march in the morning, into something nobody comes back from twice. I dislike waiting to find out whether I shall be bored by your corpse." {n}She holds up her unfinished hands.{/n}
-"These still do nothing. So you will have to do the undressing, sweetheart. All of it. I shall watch, and I shall tell you when you are doing it wrong."''',
+    v("hands", '''"I dislike waiting to find out whether I shall be bored by your corpse."
+{n}She holds up her unfinished hands and flexes them. No spark follows.{/n}
+"They move. They will not cast. You will do the undressing, sweetheart. All of it. I shall watch, and tell you when you are doing it wrong."''',
       c("Continue", "threshold")),
-    nar("threshold", '''{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth find the corner of your mouth, sharp enough to make you understand they are not a human woman's.{/n}
-{n}The dress goes to the floor in one whisper of silk. She stands in the lamplight in nothing but her skin and lets you look, and watches you look, with the open, greedy pleasure of a collector who has finally been given the piece she wanted. Then she pushes you back onto your own bed, climbs over you with her knees either side of your hips, and settles astride you, and bends down until her hair falls around both your faces like a curtain.{/n}
-"Bare your throat, sweetheart," {n}she breathes against it.{/n} "Let us see which of us bites."''',
+    nar("threshold", '''{n}Vellexia catches your lower lip between her teeth, then kisses the small hurt she has made. She watches your face as you unlace her gown. The silk slips down her body and pools at her feet.{/n}
+"Slowly, darling. I came all this way to be looked at."
+{n}She stands naked in the lamplight while you shed your own clothes. When you reach for her, she draws you down onto the bed. Her knees press against your hips; her hair brushes your bare chest. She bends close enough for you to feel her breath against your throat.{/n}
+"Bare it. I want to see whether you still trust me with it."''',
       c("Continue", "morning")),
-    nar("morning", '''{n}Morning. The bed is empty and the shutters are open. There is a bruise on your throat the exact shape of her mouth, and a note on your maps of the Worldwound in handwriting that slopes like a laugh.{/n}
-{n}"Come back alive. I have not finished with you, and I refuse to be bored by a monument."{/n}''',
+    nar("morning", '''{n}Morning. The bed is empty and the shutters are open. A lip-paint print marks the margin of your Worldwound maps. There is a bruise on your throat where her mouth lingered.{/n}
+{n}From the doorway, just before dawn, she had given her last instruction:{/n}
+"Come back alive. I have not finished with you, and I refuse to be bored by a monument."''',
       c('[Wind a scarf over the bruise.]', flags=("vellexia.trickster.night_kept",))),
 ], ("trickster.ever", "vellexia.committed"), (KEPT, NIGHT_KEPT), 12,
     # Q11: the peaceful commit reaches the night as well as the recovery; she comes because she was asked to Drezen
@@ -651,12 +658,11 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
 CONTINUING_NOT = ("vellexia.closed", "vellexia.parted", "vellexia.farewell_friends", "vellexia.farewell_slow", "sacrifice",
                   "inhuman", "ascended")
 TRICKSTER_PARAGRAPHS = (
-    p("{n}The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited "
-      "to, and she sent anonymous corrections to the speeches.{/n}", requires=(PRESUMED,), forbids=(KEPT,)),
+    p('{n}For a while the Upper City toasted her memory. She sent anonymous corrections to the speeches and enjoyed hearing which guests had mourned her badly.{/n}', requires=(PRESUMED,), forbids=(KEPT,)),
     p("{n}She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this "
       "the most unsettling thing about the house.{/n}", requires=(BARE,)),
-    p("{n}Her hands were never finished, and she never let another painter near them.{/n}", requires=(DIMINISHED,)),
-    p("{n}She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.{/n}",
+    p('{n}Her hands were never finished. One painter tried and wept over them; she had him thrown down the stairs. No other painter accepted the commission.{/n}', requires=(DIMINISHED,)),
+    p('{n}She wore gloves in company. In private, she made the Commander take them off and look at what remained unfinished.{/n}',
       requires=(DIMINISHED,), forbids=CONTINUING_NOT),
     p("{n}She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way "
       "other women describe a scar.{/n}", requires=(PREDICTED,)),
@@ -683,21 +689,10 @@ SCENES.append(scene("vellexia.trickster.epilogue.commit", "Kept waiting", "Epilo
     nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}''',
       c(), paragraphs=(
           # Q11 r3: her collection survives only where nothing walked out of her house.
-          p("{n}She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
-            "she collected anything she had decided was hers, into a room whose furniture had been guests once and still watched. "
-            "She locked the door behind them, put the key down the front of her dress, and laughed at the Commander's face. She did "
-            "not hurry. She took the Commander's coat off slowly and dropped it on a chair that flinched.{/n}", forbids=(BARE, FREED)),
-          p("{n}She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
-            "she collected anything she had decided was hers, into the one room of her new house she had finished: a bed, a lamp, "
-            "and walls with nothing on them that had ever been anyone. She locked the door behind them, put the key down the front "
-            "of her dress, and laughed at the Commander's face. She did not hurry. She took the Commander's coat off slowly and "
-            "dropped it on the bare floor, where it stayed a coat.{/n}", any_groups=[[BARE, FREED]]),
-          p("{n}She unlaced her own gown with one hand while the other held the Commander's jaw so that {mf|he|she} had to watch, and "
-            "let the silk fall. Then she pushed the Commander down onto her bed, followed {mf|him|her} down onto it, knees either "
-            "side of {mf|his|her} hips, her hair falling round both their faces, her mouth at {mf|his|her} throat.{/n} \"You kept me "
-            "waiting,\" {n}she said against it.{/n} \"Now pay.\""),
-          p("{n}In the morning there was a bruise on the Commander's throat the exact shape of her mouth, and a note on the pillow in "
-            "handwriting that sloped like a laugh:{/n} \"Again. I have decided.\""),
+          p('{n}She drew the Commander away from the party into a room whose furniture had been guests once and still watched. At her glance, the Commander locked the door and slipped the key down the front of her gown. Vellexia laughed and leaned back against the bed, letting the Commander remove {mf|his|her} own coat. It landed on a chair that flinched.{/n}', forbids=(BARE, FREED)),
+          p('{n}She drew the Commander away from the party into the one room of her new house she had finished: a bed, a lamp, bare walls. At her glance, the Commander locked the door and slipped the key down the front of her gown. Vellexia laughed and leaned back against the bed, letting the Commander remove {mf|his|her} own coat. It landed on the floor.{/n}', any_groups=[[BARE, FREED]]),
+          p('{n}The Commander unlaced her gown at her direction. Vellexia made {mf|him|her} stop halfway so that she could enjoy the impatience on {mf|his|her} face. Then the silk fell. She watched the Commander strip, smiling at every hurried movement. She drew {mf|him|her} onto the bed and followed, naked, her knees against {mf|his|her} hips. Her mouth found {mf|his|her} throat.{/n}\n"You kept me waiting," {n}she said against it.{/n} "Now pay."'),
+          p('{n}In the morning there was a bruise on the Commander\'s throat. Vellexia was still in bed, watching {mf|him|her} discover it.{/n}\n"Again. I have decided."'),
           p("{n}Daeran, who saw the bruise at breakfast the next week, said only that he had never known her to bill a guest in "
                          "person, and asked whether the Commander would be needing a scarf.{/n}", forbids=DAERAN_GONE),
                        *TRICKSTER_PARAGRAPHS))],
@@ -736,7 +731,7 @@ REACTIONS = [
              answer_list=DAERAN_HUB, forbids=DAERAN_GONE, chapter=5, last=5, delay=24, entry='"About Lady Vellexia..."'),
     # Q11: the night's aftermath (Directive 12): Daeran sees the bruise. Never on friendship or the kept mirror.
     reaction("Daeran", "vellexia.trickster.reaction.daeran_night", (NIGHT_KEPT,),
-             '''{n}Daeran's eyes go to your scarf, and stay there, and he smiles the way a man smiles at a rival's bill.{/n} "Lady Vellexia came to Drezen, then. Through a siege, for one night. The sentries are still arguing about the dress." {n}He tugs the scarf an inch lower with one finger, inspects the bruise, and lets it fall back.{/n} "I have collected every rumour about her for twenty years, and in none of them does she make a house call. Do keep breathing, Commander. She hates to lose a piece before she has finished with it."''',
+             '''{n}Daeran's eyes go to your scarf, and stay there, and he smiles the way a man smiles at a rival's bill.{/n} "Lady Vellexia came to Drezen, then. Through the war, to your quarters. The sentries are still arguing about the dress." {n}He tugs the scarf an inch lower with one finger, inspects the bruise, and lets it fall back.{/n} "I have collected every rumour about her for twenty years, and in none of them does she make a house call. Do keep breathing, Commander. She hates to lose a piece before she has finished with it."''',
              answer_list=DAERAN_HUB, forbids=(*DAERAN_GONE, KEPT, "vellexia.farewell_friends", "vellexia.closed"), chapter=5, last=5,
              delay=6, entry='"About Lady Vellexia..."'),
     reaction("Daeran", "vellexia.trickster.reaction.daeran_invitation", (ENTRY,),

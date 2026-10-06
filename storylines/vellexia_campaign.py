@@ -847,9 +847,9 @@ s("the_voice_after_the_abyss", "A different room for the same voice", "[Answer t
 
 s("two_unremarkable_pleasures", "What she does with an unclaimed evening", "[Open the shell for the evening you agreed to share.]", [
     n("start", "Narrator", '''{n}You have set aside one small occupation you would ordinarily attempt alone: sorting the loose pages that have accumulated among your personal things. Some deserve to be kept. Others have survived because deciding what to do with them seemed less urgent than putting them down.{/n}
-{n}Vellexia answers beside a table crowded with tiny stoppered bottles. She is holding one beneath her nose, looking profoundly dissatisfied.{/n}
+{n}Vellexia answers beside a table crowded with tiny stoppered bottles. An open bottle stands before her. She bends over it, looking profoundly dissatisfied.{/n}
 "Awful," {n}she says.{/n} "I had almost forgotten how much I disliked it. A useful beginning."
-"Perfume?"
+{n}You ask about the bottles.{/n}
 "Old perfume. Mine. I am deciding which scent I was foolish enough to associate with a marvelous evening. I suspect the evening did most of the work."
 {n}She looks at the papers beside your shell.{/n}
 "You have brought your own small excavation. Excellent. We can be disappointed at separate tables."''',
@@ -857,13 +857,13 @@ s("two_unremarkable_pleasures", "What she does with an unclaimed evening", "[Ope
       c('[Postpone until you can keep the evening clear.]', abort=True)),
     n("page", "Vellexia", '''{n}You show her a rough drawing of an inn's roofline. It is poor work, made during an idle moment, and you have kept it longer than several more useful records.{/n}
 "Did you like the place?" {n}she asks.{/n}
-"For a while."
+{n}You tell her the drawing has outlasted your fondness for the inn.{/n}
 "A remarkably sufficient reason to keep a poor drawing. I approve."
-"You would have thrown it away?"
+{n}You ask what she would have done with it.{/n}
 "I would have commissioned a better one and resented finding that it reminded me of the artist instead. I have made that mistake before."
-{n}She uncorks another bottle, considers it and sets it to one side.{/n}
+{n}She bends over another open bottle, considers it and pushes it aside.{/n}
 "That one is tolerable. It reminds me of a man who tried to flatter me by claiming he had never enjoyed anything so much as my company. I asked him what he had compared it with. He answered 'everything.' We had almost nothing to discuss afterward."
-"You kept the scent."
+{n}You glance at the bottle she has kept.{/n}
 "Yes. It has outlived the conversation. Not an exacting achievement."
 {n}She waits while you decide where to put the drawing.{/n}''',
       c('[Keep the drawing, imperfect and familiar.]', "keep"),
@@ -871,21 +871,21 @@ s("two_unremarkable_pleasures", "What she does with an unclaimed evening", "[Ope
     n("keep", "Vellexia", '''"There. A choice no purchaser can make more flattering by paying for it."
 {n}You put the drawing among the things you intend to keep. Vellexia takes the first, disliked bottle and sets it beside the tolerable one.{/n}
 "I am keeping this too," {n}she says.{/n} "For the pleasure of discovering that I was right to dislike it. A meaner attachment than yours, perhaps, but it is mine."
-"Would you wear it?"
+{n}You ask whether she ever wears it.{/n}
 "Certainly not. Possessing a mistake does not oblige me to repeat it on my skin."
 {n}She looks up, smiling at your expression.{/n}
 "You hoped I would throw it away and become easier to understand. I could see the beginning of the hope."
-"I was wondering how many bottles you keep for that reason."
+{n}You ask how many bottles she keeps for that reason.{/n}
 "An excellent question. We may need another evening to answer it."''', c('[Ask which scent she actually wants tonight.]', "chosen")),
     n("discard", "Vellexia", '''{n}You set the drawing aside and describe the sound of rain above the inn's window, the smell of a meal from downstairs and the idle time in which you made it. Vellexia listens without asking you to turn the recollection into an occasion worthy of a better artist.{/n}
 "I understand keeping that," {n}she says.{/n} "Though I would probably keep the paper too and complain that it occupied space."
-"You could commission a cabinet for the complaint."
+{n}You suggest a cabinet for the complaint.{/n}
 "I have several. You are beginning to understand my household."
 {n}She removes one bottle from the table and puts it out of reach.{/n}
 "That one will go. It reminds me of an evening I have described so often that I am tired of hearing the account in my own head. If I miss it, I can be annoyed about having discarded it. A new subject, at least."''', c('[Ask which scent she actually wants tonight.]', "chosen")),
-    n("chosen", "Vellexia", '''{n}She opens a small bottle with no label, tests it and touches one drop behind her ear.{/n}
+    n("chosen", "Vellexia", '''{n}An open bottle with no label stands before her. She inhales its scent and smiles.{/n}
 "This one. I cannot remember who gave it to me. That leaves the scent with an unusual amount of freedom."
-"Describe it."
+{n}You ask what it smells of.{/n}
 "Bitter at first. Something warmer beneath it. Your world has a fruit whose peel does almost the same thing when one presses it between the fingers. I never remember the name until someone says the wrong one."
 {n}You offer possibilities. She rejects several, laughs at another and finally accepts one with the satisfaction of having made you do the remembering.{/n}
 "There. Now tell me something from your room I cannot smell through this troublesome glass."
@@ -896,31 +896,31 @@ s("two_unremarkable_pleasures", "What she does with an unclaimed evening", "[Ope
       c('"For tonight, tell me what you would say if you were here."', "voice"),
       c('"Stay on the shell tonight. Tell me what you would do if you were here."', "voice", requires=("vellexia.renewed_slow",))),
     n("meeting", "Vellexia", '''"Yes. You have a city full of people who would reasonably dislike my arrival. I have a city full of people who would enjoy mistaking yours for an announcement. I can imagine several entertaining mistakes and very few convenient introductions."
-"The shell does not carry people."
+{n}You glance at the shell between you.{/n}
 "I noticed. I have had considerable reason to resent the limitation."
 {n}She leans nearer the glass.{/n}
 "An invitation. Into a crusader city, into a crusader's bed. How deliciously improper." {n}Her eyes narrow with pleasure.{/n} "Say it properly, then, so that I can hold you to it. I want to see the face you make when I finally put this shell down."
-"Come to Drezen. Come to me."
+{n}You repeat the invitation.{/n}
 "How inconvenient. You have made me want a room that is not mine. I shall come when it suits me, and you will not know the night."
 {n}She touches her finger to her mouth, then rests it beside the shell.{/n}
 "For tonight, stay where I can hear you. I have been thinking about the last time you were close enough to interrupt me without speaking."''', c('[Stay on the shell with her until the lamp burns down.]', flags=("vellexia.private_kept", "vellexia.invited"))),
     n("voice", "Vellexia", '''"I would probably complain about the chair first. Then I would want to know why you kept one of those pages and discarded another. At some point you would ask whether I had come merely to criticize your room."
-"Had you?"
+{n}You ask whether she would have come just to complain.{/n}
 "No. I would have come because I wanted you, and I take what I want. I would hope you had noticed before making me admit it so inelegantly."
-{n}She closes the bottle she chose and puts the others away one by one. The little clinks accompany your conversation until the table is almost clear.{/n}
+{n}She has finished with the bottles. As you talk, she pushes them one by one to the far end of the table. The little clinks punctuate her complaints about their makers.{/n}
 "I am here for the same reason now," {n}she says.{/n} "You may imagine the complaint about the chair if it makes the admission easier to believe."''',
       c('[Enjoy the quiet affection between lovers.]', "lovers", requires=("vellexia.renewed_lovers",)),
       c('[Stay for her company.]', "company_end", forbids=("vellexia.renewed_lovers",))),
-    n("lovers", "Vellexia", '''{n}You talk until the pages beside you have been sorted or abandoned. Vellexia asks you to leave the shell open while she unfastens the earring that has begun to catch in her hair. She complains about its maker with an inventiveness that makes it difficult to answer soberly.{/n}
+    n("lovers", "Vellexia", '''{n}You talk until the pages beside you have been sorted or abandoned. Vellexia asks you to leave the shell open while she turns her head to keep an earring from catching in her hair. She complains about its maker with an inventiveness that makes it difficult to answer soberly.{/n}
 "Do not laugh too much," {n}she says.{/n} "I may remember you fondly whenever it annoys me. An association you might regret."
-"I can think of worse."
+{n}You admit you can think of worse.{/n}
 "So can I. I prefer this one."
 {n}After a while her voice grows quiet. She asks what kind of kiss you would want if the distance were less considerable. You tell her, and the silence after your answer has nothing vacant in it.{/n}
 "I would like that," {n}she says.{/n} "Keep the rest. I want something to take from you that you have not described perfectly in advance."
 {n}She names the hour of the next call as if it were a summons, and closes the cover before you can agree.{/n}''',
       c('[Keep the evening and promise another call.]', flags=("vellexia.private_kept",))),
     n("company_end", "Vellexia", '''{n}The conversation lasts longer than the sorting. Vellexia asks which discarded page was easiest to release, and you tell her. Her answer is an account of something extravagant she kept solely because an enemy had offered to buy it.{/n}
-"Did you want it?"
+{n}You ask whether she wanted it for herself.{/n}
 "Less than he did. That was sufficient at the time."
 {n}She sounds amused by the comparison rather than chastened. Before the evening ends, she asks whether you have room for another conversation soon.{/n}
 "I have enjoyed this one," {n}she says.{/n} "There is no invoice to explain the remark. Do not make me regret having said it aloud."
@@ -989,7 +989,7 @@ s("the_cover_before_the_battle", "Before the next silence", '"I want to speak be
       c('"I would hold your hand a while. Then I would go when I had to."', "quiet"),
       c('[Invite her] "I would not leave. You would come here. Drezen, before I march, and no glass at all."', "invite")),
     n("invite", "Vellexia", '''{n}For a moment she says nothing. Then she laughs, low, delighted and not at all kind.{/n}
-"Into a crusader city. Into a crusader's bed, on the eve of a battle, with the whole garrison listening at the shutters." {n}She draws the shell so close that her mouth fills the glass.{/n} "Yes. I shall come when it suits me, and you will not know the night, and you will spend every evening until then wondering whether this is the one. Consider it your first payment."
+"Into a crusader city. Into a crusader's bed, with a war outside, with the whole garrison listening at the shutters." {n}She draws the shell so close that her mouth fills the glass.{/n} "Yes. I shall come when it suits me, and you will not know the night, and you will spend every evening until then wondering whether this is the one. Consider it your first payment."
 {n}The glass clouds while she is still smiling.{/n}''',
       c('[Leave the shutters unlatched.]', flags=("vellexia.farewell_kept", "vellexia.farewell_lovers", "vellexia.invited"))),
     n("new_lovers", "Vellexia", '''"An invitation. Very well, I accept, and you will not know the night. Come nearer. I have waited through enough careful answers to enjoy this one without pretending I was indifferent to it."
@@ -1065,7 +1065,7 @@ ending("lovers", "A light beneath the cover", '''{n}Vellexia remained a difficul
           forbids=("vellexia.trickster.visited", "vellexia.trickster.night_kept")),
         p('''{n}She had come to Drezen once already, in person, to look the Commander over like a purchase, and she made a habit of reminding the Commander that she could do it again whenever she liked, and of not doing it.{/n}''',
           requires=("vellexia.trickster.visited",), forbids=("vellexia.trickster.night_kept",)),
-        p('''{n}She came through the Commander's door when she pleased after that first night before the march, never on the night she was expected, and always left before morning with something of the Commander's she had decided to keep: a glove, a seal, a bruise.{/n}''',
+        p('''{n}She came through the Commander's door when she pleased after their first night in Drezen, never on the night she was expected, and always left before morning with something of the Commander's she had decided to keep: a glove, a seal, a bruise.{/n}''',
           requires=("vellexia.trickster.night_kept",)),
     ))
 ending("friends", "An argument worth continuing", '''{n}The Commander and Vellexia continued their friendship through the echo shell. Some invitations concerned performances, some an insult too elaborate to enjoy without an audience, and some no subject she cared to admit had been an excuse to call.{/n}
