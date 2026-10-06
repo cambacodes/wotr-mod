@@ -203,6 +203,21 @@ for _scene in ("private_reunion", "private_absence_catchup"):
         "This is part of the life I am making between these journeys.")]
 
 
+# Apply new variants after the established overlay, preserving its saved answer indices.
+REPLACEMENTS.update({
+    ("before_road", "new"): [(
+        "At court I would have dressed this up as a farewell call and let you guess the rest. I have lost the court, so I may as well lose the costume.",
+        "At court I would have called this a farewell visit and left you to guess the rest. I arranged this journey myself. I can manage the invitation too.")],
+    ("chosen_evening", "pleasure"): [(
+        "When I lost the office I assumed I would have to pick: a smaller life with you in it, or the capital without. I dislike choosing between two poor offers. I have spent my career refusing to.",
+        "I expected Nerosyan to offer me work and Drezen to offer me you. Two cities, each keeping the thing I wanted in the other. I have arranged better terms."),
+        ("I am glad I did not.", "I am glad I did.")],
+    ("private_last_visit", "business"): [(
+        "There. That is done, and I did not have to be dismissed for it this time. There will always be another applicant. I refuse to spend tonight on any of them.",
+        "There. Signed, paid, and settled on the terms we chose. There will always be another applicant. I refuse to spend tonight on any of them.")],
+})
+
+
 def _variant(book, node_id, replacements):
     original = next(page for page in book["Nodes"] if page["Id"] == node_id)
     variant = deepcopy(original)

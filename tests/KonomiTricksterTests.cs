@@ -32,6 +32,7 @@ internal static class KonomiTricksterTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
+        KonomiPolishTests.Run(story, check);
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         var late = S("konomi.trickster.dismissed.late");
         var recess = S("konomi.trickster.dismissed.recess");
@@ -298,7 +299,8 @@ internal static class KonomiTricksterTests
         check(yardPages.Contains("again_audience") && !yardPages.Contains("again") && !yardPages.Contains("first"),
             "The courtyard thanks her for a letter she never wrote.");
         var yardStart = courtyard.Nodes[0].Choices;
-        check(yardStart[0].Next == "first" && yardStart[1].Next == "again" && yardStart.Last().Next == "again_audience",
+        check(yardStart.Count == 5 && yardStart[0].Next == "first" && yardStart[1].Next == "again"
+              && yardStart[2].Abort && yardStart[3].Next == "again_audience" && yardStart[4].Next == "again_letter",
             "Courtyard choices reordered instead of appended.");
         // Q12 (Sol COX/HOW): the never-arrived road's own short way to an answer, timed from the informer's bow, with no
         // romantic evidence seeded: the account for the jug (72 h after the audience) and her supper terms.

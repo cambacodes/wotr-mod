@@ -142,7 +142,9 @@ internal static class KonomiPrivateConsequenceTests
             check(!Rules.Available(story, scene, elsewhere), "Private finale outside authored visit location.");
         }
         foreach (var scene in visits.Concat(new[] { Get("ending_distance_lived"), Get("ending_distance_open_lived") }))
-            foreach (var node in scene.Nodes)
+            // The undismissed business reply is walked across both careers and both kept-hours
+            // outcomes by KonomiMissedContactTests, which inventories every missed_* page.
+            foreach (var node in scene.Nodes.Where(n => scene.Id != "konomi.private_last_visit" || n.Id != "missed_business"))
                 check(reached.Contains(scene.Id + "/" + node.Id), "Unplayed new Konomi page: " + scene.Id + "/" + node.Id);
     }
 }

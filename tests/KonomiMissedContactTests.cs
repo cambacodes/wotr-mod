@@ -28,7 +28,11 @@ internal static class KonomiMissedContactTests
                     check(!Rules.ContactAvailable(story, scene, invalid), "Confirmed incompatible new contact continues: " + id);
                 }
             }
-            var results = Program.Walk(scene, state, (page, _) => reached.Add(scene.Id + "/" + page));
+            var results = Program.Walk(scene, state, (page, partial) =>
+            {
+                reached.Add(scene.Id + "/" + page);
+                KonomiPolishTests.CheckProvenance(scene, page, partial, check);
+            });
             var result = results.First(s => s.Has(scene.Id) && !s.Has("konomi.closed") && (pick == null || pick(s)));
             check(!Rules.Available(story, scene, result), "Completed missed-contact scene repeats: " + id);
             return result;
@@ -123,6 +127,16 @@ internal static class KonomiMissedContactTests
                 state = Earn(id, state);
             state = Earn("private_future_choice", state, s => s.Has("konomi.committed") == committed);
             state.Chapter = 5;
+            // Replay both actual career bargains and both kept-hours choices from this earned undismissed history.
+            foreach (bool exclusive in new[] { false, true })
+            foreach (bool fullAfternoon in new[] { false, true })
+            {
+                var visit = Earn("private_return_terms", Program.Copy(state), s => s.Has("konomi.private_career_exclusive") == exclusive);
+                visit = Earn("private_kept_hours", visit, s => s.Has("konomi.private_full_afternoon") == fullAfternoon);
+                visit = Earn("private_last_visit", visit);
+                check(visit.Has("konomi.private_consequence_complete") && !visit.Has("konomi.dismissed"),
+                    "Konomi polish: truthful final visit loses its earned career/hours outcome.");
+            }
             foreach (string id in new[] { "private_return_terms", "private_kept_hours", "private_last_visit" }) state = Earn(id, state);
             state.Chapter = 5;
             InterruptedEnding(state);

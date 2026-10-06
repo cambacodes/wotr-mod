@@ -146,7 +146,7 @@ def reply_nodes(final_flags=()):
 "I kept this one for you. I turned down a supper with a very rich woman to do it, and I want that entered on your side of the ledger."
 {n}She rests her hand beside yours.{/n}
 "Now. Your side of the ledger. What future are you bidding on?"''',
-        c('"I gave up the power that once found a door for my invitation. I chose to become Legend."', "absence_legend", requires=("legend",)),
+        c('"I chose to become Legend. I still want you in the life I chose."', "absence_legend", requires=("legend",)),
         c('"I can still bend a rule. I cannot turn the days we missed into days we spent together."', "absence_trickster", requires=("trickster",), forbids=("legend",)),
         c('"I want to make the next invitation without pretending I can promise every part of the future."', "absence_mortal", forbids=("legend", "trickster"))),
       n("absence_wanted", "Konomi", '''"I want you here."
@@ -189,19 +189,16 @@ def reply_nodes(final_flags=()):
 "I did. I am still finding out where."
 {n}She draws a breath.{/n}
 "Now yours. What came back from the Abyss wearing your face, and what did you leave down there?"''',
-        c('"I gave up the power that once found a door for my invitation. I chose to become Legend."', "absence_legend", requires=("legend",)),
+        c('"I chose to become Legend. I still want you in the life I chose."', "absence_legend", requires=("legend",)),
         c('"I can still bend a rule. I cannot turn the days we missed into days we spent together."', "absence_trickster", requires=("trickster",), forbids=("legend",)),
         c('"I want to make the next invitation without pretending I can promise every part of the future."', "absence_mortal", forbids=("legend", "trickster"))),
-      n("absence_legend", "Konomi", '''{n}Konomi closes her fan against her palm and studies you as if you were a treaty with an unexpected clause.{/n}
-"Was it a relief?"
-{n}You answer as well as you can. She lets you finish before giving her own.{/n}
-"I will not pretend the power meant nothing to me. It frightened people I could not persuade, and made people listen who would have discarded a request from either of us. There were uses I would have liked to put it to. You can probably name several arguments we would have had."
-{n}She turns your hand over and runs her thumb once across your palm.{/n}
-"But the invitation had your name on it. The answer was mine. The clerk did not provide those."
-"There may be no impossible door next time."
-"There was never a promise of a second delivery. I gave you an address because I wanted you to use it. If it changes, I shall tell you."
-{n}She holds your gaze.{/n}
-"We shall have to make arrangements. I know how to do that. I would like to know whether you still want to make them with me."''', c('"I do. With the life I have now."', "absence_close")),
+      n("absence_legend", "Konomi", '''{n}Konomi closes her fan against her palm.{/n}
+"Legend. Nerosyan will have a great deal to say about that. I shall have a few things to say myself."
+{n}She turns your hand over and brushes her thumb across your palm.{/n}
+"There were uses I would have found for that power. You would have disliked several of them. I have not become less ambitious because you put it down."
+{n}Her fingers close around yours.{/n}
+"But I answered your invitation because I wanted to see you. You have my address. Use it. If my work takes me elsewhere, I shall send you the new one."
+"I would rather argue over the date of your next visit than compose another farewell. Do you still want those evenings, Commander?"''', c('"I do. With the life I have now."', "absence_close")),
       n("absence_trickster", "Konomi", '''"Please do not try. I should like the days I spent without you to remain mine, including the ones I would have preferred to spend differently."
 {n}Her mouth lifts. The request is not a joke.{/n}
 "Your first invitation reached me in a way I could not have arranged. I chose to answer. After that, we used a woman who knew the road and expected to be paid for traveling it. I rather liked knowing what she wanted."
