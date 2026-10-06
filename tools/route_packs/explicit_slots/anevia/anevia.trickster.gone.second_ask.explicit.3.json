@@ -1,0 +1,26 @@
+{
+  "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
+  "facts": [
+    "Anevia is a woman and Irabeth Tirabade's wife.",
+    "Anevia works as a scout and investigator alongside the Eagle Watch.",
+    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
+    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
+  ],
+  "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 5, existing private room while Beth is away with the Queen. Retry keeps its actual approach history and clock; no false wardrobe rationale. True secret already told. Wife is alive and absent. Her own choice retains guilt, wedding ring and terms about going home when Beth returns. No absent-wife intervention. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
+  "last_line": "N: Anevia retrieves her boots before the next watch comes down from the wall.",
+  "speakers": {
+    "A": "Anevia"
+  },
+  "example": "N: Anevia catches your collar and brings you close.\nA: Took you long enough.\nN: She kisses you before you can answer.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "anevia.trickster.gone.second_ask.explicit.3",
+  "source_node": "partner_price_0_absent_night",
+  "default_text": "{n}Anevia pulls you down beside her. Her wedding ring catches the lantern light as she reaches for you.{/n}",
+  "continuation": "Original terminal choices/effects unchanged, including her_key, secret and absence_kept."
+}

@@ -130,7 +130,7 @@ letter("anevia.trickster.gone.setup", "Don't", [
       c('"...Fine."')),
     nar("door", '''{n}You knock. Nobody answers. The Silken Sin's closets have been quiet since he quit the Council.{/n}
 {n}But the closet he gave you is still yours. "You have earned the right to use this closet," he said, and patted its door like a favourite horse. It opens only onto rooms you have stood in. Her letter to the quartermaster, the one she thinks nobody read, is addressed "the Heart, upstairs, the room the Commander slept in, since nobody else will take it": the room over the taproom where you slept the night the crusaders held the Defender's Heart.{/n}
-{n}Stepping through will cost you the war council tomorrow. Lady Konomi will have to explain your absence to people who do not believe in closets.{/n}''',
+{n}Stepping through will cost you the war council tomorrow. Your sealed notice goes on the council docket before you step through. The adjutant will read it to people who do not believe in closets.{/n}''',
       c('[Open the closet Socothbenoth gave you] "He said I\'d earned it. Let\'s find out what for."', "door_open",
         mythic="Trickster", crusade=("Favors", -100), requires=("closets.door_kept", "trickster"),
         flags=(PRIMED, "anevia.started", STOLEN))),
@@ -201,7 +201,7 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
     a("killer", '''{n}The report from Iz reached Kenabres before you did.{/n}
 "You put your sword through my wife."
 {n}The knife doesn't shake. Her voice does, once, and then it doesn't.{/n}
-"And now you climb outta my wardrobe like it's a joke. Sit down. Not 'cause I forgive you. 'Cause I want to look at you while I decide what you are."''',
+"And now you turn up where I went to get away from you, like it's a joke. Sit down. Not 'cause I forgive you. 'Cause I want to look at you while I decide what you are."''',
       c("Continue", "owned", requires=(I_DECLINED,)),
       c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN, I_DECLINED),
         flags=(RETURNED, "anevia.started", NAILED)),
@@ -303,8 +303,10 @@ GATE_CHOICES = (
     c('[Stay on your side of the line] "Your road. Your call."', "line", flags=(GATE, FRIENDS)))
 
 physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gate. I came out."', [
-    a("start", '''{n}She is standing by the smithy at the gate, on the road side of the line the cartwheels have worn into the mud. The smith has been watching her over his anvil for an hour and has decided not to ask.{/n}
-"Knew you'd come out. You always come out. That's the problem with you."''',
+    a("start", '''{n}Anevia is already waiting on the smith's side of the cart ruts. The relief sentries pass her without stopping. She waits for the hammer to strike, then calls you out of the gate's shadow.{/n}
+"Here. Where I can see who's comin'."
+{n}She has put the lantern on the road side, beside her boot. When you approach, she moves it farther from the citadel.{/n}
+"You got your visit. This one's mine."''',
       c("Continue", "coats", requires=(THROWN,)),
       c("Continue", "joke", requires=(JOKE_TOLD,)),
       c("Continue", "one_truth", requires=(EXPOSED,)),
@@ -325,7 +327,7 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
       c('[Take her hand and wait] "Tell me about her. I\'m listening."', "told", flags=(GATE, "anevia.trickster.hand_taken", SHARES)),
       c('[Stay on your side of the line] "Your road. Your call."', "line", flags=(GATE, FRIENDS, SHARES))),
     a("told", '''{n}So she tells you. Not the war: the small things. That Beth snores like a siege engine and denies it under oath. That she folds her socks in pairs and then, for no reason anyone has discovered, in threes. That she sang at their wedding, badly and on purpose, so Anevia would stop crying and laugh.{/n}
-{n}She never once says "did". Her hand stays in yours the whole time. She doesn't seem to notice.{/n}''',
+{n}The smith stops to inspect his work. Anevia falls silent with him, listening to the guard call the next watch. Her hand stays in yours.{/n}''',
       c('"I\'ll come back. Same gate?"')),
     a("line", '''{n}She nods once, the way she nods at a report that says what she expected.{/n}
 "Good. Keep it that way till I say otherwise."''',
@@ -376,7 +378,7 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
       c("Continue", "terms", forbids=(KILLED,)),          # retired by gating (index kept): her penance comes first
       c("Continue", "penance", requires=("anevia.lover",)),
       c("Continue", "stranger", forbids=("anevia.lover",))),
-    a("stranger", '''"Here's the rest. Tomorrow at muster you say it again, in front of her knights. And that's all you'll ever have from me: a widow who knows what you did and says it back to you whenever she likes. You were never anythin' to me before Iz, Commander. You don't get to be somethin' now 'cause you climbed out of a wardrobe."''',
+    a("stranger", '''"Here's the rest. Tomorrow at muster you say it again, in front of her knights. And that's all you'll ever have from me: a widow who knows what you did and says it back to you whenever she likes. You were never anythin' to me before Iz, Commander. You don't get to be somethin' now 'cause you found a way to follow me."''',
       c('[Accept it] "Then that\'s what I am to you."', flags=(FRIENDS,)),
       c('[Refuse] "Not in front of them."', "no")),
     a("penance", '''"Here's the rest. Tomorrow, at muster, in the yard, in front of every knight who carried her out of Iz, you say it again. Same words. Your mouth, not a clerk's. Then you stand there while they look at you."
@@ -424,14 +426,14 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
 "Same door. Knock."''',
       c('"Same door."')),
     a("morning_back", '''{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}
-"Beth's gonna know the second she looks at me. Good. Saves me the speech."
-{n}She stands, and there it is: the grin from before Kenabres, a little rusty.{/n}
+"Beth's got my word about her nights. She's gettin' me home for breakfast."
+{n}She stands, and there it is: her old crooked grin, a little rusty.{/n}
 "She'll want a turn yellin' at you. Let her. Then she'll want to know if you're good enough for the both of us, and she'll ask you herself. I'm not answerin' for her."''',
       c('"I\'ll knock."')),
     a("morning_quiet", '''{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}
-"Beth's gonna know the second she looks at me. Good. Saves me the speech."
-{n}She stands, and there it is: the grin from before Kenabres, a little rusty.{/n}
-"She'll want a turn yellin' at you for this. Let her. She's earned it, and so have you."''',
+"Beth's got my word about her nights. She's gettin' me home for breakfast."
+{n}She stands, and there it is: her old crooked grin, a little rusty.{/n}
+"She wrote her terms down. Don't make her come lookin' for you with that letter in her hand."''',
       c('"I\'ll knock."')),
     a("no", '''"Then we're done for tonight. I'm not sayin' never. I'm sayin' not like this. Come back when you can knock."
 {n}She picks up the lantern and walks back down the road without looking round.{/n}''',
@@ -493,7 +495,7 @@ physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
       c('[Keep it] "Some things stay mine."', "kept", flags=("anevia.closed",))),
     a("price", '''"Door's paid for. Now you pay for me. Tell me somethin' true about you that nobody in Drezen knows. Not your mythic nonsense. Somethin' that'd cost you if I sold it."
 {n}She holds out her hand, palm up, the way a fence waits for a coin.{/n}
-"I'll never use it. Probably. But you'll never again be sure what I know about you. That's how I've felt every night since that wardrobe opened."''',
+"I'll never use it. Probably. But you'll never again be sure what I know about you. You know where I go when I don't want you near me. Now I get somethin' you can't take back, too."''',
       c('[Tell her something true] "All right. Lean in."', "key",
         flags=("anevia.committed", KEY)),
       c('[Keep it] "Some things stay mine."', "kept", flags=("anevia.closed",))),
@@ -623,11 +625,11 @@ PARAGRAPHS = (
     p("{n}She never forgave the Commander for Iz, and never pretended to. She kept her own terms anyway: a real door, three "
       "knocks, and Beth's name said out loud every time she came through it. Whatever the two of them had, they built it "
       "beside that grave and not over it, and she would not let either of them forget which side of it they stood on.{/n}",
-      requires=(RETURNED, KILLED), forbids=(I_RET,), any_groups=([TERMS, KEY],)),
+      requires=(RETURNED, KILLED), forbids=(I_RET, "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record"), any_groups=([TERMS, KEY],)),
     p("{n}Beth stayed dead. Anevia kept her side of the bed cold on purpose for a year, and said so, and then one winter "
       "night she didn't, and said that too. She never once let the Commander pretend the two things were the same "
       "kind of love, and never once let either of them be ashamed of the second.{/n}",
-      requires=(RETURNED, "irabeth_dead"), forbids=(I_RET, KILLED), any_groups=([TERMS, KEY],)),
+      requires=(RETURNED, "irabeth_dead"), forbids=(I_RET, KILLED, "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record"), any_groups=([TERMS, KEY],)),
     p("{n}At muster the morning after the gate, the Commander said it in the yard, in front of Beth's knights, in the same "
       "words:{/n} \"I killed her. At Iz. With my own hand.\" {n}Nobody in Drezen ever said it sideways again.{/n}",
       requires=(RETURNED, PENANCE)),
@@ -682,8 +684,8 @@ NATIVE_WIDOW_COMMITTED = "anevia.trickster.epilogue.native_tirabade_widow_commit
 NATIVE_WIDOW = "anevia.trickster.epilogue.native_tirabade_widow"
 I_NATIVE_SOUTH = "irabeth.trickster.epilogue.native_tirabade_south"   # irabeth_trickster.py
 
-LEFT_A_WIDOW = "Anevia left Drezen at the Coronation a widow, quietly, leaving no notes or traces. She did not stay a widow."
-LEFT_ALONE = ("Now alone, Anevia left Drezen quietly, unnoticed, leaving no notes or traces. It was not enough to lose the "
+LEFT_A_WIDOW = "Anevia quit Drezen at the Coronation. Her wife was dead; her destination remained her own. Irabeth did not stay dead."
+LEFT_ALONE = ("Alone after Beth's death, Anevia left Drezen. It was not enough to lose the "
               "Commander, who found her anyway, by a road no one else would have thought to take.")
 
 
@@ -717,12 +719,12 @@ NATIVE_LEFT_COMMITTED = "anevia.trickster.epilogue.native_tirabade_left_committe
 NATIVE_LEFT = "anevia.trickster.epilogue.native_tirabade_left"
 LEFT_TOGETHER = ("The Commander's betrayal and the humiliation she had suffered in Drezen eroded Irabeth's fighting spirit, "
                  "and Anevia meant to take her as far away from Mendev as she could.")
-native_slide(NATIVE_LEFT_COMMITTED, LEFT_TOGETHER + " They had not got far enough to keep the Commander out of "
-             "her wardrobe. Anevia came back as far as the Drezen gate, and in time through a door beside it, on her "
+native_slide(NATIVE_LEFT_COMMITTED, LEFT_TOGETHER + " They had not got far enough to keep the Commander from "
+             "finding her. Anevia came back as far as the Drezen gate, and in time through a door beside it, on her "
              "own terms. She never forgave the betrayal, and Beth always came first.",
              (RETURNED, "anevia.committed"))
-native_slide(NATIVE_LEFT, LEFT_TOGETHER + " They had not got far enough to keep the Commander out of her "
-             "wardrobe. Anevia came back as far as the Drezen gate to say what she thought of that, and then she went back "
+native_slide(NATIVE_LEFT, LEFT_TOGETHER + " They had not got far enough to keep the Commander from "
+             "finding her. Anevia came back as far as the Drezen gate to say what she thought of that, and then she went back "
              "to her wife. Neither of them ever escaped the nightmares of the Fifth Crusade, and she never pretended otherwise.",
              (RETURNED,))
 
@@ -890,6 +892,8 @@ def integrate(payload):
     # Round 2a: route-local commitment stances and current wife-state codas.
     from storylines import anevia_partner_stance
     anevia_partner_stance.integrate(payload)
+    from storylines import anevia_round2
+    anevia_round2.integrate(payload)
 
 
 

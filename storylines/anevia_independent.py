@@ -769,7 +769,7 @@ s("the_woman_with_the_basket", "What Dema chooses to carry", [
     n("work", "Dema", '''"She pays me to carry cloth. Some of it has dye in it, some of it smells as though it ought to. She has a basket she doesn't want washed. I found papers beneath its cover once."
 {n}Dema glances toward a shelf of folded sheets.{/n}
 "I didn't steal them. I put the cloth back. I had washing to deliver and no reason yet to be a hero."
-"It doesn't," {n}Anevia says.{/n} "What did you read?"
+"Keep deliverin' your washing," {n}Anevia says.{/n} "What did you read before you put the cloth back?"
 "Names. Not enough to make a list for you. Enough that I remembered Ressa's street when she told me what happened."
 {n}Dema considers the door.{/n}
 "I could carry the next bundle and see whether the basket is still there. I could also tell you to stand outside until Cale comes out. The second option would give me a quieter evening."
@@ -940,9 +940,8 @@ s("what_the_warning_cost", "After the names were returned", [
 {n}She waits for your answer and grins when you give it with another kiss. For a while the only unfinished business she cares about is the gap between you, and she closes it.{/n}''', c('[Stay. Let the letter keep.]', "end")),
     n("trusted", "Anevia", '''"'Course I did. Who else am I gonna argue with? Beth agrees with me when she's tired, and that's no sport at all."
 {n}She drags her chair round the corner of the table so she can sit nearer.{/n}
-"Besides, you had the right of it about Helve. Once. Don't let it go to your head."
-"I might not."
-"Then I'll enjoy the company and ignore you. Solid foundation for romance, that."
+"You let me argue without sendin' for somebody to agree with you. I'll keep that. Don't let it go to your head."
+{n}The report remains folded beside her cup.{/n}
 {n}She kisses your cheek, then the corner of your mouth, plainly enjoying how hard she is making it for you to answer.{/n}
 "Come here. I'm done bein' professionally interestin' for tonight."''', c('[Accept the invitation.]', "end")),
     n("end", "Narrator", '''{n}The lamp burns lower while you talk. Anevia has planted the cutting in the box by the window. When you ask about it, she tells you the market woman sent soil as well, having no faith at all in anything dug out of a military yard.{/n}
@@ -1130,8 +1129,8 @@ s("the_life_she_lived", "The answer you could not guess", [
 "Not havin' you about. Havin' to decide what to do with a night instead of just wantin' you and callin' that a plan. Didn't stop wantin' you. Stopped lettin' it run my whole week."
 {n}She reads the second thought again, the one under the fear.{/n}
 "Glad you left the blots in. Tells me which lines you fought. I'd have burned the page and written you a nice lie."
-"A patient wall?"
-"Saintly. Terrible advice, though."
+"Beth caught me rehearsin' the letter at the wall. Stood there listenin', then asked if the wall had answered yet. Nearly threw the ink at her."
+{n}She laughs, folding the blotted page with care.{/n}
 {n}She kisses your fingers before she puts the page down.{/n}
 "Now ask about the woman that's actually here. You'll still like her. She's got a few new opinions you ain't ready for."''', c('[Ask what she wants you to know about her days.]', "her_days")),
     n("unwritten", "Narrator", '''{n}You start with a small detail. Anevia asks where you were standing, then what happened just before the part you chose to tell. The questions change the story. Something you meant as an aside turns out to be why you remembered the day at all.{/n}
@@ -1442,6 +1441,6 @@ ending("ending_ascended", "The scale of an ordinary invitation", '''{n}Ascension
 {n}Whatever came after would have to knock. She was very clear with the herald on that point, and she made him repeat it back.{/n}''',
        requires=("anevia.lover", "ascended"), forbids=("inhuman",))
 ending("ending_aeon", "An invitation outside the rewritten world", '''{n}In the rewritten world, nothing that had put Anevia and the Commander in the same room had happened. The borrowed room, the goat game, the nights she had picked: all of it was gone.{/n}
-{n}Somewhere in that world a woman with sharp eyes and a Kenabres accent ran a tavern, cheated at a game with wooden goats, and had a wife who snored like a siege engine.{/n}
-{n}The Commander went there once, bought a drink, and lost a game to her. She said "Come back and lose again," the way she said it to everybody. It was not nothing.{/n}''',
+{n}In that world Anevia fled Nidal and died in the River Kingdoms, far from Kenabres. Her wedding belonged to the erased history.{/n}
+{n}There was no tavern door to knock on, no woman waiting with a joke. The life the Commander remembered had been erased.{/n}''',
        requires=("anevia.lover",), forbids=(), owner="AeonEpilogue")

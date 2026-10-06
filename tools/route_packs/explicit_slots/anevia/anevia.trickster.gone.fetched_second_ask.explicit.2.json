@@ -1,0 +1,26 @@
+{
+  "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
+  "facts": [
+    "Anevia is a woman and Irabeth Tirabade's wife.",
+    "Anevia works as a scout and investigator alongside the Eagle Watch.",
+    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
+    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
+  ],
+  "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 5, existing private room on returned retry. Fetched retry has its existing 6h appointment, not a four-night wardrobe wait. True secret already told, then knowingly secret affair. Keep that debt separate from the wife's trust. No new price or operational justification; dawn exposure closes the romance. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
+  "last_line": "N: Dawn greys the shutter before Anevia goes back toward the road.",
+  "speakers": {
+    "A": "Anevia"
+  },
+  "example": "N: Anevia catches your collar and brings you close.\nA: Took you long enough.\nN: She kisses you before you can answer.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "anevia.trickster.gone.fetched_second_ask.explicit.2",
+  "source_node": "partner_price_0_secret_night",
+  "default_text": "{n}Anevia draws you close on the narrow bed. Beyond the shutter, the watch changes.{/n}",
+  "continuation": "Existing partner_price_0_discovered then partner_price_0_over; retain exposure/closed/parted effects."
+}

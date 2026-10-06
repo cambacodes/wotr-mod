@@ -1,0 +1,26 @@
+{
+  "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
+  "facts": [
+    "Anevia is a woman and Irabeth Tirabade's wife.",
+    "Anevia works as a scout and investigator alongside the Eagle Watch.",
+    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
+    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
+  ],
+  "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 5, Commander's existing room after Anevia's three real knocks. Retry keeps its actual approach history and clock; no false wardrobe rationale. One true secret has already been given. Her subsequent knock and decision are her own. Keep Probably as the existing dawn payoff. Prior night means renewal; no automatic pardon of Iz. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
+  "last_line": "N: Before dawn, Anevia finds a scrap of paper beside your cup.",
+  "speakers": {
+    "A": "Anevia"
+  },
+  "example": "N: Anevia catches your collar and brings you close.\nA: Took you long enough.\nN: She kisses you before you can answer.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "anevia.trickster.gone.second_ask.explicit.1",
+  "source_node": "night",
+  "default_text": "{n}Anevia pulls you away from the shut door and down beside her. For once, she leaves the last question unanswered.{/n}",
+  "continuation": "Existing dawn node with Probably note; preserve all legacy terminal effects."
+}

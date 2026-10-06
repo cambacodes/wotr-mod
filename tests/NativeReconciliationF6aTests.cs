@@ -104,7 +104,12 @@ internal static class NativeReconciliationF6aTests
         }
         Case(Bread, "Beth still dead", State(story, 5, "trickster", "trickster.ever", "irabeth_dead", "anevia.trickster.returned"), breadNative, null);
         Case(Bread, "off path", State(story, 5, "irabeth.trickster.returned"), breadNative, null);
-        Case(Bread, "former Trickster", State(story, 5, "trickster", "trickster.ever", "trickster.failed", "irabeth.trickster.returned"), breadNative, null);
+        Case(Bread, "former Trickster", State(story, 5, "trickster", "trickster.ever", "trickster.failed", "irabeth.trickster.returned"), breadNative,
+            "anevia.trickster.native.bread_returned");
+        foreach (string survival in new[] { "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record" })
+            Case(Bread, "Beth survived without reconciliation: " + survival,
+                State(story, 5, "trickster.ever", "trickster.failed", "irabeth_dead", survival), breadNative,
+                "anevia.trickster.native.bread_returned");
 
         var raid = new NativeHistory();
         raid.Answers.Add("1eececde9d7a70c44be526ea668f3ed4");
