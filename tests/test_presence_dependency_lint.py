@@ -1,4 +1,5 @@
 import copy
+from functools import lru_cache
 import json
 import subprocess
 import sys
@@ -10,14 +11,23 @@ from tools.presence_exception_schema import guard_fields
 
 
 class PresenceDependencyTests(unittest.TestCase):
-    def test_export_and_mutations(self):
+    @classmethod
+    @lru_cache(maxsize=1)
+    def export(cls):
         story = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8"))
-        self.assertEqual([], check(story))
+        return story, set(check(story))
+
+    def test_clean_export(self):
+        _, baseline = self.export()
+        self.assertEqual(set(), baseline)
+
+    def test_export_and_mutations(self):
+        story, baseline = self.export()
         for name in ("camellia.presence", "irabeth.presence", "kaylessa.presence",
                      "minagho_chivarro.presence.minagho", "nurah.presence.cell", "seelah.presence"):
             bad = copy.deepcopy(story)
             bad["PresenceExceptions"].pop(name)
-            self.assertTrue(check(bad), name)
+            self.assertTrue(set(check(bad)) - baseline, name)
 
     def test_circular_earned_flag_is_rejected(self):
         story = {"Relationships": {"woman": {"UnavailableOverrides": {"dead": "returned"}}},
@@ -222,6 +232,26 @@ class PresenceDependencyTests(unittest.TestCase):
         payer["Nodes"][0]["Choices"].append({})
         self.assertEqual([], check(story), "An independent terminal answer breaks the cycle")
 
+    def test_shared_prerequisite_diamonds_keep_contact_and_independent_roads(self):
+        story = self.fixture()
+        # Each level repeats the same prerequisites on several alternative roads.
+        # The inventory needs their contact union, not every path through them.
+        del story["Derived"]["paid"]
+        story["Scenes"].append({"Id": "pay", "ContactUnit": "unit", "Nodes": [
+            {"Id": "start", "Choices": [{"Set": ["payment"]}]}]})
+        previous = "payment"
+        for index in range(16):
+            key = "diamond.%d" % index
+            story["Derived"][key] = [[previous], [previous], [previous]]
+            previous = key
+        story["Derived"]["paid"] = [[previous]]
+        self.assertTrue(check(story), "Repeated roads still require the same physical actor")
+        story["Scenes"][-1].pop("ContactUnit")
+        self.assertEqual([], check(story), "An independent payment must break the cycle")
+        story["Scenes"][-1]["ContactUnit"] = "unit"
+        story["Derived"]["paid"].append(["independent_payment"])
+        self.assertEqual([], check(story), "An OR road must not inherit a cached cycle failure")
+
     def test_cli_is_strict_and_all_routes_without_opt_in(self):
         story = self.fixture()
         script = Path(__file__).resolve().parents[1] / "tools/presence_dependency_lint.py"
@@ -233,7 +263,7 @@ class PresenceDependencyTests(unittest.TestCase):
                 path.write_text(json.dumps(story), encoding="utf-8")
                 for extra in ([], ["--strict"], ["--all", "--strict"]):
                     run = subprocess.run([sys.executable, str(script), "--story", str(path), *extra],
-                                         cwd=scratch, capture_output=True, text=True)
+                                         cwd=scratch, capture_output=True, text=True, encoding="utf-8")
                     self.assertEqual(int(circular), run.returncode, run.stdout + run.stderr)
                     self.assertIn("presence dependencies: %d hard" % int(circular), run.stdout)
     # eng7-f4 end

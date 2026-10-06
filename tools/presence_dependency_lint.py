@@ -28,6 +28,12 @@ def check(story, relationships=None):
     setters = {}
     active_losses = set()
     independent = set()
+    dependent = set()
+    proof_worlds = {}
+    node_paths = {}
+    by_unit = {}
+    for name, presence in presences.items():
+        by_unit.setdefault(presence.get("Unit"), []).append((name, presence))
     loss_flags = {f for rel in rels.values() for f in rel.get("UnavailableFlags") or []}
     for scene in scenes:
         # Completing a scene is also a producer, even when its terminal answer sets no explicit flags.
@@ -100,9 +106,9 @@ def check(story, relationships=None):
     def contacts(scene):
         units = [scene.get("ContactUnit"), *(scene.get("AdditionalContactUnits") or [])]
         for unit in filter(None, units):
-            candidates = [(name, p) for name, p in presences.items() if p.get("Unit") == unit
-                          and (not scene.get("InteractionHub") or unit != scene.get("ContactUnit")
-                               or scene["InteractionHub"] == name)]
+            candidates = [(name, p) for name, p in by_unit.get(unit, [])
+                          if (not scene.get("InteractionHub") or unit != scene.get("ContactUnit")
+                              or scene["InteractionHub"] == name)]
             if candidates:
                 yield unit, candidates
 
@@ -138,9 +144,23 @@ def check(story, relationships=None):
             needs(w["Flag"], target, seen) for w in p.get("ContactWindows") or [])
 
     def node_needs(scene, node, target, seen):
+        context = (id(scene), id(node), target, frozenset(active_losses),
+                   frozenset(seen), len(independent))
+        if context in node_paths:
+            return node_paths[context]
+        generation = len(independent)
+        result = node_needs_uncached(scene, node, target, seen)
+        if generation == len(independent):
+            node_paths[context] = result
+        return result
+
+    def node_needs_uncached(scene, node, target, seen):
         # A setter in a later node also depends on the selectable edges that reach it.
         nodes = scene.get("Nodes") or []
         if not nodes:
+            return False
+        # The entry node is reachable without traversing any choice edge.
+        if node is not None and node.get("Id") == nodes[0].get("Id"):
             return False
         reachable = {nodes[0].get("Id")}
         changed = True
@@ -169,11 +189,23 @@ def check(story, relationships=None):
     def needs(key, target, seen=()):
         if key in independent:
             return False
+        # Failed proofs depend on the recursion ancestors: a cycle cannot
+        # bootstrap itself, but another producer may still break that cycle.
+        # Include the complete ancestor set instead of memoizing by flag alone.
+        context = (key, target, frozenset(seen))
+        if context in dependent:
+            return True
+        generation = len(independent)
         result = needs_uncached(key, target, seen)
-        # Only cache an independent witness. A recursive failure is provisional:
-        # another producer may break the cycle, so caching it could hide that road.
+        # Independent witnesses remain valid across recursion contexts.
+        # Failures remain valid only until a new independent road is found.
         if not result:
-            independent.add(key)
+            if key not in independent:
+                independent.add(key)
+                # A newly discovered independent road can invalidate failures.
+                dependent.clear()
+        elif generation == len(independent):
+            dependent.add(context)
         return result
 
     def needs_uncached(key, target, seen=()):
@@ -221,8 +253,13 @@ def check(story, relationships=None):
             return all(setter_needs(s, n, c) for s, n, c in setters[key])
         return False
 
-    def dependency_contacts(scene, node, choice, target, seen=()):
+    def dependency_contacts(scene, node, choice, target, seen=(), visited=None):
         """Also follow a remote return's mandatory prerequisites to physical producers."""
+        # This walk collects a union of contacts, not distinct choice histories.
+        # Revisiting the same prerequisite through a stance/partner diamond
+        # adds no evidence. Share visited keys through the entire traversal.
+        if visited is None:
+            visited = set(seen)
         found = set()
         for _, candidates in contacts(scene):
             if all(presence_needs(name, p, target, ()) for name, p in candidates):
@@ -244,8 +281,9 @@ def check(story, relationships=None):
         # eng7-f4 end
 
         def visit(key, path):
-            if key in path or key == target or not needs(key, target):
+            if key in visited or key == target or not needs(key, target):
                 return
+            visited.add(key)
             path = (*path, key)
             # eng7-f4: a remote fallback still needs an eligible failed placement.
             # Follow both transient observations and durable receipt eligibility.
@@ -260,7 +298,7 @@ def check(story, relationships=None):
             # eng7-f4 end
             if key in setters:
                 for s, n, c in setters[key]:
-                    found.update(dependency_contacts(s, n, c, target, path))
+                    found.update(dependency_contacts(s, n, c, target, path, visited))
             for member in [*(k for g in derived.get(key, []) for k in g), *latches.get(key, []),
                            *(counts.get(key) or {}).get("Of", [])]:
                 visit(member, path)
@@ -297,7 +335,10 @@ def check(story, relationships=None):
                 if loss in (scene.get("Forbids") or []) and loss not in (scene.get("ForbidOverrides") or {}):
                     continue
                 active_losses = ({loss} if loss else set()) | (set(scene.get("Requires") or []) & loss_flags)
-                independent.clear()
+                # The proof world depends on the return target and forced losses,
+                # not the particular answer that asks for its contact inventory.
+                independent, dependent = proof_worlds.setdefault(
+                    (returned, frozenset(active_losses)), (set(), set()))
                 for name in dependency_contacts(scene, node, choice, returned):
                     hard.append("PD1 %s: %s/%s requires contact %s before producing %s; no independent earned bootstrap"
                                 % (scene["Id"], rel_name, loss, name, returned))
