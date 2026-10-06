@@ -178,7 +178,7 @@ internal static class MielarahTricksterTests
         var produced = new HashSet<string>(story.Scenes.Where(s => s.Relationship == "mielarah").SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set));
         foreach (var s in own)
             foreach (var key in s.Requires.Where(k => k.StartsWith(P, StringComparison.Ordinal) || k.StartsWith(D, StringComparison.Ordinal)))
-                check(produced.Contains(key) || story.Derived.ContainsKey(key), "A gate has no producer: " + s.Id + " requires " + key);
+                check(produced.Contains(key) || story.Derived.ContainsKey(key) || story.Latches.ContainsKey(key), "A gate has no producer: " + s.Id + " requires " + key);
         check(!produced.Contains("mielarah.committed") || wheel.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains("mielarah.committed")),
             "The commit is not set in flight.");
         check(own.Where(s => s != wheel && !s.Id.StartsWith(D + "wheel", StringComparison.Ordinal))
@@ -289,7 +289,12 @@ internal static class MielarahTricksterTests
         check(sent.Has(P + "primed.word") && Rules.Available(story, survivor, Later(story, sent, 48)), "Trk_Mielarah_Storm: the survivor does not follow the word.");
         var survived = After(survivor, Later(story, sent, 48), "hatch", 0).First();
         check(survived.Has(P + "returned") && survived.Has(P + "cost.ship_lost") && survived.Has(P + "cost.oskel"), "Trk_Mielarah_Storm: the return costs nothing.");
-        check(Reaches(Later(story, survived, 10, 5), "mielarah.committed"), "Trk_Mielarah_Storm: no road to the commit.");
+        check(!Later(story, survived, 10, 5).Has(P + "contact"), "Trk_Mielarah_Storm: survival teleports the Fourth to Drezen.");
+        var fourthArrival = S(P + "fourth.arrival");
+        var arrivalReady = Later(story, survived, 1081, 5);
+        check(Rules.Available(story, fourthArrival, arrivalReady), "Trk_Mielarah_Storm: the dated arrival never opens.");
+        var fourthDelivered = Program.Walk(fourthArrival, arrivalReady).First();
+        check(Reaches(Later(story, fourthDelivered, 10, 5), "mielarah.committed"), "Trk_Mielarah_Storm: no road to the commit after arrival.");
         var unread = World(story, 4, "trickster", "trickster.ever", "mielarah.storm_crash", "mielarah.storm_crash.latched", "mielarah.told_curse");
         check(After(word, unread, "unknown", 1).Any(r => r.Has(P + "primed.word") && r.Has(P + "cost.late")) && Choice(word, "unknown", 1).Crusade?.Resource == "Finances",
             "Trk_Mielarah_PreparedStorm: the unread storm has no late road.");
@@ -304,7 +309,11 @@ internal static class MielarahTricksterTests
         check(Rules.Available(story, landfall, arrived), "Trk_Mielarah_Arrived: the landfall is shut.");
         var invited = After(landfall, arrived, "close", 0).First();
         check(invited.Has(P + "landfall") && Later(story, invited, 0).Has(P + "contact"), "Trk_Mielarah_Arrived: the invitation does not bring her north.");
-        check(Rules.Available(story, landfallLetter, Later(story, arrived, 73)), "Trk_Mielarah_Arrived: the missed landfall has no letter.");
+        check(!Rules.Available(story, landfallLetter, Later(story, arrived, 73)), "Trk_Mielarah_Arrived: arrival invents victory over Hepzamirah.");
+        var completed = With(arrived, P + "colyphyr.completed");
+        Rules.Complete(story, completed);
+        completed.Times[P + "colyphyr.finished"] = completed.Hour;
+        check(!Rules.Available(story, landfallLetter, Later(story, completed, 71)) && Rules.Available(story, landfallLetter, Later(story, completed, 73)), "Trk_Mielarah_Arrived: completion does not date the letter.");
         check(Reaches(Later(story, invited, 10, 5), "mielarah.committed"), "Trk_Mielarah_Arrived: no road to the commit.");
 
         // Trk_Mielarah_Charter: another captain; the charter at her table or her letter in Chapter 5.
@@ -328,8 +337,13 @@ internal static class MielarahTricksterTests
                 "Trk_Mielarah_Charter: no Chapter 5 entry without her table (" + captain + ").");
             var signed = Program.Walk(rumour, stranger).Where(r => r.Has(P + "charter")).ToList();
             check(signed.Count > 0 && signed.All(r => r.Has(P + "primed.pattern") && r.Has(P + "cost.late") && r.Has("mielarah.started"))
-                  && Later(story, signed[0], 10, 5).Has(P + "contact") && Reaches(Later(story, signed[0], 10, 5), "mielarah.committed"),
+                  && !Later(story, signed[0], 10, 5).Has(P + "contact"),
                 "Trk_Mielarah_Charter: the rumour does not bring her north, or has no road to the commit (" + captain + ").");
+            var charterArrival = S(P + "charter.arrival");
+            var charterReady = Later(story, signed[0], 337, 5);
+            check(Rules.Available(story, charterArrival, charterReady), "The paid charter never delivers its ship.");
+            var delivered = Program.Walk(charterArrival, charterReady).First();
+            check(Reaches(Later(story, delivered, 10, 5), "mielarah.committed"), "The delivered charter has no road to commitment.");
         }
         check(!Rules.Available(story, rumour, World(story, 5, "trickster", "trickster.ever", "captain.kerz")) && !Rules.Available(story, rumour, World(story, 5, "trickster", "trickster.ever", "captain.mielarah")),
             "Trk_Mielarah_Charter: the rumour opens after the path is lost, or with her own ship hired.");
@@ -364,7 +378,7 @@ internal static class MielarahTricksterTests
         check(Rules.Available(story, morning, Later(story, night, 7)), "The morning does not follow the night.");
         var dawn = After(morning, Later(story, night, 7), "shield", 0).First();
         check(dawn.Has(P + "cost.noticed") && dawn.Has(D + "morning"), "Trk_Mielarah_Morning: the Gravedragger does not notice.");
-        check(Rules.Available(story, dream, Later(story, dawn, 25)), "The spade dream never comes.");
+        check(Rules.Available(story, dream, Later(story, dawn, 25)), "The physical spade warning never opens.");
 
         // Every Chapter 5 beat opens once its own gates are held.
         foreach (var s in deck.Where(s => !s.Id.EndsWith(".arcade", StringComparison.Ordinal)))
@@ -456,7 +470,7 @@ internal static class MielarahTricksterTests
             "The correction remembers amulets or a hanging that never happened.");
         var supper = S(D + "supper");
         var thirdSupper = Visited(supper, World(story, 5, "trickster", "trickster.ever", P + "landfall", "mielarah.started", D + "flown"));
-        var fourthSupper = Visited(supper, World(story, 5, "trickster", "trickster.ever", P + "returned", P + "cost.ship_lost", "mielarah.started", D + "flown"));
+        var fourthSupper = Visited(supper, World(story, 5, "trickster", "trickster.ever", P + "returned", P + "cost.ship_lost", P + "fourth.arrived", "mielarah.started", D + "flown"));
         check(thirdSupper.Contains("chair") && !thirdSupper.Contains("crate") && fourthSupper.Contains("crate") && !fourthSupper.Contains("chair"),
             "The Fourth's supper is staged in the Third's great cabin, or recalls a minder's death that did not happen.");
         check(story.Scenes.Where(s => s.Relationship == "mielarah").SelectMany(s => s.Nodes).All(n => !n.Text.Contains("not a god who forgets")),
