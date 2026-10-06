@@ -1,0 +1,34 @@
+{
+  "melazmera": {
+    "device_class": "bargain",
+    "setting": "Ch5 rift-edge hoard reached on her back, after the Colyphyr rain-hole opening",
+    "payoff_shape": "seal remains on her claw, real sapphire leaves in Commander's pocket and she claims the thief",
+    "canon_hooks": [
+      {
+        "guid": "d9cf5c5e87a72e943afa9737b02bfbe7",
+        "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0102.jbp",
+        "key": "70c883b1-6364-43bd-b7a0-0f5f89a41b48",
+        "native_excerpt": "{n}The Fulsome Queen sniffs tearfully, and says in a whiny, petulant voice,{/n} \"Yes! No one has ever been that impertinent! No one has ever tried to eat me before, ever! And that nasty dragon! She bragged about eating everything, even dead souls! She giggled and said she'd never had anything like me before! And I esc— chased her away, but she'll be back! I didn't like being chewed! It was so disgusting!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "35fca27d8356ef64da87ec40f4f37a58",
+        "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0046.jbp",
+        "key": "cab03e06-a114-4e19-b011-fd66d0e1ff82",
+        "native_excerpt": "\"The evil lizard lives nearby, in a big cave with a hole at the top. The rain falls into the hole. It's a good cave, dark and wet, and it used to be very quiet. But then the fat lizard came and kicked me out of there, because she wouldn't fit in the other caves! Why does she need such a good cave? She's always out hunting, she flies over the island all the time! And the cave just stands there empty!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "ee90b60ecefa31f44aeb8a58c1e5ebab",
+        "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0078.jbp",
+        "key": "832dc662-3691-4f1d-b31e-335d839a67d8",
+        "native_excerpt": "\"Dragons love their treasure. Everyone knows that! If you touch the treasure, the dragon will hurry back in the blink of an eye to protect her property! But the things scattered around the cave — the bright stick with a bird on top, the sparkly dress, the round coins, and even the pretty little crown...\" {n}The demon's voice grows wistful, and there's a faraway look in her eyes.{/n} \"They're all just silly rocks that have been wrapped in illusion",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts.",
+        "shared_string_asset": "3378d5fc7c76f0f459c8505d928abb7b"
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}

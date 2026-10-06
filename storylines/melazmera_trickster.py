@@ -21,7 +21,7 @@ Device (11 §2 R5, a gift of theft): while she hunts, the Commander walks into t
 disguised the way she hides hers: the Knight Commander's seal ring, caked in the cave's own clay to pass for one of her
 boring rocks, set among the real stones without touching the bait. SkillThievery DC 26 (22 once the illusion has been lifted);
 by hand, no mythic power. Failure: the wrist brushes the bait, she is home, her drain greys two fingers of the ring hand, and
-she takes the ring herself. She has never been left anything, so she hunts the giver out of curiosity, not rage. The kill
+she takes the ring herself. No thief has left an unbidden gift among her stones; she hunts this giver out of curiosity, not rage. The kill
 stays canon: touch the bait and kill her, and the route closes (§5.1). Leaving Colyphyr before the salt is an entry condition
 (coordinator ruling); a salted Commander who leaves before the next Colyphyr rest is found anyway (`ch4.hunt_found`).
 
@@ -63,6 +63,9 @@ SEEN_THROUGH = "melazmera.illusion_seen"               # Derived: either illusio
 HOARD_KNOWN = "melazmera.hoard_known"                  # Derived: told by the Queen, or seen through
 ATE = "melazmera.ate_sailors"                          # AirAdventures/Cue_0494: she ate the crew off the deck
 HARPOONED = "melazmera.harpooned"                      # AirAdventures/Answer_0432: the captain's harpoon
+CREVICE = "melazmera.voyage.crevice"
+SCREAM = "melazmera.voyage.scream"
+CAPTURED = "melazmera.voyage.captured"
 CH5 = "melazmera.ch5"                                  # Chapter05 (Playing)
 CH5_LATCHED = "melazmera.ch5.latched"                  # the Chapter 5 anchor for the letter's delay
 QUEEN_TURNED = "melazmera.queen_gone"                  # merged Derived: the Queen betrayed, attacked, sulked or fled
@@ -96,6 +99,11 @@ MESSAGE = M + "message"              # her Chapter 5 stone read
 FED = M + "fed"
 FED_CULTISTS = M + "fed.cultists"    # Evil 1: the stockade's cultists (Ledger secret)
 FED_DEMONS = M + "fed.demons"
+HERD_INCURRED = M + "herd.incurred"
+HERD_SETTLED = M + "herd.settled"
+HERD_HONEST = M + "herd.honest"
+HERD_HIDDEN = M + "herd.hidden"
+HERD_PENDING = M + "herd.pending"
 FED_HERD = M + "fed.herd"            # forbidden: she took a Mendevian herd (Favors -50)
 SECRET_KEY = "melazmera_cultists"
 SECRET = "trickster.secret." + SECRET_KEY
@@ -126,6 +134,7 @@ RELATIONSHIP = dict(
 )
 
 DERIVED = {
+    HERD_PENDING: [[HERD_INCURRED, FED_HERD]],
     SEEN_THROUGH: [[LIFTED], [LIFTED_B]],
     HOARD_KNOWN: [[HOARD_TOLD], [LIFTED], [LIFTED_B]],
     # The Queen's six native outcomes, told apart for the harpy's news (beat.queen): the betrayal itself, a fight, a retreat.
@@ -134,7 +143,9 @@ DERIVED = {
     # 05 §2.5 voice note: she joins as a hoarder; what is in her hoard does not leave, and she says so.
     "melazmera.harem.voice.what_is_mine_stays": [[COMMITTED]],
 }
-SEEN_CUES = {HOARD_TOLD: ["ee90b60ecefa31f44aeb8a58c1e5ebab", "87aeec42d8aa3544093e3ff144a12e06"]}
+SEEN_CUES = {CREVICE: ["789960b4712abbe4b8b221eb8d45f935"],
+             SCREAM: ["bc35171dc7a75ff438693c3c1fb8f0e3"],
+             CAPTURED: ["cfc0a9dbb896ca04dae1c57fb9952704"], HOARD_TOLD: ["ee90b60ecefa31f44aeb8a58c1e5ebab", "87aeec42d8aa3544093e3ff144a12e06"]}
 SELECTED_ANSWERS = {HARPOONED: "f35d182506d00494293206a940bb5229"}
 UNLOCKABLE_FLAGS = {LIFTED: "47359cb2a981461db0c138fdc153bc9f", LIFTED_B: "3b2bba05723d42058469f9ecce3c22d0"}
 ETUDES = {CH5: "5b01aa690202e584888dfc600a4aac0a"}
@@ -213,25 +224,24 @@ SCENES.append(scene(M + "ch4.salt", "Salt the hoard", "Melazmera", 4, "", [
         c("Continue", "seen", requires=(SEEN_THROUGH,)),
         c("Continue", "told", forbids=(SEEN_THROUGH,))),
     nar("seen", '''{n}You have already seen through enough of the cave's disguises to know the trap. The bait lies by the entrance; the real treasure is at the back, where her body has worn a hollow into the floor. You keep your sleeve clear of the ledge and look for a gap in the heap.{/n}''',
-        c("Continue", "ring")),
-    nar("told", '''{n}The treasure glitters in the dark exactly as the Queen said: a staff with a golden bird on its head, a gown sewn with stones, a spill of fat round coins, and on a ledge of its own, a little crown, catching what light there is and holding it like a coin held out to a beggar. Everything in you that ever went through a stranger's pockets wants to pick it up.{/n}
-{n}You do not look at it. You look past it, to the back, to a hollow worn smooth by something enormous turning round and round before it slept, and the heap in it: grey stones, lumpy and dull, still faintly warm. Boring rocks. The Queen said so, and the Queen, for once, had no reason to lie.{/n}''',
-        c("Continue", "ring")),
+        c("Continue", "salt_real", requires=(LIFTED,)),
+        c("Continue", "salt_rocks", forbids=(LIFTED,))),
+    nar("told", '''{n}The staff, gown, coins and little crown glitter by the mouth. You leave them untouched. Behind them lies the dull heap the Queen described, with a deep hollow where the dragon sleeps. Rain hisses between you and the ledge.{/n}''',
+        c("Continue", "salt_rocks")),
     nar("ring", '''{n}You work the seal ring off your finger. It comes hard; it has not been off your hand since the day you were made Knight Commander, and every order that has gone out under your name since has carried its mark. It is the one thing you own that is entirely yours and entirely the Knight Commander's at once.{/n}
 {n}A dragon would know gold. A dragon would smell it from the roof. So you kneel at the edge of the hollow and dig your fingers into the cave's own floor, where the rain has made a grey clay of the rock-dust, and you roll the ring in it, and press it, and roll it again, until what sits in your palm is a lump the size of a walnut, grey, pitted, dull, warm from your hand. A boring rock.{/n}''',
         c("Continue", "heap")),
-    nar("heap", '''{n}The heap is a slope of stones as high as your chest. Somewhere under the top layer is the warm hollow where her belly lies; you can see the shape of it, and the long smooth groove where her tail curls. The bait's ledge is a stride behind you on the left, at the height of your elbow.{/n}
-{n}You would have to reach across the heap, past the ledge, and set your lump down among the real stones without dislodging a single one onto the floor, without brushing the ledge, without your sleeve or wrist brushing the bait's ledge. With a hand, and nerve, and nothing else.{/n}''',
-        *place('[Set it among the real stones] Reach in slowly, past the crown, and put it down as if it had always been there.', "set", "brush"),
+    nar("heap", '''{n}The hollow at the back is chest-high with treasure. Her belly has pressed a smooth dip into it; her tail has worn a groove beside it. You work along its edge, keeping your elbow below the bait's ledge. The warmth reaches through your sleeve.{/n}
+{n}One gap lies within reach. You must set the clay-covered seal there without shifting her possessions or touching the ledge behind your wrist.{/n}''',
+        *place('[Set it among the real stones] Reach past the bait ledge and put the clay-covered seal in the hollow.', "set", "brush"),
         c("[Not tonight.] Back away and put the ring on again.", abort=True)),
-    nar("set", '''{n}Your arm goes out over the heap. You keep your wrist clear of the ledge, lay the clay lump in a gap between two stones, and draw your hand back. The stones do not shift. Nothing comes down through the roof.{/n}
-
+    nar("set", '''{n}You lower the clay lump into the gap and ease your fingers free. Nothing shifts. Your sleeve clears the ledge. Nothing comes down through the roof.{/n}
 {n}Rain falls into the cave. Far out over the sea, something enormous is still hunting.{/n}''',
         c("Continue", "out")),
     nar("out", '''{n}You walk back to camp barefoot in the rain with your hand feeling wrong. Your finger keeps looking for the ring and finding skin. In the morning your quartermaster will have to cut a new seal, and the clerks will talk, and you will tell them it was lost in the Abyss, which is true.{/n}
 {n}Behind you, in a cave with a hole in its roof, among her real treasure, lies the Knight Commander's seal, looking like nothing. You wonder how long it will take her to notice. You wonder what she does when she finds one thing in her hoard that is not hers.{/n}''',
         c("[Go back to your blankets.]", flags=(SALTED, SEAL))),
-    nar("brush", '''{n}It is the ledge. Not the crown: the ledge, a lip of stone you did not see in the dark, and the back of your wrist grazes it on the way out, the lightest touch, the kind you would not feel on a crowded street.{/n}
+    nar("brush", '''{n}It is the ledge: a lip of stone you did not see in the dark, and the back of your wrist grazes it on the way out, the lightest touch, the kind you would not feel on a crowded street.{/n}
 {n}For one heartbeat you hear nothing but rain. Then the rain stops. It does not stop falling; it stops reaching you. Something has closed over the hole in the roof.{/n}''',
         c("Continue", "caught")),
     mz("caught", '''{n}She comes down through the roof like a shadow poured through a funnel, and the cave is suddenly full of her: plates the colour of a bruise, a neck that goes on and on, two scarlet eyes as big as shields, lit from inside. Her breath smells of cold iron and old fire. She does not roar. She looks at you, kneeling at her heap with your hand still out over it, and then she looks at the lump of clay under your fingers, and then she giggles.{/n}
@@ -248,6 +258,16 @@ SCENES.append(scene(M + "ch4.salt", "Salt the hoard", "Melazmera", 4, "", [
     last=4, Relationship=REL, Remote=True, Kind="event", Chapters=[4], Areas=[COLYPHYR],
     TricksterDevice=True, TricksterState="alive"))
 tag(M + "ch4.salt")
+_salt = SCENES[-1]
+_salt["Nodes"].extend([
+    nar("salt_real", "{n}Rubies and a blue sapphire shine in the hollow. You have stripped the disguise from her real treasure; the seal must still be hidden in clay. You keep your hands off the gems.{/n}",
+        c("Continue", "salt_bare_bait", requires=(LIFTED_B,)), c("Continue", "salt_shiny_bait", forbids=(LIFTED_B,))),
+    nar("salt_rocks", "{n}The heap still looks like grey rocks. The shallow hollow and the warmth rising from it mark her bed. You crouch beside it with the seal in your palm.{/n}",
+        c("Continue", "salt_bare_bait", requires=(LIFTED_B,)), c("Continue", "salt_shiny_bait", forbids=(LIFTED_B,))),
+    nar("salt_bare_bait", "{n}On the bait ledge, the little crown has become a lump of rock. Its spell has been exposed; its alarm has not been disarmed. You keep your sleeve clear.{/n}", c("Continue", "ring")),
+    nar("salt_shiny_bait", "{n}The little crown still gleams on its ledge. You look past it to the hollow. Let the glitter catch another thief.{/n}", c("Continue", "ring")),
+])
+
 
 
 # --- 3. Chapter 4 (T): the hunt. She comes looking for the giver at the next rest. -------------------------------------------
@@ -258,7 +278,7 @@ HUNT_BODY = [
 {n}On the smallest finger of her left hand, so loose it rattles, she wears your seal.{/n}''',
         c("Continue", "speech")),
     mz("speech", '''"Everything on this island that walks, I have eaten." {n}She reaches into your cook-pot with two fingers, fishes out a lump of salt pork, and eats it, still steaming. She does not seem to notice the heat.{/n} "Goats. Harpies. Diggers. Demons, when they are fat enough to be worth the bother. Everything that ever walked into my cave, I ate, and everything that walked into my cave had come to take something."
-"Nothing ever left me anything." {n}She holds up her hand and lets the ring slide down her finger and back.{/n} "Nothing, in all the years. And then you. You brought a ring into my cave and went out without it. I have not decided whether to eat you for it."''',
+"No thief ever left a present in my lair." {n}She holds up her hand and lets the ring slide down her finger and back.{/n} "They came for my stones. You brought your own. You brought a ring into my cave and went out without it. I have not decided whether to eat you for it."''',
         c("Continue", "swamp", requires=(PLAN,)),
         c("Continue", "why", forbids=(PLAN,))),
     mz("swamp", '''{n}She sniffs, delicately, in the direction of your boots.{/n} "You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep." {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} "I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to her."''',
@@ -282,7 +302,10 @@ HUNT_BODY = [
     mz("crew", '''"And then there is your ship." {n}She says it lightly, as if mentioning the weather on the day you met.{/n}''',
         c("Continue", "crew_ate", requires=(ATE,)),
         c("Continue", "crew_harpoon", requires=(HARPOONED,), forbids=(ATE,)),
-        c("Continue", "crew_missed", forbids=(ATE, HARPOONED))),
+        c("Continue", "crew_missed", requires=(CREVICE,), forbids=(ATE, HARPOONED)),
+        c("Continue", "crew_scream", requires=(SCREAM,), forbids=(ATE, HARPOONED, CREVICE)),
+        c("Continue", "crew_captured", requires=(CAPTURED,), forbids=(ATE, HARPOONED, CREVICE, SCREAM)),
+        c("Continue", "crew_unknown", forbids=(ATE, HARPOONED, CREVICE, SCREAM, CAPTURED))),
     mz("crew_ate", '''"I was hungry that night. Your little sky-ship came over the cliffs like a goose with a broken wing, and it was full of men who shouted and waved their swords, and their swords bounced." {n}She licks her thumb.{/n} "I ate until I was not hungry any more. Sailors are salty. I did not know then that one of the things in that ship was going to walk into my cave and put something in."
 {n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n} "If you have come to be angry about them, be angry quickly. I get bored."''',
         c("Continue", "truce")),
@@ -306,12 +329,12 @@ HUNT_BODY = [
         c('"You ate my crew off the deck of my ship. Now you owe me."', "owed", requires=(ATE,), flags=(OWED,)),
         c('"You wear our harpoon in your side. Call that even, and this a fresh start."', "owed", requires=(HARPOONED,),
           forbids=(ATE,), flags=(OWED,)),
-        c('"You chased my ship and missed. Call that my first gift, and this my second."', "owed", forbids=(ATE, HARPOONED),
+        c('"You chased my ship and missed. Call that my first gift, and this my second."', "owed", requires=(CREVICE,), forbids=(ATE, HARPOONED),
           flags=(OWED,)),
         c('[Call it rent] "Call it rent, for walking about your island."', "rent", flags=(RENT,)),
         c('"It was a mistake. I should have left you nothing."', "mistake")),
-    mz("owed", '''"Owe." {n}She rolls the word round her mouth as if it were a stone she had found in her supper.{/n} "Nobody has ever said that to me. People say please, and mercy, and no, and one of them said mother, which I thought was very rude." {n}The giggle.{/n}
-"I do not pay. I have never paid for anything. But I will come back to you, thief, and you can try to collect, and I will enjoy watching you try." {n}She looks down at you, and her eyes glow like two coals blown on.{/n} "Keep your fire lit. I like to see where things are."''',
+    mz("owed", '''"Owe." {n}She rolls the word round her mouth, then bares her teeth.{/n} "The horned one pays before her diggers go out. You leave a ring and come collecting afterwards. You have put your account the wrong way round, thief."
+{n}She bends close enough to smell your throat.{/n} "I will come back. You can try to collect. I want to see what you dare ask for with my mouth this close."''',
         c("[Watch her go.]", "leaves")),
     mz("rent", '''"Rent." {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} "You are paying me rent. For my island. With a ring."
 {n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} "The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery." {n}She wipes her eyes with one knuckle.{/n} "Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are."''',
@@ -324,6 +347,13 @@ HUNT_BODY = [
 "I will keep your mistake. It is mine now. Things in my hoard do not leave." {n}She walks out of the firelight, and does not come back into it.{/n}''',
         c("Continue", flags=(MISTAKE, STARTED, CLOSED))),
 ]
+
+# Authored responses to positive native voyage outcomes; no invented escape.
+HUNT_BODY.extend([
+    mz("crew_scream", '"Your ship screamed at me." {n}Her eyes narrow.{/n} "I heard something in it that I did not want in my mouth. Now I have followed its scent to a ring. You are quieter on the ground, thief."', c("Continue", "truce")),
+    mz("crew_captured", '"You arrived tied up in a dead captain\'s hold. I saw his men dragging their catch towards the mines." {n}She turns your seal.{/n} "You came for the stones; you found my ring. I like this voyage better."', c("Continue", "truce")),
+    mz("crew_unknown", '"Ships bring diggers to the horned one. Sometimes they bring my dinner." {n}She studies your hand.{/n} "But I found this in my cave. Tell me what you want for it."', c("Continue", "truce")),
+])
 
 HUNT_OPEN_COLYPHYR = nar("start", '''{n}You wake because the rain has stopped falling on you. It is still raining; you can hear it hissing on the rocks all round the camp, and beyond the fire it is still coming down in grey sheets. It has stopped only here, over you and the fire and the sentry on the near rock, as if something very large had spread a wing over the camp and was holding it there.{/n}''',
     c("Continue", "known", requires=(GREY_HAND,)),
@@ -339,7 +369,7 @@ def arrive_known(tail):
     """Her memory of the failed salt: the ring held out (grey fingers), or the fist she opened herself (fist_closed)."""
     return [
         mz("arrive_known", '''"You held it out," {n}she says, before she sits down.{/n} "You scraped the clay off with your thumb and offered me the ring. Then I put my claw on your hand, and two fingers went grey. You did not run."
-"Nobody pays me. They run, or they fight, or they pray." {n}She sounds genuinely puzzled.{/n} "I lay on my heap thinking about that, and I could not make it come out even. ''' + tail + '"',
+"You paid for nothing. Not passage, not a meal, not your life." {n}She turns the ring against her knuckle.{/n} "I lay on my heap wondering what you wanted. ''' + tail + '"',
             c("Continue", "arrive")),
         mz("arrive_fist", '''"You closed your fist," {n}she says, before she has even sat down.{/n} "In my cave. You came to give me a thing, and then with my claw on you, you would not let go of it, and I had to open your fingers myself, and they went grey while I did it."
 "That was the part I understood. Everything I have ever caught held on." {n}She sounds genuinely puzzled.{/n} "It was the rest I could not make come out even: that you came in with it at all. I lay on my heap thinking about it. ''' + tail + '"',
@@ -498,8 +528,9 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
     nar("start", '''{n}The moon is a paring over Drezen. You are awake when the shutter opens, which is as well, because she does not knock.{/n}
 {n}She comes in over the sill the way smoke comes in, in the woman she wears: tall, in the bruise-coloured gown, with the grey rock pressed down into her hair. The room is suddenly too small. Her shadow does not fit in it at all; it goes up the wall and across the ceiling and down the other side, and the candle on your desk bends away from it and stays bent.{/n}
 {n}She goes straight to your supper, which is on the desk, and eats it. All of it, bread and meat and the cheese rind and the bone, and then she looks at the plate as if considering it too.{/n}''',
-        c("Continue", "sister", requires=(HEPZ_BACK,)),
-        c("Continue", "city", forbids=(HEPZ_BACK,))),
+        c("Continue", "sister", requires=(HEPZ_BACK,), forbids=(FED_HERD,)),
+        c("Continue", "city", forbids=(HEPZ_BACK, FED_HERD)),
+        c("[Answer the cattle owner.]", "forbid_after", requires=(FED_HERD,))),
     mz("sister", '''"The horned one is walking about your city," {n}she says, with her mouth full.{/n} "In a new body. I smelt her from the roof. She smells of a jar and somebody else's blood, and she is eating onions by the smithy as if she had never been dead in her life."
 "Tell her I remember our truce. A fat slave every new moon." {n}She licks the last grease from her fingers.{/n} "She died without settling the account. I have a cave on your side now. She can send what she owes me there. It will spoil her onions."''',
         c("Continue", "city")),
@@ -530,11 +561,27 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
 "Very well. Not your prisoners, and not your city. I will find something that is not yours." {n}She looks back at you over her shoulder, and her eyes gleam.{/n} "You did not say anything about your friends' cows."''',
         c("Continue", "forbid_after")),
     nar("forbid_after", '''{n}Two days later a Mendevian lord who has lent the crusade two hundred spears writes to the Knight Commander in a hand shaking with fury. His whole herd, driven up from the south to feed his men, is gone from its pen outside the walls in a single night: forty head of cattle, the pen whole, the gate shut, the herdsmen asleep, and nothing left in the morning but a stink of cold iron and the drovers' dogs, who will not stop howling.{/n}
-{n}He wants to know what the Knight Commander means to do about it. He wants to know it in writing. You write something. It is not the truth.{/n}''',
-        c("Continue", flags=(FED, FED_HERD), crusade=("Favors", -50)))],
+{n}He wants to know what the Knight Commander means to do about it. He wants to know it in writing. His letter lies beside the empty supper plate. From the roof comes a satisfied belch.{/n}''',
+        c('[Lie] "Enemy action. The crusade will compensate your loss."', "herd_cover", flags=(FED, FED_HERD, HERD_SETTLED, HERD_HIDDEN), crusade=("Favors", -50)),
+        c('"The dragon took your herd. I will compensate you from the crusade chest."', "herd_honest",
+          flags=(FED, FED_HERD, HERD_SETTLED, HERD_HONEST), crusade=("Favors", -50)))],
     requires=("trickster.ever", MESSAGE), forbids=(FED, CLOSED), delay=48, last=5, Relationship=REL, Remote=True,
-    Kind="visit", Chapters=[5], Areas=[DREZEN]))
+    Kind="visit", Chapters=[5], Areas=[DREZEN], ForbidOverrides={FED: HERD_PENDING}))
 tag(M + "ch5.hunger")
+_hunger = SCENES[-1]
+next(x for x in _hunger["Nodes"] if x["Id"] == "forbid_after")["EnterSet"] = [FED, FED_HERD, HERD_INCURRED]
+next(x for x in _hunger["Nodes"] if x["Id"] == "cultists_after")["EnterSet"] = [FED, FED_CULTISTS, SECRET]
+_hunger_start = _hunger["Nodes"][0]
+_hunger_opening = _hunger_start["Text"]
+_hunger_start["Text"] = "{n}The war council has left your table buried in reports. The north road, the cellar stores, hungry mouths. You go upstairs with the last report still in your hand.{/n}"
+for _choice in _hunger_start["Choices"][:2]:
+    _choice["Next"] = "hunger_arrival"
+_hunger["Nodes"].append(nar("hunger_arrival", _hunger_opening,
+    c("Continue", "sister", requires=(HEPZ_BACK,)), c("Continue", "city", forbids=(HEPZ_BACK,))))
+_hunger["Nodes"].extend([
+    nar("herd_cover", '"A loss to enemy action." {n}The quartermaster reads your reply twice. The lord accepts compensation, but demands double pickets for his remaining stores. That night Melazmera drops a horn on your desk.{/n} "Enemy action. I like my new name."', c("Continue")),
+    nar("herd_honest", '{n}The lord\'s answer arrives with the receipt: his spears stay, but no more cattle will come within reach of your dragon. Melazmera reads it over your shoulder.{/n} "Forty cows, and he wants to keep all the others. Greedy." {n}She crunches the corner of the letter. You pull the receipt free before she eats that too.{/n}', c("Continue")),
+])
 
 household.secret(
     SECRET_KEY, "The empty cells",
@@ -579,8 +626,8 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
           requires=(SALTED,)),
         c("[Take the crown.]", "crown"),
         c("[Take nothing.]", "nothing")),
-    nar("stone", '''{n}You climb the heap. The stones shift and clack under your knees, warm as bread, and she does not move. You know which ones are real; you reached over the heap on Colyphyr, in the dark. You put your hand under hers, flat on the heap, and her fingers are cold as a well, and you slide out from under them one grey stone the size of a hen's egg, lumpy and dull and heavy for its size, and close your hand on it.{/n}
-{n}She watches it go. Her whole body goes tight, every line of her, the way a hound's does when you take its bone. Her lip comes back off her teeth. For three heartbeats you think she is going to take your hand off at the wrist.{/n}''',
+    nar("stone", '''{n}You climb the heap. The stones shift and clack under your knees, warm as bread, and she does not move. She taps a grey stone beneath her palm. You reach for that one. You put your hand under hers, flat on the heap, and her fingers are cold as a well, and you slide out from under them one grey stone the size of a hen's egg, lumpy and dull and heavy for its size, and close your hand on it.{/n}
+{n}She watches it go. Her whole body goes tight, every line of her, the way a hound's does when you take its bone. Her lip comes back off her teeth. You stop with your wrist beneath them. She presses her free hand into the heap, grinding the stones together, and holds still. You draw the sapphire clear.{/n}''',
         c("Continue", "yes")),
     mz("yes", '''{n}She lets out her breath. It comes out of her in a long hiss, and then, astonishingly, in a giggle, high and shaky, as if she had just jumped off something very tall and found she could fly.{/n}
 "I let you," {n}she says.{/n} "I let a thief walk off my heap with a piece of it in {mf|his|her} hand. I have never..." {n}She stops. She looks at her own empty hand as if it belonged to somebody else.{/n}
@@ -589,7 +636,8 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
         c('[Put the stone in your shirt, over your heart.]', "home")),
     mz("home", '''{n}She flies you back before the sky over the Wound has begun to go grey. On the roof of the keep she puts her head down so that you can slide off, and she does not lift it again at once.{/n}
 "Come back tomorrow night," {n}she says.{/n} "Come and lie on the heap. I want to see what my hoard looks like with you in it."''',
-        c("[Go down into the keep with the stone in your hand.]", flags=(COMMITTED, STONE_KEPT))),
+        c("[Let her see the sapphire in your pocket.]", flags=(COMMITTED, STONE_KEPT), requires=("trickster.now",)),
+        c("[Leave.]", abort=True, forbids=("trickster.now",))),
     mz("crown", '''{n}You walk down the cave to the ledge by the mouth and pick up the little crown. It is heavy and cold and bright, and it goes out in your hand like a snuffed candle. It is a rock, grey and ordinary, with a little glitter of mica on one side.{/n}
 {n}She does not move from the heap. She does not come home in the blink of an eye; she is home.{/n}
 "You took the lie," {n}she says, and she sounds tired, suddenly, and very old.{/n} "Everyone takes the lie. The dwarf took it, and the paladin, and the puddle would have if she could have reached. I thought you knew better. You did know better. You had your hand in my heap on Colyphyr."''',
@@ -607,7 +655,7 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
         c("Continue", "nothing2")),
     mz("nothing2", '''"I will fly you back. I am not rude. And I will keep your ring, because it is in my hoard, and things in my hoard do not leave." {n}She turns the ring on her finger.{/n} "But I will not come to your window again. I have a whole hole in the world to eat, and it will keep me busy for a very long time."''',
         c("[Go home.]", flags=(LEFT_FREE, CLOSED)))],
-    requires=("trickster.ever", FED), forbids=(COMMITTED, DECLINED, CLOSED), delay=48, last=5, Relationship=REL,
+    requires=("trickster.ever", "trickster.now", FED), forbids=(COMMITTED, DECLINED, CLOSED), delay=48, last=5, Relationship=REL,
     Remote=True, Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "commit.stone")
 
@@ -655,11 +703,12 @@ SCENES.append(scene(M + "hunt.shared", "What is real on this side", "Melazmera",
 {n}She lets you. Her whole body goes tight as a drawn bow while you do it, and then it lets go, and she laughs, high and shaky, with her face turned up to the roof of the cave.{/n}''',
         c("Continue", "stone2")),
     mz("stone2", '''"That one is a sapphire," {n}she says.{/n} "It came out of the crown of a king of a drowned country, and I have slept on it for two hundred years. You keep it, and I keep you. That is the bargain." {n}Her fingers close on your wrist.{/n} "There is no other bargain. Come back tomorrow night and lie on the heap. I want to see what my hoard looks like with you in it."''',
-        c("[Close your hand on the stone.]", flags=(COMMITTED, STONE_KEPT))),
+        c("[Close your hand on the stone.]", flags=(COMMITTED, STONE_KEPT), requires=("trickster.now",)),
+        c("[Leave.]", abort=True, forbids=("trickster.now",))),
     mz("leave", '''{n}She looks at you, and at your empty hands, and the light in her eyes goes down to embers.{/n}
 "Then you are not a thief," {n}she says.{/n} "You were only a guest. Guests go home." {n}She flies you back without another word, and puts you down on the roof of the keep, and is gone north before you have your feet under you. She does not come to your window again.{/n}''',
         c("[Go down into the keep.]", flags=(LEFT_FREE, CLOSED)))],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), delay=24, last=5, Relationship=REL,
+    requires=("trickster.ever", "trickster.now", DECLINED), forbids=(COMMITTED, CLOSED), delay=24, last=5, Relationship=REL,
     Remote=True, Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "hunt.shared")
 
@@ -691,7 +740,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
 "It is warm," {n}she says.{/n} "It was never warm from anything but me." {n}She puts it back into your shirt, very carefully, and pats it flat over your heart.{/n} "Keep it. That is the bargain. Do not ever give me back anything, thief. I will not know what to do and I will eat something."''',
         c("Continue", "threshold")),
     nar("threshold", '''{n}She bends down and kisses you the way she eats, as though she has been hungry for a very long time and does not care who knows it. Her teeth find the corner of your jaw, and then your throat, and then your shoulder, through the shirt, not gently, hard enough that you will find the marks of every one of them in the morning, too many and too even.{/n}
-{n}With claws that are fingers again she has your shirt open and then off, over your head, and flung somewhere down the heap among the rubies. Her gown does not come off. It goes out, the way the crown went out in your hand, all at once, and what is under it is a woman, long and dark and bare, with a sheen of purple along her flanks where the plates of her show through like the grain in a board, and her skin hot under your hands everywhere except where it is suddenly cold.{/n}''',
+{n}With claws that are fingers again she has your shirt open and then off, over your head, and flung somewhere down the heap among the rubies. Her gown does not come off. It goes out, like a snuffed candle, all at once, and what is under it is a woman, long and dark and bare, with a sheen of purple along her flanks where the plates of her show through like the grain in a board, and her skin hot under your hands everywhere except where it is suddenly cold.{/n}''',
         c("Continue", "harpoon", requires=(HARPOONED,)),
         c("Continue", "cut", forbids=(HARPOONED,))),
     nar("harpoon", '''{n}Under her ribs on the left side there is a welt the length of your forearm, pink and raised and newer than the rest of her. She sees you find it.{/n}
@@ -699,8 +748,8 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
         c("Continue", "cut")),
     nar("cut", '''{n}She pushes you back down into the stones with one hand flat on your chest, and settles astride your hips, and her hair comes down round your face like a tent, with the rock still in it, knocking against your brow. Behind her, all along the roof of the cave, her shadow spreads its wings.{/n}
 "Mine," {n}she says. Her other hand is already at your belt.{/n} "Say it, thief."''',
-        c('"Yours."', "morning"),
-        c("[Pull her down to you.]", "morning")),
+        c('"Yours."', M + "visit.heap.explicit.1"),
+        c("[Pull her down to you.]", M + "visit.heap.explicit.1")),
     nar("morning", '''{n}The light from the rift goes from red to grey when the sun comes up over the Wound, as if the fire down there were going to sleep. You wake in the hollow of the heap with a ruby pressing into your spine and every other stone in the place printed on your back, and a warm, enormous flank against your side that rises and falls like the sea.{/n}
 {n}She has taken off the woman in her sleep. She is curled round the whole heap in her own shape, with you in the middle of it, and her head on her forefeet, and your seal on her claw by your hand, glittering. One scarlet eye is open, watching you, and has been for some time.{/n}''',
         c("Continue", "count")),
@@ -713,8 +762,8 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
         c("Continue", "home", flags=(MORNING_STAYED,))),
     mz("go", '''"In one piece," {n}she agrees.{/n} "I do not want the pieces. I want the whole thing, with the talking still in it." {n}She lifts her head at last, and yawns, and it is like looking into a furnace full of knives.{/n} "Get on. I will take you back before your castle notices you are gone. Your castle notices everything. It is the most frightened building I have ever seen."''',
         c("Continue", "home")),
-    nar("home", '''{n}She puts you down on the roof of the keep with the sun barely up. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}
-{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. YOU LEFT YOUR BELT ON THE HEAP. IT IS MINE NOW.{/n}''',
+    nar("home", '''{n}She puts you down on the roof of the keep with the sun barely up. Before you can go, she hooks your belt round your waist and pulls you back against her. "You left this. I am keeping the seal. Take your belt." She bites your shoulder through the shirt, then lets go. You go down the stairs with your shirt on inside out and a stone in the pocket of it, a lumpy grey stone the size of a hen's egg, warm from lying against you all night, and it stays warm all morning, long after it should have cooled.{/n}
+{n}There is another stone on your windowsill when you get there, small and round, the clay on its corner still wet, the old seal pressed into it very carefully and very straight: FORTY ON THE HEAP. ONE IN YOUR POCKET. ONE SEAL. ONE COMMANDER. I HAVE MY SEAL. YOU HAVE YOUR BELT. DO NOT LOSE MY STONE.{/n}''',
         c("Continue", "dogs", requires=(GREY_ABSENT,)),
         c("[Go about your day.]", flags=(HEAP,), forbids=(GREY_ABSENT,))),
     nar("dogs", '''{n}When you cross the stable yard, every dog in it gets up and goes somewhere else. The old wolfhound that sleeps by the forge, who has never moved for anyone, crawls under the feed trough on his belly and will not come out, and whines, and the grooms look from him to you and back again and say nothing at all.{/n}''',
@@ -722,6 +771,10 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
     requires=("trickster.ever", COMMITTED), forbids=(HEAP, CLOSED), delay=24, last=5, Relationship=REL, Remote=True,
     Kind="visit", Chapters=[5], Areas=[DREZEN]))
 tag(M + "visit.heap")
+# Intimacy insert: her chosen predatory first night on her own hoard; preserve belt and morning continuity.
+SCENES[-1]["Nodes"].append(nar(M + "visit.heap.explicit.1",
+    "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones.{/n}",
+    c("Continue", "morning")))
 
 
 # --- 9. Reactions (named companions with a stake: Greybor, who would not take the contract on her and then carried her
@@ -762,15 +815,21 @@ tag(M + "react.nenio_specimen")
 EP = dict(last=6, Relationship=REL)
 SAC = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})   # H2 (Last Call's bottle) as well as the native endings
 COMMON = (
+    # Before round two, FED_HERD was produced only by the successful -50 payment.
+    p("{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}", requires=(FED_HERD,), forbids=(HERD_INCURRED,)),
+    p("{n}The inquisitor's report named the Commander as the one who gave seven prisoners to Melazmera. The acolyte carried the confession with the measurements of the untouched locks.{/n}", requires=(M + "beat.inquisitor_admitted",)),
+    p("{n}The inquisitor sent the measurements and the Commander's refusal to answer up the chain. A second copy stayed in the chapter room. The seven names remained in it.{/n}", requires=(M + "beat.inquisitor_refused",)),
+    p("{n}Compensation kept the cattle owner's spears in the crusade. The owner's letter named Melazmera. No more cattle came near Drezen until the war ended.{/n}", requires=(HERD_SETTLED, HERD_HONEST)),
+    p("{n}Forty cattle remained missing from the Mendevian lord's stores. The demand for compensation stayed on the war council's table, unanswered.{/n}", requires=(HERD_INCURRED,), forbids=(HERD_SETTLED,)),
     p("{n}The Knight Commander's orders went out under a new seal. Melazmera kept the old one on her claw. She had taken it on Colyphyr, and she did not give it back.{/n}", requires=(SEAL,)),
     p("{n}Two fingers of the Commander's ring hand stayed grey to the second knuckle for the rest of a long life, cold in summer and colder in winter, and never felt anything again. Healers looked at them and went away. The Commander said they had been tasted, and let people decide whether that was a joke.{/n}", requires=(GREY_HAND,)),
     p("{n}Across the Commander's back, from the shoulder nearly to the hip, ran a long pale scar, and when anyone asked, the Commander told them it was a dragon's tail, and they thought it was a lie, which pleased Melazmera very much.{/n}", requires=(LASHED,)),
     p("{n}In the cellars under the citadel of Drezen, the gaoler's book still says that seven of Deskari's faithful escaped one night in the war. The cellar was cold for a week afterwards. Nobody who works there goes down alone.{/n}", requires=(FED_CULTISTS,)),
-    p("{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}", requires=(FED_HERD,)),
-    p("{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}", requires=(M + "beat.inquisitor_reported",)),
+    p("{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}", requires=(HERD_SETTLED, HERD_HIDDEN)),
+    p("{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}", requires=(M + "beat.inquisitor_lied",)),
     p("{n}An inquisitor of Iomedae went down into the cellars under the citadel one morning in the war with a lamp, and did not come up. His acolyte left the order within the year, and would never say why, and would never go below ground again.{/n}", requires=(M + "cost.inquisitor",)),
-    p("{n}In the lower town of Drezen, for a generation, there were widows who paid for their bread in square-holed gold stamped with the face of a drowned king, and nobody could ever tell them where it had come from.{/n}", requires=(M + "beat.crew_paid",)),
-    p("{n}During the war, the airship captain told his harpoon story in a tavern by Drezen's gate with a boot painted on its door. A woman watched from the roof across the street. He never noticed her. His drinking companions learned to keep the shutters closed.{/n}", requires=(M + "beat.captain_spared",)),
+    p("{n}At the Alushinyrra docks, the dead sailors' kin received weighed gold through a factor who had kept the voyage's hiring record. His fee came out of Melazmera's sack. They knew whose gold it was. They had refused to let her land on their quay.{/n}", requires=(M + "beat.crew_paid",)),
+    p("{n}During the war, the harpoon captain told the story in the Midnight Isles. Once, a dragon settled above the drinking-house and listened. A stone bearing the Commander's answer reached the roof. Melazmera left the captain alive. The shutters stayed closed until she flew back through the Wound.{/n}", requires=(M + "beat.captain_spared",)),
     p("{n}On Colyphyr, the Fulsome Queen wore a grey rock on her head and called it the Knight Commander's crown. When it slipped into her pool, she sent her knights in after it. They came out stinking, and she made them bow.{/n}", requires=(M + "queen_crowned",), forbids=("melazmera.fq_betrayed", "melazmera.queen_fought")),
 )
 
@@ -778,12 +837,12 @@ SCENES.append(scene(M + "epilogue.together", "", "MelazmeraEpilogue", 6, "", [
     nar("page", '''{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}
 {n}Her heap stayed forty stones, and the forty-first went about in the Commander's pocket, and the seal stayed on her claw, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}
 {n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}''',
-        paragraphs=(p("{n}When the Wound closed, the rifts went cold and her easy hunting ended. She complained for a year, then began flying north to hunt in the cold country. She always came back to the heap.{/n}", requires=("ending.wound_closed",)),
+        paragraphs=(p("{n}When the Wound closed, the rifts went cold and her easy hunting ended. She complained for a year, then began flying north to hunt in the cold country. She always came back to the heap. On the nights the Commander waited there, she folded down beside the hollow, blood still at her mouth, and demanded to see the sapphire before pulling the thief against her.{/n}", requires=("ending.wound_closed",)),
                     p("{n}The Wound did not close. The rifts along the northern edge stayed open, and things went on coming up out of them warm, and she went on eating them, and the pickets on the north road learned to sleep through the screaming.{/n}", forbids=("ending.wound_closed",)),
                     *COMMON,
                     p("{n}The grey stone the size of a hen's egg lived in the Commander's pocket for the rest of the Commander's life. It was a sapphire from the crown of a drowned king, and it never once looked like anything but a boring rock, and it was never once cold.{/n}", requires=(STONE_KEPT,)),
                     p("{n}Greybor kept refusing Melazmera's coin. She kept offering it. He told the watch to stop sending her to him. She asked for him by name the next time.{/n}", requires=(GREY_WARY,)),
-                    p("{n}On the morning the Commander rode out to the last battle, there was a flat grey stone on the windowsill with four words scored into it: ONE PIECE. I COUNT.{/n}"),
+                    p("{n}On the morning the Commander rode out to the last battle, there was a flat grey stone on the windowsill with four words scored into it: ONE PIECE. I COUNT.{/n}", requires=(M + "stone.shirt",)),
                     p("{n}She wore a worn copper coin on a thread round the woman's neck, the kind that buys half a loaf, and when she was angry she bit it. She never said where it came from. A beggar by the well in the lower town of Drezen could have told, and slept badly for a year, and then very well for the rest of her life.{/n}", requires=(M + "beat.copper_kept",)),
                     p("{n}She never learned to share her hoard, and she never pretended to. What was hers was hers, and she said so, often, to anyone standing near the Commander.{/n}")))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DEAD, "sacrifice"), **SAC, **EP))
@@ -820,13 +879,16 @@ SCENES.append(scene(M + "epilogue.closed", "", "MelazmeraEpilogue", 6, "", [
 tag(M + "epilogue.closed")
 
 SCENES.append(scene(M + "epilogue.mourned", "", "MelazmeraEpilogue", 6, "", [
-    nar("page", '''{n}Word came up the north road that the Knight Commander had given everything at the end and had not come back. For three nights the pickets on the north road heard nothing from the north at all, not a scream, not a wing, and did not understand why, and were afraid.{/n}
-{n}On the fourth night a dragon came down over Drezen and landed on the roof of the keep, and the whole city lay awake under her and listened to her walk up and down the leads, up and down, until dawn, looking for something to count.{/n}''',
+    nar("page", '''{n}Word reached Melazmera that the Knight Commander had given everything at the end and had not come back.{/n}
+{n}On the fourth night a dragon landed on the roof of Drezen's keep. The whole city lay awake and listened to her walk up and down the leads until dawn, looking for something to count.{/n}''',
         paragraphs=(
+            p("{n}The Wound had closed. Her cave was cold; nothing came up from below. She lay on the stones and counted them, then began again.{/n}", requires=("ending.wound_closed",)),
+            p("{n}The Wound stayed open. For three nights the pickets heard the things below her cave screaming unhunted. On the fourth, she left for Drezen.{/n}", forbids=("ending.wound_closed",)),
             p("{n}She had said that if the war ate the Commander she would find what was left and put it on the heap anyway. There was nothing left to find. She took the Commander's old boots from the room under the roof instead, and nobody tried to stop her, and they are on the heap still, between a ruby and a lump of star.{/n}", requires=(HEAP,)),
             p("{n}The seal on her claw stayed there. She bit the gold when anyone spoke of the Commander. She did not give it back.{/n}", requires=(SEAL,)),
         ))],
-    requires=("trickster.ever", RETURNED, "sacrifice"), forbids=("trickster.commander_back", MISTAKE, DEAD), **EP))
+    requires=("trickster.ever", RETURNED, "sacrifice"), forbids=("trickster.commander_back", MISTAKE, DEAD, CLOSED, LEFT_FREE, DECLINED),
+    ForbidOverrides={DECLINED: COMMITTED}, **EP))
 tag(M + "epilogue.mourned")
 
 
@@ -848,6 +910,7 @@ def integrate(payload):
     """Register her own native reads (the Queen's hoard cues, the lair's lifted illusions, the harpoon, the Chapter 5 latch),
     her Derived keys and her portrait fallback. Scenes are added by expansion.py; the merged world keys (melazmera_dead,
     melazmera.ate_sailors, greybor., hepzamirah.dead, nenio....) bind on demand in trickster_world."""
+    payload.setdefault("DerivedForbids", {})[HERD_PENDING] = [HERD_SETTLED]
     _bind(payload, "SeenCues", SEEN_CUES)
     _bind(payload, "SelectedAnswers", SELECTED_ANSWERS)
     _bind(payload, "UnlockableFlags", UNLOCKABLE_FLAGS)

@@ -1,0 +1,29 @@
+{
+  "voice": "MELAZMERA: authored speaking voice inferred from native predation and the Fulsome Queen's report, not recovered dialogue. Territorial, greedy, amused by danger, blunt about appetite; short imperatives, concrete possessions, cruel humour, impatient grip. Affection does not make her good. Write new dialogue; do not repeat sentences from this brief. Avoid therapy language, maxims, narrator moral interpretation and generic seductress voice.",
+  "facts": [
+    "Native: female umbral dragon of Colyphyr; Huge dragon unit 85c7a3fd80f93db43a3e588ba5f5f9bc, no native spoken dialogue.",
+    "Native: deceptive hoard, real treasure disguised as rocks (FulsomeQueen Cue_0078/0079).",
+    "Native report: eats souls, giggles, chewed the Queen (Cue_0102).",
+    "Native conditional history: harpoon pierced hide only if AirAdventures Cue_0231 occurred; native evidence specifies neither side nor scar dimensions."
+  ],
+  "scene": "Authored romance situation, not native anatomy or biography: Chapter 5, her rift-edge hoard after commitment, first night only. Commander and Melazmera, both actively choosing closeness. She is physically folded into the established woman shape with an illusory gown already extinguished; warm skin and patches of cold plate belong to authored route staging. High-level subject: mutually chosen sexual consummation of their first night; the brief supplies no graphic act description. Intimacy insert after legacy visit.heap/cut and its two affirmative answers, before morning. Keep the encounter non-graphic in this brief/example/default. Required beats: her own initiating appetite and possessive humour; reciprocal desire shown in action; awareness of the stones beneath them and the missing sapphire; the belt left behind for her to return at the roof landing; a quiet ending into sleep, with no new vow or effect. The Commander's chosen reply already occurred; do not supply a new quoted Commander answer. Do not add eating the Commander, injury mechanics, coercion framed as love, dragon-form sexual action, third-party arrival, drunken incapacity or soul bargain. Morning alone reveals that she let the disguise lapse during sleep. Optional grey fingers or harpoon scar must stay in their already-conditioned surrounding nodes; do not mention them unconditionally in the common insert.",
+  "last_line": "N: Above the heap, the shadow of her wings covers the stones.",
+  "speakers": {
+    "M": "Melazmera"
+  },
+  "example": "N: Her fingers close over your belt before it slips between the stones.\nM: Leave that where I can find it.",
+  "commander": "the Commander; no assumed gender or anatomy",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18,
+  "slot_id": "melazmera.trickster.visit.heap.explicit.1",
+  "default_text": "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones.{/n}",
+  "continuity": {
+    "from": "melazmera.trickster.visit.heap/cut, existing choices 0 and 1",
+    "to": "melazmera.trickster.visit.heap/morning",
+    "flags": "No new flag, cost, gate or relationship effect. Preserve existing HEAP completion producers at home/dogs."
+  }
+}
