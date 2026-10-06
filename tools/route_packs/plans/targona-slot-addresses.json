@@ -1,0 +1,28 @@
+{
+  "targona.the_open_threshold.explicit.1": {
+    "scene": "targona.the_open_threshold",
+    "node": "buckles",
+    "source_mapping": "storylines/targona_opening.py:EXPLICIT_PARAGRAPHS",
+    "kind": "unconditional named paragraph within Text",
+    "note": "Replace the source mapping value; preserve surrounding staging, aftermath and legacy exit."
+  },
+  "targona.trickster.after.quiet_ward.explicit.1": {
+    "scene": "targona.trickster.after.quiet_ward",
+    "node": "targona.trickster.after.quiet_ward.explicit.1"
+  },
+  "targona.trickster.after.ward.explicit.1": {
+    "scene": "targona.trickster.after.ward",
+    "node": "targona.trickster.after.ward.explicit.1"
+  },
+  "targona.trickster.epilogue.commit.explicit.1": {
+    "scene": "targona.trickster.epilogue.commit",
+    "node": "end",
+    "source_mapping": "storylines/targona_trickster.py:EXPLICIT_PARAGRAPHS",
+    "kind": "unconditional named paragraph within Text",
+    "note": "Replace the source mapping value; preserve surrounding staging, aftermath and legacy exit."
+  },
+  "targona.ward_evening.explicit.1": {
+    "scene": "targona.ward_evening",
+    "node": "targona.ward_evening.explicit.1"
+  }
+}

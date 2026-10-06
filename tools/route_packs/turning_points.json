@@ -177,5 +177,37 @@
   "chapter": [
    5
   ]
+ },
+ "targona": {
+  "device_class": "isolation_via_canon_events",
+  "setting": "Drezen field infirmary, pikeman's cot and stove through the shared dawn vigil",
+  "payoff_shape": "healer chooses desire during the watch and returns to her patients",
+  "canon_hooks": [
+   {
+    "guid": "40db6d5fb81320444bdefd6631ea54e4",
+    "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/Cue_0023.jbp",
+    "key": "09b8c2fc-3929-46bc-a366-c1ce97567f06",
+    "native_excerpt": "\"I believe this is a test for me. A hard test, but a necessary one. If you believe that I am guilty of weakness and that this profane gift must be destroyed — act as you see fit.\" {n}The angel lowers her head.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "594b8f760f82bf946b384c932917e5f6",
+    "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/Cue_0049.jbp",
+    "key": "dbef5f8d-c6c9-4705-8558-d59d82ca5dce",
+    "native_excerpt": "\"I heard, or rather pieced together from what I overheard, that the soul... belonged to a child. Areelu, like many demons and demonic spellcasters, has the ability to wrest souls from their bodies and contain them in special vessels. The vessel containing that soul was delivered to the laboratory soon after I was brought here. Areelu was unusually distressed that day. She talked to me more than usual — that's when I learned the details of her pla",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "afc32621ab47fd64c93e2c04e9ad86a9",
+    "path": "World/Dialogs/c3/Drezen_C3/Herald/Cue_0126.jbp",
+    "key": "7e81cbb1-6f06-4f31-b5f0-f960513e488a",
+    "native_excerpt": "\"Targona, my brave sister-in-arms, has returned to the halls of Heaven now. Her imprisonment was a heavy burden for her... The corrupted wing that the witch Areelu 'rewarded' her with is poisoning Targona's days with fear and worry. But she is being cared for by the finest healers in Heaven. I have faith and hope that we will be able to help her.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
  }
 }
