@@ -10,7 +10,7 @@ E = W + "echo.abyss."
 class WenduagPolishTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads(Path(__file__).resolve().parents[1].joinpath("development/Story.json").read_text())
+        cls.story = json.loads(Path(__file__).resolve().parents[1].joinpath("development/Story.json").read_text(encoding="utf-8"))
         cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
 
     def node(self, suffix, id):
