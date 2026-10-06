@@ -108,7 +108,9 @@ def play(model_, s, st, rel_flags, p=None):
     for k in after.get(s["Id"], []): st.flags.add(k); st.times.setdefault(k, st.hour)
     LOG.append(dict(rel=s["Relationship"], id=s["Id"], title=s.get("Title"), ch=st.chapter, day=st.hour // 24 + 1,
                     remote=V.is_remote(s), delay=s["DelayHours"], completed=ok,
-                    choices=[dict(text=c["Text"], check=c.get("Check") and {k: c["Check"][k] for k in ("Skill", "DC") if k in c["Check"]},
+                    choices=[dict(node=next(n["Id"] for n in s["Nodes"] if any(x is c for x in n["Choices"])),
+                                  index=next(i for n in s["Nodes"] for i, x in enumerate(n["Choices"]) if x is c),
+                                  text=c["Text"], check=c.get("Check") and {k: c["Check"][k] for k in ("Skill", "DC") if k in c["Check"]},
                                   commander=bool(c.get("Check") and c["Check"].get("CommanderOnly")), set=c["Set"]) for c in p[1]]))
     return ok
 V.sim_play = play
