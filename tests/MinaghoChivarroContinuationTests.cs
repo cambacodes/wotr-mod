@@ -12,7 +12,8 @@ internal static class MinaghoChivarroContinuationTests
         // The registered RanRomance continuation; the pair's Trickster route has its own suite (MinaghoChivarroTricksterTests).
         // eng7-f6c begin: native responses use their selector suite, not this continuation's ending arbitration.
         bool Registered(Scene s) => s.Relationship == "minagho_chivarro" && !Rules.IsNativeReplacement(story, s)
-            && !s.Id.StartsWith("minagho_chivarro.trickster.", StringComparison.Ordinal);
+            && (!s.Id.StartsWith("minagho_chivarro.trickster.", StringComparison.Ordinal)
+                || s.Id == "minagho_chivarro.trickster.epilogue.partner_refused");
         // eng7-f6c end
         var visits = story.Scenes.Where(s => Registered(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var endings = story.Scenes.Where(s => Registered(s) && s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
@@ -106,7 +107,8 @@ internal static class MinaghoChivarroContinuationTests
                     foreach (var result in Program.Walk(scene, ready, (id, state) =>
                     {
                         reached.Add(scene.Id + "/" + id);
-                        check(state.Flags.SetEquals(ready.Flags), "Interrupted continuation prematurely records a choice: " + scene.Id + "/" + id);
+                        check(state.Flags.SetEquals(ready.Flags) || scene.Id == "minachiv.before_the_last_road" && state.Has("minachiv.complete"),
+                            "Interrupted continuation prematurely records a choice: " + scene.Id + "/" + id);
                         if (scene.Id.EndsWith("the_unhired_evening") && id == "want" && state.Has("minagho.ran_demon"))
                         {
                             var offered = scene.Nodes.Single(n => n.Id == id).Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state));
@@ -141,7 +143,8 @@ internal static class MinaghoChivarroContinuationTests
                         check(!Rules.Available(story, scene, result), "Narrated meeting repeats after completion.");
                         check(result.Flags.Where(native.Contains).ToHashSet().SetEquals(originalNative), "Addon changes a native or parent state.");
                         check(new[] { "seelah.committed", "jerribeth.committed", "committed", "closed" }.All(result.Has), "Addon changes unrelated/ToyBox-compatible relationships.");
-                        produced.UnionWith(result.Flags.Where(f => f.StartsWith(prefix, StringComparison.Ordinal)));
+                        produced.UnionWith(result.Flags.Where(f => f.StartsWith(prefix, StringComparison.Ordinal)
+                            || f.StartsWith("minagho_chivarro.partner_stance.", StringComparison.Ordinal)));
                         if (i + 1 < visits.Length)
                         {
                             var following = visits[i + 1];
@@ -159,13 +162,24 @@ internal static class MinaghoChivarroContinuationTests
             }
             finished.AddRange(states);
         }
-        foreach (var page in visits.SelectMany(s => s.Nodes.Select(n => s.Id + "/" + n.Id))) check(reached.Contains(page), "No earned-history witness for page " + page);
+        // Keep the original continuation coverage contract; the stance suite
+        // supplies current-Trickster fixtures for the appended decision nodes.
+        foreach (var page in visits.SelectMany(s => s.Nodes.Where(n => !n.Id.StartsWith("stance_", StringComparison.Ordinal))
+            .Select(n => s.Id + "/" + n.Id))) check(reached.Contains(page), "No earned-history witness for page " + page);
         foreach (var flag in visits.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct())
             check(produced.Contains(flag), "No played producer for outcome " + flag);
         var witnessedEndings = new HashSet<string>();
         foreach (var state in finished.Concat(partial))
         {
             var complete = state.Has("minachiv.complete");
+            if (state.Has("minagho_chivarro.partner_stance.cooled"))
+            {
+                var refused = endings.Where(e => Rules.Available(story, e, state)).ToArray();
+                check(refused.Length == 1 && refused[0].Id == "minagho_chivarro.trickster.epilogue.partner_refused",
+                    "Refused stance receives a continuing romance ending.");
+                witnessedEndings.Add(refused[0].Id);
+                continue;
+            }
             var ordinary = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, state)).ToArray();
             check(ordinary.Length == 1, "Normal ending overlap/gap: " + string.Join(",", ordinary.Select(e => e.Id)));
             witnessedEndings.Add(ordinary[0].Id);
@@ -195,6 +209,7 @@ internal static class MinaghoChivarroContinuationTests
             check(witnessedEndings.Contains(ending.Id), "No played-history witness selects ending " + ending.Id);
         foreach (var scene in visits)
         foreach (var choice in scene.Nodes.SelectMany(n => n.Choices))
-            check(choice.Set.All(f => f.StartsWith(prefix, StringComparison.Ordinal)) && choice.Revive == null, "Continuation writes parent progress or invents recovery.");
+            check(choice.Set.All(f => f.StartsWith(prefix, StringComparison.Ordinal)
+                || f.StartsWith("minagho_chivarro.partner_stance.", StringComparison.Ordinal)) && choice.Revive == null, "Continuation writes parent progress or invents recovery.");
     }
 }

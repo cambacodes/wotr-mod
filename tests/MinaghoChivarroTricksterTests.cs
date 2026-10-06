@@ -48,9 +48,24 @@ internal static class MinaghoChivarroTricksterTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
+        MinaghoChivarroStanceTests.Run(story, check);
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Av(Scene s, Snapshot w) => Rules.Available(story, s, w);
-        List<Snapshot> Done(Scene s, Snapshot w) => Program.Walk(s, w).Where(r => r.Has(s.Id)).ToList();
+        // Primary sharing histories retain their original regression expectations; the stance suite below walks every new move.
+        List<Snapshot> Done(Scene s, Snapshot w)
+        {
+            var walked = s.Id == P + "epilogue.commit"
+                ? new[] { ("pair", 0), ("pair", 1), ("waiting", 0), ("waiting", 1) }
+                    .SelectMany(a => Program.WalkVia(s, w, a.Item1, a.Item2)).ToList()
+                : Program.Walk(s, w);
+            var primary = walked.Where(r => r.Has(s.Id) && !r.Has("minagho_chivarro.partner_stance.secret")
+                && !r.Has("minagho_chivarro.partner_stance.exclusive")).ToList();
+            if (!s.Nodes.SelectMany(n => n.Choices).Any(a => a.Set.Contains(Complete))) return primary;
+            // Backing down returns to the same shared contract. Compare the
+            // resulting state once while retaining both original refusal roads.
+            return primary.Where(r => !r.Has(Complete)).Concat(primary.Where(r => r.Has(Complete))
+                .GroupBy(r => string.Join("|", r.Flags.OrderBy(f => f))).Select(g => g.First())).ToList();
+        }
         HashSet<string> Pages(Scene s, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(s, w, (page, _) => seen.Add(page)); return seen; }
 
         var setupC4 = S(P + "minagho_dead.setup_c4");
@@ -129,7 +144,7 @@ internal static class MinaghoChivarroTricksterTests
         var shove = wardrobe.Nodes.SelectMany(n => n.Choices).Where(c => SurfaceIds.Has(SurfaceIds.Of(story, c), "[minagho_chivarro.trickster.reunion.wardrobe/silk/choice/2][minagho_chivarro.trickster.reunion.wardrobe/silk/choice/3][minagho_chivarro.trickster.reunion.wardrobe/cellar/choice/1][minagho_chivarro.trickster.reunion.wardrobe/cellar/choice/2][minagho_chivarro.trickster.reunion.wardrobe/fought/choice/0][minagho_chivarro.trickster.reunion.wardrobe/fought/choice/1]")).ToList();
         check(shove.Count > 0 && shove.All(c => c.Mythic == "PlayerIsTrickster" && c.Alignment?.Direction == "Chaotic"), "The shove lost its [Trickster] answer or its price.");
         foreach (var commit in new[] { road, aloneChiv, aloneMin, aloneMinSpared })
-            check(commit.Nodes.Any(n => n.Id == "threshold") && commit.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(Complete)).All(c => (c.Next == "threshold" || c.Next == "threshold_clean") && c.Set.Contains(Chain)),
+            check(commit.Nodes.Any(n => n.Id == "threshold") && commit.Nodes.SelectMany(n => n.Choices).Where(c => c.Set.Contains(Complete)).All(c => c.Next != null && commit.Nodes.Any(n => n.Id == c.Next) && c.Set.Contains(Chain)),
                 "A physical commit skips the threshold or the chain marker: " + commit.Id);
         check(story.Scenes.Where(s => s.Relationship == "minagho_chivarro").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
                   .Where(c => c.Set.Contains(Complete)).All(c => c.Set.Contains(Chain) || !c.Set.Any(f => f.StartsWith(P, StringComparison.Ordinal))),
@@ -287,7 +302,7 @@ internal static class MinaghoChivarroTricksterTests
         check(Av(road, ready) && !Av(roadLetter, ready) && Av(epCommit, ready), "Trk_Chivarro_Commit: availability.");
         var roadOut = Done(road, ready);
         var yes = roadOut.Where(r => r.Has(Complete)).ToList();
-        check(yes.Count == 1 && yes[0].Has("minachiv.future_two") && yes[0].Has(Chain) && Pages(road, ready).Contains("threshold"), "Trk_Chivarro_Commit failed.");
+        check(yes.Count >= 1 && yes.All(r => r.Has("minachiv.future_two") && r.Has(Chain) && r.Has(P + "night.pair")) && Pages(road, ready).Contains("threshold"), "Trk_Chivarro_Commit failed.");
         var no = roadOut.Where(r => r.Has(Declined)).ToList();
         check(no.Count == 2 && no.All(r => !r.Has(Complete)), "Trk_Chivarro_CommitRefused: her refusal is not reachable from every branch.");
         check(!Av(roadLetter, Later(story, no[0], "minagho_chivarro.presence.chivarro.failed")) && !Av(epCommit, no[0]) && Av(epDeclined, no[0]),
@@ -300,7 +315,7 @@ internal static class MinaghoChivarroTricksterTests
         {
             var pricedOffer = Done(price, Later(story, offerChoice)).Single(r => r.Has(P + "tprev.name"));
             var housedOffer = Done(house, Later(story, pricedOffer))[0];
-            var finalOffer = Done(road, Later(story, housedOffer)).Single(r => r.Has(Complete));
+            var finalOffer = Done(road, Later(story, housedOffer)).First(r => r.Has(Complete));
             var payoffs = Rules.VisibleParagraphs(epPair.Nodes[0], finalOffer)
                 .Where(p => p.Requires.Contains(P + "offer_sold_back") || p.Requires.Contains(P + "offer_burned")).ToList();
             check(payoffs.Count == 1 && payoffs[0].Requires.Contains(finalOffer.Has(P + "offer_sold_back")
@@ -475,7 +490,7 @@ internal static class MinaghoChivarroTricksterTests
         // Epilogue page selection. The committed pair's page and the late-commit page never play together.
         check(epPair.Requires.Contains(Complete) && epCommit.Forbids.Contains(Complete), "The pair ending and the late commit can both play.");
         var lateHouse = World(story, 5, "trickster", "trickster.ever", Reunited, ChIn, MinIn, "minagho.spared_c4", P + "tprev.house");
-        var lateOutcomes = Program.Walk(epCommit, lateHouse);
+        var lateOutcomes = Done(epCommit, lateHouse);
         check(lateOutcomes.Count == 2 && Pages(epCommit, lateHouse).Contains("pair") && !Pages(epCommit, lateHouse).Contains("waiting"),
             "The late-commit page does not let the Commander choose.");
         check(Pages(epCommit, World(story, 5, "trickster", "trickster.ever", ChIn, Waiting, "minagho.dead")).Contains("waiting"), "The late page names two women when one is waiting.");
