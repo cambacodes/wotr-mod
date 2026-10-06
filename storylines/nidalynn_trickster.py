@@ -1,4 +1,4 @@
-"""Nidalynn on the Trickster path: "The egg the golems counted as floor", built as "Out in the ash" (Writer/handoffs/11-ROSTER-PLAN-2.md §2, binding;
+"""Nidalynn on the Trickster path: "Out in the ash" (Writer/handoffs/11-ROSTER-PLAN-2.md §2, binding;
 spec Writer/handoffs/trickster/nidalynn.md for canon and hooks only: its cheese appraisal, chalk label, Fye presence,
 riddle test and priced second ask are dropped).
 
@@ -342,7 +342,7 @@ steps(P + "steps.widow", "The widow on the steps", "[Sit down on the step beside
     nd("nice", '''"Pft." {n}The corner of her mouth moves. For a heartbeat the widow is gone and somebody much older is enjoying herself.{/n} "Well. At least you listen."''',
         c("Continue", "rock")),
     nd("rock", '''"The Commander's rock." {n}She says it the way the sergeants say it, with the same expression your steward uses.{/n} "The whole citadel talks about it. It sits in your hearth and burns anyone who touches it, and at night it sings. The laundress on the second floor hears it through the flue. The laundress thinks it's a ghost."
-{n}She turns her head and looks at you, and she has very pale eyes for a Sarkorian, grey with no brown in them at all.{/n} "It isn't a ghost. What is it?"''',
+{n}She turns her head and looks at you, and she has very pale eyes for a Sarkorian, grey with no brown in them at all.{/n} "And it needs turning. A quarter-turn, with the seam away from the coals." {n}Her needle stops. You have never told the laundress about a seam.{/n} "Oh, don't look so pleased. Bring me up to it before your steward tries turning it with a poker. What is it?"''',
         c('"A rock."', "lie", flags=(TOLD_ROCK,)),
         c('"A woundwyrm egg. I took it out from under the golems in the Ivory Sanctum."', "truth", flags=(TOLD_EGG,), forbids=(VAULT, STRAW)),
         c('"Who\'s asking?"', "who", flags=(TOLD_NOTHING,)),
@@ -490,18 +490,22 @@ SALT_PARAGRAPHS = (
     p('''{n}The saddler whose name the Commander said at the fire below the east wall was never written down anywhere. Nine thousand, four hundred and some other names were never written down either. She kept them all, and taught the Commander one a night, when neither of them could sleep.{/n}''',
       requires=(P + "wake.name_said", COMMITTED), forbids=GONE),
     p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. Once a year a scale the colour of eggshell was left on the Commander's windowsill, the way a creditor leaves a card. Nidalynn said that was only manners, and that dragons have excellent manners when they are owed something.{/n}''',
-      requires=(DV_BILL, COMMITTED), forbids=("devarra.lastcall.called", *GONE)),
+      requires=(DV_BILL, COMMITTED, "devarra.present_now"), forbids=("devarra.lastcall.called", *GONE)),
     BILL_RECORD[1],   # named at the rift: the same record, then what it cost at home
     p('''{n}Nidalynn kept the kiln banked high every winter the Commander was away on the ridge, and fed the Commander for a week when the Commander came back thinner. "Eat first," she said, every year, and put the bowl down. "Then tell me what she had you do."{/n}''',
-      requires=(COMMITTED, DV_BILL, "devarra.lastcall.called"), forbids=GONE),
+      requires=(COMMITTED, DV_BILL, "devarra.lastcall.called", "devarra.present_now"), forbids=GONE),
 )
 
+# Historical debt persists after departure; it does not make the creditor visit.
+SALT_PARAGRAPHS = (*SALT_PARAGRAPHS, p(BILL_RECORD[0]["Text"],
+    requires=(DV_BILL, COMMITTED), forbids=("devarra.lastcall.called", "devarra.present_now", *GONE)))
+
 epilogue("salt", '''{n}Nidalynn stayed in Drezen after the war, in the old lime-kiln below the east wall, which she roofed with slate and never once let cool. The refugees who stayed called her the widow long after she stopped looking like one, and brought her their disputes, their broken bones and their bread, and she fed every one of them before she let them talk.{/n}
-{n}She was never in a hurry. The Commander learned that it was not patience, exactly. It was that she had already decided, and she saw no reason to rush the part she was enjoying.{/n}''',
+{n}She was never in a hurry. The Commander learned that it was not patience, exactly. It was that she had already decided, and she saw no reason to rush the part she was enjoying. When the Commander came home, she cleared the lime sacks from their bed herself. The next morning she opened the kiln door late, with her braid loose and no apology for it.{/n}''',
          requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), paragraphs=(*EPILOGUE_PARAGRAPHS, *SALT_PARAGRAPHS), **ALIVE)
 
 epilogue("late", '''{n}The war ended before the young dragon was ready to fly. It flew in the spring after Threshold, off the kiln roof, badly, and then well, and circled Drezen three times shrieking while the whole city came out to point.{/n}
-{n}That evening a tall woman with a white braid came up the citadel stair with a loaf of bread, a knife and a little salt folded in a paper, and put them on the Commander's table without a word, and sat down to wait. She was not in any hurry. She had waited for worse things, and much longer.{/n}''',
+{n}That evening a tall woman with a white braid came up the citadel stair with a loaf of bread, a knife and a little salt folded in a paper, and put them on the Commander's table without a word, and sat down to wait. She broke salt onto two pieces and held one out. The Commander took it and ate; she ate hers, watching. "Now we're both of the same fire." That night she took the Commander to the private snowfield. By morning they had a kiln to return to and a city still needing breakfast.{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, BREAD_KEPT, "sacrifice"), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD), **ALIVE)
 
 epilogue("heel", '''{n}The heel of the loaf stayed on the shelf in the kiln, wrapped in a cloth, long after it was stone-hard and good for nothing. She never moved it and never mentioned it.{/n}
@@ -538,9 +542,33 @@ def integrate(payload):
     # Append once: make_expansion() can run repeatedly in the same interpreter.
     from storylines import lastcall_partners
     partner = next(part for part in lastcall_partners.PARTNERS if part["rel"] == REL)
+    # Authored finale staging: rewrite only Nidalynn's own entry before the shared factory runs.
+    # Existing paragraph/answer positions and terminal effects remain unchanged.
+    partner["opener"] = "{n}When the Commander came home, Nidalynn opened the kiln door herself. She took one look, put the bread down and drew the Commander inside. The sergeant shut the door after them.{/n}"
+    paragraphs = list(partner["paragraphs"])
+    paragraphs[0]["Text"] = "{n}At the rift the Commander called over the broken ground. Nidalynn rose from the camp below, where she had waited with the young dragon. She landed beside the Commander, looked at the blood and torn clothes, and took the Commander's hand. Behind her the youngster screamed at the rift. Nidalynn stayed until the last decision was made.{/n}"
+    paragraphs[3]["Text"] = "{n}That summer the young dragon visited the grey tower and came back with an eggshell-coloured scale caught under one claw. Nidalynn set it beside the Commander's bowl. The mother's bill still stood; raising her child had not paid it.{/n}"
+    paragraphs[4]["Text"] = "{n}The young dragon visited her mother that summer and returned to the kiln. The grey one had named her bill at Threshold: a month of the Commander's every year. Before the first journey, Nidalynn heard the account at her own fire. She packed food for the ridge, and when the Commander came back she pulled out a chair beside hers.{/n}"
+    for index in (3, 4):
+        paragraphs[index]["Requires"] = list(dict.fromkeys([*paragraphs[index]["Requires"], "devarra.present_now"]))
+    paragraphs[5]["Text"] = "{n}The salt was still unbroken when the war ended. In spring she brought it to the Commander's table with a loaf and a knife. She broke it over two pieces of bread. The Commander ate the offered piece; she ate hers. \"Now we're both of the same fire.\" That night they flew to her snowfield, and in the morning came home together.{/n}"
+    partner["paragraphs"] = tuple(paragraphs)
+    spec = partner["call"]
+    spec["text"] = "{n}You have heard her hum the herding-call at the kiln. Now she waits beyond the broken ground, by the Threshold camp. You put her name at the end and give it what breath you have left. Above the camp, silver wings open.{/n}"
+    text, effects, requires, forbids = spec["choices"][0]
+    spec["choices"][0] = ("[Listen. Beyond the broken ground, she answers.]", effects, requires, forbids)
     history = lastcall_partners.page_p('''Her husband had been a lie, like the belly under the shawl. There was no marriage waiting elsewhere while she kept the fire below Drezen's wall.''')
     if history not in partner["paragraphs"]:
         partner["paragraphs"] = (*partner["paragraphs"], history)
+    additions = (
+        lastcall_partners.page_p("She had followed the expedition as far as its camp. When no call came she returned to Drezen, banked the kiln and kept the fire through the night, with bread and salt in her lap. The young dragon sat beside her and would not sleep. When the Commander returned, she made room on the step and kept hold of the Commander's hand long after the bread was gone.",
+            requires=(COMMITTED,), forbids=("nidalynn.lastcall.called",)),
+        lastcall_partners.page_p("The grey tower stood empty. Her bill for the smallest egg remained against the Commander's name. Nidalynn kept the account beside the kiln; nobody's absence made it paid.",
+            requires=(DV_BILL,), forbids=("devarra.present_now",)),
+    )
+    for paragraph in additions:
+        if paragraph not in partner["paragraphs"]:
+            partner["paragraphs"] = (*partner["paragraphs"], paragraph)
     for key, value in PRESENCES.items():
         have = payload.setdefault("Presences", {}).get(key)
         if have is not None and have != value:

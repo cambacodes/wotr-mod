@@ -1,0 +1,16 @@
+{
+  "voice": "Nidalynn: practical, tart, generous, proud, deliberate and unashamed of wanting companionship. Lawful-good silver dragon; sincerity and kindness matter, deeds outrank speeches. Her care extends to displaced Sarkorians and the rescued hatchling independently of the Commander. Desire does not erase blunt judgment or her separate home. Write fresh dialogue from traits; do not quote native or route lines. Native facts: female, Huge dragon, LawfulGood; silver identity and human disguises. No native numerical age or human anatomy is established. Snowfield, salt relic, chosen-form appearance and relationship are authored setup, not native physical facts.",
+  "scene": "SCENE: authored Trickster romance, Chapter 5, private snowfield above Drezen after reciprocal bread and salt. Two participants only: Nidalynn in her chosen human form and the Commander. Slot marks their first consensual sexual encounter; this brief specifies continuity, not graphic choreography. Required beats: invitation and reciprocation already visible before entry; cold addressed beneath a sheepskin; her confident initiative and deliberate pace; one practical reminder of returning to her kiln and the war; affection never pays the rescue debt or transfers ownership of the hatchling. End in stillness before grey dawn. No intoxication, incapacity, coercion, pregnancy costume, invented spouse, new promise or flag. Juvenile absent throughout, appearing only in existing morning node. Keep content non-graphic in this writing pass.",
+  "last_line": "N: By dawn your clothes lie folded beside hers.",
+  "speakers": {
+    "D": "Nidalynn"
+  },
+  "example": "N: She folds her cloak beside yours and draws the sheepskin over both of you.\nD: The kiln can manage one night without me.\nN: She settles beside you; far below, the watch lights burn along the wall.",
+  "commander": "player-defined; use selected variant without gender assumptions",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18
+}
