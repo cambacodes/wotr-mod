@@ -263,19 +263,19 @@ inline(W + "early.teeth", "Counting teeth", (1,), '"The uplanders keep staring a
 {n}The clerk walks into a lamp post, apologises to it, and walks faster.{/n}
 "Ha!" {n}She slaps her knee.{/n} "You see? He'll count them in his sleep tonight. That's better than a knife, sometimes. A knife you have to clean." {n}She settles back on her heels, pleased with the world for a moment, and then the moment passes.{/n} "But it only works on the soft ones. Show your teeth to something hungrier than you and it takes it as an invitation."''',
         c('"And what do you do then?"', "then")),
-    conv("then", '''"Then you find out which of you is stronger. Quickly." {n}She shrugs, as if it were a question of weather.{/n} "Down in Neathholm you learn it before you learn to talk. The strong eat, the weak get eaten, and the ones in the middle spend their whole lives pretending to be one or the other. I stopped pretending when I was small. It saves time."
+    conv("then", '''"I\'d put my knife under its jaw. Or run, if it was bigger. Sull could call me a coward after I\'d eaten."
 {n}She looks at you, a long measuring look, from boots to eyes.{/n} "You don't pretend either. That's why I'm on your side of the street, and not theirs."''',
         c("Continue", flags=(W + "early.teeth.smile",))),
-    conv("afraid", '''"Their neighbours were slow." {n}She says it without cruelty, the way she might say that their neighbours were tall.{/n} "Fear is honest, {mf|master|mistress}. I like fear. A man who is afraid of you tells you the truth about where he'll run. But these ones are afraid of the wrong thing. They look at me and see a demon's dog. The demon's dogs ate their neighbours. I only ate their bread."''',
+    conv("afraid", '''"Their neighbours were slow." {n}She glances at the ruined houses, then tears off another strip.{/n} "Fear is honest, {mf|master|mistress}. I like fear. A man who is afraid of you tells you the truth about where he'll run. But these ones are afraid of the wrong thing. They look at me and see a demon's dog. The demon's dogs ate their neighbours. I only ate their bread."''',
         c('"And if you had been slow?"', "slow"),
         c('"Nobody here thinks you\'re a demon\'s dog."', "dog")),
-    conv("slow", '''"Then I'd be meat, and I wouldn't complain about it." {n}She finishes the strip and licks her fingers clean, one at a time.{/n} "Meat doesn't complain. That's the whole difference between meat and a hunter. The hunter has something to say about it."''',
+    conv("slow", '''"Then I\'d be dead." {n}She licks the grease off her fingers and nods toward the woman with the bucket.{/n} "I\'d shove her between me and the demon first. She looks slow."''',
         c("Continue", flags=(W + "early.teeth.afraid",))),
     conv("dog", '''{n}Wenduag laughs at you, not unkindly, the way you laugh at a child who has told you the sea is small.{/n} "Everyone here thinks it, {mf|master|mistress}. The ones who don't say it are the ones who are afraid of you. When you're gone, they'll say it. That's all right. When you're gone, I'll have something to say too."''',
         c("Continue", flags=(W + "early.teeth.afraid",))),
     conv("stare", '''{n}That pleases her. It pleases her so much that for a moment she looks almost young.{/n}
 "Yes. That's it. That's the whole of it." {n}She hops down from the cart and plants herself in the middle of the street, feet apart, and fixes her yellow eyes on a burly sergeant coming the other way with a crate on his shoulder. He meets the stare. He holds it for three steps. On the fourth he finds something very interesting in the gutter.{/n}
-{n}She turns back to you with her chin up.{/n} "Three steps. An uplander. Not bad. In Neathholm that one would have been something, maybe a hunter's second." {n}Her voice drops, and the play goes out of it.{/n} "The ones who look at their boots, {mf|master|mistress}, you can walk past. The ones who hold your eye, you watch. And the ones who hold it and smile, you kill first, before they decide to do it to you."''',
+{n}She turns back to you with her chin up.{/n} "Three steps. An uplander. Not bad. In Neathholm that one would have been something, maybe a hunter's second." {n}Her voice drops, and the play goes out of it.{/n} "That sergeant saw my teeth and looked away. The next one might smile. I\'ll keep my knife out for that one."''',
         c('"Which kind am I?"', "which")),
     conv("which", '''{n}Wenduag holds your eyes, the way she held the sergeant's, and neither of you looks down. Somewhere behind her a cart goes by, and a bell rings for the dead, and neither of you looks at that either.{/n}
 "The kind I follow." {n}She breaks it first, which she clearly did not expect to do, and covers it with a grin.{/n} "For now. The strong have the right to lead. When you stop being strong, I'll tell you. I'll be the first to."''',
@@ -284,21 +284,20 @@ inline(W + "early.teeth", "Counting teeth", (1,), '"The uplanders keep staring a
 
 inline(W + "early.walls", "Men in rows", (2,), '"You\'ve been watching the knights drill all morning."', [
     conv("start", '''{n}Wenduag sits on a crate of arrows at the edge of the drill field, with her elbows on her knees and her chin on her fists. Out on the trampled grass a company of crusaders is practising a pike wall, three ranks deep, stepping and bracing and stepping again to a sergeant's bellow.{/n}
-"All morning, {mf|master|mistress}. I can't stop. It's like watching beetles build a nest." {n}She points with her chin.{/n} "They stand in rows so the demons can count them faster. They wear the same colours so the demons know which ones to eat. They shout before they charge, so nobody is surprised. Uplanders make a war the way they make a bed: neat, and to be slept in."''',
+"All morning, {mf|master|mistress}. I can't stop. It's like watching beetles build a nest." {n}She points with her chin.{/n} "They stand in rows so the demons can count them faster. They wear the same colours so the demons know which ones to eat. They shout before they charge, so nobody is surprised. That boy\'s pike is shaking. His sergeant\'s watching the flags."''',
         c('"A line doesn\'t break when one man is afraid. That\'s the point of it."', "line"),
         c('"How would a Mongrel take Drezen, then?"', "take"),
         c('"You don\'t have to fight in their rows. You fight in mine."', "mine")),
-    conv("line", '''{n}She chews on that, and does not like the taste.{/n} "No. It breaks when all of them are afraid at once. Which is worse." {n}She nods at the third rank, where a boy is leaning on his pike to rest.{/n} "That one will die first. He knows it. His friends know it. They keep him in the middle so he can't run, and they call it courage." {n}Her lip curls.{/n} "Sull would do the same, back home. Share the last of the food with the ones who can't hunt, and starve together, and call it the tribe. That's why my people are still living in a hole." {n}She spits.{/n} "If I were chief, the ones who couldn't stand alone wouldn't eat the ones who could. Your way is kinder. It's also why your city is full of demons."''',
-        c('"And yet the city is still ours."', "ours")),
-    conv("ours", '''"Yours." {n}She says it carefully, as if tasting it.{/n} "Because you're strong, not because they stand in rows. Every one of those men is here because you walked into a demon's army and came out with his head. They follow you because you're strong. The day you aren't, they'll follow somebody else." {n}She shrugs.{/n} "So would I. That's not an insult, {mf|master|mistress}. It's the only honest thing anybody here will ever tell you."''',
+    conv("line", '''{n}She chews on that, and does not like the taste.{/n} "No. It breaks when all of them are afraid at once. Which is worse." {n}She nods at the third rank, where a boy is leaning on his pike to rest.{/n} "That one will die first. He knows it. His friends know it. They keep him in the middle so he can't run, and they call it courage." {n}Her lip curls.{/n} "Sull would do the same, back home. Share the last of the food with the ones who can't hunt, and starve together, and call it the tribe. That's why my people are still living in a hole." {n}She spits.{/n} "If I were chief, the ones who couldn't stand alone wouldn't eat the ones who could. Your way is kinder. And now you\'re marching more hungry mouths to Drezen."''',
+        c('"We\'ll take Drezen with those men."', "ours")),
+    conv("ours", '''"Then keep that boy awake." {n}She points at the third rank with an arrow.{/n} "He\'s leaning on his pike again. If his friends are meant to keep him alive, make them start now."''',
         c("Continue", flags=(W + "early.walls.line",))),
     # eng8-q8b begin: E-Q8-03 authored map staging is portable in the Chapter 2 camp.
-    conv("take", '''{n}Her whole face changes. She studies the walls on a scout's map of Drezen, then lays it beside the crate.{/n}
-"Not from the front. Only fools and uplanders go in the front." {n}She sketches in the dirt with the point of an arrow: the wall, the gate, the old river culvert at the west corner, the sewer grates in the lower town.{/n} "There's always a hole. The demons came in through one. Rats come in through the same ones. You send your quiet people down in the night, ten or twelve, with knives and no armour, and you cut the throats on the gate from the inside while the fools are still shouting at the front. By morning it's your gate." {n}She sits back.{/n} "And you don't lose the boy in the third rank. You lose the ten who went down the hole, and they're the ones who knew the risk."''',
+    conv("take", '''{n}She pulls a scout\'s sketch of Drezen onto the crate and pins its corner with her elbow.{/n} "Staunton took the banner away. Then the demons could appear inside the walls. I can\'t do that." {n}Her arrow scratches along the inked wall.{/n} "But your scouts can look for a drain. A broken grate. Anything a hunter can squeeze through. Send the noisy ones to the gate and your quiet ones underneath. Cut the watch from inside. Open it before the knights have finished shouting." {n}She looks toward the boy in the third rank.{/n} "Ten hunters might die finding the way. Better than piling that whole row against the wall."''',
         c('"That\'s not how crusaders fight."', "crusaders"),
         c('"Ten who knew the risk. I\'ll remember that."', "remember")),
     # eng8-q8b end
-    conv("crusaders", '''"No. That's why they lose so often." {n}She scuffs the map out with her heel.{/n} "I'm not a crusader, {mf|master|mistress}. I'm a hunter who happens to be standing in your camp. Hunters don't care if the deer thinks it was fair."''',
+    conv("crusaders", '''"No. That's why they lose so often." {n}She pulls her arrow off the sketch and taps it against her boot.{/n} "I'm not a crusader, {mf|master|mistress}. I'm a hunter who happens to be standing in your camp. Those pikes can\'t follow me through a drain. That\'s how I\'d do it."''',
         c("Continue", flags=(W + "early.walls.take",))),
     conv("remember", '''{n}She looks at you sideways, a slow, delighted look, as if you had just dropped your guard in a fight and shown her something she was not supposed to see.{/n}
 "You will, won't you. You'll remember it the night you need it and pretend it was your idea." {n}She laughs.{/n} "Good. I don't care whose idea it was, as long as I'm one of the ten."''',
@@ -320,7 +319,7 @@ inline(W + "early.gate", "The south gate", (3,), '"Something happened at the sou
         c("Continue", flags=(BRASK_MET, W + "gate_early.fought_for"))),
     conv("answer", '''{n}She sets the whetstone down very carefully, as if it were something that might break.{/n} "Nobody dies." {n}She repeats it the way you would repeat the terms of a bad bargain.{/n} "You're no fun, {mf|master|mistress}." {n}But she is smiling, and it is the real smile, the one with no play in it.{/n} "Nobody dies. But he'll wish he had. He likes his new coat so much. He brushes it. I've watched him brush it." {n}She tests the edge of the knife against her thumb, and a bead of blood comes up, and she licks it off.{/n} "Let's see how he likes it with the sleeves off. In front of the same men. Nobody dies."''',
         c('"Nobody. I mean it."', "mean")),
-    conv("mean", '''"I heard you the first time." {n}She stands, stretches until her joints crack, and slides the knife away.{/n} "A hunter who kills everything that insults her starves in a month, {mf|master|mistress}. There's no meat left. You have to leave some of them walking, so they remember." {n}At the door she looks back.{/n} "He'll remember."''',
+    conv("mean", '''"I heard you the first time." {n}She stands, stretches until her joints crack, and slides the knife away.{/n} "I\'ll cut the sleeves off his precious coat. He can put it on tomorrow and show his men how much I listened." {n}At the door she looks back.{/n} "He'll remember."''',
         c("Continue", flags=(BRASK_MET, W + "gate_early.let_her"))),
     conv("guest", '''{n}For a heartbeat the whole of her goes still, the stillness of something that has decided whether to spring and chosen not to, yet.{/n}
 "A guest." {n}She tastes the word and spits it out.{/n} "Yes, {mf|master|mistress}. A guest. I'll walk past. I'll walk past him every morning with my eyes on my boots like a good dog, and he'll laugh every morning, and I'll remember every one." {n}She bows. It is a perfectly servile bow, and there is nothing servile in it at all.{/n} "I'll remember whose guest I am, too."''',
@@ -451,14 +450,14 @@ page(W + "killed.back", "A dead woman at the south gate", [
         c("Continue", "her")),
     wd("her", '''"You're late." {n}Wenduag licks gravy off her thumb.{/n} "Your sergeant at the south gate nearly wet himself. Brask, they call him. Big red neck. He watched a dead woman walk in through his gate with her own grave on her, and he crossed himself, and then he pretended he hadn't seen anything, because what would he tell his captain?" {n}She laughs, and then winces, and puts a hand to her side.{/n} "Uplanders. They'd rather be blind than stupid."''',
         c("Continue", "dark")),
-    wd("dark", '''{n}She sets down the pot.{/n} "Do you know what it's like, waking up under stones? No. Nobody does. The dead don't tell, and I'm the only one who ever came back to say." {n}She says it lightly. Her hand has gone to the knife.{/n} "It's black. Blacker than anything in Neathholm. There's a stone on your face, and one on your chest, and your side is full of fire, and you think: *so this is where the weak go*. And then you notice there's a knife in your hand."
+    wd("dark", '''{n}She sets down the pot.{/n} "Do you know what it's like, waking up under stones? You weren\'t under them. I was. There was a stone against my face and my own knife in my hand." {n}She says it lightly. Her hand has gone to the knife.{/n} "It's black. Blacker than anything in Neathholm. There's a stone on your face, and one on your chest, and your side is full of fire, and you think: *so this is where the weak go*. And then you notice there's a knife in your hand."
 {n}Her fingers close round the bone grip, and open, and close, as they must have done in the dark.{/n} "My own knife. In my right hand. And a dressing on my side, tied tight, and the taste of some uplander healer's muck in my mouth. Somebody wanted me to have it all."''',
         c("Continue", "water", requires=(WATER,)),
         c("Continue", "mark", requires=(MARK,), forbids=(WATER,)),
         c("Continue", "bare", forbids=(WATER, MARK))),
     wd("water", '''"And there was water, under my other hand. An uplander's waterskin. It had your smell on it." {n}She makes a face.{/n} "That's not how it's done. A hunter goes to the dark with a knife, and that's all. The water was soft. But I drank it, the second day, when my tongue was stuck to my teeth." {n}A pause.{/n} "It was good water."''',
         c("Continue", "why")),
-    wd("mark", '''"And when I pushed the top stone off, there were scratches on the underside of it. Your mark. Cut with my own knife, before you put it back in my hand." {n}She reaches into her shirt and sets a flat grey stone on the table between you, scratched side up.{/n} "I brought it. I didn't know if it was a curse or a signature. In the tunnels we'd call it a claim."''',
+    wd("mark", '''"And when I pushed the top stone off, there were scratches on the underside of it. Your mark. Cut with my own knife, before you put it back in my hand." {n}She reaches into her shirt and sets a flat grey stone on the table between you, scratched side up.{/n} "I brought it. You scratched it with my knife. Were you marking the grave or the hunter?"''',
         c("Continue", "why")),
     wd("bare", '''"Nothing else. No water, no light, nothing soft." {n}She sounds almost proud of you.{/n} "Just the knife, the way it's done for a hunter. Whoever built that cairn knew the old way, or asked someone who did. I dug for two days with nothing in my belly and I thought about that the whole time: who knew enough to do it right, and wrong enough to leave the head end loose."''',
         c("Continue", "why")),
@@ -496,8 +495,7 @@ page(W + "ch4.stone", "A stone in the pack", [
 {n}She put it in your pack in Drezen, the night before you left. You never saw her do it. That was, you suppose, the point: a dead woman does not say goodbye. She leaves a stone from her own grave where you will find it in the dark, and lets you work out what it means.{/n}''',
         c('[Put it back at the bottom of the pack.]', flags=(W + "stone.kept", PRIMED)),
         c('[Keep it in your pocket from now on.]', flags=(W + "stone.pocket", PRIMED))),
-    nar("none", '''{n}There is nothing in there but the whetstone after all. But for a moment, in the stink of the Abyss, you smelled wet rock and old blood, and you were back in the side tunnel under Kenabres with your hands full of stones, packing the head end loose.{/n}
-{n}You do not know whether she dug. The Abyss does not care. There is nobody here you can ask.{/n}''',
+    nar("none", '''{n}There is only the whetstone. You do not know whether she came out from under the cairn.{/n}''',
         c("[Go back to the whetstone.]", flags=(W + "stone.doubt", PRIMED))),
 ], requires=("trickster.ever", KILLED, CAIRN), delay=24, chapters=(4,), kind="memory", areas=(), **device("killed"))
 
@@ -556,7 +554,7 @@ inline(W + "exile.bid_hub", "Dismissed", (3, 4),
         c('"Forget it. Stay."', abort=True)),
     conv("yes", '''{n}She stares at you. Then, slowly, her lips peel back from her teeth in something that is almost a smile and almost a snarl.{/n}
 "You're sending me into his house to lie to him with the truth." {n}She shakes her head.{/n} "Oh, that's cruel. That's so cruel. Every word I tell him will be real. How much I hate you. How you threw me out." {n}She breathes in, hard, through her nose.{/n} "I'll do it. I'll hate you properly, so he can smell it." {n}She steps back, and straightens, and makes her face ugly with humiliation, and raises her voice so that it carries across the whole camp.{/n}''',
-        c("[Say it again, loudly, for everyone to hear.]", native_next=EXILE_CUE, flags=(BOUGHT, PRIMED, FALL_AGREED, EXILE_AGREED, DEATH_PROMISED))),
+        c("[Say it again, loudly, for everyone to hear.]", native_next=EXILE_CUE, flags=(BOUGHT, PRIMED, FALL_AGREED, EXILE_AGREED))),
     conv("no", '''{n}She hears the words. You can see her hear them. And you can see her decide that they are the kind of thing an uplander says when he is throwing out a dog and wants to feel kind about it.{/n}
 "Of course, {mf|master|mistress}." {n}She does not believe a word. Her eyes have gone flat and dry.{/n} "A plan. Very clever. I'll remember it." {n}She is not going to remember it. She is going to remember being thrown out.{/n}''',
         c("[Dismiss her anyway.]", native_next=EXILE_CUE, flags=(SCORNED,)),
@@ -575,7 +573,7 @@ inline(W + "exile.bid_traitor", "You heard me", (3, 4),
         c('"Forget it. Get up."', abort=True)),
     conv("yes", '''{n}Wenduag stays on her knees. It is the safest place to hide a face, and she needs to hide hers: it has gone quite still with delight.{/n}
 "A spy's spy." {n}The whisper barely reaches you.{/n} "Lann will be so happy to see me go. Let him be." {n}Then she lets her face fall apart, the humiliation and the bitterness, all of it real, all of it borrowed from the day before, and looks up at you with murder in her eyes for anyone who is watching.{/n}''',
-        c("[Turn your back on her.]", native_next=TRAITOR_EXILE_CUE, flags=(BOUGHT, PRIMED, FALL_AGREED, EXILE_AGREED, DEATH_PROMISED))),
+        c("[Turn your back on her.]", native_next=TRAITOR_EXILE_CUE, flags=(BOUGHT, PRIMED, FALL_AGREED, EXILE_AGREED))),
     conv("no", '''{n}Her eyes go flat. Whatever she hears in your voice, it is not a plan. It is a master who is tired of his dog and wants to feel clever about it.{/n}
 "Yes, {mf|master|mistress}." {n}She does not believe you.{/n} "Very clever."''',
         c("[Turn your back on her anyway.]", native_next=TRAITOR_EXILE_CUE, flags=(SCORNED,)),
@@ -683,12 +681,12 @@ page(W + "exile.ch5_hunt", "Outside the walls", [
     wd("terms", '''"My terms." {n}She considers you along the spear.{/n} "You don\'t know what you\'re saying. My terms are that I don\'t come back as your dog. I come back to the cellars, and I go out through your gate when I please, and nobody stops me, and nobody counts me on a roll, and when you want me you come down the stair, alone, like tonight." {n}She stands up on the wall.{/n} "And the first time you throw me out again, I\'ll be the one who comes looking."''',
         c("Continue", "back")),
     wd("sava", '''{n}Her whole body goes tight, like a bowstring pulled.{/n} "Alive. Out there, still calling his children." {n}She is quiet for a while.{/n} "You\'re offering me him. Not his poison. Him." {n}She grins, slow and ugly.{/n} "That\'s a better offer than the one I was waiting for. You\'re late with it. You\'ll pay for that, one day."''',
-        c("Continue", "back", flags=(W + "death_promised",))),
+        c("Continue", "back")),
     wd("wrong", '''{n}She stares at you as if you had spoken in a language she has only heard about.{/n} "Wrong." {n}She tastes it.{/n} "A {mf|master|mistress} who says *I was wrong* to a neather on a wall in the dark." {n}Then she laughs, and there is something unsteady in it.{/n} "That\'s either the weakest thing I\'ve ever heard or the strongest. I don\'t know which. I hate not knowing."''',
         c("Continue", "back")),
     wd("back", '''{n}She drops off the wall and lands in front of you, close, and looks at you from boots to eyes, the long measuring look she gave you the first day.{/n}
 "All right. I\'ll come back. Not tonight. Tomorrow, through the postern, when your sergeant has the watch, so he can see me walk in." {n}She turns away into the dark, and then stops.{/n} "Go home, {mf|master|mistress}. You\'re out of your walls, and I\'m not the only thing out here that bites."''',
-        c("Continue", flags=(RETURNED, STARTED, PRIMED, LATE))),
+        c("Continue", flags=(RETURNED, STARTED, PRIMED, LATE, W + "orchard_return"))),
     wd("stay_dead", '''{n}She looks at you over the spear for a while.{/n} "Then why did you come out?" {n}She does not wait for the answer. She is gone into the orchards, and you walk back to your walls alone, and nobody at the postern asks where you have been.{/n}''',
         c("Continue", flags=(CLOSED,))),
 ], requires=("trickster", KICKED, KICKED_LATCH), forbids=(DEAD, STREET, RETURNED), delay=24, chapters=(5,),
@@ -732,13 +730,13 @@ page(W + "abyss.fall", "The best of his daughters", [
     nar("price_known", '''{n}Lann is gone up the stair. Your crusaders are not. They wait at the door of the demon's house, in the Abyss, under a burning sky, and they watch their Commander carry the traitor who tried to tear Lann's throat out down into the cellar, still breathing. Nobody bought this, and nothing was prepared; you are deciding it now, in front of all of them, and they will tell it in every camp from here to Drezen.{/n}''',
         c("[Build it anyway.]", "cairn_known", crusade=("Favors", -100))),
     nar("cairn", '''{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}
-{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}
-{n}Let him hear it, and stop sending for her.{/n}
-{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
+{n}Flat pieces of Savamelekh\'s walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the hall floor, wiped on your knee, closed into her right hand. Above you somewhere, the surviving demons are dragging themselves away to tell whoever is left that the Commander\'s crusaders killed Savamelekh\'s favourite daughter, and that she died fighting for the demon.{/n}
+{n}Let Savamelekh hear it, and stop sending for her.{/n}
+{n}Her wound is bound. Her knife rests under her hand. The demon\'s broken walls lie around her, and the way out of the Abyss is still beyond them.{/n}''',
         *cairn_close((LANN_ALONE,))),
     nar("cairn_known", '''{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}
-{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it, and stop sending for her.{/n}
-{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
+{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let Savamelekh hear it, and stop sending for her.{/n}
+{n}Her wound is bound. Her knife rests under her hand. The demon\'s broken walls lie around her, and the way out of the Abyss is still beyond them.{/n}''',
         *cairn_close((LANN_KNOWS,))),
 ], requires=("trickster.ever", DEAD, FELL, FELL_LATCH), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4,), kind="event", areas=(),
     RequiresAnyGroups=[[FALL_AGREED, "trickster"]],   # an unprepared rescue is a live Trickster act (ledger R2-2)
@@ -1005,10 +1003,7 @@ tag(W + "lann.found_out", "T")
 
 household.secret(
     "wenduag_cairn", "Under stones",
-    "I built a cairn for a woman who was still breathing, the way her people bury hunters, and put her own knife back in her "
-    "hand. Everyone who saw her fall believes she is dead: the ones who mourned her and the ones who were glad. Lann said "
-    "words over her, or struck the blow himself, or closed her eyes. If he learns it from anyone but me, I will have lied "
-    "to the most honest man in my army about the one thing he could not forgive.",
+    "I left Wenduag under loose stones with her knife in her hand. She was breathing when I covered her face.",
     portrait="Wenduag", witnesses=("lann",), risk="high")
 
 

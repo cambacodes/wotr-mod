@@ -25,10 +25,17 @@ class WenduagEchoTests(unittest.TestCase):
             if original.get("Relationship") != "wenduag":
                 continue
             current = self.scenes[original["Id"]]
-            self.assertEqual([node["Id"] for node in original["Nodes"]],
-                             [node["Id"] for node in current["Nodes"]][:len(original["Nodes"])])
-            for old_node, new_node in zip(original["Nodes"], current["Nodes"]):
+            old_node_ids = [node["Id"] for node in original["Nodes"]]
+            self.assertEqual(old_node_ids,
+                             [node["Id"] for node in current["Nodes"] if node["Id"] in old_node_ids])
+            for old_node in original["Nodes"]:
+                new_node = next(node for node in current["Nodes"] if node["Id"] == old_node["Id"])
                 for index, old_choice in enumerate(old_node["Choices"]):
+                    # Primary origin selectors reserve their already-serialized echo index;
+                    # the new orchard answer follows it. Native twins append their echo.
+                    if (not original["Id"].endswith(".native_visit")
+                            and old_choice.get("Next") in ("which_orchard", "own_orchard", "plain_orchard")):
+                        index += 1
                     new_choice = new_node["Choices"][index]
                     for field in ("Text", "Next", "Set", "Abort", "Check"):
                         self.assertEqual(old_choice.get(field), new_choice.get(field),
