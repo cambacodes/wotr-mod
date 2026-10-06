@@ -96,7 +96,8 @@ hub(ABYSS_TOUCH, "The dose, adjusted", 5, '"You\'re thinking about the Abyss aga
     a("after", '''"Too much. I tried to take too much. There was a ward on you and I knew it, and I tried anyway. I brought it home with me, Commander. Whatever I was out there, it came back across the Wound in my skin, and I felt how much I could take, and I wanted all of it." {n}She is shaking.{/n}
 "You were right to adjust the dose, doctor. Adjust it down. Down to nothing, until it's gone out of me again." {n}She sits back.{/n} "Or one night I'll take you. Here, in Drezen, with the Abyss still singing in my ears. Ward or no ward, I'll find the minute it runs out, and I'll be glad, and then I'll never be anything else again."''',
         c('"Down to nothing, until it passes."', "home", flags=(ABYSS_TOUCH,))),
-    a("sit", '''{n}You sit down next to her on the steps, not touching. After a while she starts to talk, very quietly, about the bakery and the cat and the net-menders' song, as if reciting a list of things to hold on to. You let her. You are what the Abyss never gave her: someone sitting there who wants nothing.{/n}''', c()),
+    a("sit", '''{n}You sit beside her on the steps, keeping your hands on your knees. She watches them for a while. Then she begins to talk about Drezen: the lamps on the wall, the market closing, the change of watch. Her wings slowly loosen against her back.{/n}
+"I keep thinking about taking your hand." {n}She folds her own hands together.{/n} "Leave it there. Please. Just stay a little longer."''', c()),
     a("home", '''"Until it passes." {n}She smiles, and it is the smile of someone very tired.{/n} "You say that as if you knew it would. I don't. But I'll count the days, and you'll ask me every morning, and one morning I'll say it has." {n}She shrugs.{/n} "Drezen isn't home. Nothing's ever been home. But I know which way it is from here. That's new too."''', c()),
 ], (TOUCHED,), delay=24, chapters=(5,))
 
