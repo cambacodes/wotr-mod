@@ -139745,6 +139745,19 @@
       "ExpectedCandidate": "minagho_chivarro.trickster.epilogue.declined"
     },
     {
+      "Id": "page/minagho_chivarro.trickster.epilogue.partner_refused",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minagho_chivarro.partner_stance.cooled",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "minagho_chivarro.trickster.epilogue.partner_refused"
+    },
+    {
       "Id": "page/minachiv.lastcall.page",
       "Target": "",
       "Dialog": "",
@@ -143302,19 +143315,6 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.native.future_returned"
-    },
-    {
-      "Id": "page/minagho_chivarro.trickster.epilogue.partner_refused",
-      "Target": "",
-      "Dialog": "",
-      "Page": "",
-      "Chapter": 6,
-      "Flags": [
-        "minagho_chivarro.partner_stance.cooled",
-        "trickster.ever"
-      ],
-      "NativeEligible": [],
-      "ExpectedCandidate": "minagho_chivarro.trickster.epilogue.partner_refused"
     }
   ]
 }
