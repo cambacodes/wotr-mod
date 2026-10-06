@@ -42,7 +42,7 @@ def at_herald(id, title, chapter, entry, nodes, requires, forbids, lists, back, 
 # --- Chapter 3, 1. The banner's first memory (a relic's memory, not her message). ------------------------------------------
 
 remote(DREAM_BANNER, "What the banner remembers", [
-    nar("start", '''{n}You sleep in the citadel, two floors under the platform where the Sword of Valor flies. You have slept there for weeks. Tonight you do not dream of the war.{/n}
+    nar("start", '''{n}You sleep in the citadel, two floors under the platform where the Sword of Valor flies. Tonight you do not dream of the war.{/n}
 {n}It is raining, and you are heavy with it: rain in your cloth, rain running the length of you, rain soaking into the grain of the wood that is somehow also you. A hand closes around you low down, where you are thickest, and lifts. The grip is a swordsman's, callused at the root of every finger. It is cold, and it does not let go.{/n}''',
         c("Continue", "line")),
     nar("line", '''{n}She carries you along a line of soldiers in the last grey of evening. You see her in pieces, the way a banner sees whoever carries it: the edge of a jaw under a dented helm, a wet braid, a gauntlet with the leather worn through at the knuckles. She is young. She is tired in a way that has nothing to do with the day.{/n}
@@ -117,7 +117,7 @@ at_herald(E + "herald.answer", "No answer", 3, '"Did she answer?"', [
         c("Continue", "back", forbids=(ASKED_WHOSE, ASKED_MIND))),
     herald("whose", '''"You asked whose dream it was. If it were hers, I think I would know. She does not send dreams to anyone lightly, and she has never sent one without telling her herald first." {n}A pause.{/n} "It is the banner, Champion. I am almost certain it is the banner."''',
         c('"Almost."', "warn")),
-    herald("mind", '''"You asked whether she minds what your blood did to her banner. I told you in the first days that I do not call it blasphemy. I will tell you something else now." {n}He lowers his voice.{/n} "I do not think she minds. I think she is curious. I have not seen her curious about a mortal in a very long time."''',
+    herald("mind", '''"You asked whether she minds what your blood did to her banner. I do not call it blasphemy. I will tell you something else now." {n}He lowers his voice.{/n} "I do not think she minds. I think she is curious. I have not seen her curious about a mortal in a very long time."''',
         c('"Is that good?"', "warn")),
     herald("back", '''"You asked whether she wants it back." {n}Almost a smile.{/n} "She gave it to the world long before either of us was thinking of Drezen. I do not think gods ask for things back. But she heard the question, Champion. She did not dismiss it. She only watched."''',
         c('"Watched what?"', "warn")),
@@ -161,7 +161,7 @@ remote(E + "dream.chasm", "The gorge", [
 # --- Chapter 3, 5. A word in the socket: the Trickster tests whether anyone is sending the dreams. ---------------------------
 
 remote(E + "platform.test", "A word in the socket", [
-    nar("start", '''{n}Two dreams, and one herald who swears his goddess did not answer. You have run enough confidence tricks to know how you would test this if somebody else were the mark.{/n}
+    nar("start", '''{n}The banner's dreams, and a herald who swears his goddess did not answer. You have run enough confidence tricks to know how you would test this if somebody else were the mark.{/n}
 {n}Near midnight you climb to the platform with the stub of a candle, a strip of paper and a stick of sealing wax. The banner's pole stands in an iron socket set into the stone and packed round with lead, and where the lead has shrunk from the iron there is a crack as wide as a fingernail. You will write one word, small, where no light but yours will ever find it, roll it tight, push it down into the crack and seal it over with wax and the ball of your thumb.{/n}
 {n}If the dreams are only the banner remembering, they will never say it. If someone is sending them, she will know what is sitting in the foot of her own banner. A goddess who does not lie ought to have no trouble with one word.{/n}''',
         c('[Write "Aroden." Her god, before she was one; the one who died.]', "sealed", flags=(TESTED, WORD_ARODEN)),
@@ -219,7 +219,7 @@ remote(E + "platform.queen", "No longer hers", [
         c('[Tell the banner] "She\'s wrong. You\'re still hers."', "still"),
         c('[Tell the banner] "Maybe it\'s for the best. Hers or mine, you\'re going to be busy."', "busy"),
         c("[Say nothing. Stand your watch under it until the sentry comes.]", "watch")),
-    nar("still", '''{n}The cloth cracks in the wind off the Wound, as it has cracked every night for months. It does not agree with you, or disagree. It is a banner. But you feel better for having said it to something that was there.{/n}''',
+    nar("still", '''{n}The cloth cracks in the wind off the Wound, as it does each night. It does not agree with you, or disagree. It is a banner. But you feel better for having said it to something that was there.{/n}''',
         c("[Go down.]")),
     nar("busy", '''{n}It is the kind of thing you say to a horse before a long ride, and you are aware of that, and say it anyway. The banner goes on snapping in the wind. Somewhere under the colours a woman in the rain is telling a frightened boy where to look.{/n}''',
         c("[Go down.]")),
@@ -232,12 +232,12 @@ remote(E + "platform.queen", "No longer hers", [
 
 at_herald(E + "herald.aroden", "The Last Azlanti", 3, '"Tell me about Aroden. And about her, when he died."', [
     herald("start", '''{n}The Hand of the Inheritor is quiet for a moment, which in him is a long time.{/n}
-"The Last Azlanti. The god of humanity. She served him as his herald before she served anyone as a goddess, and when he died she inherited his faithful, the way a daughter inherits a house with the mourners still in it."
+"The Last Azlanti. The god of humanity. She served him as his herald, and when he died she inherited his faithful, the way a daughter inherits a house with the mourners still in it."
 "He died in the year the Worldwound opened. The same year. Heaven was in upheaval; there were councils, and speeches, and a great deal of waiting to see. She did not wait. She went to his people and told them the truth, which they did not want, and then she stayed with them, which they wanted less."''',
         c('"You make it sound like grief."', "grief"),
         c('"And the Wound?"', "wound"),
         c('"Why does the banner never dream of him?"', "him")),
-    herald("grief", '''"It was grief. She does not call it that. She calls it duty, which is what grief becomes when one cannot afford it."''',
+    herald("grief", '''"She does not speak to me of her grief, Champion. She speaks of the faithful who still need her."''',
         c("Continue", "why")),
     herald("wound", '''"She has fought it every year it has been open. That it opened when her god died is not a thing she speaks of." {n}He hesitates.{/n} "Some of us think she has been holding a door shut on her own mourning ever since." {n}He catches himself.{/n} "That is not a thing I should say to a mortal."''',
         c("Continue", "why")),
@@ -304,7 +304,7 @@ at_herald(E + "herald.doubt", "A fortress", 4, '"You\'ve been watching me differ
     herald("start", '''{n}The Hand of the Inheritor does not deny it. That is one of the things that makes him poor company in Alushinyrra, where everyone denies everything.{/n}
 "I have. Forgive me." {n}He folds his hands on the pommel of his sword.{/n} "You asked me about my lady's Acts as a scholar asks. Then you told me her banner shows you her life, and I was glad, because a relic of hers would not show its secrets to someone unworthy. And then I watched you ask about her again, in this city, and I did not know what I was watching."''',
         c('"What did it look like?"', "looked")),
-    herald("looked", '''"It looked like a general asking about a fortress." {n}He says it without heat.{/n} "Where the gate is weak. Which wall was built in a hurry. You asked me how she did the thing at the gorge the way a sapper asks how a wall was raised, and you already knew more of it than the Acts do. I have heard siege engineers ask gentler questions."
+    herald("looked", '''"It looked like a general asking about a fortress." {n}He says it without heat.{/n} "Where the gate is weak. Which wall was built in a hurry. You told me what the banner showed you. I heard a siege engineer looking for a breach."
 "So I will ask you plainly, Champion, because in this place I have nothing left but plainness. Do you love my lady, or do you mean to use her?"''',
         c('[Tell the truth] "Both. I don\'t know yet which is winning."', "both"),
         c('"I\'m not using her. I\'m trying to understand her."', "understand"),
@@ -313,7 +313,7 @@ at_herald(E + "herald.doubt", "A fortress", 4, '"You\'ve been watching me differ
         c("Continue", "pray")),
     herald("understand", '''"Understanding is a kind of siege, when it is done by someone like you." {n}He keeps his eyes on the city, and his voice is gentle.{/n} "I do not say that to wound you. I say it because it is what I would have said of myself, once, before she taught me better."''',
         c("Continue", "pray")),
-    herald("joke", '''{n}He does not laugh. He does not reproach you either; he only waits, with a patience that is worse than either, until the joke has finished dying in the perfumed air.{/n} "When you joke, it is because the true answer embarrasses you. I told you that in Drezen. I do not think you have ever been embarrassed by a fortress."''',
+    herald("joke", '''{n}He does not laugh. He does not reproach you either; he only waits, with a patience that is worse than either, until the joke has finished dying in the perfumed air.{/n} "When you joke, it is because the true answer embarrasses you. I do not think you have ever been embarrassed by a fortress."''',
         c("Continue", "pray")),
     herald("pray", '''"I will pray for you tonight, as I pray every night. I will not tell her what you said. You will tell her yourself, one day, or you will not." {n}He hesitates.{/n} "And Champion. If I do not come back from this city, and it may be that I do not, do not let anyone tell you she sent me after you. I came because I chose to. She will want you to know that, and I will not be there to say it."''',
         c('"You\'ll come back."'),
@@ -326,7 +326,7 @@ at_herald(E + "herald.doubt", "A fortress", 4, '"You\'ve been watching me differ
 
 remote(E + "abyss.silence", "No banner here", [
     nar("start", '''{n}In the Abyss you sleep in snatches, in a borrowed room that smells of perfume laid over something going bad, and the dreams that come are the city's: sweet and heavy, and every one of them wants something from you.{/n}
-{n}None of them is hers. The banner is a world away on its pole over Drezen, and whatever it remembers, it is remembering to empty stone. You had not known you were used to it until you woke three nights running with your hand closed on nothing, reaching for a staff that was not there.{/n}''',
+{n}None of them is hers. The banner is a world away on its pole over Drezen, and whatever it remembers, it is remembering to empty stone. You had not known you were used to it until you woke with your hand closed on nothing, reaching for a staff that was not there.{/n}''',
         c("Continue", "cold")),
     nar("cold", '''{n}You make yourself think it through the way you would think through anybody's weakness, your own included. It is what you would do to an enemy commander who had started writing letters to a woman across the lines: find the letters, read them, and decide whether the man was compromised.{/n}
 {n}A relic of a goddess has been showing you her life. Her herald says she watches you, and she has not answered a single question. Her banner has taken more interest in you than she has. And here you are in the Abyss, being lied to by experts, and the one thing in your life that has never lied to you is a flag's memory of a woman in the rain.{/n}
@@ -339,10 +339,10 @@ remote(E + "abyss.silence", "No banner here", [
 # --- Chapter 4, 3. A face in the Abyss: something in Alushinyrra puts on hers, and gives itself away by asking. ------------
 
 remote(E + "abyss.face", "A borrowed face", [
-    nar("start", '''{n}On the fifth night in Alushinyrra a dream comes that is almost right.{/n}
+    nar("start", '''{n}One night in Alushinyrra a dream comes that is almost right.{/n}
 {n}Rain, and a field of black stubble, and a woman with a wet braid and a dented helm sitting with her back against a banner's staff. You know the scene; you have been the banner in it. Tonight you are not the banner. Tonight you are standing in the mud in front of her, and she looks up at you and smiles.{/n}''',
         c("Continue", "smile")),
-    nar("smile", '''{n}It is the smile that is wrong. You have watched her face from the height of a banner a dozen times, in rain and snow and the dark over a gorge, and you have never once seen it do that: warm, slow and entirely for you.{/n}
+    nar("smile", '''{n}You remember this field: soldiers waiting for dawn, her hand checking their straps in the rain. The woman in front of you smiles as though nothing outside the field matters.{/n}
 "There you are," {n}says the woman with her face.{/n} "I have waited so long. Come and sit with me. Leave all that out there; the war can keep. Come here, and I will tell you everything you want to hear."''',
         c("[Test it with the word you sealed in the socket.]", "word", requires=(E + "tested",)),
         c('"She doesn\'t lie. So tell me you\'ve never lied."', "lie"),
@@ -353,10 +353,10 @@ remote(E + "abyss.face", "A borrowed face", [
     nar("lie", '''"I have never lied to you," {n}says the woman with her face, at once and warmly, as if it cost nothing.{/n}
 {n}The woman in the banner's memories never said anything about herself that was not dragged out of her, and never once said it warmly.{/n}''',
         c("Continue", "seen")),
-    nar("sit", '''{n}You sit. The mud is warm, which mud in that field never was. She leans her head on your shoulder, which she never would, and her hand finds your knee, and it is only when she begins to tell you how the war will end, and how kindly, and how soon, that you understand what she is: the Abyss, trying on a shape it found in your sleep.{/n}''',
+    nar("sit", '''{n}You sit. The mud is warm, which mud in that field never was. She leans her head on your shoulder, without taking her eyes off you, and her hand finds your knee, and it is only when she begins to tell you how the war will end, and how kindly, and how soon, that you understand what she is: the Abyss, trying on a shape it found in your sleep.{/n}''',
         c("Continue", "seen")),
-    nar("seen", '''{n}The rain stops in mid-air. The field goes on for a while without anybody in it. Then the thing wearing her face laughs, a light, pleased, not unkind laugh, as a hostess laughs when a guest finds the joke under the tablecloth, and the dream folds up like a fan.{/n}
-{n}You wake in a room in Alushinyrra with the taste of rain in your mouth, and a clear, cold certainty you did not have before: you would know the real one anywhere, because the real one would never ask you to come to her. She would tell you where she was going, and let you decide whether to follow.{/n}''',
+    nar("seen", '''{n}The rain hangs motionless. The thing wearing her face laughs once. The sound comes from behind you. When you turn, the field is empty.{/n}
+{n}You wake from the dream with the taste of rain in your mouth. It had asked you to leave the war outside. The woman in the banner's memory had stayed awake, checking the straps of soldiers who would fight at dawn.{/n}''',
         c("[Sleep with a knife under the pillow for the rest of the week.]", flags=(FALSE_FACE,)),
         c("[Go to the window and look at the city until morning.]", flags=(FALSE_FACE,))),
 ], requires=(DREAM_BANNER,), forbids=(FALSE_FACE,), delay=96, chapters=(4,), kind="event")
@@ -405,10 +405,9 @@ remote(E + "platform.bare", "The empty pole", [
 {n}The goddess told the whole square the truth: the lock will destroy the key, and you are the key. The witch built you for it. The Lady in Shadow wanted you ignorant of it. And the goddess who told you would not lie to spare you, and would not interfere to save you.{/n}
 {n}But once, when she was mortal and there was nobody to ask, she laid something of hers across a gap and told her people to walk.{/n}''',
         c("Continue", "wager")),
-    nar("wager", '''{n}Her banner. It was hers before it was a relic, before she was a goddess; it was in her hand at the gorge. If the key goes into the lock carrying it, into the fire, meaning to die there, will she answer it? Nothing obliges her to. Nothing in any book says she can.{/n}
-{n}It is not a plan. It is a wager on a woman you have met once and dreamed of a dozen times, and the odds are atrocious. You have made worse bets for less.{/n}
-{n}And you can already see the cost. The Queen said it herself, in the war camp before Drezen: demons cannot step out of the air where the banner of the goddess flies. Carry it into the Wound and the city keeps nothing.{/n}
-{n}You do the sums anyway, because that is what you are for. The lower town, packed to the walls with the people who came back after the siege. The cathedral whose window she stepped out of. The yard where they buried you. Every one of them sleeps easier under that cloth than they know. If the Wound closes, it will not matter. If it does not, the city will pay for your wager in the only coin demons take.{/n}''',
+    nar("wager", '''{n}Her banner. It was hers before she was a goddess. At the gorge she laid a cloak across the gap. If you carry her sign into the Worldwound, meaning to die there, will she answer it? Nothing obliges her to.{/n}
+{n}It is a wager on the goddess who told you what closing the Wound would cost. She owes you nothing.{/n}
+{n}And the banner has another duty. Without the Sword of Valor, demons can step into Drezen's streets. If the Wound closes, the wager ends there. If it does not, the lower town, the cathedral and the soldiers' families will pay for it.{/n}''',
         c('[Say it aloud to the empty pole] "I\'m going to need your banner back."', flags=(PLAN,)),
         c("[Keep it to yourself. First get the banner back from Iz.]", flags=(PLAN,)),
         c('[Shrug] "Drezen managed seventy years without it. It can manage again."', flags=(PLAN,))),
@@ -426,7 +425,7 @@ remote(E + "dream.summit", "The truth in the square", [
        c("Continue", "truth")),
     io("square", '''"You stood in the square before the cathedral and heard what I came to say." {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "I said it in front of the Lady in Shadow, because she deserved to hear it said. You deserved to hear it differently."''',
        c("Continue", "truth")),
-    io("truth", '''"I told you that the lock will destroy the key. I did not tell you gently. Gentleness would have been a lie of emphasis, and the Lady in Shadow had already left you ignorant; I would not leave you comforted instead." {n}A pause.{/n} "Until my herald's prayer I did not know who you were, and I observed you without intervening. I have stopped observing. I do not know yet what I have started."''',
+    io("truth", '''"I told you that the lock will destroy the key. I did not tell you gently. Gentleness would have been a lie of emphasis, and the Lady in Shadow had already left you ignorant; I would not leave you comforted instead." {n}A pause.{/n} "My herald's dying prayer revealed your origin to me. Until then, I watched without intervening. I have stopped observing. I do not know yet what I have started."''',
        c("Continue", "face", requires=(FALSE_FACE,)),
        c("Continue", "ask", forbids=(FALSE_FACE,))),
     io("face", '''"Something in the Lady in Shadow's city put on my face for you once, in a dream, and asked you to come to it." {n}The voice cools by a degree.{/n} "You knew it for a forgery by what it asked. I observed that. I did not intervene. I would like you to know that I noticed."''',
@@ -467,14 +466,14 @@ remote(E + "dream.herald", "Her herald", [
        c("Continue", "stopped", forbids=(SPOKEN,)),
        c("Continue", "known", requires=(SPOKEN,))),
     io("fell", '''"He is gone."
-{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "I told you in Drezen that I could not say whether he could be saved. You went where I could not go, and decided what I could not decide. I will not pretend I would have decided the same."
+{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "You went where I could not go, and decided what I could not decide. I will not pretend I would have decided the same."
 {n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him."''',
        c("Continue", "stopped", forbids=(SPOKEN,)),
        c("Continue", "known", requires=(SPOKEN,))),
     io("known", '''"I came to tell you that myself, and not through a banner, because it is not a thing to be told through cloth." {n}The white does not waver.{/n} "He served me faithfully, and at the end badly, which was my fault. I will not have his ending carried to you by a flag. That is all. I have a war, and so, still, do you."''',
        c('"Thank you for telling me."', flags=(HERALD_DREAM,)),
        c("[Say nothing, and let her go.]", flags=(HERALD_DREAM,))),
-    io("stopped", '''"Until my herald's prayer I did not know who you were, and I observed you without intervening. You know that; I said it in front of the Lady in Shadow." {n}The white grows closer, the way a room grows closer when someone sits down across from you.{/n} "I have stopped observing."''',
+    io("stopped", '''"My herald's dying prayer told me what had been done to you. Until then, I watched without intervening." {n}The white draws closer.{/n} "I have stopped observing."''',
        c('"You\'re talking to me."', "precedent"),
        c('"Why now?"', "now"),
        c("[Say nothing, and listen.]", "listen")),
@@ -497,10 +496,10 @@ remote(E + "dream.mortal", "What the banner did not see", [
     nar("seen", '''{n}You know it by the pins in the rock and the smell of burned rope. But the dead are not coming, and the torch on the far side has burned down to a coal, and she is sitting on the lip of it with her boots over the drop, the way she sat against the banner's staff in the rain.{/n}
 {n}She is not the goddess of the Summit. She has let herself look as she looked then: the dented helm set down beside her, the braid, the gauntlet worn through at the knuckles. Older than the girl in the rain, though not by much.{/n}''',
         c("Continue", "sit")),
-    nar("unseen", '''{n}You have never seen it, but you know it from the Acts: two iron pins in the rock on either side, and the smell of burned rope, and nothing in between. The dead are not coming. On the far side a torch has burned down to a coal. She is sitting on the lip of the gorge with her boots over the drop.{/n}
-{n}She is not the goddess of the Summit. She has let herself look as she looked then, before the Starstone: a dented helm set down beside her, a braid, a gauntlet worn through at the knuckles. A knight on foot who has marched a long way.{/n}''',
+    nar("unseen", '''{n}You know the tale of the cloak across a gorge. You have not seen this place before: bare rock above a dark gap, iron pins on either bank, and the smell of burned rope. A torch on the far side has burned down to a coal. She sits at the lip with her boots over the drop.{/n}
+{n}She has chosen the shape she wore before the Starstone: a dented helm beside her, a braid, a gauntlet worn through at the knuckles. A knight who has marched a long way.{/n}''',
         c("Continue", "sit")),
-    io("sit", '''"You have seen what my banner remembers. It remembers what a banner sees: my hands, my shoulders, the back of my head." {n}She moves over on the rock.{/n} "Sit. I will show you the rest."''',
+    io("sit", '''"My banner remembers hands, shoulders, the back of a head." {n}She moves over on the rock.{/n} "Sit. This time, look at me."''',
        c("[Sit beside her, with your boots over the drop.]", "hand"),
        c('"Is this you, or a memory of you?"', "which")),
     io("which", '''"It is me, choosing to look as I did. There is a difference, and it is the whole of the difference." {n}She moves over on the rock again, pointedly.{/n}''',
@@ -537,10 +536,10 @@ remote(E + "silence", "No answer", [
 {n}She did not argue with it. She got up and left.{/n}''',
         c("Continue", "cost", requires=(E + "cost.boasted",)),
         c("Continue", "cost_other", forbids=(E + "cost.boasted",))),
-    nar("cost", '''{n}She said she bowed to sacrifices and not to bargains, and that if you meant it you would show her at the Wound. It has taken you two days to understand that she was not being proud. She was telling you exactly what it would take, as she always does, and you were too pleased with yourself to hear it.{/n}''',
+    nar("cost", '''{n}She said she bowed to sacrifices and not to bargains, and that if you meant it you would show her at the Wound. Now you understand that she was not being proud. She was telling you exactly what it would take, as she always does, and you were too pleased with yourself to hear it.{/n}''',
         c("[Resolve to tell her the truth at the Wound, if she asks.]"),
         c("[Resolve not to need her. You have been going into the Wound alone since Kenabres.]")),
-    nar("cost_other", '''{n}She told you that if you had anything better to say, you should say it at the Wound. It has taken you two days to understand that she meant it literally: she will be there, and she will listen, and she will not come here to be told it first.{/n}''',
+    nar("cost_other", '''{n}She told you that if you had anything better to say, you should say it at the Wound. Now you understand that she meant it literally: she will be there, and she will listen, and she will not come here to be told it first.{/n}''',
         c("[Resolve to tell her the truth at the Wound, if she asks.]"),
         c("[Resolve not to need her. You have been going into the Wound alone since Kenabres.]")),
 ], requires=(DECLINED,), forbids=(COMMITTED,), delay=24, chapters=(5,), kind="memory")
@@ -555,9 +554,9 @@ remote(E + "dream.questions", "Not in any report", [
        c('"I was nobody. Then I was the Commander. There wasn\'t much in between."', "nobody"),
        c('"I stole things, before. Never anything that couldn\'t be spared."', "stole"),
        c('"You first."', "first")),
-    io("nobody", '''"Nobody is a great deal to have been. I began there too. There are books now that give me a noble house and a vision in the cradle. I had a borrowed sword, and a sergeant who told me to stop dropping it."''',
+    io("nobody", '''"Then tell me what you remember of being nobody. My priests know the victories. I had to learn to hold a sword before I could win any of them. You may ask about that."''',
        c("Continue", "hers")),
-    io("stole", '''"Everything can be spared, by someone who is not the one losing it." {n}There is no reproach in it tonight, only interest.{/n} "Tell me the best thing you ever stole."''',
+    io("stole", '''"Tell me what you took, and who had to do without it."''',
        c('"A horse, from a man who beat it."', "horse"),
        c('"A kiss. Not from you. Yet."', "kiss")),
     io("horse", '''"Good." {n}Just that, and then, after a moment, as if it had been pried out of her:{/n} "That was a good thing to steal."''',
@@ -578,11 +577,11 @@ remote(E + "dream.questions", "Not in any report", [
        c('"That you won\'t come, and I\'ll have been right to go anyway."', "right"),
        c('"That you will, and I won\'t know what to do with it."', "will"),
        c('"Being forgotten wouldn\'t be so bad. Being remembered wrong would."', "wrong")),
-    io("right", '''"That is a soldier's fear, and an honest one." {n}The voice is very quiet.{/n} "I have had it. It does not go away. It only stops mattering, at the edge."''',
+    io("right", '''"Then you understand what I have promised, and what I have not." {n}Her voice is quiet.{/n} "At the Wound, you will choose. So will I."''',
        c("[Sleep.]")),
     io("will", '''"Then we will have the same problem, and we will argue about it." {n}Something that is nearly a laugh.{/n} "I find I am looking forward to that more than I should."''',
        c("[Sleep.]")),
-    io("wrong", '''"You will be remembered wrong. Everyone is. I am remembered as a woman who never doubted and never ate onions." {n}The white begins to thin.{/n} "The ones who matter will remember you right. I intend to be one of them."''',
+    io("wrong", '''"Then give them something true to remember." {n}The white begins to thin.{/n} "I will remember this conversation. Sleep, Commander."''',
        c("[Sleep.]")),
 ], requires=(COMMITTED,), forbids=(), delay=48, chapters=(5,))
 
@@ -609,8 +608,8 @@ remote(E + "dream.eve", "The night before", [
     nar("o_blank", '''{n}You leave it blank. Let them fill it with whatever they need; people always do. The dead are not consulted about their eulogies, and you are, in every way that the world will ever be told about, going to be dead.{/n}''',
         c("Continue", "o_seal")),
     nar("o_seal", '''{n}You seal it and give it to the quartermaster, to be opened if the Commander does not come back from the Wound. He takes it the way a man takes something hot. You do not tell him that he will open it either way.{/n}''',
-        c("[Go to bed. The banner is beside the cot, rolled on its staff.]", "start")),
-    nar("start", '''{n}You took the banner down from the citadel yourself on the morning the crusade marched, and Drezen watched you do it and did not ask why. Now the whole crusade is awake pretending to sleep. You lie down with the banner rolled on its staff beside you, close enough to touch, and shut your eyes, and she is there before the dark has finished arriving.{/n}''',
+        c('[Go to bed.]', "start")),
+    nar("start", '''{n}The tents are quiet in the last camp before Threshold. Beyond them, the Worldwound stains the sky. You shut your eyes. The dark gives way to white, and her voice reaches you before sleep does.{/n}''',
         c("Continue", "committed", requires=(COMMITTED,)),
         c("Continue", "declined", requires=(DECLINED,), forbids=(COMMITTED,)),
         c("Continue", "unargued", forbids=(COMMITTED, DECLINED, E + "argument_only")),
@@ -624,7 +623,7 @@ remote(E + "dream.eve", "The night before", [
     io("declined", '''"You know why I left your roof." {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}
 "Tomorrow you will stand at the Wound with my banner, and I will be there. Show me. That is all I have left to say to you, and it is not little."''',
        c("Continue", "others")),
-    io("unargued", '''"You never raised it where it flew. The war took the nights, and I do not reproach you for that; it is a war." {n}A pause.{/n} "Tomorrow, at the Wound, raise it, and argue. Briefly. The Worldwound does not wait on disputations."''',
+    io("unargued", '''"You have not brought your case before me. I know what the war has cost you." {n}A pause.{/n} "If you bring my sign to the Wound, make your case there. Briefly. The Worldwound will not wait for us."''',
        c("Continue", "others")),
     io("others", '''"The Architect built you to die in her lock. She is not wrong about the lock. She is wrong about what she is owed for it."
 "And the Lady in Shadow wants you in the Wound as well, for reasons she will call kind. Do not go in for hers. Go in for yours, or do not go."''',
