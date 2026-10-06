@@ -435,10 +435,12 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
     n("night", "Narrator", """{n}Konomi meets the kiss with a quick intake of breath. Her hand tightens at your neck. The next kiss is less careful, and she laughs when the edge of the table catches you both by surprise.{/n}
 "We have discussed this room's furniture quite enough."
 {n}She takes your hand and leads you past it. At the inner door she turns back and starts on your collar herself, briskly, as if she has been wanting to all evening. "I have been sitting across from you all evening pretending to care about mushrooms. Get this off."{/n}
-{n}Her own sash comes loose under your hands; the silk beneath it is warm from the stove and then gone. She pushes you down onto the bed by the shoulders, climbs astride you with her hair falling forward around both your faces, and catches your hands to set them on her hips. "There," she says, very low, and leans down to kiss you, pressing her hips to yours.{/n}
+{n}Her sash comes loose under your hands. She lets the silk fall, then catches your wrists and draws your hands back to her warm skin. She pushes you onto the bed by the shoulders and comes down over you, her hair falling around your faces.{/n}
+"There," {n}she says against your mouth.{/n} "Now you have my attention."
+{n}She kisses you again and pulls you close.{/n}
 {n}Afterward, she lies beside you with one hand resting loosely against your chest. When you move, her fingers close for a moment, then relax.{/n}
 "I had a better answer about the waiting yard," {n}she murmurs.{/n}
-"Now?"
+{n}You turn your head toward her.{/n}
 "No. Tomorrow. I wished you to know that I was heroically withholding it."
 {n}You laugh, and she lifts her head to kiss the laughter from your mouth. When she settles again, she draws your arm around her. Nothing more needs arranging before morning.{/n}""", c('[Stay beside her as the room grows quiet.]', flags=("konomi.ordinary_expanded", "konomi.ordinary_night"))),
     n("air", "Konomi", """{n}She kisses you again before reaching for her coat. Outside, the air is cool enough that you both discover you were more comfortable indoors. Konomi calls this useful information and refuses to turn back immediately.{/n}

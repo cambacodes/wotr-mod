@@ -260,12 +260,14 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
     k("no", '''{n}She sets the pen down and squares it with the edge of the ledger, exactly, before she answers.{/n}
 "Then you want an attaché whose letters you read. I have been that, for the Crown, and I will not be it in your bed." {n}She picks up the fan again. It steadies her hand.{/n} "Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no."''',
       c('[Let her decide] "Your call."', flags=(DECLINED,))),
-    nar("threshold", '''{n}She looks at your hand in hers for a moment, and her thumb moves once across your knuckles.{/n}
-"The next evening," {n}she says,{/n} "is this one."
-{n}The fan closes with a snap. She rises, and the manners she has worn since the day she walked into your council with a scroll under the Queen's seal come off all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}
-"I have wanted this since you shouted at my carriage. Take this robe off me. Slowly. I want to watch your hands."
-{n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings, and lets you look for exactly as long as she has decided you may. Then she kisses you, hard, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}
-{n}She walks you backwards to the desk. A week of Nerosyan's dispatches goes to the floor in a slither of wax and ribbon. She pushes you down across the place where they lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and settles astride your hips, and reaches down between you with her free hand, watching your face the whole time to see what it costs you.{/n}''',
+    nar("threshold", '''{n}Her thumb moves across your knuckles. Then the fan closes with a snap.{/n}
+"The next evening is this one."
+{n}She rises. Her ears tip back and her tail uncurls behind her as she loosens the first tie of her robe.{/n}
+"Take it off. Slowly. I want to watch your hands."
+{n}You ease the silk from one shoulder, then the other. She stands before you with nothing on but her rings. For a moment she lets you look; then her hand closes at your collar and she kisses you hard, nails grazing the back of your neck.{/n}
+{n}She walks you backward to the desk. Dispatches slide to the floor. She pushes you back, comes over you, and holds your wrists above your head.{/n}
+"Keep looking at me."
+{n}Her breath catches as she draws close.{/n}''',
       c("Continue", "morning")),
     nar("morning", '''{n}Morning. She is at your desk in your shirt, composing a dispatch, tail curled round the leg of the chair. The dispatches are stacked again, in order. One of them has a heel print on it.{/n}
 "Nerosyan will hear that I was detained by the Commander on urgent business." {n}She blots the line.{/n} "Entirely accurate."
@@ -312,7 +314,9 @@ physical("konomi.trickster.dismissed.a_season", "A season, abridged", '"You aske
       c('[Balk] "Not in front of the council."', "no")),
     k("yes", '''{n}She reads your face the way she reads a treaty, from the last line backwards, and finds what she wanted in it.{/n}
 "Then we are agreed." {n}Her ears tip back, pleased, and this time she lets them.{/n} "Come here, Commander. I have been told no by nobody tonight, and I intend to keep it that way."
-{n}She rises out of the chair and out of the outer robe in the same motion, lets it pool on the ledger, and pulls you down into the chair she has just left. The silk underneath goes over her head; the rings stay on. She strips your shirt off you with none of the patience she spends on treaties, settles bare across your lap with one knee either side of you and her tail sweeping the floor behind her, takes your hands and puts them on her hips, and sinks down against you with a low, satisfied sound.{/n}''',
+{n}She lets the outer robe pool on the ledger and pulls you into the chair she has just left. The silk underneath goes over her head; the rings stay on. She strips your shirt off with none of the patience she spends on treaties, settles bare across your lap, and draws your hands to her waist. Her tail sweeps the floor as she leans in to kiss you, then catches your lower lip between her teeth.{/n}
+"You may argue with me in the morning."
+{n}She reaches for your belt and kisses you again before you can answer.{/n}''',
       c("Continue", "council", forbids=(SETTLED,)),       # retired by gating (index kept): the morning comes first
       c("Continue", "a_season_morning")),
     k("a_season_morning", '''{n}Morning. She has taken the good side of your bed and the better half of your blanket, and she is reading your dispatches over your shoulder before you are awake enough to stop her.{/n}
@@ -489,7 +493,10 @@ physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"Yo
     k("paid", '''"Every line." {n}She looks at the ink as if it might be forged.{/n} "Nobody in Mendev pays the first figure. You have either a great deal of money or a very poor sense of how to keep it." {n}She taps the last line with her fan.{/n} "That one I still have not priced."''',
       c("Continue", "terms")),
     k("terms", '''"Here are my terms for it." {n}She closes the thin ledger.{/n} "Supper. Here, at this desk, once a week, at your expense, until one of us loses an argument we both care about. You may not bring your advisers. I may not bring my correspondents. Whoever concedes first pays for the wine."
-{n}She does not look away while she says the rest, which costs her something.{/n} "Since I came through your gate this city has looked at me as a clerical error with ears. I should like one person in it to look at me across a table as something else." {n}She lets that stand, and does not dress it.{/n} "Those are my terms."''',
+{n}She closes the ledger and leaves her hand on it.{/n}
+"You brought an attaché here by bowing to a jug. I should like to discover what you wanted from the woman whose name you used. Across a table, with wine."
+{n}She meets your eyes.{/n}
+"That is the offer."''',
       c('[Accept her terms] "Done. I\'ll bring the wine; I expect to pay for it."', "accept", flags=(ROOMS_KEPT,),
         forbids=(ACCREDITED,)),   # retired (PP5 r2): the first supper comes first
       c('"Business only, Lady Konomi. The council table is enough."', "business", flags=(ENVOY,)),
@@ -508,13 +515,17 @@ physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"Yo
 {n}She refills your cup without being asked, which in Nerosyan is a concession, and leaves the bottle on your side of the desk.{/n}''',
       c("Continue", "stay")),
     k("supper_you", '''"An excuse." {n}She sets her fan down on the ledger, closed.{/n} "You bowed to a jug in full council as an excuse."
-{n}For a moment she looks as though she means to bill you for it. Then she laughs, low, the first unguarded sound you have heard from her.{/n} "Nobody has ever gone to so much trouble to be rude to me."''',
+{n}For a moment she looks as though she means to bill you for it. Then she laughs, low.{/n}
+"I have received prettier invitations. I cannot remember one that caused so much trouble."''',
       c("Continue", "stay")),
     k("stay", '''{n}The candle is half gone. The chancery boy comes back for the plates and is sent away again without them.{/n}
 "The terms said supper," {n}she says.{/n} "They said nothing about when supper ends."''',
       c("[Stay.]", "accept", flags=(ROOMS_KEPT,))),
-    nar("accept", '''{n}She comes round the desk, takes the account out of your hand and drops it in the drawer, and then takes you by the front of your coat and walks you back until the edge of her desk is behind your knees. Her rings come off one at a time into the inkwell lid, unhurried, as if she were laying down a hand of cards. The court silks go over her head; she sweeps the ledger off the desk with her tail and sits you down on the cleared wood, and settles across your lap with one knee either side of you, and puts her hands flat on your chest as if she were still deciding the price.{/n}
-{n}"I lose this argument," she says against your mouth, "on purpose. Do not get used to it," and pushes you down.{/n}''',
+    nar("accept", '''{n}She takes the account from your hand and shuts it in the drawer. Then she takes you by the coat and walks you backward to the desk. Her rings come off into the inkwell lid, one at a time. You loosen her sash; the silk falls against your hands.{/n}
+"That is enough counting."
+{n}She sweeps the ledger aside with her tail and seats you on the cleared wood. Her hands slide inside your coat, then tug it from your shoulders. She settles across your lap, bare skin warm beneath your palms, and kisses you until her breath is as unsteady as yours.{/n}
+"I lose this argument on purpose. Do not get used to it."
+{n}Her hand grips the back of your neck. She presses you back onto the desk and follows, her mouth still on yours.{/n}''',
       c("Continue", "morning")),
     k("morning", '''{n}In the morning she is at the desk again, dressed, writing, with your coat over the back of her chair as if she had won it.{/n}
 "I have entered last night as a supper," {n}she says, without looking up.{/n} "The wine is on your account. The rest is not for sale." {n}Her ears are pink to the tips.{/n} "Same time next week, Commander. Do not be late twice."''',
@@ -674,9 +685,15 @@ PUBLIC_BURIED_TEXT = (
 
 AUDIENCE_ANSWER = '"You chose a better room than the attaché\'s office."'
 COURTYARD_NODES = [
-    k("again_audience", '''"I did. The office has a jug in it now, on a shelf, with a label. The chancery will not let anyone move it."
+    k("again_audience", '''"I did. Your office has a jug in it, and apparently it must remain there."
 {n}She settles into her chair and arranges her sleeves.{/n}
-"I have been received, Commander. I have presented my credentials twice, which is once more than any court has ever required of me. This afternoon I should like to find out what you are like when you are not bowing to crockery."''',
+"You have seen my credentials. This afternoon I should like to discover what you are like when neither of us is conducting an audience."''',
+      c('"Then tell me about the work you chose."', "work"),
+      c('"I would like to spend some of it simply enjoying your company."', "company")),
+    k("again_letter", '''{n}Konomi inclines her head, then indicates the chair beside her.{/n}
+"Lady Konomi, official attaché of Nerosyan. I thought I should say it myself before your chancery appointed another piece of crockery."
+{n}Her mouth curves.{/n}
+"You went to considerable trouble to bring me to Drezen. Now you have an afternoon to explain what you wanted. You may choose the subject."''',
       c('"Then tell me about the work you chose."', "work"),
       c('"I would like to spend some of it simply enjoying your company."', "company")),
 ]
@@ -717,11 +734,14 @@ def integrate(payload):
     _scene(by_id, "konomi.return_letter")["Forbids"].append(PRIMED)
     _scene(by_id, "konomi.the_answer_she_addressed")["Forbids"].append(ACCREDITED)
 
-    # The courtyard knows she was received in person, not by an answered letter.
+    # A completed physical audience supplies the witnessed credentials; its letter twin does not.
     courtyard = _scene(by_id, "konomi.the_courtyard_introduction")
     start = _node(courtyard, "start")
     _gate(start["Choices"][1], forbids=(ACCREDITED,))
-    start["Choices"].append(c(AUDIENCE_ANSWER, "again_audience", requires=(ACCREDITED,)))
+    audience = "konomi.trickster.never_arrived.audience"
+    start["Choices"].append(c(AUDIENCE_ANSWER, "again_audience", requires=(ACCREDITED, audience)))
+    start["Choices"].append(c('"Lady Konomi. At last we can speak face to face."', "again_letter",
+                              requires=(ACCREDITED,), forbids=(audience,)))
     courtyard["Nodes"].extend(COURTYARD_NODES)
 
     for id in LIVING_ENDINGS:

@@ -103,7 +103,8 @@ s("chosen_evening", "The evening she asked for", [
     n("night", "Konomi", '''{n}She takes your hand and rises with you. When you kiss her, she answers with an eagerness that makes the careful beginning of the evening seem very far away.{/n}
 {n}Her fingers close on your collar. She draws you back when you start to speak.{/n}
 "You may tell me afterward. I have waited through an entire correspondence for this; I am not waiting through a speech."
-{n}She walks you backward to the bed without letting go of the collar, and only releases it to shrug the travelling coat off her shoulders and tug her sash free. The robe under it she lets you open yourself. She is warm and quick-breathing beneath it, and she laughs, low, when your hands are not fast enough, and finishes the last of your fastenings for you. Then she pushes you down, follows, and settles astride your hips with her loosened hair falling around you both, guiding your hands up her sides as she leans down, rocking her hips against you.{/n}''', c('[Stay together through the night.]', "morning")),
+{n}She walks you backward to the bed by your collar, then releases it to shrug off her coat and pull her sash free. You open the robe. She presses into your hands, warm and quick-breathing, and gives a low, impatient laugh when your fingers pause. Her own fingers finish your fastenings.{/n}
+{n}She pushes you back onto the bed and follows, kissing you until both of you need breath. Her loose hair brushes your chest. She draws your hands to her bare sides and pulls you closer.{/n}''', c('[Stay together through the night.]', "morning")),
     n("quiet", "Konomi", '''"Gladly."
 {n}She settles beside you. At first she keeps finding reasons to speak; then she puts her head against your shoulder and lets one unfinished sentence remain unfinished.{/n}
 {n}You stay like that until a noise in the passage makes her lift her head. She looks toward the door, then settles back against you with a small, satisfied breath.{/n}
@@ -143,7 +144,7 @@ s("private_future_choice", "The journeys after this one", [
     n("commit", "Konomi", '''{n}She takes a breath, and for once does not turn it immediately into an answer.{/n}
 "Yes. I would like that."
 {n}Her hand finds yours.{/n}
-"Then here is the treaty. You are consulted before I buy a seat on any wagon. You name your evenings in advance and I name mine, and neither of us pleads the war afterward. When one of us breaks them, the other sends a very disagreeable letter."
+"Then here is the treaty. Tell me before you march, and I shall tell you before I buy a seat on a wagon. If the war takes an evening from us, send word when you can. I would rather curse a demon than spend the night wondering whether you forgot me."
 {n}She smiles at you.{/n}
 "There will also be days when I arrive earlier than expected. I have been thinking about those."''',
       c('"Every article agreed. And I keep the promises I have made elsewhere. You would think less of me if I broke them."', "kept", flags=("konomi.committed", "konomi.private_future_committed"))),

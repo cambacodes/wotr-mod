@@ -1,4 +1,8 @@
-"""Native political context without treating a shown dialogue as completed business."""
+"""Native political context without treating a shown dialogue as completed business.
+
+The crisis recommendation to Nerosyan is authored; its failing services, unsafe roads
+and famine threat come from Diplomacy_Officer/Cue_0032 (07459f4d09fa81e4b99beea351fb0434).
+"""
 from story_format import c, n, scene
 
 STARTED_DIALOGS = {
@@ -50,13 +54,11 @@ def pages(private):
 "Certainly. I expect them to argue with me. We shall manage better if neither side begins by calling disagreement ingratitude."
 {n}She looks toward the closed writing case.{/n}
 "I want a part in those decisions. Peace should leave us better occupations than defending our wartime reputations."''', c('[Ask what that means for her own work.]', "council")),
-        n("crisis", "Konomi", '''"The divisions in Nerosyan are doing damage far beyond the rooms where the arguments begin. Public services are failing. Roads are unsafe. The danger of famine grows while people debate who deserves to issue the next instruction."
-{n}She stops herself from unfolding the letter.{/n}
-"I have a great many opinions about that. You know several of them already. Tonight I wanted you to understand that sharing your supper table does not buy you a quieter envoy."
-"I have not asked for one."
-"No. Men in your position rarely ask. They wait for the woman to soften, and when she does not, they write to the capital for a more agreeable one. I want a country capable of governing itself. There are evenings when wanting it makes me very poor company."
-{n}Her glance toward you is dry.{/n}
-"You are permitted to say so. Preferably with a better argument than that I would look prettier if I smiled."''', c('[Ask how she sees her work continuing.]', "council")),
+        n("crisis", "Konomi", '''"The divisions in Nerosyan are doing damage far beyond the rooms where the arguments begin. Services are failing. Roads are unsafe. The danger of famine grows while people debate who should issue the next instruction."
+{n}She leaves the letter folded.{/n}
+"I have advised the capital to settle that question before the hungry settle it for them. Some of the recipients will find the warning insolent. They may commission a more flattering report if they wish; it will not feed anyone."
+{n}She looks at you, her expression hard.{/n}
+"You share my supper table, Commander. You do not buy my silence with it. I still want a country capable of governing itself. I intend to have a part in governing it."''', c('[Ask how she sees her work continuing.]', "council")),
         n("uncertain", "Konomi", '''"I will not give you a convenient ending to a dispute merely because it would make this conversation easier. There are accounts I would need to check before attaching my name to one."
 {n}She taps the folded letter without opening it.{/n}
 "What I can tell you is what I intend to keep asking. Who can still do the work they claim to control? Who answers when a promise fails? Which ally has begun to confuse being needed with being entitled?"
