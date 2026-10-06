@@ -1,0 +1,33 @@
+{
+  "terendelev": {
+    "device_class": "isolation_via_canon_events",
+    "setting": "Drezen north turret above Commander's rooms, one healing watch after Iz",
+    "payoff_shape": "protector sets aside the pike for a night and dresses the permanent wound in her shirt at dawn",
+    "canon_hooks": [
+      {
+        "guid": "13348209e0362a245870aeebaee13d08",
+        "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0033.jbp",
+        "key": "616d8c11-0de8-4754-94d2-921dbc39fcac",
+        "native_excerpt": "\"We honor our oaths, and respect the rules. We follow a code of honor. The older a silver dragon becomes, the more it adheres to these customs and rituals. Even our brethren, the other metallic dragons, often fail to understand our way of life. Many believe that the rules we follow are outdated and obsolete. But our elders live such pure, beautiful lives... It is a shame that the other dragons do not see the value of such a lifestyle. I am still ",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "af5d0b6be337672478f086357442cd15",
+        "path": "World/Dialogs/c4/Palace/Audience_Areelu/Cue_0095.jbp",
+        "key": "0a5e8edf-51d5-469c-a040-3f3281ae213e",
+        "native_excerpt": "\"But there is more. Do you remember when you were taken to Kenabres with a wound that would not heal? Do you remember how Terendelev apparently healed you? That was merely an illusion. The dragon was only able to temporarily dull the pain. In fact, it was I who saved you, when I came to you in the caves and implanted a crystal within you. No, 'saved' is not the right word. Your wound is still not healed. That is why your wound weeps blood from ti",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "87fdbffb9974f3e4e91b9734229e1b61",
+        "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0030.jbp",
+        "key": "80dfc2d2-bda4-4e7d-8555-d823c4b47ad9",
+        "native_excerpt": "\"An undead monster created from Terendelev's remains has made its lair nearby. I see it as my sacred duty to honor her memory and destroy her abominable imitation.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}

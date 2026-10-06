@@ -571,7 +571,7 @@ watch(P + "watch.morning", "The dressing", '"You\'re early."', [
        c("Continue", "end")),
     te("rather", '''{n}Her head comes up sharply.{/n} "Do not even say it." {n}And then, more gently, because you meant it, and she can see that you did:{/n} "I kept a city against that thing for longer than you have been alive. If it closes and takes me with it, I will count that a very good bargain, and so will you, eventually. Close it. That is an order, from the watch."''',
        c("Continue", "end")),
-    te("end", '''{n}She pins the dressing, and gathers up the old linen, and at the door she stops.{/n} "Every morning, at this hour. Whatever becomes of me. If I am there, I will be here." {n}Then she goes, and you hear her on the stair, humming something under her breath that sounds very much like a Kenabres festival song.{/n}''',
+    te("end", '''{n}She pins the dressing, and gathers up the old linen, and at the door she stops.{/n} "If the dressing opens on the march, send a messenger. Do not wait for it to soak your coat." {n}Then she goes, and you hear her on the stair, humming something under her breath that sounds very much like a Kenabres festival song.{/n}''',
        c("[Finish dressing.]")),
 ], requires=(NIGHT,), delay=24)
 
@@ -611,7 +611,7 @@ SCENES.append(scene(P + "watch.third_bell", "The third bell", "Terendelev", 5, "
     te("in", '''"I am sorry. I know the hour." {n}She does not come further in than the doorway.{/n} "I put out my candle to sleep and it was dark, and in the dark I was back in the bones, and I could feel his purpose pulling at me like a hook in the mouth. Guard Iz. Kill whoever comes." {n}Her hand is shaking; the candle-flame shakes with it.{/n} "I lit the candle again. It burned down. I did not know where else to go that had a light in it."''',
        c('"Come in. Sit by the fire. I\'ll sit up with you."', "fire"),
        c('[Take the candle from her and light a fresh one from it.]', "fire")),
-    nar("fire", '''{n}She sits on the floor by your hearth with her back against the side of the chair and her knees drawn up, as close to the fire as she can get without being in it. You sit in the chair. After a while, without either of you deciding it, her head comes to rest against your knee.{/n}
+    nar("fire", '''{n}She sits on the floor by your hearth with her back against the side of the chair and her knees drawn up, as close to the fire as she can get without being in it. You sit in the chair. She sets the candle on the hearthstone. After a while she leans her head against your knee and closes her eyes.{/n}
 {n}Neither of you says anything for a long time. The fire mutters. The sentries call the fourth bell along the walls.{/n}''',
         c("Continue", "talk")),
     te("talk", '''"In Kenabres I slept on the cathedral roof, most nights, in my true shape, curled round the bell-tower like a cat round a milk jug. The bell used to wake me every hour. I liked it. It meant the city was still there to ring it." {n}Her voice is drowsy now.{/n} "I have not slept a whole night since Iz. Talk to me, crusader. About anything. I do not care what. Only let there be a voice in the room that is not his."''',
@@ -711,7 +711,7 @@ SCENES.append(reaction("Daeran", P + "react.daeran.cousin", (RETURNED,),
     entry='"You look amused, Daeran."', chapter=5, last=5, delay=24, portrait="Daeran"))
 
 SCENES.append(reaction("Regill", P + "react.regill.unsanctioned", (RETURNED,),
-    '''{n}Regill does not look up from his report.{/n} "An undead abomination of the Abyss, destroyed by crusade forces at Iz. And then restored, in the field, by the Commander, by an unsanctioned rite of the Commander's own devising, using the Commander's own blood." {n}He sets the pen down.{/n} "There is no article of any code I know that covers it. I have looked. The Order would call it imprudence bordering on criminality." {n}He turns the page over.{/n} "She stood the night watch on the north wall three times this week and reported two lapses among the sentries, both correct. I have noted it. That is all."''',
+    '''{n}Regill slides the marked sentry reports across the desk.{/n} "An undead abomination of the Abyss, destroyed by crusade forces at Iz. And then restored, in the field, by the Commander, by an unsanctioned rite of the Commander's own devising, using the Commander's own blood." {n}He sets the pen down.{/n} "There is no article of any code I know that covers it. I have looked. The Order would call it imprudence bordering on criminality." {n}He turns the page over.{/n} "She stood the night watch on the north wall three times this week and reported two lapses among the sentries, both correct. I have noted it. That is all."''',
     answer_list="2366a8db6481070439fee222c0c52e45", relationship=REL, forbids=("regill.dead", "regill.kicked_out", "regill.left_plot", CLOSED, "chapter_later"),   # retired (Q6 r2, COX)
     entry='"You have something to say, Regill."', chapter=5, last=5, delay=48, portrait="Regill"))
 
@@ -824,6 +824,7 @@ watch(P + "watch.scales", "The silver that stayed", '"You\'re wearing your shirt
 SCENES.append(reaction("Seelah", P + "react.seelah.alive", (RETURNED,),
     '{n}Seelah is sitting very still, which is not like her.{/n} "I went down to the lower town to see for myself. She was in the lower town, watching the street. She looked up and said my name the way the old sisters at the chapel used to, and asked me if I\'d kept my oath." {n}She laughs, and it cracks in the middle.{/n} "I watched her die over Kenabres from a roof, Commander. I prayed so hard my knees bled through my hose. And she asked me if I\'d kept my oath." {n}She wipes her face on her sleeve, fiercely.{/n} "I said yes. It\'s true. I\'m going to go back tomorrow and tell her properly."',
     answer_list="417fa384f3250634bb71859fbc913453", relationship=REL, forbids=("seelah_dead", "seelah_gone", CLOSED),
+    ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"},
     entry='"You look like you\'ve seen a ghost, Seelah."', chapter=5, last=5, delay=24, portrait="Seelah"))
 
 # --- 26. A message for the knight: Irabeth -------------------------------------------------------------------------------
@@ -1070,3 +1071,114 @@ def polish_memory_answers(payload):
     scenes.remove(coda)
     anchor = next(i for i, s in enumerate(scenes) if s["Id"] == P + "epilogue.rest")
     scenes.insert(anchor + 1, coda)
+
+
+# Round 2: one shared healing watch; no new romance or medical prerequisite.
+from storylines.terendelev_trickster import HAL_MET, HAL_LETTER, DESKARI_NOTICE, DESKARI_SETTLED
+for _s in SCENES:
+    _base = _s["Id"].removesuffix("_awning")
+    _nodes = {nd["Id"]: nd for nd in _s["Nodes"]}
+    if _base == P + "commit":
+        _nodes["start"]["Text"] = ('{n}She takes you up to the north turret at dusk. Below, the infirmary windows '
+            'are lit; the men who could not leave Iz on their own feet are still being carried in. A garrison helper '
+            'waits by the brazier with boiled linen and a basin. Terendelev has brought a blanket and her pike.{/n}')
+        _nodes["dressing"]["Text"] = ('{n}The helper cuts away the old linen while Terendelev steadies your shoulder. '
+            'She speaks her healing words; the pain eases, but the wound stays open. Together they bind it. '
+            'She checks the knot, sends the basin down to the infirmary, and waits until the helper has gone.{/n}')
+        _nodes["invite"]["Text"] = ('"That is the dressing done." {n}She draws your coat closed and keeps her '
+            'fingers on its collar.{/n} "I am taking the watch tonight. Come up after the second bell. '
+            'I should like you here when there is no basin between us."')
+        _nodes["invite"]["Choices"][0]["Text"] = '"Keep me a place by the brazier."'
+    if _base == P + "night.watch":
+        _nodes["start"]["Text"] = ('{n}At the top of the stair a helper hands you the last bundle of clean linen '
+            'and goes down with the empty basin. Terendelev has finished tending the wounded below. She stands '
+            'at the parapet, cloak drawn tight, pike under her arm. Snow melts on the rim of the brazier.{/n} '
+            '"Put that down. The dressing can wait until dawn."')
+        _nodes["want"]["Text"] = ('{n}You lay the linen by the brazier. She watches your hands, then your face. '
+            'Below, a stretcher party calls for the infirmary door to be opened. She waits until the door shuts.{/n} '
+            '"They have their healer tonight. Now I want you." {n}She sets the pike against the parapet and '
+            'holds out her hand.{/n} "Come here."')
+        _nodes["want"]["Choices"].append(c('"Let me sit with you tonight. Nothing more."', "company"))
+        _s["Nodes"].append(te("company", '{n}She gathers the blanket and makes room beside the brazier.{/n} '
+            '"Then sit close. You are taking half the blanket, and I shall take half your warmth." '
+            '{n}At the next bell she takes up the pike again.{/n}', c("[Stay beside her.]", abort=True)))
+        _nodes["wound"]["Text"] = ('{n}She feels the knot through your shirt, checks that it has held, then '
+            'withdraws her hand. Her fingers catch your jaw instead. She kisses you hard enough to press your '
+            'shoulders against the stone; when you pull her closer she laughs against your mouth and kisses you again.{/n}')
+        _nodes["cut"]["Text"] = ('{n}"Closer," she says, with her hands spread on your back. '
+            'She pulls the edge of the cloak over your shoulders.{/n}')
+        _slot = _s["Id"] + ".explicit.1"
+        _nodes["cut"]["Choices"][0]["Next"] = _slot
+        # Explicit slot: her chosen night beneath the cloak; continue into the grey hour and shirt dressing.
+        _s["Nodes"].append(nar(_slot, '{n}Terendelev draws you into a fierce kiss. '
+            'The cloak closes over you both; the pike rests against the parapet.{/n}', c("Continue", "grey")))
+        _nodes["sentry"]["Text"] = ('"Nothing to report," {n}Terendelev tells the sentry. He coughs, salutes, '
+            'and fixes his eyes on the road. One bare shoulder shows above her cloak. She tucks it out of sight '
+            'and presses her palm against the new dressing.{/n} "That will hold. I want breakfast before the next one. '
+            'And a shirt."')
+    if _base == P + "watch.refugees":
+        _nodes["old"]["Text"] += (' {n}Terendelev bends over the tray.{/n} "The blue one. Did you leave me '
+            'the extra length for the gate?" {n}The old woman nods through her tears. Terendelev lays a coin '
+            'on the tray and takes the ribbon.{/n}')
+    if _base == P + "watch.morning":
+        _nodes["start"]["Text"] += (' {n}With the knot finished, she puts the linen aside and kisses you. '
+            'Her hand stays at your cheek. Then she looks toward the packed saddlebags.{/n}')
+    if _base == P + "watch.deskari":
+        _notice = _nodes["ask"]["Choices"][2]
+        # The legacy receipt remains a personal grudge beat; NOTICE distinguishes word from escort.
+        _notice["Set"].append(DESKARI_NOTICE)
+        _notice["Next"] = "notice"
+        _s["Nodes"].append(te("notice", '"Word, then. I shall expect word." '
+            '{n}She folds her hands over the pike.{/n} "I have waited in silence quite long enough."',
+            c("[Leave her with it.]")))
+    if _base == P + "watch.letter":
+        _nodes["start"]["Choices"].append(c('"I met him at your old refuge. He told me how he helped you."',
+            "hal", requires=(HAL_MET,)))
+        _s["Nodes"].append(te("hal", '"Alive." {n}She sets the pen down.{/n} "And you stood where '
+            'he stood when I could not bear to look at him. I am glad." {n}She draws a fresh sheet toward her.{/n} '
+            '"He may have flown elsewhere by now. But a courier can leave this at the refuge. '
+            'I shall write the address myself."', c('"What will you tell him?"', "tell", flags=(HAL_LETTER,))))
+        _nodes["seal"]["Choices"][0]["Forbids"].append(HAL_LETTER)
+        _nodes["seal"]["Choices"][0]["Next"] = "pass"
+        _s["Nodes"].append(te("pass", '"There is a pass north of Drezen where the caravans go. '
+            'I shall ask a driver to leave it on the highest sheltered rock he passes." '
+            '{n}She tucks the letter into her coat.{/n} "I shall ask the next driver."',
+            c("[Leave her to her ink.]")))
+        _nodes["seal"]["Choices"].append(c("[Take the addressed letter for the courier.]", "refuge",
+            requires=(HAL_LETTER,)))
+        _s["Nodes"].append(te("refuge", '{n}She crosses out the northern pass and writes directions '
+            'to her old refuge beneath the seal.{/n} "Leave it out of the rain. That is all. '
+            'Do not ask the courier to wait for a dragon." {n}She gives you the folded sheet.{/n}',
+            c("[Send it with the next courier.]")))
+        _nodes["seal"]["Text"] = ('{n}She presses her thumb into the candle wax and turns the letter over.{/n} '
+            '"For a dragon, a sheltered ledge will serve as a letter-box. Somebody may find it in a year, or ten. '
+            'I find I have missed sending them."')
+    if _base == P + "watch.galfrey":
+        for _key in ("queen_back", "queen_back_priestess"):
+            _nodes[_key]["Text"] = _nodes[_key]["Text"].replace('I saw her cross the chapel yard last night,',
+                'I recognised Kitrane in the chapel yard last night,').replace('One day I shall speak to her in private.',
+                'The Queen stays dead to the world. If Kitrane wishes to speak to me, I shall meet her in private.')
+
+# The existing war-table conversation collects the escort debt before departure.
+# Original exits stay selectable; the appended question neither gates romance nor forces attendance.
+for _s in SCENES:
+    if _s["Id"] not in (P + "watch.war_table", P + "watch.war_table_awning"):
+        continue
+    for _node in _s["Nodes"]:
+        if _node["Id"] in ("blood", "no"):
+            _node["Choices"].append(c('"About taking you to face Deskari. The army is nearly ready."',
+                "departure", requires=(DESKARI_VOW,), forbids=(DESKARI_NOTICE, DESKARI_SETTLED)))
+    _s["Nodes"].extend([
+        te("departure", '{n}Terendelev lays the infirmary roll beside the map. She taps three names.{/n} '
+            '"These cannot walk. Those six can, if someone changes their dressings. You promised me Deskari. '
+            'I counted them this morning, and I have changed my mind."',
+            c('"You want to stay?"', "departure_stay"),
+            c('"My promise stands. There is a horse for you."', "departure_stay")),
+        te("departure_stay", '"Give it to a wounded man. I shall keep this watch." {n}She folds the roll.{/n} '
+            '"I want his death as much as I did at Iz. But he has had my body march to his purpose once. '
+            'He will not set its road again. I release you from the promise. If you face him, finish it."',
+            c('"I will send word."', "departure_end", flags=(DESKARI_SETTLED,))),
+        te("departure_end", '{n}She gathers the roll and the bloody handkerchief.{/n} '
+            '"There. My place in the column is settled. Now go and sleep. You will have enough sleepless '
+            'nights ahead." {n}She takes the roll back to the infirmary.{/n}', c("[Let her go.]")),
+    ])
