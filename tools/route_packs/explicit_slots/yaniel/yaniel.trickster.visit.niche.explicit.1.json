@@ -1,0 +1,40 @@
+{
+  "voice": "YANIEL: older half-elf paladin of Iomedae; terse, battle-seasoned, obstinate, dryly amused, impatient with reverence that erases the living woman. Desire is direct and chosen. Practical hands, rough humor, occasional soldier's profanity; no coy maiden voice, therapy vocabulary, emancipation slogans or narrator moral. She retains her faith and hatred of her captors. Write fresh dialogue, not quotations from this brief.",
+  "facts": [
+    "Native TrueYaniel/Cue_0001 describes an older blue-eyed woman who helps other captives down from hooks.",
+    "The route spec identifies her as a half-elf paladin of Iomedae. TrueYaniel/Cue_0044 establishes her continued faith through captivity.",
+    "TrueYaniel/Cue_0021 and Cue_0023 establish Minagho's trophy captivity, Areelu's prior imprisonment and her repeated resistance. Abuse is not evidence of a desired sexual practice.",
+    "Joran is dead, and his attachment was unrequited. There is no living spouse or lover present or due to interrupt.",
+    "Do not invent intimate anatomy, body measurements, tattoos, fertility, prior sexual practices or racial physiology. Gray hair, lean build, visible scars, clothing and their arrangement are current authored staging, not newly verified native physical facts."
+  ],
+  "scene": "Authored Trickster Chapter 5 romance continuation at Yaniel's existing temporary martyr-statue niche beneath Drezen's east gate. The watch has been relieved. Only Yaniel and the Commander are present; both have already chosen the relationship and this encounter. The lamp is lit, her cloak lies on the stone, and she has drawn the Commander down with a kiss and directed their hand to the last fastening. This is their first sexual night, not the confession, a rescue reward, an oath payment or forgiveness. The reserved insert covers their mutually desired sexual encounter; this brief supplies no explicit prose or anatomical choreography. Keep the situation personal to a living soldier beneath an idealized statue, without treating faith as a fetish or captivity as erotic. Do not introduce an interruption, a new participant, magic, intoxication or a new condition for her affection. Dawn and the watch remain outside this insert. Do not specify where Radiance or the cuff is: custody and worn/packed histories differ.",
+  "required_beats": [
+    "Continue directly from her chosen initiating motion, without repeating the undressing or resetting the scene.",
+    "Make mutual desire and her active decision visible; retain her blunt veteran's voice and her ability to direct the encounter.",
+    "Keep a short practical complaint about the cold flags or lamp to tie intimacy to this location rather than generic romance.",
+    "Her pleasure neither settles the pending sword oath nor forgives a broken word or the Commander's connection to her captor.",
+    "No hurt demanded because of trauma, no captive-role reenactment, no body canon invented, no mechanical flag awarded by the act.",
+    "End with the exact nonexplicit last line. The next existing paragraph starts afterwards with the lamp burned low, Yaniel against the plinth in the Commander's shirt. Do not write the morning, Radiance argument or Seelah witness inside the insert."
+  ],
+  "last_line": "N: Above you, the painted martyr keeps her eyes on heaven.",
+  "speakers": {
+    "Y": "Yaniel",
+    "N": "Narration"
+  },
+  "example": "N: Yaniel pulls the cloak clear of a cold patch of stone and catches your sleeve.\nY: Come closer. I did not drag you off the wall to watch you shiver.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18,
+  "default_text": "{n}She catches your hand at the last fastening and draws you down onto her cloak. Above you, the painted martyr keeps her eyes on heaven.{/n}",
+  "continuity": {
+    "scene_id": "yaniel.trickster.visit.niche",
+    "predecessor_node": "threshold2",
+    "successor_node": "morning",
+    "slot_id": "yaniel.trickster.visit.niche.explicit.1",
+    "speaker_tags": "Y for Yaniel; N for narration. Commander speech stays in player answers, not an NPC paragraph.",
+    "implementation_status": "Implemented: appended slot; existing threshold2 continuation enters it. Its default rejoins morning or the appended worn-cuff morning, according to actual cuff ownership."
+  }
+}

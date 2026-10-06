@@ -53,9 +53,9 @@ visit(Y + "ch3.nerosyan", "The tree by the town hall", [
 "The old tree by the town hall is in leaf, and not in bloom. I stood under it anyway. It is a great deal bigger than it was. So, I suppose, am I, in the wrong direction."''',
        c("Continue", "statue_told", requires=(TOLD_STATUE,)),
        c("Continue", "statue", forbids=(TOLD_STATUE,))),
-    yn("statue_told", '''"You told me in the Fane there was a statue of me. You did not tell me it was twice my height, in the middle of the cathedral square, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands."''',
+    yn("statue_told", '''"You told me in the Fane there was a statue of me. You did not tell me it was twice my height, in the middle of the cathedral square, with Radiance held up at the sky and a smooth, unmarked face. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands."''',
        c("Continue", "statue_end")),
-    yn("statue", '''"They have a statue of me in the cathedral square. You did not tell me that. Stone, twice my height, with Radiance held up at the sky and a face on it like a girl who has never been hungry. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands."''',
+    yn("statue", '''"They have a statue of me in the cathedral square. You did not tell me that. Stone, twice my height, with Radiance held up at the sky and a smooth, unmarked face. The pilgrims leave candles at its feet. I went and stood among them one evening with my hood up. An old woman next to me was praying for her grandson at the front, to me, and I stood there beside her and did not know what to do with my hands."''',
        c("Continue", "statue_end")),
     yn("statue_end", '''"The chaplains want to send the statue to Drezen on an ox-cart. They have been arguing about the escort for a week. I am going too. I intend to get there before it does. Come and find me, Commander, if you are anywhere near the city. I should like to see what you have done with Drezen.
 "Y."''',
@@ -191,8 +191,8 @@ hub(Y + "beat.walls", "The city as it was", '"Walk the wall with me?"', [
     yn("way", '''{n}She nods slowly, as though you had given the right answer in a drill.{/n}
 "That is how I found out what I was. On the way. Minagho found out on the way too; she found out I would not break, and it annoyed her very much." {n}Her mouth twitches.{/n} "Do not let anyone finish finding you out before you do, Commander. It is a great waste of a person."''',
        c("Continue", "end")),
-    yn("flirt", '''{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low, surprised, and puts her hand over her mouth, like a girl caught laughing in chapel.{/n}
-"Since the Fane." {n}The hand comes down.{/n} "You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since." {n}She shakes her head.{/n} "Then you can stand the middle watch with me tomorrow and think about me from closer. Bring a cloak. It is cold up here, and I am not lending you mine."''',
+    yn("flirt", '''{n}She looks at you for a moment as if you had spoken in the tongue of the Abyss. Then she laughs, low and rough, and catches your sleeve before you can step back.{/n}
+"Since the Fane." {n}Her grip stays on your sleeve.{/n} "You saw me on a hook, gray as a rat, stinking, with all of Minagho still on me, and you have been thinking about me since." {n}She shakes her head.{/n} "Then come for the middle watch and think about me from closer. Bring a cloak. It is cold up here, and I am not lending you mine."''',
        c("Continue", "end")),
     nar("end", '''{n}She walks you back to the gate tower. At the foot of the stair she stops, and for a moment you think she is going to say something else. Instead she reaches out and touches your wrist, where the iron sits, or where your pack strap crosses it, with two fingers, the way you might touch a door to see if the fire behind it has gone out. Then she goes up the stair to her watch.{/n}''',
         c("[Go down into the city.]", flags=(B_WALLS,))),
@@ -201,7 +201,7 @@ hub(Y + "beat.walls", "The city as it was", '"Walk the wall with me?"', [
 hub(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", '"There\'s a crowd at the east gate."', [
     nar("start", '''{n}The ox-cart from Nerosyan comes in at the east gate in the middle of the morning, with a crowd of pilgrims behind it and a crowd of chaplains in front, and in the back, lashed upright under a sheet like a bride under a veil, the Holy Martyr of Drezen. The chaplains mean to set her in the niche at the foot of the gate tower until the cathedral is ready for her. The real one has walked you down to watch, and is standing at the back of the crowd beside you with her hood up.{/n}''',
         c("Continue", "sheet")),
-    nar("sheet", '''{n}They take the sheet off. The crowd sighs. The statue is twice the height of a woman, painted, with a gilded sword raised to heaven and a face like a girl of twenty who has never been cold or hungry or afraid: smooth, sweet, empty. At its feet the carver has cut, in letters as long as your hand: YANIEL OF DREZEN, THE HOLY MARTYR. SHE HELD THE GATE.{/n}''',
+    nar("sheet", '''{n}They take the sheet off. The crowd sighs. The statue is twice the height of a woman, painted, with a gilded sword raised to heaven and a smooth face with none of her scars. The painted hands have no calluses. At its feet the carver has cut, in letters as long as your hand: YANIEL OF DREZEN, THE HOLY MARTYR. SHE HELD THE GATE.{/n}''',
         c("Continue", "told", requires=(TOLD_STATUE,)),
         c("Continue", "look", forbids=(TOLD_STATUE,))),
     yn("told", '''"You told me about this," {n}she says, low, beside you.{/n} "In the Fane. You said it was better to see me in the flesh than to pray in front of a cold stone statue. I thought you were being kind to an old woman on a hook." {n}She looks up at it.{/n} "You were being accurate. It is very cold."''',
@@ -218,7 +218,7 @@ hub(Y + "beat.statue", "Yaniel of Drezen, the Holy Martyr", '"There\'s a crowd a
 "No. It does not." {n}She looks up at the smooth stone face.{/n} "That girl never held anything. She would have dropped the gate and run, and she would have been right to. I did not have the sense." {n}A dry sound.{/n} "The chaplains keep telling me how moving it is. You are the first person in Drezen who has said it to my face. I think I could kiss you for it. I think I will not, in front of the chaplains."''',
        c("Continue", "end")),
     yn("scars", '''{n}She turns her head and looks at you properly, under the hood, as she has not since the sheet came off. Her eyes are very pale in the shadow.{/n}
-"The best part." {n}She lets the words sit.{/n} "Minagho gave me most of those. Areelu gave me the rest. You are standing in a crowd of pilgrims, in front of my holy image, telling me the best part of me is the part my torturers made." {n}She draws a long breath.{/n} "That is the most indecent thing anybody has said to me in my life, Commander, and I would like you to say it again somewhere with fewer candles."''',
+"The best part? Be careful with that." {n}She turns fully toward you.{/n} "I would take every one of them off if I could. But this is the body I have. If it is the one you want to look at, come somewhere with fewer candles. I will show you what the carver left out."''',
        c("Continue", "end")),
     nar("end", '''{n}The chaplains carry the martyr into the niche and set her on her plinth with her stone sword raised toward the gate tower's ceiling, and a lamp at her feet. The real Yaniel watches them do it. When the crowd has gone she walks up to the niche alone, and stands in front of herself for a while, and then, very deliberately, turns her back on the statue and sits down on its plinth, and takes out a whetstone, and starts on her sword.{/n}''',
         c("[Leave her there.]", flags=(B_STATUE,))),
@@ -285,7 +285,7 @@ hub(Y + "beat.areelu", "The masquerade", '"Something\'s wrong."', [
        c("Continue", "end", forbids=(AREELU_COURTED,), requires=(FAKE_FREED,)),
         c("Continue", "end_refused", requires=(FAKE_REFUSED,), forbids=(FAKE_FREED, AREELU_COURTED)),
         c("Continue", "end_unknown", forbids=(FAKE_FREED, FAKE_REFUSED, AREELU_COURTED))),
-    yn("courted", '''{n}She looks at you sidelong.{/n} "They tell me the Architect writes to you. And you write back." {n}Her jaw tightens.{/n} "If those letters help you close the Wound, use them. But do not ask me to call her a friend. I remember what she made of her prisoners."
+    yn("courted", '''{n}She looks at you sidelong.{/n} "They tell me the Architect writes to you. And you write back." {n}Her jaw tightens.{/n} "Then use what she tells you to close the Wound. No more prisoners for her tables, Commander. I have seen enough of her work. Do not ask me to call her a friend."
 "And if she puts on my face again, I will take it off her with a knife. You can put that in your next letter."''',
        c("Continue", "end", requires=(FAKE_FREED,)),
         c("Continue", "end_refused", requires=(FAKE_REFUSED,), forbids=(FAKE_FREED,)),
@@ -315,13 +315,13 @@ hub(Y + "beat.bout", "Not all enemies", '"Those are practice swords."', [
         c("Continue", "fight")),
     yn("fight", '''"Seventy years a prisoner," {n}she says, circling,{/n} "and not a day went by that I did not try to escape or kill one of my guards. I got very good at the second one. The trick is that they always think you are finished." {n}She lunges without shifting her feet at all, and you only just get your blade across in time.{/n}
 "You are not finished yet. Good. Show me what the Commander of the crusade does when an old woman is trying to put {mf|him|her} on the ground."''',
-       c("[Fight her fair, the way the drill-masters taught you.]", "fair"),
+       c("[Keep a straight guard and answer her cuts.]", "fair"),
        c("[Fight her like a Trickster: feint, kick the dust, and go for the knee.]", "dirty", flags=(BOUT_DIRTY,))),
     nar("fair", '''{n}You keep to the drill. She tests your guard with short, hard blows, then steps back and lowers her practice sword. Your wrist aches from turning them.{/n}''',
         c("Continue", "fair2")),
     yn("fair2", '''"A sound guard," {n}she says.{/n} "Now try it with mud under your boots and something climbing over the parapet. Drezen did not fall in a practice yard."''',
        c("Continue", "end")),
-    nar("dirty", '''{n}You give her the drill-master's guard for three passes, and on the fourth you feint high, drop, sweep a boot through the grit of the court so that it sprays up into her face, and go in low for her knee with the flat of the blade.{/n}
+    nar("dirty", '''{n}You hold a straight guard for three passes, and on the fourth you feint high, drop, sweep a boot through the grit of the court so that it sprays up into her face, and go in low for her knee with the flat of the blade.{/n}
 {n}She goes down, and takes you with her, and for a few breaths it is not a fencing lesson at all: it is elbows and knees and her forearm across your throat and your practice sword somewhere under both of you. Then she starts to laugh, flat on her back in the dust, and cannot stop.{/n}''',
         c("Continue", "dirty2")),
     yn("dirty2", '''"Grit," {n}she says, when she can breathe.{/n} "In the eyes. Iomedae's teeth, Commander, that is a husk-keeper's trick. They used to throw salt at us so we would rub our eyes and not see them come with the hooks." {n}She wipes her face with the back of her wrist, smearing dust into the scar on her cheek.{/n}
@@ -463,7 +463,7 @@ hub(Y + "beat.raid", "Over the wall", '"Mind if I stand the watch with you tonig
         c("Continue", "carries_plain", requires=(CARRIES,), forbids=(HOLY,)),
         c("Continue", "judges", requires=(HELD,), forbids=(CARRIES,)),
         c("Continue", "judges_empty", forbids=(CARRIES, HELD))),
-    nar("carries_plain", '''{n}She is into them before you have your sword clear, and she is the only thing on the wall that is not moving backward: a gray head in a borrowed cloak, Radiance going up and down in her hand like a flail on a threshing floor, plain steel, no light at all. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
+    nar("carries_plain", '''{n}She is into them before you have your sword clear, and she is the only thing on the wall that is not moving backward: her feet braced at the broken parapet, a hook-scar pulling when she raises her arm. Radiance strikes plain and cold in her hand. She does not shout. She fights the way she talks, economically, without wasting anything, and every stroke finishes something.{/n}''',
         c("Continue", "fight")),
     nar("judges_empty", '''{n}She is into them with a borrowed spear, and they are all over her. She is holding the broken place in the parapet alone, the way she held the gate, and as you come up beside her with a plain sword in your hand her eyes go once to your hip, where something else ought to be, and then she shouts, "Left, Commander! Left!"{/n}''',
         c("Continue", "fight")),
@@ -531,7 +531,7 @@ hub(Y + "after.watch", "The night watch", '"Is that second spear for me?"', [
         c("Continue", "end")),
     yn("forgot", '''"I did not forget." {n}She does not look at you.{/n} "I left you off because you are standing here. I do not have to want the one who is on the next watch with me. I only have to hand them a cup." {n}She leans her shoulder against yours on the parapet, very slightly, and leaves it there.{/n} "Now be quiet. You are on watch."''',
         c("Continue", "end")),
-    nar("end", '''{n}At the change of the watch the sentry who relieves you salutes her first and you second, and she pretends not to notice, and you pretend not to notice her pretending. Going down the stair in the dark she takes your hand for three steps, and lets it go before the bottom, where the torchlight is.{/n}''',
+    nar("end", '''{n}At the change of the watch the sentry who relieves you salutes her first and you second, and she pretends not to notice, and you pretend not to notice her pretending. On the stair she takes your hand. At the bottom, in the torchlight, she stops to kiss you before leading you to her room. Her supper has gone cold; she eats it with your knee between hers.{/n}''',
         c("[Go down.]", flags=(Y + "after.watch_stood",))),
 ], requires=("trickster.ever", COMMITTED, NICHE), **AFTER)
 
@@ -545,7 +545,7 @@ hub(Y + "after.wrist", "The mark it leaves", '"You want something."', [
     nar("mark", '''{n}You set the cuff beside you and hold out your wrist. A pale band crosses the skin where the iron rubbed against the bone. She takes your wrist in both hands and turns it toward the window. Then she puts her own beside it: the old white band, hard as a heel, worn in over decades.{/n}''',
         c("Continue", "mark2")),
     yn("mark2", '''"It does," {n}she says quietly.{/n} "The same mark. Only shallower." {n}Her thumb moves over the marked skin, very lightly.{/n} "I thought it would not. I thought it only marked people who were owned. I thought that was what the mark meant."
-{n}She lifts your wrist and puts her mouth to the marked place, briefly, the way a soldier kisses a medal or a wound, and then gives your hand back to you, and the iron with it.{/n} "Put it back on. Or do not. I do not care any more which. I only wanted to know."''',
+{n}She lifts your wrist and puts her mouth to the marked place, briefly, then longer, her eyes on yours. She draws you nearer by that hand before giving the iron back.{/n} "Put it back on. Or do not. I do not care any more which. I only wanted to know."''',
         c("[Put it back on.]", "end", flags=(Y + "cuff_back_on",)),
         c("[Put it in your pocket.]", "end", flags=(Y + "cuff_pocketed",))),
     yn("packed", '''"You never wore it," {n}she says.{/n} "The iron. I asked the sentries. I asked your quartermaster, who looked at me as if I had asked him to steal it. You keep it in your pack, wrapped in linen, like a relic."
@@ -553,14 +553,14 @@ hub(Y + "after.wrist", "The mark it leaves", '"You want something."', [
         c("[Take it out of the linen and give it to her.]", "unwrapped")),
     nar("unwrapped", '''{n}She takes it from you and turns it over in her hands, the way you have seen her turn a blade to look at an edge. The inside is still bright where her wrist wore it thin. Your pack has not added so much as a scratch.{/n}''',
         c("Continue", "unwrapped2")),
-    yn("unwrapped2", '''"Linen," {n}she says.{/n} "Clean linen. You folded it." {n}She laughs, very quietly, and it catches halfway.{/n} "Minagho kept me on a hook in a room that stank. You keep the thing that held me there wrapped in linen at the bottom of your pack, where you know it is there every time you lift it, like a... like a letter." {n}She gives it back and closes your fingers over it.{/n} "Glad. I have decided. Glad. Put it back in its linen."''',
+    yn("unwrapped2", '''"You folded it." {n}She opens the linen across her knee, then gives you the cuff.{/n} "Clean, too. I did not think anyone would trouble over that damned thing." {n}She catches your hand as you reach for the cloth and kisses your knuckles.{/n} "Wrap it. Then come here. I have been standing at this window waiting for you."''',
         c("[Wrap it again.]", "end")),
-    nar("end", '''{n}She sends down for supper and makes you stay, and eats with her elbows on the table, and tells you about a quartermaster in the old garrison who kept a pig in the armoury, and laughs so hard at her own story that she has to put her cup down.{/n}''',
+    nar("end", '''{n}She sends down for supper, draws your chair beside hers and puts a hand on your thigh under the table. She eats with her elbows on the table, and tells you about a quartermaster in the old garrison who kept a pig in the armoury, and laughs so hard at her own story that she has to put her cup down.{/n}''',
         c("Continue", flags=(Y + "after.wrist_seen",))),
 
     yn("pouch", '"Show me the iron." {n}She holds out her hand.{/n} "I know you still have it. I want to see what you have done to it."',
         c("[Put the cuff in her hand.]", "pouch2")),
-    yn("pouch2", '{n}She turns the cuff over. The inside still shines where her wrist wore it thin.{/n} "Not a scratch. Minagho kept me on a hook. You look after the iron better than she looked after me." {n}She puts it back in your hand and folds your fingers over it.{/n} "Keep it. You know I will ask again."',
+    yn("pouch2", '{n}She turns the cuff over. The inside still shines where her wrist wore it thin.{/n} "Not a scratch." {n}She puts it back in your hand, then draws that hand to her waist.{/n} "Put it away. I wanted to see it, and now I want you to stop looking at it."',
         c("Continue", "end")),
 ], requires=("trickster.ever", COMMITTED, NICHE, Y + "after.watch_stood"), **AFTER)
 
@@ -626,7 +626,7 @@ hub(Y + "beat.light", "The light on the ash", '"You look like you want to show m
         c("Continue", "talk")),
     yn("talk", '''"That one has been coming close for three nights," {n}she says.{/n} "It has seen what this blade does to the others." {n}She turns the sword so that the last of the gold runs down the fuller.{/n} "I wanted you to see it. You gave this away. I thought you should see what it does in the hands you gave it to."
 "Every night I stand here and think: the Commander of the crusade could have this, and does not, because {mf|he|she} took an old woman's iron instead. I think it is the stupidest thing I have ever seen a commander do. I think about it every night anyway."''',
-        c('"Neither. It was a trade."', "trade"),
+        c('"It was a trade."', "trade"),
         c('"It looks better on you."', "better")),
     yn("trade", '''"A trade." {n}She snorts.{/n} "A trade is when both parties get something they want. I did not want this. I wanted to be left alone to be sorry for myself." {n}She looks out at the ash, where the thing went.{/n} "Perhaps that is what you got, then. Me, not sorry for myself. It is not much of a bargain for a sword like this, Commander. You ought to have haggled."''',
         c("Continue", "end")),
@@ -660,11 +660,71 @@ hub(Y + "beat.hunter", "A paladin who hunts alone", '"Who is the scout?"', [
         c("[Go.]", flags=(Y + "beat.hunter",))),
 ], requires=("trickster.ever", RETURNED, B_WALLS), **BEAT)
 
+# Round 2 set pieces use the existing situations; additions retain every saved address.
+_by = {s["Id"]: s for s in SCENES}
+def _node(suffix, nid):
+    return next(n for n in _by[Y + suffix]["Nodes"] if n["Id"] == nid)
+
+# YAN-01/02: she decides whether to answer the chaplain's use of her name.
+_statue = _by[Y + "beat.statue"]
+_node("beat.statue", "sheet")["Text"] += (' {n}The chaplain raises his hands toward the pilgrims.{/n} "Yaniel would have wanted the living to surrender their comforts for the crusade."'
+    ' {n}Beside you, Yaniel catches her hood between two fingers. A wounded cart-driver is being pressed to leave his blanket at the plinth.{/n}')
+_old = _node("beat.statue", "sheet")["Choices"]
+_memorial_exits = [dict(c) for c in _old]
+for _choice in _old:
+    _choice["Next"] = "appearance"
+_statue["Nodes"].extend([
+    yn("appearance", '"He has never met me." {n}Her hand tightens on her hood.{/n} "Listen to him. He has already decided what I want. I have a mind to tell him."'
+       ' {n}She looks at the driver again.{/n}',
+       c('"Then tell him. I am here."', "appears"),
+       c('"You can stay here. I will get the driver his blanket."', "quiet")),
+    yn("appears", '{n}She steps into the crowd and pulls her hood back.{/n} "Give him his blanket. I held a gate to get people out of the cold. I did not die to make this man colder."'
+       ' {n}The chaplain stares. She points toward the wounded driver.{/n} "Well?" {n}He takes the blanket from the offering pile himself. A pilgrim starts to kneel; Yaniel catches his elbow and keeps him on his feet.{/n}', c("Continue", "meal")),
+    yn("quiet", '{n}She stays beside you while you take the blanket back to the cart. When the chaplain asks for your name she answers from under her hood.{/n} "Write down Yaniel. She wanted that man warm."'
+       ' {n}She turns away before he can see her face.{/n}', c("Continue", "meal")),
+    yn("meal", '"Enough speeches. I want a meal. And if you call it a feast in my honor I will eat in the guardroom."'
+       ' {n}She takes your arm and stays just long enough to look at the unveiled face.{/n}', *_memorial_exits),
+])
+
+# A bounded bout, with her counterstroke; no result repairs the Fane attack.
+_bout = _by[Y + "beat.bout"]
+_node("beat.bout", "fight")["Text"] = ('"Three passes. Blunt steel. No spells. If a blade lands clean, we stop." {n}She circles you, watching your feet.{/n}'
+    ' "I spent years trying to kill guards who thought I was finished. You need to see what comes over Drezen\'s wall before you try to stop it. Show me your guard."')
+_node("beat.bout", "fight")["Choices"].extend([
+    c("[Lower your blade and concede the pass.]", "yield"),
+    c("[Mobility] [Step inside her reach and turn her blade aside.]", check=dict(Skill="SkillMobility", DC=25, Success="mobility_win", Failure="mobility_loss")),
+    c('[Bluff] "Behind you!"', check=dict(Skill="CheckBluff", DC=25, Success="bluff_win", Failure="bluff_loss")),
+])
+_bout["Nodes"].extend([
+    yn("yield", '{n}She checks her stroke when you lower the blade.{/n} "A surrendered pass. You had better know why you give ground when the edge is sharp." {n}She offers the practice blade back, hilt first.{/n}', c("Continue", "end")),
+    nar("mobility_win", '{n}You step inside the descending blade and turn it past your shoulder. Your flat lands clean across her ribs. She stops, nods and tests the tender place with her fingers.{/n} "Good. Now remember there may be another one behind it."', c("Continue", "end")),
+    nar("mobility_loss", '{n}She shifts her grip as you come inside. The blunt pommel stops at your breastbone; you halt before it drives home.{/n} "Too close. Watch both hands."', c("Continue", "end")),
+    nar("bluff_win", '{n}She glances toward the gate arch. Your flat catches her raised arm before her eyes return. She lowers the blade and swears.{/n} "Once, Commander. That will work once."', c("Continue", "end")),
+    nar("bluff_loss", '{n}Her eyes stay on you. The flat of her blade taps your thigh as you advance.{/n} "I spent seventy years listening to liars. Try your feet next time."', c("Continue", "end")),
+])
+_node("beat.bout", "end")["Text"] = ('{n}She puts both practice swords against the wall, then turns your hand over to inspect the scrapes.{/n}'
+    ' "Useful work. Keep those hands ready. Next time something comes over the parapet it will not stop at a clean touch."')
+
+# Party-only holy forms: the plain branch still uses Radiance, without borrowing its upgrades.
+RAID_HOLY = Y + "raid.holy_in_party"
+yt.DERIVED[RAID_HOLY] = [["yaniel.radiance_party.ha4"], ["yaniel.radiance_party.ha6"]]
+_raid = _by[Y + "beat.raid"]
+_node("beat.raid", "start")["Choices"][2]["Requires"].append(RAID_HOLY)
+_node("beat.raid", "start")["Choices"].append(c("Continue", "judges_plain", requires=(yt.PARTY,), forbids=(CARRIES, RAID_HOLY)))
+_raid["Nodes"].append(nar("judges_plain", '{n}She hooks a climbing claw with her spear and drags the creature across the stones toward your drawn Radiance. Plain cold iron shears through its neck. She braces her spear against the next one.{/n} "Left, Commander! Keep them off the sentry!"', c("Continue", "fight")))
+
+# Current arrivals, not old arrival receipts. The heard road asks after an absent captor.
+_node("ch5.minagho", "start")["Choices"][0]["Requires"].append("minagho.present_now")
+_node("ch5.minagho", "start")["Choices"][1]["Requires"].append("chivarro.present_now")
+_node("ch5.minagho", "start")["Choices"][1]["Forbids"] = [MINAGHO_HERE]
+_node("ch5.minagho", "heard")["Text"] = ('"Chivarro was at the quartermaster\'s bench. She asked after Minagho." {n}Yaniel rubs an old scar on her wrist.{/n}'
+    ' "The sentry repeated the question to me. I had a few questions of my own. What has been promised about the creature who kept me on a hook? I want your answer, Commander. Not the sentry\'s."')
+
 def integrate(payload):
     """Minagho's presence facts for the scene on the wall (read-only; the merged route's flags are never forbidden)."""
     derived = {
-        MINAGHO_HERE: [[MC + "minagho_in"]],
-        Y + "minagho_known": [["minagho_chivarro.started", MC + "minagho_in"], ["minagho_chivarro.started", MC + "chivarro_in"]],
+        MINAGHO_HERE: [[MC + "minagho_in", "minagho.present_now"]],
+        Y + "minagho_known": [["minagho_chivarro.started", MC + "minagho_in", "minagho.present_now"], ["minagho_chivarro.started", MC + "chivarro_in", "chivarro.present_now"]],
         # The ledger's canonical started key (05 §6 ruling), read-only alias of the merged route's own StartedFlag.
         "minagho_chivarro.started": [["minachiv.started"]],
     }
