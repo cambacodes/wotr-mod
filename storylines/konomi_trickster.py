@@ -783,6 +783,10 @@ def integrate(payload):
                 and LOST not in s["Forbids"]):
             s["Forbids"].append(LOST)
 
+    # Authored round-2 situations; only this route is changed.
+    from storylines import konomi_round2
+    konomi_round2.integrate(payload)
+
 
 # Epilogue pages that do not stage a living Konomi: her loss page, and the copy of an invitation (names her, stages nobody).
 DEATH_SAFE = (LOSS_PAGE, "konomi.ending_missed_interrupted")
