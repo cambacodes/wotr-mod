@@ -849,12 +849,16 @@ partner("iomedae", "iomedae", "iomedae.committed", "iomedae.closed", "The Bridge
 
 MI = "mielarah.trickster."
 partner("mielarah", "mielarah", "mielarah.committed", "mielarah.closed", "The Nearest",
-    '''Mielarah did not come to the Threshold. Starcatcher hung over Drezen that night with every lantern lit and one figure at the wheel, and the place at the captain's elbow, half a stride from the binnacle, stood empty. She did not look north. She wrote the date in the book where she keeps her dead, on a line of its own, left the rest of the line blank, and watched the ladder.''',
+    '''After the news from Threshold, Mielarah wrote the date in her book. She left the name blank. Starcatcher's watch continued; the place beside the wheel remained empty.''',
     (
         page_p('''The crusade entered the Commander among the dead of the Threshold. Mielarah read the notice twice and did not write the name in her book. She kept the place at her elbow empty for the whole of the next voyage, and any sailor who asked her why was put off at the next port.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she came down her own ladder, crossed the room in four strides with nobody to walk round her, and stood at the Commander's elbow, nearest, while the priests argued. Nothing fell. Nothing ever did.''', requires=(H2,)),
         page_p('''The Gravedragger's book still held the Commander's name, with the hour left blank, and the rift did not fill it in. She knew it was there. Oskel had told her, and she had made the Commander tell it again, twice, the way she checks a figure she does not like. For the rest of their life she kept the Commander off scaffolds, cornices and loose stairs with the patience of a woman who had watched one joke for six years and meant to watch this one longer.''', requires=(MI + "cost.herald_debt",)),
-        page_p('''Somewhere a spade went on digging for the Commander, slow and patient, the way it had since Vazglar. Mielarah listened for it on every night watch. She said it was further off than it had been, and she wrote down by how much.''', requires=(MI + "cost.noticed",), forbids=(MI + "cost.herald_debt",)),
+        page_p('''On her night watches Mielarah still heard a spade. She stopped speaking until the sound passed, then gave the next order. In the margin of the log she marked how long it had lasted.''', requires=(MI + "cost.noticed",), forbids=(MI + "cost.herald_debt",)),
+        page_p('Starcatcher went north with the crusade, carrying bandages and cold iron. Above the camp at Threshold, her lanterns stayed in a line over the wagons. Mielarah kept the wheel while her crew lowered the stretchers. She took the wounded back to Drezen, counted them out into the hospital yard, and ordered another load aboard.',
+               any_groups=(("mielarah.deck.last_night", "mielarah.deck.captains"),)),
+        page_p('Starcatcher was over Drezen when the news arrived. Mielarah checked the stores in her hold and ordered the crew to keep the ship ready. At night she watched the northern sky from the wheel. When a sailor asked whether they were waiting for a passenger, she told him to check the mooring lines.',
+               forbids=("mielarah.deck.last_night", "mielarah.deck.captains")),
     ), declined=MI + "declined")
 
 # Devarra (Q11): the bill for the smallest egg (devarra_tower "The smallest egg", ledger 05 row 5) is collected here, at the
