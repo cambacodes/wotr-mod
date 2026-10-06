@@ -386,7 +386,8 @@ internal static class SoanaTricksterTests
             // price, changes a native fact, or produces a commitment reward.
             var stanceOnly = page.Id == epCommit.Id || page.Id == P + "epilogue.luck_late"
                 ? new[] { "soana.partner_stance.share", "soana.partner_stance.exclusive", "soana.partner_stance.secret",
-                          "soana.partner.agreed", "soana.closed", P + "refused" }
+                          "soana.partner.agreed", "soana.partner.exclusive_chosen", "soana.partner.bundle_hidden",
+                          "soana.closed", P + "refused" }
                 : Array.Empty<string>();
             check(page.Nodes[0].Choices[0].Set.Length == 0
                   && page.Nodes.SelectMany(n => n.Choices).All(c => c.Mythic == null && c.Alignment == null

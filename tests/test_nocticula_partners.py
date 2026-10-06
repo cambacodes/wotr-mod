@@ -141,7 +141,8 @@ class NocticulaPartnerTests(unittest.TestCase):
             paragraphs = partner.ending_paragraphs(nocticula_dead=dead)
             living = [p for p in paragraphs if set(partner.STATES[0][2]) <= set(p["Forbids"])
                       and partner.P + "secret" not in p["Requires"]]
-            self.assertEqual(len(living), 2)
+            self.assertEqual(len(living), 3)
+            self.assertEqual(sum(allowed(p, {partner.CHOSEN}) for p in living), 1)
             self.assertEqual(sum(allowed(p, set()) for p in living), 1)
             self.assertEqual(sum(allowed(p, {partner.EXPOSED}) for p in living), 1)
             self.assertTrue(any(partner.EXPOSED in p["Requires"] for p in living))

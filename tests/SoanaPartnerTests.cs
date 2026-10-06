@@ -13,12 +13,14 @@ internal static class SoanaPartnerTests
         const string Returned = "soana.trickster.returned";
         var loss = new[] { "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" };
         Scene S(string name, bool returned) => story.Scenes.Single(s => s.Id == K + name + (returned ? ".returned" : ""));
-        Snapshot World(bool returned, string stance, int finances = 100)
+        Snapshot World(bool returned, string stance, int finances = 100, bool careful = false)
         {
             var w = new Snapshot { Chapter = 5, Hour = 5000, Area = Area,
                 CrusadeResources = new Dictionary<string, int> { ["Finances"] = finances } };
             w.AvailableContacts.Add(Unit);
             w.Flags.UnionWith(new[] { "trickster", "trickster.ever", "soana.committed", stance });
+            if (stance.EndsWith("exclusive", StringComparison.Ordinal)) w.Flags.Add(K + "exclusive_chosen");
+            if (careful) w.Flags.Add(K + "bundle_hidden");
             if (returned) w.Flags.UnionWith(loss.Concat(new[] { Returned }));
             else w.Flags.Add("soana.after_quest");
             Rules.Complete(story, w);
@@ -31,12 +33,13 @@ internal static class SoanaPartnerTests
         }
         var allPages = new HashSet<string>();
         foreach (bool returned in new[] { false, true })
-        foreach (string stance in new[] { "soana.partner_stance.share", "soana.partner_stance.secret" })
+        foreach (string stance in new[] { "soana.partner_stance.share", "soana.partner_stance.secret", "soana.partner_stance.exclusive" })
+        foreach (bool careful in stance.EndsWith("secret", StringComparison.Ordinal) ? new[] { false, true } : new[] { false })
         {
             var dispatch = S("dispatch", returned);
             var home = S("homecoming", returned);
             var exposed = S("returned_letter", returned);
-            var initial = World(returned, stance);
+            var initial = World(returned, stance, careful: careful);
             check(Rules.Available(story, dispatch, initial), "Corven dispatch has no earned living host.");
             check(!Rules.Available(story, S("dispatch", !returned), initial), "Corven dispatch uses the wrong native/returned host.");
             foreach (string blocked in new[] { "soana.closed", "inhuman", "trickster.failed", "legend", "swarm" })
@@ -76,6 +79,12 @@ internal static class SoanaPartnerTests
                 if (stance.EndsWith("share", StringComparison.Ordinal))
                     check(w.Has(K + "corven_together") && !w.Has(K + "corven_separated") && !w.Has(K + "affair_exposed"),
                         "Negotiated Corven terms become a secret affair.");
+                else if (stance.EndsWith("exclusive", StringComparison.Ordinal))
+                    check(w.Has(K + "corven_separated") && !w.Has(K + "affair_exposed") && !w.Has(K + "romance_ended"),
+                        "Corven's answer to the separation becomes a discovered affair or an unearned breakup.");
+                else if (w.Has(K + "quiet_homecoming"))
+                    check(careful && !w.Has(K + "affair_exposed") && !w.Has(K + "romance_ended"),
+                        "Packed-away bundle still exposes the affair.");
                 else
                     check(w.Has(K + "corven_separated") && w.Has(K + "affair_exposed") && w.Has(K + "romance_ended")
                           && w.Has("soana.closed"), "Corven forgives the affair for free.");
@@ -96,7 +105,7 @@ internal static class SoanaPartnerTests
                 foreach (var final in Program.Walk(ending, w, (id, _) => allPages.Add(ending.Id + "/" + id)))
                     check(final.Has(ending.Id), "Corven's breakup page has no terminal answer.");
             }
-            foreach (var w in Program.Walk(dispatch, World(returned, stance, 74)))
+            foreach (var w in Program.Walk(dispatch, World(returned, stance, 74, careful)))
                 check(!w.Has(K + "pursued"), "Corven's escort is free when its debit is unaffordable.");
         }
         foreach (bool returned in new[] { false, true })
@@ -109,15 +118,27 @@ internal static class SoanaPartnerTests
             Rules.Complete(story, w);
             check(Rules.Available(story, late, w), "Stance choices changed the postwar invitation gate.");
             var reached = new HashSet<string>();
-            var results = Program.Walk(late, w, (id, _) => reached.Add(id));
-            check(results.Count == 4, "A postwar invitation lost a stance or its legacy exit.");
+            var histories = new List<Snapshot> { w };
+            var alternative = Program.Copy(w);
+            if (returned)
+            {
+                // Mid-page old-save coverage, not a claim that the off-path book opens.
+                alternative.Flags.Add("trickster.failed"); alternative.Flags.Remove("trickster.now");
+                check(!Rules.Available(story, late, alternative), "Off-path late book is newly available.");
+            }
+            else alternative.Flags.Add("soana.late_thorn_tested");
+            histories.Add(alternative);
+            var results = histories.SelectMany(input => Program.Walk(late, input, (id, _) => reached.Add(id))).ToList();
+            check(results.Any(r => r.Has(K + "exclusive_chosen"))
+                  && results.Any(r => r.Has("soana.partner_stance.exclusive") && r.Has("soana.closed")),
+                "Postwar source lacks its earned yes or old-save refusal.");
             foreach (var final in results)
             {
                 var stances = new[] { "share", "exclusive", "secret" }.Count(s => final.Has("soana.partner_stance." + s));
                 check(stances <= 1 && final.Has(K + "agreed") == (stances == 1) && !final.Has("soana.committed"),
                     "A postwar invitation loses its stance or rewrites its existing commitment contract.");
-                check(final.Has("soana.closed") == final.Has("soana.partner_stance.exclusive"),
-                    "Soana's postwar exclusivity refusal gives the Commander a lover.");
+                check(final.Has("soana.closed") == (final.Has("soana.partner_stance.exclusive") && !final.Has(K + "exclusive_chosen")),
+                    "Postwar exclusive acceptance/refusal loses its earned outcome.");
             }
             foreach (var page in late.Nodes)
                 check(reached.Contains(page.Id), "Unplayed postwar stance page: " + late.Id + "/" + page.Id);

@@ -148,7 +148,7 @@ class AneviaStanceTests(unittest.TestCase):
                          "anevia.ending_gone", "anevia.ending_parted", "anevia.ending_sacrifice"):
             paragraphs = books[scene_id]["Nodes"][0].get("Paragraphs", [])
             for expected in stance.ending_paragraphs():
-                self.assertTrue(any(paragraph.get("Requires", []) == expected["Requires"]
+                self.assertTrue(any(paragraph.get("Requires", [])[:len(expected["Requires"])] == expected["Requires"]
                     and paragraph.get("Forbids", []) == expected["Forbids"] for paragraph in paragraphs), scene_id)
         native_ids = {variant["Replacement"] for edit in story["NativeEpilogueEdits"].values()
                       for variant in (edit, *edit.get("Variants", []))}

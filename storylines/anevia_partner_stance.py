@@ -16,6 +16,7 @@ SHARE = "anevia.partner_stance.share"
 EXCLUSIVE = "anevia.partner_stance.exclusive"
 SECRET = "anevia.partner_stance.secret"
 EXPOSED = "anevia.partner_lie_exposed"
+CAREFUL = "anevia.partner.absence_kept"
 RETURN = "irabeth.trickster.returned"
 DUG = "irabeth.trickster.cost.dug_out"
 RAISED = "irabeth.trickster.raised_on_record"
@@ -63,7 +64,7 @@ FALLOUT = '''"She asked me how long. I tried tellin' her how it started. She ask
 
 
 def refusal_nodes(prefix, back):
-    return [n(prefix + "exclusive", "Anevia", REFUSAL,
+    return [n(prefix + "exclusive", "Anevia", REFUSAL + '\n"Back down, and you keep the nights I offered. You get no key to our bedroom. Don\'t come knockin\' on a night I kept for my wife."',
               c('"Then I withdraw the demand. Keep your marriage."', back),
               c('"Then we end it here."', flags=(EXCLUSIVE, "anevia.closed", "anevia.parted")),
               portrait="Anevia")]
@@ -98,6 +99,13 @@ def ordinary_commit(book):
 {n}Her mouth twists. She takes your hand anyway.{/n}
 "I want another night. That's the nasty bit. Don't ask me to be proud of it."''',
           c('[Keep the key and the affair.]', flags=("anevia.committed", "anevia.future_chosen", SECRET)), portrait="Anevia")])
+    nodes["start"]["Choices"].append(c('[Keep the affair to Irabeth\'s absence with the Queen. No false dispatches, no missed supper.]',
+        "partner_absent_night", requires=("irabeth_away",), forbids=("irabeth_gone", "irabeth_dead", *SURVIVAL)))
+    book["Nodes"].append(n("partner_absent_night", "Anevia", '''"Beth's with the Queen. I still owe her a straight letter. You know I ain't writin' one tonight."
+{n}Anevia leaves the scout reports on your desk and bolts the door. She opens your coat with both hands and pushes it from your shoulders.{/n}
+"No messengers. No little gifts for her to find when she comes home. I want you, and I'm already lyin' enough."
+{n}Her mouth catches yours. She pulls you toward the bed, her wedding ring cold against your bare chest.{/n}''',
+        c('[Keep the nights quiet while Irabeth is away.]', flags=("anevia.committed", "anevia.future_chosen", SECRET, CAREFUL)), portrait="Anevia"))
 
 
 def gate_commit(book):
@@ -156,15 +164,37 @@ def gate_commit(book):
                     "then closes her empty hand as if she were pocketing something valuable.{/n}\n" + additions[-2]["Text"])
             additions.extend(discovery_nodes(prefix))
             additions[-2]["Text"] = "{n}At dawn Anevia comes back from the road with a folded note. She lays it between you and stands away from the bed.{/n}\n" + DISCOVERY
+            # Reserve the second legacy lost-power exit emitted by earned_outcomes.
+            page["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
+            quiet = live_answers('[Keep the affair to Irabeth\'s absence with the Queen. Leave no false dispatches.]',
+                prefix + "absent_night", requires=(*old["Requires"], "irabeth_away"), forbids=(*old["Forbids"], "irabeth_gone", "irabeth_dead", *SURVIVAL))
+            if not quiet or set(book.get("Requires", ())) & set(quiet[0]["Forbids"]):
+                continue
+            page["Choices"].extend(quiet)
+            additions.append(n(prefix + "absent_night", "Anevia", '''"Beth's away with the Queen. I'm still makin' a liar of myself. Don't send a damned invitation to the house."
+{n}Anevia catches your belt and draws you through the doorway. Her mouth opens against yours; she unlaces her dress without letting you go.{/n}
+"These nights. While she's away. When she comes back, I go home."
+{n}She presses you against the bed, the ring on her hand bright in the lantern light.{/n}''',
+                c('[Keep her company quietly while Irabeth is away.]', flags=(*original_flags, SECRET, CAREFUL)), portrait="Anevia"))
+            if "anevia.trickster.cost.her_key" in original_flags:
+                additions[-1]["Text"] = ("{n}You tell her the secret she demanded. She listens without a smile, "
+                    "then closes her empty hand as if she were pocketing something valuable.{/n}\n" + additions[-1]["Text"])
     book["Nodes"].extend(additions)
 
 
 def farewell_discovery(book):
     start = book["Nodes"][0]
+    quiet = []
     for answer in start["Choices"]:
         if not answer.get("Abort"):
+            private = copy.deepcopy(answer)
+            private["Requires"].extend((SECRET, CAREFUL))
+            quiet.append(private)
             answer.setdefault("Forbids", []).append(SECRET)
-    start["Choices"].append(c('[Read the note Anevia lays beside the little goat.]', "partner_discovered", requires=(SECRET,)))
+    start["Choices"].append(c('[Read the note Anevia lays beside the little goat.]', "partner_discovered", requires=(SECRET,), forbids=(CAREFUL,)))
+    start["Choices"].extend(quiet)
+    start["Choices"].extend(live_answers('[Ask her to stay another night after Beth comes home. Let supper wait.]',
+        "partner_discovered", requires=(SECRET, CAREFUL, "irabeth.presence.route_open"), forbids=("irabeth_away",)))
     book["Nodes"].extend(discovery_nodes("partner_"))
 
 
@@ -193,8 +223,9 @@ def ending_paragraphs(*, aeon=False):
     return state + [
         p("{n}The Commander had accepted the nights the Tirabades kept for themselves. Irabeth had told the Commander plainly: \"Our house stays ours.\" Anevia had kept those nights, and left the Commander to find supper elsewhere.{/n}", requires=(SHARE,)),
         p("{n}The Commander had demanded an end to Anevia's marriage. Anevia had refused, and the romance had ended there.{/n}", requires=(EXCLUSIVE,), forbids=(SHARE, SECRET)),
-        p("{n}Anevia had lied about the nights she spent with the Commander. She remembered Irabeth keeping supper warm while she spent the night in someone else's bed.{/n}", requires=(SECRET,), forbids=(EXPOSED,)),
-        p("{n}Anevia remembered Irabeth asking how long the affair had lasted, and asking again when she tried to tell her how it had started. She had gone home to face her wife. Their marriage had survived the rows. The Commander's welcome had not.{/n}", requires=(SECRET, EXPOSED))]
+        p("{n}Anevia had lied about the nights she spent with the Commander. She remembered Irabeth keeping supper warm while she spent the night in someone else's bed.{/n}", requires=(SECRET,), forbids=(EXPOSED, CAREFUL)),
+        p("{n}Anevia remembered Irabeth asking how long the affair had lasted, and asking again when she tried to tell her how it had started. She had gone home to face her wife. Their marriage had survived the rows. The Commander's welcome had not.{/n}", requires=(SECRET, EXPOSED)),
+        p("{n}The affair had begun during Irabeth's absence with the Queen. No invitation had gone to the Tirabade house; no dispatch had been falsified. Anevia had hidden those visits from her wife. She had offered the nights of that absence, and no claim on their marriage.{/n}", requires=(SECRET, CAREFUL), forbids=(EXPOSED,))]
 
 
 def cover_endings(scenes, native_replacements=()):

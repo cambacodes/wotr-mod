@@ -22,6 +22,8 @@ class WenduagPartnerStanceTests(unittest.TestCase):
 
     def claim_path(self, suffix, branch, flags):
         flags = set(flags)
+        if branch == 1:
+            flags.add(stance.EARNED)
         if stance.LANN_IN in flags and not set(stance.LANN_GONE) & flags:
             flags.add(stance.HERE)
         nodes = {n["Id"]: n for n in self.scenes[W + suffix]["Nodes"]}

@@ -16,6 +16,35 @@ def sample():
 
 
 class SaveCompatibilityTests(unittest.TestCase):
+    def test_merge_b10_stance_exits_keep_saved_indices_and_continue_ids(self):
+        from story_fixture import fresh_story
+        scenes = {s["Id"]: s for s in fresh_story()["Scenes"]}
+        for sid, nid, index in (
+            ("anevia.trickster.gone.commit", "answer", 17),
+            ("anevia.trickster.gone.second_ask", "price", 15),
+            ("anevia.trickster.gone.fetched_commit", "answer", 17),
+            ("anevia.trickster.gone.fetched_second_ask", "price", 15),
+            ("kiana.trickster.late_question", "partner_secret", 2),
+            ("kiana.trickster.late_question_letter", "partner_secret", 2),
+            ("kiana.trickster.late_question", "partner_refuse", 1),
+            ("kiana.trickster.late_question_letter", "partner_refuse", 1),
+            ("soana.trickster.returned.terms", "partner_secret_bind", 1),
+            ("soana.trickster.returned.terms", "partner_secret_bind_clay", 1),
+            ("soana.trickster.returned.second_ask", "partner_secret_price", 2),
+            ("soana.trickster.missed.bowl", "partner_secret_terms", 1),
+            ("soana.trickster.missed.second_ask", "partner_secret_start", 1),
+        ):
+            node = next(n for n in scenes[sid]["Nodes"] if n["Id"] == nid)
+            answer = node["Choices"][index]
+            self.assertTrue(answer["Abort"], (sid, nid, index))
+            self.assertEqual(answer["Forbids"], ["trickster.now"])
+            self.assertEqual(answer["Set"], [])
+        for sid in ("soana.trickster.epilogue.commit", "soana.trickster.epilogue.luck_late"):
+            for nid in ("partner_share_start", "partner_secret_start"):
+                node = next(n for n in scenes[sid]["Nodes"] if n["Id"] == nid)
+                self.assertEqual(savecompat.choice_identities(scenes[sid], node)[0]["GuidFor"],
+                                 "answer.%s.%s.continue" % (sid, nid))
+
     def test_generated_story_keeps_frozen_save_references(self):
         # Build from source so a stale development export cannot hide a regression.
         from expansion import make_expansion

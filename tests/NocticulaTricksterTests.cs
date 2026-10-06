@@ -158,8 +158,13 @@ internal static class NocticulaTricksterTests
               && new[] { "share", "exclusive", "secret" }.Count(s => r.Has("nocticula.partner_stance." + s)) == 1)
               && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.share") && r.Has("noct.complete"))
               && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.secret") && r.Has("noct.complete"))
-              && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.exclusive") && r.Has("noct.closed") && !r.Has("noct.complete")),
-              "Nocticula partner stances lost an accepted or refused branch.");
+              && stanceOutcomes.Any(r => r.Has("nocticula.partner_stance.exclusive") && r.Has("nocticula.partner.exclusive_chosen")
+                  && r.Has("noct.complete") && !r.Has("noct.closed")),
+              "Nocticula partner stances lost an earned acceptance.");
+        check(Rules.Available(story, chair, refused)
+              && Program.Walk(chair, refused).Any(r => r.Has("nocticula.partner_stance.exclusive")
+                  && r.Has("noct.closed") && !r.Has("noct.complete")),
+              "The unpaid blackmail history no longer permits her exclusive refusal.");
         var returned = With(story, unnegotiated, "nocticula.partner_terms", "nocticula.partner_stance.share");
         check(Rules.Available(story, chair, returned) && Rules.Available(story, epCommit, returned), "Trk_Nocticula_Commit: availability.");
         var chaired = Program.Walk(chair, returned);

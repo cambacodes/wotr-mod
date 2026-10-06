@@ -242,6 +242,17 @@ internal static class AneviaIndependentTests
             && !state.Has("anevia.committed")), "Exclusive demand grants Anevia instead of her refusal.");
         check(promised.Has("anevia.partner_stance.share"), "Negotiated commitment loses its share stance.");
 
+        var away = Program.Copy(noFarewell); away.Flags.Add("irabeth_away");
+        var careful = Play("a_key_that_is_hers", away,
+            state => state.Has("anevia.partner.absence_kept"));
+        check(careful.Has("anevia.committed") && careful.Has("anevia.partner_stance.secret"),
+            "Native absence precaution loses the earned commitment.");
+        var quiet = Program.Walk(Get("the_last_ordinary_thing"), careful,
+            (page, partial) => seen.Add("anevia.the_last_ordinary_thing/" + page));
+        check(quiet.Where(state => state.Has("anevia.the_last_ordinary_thing"))
+            .All(state => !state.Has("anevia.partner_lie_exposed") && !state.Has("anevia.closed")),
+            "Careful nights during the Queen's absence manufacture discovery.");
+
         // The Trickster layer (AneviaTricksterTests) is judged by its own suite.
         foreach (var scene in story.Scenes.Where(s => s.Relationship == "anevia" && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                                                      && !s.Id.StartsWith("anevia.trickster.", StringComparison.Ordinal)

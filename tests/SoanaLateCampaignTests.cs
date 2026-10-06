@@ -60,10 +60,11 @@ internal static class SoanaLateCampaignTests
         foreach (string working in new[] { "voice_carried", "voice_interrupted", "ridge_used" })
         foreach (bool cleft in new[] { false, true })
         foreach (bool friends in new[] { false, true })
+        foreach (bool trickster in new[] { false, true })
         {
             var state = new Snapshot { Chapter = 3, Hour = 1000, Area = area };
             state.AvailableContacts.Add(actor);
-            state.Flags.UnionWith(new[] { "soana.after_quest", "trickster", "konomi.committed", "jerribeth.committed", "committed" });
+            state.Flags.UnionWith(new[] { "soana.after_quest", trickster ? "trickster" : "angel", "konomi.committed", "jerribeth.committed", "committed" });
             if (native != "dead") state.Flags.Add("soana.old_defender");
             if (native != "bound") state.Flags.Add("soana.bear_dead");
             foreach (string id in oldIds)
@@ -120,6 +121,15 @@ internal static class SoanaLateCampaignTests
                         if (!result.Has(visit.Id))
                         { check(result.Flags.SetEquals(ready.Flags), "Soana deferral persists a decision."); continue; }
                         check(!Rules.Available(story, visit, result), "Completed late Soana visit repeats.");
+                        if (result.Has("soana.closed"))
+                        {
+                            check(!trickster && result.Has("soana.partner_stance.exclusive")
+                                && result.Has("soana.partner.agreed") && !result.Has("soana.partner.exclusive_chosen"),
+                                "Exclusive refusal closes without its actual non-Trickster history.");
+                            check(visits.All(v => !Rules.Available(story, v, result)),
+                                "Insisting after Soana's refusal permits more late courtship.");
+                            continue;
+                        }
                         foreach (var group in new[] {
                             new[] { "late_track_read", "late_track_missed", "late_track_slow" },
                             new[] { "late_reserve", "late_harvest" }, new[] { "late_thorn_strong", "late_thorn_soft" },

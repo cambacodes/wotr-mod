@@ -91,7 +91,7 @@ class SoanaPartnerTests(unittest.TestCase):
         self.assertGreaterEqual(arrival["DelayHours"], 168)
         self.assertIn(P.BURIED, exposure["Requires"])
         for event in (dispatch, arrival, exposure):
-            self.assertEqual(event["RequiresAnyGroups"], [[P.SHARE, P.SECRET]])
+            self.assertEqual(event["RequiresAnyGroups"], [[P.SHARE, P.SECRET, P.EXCLUSIVE]])
         for event in (dispatch, arrival, exposure):
             self.assertEqual(event["ContactUnit"], P.ACTOR)
             self.assertEqual(event["Areas"], [P.WINTERSUN])
@@ -124,7 +124,7 @@ class SoanaPartnerTests(unittest.TestCase):
                 for answer in page["Choices"]:
                     if P.CONFIRMED in answer["Set"]:
                         self.assertIsNone(answer.get("Next"))
-                        self.assertEqual(len(set(answer["Set"]) & {P.TOGETHER, P.SEPARATED, P.DISTANT}), 1)
+                        self.assertEqual(len(set(answer["Set"]) & {P.TOGETHER, P.SEPARATED, P.DISTANT, P.QUIET_RETURN}), 1)
 
     def test_partner_answers_and_affair_fallout_are_real(self):
         for stance in (P.SHARE, P.SECRET):

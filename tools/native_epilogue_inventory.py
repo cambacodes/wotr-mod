@@ -30,10 +30,16 @@ TARGETS = (
 def make_cases(story):
     scenes = {s["Id"]: s for s in story["Scenes"]}
     cases = []
+    appended = []
     # All registered routes, including friendship pages. Never infer a return from commitment.
     for cue, edit in sorted(story["NativeEpilogueEdits"].items()):
+        legacy_index = 0
         for index, variant in enumerate([edit, *edit.get("Variants", [])]):
             scene = scenes[variant["Replacement"]]
+            # The new Anevia precaution expands the shared Tirabade slide.
+            # Append its witnesses without renumbering any existing route's
+            # fixture IDs or moving their controls. Runtime priority is unchanged.
+            new_absence = "anevia.partner.absence_kept" in scene.get("Requires", [])
             for group_index, group in enumerate(variant["When"]):
                 flags = set(scene.get("Requires", [])) | {f for f in group if not f.startswith("!")}
                 for any_group in scene.get("RequiresAnyGroups", []):
@@ -41,10 +47,14 @@ def make_cases(story):
                 if scene.get("RequiresAny"):
                     flags.add(scene["RequiresAny"][0])
                 flags -= {f[1:] for f in group if f.startswith("!")}
-                cases.append(dict(Id=f"{cue}/v{index}/g{group_index}", Target=cue,
+                case_id = (f"stance-agency/{cue}/v{index}/g{group_index}" if new_absence
+                           else f"{cue}/v{legacy_index}/g{group_index}")
+                (appended if new_absence else cases).append(dict(Id=case_id, Target=cue,
                                   Dialog=edit.get("Dialog", ""), Page=edit.get("Page", ""),
                                   Chapter=max(6, scene.get("MinChapter", 6)), Flags=sorted(flags),
                                   NativeEligible=[cue], ExpectedCandidate=variant["Replacement"]))
+            if not new_absence:
+                legacy_index += 1
         # Controls change only synthetic snapshots. Existing route rules decide which mourning/closure pages remain.
         base = next(c for c in cases if c["Target"] == cue)
         required = {f for v in [edit, *edit.get("Variants", [])] for g in v["When"] for f in g
@@ -63,7 +73,7 @@ def make_cases(story):
     for scene in story["Scenes"]:
         if not scene["Owner"].endswith("Epilogue"):
             continue
-        if any(c["ExpectedCandidate"] == scene["Id"] for c in cases):
+        if any(c["ExpectedCandidate"] == scene["Id"] for c in (*cases, *appended)):
             continue
         flags = set(scene.get("Requires", []))
         for group in scene.get("RequiresAnyGroups", []):
@@ -74,7 +84,7 @@ def make_cases(story):
                           Chapter=max(6, scene.get("MinChapter", 6)), Flags=sorted(flags),
                           NativeEligible=[], ExpectedCandidate=scene["Id"]))
     return dict(Schema=1, Evidence="synthetic final snapshots; not proof of earned campaign history",
-                Cases=cases)
+                Cases=cases + appended)
 
 
 def make_policy(story, archive):

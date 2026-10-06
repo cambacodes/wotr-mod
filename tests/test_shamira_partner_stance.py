@@ -95,6 +95,11 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                        if partner.SECRET in flags]
             self.assertTrue(results)
             for flags, trace in results:
+                if "partner_private_exit" in trace:
+                    self.assertIn(partner.CAREFUL, flags)
+                    self.assertNotIn(partner.EXPOSED, flags)
+                    self.assertNotIn("partner_discovery", trace)
+                    continue
                 self.assertIn("partner_discovery", trace)
                 self.assertIn("partner_found_" + want, trace)
                 self.assertIn(partner.EXPOSED, flags)
@@ -114,7 +119,11 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
                 self.assertEqual(sum(flag in flags for flag in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET)), 1)
                 self.assertNotIn(partner.COMMITTED, flags)
                 self.assertNotIn(partner.RETURNED, flags - set(state))
-                self.assertIn("partner_late_no" if partner.CLOSED in flags else "partner_late_end", trace)
+                if "partner_late_private" in trace:
+                    self.assertIn(partner.CAREFUL, flags)
+                    self.assertNotIn(partner.EXPOSED, flags)
+                else:
+                    self.assertIn("partner_late_no" if partner.CLOSED in flags else "partner_late_end", trace)
 
     def test_every_epilogue_and_lastcall_has_disjoint_current_states_and_stances(self):
         from storylines import lastcall_partners
