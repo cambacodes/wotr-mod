@@ -278,7 +278,8 @@ She is standing close to Minagho. One hand rests at the back of her neck. Neithe
 "One of which you blocked with a chest because the draught annoyed you."''', c('"It is good to meet you without an intermediary."', "account")),
     n("account", "Chivarro", '''"Yes. Intermediaries become ambitious when they discover that you need them. I used to encourage it. Then I would make them compete."
 {n}She sits without waiting to be offered a chair.{/n}
-"The journey cost me. I intend to recover it. I have had several offers. Veyr's was the first worth reading twice. He places guests in private houses that want wealthy visitors without admitting them through the front door. Introductions, entertainments, information. He sells discretion and sometimes remembers to supply it. I knew his customers before he did."
+"I paid my own passage. Do not waste the evening trying to collect gratitude."
+"I have received several offers." {n}She taps the folded letter.{/n} "Veyr's was the first worth reading twice. He places guests in private houses that want wealthy visitors without admitting them through the front door. Introductions, entertainments, information. He sells discretion and sometimes remembers to supply it. I knew his customers before he did."
 {n}She glances toward Minagho, who has finally moved the chest away from the second exit.{/n}
 "I want a business whose keys I hold. I have no desire to stand at somebody else's table while they decide whether I have been forgiven enough to be useful."''',
       c('"What would you refuse to buy back?"', "price"),
@@ -289,21 +290,19 @@ She is standing close to Minagho. One hand rests at the back of her neck. Neithe
 "Veyr wants introductions and old debts. Hear the terms, Commander. Then tell me whether he can afford what he is asking."''', c('"Fair. Where do I fit?"', "place")),
     n("place", "Chivarro", '''"That is partly what I came to discover. Minagho talks about you as though you are an aggravating piece of good fortune. I find the combination promising."
 {n}Minagho reaches across and turns Chivarro's cup so its chipped edge faces away from her mouth. Chivarro lets her, though she must already have noticed the flaw.{/n}
-"Sit where I can see you. Minagho has been advertising you. I intend to check the merchandise myself."
-"You could have written a shorter reply," {n}Minagho says.{/n}
-"You could have made fewer predictions."
-{n}The rebuke is familiar enough to make Minagho grin. Chivarro keeps her attention on you.{/n}''',
-      c('"I would like to discover whether there is an attraction between us."', "interest"),
-      c('"For now, I want to know you without a courtship waiting behind every question."', "company")),
-    n("interest", "Chivarro", '''"There may be."
-{n}Chivarro moves her chair close enough for her knee to touch yours.{/n}
-"Half the city wants orders from you. I am curious what you do when nobody salutes. There must be a vice worth the trouble of meeting you."
-{n}Minagho laughs. Chivarro reaches back without looking and catches her hand.{/n}
-"Do not tell me yet, honey. I want to discover something she has not already spoiled."''', c('[Stay and hear the offer.]', flags=done("arrival_kept", "chivarro_interest"))),
-    n("company", "Chivarro", '''"Company, then. Minagho warned me you were difficult. She sounded pleased with herself."
-"I usually am," {n}Minagho says.{/n}
-{n}Chivarro unfolds the offer. Minagho leans over her shoulder, close enough to kiss the corner of her mouth before reading.{/n}
-"Read, Commander. If you mean to be respectable tonight, you can at least help me get paid."''', c('[Read Veyr\'s offer together.]', flags=done("arrival_kept", "chivarro_company"))),
+"Sit. I have heard her account of you. I intend to make her regret the omissions."
+{n}Minagho grins. Chivarro keeps her hand over the folded offer.{/n}''',
+      c('''[Flirt] "I want to find out what you've omitted, too."''', "interest"),
+      c('''"Pour the wine. I came for the company."''', "company")),
+    n("interest", "Chivarro", '''"There may be." {n}Chivarro draws her chair close enough that her knee touches yours.{/n} "You have spent an evening listening when you could have given orders. I should like to see what else that mouth can do."
+{n}Minagho's hand rests on the back of Chivarro's chair. Chivarro catches it and kisses the wrist before letting go.{/n}
+"For now, drink. Tell me who in Drezen has tried hardest to buy your attention. I used to know what my customers wanted before they did. You are becoming irritatingly expensive to guess."''', c('[Stay and hear the offer.]', flags=done("arrival_kept", "chivarro_interest"))),
+    n("company", "Chivarro", '''"Then I shall have to survive being interesting. A severe demand."
+{n}Chivarro pours the wine; Minagho pushes the folded offer under an empty plate.{/n}
+"She calls the tavern's beer an insult," {n}Chivarro says.{/n} "Yet she keeps drinking it. I have seen her do that with worse things."
+"Mind your mouth," {n}Minagho says.{/n}
+"You used to enjoy that."
+{n}Minagho steals her cup. Chivarro lets her have one swallow, then takes it back.{/n} "There. No factor, no buyer, and a perfectly serviceable threat. We may yet enjoy the evening."''', c('[Read Veyr\'s offer together.]', flags=done("arrival_kept", "chivarro_company"))),
 ], "invitation_kept", 24)
 
 s("the_remaining_customers", "The remaining customers", [
@@ -319,10 +318,10 @@ s("the_remaining_customers", "The remaining customers", [
 "Yes. You have been wonderfully consistent about that."''', c('"What do you each want to send him?"', "plans")),
     n("plans", "Minagho", '''"A convincing mistake. Let him think the contact he wants has changed hands. He passes it to whoever is buying, and I discover which servant of Baphomet is still spending money on me."
 "You promised me a meeting," {n}Chivarro says.{/n} "I will not buy my way back into business by becoming the bait in your next private war."
-"He has already made you bait. I propose choosing the hook."
+"He has already made you bait," {n}Minagho says.{/n} "I propose choosing the hook."
 {n}Chivarro pulls the blank sheet out from beneath the letter.{/n}
-"I can offer him two introductions without giving him anyone's private name. People who owe me a conversation and can decline the second one. He will want more of the profit in exchange. I will have less authority at the beginning, but the business will be mine to develop."
-"Until he sells the fact that you found me."
+"I can give him two introductions. No private names. Two useful bastards who owe me a conversation; after that, he can pay them for their answers. He takes more of the first evening's profit. I keep the next evening."
+"Until he sells the fact that you found me," {n}Minagho says.{/n}
 "He knows that already. Killing him will not remove it from everyone he has told."
 {n}For a moment neither looks at you. This is an argument they have begun before, and both have learned where the other is hardest to move.{/n}''',
       c('"Before choosing, show me exactly what he knows."', "document"),
@@ -460,7 +459,7 @@ Chivarro directs him to the chair opposite hers.{/n}
 Minagho says the agent's description belongs to a messenger who once carried offers for servants of Baphomet. She does not claim to know where he is now.{/n}
 "So," {n}Chivarro says.{/n} "There is still an evening to arrange. There is also someone hoping to buy the path to our door. Veyr wants my customers. His underwriter wants our door. Neither can afford what they are asking."
 {n}She turns to Orven.{/n}
-"You may carry an unsigned offer for two introductions, under tonight's names. Veyr takes the larger fee. He receives no former private names and no list of my sources. If that displeases his underwriter, he can find another."
+"You may carry an unsigned offer for two introductions, for guests I can actually bring. Veyr takes the larger fee. He receives no former private names and no list of my sources. If that displeases his underwriter, he can find another."
 "He may refuse," {n}Orven says.{/n}
 "Then he refuses," {n}Chivarro replies.{/n}
 {n}Minagho rests her palms on the table.{/n}
@@ -468,7 +467,7 @@ Minagho says the agent's description belongs to a messenger who once carried off
 "You mean to ambush him?" {n}Orven asks.{/n}
 "I mean to let him arrive before deciding how much he has to say," {n}Minagho replies.{/n} "You may quote that exactly."
 {n}Chivarro studies Minagho for a long moment, then nods once.{/n}
-"I will consider that. I will also consider sending you away with nothing. Commander, you have heard the terms. Which undertaking are you willing to help with?"''',
+"I will consider that. I will also consider sending you away with nothing. You have heard the terms. Which loss are you helping me pay for, Commander?"''',
       c('"The limited introductions. You keep the business; the private names stay out of it."', "business"),
       c('"The false appointment. I want the buyer cut off before this becomes another pursuit."', "bait"),
       c('"Neither offer is worth reopening this channel. Send a refusal."', "refuse")),
@@ -757,12 +756,13 @@ s("the_answer_after_business", "The answer after business", [
       c('"I will help with the rehearsal, if Sivane wants someone unfamiliar to try it with."', "participant")),
     n("guest", "Chivarro", '''"Good. I shall try not to argue with every disagreeable word. Only the ones you cannot defend."
 {n}She sets your chair a little closer before putting the letters away.{/n}
-"Stay a moment before you go. I have spent the day making arrangements. I would like to hear something that does not require an answer by tomorrow."
-{n}Before you leave, Chivarro imitates the courier's prepared speech about trust, then the expression he wore when she paid him and shut the door. Minagho demands the expression again.{/n}''', c('[Keep the invitation as a guest.]', flags=done("business_finished", "rehearsal_guest"))),
+{n}Chivarro shifts her chair closer before putting the letters away.{/n} "Stay. Which of your officers has told you the most expensive lie this week? I want to hear how they dressed it."
+{n}She pours the last wine into your cup and keeps her fingers around its stem until you take it.{/n} "I have a messenger's promise to match it. Mine at least came with an entertaining expression."''', c('[Keep the invitation as a guest.]', flags=done("business_finished", "rehearsal_guest"))),
     n("participant", "Chivarro", '''"I will ask her. She enjoys discovering how a stranger moves before he learns what she expects. You may find her difficult to impress."
-{n}Chivarro glances at Sivane's letter.{/n}
-"Her most irritating habit is noticing when I am pleased."
-{n}Chivarro writes your offer beneath her reply and seals it. She keeps you beside her while the wax sets, asking which part of the evening you expect to enjoy. Minagho offers an indecent guess from the doorway.{/n}''', c('[Offer to take part in the rehearsal.]', flags=done("business_finished", "rehearsal_participant"))),
+"She claims I am easy to impress." {n}Chivarro smiles.{/n} "Her most irritating habit is noticing when I am pleased."
+{n}Chivarro writes your offer beneath her reply and leaves the letter open under your hand.{/n}
+"There. Accurate enough to be almost dull."
+{n}Chivarro folds the letter, but keeps your hand on the table beneath hers.{/n} "Sivane will have your answer tomorrow. Tonight I want to hear something unsuitable for a rehearsal. Tell me which guest at the Delights you would have thrown out first. I shall tell you what that guest paid to stay."''', c('[Offer to take part in the rehearsal.]', flags=done("business_finished", "rehearsal_participant"))),
 ], "evening_kept", 24)
 
 s("minaghos_unfinished_sentence", "Minagho's unfinished sentence", [
@@ -892,16 +892,11 @@ Chivarro dislikes being asked to choose before discussing what each version sell
     n("fee", "Chivarro", '''"Now the unattractive part. The room, lamps and assistants cost this much."
 {n}She gives Sivane a short account. The performer reads it, then points to the advance beside her own name.{/n}
 "Less than we discussed."
-"The gallery repairs cost more."
-"You chose the room."
-"You wanted the height."
-{n}Neither looks away. Chivarro turns the account around and crosses out the reduced advance.{/n}
-"Very well. I carry the room's excess. You receive the amount we agreed. If we make another booking, we choose the room together before either of us promises a fee."
-{n}Sivane accepts. Chivarro's mouth tightens as she recalculates her own share.{/n}
-"You needn't congratulate me," {n}she tells you after the performer goes to unpack.{/n} "I dislike being praised for noticing an agreement I wrote myself."
-"I was going to ask whether you still want the room."
-{n}She looks up at the empty gallery.{/n}
-"Very much. Which is how I know the expense is mine."''',
+"The gallery repairs cost more," {n}Chivarro says.{/n}
+"You chose the room," {n}Sivane replies.{/n}
+"You wanted the height," {n}Chivarro says.{/n}
+{n}Neither looks away. Chivarro turns the account around.{/n}
+"Very well. Your original advance. I intend to hear the performance, and I will not hear it from someone else's platform because we quarreled over plaster." {n}Chivarro crosses out the reduced figure and recalculates her share.{/n} "Next time we choose the room before you name your fee. Do not look so pleased. I can still make the audience pay for it."''',
       c('"You looked pleased during the transformation."', "pleasure"),
       c('"What should they feel when they walk in?"', "audience")),
     n("pleasure", "Chivarro", '''"I was. I could hear the moment when people would stop pretending they knew what came next. It is a small sound. Usually the absence of another one."
@@ -1063,14 +1058,17 @@ Then she stops.{/n}
 When you leave, she walks you to the door and asks for another evening without work spread across the table.{/n}''', c('[Promise to ask her for another unhurried evening.]', flags=done("room_kept", "room_warmth"))),
     n("later", "Narrator", '''{n}Chivarro looks at your mouth, then sets your cup deliberately out of reach.{/n}
 "First, I would enjoy your undivided attention. You have been watching the curtain as though you expect an ambush."
-{n}Chivarro glances at the door.{/n}
 "Minagho would knock. Once. For the pleasure of making me hear it."
-{n}Your hand reaches her waist. She catches it and draws you closer.{/n}
+{n}The thought amuses her until your hand reaches her waist. For a heartbeat her clever answer disappears. You have seen her recover from threats more quickly.
+She catches your wrist and draws you closer.{/n}
 "There. You have discovered an effective interruption. Use it again."
-{n}You kiss her. The couch complains beneath the change in weight, and she tilts her eyeless face toward the ceiling in disgust.{/n}
-"If you laugh, I shall remember it. Stay and find out."
-{n}You do. She lights one lamp, leaving the other cold, and hangs her outer robe on the chair she warned you not to trust. Its legs hold. When she returns, her composure is still there in the lifted chin, the measured approach. Then she bends to kiss you and forgets the line she had clearly prepared, pushes you down onto the complaining couch, and straddles you there with her knees sunk into the blanket, working your shirt open from the collar down, one button to a breath.{/n}
-
+{n}You kiss her. The couch complains beneath the change in weight, and she turns her face away from the offending couch with an expression of profound disgust.{/n}
+"If you laugh, I shall remember it."
+"Stay and find out how long," {n}Chivarro says.{/n}
+{n}You do. She lights one lamp, leaving the other cold, and hangs her outer robe on the chair she warned you not to trust. Its legs hold.{/n}
+{n}When she returns, she catches your mouth before you can compliment her composure. She pushes you down onto the couch and straddles you, knees sunk into the blanket. Your hands find the laces at her back. Chivarro arches into the kiss as they loosen, then draws the gown from her shoulders and guides your fingers over her bare waist.{/n}
+"There. A better use for them."
+{n}Her hands open your shirt from the collar down, one button to a breath. The last one goes beneath her nail; she catches your belt and pulls you against her.{/n}
 {n}Much later, she points at the surviving chair.{/n}
 "That one has earned another week."
 {n}You suggest the couch was equally obliging. Chivarro presses her lips to your wrist before answering.{/n}
@@ -1301,7 +1299,7 @@ Sivane takes Winter's mask. She does not need to raise her voice over the music.
 Chivarro remains perfectly still. When the scene ends, she asks to hear the last passage once more.
 Rasen plays it differently. The lower notes now arrive before the host's final refusal, making the refusal sound anticipated. Sivane stops him.{/n}
 "The first way. I want him to believe the answer is still his."
-{n}Chivarro looks at the closed case, then at the empty platform. She reaches for the account.{/n}''',
+{n}Rasen nods. Chivarro looks from the hammers to the purse on her knee. When the last note dies, she does not let Rasen close the case yet.{/n}''',
       c('"The first version changes the scene. I think the room is worth paying to keep safe for it."', "hire"),
       c('"The scene can stand with the lamps and your assistants. Do not buy an arrangement you cannot both trust."', "decline")),
     n("hire", "Chivarro", '''"Half now. The rest before the guests enter. If one threatens you, stop playing and point him out. I want your music, not his drunken requests."
@@ -1365,15 +1363,15 @@ Chivarro listens when you tell her so.{/n}
 {n}Chivarro looks at the painted door. Then she asks Nerath to sit and explain whom he wants on the other side of it.{/n}''', c('[Listen while he names the intended participant.]', "proposal")),
     n("proposal", "Nerath", '''"An associate. Well paid, and becoming ungrateful. I would invite him as my guest. He would receive the key. The performer would make the consequences of refusal rather clearer than they were tonight. Nothing crude. He should leave convinced that his position depends on remembering who opened the door for him."
 {n}Sivane joins you before Chivarro answers. She has removed the mask, but the pale fastening still marks her hair.{/n}
-"You want him frightened of losing his work."
-"I want him to understand it."
-"Then speak to him. I am selling a performance."
+"You want him frightened of losing his work," {n}Sivane says.{/n}
+"I want him to understand it," {n}Nerath replies.{/n}
+"Then speak to him. I am selling a performance," {n}Sivane says.{/n}
 {n}Nerath directs his next words to Chivarro.{/n}
 "I had understood you could arrange a more flexible evening."
 {n}She looks at Sivane, then back at the buyer.{/n}
-"You have seen the performance she brought. If you want a commissioned piece, offer her a fee and let her laugh at it. You cannot buy her with my invitation."
-"An unusually scrupulous distinction."
-"An unusually simple one. Do try to follow it."''',
+"Sivane's work is not mine to sell twice. Put a commission in front of her. I intend to watch her name the price."
+"An unusually scrupulous distinction," {n}Nerath says.{/n}
+"It is my invitation. Stop picking my pocket through it."''',
       c('"Would you buy a private performance in which every guest knows what participation means?"', "counter"),
       c('"He has heard the answer. End this negotiation and use the interest the other guests showed."', "end")),
     n("counter", "Chivarro", '''{n}Chivarro names a price almost twice the sum written on the proposal beside Sivane's elbow. Then she lifts the proposal, folds it before Nerath can look down, and gives him a smile you have not seen directed at anyone she likes.{/n}
@@ -1486,14 +1484,11 @@ Sivane removes the mask.{/n}
 {n}Chivarro has watched without interrupting. She turns to you only when Sivane has finished.{/n}''',
       c('"The first ending leaves me thinking about what the host expected from his guests."', "winter"),
       c('"The second gives the host a real discovery. I want to see him use it."', "host")),
-    n("winter", "Chivarro", '''"You prefer the loss."
-"I prefer being made to remember that I laughed with him before I knew what he was doing."
+    n("winter", "Chivarro", '''"You prefer the loss," {n}Chivarro says.{/n}
+"I prefer being made to remember that I laughed with him before I knew what he was doing," {n}Sivane replies.{/n}
 {n}She looks back at the painted door. Her first answer is too quick.{/n}
 "One can always make an owner look ridiculous by taking away the room in which he knows how to behave."
-{n}Sivane waits. You do too. Chivarro notices both acts of patience and does not appear grateful for them.{/n}
-"Very well. I heard myself. I have been arguing with more than the ending."
-"Would you like us to choose the other because of that?" {n}Sivane asks.{/n}
-"No. I would like the first to earn its cruelty. Do not make the host small before he loses. Let us understand why people accepted his invitation. Then let the door close."
+{n}Chivarro taps the host's last speech with one nail.{/n} "Have him charm them before he begs. They accepted his invitation. Make them remember why. Then shut the door in his face."
 {n}Sivane considers the direction, then tries the final appeal again with less desperation and more charm. It becomes harder to answer. Chivarro nods once.{/n}''', c('"That is the version I would keep."', "winter_end")),
     n("winter_end", "Chivarro", '''{n}Chivarro sits on the edge of the platform after Sivane leaves.{/n} "The host loses his house. I know how that feels. I would rather have the key back, but I enjoyed watching him discover nobody meant to return it." {n}She taps the painted door.{/n} "Let him be charming until the end. I want the guests sorry they laughed."''', c('[Keep Winter\'s ending and the host\'s dangerous charm.]', flags=done("ending_rehearsed", "winter_ending"))),
     n("host", "Chivarro", '''{n}Chivarro's pleasure is immediate. She makes herself wait until Sivane has considered your answer.{/n}
@@ -1518,8 +1513,8 @@ Chivarro offers the performer her hand. Sivane takes it for a moment.{/n}
 {n}Chivarro turns toward the entrance as the first knock sounds.{/n}''',
       c('[Join her as she receives Nerath\'s private audience.]', "private", requires=done("private_booking")),
       c('[Join her as she receives the guests from the open booking.]', "open", requires=done("open_booking"))),
-    n("private", "Chivarro", '''{n}Nerath brings the guests whose names he submitted. Among them is the associate he once intended to instruct through a trap. Chivarro greets that man separately, describes how participation works, and tells him where he can sit if he prefers only to watch.
-He chooses a bench near the side passage. Nerath notices.{/n}
+    n("private", "Chivarro", '''{n}Nerath brings the guests whose names he submitted. Among them is the associate he once intended to instruct through a trap.{/n}
+{n}Chivarro meets Nerath's associate at the door, describes the evening, and shows him the side bench. He takes it. Nerath's smile tightens.{/n}
 "You have made him timid," {n}he murmurs to Chivarro.{/n}
 "I have told him what he bought a seat to see. You may enjoy the performance without improving him."
 {n}Her voice carries no farther than it needs to. Nerath smiles as though she has made a private joke he intends to forgive.
@@ -1541,10 +1536,10 @@ At the next pause, a guest speaks too loudly from the front bench. The interrupt
       c('[Let the performer answer the interruption within the scene.]', "heckler", requires=done("open_booking"))),
     n("patron", "Chivarro", '''{n}Nerath has turned toward his associate. The man remains seated beside the passage. Sivane, still wearing the host's mask, says that the key has already been refused.
 Nerath insists. His next remark refers to the associate's employment. Chivarro steps forward before he finishes it.{/n}
-"You were told how participation works. He has answered."
+"I sold you a performance. Sivane has her answer. Stop heckling."
 "This is my evening," {n}Nerath says.{/n}
-"You paid for the performance," {n}Chivarro says.{/n} "This noise is extra."
-{n}Nerath looks toward the Commander, hoping to silence Chivarro. She does not wait for your intervention.{/n}
+"You paid for the showing," {n}Chivarro says.{/n} "If you want your clerk frightened, take him home and do it yourself."
+{n}Nerath looks toward you, perhaps hoping Chivarro will hesitate before the Commander. She does not wait for your intervention.{/n}
 "Come outside," {n}she tells him.{/n} "We can discuss the rest where the audience has not paid to hear it."
 {n}For a moment he seems likely to refuse. Chivarro stands close enough to make the invitation unmistakable, then opens the passage beside his bench. He leaves with her. The door closes quietly.
 Sivane waits until the room has settled. Then the host asks whether Winter has brought any other unexpected guests. The audience laughs with an unmistakable release of tension.{/n}''', c('[Remain with the performance while Chivarro settles the interruption.]', "ending")),
@@ -1613,10 +1608,10 @@ When she sees you, she steps aside at once.{/n}
     n("held", "Narrator", '''{n}You remain together on the couch. Chivarro adjusts the blanket so neither of you has to keep rescuing it from the floor. She can name your footsteps on the stair. When you dispute the claim, she imitates the guards' sudden silence and kisses you before you can answer.
 The drawer remains closed. At the door, later, she tells you to remember the hour when the fighting is done, because she certainly intends to send a bill for it.{/n}''', c('[Keep the quiet evening as something you chose together.]', flags=done("after_lamps_kept", "after_lamps_close"))),
     n("night", "Chivarro", '''"Take that pin out before it makes a hole in either of us."
-{n}Chivarro turns her shoulder to you. The silver fastening resists, then gives. She exhales and catches your wrist.{/n}
-"The pin has been tormenting me since the overture. You may try to deserve the next sound."
-{n}Her kiss tastes of the wine she scarcely had time to drink. She leaves the pin in a bowl and draws you into the inner room. Her dress falls; she steps out of it, presses you onto the bed and follows. Loosened hair brushes your cheek. Her hand finds your belt.{/n}
-"Now the part I have not rehearsed."
+{n}Chivarro turns her shoulder to you. The pin fastening her robe resists; she catches your fingers, finds the catch with them, and lets you finish. The cloth slips from one shoulder as she takes your mouth.{/n}
+"There. I knew I had kept you for something."
+{n}She puts the pin in an empty bowl. In the inner room she lets the robe fall. Her hands push your shirt open; her knee presses between yours until you sit on the bed. She follows, hair loose across your face, fingers closing on your belt.{/n}
+"Now. The part I have not rehearsed."
 
 {n}Near dawn a cart rattles under the window. She lifts her head as if considering having it arrested, then catches your arm.{/n}
 "If you are leaving, lie convincingly. I want another hour before I believe it."''', c('[Stay together through the quiet night.]', flags=done("after_lamps_kept", "after_lamps_close"))),
@@ -1691,9 +1686,7 @@ After the performer leaves, Chivarro bends over the two names on the agreement.{
 {n}When Sivane arrives, Chivarro proposes two separate bookings on the terms they have already tested. Either can decline the second without forfeiting payment for the first. The performer considers it, then accepts.
 They divide the remaining work: Sivane will confirm the assistants, Chivarro will confirm the room. Neither makes the agreement larger by calling it permanent.
 Afterward, Chivarro folds her copy and puts it away.{/n}
-"Two evenings I have chosen. After that, another answer. I would once have thought the uncertainty an invitation to be replaced."
-"Do you now?"
-"Sometimes. I intend to answer by being worth asking again. It is a more interesting use of my vanity."''', c('[Keep the two separate bookings.]', flags=done("venture_settled", "venture_bookings"))),
+"Two bookings. If she gets a better offer, I shall have to make mine better still." {n}Chivarro pockets the agreement.{/n} "I taught her to count. Fucking generous of me."''', c('[Keep the two separate bookings.]', flags=done("venture_settled", "venture_bookings"))),
 ], "after_lamps_kept", 24)
 
 s("what_she_will_take", "What she will take", [
@@ -1706,7 +1699,7 @@ She has not given up the room yet. The packing is a way to discover what another
 "I would like to talk about what I take with me. Some of it cannot be folded."''', c('"Tell me what you want to keep."', "keep")),
     n("keep", "Chivarro", '''"The work. Minagho, if she can resist telling everyone how much better she would have arranged it. And you."
 {n}She lifts the ornament box out of the case and discovers that the lid no longer closes. Something beneath it has shifted.{/n}
-"That sounded uncomfortably like a list of possessions. Help me before I begin assigning shelf space."
+"An excellent list. Help me close this before I begin packing you with it."
 {n}You find a folded handbill under the box. It is the advertisement for Sivane's first performance. Chivarro smooths the crease with her thumb.{/n}
 "I want to show you the next one. Preferably from a room where I am still pleased to see you when the lamps have gone out."
 {n}She puts the bill into a narrow side pocket, then clears the place beside her on the couch.{/n}
@@ -1830,26 +1823,28 @@ def ending(id, title, text, requires=(), forbids=(), owner="Epilogue", complete=
 
 
 ORDINARY_BAD = ("minagho.dead", "chivarro.dead", "inhuman", "ascended", "sacrifice")
-ending("together", "Three invitations", '''{n}Chivarro kept the invitations and Minagho kept finding names to cross off them. Some belonged to Baphomet's old agents. Chivarro preferred to charge such guests double; Minagho preferred to show them the cellar. Their quarrels could be heard beyond the thick door.
-The Commander was invited to evenings for three and stolen hours for two. Minagho complained about every late arrival, then caught the Commander's collar before the excuse was finished. Chivarro kept better wine for those evenings and denied doing so.
-The mask game survived. Chivarro won while Minagho was watching the Commander. Minagho called it cheating, kissed her hard enough to spoil the next move, and demanded another game.{/n}''', requires=done("future_together"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
-ending("two", "A place with each", '''{n}The Commander kept a place in both women's lives without requiring every visit to become a gathering of three. Chivarro's invitations named an evening, a room, sometimes a performance she wanted someone to criticize honestly. Minagho's tended to begin with a complaint that became an invitation before the last line.
-Minagho's invitations demanded haste; Chivarro's charged for it. The Commander learned which handwriting had made each promise. When all three met, the two women could spend half the evening arguing over a guest from the Delights before either remembered to ask about the crusade.
-Their separate hours did not make the shared ones less welcome. They gave everyone something worth asking about when the door opened.{/n}''', requires=done("future_two"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
-ending("minagho", "The hour she kept", '''{n}Minagho's next invitation began with an insult about the Commander's absence and ended with the hour and address. When the Commander arrived, she complained until she was kissed. She resumed afterward, from the same word.
-They still argued about Kenabres. Minagho corrected the Commander's account of her atrocities whenever it understated them. If a dispatch interrupted their evening, she held it over the lamp until the Commander took it back.
-Chivarro kept her own work and her place in Minagho's life. On the evenings she joined them, she brought better wine and corrected the invitation's account of who had been kept waiting.{/n}''', requires=done("future_minagho"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
-ending("chivarro", "The room beyond the audience", '''{n}Chivarro wanted profitable rooms and guests who remembered who had invited them. The Commander often arrived after the last guest had gone. She charged for lateness, ruined the bill with a kiss, and demanded payment anyway.
-Once, a dispatch interrupted an evening she had planned for weeks. Her next invitation included a price for every messenger admitted after supper. The Commander left the following dispatch outside her door.
-Minagho remained her lover and the Commander's difficult friend. She regarded the messenger charge as underpriced and supplied an alternative the messengers were fortunate never to hear.{/n}''', requires=done("future_chivarro"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
-ending("open", "Another evening", '''{n}There were later invitations. Chivarro was exact about dates when she could be and candid when she could not. Minagho acquired a habit of disguising the request for company as a question whose answer required an evening.
-Some invitations bought a night; others brought the Commander to a game and an argument over who had ruined the wine. Neither woman offered a home. Chivarro still found the irregular visits profitable, and Minagho complained whenever an invitation went unanswered.
-Chivarro kept the brass key after the performance's last local showing. It opened only a painted door. She liked remembering how much an audience had made of choosing whether to take it.{/n}''', requires=done("future_open"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
-ending("friends", "Good company, difficult opinions", '''{n}Minagho sent the Commander an account of a crusader's memoir, with corrections beside every passage that offended her vanity. Chivarro offered to sell the corrected edition to the memoir's enemies. The Commander declined to put a seal on it; both women complained.
-Chivarro won almost every mask game. Minagho bought new stones and accused those of favoritism too. The Commander had a chair at the table; when the women began kissing across it, Minagho pointed out the door.{/n}''', requires=done("future_friends"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
-ending("chivarro_service", "An answer of her own", '''{n}Chivarro kept the lasting relationship she had chosen. She also kept a room whose key remained with her.{/n}
-{n}Minagho remained bound. Chivarro's messages arrived in her own hand, and her invoices never included Minagho's service. When the Commander tried to join the accounts, Chivarro returned the page with the disputed line slashed through. Minagho kept that copy.{/n}''', requires=done("future_chivarro_service"), forbids=ORDINARY_BAD)
-ending("service", "The thing they had named", '''{n}Minagho remained bound. Chivarro's messages arrived in her own hand, and her invoices never included Minagho's service. When the Commander tried to join the accounts, Chivarro returned the page with the disputed line slashed through. Minagho kept that copy.{/n}''', requires=done("future_service"), forbids=ORDINARY_BAD)
+ending("together", "Three invitations", '''{n}Minagho hid knives in the new couch. Chivarro found them, charged her for the damaged lining, and kept the best one. The Commander discovered it beneath a cushion on the first evening home.
+They kept profitable rooms and long grudges. A patron who tried to buy Chivarro's private hours received an invitation to meet Minagho instead. He paid for the broken furniture before he left.
+There were nights for three and nights for two. Their old quarrels sometimes reached the stairs; their reconciliations reached farther. The mask stones still favored Chivarro, according to Minagho. The Commander found watching them argue considerably more distracting than losing.{/n}''', requires=done("future_together"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
+ending("two", "A place with each", '''{n}Chivarro's invitations named a room and an hour. Minagho's named an insult the Commander had to arrive in person to answer. Each woman found uses for the hours she kept to herself.
+When the three met, Chivarro brought the takings from her latest showing and Minagho brought news of a former patron's misfortune. They disputed which had earned more. The Commander was often appointed judge and seldom permitted to finish the verdict.
+Chivarro often arrived with Minagho's dagger tucked in her bodice. Minagho always insisted on retrieving it herself.{/n}''', requires=done("future_two"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
+ending("minagho", "The hour she kept", '''{n}Minagho kept the bad stair and an excellent view of the people who passed beneath it. She claimed to be studying Drezen's defenses. The Commander learned which evenings made that claim particularly ridiculous.
+A missed visit brought a letter listing the offenses in exquisite detail. At its foot, she wrote the next hour and address. Arriving early earned another complaint; arriving at all earned a kiss hard enough to bruise.
+They still argued about Kenabres. Minagho corrected the Commander's account of her atrocities whenever it understated them. If a dispatch interrupted their evening, she held it over the lamp until the Commander took it back.{/n}''', requires=done("future_minagho"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
+ending("chivarro", "The room beyond the audience", '''{n}Chivarro's audiences grew. So did her prices. The Commander came after the last guest had gone and found the hostess barefoot, counting money, with a second cup beside the ledger.
+She charged for a visit cut short and charged again when the Commander stayed until dawn. Asked what the first sum had bought, she tore up the account and pulled the Commander back to bed. The next bill included the torn paper.
+Her work still brought her rooms, patrons and enemies of her own. She liked describing the enemies while someone she wanted unlaced her gown.{/n}''', requires=done("future_chivarro"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
+ending("open", "Another evening", '''{n}Chivarro sent invitations when she had a room worth showing off. Minagho sent one when she had found a particularly irritating question. The Commander answered some and accumulated accusations over the rest.
+No house was promised. The brass key from the performance opened only its painted door; Chivarro hung it beside her real keys and told guests it was the most expensive useless thing she owned.
+The mask game survived. So did the argument over who had stolen the last plum.{/n}''', requires=done("future_open"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
+ending("friends", "Good company, difficult opinions", '''{n}Friendship with the lilitu brought good wine, appalling advice and invitations that occasionally required a bodyguard. Chivarro once offered to improve a tiresome guest's manners. Minagho objected that the guest had no manners worth preserving.
+The Commander remained welcome at their table. Some evenings ended with the mask stones scattered across it; others ended when the two women began looking at one another and forgot to deal.
+Minagho bought a new set of stones to defeat Chivarro's cheating. Chivarro won the first game with them and sent her the bill.{/n}''', requires=done("future_friends"), forbids=ORDINARY_BAD + ("minagho.ran_demon",))
+ending("chivarro_service", "An answer of her own", '''{n}Chivarro kept her work and the lover she had chosen. When the Commander called Minagho's service affection, Chivarro stopped unlacing and asked to see the order that had freed her. None was produced.
+She sent invitations in her own hand, collected her own takings and came when she pleased. Minagho's bond remained. Chivarro never allowed a pleasant night to pay that debt.{/n}''', requires=done("future_chivarro_service"), forbids=ORDINARY_BAD)
+ending("service", "The thing they had named", '''{n}Chivarro continued arranging shows and bargaining over the profits. Minagho remained bound to the Commander. The two lilitu still had things to say to one another, and Chivarro shut the door when they said them.
+Her letters named the evenings she would offer. They promised nothing from Minagho. When the Commander asked for both, Chivarro sent back only her own answer.{/n}''', requires=done("future_service"), forbids=ORDINARY_BAD)
 
 # Special outcomes also cover earned but interrupted campaigns.
 ending("both_lost", "Two absent voices", '''{n}The deaths of Minagho and Chivarro left two absences behind an invitation the Commander had answered. News of one never became consolation for the other.
@@ -1865,10 +1860,10 @@ Their histories followed the powers and loyalties they had chosen, but the memor
 ending("sacrifice", "The invitation kept", '''{n}After the Commander's sacrifice, Chivarro remembered writing beneath Minagho's little drawing of a skull. The correction had been easy to make. Someone had read it and answered the invitation anyway. She had liked that before she knew what else to say about the Commander.
 Minagho remembered the note instead. She had expected another dangerous negotiation. Someone had answered it and stayed long enough to become more than the answer to a problem.
 They spoke of the Commander differently. Neither required the other to choose a single account of the loss.{/n}''', requires=("sacrifice",), forbids=("minagho.dead", "chivarro.dead", "inhuman", "ascended"), complete=False)
-ending("unfinished_lasting", "The address she still meant to send", '''{n}Chivarro had received a lasting answer before the final farewell was interrupted. She kept the blank sheet beside her handbill until she could put an address on it. Her first letter threatened to charge for every year the Commander took to arrive.
-Minagho supplied no joke while Chivarro sealed the letter.{/n}''', requires=done("chivarro_lasting"), forbids=ORDINARY_BAD, complete=False)
-ending("unfinished", "A conversation still open", '''{n}Minagho's invitation had received an answer. She sent that answer on to Chivarro, who had added her own sharp correction beneath the little skull on the note.
-Their later letters were irregular, sometimes affectionate and sometimes occupied entirely by a difficulty neither woman wished to discuss with a stranger. An unfinished visit could still be followed by another question. Minagho's next invitation was less polite. Chivarro crossed out the worst threat and wrote the address beneath it.{/n}''', forbids=ORDINARY_BAD + done("chivarro_lasting"), complete=False)
+ending("unfinished_lasting", "The address she still meant to send", '''{n}The farewell never took place. Chivarro kept the answer the Commander had given beside her traveling case and, when she found a room she liked, sent its address.
+The invitation included a furious account of the landlord, a sketch of the bed, and a warning that the next letter would be less patient. She put the blank sheet back into its pocket for another address.{/n}''', requires=done("chivarro_lasting"), forbids=ORDINARY_BAD, complete=False)
+ending("unfinished", "A conversation still open", '''{n}Minagho kept the note with the little skull. Chivarro added another correction beneath it, then an address. Their next letter carried three crossed-out dates and an argument over the wine.
+The Commander had left a visit unfinished, not promised a life. The two women found plenty to do while waiting for an answer. Some of it made their invitations rather more difficult to accept.{/n}''', forbids=ORDINARY_BAD + done("chivarro_lasting"), complete=False)
 ending("aeon", "The room that was not hired", '''{n}In the remade history, no invitation bearing two different hands brought these evenings into being. Chivarro did not hire the room for this performance, and Minagho did not discover that particular bad stair in the Commander's company.
 Their lives had other rooms, other bargains and their own long entanglement. No recollection of the erased visits arrived to turn those lives toward a guest they had not met in that way.{/n}''', owner="AeonEpilogue", complete=False)
 
