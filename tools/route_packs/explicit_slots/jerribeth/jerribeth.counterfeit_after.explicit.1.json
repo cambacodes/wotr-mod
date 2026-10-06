@@ -1,0 +1,46 @@
+{
+  "slot_id": "jerribeth.counterfeit_after.explicit.1",
+  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
+  "scene": "A later remote evening through the charm, following the earned counterfeit aftermath. The imagined city and window stay behind her; her chosen attention displaces the expensive display. This deepens earlier intimacy where it already happened. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
+  "last_line": "N: Behind her, the same street light passes the window again.",
+  "speakers": {
+    "J": "Jerribeth",
+    "N": "Narrator"
+  },
+  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 8,
+  "max_lines": 14,
+  "facts": [
+    {
+      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
+      "guid": "8a632a5249b3c2541a1381111cae9e37",
+      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
+    },
+    {
+      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
+      "guid": "bf1542830cfa01d4c9db04546681084d",
+      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
+    },
+    {
+      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
+      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
+    }
+  ],
+  "required_beats": [
+    "She abandons perfect presentation voluntarily.",
+    "The Commander answers the invitation instead of being assigned a line by narration.",
+    "The border never opens; the existing quiet path remains valid and nonsexual."
+  ],
+  "default_text": "{n}She lets the city repeat itself behind her. For once, she has found something she wants more than an audience for her work.{/n}",
+  "placement": {
+    "scene": "jerribeth.counterfeit_after",
+    "after_node": "desire",
+    "resume_node": "after"
+  },
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+}

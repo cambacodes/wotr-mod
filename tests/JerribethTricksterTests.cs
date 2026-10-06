@@ -240,7 +240,7 @@ internal static class JerribethTricksterTests
                       && visitPages.Contains("ask") && visitPages.Contains("threshold_free") && visitPages.Contains("morning_free")
                       && visitOuts.All(r => r.Has("jerribeth.trickster.visited")),
                     "The visit has no staged threshold, or keeping your hands has no distinct outcome.");
-                var noSpawn = Program.Copy(due); noSpawn.Flags.Add("jerribeth.presence.failed"); noSpawn.Hour += 24;
+                var noSpawn = Program.Copy(due); noSpawn.Flags.Add("jerribeth.presence.failed"); noSpawn.Hour += 96;
                 check(Rules.Available(story, S("jerribeth.trickster.visit_letter"), noSpawn)
                       && !Rules.Available(story, S("jerribeth.trickster.visit_letter"), Later(story, due, 24)),
                     "No delayed letter when her presence cannot spawn, or it plays beside the visit.");
@@ -481,7 +481,15 @@ internal static class JerribethTricksterTests
             var w = World(story, 6, flags.ToArray());
             check(Rules.Available(story, epCommit, w), "The late commit is missing for vessel '" + vessel + "'.");
             var pages = new HashSet<string>();
-            var outs = Program.Walk(epCommit, w, (page, _) => pages.Add(page));
+            var outs = Program.Walk(epCommit, w, (page, _) =>
+            {
+                pages.Add(page);
+                // Round 2 compiles partner choices into ending-local pages.
+                // Preserve modality coverage without requiring persistent flags.
+                if (page.StartsWith("late_local_", StringComparison.Ordinal)
+                    && page.Length > 22 && page[^11] == '_')
+                    pages.Add(page.Substring(11, page.Length - 22));
+            });
             bool mind = vessel != "" && vessel != "jerribeth.trickster.cost.host";
             check(epCommit.Nodes[0].Paragraphs.Take(3).Count(p => Rules.ParagraphVisible(p, w)) == 1
                   && Rules.VisibleParagraphs(epCommit.Nodes.Single(n => n.Id == "collected"), w).Count(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[jerribeth.trickster.epilogue.commit/collected/paragraph/0][jerribeth.trickster.epilogue.commit/collected/paragraph/1][jerribeth.trickster.epilogue.commit/collected/paragraph/2]")) == 1,

@@ -1,0 +1,46 @@
+{
+  "slot_id": "jerribeth.unsold_evening.explicit.1",
+  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
+  "scene": "A private remote evening in Drezen or Nexus after her current unsold-evening invitation. She stops selling the setting and chooses the Commander's attention. The charm carries speech and images only; each remains in their own room. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
+  "last_line": "N: The image remains close while the ruined lamp goes dark.",
+  "speakers": {
+    "J": "Jerribeth",
+    "N": "Narrator"
+  },
+  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 8,
+  "max_lines": 14,
+  "facts": [
+    {
+      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
+      "guid": "8a632a5249b3c2541a1381111cae9e37",
+      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
+    },
+    {
+      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
+      "guid": "bf1542830cfa01d4c9db04546681084d",
+      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
+    },
+    {
+      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
+      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
+    }
+  ],
+  "required_beats": [
+    "Show her initiating the close approach in the image, and the Commander choosing to answer.",
+    "Keep the private image out of her purchaser's display without presenting that choice as reform.",
+    "Return to after with her pleased, possessive irritation; quiet/frame branches bypass this slot."
+  ],
+  "default_text": "{n}Her image fills the frame. The last lamp gutters while her voice stays close, and neither of you restores the light.{/n}",
+  "placement": {
+    "scene": "jerribeth.unsold_evening",
+    "after_node": "kiss",
+    "resume_node": "after"
+  },
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+}

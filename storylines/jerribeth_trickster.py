@@ -1032,6 +1032,8 @@ def integrate(payload):
     # Route-owned partner terms and current Marhevok state (round 2a).
     from storylines import jerribeth_partner
     jerribeth_partner.integrate(payload)
+    from storylines import jerribeth_round2
+    jerribeth_round2.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
