@@ -1,0 +1,15 @@
+{
+  "voice": "Chadali: warm, exuberant, generous, impulsive, bossy when flustered; quick delight and blunt refusal; a patron with her own worshippers and work. Brief concrete speech, teasing impatience, no philosophical maxims, therapy language or narrator explanation. Write new dialogue, not borrowed canon lines. Canon-true appearance only: dark-skinned, middle-aged Vudrani woman; yellow silk; long black hair with white flowers; dimples; plump fingers with white-gold ring. Native C1/C4 in the sheet. No invented anatomy, virginity, former partner or supernatural sexual effects.",
+  "scene": "Trickster, Ch3 or Ch5, private Council hall after the honey night and her existing stay invitation. Reserved sexual encounter: mutual lovemaking following the heated-cut default. Build from she draws the familiar cushions from under the table, chooses another evening, and pulls the Commander close for a returned kiss. Required beats: a reunion rather than another first time; a concrete want of hers without a magical wish compelling affection; familiar room; no stolen flower memory unless actually established now. Preserve the choice and the aftermath; no magical compulsion or invented past lover. Resume existing stay exit; do not invent morning mechanics or overwrite debts.",
+  "last_line": "C: You're staying.",
+  "speakers": {
+    "C": "Chadali"
+  },
+  "example": "N: She pushes a cushion into place with her heel and catches your sleeve.\nC: There. Sit where I can reach you.\nN: Her bracelets brush your collar as she leans in to kiss you.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 8,
+  "max_lines": 12
+}
