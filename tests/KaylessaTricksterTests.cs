@@ -426,7 +426,10 @@ internal static class KaylessaTricksterTests
         // Directive 12: the morning after, seen by Woljif.
         var wMorning = S(P + "react.woljif_morning");
         check(wMorning.Owner == "Woljif" && wMorning.Requires.Contains(N + "grey_light") && !Avail(wMorning, World(story, 5, "trickster", "trickster.ever", Committed))
-              && Avail(wMorning, World(story, 5, "trickster", "trickster.ever", Committed, N + "grey_light")), "Nobody notices the morning after.");
+              && Avail(wMorning, World(story, 5, "trickster", "trickster.ever", Committed, N + "grey_light", "woljif.in_party"))
+              && !Avail(wMorning, World(story, 5, "trickster", "trickster.ever", Committed, N + "grey_light"))
+              && !Avail(wMorning, World(story, 5, "trickster", "trickster.ever", Committed, N + "grey_light", "woljif.in_party", "woljif.plot_absent")),
+            "The morning witness ignores Woljif's recruitment or plot absence.");
 
         // Camellia's oath: her kill that didn't take, now that this route returns her (ledger 05 row 12).
         var oathCamp = S("camellia.trickster.kills_answered.oath_camp");
