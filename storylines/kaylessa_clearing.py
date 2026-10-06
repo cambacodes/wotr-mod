@@ -68,7 +68,7 @@ away(NIGHT, "Where I was meant to die", [
     nar("bare", '''{n}An hour's ride out of the gate, over ground you remember, to the clearing where Forn sprang his trap. There is no stone. The crusade's burial detail left a long, low mound at the edge of the trees, already green, and no name on it.{/n}
 {n}She stands in front of it with her hands behind her back, like an officer inspecting a sentry.{/n}''',
         c("Continue", "why")),
-    nar("branch", '''{n}An hour's ride out of the gate, to a clearing among dead trees where, she tells you, Forn meant to spring his trap on you. "In my branch I came out of those trees and took his arrow for you, here." She touches her collarbone. "In yours I was already dead, so you met him alone, or you never met him at all. I can't tell. I remember both."{/n}''',
+    nar("branch", '''{n}An hour's ride out of the gate brings you to a clearing among dead trees. Kaylessa points toward a gap in the trunks. "That's where I came out in the branch Shyka took me from. Forn's archers were on the other side." She touches her collarbone. "I remember their arrow. I remember walking away, too."{/n}''',
         c("Continue", "why_branch")),
     nar("ravine", '''{n}Not far. Out of the south gate and down into the ravine below the wall, where the stones are still stained dark in places and someone has swept away the lantern glass. It's black as the bottom of a well with the moon down, and she knows every stone of it.{/n}
 {n}She walks you to the stone where the hunter lay and stops there, with your wrist still in her hand.{/n}''',
@@ -76,8 +76,8 @@ away(NIGHT, "Where I was meant to die", [
     kay("why", '''"This is where I'm supposed to be, soldier. Under that." {n}She nods at the ground as if it had insulted her.{/n}
 "I asked you for it. I got it, for a night. And then I got this instead, all of it, the market and the tea and you." {n}She turns round.{/n} "I wanted to do something here that isn't dying."''',
         c("Continue", "desire")),
-    kay("why_branch", '''"This is where I was supposed to die, in one of my lives. In the other one I died in the mud somewhere else, with you standing over me." {n}She turns round.{/n}
-"I've been thinking about which place to bring you to. I chose this one. It's the one where I was brave." {n}A pause.{/n} "I wanted to do something here that isn't dying."''',
+    kay("why_branch", '''"I used to look at these trees and see his archers." {n}She looks back toward the horses.{/n}
+"I've spent enough nights with that hunter in my head. I brought you here because I want to remember something else when I look at these trees."''',
         c("Continue", "desire")),
     kay("why_ravine", '''"He meant this to be my grave. Kyonin's arrows, a courier's face, and nobody left to say otherwise." {n}Her thumb moves on the inside of your wrist.{/n}
 "It's his instead. I wanted to see it with you. I wanted to do something down here that isn't dying."''',
@@ -111,7 +111,7 @@ away(NIGHT, "Where I was meant to die", [
     kay("down", '''"There. Now nobody's holding anything." {n}She is breathing hard, and her skin under your hands is cool as river stone and getting warmer, and every muscle Anemora's work put in her is moving at once.{/n}
 "Don't you dare be gentle with me, soldier. I've had enough careful hands for one life. I want yours."''',
         c("[Pull her down onto the cloak.]", "cut", flags=(NIGHT_FLAG,))),
-    nar("cut", '''{n}She goes down onto the courier's cloak and pulls you down after her with both hands knotted in your hair, and says the word she calls everyone against your mouth. It has never once sounded like that. Above you the stars she has been naming to you one by one burn on over the place where she was meant to die.{/n}''',
+    nar("cut", '''{n}She lands on the cloak and catches you by the hair. Her leathers slip from one shoulder; she presses your hand against the bare skin and bites a laugh off against your mouth. "Here, soldier." She draws you over her, kissing hard, the courier's grey bunching beneath you.{/n}''',
         c("[...]")),
 ], requires=(), delay=12)
 
@@ -191,9 +191,9 @@ here(CLOAK, "Not grey", '"Is that... a new cloak?"', [
 "The grey was a courier's colour. It was for hiding." {n}Her fingers tighten on the edge of the hood.{/n}''',
         c("Continue", "amulet", requires=(AMULET,)),
         c("Continue", "no_amulet", forbids=(AMULET,))),
-    kay("amulet", '''"And I've got nothing left to hide under. No elf face, not any more. It burnt out on the man they sent to kill me. So I thought, if I'm going to walk round your city looking like what I am, I might as well be seen doing it." {n}She lifts her chin.{/n} "Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it."''',
+    kay("amulet", '''"And I've got nothing left to hide under. No elf face, not any more. It burnt out in the ravine. So I thought, if I'm going to walk round your city looking like what I am, I might as well be seen doing it." {n}She lifts her chin.{/n} "The Wasps wore red under the grey, in Kyonin. Where nobody could see it."''',
         c("Continue", "ask")),
-    kay("no_amulet", '''"I'm still hiding. I'll be hiding till the day Kyonin forgets my name, which will be never. But I'm tired of hiding in a colour that means I'm running." {n}She lifts her chin.{/n} "Calistria's colour. The Sting's girls wore red under the grey, in Kyonin. Where nobody could see it."''',
+    kay("no_amulet", '''"I'm still hiding. I'll be hiding till the day Kyonin forgets my name, which will be never. But I'm tired of hiding in a colour that means I'm running." {n}She lifts her chin.{/n} "The Wasps wore red under the grey, in Kyonin. Where nobody could see it."''',
         c("Continue", "ask")),
     kay("ask", '''"So. Say it. Whatever you were going to say."''',
         c('[Flirt] "It suits you. It\'ll suit the floor of my quarters even better."', "flirt", flags=(RED_CLOAK,)),
@@ -308,7 +308,7 @@ here(SHYKA_ANSWER, "How it ends", '"Is that from Shyka?"', [
     nar("open", '''{n}She has Shyka's note on her knee, the one in three handwritings, and a stub of charcoal, and a scrap of courier's paper with nothing on it yet. The note has changed shape again since you last saw it. She has weighted it down with her cup so it can't get any ideas.{/n}''',
         c("Continue", "start")),
     kay("start", '''"It wants to know how it ends. That thing. It asked you, and it asked me, and it'll forget both of us asked." {n}She taps the charcoal against the paper.{/n}
-"I've been trying to write it an answer for three days. I keep writing 'badly' and crossing it out. It isn't true yet. I don't like writing things that aren't true."''',
+"I've been trying to write it an answer since it arrived. I keep writing 'badly' and crossing it out. It isn't true yet. I don't like writing things that aren't true."''',
         c("Continue", "raised", requires=(SHYKA_RAISED,)),
         c("Continue", "plain", forbids=(SHYKA_RAISED,))),
     kay("raised", '''"And somewhere in its keeping there's a you who said yes and meant it. Every word, you said. No fingers crossed." {n}She doesn't look up.{/n} "I think about that one sometimes. Whether that you is happy, being Shyka. Whether it remembers me."''',
@@ -341,9 +341,8 @@ here(HUNTER, "The next one", '"You\'ve got blood on your sleeve."', [
     kay("turned", '''"A message." {n}She considers it the way a quartermaster considers a bill.{/n} "Yes. Broken fingers, both hands, so he can't draw a bow again. And a letter pinned to his coat in my own hand, in Elven, saying who I am and what I know, for every guard between here and the border to read on his way."
 {n}She stands.{/n} "It's crueller than killing him. The Council will have to decide whether to hide him too."''',
         c("[Let her go to the cellar.]")),
-    kay("hers", '''{n}She looks at you for longer than is comfortable.{/n}
-"Mine." {n}Something moves behind her eyes, and she shuts it down with visible effort.{/n} "You shouldn't hand me things like that, soldier. You know what's in me. You know what it would like to do with a boy in a cellar."
-{n}She picks up the arrowhead again and turns it over in her fingers.{/n} "I'll send him home. With broken fingers and a letter. Not because you told me to. Because I'd like to be someone who does that, and not the other thing. Ask me tomorrow if I managed."''',
+    kay("hers", '''"Mine." {n}She turns the arrowhead between her fingers.{/n} "You know what I'd enjoy doing to him in that cellar. Don't pretend you don't."
+"I'll break his fingers and pin the letter to his coat. Let the Council see what their duty bought. I want him alive when he tells them who did it."''',
         c("[Let her go to the cellar.]")),
 ], requires=(COUNCIL_KNOWS,), delay=48, chapters=(5,))
 
