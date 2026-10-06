@@ -1,6 +1,13 @@
 """Correspondence extending installed RanRomance's completed Targona finale."""
 from story_format import c, n, scene
 
+# Named, unconditional text paragraph: production slot ID, no runtime schema
+# extension. The existing buckles node and exit retain identity and mechanics.
+EXPLICIT_PARAGRAPHS = {
+    "targona.the_open_threshold.explicit.1":
+        "{n}She pulls you close on the bed and kisses you until the haste gives way to warmth. The last buckle lies beside the door.{/n}",
+}
+
 SCENES = []
 RELATIONSHIP = dict(
     Title="What she carries out", Description="Targona has begun sending me pages she wants someone to read with her. Our earlier choices remain our own.",
@@ -70,7 +77,7 @@ s("unasked_question", "The house of the enemy", [
 "Put it in the account that way: two hinges, and the angel who drew them didn't know which. Then send me a copy. I'd like to know which way that door swung, because whoever built it meant something by it."
 {n}You set the scrap beside the letter and leave space beneath it.{/n}''',
       c("Continue the letter.", "personal")),
-    n("personal", "Narrator", '''{n}The folded room is small enough to cover with one hand. You leave it open while you finish.{/n}''',
+    n("personal", "Narrator", '''{n}The folded room is small enough to cover with one hand. You leave it open while you finish. Beneath your answer you mark a clean strip: ROOM FOR A COMPLAINT ABOUT ANYTHING BUT THE WAR.{/n}''',
       c('{n}Write:{/n} "I miss you. Send me the hard letters too. I\'d rather have those than none."', "romance", requires=("targona.correspondence_romanced",)),
       c('{n}Write:{/n} "You don\'t have to make it easy to read. I\'ll read it anyway."', "friend", forbids=("targona.correspondence_romanced", MET)),
       c('{n}Write:{/n} "You don\'t have to make it easy to read. I\'ll read it anyway."', "friend_ward", requires=(MET,), forbids=("targona.correspondence_romanced",))),
@@ -81,19 +88,17 @@ s("unasked_question", "The house of the enemy", [
 {n}You seal the letter and keep the drawing out of the official dispatches.{/n}''', c("Send your reply with the next personal correspondence.", flags=("targona.correspondence_opened",))),
     n("friend", "Narrator", '''{n}You write that you want to hear what the wayhouse is like: who comes in off the eastern road, what the chaplain burns in the stove, whether the soup is as bad as Drezen's. You start a list of questions and cross it out before it turns into orders.{/n}
 "If you tire of this, say so and we'll quarrel about something else. I'd rather have a blunt friend than a polite one."
-{n}You leave a clean strip at the bottom of the page and label it ROOM FOR A COMPLAINT ABOUT ANYTHING BUT THE WAR.{/n}
 {n}Her drawing goes back with the letter, uncertain hinges and first arrow intact.{/n}''', c("Send your reply with the next personal correspondence.", flags=("targona.correspondence_opened",))),
-    n("friend_ward", "Narrator", '''{n}Her ward behind Wilcer's stores is a hundred paces from your door, and still the two of you are writing to each other: you are never in it when she is awake, and she is never out of it. You write that you want to hear about it anyway: who came in off the walls today, what the chaplain burns in the stove, whether the soup is as bad as the barracks'. You start a list of questions and cross it out before it turns into orders.{/n}
+    n("friend_ward", "Narrator", '''{n}Her ward behind Wilcer's stores is a hundred paces from your door, and still the two of you are writing to each other: the casualty rows and your dispatches seldom leave you an unhurried hour together. You write that you want to hear about it anyway: who came in off the walls today, what the chaplain burns in the stove, whether the soup is as bad as the barracks'. You start a list of questions and cross it out before it turns into orders.{/n}
 "If you tire of this, say so and we'll quarrel about something else. I'd rather have a blunt friend than a polite one."
-{n}You leave a clean strip at the bottom of the page and label it ROOM FOR A COMPLAINT ABOUT ANYTHING BUT THE WAR.{/n}
 {n}Her drawing goes back with the letter, uncertain hinges and first arrow intact. A runner carries it the hundred paces.{/n}''', c("Send your reply with the next personal correspondence.", flags=("targona.correspondence_opened",))),
 ], delay=0)
 
 
 s("second_margin", "An uplifting account", [
     n("start", "Narrator", '''{n}Targona sends back your letter with a new sheet. She has filled the strip for complaints.{/n}
-"The brother who packed these pages used enough string to truss a sheep. I spent longer freeing the paper than drawing on it. That is my complaint. I enjoyed writing it more than is fitting.
-"Yes, send me the copy. I will keep one drawing with my account and one with your letter.
+"The brother who packed these pages used enough string to truss a sheep. I spent longer freeing the paper than drawing on it. That is my complaint. I enjoyed writing it. He can use less string next time.
+"Yes, I will send you the copies you asked for. I have kept the first drawing with my account, and copied both uncertain hinges. Do not tidy them for me.
 "I looked at the bar again. I remember drawing it. I was angry, because the door looked too easy to open, and it was never easy. Not once. You saw it before I did, and I am a little vexed that you did."
 {n}Below this, her hand grows smaller.{/n}
 "There is a man in Drezen gathering crusaders' accounts for a book. He has asked me for the laboratory. Something short, he says, and uplifting. I said yes before I had thought, because he asked kindly, and an angel is not in the habit of refusing a kind request. Now I cannot get past his word. Uplifting."''',
@@ -166,7 +171,7 @@ s("an_unpromised_future", "A tale for the fever ward", [
       c("Read what she did with the torn copy.", "failed", requires=("targona.fold_failed",)),
       c("Read what she made of the new door.", "cut", requires=("targona.fold_cut",))),
     n("found", "Narrator", '''"Outward. Your folds work; I did them twice.
-"I did your folds twice. The third time I did them in the wrong order and shut the little lock inside the room. I kept that one too; it is the only version of that room I have ever enjoyed.
+"The third time I did them in the wrong order and shut the little lock inside the room. I kept that one too; it is the only version of that room I have ever enjoyed.
 "I still do not know how her door was truly made. But I know how to make one that opens, and I gave thanks for that at dawn prayers."
 {n}The letter moves on to the collector. Her hand is firmer here than it was round the copied hinges.{/n}''', c("Read about her account.", "account")),
     n("failed", "Narrator", '''"Thank you for sending the torn one on top. Irabeth was right to let you live.
@@ -174,7 +179,7 @@ s("an_unpromised_future", "A tale for the fever ward", [
 "I have kept both copies, yours and mine, with a note in my hand saying neither of us knows which way the door swung. I have left that part of the account blank. Anyone who reads it will know what I could not remember.
 "I tried your torn copy again before dawn, and thanked Iomedae for smaller mercies."
 {n}The next sheet bears the collector's name and the date of her reply.{/n}''', c("Read about her account.", "account")),
-    n("cut", "Narrator", '''"I laughed when I saw the hole. Then I rebuked myself for laughing. Then I opened it again.
+    n("cut", "Narrator", '''"I laughed when I saw the hole. Then I opened it again, to show the chaplain why.
 "I gave your door a handle. You will see its shape is grander than the carpentry deserves. I chose it because it pleased me. At compline I caught myself giving thanks for a paper door, and smiling before the prayer was done.
 "I have pinned your strip of cut wall beside the drawing with a note: 'The way through, as found by the Commander.'
 "I did that before dawn prayers, and was early to them for once."
@@ -355,9 +360,9 @@ s("the_open_threshold", "A door that opens both ways", [
       c("Reply with affection and leave the next invitation open.", flags=("targona.visit_pause",))),
     n("kiss", "Narrator", '''{n}Targona steps into your arms and kisses you, hard and certain. Your back meets the cold stone of the wall; she presses close enough for you to feel her trembling.{/n}
 {n}Her thumb rests beneath your jaw. When she lets you breathe, she keeps her brow against yours and her other hand open against your chest.{/n}
-"I have missed that," {n}she says.{/n} "Iomedae forgive me, I have missed that more than I missed the wing."
-{n}Your hand finds the edge of the wing. She goes very still, and then she does not pull away.{/n}
-"Everyone is so careful with it. You are not being careful." {n}Her palm slides to your chest and finds your heart going like a drum.{/n} "There. That is the truest thing anyone has said to me since the laboratory."
+"I have missed that," {n}she says, smiling against your mouth.{/n} "More than I could put in a letter."
+{n}Your hand brushes the edge of her wing. She flinches, catches your wrist and draws it to her waist instead.{/n}
+"Here." {n}She presses closer. Her other palm rests on your chest, over the pounding heart.{/n} "And stay there. I have had enough people looking at the wing tonight."
 {n}She kisses you once more, slower, and then looks past you at the lit windows of the barracks, and at the dark stair beside them, and back at you.{/n}
 "Well. Talk, or kisses, or finding out how many buckles there are on this armour. Choose, Commander. I will tell you if you chose wrong."''',
       c("Choose talk, and another kiss.", flags=("targona.visit_tender",)),
@@ -367,6 +372,7 @@ s("the_open_threshold", "A door that opens both ways", [
 {n}In your rooms she does not light the lamp. She sets her back against the door and has your coat off your shoulders before the latch has finished falling, and then the buckles, quick and certain, a healer's hands that have unfastened a thousand wounded men's harness and never once with this much hurry.{/n}
 "Eleven," {n}she says against your mouth.{/n} "Eleven, Commander. Who arms you? I will have words with him."
 {n}She draws her plain wayhouse habit over her head and lets it fall, and a wing opens behind her in the dark and brushes the wall. She pushes you back onto the bed and follows you down, her knees either side of you, her hair falling round both your faces, and takes your hands and puts them where she wants them.{/n}
+''' + EXPLICIT_PARAGRAPHS["targona.the_open_threshold.explicit.1"] + '''
 {n}Long before light she is dressing again by the window. The wounded on the eastern road will want her at the first bell, she says, and she will not let them want her in vain on your account. She kisses you once more at the door, hard, and does not say when.{/n}''',
       c("Let her go back to her road.")),
     n("continue", "Narrator", '''{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}
@@ -386,7 +392,7 @@ s("the_key_remains_hers", "The key remains hers", [
       c("Read her answer to your letter.", "correspondence", requires=("targona.visit_correspondence",), forbids=(MET,)),
       c("Read her letter from the ward.", "start_ward", requires=(MET,))),
     n("desire", "Narrator", '''{n}A small brass key is tied to the page with red thread: the key to the wayhouse's side gate, which the porter locks at compline.{/n}
-"I had it copied in the village. A blade of Iomedae, bribing a locksmith. I confessed it the same evening and did the penance, and I would do it again.
+"I had it copied in the village, then told the porter. He wanted to know who would be using it. I told him your name. Now he sweeps the side path whenever a dispatch arrives.
 "I have been thinking about your stair. I want you. I want the warmth of you against me, and the sound you make when you stop trying to be clever. I have written that sentence three times and burned two of them, and I am sending the third before I lose my nerve.
 "Next time I will come on a night when the road is quiet, and I will not be dressing by the window before light."
 {n}She has left the last line blank, as if it belongs to the answer.{/n}''',

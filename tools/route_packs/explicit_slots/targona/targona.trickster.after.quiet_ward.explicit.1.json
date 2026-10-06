@@ -1,0 +1,22 @@
+{
+  "slot_id": "targona.trickster.after.quiet_ward.explicit.1",
+  "voice": "TARGONA: compassionate angel and soldier; earnest, emotionally direct, humble before her faith and stubborn about her brother. Private desire comes as fierce relief after difficult words. She can hold a lover close and be impatient without becoming cruel, coquettishly sanctimonious or ashamed. No legal terms, therapeutic explanation, narrator judgment or serial permission speeches. Write new dialogue; do not reuse the example.",
+  "facts": [
+    "Targona has silver hair and a natural white-feathered wing (TargonaWings/Cue_0001, 795e061825caf2f4fba256f50cabfe71).",
+    "The original altered wing is bone and purple membrane/scabs, not dark feathers. Do not describe the altered side across uncertain treatment histories or invent restored anatomy.",
+    "Lariel is her brother, not a partner; the route's existing promise concerns not begging what remains of him to cheat death. He is absent from the intimate scene.",
+    "Drying loft and infirmary are authored locations within the implemented Drezen route staging."
+  ],
+  "scene": "Trickster route, Chapter 3 or 5, the drying loft in Drezen. Only Commander and Targona. Alternative first night after her quiet-ward offer: the Commander made the existing promise about Lariel; she answered yes herself. No additional watch or reconciliation was required on this branch. BEFORE: the existing threshold has her lead upstairs, kiss, undress, undo buckles and guide the Commander's hands to her hips. INTERVAL: mutually chosen intimacy conveyed through kisses, warmth and close holding, without graphic sexual description. REQUIRED BEATS: her initiative; relief loosens the hands that shook while she folded bandages; she keeps the Commander close instead of returning to the promise in dialogue; her attention is on this lover, not a miracle. Distinguish this from the exhausted ordinary-watch branch. AFTER: morning's existing cots, cloak feather, Wilcer and invitation to return. No brother apparition, voiced sibling participation, answered prayer, cure, new oath, effect or condition. The promise is collected later in Last Call. Finish exactly at last_line. PHYSICAL CONTINUITY: silver hair; a natural white-feathered wing. Leave the altered side undescribed across treatment histories; never invent black feathers or restored anatomy.",
+  "last_line": "N: Upstairs, neither of you reaches for the lamp.",
+  "speakers": {
+    "T": "Targona"
+  },
+  "example": "N: Her fingers tighten around yours as you turn toward the blanket.\nT: Come here.\nN: She kisses you before releasing your hand.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16
+}

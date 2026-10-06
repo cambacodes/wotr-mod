@@ -1,0 +1,22 @@
+{
+  "slot_id": "targona.trickster.after.ward.explicit.1",
+  "voice": "TARGONA: earnest, compassionate, humble soldier of Heaven; plain speech, strong feeling held back during work, sudden directness in private. Tired hands, impatience to be close, affectionate amusement at awkward clothing. She initiates because she wants the Commander, not because rescue or medical service bought her. No sardonic clerk voice, sermon, maxim, therapy vocabulary or repeated permission checks. Write new dialogue; do not reuse the example.",
+  "facts": [
+    "Native Targona is a silver-haired angel; her natural wing has white feathers (TargonaWings/Cue_0001, 795e061825caf2f4fba256f50cabfe71).",
+    "Her original replacement wing is mismatched bones and grimy purple membrane with scabs or scales, not black feathers. Treatment histories differ; leave the altered side undescribed here rather than assume restoration or continued presence.",
+    "Areelu held her captive; she grieves suffering and the threatened soul of a child (Cue_0049, 594b8f760f82bf946b384c932917e5f6).",
+    "The infirmary, patients and drying loft are authored route staging, not native canon events."
+  ],
+  "scene": "Trickster route, Chapter 3 or 5, Drezen drying loft above the field infirmary. Only Targona and the Commander are present. Existing affirmative commitment followed their shared dawn watch beside a sergeant with an arrow wound. This is the ordinary first-night branch, not the brother-oath branch. BEFORE: she has kissed the Commander, removed her smock, undone buckles, drawn them onto a blanket and placed their hands on her hips. INTERVAL: mutually chosen intimacy; focus on closeness, kisses, bodily warmth and her unembarrassed desire, without graphic sexual description. REQUIRED BEATS: she initiates; stiff fingers from dressings briefly make her laugh; a practical adjustment of the blanket brings them closer; one plain personal line about wanting this night, without claiming a cure for captivity. Her compassion and duties still exist, but no sick person intrudes into the private interval. AFTER: the existing morning node resumes at first watch with her back at the cots, a feather on the cloak and Wilcer's reaction. End exactly at the last_line. No new oath, flag, cost, pregnancy, magical effect, participant or romance test. PHYSICAL CONTINUITY: silver hair; a natural white-feathered wing. Leave the altered side undescribed across treatment histories; never invent black feathers or restored anatomy.",
+  "last_line": "N: The lamp burns low beside the blanket.",
+  "speakers": {
+    "T": "Targona"
+  },
+  "example": "N: Targona catches your sleeve before you can reach for the lamp.\nT: Stay a little closer.\nN: She draws you into another kiss, smiling when the buckle catches between you.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16
+}
