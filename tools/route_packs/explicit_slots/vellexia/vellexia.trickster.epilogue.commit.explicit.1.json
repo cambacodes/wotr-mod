@@ -1,0 +1,65 @@
+{
+  "slot_id": "vellexia.trickster.epilogue.commit.explicit.1",
+  "voice": "Vellexia: imperious hostess, theatrical, proud, carnal in appetite, amused by delay until she is the one kept waiting. She interrupts flattery, corrects a guest's presumption and chooses for herself. A desired lover does not erase cruelty, boredom, her collection or other pleasures. Short new demands and sly counter-moves, not tenderness as redemption, a repeated love thesis or an invoice romance. Do not quote this brief's example or native dialogue.",
+  "facts": [
+    "Vellexia is an Alushinyrra demon and a patron of entertainments whose boredom endangers her guests.",
+    "Native love dialogue links desire with self-deception, exposed vulnerability and possible violence.",
+    "Her native farewell is passionate but sends the guest away first to protect her pride.",
+    "Her native collection contains creatures transformed into furnishings; their captivity does not establish willing sexual participation.",
+    "Native transformation into a mirror occurs through Trickster-only prank answers; a mirror is not a bodily lover.",
+    "No verified physical measurements or Commander anatomy are supplied by these facts."
+  ],
+  "scene": "Authored continuity: the existing alternative late-commitment epilogue, at her own postwar Alushinyrra party. A living Commander with earned open courtship has arrived; she chooses the private room and directs the undressing. The preceding paragraph ends with her mouth at the Commander's throat and her demand to pay for keeping her waiting. This slot reserves the existing intimate continuation for external filling, without supplying graphic sexual choreography. In collection-present history, keep threatened furnishings as nonparticipating background and focus on the two lovers. In bare-wall or freed-victim history, only the bed, lamp and bare room remain. In diminished-likeness history, the Commander does the unlacing; her hands move but cannot cast. The next old paragraph is morning, with her still in bed watching the Commander discover the bruise and owning her desire for another evening.",
+  "required_beats": [
+    "Make the hostess visibly choose the guest rather than collect a body owed for a rescue.",
+    "The reserved act is mutually chosen sex; continue the established intimacy with her pride, impatient appetite and chosen pace, without adding a separate encounter.",
+    "Carry the room variant and unfinished-casting limitation exactly; no magical repair or resurrected victim.",
+    "No trapped furnishing, servant or party guest is an intimate participant or an erotic audience.",
+    "Do not repeat the first-night reward: this is the late alternative; if future reuse follows an earlier night, explicitly treat it as a return.",
+    "Leave her morning answer and any Daeran reaction outside the slot; close with the exact last line."
+  ],
+  "last_line": "N: Beyond the door, the party goes on.",
+  "speakers": {
+    "V": "Vellexia"
+  },
+  "example": "N: Vellexia hears laughter beyond the locked door and leaves the wine untouched.\nV: They can learn to amuse themselves.\nN: She turns back to the Commander and draws the guest beside her.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18,
+  "default_text": "{n}Vellexia draws the Commander down beside her and leaves the door locked. Beyond it, the party goes on.{/n}",
+  "insertion": {
+    "scene": "vellexia.trickster.epilogue.commit",
+    "node": "start",
+    "after_legacy_paragraph": 2,
+    "before_legacy_paragraph": 3,
+    "slot_kind": "new_identified_epilogue_paragraph_preserving_legacy_references"
+  },
+  "continuity": [
+    "No new arrival, commitment or bodily-presence receipt; existing late-courtship eligibility and refusal histories remain.",
+    "Captive mirror, dead woman, unreturned fatal Commander sacrifice and ended correspondence cannot enter this bodily scene.",
+    "The morning paragraph and every legacy epilogue exit retain their identity, choice indices and effects.",
+    "No physical detail is asserted as canon unless the verified source establishes it.",
+    "Use the heated-cut default if external filling is absent; preserve flow into the old morning paragraph."
+  ],
+  "canon_refs": [
+    {
+      "guid": "ec58f45a60bec6d438a84993c6a1696e",
+      "key": "b32c0915-1616-48cc-86e3-8c6245f58af9",
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0085.jbp"
+    },
+    {
+      "guid": "33fbc8d0ca697f044861681fc2cecbf6",
+      "key": "638b91d0-3684-4579-8276-2a79bce725fc",
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0106.jbp"
+    },
+    {
+      "guid": "42429350764f92140b293b24039b89ef",
+      "key": "f94ae2e0-94b8-402c-adcd-8a221f4ec386",
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp"
+    }
+  ],
+  "implementation_status": "blocked_save_compatibility: runtime identifies paragraphs by numeric position; coordinator must supply identified-paragraph insertion before activating this slot"
+}
