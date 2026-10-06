@@ -22,6 +22,7 @@ class InventoryContracts(unittest.TestCase):
         self.assertEqual(earned_presence_lint.check(self.story)[0], [])
 
     def test_each_registered_own_consumer_mutation_fails(self):
+        baseline = set(own_life_lint.check(self.story))
         for site in own_life_lint.contracts()['sites']:
             for field in ('Requires', 'Forbids'):
                 for guard in site.get(field, []):
@@ -29,16 +30,18 @@ class InventoryContracts(unittest.TestCase):
                         story = copy.deepcopy(self.story)
                         target = own_life_lint.targets(story, site)[0]
                         target[field].remove(guard)
-                        self.assertTrue(own_life_lint.check(story))
-                        self.assertTrue(any(e.startswith('OL ') for e in earned_presence_lint.check(story)[0]))
+                        self.assertTrue(set(own_life_lint.check(story)) - baseline)
+                        self.assertTrue(any(e.startswith('OL ') and e not in baseline
+                                            for e in earned_presence_lint.check(story)[0]))
 
     def test_life_loss_and_return_reader_mutations_fail(self):
+        baseline = set(own_life_lint.check(self.story))
         for spec in own_life_lint.contracts()['people'].values():
             for loss in spec['losses']:
                 with self.subTest(loss=loss):
                     story = copy.deepcopy(self.story)
                     story['DerivedForbids'][spec['key']].remove(spec['key'] + '.blocked.' + loss)
-                    self.assertTrue(own_life_lint.check(story))
+                    self.assertTrue(set(own_life_lint.check(story)) - baseline)
 
     def test_return_overrides_and_every_completion_producer(self):
         data = return_provenance_lint.contracts()
