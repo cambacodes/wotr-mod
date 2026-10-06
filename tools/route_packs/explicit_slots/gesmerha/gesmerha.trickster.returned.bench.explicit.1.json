@@ -1,0 +1,28 @@
+{
+  "voice": "Gesmerha: proud Sarkorian woodshaper, ancestor-conscious, blunt and dryly funny; frank about wanting a lover, impatient with flattering patronage. She speaks in short concrete phrases, occasionally curses, and keeps authority over her work and her time. Blindness means she learns through touch and sound, not supernatural knowledge. No autonomous hands deciding affection, obedience test, therapeutic speech, maxims or redeemer role. Write new dialogue; voice traits are not lines to imitate. Canon facts: Marhevok personally cut out her eyes after her truthful carving exposed a monstrous Lady; journeymen finished his statue; she fears losing her hands and refuses further maiming. These facts support voice, not an erotic treatment of her injury. No invented body measurements, eye color, magical sight or healed eyes. Any hair, clothing, furniture or return scars in the scene are authored route staging, not additional canon biography.",
+  "scene": "Registered Chapter 5 turning-point payoff at Drezen smith’s carver corner; also preserve the scene’s existing Chapter 3 branch. Gesmerha and Commander alone after smith goes home. Forge banked; finished paid sculpture set apart; sharp tools put away; cloth covers resting surface. Required beats: she completed the ancestral commission, washed her palms and herself chose this lover after the existing no-purses oath; ONE completed sculpture, no wooden-hands repair piece. Appetite is hers, not a supernatural motion of her hands. No blade test, forced stillness, bought body, resurrection gratitude or likeness obligation. Stage non-graphic chosen intimacy; leave sexual act unfilled. End before morning: she starts a smaller private likeness from memory and keeps it, then sends the Commander to the war with an invitation to return.",
+  "last_line": "G: The tools can wait.",
+  "speakers": {
+    "G": "Gesmerha"
+  },
+  "example": "N: She puts the wrapped tools on their shelf and turns toward your voice.\nG: Come closer.\nN: She takes your offered hand and kisses you.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "gesmerha.trickster.returned.bench.explicit.1",
+  "source_scene": "gesmerha.trickster.returned.bench",
+  "source_nodes": [
+    "night",
+    "morning"
+  ],
+  "default_text": "{n}She keeps you close on the covered bench. The forge is banked and the wrapped chisels stay on their shelf.{/n}",
+  "canon_sources": [
+    "0365c24e7237b3d409fc4bd40cca548b",
+    "13f2b37e28864ba4b882d13fad90f7c5",
+    "597b7e82dbec7804490f02048e4bf1ef"
+  ],
+  "production_scope": "Non-graphic continuity brief; explicit act deliberately unfilled. No state mutations or invented canon physical facts."
+}

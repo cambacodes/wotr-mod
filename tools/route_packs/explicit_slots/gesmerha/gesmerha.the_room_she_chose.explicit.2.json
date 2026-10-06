@@ -1,0 +1,28 @@
+{
+  "voice": "Gesmerha: proud Sarkorian woodshaper, ancestor-conscious, blunt and dryly funny; frank about wanting a lover, impatient with flattering patronage. She speaks in short concrete phrases, occasionally curses, and keeps authority over her work and her time. Blindness means she learns through touch and sound, not supernatural knowledge. No autonomous hands deciding affection, obedience test, therapeutic speech, maxims or redeemer role. Write new dialogue; voice traits are not lines to imitate. Canon facts: Marhevok personally cut out her eyes after her truthful carving exposed a monstrous Lady; journeymen finished his statue; she fears losing her hands and refuses further maiming. These facts support voice, not an erotic treatment of her injury. No invented body measurements, eye color, magical sight or healed eyes. Any hair, clothing, furniture or return scars in the scene are authored route staging, not additional canon biography.",
+  "scene": "Chapter 5, same sorting-hall room, on the existing slow-courtship first_night answer after her own romantic yes. Alone with Commander; room layout known to her. Required beats: warmth mixed with her dry impatience, the absurdly small bed, her deliberate choice to keep this visitor overnight. This is the first sexual night on this branch; do not assume no first kiss if the run has already kissed her. Stage non-graphic intimacy and leave the sexual act unfilled. End before after_first_night: pillow complaint, a slower kiss, dawn visitor turned away. Preserve that branch’s existing distinct terminal receipts; no anatomy assumptions beyond the selected Commander variant.",
+  "last_line": "G: Stay.",
+  "speakers": {
+    "G": "Gesmerha"
+  },
+  "example": "N: She puts the wrapped tools on their shelf and turns toward your voice.\nG: Come closer.\nN: She takes your offered hand and kisses you.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "slot_id": "gesmerha.the_room_she_chose.explicit.2",
+  "source_scene": "gesmerha.the_room_she_chose",
+  "source_nodes": [
+    "first_night",
+    "after_first_night"
+  ],
+  "default_text": "{n}She pulls you close beneath the blanket. The lamp burns low while the closed door holds the hall outside.{/n}",
+  "canon_sources": [
+    "0365c24e7237b3d409fc4bd40cca548b",
+    "13f2b37e28864ba4b882d13fad90f7c5",
+    "597b7e82dbec7804490f02048e4bf1ef"
+  ],
+  "production_scope": "Non-graphic continuity brief; explicit act deliberately unfilled. No state mutations or invented canon physical facts."
+}

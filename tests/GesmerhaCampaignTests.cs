@@ -41,20 +41,24 @@ internal static class GesmerhaCampaignTests
                 {
                     if (!inspect) return;
                     reached.Add(scene.Id + "/" + page);
-                    check(Rules.ContactAvailable(story, scene, state), "Gesmerha valid page loses contact.");
+                    bool Present(Snapshot snapshot) => scene.NativeReturnCue == null
+                        ? Rules.ContactAvailable(story, scene, snapshot)
+                        : Rules.Available(story, scene, snapshot);
+                    check(Present(state), "Gesmerha valid page loses contact or native audience.");
                     check(state.Flags.SetEquals(ready.Flags), "Gesmerha interrupted page records an unplayed outcome.");
                     var missing = Program.Copy(state);
                     missing.AvailableContacts.Clear();
-                    check(!Rules.ContactAvailable(story, scene, missing), "Gesmerha page ignores vanished actor.");
+                    if (scene.NativeReturnCue != null) missing.Flags.Remove("gesmerha.capital_guest");
+                    check(!Present(missing), "Gesmerha page ignores vanished actor or completed native audience.");
                     var dead = Program.Copy(state);
                     dead.Flags.Add("gesmerha.dead");
-                    check(!Rules.ContactAvailable(story, scene, dead), "Gesmerha page continues after native death.");
+                    check(!Present(dead), "Gesmerha page continues after native death.");
                     if (page == "offer") check(state.Has("trickster"), "Gesmerha fate experiment leaks outside Trickster.");
                     if (scene == reunion)
                     {
                         var departed = Program.Copy(state);
                         departed.Flags.Remove("gesmerha.capital_guest");
-                        check(!Rules.ContactAvailable(story, scene, departed), "Gesmerha reunion outlives active native guest.");
+                        check(!Present(departed), "Gesmerha reunion outlives active native guest.");
                         if (page == "trays") check(state.Has("gesmerha.grain_missed"), "Gesmerha remembers unmade trays.");
                         if (page == "board") check(!state.Has("gesmerha.grain_missed"), "Gesmerha remembers an unmade hinged board.");
                         if (page == "lover" || page == "kiss" || page == "part") check(state.Has("gesmerha.lover"), "Gesmerha friendship treated as established lovers.");
@@ -143,7 +147,11 @@ internal static class GesmerhaCampaignTests
         foreach (var scene in next.Concat(new[] { reunion }))
         {
             foreach (var page in scene.Nodes) check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed Gesmerha campaign page: " + scene.Id + "/" + page.Id);
-            check(scene.ContactUnit == actor && !scene.Remote, "Gesmerha loses actual physical contact requirement.");
+            check(!scene.Remote && (scene.ContactUnit == actor
+                  || scene.NativeReturnCue == "de348517119791d4e9f7de7de0beab25"
+                     && scene.Requires.Contains("gesmerha.capital_guest")
+                     && scene.Nodes.Where(n => n.Speaker == "Gesmerha").All(n => n.SpeakerUnit == actor)),
+                "Gesmerha loses the contact or native audience participant contract.");
             var ready = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.Single() };
             ready.Flags.UnionWith(scene.Requires);
             ready.Flags.Add("gesmerha.truth");

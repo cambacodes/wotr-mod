@@ -1,0 +1,342 @@
+{
+  "status": "AUTHORED; unregistered pending shared departure/payoff inventory integration",
+  "scenes": [
+    {
+      "Id": "gesmerha.trickster.epilogue.unvisited_mourned",
+      "Title": "The work that remained",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}News of Threshold reached Gesmerha before the Commander ever entered the yard. She finished the paid birch alone and put the coin beside it. She had known a patron, not a lover. With the work done, she took her own hands out of the cold water and chose another piece.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "{n}The truthful monster stood in the smith's yard until spring. Surviving Wintersun carvers took it home and set it where the Lady had stood. Gesmerha made them feel the teeth before they covered it for the journey.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The listening woman stayed by the smith's gate. When he offered to sell her, Gesmerha named a price he could not pay and laughed at his answer.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She kept the wooden hands beside her chisels. Between the three days of sittings they had eaten and argued over couriers' reports. Nobody had bought her time at that bench.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The surviving carvers never mentioned the memorial fire to the Commander again. Gesmerha did, whenever anyone tried to order work she had not agreed to do.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}No one came from Wintersun for the monster. The clan was dead. Gesmerha kept it in Drezen and named the people who had knelt before that smile. She refused the smith's sack; their memorial would show its teeth.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_true",
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}With the Wintersun carvers dead, Gesmerha alone remembered the coin sent over her ashes. She kept it beside the completed work, away from the pieces she chose to make.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave",
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Wintersun was dead too. She sought another Sarkorian settlement with her chisels; the commission stayed in Drezen.{/n}",
+              "Requires": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She went north to find the surviving carvers, bringing her own new work.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "sacrifice",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "trickster.commander_back",
+        "gesmerha.trickster.yard_seen",
+        "gesmerha.presence.failed",
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.refusal_mourned",
+      "Title": "The work that remained",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander died without another sitting in the yard. Gesmerha finished the paid work and asked the smith to keep it for the crusade. She did not turn her refusal into a promise after its hearer was dead.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "{n}The truthful monster stood in the smith's yard until spring. Surviving Wintersun carvers took it home and set it where the Lady had stood. Gesmerha made them feel the teeth before they covered it for the journey.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The listening woman stayed by the smith's gate. When he offered to sell her, Gesmerha named a price he could not pay and laughed at his answer.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She kept the wooden hands beside her chisels. Between the three days of sittings they had eaten and argued over couriers' reports. Nobody had bought her time at that bench.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The surviving carvers never mentioned the memorial fire to the Commander again. Gesmerha did, whenever anyone tried to order work she had not agreed to do.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}No one came from Wintersun for the monster. The clan was dead. Gesmerha kept it in Drezen and named the people who had knelt before that smile. She refused the smith's sack; their memorial would show its teeth.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_true",
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}With the Wintersun carvers dead, Gesmerha alone remembered the coin sent over her ashes. She kept it beside the completed work, away from the pieces she chose to make.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave",
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Wintersun was dead too. She sought another Sarkorian settlement with her chisels; the commission stayed in Drezen.{/n}",
+              "Requires": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She went north to find the surviving carvers, bringing her own new work.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "sacrifice",
+        "gesmerha.trickster.returned",
+        "gesmerha.trickster.declined"
+      ],
+      "Forbids": [
+        "trickster.commander_back",
+        "gesmerha.committed",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.finished_mourned",
+      "Title": "The work that remained",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha heard of the Commander's death after leaving the yard. She had finished the commission and kept the parting. She named the dead to her ancestors, then took up the work she had chosen for her surviving life.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "{n}The truthful monster stood in the smith's yard until spring. Surviving Wintersun carvers took it home and set it where the Lady had stood. Gesmerha made them feel the teeth before they covered it for the journey.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The listening woman stayed by the smith's gate. When he offered to sell her, Gesmerha named a price he could not pay and laughed at his answer.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She kept the wooden hands beside her chisels. Between the three days of sittings they had eaten and argued over couriers' reports. Nobody had bought her time at that bench.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The surviving carvers never mentioned the memorial fire to the Commander again. Gesmerha did, whenever anyone tried to order work she had not agreed to do.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}No one came from Wintersun for the monster. The clan was dead. Gesmerha kept it in Drezen and named the people who had knelt before that smile. She refused the smith's sack; their memorial would show its teeth.{/n}",
+              "Requires": [
+                "gesmerha.trickster.statue_true",
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}With the Wintersun carvers dead, Gesmerha alone remembered the coin sent over her ashes. She kept it beside the completed work, away from the pieces she chose to make.{/n}",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave",
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Wintersun was dead too. She sought another Sarkorian settlement with her chisels; the commission stayed in Drezen.{/n}",
+              "Requires": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She went north to find the surviving carvers, bringing her own new work.{/n}",
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.clan_destroyed"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "sacrifice",
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "Forbids": [
+        "trickster.commander_back",
+        "gesmerha.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    }
+  ]
+}

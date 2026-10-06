@@ -1,0 +1,33 @@
+{
+  "gesmerha": {
+    "device_class": "canon_lowest_point",
+    "setting": "Drezen smith's carver corner, completed ancestral likeness on trestles",
+    "payoff_shape": "finished paid sculpture released; she carves the living Commander for herself",
+    "canon_hooks": [
+      {
+        "guid": "0365c24e7237b3d409fc4bd40cca548b",
+        "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0018.jbp",
+        "key": "c2603091-7bcb-440e-8fba-d7732bf45941",
+        "native_excerpt": "\"Marhevok flew into a rage when he saw my work,\" {n}Gesmerha says, her voice quieter now.{/n} \"He personally cut out my eyes as punishment, and journeymen were given the task of finishing the statue. The clan did not turn its back on me, of course. The children of Wintersun do not drive out their own, even those who have transgressed before the entire community. They allow me to do simple carvings and to take care of the statues. That is how I ha",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "13f2b37e28864ba4b882d13fad90f7c5",
+        "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028.jbp",
+        "key": "e79afadc-a587-4f12-a835-ec246f6ff91b",
+        "native_excerpt": "{n}The woman sighs sadly.{/n} \"I wish I could trust you, stranger, but I'm afraid of provoking Marhevok's anger. I already lost my eyes, and I know what he will take next: my hands. So forgive me, but I won't tell you any more than I already have.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "fca1955f66417614a891696475925ff4",
+        "path": "World/Dialogs/c3/Wintersun/MarhevokAmbush/Cue_0008.jbp",
+        "key": "d76e6fae-9eda-44e5-ba21-b87fb4d6839f",
+        "native_excerpt": "{n}The woman recoils and suddenly brandishes a blade from who knows where.{/n} \"You took my eyes, chief, but not my heart. I won't let you maim me further. Ancestors, embrace me!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}
