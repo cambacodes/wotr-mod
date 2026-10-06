@@ -14,6 +14,13 @@ import copy
 
 from story_format import c, n, p, reaction, scene
 
+# Authored partner clarification, round 2a: DesnaAdepts/Cue_0004 (13cbf1a6)
+# shows only Thall's glances; Cue_0005 (2c84efa6) shows her interest in his voice.
+# CANON-PARTNERS-DESIGN exempts a one-sided bond from share/exclusive/secret.
+# No mutual romance, current Thall location, return or fate is invented here.
+THALL_ENDING = '''{n}Aranka kept an unfinished letter to Thall among her song sheets. She did not know where to send it. "Wallflower," she had written, "I still want to hear you sing." He had never been her lover; she had not forgotten her fellow Desnan. His fate remained unknown to her.{/n}'''
+THALL_CALL = '''{n}The song brings no news of Thall, the quiet Desnan adept from Kenabres: neither his whereabouts nor his fate. No second voice joins it beneath the roar.{/n}'''
+
 SCENES = []
 UNIT = "430cba7801b149b4e8494ace6baf4f7c"           # Azata_Aranka_DesnaPriest (no dialog component; the presence copy)
 DREZEN = "2570015799edf594daf2f076f2f975d8"
@@ -308,11 +315,13 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
       c('[Take the harmony, not the credit] "Yours first. Mine after, quietly."', "signed"),
       c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
     a("signed", '''"Good." {n}She turns to the crowd and gives them the song's name and her own, clear as a bell, and then yours, into her cup, so quietly the front row has to lean in to catch it.{/n}
-"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."''',
+"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."
+{n}She leans close, lowering her voice beneath the crowd's applause.{/n} "And if you've heard me call Thall my Wallflower, don't start composing a wedding hymn! He's a fellow Desnan from Kenabres. Such a lovely voice, and he'd rather bury his nose in a scroll! I wanted him to sing with me. We were never lovers." {n}Her eyes stray to your mouth.{/n} "I know very well who I want to kiss."''',
       c('"I\'ll be here."', flags=(DUET, CREDITED))),
     a("billing", '''"Your verse." {n}She laughs, delighted and not at all moved.{/n} "Your verse is a bad rhyme and a great deal of nerve, Commander. My name goes first. Argue with me again and it goes first in capitals."
 {n}She tells the crowd both names anyway, hers twice and loud, yours once and into her sleeve.{/n}
-"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."''',
+"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."
+{n}She leans close, lowering her voice beneath the crowd's applause.{/n} "And if you've heard me call Thall my Wallflower, don't start composing a wedding hymn! He's a fellow Desnan from Kenabres. Such a lovely voice, and he'd rather bury his nose in a scroll! I wanted him to sing with me. We were never lovers." {n}Her eyes stray to your mouth.{/n} "I know very well who I want to kiss."''',
       c('"I\'ll be here."', flags=(DUET, VAIN))),
     # Audit pol3 (VOI): the bard who outsang her in the Count's parlour (Cue_15) is no pupil; she makes it a contest again.
     a("duet_rival", '''"You owe me a duet for this. And an apology. Mostly the duet."
@@ -478,7 +487,7 @@ VERSE_PARAGRAPHS = (
 
 def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
     # Polish (R2-6): Chapter 6 only, in the data as well as through the native epilogue attachment.
-    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text, paragraphs=paragraphs)], requires=requires,
+    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text + "\n" + THALL_ENDING, paragraphs=paragraphs)], requires=requires,
                         forbids=(*forbids, KENABRES_ATTACKED), last=6, Relationship="aranka", Chapters=[6], **extra))
 
 
@@ -648,6 +657,18 @@ def integrate(payload):
                         "spice trader's stall in the Drezen market, in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     payload.setdefault("Derived", {})[NO_KING] = [[KING_GONE]]
+
+    # The framework emits its pages after this route integrates. Change only
+    # Aranka's two named text surfaces through its existing partner record;
+    # keep the shared source, gates, choices and every other record untouched.
+    # Idempotent because make_expansion may be called repeatedly in one process.
+    from storylines import lastcall_partners
+    part = next(row for row in lastcall_partners.PARTNERS
+                if row["key"] == "aranka" and row["rel"] == "aranka")
+    if not part["opener"].endswith(THALL_ENDING):
+        part["opener"] += "\n" + THALL_ENDING
+    if not part["call"]["text"].endswith(THALL_CALL):
+        part["call"]["text"] += "\n" + THALL_CALL
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

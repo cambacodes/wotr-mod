@@ -457,7 +457,10 @@ s("no_encore_needed", "No encore needed", '"You promised an evening without a pe
 "And when I tell her I spent the evening being kissed, I hope to have a very good account."
 "You haven't yet."
 "A terrible flaw in the story. We should attend to it."''', c('[Return to the woman beside you.]', "desire")),
-    n("desire", "Aranka", '''{n}She leans close enough that the next words warm your cheek.{/n}
+    # Authored clarification of the one-sided Thall hint (DesnaAdepts/Cue_0004-0005).
+    # All three extension commitments below pass through this node.
+    n("desire", "Aranka", '''{n}She draws back a little, smiling.{/n} "And before you mistake my teasing Thall for a courtship — my Wallflower is a fellow Desnan from Kenabres, with a splendid voice and his nose always in a scroll! I wanted him to sing with me. We were never lovers." {n}Her fingers tighten in your collar.{/n} "You, on the other hand..."
+{n}She leans close enough that the next words warm your cheek.{/n}
 "I want your hands on me. I want to kiss you until the stars come out and forget every verse I ever wrote!"
 {n}You touch her waist. Her breath changes. She tips her face toward yours, then stops just short of the kiss, eyes bright.{/n}
 "I rather like suspense when I know who I am waiting for. Don't make me wait long."
