@@ -991,6 +991,8 @@ def integrate(payload):
             _paragraphs(scene_, (dict(PORTION_ALIVE, Forbids=[], AnyGroups=[["trickster.commander_back"]]),))
 
     soana_partner.finish_normal_endings(payload["Scenes"])
+    from storylines import soana_round2
+    soana_round2.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
@@ -1007,3 +1009,6 @@ soana_partner.commitments(SCENES)
 soana_partner.endings(SCENES)
 SCENES.extend(soana_partner.SCENES)
 soana_partner.lastcall()
+
+from storylines import soana_round2
+soana_round2.prepare(SCENES)

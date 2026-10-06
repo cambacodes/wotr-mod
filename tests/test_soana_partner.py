@@ -5,6 +5,7 @@ import unittest
 
 from storylines import soana_partner as P, soana_late_campaign as L, soana_trickster as T
 from storylines import lastcall_partners
+from storylines import soana_round2 as R2
 
 
 def available(answer, flags):
@@ -47,7 +48,9 @@ class SoanaPartnerTests(unittest.TestCase):
         scenes = {s["Id"]: s for s in L.SCENES + T.SCENES}
         for sid, nodes in producers.items():
             for node, spent in itertools.product(nodes, (False, True)):
-                flags = {"soana.trickster.cost.medallion_spent"} if spent else set()
+                flags = {R2.MARRIAGE, R2.INVITED}
+                if spent:
+                    flags.add("soana.trickster.cost.medallion_spent")
                 with self.subTest(scene=sid, node=node, spent=spent):
                     results = list(walks(scenes[sid], flags, node))
                     stances = set()
@@ -85,13 +88,14 @@ class SoanaPartnerTests(unittest.TestCase):
     def test_corven_arrival_requires_paid_pursuit_and_earned_soana(self):
         dispatch, arrival, exposure = P.SCENES[:3]
         self.assertIn("trickster.now", dispatch["Requires"])
-        self.assertIn("soana.committed", dispatch["Requires"])
+        self.assertIn("soana.started", dispatch["Requires"])
+        self.assertNotIn("soana.committed", dispatch["Requires"])
         self.assertIn(P.PURSUED, arrival["Requires"])
         self.assertIn("trickster.ever", arrival["Requires"])
         self.assertGreaterEqual(arrival["DelayHours"], 168)
         self.assertIn(P.BURIED, exposure["Requires"])
         for event in (dispatch, arrival, exposure):
-            self.assertEqual(event["RequiresAnyGroups"], [[P.SHARE, P.SECRET, P.EXCLUSIVE]])
+            self.assertEqual(event["RequiresAnyGroups"], [])
         for event in (dispatch, arrival, exposure):
             self.assertEqual(event["ContactUnit"], P.ACTOR)
             self.assertEqual(event["Areas"], [P.WINTERSUN])
@@ -107,14 +111,17 @@ class SoanaPartnerTests(unittest.TestCase):
             self.assertEqual(event["AnswerLists"], [])
             self.assertNotIn("soana.after_quest", event["Requires"])
             for flag in P.LOSS:
-                self.assertEqual(event["ForbidOverrides"][flag], P.RETURNED)
+                self.assertEqual(event["ForbidOverrides"][flag], R2.EFFECTIVE)
         for stance in (P.SHARE, P.SECRET):
             results = list(walks(dispatch, {stance}))
             for after, path, answer in results:
                 if P.PURSUED in after:
                     self.assertIn("read", path)
-                    payment = next(a for n in dispatch["Nodes"] for a in n["Choices"] if P.PURSUED in a["Set"])
+                    payment = next(a for n in dispatch["Nodes"] for a in n["Choices"]
+                                   if P.PURSUED in a["Set"] and a.get("Crusade"))
                     self.assertEqual(payment["Crusade"], {"Resource": "Finances", "Amount": -75})
+                    self.assertTrue(any(P.PURSUED in a["Set"] and not a.get("Crusade")
+                                        for n in dispatch["Nodes"] for a in n["Choices"]))
                 self.assertNotIn(P.CONFIRMED, after)
                 self.assertNotIn(P.TOGETHER, after)
 
@@ -173,7 +180,9 @@ class SoanaPartnerTests(unittest.TestCase):
                     self.assertTrue(any(P.EXCLUSIVE in p.get("Requires", ()) for p in paragraphs))
 
     def test_registered_debt_paragraph_slots_survive_integration(self):
-        payload = {"Scenes": copy.deepcopy(L.SCENES),
+        from storylines import soana_opening, soana_continuation, soana_later_progression
+        payload = {"Scenes": copy.deepcopy(soana_opening.SCENES + soana_continuation.SCENES +
+                                            soana_later_progression.SCENES + L.SCENES + T.SCENES),
                    "Relationships": {"soana": {"Guidance": ""}}}
         T.integrate(payload)
         scenes = {s["Id"]: s for s in payload["Scenes"]}
@@ -190,7 +199,16 @@ class SoanaPartnerTests(unittest.TestCase):
                                         for p in page["Paragraphs"][3:]))
         before = copy.deepcopy(payload["Scenes"])
         P.finish_normal_endings(payload["Scenes"])
-        self.assertEqual(metadata(payload["Scenes"]), metadata(before))
+        # Round-two correspondence adds a distinct marriage paragraph. A later
+        # partner-tail reconciliation may move those additions, but must keep
+        # the registered three creditor slots at their original indices.
+        old = {s['Id']: s for s in before}
+        for event in payload['Scenes']:
+            if event['Id'] not in {'soana.ending_' + name for name in T.ALIVE_ENDINGS}:
+                continue
+            for actual, prior in zip(event['Nodes'], old[event['Id']]['Nodes']):
+                self.assertEqual(metadata(actual.get('Paragraphs', [])[:3]),
+                                 metadata(prior.get('Paragraphs', [])[:3]))
 
     def test_lastcall_amendment_is_route_local_and_idempotent(self):
         before = copy.deepcopy(lastcall_partners.PARTNERS)

@@ -2,11 +2,11 @@
 
 Canon: SoanaAfterQuest/Cue_0012, c6789b662ea5c404f957d9a20b68f5c7,
 a verified memory of marriage and children;
-Cue_0032, 1c27dcef5249a3f48b1a8d76b90332f6, her refusal to flee to Gundrun.
+SoanaBeforeBear/Cue_0032, 1c27dcef5249a3f48b1a8d76b90332f6, her refusal to flee to Gundrun.
 Neither establishes Corven's fate. The dispatch, journey and conversations below
 are authored additions under CANON-PARTNERS-DESIGN.md's 2026-10-05 revision.
 Corven's new dialogue is an authored voice, not a quotation of a native speaker.
-The Commander exploits a cult courier's literal delivery obligation; ordinary
+An old letter from Roan supplies the Gundrun address; ordinary
 travel and a paid escort bring an elderly dwarf back, never a resurrection.
 """
 from copy import deepcopy
@@ -216,9 +216,9 @@ def cave(id, title, entry, nodes, requires, *, any_groups=(), delay=0, forbids=(
 
 
 SCENES = [
-    cave("dispatch", "A name on the southern road", '"A captive courier has a letter addressed to you."', [
-        n("start", "Narrator", '''{n}The courier taken on the Wintersun road carried cult orders and a sack of ordinary letters. His oath forbade him to leave a message undelivered. You gave him Soana's address and made him carry this one ahead of his master's orders. The crusade's scouts followed him back to his relay.{/n}
-{n}The letter came through a relay near Gundrun. An old dwarf asks after a shaman, her children, and a meadow where they were married. He signs himself Corven. The hand is cramped, the ink fresh. The scouts have not seen its writer.{/n}''',
+    cave("dispatch", "A name on the southern road", '"Your family went south to Gundrun. Shall I send your words there?"', [
+        n("start", "Narrator", '''{n}Soana unfolds an old letter kept in oiled leather. Roan wrote that the children and grandchildren were leaving for Gundrun. The date at the pass is long past. A scout carrying demon-road reports knows a southern relay; he can ask who still receives the family's letters.{/n}
+{n}A recent inquiry from that relay lies beside it. A dwarf calling himself Corven asks whether the shaman still keeps Wintersun. The ink is fresh. The scout has not seen its writer.{/n}''',
           c('[Give Soana the letter.]', "read"),
           c('[Keep the letter with your dispatches until after the fighting.]', flags=(HELD,)),
           c('[Burn the letter. Leave Corven looking for an answer.]', "burn")),
@@ -237,14 +237,14 @@ SCENES = [
         n("sent_share", "Soana", '''{n}She takes the sheet back and writes beneath the question. Her hand presses hard enough to score the bark.{/n}
 "There. My words. You have a lover waiting here, and I have a husband waiting south. Neither is going to hear about the other from a fool on the road."
 {n}She folds it over both messages and gives it to the messenger herself.{/n}''', c()),
-        n("burn", "Narrator", '''{n}The cramped letters curl into ash. Beneath the address is a smaller line asking that undelivered letters be returned to the southern relay. The courier's oath still holds; he saw where this one went.{/n}
+        n("burn", "Narrator", '''{n}The cramped letters curl into ash. Beneath the address is a smaller line asking that undelivered letters be returned to the southern relay. The scout has seen the burning. He must account for an undelivered inquiry to the relay.{/n}
 {n}You scatter the ash. Soana's unanswered bark lies beside her blanket.{/n}''',
           c('[Leave the ash cold.]', flags=(BURIED,))),
         n("sent_exclusive", "Soana", '''{n}She copies the separation beneath her question about the flowers.{/n}
 "Both sheets. No making him walk north expecting a wife who has taken off his clasp."
 {n}She gives the messenger the folded letter herself.{/n} "If he wants to come and curse me, he has a road. I will hear him."''', c(), portrait="Soana"),
-    ], ("trickster.now", "trickster.ever", "soana.committed"),
-       any_groups=((SHARE, SECRET, EXCLUSIVE),), forbids=(PURSUED, HELD, BURIED)),
+    ], ("trickster.now", "trickster.ever", "soana.started"),
+       forbids=(PURSUED, HELD, BURIED)),
     cave("homecoming", "At his own door", '"The southern messenger has returned with your answer."', [
         n("start", "Soana", '''{n}An elderly dwarf stands at the cave mouth with a walking staff. Behind him, a dwarf with gray in his beard sets down his father's pack. Soana looks from Corven to their son. Below the bend, the escort keeps watch for demons.{/n}
 "Well? What did you call me?"
@@ -314,12 +314,12 @@ SCENES = [
 {n}Corven picks up the clasp.{/n} "Then I am no longer your husband. Keep your hunter. I shall hear any news of you from the children. No more letters calling me home."
 {n}Soana waits until he has gone down to the escort. Then she turns to you.{/n} "You heard them. No telling me it will all come right. Stay, if you meant it."''',
           c('[Stay beside her after the family leaves.]', flags=(SEPARATED, CONFIRMED)), portrait="Soana"),
-    ], ("trickster.ever", "soana.committed", PURSUED),
-       any_groups=((SHARE, SECRET, EXCLUSIVE),), delay=168, forbids=(CONFIRMED,)),
+    ], ("trickster.ever", PURSUED),
+       delay=168, forbids=(CONFIRMED,)),
     cave("returned_letter", "The undelivered answer", '"The courier came back to your cave?"', [
         n("start", "Soana", '''{n}Soana holds two letters. One bears the courier's mark; the other is cramped with small writing. She points at the bundle of demon reports under your arm.{/n}
 "Your army can wait until you have heard this."
-{n}She holds up the courier's sheet.{/n} "He had to return an undelivered letter. His oath, hunter. Your joke. He went south with word that mine had reached your hand and come no farther."
+{n}She holds up the courier's sheet.{/n} "The scout reported an undelivered letter. He went south with word that mine had reached your hand and come no farther."
 {n}She holds up the smaller sheet.{/n}
 "Corven wrote about the flowers. He called me a thorn bush in a wedding wreath. Nobody else heard that quarrel. It is him. Alive, south of the Wound, still writing."
 "And you burned the road he sent me."''', c('[Hear the rest of Corven\'s letter.]', "corven")),
@@ -359,8 +359,8 @@ SCENES = [
 "I took off his clasp. I did not put you in charge of who could write to me. Take your things."
 {n}She goes inside without waiting for your answer.{/n}''',
           c('[Leave. The marriage has ended; burning his letter cost you the romance.]', flags=(SEPARATED, BROKEN, "soana.closed", "soana.trickster.refused"))),
-    ], ("trickster.ever", "soana.committed", BURIED),
-       any_groups=((SHARE, SECRET, EXCLUSIVE),), delay=72, forbids=(CONFIRMED,)),
+    ], ("trickster.ever", BURIED),
+       delay=72, forbids=(CONFIRMED,)),
 ]
 
 # Record identity and disposition together. An interrupted conversation must

@@ -113,10 +113,17 @@ internal static class HouseholdTests
             && State(story, 3, "trickster", "anevia.committed", "anevia_gone", "anevia.trickster.returned").Has("anevia.harem.eligible")
             && !State(story, 3, "trickster", "anevia.committed", "anevia_dead", "anevia.trickster.returned").Has("anevia.harem.eligible"),
             "Anevia's refusal, departure or return does not move her household eligibility.");
-        // Soana (a return device): dead leaves, returned restores; returned but refused (soana.closed) leaves again.
+        // Soana: return earns presence. Her renewed invitation and actual family
+        // answer earn affection; readiness without her new yes earns no chair.
         check(!State(story, 3, "trickster", "soana.committed", "soana.dead").Has("soana.harem.eligible")
-            && State(story, 3, "trickster", "soana.committed", "soana.dead", "soana.trickster.returned").Has("soana.harem.eligible")
-            && State(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited").Has("soana.harem.eligible")
+            && !State(story, 3, "trickster", "soana.committed", "soana.dead", "soana.trickster.returned").Has("soana.harem.eligible")
+            && State(story, 3, "trickster", "soana.committed", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited",
+                "soana.partner.corven_together", "soana.partner.corven_known_alive").Has("soana.harem.eligible")
+            && !State(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited").Has("soana.harem.eligible")
+            && State(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited",
+                "soana.round2.postwar_accepted", "soana.partner.corven_together", "soana.partner.corven_known_alive").Has("soana.harem.eligible")
+            && !State(story, 3, "trickster", "soana.committed", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited",
+                "soana.partner.corven_together", "soana.partner.corven_known_alive", "soana.trickster.friends").Has("soana.harem.eligible")
             && !State(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited", "soana.closed", "soana.trickster.refused").Has("soana.harem.eligible"),
             "Soana's death, return or refusal does not move her household eligibility.");
         // Terendelev (a return device): her commitment holds; sending her home (terendelev.closed) ends it.

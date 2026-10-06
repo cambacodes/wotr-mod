@@ -1,0 +1,36 @@
+{
+  "soana": {
+    "device_class": "canon_lowest_point",
+    "setting": "Wintersun cave animal graves and the cleared seed-bed beside the stream",
+    "payoff_shape": "guardian retakes her leash and admits a visitor to the home Corven still has a place in",
+    "canon_hooks": [
+      {
+        "guid": "c6789b662ea5c404f957d9a20b68f5c7",
+        "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0012.jbp",
+        "key": "93318741-6358-4436-a7f0-3cf64580345d",
+        "native_excerpt": "\"Corven laid a wreath of those flowers on my head and I became his wife. I washed my children in the holy spring in the Meadow of the Spirits, and they grew up healthy and strong. This forest was my land. The Great Orso came at my call!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts.",
+        "shared_string_asset": "d6b34060a0c9ce045b77c57a7ff8c2d1"
+      },
+      {
+        "guid": "396b1d46a2cfb1e48b205468d4360ee9",
+        "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0015.jbp",
+        "key": "6e127fe6-1fcc-44cc-a8ab-e931fc0f8e65",
+        "native_excerpt": "{n}The old woman crosses her arms over her chest.{/n} \"Yes. Orso the Terrible is my creation. I used this medallion to control an evil spirit of the Abyss after linking it to the sacred bear, and I forced the spirit to serve good by linking our lives together.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts.",
+        "shared_string_asset": "db49c5b48bf1f574280c5460c1e91981"
+      },
+      {
+        "guid": "3c616e0be2622f94f8e6aff5ad537b28",
+        "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0048.jbp",
+        "key": "8613a6d9-9e83-48c0-b2f7-177cacd5ab25",
+        "native_excerpt": "\"The scouts also reported something strange. It seems animals are helping locals fight the demons. It's as if someone is sending them from the forest. I'll just say I don't understand Wintersun at all. Odd little place.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}
