@@ -470,7 +470,7 @@ meet(P + "alive.stories", "Blood and tale", '"About the Condemned wagon."', [
         c("Continue", "her_tale")),
     jan("her_tale", '''"Me? I never went near that quasit. I lay in the dirt where its colours dropped me and let the rest of you chase it. Then Curl's things came, and you turned to meet them, and I turned and ran."
 {n}She stops, and waits for you to find the lie, if there is one.{/n}''',
-        c("[Perception] Go back over that night, stroke by stroke, and look for the lie in hers.",
+        c("[Perception] Go back over the camp, stroke by stroke, and look for the lie in her telling.",
           check=dict(Skill="SkillPerception", DC=20, Success="caught", Failure="missed")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
     nar("caught", '''{n}You go back over the camp, stroke by stroke: the chest, the colours, the chase across the runes. And while you do, you watch her. When she says she never went near it, the hand on her knee turns over, the way a fencer's hand does when it remembers a pass.{/n}''',
@@ -513,7 +513,7 @@ meet(P + "alive.stories", "Blood and tale", '"About the Condemned wagon."', [
 
 # Q6 follow-up (INT/COX): she is met in her cell again once she is back (a presence 36 hours after the wagon left), not at a rest.
 meet(P + "alive.wagon", "The ninth bell, and after", '"You came back."', [
-    nar("open", '''{n}On the second evening after the Condemned wagon went north, the gate sergeant had sent up word that one of it had come back and gone straight down to the old gaol.{/n}
+    nar("open", '''{n}The gate sergeant sent up word that a soldier from the north-road company had come back and gone straight down to the old gaol.{/n}
 {n}She is grey with road dust, her gambeson slit along one sleeve and sewn shut again with a Condemned surgeon's black thread. She gets up off the bunk when you come in.{/n}''',
         c("Continue", "old_scar", requires=(JOINED,)),
         c("Continue", "old_scar", requires=(REFUSED,), forbids=(JOINED,)),
@@ -758,8 +758,8 @@ meet(MORNING, "A scuffed circle", '"You\'ve got sand in your hair."', [
 # Her no, answered: a circle left chalked in the yard (no price, no second ask; the truth, said inside it).
 # Q6 follow-up (INT): reached from her cell hub (a word about the yard), not from the mod's book.
 meet(P + "chalk_circle", "A circle in the yard", '"Somebody has chalked a circle in the practice yard."', [
-    nar("open", '''{n}She doesn't look up from the bunk. "Has somebody," she says, and nothing else, and turns over to face the wall.{/n}
-{n}That night, three nights after the muster, the practice yard behind the barracks has the circle on its sand, three paces across, in one stroke. Her sword lies across the middle of it. She's sitting on the yard wall in the dark with her knees drawn up, watching. She doesn't call down.{/n}''',
+    nar("open", '''{n}She doesn't look up from the bunk. "Has somebody," she says, and turns over to face the wall.{/n}
+{n}That night, the practice yard behind the barracks has a circle on its sand, three paces across, in one stroke. Her sword lies across the middle. She sits on the yard wall with her knees drawn up, watching. She doesn't call down.{/n}''',
         c('[Step into the circle] "I lied to you in your cell. I named a lie you never told, because I missed the one you did, and I wanted you out of that cell more than I wanted to win clean."',
           "walked_in", requires=(HELD_LIE,), flags=(CONFESSED, COMMITTED, LATE_YES)),
         c("[Step into the circle, draw, and salute her properly.]", "saluted_in", requires=(THREW,), forbids=(HELD_LIE,),

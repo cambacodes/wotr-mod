@@ -175,7 +175,7 @@ meet(HOUNDHEART, "Houndheart", '"You\'re quiet today."', [
 "Everyone asks why I ran. I've been asking for a year. I've gone over it the way I'd go over a lost bout, stroke by stroke, looking for the moment I decided."''',
         c("Continue", "legs")),
     jan("legs", '''"There isn't one. I didn't decide. My legs decided, and I went with them, and I was two miles north through the scrub toward Numeria before I remembered I had a head."
-{n}She looks at her hands.{/n} "Everyone's afraid. Fine. But I wasn't even there when I decided. I was just gone. Do you know how stupid that feels? Seven years learning where to put my feet, and they took me two miles without asking.""''',
+{n}She looks at her hands.{/n} "I wasn't thinking at all. I was just gone. Do you know how stupid that feels? Seven years learning where to put my feet, and they took me two miles without asking."''',
         c("Continue", "blame")),
     jan("blame", '''"And then in that cage I blamed Seelah for it. Her heroics, her motto, all of it. I told the bars so, often enough." {n}Her mouth twists.{/n}
 "It wasn't true. It was just the only thing I could reach from inside the cage."''',
@@ -401,11 +401,11 @@ meet(BLADE, "Forty-one", '"That isn\'t a practice sword."', [
 "Forty-two. The cell. You." {n}She says it lightly.{/n} "I wasn't sure it counted, a bout of stories. I decided it did. I'm the one who keeps the scabbard."''',
         c('[Flirt] "Keep the scabbard. I\'ll keep trying."', "flirt"),
         c('"Will you ever cut another?"', "another")),
-    jan("flirt", '''"You would." {n}She looks at you properly, from the scabbard up, not quickly.{/n}
-"Here." {n}She puts the blade in your hands, hilt first, and folds your fingers round the bare wood where the old leather used to be.{/n} "Feel that? I've wound it to my hand. A week, and it already sits where my old one did."''',
+    jan("flirt", '''"You would." {n}She looks up from the scabbard and lets her eyes linger on you.{/n}
+"Here." {n}She puts the blade in your hands, hilt first, and folds your fingers round the bare wood.{/n} "Feel the balance? I'll wind the grip tighter here. My old one sat just so."''',
         c("[Hold it.]", "held", flags=(BLADE_HELD,))),
-    jan("another", '''"One more, maybe." {n}She runs her thumb along the notches, one by one, like a rosary.{/n}
-"There's a bout I want. I haven't decided when. When I do, you'll know, because everybody will know." {n}She puts the blade in your hands, hilt first.{/n} "Here. Feel the balance. It's a turnip-sack sword, but it's honest."''',
+    jan("another", '''"Of course." {n}She runs her thumb along the notches.{/n} "I didn't come back to stop fencing."
+{n}She puts the blade in your hands, hilt first.{/n} "Here. Feel the balance. It's a turnip-sack sword, but it'll do."''',
         c("[Hold it.]", "held", flags=(BLADE_HELD,))),
     jan("held", '''{n}It is lighter than it looks, and it wants to move. Jannah watches you hold it the way she'd watch you hold something alive.{/n}
 "Good." {n}She takes it back and starts winding the new leather on, tight and neat.{/n} "You didn't grip it. I'll make a fencer of you yet."''',
@@ -457,8 +457,8 @@ meet(WATCH, "The blue tabard", '"The Watch sergeant was asking about you."', [
         c('"Then put it on, and don\'t run."', "on", flags=(WATCH_STOOD,)),
         c('"Then leave it folded until you know."', "folded"),
         c('"You don\'t need their blue. You fight for me."', "mine")),
-    jan("on", '''{n}She looks at you for the length of a slow breath. Then she picks up the tabard, shakes it out, and pulls it over her head, and stands there in the last cell of the gaol in Eagle Watch blue.{/n}
-"It's too big. It was always too big." {n}Her voice isn't steady.{/n} "Don't look at me like that. I'll take it off before the muster. Tonight I just want to know what it feels like when you haven't broken it yet."''',
+    jan("on", '''{n}She looks at you for a slow breath. Then she shakes out the tabard, pulls it over her head and stands in the last cell in Eagle Watch blue.{/n}
+"It's too big. It was always too big." {n}She tugs the hem straight.{/n} "Don't stare. I only wanted to try it on."''',
         c("[Leave her in the blue.]")),
     jan("folded", '''"Until I know." {n}She nods, and puts the tabard on the shelf above the bunk, folded, badge out.{/n}
 "It'll be there. That's the good thing about a tabard; it waits. It's more patient than I am."''',
@@ -561,8 +561,8 @@ meet(FORD, "The ford", '"Tell me about the ford."', [
     jan("why", '''"Because I'd won. Because the forms say the winner says the end, and I sat on that ford all night thinking about what I'd say."
 "In Mivon I won forty-one bouts and never once had anything to say at the end of one. I'd just salute and walk off. This time I had something." {n}She winds the leather back on, tight and neat.{/n} "It was you. Don't make me say it twice."''',
         c("[Leave her to her grip.]")),
-    jan("read", '''{n}You read them with her, one by one, in the lamplight. She says a word or two about each: a cook, a card-sharp, the boy's father, a woman who sang. At the fourth she stops.{/n}
-"Pim," {n}she says, and doesn't say anything else, and winds the leather back on over him.{/n} {n}It takes her a long time to get it tight enough.{/n}''',
+    jan("read", '''{n}You read them with her, one by one, in the lamplight. She says a word or two about each: a cook, a card-sharp, the boy's father. At the fourth she stops.{/n}
+"Pim," {n}she says, and says nothing else. She winds the leather back over his name. It takes her a long time to get it tight enough.{/n}''',
         c("[Leave her to her grip.]")),
 ], requires=(POSTING,), delay=24)
 
