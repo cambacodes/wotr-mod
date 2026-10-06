@@ -327,7 +327,7 @@ internal static class KaylessaTricksterTests
         var lateConfessed = Program.Copy(lateLiar); lateConfessed.Flags.Add(P + "confessed_price"); Rules.Complete(story, lateConfessed);
         check(lateConfessed.Has(P + "late_committed") && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), lateConfessed),
             "A confessed lie still blocks the late page.");
-        check(pages.Single(p => p.Id == P + "epilogue.commit").Nodes[0].Text.Contains("astride", StringComparison.Ordinal),
+        check(pages.Single(p => p.Id == P + "epilogue.commit").Nodes[0].Text.Contains("Astride their hips", StringComparison.Ordinal),
             "The late romance has no threshold.");
         // Round 5 (CAN/COX): no narration decides the Commander's night sight; Avennara's reply comes at the awning.
         foreach (var x in own.Concat(pages))
@@ -341,7 +341,7 @@ internal static class KaylessaTricksterTests
               && desireNode.Choices.Single(c => c.Next == "like_stranger").Forbids.Contains("kaylessa.first_words_seen"),
             "The night recalls first words that a started dialogue does not prove.");
         var commitPage = pages.Single(p => p.Id == P + "epilogue.commit");
-        check(commitPage.Nodes[0].Paragraphs.Single(q => q.Requires.Contains(P + "cost.dark_fate_stalled")).Forbids.Contains(P + "cost.beast_fed")
+        check(commitPage.Nodes[0].Paragraphs.Single(q => q.Requires.Contains(P + "cost.dark_fate_stalled") && !q.Requires.Contains(P + "cost.beast_fed")).Forbids.Contains(P + "cost.beast_fed")
               && commitPage.Nodes[0].Paragraphs.Any(q => q.Requires.Contains(P + "cost.beast_fed")), "The late page forgets the fed beast.");
         var hunterParas = pages.Single(p => p.Id == P + "epilogue.no_lamb").Nodes[0].Paragraphs.Where(q => q.Requires.Contains(P + "cost.council_knows")).ToList();
         check(hunterParas.Count == 2 && hunterParas.Single(q => q.Text.Contains("his own arrows")).Forbids.Contains(N + "hunter_turned_back")
@@ -353,6 +353,8 @@ internal static class KaylessaTricksterTests
         var namePages = new HashSet<string>();
         Program.Walk(nameScene, World(story, 5, "trickster", "trickster.ever", Committed, P + "knife_held", N + "grey_light"), (page, _) => namePages.Add(page));
         check(namePages.Contains("name_fresh") && !namePages.Contains("name"), "She keeps a promise from a conversation that never happened.");
+
+        PolishHistories(story, check);
 
         // Pages: effect-free Chapter 6 pages; no exclusivity stated as fact is linted by the house rules.
         check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
@@ -468,5 +470,122 @@ internal static class KaylessaTricksterTests
             check(worlds.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);
         Console.WriteLine("PASS: Kaylessa Trickster (Trk_Kaylessa_*): the promise, Shyka's trade, Forn's courtesy and the amulet swap, the rules, the clock, the cells, the dagger, the hilt, the knife on the table, the pages, the oath, and "
                           + courtship.Length + " courtship beats.");
+    }
+
+    private static void PolishHistories(Story story, Action<bool, string> check)
+    {
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        Node Node(string id, string node) => S(id).Nodes.Single(n => n.Id == node);
+        Choice[] Choices(string id, string node, Snapshot w) => Node(id, node).Choices
+            .Where(c => Rules.Match(c.Requires, c.Forbids, w)).ToArray();
+        string[] Visible(string id, Snapshot w) => Rules.VisibleParagraphs(Node(id, "page"), w).Select(p => p.Text).ToArray();
+        var kept = P + "epilogue.no_lamb";
+        var late = P + "epilogue.commit";
+        const string raised = P + "cost.shyka_raised";
+        const string sending = P + "dead.borrow_sending";
+        const string stalled = P + "cost.dark_fate_stalled";
+        const string fed = P + "cost.beast_fed";
+
+        // Payment history dispatches accurate speech; declining to disclose remains possible.
+        foreach (var history in new[] { "direct", "amused", "raised", "sending" })
+        {
+            var w = World(story, 5, "trickster", "trickster.ever", Returned, Dead, Begged, stalled,
+                P + "cost.shyka_price", P + "after.rules");
+            if (history == "amused") w.Flags.Add(P + "shyka_amused");
+            if (history == "raised" || history == "sending") w.Flags.Add(raised);
+            if (history == "sending") w.Flags.Add(sending);
+            string target = history == "sending" ? "shyka_sending" : history == "raised" ? "shyka_raised" : "shyka_yes";
+            var choices = Choices(P + "dead.soldier", "price", w);
+            check(choices.Length == 2 && choices.Any(c => c.Next == "mine") && choices.Any(c => c.Next == target),
+                "Polish Kaylessa: wrong price disclosure/refusal in " + history);
+            foreach (var node in new[] { "how", "better" })
+            {
+                var reports = Choices(W + "the_other_you", node, w);
+                var expected = target == "shyka_yes" ? "shyka" : target;
+                check(reports.Length == 1 && reports[0].Next == expected,
+                    "Polish Kaylessa: wrong Shyka report from " + node + " in " + history);
+                check(Node(W + "the_other_you", expected).Choices.Single().Next == "branch",
+                    "Polish Kaylessa: price report lost the bounded memory continuation.");
+            }
+            var price = Visible(kept, w).Where(text => text.Contains("Shyka kept the branch") || text.Contains("Nobody ever worked out what Shyka")).ToArray();
+            check(price.Length == 1 && (history != "sending" || price[0].Contains("empty Council hall"))
+                && (history != "raised" || price[0].Contains("tried to bargain")),
+                "Polish Kaylessa: ending mixes price methods in " + history);
+        }
+        var unpaid = World(story, 5, "trickster", "trickster.ever", Dead, "shyka.gone");
+        foreach (var outcome in Program.Walk(S(sending), unpaid))
+            check(outcome.Has(P + "primed") == outcome.Has(sending), "Polish Kaylessa: unpaid sending acquired paid history.");
+        check(Node(P + "react.woljif_haggled", "start").Choices.Count == 1
+            && !Node(P + "react.woljif_haggled", "start").Text.Contains("haggled"),
+            "Polish Kaylessa: Woljif invents a negotiation or gained a dispatcher.");
+
+        // Neither hunter identity nor arrow allocation turns a failed swap into a clean kill.
+        foreach (var outcome in new[] { "swap_clean", "swap_fumbled" })
+        foreach (var successor in new[] { false, true })
+        foreach (var shield in new[] { false, true })
+        {
+            var w = World(story, 5, "trickster", "trickster.ever", Returned, P + "cost.amulet_burnt", P + "alive." + outcome);
+            if (successor) w.Flags.Add(P + "alive.successor");
+            if (outcome == "swap_fumbled") w.Flags.Add(P + (shield ? "cost.arrow_taken" : "cost.her_collarbone"));
+            var choices = Choices(W + "last_words", "start", w);
+            string target = outcome == "swap_clean" ? "alive" : "alive_fumbled";
+            check(choices.Length == 1 && choices[0].Next == target, "Polish Kaylessa: wrong swap recollection.");
+            var memory = Node(W + "last_words", target);
+            check(!memory.Text.Contains("Forn") && memory.Choices.Select(c => c.Next).SequenceEqual(new[] { "alive_write", "alive_say" }),
+                "Polish Kaylessa: successor named Forn or writing answers lost.");
+            if (outcome == "swap_fumbled")
+                check(memory.Text.Contains("caught your wrist") && memory.Text.Contains("They're still hunting") && !memory.Text.Contains("they shot him"),
+                    "Polish Kaylessa: failed swap gained clean credit or lost pursuit.");
+            check(!Visible(kept, w).Any(text => text.Contains("Shyka kept the branch")), "Polish Kaylessa: living swap acquired a Shyka price.");
+        }
+
+        // Curse consequences and the single dagger retain each earned history.
+        foreach (var device in new[] { stalled, P + "alive.swap_clean", P + "alive.swap_fumbled" })
+        foreach (var fedBeast in new[] { false, true })
+        foreach (var holder in new[] { P + "knife_held", P + "knife_handed_back" })
+        {
+            var w = World(story, 6, "trickster", "trickster.ever", Returned, Committed, device, holder);
+            if (fedBeast) w.Flags.Add(fed);
+            foreach (var id in new[] { kept, late })
+            {
+                var text = Visible(id, w);
+                var consequences = text.Where(t => t.Contains("beast had fed")).ToArray();
+                check(consequences.Length == (fedBeast ? 1 : 0), "Polish Kaylessa: fed consequence missing/doubled in " + id);
+                if (fedBeast)
+                    check(consequences[0].Contains("borrowed clock") == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
+            }
+            var knife = Visible(kept, w).Where(t => t.Contains("kept the Kyonin dagger")).ToArray();
+            check(knife.Length == 1 && knife[0].Contains(holder.EndsWith("knife_held") ? "hung by the door" : "sheathed in her left boot"),
+                "Polish Kaylessa: ending moved or duplicated the chosen dagger.");
+        }
+
+        // A kiss without the knife disclosure stays an ally; unresolved truth with the knife never acquires a free yes.
+        foreach (var kissed in new[] { false, true })
+        foreach (var truth in new[] { "honest", "lied", "confessed" })
+        {
+            var w = World(story, 6, "trickster", "trickster.ever", Returned, P + "clock_named", stalled);
+            if (kissed) w.Flags.Add(W + "in_the_dark");
+            if (truth != "honest") w.Flags.Add(P + "lied_about_price");
+            if (truth == "confessed") w.Flags.Add(P + "confessed_price");
+            if (truth == "honest") w.Flags.Add(P + "told_borrowed");
+            foreach (var knifeShown in truth == "lied" ? new[] { false, true } : new[] { false })
+            {
+                var ally = Program.Copy(w);
+                if (knifeShown) ally.Flags.Add(P + "knife_shown");
+                Rules.Complete(story, ally);
+                check(Rules.Available(story, S(P + "epilogue.ally"), ally) && !Rules.Available(story, S(late), ally),
+                    "Polish Kaylessa: kiss-only or unresolved truth acquired late commitment.");
+                var history = Visible(P + "epilogue.ally", ally);
+                check(history.Length == 1 && history[0].Contains("kiss") == kissed && !history[0].Contains("proposal"),
+                    "Polish Kaylessa: ally denied a played kiss or invented a proposal.");
+                if (kissed && truth == "lied") check(history[0].Contains("unspoken"), "Polish Kaylessa: ally forgave unresolved price.");
+                if (kissed && truth == "confessed") check(history[0].Contains("finally told her"), "Polish Kaylessa: ally lost confession.");
+            }
+        }
+        var page = Node(late, "page").Text;
+        check(page.Contains("a low lamp burned") && page.Split("put out the lamp").Length == 2
+            && page.IndexOf("bare ribs", StringComparison.Ordinal) < page.IndexOf("In the morning", StringComparison.Ordinal),
+            "Polish Kaylessa: late threshold extinguishes the lamp twice or lost its morning.");
+        Console.WriteLine("PASS: Kaylessa polish histories (price, sending abort, swaps, curse, knife and ally).");
     }
 }
