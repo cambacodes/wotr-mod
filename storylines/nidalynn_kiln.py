@@ -62,7 +62,7 @@ visit(P + "hearth.listening", "Nobody's widow", [
 {n}Inside the egg, something knocks. Once. Twice. Then again, faster, like a fist on a door.{/n}''',
         c("Continue", "cold")),
     nd("cold", '''{n}She opens her eyes.{/n} "It's alone, and it's cold, and it's stopped expecting anybody to turn it." {n}She lays it back in the coals, very carefully, and rakes the embers up around it with your poker.{/n} "It's the smallest, and it's had the worst of the heat; you can feel it in the shell. Runts often do."
-"Your hearth is a good hearth, Commander. It isn't a dragon. By the feel of it, it won't last the week."''',
+"Your hearth is a good hearth, Commander. It isn't a dragon. I'll come and turn it, and warm it myself, until we've somewhere better. Tell your steward to let me through. Even if you're away winning your war."''',
         c('"And you know that how, widow?"', "how"),
         c('"How do you know what it thinks?"', "how")),
     nd("how", '''{n}She sits back on her heels, and puts one hand on the small of her back, and sighs the long sigh of a woman who has been standing on a market step all day.{/n} "Oh, very well. It's late, and your chairs look comfortable, and I did promise I'd tell you in your own house."
@@ -278,10 +278,10 @@ visit(P + "kiln.hatching", "What came out of the rock", [
         c('[Tell them the truth] "It did. The druids left it in my vault for dead, and I signed it off the stores\' slate as disposed of, and carried it up to my own fire, and called it a rock. I lied to every one of you. It\'s mine to answer for."',
           "confess_straw", flags=(CONFESSED,), crusade=("Favors", -100), requires=(SLATE,))),
     nar("confess_straw", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
-{n}You tell them the rest of it, because once you have started there is no sense stopping. The druids and their handcart. The twelfth egg on the straw heap, cold, that four of them gave up for dead. The slate, and the lie on it with your mark beside it. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
+{n}You tell them the rest of it, because once you have started there is no sense stopping. The druids and their handcart. The twelfth egg on the straw heap, cold, that four of them gave up for dead. The slate, and the lie on it with your mark beside it. The quartermaster read back your order; he did not give it. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
         c("Continue", "chaplain")),
     nar("confess_vault", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
-{n}You tell them the rest of it, because once you have started there is no sense stopping. The vault. The soot. The lump of coal in the straw where the egg had been, and the clerk who wrote down twelve. The stairs, and your palms. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
+{n}You tell them the rest of it, because once you have started there is no sense stopping. The vault. The soot. The lump of coal in the straw where the egg had been. The clerk's count was wrong because you took the twelfth; he will not answer for your theft. The stairs, and your palms. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
         c("Continue", "chaplain")),
     nar("confess", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
 {n}You tell them the rest of it, because once you have started there is no sense stopping. The golems. The ash. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
@@ -297,8 +297,10 @@ visit(P + "kiln.hatching", "What came out of the rock", [
 "I've always said it's what you do that matters. Not what you say." {n}She looks up at you.{/n} "I was wrong about tonight. Tonight what you said was the thing you did. You said it out loud, to all of them, with a torch in your face." {n}She wipes her cheek with the back of her wrist, and leaves another streak.{/n} "Sit down. You're shaking. So am I."''',
         c("[Sit down beside her.]", flags=(HATCHED,))),
     nar("lied", '''{n}Your voice carries. You have had a great deal of practice making it carry. You tell them about the storms in the north, and the wild things that come down out of the hills in a hard winter, and how the widow found it by the kiln looking for warmth, and that you will have it in an iron cage by morning and on a cart to the Worldwound's edge by noon.{/n}
-{n}They believe you. They want to. It is a better story than the Commander's rock, and nobody has to feel a fool at the end of it.{/n}''',
-        c("Continue", "lied2")),
+{n}The sergeant looks at the hatchling, then at the torch. He asks the chaplain to give you until morning. Nobody puts down a spear.{/n}''',
+        c("Continue", "lied2", forbids=(CLERK, QUARTERMASTER)),
+        c("Continue", "lied_clerk", requires=(CLERK,)),
+        c("Continue", "lied_quartermaster", requires=(QUARTERMASTER,), forbids=(CLERK,))),
     nar("lied2", '''{n}The lane empties. The chaplain goes last, and makes the sign of Iomedae's sword at the kiln's mouth as he goes.{/n}
 {n}Nidalynn has not moved. She stands in the kiln's mouth with the hatchling asleep against her, and she looks at you for as long as it takes the last torch to go up the tanners' stair, and she does not say one word. Then she sits down on the kiln step with her back to you, and stays there.{/n}''',
         c("[Go home.]", flags=(HATCHED,))),
@@ -309,6 +311,12 @@ visit(P + "kiln.hatching", "What came out of the rock", [
 {n}It does not burst; it lifts, all of a piece, bricks and slates and the old iron bands, the way a lid lifts off a pot, and falls back into the lane in a long rattle. And out of the smoke, out of the white heart of the kiln, something goes up into the dark that is silver from end to end, huge, too huge for the lane, too huge for the sky over the lower town, with a small furious red-black thing held against its breast in one great claw.{/n}
 {n}Every torch in the lane goes out at once in the cold of its passing. Then it is gone, over the east wall, north, into the snow.{/n}''',
         c("[Stand in the dark lane.]")),
+    nar("lied_clerk", '''{n}"I saw the bucket," the clerk says. His voice breaks, but he stays where he is. "And I changed the count. It wasn't from the hills."{/n}
+{n}The sergeant asks for the count again, then tells the crowd the Commander has promised to remove the dragon. The chaplain lowers his torch, barely. They leave arguing about the bucket. Nidalynn watches the clerk go, with the hatchling held tight against her.{/n}''',
+        c("Continue", "lied2")),
+    nar("lied_quartermaster", '''{n}The quartermaster lifts his slate. "Disposed of. Your mark, Commander. I said I'd not pretend when it hatched."{/n}
+{n}The chaplain reads the mark. The sergeant repeats your promise of a cage and a cart until the lane begins to clear. They are giving you until noon, not believing you. Nidalynn looks from the slate to you and turns her shoulder around the hatchling.{/n}''',
+        c("Continue", "lied2")),
 ], requires=(KILN,), forbids=(HATCHED, GIVEN_UP), delay=48)
 
 
@@ -317,9 +325,11 @@ visit(P + "kiln.hatching", "What came out of the rock", [
 visit(P + "kiln.truth_owed", "Hills in the north", [
     nar("kiln", '''{n}She sends for you two days later. The note is in a big, round, old-fashioned hand on the back of a refugee's ration list, and it says only: "The kiln. Tonight. Bring nothing."{/n}
 {n}There is no cage. There never was going to be a cage. The hatchling is asleep on a folded blanket in the kiln's warm mouth, and she is sitting beside it on the step, mending, and she does not get up.{/n}''',
-        c("Continue", "hills")),
-    nd("hills", '''"It came down out of the hills in the snow." {n}She does not look up from the mending.{/n} "That was a good story. You told it well. Everybody went home happy and nobody had to be ashamed of anything, and in the morning the chaplain told the whole lower town that the Commander had the matter in hand."
-"I've been sitting here two days listening to people say how wise you were."''',
+        c("Continue", "hills", forbids=(CLERK, QUARTERMASTER)),
+        c("Continue", "hills_clerk", requires=(CLERK,)),
+        c("Continue", "hills_quartermaster", requires=(QUARTERMASTER,), forbids=(CLERK,))),
+    nd("hills", '''"It came down out of the hills in the snow." {n}She pulls a stitch tight.{/n} "Two days. No cage, no cart. The chaplain keeps coming down the stair to look. The sergeant has put himself between his torch and my door."
+"What am I to tell them tomorrow?"''',
         c('"It kept the torches away from her."', "kept"),
         c('"You didn\'t say anything either."', "silent")),
     nd("kept", '''"It did." {n}She puts the mending down.{/n} "And the truth would have too, if you'd stood there long enough. I watched their faces. They were ready to be ashamed of themselves. You didn't give them the chance."''',
@@ -331,7 +341,7 @@ visit(P + "kiln.truth_owed", "Hills in the north", [
         c('[Go to the morning muster and tell the garrison the truth] "Tomorrow. At muster, in front of all of them."', "muster",
           flags=(CONFESSED,), crusade=("Favors", -150)),
         c('"The story stays. It\'s safer for her."', "stays", flags=(LIE_KEPT, CLOSED))),
-    nar("muster", '''{n}You do it in the citadel yard the next morning, from the steps, to three companies standing in the frost. It is harder than the lane would have been; they are not frightened now, only puzzled, and then angry, and a lie told once and then confessed is worse than a lie confessed at once. You can see them working out what else you might have called a rock.{/n}
+    nar("muster", '''{n}You do it in the citadel yard the next morning, from the steps, to three companies standing in the frost. It is harder than the lane would have been; they are not frightened now, only puzzled, and then angry, and a lie told once and then confessed is worse than a lie confessed at once. You can see them working out what else you might have called a rock. The stores men hear you take the false count and the disposal order on yourself. The provost writes your name beside them; nobody else will be punished for your orders.{/n}
 {n}The chaplain is at the back. He does not say anything this time. He makes the sign of the sword, looking at you, and walks out of the yard before the companies are dismissed.{/n}''',
         c("Continue", "after")),
     nd("after", '''{n}She is at the kiln that evening, and she gets up when you come, which she did not do before.{/n} "I heard. The whole lower town heard." {n}She takes your hand, turns it palm up, puts a piece of bread in it.{/n} "That was harder than doing it in the lane. You know that. You'll have them looking at you sideways for a month."
@@ -339,6 +349,11 @@ visit(P + "kiln.truth_owed", "Hills in the north", [
         c("[Eat.]", flags=(HATCHED,))),
     nd("stays", '''"Then it stays." {n}She nods, slowly, as if she had known.{/n} "I'll keep her here through the winter; she needs the kiln. At the thaw I'll take her north, where there's snow and nobody to tell stories about her, and she can grow up whatever she's going to be." {n}She picks up the mending again.{/n} "You were very kind to her, Commander. You were kind to me. I'll remember it. I remember everything; it's my trade." {n}The needle goes in and out.{/n} "Go home. Mind the ice on the tanners' stair."''',
         c("[Go.]")),
+    nd("hills_clerk", '''"Your clerk came back yesterday. He wanted to know whether he'd be punished for saying what he saw." {n}She puts the needle down.{/n} "He lied on the count for you. Then he stood in that lane and owned it, and you left him there looking a fool. I fed him. I couldn't answer him."
+"Don't ask me to keep your egg warm and his mouth shut."''',
+        c("Continue", "hills")),
+    nd("hills_quartermaster", '''"The quartermaster left a copy of the slate with the chaplain. He told me so. He won't have another mark put beside his name." {n}Her mending lies untouched.{/n} "They know where she came from, Commander. The sergeant's keeping the peace while they wait for your cart. He's not keeping your secret."''',
+        c("Continue", "hills")),
 ], requires=(LIED,), forbids=(CONFESSED, LIE_KEPT), delay=48)
 
 
@@ -361,7 +376,7 @@ visit(WHOSE, "Whose she is", [
 "I'm only an old woman with a kiln. I can't take what isn't given me. So I'm asking."''',
         c("Continue", "mother", requires=(DV_RETURNED,)),
         c("Continue", "choose", forbids=(DV_RETURNED,))),
-    nd("mother", '''"And her mother's alive. She'll come for her. Not tomorrow, maybe, but dragons have long memories and she has a long reason." {n}She says it without fear, as she might say that the river floods in spring.{/n} "When she comes, she'll be told the truth, by me. That you took her child, and I kept it. And she'll send the bill for it to you, Commander, not to me. That's only fair. I'd do the same."''',
+    nd("mother", '''"And her mother's alive. She'll come for her. Not tomorrow, maybe, but dragons have long memories and she has a long reason." {n}She says it without fear, as she might say that the river floods in spring.{/n} "When she comes, she'll be told the truth, by me. That you took her child, and I kept it. I'll hear what she has to say. I won't hand over a frightened child because her mother has come to claim her. And she'll send her bill to you, Commander. Raising her doesn't wipe out what you took."''',
         c("Continue", "choose")),
     nd("choose", '''{n}The hatchling has found your boot and is chewing the lace with great concentration.{/n}''',
         c('"She\'s yours to raise. I\'ve no claim on her, and I won\'t make one."', "given", flags=(RENOUNCED,)),

@@ -1,0 +1,33 @@
+{
+  "nidalynn": {
+    "device_class": "she_pursues",
+    "setting": "Drezen east-wall lime-kiln, rescued woundwyrm's first flight to the private ridge",
+    "payoff_shape": "last Reudger salt shared by reciprocal eating, silver flight and shared-fire morning",
+    "canon_hooks": [
+      {
+        "guid": "115f3b59eade2374196abbc646bb8a54",
+        "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0015.jbp",
+        "key": "a55811ca-8fd2-4fc6-9538-19d99d4fa48e",
+        "native_excerpt": "\"Your concern seemed sincere, and I'd like to believe that your kindness was genuine. As a silver dragon, I believe kindness and sincerity are of the utmost importance. However, it is not just the soul that needs to be nourished. You must also sustain your body! Here is a slice of Master Reudger's cheese. You should try some the next time you make camp. Just remember to eat it slowly, savor its flavor.... and be grateful!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "37d0134dd61992741994b6d93c30d46d",
+        "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0016.jbp",
+        "key": "1d7f505b-4865-4279-8dd4-2af3cbdbec60",
+        "native_excerpt": "\"I knew that an absurd request from a pregnant woman would seem foolish. But she could have taught you a valuable lesson.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "7e1a31d409836274b93e59796d60c19e",
+        "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0058.jbp",
+        "key": "a3ab444b-87bb-43fa-be5b-6a06f42ac3af",
+        "native_excerpt": "\"Dragons often take human form. Sometimes they do it because they're bored... And sometimes, they do it because it is necessary to achieve some greater purpose. For example, they may disguise themselves as druids, and ask the crusaders to give them the woundwyrm eggs the Commander took from the Ivory Sanctum. Thank you for those, by the way. Rest assured, we'll take good care of them.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}
