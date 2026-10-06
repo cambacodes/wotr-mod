@@ -57,7 +57,7 @@ internal static class NocticulaConcessionTests
                 // Isolate the existing channel/harbor matrix; new on-page terms have their own route tests.
                 "nocticula.partner_terms", "nocticula.partner_stance.share" });
             initial.Flags.UnionWith(history);
-            var available = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
+            var available = entries.Where(s => Program.CurrentAvailable(story, s, initial)).ToArray();
             check(available.Length == 1, "Concession fixture does not select exactly one native-history entry.");
             int historyTrials = 0, historyAgreements = 0;
             var channels = new HashSet<string>();
@@ -66,16 +66,16 @@ internal static class NocticulaConcessionTests
                 if (request.Has("noct.acq.closed")) continue;
                 var witnessed = Program.Copy(request);
                 witnessed.Hour += preparation.DelayHours;
-                check(!Rules.Available(story, preparation, witnessed), "Opening bypasses native Council evidence.");
+                check(!Program.CurrentAvailable(story, preparation, witnessed), "Opening bypasses native Council evidence.");
                 // Genuine native dialogue events must supply these outside the addon walker.
                 witnessed.Flags.UnionWith(new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" });
-                check(Rules.Available(story, preparation, witnessed), "Witnessed request cannot prepare contact.");
+                check(Program.CurrentAvailable(story, preparation, witnessed), "Witnessed request cannot prepare contact.");
                 foreach (var prepared in Program.Walk(preparation, witnessed))
                 {
                     if (!prepared.Has(preparation.Id)) continue; // An actual postponement, not a trial fixture.
                     var replyReady = Program.Copy(prepared);
                     replyReady.Hour += reply.DelayHours;
-                    check(Rules.Available(story, reply, replyReady), "Selected preparation cannot receive its reply.");
+                    check(Program.CurrentAvailable(story, reply, replyReady), "Selected preparation cannot receive its reply.");
                     foreach (var trial in Program.Walk(reply, replyReady))
                     {
                         if (trial.Has("noct.acq.closed")) continue;
@@ -91,14 +91,14 @@ internal static class NocticulaConcessionTests
                             var nextStates = new List<Snapshot>();
                             foreach (var previous in states)
                             {
-                                check(!Rules.Available(story, scene, previous), "Concession ignores the minimum wait: " + scene.Id);
+                                check(!Program.CurrentAvailable(story, scene, previous), "Concession ignores the minimum wait: " + scene.Id);
                                 var ready = Program.Copy(previous);
                                 ready.Hour += scene.DelayHours;
-                                check(Rules.Available(story, scene, ready), "Selected history cannot enter concession: " + scene.Id);
+                                check(Program.CurrentAvailable(story, scene, ready), "Selected history cannot enter concession: " + scene.Id);
                                 foreach (string blocker in new[] { "noct.dead", "noct.acq.council_fight", "noct.acq.closed" })
                                 {
                                     var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                                    check(!Rules.Available(story, scene, blocked), "Living concession ignores blocker: " + blocker);
+                                    check(!Program.CurrentAvailable(story, scene, blocked), "Living concession ignores blocker: " + blocker);
                                 }
                                 foreach (var result in Program.Walk(scene, ready, (node, partial) =>
                                 {
@@ -138,7 +138,7 @@ internal static class NocticulaConcessionTests
                                 }))
                                 {
                                     Preserved(witnessed, result);
-                                    check(!Rules.Available(story, scene, result), "Completed concession visit repeats: " + scene.Id);
+                                    check(!Program.CurrentAvailable(story, scene, result), "Completed concession visit repeats: " + scene.Id);
                                     if (result.Has("noct.acq.closed"))
                                     {
                                         closures++;
@@ -148,7 +148,7 @@ internal static class NocticulaConcessionTests
                                         if (previous.Has("noct.acq.undertaking_held"))
                                             check(result.Has("noct.acq.undertaking_held"), "Withdrawal erased her retained undertaking.");
                                         var later = Program.Copy(result); later.Hour += 1000;
-                                        check(concession.All(s => !Rules.Available(story, s, later)),
+                                        check(concession.All(s => !Program.CurrentAvailable(story, s, later)),
                                             "Closed concession later reopens by waiting.");
                                         continue;
                                     }

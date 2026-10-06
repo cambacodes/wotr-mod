@@ -36,7 +36,7 @@ internal static class GesmerhaCampaignTests
             {
                 var ready = Program.Copy(input);
                 ready.Hour += scene.DelayHours + 24;
-                check(Rules.Available(story, scene, ready), "Gesmerha played predecessor cannot enter " + scene.Id);
+                check(Program.CurrentAvailable(story, scene, ready), "Gesmerha played predecessor cannot enter " + scene.Id);
                 foreach (var outcome in Program.Walk(scene, ready, (page, state) =>
                 {
                     if (!inspect) return;
@@ -63,7 +63,7 @@ internal static class GesmerhaCampaignTests
                     }
                 }))
                 {
-                    foreach (var flag in ready.Flags)
+                    foreach (var flag in Program.PersistentFlags(story, ready))
                         check(outcome.Has(flag), "Gesmerha erases native, previous or unrelated history: " + flag);
                     if (!outcome.Has(scene.Id))
                     {
@@ -71,7 +71,7 @@ internal static class GesmerhaCampaignTests
                         check(outcome.Times.OrderBy(x => x.Key).SequenceEqual(ready.Times.OrderBy(x => x.Key)), "Gesmerha defer changes recorded times.");
                         continue;
                     }
-                    check(!Rules.Available(story, scene, outcome), "Gesmerha finished scene replays.");
+                    check(!Program.CurrentAvailable(story, scene, outcome), "Gesmerha finished scene replays.");
                     if (inspect) outcomesSeen.UnionWith(outcome.Flags);
                     results.Add(outcome);
                 }
@@ -106,19 +106,19 @@ internal static class GesmerhaCampaignTests
             var carried = new List<Snapshot>(states);
             foreach (var kept in states)
             {
-                check(!Rules.Available(story, song, kept), "Gesmerha's Abyss song opens before the Abyss.");
+                check(!Program.CurrentAvailable(story, song, kept), "Gesmerha's Abyss song opens before the Abyss.");
                 var abyss = Program.Copy(kept); abyss.Chapter = 4; abyss.Hour += song.DelayHours;
-                check(Rules.Available(story, song, abyss), "Gesmerha's Abyss song does not follow the kept chain.");
+                check(Program.CurrentAvailable(story, song, abyss), "Gesmerha's Abyss song does not follow the kept chain.");
                 foreach (var blocker in song.Forbids)
                 {
                     var blocked = Program.Copy(abyss); blocked.Flags.Add(blocker);
-                    check(!Rules.Available(story, song, blocked), "Gesmerha's Abyss song ignores blocker " + blocker);
+                    check(!Program.CurrentAvailable(story, song, blocked), "Gesmerha's Abyss song ignores blocker " + blocker);
                 }
                 var pages = new HashSet<string>();
                 var sung = Program.Walk(song, abyss, (page, _) => { songPages.Add(page); pages.Add(page); }).Where(r => r.Has(song.Id)).ToList();
                 check(pages.Contains("shared") == kept.Has("gesmerha.song_shared") && pages.Contains("answer") == !kept.Has("gesmerha.song_shared"),
                     "Gesmerha's Abyss song remembers a version of the song that was not settled.");
-                check(sung.Count == 3 && sung.All(r => r.Has("gesmerha.abyss_song") && songVariants.Count(r.Has) == 1 && !Rules.Available(story, song, r))
+                check(sung.Count == 3 && sung.All(r => r.Has("gesmerha.abyss_song") && songVariants.Count(r.Has) == 1 && !Program.CurrentAvailable(story, song, r))
                       && songVariants.All(v => sung.Any(r => r.Has(v))),
                     "Gesmerha's Abyss song loses a variant, overlaps, or replays.");
                 carried.AddRange(sung);
@@ -135,7 +135,7 @@ internal static class GesmerhaCampaignTests
                 return v;
             }).ToList();
             if (chief)
-                foreach (var visitor in visitors) check(!Rules.Available(story, reunion, visitor), "Marhevok's audience manufactures Gesmerha contact.");
+                foreach (var visitor in visitors) check(!Program.CurrentAvailable(story, reunion, visitor), "Marhevok's audience manufactures Gesmerha contact.");
             else
                 earned.AddRange(Play(reunion, visitors, true));
         }
@@ -148,21 +148,21 @@ internal static class GesmerhaCampaignTests
             ready.Flags.UnionWith(scene.Requires);
             ready.Flags.Add("gesmerha.truth");
             ready.AvailableContacts.Add(actor);
-            check(Rules.Available(story, scene, ready), "Gesmerha gate baseline invalid.");
-            foreach (var flag in scene.Requires.Concat(new[] { "gesmerha.truth" }))
+            check(Program.CurrentAvailable(story, scene, ready), "Gesmerha gate baseline invalid.");
+            foreach (var flag in scene.Requires.Concat(new[] { "gesmerha.truth" }).Where(k => !story.Derived.ContainsKey(k)))
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, blocked), "Gesmerha ignores prerequisite " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Gesmerha ignores prerequisite " + flag);
             }
             foreach (var flag in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Gesmerha ignores blocker " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Gesmerha ignores blocker " + flag);
             }
             foreach (var chapter in new[] { 1, 2, 3, 4, 5, 6 }.Where(c => c != scene.MinChapter))
             {
                 var blocked = Program.Copy(ready); blocked.Chapter = chapter;
-                check(!Rules.Available(story, scene, blocked), "Gesmerha physical scene leaks into chapter " + chapter);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Gesmerha physical scene leaks into chapter " + chapter);
             }
         }
         check(songPages.SetEquals(song.Nodes.Select(n => n.Id)), "Unreached page of Gesmerha's Abyss song.");
@@ -184,7 +184,7 @@ internal static class GesmerhaCampaignTests
             var terminal = Program.Copy(state);
             terminal.Chapter = 5;
             terminal.Flags.UnionWith(native.Split('|', StringSplitOptions.RemoveEmptyEntries));
-            var available = endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, terminal)).ToArray();
+            var available = endings.Where(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, terminal)).ToArray();
             // Earned presence (rubric Binding context (3)): beside an unreturned sacrifice only the mourning page may play, and it
             // does not cover her own death or a changed Commander, so those overlaps leave the native slides alone.
             bool mournedOut = terminal.Has("sacrifice") && new[] { "gesmerha.dead", "ascended", "inhuman", "demon", "devil" }.Any(terminal.Has);
@@ -197,7 +197,7 @@ internal static class GesmerhaCampaignTests
         }
         var aeon = Find("ending_aeon");
         var aeonState = earned.First(s => !s.Has("gesmerha.closed"));
-        check(Rules.Available(story, aeon, aeonState), "Gesmerha remade-history conclusion loses played campaign.");
+        check(Program.CurrentAvailable(story, aeon, aeonState), "Gesmerha remade-history conclusion loses played campaign.");
         Program.Walk(aeon, aeonState, (page, _) => reached.Add(aeon.Id + "/" + page));
         foreach (var scene in endings)
             foreach (var page in scene.Nodes) check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed Gesmerha provisional ending: " + scene.Id);

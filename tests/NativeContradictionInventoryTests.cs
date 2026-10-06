@@ -68,7 +68,8 @@ internal static class NativeContradictionInventoryTests
         {
             var state = new Snapshot { Chapter = 6 };
             if (path) state.Flags.UnionWith(new[] { "trickster", "trickster.ever" });
-            if (committed) state.Flags.Add("wenduag.committed");
+            if (committed) state.Flags.UnionWith(new[] { "wenduag.committed", "wenduag.trickster.proved",
+                "wenduag.trickster.gate_seen", "wenduag.trickster.claim.given" });
             Rules.Complete(story, state);
             bool original = OriginalHolds(checker, Array.Empty<string>(), new[] { "6f95e268d337ddc45be43a11587bc0b6" },
                 q3 ? new[] { "5ba83bd1a6b1c884794fbb4858480e7f" } : Array.Empty<string>());
@@ -80,6 +81,10 @@ internal static class NativeContradictionInventoryTests
             check(passed, "Q7-09: " + name);
             cases.Add(new { Name = name, Original = original, Selected = selected, Expected = expected, Passed = passed });
         }
+        var coarse = new Snapshot { Chapter = 6 };
+        coarse.Flags.UnionWith(new[] { "trickster", "trickster.ever", "wenduag.committed" });
+        Rules.Complete(story, coarse);
+        check(Rules.SelectNativeEditVariant(story, variants, scenes, coarse) < 0, "Q7-09: coarse commitment earns a native romance replacement.");
         Evaluations.Add(new { Target = cue, Passed = true, Cases = cases });
     }
 

@@ -1,5 +1,6 @@
 """Reject contact/return bootstrap cycles across every route (eng7-f4; not L1 leaks)."""
 import argparse
+from collections import deque
 import json
 import sys
 from pathlib import Path
@@ -28,6 +29,9 @@ def check(story, relationships=None):
     setters = {}
     active_losses = set()
     independent = set()
+    independence_cache = {}
+    dependents = {}
+    evaluating = None
     loss_flags = {f for rel in rels.values() for f in rel.get("UnavailableFlags") or []}
     for scene in scenes:
         # Completing a scene is also a producer, even when its terminal answer sets no explicit flags.
@@ -85,17 +89,40 @@ def check(story, relationships=None):
         visit(key)
         return found
 
+    forced = set()
+    forced_cache = {}
+    positive_dependents = {}
+    for key, groups in derived.items():
+        for group in groups:
+            for member in group:
+                positive_dependents.setdefault(member, set()).add(key)
+    for key, members in latches.items():
+        for member in members:
+            positive_dependents.setdefault(member, set()).add(key)
+
     def held(key, seen=()):
-        """Positive evidence forced by this loss history, not merely a possible flag."""
-        if key in active_losses:
-            return True
-        if key in seen:
-            return False
-        if key in derived:
-            return any(all(held(k, (*seen, key)) for k in g) for g in derived[key])
-        if key in latches:
-            return any(held(k, (*seen, key)) for k in latches[key])
-        return False
+        """Positive evidence forced by this loss history, not a possible flag."""
+        return key in forced
+
+    def resolve_forced():
+        context = frozenset(active_losses)
+        forced.clear()
+        if context in forced_cache:
+            forced.update(forced_cache[context])
+            return
+        forced.update(active_losses)
+        forced.update(key for key, groups in derived.items() if [] in groups)
+        pending = deque(sorted(forced))
+        while pending:
+            member = pending.popleft()
+            for key in sorted(positive_dependents.get(member, ())):
+                if key in forced:
+                    continue
+                if (key in derived and any(all(k in forced for k in group) for group in derived[key])
+                        or key in latches and any(k in forced for k in latches[key])):
+                    forced.add(key)
+                    pending.append(key)
+        forced_cache[context] = frozenset(forced)
 
     def contacts(scene):
         units = [scene.get("ContactUnit"), *(scene.get("AdditionalContactUnits") or [])]
@@ -167,14 +194,42 @@ def check(story, relationships=None):
         return node.get("Id") not in reachable
 
     def needs(key, target, seen=()):
-        if key in independent:
-            return False
-        result = needs_uncached(key, target, seen)
-        # Only cache an independent witness. A recursive failure is provisional:
-        # another producer may break the cycle, so caching it could hide that road.
-        if not result:
-            independent.add(key)
-        return result
+        # Solve independence from primitive observations outward. A cycle is
+        # blocked until an actual independent alternative reaches it. Recursing
+        # through every producer path repeatedly becomes exponential when the
+        # integrated stance graphs share return and current-presence predicates.
+        if evaluating is not None:
+            dependents.setdefault(key, set()).add(evaluating)
+        return key == target or key in dependency_keys and key not in independent
+
+    dependency_keys = (set(derived) | set(latches) | set(counts) | set(setters)
+                       | set(receipts) | {name + ".failed" for name in presences})
+
+    def resolve_independence(target):
+        nonlocal evaluating
+        context = (target, frozenset(active_losses))
+        independent.clear()
+        if context in independence_cache:
+            independent.update(independence_cache[context])
+            return
+        dependents.clear()
+        queued = set(dependency_keys) - {target}
+        pending = deque(sorted(queued))
+        while pending:
+            key = pending.popleft()
+            queued.remove(key)
+            if key in independent:
+                continue
+            evaluating = key
+            result = needs_uncached(key, target)
+            evaluating = None
+            if not result:
+                independent.add(key)
+                for parent in sorted(dependents.get(key, ())):
+                    if parent != target and parent not in independent and parent not in queued:
+                        queued.add(parent)
+                        pending.append(parent)
+        independence_cache[context] = frozenset(independent)
 
     def needs_uncached(key, target, seen=()):
         if key == target:
@@ -221,9 +276,11 @@ def check(story, relationships=None):
             return all(setter_needs(s, n, c) for s, n, c in setters[key])
         return False
 
-    def dependency_contacts(scene, node, choice, target, seen=()):
+    def dependency_contacts(scene, node, choice, target, seen=(), visited=None):
         """Also follow a remote return's mandatory prerequisites to physical producers."""
         found = set()
+        if visited is None:
+            visited = set()
         for _, candidates in contacts(scene):
             if all(presence_needs(name, p, target, ()) for name, p in candidates):
                 found.update(name for name, _ in candidates)
@@ -244,8 +301,9 @@ def check(story, relationships=None):
         # eng7-f4 end
 
         def visit(key, path):
-            if key in path or key == target or not needs(key, target):
+            if key in path or key in visited or key == target or not needs(key, target):
                 return
+            visited.add(key)
             path = (*path, key)
             # eng7-f4: a remote fallback still needs an eligible failed placement.
             # Follow both transient observations and durable receipt eligibility.
@@ -260,7 +318,7 @@ def check(story, relationships=None):
             # eng7-f4 end
             if key in setters:
                 for s, n, c in setters[key]:
-                    found.update(dependency_contacts(s, n, c, target, path))
+                    found.update(dependency_contacts(s, n, c, target, path, visited))
             for member in [*(k for g in derived.get(key, []) for k in g), *latches.get(key, []),
                            *(counts.get(key) or {}).get("Of", [])]:
                 visit(member, path)
@@ -268,6 +326,7 @@ def check(story, relationships=None):
             visit(key, seen)
         return found
 
+    checked_return_scenes = set()
     hard = list(entry_errors)  # eng8-q8f: retain missing-entry failures beside bootstrap cycles.
     for rel_name, rel in rels.items():
         if relationships is not None and rel_name not in relationships:
@@ -281,7 +340,7 @@ def check(story, relationships=None):
                 detects = [k for k in access.get("Detect", access.get("detect", [])) if not k.startswith("!")]
                 returns.update((loss, returned) for loss in detects or [None])
         for loss, returned in returns:
-            for scene, node, choice in [p for key in sources(returned) for p in setters[key]]:
+            for source, scene, node, choice in [(key, *p) for key in sources(returned) for p in setters[key]]:
                 if chapter_retired(scene) or any(k in retired for k in scene.get("Requires") or []):
                     continue
                 # Each authored device serves only its declared native histories.
@@ -297,8 +356,26 @@ def check(story, relationships=None):
                 if loss in (scene.get("Forbids") or []) and loss not in (scene.get("ForbidOverrides") or {}):
                     continue
                 active_losses = ({loss} if loss else set()) | (set(scene.get("Requires") or []) & loss_flags)
-                independent.clear()
-                for name in dependency_contacts(scene, node, choice, returned):
+                context = (scene["Id"], source, returned, frozenset(active_losses))
+                if context in checked_return_scenes:
+                    continue
+                checked_return_scenes.add(context)
+                resolve_forced()
+                resolve_independence(returned)
+                # Alternative answers in the same return scene are OR producers.
+                # A reunion answer may require the other woman's return; it is
+                # not a mandatory bootstrap when a solo answer earns this return
+                # through the same physical staging and scene prerequisites.
+                siblings = [p for p in setters[source] if p[0] is scene]
+                def independent_producer(s, n, c):
+                    return not (conditions_need(s, returned, ()) or conditions_need(c, returned, ())
+                                or node_needs(s, n, returned, ()) or any(
+                        all(presence_needs(name, p, returned, ()) for name, p in candidates)
+                        for _, candidates in contacts(s)))
+                if any(independent_producer(*p) for p in siblings):
+                    continue
+                required_contacts = set().union(*(dependency_contacts(s, n, c, returned) for s, n, c in siblings))
+                for name in required_contacts:
                     hard.append("PD1 %s: %s/%s requires contact %s before producing %s; no independent earned bootstrap"
                                 % (scene["Id"], rel_name, loss, name, returned))
     return sorted(set(hard))

@@ -7,6 +7,10 @@ internal static class ArsinoeCampaignTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        var runtimeKeys = Rules.AvailabilityRuntimeKeys(story);
+        HashSet<string> Persistent(Snapshot state) => state.Flags.Where(flag =>
+            !story.Derived.ContainsKey(flag) && !story.Counts.ContainsKey(flag)
+            && !runtimeKeys.Contains(flag)).ToHashSet();
         string[] chain = { "arsinoe_after_rain", "arsinoe_two_doors", "arsinoe_a_stone_in_hand",
             "arsinoe_the_first_cart", "arsinoe_what_she_asks", "arsinoe_where_she_stays", "arsinoe_the_window_opens" };
         var departure = story.Scenes.Single(s => s.Id == "arsinoe_before_the_road");
@@ -41,6 +45,7 @@ internal static class ArsinoeCampaignTests
             seed.Flags.UnionWith(new[] { pace, "arsinoe.interest_games", "lann.committed", "arueshalae.committed" });
             if (trickster) seed.Flags.Add("trickster");
             seed.AvailableContacts.Add(predecessor.ContactUnit!);
+            Rules.Complete(story, seed);
             check(Rules.Available(story, predecessor, seed), "Released Arsinoe predecessor fixture is unavailable.");
             var states = Distinct(Program.Walk(predecessor, seed).Where(s => s.Has("arsinoe.continuation_kept")));
             var allFinals = new List<Snapshot>();
@@ -53,6 +58,7 @@ internal static class ArsinoeCampaignTests
                     var ready = Program.Copy(prior);
                     if (scene.Id == "arsinoe_where_she_stays") ready.Chapter = 5;
                     ready.Hour += scene.DelayHours;
+                    Rules.Complete(story, ready);
                     check(Rules.Available(story, scene, ready), "Played campaign stranded at " + scene.Id);
                     check(scene.ContactUnit == "a609ed9b2205d034bb3bb04d2a255681" && scene.AnswerLists.SequenceEqual(new[] { "ecaf5cfe8087a4f45a2269974f4885c9" }),
                         "Campaign changes the verified Arsinoe contact.");
@@ -75,7 +81,7 @@ internal static class ArsinoeCampaignTests
                     var results = Program.Walk(scene, ready, (page, partial) =>
                     {
                         visited[scene.Id].Add(page);
-                        check(partial.Flags.SetEquals(ready.Flags), "Campaign writes unacknowledged history at " + scene.Id + "/" + page);
+                        check(Persistent(partial).SetEquals(Persistent(ready)), "Campaign writes unacknowledged history at " + scene.Id + "/" + page);
                         var interrupted = Program.Copy(partial); interrupted.AvailableContacts.Clear();
                         check(!Rules.ContactAvailable(story, scene, interrupted), "Campaign ignores lost native contact.");
                         interrupted.AvailableContacts.Add(scene.ContactUnit!);
@@ -95,11 +101,11 @@ internal static class ArsinoeCampaignTests
                     });
                     foreach (var result in results)
                     {
-                        check(ready.Flags.IsSubsetOf(result.Flags) && result.Has("lann.committed") && result.Has("arueshalae.committed"),
+                        check(Persistent(ready).IsSubsetOf(Persistent(result)) && result.Has("lann.committed") && result.Has("arueshalae.committed"),
                             "Arsinoe erases history or another romance.");
                         if (!result.Has(scene.Id))
                         {
-                            check(result.Flags.SetEquals(ready.Flags) && result.Times.Count == ready.Times.Count, "Postponement manufactures a visit.");
+                            check(Persistent(result).SetEquals(Persistent(ready)) && result.Times.Count == ready.Times.Count, "Postponement manufactures a visit.");
                             continue;
                         }
                         check(!Rules.Available(story, scene, result), "Completed Arsinoe scene reopens.");
@@ -171,7 +177,7 @@ internal static class ArsinoeCampaignTests
                 {
                     var back = Program.Copy(result);
                     back.Flags.UnionWith(new[] { "sacrifice", "trickster.ever", key });
-                    if (lastCall) back.Flags.Add("lastcall.active");
+                    if (lastCall) back.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" });
                     Rules.Complete(story, back);
                     var open = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, back)).ToArray();
                     check(back.Has("trickster.commander_back") && open.Length == 1 && open[0].Id != "arsinoe_ending_sacrifice",

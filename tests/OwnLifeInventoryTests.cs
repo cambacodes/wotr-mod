@@ -56,7 +56,14 @@ internal static class L07World
                 foreach (var flag in choice.Set) { next.Flags.Add(flag); next.Times[flag] = next.Hour; }
                 if (choice.Crusade != null && next.CrusadeResources != null)
                     next.CrusadeResources[choice.Crusade.Resource] += choice.Crusade.Amount;
-                if (choice.Revive != null) next.Flags.Remove(story.Revivals[choice.Revive].DeathFlag);
+                Rules.RecordAvailabilityEvents(story, next, choice.Set);
+                if (choice.Revive != null)
+                {
+                    next.Flags.Remove(story.Revivals[choice.Revive].DeathFlag);
+                    // This fixture executes the successful retained-body revival,
+                    // matching Main's subsequent living-original observation.
+                    next.Flags.Add(story.Revivals[choice.Revive].Relationship + ".native_alive");
+                }
                 if (choice.Set.Length > 0 || choice.Revive != null) Refresh(story, next);
                 if (choice.Next != null || choice.Check != null)
                     foreach (var target in Rules.NextNodes(choice)) Visit(target, Program.Copy(next), new HashSet<string>(seen));
@@ -209,6 +216,6 @@ internal static class OwnLifeInventoryTests
     {
         Cases(story, check);
         L07World.RejectMutation(story, s => L07World.Scene(s, "devarra.trickster.epilogue.hungry").Forbids = Array.Empty<string>(), Cases, check, "remove hungry closure");
-        L07World.RejectMutation(story, s => L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires = L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires.Where(k => k != "minagho.life.available" && k != "minagho_chivarro.outcome.eligible").ToArray(), Cases, check, "remove all Minagho life guards at the pair consumer");
+        L07World.RejectMutation(story, s => L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires = L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires.Where(k => k != "minagho.life.available" && k != "minagho_chivarro.outcome.eligible" && k != "minagho.present_now").ToArray(), Cases, check, "remove all Minagho life guards at the pair consumer");
     }
 }

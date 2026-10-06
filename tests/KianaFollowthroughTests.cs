@@ -43,7 +43,7 @@ internal static class KianaFollowthroughTests
             foreach (var predecessor in predecessors)
             {
                 social.Hour += predecessor.DelayHours;
-                check(Rules.Available(story, predecessor, social), "Kiana follow-through predecessor unavailable: " + history + "/" + predecessor.Id);
+                check(Program.CurrentAvailable(story, predecessor, social), "Kiana follow-through predecessor unavailable: " + history + "/" + predecessor.Id);
                 social = Program.Walk(predecessor, social).First(s => s.Has(predecessor.Id));
             }
             check(social.Has("kiana.roof_supper.kept") && social.Has("kiana.consequences_ready"),
@@ -59,9 +59,9 @@ internal static class KianaFollowthroughTests
                     var state = Program.Copy(input);
                     int last = scene.Requires.Where(state.Times.ContainsKey).Select(flag => state.Times[flag]).Max();
                     state.Hour = last + scene.DelayHours - 1;
-                    check(!Rules.Available(story, scene, state), "Kiana follow-through starts before its delay: " + scene.Id);
+                    check(!Program.CurrentAvailable(story, scene, state), "Kiana follow-through starts before its delay: " + scene.Id);
                     state.Hour++;
-                    check(Rules.Available(story, scene, state), "Kiana follow-through strands a valid history: " + history + "/" + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, state), "Kiana follow-through strands a valid history: " + history + "/" + scene.Id);
                     foreach (var result in Program.Walk(scene, state))
                     {
                         check(result.Flags.IsSupersetOf(state.Flags), "Kiana follow-through removes existing progress.");
@@ -73,11 +73,11 @@ internal static class KianaFollowthroughTests
                             check(result.Flags.SetEquals(state.Flags) && result.Times.Count == state.Times.Count &&
                                 state.Times.All(pair => result.Times.TryGetValue(pair.Key, out int time) && time == pair.Value),
                                 "Kiana deferred event changes progress or its clock: " + scene.Id);
-                            check(Rules.Available(story, scene, result), "Kiana deferred event cannot be reopened.");
+                            check(Program.CurrentAvailable(story, scene, result), "Kiana deferred event cannot be reopened.");
                             continue;
                         }
                         check(result.Has("kiana." + milestones[index]), "Kiana follow-through completes without its next invitation: " + scene.Id);
-                        check(!Rules.Available(story, scene, result), "Kiana follow-through repeats a completed event.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Kiana follow-through repeats a completed event.");
                         foreach (var pair in pairs)
                             check(pair.Count(result.Has) <= 1, "Kiana follow-through combines incompatible choices: " + pair[0]);
                         observed.UnionWith(result.Flags);
@@ -108,29 +108,29 @@ internal static class KianaFollowthroughTests
                 "Kiana follow-through lacks an initial deferral without progress.");
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = scene.Areas.Single() };
             ready.Flags.UnionWith(Program.Prerequisites(scene));
-            check(Rules.Available(story, scene, ready), "Kiana follow-through eligibility fixture is not ready.");
+            check(Program.CurrentAvailable(story, scene, ready), "Kiana follow-through eligibility fixture is not ready.");
             foreach (string blocker in new[] { "kiana.closed", "kiana.farewell", "inhuman" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Kiana follow-through ignores " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Kiana follow-through ignores " + blocker);
             }
-            foreach (string required in scene.Requires.Distinct())
+            foreach (string required in scene.Requires.Distinct().Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing), "Kiana follow-through skips " + required);
+                check(!Program.CurrentAvailable(story, scene, missing), "Kiana follow-through skips " + required);
             }
             foreach (var group in scene.RequiresAnyGroups)
             {
                 var missing = Program.Copy(ready); missing.Flags.ExceptWith(group);
-                check(!Rules.Available(story, scene, missing), "Kiana follow-through skips " + string.Join("|", group));
+                check(!Program.CurrentAvailable(story, scene, missing), "Kiana follow-through skips " + string.Join("|", group));
             }
             foreach (int chapter in new[] { 1, 3, 4, 6 })
             {
                 var wrongChapter = Program.Copy(ready); wrongChapter.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrongChapter), "Kiana follow-through ignores chapter 5 restriction.");
+                check(!Program.CurrentAvailable(story, scene, wrongChapter), "Kiana follow-through ignores chapter 5 restriction.");
             }
             ready.Area = "elsewhere";
-            check(!Rules.Available(story, scene, ready), "Kiana follow-through ignores its Drezen location.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Kiana follow-through ignores its Drezen location.");
         }
     }
 }

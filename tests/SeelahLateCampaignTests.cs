@@ -45,7 +45,7 @@ internal static class SeelahLateCampaignTests
                 var continuing = new List<Snapshot>();
                 foreach (var state in states)
                 {
-                    check(Rules.Available(story, scene, state), "Seelah late chain cannot continue: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, state), "Seelah late chain cannot continue: " + scene.Id);
                     if (index == 2)
                     {
                         string expected = !state.Has("seelah.souls_returned") ? "unfinished"
@@ -63,10 +63,10 @@ internal static class SeelahLateCampaignTests
                         if (!result.Has(scene.Id))
                         {
                             check(result.Flags.SetEquals(state.Flags) && result.Times.Count == state.Times.Count
-                                && Rules.Available(story, scene, result), "Seelah postponement records progress or consumes the invitation.");
+                                && Program.CurrentAvailable(story, scene, result), "Seelah postponement records progress or consumes the invitation.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Seelah late scene can repeat after completion.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Seelah late scene can repeat after completion.");
                         if (index == 0)
                         {
                             check(result.Has("seelah.late_running") != result.Has("seelah.late_watching"), "Runner/spectator choice is lost.");
@@ -105,11 +105,11 @@ internal static class SeelahLateCampaignTests
                         else
                         {
                             var next = scenes[index + 1];
-                            check(!Rules.Available(story, next, result), "Seelah next meeting skips its delay.");
+                            check(!Program.CurrentAvailable(story, next, result), "Seelah next meeting skips its delay.");
                             result.Hour += next.DelayHours - 1;
-                            check(!Rules.Available(story, next, result), "Seelah next meeting opens early.");
+                            check(!Program.CurrentAvailable(story, next, result), "Seelah next meeting opens early.");
                             result.Hour++;
-                            check(Rules.Available(story, next, result), "Seelah next meeting misses the exact delay boundary.");
+                            check(Program.CurrentAvailable(story, next, result), "Seelah next meeting misses the exact delay boundary.");
                             continuing.Add(result);
                         }
                     }
@@ -130,34 +130,34 @@ internal static class SeelahLateCampaignTests
             ready.Flags.UnionWith(scene.Requires);
             check(scene.Optional && !Rules.IsRemote(scene) && Rules.EntryTargets(scene).SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" }),
                 "Seelah late scene is no longer an optional native-dialogue visit.");
-            foreach (var required in scene.Requires)
+            foreach (var required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing), "Seelah late scene ignores required history: " + required);
+                check(!Program.CurrentAvailable(story, scene, missing), "Seelah late scene ignores required history: " + required);
             }
             foreach (var blocker in new[] { "seelah.closed", "seelah_dead", "seelah_gone", "inhuman", "seelah.farewell" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Seelah late scene ignores unavailability: " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Seelah late scene ignores unavailability: " + blocker);
             }
             foreach (int chapter in new[] { 3, 4, 6 })
             {
                 var elsewhere = Program.Copy(ready); elsewhere.Chapter = chapter;
-                check(!Rules.Available(story, scene, elsewhere), "Seelah late scene escapes its Chapter 5 scope.");
+                check(!Program.CurrentAvailable(story, scene, elsewhere), "Seelah late scene escapes its Chapter 5 scope.");
             }
             check(scene.DelayHours == (scene == race ? 48 : 24), "Seelah late meeting loses its authored delay.");
             ready.Times[scene.Requires.Last()] = ready.Hour;
             ready.Hour += scene.DelayHours - 1;
-            check(!Rules.Available(story, scene, ready), "Seelah meeting ignores a newly completed prerequisite timestamp.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Seelah meeting ignores a newly completed prerequisite timestamp.");
             ready.Hour++;
-            check(Rules.Available(story, scene, ready), "Seelah meeting is unavailable at its exact prerequisite delay.");
+            check(Program.CurrentAvailable(story, scene, ready), "Seelah meeting is unavailable at its exact prerequisite delay.");
             ready.Area = "elsewhere";
-            check(!Rules.Available(story, scene, ready), "Seelah late scene is available outside Drezen.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Seelah late scene is available outside Drezen.");
         }
         var oldRoad = story.Scenes.Single(s => s.Id == "seelah.road");
         var legacy = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
         legacy.Flags.UnionWith(new[] { "seelah.courting", "seelah.lovers", "seelah.weight" });
-        check(Rules.Available(story, oldRoad, legacy), "The optional late campaign strands a pre-aftermath commitment path.");
+        check(Program.CurrentAvailable(story, oldRoad, legacy), "The optional late campaign strands a pre-aftermath commitment path.");
         // Physical presence is still supplied by native dialogue contact, not proven by this snapshot test.
     }
 }

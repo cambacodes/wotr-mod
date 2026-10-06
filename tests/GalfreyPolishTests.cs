@@ -182,7 +182,8 @@ internal static class GalfreyPolishTests
             check(Rules.VisibleParagraphs(node, uncommitted).All(p => !p.Text.Contains("stirred beside her", StringComparison.Ordinal))
                 && Rules.VisibleParagraphs(node, uncommitted).Any(p => p.Text.Contains("chapel alone", StringComparison.Ordinal)),
                 "Galfrey uncommitted anniversary invents a shared bed.");
-            uncommitted.Flags.Add(Committed); Rules.Complete(story, uncommitted);
+            HouseholdTests.Earn(story, uncommitted, "galfrey.payoff.ordinary");
+            Rules.Complete(story, uncommitted);
             check(Rules.VisibleParagraphs(node, uncommitted).Any(p => p.Text.Contains("stirred beside her", StringComparison.Ordinal)),
                 "Galfrey earned partner anniversary lost.");
         }

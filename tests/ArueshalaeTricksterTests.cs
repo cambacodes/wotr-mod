@@ -33,6 +33,13 @@ internal static class ArueshalaeTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000 };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
         state.AvailableContacts.Add(EvilUnit);
@@ -419,7 +426,7 @@ internal static class ArueshalaeTricksterTests
         var refusedAgain = deferredChap.SelectMany(d => Program.WalkVia(againChap, Later(story, d, 170), "start", 1)).ToList();
         foreach (var closedW in refusedTerms.Concat(refusedAgain))
         {
-            var atEnd = Later(story, closedW, 50, 6); atEnd.Flags.Add("lastcall.active");
+            var atEnd = Later(story, closedW, 50, 6); atEnd.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" });
             // eng7-l13: observe closure freshly; a stale late key is no longer entitlement.
             atEnd.Flags.ExceptWith(story.Derived.Keys); Rules.Complete(story, atEnd);
             check(closedW.Has("arueshalae.closed") && closedW.Has(P + "terms_refused") && !atEnd.Has(P + "late_committed")
@@ -474,7 +481,7 @@ internal static class ArueshalaeTricksterTests
         check(!Avail(proposal, Later(story, walk, 167)) && Avail(proposal, Later(story, walk, 168)),
             "Trk_Arueshalae_ChronologyWalk: the proposal does not wait exactly the fast's seven days from the relapse.");
         var threshold = Later(story, walk, 100, 6);
-        var atLastCall = Program.Copy(threshold); atLastCall.Flags.Add("lastcall.active");
+        var atLastCall = Program.Copy(threshold); atLastCall.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" });
         check(threshold.Has(P + "late_committed") && Avail(S(P + "epilogue.commit"), threshold) && Avail(lostPage, Later(story, atLastCall, 0)),
             "Trk_Arueshalae_ChronologyWalk: a treatment that reaches Threshold before the proposal has no late answer or Last Call coda.");
         // Sol r3 (INT, post-cap): no living ending or coda for an unraised corpse or a dismissed companion.
@@ -503,7 +510,7 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_BadDay: availability (Drezen yes; released or at the Nexus no).");
         // NM1 (Sol INT): the native companion pages are reconciled with a committed Arueshalae (E14d).
         var nm1WanderEdit = story.NativeEpilogueEdits["f76713034f4087a4f80495971c47ca7b"];
-        var nm1Ending = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed");
+        var nm1Ending = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", P + "terms");
         var nm1Uncommitted = World(story, 6, "", "trickster", "trickster.ever");
         var nm1Back = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", "sacrifice", "trickster.commander_back");
         var nm1StayedDead = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", "sacrifice");

@@ -52,7 +52,7 @@ internal static class NocticulaAcquisitionTests
         void Closed(Snapshot state)
         {
             var later = Program.Copy(state); later.Hour += 1000;
-            check(living.All(s => !Rules.Available(story, s, later)), "Closed acquisition offers another living visit.");
+            check(living.All(s => !Program.CurrentAvailable(story, s, later)), "Closed acquisition offers another living visit.");
             check(!state.Has("noct.acq.correspondence_trial") && !state.Has("noct.acq.renewed_agreement"),
                 "Refusal incorrectly completes a trial or romance.");
         }
@@ -62,7 +62,7 @@ internal static class NocticulaAcquisitionTests
         foreach (var history in histories)
         {
             var initial = Initial(history);
-            var available = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
+            var available = entries.Where(s => Program.CurrentAvailable(story, s, initial)).ToArray();
             check(available.Length == 1, "Native history does not select exactly one acquisition entry.");
             var entry = available.Single();
             var kinds = new HashSet<string>();
@@ -70,7 +70,7 @@ internal static class NocticulaAcquisitionTests
             foreach (var requested in Walk(entry, initial))
             {
                 NativeUnchanged(initial, requested);
-                check(!Rules.Available(story, entry, requested), "Completed or declined request repeats.");
+                check(!Program.CurrentAvailable(story, entry, requested), "Completed or declined request repeats.");
                 if (requested.Has("noct.acq.closed"))
                 {
                     initialDeclines++;
@@ -83,18 +83,18 @@ internal static class NocticulaAcquisitionTests
                     && requested.Has("noct.acq.petition_candid") != requested.Has("noct.acq.petition_watchful"),
                     "Accepted request lacks its selected seal attitude or earned seal.");
                 var ready = Program.Copy(requested); ready.Hour += preparation.DelayHours;
-                check(!Rules.Available(story, preparation, ready), "Remote preparation bypassed genuine Council evidence.");
+                check(!Program.CurrentAvailable(story, preparation, ready), "Remote preparation bypassed genuine Council evidence.");
                 // NOC-02: any one native answer at the audience earns the channel; overhearing the scheme alone does not.
                 var overheard = Program.Copy(ready); overheard.Flags.Add("noct.socoth_plan_exposed");
-                check(!Rules.Available(story, preparation, overheard), "Overhearing the scheme alone unlocks remote preparation.");
+                check(!Program.CurrentAvailable(story, preparation, overheard), "Overhearing the scheme alone unlocks remote preparation.");
                 foreach (string evidence in new[] { "noct.acq.council_disclosed", "noct.acq.shamira_permission", "noct.acq.shamira_reported", "noct.acq.amused" })
                 {
                     var onlyOne = Program.Copy(ready); onlyOne.Flags.Add(evidence);
-                    check(Rules.Available(story, preparation, onlyOne), "A native audience answer does not unlock remote preparation: " + evidence);
+                    check(Program.CurrentAvailable(story, preparation, onlyOne), "A native audience answer does not unlock remote preparation: " + evidence);
                 }
                 // The actual native disclosure and reward must occur outside this source walker.
                 ready.Flags.UnionWith(new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" });
-                check(Rules.Available(story, preparation, ready), "Accepted request plus both native events cannot reach preparation.");
+                check(Program.CurrentAvailable(story, preparation, ready), "Accepted request plus both native events cannot reach preparation.");
                 foreach (var sent in Walk(preparation, ready))
                 {
                     NativeUnchanged(ready, sent);
@@ -104,16 +104,16 @@ internal static class NocticulaAcquisitionTests
                         check(sent.Flags.SetEquals(ready.Flags) && sent.Times.Count == ready.Times.Count
                             && ready.Times.All(pair => sent.Times.TryGetValue(pair.Key, out int time) && time == pair.Value),
                             "Postponement changes acquisition state or timestamps.");
-                        check(Rules.Available(story, preparation, sent), "Postponed preparation cannot be retried.");
+                        check(Program.CurrentAvailable(story, preparation, sent), "Postponed preparation cannot be retried.");
                         var waited = Program.Copy(sent); waited.Hour += 1000;
-                        check(!Rules.Available(story, reply, waited), "Postponement fabricates the sent question.");
+                        check(!Program.CurrentAvailable(story, reply, waited), "Postponement fabricates the sent question.");
                         continue;
                     }
                     check(sent.Has("noct.acq.question_sent") && sent.Has("noct.acq.channel_narrow") != sent.Has("noct.acq.channel_slow"),
                         "Prepared request lacks a single selected channel.");
-                    check(!Rules.Available(story, reply, sent), "Reply ignores its wait after the question.");
+                    check(!Program.CurrentAvailable(story, reply, sent), "Reply ignores its wait after the question.");
                     var answered = Program.Copy(sent); answered.Hour += reply.DelayHours;
-                    check(Rules.Available(story, reply, answered), "Actually prepared channel cannot reach the reply.");
+                    check(Program.CurrentAvailable(story, reply, answered), "Actually prepared channel cannot reach the reply.");
                     foreach (var final in Walk(reply, answered))
                     {
                         NativeUnchanged(ready, final);
@@ -138,7 +138,7 @@ internal static class NocticulaAcquisitionTests
                             kinds.Add("repaired");
                         }
                         else kinds.Add(final.Has("noct.acq.channel_provisional") ? "narrow" : "letters");
-                        check(!Rules.Available(story, reply, final), "Completed reply repeats.");
+                        check(!Program.CurrentAvailable(story, reply, final), "Completed reply repeats.");
                         trials++; historyTrials++;
                     }
                 }
@@ -158,15 +158,15 @@ internal static class NocticulaAcquisitionTests
         foreach (string blocker in new[] { "noct.dead", "noct.acq.council_fight", "swarm", "legend", "dragon" })
         {
             var blocked = Initial(new[] { blocker });
-            check(entries.All(s => !Rules.Available(story, s, blocked)), "Blocked acquisition history offers an audience entry: " + blocker);
+            check(entries.All(s => !Program.CurrentAvailable(story, s, blocked)), "Blocked acquisition history offers an audience entry: " + blocker);
         }
         var intact = Initial(new[] { "noct.parent_active", "noct.gift" });
-        check(entries.All(s => !Rules.Available(story, s, intact)), "Intact original patronage incorrectly offers reacquisition.");
+        check(entries.All(s => !Program.CurrentAvailable(story, s, intact)), "Intact original patronage incorrectly offers reacquisition.");
         var rejected = Initial(new[] { "noct.parent_active", "noct.parent_rejected" });
-        check(entries.Where(s => Rules.Available(story, s, rejected)).Select(s => s.Id)
+        check(entries.Where(s => Program.CurrentAvailable(story, s, rejected)).Select(s => s.Id)
             .SequenceEqual(new[] { "noct.acq.audience_rejected" }), "Rejected history does not take precedence over Active.");
         var ordinary = Initial(Array.Empty<string>()); ordinary.Flags.Remove("trickster");
-        check(entries.All(s => !Rules.Available(story, s, ordinary)), "Non-Trickster acquired the bespoke audience route.");
+        check(entries.All(s => !Program.CurrentAvailable(story, s, ordinary)), "Non-Trickster acquired the bespoke audience route.");
         Console.WriteLine("Nocticula assembled acquisition: 6 native-history fixtures, 36 trial outcomes; native audience execution not claimed.");
     }
 }

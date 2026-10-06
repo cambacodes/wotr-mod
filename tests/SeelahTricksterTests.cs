@@ -18,6 +18,13 @@ internal static class SeelahTricksterTests
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.AvailableContacts.Add(Npc);
         Rules.Complete(story, state);
         foreach (var latch in story.Latches.Keys.Where(state.Has)) state.Times[latch] = state.Hour - 48;
@@ -421,7 +428,7 @@ internal static class SeelahTricksterTests
             if (story.Scenes.Any(s => s.Id == id))
                 check(S(id).ForbidOverrides.TryGetValue("seelah_dead", out var d) && d == Returned
                       && S(id).ForbidOverrides.TryGetValue("seelah_gone", out var g) && g == Returned, "Irabeth's Seelah bark lacks G6(b): " + id);
-        var together = World(story, 5, "seelah.committed", "seelah.souls_returned", "seelah_gone", Returned);
+        var together = World(story, 5, "seelah.committed", "seelah.chosen_future", "seelah.short_future_chosen", "seelah.souls_returned", "seelah_gone", Returned);
         check(Rules.Available(story, S("seelah.ending_together"), together), "A returned Seelah loses her registered ending.");
         check(story.Scenes.Where(s => s.Relationship == "seelah" && s.Reaction).All(s => Choices(s).All(c => !c.Set.Contains("seelah.closed"))),
             "A reaction closes her route.");

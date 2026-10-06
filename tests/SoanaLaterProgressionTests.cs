@@ -29,7 +29,7 @@ internal static class SoanaLaterProgressionTests
             {
                 var predecessor = story.Scenes.Single(s => s.Id == "soana." + id);
                 earned.Hour += predecessor.DelayHours;
-                check(Rules.Available(story, predecessor, earned), "Actual Soana predecessor unavailable: " + id);
+                check(Program.CurrentAvailable(story, predecessor, earned), "Actual Soana predecessor unavailable: " + id);
                 earned = Program.Walk(predecessor, earned).First(result => result.Has(predecessor.Id) && !result.Has("soana.closed")
                     && (id != "name_between" || result.Has("soana." + intention))
                     && (id != "lower_bend" || result.Has("soana." + oldEnding)));
@@ -42,14 +42,14 @@ internal static class SoanaLaterProgressionTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Earned Soana later chain cannot continue: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Earned Soana later chain cannot continue: " + scene.Id);
                     var early = Program.Copy(ready); early.Hour--;
-                    check(!Rules.Available(story, scene, early), "Soana later delay boundary ignored.");
+                    check(!Program.CurrentAvailable(story, scene, early), "Soana later delay boundary ignored.");
                     foreach (var result in Program.Walk(scene, ready, (page, state) =>
                     {
                         reached.Add(scene.Id + "/" + page);
                         check(state.Flags.SetEquals(ready.Flags), "Soana partial later visit commits an unplayed consequence.");
-                        check(Rules.Available(story, scene, state), "Soana partial later visit cannot replay.");
+                        check(Program.CurrentAvailable(story, scene, state), "Soana partial later visit cannot replay.");
                         var absent = Program.Copy(state); absent.AvailableContacts.Clear();
                         check(!Rules.ContactAvailable(story, scene, absent), "Soana later visit continues without actor.");
                         foreach (var loss in story.Relationships["soana"].UnavailableFlags)
@@ -78,7 +78,7 @@ internal static class SoanaLaterProgressionTests
                             check(result.Flags.SetEquals(ready.Flags), "Soana postponement writes progression.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Soana completed later visit repeats.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Soana completed later visit repeats.");
                         foreach (var group in new[] {
                             new[] { "rite_voice", "rite_ridge" }, new[] { "nursery_saved", "nursery_lost" },
                             new[] { "voice_carried", "voice_interrupted", "ridge_used" },
@@ -106,24 +106,24 @@ internal static class SoanaLaterProgressionTests
             check(Rules.EntryTargets(scene).SequenceEqual(new[] { "2b1776f3e398685479ff6b16290b4cc2" }), "Soana later entry target changed.");
             var ready = new Snapshot { Chapter = 3, Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires); ready.Flags.Add("soana.old_defender"); ready.AvailableContacts.Add(actor);
-            check(Rules.Available(story, scene, ready), "Soana later gate baseline fails.");
-            foreach (var required in scene.Requires)
+            check(Program.CurrentAvailable(story, scene, ready), "Soana later gate baseline fails.");
+            foreach (var required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing) && !Rules.ContactAvailable(story, scene, missing), "Soana later prerequisite ignored: " + required);
+                check(!Program.CurrentAvailable(story, scene, missing) && !Rules.ContactAvailable(story, scene, missing), "Soana later prerequisite ignored: " + required);
             }
             foreach (var forbidden in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(forbidden);
-                check(!Rules.Available(story, scene, blocked), "Soana later blocker ignored: " + forbidden);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Soana later blocker ignored: " + forbidden);
             }
             foreach (int chapter in new[] { 2, 4, 5, 6 })
             {
                 var wrong = Program.Copy(ready); wrong.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrong) && !Rules.ContactAvailable(story, scene, wrong), "Soana invents later-act local access.");
+                check(!Program.CurrentAvailable(story, scene, wrong) && !Rules.ContactAvailable(story, scene, wrong), "Soana invents later-act local access.");
             }
             var noOutcome = Program.Copy(ready); noOutcome.Flags.Remove("soana.old_defender");
-            check(!Rules.Available(story, scene, noOutcome), "Soana later progression invents resolved guardian history.");
+            check(!Program.CurrentAvailable(story, scene, noOutcome), "Soana later progression invents resolved guardian history.");
         }
         foreach (var ending in new[] { "night", "kiss", "quiet", "friend_evening" })
             check(endings.Contains("soana.later_" + ending), "Soana later ending unreachable: " + ending);

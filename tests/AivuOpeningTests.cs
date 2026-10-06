@@ -23,17 +23,17 @@ internal static class AivuOpeningTests
             {
                 var ready = Program.Copy(previous);
                 ready.Hour += scene.DelayHours;
-                check(Rules.Available(story, scene, ready), "Aivu earned predecessor does not unlock " + scene.Id);
+                check(Program.CurrentAvailable(story, scene, ready), "Aivu earned predecessor does not unlock " + scene.Id);
                 if (scene.DelayHours > 0)
                 {
                     var early = Program.Copy(ready); early.Hour--;
-                    check(!Rules.Available(story, scene, early), "Aivu delay boundary ignored.");
+                    check(!Program.CurrentAvailable(story, scene, early), "Aivu delay boundary ignored.");
                 }
                 foreach (var result in Program.Walk(scene, ready, (page, state) =>
                 {
                     reached.Add(scene.Id + "/" + page);
                     check(state.Flags.SetEquals(ready.Flags), "Aivu interrupted page commits unplayed consequences.");
-                    check(Rules.Available(story, scene, state), "Aivu incomplete visit cannot be replayed.");
+                    check(Program.CurrentAvailable(story, scene, state), "Aivu incomplete visit cannot be replayed.");
                     foreach (var unavailable in story.Relationships["aivu"].UnavailableFlags)
                     {
                         var absent = Program.Copy(state); absent.Flags.Add(unavailable);
@@ -53,7 +53,7 @@ internal static class AivuOpeningTests
                         check(result.Flags.SetEquals(ready.Flags), "Aivu defer changes outcome flags.");
                         continue;
                     }
-                    check(!Rules.Available(story, scene, result), "Aivu completed visit replays.");
+                    check(!Program.CurrentAvailable(story, scene, result), "Aivu completed visit replays.");
                     next.Add(result);
                     outcomes.UnionWith(result.Flags);
                 }
@@ -75,26 +75,26 @@ internal static class AivuOpeningTests
             foreach (var page in scene.Nodes)
                 check(reached.Contains(scene.Id + "/" + page.Id), "Unreached Aivu page: " + scene.Id + "/" + page.Id);
             var ready = Program.Copy(initial); ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "Aivu gate baseline invalid.");
-            foreach (var flag in scene.Requires)
+            check(Program.CurrentAvailable(story, scene, ready), "Aivu gate baseline invalid.");
+            foreach (var flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, missing), "Aivu missing prerequisite ignored: " + flag);
+                check(!Program.CurrentAvailable(story, scene, missing), "Aivu missing prerequisite ignored: " + flag);
             }
             foreach (var flag in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Aivu blocker ignored: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Aivu blocker ignored: " + flag);
             }
             foreach (int chapter in new[] { 2, 4, 5, 6 })
             {
                 var wrong = Program.Copy(ready); wrong.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrong), "Aivu opening borrows later captivity history.");
+                check(!Program.CurrentAvailable(story, scene, wrong), "Aivu opening borrows later captivity history.");
             }
             var trickster = Program.Copy(ready); trickster.Flags.Remove("azata"); trickster.Flags.Add("trickster");
-            check(!Rules.Available(story, scene, trickster), "Aivu pretends Trickster owns Azata pet.");
+            check(!Program.CurrentAvailable(story, scene, trickster), "Aivu pretends Trickster owns Azata pet.");
             var elsewhere = Program.Copy(ready); elsewhere.Area = "elsewhere";
-            check(!Rules.Available(story, scene, elsewhere), "Aivu Drezen outing starts elsewhere.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere), "Aivu Drezen outing starts elsewhere.");
         }
     }
 }

@@ -36,6 +36,19 @@ assert not baseline.new_findings(story, rows)
                                    cwd=Path(__file__).resolve().parents[1], capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stderr)
 
+    def test_integrated_stance_budget_rejects_the_next_occurrence(self):
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
+        result = lint.check(story)
+        self.assertEqual(result["therapy_counts"]["minagho"], 8)
+        self.assertFalse(baseline.new_findings(story, result["review"], therapy_counts=result["therapy_counts"]))
+        scene = next(s for s in story["Scenes"] if s["Id"] == "minagho_chivarro.trickster.epilogue.chivarro")
+        scene["Nodes"][0]["Text"] += " permission"
+        result = lint.check(story)
+        added = baseline.new_findings(story, result["review"], therapy_counts=result["therapy_counts"])
+        self.assertTrue(any(r["code"] == "therapy-budget-increase" and r["count"] == 9 and r["budget"] == 8
+                            for r in added))
+
     def test_new_therapy_review_requires_a_budget(self):
         story = self.fixture('"You have my permission."')
         result = lint.check(story)

@@ -53,6 +53,13 @@ internal static class AreeluTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Area = "2570015799edf594daf2f076f2f975d8", Hour = 5000 };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (chapter > 1) state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 1000;
@@ -63,6 +70,7 @@ internal static class AreeluTricksterTests
     {
         var next = Program.Copy(state);
         foreach (var flag in flags) if (next.Flags.Add(flag)) next.Times[flag] = next.Hour;
+        Rules.RecordAvailabilityEvents(story, next, flags);
         next.Hour += 200;
         Rules.Complete(story, next);
         return next;

@@ -61,7 +61,7 @@ class HouseholdEngine(unittest.TestCase):
         story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
         model = rrt_verify.Model(story)
         state = rrt_verify.SimState(3, 1000)
-        state.flags.update(['trickster', 'seelah.committed'])
+        state.flags.update(['trickster', 'seelah.committed', 'seelah.chosen_future', 'seelah.short_future_chosen'])
         rrt_verify.sim_complete(model, state)
         offer = model.by_id['household.table.offered']
         self.assertFalse(rrt_verify.sim_available(model, offer, state))
@@ -87,12 +87,13 @@ class HouseholdEngine(unittest.TestCase):
         solo = rrt_verify.norm_scene(dict(Id='test.solo', Relationship='household', MinChapter=5, MaxChapter=5,
                                           Participants=['minagho_chivarro'], ParticipantWomen=['minagho']))
         state = rrt_verify.SimState(5, 1000)
-        state.flags.update(['minachiv.complete', 'chivarro.dead'])
+        state.flags.update(['minachiv.complete', 'minachiv.before_the_last_road', 'minachiv.future_minagho', 'chivarro.dead'])
         rrt_verify.sim_complete(model, state)
         self.assertTrue(rrt_verify.sim_available(model, solo, state))
         solo['ParticipantWomen'] = ['chivarro']
         self.assertFalse(rrt_verify.sim_available(model, solo, state))
         state.flags.add('minagho_chivarro.trickster.returned_chivarro')
+        rrt_verify.sim_complete(model, state)
         self.assertTrue(rrt_verify.sim_available(model, solo, state))
         state.flags.add(story['Relationships']['minagho_chivarro']['ClosedFlag'])
         self.assertFalse(rrt_verify.sim_available(model, solo, state))

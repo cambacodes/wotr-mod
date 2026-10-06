@@ -56,7 +56,7 @@ internal static class GesmerhaLateCampaignTests
                         ready.Flags.Remove("gesmerha.capital_guest");
                         ready.Flags.Add("gesmerha.post_resolution_contact");
                     }
-                    check(Rules.Available(story, scene, ready), "Gesmerha earned history cannot enter " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Gesmerha earned history cannot enter " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready, (page, state) =>
                     {
                         check(state.Flags.SetEquals(ready.Flags), "Gesmerha interruption records a premature outcome.");
@@ -70,11 +70,11 @@ internal static class GesmerhaLateCampaignTests
                         }
                         check(Rules.ContactAvailable(story, scene, state), "Gesmerha actual local contact rejected.");
                         var wrongChapter = Program.Copy(state); wrongChapter.Chapter = 4;
-                        check(!Rules.Available(story, scene, wrongChapter) && !Rules.ContactAvailable(story, scene, wrongChapter), "Gesmerha late local conversation leaks into the Abyss.");
+                        check(!Program.CurrentAvailable(story, scene, wrongChapter) && !Rules.ContactAvailable(story, scene, wrongChapter), "Gesmerha late local conversation leaks into the Abyss.");
                         foreach (var blocker in new[] { "gesmerha.dead", "inhuman", "demon", "devil", "gesmerha.closed" })
                         {
                             var blocked = Program.Copy(state); blocked.Flags.Add(blocker);
-                            check(!Rules.Available(story, scene, blocked), "Gesmerha entry bypasses blocker " + blocker);
+                            check(!Program.CurrentAvailable(story, scene, blocked), "Gesmerha entry bypasses blocker " + blocker);
                             if (blocker == "gesmerha.dead") check(!Rules.ContactAvailable(story, scene, blocked), "Gesmerha conversation continues after native death.");
                         }
                         var absent = Program.Copy(state); absent.AvailableContacts.Clear();
@@ -95,7 +95,7 @@ internal static class GesmerhaLateCampaignTests
                     }))
                     {
                         foreach (var flag in bound) check(ready.Has(flag) == result.Has(flag), "Gesmerha writes native state: " + flag);
-                        foreach (var flag in ready.Flags) check(result.Has(flag), "Gesmerha erases earlier history: " + flag);
+                        foreach (var flag in Program.PersistentFlags(story, ready)) check(result.Has(flag), "Gesmerha erases earlier history: " + flag);
                         check(result.Has("seelah.committed") && result.Has("jerribeth.committed"), "Gesmerha changes other romances.");
                         check(result.AvailableContacts.SetEquals(ready.AvailableContacts), "Gesmerha creates a physical actor.");
                         foreach (var group in groups) check(group.Count(result.Has) <= 1, "Gesmerha incompatible outcomes overlap.");
@@ -105,7 +105,7 @@ internal static class GesmerhaLateCampaignTests
                             check(result.Times.OrderBy(x => x.Key).SequenceEqual(ready.Times.OrderBy(x => x.Key)), "Gesmerha deferral changes times.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Gesmerha completed visit repeats.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Gesmerha completed visit repeats.");
                         outputs.UnionWith(result.Flags);
                         if (late.Contains(scene)) partial.Add(Program.Copy(result));
                         if (scene == late.Last()) final.Add(result);
@@ -123,11 +123,11 @@ internal static class GesmerhaLateCampaignTests
             check(reached.Contains(scene.Id + "/" + page.Id), "Gesmerha unplayed page " + scene.Id + "/" + page.Id);
         foreach (var flag in groups.SelectMany(x => x)) check(outputs.Contains(flag), "Gesmerha unearned outcome " + flag);
         check(slowFriendWitness, "Gesmerha slow-to-friend evening was not actually played.");
-        IEnumerable<Scene> Ending(Snapshot state) => endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, state));
+        IEnumerable<Scene> Ending(Snapshot state) => endings.Where(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state));
         foreach (var state in final)
         {
             var result = Ending(state).ToArray();
-            var aeon = endings.Where(s => s.Owner == "AeonEpilogue" && Rules.Available(story, s, state)).ToArray();
+            var aeon = endings.Where(s => s.Owner == "AeonEpilogue" && Program.CurrentAvailable(story, s, state)).ToArray();
             check(aeon.Length == 1 && aeon[0].Id == "gesmerha.late_ending_aeon", "Gesmerha late Aeon ending missing or old ending retained.");
             check(result.Length == 1, "Gesmerha earned ending missing or overlapping.");
             var suffix = state.Has("gesmerha.closed") ? "closed" : state.Has("gesmerha.future_lovers") ? "lovers" : state.Has("gesmerha.future_friends") ? "friends" : "open";
@@ -149,7 +149,7 @@ internal static class GesmerhaLateCampaignTests
             check(Ending(state).Count() == 1, "Gesmerha mid-arc living history lacks exactly one ending.");
             var guest = Program.Copy(state); guest.Area = capital;
             guest.Flags.UnionWith(new[] { "gesmerha.capital_guest", "gesmerha.heard_future", "gesmerha.heard_migration" });
-            check(!Rules.Available(story, oldReunion, guest), "Gesmerha old first-reunion scene regresses after late return.");
+            check(!Program.CurrentAvailable(story, oldReunion, guest), "Gesmerha old first-reunion scene regresses after late return.");
             var dead = Program.Copy(state); dead.Flags.Add("gesmerha.dead");
             check(Ending(dead).Count() == 1, "Gesmerha native death mid-arc lacks an ending.");
         }

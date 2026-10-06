@@ -13,6 +13,7 @@ internal static class TirabadeProgressionTests
         state.AvailableContacts.UnionWith(new[] { "b5e867e13503c6f41bb1316705efb4a2", "280d4712dceb37f4a88e98f1f4c6e64f" });
         state.Flags.UnionWith(new[] { "power", "a_self", "i_self", "power_terms", "kept_terms", "ordinary",
             "trying", "a_affair", "i_affair", "seelah.committed", "arueshalae.committed" });
+        Rules.Complete(story, state);
         check(Rules.Available(story, future, state), "Tirabade future reproduction setup is unavailable.");
         state = Program.Walk(future, state).First(s => s.Has("future") && s.Has("committed") && !s.Has("closed"));
         state.Hour += 10000;
@@ -58,6 +59,7 @@ internal static class TirabadeProgressionTests
             var original = new Snapshot { Chapter = 5, Hour = 1000, Area = state.Area };
             original.AvailableContacts.UnionWith(state.AvailableContacts);
             original.Flags.UnionWith(new[] { "chapter_later", "trickster", "seelah.committed", "arueshalae.committed" });
+            Rules.Complete(story, original);
             foreach (string id in new[] { "a_cup", "i_watch", "a_errand", "i_hands", "a_roof", "i_respite",
                 "a_crossing", "i_crossing", "a_morning", "i_morning", "reckoning", "a_truth", "i_truth",
                 "table", "ordinary", "a_self", "i_self", "return", "power", "future", "shared_night" })

@@ -21,6 +21,16 @@ internal static class DelamereTricksterTests
         var state = new Snapshot { Chapter = chapter, Area = "2570015799edf594daf2f076f2f975d8", Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // An accepted hunt checkpoint follows her existing earned return.
+        if (flags.Contains("delamere.committed")) state.Flags.Add(P + "returned");
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
@@ -415,8 +425,8 @@ internal static class DelamereTricksterTests
         check(Choice(hunt, "choice", 1).Next == "not_tonight" && hunt.Nodes.Single(n => n.Id == "not_tonight").Choices.All(c => c.Abort),
             "Letting her run is not a return to the woods another night.");
         check(After(hunt, offered, "choice", 2).First().Has("delamere.closed"), "Trk_Delamere_Claimed: claiming her as a catch is not a hard no.");
-        check(Rules.Available(story, huntPage, Later(story, World(story, 3, "trickster.ever", P + "second_hunt_offered", "kyado.dead"), 24))
-              && Rules.Available(story, huntLate, Later(story, World(story, 5, "trickster.ever", P + "second_hunt_offered"), 24)),
+        check(Rules.Available(story, huntPage, Later(story, World(story, 3, "trickster.ever", P + "returned", P + "second_hunt_offered", "kyado.dead"), 24))
+              && Rules.Available(story, huntLate, Later(story, World(story, 5, "trickster.ever", P + "returned", P + "second_hunt_offered"), 24)),
             "The second hunt has no page when Kyado is dead, or in Chapter 5.");
         // Trk_Delamere_HuntRetry (polish): horn, postpone, then a later night's tracking finds her; called_her from the first
         // night does not make her accuse the Commander of the horn. The physical scene and both page twins.
@@ -484,7 +494,7 @@ internal static class DelamereTricksterTests
         check(Rules.Available(story, epCaught, wed6) && !Rules.Available(story, epCaught, lost6) && Rules.Available(story, epSac, lost6)
               && (!back6.Has("trickster.commander_back") || Rules.Available(story, epCaught, back6) && !Rules.Available(story, epSac, back6))
               && !Rules.Available(story, epSac, wed6), "A sacrificed Commander still runs at the first frost.");
-        var lateLost6 = World(story, 6, "trickster.ever", P + "second_hunt_offered", P + "told_truth", "sacrifice");
+        var lateLost6 = World(story, 6, "trickster.ever", P + "returned", P + "second_hunt_offered", P + "told_truth", "sacrifice");
         check(!Rules.Available(story, epLate, lateLost6) && Rules.Available(story, epSac, lateLost6), "The late page survives an unreversed sacrifice.");
         // Trk_Delamere_TerminalSurvival (polish r4, Sol COX/INT/HOW): the closed and unfinished pages need a surviving (or
         // returned) Commander; an unreversed sacrifice gets its own page; no living-Commander page plays after one.

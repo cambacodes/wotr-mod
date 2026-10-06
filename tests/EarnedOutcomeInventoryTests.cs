@@ -32,6 +32,7 @@ internal static class EarnedOutcomeInventoryTests
             check(Rules.ChoiceAvailable(choice, state), "Inventory answer blocked: " + scene + "/" + node + "[" + index + "]");
             if (choice.Crusade != null) state.CrusadeResources![choice.Crusade.Resource] += choice.Crusade.Amount;
             foreach (var flag in choice.Set) { state.Flags.Add(flag); state.Times[flag] = state.Hour; }
+            Rules.RecordAvailabilityEvents(story, state, choice.Set);
             Refresh(state);
         }
         Choice Incoming(string scene, string node) => S(scene).Nodes.SelectMany(n => n.Choices).First(c => c.Next == node);
@@ -41,7 +42,9 @@ internal static class EarnedOutcomeInventoryTests
         // Main.State supplies this built-in aggregate from the native path.
         devarra.Flags.UnionWith(new[] { "swarm", "inhuman" }); Refresh(devarra);
         check(!devarra.Has("devarra.trickster.late_committed"), "Swarm retains Devarra's late road.");
-        devarra.Flags.ExceptWith(new[] { "swarm", "inhuman" }); devarra.Flags.Add("devarra.dead_lair"); Refresh(devarra);
+        // A separate native history tests death; removing Swarm from its
+        // old snapshot must never erase a witnessed conversion epoch.
+        devarra = World("devarra.trickster.tested", "devarra.dead_lair");
         check(!devarra.Has("devarra.trickster.late_committed"), "Unreturned death retains late entitlement.");
         devarra.Flags.Add("devarra.trickster.returned"); Refresh(devarra);
         check(devarra.Has("devarra.trickster.late_committed"), "Matching earned Devarra return over-blocked.");
@@ -129,8 +132,9 @@ internal static class EarnedOutcomeInventoryTests
             else Select("nenio.trickster.taken.riddle", "filed", 0, late);
             // Last Call is a paid existing framework outcome, not a commitment.
             late.Flags.Add("trickster.lastcall.taken"); late.Flags.Add("ending.trickster"); Refresh(late);
-            // eng8-q8h: Nenio's riddle buys continued company, not pursuit.
-            check(!late.Has(route + ".committed") && Rules.Available(story, S(route + ".lastcall.page"), late) == (route != "nenio"), "Late readiness mistaken for acceptance: " + route);
+            // eng3-ab: neither the taken hand nor the riddle records the
+            // route-specific acceptance needed for a romantic Last Call payoff.
+            check(!late.Has(route + ".committed") && !Rules.Available(story, S(route + ".lastcall.page"), late), "Late readiness mistaken for acceptance: " + route);
             late.Flags.Add(story.Relationships[route].ClosedFlag); Refresh(late);
             check(!Rules.Available(story, S(route + ".lastcall.page"), late), "Closed late fallback leaks coda: " + route);
         }
@@ -159,6 +163,9 @@ internal static class EarnedOutcomeInventoryTests
         var cairn = World("wenduag.trickster.cairn_built");
         check(!cairn.Has("wenduag.lastcall.callable"), "Built cairn alone grants a partner call.");
         cairn.Flags.Add("wenduag.committed"); Refresh(cairn);
+        check(!cairn.Has("wenduag.lastcall.callable"), "Coarse Wenduag commitment and cairn grant a partner call.");
+        cairn.Flags.UnionWith(new[] { "wenduag.trickster.proved", "wenduag.trickster.gate_seen", "wenduag.trickster.claim.given" });
+        Refresh(cairn);
         check(cairn.Has("wenduag.lastcall.callable"), "Earned Wenduag partner cannot call.");
         cairn.Flags.Add("wenduag.dead_any"); Refresh(cairn);
         check(!cairn.Has("wenduag.lastcall.callable"), "Unreturned Wenduag retains call.");

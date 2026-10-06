@@ -16,7 +16,7 @@ internal static class KianaReconciliationTests
             var scene = Find(id);
             var ready = Program.Copy(input);
             ready.Hour += scene.DelayHours;
-            check(Rules.Available(story, scene, ready), "Kiana reconciliation actual chain unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, ready), "Kiana reconciliation actual chain unavailable: " + id);
             var outcomes = Program.Walk(scene, ready, (node, partial) =>
             {
                 if (!touched.Contains(id)) return;
@@ -64,12 +64,12 @@ internal static class KianaReconciliationTests
             check(state.Has("kiana.future_settled"), "Reconciled Kiana cannot complete the developed capstone.");
             var correspondence = Find(history == "bereaved" ? "uncertain_reports" : "former_grief");
             check(correspondence.ManualOnly && Rules.IsRemote(correspondence), "Reconciliation letter must remain explicitly requested.");
-            check(Rules.Available(story, correspondence, state) == changed, "Kiana reconciliation letter has the wrong native-history gate.");
+            check(Program.CurrentAvailable(story, correspondence, state) == changed, "Kiana reconciliation letter has the wrong native-history gate.");
             if (changed)
             {
                 state.Flags.UnionWith(new[] { "kiana.farewell", "kiana.farewell_kept" });
                 state.Times["kiana.farewell"] = 200;
-                check(Rules.Available(story, correspondence, state), "Old completed Kiana history cannot request correspondence.");
+                check(Program.CurrentAvailable(story, correspondence, state), "Old completed Kiana history cannot request correspondence.");
                 foreach (var result in Program.Walk(correspondence, state, (node, partial) =>
                     replay.TryAdd(correspondence.Id + "/" + node, (correspondence, Program.Copy(partial)))))
                 {

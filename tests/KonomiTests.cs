@@ -16,7 +16,7 @@ internal static class KonomiTests
 
         void Play(Scene scene, Snapshot state, bool publicly, bool quiet, bool nearlyDenied = false)
         {
-            check(Rules.Available(story, scene, state), "Konomi campaign cannot open " + scene.Id);
+            check(Program.CurrentAvailable(story, scene, state), "Konomi campaign cannot open " + scene.Id);
             var node = scene.Nodes[0];
             var visited = new HashSet<string>();
             while (true)
@@ -72,7 +72,7 @@ internal static class KonomiTests
                 for (int attempt = 0; attempt < scenes.Length; attempt++)
                 {
                     state.Hour += Math.Max(72, scenes.Max(s => s.DelayHours));
-                    var scene = scenes.FirstOrDefault(s => (!s.Optional || ordinaryVisits.Contains(s.Id)) && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                    var scene = scenes.FirstOrDefault(s => (!s.Optional || ordinaryVisits.Contains(s.Id)) && !s.Owner.EndsWith("Epilogue") && Program.CurrentAvailable(story, s, state));
                     if (scene == null) break;
                     Play(scene, state, publicly, quiet);
                 }
@@ -82,17 +82,17 @@ internal static class KonomiTests
             check(state.Has("konomi.public_cost") == publicly && state.Has("konomi.traced_leak") != publicly, "Konomi publicity outcome does not match the player's decision.");
             check(state.Has("konomi.wrote") == (startChapter == 3), "Konomi late-start campaign invented an Abyss letter.");
             check(state.Has("konomi.fate_terms") == (path == "trickster"), "Konomi Trickster response selection is wrong.");
-            var ending = scenes.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)).Single();
+            var ending = scenes.Where(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)).Single();
             var expected = state.Has("inhuman") ? "changed" : publicly ? "public" : "private";
             check(ending.Id == "konomi.ending_" + expected, "Konomi selected the wrong ending.");
             state.Flags.Remove("konomi.present");
-            check(Rules.Available(story, ending, state), "Konomi ending incorrectly requires her capital actor.");
+            check(Program.CurrentAvailable(story, ending, state), "Konomi ending incorrectly requires her capital actor.");
             state.Flags.Add("konomi.present");
             state.Flags.Add("ascended");
-            check(scenes.Single(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id == "konomi.ending_ascended", "Konomi ascension conflicts with another ending.");
+            check(scenes.Single(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)).Id == "konomi.ending_ascended", "Konomi ascension conflicts with another ending.");
             state.Flags.Add("konomi.closed");
-            check(scenes.Single(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id == "konomi.ending_apart", "Konomi separation conflicts with another ending.");
-            check(!scenes.Any(s => !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state)), "Konomi continues after separation.");
+            check(scenes.Single(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)).Id == "konomi.ending_apart", "Konomi separation conflicts with another ending.");
+            check(!scenes.Any(s => !s.Owner.EndsWith("Epilogue") && Program.CurrentAvailable(story, s, state)), "Konomi continues after separation.");
         }
 
         var repairing = new Snapshot { Chapter = 5, Hour = 1000, Area = drezen };
@@ -108,36 +108,36 @@ internal static class KonomiTests
 
         var waiting = new Snapshot { Chapter = 4, Hour = 1000 };
         waiting.Flags.Add("konomi.letter");
-        check(!Rules.Available(story, Find("unsent"), waiting), "Abyss plant callback precedes the gardening conversation.");
+        check(!Program.CurrentAvailable(story, Find("unsent"), waiting), "Abyss plant callback precedes the gardening conversation.");
         waiting.Flags.Add("konomi.evening");
         waiting.Times["konomi.evening"] = waiting.Hour;
-        check(!Rules.Available(story, Find("unsent"), waiting), "Abyss letter ignores its delay.");
+        check(!Program.CurrentAvailable(story, Find("unsent"), waiting), "Abyss letter ignores its delay.");
         waiting.Hour += 24;
-        check(Rules.Available(story, Find("unsent"), waiting), "Abyss letter remains blocked after the evening and delay.");
+        check(Program.CurrentAvailable(story, Find("unsent"), waiting), "Abyss letter remains blocked after the evening and delay.");
         var elsewhere = new Snapshot { Chapter = 3, Hour = 1000 };
-        check(!Rules.Available(story, Find("margin"), elsewhere), "Konomi appears outside Drezen.");
+        check(!Program.CurrentAvailable(story, Find("margin"), elsewhere), "Konomi appears outside Drezen.");
         elsewhere.Area = drezen;
-        check(!Rules.Available(story, Find("margin"), elsewhere), "Konomi begins without native capital presence.");
+        check(!Program.CurrentAvailable(story, Find("margin"), elsewhere), "Konomi begins without native capital presence.");
         elsewhere.Flags.Add("konomi.present");
         elsewhere.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
-        check(Rules.Available(story, Find("margin"), elsewhere), "Konomi cannot begin in Drezen.");
+        check(Program.CurrentAvailable(story, Find("margin"), elsewhere), "Konomi cannot begin in Drezen.");
         foreach (var scene in scenes.Where(s => !s.Remote && !s.Owner.EndsWith("Epilogue")))
         {
             var absent = new Snapshot { Chapter = scene.Chapters.Last(), Hour = 1000, Area = drezen };
             foreach (var requirement in scene.Requires.Where(r => r != "konomi.present")) absent.Flags.Add(requirement);
             if (scene.RequiresAny.Length > 0) absent.Flags.Add(scene.RequiresAny[0]);
-            check(!Rules.Available(story, scene, absent), "Konomi meeting ignores lost contact: " + scene.Id);
+            check(!Program.CurrentAvailable(story, scene, absent), "Konomi meeting ignores lost contact: " + scene.Id);
             absent.Flags.Add("trickster");
-            check(!Rules.Available(story, scene, absent), "Trickster title alone invents Konomi contact: " + scene.Id);
+            check(!Program.CurrentAvailable(story, scene, absent), "Trickster title alone invents Konomi contact: " + scene.Id);
             absent.Flags.Add("konomi.present");
             if (scene.ContactUnit != null)
             {
-                check(!Rules.Available(story, scene, absent), "Office state alone invents the physical Konomi actor: " + scene.Id);
+                check(!Program.CurrentAvailable(story, scene, absent), "Office state alone invents the physical Konomi actor: " + scene.Id);
                 absent.AvailableContacts.Add(scene.ContactUnit);
             }
-            check(Rules.Available(story, scene, absent), "Native Konomi contact does not restore meeting: " + scene.Id);
+            check(Program.CurrentAvailable(story, scene, absent), "Native Konomi contact does not restore meeting: " + scene.Id);
             absent.Flags.Remove("konomi.present");
-            check(!Rules.Available(story, scene, absent), "Lost Konomi contact remains cached: " + scene.Id);
+            check(!Program.CurrentAvailable(story, scene, absent), "Lost Konomi contact remains cached: " + scene.Id);
         }
     }
 }

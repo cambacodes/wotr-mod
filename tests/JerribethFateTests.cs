@@ -33,31 +33,31 @@ internal static class JerribethFateTests
         check(envelope.ContactUnit == actor && !Rules.IsRemote(envelope), "Fate envelope is not tied to the verified living actor.");
         check(Rules.EntryTargets(envelope).SequenceEqual(new[] { "19786fae9c29f9d439e374bb857c2e84" }), "Fate envelope uses an unverified native answer list.");
         check(envelope.Areas.SequenceEqual(new[] { upper }) && envelope.Chapters.SequenceEqual(new[] { 4 }), "Fate envelope uses the wrong native area/window.");
-        check(!Rules.Available(story, envelope, initial), "History flags alone manufacture Jerribeth's presence.");
+        check(!Program.CurrentAvailable(story, envelope, initial), "History flags alone manufacture Jerribeth's presence.");
         initial.Flags.Add(actor);
-        check(!Rules.Available(story, envelope, initial), "A fake authored actor flag bypasses native contact observation.");
+        check(!Program.CurrentAvailable(story, envelope, initial), "A fake authored actor flag bypasses native contact observation.");
         initial.Flags.Remove(actor);
         initial.AvailableContacts.Add(actor);
-        check(Rules.Available(story, envelope, initial), "Living Act 4 contact cannot consider the Trickster proposal.");
+        check(Program.CurrentAvailable(story, envelope, initial), "Living Act 4 contact cannot consider the Trickster proposal.");
         check(Rules.NextRemote(route, initial) == null, "Physical fate proposal enters the rest queue.");
         foreach (string missing in new[] { "trickster", "jerribeth.refuge_known" })
         {
             var blocked = Program.Copy(initial); blocked.Flags.Remove(missing);
-            check(!Rules.Available(story, envelope, blocked), "Fate proposal invents a prerequisite: " + missing);
+            check(!Program.CurrentAvailable(story, envelope, blocked), "Fate proposal invents a prerequisite: " + missing);
             check(!Rules.ContactAvailable(story, envelope, blocked), "Resumed native contact ignores missing prerequisite: " + missing);
         }
         foreach (string flag in new[] { "jerribeth.closed", "jerribeth.unavailable", "jerribeth.patron_lost" })
         {
             var blocked = Program.Copy(initial); blocked.Flags.Add(flag);
-            check(!Rules.Available(story, envelope, blocked), "Fate invitation rewrites closure or native departure: " + flag);
+            check(!Program.CurrentAvailable(story, envelope, blocked), "Fate invitation rewrites closure or native departure: " + flag);
         }
         foreach (int chapter in new[] { 3, 5 })
         {
             var blocked = Program.Copy(initial); blocked.Chapter = chapter;
-            check(!Rules.Available(story, envelope, blocked) && !Rules.ContactAvailable(story, envelope, blocked), "Fate meeting ignores chapter loss.");
+            check(!Program.CurrentAvailable(story, envelope, blocked) && !Rules.ContactAvailable(story, envelope, blocked), "Fate meeting ignores chapter loss.");
         }
         var elsewhere = Program.Copy(initial); elsewhere.Area = nexus;
-        check(!Rules.Available(story, envelope, elsewhere) && !Rules.ContactAvailable(story, envelope, elsewhere), "Native fate meeting follows the player out of the manor.");
+        check(!Program.CurrentAvailable(story, envelope, elsewhere) && !Rules.ContactAvailable(story, envelope, elsewhere), "Native fate meeting follows the player out of the manor.");
         var absent = Program.Copy(initial); absent.AvailableContacts.Clear();
         check(!Rules.ContactAvailable(story, envelope, absent), "Resumed fate meeting survives loss of its actual actor.");
         absent.AvailableContacts.Add(actor); absent.Flags.Add("jerribeth.unavailable");
@@ -76,13 +76,13 @@ internal static class JerribethFateTests
             foreach (var outcome in outcomes)
             {
                 Preserve(before, outcome);
-                check(!Rules.Available(story, letter, outcome), "Fate reply arrives before its actual predecessor delay.");
+                check(!Program.CurrentAvailable(story, letter, outcome), "Fate reply arrives before its actual predecessor delay.");
                 if (!outcome.Has(envelope.Id))
                 {
                     check(outcome.Flags.SetEquals(before.Flags), "Abandoning the experiment grants contact history.");
                     continue;
                 }
-                check(!Rules.Available(story, envelope, outcome), "Completed fate experiment repeats.");
+                check(!Program.CurrentAvailable(story, envelope, outcome), "Completed fate experiment repeats.");
                 if (outcome.Has("jerribeth.fate_experiment_refused"))
                 {
                     check(!outcome.Has("jerribeth.fate_note_prepared") && !outcome.Has("jerribeth.closed"), "Refusal either grants a letter or closes ordinary courtship.");
@@ -98,15 +98,15 @@ internal static class JerribethFateTests
                     if (chapter == 5) waiting.Flags.Remove("trickster");
                     if (patronLost) waiting.Flags.Add("jerribeth.patron_lost");
                     waiting.Hour += 23;
-                    check(!Rules.Available(story, letter, waiting), "Fate letter ignores its 24-hour wait.");
-                    if (!alreadyInvited) check(!Rules.Available(story, invitation, waiting), "Normal invitation bypasses the explicitly chosen pending letter.");
+                    check(!Program.CurrentAvailable(story, letter, waiting), "Fate letter ignores its 24-hour wait.");
+                    if (!alreadyInvited) check(!Program.CurrentAvailable(story, invitation, waiting), "Normal invitation bypasses the explicitly chosen pending letter.");
                     waiting.Hour++;
-                    check(Rules.Available(story, letter, waiting), "Previously prepared letter cannot arrive after departure, chapter change, or mythic change.");
+                    check(Program.CurrentAvailable(story, letter, waiting), "Previously prepared letter cannot arrive after departure, chapter change, or mythic change.");
                     if (!alreadyInvited) check(Rules.NextRemote(route, waiting)?.Id == letter.Id, "Unplayed original invitation hides the selected fate consequence.");
                     foreach (string flag in new[] { "jerribeth.closed", "jerribeth.unavailable" })
                     {
                         var blocked = Program.Copy(waiting); blocked.Flags.Add(flag);
-                        check(!Rules.Available(story, letter, blocked), "Fate letter restores an ended or unavailable relationship: " + flag);
+                        check(!Program.CurrentAvailable(story, letter, blocked), "Fate letter restores an ended or unavailable relationship: " + flag);
                     }
                     var replies = Program.Walk(letter, waiting, (node, _) => seen.Add(letter.Id + "/" + node));
                     foreach (var reply in replies)
@@ -119,10 +119,10 @@ internal static class JerribethFateTests
                         }
                         check(reply.Has("jerribeth.fate_note_read"), "Finished fate consequence does not release the normal invitation.");
                         if (alreadyInvited)
-                            check(reply.Times["jerribeth.invitation"] == 400 && !Rules.Available(story, invitation, reply), "Fate letter replays or retimes an existing invitation.");
+                            check(reply.Times["jerribeth.invitation"] == 400 && !Program.CurrentAvailable(story, invitation, reply), "Fate letter replays or retimes an existing invitation.");
                         else
                         {
-                            check(Rules.Available(story, invitation, reply), "Ordinary voluntary courtship remains blocked after fate reply.");
+                            check(Program.CurrentAvailable(story, invitation, reply), "Ordinary voluntary courtship remains blocked after fate reply.");
                             var choices = Program.Walk(invitation, reply);
                             check(choices.Any(s => s.Has("jerribeth.closed")) && choices.Any(s => s.Has(invitation.Id) && !s.Has("jerribeth.closed")),
                                 "Fate access removes the actual choice to accept or reject ordinary correspondence.");
@@ -133,6 +133,6 @@ internal static class JerribethFateTests
         }
         check(seen.SetEquals(new[] { envelope, letter }.SelectMany(s => s.Nodes.Select(n => s.Id + "/" + n.Id))), "Fate tests omit a played page.");
         var ordinary = Program.Copy(initial); ordinary.Flags.Remove("trickster"); ordinary.Area = nexus;
-        check(Rules.Available(story, invitation, ordinary), "Trickster addition restricts the existing ordinary route for another mythic.");
+        check(Program.CurrentAvailable(story, invitation, ordinary), "Trickster addition restricts the existing ordinary route for another mythic.");
     }
 }

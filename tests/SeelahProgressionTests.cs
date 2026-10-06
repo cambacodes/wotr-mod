@@ -14,7 +14,7 @@ internal static class SeelahProgressionTests
             var state = Program.Copy(input);
             state.Area = scene.Areas.FirstOrDefault() ?? state.Area;
             state.Hour += scene.DelayHours;
-            check(Rules.Available(story, scene, state), "Seelah actual chain cannot enter " + id);
+            check(Program.CurrentAvailable(story, scene, state), "Seelah actual chain cannot enter " + id);
             var result = Program.Walk(scene, state).FirstOrDefault(s => s.Has(scene.Id) && !s.Has("seelah.closed") && (select == null || select(s)));
             check(result != null, "Seelah actual chain cannot finish " + id);
             return result!;
@@ -39,7 +39,7 @@ internal static class SeelahProgressionTests
         var road = Scene("road");
         var core = Core(5);
         core.Hour += road.DelayHours;
-        check(Rules.Available(story, road, core), "Early future discussion is hidden instead of explaining its requirements.");
+        check(Program.CurrentAvailable(story, road, core), "Early future discussion is hidden instead of explaining its requirements.");
         var early = Program.Walk(road, core);
         check(early.All(s => !s.Has("seelah.developed_commitment")), "Old short core still earns developed commitment.");
         var shortRoute = early.First(s => s.Has("seelah.short_future_chosen"));
@@ -55,15 +55,15 @@ internal static class SeelahProgressionTests
         check(!oldFarewell.Has("seelah.developed_commitment"), "Farewell silently upgrades modest history.");
         var catchup = Play("farewell_catchup", oldFarewell);
         check(catchup.Has("seelah.farewell") && catchup.Has("seelah.catchup_requested"), "Catch-up erases farewell history.");
-        check(!Rules.Available(story, Scene("farewell_catchup"), catchup), "Catch-up invitation repeats after acceptance.");
+        check(!Program.CurrentAvailable(story, Scene("farewell_catchup"), catchup), "Catch-up invitation repeats after acceptance.");
         var saw = Scene("borrowed_saw");
         oldFarewell.Hour += saw.DelayHours; catchup.Hour += saw.DelayHours;
-        check(!Rules.Available(story, saw, oldFarewell), "Old farewell reopens expansion without consent.");
-        check(Rules.Available(story, saw, catchup), "Explicit catch-up does not reopen the first missed scene.");
+        check(!Program.CurrentAvailable(story, saw, oldFarewell), "Old farewell reopens expansion without consent.");
+        check(Program.CurrentAvailable(story, saw, catchup), "Explicit catch-up does not reopen the first missed scene.");
         foreach (string flag in new[] { "seelah.closed", "seelah_dead", "seelah_gone", "inhuman" })
         {
             var blocked = Program.Copy(catchup); blocked.Flags.Add(flag);
-            check(!Rules.Available(story, saw, blocked), "Farewell override bypasses " + flag);
+            check(!Program.CurrentAvailable(story, saw, blocked), "Farewell override bypasses " + flag);
         }
 
         foreach (bool watching in new[] { false, true })
@@ -109,7 +109,7 @@ internal static class SeelahProgressionTests
             }
             var followed = Play("letter_work", Play("letter_after", incident));
             var ready = Play("late_race", Activity(followed, true));
-            check(!Rules.Available(story, Scene("letter_return"), ready), "Resolved copyist history receives the catch-up.");
+            check(!Program.CurrentAvailable(story, Scene("letter_return"), ready), "Resolved copyist history receives the catch-up.");
             Play("road", ready, s => s.Has("seelah.developed_commitment"));
         }
 
@@ -136,9 +136,9 @@ internal static class SeelahProgressionTests
         // Already completed road scenes remain completed; migration is a separate played scene.
         var legacy = Program.Copy(core);
         legacy.Flags.UnionWith(new[] { "seelah.road", "seelah.committed", "seelah.chosen_future" });
-        check(!Rules.Available(story, road, legacy), "Migration replays the original commitment.");
+        check(!Program.CurrentAvailable(story, road, legacy), "Migration replays the original commitment.");
         var followup = Scene("future_followup");
-        check(Rules.Available(story, followup, legacy), "Legacy promise has no migration invitation.");
+        check(Program.CurrentAvailable(story, followup, legacy), "Legacy promise has no migration invitation.");
         check(Program.Walk(followup, legacy).All(s => !s.Has("seelah.developed_commitment") && !s.Has(followup.Id)), "Legacy invitation fabricates activity or consumes its future upgrade.");
         var legacyReady = Play("late_race", Activity(legacy, false));
         legacyReady = Play("future_followup", legacyReady);

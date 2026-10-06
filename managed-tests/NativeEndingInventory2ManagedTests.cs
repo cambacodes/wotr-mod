@@ -24,6 +24,13 @@ internal static partial class NativeEpilogueEditManagedTests
             {
                 var state = new Snapshot { Chapter = 6 };
                 state.Flags.UnionWith(variants[v].When[0].Where(f => !f.StartsWith("!")));
+                // The native text replacement now reads the actual Wenduag
+                // courtship acceptance, not merely its coarse committed bit.
+                if (state.Has("wenduag.committed"))
+                    state.Flags.UnionWith(new[] { "wenduag.trickster.proved", "wenduag.trickster.gate_seen",
+                        "wenduag.trickster.claim.given" });
+                if (state.Has("wenduag.trickster.native")) state.Flags.Add("wenduag.romance_finished");
+                if (state.Has("trickster.commander_back")) state.Flags.UnionWith(new[] { "sacrifice", "ending.trickster" });
                 state.Flags.Add("trickster"); Rules.Complete(story, state);
                 check(Rules.SelectNativeEditVariant(story, variants, scenes, state) == v, "Q8-06 text variant unavailable: " + target);
                 // Isolated cue: never mutate Main.Build's real native objects.

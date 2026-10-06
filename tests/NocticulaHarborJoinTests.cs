@@ -57,16 +57,16 @@ internal static class NocticulaHarborJoinTests
                 // Keep the existing bridge matrix on the negotiated share; stance branches are exercised separately.
                 "nocticula.partner_terms", "nocticula.partner_stance.share" });
             initial.Flags.UnionWith(history);
-            var available = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
+            var available = entries.Where(s => Program.CurrentAvailable(story, s, initial)).ToArray();
             check(available.Length == 1, "Bridge fixture lacks a unique acquisition entry.");
             var states = Program.Walk(available.Single(), initial).Where(s => !s.Has("noct.acq.closed")).ToList();
             foreach (var requested in states)
             {
                 var waited = Program.Copy(requested); waited.Hour += prior[0].DelayHours;
-                check(!Rules.Available(story, prior[0], waited), "Remote contact bypasses native Council events.");
+                check(!Program.CurrentAvailable(story, prior[0], waited), "Remote contact bypasses native Council events.");
                 // NOC-02: overhearing the scheme alone is not an answer at the audience.
                 var overheard = Program.Copy(waited); overheard.Flags.Add("noct.socoth_plan_exposed");
-                check(!Rules.Available(story, prior[0], overheard), "Overhearing the scheme alone unlocks remote contact.");
+                check(!Program.CurrentAvailable(story, prior[0], overheard), "Overhearing the scheme alone unlocks remote contact.");
                 // Only these genuine native events are supplied externally; channel and agreement effects are played below.
                 requested.Flags.UnionWith(new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" });
             }
@@ -76,7 +76,7 @@ internal static class NocticulaHarborJoinTests
                 foreach (var previous in states)
                 {
                     var ready = Program.Copy(previous); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Played acquisition/concession cannot advance: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Played acquisition/concession cannot advance: " + scene.Id);
                     next.AddRange(Program.Walk(scene, ready).Where(s => s.Has(scene.Id) && !s.Has("noct.acq.closed")));
                 }
                 states = next;
@@ -89,16 +89,16 @@ internal static class NocticulaHarborJoinTests
                 var next = new List<Snapshot>();
                 foreach (var previous in states)
                 {
-                    check(!Rules.Available(story, scene, previous), "Bridge skipped its wait: " + scene.Id);
+                    check(!Program.CurrentAvailable(story, scene, previous), "Bridge skipped its wait: " + scene.Id);
                     var ready = Program.Copy(previous); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Actual preceding choices cannot enter bridge: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Actual preceding choices cannot enter bridge: " + scene.Id);
                     foreach (var blocker in new[] { "noct.dead", "noct.acq.council_fight", "noct.acq.closed", "noct.closed", "noct.join.closed" })
                     {
                         var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                        check(!Rules.Available(story, scene, blocked), "Bridge ignores blocker: " + blocker);
+                        check(!Program.CurrentAvailable(story, scene, blocked), "Bridge ignores blocker: " + blocker);
                     }
                     var nonTrickster = Program.Copy(ready); nonTrickster.Flags.Remove("trickster");
-                    check(!Rules.Available(story, scene, nonTrickster), "Bespoke bridge admits a non-Trickster.");
+                    check(!Program.CurrentAvailable(story, scene, nonTrickster), "Bespoke bridge admits a non-Trickster.");
                     foreach (var result in Program.Walk(scene, ready, (node, partial) =>
                     {
                         reached[scene.Id].Add(node);
@@ -121,15 +121,15 @@ internal static class NocticulaHarborJoinTests
                     }))
                     {
                         Preserved(ready, result);
-                        check(!Rules.Available(story, scene, result), "Completed bridge scene repeats: " + scene.Id);
-                        check(!Rules.Available(story, harbor, result), "Bridge bypasses the untouched original harbor's native agreement.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Completed bridge scene repeats: " + scene.Id);
+                        check(!Program.CurrentAvailable(story, harbor, result), "Bridge bypasses the untouched original harbor's native agreement.");
                         if (result.Has("noct.join.closed"))
                         {
                             closures[stage]++;
                             check(result.Has("noct.join.letters_retained") && !result.Has("noct.join.harbor_variant_ready")
                                 && !result.Has("noct.join.recurring_dreams_accepted"), "Refusal grants harbor readiness or loses retained letters.");
                             var later = Program.Copy(result); later.Hour += 1000;
-                            check(bridge.All(s => !Rules.Available(story, s, later)), "Closed bridge reopens after waiting.");
+                            check(bridge.All(s => !Program.CurrentAvailable(story, s, later)), "Closed bridge reopens after waiting.");
                         }
                         else next.Add(result);
                     }

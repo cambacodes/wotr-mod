@@ -40,6 +40,14 @@ internal static class GalfreyTricksterTests
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 3 || chapter == 5 ? Drezen : "",
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Disguised);
@@ -177,7 +185,7 @@ internal static class GalfreyTricksterTests
         var general = One(crows, World(story, 3), new[] { P + "crows_pressed_general" });
         check(Program.Walk(letter, Later(story, general, 30, 4)).All(r => r.Has(P + "letter_refused") && !r.Has(P + "letter_mooted")),
             "Trk_Galfrey_Pacing: asked as her general, the letter still moots it.");
-        check(World(story, 2, mooted.Flags.ToArray()).Has(P + "kitrane_planted"), "Trk_Galfrey_Pacing: a moot in Chapter 2 does not plant Kitrane.");
+        check(World(story, 2, Program.PersistentFlags(story, mooted).ToArray()).Has(P + "kitrane_planted"), "Trk_Galfrey_Pacing: a moot in Chapter 2 does not plant Kitrane.");
 
         // Trk_Galfrey_Kitrane: planted, read at the bed, framed for her; the return at +24 h; the oath refused.
         var bed = World(story, 5, "trickster", "trickster.ever", "galfrey.dying_seen", "galfrey.early.kitrane.mooted");
@@ -219,7 +227,7 @@ internal static class GalfreyTricksterTests
         var beats = new[] { "armour", "buckles", "mail", "want", "bed", "cut", "after", "morning", "drill" };
         check(beats.All(b => tent.Nodes.Any(n => n.Id == b)) && tent.Nodes.Single(n => n.Id == "cut").Choices.All(c => c.Next == "after"),
             "Trk_Galfrey_Kitrane: the tent is not staged up to the cut and carried into the morning drill.");
-        check(Rules.Available(story, S(P + "epilogue.kitrane"), World(story, 6, night.Flags.ToArray())),
+        check(Rules.Available(story, S(P + "epilogue.kitrane"), World(story, 6, Program.PersistentFlags(story, night).ToArray())),
             "Trk_Galfrey_Kitrane: the Kitrane page does not play for a committed Kitrane.");
 
         // Trk_Galfrey_RefusedThenYes: blind; framed for Mendev she refuses and names her condition; framed for her she takes it.
@@ -236,7 +244,7 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_RefusedThenYes: the blind return is not 36 hours after the Coronation and the eulogy.");
         var letDie = One(offer, bed, new[] { P + "let_die", Closed }, Taken);
         check(!Rules.Available(story, ret, Later(story, Died(letDie, "coronation.after", "coronation.seen"), 200))
-              && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, letDie.Flags.Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray())),
+              && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, Program.PersistentFlags(story, letDie).Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray())),
             "Trk_Galfrey_RefusedThenYes: letting her die as the Queen does not close her route and give her page.");
 
         // Trk_Galfrey_Offscreen: the Commander never came; planted and briefed, she writes; otherwise the cortege at Drezen.
@@ -290,7 +298,7 @@ internal static class GalfreyTricksterTests
         check(bierNodes.Contains("flare_told") && !bierNodes.Contains("flare") && metNodes.Contains("flare") && !metNodes.Contains("flare_told"),
             "Trk_Galfrey_Cortege: the Commander remembers a war-camp meeting that never happened.");
         var bierRefused = Program.Walk(cortege, unplanted).First(r => r.Has(P + "let_die"));
-        var bierEpi = World(story, 6, bierRefused.Flags.Concat(new[] { "trickster", "trickster.ever" }).ToArray());
+        var bierEpi = World(story, 6, Program.PersistentFlags(story, bierRefused).Concat(new[] { "trickster", "trickster.ever" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.queen_bier"), bierEpi) && !Rules.Available(story, S(P + "epilogue.queen"), bierEpi),
             "Trk_Galfrey_Cortege: the Commander's bier withdrawal gets the deathbed page.");
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s,
@@ -316,7 +324,7 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Sworn: the release ignores an unanswered hanging, or stays shut after the terms are kept.");
         check(Program.Walk(release, Later(story, sworn, 50)).Any(r => !r.Has(Committed)),
             "Trk_Galfrey_Sworn: the release has no refusal of hers (an order dressed as a release).");
-        check(Rules.Available(story, S(P + "epilogue.sworn"), World(story, 6, sworn.Flags.ToArray())),
+        check(Rules.Available(story, S(P + "epilogue.sworn"), World(story, 6, Program.PersistentFlags(story, sworn).ToArray())),
             "Trk_Galfrey_Sworn: a sworn knight has no page.");
 
         // Trk_Galfrey_Cost: her last choice follows what the Commander said of Sir Anselm.
@@ -377,22 +385,22 @@ internal static class GalfreyTricksterTests
         check(Rules.Available(story, S(P + "react.irabeth.queen_night"), Later(story, livingYes, 20)),
             "Trk_Galfrey_Living: the living Queen's night has no companion reaction.");
         check(Program.Walk(S(P + "alive.oath"), Later(story, trialKept, 50)).Any(r => !r.Has(Committed))
-              && Rules.Available(story, S(P + "epilogue.alive"), World(story, 6, livingYes.Flags.ToArray()))
-              && World(story, 6, livingYes.Flags.ToArray()).Has(P + "partner"),
+              && Rules.Available(story, S(P + "epilogue.alive"), World(story, 6, Program.PersistentFlags(story, livingYes).ToArray()))
+              && World(story, 6, Program.PersistentFlags(story, livingYes).ToArray()).Has(P + "partner"),
             "Trk_Galfrey_Living: the living commit has no no of hers, or no page, or no Last Call seat.");
         check(!Rules.Available(story, tent, Later(story, livingYes, 30)) && !Rules.Available(story, S(P + "kitrane.grey"), Later(story, livingYes, 30)),
             "Trk_Galfrey_Living: the living Queen is sent to the returned knight's tent.");
         check(Program.Walk(plan, Later(story, evening, 50)).Where(r => r.Has(P + "alive.plan_dispatched")).All(r => r.Has(P + "alive.plan_told")),
             "Trk_Galfrey_Living: a plan is kept that was never told.");
         // The manuscripts deathbed with Terendelev returned: no recollection of her claw.
-        var manuIz = World(story, 5, back.Flags.Concat(new[] { "iz.manuscripts", "terendelev.trickster.returned", P + "first_morning" }).ToArray());
+        var manuIz = World(story, 5, Program.PersistentFlags(story, back).Concat(new[] { "iz.manuscripts", "terendelev.trickster.returned", P + "first_morning" }).ToArray());
         manuIz.Hour += 100;
         var seen = new List<string>();
         Program.Walk(S(P + "kitrane.iz"), manuIz, (id, _) => seen.Add(id));
         check(seen.Contains("priestess") && !seen.Contains("dragon") && !seen.Contains("hate") && seen.Contains("hate_manu"),
             "Trk_Galfrey_Manuscripts: the priestess's branch recalls the dragon's claw.");
         // A returned Seelah is in Drezen: the pie is hers, and her reaction plays.
-        var seelahBack = World(story, 5, back.Flags.Concat(new[] { "galfrey.seelah_at_bed", "seelah_dead", "seelah.trickster.returned", P + "first_morning" }).ToArray());
+        var seelahBack = World(story, 5, Program.PersistentFlags(story, back).Concat(new[] { "galfrey.seelah_at_bed", "seelah_dead", "seelah.trickster.returned", P + "first_morning" }).ToArray());
         seelahBack.Hour += 100;
         var pie = new List<string>();
         Program.Walk(S(P + "kitrane.seelah"), seelahBack, (id, _) => pie.Add(id));
@@ -405,19 +413,19 @@ internal static class GalfreyTricksterTests
         check(!World(story, 6, "trickster", "trickster.ever", "galfrey.romance_active", Dead).Has(P + "partner"),
             "Trk_Galfrey_NativeFirst: a dead Queen counts as a partner through the native romance.");
         // The bottle world: the Commander died at Threshold and came back (trickster.commander_back): the shared life, not the loss.
-        var bottle = World(story, 6, night.Flags.Concat(new[] { "trickster", "trickster.ever", Dead, "sacrifice", "trickster.commander_back" }).ToArray());
+        var bottle = World(story, 6, Program.PersistentFlags(story, night).Concat(new[] { "trickster", "trickster.ever", Dead, "sacrifice", "trickster.commander_back" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.kitrane"), bottle) && !Rules.Available(story, S(P + "epilogue.widow"), bottle)
               && pages.Count(s => Rules.Available(story, s, bottle)) == 1,
             "Trk_Galfrey_Pages: the bottle-survival world does not get exactly the shared-life page.");
         // Carriers: Irabeth's firsthand accounts only where she carried the order; the Crows' version where they did.
-        var byIrabeth = World(story, 5, back.Flags.Concat(new[] { P + "carried.irabeth" }).Where(f => f != P + "carried.crows").ToArray());
-        var byCrows = World(story, 5, back.Flags.Concat(new[] { P + "carried.crows", P + "carried.crows_drezen" }).Where(f => f != P + "carried.irabeth").ToArray());
+        var byIrabeth = World(story, 5, Program.PersistentFlags(story, back).Concat(new[] { P + "carried.irabeth" }).Where(f => f != P + "carried.crows").ToArray());
+        var byCrows = World(story, 5, Program.PersistentFlags(story, back).Concat(new[] { P + "carried.crows", P + "carried.crows_drezen" }).Where(f => f != P + "carried.irabeth").ToArray());
         byIrabeth.Hour += 100; byCrows.Hour += 100;
         check(Rules.Available(story, S(P + "react.irabeth.carried"), byIrabeth) && !Rules.Available(story, S(P + "react.irabeth.carried"), byCrows)
               && Rules.Available(story, S(P + "react.irabeth.learned"), byCrows) && !Rules.Available(story, S(P + "react.irabeth.learned"), byIrabeth),
             "Trk_Galfrey_Reactions: Irabeth's account does not follow who carried the order.");
-        var drilled = World(story, 5, night.Flags.ToArray()); drilled.Hour += 100;
-        var drilledSquire = World(story, 5, night.Flags.Concat(new[] { P + "kitrane.squire_sworn" }).ToArray()); drilledSquire.Hour += 100;
+        var drilled = World(story, 5, Program.PersistentFlags(story, night).ToArray()); drilled.Hour += 100;
+        var drilledSquire = World(story, 5, Program.PersistentFlags(story, night).Concat(new[] { P + "kitrane.squire_sworn" }).ToArray()); drilledSquire.Hour += 100;
         check(Rules.Available(story, S(P + "react.irabeth.drill_alone"), drilled) && !Rules.Available(story, S(P + "react.irabeth.drill"), drilled)
               && Rules.Available(story, S(P + "react.irabeth.drill"), drilledSquire) && !Rules.Available(story, S(P + "react.irabeth.drill_alone"), drilledSquire),
             "Trk_Galfrey_Reactions: Irabeth's drill does not follow whether there was a squire.");
@@ -429,12 +437,12 @@ internal static class GalfreyTricksterTests
             check(!visited.Contains("hulrun") && !visited.Contains("sign_hulrun") && visited.Contains("chaplain"),
                 "Trk_Galfrey_Vigil: Hulrun is in the chapel although " + gone + ".");
         }
-        var lost = World(story, 6, night.Flags.Concat(new[] { "trickster", "trickster.ever", Dead, "sacrifice" }).ToArray());
+        var lost = World(story, 6, Program.PersistentFlags(story, night).Concat(new[] { "trickster", "trickster.ever", Dead, "sacrifice" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.widow"), lost) && !Rules.Available(story, S(P + "epilogue.kitrane"), lost),
             "Trk_Galfrey_Pages: a Commander lost at Threshold still gets the shared-life page.");
         foreach (var w in new[] { night, sworn, letDie })
         {
-            var epi = World(story, 6, w.Flags.Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray());
+            var epi = World(story, 6, Program.PersistentFlags(story, w).Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray());
             check(pages.Count(s => Rules.Available(story, s, epi)) == 1, "Trk_Galfrey_Pages: a world reaches more or fewer than one Galfrey page.");
         }
 

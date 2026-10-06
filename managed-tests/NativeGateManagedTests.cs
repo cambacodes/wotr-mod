@@ -192,10 +192,10 @@ internal static class NativeGateManagedTests
         foreach (var (what, flags, gated) in new (string, string[], bool)[]
         {
             ("nothing done", new[] { "trickster.ever" }, false),
-            ("ransomed", new[] { "trickster.now", "kiana.trickster.guests_ransomed" }, true),
-            ("bought back", new[] { "trickster.now", "kiana.trickster.guests_bought_back" }, true),
+            ("ransomed", new[] { "trickster", "kiana.trickster.guests_ransomed" }, true),
+            ("bought back", new[] { "trickster", "kiana.trickster.guests_bought_back" }, true),
             ("ransomed, ever but not now", new[] { "trickster.ever", "kiana.trickster.guests_ransomed" }, false),
-            ("ransomed, degraded", new[] { "trickster.now", "kiana.trickster.guests_ransomed", Rules.DegradedPrefix + "kiana" }, false),
+            ("ransomed, degraded", new[] { "trickster", "kiana.trickster.guests_ransomed", Rules.DegradedPrefix + "kiana" }, false),
         })
         {
             var state = new Snapshot { Chapter = 4 };

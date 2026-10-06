@@ -17,7 +17,7 @@ def sample():
 
 class SaveCompatibilityTests(unittest.TestCase):
     def test_merge_b10_stance_exits_keep_saved_indices_and_continue_ids(self):
-        from story_fixture import fresh_story
+        from tests.story_fixture import fresh_story
         scenes = {s["Id"]: s for s in fresh_story()["Scenes"]}
         for sid, nid, index in (
             ("anevia.trickster.gone.commit", "answer", 17),
@@ -42,8 +42,11 @@ class SaveCompatibilityTests(unittest.TestCase):
         for sid in ("soana.trickster.epilogue.commit", "soana.trickster.epilogue.luck_late"):
             for nid in ("partner_share_start", "partner_secret_start"):
                 node = next(n for n in scenes[sid]["Nodes"] if n["Id"] == nid)
+                # Integration commit 219bcbe gave these newly authored stance
+                # continuations their own IDs; the old page exit stays inert.
                 self.assertEqual(savecompat.choice_identities(scenes[sid], node)[0]["GuidFor"],
-                                 "answer.%s.%s.continue" % (sid, nid))
+                                 "answer.%s.%s.accept" % (sid, nid))
+                self.assertTrue(node["Choices"][0]["Set"])
 
     def test_generated_story_keeps_frozen_save_references(self):
         # Build from source so a stale development export cannot hide a regression.

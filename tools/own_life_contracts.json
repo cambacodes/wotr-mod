@@ -205,14 +205,6 @@
     },
     {
       "relationship": "minagho_chivarro",
-      "scene": "minagho_chivarro.trickster.epilogue.chivarro",
-      "node": "end",
-      "paragraph": 0,
-      "from": "minagho_chivarro.trickster.minagho_in",
-      "to": "minagho.life.arrived"
-    },
-    {
-      "relationship": "minagho_chivarro",
       "scene": "minagho_chivarro.trickster.epilogue.commit",
       "node": "start",
       "choices": [

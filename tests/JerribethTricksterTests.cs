@@ -20,6 +20,13 @@ internal static class JerribethTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (chapter > 1) state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags) state.Times[flag] = state.Hour - 1000;   // the world was observed long ago
@@ -121,6 +128,8 @@ internal static class JerribethTricksterTests
                                       new[] { "jerribeth.betrayed_commander", "jerribeth.insulted" }, new[] { "trickster.failed" }, new string[0] })
         {
             var w = Program.Copy(primed); w.Flags.UnionWith(flags);
+            if (flags.Contains("jerribeth.killed_by_commander")) HouseholdTests.Earn(story, w, "jerribeth.killed_by_commander");
+            Rules.Complete(story, w);
             var pages = new HashSet<string>();
             Program.Walk(tenant, w, (page, _) => pages.Add(page));
             check(pages.Contains("v_late") == flags.Contains("jerribeth.trickster.cost.late")

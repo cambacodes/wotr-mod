@@ -58,14 +58,15 @@ internal static class CamelliaNativeSlideTests
         var worlds = new (string What, string[] Flags, string Kind)[]
         {
             ("never returned", new[] { "trickster.ever" }, "native"),
-            ("living committed", new[] { "trickster.ever", "camellia.committed" }, "kept"),
+            ("coarse commitment", new[] { "trickster.ever", "camellia.committed" }, "native"),
+            ("living committed", new[] { "trickster.ever", "camellia.committed", P + "terms_named" }, "kept"),
             ("actual second death without return", new[] { "trickster.ever", "camellia.committed", "camellia.dead" }, "native"),
             ("living terms", new[] { "trickster.ever", P + "terms_named" }, "terms"),
             ("returned only", new[] { "trickster.ever", P + "returned" }, "native"),
             ("returned, declined", new[] { "trickster.ever", P + "returned", P + "declined" }, "native"),
-            ("kept", new[] { "trickster.ever", P + "returned", "camellia.committed" }, "kept"),
+            ("kept", new[] { "trickster.ever", P + "returned", P + "terms_named", "camellia.committed" }, "kept"),
             ("kept, killed (kicked_out is the kill)", new[] { "trickster.ever", P + "returned", "camellia.committed", "camellia.killed",
-                "camellia.kicked_out", P + "killed_held", P + "cost.knows_you_tried" }, "kept"),
+                "camellia.kicked_out", P + "killed_held", P + "native_death_observed", P + "terms_named", P + "cost.knows_you_tried" }, "kept"),
             ("kept, then dismissed", new[] { "trickster.ever", P + "returned", "camellia.committed", "camellia.kicked_out" }, "native"),
             ("kept, then closed", new[] { "trickster.ever", P + "returned", "camellia.committed", "camellia.closed" }, "native"),
             ("terms named", new[] { "trickster.ever", P + "returned", P + "terms_named" }, "terms"),
@@ -86,7 +87,7 @@ internal static class CamelliaNativeSlideTests
                                 state.Flags.UnionWith(world.Flags);
                                 state.Flags.Add("trickster");
                                 if (sacrifice) state.Flags.Add("sacrifice");
-                                if (back) state.Flags.Add("trickster.commander_back");
+                                if (back) state.Flags.Add("ending.trickster");
                                 Rules.Complete(story, state);
                                 string kind = world.Kind != "native" && sacrifice && !back ? "native" : world.Kind;
                                 string what = $"{world.What}, sacrifice={sacrifice}, back={back}, TE={te}, Q3={q3}, rom={romDefault}/{romTrue}";

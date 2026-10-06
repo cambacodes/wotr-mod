@@ -12,10 +12,12 @@ internal static class Nm1BudgetTests
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string A = "noct.acq.";
 
-    private static Snapshot World(int chapter, params string[] flags)
+    private static Snapshot World(Story story, int chapter, params string[] flags)
     {
         var state = new Snapshot { Chapter = chapter, Hour = 1000, Area = Drezen };
         state.Flags.UnionWith(flags);
+        if (flags.Contains("noct.complete")) HouseholdTests.Earn(story, state, "nocticula.payoff.ordinary");
+        if (flags.Contains(A + "renewed_agreement")) HouseholdTests.Earn(story, state, "nocticula.acquisition.payoff.ordinary");
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 100;
         return state;
@@ -39,10 +41,10 @@ internal static class Nm1BudgetTests
               && second.Nodes.Any(n => n.Id == "the_retained_copy.arrives") && second.Nodes.Any(n => n.Id == "an_answer_of_her_own.arrives"),
             "NM1_Nocticula_Folded: the correspondence is not two deliveries.");
 
-        var start = World(5, "trickster", A + "requested", A + "seal_received", A + "council_disclosed", "noct.socoth_plan_exposed", A + "audience_question");
+        var start = World(story, 5, "trickster", A + "requested", A + "seal_received", A + "council_disclosed", "noct.socoth_plan_exposed", A + "audience_question");
         Rules.Complete(story, start);
         var letters = story.Scenes.Where(s => s.Relationship == "nocticula.acquisition" && Rules.IsMailbagLetter(s)).ToArray();
-        string[] Due(Snapshot w) => letters.Where(s => Rules.Available(story, s, w)).Select(s => s.Id).ToArray();
+        string[] Due(Snapshot w) => letters.Where(s => Program.CurrentAvailable(story, s, w)).Select(s => s.Id).ToArray();
         var ready = Later(story, start, first.DelayHours);
         check(Due(ready).SequenceEqual(new[] { first.Id }), "NM1_Nocticula_Folded: the first delivery is not the only letter due: " + string.Join(", ", Due(ready)));
         var afterFirst = Program.Walk(first, ready).Where(r => r.Has(A + "borrowed_signature_done")).ToList();
@@ -52,7 +54,7 @@ internal static class Nm1BudgetTests
         foreach (var carried in afterFirst)
         {
             var next = Later(story, carried, second.DelayHours);
-            check(Due(next).SequenceEqual(new[] { second.Id }) && guests.All(g => !Rules.Available(story, g, Later(story, carried, 500))),
+            check(Due(next).SequenceEqual(new[] { second.Id }) && guests.All(g => !Program.CurrentAvailable(story, g, Later(story, carried, 500))),
                 "NM1_Nocticula_Folded: a folded letter arrives a second time, or the second delivery is not alone.");
             foreach (var done in Program.Walk(second, next))
             {
@@ -62,9 +64,9 @@ internal static class Nm1BudgetTests
         }
         check(commits > 0, "NM1_Nocticula_Folded: the second delivery never reaches the renewed agreement.");
         // A save already between two letters still receives the next one on its own.
-        var between = World(5, "trickster", A + "requested", A + "seal_received", A + "council_disclosed", "noct.socoth_plan_exposed",
+        var between = World(story, 5, "trickster", A + "requested", A + "seal_received", A + "council_disclosed", "noct.socoth_plan_exposed",
             A + "question_sent", A + "the_missing_line_done", A + "channel_slow", first.Id);
-        check(Rules.Available(story, guests[0], Later(story, between, guests[0].DelayHours)),
+        check(Program.CurrentAvailable(story, guests[0], Later(story, between, guests[0].DelayHours)),
             "NM1_Nocticula_Folded: a save between the missing line and her hand loses her hand.");
 
         // Deferred past the beta: the harbor join and the acquired harbor never open while the runtime holds chapter_later.
@@ -73,28 +75,28 @@ internal static class Nm1BudgetTests
         check(deferred.Length > 3 && deferred.All(s => s.Forbids.Contains("chapter_later")), "NM1_Nocticula_Deferred: a harbor scene is still deliverable.");
         foreach (var s in deferred)
         {
-            var w = World(5, s.Requires.Concat(s.RequiresAnyGroups.Select(g => g[0])).ToArray());
-            check(!Rules.Available(story, s, Later(story, w, s.DelayHours + 1)), "NM1_Nocticula_Deferred: " + s.Id + " opens.");
+            var w = World(story, 5, s.Requires.Concat(s.RequiresAnyGroups.Select(g => g[0])).ToArray());
+            check(!Program.CurrentAvailable(story, s, Later(story, w, s.DelayHours + 1)), "NM1_Nocticula_Deferred: " + s.Id + " opens.");
         }
 
         // The correspondence's own closing page.
         var page = S(A + "epilogue.correspondence");
-        var ending = World(6, "trickster.ever", A + "renewed_agreement");
-        check(page.Owner == "Epilogue" && page.Relationship == "nocticula.acquisition" && Rules.Available(story, page, ending)
-              && !Rules.Available(story, page, World(6, "trickster.ever", A + "renewed_agreement", "noct.complete"))
-              && !Rules.Available(story, page, World(6, "trickster.ever", A + "renewed_agreement", A + "council_fight"))
-              && !Rules.Available(story, page, World(6, "trickster.ever"))
+        var ending = World(story, 6, "trickster.ever", A + "renewed_agreement");
+        check(page.Owner == "Epilogue" && page.Relationship == "nocticula.acquisition" && Program.CurrentAvailable(story, page, ending)
+              && !Program.CurrentAvailable(story, page, World(story, 6, "trickster.ever", A + "renewed_agreement", "noct.complete"))
+              && !Program.CurrentAvailable(story, page, World(story, 6, "trickster.ever", A + "renewed_agreement", A + "council_fight"))
+              && !Program.CurrentAvailable(story, page, World(story, 6, "trickster.ever"))
               && page.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null && c.Alignment == null),
             "NM1_Nocticula_Page: the correspondence has no closing page, or it plays for the wrong history.");
         // eng7-l01: Last Call reads completed state, including the derived route guard.
         var coda = S("nocticula.lastcall.page");
-        var codaWorld = World(6, "trickster.ever", "noct.complete", "trickster.lastcall.taken", "ending.trickster");
+        var codaWorld = World(story, 6, "trickster.ever", "noct.complete", "trickster.lastcall.taken", "ending.trickster");
         Rules.Complete(story, codaWorld);
         check(codaWorld.Has("lastcall.active") && codaWorld.Has("nocticula.lastcall.route_open")
-              && Rules.Available(story, coda, codaWorld), "NM1_Nocticula_Coda: completed Last Call cannot select the coda.");
-        var fatalWorld = World(6, "trickster.ever", "noct.complete", "sacrifice");
+              && Program.CurrentAvailable(story, coda, codaWorld), "NM1_Nocticula_Coda: completed Last Call cannot select the coda.");
+        var fatalWorld = World(story, 6, "trickster.ever", "noct.complete", "sacrifice");
         Rules.Complete(story, fatalWorld);
-        check(!Rules.Available(story, coda, fatalWorld), "NM1_Nocticula_Coda: unreturned sacrifice receives the coda.");
+        check(!Program.CurrentAvailable(story, coda, fatalWorld), "NM1_Nocticula_Coda: unreturned sacrifice receives the coda.");
         // eng7-l01 end
         Console.WriteLine("PASS: NM1 budget (Nocticula's correspondence in two deliveries, the harbor deferred, its closing page).");
     }

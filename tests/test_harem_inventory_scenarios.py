@@ -139,7 +139,7 @@ class HaremInventory(unittest.TestCase):
     def test_paid_page_offer_uses_existing_real_producers(self):
         model = e9.Model(self.story)
         state = e9.SimState(3, 1000)
-        state.flags.update(['trickster', 'seelah.committed'])
+        state.flags.update(['trickster', 'seelah.committed', 'seelah.chosen_future', 'seelah.short_future_chosen'])
         offer = model.by_id['household.table.offered']
         e9.sim_complete(model, state)
         self.assertFalse(e9.sim_available(model, offer, state))

@@ -8,6 +8,7 @@ from tests.story_fixture import fresh_story
 from unittest.mock import patch
 
 from expansion import make_expansion
+from storylines import engine_eng3_ab
 from storylines import engine_q7_l12 as lane
 from tools.crossroute_checks import commander_alive, location_staging, world_facts
 from tools.crossroute_checks.common import Proof, blocks, verify
@@ -22,7 +23,7 @@ def findings(check, story):
 class Lane12Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        with patch.object(lane, "integrate"):
+        with patch.object(lane, "integrate"), patch.object(engine_eng3_ab, "integrate"):
             cls.before = make_expansion()
         cls.after = copy.deepcopy(cls.before)
         lane.integrate(cls.after)

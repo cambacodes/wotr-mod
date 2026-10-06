@@ -40,7 +40,9 @@ internal static class NativeVariantCoverageInventoryTests
         {
             string cue = row.GetProperty("Target").GetString()!, name = row.GetProperty("Name").GetString()!;
             var state = new Snapshot { Chapter = row.GetProperty("Chapter").GetInt32(), Hour = 100000 };
-            state.Flags.UnionWith(row.GetProperty("Flags").EnumerateArray().Select(f => f.GetString()!));
+            foreach (var flag in row.GetProperty("Flags").EnumerateArray().Select(f => f.GetString()!))
+                HouseholdTests.Earn(story, state, flag);
+            if (state.Flags.Contains("anevia.committed")) HouseholdTests.Earn(story, state, "anevia.payoff.ordinary");
             var before = new HashSet<string>(state.Flags);
             Rules.Complete(story, state);
             var playing = story.Etudes.Where(e => state.Has(e.Key)).Select(e => e.Value).ToList();
@@ -82,7 +84,7 @@ internal static class NativeVariantCoverageInventoryTests
             state.Flags.UnionWith(new[] { "trickster", "trickster.ever", "irabeth_dead", "anevia_gone" });
             if (returned) state.Flags.Add(A);
             if (proof != null) state.Flags.Add(proof);
-            if (committed) state.Flags.Add("anevia.committed");
+            if (committed) HouseholdTests.Earn(story, state, "anevia.payoff.ordinary");
             if (closed) state.Flags.UnionWith(new[] { "anevia.closed", "irabeth.closed" });
             if (sacrifice) state.Flags.Add("sacrifice");
             if (commanderReturn) state.Flags.Add("ending.trickster");

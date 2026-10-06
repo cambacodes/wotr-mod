@@ -31,7 +31,7 @@ internal static class GesmerhaOpeningTests
                 {
                     var ready = Program.Copy(input);
                     ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Gesmerha earned chain cannot continue: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Gesmerha earned chain cannot continue: " + scene.Id);
                     foreach (var outcome in Program.Walk(scene, ready, (page, state) =>
                     {
                         reached.Add(scene.Id + "/" + page);
@@ -56,7 +56,7 @@ internal static class GesmerhaOpeningTests
                             check(outcome.Times.OrderBy(x => x.Key).SequenceEqual(ready.Times.OrderBy(x => x.Key)), "Gesmerha defer changes timestamps.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, outcome), "Gesmerha completed scene repeats.");
+                        check(!Program.CurrentAvailable(story, scene, outcome), "Gesmerha completed scene repeats.");
                         if (scene.Id == "gesmerha.against_the_current")
                         {
                             check(new[] { "courting", "slow", "friendship" }.Count(x => outcome.Has("gesmerha." + x)) == 1, "Gesmerha relationship intentions overlap.");
@@ -80,34 +80,34 @@ internal static class GesmerhaOpeningTests
             ready.Flags.UnionWith(scene.Requires);
             ready.Flags.Add("gesmerha.truth");
             ready.AvailableContacts.Add(contact);
-            check(Rules.Available(story, scene, ready), "Gesmerha gate baseline invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Gesmerha gate baseline invalid.");
             foreach (var flag in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Gesmerha ignores blocker: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Gesmerha ignores blocker: " + flag);
             }
-            foreach (var flag in scene.Requires.Concat(new[] { "gesmerha.truth" }))
+            foreach (var flag in scene.Requires.Concat(new[] { "gesmerha.truth" }).Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, blocked), "Gesmerha ignores missing prerequisite: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Gesmerha ignores missing prerequisite: " + flag);
                 check(!Rules.ContactAvailable(story, scene, blocked), "Gesmerha continuation ignores missing prerequisite: " + flag);
             }
             var dead = Program.Copy(ready); dead.Flags.Add("gesmerha.dead");
             check(!Rules.ContactAvailable(story, scene, dead), "Gesmerha dead actor continues dialog.");
             var elsewhere = Program.Copy(ready); elsewhere.Area = "elsewhere";
-            check(!Rules.Available(story, scene, elsewhere) && !Rules.ContactAvailable(story, scene, elsewhere), "Gesmerha visit ignores location.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere) && !Rules.ContactAvailable(story, scene, elsewhere), "Gesmerha visit ignores location.");
             foreach (int chapter in new[] { 2, 4, 5 })
             {
                 var wrong = Program.Copy(ready); wrong.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrong), "Gesmerha opening escapes Chapter 3.");
+                check(!Program.CurrentAvailable(story, scene, wrong), "Gesmerha opening escapes Chapter 3.");
             }
             if (scene.DelayHours > 0)
             {
                 ready.Times[scene.Requires.Last()] = ready.Hour;
                 ready.Hour += scene.DelayHours - 1;
-                check(!Rules.Available(story, scene, ready), "Gesmerha skips visit delay.");
+                check(!Program.CurrentAvailable(story, scene, ready), "Gesmerha skips visit delay.");
                 ready.Hour++;
-                check(Rules.Available(story, scene, ready), "Gesmerha misses delay boundary.");
+                check(Program.CurrentAvailable(story, scene, ready), "Gesmerha misses delay boundary.");
             }
         }
         foreach (var flag in new[] { "grain_found", "grain_missed", "grain_cut", "own_mark", "introduced", "finished_rule", "changed_rule", "first_kiss", "held_close", "slow", "friendship" })

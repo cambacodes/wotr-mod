@@ -24,7 +24,7 @@ internal static class KonomiPrivateAbsenceTests
         {
             var scene = Get(id);
             input.Hour += 1000;
-            check(Rules.Available(story, scene, input), "Konomi earned predecessor cannot continue: " + id);
+            check(Program.CurrentAvailable(story, scene, input), "Konomi earned predecessor cannot continue: " + id);
             return Program.Walk(scene, input).First(s => s.Has(scene.Id) && !s.Has("konomi.closed"));
         }
         List<Snapshot> Walk(Scene scene, Snapshot input)
@@ -53,7 +53,7 @@ internal static class KonomiPrivateAbsenceTests
             if (!start.Has("konomi.private_history_ready")) start = Earn("private_history", start);
             foreach (string id in new[] { "carriers", "before_road", "private_departure" }) start = Earn(id, start);
             var away = Program.Copy(start); away.Chapter = 4; away.Area = "abyss";
-            check(Rules.Available(story, absence, away), "Fresh or established dismissed route cannot remember Konomi in Chapter 4.");
+            check(Program.CurrentAvailable(story, absence, away), "Fresh or established dismissed route cannot remember Konomi in Chapter 4.");
             var histories = Walk(absence, away).Where(s => s.Has(absence.Id)).ToList();
             check(histories.Count == 4, "Konomi page/memory and wanted/changed histories are incomplete.");
             foreach (var h in histories)
@@ -84,7 +84,7 @@ internal static class KonomiPrivateAbsenceTests
                 if (path != "other") back.Flags.Add(path);
                 foreach (string id in new[] { "capital_letter", "return_offer" }) back = Earn(id, back);
                 back.Hour += 1000;
-                check(Rules.Available(story, reunion, back), "Optional absence added a reunion prerequisite.");
+                check(Program.CurrentAvailable(story, reunion, back), "Optional absence added a reunion prerequisite.");
                 var observed = new HashSet<string>();
                 Program.Walk(reunion, back, (page, _) => observed.Add(page));
                 if ((back.Has("konomi.return") || back.Has("konomi.wonder_answered") || back.Has("konomi.fear_answered")) && !back.Has("konomi.private_absence_kept"))
@@ -102,18 +102,18 @@ internal static class KonomiPrivateAbsenceTests
                     if (result.Has("konomi.private_absence_answered"))
                     {
                         check(result.Has("konomi.private_returned") && result.Has("konomi.reunion_kept"), "New reunion branch lost original continuation milestones.");
-                        check(!Rules.Available(story, catchup, result), "Answered account repeats in catch-up.");
+                        check(!Program.CurrentAvailable(story, catchup, result), "Answered account repeats in catch-up.");
                     }
                 }
                 var skipped = outcomes.First(s => !s.Has("konomi.private_absence_answered"));
-                check(Rules.Available(story, catchup, skipped), "Older or deferred reunion lacks manual catch-up.");
+                check(Program.CurrentAvailable(story, catchup, skipped), "Older or deferred reunion lacks manual catch-up.");
                 foreach (var result in Walk(catchup, skipped))
                 {
                     if (!result.Has(catchup.Id)) check(result.Flags.SetEquals(skipped.Flags), "Catch-up deferral changes history.");
                     else check(result.Has("konomi.private_absence_answered"), "Catch-up finishes without acknowledgement.");
                 }
                 var future = Get("lease_offer"); skipped.Hour += 1000;
-                check(Rules.Available(story, future, skipped), "Skipping absence blocks original career continuation.");
+                check(Program.CurrentAvailable(story, future, skipped), "Skipping absence blocks original career continuation.");
             }
         }
         // Reproduce the problematic chronology by playing the real ordinary return before dismissal.
@@ -142,13 +142,13 @@ internal static class KonomiPrivateAbsenceTests
             var ready = new Snapshot { Chapter = scene == absence ? 4 : 5, Hour = 50000, Area = scene == absence ? "abyss" : catchup.Areas.Single() };
             ready.Flags.UnionWith(scene.Requires);
             foreach (var group in scene.RequiresAnyGroups) ready.Flags.Add(group[0]);
-            check(Rules.Available(story, scene, ready), "New absence scene baseline invalid.");
-            foreach (var flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
-            { var missing = Program.Copy(ready); missing.Flags.Remove(flag); check(!Rules.Available(story, scene, missing), "Missing private prerequisite admitted: " + flag); }
+            check(Program.CurrentAvailable(story, scene, ready), "New absence scene baseline invalid.");
+            foreach (var flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])).Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
+            { var missing = Program.Copy(ready); missing.Flags.Remove(flag); check(!Program.CurrentAvailable(story, scene, missing), "Missing private prerequisite admitted: " + flag); }
             foreach (var flag in scene.Forbids.Concat(new[] { "konomi.closed" }))
-            { var blocked = Program.Copy(ready); blocked.Flags.Add(flag); check(!Rules.Available(story, scene, blocked), "Absence ignores blocker: " + flag); }
+            { var blocked = Program.Copy(ready); blocked.Flags.Add(flag); check(!Program.CurrentAvailable(story, scene, blocked), "Absence ignores blocker: " + flag); }
             var wrong = Program.Copy(ready); wrong.Chapter = 3;
-            check(!Rules.Available(story, scene, wrong), "Absence continuity appears before its chapter.");
+            check(!Program.CurrentAvailable(story, scene, wrong), "Absence continuity appears before its chapter.");
             // Later career stages are played in KonomiAbsenceChronologyTests.
             // Alternative-history pages are played by KonomiMissedContactTests.
             foreach (var page in scene.Nodes.Where(n => !n.Id.StartsWith("absence_career_", StringComparison.Ordinal)

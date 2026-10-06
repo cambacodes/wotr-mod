@@ -82,7 +82,10 @@ class EngineF6cTests(unittest.TestCase):
                                   "!irabeth.partner_stance.exclusive", "!anevia_dead",
                                   "!anevia.trickster.returned", "!anevia_gone"]
                     expected_when = [group + retirement for group in when]
-                self.assertEqual(edit["When"], expected_when)
+                scene = self.scenes[edit["Replacement"]]
+                live = [key for key in scene.get("Requires", [])
+                        if ".payoff." in key or key.endswith((".present_now", ".reachable_by_letter"))]
+                self.assertEqual(edit["When"], [list(dict.fromkeys([*group, *live])) for group in expected_when])
                 original = self.expectations["Fixtures"][cue]
                 self.assertEqual(original["Key"], edit["Key"])
                 self.assertFalse(original["Data"]["ShowOnce"])

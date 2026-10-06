@@ -10,6 +10,7 @@ internal static class HouseholdEngineTests
     {
         var story = new Story { Relationships = exported.Relationships, Derived = exported.Derived,
             DerivedOpenRoutes = exported.DerivedOpenRoutes, DerivedForbids = exported.DerivedForbids,
+            DepartureEpochs = exported.DepartureEpochs, Latches = exported.Latches,
             RestAllowances = exported.RestAllowances, SeatWomen = new Dictionary<string, SeatWoman>(exported.SeatWomen) };
         Scene Entry(string id, string? allowance = "household.pair") => new Scene {
             Id = id, Owner = "Seelah", Relationship = "household", MinChapter = 3, MaxChapter = 5,
@@ -18,8 +19,10 @@ internal static class HouseholdEngineTests
         };
         Snapshot State() {
             var state = new Snapshot { Chapter = 5, Hour = 1000 };
-            state.Flags.UnionWith(new[] { "trickster", "trickster.ever", "foresight.page_taken",
+            state.Flags.UnionWith(new[] { "trickster", "trickster.ever", "trickster.foresight.accepted",
                 exported.Relationships["seelah"].CommittedFlag, exported.Relationships["wenduag"].CommittedFlag });
+            HouseholdTests.Earn(story, state, "seelah.payoff.ordinary");
+            HouseholdTests.Earn(story, state, "wenduag.payoff.ordinary");
             Rules.Complete(story, state);
             return state;
         }
@@ -69,7 +72,10 @@ internal static class HouseholdEngineTests
                 check(!Rules.Available(story, a, absent), "A1: participant still staged with " + loss);
                 if (rel.UnavailableOverrides.TryGetValue(loss, out var back))
                 {
-                    absent.Flags.Add(back); Rules.Complete(story, absent);
+                    // The legacy paid execution copy answers that execution;
+                    // a historical return alone cannot answer arbitrary dead_any.
+                    if (participant == "wenduag" && loss == "wenduag.dead_any") absent.Flags.Add("wenduag.killed");
+                    HouseholdTests.Earn(story, absent, back); Rules.Complete(story, absent);
                     check(Rules.Available(story, a, absent), "A2: earned return failed for " + loss);
                     absent.Flags.Add(rel.ClosedFlag); Rules.Complete(story, absent);
                     check(!Rules.Available(story, a, absent), "A2: return bypassed deliberate closure.");
@@ -87,7 +93,7 @@ internal static class HouseholdEngineTests
         var realSolo = Entry("test.minagho", null); realSolo.Pair = Array.Empty<string>();
         realSolo.Participants = new[] { "minagho_chivarro" }; realSolo.ParticipantWomen = new[] { "minagho" };
         var separated = State(); separated.Flags.UnionWith(new[] { "minachiv.complete", "minagho_chivarro.trickster.minagho_in",
-            "minagho_chivarro.trickster.chivarro_in", "chivarro.dead" }); Rules.Complete(story, separated);
+            "minagho_chivarro.trickster.chivarro_in", "minachiv.before_the_last_road", "minachiv.future_two", "chivarro.dead" }); Rules.Complete(story, separated);
         check(Rules.Available(story, realSolo, separated), "A4: native Chivarro death withdrew a Minagho-only scene.");
         realSolo.ParticipantWomen = new[] { "chivarro" };
         check(!Rules.Available(story, realSolo, separated), "A4: native-dead Chivarro appeared without a return.");
@@ -100,7 +106,7 @@ internal static class HouseholdEngineTests
             UnavailableOverrides = new Dictionary<string, string> { ["chivarro.absent"] = "chivarro.returned" } };
         var solo = Entry("test.solo", null); solo.Pair = Array.Empty<string>();
         solo.Participants = new[] { "minagho_chivarro" }; solo.ParticipantWomen = new[] { "minagho" };
-        state = State(); state.Flags.Add("minachiv.complete"); state.Flags.Add("chivarro.absent"); Rules.Complete(story, state);
+        state = State(); HouseholdTests.Earn(story, state, "minagho_chivarro.payoff.ordinary"); state.Flags.Add("chivarro.absent"); Rules.Complete(story, state);
         check(Rules.Available(story, solo, state), "A4: absent Chivarro withdrew Minagho-only scene.");
         solo.ParticipantWomen = new[] { "chivarro" };
         check(!Rules.Available(story, solo, state), "A4: unavailable seat woman was staged.");
@@ -115,9 +121,9 @@ internal static class HouseholdEngineTests
         var offer = exported.Scenes.Single(s => s.Id == "household.table.offered");
         state = new Snapshot { Chapter = 3, Hour = 1000 }; state.Flags.UnionWith(new[] { "trickster", "seelah.committed" }); Rules.Complete(story, state);
         check(!state.Has("household.stance_eligible") && !Rules.Available(story, offer, state), "Harem opened without Shyka's page.");
-        state.Flags.Add("foresight.page_taken"); Rules.Complete(story, state);
+        state.Flags.Add("trickster.foresight.accepted"); HouseholdTests.Earn(story, state, "seelah.payoff.ordinary"); Rules.Complete(story, state);
         check(state.Has("household.stance_eligible") && Rules.Available(story, offer, state), "Page did not open stance eligibility.");
-        state = new Snapshot { Chapter = 3, Hour = 1000 }; state.Flags.UnionWith(new[] { "foresight.page_taken", "seelah.committed" }); Rules.Complete(story, state);
+        state = new Snapshot { Chapter = 3, Hour = 1000 }; state.Flags.UnionWith(new[] { "trickster.foresight.accepted", "seelah.committed" }); Rules.Complete(story, state);
         check(!state.Has("household.stance_eligible"), "Page opened household off current Trickster path.");
     }
 }

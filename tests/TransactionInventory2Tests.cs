@@ -24,7 +24,7 @@ internal static class TransactionInventory2Tests
     {
         var state = new Snapshot { Chapter = 5, Hour = 5000, Area = "2570015799edf594daf2f076f2f975d8",
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = funds, ["Favors"] = funds } };
-        state.Flags.UnionWith(scene.Requires.Concat(new[] { "trickster", "fool_king.available" }));
+        foreach (var key in scene.Requires.Concat(new[] { "trickster", "fool_king.available" })) HouseholdTests.Earn(story, state, key);
         foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
         if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
         foreach (var flag in state.Flags) state.Times[flag] = state.Hour - 1000;
