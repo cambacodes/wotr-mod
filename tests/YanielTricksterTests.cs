@@ -473,8 +473,9 @@ internal static class YanielTricksterTests
               && sosiel.AnswerLists.SequenceEqual(new[] { "129b55b8b5d50974f84f7c607d894fd0" }) && sosiel.Forbids.Contains("sosiel.dead") && sosiel.Forbids.Contains("sosiel.kicked_out")
               && Avail(sosiel, World(story, 5, "trickster.ever", Swapped, Returned, "yaniel.sosiel_promised")) && !Avail(sosiel, World(story, 5, "trickster.ever", Swapped, Returned))
               && !Avail(sosiel, World(story, 5, "trickster.ever", Swapped, Returned, "yaniel.sosiel_promised", "sosiel.dead")) && !Avail(fane, World(story, 5, "trickster.ever", Swapped, "yaniel.seelah_sister", Late))
-              && Avail(after, World(story, 5, "trickster.ever", Niche)) && !Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead"))
-              && Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead", "seelah.trickster.returned"))
+              && Avail(after, World(story, 5, "trickster.ever", Niche, P + "morning.seelah_witness")) && !Avail(after, World(story, 5, "trickster.ever", Niche, P + "morning.seelah_witness", "seelah_dead"))
+              && Avail(after, World(story, 5, "trickster.ever", Niche, P + "morning.seelah_witness", "seelah_dead", "seelah.trickster.returned"))
+              && !Avail(after, World(story, 5, "trickster.ever", Niche, "seelah_dead", "seelah.trickster.returned"))
               && Ch(after, "start", 0).Set.Contains(P + "seelah_blessed")
               && Avail(fane, World(story, 3, "trickster.ever", Swapped, "yaniel.seelah_sister")) && !Avail(fane, World(story, 3, "trickster.ever", Swapped)),
             "Seelah's reactions are not guarded, or speak without her stake (the Fane, the niche).");

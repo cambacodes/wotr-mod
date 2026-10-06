@@ -1,0 +1,33 @@
+{
+  "yaniel": {
+    "device_class": "act_before_confession",
+    "setting": "Drezen old east-gate flooded watch-room; martyr-statue niche on its existing road",
+    "payoff_shape": "prior raid kiss named, sword and shackle remain unequal gifts, then return to the watch",
+    "canon_hooks": [
+      {
+        "guid": "efb1ee540ea049743bd146397641bb9b",
+        "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0035.jbp",
+        "key": "5cdfbef3-83cb-43d7-92f1-b36af4df0d9c",
+        "native_excerpt": "\"The Half Measure probably doesn't serve my favorite roast anymore, and the old tree near the town hall in Nerosyan doesn't bloom. But I have seen a glimmer of hope. If Radiance is still full of power and in worthy hands, that means everything was not in vain. Take it. This sword was born to save the innocent and punish the wicked, its journey must end in the black heart of Deskari, the lord of the Abyss who created the nightmare of the Wound wit",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "536ceec8863161f489ef28ddd9c51845",
+        "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0027.jbp",
+        "key": "4e60e686-0e84-4ca6-aa7f-87a4b6c2ccb9",
+        "native_excerpt": "{n}Yaniel clenches her fingers around the hilt, and then returns the sword to you with a sigh.{/n} \"I doubt I'll be able to raise this sword again. And should I even want to? My time has passed. The banners I fought under are gone, the blossoming trees I once sat under are gone as well. And my friends — are they alive? Who knows...\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "cedf416f4d873d0468b01270c7b8eb9e",
+        "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0001.jbp",
+        "key": "e7df05c8-b377-48e6-b92f-0ebde8da54cf",
+        "native_excerpt": "{n}The blue-eyed old woman helps the last victim down from their hook.{/n} \"We're alive. We're free. No more of this endless imprisonment!\" {n}She looks at you.{/n} \"Whoever you are, accept the gratitude of Yaniel — an unlucky paladin who spent years serving as a demon's plaything.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}
