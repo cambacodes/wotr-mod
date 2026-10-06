@@ -4147,6 +4147,31 @@
     "hold"
    ]
   },
+  "e5e3765b11eec1244a2137c2999f00d1": {
+   "ancestors_completed": [],
+   "areas": {
+    "2570015799edf594daf2f076f2f975d8": "2570015799edf594daf2f076f2f975d8"
+   },
+   "cascade_chapter": null,
+   "chain": [
+    "Elan_Capital",
+    "Elan_Knight",
+    "Seelah_Friends",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Elan_Capital: EtudeStatus"
+   ],
+   "name": "Elan_Capital",
+   "note": "Elan_Capital is current presence only: its unhide placement loses to Elan_Dead (priority 10 versus 0, same conflicting group). Kiana's conditional ending clauses require Playing capital presence; when it is unavailable, the route explicitly reports unknown news. Death is separately witnessed by native death cues. This does not supply a global postwar survival observer.",
+   "ruling": "reviewed",
+   "traits": [
+    "area",
+    "conditional"
+   ]
+  },
   "e85e8acd74d231e44ad7d6d2d5dab43c": {
    "ancestors_completed": [],
    "areas": {},

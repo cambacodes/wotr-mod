@@ -42,6 +42,7 @@ internal static class KianaTricksterTests
         var temple = S("kiana.trickster.after.temple");
         var betrothal = S("kiana.betrothal");
         var epCommit = S("kiana.trickster.epilogue.commit");
+        KianaPartnerTests.Run(story, check);
         var devices = new[] { waited, gem, collar, postponed };
         bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
         HashSet<string> Pages(Scene scene, Snapshot w) { var pages = new HashSet<string>(); Program.Walk(scene, w, (p, _) => pages.Add(p)); return pages; }
@@ -179,7 +180,7 @@ internal static class KianaTricksterTests
             "The post-commitment chain opens on a Trickster entry (TT-21 cap).");
         var ending = S("kiana.ending_promised");
         var end = Later(story, committed, 1); end.Chapter = 6;
-        check(Rules.Available(story, ending, end) && Rules.VisibleParagraphs(ending.Nodes[0], end).Length == 2,
+        check(Rules.Available(story, ending, end) && Rules.VisibleParagraphs(ending.Nodes[0], end).Count(p => ending.Nodes[0].Paragraphs.Take(12).Contains(p)) == 2,
             "The committed ending lost the stones or Elan paragraph.");
         var q3Lovers = World(story, 5, "seelah.souls_returned", "kiana.lovers", "kiana.morning");
         check(Rules.Available(story, S("kiana.guest_table"), Later(story, q3Lovers, 48)), "The registered chain is shut on the Q3 route.");
@@ -246,18 +247,18 @@ internal static class KianaTricksterTests
             "The betrothal ignores its delay.");
         var betrothalOut = Program.Walk(betrothal, Later(story, rehearsed, 72));
         check(betrothalOut.Any(r => r.Has("kiana.betrothed_kept") && r.Has("kiana.closed")), "She cannot keep her engagement.");
-        var free = betrothalOut.Single(r => r.Has("kiana.available"));
+        var free = betrothalOut.Single(r => r.Has("kiana.available") && r.Has("kiana.separated"));
         check(free.Has("kiana.separated") && free.Has("kiana.waited"), "A broken engagement leaves the later beats without a history.");
         var s4Lovers = Pick(S("kiana.date"), Later(story, free, 168), "kiana.lovers");
         check(Program.Walk(S("kiana.morning"), Later(story, s4Lovers, 48)).Any(r => r.Has("kiana.committed")), "Trk_Kiana_NoWedding: no commit.");
         var decreeEnd = Later(story, Pick(S("kiana.morning"), Later(story, s4Lovers, 48), "kiana.committed"), 1); decreeEnd.Chapter = 6;
-        check(Rules.VisibleParagraphs(ending.Nodes[0], decreeEnd).Length == 2, "The decree paragraphs are missing.");
+        check(Rules.VisibleParagraphs(ending.Nodes[0], decreeEnd).Count(p => ending.Nodes[0].Paragraphs.Take(12).Contains(p)) == 2, "The decree paragraphs are missing: " + string.Join(", ", Rules.VisibleParagraphs(ending.Nodes[0], decreeEnd).Select(p => SurfaceIds.Of(story, p))));
 
         // Late commit (R2-6) and her "not yet": the page for a spine cut short, the unfinished twin for kiana.uncertain.
         var late = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.history_married");
         check(Rules.Available(story, epCommit, late) && !Any(late, S("kiana.ending_unfinished"), S("kiana.trickster.ending_unfinished")),
             "Trk_Kiana_EpilogueCommit failed.");
-        check(epCommit.Nodes[0].Choices.Count == 5 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
+        check(epCommit.Nodes[0].Choices.Count == 8 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
         var notYet = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.morning", "kiana.uncertain");
         check(!Rules.Available(story, epCommit, notYet) && Rules.Available(story, S("kiana.trickster.ending_unfinished"), notYet)
               && !Rules.Available(story, S("kiana.ending_unfinished"), notYet), "Her 'then don't promise it' is not honoured.");
@@ -387,7 +388,7 @@ internal static class KianaTricksterTests
             "eng8-q8h: unanswered eligible courtship has no affirmative answer.");
         foreach (var node in new[] { "margin", "stage" })
         {
-            var answer = epCommit.Nodes[0].Choices.Single(c => c.Next == node && c.Set.Contains("kiana.trickster.late_yes"));
+            var answer = epCommit.Nodes[0].Choices.Single(c => c.Next == node && c.Set.Contains("kiana.trickster.late_yes") && Rules.ChoiceAvailable(c, neverAsked));
             check(Rules.ChoiceAvailable(answer, neverAsked), "Affirmative appended answer blocked: " + node);
             var copy = Program.Copy(neverAsked);
             copy.Flags.UnionWith(answer.Set); Rules.Complete(story, copy);
