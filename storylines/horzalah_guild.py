@@ -13,7 +13,7 @@ Every scene is Trickster-only (T in PATH_FIT): it follows the device.
 from story_format import c, n, scene
 from storylines.horzalah_trickster import (ALLY, CANARY, GIFT_GIVEN, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
                                             LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_RIBBON, P_WHISTLE, PRESENCE, REL,
-                                            SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, EXPLAINED, GREY_MET_Q2, TESTED, UNIT, WANTS, H, hz, nar, tag)
+                                            GUILD_SEEN, YOZZ_KILLED, YOZZ_SPARED, YOZZ_CONFESSION, SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, EXPLAINED, GREY_MET_Q2, TESTED, UNIT, WANTS, H, hz, nar, tag)
 
 SCENES = []
 
@@ -142,7 +142,7 @@ beat(H + "beat.storyteller", "The only man who does not look", '"Is he bothering
 
 beat(H + "beat.father", "The weaker branch", '"Do you ever hear from your father?"', [
     hz("start", '''{n}She is quiet long enough that you think she is not going to answer. When she does, she keeps her eyes on the street.{/n}
-"You do not *hear* from my father, mortal. He hears from you. You pray, or you fail, or you offer him something, and then, if he pleases, he answers, and his answer is a seal." {n}Her hand moves toward her own arm, where there is nothing now but skin.{/n} "I had eleven. Did you count them, in Yozz's hall? Most people did."''',
+"You do not *hear* from my father, mortal. He hears from you. You pray, or you fail, or you offer him something, and then, if he pleases, he answers, and his answer is a seal." {n}Her hand moves toward her own arm, where there is nothing now but skin.{/n} "I had eleven. Did you ever see them? Most people stared."''',
        c('"I didn\'t count them."', "count", requires=(SEALS_SEEN, SCAR_NOTED)),
        c('"I didn\'t count them."', "count_plain", requires=(SEALS_SEEN,), forbids=(SCAR_NOTED,)),
        c('"I never saw them."', "never", forbids=(SEALS_SEEN,)),
@@ -154,7 +154,7 @@ beat(H + "beat.father", "The weaker branch", '"Do you ever hear from your father
     hz("never", '''"Lucky you. They were very fine work. Demons came from other layers to admire them." {n}Her mouth twists.{/n} "My father lifted every one of them when my sister died, as if they had been lent to me. He left the collar. That was never lent."''',
        c("Continue", "seals")),
     hz("seals", '''"There are seals that grant power, and seals that bring delight, and seals that hurt, and seals that simply mark a body as his. I had the ones that hurt. They drain you. They make you so eager to atone that you would crawl to him on broken knees to be told what for."
-"He took my powers when he gave me to Yozz. He gave them back when you killed my sister, because then I was the only one left." {n}She smiles, thinly.{/n} "Do you know what that is called, in the Abyss? Being promoted."''',
+"He took my powers when he gave me to Yozz. He gave them back when you killed my sister, once she was dead in Colyphyr." {n}She smiles, thinly.{/n} "Do you know what that is called, in the Abyss? Being promoted."''',
        c('"He told me you were the stronger in a fight."', "stronger", requires=(NAMED,)),
        c('"And now he says nothing."', "silence")),
     hz("stronger", '''{n}Her head turns, very slowly.{/n} "He said that."
@@ -189,12 +189,12 @@ beat(H + "beat.sister", "The belch of Lamashtu", '"Tell me about Hepzamirah."', 
     hz("last", '''"Long enough to be sold." {n}She says it flatly.{/n} "When Yozz came to make his deal, Father needed something to pay in advance, and there I was, already bound and gift-wrapped. It saved him the trouble. He likes it when things save him the trouble."''',
        c("Continue", "canary", requires=(CANARY,)),
        c("Continue", "no_canary", requires=(GIFT_GIVEN,), forbids=(CANARY,)),
-       c("Continue", "no_box", forbids=(CANARY, GIFT_GIVEN))),
+       c("Continue", "no_box", forbids=(CANARY, GIFT_GIVEN, GUILD_SEEN))),
     hz("out", '''"I did not get out. I was taken out, by a buyer, on a leash. It is not the same thing." {n}Her lip curls.{/n} "Yozz thought he was very clever, getting Baphomet's daughter for an advance payment. He did not know that Father was clearing a shelf."''',
        c("Continue", "canary", requires=(CANARY,)),
        c("Continue", "no_canary", requires=(GIFT_GIVEN,), forbids=(CANARY,)),
-       c("Continue", "no_box", forbids=(CANARY, GIFT_GIVEN))),
-    hz("no_box", '''"I had a gift made for her. A box with a white ribbon, and a dead canary in it with my voice in its beak and a spear of fire in its heart. I meant to hand it to whoever came to Yozz's hall to kill her for me." {n}Her lip curls.{/n} "Nobody came. So it sat on a shelf in my chamber while somebody else did the killing, and she died without my present." {n}A short, ugly laugh.{/n} "I still have it. I take it down sometimes and shake it."''',
+       c("Continue", "no_box", forbids=(CANARY, GIFT_GIVEN, GUILD_SEEN))),
+    hz("no_box", '''"I had a gift ready. Black paper, white ribbon, a dead canary with a spear of fire in it. You never came to the hall to collect it. It stayed on my shelf; my sister died without opening it. I still have it. A wasted pleasure."''',
        c("Continue", "now")),
     hz("canary", '''"You carried my gift to her." {n}Her eyes go bright and hard.{/n} "In Colyphyr, in the mines. The dead canary. I put a little of my voice in its beak and a spear of fire in its heart, and I wrapped it in white ribbon, the way you wrap a present for someone you love."
 "I wish I had seen her face. Tell me. Did she scream?"''',
@@ -207,9 +207,9 @@ beat(H + "beat.sister", "The belch of Lamashtu", '"Tell me about Hepzamirah."', 
        c("Continue", "now")),
     hz("busy", '''"Good." {n}She sounds genuinely pleased.{/n} "I hope it distracted her. I hope it was the thing she was thinking about when you killed her. A dead bird from her little sister, in her face, with a ribbon on it."''',
        c("Continue", "now")),
-    hz("didnt", '''"No?" {n}Her eyes narrow.{/n} "Then somewhere in the Abyss there is a box with a dead canary in it and my voice in its beak, waiting for my sister, who is dead anyway." {n}She considers it.{/n} "That is almost better. Let it wait. Let it wait for a thousand years."''',
+    hz("didnt", '''"No?" {n}Her eyes narrow.{/n} "Then somewhere in the Abyss there is a box with a dead canary in it and my voice in its beak, waiting for my sister, who died without it." {n}She considers it.{/n} "That is almost better. Let it wait. Let it wait for a thousand years."''',
        c("Continue", "now")),
-    hz("now", '''"She is dead, and I have what she wanted: his regard, such as it is, and all of his silence." {n}A pause.{/n} "It is not as nice as she thought it would be. I should like to tell her so. It would make her furious."''',
+    hz("now", '''"She died in Colyphyr, and I took what she wanted: his regard, such as it is, and all of his silence." {n}A pause.{/n} "It is not as nice as she thought it would be. I should like to tell her so. It would make her furious."''',
        c("Continue", "back", requires=(HEPZ_BACK,)),
        c("[Leave it there.]", flags=(SISTER,), forbids=(HEPZ_BACK,))),
     hz("back", '''"And then, of course, I can tell her so. Because she is not dead. Because somebody went into Father's Labyrinth and stole her back out of it." {n}She looks at you, long and level.{/n}
@@ -224,17 +224,15 @@ beat(H + "beat.sister", "The belch of Lamashtu", '"Tell me about Hepzamirah."', 
 # --- 5. Yozz, and the leash. -----------------------------------------------------------------------------------------------
 
 beat(H + "beat.yozz", "Property", '"What became of Yozz?"', [
-    hz("start", '''"Yozz?" {n}Her face goes still with a kind of distaste, the way a cat's face goes still when you mention a bath.{/n} "Yozz is not a subject for the street, mortal. If he is alive, he is wishing he were not. If he is dead, he is still mine. Either way he is exactly where I put him."
-"Why do you ask? Did you want him? You could have killed him in his hall, you know. I would have let you. I was standing in the projection circle, hoping."''',
-       c('"I wanted to know what you did with the leash."', "leash"),
+    hz("start", '''"Yozz?" {n}Her lip curls.{/n} "Must we discuss him in your street? His Guild is mine. His household is mine. I have not forgotten what he paid for. What do you want to know?"''',
+       c('"I wanted to know what you did with the leash."', "leash", requires=(YOZZ_SPARED,), forbids=(YOZZ_KILLED,)),
        c('"I wanted to know what you do with things you own."', "own")),
-    hz("leash", '''"The leash." {n}She is quiet for a moment.{/n} "Gold links, each one as long as a finger. Yozz had my name engraved on the clasp so that his guests could read it while he walked me past their tables. *Horzalah.* The one time anybody spelled it right."
-"When he became mine, I had him wear it. Around his neck, clasp at the front, so that my name was under his chin. He wore it for a month. Then I had the dresser melt it down." {n}She touches the high collar.{/n} "The buckles on this are made from it. I wear it every day. It is the only piece of that year I kept."''',
+    hz("leash", '''"Gold links. My name on the clasp, where his guests could read it. When he became mine, I made him wear it with my name beneath his chin. He complained about the weight. Before I brought you his dresser, I had the links melted down for these buckles."
+{n}She touches her collar buckle.{/n} "I wear it every day. He does not."''',
        c('"Why keep any of it?"', "keep"),
        c('"It suits you better than it suited him."', "suits")),
-    hz("own", '''"I keep them." {n}She says it as if it were obvious.{/n} "That is what owning is. You keep a thing. You do not throw it away when it is dull, or give it away when it is inconvenient, or leave it in a cell while you are curious how long it will last." {n}Her voice goes very even.{/n}
-"My father owns things the way a fire owns a house. I own them the way a miser owns a coin. I know which I prefer."''',
-       c("Continue", "leash")),
+    hz("own", '''"I keep them. I know where they are, what they cost, and what they can do for me. Father left me in a cell. Yozz showed me off to his guests. Neither of them thought to watch what I was doing. I watch mine."''',
+       c("Continue", "leash", requires=(YOZZ_SPARED,), forbids=(YOZZ_KILLED,))),
     hz("keep", '''"So that I remember." {n}Her fingers find the buckle under her jaw.{/n} "Everything I own, I took. The Guild, from Yozz. My power, back from my father. My name, off my sister. If I throw away the leash, I forget that I took this too. And then one day someone will come with another one, and I will not know what it is."''',
        c("[Leave her with it.]", flags=(YOZZ,))),
     hz("suits", '''{n}Her eyes narrow, and for a moment you think you have made a mistake. Then her mouth curves at one corner.{/n}
@@ -296,10 +294,10 @@ beat(H + "beat.names", "Three names", '"What happened to the three names on your
 
 beat(H + "beat.lady", "Her city", '"Does the Lady in Shadow know what you do in her city?"', [
     hz("start", '''"Nocticula knows everything that is done in Alushinyrra, mortal, and a great deal that is only thought about." {n}She says the name carefully, the way people in the Isles say it: politely, and not too often.{/n}
-"The Guild exists because she allows it to. It is very simple. We keep our knives pointed outward, at the rest of the Abyss and at fools like you, and never at her court. We pay our taxes to her treasurers on the day. And when her court wants someone dead who cannot be seen to die by her hand, a contract appears on our board, and nobody asks who posted it."''',
+"The headquarters are in Father's realm. The city hall is in hers. Our knives work in Alushinyrra because she tolerates them, and I intend to remain useful. Her court sends work to our board; my city masters take it without asking who paid. Nobody there is fool enough to post a contract on her."''',
        c('"And if she ever wants you dead?"', "dead"),
        c('"Have you met her?"', "met")),
-    hz("dead", '''"Then I am dead, and my masters will fight over the chair, and she will choose the winner by watching which of them looks most frightened of her." {n}She shrugs.{/n} "Everyone in Alushinyrra lives at her pleasure. The difference between us is that I know it. Yozz did not. He thought he was clever enough to be tolerated. Nobody is clever enough. You are only useful enough, or you are not."''',
+    hz("dead", '''"If she wants me dead, I will not hide behind Father's gates and call that safety. At the city hall my masters will bow to whichever knife her court chooses to tolerate. The headquarters may be outside her city. My business is not."''',
        c("Continue", "end")),
     hz("met", '''"Once. Across a hall, at a reception, when I was on Yozz's leash." {n}Her voice goes very flat.{/n} "She looked at me for about as long as my father ever did. Then she said something to the incubus beside her, and he laughed, and she went on to the next thing." {n}A pause.{/n} "I have spent a great deal of time wondering what she said. I think it was: *Baphomet's leftovers.* I think I would have said the same."''',
        c("Continue", "end")),
@@ -307,7 +305,7 @@ beat(H + "beat.lady", "Her city", '"Does the Lady in Shadow know what you do in 
 "If you are her toy, mortal, I will not be jealous. One does not envy the Lady in Shadow; one only gets out of her way. But I will know. And I will keep my box somewhere she cannot find it."''',
        c('"Keep it wherever you like."', flags=(LADY,)),
        c('"I\'m nobody\'s toy."', "toy")),
-    hz("toy", '''"Everyone is someone's toy in the Isles, mortal. The trick is choosing whose." {n}She almost smiles.{/n} "You chose badly, of course. You chose the one who cuts."''',
+    hz("toy", '''"Yozz called me his ornament. Father called me payment. If the Lady calls you hers, do not expect me to fight her over the word. I have a Guild to keep."''',
        c("[Let her have that.]", flags=(LADY,))),
 ], requires=(BOARD,), forbids=(LADY,), delay=24)
 
@@ -328,7 +326,7 @@ beat(H + "beat.dwarf", "The dwarf", '"You\'re watching Greybor."', [
        c("Continue", "demand")),
     hz("betrayed_plain", '''"He took my contract on you, and my gold, and my confidence, and at the Dry Crossroads he turned out to have been yours the whole time." {n}Her teeth show.{/n} "He barely looked at me. He stood there with his arms folded while I lay in the dust, as if I were a job that had come in under budget. I have never been so humiliated in my life, and my life has been one long humiliation. I want his head, mortal."''',
        c("Continue", "demand")),
-    hz("betrayed_b", '''"He sold you to me, and then he sold me to you, and he did it all without once raising his voice." {n}Something like admiration moves across her face, and she smothers it.{/n} "I have hired a great many knives. That one I should have hired properly. I want his head anyway, mortal. It is a matter of principle."''',
+    hz("betrayed_b", '''"He sold you to me. Then you beat us both, and he lay in the dust explaining how badly we had misjudged you." {n}Her teeth show.{/n} "You let him live. I hope he charged you for the lesson; I would hate to think he learned anything for nothing. I still want his head, mortal. His aim was poor and his price was high."''',
        c("Continue", "demand")),
     hz("never", '''"We have never met, the dwarf and I. But every knife in the Abyss knows his name, and his rates, and that he has never once broken a contract he did not mean to break." {n}Her lip curls.{/n} "An assassin with a reputation to protect, standing at the Knight Commander's back. There is nothing in the Abyss more tiresome. I want his head, mortal, for the principle of the thing."''',
        c("Continue", "demand")),
@@ -342,11 +340,11 @@ beat(H + "beat.dwarf", "The dwarf", '"You\'re watching Greybor."', [
     hz("him", '''{n}She looks across at Greybor. Greybor, who has heard every word, touches two fingers to his brow in a small salute.{/n}
 "He would enjoy it." {n}She sounds almost wistful.{/n} "That is the trouble. He would enjoy it, and I would probably lose, and then he would charge you for the cleaning." {n}She turns back to the Storyteller's shelves.{/n} "Another time. When I am less tired and he is less smug."''',
        c("[Leave them watching each other.]", flags=(DWARF,))),
-    nar("pipe", '''{n}Greybor keeps a whistle in his coat, a little thing of dark metal chased with runes, the one that calls his hidden friends out of the dark. You walk across the street to ask him about the weather in the Worldwound, which he tells you at some length, and when you come back the whistle is in your sleeve and his coat pocket is a little lighter than it was.{/n}
+    nar("pipe", '''{n}Greybor keeps a whistle in his coat, a little thing of dark metal chased with runes, his signal whistle. You walk across the street to ask him about the weather in the Worldwound, which he tells you at some length, and when you come back the whistle is in your sleeve and his coat pocket is a little lighter than it was.{/n}
 {n}Horzalah takes it from you with two fingers, as if it were something dead she had been given to identify.{/n}''',
         c("Continue", "pipe2")),
     hz("pipe2", '''"His whistle." {n}She turns it over, runes and all. Then she laughs, properly, loud enough that Greybor looks up, pats his coat, looks at her, and goes very still.{/n}
-"You stole the dwarf's whistle for me. The thing that springs his traps. In the street, in front of him." {n}She puts it inside her collar, against her throat.{/n} "It is the stupidest gift anyone has ever given me, and I would not trade it for his head. The next time he lays a trap for me, he will have to whistle it up by hand. He will be looking for it for a week. He will know exactly where it is, and he will never ask for it back, because then he would have to admit I have it."''',
+"You stole the dwarf's signal whistle for me. In the street, in front of him." {n}She puts it inside her collar, against her throat.{/n} "It is the stupidest gift anyone has ever given me, and I would not trade it for his head. He knows exactly where it is. Let him come and ask for it. Loudly, so your sentries hear."''',
        c("[Leave before Greybor crosses the street.]", flags=(DWARF, P_WHISTLE))),
 ], requires=(GREY_IN,), forbids=(DWARF, GREY_DEAD, GREY_KICKED), delay=24)
 
@@ -517,8 +515,8 @@ beat(H + "beat.bare", "Bare", '"You\'re not wearing the collar."', [
 beat(H + "beat.hunger", "Thin", '"When did you last eat?"', [
     hz("start", '''{n}She looks at you as if you had asked her when she last bled.{/n}
 "Why?"''',
-       c('"You were half-starved in Yozz\'s hall. You\'re not much better now."', "yozz", requires=(MET_Q2,)),
-       c('"You look half-starved."', "yozz", forbids=(MET_Q2,)),
+       c('"You were half-starved in Yozz\'s hall. You\'re not much better now."', "yozz", requires=(GUILD_SEEN,)),
+       c('"You look half-starved."', "yozz", forbids=(GUILD_SEEN,)),
        c('[Hold out the bread and sausage you brought from the cookhouse.] "No reason."', "food")),
     hz("yozz", '''{n}Her mouth tightens.{/n} "Yozz liked his concubine thin. He said it showed off the seals. He said a daughter of Baphomet with meat on her bones would look like any other demon, and he had not paid for any other demon." {n}She shrugs, a sharp movement of sharp shoulders.{/n}
 "So I was fed what the dogs did not want, and I learned to live on it, and I am still alive. Everything he did to me, I lived through. I do not need your cookhouse."''',
@@ -562,7 +560,7 @@ beat(H + "beat.thousands", "One of thousands", '"How many brothers and sisters d
     hz("others", '''"Some. There are three or four of my brothers in the Abyss who send me assassins every few years, out of habit, and I send some back. There is a sister in Absalom who pretends to be a mortal and sells perfume. I sent her a canary too, once, and she sent me back a bottle of something that took the skin off my hands." {n}Her mouth curves.{/n} "I liked her for that. I still send her a card at the winter solstice."''',
        c("Continue", "end")),
     hz("end", '''{n}She looks down the street, at the soldiers and the carts and the ordinary noise of your city.{/n}
-"You mortals have one mother and one father, most of you, and you think they owe you something. It must be very restful." {n}She glances at you.{/n} "Do not tell me about yours. I will only be jealous, and then I will be cruel about them, and you will stop bringing sausage."''',
+"You mortals have one mother and one father, most of you, and you think they owe you something. It must be very restful." {n}She glances at you.{/n} "Do not tell me about yours. I will only be jealous, and then I will be cruel about them, and you will stop coming to see me."''',
        c("[Tell her nothing about your parents.]", flags=(THOUSANDS,)),
        c('"Mine are dead. You can be as cruel as you like."', "dead")),
     hz("dead", '''{n}She is quiet for a moment, which is not what you expected.{/n}
@@ -577,11 +575,11 @@ beat(H + "beat.labyrinth", "Her cell", '"I\'ve walked the Ivory Labyrinth."', [
     hz("start", '''{n}Her head turns, very slowly.{/n} "Have you." {n}It is not a question.{/n} "And come out again. Most people do not. Most people do not want to, after a while; that is what it is for."
 "Did you see my cell? No. You would not know it. It is on the third turning from the jailers' hall, behind a wall that moves on the hour. It has a floor of bone and a ceiling you cannot see, and in the dark the walls tell you what you did wrong, in your father's voice, over and over, until you believe them."''',
        c('"How long were you there?"', "long"),
-       c('"And he walked past it, while I was there. He\'s very much alive, and very busy."', "father")),
+       c('"He spoke to me through a mirror. He\'s very much alive, and very busy."', "father")),
     hz("long", '''"Long enough to stop counting." {n}She says it without any particular feeling.{/n} "Hepzamirah came to visit, the first year, to tell me how she was doing. Then she stopped coming. I think she forgot I was there. I think that was the cruellest thing she ever did to me, and she did not even do it on purpose."''',
        c("Continue", "jailers")),
-    hz("father", '''"Alive and busy." {n}She laughs, harshly.{/n} "Yes. He is always busy. The Labyrinth is his house and his ledger and his larder. Every soul in it is his: every jailer, every prisoner, every cultist who died on his altar. He walks its halls counting what he owns."
-"And he walked past my cell for years, and counted me, and went on." {n}Her fingers find her collar.{/n} "He did not answer me there, and he has not answered me since. He is very consistent. It is the only virtue he has."''',
+    hz("father", '''"A mirror. Yes. It saves him the trouble of visiting." {n}She laughs harshly.{/n} "The Labyrinth is his house and his larder. He knew where my sister had put me. He left me there."
+{n}Her fingers find her collar.{/n} "He did not answer then. He does not answer now. I have stopped waiting at the door."''',
        c("Continue", "jailers")),
     hz("jailers", '''"The jailers grovelled to me when I first came, you know. Baphomet's own daughter, in their care; they did not know what they were allowed to do. Then my sister told them, and they found out, and they enjoyed finding out." {n}A thin smile.{/n}
 "I have their names. I have had them for a long time. One day, when I am bored, I will post them on my board, one at a time, at a very low rate, so that everyone in Alushinyrra knows how little they are worth to me."''',
@@ -622,7 +620,7 @@ beat(H + "beat.head", "Another gift", '"Is that another box?"', [
 beat(H + "beat.ramparts", "What you were", '"Walk the walls with me tonight."', [
     nar("start", '''{n}She comes to the walls after the last watch has changed, when the camp below is dark except for the forges and the Worldwound is a low red stain on the northern sky. She does not ask where you want to go. She walks, and you walk beside her, on her left, and she lets you.{/n}''',
         c("Continue", "ask")),
-    hz("ask", '''"Everyone knows what I was," {n}she says, after a while.{/n} "A payment. A concubine. A prisoner. A projection in a dead man's hall. I have told you all of it, and you did not look at me differently once, and I have been waiting for you to do me the courtesy of telling me what *you* were."
+    hz("ask", '''"Everyone knows what I was," {n}she says, after a while.{/n} "A payment. A concubine. A prisoner. A projection in Yozz's hall. You have heard enough of me, and you did not look at me differently once, and I have been waiting for you to do me the courtesy of telling me what *you* were."
 "Before the crusade. Before the Wound put its hand in your chest. What were you, mortal?"''',
        c('"Nobody. That was the best part."', "nobody"),
        c('"A liar, mostly. It was good training."', "liar"),
@@ -632,13 +630,13 @@ beat(H + "beat.ramparts", "What you were", '"Walk the walls with me tonight."', 
     hz("liar", '''"A liar." {n}Her mouth curves.{/n} "Yes. I thought so, the night you told me a better story than the one I was going to tell. Only a liar knows how much a good story is worth." {n}She glances at you.{/n} "The difference between us, mortal, is that I lie for a living. I have never been sure what you lie for."''',
        c('"For you, lately."', "end"),
        c("Continue", "end")),
-    hz("never", '''"Nobody expects any of this." {n}She shrugs.{/n} "My father did not expect me to come back from Yozz's hall. My sister did not expect her gift. Deskari did not expect you. The whole Abyss runs on people not expecting things." {n}A pause.{/n} "I did not expect you either, if you want to know. I expected your head."''',
+    hz("never", '''"I expected your head. I got an ear and a crusader who still comes looking for me. I have dismissed assassins for bringing home less surprising failures."''',
        c("Continue", "end")),
     hz("end", '''{n}At the corner tower she stops, and puts her back to the parapet, and looks at you in the red light, saying nothing, until the sentry on the next tower has turned his back twice.{/n}
-"When Yozz walked me through his parties on the leash, I made a list," {n}she says at last, as if it were being dragged out of her.{/n} "Everyone who looked at me. I meant to kill them all, one day. I have killed most of them." {n}Her jaw tightens.{/n} "Last week I started another list. It has one name on it, and I do not know what it is for, and I hate it, and I will not cross it off. Do not ask me whose name. Do not *smile*, mortal."''',
+"When Yozz walked me through his parties on the leash, I made a list," {n}she says at last, as if it were being dragged out of her.{/n} "Everyone who looked at me. I meant to kill them all, one day. I have killed most of them." {n}Her jaw tightens.{/n} "Since you gave me the ear, I have found myself making another list. One name. I keep looking at it instead of putting a price beside it." {n}Her hand closes on the front of your coat.{/n} "Do not smile, mortal."''',
        c('"I\'m not smiling."', "take"),
        c("[Take her hand, and wait.]", "hand")),
-    hz("take", '''"You are. With your whole face." {n}She shoves you, not gently, and then catches the front of your coat before you can step back, and holds on.{/n} "You are the worst liar I have ever met, for someone who lies for a living. Walk. Before the sentry comes back."''',
+    hz("take", '''"You are. With your whole face." {n}She shoves you, then catches your coat before you step back.{/n} "Walk. Before the sentry comes back."''',
        c("[Walk her back along the wall.]", flags=(RAMPARTS,))),
     nar("hand", '''{n}You hold out your hand and leave it there, between you, and do nothing else. She looks at it. Then she takes it, and puts it flat against her throat, under the collar, and holds it there, and the two of you stand on the wall with the Worldwound burning low in the north until the next watch comes up the stair and goes very quickly down again.{/n}''',
         c("[Stay until she lets go.]", flags=(RAMPARTS,))),
@@ -647,7 +645,7 @@ beat(H + "beat.ramparts", "What you were", '"Walk the walls with me tonight."', 
 
 # --- 20. A hat. ------------------------------------------------------------------------------------------------------------
 
-beat(H + "beat.hat", "Wear a hat", '"You said I could wear a hat."', [
+beat(H + "beat.hat", "Wear a hat", '"I bought a hat."', [
     nar("start", '''{n}You are wearing one. It is a good hat, broad-brimmed, pulled down over the ruined side of your head. It cost more than you meant to pay.{/n}''',
         c("Continue", "hatter", requires=(FREED,)),
         c("Continue", "dresser", forbids=(FREED,))),
@@ -688,8 +686,9 @@ beat(H + "beat.cup", "A cup of wine", '"Is that for me?"', [
     hz("trust", '''{n}She holds the cup out a moment longer, and then, very deliberately, she pours it out on the cobbles, where it hisses faintly, and hands you the other.{/n}
 "Never say that to me again." {n}Her voice has gone flat.{/n} "Never say *whichever you give me* to anyone in the Abyss, and least of all to me. Somebody will take you at your word one day, and it will not be a game."''',
        c("[Drink the other cup.]", flags=(CUP,))),
+    # Authored concealed application while swapping; existing check and dreams stand.
     hz("swap", '''"Clever." {n}She sounds pleased, and a little disappointed.{/n} "The clever answer. Yozz always gave the clever answer." {n}She swaps the cups without hesitation and drinks first, and then watches you drink the one she handed back.{/n}
-"The trouble with the clever answer, mortal, is that I poisoned both. A little. We will both have bad dreams tonight." {n}She sets down the cup.{/n} "I will think of you in mine. You may think of me in yours."''',
+"You let me handle your cup. That was careless. A little on each rim, while you watched me drink. We will both have bad dreams tonight." {n}She sets down the cup.{/n} "I will think of you in mine. You may think of me in yours."''',
        c("[Finish your wine.]", flags=(CUP, CUP_DREAMS))),
 ], requires=(TESTED,), forbids=(CUP, ALLY), delay=24)
 
@@ -705,7 +704,7 @@ beat(H + "beat.question", "What you want", '"You\'re frowning at me."', [
        c("Continue", "start")),
     hz("dreams", '''"Did you dream?" {n}She does not wait for an answer.{/n} "I did. You were in it, holding two cups, and you would not drink either of them. I woke up furious." {n}Her eyes narrow.{/n} "That was your fault, and I have not decided what it costs."''',
        c("Continue", "start")),
-    hz("start", '''"I am thinking." {n}She does not stop frowning.{/n} "You asked me what I wanted. In your room, the night after my Guild bowed to the box. I told you. And you have never once told me what *you* want, and I have been trying to work it out, the way I would work out a contract, and I cannot."
+    hz("start", '''"I am thinking. When you asked what I wanted, I told you. You never told me what you wanted in return. Nobody offers an ear without wanting something, mortal. What was it?"
 "Nobody gives anything for nothing. You gave me an ear. So, mortal: what do you want from me?"''',
        c('"Nothing you have to sell."', "sell"),
        c('"To see what you do when nobody owns you."', "see"),
@@ -744,9 +743,9 @@ beat(H + "beat.second_night", "Your turn", '"Come up tonight."', [
     nar("wait", '''{n}She stops. Her claws stop, halfway down your laces. She looks at you with an expression you have never seen on her: surprise, and then, slowly, something that is very nearly delight.{/n}
 {n}"Oh," she says softly. "Oh, you learn." And she stands perfectly still, with her hands at her sides and her pale throat bare in the candlelight, and lets you undo her: every lace of the leathers, every buckle, the long line of her back under your palms, the scar under your mouth. She does not move. Her breath does. By the time the last of it is on the floor she is shaking with the effort of standing still.{/n}''',
         c("Continue", "wait2")),
-    hz("wait2", '''"Enough," {n}she says, through her teeth, and it is not an order; it is a surrender, and she hates it, and she does not care.{/n} {n}She takes two fistfuls of your shirt and falls backwards onto the bed, and takes you with her, and rolls you under her, and settles her knees on either side of you in the candlelight.{/n}''',
+    hz("wait2", '''"Enough," {n}she says through her teeth. She takes two fistfuls of your shirt and pulls you onto the bed beneath her. Her knees settle on either side of you; she bends until her bare throat brushes your mouth.{/n}''',
        c("Continue", "cut")),
-    nar("cut", '''{n}The candle gutters. Her breath catches in the dark, once, and then again, and her claws find your back, and the guards outside your door hear something that they will argue about in the barracks for a month.{/n}''',
+    nar("cut", '''{n}Her mouth closes on yours. She reaches toward the bedside candle, and the room goes dark.{/n}''',
         c("Continue", "after")),
     nar("after", '''{n}When the morning bell rings she is sitting on the edge of your map table in nothing but her scar, buckling on her collar, with the Worldwound pressed flat under her thigh.{/n}
 "Your guards are very bad at pretending," {n}she says, without looking round.{/n} "The one on the left has been trying not to listen for three hours. Promote him. He has a gift for suffering." {n}She finishes the buckle, and the air begins to fold.{/n} "My turn next. I will send for you."''',
@@ -782,19 +781,16 @@ beat(H + "beat.sentries", "Holes in the wall", '"You\'re laughing at my sentries
 # --- 25. "You served me well, Golarion..." ----------------------------------------------------------------------------------
 
 beat(H + "beat.used", "You served me well", '"In Yozz\'s hall you nearly said something."', [
-    hz("start", '''{n}She does not pretend not to understand. She only raises one eyebrow, very slightly, as if you had caught her with her hand in a strongbox that she happened to own anyway.{/n}
-"*You served me well, Golarion.*" {n}She says it in exactly the voice she used over Yozz's body.{/n} "I stopped. You heard the half I said. Most people would have heard nothing; they were too busy looking at the corpses."
-"Yes. I used you. Did you think it was an accident that a Guild contract came to your dwarf, and led you to Willodus, and Willodus led you to Yozz, and Yozz was stupid enough to try to cheat a crusader who had just walked through half the Midnight Isles?"''',
+    hz("start", '''{n}She raises one eyebrow.{/n} "You served me well. I nearly said too much in Yozz's hall, did I not? That overdressed fool loved having others do his dirty work. I enjoyed doing the same to him."
+"He thought I would stand behind his chair forever. By the time he understood what had happened, I was sitting in it. Did you think I had spent all those years admiring the upholstery?"''',
        c('"No. I thought it was very well done."', "admire"),
        c('"I thought you owed me for it."', "owed"),
        c('"And now?"', "now")),
-    hz("admire", '''{n}She looks, for a moment, genuinely pleased, the way an artisan is pleased when someone notices the joint that nobody else noticed.{/n}
-"It was very well done. It took me four years. I had to make Yozz believe he had thought of every step himself, and I had to do it while standing behind his chair in a collar." {n}She shrugs.{/n} "And then you came along and did it all in an afternoon, with a dwarf and a great many corpses. It was almost insulting."''',
+    hz("admire", '''"It took years to make Yozz believe he had arranged it himself. Then you and your dwarf walked in and ruined him in an afternoon. I would have preferred less blood on the furniture."''',
        c("Continue", "now")),
-    hz("owed", '''"Owed you." {n}She repeats it, amused.{/n} "I gave you Yozz's bounty, and his blades if he was stupid enough to offer them, and your life, which I could have taken in that hall with a word to the right assassin. That is a great deal of payment for a tool, mortal."
-"But you are right. I never gave you anything you did not have to fight me for." {n}Her eyes go to the side of your head.{/n} "And then you gave me something without a fight. You see why that bothered me."''',
+    hz("owed", '''"You came to collect from Yozz. I meant to take his Guild. You did your killing; I took his chair. And then you gave me an ear without either of us fighting for it. You see why that bothered me."''',
        c("Continue", "now")),
-    hz("now", '''"Now?" {n}She considers you, head tilted.{/n} "Now I am wondering which of us is the tool. You offered me a story when I had nothing left, and then you bled for it, and I went home and told it, and it worked. I have been using your ear to rule my masters for weeks."
+    hz("now", '''"Now? Now I am wondering which of us is the tool. You offered me a story when I had nothing left, and then you bled for it. I went home and told it, and it worked. I have been using your ear to rule my masters ever since I got home."
 "And you have been using me to make a Guild of assassins decline every contract on your head in the Midnight Isles." {n}Her mouth curves.{/n} "It is a very good arrangement. It is the first one I have ever made where I cannot work out who is cheating whom."''',
        c('"Nobody\'s cheating."', "nobody"),
        c('"I am. A little."', "little")),
@@ -802,7 +798,7 @@ beat(H + "beat.used", "You served me well", '"In Yozz\'s hall you nearly said so
        c("[Leave her laughing.]", flags=(USED,))),
     hz("little", '''"Good." {n}She sounds relieved.{/n} "I would not know what to do with you otherwise. Keep cheating a little. I will keep catching you, a little. It will keep us both sharp."''',
        c("[Leave her pleased.]", flags=(USED,))),
-], requires=(YOZZ, MET_Q2), forbids=(USED,), delay=24)
+], requires=(YOZZ, YOZZ_CONFESSION), forbids=(USED,), delay=24)
 
 
 # --- 26. What she tells in person: a master who tried her chair, and the masters who stood. ------------------------------
@@ -870,3 +866,145 @@ The dresser sends his respects, and asks whether the Knight Commander would like
 def integrate(payload):
     """Nothing of its own to bind: the beats read the flags horzalah_trickster declares."""
     return payload
+
+
+# Reviewed polish: factual variants append after every existing scene and node.
+# The corpse display and pre-gift buckle manufacture are authored Guild business.
+import copy as _polish_copy
+
+_yozz = next(s for s in SCENES if s["Id"] == H + "beat.yozz")
+_yozz_nodes = {nd["Id"]: nd for nd in _yozz["Nodes"]}
+for _source, _index in (("start", 0), ("own", 0)):
+    _old = _yozz_nodes[_source]["Choices"][_index]
+    for _target, _required, _forbidden in (
+            ("leash_dead", [YOZZ_KILLED], []),
+            ("leash_unvisited", [], [YOZZ_KILLED, YOZZ_SPARED])):
+        _answer = _polish_copy.deepcopy(_old)
+        _answer.update(Next=_target, Requires=_required, Forbids=_forbidden)
+        _yozz_nodes[_source]["Choices"].append(_answer)
+for _id, _text in (
+        ("leash_dead", '''"You killed him in his hall. I had wanted to do that myself." {n}She bares her teeth.{/n} "I had the gold leash fetched from his rooms and clasped it round his corpse. My name beneath his chin. The Guild saw him laid out that way before he was dragged off. Before I brought you his dresser, I had the links melted down for these buckles."
+{n}She touches her collar buckle.{/n} "This is what I kept. A corpse would have spoiled the room."'''),
+        ("leash_unvisited", '''"He had my name engraved on a gold clasp. His guests could read it while he walked me past their tables. When I took his household, I had the leash melted down for these buckles. That was before I brought you his dresser."
+{n}She touches her collar buckle.{/n} "Gold. For once, he bought something I wanted to keep."''')):
+    _variant = _polish_copy.deepcopy(_yozz_nodes["leash"])
+    _variant.update(Id=_id, Text=_text)
+    _yozz["Nodes"].append(_variant)
+
+_sister = next(s for s in SCENES if s["Id"] == H + "beat.sister")
+_sister_nodes = {nd["Id"]: nd for nd in _sister["Nodes"]}
+for _id in ("last", "out"):
+    _sister_nodes[_id]["Choices"].append(c("Continue", "no_box_visited",
+        requires=(GUILD_SEEN,), forbids=(CANARY, GIFT_GIVEN)))
+_no_box_visited = _polish_copy.deepcopy(_sister_nodes["no_box"])
+_no_box_visited.update(Id="no_box_visited", Text='''"I had a gift ready for her. You came to the hall, but I never gave you the box. It stayed on my shelf. Black paper, white ribbon, and a canary that would have given her something to scream about. She died without opening it. I still have it. A wasted pleasure."''')
+_sister["Nodes"].append(_no_box_visited)
+
+_used = next(s for s in SCENES if s["Id"] == H + "beat.used")
+_used_first = _polish_copy.deepcopy(_used)
+_used_first.update(Id=H + "beat.used_first", Entry='"What did you want from me before all this?"')
+_used_first["Requires"].remove(YOZZ_CONFESSION)
+_used_first["Forbids"].append(YOZZ_CONFESSION)
+_first_nodes = {nd["Id"]: nd for nd in _used_first["Nodes"]}
+_first_nodes["start"]["Text"] = '''"Before the ear? Yozz had a Guild and I stood behind his chair. I wanted the chair. Your crusade frightened him; frightened fools pay well and make mistakes. I meant to use those mistakes."
+{n}She glances at the side of your head.{/n} "Now I have the Guild, and you have one ear. Ask me which of us has been used."'''
+_first_nodes["admire"]["Text"] = '''"I had years to study Yozz. His vanity, his greed, the knives he trusted. I learned more than he ever paid for. Then the crusade gave him something to be afraid of. I did not waste it."'''
+_first_nodes["owed"]["Text"] = '''"Owed you? I did not hire you to do me a kindness. I wanted his chair. I got it. You offered me an ear later, and now you want to reckon the account? Very well. Ask about now."'''
+SCENES.append(_used_first)
+tag(_used_first["Id"], "T")
+
+
+def polish_sister_consumers(payload):
+    """Consume the engine's current participant reader, without a new availability model.
+
+    Called after integrate_participant_inventory: that owner appends sister_absent.
+    The departure receipt is the actual existing body.terms refused answer, not closure.
+    Historical return remains usable when her current participant is unavailable.
+    """
+    current = "participant.hepzamirah.available"
+    # Completing body.terms with closure and without commitment is the
+    # existing refused terminal. Current presence always takes precedence.
+    departure = H + "sister_departed"
+
+    def split(scene, target, departed_text, absent_text):
+        nodes = {nd["Id"]: nd for nd in scene["Nodes"]}
+        original = nodes[target]
+        for node in list(scene["Nodes"]):
+            for choice in list(node["Choices"]):
+                if choice.get("Next") != target:
+                    continue
+                if current not in choice["Requires"]:
+                    choice["Requires"].append(current)
+                for suffix, required, forbidden in (
+                        ("_departed", [HEPZ_BACK, departure], [current]),
+                        ("_unavailable", [HEPZ_BACK], [current])):
+                    twin = _polish_copy.deepcopy(choice)
+                    twin["Requires"] = [f for f in twin["Requires"] if f != current]
+                    twin["Requires"] = list(dict.fromkeys(twin["Requires"] + required))
+                    twin["Forbids"] = list(dict.fromkeys(twin["Forbids"] + forbidden))
+                    if suffix == "_unavailable":
+                        twin["Forbids"].append(departure)
+                    twin["Next"] = target + suffix
+                    node["Choices"].append(twin)
+        for suffix, text in (("_departed", departed_text), ("_unavailable", absent_text)):
+            variant = _polish_copy.deepcopy(original)
+            variant.update(Id=target + suffix, Text=text)
+            scene["Nodes"].append(variant)
+
+    scenes = {s["Id"]: s for s in payload["Scenes"]}
+    name = scenes[H + "beat.name"]
+    # The owner's replace_choice swaps historical HEPZ_BACK for current presence.
+    # Restore the historical branch only for our appended loss variants.
+    split(name, "sister_here",
+        '"The insult was bad enough while she was here. She has left your city and your soldiers still put her name in my mouth. Teach them mine."',
+        '"You brought my sister back, and your soldiers still put her name in my mouth. Teach them mine."')
+    opening = name["Nodes"][0]
+    for choice in opening["Choices"]:
+        if choice.get("Next") == "choice":
+            choice["Forbids"] = [HEPZ_BACK if f == current else f for f in choice["Forbids"]]
+
+    sister = scenes[H + "beat.sister"]
+    back = next(nd for nd in sister["Nodes"] if nd["Id"] == "back")
+    absent_back = '"You brought her back from Colyphyr." {n}Her teeth show.{/n} "If she comes looking for you again, what is between her and me stays ours. You will not settle it for us."\n' + back["Text"].split('\n', 1)[1]
+    split(sister, "back", absent_back, absent_back)
+
+    for scene in payload["Scenes"]:
+        if scene["Id"] not in (H + "guild.kept", H + "unmet.knife", H + "late.at_night"):
+            continue
+        nodes = {nd["Id"]: nd for nd in scene["Nodes"]}
+        prefix = "" if scene["Id"] == H + "guild.kept" else "eng8.guild."
+        target = prefix + "sister"
+        # The copied Chapter 6 reports predate participant integration. Read the
+        # same engine current participant at every copied incoming edge too.
+        if prefix:
+            for node in scene["Nodes"]:
+                if not node["Id"].startswith(prefix):
+                    continue
+                for choice in node["Choices"]:
+                    for field in ("Requires", "Forbids"):
+                        choice[field] = [current if f == HEPZ_BACK else f for f in choice[field]]
+        departed_text = '"You brought my sister back, and now she has left your city. For once she has spared me the trouble of avoiding her. Keep her away from my box if she comes looking for you."'
+        absent_text = '"You brought my sister back from Colyphyr. Keep her away from my box if she ever comes looking for you. I have not forgotten the Labyrinth."'
+        absent = prefix + "sister_absent"
+        if absent in nodes:
+            # Keep the engine's saved absence answers and target. Only the
+            # actual departure gets an appended complementary answer/node.
+            nodes[absent]["Text"] = absent_text
+            for node in list(scene["Nodes"]):
+                for choice in list(node["Choices"]):
+                    if choice.get("Next") != absent:
+                        continue
+                    twin = _polish_copy.deepcopy(choice)
+                    twin["Next"] = target + "_departed"
+                    twin["Requires"].append(departure)
+                    node["Choices"].append(twin)
+                    choice["Forbids"].append(departure)
+            variant = _polish_copy.deepcopy(nodes[target])
+            variant.update(Id=target + "_departed", Text=departed_text)
+            scene["Nodes"].append(variant)
+        else:
+            split(scene, target, departed_text, absent_text)
+        for node in scene["Nodes"]:
+            for choice in node["Choices"]:
+                if choice.get("Next") == prefix + "pivot":
+                    choice["Forbids"] = [HEPZ_BACK if f == current else f for f in choice["Forbids"]]
