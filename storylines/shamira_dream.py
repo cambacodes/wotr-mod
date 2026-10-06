@@ -583,6 +583,8 @@ hub(_BAR["Id"], _BAR["Title"], '"Who is that man by the door?"', _bar_nodes, req
 
 
 def integrate(payload):
+    from storylines import shamira_partner
+    shamira_partner.integrate(payload)
     # Her presence (the King's corner table, or the awning); the native keys read here bind on demand.
     for key, value in PRESENCES.items():
         have = payload.setdefault("Presences", {}).get(key)

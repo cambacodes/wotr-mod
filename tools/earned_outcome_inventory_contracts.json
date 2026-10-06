@@ -36,6 +36,8 @@
     ]
   },
   "exemptions": {
+    "shamira.trickster.epilogue.late/partner_late_no": "Partner-stance refusal: the romance has ended; only the existing body debt remains.",
+    "shamira.trickster.epilogue.late/partner_broken": "Partner discovery ends the affair on-page; no romantic reward or repair is granted.",
     "AeonEpilogue": "Native rewritten history has separate fate states (existing L4 doctrine).",
     "noct.ending_death": "Mourning a dead Nocticula; contains historical harbor facts, no new reward.",
     "noct.ending_sacrifice": "Historical harbor account after fatal Commander sacrifice, no living reward.",
