@@ -1010,3 +1010,153 @@ def _reviewed_history():
 
 
 _reviewed_history()
+
+# Round 2: authored situations and history receipts. The invitation and survival
+# requirements are unchanged; these readers distinguish what actually happened.
+SERVICE = P + "native_incognito_service"
+JOINED = P + "native_joined_march"
+BINDINGS["SeenCues"][JOINED] = ["0c2f550f8d311e64a8c80ab23859a25f"]  # Tour_End_Queen/Cue_0009 starts GalfreyWithUs
+DERIVED[SERVICE] = [[JOINED], [MET]]
+
+
+def history_variant(host, nid, flag, alternate, suffix):
+    """Append a text variant and selector; keep old nodes and answer indices.
+
+    The original node is the flag-present history. Call only on non-entry nodes.
+    Conversation variants use nodes, never conditional paragraphs.
+    """
+    import copy
+    original = next(node for node in host["Nodes"] if node["Id"] == nid)
+    variant = copy.deepcopy(original)
+    variant.update(Id=nid + "." + suffix, Text=alternate)
+    selector = nid + ".select." + suffix
+    for node in host["Nodes"]:
+        for choice in node["Choices"]:
+            if choice.get("Next") == nid:
+                choice["Next"] = selector
+            for branch in ("Success", "Failure"):
+                if choice.get("Check", {}).get(branch) == nid:
+                    choice["Check"][branch] = selector
+    host["Nodes"].extend([variant, nar(selector, "{n}There is a brief silence.{/n}",
+        c("Continue", nid, requires=(flag,)),
+        c("Continue", variant["Id"], forbids=(flag,)))])
+
+
+def _round2_history():
+    RELATIONSHIP["Description"] = ("Queen Galfrey has spent a century ruling Mendev and fighting its war. "
+        "Kitrane of the Green Crows is a name she can choose for herself. Whether she keeps it, and whom she invites "
+        "beside her, remains hers to decide.")
+    for host in SCENES:
+        sid = host["Id"].removesuffix("_stall")
+        nodes = {node["Id"]: node for node in host["Nodes"]}
+        if sid == E:
+            nodes["ask"]["Text"] = ('{n}She takes a signed recommendation from beneath her cloak. A line below the military commendation requires a royal envoy at your councils. She strikes it out and folds the sheet.{/n} '
+                '"My recommendation stands. That condition does not. If I visit, you shall hear the reason from me, not from a clerk." '
+                '{n}She keeps the paper.{/n} "Now. You did not come to ask after my boots. Out with it, Commander."')
+        elif sid == CROWS:
+            host["Entry"] = '"Will you ride with the minor orders again, Your Majesty?"'
+            nodes["start"]["Text"] = ('{n}Galfrey lays a signed recommendation on the table. Beneath the military commendation, a line requires a royal envoy at your councils. She crosses it out herself.{/n} '
+                '"You have my recommendation. I shall decide when I visit you." {n}She folds the sheet and keeps it. Beyond the square the Fane\'s barrier glimmers.{/n} '
+                '"As for riding among the minor orders: there is a name for that. Kitrane of the Green Crows."')
+            history_variant(host, "first", SERVICE,
+                '"I considered that disguise before the march. Plain armour, a minor order, an old friend of yours. I remained in Nerosyan instead." '
+                '{n}Her finger rests on the folded recommendation.{/n} "Now you know her name. What would you ask of her?"', "new_name")
+            history_variant(host, "liked", SERVICE,
+                '"You like the sound of her." {n}Her mouth twitches.{/n} "So do I. A knight can finish her supper before someone brings her a petition. '
+                'I shall have to try it." {n}She looks toward the barrier.{/n} "After the Fane, Commander. I have not forgotten what brought me here."', "new_name")
+        elif sid == BRIEFED_ID:
+            history_variant(host, "why", SERVICE,
+                '{n}He lays the sword across his knees.{/n} "She spoke to us after her audience in Drezen. Kitrane, she said. A knight of ours, if she ever needed the name." '
+                '{n}He studies you.{/n} "You want us ready to carry her among the wounded. She would have to ask. I will not steal her out from under her own command."', "drezen")
+        elif sid == OFFER:
+            # She supplies the unwitnessed name before either wound check uses it.
+            old_watch = nodes["watch"]["Text"]
+            history_variant(host, "watch", MET,
+                '"If you have come to ask me to fight again, look at the breastplate." {n}Her fingers scrape the broken metal.{/n} '
+                '"I had another name ready for plain armour. Kitrane, a knight of the Green Crows. A poor jest now." '
+                '{n}She watches you look from her face to the wound.{/n}\n' + old_watch, "name_supplied")
+        elif sid == P + "iz.alone":
+            history_variant(host, "letter2", E_MOOTED,
+                '"I remembered the name we discussed before the Fane. Kitrane. In the rubble I found I still wanted the life I had considered then. '
+                'You were not there to offer it. The sergeant had your standing orders and a cart; he knelt and waited for mine. I gave them. '
+                'I offered the chance to myself. It was a lonely business."', "later_seed")
+            nodes["letter3"]["Text"] = ('"The cart and cloak were ready. The Crows\' surgeon worked over me while the others hammered the coffin shut. '
+                'It has loosened, but not let go. I think it is waiting to hear the Queen\'s death proclaimed where she was loved. '
+                'I cannot arrange that from a wounded man\'s cart. You can.\n'
+                '"If this reaches you, Commander, I am alive. If it does not, I tried.\n"Kitrane."')
+            history_variant(host, "letter3", P + "standing_orders.paid",
+                '"There was no purse for a hired surgeon. The sergeant gave me his cloak and the cart kept for the wounded. '
+                'Their own surgeon worked over me while they hammered the coffin shut. They had other wounded waiting. '
+                'It has loosened, but not let go. I think it needs to hear the Queen\'s death proclaimed where she was loved. '
+                'I cannot arrange that from this cart. You can.\n"If this reaches you, I am alive. If not, I tried.\n"Kitrane."', "crows_supplies")
+        elif sid == P + "iz.cortege":
+            nodes["start"]["Text"] = nodes["start"]["Text"].replace("three days out of Iz", "after the slow march from Iz")
+            nodes["choose"]["Text"] = nodes["choose"]["Text"].replace("three days dead", "carried from Iz as a corpse")
+            history_variant(host, "flare_told", SERVICE,
+                '{n}The light brightens. At the chapel door the sergeant grips the frame.{/n} "Kitrane. She had a name ready before the march, '
+                'if she ever rode with us in plain armour. Never used it. Told Anselm he\'d have to remember not to salute." '
+                '{n}He comes closer to the bier.{/n} "Try it, Commander. She chose it herself." '
+                '{n}It is a name, an old man\'s grief, and a gamble. You have nothing surer.{/n}', "unworn")
+            history_variant(host, "wake", SERVICE,
+                '{n}Her lips move before her eyes open. At last they find you.{/n} "Commander. You did not come to me at Iz." '
+                '{n}Her fingers move on the sword.{/n} "Kitrane. I meant to wear that name with the Crows. Never thought it would have to get me out of a coffin. '
+                'I am tired. Tell me why I should try."', "unworn")
+        elif sid.startswith(P + "return.kitrane"):
+            history_variant(host, "why", SERVICE,
+                '"So. Here I am." {n}She squares her shoulders.{/n} "An old sword, a green surcoat, and the name I chose for the escape. '
+                'I still stand in the square at the hour of petitions. Nobody brings one." {n}She meets your eyes.{/n} '
+                '"Mendev buried its Queen. I should like you to look for me when you come through the crowd."', "chosen_late")
+            nodes["romance"]["Text"] = ('{n}She lowers her voice.{/n} "We still have a conversation to finish. I kept finding a military reason to postpone it." '
+                '{n}Her hand closes briefly on your sleeve.{/n} "Come to the market when your dispatches are done. I shall not send a herald."')
+            nodes["end"]["Text"] = ('"The curio stall, where the crowd is thickest. I can watch for you from there." '
+                '{n}She turns back toward the sergeant.{/n} "First I must see the Crows. They carried my command, and Anselm, and me. '
+                'The regents have the Queen\'s seal now. They will be issuing orders of their own."')
+        elif sid == P + "iz.road":
+            # This optional rest delivery may arrive after the mandatory vigil.
+            nodes["start"]["Text"] = ('{n}During a halt, the road out of Iz returns to you: the slow column, the furled royal banner, '
+                'the sealed coffin, and three carts behind it a wounded Crow under a green cloak. The march gave you little time to speak.{/n}\n' + nodes["start"]["Text"])
+        elif sid == P + "react.irabeth.queen_night":
+            nodes["start"]["Text"] = ('{n}Irabeth puts the postern guard\'s report in your hand.{/n} "A Crow left after the ninth bell. The watch wanted to know whether to escort her." '
+                '{n}She taps the blank order beneath it.{/n} "I left that decision to the knight. If you need the postern held open, tell the watch before they bar it. '
+                'I will not have a sentry punished for failing to guess."')
+        elif sid in (P + "react.irabeth.drill", P + "react.irabeth.drill_alone"):
+            nodes["start"]["Text"] = ('{n}Irabeth spreads a patrol map between you.{/n} "The Crows were drilling when my column passed. '
+                'Their tent is beside the route to the eastern ford. I asked Kitrane to watch that approach while we change the pickets." '
+                '{n}She marks the place.{/n} "She agreed, and told me the younger squires remain in camp. I know better than to argue with her dispositions."')
+        elif sid in (P + "epilogue.kitrane", P + "epilogue.sworn", P + "epilogue.late"):
+            paras = nodes["page"]["Paragraphs"]
+            for para in paras:
+                if P + "kitrane.king_seen" in para["Requires"]:
+                    para["Forbids"].append("fool_king.gone")
+            paras.append(p('{n}When Thaberdine left Drezen, Kitrane kept the dice he had accused her of loading. On Oathdays she still told the Crows how he had knighted her with a sausage; the sergeant demanded to know where that put him in the muster.{/n}',
+                requires=(P + "kitrane.king_seen", "fool_king.gone")))
+            if sid == P + "epilogue.kitrane":
+                nodes["page"]["Text"] = ('{n}Mendev mourned Galfrey after Iz. The Green Crows mustered a knight named Kitrane. '
+                    'She kept Drezen\'s walls during the march to Threshold and came down to meet the Commander on their return, still in plain armour. '
+                    'She kissed them before the sergeant could begin his report.{/n}')
+                paras.append(p('{n}After a patrol she came back muddy and impatient, sent the muster to the Commander\'s desk, and went herself to their chamber. '
+                    'She still corrected their hands on a difficult buckle. They learned to leave her evenings clear when the Crows were in camp.{/n}', requires=(TENT,)))
+        elif sid == P + "epilogue.widow":
+            nodes["page"]["Text"] = ('{n}The Commander did not return from Threshold. Kitrane received the news on Drezen\'s walls. '
+                'She went to the chapel and stayed until the candles burned down. At the next muster she answered her name and took her place.{/n}')
+            nodes["page"]["Paragraphs"] = [
+                p('{n}She rode to Nerosyan as she had decided. Anselm\'s daughter received her father for burial; the regents received their Queen and an account of the coffin. '
+                    'Galfrey answered the inquiry herself. She ruled again, refused the next elixir, and eventually abdicated. The Commander\'s place at her table remained empty.{/n}', requires=(CROWN,)),
+                p('{n}She remained Kitrane. Anselm\'s daughter received his sword-belt and a purse every Iz anniversary. '
+                    'The knight who sent them grew old in the Crows\' service. Each year after the Threshold muster she returned to Drezen\'s wall and stood there until dark.{/n}', requires=(FOREVER,)),
+                p('{n}She had not settled the crown\'s future. For now she kept the Crows\' watch and Anselm\'s sword. '
+                    'When she returned from patrol, she still looked first toward the Commander\'s window.{/n}', forbids=(CROWN, FOREVER)),
+                p('{n}The rent in her voice remained. She gave the muster quietly, close enough for the sergeant to hear.{/n}', requires=(RENT,)),
+                p('{n}On the ford anniversary she went to Tobin\'s grave herself. The Commander\'s death had not undone the order or the six hangings.{/n}', requires=(REFUSED_ORDER,)),
+            ]
+        elif sid == P + "epilogue.alive":
+            nodes["page"]["Text"] = ('{n}Galfrey returned from Threshold still crowned. Plans reached her desk before they reached the quartermaster; her objections still came back in the margin. '
+                'When the last dispatch was sealed she dismissed the clerks, went to find the Commander, and closed the door herself. '
+                'By morning the next orders lay between them at breakfast.{/n}')
+        elif sid == P + "epilogue.native":
+            nodes["page"]["Text"] = ('{n}After the war Galfrey laid down the crown and left Nerosyan to share her life with the Commander. '
+                'She still corrected their orders when they asked her advice. When she returned from a ride, she looked for them before putting away her sword; '
+                'on quiet evenings they learned to leave the door barred. Mendev received her occasional letters in the same firm hand.{/n}')
+
+
+_round2_history()
