@@ -79,15 +79,16 @@ internal static class WenduagEchoRulesTests
             foreach (var suppression in story.NativeEpilogueSuppressions.Values.Where(s => s.Relationship == "wenduag"))
                 check(!Rules.WhenHolds(suppression.When, invalid), "Invalid/off-path echo retained native slide suppression");
         }
-        foreach (string gone in new[] { "alive", "lann.dead", "lann.kicked_out", "lann.plot_absent" })
+        foreach (string gone in new[] { "alive", "lann.dead", "lann.kicked_out", "lann.plot_absent", "unknown" })
         {
             var ending = Program.Copy(returned);
             ending.Flags.Add(E + "cost.used_lann");
-            if (gone != "alive") ending.Flags.Add(gone);
+            if (gone == "alive") ending.Flags.Add("lann.in_party");
+            else if (gone != "unknown") ending.Flags.Add(gone);
             foreach (string suffix in new[] { "pack", "unclaimed", "refused" })
             {
                 var cost = Scene(W + "epilogue." + suffix).Nodes[0].Paragraphs.Where(p => p.Requires.Contains(E + "cost.used_lann")).ToArray();
-                check(cost.Count(p => Rules.ParagraphVisible(p, ending)) == 1, "Lann ending cost contradicted state: " + gone + "/" + suffix);
+                check(cost.Count(p => Rules.ParagraphVisible(p, ending)) == (gone == "unknown" ? 0 : 1), "Lann ending cost contradicted state: " + gone + "/" + suffix);
             }
         }
         Console.WriteLine("PASS: Wenduag echo scoped pickup, continuation, retained claim contact, invalid custody consumers and Lann ending variants.");

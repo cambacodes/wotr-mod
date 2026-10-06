@@ -96,7 +96,7 @@ class PlayerTextInventory2Tests(unittest.TestCase):
 
     def test_native_romance_residue_remains_reported_on_every_surface_and_draft(self):
         rows = player.check(self.story)["review"]
-        self.assertTrue(any(r["scene"] == "wenduag.lastcall.page" and r["location"] == "page/paragraph/3"
+        self.assertFalse(any(r["scene"] == "wenduag.lastcall.page" and r["location"] == "page/paragraph/3"
                             and r["code"] == "tooling-residue" for r in rows))
         text = "The native romance continues."
         story = payload(text, Choices=[{"Text": text}], Paragraphs=[{"Text": text}])

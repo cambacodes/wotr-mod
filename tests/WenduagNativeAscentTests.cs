@@ -13,7 +13,7 @@ internal static class WenduagNativeAscentTests
         if (edit == null) return;
         var variants = Rules.EditVariants(edit);
         var scenes = Rules.EditScenes(story, variants);
-        check(edit.Page == "223fd069ee25c784db2df011adbf10f8" && variants.Length == 1 && scenes[0]?.Relationship == "wenduag", "Trk_Wenduag_Ascent: the edit is not her own refusal on BookPage_0349.");
+        check(edit.Page == "223fd069ee25c784db2df011adbf10f8" && variants.Length >= 1 && scenes.All(s => s?.Relationship == "wenduag" && s.Nodes.Count == 1 && s.Nodes[0].Paragraphs.Count == 0), "Trk_Wenduag_Ascent: the edit is not her own refusal on BookPage_0349.");
         var rows = new (string What, string[] Flags, bool Plays)[]
         {
             ("committed", new[] { "trickster", "trickster.ever", "wenduag.committed" }, true),
