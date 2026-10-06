@@ -230,7 +230,7 @@ internal static class InventoryFixtureMutationTests
     private static InventoryWorldBuilder Camellia(Story story, bool missing)
     {
         var w = World(story, 3);
-        w.Native("camellia.killed");
+        w.Native("camellia.killed"); w.Native("camellia.dead");
         w.ObserveActor(story.Presences["camellia.presence"].Unit, alive: false);
         w = w.Earn("camellia.trickster.killed.late_curtain", "camellia.trickster.raised");
         w.Advance(missing ? 168 : 72);

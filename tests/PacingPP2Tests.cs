@@ -181,7 +181,7 @@ internal static class PacingPP2Tests
             check(viaWont.Count == 1 && viaStacked.Count == 1, "Camellia: the deck's two answers do not each end once.");
         }
         var curtain = N(S("camellia.trickster.killed.late_curtain"), "scroll").Text;
-        check(curtain.Contains("Give her back tonight") && !curtain.Contains("three nights more"),
+        check(curtain.Contains("There was no bargain to keep her") && curtain.Contains("Her chest moves") && !curtain.Contains("three nights more"),
             "Camellia: the late curtain still bargains for three nights it then skips.");
 
         // Sol r1 (CAN cap): both cemetery pages are delivered only in Drezen.

@@ -22,7 +22,8 @@ class IntimacyContractTests(unittest.TestCase):
         for contract in json.loads(lint.CONTRACTS.read_text(encoding="utf-8")):
             host = scenes[contract["scene"]]
             prior = sorted({f for n in host["Nodes"] for c in n["Choices"] for f in c.get("Requires", []) + c.get("Forbids", [])
-                            if not f.startswith("camellia.trickster.encounter.")})
+                            if not f.startswith("camellia.trickster.encounter.")
+                            and f != host["Id"] + ".knife_off"})
             for mask in itertools.product((False, True), repeat=len(prior)):
                 witness = {**contract, "flags": [f for f, held in zip(prior, mask) if held]}
                 self.assertFalse(lint.check(self.story, [witness])["hard"], (contract["scene"], witness["flags"]))

@@ -131,23 +131,23 @@ internal static class CamelliaTricksterTests
         var bowl = S(P + "cards.a_bowl_for_mireya");
         check(bowl.Forbids.Contains(Killed) && Ch(bowl, "paid", 0).Set.Contains(P + "spirits_bargained") && Ch(bowl, "paid", 0).Set.Contains(P + "cost.blood_bargain"),
             "The bargain with her spirits is not made in blood, before the kill.");
-        var buried = World(story, 3, "trickster", "trickster.ever", Killed, P + "primed", P + "spirits_bargained");
+        var buried = World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed", P + "spirits_bargained");
         check(!Avail(performance, buried) && Avail(third, Later(story, buried, 100)), "The third night does not stand between the kill and her return.");
         check(third.Remote && third.Chapters.SequenceEqual(new[] { 3, 5 }), "The third night is not a Drezen rest page.");
         var raisedNight = Take(third, Later(story, buried, 100), "dug", 0, P + "raised");
-        var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, P + "primed"), 100);
+        var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed"), 100);
         Take(third, cold, "unbargained", 0, P + "raised", P + "cost.bargain_late", P + "spirits_bargained");
         check(Ch(third, "unbargained", 0).Alignment?.Direction == "Evil", "The late bargain at the coffin is not dearer (Evil 1).");
         // ENGINE-Q5: priming or paying a bargain does not perform the later return off the live path.
-        var failedPrimed = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed"), 100);
+        var failedPrimed = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead, P + "primed"), 100);
         check(!Avail(third, failedPrimed)
               && Ch(third, "unbargained", 0).Requires.Contains("trickster"),
             "A lost path still opens a new bargain over her coffin.");
-        var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed", P + "spirits_bargained"), 100);
+        var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead, P + "primed", P + "spirits_bargained"), 100);
         check(!Avail(third, failedPaid), "A paid bargain performs a return after the path failed.");
         // Q8 (Sol BEL): the scratching belongs to the prepared branch only.
-        check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratching") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratching")
-              && !third.Nodes.Single(n => n.Id == "unbargained").Text.Contains("scratching"),
+        check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratch") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratch")
+              && !third.Nodes.Single(n => n.Id == "unbargained").Text.Contains("scratch"),
             "The coffin scratches on a branch where nobody bargained.");
         check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).Any(n => n.Text.Contains("raise dead")),
             "A clerical scroll came back as her return device.");
@@ -177,11 +177,11 @@ internal static class CamelliaTricksterTests
             "Trk_Camellia_KilledWithDeadEtude: the killed state co-holds her retained-death etude and must still return.");
 
         // Trk_Camellia_KilledLate
-        var unprimed = World(story, 3, "trickster", "trickster.ever", Killed);
+        var unprimed = World(story, 3, "trickster", "trickster.ever", Killed, Dead);
         check(Avail(late, unprimed) && !Avail(performance, unprimed), "Trk_Camellia_KilledLate: the late curtain should be the only way in.");
         check(late.Remote && late.Chapters.SequenceEqual(new[] { 3, 5 }), "The late curtain is not a Chapter 3 and 5 rest page.");
         // A kill taken through the native verdict in Chapter 5 (FinalTruth) has the same way back, on the same terms.
-        check(Avail(late, World(story, 5, "trickster", "trickster.ever", Killed)), "Trk_Camellia_KilledLate: a Chapter 5 kill has no way back.");
+        check(Avail(late, World(story, 5, "trickster", "trickster.ever", Killed, Dead)), "Trk_Camellia_KilledLate: a Chapter 5 kill has no way back.");
         // eng8-q8d: Chapter 5 failure folds the price into either coffin delivery.
         check(letter.Chapters.SequenceEqual(new[] { 3 }) && new[] { late, third }.All(s => s.Nodes.Any(n => n.Id == "eng8.price")),
             "Chapter 5 failed placement lacks its folded coffin agreement, or still adds a letter.");
@@ -194,9 +194,9 @@ internal static class CamelliaTricksterTests
         Take(late, unprimed, "choose", 1, P + "declined", Closed);
 
         // Trk_Camellia_KilledAfterFailure
-        var q3Kill = World(story, 5, "trickster", "trickster.ever", Killed, "camellia.kicked_out");
+        var q3Kill = World(story, 5, "trickster", "trickster.ever", Killed, Dead, "camellia.kicked_out");
         check(Avail(late, q3Kill), "A Q3 kill (kicked_out co-held with the kill) is closed as a dismissal.");
-        var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed);
+        var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead);
         check(!Avail(late, failed) && !Avail(performance, failed), "Trk_Camellia_KilledAfterFailure: a lost path must not open a new trick.");
 
         // Trk_Camellia_DeadOtherwise
@@ -387,7 +387,7 @@ internal static class CamelliaTricksterTests
         // E14d native-slide replacements (camellia_native) are cue texts, not pages; CamelliaNativeSlideTests covers them.
         var pages = story.Scenes.Where(s => s.Relationship == "camellia" && s.Owner == "CamelliaEpilogue" && !Rules.IsNativeReplacement(story, s))
             .Select(s => s.Id).ToArray();
-        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.commit_on_record", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused" }),
+        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.commit_on_record", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused", P + "epilogue.refused_living" }),
             "Camellia's epilogue pages do not match: " + string.Join(", ", pages));
         check(S(P + "epilogue.commit").Requires.Contains(P + "terms_named") && S(P + "epilogue.commit").Forbids.Contains(Committed),
             "The late commit page does not rest on her named price.");
@@ -427,8 +427,8 @@ internal static class CamelliaTricksterTests
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, P + "cost.knows_you_tried"))
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, P + "cost.knows_you_tried", "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
-        // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
-        check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
+        // Q8 (Sol INT): the physical reunion follows the raise, and the presence-failure letter waits 96 hours; a refused test closes the coda.
+        check(performance.DelayHours == 0 && letter.DelayHours == 96, "The fallback letter arrives before its physical twin has had its 96 hours.");
         var coda = story.Scenes.SingleOrDefault(s => s.Id == "camellia.lastcall.page");
         // Q8 coordinator ruling: the coda needs her commitment and does not play after her death or dismissal unless she returned.
         check(coda != null && coda.Requires.Contains(Committed), "The Last Call coda does not require her commitment.");
@@ -448,6 +448,7 @@ internal static class CamelliaTricksterTests
         check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named", "camellia.outcome.route_open", "camellia.trickster.late_committed.without.camellia.trickster.declined" }),
             "The Derived late commit does not rest on her named price.");
 
+        CamelliaPolishTests.Run(story, check);
         Console.WriteLine("PASS: Camellia Trickster (Trk_Camellia_*): the joke at every kill, the late curtain, the veiled mourner, the body told it's overacting, her price, her test, the oath, and the life around them.");
     }
 }
