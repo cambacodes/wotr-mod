@@ -37,6 +37,7 @@ from tools import canon_partner_lint
 # end eng7-l09
 # eng7-f2: existing editorial reviews stay visible; strict rejects new text.
 from tools import player_text_baseline
+from tools import savecompat
 # end eng7-f2
 SCRATCH = HERE / "scratch"
 
@@ -1108,6 +1109,10 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     lines = []
     def P(*a):
         lines.append(" ".join(str(x) for x in a))
+    R["savecompat"] = dict(hard=savecompat.check(story))
+    P("Save compatibility: %d hard" % len(R["savecompat"]["hard"]))
+    for failure in R["savecompat"]["hard"]:
+        P("  SAVE BREAK", failure)
     P("# rrt_verify report (%s): %d scenes, %d relationships, %d native bindings" % (label, len(model.scenes), len(model.rels), len(model.native)))
 
     # ---- structural validate
@@ -2623,6 +2628,7 @@ def main():
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
         + sum(len(v) for v in R.get("gate_lint", {}).values()) + len(R.get("etude_lifecycle", {}).get("hard", [])) \
         + len(R.get("earned_presence", {}).get("hard", [])) \
+        + len(R.get("savecompat", {}).get("hard", [])) \
         + len(R.get("text_structure", {}).get("hard", [])) + len(R.get("text_structure", {}).get("review", [])) \
         + len(R.get("player_text", {}).get("hard", [])) + len(R.get("intimacy_contracts", {}).get("hard", [])) \
         + len(R.get("memory_callbacks", {}).get("hard", [])) + len(R.get("transaction_exits", {}).get("hard", [])) \

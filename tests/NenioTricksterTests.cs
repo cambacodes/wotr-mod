@@ -56,6 +56,8 @@ internal static class NenioTricksterTests
     private static Snapshot Later(Story story, Snapshot state, int hours, int? chapter = null)
     {
         var later = Program.Copy(state);
+        // Match the runtime reader: negative composites are current observations, not saved flags.
+        later.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
         later.Hour += hours;
         if (chapter != null) later.Chapter = chapter.Value;
         Rules.Complete(story, later);
@@ -165,11 +167,11 @@ internal static class NenioTricksterTests
               && Ch(riddle, "filed", 1).NativeNext == FoxTwo && Ch(riddle, "filed", 1).Requires.Contains("nenio.fox_argued")
               && riddle.Nodes.Single(n => n.Id == "filed").Choices.All(c => c.Set.Contains(P + "riddle_done") && c.Set.Contains(Started) && c.Set.Contains(NameStaked)),
             "The answered riddle is not one of her two native arguments (Cue_0019 first, Cue_0020 second) with the name staked.");
-        // Sol INT: both native arguments can reach her farewell by name (FoxMyself/Cue_0032). The stake is filed only once that
-        // farewell has been seen: cost.name_filed is Derived [riddle_done, enigma_resolved], and no choice sets it.
+        // Both native arguments can reach her farewell by name (FoxMyself/Cue_0032). The later after_enigma
+        // conversation completes filing; neither the wager nor the native farewell alone loses the name.
         check(!riddle.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))
               && story.Scenes.Where(s => s.Relationship == "nenio").Where(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))).All(s => s.Id.StartsWith(P + "after_enigma", StringComparison.Ordinal))
-              && story.Derived[P + "name_gone"].Length == 2 && story.Derived[P + "name_gone"][1].OrderBy(f => f).SequenceEqual(new[] { "nenio.enigma_resolved", P + "riddle_done" })
+              && story.Derived[P + "name_gone"].Length == 1 && story.Derived[P + "name_gone"][0].SequenceEqual(new[] { NameFiled })
               && story.SeenCues["nenio.enigma_resolved"].SequenceEqual(new[] { FoxFarewell }),
             "The name is filed before her native farewell, which still says it.");
         check(!story.Scenes.Where(s => s.Relationship == "nenio").Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
@@ -186,7 +188,7 @@ internal static class NenioTricksterTests
         var afterEnigma = S(P + "after_enigma");
         var agedStake = Later(story, staked, 200);
         var farewellSeen = Later(story, With(staked, "nenio.enigma_resolved"), 13);
-        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
+        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && !farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
               && Program.Walk(afterEnigma, farewellSeen).Where(r => r.Has(afterEnigma.Id)).All(r => r.Has(NameFiled)),
             "The name is filed without her farewell, or the talk after the Enigma does not follow it.");
         var told = Take(riddle, fox, "told", 0, P + "riddle_declined");
@@ -212,8 +214,18 @@ internal static class NenioTricksterTests
         check(!running.Has(Tampered) && !Avail(result, Later(story, running, 12)) && Avail(result, Later(story, running, 24)),
             "Trk_Nenio_Dictated: the result does not come the morning after the clean night.");
         var yes = Take(result, Later(story, running, 24), "variable", 0, Committed, P + "first_night");
-        check(!Program.Walk(result, Later(story, running, 24)).Any(r => r.Has(Declined)),
-            "Trk_Nenio_Dictated: a clean night can end in her void ruling.");
+        var postponed = Take(result, Later(story, running, 24), "variable", 3, Declined);
+        check(!postponed.Has(Committed) && !postponed.Has(Tampered)
+              && !Avail(replication, Later(story, postponed, 72))
+              && !Avail(S(F + "void_days"), Later(story, postponed, 72)),
+            "Clean postponement invents tampering or commitment.");
+        var review = S(P + "commit.review");
+        check(!Avail(review, Later(story, postponed, 71)) && Avail(review, Later(story, postponed, 72)),
+            "Nenio's clean review does not wait for her own conclusion.");
+        check(Take(review, Later(story, postponed, 72), "open", 0, Committed, P + "first_night").Has(Committed),
+            "Nenio's later clean invitation cannot earn a yes.");
+        check(Take(review, Later(story, postponed, 72), "open", 2, Closed).Has(P + "refused_her"),
+            "The review does not retain a real refusal.");
         var no = Take(result, Later(story, running, 24), "variable", 2, P + "refused_her", Closed);
         check(!no.Has(Committed), "Trk_Nenio_Dictated: the Commander's no still commits.");
 
@@ -222,8 +234,15 @@ internal static class NenioTricksterTests
         var voided = Take(result, Later(story, tampering, 24), "void_her", 0, Declined);
         check(!voided.Has(Committed) && !voided.Has(Closed) && !Avail(replication, Later(story, voided, 48)) && Avail(replication, Later(story, voided, 72)),
             "Trk_Nenio_Tampered: the contaminated night does not void the result, or the replication does not wait three days.");
-        check(Take(replication, Later(story, voided, 72), "morning", 0, Committed, P + "confessed", P + "replicated", P + "first_night").Has(Committed),
-            "Trk_Nenio_Tampered: the confession does not earn a clean replication and her yes.");
+        var repeating = Take(replication, Later(story, voided, 72), "confessed", 0, P + "confessed");
+        var repeatResult = S(P + "commit.replication_result");
+        check(!repeating.Has(Committed) && !repeating.Has(P + "replicated")
+              && !Avail(repeatResult, Later(story, repeating, 23)) && Avail(repeatResult, Later(story, repeating, 24)),
+            "Confession decides for Nenio or skips the clean repeat night.");
+        check(Take(repeatResult, Later(story, repeating, 24), "morning", 0, Committed, P + "confessed", P + "replicated", P + "first_night").Has(Committed),
+            "The actual repeat result does not earn her yes.");
+        check(Take(replication, Later(story, voided, 72), "confessed", 1, Closed).Has(Closed),
+            "Nenio cannot refuse a confession that rejects her test.");
         check(Take(replication, Later(story, voided, 72), "denied", 0, Closed).Has(Closed), "Trk_Nenio_Tampered: the denial does not close it.");
         check(Avail(S(F + "void_days"), Later(story, voided, 24)), "Trk_Nenio_Tampered: she does not work on the evidence between the ruling and the question.");
 
@@ -323,7 +342,7 @@ internal static class NenioTricksterTests
         check(nightLost.Contains("bare") && !nightLost.Contains("shelves") && nightKept.Contains("shelves") && !nightKept.Contains("bare"), "The night shows notes she no longer has.");
 
         // Pages: the article, the late yes, the void, and the closed page; none writes anything.
-        check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void", P + "epilogue.scholar" }.OrderBy(i => i))
+        check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void", P + "epilogue.scholar", P + "epilogue.kenabres_pending" }.OrderBy(i => i))
               && pages.All(s => s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))),
             "Nenio's pages are not the article, the late yes, the void and the closed page.");
         var ch6 = World(story, 6, "trickster", "trickster.ever", Started, Committed, NameFiled);
@@ -409,6 +428,38 @@ internal static class NenioTricksterTests
         check(anevia.Reaction && anevia.Requires.Contains(Returned) && anevia.Requires.Contains("nenio.killed_by_commander")
               && anevia.Forbids.Contains("anevia_gone") && anevia.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned",
             "Anevia's gate reaction is not guarded by her own fate and return.");
+
+        // Reviewed polish: the dispatch belongs to the player, not an automatic retry.
+        var awayPolish = World(story, 5, "trickster", "trickster.ever", "nenio.sent_away");
+        var honestReport = Take(fieldReport, awayPolish, "correct", 0);
+        check(!honestReport.Has(P + "primed_away") && !Avail(correction, Later(story, honestReport, 80)),
+            "An honest report secretly baits Nenio back.");
+        check(Take(fieldReport, awayPolish, "wrong", 0, P + "primed_away").Has(P + "primed_away")
+              && Take(fieldReport, awayPolish, "correct", 1, P + "primed_away").Has(P + "primed_away"),
+            "An explicit bait choice fails to prime the physical correction.");
+
+        // Paid unremembering recreation -> dictation -> account -> delayed judgment.
+        var returnedPolish = Take(recreated, World(story, 5, "trickster", "trickster.ever", "nenio.killed_by_commander"),
+            "terms", 0, Returned, P + "cost.unremembered");
+        var strangerPolish = S(P + "killed.stranger_visitor");
+        var hiredPolish = Take(strangerPolish, Later(story, returnedPolish, 48), "open", 1, Scribe, F + "stranger.kenabres_said");
+        var accountPolish = Take(S(F + "kenabres_box_visitor"), Later(story, hiredPolish, 72), "open", 0, F + "kenabres_box.told");
+        var pendingPolish = Later(story, accountPolish, 0);
+        var judgmentPolish = S(F + "kenabres_judgment_visitor");
+        check(pendingPolish.Has(F + "kenabres_judgment.pending")
+              && !Avail(judgmentPolish, Later(story, accountPolish, 71))
+              && Avail(judgmentPolish, Later(story, accountPolish, 72)),
+            "Recorded testimony becomes an immediate judgment or lacks the promised decision.");
+        check(!Avail(hypVisitor, Later(story, accountPolish, 80))
+              && Avail(S(P + "epilogue.kenabres_pending"), Later(story, accountPolish, 80, 6)),
+            "Pending testimony grants romantic resolution or loses its unresolved ending.");
+        var continuedPolish = Take(judgmentPolish, Later(story, accountPolish, 72), "judgment", 0);
+        check(!Later(story, continuedPolish, 0).Has(F + "kenabres_judgment.pending")
+              && !continuedPolish.Has(Committed) && Avail(hypVisitor, Later(story, continuedPolish, 24)),
+            "Nenio's judgment persists, commits automatically, or blocks ordinary progression.");
+        check(Take(judgmentPolish, Later(story, accountPolish, 72), "judgment", 1, Closed).Has(Closed)
+              && Take(judgmentPolish, Later(story, accountPolish, 72), "judgment", 2, Closed, P + "refused_her").Has(Closed),
+            "The judgment cannot reject entitlement or accept the player's closure.");
 
         // Areelu G6(b): her Nenio lines lift the four losses (never the dissolution) on Nenio's return.
         var areeluReact = S("areelu.trickster.react.nenio_two_drafts");
