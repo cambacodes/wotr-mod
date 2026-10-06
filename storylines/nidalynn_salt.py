@@ -12,7 +12,7 @@ the druids (she was one), the clutch.
 from story_format import c, scene
 from storylines.nidalynn_trickster import (
     CLAIMED, CLOSED, COMMITTED, DV_BILL, DV_HUNTING, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS, FIRST_DEMON, FORM,
-    HAND, HAND_SET, HATCHED, KILN, KISSED, LEFT_WITH_IT, LIE_KEPT, MET, MET_EARLY, NAME_NONE, NAME_PEBBLE, NAME_SOOT, P, PROPOSED, BREAD_KEPT,
+    HAND, HAND_SET, HATCHED, KILN, KISSED, LEFT_WITH_IT, LIE_KEPT, MET, MET_EARLY, NAME_NONE, NAME_PEBBLE, NAME_SOOT, P, PARTNER_DISGUISE, PROPOSED, BREAD_KEPT,
     REFUSED, RENOUNCED, SALT, SNOW, TORC_LEFT, nar, nd)
 from storylines.nidalynn_trickster import steps as _steps, visit as _visit
 from storylines.nidalynn_kiln import CLAIM_KEPT, TORCS
@@ -159,7 +159,7 @@ visit(FLIGHT, "Salt on bread", [
         c("Continue", "offer")),
     nd("offer", '''{n}She holds it out to you, the heel of the dark loaf with the old salt on it, on her open palm, and waits.{/n}
 {n}She is not smiling now. Her face is quite calm, and her hand is quite steady, and on the kiln roof above you the young dragon has started to sing, badly, the way young dragons sing, a long rising shriek at the sky that makes the lane's dogs howl.{/n}''',
-        c("[Take the bread and salt, and eat.]", "yes", flags=(COMMITTED, SALT, PROPOSED)),
+        c("[Take the bread and salt, and eat.]", "yes", flags=(COMMITTED, SALT, PROPOSED, PARTNER_DISGUISE)),
         c('"Not yet. Keep it for me. I\'ll come back for it."', "not_yet", flags=(BREAD_KEPT, PROPOSED)),
         c('"No. I can\'t be of anyone\'s fire."', "no", flags=(REFUSED, PROPOSED, CLOSED))),
     nar("yes", '''{n}It is hard and dark and sour, the way rye bread is, and the salt is very old and very sharp and tastes of nothing but salt, and of stone, and faintly, underneath, of grass. You eat all of it.{/n}
@@ -184,7 +184,7 @@ visit(HEEL, "The heel of the loaf", [
 {n}She is at the fire, feeding it, in her own shape, with her braid down her back. She knows you have come in. She does not turn round.{/n}''',
         c("Continue", "wait")),
     nd("wait", '''"The little one caught a hare in the fells yesterday. Her first. She brought it back and dropped it at the kiln door and sat there until I'd said how clever she was three times." {n}She puts another log on.{/n} "Then she ate it in front of me, very slowly, so I'd know it wasn't for me."''',
-        c("[Take the heel down from the shelf, and unwrap it, and eat it.]", "eat", flags=(COMMITTED, SALT)),
+        c("[Take the heel down from the shelf, and unwrap it, and eat it.]", "eat", flags=(COMMITTED, SALT, PARTNER_DISGUISE)),
         c("[Sit by the fire with her, and leave the shelf alone tonight.]", "sit")),
     nar("eat", '''{n}It is stone-hard, and you have to break it with the heel of your hand on the brick, and the salt on it has crusted into the crumb. It hurts your teeth. You eat all of it anyway.{/n}
 {n}She has stopped feeding the fire. She is standing very still, with a log in her hands, listening to you chew.{/n}''',

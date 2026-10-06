@@ -95,6 +95,7 @@ TOLD_EGG = P + "told_egg"
 TOLD_NOTHING = P + "told_nothing"
 KILN_AGREED = P + "kiln_agreed"
 REVEALED = P + "revealed"
+PARTNER_DISGUISE = "nidalynn.partner_claim.disguise"  # authored disclosure, not a real partner stance
 WHY_SMALL = P + "why.smallest"
 WHY_COULD = P + "why.could"
 WHY_USE = P + "why.useful"
@@ -433,8 +434,16 @@ TORC_LEFT = P + "torc.left"
 FIRST_DEMON = P + "after.first_demon"
 
 
+# Authored Trickster resolution (CANON-PARTNERS-DESIGN, Nidalynn): the husband is part of her disguise.
+# Native NidalynnQuest1 Cue_0007/0008 (0c798d10 / f2c61bcd) claims a husband;
+# DragonsKenabres Cue_0011/0016 (5f41445c / 37d0134d) reveals the staged test, but does not
+# establish a spouse's existence or fate. This addition resolves her claim only in this route.
+# A fictional bond gets no share/exclusive/secret choices (the design's explicit exception).
+PARTNER_HISTORY = '''{n}The husband in the pregnant woman's tale had never existed. Nidalynn had invented him along with the belly; there was no abandoned spouse waiting for her to come home.{/n}'''
+
+
 def epilogue(id, text, requires, forbids=(), paragraphs=(), **extra):
-    SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
+    SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text + "\n" + PARTNER_HISTORY, paragraphs=paragraphs)],
                         requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL, **extra))
 
 
@@ -525,6 +534,13 @@ epilogue("given", '''{n}The Commander gave the thing that came out of the rock t
 def integrate(payload):
     """Her presences and her own Derived keys. World keys (the egg outcomes, the eggs_crated latch, Devarra's flags, the
     companions' guards) bind on demand in trickster_world."""
+    # Extend only this route's Last Call entry, from its owning module. The shared file stays untouched.
+    # Append once: make_expansion() can run repeatedly in the same interpreter.
+    from storylines import lastcall_partners
+    partner = next(part for part in lastcall_partners.PARTNERS if part["rel"] == REL)
+    history = lastcall_partners.page_p('''Her husband had been a lie, like the belly under the shawl. There was no marriage waiting elsewhere while she kept the fire below Drezen's wall.''')
+    if history not in partner["paragraphs"]:
+        partner["paragraphs"] = (*partner["paragraphs"], history)
     for key, value in PRESENCES.items():
         have = payload.setdefault("Presences", {}).get(key)
         if have is not None and have != value:
