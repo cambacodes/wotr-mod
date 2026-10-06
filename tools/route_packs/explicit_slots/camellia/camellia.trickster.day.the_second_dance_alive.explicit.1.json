@@ -1,0 +1,46 @@
+{
+  "slot_id": "camellia.trickster.day.the_second_dance_alive.explicit.1",
+  "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
+  "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Living companion: no coffin injuries, widow identity loss or resurrection debt. Knife-off branch only: the Commander unbuckled the thigh strap and she let the knife fall to the floor. She abandons counting, kisses them and draws them onto cleared boards among guttering candles. Mutual return/deepening; reserve the adult sexual passage for the user fill. At dawn she retrieves and buckles the floor knife. Required beats: Acknowledge unbuckling without treating disarmament as submission or reform. Physical impatience replaces fencing/dancing maxims. Wax remains at buckle, boards under the couple, knife on floor. Morning.knife_off retains its actual outcome; no armed-night memory.",
+  "facts": [
+    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
+    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
+    "She values successful deception and seeks the disbelief of trusting victims.",
+    "She is frank about sex and finds ordinary sex boring.",
+    "Rillik/Rellik was her murdered victim, not a live husband."
+  ],
+  "required_beats": [
+    "Acknowledge unbuckling without treating disarmament as submission or reform.",
+    "Physical impatience replaces fencing/dancing maxims.",
+    "Wax remains at buckle, boards under the couple, knife on floor.",
+    "Morning.knife_off retains its actual outcome; no armed-night memory."
+  ],
+  "last_line": "C: The buckle can wait until morning.",
+  "speakers": {
+    "C": "Camellia"
+  },
+  "example": "N: Camellia catches your collar and draws you into a kiss.\nC: Keep your hand there. I have not finished looking.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "default_text": "{n}The knife lands beside the guttered candle. Camellia catches your collar, kisses you without finishing the turn, and pulls you down with her onto the boards.{/n}\n\"The buckle can wait until morning.\"",
+  "insertion": {
+    "scene_id": "camellia.trickster.day.the_second_dance_alive",
+    "after_node": "end",
+    "branch": "end (from strap)",
+    "retained_successor": "morning.dance -> morning.knife_off",
+    "state_changes": "None; retain original encounter/commitment and continuation effects exactly."
+  },
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6"
+  ]
+}
