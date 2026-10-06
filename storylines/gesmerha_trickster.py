@@ -120,7 +120,7 @@ SCENES.append(scene(P + "dead.commission", "Paid in advance", "Gesmerha", 3,
 # 4b. The late fallback: her pyre, in Chapter 3 only (by Chapter 5 Wintersun is gone, KTC_WintersunHelp/Cue_0040).
 SCENES.append(scene(P + "dead.pyre", "The carvers' ground", "Gesmerha", 3, "", [
     nar("pyre", '''{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}
-{n}Her apprentices sent him, he says, reciting it. She spoke of you before the chief took her: the stranger who asked the questions nobody else would. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short, and they want to know whether you owed her anything.{/n}
+{n}Her apprentices sent him. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short. Will the Commander send anything?{/n}
 {n}Her uncut block is still on her bench, he says. Nobody has dared move it.{/n}''',
         c('[Send a purse for the fire, and a coin to drive into her uncut block, and have both laid beside her] "Tell her the statue\'s not finished, carver. Nobody leaves work on the bench."',
           mythic="Trickster", crusade=("Finances", -300), alignment=("Chaotic", 1), flags=(PRIMED, LATE, LAUGHED)),
@@ -348,7 +348,7 @@ STATUE_PARAGRAPHS = (
       requires=(STATUE_TRUE,)),
     p("{n}The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward "
       "anyone who came in walking loudly.{/n}", requires=(STATUE_NEW,)),
-    p("{n}She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never "
+    p("{n}She kept the wooden hands on her bench, palms up, beside her chisels. She said they were the only pair that had never "
       "been bought.{/n}", requires=(HANDS,)),
     p("{n}Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being "
       "mentioned.{/n}", requires=(LAUGHED,)),
