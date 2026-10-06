@@ -291,10 +291,9 @@ s("what_she_asks", "The question without a chorus", '"You wanted an afternoon wi
       c('"Friendship. That is what I want from you."', "friends")),
     n("terms", "Gesmerha", '''"Good. I had carved three speeches for your refusal. I will burn them."
 {n}She moves closer and finds your shoulder with the back of her fingers, and stays there.{/n}
-"Two things, before I stop being able to think. The first. A commander has a great many people who want a piece of the day. If some of them share your bed, that is between you and them. But never promise me an evening and then give it away. I will know. I can hear a guilty step across a whole yard."
-"And the second?"
-"My people come first. If the clan needs me on a road, I go, and you do not sulk. If I choose to stay somewhere you cannot follow, you do not pack my tools for me while I am still making up my mind."
+"Two things, before I stop being able to think. The first. A commander has a great many people who want a piece of the day. Never promise me an evening and then give it away. I will know. I can hear a guilty step across a whole yard."
 {n}Her hand rests against your collar.{/n}
+"My people come first. If the clan needs me on a road, I go, and you do not sulk. If I choose to stay somewhere you cannot follow, you do not pack my tools for me while I am still making up my mind."
 "That is all. My grandmother had eleven conditions for her husband, and he broke nine of them. I am asking for two."''',
       c('"No evening of yours given away, and your road is your own. Yes."', "touch"),
       c('"I can\'t swear to that yet. Let the afternoons go on as they are."', "wait")),
