@@ -1,0 +1,110 @@
+{
+  "note": "Reuse the donor fill in these hosts; these are alternative or retired histories, not additional first nights. Dedicated cut nodes contain no aftermath prose.",
+  "aliases": {
+    "noct.unlit_quay.explicit.1": [
+      {
+        "scene": "noct.unlit_quay.acquired.new",
+        "node": "noct.unlit_quay.acquired.new.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.unlit_quay.acquired.refused",
+        "node": "noct.unlit_quay.acquired.refused.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.unlit_quay.acquired.prior",
+        "node": "noct.unlit_quay.acquired.prior.explicit.1",
+        "retired": true
+      }
+    ],
+    "noct.her_own_face.explicit.1": [
+      {
+        "scene": "noct.her_own_face.acquired.new.absent",
+        "node": "noct.her_own_face.acquired.new.absent.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.new.original",
+        "node": "noct.her_own_face.acquired.new.original.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.new.renewed",
+        "node": "noct.her_own_face.acquired.new.renewed.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.refused.absent",
+        "node": "noct.her_own_face.acquired.refused.absent.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.refused.original",
+        "node": "noct.her_own_face.acquired.refused.original.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.refused.renewed",
+        "node": "noct.her_own_face.acquired.refused.renewed.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.prior.absent",
+        "node": "noct.her_own_face.acquired.prior.absent.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.prior.original",
+        "node": "noct.her_own_face.acquired.prior.original.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.her_own_face.acquired.prior.renewed",
+        "node": "noct.her_own_face.acquired.prior.renewed.explicit.1",
+        "retired": true
+      }
+    ],
+    "noct.second_door.explicit.1": [
+      {
+        "scene": "noct.second_door.acquired.new",
+        "node": "noct.second_door.acquired.new.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.second_door.acquired.refused",
+        "node": "noct.second_door.acquired.refused.explicit.1",
+        "retired": true
+      },
+      {
+        "scene": "noct.second_door.acquired.prior",
+        "node": "noct.second_door.acquired.prior.explicit.1",
+        "retired": true
+      }
+    ],
+    "noct.second_door.explicit.2": [
+      {
+        "scene": "noct.second_door.acquired.new",
+        "node": "noct.second_door.acquired.new.explicit.2",
+        "retired": true
+      },
+      {
+        "scene": "noct.second_door.acquired.refused",
+        "node": "noct.second_door.acquired.refused.explicit.2",
+        "retired": true
+      },
+      {
+        "scene": "noct.second_door.acquired.prior",
+        "node": "noct.second_door.acquired.prior.explicit.2",
+        "retired": true
+      }
+    ],
+    "noct.acq.an_answer_of_her_own.explicit.1": [
+      {
+        "scene": "noct.acq.the_paid_address",
+        "node": "noct.acq.the_paid_address.explicit.1",
+        "retired": false
+      }
+    ]
+  }
+}

@@ -46,6 +46,17 @@ def integrate(payload):
     scenes = {s["Id"]: s for s in payload["Scenes"]}
     for host, guest, gate, wait in FOLDS:
         fold(scenes[P + host], scenes[P + guest], gate, wait, guest)
+    # Only the NEW fill/aftermath IDs are mapped to their delivery host.
+    # Legacy folded nodes and choice indices are untouched.
+    paid = scenes[P + "the_paid_address"]
+    aliases = {
+        "an_answer_of_her_own." + P + "an_answer_of_her_own.explicit.1": paid["Id"] + ".explicit.1",
+        "an_answer_of_her_own." + P + "an_answer_of_her_own.aftermath.1": paid["Id"] + ".aftermath.1",
+    }
+    for node in paid["Nodes"]:
+        node["Id"] = aliases.get(node["Id"], node["Id"])
+        for answer in node["Choices"]:
+            answer["Next"] = aliases.get(answer["Next"], answer["Next"])
     deferred = 0
     for s in payload["Scenes"]:
         if s["Id"].startswith("noct.join.") or (s.get("Relationship") == "nocticula" and ".acquired." in s["Id"]

@@ -122,20 +122,23 @@ SCENES.append(scene("nocticula.trickster.defeated.late_shadow", "One shadow too 
 
 AGREED = '"Agreed."'
 threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You didn\'t say I was wrong."', [
-    nt("price", '''"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price."
+    nt("price", '''"A clown who knows where my shadow ends and I begin is a clown I have to price."
 "Think what my death is worth. I am told the Abyss is in mourning; I intend to believe it. My rivals will have stopped counting my armies by now, and my dear brother, I hope, has stopped sending me perfume. Every one of them believes I am gone, and while they believe it I am free to do as I please. That silence is worth more than your crusade, and you are carrying it around in your mouth."
 {n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}
 "So. You think you will name a price for keeping it there. You won't. Every lord of the Abyss would open you up like a letter to read what you are carrying, and only my name on you keeps their knives out. My protection is not free." {n}She lets that settle.{/n} "Silence you give me. Safety I sell you."''',
-        c('"Name your price, then."', "terms", forbids=(LATE,)),
-        c('"Name your price, then."', "terms_late", requires=(LATE,)),
+        c('"Name your price, then."', "terms", forbids=(LATE, "noct.acq.threshold_projection_answer")),
+        c('"Name your price, then."', "price_late", requires=(LATE,)),
         c('"Nothing. You keep my secrets, I keep yours."', native_next=T_WHATEVER, flags=(RETURNED, REFUSED)),
-        c("[Leave it for later.]", abort=True)),
+        c("[Leave it for later.]", abort=True),
+        c('"Name your price, then."', "price_heard", requires=("noct.acq.threshold_projection_answer",), forbids=(LATE,))),
     nt("terms", '''"One favour. Unnamed. When I ask, you will grant it, and you will not ask what it is for."
 {n}The fires lean toward her, very slightly, as if listening.{/n} "Do not look so worried. I have never yet asked anyone for anything they could not afford. I simply ask for it at the worst possible time."''',
         c(AGREED, native_next=T_BLESSING, alignment=("Evil", 1), flags=(RETURNED, PAID))),
     nt("terms_late", '''"One favour. Unnamed. And because you came to me late, and on my foot, you will grant it before you have heard it, and you will smile while you do."
 {n}She waits, openly enjoying the wait.{/n} "Smile, Commander. You are already practising."''',
         c(AGREED, native_next=T_BLESSING, alignment=("Evil", 2), flags=(RETURNED, PAID))),
+    nt("price_late", '\"You took your boot off. That was wise. Do not mistake it for having paid for the privilege of finding me.\"', c("Continue", "terms_late")),
+    nt("price_heard", '\"I said you had spent too much time with my brother. You appear determined to prove it.\"', c("Continue", "terms")),
 ], ("trickster.ever", PRIMED), (RETURNED,), T_GAME, TricksterDevice=True, TricksterState=DEAD)
 
 # The commit (R2-1), a separate beat after the return: her test, her yes or her no, and the heat to the cut.
@@ -144,8 +147,8 @@ WHY = (c("Continue", "why_late", requires=(LATE,)),
        c("Continue", "why_dress", requires=("noct.fooled",), forbids=(LATE, PRIMED_SHADOW)),
        c("Continue", "why_voice", requires=(MOCKED,), forbids=(LATE, PRIMED_SHADOW, "noct.fooled")),
        c("Continue", "why_base", forbids=(LATE, PRIMED_SHADOW, "noct.fooled", MOCKED)))
-VERDICT = (c('"Then say yes."', "reason_paid", requires=(PAID,), flags=("noct.complete", SAID_YES)),
-           c('"Then say yes."', "reason_refused", forbids=(PAID,), flags=("noct.complete", SAID_YES)),
+VERDICT = (c('"Then say yes."', "reason_paid", requires=(PAID,)),
+           c('"Then say yes."', "reason_refused", forbids=(PAID,)),
            c('"Or keep your answer. You like owning things."', "refusal"))
 threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question, Lady. Off the record."', [
     nt("test", '''"Nothing in the Abyss is off the record. The Abyss simply has very poor clerks."
@@ -169,13 +172,13 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
         c("Continue", "yes")),
     nt("why_dress", '''"You made me walk into a war council in what your pranks had left me, with my brother's clowns braying, and you killed me before the braying stopped. Nobody has humiliated me that thoroughly in an age. Nobody has ever done it and then stood in front of what was left, asking to be let closer." {n}She savours it.{/n} "I want to see what else you will dare."''',
         c("Continue", "yes")),
-    nt("why_voice", '''"You walked into my palace in my brother's voice and walked out with my secret, and then you killed me with his friends watching and never once spent it. A clown who can hold a secret that expensive through a murder." {n}Her eyes narrow, pleased.{/n} "I have been wondering since what else you are holding."''',
+    nt("why_voice", '''"You walked into my palace in my brother's voice and walked out with my secret, and then you killed me with his friends watching and never once spent it. A clown who can hold a secret that expensive through a murder." {n}Her mouth curves, pleased.{/n} "I have been wondering since what else you are holding."''',
         c("Continue", "yes")),
     nt("why_base", '''"You killed me in front of my brother's clowns, crowing that you had got me at last, and then you went back to your war as if a demon lord were one more chore. Then you came to Threshold and, of everything a mortal could say to a queen's ghost, you told me you had killed my shadow." {n}The projection tilts its head.{/n} "The only true thing anyone has said to me since the Council, and you said it as a joke. I have been wondering since what else you know."''',
         c("Continue", "yes")),
     nt("yes", '''"Yes." {n}No hesitation at all; she has decided long before you asked, and was only waiting to see whether you would.{/n} "Beside me. Not at my feet. Where I can see your hands."
-"And since we are being honest, clown, there is one thing a projection does better than a body. It cannot be touched." {n}Her eyes glitter.{/n} "It can touch."''',
-        c("Continue", "threshold")),
+"And since we are being honest, clown, there is one thing a projection does better than a body. It cannot be touched." {n}She inclines her head; her voice drops.{/n} "It can touch."''',
+        c("Continue", "threshold", flags=("noct.complete", SAID_YES))),
     nar("threshold", '''{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}
 {n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She strips you the way she prices things, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing; she laughs against your throat. "Hands where I can see them. I said so."{/n}
 {n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness.{/n}
@@ -188,7 +191,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 {n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
         c("[Buckle your armour over the marks.]")),
     nar("morning_late", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
-{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you."{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has drawn two chairs at opposite ends. Beneath them, in a hand you have never seen and know at once: "Where I can see you. You still refused my price."{/n}
 {n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
         c("[Buckle your armour over the marks.]")),
     nt("refusal", '''"Then no." {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} "Not tonight. Ask me again when the Wound has finished trying to kill you. If you are dead, I will have had my answer, and I will not have had to give one."''',
@@ -198,7 +201,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 # The morning after the chair, delivered at the next rest before the descent.
 SCENES.append(scene("nocticula.trickster.defeated.morning", "Four crescents", "Nocticula", 6, "", [
     nar("start", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
-{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you."{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has written, in a hand you have never seen and know at once: "Where I can see you."{/n}
 {n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
         # Save-safe: every choice keeps its slot (choice 0 unchanged); a paid price reads the favour under the chair.
         c("[Buckle your armour over the marks.]", forbids=(PAID,)),
@@ -261,7 +264,8 @@ page("nocticula.trickster.defeated.epilogue", "A queen does not come back",
     ("trickster.ever", RETURNED), living=True, paragraphs=(
         p("{n}She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, "
           "expensively, and with the lamps lit. At every table the Commander sat at afterwards, the chair at the right "
-          "hand was hers, and she was always in it before anyone else arrived.{/n}", requires=(SAID_YES,)),))
+          "hand was hers, and she was always in it before anyone else arrived.{/n}", requires=(SAID_YES, PAID)),
+        p("{n}They met at opposite ends of the table. Nocticula returned often enough to keep the household counting its servants, and never confused the Commander's invitation with payment for her protection.{/n}", requires=(SAID_YES, REFUSED)),))
 page("nocticula.trickster.defeated.epilogue.fooled", "The dress",
     '''{n}She never wore the dress from the Council again. She kept it, folded, in the one chest in her palace that has no key.{/n}''',
     ("trickster.ever", RETURNED, "noct.fooled"))
@@ -284,8 +288,10 @@ page("nocticula.trickster.defeated.epilogue.unpriced", "An answer owed",
     ("trickster.ever", PRIMED), forbids=(RETURNED,), living=True)
 page("nocticula.trickster.defeated.epilogue.unanswered", "What went down with the Commander",
     '''{n}The Commander went down into the Wound carrying the one secret in the Abyss the Lady in Shadow could not afford loose, and did not come back up with it. The Abyss went on believing her dead. She let it.{/n}
-{n}For a year she kept the chair at her right hand empty at every table she sat at, and had anyone who asked whose it was put out of the Midnight Isles. Then she had the chair burned, and went back to being a rumour. It was the only debt she ever let go uncollected, and she never forgave the Wound for collecting it first.{/n}''',
-    ("trickster.ever", PRIMED, "sacrifice"), forbids=(ALIVE_AFTER,))
+{n}She bought the last reports from Threshold, read them, and burned the names of their sellers. Nobody in her brother's Council learned what the Commander had carried.{/n}''',
+    ("trickster.ever", PRIMED, "sacrifice"), forbids=(ALIVE_AFTER,), paragraphs=(
+        p("{n}The unnamed favour died with its debtor. Nocticula struck the Commander's name from her accounts herself. She kept the torn scrap; nobody was allowed to ask why.{/n}", requires=(PAID,)),
+        p("{n}For a year she kept the chair at her right hand empty. Anyone who asked whose it was was put out of the Midnight Isles. Then she had it burned. She never forgave the Wound for taking the lover who had asked to sit beside her.{/n}", requires=(SAID_YES,)),))
 page("nocticula.trickster.defeated.epilogue.unjoked", "Among the many",
     '''{n}After her defeat at the Council, the Lady in Shadow lay low. The Commander was among the many who believed she was dead, and among the few she let go on believing it. It is the only kindness anyone has ever been able to prove against her.{/n}''',
     ("trickster.ever", DEAD, FIGHT), forbids=(PRIMED,))
@@ -326,7 +332,7 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Step back from the chair.]", "refused_page")),
     nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', *AFTER_PAGE),
     nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', *AFTER_PAGE),
-    nar("after_paid", '''{n}In the morning she was gone, and so was the Commander's chair from the head of the palace's long table: moved, overnight, to her right hand, by no servant anyone could name. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: "My favour. The chair at your right hand, at every table you will ever sit at. I have just collected the first night of it."{/n}
+    nar("after_paid", '''{n}In the morning her chair stood at the Commander's right hand at the palace's long table. No servant admitted moving it. She had left her glass there, its rim marked with lipstick. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: "My favour. The chair at your right hand, at every table you will ever sit at. I have just collected the first night of it."{/n}
 {n}The Commander's own household, when the Commander came home to Drezen, found a place already laid at the right hand of the Commander's chair, and did not ask for whom. They had learned.{/n}''', c()),
     nar("after_refused", '''{n}In the morning she was gone, and so was every other chair in the room but two. On the mirror, in lipstick: "You refused my price. You did not refuse me. Do not confuse them again."{/n}
 {n}The Commander's household, when the Commander came home, found two of her people already in it, a cook who could not cook and a steward who counted the wrong things, and set places for them without being told.{/n}''', c()),
@@ -349,7 +355,7 @@ NENIO_BACK = "nenio.trickster.returned"   # Nenio's own Trickster return (nenio_
 REACTIONS = [
     reaction("Daeran", "nocticula.trickster.reaction.daeran", (IMPERSONATED,),
              '''{n}Daeran is laughing before you have finished the story. He has to set his glass down.{/n}
-"I once told you Lady Nocticula seemed a bearable enough mistress. I withdraw it. She let you into her private rooms wearing her brother's scent, called you by his name, and you are still breathing. She is an extraordinary mistress."
+"Lady Nocticula is an extraordinary mistress. She let you into her private rooms wearing her brother's scent, called you by his name, and you are still breathing. A remarkably accommodating hostess."
 "Tell me the truth, Commander. Did she blush? No, don't. I prefer to imagine it."''',
              answer_list=DAERAN_HUB, forbids=("daeran.dead", "daeran.kicked_out"), chapter=5, last=5,
              entry='"I visited Nocticula\'s palace."'),
@@ -449,6 +455,17 @@ def integrate(payload):
         hand["Nodes"].append(n("scent_" + target, "Nocticula", SCENT_LINE, c("Continue", target), portrait="Nocticula"))
 
     from storylines import nocticula_partners
+    # Read-only native companion availability, verified in blueprints.zip.
+    payload.setdefault("Etudes", {})["nocticula.daeran_in_party"] = "e49732bbb3126ec4280cf7f12946abad"
+    payload.setdefault("Etudes", {})["nocticula.daeran_plot_absent"] = "d80bdee55139ac24583f337a53878021"
+    payload.setdefault("Derived", {})["nocticula.daeran_present"] = [["nocticula.daeran_in_party"]]
+    payload.setdefault("DerivedForbids", {})["nocticula.daeran_present"] = ["daeran.dead", "daeran.kicked_out", "nocticula.daeran_plot_absent"]
+    morning = _scene(by_id, "nocticula.trickster.defeated.morning")
+    _gate(_node(morning, "start")["Choices"][1], requires=("nocticula.daeran_present",))
+    _node(morning, "start")["Choices"].append(c("[Read the rest of the dust.]", "note_paid_alone", requires=(PAID,),
+        forbids=("nocticula.daeran_present", "daeran.dead", "daeran.kicked_out")))
+    for host in ("note_paid", "note_paid_alone"):
+        _node(morning, host)["Text"] += '\n{n}Above the note, a chair stands at the right hand of your own, drawn with one firm stroke.{/n}'
     nocticula_partners.integrate(payload)
 
 # --- Court scenes (ledger row 11: Nocticula owns all four; optional; never Forbid, close or set another route's flags) ---

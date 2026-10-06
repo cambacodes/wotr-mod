@@ -1,0 +1,23 @@
+{
+  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "facts": [
+    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
+    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
+    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
+    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+  ],
+  "scene": "Chapter 5, authored hosted harbor room, company branch yes. Nocticula and Commander alone, a return after the played first night. Her own invitation, lamp and couch, impatience and the ruler who has enjoyed an ambassador's fear. User-supplied continuation of consensual intimacy. Keep current Shamira terms and parent Worldwound bargain unchanged. End before her arm across the waist and demand to leave the lamp burning; next morning returns to Drezen and the current discovery receipt.",
+  "last_line": "N: Later, the lamp still burns beside the couch.",
+  "speakers": {
+    "N": "Narrator",
+    "L": "Nocticula"
+  },
+  "example": "N: Nocticula catches your sleeve before you can set the glass down.\nL: Leave it. I have had enough of watching you drink.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 18,
+  "default_text": "{n}She draws you close by the wrist. Later, the lamp still burns beside the couch.{/n}"
+}

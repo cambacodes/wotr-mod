@@ -1,0 +1,23 @@
+{
+  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "facts": [
+    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
+    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
+    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
+    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+  ],
+  "scene": "Chapter 5, Drezen sleep, authored balcony overlooking dream Alushinyrra. Nocticula and Commander alone, optional private encounter before the harbor undertaking. Reciprocal approach already chosen; no Gift compulsion. This may be the first night; later harbor encounters are returns. Keep the flower waiting on the rail and her own work alive. A consensual intimate encounter; detailed continuation is user-supplied. Resume at flower/work and waking, not a new commitment.",
+  "last_line": "N: Beyond the rail, the city lights burn until morning.",
+  "speakers": {
+    "N": "Narrator",
+    "L": "Nocticula"
+  },
+  "example": "N: Nocticula catches your sleeve before you can set the glass down.\nL: Leave it. I have had enough of watching you drink.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 18,
+  "default_text": "{n}She pulls you close on the balcony cushions. Beyond the rail, the city's lights burn until morning.{/n}"
+}

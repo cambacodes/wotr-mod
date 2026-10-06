@@ -64,7 +64,7 @@ You lay the false guarantee beside your own half. When Nocticula's answering str
 "It is not that stroke. Keep looking."''', c('Keep the old exposure on record without claiming it identifies Salven.', "offer")),
     page("offer", "Commander", '''{n}You propose sending a reply that appears to accept one purchased introduction. Salven will have to name where he expects a petition to be delivered. Neris can attend his advertised collection point in Drezen with a closed packet, soldiers close enough to hear her call.{/n}
 {n}Nocticula wants to know what is in the packet.{/n}
-"A request from a man who thinks you will enjoy hearing how easily he purchased your attention."
+"A request from someone who thinks you will enjoy hearing how easily they purchased your attention."
 "You have a model close at hand."
 "I was going to sign it."
 {n}The next line forms more slowly.{/n}
