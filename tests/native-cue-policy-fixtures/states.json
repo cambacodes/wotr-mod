@@ -18226,6 +18226,19 @@
       "ExpectedCandidate": "nenio.trickster.epilogue.scholar"
     },
     {
+      "Id": "page/nenio.trickster.epilogue.kenabres_pending",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.folio.kenabres_judgment.pending",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nenio.trickster.epilogue.kenabres_pending"
+    },
+    {
       "Id": "page/nenio.lastcall.page",
       "Target": "",
       "Dialog": "",

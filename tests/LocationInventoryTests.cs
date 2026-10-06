@@ -26,8 +26,14 @@ internal static class LocationInventoryTests
             check(Rules.Available(story, scene, state), "l12 return to earned venue blocked: " + id);
         }
         foreach (var suffix in new[] { "_visitor", "_arcade" })
-            foreach (var node in story.Scenes.Single(s => s.Id == "nenio.folio.volume_one" + suffix).Nodes.Where(n => n.Id == "give" || n.Id == "give_new"))
-                check(node.Text.Contains("staying in Drezen") && !node.Text.Contains("same battle as you"), "l12 unrecruited Nenio marches: " + suffix + node.Id);
+        {
+            var volume = story.Scenes.Single(s => s.Id == "nenio.folio.volume_one" + suffix);
+            check(volume.Areas.SequenceEqual(new[] { Drezen }), "l12 unrecruited Nenio's handover leaves Drezen: " + suffix);
+            foreach (var node in volume.Nodes.Where(n => n.Id == "give" || n.Id == "give_new"))
+                // The book travels with the Commander; its author does not claim to march.
+                check(node.Text.Contains("The crusade goes to the Threshold.")
+                    && !node.Text.Contains("same battle as you"), "l12 unrecruited Nenio marches: " + suffix + node.Id);
+        }
         var night = story.Scenes.Single(s => s.Id == "horzalah.trickster.late.at_night");
         check(!night.Nodes.Single(n => n.Id == "morning").Text.Contains("citadel"), "l12 Chapter 6 aftermath insists on Drezen");
     }

@@ -136,8 +136,20 @@ internal static class EarnedOutcomeInventoryTests
         }
         var name = World("nenio.enigma_resolved");
         Select("nenio.trickster.taken.riddle", "filed", 0, name);
-        check(name.Has("nenio.trickster.name_gone") && name.Has("nenio.lastcall.callable"), "Native paid name stake needs optional discussion.");
         name.Flags.Add("trickster.lastcall.open"); Refresh(name);
+        check(!name.Has("nenio.trickster.name_gone") && !name.Has("nenio.lastcall.callable")
+            && !Rules.Available(story, S("nenio.lastcall.call"), name), "Unfiled name stake grants name loss or Last Call eligibility.");
+        // Her native farewell still uses the name; after_enigma completes the filing.
+        name.Chapter = 5; name.Hour += 13;
+        var filing = S("nenio.trickster.after_enigma");
+        name.AvailableContacts.Add(filing.ContactUnit!);
+        check(Rules.Available(story, filing, name), "Earned name filing is unavailable after the native farewell.");
+        Select(filing.Id, "open", 0, name);
+        Select(filing.Id, "missing", 0, name);
+        Select(filing.Id, "thanked", 0, name);
+        Select(filing.Id, "law", 2, name);
+        check(name.Has("nenio.trickster.name_gone") && name.Has("nenio.lastcall.callable"), "Completed name filing loses name loss or Last Call eligibility.");
+        name.Chapter = 6;
         check(Rules.Available(story, S("nenio.lastcall.call"), name), "Actual name stake cannot select the call.");
         Select("nenio.lastcall.call", "call", 0, name);
         check(Rules.VisibleParagraphs(S("nenio.lastcall.page").Nodes[0], name)
