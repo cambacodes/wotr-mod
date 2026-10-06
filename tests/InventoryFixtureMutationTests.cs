@@ -138,7 +138,14 @@ internal static class InventoryFixtureMutationTests
         bool shared = native == "ascend_all" || native == "ascend_areelu";
         Need(w.Available("areelu.trickster.finale.ascended") == shared,
             "Native " + native + " selected the wrong committed ascension page.");
-        if (shared) w = w.Walk("areelu.trickster.finale.ascended").First();
+        if (shared)
+        {
+            var endings = w.Walk("areelu.trickster.finale.ascended");
+            foreach (string node in new[] { "asc_night", "asc_morning", "asc_stopped" })
+                Need(endings.Any(r => r.Trace.Any(t => t.StartsWith("areelu.trickster.finale.ascended/" + node + "["))),
+                    "Native " + native + " lost the post-ascent night, morning or refusal: " + node);
+            w = endings.First();
+        }
         w.Report("areelu:007/" + native);
     }
 
