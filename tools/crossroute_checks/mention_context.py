@@ -52,6 +52,8 @@ def reference_reason(text, match, postwar=False):
         return "paid recollection of an earlier morning"
     if live_continuation(after):
         return None
+    if re.match(r"\s+said,?\s+when the news reached camp\b", after, re.I):
+        return "recorded reaction to campaign news"
     # eng-final: native ending corrections record campaign survival and
     # departures. The coronation/Iz chronology and a past-perfect departure
     # describe history, rather than a new meeting or a reopened romance.
@@ -145,6 +147,9 @@ def reference_reason(text, match, postwar=False):
                 or re.match(r"\s*[,!]\s*(?:yes|help|forgive|save|bless)\b", after, re.I)
                 or re.match(r"\s+(?:will cope|gave me two legs)\b", after, re.I)):
             return "religious invocation"
+        if (re.match(r"\s+never hears my name\b", after, re.I)
+                and re.search(r"\b(?:court as evidence|under seal|my trial)\b", text, re.I)):
+            return "religious court and official reporting"
         if (re.search(r"\b(?:serve|serves|served|serving|thank|thanked|pray|praying|prayers|chaplains|priests|churches|image|sign|swear|swore)\b[^.!?]{0,50}$", before, re.I)
                 or re.match(r"['’]s\s+(?:court|door|army|little lamps)\b", after, re.I)
                 or re.match(r"\s+(?:can take it up|has a plan|asks us to forgive|chooses her paladins|knows it|hears about it|saw that|is going to have words)\b", after, re.I)):

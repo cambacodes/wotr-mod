@@ -178,6 +178,11 @@ class ShippedNativeMigrationTests(unittest.TestCase):
                 else:
                     for variant, outcome in zip([expected, *expected.get("Variants", [])], outcomes):
                         variant["When"] = ending_when(outcome)
+            if field == "NativeEpilogueEdits":
+                for variant in [expected, *expected.get("Variants", [])]:
+                    gates = [key for key in scenes[variant["Replacement"]].get("Requires", [])
+                             if ".payoff." in key or key.endswith((".present_now", ".reachable_by_letter"))]
+                    variant["When"] = [list(dict.fromkeys([*g, *gates])) for g in variant["When"]]
             return expected
         # eng8-q8e end
         for module in (devarra_native, kiana_native, camellia_native, areelu_afterlogue, wenduag_native, galfrey_queen_slide, arueshalae_rounds):

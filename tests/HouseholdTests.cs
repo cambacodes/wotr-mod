@@ -13,11 +13,36 @@ internal static class HouseholdTests
     private const string KingC5 = "6dccfd39947ef4242a8afbe36b21a46c";
     private const string Kept = "household.table.kept";
 
+    internal static void Earn(Story story, Snapshot state, string key, HashSet<string>? seen = null, bool preferLiving = false)
+    {
+        seen ??= new HashSet<string>();
+        if (!seen.Add(key)) return;
+        if (story.Derived.TryGetValue(key, out var groups))
+        {
+            // Keep the fixture's actual branch; avoid inventing a mythic path
+            // when an authored acceptance arm is available.
+            var paths = new HashSet<string> { "angel", "demon", "lich", "true_lich", "swarm", "aeon", "legend", "dragon", "devil" };
+            var group = groups.OrderByDescending(g => g.Count(state.Has))
+                .ThenBy(g => preferLiving ? g.Count(k => !state.Has(k) && story.DepartureEpochs.Values.Any(epoch => epoch.Losses.Contains(k))) : 0)
+                .ThenBy(g => g.Count(k => paths.Contains(k) && !state.Has(k)))
+                .ThenBy(g => g.Length).First();
+            foreach (string input in group) Earn(story, state, input, seen, preferLiving);
+        }
+        else if (story.Latches.TryGetValue(key, out var sources)) Earn(story, state, sources.First(), seen, preferLiving);
+        else state.Flags.Add(key);
+    }
+
     private static Snapshot State(Story story, int chapter, params string[] flags)
     {
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 1000 };
-        foreach (var flag in flags) state.Flags.Add(flag);
-        state.Flags.Add("foresight.page_taken");
+        // Predicate fixtures carry actual declared acceptance/deed receipts.
+        // Producer chronology is covered separately by PayoffDepartureRulesTests.
+        foreach (var flag in flags) Earn(story, state, flag);
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                Earn(story, state, rel.Key + ".payoff.ordinary");
+        if (flags.Contains("noct.acq.renewed_agreement")) Earn(story, state, "nocticula.acquisition.payoff.ordinary");
+        state.Flags.Add("trickster.foresight.accepted");
         Rules.Complete(story, state);
         return state;
     }
@@ -26,14 +51,14 @@ internal static class HouseholdTests
     {
         string Committed(string rel) => story.Relationships[rel].CommittedFlag;
 
-        // Eligibility: one Derived key per romance route, from its committed state (or its late commitment); the friendship
+        // Eligibility: one Derived key per romance route, from its earned partnership (or its late commitment); the friendship
         // routes and the frameworks have none. any_eligible opens the King's offer.
         var partners = story.Derived.Keys.Where(k => k.EndsWith(".harem.eligible", StringComparison.Ordinal))
             .Select(k => k.Substring(0, k.Length - ".harem.eligible".Length)).ToList();
         check(partners.Count == 41 && !partners.Contains("ember") && !partners.Contains("aivu") && !partners.Contains("lastcall")
             && !partners.Contains("household"), "Household eligibility is not exactly the 41 romance routes: " + string.Join(",", partners));
-        check(partners.All(rel => story.Derived[rel + ".harem.eligible"].Any(g => g.Length == 1 && g[0] == Committed(rel))),
-            "A partner's eligibility does not follow her committed flag.");
+        check(partners.All(rel => story.Derived[rel + ".harem.eligible"].Any(g => g.Length == 1 && g[0] == rel + ".payoff.ordinary")),
+            "A partner's eligibility does not follow her earned payoff contract.");
         var none = State(story, 3, "trickster");
         check(!none.Has("household.any_eligible") && partners.All(rel => !none.Has(rel + ".harem.eligible")), "Eligibility holds with nobody committed.");
         var seelah = State(story, 3, "trickster", Committed("seelah"));
@@ -52,11 +77,17 @@ internal static class HouseholdTests
             "A partner's eligibility is not guarded by her own route.");
         var stillOpen = partners.Where(rel => State(story, 3, "trickster", Committed(rel), story.Relationships[rel].ClosedFlag).Has(rel + ".harem.eligible")).ToList();
         check(stillOpen.Count == 0, "A partner whose route is closed is still eligible: " + string.Join(",", stillOpen));
+        bool LostAfterAcceptance(string rel, string flag)
+        {
+            var state = State(story, 3, "trickster", Committed(rel));
+            state.Flags.Add(flag);
+            Rules.RecordAvailabilityEvents(story, state, new[] { flag });
+            Rules.Complete(story, state);
+            return !state.Has(rel + ".harem.eligible");
+        }
         var badReturn = partners.Where(rel => !story.Relationships[rel].UnavailableFlags.All(flag =>
-                !State(story, 3, "trickster", Committed(rel), flag).Has(rel + ".harem.eligible")
-                && (!story.Relationships[rel].UnavailableOverrides.TryGetValue(flag, out var back)
-                    || State(story, 3, "trickster", Committed(rel), flag, back).Has(rel + ".harem.eligible")))).ToList();
-        check(badReturn.Count == 0, "An unavailable state does not withdraw eligibility, or its return does not restore it: " + string.Join(",", badReturn));
+                LostAfterAcceptance(rel, flag))).ToList();
+        check(badReturn.Count == 0, "An unavailable state does not withdraw earned eligibility: " + string.Join(",", badReturn));
         // Arsinoe: the yes, then the goodbye (the Arsinoe polish finding).
         var arsinoeYes = State(story, 3, "trickster", "trickster.ever", "arsinoe.committed");
         var arsinoeBye = State(story, 3, "trickster", "trickster.ever", "arsinoe.committed", "arsinoe.closed", "arsinoe.parted", "arsinoe.future_spoken");

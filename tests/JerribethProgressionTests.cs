@@ -36,7 +36,7 @@ internal static class JerribethProgressionTests
             var scene = Find(id);
             var state = Program.Copy(input);
             state.Hour += scene.DelayHours;
-            check(Rules.Available(story, scene, state), "Jerribeth actual chain cannot enter " + id);
+            check(Program.CurrentAvailable(story, scene, state), "Jerribeth actual chain cannot enter " + id);
             if (queue) check(Rules.NextRemote(route, state)?.Id == scene.Id, "Jerribeth rest queue skips played scene " + id);
             var results = Program.Walk(scene, state, (node, _) => seen.Add(scene.Id + "/" + node));
             foreach (var result in results) Preserve(state, result);
@@ -57,7 +57,7 @@ internal static class JerribethProgressionTests
         }
 
         string[] EndingIds(Snapshot state) => story.Scenes.Where(s => s.Relationship == "jerribeth"
-            && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Select(s => s.Id).ToArray();
+            && s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)).Select(s => s.Id).ToArray();
 
         void Endings(Snapshot state, bool developed)
         {
@@ -84,12 +84,12 @@ internal static class JerribethProgressionTests
 
         var core = Core(5);
         core.Hour += 10000;
-        check(!Rules.Available(story, future, core), "Original commission->future shortcut remains available with elapsed time alone.");
-        check(!Rules.Available(story, farewell, core), "Farewell bypasses the developed or explicitly short promise.");
-        check(Find("parting").ManualOnly && Rules.Available(story, Find("parting"), core), "Manual breakup is unavailable or automatic again.");
+        check(!Program.CurrentAvailable(story, future, core), "Original commission->future shortcut remains available with elapsed time alone.");
+        check(!Program.CurrentAvailable(story, farewell, core), "Farewell bypasses the developed or explicitly short promise.");
+        check(Find("parting").ManualOnly && Program.CurrentAvailable(story, Find("parting"), core), "Manual breakup is unavailable or automatic again.");
         check(Rules.NextRemote(route, core)?.Id == Find("offered_signature").Id, "Future or manual breakup steals the purchaser invitation.");
         var shortOffer = Find("short_invitation");
-        check(shortOffer.ManualOnly && Rules.Available(story, shortOffer, core), "Explicit shorter-history offer is missing.");
+        check(shortOffer.ManualOnly && Program.CurrentAvailable(story, shortOffer, core), "Explicit shorter-history offer is missing.");
         foreach (var deferred in Program.Walk(shortOffer, core).Where(s => !s.Has(shortOffer.Id)))
             check(deferred.Flags.SetEquals(core.Flags), "Declining the short route changes history.");
         var shortRoute = Play("short_invitation", core);
@@ -98,11 +98,11 @@ internal static class JerribethProgressionTests
         Endings(shortRoute, false);
         var shortOrdinary = Play("ordinary", shortRoute, queue: true);
         shortOrdinary.Hour += 100;
-        check(!Rules.Available(story, farewell, shortOrdinary), "Short promise silently schedules a campaign-cutting farewell.");
+        check(!Program.CurrentAvailable(story, farewell, shortOrdinary), "Short promise silently schedules a campaign-cutting farewell.");
         check(Find("farewell_review").ManualOnly, "Farewell review steals unfinished visits from the rest queue.");
         check(Rules.NextRemote(route, shortOrdinary)?.Id == Find("offered_signature").Id, "Short courtship blocks unfinished visits before informed farewell.");
         var shortLeaving = Play("farewell_review", shortOrdinary);
-        check(Rules.Available(story, farewell, shortLeaving), "Explicit short-history farewell remains blocked.");
+        check(Program.CurrentAvailable(story, farewell, shortLeaving), "Explicit short-history farewell remains blocked.");
         var farewellResults = Program.Walk(farewell, shortLeaving);
         check(farewellResults.Any(s => s.Has("jerribeth.farewell") && !s.Has("jerribeth.developed_future")), "Short farewell silently upgrades its history.");
 
@@ -111,8 +111,8 @@ internal static class JerribethProgressionTests
         legacy.Flags.UnionWith(new[] { "jerribeth.future", "jerribeth.committed", "jerribeth.chosen_future", "jerribeth.ordinary", "jerribeth.at_ease" });
         legacy.Times["jerribeth.future"] = 500;
         legacy.Times["jerribeth.ordinary"] = 550;
-        check(!Rules.Available(story, farewell, legacy), "Old ordinary bypasses the informed farewell decision.");
-        check(Find("old_promise").ManualOnly && Rules.Available(story, Find("old_promise"), legacy), "Old unreviewed promise has no explicit shorter-history option.");
+        check(!Program.CurrentAvailable(story, farewell, legacy), "Old ordinary bypasses the informed farewell decision.");
+        check(Find("old_promise").ManualOnly && Program.CurrentAvailable(story, Find("old_promise"), legacy), "Old unreviewed promise has no explicit shorter-history option.");
         var oldKept = Play("old_promise", legacy);
         check(oldKept.Has("jerribeth.future_settled") && !oldKept.Has("jerribeth.developed_future"), "Legacy acknowledgement silently develops the promise.");
         Endings(oldKept, false);
@@ -127,8 +127,8 @@ internal static class JerribethProgressionTests
             {
                 state.Flags.UnionWith(new[] { "jerribeth.farewell", "jerribeth.farewell_kept" });
                 state.Times["jerribeth.farewell"] = 600;
-                check(!Rules.Available(story, Find(campaign[0]), state), "Old farewell silently reopens the campaign.");
-                check(catchup.ManualOnly && Rules.Available(story, catchup, state), "Old farewell has no manual catch-up.");
+                check(!Program.CurrentAvailable(story, Find(campaign[0]), state), "Old farewell silently reopens the campaign.");
+                check(catchup.ManualOnly && Program.CurrentAvailable(story, catchup, state), "Old farewell has no manual catch-up.");
                 check(Rules.NextRemote(route, state) == null, "Manual old-save offers occupy the rest queue.");
                 foreach (var deferred in Program.Walk(catchup, state).Where(s => !s.Has(catchup.Id)))
                     check(deferred.Flags.SetEquals(state.Flags), "Deferring catch-up changes old history.");
@@ -140,7 +140,7 @@ internal static class JerribethProgressionTests
             if (state.Chapter == 3)
             {
                 // JER-08: the Chapter 3 courtship is eight letters; the campaign waits for Chapter 4-5.
-                check(!Rules.Available(story, Find(campaign[0]), state), "JER-08: the campaign opens in Chapter 3.");
+                check(!Program.CurrentAvailable(story, Find(campaign[0]), state), "JER-08: the campaign opens in Chapter 3.");
                 state.Chapter = 5;
             }
             bool automatic = true;
@@ -155,24 +155,24 @@ internal static class JerribethProgressionTests
                 if (history == "fresh")
                 {
                     var late = Program.Copy(state); late.Chapter = 5; late.Hour += 10000;
-                    check(!Rules.Available(story, future, late), "Partial purchaser/counteroffer history prematurely unlocks developed future.");
+                    check(!Program.CurrentAvailable(story, future, late), "Partial purchaser/counteroffer history prematurely unlocks developed future.");
                 }
             }
             if (state.Chapter == 3)
-                check(!Rules.Available(story, visit, state), "Settlement consequence ignores Act 5 restriction.");
+                check(!Program.CurrentAvailable(story, visit, state), "Settlement consequence ignores Act 5 restriction.");
             state.Chapter = 5;
-            check(!Rules.Available(story, visit, state), "Settlement visitor ignores the freshly completed predecessor delay.");
+            check(!Program.CurrentAvailable(story, visit, state), "Settlement visitor ignores the freshly completed predecessor delay.");
             state.Hour += visit.DelayHours;
-            check(Rules.Available(story, visit, state), "Played settlement cannot begin after its delay.");
+            check(Program.CurrentAvailable(story, visit, state), "Played settlement cannot begin after its delay.");
             foreach (string flag in new[] { "jerribeth.closed", "jerribeth.unavailable" })
             {
                 var blocked = Program.Copy(state); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, visit, blocked), "Catch-up overrides native or authored closure: " + flag);
+                check(!Program.CurrentAvailable(story, visit, blocked), "Catch-up overrides native or authored closure: " + flag);
             }
             var wrongArea = Program.Copy(state); wrongArea.Area = "elsewhere";
-            check(!Rules.Available(story, visit, wrongArea), "Settlement ignores remote area restrictions.");
+            check(!Program.CurrentAvailable(story, visit, wrongArea), "Settlement ignores remote area restrictions.");
             state = Play("settlement_visit", state, s => s.Has("jerribeth." + outcomes[option]), automatic);
-            check(!Rules.Available(story, room, state), "Room follow-through ignores its fresh predecessor timestamp.");
+            check(!Program.CurrentAvailable(story, room, state), "Room follow-through ignores its fresh predecessor timestamp.");
             state = Play("room_measure", state,
                 s => s.Has(option % 2 == 0 ? "jerribeth.room_loop" : "jerribeth.room_terrace")
                     && s.Has(option % 2 == 0 ? "jerribeth.room_desire" : "jerribeth.room_quiet"), automatic);
@@ -182,7 +182,7 @@ internal static class JerribethProgressionTests
                 // eng7-l13: choose the ordinary earned promise; the magic reply belongs to Trickster tests.
                 state = Play("future", state, s => s.Has("jerribeth.committed"), queue: true);
                 check(state.Has("jerribeth.developed_future"), "Fresh completed campaign cannot earn its future.");
-                check(!Rules.Available(story, reaffirm, state), "Fresh developed promise needlessly repeats as migration.");
+                check(!Program.CurrentAvailable(story, reaffirm, state), "Fresh developed promise needlessly repeats as migration.");
             }
             else
             {

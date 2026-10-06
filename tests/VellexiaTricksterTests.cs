@@ -23,6 +23,13 @@ internal static class VellexiaTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         if (chapter == 5) state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -359,7 +366,7 @@ internal static class VellexiaTricksterTests
         check(Shown(visitedOnly) == 1 && Says(visitedOnly, "[vellexia.ending_lovers/start/paragraph/1][vellexia.trickster.mirrored.unmirror/reading_freed][vellexia.trickster.mirrored.unmirror_stores/reading_freed][trickster.lastcall.page.collectors/page/paragraph/11]"), "Trk_Vellexia_LoversEndingVariants: the earlier visit is forgotten.");
 
         // Q11: a Commander who came back is not mourned and keeps the ordinary ending.
-        var back = Program.Copy(letters); back.Flags.Add("sacrifice"); back.Flags.Add("trickster.commander_back"); Rules.Complete(story, back);
+        var back = Program.Copy(letters); back.Flags.Add("sacrifice"); back.Flags.Add("ending.trickster"); Rules.Complete(story, back);
         check(Rules.Available(story, Ending("lovers"), back) && !Rules.Available(story, Ending("sacrifice"), back),
             "Q11: the surviving Commander is mourned, or loses the lovers' ending.");
         var gone = Program.Copy(letters); gone.Flags.Add("sacrifice"); Rules.Complete(story, gone);
@@ -453,7 +460,7 @@ internal static class VellexiaTricksterTests
         var lateDied = Program.Copy(lateCourted); lateDied.Flags.Add("sacrifice"); Rules.Complete(story, lateDied);
         check(!Rules.Available(story, epCommit, lateDied) && Rules.Available(story, Ending("sacrifice"), lateDied),
             "Trk_Vellexia_LateCommitSacrifice: a dead Commander is mourned and bedded at once.");
-        var lateBack = Program.Copy(lateDied); lateBack.Flags.Add("trickster.commander_back"); Rules.Complete(story, lateBack);
+        var lateBack = Program.Copy(lateDied); lateBack.Flags.Add("ending.trickster"); Rules.Complete(story, lateBack);
         check(Rules.Available(story, epCommit, lateBack) && !Rules.Available(story, Ending("sacrifice"), lateBack),
             "Trk_Vellexia_LateCommitSacrifice: the surviving Commander loses the late romance, or is mourned.");
         var lateInhuman = Program.Copy(lateCourted); lateInhuman.Flags.Add("inhuman");
@@ -488,7 +495,7 @@ internal static class VellexiaTricksterTests
         check(brokeUp != null && brokeUp.Has("vellexia.parted"), "Q11 r4: the cover's breakup does not record the parting.");
         if (brokeUp != null)
         {
-            var brokeUpLc = Program.Copy(brokeUp); brokeUpLc.Flags.Add("lastcall.active"); Rules.Complete(story, brokeUpLc);
+            var brokeUpLc = Program.Copy(brokeUp); brokeUpLc.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" }); Rules.Complete(story, brokeUpLc);
             check(!Rules.Available(story, lcPage, brokeUpLc), "Q11 r4: Last Call restores a romance the cover ended.");
         }
         var collected = Play(visit, Later(story, nice, 24)).First(r => r.Has("vellexia.closed"));

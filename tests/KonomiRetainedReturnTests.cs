@@ -50,12 +50,12 @@ internal static class KonomiRetainedReturnTests
             if (ending == "parted") initial.Flags.Add("konomi.private_parted");
             if (office == "active") initial.Flags.Add("konomi.present");
             if (office == "dismissed") initial.Flags.UnionWith(new[] { "konomi.dismissed", "konomi.office_completed" });
-            check(Rules.Available(story, inquiry, initial), "Valid retained-death history cannot begin inquiry.");
-            check(!Rules.Available(story, attempt, initial), "Native action bypasses the earned investigation.");
+            check(Program.CurrentAvailable(story, inquiry, initial), "Valid retained-death history cannot begin inquiry.");
+            check(!Program.CurrentAvailable(story, attempt, initial), "Native action bypasses the earned investigation.");
             foreach (string needed in new[] { "trickster", dead, "revive.konomi.available" })
             {
                 var absent = Program.Copy(initial); absent.Flags.Remove(needed);
-                check(!Rules.Available(story, inquiry, absent), "Recovery entry bypasses " + needed);
+                check(!Program.CurrentAvailable(story, inquiry, absent), "Recovery entry bypasses " + needed);
             }
             var investigation = Program.Walk(inquiry, initial, (page, _) => reached.Add(inquiry.Id + "/" + page));
             check(investigation.Any(state => state.Has("konomi.return_distinction"))
@@ -63,39 +63,40 @@ internal static class KonomiRetainedReturnTests
             foreach (var prepared in investigation.Where(state => state.Has("konomi.return_path_prepared")))
             {
                 check(!prepared.Has("konomi.retained_return_confirmed"), "Investigation fabricates resurrection success.");
-                check(Rules.Available(story, attempt, prepared), "Prepared investigation cannot reach attempt.");
+                check(Program.CurrentAvailable(story, attempt, prepared), "Prepared investigation cannot reach attempt.");
                 var pages = new HashSet<string>();
                 Program.Walk(attempt, prepared, (page, _) => { reached.Add(attempt.Id + "/" + page); pages.Add(page); });
                 check(pages.Contains("attempt"), "Explicit native dispatch choice is unreachable.");
-                check(!Rules.Available(story, first, prepared), "Pending attempt opens living aftermath.");
+                check(!Program.CurrentAvailable(story, first, prepared), "Pending attempt opens living aftermath.");
                 // Explicit service-result fixture: the pure walker does not execute or certify resurrection.
                 var verified = Program.Copy(prepared);
                 verified.Flags.Remove(dead); verified.Flags.Remove("revive.konomi.available");
-                verified.Flags.UnionWith(new[] { "konomi.retained_return_confirmed", contact });
+                verified.Flags.UnionWith(new[] { "konomi.retained_return_confirmed", "konomi.native_alive", "konomi.death_restored", contact });
+                Rules.RecordAvailabilityEvents(story, verified, new[] { "konomi.native_alive", "konomi.death_restored" });
                 verified.AvailableContacts.Add(unit);
                 verified.Flags.Remove("trickster"); verified.Flags.Add("legend");
                 var letter = story.Scenes.SingleOrDefault(scene => scene.Id == "konomi.return_letter");
                 if (letter != null)
                 {
-                    check(!Rules.Available(story, first, verified), "Physical aftercare bypassed Konomi's reply.");
+                    check(!Program.CurrentAvailable(story, first, verified), "Physical aftercare bypassed Konomi's reply.");
                     verified.Flags.Add("konomi.return_correspondence_available");
                     verified.Times["konomi.retained_return_confirmed"] = verified.Hour;
                     verified.Hour += 12;
-                    check(Rules.Available(story, letter, verified), "Verified return cannot request the first visit.");
+                    check(Program.CurrentAvailable(story, letter, verified), "Verified return cannot request the first visit.");
                     verified = Program.Walk(letter, verified).Single(state => state.Has("konomi.return_meeting_accepted"));
                 }
-                check(Rules.Available(story, first, verified), "Verified return cannot receive aftercare after an earned Legend transition.");
+                check(Program.CurrentAvailable(story, first, verified), "Verified return cannot receive aftercare after an earned Legend transition.");
                 foreach (string needed in new[] { "konomi.retained_return_confirmed", contact })
                 {
                     var absent = Program.Copy(verified); absent.Flags.Remove(needed);
-                    check(!Rules.Available(story, first, absent) && !Rules.ContactAvailable(story, first, absent),
+                    check(!Program.CurrentAvailable(story, first, absent) && !Rules.ContactAvailable(story, first, absent),
                         "Aftercare invents current positive evidence: " + needed);
                 }
                 var lostView = Program.Copy(verified); lostView.AvailableContacts.Clear();
-                check(!Rules.Available(story, first, lostView) && !Rules.ContactAvailable(story, first, lostView),
+                check(!Program.CurrentAvailable(story, first, lostView) && !Rules.ContactAvailable(story, first, lostView),
                     "Unavailable actor can begin or continue physical aftercare.");
                 var lostLife = Program.Copy(verified); lostLife.Flags.Add(dead);
-                check(!Rules.Available(story, first, lostLife) && !Rules.ContactAvailable(story, first, lostLife),
+                check(!Program.CurrentAvailable(story, first, lostLife) && !Rules.ContactAvailable(story, first, lostLife),
                     "New death still offers living aftercare.");
                 var firstPages = new HashSet<string>();
                 var after = Program.Walk(first, verified, (page, _) => { reached.Add(first.Id + "/" + page); firstPages.Add(page); });
@@ -106,9 +107,9 @@ internal static class KonomiRetainedReturnTests
                     .Where(page => page != expected).All(page => !firstPages.Contains(page)), "Aftercare invents incompatible personal history.");
                 foreach (var state in after.Where(state => state.Has("konomi.return_followup_invited")))
                 {
-                    check(!Rules.Available(story, second, state), "Follow-up bypasses the invited recovery interval.");
+                    check(!Program.CurrentAvailable(story, second, state), "Follow-up bypasses the invited recovery interval.");
                     state.Hour += 48;
-                    check(Rules.Available(story, second, state), "Invited follow-up cannot open after its interval.");
+                    check(Program.CurrentAvailable(story, second, state), "Invited follow-up cannot open after its interval.");
                     var secondPages = new HashSet<string>();
                     var finishes = Program.Walk(second, state, (page, _) => { reached.Add(second.Id + "/" + page); secondPages.Add(page); });
                     string officePage = office == "active" ? "office" : office == "dismissed" ? "dismissed" : "unappointed";

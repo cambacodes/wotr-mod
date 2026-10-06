@@ -18,7 +18,7 @@ internal static class TirabadeAfterRoadsTests
             foreach (string id in new[] { "three_stolen_roads", "three_lantern_debt", "three_beth_steps", "three_ista_departure", "three_lantern_turn", "three_open_road" })
             {
                 var prior = Find(id); state.Hour += prior.DelayHours;
-                check(Rules.Available(story, prior, state), "After-roads predecessor unavailable: " + id);
+                check(Program.CurrentAvailable(story, prior, state), "After-roads predecessor unavailable: " + id);
                 state = Program.Walk(prior, state).First(s => s.Has(id) && s.Has("three_stolen_roads.followed") == followed);
             }
             var states = new List<Snapshot> { state };
@@ -29,7 +29,7 @@ internal static class TirabadeAfterRoadsTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "After-roads played history stranded: " + id);
+                    check(Program.CurrentAvailable(story, scene, ready), "After-roads played history stranded: " + id);
                     foreach (var result in Program.Walk(scene, ready))
                     {
                         check(result.Has("committed") && result.Has("seelah.committed") && !result.Has("closed"), "After-roads changes an existing relationship.");
@@ -56,11 +56,11 @@ internal static class TirabadeAfterRoadsTests
             var scene = Find(id);
             var ready = new Snapshot { Chapter = 3, Area = scene.Areas.Single(), Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "After-roads baseline unavailable.");
+            check(Program.CurrentAvailable(story, scene, ready), "After-roads baseline unavailable.");
             foreach (string blocker in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "After-roads ignores blocker: " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "After-roads ignores blocker: " + blocker);
             }
         }
     }

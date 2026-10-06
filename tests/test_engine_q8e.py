@@ -59,6 +59,11 @@ class EngineQ8eTests(unittest.TestCase):
         self.assertEqual(len(self.implicit['review']), 5)
         bad = copy.deepcopy(self.story)
         bad['DerivedForbids']['participant.chivarro.available'].remove('minagho_chivarro.trickster.chivarro_sent_back')
+        self.assertFalse(self.implicit_findings(bad, 'herrax.trickster.chivarro_seen'))
+        # Current availability independently retains the original departure negative.
+        losses = bad['DepartureEpochs']['chivarro']['Losses']
+        index = losses.index('minagho_chivarro.trickster.chivarro_sent_back')
+        bad['Derived']['chivarro.present_now'][0].remove('chivarro.present_now.clear.' + str(index))
         self.assertTrue(self.implicit_findings(bad, 'herrax.trickster.chivarro_seen'))
 
     def test_every_ending_target_and_history_is_required(self):

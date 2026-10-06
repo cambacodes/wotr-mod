@@ -37,7 +37,7 @@ internal static class VellexiaOpeningTests
                 var continuing = new Dictionary<string, Snapshot>();
                 foreach (var input in states)
                 {
-                    check(Rules.Available(story, scene, input), "Vellexia actual preceding history cannot continue: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, input), "Vellexia actual preceding history cannot continue: " + scene.Id);
                     foreach (var result in Program.Walk(scene, input, (page, partial) =>
                     {
                         reached.Add(scene.Id + "/" + page);
@@ -58,7 +58,7 @@ internal static class VellexiaOpeningTests
                             check(result.Flags.SetEquals(input.Flags), "Vellexia deferral changes history.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Vellexia completed book can repeat.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Vellexia completed book can repeat.");
                         if (scene == scenes.Last())
                         {
                             check(result.Has("vellexia.opening_kept"), "Vellexia opening lacks final milestone.");
@@ -73,7 +73,7 @@ internal static class VellexiaOpeningTests
                     foreach (var transition in new[] { "vellexia.arena_invited", "vellexia.native_finished" })
                     {
                         var paused = Program.Copy(input); paused.Flags.Add(transition);
-                        check(!Rules.Available(story, scene, paused), "Vellexia initial-window interlude escapes native transition.");
+                        check(!Program.CurrentAvailable(story, scene, paused), "Vellexia initial-window interlude escapes native transition.");
                         check(input.Flags.All(paused.Has) && !paused.Has("vellexia.closed"), "Native invitation wipes or closes authored progress.");
                     }
                 }
@@ -90,18 +90,18 @@ internal static class VellexiaOpeningTests
             var ready = new Snapshot { Chapter = 4, Hour = 1000, Area = scene.Areas.Single() };
             ready.Flags.UnionWith(scene.Requires);
             ready.AvailableContacts.Add(contact);
-            check(Rules.Available(story, scene, ready), "Vellexia independent gate baseline invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Vellexia independent gate baseline invalid.");
             foreach (var flag in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Vellexia ignores entry blocker: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Vellexia ignores entry blocker: " + flag);
                 if (story.SeenCues.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag))
                     check(!Rules.ContactAvailable(story, scene, blocked), "Vellexia continues after native departure history changes: " + flag);
             }
-            foreach (var flag in scene.Requires)
+            foreach (var flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, blocked) && !Rules.ContactAvailable(story, scene, blocked), "Vellexia ignores missing prerequisite: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked) && !Rules.ContactAvailable(story, scene, blocked), "Vellexia ignores missing prerequisite: " + flag);
             }
             foreach (var flag in story.Relationships["vellexia"].UnavailableFlags)
             {
@@ -111,10 +111,10 @@ internal static class VellexiaOpeningTests
             foreach (int chapter in new[] { 3, 5 })
             {
                 var wrong = Program.Copy(ready); wrong.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrong), "Vellexia initial interlude escapes Chapter 4.");
+                check(!Program.CurrentAvailable(story, scene, wrong), "Vellexia initial interlude escapes Chapter 4.");
             }
             var elsewhere = Program.Copy(ready); elsewhere.Area = "other";
-            check(!Rules.Available(story, scene, elsewhere) && !Rules.ContactAvailable(story, scene, elsewhere), "Vellexia appears outside loaded Upper City.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere) && !Rules.ContactAvailable(story, scene, elsewhere), "Vellexia appears outside loaded Upper City.");
         }
         foreach (string suffix in new[] { "panel_found", "panel_missed", "panel_asked", "kept_picture", "returned_picture", "private_hour", "candid_hour", "first_kiss", "held_close", "slow", "company" })
             check(results.Contains("vellexia." + suffix), "Vellexia traversal missed authored consequence: " + suffix);

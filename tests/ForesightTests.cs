@@ -106,6 +106,7 @@ internal static class ForesightTests
                     story.Scenes.Where(sc => sc.Relationship == r && sc.ContactUnit != null).Select(sc => sc.ContactUnit!)));
                 if (consumer.ContactUnit != null) { held.AvailableContacts.Add(consumer.ContactUnit); held.SceneContacts.Add(consumer.Id); }
                 // Fill independent earned requirements before changing only the paid page and current path.
+                HouseholdTests.Earn(story, held, "seelah.payoff.ordinary");
                 held.Flags.UnionWith(requires.Where(k => k != pair.Value && k != "household.stance_eligible"));
                 foreach (var f in held.Flags) held.Times[f] = 0;
                 Rules.Complete(story, held);

@@ -12,7 +12,8 @@ FIXTURES = ROOT / "tests/native-cue-policy-fixtures"
 
 class NativeCuePolicyInventoryTests(unittest.TestCase):
     def test_state_corpus_is_current_and_deterministic(self):
-        story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
         actual = json.loads((FIXTURES / "states.json").read_text(encoding="utf-8"))
         self.assertEqual(make_cases(story), actual, "Regenerate with tools/native_epilogue_inventory.py")
         targets = set(story["NativeEpilogueEdits"])

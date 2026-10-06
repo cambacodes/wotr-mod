@@ -39,7 +39,7 @@ internal static class TirabadeReckoningTests
                     var state = Program.Copy(input);
                     int latest = scene.Requires.Where(state.Times.ContainsKey).Select(f => state.Times[f]).DefaultIfEmpty(0).Max();
                     state.Hour = Math.Max(state.Hour, latest + scene.DelayHours);
-                    check(Rules.Available(story, scene, state), "Tirabade reckoning strands a wife order or prior outing: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, state), "Tirabade reckoning strands a wife order or prior outing: " + scene.Id);
                     if (scene.Id == "three_lantern_debt") Callback(scene, "waiting", state, state.Has("three_stolen_roads.followed") ? "followed" : "secured");
                     if (scene.Id == "three_beth_steps") Callback(scene, "tessa", state, state.Has("three_stolen_roads.followed") ? "followed" : "secured");
                     if (scene.Id == "three_ista_departure") Callback(scene, "arrival", state, state.Has("three_stolen_roads.followed") ? "receipts" : "letters");
@@ -66,10 +66,10 @@ internal static class TirabadeReckoningTests
                         if (!result.Has(scene.Id))
                         {
                             check(result.Flags.SetEquals(state.Flags) && result.Times.Count == state.Times.Count
-                                && Rules.Available(story, scene, result), "Postponement consumes an invitation or records unplayed events.");
+                                && Program.CurrentAvailable(story, scene, result), "Postponement consumes an invitation or records unplayed events.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Completed Tirabade incident can repeat.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Completed Tirabade incident can repeat.");
                         check(result.Has("three_stolen_roads.book_safe") != result.Has("three_stolen_roads.followed"),
                             "Recovered book and pursued records become contradictory outcomes.");
                         if (scene.Id != "three_stolen_roads")
@@ -132,30 +132,30 @@ internal static class TirabadeReckoningTests
             {
                 var ready = new Snapshot { Chapter = chapter, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
                 ready.Flags.UnionWith(scene.Requires);
-                check(Rules.Available(story, scene, ready), "Eligible Tirabade incident is unavailable.");
-                foreach (var prerequisite in scene.Requires)
+                check(Program.CurrentAvailable(story, scene, ready), "Eligible Tirabade incident is unavailable.");
+                foreach (var prerequisite in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
                 {
                     var missing = Program.Copy(ready); missing.Flags.Remove(prerequisite);
-                    check(!Rules.Available(story, scene, missing), "Tirabade incident bypasses prerequisite: " + prerequisite);
+                    check(!Program.CurrentAvailable(story, scene, missing), "Tirabade incident bypasses prerequisite: " + prerequisite);
                 }
                 foreach (var blocker in new[] { "closed", "loss", "inhuman", "last_watch", "irabeth_away", "anevia_away",
                     "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "swarm", "true_lich" })
                 {
                     var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                    check(!Rules.Available(story, scene, blocked), "Tirabade incident ignores missing/dead/closed state: " + blocker);
+                    check(!Program.CurrentAvailable(story, scene, blocked), "Tirabade incident ignores missing/dead/closed state: " + blocker);
                 }
                 ready.Times[scene.Requires.Last()] = ready.Hour;
                 ready.Hour += scene.DelayHours - 1;
-                check(!Rules.Available(story, scene, ready), "Tirabade incident ignores its delay.");
+                check(!Program.CurrentAvailable(story, scene, ready), "Tirabade incident ignores its delay.");
                 ready.Hour++;
-                check(Rules.Available(story, scene, ready), "Tirabade incident misses its exact delay boundary.");
+                check(Program.CurrentAvailable(story, scene, ready), "Tirabade incident misses its exact delay boundary.");
                 ready.Area = "elsewhere";
-                check(!Rules.Available(story, scene, ready), "Tirabade incident appears outside Drezen.");
+                check(!Program.CurrentAvailable(story, scene, ready), "Tirabade incident appears outside Drezen.");
                 ready.Area = "2570015799edf594daf2f076f2f975d8";
                 foreach (int unavailableChapter in new[] { 2, 4, 6 })
                 {
                     ready.Chapter = unavailableChapter;
-                    check(!Rules.Available(story, scene, ready), "Tirabade incident escapes its Chapter 3/5 scope.");
+                    check(!Program.CurrentAvailable(story, scene, ready), "Tirabade incident escapes its Chapter 3/5 scope.");
                 }
             }
         }

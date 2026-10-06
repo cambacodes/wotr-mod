@@ -4,6 +4,7 @@ import unittest
 from unittest.mock import patch
 
 from expansion import make_expansion
+from storylines import engine_eng3_ab
 from storylines import earned_outcomes
 from tools.crossroute_checks import late_commitment
 from tools.crossroute_checks.common import Proof, blocks, verify
@@ -18,7 +19,7 @@ def findings(payload):
 class EarnedOutcomeGeneratorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        with patch.object(earned_outcomes, "integrate"):
+        with patch.object(earned_outcomes, "integrate"), patch.object(engine_eng3_ab, "integrate"):
             cls.before = make_expansion()
         cls.after = copy.deepcopy(cls.before)
         earned_outcomes.integrate(cls.after)

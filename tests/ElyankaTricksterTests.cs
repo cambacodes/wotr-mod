@@ -27,6 +27,14 @@ internal static class ElyankaTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = "2570015799edf594daf2f076f2f975d8" };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -122,7 +130,7 @@ internal static class ElyankaTricksterTests
 
         // Trk_Elyanka_Door: 72 hours after the first funeral telling (latched), after Iz, on the live Trickster path.
         var heard = World(story, 5, "trickster", "trickster.ever", "elyanka.funeral.partisans_a", "iz.done");
-        foreach (var native in new[] { "trickster", "trickster.ever", "elyanka.funeral.partisans_a", "iz.done", "chapter_later" }) heard.Times.Remove(native);
+        foreach (var native in new[] { "trickster", "trickster.ever", "elyanka.funeral.partisans_a", "iz.done", "chapter_later", "elyanka.present_now" }) heard.Times.Remove(native);
         heard.Times[Latch] = 4000;
         check(heard.Has(Latch) && !Avail(door, Later(heard, -929)) && Avail(door, Later(heard, -928)) && door.DelayHours == 72
               && door.Chapters.SequenceEqual(new[] { 5 }) && door.MaxChapter == 5,
@@ -355,7 +363,7 @@ internal static class ElyankaTricksterTests
         {
             var gone = World(story, 6, new[] { "trickster.ever", Owned, Bequeathed, Started, Tested, "sacrifice", P + "straight" }.Concat(where).ToArray());
             int places = Pg("eaten").Nodes[0].Paragraphs.Take(4).Count(p => Rules.ParagraphVisible(p, gone));
-            check(Avail(Pg("eaten"), gone) && places == 1,
+            check((where.Contains(LeftFree) ? !Avail(Pg("eaten"), gone) : Avail(Pg("eaten"), gone)) && places == 1,
                 "Trk_Elyanka_Recall: the Wound's news finds her in " + places + " places, or with the cord, in " + string.Join("+", where));
         }
         foreach (var how in new[] { P + "straight", P + "bluffed", P + "exposed" })
@@ -409,9 +417,9 @@ internal static class ElyankaTricksterTests
             "Trk_Elyanka_LastCall: the bequest sets a survival key (it never makes survival possible).");
 
         // Trk_Elyanka_Household: eligible only by a yes she actually gave.
-        check(story.Derived["elyanka.harem.eligible"].Any(g => g.Length == 1 && g[0] == Committed)
+        check(story.Derived["elyanka.harem.eligible"].Any(g => g.Length == 1 && g[0] == "elyanka.payoff.ordinary")
         // eng7-l13: preparation also requires the live outcome contract.
-              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed, "elyanka.outcome.route_open" })
+              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", "elyanka.payoff.ordinary", "elyanka.outcome.route_open" })
               && !World(story, 6, "trickster.ever", Owned, Tested, Declined, LeftFree, Closed).Has("elyanka.harem.eligible")
               && !World(story, 6, "trickster.ever", Owned, Tested).Has("elyanka.harem.eligible")
               && World(story, 5, "trickster.ever", Committed).Has("elyanka.harem.eligible"),

@@ -11,7 +11,9 @@
         [
           "arueshalae.committed",
           "trickster.ever",
-          "trickster.commander_back"
+          "trickster.commander_back",
+          "arueshalae.payoff.ordinary",
+          "arueshalae.present_now"
         ]
       ]
     },
@@ -27,7 +29,9 @@
           "anevia.committed",
           "!anevia.partner_stance.share",
           "!anevia.partner_stance.exclusive",
-          "!anevia.partner_stance.secret"
+          "!anevia.partner_stance.secret",
+          "anevia.payoff.ordinary",
+          "anevia.present_now"
         ]
       ],
       "KeepNativeImage": true,
@@ -40,7 +44,8 @@
               "anevia.trickster.returned",
               "!anevia.partner_stance.share",
               "!anevia.partner_stance.exclusive",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -55,7 +60,9 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.share",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -72,7 +79,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -89,7 +98,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -105,7 +116,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -122,7 +135,9 @@
               "anevia.partner.absence_kept",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -138,7 +153,9 @@
               "anevia.partner_stance.share",
               "!irabeth.trickster.returned",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -156,7 +173,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -174,7 +193,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -191,7 +212,9 @@
               "anevia.partner_lie_exposed",
               "!irabeth.trickster.returned",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -209,7 +232,9 @@
               "!irabeth.trickster.returned",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -226,7 +251,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -245,7 +272,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -264,7 +293,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -282,7 +313,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -301,7 +334,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -317,7 +352,9 @@
               "anevia.partner_stance.share",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -335,7 +372,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -353,7 +392,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -370,7 +411,9 @@
               "anevia.partner_lie_exposed",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -388,7 +431,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -405,7 +450,9 @@
               "!irabeth_dead",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -424,7 +471,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -443,7 +492,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -461,7 +512,9 @@
               "!irabeth_dead",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -480,7 +533,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -498,7 +553,9 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -518,7 +575,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -538,7 +597,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -557,7 +618,9 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -577,7 +640,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -595,7 +660,9 @@
               "!irabeth_away",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -615,7 +682,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -635,7 +704,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -654,7 +725,9 @@
               "!irabeth_away",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -674,7 +747,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -688,7 +763,9 @@
               "anevia.committed",
               "irabeth_gone",
               "irabeth.trickster.returned",
-              "anevia.partner_stance.share"
+              "anevia.partner_stance.share",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -704,7 +781,9 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.exclusive",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -720,7 +799,9 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -735,7 +816,9 @@
               "irabeth_gone",
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
-              "anevia.partner_lie_exposed"
+              "anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -751,7 +834,9 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -766,7 +851,9 @@
               "irabeth_away",
               "irabeth.trickster.returned",
               "anevia.partner_stance.share",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -783,7 +870,9 @@
               "anevia.partner_stance.exclusive",
               "!irabeth_gone",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -800,7 +889,9 @@
               "anevia.partner_stance.secret",
               "!irabeth_gone",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -816,7 +907,9 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -833,7 +926,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth_gone",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -848,7 +943,9 @@
               "irabeth_gone",
               "irabeth.trickster.cost.dug_out",
               "anevia.partner_stance.share",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -865,7 +962,9 @@
               "anevia.partner_stance.exclusive",
               "!irabeth.trickster.returned",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -882,7 +981,9 @@
               "anevia.partner_stance.secret",
               "!irabeth.trickster.returned",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -898,7 +999,9 @@
               "irabeth.trickster.cost.dug_out",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -915,7 +1018,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth.trickster.returned",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -931,7 +1036,9 @@
               "irabeth.trickster.cost.dug_out",
               "anevia.partner_stance.share",
               "!irabeth_gone",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -949,7 +1056,9 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -967,7 +1076,9 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -984,7 +1095,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1002,7 +1115,9 @@
               "anevia.partner.absence_kept",
               "!irabeth_gone",
               "!irabeth.trickster.returned",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1018,7 +1133,9 @@
               "irabeth.trickster.raised_on_record",
               "anevia.partner_stance.share",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1036,7 +1153,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1054,7 +1173,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1071,7 +1192,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1089,7 +1212,9 @@
               "anevia.partner.absence_kept",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1106,7 +1231,9 @@
               "anevia.partner_stance.share",
               "!irabeth_gone",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1125,7 +1252,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1144,7 +1273,9 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1162,7 +1293,9 @@
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1181,7 +1314,9 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1195,7 +1330,8 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.share",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1211,7 +1347,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1227,7 +1364,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1242,7 +1380,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1258,7 +1397,8 @@
               "anevia.partner.absence_kept",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1273,7 +1413,8 @@
               "anevia.partner_stance.share",
               "!irabeth.trickster.returned",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1290,7 +1431,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1307,7 +1449,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1323,7 +1466,8 @@
               "anevia.partner_lie_exposed",
               "!irabeth.trickster.returned",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1340,7 +1484,8 @@
               "!irabeth.trickster.returned",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1356,7 +1501,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1374,7 +1520,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1392,7 +1539,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1409,7 +1557,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1427,7 +1576,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1442,7 +1592,8 @@
               "anevia.partner_stance.share",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1459,7 +1610,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1476,7 +1628,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1492,7 +1645,8 @@
               "anevia.partner_lie_exposed",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1509,7 +1663,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1525,7 +1680,8 @@
               "!irabeth_dead",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1543,7 +1699,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1561,7 +1718,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1578,7 +1736,8 @@
               "!irabeth_dead",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1596,7 +1755,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1613,7 +1773,8 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1632,7 +1793,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1651,7 +1813,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1669,7 +1832,8 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1688,7 +1852,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1705,7 +1870,8 @@
               "!irabeth_away",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1724,7 +1890,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1743,7 +1910,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1761,7 +1929,8 @@
               "!irabeth_away",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1780,7 +1949,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1793,7 +1963,8 @@
               "anevia.trickster.returned",
               "irabeth_gone",
               "irabeth.trickster.returned",
-              "anevia.partner_stance.share"
+              "anevia.partner_stance.share",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1808,7 +1979,8 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.exclusive",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1823,7 +1995,8 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1837,7 +2010,8 @@
               "irabeth_gone",
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
-              "anevia.partner_lie_exposed"
+              "anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1852,7 +2026,8 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1866,7 +2041,8 @@
               "irabeth_away",
               "irabeth.trickster.returned",
               "anevia.partner_stance.share",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1882,7 +2058,8 @@
               "anevia.partner_stance.exclusive",
               "!irabeth_gone",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1898,7 +2075,8 @@
               "anevia.partner_stance.secret",
               "!irabeth_gone",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1913,7 +2091,8 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1929,7 +2108,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth_gone",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1943,7 +2123,8 @@
               "irabeth_gone",
               "irabeth.trickster.cost.dug_out",
               "anevia.partner_stance.share",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1959,7 +2140,8 @@
               "anevia.partner_stance.exclusive",
               "!irabeth.trickster.returned",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1975,7 +2157,8 @@
               "anevia.partner_stance.secret",
               "!irabeth.trickster.returned",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -1990,7 +2173,8 @@
               "irabeth.trickster.cost.dug_out",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2006,7 +2190,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth.trickster.returned",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2021,7 +2206,8 @@
               "irabeth.trickster.cost.dug_out",
               "anevia.partner_stance.share",
               "!irabeth_gone",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2038,7 +2224,8 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2055,7 +2242,8 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2071,7 +2259,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2088,7 +2277,8 @@
               "anevia.partner.absence_kept",
               "!irabeth_gone",
               "!irabeth.trickster.returned",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2103,7 +2293,8 @@
               "irabeth.trickster.raised_on_record",
               "anevia.partner_stance.share",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2120,7 +2311,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2137,7 +2329,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2153,7 +2346,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2170,7 +2364,8 @@
               "anevia.partner.absence_kept",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2186,7 +2381,8 @@
               "anevia.partner_stance.share",
               "!irabeth_gone",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2204,7 +2400,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2222,7 +2419,8 @@
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2239,7 +2437,8 @@
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
               "!irabeth.trickster.returned",
-              "!irabeth.trickster.cost.dug_out"
+              "!irabeth.trickster.cost.dug_out",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2257,7 +2456,8 @@
               "!irabeth_gone",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2269,7 +2469,8 @@
               "trickster.ever",
               "anevia.trickster.returned",
               "sacrifice",
-              "!trickster.commander_back"
+              "!trickster.commander_back",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2289,7 +2490,10 @@
           "irabeth.trickster.returned",
           "!anevia.partner_stance.share",
           "!anevia.partner_stance.exclusive",
-          "!anevia.partner_stance.secret"
+          "!anevia.partner_stance.secret",
+          "anevia.payoff.ordinary",
+          "anevia.present_now",
+          "irabeth.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -2303,7 +2507,9 @@
               "irabeth.trickster.returned",
               "!anevia.partner_stance.share",
               "!anevia.partner_stance.exclusive",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2320,7 +2526,9 @@
               "!anevia.partner_stance.secret",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2336,7 +2544,8 @@
               "!anevia.partner_stance.secret",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2352,7 +2561,8 @@
               "!irabeth.partner_stance.secret",
               "!irabeth.partner_stance.exclusive",
               "!anevia_dead",
-              "anevia_gone"
+              "anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2367,7 +2577,10 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.share",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2384,7 +2597,10 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2401,7 +2617,10 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2417,7 +2636,10 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2434,7 +2656,10 @@
               "anevia.partner.absence_kept",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2448,7 +2673,10 @@
               "anevia.committed",
               "irabeth.trickster.returned",
               "irabeth_gone",
-              "anevia.partner_stance.share"
+              "anevia.partner_stance.share",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2464,7 +2692,10 @@
               "irabeth_gone",
               "anevia.partner_stance.exclusive",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2480,7 +2711,10 @@
               "irabeth_gone",
               "anevia.partner_stance.secret",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2495,7 +2729,10 @@
               "irabeth.trickster.returned",
               "irabeth_gone",
               "anevia.partner_stance.secret",
-              "anevia.partner_lie_exposed"
+              "anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2511,7 +2748,10 @@
               "irabeth_gone",
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2526,7 +2766,10 @@
               "irabeth.trickster.returned",
               "irabeth_away",
               "anevia.partner_stance.share",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2543,7 +2786,10 @@
               "anevia.partner_stance.exclusive",
               "!irabeth_gone",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2560,7 +2806,10 @@
               "anevia.partner_stance.secret",
               "!irabeth_gone",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2576,7 +2825,10 @@
               "irabeth_away",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2593,7 +2845,10 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth_gone",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2607,7 +2862,9 @@
               "irabeth.trickster.returned",
               "anevia.partner_stance.share",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2623,7 +2880,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2639,7 +2898,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2654,7 +2915,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2670,7 +2933,9 @@
               "anevia.partner.absence_kept",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2683,7 +2948,9 @@
               "anevia.trickster.returned",
               "irabeth.trickster.returned",
               "irabeth_gone",
-              "anevia.partner_stance.share"
+              "anevia.partner_stance.share",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2698,7 +2965,9 @@
               "irabeth_gone",
               "anevia.partner_stance.exclusive",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2713,7 +2982,9 @@
               "irabeth_gone",
               "anevia.partner_stance.secret",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2727,7 +2998,9 @@
               "irabeth.trickster.returned",
               "irabeth_gone",
               "anevia.partner_stance.secret",
-              "anevia.partner_lie_exposed"
+              "anevia.partner_lie_exposed",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2742,7 +3015,9 @@
               "irabeth_gone",
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2756,7 +3031,9 @@
               "irabeth.trickster.returned",
               "irabeth_away",
               "anevia.partner_stance.share",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2772,7 +3049,9 @@
               "anevia.partner_stance.exclusive",
               "!irabeth_gone",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2788,7 +3067,9 @@
               "anevia.partner_stance.secret",
               "!irabeth_gone",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2803,7 +3084,9 @@
               "irabeth_away",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2819,7 +3102,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth_gone",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -2835,7 +3120,9 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "irabeth_dead",
-              "anevia.partner_stance.share"
+              "anevia.partner_stance.share",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2853,7 +3140,9 @@
               "irabeth_dead",
               "anevia.partner_stance.exclusive",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2871,7 +3160,9 @@
               "irabeth_dead",
               "anevia.partner_stance.secret",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2888,7 +3179,9 @@
               "!irabeth.trickster.raised_on_record",
               "irabeth_dead",
               "anevia.partner_stance.secret",
-              "anevia.partner_lie_exposed"
+              "anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2906,7 +3199,9 @@
               "irabeth_dead",
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2923,7 +3218,9 @@
               "!irabeth.trickster.raised_on_record",
               "irabeth_gone",
               "anevia.partner_stance.share",
-              "!irabeth_dead"
+              "!irabeth_dead",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2942,7 +3239,9 @@
               "anevia.partner_stance.exclusive",
               "!irabeth_dead",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2961,7 +3260,9 @@
               "anevia.partner_stance.secret",
               "!irabeth_dead",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2979,7 +3280,9 @@
               "irabeth_gone",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth_dead"
+              "!irabeth_dead",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -2998,7 +3301,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth_dead",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3016,7 +3321,9 @@
               "irabeth_away",
               "anevia.partner_stance.share",
               "!irabeth_dead",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3036,7 +3343,9 @@
               "!irabeth_dead",
               "!irabeth_gone",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3056,7 +3365,9 @@
               "!irabeth_dead",
               "!irabeth_gone",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3075,7 +3386,9 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_dead",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3095,7 +3408,9 @@
               "anevia.partner.absence_kept",
               "!irabeth_dead",
               "!irabeth_gone",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3113,7 +3428,9 @@
               "anevia.partner_stance.share",
               "!irabeth_dead",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3133,7 +3450,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3153,7 +3472,9 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3172,7 +3493,9 @@
               "anevia.partner_lie_exposed",
               "!irabeth_dead",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3192,7 +3515,9 @@
               "!irabeth_dead",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.payoff.ordinary",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3207,7 +3532,8 @@
               "!irabeth.trickster.cost.dug_out",
               "!irabeth.trickster.raised_on_record",
               "irabeth_dead",
-              "anevia.partner_stance.share"
+              "anevia.partner_stance.share",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3224,7 +3550,8 @@
               "irabeth_dead",
               "anevia.partner_stance.exclusive",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3241,7 +3568,8 @@
               "irabeth_dead",
               "anevia.partner_stance.secret",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3257,7 +3585,8 @@
               "!irabeth.trickster.raised_on_record",
               "irabeth_dead",
               "anevia.partner_stance.secret",
-              "anevia.partner_lie_exposed"
+              "anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3274,7 +3603,8 @@
               "irabeth_dead",
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3290,7 +3620,8 @@
               "!irabeth.trickster.raised_on_record",
               "irabeth_gone",
               "anevia.partner_stance.share",
-              "!irabeth_dead"
+              "!irabeth_dead",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3308,7 +3639,8 @@
               "anevia.partner_stance.exclusive",
               "!irabeth_dead",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3326,7 +3658,8 @@
               "anevia.partner_stance.secret",
               "!irabeth_dead",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3343,7 +3676,8 @@
               "irabeth_gone",
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
-              "!irabeth_dead"
+              "!irabeth_dead",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3361,7 +3695,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner.absence_kept",
               "!irabeth_dead",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3378,7 +3713,8 @@
               "irabeth_away",
               "anevia.partner_stance.share",
               "!irabeth_dead",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3397,7 +3733,8 @@
               "!irabeth_dead",
               "!irabeth_gone",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3416,7 +3753,8 @@
               "!irabeth_dead",
               "!irabeth_gone",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3434,7 +3772,8 @@
               "anevia.partner_stance.secret",
               "anevia.partner_lie_exposed",
               "!irabeth_dead",
-              "!irabeth_gone"
+              "!irabeth_gone",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3453,7 +3792,8 @@
               "anevia.partner.absence_kept",
               "!irabeth_dead",
               "!irabeth_gone",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3470,7 +3810,8 @@
               "anevia.partner_stance.share",
               "!irabeth_dead",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3489,7 +3830,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_stance.share",
-              "!anevia.partner_stance.secret"
+              "!anevia.partner_stance.secret",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3508,7 +3850,8 @@
               "!irabeth_gone",
               "!irabeth_away",
               "!anevia.partner_lie_exposed",
-              "!anevia.partner.absence_kept"
+              "!anevia.partner.absence_kept",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3526,7 +3869,8 @@
               "anevia.partner_lie_exposed",
               "!irabeth_dead",
               "!irabeth_gone",
-              "!irabeth_away"
+              "!irabeth_away",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3545,7 +3889,8 @@
               "!irabeth_dead",
               "!irabeth_gone",
               "!irabeth_away",
-              "!anevia.partner_lie_exposed"
+              "!anevia.partner_lie_exposed",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3557,13 +3902,17 @@
               "trickster.ever",
               "anevia.trickster.returned",
               "irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.present_now",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
               "anevia.trickster.returned",
               "irabeth.trickster.raised_on_record",
-              "!irabeth.trickster.returned"
+              "!irabeth.trickster.returned",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -3580,7 +3929,8 @@
               "!irabeth.partner_stance.secret",
               "!irabeth.partner_stance.exclusive",
               "!anevia_dead",
-              "anevia_gone"
+              "anevia_gone",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -3591,7 +3941,8 @@
               "!irabeth.partner_stance.secret",
               "!irabeth.partner_stance.exclusive",
               "!anevia_dead",
-              "anevia_gone"
+              "anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3604,21 +3955,27 @@
               "anevia.trickster.returned",
               "irabeth.trickster.returned",
               "sacrifice",
-              "!trickster.commander_back"
+              "!trickster.commander_back",
+              "anevia.present_now",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
               "anevia.trickster.returned",
               "irabeth.trickster.cost.dug_out",
               "sacrifice",
-              "!trickster.commander_back"
+              "!trickster.commander_back",
+              "anevia.present_now",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
               "anevia.trickster.returned",
               "irabeth.trickster.raised_on_record",
               "sacrifice",
-              "!trickster.commander_back"
+              "!trickster.commander_back",
+              "anevia.present_now",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -3633,7 +3990,8 @@
               "!trickster.commander_back",
               "!irabeth.trickster.returned",
               "!irabeth.trickster.cost.dug_out",
-              "!irabeth.trickster.raised_on_record"
+              "!irabeth.trickster.raised_on_record",
+              "anevia.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3652,7 +4010,8 @@
               "!irabeth.partner_stance.secret",
               "!irabeth.partner_stance.exclusive",
               "!anevia_dead",
-              "anevia_gone"
+              "anevia_gone",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -3665,7 +4024,8 @@
               "!irabeth.partner_stance.secret",
               "!irabeth.partner_stance.exclusive",
               "!anevia_dead",
-              "anevia_gone"
+              "anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3683,7 +4043,8 @@
               "!anevia_dead",
               "!anevia_gone",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3704,7 +4065,8 @@
               "!irabeth.partner_stance.exclusive",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3720,7 +4082,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3739,7 +4102,8 @@
               "!anevia_gone",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3756,7 +4120,8 @@
               "!true_lich",
               "!anevia_dead",
               "!anevia_gone",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3776,7 +4141,8 @@
               "!irabeth.partner_stance.discovered",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3793,7 +4159,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3813,7 +4180,8 @@
               "!anevia_gone",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3831,7 +4199,8 @@
               "!anevia_gone",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3852,7 +4221,8 @@
               "!irabeth.partner_stance.secret",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3868,7 +4238,8 @@
               "irabeth.partner_stance.share",
               "!anevia_dead",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3887,7 +4258,8 @@
               "!irabeth.partner_stance.exclusive",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3901,7 +4273,8 @@
               "!anevia.trickster.returned",
               "anevia_gone",
               "irabeth.partner_stance.exclusive",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3918,7 +4291,8 @@
               "!anevia_dead",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3933,7 +4307,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "!anevia_dead",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3951,7 +4326,8 @@
               "!irabeth.partner_stance.discovered",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3966,7 +4342,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "irabeth.partner_stance.discovered",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3984,7 +4361,8 @@
               "!anevia_dead",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -3999,7 +4377,8 @@
               "anevia_dead",
               "irabeth.partner_stance.share",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4017,7 +4396,8 @@
               "!irabeth.partner_stance.exclusive",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4030,7 +4410,8 @@
               "irabeth.trickster.returned",
               "!anevia.trickster.returned",
               "anevia_dead",
-              "irabeth.partner_stance.exclusive"
+              "irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4046,7 +4427,8 @@
               "irabeth.partner_stance.exclusive",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4060,7 +4442,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4077,7 +4460,8 @@
               "!irabeth.partner_stance.discovered",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4091,7 +4475,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "irabeth.partner_stance.discovered"
+              "irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4108,7 +4493,8 @@
               "irabeth.partner_stance.discovered",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4123,7 +4509,8 @@
               "anevia_dead",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4141,7 +4528,8 @@
               "!irabeth.partner_stance.secret",
               "sacrifice",
               "!trickster.commander_back",
-              "!lastcall.active"
+              "!lastcall.active",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4160,7 +4548,8 @@
               "!anevia_dead",
               "!anevia_gone",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4173,7 +4562,8 @@
               "!anevia_dead",
               "!anevia_gone",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4190,7 +4580,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4201,7 +4592,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4219,7 +4611,8 @@
               "!true_lich",
               "!anevia_dead",
               "!anevia_gone",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4231,7 +4624,8 @@
               "!true_lich",
               "!anevia_dead",
               "!anevia_gone",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4249,7 +4643,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4261,7 +4656,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4280,7 +4676,8 @@
               "!anevia_gone",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4293,7 +4690,8 @@
               "!anevia_gone",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4310,7 +4708,8 @@
               "irabeth.partner_stance.share",
               "!anevia_dead",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4321,7 +4720,8 @@
               "irabeth.partner_stance.share",
               "!anevia_dead",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4336,7 +4736,8 @@
               "!anevia.trickster.returned",
               "anevia_gone",
               "irabeth.partner_stance.exclusive",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4345,7 +4746,8 @@
               "!anevia.trickster.returned",
               "anevia_gone",
               "irabeth.partner_stance.exclusive",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4361,7 +4763,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "!anevia_dead",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4371,7 +4774,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "!anevia_dead",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4387,7 +4791,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "irabeth.partner_stance.discovered",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4397,7 +4802,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "irabeth.partner_stance.discovered",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4413,7 +4819,8 @@
               "anevia_dead",
               "irabeth.partner_stance.share",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4423,7 +4830,8 @@
               "anevia_dead",
               "irabeth.partner_stance.share",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4437,7 +4845,8 @@
               "!irabeth.trickster.returned",
               "!anevia.trickster.returned",
               "anevia_dead",
-              "irabeth.partner_stance.exclusive"
+              "irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4445,7 +4854,8 @@
               "!irabeth.trickster.returned",
               "!anevia.trickster.returned",
               "anevia_dead",
-              "irabeth.partner_stance.exclusive"
+              "irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4460,7 +4870,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4469,7 +4880,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4484,7 +4896,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "irabeth.partner_stance.discovered"
+              "irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4493,7 +4906,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "irabeth.partner_stance.discovered"
+              "irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4509,7 +4923,8 @@
               "anevia_dead",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4519,7 +4934,8 @@
               "anevia_dead",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4540,7 +4956,8 @@
               "!anevia_dead",
               "!anevia_gone",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4555,7 +4972,8 @@
               "!anevia_dead",
               "!anevia_gone",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4574,7 +4992,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4587,7 +5006,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4607,7 +5027,8 @@
               "!true_lich",
               "!anevia_dead",
               "!anevia_gone",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4621,7 +5042,8 @@
               "!true_lich",
               "!anevia_dead",
               "!anevia_gone",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4641,7 +5063,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4655,7 +5078,8 @@
               "!swarm",
               "!true_lich",
               "!anevia_dead",
-              "!anevia_gone"
+              "!anevia_gone",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4676,7 +5100,8 @@
               "!anevia_gone",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4691,7 +5116,8 @@
               "!anevia_gone",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4710,7 +5136,8 @@
               "irabeth.partner_stance.share",
               "!anevia_dead",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4723,7 +5150,8 @@
               "irabeth.partner_stance.share",
               "!anevia_dead",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4740,7 +5168,8 @@
               "!anevia.trickster.returned",
               "anevia_gone",
               "irabeth.partner_stance.exclusive",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4751,7 +5180,8 @@
               "!anevia.trickster.returned",
               "anevia_gone",
               "irabeth.partner_stance.exclusive",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4769,7 +5199,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "!anevia_dead",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4781,7 +5212,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "!anevia_dead",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4799,7 +5231,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "irabeth.partner_stance.discovered",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4811,7 +5244,8 @@
               "anevia_gone",
               "irabeth.partner_stance.secret",
               "irabeth.partner_stance.discovered",
-              "!anevia_dead"
+              "!anevia_dead",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4829,7 +5263,8 @@
               "anevia_dead",
               "irabeth.partner_stance.share",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4841,7 +5276,8 @@
               "anevia_dead",
               "irabeth.partner_stance.share",
               "!irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.exclusive"
+              "!irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4857,7 +5293,8 @@
               "!irabeth.trickster.returned",
               "!anevia.trickster.returned",
               "anevia_dead",
-              "irabeth.partner_stance.exclusive"
+              "irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4867,7 +5304,8 @@
               "!irabeth.trickster.returned",
               "!anevia.trickster.returned",
               "anevia_dead",
-              "irabeth.partner_stance.exclusive"
+              "irabeth.partner_stance.exclusive",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4884,7 +5322,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4895,7 +5334,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "!irabeth.partner_stance.discovered"
+              "!irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4912,7 +5352,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "irabeth.partner_stance.discovered"
+              "irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4923,7 +5364,8 @@
               "!anevia.trickster.returned",
               "anevia_dead",
               "irabeth.partner_stance.secret",
-              "irabeth.partner_stance.discovered"
+              "irabeth.partner_stance.discovered",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4941,7 +5383,8 @@
               "anevia_dead",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ],
             [
               "trickster.ever",
@@ -4953,7 +5396,8 @@
               "anevia_dead",
               "!irabeth.partner_stance.share",
               "!irabeth.partner_stance.exclusive",
-              "!irabeth.partner_stance.secret"
+              "!irabeth.partner_stance.secret",
+              "irabeth.present_now"
             ]
           ],
           "KeepNativeImage": true
@@ -4980,7 +5424,8 @@
           "trickster.cheated_death",
           "!areelu.sacrifice_trickster",
           "!areelu.dead_fight",
-          "areelu.committed"
+          "areelu.committed",
+          "areelu.present_now"
         ],
         [
           "trickster.ever",
@@ -4997,7 +5442,8 @@
           "!areelu.sacrifice_trickster",
           "!areelu.dead_fight",
           "areelu.trickster.late_committed",
-          "!areelu.trickster.declined"
+          "!areelu.trickster.declined",
+          "areelu.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5021,7 +5467,8 @@
           "!areelu.sacrifice_wound",
           "!areelu.sacrifice_before",
           "areelu.trickster.rewritten",
-          "areelu.committed"
+          "areelu.committed",
+          "areelu.present_now"
         ],
         [
           "trickster.ever",
@@ -5036,7 +5483,8 @@
           "!areelu.sacrifice_before",
           "areelu.trickster.rewritten",
           "areelu.trickster.late_committed",
-          "!areelu.trickster.declined"
+          "!areelu.trickster.declined",
+          "areelu.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5051,7 +5499,8 @@
         [
           "trickster.ever",
           "devarra.trickster.flight.pact",
-          "devarra.trickster.flown"
+          "devarra.trickster.flown",
+          "devarra.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5065,7 +5514,8 @@
       "When": [
         [
           "trickster.now",
-          "kiana.separated"
+          "kiana.separated",
+          "kiana.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5075,11 +5525,13 @@
           "When": [
             [
               "trickster.now",
-              "kiana.trickster.guests_ransomed"
+              "kiana.trickster.guests_ransomed",
+              "kiana.present_now"
             ],
             [
               "trickster.now",
-              "kiana.trickster.guests_bought_back"
+              "kiana.trickster.guests_bought_back",
+              "kiana.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -5094,7 +5546,8 @@
       "When": [
         [
           "trickster.now",
-          "kiana.separated"
+          "kiana.separated",
+          "kiana.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5104,11 +5557,13 @@
           "When": [
             [
               "trickster.now",
-              "kiana.trickster.guests_ransomed"
+              "kiana.trickster.guests_ransomed",
+              "kiana.present_now"
             ],
             [
               "trickster.now",
-              "kiana.trickster.guests_bought_back"
+              "kiana.trickster.guests_bought_back",
+              "kiana.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -5123,7 +5578,8 @@
       "When": [
         [
           "trickster.now",
-          "kiana.separated"
+          "kiana.separated",
+          "kiana.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5133,11 +5589,13 @@
           "When": [
             [
               "trickster.now",
-              "kiana.trickster.guests_ransomed"
+              "kiana.trickster.guests_ransomed",
+              "kiana.present_now"
             ],
             [
               "trickster.now",
-              "kiana.trickster.guests_bought_back"
+              "kiana.trickster.guests_bought_back",
+              "kiana.present_now"
             ]
           ],
           "KeepNativeImage": false
@@ -5153,7 +5611,8 @@
         [
           "trickster.ever",
           "galfrey.trickster.returned",
-          "galfrey.trickster.crown_reclaimed"
+          "galfrey.trickster.crown_reclaimed",
+          "galfrey.present_now"
         ]
       ],
       "KeepNativeImage": false,
@@ -5168,7 +5627,8 @@
         [
           "trickster.ever",
           "galfrey.trickster.returned",
-          "galfrey.trickster.crown_reclaimed"
+          "galfrey.trickster.crown_reclaimed",
+          "galfrey.present_now"
         ]
       ],
       "KeepNativeImage": false,

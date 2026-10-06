@@ -15,12 +15,14 @@ internal static class TirabadeCombinedHistoryTests
             var state = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             state.Flags.UnionWith(new[] { "trickster", "irabeth.chapter_five" });
             state.AvailableContacts.UnionWith(new[] { anevia, irabeth });
+            Rules.Complete(story, state);
             return state;
         }
         Snapshot Play(string id, Snapshot input, Func<Snapshot, bool>? choose = null, bool allowClosed = false)
         {
             var state = Program.Copy(input); state.Hour += 1000;
             var book = Get(id);
+            Rules.Complete(story, state);
             check(Rules.Available(story, book, state), "Unavailable played predecessor: " + id);
             return Program.Walk(book, state, (_, partial) => {
                 if (book.ContactUnit == null) return;

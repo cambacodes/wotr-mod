@@ -24,6 +24,9 @@ internal static class LastCallHistoryInventoryTests
                 CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000 } };
             w.Flags.UnionWith(new[] { "trickster", "trickster.ever", "chapter_later" });
             w.Flags.UnionWith(flags);
+            foreach (var rel in story.Relationships)
+                if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                    HouseholdTests.Earn(story, w, rel.Key + ".payoff.ordinary");
             foreach (var flag in w.Flags) w.Times[flag] = 1;
             Refresh(w);
             return w;

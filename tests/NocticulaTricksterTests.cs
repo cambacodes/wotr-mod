@@ -26,6 +26,13 @@ internal static class NocticulaTricksterTests
         // eng7-l12: Chapter 6 shadow/chair encounters take place at Threshold.
         var state = new Snapshot { Chapter = chapter, Area = chapter == 6 ? "10c4b0e2af186ba46ab4d238d00a40a8" : "2570015799edf594daf2f076f2f975d8", Hour = 5000 };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (chapter > 1) state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 1000;
@@ -36,6 +43,8 @@ internal static class NocticulaTricksterTests
     {
         var next = Program.Copy(state);
         foreach (var flag in flags) if (next.Flags.Add(flag)) next.Times[flag] = next.Hour;
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, next, context);
         Rules.Complete(story, next);
         return next;
     }
@@ -139,14 +148,14 @@ internal static class NocticulaTricksterTests
         var paid = lateOutcomes.First(r => r.Has(Paid));
         // Ledger row 11: the favour page is a relationship page (committed); a debt outside the romance has its own page.
         check(Rules.Available(story, chair, paid) && Rules.Available(story, b1, paid) && !Rules.Available(story, favour, paid)
-              && Rules.Available(story, favour, With(story, paid, "noct.complete")) && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), paid) && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, Declined))
-              && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, "noct.complete"))
+              && Rules.Available(story, favour, With(story, paid, "noct.complete", "nocticula.trickster.said_yes")) && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), paid) && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, Declined))
+              && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.debt"), With(story, paid, "noct.complete", "nocticula.trickster.said_yes"))
               && !Rules.Available(story, stalemate, paid), "Trk_Nocticula_CallInLate: continuations.");
 
         // Trk_Nocticula_CallInRefused: mutual blackmail.
         var onTime = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Primed);
         var refused = Program.Walk(callIn, onTime).Single(r => r.Has(Refused));
-        check(refused.Has(Returned) && !Rules.Available(story, stalemate, refused) && Rules.Available(story, stalemate, With(story, refused, "noct.complete")) && !Rules.Available(story, favour, refused),
+        check(refused.Has(Returned) && !Rules.Available(story, stalemate, refused) && Rules.Available(story, stalemate, With(story, refused, "noct.complete", "nocticula.trickster.said_yes")) && !Rules.Available(story, favour, refused),
             "Trk_Nocticula_CallInRefused failed.");
         check(Program.Walk(callIn, onTime).Any(r => !r.Has(callIn.Id) && !r.Has(Returned)), "The call-in cannot be left for later.");
 
@@ -313,7 +322,7 @@ internal static class NocticulaTricksterTests
               && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.unanswered"), dead6)
               && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.unanswered"), back6),
             "Nocticula's pages ignore the Commander's death or survival.");
-        var harborLoss = World(story, 6, "trickster", "trickster.ever", "noct.complete", "sacrifice");
+        var harborLoss = World(story, 6, "trickster", "trickster.ever", "noct.complete", "noct.second_door", "noct.chosen_company", "sacrifice");
         check(Rules.Available(story, S("noct.ending_sacrifice"), harborLoss) && !Rules.Available(story, S("noct.ending_sacrifice"), With(story, harborLoss, "trickster.commander_back"))
               && story.Scenes.Where(s => s.Id.StartsWith("noct.ending_sacrifice", StringComparison.Ordinal)).All(s => s.Forbids.Contains("trickster.commander_back"))
               && Rules.Available(story, S("noct.ending_company"), With(story, harborLoss, "noct.chosen_company", "trickster.commander_back")),

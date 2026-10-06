@@ -90,7 +90,8 @@ def lint(story):
     # eng7-f3: reject a free, misplaced or broadened Chapter 6 delivery.
     presence = story.get('Presences', {}).get(CH6_HUB, {})
     reaction = scenes.get(REACTIONS[0], {})
-    required = {'trickster.ever', 'nenio.trickster.visitor', 'nenio.trickster.returned', *reaction.get('Requires', [])}
+    required = {'trickster.ever', 'nenio.trickster.visitor', 'nenio.trickster.returned', *(f for f in reaction.get('Requires', []) if f != 'nocticula.present_now')}
+    # The Nenio hub can remain while Nocticula's optional reaction is unavailable.
     if (not required <= set(presence.get('Requires', []))
             or not {'nenio.closed', 'nenio.dissolved', REACTIONS[0], 'sacrifice'} <= set(presence.get('Forbids', []))
             or presence.get('MinChapter') != 6 or presence.get('MaxChapter') != 6

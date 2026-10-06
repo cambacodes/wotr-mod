@@ -62,7 +62,7 @@ internal static class VellexiaCampaignTests
                         ready.AvailableContacts.Clear();
                     }
                     if (index == 9) { ready.Chapter = 5; ready.Area = drezen; }   // Q11: only the second invitation is a Chapter 4 call
-                    check(Rules.Available(story, scene, ready), "Vellexia earned predecessor cannot enter " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Vellexia earned predecessor cannot enter " + scene.Id);
                     if (index == 6) localReady.Add(Program.Copy(ready));
                     if (index >= 8) remoteReady.Add(Program.Copy(ready));
                     foreach (var result in Program.Walk(scene, ready, (page, partial) =>
@@ -73,7 +73,7 @@ internal static class VellexiaCampaignTests
                         if (index >= 6)
                         {
                             var killed = Program.Copy(partial); killed.Flags.Add("vellexia.dead");
-                            check(!Rules.Available(story, scene, killed), "Vellexia entry survives native death.");
+                            check(!Program.CurrentAvailable(story, scene, killed), "Vellexia entry survives native death.");
                             if (scene.ContactUnit != null) check(!Rules.ContactAvailable(story, scene, killed), "Vellexia local page survives native death.");
                             if (scene.Owner == "Memory")
                                 check(scene.Remote && scene.ContactUnit == null && partial.AvailableContacts.Count == 0,
@@ -88,7 +88,7 @@ internal static class VellexiaCampaignTests
                     }))
                     {
                         foreach (var flag in bound) check(result.Has(flag) == ready.Has(flag), "Vellexia writes native history: " + flag);
-                        foreach (var flag in ready.Flags) check(result.Has(flag), "Vellexia erases earlier history: " + flag);
+                        foreach (var flag in Program.PersistentFlags(story, ready)) check(result.Has(flag), "Vellexia erases earlier history: " + flag);
                         check(result.AvailableContacts.SetEquals(ready.AvailableContacts), "Vellexia creates a physical actor.");
                         check(result.Has("jerribeth.committed") && result.Has("wenduag.committed"), "Vellexia changes unrelated romances.");
                         foreach (var group in groups) check(group.Count(result.Has) <= 1, "Vellexia incompatible outcomes overlap.");
@@ -98,7 +98,7 @@ internal static class VellexiaCampaignTests
                             check(result.Times.OrderBy(x => x.Key).SequenceEqual(ready.Times.OrderBy(x => x.Key)), "Vellexia deferral changes time history.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Vellexia finished visit replays.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Vellexia finished visit replays.");
                         produced.UnionWith(result.Flags);
                         if (index >= 7) latePartial.Add(Program.Copy(result));
                         if (index == chain.Length - 1) final.Add(result);
@@ -121,45 +121,46 @@ internal static class VellexiaCampaignTests
         foreach (var ready in localReady.Take(4))
         {
             var missing = Program.Copy(ready); missing.AvailableContacts.Clear();
-            check(!Rules.Available(story, local, missing), "Vellexia initial token offered without native manor actor.");
+            check(!Program.CurrentAvailable(story, local, missing), "Vellexia initial token offered without native manor actor.");
             foreach (var flag in new[] { "vellexia.arena_invited", "vellexia.native_finished", "vellexia.dead", "vellexia.early_fight" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, local, blocked), "Vellexia token bypasses native local window: " + flag);
+                check(!Program.CurrentAvailable(story, local, blocked), "Vellexia token bypasses native local window: " + flag);
             }
         }
         foreach (var ready in remoteReady)
         {
-            var scene = chain.Skip(8).First(s => Rules.Available(story, s, ready));
+            var scene = chain.Skip(8).First(s => Program.CurrentAvailable(story, s, ready));
             foreach (var flag in new[] { "vellexia.dead", "vellexia.early_fight", "vellexia.final_fight", "vellexia.mirrored", "vellexia.native_coercion", "inhuman", "vellexia.closed" })
             {
                 if (flag == "vellexia.final_fight" && ready.Has("vellexia.spared")) continue;   // the mercy follows the final fight
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Vellexia remote contact bypasses native/history blocker: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Vellexia remote contact bypasses native/history blocker: " + flag);
             }
             // The two evenings after the return call Require only their predecessor beat (a Trickster return reaches them
             // without the native dismissal); the predecessor itself is gated on the dismissal, so the old path is unchanged.
             var ended = new[] { "vellexia.dismissed_native", "vellexia.spared", "vellexia.farewell" };
             bool nativeGated = scene.RequiresAnyGroups.Any(g => ended.All(g.Contains));
-            check(nativeGated && scene.Requires.Contains("vellexia.native_finished") || scene.Requires.SequenceEqual(new[] { "vellexia.return_kept" })
-                  || scene.Requires.SequenceEqual(new[] { "vellexia.private_kept" }), "Vellexia remote conversation lost its native ending: " + scene.Id);
+            var originalRequires = scene.Requires.Where(k => !k.EndsWith(".present_now", StringComparison.Ordinal) && !k.EndsWith(".reachable_by_letter", StringComparison.Ordinal));
+            check(nativeGated && scene.Requires.Contains("vellexia.native_finished") || originalRequires.SequenceEqual(new[] { "vellexia.return_kept" })
+                  || originalRequires.SequenceEqual(new[] { "vellexia.private_kept" }), "Vellexia remote conversation lost its native ending: " + scene.Id);
             if (nativeGated)
             {
                 var unended = Program.Copy(ready); unended.Flags.ExceptWith(ended);
-                check(!Rules.Available(story, scene, unended), "Vellexia remote conversation assumes an unfinished native affair.");
+                check(!Program.CurrentAvailable(story, scene, unended), "Vellexia remote conversation assumes an unfinished native affair.");
                 var unfinished = Program.Copy(ready); unfinished.Flags.Remove("vellexia.native_finished");
-                check(!Rules.Available(story, scene, unfinished), "Vellexia remote conversation assumes an unfinished native quest.");
+                check(!Program.CurrentAvailable(story, scene, unfinished), "Vellexia remote conversation assumes an unfinished native quest.");
             }
             else
-                foreach (var flag in scene.Requires)
+                foreach (var flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
                 {
                     var missing = Program.Copy(ready); missing.Flags.Remove(flag);
-                    check(!Rules.Available(story, scene, missing), "Vellexia evening skips its predecessor: " + flag);
+                    check(!Program.CurrentAvailable(story, scene, missing), "Vellexia evening skips its predecessor: " + flag);
                 }
             var absent = Program.Copy(ready); absent.Area = "missing-area";
-            check(!Rules.Available(story, scene, absent), "Vellexia remote entry has no location constraint.");
+            check(!Program.CurrentAvailable(story, scene, absent), "Vellexia remote entry has no location constraint.");
         }
-        IEnumerable<Scene> Ending(Snapshot state) => endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, state));
+        IEnumerable<Scene> Ending(Snapshot state) => endings.Where(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state));
         foreach (var state in final)
         {
             var result = Ending(state).ToArray();

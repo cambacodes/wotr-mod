@@ -18,7 +18,7 @@ internal static class EmberAfternoonsTests
             foreach (var input in states)
             {
                 var state = Program.Copy(input); state.Hour += scene.DelayHours;
-                check(Rules.Available(story, scene, state), "Ember friendship cannot continue: " + scene.Id);
+                check(Program.CurrentAvailable(story, scene, state), "Ember friendship cannot continue: " + scene.Id);
                 foreach (var result in Program.Walk(scene, state))
                 {
                     check(result.Has("seelah.committed") && result.Has("konomi.committed") && !result.Has("ember.lovers"), "Ember friendship alters unrelated romances or invents a lover state.");
@@ -27,7 +27,7 @@ internal static class EmberAfternoonsTests
                         check(result.Flags.SetEquals(state.Flags), "Ember postponed visit records unplayed events.");
                         continue;
                     }
-                    check(!Rules.Available(story, scene, result), "Ember repeats a finished afternoon.");
+                    check(!Program.CurrentAvailable(story, scene, result), "Ember repeats a finished afternoon.");
                     if (scene.Id == "ember.paper_bird") check(result.Has("ember.player_fox") != result.Has("ember.player_narrates"), "Ember rehearsal loses performer roles.");
                     if (scene.Id == "ember.missing_cloth") check(result.Has("ember.stage_road") != result.Has("ember.stage_waited"), "Ember rehearsal loses schedule choice.");
                     if (scene.Id == "ember.second_ending")
@@ -47,22 +47,22 @@ internal static class EmberAfternoonsTests
             foreach (string blocked in new[] { "ember.closed", "ember_dead", "ember_gone", "ember.absent" })
             {
                 var state = Program.Copy(ready); state.Flags.Add(blocked);
-                check(!Rules.Available(story, scene, state), "Ember afternoon ignores " + blocked);
+                check(!Program.CurrentAvailable(story, scene, state), "Ember afternoon ignores " + blocked);
             }
-            foreach (string required in scene.Requires)
+            foreach (string required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var state = Program.Copy(ready); state.Flags.Remove(required);
-                check(!Rules.Available(story, scene, state), "Ember afternoon skips " + required);
+                check(!Program.CurrentAvailable(story, scene, state), "Ember afternoon skips " + required);
             }
             ready.Times[scene.Requires.Last()] = ready.Hour;
             ready.Hour += scene.DelayHours - 1;
-            check(!Rules.Available(story, scene, ready), "Ember afternoon skips delay.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Ember afternoon skips delay.");
             ready.Hour++;
-            check(Rules.Available(story, scene, ready), "Ember afternoon misses exact delay boundary.");
+            check(Program.CurrentAvailable(story, scene, ready), "Ember afternoon misses exact delay boundary.");
             ready.Chapter = 5;
-            check(!Rules.Available(story, scene, ready), "Ember early friendship ignores later native outcomes.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Ember early friendship ignores later native outcomes.");
             ready.Chapter = 3; ready.Area = "elsewhere";
-            check(!Rules.Available(story, scene, ready), "Ember courtyard appears outside Drezen.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Ember courtyard appears outside Drezen.");
         }
     }
 }

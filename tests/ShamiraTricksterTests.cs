@@ -42,6 +42,14 @@ internal static class ShamiraTricksterTests
         var state = new Snapshot { Chapter = chapter, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -309,7 +317,8 @@ internal static class ShamiraTricksterTests
         check(Avail(visit, Later(story, cityDone, 49)), "Her visit does not follow her city.");
         var proposed = Program.Walk(visit, Later(story, cityDone, 49)).First();
         check(proposed.Has(P + "game_proposed") && !proposed.Has(Committed), "She does not propose the game.");
-        // Sol INT: Arueshalae as she is: redeemed and here, corrupted and here, or gone.
+        // Sol INT: both placements retain their original unavailable-scene negative.
+        foreach (var placement in new[] { visit, S(P + "after.visit_awning") })
         foreach (var (flags, node) in new (string[], string)[] {
             (new string[0], "aru_redeemed"), (new[] { "arueshalae.evil_recruited" }, "aru_evil"),
             (new[] { "arueshalae_dead" }, "aru_gone"), (new[] { "arueshalae.kicked_out" }, "aru_gone"),
@@ -317,9 +326,27 @@ internal static class ShamiraTricksterTests
             (new[] { "arueshalae_dead", "arueshalae.trickster.returned" }, "aru_redeemed") })
         {
             var at = Program.Copy(Later(story, cityDone, 49));
-            foreach (var f in flags) at.Flags.Add(f);
+            if (placement.Id.EndsWith("_awning", StringComparison.Ordinal)) at.Flags.Add("fool_king.gone");
+            // Current loss observations precede this explicit earned return.
+            // A retained historical return alone is covered by the generic negatives.
+            foreach (var f in flags.Where(f => f != "arueshalae.trickster.returned")) at.Flags.Add(f);
+            Rules.Complete(story, at);
+            if (flags.Contains("arueshalae.trickster.returned"))
+            {
+                Rules.RecordAvailabilityEvents(story, at, new[] { "arueshalae.trickster.returned" });
+                at.Flags.Add("arueshalae.trickster.returned");
+                Rules.Complete(story, at);
+            }
+            // The shipped scene forbids an unavailable Arueshalae before any
+            // dialogue opens. Never walk a history rejected by that scene gate.
+            if (at.Has("crossroute.arueshalae.unavailable"))
+            {
+                check(!Avail(placement, at), "Trk_Shamira_Visit: unavailable Arueshalae bypasses the original scene negative.");
+                continue;
+            }
+            check(Avail(placement, at), "Trk_Shamira_Visit: current Arueshalae cannot reach the visit.");
             var seenNodes = new HashSet<string>();
-            Program.Walk(visit, at, (id, _) => seenNodes.Add(id));
+            Program.Walk(placement, at, (id, _) => seenNodes.Add(id));
             check(seenNodes.Contains(node) && seenNodes.Count(x => x.StartsWith("aru_", StringComparison.Ordinal)) == 1,
                 "Trk_Shamira_Visit: Arueshalae's state [" + string.Join(",", flags) + "] does not read as " + node + ".");
         }
@@ -350,7 +377,7 @@ internal static class ShamiraTricksterTests
         check(Avail(S(P + "after.night_alone"), Later(story, throned, 73)), "The night alone does not follow the throne.");
         check(Through(harem, hw, "search", 1).All(r => r.Has(P + "ally.favour")) && !Avail(S(P + "after.favour"), Later(story, Through(harem, hw, "search", 1).First(), 73)), "The ally never pays a favour, or it comes again as a page.");
         // eng7-l13: preparation also requires the live outcome contract.
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "game_proposed", "shamira.outcome.route_open" })
+        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", "shamira.payoff.ordinary", P + "lost_on_purpose", "shamira.outcome.route_open" })
               && story.Derived["shamira.harem.eligible"].Length == 2 && story.Derived.ContainsKey("shamira.harem.voice.keeps_a_harem"),
             "The late commit or the household eligibility is not declared.");
 

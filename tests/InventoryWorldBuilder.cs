@@ -233,6 +233,17 @@ internal sealed class InventoryWorldBuilder
         if (State.Flags.Contains("wenduag.trickster.returned")
             && records.Any(p => Rules.PresenceRelationship(p.Key) == "wenduag" && p.Value.Lost))
             State.Flags.Add(Rules.WenduagEchoPrefix + "unavailable");
+        // Mirror Main's original-body and saved visitor observations.
+        foreach (var pair in Story.DepartureEpochs)
+        {
+            State.Flags.Remove(pair.Key + ".native_alive");
+            if (Story.Revivals.TryGetValue(pair.Key, out var revival)
+                && Actors.Any(a => a.Unit == revival.Unit && a.Retained && a.Alive && !a.Destroyed && a.Presence == ""))
+                State.Flags.Add(pair.Key + ".native_alive");
+            if (records.Any(p => Rules.PresenceRelationship(p.Key) == pair.Value.Relationship && p.Value.Lost
+                && (pair.Value.Relationship != "minagho_chivarro" || p.Key.EndsWith("." + pair.Key, StringComparison.Ordinal))))
+                State.Flags.Add(pair.Key + ".returned_actor_lost");
+        }
         if (CompleteEnabled) Rules.Complete(Story, State);
         foreach (var p in Story.Presences)
             if (Rules.PresenceFailed(p.Value, Rules.PresenceWanted(p.Value, State,
@@ -296,6 +307,7 @@ internal sealed class InventoryWorldBuilder
                     next.Trace.Add("native revival applied to observed corpse " + unit);
                 }
                 foreach (var flag in choice.Set) if (flag != next.WithheldProducer) next.Set(flag);
+                Rules.RecordAvailabilityEvents(Story, next.State, choice.Set.Where(f => f != next.WithheldProducer));
                 if (choice.RemoveItem != null)
                     next.State.Flags.ExceptWith(Story.InventoryItems.Concat(Story.PartyItems).Where(p => p.Value == choice.RemoveItem).Select(p => p.Key));
                 if (choice.StartEtude != null) next.ObserveEtude(choice.StartEtude);

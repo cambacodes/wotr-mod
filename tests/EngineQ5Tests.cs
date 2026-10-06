@@ -33,15 +33,18 @@ internal static class EngineQ5Tests
                 flags.Add("trickster");
             }
 
-            Snapshot World(IEnumerable<string> held)
+            Snapshot World(IEnumerable<string> held, bool earned = false)
             {
                 var state = new Snapshot { Chapter = presence.MinChapter, Hour = 1000, Area = presence.Area,
                     Flags = new HashSet<string>(held) };
+                if (earned) foreach (var key in held.Where(story.Derived.ContainsKey)) HouseholdTests.Earn(story, state, key);
+                foreach (var loss in held.Where(relationship.UnavailableFlags.Contains).Where(story.Derived.ContainsKey))
+                    HouseholdTests.Earn(story, state, loss);
                 state.Flags.Add(Rules.ChapterFlag(state.Chapter)!);
                 Rules.Complete(story, state);
                 return state;
             }
-            var ready = World(flags);
+            var ready = World(flags, true);
             var original = new Presence { Area = presence.Area, MinChapter = presence.MinChapter, MaxChapter = presence.MaxChapter,
                 Requires = presence.Requires.Where(k => k != guard).ToArray(), Forbids = presence.Forbids,
                 RequiresAnyGroups = presence.RequiresAnyGroups, DelayHours = presence.DelayHours };
@@ -77,8 +80,10 @@ internal static class EngineQ5Tests
                 {
                     departed.UnionWith(relationship.UnavailableOverrides.Values);
                     departed.UnionWith(new[] { "trickster.ever", "trickster.failed" });
-                    var returnedState = World(departed);
-                    check(returnedState.Has(guard) && Rules.RouteOpen(relationship, returnedState),
+                    var returnedState = World(departed, true);
+                    check(returnedState.Has(returned)
+                            ? returnedState.Has(guard) && Rules.RouteOpen(relationship, returnedState)
+                            : !returnedState.Has(guard),
                         "Earned return lost after leaving Trickster: " + pair.Key + "/" + returned);
                     // A cell or spared-body variant may forbid the return and yield to its sibling presence.
                     if (Rules.Match(presence.Requires, presence.Forbids, returnedState)
@@ -98,7 +103,7 @@ internal static class EngineQ5Tests
                 Flags = new HashSet<string>(scene.Requires.Where(k => !story.Derived.ContainsKey(k))) };
             state.Flags.UnionWith(new[] { "trickster", "trickster.ever", "trickster.failed" });
             Rules.Complete(story, state);
-            check(!state.Has(Rules.TricksterNow) && !Rules.Available(story, scene, state),
+            check(!state.Has(Rules.TricksterNow) && !Program.CurrentAvailable(story, scene, state),
                 "Return device completes after leaving Trickster: " + id);
         }
     }

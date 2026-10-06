@@ -1,6 +1,7 @@
 """Build the incomplete expansion into development/, never into the installed mod."""
 import copy
 import json
+import os
 from pathlib import Path
 
 from story import make_story
@@ -730,6 +731,8 @@ def make_expansion(*, independent_tirabade=True):
     # eng7-l14: live cross-route prose reads existing earned presence.
     from storylines import crossroute_presence
     crossroute_presence.integrate(payload)
+    from storylines import engine_eng3_ab
+    engine_eng3_ab.integrate(payload)
     return payload
 
 
@@ -809,7 +812,7 @@ def trickster_engine(payload):
 
 
 if __name__ == "__main__":
-    output = ROOT / "development/Story.json"
+    output = Path(os.environ.get("RRT_STORY_OUTPUT", ROOT / "development/Story.json"))
     output.parent.mkdir(exist_ok=True)
     payload = make_expansion()
     newline = "\r\n" if output.exists() and b"\r\n" in output.read_bytes() else "\n"

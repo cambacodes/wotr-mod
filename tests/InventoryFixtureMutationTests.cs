@@ -238,6 +238,7 @@ internal static class InventoryFixtureMutationTests
     {
         var w = World(story, 3);
         w.Native("camellia.killed");
+        w.Native("camellia.dead"); // The observed execution holds both native etudes.
         w.ObserveActor(story.Presences["camellia.presence"].Unit, alive: false);
         w = w.Earn("camellia.trickster.killed.late_curtain", "camellia.trickster.raised");
         w.Advance(missing ? 168 : 72);
@@ -706,13 +707,14 @@ internal static class InventoryFixtureMutationTests
     private static void Nocticula(Story story)
     {
         var w = World(story, 6);
-        w.Checkpoint("ordinary Nocticula completed campaign and paid Last Call (predicate)", "noct.complete", "trickster.lastcall.taken");
+        w.Checkpoint("accepted Nocticula completed campaign and paid Last Call (predicate)",
+            "noct.complete", "nocticula.trickster.said_yes", "trickster.lastcall.taken");
         w.Native("ending.trickster");
         Need(w.State.Has("nocticula.lastcall.route_open"), "Completed coda lacks derived route state.");
         w = w.Walk("nocticula.lastcall.page").First();
         w.Report("nocticula:020/living");
         var dead = World(story, 6);
-        dead.Checkpoint("ordinary completed campaign", "noct.complete");
+        dead.Checkpoint("accepted completed campaign", "noct.complete", "nocticula.trickster.said_yes");
         dead.Native("sacrifice");
         Need(!dead.Available("nocticula.lastcall.page"), "Uncalled fatal finale gets a living coda.");
         dead.Report("nocticula:020/fatal without call");

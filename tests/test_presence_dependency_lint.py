@@ -6,18 +6,19 @@ import tempfile
 import unittest
 from pathlib import Path
 from tools.presence_dependency_lint import check
-from tools.presence_exception_schema import guard_fields
+from tools.presence_exception_schema import guard_fields, relationship_for
 
 
 class PresenceDependencyTests(unittest.TestCase):
     def test_export_and_mutations(self):
-        story = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8"))
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
         self.assertEqual([], check(story))
         for name in ("camellia.presence", "irabeth.presence", "kaylessa.presence",
                      "minagho_chivarro.presence.minagho", "nurah.presence.cell", "seelah.presence"):
             bad = copy.deepcopy(story)
             bad["PresenceExceptions"].pop(name)
-            self.assertTrue(check(bad), name)
+            self.assertTrue(check(bad, {relationship_for(name)}), name)
 
     def test_circular_earned_flag_is_rejected(self):
         story = {"Relationships": {"woman": {"UnavailableOverrides": {"dead": "returned"}}},
@@ -29,6 +30,46 @@ class PresenceDependencyTests(unittest.TestCase):
         self.assertTrue(check(story))
         story["Derived"]["paid"] = [["payment"]]
         self.assertEqual([], check(story))
+
+    def test_optional_return_answer_does_not_replace_independent_solo_path(self):
+        story = self.fixture()
+        remote = story["Scenes"][0]
+        remote.pop("ContactUnit")
+        remote["Nodes"][0]["Choices"].append({"Requires": ["other_arrived"], "Set": ["returned"]})
+        story["Scenes"].append({"Id": "other_return", "ContactUnit": "unit",
+                                "Nodes": [{"Id": "start", "Choices": [{"Set": ["other_arrived"]}]}]})
+        story["Derived"]["paid"] = [["returned"]]
+        self.assertEqual([], check(story), "The remote solo answer independently earns the return")
+        remote["Nodes"][0]["Choices"].pop(0)
+        self.assertTrue(check(story), "A mandatory circular reunion prerequisite still fails")
+        remote["Nodes"][0]["Choices"].insert(0, {"Set": ["returned"]})
+        remote["ContactUnit"] = "unit"
+        self.assertTrue(check(story), "An alternative answer cannot waive circular physical staging")
+
+    def test_composite_return_keeps_each_mandatory_receipt(self):
+        story = self.fixture()
+        remote = story["Scenes"][0]
+        remote.pop("ContactUnit")
+        remote["Nodes"][0]["Choices"] = [
+            {"Set": ["first_receipt"]},
+            {"Requires": ["other_arrived"], "Set": ["second_receipt"]}]
+        story["Derived"]["returned"] = [["first_receipt", "second_receipt"]]
+        story["Derived"]["paid"] = [["returned"]]
+        story["Scenes"].append({"Id": "other_return", "ContactUnit": "unit",
+                                "Nodes": [{"Id": "start", "Choices": [{"Set": ["other_arrived"]}]}]})
+        self.assertTrue(check(story), "One receipt cannot stand in for a second mandatory return receipt")
+        remote["Nodes"][0]["Choices"].append({"Set": ["second_receipt"]})
+        self.assertEqual([], check(story))
+
+    def test_dense_shared_cycles_need_a_real_independent_alternative(self):
+        story = self.fixture()
+        keys = ["stance." + str(i) for i in range(18)]
+        story["Derived"]["paid"] = [[keys[0]]]
+        for key in keys:
+            story["Derived"][key] = [[other] for other in keys if other != key]
+        self.assertTrue(check(story), "A mutually dependent stance family cannot earn its own bootstrap")
+        story["Derived"][keys[-1]].append(["payment"])
+        self.assertEqual([], check(story), "An independent payment must propagate through the entire family")
 
     def test_bootstrap_producer_behind_same_contact_is_circular(self):
         story = {"Relationships": {"woman": {"UnavailableOverrides": {"dead": "returned"}}},

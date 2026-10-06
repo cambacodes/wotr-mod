@@ -22,6 +22,13 @@ internal static class GesmerhaTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
@@ -311,7 +318,7 @@ internal static class GesmerhaTricksterTests
         var lcCall = S("gesmerha.lastcall.call");
         Paragraph[] LcVisible(Snapshot s)
         {
-            var e = End(s); e.Flags.UnionWith(new[] { "lastcall.active", "gesmerha.lastcall.called" });
+            var e = End(s); e.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster", "gesmerha.lastcall.called" });
             if (e.Has(P + "returned")) e.Flags.Add(P + "cost.ancestor_debt");   // the letter's answer sets both (the fixtures start at returned)
             Rules.Complete(story, e);
             check(Rules.Available(story, lcPage, e), "The Last Call coda does not play for a committed carver.");
@@ -332,7 +339,7 @@ internal static class GesmerhaTricksterTests
                 "Last Call assumes a statue the Commander did not choose.");
         }
         // A living carver who took the advance in Wintersun and committed on the registered route: the birch waits years.
-        var livingPaid = World(story, 6, Wintersun, "trickster", "trickster.ever", "gesmerha.campaign_kept", "gesmerha.committed", "gesmerha.lover",
+        var livingPaid = World(story, 6, Wintersun, "trickster", "trickster.ever", "gesmerha.campaign_kept", "gesmerha.singing_kept", "gesmerha.committed", "gesmerha.lover",
             "gesmerha.reunion_kept", P + "commissioned", P + "cost.advance_paid");
         var livingLc = LcVisible(livingPaid);
         check(livingLc.Count(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[gesmerha.lastcall.page/page/paragraph/4][gesmerha.lastcall.page/page/paragraph/5]")) == 1 && livingLc.All(x => !SurfaceIds.Has(SurfaceIds.Of(story, x), "[gesmerha.lastcall.page/page/paragraph/0][gesmerha.lastcall.page/page/paragraph/1][gesmerha.lastcall.page/page/paragraph/2][gesmerha.lastcall.page/page/paragraph/3]")),
@@ -569,10 +576,10 @@ internal static class GesmerhaTricksterTests
         var earlyThenLate = World(story, 5, Wintersun, "gesmerha.wintersun_resolved", "gesmerha.truth", "gesmerha.post_resolution_contact", "trickster", "trickster.ever",
             "gesmerha.campaign_kept", "gesmerha.lover", "gesmerha.committed", "gesmerha.late_arrived", "gesmerha.private_evening_kept", "gesmerha.late_lovers");
         var parted = Pick(S("gesmerha.the_work_left_finished"), Later(story, earlyThenLate, 48), "gesmerha.closed", "gesmerha.parted");
-        var partedEnd = End(parted); partedEnd.Flags.Add("lastcall.active"); Rules.Complete(story, partedEnd);
+        var partedEnd = End(parted); partedEnd.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" }); Rules.Complete(story, partedEnd);
         check(partedEnd.Has("gesmerha.committed") && !Rules.Available(story, lcPage, partedEnd), "Last Call writes a coda for a lover who parted.");
         var keptEnd = End(Pick(S("gesmerha.the_work_left_finished"), Later(story, earlyThenLate, 48), "gesmerha.future_lovers"));
-        keptEnd.Flags.Add("lastcall.active"); Rules.Complete(story, keptEnd);
+        keptEnd.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" }); Rules.Complete(story, keptEnd);
         check(Rules.Available(story, lcPage, keptEnd), "Last Call drops the coda for a lover who stayed.");
 
         // Sol round 2 (BEL): the second ask's night tells the history lived (the three days after a flinch; the mallet only
@@ -608,7 +615,7 @@ internal static class GesmerhaTricksterTests
             Rules.Complete(story, w);
             return w;
         }
-        Snapshot Coda(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
+        Snapshot Coda(Snapshot s) { var e = End(s); e.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" }); Rules.Complete(story, e); return e; }
         string[] Spoken(Snapshot w) => lcCall.Nodes[0].Choices.Where(c => c.Requires.All(w.Has) && !c.Forbids.Any(w.Has)).Select(c => SurfaceIds.Of(story, c)).ToArray();
         var callOwed = AtRift(owed);
         var callCut = AtRift(cutFromMemory);

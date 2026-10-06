@@ -40,7 +40,7 @@ internal static class ReturnProvenanceInventoryTests
                 check(!Rules.Available(story, scene, L07World.Refresh(story, state)), "l07 executed Camellia consumer " + id);
             }
             var late = S("camellia.lastcall.page"); var lc = L07World.Move(story, late, killed);
-            lc.Flags.UnionWith(new[] { "lastcall.active", "trickster.lastcall.open", "seelah.committed", "chapter_later" });
+            lc.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster", "trickster.lastcall.open", "seelah.committed", "chapter_later" });
             L07World.Refresh(story, lc);
             check(!Rules.Available(story, late, lc) && !lc.Has("camellia.lastcall.callable"), "l07 executed Camellia Last Call");
             foreach (var id in new[] { "guest.camellia", "seating.seelah.camellia" })
@@ -48,8 +48,13 @@ internal static class ReturnProvenanceInventoryTests
             var presence = story.Presences["camellia.presence"]; killed.Area = presence.Area; killed.Chapter = 5;
             check(!Rules.PresenceWanted(presence, killed), "l07 executed Camellia copy");
             var proofs = S("nurah.trickster.after.proofs");
-            var packet = L07World.Seed(story, proofs, killed.Flags.ToArray());
-            packet.Flags.UnionWith(new[] { "nurah.ran_off", "nurah.trickster.cost.late", "nurah.trickster.returned", "nurah.trickster.larva_rumour", "nurah.dead_camellia" });
+            // The parcel follows Nurah's earned return from her own death;
+            // importing a death after a previously observed return would instead
+            // be the new-departure case this engine now correctly suppresses.
+            var packet = L07World.Seed(story, proofs, killed.Flags.Concat(new[] {
+                "nurah.ran_off", "nurah.trickster.cost.late", "nurah.trickster.returned",
+                "nurah.trickster.larva_rumour", "nurah.dead_camellia" }).ToArray());
+            Rules.RecordAvailabilityEvents(story, packet, new[] { "nurah.trickster.returned" });
             L07World.Refresh(story, packet);
             check(Rules.Available(story, proofs, packet), "l07 ordinary proofs continuation unavailable");
             var visited = new System.Collections.Generic.HashSet<string>();
@@ -93,6 +98,9 @@ internal static class ReturnProvenanceInventoryTests
     {
         Cases(story, check);
         L07World.RejectMutation(story, s => {
+            // Isolate the original provenance guard from the new epoch
+            // backstop. The eng3 inventory tests that backstop independently.
+            s.Relationships["camellia"].EpochUnavailableFlags = Array.Empty<string>();
             s.Relationships["camellia"].UnavailableOverrides["camellia.killed"] = P + "returned";
             s.Relationships["camellia"].UnavailableOverrides["camellia.dead"] = P + "returned";
         }, Cases, check, "generic killed/dead return");

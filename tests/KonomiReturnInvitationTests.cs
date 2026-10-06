@@ -32,10 +32,10 @@ internal static class KonomiReturnInvitationTests
             if (prior == "closed") state.Flags.Add("konomi.closed");
             if (prior == "farewell") state.Flags.Add("konomi.farewell");
             if (prior == "parted") state.Flags.Add("konomi.private_parted");
-            check(!Rules.Available(story, letter, state), "Return letter ignored recovery rest interval.");
+            check(!Program.CurrentAvailable(story, letter, state), "Return letter ignored recovery rest interval.");
             state.Hour += 12;
-            check(Rules.Available(story, letter, state), "Living hidden restored Konomi cannot answer a personal letter.");
-            check(!Rules.Available(story, first, state), "Remote eligibility became physical access.");
+            check(Program.CurrentAvailable(story, letter, state), "Living hidden restored Konomi cannot answer a personal letter.");
+            check(!Program.CurrentAvailable(story, first, state), "Remote eligibility became physical access.");
             var outcomes = Program.Walk(letter, state, (node, _) => reached.Add(node));
             check(outcomes.Any(s => !s.Has(letter.Id) && !s.Has(accepted) && !s.Has(declined)),
                 "Postponing a letter completed or refused it.");
@@ -45,25 +45,25 @@ internal static class KonomiReturnInvitationTests
                 check(state.Flags.All(outcome.Has), "Correspondence removed prior history or another romance.");
                 check(outcome.Flags.Except(state.Flags).All(flag => flag == letter.Id || flag == accepted || flag == declined),
                     "Correspondence invented office, romance, recovery or arrival evidence.");
-                check(!Rules.Available(story, first, outcome), "Accepted correspondence alone manufactured physical arrival.");
+                check(!Program.CurrentAvailable(story, first, outcome), "Accepted correspondence alone manufactured physical arrival.");
                 var arrived = Program.Copy(outcome);
                 arrived.Flags.Add(contact);
                 arrived.AvailableContacts.Add(unit);
-                check(Rules.Available(story, first, arrived) == outcome.Has(accepted),
+                check(Program.CurrentAvailable(story, first, arrived) == outcome.Has(accepted),
                     "Actual physical availability ignored the reply or failed after consent.");
-                if (outcome.Has(letter.Id)) check(!Rules.Available(story, letter, outcome), "Completed correspondence replays.");
-                else check(Rules.Available(story, letter, outcome), "Postponed correspondence cannot be resumed.");
+                if (outcome.Has(letter.Id)) check(!Program.CurrentAvailable(story, letter, outcome), "Completed correspondence replays.");
+                else check(Program.CurrentAvailable(story, letter, outcome), "Postponed correspondence cannot be resumed.");
             }
             foreach (string required in new[] { proof, correspondence })
             {
                 var absent = Program.Copy(state); absent.Flags.Remove(required);
-                check(!Rules.Available(story, letter, absent) && !Rules.ContactAvailable(story, letter, absent),
+                check(!Program.CurrentAvailable(story, letter, absent) && !Rules.ContactAvailable(story, letter, absent),
                     "Remote reply ignored lost positive evidence: " + required);
             }
             var dead = Program.Copy(state); dead.Flags.Add("konomi.retained_dead");
-            check(!Rules.Available(story, letter, dead) && !Rules.ContactAvailable(story, letter, dead), "Dead Konomi answers a new letter.");
+            check(!Program.CurrentAvailable(story, letter, dead) && !Rules.ContactAvailable(story, letter, dead), "Dead Konomi answers a new letter.");
             var completed = Program.Copy(state); completed.Flags.Add(first.Id);
-            check(!Rules.Available(story, letter, completed), "An existing completed first visit demands retroactive consent.");
+            check(!Program.CurrentAvailable(story, letter, completed), "An existing completed first visit demands retroactive consent.");
         }
         check(reached.SetEquals(letter.Nodes.Select(node => node.Id)), "Invitation has an unplayed page.");
     }

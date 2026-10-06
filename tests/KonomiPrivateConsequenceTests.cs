@@ -20,13 +20,13 @@ internal static class KonomiPrivateConsequenceTests
         {
             state.Hour += 1000;
             var scene = Get(id);
-            check(Rules.Available(story, scene, state), "Unavailable played Konomi predecessor: " + id);
+            check(Program.CurrentAvailable(story, scene, state), "Unavailable played Konomi predecessor: " + id);
             return Program.Walk(scene, state).First(s => s.Has(scene.Id) && !s.Has("konomi.closed") && (predicate == null || predicate(s)));
         }
 
         List<Snapshot> Walk(Scene scene, Snapshot state)
         {
-            check(Rules.Available(story, scene, state), "Unavailable Konomi consequence: " + scene.Id);
+            check(Program.CurrentAvailable(story, scene, state), "Unavailable Konomi consequence: " + scene.Id);
             var results = Program.Walk(scene, state, (page, partial) =>
             {
                 reached.Add(scene.Id + "/" + page);
@@ -38,7 +38,7 @@ internal static class KonomiPrivateConsequenceTests
                 foreach (string flag in protectedFlags)
                     check(result.Has(flag) == state.Has(flag), "Konomi consequence changes protected history: " + flag);
                 if (!result.Has(scene.Id)) check(result.Flags.SetEquals(state.Flags), "Deferring Konomi consequence changes history.");
-                else check(!Rules.Available(story, scene, result), "Konomi consequence repeats after completion.");
+                else check(!Program.CurrentAvailable(story, scene, result), "Konomi consequence repeats after completion.");
             }
             return results.Where(s => s.Has(scene.Id)).ToList();
         }
@@ -80,36 +80,36 @@ internal static class KonomiPrivateConsequenceTests
             state.Hour += 1000;
             string oldEnding = committed ? "ending_distance" : "ending_distance_open";
             string newEnding = committed ? "ending_distance_lived" : "ending_distance_open_lived";
-            check(Rules.Available(story, Get(oldEnding), state), "Older private future lost its short-course ending.");
-            check(!Rules.Available(story, Get(newEnding), state), "Unplayed consequence earns developed ending.");
+            check(Program.CurrentAvailable(story, Get(oldEnding), state), "Older private future lost its short-course ending.");
+            check(!Program.CurrentAvailable(story, Get(newEnding), state), "Unplayed consequence earns developed ending.");
             var lateInstall = Program.Copy(state);
             lateInstall.Flags.Add(Get(oldEnding).Id);
             lateInstall.Times[Get(oldEnding).Id] = state.Hour - 1;
-            check(Rules.Available(story, visits[0], lateInstall), "Historical ending record prevents explicit late-install opt-in.");
+            check(Program.CurrentAvailable(story, visits[0], lateInstall), "Historical ending record prevents explicit late-install opt-in.");
             var latePlayed = Program.Walk(visits[0], lateInstall).First(s => s.Has(visits[0].Id));
             check(latePlayed.Has(Get(oldEnding).Id) && latePlayed.Times[Get(oldEnding).Id] == lateInstall.Times[Get(oldEnding).Id],
                 "Late-install opt-in rewrites a recorded old ending.");
             check(visits[0].ManualOnly && visits[2].ManualOnly, "Late-install or final farewell is no longer explicit opt-in.");
-            check(!Rules.Available(story, visits[1], state) && !Rules.Available(story, visits[2], state), "Consequences bypass their played prerequisites.");
+            check(!Program.CurrentAvailable(story, visits[1], state) && !Program.CurrentAvailable(story, visits[2], state), "Consequences bypass their played prerequisites.");
 
             foreach (var agreement in Walk(visits[0], state))
             {
                 check(agreement.Has("konomi.private_career_exclusive") != agreement.Has("konomi.private_career_portfolio"), "Career arrangements overlap.");
-                check(Rules.Available(story, Get(oldEnding), agreement), "Partially played addition lost old ending.");
-                check(!Rules.Available(story, visits[1], agreement), "Next visit ignores its wait.");
+                check(Program.CurrentAvailable(story, Get(oldEnding), agreement), "Partially played addition lost old ending.");
+                check(!Program.CurrentAvailable(story, visits[1], agreement), "Next visit ignores its wait.");
                 agreement.Hour += 1000;
                 foreach (var afternoon in Walk(visits[1], agreement))
                 {
                     check(afternoon.Has("konomi.private_extra_fee") != afternoon.Has("konomi.private_full_afternoon"), "Visit costs overlap.");
-                    check(Rules.Available(story, Get(oldEnding), afternoon), "Skipping optional farewell blocks old ending.");
+                    check(Program.CurrentAvailable(story, Get(oldEnding), afternoon), "Skipping optional farewell blocks old ending.");
                     afternoon.Hour += 1000;
                     foreach (var farewell in Walk(visits[2], afternoon))
                     {
                         check(farewell.Has("konomi.private_consequence_complete"), "Played farewell lacks completion.");
-                        check(!Rules.Available(story, Get(oldEnding), farewell), "Old and developed endings overlap.");
-                        check(Rules.Available(story, Get(newEnding), farewell), "Earned developed ending unavailable.");
+                        check(!Program.CurrentAvailable(story, Get(oldEnding), farewell), "Old and developed endings overlap.");
+                        check(Program.CurrentAvailable(story, Get(newEnding), farewell), "Earned developed ending unavailable.");
                         var wrong = Get(committed ? "ending_distance_open_lived" : "ending_distance_lived");
-                        check(!Rules.Available(story, wrong, farewell), "Open and committed endings overlap.");
+                        check(!Program.CurrentAvailable(story, wrong, farewell), "Open and committed endings overlap.");
                         foreach (var end in Walk(Get(newEnding), farewell))
                             check(end.Has(Get(newEnding).Id), "Developed epilogue has no terminal path.");
                     }
@@ -125,21 +125,21 @@ internal static class KonomiPrivateConsequenceTests
             ready.Flags.Add("konomi.career_accepts_now");
             ready.Flags.Add("konomi.private_career_exclusive");
             ready.Flags.Add("konomi.private_extra_fee");
-            check(Rules.Available(story, scene, ready), "New visit baseline unavailable.");
-            foreach (string flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
+            check(Program.CurrentAvailable(story, scene, ready), "New visit baseline unavailable.");
+            foreach (string flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])).Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, missing), "Missing earned prerequisite admitted: " + flag);
+                check(!Program.CurrentAvailable(story, scene, missing), "Missing earned prerequisite admitted: " + flag);
             }
             foreach (string flag in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Blocked native/history state admitted: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Blocked native/history state admitted: " + flag);
             }
             foreach (int chapter in new[] { 3, 4, 6 })
-            { var wrong = Program.Copy(ready); wrong.Chapter = chapter; check(!Rules.Available(story, scene, wrong), "Private finale wrong chapter."); }
+            { var wrong = Program.Copy(ready); wrong.Chapter = chapter; check(!Program.CurrentAvailable(story, scene, wrong), "Private finale wrong chapter."); }
             var elsewhere = Program.Copy(ready); elsewhere.Area = "abyss";
-            check(!Rules.Available(story, scene, elsewhere), "Private finale outside authored visit location.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere), "Private finale outside authored visit location.");
         }
         foreach (var scene in visits.Concat(new[] { Get("ending_distance_lived"), Get("ending_distance_open_lived") }))
             // The undismissed business reply is walked across both careers and both kept-hours

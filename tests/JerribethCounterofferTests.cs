@@ -23,7 +23,7 @@ internal static class JerribethCounterofferTests
             {
                 var scene = Find(id);
                 state.Hour += scene.DelayHours;
-                check(Rules.Available(story, scene, state), "Counteroffer predecessor unavailable: " + id);
+                check(Program.CurrentAvailable(story, scene, state), "Counteroffer predecessor unavailable: " + id);
                 state = Program.Walk(scene, state).First(s => s.Has(scene.Id) && (id != "borrowed_sun" || s.Has("jerribeth.sun_exposed")));
             }
             check(state.Has("jerribeth.consequences_kept"), "Counteroffer prerequisite not earned through predecessor.");
@@ -34,7 +34,7 @@ internal static class JerribethCounterofferTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Counteroffer chain unavailable: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Counteroffer chain unavailable: " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready))
                     {
                         check(result.Has("seelah.committed") && result.Has("jerribeth.lovers"), "Counteroffer changes existing relationships.");
@@ -44,7 +44,7 @@ internal static class JerribethCounterofferTests
                             check(result.Flags.SetEquals(ready.Flags), "Counteroffer deferral writes progress.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Counteroffer repeats completed scene.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Counteroffer repeats completed scene.");
                         observed.UnionWith(result.Flags.Where(f => f.StartsWith("jerribeth.counter_")));
                         next.Add(result);
                     }
@@ -60,11 +60,11 @@ internal static class JerribethCounterofferTests
         {
             var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[scene.Chapters[0] == 4 ? 1 : 0], Hour = 1000 };   // JER-08
             ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "Counteroffer valid baseline unavailable.");
+            check(Program.CurrentAvailable(story, scene, ready), "Counteroffer valid baseline unavailable.");
             foreach (string blocker in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Counteroffer ignores blocker: " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Counteroffer ignores blocker: " + blocker);
             }
         }
     }

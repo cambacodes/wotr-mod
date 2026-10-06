@@ -110,6 +110,8 @@ def replay_schedule(story, schedule):
     for key in derived:
         visit(key)
     def complete(at):
+        if story.get("DepartureEpochs"):
+            at["flags"].add("availability.observed")
         old_times = {key: at["times"][key] for key in derived if key in at["times"]}
         at["flags"].difference_update(derived)
         for key in derived:

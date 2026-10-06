@@ -20,6 +20,8 @@ internal static class IrabethDepartureVisitTests
         var story = new Story();
         story.Relationships["irabeth"] = Copy(source.Relationships["irabeth"]);
         // The Trickster return (irabeth.trickster.returned) is produced by scenes this mini story leaves out.
+        // This bounded metadata fixture omits the full epoch graph.
+        story.Relationships["irabeth"].EpochUnavailableFlags = Array.Empty<string>();
         story.Relationships["irabeth"].UnavailableOverrides.Clear();
         story.Relationships["irabeth"].TricksterAccess.Clear();
         story.Etudes = new Dictionary<string, string>(source.Etudes);

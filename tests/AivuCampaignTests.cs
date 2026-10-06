@@ -59,7 +59,7 @@ internal static class AivuCampaignTests
                         if (nativeFearHeard) ready.Flags.Add("aivu.native_fear_told");
                     }
                     ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Played Aivu history stranded at " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Played Aivu history stranded at " + scene.Id);
                     Guards(scene, ready);
                     foreach (var result in Program.Walk(scene, ready, (page, partial) =>
                     {
@@ -68,7 +68,7 @@ internal static class AivuCampaignTests
                         var missing = Program.Copy(partial); missing.AvailableContacts.Clear();
                         check(!Rules.ContactAvailable(story, scene, missing), "Aivu scene survives actual pet contact loss.");
                         missing.AvailableContacts.Add(scene.ContactUnit!);
-                        check(Rules.Available(story, scene, missing), "Aivu interrupted scene cannot restart after contact returns.");
+                        check(Program.CurrentAvailable(story, scene, missing), "Aivu interrupted scene cannot restart after contact returns.");
                         if (scene == rescue && page == "remembered") check(partial.Has("aivu.native_fear_told"), "Aivu invents a prior native confession.");
                         if (scene == rescue && page == "present") check(!partial.Has("aivu.native_fear_told"), "Aivu ignores an already heard confession.");
                         if (scene.Id == "aivu.a_small_garden_of_her_own" && page == "potted") check(partial.Has("aivu.cutting_potted"), "Failed or nonroll inspection gets the missed potting lesson.");
@@ -83,7 +83,7 @@ internal static class AivuCampaignTests
                             check(result.Flags.SetEquals(ready.Flags) && result.Times.Count == ready.Times.Count, "Aivu postponement grants progress.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Completed Aivu visit repeats.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Completed Aivu visit repeats.");
                         if (!early) check(!result.Has("aivu.opening_kept") && !result.Has("aivu.someone_elses_turn"), "Late friendship fabricates original map visits.");
                         outcomes.UnionWith(result.Flags);
                         if (scene.Id == "aivu.when_the_drum_does_not_come") gatheringHistory ??= Program.Copy(result);
@@ -96,16 +96,16 @@ internal static class AivuCampaignTests
             foreach (var state in states)
             {
                 check(state.Has("aivu.campaign_developed") && state.Has("aivu.trusted"), "Actual full Aivu campaign lacks earned final acknowledgement.");
-                check(endings.Count(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)) == 1, "Developed Aivu history has conflicting or missing ordinary endings.");
+                check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)) == 1, "Developed Aivu history has conflicting or missing ordinary endings.");
                 foreach (string change in new[] { "aivu.absent", "aivu.detached", "swarm", "sacrifice", "ascended" })
                 {
                     var altered = Program.Copy(state); altered.Flags.Add(change);
-                    check(endings.Count(s => s.Owner == "Epilogue" && Rules.Available(story, s, altered)) == 1, "Aivu has conflicting or missing ending for " + change);
+                    check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, altered)) == 1, "Aivu has conflicting or missing ending for " + change);
                 }
                 foreach (string path in new[] { "legend", "dragon" })
                 {
                     var altered = Program.Copy(state); altered.Flags.Remove("azata"); altered.Flags.Add(path);
-                    check(endings.Count(s => s.Owner == "Epilogue" && Rules.Available(story, s, altered)) == 1, "Aivu lost-power ending missing for " + path);
+                    check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, altered)) == 1, "Aivu lost-power ending missing for " + path);
                 }
                 finalStates.Add(state);
             }
@@ -119,39 +119,44 @@ internal static class AivuCampaignTests
         // Reproduce native absence on an actually played friendship, then only remove the native absence.
         check(gatheringHistory != null, "No actual gathering history captured.");
         var absent = Program.Copy(gatheringHistory!); absent.Chapter = 4; absent.Area = castle.Areas.Single(); absent.Hour += 100;
-        check(Rules.Available(story, castle, absent), "Absence witness was unavailable before its blocker.");
+        check(Program.CurrentAvailable(story, castle, absent), "Absence witness was unavailable before its blocker.");
         absent.Flags.Add("aivu.absent");
-        check(!Rules.Available(story, castle, absent), "Kidnapped pet attends a friendly Nexus visit.");
+        check(!Program.CurrentAvailable(story, castle, absent), "Kidnapped pet attends a friendly Nexus visit.");
         absent.Flags.Remove("aivu.absent");
-        check(Rules.Available(story, castle, absent), "Completed native absence permanently strands the pet.");
-        check(!Rules.Available(story, rescue, absent), "Pet presence alone invents a rescue quest completion.");
+        check(!Program.CurrentAvailable(story, castle, absent), "Clearing native absence invents the pet's earned rescue.");
+        check(!Program.CurrentAvailable(story, rescue, absent), "Pet presence alone invents a rescue quest completion.");
         absent.Flags.Add("aivu.native_rescue_complete");
-        check(Rules.Available(story, rescue, absent), "Actual rescue completion does not restore its support visit.");
+        check(Program.CurrentAvailable(story, castle, absent), "Actual rescue completion does not restore the pet's native presence.");
+        check(Program.CurrentAvailable(story, rescue, absent), "Actual rescue completion does not restore its support visit.");
+        var missingAgain = Program.Copy(absent); missingAgain.Flags.Add("aivu.absent");
+        check(!Program.CurrentAvailable(story, castle, missingAgain), "An older rescue survives a later native absence.");
+        missingAgain.Flags.Remove("aivu.absent");
+        check(!Program.CurrentAvailable(story, castle, missingAgain), "Requalifying the old rescue invents another return.");
         var trickster = Program.Copy(absent); trickster.Flags.Remove("azata"); trickster.Flags.Add("trickster");
-        check(!Rules.Available(story, rescue, trickster) && !Rules.Available(story, castle, trickster), "Trickster is silently granted Azata pet ownership.");
+        check(!Program.CurrentAvailable(story, rescue, trickster) && !Program.CurrentAvailable(story, castle, trickster), "Trickster is silently granted Azata pet ownership.");
 
         void Guards(Scene scene, Snapshot ready)
         {
-            foreach (string flag in scene.Requires)
+            foreach (string flag in scene.Requires.Where(k => !story.Derived.ContainsKey(k)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, missing), "Aivu ignores prerequisite " + flag);
+                check(!Program.CurrentAvailable(story, scene, missing), "Aivu ignores prerequisite " + flag);
             }
             foreach (string flag in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Aivu ignores blocker " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Aivu ignores blocker " + flag);
                 if (native.Contains(flag))
                     check(!Rules.ContactAvailable(story, scene, blocked), "Aivu continuation ignores native or local blocker " + flag);
             }
             var elsewhere = Program.Copy(ready); elsewhere.Area = "elsewhere";
-            check(!Rules.Available(story, scene, elsewhere), "Aivu starts outside the verified native contact area.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere), "Aivu starts outside the verified native contact area.");
             if (scene.DelayHours > 0)
             {
                 var anchors = scene.Requires.Where(ready.Times.ContainsKey).ToArray();
                 check(anchors.Length > 0, "Aivu delay has no actual played scene timestamp: " + scene.Id);
                 var tooSoon = Program.Copy(ready); tooSoon.Hour = anchors.Max(k => ready.Times[k]) + scene.DelayHours - 1;
-                check(!Rules.Available(story, scene, tooSoon), "Aivu ignores the exact waiting boundary.");
+                check(!Program.CurrentAvailable(story, scene, tooSoon), "Aivu ignores the exact waiting boundary.");
             }
         }
     }

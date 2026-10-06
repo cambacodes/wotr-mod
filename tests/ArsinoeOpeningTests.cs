@@ -46,7 +46,7 @@ internal static class ArsinoeOpeningTests
             partial.AvailableContacts.Clear();
             check(!Rules.ContactAvailable(story, printer, partial), "Interrupted printer scene retains contact.");
             partial.AvailableContacts.Add(printer.ContactUnit!);
-            check(Rules.Available(story, printer, partial), "Interrupted printer scene cannot resume.");
+            check(Program.CurrentAvailable(story, printer, partial), "Interrupted printer scene cannot resume.");
             foreach (var replay in Program.Walk(printer, partial).Where(s => s.Has(printer.Id)))
                 check(new[] { "arsinoe.print_fantasy", "arsinoe.print_street" }.Count(replay.Has) == 1,
                     "Interrupted printer replay records contradictory commissions.");
@@ -66,7 +66,7 @@ internal static class ArsinoeOpeningTests
             check(!Rules.ContactAvailable(story, roof, partial), "Interrupted roof scene retains contact.");
             check(!partial.Has(roof.Id), "Partial roof conversation is marked complete.");
             partial.AvailableContacts.Add(roof.ContactUnit!);
-            check(Rules.Available(story, roof, partial), "Restored roof conversation cannot be replayed.");
+            check(Program.CurrentAvailable(story, roof, partial), "Restored roof conversation cannot be replayed.");
             foreach (var replay in Program.Walk(roof, partial).Where(s => s.Has(roof.Id)))
                 check(new[] { "arsinoe.courting", "arsinoe.slow", "arsinoe.friendship" }.Count(replay.Has) == 1,
                     "Interrupted Arsinoe roof replay accumulates conflicting relationship choices.");
@@ -84,7 +84,7 @@ internal static class ArsinoeOpeningTests
                 {
                     var ready = Program.Copy(input);
                     ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Arsinoe cannot continue played history: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Arsinoe cannot continue played history: " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready))
                     {
                         check(result.Has("seelah.committed") && result.Has("konomi.committed"), "Arsinoe changes another romance.");
@@ -94,7 +94,7 @@ internal static class ArsinoeOpeningTests
                             check(result.Flags.SetEquals(ready.Flags), "Arsinoe deferral writes progress.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Arsinoe repeats completed scene.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Arsinoe repeats completed scene.");
                         check(!result.Has("arsinoe.first_kiss") || result.Has("arsinoe.courting"), "Arsinoe kisses outside courtship.");
                         // Sol r6 INT: accepting her first invitation sets the StartedFlag, so the journal objective opens.
                         check(result.Has(story.Relationships["arsinoe"].StartedFlag), "Accepted Arsinoe invitation does not start her relationship.");
@@ -116,15 +116,16 @@ internal static class ArsinoeOpeningTests
             var ready = new Snapshot { Chapter = 3, Area = scene.Areas.Single(), Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires);
             ready.AvailableContacts.Add(scene.ContactUnit!);
-            check(Rules.Available(story, scene, ready), "Arsinoe contact baseline invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Arsinoe contact baseline invalid.");
             foreach (string blocker in new[] { "arsinoe.victims_revived", "swarm", "true_lich" })
             {
                 var blocked = Program.Copy(ready);
                 blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Arsinoe entry ignores native restriction: " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Arsinoe entry ignores native restriction: " + blocker);
                 check(!Rules.ContactAvailable(story, scene, blocked), "Arsinoe continuation ignores native restriction: " + blocker);
                 blocked.Flags.Remove(blocker);
-                check(Rules.Available(story, scene, blocked), "Temporary Arsinoe restriction permanently closes route.");
+                check(Program.CurrentAvailable(story, scene, blocked) == (blocker == "arsinoe.victims_revived"),
+                    "Removing a restriction invents a return from the conversion departure.");
             }
             var absent = Program.Copy(ready);
             absent.AvailableContacts.Clear();
@@ -135,7 +136,7 @@ internal static class ArsinoeOpeningTests
             foreach (int chapter in new[] { 1, 2, 4, 6 })
             {
                 var wrongChapter = Program.Copy(ready); wrongChapter.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrongChapter), "Arsinoe appears outside authored campaign chapters.");
+                check(!Program.CurrentAvailable(story, scene, wrongChapter), "Arsinoe appears outside authored campaign chapters.");
             }
         }
     }

@@ -18,7 +18,8 @@ internal static class TirabadeIndependentBridgeTests
             var state = new Snapshot { Chapter = book.MinChapter, Hour = 10000,
                 Area = "2570015799edf594daf2f076f2f975d8" };
             state.AvailableContacts.UnionWith(new[] { anevia, irabeth });
-            state.Flags.UnionWith(book.Requires);
+            foreach (string key in book.Requires) HouseholdTests.Earn(story, state, key);
+            Rules.Complete(story, state);
             return state;
         }
         void NoInventedHistory(Snapshot state) => check(!new[] { "a_affair", "i_affair", "reckoning", "a_truth", "i_truth", "table" }.Any(state.Has),

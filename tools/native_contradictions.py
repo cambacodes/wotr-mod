@@ -135,7 +135,11 @@ def check_endings(payload, contracts=None):
                         expected = outcome.get(field, {} if field == "ForbidOverrides" else [])
                         if field == "Requires":
                             expected = list(dict.fromkeys([*expected, "trickster.now"]))
-                        if scenes[replacement].get(field) != expected:
+                        actual = scenes[replacement].get(field)
+                        # Final mechanical guards can follow trickster.now in
+                        # the replacement. AND prerequisites retain their meaning.
+                        matches = set(actual or []) == set(expected) if field == "Requires" else actual == expected
+                        if not matches:
                             raise ValueError("E-Q8-06: replacement unavailable for ending " + target)
     return len(contracts["Rows"])
 # eng8-q8e end

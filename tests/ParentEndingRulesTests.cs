@@ -55,7 +55,8 @@ internal static class ParentEndingRulesTests
         foreach (bool completed in new[] { false, true })
         {
             var state = State(rule.Requires);
-            if (completed) state.Flags.Add("minachiv.complete");
+            if (completed) HouseholdTests.Earn(story, state, "minagho_chivarro.payoff.ordinary");
+            Rules.Complete(story, state);
             check(ReferenceEquals(Rules.ParentEndingLoss(story, owner, state), rule), "Available loss replacement failed to earn arbitration.");
             check(Rules.ParentEndingLoss(story, "AeonEpilogue", state) == null, "Ordinary death erased Aeon history.");
             foreach (string target in rule.SuppressPages)

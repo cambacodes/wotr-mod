@@ -19,6 +19,13 @@ internal static class KianaTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.AvailableContacts.Add(Arsinoe);
         state.AvailableContacts.Add(Kyana);   // Q10: her spawned copy stands at Arsinoe's counter
@@ -300,7 +307,7 @@ internal static class KianaTricksterTests
         var aneviaDog = S("kiana.trickster.awake.react_anevia");
         var dogWorld = World(story, 5, "trickster", "trickster.ever", "kiana.trickster.returned", "kiana.trickster.dog_saved", "anevia_gone");
         check(!Rules.Available(story, aneviaDog, dogWorld), "Anevia reacts while gone.");
-        dogWorld.Flags.Add("anevia.trickster.returned");
+        dogWorld.Flags.Add("anevia.trickster.returned"); Rules.RecordAvailabilityEvents(story, dogWorld, new[] { "anevia.trickster.returned" }); Rules.Complete(story, dogWorld);
         check(Rules.Available(story, aneviaDog, dogWorld), "Anevia's return does not lift her reaction.");
         check(!Rules.Available(story, S("kiana.trickster.possessed.react_arsinoe_stones"), dogWorld), "The possessed-ward line plays for the dog.");
 
@@ -382,7 +389,7 @@ internal static class KianaTricksterTests
         // Only the affirmative producer earns the late commitment and Last Call coda.
         // eng8-q8h: use the actual met -> marriage -> answer -> date producers above.
         var neverAsked = Program.Copy(lovers); neverAsked.Chapter = 6;
-        neverAsked.Flags.Add("lastcall.active"); Rules.Complete(story, neverAsked);
+        neverAsked.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" }); Rules.Complete(story, neverAsked);
         var neverPages = Pages(epCommit, neverAsked);
         check(Rules.Available(story, epCommit, neverAsked) && neverPages.Contains("blank") && neverPages.Contains("margin") && neverPages.Contains("stage"),
             "eng8-q8h: unanswered eligible courtship has no affirmative answer.");

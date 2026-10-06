@@ -27,7 +27,7 @@ internal static class TirabadeCampaignTests
                     var state = Program.Copy(input);
                     int latest = scene.Requires.Where(state.Times.ContainsKey).Select(f => state.Times[f]).DefaultIfEmpty(0).Max();
                     state.Hour = Math.Max(state.Hour, latest + scene.DelayHours);
-                    check(Rules.Available(story, scene, state), "Tirabade campaign stranded in individual-scene order: " + id);
+                    check(Program.CurrentAvailable(story, scene, state), "Tirabade campaign stranded in individual-scene order: " + id);
                     foreach (var result in Program.Walk(scene, state))
                     {
                         check(result.Has("committed") && result.Has("seelah.committed") && !result.Has("closed"), "Tirabade leisure changes commitments.");
@@ -36,7 +36,7 @@ internal static class TirabadeCampaignTests
                             check(result.Flags.SetEquals(state.Flags), "Tirabade postponement records unplayed events.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Tirabade leisure repeats a completed event.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Tirabade leisure repeats a completed event.");
                         if (result.Has("three_match.finished"))
                         {
                             check(result.Has("three_match.stood") != result.Has("three_match.replayed"), "Tirabade disputed score loses its decision.");
@@ -58,26 +58,26 @@ internal static class TirabadeCampaignTests
         {
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = scene.Areas.Single() };
             ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "Tirabade scene readiness fixture invalid.");
-            foreach (string required in scene.Requires)
+            check(Program.CurrentAvailable(story, scene, ready), "Tirabade scene readiness fixture invalid.");
+            foreach (string required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing), "Tirabade skips prerequisite " + required);
+                check(!Program.CurrentAvailable(story, scene, missing), "Tirabade skips prerequisite " + required);
             }
             foreach (string blocker in new[] { "closed", "loss", "inhuman", "irabeth_away", "anevia_away", "last_watch", "anevia_dead", "irabeth_dead", "anevia_gone", "irabeth_gone", "swarm", "true_lich" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Tirabade scene ignores " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Tirabade scene ignores " + blocker);
             }
             ready.Times[scene.Requires.Last()] = 1000;
             ready.Hour = 1000 + scene.DelayHours - 1;
-            check(!Rules.Available(story, scene, ready), "Tirabade scene opens before its delay.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Tirabade scene opens before its delay.");
             ready.Hour++;
-            check(Rules.Available(story, scene, ready), "Tirabade scene misses exact delay boundary.");
+            check(Program.CurrentAvailable(story, scene, ready), "Tirabade scene misses exact delay boundary.");
             ready.Chapter = 4;
-            check(!Rules.Available(story, scene, ready), "Tirabade yard appears in the Abyss.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Tirabade yard appears in the Abyss.");
             ready.Chapter = 5; ready.Area = "elsewhere";
-            check(!Rules.Available(story, scene, ready), "Tirabade yard appears outside Drezen.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Tirabade yard appears outside Drezen.");
         }
     }
 }

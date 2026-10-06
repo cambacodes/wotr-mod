@@ -102,12 +102,20 @@ def presence_guard(model, route, woman, block=None):
         away = woman + "_gone"
         back = model.rels[route].get("UnavailableOverrides", {}).get(away)
         excluded.add(OR(lit(away, False), lit(back)) if back else lit(away, False))
+        if woman == "irabeth" and "irabeth.absence.alive" in model.composites:
+            # The verified native southern visit/report above never places her
+            # in Drezen. Require its current-life predicate, including death
+            # and re-departure backstops, instead of household availability.
+            excluded.add(lit("irabeth.epoch_unavailable", False))
+    remote_life = ((lit("irabeth.absence.alive"),) if block is not None
+                   and woman == "irabeth" and correspondence_reference(block, woman)
+                   and "irabeth.absence.alive" in model.composites else ())
     parts = guard[1:] if guard[0] == "and" else (guard,)
     local = local_return_overrides(model.story, block.scene if block else None, woman)
     excluded.update(lit(loss, False) for loss in local)
     closure = (OR(closed_guard, AND(*(lit(f, False) for f in model.rels[route].get("UnavailableFlags", []))))
                if woman in NATIVE_COMPANIONS else AND())
-    return AND(*(part for part in parts if part not in excluded), closure,
+    return AND(*(part for part in parts if part not in excluded), closure, *remote_life,
                *(OR(lit(loss, False), lit(back)) for loss, back in local.items()),
                *(lit(f, False) for f in PRESENCE_LOSSES.get(woman, [])),
                *((lit("trickster.ever"), lit(BODY_RETURNS[woman])) if woman in BODY_RETURNS else ()))

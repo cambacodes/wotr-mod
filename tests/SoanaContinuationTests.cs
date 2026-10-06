@@ -37,7 +37,7 @@ internal static class SoanaContinuationTests
             foreach (var prior in opening)
             {
                 state.Hour += 24;
-                check(Rules.Available(story, prior, state), "Soana actual opening cannot enter " + prior.Id);
+                check(Program.CurrentAvailable(story, prior, state), "Soana actual opening cannot enter " + prior.Id);
                 state = Program.Walk(prior, state).First(s => s.Has(prior.Id) && !s.Has("soana.closed")
                     && (prior.Id != "soana.water_carrier" || s.Has("soana.attraction_named") == attracted));
             }
@@ -48,7 +48,7 @@ internal static class SoanaContinuationTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += 24;
-                    check(Rules.Available(story, scene, ready), "Soana continuing chain cannot enter " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Soana continuing chain cannot enter " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready, (node, snapshot) =>
                     {
                         reached.Add(scene.Id + "/" + node);
@@ -72,7 +72,7 @@ internal static class SoanaContinuationTests
                             check(result.Times.Count == ready.Times.Count && result.Times.All(p => ready.Times.TryGetValue(p.Key, out int hour) && hour == p.Value), "A postponed Soana scene changes timestamps.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Soana completed scene repeats.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Soana completed scene repeats.");
                         if (result.Has("soana.closed"))
                         {
                             check(Rules.ContactAvailable(story, scene, result), "Authored Soana goodbye cannot finish after closing the route.");
@@ -114,32 +114,32 @@ internal static class SoanaContinuationTests
             check(scene.RequiresAny.ToHashSet().SetEquals(new[] { "soana.old_defender", "soana.bear_dead" }), "Soana continuation changes supported native outcomes.");
             var ready = new Snapshot { Chapter = 3, Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires); ready.Flags.Add("soana.old_defender"); ready.AvailableContacts.Add(actor);
-            check(Rules.Available(story, scene, ready), "Soana gate baseline is invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Soana gate baseline is invalid.");
             foreach (string blocker in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Soana ignores blocker " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Soana ignores blocker " + blocker);
                 if (story.Relationships["soana"].UnavailableFlags.Contains(blocker))
                     check(!Rules.ContactAvailable(story, scene, blocked), "Soana resumed scene ignores native loss " + blocker);
             }
-            foreach (string required in scene.Requires)
+            foreach (string required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing) && !Rules.ContactAvailable(story, scene, missing), "Soana skips prerequisite " + required);
+                check(!Program.CurrentAvailable(story, scene, missing) && !Rules.ContactAvailable(story, scene, missing), "Soana skips prerequisite " + required);
             }
             var absent = Program.Copy(ready); absent.AvailableContacts.Clear(); absent.Flags.Add(actor); absent.Flags.Add("soana.contact_available");
-            check(!Rules.Available(story, scene, absent) && !Rules.ContactAvailable(story, scene, absent), "Authored flag bypasses live Soana contact.");
+            check(!Program.CurrentAvailable(story, scene, absent) && !Rules.ContactAvailable(story, scene, absent), "Authored flag bypasses live Soana contact.");
             absent = Program.Copy(ready); absent.Flags.Remove("soana.old_defender");
-            check(!Rules.Available(story, scene, absent) && !Rules.ContactAvailable(story, scene, absent), "Soana ignores loss of native outcome.");
+            check(!Program.CurrentAvailable(story, scene, absent) && !Rules.ContactAvailable(story, scene, absent), "Soana ignores loss of native outcome.");
             foreach (int chapter in new[] { 2, 4, 5 })
             {
                 var wrong = Program.Copy(ready); wrong.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrong) && !Rules.ContactAvailable(story, scene, wrong), "Soana contact escapes chapter 3.");
+                check(!Program.CurrentAvailable(story, scene, wrong) && !Rules.ContactAvailable(story, scene, wrong), "Soana contact escapes chapter 3.");
             }
             ready.Times[scene.Requires.Last()] = ready.Hour;
             check(Rules.ContactAvailable(story, scene, ready), "Resumed Soana scene reapplies delay.");
-            ready.Hour += 23; check(!Rules.Available(story, scene, ready), "Soana skips visit delay.");
-            ready.Hour++; check(Rules.Available(story, scene, ready), "Soana misses exact 24-hour boundary.");
+            ready.Hour += 23; check(!Program.CurrentAvailable(story, scene, ready), "Soana skips visit delay.");
+            ready.Hour++; check(Program.CurrentAvailable(story, scene, ready), "Soana misses exact 24-hour boundary.");
         }
         foreach (var example in replayCases.Values)
         {
@@ -148,7 +148,7 @@ internal static class SoanaContinuationTests
             check(!Rules.ContactAvailable(story, example.Scene, interrupted), "Interrupted Soana dialog ignores lost actor.");
             interrupted.AvailableContacts.Add(actor);
             interrupted.Hour += 24;
-            check(Rules.Available(story, example.Scene, interrupted), "Interrupted Soana visit cannot reopen after contact returns.");
+            check(Program.CurrentAvailable(story, example.Scene, interrupted), "Interrupted Soana visit cannot reopen after contact returns.");
             foreach (var result in Program.Walk(example.Scene, interrupted))
             {
                 foreach (var group in exclusive)
