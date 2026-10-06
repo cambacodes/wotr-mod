@@ -409,6 +409,30 @@ internal static class MelazmeraTricksterTests
         check(pages.All(pg => pg.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Mythic == null && c.Alignment == null && c.Crusade == null))),
             "An epilogue page carries effects.");
 
+        // Polish C9: commitment alone never earns the heap's promise in mourning.
+        var promise = S(P + "epilogue.mourned").Nodes[0].Paragraphs.Single(pg => pg.Text.Contains("old boots"));
+        var mournedWithoutHeap = World(story, 6, Drezen, "trickster.ever", Returned, Committed, Seal, "sacrifice");
+        var mournedAfterHeap = Program.Copy(mournedWithoutHeap);
+        mournedAfterHeap.Flags.Add(Heap);
+        check(Avail(S(P + "epilogue.mourned"), mournedWithoutHeap)
+              && !Rules.ParagraphVisible(promise, mournedWithoutHeap)
+              && Rules.ParagraphVisible(promise, mournedAfterHeap),
+            "Mourning recalls the heap promise before the Commander heard it, or loses it afterwards.");
+
+        // Polish C5: the crown gift is not evidence that the Queen survived a later fight.
+        foreach (var pageId in new[] { "together", "commit", "declined", "left_free" })
+        {
+            var crownMemory = S(P + "epilogue." + pageId).Nodes[0].Paragraphs.Single(pg => pg.Requires.Contains(P + "queen_crowned"));
+            Snapshot CrownHistory(params string[] extra) => World(story, 6, Drezen,
+                new[] { "trickster.ever", P + "queen_crowned" }.Concat(extra).ToArray());
+            check(!Rules.ParagraphVisible(crownMemory, World(story, 6, Drezen, "trickster.ever"))
+                  && Rules.ParagraphVisible(crownMemory, CrownHistory()),
+                "The Queen's crown paragraph lost its earned gift in " + pageId + ".");
+            foreach (var combat in new[] { "melazmera.fq_betrayed", "melazmera.fq_attacked", "melazmera.fq_disobeyed", "melazmera.fq_refused" })
+                check(!Rules.ParagraphVisible(crownMemory, CrownHistory(combat)),
+                    "The Queen's crown paragraph promises survival after " + combat + " in " + pageId + ".");
+        }
+
         // Last Call: her coda reads the real commitment only.
         var coda = story.Scenes.SingleOrDefault(s => s.Id == "melazmera.lastcall.page");
         check(coda != null && coda.Requires.Contains(Committed) && coda.RequiresAnyGroups.All(g => !g.Contains(P + "late_committed")),

@@ -102,12 +102,13 @@ EVERY ORDER YOU GIVE IS YOURS. THEN I HAVE ALL YOUR ORDERS ON MY CLAW. I GAVE ON
 NOTHING IS AS GOOD AS A HARPY. YOU ARE RIGHT. I AM GLAD YOU KNOW IT.
 THE WHOLE CRUSADE DOES WHAT YOUR MARK SAYS. I FLEW OVER IT AND TOLD IT TO BE QUIET. IT SHOUTED AND SHOT ARROWS. YOUR CRUSADE IS BADLY TRAINED.''',
         c("Continue", "tail")),
-    mz("question", '''{n}"THIEF.{/n}
-I COUNT BECAUSE THINGS GO. EVERYTHING GOES. GOATS GO INTO ME. SHIPS GO INTO THE CLIFFS. THE HORNED ONE'S DIGGERS GO INTO THE DARK. THE NUMBER STAYS.
-I HAVE COUNTED FORTY-ONE FOR TWO HUNDRED YEARS. NOW I COUNT FORTY-TWO. IT IS YOUR FAULT. I DO NOT LIKE IT. I COUNT IT ANYWAY.''',
+    mz("question", '''"THIEF.
+A KOBOLD TOOK THE BLUE STONE ONCE. HE HID IT UNDER HIS TONGUE. I FOUND IT WHEN I ATE HIM.
+FORTY-ONE STONES. ONE SEAL. I COUNT BEFORE I SLEEP.
+I COUNT AGAIN WHEN I WAKE."''',
         c("Continue", "tail")),
     mz("silent", '''{n}"THIEF.{/n}
-YOU DID NOT ANSWER. I SAT ON THE HIGH ROCK THREE NIGHTS. A HARPY SAT ON IT WITH ME. I ATE THE HARPY. IT WAS NOT AN ANSWER.
+YOU DID NOT ANSWER. I WAITED ON THE HIGH ROCK. A HARPY SAT ON IT WITH ME. I ATE THE HARPY. IT WAS NOT AN ANSWER.
 I WILL ASK AGAIN WHEN I CAN SEE YOUR FACE. YOU WILL NOT LIKE IT BETTER.''',
         c("Continue", "tail")),
     mz("tail", '''"I FLEW OVER THE CITY OF THE LADY IN SHADOW. IT SMELLS OF PERFUME POURED ON TOP OF PISS. NOTHING THERE IS WORTH EATING EXCEPT THE THINGS THAT WOULD DISAGREE WITH ME.
@@ -155,7 +156,7 @@ visit(M + "beat.crew", "Salt", [
         c("Continue", "ate", requires=(ATE,)),
         c("Continue", "harpoon", requires=(HARPOONED,), forbids=(ATE,)),
         c("Continue", "missed", forbids=(ATE, HARPOONED))),
-    mz("ate", '''"You want me to be sorry about the sailors." {n}She tilts her head, considering it, as she might consider an unfamiliar fruit.{/n} "I was hungry, and they were there, and they were salty. I told you by your fire: be angry quickly. You were not angry quickly. You have been angry slowly, all this time, and saying nothing." {n}She sounds curious, not guilty.{/n}
+    mz("ate", '''"You want me to be sorry about the sailors." {n}She tilts her head, considering it, as she might consider an unfamiliar fruit.{/n} "I was hungry, and they were there, and they were salty. I told you when we met: be angry quickly. You were not angry quickly. You have been angry slowly, all this time, and saying nothing." {n}She sounds curious, not guilty.{/n}
 "So say it now. What do you want for them? I do not know what people want for sailors. Nobody ever asked me for anything for the ones I ate."''',
         c('"They had families. You paid Greybor in gold. Pay them."', "pay", requires=(GREY_CARRIED,)),
         c('"They had families. You have gold. Pay them."', "pay", forbids=(GREY_CARRIED,)),
@@ -188,7 +189,7 @@ visit(M + "beat.crew", "Salt", [
 "Who was steering it, thief? I want to know. I want to go and look at them."''',
         c('"I was."', "me"),
         c('"A captain who knows the Midnight Isles. That\'s all you\'re getting."', "secret")),
-    mz("me", '''"You." {n}She stares at you, and then she giggles, high and delighted.{/n} "You made me go home hungry, and then you walked into my cave and gave me a present. You robbed me and paid me back in the same week and I did not even know it was the same thief." {n}She puts her chin on her knees.{/n} "I should eat you. I keep saying that. It keeps not happening."''',
+    mz("me", '''"You." {n}She stares at you, and then she giggles, high and delighted.{/n} "You made me go hungry, then came back with a gift. I did not even know it was the same thief." {n}She puts her chin on her knees.{/n} "I should eat you. I keep saying that. It keeps not happening."''',
         c("Continue", flags=(CREW,))),
     mz("secret", '''"That's all I am getting." {n}She repeats it, in a very fair imitation of your voice, and scowls.{/n} "You keep things from me. Nobody keeps things from me. They are all inside me, eventually, and then I know everything they knew." {n}She stands up on the sill.{/n}
 "Very well. Keep your captain. I will find out. I always find out. And when I do, I will not eat them, because you did not want me to, and I will be very, very bored about it."''',
@@ -214,13 +215,14 @@ visit(M + "beat.queen", "The thing in the swamp", [
         c('"She\'s back in her swamp. Let her keep it."', "keep"),
         c('"Take me with you when you go and look."', "ask")),
     mz("turned", '''"The thing in the swamp turned on you." {n}She sounds delighted.{/n} "She promised you her love and her affection and then she tried to drown you in her whirlpool, because she is too good for the likes of you. The harpy told me all of it. The harpy did the voice." {n}She does the voice too, wetly, and it is very good.{/n}
-"You should have let me eat her the first time. I would have, if you had asked. I would have spat her out again, because she tastes of nothing, but she would have been chewed, and she would have remembered it."''',
-        c('"She\'s back in her swamp. Let her keep it."', "keep"),
-        c('"Next time, I\'ll ask."', "ask")),
-    mz("fought", '''"You fought the thing in the swamp." {n}She sounds delighted.{/n} "The harpy says she swelled up and bubbled and screamed about her powafulness, and you went at her with steel until she had to pour herself away down her holes to get clear of you." {n}She does the voice, wetly, and it is very good.{/n}
-"You should have let me eat her first. I would have spat her out again, because she tastes of nothing, but she would have been chewed, and she would have remembered it."''',
-        c('"She\'s back in her swamp. Let her keep it."', "keep"),
-        c('"Next time, I\'ll ask."', "ask")),
+"Love and affection, and then a whirlpool. She should have offered you the whirlpool first. At least she owns one."''',
+        c('"Leave the swamp out of it."', "keep"),
+        c('"Next time, I\'ll ask you."', "ask")),
+    mz("fought", '''"You fought the thing in the swamp." {n}She grins around a mouthful of tallow.{/n} "The harpy heard her screaming about her powafulness. It did the voice."
+
+{n}She repeats the word in a wet, shrill gurgle.{/n} "I would have liked to hear it myself. I have never heard her say it while somebody was hitting her."''',
+        c('"Leave the swamp out of it."', "keep"),
+        c('"Next time, I\'ll ask you."', "ask")),
     mz("withdrew", '''"The thing in the swamp waved you off her island like a queen," {n}she says, delighted,{/n} "and then went down one of her holes and has not come up since. The harpy says she is sulking in a plague pit and telling the flies that you were her very best knight." {n}She does the voice, wetly, and it is very good.{/n}
 "When she comes up again, she will find my cave empty and think she has won. I want to be there for her face. She does not really have one. I want to be there for the place where it would be."''',
         c('"She\'s back in her swamp. Let her keep it."', "keep"),
@@ -233,9 +235,9 @@ visit(M + "beat.queen", "The thing in the swamp", [
 "I am the fat lizard." {n}She sounds more amused than offended.{/n} "She has been calling me that for years. When I am finished with your war, I am going to go back and sit on her swamp until it is dry."''',
         c('"Take me with you when you do."', "ask"),
         c('"Leave her be. She\'s harmless."', "keep")),
-    mz("keep", '''"Harmless." {n}She snorts, and a little smoke comes out.{/n} "She ate the whole of the horned one's first dig crew before the horned one sent demons to stop her. She is not harmless. She is only stupid, which is a different thing and looks the same from far away." {n}She licks tallow off her fingers.{/n} "But very well. She can keep her swamp. I have a hole in your world now. It is better than a swamp."''',
+    mz("keep", '''"She hunted the horned one's slaves. Then the horned one sent demons with sharp things, and the puddle slipped through her holes and ate more slaves." {n}She licks tallow from her fingers.{/n} "You can keep your pity. I have a cave on your side now."''',
         c("Continue", flags=(QUEEN,))),
-    mz("ask", '''"Yes." {n}She looks at you in the dark she made, and for a moment she is very still.{/n} "Yes. We will go together. You can ride on my neck, and I will sit on her, and you can tell her how you got into my cave." {n}She giggles.{/n} "It will be the best day of my life. I have had a great many days. I will know."''',
+    mz("ask", '''"Yes. Ask me next time." {n}She crunches the last candle.{/n} "You bring steel to a cave. I bring my mouth. I would like to see what you think needs both."''',
         c("Continue", flags=(QUEEN,))),
     mz("rock", '''"A rock." {n}Her eyes light up like two coals blown on.{/n} "Yes. Send her a rock. Wrap it in something shiny. I will make it shine for you; I know how. She will wear it for a hundred years and tell everyone it is a crown, and everyone will see it is a rock, and nobody will tell her." {n}She sighs happily.{/n} "You are very cruel, thief. I did not know."''',
         c("Continue", flags=(QUEEN,))),
@@ -248,13 +250,16 @@ visit(M + "beat.illusion", "The woman she wears", [
 {n}Close to, in lamplight, the woman is very good. There is a pulse in her throat. There is a small scar on her chin. Her hair is black and heavy and moves when she moves. Only her shadow, going up the wall behind her and across the ceiling, gives the lie to her: it has a neck as long as a ladder.{/n}''',
         c('"Why this shape?"', "why"),
         c('"Why a rock, for a crown?"', "rock")),
-    mz("why", '''"Because you are small." {n}She says it simply.{/n} "Your window is small, and your door, and your castle, and everything in it. I cannot come in as myself; I would have to take the roof off, and your priests would be tiresome." {n}She looks down at the hands she is wearing, turning them over.{/n}
-"Making myself small is old magic. Every dragon worth eating has a little sorcery in her. I learned to fold myself down to go into the drowned king's hall, where the doors were narrow and full of fish. But small is only small. Small still looks like me." {n}She smiles.{/n} "So I wrap her round me the way I wrap a rock in a crown. The first time was on my island, the night I came to your fire. The first time among your people was on your city's wall, and a sentry said good evening to me." {n}She sounds very proud of that.{/n}''',
+    mz("why", '''"Because you are small. Your window is small. Your door is small. I could take the roof off, but then your priests would start ringing things." {n}She turns her hands over in her lap.{/n}
+
+"I learned to fold myself down to enter the drowned king's hall. His doors were narrow. His crown was worth going in for. But a small dragon still looks like a dragon. So I wrap a woman round myself, as I wrap a crown round a rock."
+
+{n}She smiles, showing the points of her teeth.{/n} "I wore her when I came to find you. The first time I stood on Drezen's walls, a sentry said good evening to me. He kept his spear on his shoulder. I could have eaten him before he lowered it."''',
         c("Continue", "edge")),
     mz("rock", '''"Because it is a rock." {n}She touches it, where it sits pressed into her hair, grey and pitted and ordinary.{/n} "I make rocks look like crowns so that thieves will take them. Everyone takes them. Everyone. So I wear a crown that looks like a rock, so that everyone who looks at me can see what I think of crowns." {n}She smiles.{/n}
-"The thing in the swamp wanted my little crown more than anything in the world. I wanted her to see me wearing a rock and know that I could have worn anything." {n}She shrugs.{/n} "It worked. She cried."''',
+"The thing in the swamp wanted my little crown more than anything in the world. I wanted her to see me wearing a rock and know that I could have worn anything." {n}She shrugs.{/n} "She hated it. I enjoyed that."''',
         c("Continue", "edge")),
-    mz("edge", '''"Do you want to see the edge?" {n}She holds out her hand, palm up, across the space between the chair and the bed.{/n} "Everything has an edge. Where the lie stops."
+    mz("edge", '''"Do you want to see the edge?" {n}She holds out her hand, palm up, across the space between the chair and the bed.{/n} "Here. Along the wrist."
 {n}You take her hand. It is warm and dry and a little rough, a woman's hand, and then as your fingers move towards her wrist there is a place where the warmth stops, abruptly, as if you had put your hand out of a window into winter, and under your fingertips the skin is not skin but plate, hard and smooth and cold, a patch of it the size of a coin.{/n}
 "That is me," {n}she says.{/n} "Folded small, but me. The picture stops there. It always stops somewhere; I can never find where until somebody touches it."''',
         c('"Show me the rest of you. Here."', "show"),
@@ -278,7 +283,7 @@ visit(M + "beat.illusion", "The woman she wears", [
 visit(M + "beat.souls", "Even dead souls", [
     nar("start", '''{n}She is lying along the ridge of the roof in her own shape when you climb out onto the leads, with her chin on the chimney stack and her eyes half closed, and she does not move when you come up beside her.{/n}
 "Somebody died," {n}she says.{/n} "Down there, in your hospital. Just now. I felt it go past." {n}Her nostrils flare.{/n} "A soldier. Young. He was frightened and then he was not. He is going somewhere a long way off, very fast, and he tastes of salt and wet wool, and a girl he did not tell."''',
-        c('"The swamp queen said you boasted of eating souls. Even dead ones."', "boast"),
+        c('"You sound as if you\'ve eaten souls. Even dead ones."', "boast"),
         c('"Leave him alone."', "leave")),
     mz("leave", '''"I am leaving him alone." {n}She sounds offended.{/n} "He is not mine. He is going to your grey lady at the end of the long line. She is very strict about her line. You take one out of it and she notices, and she sends things." {n}One eye opens and looks at you.{/n} "I have taken from the end of her line where she was not looking. Not in your city. Not him."''',
         c("Continue", "boast")),
@@ -297,7 +302,7 @@ visit(M + "beat.souls", "Even dead souls", [
     mz("no", '''"Where everyone's goes." {n}She snorts, and smoke curls up past the chimney.{/n} "To be weighed by a grey lady and sent to a place you did not choose. You would rather that than my heap." {n}She sounds more puzzled than hurt.{/n} "Very well. But I will be at the end of her line when you get there, thief, and I will watch you go past, and I will be very rude to her about it."''',
         c("Continue", flags=(SOULS, SOUL_REFUSED))),
     mz("lie", '''{n}She opens both eyes, and looks at you, and then she laughs, low and long, until the roof trembles.{/n}
-"That was a lie," {n}she says, pleased.{/n} "I can taste lies. They taste of copper. Everyone lies to me to stop me eating them. You lied to me so that I would be pleased." {n}She puts her head back down.{/n} "I am going to keep that lie on the heap. It is the second thing you have ever given me, and the cheapest."''',
+"That was a lie," {n}she says, pleased.{/n} "I can taste lies. They taste of copper. Everyone lies to me to stop me eating them. You lied to me so that I would be pleased." {n}She puts her head back down.{/n} "I am going to keep that lie on the heap. That one cost you nothing. I will keep it anyway."''',
         c("Continue", flags=(SOULS, SOUL_LIED))),
     mz("later", '''"When the war is over." {n}She considers the Wound, glowing along the north like the cracks in a black loaf.{/n} "Your war will be over when you are at the bottom of that hole. You will be very busy. You will not remember to answer." {n}One eye rolls towards you.{/n} "I will remember for you. Dragons are good at waiting. We are the best in the world at it."''',
         c("Continue", flags=(SOULS,)))],
@@ -320,7 +325,7 @@ M."''',
 "I thought it was jewellery. It is a claw. You wore a claw on your hand and every time you pressed it into wax, somebody went and died on it somewhere." {n}Her eyes gleam.{/n} "And you gave it to me. You gave me your claw. Oh, thief. I did not know it was that kind of present."''',
         c("Continue", flags=(SEAL_LEFT,))),
     mz("back", '''{n}She pulls her hand back against her chest so fast that the window frame creaks, and for a heartbeat her fingers are claws and her eyes are all red, with no white in them at all.{/n}
-"No." {n}She says it very softly.{/n} "Things in my hoard do not leave. I told you on my island. You put it there, with your own hand, and now it is there."
+"No." {n}She says it very softly.{/n} "Things in my hoard do not leave. I told you when we met. You brought it into my cave. I kept it. It stays with me."
 {n}Then, slowly, the claws are fingers again, and she looks at you with something like delight.{/n} "You asked, though. You wanted it back and you asked, in my hearing, with my claw a foot from your throat." {n}She holds the ring up to the lamp.{/n} "Ask again whenever you like. I enjoy saying no to you."''',
         c("Continue", flags=(SEAL_ASKED,))),
     mz("keep", '''"Only for the clerks." {n}She considers the ring on her finger, and then you.{/n} "So the new one says what you tell it, and the old one says what I tell it." {n}She smiles, slowly.{/n} "I have been pressing it into every stone I send you. I have been pressing it into the goats before I eat them. I pressed it into a vrock on the Wound's edge. He did not like it."''',
@@ -328,7 +333,7 @@ M."''',
     requires=(SEAL,), forbids=(SEAL_ASKED, SEAL_LEFT))
 
 visit(M + "beat.greybor", "The little man with the axe", [
-    nar("start", '''{n}"The little man with the axe," she says, as soon as she is in over the sill. She sits on the corner of your desk in the woman she wears and swings one foot. "The one at your gate. Grey beard. Very cross."{/n}''',
+    nar("start", '''"The little man with the axe," {n}she says as she comes over the sill and sits on your desk.{/n} "Grey beard. Very cross."''',
         c("Continue", "him")),
     mz("him", '''"He bit my coin." {n}She says it with enormous satisfaction.{/n} "Everyone else in your city looked at my crown, or at my face, or at the ground. He looked at my shadow first, then my hands, then my coin, and then he bit it. He is the only person in your whole city who looked at the right things in the right order."
 "How much does he cost? I want him. Not to eat. To keep. He could stand at the mouth of my cave and look at thieves in the right order, and bite their coins, and tell me which ones to eat."''',
@@ -355,11 +360,14 @@ visit(M + "beat.dinner", "What giving is", [
     nar("eat", '''{n}You take your knife and cut a slice off the edge, where it is least alive, and put it in your mouth, and chew.{/n}
 {n}It tastes of iron and pepper and burning hair, and it fights you all the way down, and when it gets where it is going it sits there like a coal. For the rest of the night you are very warm, and very awake, and every sound in the citadel is much too loud, and you can see in the dark rather better than you ought to.{/n}''',
         c("Continue", "ate")),
-    mz("ate", '''{n}She watches you eat without blinking, the whole way down, as if she were counting your swallows.{/n}
-"You ate it," {n}she says.{/n} "Everything I ever gave anything before went in through its skin, with my teeth. You took it in your hand and put it in yourself." {n}Her lip lifts.{/n} "That is a stronger claim than a bite. I did not know that. I will remember it." {n}She gets up, and comes round the desk, and puts her nose to your mouth, and sniffs, like a mother cat.{/n} "Now you smell of the hole. Good. Everything that comes up out of it will think you are one of mine."''',
+    mz("ate", '''{n}She watches your throat as you swallow. Then she comes round the desk and catches your chin between fingers that have not quite stopped being claws.{/n}
+
+"Open your mouth." {n}She smells your breath and grins.{/n} "There. Iron. Better than your salt pork."
+
+{n}She bites a piece from the heart without letting go of your chin.{/n} "Next time I will bring you something that fights harder."''',
         c("Continue", flags=(DINNER, DINNER_EATEN))),
     mz("cook", '''"The cook." {n}She looks at the heart and then at you, and for a heartbeat the woman's face is not quite a woman's, and the lamp gutters.{/n} "I gave it to you. Not to the cook."
-{n}Then she laughs.{/n} "No. You are right, and I hate it. When you put your ring in my heap, it was mine, to eat or wear or sleep on. This is yours, to feed to a cook if you like." {n}She works it through like a sum she does not care for.{/n} "Very well. Tell the cook it will bite. I will be listening."''',
+{n}Then she laughs.{/n} "No. You are right, and I hate it. When you left your ring with me, it was mine, to eat or wear or sleep on. This is yours, to feed to a cook if you like." {n}She works it through like a sum she does not care for.{/n} "Very well. Tell the cook it will bite. I will be listening."''',
         c("Continue", "cook_after")),
     nar("cook_after", '''{n}It does bite. The cook loses the end of a finger to it before he gets it into the pot, and the stew he makes of it is so hot that the men who eat it do not sleep for two nights, and fight a skirmish on the north road on the third that the sergeants still talk about. Nobody asks where the meat came from. Several of them ask for more.{/n}''',
         c("Continue", flags=(DINNER,))),
@@ -390,8 +398,9 @@ visit(M + "beat.count", "The Commander's hoard", [
 "And letters. From other people." {n}She sniffs them, a whole drawer of them, without opening a single one.{/n} "They are real too. I do not like them. I am not going to eat them." {n}She shuts the drawer, very gently.{/n} "Your hoard is badly kept, thief. Everything in it is from somebody else."''',
         c('"Everything in yours is from somebody you ate."', "ate"),
         c('[Take the sapphire out of your pocket and put it on the shelf with her stones.]', "sapphire", requires=(STONE_KEPT,))),
-    mz("ate", '''{n}She laughs, and the lamp gutters.{/n} "Yes. That is how you keep things properly. You make sure nobody can come back for them." {n}She sits down on the end of your bed.{/n}
-"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away." {n}She looks at you sidelong.{/n} "I lie awake counting them. Forty on the heap, one in your pocket, and two that walk." {n}I have never lain awake about anything before. I do not know if I like it. I keep doing it."{/n}''',
+    mz("ate", '''"Yes. And none of them came back to ask for it." {n}She sits on the edge of your bed and looks at the sapphire in your pocket.{/n} "Forty stones on the heap. One there. One seal. One Commander."
+
+{n}Her hand closes over the stone through the cloth.{/n} "You were still there when I woke. I counted twice."''',
         c("Continue", flags=(COUNTED,))),
     mz("sapphire", '''{n}You put the grey stone on the shelf, at the end of the row of her letters, where it looks like one more of them.{/n}
 {n}She stares at it. Then she comes and picks it up, and weighs it in her palm, and puts it back into your pocket herself, and pats it flat.{/n} "No. That one does not go on the shelf. That one goes where it goes. That is the one you took." {n}Her hand stays flat against you.{/n}
@@ -464,10 +473,11 @@ tag(M + "ch4.queen_after")
 
 SCENES.append(scene(M + "ch4.old_hoard", "The cave with the hole in its roof", "Melazmera", 4, "", [
     nar("start", '''{n}She comes for you at the next rest on the island, not to the fire but to the edge of the camp, in the woman she wears, with rain running off the rock on her head, and crooks one finger. You follow her. Your sentries watch you go, and nobody tries to stop you, and one of them makes the sign of Iomedae behind your back.{/n}
-{n}She takes you to the cave. She walks in by the front, between the glittering things on their shelves, without looking at any of them.{/n}''',
+{n}She takes you to the cave. She walks in by the front, between the bait's shelves, without looking at any of them.{/n}''',
         c("Continue", "crown")),
-    mz("crown", '''{n}She stops at the little crown on its ledge and picks it up. It does not go out in her hand. It shines, bright as a new coin, and she turns it so the light from the hole in the roof runs round the rim.{/n}
-"It knows me," {n}she says.{/n} "It only goes out for thieves." {n}She puts it down again, on the far end of the ledge, a long way from the heap.{/n} "There. Now you cannot touch it by accident, and I will not have to come home and eat you in my own house. That would be very embarrassing for both of us."''',
+    mz("crown", '''{n}She takes the bait from its ledge and holds it up. A crown shines between her fingers. She rolls it over, and it is a plain rock. Another turn, and the crown shines again.{/n}
+
+"My rock. My trick." {n}She sets it at the far end of the ledge, away from the heap.{/n} "There. Keep your sleeve clear of it. I would hate to eat you for a careless sleeve."''',
         c("Continue", "rain")),
     mz("rain", '''{n}She walks to the middle of the cave, where the rain comes down through the hole in the roof in its grey column, and stands in it with her face turned up, and lets it run over her.{/n}
 "This is why I took this cave," {n}she says, with her eyes shut.{/n} "The thing in the swamp had it first. She tells everyone I threw her out because I would not fit in the other caves. That is true. But it is not why." {n}She opens her mouth and lets the rain fill it and swallows.{/n} "Where I was hatched, there is no rain. Only the dark, and things going past in it. The first time I felt this on my face, I ate everything on the island that was standing between me and it. Including her, a little."''',
@@ -478,7 +488,7 @@ SCENES.append(scene(M + "ch4.old_hoard", "The cave with the hole in its roof", "
         c("Continue", "heap")),
     mz("heap", '''{n}She takes you to the heap at the back and kneels by it, and begins to take stones off it, one at a time, and lay them on the floor in front of you in a row.{/n}
 "The eye of a statue from a temple that fell in the sea. A ruby that a lord in the Isles swallowed to keep it from his brother; I ate the lord. A lump of star." {n}She holds up something grey and pitted that is heavier than it should be; you can see it weigh down her hand.{/n} "It came down in the sea and a fisherman brought it up in his net, and I ate the net, and the fisherman, and then I had it."
-"Forty-one. They all look like nothing. Nobody has ever stolen one. Nobody has ever tried." {n}She holds her hand out flat over the row, as if warming it.{/n} "You are the first one who ever saw them. Look. Remember them."''',
+"Forty-one. I know every one of them. A kobold tried to keep the blue one under his tongue. I got it back." {n}She holds her hand out flat over the row, as if warming it.{/n} "You are looking at them without a blade in your hand. Look. Remember them."''',
         c("[Look at them one by one, and remember.]", "ring"),
         c('"Where\'s my ring?"', "ring")),
     mz("ring", '''{n}She lifts her left hand, where the seal rattles on her smallest finger.{/n}
@@ -496,7 +506,7 @@ tag(M + "ch4.old_hoard")
 # --- Chapter 5: the rain, the joke, the drowned king. --------------------------------------------------------------------
 
 visit(M + "beat.rain", "Rain over Drezen", [
-    nar("start", '''{n}It rains over Drezen for the first time in a month, a hard cold rain off the north, and at midnight there is a sound on your roof like a cart being unloaded, and then nothing.{/n}
+    nar("start", '''{n}A hard cold rain falls over Drezen, and at midnight there is a sound on your roof like a cart being unloaded, and then nothing.{/n}
 {n}You find her on the leads in the woman she wears, standing in the downpour with her face turned up and her arms held a little out from her sides, soaked through, with the rain running off the rock on her head and down her neck and into her gown, which does not get wet, because it is not there.{/n}''',
         c("Continue", "rain")),
     mz("rain", '''"There is no rain in my new cave," {n}she says, without looking at you.{/n} "There is no hole in the roof. There is a crack in the world with fire at the bottom, and it is warm, and things come up out of it, and I eat them. It is a very good cave. But nothing ever falls into it from the sky."
@@ -510,7 +520,7 @@ visit(M + "beat.rain", "Rain over Drezen", [
 {n}After a while she takes your hand, the woman's hand round yours, cold and wet, and does not say anything, and holds it up to the sky, palm up, as if to see how much it will hold.{/n}''',
         c('"It doesn\'t hold much."', "hold"),
         c("[Let her hold it.]", "hold")),
-    mz("hold", '''"No," {n}she agrees.{/n} "Your hand is very small. It holds almost nothing." {n}She tips it, and the rain runs off it, and she watches it go.{/n} "It held a ring. It put the ring down in my heap. It is the only hand that ever put anything down in my heap. It can be as small as it likes."
+    mz("hold", '''"No," {n}she agrees.{/n} "Your hand is very small. It holds almost nothing." {n}She tips it, and the rain runs off it, and she watches it go.{/n} "It brought a ring into my cave. I still have that ring. Let your hand be small; it did well enough."
 {n}She lets go, and goes to the edge of the roof, and steps off it, and a moment later something enormous goes up past the gate-tower in the rain, and the sentry drops his cloak.{/n}''',
         c("Continue", flags=(M + "beat.rain_stood",)))],
     requires=(FED,), forbids=(M + "beat.rain_stood",))
@@ -533,7 +543,7 @@ visit(M + "beat.joke", "The one who makes jokes", [
 
 visit(M + "beat.drowned_king", "The drowned king's stone", [
     nar("start", '''{n}She comes in over the sill and holds out her hand without a word, and you know what she wants. You take the grey stone out of your pocket and put it in her palm. She does not keep it. She turns it over and over, and then gives it back, and sits down on the floor with her back against your bed, in the woman she wears, with her long legs stretched out across half the room.{/n}
-"You never asked where it came from," {n}she says.{/n} "Everybody asks where treasure comes from. They want to know how much it is worth. You only put it in your pocket."''',
+"You know which crown it came from," {n}she says.{/n} "But I have not told you what became of the king."''',
         c('"Where did it come from?"', "story"),
         c('"I know what it\'s worth. You told me: it\'s the one I took."', "worth")),
     mz("worth", '''{n}She looks up at you from the floor, and for a moment her eyes are very bright indeed.{/n} "Yes," {n}she says.{/n} "That is what it is worth." {n}Then she pats the floor beside her.{/n} "Sit down. I am going to tell you anyway. It is a good story. Everyone in it dies."''',
@@ -541,8 +551,9 @@ visit(M + "beat.drowned_king", "The drowned king's stone", [
     mz("story", '''"There was a country on the edge of the sea, far from my island, with a king who wore a crown with one blue stone in it. The sea came up one year and took the country, all of it, the fields and the towns and the palace, and the king went down with his crown on his head, sitting on his throne, because he said a king does not leave." {n}She says it with approval.{/n}
 "I went down after it. It was a long way down and very cold. The king was still on his throne, with fish in his beard. I took the crown off his head." {n}She holds up two fingers, pinched together.{/n} "The gold I did not want. Gold is soft and it tastes of hands. I kept the stone. I wrapped it in a rock, so nobody would ever know, and I slept on it for two hundred years."''',
         c('"And the king?"', "king")),
-    mz("king", '''"I ate him," {n}she says, surprised you would ask.{/n} "He was very well preserved."
-{n}She is quiet for a while. Then she reaches up and puts her hand flat over your pocket, where the stone is, the way she did in the cave.{/n} "He did not leave. His country left him, and he stayed, and so I took his stone. You left. You came into my cave and went out again, and came back, and went out again." {n}She takes her hand away.{/n} "So I gave you his stone. I think that is right. I have been thinking about it for days, and I think that is right."''',
+    mz("king", '''"I ate him. He was very well preserved." {n}She puts her hand over the pocket holding the stone.{/n} "He held on to his crown until the sea took him. You walked out with his best stone while I watched."
+
+{n}Her fingers tighten on the cloth.{/n} "I still want to take it back. Keep your pocket buttoned."''',
         c("Continue", flags=(M + "beat.king_heard",)))],
     requires=(STONE_KEPT,), forbids=(M + "beat.king_heard",))
 
@@ -558,12 +569,13 @@ visit(M + "beat.inquisitor", "Somebody is asking", [
         c('"No. He\'s mine to deal with."', "mine"),
         c('"Let him ask. He\'ll find nothing he can prove."', "prove"),
         c('[Evil] "Do it."', "do", alignment=("Evil", 1))),
-    mz("mine", '''"Yours." {n}She looks at you for a long breath, then shrugs.{/n} "Everything in this castle is yours, apparently. The captain. The little man with the axe. The man with the lamp. Your prisoners were yours too, until you gave them to me." {n}She leans towards you.{/n} "What will you tell him?"
-{n}You do not answer. She watches you not answer, and her smile widens.{/n} "Oh. You are going to lie to him. A priest. In his own voice, with his own god looking. I want to watch."''',
+    mz("mine", '''"Yours." {n}She shrugs.{/n} "The prisoners were yours until you gave them to me. This one you are keeping. Very well. What will you tell him?"
+
+{n}She watches your face, then smiles.{/n} "Seven cells, and the locks still whole. I want to hear how you explain that."''',
         c("Continue", "after_mine")),
-    nar("after_mine", '''{n}You see the inquisitor the next morning in the chapter room, with his notebook open on the table between you. You tell him that seven of Deskari's faithful were moved by your order to a place the Knight Commander does not name, and that the gaoler was not told, and that the book says what it says because you wanted it to.{/n}
+    nar("after_mine", '''{n}You see the inquisitor the next morning in the chapter room, with his notebook open on the table between you. You explain that seven of Deskari's faithful were moved by your order to a place the Knight Commander does not name, and that the gaoler was not told, and that the book says what it says because you wanted it to.{/n}
 {n}He writes it down. He looks at you over the notebook, and then at the window behind you, where there is a stone on the sill with one word scored into it, and he closes the notebook.{/n}
-"Then it is above my office, Knight Commander," {n}he says,{/n} "and I will send it above my office, with everything else I have found, and let my superiors decide what a Knight Commander may move without naming it." {n}He goes away. He does not come back to the cellars. The report goes up the chain the same week, and you cannot stop it, and nothing ever comes back down.{/n}''',
+"Then it is above my office, Knight Commander," {n}the inquisitor says,{/n} "and I will send it above my office, with everything else I have found, and let my superiors decide what a Knight Commander may move without naming it." {n}He goes away. He does not come back to the cellars. The report goes up the chain with the next courier. The inquisitor keeps a copy.{/n}''',
         c("Continue", flags=(M + "beat.inquisitor_lied", M + "beat.inquisitor_reported"))),
     mz("prove", '''"Nothing he can prove." {n}She repeats it, and giggles.{/n} "Yes. That is the best kind of nothing. I have a whole heap of it." {n}She slides off the desk.{/n}
 "Very well. I will leave him his lamp. But he will look at you, thief, every day, across your castle, with that face. The face of a man who knows there is a thing he cannot prove." {n}She looks back from the window.{/n} "I know that face. I have seen it on a great many knights, just before they touched my crown."''',
@@ -578,7 +590,7 @@ visit(M + "beat.putting_down", "A stronger claim", [
     nar("start", '''{n}She comes in over the sill with something on her mind. You can tell because she does not eat your supper; she walks past it, and sits down on the end of your bed, and turns something over and over in her fingers, scowling at it.{/n}
 "I did an experiment," {n}she says.{/n} "On one of your people. About claims."''',
         c('"What kind of experiment?"', "happened")),
-    mz("happened", '''"You put a ring in my heap, and now you are in my hoard. I did not take you. You gave, and it held better than anything I ever took." {n}She says it like an accusation.{/n} "So I wanted to know if it works for me. If I give a thing to one of your people, is she mine?"
+    mz("happened", '''"You left me a ring, and now you are in my hoard. I did not take you. You gave, and it held better than anything I ever took." {n}She says it like an accusation.{/n} "So I wanted to know if it works for me. If I give a thing to one of your people, is she mine?"
 "There is a woman in your lower town who sits by the well with a bowl. I made myself small and plain and old, and took one of my square coins from the drowned country, and walked up to her bowl to put it in." {n}Her hand closes.{/n} "And I could not open my hand. It was mine. I stood in front of her so long that she asked if I was ill. Then she gave me a coin out of her bowl, because she thought I was poorer than she was."''',
         c("Continue", "coin")),
     mz("coin", '''{n}She opens her fist. There is a small copper coin in it, worn nearly smooth, the kind that buys half a loaf.{/n}
@@ -586,7 +598,7 @@ visit(M + "beat.putting_down", "A stronger claim", [
         c('"Don\'t. You lost fairly. Keep the coin."', "keep"),
         c('"Then give her something so large she can never give it back."', "large"),
         c('"If you eat her, you\'ll never know whether it would have worked."', "know")),
-    mz("keep", '''"Lost." {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} "Yes. I lost. To a woman with a bowl." {n}She puts the copper in the pocket of the gown that is not there, and it vanishes.{/n}
+    mz("keep", '''"Lost." {n}She looks at you as if you had struck her, and then, slowly, she laughs, and it is not a pleasant sound.{/n} "Yes. I lost. To a woman with a bowl." {n}She closes her hand around the copper and presses it to her teeth.{/n}
 "I will keep it. Not on the heap; the heap is for things I chose. I will wear it, where I can bite it, and every time I bite it I will remember that something in this city beat me with half a loaf." {n}She stands.{/n} "I am going to sit on the roof across from her well for a year, thief. She will be the safest beggar in the world, and she will never know why she cannot sleep."''',
         c("Continue", flags=(M + "beat.put_down", M + "beat.copper_kept"))),
     mz("large", '''{n}She goes very still. Then her eyes light up like two coals blown on.{/n}
