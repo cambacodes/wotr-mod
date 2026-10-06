@@ -150240,8 +150240,10 @@
       "Flags": [
         "soana.committed",
         "soana.late_campaign_kept",
+        "soana.outcome.route_open",
         "soana.payoff.ordinary",
-        "soana.present_now"
+        "soana.present_now",
+        "soana.round2.current_love"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.ending_kept_life"
@@ -150255,7 +150257,8 @@
       "Flags": [
         "soana.late_campaign_kept",
         "soana.late_open",
-        "soana.present_now"
+        "soana.present_now",
+        "soana.round2.current_courtship"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.ending_chosen_visits"
@@ -153257,6 +153260,34 @@
       "ExpectedCandidate": "nurah.trickster.epilogue.unwritten"
     },
     {
+      "Id": "page/nurah.trickster.epilogue.owned_line",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "nurah.closed",
+        "nurah.trickster.cost.owned_line",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nurah.trickster.epilogue.owned_line"
+    },
+    {
+      "Id": "page/nurah.trickster.epilogue.last_word",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "nurah.closed",
+        "nurah.trickster.cost.last_word",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nurah.trickster.epilogue.last_word"
+    },
+    {
       "Id": "page/nurah.lastcall.page",
       "Target": "",
       "Dialog": "",
@@ -153506,8 +153537,9 @@
       "Chapter": 6,
       "Flags": [
         "soana.present_now",
-        "soana.trickster.cost.knot_bearer",
-        "soana.trickster.returned"
+        "soana.round2.current_love",
+        "soana.round2.returned_now",
+        "soana.trickster.cost.knot_bearer"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.trickster.epilogue.knot"
@@ -153522,6 +153554,7 @@
         "soana.committed",
         "soana.payoff.ordinary",
         "soana.present_now",
+        "soana.round2.current_love",
         "soana.trickster.luck_kept"
       ],
       "NativeEligible": [],
@@ -153536,9 +153569,8 @@
       "Flags": [
         "soana.payoff.partner",
         "soana.present_now",
-        "soana.trickster.late_committed",
-        "soana.trickster.returned",
-        "trickster.now"
+        "soana.round2.returned_now",
+        "soana.trickster.late_committed"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.trickster.epilogue.commit"
@@ -153595,7 +153627,7 @@
       "Chapter": 6,
       "Flags": [
         "soana.present_now",
-        "soana.trickster.returned",
+        "soana.round2.returned_now",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -153624,7 +153656,7 @@
       "Flags": [
         "soana.closed",
         "soana.present_now",
-        "soana.trickster.returned",
+        "soana.round2.returned_now",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -153639,7 +153671,9 @@
       "Flags": [
         "soana.committed",
         "soana.present_now",
-        "soana.trickster.returned",
+        "soana.round2.current_love",
+        "soana.round2.returned_now",
+        "soana.trickster.accounting_invited",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -153668,11 +153702,24 @@
       "Flags": [
         "sacrifice",
         "soana.present_now",
-        "soana.trickster.returned",
+        "soana.round2.returned_now",
         "trickster.ever"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.trickster.epilogue.slack"
+    },
+    {
+      "Id": "page/soana.trickster.epilogue.living_late",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "soana.partner.agreed",
+        "soana.round2.postwar_ready"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "soana.trickster.epilogue.living_late"
     },
     {
       "Id": "page/soana.lastcall.page",
@@ -153945,6 +153992,7 @@
         "seelah.payoff.partner",
         "seelah.present_now",
         "seelah.romance",
+        "seelah.trickster.custody_clear",
         "seelah.trickster.late_committed",
         "trickster.ever",
         "trickster.now"
@@ -155943,6 +155991,21 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "shamira.trickster.epilogue.mourned"
+    },
+    {
+      "Id": "page/shamira.trickster.epilogue.invited",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "shamira.present_now",
+        "shamira.trickster.embodied",
+        "shamira.trickster.game_proposed",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "shamira.trickster.epilogue.invited"
     },
     {
       "Id": "page/shamira.lastcall.page",
