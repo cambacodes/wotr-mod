@@ -1,0 +1,47 @@
+{
+  "slot_id": "jerribeth.trickster.epilogue.commit.explicit.2",
+  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
+  "scene": "First spring after Threshold, earned returned tenant and chosen late mental evening. The real table is left; the shared room is imagined. A host, statue or locust vessel does not become a new lover body. Existing earlier intimacy changes this to a return. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
+  "last_line": "N: The real breakfast table stands empty until noon.",
+  "speakers": {
+    "J": "Jerribeth",
+    "N": "Narrator"
+  },
+  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 8,
+  "max_lines": 14,
+  "facts": [
+    {
+      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
+      "guid": "8a632a5249b3c2541a1381111cae9e37",
+      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
+    },
+    {
+      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
+      "guid": "bf1542830cfa01d4c9db04546681084d",
+      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
+    },
+    {
+      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
+      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
+    }
+  ],
+  "required_beats": [
+    "Late acceptance, private evening and tenant survival are separate choices.",
+    "No body-materialization, no years claim, no physical marks or transported Marhevok.",
+    "Existing rent and late forfeit have separate receipts and collection owners.",
+    "Conclude into night_mind_after without changing the legacy collected/torn exits or setting epilogue flags."
+  ],
+  "default_text": "{n}The room she makes closes around you both. The real breakfast table stands empty until noon.{/n}",
+  "placement": {
+    "scene": "jerribeth.trickster.epilogue.commit",
+    "after_node": "night_mind",
+    "resume_node": "night_mind_after"
+  },
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+}

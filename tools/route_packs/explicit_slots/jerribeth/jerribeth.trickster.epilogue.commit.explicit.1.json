@@ -1,0 +1,47 @@
+{
+  "slot_id": "jerribeth.trickster.epilogue.commit.explicit.1",
+  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
+  "scene": "First spring after Threshold, living-body branch after the late offer is answered and the night is separately chosen. Breakfast remains uncleared. If an earlier intimate evening was completed, this is a return, not another first-night reward. The chapter is the route's postwar epilogue. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
+  "last_line": "N: The uncleared breakfast table waits outside the bedroom door.",
+  "speakers": {
+    "J": "Jerribeth",
+    "N": "Narrator"
+  },
+  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 8,
+  "max_lines": 14,
+  "facts": [
+    {
+      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
+      "guid": "8a632a5249b3c2541a1381111cae9e37",
+      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
+    },
+    {
+      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
+      "guid": "bf1542830cfa01d4c9db04546681084d",
+      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
+    },
+    {
+      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
+      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
+    }
+  ],
+  "required_beats": [
+    "Pay any still-unpaid toast account before signing, outside the intimate slot.",
+    "Preserve her own chosen appetite, current partner arrangement and authored form without inventing native physiology.",
+    "A declined night/unsigned future does not traverse this slot.",
+    "Return to night_after: marks and forfeit, no living-body rent receipt; no epilogue persistent flags."
+  ],
+  "default_text": "{n}She pulls you away from the uncleared table. Behind the bedroom door, her wings scrape once against the frame.{/n}",
+  "placement": {
+    "scene": "jerribeth.trickster.epilogue.commit",
+    "after_node": "night",
+    "resume_node": "night_after"
+  },
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+}

@@ -1,0 +1,47 @@
+{
+  "slot_id": "jerribeth.trickster.visit.explicit.2",
+  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
+  "scene": "Chapter 5 actual Drezen visit, the alternative approach where the Commander keeps hands and draws her closer. Preserve the already-authored chitin fragment and her pleased irritation. Non-graphic staging ends before the private continuation. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
+  "last_line": "N: The sliver of chitin stays in your hand as the lamp disappears.",
+  "speakers": {
+    "J": "Jerribeth",
+    "N": "Narrator"
+  },
+  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 8,
+  "max_lines": 14,
+  "facts": [
+    {
+      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
+      "guid": "8a632a5249b3c2541a1381111cae9e37",
+      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
+    },
+    {
+      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
+      "guid": "bf1542830cfa01d4c9db04546681084d",
+      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
+    },
+    {
+      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
+      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
+    }
+  ],
+  "required_beats": [
+    "Her chosen response differs from the offered-wrists version.",
+    "The fragment is an existing authored memento, not an invented canon organ or new fee.",
+    "Afterward offers keep/return with the already-stated obligation; no wrist-mark aftermath here.",
+    "Keep observer distress outside this continuation and never frame captivity as consent."
+  ],
+  "default_text": "{n}The sliver of chitin stays in your hand. She laughs against your throat, and her folded wings hide the lamp.{/n}",
+  "placement": {
+    "scene": "jerribeth.trickster.visit",
+    "after_node": "threshold_free",
+    "resume_node": "morning_free"
+  },
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+}
