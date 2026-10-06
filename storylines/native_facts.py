@@ -317,12 +317,14 @@ def inventory_consumers(payload):
             scene['Requires'] = ['minachiv.reunion_history' if f == 'chivarro.searching' else f for f in scene['Requires']]
 
     scene = scenes['arueshalae.treatment.nightmare']
-    start = scene['Nodes'][0]
-    start['Text'] = '{n}She has woken you with a cry. When you get to her she is sitting bolt upright on her bedroll with her wings half open and her nails dug into her own arms.{/n}'
     history_variant(scene, 'dream', key('arueshalae.first_dream'),
-        '"I remembered them. The priestess. The sergeant. Everyone." {n}She is shaking.{/n} "All those faces. I shut my eyes and there they were, waiting for me to feed. I could not make them go away."')
+        next(n['Text'] for n in scene['Nodes'] if n['Id'] == 'dream').replace(
+            'I was thinking about my first dream. How proud I was of it.',
+            'I was thinking about the priestess.'))
     history_variant(scene, 'price', key('arueshalae.first_dream'),
-        '{n}She lowers her hands and looks at you.{/n} "You are here." {n}She takes a fistful of your shirt and does not let go.{/n} "Stay till it is light. Not every night. This one."')
+        next(n['Text'] for n in scene['Nodes'] if n['Id'] == 'price').replace(
+            "I used to pray for a dream. I've had one. But when I close my eyes, I still see her.",
+            'When I close my eyes, I still see her.'))
 
     scene = scenes['herrax.house.the_glowworm']
     text = next(n['Text'] for n in scene['Nodes'] if n['Id'] == 'joke')

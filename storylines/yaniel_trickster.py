@@ -14,7 +14,8 @@ Canon (TrueYaniel_MidnightFane_dialog 009a448c, Chapter 3):
 - the kill is the player's own choice (Answer_0031, Answer_0009, Answer_7; Cue_0013 "the light departs them forever",
   Yaniel_Killed d6579be8). It stands (coordinator ruling: canon death stays only where the player chose it), and
   `yaniel.killed.latched` closes every scene here. Never freeing her is an entry condition (matrix user_decision);
-- Radiance sings at Deskari's voice at Iz if a form she remade is in the pack (DeskariFight/Cue_0036 221a9592).
+- At Iz, DeskariFight/Cue_0036 221a9592 checks +4 Holy Avenger (0ff011d6) OR +4 Bane Living (27bab9c6),
+  in the party, not the hub chest. It does not check +6 Holy Avenger (cf5c1a50).
 
 Device (a burden swap, no mythic power): she hands the sword back; the Commander closes her fingers on the hilt again and,
 with the other hand, works the pin out of the cut manacle still on her wrist and keeps it. The argument is Diplomacy DC 20,
@@ -83,7 +84,7 @@ SOSIEL_PROMISED = "yaniel.sosiel_promised"         # FakeYaniel_First/Cue_0016: 
 SWAPPED = Y + "swapped"               # the Commander holds her shackle (every device outcome)
 CARRIES = Y + "carries"               # she keeps Radiance; the Commander's form was removed
 HANDED_LATE = Y + "handed_after_iz"   # the late swap on the walls was made after Iz: she never carried it there
-HOLY = Y + "carries_holy"             # she keeps the Holy Avenger her touch made (Cue_0017): only it can sing at Iz
+HOLY = Y + "carries_holy"             # custody of a Holy Avenger; not a reader of the native Iz song
 JUDGES = Y + "judges"                 # she would not take it: the Commander carries it, under oath
 OATH = Y + "cost.oath_deskari"        # the oath sworn on Radiance: Deskari's heart (Iz, or the Threshold rift after Iz)
 LATE = Y + "cost.late"                # the swap was made on the walls of Drezen in Chapter 5, not in the Fane
@@ -201,7 +202,7 @@ def removal(text, flags, forms, fallback=None, requires=(), forbids=(), **kw):
     and each gates on its own InventoryItems key; the later siblings forbid the earlier forms."""
     out = []
     for i, form in enumerate(forms):
-        extra = (HOLY,) if form in (HA4, HA6) else ()   # only the forms her touch remade sing at Deskari's voice
+        extra = (HOLY,) if form in (HA4, HA6) else ()   # Holy Avenger custody; the native Iz song is read separately by SANG
         out.append(c(text, flags=tuple(flags) + extra, requires=(form,) + tuple(requires), forbids=tuple(forms[:i]) + tuple(forbids),
                      remove_item=ITEMS[form], **kw))
     if fallback:
