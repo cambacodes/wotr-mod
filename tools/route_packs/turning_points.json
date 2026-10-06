@@ -1,0 +1,34 @@
+{
+  "nurah": {
+    "device_class": "canon_lowest_point",
+    "setting": "Drezen gaol archive walk and plank proof desk",
+    "payoff_shape": "captive author rejects ownership, claims her reader and keeps an uncensored byline",
+    "canon_hooks": [
+      {
+        "guid": "ea5213ee84e1f534e87eb2f193811c6c",
+        "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0002.jbp",
+        "key": "f2c3b758-0461-4e1f-9794-8e6e1e90ce57",
+        "native_excerpt": "{n}Nurah lies on the bunk, staring at the ceiling lazily.{/n} \"So you've remembered that pawn you put back in the box. Will you leave me here to rot, or return me to the board?\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "f06a0653bf874465aafb7a849642d99d",
+        "path": "World/Dialogs/Epilogues/Cue_15.jbp",
+        "key": "4c5c3a87-468f-470e-adc5-64dbf6ff3eda",
+        "native_excerpt": "For a time, the whereabouts of Nurah Dendiwhar were completely {d|c2 nurah trickster}unknown{/d}, but then the River Kingdoms saw the publication of her shocking book — \"To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist\". The book was banned in several countries, and a bounty was placed on Nurah's head — but the elusive writer always escaped the clutches of the inquisitors.",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "255504a2d643baa468d17bcc0bdee9a3",
+        "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0001.jbp",
+        "key": "6903fbd4-8ccd-4dcb-a52c-b3cf4a7c65b5",
+        "native_excerpt": "{n}Nurah bares her teeth like a cornered rat.{/n} \"Come to gloat?\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}
