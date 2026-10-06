@@ -87,11 +87,9 @@ hub(TEACH, "The one trick", 5, '"Teach me how you do it."', [
     a("start", '''"The ward. The scroll. The way the chaplain reads it over you, and the cold simply doesn't come." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
 "Teach me how it's done. Could I learn the words? Could I arrange it myself, for somebody else? Then I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench." {n}Her voice wavers.{/n} "Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
         c("Continue", "try")),
-    nar("try", '''{n}You try. You put a spent scroll case in her hands and show her how the words run, and she follows them with one finger, line by line, the way she follows a stranger's face in the market. Then you tell her the plain thing the shrine's chaplain told you, the thing you should have told her first: the ward goes on the one who is touched, not on the one who touches. She could have every scroll in Drezen read over herself, and her hand would take exactly what it always took.{/n}
-{n}She sits with that for a long time, turning the empty case over and over.{/n}''',
+    nar("try", '{n}You lay a spent scroll case beside the handbook. She points to the words protecting the person touched, then to the price in the margin.{/n} "Yes. Someone else wears it. I\'ve watched it read over you often enough. But could I bring the scroll? Ask the reader myself?"\n{n}She turns the empty case over.{/n} "I\'d still need a fresh one for every person. And someone to read it."',
         c("Continue", "cant")),
-    a("cant", '''"So reading it over myself wouldn't help. I'd have to ward someone else, every time, and pay for every hand." {n}She laughs, and it is not a good laugh.{/n}
-"For one moment I thought I could take the baker's girl by the hand, and walk out of here with nobody holding mine. Instead I'd have to ask her father to let a demon have a scroll read over his daughter, at the price of a horse, so that I could show her how to fold dough."''',
+    a("cant", '"I thought I could learn to arrange it. I still can." {n}She shuts the case.{/n} "I\'d have to ask the baker whether he\'ll let the chaplain ward his daughter, and buy a scroll before I ask. It\'s a great deal to spend on folding dough. I want to do it anyway."',
         c('"Good. A ward you could carry for anyone, you\'d spend on the baker\'s girl."', "need", flags=(TEACH,)),
         c('"Then I\'ll hold the hands you can\'t. You point, I hold."', "point", flags=(TEACH,)),
         c('[Take one of your own scrolls out of the case and put it in her hand] "Then buy it. This one\'s yours. Spend it on whoever you like."',
@@ -131,8 +129,7 @@ hub(SERMON, "On temptation", 3, '"You\'re preaching on Sunday?"', [
 # --- After the yes: the second chair ------------------------------------------------------------------------------------
 
 hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
-    a("start", '''{n}She has. There is a chair in her room by the chapel that was not there yesterday: a plain Drezen kitchen chair, ash wood, with a rush seat, standing across the little table from her own. She is standing behind it with both hands on its back, as if introducing it.{/n}
-"You know I grew up in Lady Vellexia's house. All those chairs at her table, and nobody eating." {n}She pats the chair.{/n} "So I bought one, from the joiner on Coppersmith Lane, with my own coin, for one particular person to sit in. It's for you. It's yours. Nobody else sits in it unless you bring them."''',
+    a("start", '{n}A plain ash chair stands across the small table from her own. She grips its back as patrol boots clatter past the chapel window.{/n} "In Lady Vellexia\'s house a place at the table was dangerous. I lived there. I helped make it dangerous." {n}She pats the rush seat.{/n} "I bought this with my own coin. For you. Sit down before I wish I hadn\'t told you."',
         c("Continue", "why")),
     a("why", '''"In the Upper City a chair at the table meant you might be dinner." {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} "Here it means you're expected. I bought it for you, and I'm already sorry I showed it to you." {n}She lets go of it.{/n} "Sit down. Let's see if it works."''',
         c("[Sit in the chair.]", "sit", flags=(CHAIR,)),
@@ -290,4 +287,6 @@ for _scene in SCENES:
 
 
 def integrate(payload):
-    """Scenes only; keys bind on demand through trickster_world."""
+    """Scenes and route-local round-2 variants; bindings remain read-only."""
+    from storylines.arueshalae_round2 import integrate as polish
+    polish(payload)

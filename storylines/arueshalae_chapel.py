@@ -148,8 +148,7 @@ tavern(DAYBOOK, "The daybook", '"You kept something of hers?"', [
     a("start", '''"Hers?" {n}She laughs.{/n} "Mine. I'm not someone else, darling. I'm the same succubus with the same memories. I just stopped pretending I didn't like the taste." {n}She reaches into her bodice and takes out a small burnt thing: the charred corner of a clerk's daybook, the kind bought off a Drezen stationer.{/n}''',
         c("Continue", "book", requires=("arueshalae.treatment.rx_watch",)),
         c("Continue", "feather", forbids=("arueshalae.treatment.rx_watch",))),
-    a("book", '''"'Watch people eat. Three times a day.' Your prescription. I burned it the night I left. I burned it page by page, in the Worldwound, and I read every page before it went in." {n}She turns the charred corner over.{/n}
-"And I kept this bit. It says 'the cat'. I don't know why I kept it. There was a cat. It scratched me." {n}Her face does something complicated.{/n} "Don't. Don't look at me like that, like a doctor. I'm not your patient any more. I'm cured."''',
+    a("book", '"\'Watch people eat. Three times a day.\' Your prescription. I burned it the night I left. I burned it page by page, in the Worldwound, and I read every page before it went in." {n}She turns the charred corner over.{/n}\n"And I kept this bit. It says \'the cat\'. I don\'t know why I kept it. There was a cat. It slept on my hand." {n}Her face does something complicated.{/n} "Don\'t. Don\'t look at me like that, like a doctor. I\'m not your patient any more. I\'m cured."',
         c("Continue", "end")),
     a("feather", '''"No, you're right, it's not a book. It's nothing. A page of prayers to a goddess who lied to me." {n}She holds it to the candle, and does not quite let it catch.{/n}
 "I read them sometimes. To laugh. 'And what do you dream of?' She asked me that. As if a demon dreams. As if I'd ever want anything as soft as a dream when I can have what I want, when I want it."''',

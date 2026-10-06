@@ -1,34 +1,66 @@
 {
-  "aranka": {
-    "device_class": "she_pursues",
-    "setting": "Drezen market busking stage; supply-wagon yard only if the market host fails",
-    "payoff_shape": "solo answer to her sung verse, roof fine she pays, then her chosen touring season",
-    "canon_hooks": [
-      {
-        "guid": "f21279d12e1c70449bd037e75d7fd4a7",
-        "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
-        "key": "a4a8ff32-09b8-4296-88c5-a21126d9146b",
-        "native_excerpt": "\"Our gift...\" {n}Aranka cuts in,{/n} \"...is a song. We call it 'Starward Gaze,' and it came to us from the true servants of Desna from her domain in {g|Elysium}Elysium{/g}. This song can... gift a soul with renewed vitality. Just listen...\" {n}She sings the melody.{/n}",
-        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
-      },
-      {
-        "guid": "2c84efa67859baa4bba26dcc43d1149b",
-        "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0005.jbp",
-        "key": "3a58f70e-ff6d-45bf-a67b-7b1507fb1bdb",
-        "native_excerpt": "\"Wallflower, I've told you so many times, you have an amazing voice! So deep, so striking... I'd have you trained up in a snap if only you wanted to sing!\"",
-        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
-      },
-      {
-        "guid": "13cbf1a6bcc044b49918909bdf2382f0",
-        "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0004.jbp",
-        "key": "2fd497b9-d3d2-43e1-99d1-64ed5efa06c2",
-        "native_excerpt": "{n}All three Desnan adepts are busy. Ilkes is praying, Aranka is practicing a new song, and Thall is immersed in his scrolls, stealing the occasional glance at Aranka.{/n}",
-        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
-      }
-    ],
-    "chapter": [
-      3,
-      5
-    ]
-  }
+ "aranka": {
+  "device_class": "she_pursues",
+  "setting": "Drezen market busking stage; supply-wagon yard only if the market host fails",
+  "payoff_shape": "solo answer to her sung verse, roof fine she pays, then her chosen touring season",
+  "canon_hooks": [
+   {
+    "guid": "f21279d12e1c70449bd037e75d7fd4a7",
+    "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
+    "key": "a4a8ff32-09b8-4296-88c5-a21126d9146b",
+    "native_excerpt": "\"Our gift...\" {n}Aranka cuts in,{/n} \"...is a song. We call it 'Starward Gaze,' and it came to us from the true servants of Desna from her domain in {g|Elysium}Elysium{/g}. This song can... gift a soul with renewed vitality. Just listen...\" {n}She sings the melody.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "2c84efa67859baa4bba26dcc43d1149b",
+    "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0005.jbp",
+    "key": "3a58f70e-ff6d-45bf-a67b-7b1507fb1bdb",
+    "native_excerpt": "\"Wallflower, I've told you so many times, you have an amazing voice! So deep, so striking... I'd have you trained up in a snap if only you wanted to sing!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "13cbf1a6bcc044b49918909bdf2382f0",
+    "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0004.jbp",
+    "key": "2fd497b9-d3d2-43e1-99d1-64ed5efa06c2",
+    "native_excerpt": "{n}All three Desnan adepts are busy. Ilkes is praying, Aranka is practicing a new song, and Thall is immersed in his scrolls, stealing the occasional glance at Aranka.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "arueshalae": {
+  "device_class": "act_before_confession",
+  "setting": "Drezen citadel wall after the no-hands interval, then roofless bell tower",
+  "payoff_shape": "chosen safe closeness precedes a future question; she retains her cottage and daybook",
+  "canon_hooks": [
+   {
+    "guid": "dfe6239854ce1794597d93af86986c53",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Arueshalae/Cue_0094.jbp",
+    "key": "219237f7-2dde-43a4-a57c-22a980353940",
+    "native_excerpt": "{n}Arueshalae's voice grows soft, and you barely hear her words.{/n} \"I should like to kiss someone again... But only as a mortal. Not as a demon.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "0cb8bb696bff85a42ab5345280a9fe1c",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Arueshalae/Cue_0083.jbp",
+    "key": "dd6a18d0-4b87-418b-83cc-58763193ed2c",
+    "native_excerpt": "\"Not just the kiss. Any caress, of any kind, sucks the life from mortals. And there's nothing I can do about it.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "8ad7c2ba0e060e545b12269cc5ced777",
+    "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q3/BackToReality/Cue_0025.jbp",
+    "key": "876f888a-9b7d-4cc9-af6a-586c841632a8",
+    "native_excerpt": "\"Freedom. Finally, after all these years... I can feel it — the Abyss has released me from its clutches. I have solved Desna's riddle and have found my dream. I have found you. I am not a monster anymore!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ }
 }

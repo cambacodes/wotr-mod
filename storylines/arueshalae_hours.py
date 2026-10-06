@@ -56,30 +56,24 @@ def tavern(id, title, entry, nodes, requires, forbids=(), delay=0):
 # --- The bakery on Tanner's Row (Drezen: Chapters 3 and 5) ---------------------------------------------------
 
 hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
-    a("start", '''"I've been at the bakery on Tanner's Row. Since before dawn." {n}She has flour on her cheek and in her hair and on one wing, and she has no idea.{/n}
-"I told you it was on my list. The smell. Not the bread, the smell. So I went and stood outside in the dark, where the ovens vent into the alley, morning after morning. And this morning the baker's daughter came out with the ash bucket and saw me standing there, and asked if I was hungry."''',
+    a("start", '"I\'ve been at the bakery on Tanner\'s Row. Since before dawn." {n}There is flour on her cheek and one wing.{/n} "I like the smell when they open the ovens. So I stood outside. This morning the baker\'s daughter found me beside the ash bucket and asked if I was hungry."',
         c("Continue", "hungry")),
-    a("hungry", '''"Imagine it. A girl of twelve, with an ash bucket, asking a succubus if she's hungry." {n}She laughs, shakily.{/n} "I said yes, because it was true, and because I have stopped lying about that one thing. And she said, 'Well, come in, then,' and she took me into the bakery and gave me a job."
-"I knead. I'm very good at it. It's all in the wrists, and my wrists are very strong, and I never get tired. The baker says I'm the best kneader he's had in twenty years. He pays me in rolls. I give them to the refugees."''',
+    a("hungry", '"I said yes. She took me inside, and her father put a trough in front of me. I started reciting the travellers\' blessing." {n}She scowls at the flour on her sleeve.{/n} "He said, \'Bless it after you\'ve kneaded it. The second company wants its bread before muster.\' I thought he wanted something from a demon. He wanted someone with strong wrists."\n"I kneaded. He paid me in rolls. I gave them to the refugees. Then I went back to finish the next batch."',
         c("Continue", "girl")),
-    a("girl", '''{n}Her face changes.{/n} "The daughter. She stands next to me at the trough. She talks the whole time, about her friends and the siege and a boy who threw a stone at her. She leans on me when she's tired. She put her flour-covered hand on my arm yesterday to show me how to fold the dough."
-"And I felt it. Just a little. The edge of her. And I stepped away so fast I knocked the trough over, and she laughed and called me clumsy, and I let her." {n}Her hands are fists.{/n} "I can't go back, can I? I can't stand next to a child for hours knowing that. What if one day I don't step away?"''',
+    a("girl", '"His daughter helped. She\'s twelve. She talked about the siege while we worked, and put her flour-covered hand on my arm to show me a fold."\n{n}Her hands close into fists.{/n} "I felt the edge of her. I stepped away so fast I knocked the trough over. She called me clumsy, and I let her. I can\'t work beside her like that. What if next time I don\'t move?"',
         c('"You stepped away. That\'s the whole treatment. Go back."', "back", flags=(BAKERY,)),
         c('"Go back, but wear gloves, and knead at the other end of the trough."', "gloves", flags=(BAKERY,)),
         c('"You\'re right. Leave it. Some things you can only want from a distance."', "leave", flags=(BAKERY,))),
-    a("back", '''"That's the whole treatment." {n}She repeats it, the way she repeats everything you say that she means to keep.{/n} {n}She wipes her face, spreading the flour further.{/n} "I'll go back. With gloves, this time. I promised her I'd help with the trough. Tomorrow before dawn. If I knock the trough over every morning, the baker's going to stop paying me in rolls."''', c()),
-    a("gloves", '''"Gloves and the other end of the trough." {n}She nods, too quickly, relieved.{/n} "That's sensible. That's what a real doctor would say. You keep surprising me by being one." {n}She hesitates.{/n} "She'll ask why. She asks why about everything."
-"Tell her you're allergic to children," {n}you suggest. She laughs so hard she has to sit down.{/n}''', c()),
-    a("leave", '''{n}She is quiet for a long time.{/n} "Some things you can only want from a distance." {n}She nods slowly.{/n} "Yes. I know that one. I've known it longer than anything." {n}She brushes flour from her sleeve, and looks at it, and doesn't brush any more.{/n} "I'll still go and stand in the alley. For the smell. Nobody can take a smell."''', c()),
+    a("back", '"Go back." {n}She wipes her face and spreads the flour.{/n} "Yes. But at the other end of the trough. Gloves for the work, and no hands on me. I\'ll tell her father myself. He can decide whether he still wants my help."', c()),
+    a("gloves", '"And I\'ll tell her father not to let her lean on me." {n}She nods.{/n} "She\'ll ask why. She asks why about everything. I\'ll have to answer. Flour isn\'t going to stop what my skin does."', c()),
+    a("leave", '{n}She brushes flour off her wing.{/n} "Then I\'ll tell them I won\'t be back. They need bread before the troops march. I won\'t leave them expecting me." {n}Her voice drops.{/n} "I can still stand in the alley. For the smell."', c()),
 ], (INTAKE, RX_WANT), delay=24, chapters=(3, 5))
 
 
 # --- The dose in the Abyss (Chapter 4) ---------------------------------------------------------------------
 
 hub(ABYSS_TOUCH, "The dose, adjusted", 5, '"You\'re thinking about the Abyss again."', [
-    a("start", '''{n}Back in Drezen, she brings it up without warning, sitting on the citadel steps with her wings drawn in, and the night comes back whole as she tells it: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}
-"Everything was worse there. The air tasted of it. Every scream from the dark tasted of it. It was like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}
-"I never asked for your hand out there. Not once, from the crossing to the day we came back. I didn't think I could stop, there, if I started. And I've been home a week, and I still don't know whether I left it behind or carried it back with me in my skin."''',
+    a("start", '{n}Back in Drezen, she brings it up without warning, sitting on the citadel steps with her wings drawn in, and the night comes back whole as she tells it: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}\n"Everything was worse there. The air tasted of it. Every scream from the dark tasted of it. It was like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}\n"I never asked for your hand out there. Not once, from the crossing to the day we came back. I didn\'t think I could stop, there, if I started. And since we came back, and I still don\'t know whether I left it behind or carried it back with me in my skin."',
         c('[Hold out your hand] "Doctor\'s orders. The dose is adjusted for altitude."', "take", requires=(TOUCHED,), forbids=(TOUCHED,)),   # retired
         c('"Then don\'t ask. I\'ll sit here instead."', "sit", flags=(ABYSS_TOUCH,)),
         c('[Spend a Scroll of Death Ward: send a page for the chaplain, and hold out your hand once he has read it over you] "Doctor\'s orders. The dose is adjusted for altitude."',

@@ -378,10 +378,10 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
     a("fast", '''"Seven days. No hands. I marked them off on the wall of the well-house with a nail, so I couldn't cheat." {n}She smiles, shakily.{/n} "And on the seventh day I was still glad to see you. I was gladder. I was so glad I went and stood in the well-house so nobody would see my face. So. It's you. It isn't only the hunger. It's you."''',
         c("Continue", "list", requires=(FORTY,)),
         c("Continue", "risk", forbids=(FORTY,))),
-    a("no_fast", '''"You were right. I hate that you were right." {n}She keeps her hands behind her back.{/n} "You never let me take more than you meant. Not once. I watched you count the minutes, and call the seventh out loud before I could pretend I'd lost count, and I hated hearing it. I needed to hear it."''',
+    a("no_fast", '"At the procedure I let go at six. I remember being sorry there was still a minute left." {n}She keeps her hands behind her back.{/n} "You told me we\'d keep going. I still want to. But if I ever start taking more, you must tell me. That part hasn\'t changed."',
         c("Continue", "list", requires=(FORTY,)),
         c("Continue", "risk", forbids=(FORTY,))),
-    a("her_call", '''"You have my name. The old one. And you've never said it." {n}She keeps her hands behind her back.{/n} "There was a night this week, near the end of a ward, when I wanted to hold on past the seventh minute, and you saw me want it. I felt you draw breath to say it, and you didn't. You said 'Arueshalae' instead, and I let go with a breath to spare, because you'd chosen the name I chose." {n}Her mouth works.{/n} "Every demon in the Upper City would have used that leash the first night. You've held it since I gave it to you, and never once pulled."''',
+    a("her_call", '"You have my old name. I gave it to you myself." {n}She works a loose thread out of her cuff.{/n} "I still dread needing to hear it. And I still want you here. I can\'t promise there will never be a bad night. Only that I\'ll listen when you call me back. Keep it for that. Nothing else."',
         c("Continue", "list", requires=(FORTY,)),
         c("Continue", "risk", forbids=(FORTY,))),
     a("list", '''"You wanted to know what number forty was, on the list. The one I kept back." {n}She doesn't take it out. She knows it by heart.{/n}
@@ -406,7 +406,7 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
     Areas=[DREZEN_AREA])   # the fast's seven days; the citadel wall
 
 session(T + "prescription_again", "The next one's yours", 5, '"Is the offer still open?"', [
-    nar("start", '''{n}You find her where she said the next one would be yours to find her: on the smithy roof at sundown, with the cat asleep against her hip and her wings folded round both of them against the wind. She watches you climb up the woodpile and over the eaves with frank professional interest, and does not help.{/n}''',
+    nar("start", "{n}You find her on the smithy roof at sundown, watching Drezen's sentries light their lamps. A cat sleeps against her hip. She watches you climb over the eaves and shifts her wings to leave room beside her.{/n}",
         c("Continue", "roof")),
     a("roof", '''"You climb like a bear." {n}She makes room on the ridge. The cat does not.{/n} "I've been sitting here every evening since the wall, you know. I told myself it was for the cat."
 {n}She waits. She has decided, you realise, not to make it easy, and not to make it hard either. She has simply left the space open, the way you would leave a door ajar.{/n}''',
@@ -439,7 +439,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
         c("Continue", "stars", forbids=(ELYSIUM,))),
     a("flowers", '''{n}She turns her bare hands over in the starlight.{/n} "Since the Abyss let go of me, my touch doesn't take. I know that. I keep expecting to feel you grow cold anyway." {n}She laughs unsteadily.{/n} "I used to know exactly what my hands would do. Now I don't know where to put them."''',
         c("Continue", "undress")),
-    a("stars", '''"I know how to make a mortal want me. I learned it in the Upper City, and I hate remembering how." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
+    a("stars", '"I used to bring people somewhere they couldn\'t leave." {n}She glances at the stair opening, then back at you.{/n} "I come here alone. Tonight I wanted you to see it. I wanted you here with me." {n}Her fingers catch your cuff.{/n} "I\'m wasting the minutes talking. Kiss me."',
         c("Continue", "cure", requires=(CURE,), forbids=(CURE,)),   # retired 2026-10-01 (the lore protects nothing)
         c("Continue", "uncured", requires=(CURE, CURED), forbids=(CURE, CURED)),   # retired 2026-10-01 (no unwarded night)
         c("[Take the scroll case out of your coat and break the seal]", "cure", requires=(WARD_HELD, CURE), forbids=(CURE,),
@@ -449,16 +449,12 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
 {n}Her first kiss is careful, almost a question, and nothing comes out of you with it. Nothing at all. She makes a sound against your mouth that you have never heard from her, half a laugh and half something with no name in Taldane, and kisses you again, and this time it is not a question.{/n}''',
         c("Continue", "undress")),
     nar("uncured", RETIRED_TEXT, c("Continue", "undress")),   # retired with its answer (2026-10-01)
-    nar("undress", '''{n}She knows how to undress a person. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, and whatever she remembers in that sound makes her stop. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
-{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long, unsteady breath.{/n}
-"I want you." {n}It comes out rough, and far too loud for a bell tower, and she does not take it back.{/n} "Not the way I was taught to want. Mine. Look at me while I do this."''',
+    nar("undress", '{n}Her fingers slip under your collar. She opens the buckles with quick, certain hands, then fumbles your belt and laughs against your mouth. Her wings curve around you against the wind off the Worldwound.{/n}\n{n}She spreads her cloak on the bell-floor and draws you down. When you answer her kiss she grips your shoulder harder. Her hair falls across your face; she pushes it aside impatiently and settles over you, one hand braced beside your head.{/n} "I want you." {n}It comes out rough, loud enough to carry down the stair. She stays close, watching your face.{/n} "Look at me. Here. With you."',
         c("Continue", "morning_after", requires=(ELYSIUM,)),
         c("Continue", "morning_after_paid", forbids=(ELYSIUM,))),
-    a("morning_after", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
-"Still beating." {n}She sounds amazed.{/n} "Still going. I'm lying here, and you're still here, and nobody is any less than they were." {n}She presses her ear closer.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her."''',
+    a("morning_after", '{n}Later she lies with her ear against your chest. The stars turn above the broken tower, and a watchman\'s lantern moves along the wall below.{/n} "Still beating." {n}She lifts her head and kisses you again.{/n} "I can do that whenever I want now. I keep forgetting. Stay here while I remember."',
         c("[Let her listen.]", flags=(NIGHT,))),
-    a("morning_after_paid", '''{n}Much later, she lies with her ear to your chest through a fold of her own cloak, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
-"Still beating." {n}You feel her count it.{/n} "I counted the other thing too, the whole time. The minutes. When the last one went I stopped, the way you stop at a cliff edge in the dark, and lay down here, and didn't touch your skin again." {n}She does not lift her head.{/n} "It was the hardest thing I have ever done, and I did it with you looking at me. Don't talk. I'm taking notes. Desna's watching. Let her see me stop."''',
+    a("morning_after_paid", '{n}She has drawn her cloak between your bodies. Her ear rests on your chest through the cloth; your heart beats under it.{/n} "I stopped before it ended. I wanted another kiss, and I stopped." {n}Her fingers grip a fold of the cloak.{/n} "Don\'t go yet. The ward\'s gone. I can still have you here."',
         c("[Let her listen.]", flags=(NIGHT,))),
 ], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,), Areas=[DREZEN_AREA])   # PP2 post-cap: the citadel tower
 
@@ -470,16 +466,14 @@ session(MORNING, "Case notes, continued", 5, '"Good morning, doctor."', [
 "Don't look. I'm writing up the procedure." {n}She shields the page with her hand.{/n} "It's very technical. There are a great many underlinings. I've drawn a diagram and then crossed it out because it was indecent, and then I drew it again because it was accurate."''',
         c("Continue", "count", forbids=(ELYSIUM,)),
         c("Continue", "count_e", requires=(ELYSIUM,))),
-    a("count", '''{n}She sets the book down.{/n} "I counted. Last night. Out of habit. Seven minutes, and what I did with every one of them, and where the last one ended." {n}She looks at you.{/n}
-"You'll be yawning at the council today, and that's only a bell tower and no sleep. I took nothing. I stopped where the ward stopped, and you were still here when I did. Nobody at the table was the one being eaten." {n}Her voice wobbles.{/n} "I'm going to keep that page. I'm going to keep it until the paper falls apart, and then I'm going to remember it."''',
+    a("count", '"I counted last night. The flight, the kisses, where I stopped." {n}Her wing settles over your wrapped shoulders.{/n} "You\'ll be yawning at council. That\'s the tower\'s fault. And mine. I took nothing." {n}She smiles shakily.{/n} "I want to remember how you stayed afterwards."',
         c('"Put it in the case notes: patient recovering."', "recovering", flags=(MORNING,)),
         c('"Put it in the case notes: doctor recovering."', "doctor", flags=(MORNING,))),
     a("recovering", '''"Recovering." {n}She writes it, and then underlines it twice.{/n} "Not cured. I'm never going to be cured. The hunger's not a disease, it's what I'm made of, and you're a quack." {n}She leans over and kisses your brow through a fold of the cloak, quickly, lightly.{/n} "But recovering. I'll take recovering. I'll take it every morning, if you'll write it."''', c()),
     a("doctor", '''{n}She laughs so hard she drops the pen, and it rolls to the edge of the tower and over.{/n} "The doctor! Look at you. You're yawning. You look like a sentry after a double watch." {n}She writes it anyway, with a stick of charcoal from her pocket.{/n}
 "Doctor recovering. Patient smug." {n}She kisses your brow through a fold of the cloak, quickly, lightly.{/n} "Stay here till the sun's up. That's a prescription. I've decided I'm allowed to write them too, now. I'll fly you down when you can stand."''', c()),
     # After the native Elysium ending her touch no longer drains (BestEnding cues 0c5b3449, f3f59947): nothing was taken.
-    a("count_e", '''{n}She sets the book down.{/n} "I counted. Last night. Out of habit. How much I took, how much you gave." {n}She turns the page so you can see it: a careful column of noughts.{/n}
-"Nothing. Not a drop. I kept waiting for the cold to start in you. It never came." {n}She laughs unsteadily.{/n} "I nearly asked you to check me for a curse. Anything to explain why it felt so good."''',
+    a("count_e", '"I kept expecting the cold to start in you." {n}She lays her palm flat over your heart.{/n} "It never did. I was awake beside you when the watch changed, and I wanted to wake you for another kiss." {n}She leans forward.{/n} "Now you\'re awake."',
         c('"Put it in the case notes: patient recovering."', "recovering_e", flags=(MORNING,)),
         c('"Put it in the case notes: doctor recovering."', "doctor_e", flags=(MORNING,))),
     a("recovering_e", '''"Recovering." {n}She writes it, and looks at the word, and crosses it out.{/n} "No. I don't know what this is. The Abyss let go of me, and the hunger went quiet, and I keep listening for it the way you listen for a dog that's stopped barking." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "Write 'under observation.' I'm going to watch it for a long time before I believe it."''', c()),

@@ -481,14 +481,12 @@ drezen_pair(P + "evil.terms", "House calls", '"You\'re sitting on the jeweller\'
 
 hub(P + "failed.chaplain", "Chaplain", 3,
     '[Announce it to the whole shrine] "Meet the crusade\'s new chaplain. She starts tomorrow."', [
-    a("start", '''{n}You chose the hour on purpose: vespers, with the second company kneeling at the rail and every acolyte in the shrine lighting lamps. The words carry further than they should. The shrine has good bones for sound; it was built by people who expected to be heard by a goddess. By vespers the acolytes are calling her "Chaplain" to her face, and the second company is queuing at the altar rail with their swords laid across their palms. Nobody wrote it down. Nobody needed to.{/n}
-"Take it back." {n}She has you by the sleeve in the vestry, whispering, furious.{/n} "They'll look at me every day. A succubus, blessing their swords. Do you know what they'll say? Do you know what I was, before, to men who knelt in front of me?"''',
+    a("start", '{n}You catch her in the vestry before vespers. Beyond the door the second company waits with swords to bless. A censer and a blade lie between you.{/n} "A succubus as their chaplain? They\'ll think you\'ve gone mad." {n}She takes the blade, then sets it down again.{/n} "Don\'t announce anything yet. I can hand this back. You can go out there yourself."',
       c("Continue", "sword")),
-    a("sword", '''{n}She doesn't leave, though. When the first soldier at the rail clears his throat, she goes out to him. She takes his sword in both hands as if it might burn her, and says the words she has heard the Desnan priests say over travellers, and hands it back. He thanks her. She stands there looking at her own hands.{/n}
-"He thanked me," {n}she says, when she comes back.{/n} "He didn't know what I am, and he thanked me. Is that what you wanted? Is that the joke?"''',
+    a("sword", '{n}She lifts the censer, examines its draught hole, and opens the vestry door herself. She blesses the first soldier\'s blade without touching his hands. He thanks her. When she comes back, she has kept the censer.{/n} "One sword. I chose that. Before tomorrow, tell me whether this is work you need done or a joke you\'ll be tired of by morning."',
       c('"Then do it anyway. That\'s the job."', "job", alignment=("Chaotic", 1), flags=(CHAPLAIN, STARTED)),
       c('"It was a joke. I\'ll strike it out."', abort=True)),
-    a("job", '''"That's the job." {n}She repeats it the way people repeat a sentence in a foreign language, to see how it sits in the mouth.{/n} "They'll kneel to me, and I'll have to stand there and want nothing from any of them. Every morning." {n}She looks down at the hands that held the sword.{/n} "All right. All right. Tomorrow at sunrise, then. Somebody has to tell me which end of a censer is which."''', c()),
+    a("job", '{n}She looks through the doorway at the waiting soldiers.{/n} "Then I\'ll do the work. Tell them after I\'ve finished this evening\'s swords." {n}She lifts the censer.{/n} "Tomorrow at sunrise. And somebody must show me which end of this goes up."', c()),
 ], ("trickster", "trickster.ever", FAILED), forbids=(CHAPLAIN, CLOSED, DEAD, RECRUITED), chapters=(3, 5), Areas=[DREZEN],
     EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="failed")
 
@@ -506,7 +504,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c("Continue", "question")),
     a("chaplain", '''"The second company calls me Chaplain now. Not one of them asked what I used to be. They bring me their swords and their bad dreams and once, a boy from Nerosyan brought me a letter for his mother because he couldn't write." {n}She wipes the blade clean, although it is already clean.{/n} "I think that's the cruellest thing you've ever done to me. I think it might also be the kindest. I haven't decided."''',
       c("Continue", "question")),
-    a("question", '''"So I have a question for you. Only one, and you can't answer it with a joke, because I'll know." {n}She lays the blade down on the step between you.{/n} "Will you still want me when I'm good? Or only when I'm hungry?"''',
+    a("question", '"Will you still want me when I\'m good? Or only when I\'m hungry?" {n}She sets the blade down between you.{/n} "The company has my blessing. This is something else. I want an answer for myself."',
       c('"Both. Always both."', "both", flags=(COMMITTED,)),
       c('"Only the good days."', "saint", flags=(SAINT_ONLY, DECLINED), forbids=(ELYSIUM_DONE,)),
       c('[Let her keep her answer for now] "Then I\'ll ask again."', "not_yet", flags=(DECLINED,)),
@@ -516,7 +514,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
     a("both", '''"Both." {n}She closes her eyes.{/n} "I was afraid you'd say that. I hoped you would."
 {n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} "Both. All right. Both."''', c()),
     a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} {n}She picks the blade back up and holds it the way she holds it at the rail, as if it might cut her.{/n} "The hunger is in the good days too. It's in the blessing, and the bread, and in your hand when you pass me the cup. I can't send it into the next room while you visit." {n}Very quietly:{/n} "No. I'm sorry. I am. If you ever find you can bear the rest of me, I'll be on these steps."''', c()),
-    a("not_yet", '''"Don't answer yet. You've got the look of someone who's going to be clever, and I can't bear clever tonight." {n}She picks the blade back up.{/n} "Ask me when I've gone a week without wanting to eat anyone. I'll tell you then. I promise I will."''', c()),
+    a("not_yet", '"Then leave it for now." {n}She picks up the blade.{/n} "Come back when we\'ve both had time to think. Here, after the soldiers have gone. I\'ll have my own answer by then."', c()),
     nar("neither", '''{n}She lays the blade down very carefully on the step between you, as if it were the answer and she were giving it back, and goes inside.{/n}''', c()),
 ], ("trickster.ever",), forbids=(EVIL_DEAD, CLOSED, DECLINED, COMMITTED, RECRUITED), delay=72, chapters=(5,),
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]], Areas=[DREZEN])   # the chapel steps
@@ -533,8 +531,7 @@ hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
 
 # The chaplain never died and was never fed: her week ends on the thing that was done to her, the public appointment.
 hub(P + "terms_again_chaplain", "Seven days at the rail", 5, '"It\'s been a week."', [
-    a("start", '''"Seven days. I counted twice, and then I made the novice who sweeps the chapel count, because I didn't trust myself." {n}She doesn't smile. She is still wearing the stole the second company bought her, and she has not stopped touching its fringe.{/n}
-"Before I answer, I want one promise from you, and you won't like it. You made me their chaplain in front of a kneeling company, at vespers, so that I couldn't refuse without shaming every one of them. It worked. I'm keeping it. But it's mine now. They kneel to me now, and I can't bear to disappoint a single one of them, and you knew I wouldn't." {n}Her fingers stop on the fringe.{/n} "Don't ever do that to me again. If you want something of me, ask me where only Desna can hear us, not in front of a kneeling company."''',
+    a("start", '"Seven days at the rail. I kept the censer. I still want it." {n}She smooths the fringe of the stole the second company gave her.{/n} "But this question is ours. Don\'t arrange a kneeling company for it. If you want me, ask where only Desna can hear us. My altar stays mine, whatever I say to you."',
       c('[Promise] "No more staging. Your altar, and your door."', "yes", flags=(COMMITTED, NO_STAGING), forbids=(ELYSIUM_DONE,)),
       c('"I can\'t promise that."', "no", flags=(CLOSED, REFUSED)),
       # Sol r4 (CAN): after her release from the Abyss the yes is about the appointment she keeps, not a hunger she fights.
@@ -697,7 +694,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, ALLY, RECRUITED),
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN, REUNITED, "arueshalae.treatment.relapse_two"]], **EP))
 SCENES.append(scene(P + "epilogue.kept", "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}After the Worldwound was closed, Arueshalae stayed in Drezen, because the Commander was there, and because she had decided to.{/n}''',
+    nar("page", '{n}After the fighting at Threshold ended, Arueshalae kept her own home. The Commander received letters with directions, crossed-out directions, and an impatient request to visit. When {mf|he|she} arrived, she opened the door herself.{/n}',
         paragraphs=(
             p('''{n}She kept the stole the second company had bought her and the altar rail they knelt at, and she blessed their swords for years after there was nothing left to use them on, because they kept asking.{/n}''',
               requires=(CHAPLAIN,)),
@@ -710,7 +707,7 @@ SCENES.append(scene(P + "epilogue.kept_fallen", "", "ArueshalaeEpilogue", 6, "",
     nar("page", '''{n}After the Worldwound was closed, Arueshalae kept visiting. The Commander's window was never locked, and the city learned to count its sergeants after she had passed through a street. She never pretended to be anything but what she was, and the Commander never asked her to.{/n}''')],
     requires=("trickster.ever", COMMITTED, EVIL_DEAD, REUNITED), forbids=(CLOSED, RECRUITED), **EP))
 SCENES.append(scene(P + "epilogue.declined", "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}Arueshalae never gave the Commander her answer, and when anyone asked her about the Commander she said she was still counting.{/n}''',
+    nar("page", '{n}The question between Arueshalae and the Commander remained unsettled when the fighting ended. She went on with her own work, and did not let anyone answer for her.{/n}',
         paragraphs=(
             p('''{n}She served as the crusade's chaplain until the end, and blessed the swords of the second company and the lamps of the field hospital.{/n}''',
               requires=(CHAPLAIN,)),
