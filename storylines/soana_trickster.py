@@ -990,6 +990,8 @@ def integrate(payload):
             # A Commander who came back holds `sacrifice` too: the living portion paragraph must not drop out for them.
             _paragraphs(scene_, (dict(PORTION_ALIVE, Forbids=[], AnyGroups=[["trickster.commander_back"]]),))
 
+    soana_partner.finish_normal_endings(payload["Scenes"])
+
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
 _LIVE_PRODUCERS = {
@@ -998,3 +1000,10 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+# Round 2a: route-local Corven thread, stance and partner continuity.
+from storylines import soana_partner
+soana_partner.commitments(SCENES)
+soana_partner.endings(SCENES)
+SCENES.extend(soana_partner.SCENES)
+soana_partner.lastcall()

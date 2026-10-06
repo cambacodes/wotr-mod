@@ -379,9 +379,20 @@ internal static class SoanaTricksterTests
             "A killed-branch ending leaves the leash in the Commander's hand.");
         foreach (var loss in new[] { "soana.ending_native_loss", "soana.ending_unfinished_loss" })
             check(S(loss).Forbids.Contains(P + "returned"), "A returned Soana is mourned: " + loss);
-        foreach (var page in new[] { epKnot, epLuck, epCommit, epDeclined })
-            check(page.Nodes.SelectMany(n => n.Choices).All(c => c.Mythic == null && c.Alignment == null && c.Crusade == null && c.Set.Length == 0),
-                "An epilogue page carries effects: " + page.Id);
+        foreach (var page in new[] { epKnot, epLuck, epCommit, epDeclined, S(P + "epilogue.luck_late") })
+        {
+            // Round 2a records only the demanded stance/refusal on the two late
+            // invitations. Original answers stay inert; no epilogue buys a
+            // price, changes a native fact, or produces a commitment reward.
+            var stanceOnly = page.Id == epCommit.Id || page.Id == P + "epilogue.luck_late"
+                ? new[] { "soana.partner_stance.share", "soana.partner_stance.exclusive", "soana.partner_stance.secret",
+                          "soana.partner.agreed", "soana.closed", P + "refused" }
+                : Array.Empty<string>();
+            check(page.Nodes[0].Choices[0].Set.Length == 0
+                  && page.Nodes.SelectMany(n => n.Choices).All(c => c.Mythic == null && c.Alignment == null
+                      && c.Crusade == null && !c.Set.Except(stanceOnly).Any()),
+                "An epilogue page carries effects beyond its partner stance/refusal: " + page.Id);
+        }
         foreach (var name in new[] { "kept_life", "chosen_visits", "familiar_company", "sacrifice", "beyond_the_forest" })
             check(S("soana.ending_" + name).Nodes.SelectMany(n => n.Paragraphs).Count(p => p.Requires.Contains(P + "cost.blood_given")) == 1,
                 "The portion leaves no mark on the registered ending: " + name);
@@ -701,8 +712,13 @@ internal static class SoanaTricksterTests
         var commitInvited = FullText(epCommit, Invite(dug));
         check(Endings(Invite(dug)).SequenceEqual(new[] { epCommit.Id }) && SurfaceIds.Has(commitLate, "[soana.trickster.epilogue.commit/start/paragraph/2]")
               && !SurfaceIds.Has(commitLate, "[soana.trickster.epilogue.commit/start/paragraph/3]") && SurfaceIds.Has(commitInvited, "[soana.trickster.epilogue.commit/start/paragraph/3]")
-              && !SurfaceIds.Has(commitInvited, "[soana.trickster.epilogue.commit/start/paragraph/0][soana.trickster.epilogue.commit/start/paragraph/1][soana.trickster.epilogue.commit/start/paragraph/2]") && SurfaceIds.Has(commitLate, "[soana.trickster.epilogue.commit/start/paragraph/4]"),
+              && !SurfaceIds.Has(commitInvited, "[soana.trickster.epilogue.commit/start/paragraph/0][soana.trickster.epilogue.commit/start/paragraph/1][soana.trickster.epilogue.commit/start/paragraph/2]") && !SurfaceIds.Has(commitLate, "[soana.trickster.epilogue.commit/start/paragraph/4]"),
             "The late commit skips the reckoning, or repeats one already played: " + commitLate);
+        var sharedLate = Program.Copy(lateBack);
+        sharedLate.Flags.UnionWith(new[] { "soana.partner_stance.share", "soana.partner.agreed" });
+        check(Rules.VisibleParagraphs(epCommit.Nodes.Single(n => n.Id == "partner_share_start"), End(sharedLate))
+                  .Select(x => SurfaceIds.Of(story, x)).Contains("[soana.trickster.epilogue.commit/partner_share_start/paragraph/0]"),
+            "The late commitment loses its cord after an accepted partner stance.");
         check(SurfaceIds.Has(FullText(epCommit, Pick(graveyard, Later(story, Pick(knot, killed, P + "returned"), 48), P + "graveyard_kept")), "[soana.trickster.epilogue.commit/start/paragraph/0]"),
             "The late commit forgets Camellia.");
         var unvowedOld = FullText(S(P + "epilogue.unvowed"), oldRaised);
@@ -837,6 +853,7 @@ internal static class SoanaTricksterTests
                   && !Rules.Available(story, secondAsk, Later(story, friend, 300)), "P03: friendship lost its leash resolution.");
         }
 
+        SoanaPartnerTests.Run(story, check);
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }

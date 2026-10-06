@@ -14,7 +14,8 @@ internal static class SoanaLateCampaignTests
         string[] visitIds = { "when_the_road_returns", "a_track_with_two_ends", "what_the_hollow_costs", "where_the_steps_end", "the_days_she_counted", "before_the_far_road" };
         var visits = visitIds.Select(Get).ToArray();
         var firelight = Get("past_the_firelight");
-        var endings = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner == "Epilogue" && !s.Id.StartsWith("soana.trickster.", StringComparison.Ordinal)).ToArray();
+        var endings = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner == "Epilogue" && !s.Id.StartsWith("soana.trickster.", StringComparison.Ordinal)
+            && !s.Id.StartsWith("soana.partner.", StringComparison.Ordinal)).ToArray();
         var reached = new HashSet<string>();
         var protectedFlags = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys)
             .Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys)

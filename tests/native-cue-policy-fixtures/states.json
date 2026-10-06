@@ -13152,6 +13152,18 @@
       "ExpectedCandidate": "soana.ending_unfinished_loss"
     },
     {
+      "Id": "page/soana.partner.epilogue.broken",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "soana.partner.romance_ended"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "soana.partner.epilogue.broken"
+    },
+    {
       "Id": "page/anevia.ending_kept",
       "Target": "",
       "Dialog": "",
