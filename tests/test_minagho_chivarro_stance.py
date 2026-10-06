@@ -14,7 +14,8 @@ from tools.canon_partner_lint import _dialogue_replacements
 class MinaghoChivarroStanceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((Path(__file__).resolve().parents[1] / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        from tests.story_fixture import fresh_story
+        cls.story = fresh_story()
         cls.model = rrt_verify.Model(cls.story)
         cls.scenes = {s['Id']: s for s in cls.story['Scenes']}
         cls.dialogue_replacements = _dialogue_replacements(cls.story)
@@ -33,7 +34,21 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
                 for before, after in zip(original['Nodes'], revised['Nodes']):
                     self.assertGreaterEqual(len(after['Choices']), len(before['Choices']))
                     for old, new in zip(before['Choices'], after['Choices']):
-                        self.assertTrue(set(old['Set']).issubset(new['Set']))
+                        if (original['Id'] == stance.P + 'after.the_price_of_her_name_letter'
+                                and before['Id'] == 'start' and old is before['Choices'][0]):
+                            paying = next(n for n in revised['Nodes'] if n['Id'] == 'verdict_paid')
+                            self.assertEqual(old['Set'], paying['Choices'][0]['Set'])
+                            self.assertEqual(new['Set'], [])
+                        elif old['Next'] is None and '.explicit.' in (new['Next'] or ''):
+                            by_id = {n['Id']: n for n in revised['Nodes']}
+                            paying = by_id[new['Next']]
+                            target = paying['Choices'][0]['Next']
+                            if target and target.endswith('.after'):
+                                paying = by_id[target]
+                            self.assertEqual(old['Set'], paying['Choices'][0]['Set'])
+                            self.assertEqual(new['Set'], [])
+                        else:
+                            self.assertTrue(set(old['Set']).issubset(new['Set']))
 
     def test_commitment_producers_record_exactly_one_initial_stance(self):
         produced = set()
@@ -151,7 +166,10 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
             nights = [n for n in page['Nodes'] if n['Id'].startswith('stance_') and '_night_' in n['Id']]
             self.assertTrue(nights)
             for night in nights:
-                self.assertEqual(night['Choices'][0]['Next'], 'stance_morning_route')
+                target = night['Choices'][0]['Next']
+                if '.explicit.' in (target or ''):
+                    target = nodes[target]['Choices'][0]['Next']
+                self.assertEqual(target, 'stance_morning_route')
             branches = {a['Next']: a for a in nodes['stance_morning_route']['Choices']}
             self.assertIn(stance.S + 'discovery_due', branches['stance_discovery']['Requires'])
             self.assertIn(stance.S + 'letter_due', branches['stance_discovery_letter']['Requires'])

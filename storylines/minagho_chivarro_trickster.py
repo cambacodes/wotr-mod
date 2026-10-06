@@ -1061,6 +1061,8 @@ def integrate(payload):
     # Round 2a: own commitment stances, partner continuity and own Last Call entry.
     from storylines import minagho_chivarro_stance
     minagho_chivarro_stance.integrate(payload)
+    from storylines import chivarro_setpieces
+    chivarro_setpieces.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

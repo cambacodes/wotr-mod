@@ -1,0 +1,33 @@
+{
+  "chivarro": {
+    "device_class": "bargain",
+    "setting": "Wilcer's occupied Drezen counter then her own rented room below the citadel",
+    "payoff_shape": "former seller chooses an unpaid personal night and keeps Minagho's chair in her house",
+    "canon_hooks": [
+      {
+        "guid": "6098d97e435e0694493ebaf7de128c51",
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0091.jbp",
+        "key": "3cf9393f-da41-4616-af65-2a03f37c0391",
+        "native_excerpt": "\"You piece of shit! Why couldn't you just quietly go there and die? You've caused nothing but trouble! Damn you for all the suffering you've caused Minagho and me!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "5787f92575364c1459df8f075676c2db",
+        "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
+        "key": "056942f6-32d0-4480-8ff7-29356b43db19",
+        "native_excerpt": "Several hundred years after the conclusion of the Fifth Crusade, somewhere on another plane, far from both the Abyss and Golarion, two runaway lilitus {d|lilithu love}met{/d} — Minagho and Chivarro. They met, never to part again.",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "2f4be0bde527a7d4cb7c73131ab551db",
+        "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0011.jbp",
+        "key": "d2a0261a-80bd-4336-8389-3ddbc7e12a3e",
+        "native_excerpt": "\"Closets grant you freedom. You can step inside one, and exit from another... Of course, there are also people who get lost among the hangers, and spend their whole life in a closet — sometimes without realizing it! Yes, I love closets dearly, and I'm not ashamed to say it! I mean, I'm not ashamed of anything, but least of all — that!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}

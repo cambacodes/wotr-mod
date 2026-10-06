@@ -1,0 +1,31 @@
+{
+  "voice": "MINAGHO: proud, spiteful, impatient, sexually frank, sharply possessive; her appetite and her attachment to Chivarro remain independent of the Commander. No therapy language, gratitude-for-rescue script or stock seductress monologue. CHIVARRO: imperious former madam, jealous and carnal; she acts only in the surrounding scene if actually present. Write fresh short dialogue from traits.",
+  "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: the Commander's existing quarters in Drezen after the watch changes; use the current threshold destination, no new area. SCENE: minagho_chivarro.trickster.after.before_the_last_road; existing node variants: stance_0_night_minagho. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Minagho. Existing Minagho secret-night alternative in the shared route. She chooses concealment herself, never erases Chivarro's claim. Retain already-written Chivarro discovery/return/reply and Minagho choosing her partner afterward where discovery is due. Unknown partner state stays unresolved. No additional scene/mechanic; coordinator reconciles this insert with Minagho's owner. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Concealment has a price in the surrounding partner confrontation; do not resolve jealousy, grant forgiveness or end the pair inside this insert. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "M: Let them wait downstairs.",
+  "speakers": {
+    "N": "Narrator",
+    "M": "Minagho"
+  },
+  "example": "N: Minagho catches your sleeve before you can turn away.\nM: You have admired that door long enough.\nN: She draws you back to her.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 20,
+  "slot_id": "minagho_chivarro.trickster.after.before_the_last_road.explicit.3",
+  "default_text": "{n}Minagho leaves your discarded clothes beside the closed door, catches your mouth and draws you onto the bed. She holds you there as you kiss her back.{/n}\n\"Let them wait downstairs.\"",
+  "source_nodes": [
+    "stance_0_night_minagho"
+  ],
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C10"
+  ],
+  "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
+}
