@@ -13,7 +13,7 @@ from story_format import c, n, p, scene
 from storylines.nidalynn_trickster import (
     CHOSEN_UNIT, CLAIMED, CLERK, FORM, CLOSED, CONFESSED, DV_BILL, DV_HUNTING, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS,
     GIVEN_UP, GOAT_CORRECTED, GOAT_STANDS, GOLEM, HAND, HAND_SET, HATCHED, KILN, KILN_AGREED, LEFT_WITH_IT, LIE_KEPT, LIED, MET, NAME_NONE, NAME_PEBBLE,
-    NAME_SOOT, P, PALMS, REL, RENOUNCED, REVEALED, ROCK_JOKE, TOLD_EGG, TOLD_NOTHING, TOLD_ROCK, TORC_BOUGHT, TORC_LEFT,
+    NAME_SOOT, P, PALMS, PARTNER_DISGUISE, REL, RENOUNCED, REVEALED, ROCK_JOKE, TOLD_EGG, TOLD_NOTHING, TOLD_ROCK, TORC_BOUGHT, TORC_LEFT,
     TORC_LIFTED, VAULT, WHY_COULD, WHY_DUNNO, WHY_SMALL, WHY_USE, nar, nd)
 from storylines.nidalynn_trickster import QUARTERMASTER, SLATE, STORYTELLER_SUPPLIES, STRAW   # PP10: the egg the druids left in the straw
 from storylines.nidalynn_trickster import steps as _steps, visit as _visit
@@ -66,16 +66,16 @@ visit(P + "hearth.listening", "Nobody's widow", [
         c('"And you know that how, widow?"', "how"),
         c('"How do you know what it thinks?"', "how")),
     nd("how", '''{n}She sits back on her heels, and puts one hand on the small of her back, and sighs the long sigh of a woman who has been standing on a market step all day.{/n} "Oh, very well. It's late, and your chairs look comfortable, and I did promise I'd tell you in your own house."
-"I'm not a widow. I've never been married; nobody ever asked me in a way I liked. I'm not carrying." {n}She pats the belly, almost fondly.{/n} "And I'm not, if we're being honest about it, a woman."''',
+"I'm not a widow. I've never been married; nobody ever asked me in a way I liked. When I say 'my husband', that's a lie. I made him up. A woman asking for cheese gets more sympathy if her husband won't fetch it. There's nobody waiting at home." {n}She reaches for your wine.{/n} "I'm not carrying, either." {n}She pats the belly, almost fondly.{/n} "And I'm not, if we're being honest about it, a woman."''',
         c("Continue", "sleeve")),
     nar("sleeve", '''{n}She pushes up the sleeve of her dress to the elbow and holds out her forearm to the firelight, and you watch it change.{/n}
 {n}It happens the way frost comes on a window: from the wrist upward, fine and fast. Scales, silver and small as the links of a good hauberk, laid over one another so neatly that the fire runs along them like water. Her nails darken and lengthen and curve. Her breath, when she lets it out, is cold. The ash on the hearthstone in front of her grows a little fern of frost.{/n}
 {n}Then she shakes her wrist, the way you shake water off a hand, and it is a woman's arm again, a little red at the knuckles from washing.{/n}''',
         c("Continue", "name")),
     nd("name", '''"Nidalynn." {n}She pulls the sleeve back down.{/n} "Of the silver. I'd bow, but there's the belly, and I'd never get up again." {n}Her pale eyes hold yours.{/n} "There. Now you know who heard your egg. I'd like to hear why you kept it."''',
-        c('"A dragon. On my hearthstone."', "dragon", flags=(REVEALED,)),
-        c('"I knew there was something wrong with the belly."', "belly", flags=(REVEALED,)),
-        c('"You\'re the second-best liar in this room."', "second", flags=(REVEALED,))),
+        c('"A dragon. On my hearthstone."', "dragon", flags=(REVEALED, PARTNER_DISGUISE)),
+        c('"I knew there was something wrong with the belly."', "belly", flags=(REVEALED, PARTNER_DISGUISE)),
+        c('"You\'re the second-best liar in this room."', "second", flags=(REVEALED, PARTNER_DISGUISE))),
     nd("dragon", '''"On your hearthstone, in your good chair, drinking your wine, presently." {n}She is already reaching for the jug.{/n} "Don't look like that. We've been walking among you since before your crusades had names. Somebody has to keep an eye on you. You're so short-lived; you get into such trouble."''',
         c("Continue", "why", forbids=(VAULT, STRAW)),
         c("Continue", "why_vault", requires=(VAULT,)),
