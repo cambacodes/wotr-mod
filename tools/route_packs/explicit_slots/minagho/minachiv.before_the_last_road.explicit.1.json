@@ -1,0 +1,39 @@
+{
+  "slot_id": "minachiv.before_the_last_road.explicit.1",
+  "source": {
+    "scene": "minachiv.before_the_last_road",
+    "node": "stance_0_night_minagho",
+    "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
+  },
+  "voice": "Minagho: wounded arrogance, contemptuous brevity, impatient commands, amused cruelty, possessive appetite, unsoftened memory of the war. Desired closeness is a claim she makes herself; it does not redeem her or repay a rescue. Write new dialogue from traits; do not copy brief sentences or native quotations.",
+  "facts": [
+    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
+    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
+    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
+    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
+  ],
+  "scene": "Authored expansion of minachiv.before_the_last_road/stance_0_night_minagho. Chapter 5, before Threshold, Trickster history at Drezen, the Commander's private quarters after the watch change. Present: Minagho and the Commander only. Secret affair; the partner is not present in this slot. The mapped discovery is later, not Kiana's mid-act interruption. This source combines threshold and aftermath: insert before the existing later/dawn paragraph. This is a neutral production brief; write no additional event outside that interval.",
+  "required_beats": [
+    "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
+    "Carry the scene's existing appetite, rivalry and power into character dialogue; no generic romance recital, narrator verdict, moral maxim or modern consent script.",
+    "Keep clothing and furniture continuous with the source: already removed garments stay removed; the default is staging guidance, not a second undressing.",
+    "No new price, flag, gate, power, arrival, partner agreement, rescue entitlement or ending is generated.",
+    "Finish with the exact last_line; preserve the mapped original aftermath and legacy exit effects. If its opening repeats this connective, join it once without deleting its saved node.",
+    "Minagho makes the claim herself; preserve the source's paid seal history and prohibition against bargaining for her again. She remains evil; affection is no apology for Kenabres.",
+    "This is a knowingly chosen affair. Include a short possessive acknowledgment of the absent lover and the risk of discovery. No absolution: flow into the existing key/clothes/receipt confrontation, or retain unknown whereabouts where the source does.",
+    "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
+  ],
+  "default_text": "{n}Minagho catches your mouth again and draws you against her. Your hand closes on her bare waist; she keeps it there and presses closer.{/n}",
+  "last_line": "N: Dawn finds the discarded clothes beside the locked door.",
+  "speakers": {
+    "M": "Minagho"
+  },
+  "example": "N: Minagho hooks a finger inside your collar and draws you away from the door.\nM: Leave the blade. I have enough of my own.\nN: She catches the falling buckle in her free hand.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18
+}
