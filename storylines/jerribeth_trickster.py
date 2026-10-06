@@ -128,7 +128,7 @@ SCENES.append(scene("jerribeth.trickster.dead.setup_greeting", "Rent", "Jerribet
 {n}A pause, long enough for the Sanctum's cold to find the back of your neck.{/n}
 "You would charge a demon rent for the use of your own head. How very mortal. I always read the small print, Commander. Yours has none."
 {n}Laughter, high and abrasive, like a buzzing insect, and for one moment it comes from inside your ear rather than beside it.{/n}
-"Do you know what I left in Wintersun? Ideas. I have not been there in months, and they are still there, because the heads they live in grew used to them. A thought a house keeps does not need its mother, crusader. It needs the house."
+"Do you know how I made Wintersun see what I wanted? I planted a few ideas. You are offering mine a room in your own head, and charging me for it."
 {n}The antennae tilt, pricing you.{/n}
 "Very well. Lease accepted. And I shall pay my rent in the only coin a tenant like me carries: one of your memories a month, my choice, taken in lieu of repairs. The first instalment in advance. I always pay the first one in advance; it makes the rest so much harder to dispute."
 {n}Something small goes out of you, neatly, like a page cut from a ledger. You try to remember the colour of the door of the house you grew up in, and find a clean, swept space where the colour used to be.{/n}
@@ -270,7 +270,7 @@ SCENES.append(_tenant_scene("jerribeth.trickster.dead.tenant_nexus", HOST_PROMIS
 SCENES.append(scene("jerribeth.trickster.host.taken", "The stockade, one fewer", "Jerribeth", 5, "", [
     nar("start", '''{n}The first night you sleep in Drezen again, you dream of a corridor you have never walked, lit by a lantern you are not carrying, and of a lock that turns for you as if it had been waiting.{/n}
 {n}In the morning the stockade reports one prisoner fewer, and a sentry who swears the man walked out past him at the change of watch, smiling, with his hands folded behind his back like a courtier. Nobody asks the man's name. Nobody ever will.{/n}
-"Warm," {n}says the voice behind your left eye, and then, for the first time since the Sanctum, it says nothing else for a whole day, because it is busy.{/n}''',
+"Warm," {n}says the voice behind your left eye, and then it says nothing else for a whole day, because it is busy.{/n}''',
       c('"Keep him clean."', flags=(HOST,)))],
     requires=("trickster.ever", HOST_PROMISED), forbids=(HOST, DECLINED), delay=0, last=5, optional=True,
     Relationship="jerribeth", Remote=True, Chapters=[5], Areas=[DREZEN]))
@@ -375,17 +375,17 @@ _MIND = dict(requires=(RETURNED,), forbids=(HOST,))
 _MUSTER_END = ("He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the "
                "whole point.")
 MUSTER_PARAGRAPHS = (
-    p("{n}" + ("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
-      "to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the "
-      "Commander's elbow in her elven guise, told him the story of that day, better than he could have told it himself, "
+    p("{n}" + ("At a Drezen muster after she took the war, a grey sergeant who had served under the Commander came up "
+      "to clasp arms, and the Commander asked the veteran's name. The sergeant stood there with a hand out until Jerribeth, at the "
+      "Commander's elbow in her elven guise, told the veteran the story of the war, better than the sergeant could have told it himself, "
       "with a detail in it that had not happened. " + _MUSTER_END) + "{/n}", forbids=(RETURNED,)),
-    p("{n}" + ("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
-      "to clasp arms, and the Commander asked his name. He stood there with his hand out until the smiling man at the "
-      "Commander's elbow told him the story of that day in a high, pleased voice that was not his own, better than the "
+    p("{n}" + ("At a Drezen muster after she took the war, a grey sergeant who had served under the Commander came up "
+      "to clasp arms, and the Commander asked the veteran's name. The sergeant stood there with a hand out until the smiling man at the "
+      "Commander's elbow told the veteran the story of the war in a high, pleased voice that was not the man's own, better than the "
       "sergeant could have told it himself, with a detail in it that had not happened. " + _MUSTER_END) + "{/n}", requires=(HOST,)),
-    p("{n}" + ("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
-      "to clasp arms, and the Commander asked his name. He stood there with his hand out until the Commander heard their "
-      "own voice tell him the story of that day, better than he could have told it himself, with a detail in it that had "
+    p("{n}" + ("At a Drezen muster after she took the war, a grey sergeant who had served under the Commander came up "
+      "to clasp arms, and the Commander asked the veteran's name. The sergeant stood there with a hand out until the Commander heard their "
+      "own voice tell the veteran the story of the war, better than the sergeant could have told it himself, with a detail in it that had "
       "not happened. It was her story, told with the Commander's mouth. " + _MUSTER_END) + "{/n}", **_MIND),
 )
 
@@ -405,10 +405,9 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
           p("{n}" + ("The war had ended before the lease did. She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him "
             "in because they had long ago stopped looking at his face. He sat down at the Commander's table without being "
             "asked, and her voice came out of him, high and pleased. " + _OFFER_LINE) + "{/n}", requires=(HOST,)),
-          p("{n}The war had ended before the lease did. She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull "
-            "at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked.{/n} \"The forfeit is "
-            "one memory, of my choosing, when I choose. I have already read your answer; I live beside it. Say it aloud "
-            "anyway. I prefer my bargains witnessed, even when the only witness is you.\"", **_MIND),
+          p("{n}The war had ended before the lease did. She did not come to the door. Her voice stirred behind the Commander's left eye "
+            "at breakfast, and the tea went cold while she talked.{/n} \"The forfeit is one memory, of my choosing, when I choose. "
+            "I have already read your answer. Say it aloud anyway. I prefer my bargains witnessed, even when the only witness is you.\"", **_MIND),
       )),
     nar("signed", '''{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
 "Signed," {n}she said, and did not let go of the hand.{/n} "I collect in person, Commander. I do not collect at breakfast."''',
@@ -431,7 +430,7 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
 "His body is mine; I stole it fairly. But I have never once let a stolen thing take the credit for my work. Lie down, Commander. I am coming the other way."''',
       c("Continue", "night_mind")),
     nar("night_mind", '''{n}The room she built was the Commander's own bedroom, exactly, down to the crack in the ceiling, and the only thing in it that did not belong there was her, in her own form, sitting on the edge of the bed with her carapace catching the light of a lamp that was not lit.{/n}
-"I know where every nerve in this house runs. I have had years to read the plans."
+"I know where every nerve in this house runs. You have such instructive memories."
 {n}Her claws traced the Commander's jaw, and the Commander felt every point of them. She pushed the Commander back into a pillow that did not exist, settled astride with her wings opening over them both, and lowered herself onto the Commander with a sound in the skull like pages turning very fast.{/n}''',
       c("Continue", "night_mind_after")),
     nar("night_mind_after", '''{n}The Commander woke alone, as the Commander had lain down, with no marks anywhere and the exact memory of where every one of them should be.{/n}
@@ -439,7 +438,7 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
       c("Continue", "collected")),
     nar("collected", '''{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
 "There," {n}she said.{/n} "Now I am the only one at this table who remembers how we met, and I intend to improve it."
-{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}''',
+{n}Afterwards the Commander read about the crusade like a stranger reading a history. Jerribeth told it back over supper, giving herself a larger part each time. The Commander could no longer correct her from memory.{/n}''',
       c(), paragraphs=MUSTER_PARAGRAPHS + TRICKSTER_PARAGRAPHS),
     nar("torn", '''{n}The Commander kept both hands folded in their lap, where she could see them.{/n}
 {n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
@@ -731,7 +730,7 @@ IN_PERSON = [
       c("Continue", "tenant_body")),
     nar("tenant_body", '''{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}
 {n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
-"I know where every nerve in this house runs," {n}she says.{/n} "I have been reading the plans for months."
+"I know where every nerve in this house runs," {n}she says.{/n} "You have such instructive memories."
 "I shall not take your hands in here unless you give them. In this house, that is the only rule I keep."''',
       c('[Give her your wrists.]', "tenant_pinned"),
       c('[Reach for her instead.]', "tenant_free")),
