@@ -1,0 +1,30 @@
+{
+  "voice": "CHIVARRO: imperious, appraising, impatient, proprietorial, sexually frank; hospitality is a weapon, a bill can be a joke, a refusal can be vicious. Enjoys controlling a room and embarrassing arrogance. Her chosen affection does not redeem her cruelty or end her attachment to Minagho. Avoid repeated accounting metaphors, maxims, therapy language, consent choreography and professional-client reassurance. MINAGHO, when present: spiteful, proud, quick to threaten, hungry for her lover, amused by the Commander's discomfort; independently chooses every invitation. Write fresh short dialogue from these traits, not copied native sentences.",
+  "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: Chivarro's existing private room upstairs after the performance. SCENE: minachiv.after_the_last_lamp; existing node variants: night. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Chivarro. After her performance and her already-promised invitation upstairs. Robe pin goes in the bowl before they move to the inner room; she is tired and hungry for the guest rather than delivering a professional show. Remember earlier intimacy. The cart noise and her demand for another hour occur afterward, not as discovery. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "C: The pin is safe. Come closer.",
+  "speakers": {
+    "N": "Narrator",
+    "C": "Chivarro"
+  },
+  "example": "N: Chivarro sets the unopened account aside and catches your collar.\nC: That can wait. You have kept me waiting long enough.\nN: She draws you close.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 20,
+  "slot_id": "minachiv.after_the_last_lamp.explicit.1",
+  "default_text": "{n}Chivarro puts the pin in the bowl and takes you into the inner room. Her robe falls beside the bed; she opens your collar and kisses you before the cloth reaches the floor.{/n}\n\"The pin is safe. Come closer.\"",
+  "source_nodes": [
+    "night"
+  ],
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
+}

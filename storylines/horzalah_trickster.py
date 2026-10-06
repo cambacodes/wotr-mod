@@ -1077,7 +1077,15 @@ def _round2_situations():
     # Injury is incurred on display. Reopening resumes the unpaid remainder.
     for suffix, opening in (("mercy.gift", "guess"), ("unmet.knife", "start")):
         ns = nodes(suffix)
-        ns["cut"]["EnterSet"] = [EAR]
+        if scenes[H + suffix].get("NativeReturnCue"):
+            # Inline native cues record injury on the selected approach,
+            # before the cut is shown; reopening still resumes the debt.
+            for previous in scenes[H + suffix]["Nodes"]:
+                for answer in previous["Choices"]:
+                    if answer["Next"] == "cut":
+                        answer["Set"] = list(dict.fromkeys([*answer["Set"], EAR]))
+        else:
+            ns["cut"]["EnterSet"] = [EAR]
         for choice in ns[opening]["Choices"]:
             choice["Forbids"].append(EAR)
         ns[opening]["Choices"].append(c("[Finish the bargain.]", "box", requires=(EAR,), forbids=(PRIMED,)))

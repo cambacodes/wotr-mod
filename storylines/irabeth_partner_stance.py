@@ -96,7 +96,8 @@ def cover_native(payload):
     from storylines.earned_presence import COMMANDER_ABSENT
     sources = {s["Id"]: s for s in payload["Scenes"] if s.get("Relationship") == "irabeth"
                and (".epilogue.native_" in s["Id"] or ".native." in s["Id"])
-               and ".partner." not in s["Id"]}
+               and ".partner." not in s["Id"]
+               and s["Id"] != "anevia.trickster.native.bread_returned"}
     wife_states = (
         ("together", (), ("anevia_dead", "anevia_gone", RETURNED),
          '{n}Anevia was alive, and their marriage remained. "Beth comes home when she says she will," she had told the Commander. "That part stays."{/n}'),

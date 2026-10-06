@@ -15,6 +15,24 @@ class SoanaRound2Tests(unittest.TestCase):
         cls.story = fresh_story()
         cls.by = {s['Id']: s for s in cls.story['Scenes']}
 
+    def test_exclusive_verdict_is_recorded_by_selected_answers(self):
+        checked = 0
+        for event in self.story['Scenes']:
+            if event.get('Relationship') != 'soana':
+                continue
+            for node in event['Nodes']:
+                if not (node['Id'].startswith('partner_exclusive_')
+                        and node['Id'].endswith('_chosen')):
+                    continue
+                self.assertFalse(node.get('EnterSet'))
+                incoming = [a for previous in event['Nodes'] for a in previous['Choices']
+                            if a['Next'] == node['Id']]
+                self.assertTrue(incoming)
+                for answer in incoming:
+                    self.assertTrue({P.EXCLUSIVE, P.DECIDED, P.CHOSEN} <= set(answer['Set']))
+                checked += 1
+        self.assertGreater(checked, 0)
+
     def holds(self, key, flags, trail=()):
         if key == 'availability.observed':
             return True

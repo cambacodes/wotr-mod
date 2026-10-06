@@ -21,7 +21,7 @@ internal static class EarnedOutcomeInventoryTests
         {
             var state = new Snapshot { Chapter = 6, Hour = 10000,
                 CrusadeResources = new Dictionary<string, int> { ["Finances"] = 200 } };
-            state.Flags.UnionWith(new[] { "chapter_later", "trickster" });
+            state.Flags.UnionWith(new[] { "chapter_later", "chapter.six", "trickster", "trickster.ever" });
             state.Flags.UnionWith(flags);
             Refresh(state);
             return state;
@@ -35,7 +35,21 @@ internal static class EarnedOutcomeInventoryTests
             Rules.RecordAvailabilityEvents(story, state, choice.Set);
             Refresh(state);
         }
-        Choice Incoming(string scene, string node) => S(scene).Nodes.SelectMany(n => n.Choices).First(c => c.Next == node);
+        Choice Incoming(string scene, string node)
+        {
+            // Heated inserts keep an effect-free continuation. Test the
+            // original gated approach, rather than that interior edge.
+            var target = node;
+            var seen = new HashSet<string>();
+            while (seen.Add(target))
+            {
+                var edge = S(scene).Nodes.SelectMany(n => n.Choices.Select(c => (node: n, choice: c)))
+                    .First(e => e.choice.Next == target);
+                if (!edge.node.Id.Contains(".explicit.", StringComparison.Ordinal)) return edge.choice;
+                target = edge.node.Id;
+            }
+            throw new InvalidOperationException("Insert cycle in " + scene + "/" + node);
+        }
 
         var devarra = World("devarra.trickster.tested");
         check(devarra.Has("devarra.trickster.late_committed"), "Earned Devarra late road lost.");
@@ -88,6 +102,20 @@ internal static class EarnedOutcomeInventoryTests
             foreach (var entry in new[] { ("blade", "flirt"), ("the_watch", "mine"), ("anything_but_wings", "stay"), ("your_part", "not_you_want") })
                 check(!Rules.ChoiceAvailable(Incoming("jannah.circle." + entry.Item1, entry.Item2), jannah), "Unrepaired Jannah refusal bypasses " + entry.Item1);
             Select("jannah.trickster.chalk_circle", "open", refusal.Item3, jannah);
+            // Round two defers the repair until her personal yes; walking
+            // into the circle alone no longer awards that receipt.
+            var nextRepair = S("jannah.trickster.chalk_circle").Nodes.Single(n => n.Id == "open")
+                .Choices[refusal.Item3].Next;
+            for (int step = 0; nextRepair != null && step < 10; step++)
+            {
+                var answers = S("jannah.trickster.chalk_circle").Nodes.Single(n => n.Id == nextRepair).Choices;
+                int index = answers.FindIndex(c => c.Next != "left" && Rules.ChoiceAvailable(c, jannah));
+                check(index >= 0, "No earned Jannah repair continuation: " + nextRepair);
+                var next = answers[index].Next;
+                Select("jannah.trickster.chalk_circle", nextRepair, index, jannah);
+                nextRepair = next;
+            }
+            check(jannah.Has("jannah.trickster.chalk_circle.walked_in"), "Repair fixture omitted Jannah's personal acceptance.");
             foreach (var entry in new[] { ("blade", "flirt"), ("the_watch", "mine"), ("anything_but_wings", "stay"), ("your_part", "not_you_want") })
                 check(Rules.ChoiceAvailable(Incoming("jannah.circle." + entry.Item1, entry.Item2), jannah), "Earned Jannah repair loses " + entry.Item1);
         }

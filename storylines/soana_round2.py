@@ -407,7 +407,13 @@ def integrate(payload):
                 # She has already taken off the clasp and said she ends the
                 # vows on this page. That decision lets her send the separation;
                 # her old acceptance still pays its own exact costs only later.
-                node['EnterSet'] = [P.EXCLUSIVE, P.DECIDED, P.CHOSEN]
+                # Native audience cues cannot write on display. The selected
+                # answer that reaches her verdict records the same decision.
+                for previous in event['Nodes']:
+                    for answer in previous['Choices']:
+                        if answer['Next'] == node['Id']:
+                            answer['Set'] = list(dict.fromkeys([
+                                *answer['Set'], P.EXCLUSIVE, P.DECIDED, P.CHOSEN]))
             for block in node.get('Paragraphs', []):
                 for field in ('Requires', 'Forbids'):
                     block[field] = [EFFECTIVE if k == R else k for k in block.get(field, [])]

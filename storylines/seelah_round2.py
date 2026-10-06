@@ -81,7 +81,8 @@ def prepare(scenes, presences, derived):
         s = by["seelah.trickster.dead.effects_" + suffix]
         s.pop("Remote", None)
         s.update(ContactUnit=FYE, AnswerLists=[FYE_HUB],
-                 Areas=[DREZEN], Entry='"Fye, did the courier come back?"', Kind="conversation")
+                 Areas=[DREZEN], Entry='"Fye, did the courier come back?"')
+        s.pop("Kind", None)
     node(by[PREFIX + "dead.effects_reply"], "start")["Text"] = (
         '{n}Fye points to the courier waiting beside the door. She holds out a note, '
         'its seal protected beneath a fold of oilcloth. '

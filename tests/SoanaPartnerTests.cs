@@ -12,24 +12,30 @@ internal static class SoanaPartnerTests
         const string Area = "0a5654e7dc18f074d9356009d55eb51b";
         const string Returned = "soana.trickster.returned";
         var loss = new[] { "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" };
+        void Refresh(Snapshot w)
+        {
+            w.Flags.ExceptWith(story.Derived.Keys);
+            w.Flags.ExceptWith(story.Counts.Keys);
+            Rules.Complete(story, w);
+        }
         Scene S(string name, bool returned) => story.Scenes.Single(s => s.Id == K + name + (returned ? ".returned" : ""));
         Snapshot World(bool returned, string stance, int finances = 100, bool careful = false)
         {
             var w = new Snapshot { Chapter = 5, Hour = 5000, Area = Area,
                 CrusadeResources = new Dictionary<string, int> { ["Finances"] = finances } };
             w.AvailableContacts.Add(Unit);
-            w.Flags.UnionWith(new[] { "trickster", "trickster.ever", "soana.committed", stance });
+            w.Flags.UnionWith(new[] { "trickster", "trickster.ever", "soana.started", "soana.committed", stance });
             if (stance.EndsWith("exclusive", StringComparison.Ordinal)) w.Flags.Add(K + "exclusive_chosen");
             if (careful) w.Flags.Add(K + "bundle_hidden");
             if (returned) w.Flags.UnionWith(loss.Concat(new[] { Returned }));
             else w.Flags.Add("soana.after_quest");
-            Rules.Complete(story, w);
+            Refresh(w);
             foreach (var f in w.Flags) w.Times[f] = 4500;
             return w;
         }
         Snapshot Later(Snapshot w, int hours)
         {
-            var next = Program.Copy(w); next.Hour += hours; Rules.Complete(story, next); return next;
+            var next = Program.Copy(w); next.Hour += hours; Refresh(next); return next;
         }
         var allPages = new HashSet<string>();
         foreach (bool returned in new[] { false, true })
@@ -46,27 +52,54 @@ internal static class SoanaPartnerTests
             {
                 var w = Program.Copy(initial); w.Flags.Add(blocked);
                 // Main rebuilds derived current-path evidence from native readers.
-                w.Flags.Remove("trickster.now"); Rules.Complete(story, w);
+                Refresh(w);
                 check(!Rules.Available(story, dispatch, w), "Corven's new lead ignores " + blocked);
             }
-            foreach (var missing in new[] { "trickster", "soana.committed" })
+            foreach (var missing in new[] { "trickster", "soana.started" })
             {
                 var w = Program.Copy(initial); w.Flags.Remove(missing);
-                w.Flags.Remove("trickster.now"); Rules.Complete(story, w);
+                Refresh(w);
                 check(!Rules.Available(story, dispatch, w), "Corven's new lead is free without " + missing);
             }
             if (!returned)
                 foreach (string flag in loss)
                 {
-                    var w = Program.Copy(initial); w.Flags.Add(flag); Rules.Complete(story, w);
+                    var w = Program.Copy(initial); w.Flags.Add(flag); Refresh(w);
                     check(!Rules.Available(story, dispatch, w), "Dead Soana gets Corven's letter: " + flag);
                 }
             var noStance = Program.Copy(initial); noStance.Flags.Remove(stance);
-            check(!Rules.Available(story, dispatch, noStance), "Corven's dispatch opens without an answered stance.");
+            check(Rules.Available(story, dispatch, noStance), "Family inquiry incorrectly requires a romantic arrangement.");
+            if (stance.EndsWith("share", StringComparison.Ordinal))
+            {
+                var familyPaid = Program.Walk(dispatch, noStance, (id, _) => allPages.Add(dispatch.Id + "/" + id))
+                    .First(w => w.Has(K + "pursued") && !w.Has("soana.round2.correspondence_only"));
+                var familyReturns = Program.Walk(home, Later(familyPaid, 168), (id, _) => allPages.Add(home.Id + "/" + id));
+                check(familyReturns.Any(w => w.Has("soana.trickster.friends"))
+                    && familyReturns.Any(w => w.Has(K + "corven_together") && w.Has("soana.partner_stance.share")),
+                    "Family inquiry loses its friendship or negotiated romantic answer.");
+            }
             var absent = Program.Copy(initial); absent.AvailableContacts.Clear();
             check(!Rules.Available(story, dispatch, absent), "Corven's lead invents Soana's contact.");
             var outcomes = Program.Walk(dispatch, initial, (id, _) => allPages.Add(dispatch.Id + "/" + id));
-            var paid = outcomes.Single(w => w.Has(K + "pursued"));
+            var reply = S("reply", returned);
+            foreach (var letter in outcomes.Where(w => w.Has("soana.round2.correspondence_only")))
+            {
+                check(letter.CrusadeResources!["Finances"] == 100
+                    && !Rules.Available(story, home, Later(letter, 168)),
+                    "Correspondence charges for an escort or invents a physical arrival.");
+                check(!Rules.Available(story, reply, Later(letter, 167))
+                    && Rules.Available(story, reply, Later(letter, 168)),
+                    "The family letter ignores its journey.");
+                var replies = Program.Walk(reply, Later(letter, 168), (id, _) => allPages.Add(reply.Id + "/" + id));
+                check(replies.All(w => stance.EndsWith("secret", StringComparison.Ordinal)
+                    ? w.Has("soana.round2.family_reply") && !w.Has("soana.round2.reply_accepted")
+                    : w.Has(K + "corven_known_alive")),
+                    "The family reply loses its evidence or grants acceptance to the hidden affair.");
+            }
+            var escorts = outcomes.Where(w => w.Has(K + "pursued") && !w.Has("soana.round2.correspondence_only")).ToList();
+            check(escorts.Count > 0 && escorts.All(w => w.CrusadeResources!["Finances"] == 25
+                && !w.Has(K + "corven_known_alive")), "Every escorted family inquiry must pay before Corven answers.");
+            var paid = escorts.First();
             check(paid.CrusadeResources!["Finances"] == 25 && !paid.Has(K + "corven_known_alive"),
                 "Corven pursuit is unpaid or a signature becomes a living husband.");
             check(!Rules.Available(story, home, Later(paid, 167)) && Rules.Available(story, home, Later(paid, 168)),
@@ -89,7 +122,7 @@ internal static class SoanaPartnerTests
                     check(w.Has(K + "corven_separated") && w.Has(K + "affair_exposed") && w.Has(K + "romance_ended")
                           && w.Has("soana.closed"), "Corven forgives the affair for free.");
             }
-            var burned = outcomes.Single(w => w.Has(K + "buried"));
+            var burned = outcomes.First(w => w.Has(K + "buried"));
             check(!Rules.Available(story, exposed, Later(burned, 71)) && Rules.Available(story, exposed, Later(burned, 72)),
                 "The burned dispatch is discovered without its return journey.");
             foreach (var w in Program.Walk(exposed, Later(burned, 72), (id, _) => allPages.Add(exposed.Id + "/" + id)))
@@ -106,7 +139,7 @@ internal static class SoanaPartnerTests
                     check(final.Has(ending.Id), "Corven's breakup page has no terminal answer.");
             }
             foreach (var w in Program.Walk(dispatch, World(returned, stance, 74, careful)))
-                check(!w.Has(K + "pursued"), "Corven's escort is free when its debit is unaffordable.");
+                check(!w.Has(K + "pursued") || w.Has("soana.round2.correspondence_only"), "Corven's escort is free when its debit is unaffordable.");
         }
         foreach (bool returned in new[] { false, true })
         {
@@ -115,7 +148,7 @@ internal static class SoanaPartnerTests
             w.Flags.ExceptWith(new[] { "soana.committed", "soana.partner_stance.share" });
             w.Flags.UnionWith(returned ? new[] { "soana.trickster.accounting_invited" }
                                       : new[] { "soana.trickster.luck_kept", "soana.trickster.cost.die_in_her_bowl", "soana.trickster.luck_tested" });
-            Rules.Complete(story, w);
+            Refresh(w);
             check(Rules.Available(story, late, w), "Stance choices changed the postwar invitation gate.");
             var reached = new HashSet<string>();
             var histories = new List<Snapshot> { w };
@@ -123,7 +156,7 @@ internal static class SoanaPartnerTests
             if (returned)
             {
                 // Mid-page old-save coverage, not a claim that the off-path book opens.
-                alternative.Flags.Add("trickster.failed"); alternative.Flags.Remove("trickster.now");
+                alternative.Flags.Add("trickster.failed"); Refresh(alternative);
                 check(!Rules.Available(story, late, alternative), "Off-path late book is newly available.");
             }
             else alternative.Flags.Add("soana.late_thorn_tested");
@@ -151,11 +184,16 @@ internal static class SoanaPartnerTests
             if (known && !trickster) continue;
             var w = new Snapshot { Chapter = 6 };
             w.Flags.UnionWith(new[] { "chapter_later", "soana.committed", "soana.late_campaign_kept", "soana.partner_stance.share" });
+            // Round-two current love reads the actual family answer and
+            // renewed invitation; a historical commitment alone is insufficient.
+            w.Flags.UnionWith(new[] { "soana.started", "soana.after_quest", "soana.progression_kept",
+                "soana.late_thorn_tested", "soana.late_future_chosen" });
             if (trickster) w.Flags.UnionWith(new[] { "trickster", "trickster.ever" });
             if (known) w.Flags.UnionWith(new[] { K + "corven_known_alive", K + "corven_together" });
-            Rules.Complete(story, w);
+            Refresh(w);
             var ending = story.Scenes.Single(s => s.Id == "soana.ending_kept_life");
-            check(Rules.Available(story, ending, w), "Partner continuity changes kept-life postwar eligibility.");
+            check(Rules.Available(story, ending, w) == (!trickster || known),
+                "Kept-life ignores the current-path family answer or changes ordinary eligibility.");
             var visible = Rules.VisibleParagraphs(ending.Nodes[0], w);
             check(visible.Any(p => known ? p.Requires.Contains(K + "corven_together")
                                         : p.Forbids.Contains(K + "corven_known_alive")),

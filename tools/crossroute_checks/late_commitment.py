@@ -117,6 +117,27 @@ def outcome_woman(block):
             return woman
     if sid.endswith(".epilogue.commit") and block.node["Id"] in ("start", "waiting", "went_alone", "regrets_alone"):
         return "chivarro"
+    if sid.endswith(".epilogue.commit") and ".explicit." in block.node["Id"]:
+        # Round-two inserts wrap saved exits without changing the participant
+        # contract. Follow their effect-free continuations to the original
+        # solo page instead of treating every new insert as a pair reward.
+        nodes = {node["Id"]: node for node in block.scene["Nodes"]}
+        pending = [block.node["Id"]]
+        seen = set()
+        exits = set()
+        while pending:
+            identity = pending.pop()
+            if identity in seen:
+                continue
+            seen.add(identity)
+            if ".explicit." not in identity:
+                exits.add(identity)
+                continue
+            for answer in nodes.get(identity, {}).get("Choices", []):
+                if answer.get("Next"):
+                    pending.append(answer["Next"])
+        if exits and exits <= {"went_alone", "regrets_alone"}:
+            return "chivarro"
     return None
 
 

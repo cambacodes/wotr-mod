@@ -3048,6 +3048,10 @@
           "scene": "herrax.lastcall.page",
           "predicate": "herrax.payoff.partner",
           "provenance": "derived: Last Call coda uses the existing earned ordinary/late entitlement, including framework-owned scenes"
+        },
+        {
+          "scene": "herrax.trickster.epilogue.after_hours.invitation",
+          "predicate": "herrax.payoff.partner"
         }
       ],
       "residuals": [],
@@ -7514,41 +7518,39 @@
           "scene": "nocticula.trickster.defeated.chair",
           "node": "partner_terms.verdict_true.0.accepted",
           "choice": 0,
-          "effects": [
-            "noct.complete",
-            "nocticula.trickster.said_yes"
-          ],
-          "provenance": "resolve-eng3: integrated stance/partner/polish acceptance producer; existing effects preserved"
+          "effects": [],
+          "provenance": "r2c: retained intermediary; final acceptance moved to yes after the personal question."
         },
         {
           "scene": "nocticula.trickster.defeated.chair",
           "node": "partner_terms.verdict_true.1.accepted",
           "choice": 0,
-          "effects": [
-            "noct.complete",
-            "nocticula.trickster.said_yes"
-          ],
-          "provenance": "resolve-eng3: integrated stance/partner/polish acceptance producer; existing effects preserved"
+          "effects": [],
+          "provenance": "r2c: retained intermediary; final acceptance moved to yes after the personal question."
         },
         {
           "scene": "nocticula.trickster.defeated.chair",
           "node": "partner_terms.verdict_joke.0.accepted",
           "choice": 0,
-          "effects": [
-            "noct.complete",
-            "nocticula.trickster.said_yes"
-          ],
-          "provenance": "resolve-eng3: integrated stance/partner/polish acceptance producer; existing effects preserved"
+          "effects": [],
+          "provenance": "r2c: retained intermediary; final acceptance moved to yes after the personal question."
         },
         {
           "scene": "nocticula.trickster.defeated.chair",
           "node": "partner_terms.verdict_joke.1.accepted",
           "choice": 0,
+          "effects": [],
+          "provenance": "r2c: retained intermediary; final acceptance moved to yes after the personal question."
+        },
+        {
+          "scene": "nocticula.trickster.defeated.chair",
+          "node": "yes",
+          "choice": 0,
           "effects": [
             "noct.complete",
             "nocticula.trickster.said_yes"
           ],
-          "provenance": "resolve-eng3: integrated stance/partner/polish acceptance producer; existing effects preserved"
+          "provenance": "r2c: final personal acceptance, after her shade-paid or refused answer."
         }
       ],
       "late": [],
@@ -8895,6 +8897,11 @@
           "predicate": "soana.lastcall.callable",
           "classification": "specific incurred debt/creditor call; current cost or deed contract, independent of courtship",
           "provenance": "derived from the existing Last Call callable cost groups and their resolved/closed negatives"
+        },
+        {
+          "scene": "soana.trickster.epilogue.living_late",
+          "predicate": "soana.round2.postwar_ready",
+          "provenance": "Round 2 living courtship: existing invitation and family-answer history with current closure/death revokers; no new prewar commitment required."
         }
       ],
       "residuals": [
@@ -11958,6 +11965,10 @@
       "surfaces": [
         {
           "scene": "noct.acq.epilogue.correspondence",
+          "predicate": "nocticula.acquisition.payoff.ordinary"
+        },
+        {
+          "scene": "nocticula.acquisition.lastcall.page",
           "predicate": "nocticula.acquisition.payoff.ordinary"
         }
       ],
@@ -18977,6 +18988,16 @@
           "soana.lastcall.page",
           "page",
           4
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          0
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          0
         ]
       ]
     },
@@ -19191,6 +19212,16 @@
           "soana.lastcall.page",
           "page",
           5
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          1
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          1
         ]
       ]
     },
@@ -19405,6 +19436,16 @@
           "soana.lastcall.page",
           "page",
           6
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          2
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          2
         ]
       ]
     },
@@ -19619,6 +19660,16 @@
           "soana.lastcall.page",
           "page",
           7
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          3
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          3
         ]
       ]
     },
@@ -19833,6 +19884,16 @@
           "soana.lastcall.page",
           "page",
           8
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          4
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          4
         ]
       ]
     },
@@ -20044,6 +20105,16 @@
           "soana.lastcall.page",
           "page",
           9
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          5
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          5
         ]
       ]
     },
@@ -20255,6 +20326,16 @@
           "soana.lastcall.page",
           "page",
           10
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          6
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          6
         ]
       ]
     },
@@ -20465,6 +20546,16 @@
           "soana.lastcall.page",
           "page",
           11
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          7
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          7
         ]
       ]
     },
@@ -20676,6 +20767,16 @@
           "soana.lastcall.page",
           "page",
           12
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          8
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          8
         ]
       ]
     },
@@ -20886,6 +20987,16 @@
           "soana.lastcall.page",
           "page",
           13
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          9
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          9
         ]
       ]
     },
@@ -21097,6 +21208,16 @@
           "soana.lastcall.page",
           "page",
           14
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          10
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          10
         ]
       ]
     },
@@ -21308,6 +21429,16 @@
           "soana.lastcall.page",
           "page",
           15
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          11
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          11
         ]
       ]
     },
@@ -21524,6 +21655,16 @@
           "soana.lastcall.page",
           "page",
           16
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          12
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          12
         ]
       ]
     },
@@ -27353,6 +27494,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           0
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          4
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          4
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          4
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          4
         ]
       ]
     },
@@ -27598,6 +27759,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           1
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          5
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          5
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          5
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          5
         ]
       ]
     },
@@ -27857,6 +28038,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           11
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          15
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          15
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          15
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          15
         ]
       ]
     },
@@ -28098,6 +28299,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           12
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          16
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          16
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          16
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          16
         ]
       ]
     },
@@ -28338,6 +28559,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           13
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          17
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          17
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          17
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          17
         ]
       ]
     },
@@ -28579,6 +28820,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           14
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          18
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          18
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          18
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          18
         ]
       ]
     },
@@ -28819,6 +29080,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           15
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          19
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          19
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          19
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          19
         ]
       ]
     },
@@ -29064,6 +29345,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           17
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          21
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          21
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          21
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          21
         ]
       ]
     },
@@ -29310,6 +29611,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           18
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          22
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          22
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          22
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          22
         ]
       ]
     },
@@ -29557,6 +29878,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           19
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          23
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          23
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          23
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          23
         ]
       ]
     },
@@ -29804,6 +30145,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           20
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          24
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          24
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          24
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          24
         ]
       ]
     },
@@ -30049,6 +30410,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           21
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          25
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          25
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          25
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          25
         ]
       ]
     },
@@ -30290,6 +30671,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           22
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          26
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          26
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          26
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          26
         ]
       ]
     },
@@ -30533,6 +30934,26 @@
           "noct.acq.epilogue.correspondence",
           "page",
           23
+        ],
+        [
+          "nocticula.acquisition.lastcall.page",
+          "page",
+          27
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          27
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "conversation",
+          27
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "letters",
+          27
         ]
       ]
     },
@@ -30847,6 +31268,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           24
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          28
         ]
       ]
     },
@@ -30872,6 +31298,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           25
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          29
         ]
       ]
     },
@@ -30898,6 +31329,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           26
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          30
         ]
       ]
     },
@@ -30924,6 +31360,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           27
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          31
         ]
       ]
     },
@@ -30949,6 +31390,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           28
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          32
         ]
       ]
     },
@@ -30971,6 +31417,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           29
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          33
         ]
       ]
     },
@@ -30994,6 +31445,11 @@
           "nocticula.trickster.epilogue.commit",
           "after_refused",
           30
+        ],
+        [
+          "noct.acq.epilogue.correspondence",
+          "morning",
+          34
         ]
       ]
     },

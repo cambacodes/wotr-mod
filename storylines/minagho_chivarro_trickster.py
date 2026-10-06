@@ -1063,6 +1063,8 @@ def integrate(payload):
     minagho_chivarro_stance.integrate(payload)
     from storylines import minagho_round2
     minagho_round2.integrate(payload)
+    from storylines import chivarro_setpieces
+    chivarro_setpieces.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

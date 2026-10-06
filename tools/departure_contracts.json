@@ -314,6 +314,26 @@
         {
           "scene": "seelah.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "seelah.trickster.dead.list_reclaimed",
+          "letter": false
+        },
+        {
+          "scene": "seelah.trickster.after.list_reclaimed",
+          "letter": false
+        },
+        {
+          "scene": "seelah.trickster.dismissed.second_ask_paid",
+          "letter": false
+        },
+        {
+          "scene": "seelah.early.cart_evening",
+          "letter": false
+        },
+        {
+          "scene": "seelah.early.bad_cup",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -780,6 +800,10 @@
         {
           "scene": "konomi.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "konomi.trickster.never_arrived.second_supper",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -2100,6 +2124,18 @@
           "scene": "soana.partner.returned_letter.returned",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "soana.partner.reply",
+          "letter": false
+        },
+        {
+          "scene": "soana.partner.reply.returned",
+          "letter": false
+        },
+        {
+          "scene": "soana.trickster.epilogue.living_late",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -9146,6 +9182,34 @@
         {
           "scene": "nurah.trickster.epilogue.unwritten",
           "reason": "Explicit death closure: her execution and the manuscript she left behind; original death and non-return guards retained."
+        },
+        {
+          "scene": "nurah.trickster.react.camellia_pardon_discreet",
+          "reason": "Camellia comments on the pardon; Nurah is not present."
+        },
+        {
+          "scene": "nurah.trickster.react.camellia_draft_discreet",
+          "reason": "Camellia discusses the departed pamphleteer; Nurah is not present."
+        },
+        {
+          "scene": "nurah.trickster.react.camellia_veiled_draft_discreet",
+          "reason": "Camellia sends the card about the departed pamphleteer; Nurah is not present."
+        },
+        {
+          "scene": "nurah.trickster.react.irabeth_manuscript",
+          "reason": "Irabeth discusses the departed prisoner and her manuscript."
+        },
+        {
+          "scene": "nurah.trickster.react.camellia_manuscript",
+          "reason": "Camellia discusses the departed prisoner and her manuscript."
+        },
+        {
+          "scene": "nurah.trickster.epilogue.owned_line",
+          "reason": "Refusal history: Nurah stays in her cell; no reunion or invitation."
+        },
+        {
+          "scene": "nurah.trickster.epilogue.last_word",
+          "reason": "Closed correspondence history: no further letter or introduction."
         }
       ],
       "presences": [
@@ -9627,6 +9691,14 @@
         {
           "scene": "hepzamirah.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "hepzamirah.trickster.flesh.drill_result",
+          "letter": false
+        },
+        {
+          "scene": "hepzamirah.trickster.bond.scouts_result",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -9653,6 +9725,14 @@
         {
           "scene": "hepzamirah.trickster.epilogue.refused",
           "reason": "explicit accepted departure: she left Drezen and her later absent history is reported"
+        },
+        {
+          "scene": "hepzamirah.trickster.bond.hunt_shadow",
+          "reason": "Historical expedition report explicitly states she has not returned."
+        },
+        {
+          "scene": "hepzamirah.trickster.bond.hunt_caught",
+          "reason": "Historical failed pursuit report; the Commander returns alone."
         }
       ],
       "presences": [
@@ -12971,6 +13051,26 @@
         {
           "scene": "mielarah.lastcall.page",
           "provenance": "derived: current woman in her paid Last Call coda"
+        },
+        {
+          "scene": "mielarah.trickster.fourth.arrival",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.trickster.fourth.arrival.arcade",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.trickster.spade.watch_arcade",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.trickster.charter.arrival",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.trickster.charter.arrival.arcade",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -13017,6 +13117,14 @@
         {
           "scene": "mielarah.trickster.raid.ashore",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "mielarah.trickster.storm.survivor_drezen",
+          "reason": "Recovery report of the earned survivor message, carried from the Isles; sibling of storm.survivor, not a fresh invitation."
+        },
+        {
+          "scene": "mielarah.trickster.raid.ashore_drezen",
+          "reason": "Earned physical recovery arrival; sibling of raid.ashore, before its return receipt is recorded."
         }
       ],
       "presences": [
@@ -13486,6 +13594,22 @@
         {
           "scene": "shamira.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "shamira.trickster.react.arueshalae_inside_corrupted",
+          "letter": false
+        },
+        {
+          "scene": "shamira.trickster.react.arueshalae_inside_unseen_corrupted",
+          "letter": false
+        },
+        {
+          "scene": "shamira.trickster.react.arueshalae_walking_corrupted",
+          "letter": false
+        },
+        {
+          "scene": "shamira.trickster.epilogue.invited",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -14567,6 +14691,14 @@
         {
           "scene": "herrax.lastcall.page",
           "provenance": "derived: current woman in her paid Last Call coda"
+        },
+        {
+          "scene": "herrax.trickster.epilogue.after_hours.invitation",
+          "letter": false
+        },
+        {
+          "scene": "herrax.house.unpriced_guest",
+          "letter": false
         }
       ],
       "absence_variants": [

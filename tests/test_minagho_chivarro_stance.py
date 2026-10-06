@@ -14,7 +14,8 @@ from tools.canon_partner_lint import _dialogue_replacements
 class MinaghoChivarroStanceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((Path(__file__).resolve().parents[1] / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        from tests.story_fixture import fresh_story
+        cls.story = fresh_story()
         cls.model = rrt_verify.Model(cls.story)
         cls.scenes = {s['Id']: s for s in cls.story['Scenes']}
         cls.dialogue_replacements = _dialogue_replacements(cls.story)
@@ -33,7 +34,22 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
                 for before, after in zip(original['Nodes'], revised['Nodes']):
                     self.assertGreaterEqual(len(after['Choices']), len(before['Choices']))
                     for old, new in zip(before['Choices'], after['Choices']):
-                        self.assertTrue(set(old['Set']).issubset(new['Set']))
+                        if (original['Id'] == stance.P + 'after.the_price_of_her_name_letter'
+                                and before['Id'] == 'start' and old is before['Choices'][0]):
+                            paying = next(n for n in revised['Nodes'] if n['Id'] == 'verdict_paid')
+                            self.assertEqual(old['Set'], paying['Choices'][0]['Set'])
+                            self.assertEqual(new['Set'], [])
+                        elif (old['Next'] is None and '.explicit.' in (new['Next'] or '')
+                              and new['Set'] != old['Set']):
+                            by_id = {n['Id']: n for n in revised['Nodes']}
+                            paying = by_id[new['Next']]
+                            target = paying['Choices'][0]['Next']
+                            if target and target.endswith('.after'):
+                                paying = by_id[target]
+                            self.assertEqual(old['Set'], paying['Choices'][0]['Set'])
+                            self.assertEqual(new['Set'], [])
+                        else:
+                            self.assertTrue(set(old['Set']).issubset(new['Set']))
 
     def test_commitment_producers_record_exactly_one_initial_stance(self):
         produced = set()
@@ -156,7 +172,7 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
             self.assertTrue(nights)
             for night in nights:
                 target = night['Choices'][0]['Next']
-                if '.explicit.' in target:
+                if '.explicit.' in (target or ''):
                     slot = nodes[target]
                     self.assertEqual(slot['Choices'][0]['Set'], [])
                     target = slot['Choices'][0]['Next']
@@ -169,6 +185,16 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
             self.assertEqual(set(branches['morning']['Forbids']), {stance.S + 'discovery_due', stance.S + 'letter_due'})
             witnessed += 1
         self.assertGreater(witnessed, 0)
+
+    def test_solo_insert_keeps_its_original_participant_contract(self):
+        from types import SimpleNamespace
+        from tools.crossroute_checks.late_commitment import outcome_woman
+        page = self.scenes[stance.P + 'epilogue.commit']
+        nodes = {node['Id']: node for node in page['Nodes']}
+        for ordinal, woman in ((1, None), (2, 'chivarro')):
+            node = nodes[page['Id'] + '.explicit.' + str(ordinal)]
+            self.assertEqual(outcome_woman(SimpleNamespace(
+                route=stance.REL, scene=page, node=node)), woman)
 
     def test_own_lastcall_entry_does_not_accumulate_paragraphs_on_reexport(self):
         from storylines import lastcall_partners

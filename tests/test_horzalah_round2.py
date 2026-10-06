@@ -25,7 +25,15 @@ class HorzalahRound2Tests(unittest.TestCase):
     def test_cut_checkpoint_resumes_remainder_without_paid_outcome(self):
         for suffix, opening in (("mercy.gift", "guess"), ("unmet.knife", "start"), ("late.at_night", "start")):
             cut = self.node(suffix, "cut")
-            flags = set(cut["EnterSet"])
+            if self.scenes[route.H + suffix].get("NativeReturnCue"):
+                self.assertFalse(cut.get("EnterSet"))
+                incoming = [answer for node in self.scenes[route.H + suffix]["Nodes"]
+                            for answer in node["Choices"] if answer["Next"] == "cut"]
+                self.assertTrue(incoming)
+                self.assertTrue(all(route.EAR in answer["Set"] for answer in incoming))
+                flags = set(incoming[0]["Set"])
+            else:
+                flags = set(cut["EnterSet"])
             self.assertIn(route.EAR, flags)
             self.assertNotIn(route.PRIMED, flags)
             self.assertNotIn(route.RETURNED, flags)
