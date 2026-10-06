@@ -320,7 +320,7 @@ internal static class HorzalahTricksterTests
 
         // The late page keeps the gift's history: offered only if it never was; the freed hatter and the declined gift remembered.
         var latePage = pages.Single(s => s.Id == P + "epilogue.commit").Nodes[0];
-        int Shown(Snapshot st, string fragment) => latePage.Paragraphs.Count(q => Rules.ParagraphVisible(q, st) && q.Text.Contains(fragment));
+        int Shown(Snapshot st, string fragment) => latePage.Paragraphs.Count(q => Rules.ParagraphVisible(q, st) && SurfaceIds.Has(SurfaceIds.Of(story, q), fragment));
         var neverTested = World(story, 6, "trickster.ever", Wants, Tested);
         var freedLate = World(story, 6, "trickster.ever", Wants, Tested, P + "cost.gift_freed");
         // A Commander who stayed dead gets the mourning page, never a page that assumes a long life; one brought back keeps them.
@@ -333,8 +333,7 @@ internal static class HorzalahTricksterTests
                   && Avail(pg["epilogue.mourned"], World(story, 6, dead.Concat(flags).ToArray())) && !Avail(pg["epilogue.mourned"], World(story, 6, back.Concat(flags).ToArray())),
                 "A living-Commander page plays after a permanent sacrifice, or the mourning page does not: " + id);
         var declinedLate = World(story, 6, "trickster.ever", Wants, Tested);
-        check(!latePage.Text.Contains("thin gold chain") && Shown(freedLate, "sold hats") == 1
-              && Shown(declinedLate, "sold hats") == 0 && Shown(declinedLate, "made her collars") == 1 && Shown(freedLate, "made her collars") == 0,
+        check(Shown(freedLate, "[horzalah.trickster.epilogue.commit/page/paragraph/0]") == 1 && Shown(declinedLate, "[horzalah.trickster.epilogue.commit/page/paragraph/0]") == 0 && Shown(declinedLate, "[horzalah.trickster.epilogue.commit/page/paragraph/1]") == 1 && Shown(freedLate, "[horzalah.trickster.epilogue.commit/page/paragraph/1]") == 0,
             "The late page offers the gift again, or forgets how it went.");
         // The dwarf's three mistakes are remembered only where he told them (Horzalah_Mercy/Cue_0011).
         var dwarfStart = beats.Single(s => s.Id == P + "beat.dwarf").Nodes.Single(n => n.Id == "start").Choices;

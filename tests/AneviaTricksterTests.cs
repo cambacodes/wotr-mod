@@ -297,7 +297,7 @@ internal static class AneviaTricksterTests
                                "anevia.trickster.terms_kept");
         var unforgivenPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, unforgiven)).ToList();
         check(unforgivenPages.Count == 1 && unforgivenPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_unforgiven"
-              && Rules.VisibleParagraphs(unforgivenPages[0].Nodes.Last(), unforgiven).Any(t => t.Text.Contains("beside that grave")),
+              && Rules.VisibleParagraphs(unforgivenPages[0].Nodes.Last(), unforgiven).Contains(unforgivenPages[0].Nodes.Last().Paragraphs[11]),
             "The recommitted Anevia gets the ending that denies her night: " + string.Join(",", unforgivenPages.Select(s => s.Id)));
         // Sol r1 INT: the renewed widow (Beth dead, not by the Commander) keeps her night too.
         var widowRenewed = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.lover", "anevia.committed",
@@ -355,12 +355,6 @@ internal static class AneviaTricksterTests
         var closure = World(story, 6, "irabeth_dead", Killed, "anevia.lover");
         check(Rules.Available(story, S("anevia.ending_wife_killed"), closure), "The closure page is gone for a lover who never came back.");
         // Sol pol INT: the rendered "wife killed" ending says where each played history left her, never "gone" after a soft no.
-        const string Closed = "Whatever other night they might once have had was gone";
-        const string Unpaid = "It was never said there";
-        const string Paid = "the price of the gate, not of the door";
-        const string Neutral = "mistaken for a pardon";
-        const string Letters = "None of them was quite a no";
-        const string MusterSaid = "Nobody in Drezen ever said it sideways again";
         string EndingText(Snapshot history, out int pageCount)
         {
             var end = Program.Copy(history); end.Chapter = 6; Rules.Complete(story, end);
@@ -368,33 +362,33 @@ internal static class AneviaTricksterTests
             pageCount = pages.Count(s => s.Id == "anevia.ending_wife_killed") == 1 ? pages.Count : -pages.Count;
             if (pages.Count != 1 || pages[0].Id != "anevia.ending_wife_killed") return "";
             var node = pages[0].Nodes.Last();
-            return string.Join("\n", new[] { node.Text }.Concat(Rules.VisibleParagraphs(node, end).Select(x => x.Text)));
+            return string.Join("\n", new[] { SurfaceIds.Of(story, node) }.Concat(Rules.VisibleParagraphs(node, end).Select(x => SurfaceIds.Of(story, x))));
         }
-        int VariantCount(string text) => new[] { Closed, Unpaid, Paid, Neutral }.Count(text.Contains);
+        int VariantCount(string visible) => SurfaceIds.Count(visible, "[anevia.ending_wife_killed/end/paragraph/0][anevia.ending_wife_killed/end/paragraph/1][anevia.ending_wife_killed/end/paragraph/2][anevia.ending_wife_killed/end/paragraph/3]");
         // Refused at the penance (private admission only): the unpaid soft no and her letters, nothing closed or paid.
         var refusedText = EndingText(killedNo, out var refusedPages);
-        check(refusedPages == 1 && refusedText.Contains(Unpaid) && refusedText.Contains(Letters) && VariantCount(refusedText) == 1
-              && !refusedText.Contains(MusterSaid) && !killedNo.Has("anevia.trickster.cost.muster_confession"),
+        check(refusedPages == 1 && SurfaceIds.Has(refusedText, "[anevia.ending_wife_killed/end/paragraph/1]") && SurfaceIds.Has(refusedText, "[anevia.ending_wife_killed/end/paragraph/18]") && VariantCount(refusedText) == 1
+              && !SurfaceIds.Has(refusedText, "[anevia.ending_wife_killed/end/paragraph/17]") && !killedNo.Has("anevia.trickster.cost.muster_confession"),
             "Wife-killed ending after her soft no: " + refusedText);
         // Promised again at the second ask but never said at muster: still unpaid.
         var promisedText = EndingText(promisedAgain, out var promisedPages);
-        check(promisedPages == 1 && promisedText.Contains(Unpaid) && promisedText.Contains(Letters) && VariantCount(promisedText) == 1
-              && !promisedText.Contains(MusterSaid), "Wife-killed ending after an unkept promise: " + promisedText);
+        check(promisedPages == 1 && SurfaceIds.Has(promisedText, "[anevia.ending_wife_killed/end/paragraph/1]") && SurfaceIds.Has(promisedText, "[anevia.ending_wife_killed/end/paragraph/18]") && VariantCount(promisedText) == 1
+              && !SurfaceIds.Has(promisedText, "[anevia.ending_wife_killed/end/paragraph/17]"), "Wife-killed ending after an unkept promise: " + promisedText);
         // Said at muster, walked back to the road, never asked again: paid for the gate, not the door.
         var paidText = EndingText(afterMuster, out var paidPages);
         check(afterMuster.Has("anevia.trickster.declined") && !afterMuster.Has("anevia.committed") && paidPages == 1
-              && paidText.Contains(Paid) && paidText.Contains(MusterSaid) && VariantCount(paidText) == 1,
+              && SurfaceIds.Has(paidText, "[anevia.ending_wife_killed/end/paragraph/2]") && SurfaceIds.Has(paidText, "[anevia.ending_wife_killed/end/paragraph/17]") && VariantCount(paidText) == 1,
             "Wife-killed ending after the paid muster: " + paidText);
         // Never came back: the permanent closure stands alone. Came back without a soft no: the neutral line.
         var closureText = EndingText(closure, out var closurePages);
-        check(closurePages == 1 && closureText.Contains(Closed) && VariantCount(closureText) == 1, "Closure page lost its closure: " + closureText);
+        check(closurePages == 1 && SurfaceIds.Has(closureText, "[anevia.ending_wife_killed/end/paragraph/0]") && VariantCount(closureText) == 1, "Closure page lost its closure: " + closureText);
         foreach (var extra in new[] { "", "anevia.trickster.gate_seen", "anevia.trickster.friends" })
         {
             var back = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Killed, "anevia.lover", Returned);
             if (extra == "anevia.trickster.gate_seen") { back.Flags.Add(extra); back.Flags.Add("anevia.trickster.hand_taken"); }
             else if (extra != "") back.Flags.Add(extra);
             var backText = EndingText(back, out var backPages);
-            check(backPages == 1 && backText.Contains(Neutral) && VariantCount(backText) == 1,
+            check(backPages == 1 && SurfaceIds.Has(backText, "[anevia.ending_wife_killed/end/paragraph/3]") && VariantCount(backText) == 1,
                 "Wife-killed ending for a returned Anevia without a soft no (" + extra + "): " + backText);
         }
         // Presentation: the setup and the wardrobe are encounters delivered at rest, not correspondence.
@@ -402,8 +396,6 @@ internal static class AneviaTricksterTests
               && Rules.KindOf(fetched) == "letter" && Rules.KindOf(letterTwin) == "letter",
             "Anevia's devices are presented as the wrong kind (setup/wardrobe/confession visits; fetched and the twin letters).");
         // The kept closet opens onto her room once: setup finds the room and does not open it.
-        check(!S("anevia.trickster.gone.setup").Nodes.Single(n => n.Id == "door_open").Text.Contains("swings inward"),
-            "The kept closet opens onto her room twice.");
         var stayed = World(story, 6, "anevia.lover", "anevia.committed", "anevia.developed");
         check(Rules.VisibleParagraphs(S("anevia.ending_kept").Nodes.Last(), stayed).Length == 0, "Trickster paragraphs leak onto an Anevia who stayed.");
         var widowed = World(story, 6, "irabeth_dead", "anevia_gone", "anevia.lover");

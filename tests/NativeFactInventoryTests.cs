@@ -34,15 +34,16 @@ internal static class NativeFactInventoryTests
         return state;
     }
 
-    private static string Render(Scene scene, string id, Snapshot state, Action<bool, string> check, string scenario)
+    private static HashSet<string> Render(Scene scene, string id, Snapshot state, Action<bool, string> check, string scenario)
     {
-        var output = new List<string>();
+        var output = new HashSet<string>();
         void Visit(string nodeId, Snapshot from, HashSet<string> path)
         {
             check(path.Add(nodeId), "Q7-10 cycle: " + scenario + "/" + nodeId);
             var node = scene.Nodes.Single(n => n.Id == nodeId);
-            output.Add(node.Text);
-            output.AddRange(Rules.VisibleParagraphs(node, from).Select(p => p.Text));
+            output.Add(node.Id);
+            foreach (var paragraph in Rules.VisibleParagraphs(node, from))
+                output.Add(node.Id + "/paragraph/" + node.Paragraphs.IndexOf(paragraph));
             var choices = node.Choices.Where(c => Rules.ChoiceAvailable(c, from)).ToArray();
             check(choices.Length > 0, "Q7-10 no selectable answer: " + scenario + "/" + nodeId);
             foreach (var choice in choices)
@@ -56,7 +57,7 @@ internal static class NativeFactInventoryTests
             }
         }
         Visit(id, state, new HashSet<string>());
-        return string.Join("\n", output);
+        return output;
     }
 
     internal static Snapshot EarnReunion(Story story, Action<bool, string> check)
@@ -120,26 +121,21 @@ internal static class NativeFactInventoryTests
                 check(targets.Contains(target.GetString()), "Q7-10 missing history branch: " + name + "/" + target.GetString());
             foreach (var target in fixture.GetProperty("excluded").EnumerateArray())
                 check(!targets.Contains(target.GetString()), "Q7-10 unearned history branch: " + name + "/" + target.GetString());
-            string rendered = Render(scene, nodeId, state, check, name);
-            string contains = fixture.GetProperty("contains").GetString()!, omits = fixture.GetProperty("omits").GetString()!;
-            // Arueshalae recalls her earned first dream while awake. Keep the
-            // same positive receipt and no-receipt negative with the revised prose.
-            if (sceneId == "arueshalae.treatment.nightmare")
-            {
-                contains = contains.Replace("goddess showed me", "thinking about my first dream");
-                omits = omits.Replace("goddess showed me", "thinking about my first dream");
-            }
-            check(contains.Length == 0 || rendered.Contains(contains), "Q7-10 missing account: " + name + "/" + contains);
-            check(omits.Length == 0 || !rendered.Contains(omits), "Q7-10 false account: " + name + "/" + omits);
+            var visited = Render(scene, nodeId, state, check, name);
+            var expected = fixture.GetProperty("visited_any").EnumerateArray().Select(id => id.GetString()!).ToArray();
+            check(expected.Length == 0 || expected.Any(visited.Contains), "Q7-10 missing callback slot: " + name + "/" + string.Join(",", expected));
+            foreach (var id in fixture.GetProperty("not_visited").EnumerateArray())
+                check(!visited.Contains(id.GetString()!), "Q7-10 unearned callback slot: " + name + "/" + id.GetString());
             Console.WriteLine("Q7-10 EXECUTED " + name + " observations=" + observations.GetRawText()
-                + " rendered=" + rendered.Replace('\n', ' '));
+                + " visited=" + string.Join(",", visited));
+
         }
 
         // The historical visitor/arcade conversations no longer ship. Never recreate them for a fixture.
         check(!story.Scenes.Any(s => s.Id == "nenio.folio.who_are_you_visitor" || s.Id == "nenio.folio.who_are_you_arcade"),
             "Q7-10 historical who_are_you twins reappeared");
         var handled = story.Scenes.Single(s => s.Id == "eritrice.council.the_motion_to_expel_voted").Nodes.Single(n => n.Id == "handled");
-        check(!handled.Text.Contains("undertaking") && handled.Choices.All(c => c.Crusade == null),
+        check(handled.Choices.All(c => c.Crusade == null),
             "Q7-10 unimplemented paid undertaking reappeared");
 
         // Select both actually earned Areelu outcomes, with the route wager/commitment retained.
@@ -168,9 +164,9 @@ internal static class NativeFactInventoryTests
         {
             var state = new Snapshot();
             state.Flags.Add(native ? "galfrey.romance_finished" : "galfrey.trickster.alive.committed");
-            var text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => p.Text));
-            check(text.Contains(native ? "laid down the crown" : "kept her crown"), "Q7-10 Galfrey provenance lost");
-            check(!text.Contains(native ? "kept her crown" : "laid down the crown"), "Q7-10 Galfrey incompatible crown history");
+            var text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => SurfaceIds.Of(story, p)));
+            check(SurfaceIds.Has(text, native ? "[galfrey.lastcall.page/page/paragraph/6]" : "[galfrey.lastcall.page/page/paragraph/5]"), "Q7-10 Galfrey provenance lost");
+            check(!SurfaceIds.Has(text, native ? "[galfrey.lastcall.page/page/paragraph/5]" : "[galfrey.lastcall.page/page/paragraph/6]"), "Q7-10 Galfrey incompatible crown history");
         }
     }
 }

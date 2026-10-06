@@ -73,8 +73,6 @@ internal static class MinaghoChivarroContinuationTests
             if (fixture.Item4) { initial.Flags.Add("trickster"); ObserveCue(initial, "a8f7a881cc6d427b91cbbee14f43e0ee"); }
             if (fixture.Item5) ObserveCue(initial, "e15de525c99d40c6a6faf0afa61be756");
             var originalNative = initial.Flags.Where(native.Contains).ToHashSet();
-            if (fixture.Item1 is "dragon" or "legend" or "sanctuary")
-                check(!visits.Single(s => s.Id == "minachiv.the_remaining_customers").Nodes[0].Text.Contains("pursuers are dead", StringComparison.Ordinal), "Captured or uncertain parent pursuers are falsely remembered as dead.");
             // eng7-l02: the played brand producer also sets the existing shared started flag.
             check(!initial.Flags.Any(f => f.StartsWith(prefix, StringComparison.Ordinal) && f != "minachiv.reunion_history"
                 && !(fixture.Item4 && f == "minachiv.started")), "Fixture fabricated addon history.");

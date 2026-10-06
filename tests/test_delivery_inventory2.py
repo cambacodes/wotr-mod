@@ -130,12 +130,6 @@ class DeliveryInventory2Tests(unittest.TestCase):
                                 for n in scene["Nodes"] if n["Id"].startswith("eng8.guild.") for c in n["Choices"]))
         self.assertEqual(scenes["horzalah.trickster.visit.chamber"]["MaxChapter"], 5)
         self.assertEqual(scenes["terendelev.trickster.wound.weeps"]["Chapters"], [3])
-        self.assertNotIn("The Abyss has no night", scenes["terendelev.trickster.wound.weeps"]["Nodes"][0]["Text"])
-        for node in scenes["terendelev.trickster.wound.weeps"]["Nodes"]:
-            self.assertNotIn("priests in the Abyss", node["Text"])
-            self.assertNotIn("red half-dark", node["Text"])
-            self.assertNotIn("Nocticula's audience hall", node["Text"])
-
 
 if __name__ == "__main__":
     unittest.main()

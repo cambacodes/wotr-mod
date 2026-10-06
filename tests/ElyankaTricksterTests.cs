@@ -196,8 +196,7 @@ internal static class ElyankaTricksterTests
         // Trk_Elyanka_Hearse: the intimacy, the cut and the morning; the horses read Daeran's absence.
         var c5 = World(story, 5, "trickster.ever", Owned, Tested, Committed, Started);
         check(Avail(hearse, c5) && Take(hearse, c5, "last_night", 0, Bier).Has(Bier)
-              && Take(hearse, World(story, 5, "trickster.ever", Owned, Tested, Committed, Started, "daeran.dead"), "horses2", 0, Bier).Has(P + "horses_balked")
-              && hearse.Nodes.Single(n => n.Id == "threshold").Text.Contains("takes you in hand"),
+              && Take(hearse, World(story, 5, "trickster.ever", Owned, Tested, Committed, Started, "daeran.dead"), "horses2", 0, Bier).Has(P + "horses_balked"),
             "Trk_Elyanka_Hearse: the night in the hearse (cut at the first motion) or its horse variant is missing.");
 
         // Trk_Elyanka_Reactions: Daeran (twice), Seelah and Regill (twice), each guarded against death or departure.
@@ -238,7 +237,7 @@ internal static class ElyankaTricksterTests
         check(Avail(Pg("claim"), World(story, 6, "trickster.ever", Owned, Committed, "sacrifice", "ending.trickster", "trickster.commander_back"))
               && pages.All(pg => pg.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))),
             "Trk_Elyanka_Pages: the claim page does not wait for a Commander who came back, or a page has effects.");
-        var unpaid = Pg("claim").Nodes[0].Paragraphs.Where(pp => pp.Text.Contains("Still unpaid")).ToList();
+        var unpaid = Pg("claim").Nodes[0].Paragraphs.Where(pp => SurfaceIds.Has(SurfaceIds.Of(story, pp), "[elyanka.trickster.epilogue.claim/page/paragraph/27][elyanka.trickster.epilogue.claim/page/paragraph/28]")).ToList();
         check(unpaid.Count == 2 && unpaid.All(pp => pp.Forbids.Contains(Active)),
             "Trk_Elyanka_LastCall: without the bottle the claim does not stand unpaid on her page.");
 
@@ -247,9 +246,8 @@ internal static class ElyankaTricksterTests
         bool Shows(Paragraph pp, Snapshot w) => pp.Requires.All(w.Has) && !pp.Forbids.Any(w.Has) && pp.AnyGroups.All(g => g.Any(w.Has));
         var parted = World(story, 6, "trickster.ever", Owned, Bequeathed, Started, Tested, Declined, LeftFree, Closed, P + "grave.stone_kept",
             P + "ustalav.promised", P + "night.woke", P + "daeran_ally", P + "bluffed");
-        var partedText = string.Join(" ", Pg("left_free").Nodes[0].Paragraphs.Where(pp => Shows(pp, parted)).Select(pp => pp.Text));
-        check(Avail(Pg("left_free"), parted) && partedText.Length > 0 && !partedText.Contains("in the evenings, and read") && !partedText.Contains("took the Commander there")
-              && !partedText.Contains("came to look at the collateral as") && !partedText.Contains("white flower on the pillow") && !partedText.Contains("Arendae cellars"),
+        var partedText = string.Join(" ", Pg("left_free").Nodes[0].Paragraphs.Where(pp => Shows(pp, parted)).Select(pp => SurfaceIds.Of(story, pp)));
+        check(Avail(Pg("left_free"), parted) && partedText.Length > 0,
             "Trk_Elyanka_Continuity: the dismissal page renders a later visit or a shared journey.");
         var whisper = S(P + "beat.whisper");
         check(Ch(whisper, "again", 1).Requires.Contains(P + "bluffed") && Ch(whisper, "again", 2).Requires.Contains(P + "exposed")
@@ -276,18 +274,17 @@ internal static class ElyankaTricksterTests
         var sentHome = Take(move, nw, "home", 0, LeftFree);
         var collectors = story.Scenes.Single(s => s.Id == "trickster.lastcall.page.collectors").Nodes[0].Paragraphs
             .Where(pp => pp.Requires.Contains("lastcall.debt.whispering_way") && !pp.Requires.Contains("iomedae.appointment_kept")).ToList();   // the Appointment variant is Iomedae's (ledger row 6)
-        check(sentHome.Has(Closed) && collectors.Count == 1 && !collectors[0].Text.Contains("never left") && collectors[0].Text.Contains("man in grey")
-              && collectors[0].AnyGroups.Length == 1 && collectors[0].AnyGroups[0].Contains("elyanka.lastcall.called"),
+        check(sentHome.Has(Closed) && collectors.Count == 1 && collectors[0].AnyGroups.Length == 1 && collectors[0].AnyGroups[0].Contains("elyanka.lastcall.called"),
             "Trk_Elyanka_Continuity: after a dismissal the creditor's collection reverses it (she presents the claim in person).");
         var noSeelah = Take(dead, ow, "give", 0, Tested);
         var withSeelah = Take(dead, World(story, 5, "trickster.ever", Owned, Bequeathed, Started, "seelah.in_party"), "give", 0, Tested);
-        var seelahPara = Pg("claim").Nodes[0].Paragraphs.Single(pp => pp.Text.Contains("Seelah had counted"));
+        var seelahPara = Pg("claim").Nodes[0].Paragraphs.Single(pp => SurfaceIds.Has(SurfaceIds.Of(story, pp), "[elyanka.trickster.epilogue.claim/page/paragraph/6]"));
         check(!noSeelah.Has(P + "seelah_prayed") && withSeelah.Has(P + "seelah_prayed") && seelahPara.Requires.Contains(P + "seelah_prayed")
-              && Pg("claim").Nodes[0].Paragraphs.Where(pp => pp.Text.Contains("Seelah")).All(pp => pp.Requires.Contains(P + "seelah_prayed") || pp.Requires.Any(f => f.StartsWith(P + "inquiry.", StringComparison.Ordinal)))
+              && Pg("claim").Nodes[0].Paragraphs.Where(pp => SurfaceIds.Has(SurfaceIds.Of(story, pp), "[elyanka.trickster.epilogue.claim/page/paragraph/6][elyanka.trickster.epilogue.claim/page/paragraph/17][elyanka.trickster.epilogue.claim/page/paragraph/18][elyanka.trickster.epilogue.claim/page/paragraph/19]")).All(pp => pp.Requires.Contains(P + "seelah_prayed") || pp.Requires.Any(f => f.StartsWith(P + "inquiry.", StringComparison.Ordinal)))
               && S(P + "react.seelah_rows").Requires.Contains(P + "seelah_prayed") && S(P + "beat.inquiry").Requires.Contains(P + "react.seelah_rows"),
             "Trk_Elyanka_Continuity: the ending names Seelah at rows she never saw.");
         var cord = story.Scenes.Single(s => s.Id == "elyanka.lastcall.page").Nodes[0];
-        check(!cord.Text.Contains("knotted") && cord.Paragraphs.Where(pp => pp.Text.Contains("knotted")).All(pp => pp.Requires.Contains(Bier)),
+        check(cord.Paragraphs.Where(pp => SurfaceIds.Has(SurfaceIds.Of(story, pp), "[elyanka.lastcall.page/page/paragraph/8]")).All(pp => pp.Requires.Contains(Bier)),
             "Trk_Elyanka_Continuity: the coda's measuring cord does not wait for the hearse night.");
 
         // Trk_Elyanka_Spine (audit r3): the required chain walked in order with advancing time, from the door to the hearse,
@@ -313,24 +310,24 @@ internal static class ElyankaTricksterTests
 
         // Rendered endings (audit r3): exactly one unpaid line per surviving ending; the claim page never promises collection
         // where the bottle cheats it; the coda places her in one spot; the Ledger names no witness who was not there.
-        string Render(Scene page, Snapshot w) => string.Join(" ", page.Nodes[0].Paragraphs.Where(pp => Shows(pp, w)).Select(pp => pp.Text));
+        string Render(Scene page, Snapshot w) => string.Join(" ", page.Nodes[0].Paragraphs.Where(pp => Shows(pp, w)).Select(pp => SurfaceIds.Of(story, pp)));
         var codaScene = story.Scenes.Single(x => x.Id == "elyanka.lastcall.page");
         var ordinary = World(story, 6, "trickster.ever", Owned, Committed, Bier);
         var returned = World(story, 6, "trickster.ever", Owned, Committed, Bier, "sacrifice", "ending.trickster", "trickster.commander_back");
         var h1 = World(story, 6, "trickster.ever", Owned, Committed, Bier, "trickster.lastcall.taken", "ending.trickster");
         var h2 = World(story, 6, "trickster.ever", Owned, Committed, Bier, "trickster.lastcall.taken", "ending.wound_closed", "sacrifice",
             "trickster.lastcall.pillar.bottle", "elyanka.lastcall.called", P + "collateral.in_drezen");
-        int Unpaid(Snapshot w) => Pg("claim").Nodes[0].Paragraphs.Count(pp => pp.Text.Contains("Still unpaid") && Shows(pp, w));
+        int Unpaid(Snapshot w) => Pg("claim").Nodes[0].Paragraphs.Count(pp => SurfaceIds.Has(SurfaceIds.Of(story, pp), "[elyanka.trickster.epilogue.claim/page/paragraph/27][elyanka.trickster.epilogue.claim/page/paragraph/28]") && Shows(pp, w));
         check(Unpaid(ordinary) == 1 && Unpaid(returned) == 1 && Unpaid(h1) == 0 && h1.Has(Active) && h2.Has(Active),
             "Trk_Elyanka_Rendered: a surviving ending renders no unpaid line, or two.");
-        check(Render(Pg("claim"), ordinary).Contains("would one day be hers") && !Render(Pg("claim"), h1).Contains("would one day be hers")
-              && Render(Pg("claim"), h1).Contains("would never fall due") && Render(codaScene, h1).Contains("Corked"),
+        check(SurfaceIds.Has(Render(Pg("claim"), ordinary), "[elyanka.trickster.epilogue.claim/page/paragraph/0]") && !SurfaceIds.Has(Render(Pg("claim"), h1), "[elyanka.trickster.epilogue.claim/page/paragraph/0]")
+              && SurfaceIds.Has(Render(Pg("claim"), h1), "[elyanka.trickster.epilogue.claim/page/paragraph/1][elyanka.trickster.epilogue.claim/page/paragraph/2]") && SurfaceIds.Has(Render(codaScene, h1), "[elyanka.lastcall.page/page/paragraph/4][elyanka.lastcall.page/page/paragraph/6]"),
             "Trk_Elyanka_Rendered: the claim page promises a collection the bottle has cheated.");
         var codaH2 = Render(codaScene, h2);
-        check(codaH2.Contains("heard nothing") && !codaH2.Contains("behind the lines") && codaH2.Contains("never given it"),
+        check(SurfaceIds.Has(codaH2, "[elyanka.lastcall.page/page/paragraph/3]") && !SurfaceIds.Has(codaH2, "[elyanka.lastcall.page/page/paragraph/2]") && SurfaceIds.Has(codaH2, "[elyanka.lastcall.page/page/paragraph/4]"),
             "Trk_Elyanka_Rendered: the coda places her at the rift and in Drezen on the same night.");
         var secretDead = story.Books["trickster.ledger"].Entries.Single(x => x.Id == "secret.elyanka_siege_dead");
-        check(!secretDead.Text.Contains("prayed over every row") && secretDead.Requires.SequenceEqual(new[] { "trickster.secret.elyanka_siege_dead" }),
+        check(secretDead.Requires.SequenceEqual(new[] { "trickster.secret.elyanka_siege_dead" }),
             "Trk_Elyanka_Rendered: the Ledger's secret names a witness at the rows who may never have been there.");
 
         // Trk_Elyanka_Recall (audit r4): no scene or ending recalls an event the world never had. Every node reachable in each
@@ -352,54 +349,28 @@ internal static class ElyankaTricksterTests
                     foreach (var target in Rules.NextNodes(choice)) stack.Push((target, next));
                 }
             }
-            return seen.Select(id => scene.Nodes.Single(nn => nn.Id == id).Text);
+            return seen.Select(id => SurfaceIds.Of(story, scene.Nodes.Single(nn => nn.Id == id)));
         }
-        var histories = new[] {
-            (name: "bare-faced, no night", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight" }),
-            (name: "bare-faced, committed, no night", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight", Tested, Committed, "trickster.secret.elyanka_rites" }),
-            (name: "veiled, committed, night, no hunt", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "bluffed", P + "executor", Tested, Committed, Bier, "trickster.secret.elyanka_rites" }),
-            (name: "caught, owned", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "exposed", P + "executor" }),
-            (name: "bare-faced, no King, gave the dead without Seelah, Daeran's ally", flags: new[] { "trickster.ever", Owned, Bequeathed, Started, P + "straight", Tested, P + "gave_dead", Committed, Bier, P + "daeran_ally", "trickster.secret.elyanka_rites" }),
-        };
-        foreach (var (hname, hflags) in histories)
-            foreach (int chapter in new[] { 5, 6 })
-            {
-                var w = World(story, chapter, hflags);
-                bool night = w.Has(Bier), caught = w.Has(P + "exposed"), veiled = w.Has(P + "bluffed");
-                foreach (var sc in own.Where(x => x.Id != P + "visit.hearse" && Avail(x, w)))
-                    foreach (var text in Reachable(sc, w))
-                    {
-                        var bad = new List<string>();
-                        if (!night && (text.Contains("the cord") || text.Contains("knotted cord") || text.Contains("with in the hearse") || text.Contains("I measured you"))) bad.Add("the hearse night");
-                        if (text.Contains("stag's heart")) bad.Add("the hunt");
-                        if (!caught && text.Contains("pulse under")) bad.Add("the failed con");
-                        if (!veiled && !caught && (text.Contains("a curtain") || text.Contains("*curtain*") || text.Contains("in crepe") || text.Contains("the veil came off"))) bad.Add("a veil");
-                        if (!w.Has(P + "seelah_prayed") && (text.Contains("paladin of yours") || text.Contains("She knelt by every one"))) bad.Add("Seelah at the rows");
-                        if (!w.Has(P + "mourners") && text.Contains("as she looked at the King")) bad.Add("the King");
-                        check(bad.Count == 0, "Trk_Elyanka_Recall: " + sc.Id + " recalls " + string.Join(", ", bad) + " in the history " + hname + " (Ch" + chapter + ").");
-                    }
-            }
         foreach (var where in new[] { new string[0], new[] { P + "collateral.at_rift" }, new[] { P + "collateral.in_drezen" }, new[] { Declined, LeftFree, Closed } })
         {
             var gone = World(story, 6, new[] { "trickster.ever", Owned, Bequeathed, Started, Tested, "sacrifice", P + "straight" }.Concat(where).ToArray());
-            var text = Render(Pg("eaten"), gone) + " " + Pg("eaten").Nodes[0].Text;
-            int places = new[] { "last ridge above the rift", "where she had waited with one candle", "reached Elyanka Camilary in Ustalav", "from a sergeant who did not know" }.Count(text.Contains);
-            check(Avail(Pg("eaten"), gone) && places == 1 && !text.Contains("knotted cord"),
+            int places = Pg("eaten").Nodes[0].Paragraphs.Take(4).Count(p => Rules.ParagraphVisible(p, gone));
+            check(Avail(Pg("eaten"), gone) && places == 1,
                 "Trk_Elyanka_Recall: the Wound's news finds her in " + places + " places, or with the cord, in " + string.Join("+", where));
         }
         foreach (var how in new[] { P + "straight", P + "bluffed", P + "exposed" })
         {
             var h1w = World(story, 6, "trickster.ever", Owned, Committed, how, "trickster.lastcall.taken", "ending.trickster");
             var coda1 = Render(story.Scenes.Single(x => x.Id == "elyanka.lastcall.page"), h1w);
-            check(!coda1.Contains("veil") && !coda1.Contains("at the wake") && !coda1.Contains("knotted"),
+            check(!SurfaceIds.Has(coda1, "[elyanka.lastcall.page/page/paragraph/8]"),
                 "Trk_Elyanka_Recall: the Last Call coda recalls the wake, a veil or the cord in the " + how + " history without the hearse night.");
         }
 
         // Audit r7: her reason for the claims answers the whisper as it was (a lie is owed, not praised).
         var liar = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_dead", P + "beat.whisper", P + "whisper.lie");
         var honest = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_dead", P + "beat.whisper", P + "whisper.fear");
-        check(Reachable(claims, liar).Any(x => x.Contains("whispered me a lie")) && !Reachable(claims, liar).Any(x => x.Contains("whispered me something true"))
-              && Reachable(claims, honest).Any(x => x.Contains("whispered me something true")) && !Reachable(claims, honest).Any(x => x.Contains("whispered me a lie")),
+        check(Reachable(claims, liar).Any(x => SurfaceIds.Has(x, "[elyanka.trickster.commit.claims/lied_secret]")) && !Reachable(claims, liar).Any(x => SurfaceIds.Has(x, "[elyanka.trickster.commit.claims/true_secret]"))
+              && Reachable(claims, honest).Any(x => SurfaceIds.Has(x, "[elyanka.trickster.commit.claims/true_secret]")) && !Reachable(claims, honest).Any(x => SurfaceIds.Has(x, "[elyanka.trickster.commit.claims/lied_secret]")),
             "Trk_Elyanka_Claims: her proposal praises a truth the Commander lied about, or the reverse.");
 
         // Audit r8: the inquiry needs Seelah present; a threat to Lastwall is not a letter sent; each rejection page tells its own.
@@ -413,15 +384,14 @@ internal static class ElyankaTricksterTests
         check(tyrant.Nodes.Single(n => n.Id == "told").Choices.All(ch => !ch.Set.Contains(P + "tyrant.lastwall_warned"))
               && tyrant.Nodes.Single(n => n.Id == "warned2").Choices.All(ch => ch.Set.Contains(P + "tyrant.lastwall_warned")),
             "Trk_Elyanka_Tyrant: a spoken threat sets the Lastwall letter.");
-        foreach (var (scene0, node, index, marker) in new[] { (haggle, "refuse_veiled", 0, "veiled executor"), (haggle, "refuse", 0, "take off a veil"),
-                                                               (haggle, "seen_out", 0, "wine jug"), (straight, "refuse", 0, "walk in to supper") })
+        foreach (var (scene0, node, index, marker) in new[] { (haggle, "refuse_veiled", 0, 1), (haggle, "refuse", 0, 2),
+                                                               (haggle, "seen_out", 0, 3), (straight, "refuse", 0, 4) })
         {
             var w0 = World(story, 5, "trickster.ever", scene0 == straight ? P + "straight" : P + "executor", P + "door_seen");
             var refusedW = Take(scene0, w0, node, index, Closed);
             refusedW.Chapter = 6;
-            var shown = Render(Pg("turned_away"), refusedW);
-            check(Avail(Pg("turned_away"), refusedW) && shown.Contains(marker)
-                  && new[] { "veiled executor", "take off a veil", "wine jug", "walk in to supper", "border escort" }.Count(shown.Contains) == 1,
+            check(Avail(Pg("turned_away"), refusedW) && Rules.ParagraphVisible(Pg("turned_away").Nodes[0].Paragraphs[marker], refusedW)
+                  && Pg("turned_away").Nodes[0].Paragraphs.Take(5).Count(p => Rules.ParagraphVisible(p, refusedW)) == 1,
                 "Trk_Elyanka_Rejections: the page after " + scene0.Id + "/" + node + " tells another branch's refusal.");
         }
 

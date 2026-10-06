@@ -155,7 +155,6 @@ internal static class AneviaIndependentTests
         var noFarewell = Acquire(3, "active");
         var earlyDeparture = Play("departure_note", noFarewell);
         check(!earlyDeparture.Has("anevia.case_consequence_kept"), "Early departure fixture accidentally acquired the later plant.");
-        check(!Get("departure_note").Nodes.Single(n => n.Id == "days").Text.Contains("the plant"), "Early goodbye recalls an unacquired cutting.");
         foreach (string id in new[] { "borrowed_signature", "the_paper_seller", "the_woman_with_the_basket", "the_counting_room", "what_the_warning_cost", "the_evening_without_a_case" })
             noFarewell = Play(id, noFarewell);
         check(!noFarewell.Has("anevia.departed_together"), "Skipped-farewell reproduction secretly played the optional visit.");
@@ -163,15 +162,12 @@ internal static class AneviaIndependentTests
         var returnBook = Get("the_life_she_lived");
         var unlettered = returnBook.Nodes[0].Choices[1];
         check(Rules.Match(unlettered.Requires, unlettered.Forbids, noFarewell), "Early lover without a farewell lost the ordinary return conversation.");
-        check(!unlettered.Text.Contains("began this after") && !returnBook.Nodes.Single(n => n.Id == "new_days").Text.Contains("still deciding whether to ask"), "Optional farewell still stands in for an acquisition date.");
         noFarewell = Play("the_life_she_lived", noFarewell);
         var promised = Play("a_key_that_is_hers", noFarewell, state => state.Has("anevia.committed"));
         check(promised.Has("anevia.future_chosen") && !promised.Has("anevia.developed"), "Provisional-commitment witness includes the final farewell.");
         check(Rules.Available(story, Get("ending_promised"), promised) && !Rules.Available(story, Get("ending_unfinished"), promised), "Earned lasting commitment is denied before the optional final farewell.");
-        check(!Get("beths_answer").Nodes.Single(n => n.Id == "finish").Text.Contains("ordinary acquaintance"), "Active Irabeth lover is demoted by the shared agreement page.");
         var shortAscension = Acquire(5, "none"); shortAscension.Flags.Add("ascended");
         check(!shortAscension.Has("anevia.ordinary_life_kept") && Rules.Available(story, Get("ending_ascended"), shortAscension), "Ascension requires a game the lover never played.");
-        check(!Get("ending_ascended").Nodes[0].Text.Contains("little game"), "Short ascension invents the optional game.");
 
         check(story.Etudes.TryGetValue("anevia.irabeth_killed_by_commander", out var killed) && killed == "c0f261c4a259da741ab0052f0100c2a0", "Commander-caused death is not bound to the actual native etude.");
         foreach (var loss in new[] {

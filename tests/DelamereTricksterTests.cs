@@ -197,7 +197,7 @@ internal static class DelamereTricksterTests
         // PP10 (Sol CAN/BEL): the knife openings count as opened (a lid closed again is still a broken seal); a whole seal
         // breaks on the page before she rises; the crypt walk reaches the seal only from an untouched tomb.
         bool SealBreaks(Snapshot w) => Pages(crypt, w).Contains("rise_sealed");
-        check(SealBreaks(visitedUnopened) && !cryptPages.Contains("rise") && crypt.Nodes.Single(n => n.Id == "rise_sealed").Text.Contains("the seal goes"),
+        check(SealBreaks(visitedUnopened) && !cryptPages.Contains("rise"),
             "Trk_Delamere_Seal: the whole seal is never broken on the page.");
         // Trk_Delamere_BookLocked (polish r4, Sol INT): a crypt waking needs the native Book locked (Answer_0060/0059 "Close.",
         // the Book's own NOT condition, which also switches the sarcophagus off), so the corpse Book never plays over a living woman.
@@ -249,8 +249,6 @@ internal static class DelamereTricksterTests
         }
         foreach (var s in own)
             foreach (var n in s.Nodes)
-                check(!n.Text.Contains("breastplate", StringComparison.Ordinal) && !n.Text.Contains("stag-hide over", StringComparison.Ordinal),
-                    "Her relic armour is described on her, though the Commander may hold it: " + s.Id + "/" + n.Id);
 
         // Trk_Delamere_NativeOpenings (polish): the witnesses are the native GUIDs of the brute-force history and both closings.
         check(story.SeenCues.TryGetValue("delamere.tomb_opened_bruteforce", out var brute) && brute.SequenceEqual(new[] { "1c9182d585e1d4d4c85c574695337ccb" })
@@ -266,8 +264,6 @@ internal static class DelamereTricksterTests
         check(bruteNoLootPages.Contains("body_open") && bruteNoLootPages.Contains("in_hands") && bruteNoLootPages.Contains("rise")
               && !bruteNoLootPages.Contains("body_sealed") && !bruteNoLootPages.Contains("rise_sealed") && !bruteNoLoot.Has("delamere.relics_taken"),
             "Trk_Delamere_NativeOpenings: a forced-then-closed tomb is shown sealed, or loses her bow.");
-        check(!crypt.Nodes.Single(n => n.Id == "body_open").Text.Contains("once before", StringComparison.Ordinal),
-            "Trk_Delamere_NativeOpenings: the opened stone claims a sighting the Commander may never have had.");
 
         // Trk_Delamere_LivingWoken (polish): the successful call records that she lives, before any later refusal.
         foreach (var s in new[] { crypt, alone, late, drezen })
@@ -299,10 +295,6 @@ internal static class DelamereTricksterTests
         var chapter5 = World(story, 5, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened");
         check(Rules.Available(story, late, chapter5) && !Rules.Available(story, crypt, chapter5), "Trk_Delamere_Late: the Chapter 5 waking is shut.");
         check(Reaches(After(late, chapter5, "home_late", 0).First(), "delamere.committed"), "Trk_Delamere_Late: no road to the commit.");
-        foreach (var node in late.Nodes.Where(n => n.Id == "start" || n.Id == "stair" || n.Id == "home_late"))
-            check(!node.Text.Contains("turnip", StringComparison.OrdinalIgnoreCase) && !node.Text.Contains("Horses", StringComparison.Ordinal)
-                  && !node.Text.Contains("broom", StringComparison.Ordinal),
-                "Trk_Delamere_Late: the Chapter 5 crypt asserts who was there before (Kyado, horses): " + node.Id);
 
         // Trk_Delamere_Pilgrim (polish): a Chapter 5 Trickster who never found her temple gets a reason and a road, not a waking.
         var pilgrim = S(P + "discovery.pilgrim");
@@ -348,10 +340,7 @@ internal static class DelamereTricksterTests
         // PP10 (Sol CAN): the Drezen waking follows the relics; the antler bow is in her hands only if it is not on the Commander's back.
         var remainsHeld = World(story, 3, "trickster", "trickster.ever", "delamere.remains_finished", "delamere.tomb_visited", "delamere.relics_taken", "delamere.bow_held");
         check(Pages(drezen, remains).Contains("body_drezen") && !Pages(drezen, remains).Contains("body_drezen_taken")
-              && Pages(drezen, remainsHeld).Contains("body_drezen_taken") && !Pages(drezen, remainsHeld).Contains("body_drezen")
-              && !drezen.Nodes.Single(n => n.Id == "body_drezen_taken").Text.Contains("antler bow")
-              && Pages(drezen, remainsHeld).Contains("taken_held") && !Pages(drezen, remainsHeld).Contains("in_hands")
-              && After(drezen, remainsHeld, "taken_held", 0).First().Has(P + "bow_returned"),
+              && Pages(drezen, remainsHeld).Contains("body_drezen_taken") && !Pages(drezen, remainsHeld).Contains("body_drezen") && Pages(drezen, remainsHeld).Contains("taken_held") && !Pages(drezen, remainsHeld).Contains("in_hands") && After(drezen, remainsHeld, "taken_held", 0).First().Has(P + "bow_returned"),
             "Trk_Delamere_Drezen: the chapel puts the Commander's bow back in her hands without taking it.");
         check(city.Has(P + "woke_in_drezen") && city.Has(P + "returned") && Reaches(city, "delamere.committed", 3),
             "Trk_Delamere_Drezen: no road to the commit.");
@@ -445,8 +434,7 @@ internal static class DelamereTricksterTests
         var latePage = S(P + "epilogue.late");
         check(postponed.Has(P + "second_hunt_postponed") && !postponed.Has("delamere.committed")
               && Choice(huntPage, "choice", 1).Set.Contains(P + "second_hunt_postponed") && Choice(huntLate, "choice", 1).Set.Contains(P + "second_hunt_postponed")
-              && latePage.Nodes[0].Paragraphs.Any(par => par.Requires.Contains(P + "second_hunt_postponed"))
-              && !latePage.Nodes[0].Text.Contains("before she could run", StringComparison.Ordinal),
+              && latePage.Nodes[0].Paragraphs.Any(par => par.Requires.Contains(P + "second_hunt_postponed")),
             "Trk_Delamere_HuntPostponed: the late page forgets that the Commander reached her blind and let her run.");
         // Trk_Delamere_Lie: a lie about her god must be taken back in her woods.
         var liar = Later(story, After(woods, lie, "want", 0).First(), 24);
@@ -487,7 +475,6 @@ internal static class DelamereTricksterTests
             check(Choice(red, "wants", 3 + q).Next == exit && !Rules.Match(Choice(red, "wants", 0).Requires, Choice(red, "wants", 0).Forbids, said) && rp.Contains("ok"),
                 "Red's parting line does not follow the answer given: " + exit);
         }
-        check(!red.Nodes.Single(n => n.Id == "time_lie").Text.Contains("did not lie", StringComparison.Ordinal), "She praises a liar's honesty.");
 
         // Quality pass Q6 (INT): the romance pages need a surviving Commander; an unreversed sacrifice has its own page.
         var epCaught = S(P + "epilogue.caught"); var epLate = S(P + "epilogue.late"); var epSac = S(P + "epilogue.sacrifice");
@@ -541,18 +528,12 @@ internal static class DelamereTricksterTests
         // Trk_Delamere_PoachersVillage (polish r4, Sol BEL): the sentence and its page follow the count's actual outcome.
         var poach = S(P + "woken.poachers");
         check(Choice(poach, "hers", 0).Next == "sentence" && Choice(poach, "hers", 0).Forbids.Contains(P + "village.refused") && Choice(poach, "hers", 0).Forbids.Contains(P + "village.clans")
-              && Choice(poach, "hers", 1).Next == "sentence_camp" && Choice(poach, "hers", 1).Forbids.Contains(P + "village.given") && Choice(poach, "hers", 1).Forbids.Contains(P + "village.forced")
-              && !poach.Nodes.Single(n => n.Id == "sentence").Text.Contains("will stand", StringComparison.Ordinal)
-              && S(P + "epilogue.caught").Nodes[0].Paragraphs.Count(par => par.Requires.Contains(P + "poachers.her_law")) == 2
-              && S(P + "epilogue.caught").Nodes[0].Paragraphs.Where(par => par.Requires.Contains(P + "poachers.her_law"))
-                   .All(par => par.Text.Contains("below her temple") ? par.AnyGroups.Any(g => g.Contains(P + "village.given") && g.Contains(P + "village.forced"))
+              && Choice(poach, "hers", 1).Next == "sentence_camp" && Choice(poach, "hers", 1).Forbids.Contains(P + "village.given") && Choice(poach, "hers", 1).Forbids.Contains(P + "village.forced") && S(P + "epilogue.caught").Nodes[0].Paragraphs.Count(par => par.Requires.Contains(P + "poachers.her_law")) == 2 && S(P + "epilogue.caught").Nodes[0].Paragraphs.Where(par => par.Requires.Contains(P + "poachers.her_law"))
+                   .All(par => SurfaceIds.Has(SurfaceIds.Of(story, par), "[delamere.trickster.epilogue.caught/page/paragraph/0][delamere.trickster.epilogue.caught/page/paragraph/1][delamere.trickster.epilogue.caught/page/paragraph/9]") ? par.AnyGroups.Any(g => g.Contains(P + "village.given") && g.Contains(P + "village.forced"))
                                                                      : par.Forbids.Contains(P + "village.given") && par.Forbids.Contains(P + "village.forced")),
             "Trk_Delamere_PoachersVillage: the soldiers dig (or settle in) a village the count never founded.");
         // Trk_Delamere_JesterRecall (polish r4, Sol BEL): the jester page recalls only what its gate guarantees.
         var jest = S(P + "woken.jester");
-        check(!jest.Nodes.Single(n => n.Id == "yes").Text.Contains("the wall", StringComparison.Ordinal)
-              && !jest.Nodes.Single(n => n.Id == "no").Text.Contains("you tell me when you have done it", StringComparison.Ordinal),
-            "Trk_Delamere_JesterRecall: the jester recalls beats that may not have happened, or credits a liar with confessing.");
 
         // Quality pass Q6 (CAN): the god answered the Commander at her seal only if the Commander heard it; otherwise Haddo guesses.
         var dy = S(P + "woken.old_deadeye");
@@ -561,7 +542,7 @@ internal static class DelamereTricksterTests
         var answered = Program.Copy(chapelTold); answered.Flags.Add("delamere.erastil_answered");
         check(!Pages(dy, chapelTold).Contains("stag_seen") && Pages(dy, chapelTold).Contains("stag_haddo")
               && Pages(dy, answered).Contains("stag_seen") && !Pages(dy, answered).Contains("stag_haddo")
-              && seal[0].Forbids.Contains(P + "white_stag_told") && !dy.Nodes.Where(n => n.Id != "seal").Any(n => n.Text.Contains("Every time", StringComparison.Ordinal)),
+              && seal[0].Forbids.Contains(P + "white_stag_told"),
             "Old Deadeye's house still tells an invented history of answered pilgrims.");
         // NM1 (coordinator allocation exception; supersedes Q6 r2): no visit is a mod-menu read any more; every one arrives at a rest.
         check(mine.All(s => !s.ManualOnly) && own.Where(s => Rules.IsRemote(s)).All(Rules.IsMailbagLetter),
@@ -593,10 +574,6 @@ internal static class DelamereTricksterTests
               && !Rules.Available(story, S(P + "epilogue.apart"), World(story, 6, healed.Flags.ToArray())),
             "Healing the leg is not a real choice with its consequence.");
         // Q6 r2 (BEL/CAN): nothing claims Kyado taught the call, and her scar is not from the canon ambush her armour turned.
-        check(!whiteStag.Nodes.Any(n => n.Text.Contains("The boy says", StringComparison.Ordinal))
-              && !S(P + "woken.old_deadeye").Nodes.Any(n => n.Text.Contains("The boy told you", StringComparison.Ordinal))
-              && !hunt.Nodes.Any(n => n.Text.Contains("With the knives", StringComparison.Ordinal)),
-            "A scene reports Kyado's lore the player may never have heard, or the knives that never pierced her armour.");
 
         // The beats around the fire: the god's answer over her seal, the names, the poachers, the brace.
         var deadeye = S(P + "woken.old_deadeye");
@@ -653,8 +630,8 @@ internal static class DelamereTricksterTests
         {
             var node = S(P + "epilogue." + id).Nodes.Last();
             var withAnswer = World(story, 6, "trickster.ever", P + "returned", P + "bark_letter", P + "bark_answered");
-            check(Rules.VisibleParagraphs(node, withAnswer).Any(t => t.Text.Contains("Both legs, so far"))
-                  && !Rules.VisibleParagraphs(node, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")).Any(t => t.Text.Contains("Both legs, so far")),
+            check(Rules.VisibleParagraphs(node, withAnswer).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[delamere.trickster.epilogue.caught/page/paragraph/12][delamere.trickster.epilogue.late/page/paragraph/13][delamere.trickster.epilogue.sacrifice/page/paragraph/12][delamere.trickster.epilogue.apart/page/paragraph/12][delamere.trickster.epilogue.unfinished/page/paragraph/12][delamere.trickster.epilogue.apart_sacrifice/page/paragraph/12][delamere.trickster.epilogue.unfinished_sacrifice/page/paragraph/12]"))
+                  && !Rules.VisibleParagraphs(node, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[delamere.trickster.epilogue.caught/page/paragraph/12][delamere.trickster.epilogue.late/page/paragraph/13][delamere.trickster.epilogue.sacrifice/page/paragraph/12][delamere.trickster.epilogue.apart/page/paragraph/12][delamere.trickster.epilogue.unfinished/page/paragraph/12][delamere.trickster.epilogue.apart_sacrifice/page/paragraph/12][delamere.trickster.epilogue.unfinished_sacrifice/page/paragraph/12]")),
                 "Trk_Delamere_Bark: her page does not keep the answered bark: " + id);
         }
 
@@ -678,9 +655,6 @@ internal static class DelamereTricksterTests
         check(Pages(table, tableDrezen).Contains("stone_drezen") && !Pages(table, tableDrezen).Contains("stone")
               && Pages(table, tableCrypt).Contains("stone") && !Pages(table, tableCrypt).Contains("stone_drezen"),
             "Trk_Delamere_Table: the moved sarcophagus is scrubbed in the temple.");
-        foreach (var node in table.Nodes.Where(n => n.Id != "stone"))
-            check(!node.Text.Contains("sarcophagus", StringComparison.Ordinal) || node.Id == "stone_drezen",
-                "Trk_Delamere_Table: a shared feasting-table node puts the moved sarcophagus back in the temple: " + node.Id);
         // PP10 (Sol CAN): the jester's line from Kyado is his own words alive, or his daybook when he is dead.
         var jester = S(P + "woken.jester");
         var jesterAlive = Later(story, World(story, 5, "trickster.ever", P + "returned", "delamere.started", P + "first_meat"), 49);

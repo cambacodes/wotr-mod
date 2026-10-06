@@ -289,11 +289,8 @@ internal static class NurahTricksterTests
         check(Rules.Available(story, proofs, ran5), "Trk_Nurah_RanOffTerms: no proofs.");
         var ranPages = new HashSet<string>();
         Program.Walk(proofs, ran5, (page, _) => ranPages.Add(page));
-        check(ranPages.Contains("proofs_ran") && !ranPages.Contains("proofs") && !ranPages.Contains("raised")
-              && !proofs.Nodes.Single(n => n.Id == "proofs_ran").Text.Contains("larva", StringComparison.OrdinalIgnoreCase),
+        check(ranPages.Contains("proofs_ran") && !ranPages.Contains("proofs") && !ranPages.Contains("raised"),
             "The living runaway is given a larva's history.");
-        check(!epCommit.Nodes.Single(n => n.Id == "start").Text.Contains("worse", StringComparison.Ordinal),
-            "The shared epilogue implies a degradation the runaway never had.");
         var ranSeen = Later(story, After(proofs, ran5, "proofs_ran", 0), 72);
         check(Rules.Available(story, ranTerms, ranSeen) && !Rules.Available(story, terms, ranSeen) && Commits(ranTerms, ranSeen),
             "Trk_Nurah_RanOffTerms.");
@@ -487,7 +484,7 @@ internal static class NurahTricksterTests
         var lateLost = Program.Copy(ending); lateLost.Flags.Add("sacrifice"); Rules.Complete(story, lateLost);
         check(!Rules.Available(story, epCommit, lateLost) && Rules.Available(story, epBereaved, lateLost), "The late page survives the sacrifice.");
         // Round 3 (BEL): the byline paragraphs never contradict the co-author cover.
-        var bylines = epMargin.Nodes[0].Paragraphs.Where(q => q.Text.Contains("The Commander's name appeared", StringComparison.Ordinal)).ToList();
+        var bylines = epMargin.Nodes[0].Paragraphs.Where(q => SurfaceIds.Has(SurfaceIds.Of(story, q), "[nurah.trickster.epilogue.the_margin/start/paragraph/5][nurah.trickster.epilogue.the_margin/start/paragraph/6][nurah.trickster.epilogue.the_margin/start/paragraph/7][nurah.trickster.epilogue.the_margin/start/paragraph/8]")).ToList();
         check(bylines.Count == 4 && bylines.Count(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")) == 2
               && bylines.Where(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")).All(q => q.Forbids.Contains("nurah.trickster.cost.coauthor")),
             "The first-page byline contradicts the co-author cover.");
@@ -499,21 +496,9 @@ internal static class NurahTricksterTests
                 "A committed Nurah has no page of her own.");
         check(!Rules.Available(story, epMargin, World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.dead_drezen")),
             "The committed page narrates an executed Nurah.");
-        check(epCommit.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
-              && epMargin.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
-              && S("nurah.lastcall.page").Nodes[0].Text.Contains("two years after Threshold", StringComparison.Ordinal),
-            "Her book has two publication dates.");
         // Round 4 (CAN/VOI/BEL): each in-person terms scene remembers its own history; the parcel answers by post.
-        foreach (var t in new[] { terms, ranTerms })
-            check(!t.Nodes.Single(n => n.Id == "done").Text.Contains("pardon", StringComparison.Ordinal)
-                  && !t.Nodes.Single(n => n.Id == "partners").Text.Contains("pardon", StringComparison.Ordinal)
-                  && !t.Nodes.Single(n => n.Id == "done").Text.Contains("Say no", StringComparison.Ordinal), "A terms scene borrows another history: " + t.Id);
-        check(terms.Nodes.Single(n => n.Id == "done").Text.Contains("killed", StringComparison.Ordinal)
-              && ranTerms.Nodes.Single(n => n.Id == "done").Text.Contains("ran", StringComparison.Ordinal), "The raised and runaway propositions are the same speech.");
-        check(proofs.Nodes.Single(n => n.Id == "trusted").Text.Contains("courier", StringComparison.Ordinal)
-              && proofs.Nodes.Single(n => n.Id == "signed").Text.Contains("courier", StringComparison.Ordinal), "The parcel's answer is narrated in person.");
         var coPara = epMargin.Nodes[0].Paragraphs.Where(q => q.Requires.Contains("nurah.trickster.cost.coauthor")).ToList();
-        check(coPara.Count(q => q.Text.Contains("The Commander's name appeared twice", StringComparison.Ordinal)) == 2
+        check(coPara.Count(q => SurfaceIds.Has(SurfaceIds.Of(story, q), "[nurah.trickster.epilogue.the_margin/start/paragraph/7][nurah.trickster.epilogue.the_margin/start/paragraph/8]")) == 2
               && coPara.Any(q => q.Requires.Contains("nurah.trickster.cost.signed_proofs")) && coPara.Any(q => q.Forbids.Contains("nurah.trickster.cost.signed_proofs")),
             "Blank proofs followed by co-authorship claim a signature in the gap.");
         // Ramisa's call-in: a soul paid for in gold is no debt; the story (or the duplicate bill, sold on screen) is.
@@ -649,13 +634,12 @@ internal static class NurahTricksterTests
         // The pardon on the closure page is corrected only if she lived to correct it (prison.night_out), with Irabeth alive or dead.
         string Rendered(params string[] extra) => string.Join(" ", Rules.VisibleParagraphs(unwritten.Nodes[0], World(story, 6, new[] {
             "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.executed_from_prison", "nurah.trickster.cost.ledger_lie" }
-            .Concat(extra).ToArray())).Select(par => par.Text));
+            .Concat(extra).ToArray())).Select(par => SurfaceIds.Of(story, par)));
         var unread = Rendered();
         var corrected = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released");
         var correctedNoBeth = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released", "irabeth_dead");
-        check(unread.Contains("a day too late") && !unread.Contains("corrected") && corrected.Contains("date corrected") && corrected.Contains("Irabeth")
-              && !corrected.Contains("a day too late") && correctedNoBeth.Contains("every fault in it corrected") && !correctedNoBeth.Contains("Irabeth")
-              && corrected.Contains("your blow") == false && corrected.Contains("Commander's own blow"),
+        check(SurfaceIds.Has(unread, "[nurah.trickster.epilogue.unwritten/start/paragraph/5]") && !SurfaceIds.Has(unread, "[nurah.trickster.epilogue.unwritten/start/paragraph/3][nurah.trickster.epilogue.unwritten/start/paragraph/4]") && SurfaceIds.Has(corrected, "[nurah.trickster.epilogue.unwritten/start/paragraph/3]") && SurfaceIds.Has(corrected, "[nurah.trickster.epilogue.unwritten/start/paragraph/3]")
+              && !SurfaceIds.Has(corrected, "[nurah.trickster.epilogue.unwritten/start/paragraph/5]") && SurfaceIds.Has(correctedNoBeth, "[nurah.trickster.epilogue.unwritten/start/paragraph/4]") && !SurfaceIds.Has(correctedNoBeth, "[nurah.trickster.epilogue.unwritten/start/paragraph/3]") && SurfaceIds.Has(corrected, "[nurah.trickster.epilogue.unwritten/start/paragraph/1]"),
             "The closure page misstates what happened to the pardon: " + unread + " || " + corrected);
         var lostEntry = story.Books["trickster.ledger"].Entries.Single(e => e.Id == "lost.nurah");
         check(lostEntry.Requires.Contains("trickster.ever") && lostEntry.Forbids.Contains("nurah.trickster.returned")

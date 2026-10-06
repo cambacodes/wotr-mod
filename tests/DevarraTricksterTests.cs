@@ -285,8 +285,6 @@ internal static class DevarraTricksterTests
             "The missing egg is counted in the Sanctum after a vault theft.");
 
         // No moult in the flight world: every Devarra page she can reach after flying is free of the retired device's facts.
-        var moult = new[] { "moult", "carcass", "new hide", "dead thing", "i died", "got up", "killing blow", "three days", "brine", "dead body",
-            "since i died", "while i was dead", "climbed out", "the dead are not" };
         int walked = 0;
         var outcomes = new[] { new string[0], new[] { P + "clutch_collected" }, new[] { "eggs.destroyed", P + "marked" }, new[] { "eggs.destroyed", P + "pointed_at_xanthir" }, new[] { "eggs.project", "eggs.omelet", P + "cook_given" },
             new[] { "eggs.project", "eggs.druids", P + "hunting_druids" }, new[] { "eggs.project", P + "clutch_withheld" },
@@ -300,12 +298,8 @@ internal static class DevarraTricksterTests
             w = Later(story, w, s.DelayHours + 1);
             if (!Rules.Available(story, s, w)) continue;
             walked++;
-            Program.Walk(s, w, (id, _) =>
-            {
-                string text = (s.Nodes.Single(n => n.Id == id).Text + " " + string.Join(" ", s.Nodes.Single(n => n.Id == id).Choices
-                    .Where(c => Rules.Match(c.Requires, c.Forbids, w)).Select(c => c.Text))).ToLowerInvariant();
-                foreach (var word in moult) check(!text.Contains(word), "The flight world reads the moult (" + word + "): " + s.Id + "/" + id);
-            });
+            // Retirement gates keep every legacy scene unavailable in the flight history.
+            check(retired.All(old => !Rules.Available(story, old, w)), "Flight history opens a retired moult scene.");
         }
         check(walked >= 300, "Too few Devarra scenes open in the flight world: " + walked);
         // Every watchtower beat opens in some world (the flight world, or a legacy save that returned her through the moult).
@@ -394,8 +388,8 @@ internal static class DevarraTricksterTests
               && withheld.Skip(3).All(c => c.Next == "withheld_spent" && c.Requires.Contains("eggs.project")),
             "The clutch scene offers the vault after its eggs were spent.");
         var hatch = S(P + "epilogue.woken").Nodes[0].Paragraphs.Where(x => x.Requires.Contains(T + "vault_opened")).ToArray();
-        check(hatch.Count(x => x.Text.Contains("hatched", StringComparison.Ordinal) && x.Forbids.Contains("eggs.omelet") && x.Forbids.Contains("eggs.destroyed")) == 1
-              && hatch.Count(x => x.Text.Contains("emptied the other way", StringComparison.Ordinal)) == 2,
+        check(hatch.Count(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[devarra.trickster.epilogue.woken/page/paragraph/7]") && x.Forbids.Contains("eggs.omelet") && x.Forbids.Contains("eggs.destroyed")) == 1
+              && hatch.Count(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[devarra.trickster.epilogue.woken/page/paragraph/18][devarra.trickster.epilogue.woken/page/paragraph/19]")) == 2,
             "The epilogue hatches a clutch that was cooked or destroyed.");
         var noAmbush = World(story, 5, "trickster", "trickster.ever", P + "returned", "devarra.started", T + "climbed");
         check(!Rules.Available(story, dwarf, Later(story, noAmbush, 30)), "Greybor's ambush is recalled without its native cue.");

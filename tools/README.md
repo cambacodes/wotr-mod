@@ -1,3 +1,6 @@
+Rule: tests must not pin prose; assert IDs/state. Prose quality belongs to rubric auditors.
+Mechanical text lints may guard tokens, markup, encoding, UI limits, register and the heat ceiling.
+
 Use `tools/fast_gate.sh` after each coding round. It generates the expansion with
 `PYTHONHASHSEED=0` and the four existing parent-binding manifests, runs every
 strict verifier check and the existing lint policies, selects Python regressions,

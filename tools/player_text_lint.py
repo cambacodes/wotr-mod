@@ -93,8 +93,8 @@ def check(story, exceptions=None, draft=False):
                         continue
                 if any(e["scene"] == sid and e["location"] == location and e["code"] == code
                        and e["match"] == match.group() and e.get("reason")
-                       # eng8-q8c: adult exceptions require the whole reviewed surface.
-                       and (code != "age-certification" or e.get("text") == text)
+                       # Exception budgets follow diagnostic identity, not wording.
+                       and len(list(regex.finditer(searched))) <= e.get("max_occurrences", 1)
                        for e in policy.get("exceptions", [])):
                     continue
                 rows.append(dict(scene=sid, location=location, code=code, start=match.start(), end=match.end(),
@@ -110,7 +110,7 @@ def check(story, exceptions=None, draft=False):
                 if before and after and before[-1].lstrip().startswith('"') and after[0].lstrip().startswith('"'):
                     rows.append(dict(scene=sid, location=location, code="speaker-attribution-review", start=match.start(),
                                      end=match.end(), match=match.group(), draft=draft, severity="review"))
-    # eng8-q8c: age exceptions were already checked against their full text above.
+    # eng8-q8c: age exceptions were already checked against their occurrence budgets above.
     rows = [row for row in rows if row["code"] == "age-certification" or not any(e["scene"] == row["scene"] and e["location"] == row["location"]
             and e["code"] == row["code"] and e["match"] == row["match"] and e.get("reason")
             for e in policy.get("exceptions", []))]

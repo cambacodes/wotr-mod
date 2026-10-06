@@ -33,10 +33,10 @@ internal static class AreeluAfterlogueTests
                   && Rules.EditVariants(edit).Length == 1 && story.Scenes.Single(s => s.Id == edit.Replacement).Relationship == "areelu",
                 "Trk_Areelu_Afterlogue: an afterlogue edit is not an E14i dialog edit on Cue_0001 with one Areelu line.");
         check(cottage!.Replacement == Spared && death!.Replacement == Mortal, "Trk_Areelu_Afterlogue: the cottage and death lines swapped.");
-        string Line(string id) => story.Scenes.Single(s => s.Id == id).Nodes[0].Text;
-        check(new[] { Spared, Mortal }.All(id => Line(id).StartsWith("\"I was defeated", StringComparison.Ordinal) && !Line(id).Contains("cottage")),
+        string Line(string id) => SurfaceIds.Of(story, story.Scenes.Single(s => s.Id == id).Nodes[0]);
+        check(new[] { Spared, Mortal }.All(id => SurfaceIds.Has(Line(id), "[areelu.trickster.afterlogue.spared/line][areelu.trickster.afterlogue.mortal/line]")),
             "Trk_Areelu_Afterlogue: a line does not open as her native account does, or still ends in the cottage.");
-        check(Line(Mortal).Contains("mortal") && !Line(Spared).Contains("mortal"),
+        check(SurfaceIds.Has(Line(Mortal), "[areelu.trickster.afterlogue.mortal/line]"),
             "Trk_Areelu_Afterlogue: only the rewritten (graft drawn) line makes her mortal.");
 
         const string T = "areelu.trickster.";

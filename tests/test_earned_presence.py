@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from tests.structure import without_prose
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -301,8 +302,8 @@ class GuardPass(unittest.TestCase):
                 expected = copy.deepcopy(original)
                 expected["Forbids"].remove(ep.SACRIFICE)
                 del expected["ForbidOverrides"][ep.SACRIFICE]
-                self.assertEqual(exported, expected)
-        self.assertEqual(galfrey_queen_slide.SCENES, originals)
+                self.assertEqual(without_prose(exported), without_prose(expected))
+        self.assertEqual(without_prose(galfrey_queen_slide.SCENES), without_prose(originals))
         self.assertEqual(hard(s), [])
         self.assertEqual(ep.integrate(s), [])
 
@@ -313,7 +314,7 @@ class GuardPass(unittest.TestCase):
         ep.PARAGRAPH_GUARDED.add(mixed["Id"])
         before = copy.deepcopy(mixed)
         self.assertEqual(ep.integrate(s), [])
-        self.assertEqual(mixed, before)
+        self.assertEqual(without_prose(mixed), without_prose(before))
         self.assertEqual(hard(s), [])
         mixed["Nodes"][0]["Paragraphs"][1]["Forbids"] = []
         with self.assertRaisesRegex(ValueError, r"irabeth.return_epilogue: page/paragraph\[1\]"):

@@ -127,7 +127,7 @@ def main():
                         name = 'consumer: rename scene and registry together'
                     story_path.write_text(json.dumps(changed), encoding="utf-8")
                     setup = ('import copy,json; from pathlib import Path; from tests import test_foresight_echo as t; '
-                        'consumer_fixture=json.loads(Path(' + repr(str(story_path)) + ').read_text()); '
+                        'consumer_fixture=json.loads(Path(' + repr(str(story_path)) + ').read_text(encoding="utf-8")); '
                         't.fresh_story=lambda:copy.deepcopy(consumer_fixture); '
                         't.foresight.CONSUMERS.clear(); t.foresight.CONSUMERS.update(consumer_fixture["ForesightConsumers"])')
                     method = 'ForesightSurfaceTests.test_registered_consumer_contract_matches_export'

@@ -695,6 +695,21 @@ internal static class Program
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);
             Check(pair.Value.Cues.Take(originalCues[pair.Key].Length).SequenceEqual(originalCues[pair.Key]), "Native epilogue reference instances replaced");
         }
+        var genericEndingExits = new HashSet<string>(JsonConvert.DeserializeObject<string[]>(File.ReadAllText(Path.Combine(
+            Environment.GetEnvironmentVariable("RRT_TEST_REPO_ROOT") ?? Directory.GetCurrentDirectory(),
+            "tools", "generic_ending_exit_contracts.json")))!);
+        // Polish appended an ascent night: the original refusal remains answer zero, with no effects.
+        var ascentExit = story.Scenes.Single(s => s.Id == "areelu.trickster.finale.ascended").Nodes.Single(n => n.Id == "end");
+        Check(ascentExit.Choices.Count == 2 && ascentExit.Choices[0].Next == null
+            && ascentExit.Choices[0].Set.Length == 0 && ascentExit.Choices[0].Requires.Length == 0
+            && ascentExit.Choices[0].Forbids.Length == 0 && !ascentExit.Choices[0].Abort
+            && ascentExit.Choices[0].Check == null && ascentExit.Choices[0].Revive == null
+            && ascentExit.Choices[1].Next == "asc_night", "Expanded ascent ending changed the saved refusal or appended night index");
+        // Appending a branch must also keep the old generic terminal blueprint resolvable.
+        var legacyAscentExit = ResourcesLibrary.TryGetBlueprint(Id("answer.areelu.trickster.finale.ascended.end.continue")) as BlueprintAnswer;
+        Check(legacyAscentExit != null, "Legacy ascent ending exit identity disappeared: answer.areelu.trickster.finale.ascended.end.continue");
+        Check(legacyAscentExit!.OnSelect.Actions.Length == 0 && legacyAscentExit.NextCue.Cues.Count == 0,
+            "Legacy ascent ending exit mutates progress or continues");
         foreach (var scene in story.Scenes.Where(s => s.NativeReturnCue == null && !s.ReturnToList && s.ContinueBefore == null))
         {
             var dialog = ResourcesLibrary.TryGetBlueprint(Id("dialog." + scene.Id)) as BlueprintDialog;
@@ -719,10 +734,12 @@ internal static class Program
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
-                bool plainEnding = ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
-                    && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
-                    && node.Choices[0].Set.Length == 0 && node.Choices[0].Text == "Continue"
-                    && !node.Choices[0].Abort && node.Choices[0].Revive == null;
+                bool plainEnding = genericEndingExits.Contains(nodeId);
+                if (plainEnding)
+                    Check(ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
+                        && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
+                        && node.Choices[0].Set.Length == 0 && !node.Choices[0].Abort && node.Choices[0].Revive == null,
+                        "Legacy ending exit mechanics changed: " + nodeId);
                 Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1) + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0)), "Wrong choice count: " + nodeId);
                 foreach (var reference in page.Answers) Check(reference.Get() is BlueprintAnswer, "Unresolved generated answer: " + nodeId);
                 if (plainEnding)

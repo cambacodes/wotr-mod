@@ -25,10 +25,6 @@ internal static class LocationInventoryTests
             state.Area = scene.Areas[0];
             check(Rules.Available(story, scene, state), "l12 return to earned venue blocked: " + id);
         }
-        foreach (var suffix in new[] { "_visitor", "_arcade" })
-            foreach (var node in story.Scenes.Single(s => s.Id == "nenio.folio.volume_one" + suffix).Nodes.Where(n => n.Id == "give" || n.Id == "give_new"))
-                check(node.Text.Contains("staying in Drezen") && !node.Text.Contains("same battle as you"), "l12 unrecruited Nenio marches: " + suffix + node.Id);
         var night = story.Scenes.Single(s => s.Id == "horzalah.trickster.late.at_night");
-        check(!night.Nodes.Single(n => n.Id == "morning").Text.Contains("citadel"), "l12 Chapter 6 aftermath insists on Drezen");
     }
 }

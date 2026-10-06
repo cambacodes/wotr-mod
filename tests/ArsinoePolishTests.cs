@@ -29,7 +29,7 @@ internal static class ArsinoePolishTests
         string Text(string id, string node, Snapshot state)
         {
             var n = S(id).Nodes.Single(n => n.Id == node);
-            return n.Text + " " + string.Join(" ", Rules.VisibleParagraphs(n, state).Select(p => p.Text));
+            return SurfaceIds.Of(story, n) + " " + string.Join(" ", Rules.VisibleParagraphs(n, state).Select(p => SurfaceIds.Of(story, p)));
         }
         Snapshot End(Snapshot before, bool burst, bool closed, string life)
         {
@@ -104,18 +104,18 @@ internal static class ArsinoePolishTests
             foreach (var node in new[] { "morning", "table" })
             {
                 var t = Text(Prefix + "late.commit", node, postwar);
-                check(t.Contains("letters of credit") == (officeCase is "present" or "returned"), "Postwar Konomi note ignores current post: " + officeCase);
+                check(SurfaceIds.Has(t, "[arsinoe.trickster.late.commit/morning/paragraph/0][arsinoe.trickster.late.commit/table/paragraph/0]") == (officeCase is "present" or "returned"), "Postwar Konomi note ignores current post: " + officeCase);
                 var lost = Changed(postwar, "konomi.retained_dead");
-                check(!Text(Prefix + "late.commit", node, lost).Contains("letters of credit"), "Known Konomi writes after a later death");
+                check(!SurfaceIds.Has(Text(Prefix + "late.commit", node, lost), "[arsinoe.trickster.late.commit/morning/paragraph/0][arsinoe.trickster.late.commit/table/paragraph/0]"), "Known Konomi writes after a later death");
                 lost.Flags.Remove("konomi.retained_dead"); Refresh(lost);
                 check(lost.Has("konomi.dead.unreturned")
-                    && !Text(Prefix + "late.commit", node, lost).Contains("letters of credit"),
+                    && !SurfaceIds.Has(Text(Prefix + "late.commit", node, lost), "[arsinoe.trickster.late.commit/morning/paragraph/0][arsinoe.trickster.late.commit/table/paragraph/0]"),
                     "An unloaded body lets historical Konomi knowledge write a new letter");
                 var dismissed = Changed(postwar, "konomi.dismissed");
                 if (officeCase != "returned")
-                    check(!Text(Prefix + "late.commit", node, dismissed).Contains("letters of credit"), "Known Konomi writes after leaving her office");
+                    check(!SurfaceIds.Has(Text(Prefix + "late.commit", node, dismissed), "[arsinoe.trickster.late.commit/morning/paragraph/0][arsinoe.trickster.late.commit/table/paragraph/0]"), "Known Konomi writes after leaving her office");
                 var closedOffice = Changed(postwar, "konomi.closed");
-                check(!Text(Prefix + "late.commit", node, closedOffice).Contains("letters of credit"), "Known Konomi writes after closure");
+                check(!SurfaceIds.Has(Text(Prefix + "late.commit", node, closedOffice), "[arsinoe.trickster.late.commit/morning/paragraph/0][arsinoe.trickster.late.commit/table/paragraph/0]"), "Known Konomi writes after closure");
             }
             check(Rules.Available(story, S(Prefix + "late.commit"), business), "Recorded decline lacks its business-only memory");
             var seen = new HashSet<string>();
@@ -212,28 +212,27 @@ internal static class ArsinoePolishTests
                 var t = Text(id, "end", state);
                 bool love = relationship.Has("arsinoe.campaign_lover") || relationship.Has(Accepted);
                 bool settled = !burst || history.Has(Called);
-                check(t.Contains("invitation on temple vellum") == (pledge == "collateral_word" && love && settled),
+                check(SurfaceIds.Has(t, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/15][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/16][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/17][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/18][arsinoe.trickster.epilogue.pot_returned/end/paragraph/16][arsinoe.trickster.epilogue.pot_returned/end/paragraph/17][arsinoe.trickster.epilogue.pot_returned/end/paragraph/18][arsinoe.trickster.epilogue.pot_returned/end/paragraph/19]") == (pledge == "collateral_word" && love && settled),
                     "Invitation substitutes for a debt, acceptance or formal commitment");
-                check(t.Contains("kept her hand") == (burst && history.Has(Called) && love), "Commercial return forces affection");
-                check(!t.Contains("reopened it") && !t.Contains("no excuses accepted") && !t.Contains("never once suggested"), "Retired account coercion survived");
-                check(t.Contains("waived") == grace, "Rent forgets the negotiated grace");
+                check(SurfaceIds.Has(t, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/8][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/9][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/10][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/11]") == (burst && history.Has(Called) && love), "Commercial return forces affection");
+                check(SurfaceIds.Has(t, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/22][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/23][arsinoe.trickster.epilogue.pot_returned/end/paragraph/8][arsinoe.trickster.epilogue.pot_returned/end/paragraph/9][arsinoe.trickster.epilogue.pot_returned/end/paragraph/10][arsinoe.trickster.epilogue.pot_returned/end/paragraph/11][arsinoe.trickster.epilogue.pot_returned/end/paragraph/12][arsinoe.trickster.epilogue.pot_returned/end/paragraph/15]") == grace, "Rent forgets the negotiated grace");
                 if (pledge == "collateral_word")
                 {
-                    var paragraphs = Rules.VisibleParagraphs(S(id).Nodes[0], state).Where(p => p.Requires.Contains(Prefix + "cost.collateral_word") && !p.Text.Contains("invitation on temple vellum")).ToArray();
+                    var paragraphs = Rules.VisibleParagraphs(S(id).Nodes[0], state).Where(p => p.Requires.Contains(Prefix + "cost.collateral_word") && !SurfaceIds.Has(SurfaceIds.Of(story, p), "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/15][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/16][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/17][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/18][arsinoe.trickster.epilogue.pot_returned/end/paragraph/16][arsinoe.trickster.epilogue.pot_returned/end/paragraph/17][arsinoe.trickster.epilogue.pot_returned/end/paragraph/18][arsinoe.trickster.epilogue.pot_returned/end/paragraph/19]")).ToArray();
                     check(paragraphs.Length == 1, "Pledged word has multiple security dispositions");
-                    check(paragraphs[0].Text.Contains("Released", StringComparison.OrdinalIgnoreCase) == settled, "Word security contradicts settlement");
+                    check(SurfaceIds.Has(SurfaceIds.Of(story, paragraphs[0]), "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/12][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/13][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/14][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/19][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/21][arsinoe.trickster.epilogue.pot_returned/end/paragraph/4][arsinoe.trickster.epilogue.pot_returned/end/paragraph/5][arsinoe.trickster.epilogue.pot_returned/end/paragraph/7][arsinoe.trickster.epilogue.pot_returned/end/paragraph/20][arsinoe.trickster.epilogue.foreclosure/end/paragraph/2][arsinoe.trickster.epilogue.foreclosure/end/paragraph/3][arsinoe.lastcall.page/page/paragraph/0][arsinoe.lastcall.page/page/paragraph/1][arsinoe.lastcall.page/page/paragraph/2][arsinoe.lastcall.page/page/paragraph/3][arsinoe.lastcall.page/page/paragraph/6][arsinoe.lastcall.page/page/paragraph/8]") == settled, "Word security contradicts settlement");
                 }
                 if (pledge == "collateral_still")
-                    check(t.Contains("lien on the Fool King's still") == settled && t.Contains("While the loss account remained unpaid") == !settled, "Still security contradicts settlement");
+                    check(SurfaceIds.Has(t, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/19][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/21][arsinoe.trickster.epilogue.pot_returned/end/paragraph/7][arsinoe.trickster.epilogue.pot_returned/end/paragraph/20]") == settled && SurfaceIds.Has(t, "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/6]") == !settled, "Still security contradicts settlement");
                 if (pledge == "collateral_worldwound" && !closed)
                 {
                     var lien = S(Prefix + "epilogue.foreclosure").Nodes[0];
                     var visible = Rules.VisibleParagraphs(lien, state).ToArray();
                     check(visible.Length == 1, "Wound lien has multiple dispositions");
-                    check((visible[0].Text.Contains("released", StringComparison.OrdinalIgnoreCase)) == settled, "Intact Wound security remains open");
+                    check((SurfaceIds.Has(SurfaceIds.Of(story, visible[0]), "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/12][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/13][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/14][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/19][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/21][arsinoe.trickster.epilogue.pot_returned/end/paragraph/4][arsinoe.trickster.epilogue.pot_returned/end/paragraph/5][arsinoe.trickster.epilogue.pot_returned/end/paragraph/7][arsinoe.trickster.epilogue.pot_returned/end/paragraph/20][arsinoe.trickster.epilogue.foreclosure/end/paragraph/2][arsinoe.trickster.epilogue.foreclosure/end/paragraph/3][arsinoe.lastcall.page/page/paragraph/0][arsinoe.lastcall.page/page/paragraph/1][arsinoe.lastcall.page/page/paragraph/2][arsinoe.lastcall.page/page/paragraph/3][arsinoe.lastcall.page/page/paragraph/6][arsinoe.lastcall.page/page/paragraph/8]")) == settled, "Intact Wound security remains open");
                 }
                 var shut = Changed(state, "arsinoe.closed", "arsinoe.parted");
-                check(!Text(id, "end", shut).Contains("invitation on temple vellum"), "A closed relationship gets a personal invitation");
+                check(!SurfaceIds.Has(Text(id, "end", shut), "[arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/15][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/16][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/17][arsinoe.trickster.epilogue.bill_to_threshold/end/paragraph/18][arsinoe.trickster.epilogue.pot_returned/end/paragraph/16][arsinoe.trickster.epilogue.pot_returned/end/paragraph/17][arsinoe.trickster.epilogue.pot_returned/end/paragraph/18][arsinoe.trickster.epilogue.pot_returned/end/paragraph/19]"), "A closed relationship gets a personal invitation");
             }
         }
 

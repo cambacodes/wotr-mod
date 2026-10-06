@@ -48,19 +48,26 @@ internal static class BookPolishManagedTests
         BlueprintBookPage Page(Scene s) => (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(id("page." + s.Id + "." + s.Nodes[0].Id))!;
         string Key(LocalizedString text) => (string)AccessTools.Field(typeof(LocalizedString), "m_Key").GetValue(text);
         string Title(BlueprintBookPage p) => LocalizationManager.CurrentPack.GetText(Key(p.Title), false);
-        string FirstCue(BlueprintBookPage p) => LocalizationManager.CurrentPack.GetText(Key(((BlueprintCue)p.Cues[0].Get()).Text), false);
         var isLetter = polish.GetMethod("IsLetterPage", BindingFlags.NonPublic | BindingFlags.Static)!;
         bool IsLetter(BlueprintBookPage p) => (bool)isLetter.Invoke(null, new object[] { p.AssetGuid.ToString() })!;
         var lp = Page(letter!); var vp = Page(visit!); var sp = Page(sending!); var pp = Page(person!);
-        string expected = (letter!.Parcel ? "A parcel from " : "Letter from ") + Rules.SenderOf(letter);
-        check(Title(lp).StartsWith(expected, StringComparison.Ordinal) && IsLetter(lp) && FirstCue(lp).Contains(expected),
-            "E15c letter page is not headed, flagged and introduced as a letter: " + letter.Id + " first cue '" + FirstCue(lp) + "'.");
-        check(!IsLetter(vp) && Title(vp) == visit!.Title && !FirstCue(vp).Contains("Letter from"),
-            "E15c a remote visit is styled as a letter: " + visit!.Id + ".");
-        check(!IsLetter(sp) && FirstCue(sp).Contains("A sending from " + Rules.SenderOf(sending!)),
-            "E15c a sending is not introduced as one: " + sending!.Id + ".");
-        check(Title(pp) == person!.Title && !IsLetter(pp), "E15b in-person page changed title or was styled as a letter: " + person.Id + ".");
         var kindOf = polish.GetMethod("PageKind", BindingFlags.NonPublic | BindingFlags.Static)!;
+        string Kind(BlueprintBookPage p) => (string)kindOf.Invoke(null, new object[] { p.AssetGuid.ToString() })!;
+        bool FirstCueIs(BlueprintBookPage p, Scene scene, bool header) => p.Cues[0].Get().AssetGuid
+            == id("cue." + scene.Id + "." + scene.Nodes[0].Id + (header ? ".kind" : ""));
+        foreach (var scene in new[] { letter!, visit!, sending!, person! })
+        {
+            var page = Page(scene);
+            check(Key(page.Title) == "RRT.title." + scene.Id + "." + scene.Nodes[0].Id
+                && !string.IsNullOrWhiteSpace(Title(page)), "E15c missing page title localization: " + scene.Id);
+        }
+        check(IsLetter(lp) && Kind(lp) == "letter" && FirstCueIs(lp, letter!, true),
+            "E15c letter metadata/header cue missing: " + letter!.Id);
+        check(!IsLetter(vp) && Kind(vp) == "visit" && FirstCueIs(vp, visit!, false),
+            "E15c remote visit metadata/header cue wrong: " + visit!.Id);
+        check(!IsLetter(sp) && Kind(sp) == "sending" && FirstCueIs(sp, sending!, true),
+            "E15c sending metadata/header cue missing: " + sending!.Id);
+        check(!IsLetter(pp) && FirstCueIs(pp, person!, false), "E15b in-person page gained a correspondence header: " + person!.Id);
         var vigil = story.Scenes.FirstOrDefault(s => s.Id == "trickster.lastcall.bottle.alone");
         if (vigil != null)
             check((string)kindOf.Invoke(null, new object[] { Page(vigil).AssetGuid.ToString() })! == "event" && !IsLetter(Page(vigil)),
@@ -68,10 +75,17 @@ internal static class BookPolishManagedTests
         check(Math.Abs(Call<float>("ShortViewportHeight", 100f, 30f) - 150f) < 1e-3, "E15c short viewport height is not whole lines plus one.");
         var prefix = typeof(Main).GetMethod("MailbagPrefix", BindingFlags.NonPublic | BindingFlags.Static)!;
         string Prefix(Scene s) => (string)prefix.Invoke(null, new object[] { s })!;
-        check(Prefix(new Scene { Owner = "Seelah", Remote = true, Kind = "visit" }) == "[Seelah asks to see you] "
-            && Prefix(new Scene { Owner = "Memory", Remote = true, Kind = "sending", Sender = "Vellexia" }) == "[A sending from Vellexia] "
-            && Prefix(new Scene { Owner = "Konomi", Remote = true, Kind = "letter" }) == "[Letter from Konomi] "
-            && Prefix(new Scene { Owner = "Commander", Remote = true, Kind = "event" }) == "", "E15c mailbag labels by kind are wrong.");
+        var visitLabel = new Scene { Owner = "owner.fixture", Remote = true, Kind = "visit" };
+        var sendingLabel = new Scene { Owner = "owner.fixture", Remote = true, Kind = "sending", Sender = "sender.fixture" };
+        var letterLabel = new Scene { Owner = "owner.fixture", Remote = true, Kind = "letter" };
+        check(Prefix(visitLabel).Contains(visitLabel.Owner)
+            && Prefix(sendingLabel).Contains(sendingLabel.Sender!) && !Prefix(sendingLabel).Contains(sendingLabel.Owner)
+            && Prefix(letterLabel).Contains(letterLabel.Owner)
+            && Prefix(new Scene { Owner = "owner.fixture", Remote = true, Kind = "event" }).Length == 0,
+            "E15c correspondence sender identity/prefix presence by kind is wrong.");
+        foreach (string kind in new[] { "visit", "event" })
+            check(Call<string>("PageTitle", new Scene { Owner = "owner.fixture", Title = "title.fixture", Kind = kind }) == "title.fixture",
+                "E15b ordinary page lost its supplied title identity: " + kind);
         var counts = story.Scenes.Where(s => Rules.IsRemote(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
             .GroupBy(Rules.KindOf).OrderBy(g => g.Key).Select(g => g.Key + " " + g.Count());
         Console.WriteLine("PASS: E15b/c book polish (overlay <= 15%, short-page viewport, speaker captions, remote scenes by kind: "

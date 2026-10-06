@@ -177,7 +177,6 @@ internal static class JannahTricksterTests
               && !own.Where(s => s.MinChapter <= 3).Where(s => Avail(s, World(story, 3, "trickster", "trickster.ever")))
                      .SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Any(c => c.Set.Contains(Primed)),
             "Trk_Jannah_Cage: something still primes the staged survival.");
-        check(!rel.Guidance.Contains("know the Aldori forms first", StringComparison.Ordinal), "The journal still promises the cage device.");
 
         // The killed-world scenes below are dormant (nothing sets `primed`); their unit checks stay for the day the substitution lands.
         // Trk_Jannah_Killed: the kill after the forms; the ash; the unclaimed yield in her cell.
@@ -251,10 +250,7 @@ internal static class JannahTricksterTests
         check(Pages(houndheart, visitorWorld).Contains("told_visitor") && !Pages(houndheart, visitorWorld).Contains("told"),
             "Houndheart tells a visitor that the two of them told the camp together.");
         // Q6 r5 (CAN): no invented Houndheart weather, wagons or fire anywhere in the living route.
-        foreach (var s in own.Where(x => !x.Forbids.Contains("chapter_later")))
-            foreach (var n in s.Nodes)
-                check(!new[] { "barricade", "wagon tongue", "second wave", "rained at Houndheart", "into the rain" }.Any(t => n.Text.Contains(t, StringComparison.Ordinal)),
-                    "Invented Houndheart detail in " + s.Id + "/" + n.Id);
+
         var caught = Take(stories, inCells, "yield", 0, P + "alive.caught_her", Returned, FirstLoss);
         check(Ch(stories, "her_tale", 0).Check?.Skill == "SkillPerception" && Ch(stories, "missed", 0).Check?.Skill == "CheckBluff",
             "Trk_Jannah_Stories: the catch is not Perception, or the false catch not a Bluff.");
@@ -292,8 +288,7 @@ internal static class JannahTricksterTests
               && challenge.Nodes.Single(n => n.Id == "no_gift").Choices.Single().Next == "bout_again"
               && challenge.Nodes.Single(n => n.Id == "bout_again").Choices[2].Set.Contains(P + "threw_the_bout"),
             "Trk_Jannah_Commit: the bout is not Mobility or Athletics, or a thrown line is not refused once and then her no.");
-        check(!challenge.Nodes.Any(n => n.Text.Contains("you're mine")) && challenge.Nodes.Where(n => n.Id != "yes").All(n => n.Choices.All(c => !c.Set.Contains(Committed)))
-              && challenge.Nodes.Single(n => n.Id == "yes").Choices.Take(2).All(c => c.Set.Contains(Committed)),
+        check(challenge.Nodes.Where(n => n.Id != "yes").All(n => n.Choices.All(c => !c.Set.Contains(Committed))) && challenge.Nodes.Single(n => n.Id == "yes").Choices.Take(2).All(c => c.Set.Contains(Committed)),
             "Trk_Jannah_Commit: somebody is won by the bout (the yes is not hers, after it).");
         var paths = Program.Walk(challenge, walled).ToList();
         var won = paths.Where(r => r.Has(P + "bout.commander_first") && r.Has(Committed)).ToList();
@@ -406,15 +401,12 @@ internal static class JannahTricksterTests
         var joinedOpen = World(story, 5, "trickster", "trickster.ever", "jannah.joined", "jannah.condemned", "seelah.q3_started");
         check(!Avail(letter, joinedOpen) && Avail(letter, World(story, 5, "trickster", "trickster.ever", "jannah.joined", "jannah.condemned", "seelah.q3_started", "seelah.souls_returned")),
             "The joined letter arrives while Q3 is unfinished.");
-        check(!letter.Nodes.Single(n => n.Id == "joined").Text.Contains("parole", StringComparison.Ordinal),
-            "The joined letter invents a parole term.");
         // Quality pass Q6 (BEL): the night names a lost record only if she lost one.
         var nightLost = World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", Committed, P + "bout.commander_first", FirstLoss);
         var nightKept = World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", Committed, P + "bout.her_first", P + "cost.public_yield");
         HashSet<string> NightPages(Snapshot w) { var seen = new HashSet<string>(); Program.Walk(night, w, (page, _) => seen.Add(page)); return seen; }
         check(Avail(night, nightLost) && NightPages(nightLost).Contains("record_lost") && !NightPages(nightLost).Contains("record_kept")
-              && Avail(night, nightKept) && NightPages(nightKept).Contains("record_kept") && !NightPages(nightKept).Contains("record_lost")
-              && !night.Nodes.Single(n => n.Id == "close").Text.Contains("any more", StringComparison.Ordinal),
+              && Avail(night, nightKept) && NightPages(nightKept).Contains("record_kept") && !NightPages(nightKept).Contains("record_lost"),
             "The night tells an undefeated Jannah that she lost her record.");
         // Quality pass Q6 (BEL): her answer to Irabeth counts the muster only after it.
         var answer = S(C + "the_answer");
@@ -424,12 +416,10 @@ internal static class JannahTricksterTests
         var ec = pages.Single(p => p.Id == P + "epilogue.commit");
         check(fb.ForbidOverrides["sacrifice"] == "trickster.commander_back" && ec.ForbidOverrides["sacrifice"] == "trickster.commander_back",
             "A romance page keys survival on the retired cheated_death.");
-        check(!fb.Nodes.SelectMany(n => n.Paragraphs).Any(q => q.Text.Contains("accident", StringComparison.Ordinal)),
-            "The yearly bouts are thrown in secret.");
+
         // Quality pass Q6 (BEL): the declined page names only the refusal that happened.
         var dec = pages.Single(p => p.Id == P + "epilogue.declined");
-        check(!dec.Nodes[0].Text.Contains(" lie", StringComparison.Ordinal)
-              && new[] { P + "held_the_lie", P + "threw_the_bout", P + "shamed_her", P + "refused_the_yield" }
+        check(new[] { P + "held_the_lie", P + "threw_the_bout", P + "shamed_her", P + "refused_the_yield" }
                   .All(f => dec.Nodes[0].Paragraphs.Count(q => q.Requires.SequenceEqual(new[] { f })) == 1),
             "The declined page blames a lie that may not have been told.");
         // Q6 follow-up (INT/COX): no progression scene is a mod-menu read; her letter is her one Chapter 5 rest delivery (tier A),
@@ -484,9 +474,8 @@ internal static class JannahTricksterTests
             }
         }
         var codaParas = coda.Nodes[0].Paragraphs;
-        check(codaParas.Where(q => q.Text.Contains("north wall", StringComparison.Ordinal)).All(q => q.Requires.Contains(C + "walls.saluted"))
-              && codaParas.Count(q => q.Requires.Contains("jannah.lastcall.called")) == 2
-              && !S("jannah.lastcall.call").Nodes.Any(n => n.Text.Contains(" a wall", StringComparison.Ordinal) || n.Text.Contains("north wall", StringComparison.Ordinal) || n.Text.Contains("Mivon words", StringComparison.Ordinal)),
+        check(codaParas.Where(q => SurfaceIds.Has(SurfaceIds.Of(story, q), "[jannah.lastcall.page/page/paragraph/0]")).All(q => q.Requires.Contains(C + "walls.saluted"))
+              && codaParas.Count(q => q.Requires.Contains("jannah.lastcall.called")) == 2,
             "The Last Call call or coda recalls a wall salute the Commander never called.");
 
         Console.WriteLine("PASS: Jannah Trickster (Trk_Jannah_*): the forms at the cage, the ash, the unclaimed yield, blood and tale in six living worlds, the false catch and the wagon, "

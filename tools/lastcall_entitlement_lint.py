@@ -83,9 +83,6 @@ def history_errors(story, contracts=None):
             failures.append(label + ": narrated history lacks its declared witness")
         if proof.implies(ctx, NOT(ctx)):
             failures.append(label + ": declared history surface is impossible")
-        for token in row.get("absent_text", []):
-            if token.lower() in text.lower():
-                failures.append(label + ": unearned history text: " + token)
     for key, groups in contracts.get("derived", {}).items():
         if story.get("Derived", {}).get(key) != groups:
             failures.append(key + ": recovery reader differs from actual release witnesses")

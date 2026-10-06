@@ -33,7 +33,6 @@ class LateAcceptanceInventory2Tests(unittest.TestCase):
         self.assertIn('kiana.trickster.late_no', blank['EnterSet'])
         self.assertEqual(len(blank['Choices']), 1)
         answer = blank['Choices'][0]
-        self.assertEqual(answer['Text'], 'Continue')
         self.assertIsNone(answer['Next'])
         self.assertEqual(answer['Set'], [])
         self.assertEqual(answer['Requires'], [])

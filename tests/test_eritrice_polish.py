@@ -53,10 +53,10 @@ class EritricePolishTests(unittest.TestCase):
     def paragraphs(self, flags):
         page = next(s for s in self.payload["Scenes"]
                     if s["Id"] == "eritrice.trickster.epilogue.we_did_meet")["Nodes"][0]
-        return [p["Text"] for p in page["Paragraphs"]
+        return {i for i, p in enumerate(page["Paragraphs"])
                 if set(p.get("Requires", ())) <= flags
                 and not set(p.get("Forbids", ())) & flags
-                and all(set(group) & flags for group in p.get("AnyGroups", ()))]
+                and all(set(group) & flags for group in p.get("AnyGroups", ()))}
 
     def test_public_actions_complete_without_rescue_or_native_effects(self):
         cases = ((council.LIED_FOR_HER, {council.LIE_SPOKEN, council.LIE_WITHDRAWN}),
@@ -113,14 +113,15 @@ class EritricePolishTests(unittest.TestCase):
             self.assertFalse(state.flags & self.receipts)
 
     def test_pending_and_performed_records_are_distinct(self):
-        cases = ((council.LIED_FOR_HER, council.LIE_SPOKEN, "a public statement was not", "The chair requested this falsehood"),
-                 (council.LIED_FOR_HER, council.LIE_WITHDRAWN, "a public statement was not", "withdrew the lie before the Council"),
-                 (council.TRUTH_FOR_CHADALI, council.TRUTH_SPOKEN, "never entered there as spoken", "It carried no vote"),
-                 (council.PROTECTION_REQUESTED, council.PROTECTION_SPOKEN, "No public ruling followed", "The motion did not carry"))
+        # Positions in this draft-only fixture, before the engine's paragraph injections.
+        cases = ((council.LIED_FOR_HER, council.LIE_SPOKEN, 15, 21),
+                 (council.LIED_FOR_HER, council.LIE_WITHDRAWN, 15, 22),
+                 (council.TRUTH_FOR_CHADALI, council.TRUTH_SPOKEN, 18, 23),
+                 (council.PROTECTION_REQUESTED, council.PROTECTION_SPOKEN, 19, 24))
         for approach, receipt, pending, performed in cases:
             with self.subTest(receipt=receipt):
-                before = "\n".join(self.paragraphs({approach}))
-                after = "\n".join(self.paragraphs({approach, receipt}))
+                before = self.paragraphs({approach, "crossroute.chadali.available"})
+                after = self.paragraphs({approach, receipt, "crossroute.chadali.available"})
                 self.assertIn(pending, before)
                 self.assertNotIn(performed, before)
                 self.assertNotIn(pending, after)
@@ -131,9 +132,7 @@ class EritricePolishTests(unittest.TestCase):
         self.assertTrue(all(not c["Set"] for c in self.nodes["start"]["Choices"]))
         self.assertEqual(self.nodes["promise"]["Choices"][0]["Set"], [council.LIE_SPOKEN])
         self.assertEqual(self.nodes["promise"]["Choices"][1]["Set"], [council.LIE_WITHDRAWN])
-        self.assertIn("All those in favor?", self.nodes["protect"]["Text"])
         self.assertEqual(self.nodes["protect"]["Choices"][0]["Set"], [council.PROTECTION_SPOKEN])
-        self.assertIn("I do not want Chadali hurt", self.nodes["truth"]["Text"])
         self.assertEqual(self.nodes["truth"]["Choices"][0]["Set"], [council.TRUTH_SPOKEN])
         request = next(s for s in council.SCENES if s["Id"] == council.K + "a_lie_for_the_chair")
         approaches = next(n for n in request["Nodes"] if n["Id"] == "want")["Choices"]
@@ -154,9 +153,8 @@ class EritricePolishTests(unittest.TestCase):
                 self.assertEqual(node["SpeakerUnit"], "4a47d14a45ce264408a1c6a33345dd89")
             self.assertFalse(node.get("Paragraphs"))
         self.assertEqual(text_structure_lint.check({"Scenes": council.PUBLIC_SCENES}), {"hard": [], "review": []})
-        self.assertIn("Claim unsupported", self.nodes["lie_response"]["Text"])
-        self.assertIn("I asked you to make that claim", self.nodes["lie_ruling"]["Text"])
-        self.assertIn("No exemption was voted", self.nodes["truth_record"]["Text"])
+        self.assertEqual(self.nodes["lie_response"]["Choices"][0]["Next"], "lie_ruling")
+        self.assertIsNone(self.nodes["truth_record"]["Choices"][0]["Next"])
 
     def test_hook_appends_without_moving_existing_scenes(self):
         baseline = copy.deepcopy(route.SCENES + minutes.SCENES + council.SCENES)
