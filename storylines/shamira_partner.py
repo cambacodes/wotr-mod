@@ -281,6 +281,7 @@ def integrate(payload):
     late = scenes[P + "epilogue.late"]
     late["Nodes"][0]["Text"] = '''{n}The war ended before Shamira could finish her game. A month after Threshold she came to the Commander's window, her red hair smelling of the Abyss. She said she had come for the round she was owed, and took the Commander through the wardrobe to her Harem. Before she reached into the Commander's thoughts, she held out one hand and waited.{/n}'''
     late["Nodes"][0]["Choices"][0]["Next"] = "partner_status"
+    late["Nodes"][0]["Choices"][0]["Id"] = "continue"  # saves reference the legacy .continue answer
     late["Nodes"].extend(terms_nodes(late=True))
     late["Nodes"].extend([
         n("partner_late_won", "Narrator", '''{n}Shamira went through the Commander's thoughts and found herself in every room. The Commander did not try to hide her. She slipped the pins from her hair and let her gown fall among them, then drew the Commander down onto the warm steps of her throne. Her mouth opened against the Commander's; her hand pulled at the coat between them. The fountains drowned the sound of the first fastening breaking.{/n}''',

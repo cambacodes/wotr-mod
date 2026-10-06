@@ -125,6 +125,7 @@ def commitments(scenes):
             page["Paragraphs"][4]["Requires"].append(DECIDED)
             page["Paragraphs"][4]["Forbids"].append(EXCLUSIVE)
         page["Choices"][0]["Requires"].append(DECIDED)
+        page["Choices"][0]["Id"] = "continue"  # saves reference the legacy .continue epilogue answer
         for name, stance, text in (
             ("share", SHARE, '"Keep Corven\'s place. If he comes home, we tell him what we are to each other."'),
             ("exclusive", EXCLUSIVE, '"If I stay, you end your marriage to Corven. I will not share you."'),
