@@ -457,6 +457,73 @@ internal static class MielarahTricksterTests
             "The Fourth's supper is staged in the Third's great cabin, or recalls a minder's death that did not happen.");
         check(story.Scenes.Where(s => s.Relationship == "mielarah").SelectMany(s => s.Nodes).All(n => !n.Text.Contains("not a god who forgets")),
             "The Gravedragger is called a god (he is Zyphus's herald, Tumberd/Cue_0044).");
+        // Reviewed polish: history dispatch is exhaustive in both placements, with no new romance gates.
+        foreach (var suffix in new[] { "", ".arcade" })
+        {
+            var corrected = S(D + "correction" + suffix);
+            foreach (var amuletsUsed in new[] { false, true })
+            {
+                var state = new Snapshot();
+                if (amuletsUsed) state.Flags.Add("mielarah.amulets_used");
+                foreach (var response in new[] { "freed", "tightened", "laughing", "kept" })
+                {
+                    var answers = corrected.Nodes.Single(n => n.Id == response).Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToArray();
+                    check(answers.Length == 1 && answers[0].Next == (amuletsUsed ? "after_amulets" : "after"),
+                        "Correction must select exactly its witnessed disclosure: " + suffix + response);
+                }
+            }
+            check(corrected.Nodes.Single(n => n.Id == "after_amulets").Text.Contains("He woke before he hit the water"),
+                "The witnessed amulets disclosure omits the ringleader's death.");
+
+            var names = S(D + "names" + suffix);
+            // Include overlapping flags: death and known intent retain precedence; SELF is an offer, not proof of injury.
+            for (int mask = 0; mask < 32; mask++)
+            {
+                var state = new Snapshot();
+                var keys = new[] { P + "cost.oskel", P + "cost.meant", P + "primed.self", P + "minder.refused", P + "raid.cut_down" };
+                for (int bit = 0; bit < keys.Length; bit++) if ((mask & (1 << bit)) != 0) state.Flags.Add(keys[bit]);
+                var expected = (mask & 1) != 0 ? ((mask & 16) != 0 ? "oskel_cut" : "oskel")
+                    : (mask & 2) != 0 ? "space" : (mask & 4) != 0 ? "blank_self" : (mask & 8) != 0 ? "blank_withdrawn" : "blank";
+                var answers = names.Nodes.Single(n => n.Id == "last").Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToArray();
+                check(answers.Length == 1 && answers[0].Next == expected,
+                    "The book invents or loses a sacrifice history: " + suffix + " mask " + mask);
+            }
+            check(!names.Nodes.Single(n => n.Id == "blank_self").Text.Contains("mark")
+                  && !names.Nodes.Single(n => n.Id == "blank_withdrawn").Text.Contains("alive"),
+                "A rejected sacrifice certifies an unearned injury or survival.");
+
+            var wounded = S(D + "wounded" + suffix);
+            foreach (var refused in new[] { false, true })
+            {
+                var state = World(story, 5, "trickster", P + "landfall", "mielarah.started", D + "flown", D + "corrected");
+                if (suffix != "") state = With(state, "mielarah.presence.failed");
+                if (refused) state = With(state, P + "rock.slavers_refused");
+                var visited = Visited(wounded, state);
+                check(visited.Contains(refused ? "sum_refused" : "sum") && !visited.Contains(refused ? "sum" : "sum_refused"),
+                    "The wounded scene asks for moral advice after she refused it: " + suffix);
+                var sum = refused ? "sum_refused" : "sum";
+                check(After(wounded, state, sum, 0).All(w => w.Has(D + "wounded_carried") && !w.Has(D + "wounded_left"))
+                      && After(wounded, state, sum, 1).All(w => w.Has(D + "wounded_left") && !w.Has(D + "wounded_carried")),
+                    "Wounded transport lost its existing outcomes: " + suffix);
+            }
+            foreach (var intimate in new[] { S(D + "wheel" + suffix), S(D + "quarterdeck" + suffix) })
+            {
+                check(intimate.Nodes.Single(n => n.Id == "coat").Text.Contains("rattling on the planks")
+                      && !intimate.Nodes.Single(n => n.Id == "kiss").Text.Contains("rain you came up through")
+                      && intimate.Nodes.Single(n => n.Id == "threshold").Choices.Single().Set.Contains(D + "quarterdeck"),
+                    "The shared intimate scene lost its staging or existing cut: " + intimate.Id);
+            }
+        }
+        // Either deployment promise sends supplies north; neither promise renders exactly the waiting account.
+        for (int mask = 0; mask < 4; mask++)
+        {
+            var state = new Snapshot();
+            if ((mask & 1) != 0) state.Flags.Add(D + "captains");
+            if ((mask & 2) != 0) state.Flags.Add(D + "last_night");
+            var deployment = codaNode.Paragraphs.Skip(4).Where(p => Rules.ParagraphVisible(p, state)).ToArray();
+            check(deployment.Length == 1 && deployment[0].Text.Contains(mask == 0 ? "over Drezen when the news arrived" : "Above the camp at Threshold"),
+                "Last Call loses the captain's existing deployment promise: " + mask);
+        }
         Console.WriteLine("PASS: Mielarah Trickster (Trk_Mielarah_*): the rule read, the bosun, the hanging, the storm, the landfall, the charter, "
                           + deck.Length / 2 + " Chapter 5 beats and the wheel.");
     }

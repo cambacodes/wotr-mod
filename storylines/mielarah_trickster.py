@@ -322,12 +322,11 @@ tavern(P + "tavern.second_look", "At her elbow", '[Sit down beside her, closer t
 
 REPEATED = P + "repeated"
 
-tavern(P + "tavern.repeat", "Does it repeat?", '[Take the stool at her elbow again.]', [
-    nar("start", '''{n}The stool at her elbow is empty, as it always is. You take it.{/n}
-{n}Mielarah does not look up from the letter she is writing. She finishes the line, blots it, and sets the pen down parallel to the edge of the paper.{/n}
-"Magisters of the Arcanamirium are trained to distrust a result the first time it appears," {n}she says to the letter.{/n} "I believe I said something of the kind. I did not expect to be taken at my word."''',
+tavern(P + "tavern.repeat", "Does it repeat?", '[Take the stool at her elbow.]', [
+    nar("start", '''{n}The stool at Mielarah's elbow is empty. You take it. She finishes the line of her letter, blots it, and lays the pen beside the paper.{/n}
+"You know what happens to people who sit there. Very well. Magisters test their findings. Tonight we shall test yours."''',
         c("Continue", "wait")),
-    mi("wait", '''"Very well. The experiment is simple. You sit there. I sit here. We drink something bad and talk about something unimportant, and we see whether anything falls on you." {n}She signals for two cups.{/n} "I will note that no one has ever volunteered for this experiment twice."
+    mi("wait", '''"Very well. The experiment is simple. You sit there. I sit here. We drink something bad and talk about something unimportant, and we see whether anything falls on you." {n}She signals for two cups.{/n} "I will note that most people move their stool the other way."
 {n}The serving girl brings the cups at arm's length, sets them down at the very edge of the table, and leaves at a pace just short of running. Mielarah pushes one toward you with a fingertip.{/n} "Your health. Such as it is."''',
        c('"What shall we talk about?"', "talk"),
        c('[Flirt] "You. I\'m told it\'s an unimportant subject."', "talk")),
@@ -364,7 +363,7 @@ tavern(P + "tavern.charts", "The chart of the Midnight Isles", '"Show me the way
        c('"Tombs on Vazglar. You said that like someone who knows tombs."', "vazglar"),
        c('"And the weather?"', "weather")),
     mi("mharah", '''"I go to my cabin for a quarter of an hour." {n}She says it lightly, and does not look at you.{/n} "When I come out, nobody wants to kill anybody. Nobody wants anything very much. It passes when the island passes."
-"It is the same discipline I keep every day, only louder. I told you I recruit the not completely corrupted. Mharah is the place where 'completely' comes up for air." {n}She rolls a pencil under one finger.{/n} "You will see me come out of that cabin looking like a wrung cloth, Commander. Please don't comment on it."''',
+"It is the same discipline I keep every day, only louder. I recruit sailors who are not completely corrupted. Mharah is where I discover how much corruption I missed." {n}She rolls a pencil under one finger.{/n} "You will see me come out of that cabin looking like a wrung cloth, Commander. Please don't comment on it."''',
        c('"Tombs on Vazglar. You said that like someone who knows tombs."', "vazglar"),
        c('"And the weather?"', "weather")),
     mi("vazglar", '''{n}The pencil stops rolling.{/n}
@@ -419,7 +418,7 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
 {n}"The Commander will be sailing with us," Mielarah tells him. "Tell the mess to lay one more place. That is all." He nods once, looks at you exactly as long as a bosun looks at new cargo, and goes.{/n}''',
         c("Continue", "who")),
     mi("who", '''"I took him off a slaver's deck off Nahyndri, six years ago. He had killed three men on that ship, and he would have killed me, and some days I think he still means to." {n}She says it the way she might describe a leak she has learned to live with.{/n}
-"He is also the best bosun in the Midnight Isles. The crew would sail into a hurricane on his word. That is the disciplinary thought-correction at work: a little of me in his head, every day, so that the man who would cut my throat keeps choosing to be the man who keeps my ship." {n}A thin smile, and a tap at her temple.{/n} "Don't make that face. I told you I recruit the not completely corrupted. 'Not completely' is doing a great deal of work in that sentence."''',
+"He is also the best bosun in the Midnight Isles. The crew would sail into a hurricane on his word. That is the disciplinary thought-correction at work: a little of me in his head, every day, so that the man who would cut my throat keeps choosing to be the man who keeps my ship." {n}A thin smile, and a tap at her temple.{/n} "Don't make that face. I recruit the not completely corrupted. Oskel has given me plenty of work on the rest."''',
        c('"Put him at your elbow for the voyage. Nearer to you than anyone, every hour, until we land."', "order")),
     mi("order", '''{n}The pencil stops.{/n}
 "I beg your pardon?"
@@ -670,7 +669,7 @@ remote(P + "raid.elbow", "Nearest", [
 {n}When the bruise came up, it came up grey, the grey of turned earth, in the shape of a spade's blade. It has not faded.{/n}''',
         c("Continue", "cabin")),
     mi("cabin", '''{n}She comes to you the next night, in the cabin they gave you, with a scarf wound high round her throat, and sits on your sea chest without asking. Her voice is a rasp, but it is hers.{/n}
-"I told you so. In the Bad Luck, in front of witnesses." {n}Her eyes go to your shoulder, to the place under the sling where the grey spade is.{/n} "I felt it come down. Six years I have watched the Gravedragger collect whoever stands nearest, and for the first time I watched him collect, and not finish."
+"I told you so. In the Bad Luck, in front of witnesses." {n}Her eyes go to your shoulder, to the place under the sling where the grey spade is.{/n} "I felt it come down. Six years I have watched the Gravedragger collect whoever stands nearest, and this time he left his mark on you."
 "He has your measure now. He has put his mark on you like a surveyor's peg. Don't you dare think that was cheap."''',
         c("Continue", "eleven")),
     mi("eleven", '''"The eleven who held the rope, I'll put off on the first rock with water on it." {n}A very thin smile.{/n} "My code says I never ignore those in distress. They won't be in distress until I leave them there. I have decided that counts."
@@ -835,8 +834,8 @@ remote(P + "storm.word", "Word at the Bad Luck", [
 {n}You wake with salt in your mouth that isn't there. Starcatcher the Third is gone. Her crew went off toward the horizon on their own wings, the few who had them. Nobody saw what became of the captain.{/n}''',
         c("Continue", "known", requires=(PATTERN,)),
         c("Continue", "unknown", forbids=(PATTERN,))),
-    nar("known", '''{n}But you think you know the rule, and nothing since has argued with it. Her curse does not aim, and it has never once aimed at her. Starcatcher the First went down in a storm and she walked away from it. Starcatcher the Second broke on the rocks and she walked away from that with a chipped tooth. Everything near her dies of accidents, and nothing happens to her. It never does.{/n}
-{n}She is alive somewhere on the Ishiar. You would stake the crusade on it.{/n}''',
+    nar("known", '''{n}But you think you know the rule, and nothing since has argued with it. Her curse does not aim, and it has never once aimed at her. Starcatcher the First went down in a storm and she walked away from it. Starcatcher the Second broke on the rocks and she walked away from that with a chipped tooth. The people around her paid for those escapes. You have no account of this one yet.{/n}
+{n}She may have got clear again. That is enough reason to send word.{/n}''',
         c("[Send word to every aeronauts' tavern in the Midnight Isles: the passenger lived, and is waiting for the captain.]",
           flags=(WORD,)),
         c("[Let her go.]", "let_go")),
@@ -846,14 +845,14 @@ remote(P + "storm.word", "Word at the Bad Luck", [
           check=dict(Skill="SkillLoreReligion", DC=28, Success="reasoned", Failure="diviner", CommanderOnly=True)),
         c("[Pay a diviner of the Midnight Isles to look for her.]", "paid", crusade=("Finances", -300), requires=("trickster",)),
         c("[Let her go.]", "let_go")),
-    nar("reasoned", '''{n}Zyphus's priests hold that no death is written in advance; an accident does not aim, it collects. Her curse has never collected her. It collects whoever is standing nearest when trouble comes, and leaves her in the middle of the wreckage without a scratch, to count. She is alive. She is always alive.{/n}''',
+    nar("reasoned", '''{n}The Gravedragger cursed her after she took his captives. Since then she has survived one wreck after another and counted the people who did not. If the nearest-person pattern holds, his joke may have left her alive to count these too. You cannot pick one survivor out of the Ishiar from here. You can leave word in the ports.{/n}''',
         c("[Send word to every aeronauts' tavern in the Midnight Isles: the passenger lived, and is waiting for the captain.]",
           flags=(WORD, LATE, PATTERN))),
     nar("diviner", '''{n}You get as far as the Gravedragger and no further. What a herald of the god of pointless death wants with one woman is a question for priests you do not have.{/n}''',
         c("[Pay a diviner of the Midnight Isles to look for her.]", "paid", crusade=("Finances", -300), requires=("trickster",)),
         c("[Let her go.]", "let_go")),
     nar("paid", '''{n}The diviner is a thing with too many eyes that works out of a teahouse in Alushinyrra and charges in advance. It looks into a bowl of seawater for a long time and then laughs, a wet little laugh.{/n}
-{n}"The Gravedragger's pet? Of course she's alive. Nothing near her lives, and nothing kills her. She's floating on a hatch cover two hundred miles south, cursing in three languages." It holds out a hand for the rest of the fee.{/n}''',
+{n}"The Gravedragger's pet? She's floating on a hatch cover two hundred miles south, cursing in three languages." It holds out a hand for the rest of the fee.{/n}''',
         c("[Send word to every aeronauts' tavern in the Midnight Isles: the passenger lived, and is waiting for the captain.]",
           flags=(WORD, LATE))),
     nar("let_go", '''{n}She let go of the wheel. You let go of her. The Ishiar keeps what it is given.{/n}''',
@@ -866,7 +865,7 @@ remote(P + "storm.survivor", "The survivor", [
 "The Bad Luck gave me your message." {n}Her voice is flat and hoarse.{/n} "'The passenger lived.' Somebody had pinned it over the bar with a knife. You are a very peculiar person, Commander."''',
         c("Continue", "wheel")),
     mi("wheel", '''"You ordered me into that storm. You'll remember that. And I took the helm, and I nodded, and I meant it." {n}She sits, carefully, as if the ground might pitch.{/n}
-"Then it came up behind me. I can't describe it better than that. Every captain I have ever lost, standing on the companionway at my back, and the wind in the sails sounding like a spade in wet earth. And I thought: it's going to be the passenger this time. The one who reads rules. I felt my hands open."
+"Then it came up behind me," {n}she says.{/n} "I can't describe it better than that. Every captain I have ever lost, standing on the companionway at my back, and the wind in the sails sounding like a spade in wet earth. And I thought: it's going to be the passenger this time. The one who gave the order. I felt my hands open."
 "I let go of the wheel, Commander. I have been flying ships since I was fourteen, and I let go of the wheel."''',
        c("Continue", "oskel", requires=(MINDER,)),
        c("Continue", "hatch", forbids=(MINDER,))),
@@ -878,7 +877,7 @@ remote(P + "storm.survivor", "The survivor", [
 "Three days on a hatch cover is a long time to think, Commander, and I am a certified specialist in resolving magic-related issues. You didn't want a bodyguard. You wanted a lightning rod. You lied to me at my own table so that my curse would have somebody to take who wasn't me." {n}Her hands close in her lap.{/n} "And it did."''',
        c("Continue", "hatch", flags=(SECRET_KNOWN,))),
     mi("hatch", '''"I came up under a hatch cover and held on to it for three days. Nothing ate me. Nothing ever does. On the fourth day a Nahyndri fishing skiff took me aboard, and on the fifth its mast snapped in a flat calm and killed the man who'd pulled me out of the water." {n}A small, terrible smile.{/n} "You see how it is."
-"And now here you are, alive, and so am I. I've lost Starcatcher the Third. I have lost her crew. Tell me what you want to say about it, because I have been rehearsing both halves of this conversation for a week."''',
+"And now here you are, alive, and so am I. I've lost Starcatcher the Third. I have lost her crew. Tell me what you want to say about it, because I have been rehearsing both halves of this conversation since the mast broke."''',
        c('"I ordered you into that storm. It was the wrong order."', "owned",
          flags=(RETURNED, STARTED, SHIP_LOST, STORM_OWNED, NOTICED, OSKEL_DEAD, ROPE_SECRET), requires=(MINDER,)),
        c('"I ordered you into that storm. It was the wrong order."', "owned",
@@ -894,7 +893,7 @@ remote(P + "storm.survivor", "The survivor", [
 "Yes. I did. You gave a stupid order and I carried it out, and then I let go." {n}Her jaw sets.{/n} "Since I was fourteen, and I let go. Say it as often as you like; you can't say it more often than I do."''',
        c("Continue", "fourth")),
     mi("fourth", '''"Something else, since we're being honest. On the hatch cover, the second night, I dreamt of a spade. It wasn't digging for me. It has never dug for me. It was digging somewhere far off, slowly, like a man with all the time in the world."
-"I think the Gravedragger has noticed you, Commander. You stood on my deck and read his rule like a chart, and he doesn't like being read." {n}She gets up.{/n}
+"I think the Gravedragger has noticed you, Commander. You lived through that voyage. Now you have sent for me. He has had enough reasons to dislike you." {n}She gets up.{/n}
 "You paid me a fare to Colyphyr and I didn't earn it. So I'm going to spend it. There is a sloop for sale in Alushinyrra, twenty years old and ugly as sin, and she will be Starcatcher the Fourth by the end of the month. And then I'm going to fly her north, to Drezen, and deliver you the rest of what you paid for."''',
        c('"I\'ll be waiting."', "go"),
        c('"Drezen\'s a long way through a bad sky."', "go")),
@@ -933,8 +932,7 @@ remote(P + "charter.rumour", "Six crew in two years", [
         c("[Put the broadsheet down.]", abort=True)),
     nar("clerk", '''{n}The clerk is a thin tiefling who keeps the Isles' shipping rolls in a cellar and charges by the line. Two days later he brings you six entries in a copying hand, with the watch, the weather and the station of every man.{/n}''',
         c("Continue", "rule")),
-    nar("rule", '''{n}Stale news is still news. A steward with a tray, at her elbow. The mate beside her at the wheel. A girl selling apples across a counter from her. Every one of them the nearest living thing to the captain when the trouble came, and never once the captain.{/n}
-{n}The curse does not aim. It takes whoever stands nearest.{/n}''',
+    nar("rule", '''{n}The entries name the dead sailors' stations, the watch and the weather. In each account the captain was beside the man who died. Nobody entered an injury against her name.{/n} {n}The pattern is worth putting to her. She has records of her own.{/n}''',
         c("Continue", "write")),
     nar("write", '''{n}You write to her care of the Bad Luck, by the portal-merchant's post, which costs more than his broadsheets: a charter to Drezen for an honest ship, cargo in and wounded out, at her rates, the whole voyage paid in advance. And one line more, because she will want to know what you are buying: "Your curse takes whoever stands nearest. I will see to who stands there."{/n}''',
         c("[Seal it, with the fee.]", "reply", crusade=("Finances", -500)),
@@ -1030,10 +1028,10 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
-    nar("page", '''{n}The spring after Threshold, a ship with an anchor on her flag came down out of a clear sky over Drezen and hung there, a hundred feet up, while her captain let down a rope ladder and climbed to the bottom of it and did not step off.{/n}
-"You turned for home, the last time I gave you my wheel," {n}said Mielarah.{/n} "I have thought about it for a year. It was the right thing to do, and I have not forgiven you for it."
-"I told you I would not ask you anything again, and I keep my word, even to you." {n}She did not hold out her hand. She only moved her boots to one side of the bottom rung, so that there was room on it for two.{/n} "I am not asking. I am telling you where the ladder is. The wheel is where you left it."''',
-        c('[Take her hand and climb.]', "climb"),
+    nar("page", '''{n}The spring after Threshold, Starcatcher hung over Drezen with her ladder down. Mielarah climbed to the bottom rung and stayed there, one boot hooked through the rope.{/n}
+"You turned for home when I gave you the wheel. You brought the ship back safely. I have had time to be grateful, and time to be angry. I have managed both."
+{n}She shifts her boots, leaving room on the rung beside her.{/n} "No storm waiting for you this time. If you want to come aboard, the ladder is down."''',
+        c("[Step onto the ladder beside her.]", "climb"),
         c('[Stay on the ground.]', "stay")),
     nar("climb", '''{n}The ladder swung under both of you all the way up, and she laughed at you the whole time, and at the top she put your hands on the spokes and took hers away. Starcatcher went north that afternoon, over the ground the whole war had been fought for, whatever it had become, and held her course the whole way.{/n}'''),
     nar("stay", '''{n}She looked down at you for a while, swinging gently on the ladder over the rooftops. Then she nodded, as if a column of figures had come out the way she expected, and climbed back up. Starcatcher was over the horizon by evening. Every spring after that, a bill of lading arrived in Drezen for one passenger, fare paid, berth unassigned.{/n}'''),
@@ -1078,7 +1076,7 @@ remote(P + "raid.overboard", "The man at the plank", [
 {n}"Dask had his hook on her collar when she went over. Plank snapped under him. He went after her and hit the water wrong and didn't come up." Oskel touches the back of his own neck, low down. "The crew say she took him with her. They're pleased about it. They say it proves she's gone for good."{/n}''',
         c("Continue", "rule", requires=(PATTERN,)),
         c("Continue", "folk", forbids=(PATTERN,))),
-    nar("rule", '''{n}You read her rule at her own table in the Bad Luck. The curse does not aim; it takes whoever stands nearest her when trouble comes. In six years it has never once been seen to take anyone near a dead thing, and it took the man with his hook on her collar.{/n}
+    nar("rule", '''{n}You have a pattern to test against Oskel's account. The curse does not aim; it takes whoever stands nearest her when trouble comes. In six years it has never once been seen to take anyone near a dead thing, and it took the man with his hook on her collar.{/n}
 {n}That proves nothing. A plank can snap under anyone. But it is the only reason you have, and the Ishiar is two days behind you.{/n}''',
         c("Continue", "act"),
         c('"Even so. She\'s dead, Oskel. Let her lie."', "leave")),
