@@ -1,0 +1,46 @@
+{
+  "slot_id": "camellia.trickster.cards.the_deck_again_camp.explicit.1",
+  "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
+  "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Retained-body paid return: no borrowed clawed-coffin injuries or automatic widow identity. Stacked-deck branch only: she pulls the Commander onto black silk and scatters cards. The blade that opened clothing is now set aside. This is a mutually wanted intimate return; reserve the adult sexual passage for the user fill. End together during the night so the retained close node near the collar follows, then morning alone with the card at the door. The quiet kept-spread branch never enters. Required beats: She refuses to settle whether the trick happened; no magic truth or affection. She directs closeness on silk; cards are scenery, not fate. Keep blade aside and her appetite intact without sexual compulsion. No dawn/departure inside this slot: close and morning retain their own actions.",
+  "facts": [
+    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
+    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
+    "She values successful deception and seeks the disbelief of trusting victims.",
+    "She is frank about sex and finds ordinary sex boring.",
+    "Rillik/Rellik was her murdered victim, not a live husband."
+  ],
+  "required_beats": [
+    "She refuses to settle whether the trick happened; no magic truth or affection.",
+    "She directs closeness on silk; cards are scenery, not fate.",
+    "Keep blade aside and her appetite intact without sexual compulsion.",
+    "No dawn/departure inside this slot: close and morning retain their own actions."
+  ],
+  "last_line": "C: Leave the cards. Come closer.",
+  "speakers": {
+    "C": "Camellia"
+  },
+  "example": "N: Camellia catches your collar and draws you into a kiss.\nC: Keep your hand there. I have not finished looking.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "default_text": "{n}She pushes the knife clear of the silk and pulls you back by the collar. Her hair brushes your cheek as she kisses you; the cards shift beneath your shoulders.{/n}\n\"Leave the cards. Come closer.\"",
+  "insertion": {
+    "scene_id": "camellia.trickster.cards.the_deck_again_camp",
+    "after_node": "silk",
+    "branch": "silk",
+    "retained_successor": "close",
+    "state_changes": "None; retain original encounter/commitment and continuation effects exactly."
+  },
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6"
+  ]
+}

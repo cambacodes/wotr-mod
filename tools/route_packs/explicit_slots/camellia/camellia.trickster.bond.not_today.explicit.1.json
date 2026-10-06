@@ -1,0 +1,46 @@
+{
+  "slot_id": "camellia.trickster.bond.not_today.explicit.1",
+  "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
+  "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Officially dead, physically returned Camellia: concealment and actual return debt persist, not rescue gratitude. Smile/convincing/today converge: she chooses postponement, plants the knife in the window frame and closes shutters against rain. She initiates mutual intimate return; reserve the adult sexual passage for the user fill. Love increases the danger, not a loss of love and not redemption. Retained dawn tests the blade still in the frame before muster. Required beats: Postponement is her decision tonight only. Concrete warmth and pursuit replace the rain swallowing the moment. Blade stays in window frame away from bodies. Keep tomorrow hers, no permanent safety/exclusivity promise.",
+  "facts": [
+    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
+    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
+    "She values successful deception and seeks the disbelief of trusting victims.",
+    "She is frank about sex and finds ordinary sex boring.",
+    "Rillik/Rellik was her murdered victim, not a live husband."
+  ],
+  "required_beats": [
+    "Postponement is her decision tonight only.",
+    "Concrete warmth and pursuit replace the rain swallowing the moment.",
+    "Blade stays in window frame away from bodies.",
+    "Keep tomorrow hers, no permanent safety/exclusivity promise."
+  ],
+  "last_line": "C: Tonight I want you here.",
+  "speakers": {
+    "C": "Camellia"
+  },
+  "example": "N: Camellia catches your collar and draws you into a kiss.\nC: Keep your hand there. I have not finished looking.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "default_text": "{n}The knife stays in the window frame. Camellia opens the last fastening of your shirt and pulls you against her, her mouth warm from the kiss.{/n}\n\"Tonight I want you here.\"",
+  "insertion": {
+    "scene_id": "camellia.trickster.bond.not_today",
+    "after_node": "night",
+    "branch": "night",
+    "retained_successor": "morning.not_today",
+    "state_changes": "None; retain original encounter/commitment and continuation effects exactly."
+  },
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6"
+  ]
+}

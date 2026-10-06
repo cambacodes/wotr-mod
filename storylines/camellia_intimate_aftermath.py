@@ -65,3 +65,5 @@ def integrate(payload):
             answer["Requires"].append(PREFIX + outcome + ".morning")
             opening["Choices"].append(answer)
             breakfast["Nodes"].append(n("encounter." + outcome, "Camellia", CALLBACKS[outcome], copy.deepcopy(original)))
+    from storylines import camellia_round2
+    camellia_round2.integrate(payload)

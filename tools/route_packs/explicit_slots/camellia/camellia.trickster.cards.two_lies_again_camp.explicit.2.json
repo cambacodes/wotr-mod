@@ -1,0 +1,46 @@
+{
+  "slot_id": "camellia.trickster.cards.two_lies_again_camp.explicit.2",
+  "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
+  "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Retained-body paid return: no borrowed clawed-coffin injuries or automatic widow identity. Mine branch: she calls the fearless boast a lie and leaves the knife beside the pillow. Mutual intimate return; reserve the adult sexual passage for the user fill. Her danger is character, not an active blade compelling sex. No all-branch public debt. End before the retained dawn pulse inspection and muster. Required beats: She reads the face and enjoys the failed boast; narrator does not prescribe player fear. Both visibly choose pursuit; no threat is a sex price. Knife remains aside by pillow, unlike all branch. Morning.mine performs its own wrist/flat-blade action, not replayed here.",
+  "facts": [
+    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
+    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
+    "She values successful deception and seeks the disbelief of trusting victims.",
+    "She is frank about sex and finds ordinary sex boring.",
+    "Rillik/Rellik was her murdered victim, not a live husband."
+  ],
+  "required_beats": [
+    "She reads the face and enjoys the failed boast; narrator does not prescribe player fear.",
+    "Both visibly choose pursuit; no threat is a sex price.",
+    "Knife remains aside by pillow, unlike all branch.",
+    "Morning.mine performs its own wrist/flat-blade action, not replayed here."
+  ],
+  "last_line": "C: Look at me. That boast can wait.",
+  "speakers": {
+    "C": "Camellia"
+  },
+  "example": "N: Camellia catches your collar and draws you into a kiss.\nC: Keep your hand there. I have not finished looking.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "default_text": "{n}Her shift slips from her shoulders. She draws you down into a kiss, then catches your hand and brings it back to her waist; the knife stays beside the pillow.{/n}\n\"Look at me. That boast can wait.\"",
+  "insertion": {
+    "scene_id": "camellia.trickster.cards.two_lies_again_camp",
+    "after_node": "mine",
+    "branch": "mine",
+    "retained_successor": "morning.mine",
+    "state_changes": "None; retain original encounter/commitment and continuation effects exactly."
+  },
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6"
+  ]
+}
