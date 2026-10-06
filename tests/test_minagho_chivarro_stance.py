@@ -78,6 +78,10 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
                     or page['Id'] == 'minachiv.lastcall.page') or page['Owner'] == 'AeonEpilogue':
                 continue
             for node in page['Nodes']:
+                if '.explicit.' in node['Id']:
+                    # The heated cut returns to the saved ending node, whose
+                    # current-state and stance receipts are checked below.
+                    continue
                 with self.subTest(scene=page['Id'], node=node['Id']):
                     reads = {f for p in node.get('Paragraphs', []) for f in p['Requires']}
                     self.assertTrue({stance.SHARE, stance.EXCLUSIVE, stance.SECRET}.issubset(reads))
@@ -151,7 +155,12 @@ class MinaghoChivarroStanceTests(unittest.TestCase):
             nights = [n for n in page['Nodes'] if n['Id'].startswith('stance_') and '_night_' in n['Id']]
             self.assertTrue(nights)
             for night in nights:
-                self.assertEqual(night['Choices'][0]['Next'], 'stance_morning_route')
+                target = night['Choices'][0]['Next']
+                if '.explicit.' in target:
+                    slot = nodes[target]
+                    self.assertEqual(slot['Choices'][0]['Set'], [])
+                    target = slot['Choices'][0]['Next']
+                self.assertEqual(target, 'stance_morning_route')
             branches = {a['Next']: a for a in nodes['stance_morning_route']['Choices']}
             self.assertIn(stance.S + 'discovery_due', branches['stance_discovery']['Requires'])
             self.assertIn(stance.S + 'letter_due', branches['stance_discovery_letter']['Requires'])

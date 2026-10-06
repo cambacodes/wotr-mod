@@ -1,0 +1,39 @@
+{
+  "slot_id": "minagho_chivarro.trickster.alone.chivarro_letter.explicit.2",
+  "source": {
+    "scene": "minagho_chivarro.trickster.alone.chivarro_letter",
+    "node": "stance_0_night_chivarro",
+    "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
+  },
+  "voice": "Chivarro: exact appraisal, a madam's mercantile wit, jealous pride, predatory appetite, impatience with gratitude, sensual assurance and harsh temper when cheated. Affection for Minagho remains independent of the Commander. Write new dialogue from traits; do not copy brief sentences or native quotations.",
+  "facts": [
+    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
+    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
+    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
+    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
+  ],
+  "scene": "Authored expansion of minagho_chivarro.trickster.alone.chivarro_letter/stance_0_night_chivarro. Chapter 5, before Threshold, Trickster history at Drezen, the Commander's private quarters after the watch change. Present: Chivarro and the Commander only. Secret affair; the partner is not present in this slot. The mapped discovery is later, not Kiana's mid-act interruption. Continue to the existing morning or terminal exit. This is a neutral production brief; write no additional event outside that interval.",
+  "required_beats": [
+    "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
+    "Carry the scene's existing appetite, rivalry and power into character dialogue; no generic romance recital, narrator verdict, moral maxim or modern consent script.",
+    "Keep clothing and furniture continuous with the source: already removed garments stay removed; the default is staging guidance, not a second undressing.",
+    "No new price, flag, gate, power, arrival, partner agreement, rescue entitlement or ending is generated.",
+    "Finish with the exact last_line; preserve the mapped original aftermath and legacy exit effects. If its opening repeats this connective, join it once without deleting its saved node.",
+    "Her own invitation and appetite are distinct from purchased service. Keep the actual receipt/rent history; do not invent a charge. Minagho's current place is not silently dissolved.",
+    "This is a knowingly chosen affair. Include a short possessive acknowledgment of the absent lover and the risk of discovery. No absolution: flow into the existing key/clothes/receipt confrontation, or retain unknown whereabouts where the source does.",
+    "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
+  ],
+  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
+  "last_line": "N: Dawn finds the discarded clothes beside the locked door.",
+  "speakers": {
+    "C": "Chivarro"
+  },
+  "example": "N: Chivarro sets the folded account beyond reach and catches your collar.\nC: You have counted enough. Come here.\nN: She pulls you away from the table.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18
+}

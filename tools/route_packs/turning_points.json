@@ -1,0 +1,33 @@
+{
+  "minagho": {
+    "device_class": "canon_lowest_point",
+    "setting": "Drezen quartermaster stores after the joint brand reckoning",
+    "payoff_shape": "branded debtor makes her own rare-visit claim and binds the bleeding palm at dawn",
+    "canon_hooks": [
+      {
+        "guid": "b383bf726fdb1af4ebd3e632ad8db323",
+        "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0001.jbp",
+        "key": "9fb4396d-02a9-4216-b8b9-cd6755d4b59f",
+        "native_excerpt": "{n}Minagho is kneeling, her hands clasped in front of her. Blood from the mark carved on her forehead drips down her eyeless face, but the demon doesn't seem to care.{/n} \"I'm so tired of you, {name}. I can't do it anymore. I can't run or fight, nothing. I've hunted the paladins of the good gods for centuries. You could make a burial mound out of the tin heads of all the idiots I've killed or tricked! But you — you're nothing like them. You never",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "17249a81e2f0d7d4ca67937db86ef858",
+        "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0124.jbp",
+        "key": "7cf9be7f-e702-408c-97b0-76cda664bcc5",
+        "native_excerpt": "\"The seals torment her every breath, draining her strength, and only by destroying you can she be free of them. In case you're wondering, when she suffered yet another setback, I added a few more of my seals. The screams she let out as she was being branded — each of them cursing your name.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "c5f918382f54e4342b40334c2d9f854f",
+        "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0123.jbp",
+        "key": "b05809cc-49f6-4c5b-a38b-5ed1a57b6b14",
+        "native_excerpt": "\"I place various seals upon my slaves — there are those that grant power, those that bring delight, those that inflict pain, and those that simply mark their bodies as mine. Minagho failed me, and I... encouraged her to correct her mistake.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}
