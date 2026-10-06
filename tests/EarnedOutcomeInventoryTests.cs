@@ -134,9 +134,18 @@ internal static class EarnedOutcomeInventoryTests
             late.Flags.Add(story.Relationships[route].ClosedFlag); Refresh(late);
             check(!Rules.Available(story, S(route + ".lastcall.page"), late), "Closed late fallback leaks coda: " + route);
         }
-        var name = World("nenio.enigma_resolved");
+        var name = World();
         Select("nenio.trickster.taken.riddle", "filed", 0, name);
-        check(name.Has("nenio.trickster.name_gone") && name.Has("nenio.lastcall.callable"), "Native paid name stake needs optional discussion.");
+        check(!name.Has("nenio.trickster.name_gone") && !name.Has("nenio.lastcall.callable"),
+            "Unfiled Nenio stake grants name loss or Last Call eligibility.");
+        name.Flags.Add("trickster.lastcall.open"); Refresh(name);
+        check(!Rules.Available(story, S("nenio.lastcall.call"), name), "Unfiled Nenio stake can select the call.");
+        name.Flags.Add("nenio.enigma_resolved"); Refresh(name);
+        name = Program.Walk(S("nenio.trickster.after_enigma"), name)
+            .First(o => o.Has("nenio.trickster.cost.name_filed"));
+        Refresh(name);
+        check(name.Has("nenio.trickster.cost.name_filed") && name.Has("nenio.trickster.name_gone")
+            && name.Has("nenio.lastcall.callable"), "Completed Nenio filing loses the paid name stake.");
         name.Flags.Add("trickster.lastcall.open"); Refresh(name);
         check(Rules.Available(story, S("nenio.lastcall.call"), name), "Actual name stake cannot select the call.");
         Select("nenio.lastcall.call", "call", 0, name);

@@ -1073,7 +1073,7 @@
       "node": "start",
       "targets": [],
       "excluded": [],
-      "contains": "Gravestone Rock",
+      "contains": "I am still looking for the man who sold them to you.",
       "omits": ""
     },
     {
@@ -1087,7 +1087,7 @@
       "node": "start",
       "targets": [],
       "excluded": [],
-      "contains": "",
+      "contains": "I am still looking for the man who sold them to you.",
       "omits": "Gravestone Rock"
     },
     {
