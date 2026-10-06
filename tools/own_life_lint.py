@@ -77,7 +77,15 @@ def check(story):
         derived, forbids = life_fields(person, spec)
         for field, expected in (('Derived', derived), ('DerivedForbids', forbids)):
             for key, value in expected.items():
-                if story.get(field, {}).get(key) != value:
+                actual = story.get(field, {}).get(key)
+                # The eng3 epoch observer adds one validated current-loss
+                # negative to legacy life aliases; all original guards stay.
+                epoch = person + '.epoch_unavailable'
+                registered = story.get('DepartureEpochs', {}).get(person)
+                expected_value = value
+                if field == 'DerivedForbids' and key.endswith('.life.available') and registered:
+                    expected_value = list(dict.fromkeys(value + [epoch]))
+                if actual != expected_value:
                     errors.append('OL life reader %s: incorrect %s' % (key, field))
     for site in data['sites'] + data['rewires']:
         if site['relationship'] not in story.get('Relationships', {}):

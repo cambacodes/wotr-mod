@@ -28,6 +28,14 @@ internal static class NidalynnTricksterTests
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(WidowUnit);
         state.AvailableContacts.Add(ChosenUnit);
@@ -460,7 +468,7 @@ internal static class NidalynnTricksterTests
         // and the names taught at night belong to the living partner's page alone; a departure says nothing about anyone else.
         string Render(Scene page, Snapshot w) => string.Join("\n", new[] { page.Nodes[0].Text }.Concat(Rules.VisibleParagraphs(page.Nodes[0], w).Select(x => x.Text)));
         int Count(string text, string needle) { int n = 0, at = 0; while ((at = text.IndexOf(needle, at, StringComparison.Ordinal)) >= 0) { n++; at += needle.Length; } return n; }
-        Snapshot With(Snapshot s, params string[] flags) { var c = Program.Copy(s); c.Flags.UnionWith(flags); return Later(story, c, 1); }
+        Snapshot With(Snapshot s, params string[] flags) { var c = Program.Copy(s); c.Flags.UnionWith(flags); foreach (var context in flags.Where(story.Derived.ContainsKey)) HouseholdTests.Earn(story, c, context); return Later(story, c, 1); }
         string[] Shown(Snapshot w) => pages.Where(pg => Avail(pg, w)).Select(pg => pg.Id.Substring((P + "epilogue.").Length)).OrderBy(x => x, StringComparer.Ordinal).ToArray();
         const string Called = "devarra.lastcall.called";
         const string Standing = "never paid", Named = "named her bill", Windowsill = "windowsill", Bowl = "Eat first", Banked = "banked high", Taught = "taught the Commander";

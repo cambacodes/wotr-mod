@@ -22,12 +22,12 @@ internal static class KonomiPoliticalConsequenceTests
         Snapshot Earn(string id, Snapshot state, Func<Snapshot, bool>? choose = null)
         {
             state.Hour += 1000;
-            check(Rules.Available(story, Get(id), state), "Political consequence predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, Get(id), state), "Political consequence predecessor unavailable: " + id);
             return Program.Walk(Get(id), state).First(s => s.Has(Get(id).Id) && !s.Has("konomi.closed") && (choose == null || choose(s)));
         }
         List<Snapshot> Walk(Scene scene, Snapshot state)
         {
-            check(Rules.Available(story, scene, state), "Political contribution unavailable: " + scene.Id);
+            check(Program.CurrentAvailable(story, scene, state), "Political contribution unavailable: " + scene.Id);
             var results = Program.Walk(scene, state, (page, partial) =>
             {
                 reached.Add(scene.Id + "/" + page);
@@ -42,7 +42,7 @@ internal static class KonomiPoliticalConsequenceTests
                 foreach (var flag in protectedFlags)
                     check(result.Has(flag) == state.Has(flag), "Political fiction modifies native or other relationship history: " + flag);
                 if (!result.Has(scene.Id)) check(result.Flags.SetEquals(state.Flags), "Political deferral changes history.");
-                else check(!Rules.Available(story, scene, result), "Political contribution repeats after completion.");
+                else check(!Program.CurrentAvailable(story, scene, result), "Political contribution repeats after completion.");
             }
             return results.Where(s => s.Has(scene.Id)).ToList();
         }
@@ -75,7 +75,7 @@ internal static class KonomiPoliticalConsequenceTests
             foreach (var sent in Walk(offer, state))
             {
                 check(sent.Has("konomi.political_recognized") != sent.Has("konomi.political_sponsored"), "Political arrangements overlap.");
-                check(!Rules.Available(story, reply, sent), "Political reply ignores correspondence delay.");
+                check(!Program.CurrentAvailable(story, reply, sent), "Political reply ignores correspondence delay.");
                 sent.Hour += 1000;
                 var role = reply.Nodes.Single(n => n.Id == "role").Choices.Single(c => Rules.Match(c.Requires, c.Forbids, sent));
                 var esteem = reply.Nodes.Single(n => n.Id == "respect").Choices.Single(c => Rules.Match(c.Requires, c.Forbids, sent));
@@ -113,11 +113,11 @@ internal static class KonomiPoliticalConsequenceTests
         foreach (var scene in new[] { offer, reply })
         {
             var ready = Program.Copy(early); ready.Hour = 100000; ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "Political scene baseline unavailable.");
-            foreach (string flag in scene.Requires)
-            { var missing = Program.Copy(ready); missing.Flags.Remove(flag); check(!Rules.Available(story, scene, missing), "Missing political requirement: " + flag); }
+            check(Program.CurrentAvailable(story, scene, ready), "Political scene baseline unavailable.");
+            foreach (string flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
+            { var missing = Program.Copy(ready); missing.Flags.Remove(flag); check(!Program.CurrentAvailable(story, scene, missing), "Missing political requirement: " + flag); }
             foreach (string flag in scene.Forbids)
-            { var blocked = Program.Copy(ready); blocked.Flags.Add(flag); check(!Rules.Available(story, scene, blocked), "Political contact ignores block: " + flag); }
+            { var blocked = Program.Copy(ready); blocked.Flags.Add(flag); check(!Program.CurrentAvailable(story, scene, blocked), "Political contact ignores block: " + flag); }
             foreach (string cause in new[] { "contact", "dismissal", "office", "area", "chapter" })
             {
                 var changed = Program.Copy(ready);
@@ -126,7 +126,7 @@ internal static class KonomiPoliticalConsequenceTests
                 if (cause == "office") changed.Flags.Remove("konomi.present");
                 if (cause == "area") changed.Area = "abyss";
                 if (cause == "chapter") changed.Chapter = 4;
-                check(!Rules.Available(story, scene, changed) && !Rules.ContactAvailable(story, scene, changed), "Entry/continuation retained absent political officer: " + cause);
+                check(!Program.CurrentAvailable(story, scene, changed) && !Rules.ContactAvailable(story, scene, changed), "Entry/continuation retained absent political officer: " + cause);
             }
         }
         foreach (var scene in new[] { offer, reply }) foreach (var node in scene.Nodes)

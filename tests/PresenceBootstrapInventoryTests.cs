@@ -36,7 +36,7 @@ internal static class PresenceBootstrapInventoryTests
     internal static Snapshot Play(Story story, string id, Snapshot initial, string output, Action<bool, string> check, params string[] without)
     {
         var scene = story.Scenes.Single(s => s.Id == id);
-        check(Rules.Available(story, scene, initial), "Producer not available: " + id);
+        check(Program.CurrentAvailable(story, scene, initial), "Producer not available: " + id);
         Snapshot? result = null;
         var trace = new List<string>();
         bool Visit(string nodeId, Snapshot state, HashSet<string> path, List<string> selected)
@@ -93,7 +93,7 @@ internal static class PresenceBootstrapInventoryTests
         check(Rules.PresenceFailed(presence, Rules.PresenceWanted(presence, failed), seen), "Missing anchor is unwanted: " + name);
         failed.Flags.Add(Rules.PresenceFailedFlag(name));
         Rules.Complete(story, failed);
-        check(Rules.Available(story, story.Scenes.Single(s => s.Id == fallback), failed), "Failed placement cannot deliver " + fallback);
+        check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == fallback), failed), "Failed placement cannot deliver " + fallback);
     }
 
     internal static void Run(Story story, Action<bool, string> check)
@@ -108,7 +108,7 @@ internal static class PresenceBootstrapInventoryTests
             state = Later(story, state);
             check(!Rules.RouteOpen(story.Relationships["camellia"], state), "Bootstrap grants Camellia's relationship");
             Contact(story, "camellia.presence", state, check);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "camellia.trickster.killed.performance"), state), "Camellia reckoning blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "camellia.trickster.killed.performance"), state), "Camellia reckoning blocked");
             MissingAnchor(story, "camellia.presence", state, "camellia.trickster.killed.performance_letter", check);
         }
         foreach (bool late in new[] { false, true })
@@ -119,13 +119,13 @@ internal static class PresenceBootstrapInventoryTests
             state = Later(story, state);
             check(!state.Has("irabeth.trickster.returned"), "Irabeth pre-return seeded");
             Contact(story, "irabeth.presence", state, check);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "irabeth.trickster.dead.relieved_not_dismissed"), state), "Irabeth reporting blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "irabeth.trickster.dead.relieved_not_dismissed"), state), "Irabeth reporting blocked");
         }
         {
             var state = Fresh(story, 5, "irabeth_dead", "coronation.seen", "anevia.irabeth_killed_by_commander", "irabeth.trickster.drilled");
             state = Play(story, "irabeth.trickster.killed.dig", state, "irabeth.trickster.cost.dug_out", check);
             state = Later(story, state); Contact(story, "irabeth.presence", state, check);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "irabeth.trickster.killed.blow_missed"), state), "Irabeth dug-out reckoning blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "irabeth.trickster.killed.blow_missed"), state), "Irabeth dug-out reckoning blocked");
             var unpaid = Fresh(story, 5, "irabeth_dead", "coronation.seen", "irabeth.trickster.primed");
             unpaid.CrusadeResources!["Favors"] = 0; unpaid.CrusadeResources["Finances"] = 0;
             check(!Rules.PresenceWanted(story.Presences["irabeth.presence"], unpaid), "Unpaid Irabeth bootstrap");
@@ -136,7 +136,7 @@ internal static class PresenceBootstrapInventoryTests
             var state = Fresh(story, 5, "irabeth_dead", "coronation.seen", "anevia.irabeth_killed_by_commander");
             state = Play(story, "irabeth.trickster.killed.late_step", state, "irabeth.trickster.raised_on_record", check);
             state = Later(story, state); Contact(story, "irabeth.presence", state, check);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "irabeth.trickster.killed.blow_missed"), state), "Irabeth paid-record reckoning blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "irabeth.trickster.killed.blow_missed"), state), "Irabeth paid-record reckoning blocked");
         }
         foreach (bool sending in new[] { false, true })
         {
@@ -144,7 +144,7 @@ internal static class PresenceBootstrapInventoryTests
             if (sending) { state.Flags.Add("shyka.gone"); Recompute(story, state); }
             state = Play(story, sending ? "kaylessa.trickster.dead.borrow_sending" : "kaylessa.trickster.dead.borrow", state, "kaylessa.trickster.primed", check);
             state = Later(story, state); Contact(story, "kaylessa.presence", state, check);
-            check(!state.Has("kaylessa.trickster.returned") && Rules.Available(story, story.Scenes.Single(s => s.Id == "kaylessa.trickster.dead.soldier"), state), "Kaylessa arrival blocked");
+            check(!state.Has("kaylessa.trickster.returned") && Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "kaylessa.trickster.dead.soldier"), state), "Kaylessa arrival blocked");
         }
         {
             var state = Fresh(story, 5, "minagho.dead", "chivarro.dead");
@@ -152,12 +152,12 @@ internal static class PresenceBootstrapInventoryTests
             state = Later(story, state); Contact(story, "minagho_chivarro.presence.minagho", state, check);
             check(!Rules.RouteOpen(story.Relationships["minagho_chivarro"], state), "Solo bootstrap grants pair route");
             check(!Rules.PresenceWanted(story.Presences["minagho_chivarro.presence.chivarro"], state), "Minagho bootstrap grants unreturned Chivarro");
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.minagho_dead.brand"), state), "Paid Minagho brand blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.minagho_dead.brand"), state), "Paid Minagho brand blocked");
             MissingAnchor(story, "minagho_chivarro.presence.minagho", state, "minagho_chivarro.trickster.minagho_dead.brand_letter", check);
             state = Play(story, "minagho_chivarro.trickster.minagho_dead.brand", state, "minagho_chivarro.trickster.returned_minagho", check);
             state = Later(story, state);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.debt.collectors"), state), "Returned solo debt consequence blocked");
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.alone.minagho"), state), "Returned solo invitation blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.debt.collectors"), state), "Returned solo debt consequence blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.alone.minagho"), state), "Returned solo invitation blocked");
             MissingAnchor(story, "minagho_chivarro.presence.minagho", state, "minagho_chivarro.trickster.alone.minagho_letter", check);
         }
         {
@@ -169,18 +169,18 @@ internal static class PresenceBootstrapInventoryTests
             state = Later(story, state); Contact(story, "minagho_chivarro.presence.chivarro", state, check);
             check(!Rules.RouteOpen(story.Relationships["minagho_chivarro"], state), "Chivarro solo contact grants pair availability");
             check(!Rules.PresenceWanted(story.Presences["minagho_chivarro.presence.minagho"], state), "Chivarro solo grants unreturned Minagho");
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.chivarro_dead.the_bill"), state), "Solo bill blocked by dead Minagho");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.chivarro_dead.the_bill"), state), "Solo bill blocked by dead Minagho");
             MissingAnchor(story, "minagho_chivarro.presence.chivarro", state, "minagho_chivarro.trickster.chivarro_dead.the_bill_letter", check);
         }
         {
             var state = Fresh(story, 5, "chivarro.dead", "minagho.spared_c4");
             state = Later(story, state); Contact(story, "minagho_chivarro.presence.minagho_spared", state, check);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.spared.brand"), state), "Living Minagho blocked by dead Chivarro");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.spared.brand"), state), "Living Minagho blocked by dead Chivarro");
             MissingAnchor(story, "minagho_chivarro.presence.minagho_spared", state, "minagho_chivarro.trickster.spared.brand_letter", check);
             state = Play(story, "minagho_chivarro.trickster.spared.brand", state, "minagho_chivarro.trickster.minagho_in", check);
             state = Later(story, state);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.debt.collectors_spared"), state), "Solo debt consequence blocked");
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.alone.minagho_spared"), state), "Living solo invitation blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.debt.collectors_spared"), state), "Solo debt consequence blocked");
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.alone.minagho_spared"), state), "Living solo invitation blocked");
             MissingAnchor(story, "minagho_chivarro.presence.minagho_spared", state, "minagho_chivarro.trickster.alone.minagho_letter", check);
         }
         foreach (bool recruited in new[] { false, true })
@@ -229,14 +229,14 @@ internal static class PresenceBootstrapInventoryTests
             check(!state.Has("seelah.trickster.returned") && !Rules.RouteOpen(story.Relationships["seelah"], state),
                 "Stolen papers grant reconciliation before her answer");
             Contact(story, "seelah.presence", state, check);
-            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.back_for_the_papers"), state),
+            check(Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.back_for_the_papers"), state),
                 "Seelah cannot demand her stolen papers");
             MissingAnchor(story, "seelah.presence", state, "seelah.trickster.dismissed.back_for_the_papers_letter", check);
             foreach (var blocker in new[] { "seelah.closed", "seelah_dead", "trickster.failed" })
             {
                 var blocked = Program.Copy(state); blocked.Flags.Add(blocker); Recompute(story, blocked);
                 if (blocker == "trickster.failed")
-                    check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.back_for_the_papers"), blocked),
+                    check(!Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.back_for_the_papers"), blocked),
                         "Seelah's new return act fires after leaving Trickster");
                 else
                     check(!Rules.PresenceWanted(story.Presences["seelah.presence"], blocked), "Papers lift unrelated loss: " + blocker);
@@ -249,7 +249,7 @@ internal static class PresenceBootstrapInventoryTests
             var unpaid = Fresh(story, 3, "seelah_gone");
             check(!Rules.PresenceWanted(story.Presences["seelah.presence"], unpaid), "Seelah returns without stolen papers");
             var otherPath = Program.Copy(unpaid); otherPath.Flags.Remove("trickster"); Recompute(story, otherPath);
-            check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.late"), otherPath),
+            check(!Program.CurrentAvailable(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.late"), otherPath),
                 "Papers theft changes canon off-Trickster");
         }
         // eng7-f4 end

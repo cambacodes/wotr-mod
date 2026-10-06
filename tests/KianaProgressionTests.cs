@@ -27,12 +27,12 @@ internal static class KianaProgressionTests
             var scene = Find(id);
             var ready = Program.Copy(input);
             ready.Hour += scene.DelayHours;
-            check(Rules.Available(story, scene, ready), "Kiana predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, ready), "Kiana predecessor unavailable: " + id);
             return Program.Walk(scene, ready).First(s => s.Has(scene.Id) && !s.Has("kiana.closed") && (select == null || select(s)));
         }
 
         string[] Endings(Snapshot state, string owner = "Epilogue") => story.Scenes
-            .Where(s => s.Relationship == "kiana" && s.Owner == owner && Rules.Available(story, s, state)).Select(s => s.Id).ToArray();
+            .Where(s => s.Relationship == "kiana" && s.Owner == owner && Program.CurrentAvailable(story, s, state)).Select(s => s.Id).ToArray();
 
         void Protected(Snapshot before, Snapshot after)
         {
@@ -63,18 +63,18 @@ internal static class KianaProgressionTests
             state = Play("morning", state, s => s.Has("kiana.committed") == committed);
             state = Play("seelah", state);
             state.Hour += 10000;
-            check(!Rules.Available(story, farewell, state), "Elapsed time alone bypasses Kiana's developed route.");
+            check(!Program.CurrentAvailable(story, farewell, state), "Elapsed time alone bypasses Kiana's developed route.");
             check(Endings(state).SequenceEqual(new[] { committed ? "kiana.ending_promised" : "kiana.ending_unfinished" }),
                 "Early Kiana history receives a developed ending or no honest fallback.");
-            check(breakup.ManualOnly && Rules.Available(story, breakup, state), "Kiana loses manual access to breakup.");
+            check(breakup.ManualOnly && Program.CurrentAvailable(story, breakup, state), "Kiana loses manual access to breakup.");
 
             if (oldFarewell)
             {
                 // Historical save, not a new attempt to pass the revised farewell gate.
                 state.Flags.UnionWith(new[] { "kiana.farewell", "kiana.farewell_kept" });
                 state.Times["kiana.farewell"] = 500;
-                check(!Rules.Available(story, chain[0], state), "Old farewell silently opts into catch-up.");
-                check(catchup.ManualOnly && Rules.Available(story, catchup, state), "Old save cannot request Kiana's catch-up.");
+                check(!Program.CurrentAvailable(story, chain[0], state), "Old farewell silently opts into catch-up.");
+                check(catchup.ManualOnly && Program.CurrentAvailable(story, catchup, state), "Old save cannot request Kiana's catch-up.");
                 check(Rules.NextRemote(route, state) == null, "Manual catch-up or breakup enters Kiana's rest queue.");
                 var responses = Program.Walk(catchup, state);
                 var deferred = responses.Single(s => !s.Has(catchup.Id));
@@ -83,13 +83,13 @@ internal static class KianaProgressionTests
                 check(state.Has("kiana.catchup_requested") && state.Has("kiana.farewell") && state.Times["kiana.farewell"] == 500,
                     "Kiana catch-up clears or retimes the old farewell.");
             }
-            else check(!Rules.Available(story, catchup, state), "A new Kiana route receives an old-save catch-up offer.");
+            else check(!Program.CurrentAvailable(story, catchup, state), "A new Kiana route receives an old-save catch-up offer.");
 
             foreach (var scene in chain)
             {
                 state.Hour += scene.DelayHours;
                 check(Rules.NextRemote(route, state)?.Id == scene.Id, "Rest queue skips Kiana's played predecessor: " + scene.Id);
-                check(!Rules.Available(story, farewell, state), "Kiana farewell opens midway through the developed chain.");
+                check(!Program.CurrentAvailable(story, farewell, state), "Kiana farewell opens midway through the developed chain.");
                 var done = Program.Walk(scene, state).Where(s => s.Has(scene.Id)).ToArray();
                 // Existing focused suites explore all literary branches; this test exercises real queue delivery.
                 var result = history == "affair" ? done.Last() : done.First();
@@ -97,19 +97,19 @@ internal static class KianaProgressionTests
                 state = result;
                 var premature = Program.Copy(state);
                 premature.Hour += 10000;
-                check(!Rules.Available(story, farewell, premature), "Kiana farewell bypasses missing later work after a long wait.");
+                check(!Program.CurrentAvailable(story, farewell, premature), "Kiana farewell bypasses missing later work after a long wait.");
             }
 
-            check(!Rules.Available(story, decision, state), "Kiana later decision ignores its fresh completion timestamp.");
+            check(!Program.CurrentAvailable(story, decision, state), "Kiana later decision ignores its fresh completion timestamp.");
             state.Hour += decision.DelayHours;
             check(Rules.NextRemote(route, state)?.Id == decision.Id, "Kiana's later relationship decision is not next after the developed chain.");
             foreach (string blocker in new[] { "kiana.closed", "inhuman" })
             {
                 var blocked = Program.Copy(state); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, decision, blocked), "Catch-up bypasses Kiana decision restriction: " + blocker);
+                check(!Program.CurrentAvailable(story, decision, blocked), "Catch-up bypasses Kiana decision restriction: " + blocker);
             }
             var interrupted = Program.Copy(state); interrupted.Flags.Remove("seelah.souls_returned");
-            check(!Rules.Available(story, decision, interrupted), "Catch-up bypasses Kiana's native quest prerequisite.");
+            check(!Program.CurrentAvailable(story, decision, interrupted), "Catch-up bypasses Kiana's native quest prerequisite.");
             foreach (var result in Program.Walk(decision, state, (node, snapshot) => visited.Add(node)))
             {
                 Protected(state, result);
@@ -133,15 +133,15 @@ internal static class KianaProgressionTests
                     result.Hour += farewell.DelayHours;
                     check(Rules.NextRemote(route, result)?.Id == farewell.Id, "Earned Kiana farewell does not follow her decision.");
                 }
-                if (oldFarewell) check(!Rules.Available(story, farewell, result), "Kiana replays an old farewell after catch-up.");
+                if (oldFarewell) check(!Program.CurrentAvailable(story, farewell, result), "Kiana replays an old farewell after catch-up.");
             }
 
             var transformed = Program.Copy(state);
             transformed.Flags.Add("inhuman");
             transformed.Flags.Remove("kiana.farewell");
-            check(!Rules.Available(story, catchup, transformed) && !Rules.Available(story, decision, transformed),
+            check(!Program.CurrentAvailable(story, catchup, transformed) && !Program.CurrentAvailable(story, decision, transformed),
                 "Kiana offers unsupported physical catch-up to a transformed Commander.");
-            check(Rules.Available(story, farewell, transformed), "Kiana's existing transformed fallback is trapped behind unavailable full-route scenes.");
+            check(Program.CurrentAvailable(story, farewell, transformed), "Kiana's existing transformed fallback is trapped behind unavailable full-route scenes.");
         }
         // Changed native histories are walked by KianaReconciliationTests.
         check(visited.SetEquals(decision.Nodes.Where(n => !n.Id.EndsWith("_former_grief") && !n.Id.EndsWith("_uncertain")).Select(n => n.Id)), "Kiana later-decision tests miss an authored page.");

@@ -20,6 +20,7 @@ internal static class ArsinoeAssembledTests
                 if (book.Id == "arsinoe_before_the_road" && chapter == 5) continue;
                 state.Chapter = Math.Max(state.Chapter, book.MinChapter);
                 state.Hour += 1000;
+                Rules.Complete(story, state);
                 check(Rules.Available(story, book, state), "Assembled Arsinoe predecessor unavailable: " + book.Id);
                 var outcomes = Program.Walk(book, state).Where(s => s.Has(book.Id) && !s.Has("arsinoe.closed"));
                 if (book.Id == "arsinoe_roofs") outcomes = outcomes.Where(s => s.Has("arsinoe." + pace));

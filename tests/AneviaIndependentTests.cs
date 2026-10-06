@@ -7,6 +7,7 @@ internal static class AneviaIndependentTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        var runtimeKeys = Rules.AvailabilityRuntimeKeys(story);
         const string area = "2570015799edf594daf2f076f2f975d8";
         const string anevia = "b5e867e13503c6f41bb1316705efb4a2";
         const string irabeth = "280d4712dceb37f4a88e98f1f4c6e64f";
@@ -19,6 +20,7 @@ internal static class AneviaIndependentTests
             state.Flags.UnionWith(new[] { "trickster", "seelah.committed", "arueshalae.committed" });
             if (partner is "active" or "past") state.Flags.Add("irabeth.lover");
             if (partner == "past") state.Flags.Add("irabeth.closed");
+            Rules.Complete(story, state);
             return state;
         }
         Snapshot Play(string id, Snapshot initial, Func<Snapshot, bool>? select = null)
@@ -26,6 +28,7 @@ internal static class AneviaIndependentTests
             var scene = Get(id);
             var state = Program.Copy(initial);
             state.Hour += scene.DelayHours + 1;
+            Rules.Complete(story, state);
             check(Rules.Available(story, scene, state), "Anevia actual predecessor unavailable: " + id);
             if (scene.ContactUnit != null)
             {
@@ -39,11 +42,11 @@ internal static class AneviaIndependentTests
             {
                 seen.Add(scene.Id + "/" + page);
                 check(!partial.Has(scene.Id), "An unfinished page records scene completion.");
-                check(state.Flags.IsSubsetOf(partial.Flags), "An unfinished page erases history.");
+                check(state.Flags.Where(f => !story.Derived.ContainsKey(f) && !story.Counts.ContainsKey(f) && !runtimeKeys.Contains(f)).All(partial.Flags.Contains), "An unfinished page erases history.");
             });
             foreach (var result in outcomes)
             {
-                check(state.Flags.IsSubsetOf(result.Flags), "Anevia clears existing history.");
+                check(state.Flags.Where(f => !story.Derived.ContainsKey(f) && !story.Counts.ContainsKey(f) && !runtimeKeys.Contains(f)).All(result.Flags.Contains), "Anevia clears existing history.");
                 foreach (var item in state.Times)
                     check(result.Times[item.Key] == item.Value, "Anevia rewrites a predecessor timestamp.");
                 check(result.Has("seelah.committed") && result.Has("arueshalae.committed"), "Anevia changes another partner.");

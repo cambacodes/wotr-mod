@@ -23,6 +23,13 @@ internal static class ChadaliTricksterTests
         var state = new Snapshot { Chapter = chapter, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
@@ -178,7 +185,9 @@ internal static class ChadaliTricksterTests
         // Trk_Chadali_LateOrange.
         var sealedHall = World(story, 5, "trickster", "trickster.ever", P + "primed", "council.debrief_motion");
         check(Rules.Available(story, letter, sealedHall) && !Rules.Available(story, coin, sealedHall), "Trk_Chadali_LateOrange: the orange does not arrive.");
-        var lateStart = First(letter, sealedHall, "letter", 0);
+        var uneatenIntent = First(letter, sealedHall, "letter", 0);
+        check(!Rules.Available(story, pageCommit, Later(story, uneatenIntent, 100, 6)), "Eating the late orange alone grants a romance.");
+        var lateStart = First(letter, sealedHall, "letter", 1);
         check(lateStart.Has("chadali.started") && lateStart.Has(P + "cost.late"), "Trk_Chadali_LateOrange: eating the orange does not start her.");
         check(Rules.Available(story, pageCommit, Later(story, lateStart, 100, 6)), "Trk_Chadali_LateOrange: the late commit page is not reachable.");
 
@@ -202,24 +211,24 @@ internal static class ChadaliTricksterTests
 
         // Trk_Chadali_Fought_Epilogue.
         // eng7-l13: new late yes fixtures observe current Trickster power.
-        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned");
+        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned", P + "courted");
         check(Rules.Available(story, pageCommit, ending) && !Rules.Available(story, pageDeclined, ending),
             "Trk_Chadali_Fought_Epilogue: the late commit page is not the only page.");
-        check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed"))
-              && !Rules.Available(story, pageCommit, World(story, 6, "trickster.ever", "chadali.committed")),
+        check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", W + "bet_her"))
+              && !Rules.Available(story, pageCommit, World(story, 6, "trickster.ever", "chadali.committed", W + "bet_her")),
             "The committed ending page is not the lucky night page.");
         check(Rules.Available(story, pageDeclined, World(story, 6, "trickster.ever", P + "declined"))
-              && Rules.Available(story, pageNight, World(story, 6, "trickster.ever", P + "declined", "chadali.committed")),
+              && Rules.Available(story, pageNight, World(story, 6, "trickster.ever", P + "declined", "chadali.committed", P + "cost.orange_tree")),
             "The refusal page or the declined-then-committed override is wrong.");
         check(pageNight.Nodes[0].Paragraphs.Count >= 20, "The committed page is missing the courtship's consequences.");
         // Sol INT (2026-09-30): the lucky night reads the real commit only, so the late page never overlaps it before an answer.
-        var lateOnly = World(story, 6, "trickster", "trickster.ever", "chadali.started", P + "cost.late");
+        var lateOnly = World(story, 6, "trickster", "trickster.ever", "chadali.started", P + "cost.late", P + "courted");
         check(Rules.Available(story, pageCommit, lateOnly) && !Rules.Available(story, pageNight, lateOnly),
             "The committed page shows beside the late page before the Commander has answered.");
         // Ledger row 16: a Commander back from the sacrifice (the Last Call bottle) keeps her pages; a dead one does not.
         var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
         check(Rules.Available(story, pageNight, World(story, 6, new[] { "trickster.ever", "chadali.committed" }.Concat(bottle).ToArray()))
-              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster", "trickster.ever", "chadali.started" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster", "trickster.ever", "chadali.started", P + "courted" }.Concat(bottle).ToArray()))
               && !Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", "sacrifice", "ending.wound_closed")),
             "The romance pages do not follow trickster.commander_back.");
         // Sol BEL: the curse lifted by her own hand shows only the restored-luck paragraph.
@@ -262,7 +271,7 @@ internal static class ChadaliTricksterTests
               && Choice(lateWager, "start", 0).Crusade?.Amount == -100 && !Rules.Available(story, lateWager, World(story, 5, "trickster", "trickster.ever", "council.debrief_motion", P + "primed"))
               && Rules.Available(story, pageCommit, Later(story, wagerOut[0], 100, 6)),
             "A peaceful, unprimed sealed hall has no way in.");
-        var declinedSealed = World(story, 6, "trickster", "trickster.ever", "chadali.started", P + "declined", "council.debrief_motion");
+        var declinedSealed = World(story, 6, "trickster", "trickster.ever", "chadali.started", P + "declined", P + "courted", "council.debrief_motion");
         check(Rules.Available(story, pageCommit, declinedSealed) && !Rules.Available(story, pageDeclined, declinedSealed)
               && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(P + "declined"))
               && !story.Scenes.Any(s => s.Id == P + "after.orange_tree_letter"),
@@ -401,7 +410,7 @@ internal static class ChadaliTricksterTests
             check(!Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", fight)), "The lucky night ignores an unreconciled fight: " + fight);
             check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", fight, P + "returned")), "The lucky night stays shut after her price: " + fight);
         }
-        check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed")), "The lucky night is lost for a Commander who never fought her.");
+        check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", W + "bet_her")), "The lucky night is lost for a Commander who never fought her.");
         var lateOpen = pageCommit.Nodes.Single(n => n.Id == "page").Choices;
         check(lateOpen.Count == 4 && lateOpen[2].Next == "coin" && lateOpen[2].Requires.Contains(P + "primed")
               && lateOpen[3].Next == "penny" && lateOpen[3].Requires.Contains(P + "cost.late_wager") && lateOpen[3].Forbids.Contains(P + "primed"),

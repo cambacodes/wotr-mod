@@ -60,7 +60,7 @@ internal static class EarlyThreadsTests
         var moon = S(Moon);
         check(moon.Relationship == "hepzamirah" && moon.ReturnToList && moon.NativeReturnCue == null
               && moon.AnswerLists.SequenceEqual(new[] { Q2Dead, Q2Alive }) && moon.Chapters.SequenceEqual(new[] { 3 })
-              && moon.Requires.SequenceEqual(new[] { "trickster" }) && moon.Forbids.Contains(Moon) && moon.Forbids.Contains(Moon + ".seen")
+              && moon.Requires.SequenceEqual(new[] { "trickster", "hepzamirah.present_now" }) && moon.Forbids.Contains(Moon) && moon.Forbids.Contains(Moon + ".seen")
               && (moon.ReturnText ?? "").Split(' ').Length <= 25,
             "T2: the message is not a Chapter 3 ReturnToList entry on both of Voetiel's lists, once only.");
         check(Avail(moon, World(story, 3, "trickster")) && !Avail(moon, World(story, 3)) && !Avail(moon, World(story, 4, "trickster")),
@@ -87,7 +87,7 @@ internal static class EarlyThreadsTests
         // ---- T2: the reckoning (Chapter 4, Woljif's third quest). ----
         var reckon = S(Reckon);
         check(reckon.ReturnToList && reckon.AnswerLists.SequenceEqual(new[] { Q3Hub }) && reckon.Chapters.SequenceEqual(new[] { 4 })
-              && reckon.Requires.SequenceEqual(new[] { "trickster", Moon }) && reckon.Forbids.Contains(Reckon + ".seen"),
+              && reckon.Requires.SequenceEqual(new[] { "trickster", Moon, "hepzamirah.present_now" }) && reckon.Forbids.Contains(Reckon + ".seen"),
             "T2: the reckoning is not a Chapter 4 ReturnToList entry on the Q3 hub that needs the message.");
         check(Avail(reckon, World(story, 4, "trickster", Moon)) && !Avail(reckon, World(story, 4, "trickster"))
               && !Avail(reckon, World(story, 4, "trickster", Moon + ".declined")),
@@ -163,7 +163,7 @@ internal static class EarlyThreadsTests
         // ---- T3: the interrogation (Chapter 3, the cult camp). ----
         var ask = S(Interrogation);
         check(ask.Relationship == "shamira" && !ask.ReturnToList && ask.AnswerLists.SequenceEqual(new[] { TelmerHub })
-              && ask.NativeReturnCue == TelmerReturn && ask.Chapters.SequenceEqual(new[] { 3 }) && ask.Requires.SequenceEqual(new[] { "trickster" })
+              && ask.NativeReturnCue == TelmerReturn && ask.Chapters.SequenceEqual(new[] { 3 }) && ask.Requires.SequenceEqual(new[] { "trickster", "shamira.present_now" })
               && ask.Forbids.Contains(Interrogation) && ask.Forbids.Contains(Interrogation + ".seen") && N(ask, "start").Speaker == "conversant",
             "T3: the interrogation is not an inline Chapter 3 entry on Telmer's hub returning to Cue_0024.");
         check(Avail(ask, World(story, 3, "trickster")) && !Avail(ask, World(story, 3)) && !Avail(ask, World(story, 4, "trickster")),
@@ -199,7 +199,7 @@ internal static class EarlyThreadsTests
         // ---- T3: the letter (Chapter 3, 48 h after the release; text by the Xanthir outcome). ----
         var letter = S(Letter);
         check(Rules.IsRemote(letter) && letter.Kind == "letter" && letter.Chapters.SequenceEqual(new[] { 3 }) && letter.DelayHours == 48
-              && letter.Requires.SequenceEqual(new[] { "trickster", Notes }) && letter.Forbids.Contains(Letter + ".seen"),
+              && letter.Requires.SequenceEqual(new[] { "trickster", Notes, "shamira.reachable_by_letter" }) && letter.Forbids.Contains(Letter + ".seen"),
             "T3: the letter is not a Chapter 3 letter 48 h after the release.");
         var freed = World(story, 3, "trickster", Notes, Exposed);
         freed.Times[Notes] = freed.Hour;

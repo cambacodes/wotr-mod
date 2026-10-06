@@ -30,6 +30,13 @@ internal static class ArankaTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         if (chapter == 3 || chapter == 5) state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -44,6 +51,8 @@ internal static class ArankaTricksterTests
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000 } };
         state.Flags.UnionWith(flags);
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
@@ -467,6 +476,7 @@ internal static class ArankaTricksterTests
                                               ("sacrifice", "trickster.commander_back"), ("aranka.ran_failure", Repaired) })
         {
             var w = World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block);
+            if (block == "sacrifice") { w.Flags.ExceptWith(new[] { "ending.trickster", "ending.wound_closed", "trickster.lastcall.pillar.bottle" }); Rules.Complete(story, w); }
             check(!Rules.Available(story, coda, w), "Her coda ignores " + block);
             if (lift != null)
                 check(Rules.Available(story, coda, World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block, lift)),
@@ -548,7 +558,7 @@ internal static class ArankaTricksterTests
                     label + ": refusing the reckoning leaves her physical presence.");
                 answeredAt = Pick(encounter, facing, "bought", 0);
                 check(answeredAt.Has(Repaired) && answeredAt.Has(P + "cost.provisions_bought")
-                    && Rules.RouteOpen(rel, answeredAt) && Fresh(Kept).Has("aranka.harem.eligible"),
+                    && Rules.RouteOpen(rel, answeredAt) && !Fresh(Kept).Has("aranka.harem.eligible"),
                     label + ": the paid reckoning does not reopen the full route.");
             }
             var tooEarly = Place(Later(story, answeredAt, 23), marketAnchor, true);
@@ -628,7 +638,7 @@ internal static class ArankaTricksterTests
             "A dead Woljif sells the fine print.");
         // Audit polr4 (BEL, Directive 12): Woljif answers the night itself, after either intimate commitment, never the duet alone.
         var roof = S(P + "react.woljif_roof");
-        check(roof.Requires.SequenceEqual(new[] { P + "night_kept" }) && roof.Forbids.SequenceEqual(new[] { "woljif.dead", "woljif.kicked_out" })
+        check(roof.Requires.SequenceEqual(new[] { P + "night_kept", "aranka.present_now" }) && roof.Forbids.SequenceEqual(new[] { "woljif.dead", "woljif.kicked_out" })
               && !Rules.Available(story, roof, World(story, 3, "trickster", "trickster.ever", P + "duet_sung", P + "answered"))
               && Rules.Available(story, roof, committed) && Rules.Available(story, roof, thirdOut.First(r => r.Has(Kept)))
               && !Rules.Available(story, roof, World(story, 5, "trickster", "trickster.ever", P + "night_kept", "woljif.kicked_out")),

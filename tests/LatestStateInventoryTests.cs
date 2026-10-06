@@ -178,6 +178,11 @@ internal static class LatestStateInventoryTests
             "q8a: generic legacy return proves life after a later native death");
         // Distinct nominated current-path copy of the native execution remains.
         legacy.Flags.Add("wenduag.killed"); Refresh(story, legacy);
+        check(!Rules.RouteOpen(story.Relationships["wenduag"], legacy), "eng3-ab: an execution qualifier refreshed a return older than the later death");
+        // A separate coherent legacy save already earned its copy after execution.
+        legacy = new Snapshot { Chapter = 5 };
+        legacy.Flags.UnionWith(new[] { "trickster", W + "returned", W + "primed", "wenduag.killed", "wenduag.dead_any" });
+        Refresh(story, legacy);
         check(Rules.RouteOpen(story.Relationships["wenduag"], legacy), "q8a: nominated historical execution copy was invalidated");
         legacy.Flags.Add(E + "unavailable"); Refresh(story, legacy);
         check(!Rules.RouteOpen(story.Relationships["wenduag"], legacy), "q8a: earlier execution-copy return hid a saved actor loss");

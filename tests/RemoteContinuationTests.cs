@@ -15,13 +15,13 @@ internal static class RemoteContinuationTests
                 Area = scene.Areas.FirstOrDefault() ?? "",
                 Hour = 1000
             };
-            state.Flags.UnionWith(scene.Requires);
+            foreach (var required in scene.Requires) HouseholdTests.Earn(story, state, required);
             if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
             foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
             state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
-            check(Rules.Available(story, scene, state), "Remote regression fixture cannot enter " + scene.Id);
+            check(Program.CurrentAvailable(story, scene, state), "Remote regression fixture cannot enter " + scene.Id);
             check(Rules.ContactAvailable(story, scene, state), "Valid continuation rejected for " + scene.Id);
             return state;
         }
@@ -54,20 +54,25 @@ internal static class RemoteContinuationTests
         check(!Rules.ContactAvailable(story, invitation, unavailable), "Remote relationship ignores native unavailability.");
         var authored = Program.Copy(invited);
         authored.Flags.Add("jerribeth.fate_note_prepared");
-        check(!Rules.Available(story, invitation, authored), "Authored forbid witness does not block new entry.");
+        check(!Program.CurrentAvailable(story, invitation, authored), "Authored forbid witness does not block new entry.");
         check(Rules.ContactAvailable(story, invitation, authored), "Authored mid-conversation forbid interrupts the page.");
         authored.Flags.Add("jerribeth.fate_note_read");
-        check(Rules.Available(story, invitation, authored), "Existing authored ForbidOverride was lost.");
+        check(Program.CurrentAvailable(story, invitation, authored), "Existing authored ForbidOverride was lost.");
         authored.Flags.Add(story.Relationships[invitation.Relationship].ClosedFlag);
         authored.Flags.Add(invitation.Id);
         check(Rules.ContactAvailable(story, invitation, authored), "Authored closure/completion interrupts its own continuation.");
         var question = Find("jerribeth.question");
         var delayed = Ready(question);
         delayed.Times[question.Requires[0]] = delayed.Hour;
-        check(question.DelayHours > 0 && !Rules.Available(story, question, delayed), "Delay witness does not block fresh entry.");
+        check(question.DelayHours > 0 && !Program.CurrentAvailable(story, question, delayed), "Delay witness does not block fresh entry.");
         check(Rules.ContactAvailable(story, question, delayed), "Continuation reapplies the scene delay.");
 
+        // The legacy recovery graph is retained; its live retirement stays enforced.
         var recovery = Find("seelah.fate_life");
+        check(recovery.Forbids.Contains("trickster.ever"), "Legacy Seelah recovery retirement was removed.");
+        story = Program.Unfolded(story);
+        recovery = Find("seelah.fate_life");
+        recovery.Forbids = recovery.Forbids.Where(f => f != "trickster.ever").ToArray();
         var fallen = Ready(recovery);
         check(fallen.Has("seelah_dead") && Rules.ContactAvailable(story, recovery, fallen),
             "Historical target death prevents the actual recovery scene.");
@@ -113,7 +118,7 @@ internal static class RemoteContinuationTests
         {
             var scene = Find(id);
             current.Hour += scene.DelayHours + 24;
-            check(Rules.Available(story, scene, current), "Actual Vellexia predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, current), "Actual Vellexia predecessor unavailable: " + id);
             current = Program.Walk(scene, current).First(s => s.Has(scene.Id) && !s.Has("vellexia.closed"));
         }
         // Native peaceful dismissal is an observed external game transition, not an authored effect.
@@ -123,7 +128,7 @@ internal static class RemoteContinuationTests
         var echo = Find("the_second_invitation");
         current.Hour += echo.DelayHours;
         check(Rules.IsRemote(echo) && echo.ContactUnit == null, "Witness is not the real remote echo scene.");
-        check(Rules.Available(story, echo, current), "Earned echo invitation is not available.");
+        check(Program.CurrentAvailable(story, echo, current), "Earned echo invitation is not available.");
         Snapshot? opened = null;
         Program.Walk(echo, current, (page, partial) => { if (page == "evidence" && opened == null) opened = Program.Copy(partial); });
         check(opened != null && !opened.Has(echo.Id), "No actual uncompleted echo page was reached.");
@@ -132,10 +137,12 @@ internal static class RemoteContinuationTests
             check(Rules.ContactAvailable(story, echo, opened!), "Native blocker lacks a valid open-page witness: " + blocker);
             var changed = Program.Copy(opened!);
             changed.Flags.Add(blocker);
-            check(!Rules.Available(story, echo, changed), "Native blocker does not invalidate fresh echo entry: " + blocker);
+            check(!Program.CurrentAvailable(story, echo, changed), "Native blocker does not invalidate fresh echo entry: " + blocker);
             check(!Rules.ContactAvailable(story, echo, changed), "Opened echo survives native blocker: " + blocker);
             changed.Flags.Remove(blocker);
-            check(Rules.ContactAvailable(story, echo, changed), "Echo cannot resume after blocker is removed: " + blocker);
+            Program.CurrentAvailable(story, echo, changed);
+            check(Rules.ContactAvailable(story, echo, changed) == !story.DepartureEpochs["vellexia"].Losses.Contains(blocker),
+                "Removing a blocker invents a return from a recorded loss: " + blocker);
         }
         var departedArea = Program.Copy(opened!);
         departedArea.Area = "2570015799edf594daf2f076f2f975d8";

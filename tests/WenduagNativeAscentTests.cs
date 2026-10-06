@@ -18,6 +18,7 @@ internal static class WenduagNativeAscentTests
         var rows = new (string What, string[] Flags, bool Plays)[]
         {
             ("committed", new[] { "trickster", "trickster.ever", "wenduag.committed" }, true),
+            ("coarse commitment", new[] { "trickster", "trickster.ever", "wenduag.committed" }, false),
             ("uncommitted", new[] { "trickster", "trickster.ever", "wenduag.started" }, false),
             ("committed, closed", new[] { "trickster", "trickster.ever", "wenduag.committed", "wenduag.closed" }, false),
             ("committed, Q3 kill", new[] { "trickster", "trickster.ever", "wenduag.committed", "wenduag.q3_killed" }, false),
@@ -31,7 +32,9 @@ internal static class WenduagNativeAscentTests
         foreach (var row in rows)
         {
             var state = new Snapshot { Chapter = 6 };
-            state.Flags.UnionWith(row.Flags);
+            foreach (var flag in row.Flags) HouseholdTests.Earn(story, state, flag);
+            if (row.What != "coarse commitment" && row.Flags.Contains("wenduag.committed"))
+                HouseholdTests.Earn(story, state, "wenduag.payoff.ordinary");
             Rules.Complete(story, state);
             check((Rules.SelectNativeEditVariant(story, variants, scenes, state) == 0) == row.Plays, "Trk_Wenduag_Ascent, " + row.What);
         }

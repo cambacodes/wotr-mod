@@ -17,6 +17,13 @@ internal static class KonomiTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.AvailableContacts.Add(Contact);
         Rules.Complete(story, state);
@@ -379,10 +386,10 @@ internal static class KonomiTricksterTests
         var backLate = World(story, 6, lateCommit.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
         check(backLate.Has("trickster.commander_back") && Rules.Available(story, epCommit, backLate), "The surviving Commander loses the late commit.");
         // Sol r4 BEL: the registered living endings also need a living Commander.
-        var deadPartner = World(story, 6, "konomi.committed", "sacrifice");
+        var deadPartner = World(story, 6, "konomi.committed", "konomi.power", "sacrifice");
         check(!Rules.Available(story, S("konomi.ending_private"), deadPartner) && Rules.Available(story, S("konomi.trickster.epilogue.sacrifice"), deadPartner),
             "A dead Commander keeps a living future with Konomi.");
-        var backPartner = World(story, 6, "konomi.committed", "sacrifice", "trickster", "trickster.ever", "ending.trickster");
+        var backPartner = World(story, 6, "konomi.committed", "konomi.power", "sacrifice", "trickster", "trickster.ever", "ending.trickster");
         check(Rules.Available(story, S("konomi.ending_private"), backPartner) && !Rules.Available(story, S("konomi.trickster.epilogue.sacrifice"), backPartner),
             "The returned Commander is mourned.");
         // Sol r4 INT: the ordinary farewell does not bar the dismissal rescue.

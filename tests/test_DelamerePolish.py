@@ -77,6 +77,8 @@ class DelamerePolishTests(unittest.TestCase):
                 self.assertTrue({P + "late_committed", "delamere.harem.eligible",
                                  "delamere.harem.voice.a_village_not_a_city"} <= flags)
         flags = self.derive({"delamere.committed"})
+        self.assertNotIn("delamere.harem.eligible", flags)
+        flags = self.derive({"delamere.committed", P + "second_hunt_offered", P + "caught"})
         self.assertIn("delamere.harem.eligible", flags)
         self.assertIn("delamere.harem.voice.a_village_not_a_city", flags)
 

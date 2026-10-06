@@ -19,6 +19,7 @@ internal static class WenduagEchoRulesTests
         {
             var state = new Snapshot { Chapter = chapter, Hour = 9000, Area = Rules.NurahCapital };
             state.Flags.UnionWith(flags);
+            if (flags.Contains("wenduag.committed")) HouseholdTests.Earn(story, state, "wenduag.payoff.ordinary");
             Rules.Complete(story, state);
             foreach (string flag in state.Flags) state.Times[flag] = 0;
             return state;
@@ -47,7 +48,7 @@ internal static class WenduagEchoRulesTests
             "wenduag.started", "wenduag.committed", "wenduag.abyss_fell", "wenduag.dead_any");
         returned.AvailableContacts.Add(unit);
         check(returned.Has(W + "with_you") && returned.Has(W + "partner"), "Valid echo return lost inherited presence");
-        check(story.NativeEpilogueEdits.Values.Any(e => e.When.Any(g => g.Contains("wenduag.committed"))
+        check(story.NativeEpilogueEdits.Values.Any(e => e.When.Any(g => g.Contains("wenduag.payoff.ordinary"))
             && Rules.WhenHolds(e.When, returned)), "Live Trickster control lost its native ending variant");
         var courting = World(5, "trickster", "trickster.foresight.accepted", E + "ready", E + "rescued", E + "returned",
             E + "valid", W + "returned", W + "primed", "wenduag.started", "wenduag.abyss_fell", "wenduag.dead_any");
@@ -74,7 +75,7 @@ internal static class WenduagEchoRulesTests
                 check(!invalid.Has(flag), "Invalid custody retained eligibility: " + flag);
             foreach (var scene in story.Scenes.Where(s => s.Relationship == "wenduag" && s.Recovery == null))
                 check(!Rules.Available(story, scene, invalid), "Invalid custody retained interaction/ending: " + scene.Id);
-            foreach (var edit in story.NativeEpilogueEdits.Values.Where(e => e.When.Any(group => group.Contains("wenduag.committed"))))
+            foreach (var edit in story.NativeEpilogueEdits.Values.Where(e => e.When.Any(group => group.Contains("wenduag.payoff.ordinary"))))
                 check(!Rules.WhenHolds(edit.When, invalid), "Invalid/off-path echo retained native ending edit");
             foreach (var suppression in story.NativeEpilogueSuppressions.Values.Where(s => s.Relationship == "wenduag"))
                 check(!Rules.WhenHolds(suppression.When, invalid), "Invalid/off-path echo retained native slide suppression");

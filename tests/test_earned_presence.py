@@ -346,10 +346,10 @@ class GeneratedStory(unittest.TestCase):
                 self.assertIn(sid, ep.COMMANDER_ABSENT)
                 self.assertNotIn(ep.SACRIFICE, scene["Forbids"])
                 self.assertNotIn(ep.SACRIFICE, scene.get("ForbidOverrides") or {})
-                self.assertEqual(scene["Requires"], ["trickster.ever", galfrey_queen_slide.RETURNED, galfrey_queen_slide.CROWN])
+                self.assertEqual(scene["Requires"], ["trickster.ever", galfrey_queen_slide.RETURNED, galfrey_queen_slide.CROWN, "galfrey.present_now"])
                 edit = self.story["NativeEpilogueEdits"][cue]
                 self.assertEqual(edit["Replacement"], sid)
-                self.assertEqual(edit["When"], galfrey_queen_slide.WHEN)
+                self.assertEqual(edit["When"], [list(dict.fromkeys([*g, "galfrey.present_now"])) for g in galfrey_queen_slide.WHEN])
 
     def test_off_trickster_canon_stands(self):
         """Worst-case off-Trickster world: every key that does not imply the Trickster path holds (native state and every

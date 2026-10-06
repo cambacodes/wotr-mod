@@ -22,6 +22,8 @@ internal static class AneviaTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.AvailableContacts.Add(Contact);
         state.AvailableContacts.Add(IrabethContact);
         Rules.Complete(story, state);
@@ -287,21 +289,23 @@ internal static class AneviaTricksterTests
             if (beth != "") end.Flags.Add(beth);
             Rules.Complete(story, end);
             var pages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, end)).ToList();
-            check(pages.Count == 1, "Anevia epilogue: " + pages.Count + " pages for lover=" + lover + " outcome=" + outcome + " beth=" + beth
+            // Coarse commitment can retain a nonromantic fate recap, but cannot acquire the lovers' payoff.
+            int expected = outcome == "anevia.committed" && !end.Has("anevia.payoff.ordinary") && lover ? 0 : 1;
+            check((outcome == "anevia.committed" && !end.Has("anevia.payoff.ordinary")) ? pages.Count <= 1 && pages.All(p => !p.Requires.Any(k => k.Contains(".payoff."))) : pages.Count == expected, "Anevia epilogue: " + pages.Count + " pages for lover=" + lover + " outcome=" + outcome + " beth=" + beth
                                     + " (" + string.Join(",", pages.Select(s => s.Id)) + ")");
             if (pages.Count == 1)
                 check(Rules.VisibleParagraphs(pages[0].Nodes.Last(), end).Length >= 1, "Returned Anevia's page has none of her paragraphs: " + pages[0].Id);
         }
         // Sol INT: the Commander killed Beth, Anevia came back and chose the Commander anyway; the closure page does not deny it.
         var unforgiven = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Killed, "anevia.lover", "anevia.committed",
-                               "anevia.trickster.terms_kept");
+                               "anevia.trickster.terms_kept", "anevia.trickster.said_it", "anevia.trickster.cost.muster_confession");
         var unforgivenPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, unforgiven)).ToList();
         check(unforgivenPages.Count == 1 && unforgivenPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_unforgiven"
               && Rules.VisibleParagraphs(unforgivenPages[0].Nodes.Last(), unforgiven).Any(t => t.Text.Contains("beside that grave")),
             "The recommitted Anevia gets the ending that denies her night: " + string.Join(",", unforgivenPages.Select(s => s.Id)));
         // Sol r1 INT: the renewed widow (Beth dead, not by the Commander) keeps her night too.
         var widowRenewed = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.lover", "anevia.committed",
-                                 "anevia.trickster.terms_kept");
+                                 "anevia.trickster.terms_kept", "anevia.trickster.gate_seen");
         var widowPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, widowRenewed)).ToList();
         check(widowPages.Count == 1 && widowPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_widow",
             "The renewed widow gets a page that denies her night: " + string.Join(",", widowPages.Select(s => s.Id)));

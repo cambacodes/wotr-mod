@@ -83,6 +83,8 @@ namespace Tirabade
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
+        // eng3-ab: ordered observations of existing losses and earned returns.
+        public Dictionary<string, DepartureEpochSpec> DepartureEpochs = new Dictionary<string, DepartureEpochSpec>();
         // E4b (household: closed routes leave eligibility): a Derived key listed here also needs every named relationship's
         // route open (Rules.RouteOpen: its ClosedFlag is not held and no UnavailableFlag blocks, so a Trickster return named in
         // UnavailableOverrides lifts a death or departure). Read from each relationship's own data; nothing is hand-coded.
@@ -117,6 +119,16 @@ namespace Tirabade
                 FailureFlags = new[] { "loss", "inhuman" }
             }
         };
+    }
+
+    public sealed class DepartureEpochSpec
+    {
+        public string Relationship = "", UnavailableFlag = "";
+        public string[] Losses = Array.Empty<string>(), Returns = Array.Empty<string>();
+        public string[] AdditionalRelationships = Array.Empty<string>();
+        public Dictionary<string, string> Overrides = new Dictionary<string, string>();
+        public Dictionary<string, string> NativeClearReturns = new Dictionary<string, string>();
+        public Dictionary<string, string[]> ReturnTriggers = new Dictionary<string, string[]>();
     }
 
     public class ParentEndingText
@@ -165,6 +177,8 @@ namespace Tirabade
         public string CommittedFlag = "";
         public string[] UnavailableFlags = Array.Empty<string>();
         public string[] FailureFlags = Array.Empty<string>();
+        // Epoch losses guard outcomes, while the original device can still earn its return.
+        public string[] EpochUnavailableFlags = Array.Empty<string>();
         // E2: an UnavailableFlag stops blocking once its authored return flag is held (Trickster returns).
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
         // E7: authoring metadata for the verifier (TT-20). Opaque to the runtime; only its shape is validated.
@@ -677,6 +691,7 @@ namespace Tirabade
         // A custody pickup exception belongs to one scene, never to the shared blueprint contact set.
         public HashSet<string> SceneContacts = new HashSet<string>(StringComparer.Ordinal);
         public Dictionary<string, int> Times = new Dictionary<string, int>();
+        public Dictionary<string, int> AvailabilityEpochs = new Dictionary<string, int>();
         public Dictionary<string, int> RestSpent = new Dictionary<string, int>();
         public Dictionary<string, int>? CrusadeResources;
         // eng8-q8a: a saved return is history, not proof against a new native death.
@@ -700,6 +715,8 @@ namespace Tirabade
         public static readonly string[] LatestStateRuntime = { "nenio.life.unavailable" };
         public static void ObserveNenioLife(Snapshot state, bool retained, bool dead, bool visitorLost)
         {
+            if (retained && !dead) state.Flags.Add("nenio.native_alive");
+            else state.Flags.Remove("nenio.native_alive");
             if (!state.Flags.Contains("nenio.trickster.returned")) return;
             bool visitor = new[] { "nenio.trickster.cost.recreated", "nenio.trickster.cost.unremembered",
                 "nenio.trickster.primed_away" }.Any(state.Flags.Contains);
@@ -1032,7 +1049,7 @@ namespace Tirabade
         public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
         private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal) || key.StartsWith(RestSpentPrefix, StringComparison.Ordinal)
-            || key.StartsWith(ServedPrefix, StringComparison.Ordinal) || key.StartsWith("hour.", StringComparison.Ordinal)
+            || key.StartsWith(ServedPrefix, StringComparison.Ordinal) || key.StartsWith(AvailabilitySavePrefix, StringComparison.Ordinal) || key.StartsWith("hour.", StringComparison.Ordinal)
             || key.StartsWith("revive.", StringComparison.Ordinal);
 
         private static bool IsNativeFlag(Story story, string flag) => story.Etudes.ContainsKey(flag)
@@ -1068,6 +1085,13 @@ namespace Tirabade
         public static void Complete(Story story, Snapshot state)
         {
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
+            if (story.DepartureEpochs.Count > 0)
+            {
+                state.Flags.Add("availability.observed");
+                ObserveDepartureEpochs(story, state);
+                // Availability is live even when callers reuse a snapshot.
+                state.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+            }
             // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
             // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
             foreach (var key in CompletionOrder(story))
@@ -1078,6 +1102,131 @@ namespace Tirabade
                 if (!state.Has(pair.Key) && (pair.Value.Chapters.Length == 0 || pair.Value.Chapters.Contains(state.Chapter))
                     && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
             CompleteWordMadeTrue(state);
+        }
+
+        public const string AvailabilitySavePrefix = "rrt.availability.";
+        public static IEnumerable<string> AvailabilitySaveKeys(Story story) => new[] { "clock" }
+            .Concat(story.DepartureEpochs.Values.SelectMany(s => s.Losses.Concat(s.Returns).Concat(s.ReturnTriggers.Values.SelectMany(g => g))).Distinct()
+                .SelectMany(k => new[] { "active." + k, "epoch." + k }))
+            .Select(k => AvailabilitySavePrefix + k);
+
+        public static IEnumerable<string> AvailabilityRuntimeKeys(Story story) => new[] { "availability.observed" }
+            .Concat(story.DepartureEpochs.SelectMany(p => new[] { p.Value.UnavailableFlag, p.Key + ".epoch_redeparted", p.Key + ".returned_actor_lost", p.Key + ".native_alive" }));
+
+        // Recursively read the return's original contract before Derived completion.
+        // Cached composites are never evidence; native and authored receipts are.
+        private static bool EpochHeld(Story story, Snapshot state, string key, HashSet<string>? visiting = null)
+        {
+            if (!story.Derived.TryGetValue(key, out var groups)) return state.Has(key);
+            visiting ??= new HashSet<string>();
+            if (!visiting.Add(key)) return false;
+            bool held = groups.Any(g => g.All(k => EpochHeld(story, state, k, visiting)))
+                && (!story.DerivedForbids.TryGetValue(key, out var no) || !no.Any(k =>
+                    // Current epoch is the result of this observation, not
+                    // another prerequisite of the original earned receipt.
+                    !k.EndsWith(".epoch_unavailable", StringComparison.Ordinal) && EpochHeld(story, state, k, visiting)));
+            visiting.Remove(key);
+            return held;
+        }
+
+        private static int EpochValue(Snapshot state, string key) => state.AvailabilityEpochs.TryGetValue(key, out int value) ? value : 0;
+
+        // Explicit repeated authored events have an order even within one game hour.
+        // Observing a held historical receipt again is NOT another earned return.
+        public static void RecordAvailabilityEvents(Story story, Snapshot state, IEnumerable<string> effects)
+        {
+            var pending = effects as string[] ?? effects.ToArray();
+            if (pending.Length == 0 || story.DepartureEpochs.Count == 0) return;
+            var events = new HashSet<string>(story.DepartureEpochs.Values.SelectMany(s => s.Losses.Concat(s.Returns).Concat(s.ReturnTriggers.Values.SelectMany(g => g))));
+            foreach (var key in pending.Distinct().Where(events.Contains))
+            {
+                int clock = checked(EpochValue(state, "clock") + 1);
+                state.AvailabilityEpochs["clock"] = clock;
+                state.AvailabilityEpochs["epoch." + key] = clock;
+                state.AvailabilityEpochs["active." + key] = 1;
+            }
+        }
+
+        // Released saves already timestamp authored receipts. Import that order
+        // where available; an older paid receipt must not outrun a later loss.
+        private static int AvailabilityReceiptHour(Story story, Snapshot state, string key, HashSet<string> losses,
+            HashSet<string>? visiting = null)
+        {
+            if (state.Times.TryGetValue(key, out int hour)) return hour + 1;
+            if (!story.Derived.TryGetValue(key, out var groups)) return 0;
+            visiting ??= new HashSet<string>();
+            if (!visiting.Add(key)) return 0;
+            int observed = groups.Where(g => g.All(k => EpochHeld(story, state, k)))
+                .SelectMany(g => g).Where(k => !losses.Contains(k))
+                .Select(k => AvailabilityReceiptHour(story, state, k, losses, visiting)).DefaultIfEmpty(0).Max();
+            visiting.Remove(key);
+            return observed;
+        }
+
+        public static void ObserveDepartureEpochs(Story story, Snapshot state)
+        {
+            // Loss first on initial import; saved edge observations then preserve
+            // exact order across reloads. Each loss has only its nominated return.
+            var losses = story.DepartureEpochs.Values.SelectMany(s => s.Losses).Distinct().ToArray();
+            var triggers = story.DepartureEpochs.Values.SelectMany(s => s.ReturnTriggers).ToDictionary(p => p.Key, p => p.Value);
+            var returns = story.DepartureEpochs.Values.SelectMany(s => s.Returns).Where(k => !triggers.ContainsKey(k))
+                .Concat(triggers.Values.SelectMany(g => g)).Distinct().ToArray();
+            var lossKeys = new HashSet<string>(losses);
+            // Index only immutable metadata for this observation; no state or
+            // eligibility is cached across snapshots or mutable test stories.
+            var nativeClear = story.DepartureEpochs.Values.SelectMany(s => s.NativeClearReturns)
+                .ToLookup(p => p.Value, p => p.Key);
+            bool NativeCorpseHeld(string key) => nativeClear[key].Any(loss => EpochHeld(story, state, loss));
+            // Receipt observation reads the stored/native fact, not Snapshot.Has's
+            // current-body qualification of a historical Wenduag return.
+            bool HeldEvent(string key) => lossKeys.Contains(key) ? EpochHeld(story, state, key) : state.Flags.Contains(key);
+            if (EpochValue(state, "clock") == 0)
+            {
+                var import = losses.Concat(returns).Distinct().Where(HeldEvent)
+                    .Where(k => !NativeCorpseHeld(k))
+                    .Select(k => new { Key = k, Hour = AvailabilityReceiptHour(story, state, k, lossKeys) }).ToArray();
+                if (import.Any(e => e.Hour > 0))
+                    foreach (var item in import.OrderBy(e => e.Hour).ThenBy(e => lossKeys.Contains(e.Key) ? 1 : 0))
+                        RecordAvailabilityEvents(story, state, new[] { item.Key });
+                // Without a historical timestamp, retain the existing paid
+                // return import. Subsequent observations have exact epochs.
+            }
+            foreach (var key in losses.Concat(returns).Distinct())
+            {
+                bool held = HeldEvent(key);
+                // A contradictory fixture/cached observation cannot make a
+                // retained corpse its own new resurrection.
+                if (NativeCorpseHeld(key))
+                    held = false;
+                if (held && EpochValue(state, "active." + key) == 0)
+                    RecordAvailabilityEvents(story, state, new[] { key });
+                state.AvailabilityEpochs["active." + key] = held ? 1 : 0;
+            }
+            // The return's actual paid/accepted receipt supplies its epoch.
+            // A native qualifier becoming true again never refreshes old history.
+            foreach (var trigger in triggers)
+                if (EpochHeld(story, state, trigger.Key))
+                {
+                    int receipt = trigger.Value.Select(k => EpochValue(state, "epoch." + k)).DefaultIfEmpty(0).Max();
+                    state.AvailabilityEpochs["epoch." + trigger.Key] = Math.Max(EpochValue(state, "epoch." + trigger.Key), receipt);
+                }
+            foreach (var pair in story.DepartureEpochs)
+            {
+                var spec = pair.Value;
+                bool unavailable = spec.Losses.Any(loss => EpochValue(state, "epoch." + loss) > 0
+                    && !(spec.NativeClearReturns.TryGetValue(loss, out var alive)
+                         && EpochValue(state, "epoch." + alive) > EpochValue(state, "epoch." + loss))
+                    && (!spec.Overrides.TryGetValue(loss, out var back)
+                        || EpochValue(state, "epoch." + loss) >= EpochValue(state, "epoch." + back)));
+                if (unavailable) state.Flags.Add(spec.UnavailableFlag);
+                else state.Flags.Remove(spec.UnavailableFlag);
+                int latestEarnedReturn = spec.Returns.Except(spec.NativeClearReturns.Values)
+                    .Select(back => EpochValue(state, "epoch." + back)).DefaultIfEmpty(0).Max();
+                bool redeparted = latestEarnedReturn > 0 && unavailable
+                    && spec.Losses.Any(loss => EpochValue(state, "epoch." + loss) > latestEarnedReturn);
+                if (redeparted) state.Flags.Add(pair.Key + ".epoch_redeparted");
+                else state.Flags.Remove(pair.Key + ".epoch_redeparted");
+            }
         }
 
         // The household (08 §2.3, §10): Word Made True may be spoken at most WordMadeTrueMax times in a campaign. Each use is
@@ -1104,6 +1253,8 @@ namespace Tirabade
         public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null)
         {
             if (state.Has(relationship.ClosedFlag)) return false;
+            foreach (var flag in relationship.EpochUnavailableFlags)
+                if (!(absentWomen?.Contains(flag) ?? false) && state.Has(flag)) return false;
             foreach (var flag in relationship.UnavailableFlags)
                 if (!(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state)) return false;
             return true;
@@ -1148,7 +1299,7 @@ namespace Tirabade
                 foreach (var rel in routes)
                 {
                     var relationship = story.Relationships[rel];
-                    inputs = inputs.Concat(new[] { relationship.ClosedFlag }).Concat(relationship.UnavailableFlags ?? Array.Empty<string>())
+                    inputs = inputs.Concat(new[] { relationship.ClosedFlag }).Concat(relationship.EpochUnavailableFlags).Concat(relationship.UnavailableFlags ?? Array.Empty<string>())
                         .Concat(relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>());
                 }
             return inputs;
@@ -1190,6 +1341,8 @@ namespace Tirabade
                         {
                             var relationship = story.Relationships[rel];
                             if (!cursor.Next(relationship.ClosedFlag)) return false;
+                            foreach (var input in relationship.EpochUnavailableFlags)
+                                if (!cursor.Next(input)) return false;
                             foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>())
                                 if (!cursor.Next(input)) return false;
                             if (relationship.UnavailableOverrides != null)
@@ -1243,6 +1396,7 @@ namespace Tirabade
                     {
                         var relationship = story.Relationships[rel];
                         VisitInput(relationship.ClosedFlag);
+                        foreach (var input in relationship.EpochUnavailableFlags) VisitInput(input);
                         foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>()) VisitInput(input);
                         if (relationship.UnavailableOverrides != null)
                             foreach (var input in relationship.UnavailableOverrides.Values) VisitInput(input);
@@ -1580,7 +1734,10 @@ namespace Tirabade
         public static bool ReplacementForbidden(Story? story, string replacement, Snapshot state)
         {
             var scene = story?.Scenes.FirstOrDefault(s => s.Id == replacement);
-            return scene != null && scene.Forbids.Any(flag => ForbidHolds(scene, flag, state));
+            return scene != null && (scene.Forbids.Any(flag => ForbidHolds(scene, flag, state))
+                || scene.Requires.Where(flag => flag.EndsWith(".present_now", StringComparison.Ordinal)
+                    || flag.EndsWith(".reachable_by_letter", StringComparison.Ordinal) || flag.Contains(".payoff."))
+                    .Any(flag => !state.Has(flag)));
         }
 
         // E14d: the registered cue name (save reference) of a variant. Variant 0 keeps the original "native-edit.<cue>".
@@ -1826,6 +1983,7 @@ namespace Tirabade
                 // eng8-q8a
                 .Concat(LatestStateRuntime)));
                 // end eng8-q8a
+            derivedFlags.UnionWith(AvailabilityRuntimeKeys(story));
             // eng7-l06: saved runtime receipts are known inputs, never authored choice effects.
             derivedFlags.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
             // eng7-l06 end
@@ -1835,6 +1993,7 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             contactEvidence.UnionWith(WenduagEchoRuntime);
+            contactEvidence.UnionWith(AvailabilityRuntimeKeys(story));
             // eng8-q8a
             contactEvidence.UnionWith(LatestStateRuntime);
             // end eng8-q8a
@@ -1880,6 +2039,45 @@ namespace Tirabade
                 throw new InvalidOperationException("Invalid pending read-only hook.");
             derivedFlags.UnionWith(story.PendingHooks.Where(key => !story.Derived.ContainsKey(key) && !authoredFlags.Contains(key) && !nativeKeys.Contains(key)));
             ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence);
+            // Epoch metadata names observed existing events; it cannot mint a return
+            // receipt or silently attach one woman's loss to another relationship.
+            var epochInputs = new HashSet<string>(authoredFlags.Concat(nativeKeys).Concat(derivedFlags).Concat(story.Derived.Keys));
+            bool IndependentSeatGuard(string route, string key)
+            {
+                var women = story.SeatWomen.Where(p => p.Value.Relationship == route).Select(p => p.Key).ToArray();
+                return women.Length > 1 && key == route + ".epoch_unavailable"
+                    && women.All(w => story.DepartureEpochs.TryGetValue(w, out var epoch) && epoch.Relationship == route)
+                    && story.Derived.TryGetValue(key, out var groups) && groups.Length == 1
+                    && groups[0].SequenceEqual(women.Select(w => w + ".epoch_unavailable"));
+            }
+            foreach (var pair in story.DepartureEpochs)
+            {
+                var spec = pair.Value;
+                if (spec == null || !story.Relationships.ContainsKey(spec.Relationship)
+                    || spec.UnavailableFlag != pair.Key + ".epoch_unavailable"
+                    || spec.Losses == null || spec.Returns == null || spec.Overrides == null || spec.NativeClearReturns == null || spec.ReturnTriggers == null
+                    || spec.AdditionalRelationships == null || spec.AdditionalRelationships.Any(r => !story.Relationships.ContainsKey(r))
+                    || spec.Losses.Length == 0 || spec.Losses.Distinct().Count() != spec.Losses.Length
+                    || spec.Returns.Distinct().Count() != spec.Returns.Length
+                    || spec.Losses.Concat(spec.Returns).Any(k => !epochInputs.Contains(k))
+                    || spec.Losses.Intersect(spec.Returns).Any()
+                    || spec.Returns.Any(k => story.Derived.ContainsKey(k) && !spec.ReturnTriggers.ContainsKey(k))
+                    || spec.ReturnTriggers.Any(p => !spec.Returns.Contains(p.Key) || !story.Derived.ContainsKey(p.Key)
+                        || p.Value == null || p.Value.Length == 0 || p.Value.Distinct().Count() != p.Value.Length
+                        || p.Value.Any(k => !epochInputs.Contains(k) || story.Derived.ContainsKey(k) || story.Counts.ContainsKey(k)
+                            || story.Latches.ContainsKey(k) || !story.Derived[p.Key].Any(g => g.Contains(k))))
+                    || spec.Overrides.Any(p => !spec.Losses.Contains(p.Key) || !spec.Returns.Contains(p.Value))
+                    || spec.NativeClearReturns.Any(p => !spec.Losses.Contains(p.Key) || !spec.Returns.Contains(p.Value)
+                        || p.Value != pair.Key + ".native_alive")
+                    || !story.Relationships[spec.Relationship].EpochUnavailableFlags.Any(k =>
+                        k == spec.UnavailableFlag || IndependentSeatGuard(spec.Relationship, k)))
+                    throw new InvalidOperationException("Invalid departure epoch contract: " + pair.Key);
+            }
+            foreach (var pair in story.Relationships)
+                if (pair.Value.EpochUnavailableFlags == null || pair.Value.EpochUnavailableFlags.Any(k =>
+                    !story.DepartureEpochs.Values.Any(e => (e.Relationship == pair.Key || e.AdditionalRelationships.Contains(pair.Key)) && e.UnavailableFlag == k)
+                    && !IndependentSeatGuard(pair.Key, k)))
+                    throw new InvalidOperationException("Unregistered departure epoch guard: " + pair.Key);
             if (story.Counts == null) throw new InvalidOperationException("Counts cannot be null.");
             foreach (var pair in story.Counts)
                 if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key) || derivedFlags.Contains(pair.Key)

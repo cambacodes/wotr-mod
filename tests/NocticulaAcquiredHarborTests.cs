@@ -50,7 +50,7 @@ internal static class NocticulaAcquiredHarborTests
         }
         void Preserved(Snapshot before, Snapshot after)
         {
-            check(before.Flags.IsSubsetOf(after.Flags), "Acquired harbor removed existing history or another romance.");
+            check(Program.PersistentFlags(story, before).All(after.Has), "Acquired harbor removed existing history or another romance.");
             check(before.Flags.Where(native.Contains).ToHashSet().SetEquals(after.Flags.Where(native.Contains)),
                 "Acquired harbor writes native state.");
             check(before.AvailableContacts.SetEquals(after.AvailableContacts), "Dream manufactures a physical contact.");
@@ -77,7 +77,7 @@ internal static class NocticulaAcquiredHarborTests
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed" });
             initial.Flags.UnionWith(history);
-            var entry = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
+            var entry = entries.Where(s => Program.CurrentAvailable(story, s, initial)).ToArray();
             check(entry.Length == 1, "Acquired harbor fixture lacks a unique native-history entry.");
             var states = Program.Walk(entry.Single(), initial).Where(s => !s.Has("noct.acq.closed")).ToList();
             // These two native Council witnesses are the only externally supplied acquisition boundary.
@@ -89,7 +89,7 @@ internal static class NocticulaAcquiredHarborTests
                 foreach (var before in states)
                 {
                     var ready = Program.Copy(before); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Actual acquisition cannot advance: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Actual acquisition cannot advance: " + scene.Id);
                     next.AddRange(Program.Walk(scene, ready).Where(s => s.Has(scene.Id)
                         && !s.Has("noct.acq.closed") && !s.Has("noct.join.closed")));
                 }
@@ -110,20 +110,20 @@ internal static class NocticulaAcquiredHarborTests
                 foreach (var before in states)
                 {
                     var ready = Program.Copy(before); ready.Hour += donor.DelayHours;
-                    var available = variants.Where(s => Rules.Available(story, s, ready)).ToArray();
+                    var available = variants.Where(s => Program.CurrentAvailable(story, s, ready)).ToArray();
                     check(available.Length == 1, "Played acquired history lacks one delivery: " + donor.Id);
                     var scene = available.Single();
                     check(scene.Id.Contains(marker + family), "Acquired delivery borrowed a different native history.");
-                    check(!Rules.Available(story, donor, ready), "Original and acquired harbor overlap.");
+                    check(!Program.CurrentAvailable(story, donor, ready), "Original and acquired harbor overlap.");
                     foreach (string prerequisite in bridgeFacts.Concat(new[] { "trickster", "noct.acq.renewed_agreement" }))
                     {
                         var missing = Program.Copy(ready); missing.Flags.Remove(prerequisite);
-                        check(!variants.Any(s => Rules.Available(story, s, missing)), "Acquired harbor bypasses " + prerequisite);
+                        check(!variants.Any(s => Program.CurrentAvailable(story, s, missing)), "Acquired harbor bypasses " + prerequisite);
                     }
                     foreach (string blocker in new[] { "noct.closed", "noct.dead", "noct.acq.closed", "noct.join.closed", "noct.acq.council_fight" })
                     {
                         var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                        check(!variants.Any(s => Rules.Available(story, s, blocked)), "Acquired harbor ignores " + blocker);
+                        check(!variants.Any(s => Program.CurrentAvailable(story, s, blocked)), "Acquired harbor ignores " + blocker);
                     }
                     if (donor.Id == "noct.her_own_face")
                     for (int gift = 0; gift < 4; gift++)
@@ -133,7 +133,7 @@ internal static class NocticulaAcquiredHarborTests
                         current.Flags.Remove("noct.gift"); current.Flags.Remove("noct.acq.gift_renewed");
                         if ((gift & 1) != 0) current.Flags.Add("noct.gift");
                         if ((gift & 2) != 0) current.Flags.Add("noct.acq.gift_renewed");
-                        var faces = variants.Where(s => Rules.Available(story, s, current)).ToArray();
+                        var faces = variants.Where(s => Program.CurrentAvailable(story, s, current)).ToArray();
                         string suffix = (gift & 2) != 0 ? "renewed" : gift == 1 ? "original" : "absent";
                         check(faces.Length == 1 && faces[0].Id.EndsWith("." + suffix, StringComparison.Ordinal), "Current Gift delivery precedence is wrong.");
                         foreach (var result in Program.Walk(faces.Single(), current))
@@ -141,7 +141,7 @@ internal static class NocticulaAcquiredHarborTests
                             Preserved(current, result);
                             check(result.Has(donor.Id), "Gift-specific face lacks shared completion.");
                             result.Flags.Add("noct.gift"); result.Flags.Add("noct.acq.gift_renewed");
-                            check(!variants.Any(s => Rules.Available(story, s, result)), "Changing Gift replays a completed face scene.");
+                            check(!variants.Any(s => Program.CurrentAvailable(story, s, result)), "Changing Gift replays a completed face scene.");
                         }
                         giftProbes++;
                     }
@@ -161,7 +161,7 @@ internal static class NocticulaAcquiredHarborTests
                         {
                             closures++;
                             var later = Program.Copy(result); later.Hour += 1000;
-                            check(!later.Has("noct.complete") && !acquired.Any(s => Rules.Available(story, s, later)),
+                            check(!later.Has("noct.complete") && !acquired.Any(s => Program.CurrentAvailable(story, s, later)),
                                 "Closed acquired undertaking reopens or receives a completed ending.");
                             continue;
                         }
@@ -170,13 +170,13 @@ internal static class NocticulaAcquiredHarborTests
                             postponements++;
                             check(donor.Id == "noct.unlit_quay" && result.Flags.SetEquals(ready.Flags)
                                 && result.Times.Count == ready.Times.Count && ready.Times.All(p => result.Times.TryGetValue(p.Key, out int t) && t == p.Value)
-                                && Rules.Available(story, scene, result), "Postponement consumes acquired acceptance or cannot retry.");
+                                && Program.CurrentAvailable(story, scene, result), "Postponement consumes acquired acceptance or cannot retry.");
                             continue;
                         }
                         check(result.Has(donor.Id) && result.Times[donor.Id] == ready.Hour, "Acquired visit lacks timed shared completion.");
                         // In-memory restoration tests Rules persistence policy, not Unity save serialization.
                         var restored = Program.Copy(result); restored.Hour += 1000;
-                        check(!variants.Any(s => Rules.Available(story, s, restored)) && !Rules.Available(story, donor, restored),
+                        check(!variants.Any(s => Program.CurrentAvailable(story, s, restored)) && !Program.CurrentAvailable(story, donor, restored),
                             "Restored completion permits original or acquired replay.");
                         next.Add(result);
                     }
@@ -209,7 +209,7 @@ internal static class NocticulaAcquiredHarborTests
             var state = Program.Copy(pair.Value);
             string[] outcomes = { "noct.dead", "inhuman", "ascended", "sacrifice" };
             for (int bit = 0; bit < outcomes.Length; bit++) if ((mask & (1 << bit)) != 0) state.Flags.Add(outcomes[bit]);
-            var available = endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)).ToArray();
+            var available = endings.Where(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)).ToArray();
             // Earned presence (rubric Binding context (3)): beside an unreturned sacrifice her death, changed or risen pages
             // (the Commander remembering) do not play; the mourning page covers only a Commander who died plainly.
             if (state.Has("sacrifice") && (state.Has("noct.dead") || state.Has("inhuman") || state.Has("ascended")))
@@ -222,15 +222,15 @@ internal static class NocticulaAcquiredHarborTests
                 : state.Has("noct.chosen_company") ? "company" : state.Has("noct.chosen_alliance") ? "alliance" : "limit";
             check(available.Length == 1 && available[0].Id == "noct.ending_" + expected + marker + pair.Key.Split('/')[0],
                 "Acquired ending overlaps, loses history, or contradicts outcome precedence.");
-            check(!original.Any(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Rules.Available(story, s, state)),
+            check(!original.Any(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Program.CurrentAvailable(story, s, state)),
                 "Acquired completion exposes an original-family ending.");
             foreach (var result in Program.Walk(available.Single(), state))
             {
                 Preserved(state, result);
-                check(result.Has(Alias(available[0])) && !Rules.Available(story, available[0], result), "Acquired ending lacks shared completion.");
+                check(result.Has(Alias(available[0])) && !Program.CurrentAvailable(story, available[0], result), "Acquired ending lacks shared completion.");
             }
             state.Flags.Remove("noct.complete");
-            check(!endings.Any(s => Rules.Available(story, s, state)), "Unfinished acquired harbor receives an ending.");
+            check(!endings.Any(s => Program.CurrentAvailable(story, s, state)), "Unfinished acquired harbor receives an ending.");
             endingProbes++;
         }
         foreach (var donor in visits)

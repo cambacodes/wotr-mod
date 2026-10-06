@@ -35,6 +35,14 @@ internal static class EliandraTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
@@ -93,7 +101,7 @@ internal static class EliandraTricksterTests
         // Trk_Eliandra_Bindings: the relationship, the hub and its clean return, the corrected sanctuary key, the path tags.
         var rel = story.Relationships["eliandra"];
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.SequenceEqual(new[] { "eliandra.dead" })
+              && rel.UnavailableFlags.SequenceEqual(new[] { "eliandra.dead", "eliandra.attacked" })
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "no_leave", "vow" })
               && rel.TricksterAccess["vow"].Device == rite.Id && rel.TricksterAccess["vow"].Detect.SequenceEqual(new[] { Met }) && rel.TricksterAccess["no_leave"].Device == self.Id,
             "Trk_Eliandra_Bindings: the relationship does not match the build sheet.");
@@ -238,7 +246,7 @@ internal static class EliandraTricksterTests
         // offering, the first mile and the star-heart are hosted on her Drezen presence, which stands from the meeting on, and
         // the terms and the rite have Drezen twins for a Commander who left the shrine before asking.
         var metOnly = World(story, 5, "trickster", "trickster.ever", Met);
-        check(Rules.PresenceWanted(tavern, metOnly) && tavern.Requires.SequenceEqual(new[] { "trickster.ever", Met, "eliandra.presence.route_open" }),
+        check(Rules.PresenceWanted(tavern, metOnly) && tavern.Requires.SequenceEqual(new[] { "trickster.ever", Met, "eliandra.presence.route_open", "eliandra.present_now" }),
             "Lifecycle: her presence does not stand in Drezen from the meeting on.");
         check(new[] { self, mile, heart }.All(s => s.InteractionHub == "eliandra.presence" && s.AnswerLists.Length == 0 && s.NativeReturnCue == null)
               && shrine.All(s => s.DelayHours == 0),

@@ -28,9 +28,13 @@ internal static class EarnedPresenceTests
     private static Snapshot World(Story story, Scene scene, IEnumerable<string> extra, bool sacrifice)
     {
         var state = new Snapshot { Chapter = Math.Min(Math.Max(6, scene.MinChapter), scene.MaxChapter), Hour = 100000 };
-        foreach (var flag in scene.Requires) state.Flags.Add(flag);
-        foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
-        foreach (var flag in extra) state.Flags.Add(flag);
+        foreach (var flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
+        {
+            HouseholdTests.Earn(story, state, flag);
+            Rules.Complete(story, state); // preserve the already earned late branch when a partner predicate follows
+        }
+        foreach (var group in scene.RequiresAnyGroups) HouseholdTests.Earn(story, state, group[0]);
+        foreach (var flag in extra) HouseholdTests.Earn(story, state, flag);
         if (sacrifice) state.Flags.Add(Sacrifice);
         else state.Flags.Remove(Sacrifice);
         Rules.Complete(story, state);
@@ -51,23 +55,23 @@ internal static class EarnedPresenceTests
             {
                 // A mourning page plays only while the Commander stays dead.
                 var dead = World(story, scene, Array.Empty<string>(), true);
-                if (dead.Has(Back) || !Rules.Available(story, scene, dead)) continue;
+                if (dead.Has(Back) || !Program.CurrentAvailable(story, scene, dead)) continue;
                 mourning++;
                 foreach (var (name, flags) in Returns)
                 {
                     var back = World(story, scene, flags, true);
                     check(back.Has(Back), "Earned return '" + name + "' does not produce " + Back);
-                    check(!Rules.Available(story, scene, back), "Mourning page " + scene.Id + " plays beside a Commander who came back (" + name + ").");
+                    check(!Program.CurrentAvailable(story, scene, back), "Mourning page " + scene.Id + " plays beside a Commander who came back (" + name + ").");
                 }
                 continue;
             }
             if (!scene.Forbids.Contains(Sacrifice)) continue;   // COMMANDER_ABSENT: never stages the Commander alive
             var alive = World(story, scene, Array.Empty<string>(), false);
-            if (!Rules.Available(story, scene, alive)) continue;    // unavailable for reasons of its own
+            if (!Program.CurrentAvailable(story, scene, alive)) continue;    // unavailable for reasons of its own
             var unreturned = World(story, scene, Array.Empty<string>(), true);
             if (unreturned.Has(Back)) continue;
             living++;
-            if (Rules.Available(story, scene, unreturned)) leaks.Add(scene.Id + " [" + scene.Relationship + "]");
+            if (Program.CurrentAvailable(story, scene, unreturned)) leaks.Add(scene.Id + " [" + scene.Relationship + "]");
             // A bare Forbid "sacrifice" (legacy native-path pages such as the trio's) never returns; only the commander_dead
             // guard (Forbid + override trickster.commander_back) is lifted by an earned return.
             if (!scene.ForbidOverrides.TryGetValue(Sacrifice, out var lift) || lift != Back) { bare++; continue; }
@@ -76,7 +80,7 @@ internal static class EarnedPresenceTests
                 var back = World(story, scene, flags, true);
                 // A page may legitimately refuse one return world (Areelu's finale forbids Iomedae's appointment).
                 if (scene.Forbids.Any(f => f != Sacrifice && Rules.ForbidHolds(scene, f, back) && !Rules.ForbidHolds(scene, f, alive))) continue;
-                check(Rules.Available(story, scene, back), "Living page " + scene.Id + " does not return with the Commander (" + name + ").");
+                check(Program.CurrentAvailable(story, scene, back), "Living page " + scene.Id + " does not return with the Commander (" + name + ").");
                 restored++;
             }
         }
@@ -91,13 +95,13 @@ internal static class EarnedPresenceTests
         foreach (var id in new[] { "seelah.trickster.epilogue.commit", "seelah.ending_together" })
         {
             var scene = story.Scenes.Single(s => s.Id == id);
-            check(!Rules.Available(story, scene, World(story, scene, Array.Empty<string>(), true)), id + " plays after an unreturned sacrifice.");
-            check(Rules.Available(story, scene, World(story, scene, Returns[0].Flags, true)), id + " is lost after the punchline return.");
+            check(!Program.CurrentAvailable(story, scene, World(story, scene, Array.Empty<string>(), true)), id + " plays after an unreturned sacrifice.");
+            check(Program.CurrentAvailable(story, scene, World(story, scene, Returns[0].Flags, true)), id + " is lost after the punchline return.");
         }
         foreach (var id in new[] { "seelah.ending_sacrifice", "kiana.ending_sacrifice", "jerribeth.ending_sacrifice", "devarra.trickster.epilogue.sacrifice" })
         {
             var scene = story.Scenes.Single(s => s.Id == id);
-            check(Rules.Available(story, scene, World(story, scene, new[] { "trickster.ever" }, true)), id + " (mourning) does not play after an unreturned sacrifice.");
+            check(Program.CurrentAvailable(story, scene, World(story, scene, new[] { "trickster.ever" }, true)), id + " (mourning) does not play after an unreturned sacrifice.");
         }
 
         // E14d native-slide replacements: a replacement that stages a living Commander yields to the native slide.
@@ -108,7 +112,7 @@ internal static class EarnedPresenceTests
             {
                 var scene = story.Scenes.Single(s => s.Id == variants[v].Replacement);
                 var state = new Snapshot { Chapter = 6, Hour = 100000 };
-                foreach (var flag in variants[v].When[0]) state.Flags.Add(flag);
+                foreach (var flag in variants[v].When[0]) HouseholdTests.Earn(story, state, flag);
                 state.Flags.Add("trickster.ever");
                 state.Flags.Add(Sacrifice);
                 Rules.Complete(story, state);
@@ -119,7 +123,7 @@ internal static class EarnedPresenceTests
                     check(!chosen.Forbids.Contains(Sacrifice) || state.Has(Back),
                         "Native edit " + pair.Key + " shows " + chosen.Id + " beside a dead Commander.");
                 }
-                foreach (var flag in Returns[0].Flags) state.Flags.Add(flag);
+                foreach (var flag in Returns[0].Flags) HouseholdTests.Earn(story, state, flag);
                 Rules.Complete(story, state);
                 check(Rules.SelectNativeEditVariant(story, variants, state) == Rules.SelectNativeEditVariant(variants, state),
                     "Native edit " + pair.Key + " variant " + v + " is not restored by the punchline return.");

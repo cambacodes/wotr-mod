@@ -53,13 +53,13 @@ internal static class EmberCampaignTests
                 var predecessor = Get("second_ending");
                 seed.Flags.UnionWith(predecessor.Requires);
                 seed.Flags.UnionWith(new[] { "ember.started", "ember.player_fox", "ember.revision_laughter" });
-                check(Rules.Available(story, predecessor, seed), "Released Ember predecessor fixture is unavailable.");
+                check(Program.CurrentAvailable(story, predecessor, seed), "Released Ember predecessor fixture is unavailable.");
                 states = Program.Walk(predecessor, seed).Where(s => s.Has("ember.puppet_afternoons_kept")).ToList();
-                foreach (var state in states) check(!Rules.Available(story, late, state), "Late entry duplicates a completed opening.");
+                foreach (var state in states) check(!Program.CurrentAvailable(story, late, state), "Late entry duplicates a completed opening.");
             }
             else
             {
-                check(!Rules.Available(story, first, seed), "Fresh chapter five pretends the earlier puppet afternoons happened.");
+                check(!Program.CurrentAvailable(story, first, seed), "Fresh chapter five pretends the earlier puppet afternoons happened.");
                 states = new List<Snapshot> { seed };
             }
             var ordered = new[] { oldOpening ? first : late }.Concat(chain).ToArray();
@@ -75,7 +75,7 @@ internal static class EmberCampaignTests
                         if (outcome != "unresolved") ready.Flags.UnionWith(new[] { "ember.native_q2_complete", "ember.native_q3_complete", "ember.native_" + outcome });
                     }
                     ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Played Ember path stranded at " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Played Ember path stranded at " + scene.Id);
                     CheckGuards(scene, ready);
                     foreach (var result in Program.Walk(scene, ready, (page, partial) =>
                     {
@@ -84,7 +84,7 @@ internal static class EmberCampaignTests
                         var lost = Program.Copy(partial); lost.AvailableContacts.Clear();
                         check(!Rules.ContactAvailable(story, scene, lost), "Interrupted friendship ignores contact loss.");
                         lost.AvailableContacts.Add(scene.ContactUnit!);
-                        check(Rules.Available(story, scene, lost), "Interrupted friendship cannot restart after contact returns.");
+                        check(Program.CurrentAvailable(story, scene, lost), "Interrupted friendship cannot restart after contact returns.");
                         if (scene.Id == "ember.the_words_people_keep" && page == "captivity") check(partial.Has("ember.native_q1_complete"), "Captivity invented.");
                         if (scene.Id == "ember.the_words_people_keep" && page == "nocticula") check(partial.Has("ember.native_q2_complete"), "Nocticula meeting invented.");
                         if (scene.Id == "ember.a_letter_with_no_road" && (page == "road" || page == "road_checked")) check(trickster, "Non-Trickster gets impossible road.");
@@ -100,7 +100,7 @@ internal static class EmberCampaignTests
                             check(result.Flags.SetEquals(ready.Flags) && result.Times.Count == ready.Times.Count, "Postponement fabricates progress.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Completed friendship visit repeats.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Completed friendship visit repeats.");
                         if (!oldOpening) check(!result.Has("ember.puppet_afternoons_kept") && !result.Has("ember.second_ending"), "Late entry forges the original eight scenes.");
                         check(!result.Has("ember.trusted_friend") || scene.Id == "ember.the_afternoon_not_promised", "Friendship awarded before its played final visit.");
                         if (scene.Id == "ember.a_letter_with_no_road" && result.Has("ember.letter_trickster"))
@@ -115,11 +115,11 @@ internal static class EmberCampaignTests
             foreach (var state in states)
             {
                 check(state.Has("ember.trusted_friend") && state.Has("ember.campaign_developed"), "Played ordinary friendship lacks final acknowledgement.");
-                check(endings.Count(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)) == 1, "Ordinary friendship has conflicting/missing endings.");
+                check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)) == 1, "Ordinary friendship has conflicting/missing endings.");
                 foreach (string exceptional in new[] { "ember_dead", "ember_gone", "ember.absent", "sacrifice", "ascended" })
                 {
                     var changed = Program.Copy(state); changed.Flags.Add(exceptional);
-                    check(endings.Count(s => s.Owner == "Epilogue" && Rules.Available(story, s, changed)) == 1, "Exceptional friendship has conflicting/missing endings: " + exceptional);
+                    check(endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, changed)) == 1, "Exceptional friendship has conflicting/missing endings: " + exceptional);
                 }
                 normalHistories.Add(state);
             }
@@ -137,13 +137,13 @@ internal static class EmberCampaignTests
                     var witness = Program.Copy(ready);
                     witness.Flags.Remove(scene.Id); witness.Flags.Remove("ember.native_devastated");
                     witness.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, witness), "Devastation guard witness is already unavailable for another reason.");
+                    check(Program.CurrentAvailable(story, scene, witness), "Devastation guard witness is already unavailable for another reason.");
                     witness.Flags.Add("ember.native_devastated");
-                    check(!Rules.Available(story, scene, witness) && !Rules.ContactAvailable(story, scene, witness),
+                    check(!Program.CurrentAvailable(story, scene, witness) && !Rules.ContactAvailable(story, scene, witness),
                         "Ordinary confident scene continues after native devastation.");
                 }
             var unfinishedNative = Program.Copy(ready); unfinishedNative.Flags.Remove("ember.native_q3_complete");
-            check(!Rules.Available(story, care[0], unfinishedNative), "Support replaces the native quest conclusion.");
+            check(!Program.CurrentAvailable(story, care[0], unfinishedNative), "Support replaces the native quest conclusion.");
             var states = new List<Snapshot> { ready };
             foreach (var scene in care)
             {
@@ -151,7 +151,7 @@ internal static class EmberCampaignTests
                 foreach (var prior in states)
                 {
                     var current = Program.Copy(prior); current.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, current), "Actual devastated history cannot reach care visit.");
+                    check(Program.CurrentAvailable(story, scene, current), "Actual devastated history cannot reach care visit.");
                     CheckGuards(scene, current);
                     foreach (var result in Program.Walk(scene, current, (page, partial) =>
                     {
@@ -167,7 +167,7 @@ internal static class EmberCampaignTests
                 states = DistinctForFuture(next, care.Concat(endings));
             }
             foreach (var state in states)
-                check(state.Has("ember.care_continues") && endings.Count(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)) == 1,
+                check(state.Has("ember.care_continues") && endings.Count(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)) == 1,
                     "Completed care lacks its own ending or overlaps ordinary friendship.");
         }
         foreach (var scene in physical)
@@ -180,7 +180,7 @@ internal static class EmberCampaignTests
         changedPath.Chapter = 5;
         var replyScene = Get("an_answer_from_elsewhere");
         changedPath.Hour += replyScene.DelayHours;
-        check(Rules.Available(story, replyScene, changedPath), "Former Trickster loses the earned correspondent.");
+        check(Program.CurrentAvailable(story, replyScene, changedPath), "Former Trickster loses the earned correspondent.");
         var replyPages = new HashSet<string>();
         var changedResults = Program.Walk(replyScene, changedPath, (page, _) => replyPages.Add(page));
         check(replyPages.Contains("reply") && replyPages.Contains("paper_road") && !replyPages.Contains("another_road"),
@@ -193,17 +193,17 @@ internal static class EmberCampaignTests
             foreach (string flag in new[] { "ember.closed", "ember_dead", "ember_gone", "ember.absent" })
             {
                 var blocked = Program.Copy(current); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, scene, blocked), "Ember ignores closure/absence: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Ember ignores closure/absence: " + flag);
                 if (flag != "ember.closed") check(!Rules.ContactAvailable(story, scene, blocked), "Ember conversation survives native absence.");
             }
             var away = Program.Copy(current); away.Area = "elsewhere";
-            check(!Rules.Available(story, scene, away), "Ember capital visit starts elsewhere.");
+            check(!Program.CurrentAvailable(story, scene, away), "Ember capital visit starts elsewhere.");
             away.Area = current.Area; away.Chapter = 4;
-            check(!Rules.Available(story, scene, away), "Capital visit assumes an Abyss actor.");
-            foreach (string requirement in scene.Requires)
+            check(!Program.CurrentAvailable(story, scene, away), "Capital visit assumes an Abyss actor.");
+            foreach (string requirement in scene.Requires.Where(k => !story.Derived.ContainsKey(k)))
             {
                 var missing = Program.Copy(current); missing.Flags.Remove(requirement);
-                check(!Rules.Available(story, scene, missing), "Ember ignores actual prerequisite: " + requirement);
+                check(!Program.CurrentAvailable(story, scene, missing), "Ember ignores actual prerequisite: " + requirement);
             }
         }
     }

@@ -20,6 +20,13 @@ internal static class DorgelindaTricksterTests
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -327,8 +334,8 @@ internal static class DorgelindaTricksterTests
         var columns = Play(others, Later(story, mornings.First(), 24));
         check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed")) && columns.Any(r => r.Has(L + "narrowed") && !r.Has("dorgelinda.closed"))
               && columns.Any(r => r.Has("dorgelinda.closed")), "Her answer to the other columns is not a real choice.");
-        check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", "dorgelinda.closed"))
-              && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", "dorgelinda.closed")),
+        check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", P + "methods_heard", "dorgelinda.closed"))
+              && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", P + "methods_heard", "dorgelinda.closed")),
             "Her ruled-off line has no page, or the committed page still plays.");
         var committedPage = S(P + "epilogue.committed").Nodes[0];
         foreach (var flag in new[] { L + "true_books_sent", L + "clean_copy_sent", L + "her_name_sent", L + "receipt_signed" })

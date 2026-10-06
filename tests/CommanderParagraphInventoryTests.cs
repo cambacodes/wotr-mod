@@ -15,6 +15,8 @@ internal static class CommanderParagraphInventoryTests
             var state = new Snapshot { Chapter = 6 };
             state.Flags.UnionWith(new[] { "sacrifice", "trickster", "anevia.trickster.returned", "irabeth.trickster.returned",
                 "irabeth_dead", gate, "anevia.trickster.gate_seen", "anevia.trickster.hand_taken" });
+            if (gate.EndsWith("late_committed"))
+                HouseholdTests.Earn(story, state, "anevia.trickster.late_committed");
             state.Flags.Remove("anevia.trickster.late_committed"); // derive it from the earned gates
             Rules.Complete(story, state);
             var text = string.Join(" ", Rules.VisibleParagraphs(page, state).Select(p => p.Text));
@@ -33,7 +35,7 @@ internal static class CommanderParagraphInventoryTests
             // The living sibling must retain the same earned continuation. The
             // mourning scene itself correctly excludes a returned Commander.
             var livingScene = story.Scenes.Single(s => s.Id == "anevia.ending_open");
-            check(Rules.Available(story, livingScene, state), "l12 earned-return living sibling unavailable");
+            check(Program.CurrentAvailable(story, livingScene, state), "l12 earned-return living sibling unavailable");
             var living = livingScene.Nodes.Single(n => n.Id == "end");
             text = string.Join(" ", Rules.VisibleParagraphs(living, state).Select(p => p.Text));
             if (gate.EndsWith("late_committed"))

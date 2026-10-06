@@ -7,6 +7,7 @@ internal static class KonomiAbsenceChronologyTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        story = Program.ArchivedKonomi(story, check); // exercise the retained save graph after verifying live retirement
         Scene Get(string id) => story.Scenes.Single(s => s.Id == "konomi." + id);
         var catchup = Get("private_absence_catchup");
         var reached = new HashSet<string>();
@@ -15,12 +16,12 @@ internal static class KonomiAbsenceChronologyTests
             var state = Program.Copy(input);
             state.Hour += 1000;
             var scene = Get(id);
-            check(Rules.Available(story, scene, state), "Chronology predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, state), "Chronology predecessor unavailable: " + id);
             return Program.Walk(scene, state).First(s => s.Has(scene.Id) && !s.Has("konomi.closed") && (select == null || select(s)));
         }
         void Inspect(Snapshot state, string? expected)
         {
-            check(Rules.Available(story, catchup, state), "Deferred catch-up lost eligibility.");
+            check(Program.CurrentAvailable(story, catchup, state), "Deferred catch-up lost eligibility.");
             foreach (string origin in new[] { "absence_now", "absence_her_days" })
             {
                 var page = catchup.Nodes.Single(n => n.Id == origin);
@@ -44,12 +45,12 @@ internal static class KonomiAbsenceChronologyTests
                 check(state.Flags.IsSubsetOf(result.Flags), "Catch-up removes existing history.");
                 foreach (var pair in state.Times) check(result.Times[pair.Key] == pair.Value, "Catch-up rewrites an earned timestamp.");
                 check(result.Flags.Except(state.Flags).All(f => f == catchup.Id || f == "konomi.private_absence_answered" || f == "konomi.absence_reunion_kissed"), "Catch-up changes a career, partner or native flag.");
-                check(result.Has("konomi.private_absence_answered") && !Rules.Available(story, catchup, result), "Acknowledged catch-up replays.");
+                check(result.Has("konomi.private_absence_answered") && !Program.CurrentAvailable(story, catchup, result), "Acknowledged catch-up replays.");
             }
             foreach (string flag in catchup.Forbids.Concat(new[] { "konomi.closed" }))
             {
                 var blocked = Program.Copy(state); blocked.Flags.Add(flag);
-                check(!Rules.Available(story, catchup, blocked), "Catch-up ignores native/relationship blocker: " + flag);
+                check(!Program.CurrentAvailable(story, catchup, blocked), "Catch-up ignores native/relationship blocker: " + flag);
             }
         }
 

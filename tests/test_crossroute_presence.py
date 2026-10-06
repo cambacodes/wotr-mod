@@ -45,6 +45,14 @@ class MentionContextTests(unittest.TestCase):
                                       pattern, postwar=True))
         self.assertTrue(live_mentions("Eritrice drew the minutes every winter.", pattern, postwar=True))
 
+    def test_campaign_news_reaction_does_not_restore_its_witness(self):
+        pattern = re.compile(r"\bCamellia\b", re.I)
+        history = "{n}Camellia said, when the news reached camp, and tilted her head.{/n}"
+        self.assertEqual(live_mentions(history, pattern, postwar=True), [])
+        self.assertTrue(live_mentions(history + " Camellia waits here tonight.", pattern, postwar=True))
+        self.assertTrue(live_mentions(history.replace("and tilted her head", "and she waits here tonight"),
+                                      pattern, postwar=True))
+
     def test_history_mourning_reputation_and_religion_do_not_assert_life(self):
         for text in (
             "I remember Seelah.", "Seelah is in any answer I give, whether she's here to give it with me or not.", "Seelah died at Iz.", "Seelah loved me alive.", "Seelah's told me so.", "Nobody has said that since Seelah.", "Seelah's spare surcoat lies on the chair.", "Seelah's knights could hear it.", "The woman who had loved Seelah kept her anger.",

@@ -457,6 +457,8 @@ namespace Tirabade
                     .Concat(effects).Concat(effects.Select(key => "hour." + key))
                     .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag })).Distinct();
                 foreach (var key in keys) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                foreach (var key in Rules.AvailabilitySaveKeys(story))
+                    flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 foreach (string key in new[] { KonomiMeetingRetry, IrabethMeetingRetry, "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
                     "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words", NurahMeetingRetry })
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
@@ -1401,6 +1403,8 @@ namespace Tirabade
             {
                 int value = player.UnlockableFlags.GetFlagValue(flag.Value);
                 if (value > 0) state.Flags.Add(flag.Key);
+                if (flag.Key.StartsWith(Rules.AvailabilitySavePrefix, StringComparison.Ordinal))
+                    state.AvailabilityEpochs[flag.Key.Substring(Rules.AvailabilitySavePrefix.Length)] = value;
                 if (flag.Key.StartsWith("hour.", StringComparison.Ordinal) && value > 0) state.Times[flag.Key.Substring(5)] = value - 1;
             }
             foreach (var etude in etudes)
@@ -1477,8 +1481,22 @@ namespace Tirabade
                 state.Flags.Add(WenduagEcho.E + "unavailable");
             if (wenduagEcho == null && (state.Has(WenduagEcho.E + "rescued") || state.Has(WenduagEcho.E + "returned")))
                 state.Flags.Add(WenduagEcho.E + "unavailable");
+            // A verified living retained original is the native resurrection
+            // of that body, never a pardon or an earned return from dismissal.
+            foreach (var pair in story.DepartureEpochs)
+                if (pair.Value.NativeClearReturns.Count > 0 && revivalUnits.TryGetValue(pair.Key, out var unit))
+                {
+                    var original = Fate.Inspect(unit);
+                    if (original.Eligible && !original.Dead) state.Flags.Add(pair.Key + ".native_alive");
+                }
+            // A lost returned visitor is current loss for every roster woman.
+            foreach (var pair in story.DepartureEpochs)
+                if (presences.Any(p => Rules.PresenceRelationship(p.Key) == pair.Value.Relationship && p.ReturnedActorLost
+                    && (pair.Value.Relationship != "minagho_chivarro" || p.Key.EndsWith("." + pair.Key, StringComparison.Ordinal))))
+                    state.Flags.Add(pair.Key + ".returned_actor_lost");
             // Latches and data-driven composites read the completed native picture.
             Rules.Complete(story, state);
+            PersistAvailabilityEpochs(state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
             return state;
         }
@@ -1547,6 +1565,14 @@ namespace Tirabade
             recoveryPlayer = Game.Instance?.Player;
         }
 
+        private static void PersistAvailabilityEpochs(Snapshot state)
+        {
+            foreach (var pair in state.AvailabilityEpochs)
+                if (flags.TryGetValue(Rules.AvailabilitySavePrefix + pair.Key, out var flag)
+                    && Game.Instance.Player.UnlockableFlags.GetFlagValue(flag) != pair.Value)
+                    Game.Instance.Player.UnlockableFlags.SetFlagValue(flag, pair.Value);
+        }
+
         private static void RecordProgress(Choice? choice, Scene? complete)
         {
             if (complete != null && !State().Has(complete.Id))
@@ -1555,6 +1581,9 @@ namespace Tirabade
                 if (!Rules.SpendRestAllowance(story, complete, spend)) return;
                 if (complete.RestAllowance != null) Set(Rules.RestSpentPrefix + complete.RestAllowance, spend.RestSpent[complete.RestAllowance]);
             }
+            var availability = State();
+            Rules.RecordAvailabilityEvents(story, availability, choice?.Set ?? Array.Empty<string>());
+            PersistAvailabilityEpochs(availability);
             foreach (var key in (choice?.Set ?? Array.Empty<string>()).Concat(complete == null ? Array.Empty<string>() : new[] { complete.Id }))
             {
                 if (Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[key]) > 0) continue;

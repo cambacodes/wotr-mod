@@ -18,6 +18,10 @@ internal static class KonomiDeathLatchTests
         {
             var state = new Snapshot { Chapter = 6, Hour = 30000 };
             state.Flags.UnionWith(flags);
+            if (flags.Contains("konomi.committed")) HouseholdTests.Earn(story, state, "konomi.payoff.ordinary");
+            if (flags.Contains("konomi.trickster.late_committed")) HouseholdTests.Earn(story, state, "konomi.trickster.late_committed");
+            if (flags.Contains("konomi.death_restored")) state.Flags.Add("konomi.native_alive");
+            if (flags.Contains("lastcall.active")) HouseholdTests.Earn(story, state, "lastcall.active");
             state.Flags.Add("chapter_later");
             Rules.Complete(story, state);
             return state;
@@ -41,15 +45,19 @@ internal static class KonomiDeathLatchTests
         var loss = Sc(LossPage);
         var dead = World("konomi.committed", Latched);
         var alive = World("konomi.committed");
-        var again = World("konomi.committed", Latched, Confirmed, "konomi.death_unreturned");
-        check(!Rules.Available(story, ending, again) && Rules.Available(story, loss, again), "A second death is suppressed by the first return.");
+        var again = World("konomi.committed", Latched, Confirmed, "konomi.death_restored");
+        again.Flags.Remove("konomi.death_restored");
+        again.Flags.UnionWith(new[] { "konomi.retained_dead", "konomi.death_unreturned" });
+        Rules.RecordAvailabilityEvents(story, again, new[] { "konomi.retained_dead", "konomi.death_unreturned" });
+        Rules.Complete(story, again);
+        check(!Program.CurrentAvailable(story, ending, again) && Program.CurrentAvailable(story, loss, again), "A second death is suppressed by the first return.");
         var recalled = World("konomi.committed", Latched, Confirmed, "konomi.death_restored");
-        check(!Rules.Available(story, ending, dead) && Rules.Available(story, loss, dead), "Konomi death latch: a dead Konomi keeps her living ending, or loses her loss page.");
-        check(Rules.Available(story, ending, alive) && !Rules.Available(story, loss, alive), "Konomi death latch: a living Konomi gets the loss page.");
-        check(Rules.Available(story, ending, recalled) && !Rules.Available(story, loss, recalled), "Konomi death latch: the recall does not lift her death.");
-        check(!Rules.Available(story, loss, World("konomi.committed", Latched, "sacrifice"))
-              && Rules.Available(story, loss, World("konomi.trickster.late_committed", Latched))
-              && !Rules.Available(story, loss, World("konomi.attracted", Latched)),
+        check(!Program.CurrentAvailable(story, ending, dead) && Program.CurrentAvailable(story, loss, dead), "Konomi death latch: a dead Konomi keeps her living ending, or loses her loss page.");
+        check(Program.CurrentAvailable(story, ending, alive) && !Program.CurrentAvailable(story, loss, alive), "Konomi death latch: a living Konomi gets the loss page.");
+        check(Program.CurrentAvailable(story, ending, recalled) && !Program.CurrentAvailable(story, loss, recalled), "Konomi death latch: the recall does not lift her death.");
+        check(!Program.CurrentAvailable(story, loss, World("konomi.committed", Latched, "sacrifice"))
+              && !Program.CurrentAvailable(story, loss, World("konomi.trickster.late_committed", Latched))
+              && !Program.CurrentAvailable(story, loss, World("konomi.attracted", Latched)),
             "Konomi death latch: the loss page plays beside the Commander's own death, misses her late yes, or plays uncommitted.");
         check(loss.Nodes.Count == 1 && loss.Nodes[0].Text.Contains("died at her post") && loss.Nodes[0].Choices.All(c => c.Set.Length == 0),
             "Konomi death latch: the loss page is not a single effect-free page.");
@@ -59,7 +67,7 @@ internal static class KonomiDeathLatchTests
                                "konomi.trickster.cost.debt_owed" };
         var callDead = World(lastCall.Concat(new[] { Latched }).ToArray());
         var callBack = World(lastCall.Concat(new[] { Latched, Confirmed, "konomi.death_restored" }).ToArray());
-        check(!Rules.Available(story, coda, callDead) && Rules.Available(story, coda, callBack),
+        check(!Program.CurrentAvailable(story, coda, callDead) && Program.CurrentAvailable(story, coda, callBack),
             "Konomi death latch: her Last Call coda ignores her death or her recall.");
         check(!callDead.Has("konomi.lastcall.callable") && callBack.Has("konomi.lastcall.callable")
               && Sc("trickster.lastcall.last_joke").Forbids.Contains("konomi.lastcall.callable"),

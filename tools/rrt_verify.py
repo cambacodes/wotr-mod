@@ -192,6 +192,9 @@ class Model:
         # eng7-l06 end
         produced_hooks = {flag for scene in self.scenes for node in scene["Nodes"] for choice in node["Choices"] for flag in choice["Set"]}
         self.derived |= set(story.get("PendingHooks", [])) - set(story.get("Derived", {})) - set(self.native) - produced_hooks
+        self.derived |= {"availability.observed"} if story.get("DepartureEpochs") else set()
+        self.derived |= {key for woman, spec in story.get("DepartureEpochs", {}).items()
+                         for key in (spec["UnavailableFlag"], woman + ".epoch_redeparted", woman + ".returned_actor_lost", woman + ".native_alive")}
         self.builtin_derived = set(self.derived)
         # E1 latches: authored flags the runtime records from native sources (never set by a choice).
         self.latches = {k: list(v) for k, v in (story.get("Latches") or {}).items()}
@@ -201,6 +204,10 @@ class Model:
         self.derived |= set(self.composites)
         # E4b: a guarded composite also needs each named relationship's route open (Rules.RouteOpen).
         self.open_routes = {k: list(v) for k, v in (story.get("DerivedOpenRoutes") or {}).items()}
+        # Epoch losses are additional live route blockers, with no historical override.
+        self.rels = {k: dict(rel, UnavailableFlags=list(dict.fromkeys(
+            [*rel.get("UnavailableFlags", []), *rel.get("EpochUnavailableFlags", [])])))
+            for k, rel in self.rels.items()}
         # Engine-q2: a composite is withheld while any of its DerivedForbids flags holds (trickster.now).
         self.derived_forbids = {k: list(v) for k, v in (story.get("DerivedForbids") or {}).items()}
         # E14g count composites.
@@ -396,6 +403,7 @@ class Reach:
         if f in m.composites: return any(all(self.possible(x, ch) for x in g) for g in m.composites[f])
         if f in m.counts: return sum(1 for x in m.counts[f][0] if self.possible(x, ch)) >= m.counts[f][1]
         # Unchaptered walks pass ch=0 as "any chapter"; chaptered ch=0 is the Prologue, which holds neither flag.
+        if f == "availability.observed": return True
         if f == "chapter_one": return (ch == 1) if self.chaptered else True
         if f == "chapter_later": return (ch > 1) if self.chaptered else True
         if f == "inhuman": return self.native_possible("swarm", ch) or self.native_possible("true_lich", ch)
@@ -418,6 +426,7 @@ class Reach:
             return (f not in self.m.open_routes and not any(self.possible(x, ch) for x in self.m.derived_forbids.get(f, []))
                     and any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f]))
         if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
+        if f == "availability.observed": return True
         if f == "chapter_one": return ch == 1 if self.chaptered else False
         if f == "chapter_later": return (ch or 0) > 1
         if f == "inhuman": return "swarm" in w.true or "true_lich" in w.true
@@ -1955,6 +1964,8 @@ def composite_order(model):
 
 def sim_complete(model, st):
     """Mirror of Rules.Complete: latches, then Story.Derived composites (in dependency order, with route guards)."""
+    if model.story.get("DepartureEpochs"):
+        st.flags.add("availability.observed")
     for k, src in model.latches.items():
         if any(x in st.flags for x in src): st.flags.add(k)
     st.flags -= set(model.composites) | set(model.counts)

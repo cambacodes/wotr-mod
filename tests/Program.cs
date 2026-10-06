@@ -20,6 +20,7 @@ internal static class Program
     {
         Chapter = original.Chapter, Hour = original.Hour, Area = original.Area,
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
+        AvailabilityEpochs = new Dictionary<string, int>(original.AvailabilityEpochs),
         RestSpent = new Dictionary<string, int>(original.RestSpent),
         CrusadeResources = original.CrusadeResources == null ? null : new Dictionary<string, int>(original.CrusadeResources),
         AvailableContacts = new HashSet<string>(original.AvailableContacts),
@@ -120,6 +121,18 @@ internal static class Program
     // A scene's minimal prerequisites: its Requires plus the first flag of each RequiresAnyGroups group (the original path).
     internal static IEnumerable<string> Prerequisites(Scene scene) => scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0]));
 
+    // Native progression fixtures supply primitive observations. Complete the
+    // current readers as Main.State does before evaluating scene eligibility.
+    internal static IEnumerable<string> PersistentFlags(Story data, Snapshot state)
+        => state.Flags.Except(data.Derived.Keys).Except(data.Counts.Keys).Except(Rules.AvailabilityRuntimeKeys(data));
+
+    internal static bool CurrentAvailable(Story data, Scene scene, Snapshot state)
+    {
+        if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+        Rules.Complete(data, state);
+        return Rules.Available(data, scene, state);
+    }
+
     internal static List<Snapshot> Walk(Scene scene, Snapshot initial, Action<string, Snapshot>? visit = null)
         => WalkPaths(scene, initial, visit, null).Select(r => r.state).ToList();
 
@@ -162,6 +175,7 @@ internal static class Program
                     next.CrusadeResources[cost.Resource] = balance + cost.Amount;
                 }
                 // end eng8-q8f
+                if (story != null) Rules.RecordAvailabilityEvents(story, next, choice.Set);
                 foreach (var effect in choice.Set)
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                 // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
@@ -169,10 +183,11 @@ internal static class Program
                     foreach (var held in story.InventoryItems.Concat(story.PartyItems).Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
                         next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
-                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took, choice.Set.Any(f => !state.Has(f)) || choice.RemoveItem != null);
+                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took, choice.Set.Length > 0 || choice.RemoveItem != null);
                 else
                 {
                     if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
+                    if (story != null && (choice.Set.Length > 0 || node.EnterSet.Length > 0 || choice.RemoveItem != null)) Rules.Complete(story, next);
                     outcomes.Add((next, took));
                 }
             }
@@ -195,10 +210,55 @@ internal static class Program
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
+            // Retained graphs with the released run-latch retirement never
+            // open in Main's completed live state; keep a negative witness.
+            if (scene.Forbids.Contains("trickster.ever") && !scene.ForbidOverrides.ContainsKey("trickster.ever")
+                && scene.Requires.Any(key => key == "trickster" || key == Rules.TricksterNow || key == "trickster.ever"))
+            {
+                var retired = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "",
+                    Flags = new HashSet<string>(scene.Requires.Concat(new[] { "trickster", "trickster.ever" })) };
+                Check(!Rules.Available(story, scene, retired), "Retained retirement opens in live state: " + scene.Id);
+                continue;
+            }
+            // eng3-ab: proposed-only Shamira late romance is retired. Its
+            // earned predicate now requires the played commitment it forbids.
+            if (scene.Id == "shamira.trickster.epilogue.late")
+            {
+                var retired = new Snapshot { Chapter = 6, Hour = 10000, Flags = new HashSet<string>(scene.Requires) };
+                HouseholdTests.Earn(story, retired, "shamira.trickster.late_committed");
+                Rules.Complete(story, retired);
+                Check(retired.Has("shamira.committed") && !Rules.Available(story, scene, retired),
+                    "Proposed-only Shamira late retirement was weakened");
+                continue;
+            }
             // eng-final E-Q8-10: this positive structural walk explores paid
             // paths too; separate mutation histories still prove insolvency.
             var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires),
                 CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
+            // Seed the selected native/accepted alternative before expanding
+            // partner predicates, so a late page keeps its uncommitted arm.
+            if (scene.RequiresAny.Length > 0) HouseholdTests.Earn(story, state, scene.RequiresAny[0], preferLiving: true);
+            foreach (var group in scene.RequiresAnyGroups) HouseholdTests.Earn(story, state, group[0], preferLiving: true);
+            foreach (var route in story.Relationships)
+                if (scene.Forbids.Contains(route.Value.CommittedFlag)
+                    && scene.Requires.Contains(route.Key + ".payoff.partner")
+                    && story.Derived.ContainsKey(route.Key + ".trickster.late_committed"))
+                    HouseholdTests.Earn(story, state, route.Key + ".trickster.late_committed", preferLiving: true);
+            // A positive paid-coffin checkpoint includes the earlier observed
+            // execution; an unwitnessed legacy save is tested negatively.
+            if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
+                HouseholdTests.Earn(story, state, "camellia.trickster.coffin_life", preferLiving: true);
+            // Earn the exported predicates from actual receipt inputs in this
+            // positive structural fixture; coarse negatives are tested separately.
+            foreach (var required in scene.Requires.Where(key => !key.EndsWith(".payoff.partner", StringComparison.Ordinal)
+                && !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
+                HouseholdTests.Earn(story, state, required, preferLiving: true);
+            Rules.Complete(story, state); // import the checkpoint's earlier loss and return together
+            foreach (var required in scene.Requires)
+            {
+                HouseholdTests.Earn(story, state, required, preferLiving: true);
+                Rules.Complete(story, state);
+            }
             // eng7-l07: these are declared prerequisite fixtures, not provenance proof.
             // The ordered inventory suite separately plays and verifies the coffin producer.
             if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
@@ -224,8 +284,8 @@ internal static class Program
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
             state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
-            if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
-            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
+            if (scene.RequiresAny.Length > 0) HouseholdTests.Earn(story, state, scene.RequiresAny[0], preferLiving: true);
+            foreach (var group in scene.RequiresAnyGroups) HouseholdTests.Earn(story, state, group[0], preferLiving: true);
             if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
             if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))
                 state.Flags.UnionWith(new[] { "jerribeth.counter_cache_intact", "jerribeth.counter_clerk_witness", "jerribeth.counter_return_agreement", "jerribeth.counter_public_account" });
@@ -253,6 +313,12 @@ internal static class Program
             foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
                 .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
                 state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
+            // Cross-route negative availability readers also require a real
+            // positive contact history in a structural checkpoint fixture.
+            foreach (var unavailable in scene.Forbids.Where(key => key.StartsWith("crossroute.", StringComparison.Ordinal)))
+                if (story.DerivedForbids.TryGetValue(unavailable, out var available))
+                    foreach (var required in available) HouseholdTests.Earn(story, state, required, preferLiving: true);
+            Rules.Complete(story, state);
             // eng7-l13: retained legacy endings need their recorded earned returns.
             // A loss in Requires is history, never evidence that its corpse may visit.
             var missingReturns = scene.ForbidOverrides.Where(pair => scene.Forbids.Contains(pair.Key)
@@ -260,9 +326,19 @@ internal static class Program
             if (missingReturns.Length > 0)
             {
                 Check(!Rules.Available(story, scene, state), "Unreturned draft loss grants an outcome: " + scene.Id);
-                state.Flags.UnionWith(missingReturns);
+                foreach (var returned in missingReturns)
+                    HouseholdTests.Earn(story, state, returned, preferLiving: true);
+                foreach (var returned in missingReturns)
+                {
+                    var triggers = story.DepartureEpochs.Values.SelectMany(epoch => epoch.ReturnTriggers)
+                        .Where(pair => pair.Key == returned).SelectMany(pair => pair.Value).ToArray();
+                    Rules.RecordAvailabilityEvents(story, state, triggers.Length > 0 ? triggers : new[] { returned });
+                }
+                Rules.Complete(story, state);
             }
-            Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
+            Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id
+                + " missing=" + string.Join(",", scene.Requires.Where(key => !state.Has(key)))
+                + " blocked=" + string.Join(",", scene.Forbids.Where(key => Rules.ForbidHolds(scene, key, state))));
             if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
                 Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
         }
@@ -295,6 +371,7 @@ internal static class Program
             for (int attempt = 0; attempt < 50; attempt++)
             {
                 state.Hour += 72;
+                Rules.Complete(story, state);
                 var scene = story.Scenes.FirstOrDefault(s => s.Relationship == "tirabade" && !s.Id.StartsWith("three_", StringComparison.Ordinal)
                     && !s.Optional && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
                 if (scene == null) break;
@@ -485,6 +562,7 @@ internal static class Program
             return;
         }
         // eng8-q8a: always execute ordered latest-state acceptance, including in the full gate.
+        if (!args.Contains("--bindings")) Profile("PayoffDepartureRulesTests.Run", () => PayoffDepartureRulesTests.Run(story, Check));
         if (!args.Contains("--bindings")) Profile("LatestStateInventoryTests.Run", () => LatestStateInventoryTests.Run(story, Check));
         if (args.Contains("--eng8-q8a"))
         {
@@ -801,6 +879,7 @@ internal static class Program
         var errand = story.Scenes.Single(s => s.Id == "a_errand");
         Check(!Rules.Available(story, errand, waiting), "Delay bypassed");
         waiting.Hour = 112;
+        Rules.Complete(story, waiting);
         Check(Rules.Available(story, errand, waiting), "Delay never expires");
         waiting.Flags.Add("a_errand");
         Check(!Rules.Available(story, errand, waiting), "Completed scene repeats");
@@ -1223,8 +1302,8 @@ internal static class Program
             {
                 Check(visit.Has("konomi.private_history_ready") == !dispute, "First meeting skips inherited history or invents it for a new courtship.");
                 visit.Hour += 24;
-                Check(Rules.Available(story, carriers, visit) == !dispute, "Carrier visit bypasses unresolved earlier history.");
-                Check(Rules.Available(story, historyScene, visit) == dispute, "History conversation is missing or demands events that never happened.");
+                Check(CurrentAvailable(story, carriers, visit) == !dispute, "Carrier visit bypasses unresolved earlier history.");
+                Check(CurrentAvailable(story, historyScene, visit) == dispute, "History conversation is missing or demands events that never happened.");
                 if (!dispute) continue;
                 foreach (var outcome in Walk(historyScene, visit))
                 {
@@ -1235,7 +1314,7 @@ internal static class Program
                         Check(outcome.Has(flag) == initial.Has(flag), "Private history rewrites a prior decision: " + flag);
                     if (!outcome.Has(historyScene.Id))
                     {
-                        Check(outcome.Flags.SetEquals(visit.Flags) && Rules.Available(story, historyScene, outcome), "Postponed history conversation records false progress.");
+                        Check(outcome.Flags.SetEquals(visit.Flags) && CurrentAvailable(story, historyScene, outcome), "Postponed history conversation records false progress.");
                         continue;
                     }
                     Check(outcome.Has("konomi.petition_resolved"), "Private history abandons the provisions report.");
@@ -1246,48 +1325,48 @@ internal static class Program
                     {
                         Check(history == "denial" && !outcome.Has("konomi.apologized") && !outcome.Has("konomi.private_history_ready"), "Refused apology invents repair or readiness.");
                         var endingState = Copy(outcome); endingState.Chapter = 5;
-                        Check(story.Scenes.Single(s => s.Relationship == "konomi" && s.Owner == "Epilogue" && Rules.Available(story, s, endingState)).Id == "konomi.ending_distance_apart", "History breakup restores official correspondence in its ending.");
-                        Check(!Rules.Available(story, carriers, outcome), "Refused history repair continues into romance.");
+                        Check(story.Scenes.Single(s => s.Relationship == "konomi" && s.Owner == "Epilogue" && CurrentAvailable(story, s, endingState)).Id == "konomi.ending_distance_apart", "History breakup restores official correspondence in its ending.");
+                        Check(!CurrentAvailable(story, carriers, outcome), "Refused history repair continues into romance.");
                         continue;
                     }
                     Check(outcome.Has("konomi.private_history_ready"), "Acknowledged history cannot continue.");
                     Check(outcome.Has("konomi.apologized") == almostDenied, "History repair invents or omits the necessary apology.");
                     Check(outcome.Has("konomi.private_hearing_needed") == (leak && !heard), "History carryover loses a pending complaint or invents one.");
-                    Check(!Rules.Available(story, carriers, outcome), "Carrier visit skips the delay after history repair.");
+                    Check(!CurrentAvailable(story, carriers, outcome), "Carrier visit skips the delay after history repair.");
                     outcome.Hour += 24;
-                    Check(Rules.Available(story, carriers, outcome), "Acknowledged history never reaches the carrier visit.");
-                    Check(!Rules.Available(story, historyScene, outcome), "History conversation repeats after acknowledgment.");
+                    Check(CurrentAvailable(story, carriers, outcome), "Acknowledged history never reaches the carrier visit.");
+                    Check(!CurrentAvailable(story, historyScene, outcome), "History conversation repeats after acknowledgment.");
                 }
             }
         }
         var legacy = new Snapshot { Chapter = 5, Hour = 2000, Area = historyScene.Areas.Single() };
         legacy.Flags.UnionWith(new[] { "konomi.dismissed", "konomi.office_completed", "konomi.private_meeting", "konomi.reconnection_open", "seelah.committed" });
-        Check(Rules.Available(story, historyScene, legacy), "Earlier private-meeting snapshot cannot recover the new progression permission.");
+        Check(CurrentAvailable(story, historyScene, legacy), "Earlier private-meeting snapshot cannot recover the new progression permission.");
         foreach (var recovered in Walk(historyScene, legacy).Where(s => s.Has(historyScene.Id)))
         {
             Check(recovered.Has("konomi.private_history_ready"), "Earlier clean courtship remains blocked at carriers.");
             Check(!recovered.Has("konomi.disagreement") && !recovered.Has("konomi.petition_resolved") && !recovered.Has("konomi.scandal_answered") && !recovered.Has("konomi.apologized"), "Clean history recovery fabricates old events.");
             recovered.Hour += 24;
-            Check(Rules.Available(story, carriers, recovered), "Recovered clean history cannot reach carriers.");
+            Check(CurrentAvailable(story, carriers, recovered), "Recovered clean history cannot reach carriers.");
         }
         var later = Copy(legacy); later.Flags.UnionWith(new[] { "konomi.disagreement", "konomi.carriers", "konomi.carriers_inspected" });
-        Check(!Rules.Available(story, historyScene, later), "Older post-carrier snapshot replays a pre-carrier checkpoint.");
-        Check(Rules.Available(story, story.Scenes.Single(s => s.Id == "konomi.before_road"), later), "New checkpoint blocks an already advanced private history.");
+        Check(!CurrentAvailable(story, historyScene, later), "Older post-carrier snapshot replays a pre-carrier checkpoint.");
+        Check(CurrentAvailable(story, story.Scenes.Single(s => s.Id == "konomi.before_road"), later), "New checkpoint blocks an already advanced private history.");
         var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = historyScene.Areas.Single() };
         ready.Flags.UnionWith(historyScene.Requires);
         foreach (var group in historyScene.RequiresAnyGroups) ready.Flags.Add(group[0]);
-        foreach (var requirement in historyScene.Requires)
+        foreach (var requirement in historyScene.Requires.Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
         {
             var missing = Copy(ready); missing.Flags.Remove(requirement);
-            Check(!Rules.Available(story, historyScene, missing), "History carryover ignores " + requirement);
+            Check(!CurrentAvailable(story, historyScene, missing), "History carryover ignores " + requirement);
         }
         foreach (var blocker in historyScene.Forbids.Concat(new[] { "konomi.closed" }))
         {
             var blocked = Copy(ready); blocked.Flags.Add(blocker);
-            Check(!Rules.Available(story, historyScene, blocked), "History carryover ignores " + blocker);
+            Check(!CurrentAvailable(story, historyScene, blocked), "History carryover ignores " + blocker);
         }
         ready.Chapter = 4;
-        Check(!Rules.Available(story, historyScene, ready), "History courtyard scene appears in the Abyss.");
+        Check(!CurrentAvailable(story, historyScene, ready), "History courtyard scene appears in the Abyss.");
     }
 
     private static void CheckKonomiFuture()
@@ -1301,7 +1380,7 @@ internal static class Program
                 var state = Copy(original); state.Chapter = 5;
                 if (change == "inhuman" || change == "both") state.Flags.Add("inhuman");
                 if (change == "ascended" || change == "both") state.Flags.Add("ascended");
-                var endings = story.Scenes.Where(s => s.Relationship == "konomi" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).ToArray();
+                var endings = story.Scenes.Where(s => s.Relationship == "konomi" && s.Owner == "Epilogue" && CurrentAvailable(story, s, state)).ToArray();
                 Check(endings.Length == 1, "Private future has absent or conflicting endings: " + change);
                 string expected = "distance_apart";
                 if (!state.Has("konomi.closed"))
@@ -1313,7 +1392,7 @@ internal static class Program
             if (original.Has("konomi.committed") && !original.Has("konomi.closed"))
             {
                 var aeon = Copy(original); aeon.Chapter = 5;
-                Check(story.Scenes.Count(s => s.Relationship == "konomi" && s.Owner == "AeonEpilogue" && Rules.Available(story, s, aeon)) == 1, "Private commitment loses the existing Aeon ending.");
+                Check(story.Scenes.Count(s => s.Relationship == "konomi" && s.Owner == "AeonEpilogue" && CurrentAvailable(story, s, aeon)) == 1, "Private commitment loses the existing Aeon ending.");
             }
         }
         foreach (var chapter in new[] { 3, 5 })
@@ -1327,16 +1406,16 @@ internal static class Program
             if (history == "committed") initial.Flags.UnionWith(new[] { "konomi.committed", "konomi.public" });
             var recent = Copy(initial); recent.Times["konomi.reunion_kept"] = 1000;
             recent.Hour = 1047;
-            Check(!Rules.Available(story, scenes[0], recent), "Lease offer ignores its reunion delay.");
+            Check(!CurrentAvailable(story, scenes[0], recent), "Lease offer ignores its reunion delay.");
             recent.Hour++;
-            Check(Rules.Available(story, scenes[0], recent), "Lease offer misses its 48-hour boundary.");
+            Check(CurrentAvailable(story, scenes[0], recent), "Lease offer misses its 48-hour boundary.");
             var states = new List<Snapshot> { initial };
             foreach (var scene in scenes)
             {
                 var continuing = new List<Snapshot>();
                 foreach (var state in states)
                 {
-                    Check(Rules.Available(story, scene, state) && Rules.EntryTargets(scene).Length == 0, "Private future requires an unavailable actor or lost powers.");
+                    Check(CurrentAvailable(story, scene, state) && Rules.EntryTargets(scene).Length == 0, "Private future requires an unavailable actor or lost powers.");
                     if (scene.Id == "konomi.chosen_evening")
                     {
                         Check(scene.Nodes[0].Choices.Single(c => !c.Abort && Rules.Match(c.Requires, c.Forbids, state)).Next == (state.Has("konomi.career_accepts_now") ? "now" : "later"), "Evening forgets the chosen career cost.");
@@ -1351,10 +1430,10 @@ internal static class Program
                         if (history == "committed") Check(outcome.Has("konomi.committed"), "Private future erases existing commitment history.");
                         if (!outcome.Has(scene.Id))
                         {
-                            Check(outcome.Flags.SetEquals(state.Flags) && Rules.Available(story, scene, outcome), "Postponed private future records false progress.");
+                            Check(outcome.Flags.SetEquals(state.Flags) && CurrentAvailable(story, scene, outcome), "Postponed private future records false progress.");
                             continue;
                         }
-                        Check(!Rules.Available(story, scene, outcome), "Private future scene repeats.");
+                        Check(!CurrentAvailable(story, scene, outcome), "Private future scene repeats.");
                         if (outcome.Has("konomi.private_future"))
                         {
                             CheckEnding(outcome);
@@ -1362,7 +1441,7 @@ internal static class Program
                             foreach (var local in scenes)
                             {
                                 var unplayed = Copy(outcome); unplayed.Flags.UnionWith(local.Requires); unplayed.Flags.Remove(local.Id);
-                                Check(!Rules.Available(story, local, unplayed), "Finished private visit reopens local scenes.");
+                                Check(!CurrentAvailable(story, local, unplayed), "Finished private visit reopens local scenes.");
                             }
                             if (scene.Id == "konomi.chosen_evening")
                                 Check(!outcome.Has("konomi.private_evening_kept") && outcome.Has("konomi.lovers") == (history != "new"), "Declined courtship invents a romantic night.");
@@ -1377,29 +1456,29 @@ internal static class Program
                             Check(outcome.Has("konomi.committed") == (history == "committed"), "Evening jumps from courtship to commitment.");
                         }
                         var next = scenes[Array.IndexOf(scenes, scene) + 1];
-                        Check(!Rules.Available(story, next, outcome), "Private future skips the next scene's delay.");
+                        Check(!CurrentAvailable(story, next, outcome), "Private future skips the next scene's delay.");
                         outcome.Hour += next.DelayHours - 1;
-                        Check(!Rules.Available(story, next, outcome), "Private future opens before the delay boundary.");
+                        Check(!CurrentAvailable(story, next, outcome), "Private future opens before the delay boundary.");
                         outcome.Hour++;
                         continuing.Add(outcome);
                     }
                 }
                 states = continuing;
                 var ready = Copy(initial); ready.Flags.UnionWith(scene.Requires);
-                foreach (var prerequisite in scene.Requires)
+                foreach (var prerequisite in scene.Requires.Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
                 {
                     var missing = Copy(ready); missing.Flags.Remove(prerequisite);
-                    Check(!Rules.Available(story, scene, missing), "Private future ignores " + prerequisite);
+                    Check(!CurrentAvailable(story, scene, missing), "Private future ignores " + prerequisite);
                 }
                 foreach (var blocker in new[] { "konomi.present", "konomi.closed", "inhuman", "konomi.farewell", "konomi.private_future" })
                 {
                     var blocked = Copy(ready); blocked.Flags.Add(blocker);
-                    Check(!Rules.Available(story, scene, blocked), "Private future ignores " + blocker);
+                    Check(!CurrentAvailable(story, scene, blocked), "Private future ignores " + blocker);
                 }
                 ready.Chapter = 4;
-                Check(!Rules.Available(story, scene, ready), "Private future appears during Abyss separation.");
+                Check(!CurrentAvailable(story, scene, ready), "Private future appears during Abyss separation.");
                 ready.Chapter = chapter; ready.Area = "elsewhere";
-                Check(!Rules.Available(story, scene, ready), "Private future appears outside Drezen.");
+                Check(!CurrentAvailable(story, scene, ready), "Private future appears outside Drezen.");
             }
         }
     }
@@ -1423,16 +1502,16 @@ internal static class Program
             if (history == "committed") initial.Flags.Add("konomi.committed");
             initial.Times["konomi.private_departed"] = 100;
             var early = Copy(initial); early.Hour = 435;
-            Check(!Rules.Available(story, scenes[0], early), "Capital letter arrives before its departure delay.");
+            Check(!CurrentAvailable(story, scenes[0], early), "Capital letter arrives before its departure delay.");
             early.Hour++;
-            Check(Rules.Available(story, scenes[0], early), "Capital letter misses its arrival boundary.");
+            Check(CurrentAvailable(story, scenes[0], early), "Capital letter misses its arrival boundary.");
             var states = new List<Snapshot> { initial };
             foreach (var scene in scenes)
             {
                 var continuing = new List<Snapshot>();
                 foreach (var state in states)
                 {
-                    Check(Rules.Available(story, scene, state), "Distance continuation cannot open: " + scene.Id);
+                    Check(CurrentAvailable(story, scene, state), "Distance continuation cannot open: " + scene.Id);
                     Check(Rules.EntryTargets(scene).Length == 0, "Distance continuation depends on a native officer actor.");
                     string Destination(string nodeId) => scene.Nodes.Single(n => n.Id == nodeId).Choices
                         .Single(c => Rules.Match(c.Requires, c.Forbids, state)).Next!;
@@ -1455,10 +1534,10 @@ internal static class Program
                         Check(outcome.Has("seelah.committed") && !outcome.Has("konomi.closed"), "Distance scenes change another relationship or close this one.");
                         if (!outcome.Has(scene.Id))
                         {
-                            Check(outcome.Flags.SetEquals(state.Flags) && Rules.Available(story, scene, outcome), "Postponed correspondence records progress or cannot resume.");
+                            Check(outcome.Flags.SetEquals(state.Flags) && CurrentAvailable(story, scene, outcome), "Postponed correspondence records progress or cannot resume.");
                             continue;
                         }
-                        Check(!Rules.Available(story, scene, outcome), "Completed correspondence repeats.");
+                        Check(!CurrentAvailable(story, scene, outcome), "Completed correspondence repeats.");
                         if (scene.Id == "konomi.capital_letter")
                             Check(outcome.Has("konomi.capital_answer_sent") && outcome.Has("konomi.capital_reply_quiet") != outcome.Has("konomi.capital_reply_distraction"), "Capital reply is unsent or has conflicting subjects.");
                         if (scene.Id == "konomi.return_offer")
@@ -1470,14 +1549,14 @@ internal static class Program
                             Check(!outcome.Has("konomi.reunion_kissed") || outcome.Has("konomi.distance_wants_visits"), "Slow reunion assumes an unchosen kiss.");
                             var oldVisit = story.Scenes.Single(s => s.Id == "konomi.carriers");
                             var past = Copy(outcome); past.Flags.UnionWith(oldVisit.Requires);
-                            Check(!Rules.Available(story, oldVisit, past), "Temporary return replays the earlier carrier-yard visit.");
+                            Check(!CurrentAvailable(story, oldVisit, past), "Temporary return replays the earlier carrier-yard visit.");
                         }
                         else
                         {
                             var next = scenes[Array.IndexOf(scenes, scene) + 1];
-                            Check(!Rules.Available(story, next, outcome), "Distance continuation skips correspondence or travel time.");
+                            Check(!CurrentAvailable(story, next, outcome), "Distance continuation skips correspondence or travel time.");
                             outcome.Hour += next.DelayHours - 1;
-                            Check(!Rules.Available(story, next, outcome), "Distance continuation opens before its delay boundary.");
+                            Check(!CurrentAvailable(story, next, outcome), "Distance continuation opens before its delay boundary.");
                             outcome.Hour++;
                             continuing.Add(outcome);
                         }
@@ -1485,20 +1564,20 @@ internal static class Program
                 }
                 states = continuing;
                 var ready = Copy(initial); ready.Flags.UnionWith(scene.Requires);
-                foreach (var required in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
+                foreach (var required in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])).Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
                 {
                     var missing = Copy(ready); missing.Flags.Remove(required);
-                    Check(!Rules.Available(story, scene, missing), "Distance continuation ignores " + required);
+                    Check(!CurrentAvailable(story, scene, missing), "Distance continuation ignores " + required);
                 }
                 foreach (var blockedBy in new[] { "konomi.present", "konomi.closed", "inhuman", "konomi.farewell" })
                 {
                     var blocked = Copy(ready); blocked.Flags.Add(blockedBy);
-                    Check(!Rules.Available(story, scene, blocked), "Distance continuation ignores " + blockedBy);
+                    Check(!CurrentAvailable(story, scene, blocked), "Distance continuation ignores " + blockedBy);
                 }
                 ready.Chapter = 4;
-                Check(!Rules.Available(story, scene, ready), "Drezen correspondence appears in the Abyss.");
+                Check(!CurrentAvailable(story, scene, ready), "Drezen correspondence appears in the Abyss.");
                 ready.Chapter = chapter; ready.Area = "elsewhere";
-                Check(!Rules.Available(story, scene, ready), "Drezen correspondence appears elsewhere.");
+                Check(!CurrentAvailable(story, scene, ready), "Drezen correspondence appears elsewhere.");
             }
         }
     }
@@ -1519,16 +1598,16 @@ internal static class Program
             var recentlyMet = Copy(initial);
             recentlyMet.Times["konomi.private_meeting"] = initial.Hour;
             recentlyMet.Hour += 23;
-            Check(!Rules.Available(story, scenes[0], recentlyMet), "Carrier visit begins before a day has passed since the private meeting.");
+            Check(!CurrentAvailable(story, scenes[0], recentlyMet), "Carrier visit begins before a day has passed since the private meeting.");
             recentlyMet.Hour++;
-            Check(Rules.Available(story, scenes[0], recentlyMet), "Carrier visit does not open at its 24-hour boundary.");
+            Check(CurrentAvailable(story, scenes[0], recentlyMet), "Carrier visit does not open at its 24-hour boundary.");
             var states = new List<Snapshot> { initial };
             foreach (var scene in scenes)
             {
                 var continuing = new List<Snapshot>();
                 foreach (var state in states)
                 {
-                    Check(Rules.Available(story, scene, state), "Private continuation cannot open after the preceding scene: " + scene.Id);
+                    Check(CurrentAvailable(story, scene, state), "Private continuation cannot open after the preceding scene: " + scene.Id);
                     Check(Rules.EntryTargets(scene).Length == 0, "Private continuation needs the dismissed native actor.");
                     if (scene.Id == "konomi.before_road")
                         Check(scene.Nodes.Single(n => n.Id == "histories").Choices.Single(c => Rules.Match(c.Requires, c.Forbids, state)).Next == (history == "new" ? "new" : "lovers"), "Evening invents or loses intimate history.");
@@ -1541,11 +1620,11 @@ internal static class Program
                         Check(outcome.Has("seelah.committed") && !outcome.Has("konomi.closed"), "Private continuation alters another romance or closes this one.");
                         if (!outcome.Has(scene.Id))
                         {
-                            Check(Rules.Available(story, scene, outcome), "Postponed private scene cannot be resumed.");
+                            Check(CurrentAvailable(story, scene, outcome), "Postponed private scene cannot be resumed.");
                             Check(outcome.Flags.SetEquals(state.Flags), "Postponement records an event that did not happen.");
                             continue;
                         }
-                        Check(!Rules.Available(story, scene, outcome), "Completed private continuation repeats.");
+                        Check(!CurrentAvailable(story, scene, outcome), "Completed private continuation repeats.");
                         if (scene.Id == "konomi.private_departure")
                         {
                             Check(outcome.Has("konomi.private_departed") && outcome.Has("konomi.private_address"), "Departure loses the correspondence address.");
@@ -1553,13 +1632,13 @@ internal static class Program
                             foreach (var earlier in scenes)
                             {
                                 var unplayed = Copy(outcome); unplayed.Flags.Remove(earlier.Id);
-                                Check(!Rules.Available(story, earlier, unplayed), "Departed Konomi remains available for a local visit.");
+                                Check(!CurrentAvailable(story, earlier, unplayed), "Departed Konomi remains available for a local visit.");
                             }
                         }
                         else
                         {
                             var next = scenes[Array.IndexOf(scenes, scene) + 1];
-                            Check(!Rules.Available(story, next, outcome), "Private continuation skips its delay.");
+                            Check(!CurrentAvailable(story, next, outcome), "Private continuation skips its delay.");
                             outcome.Hour += 24;
                             continuing.Add(outcome);
                         }
@@ -1567,20 +1646,20 @@ internal static class Program
                 }
                 states = continuing;
                 var ready = Copy(initial); ready.Flags.UnionWith(scene.Requires);
-                foreach (var required in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
+                foreach (var required in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])).Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
                 {
                     var missing = Copy(ready); missing.Flags.Remove(required);
-                    Check(!Rules.Available(story, scene, missing), "Private continuation ignores " + required);
+                    Check(!CurrentAvailable(story, scene, missing), "Private continuation ignores " + required);
                 }
                 foreach (var blockedBy in new[] { "konomi.present", "konomi.closed", "inhuman", "konomi.farewell", "konomi.private_departed" })
                 {
                     var blocked = Copy(ready); blocked.Flags.Add(blockedBy);
-                    Check(!Rules.Available(story, scene, blocked), "Private continuation ignores " + blockedBy);
+                    Check(!CurrentAvailable(story, scene, blocked), "Private continuation ignores " + blockedBy);
                 }
                 ready.Chapter = 4;
-                Check(!Rules.Available(story, scene, ready), "Private Drezen visit occurs during Abyss separation.");
+                Check(!CurrentAvailable(story, scene, ready), "Private Drezen visit occurs during Abyss separation.");
                 ready.Chapter = chapter; ready.Area = "elsewhere";
-                Check(!Rules.Available(story, scene, ready), "Private Drezen visit occurs in another area.");
+                Check(!CurrentAvailable(story, scene, ready), "Private Drezen visit occurs in another area.");
             }
         }
     }
@@ -1590,6 +1669,18 @@ internal static class Program
         var post = story.Scenes.Single(s => s.Id == "konomi.fate_post");
         var reply = story.Scenes.Single(s => s.Id == "konomi.fate_reply");
         var meeting = story.Scenes.Single(s => s.Id == "konomi.private_meeting");
+        if (post.Forbids.Contains("trickster.ever"))
+        {
+            // The shipped Q8 budget retired this device; validate its saved nodes and closed delivery.
+            Check(post.Nodes.Select(n => n.Id).SequenceEqual(new[] { "start", "door", "distinction", "second_slot", "letter", "lover", "first", "send" }), "Retired Konomi invitation lost saved nodes.");
+            foreach (int retiredChapter in new[] { 3, 5 })
+            {
+                var retired = new Snapshot { Chapter = retiredChapter, Hour = 1000, Area = post.Areas.Single() };
+                retired.Flags.UnionWith(new[] { "trickster", "konomi.dismissed", "konomi.office_completed" });
+                Check(!CurrentAvailable(story, post, retired) && retired.Has("trickster.ever"), "Retired Konomi invitation reopened on a real Trickster history.");
+            }
+            return;
+        }
         foreach (var chapter in new[] { 3, 5 })
         foreach (var history in new[] { "new", "lovers", "committed" })
         {
@@ -1598,17 +1689,17 @@ internal static class Program
             initial.Flags.UnionWith(new[] { "trickster", "konomi.dismissed", "konomi.office_completed", "seelah.committed" });
             if (lovers) initial.Flags.Add("konomi.lovers");
             if (history == "committed") initial.Flags.Add("konomi.committed");
-            Check(Rules.Available(story, post, initial), "Trickster cannot attempt a personal invitation after completed dismissal.");
+            Check(CurrentAvailable(story, post, initial), "Trickster cannot attempt a personal invitation after completed dismissal.");
             Check(Rules.EntryTargets(post).Length == 0, "Dismissed Konomi invitation depends on her hidden actor.");
             foreach (var needed in new[] { "trickster", "konomi.dismissed", "konomi.office_completed" })
             {
                 var missing = Copy(initial); missing.Flags.Remove(needed);
-                Check(!Rules.Available(story, post, missing), "Konomi invitation ignores missing " + needed);
+                Check(!CurrentAvailable(story, post, missing), "Konomi invitation ignores missing " + needed);
             }
             foreach (var blocker in new[] { "konomi.present", "konomi.closed", "inhuman", "konomi.farewell" })
             {
                 var blocked = Copy(initial); blocked.Flags.Add(blocker);
-                Check(!Rules.Available(story, post, blocked), "Konomi invitation ignores " + blocker);
+                Check(!CurrentAvailable(story, post, blocked), "Konomi invitation ignores " + blocker);
             }
             var letter = post.Nodes.Single(n => n.Id == "letter");
             Check(letter.Choices.Single(c => Rules.Match(c.Requires, c.Forbids, initial)).Next == (lovers ? "lover" : "first"), "Trickster invitation invents a past intimate relationship.");
@@ -1620,35 +1711,35 @@ internal static class Program
                 Check(result.Has("seelah.committed"), "Invitation alters another relationship.");
                 if (result.Has(post.Id))
                 {
-                    Check(!Rules.Available(story, post, result), "One-off Trickster post repeats.");
-                    Check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "konomi.margin"), result), "A sent invitation alone reopens ordinary meetings.");
-                    Check(!Rules.Available(story, reply, result), "Konomi replies before the correspondence delay.");
+                    Check(!CurrentAvailable(story, post, result), "One-off Trickster post repeats.");
+                    Check(!CurrentAvailable(story, story.Scenes.Single(s => s.Id == "konomi.margin"), result), "A sent invitation alone reopens ordinary meetings.");
+                    Check(!CurrentAvailable(story, reply, result), "Konomi replies before the correspondence delay.");
                     result.Hour += 48;
-                    Check(Rules.Available(story, reply, result), "Konomi cannot reply to the sent invitation.");
+                    Check(CurrentAvailable(story, reply, result), "Konomi cannot reply to the sent invitation.");
                     var legendReply = Copy(result); legendReply.Flags.Remove("trickster"); legendReply.Flags.Add("legend");
-                    Check(Rules.Available(story, reply, legendReply), "Becoming Legend cancels an already sent invitation.");
-                    Check(!Rules.Available(story, meeting, result), "Konomi meeting precedes an accepted appointment.");
+                    Check(CurrentAvailable(story, reply, legendReply), "Becoming Legend cancels an already sent invitation.");
+                    Check(!CurrentAvailable(story, meeting, result), "Konomi meeting precedes an accepted appointment.");
                     Check(reply.Nodes[0].Choices.Single(c => Rules.Match(c.Requires, c.Forbids, result)).Next == (lovers ? "lover" : "first"), "Konomi reply invents or forgets the earlier romance.");
                     foreach (var response in Walk(reply, result))
                     {
                         if (response.Has("konomi.closed"))
                         {
-                            Check(response.Has("konomi.private_declined") && !Rules.Available(story, meeting, response), "Declined invitation still leads to a meeting.");
+                            Check(response.Has("konomi.private_declined") && !CurrentAvailable(story, meeting, response), "Declined invitation still leads to a meeting.");
                             var epilogue = Copy(response); epilogue.Chapter = 5;
-                            var endings = story.Scenes.Where(s => s.Relationship == "konomi" && s.Owner == "Epilogue" && Rules.Available(story, s, epilogue)).ToArray();
+                            var endings = story.Scenes.Where(s => s.Relationship == "konomi" && s.Owner == "Epilogue" && CurrentAvailable(story, s, epilogue)).ToArray();
                             Check(endings.Length == 1 && endings[0].Id == "konomi.ending_dismissed_apart", "Declined private invitation lacks an ending or restores official correspondence after dismissal.");
                             continue;
                         }
                         if (!response.Has(reply.Id))
                         {
-                            Check(!response.Has("konomi.private_appointment") && !Rules.Available(story, meeting, response), "Postponed reply claims an appointment.");
+                            Check(!response.Has("konomi.private_appointment") && !CurrentAvailable(story, meeting, response), "Postponed reply claims an appointment.");
                             continue;
                         }
-                        Check(!Rules.Available(story, meeting, response), "Private appointment skips its delay.");
+                        Check(!CurrentAvailable(story, meeting, response), "Private appointment skips its delay.");
                         response.Hour += 24;
-                        Check(Rules.Available(story, meeting, response), "Private appointment never becomes reachable.");
+                        Check(CurrentAvailable(story, meeting, response), "Private appointment never becomes reachable.");
                         var legendMeeting = Copy(response); legendMeeting.Flags.Remove("trickster"); legendMeeting.Flags.Add("legend");
-                        Check(Rules.Available(story, meeting, legendMeeting), "Private conversation requires powers no longer used.");
+                        Check(CurrentAvailable(story, meeting, legendMeeting), "Private conversation requires powers no longer used.");
                         foreach (var visit in Walk(meeting, response))
                         {
                             Check(visit.Has("konomi.reconnection_open") == visit.Has(meeting.Id), "Postponed meeting claims renewed personal contact.");
@@ -1658,31 +1749,31 @@ internal static class Program
                             if (!visit.Has(meeting.Id)) continue;
                             Check(visit.Has("konomi.private_stands_by") != visit.Has("konomi.private_admits_mistake"), "Meeting loses the political disagreement response.");
                             Check(visit.Has("konomi.private_interest") != visit.Has("konomi.private_unhurried"), "Meeting loses the pace chosen for renewed contact.");
-                            Check(!Rules.Available(story, meeting, visit), "First private meeting repeats after completion.");
-                            Check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "konomi.margin"), visit), "Private visit reopens an official-office scene.");
+                            Check(!CurrentAvailable(story, meeting, visit), "First private meeting repeats after completion.");
+                            Check(!CurrentAvailable(story, story.Scenes.Single(s => s.Id == "konomi.margin"), visit), "Private visit reopens an official-office scene.");
                         }
                     }
                 }
             }
             initial.Chapter = 4;
-            Check(!Rules.Available(story, post, initial), "Dismissal invitation ignores Abyss separation.");
+            Check(!CurrentAvailable(story, post, initial), "Dismissal invitation ignores Abyss separation.");
             foreach (var scene in new[] { reply, meeting })
             {
                 var ready = new Snapshot { Chapter = chapter, Hour = 1000, Area = initial.Area };
                 ready.Flags.UnionWith(scene.Requires);
-                Check(Rules.EntryTargets(scene).Length == 0 && Rules.Available(story, scene, ready), "Private correspondence relies on an unavailable native actor.");
-                foreach (var prerequisite in scene.Requires)
+                Check(Rules.EntryTargets(scene).Length == 0 && CurrentAvailable(story, scene, ready), "Private correspondence relies on an unavailable native actor.");
+                foreach (var prerequisite in scene.Requires.Where(key => !key.EndsWith(".present_now", StringComparison.Ordinal) && !key.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
                 {
                     var missing = Copy(ready); missing.Flags.Remove(prerequisite);
-                    Check(!Rules.Available(story, scene, missing), "Private correspondence ignores " + prerequisite);
+                    Check(!CurrentAvailable(story, scene, missing), "Private correspondence ignores " + prerequisite);
                 }
                 foreach (var blocker in new[] { "konomi.present", "konomi.closed", "inhuman", "konomi.farewell" })
                 {
                     var blocked = Copy(ready); blocked.Flags.Add(blocker);
-                    Check(!Rules.Available(story, scene, blocked), "Private correspondence ignores " + blocker);
+                    Check(!CurrentAvailable(story, scene, blocked), "Private correspondence ignores " + blocker);
                 }
                 ready.Chapter = 4;
-                Check(!Rules.Available(story, scene, ready), "Private Drezen meeting appears during Abyss separation.");
+                Check(!CurrentAvailable(story, scene, ready), "Private Drezen meeting appears during Abyss separation.");
             }
         }
     }
@@ -1702,10 +1793,10 @@ internal static class Program
             if (history == "denial") initial.Flags.UnionWith(new[] { "konomi.almost_denied", "konomi.apologized" });
             initial.Times["konomi.scandal_answered"] = 1000;
             initial.Hour--;
-            Check(!Rules.Available(story, hearing, initial), "Konomi hearing skips its scheduling delay.");
+            Check(!CurrentAvailable(story, hearing, initial), "Konomi hearing skips its scheduling delay.");
             initial.Hour++;
-            Check(Rules.Available(story, hearing, initial), "Konomi hearing cannot follow the scandal.");
-            Check(!Rules.Available(story, evening, initial), "Konomi recalls an unheard complaint.");
+            Check(CurrentAvailable(story, hearing, initial), "Konomi hearing cannot follow the scandal.");
+            Check(!CurrentAvailable(story, evening, initial), "Konomi recalls an unheard complaint.");
             var arrival = hearing.Nodes.Single(n => n.Id == "arrival");
             Check(arrival.Choices.Single(c => Rules.Match(c.Requires, c.Forbids, initial)).Next == (history == "public" ? "public" : "discreet"), "Hearing invents a different public disclosure history.");
             var outcomes = Walk(hearing, initial);
@@ -1721,10 +1812,10 @@ internal static class Program
                 }
                 Check(result.Has("konomi.hearing_owned_letter"), "Hearing omits the Commander's acknowledgment.");
                 Check(result.Has("konomi.hearing_buyer_barred") != result.Has("konomi.hearing_buyer_unbarred"), "Hearing findings overlap or disappear.");
-                Check(!Rules.Available(story, hearing, result), "Completed hearing repeats.");
-                Check(!Rules.Available(story, evening, result), "Hearing aftermath opens immediately.");
+                Check(!CurrentAvailable(story, hearing, result), "Completed hearing repeats.");
+                Check(!CurrentAvailable(story, evening, result), "Hearing aftermath opens immediately.");
                 result.Hour += 24;
-                Check(Rules.Available(story, evening, result), "Hearing aftermath cannot be reached.");
+                Check(CurrentAvailable(story, evening, result), "Hearing aftermath cannot be reached.");
                 var start = evening.Nodes[0];
                 Check(start.Choices.Single(c => Rules.Match(c.Requires, c.Forbids, result)).Next == (result.Has("konomi.hearing_buyer_barred") ? "whole" : "covered"), "Aftermath uses intended consent rather than the actual finding.");
                 foreach (var end in Walk(evening, result))
@@ -1733,10 +1824,10 @@ internal static class Program
                     Check(end.Has("konomi.hearing_trust_repaired") == (history == "denial"), "Hearing repair invents or forgets the earlier denial.");
                     Check(end.Has("seelah.committed") && end.Has("jerribeth.committed"), "Konomi's hearing alters other relationships.");
                     Check(end.Has("konomi.public") == (history == "public"), "A private hearing forces public relationship disclosure.");
-                    Check(!Rules.Available(story, evening, end), "Completed hearing aftermath repeats.");
-                    Check(!Rules.Available(story, letter, end), "Konomi letter payoff skips its waiting period.");
+                    Check(!CurrentAvailable(story, evening, end), "Completed hearing aftermath repeats.");
+                    Check(!CurrentAvailable(story, letter, end), "Konomi letter payoff skips its waiting period.");
                     end.Hour += 24;
-                    Check(Rules.Available(story, letter, end) == end.Has("konomi.hearing_new_letter"), "Konomi invents or forgets the promised new letter.");
+                    Check(CurrentAvailable(story, letter, end) == end.Has("konomi.hearing_new_letter"), "Konomi invents or forgets the promised new letter.");
                     if (end.Has("konomi.hearing_new_letter"))
                     {
                         foreach (var outing in Walk(letter, end))
@@ -1756,13 +1847,13 @@ internal static class Program
                             Check(!outing.Has("konomi.new_letter_kissed") || outing.Has("konomi.new_letter_frank"), "Playful letter invents a prior kiss invitation.");
                             Check(outing.Has("seelah.committed") && outing.Has("jerribeth.committed") && !outing.Has("konomi.closed"), "Competitive outing changes relationships.");
                             Check(outing.Has("konomi.public") == (history == "public"), "Outing overwrites the earlier disclosure choice.");
-                            Check(!Rules.Available(story, letter, outing), "New letter repeats after completion.");
+                            Check(!CurrentAvailable(story, letter, outing), "New letter repeats after completion.");
                             var offered = letter.Nodes.Single(n => n.Id == "walk").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, outing)).Select(c => c.Next).ToArray();
                             Check(offered.Contains("challenge_winner") == (outing.Has("konomi.new_letter_challenge") && outing.Has("konomi.rings_bell") && outing.Has("konomi.rings_commander_ribbon")), "Konomi claims a victory that the prizes do not support.");
                             Check(offered.Contains("challenge_reply") == (outing.Has("konomi.new_letter_challenge") && outing.Has("konomi.rings_commander_rooster")), "Commander's victory teasing contradicts the prize.");
                         }
                         var transformed = Copy(end); transformed.Flags.Add("inhuman");
-                        Check(!Rules.Available(story, letter, transformed), "Physical outing invents a transformed-body accommodation.");
+                        Check(!CurrentAvailable(story, letter, transformed), "Physical outing invents a transformed-body accommodation.");
                     }
                 }
             }
@@ -1773,13 +1864,13 @@ internal static class Program
                 foreach (var blocker in new[] { "konomi.closed", "konomi.farewell" })
                 {
                     var blocked = Copy(ready); blocked.Flags.Add(blocker);
-                    Check(!Rules.Available(story, scene, blocked), "Konomi hearing sequence ignores " + blocker);
+                    Check(!CurrentAvailable(story, scene, blocked), "Konomi hearing sequence ignores " + blocker);
                 }
                 ready.Flags.Remove("konomi.present");
-                Check(!Rules.Available(story, scene, ready), "Konomi hearing invents absent contact.");
+                Check(!CurrentAvailable(story, scene, ready), "Konomi hearing invents absent contact.");
                 ready.Flags.Add("konomi.present");
                 ready.Chapter = 4;
-                Check(!Rules.Available(story, scene, ready), "Konomi hearing appears in the Abyss.");
+                Check(!CurrentAvailable(story, scene, ready), "Konomi hearing appears in the Abyss.");
             }
         }
     }
@@ -1788,23 +1879,23 @@ internal static class Program
     {
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "ember." + id);
         var initial = new Snapshot { Chapter = 3, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-        Check(!Rules.Available(story, Find("drawing"), initial), "Ember friendship opens without native presence.");
+        Check(!CurrentAvailable(story, Find("drawing"), initial), "Ember friendship opens without native presence.");
         initial.Flags.Add("ember.present");
         foreach (var blocker in new[] { "ember_dead", "ember_gone", "ember.absent", "ember.closed" })
         {
             var blocked = Copy(initial); blocked.Flags.Add(blocker);
-            Check(!Rules.Available(story, Find("drawing"), blocked), "Ember drawing ignores " + blocker);
+            Check(!CurrentAvailable(story, Find("drawing"), blocked), "Ember drawing ignores " + blocker);
         }
         foreach (var first in Walk(Find("drawing"), initial).Where(s => s.Has("ember.started")))
         {
-            Check(!Rules.Available(story, Find("visitor"), first), "Ember loses the delay between afternoons.");
+            Check(!CurrentAvailable(story, Find("visitor"), first), "Ember loses the delay between afternoons.");
             first.Hour += 24;
-            Check(Rules.Available(story, Find("visitor"), first), "Ember second afternoon is unreachable.");
+            Check(CurrentAvailable(story, Find("visitor"), first), "Ember second afternoon is unreachable.");
             foreach (var second in Walk(Find("visitor"), first))
             {
                 Check(second.Has("ember.ask_first") || second.Has("ember.answer_respected"), "Ember visitor encounter loses its response history.");
                 second.Hour += 24;
-                Check(Rules.Available(story, Find("rain"), second), "Ember drawing callback is unreachable.");
+                Check(CurrentAvailable(story, Find("rain"), second), "Ember drawing callback is unreachable.");
                 Check(Walk(Find("rain"), second).All(s => s.Has("ember.shared_afternoon")), "Ember drawing choice leaves an unfinished callback.");
             }
         }
@@ -1815,10 +1906,10 @@ internal static class Program
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "kiana." + id);
         var missing = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
         missing.Flags.Add("seelah.souls_returned");
-        Check(!Rules.Available(story, Find("invitation"), missing), "Kiana starts before her native aftermath encounter.");
+        Check(!CurrentAvailable(story, Find("invitation"), missing), "Kiana starts before her native aftermath encounter.");
         missing.Flags.Remove("seelah.souls_returned");
         missing.Flags.Add("kiana.aftermath_seen");
-        Check(!Rules.Available(story, Find("invitation"), missing), "Kiana starts while soul rescue remains unresolved.");
+        Check(!CurrentAvailable(story, Find("invitation"), missing), "Kiana starts while soul rescue remains unresolved.");
         foreach (string path in new[] { "angel", "azata", "aeon", "demon", "devil", "dragon", "legend", "trickster", "true_lich", "swarm" })
         foreach (string route in new[] { "widow", "wait", "affair" })
         foreach (string letter in new[] { "moon", "guest" })
@@ -1832,7 +1923,7 @@ internal static class Program
             void Play(string id, string wanted)
             {
                 var next = Find(id);
-                Check(Rules.Available(story, next, state), "Kiana progression blocked: " + path + "/" + route + "/" + id);
+                Check(CurrentAvailable(story, next, state), "Kiana progression blocked: " + path + "/" + route + "/" + id);
                 Check(Rules.EntryTargets(next).Length == 0, "Kiana relies on exhausted native answers.");
                 var outcomes = Walk(next, state);
                 Check(outcomes.Any(s => s.Has(wanted) && !s.Has("kiana.closed")), "Kiana outcome unavailable: " + wanted);
@@ -1841,22 +1932,22 @@ internal static class Program
             Play("invitation", "kiana." + letter);
             state.Hour += 48;
             Play("rehearsal", "kiana.company");
-            Check(!Rules.Available(story, Find("stagecraft"), state), "Kiana rehearsal follow-up skips its waiting period.");
-            Check(!Rules.Available(story, Find(route == "widow" ? "widow" : "marriage"), state), "Kiana skips time after first company.");
+            Check(!CurrentAvailable(story, Find("stagecraft"), state), "Kiana rehearsal follow-up skips its waiting period.");
+            Check(!CurrentAvailable(story, Find(route == "widow" ? "widow" : "marriage"), state), "Kiana skips time after first company.");
             state.Hour += 168;
             Play("stagecraft", "kiana.rehearsed");
-            Check(!Rules.Available(story, Find("stagecraft"), state), "Kiana rehearsal follow-up repeats after completion.");
+            Check(!CurrentAvailable(story, Find("stagecraft"), state), "Kiana rehearsal follow-up repeats after completion.");
             Play(route == "widow" ? "widow" : "marriage", route == "widow" ? "kiana.available" : route == "affair" ? "kiana.affair" : "kiana.waited");
             if (route != "widow")
             {
-                Check(!Rules.Available(story, Find("date"), state), "Kiana offers an established date before addressing her marriage.");
+                Check(!CurrentAvailable(story, Find("date"), state), "Kiana offers an established date before addressing her marriage.");
                 state.Hour += 120;
                 Play("answer", "kiana.available");
                 Check(state.Has("kiana.separated"), "Kiana marriage outcome was not recorded.");
                 Check(route != "affair" || state.Has("kiana.owned_hurt"), "Kiana affair bypasses its consequence conversation.");
             }
             state.Hour += Find("date").DelayHours - 1;
-            Check(!Rules.Available(story, Find("date"), state), "Kiana invitation bypasses her chosen waiting period.");
+            Check(!CurrentAvailable(story, Find("date"), state), "Kiana invitation bypasses her chosen waiting period.");
             state.Hour++;
             Play("date", "kiana.lovers");
             Check(!transformed || !state.Has("kiana.kissed"), "Kiana assumes transformed physical intimacy.");
@@ -1870,7 +1961,7 @@ internal static class Program
             bool budget = developedRoute && path == "trickster";
             if (developedRoute && !transformed && !budget)
             {
-                Check(!Rules.Available(story, Find("farewell"), state), "Kiana farewell bypasses developed continuation.");
+                Check(!CurrentAvailable(story, Find("farewell"), state), "Kiana farewell bypasses developed continuation.");
                 var chain = new[] { "guest_table", "market_weather", "lenna_door", "blue_room", "bakery_stairs", "last_page", "first_readers", "ink_after", "working_room", "kept_evening" }.AsEnumerable();
                 if (story.Scenes.Any(s => s.Id == "kiana.borrowed_name"))
                     chain = chain.Concat(new[] { "borrowed_name", "yard_evening", "unborrowed_evening" });
@@ -1881,9 +1972,9 @@ internal static class Program
                 }
             }
             if (budget)
-                Check(!Rules.Available(story, Find("guest_table"), state) && !Rules.Available(story, Find("farewell"), state), "Kiana Trickster budget opens the retired long continuation.");
+                Check(!CurrentAvailable(story, Find("guest_table"), state) && !CurrentAvailable(story, Find("farewell"), state), "Kiana Trickster budget opens the retired long continuation.");
             else Play("farewell", "kiana.farewell_kept");
-            string Ending() => story.Scenes.Single(s => s.Relationship == "kiana" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id;
+            string Ending() => story.Scenes.Single(s => s.Relationship == "kiana" && s.Owner == "Epilogue" && CurrentAvailable(story, s, state)).Id;
             Check(Ending() == (developedRoute && (transformed || budget) ? "kiana.ending_promised" : route == "widow" ? "kiana.ending_bereaved" : "kiana.ending_together"), "Kiana commitment loses her marital history or has conflicting endings.");
             state.Flags.Add("ascended");
             Check(Ending() == (developedRoute && (transformed || budget) ? "kiana.ending_promised" : "kiana.ending_ascended"), "Kiana ascension has conflicting endings.");
@@ -1896,13 +1987,13 @@ internal static class Program
     {
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "jerribeth." + id);
         var unmet = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-        Check(!Rules.Available(story, Find("invitation"), unmet), "Jerribeth contacts a Commander who never met her.");
+        Check(!CurrentAvailable(story, Find("invitation"), unmet), "Jerribeth contacts a Commander who never met her.");
         unmet.Flags.Add("JerribethLovesUsVeryMuch");
-        Check(!Rules.Available(story, Find("invitation"), unmet), "Native misleading affection marker starts Jerribeth courtship.");
+        Check(!CurrentAvailable(story, Find("invitation"), unmet), "Native misleading affection marker starts Jerribeth courtship.");
         unmet.Flags.Add("jerribeth.met");
-        Check(Rules.Available(story, Find("invitation"), unmet), "Known living Jerribeth cannot offer correspondence.");
+        Check(CurrentAvailable(story, Find("invitation"), unmet), "Known living Jerribeth cannot offer correspondence.");
         unmet.Flags.Add("jerribeth.unavailable");
-        Check(!Rules.Available(story, Find("invitation"), unmet), "Unavailable Jerribeth offers correspondence without restoration.");
+        Check(!CurrentAvailable(story, Find("invitation"), unmet), "Unavailable Jerribeth offers correspondence without restoration.");
 
         // Sol r1 (HOW): native observations are completed before every step (so "trickster" latches trickster.ever, as a
         // real Trickster save does), authored prerequisites come only from their producers, and manual reads are omitted.
@@ -1929,7 +2020,7 @@ internal static class Program
                     if (chapter > 1) state.Flags.Add("chapter_later");
                     Rules.Complete(story, state);
                     Check(state.Has("trickster.ever") == trickster, "Jerribeth campaign: trickster.ever is not latched from a native Trickster run.");
-                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "jerribeth" && !s.ManualOnly && !s.Reaction && !s.Id.StartsWith("jerribeth.trickster.") && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "jerribeth" && !s.ManualOnly && !s.Reaction && !s.Id.StartsWith("jerribeth.trickster.") && !s.Owner.EndsWith("Epilogue") && CurrentAvailable(story, s, state));
                     if (next == null) break;
                     Check(Rules.EntryTargets(next).Length == 0 && Rules.IsRemote(next), "Jerribeth correspondence takes over a native encounter.");
                     Check(next.Nodes[0].Choices.Any(c => Rules.Match(c.Requires, c.Forbids, state)), "A delivered Jerribeth letter opens with no answer: " + next.Id);
@@ -1952,7 +2043,7 @@ internal static class Program
             Check(state.Has("jerribeth.warned") == (start == 3 && !patronLost), "Jerribeth offers a dead patron's protection.");
             Check(state.Has("jerribeth.collection") == knowledge, "Jerribeth Xanthir topic ignores actual knowledge.");
             Check(!state.Has("jerribeth.condemned_wintersun") || knowledge, "Jerribeth debate invents knowledge of Wintersun.");
-            string[] Endings() => story.Scenes.Where(s => s.Relationship == "jerribeth" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Select(s => s.Id).ToArray();
+            string[] Endings() => story.Scenes.Where(s => s.Relationship == "jerribeth" && s.Owner == "Epilogue" && CurrentAvailable(story, s, state)).Select(s => s.Id).ToArray();
             Check(Endings().Single() == "jerribeth.ending_together", "Jerribeth ordinary ending conflicts.");
             state.Flags.Add("ascended");
             Check(Endings().Single() == "jerribeth.ending_ascended", "Jerribeth ascended ending conflicts.");
@@ -1972,28 +2063,28 @@ internal static class Program
         foreach (var chapter in new[] { 1, 2, 3, 5 })
         {
             var state = new Snapshot { Chapter = chapter, Hour = 1000 };
-            Check(Rules.Available(story, boots, state), "Seelah opening unavailable in supported chapter " + chapter);
+            Check(CurrentAvailable(story, boots, state), "Seelah opening unavailable in supported chapter " + chapter);
             state = Complete(boots, state);
-            Check(!Rules.Available(story, wager, state), "Second Seelah meeting starts immediately.");
+            Check(!CurrentAvailable(story, wager, state), "Second Seelah meeting starts immediately.");
             state.Hour += 24;
-            Check(Rules.Available(story, wager, state), "Second Seelah meeting cannot start after a day.");
+            Check(CurrentAvailable(story, wager, state), "Second Seelah meeting cannot start after a day.");
             state = Complete(wager, state);
             state.Chapter = Math.Max(2, chapter);
             state.Hour += 24;
-            Check(Rules.Available(story, promise, state), "Seelah invitation unavailable after prerequisites.");
+            Check(CurrentAvailable(story, promise, state), "Seelah invitation unavailable after prerequisites.");
             var outcomes = Walk(promise, state);
             var postponed = outcomes.Single(s => s.Has("seelah.rescheduled"));
             Check(!postponed.Has("seelah.kissed") && !postponed.Has("seelah.courting"), "Postponing a meeting granted its later romantic outcome.");
-            Check(!Rules.Available(story, kept, postponed), "Tomorrow's meeting happened immediately.");
+            Check(!CurrentAvailable(story, kept, postponed), "Tomorrow's meeting happened immediately.");
             postponed.Hour += 23;
-            Check(!Rules.Available(story, kept, postponed), "Deferred meeting became available too early.");
+            Check(!CurrentAvailable(story, kept, postponed), "Deferred meeting became available too early.");
             postponed.Hour += 1;
-            Check(Rules.Available(story, kept, postponed), "Deferred meeting never became available.");
+            Check(CurrentAvailable(story, kept, postponed), "Deferred meeting never became available.");
             var resumed = Walk(kept, postponed);
             Check(resumed.Any(s => s.Has("seelah.kissed")) && resumed.Any(s => s.Has("seelah.courting") && !s.Has("seelah.kissed")), "Deferred meeting lost either the kiss or slower courtship branch.");
             var uninterrupted = outcomes.First(s => s.Has("seelah.courting"));
             uninterrupted.Hour += 72;
-            Check(!Rules.Available(story, kept, uninterrupted), "The deferred meeting repeated an evening that was never postponed.");
+            Check(!CurrentAvailable(story, kept, uninterrupted), "The deferred meeting repeated an evening that was never postponed.");
         }
     }
 
@@ -2024,7 +2115,7 @@ internal static class Program
         state.Flags.UnionWith(new[] { "ordinary", "kept_terms", "trying", "seelah.committed", "konomi.committed" });
         state.Times["ordinary"] = 1000;
         state.Times["kept_terms"] = 1000;
-        Check(Rules.Available(story, scene, state), "Shared lock lesson cannot follow the repaired evening.");
+        Check(CurrentAvailable(story, scene, state), "Shared lock lesson cannot follow the repaired evening.");
         var outcomes = Walk(scene, state);
         foreach (var end in outcomes.Where(s => s.Has(scene.Id)))
         {
@@ -2032,9 +2123,9 @@ internal static class Program
             Check(end.Has("three_locks.anevia_taught") != end.Has("three_locks.irabeth_taught"), "Teaching paths overlap or lose their history.");
             Check(end.Has("three_locks.music") != end.Has("three_locks.meal"), "Shared lesson loses its outing choice.");
             Check(end.Has("seelah.committed") && end.Has("konomi.committed"), "Shared lesson changes another romance.");
-            Check(!Rules.Available(story, outing, end), "Shared outing skips its scheduling delay.");
+            Check(!CurrentAvailable(story, outing, end), "Shared outing skips its scheduling delay.");
             end.Hour += 48;
-            Check(Rules.Available(story, outing, end), "Shared outing cannot follow its recorded plan.");
+            Check(CurrentAvailable(story, outing, end), "Shared outing cannot follow its recorded plan.");
             foreach (var evening in Walk(outing, end))
             {
                 if (!evening.Has(outing.Id))
@@ -2056,17 +2147,17 @@ internal static class Program
         {
             var unavailable = Copy(state);
             unavailable.Flags.Add(lost);
-            Check(!Rules.Available(story, scene, unavailable), "Lock lesson invents an available partner: " + lost);
+            Check(!CurrentAvailable(story, scene, unavailable), "Lock lesson invents an available partner: " + lost);
         }
         state.Chapter = 4;
-        Check(!Rules.Available(story, scene, state), "Drezen lock lesson appears during the Abyss chapter.");
+        Check(!CurrentAvailable(story, scene, state), "Drezen lock lesson appears during the Abyss chapter.");
         state.Chapter = 5;
-        Check(Rules.Available(story, scene, state), "Lock lesson unavailable after both wives return.");
+        Check(CurrentAvailable(story, scene, state), "Lock lesson unavailable after both wives return.");
         foreach (var away in new[] { "irabeth_away", "anevia_away" })
         {
             var absent = Copy(state);
             absent.Flags.Add(away);
-            Check(!Rules.Available(story, scene, absent), "Lock lesson ignores an absent wife: " + away);
+            Check(!CurrentAvailable(story, scene, absent), "Lock lesson ignores an absent wife: " + away);
         }
     }
 
@@ -2078,8 +2169,8 @@ internal static class Program
         var initial = new Snapshot { Chapter = 4, Hour = 1024, Area = incident.Areas.Single() };
         initial.Flags.UnionWith(new[] { "seelah.abyss_together", "seelah.courting", "konomi.committed", "jerribeth.committed" });
         initial.Times["seelah.abyss_together"] = 1000;
-        Check(Rules.Available(story, incident, initial), "Seelah city incident cannot follow her Nexus conversation.");
-        Check(!Rules.Available(story, aftermath, initial), "Seelah remembers a letter incident that has not happened.");
+        Check(CurrentAvailable(story, incident, initial), "Seelah city incident cannot follow her Nexus conversation.");
+        Check(!CurrentAvailable(story, aftermath, initial), "Seelah remembers a letter incident that has not happened.");
         foreach (var result in Walk(incident, initial))
         {
             if (!result.Has(incident.Id))
@@ -2088,18 +2179,18 @@ internal static class Program
                 continue;
             }
             Check(result.Has("seelah.letter_public") != result.Has("seelah.letter_burned"), "Letter outcomes overlap or disappear.");
-            Check(!Rules.Available(story, aftermath, result), "Seelah's next-day discussion happens immediately.");
+            Check(!CurrentAvailable(story, aftermath, result), "Seelah's next-day discussion happens immediately.");
             result.Hour += 24;
-            Check(Rules.Available(story, aftermath, result), "Letter aftermath unavailable after its waiting period.");
+            Check(CurrentAvailable(story, aftermath, result), "Letter aftermath unavailable after its waiting period.");
             foreach (var end in Walk(aftermath, result))
             {
                 Check(end.Has("seelah.letter_discussed") && !end.Has("seelah.closed"), "Disagreement closes or stalls Seelah's relationship.");
                 Check(end.Has("seelah.check_person") == end.Has("seelah.letter_public"), "Public outcome loses its specific response.");
                 Check(end.Has("seelah.check_signal") == end.Has("seelah.letter_burned"), "Distraction outcome loses its specific response.");
                 Check(end.Has("konomi.committed") && end.Has("jerribeth.committed"), "Seelah's disagreement changes another romance.");
-                Check(!Rules.Available(story, followup, end), "Copyist follow-up skips its waiting period.");
+                Check(!CurrentAvailable(story, followup, end), "Copyist follow-up skips its waiting period.");
                 end.Hour += 24;
-                Check(Rules.Available(story, followup, end), "Copyist follow-up cannot be reached from the discussion.");
+                Check(CurrentAvailable(story, followup, end), "Copyist follow-up cannot be reached from the discussion.");
                 var visits = Walk(followup, end);
                 var kept = visits.Where(s => s.Has(followup.Id)).ToArray();
                 Check(kept.Length > 0 && kept.All(s => s.Has("seelah.copyist_followed")), "Copyist visit has no complete outcome.");
@@ -2109,13 +2200,13 @@ internal static class Program
                 Check(visits.Where(s => !s.Has(followup.Id)).All(s => !s.Has("seelah.copyist_followed")), "Declined follow-up records a visit.");
             }
             result.Chapter = 5;
-            Check(!Rules.Available(story, aftermath, result), "Abyss letter scene spills into chapter five.");
+            Check(!CurrentAvailable(story, aftermath, result), "Abyss letter scene spills into chapter five.");
         }
         foreach (var absent in new[] { "seelah_dead", "seelah_gone", "inhuman" })
         {
             var state = Copy(initial);
             state.Flags.Add(absent);
-            Check(!Rules.Available(story, incident, state), "City incident invents suitable Seelah contact: " + absent);
+            Check(!CurrentAvailable(story, incident, state), "City incident invents suitable Seelah contact: " + absent);
         }
     }
 
@@ -2125,14 +2216,14 @@ internal static class Program
         foreach (var id in new[] { "seelah.boots", "seelah.wager", "seelah.promise" })
         {
             var scene = story.Scenes.Single(s => s.Id == id);
-            Check(Rules.Available(story, scene, state), "Seelah timing setup cannot reach " + id);
+            Check(CurrentAvailable(story, scene, state), "Seelah timing setup cannot reach " + id);
             state = Walk(scene, state).First(s => s.Has(scene.Id) && (id != "seelah.promise" || s.Has("seelah.courting")));
             if (id != "seelah.promise") state.Hour += 24;
         }
         var door = story.Scenes.Single(s => s.Id == "seelah.door");
-        Check(!Rules.Available(story, door, state), "Seelah private invitation bypasses its delay after the courtship choice.");
+        Check(!CurrentAvailable(story, door, state), "Seelah private invitation bypasses its delay after the courtship choice.");
         state.Hour += 24;
-        Check(Rules.Available(story, door, state), "Seelah private invitation does not unlock after a day.");
+        Check(CurrentAvailable(story, door, state), "Seelah private invitation does not unlock after a day.");
 
         foreach (int start in new[] { 3, 5 })
         foreach (string mythic in new[] { "angel", "azata", "aeon", "demon", "devil", "dragon", "legend", "trickster", "true_lich", "swarm" })
@@ -2148,7 +2239,7 @@ internal static class Program
                 for (int attempt = 0; attempt < story.Scenes.Count; attempt++)
                 {
                     state.Hour += 48;
-                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "seelah" && (!s.Optional || s.Id == "seelah.watch") && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "seelah" && (!s.Optional || s.Id == "seelah.watch") && !s.Owner.EndsWith("Epilogue") && CurrentAvailable(story, s, state));
                     if (next == null) break;
                     state = Walk(next, state).First(s => s.Has(next.Id) && !s.Has("seelah.closed"));
                 }
@@ -2158,15 +2249,15 @@ internal static class Program
             Check(!state.Has("inhuman") || !state.Has("seelah.private_night") && !state.Has("seelah.kissed"), "Transformed Seelah progression grants physical intimacy.");
             Check(state.Has("seelah.abyss_together") == (start == 3 && !state.Has("inhuman")), "Seelah Abyss meeting is wrong for the start chapter.");
             var aftermath = story.Scenes.Single(s => s.Id == "seelah.souls");
-            Check(!Rules.Available(story, aftermath, state), "Seelah reports returned souls before quest completion.");
-            string Ending() => story.Scenes.Single(s => s.Relationship == "seelah" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id;
+            Check(!CurrentAvailable(story, aftermath, state), "Seelah reports returned souls before quest completion.");
+            string Ending() => story.Scenes.Single(s => s.Relationship == "seelah" && s.Owner == "Epilogue" && CurrentAvailable(story, s, state)).Id;
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_unfinished_work"), "Seelah ending invents completed personal quest.");
             state.Flags.Add("seelah.souls_returned");
             // eng-final l14: this page names Arsinoe as the living caregiver;
             // her existing Lich/Swarm exclusions remain binding. Exercise both
             // admitted histories and their unavailable-caregiver controls.
             bool caregiverUnavailable = mythic == "true_lich" || mythic == "swarm";
-            Check(Rules.Available(story, aftermath, state) == !caregiverUnavailable,
+            Check(CurrentAvailable(story, aftermath, state) == !caregiverUnavailable,
                 "Seelah soul-rescue aftermath does not respect the caregiver's current availability: " + mythic);
             if (caregiverUnavailable)
                 Check(!state.Has("seelah.aftercare"), "An unavailable caregiver invents completed Seelah aftercare.");

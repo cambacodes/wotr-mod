@@ -33,7 +33,7 @@ internal static class KonomiOrdinaryExpansionTests
         Snapshot Play(string id, Snapshot input)
         {
             var s = Find(id); var ready = Program.Copy(input); ready.Hour += s.DelayHours;
-            check(Rules.Available(story, s, ready), "Konomi predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, s, ready), "Konomi predecessor unavailable: " + id);
             return Program.Walk(s, ready).Where(o => o.Has(s.Id) && !o.Has("konomi.closed")).OrderByDescending(o => o.Flags.Count).First();
         }
         foreach (bool trickster in new[] { false, true })
@@ -47,15 +47,15 @@ internal static class KonomiOrdinaryExpansionTests
             state.Chapter = 5;
             state.Flags.UnionWith(new[] { "konomi.rank_eight_started", "konomi.council_conclusion_seen", "konomi.political_respect_seen" });
             foreach (string id in new[] { "return", "political_account", "power" }) state = Play(id, state);
-            check(!Rules.Available(story, ordinary, state), "Fresh Konomi ordinary skips played extension.");
+            check(!Program.CurrentAvailable(story, ordinary, state), "Fresh Konomi ordinary skips played extension.");
             if (history != "fresh")
             {
                 // Older serialized saves already have these completions; do not replay or erase them.
                 foreach (string f in new[] { "konomi.ordinary", "konomi.at_home" }) { state.Flags.Add(f); state.Times[f] = 500; }
                 if (history == "farewell_done")
                     foreach (string f in new[] { "konomi.farewell", "konomi.farewell_kept" }) { state.Flags.Add(f); state.Times[f] = 600; }
-                check(!Rules.Available(story, visits[0], state), "Older Konomi extension starts without opt-in.");
-                check(Rules.Available(story, offer, state), "Older Konomi invitation unavailable.");
+                check(!Program.CurrentAvailable(story, visits[0], state), "Older Konomi extension starts without opt-in.");
+                check(Program.CurrentAvailable(story, offer, state), "Older Konomi invitation unavailable.");
                 foreach (var outcome in Program.Walk(offer, state))
                 {
                     Preserve(state, outcome);
@@ -63,7 +63,7 @@ internal static class KonomiOrdinaryExpansionTests
                 }
                 state = Play("another_evening", state);
             }
-            else check(!Rules.Available(story, offer, state), "Fresh Konomi sees old-save invitation.");
+            else check(!Program.CurrentAvailable(story, offer, state), "Fresh Konomi sees old-save invitation.");
             var states = new List<Snapshot> { state };
             foreach (var scene in visits)
             {
@@ -71,7 +71,7 @@ internal static class KonomiOrdinaryExpansionTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, ready), "Konomi extension chain blocked: " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Konomi extension chain blocked: " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready, (id, partial) =>
                     {
                         reached.Add(scene.Id + "/" + id);
@@ -95,7 +95,7 @@ internal static class KonomiOrdinaryExpansionTests
             foreach (var result in states)
             {
                 check(result.Has("konomi.ordinary_expanded"), "Konomi extension lacks final completion.");
-                check(!Rules.Available(story, offer, result), "Finished Konomi extension repeats opt-in.");
+                check(!Program.CurrentAvailable(story, offer, result), "Finished Konomi extension repeats opt-in.");
                 if (history == "fresh")
                 {
                     var finished = Play("ordinary", result); finished = Play("farewell", finished);
@@ -111,38 +111,38 @@ internal static class KonomiOrdinaryExpansionTests
             var ready = new Snapshot { Chapter = 5, Hour = 10000, Area = ordinary.Areas.Single() };
             ready.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
             ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "Konomi availability baseline invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Konomi availability baseline invalid.");
             foreach (string flag in new[] { "konomi.closed", "konomi.dismissed", "inhuman" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.UnionWith(new[] { flag, "konomi.ordinary_expansion_requested" });
-                check(!Rules.Available(story, scene, blocked), "Konomi opt-in bypasses hard restriction: " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Konomi opt-in bypasses hard restriction: " + flag);
             }
             var absent = Program.Copy(ready); absent.Flags.Remove("konomi.present");
-            check(!Rules.Available(story, scene, absent), "Konomi extension survives lost appointment presence.");
+            check(!Program.CurrentAvailable(story, scene, absent), "Konomi extension survives lost appointment presence.");
             var elsewhere = Program.Copy(ready); elsewhere.Area = "elsewhere";
-            check(!Rules.Available(story, scene, elsewhere), "Konomi extension ignores location.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere), "Konomi extension ignores location.");
             var chapter = Program.Copy(ready); chapter.Chapter = 3;
-            check(!Rules.Available(story, scene, chapter), "Konomi extension starts before Chapter 5.");
-            foreach (var prerequisite in scene.Requires)
+            check(!Program.CurrentAvailable(story, scene, chapter), "Konomi extension starts before Chapter 5.");
+            foreach (var prerequisite in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(prerequisite);
-                check(!Rules.Available(story, scene, missing), "Konomi extension skips prerequisite " + prerequisite);
+                check(!Program.CurrentAvailable(story, scene, missing), "Konomi extension skips prerequisite " + prerequisite);
             }
             ready.Times[scene.Requires.Last()] = ready.Hour;
             ready.Hour += scene.DelayHours - 1;
-            check(!Rules.Available(story, scene, ready), "Konomi extension skips delay.");
+            check(!Program.CurrentAvailable(story, scene, ready), "Konomi extension skips delay.");
             ready.Hour++;
-            check(Rules.Available(story, scene, ready), "Konomi extension misses delay boundary.");
+            check(Program.CurrentAvailable(story, scene, ready), "Konomi extension misses delay boundary.");
         }
         foreach (var item in replay.Values)
         {
-            check(Rules.Available(story, item.Scene, item.State), "Konomi interrupted scene cannot restart.");
+            check(Program.CurrentAvailable(story, item.Scene, item.State), "Konomi interrupted scene cannot restart.");
             foreach (var result in Program.Walk(item.Scene, item.State)) Preserve(item.State, result);
         }
         var transformed = new Snapshot { Chapter = 5, Hour = 10000, Area = ordinary.Areas.Single() };
         transformed.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
         transformed.Flags.UnionWith(ordinary.Requires); transformed.Flags.Add("inhuman");
-        check(Rules.Available(story, ordinary, transformed), "Konomi expansion removes existing transformed companionship.");
+        check(Program.CurrentAvailable(story, ordinary, transformed), "Konomi expansion removes existing transformed companionship.");
         check(offer.ManualOnly && Rules.IsRemote(offer), "Konomi older-save opt-in loses manual delivery.");
         var focused = new Story { Scenes = new List<Scene> { offer }, Relationships = story.Relationships };
         check(Rules.NextRemote(focused, transformed) == null, "Konomi manual opt-in enters automatic queue.");

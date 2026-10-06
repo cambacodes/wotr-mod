@@ -26,6 +26,14 @@ internal static class WenduagTricksterTests
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 4 ? "7847c3e3537104f4694167af0b9fcd0e" : Drezen,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.AvailableContacts.Add("da4c28dd01413694f82b08b728a8c6e5"); // eng8-q8d: native Nexus host
         state.AvailableContacts.Add("ae766624c03058440a036de90a7f2009");   // her presence copy (returned worlds)
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
@@ -406,10 +414,10 @@ internal static class WenduagTricksterTests
 
         // Trk_Wenduag_Household: the Last Call coda and household eligibility (committed, or her native romance kept to the end).
         var coda = story.Scenes.Single(s => s.Id == "wenduag.lastcall.page");
-        check(coda.Requires.Contains(P + "partner") && story.Derived[P + "partner"].Any(g => g.SequenceEqual(new[] { Committed }))
+        check(coda.Requires.Contains(P + "partner") && story.Derived[P + "partner"].Any(g => g.SequenceEqual(new[] { "wenduag.payoff.ordinary" }))
               && story.Derived[P + "partner"].Any(g => g.SequenceEqual(new[] { "wenduag.romance_finished.latched" }))
               && story.Derived["wenduag.harem.eligible"].Any(g => g.SequenceEqual(new[] { "wenduag.romance_finished.latched" }))
-              && story.Derived["wenduag.harem.eligible"].Any(g => g.SequenceEqual(new[] { Committed })),
+              && story.Derived["wenduag.harem.eligible"].Any(g => g.SequenceEqual(new[] { "wenduag.payoff.ordinary" })),
             "Trk_Wenduag_Household: Last Call or the household does not count her commit and her native romance.");
 
         // Trk_Wenduag_Optional: her evil demand (the culling) is a real choice, and the optional beats never gate the commit.

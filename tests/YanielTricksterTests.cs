@@ -55,6 +55,14 @@ internal static class YanielTricksterTests
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         // A held form is on the Commander in these worlds (E10 party-only read: yaniel_radiance); the stash-only world is
         // YanielRadianceTests'.
         foreach (var form in Forms.Keys.Where(flags.Contains)) state.Flags.Add(PartyKey(form));
@@ -495,7 +503,7 @@ internal static class YanielTricksterTests
             "Yaniel's pages do not follow the states (together, the late commit, unsettled, declined, free, mourned).");
         // The Last Call coda needs the real commit; eligibility is the commit alone (no late_committed key: 11 §2 review r5 BEL).
         check(story.Scenes.Single(s => s.Id == "yaniel.lastcall.page").Requires.Contains(Committed)
-              && story.Derived["yaniel.harem.eligible"].Length == 1 && story.Derived["yaniel.harem.eligible"][0].SequenceEqual(new[] { Committed })
+              && story.Derived["yaniel.harem.eligible"].Length == 1 && story.Derived["yaniel.harem.eligible"][0].SequenceEqual(new[] { "yaniel.payoff.ordinary" })
               && !story.Derived.ContainsKey(P + "late_committed"),
             "Last Call or the household treats an uncommitted Yaniel as a partner.");
 

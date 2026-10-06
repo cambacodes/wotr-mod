@@ -21,6 +21,13 @@ internal static class EritriceTricksterTests
         var state = new Snapshot { Chapter = chapter, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
@@ -206,14 +213,14 @@ internal static class EritriceTricksterTests
         check(struck.Has("eritrice.closed") && !struck.Has(P + "returned"), "Trk_Eritrice_Fought_Struck: striking the grudge is not her hard no.");
 
         // Trk_Eritrice_Fought_Epilogue.
-        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned");
+        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned", P + "minutes_read");
         check(Rules.Available(story, pageCommit, ending) && !Rules.Available(story, pageDeclined, ending),
             "Trk_Eritrice_Fought_Epilogue: the late commit page is not the only page.");
-        var committedEnd = World(story, 6, "trickster.ever", "eritrice.committed");
+        var committedEnd = World(story, 6, "trickster.ever", "eritrice.committed", P + "council.second_reading");
         check(Rules.Available(story, pageMet, committedEnd) && !Rules.Available(story, pageCommit, committedEnd),
             "The committed ending page is not the Council-that-did-meet page.");
         check(Rules.Available(story, pageDeclined, World(story, 6, "trickster.ever", P + "declined"))
-              && Rules.Available(story, pageMet, World(story, 6, "trickster.ever", P + "declined", "eritrice.committed")),
+              && Rules.Available(story, pageMet, World(story, 6, "trickster.ever", P + "declined", "eritrice.committed", P + "cost.on_the_record")),
             "The refusal page or the declined-then-carried override is wrong.");
 
         // The standing debate: every sitting reachable, the night only after the commit, and it is the one heated beat.
@@ -279,7 +286,7 @@ internal static class EritriceTricksterTests
         // INT (ledger row 16): the Last Call bottle survival keeps both romance pages; a Commander who stayed dead does not.
         var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
         check(Rules.Available(story, pageMet, World(story, 6, new[] { "trickster.ever", "eritrice.committed" }.Concat(bottle).ToArray()))
-              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster", "trickster.ever", "eritrice.started" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster", "trickster.ever", "eritrice.started", P + "minutes_read" }.Concat(bottle).ToArray()))
               && !Rules.Available(story, pageMet, World(story, 6, "trickster.ever", "eritrice.committed", "sacrifice", "ending.wound_closed")),
             "The romance pages do not follow trickster.commander_back.");
         // INT: a returned Nenio reacts; a dissolved one never does.

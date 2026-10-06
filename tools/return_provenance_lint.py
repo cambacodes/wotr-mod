@@ -197,7 +197,12 @@ def check(story):
     if rel.get('TricksterAccess', {}).get('killed_by_commander', {}).get('Returned') != data['completed']:
         errors.append('RP killed access conflates return histories')
     for key, value in data['derived'].items():
-        if story.get('Derived', {}).get(key) != value:
+        expected = value
+        # eng3-ab retains every original coffin prerequisite and also requires
+        # the verified native death (or the old corpse-only scene witness).
+        if key == 'camellia.trickster.coffin_life' and 'camellia' in story.get('DepartureEpochs', {}):
+            expected = [group + ['camellia.trickster.death_observed'] for group in value]
+        if story.get('Derived', {}).get(key) != expected:
             errors.append('RP incorrect provenance reader ' + key)
     by = {s['Id']: s for s in story['Scenes']}
     # eng8-q8d: registration is node-scoped; the ritual must still establish

@@ -204,8 +204,10 @@ internal static class LongConTests
                 check(!Avail(talk, w) && Avail(sgt, w) == (chapter == 3) && Avail(summonsWatch, w) && !Avail(summons, w),
                     "S5: with " + gone + " the sergeant / Watch summons are not the only versions (Ch" + chapter + ").");
                 var back = World(story, chapter, Begun, Ch3, gone, "irabeth.trickster.returned");
-                check(Avail(talk, back) && !Avail(sgt, back) && Avail(summons, back) && !Avail(summonsWatch, back),
-                    "S5b: a returned Irabeth does not get the hub version for " + gone);
+                bool currentReturn = gone != "irabeth_gone"; // an old death return cannot undo a later departure
+                check(Avail(talk, back) == currentReturn && !Avail(sgt, back)
+                      && Avail(summons, back) == currentReturn && !Avail(summonsWatch, back),
+                    "S5b: Irabeth's hub/absence versions ignore the current departure for " + gone);
             }
         }
         var early = World(story, 3, Begun, Ch3);
@@ -282,7 +284,7 @@ internal static class LongConTests
 
         // ---- Section 5.4: the enacted consequences (S14, S5, S1). ----
         var cold = S(P + "irabeth_cold");
-        check(cold.Requires.SequenceEqual(new[] { Wary }) && cold.DelayHours == 72 && !cold.Forbids.Contains(TalkDone)
+        check(cold.Requires.SequenceEqual(new[] { Wary, "irabeth.present_now" }) && cold.DelayHours == 72 && !cold.Forbids.Contains(TalkDone)
               && cold.ForbidOverrides.Count == 3 && Program.Walk(cold, World(story, 3, Wary)).All(r => r.Has(ColdSeen) && !Avail(cold, r)),
             "S1: irabeth_cold does not require exactly irabeth_wary, or plays twice.");
         var minder = S(P + "the_minder");

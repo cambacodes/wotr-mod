@@ -27,10 +27,10 @@ internal static class SoanaOpeningTests
                 {
                     var state = Program.Copy(input);
                     state.Hour += scene.DelayHours;
-                    check(Rules.Available(story, scene, state), "Soana valid history cannot continue: " + history + "/" + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, state), "Soana valid history cannot continue: " + history + "/" + scene.Id);
                     var absent = Program.Copy(state);
                     absent.AvailableContacts.Remove(contact);
-                    check(!Rules.Available(story, scene, absent), "Soana remains available after native contact disappears: " + scene.Id);
+                    check(!Program.CurrentAvailable(story, scene, absent), "Soana remains available after native contact disappears: " + scene.Id);
                     check(!Rules.ContactAvailable(story, scene, absent), "Soana resumed dialog ignores vanished contact.");
                     foreach (var result in Program.Walk(scene, state))
                     {
@@ -44,7 +44,7 @@ internal static class SoanaOpeningTests
                             check(result.Times.Count == state.Times.Count && result.Times.All(p => state.Times.TryGetValue(p.Key, out int hour) && hour == p.Value), "Soana deferred entry changes timestamps.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Soana repeats a completed visit.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Soana repeats a completed visit.");
                         check(result.Has("soana.fox_waited") != result.Has("soana.fox_held"), "Soana loses the selected fox rescue method.");
                         check(result.Has("soana.fox_held") == (result.Has("soana.fox_reconsidered") != result.Has("soana.fox_expedience")), "Soana loses the held-fox response.");
                         check(!result.Has("soana.fox_waited") || (!result.Has("soana.fox_reconsidered") && !result.Has("soana.fox_expedience")), "Soana waiting history invents a held-fox consequence.");
@@ -81,35 +81,35 @@ internal static class SoanaOpeningTests
             ready.Flags.UnionWith(scene.Requires);
             ready.Flags.Add("soana.old_defender");
             ready.AvailableContacts.Add(contact);
-            check(Rules.Available(story, scene, ready), "Soana availability baseline is invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Soana availability baseline is invalid.");
             check(Rules.ContactAvailable(story, scene, ready), "Soana resumed contact baseline is invalid.");
             foreach (string blocker in new[] { "soana.closed", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead", "inhuman" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Soana ignores " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Soana ignores " + blocker);
                 if (story.Relationships[scene.Relationship].UnavailableFlags.Contains(blocker))
                     check(!Rules.ContactAvailable(story, scene, blocked), "Soana resumed dialog ignores native unavailability: " + blocker);
             }
-            foreach (string required in scene.Requires)
+            foreach (string required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing), "Soana skips prerequisite " + required);
+                check(!Program.CurrentAvailable(story, scene, missing), "Soana skips prerequisite " + required);
                 check(!Rules.ContactAvailable(story, scene, missing), "Soana resumed dialog ignores lost prerequisite: " + required);
             }
             var noOutcome = Program.Copy(ready); noOutcome.Flags.Remove("soana.old_defender");
-            check(!Rules.Available(story, scene, noOutcome), "Soana appears without a supported native outcome.");
+            check(!Program.CurrentAvailable(story, scene, noOutcome), "Soana appears without a supported native outcome.");
             check(!Rules.ContactAvailable(story, scene, noOutcome), "Soana resumed dialog ignores lost native outcome.");
             var noContact = Program.Copy(ready); noContact.AvailableContacts.Clear();
-            check(!Rules.Available(story, scene, noContact), "Soana appears without the native speaker.");
+            check(!Program.CurrentAvailable(story, scene, noContact), "Soana appears without the native speaker.");
             noContact.Flags.Add(contact);
             noContact.Flags.Add("soana.contact_available");
             noContact.AvailableContacts.Add("unrelated-unit");
-            check(!Rules.Available(story, scene, noContact), "Authored flags or another unit bypass Soana's contact gate.");
+            check(!Program.CurrentAvailable(story, scene, noContact), "Authored flags or another unit bypass Soana's contact gate.");
             check(!Rules.ContactAvailable(story, scene, noContact), "Authored flags bypass resumed Soana contact checks.");
             foreach (int chapter in new[] { 1, 2, 4, 5 })
             {
                 var wrongChapter = Program.Copy(ready); wrongChapter.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrongChapter), "Soana chapter-three opening appears in chapter " + chapter);
+                check(!Program.CurrentAvailable(story, scene, wrongChapter), "Soana chapter-three opening appears in chapter " + chapter);
                 check(!Rules.ContactAvailable(story, scene, wrongChapter), "Soana resumed dialog ignores changed chapter.");
             }
             check(scene.DelayHours == (scene.Id == "soana.threshold" ? 0 : 24), "Soana visit delay changed without review.");
@@ -118,9 +118,9 @@ internal static class SoanaOpeningTests
                 ready.Times[scene.Requires.Last()] = ready.Hour;
                 check(Rules.ContactAvailable(story, scene, ready), "Soana resumed dialog incorrectly reapplies entry delay after timestamp changes.");
                 ready.Hour += scene.DelayHours - 1;
-                check(!Rules.Available(story, scene, ready), "Soana skips the interval between visits.");
+                check(!Program.CurrentAvailable(story, scene, ready), "Soana skips the interval between visits.");
                 ready.Hour++;
-                check(Rules.Available(story, scene, ready), "Soana misses the exact visit delay boundary.");
+                check(Program.CurrentAvailable(story, scene, ready), "Soana misses the exact visit delay boundary.");
             }
         }
     }

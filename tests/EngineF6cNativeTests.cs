@@ -18,7 +18,7 @@ internal static class EngineF6cNativeTests
             var state = new Snapshot { Chapter = target == "661508b5683d140458f6a0908de98d70" ? 4
                 : target == "17249a81e2f0d7d4ca67937db86ef858" || target.StartsWith("c68d") || target.StartsWith("ca71") ? 5 : 6,
                 Hour = 100000 };
-            state.Flags.UnionWith(flags);
+            foreach (var flag in flags) HouseholdTests.Earn(story, state, flag);
             Rules.Complete(story, state);
             bool original = NativeContradictionInventoryTests.OriginalHolds(
                 fixtures.GetProperty(target).GetProperty("Data").GetProperty("Conditions"),

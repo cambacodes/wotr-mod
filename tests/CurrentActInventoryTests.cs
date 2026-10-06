@@ -90,7 +90,7 @@ internal static class CurrentActInventoryTests
                 .Contains(PresenceStep.Remove), "l07 conversion keeps owned Wenduag copy " + path);
             check(!Rules.PresenceWanted(presence, L07World.Refresh(story, Program.Copy(world))), "l07 reload recreates off-path copy");
             var edit = story.NativeEpilogueEdits["4bb3706172f1ed54ca11db96254c4638"];
-            world.Flags.Add("wenduag.committed"); L07World.Refresh(story, world);
+            world.Flags.UnionWith(new[] { "wenduag.committed", "wenduag.trickster.proved", "wenduag.trickster.gate_seen", "wenduag.trickster.claim.given" }); L07World.Refresh(story, world);
             foreach (var variant in Rules.EditVariants(edit)) check(!Rules.WhenHolds(variant.When, world), "l07 native Wenduag alternative off-path");
         }
         // Completed earned life is historical. Path failure neither re-kills her

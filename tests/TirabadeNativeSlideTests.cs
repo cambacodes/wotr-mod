@@ -17,10 +17,13 @@ internal static class TirabadeNativeSlideTests
     private const string Widow = "anevia.trickster.epilogue.native_tirabade_widow";
     private const string South = "irabeth.trickster.epilogue.native_tirabade_south";
 
-    private static Snapshot World(params string[] flags)
+    private static Snapshot World(Story story, params string[] flags)
     {
         var state = new Snapshot { Chapter = 6 };
         state.Flags.UnionWith(flags);
+        if (state.Has(Committed))
+            state.Flags.UnionWith(new[] { "anevia.trickster.gate_seen", "anevia.trickster.terms_kept" });
+        Rules.Complete(story, state);
         return state;
     }
 
@@ -44,19 +47,22 @@ internal static class TirabadeNativeSlideTests
         // Each row: the world, then the variant that must play (null: the native "No one ever saw her again." plays).
         var rows = new (string What, Snapshot World, string? Expected)[]
         {
-            ("neither returned", World("trickster.ever", "irabeth_dead", "anevia_gone"), null),
-            ("neither returned, Anevia committed before she left", World("trickster.ever", "irabeth_dead", "anevia_gone", Committed), null),
-            ("Anevia returned, Beth dead, uncommitted", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned), Widow),
-            ("Anevia returned, Beth dead, declined", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.trickster.declined"), Widow),
-            ("Anevia returned, Beth dead, closed", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.closed"), Widow),
-            ("Anevia returned, Beth dead, committed", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, Committed), WidowCommitted),
+            ("neither returned", World(story, "trickster.ever", "irabeth_dead", "anevia_gone"), null),
+            ("neither returned, Anevia committed before she left", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Committed), null),
+            ("Anevia returned, Beth dead, uncommitted", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned), Widow),
+            ("Anevia returned, Beth dead, declined", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.trickster.declined"), Widow),
+            ("Anevia returned, Beth dead, closed", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.closed"), Widow),
+            ("Anevia returned, Beth dead, committed", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Committed), WidowCommitted),
             ("Anevia returned, Beth killed by the Commander, committed",
-                World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, Committed, "anevia.irabeth_killed_by_commander"), WidowCommitted),
-            ("both returned, uncommitted", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, IrabethReturned), Back),
-            ("both returned, Irabeth committed only", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, IrabethReturned, "irabeth.committed"), Back),
-            ("both returned, Anevia committed", World("trickster.ever", "irabeth_dead", "anevia_gone", Returned, IrabethReturned, Committed), Together),
-            ("Beth returned, Anevia still away", World("trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned), South),
-            ("Beth returned, Anevia away, Beth committed", World("trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, "irabeth.committed"), South),
+                World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Committed, "anevia.irabeth_killed_by_commander"), Widow),
+            ("Anevia returned, murder confessed publicly with its cost",
+                World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Committed,
+                    "anevia.irabeth_killed_by_commander", "anevia.lover", "anevia.trickster.said_it", "anevia.trickster.cost.muster_confession"), WidowCommitted),
+            ("both returned, uncommitted", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, IrabethReturned), Back),
+            ("both returned, Irabeth committed only", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, IrabethReturned, "irabeth.committed"), Back),
+            ("both returned, Anevia committed", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, IrabethReturned, Committed), Together),
+            ("Beth returned, Anevia still away", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned), South),
+            ("Beth returned, Anevia away, Beth committed", World(story, "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, "irabeth.committed"), South),
         };
         foreach (var row in rows)
             check(Selected(row.World) == row.Expected,
@@ -118,11 +124,11 @@ internal static class TirabadeNativeSlideTests
         }
         var rows = new (string What, Snapshot World, string? Expected)[]
         {
-            ("both left, nothing returned", World("trickster.ever", "irabeth_gone", "anevia_gone"), null),
-            ("both left, Anevia committed before she left", World("trickster.ever", "irabeth_gone", "anevia_gone", Committed), null),
-            ("both left, Anevia returned, uncommitted", World("trickster.ever", "irabeth_gone", "anevia_gone", Returned), Left),
-            ("both left, Anevia returned and closed", World("trickster.ever", "irabeth_gone", "anevia_gone", Returned, "anevia.closed"), Left),
-            ("both left, Anevia returned, committed", World("trickster.ever", "irabeth_gone", "anevia_gone", Returned, Committed), LeftCommitted),
+            ("both left, nothing returned", World(story, "trickster.ever", "irabeth_gone", "anevia_gone"), null),
+            ("both left, Anevia committed before she left", World(story, "trickster.ever", "irabeth_gone", "anevia_gone", Committed), null),
+            ("both left, Anevia returned, uncommitted", World(story, "trickster.ever", "irabeth_gone", "anevia_gone", Returned), Left),
+            ("both left, Anevia returned and closed", World(story, "trickster.ever", "irabeth_gone", "anevia_gone", Returned, "anevia.closed"), Left),
+            ("both left, Anevia returned, committed", World(story, "trickster.ever", "irabeth_gone", "anevia_gone", Returned, Committed), LeftCommitted),
         };
         foreach (var row in rows)
             check(Selected(row.World) == row.Expected, "Trk_Tirabade_NativeSlideLeft: " + row.What + " selects "

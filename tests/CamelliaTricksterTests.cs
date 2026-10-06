@@ -27,6 +27,16 @@ internal static class CamelliaTricksterTests
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 100 } };
         // end eng8-q8f
         state.Flags.UnionWith(flags);
+        // Paid coffin-copy positives retain the native death witness from the actual prior death.
+        if (flags.Contains(Killed) && flags.Contains(Returned) && flags.Contains(P + "cost.knows_you_tried"))
+            state.Flags.Add(P + "native_death_observed");
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -131,19 +141,19 @@ internal static class CamelliaTricksterTests
         var bowl = S(P + "cards.a_bowl_for_mireya");
         check(bowl.Forbids.Contains(Killed) && Ch(bowl, "paid", 0).Set.Contains(P + "spirits_bargained") && Ch(bowl, "paid", 0).Set.Contains(P + "cost.blood_bargain"),
             "The bargain with her spirits is not made in blood, before the kill.");
-        var buried = World(story, 3, "trickster", "trickster.ever", Killed, P + "primed", P + "spirits_bargained");
+        var buried = World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed", P + "spirits_bargained");
         check(!Avail(performance, buried) && Avail(third, Later(story, buried, 100)), "The third night does not stand between the kill and her return.");
         check(third.Remote && third.Chapters.SequenceEqual(new[] { 3, 5 }), "The third night is not a Drezen rest page.");
         var raisedNight = Take(third, Later(story, buried, 100), "dug", 0, P + "raised");
-        var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, P + "primed"), 100);
+        var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed"), 100);
         Take(third, cold, "unbargained", 0, P + "raised", P + "cost.bargain_late", P + "spirits_bargained");
         check(Ch(third, "unbargained", 0).Alignment?.Direction == "Evil", "The late bargain at the coffin is not dearer (Evil 1).");
         // ENGINE-Q5: priming or paying a bargain does not perform the later return off the live path.
-        var failedPrimed = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed"), 100);
+        var failedPrimed = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead, P + "primed"), 100);
         check(!Avail(third, failedPrimed)
               && Ch(third, "unbargained", 0).Requires.Contains("trickster"),
             "A lost path still opens a new bargain over her coffin.");
-        var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed", P + "spirits_bargained"), 100);
+        var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead, P + "primed", P + "spirits_bargained"), 100);
         check(!Avail(third, failedPaid), "A paid bargain performs a return after the path failed.");
         // Q8 (Sol BEL): the scratching belongs to the prepared branch only.
         check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratching") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratching")
@@ -152,7 +162,7 @@ internal static class CamelliaTricksterTests
         check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).Any(n => n.Text.Contains("raise dead")),
             "A clerical scroll came back as her return device.");
         check(Avail(performance, Later(story, raisedNight, 100)), "The veiled mourner does not follow the raise.");
-        var primed = World(story, 5, "trickster", "trickster.ever", Killed, P + "primed", P + "raised");
+        var primed = World(story, 5, "trickster", "trickster.ever", Killed, Dead, P + "primed", P + "raised");
         check(Avail(performance, primed) && !Avail(overacting, primed) && !Avail(late, primed) && !Avail(letter, primed),
             "Trk_Camellia_KilledPrimed: only the veiled mourner should be available.");
         check(performance.InteractionHub == "camellia.presence" && performance.ContactUnit == Unit && performance.Areas.SequenceEqual(new[] { Drezen }),
@@ -177,11 +187,11 @@ internal static class CamelliaTricksterTests
             "Trk_Camellia_KilledWithDeadEtude: the killed state co-holds her retained-death etude and must still return.");
 
         // Trk_Camellia_KilledLate
-        var unprimed = World(story, 3, "trickster", "trickster.ever", Killed);
+        var unprimed = World(story, 3, "trickster", "trickster.ever", Killed, Dead);
         check(Avail(late, unprimed) && !Avail(performance, unprimed), "Trk_Camellia_KilledLate: the late curtain should be the only way in.");
         check(late.Remote && late.Chapters.SequenceEqual(new[] { 3, 5 }), "The late curtain is not a Chapter 3 and 5 rest page.");
         // A kill taken through the native verdict in Chapter 5 (FinalTruth) has the same way back, on the same terms.
-        check(Avail(late, World(story, 5, "trickster", "trickster.ever", Killed)), "Trk_Camellia_KilledLate: a Chapter 5 kill has no way back.");
+        check(Avail(late, World(story, 5, "trickster", "trickster.ever", Killed, Dead)), "Trk_Camellia_KilledLate: a Chapter 5 kill has no way back.");
         // eng8-q8d: Chapter 5 failure folds the price into either coffin delivery.
         check(letter.Chapters.SequenceEqual(new[] { 3 }) && new[] { late, third }.All(s => s.Nodes.Any(n => n.Id == "eng8.price")),
             "Chapter 5 failed placement lacks its folded coffin agreement, or still adds a letter.");
@@ -194,7 +204,7 @@ internal static class CamelliaTricksterTests
         Take(late, unprimed, "choose", 1, P + "declined", Closed);
 
         // Trk_Camellia_KilledAfterFailure
-        var q3Kill = World(story, 5, "trickster", "trickster.ever", Killed, "camellia.kicked_out");
+        var q3Kill = World(story, 5, "trickster", "trickster.ever", Killed, Dead, "camellia.kicked_out");
         check(Avail(late, q3Kill), "A Q3 kill (kicked_out co-held with the kill) is closed as a dismissal.");
         var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed);
         check(!Avail(late, failed) && !Avail(performance, failed), "Trk_Camellia_KilledAfterFailure: a lost path must not open a new trick.");
@@ -205,7 +215,8 @@ internal static class CamelliaTricksterTests
         check(overacting.Recovery == "camellia" && Ch(overacting, "waking", 0).Revive == "camellia", "Her price does not raise her.");
         var raised = Take(overacting, body_, "waking", 0, Returned, P + "cost.spirits_owed", "camellia.started");
         // eng7-l07: the selected native resurrection clears the live companion death observation.
-        raised.Flags.Remove(Dead);
+        raised.Flags.Remove(Dead); raised.Flags.Add("camellia.native_alive");
+        Rules.RecordAvailabilityEvents(story, raised, new[] { "camellia.native_alive" }); Rules.Complete(story, raised);
         Take(overacting, body_, "refused", 0, P + "declined", Closed);
 
         // Trk_Camellia_Terms (killed branch; the lesson is its prerequisite)

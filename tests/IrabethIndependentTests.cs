@@ -7,6 +7,7 @@ internal static class IrabethIndependentTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        var runtimeKeys = Rules.AvailabilityRuntimeKeys(story);
         const string area = "2570015799edf594daf2f076f2f975d8";
         const string beth = "280d4712dceb37f4a88e98f1f4c6e64f";
         const string ann = "b5e867e13503c6f41bb1316705efb4a2";
@@ -28,11 +29,12 @@ internal static class IrabethIndependentTests
             state.Flags.UnionWith(new[] { "trickster", "seelah.committed" });
             state.Flags.Add("irabeth.chapter_" + (chapter == 3 ? "three" : "five"));
             if (morale != "ordinary") state.Flags.Add(morale);
+            Rules.Complete(story, state);
             return state;
         }
         void Preserve(Snapshot before, Snapshot after)
         {
-            check(before.Flags.IsSubsetOf(after.Flags), "Irabeth erases history.");
+            check(before.Flags.Where(f => !story.Derived.ContainsKey(f) && !story.Counts.ContainsKey(f) && !runtimeKeys.Contains(f)).All(after.Flags.Contains), "Irabeth erases history.");
             foreach (string flag in bindings) check(before.Has(flag) == after.Has(flag), "Irabeth writes protected history: " + flag);
             foreach (var time in before.Times) check(after.Times[time.Key] == time.Value, "Irabeth rewrites a timestamp.");
             check(before.AvailableContacts.SetEquals(after.AvailableContacts), "Irabeth invents a native actor.");
@@ -40,6 +42,7 @@ internal static class IrabethIndependentTests
         Snapshot Earn(string id, Snapshot input, Func<Snapshot, bool>? select = null)
         {
             var book = Get(id); var ready = Program.Copy(input); ready.Hour += 1000;
+            Rules.Complete(story, ready);
             check(Rules.Available(story, book, ready), "Irabeth earned predecessor cannot enter " + id);
             foreach (var output in Program.Walk(book, ready, (page, at) => {
                 reached.Add(book.Id + "/" + page);
@@ -62,6 +65,7 @@ internal static class IrabethIndependentTests
         Snapshot Old(string id, Snapshot input, Func<Snapshot, bool>? select = null)
         {
             var book = story.Scenes.Single(s => s.Id == id); var ready = Program.Copy(input); ready.Hour += 1000;
+            Rules.Complete(story, ready);
             check(Rules.Available(story, book, ready), "Actual legacy predecessor unavailable: " + id);
             return Program.Walk(book, ready).First(s => s.Has(id) && !s.Has("closed") && !new[] { "anevia.closed", "irabeth.closed", "anevia.courtship_requested", "irabeth.courtship_requested", "tirabade.group_closed" }.Any(flag => s.Has(flag) && !ready.Has(flag)) && (select == null || select(s)));
         }
@@ -80,6 +84,8 @@ internal static class IrabethIndependentTests
         }
         void Ending(Snapshot state, string expected)
         {
+            state = Program.Copy(state);
+            Rules.Complete(story, state);
             var actual = ends.Where(e => Rules.Available(story, e, state)).ToArray();
             check(actual.Length == 1 && actual[0].Id == "irabeth.ending_" + expected, "Irabeth overlapping or absent ending: " + expected);
             foreach (var result in Program.Walk(actual.Single(), state, (page, _) => reached.Add(actual[0].Id + "/" + page))) Preserve(state, result);

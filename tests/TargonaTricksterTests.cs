@@ -26,6 +26,13 @@ internal static class TargonaTricksterTests
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         if (contact && (chapter == 3 || chapter == 5)) state.AvailableContacts.Add(Unit);
@@ -498,7 +505,7 @@ internal static class TargonaTricksterTests
               && furloughParas.Single(q => q.Requires.Contains(P + "cost.light_sealed") && !q.Requires.Contains("targona.lastcall.called")).Forbids.Contains("targona.lastcall.called")
               && furloughParas.Any(q => q.Requires.Contains(P + "cost.light_sealed") && q.Requires.Contains("targona.lastcall.called")),
             "The kept-promise paragraph survives a recorded breach, or the wand runs on without the Commander.");
-        var wed6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", Committed);
+        var wed6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", P + "met", Committed);
         check(!Rules.Available(story, epCommit, wed6) && Rules.Available(story, epFurlough, wed6), "A committed Targona gets the late page.");
         var no6 = World(story, 6, "trickster", "trickster.ever", P + "met", P + "declined");
         check(Rules.Available(story, epDeclined, no6) && !Rules.Available(story, epCommit, no6) && !Rules.Available(story, epFurlough, no6),
@@ -507,10 +514,10 @@ internal static class TargonaTricksterTests
         check(!Rules.Available(story, epCommit, shut6) && !Rules.Available(story, epFurlough, shut6), "A closed route gets a page.");
         // The Commander's sacrifice: no reunion unless the Commander came back (trickster.commander_back); otherwise her own page.
         var epSacrifice = S(P + "epilogue.sacrifice");
-        var lost6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", Committed, "sacrifice");
+        var lost6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", P + "met", Committed, "sacrifice");
         check(!Rules.Available(story, epFurlough, lost6) && !Rules.Available(story, epCommit, World(story, 6, "trickster", "trickster.ever", P + "forgiven", "sacrifice"))
               && Rules.Available(story, epSacrifice, lost6), "An unsurvived sacrifice still gets the reunion.");
-        var back6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", Committed, "sacrifice", "ending.trickster");
+        var back6 = World(story, 6, "trickster", "trickster.ever", P + "forgiven", P + "met", Committed, "sacrifice", "ending.trickster");
         check(back6.Has("trickster.commander_back") && Rules.Available(story, epFurlough, back6) && !Rules.Available(story, epSacrifice, back6),
             "A Commander who came back is mourned.");
         check(!Rules.Available(story, epSacrifice, wed6), "The sacrifice page plays without a sacrifice.");

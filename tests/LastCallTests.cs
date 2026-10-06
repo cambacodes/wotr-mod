@@ -20,6 +20,13 @@ internal static class LastCallTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // Positive partners expand to their existing acceptance/deed receipts.
+        // The independent contract suite exercises coarse-key negatives.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 500;
@@ -41,7 +48,7 @@ internal static class LastCallTests
         // eng8-q8g: production availability, selected history and enacted receipts.
         LastCallHistoryInventoryTests.Run(story, check);
         Scene Sc(string id) => story.Scenes.Single(s => s.Id == id);
-        bool Av(Scene s, Snapshot w) => Rules.Available(story, s, w);
+        bool Av(Scene s, Snapshot w) => Program.CurrentAvailable(story, s, w);
         var threshold = Sc("trickster.lastcall.threshold");
         var joke = Sc("trickster.lastcall.last_joke");
         var jokeAreelu = Sc("trickster.lastcall.last_joke.areelu");
@@ -143,9 +150,10 @@ internal static class LastCallTests
             "LastCall_AllCommitted: expected 38 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
         {
-            var commitment = coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0]
-                : coda.Requires.Last(k => !k.EndsWith(".trickster.returned", StringComparison.Ordinal) && !k.StartsWith("crossroute.", StringComparison.Ordinal));
-            var own = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", Bottle, commitment }.Concat(bodyReturns).ToArray());
+            var own = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", Bottle }.Concat(bodyReturns).ToArray());
+            // Availability is no substitute for the coda's actual earned partner.
+            foreach (var prerequisite in Program.Prerequisites(coda)) HouseholdTests.Earn(story, own, prerequisite);
+            own = Done(story, own);
             check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id);
             var uncommitted = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle);
             check(!Av(coda, uncommitted), "LastCall_AllCommitted: a coda plays without her commit: " + coda.Id);
@@ -311,7 +319,11 @@ internal static class LastCallTests
                 {
                     // E11's matrix uses real eligibility inputs; producer proof is separate.
                     held.Flags.UnionWith(callIn.Requires.Where(f => !story.Derived.ContainsKey(f)));
-                    if (callIn.Id == "wenduag.lastcall.call") held.Flags.Add("wenduag.committed");
+                    if (callIn.Id == "wenduag.lastcall.call")
+                    {
+                        held.Flags.Add("wenduag.committed");
+                        HouseholdTests.Earn(story, held, "wenduag.payoff.ordinary");
+                    }
                     if (held.Has("kiana.lastcall.guests_recovered")) held.Flags.Add("seelah.souls_returned");
                     held.Flags.ExceptWith(story.Derived.Keys);
                     Rules.Complete(story, held);

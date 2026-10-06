@@ -45,6 +45,14 @@ internal static class MelazmeraTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = area };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -143,7 +151,7 @@ internal static class MelazmeraTricksterTests
               && story.Etudes["melazmera.ch5"] == "5b01aa690202e584888dfc600a4aac0a" && story.Latches[Ch5].SequenceEqual(new[] { "melazmera.ch5" })
               && story.SeenCues["greybor.declined_queen"].SequenceEqual(new[] { "8a7d6895c1e22ac4992e1aa2b47be518" }),
             "Trk_Melazmera_Bindings: a native key is not bound as the build sheet lists it.");
-        check(story.Derived["melazmera.harem.eligible"].Select(g => string.Join("+", g)).SequenceEqual(new[] { Committed }),
+        check(story.Derived["melazmera.harem.eligible"].Select(g => string.Join("+", g)).SequenceEqual(new[] { "melazmera.payoff.ordinary" }),
             "Her household eligibility is not her real commitment alone (no late or transactional key).");
         check(story.Scenes.Where(s => s.Relationship == "melazmera").All(s => !s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g))
                   .Any(f => f.StartsWith("hepzamirah.", StringComparison.Ordinal))),

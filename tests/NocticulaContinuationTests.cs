@@ -51,10 +51,10 @@ internal static class NocticulaContinuationTests
                     var ready = Program.Copy(before);
                     if (index > 0 && scene.DelayHours > 0)
                     {
-                        check(!Rules.Available(story, scene, ready), "Nocticula skips the interval: " + scene.Id);
+                        check(!Program.CurrentAvailable(story, scene, ready), "Nocticula skips the interval: " + scene.Id);
                         ready.Hour += scene.DelayHours;
                     }
-                    check(Rules.Available(story, scene, ready), "Played Nocticula history cannot enter " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Played Nocticula history cannot enter " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready, (node, partial) =>
                     {
                         reached[scene.Id].Add(node);
@@ -81,9 +81,9 @@ internal static class NocticulaContinuationTests
                                 "Nocticula closure lacks a single refusal or withdrawal reason.");
                             check(!result.Has("noct.complete"), "Withdrawing completes Nocticula's undertaking.");
                             var futureClosed = Program.Copy(result); futureClosed.Hour += 1000;
-                            check(visits.All(s => !Rules.Available(story, s, futureClosed)),
+                            check(visits.All(s => !Program.CurrentAvailable(story, s, futureClosed)),
                                 "Nocticula offers another harbor visit after withdrawal.");
-                            check(endings.All(s => !Rules.Available(story, s, futureClosed)),
+                            check(endings.All(s => !Program.CurrentAvailable(story, s, futureClosed)),
                                 "An unfinished Nocticula undertaking receives a completed recollection.");
                             continue;
                         }
@@ -93,12 +93,12 @@ internal static class NocticulaContinuationTests
                             check(result.Flags.SetEquals(ready.Flags) && result.Times.Count == ready.Times.Count
                                 && ready.Times.All(p => result.Times.TryGetValue(p.Key, out int value) && value == p.Value),
                                 "Postponing Nocticula changes acceptance or history.");
-                            check(Rules.Available(story, scene, result), "Postponed Nocticula invitation cannot be retried.");
+                            check(Program.CurrentAvailable(story, scene, result), "Postponed Nocticula invitation cannot be retried.");
                             var later = Program.Copy(result); later.Hour += visits[index + 1].DelayHours;
-                            check(!Rules.Available(story, visits[index + 1], later), "Postponement accepts Nocticula's undertaking.");
+                            check(!Program.CurrentAvailable(story, visits[index + 1], later), "Postponement accepts Nocticula's undertaking.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Completed Nocticula visit repeats.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Completed Nocticula visit repeats.");
                         next.Add(result);
                     }
                 }
@@ -126,24 +126,24 @@ internal static class NocticulaContinuationTests
                 "Dream continuation claims an unverified physical actor.");
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             ready.Flags.UnionWith(scene.Requires);
-            check(Rules.Available(story, scene, ready), "Nocticula baseline eligibility is inconsistent.");
-            foreach (string prerequisite in scene.Requires)
+            check(Program.CurrentAvailable(story, scene, ready), "Nocticula baseline eligibility is inconsistent.");
+            foreach (string prerequisite in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(prerequisite);
-                check(!Rules.Available(story, scene, missing), "Nocticula bypasses " + prerequisite);
+                check(!Program.CurrentAvailable(story, scene, missing), "Nocticula bypasses " + prerequisite);
             }
             foreach (string blocker in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, scene, blocked), "Nocticula ignores " + blocker);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Nocticula ignores " + blocker);
             }
             var elsewhere = Program.Copy(ready); elsewhere.Area = "";
-            check(!Rules.Available(story, scene, elsewhere), "Nocticula ignores the authored dream setting.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere), "Nocticula ignores the authored dream setting.");
             check(!Rules.ContactAvailable(story, scene, elsewhere), "Nocticula dream contact survives leaving its setting.");
             foreach (int chapter in new[] { 4, 6 })
             {
                 var wrongChapter = Program.Copy(ready); wrongChapter.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrongChapter) && !Rules.ContactAvailable(story, scene, wrongChapter),
+                check(!Program.CurrentAvailable(story, scene, wrongChapter) && !Rules.ContactAvailable(story, scene, wrongChapter),
                     "Nocticula continuation ignores its Chapter 5 timeline.");
             }
         }
@@ -154,7 +154,7 @@ internal static class NocticulaContinuationTests
             string[] outcomes = { "noct.dead", "inhuman", "ascended", "sacrifice" };
             for (int bit = 0; bit < outcomes.Length; bit++)
                 if ((mask & (1 << bit)) != 0) ending.Flags.Add(outcomes[bit]);
-            var available = endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, ending)).ToArray();
+            var available = endings.Where(s => s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, ending)).ToArray();
             // Earned presence (rubric Binding context (3)): beside an unreturned sacrifice her death, changed or risen pages (which
             // have the Commander remembering) do not play, and the mourning page covers only a Commander who died plainly.
             if (ending.Has("sacrifice") && (ending.Has("noct.dead") || ending.Has("inhuman") || ending.Has("ascended")))
@@ -167,7 +167,7 @@ internal static class NocticulaContinuationTests
                 : ending.Has("ascended") ? "ascent" : ending.Has("sacrifice") ? "sacrifice"
                 : ending.Has("noct.chosen_company") ? "company" : ending.Has("noct.chosen_alliance") ? "alliance" : "limit";
             check(available[0].Id == "noct.ending_" + expected, "Nocticula recollection contradicts outcome precedence.");
-            var aeon = endings.Where(s => s.Owner == "AeonEpilogue" && Rules.Available(story, s, ending)).ToArray();
+            var aeon = endings.Where(s => s.Owner == "AeonEpilogue" && Program.CurrentAvailable(story, s, ending)).ToArray();
             check(aeon.Length == 1,
                 "Nocticula lacks a distinct altered-history recollection.");
             foreach (var page in available.Concat(aeon))
@@ -180,10 +180,10 @@ internal static class NocticulaContinuationTests
                 check(result.Flags.SetEquals(expectedFlags) && result.Times.Count == expectedTimes.Count
                     && expectedTimes.All(p => result.Times.TryGetValue(p.Key, out int value) && value == p.Value),
                     "Nocticula ending changes history beyond its own completion marker.");
-                check(!Rules.Available(story, page, result), "Nocticula recollection ignores a simulated completion flag.");
+                check(!Program.CurrentAvailable(story, page, result), "Nocticula recollection ignores a simulated completion flag.");
             }
             ending.Flags.Remove("noct.complete");
-            check(!endings.Any(s => Rules.Available(story, s, ending)), "An unfinished undertaking grants a completed recollection.");
+            check(!endings.Any(s => Program.CurrentAvailable(story, s, ending)), "An unfinished undertaking grants a completed recollection.");
         }
     }
 }

@@ -18,19 +18,19 @@ internal static class KonomiMissedContactTests
             var state = Program.Copy(input);
             state.Hour += 1000;
             var scene = Get(id);
-            check(Rules.Available(story, scene, state), "Played missed-contact continuation unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, state), "Played missed-contact continuation unavailable: " + id);
             if (state.Has("konomi.missed_letter_sent"))
             {
                 var invalid = Program.Copy(state); invalid.Flags.Add("konomi.missed_contact_invalidated");
                 if (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
                 {
-                    check(!Rules.Available(story, scene, invalid), "Confirmed incompatible new contact still enters: " + id);
+                    check(!Program.CurrentAvailable(story, scene, invalid), "Confirmed incompatible new contact still enters: " + id);
                     check(!Rules.ContactAvailable(story, scene, invalid), "Confirmed incompatible new contact continues: " + id);
                 }
             }
             var results = Program.Walk(scene, state, (page, _) => reached.Add(scene.Id + "/" + page));
             var result = results.First(s => s.Has(scene.Id) && !s.Has("konomi.closed") && (pick == null || pick(s)));
-            check(!Rules.Available(story, scene, result), "Completed missed-contact scene repeats: " + id);
+            check(!Program.CurrentAvailable(story, scene, result), "Completed missed-contact scene repeats: " + id);
             return result;
         }
 
@@ -43,11 +43,11 @@ internal static class KonomiMissedContactTests
                 if (mythic != "ordinary") state.Flags.Add(mythic);
                 foreach (var ending in story.Scenes.Where(scene => scene.Relationship == "konomi" && scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     && !scene.Id.StartsWith("konomi.ending_missed_interrupted", StringComparison.Ordinal)))
-                    check(!Rules.Available(story, ending, state), "Incompatible new contact still earns living epilogue: " + ending.Id);
+                    check(!Program.CurrentAvailable(story, ending, state), "Incompatible new contact still earns living epilogue: " + ending.Id);
                 foreach (string id in new[] { "ending_missed_interrupted", "ending_missed_interrupted_aeon" })
                 {
                     var ending = Get(id);
-                    check(Rules.Available(story, ending, state), "Interrupted new history has no honest epilogue: " + id);
+                    check(Program.CurrentAvailable(story, ending, state), "Interrupted new history has no honest epilogue: " + id);
                     var pages = new HashSet<string>();
                     var results = Program.Walk(ending, state, (page, _) => pages.Add(page));
                     check(results.All(result => result.Has(ending.Id)), "Interruption ending has no terminal completion.");
@@ -73,19 +73,19 @@ internal static class KonomiMissedContactTests
             var initial = new Snapshot { Chapter = chapter, Hour = 1000, Area = capital };
             initial.Flags.UnionWith(new[] { "trickster", observed, "arueshalae.committed" });
             if (completedOffice) initial.Flags.Add("konomi.office_completed");
-            check(!Rules.Available(story, Get("fate_post"), initial), "Native-only missed history no longer reproduces old unavailable entry.");
-            check(!Rules.Available(story, Get("carriers"), initial), "New access invents an already played meeting.");
+            check(!Program.CurrentAvailable(story, Get("fate_post"), initial), "Native-only missed history no longer reproduces old unavailable entry.");
+            check(!Program.CurrentAvailable(story, Get("carriers"), initial), "New access invents an already played meeting.");
             var first = Get("the_unintroduced_letter");
-            check(Rules.Available(story, first, initial), "Observed missed contact has no invitation.");
+            check(Program.CurrentAvailable(story, first, initial), "Observed missed contact has no invitation.");
             foreach (string blocker in new[] { "konomi.present", "konomi.dismissed", "konomi.closed", "konomi.farewell", "inhuman" })
             {
                 var blocked = Program.Copy(initial); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, first, blocked), "Missed invitation bypasses exclusion " + blocker);
+                check(!Program.CurrentAvailable(story, first, blocked), "Missed invitation bypasses exclusion " + blocker);
             }
             var unknown = Program.Copy(initial); unknown.Flags.Remove(observed);
-            check(!Rules.Available(story, first, unknown), "Mere lack of loaded contact proves a correspondent exists.");
+            check(!Program.CurrentAvailable(story, first, unknown), "Mere lack of loaded contact proves a correspondent exists.");
             var notTrickster = Program.Copy(initial); notTrickster.Flags.Remove("trickster");
-            check(!Rules.Available(story, first, notTrickster), "New impossible post lacks current Trickster.");
+            check(!Program.CurrentAvailable(story, first, notTrickster), "New impossible post lacks current Trickster.");
             var state = Earn("the_unintroduced_letter", initial);
             InterruptedEnding(state);
             check(state.Has("konomi.missed_personal_invitation"), "Invitation with no authored friendship used the wrong branch.");
@@ -95,7 +95,7 @@ internal static class KonomiMissedContactTests
             var refusal = Program.Walk(Get("the_answer_she_addressed"), state).Single(s => s.Has("konomi.missed_declined"));
             InterruptedEnding(refusal);
             check(refusal.Has("konomi.closed") && !refusal.Has(access), "Refusal grants private access.");
-            check(!Rules.Available(story, Get("the_courtyard_introduction"), refusal), "Refused invitation permits meeting.");
+            check(!Program.CurrentAvailable(story, Get("the_courtyard_introduction"), refusal), "Refused invitation permits meeting.");
             state = Earn("the_answer_she_addressed", state);
             state = Earn("the_courtyard_introduction", state, s => s.Has("konomi.private_interest"));
             InterruptedEnding(state);
@@ -104,7 +104,7 @@ internal static class KonomiMissedContactTests
             {
                 var nativeTransition = Program.Copy(state);
                 nativeTransition.Flags.UnionWith(new[] { "konomi.present", "konomi.missed_contact_invalidated" });
-                check(!Rules.Available(story, Get("carriers"), nativeTransition), "A later native appointment fails to pause private travel.");
+                check(!Program.CurrentAvailable(story, Get("carriers"), nativeTransition), "A later native appointment fails to pause private travel.");
                 nativeTransition.Flags.Remove("konomi.present");
                 nativeTransition.Flags.Remove("konomi.missed_contact_invalidated");
                 nativeTransition.Flags.UnionWith(new[] { "konomi.dismissed", "konomi.office_completed" });
@@ -112,7 +112,7 @@ internal static class KonomiMissedContactTests
                 nativeTransition.Flags.Remove("legend");
                 nativeTransition.Flags.Add("trickster");
                 foreach (string id in new[] { "fate_post", "fate_reply", "private_meeting" })
-                    check(!Rules.Available(story, Get(id), nativeTransition), "Established new access replays old acquisition: " + id);
+                    check(!Program.CurrentAvailable(story, Get(id), nativeTransition), "Established new access replays old acquisition: " + id);
                 nativeTransition = Earn("carriers", nativeTransition);
                 nativeTransition = Earn("before_road", nativeTransition);
                 nativeTransition = Earn("private_departure", nativeTransition);
@@ -198,7 +198,7 @@ internal static class KonomiMissedContactTests
             foreach (var state in frontier)
             {
                 state.Hour += 1000;
-                check(Rules.Available(story, Get(id), state), "Ordinary history generator bypassed entry: " + id);
+                check(Program.CurrentAvailable(story, Get(id), state), "Ordinary history generator bypassed entry: " + id);
                 foreach (var result in Program.Walk(Get(id), state).Where(r => r.Has(Get(id).Id) && !r.Has("konomi.closed")))
                     next[string.Join("|", result.Flags.OrderBy(f => f))] = result;
             }

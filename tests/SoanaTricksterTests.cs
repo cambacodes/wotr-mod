@@ -22,6 +22,13 @@ internal static class SoanaTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         if (chapter != 4) state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -61,7 +68,7 @@ internal static class SoanaTricksterTests
         var handovers = new[] { afterQuest, bearA, bearB };
         var own = story.Scenes.Where(s => s.Relationship == "soana" && s.Id.StartsWith(P, StringComparison.Ordinal) && !s.Reaction
                                           && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
-        var pages = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        var pages = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner != "AeonEpilogue" && s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
         Snapshot Pick(Scene scene, Snapshot w, params string[] flags)
@@ -366,7 +373,7 @@ internal static class SoanaTricksterTests
         // NM1 (Sol COX, R2-6): her Last Call coda accepts the late commit of both fallback histories (the return never
         // brought to terms, the luck never answered) beside the in-play commit; never a refusal, a friend or a postponement.
         var coda = S("soana.lastcall.page");
-        Snapshot Called(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
+        Snapshot Called(Snapshot s) { var e = End(s); e.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" }); Rules.Complete(story, e); return e; }
         var luckLate = Pick(sheBear, Later(story, lucky, 48), P + "luck_tested");
         check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(Invite(dug))) && !Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
               && !Rules.Available(story, coda, End(lateBack)),
@@ -774,7 +781,7 @@ internal static class SoanaTricksterTests
             foreach (var lover in new[] { false, true })
             {
                 var flags = new List<string> { "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key, "soana.medallion_held" };
-                if (lover) flags.Add("soana.committed");
+                if (lover) flags.AddRange(new[] { "soana.committed", P + "luck_kept", P + "luck_tested" });
                 var killer = World(story, 3, flags.ToArray());
                 var later = Later(story, killer, 500);
                 check(killer.Has("soana.killed_by_commander") && !Rules.Available(story, knot, killer) && !Rules.Available(story, knot, later)

@@ -27,11 +27,11 @@ internal static class KianaFurtherTests
         }.Select(g => g.Select(f => "kiana." + f).ToArray()).ToArray();
         var seen = new HashSet<string>();
         var replay = new Dictionary<string, (Scene Scene, Snapshot State)>();
-        string[] Endings(Snapshot state) => story.Scenes.Where(s => s.Relationship == "kiana" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Select(s => s.Id).ToArray();
+        string[] Endings(Snapshot state) => story.Scenes.Where(s => s.Relationship == "kiana" && s.Owner == "Epilogue" && Program.CurrentAvailable(story, s, state)).Select(s => s.Id).ToArray();
         Snapshot Play(string id, Snapshot input, Func<Snapshot, bool>? select = null)
         {
             var scene = Find(id); var ready = Program.Copy(input); ready.Hour += scene.DelayHours;
-            check(Rules.Available(story, scene, ready), "Kiana actual predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, ready), "Kiana actual predecessor unavailable: " + id);
             return Program.Walk(scene, ready).First(s => s.Has(scene.Id) && !s.Has("kiana.closed") && (select == null || select(s)));
         }
         void Preserve(Snapshot before, Snapshot after)
@@ -74,8 +74,8 @@ internal static class KianaFurtherTests
                     if (age == "old_farewell") state = Play("farewell", state);
                     var endings = Endings(state);
                     state.Hour += 10000;
-                    check(!Rules.Available(story, scenes[0], state), "An older developed save silently opts into new Kiana scenes.");
-                    check(Rules.Available(story, offer, state), "Older Kiana save lacks explicit opt-in.");
+                    check(!Program.CurrentAvailable(story, scenes[0], state), "An older developed save silently opts into new Kiana scenes.");
+                    check(Program.CurrentAvailable(story, offer, state), "Older Kiana save lacks explicit opt-in.");
                     var answers = Program.Walk(offer, state);
                     var deferred = answers.Single(s => !s.Has(offer.Id));
                     check(deferred.Flags.SetEquals(state.Flags), "Deferring Kiana opt-in changes history.");
@@ -83,7 +83,7 @@ internal static class KianaFurtherTests
                     check(state.Has("kiana.further_requested") && state.Has("kiana.catchup_requested"), "Kiana opt-in fails to permit her later incident.");
                     check(Endings(state).SequenceEqual(endings), "Kiana opt-in rewrites an older developed ending.");
                 }
-                else check(!Rules.Available(story, offer, state), "Fresh Kiana route receives an older-developed opt-in.");
+                else check(!Program.CurrentAvailable(story, offer, state), "Fresh Kiana route receives an older-developed opt-in.");
                 var states = new List<Snapshot> { state };
                 foreach (var scene in scenes)
                 {
@@ -91,10 +91,10 @@ internal static class KianaFurtherTests
                     foreach (var input in states)
                     {
                         var ready = Program.Copy(input); ready.Hour += scene.DelayHours;
-                        check(Rules.Available(story, scene, ready), "Kiana further chain cannot enter " + scene.Id + "/" + age);
+                        check(Program.CurrentAvailable(story, scene, ready), "Kiana further chain cannot enter " + scene.Id + "/" + age);
                         if (!developedOld)
                         {
-                            check(!Rules.Available(story, capstone, ready) && !Rules.Available(story, farewell, ready), "Kiana capstone or farewell bypasses the incident.");
+                            check(!Program.CurrentAvailable(story, capstone, ready) && !Program.CurrentAvailable(story, farewell, ready), "Kiana capstone or farewell bypasses the incident.");
                             check(Rules.NextRemote(route, ready)?.Id == scene.Id, "Kiana automatic queue skips required further scene.");
                         }
                         foreach (var result in Program.Walk(scene, ready, (node, partial) =>
@@ -114,7 +114,7 @@ internal static class KianaFurtherTests
                                 check(result.Times.Count == ready.Times.Count, "Kiana further deferral changes timestamps.");
                                 continue;
                             }
-                            check(!Rules.Available(story, scene, result), "Kiana further repeats completed scene.");
+                            check(!Program.CurrentAvailable(story, scene, result), "Kiana further repeats completed scene.");
                             next[string.Join("|", result.Flags.OrderBy(f => f))] = result;
                         }
                     }
@@ -126,8 +126,8 @@ internal static class KianaFurtherTests
                     check(result.Has("kiana.further_kept"), "Kiana finishes without a genuine completion milestone.");
                     check(result.Has("kiana.further_private_evening") != result.Has("kiana.further_private_walk"), "Kiana loses the selected final evening.");
                     var later = Program.Copy(result); later.Hour += capstone.DelayHours;
-                    check(Rules.Available(story, capstone, later) == !developedOld, "Kiana new capstone gate replays old decisions or blocks fresh ones.");
-                    check(!Rules.Available(story, offer, later), "Completed Kiana incident offers another old-save invitation.");
+                    check(Program.CurrentAvailable(story, capstone, later) == !developedOld, "Kiana new capstone gate replays old decisions or blocks fresh ones.");
+                    check(!Program.CurrentAvailable(story, offer, later), "Completed Kiana incident offers another old-save invitation.");
                 }
             }
         }
@@ -146,31 +146,31 @@ internal static class KianaFurtherTests
             if (scene != offer) foreach (var node in scene.Nodes.Where(n => !n.Id.EndsWith("_former_grief") && !n.Id.EndsWith("_uncertain"))) check(seen.Contains(scene.Id + "/" + node.Id), "Kiana further page not visited: " + scene.Id + "/" + node.Id);
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             ready.Flags.UnionWith(Program.Prerequisites(scene)); ready.Flags.Add("kiana.separated");
-            check(Rules.Available(story, scene, ready), "Kiana further gate baseline invalid.");
+            check(Program.CurrentAvailable(story, scene, ready), "Kiana further gate baseline invalid.");
             foreach (string flag in new[] { "kiana.closed", "inhuman" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag); blocked.Flags.UnionWith(new[] { "kiana.catchup_requested", "kiana.further_requested" });
-                check(!Rules.Available(story, scene, blocked), "Kiana old-save exception overrides " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Kiana old-save exception overrides " + flag);
             }
-            foreach (string flag in scene.Requires)
+            foreach (string flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, blocked), "Kiana further skips prerequisite " + flag);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Kiana further skips prerequisite " + flag);
             }
             foreach (var group in scene.RequiresAnyGroups)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.ExceptWith(group);
-                check(!Rules.Available(story, scene, blocked), "Kiana further skips prerequisite " + string.Join("|", group));
+                check(!Program.CurrentAvailable(story, scene, blocked), "Kiana further skips prerequisite " + string.Join("|", group));
             }
             var wrong = Program.Copy(ready); wrong.Chapter = 4;
-            check(!Rules.Available(story, scene, wrong), "Kiana further appears in the Abyss.");
+            check(!Program.CurrentAvailable(story, scene, wrong), "Kiana further appears in the Abyss.");
             wrong = Program.Copy(ready); wrong.Area = "another-area";
-            check(!Rules.Available(story, scene, wrong), "Kiana further appears outside Drezen.");
+            check(!Program.CurrentAvailable(story, scene, wrong), "Kiana further appears outside Drezen.");
             if (scene.DelayHours > 0)
             {
                 ready.Times[scene.Requires.Last()] = ready.Hour;
-                ready.Hour += scene.DelayHours - 1; check(!Rules.Available(story, scene, ready), "Kiana further skips delay.");
-                ready.Hour++; check(Rules.Available(story, scene, ready), "Kiana further misses exact delay boundary.");
+                ready.Hour += scene.DelayHours - 1; check(!Program.CurrentAvailable(story, scene, ready), "Kiana further skips delay.");
+                ready.Hour++; check(Program.CurrentAvailable(story, scene, ready), "Kiana further misses exact delay boundary.");
             }
         }
     }

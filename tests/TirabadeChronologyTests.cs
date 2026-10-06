@@ -18,7 +18,7 @@ internal static class TirabadeChronologyTests
         {
             var scene = Find(id);
             var ready = Ready(scene, state);
-            check(Rules.Available(story, scene, ready), "Chronology played predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, scene, ready), "Chronology played predecessor unavailable: " + id);
             return Program.Walk(scene, ready).Where(s => s.Has(id) && !s.Has("closed") && Program.LegacyTirabadeOutcome(s))
                 .OrderByDescending(s => s.Flags.Count).First();
         }
@@ -34,7 +34,7 @@ internal static class TirabadeChronologyTests
         foreach (var id in sequence) late = Play(id, late);
         check(!late.Has("departure") && !late.Has("wrote_letter"), "Fresh Chapter 5 witness acquired pre-Abyss history.");
         var returnScene = Find("return");
-        check(Rules.Available(story, returnScene, Ready(returnScene, late)), "Fresh Chapter 5 cannot reach the chronology witness.");
+        check(Program.CurrentAvailable(story, returnScene, Ready(returnScene, late)), "Fresh Chapter 5 cannot reach the chronology witness.");
         check(!Page("return", "now").Text.Contains("when you were not there")
             && !Page("return", "back").Text.Contains("where you left us"), "Fresh Chapter 5 still invents a pre-Abyss relationship.");
         var start = Page("return", "start");
@@ -82,7 +82,7 @@ internal static class TirabadeChronologyTests
                 continuation = Play("future", continuation);
                 continuation.Flags.Add("three_progression.short_chosen");
                 var watchScene = Find("last_watch");
-                check(Rules.Available(story, watchScene, Ready(watchScene, continuation)), "Native-history reunion cannot continue to final watch.");
+                check(Program.CurrentAvailable(story, watchScene, Ready(watchScene, continuation)), "Native-history reunion cannot continue to final watch.");
                 visited.Clear();
                 var endings = Program.Walk(watchScene, Ready(watchScene, continuation), (id, _) => visited.Add(id));
                 check(visited.Contains("scar_unsettled") == result.Has("tirabade.scar_left_unsettled")
@@ -105,7 +105,7 @@ internal static class TirabadeChronologyTests
             check(visited.Contains("morale") == morale.Has("broken"), "Reunion morale response ignores actual native Broken status.");
             morale.Flags.Add("three_progression.short_chosen");
             var watch = Find("last_watch");
-            check(Rules.Available(story, watch, Ready(watch, morale)), "Morale witness cannot reach the final watch.");
+            check(Program.CurrentAvailable(story, watch, Ready(watch, morale)), "Morale witness cannot reach the final watch.");
             visited.Clear();
             results = Program.Walk(watch, Ready(watch, morale), (id, _) => visited.Add(id));
             check(visited.Contains("life_broken") == morale.Has("broken")
@@ -146,7 +146,7 @@ internal static class TirabadeChronologyTests
         // Loss can follow the developed capstone as well as an early unfinished route.
         var loss = Program.Copy(late);
         loss.Flags.UnionWith(new[] { "three_progression.developed", "irabeth_dead", "loss" });
-        check(Rules.Available(story, Find("ending_loss"), loss), "Developed loss witness is not an eligible ending.");
+        check(Program.CurrentAvailable(story, Find("ending_loss"), loss), "Developed loss witness is not an eligible ending.");
         check(!Page("ending_loss", "end").Text.Contains("scarcely learned to imagine"), "Loss ending minimizes completed shared development.");
         check(Page("ending_loss", "end").Choices.Count == 1 && Page("ending_loss", "end").Choices[0].Next == null,
             "Loss repair changes the terminal ending contract.");

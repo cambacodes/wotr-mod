@@ -73,7 +73,10 @@ class EngineF6cTests(unittest.TestCase):
         for cue, relationship, suffix, location, when, text in engine_f6c.EDITS:
             with self.subTest(cue=cue):
                 edit = self.story["NativeEpilogueEdits"][cue]
-                self.assertEqual(edit["When"], when)
+                scene = self.scenes[edit["Replacement"]]
+                live = [key for key in scene.get("Requires", [])
+                        if ".payoff." in key or key.endswith((".present_now", ".reachable_by_letter"))]
+                self.assertEqual(edit["When"], [list(dict.fromkeys([*group, *live])) for group in when])
                 original = self.expectations["Fixtures"][cue]
                 self.assertEqual(original["Key"], edit["Key"])
                 self.assertFalse(original["Data"]["ShowOnce"])

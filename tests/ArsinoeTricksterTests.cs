@@ -18,6 +18,13 @@ internal static class ArsinoeTricksterTests
         var state = new Snapshot { Chapter = 5, Area = Drezen, Hour = 5000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 700 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.AvailableContacts.Add(Contact);
         Rules.Complete(story, state);
         return state;
@@ -280,13 +287,15 @@ internal static class ArsinoeTricksterTests
         {
             if (called && !active) continue;
             var st = World(story, "trickster.ever", "arsinoe.trickster.cost.lien", "siphon.burst_council");
-            if (active) st.Flags.Add("lastcall.active");
+            if (active) st.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" });
             if (called) st.Flags.Add("arsinoe.lastcall.called");
+            Rules.Complete(story, st);
             var shown = Rules.VisibleParagraphs(bill, st).Where(p => p.Requires.Length + p.Forbids.Length > 0 && !p.Requires.Any(r => r.Contains("collateral"))).ToArray();
             check(shown.Length == 1, "Burst cauldron page has no single fate variant (active=" + active + ", called=" + called + ")");
             check(shown.All(p => p.Text.Contains("unopened") == !active && p.Text.Contains("handed it") == called), "Burst page contradicts Last Call.");
             var whole = World(story, "trickster.ever", "arsinoe.trickster.cost.lien");
-            if (active) whole.Flags.Add("lastcall.active");
+            if (active) whole.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" });
+            Rules.Complete(story, whole);
             check(Rules.VisibleParagraphs(potNode, whole).Count(p => p.Text.Contains("still paying")) == (active ? 0 : 1), "Returned cauldron page contradicts Last Call.");
         }
 
@@ -331,7 +340,7 @@ internal static class ArsinoeTricksterTests
             st.Chapter = 6;
             if (life != "alive") st.Flags.Add("sacrifice");
             if (life == "back") st.Flags.Add("ending.trickster");
-            if (lc != "none") st.Flags.Add("lastcall.active");
+            if (lc != "none") st.Flags.UnionWith(new[] { "trickster.lastcall.taken", "ending.trickster" });
             if (lc == "called") st.Flags.Add("arsinoe.lastcall.called");
             if (burst) st.Flags.Add("siphon.burst_council");
             if (closedWound) st.Flags.Add("ending.wound_closed");

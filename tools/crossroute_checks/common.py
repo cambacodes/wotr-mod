@@ -144,6 +144,11 @@ class Proof:
                     # Rules.Complete records current native sources, while old
                     # confirmations survive after the source disappears.
                     clauses.extend((-encode(lit(source)), v) for source in m.latches[k])
+                if k == "availability.observed" and m.story.get("DepartureEpochs"):
+                    clauses.append((v,))
+                for woman, epoch in m.story.get("DepartureEpochs", {}).items():
+                    if k == woman + ".epoch_redeparted":
+                        clauses.append((-v, encode(lit(epoch["UnavailableFlag"]))))
                 if "konomi" in m.revivals:
                     # Central live observation, not a historical return flag:
                     # Main.State calls KonomiRecovery.RetainedDead then

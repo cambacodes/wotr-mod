@@ -136,8 +136,18 @@ internal static class PresencePlacementManifestTests
                     && presence.MinChapter <= probeChapter && probeChapter <= presence.MaxChapter,
                     "E-Q7-33: exported placement chapter/area/unit differs");
                 var state = new Snapshot { Area = presence.Area, Chapter = probeChapter, Hour = 10000 };
-                state.Flags.UnionWith(presence.Requires);
-                foreach (var group in presence.RequiresAnyGroups) state.Flags.Add(group.First());
+                // Expand the declared placement prerequisites into their actual
+                // receipts; a desired live composite is not a fixture fact.
+                var seeded = new HashSet<string>();
+                void Earn(string key)
+                {
+                    if (!seeded.Add(key)) return;
+                    if (story.Derived.TryGetValue(key, out var groups)) foreach (var flag in groups[0]) Earn(flag);
+                    else if (story.Latches.TryGetValue(key, out var sources)) Earn(sources[0]);
+                    else state.Flags.Add(key);
+                }
+                foreach (var key in presence.Requires) Earn(key);
+                foreach (var group in presence.RequiresAnyGroups) Earn(group.First());
                 Rules.Complete(story, state);
                 check(Rules.PresenceWanted(presence, state), "E-Q7-33: placement positive fixture did not execute: " + entry["id"]);
                 check(Rules.PlanPresence(presence, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false }).Contains(PresenceStep.Blocked),

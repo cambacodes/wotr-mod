@@ -45,6 +45,14 @@ internal static class HorzalahTricksterTests
         // end eng8-q8f
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -330,7 +338,8 @@ internal static class HorzalahTricksterTests
                                             ("epilogue.scarred", new[] { P + "threatened", Closed }), ("epilogue.closed", new[] { Closed, P + "guard_called" }),
                                             ("epilogue.together", new[] { Committed }) })
             check(!Avail(pg[id], World(story, 6, dead.Concat(flags).ToArray())) && Avail(pg[id], World(story, 6, back.Concat(flags).ToArray()))
-                  && Avail(pg["epilogue.mourned"], World(story, 6, dead.Concat(flags).ToArray())) && !Avail(pg["epilogue.mourned"], World(story, 6, back.Concat(flags).ToArray())),
+                  && Avail(pg["epilogue.mourned"], World(story, 6, dead.Concat(flags).ToArray())) == !flags.Contains(LeftFree)
+                  && !Avail(pg["epilogue.mourned"], World(story, 6, back.Concat(flags).ToArray())),
                 "A living-Commander page plays after a permanent sacrifice, or the mourning page does not: " + id);
         var declinedLate = World(story, 6, "trickster.ever", Wants, Tested);
         check(!latePage.Text.Contains("thin gold chain") && Shown(freedLate, "sold hats") == 1

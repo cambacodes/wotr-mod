@@ -152,7 +152,13 @@ internal static class ParticipantInventoryTests
             if (who == "vellexia") back.Flags.Add("vellexia.trickster.cost.diminished");
             back.Flags.Add(who == "arueshalae" ? "arueshalae_dead" : "vellexia.dead");
             Observe(story, back);
-            check(back.Has("participant." + who + ".available"), who + " earned return rejected by bare native death.");
+            check(!back.Has("participant." + who + ".available"), who + " historical return survives a later death.");
+            // Separate coherent paid-return history; loss and receipt are both
+            // imported here, rather than granting a second unearned return.
+            back = World(story, emptyScene, "trickster.now", who + ".trickster.returned",
+                who == "arueshalae" ? "arueshalae_dead" : "vellexia.dead",
+                who == "arueshalae" ? "arueshalae.trickster.reunited" : "vellexia.trickster.cost.diminished");
+            check(back.Has("participant." + who + ".available"), who + " coherent earned return fails to establish presence.");
             back.Flags.Add(who + ".closed");
             Observe(story, back);
             check(!back.Has("participant." + who + ".available"), who + " closure lifted by old return.");
@@ -178,8 +184,8 @@ internal static class ParticipantInventoryTests
         }
 
         const string prefix = "minagho_chivarro.trickster.";
-        var solo = World(story, emptyScene, "trickster.now", "minachiv.complete", prefix + "minagho_in", prefix + "chivarro_in",
-            prefix + "returned_chivarro", prefix + "chivarro_walked", prefix + "chivarro_sent_back", "chivarro.dead");
+        var solo = World(story, emptyScene, "trickster.now", "minachiv.complete", "minachiv.before_the_last_road", "minachiv.future_minagho",
+            prefix + "minagho_in", prefix + "chivarro_in", prefix + "returned_chivarro", prefix + "chivarro_walked", "chivarro.dead");
         var ledger = story.Books["trickster.ledger"];
         bool Entry(string id, Snapshot state) => Rules.BookEntryVisible(ledger.Entries.Single(e => e.Id == id), state);
         check(solo.Has("participant.minagho.available") && !solo.Has("participant.chivarro.available"), "Solo Minagho inherits departed Chivarro.");
@@ -189,7 +195,13 @@ internal static class ParticipantInventoryTests
         check(Rules.ParticipantsAvailable(story, named, solo), "Legitimate solo Minagho seat suppressed.");
         named.ParticipantWomen = new[] { "chivarro" };
         check(!Rules.ParticipantsAvailable(story, named, solo), "Chivarro's empty seat counts as a participant.");
-        solo.Flags.Remove(prefix + "chivarro_sent_back");
+        var sentBack = Program.Copy(solo);
+        sentBack.Flags.Add(prefix + "chivarro_sent_back");
+        Observe(story, sentBack);
+        sentBack.Flags.Remove(prefix + "chivarro_sent_back");
+        sentBack.Flags.Add(prefix + "cost.won_back");
+        Observe(story, sentBack);
+        check(!sentBack.Has("participant.chivarro.available"), "Walkout reconciliation erases an unrelated later sending-away epoch.");
         solo.Flags.Add(prefix + "cost.won_back");
         Observe(story, solo);
         check(solo.Has("participant.chivarro.available") && Entry("guest.minagho_chivarro", solo), "Earned walkout reconciliation cannot restore the pair.");

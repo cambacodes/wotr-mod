@@ -58,8 +58,8 @@ internal static class KonomiPoliticalTests
                 ("konomi.political_respect_seen", respect) })
                 if (pair.Item2) state.Flags.Add(pair.Item1);
             state.Times[privateContact ? "konomi.private_returned" : "konomi.return"] = state.Hour - 24;
-            check(Rules.Available(story, scene, state), "Valid native history blocks Konomi's political conversation.");
-            check(!Rules.Available(story, privateContact ? ordinary : personal, state), "Konomi political contact modes overlap.");
+            check(Program.CurrentAvailable(story, scene, state), "Valid native history blocks Konomi's political conversation.");
+            check(!Program.CurrentAvailable(story, privateContact ? ordinary : personal, state), "Konomi political contact modes overlap.");
             check(Rules.NextRemote(focused, state) == null, "Manual private political context enters the automatic rest queue.");
 
             string expected = eight ? help ? "foreign" : "domestic" : six ? "crisis" : "uncertain";
@@ -82,35 +82,35 @@ internal static class KonomiPoliticalTests
                         "Deferring political context records an unplayed outcome.");
                     continue;
                 }
-                check(!Rules.Available(story, scene, result), "Completed political context repeats automatically.");
+                check(!Program.CurrentAvailable(story, scene, result), "Completed political context repeats automatically.");
                 if (!privateContact)
                 {
-                    check(!Rules.Available(story, power, result), "New political predecessor bypasses the future conversation delay.");
+                    check(!Program.CurrentAvailable(story, power, result), "New political predecessor bypasses the future conversation delay.");
                     result.Hour += power.DelayHours;
-                    check(Rules.Available(story, power, result), "Completed political conversation strands the ordinary future.");
+                    check(Program.CurrentAvailable(story, power, result), "Completed political conversation strands the ordinary future.");
                 }
             }
 
-            foreach (string required in scene.Requires)
+            foreach (string required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var blocked = Program.Copy(state); blocked.Flags.Remove(required);
-                check(!Rules.Available(story, scene, blocked), "Political context ignores contact prerequisite: " + required);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Political context ignores contact prerequisite: " + required);
             }
             foreach (string forbidden in scene.Forbids.Append("konomi.closed"))
             {
                 var blocked = Program.Copy(state); blocked.Flags.Add(forbidden);
-                check(!Rules.Available(story, scene, blocked), "Political context bypasses restriction: " + forbidden);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Political context bypasses restriction: " + forbidden);
             }
             var fresh = Program.Copy(state);
             fresh.Times[privateContact ? "konomi.private_returned" : "konomi.return"] = fresh.Hour;
-            check(!Rules.Available(story, scene, fresh), "Political context ignores the actual contact timestamp.");
+            check(!Program.CurrentAvailable(story, scene, fresh), "Political context ignores the actual contact timestamp.");
             foreach (int chapter in new[] { 3, 4, 6 })
             {
                 var blocked = Program.Copy(state); blocked.Chapter = chapter;
-                check(!Rules.Available(story, scene, blocked), "Chapter-five political context is delivered in another chapter.");
+                check(!Program.CurrentAvailable(story, scene, blocked), "Chapter-five political context is delivered in another chapter.");
             }
             var elsewhere = Program.Copy(state); elsewhere.Area = "elsewhere";
-            check(!Rules.Available(story, scene, elsewhere), "Physical political conversation leaves Drezen without delivery support.");
+            check(!Program.CurrentAvailable(story, scene, elsewhere), "Physical political conversation leaves Drezen without delivery support.");
         }
         foreach (var scene in focused.Scenes)
             // The separate missed-contact suite plays every new alternative-history page.

@@ -48,10 +48,10 @@ internal static class ArankaContinuationTests
                     var ready = Program.Copy(before);
                     if (scene != scenes[0])
                     {
-                        check(!Rules.Available(story, scene, ready), "Aranka skips the interval between visits.");
+                        check(!Program.CurrentAvailable(story, scene, ready), "Aranka skips the interval between visits.");
                         ready.Hour += scene.DelayHours;
                     }
-                    check(Rules.Available(story, scene, ready), "Earned Aranka history cannot enter " + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Earned Aranka history cannot enter " + scene.Id);
                     foreach (var result in Program.Walk(scene, ready, (node, partial) =>
                     {
                         seen[scene.Id].Add(node);
@@ -82,7 +82,7 @@ internal static class ArankaContinuationTests
                             check(result.Flags.SetEquals(ready.Flags), "Postponing Aranka records progress.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Completed Aranka scene replays.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Completed Aranka scene replays.");
                         next.Add(result);
                     }
                 }
@@ -104,34 +104,34 @@ internal static class ArankaContinuationTests
             check(!Rules.IsRemote(scene), "Waking island meeting silently becomes dream correspondence.");
             var ready = new Snapshot { Chapter = 5, Area = area, Hour = 1000 };
             ready.AvailableContacts.Add(actor); ready.Flags.UnionWith(scene.Requires); ready.Flags.Add("aranka.ran_keep_final");
-            check(Rules.Available(story, scene, ready), "Aranka baseline gate invalid.");
-            foreach (string required in scene.Requires)
+            check(Program.CurrentAvailable(story, scene, ready), "Aranka baseline gate invalid.");
+            foreach (string required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
-                check(!Rules.Available(story, scene, missing), "Aranka skips prerequisite " + required);
+                check(!Program.CurrentAvailable(story, scene, missing), "Aranka skips prerequisite " + required);
             }
             foreach (string forbidden in scene.Forbids)
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(forbidden);
-                check(!Rules.Available(story, scene, blocked), "Aranka ignores blocked history " + forbidden);
+                check(!Program.CurrentAvailable(story, scene, blocked), "Aranka ignores blocked history " + forbidden);
             }
             var noFinal = Program.Copy(ready); noFinal.Flags.Remove("aranka.ran_keep_final");
-            check(!Rules.Available(story, scene, noFinal), "Completed quest alone fabricates a parent finale.");
+            check(!Program.CurrentAvailable(story, scene, noFinal), "Completed quest alone fabricates a parent finale.");
             var noRomance = Program.Copy(ready); noRomance.Flags.Remove("aranka.ran_romance");
             noRomance.Flags.UnionWith(new[] { "aranka.flirt", "aranka.active", "aranka.ran_reverie_partner" });
-            check(!Rules.Available(story, scene, noRomance), "Flirt, active or another partner duplicates Aranka acquisition.");
+            check(!Program.CurrentAvailable(story, scene, noRomance), "Flirt, active or another partner duplicates Aranka acquisition.");
             foreach (int chapter in new[] { 3, 4, 6 })
             {
                 var wrong = Program.Copy(ready); wrong.Chapter = chapter;
-                check(!Rules.Available(story, scene, wrong), "Aranka ignores actual parent finale timeline.");
+                check(!Program.CurrentAvailable(story, scene, wrong), "Aranka ignores actual parent finale timeline.");
             }
             foreach (string place in new[] { "", "2570015799edf594daf2f076f2f975d8" })
             {
                 var wrong = Program.Copy(ready); wrong.Area = place;
-                check(!Rules.Available(story, scene, wrong), "Aranka invents repeatable Drezen presence.");
+                check(!Program.CurrentAvailable(story, scene, wrong), "Aranka invents repeatable Drezen presence.");
             }
             var absent = Program.Copy(ready); absent.AvailableContacts.Clear(); absent.Flags.Add("trickster");
-            check(!Rules.Available(story, scene, absent), "Trickster flag fabricates unavailable Aranka contact.");
+            check(!Program.CurrentAvailable(story, scene, absent), "Trickster flag fabricates unavailable Aranka contact.");
             check(scene.Nodes.SelectMany(n => n.Choices).All(c => c.Revive == null), "Aranka continuation secretly restores a native actor.");
         }
         var checks = scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Where(c => c.Check != null).Select(c => c.Check!).ToArray();

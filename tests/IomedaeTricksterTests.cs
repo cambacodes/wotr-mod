@@ -29,6 +29,14 @@ internal static class IomedaeTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        // Native ending/Last Call checkpoint flags expand to their actual sources.
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -507,9 +515,9 @@ internal static class IomedaeTricksterTests
               && !story.Scenes.Any(s => s.Id == "iomedae.lastcall.call")
               && Render(coda, h2).Contains("never saw the banner"),
             "Trk_Iomedae_LastCall: her coda is not wired to her concession, or it has a call-in (her debt is made at the rift).");
-        check(story.Derived["iomedae.harem.eligible"].Any(gr => gr.Length == 1 && gr[0] == Committed)
+        check(story.Derived["iomedae.harem.eligible"].Any(gr => gr.Length == 1 && gr[0] == "iomedae.payoff.ordinary")
         // eng7-l13: preparation also requires the live outcome contract.
-              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed, "iomedae.outcome.route_open" })
+              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", "iomedae.payoff.ordinary", "iomedae.outcome.route_open" })
               && !World(story, 6, "trickster.ever", Started, Declined).Has("iomedae.harem.eligible")
               && World(story, 5, "trickster.ever", Committed).Has("iomedae.harem.eligible"),
             "Trk_Iomedae_Household: eligibility follows something other than her concession.");

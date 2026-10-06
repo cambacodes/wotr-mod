@@ -729,6 +729,8 @@ def make_expansion(*, independent_tirabade=True):
     # eng7-l14: live cross-route prose reads existing earned presence.
     from storylines import crossroute_presence
     crossroute_presence.integrate(payload)
+    from storylines import engine_eng3_ab
+    engine_eng3_ab.integrate(payload)
     return payload
 
 

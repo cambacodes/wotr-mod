@@ -29,12 +29,12 @@ internal static class SoanaLateCampaignTests
         Snapshot Earn(string id, Snapshot input, Func<Snapshot, bool> select)
         {
             var ready = Program.Copy(input); ready.Hour += Get(id).DelayHours;
-            check(Rules.Available(story, Get(id), ready), "Soana actual predecessor unavailable: " + id);
+            check(Program.CurrentAvailable(story, Get(id), ready), "Soana actual predecessor unavailable: " + id);
             return Program.Walk(Get(id), ready).First(s => s.Has(Get(id).Id) && !s.Has("soana.closed") && select(s));
         }
         void Ending(Snapshot state, string expected)
         {
-            var available = endings.Where(s => Rules.Available(story, s, state)).ToList();
+            var available = endings.Where(s => Program.CurrentAvailable(story, s, state)).ToList();
             check(available.Count == 1 && available[0].Id == "soana.ending_" + expected, "Soana ending overlap or wrong history: " + expected);
             foreach (var result in Program.Walk(available.Single(), state, (id, _) => reached.Add(available[0].Id + "/" + id)))
             { Preserve(state, result); check(result.Has(available[0].Id), "Soana earned epilogue has no terminal path."); }
@@ -46,7 +46,7 @@ internal static class SoanaLateCampaignTests
             {
                 var changed = Program.Copy(state); changed.Flags.Add(variant.Item1);
                 Ending(changed, variant.Item2);
-                if (variant.Item1 == "inhuman") check(visits.All(v => !Rules.Available(story, v, changed)), "Transformation fixture still permits the blocked late romance.");
+                if (variant.Item1 == "inhuman") check(visits.All(v => !Program.CurrentAvailable(story, v, changed)), "Transformation fixture still permits the blocked late romance.");
             }
             var overlapping = Program.Copy(state);
             overlapping.Flags.UnionWith(new[] { "ascended", "inhuman", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" });   // earned presence: her loss page has a living Commander
@@ -73,20 +73,20 @@ internal static class SoanaLateCampaignTests
                     (id != "a_promise_still_spoken" || s.Has("soana." + (friends ? "later_friends" : "later_courting"))) &&
                     (id != "the_unwelcome_path" || s.Has("soana.path_cleft") == cleft));
             check(state.Has("soana.progression_kept"), "No actual seventeen-scene predecessor.");
-            check(!Rules.Available(story, visits[0], state), "Late Soana return appears in Chapter 3.");
+            check(!Program.CurrentAvailable(story, visits[0], state), "Late Soana return appears in Chapter 3.");
             state.Chapter = 4;
-            check(!Rules.Available(story, visits[0], state), "Late Soana return invents Abyss contact.");
+            check(!Program.CurrentAvailable(story, visits[0], state), "Late Soana return invents Abyss contact.");
             // PP6: the Chapter 4 memory (past_the_firelight), one answer per working so every tale reaches the Chapter 5 greeting.
             string voice = working == "voice_carried" ? "abyss_voice_unanswered" : working == "voice_interrupted" ? "abyss_voice_followed" : "abyss_voice_tested";
             var camp = Program.Copy(state); camp.Hour += firelight.DelayHours; camp.Area = "Abyss"; camp.AvailableContacts.Clear();
-            check(Rules.Available(story, firelight, camp), "The Abyss memory does not follow the seventeen scenes.");
+            check(Program.CurrentAvailable(story, firelight, camp), "The Abyss memory does not follow the seventeen scenes.");
             var heard = Program.Walk(firelight, camp, (page, _) => reached.Add(firelight.Id + "/" + page)).Where(r => r.Has(firelight.Id)).ToList();
             check(heard.Count == 3 && heard.All(r => new[] { "abyss_voice_unanswered", "abyss_voice_tested", "abyss_voice_followed" }.Count(f => r.Has("soana." + f)) == 1),
                 "The Abyss memory does not end in exactly one answer.");
             state = Program.Copy(heard.Single(r => r.Has("soana." + voice))); state.Area = area; state.AvailableContacts.Add(actor);
-            check(!Rules.Available(story, firelight, state), "The Abyss memory repeats.");
+            check(!Program.CurrentAvailable(story, firelight, state), "The Abyss memory repeats.");
             state.Chapter = 5;
-            check(!endings.Any(e => Rules.Available(story, e, state)), "Unplayed late campaign earns its finale.");
+            check(!endings.Any(e => Program.CurrentAvailable(story, e, state)), "Unplayed late campaign earns its finale.");
             InterruptedEnding(state);
             var states = new List<Snapshot> { state };
             foreach (var visit in visits)
@@ -95,15 +95,15 @@ internal static class SoanaLateCampaignTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += visit.DelayHours;
-                    check(Rules.Available(story, visit, ready), "Earned late Soana visit unavailable: " + visit.Id);
+                    check(Program.CurrentAvailable(story, visit, ready), "Earned late Soana visit unavailable: " + visit.Id);
                     if (visit.DelayHours > 0)
-                    { var early = Program.Copy(ready); early.Hour--; check(!Rules.Available(story, visit, early), "Late Soana wait ignored."); }
+                    { var early = Program.Copy(ready); early.Hour--; check(!Program.CurrentAvailable(story, visit, early), "Late Soana wait ignored."); }
                     foreach (var result in Program.Walk(visit, ready, (page, partial) =>
                     {
                         reached.Add(visit.Id + "/" + page);
                         check(partial.Flags.SetEquals(ready.Flags), "Interrupted late Soana scene persists a partial choice.");
                         check(partial.Times.OrderBy(p => p.Key).SequenceEqual(ready.Times.OrderBy(p => p.Key)), "Interrupted late Soana scene changes time.");
-                        check(Rules.Available(story, visit, partial), "Interrupted late visit cannot restart.");
+                        check(Program.CurrentAvailable(story, visit, partial), "Interrupted late visit cannot restart.");
                         var absent = Program.Copy(partial); absent.AvailableContacts.Clear();
                         check(!Rules.ContactAvailable(story, visit, absent), "Soana continues without original living contact.");
                         foreach (string loss in new[] { "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" })
@@ -118,7 +118,7 @@ internal static class SoanaLateCampaignTests
                         Preserve(ready, result);
                         if (!result.Has(visit.Id))
                         { check(result.Flags.SetEquals(ready.Flags), "Soana deferral persists a decision."); continue; }
-                        check(!Rules.Available(story, visit, result), "Completed late Soana visit repeats.");
+                        check(!Program.CurrentAvailable(story, visit, result), "Completed late Soana visit repeats.");
                         foreach (var group in new[] {
                             new[] { "late_track_read", "late_track_missed", "late_track_slow" },
                             new[] { "late_reserve", "late_harvest" }, new[] { "late_thorn_strong", "late_thorn_soft" },
@@ -141,7 +141,7 @@ internal static class SoanaLateCampaignTests
                 overlapping.Flags.UnionWith(new[] { "ascended", "inhuman", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" });   // earned presence: her loss page has a living Commander
                 Ending(overlapping, "native_loss");
                 var aeon = Get("ending_aeon");
-                check(aeon.Owner == "AeonEpilogue" && Rules.Available(story, aeon, complete), "Rewritten-world ending lacks its separate sequence.");
+                check(aeon.Owner == "AeonEpilogue" && Program.CurrentAvailable(story, aeon, complete), "Rewritten-world ending lacks its separate sequence.");
                 foreach (var outcome in Program.Walk(aeon, complete, (id, _) => reached.Add(aeon.Id + "/" + id))) Preserve(complete, outcome);
             }
         }
@@ -151,25 +151,25 @@ internal static class SoanaLateCampaignTests
             check(Rules.EntryTargets(visit).SequenceEqual(new[] { "2b1776f3e398685479ff6b16290b4cc2" }), "Soana native insertion changed.");
             var ready = new Snapshot { Chapter = 5, Hour = 50000, Area = area };
             ready.Flags.UnionWith(visit.Requires); ready.Flags.Add("soana.old_defender"); ready.AvailableContacts.Add(actor);
-            check(Rules.Available(story, visit, ready), "Late Soana eligibility baseline invalid.");
-            foreach (var required in visit.Requires)
-            { var missing = Program.Copy(ready); missing.Flags.Remove(required); check(!Rules.Available(story, visit, missing), "Soana missing earned prerequisite admitted: " + required); }
+            check(Program.CurrentAvailable(story, visit, ready), "Late Soana eligibility baseline invalid.");
+            foreach (var required in visit.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
+            { var missing = Program.Copy(ready); missing.Flags.Remove(required); check(!Program.CurrentAvailable(story, visit, missing), "Soana missing earned prerequisite admitted: " + required); }
             foreach (var forbidden in visit.Forbids)
-            { var blocked = Program.Copy(ready); blocked.Flags.Add(forbidden); check(!Rules.Available(story, visit, blocked), "Soana blocker admitted: " + forbidden); }
+            { var blocked = Program.Copy(ready); blocked.Flags.Add(forbidden); check(!Program.CurrentAvailable(story, visit, blocked), "Soana blocker admitted: " + forbidden); }
             foreach (int chapter in new[] { 3, 4, 6 })
-            { var wrong = Program.Copy(ready); wrong.Chapter = chapter; check(!Rules.Available(story, visit, wrong), "Wrong chapter invents Soana contact."); }
+            { var wrong = Program.Copy(ready); wrong.Chapter = chapter; check(!Program.CurrentAvailable(story, visit, wrong), "Wrong chapter invents Soana contact."); }
             var elsewhere = Program.Copy(ready); elsewhere.Area = "Drezen";
-            check(!Rules.Available(story, visit, elsewhere), "Soana invented capital appearance.");
+            check(!Program.CurrentAvailable(story, visit, elsewhere), "Soana invented capital appearance.");
         }
         // PP6: the Chapter 4 memory is a remote page read only on the registered route, never in Chapters 3 or 5, never after a loss.
         check(Rules.IsRemote(firelight) && firelight.Kind == "memory" && firelight.Chapters.SequenceEqual(new[] { 4 }) && firelight.Relationship == "soana"
               && firelight.Requires.SequenceEqual(new[] { "soana.progression_kept" }) && firelight.ContactUnit == null && firelight.AnswerLists.Length == 0,
             "The Abyss memory lost its shape.");
         var abyss = new Snapshot { Chapter = 4, Hour = 50000, Area = "Abyss" }; abyss.Flags.Add("soana.progression_kept");
-        check(Rules.Available(story, firelight, abyss), "The Abyss memory baseline is invalid.");
-        foreach (int chapter in new[] { 3, 5 }) { var wrong = Program.Copy(abyss); wrong.Chapter = chapter; check(!Rules.Available(story, firelight, wrong), "The Abyss memory leaves Chapter 4."); }
+        check(Program.CurrentAvailable(story, firelight, abyss), "The Abyss memory baseline is invalid.");
+        foreach (int chapter in new[] { 3, 5 }) { var wrong = Program.Copy(abyss); wrong.Chapter = chapter; check(!Program.CurrentAvailable(story, firelight, wrong), "The Abyss memory leaves Chapter 4."); }
         foreach (string loss in new[] { "soana.dead", "soana.killed_by_camellia", "soana.forest_dead", "soana.closed", "inhuman" })
-        { var lost = Program.Copy(abyss); lost.Flags.Add(loss); check(!Rules.Available(story, firelight, lost), "The Abyss memory ignores: " + loss); }
+        { var lost = Program.Copy(abyss); lost.Flags.Add(loss); check(!Program.CurrentAvailable(story, firelight, lost), "The Abyss memory ignores: " + loss); }
         var greet = Get("when_the_road_returns");
         foreach (string node in new[] { "welcome", "friend" })
         {

@@ -78,17 +78,19 @@ internal static class MinaghoChivarroContinuationTests
             // eng7-l02: the played brand producer also sets the existing shared started flag.
             check(!initial.Flags.Any(f => f.StartsWith(prefix, StringComparison.Ordinal) && f != "minachiv.reunion_history"
                 && !(fixture.Item4 && f == "minachiv.started")), "Fixture fabricated addon history.");
-            check(Rules.Available(story, visits[0], initial), "Actual parent terminal rejected: " + fixture.Item1);
-            check(endings.All(e => !Rules.Available(story, e, initial)), "Unplayed continuation steals a parent-only ending.");
+            check(Program.CurrentAvailable(story, visits[0], initial), "Actual parent terminal rejected: " + fixture.Item1);
+            check(endings.All(e => !Program.CurrentAvailable(story, e, initial)), "Unplayed continuation steals a parent-only ending.");
             foreach (var blocker in new[] { "minagho.dead", "chivarro.dead", "inhuman", "minachiv.closed" })
             {
                 var blocked = Program.Copy(initial); blocked.Flags.Add(blocker);
-                check(!Rules.Available(story, visits[0], blocked), "Initial meeting ignores known blocker " + blocker);
+                check(!Program.CurrentAvailable(story, visits[0], blocked), "Initial meeting ignores known blocker " + blocker);
             }
             foreach (var missing in new[] { "minagho.ran_complete", "minagho.book_three_finished", "minachiv.reunion_history" })
             {
                 var absent = Program.Copy(initial); absent.Flags.Remove(missing);
-                check(!Rules.Available(story, visits[0], absent), "Parent start uses timers/dialog start instead of " + missing);
+                if (story.Derived.TryGetValue(missing, out var sources)) absent.Flags.ExceptWith(sources.SelectMany(g => g));
+                if (story.Latches.TryGetValue(missing, out var observations)) absent.Flags.ExceptWith(observations);
+                check(!Program.CurrentAvailable(story, visits[0], absent), "Parent start uses timers/dialog start instead of " + missing);
             }
             var states = new List<Snapshot> { initial };
             for (int i = 0; i < visits.Length; i++)
@@ -97,11 +99,11 @@ internal static class MinaghoChivarroContinuationTests
                 foreach (var input in states)
                 {
                     var ready = Program.Copy(input); ready.Hour += 48;
-                    check(Rules.Available(story, scene, ready), "Earned parent continuation cannot enter " + fixture.Item1 + "/" + scene.Id);
+                    check(Program.CurrentAvailable(story, scene, ready), "Earned parent continuation cannot enter " + fixture.Item1 + "/" + scene.Id);
                     if (scene.Id == "minachiv.the_second_address" && ready.Has("minagho.brand_trick_seen"))
                     {
                         var formerTrickster = Program.Copy(ready); formerTrickster.Flags.Remove("trickster");
-                        check(Rules.Available(story, scene, formerTrickster), "Changing mythic abandons an already earned meeting.");
+                        check(Program.CurrentAvailable(story, scene, formerTrickster), "Changing mythic abandons an already earned meeting.");
                         check(scene.Nodes[0].Choices.Where(c => Rules.Match(c.Requires, c.Forbids, formerTrickster)).All(c => c.Next != "trick"), "Former Trickster retains an unavailable fate power.");
                     }
                     check(scene.Remote && scene.Owner == "Memory" && scene.ContactUnit == null && scene.AdditionalContactUnits.Length == 0 && Rules.EntryTargets(scene).Length == 0, "Narrated visit invents native unit/dialogue delivery.");
@@ -122,7 +124,7 @@ internal static class MinaghoChivarroContinuationTests
                         foreach (var flag in new[] { "minagho.dead", "chivarro.dead", "inhuman" })
                         {
                             var blocked = Program.Copy(state); blocked.Flags.Add(flag);
-                            check(!Rules.Available(story, scene, blocked) && !Rules.ContactAvailable(story, scene, blocked), "Remote life guard fails: " + flag);
+                            check(!Program.CurrentAvailable(story, scene, blocked) && !Rules.ContactAvailable(story, scene, blocked), "Remote life guard fails: " + flag);
                         }
                         foreach (var missing in new[] { "minagho.ran_complete", "minagho.book_three_finished", "minachiv.reunion_history" })
                         {
@@ -130,9 +132,9 @@ internal static class MinaghoChivarroContinuationTests
                             check(!Rules.ContactAvailable(story, scene, blocked), "Remote parent-history guard is entry-only: " + missing);
                         }
                         var away = Program.Copy(state); away.Area = "elsewhere";
-                        check(!Rules.Available(story, scene, away) && !Rules.ContactAvailable(story, scene, away), "Drezen book continues in another area.");
+                        check(!Program.CurrentAvailable(story, scene, away) && !Rules.ContactAvailable(story, scene, away), "Drezen book continues in another area.");
                         away.Area = capital; away.Chapter = 4;
-                        check(!Rules.Available(story, scene, away) && !Rules.ContactAvailable(story, scene, away), "Post-Book3 book enters Chapter4.");
+                        check(!Program.CurrentAvailable(story, scene, away) && !Rules.ContactAvailable(story, scene, away), "Post-Book3 book enters Chapter4.");
                     }))
                     {
                         if (!result.Has(scene.Id))
@@ -140,7 +142,7 @@ internal static class MinaghoChivarroContinuationTests
                             check(result.Flags.SetEquals(ready.Flags), "Postponement changed history.");
                             continue;
                         }
-                        check(!Rules.Available(story, scene, result), "Narrated meeting repeats after completion.");
+                        check(!Program.CurrentAvailable(story, scene, result), "Narrated meeting repeats after completion.");
                         check(result.Flags.Where(native.Contains).ToHashSet().SetEquals(originalNative), "Addon changes a native or parent state.");
                         check(new[] { "seelah.committed", "jerribeth.committed", "committed", "closed" }.All(result.Has), "Addon changes unrelated/ToyBox-compatible relationships.");
                         produced.UnionWith(result.Flags.Where(f => f.StartsWith(prefix, StringComparison.Ordinal)));
@@ -149,7 +151,7 @@ internal static class MinaghoChivarroContinuationTests
                             var following = visits[i + 1];
                             var sameEvening = following.Id == "minachiv.after_the_last_lamp";
                             check(following.DelayHours == (sameEvening ? 0 : 24), "Incorrect authored chronology: " + following.Id);
-                            check(Rules.Available(story, following, result) == sameEvening, "Immediate after-show entry or earned next-day delay failed: " + following.Id);
+                            check(Program.CurrentAvailable(story, following, result) == sameEvening, "Immediate after-show entry or earned next-day delay failed: " + following.Id);
                         }
                         next.Add(result);
                     }
@@ -168,7 +170,7 @@ internal static class MinaghoChivarroContinuationTests
         foreach (var state in finished.Concat(partial))
         {
             var complete = state.Has("minachiv.complete");
-            var ordinary = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, state)).ToArray();
+            var ordinary = endings.Where(e => e.Owner == "Epilogue" && Program.CurrentAvailable(story, e, state)).ToArray();
             check(ordinary.Length == 1, "Normal ending overlap/gap: " + string.Join(",", ordinary.Select(e => e.Id)));
             witnessedEndings.Add(ordinary[0].Id);
             check(complete || ordinary[0].Id.Contains("unfinished"), "Interrupted history receives a completed farewell.");
@@ -184,12 +186,12 @@ internal static class MinaghoChivarroContinuationTests
             })
             {
                 var changed = Program.Copy(state); changed.Flags.UnionWith(variant.Item1);
-                var selected = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, changed)).ToArray();
+                var selected = endings.Where(e => e.Owner == "Epilogue" && Program.CurrentAvailable(story, e, changed)).ToArray();
                 var expected = prefix + "ending_" + variant.Item2 + (complete ? "_completed" : "");
                 check(selected.Length == 1 && selected[0].Id == expected, "Special ending arbitration failed: " + expected);
                 witnessedEndings.Add(selected[0].Id);
             }
-            var aeon = endings.Where(e => e.Owner == "AeonEpilogue" && Rules.Available(story, e, state)).ToArray();
+            var aeon = endings.Where(e => e.Owner == "AeonEpilogue" && Program.CurrentAvailable(story, e, state)).ToArray();
             check(aeon.Length == 1 && aeon[0].Id == "minachiv.ending_aeon" + (complete ? "_completed" : ""), "Aeon ending lacks an earned complete/interrupted witness.");
             witnessedEndings.Add(aeon[0].Id);
         }

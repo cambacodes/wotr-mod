@@ -20,6 +20,13 @@ internal static class IrabethTricksterTests
             // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        // These positive predicate fixtures represent an already accepted route.
+        // Coarse-key negatives are independent in PayoffDepartureRulesTests.
+        foreach (var rel in story.Relationships)
+            if (flags.Contains(rel.Value.CommittedFlag) && story.Derived.ContainsKey(rel.Key + ".payoff.ordinary"))
+                HouseholdTests.Earn(story, state, rel.Key + ".payoff.ordinary");
+        foreach (var context in flags.Where(story.Derived.ContainsKey))
+            HouseholdTests.Earn(story, state, context);
         state.AvailableContacts.Add(Contact);
         Rules.Complete(story, state);
         // Latches are stamped when the runtime records them; here, a day before the world is observed.
@@ -135,7 +142,7 @@ internal static class IrabethTricksterTests
                 check(!Rules.Failed(rel, r), "Journal still fails after her return.");
             }
         }
-        var gone = Program.Copy(primed); gone.Flags.Add("anevia_gone");
+        var gone = Program.Copy(primed); gone.Flags.Add("anevia_gone"); Rules.Complete(story, gone);
         check(Program.Walk(relieved, gone).Count == 1, "Anevia's departure branch is not the only answer when she has gone.");
 
         // Trk_Irabeth_DeadAtIz_Unprimed: no deathbed line (she died alone, W4) -> the late toast, at a price.
@@ -258,29 +265,23 @@ internal static class IrabethTricksterTests
                 no = told.Single(r => r.Has("irabeth.trickster.told_the_other_story"));
                 check(no.Has("irabeth.trickster.cost.accounting_lied"), "Telling the truth erased the lie.");
             }
+            check(!Rules.Available(story, second, Later(story, no, 200)), "The priced ask sends a new letter without current contact with Anevia.");
+            no.Flags.Add("anevia.trickster.returned");
+            Rules.RecordAvailabilityEvents(story, no, new[] { "anevia.trickster.returned" });
+            Rules.Complete(story, no);
             check(!Rules.Available(story, commit, no) && (lied || !Rules.Available(story, second, Later(story, no, 23)))
                   && Rules.Available(story, second, Later(story, no, 24)), "Trk_Irabeth_Refusal: the priced second ask is mistimed.");
             var asked = new HashSet<string>();
             var finals = Program.Walk(second, Later(story, no, 24), (page, _) => asked.Add(page));
             check(finals.All(r => !r.Has("irabeth.committed")) && finals.Any(r => r.Has("irabeth.closed")), "Second ask: commits before the courier, or no hard no.");
-            // Sol HOW: the pen goes south; the answer is a separate scene, five days on.
-            var sent = finals.Single(r => r.Has("irabeth.trickster.pen_sent"));
-            check(sent.Has("irabeth.trickster.cost.signed_request") && asked.Contains("sent") && !asked.Contains("threshold"), "The pen does not go south.");
-            check(!Rules.Available(story, reply, Later(story, sent, 71)) && Rules.Available(story, reply, Later(story, sent, 72)),
-                "The courier's three days are not real hours.");
-            var replyPages = new HashSet<string>();
-            var replied = Program.Walk(reply, Later(story, sent, 72), (page, _) => replyPages.Add(page));
-            // Sol r2 INT: a Trickster commit without the registered lover history gets a romantic page of its own.
-            var sixth = World(story, 6, replied.First(r => r.Has("irabeth.committed")).Flags.ToArray());
-            var sixthPages = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Owner == "Epilogue" && Rules.Available(story, s, sixth)).ToList();
-            check(sixthPages.Count == 1 && sixthPages[0].Id == "irabeth.trickster.epilogue.off_the_record",
-                "The committed Irabeth gets no page, or the non-lover page: " + string.Join(",", sixthPages.Select(s => s.Id)));
-            // Sol r3 HOW: Nevi's answer licenses the ask; Irabeth answers it herself, and can say no.
-            check(replied.All(r => r.Has("irabeth.trickster.nevi_answered") && r.Has("irabeth.trickster.asked_nevi"))
-                  && replied.Any(r => r.Has("irabeth.committed"))
-                  && replied.Any(r => r.Has("irabeth.trickster.asked_as_commander") && !r.Has("irabeth.committed"))
-                  && replyPages.Contains("her_answer") && replyPages.Contains("threshold") && replyPages.Contains("morning"),
-                "Nevi's answer commits Irabeth, or skips the intimate beat.");
+            check(finals.Any(r => !r.Has("irabeth.committed") && !r.Has("irabeth.closed")),
+                "The returned Anevia's waiting branch cannot defer the request.");
+            var consent = Later(story, no, 24);
+            consent.Flags.Add("anevia.trickster.shares_beth");
+            Rules.Complete(story, consent);
+            var replies = Program.Walk(second, consent);
+            check(replies.Any(r => r.Has("irabeth.committed")) && replies.Any(r => r.Has("irabeth.trickster.asked_as_commander")),
+                "Existing returned-partner consent bypasses Irabeth's own answer.");
         }
 
         // Sol r1 BEL: after the Commander's own blade, her test comes before any yes.

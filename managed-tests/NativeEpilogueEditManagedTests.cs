@@ -293,7 +293,15 @@ internal static partial class NativeEpilogueEditManagedTests
             playing.Clear();
             playing.UnionWith(row.Etudes);
             if (row.Flags == null) current = null;
-            else { current = new Snapshot { Chapter = 6 }; current.Flags.UnionWith(row.Flags); }
+            else
+            {
+                current = new Snapshot { Chapter = 6 };
+                current.Flags.UnionWith(row.Flags);
+                current.Flags.UnionWith(story.Etudes.Where(f => row.Etudes.Contains(f.Value)).Select(f => f.Key));
+                if (current.Has(Committed))
+                    current.Flags.UnionWith(new[] { "anevia.trickster.gate_seen", "anevia.trickster.terms_kept" });
+                Rules.Complete(story, current);
+            }
             var shown = Shown();
             check(shown.SequenceEqual(new[] { row.Plays }), "Tirabade slide, " + row.What + ": plays [" + string.Join(", ", shown) + "], expected " + row.Plays);
             var played = page.Cues.Select(r => byGuid[r.Guid]).Where(entry => entry.Name == row.Plays).Select(entry => entry.Cue).FirstOrDefault();
@@ -360,7 +368,8 @@ internal static partial class NativeEpilogueEditManagedTests
         var dream = new NativeEpilogueEdit.Group(story.NativeEpilogueEdits["78ae1bdc3b0824b4ca2ed618782f1faa"], () => current, story);
         check(live.Selected() == -1, "A delivery group selects before it is attached.");
         live.Enable(); whenOnly.Enable(); dream.Enable();
-        var basis = new[] { "trickster.ever", "arueshalae.committed" };
+        var basis = new[] { "trickster", "trickster.ever", "arueshalae.committed",
+            "arueshalae.trickster.terms" };
         var rows = new (string What, string[] Flags, bool Plays)[]
         {
             ("committed, alive", basis, true),
@@ -370,23 +379,30 @@ internal static partial class NativeEpilogueEditManagedTests
             ("committed, dead, legacy returned flag, the Commander back", basis.Concat(new[] { "arueshalae_dead", "arueshalae.trickster.returned", "trickster.commander_back" }).ToArray(), false),
             ("committed, dismissed", basis.Append("arueshalae.kicked_out").ToArray(), false),
             ("committed, closed", basis.Append("arueshalae.closed").ToArray(), false),
-            ("committed, fallen", basis.Append("arueshalae.corrupted").ToArray(), false),
+            ("committed, fallen", basis.Append("arueshalae.evil_recruited").ToArray(), false),
             ("committed, unsurvived sacrifice", basis.Append("sacrifice").ToArray(), false),
             ("committed, sacrifice, the Commander back", basis.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray(), true),
             ("committed, relationship degraded", basis.Append(Rules.DegradedPrefix + "arueshalae").ToArray(), false),
             ("uncommitted", new[] { "trickster.ever" }, false),
+            ("coarse committed", new[] { "trickster", "arueshalae.committed" }, false),
         };
         foreach (var row in rows)
         {
             current = new Snapshot { Chapter = 6 };
             current.Flags.UnionWith(row.Flags);
+            // Observe the native Trickster survival ending in return controls;
+            // commander_back is a derived result, not a writable receipt.
+            if (row.Flags.Contains("trickster.commander_back"))
+                current.Flags.UnionWith(new[] { "sacrifice", "ending.trickster" });
+            Rules.Complete(story, current);
             check((live.Selected() == 0) == row.Plays, "E14d delivery, Arueshalae " + row.What + ": the wander page " + (row.Plays ? "does not play" : "plays"));
             check((dream.Selected() == 0) == (row.Plays && current.Has("trickster.commander_back")),
                 "E14d delivery, Arueshalae " + row.What + ": the dream page does not respect current availability and the Commander's return.");
         }
         current = new Snapshot { Chapter = 6 };
         current.Flags.UnionWith(basis.Append("arueshalae_dead"));
-        check(whenOnly.Selected() == 0 && live.Selected() == -1, "The delivery predicate is not what separates the live group from When alone.");
+        Rules.Complete(story, current);
+        check(whenOnly.Selected() == -1 && live.Selected() == -1, "Native When and delivery must both suppress a currently dead woman.");
         current = null;
         check(live.Selected() == -1 && dream.Selected() == -1, "A delivery group selects with the mod disabled.");
         var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(Bootstrap.RepositoryRoot, "src", "Main.cs"));
@@ -482,14 +498,15 @@ internal static partial class NativeEpilogueEditManagedTests
                 "The bowl replacement is not right before Cue_0051 in parent " + parentId);
         foreach (var (what, flags, plays) in new (string, string[], bool)[]
         {
-            ("ransomed", new[] { "trickster.now", "trickster.ever", "kiana.trickster.guests_ransomed" }, true),
-            ("bought back", new[] { "trickster.now", "trickster.ever", "kiana.trickster.guests_bought_back" }, true),
+            ("ransomed", new[] { "trickster", "trickster.ever", "kiana.trickster.guests_ransomed" }, true),
+            ("bought back", new[] { "trickster", "trickster.ever", "kiana.trickster.guests_bought_back" }, true),
             ("robbed, never bought back", new[] { "trickster.ever", "kiana.trickster.cost.guests_robbed" }, false),
             ("ransomed, off the Trickster path", new[] { "kiana.trickster.guests_ransomed" }, false),
         })
         {
             current = new Snapshot { Chapter = 5 };
             current.Flags.UnionWith(flags);
+            Rules.Complete(story, current);
             check((group.Selected() == 0) == plays, "Cue_0051 bowl, " + what);
         }
         // Drift: a changed quest step, or a further parent that no longer leads into the cue, is refused (the native line plays).
@@ -734,7 +751,16 @@ internal static partial class NativeEpilogueEditManagedTests
             if (row.What.StartsWith("TE", StringComparison.Ordinal)) seen.Add(TE1);
             if (row.What.Contains("Q3 done")) completed.Add(Q3);
             if (row.Flags == null) current = null;
-            else { current = new Snapshot { Chapter = 6 }; current.Flags.UnionWith(row.Flags); }
+            else
+            {
+                current = new Snapshot { Chapter = 6 };
+                current.Flags.UnionWith(row.Flags);
+                current.Flags.UnionWith(story.Etudes.Where(f => row.Native.Contains(f.Value)).Select(f => f.Key));
+                if (row.Flags.Contains("trickster.now")) current.Flags.Add("trickster");
+                if (row.Flags.Contains("trickster.commander_back")) current.Flags.Add("ending.trickster");
+                if (current.Has(C)) current.Flags.Add(T); // actual accepted living terms
+                Rules.Complete(story, current);
+            }
             var shown = Shown();
             check(shown.SequenceEqual(row.Plays), "Camellia slides, " + row.What + ": plays [" + string.Join(", ", shown) + "], expected [" + string.Join(", ", row.Plays) + "]");
         }
@@ -842,7 +868,13 @@ internal static partial class NativeEpilogueEditManagedTests
             playing.Clear();
             playing.UnionWith(row.Etudes);
             if (row.Flags == null) current = null;
-            else { current = new Snapshot { Chapter = 6 }; current.Flags.UnionWith(row.Flags); }
+            else
+            {
+                current = new Snapshot { Chapter = 6 };
+                current.Flags.UnionWith(row.Flags);
+                current.Flags.UnionWith(story.Etudes.Where(f => row.Etudes.Contains(f.Value)).Select(f => f.Key));
+                Rules.Complete(story, current);
+            }
             check(Selected() == row.Plays, "Afterlogue, " + row.What + ": plays " + Selected() + ", expected " + row.Plays);
             // eng7-f6a: traverse the prepared replacement's actual continuation, not just the original parent.
             string corrected = correctedIntro.Continue.Cues.Select(reference => byGuid[reference.Guid])

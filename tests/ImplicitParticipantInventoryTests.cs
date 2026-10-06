@@ -18,10 +18,20 @@ internal static class ImplicitParticipantInventoryTests
         var state = new Snapshot { Chapter = scene.Chapters.FirstOrDefault(scene.MinChapter), Hour = 10000,
             Area = scene.Areas.FirstOrDefault() ?? "" };
         var visited = new HashSet<string>();
+        bool Compatible(string key, HashSet<string>? seen = null)
+        {
+            if (scene.Forbids.Contains(key) && !scene.ForbidOverrides.ContainsKey(key)) return false;
+            if (!story.Derived.TryGetValue(key, out var groups)) return true;
+            seen ??= new HashSet<string>();
+            if (!seen.Add(key)) return false;
+            bool result = groups.Any(g => g.All(k => Compatible(k, seen)));
+            seen.Remove(key); return result;
+        }
         void Earn(string key)
         {
             if (!visited.Add(key)) return;
-            if (story.Derived.TryGetValue(key, out var groups)) foreach (var flag in groups[0]) Earn(flag);
+            if (story.Derived.TryGetValue(key, out var groups))
+                foreach (var flag in groups.First(g => g.All(k => Compatible(k)))) Earn(flag);
             else state.Flags.Add(key);
         }
         foreach (var key in Program.Prerequisites(scene).Concat(extra)) Earn(key);

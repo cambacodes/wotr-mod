@@ -22,6 +22,11 @@ try {
 
     & $pythonPath expansion.py
     if ($LASTEXITCODE) { throw 'Expansion generation failed' }
+    # eng3-ab: earned payoff and current-availability contracts fail packaging on mechanical omissions.
+    & $pythonPath tools/payoff_lint.py --story development/Story.json --strict
+    if ($LASTEXITCODE) { throw 'Earned payoff contract validation failed' }
+    & $pythonPath tools/departure_lint.py --story development/Story.json --strict
+    if ($LASTEXITCODE) { throw 'Departure epoch contract validation failed' }
     # ENGINE-Q6A: cross-route audit debt is reported; existing findings do not fail packaging.
     & $pythonPath tools/crossroute_lint.py --story development/Story.json
     # Report mode returns zero even with findings. Strict baseline enforcement is opt-in.
