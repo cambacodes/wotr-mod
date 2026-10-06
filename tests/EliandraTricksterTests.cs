@@ -207,7 +207,15 @@ internal static class EliandraTricksterTests
         check(!Rules.Available(story, letter, Later(story, no, 10)) && Rules.Available(story, letter, Later(story, no, 60)),
             "Trk_Eliandra_NoLeaveAndKingList: the road letter is not 48 hours after the soft no.");
         var answered = One(letter, Later(story, no, 60), new[] { Committed, E + "letter_answered" });
-        check(Rules.Available(story, heart, Later(story, answered, 20)), "Trk_Eliandra_NoLeaveAndKingList: the letter's yes does not lead to the star-heart.");
+        check(!Rules.Available(story, heart, Later(story, answered, 20)),
+            "A written yes supplies an absent body at the star-heart.");
+        var journey = S(E + "ch5.return_from_fords");
+        check(!Rules.Available(story, journey, Later(story, answered, 20))
+              && Rules.Available(story, journey, Later(story, answered, 60)),
+            "Her acknowledged return does not retain the two-day journey.");
+        answered = One(journey, Later(story, answered, 60), new[] { E + "returned_from_fords" });
+        check(Rules.Available(story, heart, Later(story, answered, 20)),
+            "Her actual return does not reopen the accepted shrine visit.");
         // The King's Ch5 list is shared with the Table and Last Call (13 §7 (a)): every prior entry keeps its order; hers comes
         // after every route's entry; the frameworks' entries (Last Call's bottle, the Table's offer) follow all routes by
         // construction, and the Table's native opener is inserted after every scene entry (Main.cs), so it is never displaced.
@@ -264,7 +272,8 @@ internal static class EliandraTricksterTests
         // Trk_Eliandra_StarHeart (Directive 12): desire, the threshold, the cut, the morning with Katair.
         var night = One(heart, Later(story, yes, 20), new[] { E + "heart_seen", E + "charts" });
         check(new[] { "want", "robes", "wrist", "charts", "morning", "katair", "wrong" }.All(id => heart.Nodes.Any(n => n.Id == id))
-              && heart.Nodes.Single(n => n.Id == "charts").Choices.All(c => c.Next == "morning"),
+              && heart.Nodes.Single(n => n.Id == "charts").Choices.All(c => c.Next == heart.Id + ".explicit.1")
+              && heart.Nodes.Single(n => n.Id == heart.Id + ".explicit.1").Choices.All(c => c.Next == "morning" && c.Set.Length == 0),
             "Trk_Eliandra_StarHeart: the night is not staged to the cut and carried into the morning.");
         check(Rules.PresenceWanted(tavern, night) && !Rules.PresenceWanted(mark, night), "Trk_Eliandra_StarHeart: she does not come to the King's tavern after.");
         var ulbrig = reactions.Where(s => s.Owner == "Ulbrig").ToArray();
@@ -332,7 +341,7 @@ internal static class EliandraTricksterTests
         // strength on the page; her own offering is hers at the morning after.
         var roadScene = S(E + "drezen.road");
         check(roadScene.Nodes.Single(n => n.Id == "war").Choices.All(c => !c.Set.Contains(E + "drezen.road_promised") && c.Set.Contains(E + "drezen.road_open"))
-              && roadScene.Nodes.Where(n => n.Id != "war").SelectMany(n => n.Choices).Where(c => c.Set.Length > 0).All(c => c.Set.Contains(E + "drezen.road_promised")),
+              && roadScene.Nodes.Where(n => n.Id != "war" && n.Id != "war_letter").SelectMany(n => n.Choices).Where(c => c.Set.Length > 0).All(c => c.Set.Contains(E + "drezen.road_promised")),
             "A refused first spring still promises the road.");
         var together = S(E + "epilogue.together").Nodes.Single().Paragraphs;
         check(together.Single(p => p.Requires.Contains(E + "drezen.road_promised")).Forbids.Length == 0
@@ -386,8 +395,8 @@ internal static class EliandraTricksterTests
             "A friend who never showed interest is given a romance on the late page.");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
-        check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),
-            "Chapter 5 delivers more than the one soft-no letter by rest (ledger §4.2): " + string.Join(",", remote5));
+        check(remote5.SequenceEqual(new[] { E + "ch5.road_letter", E + "ch5.return_from_fords" }),
+            "Chapter 5 delivers other than the soft-no letter and its earned return: " + string.Join(",", remote5));
         var farewell = One(mile, Later(story, granted, 30), new[] { Closed });
         check(Rules.Available(story, S(E + "epilogue.closed"), World(story, 6, farewell.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.together"), World(story, 6, farewell.Flags.ToArray())),

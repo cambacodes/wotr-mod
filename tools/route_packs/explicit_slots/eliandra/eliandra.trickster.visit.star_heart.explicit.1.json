@@ -1,0 +1,26 @@
+{
+  "slot_id": "eliandra.trickster.visit.star_heart.explicit.1",
+  "voice": "ELIANDRA: precise, protective, severe when deceived; a devout priestess with dry practical humor, accustomed to giving directions and completing difficult work. Private appetite becomes direct once she chooses a lover. Brief imperatives, concrete corrections, occasional awkwardness without infantilization. Faith and service remain hers. New dialogue only; do not reuse the example or source quotations. Avoid therapy/HR language, poetic maxims, endless observation metaphors, modern pornography register or generic domination.",
+  "facts": [
+    "Native unit e349079a648cb15448a27f9049344bf1 is female, Chaotic Good and aasimar.",
+    "HeraldPulura/Cue_0009 (24d719b48b3195949b3d96a5afb5721b): discovered healing gift at thirteen; never married or had a family; devoted her life to service and received exceptional priestly strength. Childhood is nonsexual history only.",
+    "Elyandra_main/Cue_0050 (09ace5be98925f74da06c1ea967d461f): banned temple romances after Vestari and Cristry's quarrels disrupted research.",
+    "PuluraLeaderSaved/Cue_0026 (cb48db9773f775b428f0a5f20757145e): Pulura prolonged the inhabitants' lives for the mission.",
+    "PuluraLeaderSaved/Cue_0030 (28e3b35d52e24fb4da16778f68b2b1c2): she leads survivors to safety after the shrine is exposed.",
+    "No native sexual anatomy, measurements, virginity, erotic preferences or scar provenance is established by these facts. Do not add them."
+  ],
+  "scene": "Ch5, after commitment and the existing long ride to the evacuated star-heart at Pulura's Fall. The Commander and Eliandra are alone. She initiated kissing, loosened her robes and guided a hand to her bare waist; the old charts have begun to slide off the heavy table. Reserve their first consensual sexual encounter on the table, followed by lying together beneath her cloak. Required beats: she takes initiative after a moment of practical hesitation; desire does not erase her devotion to Pulura; she distinguishes choosing a lover from accepting release; a brief imperative in her exacting voice; the fallen charts remain recoverable; no witness or interruption during the act. Her confession about any attempted cheat was already collected; do not declare forgiveness. End before the existing morning when Katair arrives. Do not invent an earlier sex scene or specify the Commander's dialogue. Present-day adult intimacy only. This is a brief for a later user-selected fill; keep the staging and aftermath coherent in both Commander variants.",
+  "last_line": "N: Near dawn she draws her cloak over you both on the stone floor.",
+  "speakers": {
+    "E": "Eliandra"
+  },
+  "example": "N: Eliandra pushes the rolled chart beyond the candle and catches your sleeve.\nE: Leave that. Come closer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "default_text": "{n}Eliandra catches your wrist, pulls you down against her, and kisses you hard enough to silence the question on your lips. The last chart slips from the table.{/n}",
+  "placement": "charts -> appended explicit.1 -> existing morning"
+}

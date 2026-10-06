@@ -151,7 +151,7 @@ class EliandraPolishTests(unittest.TestCase):
         for suffix in ("", "_drezen", "_drezen_mark"):
             scene = self.scenes[E + "ch5.last_rite" + suffix]
             flirt = scene["Nodes"][0]["Choices"][1]
-            self.assertEqual([FLIRT], flirt["Set"])
+            self.assertEqual([FLIRT, "eliandra.started"], flirt["Set"])
             self.assertEqual("leave", flirt["Next"])
         flags, _, _ = self.play("ch5.packing", {E + "dead_named", "eliandra.shrine_left"}, {"her": 1})
         self.assertIn(FLIRT, flags)
@@ -180,7 +180,8 @@ class EliandraPolishTests(unittest.TestCase):
             for flags in ({LEAVE, LIGHTS, FLIRT}, {LEAVE, REWARD, FLIRT, E + "dead_named"}):
                 _, text, trace = self.play("visit.star_heart" + suffix,
                     {*flags, "eliandra.committed"}, {"want": 2, "want_rite": 2})
-                self.assertEqual("morning", trace[trace.index("charts") + 1])
+                self.assertEqual(E + "visit.star_heart" + suffix + ".explicit.1", trace[trace.index("charts") + 1])
+                self.assertEqual("morning", trace[trace.index("charts") + 2])
                 self.assertNotIn("promise", trace)
 
     def test_katair_and_lastcall_claim_only_their_earned_histories(self):
