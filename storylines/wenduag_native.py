@@ -20,9 +20,8 @@ ASCENT = "wenduag.trickster.epilogue.native_ascent"
 FORBIDS = ("wenduag.closed", "sacrifice", "wenduag.q3_killed", "wenduag.q3_sent_away", "wenduag.hello_sent_away", "wenduag.hello_attacked")
 
 SCENES = [scene(ASCENT, "", "WenduagEpilogue", 6, "", [
-    n("page", "Narrator", "{n}Wenduag refused to ascend with the Commander. Power that was handed to her was not power she had "
-      "taken, and she would not wear it. She walked her path alone, as she said, for solitude brings strength. It was "
-      "noticed that the path ran through the Commander's door every night, and that she never once explained this.{/n}",
+    n("page", "Narrator", "{n}Wenduag refused the offered ascent. She called it another master's bait. Her hunters stayed near Drezen, "
+      "and anyone who claimed the Commander had abandoned her was invited to say it within reach of her knife.{/n}",
       portrait="Wenduag")],
     # Engine-q2 (T6a): trickster.now. Her commitment is not provably a Trickster act, so the path is this edit's only
     # Trickster evidence; a run that left the path at a Chapter 4 failure or a Summit conversion keeps the native slide.

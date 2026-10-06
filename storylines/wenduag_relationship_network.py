@@ -63,67 +63,37 @@ SCENES = [scene(
     4,
     "[Recall Wenduag's jealousy at Vellexia's reception]",
     [
-        n("start", "Narrator", '''{n}The reception has thinned enough that the music no longer hides every conversation. Wenduag watches Vellexia across the room, her spider legs held close and still. She notices you noticing.{/n}
-"You remember that night," she says. "I was jealous. I told myself it was because she could take your attention away from me. That was true. It was not the whole truth."
-Her mouth tilts, amused at her own admission rather than softened by it.
-"She knew exactly how much the room was watching her, and she never once asked it to approve. I wanted to know whether that was courage, vanity, or simply another kind of weapon."''',
-          c('Ask whether she wants to meet Vellexia as a rival or as a possible equal.', "terms"),
-          c('Tell Wenduag you are not interested in turning jealousy into a contest.', "close")),
-        n("terms", "Wenduag", '''"A rival is useful. An equal is dangerous. A lover might be either, if she chose it." Wenduag studies your face, waiting to see if you will mistake the answer for a promise.
-"I am not asking you to arrange her for me. I am asking whether you want me to make an introduction. I can speak to her about the reception, the paintings, or the fact that she can unsettle a room without raising her voice. Then I can leave the two of you to decide whether there is anything worth continuing."
-She taps one claw lightly against her cup.
-"If she says no, I will not ask twice. If I decide I dislike the answer, that will be my problem to own."''',
-          c('Ask Wenduag what she wants from the introduction before you answer.', "her_terms"),
-          c('Decline. You will not make Vellexia part of a test.', "close")),
-        n("her_terms", "Wenduag", '''"A look at how she thinks when no audience is rewarding her. A chance to see whether her composure survives a question she did not choose." Her eyes narrow with frank appetite for the contest, but she does not dress it up as tenderness.
-"And perhaps the pleasure of discovering that she can surprise me. That is all I know. I will not pretend attraction because you might enjoy the arrangement."
-There is no softness in the admission, but there is care in its precision: Wenduag is giving you her actual motive before you involve anyone else.
-"You can still say no. I will be disappointed, not obediently grateful."''',
-          c('Agree to ask Vellexia whether she wants a private conversation with both of you.', "invite", flags=("wenduag.vellexia_network.started",)),
-          c('Tell Wenduag to approach Vellexia herself, without using you as a prize.', "wenduag_leads"),
-          c('Decline and leave Vellexia out of it.', "close")),
-        n("wenduag_leads", "Wenduag", '''Wenduag's laugh is low and pleased. "Better. If I want her attention, I should be able to earn it without hiding behind yours."
-She considers the room, then shakes her head. "Not tonight. The reception is still a stage, and I have no wish to confuse an audience's interest with hers. I will speak to her another time if there is a real reason. You have not promised me anything, and I will not claim that you did."''',
-          c('Leave the possibility open without making a promise.', flags=("wenduag.vellexia_network.started",)),
-          c('Close the subject.', "close")),
-        n("invite", "Narrator", '''{n}You approach Vellexia with Wenduag beside you, but stop before speaking for either of them.{/n}
-"Wenduag would like to ask you a question about the way you held the room tonight," you say. "I would like to join the conversation if you want that. This is an invitation, not a request for a favor, and you can refuse without explanation."
-Vellexia's gaze moves from you to Wenduag. "An unusually careful opening. Did you write it together?"
-"No," Wenduag says. "I chose to come. The Commander chose to ask. You choose what happens next."''',
-          c('Let Vellexia answer without filling the silence.', "vellexia_answer"),
-          c('Withdraw the invitation and leave her evening undisturbed.', "close")),
-        n("vellexia_answer", "Vellexia", '''"You asked me directly, which I appreciate," Vellexia says. "I have not agreed to anything beyond hearing the invitation."
-Wenduag's smile shows one sharp edge. "I would be disappointed if you made it easy."
-"Then let me make my own answer." Vellexia studies both of you, and the room stays quiet long enough for her to choose without being hurried.
-No one has agreed to romance, touch, or a shared arrangement. The question is only whether she wants one conversation.''',
-          c('Ask if Vellexia wants one conversation, with no expectation beyond that.', "vellexia_accepts"),
-          c('Give Vellexia space to decline the conversation.', "vellexia_declines", flags=("wenduag.vellexia_network.closed",)),
-          c('Leave the invitation unanswered and give them privacy.', "privacy")),
-        n("vellexia_accepts", "Vellexia", '''Vellexia gives a small, deliberate nod. "Yes. I will stay for one conversation. I am curious, and that is my reason. It is not a promise of another meeting, much less anything physical."
-Wenduag's expression sharpens with interest, but she does not move until Vellexia turns toward the alcove.
-"Then let us begin with the question I actually wanted to ask," Wenduag says. "How do you make a room full of people think you owe them nothing?"
-Vellexia's smile is slight. "Practice. And the occasional reminder that attention is not ownership."''',
-          c('Thank her and join the brief conversation.', "conversation", flags=("wenduag.vellexia_network.conversation_accepted",)),
-          c('Thank her and let the evening end here.', "privacy")),
-        n("conversation", "Narrator", '''{n}Vellexia asks Wenduag whether she believes every display of power is meant to command an audience. Wenduag answers that a display is useful only if someone changes their behavior after seeing it.{/n}
-"And what behavior did mine change?" Vellexia asks.
-"I watched you more carefully," Wenduag replies. "I have not decided what that means."
-Vellexia's amusement deepens, though her answer stays measured. "That is a better beginning than certainty. I may be willing to speak again, provided neither of you arrives believing the next conversation is owed."
-Wenduag accepts the condition without surrendering her pride. "Then let the next one be earned."''',
-          c('End the evening here without asking either woman for a next step.')),
-        n("privacy", "Narrator", '''{n}You leave them with the alcove and the right to end the conversation. When you see Wenduag again, she does not report Vellexia's private answer. She says only that she will decide whether to ask for another conversation, and Vellexia will decide whether to accept.{/n}
-"No secret agreement, then?" you ask.
-"No agreement you are entitled to hear," Wenduag replies. "If there is another step, the three of us can name it together. If there is not, you will not turn one polite conversation into a story about us."''',
-          c('Respect their privacy and leave the invitation unanswered.')),
-        n("vellexia_declines", "Vellexia", '''"No," Vellexia says, without making the word cruel. "I will not turn this evening into an experiment in whether you can make me curious. I accept the invitation as a compliment, and decline the conversation."
-Wenduag's expression tightens for a breath, then settles. "Understood."
-"Thank you for asking me directly," Vellexia adds. "Please do not ask again unless I bring it up myself."
-You leave her to the reception. Wenduag does not seek another answer from her tonight, and neither of you recasts this refusal as a challenge to overcome.''',
-          c("Respect Vellexia's refusal and leave the subject closed.", flags=("wenduag.vellexia_network.closed",))),
-        n("close", "Wenduag", '''Wenduag studies you for a moment, then inclines her head. "Good. I wanted an answer, not permission to ignore one."
-She returns her attention to the room. Her jealousy has been acknowledged, but it has not been converted into entitlement, and Vellexia has not been made responsible for soothing it.
-"Come," she says. "There are better uses for a night than arranging people like trophies."''',
-          c('Leave the subject closed.', flags=("wenduag.vellexia_network.closed",))),
+        n("start", "Narrator", '''{n}The reception is thinning. Wenduag watches Vellexia dismiss a guest with a touch to his cheek. He tries to kiss her hand; she pulls it away without looking at him.{/n} "Look at him. Still wagging his tail." {n}Wenduag bares her teeth.{/n} "I watched you like that once. Tonight I\'m watching her. I want to see what she does when someone bites back."''',
+          c('"You want to fight her?"', "terms"),
+          c('"Leave it, Wenduag."', "close")),
+        n("terms", "Wenduag", '''"I could walk over and show her my teeth. Half this room would come to watch." {n}She turns her cup between her fingers.{/n} "I\'d rather catch her without the audience. She can tell me to piss off. Then I\'ll know she hasn\'t got anything better to offer."''',
+          c('"What do you want from her?"', "her_terms"),
+          c('"Then keep away from her tonight."', "close")),
+        n("her_terms", "Wenduag", '''"I want to know whether she\'s quick when nobody\'s applauding." {n}Wenduag\'s gaze follows Vellexia\'s hands.{/n} "And I want her looking at me when she answers. You\'re not the only thing in this room worth wanting."''',
+          c('[Approach Vellexia.] "A word away from the music, Vellexia."', "invite", flags=("wenduag.vellexia_network.started",)),
+          c('"Get her attention yourself."', "wenduag_leads"),
+          c('"Leave her out of it."', "close")),
+        n("wenduag_leads", "Wenduag", '''{n}Wenduag laughs into her cup.{/n} "Fine. I\'ll get her attention myself." {n}She watches a fresh crowd close around Vellexia.{/n} "Not while those little dogs are yapping. I\'ve had enough of waiting for scraps."''',
+          c('[Leave her watching the reception.]', flags=("wenduag.vellexia_network.started",)),
+          c('"Enough of this."', "close")),
+        n("invite", "Narrator", '''{n}Vellexia sees Wenduag at your shoulder. Her gaze travels slowly over the hunter\'s hands.{/n} "You brought teeth to my reception. Are they for display?" {n}Wenduag sets down her cup.{/n} "Come out of the crowd and find out."''',
+          c('"And what do you say, Vellexia?"', "vellexia_answer"),
+          c('"Another time."', "close")),
+        n("vellexia_answer", "Vellexia", '''"The alcove, perhaps. I can hear the musicians from there, but not my guests." {n}Vellexia touches the stem of her glass without lifting it.{/n} "Tell me, little huntress: do you always need an audience to make a kill?"''',
+          c('"Come with us."', "vellexia_accepts"),
+          c('[Wait for her answer.]', "vellexia_declines", flags=("wenduag.vellexia_network.closed",)),
+          c('[Leave them to answer each other.]', "privacy")),
+        n("vellexia_accepts", "Vellexia", '''"Yes, come. Both of you. I have heard quite enough about the crusade\'s supply carts." {n}Vellexia hooks a finger through Wenduag\'s empty cup and carries it into the alcove.{/n} "You may have this back when you tell me something worth drinking to."''',
+          c('[Follow her into the alcove.]', "conversation", flags=("wenduag.vellexia_network.conversation_accepted",)),
+          c('[Leave the two women together.]', "privacy")),
+        n("conversation", "Narrator", '''{n}Vellexia asks how Wenduag would make hungry hunters eat from a stranger\'s hand. Wenduag\'s smile thins.{/n} "A knife behind them. Meat in front." {n}Vellexia laughs.{/n} "And here you are, watching my hands. How attentive." {n}Wenduag leans nearer.{/n} "I\'m watching where you hide the knife."''',
+          c('[Return to the reception.]')),
+        n("privacy", "Narrator", '''{n}Behind you, Vellexia\'s laugh rises over the music. Wenduag answers too softly to hear. When she rejoins you, she has her cup back and a fresh scratch across one knuckle.{/n} "She wanted to know why I carry a knife at a reception. I asked why she didn\'t need one." {n}Her grin shows all her teeth.{/n} "Go on. Guess which answer she liked."''',
+          c('"Keep your secrets, then."')),
+        n("vellexia_declines", "Vellexia", '''"No. I\'ve already been menaced by three pretty creatures tonight. One had better claws." {n}Vellexia turns her back on Wenduag and beckons another guest.{/n} "Your huntress may wait outside. I have better company."''',
+          c('[Leave her to the next guest.]', flags=("wenduag.vellexia_network.closed",))),
+        n("close", "Wenduag", '''{n}Wenduag sets her cup down hard enough to crack its stem.{/n} "Enough, then." {n}She watches Vellexia greet someone else, then turns toward the door.{/n} "Come on. Something outside this house must still have a throat worth cutting."''',
+          c('[Leave the reception.]', flags=("wenduag.vellexia_network.closed",))),
     ],
     requires=(RECEPTION_HISTORY,),
     forbids=("wenduag.vellexia_network.closed", "wenduag.dead", "vellexia.dead", "vellexia.early_fight", "vellexia.final_fight"),

@@ -138,15 +138,37 @@ def _variant(scene, source, target, text, flag=E + "returned"):
     original = next(node for node in scene["Nodes"] if node["Id"] == source)
     variant = copy.deepcopy(original)
     variant.update(Id=target, Text=text)
-    scene["Nodes"].append(variant)
-    for node in scene["Nodes"][:-1]:
+    # Primary echo nodes were already serialized; new polish nodes follow them.
+    _new = {"which_orchard", "own_orchard", "plain_orchard", "knife_down",
+            "reckoning_select", "reckoning_bought", "reckoning"}
+    if not scene["Id"].endswith(".native_visit"):
+        _at = next((i for i, node in enumerate(scene["Nodes"]) if node["Id"] in _new), len(scene["Nodes"]))
+        scene["Nodes"].insert(_at, variant)
+    else:
+        scene["Nodes"].append(variant)
+    orchard_target = {"which_back": "which_orchard", "own_built": "own_orchard", "plain": "plain_orchard"}.get(source)
+    for node in scene["Nodes"]:
+        for choice in node["Choices"]:
+            if orchard_target and choice.get("Next") == orchard_target:
+                choice.setdefault("Forbids", []).append(flag)
+    for node in scene["Nodes"]:
+        if node is variant:
+            continue
         for choice in list(node["Choices"]):
             if choice.get("Next") == source:
                 alternative = copy.deepcopy(choice)
                 choice.setdefault("Forbids", []).append(flag)
                 alternative["Next"] = target
+                # An echo return overrides an older orchard receipt, without duplicating the selector.
+                if source in ("which_back", "own_built", "plain"):
+                    alternative["Forbids"] = [f for f in alternative.get("Forbids", []) if f != W + "orchard_return"]
                 alternative.setdefault("Requires", []).append(flag)
-                node["Choices"].append(alternative)
+                if orchard_target and not scene["Id"].endswith(".native_visit"):
+                    _at = next((i for i, answer in enumerate(node["Choices"])
+                                if answer.get("Next") == orchard_target), len(node["Choices"]))
+                    node["Choices"].insert(_at, alternative)
+                else:
+                    node["Choices"].append(alternative)
 
 
 def integrate(payload):
@@ -182,26 +204,39 @@ def integrate(payload):
     for item in scenes.values():
         if item.get("TricksterDevice"):
             item.setdefault("Forbids", []).append(E + "ready")
-    _variant(scenes[W + "court.trial"], "which_back", "which_echo",
-        '''"You caught me by the belt, uplander. There's nothing to catch tonight."
-{n}Her knee bears down on your chest.{/n} "Let's see how quick those hands really are."''')
-    _variant(scenes[W + "court.cairn"], "own_built", "own_echo",
-        '''"I built it myself, after you brought me here. I carried every stone down this stair."
-{n}Her hand closes over yours on the rough edge.{/n} "You caught me once.
-Next time I fall, nobody gets to choose where I lie."''')
-    _variant(scenes[W + "court.cairn"], "cut", "cut_echo",
-        '''{n}She pushes the knife out of reach and catches your wrists against the cold stones.
-Her mouth follows the pulse in your throat. When you pull her closer, she laughs into your skin.{/n}
-"Still quick, uplander?" {n}Her fingers close on your belt. The lamp goes out.{/n}''')
-    _variant(scenes[W + "court.stinger"], "plain", "plain_echo",
-        '''"He's dead." {n}She stares at the spike.{/n} "And I was shut up here with a hole in my side.
-It should have been my hand. I'll keep this. There's still plenty of his kind to kill."''')
+    _knife = next(node for node in scenes[W + "court.cairn"]["Nodes"] if node["Id"] == "knife")
+    _knife_echo = copy.deepcopy(_knife["Choices"][0])
+    _knife["Choices"][0].setdefault("Forbids", []).append(E + "returned")
+    _knife_echo.setdefault("Requires", []).append(E + "returned")
+    _knife["Choices"].append(_knife_echo)
+    for _twin in ("", ".native_visit"):
+        _variant(scenes[W + "court.trial" + _twin], "which_back", "which_echo",
+            '''"You caught me by the belt, uplander. There's nothing to catch tonight."
+    {n}Her knee bears down on your chest.{/n} "Let's see how quick those hands really are."''')
+        _variant(scenes[W + "court.cairn" + _twin], "own_built", "own_echo",
+            '''"I built it myself, after you brought me here. I carried every stone down this stair."
+    {n}Her hand closes over yours on the rough edge.{/n} "You caught me once.
+    Next time I fall, nobody gets to choose where I lie."''')
+        _variant(scenes[W + "court.cairn" + _twin], "cut", "cut_echo",
+            '''{n}She presses you back against the cold stones, bare skin sliding against yours. Her mouth follows the pulse in your throat. When you pull her nearer, she bites your shoulder and laughs into the mark.{/n} "Still quick, uplander?" {n}You catch her wrist. She twists free, hooks her hands behind your neck and pulls you against her. Her mouth meets yours before she can laugh again.{/n} "Catch me again." {n}The bell above the stair sounds once, then again.{/n}''')
+        _variant(scenes[W + "court.stinger" + _twin], "plain", "plain_echo",
+            '''"He's dead." {n}She stares at the spike.{/n} "And I was shut up here with a hole in my side.
+    It should have been my hand. I'll keep this. There's still plenty of his kind to kill."''')
     # No conditional paragraphs on conversational pages, including the Regill reaction.
     regill = scenes[W + "react.regill_watch"]
     echo_regill = copy.deepcopy(regill)
     echo_regill["Id"] = W + "react.regill_echo"
+    echo_regill["Reaction"] = True
     echo_regill["Requires"].extend(["trickster.now", E + "returned"])
     echo_regill["Forbids"] = [f for f in echo_regill["Forbids"] if f != regill["Id"]] + [echo_regill["Id"]]
+    # P12: the echo has no legacy burial; retain its original start and exit.
+    echo_regill["RequiresAnyGroups"] = [group for group in echo_regill.get("RequiresAnyGroups", [])
+        if group != [W + "cairn_built", W + "abyss_cairn", W + "street_cairn"]]
+    if not echo_regill["RequiresAnyGroups"]:
+        echo_regill.pop("RequiresAnyGroups")
+    echo_regill["Nodes"] = [echo_regill["Nodes"][0]]
+    _exit = copy.deepcopy(next(node for node in regill["Nodes"] if node["Id"] == "neathholm")["Choices"][0])
+    echo_regill["Nodes"][0]["Choices"] = [_exit]
     echo_regill["Nodes"][0]["Text"] = '''{n}Regill closes his ledger.{/n} "A traitor who served Savamelekh has been carried into Drezen with your supplies.
 She answers to no muster roll. Your soldiers see her pass the gate and know whose protection she has."
 {n}He opens the ledger again.{/n} "Should she resume her former employment, I will act.
@@ -231,9 +266,8 @@ Your hook will have to be faster than my axe."'''
     payload["Scenes"].extend(emitted)
     # Authored aftermath of this paid rescue, not a second return or an invitation.
     payload["Scenes"].append(scene(E + "epilogue.departed", "", "WenduagEpilogue", 6, "", [
-        nar("page", "{n}Wenduag left Drezen with the torn belt wound round her wrist. The Commander had ordered her out, alive. "
-            "She took her knife and went east, where the Wound had left things worth hunting. "
-            "The hook stayed behind. She never came back for it.{/n}", c("Continue")),
+        nar("page", "{n}Wenduag left Drezen with her knife and the torn belt. At the south postern she stopped long enough "
+            "to cut the belt in two. She took both pieces with her. There was no second invitation.{/n}", c("Continue")),
     ], requires=("trickster.ever", "wenduag.closed", E + "departed", "wenduag.life.available"),
        forbids=("wenduag.committed", E + "unavailable", "sacrifice"),
        ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=6, Relationship="wenduag"))

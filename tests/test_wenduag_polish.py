@@ -1,0 +1,114 @@
+"""Reviewed Wenduag history routing and source/export twin contracts."""
+import json
+from pathlib import Path
+import unittest
+
+W = "wenduag.trickster."
+E = W + "echo.abyss."
+
+
+class WenduagPolishTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.story = json.loads(Path(__file__).resolve().parents[1].joinpath("development/Story.json").read_text())
+        cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
+
+    def node(self, suffix, id):
+        return next(n for n in self.scenes[W + suffix]["Nodes"] if n["Id"] == id)
+
+    def enabled(self, node, flags):
+        return [c for c in node["Choices"] if set(c.get("Requires", ())) <= flags
+                and not set(c.get("Forbids", ())) & flags]
+
+    def test_orchard_origin_is_produced_by_return_only(self):
+        hunt = self.scenes[W + "exile.ch5_hunt"]
+        producers = [(n["Id"], i) for n in hunt["Nodes"] for i, c in enumerate(n["Choices"])
+                     if W + "orchard_return" in c.get("Set", ())]
+        self.assertEqual([("back", 0)], producers)
+        self.assertNotIn(W + "death_promised", self.node("exile.ch5_hunt", "sava")["Choices"][0]["Set"])
+        orchard = set(self.node("exile.ch5_hunt", "back")["Choices"][0]["Set"])
+        for twin in ("", ".native_visit"):
+            for scene, node, target in (("court.trial", "her", "which_orchard"),
+                                         ("court.cairn", "stones", "own_orchard"),
+                                         ("court.stinger", "her", "plain_orchard")):
+                with self.subTest(scene=scene, twin=twin):
+                    self.assertEqual([target], [c["Next"] for c in self.enabled(self.node(scene + twin, node), orchard)])
+                    self.assertNotIn(target, [c["Next"] for c in self.enabled(self.node(scene + twin, node), {W + "returned"})])
+            promised = orchard | {W + "death_promised"}
+            self.assertEqual(["promised"], [c["Next"] for c in self.enabled(self.node("court.stinger" + twin, "her"), promised)])
+
+    def test_echo_and_orchard_selectors_are_exclusive(self):
+        echo_return = set(self.node("echo.abyss.return", "stay")["Choices"][0]["Set"])
+        for twin in ("", ".native_visit"):
+            for suffix, node, target in (("trial", "her", "which_echo"),
+                                         ("cairn", "stones", "own_echo"),
+                                         ("stinger", "her", "plain_echo")):
+                for flags in (echo_return, echo_return | {W + "orchard_return"}):
+                    self.assertEqual([target], [c["Next"] for c in self.enabled(self.node("court." + suffix + twin, node), flags)])
+
+    def test_betrayal_reckoning_has_an_exit_in_bought_and_unbought_histories(self):
+        for twin in ("", ".native_visit"):
+            start = self.node("court.trial" + twin, "start")
+            for flags, target in ((set(), "her"), ({"wenduag.q3_betrayed_you"}, "her"),
+                                  ({"wenduag.q3_betrayed_you", "wenduag.q3_spared"}, "reckoning_select")):
+                self.assertEqual([target], [c["Next"] for c in self.enabled(start, flags)])
+            select = self.node("court.trial" + twin, "reckoning_select")
+            self.assertEqual(["reckoning"], [c["Next"] for c in self.enabled(select, set())])
+            self.assertEqual(["reckoning_bought"], [c["Next"] for c in self.enabled(select, {W + "bought"})])
+
+    def test_regill_legacy_location_and_echo_exit(self):
+        self.assertFalse(self.scenes[W + "react.regill_watch"].get("Reaction", False))
+        start = self.node("react.regill_watch", "start")
+        for receipt, target in (("cairn_built", "neathholm"), ("abyss_cairn", "abyss"), ("street_cairn", "street")):
+            self.assertEqual([target], [c["Next"] for c in self.enabled(start, {W + receipt})])
+        self.assertEqual([], self.enabled(start, {W + "orchard_return"}))
+        echo = self.scenes[W + "react.regill_echo"]
+        self.assertTrue(echo["Reaction"])
+        self.assertEqual(["start"], [n["Id"] for n in echo["Nodes"]])
+        self.assertNotIn([W + "cairn_built", W + "abyss_cairn", W + "street_cairn"], echo.get("RequiresAnyGroups", []))
+        self.assertEqual(1, len(self.enabled(echo["Nodes"][0], set())))
+        self.assertFalse(echo["Nodes"][0]["Choices"][0].get("Next"))
+
+    def test_all_intimacy_branches_reach_matching_cut_and_twin_completion(self):
+        for twin in ("", ".native_visit"):
+            for rescue in (set(), {E + "returned"}):
+                scene = self.scenes[W + "court.cairn" + twin]
+                for branch in ("decide", "knife", "roll"):
+                    flags = set(rescue)
+                    node = self.node("court.cairn" + twin, branch)
+                    seen = set()
+                    while True:
+                        self.assertNotIn(node["Id"], seen)
+                        seen.add(node["Id"])
+                        enabled = self.enabled(node, flags)
+                        self.assertEqual(1, len(enabled), (twin, rescue, branch, node["Id"]))
+                        answer = enabled[0]
+                        flags.update(answer.get("Set", ()))
+                        if not answer.get("Next"):
+                            self.assertEqual("cut_echo" if rescue else "cut", node["Id"])
+                            self.assertIn(W + "court.cairn", flags)
+                            break
+                        node = next(n for n in scene["Nodes"] if n["Id"] == answer["Next"])
+                    if branch == "knife":
+                        self.assertIn("knife_down", seen)
+                        self.assertIn(W + "cairn.knife_held", flags)
+
+    def test_twin_text_and_terminal_effects_match_templates(self):
+        for suffix in ("trial", "gate", "stinger", "cairn", "morning", "vellexia", "yaniel", "neathers", "hunt", "gongs"):
+            primary = self.scenes[W + "court." + suffix]
+            twin = self.scenes[primary["Id"] + ".native_visit"]
+            primary_text = {n["Id"]: n["Text"] for n in primary["Nodes"]}
+            # The engine inventory adds a saved primary-only unavailable-participant
+            # acknowledgment after cloning. All route-authored template nodes match.
+            if suffix == "vellexia":
+                self.assertIn("remembered", primary_text)
+                primary_text.pop("remembered")
+            self.assertEqual(primary_text, {n["Id"]: n["Text"] for n in twin["Nodes"]})
+            for node in twin["Nodes"]:
+                for answer in node["Choices"]:
+                    if not any(answer.get(k) for k in ("Next", "Check", "Abort")):
+                        self.assertIn(primary["Id"], answer.get("Set", ()))
+
+
+if __name__ == "__main__":
+    unittest.main()

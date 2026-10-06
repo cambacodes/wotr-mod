@@ -349,8 +349,9 @@ internal static class WenduagTricksterTests
               && Paid(streetFall, streetUnbought) >= 50,
             "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
         var regill = S(P + "react.regill_watch");
-        check(regill.Reaction && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
-              && mine.Count(s => s.Reaction) == 5
+        check(!regill.Reaction && regill.Nodes.Count == 4 && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
+              && mine.Count(s => s.Reaction) == 4
+              && S(P + "react.regill_echo").Reaction
               && S(P + "react.regill_echo").Requires.Contains(Rules.WenduagEchoPrefix + "returned")
               && regill.Forbids.Contains(Rules.WenduagEchoPrefix + "returned"),
             "Trk_Wenduag_Reactors: the allocated reactors (Lann, Irabeth, Regill) are not all present and guarded.");

@@ -14,7 +14,7 @@ internal static class WenduagNativeAscentTests
         var variants = Rules.EditVariants(edit);
         var scenes = Rules.EditScenes(story, variants);
         check(edit.Page == "223fd069ee25c784db2df011adbf10f8" && variants.Length == 1 && scenes[0]?.Relationship == "wenduag"
-              && scenes[0]!.Nodes[0].Text.Contains("refused to ascend"), "Trk_Wenduag_Ascent: the edit is not her own refusal on BookPage_0349.");
+              && scenes[0]!.Nodes[0].Text.Contains("refused the offered ascent"), "Trk_Wenduag_Ascent: the edit is not her own refusal on BookPage_0349.");
         var rows = new (string What, string[] Flags, bool Plays)[]
         {
             ("committed", new[] { "trickster", "trickster.ever", "wenduag.committed" }, true),
