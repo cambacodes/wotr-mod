@@ -29,11 +29,11 @@ COURIER_SILENT = E + "courier.silent"
 
 
 def visit(id, title, nodes, requires, forbids=(), delay=24, last=5, chapter=5, chapters=(5,), optional=True, kind="visit",
-          portable=False):
+          portable=False, areas=None):
     """portable=False: a Drezen encounter, delivered at a rest in the capital. The courier and the Threshold visit travel."""
     SCENES.append(scene(id, title, "Elyanka", chapter, "", nodes, requires=("trickster.ever", *requires),
                         forbids=(CLOSED, *forbids), delay=delay, last=last, optional=optional, Relationship=REL,
-                        Remote=True, Kind=kind, Chapters=list(chapters), **({} if portable else dict(Areas=[DREZEN]))))
+                        Remote=True, Kind=kind, Chapters=list(chapters), **(dict(Areas=areas) if areas else ({} if portable else dict(Areas=[DREZEN])))))
     tag(id, "T")
 
 
@@ -114,7 +114,7 @@ visit(E + "beat.writ", "A writ from the chaplains", [
         c("Continue", "upheld2")),
     el("upheld2", '''{n}Elyanka lets out a breath, slowly, through her teeth, as if she had been holding it since the asylum.{/n}
 "You stood in front of your own priests for a priestess of my Lady. On the law. In daylight." {n}Her eyes are very bright.{/n} "Do you understand what you have done? In Caliphas they will not believe it. In Nerosyan they will never forgive it. Those chaplains will pray for your soul every night until they die, and they will mean every word."
-"No crusader has stood up for my Lady's priesthood in a Mendevian yard since the Shining Crusade. I find it quite unbearable. Go away before I say something foolish."''',
+"Those three came to drive me out. You made them hear my oath instead, with their own soldiers watching. I find it quite unbearable. Go away before I say something foolish."''',
        c("[Go away.]", flags=(WRIT_UPHELD,))),
     nar("lied", '''{n}The grey chaplain looks at you, and at her, and at the six men in grey behind her who do not breathe as men should. He does not believe you. He is too old to believe anybody. But you are the Commander, and it is your seal, and after a while he rolls up his writ and goes, with his young colleague glaring back at the hearse all the way to the gate.{/n}''',
         c("Continue", "lied2")),
@@ -143,7 +143,7 @@ visit(E + "beat.hunt", "Venison", [
        c("[Be still.]", "kill"),
        c("[Be quick. Get between the stag and the trees.]", "kill_quick")),
     nar("kill", '''{n}He comes out of the dark at a run, a big grey hart with a heavy neck, and her escort close in behind him without a sound, and he turns, and turns again, and there is nowhere left. She walks up to him while he is still deciding. She does not hurry.{/n}
-{n}The knife goes in under the jaw. She holds his head against her body with one arm, like a lover, until he stops, and then a while longer.{/n}''',
+{n}The knife goes in under the jaw. She holds his head against her body with one arm until he stops, and then a while longer.{/n}''',
         c("Continue", "fire")),
     nar("kill_quick", '''{n}He comes out of the dark at a run, a big grey hart, and you are where he wants to go. For one moment there is nothing in the world but his antlers and your arms, and then he swerves, and stumbles, and she is there, and the knife goes in under his jaw.{/n}
 {n}She holds his head against her body while he dies. Then she looks at you, flushed and breathless and bruised across the forearm, and laughs out loud.{/n} "Useful after all."''',
@@ -203,7 +203,7 @@ TABLE_CHOICES = (
 )
 
 visit(E + "beat.table", "Her Lady's table", [
-    nar("start", '''{n}The seventh night. The dead-house has been hung with grey cloth, and the long room is full of candles and the smell of roasting fat. There are perhaps thirty people at the long table, masked in plain grey half-masks, in their ordinary clothes: a baker's apron, a sergeant's coat, the good wool of a merchant's wife. People of Drezen. People of your crusade.{/n}
+    nar("start", '''{n}Preparations for her Lady's feast have filled the dead-house with grey cloth, and the long room is full of candles and the smell of roasting fat. There are perhaps thirty people at the long table, masked in plain grey half-masks, in their ordinary clothes: a baker's apron, a sergeant's coat, the good wool of a merchant's wife. People of Drezen. People of your crusade.{/n}
 {n}At the head of the table, unmasked, in her grey robe, sits Elyanka. There is an empty chair at her right hand.{/n}''',
         c("Continue", "welcome")),
     el("welcome", '''"Commander." {n}Thirty masked faces turn toward you at once.{/n} "Do not look so surprised. Our church has more followers than it seems. It always has. They simply hide from the zealous eye of their enemies, and eat well when nobody is looking."
@@ -218,7 +218,7 @@ visit(E + "beat.table", "Her Lady's table", [
     el("choose", '''"Sit, and eat what my Lady's people have brought, and nobody here will ever forget it. Or stand at the door and keep it, as a crusader would. Or go home and pretend you were never here." {n}She pours wine into the cup at the empty place, dark and thick.{/n}
 "Each of those is an answer. I will remember which."''',
        *TABLE_CHOICES,
-       c('[Ask] "Who else has been watching your door?"', "nidalynn", requires=("nidalynn.started",))),
+       c('[Ask] "Who else has been watching your door?"', "nidalynn", requires=("nidalynn.started", "crossroute.nidalynn.available"))),
     nar("sit", '''{n}You sit. Thirty grey masks watch you do it, and then the talk starts again, low, and the dishes go round: fat meat, black pudding, honeyed things, bread soaked in red wine. You do not ask what anything is. Elyanka tells you anyway, in your ear, dish by dish, and not all of it is venison.{/n}
 {n}At midnight they sing, softly, because there are sentries on the walls. The baker in the apron weeps openly. The sergeant holds his cup up to the rafters. Elyanka does not sing. She watches you listen, and her cold hand lies on the back of your neck under your hair, and stays there.{/n}''',
         c("Continue", "sit2")),
@@ -240,7 +240,7 @@ visit(E + "beat.table", "Her Lady's table", [
 # --- 6. Chapter 6 (T, optional): the collateral, inspected before the Threshold. ------------------------------------------
 
 visit(E + "ch6.collateral", "The collateral, inspected", [
-    nar("start", '''{n}The army is two days' march from the Threshold, camped on black glass under a sky the colour of a bruise, and somewhere behind the baggage train a hearse with glass sides has been following it since Drezen. Nobody gave it leave. Nobody stopped it.{/n}
+    nar("start", '''{n}The army has made camp outside Threshold, on black glass under a sky the colour of a bruise. Behind the baggage train stands the glass-sided hearse that followed it from Drezen. Nobody gave it leave. Nobody stopped it.{/n}
 {n}Tonight she walks into your tent without asking, in her grey robe, and sits down on the end of your camp bed as if it were hers.{/n}''',
         c("Continue", "inspect", requires=(BIER,)),
         c("Continue", "inspect_debt", forbids=(BIER,))),
@@ -271,7 +271,7 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
 "You would send your creditor home on the eve of the settlement." {n}Then the corner of her mouth goes up.{/n} "Very well. I will sit in the dead-house by the south gate with a candle, and wait for the news, like a widow. It will be a new experience. I do not expect to enjoy it."
 "Do not make me drive this hearse all the way back to Drezen for nothing, Commander. One way or another, bring me something."''',
        c("[Let her go.]", flags=(IN_DREZEN,))),
-], requires=(OWNED,), forbids=(AT_RIFT, IN_DREZEN), delay=0, last=6, chapter=6, chapters=(6,), portable=True)
+], requires=(OWNED,), forbids=(AT_RIFT, IN_DREZEN), delay=0, last=6, chapter=6, chapters=(6,), portable=True, areas=["10c4b0e2af186ba46ab4d238d00a40a8"])
 
 
 # --- 8. The Way's tongue (T, optional): a secret for a secret, in a whisper. ----------------------------------------------
@@ -342,7 +342,7 @@ visit(E + "beat.fitting", "A box that pinches", [
 "Impertinent." {n}She stands, and unlaces her boots, and steps up onto the trestle, and lies down in the red cloth with her grey robe settled around her and her hands folded on her breast, perfectly composed, like a queen on a tomb.{/n}
 "Look, then. You wanted to see."''',
        c("Continue", "first2")),
-    nar("first2", '''{n}It is too big for her. She lies in it like a child in her father's boots, and she knows it, and her mouth twists.{/n}
+    nar("first2", '''{n}She lies rigid on the red cloth, her jaw clenched, her boots set neatly beneath the trestle.{/n}
 {n}You look at her there for a long while: the silver hair spread on the red, the pale throat, the strong hands folded and still. When she opens her eyes you are still looking, and she sees what is in your face, and for once she has nothing sharp to say about it.{/n}
 "Help me out," {n}she says instead.{/n} "It is not mine. It will never be mine. And it is very cold."''',
         c("[Lift her out.]", flags=(FIT_HER,))),
@@ -366,7 +366,7 @@ visit(E + "beat.master", "A master from Caliphas", [
     el("courier", '''"The master from the house on the Ustalav road," {n}she says, without turning her head.{/n} "The one my courier told you about. He did not believe me about the goods. He has come to look at them himself."''',
        c("Continue", "master")),
     n("master", "Master of the Way", '''"Knight Commander." {n}His voice is soft and dry, like paper being folded.{/n} "The Way congratulates you on your health. It is excellent. That is, if you will forgive me, the difficulty."
-"Our sister was sent to collect a corpse. She has instead collected a debtor, who may live thirty years. The Way is patient, but it is not a pawnbroker. The masters in Caliphas would like the terms improved." {n}He smiles.{/n} "We would not dream of harming you. We only propose that the date be... discussed."''',
+"Our sister was sent to collect a corpse. She has instead collected a debtor, who may keep us waiting generations. The Way is patient, but it is not a pawnbroker. The masters in Caliphas would like the terms improved." {n}He smiles.{/n} "We would not dream of harming you. We only propose that the date be... discussed."''',
       c('"Discussed how?"', "how"),
       c('"The terms were whispered. They don\'t change."', "terms")),
     n("how", "Master of the Way", '''"Kindly. There are gentle ways to die, Commander, and the Way knows all of them. And after the death, a far better existence than this one: no fear, no fatigue, no end. Our sister has told you what undeath is. It is the truest form there is." {n}He folds his small hands.{/n} "You would be offered it. A mythic mind in a mythic body that never tires. The masters would be honoured."
@@ -388,7 +388,7 @@ visit(E + "beat.master", "A master from Caliphas", [
 "You understand that he is my master," {n}she says,{/n} "and that I have just had him killed for you." {n}She considers this.{/n} "No. For my Lady. A master who would hurry an offering to her table half-ripe insults her. I have done her a service tonight." {n}She smiles, showing strong white teeth.{/n} "And the Way will learn that the priestess in Drezen keeps her collateral the way she keeps her faith: with a knife."''',
        c("Continue", "kill2")),
     nar("kill2", '''{n}Three days later a carriage is found in a ditch on the Ustalav road, south of the Mendevian border, with its horses gone and nobody inside it. The report reaches your desk as an item of no great interest, between a bill for tallow and a complaint about a sergeant.{/n}
-{n}That night she is waiting in your quarters, and she does not mention it, and neither do you. She is hungrier than you have ever seen her.{/n}''',
+{n}That night she is waiting in your quarters. She pushes the report aside, catches your collar and pulls you against her. Her fingers shake once before they tighten. "The date stays where I put it," she says against your mouth. "Not tonight."{/n}''',
         c("Continue", flags=(MASTER_KILLED,))),
     el("escort", '''{n}Her eyes narrow.{/n} "Twelve crusaders. To see a master of the Whispering Way safe out of your country." {n}She draws a long breath.{/n}
 "You are a fool, Commander. He will reach Caliphas, and he will speak, and the Way will remember that you protected the man who came to hurry your death. That is the kind of thing the Way finds interesting."
@@ -442,15 +442,15 @@ visit(E + "beat.daeran_bottle", "A bottle older than she is", [
     nar("start", '''{n}There is a bottle on the trestle in the dead-house, black glass furred with the dust of a cellar, with a label so old it has gone the colour of tea, and a card propped against it in a hand of extravagant loops: *With the compliments of the house of Arendae, on the occasion of a funeral that has not yet happened. Do try not to enjoy it.*{/n}
 {n}Elyanka is already turning the bottle to the candle to read the year, and her nostrils are flared like a hound's.{/n}''',
         c("Continue", "her")),
-    el("her", '''"Your count sent this." {n}She does not touch it.{/n} "A count with a crypt full of relatives and a face like a spoiled cherub. He looked at me across the lane yesterday the way a cat looks at a bird it has already eaten in its mind."
-"He means it as a lesson. He thinks a woman from the Ustalav hills has never tasted anything older than her grandmother, and he wants to watch me learn." {n}Her mouth thins.{/n} "I will drink every drop of his lesson, and he will never hear that I liked it. Open it."''',
+    el("her", '''"Your count sent this." {n}She does not touch it.{/n} "A count with a crypt full of relatives and a face like a spoiled cherub. The bottle was dispatched when he made his funeral offer. His servants have taken their time delivering it."
+"He meant it as a lesson. He thought a woman from the Ustalav hills has never tasted anything older than her grandmother, and wanted to watch me learn." {n}Her mouth thins.{/n} "I will drink every drop of his lesson, and he will never hear that I liked it. Open it."''',
        c("[Open it and pour for both of you.]", "pour")),
     nar("pour", '''{n}The cork crumbles. The wine is so dark it is almost black, and it smells of dust, and plums, and something underneath like the inside of an old church. She breathes it in with her eyes shut, greedily, the way she eats, and drinks the whole cup slowly, and makes a low sound in her throat that is almost indecent.{/n}
 {n}Then she holds the cup out to be filled again, without opening her eyes.{/n}''',
         c("Continue", "verdict")),
     el("verdict", '''"It is older than I am," {n}she says, after the second cup.{/n} "It was made before my father was born, and it has outlived him, and it has been waiting in the dark all this time to be drunk by someone who deserved it. That is what my Lady promises. That is exactly it."
-{n}She sets the cup down very carefully.{/n} "Tell your count that it was mediocre and I did not finish it. Tell him in those words. Then bring me the rest of the case."''',
-       c("[Promise to tell him exactly that.]", flags=(DAERAN_TASTED,))),
+{n}She sets the cup down very carefully.{/n} "My verdict for your count: mediocre; did not finish it; send the rest. Should his house ever ask, give them those words. Not a word about the cork. I am keeping it."''',
+       c("[Pour what remains.]", flags=(DAERAN_TASTED,))),
 ], requires=(E + "daeran_ally",), forbids=(DAERAN_TASTED,), delay=24, last=5)
 
 
@@ -515,7 +515,7 @@ visit(E + "beat.tyrant", "The Tyrant's seals", [
        c("[Say nothing. Let her talk.]", "talk")),
     el("why", '''"Because you hold my claim, and I hold yours, and between two such people there should be something worth knowing." {n}She pours for you.{/n} "And because you will not live to see it, whatever you do. You will be on my Lady's table long before he walks out of that tower."''',
        c("Continue", "talk")),
-    el("talk", '''"When he comes back," {n}she says, and there is something almost girlish in her face, which is the most frightening thing you have seen on it,{/n} "Ustalav will be what it was. The counts will kneel. The churches of the grey warden will be shut. My Lady will be worshipped openly in every town from Caliphas to Lastwall, and the dead will walk in the streets in daylight, and nobody will be afraid of them, because everyone will be one."
+    el("talk", '''"When he comes back," {n}she says, and her eyes brighten as she traces the road to Gallowspire with one hard fingertip,{/n} "Ustalav will be what it was. The counts will kneel. The churches of the grey warden will be shut. My Lady will be worshipped openly in every town from Caliphas to Lastwall, and the dead will walk in the streets in daylight, and nobody will be afraid of them, because everyone will be one."
 "I will see it. My Lady will have adopted me by then. I will stand at his gate with a cup in my hand." {n}She drinks.{/n} "You will be under glass in Caliphas, preserved, very handsome. I shall visit."''',
        c("Continue", "choice")),
     nar("choice", '''{n}She is a little drunk, or wants you to think so. She has told you the name of a prison, the state of its seals, and the hopes of an order that has hidden for six hundred years. Somewhere in Lastwall, on the other side of the map, there are knights whose whole lives are spent watching that black tower, and who would give a great deal for one evening like this.{/n}''',
@@ -703,20 +703,34 @@ visit(E + "beat.inquiry", "The paladin's questions", [
     el("truth", '''{n}She looks at you for some time, and her face does not move at all.{/n}
 "You will tell a paladin of the Inheritor that you gave sixty-one of her crusade's dead to a priestess of Urgathoa, for nothing, on a whim, to see what I would do." {n}A dry breath.{/n} "She will never look at you the same way again. Neither will I."
 "Go and do it, then. I will stay out of her road. I have no wish to be struck by a woman praying." {n}At the door she adds, without turning round:{/n} "It was very stupid, and very honest. I do not know which I dislike more."''',
-       c("[Go and find Seelah.]", flags=(INQUIRY_TRUTH, "trickster.secret.elyanka_siege_dead.known.seelah"))),
+       c("[Go and find Seelah.]", "confess")),
     nar("mislead", '''{n}At your order, the watch drags two resurrection men out of the lower town, men who have sold bodies to a hedge-necromancer in Kenabres. The captain needs a confession about Elyanka's carts. He gets one with a locked cellar and a mailed fist. One of the prisoners confesses to things he did and to several he did not, and hangs at the south gate with a placard on his chest.{/n}
-{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang. Afterwards she has nothing to say to you.{/n}''',
-        c("Continue", "mislead2")),
+{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang. Afterwards she unfolds the two carters' testimony before the captain. The captain looks toward the citadel.{/n}''',
+        c("Continue", "mislead_witness")),
     el("mislead2", '''"You hanged a man for my carts." {n}Elyanka does not sound shocked. Her pale eyes settle on you with fresh interest.{/n}
-"A thief, and a liar, and he would have died of something stupid in a year anyway. My Lady will have him, since your paladin's goddess will not." {n}She almost smiles.{/n} "Your paladin did not believe you, Commander. She simply could not prove it. Remember that she will go on not believing you, every day, for as long as you know each other."''',
+"A thief, and a liar, and he would have died of something stupid in a year anyway. My Lady will have him, since your paladin's goddess will not." {n}She almost smiles.{/n} "Your paladin did not believe you, Commander. She has the carters. What she does not have is an order to bring my carts back over the border. Remember that she will go on not believing you, every day, for as long as you know each other."''',
        c("[Let it lie.]", flags=(INQUIRY_MISLED,))),
     el("hers", '''"Mine." {n}Something like approval.{/n} "Yes. It was my cart."
 {n}The next morning Seelah is at the gate of the yard with her lamp and her sword. Elyanka receives her standing by the hearse, and tells her, in plain words, that the sixty-one went to Ustalav, and that they will never be buried, and that the Knight Commander allowed it. She does not lie once.{/n}
-{n}Seelah does not draw. She looks at the hearse, and at the woman beside it, and then she turns and walks back up the lane without a word, and you hear later that she went straight to the chapel and stayed there until dark.{/n}''',
-        c("Continue", "hers2")),
-    el("hers2", '''"She did not strike me," {n}Elyanka says, that evening, sounding almost disappointed.{/n} "She asked me whether they had suffered. I told her the dead do not suffer; only the living, who bury them." {n}She pours wine.{/n}
+{n}Seelah does not draw. She plants her lamp on the step of the hearse and faces Elyanka. Behind the priestess, the six men in grey have not moved.{/n}''',
+        c("Continue", "hers_answer")),
+    el("hers2", '''"She did not strike me," {n}Elyanka says, that evening, sounding almost disappointed.{/n} "She has put a witness at my door. I told him to count carefully. Your paladin is welcome to guard what you have not given me." {n}She pours wine.{/n}
 "She knows now, Commander. She knows it was your word that let my carts through the gate. What she does with that is between the two of you. I have never been so glad to be a stranger in a city."''',
        c("Continue", flags=(INQUIRY_HERS, "trickster.secret.elyanka_siege_dead.known.seelah"))),
+    n("confess", "Seelah", '''{n}You find Seelah at the chapel steps with the two carters waiting beside her. She dismisses them when she sees your face, but keeps their folded testimony in her hand.{/n}
+"Well? Did you find them?"''',
+        c('"I gave the sixty-one to Elyanka. I ordered the gate opened for her carts."', "confession_answer")),
+    n("confession_answer", "Seelah", '''{n}Her fist closes over the paper. She takes a breath before she speaks.{/n}
+"You gave them away. Our dead. The people we brought back from Iz so they would not be left to demons." {n}She looks toward the south gate.{/n} "Sixty-one. I am taking that count to the chaplains, and the names when we find them. A witness stays at the dead-house from now on. No more carts leave it uncounted."
+"I asked you to help me find them. You could have told me then." {n}She steps past you toward the chapel.{/n} "Tell her to keep out of my road. I have work to do for people who cannot ask for it."''',
+        c("[Let her take the testimony inside.]", flags=(INQUIRY_TRUTH, "trickster.secret.elyanka_siege_dead.known.seelah"))),
+    n("mislead_witness", "Seelah", '''"These men saw her carts. Your prisoner did not drive them."
+{n}The captain refuses to reopen the Commander's gate order. The carts are already across the border. Seelah folds the testimony, slowly.{/n}
+"Then the chaplains will have this. And there will be a witness at the dead-house when the next bodies arrive. Hang whom you like. I counted sixty-one."''',
+        c("Continue", "mislead2")),
+    n("hers_answer", "Seelah", '''"Did they suffer?" {n}Elyanka opens her mouth, but the paladin holds up a hand.{/n} "And do not tell me their families cannot. Sixty-one. I counted them. The chaplains will have that count, and the names when we find them. There will be a witness here when the next dead arrive."
+{n}She looks at you.{/n} "You let those carts through. I will remember that too."''',
+        c("Continue", "hers2")),
 ], requires=(GAVE_DEAD, E + "react.seelah_rows", BIER, "seelah.in_party"),
     forbids=(INQUIRY_TRUTH, INQUIRY_MISLED, INQUIRY_HERS, "seelah_dead", "seelah_gone"), delay=48, last=5)
 
@@ -725,8 +739,8 @@ visit(E + "beat.inquiry", "The paladin's questions", [
 
 SCENES.append(reaction("Regill", E + "react.regill_writ", ("trickster.ever", "regill.in_party"),
     '''{n}Regill is cleaning his blade, with the thoroughness of a man who expects to need it.{/n}
-"The priestess of Urgathoa in the dead-house. I read the register the chaplains' clerk carried, Commander. Her oath is valid. So are the oaths of six men in grey who do not breathe. You were right to hold to it: an oath you enforce only when you like the one who swore it is not law, it is weather."
-"But understand what you have in that yard. Six sworn soldiers of this crusade who answer to her and not to any officer of ours. If she gives them an order you do not like, they will obey her, and the law will be on their side." {n}He sheathes the blade.{/n} "I have put two of my own on the south gate. Not to watch her. To watch them."''',
+"The priestess of Urgathoa in the dead-house. I read the register the chaplains' clerk carried, Commander. Her oath is valid. So are the oaths of six men in grey who do not breathe. You were right to hold to it: her oath gives her residence. It also gives us obligations to enforce."
+"But understand what you have in that yard. Six sworn soldiers of this crusade who answer to her and not to any officer of ours. If she gives them an order you do not like, they will obey her, but their oath binds them to crusade discipline. Have your officers enforce it." {n}He sheathes the blade.{/n} "I have put two of my own on the south gate. Not to watch her. To watch them."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent"),
     RequiresAnyGroups=[[WRIT_UPHELD, WRIT_HERS]]))
@@ -735,7 +749,7 @@ tag(E + "react.regill_writ", "T")
 SCENES.append(reaction("Regill", E + "react.regill_lie", ("trickster.ever", "regill.in_party", WRIT_LIED),
     '''{n}Regill is cleaning his blade, with the thoroughness of a man who expects to need it.{/n}
 "You told the chaplains that the priestess in the dead-house is your embalmer, Commander. The register says otherwise: a noblewoman of Ustalav under the crusader's oath, with six sworn men in grey who do not breathe. Her oath would have held without your lie."
-"Now nobody knows who commands those six. The chaplains think you do. The register says she does. When they are ordered to do something ugly, and they will be, every sergeant in this city will look to you for the order you never gave." {n}He sheathes the blade.{/n} "Put them under an officer of ours, or tell the chaplains the truth. A lie about the chain of command gets soldiers killed."''',
+"Now nobody knows who commands those six. The chaplains think you do. In practice they obey her. The register records their oaths, not an independent command. When they are ordered to do something ugly, and they will be, every sergeant in this city will look to you for the order you never gave." {n}He sheathes the blade.{/n} "Put them under an officer of ours, or tell the chaplains the truth. A lie about the chain of command gets soldiers killed."''',
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent")))
 tag(E + "react.regill_lie", "T")

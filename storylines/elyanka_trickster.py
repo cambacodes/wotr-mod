@@ -189,7 +189,7 @@ SCENES.append(scene(E + "door.hearse", "A hearse at the south gate", "Elyanka", 
       c("Continue", "plain", forbids=(FUNERAL_KING, FUNERAL_PA, FUNERAL_PB, FUNERAL_FYE))),
     nar("king", '''{n}So that is where the story went. The Fool King told it to you himself, with his mouth full: while you were in the Abyss his court lived life to the fullest, sang songs, and threw you a fine funeral, and you would have loved it. Somewhere between his tavern and Caliphas the feast was carefully remembered and the guest of honour's return was not.{/n}''',
         c("Continue", "choice")),
-    nar("anevia", '''{n}You were declared dead while you were in the Abyss. Anevia told you so at the barricades with some relish: a big funeral feast and everything, everybody bawling their eyes out, even Beth. Somebody at that feast must have written home, and home must have been somewhere on the Ustalav road.{/n}''',
+    nar("anevia", '''{n}You were declared dead while you were in the Abyss. You remember Anevia telling you at the barricades: a big funeral feast and everything. You remember Beth among the mourners in her account. Somebody at that feast must have written home, and home must have been somewhere on the Ustalav road.{/n}''',
         c("Continue", "choice")),
     nar("fye", '''{n}Fye told you about it when you came back: a grand old time at your funeral feast, he said, and an even better one to come at your homecoming. The first party seems to have been better advertised than the second.{/n}''',
         c("Continue", "choice")),
@@ -326,7 +326,7 @@ visit(E + "straight.offer", "The corpse comes to supper", [
 "The Way heard that a mythic corpse lay unclaimed in Drezen, with no heir, and demons and witches and priests all circling. It sent me to speak for it first. The Pallid Princess would value such flesh above any prayer. I would value her gratitude." {n}She taps one long finger on the table.{/n} "And now I find there is nothing to speak for, only a warm {mf|man|woman} who smells of the stable, and will keep on smelling of it for years."''',
        c("Continue", "hands")),
     el("hands", '''"Give me your hand." {n}It is not a request. She takes it across the trestle before you have decided, and turns it over under the candle as a jeweller turns a stone: the calluses from the sword, the white seam of an old cut, the vein at the wrist. She presses two cold fingers into it and counts.{/n}
-"Fast. Everything about you is fast. You will burn out in thirty years and call it a life." {n}She lets go, and wipes her fingers on a napkin.{/n} "But the bones are good. The bones are very good. I should hate to see them wasted in one of your priests' holes."''',
+"Fast. Everything about you is fast. You will burn out and call it a life." {n}She lets go, and wipes her fingers on a napkin.{/n} "But the bones are good. The bones are very good. I should hate to see them wasted in one of your priests' holes."''',
        c("Continue", "terms")),
     el("terms", '''"If it were up to me, I would have left this grubby, sweat-reeking mortal life a very long time ago. You cling to it with both hands. Well." {n}She pushes her untouched cup across the table to you.{/n}
 "I came to pay for a corpse I could take home. You are not one. Bequeath what you will leave instead. No gold, no favors; my escort stays mine. When you die, the body is the Way's, in my keeping, whole. Until then do as you like with it. You will anyway."''',
@@ -360,7 +360,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
 "In three days they go into a pit with lime on top, and the grey warden has sixty-one more souls in her queue, and the flesh rots in the dark for nothing. Nothing at all. It is the most wasteful custom in the world."''',
        c("Continue", "paladin", requires=("seelah.in_party",), flags=(E + "seelah_prayed",)),
        c("Continue", "ask", forbids=("seelah.in_party",))),
-    el("paladin", '''"Your paladin was here this morning. The one with a thief's hands." {n}She lifts another canvas.{/n} "Iomedae's girl, kneeling to pray for Pharasma's dead, row by row, until her knees were grey with lime. She did not see me in the yard. I watched her the whole time."
+    el("paladin", '''"Your paladin was here this morning. The one with a thief's hands." {n}She lifts another canvas.{/n} "the paladin of Iomedae, kneeling to pray for Pharasma's dead, row by row, until her knees were grey with lime. She did not see me in the yard. I watched her the whole time."
 "I would like to see her face when she learns what her Lady's crusade is built on. One day, perhaps. Not tonight."''',
        c("Continue", "ask")),
     el("ask", '''{n}She lets the canvas fall and turns, and the lantern puts her shadow up the wall to the rafters.{/n}
@@ -386,7 +386,7 @@ visit(E + "test.the_dead", "Sixty-one under canvas", [
 "I will take the vrock's head. My wizards can do something with it, and it will amuse them. Your sixty-one may keep their pit." {n}A dry breath, not quite a laugh.{/n} "Carrion for cattle. I shall tell them in Caliphas that is how the Knight Commander haggles."''',
        c("[Let her have the head.]", flags=(TESTED, CARRION))),
     el("refuse", '''{n}She lowers the lantern. For a while she only looks at you, with those pale eyes that do not blink often enough.{/n}
-"You guard what is owed." {n}Her voice has changed; there is no mockery in it at all.{/n} "Good. The grey warden is owed these, so you keep them for her, though she will never thank you. A debtor who pays his other debts is a debtor worth holding."''',
+"You guard what is owed." {n}Her voice has changed; there is no mockery in it at all.{/n} "Good. The grey warden is owed these, so you keep them for her, though she will never thank you. You have kept every one of these bodies out of my carts. I shall expect you to guard mine as closely."''',
        c("Continue", "refuse2")),
     el("refuse2", '''"I asked, Commander, because a {mf|man|woman} who would hand me sixty-one strangers for nothing would one day hand me to someone else for less." {n}She sets the lantern down on the nearest canvas, over a dead man's chest, as if it were a table.{/n}
 "I do not care about your dead. I care what you do with things that are not yours. Now I know." {n}She almost smiles.{/n} "Go to bed. You smell of lime, and it does not suit you."''',
@@ -410,7 +410,7 @@ visit(E + "commit.claims", "An exchange of claims", [
         c('"Venison?"', "venison")),
     el("venison", '''"Venison." {n}She licks her thumb.{/n} "You have a suspicious mind, Commander. I like that in a debtor. It is a stag, from the woods north of your walls, shot without anybody's leave. That is how venison tastes best. I learned it when I was sixteen."''',
        c("[Eat with her.]", "story")),
-    el("story", '''"When I was sixteen, strange people came to the Camilary woods and lit fires and sang, and ate stags my father's foresters had not given them. I followed the singing one night. They were priests of the Pallid Princess." {n}She tears the bread.{/n} "I went back every night after, to dance, and sing, and eat half-raw venison with the blood still in it, and lie with whomever I liked. It was the only time in my life I was ever hungry and fed at once."''',
+    el("story", '''"When I was sixteen, strange people came to the Camilary woods and lit fires and sang, and ate stags my father's foresters had not given them. I followed the singing one night. They were priests of the Pallid Princess." {n}She tears the bread.{/n} "I went back every night after, to dance, and sing, and eat half-raw venison with the blood still in it. My father counted the deer we took. I counted the nights until I could go back."''',
        c("Continue", "story2")),
     el("story2", '''"My father's hunters followed me. They killed everyone at the fire except me. My father spared me, as he called it, and sent me to a house near Caliphas where they kept me in straps and starved me, to cure me of appetite. Three years. Then I walked home."
 "That night we had lamb, baked with herbs, the way he liked it. He never noticed the bitterness. Mother, my three brothers, my six sisters: I gave them all my Lady's gift. Undeath." {n}She wipes her fingers, one by one.{/n} "All but him. Him I left in the ground, to rot like a peasant. He is still there. I visit."''',
@@ -441,7 +441,7 @@ visit(E + "commit.claims", "An exchange of claims", [
        *WHISPERED),
     el("true_secret", '''"And in the dark you whispered me something true, and kept my secret after. Nobody keeps my secrets. They sell them to the Way, a whisper at a time."''',
        c("Continue", "claim")),
-    el("lied_secret", '''"And in the dark you whispered me a lie, and I paid you a true secret for it anyway. You owe me one. I have decided how you will pay it."''',
+    el("lied_secret", '''"And in the dark you whispered me a lie, and I paid you a true secret for it anyway. You owe me one. Take the claim I am about to offer you, and I will call that debt paid. I want a creditor, not another confession."''',
        c("Continue", "claim")),
     el("claim", '''"I tell you this so you know what I do with a claim, Commander. You gave me a claim on your corpse. It is only good manners to give you mine."
 {n}She leans across the table, as she did when you whispered the bequest, until her cheek is almost against yours.{/n} "When the Princess adopts me there will be nothing left of me to bury. She will take all of it, and I will never lie down anywhere. Take the claim anyway. Keep it. You will hold a claim on nothing at all." {n}Her breath is cold and smells of cherries.{/n} "I adore a bad bargain made with open eyes."''',
@@ -451,7 +451,7 @@ visit(E + "commit.claims", "An exchange of claims", [
     el("yes", '''{n}You whisper it back into her ear, word for word, in the language older than its words. When you have finished she stays where she is a moment longer than the words require.{/n}
 "There. Now each of us holds the other's corpse. Mine you will never collect; my Lady will leave nothing. Yours I will, one day, unless you cheat me." {n}She sits back and looks at you with open, hungry satisfaction, the way she looked at the venison.{/n} "How very Mendevian. Two debtors, and not a copper paid."''',
        c("Continue", "rites")),
-    el("yes_kiss", '''{n}She lets you. She even allows it to go on, her fingers sticky with cherry juice at the back of your neck, until she decides otherwise and bites your lip, not gently, and pulls back.{/n}
+    el("yes_kiss", '''{n}She catches the back of your neck with fingers sticky with cherry juice and draws you back to her mouth. Then she bites your lip, not gently, and pulls back.{/n}
 "That is not how the Way seals anything," {n}she says, and licks the blood off her own mouth with evident enjoyment.{/n} "Say it properly." {n}And you whisper the claim back to her, word for word, with the taste of iron between you.{/n}
 "There. Now each of us holds the other's corpse. Mine you will never collect. Yours I will, one day, unless you cheat me."''',
        c("Continue", "rites")),
@@ -473,12 +473,12 @@ visit(E + "commit.her_move", "A lock of grey hair", [
     el("hair", '''"Two days I have been deciding what you are." {n}She sets the inkwell down.{/n} "A buyer, I thought. A clerk with a sword, who wants to know where his goods will be kept. I told myself that for a day and a half."
 {n}From her sleeve she takes something small: a lock of silver-grey hair as long as your forearm, bound from end to end in black thread wound tight and knotted at every finger's width.{/n}''',
        c("Continue", "custom")),
-    el("custom", '''"In Ustalav, when a body is promised, the one who promises it cuts a lock and binds it in black, and gives it to the one who will bury it. So the grave knows whose it is to be." {n}She holds it out, not quite to you.{/n}
+    el("custom", '''"In my part of Ustalav, when a body is promised, the one who promises it cuts a lock and binds it in black, and gives it to the one who will bury it. So the grave knows whose it is to be." {n}She holds it out, not quite to you.{/n}
 "I have never cut it for anyone. Not for my Lady, who will not need it. Not for the Way. Not for the priests in the woods, who were killed before I thought of it. I cut it this morning, for a debtor who asked me the wrong question at supper." {n}Her mouth twists.{/n} "I have decided not to care that you asked it. You will never be the one to bury me. Keep it anyway."''',
        c("[Take the lock of hair.]", "take"),
        c('[Send her home] "Go home to Ustalav, Elyanka. My body\'s yours when I die. Nothing else is."', "home")),
     el("take", '''{n}It is heavier than hair ought to be. The thread is waxed, and cold, and smells faintly of cloves.{/n}
-"Good." {n}She watches you close your hand on it with the look she gave the venison.{/n} "Keep it somewhere you will see it, so you remember what you are holding. Now we each have a claim on the other. Mine on you will fall due one day; yours on me never will. I adore a bad bargain."''',
+"Good." {n}She watches you close your hand on it with the look she gave the venison.{/n} "Keep it somewhere you will see it, so you remember what you are holding. Now we each have a claim on the other. Mine on you will fall due one day; yours on me never will. You asked what I would do with your corpse. Now you have mine to worry about."''',
        c("Continue", "take_rites")),
     el("take_rites", RITES_NOTE,
        c("[Keep her secret, and the hair.]", flags=(COMMITTED, SECRET_RITES, LOCK))),
@@ -505,20 +505,20 @@ visit(E + "visit.hearse", "The velvet in the hearse", [
 {n}She pushes you down into it with one hand flat on your chest, and kneels over you, and unlaces your collar as though she were dressing a body she means to keep: slowly, reading every scar with her thumbs.{/n}''',
         c("Continue", "scars")),
     el("scars", '''"This one will show well under the lamps of Ustalav." {n}Her thumb follows a line along your ribs.{/n} "This one I shall have to paint. This one," {n}lower,{/n} "is new. You have been careless since Iz."
-{n}Her hands are cold. Your skin jumps under them, and she watches it jump with a mixture of revulsion and hunger so frank that it is almost funny. You are warm, and sweating, and your heart is going hard enough that she can see it at your throat, and every bit of that disgusts her, and she wants it anyway. That is what she cannot forgive you.{/n}''',
+{n}Her hands are cold. Your skin jumps under them. She draws her hand back, wrinkles her nose at the sweat, then lays it on you again. Her thumb presses beside the hammering pulse at your throat. She bends closer, watching your mouth.{/n}''',
        c('"You could wait until I\'m dead."', "wait"),
        c('"Is this what your Lady wants of you?"', "queen"),
        c("[Pull her down to you.]", "down")),
-    el("queen", '''"My Lady is the queen of pleasure, Commander, and of hunger, and of being full. Everything is doomed to die. There is no point in holding back while you live." {n}Her thumb stops on the pulse at your throat.{/n}
-"The priests in the woods taught me that when I was sixteen. I have been obedient to it ever since, in every way but this one. Since the woods I have not once wanted a living thing." {n}Her face, above you, is perfectly cold, and her hand is not.{/n} "It is very humiliating. Be quiet."''',
+    el("queen", '''"My Lady is the queen of pleasure. Do you imagine I lit all those candles to pray over you?" {n}Her thumb stops on the pulse at your throat. She wrinkles her nose, but her knee presses closer against your hip.{/n}
+"Warm. Sweating. And still looking at me as if you mean to eat. Very well, Commander. Let us see whether you have any manners."''',
        c("Continue", "down")),
     el("wait", '''"I could." {n}She bends until her mouth is at your ear, where she whispered the terms of the bequest.{/n} "I have waited for everything else in my life. I waited three years in straps. I have waited all these years for my Lady to take me." {n}Her teeth close on the lobe of your ear, hard enough to sting.{/n} "I am not waiting for this."''',
        c("Continue", "down")),
     nar("down", '''{n}She kisses the way she eats: greedily, without manners, her fingers knotted in your hair to hold your head where she wants it. She tastes of cold wine and cloves. She strips your shirt off you as if it had offended her, and your belt, and the rest, and throws it all into the dark end of the hearse where the feet of the dead would go.{/n}
 {n}Then she sits back on her heels and unpins her grey robe at the shoulder, and lets it fall to her waist, and lower. The candlelight through the glass lays gold on her, on the long pale body she despises and feeds so well, and she lets you look at it as if it were a dish she had set down in front of you.{/n}''',
         c("Continue", "threshold")),
-    nar("threshold", '''{n}She reaches for your belt to pull you down into the velvet, finds it gone, and laughs at herself, low, against your mouth, and pulls you down by the hips instead. Her body is cool everywhere yours is hot. She drags her nails down your chest to learn how fast you mark, and bites your throat where the pulse is loudest, and says into it, "Mine. Later. All of it." Then she rises over you in the gold light and kneels astride you, her knees sunk in the velvet on either side of your hips, and takes you in hand.{/n}''',
-        c("Continue", "morning")),
+    nar("threshold", '''{n}She reaches for your belt to pull you down into the velvet, finds it gone, and laughs at herself, low, against your mouth, and pulls you down by the hips instead. Her body is cool everywhere yours is hot. She drags her nails down your chest to learn how fast you mark, and bites your throat where the pulse is loudest, and says into it, "Mine. Later. All of it." Then she rises over you in the gold light and kneels astride you, her knees sunk in the velvet on either side of your hips, and catches your mouth again.{/n}''',
+        c("Continue", E + "visit.hearse.explicit.1")),
     nar("morning", '''{n}You wake late, alone in the velvet, stiff in places you did not know could stiffen, with a mourning candle guttering on the step. She is sitting outside on the shaft of the hearse in her grey robe, winding a length of black cord around her hand.{/n}
 {n}It is knotted every finger's width, and there are a great many knots.{/n}''',
         c("Continue", "cord")),
@@ -526,20 +526,28 @@ visit(E + "visit.hearse", "The velvet in the hearse", [
 "For the claim." {n}She tucks the cord into her sleeve, beside the place where she keeps her knife.{/n} "The Way's joiners in Caliphas will want to know what they are building for. I will not have you arriving at my Lady's table in a box that pinches."''',
        c("Continue", "horses", requires=("daeran.dead",)),
        c("Continue", "horses", requires=("daeran.kicked_out",), forbids=("daeran.dead",)),
-       c('"And last night?"', "last_night", forbids=DAERAN_GONE),
-       c("[Take your clothes back from the feet of the hearse.]", "clothes", forbids=DAERAN_GONE)),
+       c('"And last night?"', "last_night"),
+       c("[Take your clothes back from the feet of the hearse.]", "clothes")),
     el("last_night", '''"Last night I did something disgusting with a living thing in a hearse, and I would do it again." {n}She finally looks at you, and the pale eyes are perfectly calm.{/n}
 "Do not let it go to your head. You are still a sack of warm meat that smells of the stable. You are simply my sack of warm meat, and I intend to be there when it cools."''',
-       c("[Go back to the war.]", flags=(BIER,))),
+       c("[Go back to the war.]", "morning_exit", flags=(BIER,))),
     el("clothes", '''"You will find your shirt under the pillow. It is not a pillow; it is where the head rests." {n}She watches you dress with the professional attention of an undertaker, and something under it that is not professional at all.{/n}
 "Go back to your war. Try not to lose any pieces I have measured."''',
-       c("[Go back to the war.]", flags=(BIER,))),
+       c("[Go back to the war.]", "morning_exit", flags=(BIER,))),
     nar("horses", '''{n}Her grooms bring the horses round to be harnessed, four black mares with plumes nodding. The first of them sees you step down from the hearse and screams, and backs until the traces snap, and the others go with her, rearing and wild-eyed, dragging two of the grooms through the candles.{/n}
 {n}It takes the men in grey half an hour to calm them. Nobody in the yard speaks to you while it happens. The horses were trained to carry the dead in that box, and a living thing has climbed out of it.{/n}''',
         c("Continue", "horses2")),
     el("horses2", '''"They will get used to you," {n}Elyanka says, as the last mare is led away, still shivering,{/n} "or I will have them killed and buy horses who do not mind." {n}She considers you, standing half-dressed among the overturned candles.{/n}
 "I find I mind less than they do. That is very inconvenient of me. Go back to your war."''',
        c("[Go back to the war.]", flags=(BIER, HORSES))),
+    nar("morning_exit", '''{n}The grooms bring the harness out into the yard. Elyanka tucks the cord away and watches you step down.{/n}''',
+        c("Continue", "horses", requires=("daeran.dead",)),
+        c("Continue", "horses", requires=("daeran.kicked_out",), forbids=("daeran.dead",)),
+        c("Continue", "horses", requires=("daeran.plot_absent",), forbids=DAERAN_GONE),
+        c("[Go back to the war.]", flags=(BIER,), forbids=(*DAERAN_GONE, "daeran.plot_absent"))),
+    # Slot brief: her chosen first night in the hearse; return to the existing morning.
+    nar(E + "visit.hearse.explicit.1", '''{n}She catches your mouth again and draws you into the black velvet. Outside, the sentry calls the watch. Before dawn, the mourning candles burn down to their sockets.{/n}''',
+        c("Continue", "morning")),
 ], requires=(COMMITTED,), forbids=(BIER,), delay=24, last=5)
 
 
@@ -551,15 +559,15 @@ SCENES.append(reaction("Daeran", E + "react.daeran_door", ("trickster.ever", OWN
 "There is a hearse in the yard of the dead-house by the south gate, Commander, lacquered, with glass sides, and a woman from Ustalav who tells anyone who asks that you have bequeathed her your corpse. In advance. For nothing. An excellent price, from her side of the table." {n}He turns his hand over and examines the other side.{/n}
 "My family crypt is full of Arendaes who died without ever being worth a copper to anyone. Not one of them was ever made an offer. I find that I resent it on their behalf. If she wants a second body for the carriage, you will tell her I am available, and considerably better preserved."''',
     answer_list=DAERAN_HUB, chapter=5, last=5, entry='"About the hearse at the south gate."', portrait="Daeran",
-    forbids=(*DAERAN_GONE, BIER)))
+    forbids=(*DAERAN_GONE, "daeran.plot_absent", BIER)))
 tag(E + "react.daeran_door", "T")
 
 SCENES.append(reaction("Daeran", E + "react.daeran_after", ("trickster.ever", BIER),
     '''{n}Daeran regards you for some time over the rim of his cup before he speaks.{/n}
 "You slept in a hearse." {n}He says it slowly, savouring it.{/n} "With the undertaker. Who is a priestess of the Pallid Princess and has measured you for the table." {n}He sips.{/n} "After Heaven's Edge my family required rather a lot of funeral arrangements at once, Commander, and I learned the one rule of the funeral carriage that every Arendae kept to the letter: one does not get into it before the service. It is considered pushing."
-"She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things."''',
+"She will have no idea what to drink at a funeral that has not happened yet. Tell her the cellars of my house are at her disposal. I have ordered the first bottle sent to her yard. Every year, on the day they feasted you dead in Drezen, I shall send her a bottle older than she is. I want to watch her taste it and pretend she is above such things."''',
     answer_list=DAERAN_HUB, chapter=5, last=6, entry='"You\'re staring, Daeran."', portrait="Daeran",
-    flags=(DAERAN_ALLY,), forbids=DAERAN_GONE))
+    flags=(DAERAN_ALLY,), forbids=(*DAERAN_GONE, "daeran.plot_absent")))
 tag(E + "react.daeran_after", "T")
 
 SCENES.append(reaction("Seelah", E + "react.seelah_rows", ("trickster.ever", GAVE_DEAD, E + "seelah_prayed", "seelah.in_party"),
@@ -610,7 +618,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), survived=True):
 
 # The claim, while the Commander lives: unpaid without the bottle; with it, Last Call's pages tell the rest.
 UNPAID = (
-    p('''{n}The claim never fell due. The Commander went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. "Unpaid," she would say, running a cold thumb along the Commander's jaw. "Still unpaid. You are the worst investment the Way has ever made."{/n}''',
+    p('''{n}The claim never fell due. The Commander went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. "Unpaid," she would say, inspecting the Commander from across the table. "Still unpaid. You are the worst investment the Way has ever made."{/n}''',
       forbids=("sacrifice", ACTIVE, BACK)),
     p('''{n}The claim never fell due. The Commander had walked out of the end of the world laughing, and went on living, stubbornly and at length, and every year Elyanka came to look at the collateral as a moneylender looks at a ship that will not sink. "Unpaid," she would say. "Still unpaid. You are the worst investment the Way has ever made."{/n}''',
       requires=(BACK,), forbids=(ACTIVE,)),
@@ -623,7 +631,7 @@ COMMON = (
       requires=(EXPOSED,)),
     p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}''',
       requires=(GAVE_DEAD,), forbids=(E + "seelah_prayed",)),
-    p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. Seelah had counted them, row by row, the morning before they went, and she kept the count.{/n}''',
+    p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The Commander remembered Seelah counting them, row by row, before the carts went. Her sixty-one chalk marks remained on the floor after the bodies were gone.{/n}''',
       requires=(GAVE_DEAD, E + "seelah_prayed")),
     p('''{n}The sixty-one unnamed dead of Iz went into the ground with lime and prayers. Elyanka attended the burial, at the back, in grey, and ate an apple all through the service, and told the Commander afterwards that it was the only honest debt she had ever seen a crusade pay.{/n}''',
       requires=(REFUSED_DEAD,)),
@@ -643,13 +651,13 @@ COMMON = (
       requires=(E + "anatomy.knife",)),
     p('''{n}Once, in the dark end of the dead-house, a debtor and a creditor had whispered each other a secret, and neither of them ever repeated it. The Commander kept the Way's custom to the letter.{/n}''',
       any_groups=((E + "whisper.fear", E + "whisper.wake"),)),
-    p('''{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She kept the secret she gave in return anyway. That, she said, was what made the Commander hers: a debt that could never be paid back in kind.{/n}''',
+    p('''{n}Once, in the dark end of the dead-house, the Commander had whispered her a lie, and she had heard it. She had given her own secret anyway. The Commander could still remember the cold of her cheek and the whisper: "You owe me one."{/n}''',
       requires=(E + "whisper.lie",)),
-    p('''{n}Seelah learned where the sixty-one had gone from the Commander's own mouth. What passed between them after that was theirs; Elyanka stayed out of the paladin's road, and was sorry, she said, only that she had not been there to hear it.{/n}''',
+    p('''{n}The Commander remembered Seelah hearing the truth about the sixty-one from the mouth that had ordered their removal. The count went to the chaplains; a witness stood at the dead-house door. Elyanka had stayed out of the paladin's road.{/n}''',
       requires=(E + "inquiry.told_seelah",)),
-    p('''{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. Seelah watched him hang, and never believed it, and could never prove otherwise.{/n}''',
+    p('''{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. The Commander remembered Seelah at the gallows with the carters' testimony in her pocket. The Commander's order had kept her from stopping the carts, not from recording who sent them. The chaplains received the testimony; a witness stood at the dead-house door.{/n}''',
       requires=(E + "inquiry.misled",)),
-    p('''{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. Seelah never forgave either of them, and never drew her sword on either of them, and the Commander never learned which of those two facts cost her more.{/n}''',
+    p('''{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. The Commander remembered Seelah refusing the excuse that the dead could not suffer. She had taken the names and count to the chaplains and put a witness at the dead-house door. Neither culprit had received her forgiveness.{/n}''',
       requires=(E + "inquiry.hers",)),
     p('''{n}Her black mares never got used to the living. She sold them in the second spring and bought four grey ones that did not mind a passenger with a pulse, and said it was the only concession to mortal life she had ever made.{/n}''',
       requires=(HORSES,)),
@@ -658,7 +666,7 @@ COMMON = (
 # After the war, while she and the Commander still meet: the partner's page only.
 LATER = (
     p('''{n}Every year on the day Drezen had feasted the Commander dead, a bottle arrived from the Arendae cellars, older than she was, with Daeran's compliments. She sneered at every one of them, and never once left a drop.{/n}''',
-      requires=(DAERAN_ALLY,)),
+      requires=(DAERAN_ALLY,), forbids=(*DAERAN_GONE, "daeran.plot_absent")),
     p('''{n}A grey granite stone stood under the east wall of Drezen for many years, with the Commander's name on it and nothing under it. A woman in grey sat on it in the evenings and read, and the chaplains learned not to ask her why.{/n}''',
       requires=(E + "grave.stone_kept",)),
     p('''{n}Once, very early in the morning, a sentry on the east wall saw two people lying side by side on the grass of the burying ground, on an empty grave, with their hands folded, looking at the sky. He reported it. Nobody believed him, and he did not insist.{/n}''',
@@ -684,7 +692,7 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
       requires=(E + "master.hers",)),
     p('''{n}The Way's joiners in Caliphas finished the true table in ebony, carved with fruit and vines and little bones. It waited in a cellar there for the Commander, empty, year after year. The practice piece, the one the Commander had lain in, she kept in the dead-house, and ate from on her Lady's nights.{/n}''',
       requires=(E + "fitting.lay",)),
-    p('''{n}The Commander never forgot her lying in her Lady's table with her hands folded, too small for it, like a queen on the wrong tomb. She never forgave the Commander for having seen it.{/n}''',
+    p('''{n}The Commander never forgot her lying in her Lady's table with her hands folded, rigid on the red cloth, her silver hair spread beneath her. She never forgave the Commander for having seen it.{/n}''',
       requires=(E + "fitting.her_first",)),
     p('''{n}On certain nights she took out a flat wooden case of six painted girls with strong dark brows, and let the Commander sit with her while she looked at them, and did not say which was which.{/n}''',
       any_groups=((E + "sisters.asked", E + "sisters.let_be"),)),
@@ -695,7 +703,7 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
     p('''{n}The Fool King of Drezen kept an old black coin in his paper crown, stamped with a skull and a crown, and told everyone it had been paid him by a lady for weeping. She came to his tavern exactly once, on a festival night, and stood at the back holding a napkin to her nose, and left before he could offer her the post of Royal Undertaker a second time.{/n}''',
       requires=(E + "king.bill_hers",)),
     p('''{n}Every year, a case of wine came from the Arendae cellars, and every year she sent back the same message, word for word, by a man in grey: *mediocre; did not finish it; send the rest.*{/n}''',
-      requires=(E + "daeran.bottle_tasted",)),
+      requires=(E + "daeran.bottle_tasted",), forbids=(*DAERAN_GONE, "daeran.plot_absent")),
     p('''{n}A man in grey came up the Ustalav road from time to time with a message in her voice. Once it said only *come back hungry*, which the Commander had sent her first. She never explained why she had sent it back.{/n}''',
       requires=(E + "courier.come_back_hungry",)),
     p('''{n}The lock of silver-grey hair bound in black thread stayed where the Commander kept it. She never asked where that was. She was sure, she said, that it was somewhere the Commander would see it every day, because otherwise she would have to be angry, and she was too patient a creditor to waste anger on a debtor's drawer.{/n}''',
@@ -710,6 +718,10 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
       any_groups=((WRIT_UPHELD, WRIT_HERS),)),
     p('''{n}The chaplains who came with a writ to put her out of Drezen were told she was the Commander's embalmer and nothing more. She never forgave the Commander that lie. She had never been anybody's anything.{/n}''',
       requires=(WRIT_LIED,)),
+    p('''{n}A bottle dispatched from the Arendae cellars during the crusade reached her with the funeral compliments still tied to its neck. She sneered at the card and never left a drop. She kept the empty bottle beside the measurement cord.{/n}''',
+      requires=(DAERAN_ALLY,), any_groups=(("daeran.dead", "daeran.kicked_out", "daeran.plot_absent"),)),
+    p('''{n}She kept the cork from the wine they had tasted in Drezen. When the Commander asked about it she repeated her verdict: *mediocre; did not finish it; send the rest.* She never threw it away.{/n}''',
+      requires=(E + "daeran.bottle_tasted",), any_groups=(("daeran.dead", "daeran.kicked_out", "daeran.plot_absent"),)),
 )
 
 page("claim", "A claim, held", '''{n}Elyanka Camilary did not go home to Ustalav when the war was over. The Way had sent her to collect, she said, and a creditor who goes home before the debt falls due does not deserve to be paid. She kept the dead-house by the south gate of Drezen, and the hearse in its yard, and her Lady's appetites, all of them.{/n}
@@ -806,6 +818,8 @@ def integrate(payload):
     trickster_world."""
     _bind(payload, "SeenCues", SEEN_CUES)
     _bind(payload, "Latches", LATCHES)
+    # Native current absence, not a historical promise: DaeranNotInParty_AccordingToThePlot.
+    _bind(payload, "Etudes", {"daeran.plot_absent": "d80bdee55139ac24583f337a53878021"})
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != [list(g) for g in groups]:
