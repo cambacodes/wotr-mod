@@ -614,7 +614,7 @@ s("before_the_far_road", "Before the far road", '"I came for the evening, before
 "Let them wait. I have waited longer."
 {n}Her hands find your buckles. She works one loose, curses the next and pushes your shirt off your shoulders. You open her clothing at the throat. She draws it down her arms, baring warm skin, and presses herself against your chest.{/n}
 "Too much iron between us. There. Better."
-{n}She bites lightly at the join of your neck. Your hands close around her waist. She pulls you down onto the blanket, her gray braid loosening across your chest, and swings a knee over your hips. With her mouth against yours she lowers herself astride you, drawing your bare bodies together.{/n}
+{n}She bites lightly at the join of your neck. Your hands close around her waist. She pulls you down onto the blanket, her gray braid loosening across your chest, and plants her knees on either side of your hips. She holds your mouth to hers while your hands draw her closer, bare skin hot against yours.{/n}
 {n}In the morning a branch scrapes the rock outside. Soana lifts her head from your shoulder and listens. Then she puts a hand over your chest and lies down again.{/n}
 "A branch. Do not leap up and make it an errand."
 {n}You kiss the gray hair at her temple. She turns her mouth to yours.{/n}

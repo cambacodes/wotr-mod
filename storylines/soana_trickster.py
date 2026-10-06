@@ -162,12 +162,12 @@ def portion(suffix, answer_list, return_cue, joke, requires, any_of, nodes):
 portion("after_quest", HER_LIST, HER_RETURN,
     '"Camellia asked me at camp to turn your blood to a good cause. Your forest is a good cause. Bleed for it first, and she can have what\'s left."',
     ("trickster", "camellia.asked_for_soana"), None, [
-    n("start", "Soana", '''{n}The old woman weighs you with her small black eyes, the way she would weigh a snare somebody else had set. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}
-"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss."
+    n("start", "Soana", '''{n}The old woman weighs you with her small black eyes, the way she would weigh a snare somebody else had set. Then she laughs, a cracked, rasping laugh, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}
+"A good cause. There. The spirits have had their portion, bloody hunter. Tell your hungry friend she can lick the moss."
 {n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}''', c("Continue", "cost")),
-    n("cost", "Soana", '''"Do not look so pleased with yourself. The spirits ate, so now they know my taste. Every winter from this one they will come to the cave mouth and ask for more, and I will give it to them, because a bargain is a bargain even when a fool strikes it for you."
-"Why do it, then?"
-"Because your friend would have taken all of it, and the spirits would have had nothing. I serve the forest. I do not serve you, and I certainly do not serve her."''',
+    n("cost", "Soana", '''"Wipe that grin off your face. They know my taste now. Every winter they will come to the cave mouth for more, and I will have to open this hand again."
+{n}She pulls the rag tight around her palm.{/n}
+"Your friend would have taken my throat. I chose the hand. The forest will have its blood, and she can keep her knife hungry. Go, before you find something else of mine to offer."''',
         c('[Leave before she changes her mind]', native_next="fef727987297e8d4eb34068688fdac27", flags=(PRIMED, BLOOD)))])
 
 # After the bear: Camellia has just spoken (Cue_0065/0069), so she is on screen and answers in her own voice.
@@ -177,8 +177,10 @@ for suffix, lst, nrc, nxt in (("after_bear_a", "001686714a5c2384ba09686b45bd033f
                                "74664ddd7bb36744ba825c29aad6f4b3")):
     portion(suffix, lst, nrc, '"You heard her: her blood serves the spirits. So let the spirits have it."',
         ("trickster",), ["camellia.claimed_soana_a", "camellia.claimed_soana_b"], [
-        n("start", "Soana", '''{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}
-"There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets."''', c("Continue", "camellia")),
+        n("start", "Soana", '''{n}The old woman barks a laugh at Camellia and draws her knife across her palm. Blood runs into the moss. Something answers from the trees.{/n}
+"There, spirit talker. The spirits have had their portion, from my own hand. You can lick what is left."
+{n}Soana winds a rag around the cut and pulls it tight with her teeth.{/n}
+"They know my taste now. Every winter they will come for more, and I will have to bleed again. Better my hand than my throat. Remember that before you start grinning, bloody hunter."''', c("Continue", "camellia")),
         n("camellia", "Camellia", '''{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}
 "How very generous of her. And of you, my friend. You have taken a death off my plate in front of the one audience I cared about." {n}She wets her lips.{/n} "I do not forget who takes food off my plate. I shall be thinking of you, often, and very carefully."''',
             c('[Leave before either of them decides otherwise]', native_next=nxt, flags=(PRIMED, BLOOD)),
@@ -188,10 +190,10 @@ for suffix, lst, nrc, nxt in (("after_bear_a", "001686714a5c2384ba09686b45bd033f
 # --- State 2, killed: the knot never checked (F17, her own words read in the other direction) --------------------------
 
 SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "Soana", 3, "", [
-    nar("start", """{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. The forest died with her: the undergrowth is black, the birds are gone, and something in the black trees has been howling since the night she fell. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground.{/n}
+    nar("start", """{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. The forest died with her: the undergrowth is black, the birds are gone, and something in the black trees howls beyond the cave. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground.{/n}
 {n}Something out in the trees stops moving when you step inside.{/n}""",
         c("Continue", "orso", forbids=(GUARDIAN_DEAD,)), c("Continue", "spirit", requires=(GUARDIAN_DEAD,))),
-    nar("orso", """{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded. Whatever she tied to him has not come untied, by the look of it.{/n}""",
+    nar("orso", """{n}Orso comes to the cave mouth and will not come further. He paces before it, turns at the entrance, and paces back. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded. Whatever she tied to him has not come untied, by the look of it.{/n}""",
         c("Continue", "read", requires=(HEARD,)), c("Continue", "marks", forbids=(HEARD,))),
     nar("spirit", """{n}Orso lies where he died. The brand on his hide is only a scar on a dead thing now, and nothing in those bones moves.{/n}""",
         c("Continue", "read", requires=(HEARD,), forbids=(GUARDIAN_DEAD,)), c("Continue", "marks", forbids=(HEARD, GUARDIAN_DEAD)),
@@ -208,7 +210,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
           "wake_brand", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
           flags=(RETURNED, STARTED, GUARDIAN, LEASH)),
         c('[Leave the knot tied] "No. She said she was finished. Let her be finished."', flags=(CLOSED, TRK_REFUSED,))),
-    nar("marks", """{n}You crouch where she fell. Days dead, and she has not begun to rot: her hands are grey but whole, and the cave smells of ash and dry herbs and nothing worse. On the rock above her pallet the same knot is scratched in charcoal, over and over, the knot of her clay medallion and of the brand on Orso's hide; and beside it, small, the way a trapper keeps a tally, three marks: a bear, a horned thing with too many teeth, and a stooped little figure with a braid.{/n}
+    nar("marks", """{n}You crouch where she fell. Her hands are grey but whole; the smell of cold ash catches in your throat. On the rock above her pallet the same knot is scratched in charcoal, over and over, the knot of her clay medallion and of the brand on Orso's hide; and beside it, small, the way a trapper keeps a tally, three marks: a bear, a horned thing with too many teeth, and a stooped little figure with a braid.{/n}
 {n}A bear, a demon and an old woman, tied in one knot. She never told you so. She wrote it on her wall.{/n}
 {n}You put two fingers to the brand. It tugs back, once, like a line with a fish on it, and behind you, on the cold floor of the cave, the dead woman's hand closes on nothing.{/n}
 {n}So something holds her, and you wager it is the thing in the bear: the spirit of the Abyss she caught and broke to the forest's work. If it is tied to her, it is tied to a corpse, and a thing tied to a corpse can go nowhere and eat nothing; perhaps that is the howling in the trees. Whatever it is, the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
@@ -220,7 +222,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
           "wake_brand", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
           flags=(RETURNED, STARTED, GUARDIAN, LEASH)),
         c('[Leave the knot tied] "No. She said she was finished. Let her be finished."', flags=(CLOSED, TRK_REFUSED,))),
-    nar("carcass", """{n}Orso lies where he fell, and the carcass has gone soft and black at the edges. The grass has died in a ring around it, the way grass dies around a poisoned well. The brand on his shoulder is a scar on dead hide. Whatever she bound into him, it is not answering: you press two fingers to the brand and feel nothing but cold fur.{/n}
+    nar("carcass", """{n}Orso lies where he fell, and dark fluid stains the fur beneath him. The grass has died in a ring around it, the way grass dies around a poisoned well. The brand on his shoulder is a scar on dead hide. Whatever she bound into him, it is not answering: you press two fingers to the brand and feel nothing but cold fur.{/n}
 {n}If there is anything left to pull on, you will have to give it something to hold first.{/n}""",
         c('[Cut her knot into the dead hide, bleed into the cuts, and wait for something to come to it] "A knot is a door as well as a rope. Let us see who knocks."',
           "bait", alignment=("Chaotic", 1), flags=(BAITED,)),
@@ -326,10 +328,10 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
         c('"Mine first."', "night", flags=(COMMITTED, BEARER)),
         c('[Laugh]', "no")),
     s("no", '''{n}She closes her fist over the knot and turns away.{/n}
-"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can keep your face straight over a thing that matters."''',
+"Go, then. I will keep my knot. Come back when you can say 'mine first' and mean it."''',
         c('[Go]', flags=(DECLINED,))),
-    s("fool", '''"I already found one. {mf|He|She} is holding my leash, and {mf|he|she} laughs at knots."
-{n}She does not look at you again.{/n}''',
+    s("fool", '''"I found one already. {mf|He|She} pulled me back into a dead forest and is still holding my leash. Now {mf|he|she} wants to send me hunting for another."
+{n}She shuts her hand over the knot and turns her back.{/n}''',
         c('[Go]', flags=(CLOSED, TRK_REFUSED,))),
     s("night", TERMS_NIGHT, c("Continue", "morning")),
     s("morning", TERMS_MORNING, c('[Go]')),
@@ -440,7 +442,7 @@ def _answers(admission):
 
 ACC_DOWN = """{n}She leads you down to the water under the bare branches. She carries the seed bowl herself.{/n}"""
 ACC_DIGGERS = """{n}Your diggers from Drezen are at the far end of the row of graves, crusaders with good boots and bad manners, arguing about who has to carry the calf. Soana sends one back for it without raising her voice and watches until he picks it up. Then she turns her back on them and points you at the water.{/n}"""
-ACC_WORK = """{n}The thing in the upper channel is a stag, weeks dead and swollen with water. You get your arms under it and drag it up the bank, and when the leash pulls, your marked hand closes on the wet hide and will not open. Soana waits until it does. Then she points at the next snag.{/n}
+ACC_WORK = """{n}The thing in the upper channel is a stag, swollen with water. You get your arms under it and drag it up the bank, and when the leash pulls, your marked hand closes on the wet hide and will not open. Soana waits until it does. Then she points at the next snag.{/n}
 {n}The water runs brown, then clear. You drive the stakes into stony ground and weave dead branches between them, and she makes you pull the fence up and set it wider, twice. At last she kneels inside it and presses the seed into the wet earth one at a time, with her thumb.{/n}
 "They will need water carried when the stream runs low, and boots kept off them. I will be here.\""""
 
@@ -515,10 +517,10 @@ at_cave(ACCOUNTING, "What you left alive", '"I came back, as you said."', [
 # The portion comes due (audit: the recurring blood price must be witnessed, not only promised). The first winter after
 # the handover, on her own list: the spirits come to the cave mouth, and the Commander can pay it or watch her pay it.
 inline("soana.trickster.handover.winter_portion", "The spirits' portion, again", 5, '"The spirits came, didn\'t they?"', [
-    n("start", "Soana", '''{n}There is frost on the moss, and a ring of it has melted in front of the cave mouth, the size of a cart wheel, as if something warm had stood there all night. Soana sits on the stone beside it with her knife across her knees. Her left palm is a lattice of old white cuts, and one new one, not yet opened.{/n}
-"They came at moonrise, the way I told you they would. They stood there till dawn and did not say a word. They do not need to. I know what they are owed; a fool struck the bargain for me, and a bargain is a bargain."
-{n}She turns the knife so the edge catches the light, and looks at you, not at the blade.{/n}
-"You may watch. People who make bargains for other people ought to see them paid."''',
+    n("start", "Soana", '''{n}Frost covers the moss. Before the cave mouth a ring has melted, as wide as a cart wheel. Soana sits beside it with her knife across her knees. Old cuts cross her left palm; she runs a thumb along one white scar.{/n}
+"They came at moonrise. Stood there till dawn. The blood I gave them left them hungry for more, and now they know the path to my door. Every winter, hunter. This one, and the next."
+{n}She turns the knife toward the light and looks at you.{/n}
+"Stay and watch. You were quick enough to offer my blood. Let us see how quick you are to look away."''',
         c('[Hold out your own palm] "My joke. My blood. Pay them from me this winter."', "shared",
           flags=("soana.trickster.cost.portion_shared",)),
         c("[Watch her pay it]", "watched", flags=("soana.trickster.portion_watched",))),
@@ -549,7 +551,7 @@ inline("soana.trickster.missed.dice_bowl", "An offering", 3,
 inline("soana.trickster.missed.crooked_luck", "Crooked luck", 5,
     '[Look at the die in her bowl] "Still twenty up, shaman? I hear your beasts don\'t stay down."', [
     n("start", "Soana", '''{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. Soana kneels by her head with the bone bowl, and salt, and a smear of her own blood on the rim, and says something to the trees in a language that is mostly breath. The bear gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}
-"That is the third time she has done that. Your die has been in my bowl since the snow, and every night I have fed what is in it to the spirits, because an offering left unspent goes sour. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter."''',
+"That is the third time she has done that. You left your die in my bowl. I fed its luck to the spirits, and now look what they have done with it. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter."''',
         c("Continue", "price")),
     n("price", "Soana", '''"You pledged your luck, and the spirits took you at your pledge. They have been feeding my beasts on it, and luck is thin fare. They will go on eating it for as long as that die sits in my bowl, and it is your luck they eat, hunter, not mine. Every time a bear of mine gets up on the road, something of yours falls down: a girth snaps, a letter goes astray, a sword turns in your hand at the wrong moment. Small things. Every one of them paid to a beast that is still standing."
 "And send a cart of salt, so they have something besides your luck to chew. Leave the die, or take it and let them lie down."''',
@@ -572,7 +574,7 @@ inline("soana.trickster.missed.late_luck", "Crooked luck, thrown late", 5,
         c('[Refuse her terms] "No salt, and no die. I\'m not feeding your bears on my luck."', "refused", flags=(LUCK_REFUSED, LATE))),
     n("refused", "Soana", '''{n}She looks at you for a while. Then she puts two fingers into the bone bowl, through the salt and the blood, fishes the die out, spits on it, and says three words to the trees that sound like a door being barred.{/n}
 "There. I have taken it off their plate. They had one taste, and they will remember the taste of you, not of me. That is your trouble now."
-{n}She flicks the die at your chest. You catch it. Outside, the she-bear that limped toward the road an hour ago lies down in the ferns, and does not get up again.{/n}
+{n}She flicks the die at your chest. You catch it. Outside, the she-bear that limped toward the road lies down in the ferns, and does not get up again.{/n}
 "You threw it at my feet and then you would not pay for the throw. Take your lead and get out of my cave, hunter."''',
         c('[Pocket the die and go]'))],
     requires=("trickster", "soana.after_quest"),
@@ -580,7 +582,7 @@ inline("soana.trickster.missed.late_luck", "Crooked luck, thrown late", 5,
     TricksterDevice=True, TricksterState="missed", EntryMythic="PlayerIsTrickster")
 
 inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-bear?"', [
-    n("start", "Soana", '''{n}On the road up, your horse throws a shoe it was fitted with two days ago, and the dispatch that should have been waiting for you at the Wintersun camp has gone to Kenabres instead. You have stopped being surprised by that kind of thing.{/n}
+    n("start", "Soana", '''{n}On the road up, your horse throws a shoe, and the dispatch that should have been waiting for you at the Wintersun camp has gone to Kenabres instead. You have stopped being surprised by that kind of thing.{/n}
 {n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}
 "She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away."
 {n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}''', c("Continue", "question")),
@@ -631,7 +633,7 @@ BOWL_MORNING = '''{n}Grey light at the cave mouth, and the she-bear's place acro
 "The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves."'''
 
 inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you had been thinking."', [
-    n("start", "Soana", '''{n}The bone bowl is on the fire-stone. Your die sits in it, one face up, as it has since the snow. There is a second blanket on her pallet, which there was not before.{/n}''',
+    n("start", "Soana", '''{n}The bone bowl is on the fire-stone. Your die sits where you left it, twenty up. There is a second blanket on her pallet, which there was not before.{/n}''',
         c("Continue", "rest", requires=(REST,)), c("Continue", "roll", requires=(ROLL,)),
         c("Continue", "cheat", requires=(CHEAT,)), c("Continue", "terms", forbids=(REST, ROLL, CHEAT))),
     n("rest", "Soana", '''"You said you would let her lie down. I have been turning that over like a stone, looking for the worm under it. There is no worm. I find that irritating."''',
@@ -724,7 +726,7 @@ COMMIT_ACCOUNTING = (
     p("{n}The Commander had answered her by the graves and worked beside the water. After the war they came back for the "
       "woman who had told them to come for her, and she kept them carrying water through the dry months.{/n}",
       requires=(ACC_INVITED,)),
-    p("{n}The year after the Worldwound closed she held out a new cord, plaited from her own grey hair. The Commander gave "
+    p("{n}The year after the war ended she held out a new cord, plaited from her own grey hair. The Commander gave "
       "her the marked wrist. She tied their life to hers and pulled the cord tight.{/n} \"Your end, hunter. You know what "
       "it holds now.\" {n}She kept that wrist in her hand when she led them down into the furs.{/n}"),
 )
@@ -738,8 +740,8 @@ SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5
 # b9c: the living, missed-window Soana whose luck was paid but whose bowl was never answered gets her own late page (the
 # killed branch's leash and dead forest are not hers).
 SCENES.append(scene("soana.trickster.epilogue.luck_late", "The rattle in the bowl", "Epilogue", 5, "", [
-    nar("start", '''{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the Worldwound closed she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}
-"Your luck. It has rattled in my bowl since the snow and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left."''',
+    nar("start", '''{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the war ended she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}
+"Your luck. It has rattled in my bowl ever since you left it there and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=(LATE_COMMITTED, LUCK_KEPT), forbids=(RETURNED, COMMITTED, CLOSED, DECLINED, FRIENDS, "sacrifice", *LOSS), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
@@ -766,8 +768,8 @@ SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue
 # Polish (Sol BEL, audit r2): a return that never reached her invitation, a friendship, a refusal or a closure is not a late
 # romance. The late commit needs her invitation at the accounting (or a failed presence, R2-6); this page covers the rest.
 SCENES.append(scene("soana.trickster.epilogue.unfinished", "Left unsaid", "Epilogue", 5, "", [
-    nar("start", '''{n}The Commander did not come back to Wintersun before the war ended, and Soana did not send for them. The spring after the Worldwound closed she walked to Drezen, took her leash back from the Commander's palm with a single strand and her own blood, and went home the same day.{/n}
-{n}She buried the dead forest one grave a day and planted what she could beside the water. Travellers who asked the old woman in the cave about the Commander were told about a hunter who had held a dead woman to her own words, and then stopped coming before she had said what she meant to say to them.{/n}''',
+    nar("start", '''{n}The war ended with Soana's reckoning still unanswered. The following spring she walked to Drezen, took her leash back from the Commander's palm with a single strand and her own blood, and went home the same day.{/n}
+{n}She buried the dead forest one grave a day and planted what she could beside the water. When travellers asked about the Commander, she tapped the handle of her spade. "Pulled me back into this," she said. "Still owes me an answer." Then she sent them out of her seed bed.{/n}''',
         c())],
     requires=("trickster.ever", RETURNED),
     forbids=(LATE_COMMITTED, COMMITTED, CLOSED, DECLINED, FRIENDS, BEARER, "sacrifice"), last=99, Relationship="soana",
@@ -852,7 +854,7 @@ SCENES.append(scene("soana.trickster.epilogue.slack", "The slack strand", "Epilo
               "all of its weight at once and nothing at the other end. She went down on her knees, caught it and held. It "
               "nearly killed her. It did not.{/n}",
               requires=(RETURNED,), forbids=(BEARER, RECLAIMED_BEFORE, CLOSED, POSTPONED)),
-            p("{n}Out on the Wintersun road, the she-bear that had stood up on the Commander's luck all winter lay down in the "
+            p("{n}Out on the Wintersun road, the she-bear that had stood up on the Commander's luck lay down in the "
               "ferns that night and did not get up. Soana took the die out of the bowl and buried it with her, twenty up.{/n}",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
             p("{n}She had taken the leash back while the Commander still lived, and no strand of it ran to the Threshold. Nothing "

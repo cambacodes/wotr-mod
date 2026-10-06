@@ -576,7 +576,7 @@ internal static class SoanaTricksterTests
             "The she-bear remembers an absent Camellia, or forgets one who was there.");
 
         // Q10 r3 (BEL): the Commander's pronouns, and the knot ending's token in full.
-        check(terms.Nodes.Single(n => n.Id == "fool").Text.Contains("{mf|He|She} is holding my leash"),
+        check(terms.Nodes.Single(n => n.Id == "fool").Text.Contains("{mf|He|She} pulled me back") && terms.Nodes.Single(n => n.Id == "fool").Text.Contains("{mf|he|she}"),
             "The terms gender the Commander.");
         string FullText(Scene page, Snapshot w) => page.Nodes[0].Text + "|" + string.Join("|", Rules.VisibleParagraphs(page.Nodes[0], End(w)).Select(x => x.Text));
         var cordEnd = FullText(epKnot, bound);
@@ -811,6 +811,67 @@ internal static class SoanaTricksterTests
         string Coda(Snapshot s) { var e = Called(s); return string.Join("|", Rules.VisibleParagraphs(coda.Nodes.Last(), e).Select(x => x.Text)); }
         check(Coda(bound).Contains("answer at her graves") && !Coda(lateBack).Contains("answer at her graves"),
             "The Last Call coda misremembers the accounting.");
+        // Reviewed polish P01: play the grave visit through the selected answer, then render its unfinished ending.
+        var polishGraveAt = Later(story, raised, 48);
+        var polishDug = Program.WalkVia(graveyard, polishGraveAt, "dig", 0)
+            .Single(w => w.Has(P + "cost.grave_dug") && !w.Has("soana.closed"));
+        var polishBought = Program.WalkVia(graveyard, polishGraveAt, "dig", 1)
+            .Single(w => w.Has(P + "cost.grave_bought") && !w.Has("soana.closed"));
+        check(Program.WalkVia(graveyard, polishGraveAt, "dug", 0).Any(w => w.Has(P + "cost.grave_dug") && !w.Has("soana.closed")),
+            "P01: the unfinished-history fixture never reached the dug page.");
+        foreach (var w in new[] { raised, polishDug, polishBought, lateFailed })
+        {
+            var text = FullText(S(P + "epilogue.unfinished"), w);
+            check(Endings(w).SequenceEqual(new[] { P + "epilogue.unfinished" })
+                  && text.Contains("reckoning still unanswered") && text.Contains("Still owes me an answer")
+                  && !text.Contains("did not come back") && !text.Contains("stopped coming") && !text.Contains("Worldwound closed"),
+                "P01: the unfinished reckoning erases a grave visit or assumes a closed Wound: " + text);
+        }
+
+        // P02: each actual request opens its own handover; the recurring warning must precede the paid receipt.
+        foreach (var (handover, request) in new[] { (afterQuest, "camellia.asked_for_soana"),
+                    (bearA, "camellia.claimed_soana_a"), (bearB, "camellia.claimed_soana_b") })
+        {
+            var atHandover = World(story, 3, "trickster", "trickster.ever", "soana.after_quest", "soana.old_defender", request);
+            check(Rules.Available(story, handover, atHandover), "P02: missing native handover: " + handover.Id);
+            var warningBeforePayment = false;
+            var outs = Program.Walk(handover, atHandover, (id, w) =>
+            {
+                var text = handover.Nodes.Single(n => n.Id == id).Text;
+                if (text.Contains("Every winter") && (text.Contains("bleed again") || text.Contains("open this hand again")))
+                    warningBeforePayment = !w.Has(P + "cost.blood_given");
+            });
+            check(warningBeforePayment && outs.All(w => w.Has(P + "cost.blood_given") && !w.Has("soana.committed") && !w.Has(P + "returned")),
+                "P02: payment precedes its warning, or the handover grants romance/return: " + handover.Id);
+            var atWinter = Later(story, outs.Single(), 72); atWinter.Chapter = 5; Rules.Complete(story, atWinter);
+            check(Rules.Available(story, winter, atWinter) && !winter.Nodes[0].Text.Contains("told you")
+                  && winter.Nodes[0].Text.Contains("Every winter"), "P02: winter invents a warning memory: " + handover.Id);
+            foreach (var (index, effect) in new[] { (0, P + "cost.portion_shared"), (1, P + "portion_watched") })
+                check(Program.WalkVia(winter, atWinter, "start", index).Single().Has(effect),
+                    "P02: winter choice/effect changed: " + index);
+        }
+
+        // P03: both tokens permit earnest delay, laughter, hard refusal and friendship without invented laughter history.
+        foreach (var (at, priceNode, bindNode) in new[] { (atTerms, "price", "bind"),
+                    (Later(story, Invite(clayDug), 72), "price_clay", "bind_clay") })
+        {
+            foreach (var (node, index, effect) in new[] { (priceNode, 1, P + "declined"),
+                        (bindNode, 1, P + "declined"), (priceNode, 2, "soana.closed") })
+            {
+                var result = Program.WalkVia(terms, at, node, index).Single();
+                var destination = terms.Nodes.Single(n => n.Id == terms.Nodes.Single(n => n.Id == node).Choices[index].Next);
+                check(result.Has(effect) && !result.Has("soana.committed") && !destination.Text.Contains("laughed")
+                      && !destination.Text.Contains("laughs at knots"), "P03: terms misremember the chosen refusal: " + node + "/" + index);
+                if (effect == P + "declined")
+                    check(Rules.Available(story, secondAsk, Later(story, result, 96)), "P03: postponement lost its priced second ask.");
+                else
+                    check(!Rules.Available(story, secondAsk, Later(story, result, 300)), "P03: hard refusal reopened the second ask.");
+            }
+            var friend = Program.WalkVia(terms, at, priceNode, 3).Single();
+            check(friend.Has(P + "friends") && friend.Has(P + "cost.leash_reclaimed")
+                  && !Rules.Available(story, secondAsk, Later(story, friend, 300)), "P03: friendship lost its leash resolution.");
+        }
+
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }
