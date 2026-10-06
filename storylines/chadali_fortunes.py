@@ -336,7 +336,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
     ch("giving", '''"I'm always giving it away because that's what it's for!" {n}She stamps her foot. Somewhere far away, you are certain, something unlucky happens to someone who deserved it.{/n}
 "You don't get to decide where it goes. Not mine. You decide where the army goes, and where the money goes, and where half of Golarion goes. Leave me this."''',
       c("Continue", "choose")),
-    ch("choose", '''"Promise me you'll stop." {n}She holds out her little finger, the way she did over the knucklebones.{/n} "Not the tricks. I love the tricks. The tricks where you pretend to be me."''',
+    ch("choose", '''"Promise me you'll stop." {n}She holds out her little finger.{/n} "Not the tricks. I love the tricks. The tricks where you pretend to be me."''',
       c("[Link fingers.] \"I'll stop.\"", "stopped", flags=(NO_MORE_RIGGING,)),
       c('"I can\'t promise that. If I see your people going hungry, I\'ll act."', "kept", flags=(KEPT_RIGGING,))),
     ch("stopped", '''{n}She shakes on it, once, firmly, and some tension goes out of her shoulders that you had not known was there.{/n}
@@ -353,7 +353,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
 
 fortune(ELYSIUM, "The meadows", '"Tell me about home."', [
     ch("start", '''"Home!" {n}She lies back on the cushions she has refused to put away, and stretches, and her bracelets slide down her arms.{/n}
-"Meadows. Rivers. A sky that changes colour when it's happy, which is always. The bees I told you about, that have never been stung. Everybody dances, all the time, very badly, and nobody minds." {n}She turns her head to look at you.{/n} "You'd hate it for a week. Then you'd love it. Then you'd start trying to organise it, and they'd throw you in the river."''',
+"Meadows. Rivers. A sky that changes colour when it's happy, which is always. Bees that have never been stung by anything. Everybody dances, all the time, very badly, and nobody minds." {n}She turns her head to look at you.{/n} "You'd hate it for a week. Then you'd love it. Then you'd start trying to organise it, and they'd throw you in the river."''',
       c('"Would I be allowed to come?"', "allowed"),
       c('"I\'m mortal, Chadali. I\'ll be gone in a blink, to you."', "mortal")),
     ch("allowed", '''"Allowed!" {n}She sits up, scattering cushions.{/n} "You don't need allowing. You're with me. Everybody's allowed with someone."
@@ -407,7 +407,7 @@ fortune(SHARING, "Sharing", '"Something\'s on your mind."', [
 {n}Her fingers have stopped on the cushion.{/n} "Is that selfish? Alichino would say it's selfish and send me an invoice for it. I've decided I don't care what Alichino would say."''',
       c('"It isn\'t selfish. You won\'t be last."', "not_last", flags=(NOT_LAST,)),
       c('"Sometimes you will be. The war takes most of me."', "war")),
-    ch("not_last", '''"Promise?" {n}The little finger, again.{/n}
+    ch("not_last", '''"Promise?" {n}She holds out her little finger.{/n}
 {n}You link it. She holds on a while, and her face is very serious, and then it breaks into the brightest smile you have ever seen on it.{/n}
 "There. I asked for something, and I got it, and nobody had to lose for it. That's my favourite kind of luck." {n}She flops back onto the cushions.{/n} "I'm going to do it again. Often. Alichino should be very worried."''',
       c("[Lie down beside her.]")),
@@ -431,7 +431,7 @@ fortune(REPAID, "Paid back", '"You said you always pay back."', [
       c('"I\'ll save it for the Wound."', "wound"),
       c('"Then I\'ll spend it on you."', "on_you")),
     ch("lent", '''"You said keep it. Bet it on you." {n}She smiles, slow and sly.{/n}
-"So I did. Every morning. I've been betting your own luck on you for months, and winning, and betting the winnings again." {n}She wiggles her fingers.{/n}
+"So I did. Every morning. I've been betting your own luck on you, and betting the winnings again." {n}She wiggles her fingers.{/n}
 "You have no idea how much luck you've got now. Neither have I. I lost count. I'm going to keep it for you, invested, until the day you really need it, and then I'm going to give you all of it at once."''',
       c('"When?"', "when")),
     ch("wound", '''"The Wound." {n}She nods, solemn.{/n} "Yes. That's the right place. That's where nobody can make anything happen, not even you."
