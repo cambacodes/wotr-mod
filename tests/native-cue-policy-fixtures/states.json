@@ -153107,6 +153107,21 @@
       "ExpectedCandidate": "nocticula.lastcall.page"
     },
     {
+      "Id": "page/nocticula.acquisition.lastcall.page",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "lastcall.active",
+        "noct.acq.renewed_agreement",
+        "nocticula.acquisition.lastcall.route_open",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nocticula.acquisition.lastcall.page"
+    },
+    {
       "Id": "page/vellexia.trickster.epilogue.commit",
       "Target": "",
       "Dialog": "",
@@ -153400,6 +153415,7 @@
         "minagho_chivarro.outcome.minagho_open",
         "minagho_chivarro.payoff.ordinary",
         "minagho_chivarro.trickster.committed",
+        "minagho_chivarro.trickster.rings_receipt",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -154307,7 +154323,8 @@
         "camellia.committed",
         "camellia.payoff.ordinary",
         "camellia.present_now",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.kept"
@@ -154323,7 +154340,8 @@
         "camellia.payoff.ordinary",
         "camellia.present_now",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.kept_on_record"
@@ -154369,7 +154387,6 @@
       "Chapter": 6,
       "Flags": [
         "camellia.closed",
-        "camellia.trickster.returned",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -155955,6 +155972,7 @@
         "jannah.outcome.eligible",
         "jannah.payoff.ordinary",
         "jannah.present_now",
+        "jannah.trickster.truth_clear",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -155983,8 +156001,8 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "jannah.circle.walls",
         "jannah.present_now",
-        "jannah.trickster.declined",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -156186,6 +156204,22 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "herrax.trickster.epilogue.closed"
+    },
+    {
+      "Id": "page/herrax.trickster.epilogue.after_hours.invitation",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.payoff.partner",
+        "herrax.present_now",
+        "herrax.trickster.late_committed",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "herrax.trickster.epilogue.after_hours.invitation"
     },
     {
       "Id": "page/herrax.lastcall.page",
