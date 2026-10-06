@@ -147,7 +147,7 @@ internal static class PresenceBootstrapInventoryTests
             check(!state.Has("kaylessa.trickster.returned") && Rules.Available(story, story.Scenes.Single(s => s.Id == "kaylessa.trickster.dead.soldier"), state), "Kaylessa arrival blocked");
         }
         {
-            var state = Fresh(story, 5, "minagho.dead", "chivarro.dead");
+            var state = Fresh(story, 5, "minagho.dead", "chivarro.dead", "chivarro.exile_objective_done");
             state = Play(story, "minagho_chivarro.trickster.react.baphomet", state, "minagho_chivarro.trickster.collateral_delivered", check);
             state = Later(story, state); Contact(story, "minagho_chivarro.presence.minagho", state, check);
             check(!Rules.RouteOpen(story.Relationships["minagho_chivarro"], state), "Solo bootstrap grants pair route");
@@ -163,7 +163,7 @@ internal static class PresenceBootstrapInventoryTests
         {
             var state = Fresh(story, 4, "herrax.asked_kill_chivarro");
             state = Play(story, "minagho_chivarro.trickster.chivarro_dead.deposit", state, "minagho_chivarro.trickster.chivarro_deposit", check);
-            state.Chapter = 5; state.Flags.UnionWith(new[] { "chivarro.dead", "minagho.dead" });
+            state.Chapter = 5; state.Flags.UnionWith(new[] { "chivarro.dead", "chivarro.exile_objective_done", "minagho.dead" });
             Recompute(story, state); state = Later(story, state);
             state = Play(story, "minagho_chivarro.trickster.chivarro_dead.bought", state, "minagho_chivarro.trickster.chivarro_owned", check);
             state = Later(story, state); Contact(story, "minagho_chivarro.presence.chivarro", state, check);
@@ -173,7 +173,7 @@ internal static class PresenceBootstrapInventoryTests
             MissingAnchor(story, "minagho_chivarro.presence.chivarro", state, "minagho_chivarro.trickster.chivarro_dead.the_bill_letter", check);
         }
         {
-            var state = Fresh(story, 5, "chivarro.dead", "minagho.spared_c4");
+            var state = Fresh(story, 5, "chivarro.dead", "chivarro.exile_objective_done", "minagho.spared_c4");
             state = Later(story, state); Contact(story, "minagho_chivarro.presence.minagho_spared", state, check);
             check(Rules.Available(story, story.Scenes.Single(s => s.Id == "minagho_chivarro.trickster.spared.brand"), state), "Living Minagho blocked by dead Chivarro");
             MissingAnchor(story, "minagho_chivarro.presence.minagho_spared", state, "minagho_chivarro.trickster.spared.brand_letter", check);

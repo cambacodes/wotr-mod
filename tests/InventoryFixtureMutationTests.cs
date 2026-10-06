@@ -668,7 +668,7 @@ internal static class InventoryFixtureMutationTests
     {
         var w = World(story, 4); w.Native("herrax.asked_kill_chivarro");
         w = w.Earn("minagho_chivarro.trickster.chivarro_dead.deposit", "minagho_chivarro.trickster.chivarro_deposit");
-        w.Native("chivarro.dead"); w.Native("minagho.dead"); w.Travel(5, Drezen); w.Advance(48);
+        w.Native("chivarro.dead"); w.Native("chivarro.exile_objective_done"); w.Native("minagho.dead"); w.Travel(5, Drezen); w.Advance(48);
         w = w.Walk("minagho_chivarro.trickster.chivarro_dead.bought")
             .First(r => r.State.Has("minagho_chivarro.trickster.returned_chivarro") && r.State.Has("minagho_chivarro.trickster.chivarro_owned"));
         w.Advance(24); w.TickRoute("minagho_chivarro");
