@@ -291,6 +291,24 @@ internal static class IomedaeTricksterTests
               && Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed)).Any(x => x.Contains("I did not promise that I will")),
             "Trk_Iomedae_Eve: the eve dream is missing, or promises the answer.");
 
+        // Polish F005: acquisition and raising do not imply a completed disputation.
+        // Follow each real replacement producer, including the caught-theft fallback, into the skipped-argument history.
+        var caughtOath = Take(order, lost, "caught2", 0, Order, P + "cost.oath_sworn", Called);
+        var recoveredCall = Take(izNight, iz, "form", 0, Called);
+        foreach (var prepared in new[] { sworn, stolen, caughtOath, recoveredCall })
+        {
+            var atThreshold = Later(prepared, 48, 6);
+            check(!atThreshold.Has(Committed) && !atThreshold.Has(P + "disputed")
+                  && Avail(eve, atThreshold) && Avail(wound, atThreshold)
+                  && Paths(eve, atThreshold).All(o => o.path.Any(e => e.node == "unargued"))
+                  && Reachable(eve, atThreshold).Any(x => x.Contains("not brought your case"))
+                  && !Reachable(eve, atThreshold).Any(x => x.Contains("never raised it") || x.Contains("took the banner down"))
+                  && Paths(wound, atThreshold).Any(o => o.path.Any(e => e.node == "unargued")),
+                "Trk_Iomedae_Polish_F005: a raised replacement or recovered relic invents a disputation, or denies its raising.");
+            check(!wound.Nodes.Single(n => n.Id == "u_check").Text.Contains("roof"),
+                "Trk_Iomedae_Polish_F005: the skipped argument recalls an unperformed roof meeting.");
+        }
+
         // Trk_Iomedae_Threshold: the device act beside the native sacrifice (E14b); committed carries; after a refusal the truth
         // concedes at the Wound (the reachable yes, no price) and a joke closes; never argued, the argument is made there.
         var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken", P + "dream.summit", P + "dream.herald" };
@@ -463,9 +481,23 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Intimacy: on the bare platform, after Threshold, she in plain steel; the cut at the first motion astride.
         var plat = Pg("platform");
-        check(plat.Nodes.Single(n => n.Id == "down").Text.Contains("comes up astride") && plat.Nodes.Single(n => n.Id == "cloak").Text.Contains("It has been a bridge")
+        check(plat.Nodes.Single(n => n.Id == "down").Text.Contains("comes up astride") && plat.Nodes.Single(n => n.Id == "cloak").Text.Contains("spreads it across the bare stones")
               && Reachable(plat, bridgeW).Any(x => x.Contains("postern under the east wall")) && !Reachable(plat, livedW).Any(x => x.Contains("postern under the east wall")),
             "Trk_Iomedae_Intimacy: the platform night is not staged to the cut, or the buried Commander is not hidden.");
+
+        // Polish F006/P4: ordinary replacement cloth never inherits the relic's age or the burned cloak's identity.
+        foreach (var banner in new[] { Held, Order })
+        {
+            var living = World(story, 6, "trickster.ever", Started, Committed, banner);
+            var returned = World(story, 6, "trickster.ever", Started, Committed, Carried,
+                "sacrifice", "ending.wound_closed", banner);
+            check(Avail(plat, living) && Reachable(plat, living).Any(x => x.Contains("Sword of Valor was mine before the Starstone"))
+                  && !Reachable(plat, living).Any(x => x.Contains("under that cloth longer"))
+                  && Avail(plat, returned) && Reachable(plat, returned).Any(x => x.Contains("I brought you back across it"))
+                  && !Reachable(plat, returned).Any(x => x.Contains("carried it into a great many places"))
+                  && !Reachable(plat, returned).Any(x => x.Contains("It has been a bridge")),
+                "Trk_Iomedae_Polish_F006: the replacement inherits ancient campaigns, or the intimacy restores a burned cloak.");
+        }
 
         // Trk_Iomedae_Reactions: Seelah, Sosiel, Daeran (twice), each on their hub, guarded.
         check(reactions.Length == 6 && S(P + "react.seelah").Requires.Contains("seelah.in_party") && S(P + "react.seelah").AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" })
