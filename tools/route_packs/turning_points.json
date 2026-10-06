@@ -1,4 +1,35 @@
 {
+ "anevia": {
+  "device_class": "she_pursues",
+  "setting": "Drezen outer gate, smith side of the cart ruts at watch change",
+  "payoff_shape": "spy chooses rendezvous and keeps nights at her marital home",
+  "canon_hooks": [
+   {
+    "guid": "8e206818968aa9f4c828fd668b2a64c1",
+    "path": "World/Dialogs/NPC_Common/Anevia/Cue_0071.jbp",
+    "key": "3213460e-6ca0-47f8-891c-5cfab5c4907e",
+    "native_excerpt": "{n}Anevia gives you a long look, her lips quirking up at the corners.{/n} \"I don't know what to think of all this. You're a total mystery to me. And I usually don't like mysteries, but you're different. Your crazy stunts somehow make me think that, just maybe, this whole nightmare might suddenly end, by pure fluke, on a positive note. I'm no expert in these things, but I think that's what hope feels like?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "ea4d827995a68b24381d590724973965",
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0093.jbp",
+    "key": "38aeac51-4387-4c5c-b2b2-cb4d91e980e2",
+    "native_excerpt": "\"I've been hanging round here for hours, looking all bored, waitin' for her to bite. And she did, started asking her questions, and then you came by — right on cue.\" {n}With an unnerving smile, Anevia stares the woman — who maintains her grim silence — straight in the eye.{/n} \"All right, we're gonna make you talk now, darlin'. Who do you work for?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "575f7925bbfe4e047bcd666ca27a8c80",
+    "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0421.jbp",
+    "key": "9945695b-317d-4b47-9849-b5f31a346e93",
+    "native_excerpt": "{n}Anevia looks at you with a stony face.{/n} \"This is where my crusade ends, Commander. Without Beth, I don't belong here.\" {n}It looks like she wants to add something else, but she purses her lips and turns away instead.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
  "aranka": {
   "device_class": "she_pursues",
   "setting": "Drezen market busking stage; supply-wagon yard only if the market host fails",
@@ -31,6 +62,69 @@
    5
   ]
  },
+ "areelu": {
+  "device_class": "experiment_or_ritual",
+  "setting": "Threshold survival-wager conclusion across the hall, notebook still open",
+  "payoff_shape": "failed prediction yields chosen company tonight and the unresolved child research tomorrow",
+  "canon_hooks": [
+   {
+    "guid": "dbea944bb36596d4d99f9b5b8e74e14a",
+    "path": "World/Dialogs/c5/Iz/AreeluIntro/Cue_0024.jbp",
+    "key": "4489282b-48d5-4164-94ef-e95fa17a7fd7",
+    "native_excerpt": "\"I'm interested in neither praise nor reproach. Not from you or from Golarion as a whole. Everything I've done, I've done for a single, deeply personal purpose. Keep your adulation to yourself — I won't comment on it further.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "52830ee630aa6ee4dbe8e187367454d5",
+    "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Cue_0008.jbp",
+    "key": "a489dccb-3632-4ce1-81a0-a324df93333b",
+    "native_excerpt": "{n}Areelu's face, usually calm, now twists in a flash of anger.{/n} \"Pity? Me? I did not throw the country that betrayed me into the demons' maw in order to be pitied. I did not do it even for revenge. I simply made a promise...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "a4b8a109874919c4cba9cef817ec148c",
+    "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Cue_0037.jbp",
+    "key": "f02e0340-b25b-4287-a6b5-dda9c9a365cc",
+    "native_excerpt": "\"I am where everything began. Threshold. Do not worry, I will not flee when you come here, not again. You will come, won't you? One of us must burn so that the other may live and the Wound may be eliminated...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   6
+  ]
+ },
+ "arsinoe": {
+  "device_class": "act_before_confession",
+  "setting": "Drezen vendor's after-hours room, repaired window and travel book",
+  "payoff_shape": "private unprofitable hour becomes recurring evenings with customers still waiting",
+  "canon_hooks": [
+   {
+    "guid": "7bebb812c92fa5f40a183cb1fa566847",
+    "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0013.jbp",
+    "key": "8fcd1a16-1222-45b8-a746-d542dde14214",
+    "native_excerpt": "\"The tiny barony in the {g|Stolen Lands}Stolen Lands{/g} that had been my home for a very long time eventually turned into a strong and prosperous kingdom, and I felt that I had to go somewhere else and bring the blessing of Abadar to someone who really needed it. It will take quite a long time for Drezen to recover and become an unfailing stronghold once again. I will do my very best to help.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "bc500a7bfdc41a14388829f1a0e5cf62",
+    "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0046.jbp",
+    "key": "f0f4e35a-f40e-403c-9a51-cde6f06bf0b3",
+    "native_excerpt": "\"I fulfill my duty to Abadar, of course. I am not afraid of chaos, so I go into a world of savagery and grief to bring the light of civilization, law, and order.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "281db1a5e0832dc46ac1276346336e93",
+    "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0026.jbp",
+    "key": "a226ae00-2fd9-4ff6-8fa6-cbdade858d04",
+    "native_excerpt": "\"No, but believe me, I'm not going to leave this alone. This is a serious crime, one that happened right under my nose. I consider it a personal insult and am willing to help Elan and everyone involved. Every day I spend some time trying to find the stolen souls with prayers and divine magic. My search has brought no results yet, but as soon as it does, I will let you know.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
  "arueshalae": {
   "device_class": "act_before_confession",
   "setting": "Drezen citadel wall after the no-hands interval, then roofless bell tower",
@@ -55,6 +149,132 @@
     "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q3/BackToReality/Cue_0025.jbp",
     "key": "876f888a-9b7d-4cc9-af6a-586c841632a8",
     "native_excerpt": "\"Freedom. Finally, after all these years... I can feel it — the Abyss has released me from its clutches. I have solved Desna's riddle and have found my dream. I have found you. I am not a monster anymore!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "camellia": {
+  "device_class": "she_pursues",
+  "setting": "Commander's private Drezen quarters, her knife lesson followed by the named-friend test",
+  "payoff_shape": "she postpones one friend's murder, turns the knife toward the door at dawn and keeps the list",
+  "canon_hooks": [
+   {
+    "guid": "f53d2eeb4958d8b4f84c56261dc76bc2",
+    "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/Cue_0042.jbp",
+    "key": "cdcaa59d-fd6e-47ec-83c4-5fb77ba95c77",
+    "native_excerpt": "\"But the deaths of enemies on the battlefield don't bring me any relief. It comes only with the deaths of those who considered me a friend. The deaths must be unexpected, so that I can see the disbelief and dread in my victims' eyes. But I am a clever girl — I know that society would never condone my unconventional desires. So I invented a nice story that I could feed to those who would protect me from society.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "b54856766c9617b47a49411f8f55c44c",
+    "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/Cue_0029.jbp",
+    "key": "61c95542-f445-4874-acae-172841e9f1c7",
+    "native_excerpt": "\"Did you? You hid your true thoughts from me very well. You are an excellent liar, perhaps even better than I am. My sincerest congratulations.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "6aa5270c8474fc14487e6ad42b278339",
+    "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/FinalTruth/Cue_0012.jbp",
+    "key": "5e30df44-0a46-44a6-8391-7860462ab59d",
+    "native_excerpt": "{n}Camellia takes the amulet from around her neck, stares into the eyes of the bone snake for a while, and then turns her gaze on you.{/n} \"There is no Mireya. I made her up.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "chadali": {
+  "device_class": "she_pursues",
+  "setting": "Her private Council table, sun-and-moon coin deliberately laid flat",
+  "payoff_shape": "unriggable spoken yes releases the stake, honey night and burnt-cookie morning",
+  "canon_hooks": [
+   {
+    "guid": "51c885e2c38d7e544a1d1415d4404bcf",
+    "path": "World/Dialogs/c3/Mythic_Trickster/Council_Chadali/Cue_0018.jbp",
+    "key": "be517247-236d-4906-9f06-b177bb1a1664",
+    "native_excerpt": "\"No.\" {n}The Vudrani interrupts you mid-sentence, raising a plump finger adorned with a white-gold ring.{/n} \"Not like that.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "dc4fa93063e42c44981850d65914402e",
+    "path": "World/Dialogs/c3/Mythic_Trickster/Council_Chadali/Cue_0012.jbp",
+    "key": "e9c8ab1f-ec44-4d4e-8c46-279ac53a07b3",
+    "native_excerpt": "\"I believe in chance... I create chances... I am chance!\" {n}The woman smiles broadly, revealing healthy, white teeth.{/n} \"Whoever you are, whatever you do, this world wants to help you! Your main task is to trust it, and not stand in the way of your own luck!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "ed7a31d6f063e0c4aa4ec4e08fab57c0",
+    "path": "World/Dialogs/c3/Mythic_Trickster/Council_Chadali/Cue_0002.jbp",
+    "key": "cc70442d-766d-4992-a93c-8249ae51d144",
+    "native_excerpt": "\"We are lucky to have you. Now everything will change. Eat a cookie for luck!\" {n}Smiling warmly, the dark-skinned woman hands you a fragrant parcel.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "chivarro": {
+  "device_class": "bargain",
+  "setting": "Wilcer's occupied Drezen counter then her own rented room below the citadel",
+  "payoff_shape": "former seller chooses an unpaid personal night and keeps Minagho's chair in her house",
+  "canon_hooks": [
+   {
+    "guid": "6098d97e435e0694493ebaf7de128c51",
+    "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0091.jbp",
+    "key": "3cf9393f-da41-4616-af65-2a03f37c0391",
+    "native_excerpt": "\"You piece of shit! Why couldn't you just quietly go there and die? You've caused nothing but trouble! Damn you for all the suffering you've caused Minagho and me!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "5787f92575364c1459df8f075676c2db",
+    "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
+    "key": "056942f6-32d0-4480-8ff7-29356b43db19",
+    "native_excerpt": "Several hundred years after the conclusion of the Fifth Crusade, somewhere on another plane, far from both the Abyss and Golarion, two runaway lilitus {d|lilithu love}met{/d} — Minagho and Chivarro. They met, never to part again.",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "2f4be0bde527a7d4cb7c73131ab551db",
+    "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0011.jbp",
+    "key": "d2a0261a-80bd-4336-8389-3ddbc7e12a3e",
+    "native_excerpt": "\"Closets grant you freedom. You can step inside one, and exit from another... Of course, there are also people who get lost among the hangers, and spend their whole life in a closet — sometimes without realizing it! Yes, I love closets dearly, and I'm not ashamed to say it! I mean, I'm not ashamed of anything, but least of all — that!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "delamere": {
+  "device_class": "she_pursues",
+  "setting": "New-moon stream hollow below the Temple of Delamere, freshly taken stag hide",
+  "payoff_shape": "huntress offers herself as quarry, catch chosen once and annual frost hunt left unfinished",
+  "canon_hooks": [
+   {
+    "guid": "20f0dfa4426be104bb02cd93a523c496",
+    "path": "World/Dialogs/c3/TempleOfDelamere/DelamereInTomb/Cue_0042.jbp",
+    "key": "72acddf8-ec57-484f-8533-ec81815dc2db",
+    "native_excerpt": "{n}Pride suffuses Delamere's voice.{/n} \"They are the gifts of Erassstil... He sent his ssspirit to me — a white ssstag... Three daysss we vied with each other in ssstealth and ssspeed... A noble fight... I did not eat the meat, but inssstead I offered it up to Erasssstil... And from the antlersss and hide I made a bow and a breastplate...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "7bf737854a470ca4a83e810e6b5e6dd5",
+    "path": "World/Dialogs/c3/TempleOfDelamere/DelamereInTomb/Cue_0032.jbp",
+    "key": "9b82bfb5-39f2-4fae-ba79-c89ef991d2e2",
+    "native_excerpt": "{n}Delamere's voice quivers with indignation.{/n} \"I am not your dog... Carrying out your ordersss, the humiliation...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "91cf4db8445a6df4794c9240270522a6",
+    "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0034.jbp",
+    "key": "83c76c1e-8ce8-40fe-b044-3dca8405593b",
+    "native_excerpt": "\"She lived in these parts back when Sarkoris was still standing. She was a priestess of Erastil and the Kellids deeply respected her for her hard nature and her unshakeable faith. Erastil blessed her with various wonders, and the common folk knew that she would stand up for them. Delamere did not like city life. She said cities encouraged vile deeds and corruption of the soul. She said that people ought to live in small clans, where everyone know",
     "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
    }
   ],
@@ -178,6 +398,783 @@
    5
   ]
  },
+ "elyanka": {
+  "device_class": "bargain",
+  "setting": "Drezen dead-house supper after Iz, Caliphas hearse beside the table",
+  "payoff_shape": "unequal whispered corpse bequests, hearse night and knotted measurement cord",
+  "canon_hooks": [
+   {
+    "guid": "98312252e604dc34fbf0f155337df7f8",
+    "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Elyanka_MainDialogue/Cue_0061.jbp",
+    "key": "ee522728-af2f-4714-8575-9fe1c05eb529",
+    "native_excerpt": "\"We are a secret society of those who have seen the truth. Our teaching is philosophical. It is passed in whispers, by word of mouth, for it cannot be written, only told and felt with one's entire soul. We believe that undead are superior to mortals.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "335273ed6c8580b4f9ac6e225a702aef",
+    "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Elyanka_MainDialogue/Cue_0055.jbp",
+    "key": "2939dced-b169-45dd-96a4-1f008f851c19",
+    "native_excerpt": "\"Our services to honor her are more luxurious than the most lavish feasts, the wildest orgies. Unfortunately, there isn't a single nation in Avistan where worshiping {g|Urgathoa}Urgathoa{/g} is legal now. Even in Ustalav it is officially frowned upon.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "836b49836cd1fb44496ccde3175d74ea",
+    "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Elyanka_MainDialogue/Cue_0093.jbp",
+    "key": "c66769bb-713a-4d94-a259-f493a3f8ce30",
+    "native_excerpt": "{n}The old woman answers with ease, but there is bitter disappointment in her eyes.{/n} \"My time will come. One day I will become the daughter of {g|Urgathoa}Urgathoa{/g}, her adopted child. I will have the immortality and power promised to me. But for now the goddess wants me to remain mortal. This way I can be of more use to the cult, as a messenger who spreads the wisdom of her church. If it were up to me, I would have left this grubby, sweat-",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "eritrice": {
+  "device_class": "another_character_intervenes",
+  "setting": "Trickster Council public long table, Alichino's existing hearing followed by her private reading",
+  "payoff_shape": "chair keeps an independent vote then offers two personal ayes and private minutes",
+  "canon_hooks": [
+   {
+    "guid": "ea54bde3967913141a7faa7023fa3b4a",
+    "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0010.jbp",
+    "key": "55c3ee61-a088-41ca-85f5-45bd9b560769",
+    "native_excerpt": "\"Eritrice. I am what you mortals call an empyreal lord. My element is truth. The eternal truth, shining through the endless lies. The insights born only through honest, thoughtful debate.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "47bb56cc9e30ffc42a1b700b02e6b5f5",
+    "path": "World/Dialogs/c3/Mythic_Trickster/Council_Alichino/Cue_0023.jbp",
+    "key": "33fd44a5-afd1-4cdd-aae2-a75c7154280e",
+    "native_excerpt": "\"New opportunities, of course. Deals, unlike anything anyone's ever dreamed, will become possible. Many will become wealthy, many will rise... And I, foreknowing all of this, will have an advantage over everyone.\" {n}The devil waves his little black notebook like a full hand of trump cards.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "cf4e1e4352bb4fe4ea85d93d82c4b4b5",
+    "path": "World/Dialogs/c3/Mythic_Trickster/Council_3/Cue_0045.jbp",
+    "key": "8d2980d8-6b02-42a9-b1ce-0f3c807eb0ec",
+    "native_excerpt": "\"My dear {name}, with all due respect, I don't recall appointing you chairperson... Um. All right. Meeting adjourned. Get to work!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "galfrey": {
+  "device_class": "act_before_confession",
+  "setting": "Closing Drezen eel-and-curio market beside her working Green Crows life",
+  "payoff_shape": "Kitrane's chosen night precedes her future oath; morning muster carries crown and aging choice",
+  "canon_hooks": [
+   {
+    "guid": "19d217c3503c0304db4bec29c9882bc9",
+    "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0001.jbp",
+    "key": "f5542dd4-43a5-451b-88e0-a7871723d63c",
+    "native_excerpt": "{n}Queen Galfrey nods to you cordially. Her armor is plain and unadorned.{/n} \"As promised, I entered the ranks incognito, along with a few bodyguards. I have introduced myself as Kitrane, an old friend of yours. I am a knight of a minor order, the Green Crows. We shall see how long it takes Anevia to sniff me out.\" {n}The Queen chuckles.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "d5133deffe0362548bd2563ee5291eef",
+    "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0004.jbp",
+    "key": "9e5626e3-6b30-4fae-8c4c-79f92e43dc6f",
+    "native_excerpt": "{n}The Queen crosses her hands and pensively taps her gardbrace.{/n} \"It's been a long time since I traveled like this, as just another face in the crowd...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "85cfdab678616fd4f9666352f75a45cf",
+    "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0010.jbp",
+    "key": "13e07068-5a48-4cb6-903a-d6b75c94ffdf",
+    "native_excerpt": "\"I shall answer thus: the decision to prolong my life was not mine. It was the decision of the church of {g|Iomedae}Iomedae{/g}. The sun orchid elixirs have been paid for by the church. The priests determined that I was needed in these dark times, both as a ruler and a chosen paladin of Iomedae. I accepted their decision, and the great responsibility it entails.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "gesmerha": {
+  "device_class": "canon_lowest_point",
+  "setting": "Drezen smith's carver corner, completed ancestral likeness on trestles",
+  "payoff_shape": "finished paid sculpture released; she carves the living Commander for herself",
+  "canon_hooks": [
+   {
+    "guid": "0365c24e7237b3d409fc4bd40cca548b",
+    "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0018.jbp",
+    "key": "c2603091-7bcb-440e-8fba-d7732bf45941",
+    "native_excerpt": "\"Marhevok flew into a rage when he saw my work,\" {n}Gesmerha says, her voice quieter now.{/n} \"He personally cut out my eyes as punishment, and journeymen were given the task of finishing the statue. The clan did not turn its back on me, of course. The children of Wintersun do not drive out their own, even those who have transgressed before the entire community. They allow me to do simple carvings and to take care of the statues. That is how I ha",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "13f2b37e28864ba4b882d13fad90f7c5",
+    "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028.jbp",
+    "key": "e79afadc-a587-4f12-a835-ec246f6ff91b",
+    "native_excerpt": "{n}The woman sighs sadly.{/n} \"I wish I could trust you, stranger, but I'm afraid of provoking Marhevok's anger. I already lost my eyes, and I know what he will take next: my hands. So forgive me, but I won't tell you any more than I already have.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "fca1955f66417614a891696475925ff4",
+    "path": "World/Dialogs/c3/Wintersun/MarhevokAmbush/Cue_0008.jbp",
+    "key": "d76e6fae-9eda-44e5-ba21-b87fb4d6839f",
+    "native_excerpt": "{n}The woman recoils and suddenly brandishes a blade from who knows where.{/n} \"You took my eyes, chief, but not my heart. I won't let you maim me further. Ancestors, embrace me!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "hepzamirah": {
+  "device_class": "canon_lowest_point",
+  "setting": "Drezen blacksmith quenching yard and forge room after Mutasafen's courier settlement",
+  "payoff_shape": "discarded archpriestess claims a bout's survivor and imposes a public morning political reckoning",
+  "canon_hooks": [
+   {
+    "guid": "f99fcbc6f6ad7734a94346de8517b73b",
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/Cue_0013.jbp",
+    "key": "84523473-150d-4d3f-ab64-bd7103184dd4",
+    "native_excerpt": "{n}Hepzamirah gnashes her spectral teeth and nods.{/n} \"That old piece of shit turned his back on me! On the best of his brood! I sacrificed my own mother to him, then did so with hundreds of my brothers and sisters, and this is how he repays me?\" {n}Her voice trembles with hurt.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "c1c8de1235d14cc4b85b2454855b90a5",
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/Cue_0011.jbp",
+    "key": "7962aba1-180c-4b6f-8eec-d4c4b9777dec",
+    "native_excerpt": "\"Hiding! They say being the Daughter of Baphomet is a great gift, but, like all of my father's gifts, it was poisoned. That poison is known as mortality. I'm a nephilim, and unlike demons, I must share the fate of the most worthless minions of the Lord of Beasts! Upon death, the souls of all of his slaves are bound here — and I'll remain in this torment forevermore!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "0cdc1a24d29c77f4490900d3a9418afc",
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0121.jbp",
+    "key": "626c3719-6235-4db6-994b-e6a1252fdd53",
+    "native_excerpt": "\"You speak of Hepzamirah as if you're hoping your words will wound me. You've killed one of my descendants and her specter now wanders these halls — am I supposed to care? I could spawn hundreds, thousands more. Among them, there will be those in whom my blood is stronger, and they will surpass Hepzamirah. Believe me, I possess none of a father's sentimentality — for I am not a father to them, but their creator and their god.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "herrax": {
+  "device_class": "another_character_intervenes",
+  "setting": "Ten Thousand Delights coin arch and locked private floor",
+  "payoff_shape": "madam punishes the would-be successor then admits an unpaid guest; rival serves breakfast",
+  "canon_hooks": [
+   {
+    "guid": "68082e7d83b156f4d9a32d06040a8d29",
+    "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0063.jbp",
+    "key": "0bdaf1f8-0c4d-4cda-8966-6caf0d82547d",
+    "native_excerpt": "\"With this, every arch will recognize you as my favored guest and teleport you here. If you wish to spend the night, have some fun, or restock your supplies, come to me. Don't waste your time on my little crooks.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "3b1d82209acd4c044906fea6ee2d1d29",
+    "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0192.jbp",
+    "key": "1f9b58f8-420d-4eff-b1ac-afafd5f29b04",
+    "native_excerpt": "{n}With a chuckle, the incubus reluctantly confesses.{/n} \"Seize power? Well, I did try... Have you seen Herrax? After our fight, I looked much worse than that. I had to spend a great deal of gold on healers to restore my appearance. Don't let Herrax's scars fool you — she keeps them to remind us what we looked like after she finished with us...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "d6955c2acf6ae4141966111db0592279",
+    "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0052.jbp",
+    "key": "6dd56d0c-ab0c-490f-a0d0-75fb2fe4330d",
+    "native_excerpt": "\"Indeed, I have several items that were.... forgotten here by our clientele.\" {n}Some of the 'forgotten items' Herrax is selling are stained with blood, and two of the rings bear the characteristic scratches of being cut off a dead body along with the fingers.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   4
+  ]
+ },
+ "horzalah": {
+  "device_class": "another_character_intervenes",
+  "setting": "Drezen ramparts after the Guild report; Guild witnesses at the strongbox-room doorway",
+  "payoff_shape": "free Guildmistress walks her chosen lover past the contract masters with her trophy story intact",
+  "canon_hooks": [
+   {
+    "guid": "2186d862edf598942bfdb89f44837067",
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/Cue_0042.jbp",
+    "key": "aa0e59cd-cb93-4eec-b56d-f25a811b44aa",
+    "native_excerpt": "{n}Horzalah's voice trembles with barely contained fury.{/n} \"That's what I was... Yozz made a deal with my father, and I was... an advance payment he managed to procure. Yozz thought that a nephilim concubine would raise his status, and my father did not value me highly.\" {n}Dark flames flicker in the demon's shrewd, evil eyes.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "7dce8fddc72c85d49a9520a9bc1ac85f",
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/Cue_0049.jbp",
+    "key": "27f77fb0-40cf-4f1c-a97a-d0049bbc65d8",
+    "native_excerpt": "{n}Fury flashes in the demon's eyes, and her hand touches the collar-shaped scar on her throat.{/n} \"Then look elsewhere, far away from me. I have no intention of getting anywhere near that bitch. If she crossed you somehow, I didn't have anything to do with that. But I do wish you luck in trying to murder her.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "bfe4e3daffa08f74fbfca97063d78874",
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Ambush/Cue_0061.jbp",
+    "key": "0124a0e0-537d-4d4b-b343-d6848152af03",
+    "native_excerpt": "\"It's not like he had any choice in the matter,\" {n}Horzalah crows triumphantly.{/n} \"This halfwit belongs to me... and so does his guild. After you killed Hepzamirah, Baphomet gave me back my power. I was restored to my rightful place, and Yozz, who once considered himself my master, became my property.\" {n}She cracks her knuckles, causing the former leader of the Assassin's Guild to cower in fear.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5,
+   6
+  ]
+ },
+ "iomedae": {
+  "device_class": "another_character_intervenes",
+  "setting": "Drezen bare banner platform after the Threshold bridge and Pharasma's verdict",
+  "payoff_shape": "divine rescue judgment stays separate; plain-steel private return carries an anonymous mortal's debt",
+  "canon_hooks": [
+   {
+    "guid": "2e46d7fc0945a4e4d876b13bbad69ece",
+    "path": "World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0016.jbp",
+    "key": "464287db-57c2-4ddf-ab81-796ede845743",
+    "native_excerpt": "\"I suppose you are asking yourself why I am here. Gods must not interfere directly in the affairs of mortals. But what is happening here, in the Worldwound, is no longer the concern of mortals alone.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "cdbc3902b0a3ea742b44922dedeee61b",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0215.jbp",
+    "key": "2026b314-8d26-48d8-9559-bbb1d89c98d1",
+    "native_excerpt": "\"Eleven, of course. She did all manner of things — turned her cloak into a bridge, created a powerful artifact out of nowhere using just her broken sword and a bit of prayer, and even talked some undead into throwing himself upon his sword. Hmm. By the way, did you know that if you question the authenticity of these acts in the center of Iomedae's cathedral in Nerosyan, you can get a boot-shaped bruise right in the lower of your back? Hmm. It wou",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "9ce46e4fa5932c04db861b97ce0719a9",
+    "path": "World/Dialogs/c6/TrueEnding/Suggest/Cue_0025.jbp",
+    "key": "fbad0994-ab71-4ed5-a19c-3781a457728c",
+    "native_excerpt": "\"Yes, indeed — the Sword of Valor was Iomedae's banner before she passed the Test of the {g|Starstone}Starstone{/g} and ascended to Heaven. I've never studied the Sword of Valor. Perhaps I should have. It is truly a fascinating artifact, and the way it interacts with you is incredible. Could it have picked up the early signs of your nascent divinity? I do not know.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "0bf5cb6d94194b5aa5881c60f09105f6",
+    "path": "World/Dialogs/Epilogues_afterlogues/Cue_3.jbp",
+    "key": "ef9aa7e8-0323-465c-b691-95d29d874384",
+    "native_excerpt": "{n}Your consciousness coalesces into one whole, rejecting the oblivion of death. Your mythic powers are not entirely gone, and they entitle you to a say in this trial.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "b4602032fbbd4c4c9c04493f5fe6ddcb",
+    "path": "World/Dialogs/Epilogues_afterlogues/Cue_26.jbp",
+    "key": "9952fcd4-adf5-4455-a6d2-43e7d167877f",
+    "native_excerpt": "\"Now you, {name}, the mortal who has risen so high as to stand boldly in the presence of the goddess of fate. You have done the impossible, and you will be remembered as long as this universe exists. You have earned your peace.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5,
+   6
+  ]
+ },
+ "irabeth": {
+  "device_class": "another_character_intervenes",
+  "setting": "Drezen company desk beside the throne-room guardroom, wife's answered dispatch",
+  "payoff_shape": "military discharge to Anevia followed by Irabeth's off-duty request",
+  "canon_hooks": [
+   {
+    "guid": "33ac7d4b774c30349a94aca9116522c8",
+    "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0047.jbp",
+    "key": "69771492-4cc1-4c18-aaa2-93f63063b90e",
+    "native_excerpt": "\"We met in Tymon as I was wandering aimlessly from one ordeal to another. We returned to {g|Kenabres}Kenabres{/g} together, to expose the {g|templars}Templars of the Ivory Labyrinth{/g}. The day the Queen knighted me was the second happiest day of my life. The first was the day of our wedding.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "069eeb42997738d40a0db4667eafe44d",
+    "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0048.jbp",
+    "key": "4040691a-21ff-4c31-8d3c-4141d1243cf9",
+    "native_excerpt": "\"But Anevia isn't just my beloved. She's my staunchest ally. We share every victory and defeat. The best of me is alive thanks to her.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "2302cb7cdc2037a4396bfc758e85424f",
+    "path": "World/Dialogs/c3/Drezen_C3/Irabeth_C3_Intro/Cue_0124.jbp",
+    "key": "6ec00454-cb8c-476b-9adf-975fde924128",
+    "native_excerpt": "\"Permission to speak freely? I must admit that I've nursed doubts about your ability to lead an army more than a few times. You don't seem to take this seriously at all, like the war is just a joke to you. But... you keep winning, again and again. Your orders seem crazy sometimes, but they lead us to victory. That means I should trust you, even if I don't always understand you.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "jannah": {
+  "device_class": "canon_lowest_point",
+  "setting": "Ch5 Drezen gaol to garrison muster chalk circle",
+  "payoff_shape": "desertion account answered by her public rematch, crossed blades at night and garrison gossip",
+  "canon_hooks": [
+   {
+    "guid": "ef6fcb8d9315069458187e9b546844e9",
+    "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0002.jbp",
+    "key": "0f7e9c84-c19a-40cb-bc53-9c1d77e050c3",
+    "native_excerpt": "\"I got lost... I lost my way when I ran. I walked and walked with no food... and then the vrocks came and...\" {n}She shudders and peers around with haunted eyes.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "6428870ef6820f040b09f6403c2c7e76",
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0038.jbp",
+    "key": "52169bb4-9088-4946-a6c2-2c9276c94363",
+    "native_excerpt": "\"I signed up four days before the demon attack! Am I lucky, or what?\" {n}Jannah lets out an overly boisterous laugh.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "fe9fa40a86e52364bb3a5ad5d58b6166",
+    "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0005.jbp",
+    "key": "3215a625-2ea9-4d27-8e50-50b44e885d9a",
+    "native_excerpt": "\"Not before... you got here... but they said I'd be next... And I couldn't do anything, I just had to watch and wait...\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "jerribeth": {
+  "device_class": "bargain",
+  "setting": "Drezen market rendezvous; returned branch's nerve-built room behind the left eye",
+  "payoff_shape": "collector accepts a freely answered evening then retells the lost memory",
+  "canon_hooks": [
+   {
+    "guid": "7c5e45ae9f8a9034b805707899433e53",
+    "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0031.jbp",
+    "key": "ab61b2ee-bbaa-418d-9084-e5f241658eba",
+    "native_excerpt": "\"Because I am a demon.\" {n}You detect amusement in Jerribeth's voice.{/n} \"Rules, laws, loyalty? Seek them in Hell and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Many of our laboratories around Drez",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "8a632a5249b3c2541a1381111cae9e37",
+    "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp",
+    "key": "285126f8-f314-4a8f-a477-38282da07ef3",
+    "native_excerpt": "{n}A familiar narrow shadow appears before you. The antennae on the creature's head quiver, its hands linked tightly together.{/n} \"You have arrived, Commander,\" {n}comes the high-pitched voice in your head.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+    "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0014.jbp",
+    "key": "b003e047-ab44-4a8b-af47-b50108d50484",
+    "native_excerpt": "\"Oh really? Then listen to the most important thing I want to say to you: don't destroy my toy village. This place and its amusing people have become quite dear to me. Marhevok too — he loves me so passionately, so blindly...\" {n}The creature's voice turns pensive.{/n} \"There are some things you cannot discover in the Abyss, no matter how long you look.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "kaylessa": {
+  "device_class": "canon_lowest_point",
+  "setting": "Drezen tailor's awning; her intended marksmen's tomb or south-wall ravine in the actual history",
+  "payoff_shape": "dagger custody accepted, death site reclaimed for desire, morning curse check leaves the danger alive",
+  "canon_hooks": [
+   {
+    "guid": "0ab8f1a13d91d9e4d8ac8870ca4e576d",
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0066.jbp",
+    "key": "b8a00dab-a89e-4ca1-91b5-35d1c4c4c809",
+    "native_excerpt": "{n}With a resolute shake of her head, she barks,{/n} \"Don't. I can handle it myself. I don't like it when strangers cast spells on me.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "21e7f278a461f1a4091c83a6af8494e6",
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0040.jbp",
+    "key": "fcdead47-120a-46b6-bf0e-af22ce6f8cc2",
+    "native_excerpt": "\"Alas, it was too late. The whole time, we were puppets in the hands of a priestess of Deskari by the name of Anemora. That monster had been toying with us, using us to kill innocents. The wasp was revealed to be a locust... and we were unmasked as criminals, outcasts. We were wanted and had nowhere to turn. The only option was to bend the knee to Anemora — who promised us protection. I was the only one who refused, but I was captured and taken b",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "b60a1979ed1059c46b02d9dcb16f1bc7",
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0039.jbp",
+    "key": "ef78bd35-8e19-42c1-8b2f-0143680418e1",
+    "native_excerpt": "\"I joined the Sunset Wasps, a secret sect of vigilantes dedicated to {g|Calistria}Calistria{/g}. By night, we would bring justice to those whom the law had failed to punish — liars, traitors, molesters, murderers... But the further we went, the more our doubts grew. We asked ourselves — how reliable was the information we were getting? Could there have been any mistakes?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "kiana": {
+  "device_class": "another_character_intervenes",
+  "setting": "Drezen borrowed vampire-court room, Elan's reply interrupting her rehearsal",
+  "payoff_shape": "princess drops the performance and writes an honest guest's exit with her husband's state carried",
+  "canon_hooks": [
+   {
+    "guid": "a819e8c85ef23324bb0d8117bb9d7df3",
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp",
+    "key": "1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+    "native_excerpt": "\"Yes, it feels good to be married.\" {n}Kiana smiles.{/n} \"Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "466c4a8957da5f14fa958d1718b4a552",
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp",
+    "key": "7841b453-df78-4bec-9758-e8daf7622dc4",
+    "native_excerpt": "\"Oh, stop it! My friends and I are completely harmless 'vampires.' We won't bite!\" {n}Kiana laughs musically.{/n} \"Truth be told, we chose the theme of {g|Ustalav}Ustalav{/g} because it lets us wear beautiful dresses, light candles, and drink red wine all evening, pretending that it's blood. I personally can't think of a better way to celebrate my wedding!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "716683517058beb4ead374bd16b22ff0",
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0013.jbp",
+    "key": "00b5c029-c3bb-43d6-a672-84b172ea6f6e",
+    "native_excerpt": "\"If it weren't for soldiers like me, a lot of families would lose their loved ones. It won't be long before the demons are defeated... I truly believe our victory is near. But for now, I must keep on fighting.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "konomi": {
+  "device_class": "bargain",
+  "setting": "Drezen attaché office after council recess, fan laid across the closed ledger",
+  "payoff_shape": "sealed private letters alongside continuing public Crown dissent",
+  "canon_hooks": [
+   {
+    "guid": "4652e02184bd4494e8680a466714bbd5",
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0034.jbp",
+    "key": "72094ade-5fb1-4ef2-99b4-b6c70338b5cc",
+    "native_excerpt": "\"Spoken like a true politician, Commander. Very well, let us talk price.\" {n}Lady Konomi looks at you with a smug, somewhat predatory smile.{/n} \"I can guarantee you that, in return for your loyalty, the Royal Council will ensure the stability of equipment deliveries in the future. Quite convenient, don't you think — having no one twisting your arm with threats of supply shortages?\" {n}She glances at you with an obvious hint.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "9ee914535aa169240b3a840465a43d55",
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0008.jbp",
+    "key": "632d08ce-1c4f-4eb0-a056-ea4599f49ecd",
+    "native_excerpt": "{n}A sharp-looking kitsune gives you a quick, businesslike bow.{/n} \"Commander, the matters before us are urgent, so let's not stand on ceremony. I am Lady Konomi, the official attaché of {g|Nerosyan}Nerosyan{/g}. Here are my credentials.\" {n}She presents a scroll adorned with Galfrey's seal.{/n} \"Her Majesty has instructed me to lead your headquarters' Diplomatic Council.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "efe7fee421301b84aaff22a3b9dba4cf",
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038.jbp",
+    "key": "d21d2901-e480-476d-aafa-ad1eb048c0d7",
+    "native_excerpt": "{n}Lady Konomi shrugs.{/n} \"I'm a child of a passionate and curious people. We live everywhere, you are just... not always aware of our existence.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "melazmera": {
+  "device_class": "bargain",
+  "setting": "Ch5 rift-edge hoard reached on her back, after the Colyphyr rain-hole opening",
+  "payoff_shape": "seal remains on her claw, real sapphire leaves in Commander's pocket and she claims the thief",
+  "canon_hooks": [
+   {
+    "guid": "d9cf5c5e87a72e943afa9737b02bfbe7",
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0102.jbp",
+    "key": "70c883b1-6364-43bd-b7a0-0f5f89a41b48",
+    "native_excerpt": "{n}The Fulsome Queen sniffs tearfully, and says in a whiny, petulant voice,{/n} \"Yes! No one has ever been that impertinent! No one has ever tried to eat me before, ever! And that nasty dragon! She bragged about eating everything, even dead souls! She giggled and said she'd never had anything like me before! And I esc— chased her away, but she'll be back! I didn't like being chewed! It was so disgusting!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "35fca27d8356ef64da87ec40f4f37a58",
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0046.jbp",
+    "key": "cab03e06-a114-4e19-b011-fd66d0e1ff82",
+    "native_excerpt": "\"The evil lizard lives nearby, in a big cave with a hole at the top. The rain falls into the hole. It's a good cave, dark and wet, and it used to be very quiet. But then the fat lizard came and kicked me out of there, because she wouldn't fit in the other caves! Why does she need such a good cave? She's always out hunting, she flies over the island all the time! And the cave just stands there empty!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "ee90b60ecefa31f44aeb8a58c1e5ebab",
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0078.jbp",
+    "key": "832dc662-3691-4f1d-b31e-335d839a67d8",
+    "native_excerpt": "\"Dragons love their treasure. Everyone knows that! If you touch the treasure, the dragon will hurry back in the blink of an eye to protect her property! But the things scattered around the cave — the bright stick with a bird on top, the sparkly dress, the round coins, and even the pretty little crown...\" {n}The demon's voice grows wistful, and there's a faraway look in her eyes.{/n} \"They're all just silly rocks that have been wrapped in illusion",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts.",
+    "shared_string_asset": "3378d5fc7c76f0f459c8505d928abb7b"
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "mielarah": {
+  "device_class": "isolation_via_canon_events",
+  "setting": "Starcatcher quarterdeck in the authored Worldwound squall above Drezen",
+  "payoff_shape": "deliberate release of the helm, coat on open planks and an unguarded morning watch",
+  "canon_hooks": [
+   {
+    "guid": "20ab6c2c82b85d54aa89e02c52d43268",
+    "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0012.jbp",
+    "key": "5d8b75fb-de6c-438b-b445-e4b560379c3b",
+    "native_excerpt": "{n}A defiant expression appears on the sorceress's face.{/n} \"We are quite capable of reaching the destination, no matter how long or dangerous the route might be. Starcatcher the Third never wavers in the face of a challenge. I sincerely hope you've chosen your best companions to go with you, because we won't be able to carry more than six people. Also, you should take care with your gear — on a long expedition, you can only count on the things ",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "1b4e78245cb3a244588f9ec0fda54ea8",
+    "path": "World/Dialogs/c4/AirAdventures/Cue_0426.jbp",
+    "key": "b9b227ed-68ec-4135-8a09-0aa79d1dad8d",
+    "native_excerpt": "Captain Mielarah responds to the Commander's order with a desperate nod, but with every subsequent minute she passes at the helm, her face grows {d|c4 captain mielara}darker and darker{/d}. As the wind tears the sails, Mielarah's mind struggles with the realization that her dark fate — the curse of the Gravedragger — is creeping up on her. Unable to resist the overwhelming panic, she lets the wheel slip out of her hands, and the ship crashes into",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "1732e4ec1c2bc4a40b6cc47c5b8a8739",
+    "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0057.jbp",
+    "key": "ff912286-d29e-4ab0-8aeb-159d2b059c72",
+    "native_excerpt": "\"I strictly follow the unwritten aeronaut code — I never ignore those in distress, I never attack other vessels, and I honor the integrity of the cargo that I am entrusted with. Maybe I look like an idiot to the other captains, but I don't care! My doggedness earns their respect, even if it also provokes their ire. Besides, they know that I'm stubborn, and I'll defend myself till the very end. I suppose that's the real reason why they haven't sli",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "minagho": {
+  "device_class": "canon_lowest_point",
+  "setting": "Drezen quartermaster stores after the joint brand reckoning",
+  "payoff_shape": "branded debtor makes her own rare-visit claim and binds the bleeding palm at dawn",
+  "canon_hooks": [
+   {
+    "guid": "b383bf726fdb1af4ebd3e632ad8db323",
+    "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0001.jbp",
+    "key": "9fb4396d-02a9-4216-b8b9-cd6755d4b59f",
+    "native_excerpt": "{n}Minagho is kneeling, her hands clasped in front of her. Blood from the mark carved on her forehead drips down her eyeless face, but the demon doesn't seem to care.{/n} \"I'm so tired of you, {name}. I can't do it anymore. I can't run or fight, nothing. I've hunted the paladins of the good gods for centuries. You could make a burial mound out of the tin heads of all the idiots I've killed or tricked! But you — you're nothing like them. You never",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "17249a81e2f0d7d4ca67937db86ef858",
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0124.jbp",
+    "key": "7cf9be7f-e702-408c-97b0-76cda664bcc5",
+    "native_excerpt": "\"The seals torment her every breath, draining her strength, and only by destroying you can she be free of them. In case you're wondering, when she suffered yet another setback, I added a few more of my seals. The screams she let out as she was being branded — each of them cursing your name.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "c5f918382f54e4342b40334c2d9f854f",
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0123.jbp",
+    "key": "b05809cc-49f6-4c5b-a38b-5ed1a57b6b14",
+    "native_excerpt": "\"I place various seals upon my slaves — there are those that grant power, those that bring delight, those that inflict pain, and those that simply mark their bodies as mine. Minagho failed me, and I... encouraged her to correct her mistake.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "nenio": {
+  "device_class": "experiment_or_ritual",
+  "setting": "Drezen manuscript room during her private overnight selective-forgetting trial",
+  "payoff_shape": "retained subject with deliberately blank public name, private lifelong longitudinal study",
+  "canon_hooks": [
+   {
+    "guid": "0a69a72dcd091fc4ca17ac086ea66799",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0066.jbp",
+    "key": "25e2cc38-ef62-487f-808d-794f4b7fef13",
+    "native_excerpt": "\"This is just one of my many talents! The secret is to stop thinking about the thing you want to forget. And the main thing is not to remember anything you don't need. To filter it. To get right to the essence. I'll teach you someday. Unless I forget.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "0c8451322966c5d46aaf6b7e683a3c92",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0052.jbp",
+    "key": "64ab9f49-64aa-45c4-ab49-de4e9155e184",
+    "native_excerpt": "\"On the grand scale of world history, your name is irrelevant. I have no reason to remember it.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "e13d149310c60af4e94830317bcb99b7",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0008.jbp",
+    "key": "f273b476-78fc-47db-9f76-70180a9f4cff",
+    "native_excerpt": "\"Hand in hand, we will unravel the greatest mysteries inaccessible to the minds of ordinary people. Just imagine it — I, leading the way, proudly staring into the faces of the gods themselves, and you, my loyal follower, walking behind me every step of the way, writing down my deepest thoughts and admiring the profundity of my intellect!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "nidalynn": {
+  "device_class": "she_pursues",
+  "setting": "Drezen east-wall lime-kiln, rescued woundwyrm's first flight to the private ridge",
+  "payoff_shape": "last Reudger salt shared by reciprocal eating, silver flight and shared-fire morning",
+  "canon_hooks": [
+   {
+    "guid": "115f3b59eade2374196abbc646bb8a54",
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0015.jbp",
+    "key": "a55811ca-8fd2-4fc6-9538-19d99d4fa48e",
+    "native_excerpt": "\"Your concern seemed sincere, and I'd like to believe that your kindness was genuine. As a silver dragon, I believe kindness and sincerity are of the utmost importance. However, it is not just the soul that needs to be nourished. You must also sustain your body! Here is a slice of Master Reudger's cheese. You should try some the next time you make camp. Just remember to eat it slowly, savor its flavor.... and be grateful!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "37d0134dd61992741994b6d93c30d46d",
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0016.jbp",
+    "key": "1d7f505b-4865-4279-8dd4-2af3cbdbec60",
+    "native_excerpt": "\"I knew that an absurd request from a pregnant woman would seem foolish. But she could have taught you a valuable lesson.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "7e1a31d409836274b93e59796d60c19e",
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0058.jbp",
+    "key": "a3ab444b-87bb-43fa-be5b-6a06f42ac3af",
+    "native_excerpt": "\"Dragons often take human form. Sometimes they do it because they're bored... And sometimes, they do it because it is necessary to achieve some greater purpose. For example, they may disguise themselves as druids, and ask the crusaders to give them the woundwyrm eggs the Commander took from the Ivory Sanctum. Thank you for those, by the way. Rest assured, we'll take good care of them.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "nocticula": {
+  "device_class": "bargain",
+  "setting": "Threshold projection audience, concealed sovereign and paid chair at the Commander's right",
+  "payoff_shape": "shadow keeps a paid place or an opposite-end surveillance stalemate",
+  "canon_hooks": [
+   {
+    "guid": "9c219d9331c1fa24d95ab1c51c46df84",
+    "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0023.jbp",
+    "key": "c79247e7-e6fd-411c-abbd-4041938d35a9",
+    "native_excerpt": "\"You amuse me, mortal. Very well. Be on your way. If you happen to see Shamira, tell her I say hello... unless you've already encountered her, of course. I'm sure you can see yourself out — you did find a way in, after all.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "84df3b227f54e3e44888b5bb8585089d",
+    "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0021.jbp",
+    "key": "7328c1e1-84a0-44e9-b4c1-995b3d51df18",
+    "native_excerpt": "\"And you decided to report back to me after you finished the job? How kind. But do you know what? I won't hold it against you. Shamira was starting to forget her place. She was no longer content to rule Alushinyrra on my behalf... She coveted my throne. You've saved me the trouble of having to deal with her.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "7d07492b12cf5bd4bb1c88113d5831ab",
+    "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0002.jbp",
+    "key": "5760c5f9-02d3-416d-b51d-b4297a450659",
+    "native_excerpt": "{n}You hear the sound of laughter, and then the Lady in Shadow begins to speak.{/n} \"You do not disappoint, my chosen. Your performance has been flawless. I hope you will continue to impress me, and that you will do what needs to be done in the end.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   6
+  ]
+ },
+ "nurah": {
+  "device_class": "canon_lowest_point",
+  "setting": "Drezen gaol archive walk and plank proof desk",
+  "payoff_shape": "captive author rejects ownership, claims her reader and keeps an uncensored byline",
+  "canon_hooks": [
+   {
+    "guid": "ea5213ee84e1f534e87eb2f193811c6c",
+    "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0002.jbp",
+    "key": "f2c3b758-0461-4e1f-9794-8e6e1e90ce57",
+    "native_excerpt": "{n}Nurah lies on the bunk, staring at the ceiling lazily.{/n} \"So you've remembered that pawn you put back in the box. Will you leave me here to rot, or return me to the board?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "f06a0653bf874465aafb7a849642d99d",
+    "path": "World/Dialogs/Epilogues/Cue_15.jbp",
+    "key": "4c5c3a87-468f-470e-adc5-64dbf6ff3eda",
+    "native_excerpt": "For a time, the whereabouts of Nurah Dendiwhar were completely {d|c2 nurah trickster}unknown{/d}, but then the River Kingdoms saw the publication of her shocking book — \"To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist\". The book was banned in several countries, and a bounty was placed on Nurah's head — but the elusive writer always escaped the clutches of the inquisitors.",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "255504a2d643baa468d17bcc0bdee9a3",
+    "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0001.jbp",
+    "key": "6903fbd4-8ccd-4dcb-a52c-b3cf4a7c65b5",
+    "native_excerpt": "{n}Nurah bares her teeth like a cornered rat.{/n} \"Come to gloat?\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "seelah": {
+  "device_class": "act_before_confession",
+  "setting": "Drezen companion-hub penance-list reckoning and borrowed room; existing Fye stairs for outside-party courtship",
+  "payoff_shape": "her reclaimed penance list stays private or enters her chosen pocket game; earlier closeness becomes a chosen future, then boots for her own posting",
+  "canon_hooks": [
+   {
+    "guid": "50c68a552d32d3741af44e0fd18ac652",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0018.jbp",
+    "key": "2a34986a-d8d2-415d-a2a7-2663c2f94da8",
+    "native_excerpt": "\"A thief lives one day at a time, that's what they say. I was the type that never thought past the next job. Anyhow, I was able to sneak into the knights' camp and steal one of their mithral helms.\" {n}Seelah pauses, her voice sad and measured.{/n} \"And I was right there when a gnoll attacked the helm's owner — Acemi was her name — and dealt a blow to her unprotected head. A gnoll like all those others she'd fearlessly driven from the gates of Solku. That one blow was fatal, ",
+    "scope": "Native characterization/event evidence, not native romance. Path-exclusive dialogue is a voice target only unless this history actually heard it."
+   },
+   {
+    "guid": "a3d0b31d35fc785418c78ded53cb278d",
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0006.jbp",
+    "key": "b9c43cae-d4c0-48f1-a042-6e928e300ca5",
+    "native_excerpt": "{n}Seelah pushes a mug of beer toward you and speaks softly,{/n} \"It was me who convinced {g|Irabeth}Irabeth{/g} to use what Jannah, Curl, and Elan found for a little party. If you look out the window, you might think the End Times have come and the Abyss has devoured us all. I thought some simple pleasures — good food and good company — could help keep the gloom at bay.\" {n}Seelah looks at you hesitantly, as if trying to gauge your reaction.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "f4a62f6d32724c84bbb706a9a8c048e2",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0094.jbp",
+    "key": "cdbd8d33-0989-49c1-a32b-d1ad279799ac",
+    "native_excerpt": "\"I... feel alone. Nobody else is going to sit with me and celebrate saving a beer cart. And I'd like to regain — if not the friendship, at least the trust of the other knights. Especially those I respect and consider my friends, like Elan.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "dc1a2f2a9d2409d44aa803ad2604d0b1",
+    "path": "World/Dialogs/c3/AreeluLaboratory/SecretWish/SeelahWish/Cue_0005.jbp",
+    "key": "18b09f85-857c-4d7d-9796-800891801e98",
+    "native_excerpt": "\"Everything was different for a moment. My life was... different. As if {g|Acemi}Acemi{/g}, the paladin who died because of me, was still alive. She trained me and we traveled all over, and so much happened...\" {n}Seelah grits her teeth.{/n} \"It was an illusion. Let's just drop it.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
+ "shamira": {
+  "device_class": "experiment_or_ritual",
+  "setting": "Harem of Ardent Dream empty throne dais, court returning at the third bell",
+  "payoff_shape": "one-pass mind-reading wager ends in deliberate mental disclosure, throne-step night and public court counterclaim",
+  "canon_hooks": [
+   {
+    "guid": "817101b551d0d5e4283ca80e6f112674",
+    "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0157.jbp",
+    "key": "3b7e3d4b-8449-482d-a42d-2dae95bd46ab",
+    "native_excerpt": "{n}Shamira's voice whispers inside your mind,{/n} \"Regarding your special request — it, too, will be taken care of. Nocticula will know you seek an audience with her.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "43bb7ca856321be409cf22bfe89c28b5",
+    "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0106.jbp",
+    "key": "f58d71c5-7224-49bf-909b-5dd6b3c0b3bb",
+    "native_excerpt": "{n}In the heat of Shamira's magic, your mind melts like wax. Your knowledge of Nahyndrian crystals surfaces as the demon strips out your memories as efficiently and ruthlessly as a hunter dressing a carcass.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "216d0445992d7f845a9fe32ffdb381d7",
+    "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0066.jbp",
+    "key": "d3fd424b-1259-4f38-842c-ebb2c5a000cc",
+    "native_excerpt": "{n}Shamira snaps irritably.{/n} \"What do you think? Because I am Shamira, the Ardent Dream, the chosen lover of the great Nocticula. Every time she grows weary of plots and conspiracies and craves wild passion and warm caresses, she comes here to her harem.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "soana": {
+  "device_class": "canon_lowest_point",
+  "setting": "Wintersun cave animal graves and the cleared seed-bed beside the stream",
+  "payoff_shape": "guardian retakes her leash and admits a visitor to the home Corven still has a place in",
+  "canon_hooks": [
+   {
+    "guid": "c6789b662ea5c404f957d9a20b68f5c7",
+    "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0012.jbp",
+    "key": "93318741-6358-4436-a7f0-3cf64580345d",
+    "native_excerpt": "\"Corven laid a wreath of those flowers on my head and I became his wife. I washed my children in the holy spring in the Meadow of the Spirits, and they grew up healthy and strong. This forest was my land. The Great Orso came at my call!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts.",
+    "shared_string_asset": "d6b34060a0c9ce045b77c57a7ff8c2d1"
+   },
+   {
+    "guid": "396b1d46a2cfb1e48b205468d4360ee9",
+    "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0015.jbp",
+    "key": "6e127fe6-1fcc-44cc-a8ab-e931fc0f8e65",
+    "native_excerpt": "{n}The old woman crosses her arms over her chest.{/n} \"Yes. Orso the Terrible is my creation. I used this medallion to control an evil spirit of the Abyss after linking it to the sacred bear, and I forced the spirit to serve good by linking our lives together.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts.",
+    "shared_string_asset": "db49c5b48bf1f574280c5460c1e91981"
+   },
+   {
+    "guid": "3c616e0be2622f94f8e6aff5ad537b28",
+    "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0048.jbp",
+    "key": "8613a6d9-9e83-48c0-b2f7-177cacd5ab25",
+    "native_excerpt": "\"The scouts also reported something strange. It seems animals are helping locals fight the demons. It's as if someone is sending them from the forest. I'll just say I don't understand Wintersun at all. Odd little place.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   3,
+   5
+  ]
+ },
  "targona": {
   "device_class": "isolation_via_canon_events",
   "setting": "Drezen field infirmary, pikeman's cot and stove through the shared dawn vigil",
@@ -207,6 +1204,100 @@
   ],
   "chapter": [
    3,
+   5
+  ]
+ },
+ "terendelev": {
+  "device_class": "isolation_via_canon_events",
+  "setting": "Drezen north turret above Commander's rooms, one healing watch after Iz",
+  "payoff_shape": "protector sets aside the pike for a night and dresses the permanent wound in her shirt at dawn",
+  "canon_hooks": [
+   {
+    "guid": "13348209e0362a245870aeebaee13d08",
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0033.jbp",
+    "key": "616d8c11-0de8-4754-94d2-921dbc39fcac",
+    "native_excerpt": "\"We honor our oaths, and respect the rules. We follow a code of honor. The older a silver dragon becomes, the more it adheres to these customs and rituals. Even our brethren, the other metallic dragons, often fail to understand our way of life. Many believe that the rules we follow are outdated and obsolete. But our elders live such pure, beautiful lives... It is a shame that the other dragons do not see the value of such a lifestyle. I am still ",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "af5d0b6be337672478f086357442cd15",
+    "path": "World/Dialogs/c4/Palace/Audience_Areelu/Cue_0095.jbp",
+    "key": "0a5e8edf-51d5-469c-a040-3f3281ae213e",
+    "native_excerpt": "\"But there is more. Do you remember when you were taken to Kenabres with a wound that would not heal? Do you remember how Terendelev apparently healed you? That was merely an illusion. The dragon was only able to temporarily dull the pain. In fact, it was I who saved you, when I came to you in the caves and implanted a crystal within you. No, 'saved' is not the right word. Your wound is still not healed. That is why your wound weeps blood from ti",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "87fdbffb9974f3e4e91b9734229e1b61",
+    "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0030.jbp",
+    "key": "80dfc2d2-bda4-4e7d-8555-d823c4b47ad9",
+    "native_excerpt": "\"An undead monster created from Terendelev's remains has made its lair nearby. I see it as my sacred duty to honor her memory and destroy her abominable imitation.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
+ },
+ "vellexia": {
+  "device_class": "she_pursues",
+  "setting": "Upper City salon; Ch5 witnessed shell-wager followed by her unbilled call",
+  "payoff_shape": "hostess dismisses the business, bites the invited throat and leaves another outstanding evening",
+  "canon_hooks": [
+   {
+    "guid": "ec58f45a60bec6d438a84993c6a1696e",
+    "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0085.jbp",
+    "key": "b32c0915-1616-48cc-86e3-8c6245f58af9",
+    "native_excerpt": "{n}Vellexia pauses dramatically, then answers her own question.{/n} \"Why, it is sweet self-deception, of course. The gentle feeling so cherished by mortals. To let down your guard and relinquish control. To expose your delicate, defenseless throat, and persuade yourself — just for a moment — that your partner does not want to rip it open... Oh, this game is far more dangerous than any entertainment involving chains, whips, and needles. You see, t",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "33fbc8d0ca697f044861681fc2cecbf6",
+    "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0106.jbp",
+    "key": "638b91d0-3684-4579-8276-2a79bce725fc",
+    "native_excerpt": "{n}Vellexia looks at you longingly. Her eyes are full of passion and desire.{/n} \"I swear on my life that I will never regret the time I've spent with you. I will always remember the mysterious Golarian who was so amazing, perplexing, and wild! However, I cannot allow you to leave me — my feminine pride would be wounded by such a rejection! So I will send you away instead... With my best wishes, and my promise to never forget you! Farewell!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "58d69774dbe696e46a9232167e8d3479",
+    "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0098.jbp",
+    "key": "de5c0891-9005-4bd8-8a26-f8c7deb9c9ab",
+    "native_excerpt": "\"I am grateful for the gift of mercy, and I swear I won't seek revenge... I must admit, you have managed to surprise me one last time before the end of our brief affair.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   4,
+   5
+  ]
+ },
+ "wenduag": {
+  "device_class": "she_pursues",
+  "setting": "Drezen south-postern wall angle and citadel back stair, captured insulter in tow",
+  "payoff_shape": "reciprocal catch claim, self-built cairn night and scent-marked stone morning",
+  "canon_hooks": [
+   {
+    "guid": "d6fd4094a7e58cd419abd0fd595e264c",
+    "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagDefeated/Cue_0010.jbp",
+    "key": "fa2cc70b-41f6-4ef5-b20e-cddb33827b3f",
+    "native_excerpt": "\"You... you are stronger than me, yes... this is the right of the strong — to decide who lives and who dies...\" {n}Wenduag cringes.{/n} \"You think you have the right to condemn me because some higher beings noticed you? No. Your strength gives you the right to decide... only your strength!\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "fa010a1b9f738964782d313580c1c0d1",
+    "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0020.jbp",
+    "key": "bd0a60cb-e802-4106-b0c2-39234fac7390",
+    "native_excerpt": "{n}With a feral grin, Wenduag bows her head.{/n} \"As you wish... But know that I will not forget this. By exiling me, you spit on my pride.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "58d935390d9efc842814c1568ee72901",
+    "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q2_CallOfBlood/AfterBattle_SavamelechsManshion/Cue_0041.jbp",
+    "key": "73a181f5-6771-4825-ab18-cef89b458e3c",
+    "native_excerpt": "{n}With a sudden smile, Wenduag nods.{/n} \"Of course I did. Can you imagine the reward Savamelekh would give me for your death? Too bad I couldn't deceive you, but... I'll get to you... one day.\" {n}Twisting an unfamiliar gold ring on her finger, Wenduag disappears.{/n}",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
    5
   ]
  },
