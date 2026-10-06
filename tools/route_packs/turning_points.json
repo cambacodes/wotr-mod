@@ -1,0 +1,34 @@
+{
+  "delamere": {
+    "device_class": "she_pursues",
+    "setting": "New-moon stream hollow below the Temple of Delamere, freshly taken stag hide",
+    "payoff_shape": "huntress offers herself as quarry, catch chosen once and annual frost hunt left unfinished",
+    "canon_hooks": [
+      {
+        "guid": "20f0dfa4426be104bb02cd93a523c496",
+        "path": "World/Dialogs/c3/TempleOfDelamere/DelamereInTomb/Cue_0042.jbp",
+        "key": "72acddf8-ec57-484f-8533-ec81815dc2db",
+        "native_excerpt": "{n}Pride suffuses Delamere's voice.{/n} \"They are the gifts of Erassstil... He sent his ssspirit to me — a white ssstag... Three daysss we vied with each other in ssstealth and ssspeed... A noble fight... I did not eat the meat, but inssstead I offered it up to Erasssstil... And from the antlersss and hide I made a bow and a breastplate...\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "7bf737854a470ca4a83e810e6b5e6dd5",
+        "path": "World/Dialogs/c3/TempleOfDelamere/DelamereInTomb/Cue_0032.jbp",
+        "key": "9b82bfb5-39f2-4fae-ba79-c89ef991d2e2",
+        "native_excerpt": "{n}Delamere's voice quivers with indignation.{/n} \"I am not your dog... Carrying out your ordersss, the humiliation...\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "91cf4db8445a6df4794c9240270522a6",
+        "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0034.jbp",
+        "key": "83c76c1e-8ce8-40fe-b044-3dca8405593b",
+        "native_excerpt": "\"She lived in these parts back when Sarkoris was still standing. She was a priestess of Erastil and the Kellids deeply respected her for her hard nature and her unshakeable faith. Erastil blessed her with various wonders, and the common folk knew that she would stand up for them. Delamere did not like city life. She said cities encouraged vile deeds and corruption of the soul. She said that people ought to live in small clans, where everyone know",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}

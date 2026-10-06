@@ -389,7 +389,7 @@ internal static class DelamereTricksterTests
         var spoken = After(table, fed, "judge", 0).First();
         check(spoken.Has(P + "kyado.spoken_for") && After(table, fed, "judge", 1).First().Has(P + "kyado.judged"),
             "Kyado's judgment is not the Commander's to speak.");
-        var mourned = World(story, 3, "trickster.ever", P + "returned", P + "first_meat", "kyado.dead");
+        var mourned = World(story, 3, "trickster.ever", P + "returned", P + "first_meat", "kyado.dead", P + "kyado.dead_at_wake");
         check(After(table, mourned, "kyado_cairn", 0).First().Has(P + "kyado.mourned"), "A dead Kyado is not mourned.");
         // NM1: the table's delivery carries the white stag; a save between them still gets the white stag on its own.
         check(spoken.Has(P + "white_stag_told") && !Rules.Available(story, whiteStag, Later(story, spoken, 24)),
@@ -679,7 +679,14 @@ internal static class DelamereTricksterTests
         {
             var needs = s.Requires.Concat(s.RequiresAnyGroups.Select(g => g[0])).ToArray();
             var w = World(story, s.Chapters[0], new[] { "trickster", "trickster.ever", P + "returned", "delamere.started" }.Concat(needs).ToArray());
+            if (s.Areas.Length > 0) w.Area = s.Areas[0];
             check(Rules.Available(story, s, Later(story, w, s.DelayHours + 1)), "A Delamere page never opens: " + s.Id);
+            if (s.Areas.Length > 0)
+            {
+                var away = Later(story, w, s.DelayHours + 1);
+                away.Area = "unrelated-dungeon";
+                check(!Rules.Available(story, s, away), "Portable Delamere encounter: " + s.Id);
+            }
         }
         Console.WriteLine("PASS: Delamere Trickster (Trk_Delamere_*): the stag's call in three places, the run and the arrow, the bow, "
             + own.Count(s => !s.TricksterDevice) + " courtship beats, the second hunt and its no's, " + reactions.Length + " reactions and " + pages.Length + " pages.");

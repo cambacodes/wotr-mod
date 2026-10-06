@@ -1,0 +1,22 @@
+{
+  "voice": "DELAMERE: blunt, proud, older rural priestess and huntress; devout even when angry with her god; physically decisive, impatient with fuss, dry rather than coy. Desire is frank and vigorous. She enjoys catching and being caught but rejects ownership. No undead hiss in this authored living return. No therapy language, consent speeches, maxims, divine messages, or generic conquest boasting. Write new dialogue; do not reuse brief or route sentences.",
+  "facts": [
+    "Delamere was a Kellid priestess of Erastil in old Sarkoris, known for hard methods and protecting villagers.",
+    "She disliked cities and enforced the fifty-three-person settlement rule.",
+    "She hunted Erastil's white stag for three days, offered its meat to him, and made a bow and breastplate from its antlers and hide.",
+    "Native TombOfDelamere_BookEvent/Cue_0057 describes regal bearing, a proud chin, broad shoulders and strong archer's arms. No other physical specificity is established here.",
+    "Native Delamere rejects being ordered like a dog. No established canon spouse or current lover is supplied by the binding inputs."
+  ],
+  "scene": "SCENE: Trickster-only authored living Delamere. Chapter 5 while the war continues; Kyado is not onstage. New-moon stream hollow below her temple, hunter's blind, warm fresh stag hide and banked fire, frost outside. Only Delamere and Commander present. ACT BRIEF: their first mutually chosen sexual encounter on the stag hide, with Delamere initially on top; subsequent positioning accommodates the old leg wound and the selected Commander anatomy. Her appetite and chosen pace drive the encounter. No new sexual preference is presented as canon. She proposed the reverse hunt and chose to stop running. Existing catch choice has already been made. The prior narration established removal of her leathers and initiation at the Commander's belt. Continue that moment without repeating the first kiss or treating either as undead. AUTHORED CONTINUITY, NOT NATIVE FACTS: she is alive, warm and unbound after the earned horn waking; the Commander has the retained leg wound; the hunt vow, blind, hide arrangement, rural courtship and lost blessing belong to this mod. Existing scars may be acknowledged without inventing more scars, anatomy measurements, eye color, hair color, or new age claims. If a religious lie occurred it was confessed before this encounter; never imply it occurred on every history. The Commander's old wound is not fresh, is not erotic injury and is not worsened. REQUIRED BEATS: (1) Delamere actively draws the willing Commander close and chooses how the encounter proceeds; the old blade is out of the encounter. (2) Both reciprocate; she adjusts for the bad leg through practical motion, without turning care into a speech or pain into proof of love. (3) Her desire sounds like a proud living huntress, with one brief personal admission amid physical action, not a string of hunting proverbs. (4) Her faith survives pleasure; the offering and village provision were already paid before the encounter, not an invented divine blessing or sexual rite. (5) Do not call the Commander owned or make sex settle disagreement about her law or absolve a lie. (6) Finish at spent fire/dawn, ready for her independent return to temple work and the following morning's real settlement argument; no second encounter or invented first-night flag. Exactly preserve the last line.",
+  "last_line": "N: By dawn the fire is ash.",
+  "speakers": {
+    "D": "Delamere"
+  },
+  "example": "N: She pulls the hide nearer the embers and catches your hand.\nD: Here. The wind can have the rest of the woods.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20
+}
