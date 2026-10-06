@@ -27,11 +27,7 @@ CROWN = "galfrey.trickster.crown_reclaimed"
 WHEN = [["trickster.ever", RETURNED, CROWN]]
 
 # Owlcat's Queen-slide register: the realm first, the woman as her people saw her. Pending an independent prose pass.
-TEXT = ("{n}Mendev had already hung its gates in black for Queen Galfrey when she rode back through them. She took the crown "
-        "again in the cathedral, before the same lords who had begun to measure the throne in her absence, and they were the first "
-        "to learn that her reign had not ended, only paused.{/n}\n"
-        "{n}She ruled long, hard and exactly, and named no heir for many years. Her people, who had mourned her once, did not forget "
-        "that they had been given her back, and none of those who came after her was ever loved as she was.{/n}")
+TEXT = ('{n}Mendev had mourned Galfrey when she returned to Nerosyan. She had the royal crypt opened and named the knight buried under her name. His daughter received him for burial, and the court received an account of the deception.{/n} {n}Galfrey took the crown again. The regents returned to their offices, and the petitions that had gathered in her absence reached her table. Years later she refused another cup of the elixir and laid down the crown. This time Mendev knew its Queen was leaving alive.{/n}')
 
 REPLACEMENTS = {CUE_0259: ("galfrey.native.queen_reclaimed", PAGE_0255), CUE_0502: ("galfrey.native.queen_reclaimed_twin", PAGE_0258)}
 

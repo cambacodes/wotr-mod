@@ -161,7 +161,7 @@ internal static class GalfreyTricksterTests
         foreach (var s in own)
             foreach (var key in s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)).Where(k => k.StartsWith(P, StringComparison.Ordinal)))
                 check(produced.Contains(key) || story.Derived.ContainsKey(key) || own.Any(o => o.Id == key), "A gate has no producer: " + s.Id + " requires " + key);
-        check(own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed))).All(s => s.Id.StartsWith(P + "commit", StringComparison.Ordinal) || s.Id == P + "alive.oath"),
+        check(own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed))).All(s => s.Id.StartsWith(P + "commit", StringComparison.Ordinal) || s.Id == P + "alive.oath" || s.Id == P + "alive.after_no"),
             "Something other than the oath or its release commits her.");
 
         // Trk_Galfrey_Pacing: a beat in Chapters 2, 3 and 4 on every path.
@@ -292,7 +292,7 @@ internal static class GalfreyTricksterTests
         var bierRefused = Program.Walk(cortege, unplanted).First(r => r.Has(P + "let_die"));
         var bierEpi = World(story, 6, bierRefused.Flags.Concat(new[] { "trickster", "trickster.ever" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.queen_bier"), bierEpi) && !Rules.Available(story, S(P + "epilogue.queen"), bierEpi),
-            "Trk_Galfrey_Cortege: her refusal on the bier gets the deathbed page.");
+            "Trk_Galfrey_Cortege: the Commander's bier withdrawal gets the deathbed page.");
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s,
                   World(story, 5, "trickster", "trickster.ever", Dead, "galfrey.killed_by_commander", P + "crows_mooted", "iz.left_early"))),
             "Trk_Galfrey_Killed: a device serves a kill the Commander chose.");
@@ -345,8 +345,8 @@ internal static class GalfreyTricksterTests
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s, World(story, 5, "trickster", "trickster.ever",
                   "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final", "coronation.after", "coronation.seen"))),
             "Trk_Galfrey_NativeFirst: a Kitrane device opens where she lives.");
-        // Trk_Galfrey_Living: on the Trickster path her own Chapter 5 answer is "friendship is all I can offer you" (Cue_0041);
-        // the living courtship answers it as Kitrane, earned by one plan told and kept, and commits by the refused oath.
+        // Trk_Galfrey_Living: Cue_0041 records her personal distrust on the Trickster path;
+        // completed operations can earn reconsideration. Never-courted history is tested separately.
         var living = World(story, 5, "trickster", "trickster.ever", "iz.fought_with_galfrey", "galfrey.final", "galfrey.native_refused",
                            "coronation.after", "coronation.seen");
         var livingKitrane = S(P + "alive.kitrane");
@@ -357,7 +357,10 @@ internal static class GalfreyTricksterTests
         var evening = One(livingKitrane, living, new[] { P + "alive.evening" });
         var plan = S(P + "alive.plan");
         check(Program.Walk(plan, Later(story, evening, 50)).Any(r => !r.Has(P + "alive.plan_kept")), "Trk_Galfrey_Living: a half-told plan still earns her.");
-        var planKept = One(plan, Later(story, evening, 50), new[] { P + "alive.plan_kept" });
+        var dispatched = One(plan, Later(story, evening, 50), new[] { P + "alive.plan_dispatched" }, P + "alive.plan_kept");
+        check(!Rules.Available(story, S(P + "alive.plan_report"), Later(story, dispatched, 47)),
+            "Trk_Galfrey_Living: dispatch completes before the column returns.");
+        var planKept = One(S(P + "alive.plan_report"), Later(story, dispatched, 48), new[] { P + "alive.plan_kept" });
         // Q12: one kept plan is a beginning; the next one is a decision she objects to, and her objection must be answered.
         var trial = S(P + "alive.trial");
         check(!Rules.Available(story, S(P + "alive.oath"), Later(story, planKept, 50)) && Rules.Available(story, trial, Later(story, planKept, 50)),
@@ -365,7 +368,11 @@ internal static class GalfreyTricksterTests
         check(Program.Walk(trial, Later(story, planKept, 50)).Any(r => !r.Has(P + "alive.trial_kept"))
               && Program.Walk(trial, Later(story, planKept, 50)).Where(r => r.Has(P + "alive.trial_priced")).All(r => !r.Has(P + "alive.trial_kept")),
             "Trk_Galfrey_Living: the test has no failure, or a cultist turned loose unwatched still earns her.");
-        var trialKept = One(trial, Later(story, planKept, 50), new[] { P + "alive.trial_kept" });
+        var trialStarted = One(trial, Later(story, planKept, 50), new[] { P + "alive.trial_started" }, P + "alive.trial_kept");
+        check(!Rules.Available(story, S(P + "alive.trial_report"), Later(story, trialStarted, 95))
+              && !Rules.Available(story, S(P + "alive.oath"), Later(story, trialStarted, 96)),
+            "Trk_Galfrey_Living: four days or the completed judgment are bypassed.");
+        var trialKept = One(S(P + "alive.trial_report"), Later(story, trialStarted, 96), new[] { P + "alive.trial_kept" });
         var livingYes = One(S(P + "alive.oath"), Later(story, trialKept, 50), new[] { Committed });
         check(Rules.Available(story, S(P + "react.irabeth.queen_night"), Later(story, livingYes, 20)),
             "Trk_Galfrey_Living: the living Queen's night has no companion reaction.");
@@ -375,7 +382,7 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Living: the living commit has no no of hers, or no page, or no Last Call seat.");
         check(!Rules.Available(story, tent, Later(story, livingYes, 30)) && !Rules.Available(story, S(P + "kitrane.grey"), Later(story, livingYes, 30)),
             "Trk_Galfrey_Living: the living Queen is sent to the returned knight's tent.");
-        check(Program.Walk(plan, Later(story, evening, 50)).Where(r => r.Has(P + "alive.plan_kept")).All(r => r.Has(P + "alive.plan_told")),
+        check(Program.Walk(plan, Later(story, evening, 50)).Where(r => r.Has(P + "alive.plan_dispatched")).All(r => r.Has(P + "alive.plan_told")),
             "Trk_Galfrey_Living: a plan is kept that was never told.");
         // The manuscripts deathbed with Terendelev returned: no recollection of her claw.
         var manuIz = World(story, 5, back.Flags.Concat(new[] { "iz.manuscripts", "terendelev.trickster.returned", P + "first_morning" }).ToArray());
@@ -447,5 +454,7 @@ internal static class GalfreyTricksterTests
             + "read or blind, for Mendev refused and for her taken, the road, the eulogy, the letter from the rubble, the return, the oath refused "
             + "or sworn and released, the tent and the drill, Sir Anselm's name and her last choice, the native world, " + reactions.Length
             + " reactions and " + pages.Length + " pages.");
+        GalfreyPolishTests.Run(story, check);
+
     }
 }
