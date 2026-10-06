@@ -22,7 +22,7 @@ from story_format import c, n, scene
 from storylines.herrax_trickster import (ASKED_KILL, BAIT, BLOWN, CHEEK, CLIENT, CLOSED, COMMITTED, CONFESSED, DECLINED,
                                          H, HAGGLED, HANDED, HUB, KNIFE_TAKEN, LESSON, LIE_GREED, LIE_HUNGER, LIE_SPITE, MADAM,
                                          MC_FAVOR, MET, MORNING, PRIMED, REL, RESTORED, RET, ROK_LIST, ROK_RET, TOLD_DEAD,
-                                         WILLODUS, COIN_HELD, COIN_LOST, SENT, discovery, discovery_entry, hl, hx, nar, rk, rl)
+                                         WILLODUS, COIN_HELD, COIN_LOST, SENT, MOREVET_DEAD, morevet_variants, discovery, discovery_entry, hl, hx, nar, rk, rl)
 
 SCENES = []
 B = "herrax.house."
@@ -484,14 +484,17 @@ beat(STAIRS, "The stairs", '"You might have warned me about the stairs."', [
     hx("close", '''{n}She puts a hand flat on your chest and feels your heart going under it, and she laughs, low, as if it were a joke only the two of you knew.{/n}
 "There it is. The thing in your chest that burns where it shouldn't. It runs so fast when you've climbed." {n}She leans in, and you feel it again, the faint pull as she breathes you in: a thread of warmth going out of you and into her, light as a pickpocket's fingers.{/n}
 "Stay the night, and I'll send you down in the morning by the servants' stair. It's shorter. I'll never tell you where it is."''',
-       c('"Then I\'ll stay."'),
+       c('"Then I\'ll stay."', STAIRS + ".explicit.1"),
        c('"I\'ll find it myself one day."', "find")),
     hx("find", '''"No, you won't." {n}She kisses the corner of your mouth, where the scar would be if you had hers.{/n} "But I'll enjoy watching you try."''',
-       c("[Stay.]")),
+       c("[Stay.]", STAIRS + ".explicit.1")),
     nar("stairs_no_coin", '''{n}Without her coin, getting to the Delights means walking the streets. Inside, the climb takes you through the smoke rooms, round the mirrored gallery, and through three doors that open onto other doors.{/n}
 {n}Herrax waits at the top in a gown the colour of old wine. The little hourglass beside her has run out.{/n}''', c("Continue", "timed")),
     nar("stairs_coin", '''{n}Her coin can still bring you to the Delights' arch. It saves you the streets, not the climb: up through the smoke rooms, round the mirrored gallery, and through three doors that open onto other doors.{/n}
-{n}Herrax waits at the top in a gown the colour of old wine. The little hourglass beside her has run out.{/n}''', c("Continue", "timed"))],
+{n}Herrax waits at the top in a gown the colour of old wine. The little hourglass beside her has run out.{/n}''', c("Continue", "timed")),
+    # Explicit brief: return to an established lover; private, not another first night.
+    nar(STAIRS + ".explicit.1", "{n}She draws you away from the stair and shuts the door, keeping your hand against the quick beat beneath her ribs.{/n}", c("Continue", "return_morning")),
+    hx("return_morning", '{n}By morning, the hourglass beside the door has run empty. Herrax steps over your discarded armour, already dressed, and counts a purse while you fasten your straps.{/n} "The back stair, lover. Your crusade has had long enough without you." {n}She kisses you, then calls for the boy with the keys.{/n}', c("[Go.]"))],
     requires=(COMMITTED,), delay=24)
 
 
@@ -694,7 +697,7 @@ P.S. Don't let anyone scratch you."''',
 
 post(OFFER, "A better offer", [
     rl("start", '''{n}Rokhorn comes back three nights later without a letter. He waits for you at the gate in the rain, cloak pulled up, and falls into step beside you across the square as if you'd arranged it.{/n}
-"No letter. She doesn't know I'm here." {n}His voice is low and quick, and the stitched side of his mouth hardly moves.{/n} "You sold me once, hot stuff, and I paid for it with my face. So I know what you're worth. I'm here to make you an offer."''',
+"No letter. She doesn't know I'm here." {n}His voice is low and quick, and the stitched side of his mouth hardly moves.{/n} "You stood in her hall while she cut me, hot stuff. So I know what you're worth. I'm here to make you an offer."''',
        c('"Go on."', "offer"),
        c('"No."', "no_first")),
     rl("no_first", '''"You haven't heard it." {n}He sounds genuinely hurt.{/n} "That's rude, even for a crusader. Hear it, and then say no. It'll be more satisfying for both of us."''',
@@ -918,7 +921,7 @@ SCENES.append(scene(B + "rokhorn.whole", "A whole face", "Herrax", 4, '"Rokhorn.
        c('"Don\'t get comfortable."', "comfortable")),
     rk("not_for_you", '''"Of course not. Nobody does anything for me." {n}He grins wider.{/n} "But you did it, and I've still got my face, and I know who to thank. Incubi pay their debts, hot stuff. In kind. Whenever you like. On your knees, and I'll tell you when you can get up."''',
        c("Continue", "end")),
-    rk("comfortable", '''"Comfortable?" {n}He lounges against his pillar, and looks across the hall at the dais, where Herrax sits with an empty sheath at her hip.{/n} "I've never been so comfortable in my life. She can't cut me now, you see. Not without the knife, and you've got the knife. Every day you keep it is a day I'm free."''',
+    rk("comfortable", '''"Comfortable?" {n}He lounges against his pillar, and looks across the hall at the dais, where Herrax sits with an empty sheath at her hip.{/n} "I've never been so comfortable in my life. She could open me with a claw. But another cut before you return her knife? The house would remember your hand on her wrist. I'm betting she wants that settled first."''',
        c("Continue", "end")),
     rk("end", '''{n}He leans in, and lowers his voice.{/n} "So keep it, hot stuff. As long as you like. Forever, if you can manage it." {n}He winks.{/n} "Everyone in this house is watching to see whether you give it back. I've got money on no."''',
        c('"Then you\'ll lose it."'),
@@ -1111,7 +1114,7 @@ beat(B + "her_rooms", "The private floor", '"Show me your rooms. By daylight."',
 "The ones who come up here at night never look at the walls," {n}she says eventually.{/n} "Don't make anything of it. It's only a room."
 {n}Her shoulder is against yours. She doesn't move it.{/n}''',
        c('"It\'s only a room."')),
-    nar("rooms_seen", '''{n}In daylight, the room where Rokhorn walked into his ambush looks smaller. The gilt and silk laid out for that night are gone. This is what she kept beneath the show.{/n}''', c("Continue", "expected")),
+    nar("rooms_seen", '''{n}In daylight, the room where Rokhorn walked into his ambush looks smaller. The chair faces the same door. Herrax catches you looking at it and sits on her locked chest instead.{/n}''', c("Continue", "expected")),
     nar("rooms_first", '''{n}You saw the punishment below, in the great hall. Here there are bare boards beneath your boots and no cushions on the chair. Somebody screams in the street below the narrow window. Herrax pays it no attention.{/n}''', c("Continue", "expected"))],
     requires=(COMMITTED,), delay=24)
 
@@ -1149,3 +1152,37 @@ beat(B + "the_one_who_left", "The one who left", '"You knew Arueshalae."', [
     hx("wont", '''"No," {n}Herrax agrees, amused.{/n} "Neither would I. That's why I asked you."''',
        c('"Clever."'))],
     requires=(LABYRINTH,), delay=24)
+
+
+# Round 2 authored branches: physical history, not a second attraction test.
+def _con_memory(event_id, node_id, text):
+    event = next(s for s in SCENES if s["Id"] == event_id)
+    node = next(n for n in event["Nodes"] if n["Id"] == node_id)
+    if node is event["Nodes"][0]:
+        # An entry speaks only the shared fact; the result is voiced on arrival
+        # at either of its existing responses below.
+        node["Text"] = node["Text"].replace("You sold me to her, and then you took the knife out of her hand", "You helped her set that night, and then you took the knife out of her hand")
+        return
+    variant = deepcopy(node)
+    variant["Id"] += ".con_blown"
+    variant["Text"] = text
+    event["Nodes"].append(variant)
+    for source in event["Nodes"]:
+        for answer in list(source["Choices"]):
+            if answer.get("Next") == node_id:
+                alternate = deepcopy(answer)
+                answer["Forbids"].append(BLOWN)
+                alternate["Requires"].append(BLOWN)
+                alternate["Next"] = variant["Id"]
+                source["Choices"].append(alternate)
+
+
+from copy import deepcopy
+_con_memory(L + "the_courier", "reply", '"I tasted the lie, hot stuff. Shouted it to the whole house. She cut me anyway, and then she cut me again for the healer." {n}Rokhorn watches you fold your answer.{/n} "You went back to her hall with my claw across your cheek. I keep thinking about that."')
+_con_memory(L + "the_courier", "b_offer", '{n}Rokhorn follows you into the square, beyond the sentries, with cold rain running off his hood.{/n} "You tried to sell me once. I tasted it and laughed you off my couch. Look what being right bought me." {n}He touches his twice-cut cheek.{/n} "Now I want to buy. Hear my offer, hot stuff."')
+_con_memory(B + "rokhorn.whole", "start", "")
+
+beat(B + "unpriced_guest", "The house still charges", '"Do your other guests get the same welcome?"', [
+    hx("start", '"No. And neither do your friends. The Sinners charge by the night, the bar charges by the cup, and I take my share of both." {n}Herrax pulls you close enough to speak against your mouth.{/n} "Keep whoever you like in Drezen, lover. Buy whoever you like here. Try to pay me, and you go back downstairs."', c('"Then keep the bill for somebody else."'))], requires=(LABYRINTH, MOREVET_DEAD, "herrax.present_now"), delay=24)
+
+morevet_variants(SCENES)

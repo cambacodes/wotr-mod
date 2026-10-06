@@ -249,8 +249,22 @@ internal static class HerraxTricksterTests
             "Trk_Herrax_PathFailed: the night is set off the path, or a sold night is lost with it.");
 
         // Pages.
-        check(pages.Length == 4 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null))),
-            "Herrax's pages are not four effect-free Chapter 6 pages.");
+        var invitation = pages.Single(s => s.Id == P + "epilogue.after_hours.invitation");
+        var legacyPages = pages.Where(s => s != invitation).ToArray();
+        check(legacyPages.Length == 4 && legacyPages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null))),
+            "Herrax's four legacy Chapter 6 pages changed their inert exit mechanics.");
+        check(invitation.Requires.Contains("herrax.present_now") && invitation.Nodes[0].Paragraphs.All(p => !p.Text.Contains("Commander said yes"))
+              && Ch(invitation, "rooms_offer", 1).Set.Contains(Closed) && Ch(invitation, "madam_offer", 1).Set.Contains(Closed),
+            "Herrax's late return lacks current presence or offers refusal after narrated acceptance.");
+        foreach (var isMadam in new[] { false, true })
+        {
+            var returnFlags = promise.Flags.Where(f => f != "herrax.madam").Concat(isMadam ? new[] { "herrax.madam" } : Array.Empty<string>()).ToArray();
+            var returned = World(story, 6, returnFlags);
+            var offerNode = isMadam ? "madam_offer" : "rooms_offer";
+            check(Through(invitation, returned, offerNode, 0).Any(r => r.Has(invitation.Id) && !r.Has(Closed))
+                  && Through(invitation, returned, offerNode, 1).All(r => r.Has(Closed)),
+                "Herrax's late offer does not separate the accepted night from refusal.");
+        }
         check(Avail(pages.Single(s => s.Id == P + "epilogue.reachable"), World(story, 6, "trickster.ever", Committed))
               && Avail(pages.Single(s => s.Id == P + "epilogue.knife"), World(story, 6, "trickster.ever", Declined))
               && !Avail(pages.Single(s => s.Id == P + "epilogue.knife"), World(story, 6, "trickster.ever", Declined, Restored)),
@@ -288,6 +302,7 @@ internal static class HerraxTricksterTests
             }
         }
         Play(World(story, 4, Base.Concat(new[] { "herrax.haggled", "herrax.asked_kill_chivarro" }).ToArray()), 4, 16, Declined, Blown);
+        Play(World(story, 4, Base.Concat(new[] { "herrax.morevet_dead", "herrax.house.labyrinth", Committed, Lesson, P + "morning_served" }).ToArray()), 4, 3, Declined, Blown);
         Play(World(story, 4, Base.Concat(new[] { Primed, Bait, Lesson, Declined }).ToArray()), 4, 3, Restored);
         Play(World(story, 4, Base.Concat(new[] { Primed, Bait, Lesson, Declined, Restored }).ToArray()), 4, 3);
         Play(World(story, 5, "trickster", "trickster.ever", "herrax.met", Primed, Bait, Lesson, P + "knife_taken", Committed, P + "cost.clawed_cheek"), 5, 12);
