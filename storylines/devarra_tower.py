@@ -1503,6 +1503,8 @@ def integrate(payload):
         for flag, text in EPILOGUE_PARAGRAPHS)
     page["Paragraphs"].append(p(VAULT_SPENT, requires=(VAULT_OPENED, "eggs.omelet")))
     page["Paragraphs"].append(p(VAULT_SPENT, requires=(VAULT_OPENED, "eggs.destroyed"), forbids=("eggs.omelet",)))
+    from storylines.devarra_round2 import polish_epilogue
+    polish_epilogue(page)
     # The egg bill: collected at Last Call (lastcall_partners "The Grey Tariff"), or still standing.
     page["Paragraphs"].extend([
         p("{n}She collected the life the Commander owed her for it a month in every year, on the ridge, as she had named it at the edge of the world. The Commander never once missed a month. She never once let {mf|him|her} come down the same weight.{/n}",
@@ -1510,3 +1512,8 @@ def integrate(payload):
         p("{n}She never named the life the Commander owed her for it. She said a bill that has not been collected is worth more than one that has, because it can still be called; and every winter, on the first cold night, the Commander looked up at the ridge and wondered whether this was the year.{/n}",
           requires=(EGG_BILL,), forbids=("devarra.lastcall.called",)),
     ])
+
+
+# Authored round-2 set pieces; append-only repairs, with no new eligibility mechanics.
+from storylines.devarra_round2 import polish_tower
+polish_tower(SCENES)

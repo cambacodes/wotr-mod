@@ -1,0 +1,37 @@
+{
+  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Possessive affection does not redeem her. Concrete short threats and questions; no therapy language, sentimental diagnosis, maxims or narrator excuses. Write fresh non-graphic dialogue, not recycled cue quotations.",
+  "scene": "NON-GRAPHIC CONTINUITY CODA: Chapter 6 retrospective, the same authored north-ridge tower. A living Commander with an already accepted commitment meets Devarra at a later annual appointment. This is a return after an established first visit, not a repeated first night. Her appetite for the next installment survives the war; affection has not made her benevolent. Show an arrival and leave private events undescribed. No sexual acts, sexual anatomy, arousing bodily detail or eroticized injury. The missing-egg life bill and annual tariff remain separate; do not call either paid here. No fatal unreturned sacrifice, pending judgment or refused romance enters this coda.",
+  "last_line": "N: In spring she returns to the ridge, and the Commander climbs to meet her.",
+  "speakers": {
+    "D": "Devarra"
+  },
+  "example": "N: The wind rises beyond the broken stair.\nD: You have brought the next part, I hope.\nN: She waits for an answer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 6,
+  "max_lines": 10,
+  "slot_id": "devarra.trickster.epilogue.woken.explicit.1",
+  "default_text": "{n}In spring she returns to the ridge, and the Commander climbs to meet her.{/n}",
+  "facts": [
+    "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).",
+    "She held the Storyteller captive and demanded an impressive story in exchange for his life.",
+    "Greybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.",
+    "The Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.",
+    "No verified native humanoid transformation or sexual anatomy is supplied."
+  ],
+  "required_beats": [
+    "This is a later meeting between already committed participants; no relationship state changes.",
+    "Show her return, not merely her departure.",
+    "She remains cruel and territorial, with an unfinished story to demand.",
+    "Do not invent the current keeper, hatchling location, egg survival or settled bill; those belong to existing consequence paragraphs.",
+    "The exact final line resumes the annual-visit account without an arrival flag or new ending mechanic."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored watchtower; no native romance is claimed.",
+    "history": "Only the already earned living/committed history of its existing host scene.",
+    "resumption": "devarra.trickster.epilogue.woken/page -> optional reserved coda paragraph -> existing consequence paragraphs and exit"
+  },
+  "content_scope": "Non-graphic romance and continuity only; this is not a prompt for graphic sexual generation."
+}
