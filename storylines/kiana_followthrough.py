@@ -506,4 +506,7 @@ def integrate_late_acceptance(payload):
     # The page is selected before OnShow records refusal. Preserve its old generic
     # Continue answer, whose generated identity would change if it gained a Set.
     next(node for node in ep["Nodes"] if node["Id"] == "blank").setdefault("EnterSet", []).append("kiana.trickster.late_no")
+    # Round 2a: finalize only Kianas commitment and partner coda entries.
+    from storylines import kiana_partner
+    kiana_partner.integrate(payload)
 # end eng8-q8h

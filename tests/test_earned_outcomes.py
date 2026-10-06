@@ -54,9 +54,18 @@ class EarnedOutcomeGeneratorTests(unittest.TestCase):
 
     def test_scene_nodes_answers_and_targets_preserved(self):
         self.assertEqual(list(self.before["Relationships"]), list(self.after["Relationships"]))
-        self.assertEqual([s["Id"] for s in self.before["Scenes"]], [s["Id"] for s in self.after["Scenes"]])
+        old_ids = [s["Id"] for s in self.before["Scenes"]]
+        self.assertEqual(old_ids + ["kiana.partner_discovery"], [s["Id"] for s in self.after["Scenes"]])
         for old, new in zip(self.before["Scenes"], self.after["Scenes"]):
-            self.assertEqual([n["Id"] for n in old["Nodes"]], [n["Id"] for n in new["Nodes"]])
+            old_nodes = [n["Id"] for n in old["Nodes"]]
+            new_nodes = [n["Id"] for n in new["Nodes"]]
+            if old["Id"] in {"kiana.answer", "kiana.betrothal", "kiana.morning", "kiana.seelah",
+                             "kiana.trickster.late_question", "kiana.trickster.late_question_letter",
+                             "kiana.trickster.epilogue.commit"}:
+                # Only this route's new stance/reaction pages may append here.
+                self.assertEqual(old_nodes, new_nodes[:len(old_nodes)])
+            else:
+                self.assertEqual(old_nodes, new_nodes)
             for a, b in zip(old["Nodes"], new["Nodes"]):
                 self.assertGreaterEqual(len(b["Choices"]), len(a["Choices"]))
                 for previous, current in zip(a["Choices"], b["Choices"]):

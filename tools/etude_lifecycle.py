@@ -29,6 +29,12 @@ SUFFIX_PERMANENT = ("_dead", "_gone")
 # intended current-state meaning where it is used (reported, never failing); "never_reads" = the etude cannot read as the
 # event its key names anywhere (a HARD failure wherever it is bound as Etudes).
 RULINGS = {
+    # Kiana round 2a: only positive current placement, never survival by absence.
+    "e5e3765b11eec1244a2137c2999f00d1": ("reviewed", "Elan_Capital is current presence only: its unhide placement loses to "
+                                         "Elan_Dead (priority 10 versus 0, same conflicting group). Kiana's conditional "
+                                         "ending clauses require Playing capital presence; when it is unavailable, "
+                                         "the route explicitly reports unknown news. Death is separately witnessed "
+                                         "by native death cues. This does not supply a global postwar survival observer."),
     "543a6e475aeb9bf4eafb43903e3e186b": ("never_reads", "ArueshalaeRomance_Fail is the one-strike warning; the second strike "
                                          "completes ArueshalaeRomance in the same dialog, so it never reads 'failed'"),
     "6d3fb96f9b60c0449a01add4be5c4a49": ("reviewed", "VictimsRevived: live-intended; native Arsinoe_Dialogue_Conditions gates her own "

@@ -125,11 +125,14 @@ internal static class LateAcceptanceInventory2Tests
         var unanswered = End(lovers);
         var ep = S("kiana.trickster.epilogue.commit");
         check(Rules.Available(story, ep, unanswered), "Actual unanswered courtship cannot reach question");
-        foreach (int index in new[] { 2, 3, 4 })
+        // Round 2a: saved answers 3/4 are retired for a separated Kiana; 5/6 record her exclusive stance.
+        check(!Rules.ChoiceAvailable(ep.Nodes[0].Choices[3], unanswered) && !Rules.ChoiceAvailable(ep.Nodes[0].Choices[4], unanswered), "Separated Kiana bypasses stance at old late answers");
+        foreach (int index in new[] { 2, 5, 6 })
         {
             check(Rules.ChoiceAvailable(ep.Nodes[0].Choices[index], unanswered), "Advertised answer impossible: " + index);
             var result = Program.WalkVia(ep, unanswered, "start", index).Single();
             Refresh(story, result);
+            check(result.Has("kiana.partner_stance.exclusive") == (index != 2), "Late acceptance loses Kiana stance");
             check(result.Has("kiana.trickster.late_committed") == (index != 2) && !result.Has("kiana.committed"), "Affirmative consumer invalidated by joint commitment");
             check(Rules.Available(story, S("kiana.lastcall.page"), result) == (index != 2), "Actual late yes/no misses coda");
         }
