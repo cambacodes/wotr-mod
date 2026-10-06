@@ -1597,7 +1597,9 @@ When she sees you, she steps aside at once.{/n}
 "Stay. I want an evening with nobody waiting outside to applaud."''',
       c('[Hold out your hand.]', "affection", requires=done("chivarro_affection")),
       c('"Rest. I\'ll stay, and I won\'t talk."', "quiet"),
-      c('"I have a small, unreasonable question. What would you have done with a completely empty house tonight?"', "empty")),
+      c('"I have a small, unreasonable question. What would you have done with a completely empty house tonight?"', "empty"),
+      # Saved answer index 3: preserve the original unavailable-outcome exit.
+      c('[Leave.]', forbids=("minagho_chivarro.outcome.eligible",), abort=True)),
     n("affection", "Chivarro", '''"Closer."
 {n}She takes your hand and pulls you beside her.{/n}
 "I saw you watching from the back. You cost me a line of dialogue. I intend to collect it."
@@ -1779,7 +1781,9 @@ When Minagho turns to you, the amusement fades a little.{/n}
       c('"The three of us. Together when we are together, our own roads when we are not."', "together", requires=done("minagho_chosen", "chivarro_lasting"), forbids=("minagho.ran_demon",)),
       c('"Minagho, you and I are friends. What Chivarro and I have stays hers and mine."', "friendship", forbids=("minagho.ran_demon",)),
       c('"No promises tonight. Just the visits."', "open", forbids=("minagho.ran_demon", "minachiv.chivarro_lasting")),
-      c('"Minagho, you are still in my service. A farewell does not change that, and I will not pretend it does."', "service", requires=("minagho.ran_demon",))),
+      c('"Minagho, you are still in my service. A farewell does not change that, and I will not pretend it does."', "service", requires=("minagho.ran_demon",)),
+      # Saved answer index 5: preserve the original unavailable-outcome exit.
+      c('[Leave.]', forbids=("minagho_chivarro.outcome.eligible",), abort=True)),
     n("minagho", "Minagho", '''"Yes. You will come when I ask, and I will complain about how long you took. Chivarro will tell you which part to believe."
 {n}She catches your hand and pulls you close. The kiss is impatient; she holds you afterward while Chivarro rescues the fruit from her idle hand.{/n}''',
       c('[Keep them both, each in her own right.]', flags=done("complete", "future_two"), requires=done("chivarro_lasting")),

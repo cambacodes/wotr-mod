@@ -623,6 +623,7 @@ def make_expansion(*, independent_tirabade=True):
     if all(rel in payload["Relationships"] for rel in ("nocticula", "nocticula.acquisition", "kiana")):
         payload["Scenes"].extend(copy.deepcopy(pacing_pp4.SCENES))
         pacing_pp4.integrate(payload)
+        kiana_trickster.integrate_ward(payload)
         # NM1: the acquired correspondence in two Chapter 5 deliveries (later letters folded into earlier ones) and the
         # optional harbor join and acquired harbor deferred past the beta (retired by gating); after PP4's her_hand appendix.
         nm1_nocticula.integrate(payload)

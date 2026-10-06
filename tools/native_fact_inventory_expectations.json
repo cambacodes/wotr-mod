@@ -1094,7 +1094,9 @@
       "not_visited": [],
       "visited_any": [
         "start"
-      ]
+      ],
+      "contains": "I am still looking for the man who sold them to you.",
+      "omits": ""
     },
     {
       "name": "arsinoe.souls_vision_heard_absent",
@@ -1108,7 +1110,9 @@
       "targets": [],
       "excluded": [],
       "not_visited": [],
-      "visited_any": []
+      "visited_any": [],
+      "contains": "I am still looking for the man who sold them to you.",
+      "omits": "Gravestone Rock"
     },
     {
       "name": "dyunk_unresolved",

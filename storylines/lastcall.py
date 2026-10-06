@@ -304,8 +304,15 @@ def integrate(payload):
             target["Forbids"].append(ACTIVE)
     scenes.extend(copy.deepcopy(SCENES))
     scenes.extend(copy.deepcopy(partners.call_in_scenes(at_the_rift_scene)))
-    # Block B: each partner's coda plays right after her own ending pages in the RanRomAdd sequence.
+    # Keep these saved coda positions when a route appends new ending variants.
+    coda_anchors = {"nenio": "nenio.trickster.epilogue.scholar",
+                    "terendelev": "terendelev.trickster.epilogue.rest"}
+    # Block B: each partner's coda follows her ending pages in the RanRomAdd sequence.
     for rel, page in copy.deepcopy(partners.pages()):
+        if rel in coda_anchors:
+            last = next(i for i, s in enumerate(scenes) if s["Id"] == coda_anchors[rel])
+            scenes.insert(last + 1, page)
+            continue
         last = max((i for i, s in enumerate(scenes) if (s.get("Relationship") or "tirabade") == rel
                     and s.get("Owner", "").endswith("Epilogue")
                     and s.get("EpilogueSequence") is None and s.get("Owner") != "AeonEpilogue"), default=None)

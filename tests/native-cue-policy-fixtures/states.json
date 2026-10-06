@@ -18242,6 +18242,19 @@
       "ExpectedCandidate": "nenio.lastcall.page"
     },
     {
+      "Id": "page/nenio.trickster.epilogue.kenabres_pending",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.folio.kenabres_judgment.pending",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nenio.trickster.epilogue.kenabres_pending"
+    },
+    {
       "Id": "page/herrax.trickster.epilogue.reachable",
       "Target": "",
       "Dialog": "",
@@ -18393,21 +18406,6 @@
       "ExpectedCandidate": "terendelev.trickster.epilogue.rest"
     },
     {
-      "Id": "page/terendelev.trickster.epilogue.guardian_sacrifice",
-      "Target": "",
-      "Dialog": "",
-      "Page": "",
-      "Chapter": 6,
-      "Flags": [
-        "sacrifice",
-        "terendelev.trickster.guardian",
-        "terendelev.trickster.returned",
-        "trickster.ever"
-      ],
-      "NativeEligible": [],
-      "ExpectedCandidate": "terendelev.trickster.epilogue.guardian_sacrifice"
-    },
-    {
       "Id": "page/terendelev.lastcall.page",
       "Target": "",
       "Dialog": "",
@@ -18421,6 +18419,21 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.lastcall.page"
+    },
+    {
+      "Id": "page/terendelev.trickster.epilogue.guardian_sacrifice",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "sacrifice",
+        "terendelev.trickster.guardian",
+        "terendelev.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "terendelev.trickster.epilogue.guardian_sacrifice"
     },
     {
       "Id": "page/eliandra.trickster.epilogue.together",

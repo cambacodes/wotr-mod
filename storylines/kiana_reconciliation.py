@@ -146,14 +146,12 @@ SCENES = [letter("former_grief", "What she still remembers", [
 {n}You turn the sheet over to find room for an answer.{/n}''',
         c('[Help her invite Meral to supper.]', "invite"),
         c('[Suggest sending Meral the ribbon story first, without arranging a gathering.]', "story")),
-    n("invite", "Narrator", '''{n}You draft an invitation to supper; Kiana strikes out the ceremonious opening and puts Meral's name above it.{/n}
-{n}Kiana sends back a copy with most of your polite opening crossed out.{/n}
+    n("invite", "Narrator", '''{n}You send a draft invitation to Kiana. She returns a copy with the ceremonious opening crossed out and Meral's name at the top.{/n}
 "He knows who I am. He once saw me argue with a door that opened the other way. We can begin with the question.
 "I have sent it. I feel rather foolish now, which probably means I shall spend tomorrow checking for an answer. You needn't check for me.
 "I would still like to see you soon. Bring a story in which nobody behaved particularly well. I think I have had enough exemplary conduct for one week."
 {n}You keep the copy. Meral's answer, and any gathering that follows it, remain ahead of her.{/n}''', c('[Answer that you will bring a story.]', flags=("kiana.former_grief_kept", "kiana.memory_invitation_sent"))),
-    n("story", "Narrator", '''{n}You suggest sending Meral the ribbon story; Kiana takes out a fresh sheet and begins copying.{/n}
-{n}Kiana copies it onto another sheet. She sends you the draft, with a note beneath it.{/n}
+    n("story", "Narrator", '''{n}You suggest sending Meral the ribbon story. Kiana sends you a copy of her letter to him, with a note beneath it.{/n}
 "I have sent him the ribbon story. I nearly added an explanation of why I was sending it. Then I noticed the explanation was longer than the story and removed it.
 "This was good advice. I am putting that in writing so that you won't need to ask me to repeat it.
 "When we next have an evening, I would like to hear something foolish that happened to you. You cannot possibly have reached your present importance without doing something embarrassing. I promise to be attentive."

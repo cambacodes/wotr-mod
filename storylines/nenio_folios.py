@@ -22,7 +22,9 @@ from storylines.nenio_trickster import (ARCH_AGREED, ARCH_DEAD, ARCH_TRICK, CLOS
                                         ENIGMA_RESOLVED, WHO_SILENT, KENABRES_SAID, HUB, UNIT, REL, TOLD_BITE, DEBT_DEFAULTED, DEBT_SETTLED,
                                         MANUSCRIPT, NAME_GONE, P, RECREATED, RIDDLE_DONE, SCRIBE, STARTED, UNREMEMBERED,
                                         SENT_AWAY, VISITOR, F, KENABRES_LIED, KENABRES_SECRET, KENABRES_TOLD, OWES,
-                                        meet, nar, nen, twin_ids, visit)
+                                        meet, nar, nen, twin_ids, visit, KENABRES_PENDING,
+                                        POETRY_FAILED, GOSSIP_PREPARED, GOSSIP_UNIVERSAL, BROUGHT_SAFE,
+                                        RECRUITMENT_REFUSED, FRIEND_SKETCH, FRIEND_TONGUE, FRIEND_CREDIT, FRIEND_REFUSED)
 
 SCENES = []
 
@@ -85,10 +87,10 @@ m(FIRST, "A follower with a pencil", '"What are you writing?"', [
 "We begin with something easy. The letter C. 'Crusade, the Fifth.'" {n}She clasps her hands behind her back and begins to walk, three steps, turn, three steps.{/n} "Composition: knights of Mendev, the paladins of several gods, a large number of mercenaries, a smaller number of lunatics, and the people who had nowhere else to go. Morale: variable. Smell: considerable. Commander of the..."''',
         c("Continue", "space")),
     nen("space", '''{n}She stops walking. "Leave a space," she says.{/n}
-"Why?" {n}She answers the question you have not yet asked.{/n} "Because on the grand scale of world history your name is irrelevant. I told you so, and I have made a point of forgetting it. When it becomes relevant, it will be filled in. Leave a space. Ruled. Neat. The width of three fingers." {n}She holds up three fingers.{/n} "A name the size of the Commander's will need three fingers, I think. Possibly four, by the end."''',
+"Why?" {n}She answers the question you have not yet asked.{/n} "Because on the grand scale of world history your name is irrelevant. I rank names below observations, and I have made a point of forgetting it. When it becomes relevant, it will be filled in. Leave a space. Ruled. Neat. The width of three fingers." {n}She holds up three fingers.{/n} "A name the size of the Commander's will need three fingers, I think. Possibly four, by the end."''',
         c("Continue", "friend", requires=(FRIEND_DONE,)),
         c("Continue", "go_on", forbids=(FRIEND_DONE,))),
-    nen("friend", '''{n}She pauses, and adds, severely:{/n} "And this is not friendship. Friendship is concluded. I have published my findings; it is the most foolish of all occupations. This is employment. Employment has a different list, and nothing on it involves underwear."''',
+    nen("friend", '''{n}She pauses, and adds, severely:{/n} "And this is not friendship. Friendship is concluded. I have written my conclusion; it is the most foolish of all occupations. This is employment. Employment has a different list, and nothing on it involves underwear."''',
         c("Continue", "go_on")),
     nen("go_on", '''"Next. 'Crusade, the Fifth, its equipment.' Write quickly, I am about to be brilliant and I cannot guarantee it will last."''',
         c("[Leave the space, ruled and neat, and write on.]", flags=(SCRIBE, STARTED)),
@@ -111,7 +113,7 @@ m(DEMONS, "Demons, by smell", '"Ready when you are. Which letter?"', [
         c('"You\'ve been this close to all of them?"', "close")),
     nen("people", '''"Irrelevant. People are not demons. Mostly." {n}She leans in without warning and sniffs your collar, briskly, like a cook testing milk.{/n} "Ink. Steel polish. Somebody else's campfire. And something I have no category for, which is annoying." {n}She sits back.{/n} "Do not write that down."''',
         c("Continue", "test")),
-    nen("close", '''"Closer. Some of them I have been inside of, briefly. A hezrou swallowed my left boot at the Gray Garrison and I went in after it." {n}She wiggles her foot.{/n} "It was a good boot. I have its measurements."''',
+    nen("close", '''"Close enough to measure the teeth. Further research would require a better boot." {n}She lifts one foot.{/n} "A hezrou could swallow this without chewing. Its jaw would still have room for my ankle. I prefer to calculate that from the outside."''',
         c("Continue", "test")),
     nen("test", '''{n}She turns a page, and her eyes narrow, and she looks up at you over it in a way that you have learned means an experiment is coming.{/n}
 "The whole army calls you the trickster now. Rejecting universal rules, a distinct unwillingness to choose between good and evil, and so on; the stories get worse every time I hear them. An army is a very poor instrument. I want to test its conclusion myself." {n}She holds out her hand, palm up.{/n} "Wrist. Then tell me a lie. I want to see what your pulse does."''',
@@ -187,7 +189,7 @@ m(PULSE, "An experiment of a personal nature", '"You said you needed me for some
         c("[Let her have her flaw in the design.]", "leave")),
     nen("kiss", '''{n}She holds very still for it, the way she holds still for anything she is observing. Her mouth is warm and surprised, and the watch goes on ticking between you, and her fingers on your wrist tighten until you can feel your own pulse in them.{/n}
 {n}Then she pulls back, and looks at the watch, and at you, and her face does something you have never seen it do.{/n}
-"I did not start the watch," {n}she says, appalled.{/n} "I have wasted a data point." {n}She stands up, knocking the stool over.{/n} "The experiment is suspended. It is not cancelled. Nothing is cancelled. Go away, I need to think, and I cannot think while you are sitting there being a variable."''',
+"I did not stop the watch." {n}She stares at its face.{/n} "The reading includes the kiss, the staring afterwards, and whatever that was. I have wasted a data point." {n}She stands up, knocking the stool over.{/n} "The experiment is suspended. It is not cancelled. Nothing is cancelled. Go away, I need to think, and I cannot think while you are sitting there being a variable."''',
         c("[Go away, and leave her with the watch.]")),
     nen("number", '''"Irrelevant." {n}She puts her hand flat on the face-down sheet.{/n} "A number without a method is a rumour. When I have corrected the method, I will tell you the number. Or I will forget it, which is also a method." {n}A pause.{/n} "I will not forget it."''',
         c("[Let her keep it.]")),
@@ -222,40 +224,44 @@ m(TAIL, "A confounding variable", '"Nenio? Is that... your tail?"', [
 "You are very good at holding still," {n}she says at last, without turning round.{/n} "It is a rare talent in a subject. I shall make a note of it." {n}She does not make a note of it.{/n}''',
         c("[Stay until the tail lets go on its own.]")),
     nen("free", '''{n}You slide your hand out, slowly, and the tail lets you go with a reluctance you can feel in the fur.{/n}
-"Thank you." {n}Brisk, and a little too quick.{/n} "That was the correct procedure. One does not let the instrument take hold of the observer. It corrupts the readings." {n}She measures the tail again, alone, and gets it wrong, and does not start over.{/n}''',
+"Thank you." {n}Brisk, and a little too quick.{/n} "That was the correct procedure. One does not let the instrument take hold of the scientist. It corrupts the readings." {n}She measures the tail again, alone, and gets it wrong, and does not start over.{/n}''',
         c("[Leave her with her string.]")),
 ], requires=(SCRIBE, FOX_REVEALED), delay=24, places=("hub",))
 
 
 m(SLIPS, "Yesterday I saw the Commander...", '"What are all those slips of paper?"', [
-    nen("open", '''"Gossip." {n}She fans them out on @DESK@ like a card-sharp: a dozen scraps, each with one line on it.{/n} "When I was studying friendship I prepared universally applicable pieces of gossip. 'Yesterday I saw him drinking from a puddle.' 'Yesterday I saw her walking on all fours.' They can be used about anybody. That is their strength."
-"I am revising them for accuracy. The crusade has been talking about you, and the talk is very poorly sourced."''',
-        c("Continue", "reads")),
+    nen("open", '''"Gossip." {n}She fans the slips out on @DESK@ like a card-sharp: a dozen scraps, each with one line on it.{/n}''',
+        c("Continue", "gossip_old", requires=(GOSSIP_UNIVERSAL,), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "gossip_prepared", requires=(GOSSIP_PREPARED,), forbids=(GOSSIP_UNIVERSAL, UNREMEMBERED, RECREATED)),
+        c("Continue", "gossip_new", requires=(UNREMEMBERED,)),
+        c("Continue", "gossip_new", requires=(RECREATED,), forbids=(UNREMEMBERED,)),
+        c("Continue", "gossip_new", forbids=(UNREMEMBERED, RECREATED, GOSSIP_PREPARED, GOSSIP_UNIVERSAL))),
     nen("reads", '''{n}She picks one up and reads it, in the voice of a clerk reading a charge.{/n}
-"'Yesterday I saw the Commander talk a demon into its own grave.' Unverified. I was not there." {n}Another.{/n} "'Yesterday I saw the Commander steal the Queen's spoons, and give them back, and she thanked {mf|him|her}.' Partly verified. There were spoons." {n}Another.{/n} "'Yesterday I saw the Commander take dictation from a kitsune for three hours and not complain once.' Verified. I was there. It was me."''',
+"'Yesterday I saw the Commander talk a demon into its own grave.' Unverified. I was not there." {n}Another.{/n} "'Yesterday I saw the Commander steal the Queen's spoons, and give them back, and she thanked {mf|him|her}.' Unverified. The kitchen denies losing any." {n}Another.{/n} "'Yesterday I saw the Commander take dictation from Nenio.' Verified. I was there. It was me."''',
         c('"Where did you get these?"', "sources"),
         c('[Flirt] "Write one about yourself."', "herself")),
-    nen("sources", '''"The kitchen, the yard and a sergeant who owes me money." {n}She lays the slips out in rows.{/n} "Half the crusade loves you and the other half would like to know where you were on the night the wine went missing. Both halves believe everything. It is extremely bad science and I find it fascinating."''',
+    nen("sources", '''"Soldiers, traders, and a sergeant who owes me money. Nobody agrees on the missing wine. Everybody agrees on you. That makes you a particularly poor control."''',
         c("Continue", "herself")),
-    nen("herself", '''"About myself?" {n}She considers the idea with suspicion.{/n} "There is no gossip about me. I have never done anything worth gossiping about. I have been examining people, and drinking for research, and conducting a friendship. All of it was published."
-{n}She takes a clean slip anyway, and writes, and turns it round to show you: "Yesterday I saw Nenio ______ the Commander." The blank is ruled. Three fingers wide.{/n}
-"I cannot think of the verb." {n}She puts the slip in her sleeve, with the others.{/n} "I shall leave a space. When the verb becomes relevant, it will be filled in."''',
+    nen("herself", '''"About myself? I have been measuring demon teeth and interrupting crusaders at supper. That scarcely requires a clandestine report." {n}She takes a clean slip.{/n} "Very well. 'Yesterday I saw Nenio ______ the Commander.' I cannot find a sufficiently exact verb."''',
         c('"Measure."', "verb"),
         c("[Say nothing, and let her keep the blank.]", "keep")),
     nen("verb", '''"'Measure.' Yes, that would be accurate." {n}She takes the slip out again, looks at it, and does not write the word in.{/n} "Accurate. Not sufficient. I shall think about it."''',
         c("[Leave her to her slips.]")),
-    nen("keep", '''"Good. You are learning. A blank is not an absence; it is a place held for something." {n}She taps her sleeve.{/n} "Most people leave blanks because they are lazy. I leave them because I am thorough. You will find my work full of them."''',
+    nen("keep", '''"Leave it empty, then." {n}She puts the slip in her sleeve.{/n} "I shall come back to it. Do not fill it in while I am looking at the others."''',
         c("[Leave her to her slips.]")),
+    nen("gossip_old", '''"These are revisions of the slips I prepared for our friendship experiment. They could be used about anybody. This time I want names and sources. The crusade has quite enough reports that identify nothing."''', c("Continue", "reads")),
+    nen("gossip_prepared", '''"I prepared these slips for our gossip experiment. Now I am checking them against the crusade's reports. Someone has to."''', c("Continue", "reads")),
+    nen("gossip_new", '''"I have been collecting reports about the Commander. The crusaders call them gossip, which appears to mean a report nobody has checked. Here are twelve. I intend to check them."''', c("Continue", "reads")),
 ], requires=(SCRIBE,), delay=48, RequiresAnyGroups=[list(twin_ids(DEMONS)) + list(twin_ids(ARCHITECT))])
 
 
 # --- Chapter 4, the Abyss: the company travels with her; the sessions come at a rest. While she waits in Drezen, she writes. --
 
 hub4(LAMP, "Hold the lamp still", '"You want me to hold the lamp?"', [
-    nar("open", '''{n}Alushinyrra never gets dark; it only gets darker in places. Tonight the company has made camp on a terrace above the harbour, and Nenio has made you hold the lamp for an hour while she measures shadows.{/n}
+    nar("open", '''{n}The harbour lamps leave the terrace in strips of light and deep shadow. Tonight the company has made camp on a terrace above the harbour, and Nenio has made you hold the lamp for an hour while she measures shadows.{/n}
 {n}"Not that shadow," she says. "The long one. The one that is lying." She puts a stake in the ground at the end of a shadow thrown by a statue of a woman with too many rings, and writes down its length, and then the length of the statue, and scowls at the difference.{/n}''',
         c("Continue", "lady")),
-    nen("lady", '''"Nothing in this city casts the shadow it should. The towers are too short for their shadows. The people are too tall for theirs. There is a queen here, the Lady in Shadow they call her, and I measured the shadow of her statue in the great square at noon, which took a great deal of explaining to her guards." {n}She holds up a sheet with a very long number on it.{/n}
+    nen("lady", '''"Nothing in this city casts the shadow it should. The towers are too short for their shadows. The people are too tall for theirs. There is a queen here, the Lady in Shadow they call her, and I measured the shadow of her statue in the great square during the changing of the guards, which took a great deal of explaining to her guards." {n}She holds up a sheet with a very long number on it.{/n}
 "It was the only honest thing in the square. It was exactly as long as the statue. Everything else in Alushinyrra lies about its length. She does not bother. She is quite sure of herself." {n}A pause.{/n} "I found that very attractive in a demon lord, and I do not wish to discuss it further."''',
         c('"Write it down: \'Abyss, the. Revised.\'"', "entry"),
         c('[Flirt] "Should I be jealous of a demon lord\'s shadow?"', "jealous")),
@@ -276,7 +282,7 @@ hub4(LAMP, "Hold the lamp still", '"You want me to hold the lamp?"', [
 
 
 hub4(SHOULDER, "A sentence finished", '"Sit down before you fall down, Nenio."', [
-    nar("open", '''{n}The company marches at night in the Abyss, when marching is only terrible, rather than by day, when it is worse. At the halt somebody lights a fire of things that burn badly. Nenio sits down beside you on a flat stone with her notebook on her knee, begins dictating an entry on the fungi of the lower terraces, and falls asleep in the middle of the word "spore".{/n}
+    nar("open", '''{n}The company moves through the lower terraces during a lull in the crowds, with the sentries watching the alleys. At the halt somebody lights a fire of things that burn badly. Nenio sits down beside you on a flat stone with her notebook on her knee, begins dictating an entry on the fungi of the lower terraces, and falls asleep in the middle of the word "spore".{/n}
 {n}She falls asleep sitting up, and then slowly less upright, and then her head is on your shoulder, heavy and warm, and the pencil is still in her fist.{/n}''',
         c("Continue", "sleep")),
     nar("sleep", '''{n}She sleeps like a scholar: frowning, as if she disagreed with the dream. Her breath is slow against your neck. Her notebook slides off her knee onto yours, open at the unfinished entry, "The fungi of the lower terraces are notable for their spore", and after "spore" there is nothing.{/n}
@@ -286,16 +292,15 @@ hub4(SHOULDER, "A sentence finished", '"Sit down before you fall down, Nenio."',
         c('[Finish it truthfully: "...and the author fell asleep here, on a march, in the Abyss, on her follower\'s shoulder, and was not woken."]', "truthful",
           flags=(FINISHED_SENTENCE,)),
         c("[Leave the sentence as it is, and don't move until she wakes.]", "still")),
-    nen("finished", '''{n}In the morning she reads it with her nose almost touching the page. Then she reads it again.{/n}
+    nen("finished", '''{n}When she wakes she reads it with her nose almost touching the page. Then she reads it again.{/n}
 "'Smells like the inside of an old boot.'" {n}She looks up at you.{/n} "Unverified. Anecdotal. Written in another hand in my own notebook, uninvited." {n}She taps the page.{/n} "Also correct. I had forgotten. I had decided that the smell was irrelevant, and it is not; one of the corporals ate one."
 "I shall keep it. With attribution. 'The author's follower, personal communication, the lower terraces, while the author was indisposed.'" {n}She sniffs.{/n} "Indisposed. I was not asleep. I was thinking with my eyes shut."''',
         c("[Let her have been thinking.]")),
-    nen("truthful", '''{n}In the morning she reads it with her nose almost touching the page. She reads it three times. Her ears do not move at all, which is how you know she is not breathing properly.{/n}
+    nen("truthful", '''{n}When she wakes she reads it with her nose almost touching the page. She reads it three times. Her ears do not move at all, which is how you know she is not breathing properly.{/n}
 "That is not about fungi," {n}she says eventually.{/n}
-"No."
 "It is in my notebook. In the fungi entry." {n}She looks at the sentence as if it had been written by a stranger in a language she half knows.{/n} {n}Her pencil goes to the line to strike it, and stays there, and does not move.{/n} "I am keeping it. As evidence. Of what, I have not determined." {n}She closes the notebook and holds it against her chest.{/n} "It stays. I shall have to write a new entry for the fungi. This one is spoiled for fungi."''',
         c("[Let her keep the notebook.]")),
-    nar("still", '''{n}You do not move. The fire burns down. Somewhere out in the dark something large goes past the camp without stopping, and the sentries let it. Her weight on your shoulder never shifts, and neither do you, and in the morning your arm is dead from the elbow down and you do not regret it.{/n}
+    nar("still", '''{n}You do not move. The fire burns down. Somewhere out in the dark something large goes past the camp without stopping, and the sentries let it. Her weight on your shoulder never shifts, and neither do you, and when she wakes your arm is dead from the elbow down and you do not regret it.{/n}
 {n}When she wakes she sits up very straight, as if she had been sitting up very straight all along, and looks at the notebook, and at the word "spore", and says, "Where was I?", and then, without waiting for an answer, "No. Do not tell me. I remember exactly where I was." She does not look at your shoulder. She does not need to.{/n}''',
         c("[Flex your dead arm, carefully.]")),
 ], requires=(LAMP,), delay=24)
@@ -317,17 +322,15 @@ v(REPORT, "A report from the capital", [
     ),
 ], requires=(SCRIBE, VISITOR), forbids=("trickster.ever",), delay=24, kind="letter", chapters=(4,))   # retired (Sol r1 COX, R2-5)
 
-m(F + "drezen.handed", "A report from the capital", '"You kept a report while I was away?"', [
-    nen("open", '''"Of course I kept a report. Somebody had to." {n}She takes a sheet from her sleeve, folded eight times, and does not hand it over. She reads it to you, because nobody else could.{/n}
-"'Report from the capital in the Commander's absence. Observer: the author. Morale: variable. Price of pepper: absurd; the spice trader blames the demons, and the demons blame nobody, being demons. The market was told you were dead four times. I recorded each rumour, its source and its time of death. None of them survived a week.'"''',
+m(F + "drezen.handed", "A report from the capital", '"You kept a report on the market?"', [
+    nen("open", '''"A report from the capital. Recorded by the author." {n}She unfolds a sheet and reads it herself.{/n} "Morale: variable. Price of pepper: absurd. The spice trader attributes both to demons. Soldiers attribute both to the quartermaster. Neither has supplied measurements. I have started with the pepper. It holds still."''',
         c("Continue", "stool")),
-    nen("stool", '''"'The crusade missed you in a disorganised way. The spice trader missed his crates. I did not miss you, because missing is not an observable phenomenon. I noticed that I left the stool beside mine empty when I worked, and could not account for it.'"
-{n}She folds the sheet up again.{/n} "And in every entry I wrote while you were gone, I left a space for you. Nineteen. I was going to write and ask you whether nineteen was significant. Then I remembered I had nowhere to send the letter."''',
+    nen("stool", '''"Also, I have kept the seat beside mine empty." {n}She looks at it as if it had failed an examination.{/n} "For dictation. Obviously. There are nineteen spaces in my current notes for the Commander. None is filled. Sit down; I should like to finish at least one entry."''',
         c('"Nineteen is significant. Keep counting."', "count"),
-        c("[Put a stone from the Abyss on her desk: black, and casting the wrong shadow.]", "stone")),
+        c("[Put a labelled stone from the scouts\' collection on her desk.]", "stone")),
     nen("count", '''"Significant of what? You are not permitted to say 'significant' without a unit." {n}But she writes 19 at the top of a clean sheet, and underlines it, and leaves the rest of the page empty.{/n}''',
         c("[Sit on @SEAT@.]")),
-    nen("stone", '''{n}She picks it up at once, holds it to the light, turns it, and watches its shadow go the wrong way across @DESK@.{/n} "Labelled?" {n}It is not. She looks at you with deep disappointment, takes out her pencil, and labels it herself: ABYSS, THE. SAMPLE. FOLLOWER.{/n} "There. Now it is science."''',
+    nen("stone", '''{n}She takes it at once, checks the label, and turns it in the light.{/n} "Location, depth, date. Adequate. A specimen with a provenance. You are becoming useful." {n}She sets it beside the report.{/n} "Now hold the page while I dictate."''',
         c("[Sit on @SEAT@.]")),
 ], requires=(SCRIBE,), delay=24, chapter=5, places=("visitor", "arcade"))
 
@@ -351,16 +354,17 @@ m(PAGE_ONE, "Page one", '"You\'ve got a clean sheet. That\'s a bad sign."', [
         c("Continue", "entry")),
     nen("post", '''"You know why. I went into the Enigma as nothing and came out with my name. Somebody paid for it." {n}She does not look at you.{/n} "A thing that has been paid for should be written down. Otherwise one forgets what it cost, and then one spends it carelessly."''',
         c("Continue", "entry")),
-    nen("visiting", '''"You know why. I woke up on a road outside this city with one volume of my own work and a great many holes in my memory, and I have been filling the holes with observations ever since. The one hole I have not filled is the observer." {n}She taps the sheet.{/n} "Write. Before I decide it is irrelevant."''',
-        c("Continue", "entry", requires=(FOX_REVEALED,)),
-        c("Continue", "entry_plain", forbids=(FOX_REVEALED,))),
+    nen("visiting", '''"A scholar should keep an account of the scientist. Mine is incomplete. Let us correct it."''',
+        c("Continue", "visiting_recreated", requires=(UNREMEMBERED,)),
+        c("Continue", "visiting_recreated", requires=(RECREATED,), forbids=(UNREMEMBERED,)),
+        c("Continue", "visiting_away", forbids=(UNREMEMBERED, RECREATED))),
     nen("entry_plain", '''"'Nenio.'" {n}She says it the way a herald says a name at a door.{/n} "'Greatest scientist of the modern age. Author of the Encyclopedia Golarionnica, in progress. Species: irrelevant; the author has more important things to classify. Age: considerable. Origin: irrelevant.'"
 {n}She stops. You wait with the pencil over the page.{/n} "No. Strike 'irrelevant'. Strike it properly, one clean line, so the next reader can see it was wrong. Write after it: 'Origin: under review.'"''',
         c("Continue", "habits")),
-    nen("entry", '''"'Nenio.'" {n}She says it the way a herald says a name at a door.{/n} "'Greatest scientist of the modern age. Author of the Encyclopedia Golarionnica, in progress. Species: kitsune, recently re-established. Age: approximately four thousand years, give or take a few centuries. Origin: irrelevant.'"
+    nen("entry", '''"'Nenio.'" {n}She says it the way a herald says a name at a door.{/n} "'Greatest scientist of the modern age. Author of the Encyclopedia Golarionnica, in progress. Species: kitsune. Age: approximately four thousand years, give or take a few centuries. Origin: irrelevant.'"
 {n}She stops. You wait with the pencil over the page.{/n} "No. Strike 'irrelevant'. Strike it properly, one clean line, so the next reader can see it was wrong. Write after it: 'Origin: under review.'"''',
         c("Continue", "habits")),
-    nen("habits", '''"'Habits: forgets on purpose whatever she ranks irrelevant. Has occasionally been wrong about what is irrelevant. Is working on this.'" {n}Her voice is quite steady, and she is not looking at you.{/n} "'Drinks once a year, for science, when nobody is watching. Cannot rhyme. Is right about nearly everything.'"
+    nen("habits", '''"'Habits: forgets on purpose whatever she ranks irrelevant. Has occasionally been wrong about what is irrelevant. Is working on this.'" {n}Her voice is quite steady, and she is not looking at you.{/n} "'Conducts experiments of a personal nature. Their results are filed separately.'"
 "'Associates: one follower.'" {n}She stops again.{/n}''',
         c("Continue", "assoc_filed", requires=(NAME_GONE,)),
         c("Continue", "assoc", forbids=(NAME_GONE,))),
@@ -368,7 +372,7 @@ m(PAGE_ONE, "Page one", '"You\'ve got a clean sheet. That\'s a bad sign."', [
 "This is not a conclusion," {n}she says.{/n} "It is a citation. There is a difference and it is the entire difference."''',
         c("[Write your name in her entry.]", "written"),
         c('[Leave the space] "Not yet. Not until you\'ve decided what it means."', "not_yet")),
-    nen("assoc_filed", '''"Leave a space." {n}Her hand goes to her sleeve, and stays there.{/n} "I cannot fill it. It went into the Sphinx's ledger, where things go that are paid for. I know that. I tell you to leave a space anyway, every time, like a woman setting a place at the table for somebody who is not coming." {n}Her ears are flat.{/n} "It is irrational. I am recording it as irrational. Leave a space."''',
+    nen("assoc_filed", '''"I filed the name as agreed. I cannot fill the space. Leave it."''',
         c("[Leave the space.]", "space_left"),
         c('[Write "follower" in it, very small.]', "follower")),
     nen("written", '''{n}She does not look while you write it. When you slide the page back she reads it, once, and her face does nothing at all, and she folds the sheet into four and puts it in her sleeve among the others, in a particular place near the cuff.{/n}
@@ -382,6 +386,12 @@ m(PAGE_ONE, "Page one", '"You\'ve got a clean sheet. That\'s a bad sign."', [
     nen("follower", '''{n}She reads it. "Follower." Her mouth moves, not quite a smile.{/n}
 "Accurate. Not a name. Better than a name, possibly; a name only says who. That says what." {n}She folds the page into her sleeve, near the cuff.{/n} "It stays. Next entry. Rocks."''',
         c("[Write on.]")),
+    nen("visiting_recreated", '''"I woke on the road outside Drezen with my bound working draft and gaps in my records. I have been filling them with observations. The scientist remains poorly documented. Write before I decide that is irrelevant."''',
+        c("Continue", "entry", requires=(FOX_REVEALED,)),
+        c("Continue", "entry_plain", forbids=(FOX_REVEALED,))),
+    nen("visiting_away", '''"I came to correct your vrock and remained to correct your handwriting. That is an adequate account of my arrival. It says nothing about the author. I intend to remedy that."''',
+        c("Continue", "entry", requires=(FOX_REVEALED,)),
+        c("Continue", "entry_plain", forbids=(FOX_REVEALED,))),
 ], requires=(SCRIBE,), delay=24, chapter=5)
 
 
@@ -391,17 +401,17 @@ m(VOLUME_ONE, "Volume one", '"You\'re packing."', [
         c("Continue", "give", forbids=(DEBT_DEFAULTED,)),
         c("Continue", "give_new", requires=(DEBT_DEFAULTED,))),
     nen("give_new", '''"This is volume one. Again. Aardvark to Abadar, so far, in your hand, from my dictation, because the Sphinx has the other one and I have had to begin at A like a schoolchild." {n}Her ears go back at the word 'Sphinx', and stay back.{/n} "I am still angry about that. I shall be angry about it in a hundred years. Carry it anyway."
-"Not because it is heavy. Because I am going into the same battle as you, and if I am... if I become irrelevant, the only copy should be in the pack of whoever is most likely to walk out the other side. My calculations say that is you. My calculations have been wrong about you before, but only in your favour."''',
+"The crusade goes to the Threshold. If this working draft survives with you, the next edition will have somewhere to begin."''',
         c("Continue", "committed", requires=(COMMITTED,)),
         c("Continue", "not_yet", forbids=(COMMITTED,))),
     nen("give", '''"This is the only bound volume of the Encyclopedia. Volume one, a working draft. Aardvark to Azlant, with a digression on Abadar that nobody asked for." {n}She pushes it across to you.{/n} "Carry it."
-"Not because it is heavy. Because I am going into the same battle as you, and if I am... if I become irrelevant, the only copy should be in the pack of whoever is most likely to walk out the other side. My calculations say that is you. My calculations have been wrong about you before, but only in your favour."''',
+"The crusade goes to the Threshold. If this working draft survives with you, the next edition will have somewhere to begin."''',
         c("Continue", "committed", requires=(COMMITTED,)),
         c("Continue", "not_yet", forbids=(COMMITTED,))),
     nen("committed", '''"Also," {n}she says, much less briskly,{/n} "I would like you to have something of mine that is not a list. The study is longitudinal. That means it has to continue, which means you have to continue, which means I am going to be very angry if you do not, and I would like there to be something in your pack to remind you of how angry." {n}She folds her hands on the desk.{/n} "That is all. It is a very practical arrangement."''',
         c('"I\'ll carry it. And I\'ll bring it back."', "back"),
         c("[Take her hands instead of the book.]", "hands")),
-    nen("not_yet", '''{n}She hesitates, which she almost never does, with one hand still on the oilcloth.{/n}
+    nen("not_yet", '''{n}She hesitates with one hand still on the oilcloth.{/n}
 "There is a question I have not finished asking you. I do not know how to ask it yet. I do not want it to be answered by somebody else's death, or by mine, before I have." {n}She takes her hand off the book.{/n} "So carry that, and do not become irrelevant, and I shall work out the question in the meantime."''',
         c('"I\'ll carry it. And I\'ll bring it back."', "back"),
         c("[Take her hands instead of the book.]", "hands")),
@@ -419,11 +429,9 @@ m(LONG, "Longitudinal", '"How is the study going?"', [
 "Sleep: four hours and some minutes on an ordinary night; fewer before a battle and more after one, which is the wrong way round, and I intend to find out why. You wake at doors. Not trumpets. Not screams; there were screams on the second night and you slept through them. Doors." {n}She makes a mark.{/n} "I have been opening and shutting mine at intervals of an hour since the morning after, to be sure."''',
         c('"You\'ve been opening doors all night to wake me?"', "crossed"),
         c('[Flirt] "What\'s in the third column?"', "adjectives")),
-    nen("crossed", '''"To test you. Waking you was a side effect." {n}She does not look up.{/n} "I do not know why doors, and you will not tell me, so I shall have to find out the long way. Three more nights. A result from four nights is an anecdote."
-{n}You tell her what you think of the method. She writes that down too, under a heading of its own.{/n} "Objection from the subject, noted. Overruled. The subject is not on the ethics committee. There is no ethics committee. I have checked."''',
+    nen("crossed", '''"To test you. Waking you was a side effect." {n}She does not look up.{/n} "Your objection is in the next column." {n}She makes another mark.{/n} "Three more nights. Then I shall compare the results."''',
         c("Continue", "question")),
-    nen("adjectives", '''"Things that serve no purpose." {n}She turns the sheet round and reads it to you, flatly, like an inventory.{/n} "You stand to one side of doors. You eat the crust of your bread first and give the soft part to whoever is nearest. You say 'good' to horses. You hum when you are lying, the same four notes."
-"Every scientist keeps such a column, for what does not fit. Mine was empty for as long as I have kept it. Yours is on its second sheet." {n}She taps it.{/n} "I intend to find out what the column measures. I am not going to guess. Guessing is how people end up writing poetry."''',
+    nen("adjectives", '''"You return to my desk. You take dictation. You leave the blank when I ask. None explains why I keep waiting for the next visit." {n}She taps the third column.{/n} "I intend to find out what it measures. I am not going to guess."''',
         c("Continue", "question")),
     nen("question", '''"I am going to ask you a question. I mean to ask this one. I have drafted it." {n}She takes a slip of paper from her sleeve and reads it.{/n}
 "When this war is over, what do you want?"
@@ -454,21 +462,22 @@ WHO_LIED = F + "who_are_you.lied"
 EDGE_SHIELDS = F + "edge.shields"
 
 m(RHYMES, "Crustacean, cogitation", '"Are you... writing poetry?"', [
-    nen("open", '''"I am conducting an experiment in whether I can write poetry." {n}She has a sheet covered in crossings-out.{/n} "Not the same thing. Poetry is a result. I am only at the method."
-"You will remember that I once discovered I had no poetic talent. Crustacean, cogitation. It was a very clean result. I have been troubled by it ever since, because the Encyclopedia requires an entry on love poetry and I cannot in good conscience write about a thing I have been proven unable to do."''',
-        c("Continue", "method")),
+    nen("open", '''"I am conducting an experiment in whether I can write poetry." {n}She has a sheet covered in crossings-out.{/n} "Not the same thing. Poetry is a result. I am only at the method."''',
+        c("Continue", "poetry_again", requires=(POETRY_FAILED,), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "poetry_first", requires=(UNREMEMBERED,)),
+        c("Continue", "poetry_first", requires=(RECREATED,), forbids=(UNREMEMBERED,)),
+        c("Continue", "poetry_first", forbids=(UNREMEMBERED, RECREATED, POETRY_FAILED,))),
     nen("method", '''"Method: I read the poems of Golarion's great love poets, all of them, in four evenings. Result: they are mostly about eyes." {n}She shuffles her pages.{/n} "Eyes like stars. Eyes like the sea. Eyes like two dark pools. One Taldan poet compares his lady's eyes to a pair of well-maintained siege engines, which I found the most honest of the lot."
 "So I am attempting one of my own. Subject: eyes. Anyone's. I chose yours because you were standing in the light."''',
         c('"Read it to me."', "read"),
         c('[Flirt] "My eyes? Not a siege engine\'s?"', "siege")),
     nen("siege", '''"Your eyes are not remotely like siege engines. That was the whole difficulty." {n}She frowns at the page.{/n} "Siege engines are consistent. Your eyes do something different every time I look at them. It is very hard to rhyme with."''',
         c("Continue", "read")),
-    nen("read", '''{n}She clears her throat, stands up, and reads in the voice she uses for the names of kings.{/n}
-"'Your eyes are brown, or possibly grey,
-depending on the light and time of day.
-I have observed them from the front and side.
-They do not lie. The rest of you has lied.'"
-{n}She sits down again at once.{/n} "It is accurate. That is its only virtue. It is not poetry. Poetry is not accurate."''',
+    nen("read", '''{n}She clears her throat and reads.{/n}
+"'Your eyes interrupt calculation.
+Your thighs interrupt classification.
+I require a rhyme for observation.
+...Copulation?'" {n}She crosses out the last word.{/n} "Premature conclusion. The metre is also wrong."''',
         c('"It\'s the best poem anyone\'s written about me."', "best"),
         c('"The last line is very good."', "last"),
         c('[Rhyme back] "Your nose is always inky at the tip. I\'ve counted. That\'s the one thing I\'d not skip."', "back")),
@@ -479,27 +488,29 @@ They do not lie. The rest of you has lied.'"
     nen("back", '''{n}She stares at you. Then she touches the tip of her own nose, looks at her finger, and finds it inky.{/n}
 "That scans," {n}she says, as if accusing you of theft.{/n} "Badly, but it scans. And it is accurate." {n}She writes it under hers, and draws a line between them, and looks at the two couplets side by side for rather longer than a scholar needs to look at anything.{/n}''',
         c("Continue", "end")),
-    nen("end", '''"Conclusion: I still have no poetic talent. The entry on love poetry will say that it is mostly about eyes and mostly inaccurate, and that the author has attempted it once, in the field, with a volunteer." {n}She folds the sheet very small.{/n} "The volunteer will not be named. There is a space."''',
+    nen("end", '''"Conclusion: no poetic talent detected. I shall print the attempt beside the method. Perhaps the students can make it scan. I have demons to classify." {n}She folds the sheet very small.{/n} "The volunteer will not be named. There is a space."''',
         c("[Leave her with her couplet.]")),
+    nen("poetry_again", '''"Our earlier rhyme experiment was unsuccessful. I kept the result. The Encyclopedia still needs an entry on love poetry. These crusaders have supplied twenty specimens and not one useful measurement. I shall try again."''',
+        c("Continue", "method")),
+    nen("poetry_first", '''"The Encyclopedia needs an entry on love poetry. I have collected specimens from the crusaders. Most mention eyes. Several mention thighs. None gives measurements. I shall try the method myself."''',
+        c("Continue", "method")),
 ], requires=(SCRIBE,), delay=48, RequiresAnyGroups=[list(twin_ids(DEMONS)) + list(twin_ids(ARCHITECT))])
 
 
 m(WHO, "Who are you?", '"You\'ve been quiet since the Ruins."', [
-    nen("open", '''"I have been thinking. It is not the same as being quiet, though it looks the same from outside." {n}She is sitting with her tail curled around her feet, the way she has sat ever since the Nameless Ruins gave it back to her, and she is not writing anything.{/n}
-"In the emptiness, the voice asked me who I was. I said my name. It was not enough. Then I shouted it. It was still not enough, and it took my face off and showed me the fox under it." {n}She turns to you.{/n} "It asked you too. I heard it ask. I did not hear what you said. What did you say?"''',
+    nen("open", '''"The voice asked who I was. My name was not enough. Judging by your reaction, it asked you too. What did you say?" {n}She sits with her tail curled around her feet, her notebook open.{/n}''',
         c('"My name. It didn\'t work for me either."', "named", flags=(WHO_NAMED,)),
         c('"I lied. I told it I was somebody else."', "lied", flags=(WHO_LIED,)),
         c('"Nothing. I didn\'t answer."', "silent", flags=(WHO_SILENT,))),
-    nen("named", '''"Your name." {n}She considers it.{/n} "And it was not enough for you either. Good. I mean, not good. Informative." {n}She plucks at the fur of her tail.{/n}
-"That was the first time I ever heard you say it aloud where I could not pretend not to have heard. In a void, to a sphinx. I had been forgetting it very carefully for weeks." {n}She frowns.{/n} "It did not stay forgotten after that. I have had to forget it again every evening since. It is like bailing a boat."''',
+    nen("named", '''"Your name. And it was not enough for you either. Informative." {n}She draws a small circle beside the note.{/n} "I would have called a name a sufficient label. Apparently the trap wanted more than a label."''',
         c("Continue", "question")),
     nen("lied", '''"You lied to the void." {n}She looks at you with something between horror and admiration.{/n} "To an entity that sees through masks, that solves people like riddles, that took my face off with one question. You lied to it."
 "And it knew. It told you so, and asked again, the way it asked me." {n}She writes that down, fast.{/n} "Hypothesis: a trickster's face is already a mask, all the way down, and the void had to dig for the bottom. That is either terrifying or the most interesting thing I have learned this year."''',
         c("Continue", "question")),
-    nen("silent", '''"You did not answer." {n}Her ears go forward.{/n} "And it did not let you off for that. It told you that sooner or later you would have to. I heard that part." {n}She shakes her head slowly.{/n} "I shouted my name at it like a fishwife, and you simply stood there and made it wait. Neither of us won. You lost more slowly. I am jealous. I will get over it."''',
+    nen("silent", '''"You did not answer." {n}Her ears go forward.{/n} "And it did not let you off for that. It told you that sooner or later you would have to. So it made you wait too." {n}She shakes her head slowly.{/n} "I shouted my name at it like a fishwife, and you simply stood there and made it wait. Neither of us won. You lost more slowly. I am jealous. I will get over it."''',
         c("Continue", "question")),
     nen("question", '''"Here is what I want to know, and it is not for the Encyclopedia." {n}She says it quickly, before she can decide it is irrelevant.{/n} "When it asked you who you were, what did you think? Not say. Think. In the moment before you answered."
-"I thought: 'Nenio, greatest scientist of the modern age.' And I felt the void laugh. Not unkindly. The way I laugh at a hypothesis that is too pleased with itself."''',
+"I thought: 'Nenio, greatest scientist of the modern age.' The trap was unimpressed."''',
         c('"I thought: \'I\'m the one they sent.\'"', "sent"),
         c('"I thought of you, shouting at it."', "you"),
         c('"I thought: \'Nobody. Yet.\'"', "nobody")),
@@ -508,7 +519,7 @@ m(WHO, "Who are you?", '"You\'ve been quiet since the Ruins."', [
     nen("you", '''{n}She goes very still.{/n}
 "That is a very bad answer to 'who are you'," {n}she says at last.{/n} "It is not about you at all. It is about me." {n}Her tail tightens around her ankles.{/n} "The void would not have accepted it. I do not know whether I accept it. I am going to think about it for some time, and I would be grateful if you did not stand there while I do."''',
         c("Continue", "end")),
-    nen("nobody", '''"'Yet.'" {n}She seizes on the word like a scholar on a misplaced comma.{/n} "That is a hypothesis with a date on it. I approve. Most people's answer to 'who are you' is a finished sentence, and finished sentences are the enemy of science." {n}She taps her notebook.{/n} "When you know, tell me. I shall want to update the entry."''',
+    nen("nobody", '''"'Yet.'" {n}She writes the word beside the circle.{/n} "Then I shall leave the date blank too. Tell me when you have an answer worth recording."''',
         c("Continue", "end")),
     nen("end", '''"We shall find the masks. We shall open the way. And I shall stand in front of whatever it is and it will ask me again, and this time..." {n}She stops.{/n} "This time I do not know what I shall say. That is the first time I can remember walking toward an experiment without a hypothesis. It is very uncomfortable. I am looking forward to it enormously."''',
         c("[Leave her to think.]")),
@@ -526,7 +537,7 @@ m(EDGE, "The edge of the Wound", '"You want to go where?"', [
         c("Continue", "shields")),
     nen("shields", '''{n}She stops at the first one. The paint is still on it: a hand holding a sword, some knight's badge from the first crusade or the third.{/n}
 "The edge has moved," {n}she says, in her lecturing voice.{/n} "Here is the line where it was. The shields mark it. They fell where the ground turned under them." {n}She kneels and measures the distance from the shield to the new edge, and writes down the number, and does not get up.{/n}
-"I have a chapter on the Worldwound's expansion. I wrote it from maps. It says 'the Wound grew by some three miles in the decade after the Third Crusade'. It does not say anything about shields."''',
+"I have a chapter on the Worldwound's expansion. I wrote it from maps. My estimate from the maps was three miles of growth. It does not say anything about shields."''',
         c('[Read the badges to her] "Then put the shields in. One by one. I\'ll read them, you write."', "read", flags=(EDGE_SHIELDS,)),
         c('"The maps are enough. We should go."', "maps"),
         c("[Say nothing, and let her look.]", "look")),
@@ -534,9 +545,9 @@ m(EDGE, "The edge of the Wound", '"You want to go where?"', [
 "This is not science," {n}she says, halfway down the second side.{/n} "This is a list of the dead. I do not do lists of the dead."''',
         c("Continue", "sarkoris", requires=(ARCH_DEAD,)),
         c("Continue", "read_first", forbids=(ARCH_DEAD,))),
-    nen("read_first", '''"I have never kept one. A number does the work of a list and takes less paper." {n}She writes the next badge anyway, and the next.{/n} "The number for this line is somewhere past two hundred. I have written every name so far to arrive at it. It is a very inefficient way to count, and I find I cannot stop, and I do not like finding things out about myself on a battlefield."''',
+    nen("read_first", '''"I kept the losses as a total. This field report needs the badges too." {n}She writes the next badge anyway, and the next.{/n} "The number for this line is somewhere past two hundred. I have written every name so far to arrive at it. It is a very inefficient way to count, and I find I cannot stop, and I do not like finding things out about myself on a battlefield."''',
         c("Continue", "home")),
-    nen("maps", '''"The maps are not enough." {n}She says it sharply, and then seems surprised at herself.{/n} "The maps say three miles. The shields say three miles of people. I did not know that until I stood here. I should have known it. I am supposed to know everything." {n}She takes one more measurement and gets up.{/n} "Very well. We go. But I am coming back with a longer chain."''',
+    nen("maps", '''"The maps are not enough." {n}She says it sharply, and then seems surprised at herself.{/n} "My estimate from the maps was three miles. The shields say three miles of people. I did not know that until I stood here. I should have known it. I am supposed to know everything." {n}She takes one more measurement and gets up.{/n} "Very well. We go. But I am coming back with a longer chain."''',
         c("Continue", "home")),
     nar("look", '''{n}You let her look. She looks for a long while, and then she takes the pencil from behind her ear and writes something at the bottom of the chapter on the Worldwound's expansion, in capitals, slowly, so that anyone could read it: "SEE SHIELDS."{/n}''',
         c("Continue", "home")),
@@ -548,29 +559,34 @@ m(EDGE, "The edge of the Wound", '"You want to go where?"', [
 ], requires=(SCRIBE,), delay=48, RequiresAnyGroups=[list(twin_ids(DEMONS)) + list(twin_ids(ARCHITECT))])
 
 
-m(INQUISITORS, "Five minutes in Kenabres", '"You were in Kenabres before the attack. What were you doing there?"', [
-    nen("open", '''"Measuring cultists." {n}She says it as if it were obvious.{/n} "Kenabres had the best-documented population of Deskari cultists north of the Worldwound. The inquisitors had helpfully arrested most of them, and put them in cells, where they held still. It was an ideal laboratory."
-"Unfortunately the inquisitors took the view that anybody who wished to examine cultists was a cultist. I was accused within five minutes. It is the same five minutes it takes the inquisitors of Kenabres to find anyone guilty; I timed it."''',
-        c("Continue", "run")),
-    nen("run", '''"I ran. It took five times as long to shake them off, which proved that running in heavy armour is not burdensome for an inquisitor at all. I have a table." {n}She taps a page.{/n}
-"And then the sky fell in, and there was a dragon, and then there were demons in the streets, and then there was you." {n}She stops, and looks at the page, and not at you.{/n} "I asked you to bring me to safety. You did. I was very pleased with you. I think I said so at considerable length."''',
-        c("Continue", "remember", forbids=(SENT_AWAY,)),
-        c("Continue", "remember_sent", requires=(SENT_AWAY,))),
-    nen("remember", '''"The strange thing is that I remember it." {n}She frowns.{/n} "I remember a great deal of Kenabres. The smoke. The dead in the square. The way you stood between me and a babau without apparently deciding to. I ranked all of it irrelevant within the week. It is still here."
-"Hypothesis: things that happen while one is very frightened are harder to forget. That would explain it." {n}She writes that down.{/n} "It would explain it very neatly. I do not believe it."''',
+m(INQUISITORS, "Five minutes in Kenabres", '"What have you recorded about Kenabres?"', [
+    nen("open", '''{n}Nenio draws a heading on a clean sheet: KENABRES.{/n}''',
+        c("Continue", "remembered_open", forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "records_open", requires=(UNREMEMBERED,)),
+        c("Continue", "records_open", requires=(RECREATED,), forbids=(UNREMEMBERED,))),
+    nen("run", '''"I ran. It took five times as long to shake them off, which proved that running in heavy armour is not burdensome for an inquisitor at all. I have a table." {n}She taps a page.{/n} "Afterwards I met you. There were enough specimens in Kenabres to occupy several scholars. You were already collecting companions."''',
+        c("Continue", "remember", requires=(BROUGHT_SAFE,), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "remember_sent", requires=(RECRUITMENT_REFUSED,), forbids=(BROUGHT_SAFE, UNREMEMBERED, RECREATED)),
+        c("Continue", "remember_new", forbids=(BROUGHT_SAFE, RECRUITMENT_REFUSED, UNREMEMBERED, RECREATED)),
+        c("Continue", "remember_new", requires=(UNREMEMBERED,)),
+        c("Continue", "remember_new", requires=(RECREATED,), forbids=(UNREMEMBERED,))),
+    nen("remember", '''"I gave you an assignment: take me somewhere safe. You did. I told you I was pleased with you." {n}She taps the page.{/n} "It was a useful result. I remembered it long after I had forgotten much more distinguished people. I should like to know why."''',
         c('"What do you believe?"', "believe"),
-        c('[Flirt] "I remember you talking the whole way through a burning city."', "talk")),
-    nen("remember_sent", '''"I remember it. I remember you telling me afterwards to go away, and I remember going." {n}Her mouth goes thin.{/n} "I ranked all of it irrelevant within the week, the burning and the going both. The going left. The burning did not. Neither did you, in it."
-"Hypothesis: things that happen while one is very frightened are harder to forget. That would explain it very neatly." {n}She writes that down.{/n} "I do not believe it."''',
+        c('[Flirt] "And what have you written about me?"', "talk")),
+    nen("remember_sent", '''"I offered to hire you. You declined and left. There was no expedition to record, only a rejection." {n}She taps the page.{/n} "Twenty-eight. I kept that number. Now you are taking dictation. I shall need to revise the table."''',
         c('"What do you believe?"', "believe"),
-        c('[Flirt] "I remember you talking the whole way through a burning city."', "talk")),
+        c('[Flirt] "And what have you written about me?"', "talk")),
     nen("believe", '''"I believe that is an unscientific question." {n}She puts the pencil behind her ear.{/n} "Scientists do not believe. They observe, and then they decide what to think about what they observed, and the deciding is the part that nobody writes down, because it is embarrassing."
-"I have not decided about Kenabres. Ask me again in some other chapter."''',
-        c("[Leave it for some other chapter.]")),
-    nen("talk", '''"I was taking notes. Aloud. It is a legitimate method when both hands are occupied with running." {n}She sniffs.{/n} "The notes were very good. A demon tried to eat me at the corner by the cathedral steps, and you killed it, and I described its death while it was happening. I have that page still. It is the only page from Kenabres I kept."
-{n}She does not offer to show it to you. After a moment, she does anyway: one line in her own impossible hand, and underneath, in capitals, slowly: "FOLLOWER: ACCEPTABLE."{/n}''',
+"I have not concluded. Ask when I have finished comparing the notes."''',
+        c("[Leave her to compare the notes.]")),
+    nen("talk", '''"'Follower: acceptable.'" {n}She shows you the page, the words written slowly enough to read.{/n} "A provisional result. Do not look so pleased. There is space beneath it for corrections."''',
         c("[Give the page back.]")),
-], requires=(SCRIBE,), forbids=(UNREMEMBERED,), delay=48, chapter=5,
+    nen("remembered_open", '''"Measuring cultists." {n}She taps a fresh sheet.{/n} "Before the attack I tried to examine the prisoners in Kenabres. The inquisitors decided that anyone interested in cultists must be one. Five minutes to reach a verdict. I timed it."''', c("Continue", "run")),
+    nen("records_open", '''"Kenabres? My records are incomplete. Your crusade has reports about it; I shall compare those before dictating an entry." {n}She leaves room at the top of the sheet.{/n} "For now, we have observations from Drezen."''', c("Continue", "remember_new")),
+    nen("remember_new", '''"Our current work is much better documented than that encounter." {n}She pushes a clean sheet toward you.{/n} "I shall judge the follower by the work I can examine."''',
+        c('"What do you believe?"', "believe"),
+        c('[Flirt] "And what have you written about me?"', "talk")),
+], requires=(SCRIBE,), delay=48, chapter=5,
     RequiresAnyGroups=[list(twin_ids(PAGE_ONE))])
 
 
@@ -633,7 +649,7 @@ m(VOID_DAYS, "The margins", '"Nenio?"', [
         c("[Leave her to it.]")),
     nen("count", '''"Eleven." {n}Flatly.{/n} "And the sketch. Eleven initials and a sketch, placed with care, in the places I look most often. Whoever did this knows exactly which pages I read when I cannot sleep." {n}She turns a page, and circles something.{/n} "That is a very small list of people. Come back in three days. I shall have one question. I would like it answered truthfully. I would like that very much."''',
         c("[Leave her to it.]")),
-], requires=(P + "declined",), forbids=(COMMITTED,), delay=24)
+], requires=(P + "declined", P + "tampered"), forbids=(COMMITTED,), delay=24)
 
 
 # --- The bite she promised to test, the box marked KENABRES?, and the answer owed to the Sphinx. ------------------------------
@@ -680,23 +696,19 @@ m(TEETH, "A test of the bite", '"You\'re looking at my mouth again."', [
 
 m(KENABRES_BOX, "KENABRES?", '"You\'ve drawn a box round a word."', [
     nen("open", '''"I have." {n}Her volume one is open on @DESK@ at the flyleaf. In the margin, in her impossible hand, is the only word on the page anybody could read: KENABRES?, with a box ruled round it, and the box gone over so many times that the pencil has nearly worn through the paper.{/n}
-"I have records of places I have never been. I have records of places that do not exist, for comparison. I have no record of Kenabres at all. It is the only hole in my geography that is the exact shape of a city." {n}She turns the book to face you.{/n} "You said, the day we met, that we had met once before, in Kenabres, and that it went badly. I have had some weeks to think about 'badly'. Tell me."''',
-        c('[Tell her the truth] "You were in a square in Kenabres, with cultists, in the middle of the attack. I killed you. I thought you were one of them."', "truth"),
+"I have records of places I have never been. I have records of places that do not exist, for comparison. I have no record of Kenabres at all. It is the only hole in my geography that is the exact shape of a city." {n}She turns the book to face you.{/n} "You said, the day we met, that we had met once before, in Kenabres, and that it went badly. I have been considering 'badly'. Tell me."''',
+        c('"I killed you in Kenabres. Then I paid the Sphinx to make you again. She did not return that memory."', "truth"),
         c('[Lie] "A misunderstanding at the gate. You were arrested; I didn\'t help. That\'s all."', "lie"),
         c('"Some things are better in a box."', "box")),
-    nen("truth", '''{n}She does not move. Her pencil stays exactly where it was, above the page.{/n}
-"You killed me." {n}She says it as if reading it off a scale.{/n} "In a square. Thinking I was a cultist. The inquisitors thought the same; you would have been in good company." {n}Her ears go back, slowly, all the way.{/n}
-"And then a grey servant with a white mask came and put me back together, and forgot to put that in, because it was not paid for. And you sat down at my crates and took my dictation for weeks and did not say."''',
+    nen("truth", '''"You killed me." {n}Her pencil remains above the page.{/n} "And then bought a vessel without that memory. You have been taking my dictation. This belonged in the record before anything else. I shall have to examine the source."''',
         c('"I didn\'t know how."', "how"),
         c('"I was afraid you\'d leave."', "how")),
-    nen("how", '''"No. There is no how." {n}She writes. She writes a long time, in the margin under the box, and then she stops and looks at what she has written and closes the book on it.{/n}
-"I do not remember it. I have looked, just now, and it is not there, not even as a hole. So it is an account. An account of somebody else's death, told to me by the person who did it." {n}She puts her hand flat on the cover.{/n} "I am going to keep it. I am going to read it again, once, next month, when I am less surprised. And then I am going to decide what I think about you, and it will be my decision, and you will not help."
-"Thank you for telling me. That is not forgiveness. It is a receipt."''',
-        c("[Accept the receipt.]", flags=(KENABRES_TOLD,))),
+    nen("how", '''{n}She writes your account beneath KENABRES?, then closes the book.{/n} "I do not remember it. That does not make your account harmless. Leave it with me. I shall read it again, then decide what I think of the person who did it." {n}She puts her hand flat on the cover.{/n} "Your account is recorded. Do not ask me to forgive you while I am still reading it."''',
+        c("[Leave the account with her.]", flags=(KENABRES_TOLD,))),
     nen("lie", '''"Arrested at the gate." {n}She writes it down beside the box, slowly, in a hand you can read.{/n} "Five minutes. That is the time it takes the inquisitors of Kenabres to find anyone guilty; I know that somehow. I do not know how I know it." {n}She looks at the box, and at your account beside it, and at you.{/n}
 "It fits," {n}she says.{/n} "It fits very neatly." {n}She rubs out the question mark, and leaves the box around the word.{/n} "I dislike things that fit very neatly. But I have no other data."''',
         c("[Let it stand.]", flags=(KENABRES_LIED, KENABRES_SECRET))),
-    nen("box", '''"Better in a box for whom?" {n}She looks at you for some time.{/n} "Very well. It stays in a box. I shall not open it. That is not the same as forgetting it; I want that understood. A box is a promise that the thing is still there."''',
+    nen("box", '''"Better in a box for whom?" {n}She looks at you for some time.{/n} "Very well. It stays in a box. I shall not open it. That is not the same as forgetting it; I want that understood. I will leave the question mark. When I open it, I shall expect an answer."''',
         c("[Leave the box shut.]")),
 ], requires=(SCRIBE, UNREMEMBERED, KENABRES_SAID), forbids=(DEBT_DEFAULTED,), delay=72, places=("visitor", "arcade"), chapter=5)
 
@@ -734,27 +746,87 @@ m(SPHINX_LIST, "One answer, owed", '"What\'s this list?"', [
 POINT_FIVE = F + "point_five"
 
 m(POINT_FIVE, "Point five, a correction", '"That\'s the friendship article."', [
-    nen("open", '''"It is." {n}She has it spread on @DESK@: the list, the observations, the conclusion, and a sketch, face down, which she keeps her hand on.{/n}
-"Friendship: concluded. The most foolish of all occupations. A set of primitive rituals intended to help individuals forget about their loneliness. It is a very good article. I have reread it eleven times." {n}She frowns at it.{/n} "It has an error in it, and I cannot find it, and I have never before written an article with an error in it that I could not find."''',
-        c('"Maybe the error is the conclusion."', "conclusion"),
-        c('"Show me the sketch."', "sketch"),
-        c('[Flirt] "Point five went badly. That\'s your error."', "five")),
-    nen("conclusion", '''"The conclusion is not an error. The conclusion follows from the data." {n}She taps the page, hard.{/n} "Smiling: completed. Gossip: completed, with prepared materials. Drinking: already done, crossed out. Arguing: completed, at length; I was very insulting. Point five..." {n}She stops.{/n}''',
+    nen("open", '''{n}Nenio heads a fresh sheet FRIENDSHIP, POINT FIVE.{/n}''',
+        c('"Maybe the error is the conclusion."', "conclusion", forbids=("trickster.ever",)),
+        c('"What happened to the sketch?"', "sketch", requires=(FRIEND_SKETCH,), forbids=("trickster.ever", UNREMEMBERED, RECREATED)),
+        c('[Flirt] "Point five went badly. That\'s your error."', "five", forbids=("trickster.ever",)),
+        c('"What did you record instead?"', "no_sketch", forbids=("trickster.ever", FRIEND_SKETCH, UNREMEMBERED, RECREATED)),
+        c("Continue", "review_retained", forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "review_new", requires=(UNREMEMBERED,)),
+        c("Continue", "review_new", requires=(RECREATED,), forbids=(UNREMEMBERED,))),
+    nen("conclusion", '''"Point five: no copulation observed. That records this trial. It does not settle the whole subject of friendship."''',
         c("Continue", "five")),
-    nen("sketch", '''"No." {n}Her hand stays flat on it.{/n} "It is for the students of Absalom. It is very detailed. It is also, I have realised, uncredited, because at the time I did not remember the model's name, and I said so, and I said 'alas'." {n}She looks at the back of the sheet.{/n} "I have been thinking about that 'alas'. It is not a scientific word. I do not know why I used it."''',
-        c("Continue", "five")),
-    nen("five", '''"Point five: friends sometimes copulate. Result: not observed. The experimenter became absorbed in documentation and bit her tongue." {n}She reads it in a flat voice, as if it were somebody else's paper.{/n}
-"The error is here. I recorded the result as a property of friendship. It was not. It was a property of the method. I let the documentation replace the experiment: I drew the subject instead of running the procedure. That is a first-year mistake. I have failed students in Absalom for less."''',
-        c('"And now?"', "now"),
-        c('"You could run it again."', "again")),
+    nen("sketch", '''{n}She adds a heading to the review: DRAWING.{/n}''',
+        c("Continue", "credit", requires=(FRIEND_CREDIT,), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "drawing", requires=(FRIEND_SKETCH,), forbids=(FRIEND_CREDIT, UNREMEMBERED, RECREATED)),
+        c("Continue", "record_unknown", requires=(UNREMEMBERED,)),
+        c("Continue", "record_unknown", requires=(RECREATED,), forbids=(UNREMEMBERED,)),
+        c("Continue", "record_unknown", forbids=(FRIEND_SKETCH, FRIEND_CREDIT, UNREMEMBERED, RECREATED))),
+    nen("five", '''{n}Nenio leaves a line for the result beneath point five.{/n}''',
+        c('"And now?"', "now", forbids=("trickster.ever",)),
+        c('"You could run it again."', "again", forbids=("trickster.ever",)),
+        c("Continue", "result_refused_tongue", requires=(FRIEND_REFUSED, FRIEND_TONGUE), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "result_refused_drawing", requires=(FRIEND_REFUSED, FRIEND_SKETCH), forbids=(FRIEND_TONGUE, UNREMEMBERED, RECREATED)),
+        c("Continue", "result_refused", requires=(FRIEND_REFUSED,), forbids=(FRIEND_SKETCH, FRIEND_TONGUE, UNREMEMBERED, RECREATED)),
+        c("Continue", "result_tongue", requires=(FRIEND_TONGUE,), forbids=(FRIEND_REFUSED, UNREMEMBERED, RECREATED)),
+        c("Continue", "result_drawing", requires=(FRIEND_SKETCH,), forbids=(FRIEND_REFUSED, FRIEND_TONGUE, UNREMEMBERED, RECREATED)),
+        c("Continue", "result_unknown", forbids=(FRIEND_REFUSED, FRIEND_SKETCH, FRIEND_TONGUE, UNREMEMBERED, RECREATED)),
+        c("Continue", "result_unknown", requires=(UNREMEMBERED,)),
+        c("Continue", "result_unknown", requires=(RECREATED,), forbids=(UNREMEMBERED,))),
     nen("now", '''"Now I am going to issue an erratum." {n}She takes the pencil from behind her ear and writes, in small, careful, legible capitals, at the foot of point five: "SEE ALSO: FOLLOW-UP, PENDING." Then she looks at it, and her ears go back, and she leaves it where it is.{/n}
 "It is a footnote," {n}she says.{/n} "Not a conclusion. A footnote is a promise that there is more to say. I do not know yet what it is."''',
         c("Continue", "end")),
-    nen("again", '''"Run it again." {n}She says it slowly, as if the words had a taste.{/n} "A replication. With the same subject. Without the pencil." {n}She looks down at the sketch under her hand.{/n}
+    nen("again", '''"Run it again." {n}She says it slowly, as if the words had a taste.{/n} "A replication. With the same subject. Without the pencil." {n}She looks down at point five.{/n}
 "That would be methodologically sound," {n}she says, in a voice that is not methodological at all.{/n} "I shall have to design it. Properly. With conditions. It will take some time." {n}She writes, at the foot of point five, in legible capitals: "SEE ALSO: FOLLOW-UP, PENDING."{/n}''',
         c("Continue", "end")),
-    nen("end", '''{n}She turns the sketch over at last, briefly, as if to check it is still there, and turns it back before you can see more than the corner. There is a space ruled under it, three fingers wide, where the model's name would go.{/n}
-"Uncredited," {n}she says.{/n} "For now. Go away, follower. I am designing an experiment and you are in the way of it."''',
-        c("[Get out of the way of it.]")),
+    nen("end", '''{n}She sets the review beside a clean sheet.{/n}''',
+        c("[Get out of the way of it.]", forbids=("trickster.ever",)),
+        c("Continue", "end_drawing", requires=(FRIEND_SKETCH,), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "end_new", requires=(UNREMEMBERED,)),
+        c("Continue", "end_new", requires=(RECREATED,), forbids=(UNREMEMBERED,)),
+        c("Continue", "end_new", forbids=(FRIEND_SKETCH, UNREMEMBERED, RECREATED))),
+    nen("no_sketch", '''{n}She checks the account beneath the heading.{/n}''',
+        c("Continue", "no_trial", requires=(FRIEND_REFUSED,), forbids=(FRIEND_SKETCH, UNREMEMBERED, RECREATED)),
+        c("Continue", "record_unknown", forbids=(FRIEND_REFUSED, UNREMEMBERED, RECREATED)),
+        c("Continue", "record_unknown", requires=(FRIEND_SKETCH, FRIEND_REFUSED), forbids=(UNREMEMBERED, RECREATED)),
+        c("Continue", "record_unknown", requires=(UNREMEMBERED,)),
+        c("Continue", "record_unknown", requires=(RECREATED,), forbids=(UNREMEMBERED,))),
+    nen("no_trial", '''"No trial took place. You objected, and I was pleased to abandon it." {n}She writes that beneath the heading.{/n} "Then I concluded that friendship was foolish. I shall need a less ambitious conclusion."''', c("Continue", "five")),
+    nen("record_unknown", '"No result recorded for this procedure. I cannot turn that into evidence by underlining it."', c("Continue", "five")),
+    nen("credit", '''"I said I could not credit the model. I even said 'alas'." {n}She writes ATTRIBUTION beneath the account of the drawing.{/n} "Now I have a correction to make before the students see it."''', c("Continue", "five")),
+    nen("drawing", '''"I began drawing instead of conducting the trial. That is the observation worth keeping." {n}She adds it to the review.{/n} "The drawing was of you. I can record that much without guessing what the experiment would have proved."''', c("Continue", "five")),
+    nen("result_refused_tongue", '"I began drawing, bit my tongue, and then you objected to the trial. We stopped. No copulation. Plenty of corrections for the article."',
+        c('"And now?"', "now"), c('"You could run it again."', "again")),
+    nen("result_refused_drawing", '"I began drawing. Then you objected to the trial, and I was pleased to abandon it. The drawing and the refusal are separate observations."',
+        c('"And now?"', "now"), c('"You could run it again."', "again")),
+    nen("result_refused", '"We chose not to conduct it. No drawing, no copulation. I still have an entry to correct."',
+        c('"And now?"', "now"), c('"You could run it again."', "again")),
+    nen("result_tongue", '"I became absorbed in drawing and bit my tongue. No copulation took place. I documented the subject and forgot the procedure."',
+        c('"And now?"', "now"), c('"You could run it again."', "again")),
+    nen("result_drawing", '"I drew the subject instead of conducting the experiment. Documentation, not an observation of copulation."',
+        c('"And now?"', "now"), c('"You could run it again."', "again")),
+    nen("result_unknown", '"The record does not establish a trial. I shall leave \'not observed\' and correct the conclusion that followed it."',
+        c('"And now?"', "now"), c('"You could run it again."', "again")),
+    nen("end_drawing", '''{n}She adds the model's attribution to the review.{/n} "There. Now go away, follower. I am designing an experiment."''', c("[Get out of the way of it.]")),
+    nen("end_new", '''{n}She leaves a clean sheet beside the review.{/n} "A new procedure. No conclusion yet. Go away, follower. I need to design it."''', c("[Get out of the way of it.]")),
+    nen("review_retained", '''"It is a review of it." {n}She heads a fresh sheet FRIENDSHIP, POINT FIVE.{/n} "I concluded that the whole occupation was foolish. The evidence is less satisfactory. I am checking point five before the entry goes to a printer."''',
+        c('"Maybe the error is the conclusion."', "conclusion"),
+        c('"What happened to the sketch?"', "sketch", requires=(FRIEND_SKETCH,), forbids=(UNREMEMBERED, RECREATED)),
+        c('[Flirt] "Point five went badly. That\'s your error."', "five"),
+        c('"What did you record instead?"', "no_sketch", forbids=(FRIEND_SKETCH, UNREMEMBERED, RECREATED))),
+    nen("review_new", '''"Your account says that I called friendship foolish. It does not give a result for point five. I shall review the observations, not borrow the conclusion."''', c("Continue", "five")),
 ], requires=(SCRIBE, FRIEND_DONE), forbids=(COMMITTED,), delay=48, places=("hub",),
     RequiresAnyGroups=[list(twin_ids(DEMONS)) + list(twin_ids(ARCHITECT))])
+
+
+# Authored follow-up to the existing account; continuing work buys no romantic yes.
+m(F + "kenabres_judgment", "The source examined", '"Have you read the account?"', [
+    nen("open", '''{n}Nenio has your account open beside her notes on the crusade. She reads its last line, folds it, and looks directly at you.{/n} "I have read it again. I believe you killed me. I also believe you paid to have me made again. The second observation does not cancel the first."''', c("Continue", "judgment")),
+    nen("judgment", '''"I will continue the work. With you, for now. I want to know what you do when you cannot erase the inconvenient part of an account." {n}She sets a clean page between you.{/n} "I have not forgiven you. I have decided to remain. Those are different entries."''',
+        c('"Leave both entries. I will not ask you to erase either."', "continue_work"),
+        c('"I brought you back. You owe me forgiveness."', "close"),
+        c('"Then we should end this."', "part")),
+    nen("continue_work", '''"Good. Hold the page." {n}She places the pencil in your hand and keeps her other hand on the folded account.{/n} "We start with what we can observe. Write the date. I want this page legible."''', c("[Take dictation.]")),
+    nen("close", '''"No. The bargain was with the Sphinx. You did not buy my judgment." {n}She takes the clean sheet back.{/n} "I shall find another follower. Leave."''', c("[Leave.]", flags=(CLOSED,))),
+    nen("part", '''"Then we end it." {n}She writes the date beneath your account.{/n} "I will keep the evidence. You will keep out of my notes."''', c("[Go.]", flags=(CLOSED, P + "refused_her"))),
+], requires=(SCRIBE, UNREMEMBERED, KENABRES_TOLD), delay=72, chapter=5, places=("visitor", "arcade"))

@@ -196,13 +196,47 @@ internal static class PacingPP4Tests
         // Kiana's wedding, recalled on her rounds: [0]-[3] keep their places; one answer per stance.
         var rounds = S("kiana.trickster.ward_rounds");
         var start = N(rounds, "start").Choices;
-        check(start.Count >= 7 && start[0].Next == "rounds" && start[3].Next == "wrist_early", "ward_rounds: an original answer moved.");
+        check(start.Count >= 9 && start.Take(7).Select(c => c.Next).SequenceEqual(
+            new[] { "rounds", "wrist", "wrist", "wrist_early", "court_captive", "court_hunter", "court_guest" }),
+            "ward_rounds: an original answer moved.");
         foreach (var (stance, at) in new[] { ("captive", 4), ("hunter", 5), ("guest", 6) })
         {
             var choice = start[at];
             check(choice.Next == "court_" + stance && Rules.Match(choice.Requires, choice.Forbids, At(story, 5, Cast + "." + stance))
                   && !Rules.Match(choice.Requires, choice.Forbids, At(story, 5, Cast + ".declined"))
-                  && N(rounds, "court_" + stance).Choices.All(c => c.Next == "rounds"), "ward_rounds: the " + stance + " recall is wrong.");
+                  && N(rounds, "court_" + stance).Choices[0].Next == "rounds"
+                  && N(rounds, "court_" + stance).Choices[0].Requires.Contains("kiana.trickster.ward_guests_home"),
+                "ward_rounds: the " + stance + " recall lost its saved target or release gate.");
+        }
+
+        // P3: all five callers retain their saved rounds answer and append the
+        // captive/postponed histories. A wedding stance alone never frees guests.
+        foreach (var caller in new[] { "start", "wrist_early", "court_captive", "court_hunter", "court_guest" })
+        {
+            var choices = N(rounds, caller).Choices;
+            int appended = caller == "start" ? 7 : 1;
+            check(choices[0].Next == "rounds"
+                  && choices[appended].Next == "rounds_captive"
+                  && choices[appended + 1].Next == "rounds_no_wedding",
+                "ward_rounds: saved/appended targets changed at " + caller);
+            foreach (var stance in new[] { "captive", "hunter", "guest" })
+            foreach (var receipt in new[] { "", "seelah.souls_returned", "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" })
+            foreach (bool postponed in new[] { false, true })
+            {
+                var flags = new List<string> { "trickster", Cast + "." + stance };
+                if (receipt != "") flags.Add(receipt);
+                if (postponed) flags.Add("kiana.history_betrothed");
+                var state = At(story, 5, flags.ToArray());
+                string target = postponed ? "rounds_no_wedding" : receipt == "" ? "rounds_captive" : "rounds";
+                var histories = choices.Where(c => new[] { "rounds", "rounds_captive", "rounds_no_wedding" }.Contains(c.Next))
+                    .Where(c => Rules.ChoiceAvailable(c, state)).ToArray();
+                check(histories.Length == 1 && histories[0].Next == target,
+                    "ward_rounds: wrong or overlapping history at " + caller + "/" + stance + "/" + receipt + "/" + postponed);
+                var outcomes = Program.WalkVia(rounds, state, caller, choices.IndexOf(histories[0]));
+                bool matchingStance = !caller.StartsWith("court_", StringComparison.Ordinal) || caller == "court_" + stance;
+                check(matchingStance ? outcomes.Count > 0 && outcomes.All(o => o.Has("kiana.trickster.rounds_kept")) : outcomes.Count == 0,
+                    "ward_rounds: wrong recall reachability or completion at " + caller + "/" + stance + "/" + target);
+            }
         }
 
         // The hosts belong to their own dialogs: no other RRT scene rides them.

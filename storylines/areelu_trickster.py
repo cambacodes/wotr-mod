@@ -1720,7 +1720,8 @@ page("areelu.trickster.finale.report_stands", "The report stands", [
 page("areelu.trickster.finale.ascended", "Unsettled", [
     nar("end", '''{n}They had ascended together. In the first entry of her new report, Areelu wrote both names. That night she closed the notebook and looked at the Commander.{/n} "I have recorded what the crystals did. Now I want you."
 {n}If there is a last page to that report, nobody below has read it. The Commander's name is on it, and hers, and a single word between them in her small neat hand, and the word is not "neither". It is "both".{/n}''',
-        c("[Leave her to her report.]"),
+        # The original terminal answer is referenced by saves as .continue.
+        dict(c("[Leave her to her report.]"), Id="continue"),
         c("[Stay with her.]", "asc_night")),
     nar("asc_night", '{n}She takes your hand from the notebook and places it at the fastening of her gown. When you undo it, she steps close enough for the loosened cloth to brush your skin.{/n} "Look at me." {n}Her mouth catches yours. She draws your shirt from your shoulders, lets the gown fall, and holds you against her with a palm at the back of your neck. At the bed she kisses your bare chest, then your mouth again.{/n} "I did not come this far to watch you from across a room." {n}She pulls you down after her.{/n}',
         c("[Go with her.]", "asc_morning"),
