@@ -110,14 +110,14 @@ GREY_WARY = M + "greybor_wary"       # Greybor will not take her coin again (rea
 
 RELATIONSHIP = dict(
     Title="Salt the Hoard",
-    Description=("Melazmera, the umbral dragon of Colyphyr, has eaten everything that ever walked on her island, and "
-                 "everyone who ever walked into her cave took something. I walked in and left something. She has come "
-                 "to find out why."),
+    Description=("Melazmera, the umbral dragon of Colyphyr, hunts the island while her hoard waits for thieves. "
+                 "I could leave something where others come to take. She may follow the scent of the giver. "
+                 "I would rather meet her without a drawn sword."),
     Objective="Find out what Melazmera does with a thief who gives",
-    Guidance=("On the Trickster path in Colyphyr, learn how the dragon's hoard is made: ask the Fulsome Queen how to catch the "
-              "dragon, or see through the illusions in the empty lair. Tell the Queen your plan, or trust your own eyes, and "
-              "rest on Colyphyr while the dragon is out hunting. Never touch the crown. Rest on the island once more, and she "
-              "will come to you."),
+    Guidance=("On Colyphyr, ask the Fulsome Queen about the hoard and tell her your plan, or see through the lair's illusions. "
+              "Rest on the island while Melazmera is hunting to leave the gift among the real treasure. Keep clear of the bait. "
+              "She may come looking at a later rest on Colyphyr, in the Nexus, or after your return to Drezen. "
+              "A slain dragon will not come looking."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[DEAD, LEFT_FREE], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
@@ -209,11 +209,10 @@ def place(text, success, failure):
 
 SCENES.append(scene(M + "ch4.salt", "Salt the hoard", "Melazmera", 4, "", [
     nar("start", '''{n}The camp is asleep when you take off your boots and go. You go alone. Whatever she finds beside the gift must smell of you and nobody else.{/n}
-{n}The cave is where the Queen said: a great wet mouth in the rock with a hole in its roof, and the rain coming through the hole in a grey column, straight down, as if the sky had been poured into a jug. Somewhere far off over the island, something very large is hunting. You can hear it now and then over the rain: a sound like a sail filling, and then nothing. The cave just stands there, empty.{/n}''',
+{n}The cave opens in the rock, a great wet mouth with a hole in its roof, and the rain coming through the hole in a grey column, straight down, as if the sky had been poured into a jug. Somewhere far off over the island, something very large is hunting. You can hear it now and then over the rain: a sound like a sail filling, and then nothing. The cave just stands there, empty.{/n}''',
         c("Continue", "seen", requires=(SEEN_THROUGH,)),
         c("Continue", "told", forbids=(SEEN_THROUGH,))),
-    nar("seen", '''{n}You have been in here before, and you have seen the trick of it. The treasure glitters in the dark all the same: a staff with a golden bird on its head, a gown sewn with stones, a spill of fat round coins, and on a ledge of its own, a little crown. But you know what it is under the glitter now. Rocks. Silly rocks in borrowed clothes.{/n}
-{n}And at the back, in a hollow worn smooth by something enormous turning round and round before it slept, the heap: grey stones, lumpy and dull, that nobody would steal. You have seen those without their illusion too. Some of them are not stones at all.{/n}''',
+    nar("seen", '''{n}You have already seen through enough of the cave's disguises to know the trap. The bait lies by the entrance; the real treasure is at the back, where her body has worn a hollow into the floor. You keep your sleeve clear of the ledge and look for a gap in the heap.{/n}''',
         c("Continue", "ring")),
     nar("told", '''{n}The treasure glitters in the dark exactly as the Queen said: a staff with a golden bird on its head, a gown sewn with stones, a spill of fat round coins, and on a ledge of its own, a little crown, catching what light there is and holding it like a coin held out to a beggar. Everything in you that ever went through a stranger's pockets wants to pick it up.{/n}
 {n}You do not look at it. You look past it, to the back, to a hollow worn smooth by something enormous turning round and round before it slept, and the heap in it: grey stones, lumpy and dull, still faintly warm. Boring rocks. The Queen said so, and the Queen, for once, had no reason to lie.{/n}''',
@@ -221,18 +220,19 @@ SCENES.append(scene(M + "ch4.salt", "Salt the hoard", "Melazmera", 4, "", [
     nar("ring", '''{n}You work the seal ring off your finger. It comes hard; it has not been off your hand since the day you were made Knight Commander, and every order that has gone out under your name since has carried its mark. It is the one thing you own that is entirely yours and entirely the Knight Commander's at once.{/n}
 {n}A dragon would know gold. A dragon would smell it from the roof. So you kneel at the edge of the hollow and dig your fingers into the cave's own floor, where the rain has made a grey clay of the rock-dust, and you roll the ring in it, and press it, and roll it again, until what sits in your palm is a lump the size of a walnut, grey, pitted, dull, warm from your hand. A boring rock.{/n}''',
         c("Continue", "heap")),
-    nar("heap", '''{n}The heap is a slope of stones as high as your chest. Somewhere under the top layer is the warm hollow where her belly lies; you can see the shape of it, and the long smooth groove where her tail curls. The false treasure is a stride behind you on the left. The little crown sits on its ledge at the height of your elbow.{/n}
-{n}You would have to reach across the heap, past the ledge, and set your lump down among the real stones without dislodging a single one onto the floor, without brushing the ledge, without your sleeve, your wrist, your breath touching anything that glitters. With a hand, and nerve, and nothing else.{/n}''',
+    nar("heap", '''{n}The heap is a slope of stones as high as your chest. Somewhere under the top layer is the warm hollow where her belly lies; you can see the shape of it, and the long smooth groove where her tail curls. The bait's ledge is a stride behind you on the left, at the height of your elbow.{/n}
+{n}You would have to reach across the heap, past the ledge, and set your lump down among the real stones without dislodging a single one onto the floor, without brushing the ledge, without your sleeve or wrist brushing the bait's ledge. With a hand, and nerve, and nothing else.{/n}''',
         *place('[Set it among the real stones] Reach in slowly, past the crown, and put it down as if it had always been there.', "set", "brush"),
         c("[Not tonight.] Back away and put the ring on again.", abort=True)),
-    nar("set", '''{n}Your arm goes out over the heap. The crown's light moves on your sleeve and you feel it there, a pressure that is not quite warmth, as if the ledge were leaning towards you to be touched. You do not let it. You keep your wrist turned and low, and you lay the clay lump down in a gap between two stones that have been lying together a long time, and you take your hand away the way you would take it out of a sleeping hound's mouth.{/n}
-{n}Nothing moves. The rain comes down its grey column. Somewhere very far off, over the sea, something enormous is still hunting.{/n}''',
+    nar("set", '''{n}Your arm goes out over the heap. You keep your wrist clear of the ledge, lay the clay lump in a gap between two stones, and draw your hand back. The stones do not shift. Nothing comes down through the roof.{/n}
+
+{n}Rain falls into the cave. Far out over the sea, something enormous is still hunting.{/n}''',
         c("Continue", "out")),
     nar("out", '''{n}You walk back to camp barefoot in the rain with your hand feeling wrong. Your finger keeps looking for the ring and finding skin. In the morning your quartermaster will have to cut a new seal, and the clerks will talk, and you will tell them it was lost in the Abyss, which is true.{/n}
-{n}Behind you, in a cave with a hole in its roof, among a heap of real stones that look like nothing, lies the Knight Commander's seal, looking like nothing. You wonder how long it will take her to notice. You wonder what she does when she finds one thing in her hoard that is not hers.{/n}''',
+{n}Behind you, in a cave with a hole in its roof, among her real treasure, lies the Knight Commander's seal, looking like nothing. You wonder how long it will take her to notice. You wonder what she does when she finds one thing in her hoard that is not hers.{/n}''',
         c("[Go back to your blankets.]", flags=(SALTED, SEAL))),
     nar("brush", '''{n}It is the ledge. Not the crown: the ledge, a lip of stone you did not see in the dark, and the back of your wrist grazes it on the way out, the lightest touch, the kind you would not feel on a crowded street.{/n}
-{n}The crown goes out like a candle. So do the coins, and the gown, and the bird on its staff, and for one heartbeat you are kneeling in a cave full of plain grey rocks. Then the rain stops. It does not stop falling; it stops reaching you. Something has closed over the hole in the roof. The Queen was right about one thing, at least. It is the blink of an eye.{/n}''',
+{n}For one heartbeat you hear nothing but rain. Then the rain stops. It does not stop falling; it stops reaching you. Something has closed over the hole in the roof.{/n}''',
         c("Continue", "caught")),
     mz("caught", '''{n}She comes down through the roof like a shadow poured through a funnel, and the cave is suddenly full of her: plates the colour of a bruise, a neck that goes on and on, two scarlet eyes as big as shields, lit from inside. Her breath smells of cold iron and old fire. She does not roar. She looks at you, kneeling at her heap with your hand still out over it, and then she looks at the lump of clay under your fingers, and then she giggles.{/n}
 "A thief," {n}she says. Her voice fills the cave the way water fills a jug.{/n} "Four hundred thieves in this cave, maybe five hundred. I ate all of them. And every one of them had his hand going out." {n}Her head comes down level with yours.{/n} "Yours is going in."''',
@@ -258,7 +258,7 @@ HUNT_BODY = [
 {n}On the smallest finger of her left hand, so loose it rattles, she wears your seal.{/n}''',
         c("Continue", "speech")),
     mz("speech", '''"Everything on this island that walks, I have eaten." {n}She reaches into your cook-pot with two fingers, fishes out a lump of salt pork, and eats it, still steaming. She does not seem to notice the heat.{/n} "Goats. Harpies. Diggers. Demons, when they are fat enough to be worth the bother. Everything that ever walked into my cave, I ate, and everything that walked into my cave had come to take something."
-"Nothing ever left me anything." {n}She holds up her hand and lets the ring slide down her finger and back.{/n} "Nothing, in all the years. And then you. You came in with nothing in your hands and went out with less. I have not decided whether to eat you for it."''',
+"Nothing ever left me anything." {n}She holds up her hand and lets the ring slide down her finger and back.{/n} "Nothing, in all the years. And then you. You brought a ring into my cave and went out without it. I have not decided whether to eat you for it."''',
         c("Continue", "swamp", requires=(PLAN,)),
         c("Continue", "why", forbids=(PLAN,))),
     mz("swamp", '''{n}She sniffs, delicately, in the direction of your boots.{/n} "You have been talking to the thing in the swamp. The one that wears the Lady's face and smells like the bottom of a well. She told you where I sleep." {n}Her lip lifts, a little, over teeth that are too many and too white.{/n} "I chewed her once. She did not taste of anything I could name. I spat her out, and she has been telling everyone I tried to eat her ever since, as if that were an insult to her."''',
@@ -269,8 +269,9 @@ HUNT_BODY = [
         c('"Because I wanted to meet you, and I didn\'t want to meet you over a corpse."', "meet", flags=(WHY_MEET,)),
         c('"Because the swamp queen wanted me to be her knight and kill you, and I don\'t take orders from puddles."', "queen",
           flags=(WHY_QUEEN,), requires=(QUEEN_MET,))),
-    mz("takes", '''"What I would do." {n}She considers that, turning the ring on her finger.{/n} "I did not know what to do. That is the whole of it. I came home from the sea with a goat in my mouth and there was a thing in my heap that had not been there, that was not mine, and I lay on it all night and did not know what to do with it."
-{n}She giggles, a high bright sound with nothing kind in it.{/n} "I have not not-known what to do since I was the size of a horse. It itched. I came to find out who made it itch."''',
+    mz("takes", '''"What I would do." {n}She turns the ring on her finger.{/n} "I have it. That part is easy. But you carried it into my cave and left without taking anything. I kept turning that over, and it would not come out even."
+
+{n}She giggles.{/n} "I came to look at the thief who made it difficult. Hold still."''',
         c("Continue", "crew")),
     mz("meet", '''"Over a corpse." {n}The giggle again.{/n} "Most things meet me over a corpse. Theirs, usually." {n}She looks you over, slowly, the way a buyer looks over a horse, and does not seem displeased.{/n}
 "You could have met me by touching my crown. Everyone does. I come home, and they meet me, and then they are over. You wanted to meet me and go on." {n}She tilts her head.{/n} "That is either very stupid or very greedy. I cannot tell which yet. I like both."''',
@@ -301,7 +302,7 @@ HUNT_BODY = [
         c("Continue", "name")),
     mz("name", '''{n}She stands. The shadow on the rocks stands with her, and goes on standing for some time after she has.{/n}
 "Melazmera," {n}she says, as though laying a coin down on the table between you.{/n} "That is my name. Nobody on this island has ever needed it. Everything that heard it was already inside me."
-"Do not touch my crown again, thief. If you touch it, I will come home, and I will have to eat you, and I have not finished deciding whether I want to." {n}She turns the ring on her finger.{/n} "So. You put a thing in my hoard. Tell me what I owe you for it, or what you owe me, or what it was, and choose well. I will remember whatever you say for a very long time."''',
+"Do not touch my crown, thief. If you touch it, I will come home, and I will have to eat you, and I have not finished deciding whether I want to." {n}She turns the ring on her finger.{/n} "So. You left a thing with me. Tell me what I owe you for it, or what you owe me, or what it was, and choose well. I will remember whatever you say for a very long time."''',
         c('"You ate my crew off the deck of my ship. Now you owe me."', "owed", requires=(ATE,), flags=(OWED,)),
         c('"You wear our harpoon in your side. Call that even, and this a fresh start."', "owed", requires=(HARPOONED,),
           forbids=(ATE,), flags=(OWED,)),
@@ -337,11 +338,11 @@ KNOWN = nar("known", '''{n}Your hand knows before you do. The two grey fingers, 
 def arrive_known(tail):
     """Her memory of the failed salt: the ring held out (grey fingers), or the fist she opened herself (fist_closed)."""
     return [
-        mz("arrive_known", '''"You held it out," {n}she says, before she has even sat down.{/n} "In my cave. I had my claw on your hand and two of your fingers were going grey, and you scraped the clay off your ring with your thumb and held it up to me, as if you were paying a toll."
-"Nobody pays me. They run, or they fight, or they pray." {n}She sounds genuinely puzzled.{/n} "I lay on my heap a whole night thinking about that, and I could not make it come out even. ''' + tail + '"',
+        mz("arrive_known", '''"You held it out," {n}she says, before she sits down.{/n} "You scraped the clay off with your thumb and offered me the ring. Then I put my claw on your hand, and two fingers went grey. You did not run."
+"Nobody pays me. They run, or they fight, or they pray." {n}She sounds genuinely puzzled.{/n} "I lay on my heap thinking about that, and I could not make it come out even. ''' + tail + '"',
             c("Continue", "arrive")),
         mz("arrive_fist", '''"You closed your fist," {n}she says, before she has even sat down.{/n} "In my cave. You came to give me a thing, and then with my claw on you, you would not let go of it, and I had to open your fingers myself, and they went grey while I did it."
-"That was the part I understood. Everything I have ever caught held on." {n}She sounds genuinely puzzled.{/n} "It was the rest I could not make come out even: that you came in with it at all. I lay on my heap a whole night thinking about it. ''' + tail + '"',
+"That was the part I understood. Everything I have ever caught held on." {n}She sounds genuinely puzzled.{/n} "It was the rest I could not make come out even: that you came in with it at all. I lay on my heap thinking about it. ''' + tail + '"',
             c("Continue", "arrive")),
     ]
 
@@ -376,13 +377,13 @@ def _found_body():
 
 
 SCENES.append(scene(M + "ch4.hunt_found", "The thief who gave", "Melazmera", 4, "", [
-    nar("start", '''{n}She finds you on the third night after the cave, under the red sky of the Abyss. You wake because the air over your camp has gone still and heavy, the way it goes before a storm, and because every demon within earshot has stopped screaming at once.{/n}''',
+    nar("start", '''{n}She finds you under the red sky of the Abyss. You wake because the air over your camp has gone still and heavy, the way it goes before a storm, and because every demon within earshot has stopped screaming at once.{/n}''',
         c("Continue", "known", requires=(GREY_HAND,)),
         c("Continue", "stranger", forbids=(GREY_HAND,))),
     KNOWN, *arrive_known("So I came across half the Abyss to look at you again."),
     nar("stranger", '''{n}There is a fire; somebody has lit one, and it was not you. There is a woman beside it who was not there when you lay down.{/n}''',
         c("Continue", "far")),
-    mz("far", '''"You did not wait for me," {n}she says.{/n} "You put a thing in my hoard, and then you went about your war as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "I can smell a goat across a sea. Did you think I could not find one crusader?"''',
+    mz("far", '''"You did not wait for me," {n}she says.{/n} "You left your ring with me, and then you went about your war as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "I can smell a goat across a sea. Did you think I could not find one crusader?"''',
         c("Continue", "arrive")),
     *_found_body()],
     requires=("trickster.ever", SALTED), forbids=(DEAD, RETURNED, CLOSED, M + "ch4.hunt"), delay=36, last=4,
@@ -398,6 +399,10 @@ def _drezen_body():
          "She climbs down off the sill without being asked and sits on the stone of your hearth, folding herself onto it the way a heron folds onto one leg, and the fire leans away from her."),
         ("arrive", "Behind her, across the camp and up the rocks beyond it, her shadow goes on and on.",
          "Behind her, up the wall and across the ceiling and out through the open window, her shadow goes on and on."),
+        ("why", "{n}She leans towards you across the fire. The heat does not seem to trouble her at all; it troubles you, from where you sit, more than she does.{/n}",
+         "{n}She leans towards you across the hearth. The firelight catches the edges of her teeth.{/n}"),
+        ("crew_ate", "{n}She regards you across the fire without a shred of apology in her face, as a cat regards the bird it has already eaten.{/n}",
+         "{n}She regards you across the hearth without a shred of apology in her face.{/n}"),
         ("speech", "She reaches into your cook-pot with two fingers", "She reaches into the supper tray on your desk with two fingers"),
         ("queen", "all along the rocks above the camp her shadow's jaws open with it", "all along your ceiling her shadow's jaws open with it"),
         ("crew_missed", "her shadow's wings shift along the rocks", "her shadow's wings shift along the ceiling"),
@@ -428,7 +433,7 @@ SCENES.append(scene(M + "ch5.hunt_window", "The thief who gave", "Melazmera", 5,
     *arrive_known("So I came through the hole in your world to look at you again."),
     nar("stranger", '''{n}The thing on the sill unfolds, and it is a woman, tall and dark, with a rock pressed into her hair like a crown.{/n}''',
         c("Continue", "far")),
-    mz("far", '''"You ran away," {n}she says.{/n} "You put a thing in my hoard, and then you ran off, all the way to your own world, as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "There is a hole in your world, thief. I came up through it after you. It was warm."''',
+    mz("far", '''"You ran away," {n}she says.{/n} "You left your ring with me, and then you ran off, all the way to your own world, as if I would not be able to smell my own property on your hand." {n}She sounds more amused than offended.{/n} "There is a hole in your world, thief. I came up through it after you. It was warm."''',
         c("Continue", "arrive")),
     *_drezen_body()],
     requires=("trickster.ever", SALTED, CH5_LATCHED), forbids=(DEAD, RETURNED, CLOSED, M + "ch4.hunt", M + "ch4.hunt_found"),
@@ -496,9 +501,9 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
         c("Continue", "sister", requires=(HEPZ_BACK,)),
         c("Continue", "city", forbids=(HEPZ_BACK,))),
     mz("sister", '''"The horned one is walking about your city," {n}she says, with her mouth full.{/n} "In a new body. I smelt her from the roof. She smells of a jar and somebody else's blood, and she is eating onions by the smithy as if she had never been dead in her life."
-"I do not want to know how you did that." {n}She swallows.{/n} "Tell her the truce held on my side. I did not eat one of her diggers, not one, not even after she was dead and nobody was paying. Tell her a dragon keeps her word even when there is nobody left to keep it to. She will hate that. It will spoil her onions."''',
+"Tell her I remember our truce. A fat slave every new moon." {n}She licks the last grease from her fingers.{/n} "She died without settling the account. I have a cave on your side now. She can send what she owes me there. It will spoil her onions."''',
         c("Continue", "city")),
-    mz("city", '''"Your city is a larder," {n}she says, licking her fingers one at a time.{/n} "Everything in it is fat, and slow, and frightened, and has never been eaten by anything bigger than a plague. I have been walking about your walls for three nights, looking in. I have not eaten anybody." {n}She says it as though describing a feat of arms.{/n}
+    mz("city", '''"Your city is a larder," {n}she says, licking her fingers one at a time.{/n} "Everything in it is fat, and slow, and frightened, and has never been eaten by anything bigger than a plague. I have been walking about your walls, looking in. I have not eaten anybody." {n}She says it as though describing a feat of arms.{/n}
 "And I am hungry, thief. My new cave is at the edge of the hole, and the things that come up out of the hole taste of the hole. Ash and flies. I want something fat."''',
         c("Continue", "ask")),
     mz("ask", '''{n}She comes and sits on the edge of your desk, so close that you feel the cold coming off her, a cold like the inside of a well.{/n}
@@ -562,11 +567,11 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
         c("Continue", "why_meet", requires=(WHY_MEET,), forbids=(WHY_TAKES,)),
         c("Continue", "why_queen", requires=(WHY_QUEEN,), forbids=(WHY_TAKES, WHY_MEET)),
         c("Continue", "open", forbids=(WHY_TAKES, WHY_MEET, WHY_QUEEN))),
-    mz("why_takes", '''"You told me by your fire that everyone takes, and that you wanted to see what I would do with someone who did not." {n}She tilts her head, and the rock on it tilts.{/n} "Now I know. I put {mf|him|her} in my hoard. That is what I do with things."''',
+    mz("why_takes", '''"You told me the night we met that everyone takes, and that you wanted to see what I would do with someone who did not." {n}She tilts her head, and the rock on it tilts.{/n} "Now I know. I put {mf|him|her} in my hoard. That is what I do with things."''',
         c("Continue", "open")),
-    mz("why_meet", '''"You told me by your fire that you wanted to meet me and not over a corpse." {n}She tilts her head, and the rock on it tilts.{/n} "Well. You have met me, and nobody is a corpse, and you are sitting in my cave. That is further than anyone has ever got."''',
+    mz("why_meet", '''"You told me the night we met that you wanted to meet me and not over a corpse." {n}She tilts her head, and the rock on it tilts.{/n} "Well. You have met me, and nobody is a corpse, and you are sitting in my cave. That is further than anyone has ever got."''',
         c("Continue", "open")),
-    mz("why_queen", '''"You told me by your fire that you do not take orders from puddles." {n}She tilts her head, and the rock on it tilts.{/n} "You do not take orders from me either. I have noticed. I have decided I do not mind."''',
+    mz("why_queen", '''"You told me the night we met that you do not take orders from puddles." {n}She tilts her head, and the rock on it tilts.{/n} "You do not take orders from me either. I have noticed. I have decided I do not mind."''',
         c("Continue", "open")),
     mz("open", '''{n}She spreads her hands out over the heap, palms down, the way a merchant lays his goods out on a cloth.{/n}
 "But you are a thief," {n}she says softly.{/n} "And thieves take. So take something. Anything in this cave: the crown, the coins, a stone, nothing. Whatever you take, that is what you think I am." {n}She settles back on the heap and watches you, and does not move, and does not blink.{/n} "I will not stop you. That is the trick. That is the whole trick, thief. I will not stop you."''',
@@ -574,7 +579,7 @@ SCENES.append(scene(M + "commit.stone", "What a thief takes", "Melazmera", 5, ""
           requires=(SALTED,)),
         c("[Take the crown.]", "crown"),
         c("[Take nothing.]", "nothing")),
-    nar("stone", '''{n}You climb the heap. The stones shift and clack under your knees, warm as bread, and she does not move. You know which ones are real; you had your hand among them once, on Colyphyr, in the dark. You put your hand under hers, flat on the heap, and her fingers are cold as a well, and you slide out from under them one grey stone the size of a hen's egg, lumpy and dull and heavy for its size, and close your hand on it.{/n}
+    nar("stone", '''{n}You climb the heap. The stones shift and clack under your knees, warm as bread, and she does not move. You know which ones are real; you reached over the heap on Colyphyr, in the dark. You put your hand under hers, flat on the heap, and her fingers are cold as a well, and you slide out from under them one grey stone the size of a hen's egg, lumpy and dull and heavy for its size, and close your hand on it.{/n}
 {n}She watches it go. Her whole body goes tight, every line of her, the way a hound's does when you take its bone. Her lip comes back off her teeth. For three heartbeats you think she is going to take your hand off at the wrist.{/n}''',
         c("Continue", "yes")),
     mz("yes", '''{n}She lets out her breath. It comes out of her in a long hiss, and then, astonishingly, in a giggle, high and shaky, as if she had just jumped off something very tall and found she could fly.{/n}
@@ -628,7 +633,7 @@ SCENES.append(scene(M + "hunt.shared", "What is real on this side", "Melazmera",
 {n}She goes off the spur beside you like a thrown spear. The patch of dark sees her in the last heartbeat and tries to be somewhere else, and there is a noise like wet cloth tearing, and a scream that goes up and up and stops. She comes back up the rock with something black and smoking between her teeth, and swallows it, and her eyes are blazing.{/n}''',
         c("Continue", "spotted2")),
     mz("spotted2", '''"You saw it." {n}She is almost purring.{/n} "You, with your little mortal eyes. You looked into a hole full of shadow and you found the one bit of it that was lying." {n}She puts her great head down beside you on the rock until her eye is level with your face.{/n}
-"That is what you did in my cave. On Colyphyr. You looked into a heap of lies and you found the real ones and you put a real thing among them." {n}The red light goes soft.{/n}''',
+"That is what you did in my cave. On Colyphyr. You went into my cave carrying a real thing, and you left it with me." {n}The red light goes soft.{/n}''',
         c("Continue", "challenge", requires=(M + "crown_challenge",), flags=(HUNTED,)),
         c("Continue", "not_tired", forbids=(M + "crown_challenge",), flags=(HUNTED,))),
     mz("challenge", '''"And then you took the crown, to see what I would do. You told me so." {n}Her breath goes over you, warm, smelling of cold iron.{/n} "Well. That was what I do when I am tired. Now you have seen what I do when I am not."''',
@@ -725,17 +730,17 @@ tag(M + "visit.heap")
 GREY_GUARD = dict(forbids=GREY_GONE)
 
 SCENES.append(reaction("Greybor", M + "react.greybor_colyphyr", ("trickster.ever", RETURNED, GREY_IN, GREY_DECLINED),
-    '''{n}Greybor is sitting on a rock at the edge of camp, running a whetstone along the head of his axe with great care. He does not look up.{/n}
-"The swamp queen offered me that dragon, Commander. I said I did not think the client would pay. I stand by that." {n}The stone scrapes.{/n} "Then you went into the dragon's cave and paid it. With your own ring. And the dragon came to our fire and ate our supper, and your ladle, and sat on that rock there and giggled at you, and went away again, and nobody was eaten."
-"I have been doing this work for a very long time. I have never seen anyone tip a dragon." {n}He tests the edge with his thumb.{/n} "I have no professional opinion. I would like it noted that I have no professional opinion."''',
-    answer_list=GREYBOR_LIST, relationship=REL, chapter=4, last=4, Chapters=[4], entry='"You\'ve been quiet since the dragon came to supper."',
+    '''{n}Greybor draws a whetstone along his axe.{/n} "I declined the swamp queen's contract. I still doubt she would pay. Then you left your ring in the dragon's cave, and she came looking for you."
+
+{n}He tests the edge with his thumb.{/n} "If you wanted her attention, you got it. I charge more for clients who have a dragon following them."''',
+    answer_list=GREYBOR_LIST, relationship=REL, chapter=4, last=4, Chapters=[4], entry='"What do you make of the dragon following me?"',
     portrait="Greybor", **GREY_GUARD))
 tag(M + "react.greybor_colyphyr")
 
 SCENES.append(reaction("Greybor", M + "react.greybor_after", ("trickster.ever", HEAP, GREY_IN),
     '''{n}Greybor sniffs as you come in, once, the way a dog does at a gate, and puts down his whetstone.{/n}
 "You came back smelling of her lair, Commander. Hot stone and cold iron. I know that smell. I have been in caves with worse things in them, though not many, and I did not come out of any of them smiling." {n}He looks at you with no expression at all.{/n}
-"She came to the gate again last night with a stone for you and a coin for me. The coin was very good. I sent her away with both." {n}He picks the whetstone up again.{/n} "Letting a dragon through the north gate after curfew is a hanging matter for the watch, and my name is in the gate book beside hers twice already. No fee covers a third time. Keep your contracts in writing, Commander, and keep her out of mine."''',
+"She came to the gate last night with a stone for you and a coin for me. The coin was good. I sent her away with both." {n}He takes up the whetstone.{/n} "The watch can hang for letting a dragon through after curfew. I won't put my name in that book. Keep her out of my contracts, Commander."''',
     answer_list=GREYBOR_LIST, relationship=REL, chapter=5, last=5, Chapters=[5], entry='"Something on your mind, Greybor?"',
     portrait="Greybor", flags=(GREY_WARY,), **GREY_GUARD))
 tag(M + "react.greybor_after")
@@ -757,7 +762,7 @@ tag(M + "react.nenio_specimen")
 EP = dict(last=6, Relationship=REL)
 SAC = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})   # H2 (Last Call's bottle) as well as the native endings
 COMMON = (
-    p("{n}The Knight Commander's orders went out under a new seal for the rest of the war and after it. The old one was on a dragon's claw, and every so often, on no particular day, a flat grey stone would arrive at the Commander's window with a smear of clay on one corner and the old seal pressed into the clay, sharp and clean, as if to say that it was still there, and still hers.{/n}", requires=(SEAL,)),
+    p("{n}The Knight Commander's orders went out under a new seal. Melazmera kept the old one on her claw. She had taken it on Colyphyr, and she did not give it back.{/n}", requires=(SEAL,)),
     p("{n}Two fingers of the Commander's ring hand stayed grey to the second knuckle for the rest of a long life, cold in summer and colder in winter, and never felt anything again. Healers looked at them and went away. The Commander said they had been tasted, and let people decide whether that was a joke.{/n}", requires=(GREY_HAND,)),
     p("{n}Across the Commander's back, from the shoulder nearly to the hip, ran a long pale scar, and when anyone asked, the Commander told them it was a dragon's tail, and they thought it was a lie, which pleased Melazmera very much.{/n}", requires=(LASHED,)),
     p("{n}In the cellars under the citadel of Drezen, the gaoler's book still says that seven of Deskari's faithful escaped one night in the war. The cellar was cold for a week afterwards. Nobody who works there goes down alone.{/n}", requires=(FED_CULTISTS,)),
@@ -765,19 +770,19 @@ COMMON = (
     p("{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}", requires=(M + "beat.inquisitor_reported",)),
     p("{n}An inquisitor of Iomedae went down into the cellars under the citadel one morning in the war with a lamp, and did not come up. His acolyte left the order within the year, and would never say why, and would never go below ground again.{/n}", requires=(M + "cost.inquisitor",)),
     p("{n}In the lower town of Drezen, for a generation, there were widows who paid for their bread in square-holed gold stamped with the face of a drowned king, and nobody could ever tell them where it had come from.{/n}", requires=(M + "beat.crew_paid",)),
-    p("{n}An airship captain grew old telling the story of the dragon he harpooned over Colyphyr in a tavern by the Drezen gate with a boot painted on its door. Every night of his life, whatever the weather, there was a woman on the roof across the street, watching him through the window. He never noticed her. Everybody else did.{/n}", requires=(M + "beat.captain_spared",)),
-    p("{n}In a swamp on Colyphyr, the Fulsome Queen wore a grey rock on her head for the rest of her long and disgusting life, and told everyone who came that it was a crown the Knight Commander had brought her, and that it shone. Nobody ever told her otherwise. It was felt to be kinder, and funnier.{/n}", requires=(M + "queen_crowned",)),
+    p("{n}During the war, the airship captain told his harpoon story in a tavern by Drezen's gate with a boot painted on its door. A woman watched from the roof across the street. He never noticed her. His drinking companions learned to keep the shutters closed.{/n}", requires=(M + "beat.captain_spared",)),
+    p("{n}On Colyphyr, the Fulsome Queen wore a grey rock on her head and called it the Knight Commander's crown. When it slipped into her pool, she sent her knights in after it. They came out stinking, and she made them bow.{/n}", requires=(M + "queen_crowned",), forbids=("melazmera.fq_betrayed", "melazmera.queen_fought")),
 )
 
 SCENES.append(scene(M + "epilogue.together", "", "MelazmeraEpilogue", 6, "", [
     nar("page", '''{n}Melazmera kept her cave at the edge of the Wound after the war. She liked the country. Nothing grew there, and she could see anyone coming for a day in any direction, and eat them if she chose.{/n}
 {n}Her heap stayed forty stones, and the forty-first went about in the Commander's pocket, and the seal stayed on her claw, and the false treasure glittered at the mouth of the cave for any thief who wanted it. A great many thieves came, because the story went round. None of them ever came back. Every so often one of them was a crusader who had heard that the Knight Commander was in the habit of visiting, and thought the dragon might be soft. She was not.{/n}
 {n}The Commander visited when the Commander chose, and lay in the hollow of the heap, and was counted. She never once asked the Commander to stay, and she never once let the Commander leave without saying where the stone was. It was always in the same pocket.{/n}''',
-        paragraphs=(p("{n}When the Wound closed and the rifts went cold, nothing came up out of the ground any more, and she complained about it for a year, and then flew to the Midnight Isles and back every season to eat what the Abyss had to offer, and came home to her heap.{/n}", requires=("ending.wound_closed",)),
+        paragraphs=(p("{n}When the Wound closed, the rifts went cold and her easy hunting ended. She complained for a year, then began flying north to hunt in the cold country. She always came back to the heap.{/n}", requires=("ending.wound_closed",)),
                     p("{n}The Wound did not close. The rifts along the northern edge stayed open, and things went on coming up out of them warm, and she went on eating them, and the pickets on the north road learned to sleep through the screaming.{/n}", forbids=("ending.wound_closed",)),
                     *COMMON,
                     p("{n}The grey stone the size of a hen's egg lived in the Commander's pocket for the rest of the Commander's life. It was a sapphire from the crown of a drowned king, and it never once looked like anything but a boring rock, and it was never once cold.{/n}", requires=(STONE_KEPT,)),
-                    p("{n}Greybor never took her coin again, though she offered it, several times, on the principle that a thing refused is a thing worth trying for. He said he had worked for worse clients. He said it at great length, to anyone who would listen, and he never once said who.{/n}", requires=(GREY_WARY,)),
+                    p("{n}Greybor kept refusing Melazmera's coin. She kept offering it. He told the watch to stop sending her to him. She asked for him by name the next time.{/n}", requires=(GREY_WARY,)),
                     p("{n}On the morning the Commander rode out to the last battle, there was a flat grey stone on the windowsill with four words scored into it: ONE PIECE. I COUNT.{/n}"),
                     p("{n}She wore a worn copper coin on a thread round the woman's neck, the kind that buys half a loaf, and when she was angry she bit it. She never said where it came from. A beggar by the well in the lower town of Drezen could have told, and slept badly for a year, and then very well for the rest of her life.{/n}", requires=(M + "beat.copper_kept",)),
                     p("{n}She never learned to share her hoard, and she never pretended to. What was hers was hers, and she said so, often, to anyone standing near the Commander.{/n}")))],
@@ -809,7 +814,7 @@ SCENES.append(scene(M + "epilogue.left_free", "", "MelazmeraEpilogue", 6, "", [
 tag(M + "epilogue.left_free")
 
 SCENES.append(scene(M + "epilogue.closed", "", "MelazmeraEpilogue", 6, "", [
-    nar("page", '''{n}The Commander never saw the dragon of Colyphyr again. Somewhere in the Midnight Isles, in a wet cave with a hole in its roof, the knights of the Fulsome Queen went on touching a little crown that was really a rock, and something went on eating them.{/n}
+    nar("page", '''{n}The Commander never saw the dragon of Colyphyr again. Somewhere in the Midnight Isles, in a wet cave with a hole in its roof, thieves went on touching a little crown that was really a rock, and something went on eating them.{/n}
 {n}Every order that left the Knight Commander's desk for the rest of the war went out under a new seal. The old one had been a mistake. It was in a heap of real stones that looked like nothing, and it would stay there, as long as there was a dragon to lie on it.{/n}''')],
     requires=("trickster.ever", MISTAKE), forbids=(DEAD, "sacrifice"), **SAC, **EP))
 tag(M + "epilogue.closed")
@@ -818,8 +823,8 @@ SCENES.append(scene(M + "epilogue.mourned", "", "MelazmeraEpilogue", 6, "", [
     nar("page", '''{n}Word came up the north road that the Knight Commander had given everything at the end and had not come back. For three nights the pickets on the north road heard nothing from the north at all, not a scream, not a wing, and did not understand why, and were afraid.{/n}
 {n}On the fourth night a dragon came down over Drezen and landed on the roof of the keep, and the whole city lay awake under her and listened to her walk up and down the leads, up and down, until dawn, looking for something to count.{/n}''',
         paragraphs=(
-            p("{n}She had said that if the war ate the Commander she would find what was left and put it on the heap anyway. There was nothing left to find. She took the Commander's old boots from the room under the roof instead, and nobody tried to stop her, and they are on the heap still, between a ruby and a lump of star.{/n}", requires=(COMMITTED,)),
-            p("{n}The seal on her claw stayed there. It was, she said, the only thing she had ever been given, and she did not give things back.{/n}", requires=(SEAL,)),
+            p("{n}She had said that if the war ate the Commander she would find what was left and put it on the heap anyway. There was nothing left to find. She took the Commander's old boots from the room under the roof instead, and nobody tried to stop her, and they are on the heap still, between a ruby and a lump of star.{/n}", requires=(HEAP,)),
+            p("{n}The seal on her claw stayed there. She bit the gold when anyone spoke of the Commander. She did not give it back.{/n}", requires=(SEAL,)),
         ))],
     requires=("trickster.ever", RETURNED, "sacrifice"), forbids=("trickster.commander_back", MISTAKE, DEAD), **EP))
 tag(M + "epilogue.mourned")
