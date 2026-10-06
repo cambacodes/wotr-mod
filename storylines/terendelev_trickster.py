@@ -24,7 +24,7 @@ Canon (blueprints.zip / enGB):
 The device, and what is authored (labelled on the page as the Commander's gamble, never as lore): at the burning bones the
 Commander looks for her (Perception; the Storyteller's vision and the claw story, or the Trickster's sight, make it easier).
 Found, she asks to be let go. The Commander offers the wound's blood: it burns what belongs to the Abyss (canon, and seen by
-the Commander on a dead vrock in the Abyss), so it should burn only what is Deskari's; her spirit once remade her out of
+the Commander on a dead vrock outside Drezen), so it should burn only what is Deskari's; her spirit once remade her out of
 corruption (the Storyteller's vision, or her own telling), and what it lacks now is substance. Nobody knows whether it
 makes flesh or another unlife. She is told, and she chooses; claimed, she refuses. The cost stays: the wound, cut open over
 her bones, never closes again; she remembers both deaths and cannot take her dragon shape.
@@ -175,10 +175,10 @@ page(P + "memory.square", "What she promised", [
     nar("start", '''{n}Drezen after midnight: the sentries calling the hour along the walls, a dog barking somewhere in the lower town, and in your quarters a single candle burned down almost to the dish. You have tipped your pack out onto the table to find a whetstone.{/n}''',
         c("Continue", "scale", requires=(SCALE_HELD,)),
         c("Continue", "no_scale", forbids=(SCALE_HELD,))),
-    nar("scale", '''{n}Among the rations and the maps lies a silver scale the size of your palm. Terendelev's. It has ridden at the bottom of your pack since Kenabres, through the caves and the siege and everything since. It has never tarnished. It has never once been warm, however long you hold it.{/n}''',
+    nar("scale", "{n}Among the rations and maps lies a silver scale the size of your palm. Terendelev's. You lift it into the candlelight. It has not tarnished. The silver is cold against your fingers.{/n}",
         c("[Turn it over in your fingers.]", "square")),
-    nar("no_scale", '''{n}At the bottom of the pack, among the rations and the maps, there is a flat clean space the shape of something that used to ride there. Terendelev's scale. It was spent, the way such things are meant to be spent, on someone who needed it more than a keepsake. The pack has not quite forgotten it.{/n}''',
-        c("[Put your hand in the empty place.]", "square")),
+    nar("no_scale", '{n}There is no silver scale among the rations and maps. Your hand pauses over the open pack. You think of Terendelev, protector of Kenabres.{/n}',
+        c('[Close the pack.]', "square")),
     nar("square", '''{n}You remember the festival square in Kenabres: bunting, the smell of fried dough, cobbles hard under your back and a hole in you that would not stop. An old prelate praying over you, and failing. Then a woman bending into your sight, silver-haired and unlined, with a sadness in her eyes older than the city around her.{/n}
 {n}"Pry loose the grudging grip of pain," she said, and the pain went where it was told.{/n}''',
         c("[Remember what she said after.]", "promise")),
@@ -223,38 +223,31 @@ SCENES.append(scene(P + "voice.where", "Somewhere she cannot leave", "Storytelle
     Chapters=[3, 4, 5], AnswerLists=[ST_HUB], NativeReturnCue=ST_RETURN))
 
 
-# --- Chapter 4 (a page, in the Abyss): what the wound weeps --------------------------------------------------------------
+# --- Chapter 3 (Drezen): what the wound weeps --------------------------------------------------------------
 # The planted preparation: the Commander tests what the wound's blood does before trusting it with anything that matters.
 
 page(P + "wound.weeps", "What the wound weeps", [
-    nar("start", '''{n}The Abyss has no night, only a dimmer red. You wake in it with your shirt stuck to your side. The wound is weeping again.{/n}
-{n}It has done this since Kenabres: a thin, slow bleed that comes and goes for no reason any healer has found, and stops when it pleases. Tonight there is more of it than usual. Where it has dripped onto the stone beside your bedroll there are small bright scorch marks, as if someone had flicked coals.{/n}''',
+    nar("start", '{n}Drezen is quiet beyond your shutters. You wake with your shirt stuck to your side. The old wound has opened again. A drop of blood has fallen on the hearthstone and left a bright scorch mark.{/n}',
         c("Continue", "areelu", requires=(AREELU_TOLD,)),
         c("Continue", "plain", forbids=(AREELU_TOLD,))),
-    nar("areelu", '''{n}You remember Areelu in Nocticula's audience hall, calm as a lecturer. The dragon was only able to temporarily dull the pain. Your wound weeps blood from time to time, every drop of which burns your enemies. It cannot fully be healed until the Worldwound is healed.{/n}
-{n}So that is what Terendelev gave you on the square: not a cure. A few good nights, and her best try. She knelt on the cobbles and did everything she had, and it was not enough, and she promised you anyway.{/n}''',
+    nar("areelu", "{n}Areelu said Terendelev had only dulled your pain. She said she implanted the crystal in the caves, and that each drop from the unhealed wound burns your enemies. You look at the scorch mark beside the bed.{/n}",
         c("Continue", "test")),
-    nar("plain", '''{n}The healers in Drezen gave up on it in the first month. The priests in the Abyss do not try. You have learned to live with the wound the way you live with the weather, and it occurs to you, lying in the red half-dark, that you have never once asked it what it actually does.{/n}''',
+    nar("plain", '{n}The healers have tried prayers and salves. None has closed the wound. You strip away the wet dressing and look at the mark on the stone.{/n}',
         c("Continue", "test")),
-    nar("test", '''{n}You are not a physician. You are, however, someone who likes to know exactly what a tool will do before trusting it with anything that matters. At the edge of the camp lies the vrock your sentries killed at the last watch, its feathers already going to slime.{/n}''',
+    nar("test", '{n}A vrock came over the north wall during the last watch. The sentries killed it. Its carcass lies outside the gate, feathers stiff with filth. You take your knife and a scrap of clean linen.{/n}',
         c("[Catch a drop on your knife and lay it on the vrock's hide.]", "vrock", flags=(BLOOD_TESTED,)),
         c("[Bind the wound and go back to sleep.]", "sleep")),
-    nar("vrock", '''{n}The drop hisses. It eats a hole the size of a coin through the hide and goes on eating, down into the meat, until there is a smoking pit you could put your thumb in. The smell is appalling.{/n}
-{n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood. On the dust of the Abyss itself, it smokes, faintly, like a candle just blown out.{/n}
-{n}It burns what belongs to the enemy, then, and leaves alone what does not. You try it on a camp rat the dogs killed: the rat stays a dead rat. It does not mend, or make, or raise. Whatever the wound's blood is for, it is for taking things away.{/n}
-{n}One dead vrock, one rat, one knife and a scrap of linen. A careful person would want more than that. A careful person also writes it down.{/n}''',
+    nar("vrock", "{n}The drop hisses. It eats a hole the size of a coin through the hide and goes on eating, down into the meat, until there is a smoking pit you could put your thumb in. The smell is appalling.{/n}\n{n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood.{/n}\n{n}It burns what belongs to the enemy, then, and leaves alone what does not. You try it on a camp rat the dogs killed: the rat stays a dead rat. It does not mend, or make, or raise. Whatever the wound's blood is for, it is for taking things away.{/n}\n{n}You write down what the blood touched and what it burned. One dead demon is a poor foundation for a theory. It is what you have.{/n}",
         c("Continue", "scale_choice", requires=(SCALE_HELD,)),
         c("Continue", "sleep", forbids=(SCALE_HELD,))),
-    nar("scale_choice", '''{n}Her scale is in the bottom of your pack, where it always is. You could not say why you think of it now. Perhaps only because it is the one thing you carry that came from someone who tried to heal you.{/n}''',
+    nar("scale_choice", "{n}Terendelev's scale is in your pack. You unwrap it beside the bloodstained knife.{/n}",
         c("[Touch a drop of the blood to her scale.]", "scale", flags=(SCALE_WARMED,)),
         c("[Leave the scale where it is.]", "sleep")),
-    nar("scale", '''{n}Nothing happens.{/n}
-{n}Then, and you will swear to this afterwards, while also admitting that you had been awake for thirty hours, the scale is warm. Not hot. Warm, the way a hand is warm when it has just come out of a glove. It lasts as long as a breath. Then it is only a scale again, cold as it has been since Kenabres, with a rust-brown smear on it that you wipe away with your thumb.{/n}''',
+    nar("scale", '{n}The scale stays cold. Then warmth spreads beneath your thumb, faint and brief. By the time you lift it to the lantern it is cold again. You wipe away the brown smear.{/n}',
         c('"Terendelev?"', "silence")),
-    nar("silence", '''{n}Nothing answers. The Abyss mutters to itself beyond the pickets. Somewhere a sentry coughs.{/n}
-{n}You wrap the scale again and put it back at the bottom of the pack, and you lie awake a long while afterwards, not thinking about it with great care.{/n}''',
+    nar("silence", '{n}Nothing answers. Beyond the wall a sentry calls to his relief. You wrap the scale and put it away.{/n}',
         c("[Bind the wound.]")),
-    nar("sleep", '''{n}You bind the wound. By morning the bleeding has stopped of its own accord, as it always does, and you ride on into the red.{/n}''',
+    nar("sleep", "{n}You bind the wound. By morning the bleeding has stopped. Outside, soldiers are hauling the vrock's carcass away.{/n}",
         c("[Break camp.]")),
 ], requires=("trickster",), forbids=(P + "wound.weeps", RETURNED, MONSTER_DEAD), delay=24, chapters=(4,), kind="event",
     owner="Commander")
@@ -355,10 +348,10 @@ def bones(host):
         fire("pitch", '''{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. A wound that has never closed. Blood that burns what belongs to the Abyss.{/n}''',
              c("Continue", "pitch_vrock", requires=(BLOOD_TESTED,)),
              c("Continue", "pitch_guess", forbids=(BLOOD_TESTED,))),
-        fire("pitch_vrock", '''{n}You know what it does, because you tested it in the Abyss before you trusted it with anything: a coin-sized pit eaten through a dead vrock's hide; your own blade and a strip of clean linen left untouched. It burns what is the enemy's. It makes nothing. Whatever it leaves, something else has to shape.{/n}''',
+        fire("pitch_vrock", "{n}You know what it does, because you tested it outside Drezen's gate before you trusted it with anything: a coin-sized pit eaten through a dead vrock's hide; your own blade and a strip of clean linen left untouched. It burns what is the enemy's. It makes nothing. Whatever it leaves, something else has to shape.{/n}",
              c("Continue", "pitch_scale", requires=(SCALE_WARMED,)),
              c("Continue", "pitch_plan", forbids=(SCALE_WARMED,))),
-        fire("pitch_scale", '''{n}And a drop of it on her scale, once, made the scale warm for the length of a breath. You told yourself you had been awake too long. You have carried that scale against your spine every day since, and it is warm now.{/n}''',
+        fire("pitch_scale", '{n}A drop warmed her scale once, for a breath. You do not know what that proved. The small warmth stays in your thoughts as you look into the fire.{/n}',
              c("Continue", "pitch_plan")),
         fire("pitch_plan", '''{n}No priest would bless it. But it is a plan and not a hope: a burn that knows its enemy, a spirit that has remade itself once, and the one thing she lacks, which you have in you.{/n}''',
              c("Continue", "hook")),
@@ -381,7 +374,7 @@ def bones(host):
 {n}You go down on your knees at the edge of the pyre and lean out over it, the cut side down, and let the blood run out from under your ribs into the fire.{/n}''',
              c("Continue", "measured", requires=(BLOOD_TESTED,)),
              c("Continue", "unmeasured", forbids=(BLOOD_TESTED,))),
-        fire("measured", '''{n}You watched the vrock's hide in the Abyss and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}''',
+        fire("measured", "{n}You watched the vrock's hide outside Drezen's gate and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}",
              c("Continue", "burn")),
         fire("unmeasured", '''{n}You have no idea how much it will take. The fire drinks and drinks. Your sight begins to grey at the edges, and the knights behind you have started to shout.{/n}''',
              c("[Knowledge (Arcana) DC 24] Watch the flames and stop at the moment the fire has what it needs.",
@@ -429,8 +422,7 @@ bones("irabeth")
 # simply walked past. Dearer: the fire has burned lower while she waited, and what it took with it does not come back.
 
 page(P + "late.the_wound_calls", "The fire at Iz", [
-    nar("start", '''{n}The wound opens by itself, three nights after Iz. There is no knife in it and no blow; you wake with the bed soaked and the bleeding running faster than it has since Kenabres, and it does not slow for bandages or prayers until nearly morning.{/n}
-{n}You lie in the grey light and think about the fire.{/n}''',
+    nar("start", '{n}The wound opens by itself, after your return from Iz. There is no knife in it and no blow; you wake with the bed soaked and the bleeding running faster than it has since Kenabres, and it does not slow for bandages or prayers until nearly morning.{/n}\n{n}You lie in the grey light and think about the fire.{/n}',
         c("Continue", "absent", requires=(LEFT_EARLY,)),
         c("Continue", "failed", requires=(SEARCH_FAILED,), forbids=(LEFT_EARLY,)),
         c("Continue", "claimed", requires=(REFUSED_CLAIM,), forbids=(LEFT_EARLY, SEARCH_FAILED)),
@@ -442,7 +434,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
         c("Continue", "ride", forbids=("galfrey.dead",))),
     nar("absent_queen", '''{n}And the Queen had died there. Her knights went back to Mendev with her body on a cart and would not say how, not to you. You have been thinking about that, too: about what it would mean to bring back the dragon whose bones were burning on the field where Galfrey fell, and whether you have the right, and whether you have the right not to.{/n}''',
         c("Continue", "ride")),
-    nar("failed", '''{n}You looked into that fire and saw nothing, and turned away. You have been seeing it every night since: the one place at the heart of the skull where the flames did not move quite like flames. You did not see it then. You have not been able to stop seeing it now.{/n}''',
+    nar("failed", '{n}You looked into the fire until the heat drove you back. You found nothing. Now the wound has opened again, and the bones were still burning when you left. You remember how carefully the knights kept away from them.{/n}',
         c("Continue", "ride")),
     nar("claimed", '''{n}She told you she had been owned once and would not be owned again, and then she hid from you in her own fire. She was right. You have been composing a better sentence ever since.{/n}''',
         c("Continue", "ride")),
@@ -450,8 +442,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
         c("Continue", "ride")),
     nar("passed", '''{n}You walked past that fire at Iz with the rest of the column. You told yourself it was a pyre. You have been walking past it every night since.{/n}''',
         c("Continue", "ride")),
-    nar("ride", '''{n}It is days back to Iz with a handful of riders who have learned not to ask you questions. The city is quieter now; the thing that ruled it is gone, and what it left behind is only ruins and flies.{/n}
-{n}The bones are still burning. Lower now: a long bed of white ash with the skull lying in it like a stone in a stream, and a small, stubborn flame at the heart of it that has not gone out.{/n}''',
+    nar("ride", '{n}You ride back to Iz with a handful of soldiers. They have learned not to ask why you keep a hand pressed to your side. Wind carries ash between the ruined walls.{/n} {n}The bones still burn: a low bed of white cinders, the skull half buried, and a small flame at its heart.{/n}',
         c("[Go to the skull.]", "voice")),
     te("voice", '''{n}This time you do not need to look. Whatever breathes in the skull breathes very slowly, and it has been listening for hoofbeats.{/n} "Someone came." {n}The voice is thinner than smoke.{/n} "Nobody comes to a pyre once it is lit. It is not done. Who are you, and what do you want?"''',
         c('"The wounded one from the festival square. You healed me, the day Kenabres fell. I\'ve come to ask you to come back."', "ask",
@@ -461,14 +452,14 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
           forbids=(LEFT_EARLY, REFUSED_CLAIM)),
         c('"The wounded one from the square. I walked away from this fire once. I\'ve come back to ask you to come back."', "ask",
           forbids=(LEFT_EARLY, REFUSED_CLAIM, FLINCHED))),
-    te("ask", '''"Come back." {n}A breath that might have been a laugh, once.{/n} "Into what? The body he made is ash. I have been made foul before, long ago; I shut myself in a cave and burned the Wound out of my own spirit until I could look at the sun again. I have nothing left to burn with now, and less of me to burn than there was three days ago. The fire takes a little every hour."''',
+    te("ask", '"Come back." {n}A breath that might have been a laugh, once.{/n} "Into what? The body he made is ash. I have been made foul before, long ago; I shut myself in a cave and burned the Wound out of my own spirit until I could look at the sun again. I have nothing left to burn with now, and less of me left in this fire. The fire takes a little every hour."',
         c('"Then take something from me instead."', "gamble")),
     nar("gamble", '''{n}You tell her what you have. A wound that has never closed, and is open now. Blood that burns what belongs to the Abyss and leaves other things alone. Her own spirit, which has done this once already with nothing to work in but itself. It is a guess, and you tell her it is a guess.{/n}''',
         c("Continue", "risk")),
     te("risk", '''"And if it makes me another thing like the one you killed? Or burns me with the rest of his?" {n}The flame is very small.{/n} "And there is less of me than there was. Whatever comes out of this fire now will be less than what went in. I think the wings are gone already. I felt them go, the second night."''',
         c('"Less of you is still you. I\'m asking."', "choose"),
         c('[Let her rest] "Then rest. I won\'t make you."', "rest", flags=(RESTED, CLOSED))),
-    te("choose", '''"Asking. Yes. You are." {n}The flame gathers itself.{/n} "Very well, wounded one. I have been cold for three days, listening for you. Open it."''',
+    te("choose", '"Asking. Yes. You are." {n}The flame gathers itself.{/n} "Very well, wounded one. I have been cold, listening for you. Open it."',
         c("[Open the wound over the ash.]", "cut", mythic="Trickster")),
     nar("cut", '''{n}The wound is already open. You open it further, and kneel over the ash with the cut side down, and the blood runs out from under your ribs onto it, and where it finds what is left of the ravener it burns white, and where it finds the small flame at the heart of the skull, the flame drinks.{/n}
 {n}It takes longer than you would have liked. You are on your knees in the ash by the end of it, and a woman is on her knees in front of you, naked and grey with cinders, holding your hand in both of hers as though it were the only warm thing in the world.{/n}''',
@@ -484,7 +475,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
 # --- Reactions: companions and NPCs with a real stake in her ------------------------------------------------------------
 
 SCENES.append(reaction("Seelah", P + "react.seelah.watch", (P + "night.seen",),
-    '''{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} "So. The north turret." {n}She grins, then doesn't.{/n} "My first festival in Kenabres, when I was still new to the order. Old habits: I caught my own hand halfway into a merchant's purse, and when I looked round she was standing right behind me in her human shape. She didn't call the watch. She asked whether the Inheritor paid her paladins so badly, and when I said yes, she laughed like bells and bought me a pie." {n}She turns the stone over.{/n} "The sentries say she came down off that turret this morning laughing like that again. Nobody else in Drezen had ever heard it. I had." {n}Her voice roughens.{/n} "Be good to her, Commander. She's been somebody's weapon. Don't let her be anybody's again. Not even yours."''',
+    '{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} "So. The north turret." {n}She grins, then doesn\'t.{/n} "My first festival in Kenabres, when I was still new to the order. Old habits: I caught my own hand halfway into a merchant\'s purse, and when I looked round she was standing right behind me in her human shape. She didn\'t call the watch. She asked whether the Inheritor paid her paladins so badly, and when I said yes, she laughed like bells and bought me a pie." {n}She turns the stone over.{/n} "The sentries say she came down off that turret this morning laughing like that again. I knew that laugh. Hearing it here was something else." {n}Her voice roughens.{/n} "Be good to her, Commander. She\'s been somebody\'s weapon. Don\'t let her be anybody\'s again. Not even yours."',
     answer_list=SEELAH_HUB, relationship=REL, forbids=("seelah_dead", "seelah_gone", CLOSED),
     entry='"You look like you\'ve heard something, Seelah."', chapter=5, last=5, delay=12, portrait="Seelah"))
 
@@ -495,7 +486,7 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth.dressing", (P + "dressing",
     entry='"Anything to report, knight?"', chapter=5, last=5, delay=24))
 
 SCENES.append(reaction("Anevia", P + "react.anevia.kenabres", (RETURNED, P + "watch.kenabres_told"),
-    '''{n}Anevia is sitting with her bad leg up on a crate.{/n} "So the silver lady asked after me. By name. Nice of her." {n}She picks at a splinter.{/n} "Half of Kenabres used to go up on the roofs to watch her fly over the Wardstone of an evening. I went up for the view and stayed for the pickpocketing. Everyone's looking up, see." {n}She stops smiling.{/n} "I watched her come down, too. The night it all went. Took me a year to be able to look at the sky." {n}She shrugs, badly.{/n} "Tell her I said hello. And tell her if she ever wants to go and see what's left of the old square, I know the way over the roofs. Bad leg or no."''',
+    '{n}Anevia is sitting with her bad leg up on a crate.{/n} "So the silver lady asked after me. By name. Nice of her." {n}She picks at a splinter.{/n} "Half of Kenabres used to go up on the roofs to watch her fly over the Wardstone of an evening. I went up for the view and stayed for the pickpocketing. Everyone\'s looking up, see." {n}She stops smiling.{/n} "I watched her come down, too. The day the city fell. For a long while I couldn\'t look up without seeing that scythe again." {n}She shrugs, badly.{/n} "Tell her I said hello. And tell her if she ever wants to go and see what\'s left of the old square, I know the way over the roofs. Bad leg or no."',
     answer_list=ANEVIA_HUB, relationship=REL, forbids=("anevia_gone", "anevia_dead", CLOSED),
     entry='"Terendelev asked after you."', chapter=5, last=5, delay=24))
 
@@ -505,14 +496,10 @@ SCENES.append(reaction("Storyteller", P + "react.storyteller.quiet", (RETURNED, 
     entry='"You look rested, old man."', chapter=5, last=5, delay=24, portrait="Storyteller"))
 
 SCENES.append(reaction("Galfrey", P + "react.galfrey.letter", (RETURNED,),
-    '''{n}The letter is sealed with the royal arms of Mendev, and written in a firm, old-fashioned hand.{/n}
-"Commander. I took my knights to Iz to grant rest to her soul and her body. It was my duty and I would do it again. You have undone it. I have spent three nights on my knees asking the Inheritor whether I ought to be glad.
-"She has not answered. I have decided I am glad regardless, which is either faith or its opposite, and at my age I am no longer sure there is a difference.
-"She was our protector and our friend. See that you are hers."
-{n}It is signed with the one word, Galfrey, and nothing else: no title.{/n}''',
+    '{n}Terendelev passes you a sealed letter.{/n}',
     remote=True, relationship=REL, forbids=("galfrey.dead", "galfrey.killed_by_commander", CLOSED),
     ForbidOverrides={"galfrey.dead": "galfrey.trickster.returned"},     # Q6 (COX): a Queen brought back writes too
-    title="A letter under the royal seal", chapter=5, last=5, delay=48, portrait="Galfrey", Kind="letter",
+    title="A letter for the dragon", chapter=5, last=5, delay=48, portrait="Galfrey", Kind="letter",
     ManualOnly=True))                                                    # Q6 (COX): a manual read, not a rest delivery
 
 
@@ -533,56 +520,36 @@ SURVIVED = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})
 
 
 EPILOGUE_PARAGRAPHS = (
-    p('''{n}She did not fly again for a long time. In the spring after the war, on an ordinary morning, she walked out onto the north turret, took a long breath as a dragon does, and was a dragon: smaller than she had been, and duller silver, with a rust-red seam down the length of her breast where the Commander's blood had made her. She flew once round Drezen, badly, and landed on the barracks roof, and broke it. She said it was the best morning of her life, and paid for the roof.{/n}''',
-      requires=(COMMITTED,), forbids=(LATE,)),
-    p('''{n}She never flew again. She said the wings had stayed in the fire at Iz, and that it was a fair price, and that she had seen enough of the sky from above to know it looked better from a wall. On clear nights she took the north turret's watch anyway, and stood with her face into the wind.{/n}''',
-      requires=(LATE,)),
-    p('''{n}Whatever became of the Worldwound, the Commander's wound did not close. The physicians said it should have. Terendelev said it had been opened for someone else, and would stay open as long as she did, and changed the dressing every morning at the same hour, for the rest of the Commander's life.{/n}''',
-      requires=(WOUND_OPEN, P + "dressing")),
-    p('''{n}Whatever became of the Worldwound, the Commander's wound did not close. It wept a little every morning, and burned what it touched if what it touched was an enemy's, and never once burned her.{/n}''',
-      requires=(WOUND_OPEN,), forbids=(P + "dressing",)),
-    p('''{n}She went back to Kenabres only once, to stand in the rebuilt cathedral where she had told a wounded stranger to come the next day. She said the Commander was late, but had come in the end, and that she counted that as a promise kept on both sides.{/n}''',
-      requires=(WATCH + "kenabres_told",)),
-    p('''{n}When Queen Galfrey's name was spoken in her hearing she went quiet, and stayed quiet, and later, alone, she would go and stand a watch in the chapel of the Inheritor for as long as it took. It was her body that had killed the Queen at Iz. She never let anyone tell her otherwise.{/n}''',
-      requires=(QUEEN_FELL,)),
-    p('''{n}The claw the Commander carried out of the cave she buried under the tree by the Sarkorian ruins where she had once burned the Wound out of herself. She did not say what she said over it. She came back with dirt under her nails, and smiling.{/n}''',
-      requires=(WATCH + "claw_returned",)),
-    p('''{n}The knight of the first lance from the infirmary carried the lash-marks on his back for the rest of his life. Terendelev had healed them clean and they scarred anyway, the way some things do. She never spoke of it to the Commander again, and never once, in all the years after, let the Commander give an order in her name.{/n}''',
-      requires=(P + "watch.infirmary_flogged",)),
-    p('''{n}The knight of the first lance from the infirmary came up to the north turret every year on the anniversary of Iz and stood the night watch beside her. Neither of them said much. In the morning he would nod to her, the way one sentry nods to another, and go down.{/n}''',
-      requires=(P + "watch.infirmary_seen",), forbids=(P + "watch.infirmary_flogged",)),
-    p('''{n}Nobody in Drezen ever learned whether the letter left on the highest rock of the northern pass was found. The spring after the war it was gone, and in its place, weighted down with a stone, lay a single gold scale the size of a shield. She hung it over the Commander's hearth and would not say a word about it, and polished it every week.{/n}''',
-      requires=(P + "watch.letter_written",)),
-    p('''{n}She swore she never cheated at cards again. The sentries of the north turret, who went on losing to her for years, said otherwise, but never to her face.{/n}''',
-      requires=(P + "watch.what_you_are",)),
-    p('''{n}Whatever the Worldwound did at the end, she did not go out with it. She was on the north turret at the hour of the dressing with the linen folded in its square, and when the Commander came up the stair she said, very drily, that she had known she would be, and then sat down rather suddenly on the stones and did not get up for some time.{/n}''',
-      requires=(P + "finale.asked", COMMITTED)),
-    p('''{n}Every night of the war she came down to the war room at the second bell and put her hand on the map, and told the Commander where the Wound was loud and where it was holding its breath. She was right more often than the scouts. Every night it cost her a nosebleed, and every night she wiped it on the Commander's handkerchief and said it was a fair trade for a life, and it was.{/n}''',
-      requires=(P + "watch.compass",)),
-    p('''{n}She never read the Wound's weather for the crusade again after that one night, and the Commander never asked. Once, years later, she said it was the first time anyone had ever refused to use her, and that she had not known until then how tired she was of being useful.{/n}''',
-      requires=(P + "watch.not_a_map",)),
-    p('''{n}The people of Kenabres who had knelt to her in the lower town went home, in time, to rebuild. Every festival after that, somebody climbed the new gate of Kenabres and tied a blue ribbon at the top of it, up where nobody could reach, and nobody would ever say who.{/n}''',
-      requires=(P + "watch.known_to_kenabres",)),
-    p('''{n}She never slept in the dark again. There was always a candle, and on the bad nights there was the Commander's hearth, and the Commander's knee to put her head on, and the sentries learned not to knock at that door between the third bell and the sixth.{/n}''',
-      requires=(P + "watch.sat_up",)),
-    p('''{n}The woman who fried bread by the lower gate went to her grave believing that the silver-haired widow from Kenabres had married the Commander of the crusade in the middle of her market, over a crock of honey. It was not strictly true. Nobody who had been there that evening ever corrected her.{/n}''',
-      requires=(P + "watch.kissed_in_the_market",)),
-    p('''{n}Whenever the Commander rode out, she stood in the gate of Drezen until the last horse was home, however long it took. She never once asked the Commander not to go. She only counted.{/n}''',
-      requires=(P + "watch.quarrel",)),
-    p('''{n}She never did climb back up to the mountains. She said the view from the lower town had certain compensations, and when asked what they were, looked at the Commander, and did not answer.{/n}''',
-      requires=(P + "watch.mountains", COMMITTED)),
-    p('''{n}She found her prayers again in the second winter after the war. Nobody ever learned what she said to the Inheritor on her knees in the chapel of Drezen, night after night. The chaplain would say only that it went on a long time, and that he had once, passing, distinctly heard the word "turnips".{/n}''',
-      requires=(P + "watch.faith",)),
-    p('''{n}The silver along her collarbone never went away. In the lower town they said it was a mark of the Inheritor's favour; in the barracks they said it was something else, and grinned; she let both stories stand, and wore her shirts open at the throat.{/n}''',
-      requires=(P + "watch.scales_stayed",)),
-    p('''{n}The dragon never learned whether her message to the knight was welcome. But one evening, a year after the war, somebody on the east wall of Drezen sang to a sword, in tune, loud enough to carry all the way to the north turret, and Terendelev stood at the parapet with her eyes shut until the song was done.{/n}''',
-      requires=(P + "watch.irabeth_message",), forbids=("irabeth_dead",)),
-    p('''{n}The Storyteller told her story for the rest of his long life, in every tavern and camp between Drezen and Absalom: the dragon who died twice and came back in a borrowed cloak. He always ended it in the same place: a crate in the lower town, a crock of honey, and a woman laughing. He said it was the only ending of his he had ever been allowed to hear.{/n}''',
-      requires=(P + "watch.storyteller_thanked",), forbids=("storyteller.dead",)),
-    p('''{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}''',
-      requires=(BLED_WHITE,)),
-    p('''{n}She never forgave the Lord of Locusts, and never pretended to. If the day came when he was cut down again, she said, she meant to be there, in whatever shape she had, and she meant it to be the last day.{/n}''',
-      requires=(WATCH + "deskari_vow",)),
+    p("{n}She did not fly again for a long time. In the spring after the war, on an ordinary morning, she walked out onto the north turret, took a long breath as a dragon does, and was a dragon: smaller than she had been, and duller silver, with a rust-red seam down the length of her breast where the Commander's blood had made her. She flew once round Drezen, badly, and landed on the barracks roof, and broke it. She said it was the best morning of her life, and paid for the roof.{/n}", requires=('terendelev.committed',), forbids=('terendelev.trickster.cost.late',)),
+    p("{n}She never flew again. She said the wings had stayed in the fire at Iz, and that it was a fair price, and that she had seen enough of the sky from above to know it looked better from a wall. On clear nights she took the north turret's watch anyway, and stood with her face into the wind.{/n}", requires=('terendelev.trickster.cost.late',), forbids=()),
+    p("{n}Whatever became of the Worldwound, the Commander's wound did not close. The physicians said it should have. Terendelev said it had been opened for someone else, and would stay open as long as she did, and changed the dressing every morning at the same hour, for the rest of the Commander's life.{/n}", requires=('terendelev.trickster.cost.wound_open', 'terendelev.trickster.dressing'), forbids=()),
+    p("{n}Whatever became of the Worldwound, the Commander's wound did not close. It wept a little every morning, and burned what it touched if what it touched was an enemy's, and never once burned her.{/n}", requires=('terendelev.trickster.cost.wound_open',), forbids=('terendelev.trickster.dressing',)),
+    p('{n}She went back to Kenabres only once, to stand in the cathedral site as the streets were rebuilt where she had told a wounded stranger to come the next day. She said the Commander was late, but had come in the end, and that she counted that as a promise kept on both sides.{/n}', requires=('terendelev.trickster.watch.kenabres_told', 'engine.l12.kenabres_rebuilding'), forbids=()),
+    p("{n}When Queen Galfrey's name was spoken in her hearing she went quiet, and stayed quiet, and later, alone, she would go and stand a watch in the chapel of the Inheritor for as long as it took. It was her body that had killed the Queen at Iz. She never let anyone tell her otherwise.{/n}", requires=('terendelev.trickster.saw_the_queen_fall',), forbids=('iz.manuscripts', 'galfrey.killed_by_commander')),
+    p("{n}The claw the Commander found at Leper's Smile she buried under the tree by the Sarkorian ruins where she had once burned the Wound out of herself. She did not say what she said over it. She came back with dirt under her nails, and smiling.{/n}", requires=('terendelev.trickster.watch.claw_returned',), forbids=()),
+    p('{n}The knight of the first lance from the infirmary carried the lash-marks on his back for the rest of his life. Terendelev had healed them clean and they scarred anyway, the way some things do. She never spoke of it to the Commander again, and never once, in all the years after, let the Commander give an order in her name.{/n}', requires=('terendelev.trickster.watch.infirmary_flogged',), forbids=()),
+    p('{n}The knight of the first lance from the infirmary came up to the north turret every year on the anniversary of Iz and stood the night watch beside her. Neither of them said much. In the morning he would nod to her, the way one sentry nods to another, and go down.{/n}', requires=('terendelev.trickster.watch.infirmary_seen',), forbids=('terendelev.trickster.watch.infirmary_flogged',)),
+    p("{n}Nobody in Drezen ever learned whether the letter left on the highest rock of the northern pass was found. The spring after the war it was gone, and in its place, weighted down with a stone, lay a single gold scale the size of a shield. She hung it over the Commander's hearth and would not say a word about it, and polished it every week.{/n}", requires=('terendelev.trickster.watch.letter_written',), forbids=()),
+    p('{n}She swore she never cheated at cards again. The sentries of the north turret, who went on losing to her for years, said otherwise, but never to her face.{/n}', requires=('terendelev.trickster.watch.what_you_are',), forbids=()),
+    p('{n}Whatever the Worldwound did at the end, she did not go out with it. She was on the north turret at the hour of the dressing with the linen folded in its square, and when the Commander came up the stair she said, very drily, that she had known she would be, and then sat down rather suddenly on the stones and did not get up for some time.{/n}', requires=('terendelev.trickster.finale.asked', 'terendelev.committed'), forbids=()),
+    p("{n}Every night of the war she came down to the war room at the second bell and put her hand on the map, and told the Commander where the Wound was loud and where it was holding its breath. She was right more often than the scouts. Every night it cost her a nosebleed, and every night she wiped it on the Commander's handkerchief and said it was a fair trade for a life, and it was.{/n}", requires=('terendelev.trickster.watch.compass',), forbids=()),
+    p("{n}She never read the Wound's weather for the crusade again after that one night, and the Commander never asked. Once, years later, she said it was the first time anyone had ever refused to use her, and that she had not known until then how tired she was of being useful.{/n}", requires=('terendelev.trickster.watch.not_a_map',), forbids=()),
+    p('{n}The people of Kenabres who had knelt to her in the lower town went home, in time, to rebuild. Every festival after that, somebody climbed the new gate of Kenabres and tied a blue ribbon at the top of it, up where nobody could reach, and nobody would ever say who.{/n}', requires=('terendelev.trickster.watch.known_to_kenabres',), forbids=()),
+    p("{n}She never slept in the dark again. There was always a candle, and on the bad nights there was the Commander's hearth, and the Commander's knee to put her head on, and the sentries learned not to knock at that door between the third bell and the sixth.{/n}", requires=('terendelev.trickster.watch.sat_up',), forbids=()),
+    p('{n}The woman who fried bread by the lower gate went to her grave believing that the silver-haired widow from Kenabres had married the Commander of the crusade in the middle of her market, over a crock of honey. It was not strictly true. Nobody who had been there that evening ever corrected her.{/n}', requires=('terendelev.trickster.watch.kissed_in_the_market',), forbids=()),
+    p('{n}Whenever the Commander rode out, she stood in the gate of Drezen until the last horse was home, however long it took. She never once asked the Commander not to go. She only counted.{/n}', requires=('terendelev.trickster.watch.quarrel',), forbids=()),
+    p('{n}She never did climb back up to the mountains. She said the view from the lower town had certain compensations, and when asked what they were, looked at the Commander, and did not answer.{/n}', requires=('terendelev.trickster.watch.mountains', 'terendelev.committed'), forbids=()),
+    p('{n}She found her prayers again in the second winter after the war. Nobody ever learned what she said to the Inheritor on her knees in the chapel of Drezen, night after night. The chaplain would say only that it went on a long time, and that he had once, passing, distinctly heard the word "turnips".{/n}', requires=('terendelev.trickster.watch.faith',), forbids=()),
+    p("{n}The silver along her collarbone never went away. In the lower town they said it was a mark of the Inheritor's favour; in the barracks they said it was something else, and grinned; she let both stories stand, and wore her shirts open at the throat.{/n}", requires=('terendelev.trickster.watch.scales_stayed',), forbids=()),
+    p("{n}Terendelev still remembered the knight's song from Kenabres. In Drezen, when she heard Irabeth singing on the wall, she stopped at the foot of the stair and listened. She waited until the last note before climbing to the watch.{/n}", requires=('terendelev.trickster.watch.irabeth_message', 'crossroute.irabeth.available'), forbids=('irabeth_dead',)),
+    p('{n}The Storyteller told of the dragon who died twice and came back beside her pyre at Iz. He remembered her kneeling among his books in a borrowed cloak, and the laugh that followed her thanks.{/n}', requires=('terendelev.trickster.watch.storyteller_thanked',), forbids=('storyteller.dead', 'storyteller.dead_delayed')),
+    p("{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}", requires=('terendelev.trickster.cost.bled_white',), forbids=()),
+    p('{n}She never forgave the Lord of Locusts, and never pretended to. If the day came when he was cut down again, she said, she meant to be there, in whatever shape she had, and she meant it to be the last day.{/n}', requires=('terendelev.trickster.watch.deskari_vow',), forbids=()),
+    p("{n}She went back to Kenabres only once, to stand in the cathedral's old site where she had told a wounded stranger to come the next day. She said the Commander was late, but had come in the end, and that she counted that as a promise kept on both sides.{/n}", requires=('terendelev.trickster.watch.kenabres_told',), forbids=('engine.l12.kenabres_rebuilding',)),
+    p("{n}When the Storyteller left his mortal body to serve the Lady of Graves, he took the memory of Terendelev's voice with him: her thanks, her laughter, and the rustle of her cloak as she rose from the dust beside his books.{/n}", requires=('terendelev.trickster.watch.storyteller_thanked', 'storyteller.dead_delayed'), forbids=('storyteller.dead',)),
+    p("{n}When the Storyteller left his mortal body to serve the Lady of Graves, he took the memory of Terendelev's voice with him: her thanks, her laughter, and the rustle of her cloak as she rose from the dust beside his books.{/n}", requires=('terendelev.trickster.watch.storyteller_thanked', 'storyteller.dead_main'), forbids=('storyteller.dead_dlc',)),
+    p("{n}After Irabeth's return, Terendelev heard her singing on Drezen's wall. She stopped at the foot of the stair. When the song ended, she called the knight's name and went up to greet her.{/n}", requires=('terendelev.trickster.watch.irabeth_message', 'irabeth_dead', 'irabeth.trickster.returned', 'crossroute.irabeth.available'), forbids=()),
+    p("{n}In Drezen she kept a candle for the knight whose grave she had asked the Commander to find. She said the knight's name before the evening watch.{/n}", requires=('terendelev.trickster.watch.irabeth_grave_inquiry', 'irabeth_dead'), forbids=('irabeth.trickster.returned',)),
 )
 
 epilogue("watch", '''{n}Terendelev stayed in Drezen. She kept the north turret's night watch for the rest of the war, and for a long time after it, and the garrison learned to salute her on the stair. She never asked to be called anything but Terendelev; the city called her its dragon anyway, the way Kenabres once had, and she said that a city which insists on having a dragon should at least keep its gutters clean, and made sure it did.{/n}
@@ -603,12 +570,48 @@ epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. 
          requires=(RETURNED, "sacrifice"), forbids=("trickster.commander_back", CLOSED),
          RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, P + "declined"]])
 
-epilogue("guardian", '''{n}Terendelev went home to Kenabres. She walked the whole way, since she could not fly it, and arrived at the broken gate in a borrowed cloak with her boots worn through, and the first person to recognise her was a baker who had sold her bread for forty years and had never once guessed what she was.{/n}
-{n}She did not ask to be its dragon again; she could not have been. She took a room over the rebuilt east gate and stood its night watch in her grey coat with a pike, and healed whoever came up the stair, and was, the city said, a great deal more trouble than the old one had been, and a great deal easier to talk to. She guarded the city for the rest of its long life. Once a year a letter came to the Commander in a hand like claw-marks, always short. The last line was always the same: "The wound. Is it still open? Tell me the truth."{/n}''',
-         requires=(RETURNED, P + "guardian"), forbids=("sacrifice",), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
+# Authored M24: departure has its own Kenabres callbacks.
+GUARDIAN_PARAGRAPHS = (
+    p("{n}She did not fly again for a long time. In the spring after the war, on an ordinary morning, she walked out onto the north turret, took a long breath as a dragon does, and was a dragon: smaller than she had been, and duller silver, with a rust-red seam down the length of her breast where the Commander's blood had made her. She flew once round Drezen, badly, and landed on the barracks roof, and broke it. She said it was the best morning of her life, and paid for the roof.{/n}", requires=('terendelev.committed',), forbids=('terendelev.trickster.cost.late', 'terendelev.trickster.guardian')),
+    p("{n}She never flew again. On clear nights she stood the watch at Kenabres's east gate with her face into the wind. When the sentries offered her the sheltered post, she told them she had spent quite enough time out of the sky.{/n}", requires=('terendelev.trickster.cost.late',), forbids=()),
+    p('{n}The wound she had tended in Drezen remained open. From Kenabres she sent clean linen and exact instructions. The Commander had to find other hands to tie the knots.{/n}', requires=('terendelev.trickster.cost.wound_open', 'terendelev.trickster.dressing'), forbids=()),
+    p("{n}Whatever became of the Worldwound, the Commander's wound did not close. It wept a little every morning, and burned what it touched if what it touched was an enemy's, and had not burned Terendelev at Iz.{/n}", requires=('terendelev.trickster.cost.wound_open',), forbids=('terendelev.trickster.dressing',)),
+    p('{n}She helped the people of Kenabres rebuild, carrying stone, setting broken bones and quarrelling over the strength of the new walls. At the cathedral site she remembered the wounded stranger she had expected the next morning. Much had delayed them both.{/n}', requires=('terendelev.trickster.watch.kenabres_told', 'engine.l12.kenabres_rebuilding'), forbids=()),
+    p("{n}In Kenabres she stood a watch in the Inheritor's chapel for the crusaders killed by her body at Iz. She remembered Galfrey among them. She would not let the Commander call them strangers.{/n}", requires=('terendelev.trickster.saw_the_queen_fall',), forbids=('iz.manuscripts', 'galfrey.killed_by_commander')),
+    p("{n}The claw the Commander found at Leper's Smile she buried under the tree by the Sarkorian ruins where she had once burned the Wound out of herself. She did not say what she said over it. She came back with dirt under her nails, and smiling.{/n}", requires=('terendelev.trickster.watch.claw_returned',), forbids=()),
+    p('{n}The knight of the first lance carried the lash-marks for the rest of his life. She remembered who had ordered the lashes. In Kenabres she did not let the Commander lend orders the authority of her name.{/n}', requires=('terendelev.trickster.watch.infirmary_flogged',), forbids=()),
+    p('{n}The knight of the first lance came to Kenabres on the anniversary of Iz and stood the east-gate watch beside her. At dawn he nodded to her and went down. Neither had asked the other to forget.{/n}', requires=('terendelev.trickster.watch.infirmary_seen',), forbids=('terendelev.trickster.watch.infirmary_flogged',)),
+    p('{n}A driver brought a gold scale to Kenabres, wrapped in cloth. He had found it where her letter was left on the northern pass. She hung it in her guardroom and polished it herself. When asked who had sent it, she told the sentries to mind their post.{/n}', requires=('terendelev.trickster.watch.letter_written',), forbids=()),
+    p("{n}Kenabres's east-gate sentries learned that Terendelev played cards. They lost steadily. She insisted she no longer cheated, and made them count the coppers whenever she won.{/n}", requires=('terendelev.trickster.watch.what_you_are',), forbids=()),
+    p('{n}Whatever the Worldwound did at the end, she did not go out with it. She was on the north turret at the hour of the dressing with the linen folded in its square, and when the Commander came up the stair she said, very drily, that she had known she would be, and then sat down rather suddenly on the stones and did not get up for some time.{/n}', requires=('terendelev.trickster.finale.asked', 'terendelev.committed'), forbids=('terendelev.trickster.guardian',)),
+    p("{n}Before she left Drezen she had read the Wound's weather at the war table, wiping the blood from her nose afterward. From Kenabres she sent what warnings she could. The scouts still had to ride out and find what waited on the roads.{/n}", requires=('terendelev.trickster.watch.compass',), forbids=()),
+    p("{n}She remembered that the Commander had refused her offered nightly readings. In Kenabres she watched the roads with her own eyes and listened for the sentries' reports.{/n}", requires=('terendelev.trickster.watch.not_a_map',), forbids=()),
+    p('{n}The people of Kenabres who had knelt to her in the lower town went home, in time, to rebuild. Every festival after that, somebody climbed the new gate of Kenabres and tied a blue ribbon at the top of it, up where nobody could reach, and nobody would ever say who.{/n}', requires=('terendelev.trickster.watch.known_to_kenabres', 'engine.l12.kenabres_rebuilding'), forbids=()),
+    p('{n}There was always a candle in her guardroom. On bad nights she went down to the east gate and sat with the watch until dawn. They argued about turnips and dice, and made room for her by the fire.{/n}', requires=('terendelev.trickster.watch.sat_up',), forbids=()),
+    p('{n}The woman who fried bread by the lower gate went to her grave believing that the silver-haired widow from Kenabres had married the Commander of the crusade in the middle of her market, over a crock of honey. It was not strictly true. Nobody who had been there that evening ever corrected her.{/n}', requires=('terendelev.trickster.watch.kissed_in_the_market',), forbids=()),
+    p("{n}Her letters from Kenabres asked about the wound and about who had been called when it bled. She still disliked hearing of the Commander's health from a stranger.{/n}", requires=('terendelev.trickster.watch.quarrel',), forbids=()),
+    p('{n}She never did climb back up to the mountains. She said the view from the lower town had certain compensations, and when asked what they were, looked at the Commander, and did not answer.{/n}', requires=('terendelev.trickster.watch.mountains', 'terendelev.committed'), forbids=('terendelev.trickster.guardian',)),
+    p('{n}In the second winter after the war she began to pray again, in Kenabres. The priest who passed her in the chapel heard the names of townsfolk, living and dead, and once, distinctly, a complaint about turnips.{/n}', requires=('terendelev.trickster.watch.faith',), forbids=()),
+    p("{n}The silver at her collarbone stayed. Kenabres's gate watch learned to recognise her in the dark by the glint above her shirt.{/n}", requires=('terendelev.trickster.watch.scales_stayed',), forbids=()),
+    p('{n}A traveller from Drezen brought Terendelev news of Irabeth: the knight had been heard singing on the wall again. Terendelev made him repeat the tune as well as he could. The east-gate sentries heard her humming it that night.{/n}', requires=('terendelev.trickster.watch.irabeth_message', 'crossroute.irabeth.available'), forbids=('irabeth_dead',)),
+    p('{n}The Storyteller told of the dragon who died twice and came back beside her pyre at Iz. He remembered her kneeling among his books in a borrowed cloak, and the laugh that followed her thanks.{/n}', requires=('terendelev.trickster.watch.storyteller_thanked',), forbids=('storyteller.dead', 'storyteller.dead_delayed')),
+    p('{n}Every winter she sent the Commander thick gloves from Kenabres. Her letters asked whether the cold had reached the fingers yet, and instructed that the gloves were to be worn, not admired. She remembered what the fire had taken.{/n}', requires=('terendelev.trickster.cost.bled_white',), forbids=()),
+    p('{n}She never forgave the Lord of Locusts, and never pretended to. If the day came when he was cut down again, she said, she meant to be there, in whatever shape she had, and she meant it to be the last day.{/n}', requires=('terendelev.trickster.watch.deskari_vow',), forbids=()),
+    p("{n}She often passed the cathedral's old site on her way to the gate. Once she stood there until the evening watch called her name, remembering the stranger she had told to come back tomorrow.{/n}", requires=('terendelev.trickster.watch.kenabres_told',), forbids=('engine.l12.kenabres_rebuilding',)),
+    p("{n}When the Storyteller left his mortal body to serve the Lady of Graves, he took the memory of Terendelev's voice with him: her thanks, her laughter, and the rustle of her cloak as she rose from the dust beside his books.{/n}", requires=('terendelev.trickster.watch.storyteller_thanked', 'storyteller.dead_delayed'), forbids=('storyteller.dead',)),
+    p("{n}When the Storyteller left his mortal body to serve the Lady of Graves, he took the memory of Terendelev's voice with him: her thanks, her laughter, and the rustle of her cloak as she rose from the dust beside his books.{/n}", requires=('terendelev.trickster.watch.storyteller_thanked', 'storyteller.dead_main'), forbids=('storyteller.dead_dlc',)),
+    p('{n}A traveller from Drezen brought Terendelev news of Irabeth: the knight had been heard singing on the wall again. Terendelev made him repeat the tune as well as he could. The east-gate sentries heard her humming it that night.{/n}', requires=('terendelev.trickster.watch.irabeth_message', 'irabeth_dead', 'irabeth.trickster.returned', 'crossroute.irabeth.available'), forbids=()),
+    p("{n}In Kenabres she kept a candle for the knight whose grave she had asked the Commander to find. She said the knight's name before the evening watch.{/n}", requires=('terendelev.trickster.watch.irabeth_grave_inquiry', 'irabeth_dead'), forbids=('irabeth.trickster.returned',)),
+)
 
-epilogue("rest", '''{n}The fire at Iz burned for nine days and then went out on its own. The crusade raised a cairn over the bones, with the Queen's leave, and it is still there. Travellers who pass it say that it is warm to the touch in winter, which the learned say is only the sun on the stones.{/n}''',
-         requires=(RESTED,), forbids=(RETURNED,))
+epilogue("guardian", '{n}Terendelev walked home to Kenabres in a borrowed cloak, with her boots worn through. A baker who had known her for forty years recognised her at the gate and brought her indoors before asking a single question.{/n} {n}She took a room by the east gate and kept its night watch with a pike. She healed whoever came to her. Among the changed streets she found familiar faces and learned the names of their children. The city had lost its dragon, and now its guardian was home.{/n} {n}Once a year the Commander received a short letter. It always ended: "The wound. Is it still open? Tell me the truth."{/n}',
+         requires=(RETURNED, P + "guardian"), forbids=("sacrifice",), paragraphs=GUARDIAN_PARAGRAPHS, **SURVIVED)
+
+epilogue("rest", '{n}The fire at Iz burned out. The crusaders raised a cairn over the bones. Travellers said the stones were warm in winter; scholars blamed the sun. None of them had stood beside the pyre.{/n}',
+         requires=(RESTED,), forbids=(RETURNED,), paragraphs=(
+    p('{n}Queen Galfrey gave leave for the cairn. Her knights laid the first stones.{/n}', forbids=("galfrey.dead", "galfrey.killed_by_commander", "galfrey.trickster.returned")),
+    p('{n}The knights who had served Galfrey laid the first stones without waiting for a royal command.{/n}', any_groups=(("galfrey.dead", "galfrey.killed_by_commander", "galfrey.trickster.returned"),)),
+))
 
 
 def integrate(payload):
@@ -673,7 +676,7 @@ _eng8_test.update(MinChapter=3, MaxChapter=3, Chapters=[3], Areas=[DREZEN])
 for _eng8_node in _eng8_test['Nodes']:
     if _eng8_node['Id'] == 'areelu':
         # Keep the saved node; Chapter 3 has no future audience-hall memory.
-        _eng8_node['Text'] = next(n['Text'] for n in _eng8_test['Nodes'] if n['Id'] == 'plain')
+        pass  # The saved node retains its Cue_0095-gated recollection.
     _eng8_node['Text'] = (_eng8_node['Text']
         .replace('The Abyss has no night, only a dimmer red. You wake in it', 'Drezen\'s bells wake you before dawn')
         .replace('On the dust of the Abyss itself', 'On a scrap of a cultist\'s Abyssal hide')
@@ -687,13 +690,20 @@ for _eng8_node in _eng8_test['Nodes']:
 # Her earned return and the Queen's existing availability guards remain mandatory.
 import copy as _entry_copy
 _royal_letter = next(s for s in SCENES if s["Id"] == P + "react.galfrey.letter")
-_royal_letter.update(Entry='"Is that the Queen\'s seal?"', ContactUnit=HUMAN,
+_royal_letter.update(Entry='"You have a letter for me?"', ContactUnit=HUMAN,
                      InteractionHub=HUB, Areas=[DREZEN], Chapters=[5], Remote=False, ManualOnly=False)
 _royal_letter.pop("Kind", None)
 _royal_letter["Reaction"] = False  # A physical handover uses the existing hub-scene contract.
 _royal_letter["Nodes"][0]["Speaker"] = "Narrator"  # Read her writing; do not summon the Queen as a speaker.
-_royal_letter["Nodes"][0]["Text"] = ("{n}Terendelev hands you a sealed letter.{/n}\n"
-    + _royal_letter["Nodes"][0]["Text"])
+_royal_start = _royal_letter["Nodes"][0]
+_royal_terminal = _entry_copy.deepcopy(_royal_start["Choices"][0])
+_royal_start["Choices"][0]["Next"] = "royal"
+_royal_start["Choices"][0]["Forbids"].append("galfrey.trickster.returned")
+_royal_start["Choices"].append(c("Continue", "private", requires=("galfrey.trickster.returned",)))
+_royal_letter["Nodes"].extend([
+    nar("royal", '{n}The letter is sealed with the royal arms of Mendev, and written in a firm, old-fashioned hand.{/n}\n"Commander. I took my knights to Iz to grant rest to her soul and her body. It was my duty and I would do it again. You have undone it. I have asked the Inheritor whether I ought to be glad.\n"She has not answered. I have decided I am glad regardless, which is either faith or its opposite, and at my age I am no longer sure there is a difference.\n"She was our protector and our friend. See that you are hers."\n{n}It is signed with the one word, Galfrey, and nothing else: no title.{/n}', _entry_copy.deepcopy(_royal_terminal)),
+    nar("private", '{n}Terendelev passes you a letter sealed with plain wax. The hand is familiar.{/n} "I went to Iz with the crusade. To grant our friend rest was my duty. I did not expect to learn afterward that she lived. I have prayed over it, and I am glad. Give her my thanks for every watch she has stood. Deliver them quietly." {n}There is no name beneath the last line.{/n}', c("[Fold the letter and put it away.]")),
+])
 _royal_awning = _entry_copy.deepcopy(_royal_letter)
 _royal_awning["Id"] += "_awning"
 _royal_awning["InteractionHub"] = HUB_FB
@@ -702,3 +712,9 @@ _royal_letter["Forbids"] = list(dict.fromkeys([*_royal_letter["Forbids"], _royal
 _royal_awning["Forbids"] = list(dict.fromkeys([*_royal_awning["Forbids"], _royal_letter["Id"]]))
 SCENES.append(_royal_awning)
 # end eng8-q8f
+
+
+# Authored M26: a departed guardian mourns an unreturned Commander at home.
+epilogue("guardian_sacrifice", '{n}The news reached Terendelev in Kenabres. She read the letter in her room by the east gate, then went down to relieve the sentry. She kept the whole night watch.{/n} {n}Afterward she put away the linen she had meant to send to Drezen. She still lit a candle before sleeping. When a child asked whom it was for, she answered, "Someone who came back for me."{/n} {n}She stayed in Kenabres. There were people there who needed her, and she had not finished keeping them.{/n}',
+    requires=(RETURNED, P + "guardian", "sacrifice"), forbids=("trickster.commander_back",),
+    paragraphs=(p("{n}She never regained her wings. She did not call that loss a debt the dead could pay.{/n}", requires=(LATE,)),))

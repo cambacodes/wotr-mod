@@ -105,10 +105,22 @@ class DraftContractTests(unittest.TestCase):
         player = player_text_lint.check(manuscript, draft=True)["review"]
         structure = text_structure_lint.check(manuscript, draft=True)
         findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text(encoding="utf-8"))["findings"]
+        # Reviewed Terendelev D1/D3/D5-D10 remove these old route-owned diagnostics.
+        polished = {"terendelev.continuation." + name for name in (
+            "returned_letter", "windward_evening", "escape_boundary", "trickster_friendship",
+            "trickster_identity_review", "trickster_new_courtship", "escape_choice")}
         for f in findings:
             if f.get("item_id") not in {"E-Q7-20", "E-Q7-21"} or not f["snapshot_evidence"].get("draft_finding"):
                 continue
             if f["item_id"] == "E-Q7-21":
-                self.assertTrue(any(r["scene"] == f["scene"] for r in player), f["id"])
+                if f["scene"] in polished:
+                    self.assertFalse(any(r["scene"] == f["scene"] for r in player), f["id"])
+                    # Repairing the old prose does not exempt a new tooling span.
+                    import copy
+                    broken = copy.deepcopy(next(s for s in manuscript["Scenes"] if s["Id"] == f["scene"]))
+                    broken["Nodes"][0]["Text"] += " {n}The native romance continues.{/n}"
+                    self.assertTrue(player_text_lint.check({"Scenes": [broken]}, draft=True)["review"], f["id"])
+                else:
+                    self.assertTrue(any(r["scene"] == f["scene"] for r in player), f["id"])
             else:
                 self.assertFalse(any(r["scene"] == f["scene"] for r in structure["hard"]), f["id"])

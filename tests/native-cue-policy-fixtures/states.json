@@ -18393,6 +18393,21 @@
       "ExpectedCandidate": "terendelev.trickster.epilogue.rest"
     },
     {
+      "Id": "page/terendelev.trickster.epilogue.guardian_sacrifice",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "sacrifice",
+        "terendelev.trickster.guardian",
+        "terendelev.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "terendelev.trickster.epilogue.guardian_sacrifice"
+    },
+    {
       "Id": "page/terendelev.lastcall.page",
       "Target": "",
       "Dialog": "",

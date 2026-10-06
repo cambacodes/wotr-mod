@@ -130,12 +130,32 @@ class StoryTests(unittest.TestCase):
     def setUpClass(cls):
         cls.story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8"))
         cls.table = el.load()
+        # Terendelev M21 first consumes this existing shared native binding.
+        # The checked-in lifecycle row is coordinator-owned; classify only this
+        # route's newly referenced etude from the supplied blueprints meanwhile.
+        cls.delayed_guid = "50bab3193d6d41c390494ab755765f43"
+        if cls.table is not None and cls.delayed_guid not in cls.table:
+            from tools.game_blueprints import game_dir
+            verified = el.build({"Etudes": {"storyteller.dead_delayed": cls.delayed_guid}}, game_dir())
+            cls.table = dict(cls.table)
+            cls.table[cls.delayed_guid] = verified[cls.delayed_guid]
 
     def test_table_present_and_no_hard_use(self):
         self.assertIsNotNone(self.table, "tools/etude-lifecycle.json missing: python tools/etude_lifecycle.py")
         rows, h, w = el.check(self.story, self.table)
         self.assertEqual(h, [])
         self.assertTrue(all(r["traits"] != ["unclassified"] for r in rows), [r["key"] for r in rows if r["traits"] == ["unclassified"]])
+
+    def test_terendelev_delayed_usher_native_lifecycle(self):
+        self.assertEqual(self.story["Etudes"]["storyteller.dead_delayed"], self.delayed_guid)
+        entry = self.table[self.delayed_guid]
+        self.assertEqual(entry["name"], "StorytellerDeadDelayed")
+        self.assertEqual(entry["traits"], ["hold"])
+        self.assertEqual(entry["chain"], ["StorytellerDeadDelayed", "Storyteller",
+                                         "ImportantNPCs_fate", "WrathOfTheRighteous"])
+        self.assertEqual(entry["areas"], {})
+        self.assertEqual(entry["conditional"], [])
+        self.assertIsNone(entry["cascade_chapter"])
 
     def test_minagho_freed_by_azata_is_classified(self):
         guid = "1d466fd4271fdc14ea1c077760c63ca5"
