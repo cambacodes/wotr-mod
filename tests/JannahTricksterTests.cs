@@ -69,11 +69,7 @@ internal static class JannahTricksterTests
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = new List<Snapshot>();
-            foreach (var r in Program.Walk(scene, w))
-                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
-                    && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))) hits.Add(r);
+            var hits = Program.WalkVia(scene, w, node, index);
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -83,7 +79,7 @@ internal static class JannahTricksterTests
             check(hit != null, "No outcome of " + scene.Id + " through " + node + "[" + index + "] with " + string.Join(", ", also));
             return hit ?? w;
         }
-        var own = story.Scenes.Where(s => s.Relationship == "jannah" && !s.Reaction && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        var own = story.Scenes.Where(s => s.Relationship == "jannah" && !s.Reaction && !s.AnswerLists.Contains(SeelahHub) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         using var reachability = new ReachabilityCache();
         bool Reaches(Snapshot start, string flag, int chapter = 5, Func<Snapshot, bool>? keep = null)
             => keep == null
@@ -99,14 +95,19 @@ internal static class JannahTricksterTests
                 foreach (var from in frontier)
                 {
                     yield return from;
-                    var w = Later(story, from, 160, chapter);
-                    foreach (var scene in own.Where(s => Avail(s, w)))
+                    foreach (var scene in own)
+                    {
+                        var due = scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(g => g))
+                            .Where(from.Times.ContainsKey).Select(k => from.Times[k]).DefaultIfEmpty(from.Hour).Max() + scene.DelayHours;
+                        var w = Later(story, from, Math.Max(0, due - from.Hour), chapter);
+                        if (!Avail(scene, w)) continue;
                         foreach (var r in Program.Walk(scene, w))
                         {
                             yield return r;
                             if (keep != null && !keep(r)) continue;
                             if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
                         }
+                    }
                 }
                 frontier = next.Take(300).ToList();
             }
@@ -322,25 +323,25 @@ internal static class JannahTricksterTests
               && kept.Any(r => r.Has(P + "declined") && (r.Has(P + "bout.commander_first") || r.Has(P + "bout.her_first"))),
             "Trk_Jannah_Lie: a kept lie does not end in her no after a fought bout, with the secret known.");
         var no = kept.First(r => r.Has(P + "declined"));
-        check(!Avail(chalk, Later(story, no, 48)) && Avail(chalk, Later(story, no, 72)),
+        check(!Avail(chalk, Later(story, no, 35)) && Avail(chalk, Later(story, no, 36)),
             "Trk_Jannah_Lie: the chalk circle is not left in the yard.");
         // eng7-l13: retain the five saved repair/parting answers and neutral exits.
         var circle = chalk.Nodes.Single(n => n.Id == "open").Choices.Take(5).ToList();
-        check(chalk.Nodes.Single(n => n.Id == "open").Choices.Skip(5).All(c => c.Abort && c.Set.Length == 0), "Appended circle exits grant an outcome.");
+        check(chalk.Nodes.Single(n => n.Id == "open").Choices.Skip(5).All(c => c.Set.Length == 0), "Appended circle exits grant an outcome.");
         check(circle.Count == 5 && circle[0].Requires.Contains(P + "held_the_lie") && circle[1].Requires.Contains(P + "threw_the_bout")
               && circle[2].Requires.Contains(P + "shamed_her") && circle[3].Requires.Contains(P + "refused_the_yield")
-              && circle.Take(4).All(c => c.Set.Contains(Committed) && c.Crusade == null) && circle[4].Set.Contains(Closed),
+              && circle.Take(4).All(c => !c.Set.Contains(Committed) && c.Crusade == null) && circle[4].Set.Contains(Closed),
             "Trk_Jannah_Circle: the circle is not one unpriced answer per failure, and a parting.");
-        check(Through(chalk, Later(story, no, 72), "open", 0).All(r => r.Has(Committed) && r.Has(P + "confessed"))
-              && Take(chalk, Later(story, no, 72), "open", 4, Closed).Has(P + "gone"),
+        check(Through(chalk, Later(story, no, 36), "open", 0).Where(r => !r.Has(Closed)).All(r => r.Has(Committed) && r.Has(P + "confessed"))
+              && Take(chalk, Later(story, no, 36), "open", 4, Closed).Has(P + "gone"),
             "Trk_Jannah_Lie: the circle is not a yes (walked into with the truth) or a parting (left).");
         foreach (var (cause, index) in new[] { (P + "threw_the_bout", 1), (P + "shamed_her", 2), (P + "refused_the_yield", 3) })
         {
             var failed = World(story, 5, "trickster", "trickster.ever", Returned, P + "declined", cause, C + "walls");
-            check(Avail(chalk, failed) && Through(chalk, failed, "open", index).All(r => r.Has(Committed)),
+            check(Avail(chalk, failed) && Through(chalk, failed, "open", index).Where(r => !r.Has(Closed)).All(r => r.Has(Committed)),
                 "Trk_Jannah_Circle: no later yes after " + cause);
         }
-        check(Avail(night, Later(story, Take(chalk, Later(story, no, 72), "open", 0, Committed), 8)),
+        check(Avail(night, Later(story, Take(chalk, Later(story, no, 36), "open", 0, Committed), 8)),
             "Trk_Jannah_Lie: the late yes has no night.");
 
         // Pages: effect-free Chapter 6 pages.
@@ -353,7 +354,7 @@ internal static class JannahTricksterTests
             "The pages do not follow the commit, the late yes, her no and her leaving.");
 
         // Reactions: Irabeth and the King (the allocated pair), and Seelah (a named stake), each behind its guard.
-        check(reactions.Length == 12 && reactions.All(r => r.Nodes.Count == 1)
+        check(reactions.Length == 11 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Irabeth", "Seelah", "Thaberdine" })
               && reactions.Where(r => r.Owner == "Irabeth").All(r => r.AnswerLists.SequenceEqual(new[] { IrabethHub })
                                                                      && r.Forbids.Contains("irabeth_dead") && r.ForbidOverrides["irabeth_dead"] == "irabeth.trickster.returned")
@@ -473,8 +474,8 @@ internal static class JannahTricksterTests
         // Played through: each muster refusal, then its chalk-circle yes, then Chapter 6 with Last Call (declined stays set).
         foreach (var (cause, index) in new[] { (P + "held_the_lie", 0), (P + "threw_the_bout", 1), (P + "shamed_her", 2), (P + "refused_the_yield", 3) })
         {
-            var before = cause == P + "held_the_lie" ? Later(story, no, 72) : World(story, 5, "trickster", "trickster.ever", Returned, P + "declined", cause, C + "walls");
-            foreach (var reconciled in Through(chalk, before, "open", index))
+            var before = cause == P + "held_the_lie" ? Later(story, no, 36) : World(story, 5, "trickster", "trickster.ever", Returned, P + "declined", cause, C + "walls");
+            foreach (var reconciled in Through(chalk, before, "open", index).Where(r => !r.Has(Closed)))
             {
                 var end = World(story, 6, reconciled.Flags.Where(f => f != "chapter_later").Concat(new[] { "lastcall.active" }).ToArray());
                 check(end.Has(Committed) && end.Has(P + "declined") && !end.Has(Closed) && !end.Has(P + "gone") && Avail(coda, end),

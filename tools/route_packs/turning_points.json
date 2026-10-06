@@ -1,0 +1,33 @@
+{
+  "jannah": {
+    "device_class": "canon_lowest_point",
+    "setting": "Ch5 Drezen gaol to garrison muster chalk circle",
+    "payoff_shape": "desertion account answered by her public rematch, crossed blades at night and garrison gossip",
+    "canon_hooks": [
+      {
+        "guid": "ef6fcb8d9315069458187e9b546844e9",
+        "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0002.jbp",
+        "key": "0f7e9c84-c19a-40cb-bc53-9c1d77e050c3",
+        "native_excerpt": "\"I got lost... I lost my way when I ran. I walked and walked with no food... and then the vrocks came and...\" {n}She shudders and peers around with haunted eyes.{/n}",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "6428870ef6820f040b09f6403c2c7e76",
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0038.jbp",
+        "key": "52169bb4-9088-4946-a6c2-2c9276c94363",
+        "native_excerpt": "\"I signed up four days before the demon attack! Am I lucky, or what?\" {n}Jannah lets out an overly boisterous laugh.{/n}",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "fe9fa40a86e52364bb3a5ad5d58b6166",
+        "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0005.jbp",
+        "key": "3215a625-2ea9-4d27-8e50-50b44e885d9a",
+        "native_excerpt": "\"Not before... you got here... but they said I'd be next... And I couldn't do anything, I just had to watch and wait...\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}
