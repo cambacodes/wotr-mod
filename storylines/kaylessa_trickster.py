@@ -149,6 +149,7 @@ PRESENCES = {
     PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="left", Distance=2.5),
                    Requires=["trickster.ever", PRESENCE_ON], Forbids=[CLOSED, LEFT], MinChapter=3, MaxChapter=5,
                    AnswerLists=[], Dialog="hub",
+                   ContactWindows=[dict(Flag=PRIMED, MinAgeHours=12)],
                    Greeting="{n}In the shade of the tailor's awning, where the lamplight gives out, a woman in a courier's grey "
                             "cloak sits on an upturned crate with a bow across her knees. A shawl is wound up to her eyes. The "
                             "eyes are red, and they have been watching you since you came into the market.{/n}"),
@@ -260,7 +261,7 @@ SCENES.append(scene(P + "dead.borrow", "A branch for a branch", "Shyka", 3,
 {n}The goat is a boy now, and the boy looks almost sorry.{/n} "She did ask you nicely. We remember that part. It was in all of them."''',
          c("[Return to the Council.]")),
      shy("close", '''{n}Shyka's current face looks down at its own hand as if it has just been paid. It has.{/n}
-"Give it a day. Branches are heavy, and she will arrive where it is dark, because she prefers it." {n}Now the face is an old woman's, sharp and fond.{/n}
+"Give it twelve hours. Branches are heavy, and she will arrive where it is dark, because she prefers it." {n}Now the face is an old woman's, sharp and fond.{/n}
 "One thing. In her branch she did not die. In yours she did. She will remember both. We can't help that. Nobody can keep a thing like that out of a head. And tell us how it ends. We will forget to ask."''',
          c("[Return to the Council.]"))],
     requires=("trickster", DEAD), forbids=("shyka.gone", "council.fought", "council.fought_nocta_allied", PRIMED, ENDING_KEPT,
@@ -271,17 +272,17 @@ SCENES.append(scene(P + "dead.borrow", "A branch for a branch", "Shyka", 3,
 
 # Shyka gone from the Council (Sol quality pass, INT): the Eldest still exists, so the Trickster leaves an offer in the
 # empty hall the way Shyka hears things, and haggles on worse terms, on screen. Chapter 5; the same return follows.
-SCENES.append(scene(P + "dead.borrow_sending", "An offer left in an empty hall", "Kaylessa", 5, "", [
-    nar("start", '''{n}The Council hall is silent. Shyka's seat stands empty, dust settling on its arms.{/n}
-{n}You call to the Eldest with an offer: a branch for a branch, for the drow who called everyone soldier. Nothing answers. You wait, then repeat the offer twice more into the empty hall.{/n}''',
+SCENES.append(scene(P + "dead.borrow_sending", "An offer carried through dust", "Shyka", 5, "", [
+    nar("start", '''{n}At your camp, you clear a space on the table for the replies your messengers brought back. They have spent your allies' patience tracing the departed Council: favours called in, guides borrowed from the war roads. None found a door you could use.{/n}
+{n}You speak the offer over their dust-stained letters: a branch for a branch, for the drow who called everyone soldier. You repeat it twice. The dust begins to gather against the wind.{/n}''',
         c("[Wait until the third hour.]", "answer")),
-    shy("answer", '''{n}At the third hour the dust on the seat forms a face, then another.{/n} "You come to our door after we have left it. How rude. How like you."
-"We are not at your Council now, Commander. We need not keep its manners. The price is a branch where you say yes and mean it. Every word. Paid now. No fingers crossed."''',
+    shy("answer", '''{n}At the third hour the dust on the letters forms a face, then another.{/n} "You send so many people looking for us. They ought to be looking for demons. How like you."
+"Your friends have spent their favours carrying this offer. Those are not our price. We are not at your Council now, Commander. We need not keep its manners. The price is a branch where you say yes and mean it. Every word. Paid now. No fingers crossed."''',
         c('''[Pay it] "Done. Yes, and meant."''', "close",
           flags=(PRIMED, SHYKA_PRICE, SHYKA_RAISED, STARTED), alignment=("Chaotic", 1), crusade=("Favors", -200)),
         c('[Keep your futures] "Not at that price."', abort=True)),
-    shy("close", '''"Paid." {n}The dust settles back into dust.{/n} "Give it a day. She will arrive where it is dark, because she prefers it. We make no promises about her manners."''',
-        c("[Leave the empty hall.]")),
+    shy("close", '''"Paid." {n}The dust settles back into dust.{/n} "Give it twelve hours. She will arrive where it is dark, because she prefers it. We make no promises about her manners."''',
+        c("[Let the dust settle.]")),
 ], requires=("trickster", DEAD), forbids=(PRIMED, ENDING_KEPT, RETURNED),
     RequiresAnyGroups=[["shyka.gone", "council.fought", "council.fought_nocta_allied"]],
     last=5, optional=True, Relationship=REL, Remote=True, Kind="sending", Chapters=[5], TricksterDevice=True, TricksterState="dead"))
@@ -320,7 +321,7 @@ meet(P + "dead.soldier", "Slightly used", '"...Kaylessa?"', [
         c('[Tell her] "A branch where I say yes to Shyka. Where I become one of them."', "shyka_yes", forbids=(SHYKA_RAISED,)),
         c('[Tell her] "A branch where I say yes to Shyka and mean it. I haggled. I lost."', "shyka_raised", requires=(SHYKA_RAISED,), forbids=("kaylessa.trickster.dead.borrow_sending",)),
         c('"That\'s mine to carry."', "mine"),
-        c('[Tell her] "A branch where I say yes to Shyka and mean it. That was their price when I called them back to the empty hall."', "shyka_sending", requires=(SHYKA_RAISED, "kaylessa.trickster.dead.borrow_sending"))),
+        c('[Tell her] "A branch where I say yes to Shyka and mean it. That was their price when I sent the offer after the Council had gone."', "shyka_sending", requires=(SHYKA_RAISED, "kaylessa.trickster.dead.borrow_sending"))),
     kay("shyka_yes", '''"One of them. That thing." {n}She looks you over, checking that all of you is still there.{/n}
 "You sold a piece of your own future to bring me here. Either you're a fool, soldier, or you're something worse. I haven't decided which."''',
         c("Continue", "stalled")),
@@ -377,7 +378,7 @@ visit(P + "alive.hunter", "A courtesy between hunters", [
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed_s", flags=(PRIMED, STARTED),
           alignment=("Chaotic", 1)),
         c('[Send him away] "No hunting in my city."', abort=True)),
-    hunter_s("agreed_s", '''"Two nights from now, in the ravine below the south wall, when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap." {n}He bows again, lower.{/n}
+    hunter_s("agreed_s", '''"Send word when your preparations are ready. We will meet in the ravine below the south wall, on a night when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap." {n}He bows again, lower.{/n}
 "You do my people a service they will never be permitted to thank you for. My predecessor would have said that circumstances are stronger than our desires. I have found it simpler not to have desires."''',
         c("[Watch him go.]")),
     forn("ask", '''"Commander. Forgive the hour. The one I hunt is in Drezen. She came in under a courier's grey and a face that is not hers, and she has been watching your markets for a week."
@@ -397,7 +398,7 @@ visit(P + "alive.hunter", "A courtesy between hunters", [
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed", flags=(PRIMED, STARTED),
           alignment=("Chaotic", 1)),
         c('[Send him away] "No hunting in my city."', abort=True)),
-    forn("agreed", '''"Two nights from now, in the ravine below the south wall, when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap." {n}He bows again, lower.{/n}
+    forn("agreed", '''"Send word when your preparations are ready. We will meet in the ravine below the south wall, on a night when the moon is down. She sees in the dark; we must give her every advantage, or she will suspect a trap." {n}He bows again, lower.{/n}
 "You do my people a service they will never be permitted to thank you for. Some duties are like that. Circumstances are stronger than our desires, Commander. I believe you understand."''',
         c("[Watch him go.]")),
 ], requires=("trickster",), forbids=(DEAD, PRIMED, RETURNED), delay=0, owner="Forn", chapter=5, optional=False,
@@ -410,7 +411,7 @@ visit(P + "alive.warning", "The face she wears", [
         c("Continue", "stranger", forbids=(MET,)),
         c("Continue", "met_doubted", requires=(MET,), forbids=(WARNED_ANY,))),
     kay("met_doubted", '''"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need."
-"We've met. I told you a man was hunting me, and you heard me out and didn't believe a word of it, or didn't say you did. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
+"We've met. That doesn't tell me what you promised him. So tell me why the man who wants my head was just bowing to you on your own doorstep."''',
         c('[Tell her everything] "He wants you in the ravine below the south wall with the moon down, and me for bait. I said yes."', "plan"),
         c('"I promised him you. I didn\'t say which of us would keep the promise."', "plan")),
     kay("met", '''"Don't. I saw him leave your door, soldier. The elf with the bandage he doesn't need."
@@ -441,7 +442,7 @@ visit(P + "alive.warning", "The face she wears", [
     kay("terms", '''"One more thing. If it goes wrong, I take the arrows. Not you. It's my face they're aiming at, and my death they're owed."''',
         c('"Your face. Your arrows."', "agreed", flags=(PLANNED,)),
         c('"No. If it goes wrong, they hit me first."', "refused", flags=(PLANNED, SHIELD))),
-    kay("agreed", '''"Good." {n}She puts the courier's face back on with a touch, the way another woman might put on a glove.{/n} "Two nights. Don't be early. And don't be kind to him. He'll use it."''',
+    kay("agreed", '''"Good." {n}She puts the courier's face back on with a touch, the way another woman might put on a glove.{/n} "Send the word when we are ready. Don't be early. And don't be kind to him. He'll use it."''',
         c("[Light the lamp.]")),
     kay("refused", '''"Stubborn. Is that a Commander's disease, or a Trickster's?" {n}She looks at you for a while, deciding something, and doesn't tell you what she decides.{/n}
 "Fine. Just don't make me watch it happen."''',
@@ -530,7 +531,7 @@ meet(RULES, "Soldier's rules", '"Still here?"', [
         c("Continue", "rules", forbids=(LIED,)),
         c("Continue", "rules", requires=(LIED, CONFESSED))),
     kay("lied", '''{n}She keeps the third finger up.{/n} "Which you've already broken. You still owe me what that thing at your Council took for me. I haven't forgotten, and I won't."''',
-        c('[Confess] "A branch where I say yes to Shyka. Where I become one of them."', "confess", flags=(CONFESSED,)),
+        c('[Confess] "A branch where I become one of Shyka. They named their terms. I paid them."', "confess", flags=(CONFESSED,)),
         c('"Another time."', "rules")),
     kay("confess", '''{n}She doesn't answer right away. She puts the cup down, carefully, on the edge of the crate.{/n}
 "You lied because the truth was ugly. I know. I used to do it for a living." {n}She looks up.{/n} "Don't do it again. Rule three stands. It's the only one I'd kill over."''',
@@ -591,13 +592,14 @@ meet(CLOCK_SCENE, "The clock", '"You\'re counting something."', [
 
 
 meet(BEAST_SCENE, "The lamp-holder", '"You look like you\'ve heard something."', [
-    kay("open", '''"Walk with me, soldier. Your watch took someone on the north road two nights ago. I heard the guards talking." {n}She's already on her feet, the shawl up to her eyes.{/n} "I used to know her."''',
+    kay("open", '''"Walk with me, soldier. Your guards have a woman from the north road. They say she wore a dead crusader's tabard and led travellers toward a false campfire." {n}She gets up, leaving the bow against the crate.{/n} "They say they caught one of Anemora's scouts. I want to see whom they caught."''',
         c("[Go with her down to the cells.]", "cell")),
-    nar("cell", '''{n}The crusade's cells are cold and smell of wet straw and lamp oil. In the last one a drow woman is chained at the wrists to a ring in the wall: grey hair, dark skin, a dead crusader's tabard over her mail, the kind Anemora's scouts wore round a false campfire. She lifts her head when the lantern comes, and looks past you, and says a name that isn't anyone's any more.{/n}
-"Kay."''',
+    nar("cell", '''{n}In the last cell a drow woman is chained to the wall. A crusader's tabard hangs over her mail. The gaoler lifts his lantern and begins his report: the patrol found her beside an abandoned camp; a carter swore she had beckoned him off the road.{/n}
+"Kay." {n}The prisoner looks past the lantern at Kaylessa. Kaylessa puts a hand on the gaoler's arm, stopping the report.{/n}''',
         c("Continue", "who")),
-    kay("who", '''"Tessariel." {n}Kaylessa says it like a verdict.{/n}
-"We were wasps together, in Kyonin. Calistria's girls. We went out at night after the ones the law had missed, and we were so proud of ourselves." {n}Her voice doesn't change.{/n} "When Anemora offered us her protection, Tessariel bent the knee the first night. And afterwards, in the Worldwound, when they taught me what to do to the prisoners, she held the lamp. Every night. So I could see my work."''',
+    kay("who", '''"Tessariel. We were Wasps together. We used to get reports just like yours." {n}She releases the gaoler's arm.{/n} "A name. A witness. Enough to go out with knives. Anemora supplied both."
+"I don't know what happened on your road. I know this woman. When Anemora offered us protection, she bent the knee. When they taught me what to do to the prisoners, she held the lamp. Every night. So I could see my work."
+{n}Tessariel lowers her eyes. Kaylessa watches her hands on the chain.{/n}''',
         c("Continue", "ask")),
     nar("ask", '''{n}Something changes in the set of Kaylessa's shoulders. Her breathing slows. Her lips have drawn back from the fangs, and she doesn't seem to know it.{/n}''',
         c("Continue", "key")),
@@ -676,7 +678,7 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
         c("Continue", "speech", requires=(LIED, CONFESSED))),
     kay("truth_first", '''"Rule three, soldier. You still haven't told me what that thing at your Council took for me. You lied about it on the first day, and it's been sitting in my throat ever since." {n}Her grip on the hilt doesn't change.{/n}
 "Say it now. I'm not doing this with a lie still in the room."''',
-        c('[Confess] "A branch where I say yes to Shyka. Where I become one of them."', "confessed", flags=(CONFESSED,)),
+        c('[Confess] "A branch where I become one of Shyka. They named their terms. I paid them."', "confessed", flags=(CONFESSED,)),
         c('"Not yet."', "not_yet")),
     kay("confessed", '''{n}She lets out a breath she seems to have been holding since the market.{/n} "There. That wasn't hard. That was only the truth."''',
         c("Continue", "speech")),
@@ -692,7 +694,7 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
     nar("offer", '''{n}She holds the dagger out to you, hilt first. Her hand is very steady.{/n}''',
         c("Continue", "ask")),
     kay("ask", '''"This is the knife I meant for the beast. For the night it comes the rest of the way. I couldn't use it on myself once, and I've been afraid ever since that I won't manage it the second time either."
-"You took my rules without haggling. You heard about the clock and didn't leave. You went down into your own cells with me knowing what I might do there, and you came back up with me after." {n}Her mouth twists.{/n} "So it's yours. Take it, soldier."''',
+"You stayed after we settled the rules. You heard about the clock and didn't leave. You went down into your own cells with me knowing what I might do there, and you came back up with me after." {n}Her mouth twists.{/n} "So it's yours. Take it, soldier."''',
         c('[Take the knife] "I\'ll hold it."', "took", flags=(COMMITTED, KNIFE_HELD)),
         c('[Close her fingers back around the hilt] "It\'s yours. So is the choice. I\'m staying either way."', "back",
           flags=(COMMITTED, KNIFE_BACK), forbids=(BEAST_FED,)),
@@ -714,7 +716,7 @@ meet(P + "commit", "Hilt first", '"You wanted to talk to me?"', [
 {n}And then she kisses you, hard, and doesn't let go of your fingers.{/n}''',
         c("Continue", "after")),
     kay("after", '''{n}When she lets you go she's breathing fast, and her eyes are very red in the dark of the awning.{/n}
-"Tomorrow night. Not here. Somewhere I choose." {n}She pulls the shawl back up to her eyes, and over it she looks younger than you've ever seen her.{/n} "Mind the rules, soldier."''',
+"Another night. Not here. Somewhere I choose." {n}She pulls the shawl back up to her eyes, and over it she looks younger than you've ever seen her.{/n} "Mind the rules, soldier."''',
         c("[Watch her go.]")),
     kay("no", '''{n}She looks at the knife, and at your empty hands.{/n}
 "Not as my executioner." {n}She nods, slowly.{/n} "That's fair. It's not what I asked you, but it's fair." {n}She puts the dagger back in her boot.{/n}
@@ -733,16 +735,16 @@ visit(P + "after.knife_on_table", "Put down somewhere", [
         c("Continue", "knife", forbids=(LIED,)),
         c("Continue", "knife", requires=(LIED, CONFESSED))),
     nar("lied", '''{n}Beside the blade there is a strip of cloth with its knots, and one word scratched into the wood of the table with the knife's point: PRICE.{/n}''',
-        c('[Scratch the answer beside it] "A branch where I say yes to Shyka."', "knife", flags=(CONFESSED,)),
+        c('[Scratch the answer beside it] "My branch. Becoming one of Shyka, on the terms they named."', "knife", flags=(CONFESSED,)),
         c("[Leave the word unanswered.]", "leave_lie")),
-    nar("knife", '''{n}She's somewhere in the dark by the window. You can barely make her out. She can see you perfectly well.{/n}''',
+    nar("knife", '''{n}The open shutter screens her from the doorway. She rests one hand on its edge, quite still. When you turn toward her, she steps out from behind it and looks at the knife.{/n}''',
         c("[Pick up the knife.]", "picked", flags=(COMMITTED, KNIFE_HELD, LATE_YES)),
         c("[Take it to the window and put it back in her hand.]", "handed", flags=(COMMITTED, KNIFE_BACK, LATE_YES),
           forbids=(BEAST_FED,)),
         c("[Leave it where it lies.]", "leave")),
-    kay("picked", '''"Took you long enough." {n}Her voice from the window, dry as bark.{/n} "Now come here, soldier. I've been sitting in the dark for an hour watching you think."''',
+    kay("picked", '''"Took you long enough." {n}She catches your collar with her empty hand and pulls you against the window frame. Her mouth finds yours, hard; then she draws back just far enough to look at the dagger.{/n} "Keep that where you can reach it. And come here, soldier."''',
         c("[Go to the window.]")),
-    kay("handed", '''{n}Her fingers close round the hilt, and round yours, and don't let go.{/n} "Of course. Of course you'd do it the difficult way." {n}She pulls you down into the dark beside her.{/n}''',
+    kay("handed", '''{n}Her fingers close round the hilt, and round yours.{/n} "Of course you'd do it the difficult way." {n}She sheathes the dagger in her boot before pulling you down beside her. Her kiss is hard enough to leave you holding the sill.{/n}''',
         c("[Stay.]")),
     nar("leave", '''{n}After a while the dagger goes from the table without your seeing it move, and the shutters close from outside.{/n}
 {n}In the morning the shade under the tailor's awning is empty, and the crate has been turned over, and on the bottom of it someone has scratched the outline of a wasp.{/n}''',
@@ -761,12 +763,12 @@ KEPT_PARAS = (
     p('''{n}Shyka kept the branch in which the Commander said yes and meant it. Kaylessa still reminded the Commander how the price had risen when they tried to bargain. She enjoyed that part of the story.{/n}''', requires=(SHYKA_RAISED,), forbids=("kaylessa.trickster.dead.borrow_sending",)),
     p("{n}The beast in her never took another step. It sat where it had stopped on the night she died in the Commander's world, and every morning of her life she checked it, and every morning it was there, and the Commander learned to wait until she had checked before saying good morning.{/n}", requires=(STALLED,), forbids=(BEAST_FED,)),
     p('''{n}The beast had fed in the crusade's cells, and it did not forget. Some mornings the thumb on Shyka's borrowed clock slipped a little. On those mornings she checked the knife before speaking. The Commander learned to wait.{/n}''', requires=(BEAST_FED, STALLED)),
-    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the Council's hunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN,), forbids=(SUCCESSOR,)),
-    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless hunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN, SUCCESSOR)),
+    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the Council's hunter Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN,), forbids=(SUCCESSOR, "kaylessa.wasps.letter_sent", "kaylessa.wasps.claimed_as_scout", "kaylessa.wasps.let_them_look")),
+    p("{n}The Winter Council's records list the drow Kaylessa as dead in Mendev, killed in the same night as the nameless hunter it sent after Forn Autumn Haze. The Council never asked who killed whom. It preferred not to know.{/n}", requires=(SWAP_CLEAN, SUCCESSOR), forbids=("kaylessa.wasps.letter_sent", "kaylessa.wasps.claimed_as_scout", "kaylessa.wasps.let_them_look")),
     p('''{n}The living curse never stopped. When it advanced, she tied another knot in a strip of cloth and hung the strips by the door. The Commander learned to count them, and kept the number unspoken.{/n}''', any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),
     p("{n}The Winter Council knew she lived. Twice more it sent hunters. The first was found in the Drezen ravine with his own arrows in him. The second never arrived; the crusade's border patrol said he had turned for home, and would not say what they had told him.{/n}", requires=(COUNCIL_KNOWS,),
       forbids=("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers")),
-    p("{n}The Winter Council knew she lived. The hunter it sent after the ravine walked back into Kyonin with both hands broken and a letter pinned to his coat in her writing, and the Council hid him as it had hidden everything else. It sent no one after him.{/n}", requires=(COUNCIL_KNOWS,),
+    p("{n}The Winter Council knew she lived. The hunter it sent walked back into Kyonin with both hands broken and a letter pinned to his coat in her writing, and the Council hid him as it had hidden everything else. It sent no one after him.{/n}", requires=(COUNCIL_KNOWS,),
       any_groups=(("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers"),)),
     p("{n}She never again wore a face that was not her own. When she went among people she went wrapped to the eyes, or she went as she was, and let them stare.{/n}", requires=(AMULET,)),
     p("{n}The Commander carried a white scar high on one shoulder, from a Kyonin arrow meant for someone else. She would put her thumb on it sometimes, absently, in company, the way other women touch a ring.{/n}", requires=(ARROW,)),
@@ -776,9 +778,18 @@ KEPT_PARAS = (
     p("{n}In the clearing where Forn sprang his trap stands a tomb that Kyonin marksmen raised for a woman they had been told was dead. She visited it every year and left the flowers there that Calistrians leave for the vengeful dead, and read her own name aloud, and corrected nothing.{/n}", requires=(TOMB,)),
     p("{n}She kept her suspicion of the fourth rule to the end, and watched for the day the Commander would break one of hers. Nobody could say, afterwards, whether that day ever came. She said it had, and that she had allowed it.{/n}", requires=(RULE_FOUR,)),
     p("{n}She told the Commander which way she went, every night she went out. She never told anyone else.{/n}", requires=(EXTRA_RULE,)),
-    p('{n}Shyka kept the branch bought in the empty Council hall. The Eldest had named the price; the Commander had paid it outright. Kaylessa did not forget what had been spent to bring her there.{/n}', requires=(SHYKA_RAISED, "kaylessa.trickster.dead.borrow_sending")),
+    p('''{n}Shyka kept the branch bought through the sending after the Council had gone. The Eldest had named the price; the Commander had paid it outright. Kaylessa did not forget what had been spent to bring her there.{/n}''', requires=(SHYKA_RAISED, "kaylessa.trickster.dead.borrow_sending")),
     p("{n}The beast had fed in the crusade's cells, and the curse kept advancing. She tied fresh knots in the cloth when it moved. On the worst mornings she checked the knots twice, then the knife, before saying a word to the Commander.{/n}", requires=(BEAST_FED,), any_groups=((SWAP_CLEAN, SWAP_FUMBLED),), forbids=(STALLED,)),
+    p('''{n}Her living account reached Avennara. The Council called it a lie and forbade copies; the border guards made copies anyway. The Council had to answer a living witness, not a buried name. Kaylessa read the opened reply, strung her bow and kept watch.{/n}''', requires=("kaylessa.wasps.letter_sent",)),
+    p('''{n}The Council investigated the Commander\'s drow scout. Kaylessa changed her night patrols and watched the eastern roads. She kept her name from strangers who came asking at the tailor's.{/n}''', requires=("kaylessa.wasps.claimed_as_scout",), forbids=("kaylessa.wasps.letter_sent",)),
+    p('''{n}Word of the drow archer in Drezen's market travelled east. Hunters began asking at the tailor's. Kaylessa kept her own name from their questions and came home by a different gate.{/n}''', requires=("kaylessa.wasps.let_them_look",), forbids=("kaylessa.wasps.letter_sent", "kaylessa.wasps.claimed_as_scout")),
+    p('''{n}Avennara's reply acknowledged the account of the Green Road courier. The border kept rolls; her family would have the truth of the capture. Kaylessa kept the acknowledgement with her own papers.{/n}''', requires=("kaylessa.wasps.remembered_the_courier", "kaylessa.wasps.letter_sent")),
+    p("{n}The hunter from the cooper's cellar returned to Kyonin with broken fingers and a letter pinned to his coat. Kaylessa signed her name in full. The Council could no longer pretend not to know who lived in Drezen.{/n}", forbids=(COUNCIL_KNOWS,), any_groups=(("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers"),)),
+
 )
+# R2: these correspondence/exposure receipts also belong to late, allied and road endings.
+EXPOSURE_PARAS = KEPT_PARAS[-5:]
+
 SCENES.append(scene(P + "epilogue.no_lamb", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}The drow Kaylessa, once of the Sunset Wasps of Kyonin, stayed at the Commander's side through the Threshold and after it. She called the Commander "soldier" to the end of her days, in public and in private and in the middle of arguments, and nobody who heard it ever mistook it for anything but what it was.{/n}
 {n}She was never tame. She kept her rules and made the Commander keep them. She hunted, at night, the kind of men the law had missed, and came home before light, and some of the men were found and some were not.{/n}
@@ -789,33 +800,37 @@ SCENES.append(scene(P + "epilogue.no_lamb", "", "KaylessaEpilogue", 6, "", [
 
 SCENES.append(scene(P + "epilogue.commit", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}One evening after Threshold, Kaylessa walked into the Commander's rooms. The shutters were open; a low lamp burned on the table. She laid the Kyonin dagger beside it, hilt toward the Commander.{/n}
-{n}"Your choice, soldier," she said. "I wanted to be sure you knew what you were taking."{/n}
-{n}The Commander closed a hand around the hilt. She let go, finger by finger, then put out the lamp. She caught the Commander's collar and drew them down onto the bed. Astride their hips, she unlaced the grey at her throat, bent to kiss them, and caught their hand against her bare ribs. "Come here."{/n}
-{n}In the morning the dagger hung on a nail by the door, where either of them could reach it, and the first thing she did on waking was check the clock, and the second was to tell the Commander that they snored.{/n}
-{n}She stayed. She kept her rules, and she kept her knife where one of them could reach it, and she did not say which one, and she was never cured, and she checked the clock every morning she had.{/n}''',
+{n}"Your choice, soldier. I wanted to be sure you knew what you were taking."{/n}''',
         paragraphs=(
+            p('''{n}The Commander closed a hand around the hilt. She let go, finger by finger. "After the knife," she said, and caught their collar. Her free hand worked at the grey laces at her throat.{/n}''', forbids=("kaylessa.clearing.night",)),
+            p('''{n}The Commander closed a hand around the hilt. She let go, finger by finger. "No grass this time, soldier." She caught their collar and drew them toward the bed.{/n}''', requires=("kaylessa.clearing.night",)),
+            # Explicit slot: late first night or chosen return; no flags and no cure.
+            dict(p('''{n}She put out the lamp, caught the Commander\'s collar and drew them down beside her. Her kiss was hard, her hand steady. For tonight, she left the war outside the shutters.{/n}'''), Id=P + 'epilogue.commit.explicit.1'),
+            p('''{n}In the morning the dagger hung on a nail by the door. Her first movement on waking was to check the clock. Then she told the Commander that they snored.{/n}''', forbids=(KNIFE_BACK,)),
+            p('''{n}In the morning the dagger was sheathed in her left boot. Her first movement on waking was to check the clock. Then she told the Commander that they snored.{/n}''', requires=(KNIFE_BACK,)),
+            p('''{n}She hunted at night and returned before daylight, tapping on the shutter. She kept her rules. On bad mornings she checked that the knife was within reach before climbing into bed. She was never cured.{/n}'''),
             p("{n}The beast in her never moved again from where it had stopped on the night of her death. She checked it every morning of her life.{/n}", requires=(STALLED,), forbids=(BEAST_FED,)),
             p('''{n}The beast had fed in the crusade's cells, and it did not forget. Some mornings the thumb on Shyka's borrowed clock slipped a little. On those mornings she checked the knife before speaking. The Commander learned to wait.{/n}''', requires=(BEAST_FED, STALLED)),
             p("{n}She never again wore a face that was not her own.{/n}", requires=(AMULET,)),
             p("{n}Tessariel's story reached every border fort in Kyonin before the Winter Council could bury it.{/n}", requires=(WASP_SENT,)),
             p("{n}In the living world the clock never stopped. She tied a knot for every step it took, and hung the strips by the door beside the knife.{/n}", any_groups=((SWAP_CLEAN, SWAP_FUMBLED),)),
             p("{n}The beast had fed in the crusade's cells, and the curse kept advancing. She tied fresh knots in the cloth when it moved. On the worst mornings she checked the knots twice, then the knife, before saying a word to the Commander.{/n}", requires=(BEAST_FED,), any_groups=((SWAP_CLEAN, SWAP_FUMBLED),), forbids=(STALLED,)),
-        ))],
+        ) + EXPOSURE_PARAS)],
     requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.ally", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}Kaylessa stayed in Drezen until the war was over, under the tailor's awning, with her bow across her knees. When the Commander sat beside her, she made room. She kept her rules.{/n}
 {n}She was not cured. She checked the clock each morning. When it moved, she said so; when it did not, she drank the tailor's tea and watched the gate.{/n}''', paragraphs=(
-            p('{n}There had been a kiss in the streets after curfew. But the Commander never told her what Shyka had taken. The price of her return lay between them, unspoken. She kept the dagger in her own hand.{/n}', requires=("kaylessa.wasps.in_the_dark", LIED), forbids=(CONFESSED,)),
-            p('{n}There had been a kiss in the streets after curfew. When the Commander came under the awning, she still wanted them to stay. She kept the dagger in her own boot. There had been no promise to share a life.{/n}', requires=("kaylessa.wasps.in_the_dark",), forbids=(LIED,)),
-            p('{n}The Commander had finally told her the price. She did not forget the lie, or the kiss in the dark. She still made room under the awning. The dagger remained in her own keeping.{/n}', requires=("kaylessa.wasps.in_the_dark", LIED, CONFESSED)),
-            p('{n}The Commander knew where to find her: in the shade, watching the gate. Their talks returned to the war and the danger she carried. The knife remained hers.{/n}', forbids=("kaylessa.wasps.in_the_dark",)),
-        ))],
+            p('''{n}There had been a kiss in the streets after curfew. But the Commander never told her what Shyka had taken. The price of her return lay between them, unspoken. She kept the dagger in her own hand.{/n}''', requires=("kaylessa.wasps.in_the_dark", LIED), forbids=(CONFESSED,)),
+            p('''{n}There had been a kiss in the streets after curfew. When the Commander came under the awning, she still wanted them to stay. She kept the dagger in her own boot. There had been no promise to share a life.{/n}''', requires=("kaylessa.wasps.in_the_dark",), forbids=(LIED,)),
+            p('''{n}The Commander had finally told her the price. She did not forget the lie, or the kiss in the dark. She still made room under the awning. The dagger remained in her own keeping.{/n}''', requires=("kaylessa.wasps.in_the_dark", LIED, CONFESSED)),
+            p('''{n}The Commander knew where to find her: in the shade, watching the gate. Their talks returned to the war and the danger she carried. The knife remained hers.{/n}''', forbids=("kaylessa.wasps.in_the_dark",)),
+        ) + EXPOSURE_PARAS)],
     requires=("trickster.ever", CLOCK), forbids=(LATE_COMMITTED, COMMITTED, CLOSED, DECLINED, LEFT), **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "KaylessaEpilogue", 6, "", [
-    nar("page", '''{n}Kaylessa left the Commander's city the week the Wound closed, with no letter and no goodbye. She left the crate under the tailor's awning turned over, with a wasp scratched on the bottom of it, and the tailor kept it for years because nobody would buy it.{/n}
+    nar("page", '''{n}Kaylessa left the Commander's city after the fighting at Threshold ended, with no letter and no goodbye. She left the crate under the tailor's awning turned over, with a wasp scratched on the bottom of it, and the tailor kept it for years because nobody would buy it.{/n}
 {n}She had said once that one day she would put the knife down somewhere, and the Commander would decide. She did not say where, or when. People who knew them both said the Commander never passed an open window at night without looking in.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), **EP))
 
@@ -823,7 +838,8 @@ SCENES.append(scene(P + "epilogue.road", "", "KaylessaEpilogue", 6, "", [
     nar("page", '''{n}Kaylessa went home. She walked into Kyonin wrapped to the eyes in a courier's grey, and when she reached the border fort she unwrapped herself in the gateway and let the sentries see her as she was, and asked for Avennara by name.{/n}
 {n}What she told the Winter Council, and what the Council did about it, is not written down anywhere the Council can reach. But for a long time afterwards the word went round the border forts, from sentry to sentry, in the dark: any elf. Any one of us. Absolutely anyone.{/n}
 {n}The Commander received one letter from her, years later, with no signature. It said only: "Still no lamb, soldier."{/n}''',
-        paragraphs=(p("{n}The letter was tied with a strip of cloth. It had no knots in it.{/n}", requires=(STALLED,)),))],
+        paragraphs=(p("{n}The letter was tied with a strip of cloth. It had no knots in it.{/n}", requires=(STALLED,)),
+                    p("{n}She carried her account of the Green Road courier home herself. Avennara took it to the rolls of missing riders. Kaylessa waited for the search instead of letting another woman's disappearance pass for her own escape.{/n}", requires=("kaylessa.wasps.remembered_the_courier",), forbids=("kaylessa.wasps.letter_sent",))) + EXPOSURE_PARAS)],
     requires=("trickster.ever", LEFT), forbids=(COMMITTED,), **EP))
 
 
@@ -845,27 +861,27 @@ SCENES.append(reaction("Anevia", P + "react.anevia_awning", (RETURNED,),
     entry='"Seen anything odd at the market?"', portrait="Anevia", **ANEVIA_GUARD))
 
 SCENES.append(reaction("Anevia", P + "react.anevia_ravine", (SWAP_CLEAN,),
-    '''"The south patrol brought an elf up out of the ravine this morning. Kyonin grey, nice brooch, six Kyonin arrows in him. Kyonin's own fletching; I checked." {n}Anevia turns a pen through her fingers.{/n}
+    '''"The south patrol brought an elf up out of the ravine after your little expedition. Kyonin grey, nice brooch, six Kyonin arrows in him. Kyonin's own fletching; I checked." {n}Anevia turns a pen through her fingers.{/n}
 "I wrote it up as 'killed by allies, misadventure'. Nobody's come to claim him. Funny, that. Almost like somebody would rather he'd never been here at all."''',
     answer_list=ANEVIA_HUB, forbids=("anevia_gone",), chapter=5, last=5, Chapters=[5],
     entry='"Anything from the south patrol?"', portrait="Anevia", **ANEVIA_GUARD))
 
-SCENES.append(reaction("Woljif", P + "react.woljif_goat", (RETURNED,),
+SCENES.append(reaction("Woljif", P + "react.woljif_goat", (RETURNED, "participant.woljif.available"),
     '''"Chief, there's a drow at the tailor's. Wrapped up like a dumpling, but it's a drow, I know a drow." {n}Woljif lowers his voice to what he believes is a whisper.{/n}
 "She told me if I told anybody, she'd tell everybody about the thing with the goat. I don't know how she knows about the goat. Nobody knows about the goat. So I'm tellin' you, and only you, and that's not tellin' anybody, right?"''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
     entry='"You look worried."', portrait="Woljif"))
 
-SCENES.append(reaction("Woljif", P + "react.woljif_haggled", (RETURNED, BEGGED),
+SCENES.append(reaction("Woljif", P + "react.woljif_haggled", (RETURNED, BEGGED, "participant.woljif.available"),
     '''"Chief, that drow asked you for a clean ending. Now she's under the tailor's awning, and that face-changin' whatsit has got a piece of your future." {n}Woljif rubs his neck.{/n}
 "That's either the most romantic thing I ever heard or the worst. Maybe both. Probably both. Don't ever do that for me, all right? I'd never live it down."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
     entry='"Something on your mind?"', portrait="Woljif"))
 
 # Sol quality pass (BEL): the morning after the clearing, seen by the one companion who never misses a comings and goings.
-SCENES.append(reaction("Woljif", P + "react.woljif_morning", ("kaylessa.clearing.grey_light",),
+SCENES.append(reaction("Woljif", P + "react.woljif_morning", ("kaylessa.clearing.grey_light", "participant.woljif.available"),
     '''"Chief. You rode in the east gate at the second horn with grass all down your back, and you got off that horse like someone who's been sat on a rock since dawn." {n}Woljif lowers his voice to what he believes is a whisper.{/n}
-"And the one at the tailor's has got her shawl down today. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and now I think we're friends, and I'm scared." {n}He squints at you.{/n} "Don't tell me where you were. I don't want to know. I want to know a bit."''',
+"And the one at the tailor's has had her shawl down when you rode in. Down! I saw her whole face. She nodded at me. I didn't know what to do, so I nodded back, and kept my bloody hands on my own purse. One nod doesn't make those teeth any smaller." {n}He squints at you.{/n} "Don't tell me where you were. I don't want to know. I want to know a bit."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
     entry='"Something you want to say?"', portrait="Woljif"))
 
@@ -889,6 +905,11 @@ def integrate(payload):
     _bind(payload, "SelectedAnswers", SELECTED_ANSWERS)
     _bind(payload, "SeenCues", SEEN_CUES)
     _bind(payload, "InventoryItems", INVENTORY)
+    # R2: native automatic closure is history, not the Council's paid concealment.
+    _bind(payload, "Etudes", {"kaylessa.message_auto_completed": "28582721f157405da88b3bf0afae97d6"})
+    removable = payload.setdefault("RemovableItems", [])
+    if INVENTORY[NOTE_HELD] not in removable:
+        removable.append(INVENTORY[NOTE_HELD])
     _bind(payload, "MainCharacterFacts", FACTS)
     # E17: the ravine starts FornIsDead exactly as native Forn_Ambush/Cue_0040 would have (kaylessa.forn_dead reads it).
     startable = payload.setdefault("StartableEtudes", [])

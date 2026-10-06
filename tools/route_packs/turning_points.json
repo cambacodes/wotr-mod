@@ -1,0 +1,33 @@
+{
+  "kaylessa": {
+    "device_class": "canon_lowest_point",
+    "setting": "Drezen tailor's awning; her intended marksmen's tomb or south-wall ravine in the actual history",
+    "payoff_shape": "dagger custody accepted, death site reclaimed for desire, morning curse check leaves the danger alive",
+    "canon_hooks": [
+      {
+        "guid": "0ab8f1a13d91d9e4d8ac8870ca4e576d",
+        "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0066.jbp",
+        "key": "b8a00dab-a89e-4ca1-91b5-35d1c4c4c809",
+        "native_excerpt": "{n}With a resolute shake of her head, she barks,{/n} \"Don't. I can handle it myself. I don't like it when strangers cast spells on me.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "21e7f278a461f1a4091c83a6af8494e6",
+        "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0040.jbp",
+        "key": "fcdead47-120a-46b6-bf0e-af22ce6f8cc2",
+        "native_excerpt": "\"Alas, it was too late. The whole time, we were puppets in the hands of a priestess of Deskari by the name of Anemora. That monster had been toying with us, using us to kill innocents. The wasp was revealed to be a locust... and we were unmasked as criminals, outcasts. We were wanted and had nowhere to turn. The only option was to bend the knee to Anemora — who promised us protection. I was the only one who refused, but I was captured and taken b",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "b60a1979ed1059c46b02d9dcb16f1bc7",
+        "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0039.jbp",
+        "key": "ef78bd35-8e19-42c1-8b2f-0143680418e1",
+        "native_excerpt": "\"I joined the Sunset Wasps, a secret sect of vigilantes dedicated to {g|Calistria}Calistria{/g}. By night, we would bring justice to those whom the law had failed to punish — liars, traitors, molesters, murderers... But the further we went, the more our doubts grew. We asked ourselves — how reliable was the information we were getting? Could there have been any mistakes?\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}

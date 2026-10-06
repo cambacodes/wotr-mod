@@ -1,0 +1,16 @@
+{
+  "voice": "KAYLESSA: terse, suspicious, soldierly; dry humour, impatient appetite and anger at being treated as Anemora's proof. Calistrian vengeance remains part of her values. She initiates and redirects closeness; affection does not tame her or remove the Dark Fate. Use traits, not quotations: write fresh dialogue. Canon physical facts only: dark skin, grey/white hair, crimson/red eyes, fanged teeth, vision in darkness and pain from bright light. Do not invent sexual anatomy, measurements, racial physiology, scars or tattoos. Address the Commander without assuming species, height or eyesight.",
+  "scene": "RESERVED PRIVATE CONSUMMATION PASSAGE; non-graphic staging and handoff for a user-controlled fill. Existing Trickster scene kaylessa.clearing.where_i_was_meant_to_die, after node cut and before its unchanged terminal answer. Chapter 3 or 5 according to the existing scene history; registered payoff Chapter 5. Only Kaylessa and the Commander are present. Use the actual history's ambush clearing/marksmen's tomb, bare clearing, borrowed-branch departure site or authored south-wall ravine; do not combine their geography or memories. The cloak is already on the ground, she has already chosen closeness, and the dagger has already been laid beside it. Required beats: sustain her active desire rather than restarting a confession; let her choose where their attention goes; retain awareness of the nearby war without an interruption; the dagger stays in its established position and custody and is never used sexually; the curse is neither cured nor guaranteed harmless. This is the first night on the ordinary clearing road; a legacy prior-intimacy history uses return/deepening language. No Commander dialogue, new participant, price, flag, promise, gate or new discovery. Captivity and prisoner violence are not sexual material. End before the separately delivered curse-check morning. With no fill, retain the plan's heated-cut default and continue through the old exit.",
+  "last_line": "N: Behind the trees Drezen's watch calls out; she keeps you close.",
+  "speakers": {
+    "K": "Kaylessa"
+  },
+  "example": "N: Kaylessa catches your collar and pulls you into a hard kiss.\nK: The watch can shout without you for a little longer.",
+  "commander": "match the player's Commander; no assumed anatomy",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16
+}

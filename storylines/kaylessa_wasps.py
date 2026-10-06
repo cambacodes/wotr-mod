@@ -21,7 +21,7 @@ Acknowledgments of other women are in Kaylessa's voice only; no scene between pa
 """
 from story_format import c, scene
 from storylines.kaylessa_trickster import (FIRST_WORDS, ANEMORA_TOLD, AMULET, BEGGED, CAM_KILLED, CAUGHT, CLOSED, COMMITTED, DREZEN,
-                                           EMBER_MET, KNIFE_SHOWN, LEFT, NOTE_DESTROYED, NOTE_HELD, PRESENCE, REL, RETURNED,
+                                           EMBER_MET, KNIFE_SHOWN, KNIFE_HELD, LEFT, NOTE_DESTROYED, NOTE_HELD, PRESENCE, REL, RETURNED,
                                            RULES, SHYKA_RAISED, STALLED, SWAP_CLEAN, SWAP_FUMBLED, TOMB, UNIT, UNMASKED, kay, nar)
 
 SCENES = []
@@ -148,23 +148,22 @@ meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
         c('"You kept writing after that."', "still")),
     kay("still", '''"It isn't. I'm not an elf, soldier. I stopped being one somewhere in the Worldwound, between one prisoner and the next." {n}She folds the pages again, along the old creases.{/n}
 "But you kept it. You carried a dead drow's scribble all the way from there to here, and never gave it to anyone who'd burn it."''',
-        c('[Give it to her to keep] "It\'s yours."', "give", flags=(NOTE_RETURNED,)),
+        c('[Give it to her to keep] "It\'s yours."', "give", flags=(NOTE_RETURNED,), requires=(NOTE_HELD,), remove_item="c669b34a7b9c2cb42bf6deb5d8d1606f"),
         c('"I\'ll keep carrying it, if you want."', "keep")),
     kay("give", '''{n}She holds the pages as if they might go off in her hands.{/n} "Mine. Yes." {n}Then she tucks them inside her cloak, against her ribs, where the shawl covers them.{/n} "The first thing in two years anyone's given back to me instead of taking."''',
         c("[Sit with her a while.]")),
     kay("keep", '''"No. Yes." {n}She pushes them back into your hands, quickly, before she can change her mind.{/n} "Keep them. If the thumb on the clock ever slips, I want somebody to have read them who didn't have to."''',
         c("[Put them away.]")),
-    kay("destroyed", '''"I remember pushing papers into your hand. And I remember something else, from after, that I shouldn't. Forn, in his grey, holding them over a candle, with that sad face he did so well." {n}She is not asking.{/n}
-"You gave him my story. And he burned it, because that is what he was for."''',
-        c('"I didn\'t know what he was."', "didnt"),
-        c('"Yes. I did."', "did")),
+    kay("destroyed", '''"What happened to the pages, soldier?" {n}She watches your hands, waiting.{/n} "I remember giving them to you. Nothing after that. Tell me."''',
+        c('"I gave them to Forn. He destroyed them. I didn\'t know what he was."', "didnt"),
+        c('"I gave them to Forn to destroy."', "did"),
+        c('"I won\'t tell you."', "withheld")),
     kay("didnt", '''"No. Nobody did. That was his whole trade." {n}She lets out a slow breath.{/n} "He'd have come for you afterwards anyway, for having held it. Forn never left anyone alive who'd read a line of it. So your hand was bought either way, soldier. I just want you to know whose hand bought it."''',
         c("Continue", "rewrite")),
     kay("did", '''{n}She looks at you properly, and nods, as if an account has finally balanced.{/n}
 "Honest. That's rule three kept, at least. It doesn't make it better. It makes it clean."''',
         c("Continue", "rewrite")),
-    kay("rewrite", '''"So there's no story. Kyonin got exactly what it paid for: a dead cultist and a candle." {n}Her fingers drum on her knee.{/n}
-"Then I'll write it again. Longer. Nastier. With names in it this time. And this time I'll be alive to see who reads it."''',
+    kay("rewrite", '''"Then I'll write it again. Longer. Nastier. With names in it this time." {n}She flattens the clean sheet against her knee.{/n} "And this time I'll be alive to see who reads it."''',
         c('"I\'ll carry this one myself."', "carry"),
         c('"Write it. I want to read it first."', "carry")),
     kay("carry", '''"We'll see." {n}But she's already looking at the empty page in her head, the way a hunter looks at a trail.{/n}''',
@@ -186,12 +185,14 @@ meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
         c("[Let it rest.]")),
     kay("nocame", '''"I asked you to send a letter to Avennara at the border. I remember asking. It's the last thing I remember wanting." {n}She watches the gate.{/n}
 "Nobody came from Kyonin. No marksmen. No stone. So either you never sent it, or you sent it somewhere else. Which?"''',
-        c('''[Tell the truth] "The Winter Council wanted your story buried. I ordered it done. They paid me."''', "sold", flags=(LETTER_SOLD_TOLD,)),
+        c('''[Tell the truth] "The Winter Council wanted your story buried. I ordered it done. They paid me."''', "sold", flags=(LETTER_SOLD_TOLD,), forbids=("kaylessa.message_auto_completed",)),
         c('"I never sent it. I don\'t have a good reason."', "unsent", flags=(LETTER_UNSENT_TOLD,)),
-        c('"I haven\'t decided yet."', "unsent", flags=(LETTER_UNSENT_TOLD,))),
-    kay("sold", '''{n}She sits very still. Her jaw tightens.{/n} "You took their money. You knew whose story you were burying."
-"I hope it was a good price, soldier. They paid you once, and I'll have to write every bloody word again. You told me. That's rule three kept. It doesn't clean your hands."''',
-        c("Continue", "rewrite")),
+        c('"I haven\'t decided yet."', "unsent", flags=(LETTER_UNSENT_TOLD,)),
+        c('"The officials closed the matter without sending it. I never sold it to the Council."', "sold",
+          requires=("kaylessa.message_auto_completed",))),
+    kay("sold", '''{n}Kaylessa looks at the dispatch board behind you, then at the blank sheet on her knee.{/n} "And my words never reached the border."''',
+        c("Continue", "sale_admitted", forbids=("kaylessa.message_auto_completed",)),
+        c("Continue", "auto", requires=("kaylessa.message_auto_completed",))),
     kay("unsent", '''"Not sent." {n}She nods, as if she expected nothing better and is almost relieved to have been right.{/n}
 "Then it's still mine. Good. I'd rather send it myself, alive, than have it read over my grave by people who'll cry about it."''',
         c("Continue", "rewrite")),
@@ -208,6 +209,12 @@ meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
 "They caught us instead. He caught your wrist. I killed him, and his bowmen saw enough to tell Kyonin exactly what I am. They're still hunting. If I want my story to get there before their next knife, I'd better write it now."''',
         c('"Then write it."', "alive_write"),
         c('"What would you say?"', "alive_say")),
+    kay("withheld", '''"Then don't." {n}Her hand closes on her knee.{/n} "I'll write another. You won't be carrying it. Your seal can carry it without you opening it, or I can take it home myself."''',
+        c("[Let her write.]")),
+    kay("auto", '''"Your officials closed the matter. Nobody sent my words home." {n}She pulls a clean sheet from the tailor's wrapping paper.{/n} "Then stop calling it finished, soldier. I still have names to write."''',
+        c("Continue", "rewrite")),
+    kay("sale_admitted", '''{n}Her jaw tightens.{/n} "They paid you to bury it. I hope it was a good price. I'll have to write every bloody word again."''',
+        c("Continue", "rewrite")),
 ], delay=24, RequiresAnyGroups=[[STALLED, AMULET]])   # the dead worlds stall the clock; the living one burns the amulet
 
 
@@ -225,10 +232,10 @@ visit(HER_TOMB, "A very tasteful stone", [
         c("Continue", "under")),
     kay("feel", '''"Like reading someone else's letters." {n}She puts her palm flat on the lid.{/n} "She was braver than me, the woman under this. She died on time."''',
         c("Continue", "under")),
-    nar("scratch", '''{n}Before she mounts again she crouches by the foot of the tomb, draws the Kyonin dagger, and scratches something into the stone, low down where the moss will cover it by summer. You don't see what. When she stands, the blade has a pale crumb of stone on its tip, and she wipes it on her sleeve.{/n}''',
-        c("Continue", "scratch_her")),
-    kay("scratch_her", '''"Don't ask." {n}She sheathes it.{/n} "It's between me and her."
-{n}She looks back once, from the saddle, at the pale stone in the clearing, with the red line of the Wound behind it.{/n} "If the thumb ever slips, soldier, bring me here. Not to the chapel in Drezen. Here. The marksmen already did the hard part."''',
+    nar("scratch", '''{n}Before mounting again she crouches by the foot of the tomb, studying the stone low down where moss has begun to grow.{/n}''',
+        c("Continue", "scratch_held", requires=(KNIFE_HELD,)),
+        c("Continue", "scratch_own", forbids=(KNIFE_HELD,))),
+    kay("scratch_her", '''"Don't ask. It's between me and her." {n}She looks back from the saddle at the pale stone, with the red line of the Wound behind it.{/n} "If the thumb ever slips, soldier, bring me here. Not to the chapel in Drezen. Here. The marksmen already did the hard part."''',
         c("[Ride back beside her.]")),
     kay("under", '''"Is there anyone in it? Did they find me?" {n}She doesn't wait for an answer.{/n} "Don't tell me. I'd rather not know which of me is down there."
 {n}She turns away from the stone. Behind her the Worldwound's light is a sore red line along the horizon.{/n}
@@ -241,6 +248,8 @@ visit(HER_TOMB, "A very tasteful stone", [
     kay("keep", '''"Good." {n}It comes out faster than she means it to.{/n}
 "Let them keep their martyr. She's better company than I am, and she never checks the clock in the mornings." "Thank you for riding out with me. I won't come often."''',
         c("[Wait while she lingers at the stone.]", "scratch", flags=(MARKSMEN_KEPT,))),
+    nar("scratch_held", '''{n}She holds out her hand for the dagger at your belt. You pass it to her. She scratches a few words into the stone, keeping her body between you and the inscription. Then she wipes the blade and returns it hilt-first. You sheath it at your belt.{/n}''', c("Continue", "scratch_her")),
+    nar("scratch_own", '''{n}She draws the Kyonin dagger from her boot and scratches a few words into the stone. Her body hides them. She wipes the blade and sheathes it again.{/n}''', c("Continue", "scratch_her")),
 ], requires=(RULES, RETURNED, TOMB, BEGGED), delay=48)
 
 
@@ -305,7 +314,7 @@ meet(IN_THE_DARK, "After curfew", '"Walk with me. After the lamps go out."', [
 {n}The light goes past a yard away. You see her face in it for a heartbeat, eyes screwed shut against the glare, teeth bared. Then the dark closes again, and she lets her breath out against your neck, slowly.{/n}''',
         c("Continue", "sentry_her")),
     kay("sentry_her", '''"Sorry." {n}She moves her hand from your mouth to your chest.{/n}
-"Habit. Two years of lanterns meaning somebody wants me dead." {n}Her voice is low and not quite steady.{/n} "You let me put you against a wall in the dark. You didn't pull away. Didn't strike me. Do you know how rare that is?"''',
+"Habit. Two years of lanterns meaning somebody wants me dead." {n}Her voice is low and not quite steady.{/n} "You let me put you against a wall in the dark. You didn't pull away. Didn't strike me. I had you against the wall. You let me stay close."''',
         c("Continue", "stop")),
     nar("stop", '''{n}She stops. You don't know why. You can hear her breathing, close, and feel the edge of her cloak against your hand, and the warmth coming off her through the cold.{/n}''',
         c("Continue", "here")),
@@ -339,7 +348,7 @@ meet(THE_BOW, "Restringing", '"Is that a new string?"', [
     kay("begged", '''"This bow never came out of Forn's clearing. In your world it's lying there under the leaves, rotting, next to me." {n}She seats the string.{/n} "This one came with me from the branch where I walked away."
 "Same knots on the grip. Same crack by the upper nock that I keep meaning to bind. Exactly the same. I hate that more than I can tell you."''',
         c("Continue", "wall")),
-    kay("alive", '''"Same bow I had in Kenabres. It's the only thing I own that's older than the curse." {n}She seats the string.{/n}
+    kay("alive", '''"Same bow I had in Kenabres. It's one of the few things I own that's older than the curse. The bow and the knife. Both still work." {n}She seats the string.{/n}
 "I strung it new for the ravine and it held. I'm stringing it new again because I'd like to shoot something tonight that isn't an elf."''',
         c("Continue", "wall")),
     kay("wall", '''"Come up on the wall with me. There's a vrock that's been working the west side for a week. The sentries can't see it until it's on them." {n}She stands and slings the bow.{/n} "I can."''',
@@ -354,8 +363,8 @@ meet(THE_BOW, "Restringing", '"Is that a new string?"', [
         c("[Hand her back the bow.]", "hers")),
     nar("hit", '''{n}You loose into nothing. A heartbeat later something screams in the dark over the rooftops, a vast ugly sound, and wings beat away east, lopsided.{/n}''',
         c("Continue", "hit_her", flags=(DREW_THE_BOW,))),
-    kay("hit_her", '''"You hit it!" {n}For a heartbeat she sounds eighteen. Then she catches herself.{/n} "In the wing. Badly. It'll be back." {n}She doesn't step away from behind you. Her hands stay on yours on the bow.{/n}
-"That was good, soldier. Don't let it go to your head."''',
+    kay("hit_her", '''"You hit it!" {n}She grins, then sights along the bow again.{/n} "In the wing. Badly. It'll be back." {n}She doesn't step away from behind you. Her hands stay on yours on the bow.{/n}
+"Hold that aim, soldier. It will come back."''',
         c("Continue", "close")),
     nar("miss", '''{n}The arrow goes somewhere into the dark. Nothing screams. Kaylessa takes the bow out of your hands, nocks, draws and looses in one movement, and something above the rooftops shrieks and goes flapping east.{/n}''',
         c("Continue", "miss_her")),
@@ -413,7 +422,7 @@ meet(OTHER_YOU, "The other one", '"You keep looking at me like I\'m someone else
 "I watch for you in the market now. When you come under the awning, I want you to stay. Even when you say something stupid. That's new, soldier. That's here."''',
         c('"Maybe it\'s you that\'s different."', "her"),
         c('[Flirt] "I\'ll take that as a compliment."', "compliment")),
-    kay("her", '''"Maybe." {n}She studies you.{/n} "I'm tired of watching the gate for the next man who wants me dead. I like seeing you instead. Don't let it go to your head."''',
+    kay("her", '''"Maybe." {n}She studies you.{/n} "I'm tired of watching the gate for the next man who wants me dead. I'd rather see you at the gate. There are enough hunters out there."''',
         c("[Leave it there.]")),
     kay("compliment", '''"Take it however you like. I only said it because it's true, and rule three cuts both ways." {n}She looks away, at the muster, and doesn't take it back.{/n}''',
         c("[Leave it there.]")),
@@ -444,7 +453,8 @@ meet(HANDS, "Hands", '"Who are you watching?"', [
     kay("anevia_route", '''"And then there's the other one. The one with the knives."''',
         c("Continue", "caught", requires=(CAUGHT,)),
         c("Continue", "unmasked", requires=(UNMASKED,), forbids=(CAUGHT,)),
-        c("Continue", "gate", forbids=(CAUGHT, UNMASKED))),
+        c("Continue", "gate", requires=("crossroute.anevia.available",), forbids=(CAUGHT, UNMASKED)),
+        c("Continue", "gate_absent", forbids=(CAUGHT, UNMASKED, "crossroute.anevia.available"))),
     kay("caught", '''"She caught me in your war camp. She sat about looking bored for hours, waiting for me to bite, and I bit." {n}Grudging respect.{/n}
 "She knocked the amulet out of my hand so fast I never saw her move. It went off into nowhere with a pop. Took me a month to find another way out of tight corners." {n}She rubs her wrist.{/n} "I'd like a rematch. I'd like it very much. I'd lose."''',
         c("Continue", "end")),
@@ -479,6 +489,8 @@ meet(HANDS, "Hands", '"Who are you watching?"', [
         c("[Watch the square with her.]")),
     kay("kind", '''"Then you've had a very sad life." {n}But she knocks her shoulder against yours before she goes back to the square.{/n}''',
         c("Continue", "mine")),
+    kay("gate_absent", '''"Your gate watch changes faces often. I keep track of them." {n}She watches a relief patrol turn into the square.{/n} "With Kyonin hunting me, I don't let a familiar uniform do my looking for me."''',
+        c("Continue", "end")),
 ], delay=48)
 
 
@@ -514,12 +526,12 @@ meet(KYONIN, "The Winter Council", '"You\'re writing something."', [
           flags=(LETTER_SENT,), crusade=("Favors", -100)),
         c('"Keep it. Carry it yourself, one day, when you can walk into Kyonin with it."', "kept", flags=(LETTER_KEPT,))),
     kay("sent", '''{n}She looks at the seal pressed into the wax, the crusade's arms, still warm.{/n}
-"You know what this costs you. Kyonin's envoys will be very cold at your table for a year. Somebody's archers won't arrive when they were promised." {n}She puts the letter into your hands herself.{/n}
+"You've spent your envoys' goodwill on this. Kyonin may make you pay for it at the next muster. And my name goes east under your seal. They'll know whom to look for." {n}She puts the letter into your hands herself.{/n}
 "I know you know. That's why I'm letting you."''',
         c("[Put it in the dispatch bag.]", "after")),
     kay("after", '''{n}She watches the letter go into the bag as if it were a child leaving on a ship.{/n}
 "Avennara will read it at the ford, by the fire, with her boots off. She reads everything twice, the second time out loud to whoever's on watch, whether they want it or not." {n}A breath that is almost a laugh.{/n}
-"Somebody on her watch tonight is going to hear that any elf can become a drow, read out in Avennara's voice, with her feet in the ashes. And then it's out. Nobody can put it back. Not the Council, not anybody."
+"When this reaches her, somebody on her watch is going to hear that any elf can become a drow, read out in Avennara's voice, with her feet in the ashes. And then it's out. Nobody can put it back. Not the Council, not anybody."
 {n}She sits back against the post of the awning and closes her eyes.{/n} "I've wanted that for two years, soldier. I didn't know it would feel like falling."''',
         c('"Like falling where?"', "falling"),
         c("[Sit with her until the rider leaves.]")),
@@ -551,7 +563,8 @@ meet(ANEMORA, "That blasted Kaylessa", '"You\'ve been to Iz."', [
     kay("told_her", '''{n}She is quiet for so long that the crier across the square finishes a whole list.{/n}
 "'That blasted Kaylessa.'" {n}She says it slowly, tasting it.{/n} "She remembered me. Out of all of them, she remembered the one who said no."
 {n}And then, to your astonishment, her eyes are wet.{/n} "Two years, soldier. Two years of thinking I was nothing to her but a spoiled experiment. And I was the one she couldn't forget."''',
-        c("Continue", "after")),
+        c("Continue", "after", forbids=("iz.anemora_dead",)),
+        c('"And she is dead. I killed her."', "dead", requires=("iz.anemora_dead",))),
     kay("dead", '''"She's dead, isn't she. You killed her." {n}She reads it off your face.{/n}
 "Without me. You went into her city and you killed her, and I was here under an awning buying bread." {n}Her knuckles are pale on the bow.{/n}
 "I should hate you for that. I've been saving that death for two years. I'll settle for making you tell me exactly how she looked at the end. Every detail. Don't spare me."''',
@@ -720,7 +733,7 @@ meet(WOLJIF, "The goat", '"Why is Woljif avoiding the market?"', [
     kay("gloves_her", '''"Kid leather. Nerosyan work. There's a colonel's wife in the upper town who's going to be very cross this week." {n}She pulls them on, finger by finger, and flexes her hands.{/n}
 "Tell him the market's open to him again." {n}A beat.{/n} "And tell him the goat's safe with me. Everybody deserves one secret nobody uses."''',
         c("[Promise to tell him.]")),
-], forbids=("woljif.dead", "woljif.kicked_out"), delay=48)
+], requires=(RULES, "participant.woljif.available"), forbids=("woljif.dead", "woljif.kicked_out"), delay=48)
 
 
 # --- 15. The courier's face: the girl the amulet showed (the living world, after it burned out). ------------------
@@ -744,12 +757,14 @@ meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
         c('"I like this one better."', "better")),
     kay("again", '''"I know." {n}She almost smiles.{/n} "The disguise is gone, and I'm here. Even knowing how it went, I'd take that chance again. That's what frightens me."''',
         c("[Stay with her.]")),
-    kay("name", '''{n}She is quiet for a while.{/n} "Yes." {n}It comes out rough.{/n} "Yes. The Green Road keeps rolls. Someone at the border would know which girl didn't come back that summer. Her mother should get more than a letter saying lost."
-"I'll put it in mine. To Avennara. The girl whose face I wore, and where she really ended up." {n}She looks at you.{/n} "Thank you. I'd never have thought of it. I was too busy being her."''',
-        c("[Stay with her.]", flags=(REMEMBERED_GIRL,))),
+    kay("name", '''{n}She is quiet for a while.{/n} "Yes. The Green Road keeps rolls. Someone at the border would know which girl didn't come back. Her mother should get more than a letter saying lost." {n}She takes out her paper.{/n}''',
+        c("Continue", "courier_unsent", flags=(REMEMBERED_GIRL,), forbids=(LETTER_SENT,)),
+        c("Continue", "courier_followup", flags=(REMEMBERED_GIRL,), requires=(LETTER_SENT,))),
     kay("better", '''"Liar." {n}But she doesn't say it the way rule three would.{/n} "Nobody likes this one better. They like it because they're supposed to be frightened of it, and that's more interesting than being bored."
 {n}She tilts her chin up, all the same, and lets you look.{/n} "Go on, then. Look at it. It's the only one I've got."''',
         c("[Look at her.]")),
+    kay("courier_unsent", '''"I'll put her in my letter to Avennara. The face I wore, and where its owner ended up. No more letting people think she walked away." {n}She begins to write.{/n}''', c("[Stay with her.]", flags=(REMEMBERED_GIRL,))),
+    kay("courier_followup", '''"The letter's already gone. I'll send another with the next dispatch. This one can go under my own mark. It can't give away more than the first." {n}She writes the Green Road at the top of a fresh sheet.{/n}''', c("[Stay until she folds it for the rider.]", flags=(REMEMBERED_GIRL,))),
 ], requires=(RULES, AMULET), delay=48)
 
 
@@ -800,7 +815,7 @@ meet(IN_PUBLIC, "In front of everyone", '"Everyone\'s staring at the awning."', 
     nar("scout", '''{n}The cobble goes down. The crowd doesn't love it, but the crowd has seen a demon-worshipper with a knife and an arrow that stopped him, and the Commander's voice is louder than theirs. Somebody runs for a healer. Somebody else, very quietly, says thank you in her direction.{/n}''',
         c("Continue", "scout_her")),
     kay("scout_her", '''{n}Later, when the market has emptied, she's back on the crate with the shawl up and her hands not quite steady.{/n}
-"Your scout. In front of half the city." {n}She shakes her head.{/n} "Now every Kyonin clerk in Mendev will have it by the end of the month that the Knight Commander keeps a drow on the payroll. You've made yourself a file, soldier. I hope you like it."
+"Your scout. In front of half the city." {n}She shakes her head.{/n} "Now the Kyonin clerks in Mendev can hear that the Knight Commander keeps a drow on the payroll. You've made yourself a file, soldier. I hope you like it."
 {n}She pauses.{/n} "Nobody's said 'mine' about me in the street before. Not like that. Not to protect me."''',
         c("[Sit with her.]")),
     nar("trick", '''{n}You laugh as if it were the best joke of the week. A few people laugh with you, uncertainly. By the time they look back, the shade under the awning is empty and there is only an arrow in a dead man's throat, and the sergeant is calling for water, and everyone decides they must have been dazzled.{/n}''',
