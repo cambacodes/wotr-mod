@@ -250,13 +250,13 @@ visit(E + "ch6.collateral", "The collateral, inspected", [
     el("inspect_debt", '''"Stand where the lamp is. I want to see what the march has done to the goods. I never did take your measure in Drezen; I shall have to do it by eye." {n}She looks you over from the camp bed, head on one side.{/n}
 "Thinner. A new cut on the forearm, badly stitched. You carry your left shoulder higher than you did in Drezen." {n}She wrinkles her nose.{/n} "And you smell of the Wound. Everything here does. It gets into the meat."''',
        c("Continue", "tomorrow")),
-    el("tomorrow", '''"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what the Way paid for, and that is what I came north to see." {n}She sounds perfectly calm.{/n}
+    el("tomorrow", '''"Tomorrow, or the next day, you go into the Wound. If you die at the edge of it, I collect. That is what you pledged to the Way, and that is what I came north to collect." {n}She sounds perfectly calm.{/n}
 "If the Wound takes you whole, I have nothing. No body. No table. No offering. Half my life of patience, and a hearse built in Caliphas, for nothing." {n}Her mouth thins.{/n} "So I will ask you one thing, as your creditor. Where do you want me standing?"''',
        c('"Are you afraid for me?"', "afraid"),
        c('[Tell her to stand at the rift\'s edge] "Somewhere you can see. If it falls due, collect."', "rift"),
        c('[Tell her to wait in Drezen] "In the dead-house. If I don\'t come back, you won\'t need to see it."', "drezen")),
     el("afraid", '''"Afraid." {n}She turns the word over.{/n}
-"I am afraid of losing what I bought. That is not the same thing. A merchant is afraid for the ship, not for the sailors." {n}She looks at the tent wall, toward the north, where the sky is the colour of a bruise.{/n} "The witch in there made you. I have read what she did at Kenabres. She will want you back whole, and she does not share."
+"I am afraid of losing what you pledged. That is not the same thing. A merchant is afraid for the ship, not for the sailors." {n}She looks at the tent wall, toward the north, where the sky is the colour of a bruise.{/n} "The witch in there made you. I have read what she did at Kenabres. She will want you back whole, and she does not share."
 {n}Her hand, lying on her knee, has closed on a fold of her grey robe so hard that the knuckles have gone white.{/n} "Now answer my question, and do not ask me that again."''',
        c('[Tell her to stand at the rift\'s edge] "Somewhere you can see. If it falls due, collect."', "rift"),
        c('[Tell her to wait in Drezen] "In the dead-house. If I don\'t come back, you won\'t need to see it."', "drezen")),
@@ -284,7 +284,7 @@ visit(E + "beat.whisper", "The Way's tongue", [
     nar("start", '''{n}She has pulled two stools close together at the end of the long room, knee to knee, with no table between them and no candle nearer than the door. When you sit she leans in until her mouth is a finger's width from your ear, and when she speaks you can barely hear her, though there is nobody else in the house.{/n}''',
         c("Continue", "lesson")),
     el("lesson", '''"The Way's teaching cannot be written. It can only be told, and felt." {n}Her breath stirs the hair at your temple.{/n} "So it is told like this. So close that nobody in the next room could swear you had spoken at all. So close that the one who hears it cannot pretend, afterwards, that it was not meant for them."
-"You whispered me the terms of the sale badly. You breathe like a soldier, all at once. Again. Say something to me. Anything. So that the door does not hear."''',
+"You whispered me the terms of the bequest badly. You breathe like a soldier, all at once. Again. Say something to me. Anything. So that the door does not hear."''',
        c("[Whisper to her.]", "again")),
     el("again", '''"Worse." {n}She does not move away.{/n} "Slower. Let it out as if you were letting out blood, a little at a time, and you did not want anyone to see the bowl."
 {n}You try again. This time she is quiet for a while afterwards.{/n}
@@ -376,7 +376,7 @@ visit(E + "beat.master", "A master from Caliphas", [
 {n}Across the table Elyanka's knuckles have gone white on the handle of her knife.{/n}''',
       c("Continue", "her")),
     el("her", '''{n}She speaks to him, not to you, and very quietly.{/n}
-"The claim is mine. The Way sent me for it, and I bought it, and the terms were whispered to me and by me. When the Commander dies the body goes to my Lady's table whole, and not one day before. That is what a claim is." {n}Her voice drops further.{/n} "If the Way wants to hurry my collateral into the ground, it will have to go through its collector. And the collector has waited half her life to be adopted, master, and has nothing at all to lose."''',
+"The claim is mine. The Way sent me for it. The Commander gave me the claim, and the terms were whispered to me and by me. When the Commander dies the body goes to my Lady's table whole, and not one day before. That is what a claim is." {n}Her voice drops further.{/n} "If the Way wants to hurry my collateral into the ground, it will have to go through its collector. And the collector has waited half her life to be adopted, master, and has nothing at all to lose."''',
        c("Continue", "choice")),
     nar("choice", '''{n}The master looks from her to you, and his smile does not move. Then he rises, and bows, the precise bow of a man who has been insulted and has made a note of it.{/n}
 "The Way will consider its position," {n}he says,{/n} "on the road home." {n}And he goes out into the yard, where his own carriage is waiting.{/n}
@@ -409,11 +409,11 @@ KING_BILL_HERS = E + "king.bill_hers"
 visit(E + "beat.king_bill", "The King's bill for weeping", [
     nar("start", '''{n}You arrive at the dead-house to find the Fool King of Drezen sitting on the trestle with his boots on the bench, a paper crown on his head and a roll of paper in his hand long enough to reach the floor. Elyanka stands at the far end of the long room, as far from him as the walls allow, holding her napkin over her nose.{/n}''',
         c("Continue", "bill")),
-    n("bill", "Thaberdine", '''"Commander! Just in time. I've been presenting my bill." {n}Thaberdine unrolls another yard of it.{/n} "Weeping at a wake: one court, all hands. Wailing, extra. The fire-eater's chest, bruised: extra. Me, carried in on a door, tragic: very extra. And now I find out the corpse sat up and sold itself. That's a second funeral in one year, and that's a royal holiday by law. I made the law this morning."
+    n("bill", "Thaberdine", '''"Commander! Just in time. I've been presenting my bill." {n}Thaberdine unrolls another yard of it.{/n} "Weeping at a wake: one court, all hands. Wailing, extra. The fire-eater's chest, bruised: extra. Me, carried in on a door, tragic: very extra. And now I find out the corpse sat up and gave itself away. That's a second funeral in one year, and that's a royal holiday by law. I made the law this morning."
 "So somebody owes the crown for two wakes. And she," {n}he points with a sausage,{/n} "won't pay, because she says she's not the bereaved."''',
       c("Continue", "her")),
-    el("her", '''"I am not the bereaved." {n}Her voice is muffled by the napkin.{/n} "I am the purchaser. The purchaser does not pay the mourners. That is the vendor's expense. Everyone in Ustalav knows that."
-{n}She lowers the napkin an inch.{/n} "And he smells of beer, Commander. He has smelled of beer since he came in. He is the most alive thing I have ever been in a room with, and I include you."''',
+    el("her", '''"I am not the bereaved." {n}Her voice is muffled by the napkin.{/n} "I hold the claim. I did not hire the mourners. That was your executor's business. Everyone in Ustalav knows that."
+{n}She lowers the napkin an inch.{/n} "And your King smells of beer, Commander. The smell came in with the crown. The most alive thing I have ever been in a room with, and I include you."''',
        c("Continue", "king2")),
     n("king2", "Thaberdine", '''"Alive! Ha! Thank you, madam. You're the first person in this city to notice." {n}The King beams at her with enormous goodwill.{/n} "I like her, Commander. She's a proper grump. Every court needs one. I've been looking for a Royal Undertaker since the last one fell in the moat. Pays in beer, and all the funerals you can eat."
 {n}Elyanka looks at him as if a dog had asked her to dance.{/n}''',
@@ -603,7 +603,7 @@ visit(E + "beat.grave", "The stone they raised", [
         c("Continue", "stone")),
     el("stone", '''{n}She walks all round it, twice, reading every letter. Then she lays her palm flat on the top of it, the way a physician lays a palm on a fevered chest.{/n}
 "The only grave in the world with your name on it, and nothing in it." {n}She sounds almost tender.{/n} "Do you know how rare that is? A grave that has been dug and wept over and prayed at, and is still waiting? In Ustalav we would make a shrine of it. People would come from Caliphas to sit here."
-"This is what I bought, Commander. Not you. This." {n}She pats the stone.{/n} "The hole under it."''',
+"A place waiting for what you pledged, Commander. Nothing in it yet." {n}She pats the stone.{/n} "The hole under it."''',
        c("[Lie down on your own grave.]", "lay"),
        c('"I\'ll have them take it down. I\'m not dead."', "down"),
        c('"Then it\'s yours. I\'ll leave it standing."', "kept")),
@@ -704,10 +704,10 @@ visit(E + "beat.inquiry", "The paladin's questions", [
 "You will tell a paladin of the Inheritor that you gave sixty-one of her crusade's dead to a priestess of Urgathoa, for nothing, on a whim, to see what I would do." {n}A dry breath.{/n} "She will never look at you the same way again. Neither will I."
 "Go and do it, then. I will stay out of her road. I have no wish to be struck by a woman praying." {n}At the door she adds, without turning round:{/n} "It was very stupid, and very honest. I do not know which I dislike more."''',
        c("[Go and find Seelah.]", flags=(INQUIRY_TRUTH, "trickster.secret.elyanka_siege_dead.known.seelah"))),
-    nar("mislead", '''{n}It takes three days and a purse. The watch finds two resurrection men in the lower town who have sold bodies to a hedge-necromancer in Kenabres before, and one of them confesses to things he did and to several he did not, and swings for all of them at the south gate with a placard on his chest.{/n}
-{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang, and says nothing to you afterwards at all.{/n}''',
+    nar("mislead", '''{n}At your order, the watch drags two resurrection men out of the lower town, men who have sold bodies to a hedge-necromancer in Kenabres. The captain needs a confession about Elyanka's carts. He gets one with a locked cellar and a mailed fist. One of the prisoners confesses to things he did and to several he did not, and hangs at the south gate with a placard on his chest.{/n}
+{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang. Afterwards she has nothing to say to you.{/n}''',
         c("Continue", "mislead2")),
-    el("mislead2", '''"You hanged a man for my carts." {n}Elyanka does not sound shocked. She sounds interested, the way she was over the dead cultist's liver.{/n}
+    el("mislead2", '''"You hanged a man for my carts." {n}Elyanka does not sound shocked. Her pale eyes settle on you with fresh interest.{/n}
 "A thief, and a liar, and he would have died of something stupid in a year anyway. My Lady will have him, since your paladin's goddess will not." {n}She almost smiles.{/n} "Your paladin did not believe you, Commander. She simply could not prove it. Remember that she will go on not believing you, every day, for as long as you know each other."''',
        c("[Let it lie.]", flags=(INQUIRY_MISLED,))),
     el("hers", '''"Mine." {n}Something like approval.{/n} "Yes. It was my cart."
