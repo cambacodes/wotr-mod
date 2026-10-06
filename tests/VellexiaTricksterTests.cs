@@ -352,13 +352,13 @@ internal static class VellexiaTricksterTests
         var loversNode = Ending("lovers").Nodes[0];
         int Shown(Snapshot w) => loversNode.Paragraphs.Count(pp => Rules.Match(pp.Requires, pp.Forbids, w)
                                                                  && (pp.Text.Contains("across a long distance") || pp.Text.Contains("once already")
-                                                                     || pp.Text.Contains("first night before the march")));
+                                                                     || pp.Text.Contains("first night in Drezen")));
         bool Says(Snapshot w, string text) => loversNode.Paragraphs.Any(pp => Rules.Match(pp.Requires, pp.Forbids, w) && pp.Text.Contains(text));
         check(!loversNode.Text.Contains("physical visit still required"), "Q11: the lovers' ending still calls the first visit unarranged.");
         if (peacefulNight != null)
         {
             var lovers = Program.Copy(peacefulNight); Rules.Complete(story, lovers);
-            check(Rules.Available(story, Ending("lovers"), lovers) && Shown(lovers) == 1 && Says(lovers, "first night before the march"),
+            check(Rules.Available(story, Ending("lovers"), lovers) && Shown(lovers) == 1 && Says(lovers, "first night in Drezen"),
                 "Trk_Vellexia_LoversEndingVariants: the night is not remembered in the lovers' ending.");
         }
         var letters = Program.Copy(partedCommitted ?? parted); letters.Flags.Add("vellexia.farewell_lovers");
@@ -452,7 +452,7 @@ internal static class VellexiaTricksterTests
 
         // Q11 Trk_Vellexia_LateCommitThreshold: the late commit stages its own threshold and morning.
         var lateText = epCommit.Nodes[0].Text + string.Concat(epCommit.Nodes[0].Paragraphs.Select(pp => pp.Text));
-        check(lateText.Contains("knees either side") && lateText.Contains("let the silk fall") && lateText.Contains("bruise")
+        check(lateText.Contains("knees against") && lateText.Contains("Then the silk fell") && lateText.Contains("bruise")
               && !lateText.Contains("by morning she had invented"), "Trk_Vellexia_LateCommitThreshold: the late commit fades before the threshold.");
 
         // Q11 r3 Trk_Vellexia_LateCommitSacrifice: a genuine sacrifice is mourned and nothing else; a Commander who came back
@@ -468,10 +468,10 @@ internal static class VellexiaTricksterTests
         var lateInhuman = Program.Copy(lateCourted); lateInhuman.Flags.Add("inhuman");
         check(!Rules.Available(story, epCommit, lateInhuman), "Trk_Vellexia_LateCommitSacrifice: the late romance plays for an inhuman Commander.");
         string RoomShown(Snapshot w) => string.Concat(epCommit.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => pp.Text));
-        check(RoomShown(lateCourted).Contains("walls with nothing on them") && !RoomShown(lateCourted).Contains("chair that flinched"),
+        check(RoomShown(lateCourted).Contains("bare walls") && !RoomShown(lateCourted).Contains("chair that flinched"),
             "Trk_Vellexia_LateCommitSacrifice: the furniture she let go of is still watching.");
         var lateFull = Program.Copy(lateCourted); lateFull.Flags.Remove(P + "cost.bare_walls");
-        check(RoomShown(lateFull).Contains("chair that flinched") && !RoomShown(lateFull).Contains("walls with nothing on them"),
+        check(RoomShown(lateFull).Contains("chair that flinched") && !RoomShown(lateFull).Contains("bare walls"),
             "Trk_Vellexia_LateCommitSacrifice: the kept collection is gone from the room.");
 
         // Q11 r5: an ascended Commander's late courtship is told once, on the ascent page.
@@ -647,6 +647,81 @@ internal static class VellexiaTricksterTests
         var trickGallery = Program.Walk(gallery, Later(story, manor, 0).Also(s => s.Flags.Add("trickster")));
         check(plainGallery.All(r => !r.Has(P + "portrait_marked")) && trickGallery.Any(r => r.Has(P + "portrait_marked") && r.Has("vellexia.gallery_invited")),
             "The mark on the portrait is not a Trickster outcome of the gallery visit.");
+
+
+        // Reviewed polish P1/C1-C6: render both hosts and body/room histories without changing their entitlement.
+        string PlayedText(Scene sc, Snapshot w)
+        {
+            var pages = new List<string>();
+            Program.Walk(sc, w, (id, state) =>
+            {
+                var node = sc.Nodes.Single(nd => nd.Id == id);
+                pages.Add(node.Text + string.Concat(node.Paragraphs.Where(pp => Rules.ParagraphVisible(pp, state)).Select(pp => pp.Text)));
+            });
+            return string.Join("\n", pages);
+        }
+        var refusedCrate = fetched.Single(r => r.Has(P + "declined"));
+        check(fetch.Nodes[0].Text.Contains("Vask found the mirror") && fetch.Nodes.Single(nd => nd.Id == "left").Text.Contains("crate at the rift camp")
+              && !refusedCrate.Has(P + "primed") && !refusedCrate.Has(P + "returned") && !Any(refusedCrate, unmirror, unmirrorStores),
+            "Polish P1: refusing the camp crate relocates it or primes the return.");
+        check(speaks.Nodes.Single(nd => nd.Id == "sheet").Text.Contains("empty salon")
+              && fetch.Nodes.Single(nd => nd.Id == "paid").Text.Contains("your stores"),
+            "Polish P1: untouched salon and paid delivery lost their distinct custody.");
+        foreach (var (host, ready) in new[] { (unmirror, primed), (unmirrorStores, noReader) })
+        {
+            var captiveText = PlayedText(host, ready);
+            check(captiveText.Contains("They go still when the haze does") && captiveText.Contains("trembling figure and scrambles for the door"),
+                "Polish C6: the observed collateral is missing or never released: " + host.Id);
+            var alreadyFreed = Program.Copy(ready); alreadyFreed.Flags.Add("vellexia.slaves_freed");
+            var freeText = PlayedText(host, alreadyFreed);
+            check(!freeText.Contains("salon footstool") && !freeText.Contains("trembling figure"),
+                "Polish C6: already freed victims become bargaining furniture again: " + host.Id);
+            var imprisoned = Play(host, ready).Single(r => r.Has(P + "kept_as_mirror"));
+            var threat = PlayedText(glass, Later(story, imprisoned, 48));
+            check(threat.Contains("since you hung me here") && !threat.Contains("Storyteller's shop") && !threat.Contains("eve of the march"),
+                "Polish C1/C3: the captive remembers an unplayed host or invented march: " + host.Id);
+        }
+        foreach (var (host, ready) in new[] { (likeness, canvas), (likenessStores, dlcDead) })
+        {
+            var readingText = PlayedText(host, ready);
+            check(readingText.Contains("The first notch opens the older charm") && readingText.Contains("cannot promise the shape will hold")
+                  && !readingText.Contains("opened all the way") && !readingText.Contains("Its subject is dead"),
+                "Polish C5: the portrait promises a universal resurrection or opens the wrong notch: " + host.Id);
+        }
+        var recalled = Program.Copy(canvas); recalled.Flags.Add("vellexia.bungler_explained");
+        check(PlayedText(likeness, recalled).Contains("She was speaking of Finnean")
+              && !PlayedText(likeness, canvas).Contains("She was speaking of Finnean"),
+            "Polish C5: the native diagnosis is misattributed or recalled without witnessing it.");
+        foreach (var body in new[] { "unmirrored", "cost.diminished", "provoked", "entry" })
+        {
+            var intimate = World(story, 5, "trickster", "trickster.ever", "vellexia.committed", "vellexia.farewell_lovers",
+                                 "vellexia.invited", P + body);
+            var renderedNight = PlayedText(night, intimate);
+            check(renderedNight.Contains("stands naked") && renderedNight.Contains("shed your own clothes")
+                  && renderedNight.Contains("lip-paint print") && renderedNight.Contains("bruise") && !renderedNight.Contains("handwriting")
+                  && !renderedNight.Contains("march in the morning"),
+                "Polish C2/C3: the physical threshold or hands-neutral aftermath is missing: " + body);
+            if (body == "cost.diminished")
+                check(renderedNight.Contains("They move. They will not cast") && !renderedNight.Contains("These still do nothing"),
+                    "Polish C2: diminished hands either immobilize her or recover their magic.");
+        }
+        foreach (var roomFlag in new[] { "", P + "cost.bare_walls", "vellexia.slaves_freed" })
+        foreach (var party in new[] { false, true })
+        {
+            var atParty = Program.Copy(lateFull);
+            atParty.Flags.UnionWith(new[] { P + "cost.diminished", P + "presumed_dead" });
+            if (roomFlag != "") atParty.Flags.Add(roomFlag);
+            if (party) atParty.Flags.Add("lastcall.active");
+            var shown = RoomShown(atParty);
+            check(shown.Contains("Commander locked the door") && shown.Contains("Commander unlaced her gown")
+                  && shown.Contains("followed, naked") && shown.Contains("Vellexia was still in bed") && shown.Contains("For a while the Upper City")
+                  && !shown.Contains("never learned") && !shown.Contains("handwriting") && !shown.Contains("She unlaced her own gown"),
+                "Polish C2/C4: late intimacy contradicts her hands or the party's revelation.");
+            check(shown.Contains("chair that flinched") == (roomFlag == "") && shown.Contains("bare walls") == (roomFlag != ""),
+                "Polish C2: room paragraphs duplicate each other or revive freed furniture.");
+            var absentDaeran = Program.Copy(atParty); absentDaeran.Flags.Add("daeran.dead");
+            check(!RoomShown(absentDaeran).Contains("Daeran, who saw"), "Polish C2: a dead Daeran attends breakfast.");
+        }
 
         // TT-05: one return scene per third-date branch; no cross-relationship gate.
         foreach (var branch in new[] { mirrored, postFight, unfetched, primed, sword, early, canvas, never, spared, farewell })
