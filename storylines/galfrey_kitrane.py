@@ -1107,3 +1107,274 @@ alive(P + "alive.after_no", "Without the sword", '"You sent for me?"', [
     conv5("ally", '"I would. I value your company, Commander. I can offer it freely without offering more."', c("[Keep her company a while.]", flags=(RESERVED_ALLY,))),
     conv5("refused", '"I have decided against it. The plans you kept mattered. They still matter. They do not oblige me to share your bed." {n}She draws the next dispatch toward her.{/n} "You have my support in the war. Let that suffice."', c("[Accept her answer.]", flags=(RESERVED_REFUSED,))),
 ], requires=(OATH_RESERVED,), forbids=(COMMITTED, RESERVED_ALLY, RESERVED_REFUSED, "trickster.failed"), delay=48)
+
+
+# Round 2 authored set pieces: GAL-01/02/03/04. Native service and witnessed
+# knowledge are different facts. No paper, rescue, kiss or night earns trust.
+def _round2_situations():
+    from storylines.galfrey_trickster import SERVICE, LATE_FOUND, history_variant
+    from storylines import galfrey_trickster as origin
+    for host in SCENES:
+        sid = host["Id"].removesuffix("_stall")
+        nodes = {node["Id"]: node for node in host["Nodes"]}
+        if sid == P + "kitrane.crows":
+            nodes["start"]["Text"] = ('"Diminished." {n}She counts on her gauntleted fingers.{/n} "Two veterans. The sergeant tells us he is sixty every morning; '
+                'the other tells him to stop. A boy of fourteen learning the sword. And me. We have one leaking tent and one bad-tempered mule." '
+                '{n}She looks across the market.{/n} "Anselm should have been here to complain about them."')
+            nodes["lie"]["Text"] = ('"The Crows are real. So are the men who carried my command at Iz. Two came back. Anselm went into my tomb." '
+                '{n}She looks toward the girl.{/n} "I wore their colours on the march. I shall have to earn my place in them again. '
+                'This girl wants to fight demons. She deserves a knight who will teach her properly."')
+            history_variant(host, "lie", SERVICE,
+                '"The Crows are real. They carried my command at Iz, and took me among their wounded under the name I had kept ready. '
+                'Two veterans came home. Anselm went into my tomb." {n}She watches the girl.{/n} '
+                '"I came to their tent needing everything. I can give this girl something now. She deserves to be taught properly."', "new_service")
+        elif sid == P + "kitrane.sergeant":
+            nodes["start"]["Text"] = ('"Sir Anselm, tonight." {n}She sits on an upturned crate, oiling his sword.{/n} '
+                '"The Crows have stood behind my chair for forty years. Now I sleep in their tent and learn what their pay buys. '
+                'Last night the sergeant told me what Anselm sent home to his daughter. I had never asked."')
+        elif sid == P + "kitrane.hulrun":
+            nodes["tell"]["Text"] = ('"He would have to investigate the coffin. Sir Anselm\'s name, my command, your eulogy." '
+                '{n}She looks toward the chapel.{/n} "Knight Tirabade carried my last order out of Iz. Her part in it would be entered beside the Crows\' testimony. '
+                'I will answer for the deception when the campaign can survive that hearing. I shall not summon it merely to ease my conscience tonight."')
+            history_variant(host, "tell", CARRIED_IRABETH,
+                '"He would have to investigate the coffin. Sir Anselm\'s name, my command, your eulogy." '
+                '{n}She looks toward the chapel.{/n} "The two Crows who carried me would have to give evidence. '
+                'Knight Tirabade was not given that command. I will answer for the deception when the campaign can survive the hearing. '
+                'I shall not summon it merely to ease my conscience tonight."', "crows_carried")
+        elif sid == P + "kitrane.irabeth":
+            # Do not make an uninformed knight forgive a secret she has not heard.
+            for nid in ("drezen", "died_back"):
+                if nid == "drezen":
+                    nodes[nid]["Text"] = ('"Knight Tirabade does not know. The Crows carried me. Every evening she salutes the Queen\'s empty chair." '
+                        '{n}Galfrey looks toward the barracks.{/n} "She ought to hear it from me. I have made her wait long enough."')
+                else:
+                    nodes[nid]["Text"] = ('"Knight Tirabade fell before I gave my last command. Now she has returned, and I have still let her salute an empty chair." '
+                        '{n}Galfrey puts a hand on her sword-belt.{/n} "I shall tell her myself."')
+                for choice in nodes[nid]["Choices"]:
+                    choice["Next"] = "disclose"
+                    choice["Requires"].append("irabeth.present_now")
+                nodes[nid]["Choices"].append(c("[Leave her to speak when Knight Tirabade is back.]",
+                    forbids=("irabeth.present_now",), abort=True))
+            host["Nodes"].extend([
+                ki("disclose", '{n}She walks to the barracks and lowers her hood before Irabeth can salute.{/n} '
+                    '"Knight Tirabade. The Crows carried me out of Iz. Anselm lies in the royal coffin. I ordered it. '
+                    'Do not answer until you have heard all of it."', c("Continue", "irabeth_answer")),
+                n("irabeth_answer", "Irabeth", '{n}Irabeth grips the edge of the open door. For a moment she cannot speak.{/n} '
+                    '"Your Majesty. We held a vigil. I gave your chair the salute every night." {n}She looks past Galfrey at you, then back.{/n} '
+                    '"The watch will hear nothing from me tonight. But I will not take another false order to my knights. Tell me what you mean to do when this war is over."',
+                    c("Continue", "disclosure_end", flags=(P + "react.irabeth.learned",)), portrait="Irabeth"),
+                ki("disclosure_end", '"You shall hear it from me before the court." {n}Galfrey holds her gaze.{/n} '
+                    '"I have given you grief and an empty chair. I will not ask you to thank me for ending either." '
+                    '{n}Irabeth steps back to let her into the barracks. The door closes behind them.{/n}', c("[Leave them to speak.]")),
+            ])
+        elif sid == P + "kitrane.king":
+            direct = ('"I know. The whole tavern told me." {n}She gives you an amused look.{/n} '
+                '"You made a drunkard a king. At Iz you offered me a knight\'s name, and I ordered the Crows to carry it out. '
+                'I think I made the better bargain. My mule cannot demand a royal pension."')
+            alone = (
+                '"I know. The whole tavern told me." {n}She gives you an amused look.{/n} '
+                '"You made a drunkard a king. I chose to be a knight in the rubble at Iz. Your standing orders left me a cart to do it with. '
+                'Do not claim my decision as another of your coronations, Commander."')
+            history_variant(host, "made", ALONE, direct, "direct")
+            nodes["made"]["Text"] = alone
+            # Late recovery also records ALONE. Select it before crediting the
+            # prepared escape; the Commander was present only at the chapel.
+            history_variant(host, "made", LATE_FOUND, alone, "prepared_alone")
+            nodes["made"]["Text"] = (
+                '"I know. The whole tavern told me." {n}She gives you an amused look.{/n} '
+                '"You made a drunkard a king. In the chapel you offered me a knight\'s name, and I chose to answer it. '
+                'You were late for that coronation. I shall not let you forget it."')
+        elif sid == P + "kitrane.ford":
+            nodes["start"]["Text"] = ('{n}She straightens the clasp at your shoulder before reaching for her helm.{/n} "There. The Crows will come. '
+                'Myself and both veterans. The boy stays with the mule." {n}She checks the ford map.{/n} '
+                '"We ride along the supply road. I want the carters to see us there."')
+            # Entry text names only the boy; the acquired girl joins the baggage.
+            host["Nodes"].append(ki("girl_with_baggage", '"The girl stays with the boy and the mule. She has learned one guard, Commander, not a battle."', c("[Ride out.]", "ford")))
+            nodes["start"]["Choices"][0]["Forbids"].append(CROWS_ORDER)
+            nodes["start"]["Choices"].append(c("[Ride out.]", "girl_with_baggage", requires=(CROWS_ORDER,)))
+        elif sid == P + "kitrane.conversation":
+            nodes["start"]["Text"] = ('"I did." {n}She catches your sleeve as the eel-seller closes her shutters.{/n} '
+                '"You have time for a patrol report, two petitions and a quarrel over arrows. You can find time to speak to me." '
+                '{n}The curio-seller bends industriously over his accounts.{/n} "Here will do. He can count with his ears shut."')
+            nodes["camp"]["Text"] = ('"You flirted with me on the march. I told you to do better." {n}Her thumb presses against your wrist.{/n} '
+                '"I noticed when you did. I kept choosing a military subject whenever we were alone. You must have thought me very fond of siege reports."')
+            nodes["said"]["Text"] = ('"That I wanted you." {n}She says it plainly, though her grip has tightened.{/n} '
+                '"I can argue with your orders and still want your hands on me. You need not settle the war before answering."')
+            history_variant(host, "camp", ROMANCE,
+                '"I have watched you return to this stall when you had no orders for me. I have watched myself look up every time." '
+                '{n}Her fingers tighten on your sleeve.{/n} "You asked for the conversation. Now do not retreat into a dispatch."', "new_courtship")
+            nodes["waited"]["Text"] = ('"Then stop looking so solemn." {n}She draws you nearer by the sleeve, glances at your mouth, and releases you with visible reluctance.{/n} '
+                '"I have said it. The rest requires a better place than the eel stall. Go before I forget that."')
+        elif sid == P + "commit.oath":
+            nodes["speak"]["Text"] = nodes["speak"]["Text"].replace("since I walked out of Iz", "since the Crows carried me from Iz")
+            nodes["sworn"]["Text"] = ('{n}She rises and salutes. The sword clicks into its scabbard.{/n} "Commander. '
+                'The Green Crows are at your disposal: myself, both veterans, the boy squire and the mule. Point us at something."')
+            history_variant(host, "sworn", CROWS_ORDER,
+                '{n}She rises and salutes. The sword clicks into its scabbard.{/n} "Commander. '
+                'The Green Crows are at your disposal: myself, both veterans, the boy squire and the mule. Point us at something."', "boy_only")
+            nodes["sworn"]["Text"] = nodes["sworn"]["Text"].replace("the boy squire and", "both squires and")
+            for nid in ("invite", "order_q"):
+                for choice in nodes[nid]["Choices"]:
+                    if choice["Next"] is None:
+                        choice["Text"] = '"After the ninth bell. I know the minor orders\' row."'
+            nodes["invite"]["Text"] = ('"The Crows\' tent, at the end of the minor orders\' row. The squires are in town with the mule; '
+                'the sergeant has agreed to sleep next door." {n}She brings your hand to her lips before letting it go.{/n} '
+                '"After the ninth bell. I arranged this before I offered the sword. Do not make me regret the order of my preparations."')
+        elif sid == P + "kitrane.table":
+            nodes["credit"]["Text"] = ('"As a knight of the Green Crows? They may laugh. Let them examine the distances before they dismiss it." '
+                '{n}She rolls up the map.{/n} "Tell them where the guess is, and whose it is. I should like to hear their objections. '
+                'I have been brilliant and blamed often enough to survive a council laughing."')
+        elif sid == P + "kitrane.crown":
+            direct = ('"I shall tell them what happened at Iz: your offer, my last command, the name on the coffin and the wounded knight in the cart." '
+                '{n}She looks at you.{/n} "You will answer for the eulogy. I will answer for Anselm. Neither of us can leave the hearing to the other."')
+            alone = ('"I shall tell them I chose the escape myself in the rubble. You had prepared the Crows, and you proclaimed the Queen dead. '
+                'You were not at my side when I gave the order." {n}She looks at you.{/n} "You will answer for the eulogy. '
+                'I will answer for Anselm and the command. The inquiry must hear what happened, not a tidier account."')
+            history_variant(host, "how", ALONE, direct, "direct")
+            nodes["how"]["Text"] = alone
+            history_variant(host, "how", LATE_FOUND, alone, "prepared_alone")
+            nodes["how"]["Text"] = ('"I shall tell them you came to the chapel after I had fallen at Iz. '
+                'You offered the name beside the open coffin. I ordered Anselm put in my place." {n}Her hand rests on his sword.{/n} '
+                '"The sergeant must account for the vigil. You must account for the eulogy. I shall account for the order."')
+            nodes["must"]["Text"] = ('"I gave the order that put him in the coffin. I can answer for it now. '
+                'Do not ask me to leave Anselm\'s daughter with a missing father to spare myself a hearing."')
+            nodes["certain"]["Text"] = ('"No. I mistook certainty for good judgment at Iz." {n}She touches the sword-hilt.{/n} '
+                '"I have considered the regents, the border and Anselm\'s daughter. I have made my decision. I am telling you because you matter to me."')
+        elif sid == P + "visit.tent":
+            # The reel's deferred kiss is collected here, by her action. Selected
+            # answer flags identify the invitation without deriving commitment.
+            saved = P + "reel_kiss_saved"
+            origin.DERIVED[saved] = [[P + "kitrane.reel.saved"], [P + "kitrane.reel_stall.saved"]]
+            for reel in SCENES:
+                if reel["Id"].removesuffix("_stall") == P + "kitrane.reel":
+                    reel_nodes = {n["Id"]: n for n in reel["Nodes"]}
+                    marker = reel["Id"] + ".saved"
+                    if marker not in reel_nodes["saved"]["Choices"][0]["Set"]:
+                        reel_nodes["saved"]["Choices"][0]["Set"].append(marker)
+            history_variant(host, "armour", saved, nodes["armour"]["Text"], "no_deferred_kiss")
+            nodes["armour"]["Text"] = ('{n}She catches your collar and kisses you before you can touch a buckle.{/n} '
+                '"There. The fiddler cannot whistle here." {n}She holds out her gauntlets.{/n} "Now take these off. '
+                'I have had squires do it most of my life. Tonight I want your hands. The straps are under the pauldrons."')
+            history_variant(host, "majesty", saved, nodes["majesty"]["Text"], "no_deferred_kiss")
+            nodes["majesty"]["Text"] = ('"Your Majesty? In the place you chose because nobody could whistle?" '
+                '{n}She catches your collar, laughing, and kisses you until you stop trying to answer.{/n} '
+                '"There. Now the gauntlets. I cannot do much with these on."')
+            nodes["after"]["Text"] = ('{n}Before dawn she lies against you, her hand spread on your chest. When you stir, she draws you back for a kiss.{/n} '
+                '"Not yet." {n}The sergeant coughs in the next tent. She shuts her eyes.{/n} "Damn him. '
+                'The drill, then. Keep that cloak warm. I shall want it when I come back."')
+            for nid in ("morning", "morning_alone"):
+                nodes[nid]["Text"] = nodes[nid]["Text"].replace("She does not stay; she is a knight of the Green Crows, and the Crows drill at first light.",
+                    "She dresses before the first-light muster.")
+            nodes["drill"]["Text"] = ('{n}An Eagle Watch column passes on the ford road. Kitrane finishes the exercise, hears both veterans\' objections, '
+                'and dismisses the drill. She comes back to the tent with her doublet damp and her sword sheathed.{/n} '
+                '"You have found your boots. A pity." {n}She sits beside you and takes the warm cloak, leaning against your shoulder.{/n} '
+                '"Stay until the camp wakes properly. Then I shall walk back with you."')
+            slot = host["Id"] + ".explicit.1"
+            # Explicit-slot brief: her directed first night, returned body,
+            # no witness, rescue obligation or political decision in the act.
+            import json
+            from pathlib import Path
+            brief = json.loads((Path(__file__).parents[1] / "tools/route_packs/explicit_slots/galfrey" / (slot + ".json")).read_text(encoding="utf-8"))
+            nodes["cut"]["Choices"][0]["Next"] = slot
+            host["Nodes"].append(nar(slot, brief["default_text"], c("Continue", "after")))
+        elif sid == P + "kitrane.grey":
+            nodes["four"]["Text"] = ('"Four! Liar." {n}She straightens, laughing, and traps your hand against her cheek.{/n} '
+                '"The sergeant inspected my sword for half an hour. You have inspected my hair for less than a minute and already invented a defect."')
+            nodes["ear"]["Text"] = ('"A handsome ear." {n}She turns her head into your hand and kisses your palm.{/n} '
+                '"That is a very poor report. Keep looking. I like your method rather better than your accuracy."')
+            nodes["mind"]["Text"] = ('"The first one, yes. I borrowed this mirror twice to be sure." {n}She puts it away and smooths your collar.{/n} '
+                '"These can wait. I have a patrol to inspect, and you to keep me awake afterwards. Come back tonight."')
+            nodes["end"]["Text"] = ('{n}She pockets the mirror and draws you close enough to brush her lips against your ear.{/n} '
+                '"The same tent. I shall be back from the pickets before the ninth bell. '
+                'We can put the lantern where it was last time. Your boots rather further from the flap."')
+        elif sid == P + "alive.kitrane":
+            host["Entry"] = '"Will you hear one of my plans before I put it into motion?"'
+            host["DelayHours"] = 0
+            nodes["start"]["Text"] = ('{n}Galfrey sets down the dispatch she was signing. The clerks wait at the far table.{/n} '
+                '"A whole plan, Commander. I dislike discovering the dangerous part after the wagons have left."')
+            nodes["refused"]["Text"] = ('"I told you I could not trust your powers or your judgment. I meant it." {n}She leans back.{/n} '
+                '"Kitrane rode with your column. A plain surcoat did not make her a less exacting judge. '
+                'You are offering to tell me the plan before sending it. That is new. Begin."')
+            history_variant(host, "refused", SERVICE,
+                '"I told you I could not trust your powers or your judgment. I meant it." {n}She leans back.{/n} '
+                '"There was a disguise I considered before the march: Kitrane of the Green Crows. I never rode in it. '
+                'Do not ask me to be less exacting because I could answer to a knight\'s name. Tell me your plan."', "new_name")
+            history_variant(host, "never", SERVICE,
+                '"I once considered riding with the Green Crows as Kitrane, an old friend of yours. I remained in Nerosyan." '
+                '{n}She studies you.{/n} "An old friend would still want to know whether the drivers come home. You may begin there."', "new_name")
+            nodes["never"]["Text"] = ('"Kitrane once rode with your column. She saw how your plans worked from the road." '
+                '{n}Her mouth twitches.{/n} "Tell me this one before she has to find out from the survivors."')
+        elif sid in (P + "alive.plan", P + "alive.trial", P + "alive.oath"):
+            host["DelayHours"] = 0
+            if sid == P + "alive.trial":
+                nodes["start"]["Text"] = ('{n}She draws the chair beside hers out from under the dispatch table. The clerk at the far end pauses, then returns to his work.{/n} '
+                    '"Sit here. I want to see the whole map this time." {n}Her hand rests briefly on your sleeve before she takes up her pen.{/n} "Go on."')
+        elif sid == P + "alive.plan_report":
+            host["DelayHours"] = 24
+        if sid in (P + "alive.oath", P + "alive.after_no"):
+            if sid == P + "alive.after_no":
+                nodes["approach"]["Text"] = ('{n}At the ninth bell she meets you at the Crows\' tent, takes your hand and brings you inside. '
+                    'The finished dispatch book lies beside the lantern. She turns it face down, then catches your collar and kisses you.{/n} '
+                    '"I have heard enough objections for tonight. Come closer."')
+                nodes["threshold"]["Text"] = ('{n}She opens your collar and draws your shirt from your shoulders. Her own surcoat is already unlaced; '
+                    'she slips it off and lets the linen follow, then brings you down onto the blankets. '
+                    'Her hair falls against your face as she kisses you again, slower this time.{/n} '
+                    '"Yes. Here." {n}She moves close, bare skin against yours, and draws your hand between you —{/n}')
+            else:
+                nodes["refuse"]["Text"] = ('{n}She sheathes the sword and rises, keeping your offered hand.{/n} "A very fine oath. Wasted." '
+                    '{n}Her thumb presses your pulse; then she pulls you against her and kisses you, hard enough to make you take a step back. '
+                    'She laughs once, breathlessly, before kissing you again.{/n} "Stay. I want that answer."')
+            nodes["morning"]["Text"] = ('{n}At first light she dresses and returns to her dispatches. Later you find her crowned at the table; '
+                'a small bruise shows above her collar. She catches you looking and pushes the next order toward you.{/n} '
+                '"Attend to that before you look so pleased." {n}When it is sealed she dismisses the clerks and comes around the table. '
+                'Her fingers close on your collar again.{/n} "Now. Where were we?"')
+            slot = host["Id"] + ".explicit.1"
+            # Explicit-slot brief: living Queen's own invitation after kept
+            # reports; reserved yes has no oath, no returned-Iz scar or witness.
+            import json
+            from pathlib import Path
+            brief = json.loads((Path(__file__).parents[1] / "tools/route_packs/explicit_slots/galfrey" / (slot + ".json")).read_text(encoding="utf-8"))
+            nodes["threshold"]["Choices"][0]["Next"] = slot
+            host["Nodes"].append(nar(slot, brief["default_text"], c("Continue", "morning")))
+        if sid in (P + "commit.answer_again", P + "alive.after_no"):
+            # Her declaration precedes the acceptance; a request for candour is
+            # never interpreted as the player's choice to make her refuse.
+            nodes["start"]["Text"] += ' {n}She looks directly at you.{/n} "I want you to stay. If you would rather keep this to service, say so. I have finished deciding for myself."'
+            nodes["start"]["Choices"][0]["Text"] = '"Then I want to stay."'
+            nodes["start"]["Choices"][2]["Text"] = '"Tell me plainly: is that what you want?"'
+            nodes["start"]["Choices"][2]["Next"] = "yes"
+            # Keep the refusal node and expose it with an honest appended exit.
+            nodes["start"]["Choices"].append(c('"I do not want to begin this. Let us leave the courtship here."', "refused"))
+            nodes["refused"]["Text"] = ('"Then it ends here." {n}She takes up her sword-belt.{/n} '
+                '"You shall still have my support in the campaign. Neither of us need pretend that means more."')
+
+
+_round2_situations()
+
+# Authored late living account, held unregistered: departure_lint requires an
+# entry in tools/departure_contracts.json, outside this task's edit scope.
+# Coordinator: register this nonromantic surface and append it to SCENES only
+# with the matching Galfrey present_now contract. No Last Call entitlement.
+from story_format import p
+ALIVE_UNFINISHED = scene(P + "epilogue.alive_unfinished", "The orders still waiting", "GalfreyEpilogue", 6, "", [
+    nar("page", '{n}Galfrey stood with the crusade at Threshold and returned to Mendev still crowned. '
+        'Her dispatch desk had held more than campaign business, but no shared future had been agreed. She kept her own counsel on that question.{/n}',
+        paragraphs=(
+            p('{n}The riverbed muster lay among the plans she kept: the drivers accounted for and the column through. '
+              'She had asked to see the next plan before it left the Commander\'s desk.{/n}', requires=(PLAN_KEPT,)),
+            p('{n}A copy of the riverbed orders remained in her papers. The Commander had paid for the wagons and dispatched them; '
+              'she had not yet received the returning muster.{/n}', requires=(PLAN_DISPATCHED,), forbids=(PLAN_KEPT,)),
+            p('{n}She had received the four-day report and answered the Commander\'s objections in the margins. '
+              'Her trust in their word had grown. She had not offered a night merely because the reports were kept.{/n}', requires=(TRIAL_KEPT,)),
+            p('{n}The four-day review had begun, with the farms under the Crows\' watch. '
+              'The war ended before she received its final report. She would not call an unfinished test a kept promise.{/n}', requires=(TRIAL_STARTED,), forbids=(TRIAL_KEPT,)),
+            p('{n}She had put her sword away and reserved her personal answer. Threshold came before she gave it. '
+              'The Commander had her aid in the campaign; she had promised nothing more.{/n}', requires=(OATH_RESERVED,), forbids=(RESERVED_ALLY, RESERVED_REFUSED)),
+            p('{n}She and the Commander kept the company she had offered. When she returned to Drezen on royal business, '
+              'she brought the campaign maps to their table. The invitation ended there.{/n}', requires=(RESERVED_ALLY,)),
+            p('{n}Their courtship had ended with a plain answer. She wrote to the Commander about the border and the crusade, '
+              'and did not reopen the personal question.{/n}', requires=(RESERVED_REFUSED,)),
+        )),
+], requires=("trickster.ever", FINAL, EVENING),
+    forbids=(DEAD, RETURNED, COMMITTED, ROMANCE, FINISHED, CLOSED, "sacrifice", "lastcall.active"),
+    last=6, Relationship=REL, ForbidOverrides={"sacrifice": "trickster.commander_back"})

@@ -1,0 +1,33 @@
+{
+  "galfrey": {
+    "device_class": "act_before_confession",
+    "setting": "Closing Drezen eel-and-curio market beside her working Green Crows life",
+    "payoff_shape": "Kitrane's chosen night precedes her future oath; morning muster carries crown and aging choice",
+    "canon_hooks": [
+      {
+        "guid": "19d217c3503c0304db4bec29c9882bc9",
+        "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0001.jbp",
+        "key": "f5542dd4-43a5-451b-88e0-a7871723d63c",
+        "native_excerpt": "{n}Queen Galfrey nods to you cordially. Her armor is plain and unadorned.{/n} \"As promised, I entered the ranks incognito, along with a few bodyguards. I have introduced myself as Kitrane, an old friend of yours. I am a knight of a minor order, the Green Crows. We shall see how long it takes Anevia to sniff me out.\" {n}The Queen chuckles.{/n}",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "d5133deffe0362548bd2563ee5291eef",
+        "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0004.jbp",
+        "key": "9e5626e3-6b30-4fae-8c4c-79f92e43dc6f",
+        "native_excerpt": "{n}The Queen crosses her hands and pensively taps her gardbrace.{/n} \"It's been a long time since I traveled like this, as just another face in the crowd...\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "85cfdab678616fd4f9666352f75a45cf",
+        "path": "World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0010.jbp",
+        "key": "13e07068-5a48-4cb6-903a-d6b75c94ffdf",
+        "native_excerpt": "\"I shall answer thus: the decision to prolong my life was not mine. It was the decision of the church of {g|Iomedae}Iomedae{/g}. The sun orchid elixirs have been paid for by the church. The priests determined that I was needed in these dark times, both as a ruler and a chosen paladin of Iomedae. I accepted their decision, and the great responsibility it entails.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      5
+    ]
+  }
+}

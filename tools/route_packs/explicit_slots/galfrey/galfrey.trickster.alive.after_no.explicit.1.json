@@ -1,0 +1,49 @@
+{
+  "slot_id": "galfrey.trickster.alive.after_no.explicit.1",
+  "voice": "GALFREY: proud, disciplined, direct, exacting, dryly amused, accustomed to command and to being challenged. A lawful-good paladin who chose service and still wants personal pleasure. Experienced rather than coy; impatient with empty compliments; capable of taking the initiative and correcting a lover without treating affection as fealty. Faith and appetite coexist. No queen-versus-real-woman liberation slogans, therapy terminology, formal permission recital, generic domination persona or narrator maxims. Write new dialogue; do not reuse sentences from this brief.",
+  "facts": [
+    {
+      "fact": "Galfrey enters the crusade incognito in plain armour as Kitrane of the Green Crows, with bodyguards.",
+      "source": "blueprints.zip: World/Dialogs/NPC_Common/Galfrey_Incognito/Cue_0001.jbp; 19d217c3503c0304db4bec29c9882bc9; enGB f5542dd4-43a5-451b-88e0-a7871723d63c"
+    },
+    {
+      "fact": "She accepted the responsibility associated with the church-funded sun orchid elixirs.",
+      "source": "Galfrey_Incognito/Cue_0010; 85cfdab678616fd4f9666352f75a45cf; enGB 13e07068-5a48-4cb6-903a-d6b75c94ffdf"
+    },
+    {
+      "fact": "She is a paladin of Iomedae and wants to fight rather than sit idle in a palace.",
+      "source": "Galfrey_Incognito/Cue_0017; 876d21647a935ba4fab1249ce7fa6fbc; enGB f70f9108-4165-42c9-a515-55ec43c5bd60"
+    }
+  ],
+  "scene": "AUTHORED STAGING, not native physical biography: Trickster path, Chapter 5, ninth bell, Green Crows field-camp tent outside Drezen. Only Galfrey and the Commander are present. Both have plainly chosen this first night. Scene purpose: consensual lovemaking and the private pleasure she has pursued; the surrounding drama remains hers, not a debt for rescue or service. Living Galfrey has completed the existing military trust reports and invited the Commander herself. She has never died or undergone the authored Iz return: no Iz seam, rending, funeral or voice damage. Prior route text supplies loose hair and undressing; do not invent native physical measurements or additional scars. This is the reserved answer: her sword remains with the armourer, no oath or fealty ritual is present. Distinguish this from the direct invitation; do not repeat the tent-pole and swinging-lantern accident. ",
+  "required_beats": [
+    "Begin at the existing initiating cut; do not replay the whole market confession or undressing sequence.",
+    "Keep her practical authority, impatient appetite and dry correction; she also responds to the Commander rather than delivering a monologue.",
+    "Personal distrust was reconsidered through actual conduct; do not claim Kitrane is a separate person whose desire overrides Galfrey's judgment.",
+    "Mutual willingness is already shown in actions. No intoxication, incapacity, coercion, magical persuasion or modern negotiation script.",
+    "Her affection neither forgives the ford hanging nor settles political restoration, succession, faith or aging. No new promise, debt, price or flag.",
+    "No child, squire, servant, partner, witness or interruption in the private act; the adults of the camp remain outside.",
+    "Choose one anatomy-consistent Commander variant for the entire output; no assumed pronouns, body type, race-specific features or transformation.",
+    "This is one first night; alternative approach briefs are mutually exclusive, not subsequent encounters.",
+    "End on the exact last_line and leave the original aftermath to carry dressing, drill or dispatches."
+  ],
+  "default_text": "{n}She draws you close beneath the blanket. This time she has come with her answer, and she means to stay.{/n}",
+  "last_line": "N: The first bell sounds beyond the canvas; Galfrey reaches for her clothes.",
+  "speakers": {
+    "G": "Galfrey",
+    "N": "Narrator"
+  },
+  "example": "N: Galfrey catches your collar before you can straighten it.\nG: Leave it. I have spent the evening undoing your fastenings.\nN: She pulls you close again, smiling against your mouth.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 22,
+  "continuity": {
+    "insert_after": "threshold",
+    "resume_at": "morning",
+    "source_scene": "galfrey.trickster.alive.after_no",
+    "authored_details_are_not_canon_facts": true
+  }
+}
