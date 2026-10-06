@@ -143,10 +143,10 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
         c('[Flirt] "Is this part of the forms?"', "flirt"),
         c('"Show me the sequence again."', "again")),
     jan("flirt", '''"No." {n}She doesn't let go.{/n} "This part's mine."
-{n}Then she does let go, and steps away, and picks up the chalk as if it had been the chalk she'd been thinking about.{/n} "Same time tomorrow. You're dreadful. I'll make something of you."''',
+{n}Then she does let go, and steps away, and picks up the chalk as if it had been the chalk she'd been thinking about.{/n} "After the next watch. You're dreadful. I'll make something of you."''',
         c("[Leave her to the chalk.]")),
     jan("again", '''"Three steps, the wrist, recover. Slower than you think. The quick part comes later, when you've stopped thinking about it." {n}She runs it beside you, and then again, and then again, until you're both breathing hard in a cold cell and neither of you has looked at the door.{/n}
-"Same time tomorrow. You're dreadful. I'll make something of you."''',
+"After the next watch. You're dreadful. I'll make something of you."''',
         c("[Leave her to the chalk.]")),
 ], optional=False)
 
@@ -166,13 +166,13 @@ meet(HOUNDHEART, "Houndheart", '"You\'re quiet today."', [
         c("Continue", "league")),
     jan("told", '''"We told the camp in the cell, you and I, or started to. But blood and tale is about what you did. It isn't about what was going on in your head while you did it. Nobody gets that part. I'm going to give it to you anyway, so sit still."''',
         c("Continue", "league")),
-    jan("untold", '''"You were there. You saw me go. You've never asked me why, and everyone else has asked me nothing else for a year, so I'm going to tell you, and you're going to sit there and let me."''',
+    jan("untold", '''"You were there. You saw me go. You've never asked me why, and everyone else has asked me nothing else since Houndheart, so I'm going to tell you, and you're going to sit there and let me."''',
         c("Continue", "league")),
     jan("league", '''"Seelah talked us into it. Elan's ring for his Kiana, left in his travelling chest when the demons hit the Houndhearts' camp on the edge of the Wound. The League of the Inspiring Cart, riding out to find a ring. It was going to be a story. We were going to tell it in the Defender's Heart for years."
 "No glory without risk. That was Seelah's. I used to shout it louder than she did."''',
         c("Continue", "camp")),
     jan("camp", '''"Then a quasit came out of Elan's chest with the ring, and its colours put Elan and me face-down in the dirt. When we came round we chased it all over that camp like children after a hen. And then Curl was just there, snatching the ring out of its paws and calling things up out of the ground, and Elan swung at him and Seelah got in the way, and somebody was screaming who might have been me." {n}The bucket in the corner goes on filling.{/n}
-"Everyone asks why I ran. I've been asking for a year. I've gone over it the way I'd go over a lost bout, stroke by stroke, looking for the moment I decided."''',
+"Everyone asks why I ran. I've been asking ever since. I've gone over it the way I'd go over a lost bout, stroke by stroke, looking for the moment I decided."''',
         c("Continue", "legs")),
     jan("legs", '''"There isn't one. I didn't decide. My legs decided, and I went with them, and I was two miles north through the scrub toward Numeria before I remembered I had a head."
 {n}She looks at her hands.{/n} "I wasn't thinking at all. I was just gone. Do you know how stupid that feels? Seven years learning where to put my feet, and they took me two miles without asking."''',
@@ -189,7 +189,7 @@ meet(HOUNDHEART, "Houndheart", '"You\'re quiet today."', [
         c('"Deserters hang in most armies. You got a cage, and then me. Count yourself lucky."', "lucky", flags=(HH_LUCKY,)),
         c('"Next time your legs want to decide, look for me. I\'ll be standing where you can see me."', "stand", flags=(HH_STAND,))),
     jan("honest", '''"What I do next is true as well." {n}She tries it out, slowly, like a new sequence.{/n}
-"I've spent a year going over the running. In the cage, in the cell, every night. I could draw you a map of it with my eyes shut."
+"I've gone over the running ever since Houndheart. In the cage, in the cell, every night. I could draw you a map of it with my eyes shut."
 {n}She gets up and empties the bucket out through the bars into the gutter.{/n} "Time I learned the other half."''',
         c("[Leave her with the rain.]")),
     jan("lucky", '''{n}She laughs. It's the old laugh, the tavern laugh from Kenabres, and there is nothing in it at all.{/n}
@@ -274,7 +274,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
         c("Continue", "elan", requires=(ELAN_DEAD,)),
         c("Continue", "elan_lives", forbids=(ELAN_DEAD,))),
     jan("elan", '''"Elan's dead." {n}She says it flatly, the way she says everything that matters.{/n}
-"He saw the jeweller with the souls and ran after him, alone, and the door was trapped, and he opened it. Seelah got to him first. I got there after, from the mouth of the cave where he'd told me to wait. I didn't run, Commander. I didn't do anything useful either." {n}She looks at the four stick figures on the tankard.{/n} "His soul came back with the rest, they say. Curl's too. Nobody's told me what becomes of Curl now. So that's the League: Seelah, and me, and a question."''',
+"He saw the jeweller with the souls and ran after him, alone, and the door was trapped, and he opened it. Seelah got to him first. I got there after, from the mouth of the cave where he'd told me to wait. I didn't run, Commander. I didn't do anything useful either." {n}She looks at the four stick figures on the tankard.{/n} "Curl's soul came back. Elan died of the trap. Nobody's told me what becomes of Curl now. So that's the League: Seelah, and me, and a question."''',
         c("Continue", "q3_end")),
     jan("elan_lives", '''"Elan's alive, and still furious with me. At least he's alive to be. Curl's soul came back with the rest; nobody's told me yet what becomes of him. Seelah is Seelah." {n}She turns the tankard so the cart faces you.{/n}
 "Four out of four, near enough. For a League that started with a barrel of beer, that's a better record than mine."''',
@@ -418,7 +418,7 @@ meet(KENABRES, "Four days", '"You used to laugh louder."', [
     nar("open", '''{n}She is sitting in the cell doorway with her back against the frame, eating an apple with a knife, a slice at a time, the way somebody eats who has been hungry and doesn't mean to be again.{/n}''',
         c("Continue", "start")),
     jan("start", '''"I did, didn't I." {n}She considers the apple.{/n}
-"In Kenabres. With the cart. 'I signed up four days before the demon attack!' And then that thing I used to say after it, every time, to anybody." {n}She does her own voice from a year ago, loud and bright, and it's a good imitation, and it's horrible.{/n}
+"In Kenabres. With the cart. 'I signed up four days before the demon attack!' And then that thing I used to say after it, every time, to anybody." {n}She does her own voice from back in Kenabres, loud and bright, and it's a good imitation, and it's horrible.{/n}
 "I used to think that was funny. Four days. I thought it meant I was meant to be there."''',
         c('"It sounds funny. You must have made the whole table laugh."', "funny"),
         c('"Who were you, before Kenabres?"', "before")),
@@ -589,8 +589,8 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
     jan("cage_end", '''{n}She drinks.{/n} "That's the difference between us. At Houndheart I didn't know, so I ran. In the Scar you didn't know, so you swung."
 "I'm not going to thank you for it. If I'd been less proud, you'd have killed me. But I'd rather be struck by somebody who wasn't sure than saved by somebody who was."''',
         c("[Drink the gaol's terrible beer with her.]")),
-    jan("spend", '''{n}She doesn't answer at once. She looks at you over the rim of the cup the way she looked at the vrock on the wall, before her legs had decided anything.{/n}
-"That's the thing I ran from." {n}Her voice is quite level.{/n} "Not demons. That. Somebody in charge who knows my name and has worked out what I'm worth." "You'd spend me, if I bought enough."''',
+    jan("spend", '''{n}She doesn't answer at once. She looks over the rim of the cup. Her free hand closes flat against her knee.{/n}
+"I ran from demons." {n}Her fingers tighten round the cup.{/n} "Now you're telling me you'd send me to die knowing my name. You'd spend me, if I bought enough."''',
         c('"Yes."', "yes"),
         c('"Not you."', "not_you")),
     jan("yes", '''"Good." {n}She sets the cup down.{/n}
@@ -653,7 +653,7 @@ visit(RIDE, "The Houndhearts' camp", [
         c("Continue", "end_pre", forbids=(COMMITTED,)),
         c("Continue", "end_post", requires=(COMMITTED,))),
     jan("end_pre", '''{n}She takes her horse's reins from you and doesn't mount straight away.{/n}
-"Take me back to Drezen. I've got a bout to arrange, and I've wasted a year not arranging it."''',
+"Take me back to Drezen. I've got a bout to arrange, and I've put it off ever since Houndheart."''',
         c("[Take her back to Drezen.]")),
     jan("end_post", '''{n}She takes her horse's reins from you and doesn't mount straight away. She leans on the saddle and looks at you across it.{/n}
 "Take me back to Drezen. Somewhere with a roof, and you under it." {n}Then, as she mounts:{/n} "And a fire. My feet are ruined."''',
@@ -663,7 +663,7 @@ visit(RIDE, "The Houndhearts' camp", [
 
 # The Knight-Commander's question (Irabeth, from Jannah's side: her old commander, whose Watch she ran from).
 meet(IRABETH, "One question", '"Someone\'s been down here. There\'s a second stool."', [
-    nar("open", '''{n}There is a second stool in the cell that wasn't there yesterday, and on it a folded sheet of the Eagle Watch's good paper, with nothing written on it.{/n}''',
+    nar("open", '''{n}There is a second stool in the cell that wasn't there before, and on it a folded sheet of the Eagle Watch's good paper, with nothing written on it.{/n}''',
         c("Continue", "start", forbids=("irabeth_dead",)),
         c("Continue", "start", requires=("irabeth_dead", "irabeth.trickster.returned")),
         c("Continue", "sergeant", requires=("irabeth_dead",), forbids=("irabeth.trickster.returned",))),
@@ -767,7 +767,7 @@ visit(TAUGHT, "Eyes open", [
 
 # Fate, again: her father's answer.
 meet(REPLY, "Fate, again", '"Your father wrote back?"', [
-    nar("open", '''{n}The second letter has the same river-green wax and the same hand leaning into the wind. It is three times as long as the first.{/n}''',
+    nar("open", '''{n}After weeks of waiting, the second letter has the same river-green wax and the same hand leaning into the wind. It is three times as long as the first.{/n}''',
         c("Continue", "truth", requires=(MIVON_TRUTH,)),
         c("Continue", "legend", requires=(MIVON_LEGEND,))),
     jan("truth", '''"He's furious." {n}She sounds delighted.{/n}
@@ -799,8 +799,8 @@ visit(AFTER_WALL, "Anything but wings", [
         c("Continue", "asleep")),
     nar("you_talk", '''{n}She sits down on your floor with her back against the wall, and you talk: about nothing, the small things there's never time for in a war. Food you miss. A song whose ending you can't remember. An animal you remember from before the war. She asks questions in all the wrong places, and laughs at one of your answers, the real laugh, quieter than the Kenabres one.{/n}''',
         c("Continue", "asleep")),
-    jan("stay", '''"I could." {n}She looks at you for the space of a breath.{/n}
-"I'm not going to. Not like this, frightened, with the wall still in my hands. When I come to you I want to come the way I go into a circle: knowing exactly what I'm doing." {n}She sits down on your floor anyway.{/n} "Talk to me instead."''',
+    jan("stay", '''"Stay." {n}She keeps hold of your wrist. Her fingers are shaking.{/n} "I'd like to drag you down here. I'm not going to. Every time I shut my eyes I hear wings. Talk to me. Anything but wings."
+{n}She pulls the blanket round herself and makes room beside her.{/n}''',
         c("Continue", "you_talk")),
     nar("asleep", '''{n}Somewhere past the second bell she falls asleep sitting up, the sword belt still over her shoulder and her head tipped back against the wall. You put a blanket over her. She doesn't wake.{/n}
 {n}In the morning she's gone, and the blanket is folded on the end of your bed with a stick of chalk on top of it.{/n}''',
@@ -902,7 +902,7 @@ meet(RECRUITS, "Again", '"I hear you\'ve been drilling the Watch recruits."', [
     nar("open", '''{n}She isn't in the cell. The turnkey points you up the steps to the practice yard, where twelve Eagle Watch recruits in new blue are standing in a line of chalk circles, sweating, and Jannah Aldori is walking along the line with her hands behind her back like a very young, very unforgiving old man.{/n}''',
         c("Continue", "start")),
     jan("start", '''"Again." {n}She says it to the whole line without raising her voice, and twelve recruits go through the sequence again: three steps, the wrist, recover.{/n}
-{n}When she sees you she doesn't stop. She comes and stands beside you and watches them.{/n} "The sergeant asked. Half of them are from Kenabres. Half of them have never held anything but a pitchfork. Two of them sang that song about me in the tavern last week."''',
+{n}When she sees you she doesn't stop. She comes and stands beside you and watches them.{/n} "The sergeant asked. Half of them are from Kenabres. Half of them have never held anything but a pitchfork. Two of them sang that song about me in the tavern after the muster."''',
         c('"Which two?"', "which"),
         c('"How are they?"', "how")),
     jan("which", '''"The third and the ninth." {n}She doesn't point.{/n} "I haven't said anything. I've just made them demonstrate the yield in front of the others, lying in the chalk with their eyes open, for a quarter of an hour. Each. Twice."
@@ -1019,7 +1019,7 @@ meet(DOOR, "The door she kept", '"Tell me about the jeweller\'s."', [
 "My master would hate that. He'd say a fencer always knows. But I wasn't fencing, was I. I was soldiering, badly, for the second time in my life, and the second time I didn't run."''',
         c("[Leave her to the blade.]")),
     jan("dead", '''"Probably." {n}She doesn't pretend it helps.{/n}
-"Seelah says the same. Everybody says the same. And every one of them would have opened that door without thinking twice, for someone they loved, and I know it, and so do they." {n}She sheathes the blade.{/n} "I stayed in my place. That has to be enough. Most nights it is."''',
+"Seelah said the same. Everybody says the same. And every one of them would have opened that door without thinking twice, for someone they loved, and I know it, and so do they." {n}She sheathes the blade.{/n} "I stayed in my place. That has to be enough. Most nights it is."''',
         c("[Leave her to the blade.]")),
     jan("won", '''{n}She laughs, caught out.{/n} "I did, didn't I. 'Wait, we won? We completed our mission?' Like a girl at her first tournament." {n}She shakes her head.{/n}
 "I'd forgotten what winning felt like. Not a bout. The other kind, where everybody's on the same side and nobody's keeping score. I'd like more of that. I don't know if I'm allowed it."''',
@@ -1051,7 +1051,7 @@ meet(STAIRS, "The duelling stairs", '"You\'re planning something."', [
 meet(PAPER, "The answer", '"You\'ve written something."', [
     nar("open", '''{n}The blank sheet of Watch paper is on the bunk, not blank any more. There are three lines on it in her upright, finished hand, and a great deal of crossing-out above them.{/n}''',
         c("Continue", "start")),
-    jan("start", '''"For Irabeth. Or for the Watch, or whoever reads these." {n}She doesn't hand it over. She reads it to you herself, flatly, the way she'd read out a bout's result.{/n}
+    jan("start", '''"For the Watch. Whoever reads these now." {n}She doesn't hand it over. She reads it to you herself, flatly, the way she'd read out a bout's result.{/n}
 "'Will you run again? I don't know. I didn't, on the wall, with the vrocks. I didn't, at the muster, in front of everyone. That's two. I'll write again when it's three.'"''',
         c('"That\'s a good answer."', "good"),
         c('"What\'s under the crossing-out?"', "crossed")),
@@ -1059,7 +1059,7 @@ meet(PAPER, "The answer", '"You\'ve written something."', [
 "My master used to make us keep a tally of bouts. I've started keeping a different one. Not wins. Times I stayed." {n}She puts the sheet inside her gambeson.{/n} "Two is a very short tally. I'm going to make it longer."''',
         c("[Leave her with her tally.]")),
     jan("crossed", '''"Lies, mostly." {n}She doesn't seem embarrassed.{/n}
-"'No, never.' That was the first one. Then 'Not while the Commander's watching', which was worse. Then a long bit about Houndheart that Irabeth doesn't need, and then a very rude line about the Watch's paper, which is too thin." {n}She folds it.{/n}
+"'No, never.' That was the first one. Then 'Not while the Commander's watching', which was worse. Then a long bit about Houndheart the Watch doesn't need, and then a very rude line about the Watch's paper, which is too thin." {n}She folds it.{/n}
 "The three lines at the bottom are what was left when I'd crossed out everything I couldn't stand behind. That's how the old man taught us to write up a bout, too."''',
         c("[Leave her with her tally.]")),
 ], requires=(IRABETH, WALLS, "jannah.trickster.challenge"), delay=24)   # Q6 (BEL): after the muster she counts
@@ -1106,3 +1106,147 @@ meet(LAST_MUSTER, "Before the last road", '"They say we march soon."', [
 "That's the least sensible thing you've ever said." {n}She shoulders the blanket roll.{/n} "All right. Come after me, then. I'll try very hard to make it a short walk."''',
         c("[Go with her.]")),
 ], requires=(COMMITTED, NIGHT), delay=120)
+
+
+# Round 2: authored staging at existing contacts, with append-only variants.
+from storylines.jannah_trickster import CONFESSED, RECKONED, P as JAN_P
+_r2_by = {s["Id"]: s for s in SCENES}
+def _r2_nodes(sid):
+    return {n["Id"]: n for n in _r2_by[sid]["Nodes"]}
+
+# Earliest Coronation spine: 24+12+12+12+24+12 (+36 repair;
+# the voluntarily returned wagon adds 36). Optional letters never hold it up.
+for _r2_sid, _r2_delay in ((FORMS, 12), (HOUNDHEART, 12), (WALLS, 24), (REPLY, 720)):
+    _r2_by[_r2_sid]["DelayHours"] = _r2_delay
+for _r2_sid in (BLADE, SPARRING):
+    _r2_by[_r2_sid]["Forbids"].extend([JAN_P + "challenge", COMMITTED, NIGHT])
+_r2_nodes(IRABETH)["open"]["Choices"][-1]["Requires"].append(WALLS)
+
+# Invitations are selectable at her cell, then travel/visit on the page.
+for _r2_sid, _r2_entry in (
+    (RIDE, '"Show me the place at Houndheart. We\'ll ride out together."'),
+    (TAUGHT, '"You said you had another lesson for me tonight."'),
+    (AFTER_WALL, '"Come up to my room tonight. We can talk."'),
+    (SONG, '"Take me down to hear this song of theirs."'),
+):
+    _r2_s = _r2_by[_r2_sid]
+    for _r2_key in ("Remote", "ManualOnly", "Kind"):
+        _r2_s.pop(_r2_key, None)
+    _r2_s.update(Entry=_r2_entry, ContactUnit=UNIT, Areas=[DREZEN], InteractionHub=PRESENCE)
+_r2_nodes(RIDE)["open"]["Text"] = (
+    '{n}Jannah takes her pack off the peg in the cell and checks the blade inside it.{/n} '
+    '"Houndheart. It\'s a long ride. I want to show you where I went north."')
+_r2_nodes(RIDE)["open"]["Choices"][0].update(Text="[Ride out with her to Houndheart.]", Next="road")
+_r2_by[RIDE]["Nodes"].append(nar("road",
+    '{n}You leave Drezen together. When the road reaches the scrub by the old Houndheart camp, '
+    'she reins in, gets down and leads her horse off the road.{/n}', c("Continue", "camp")))
+_r2_nodes(AFTER_WALL)["open"]["Text"] = (
+    '{n}Late that night she knocks at your room with a folded blanket under her arm. '
+    'Her hair is loose; she has not slept since the wall alarm.{/n}')
+_r2_nodes(SONG)["open"]["Text"] = (
+    '{n}Jannah leads you from the gaol toward the tavern under the barracks. Eagle Watch voices '
+    'carry through the window. She gives you a fierce grin, then goes ahead to mount a bench, mug in hand.{/n}')
+
+# Collect the request to hear the declaration outside the gaol, only when made.
+_r2_nodes(YOUR_TALE)["not_you_want"]["Choices"][0]["Set"] = [C + "your_part.say_outside"]
+# No new romantic requirement: this is a remembered line, chosen at the yard.
+from storylines import jannah_trickster as _r2_jt
+_r2_challenge = next(s for s in _r2_jt.SCENES if s["Id"] == JAN_P + "challenge")
+_r2_after = next(n for n in _r2_challenge["Nodes"] if n["Id"] == "after")
+for _r2_choice in _r2_after["Choices"]:
+    _r2_choice["Forbids"].append(C + "your_part.say_outside")
+_r2_after["Choices"].append(c('"I want you standing next to me when it\'s over. Out here, too."',
+    "outside_words", requires=(C + "your_part.say_outside",)))
+_r2_challenge["Nodes"].append(jan("outside_words",
+    '{n}She grips your hand, the injured sleeve dark against your wrist.{/n} '
+    '"Same words. Better place." {n}Her mouth pulls into an unsteady smile.{/n}',
+    c("Continue", "yes", forbids=(_r2_jt.HELD_LIE,)),
+    c("Continue", "no_lie", requires=(_r2_jt.HELD_LIE,))))
+
+# Kiana's paid full rescue takes precedence over the native recovery. The
+# single rescue leaves the other souls captive; Elan is never a stolen soul.
+_r2_full = JAN_P + "guests_home"
+_r2_curl_home = JAN_P + "curl_home"
+_r2_jt.DERIVED[_r2_full] = [["kiana.trickster.guests_ransomed"], ["kiana.trickster.guests_bought_back"]]
+_r2_jt.DERIVED[_r2_curl_home] = [[SOULS_HOME], [_r2_full]]
+for _r2_node in ("did", "matter"):
+    for _r2_choice in _r2_nodes(CURL)[_r2_node]["Choices"]:
+        for _r2_field in ("Requires", "Forbids"):
+            _r2_choice[_r2_field] = [_r2_curl_home if f == SOULS_HOME else f for f in _r2_choice[_r2_field]]
+_r2_paid_curl = jan("which_paid", '"Arsinoe freed him in Drezen, with the souls you brought back. '
+    'So there is someone to ask. I haven\'t heard where he went afterwards." '
+    '{n}She turns the tankard round.{/n} "I\'ll find out. When I\'ve got something to say besides '
+    '\'You ran too.\' It wasn\'t even him at the camp."',
+    c('"Keep him facing the room."', "room"), c("[Say nothing.]", "quiet"))
+_r2_by[CURL]["Nodes"].append(_r2_paid_curl)
+for _r2_node in ("did", "matter"):
+    _r2_choices = _r2_nodes(CURL)[_r2_node]["Choices"]
+    _r2_choices[1]["Forbids"].append(_r2_full)
+    _r2_choices.append(c("Continue", "which_paid", requires=(_r2_full,)))
+
+import copy as _r2_copy
+for _r2_sid, _r2_ids in ((SEELAH, ("elan", "elan_lives")), (DOOR, ("start", "start_lives"))):
+    _r2_ns = _r2_nodes(_r2_sid)
+    for _r2_id in _r2_ids:
+        _r2_variant = _r2_copy.deepcopy(_r2_ns[_r2_id])
+        _r2_variant["Id"] = _r2_id + "_paid"
+        _r2_variant["Text"] = _r2_variant["Text"].replace(
+            'He saw the jeweller with the souls and ran after him, alone',
+            'He saw the jeweller carrying empty settings and ran after him for revenge, alone').replace(
+            'Elan saw Sunhammer with the souls and',
+            'Elan saw Sunhammer carrying empty settings and').replace(
+            "because he was thinking about Kiana and not about doors",
+            "because he wanted revenge for Kiana and forgot about doors").replace(
+            "Curl's soul came back", "You and Arsinoe had already freed Curl's soul").replace(
+            "wanted to go after him that minute", "wanted revenge that minute")
+        _r2_by[_r2_sid]["Nodes"].append(_r2_variant)
+        for _r2_source in list(_r2_ns.values()):
+            for _r2_choice in list(_r2_source["Choices"]):
+                if _r2_choice.get("Next") == _r2_id:
+                    _r2_alt = _r2_copy.deepcopy(_r2_choice)
+                    _r2_alt["Next"] = _r2_variant["Id"]
+                    _r2_alt["Requires"].append(_r2_full)
+                    _r2_choice["Forbids"].append(_r2_full)
+                    _r2_source["Choices"].append(_r2_alt)
+
+# A witnessed killing is not undone by a returned paladin. This reckoning
+# uses her earned return and their existing friendship, without a new toll.
+_r2_seelah_open = _r2_nodes(SEELAH)["open"]
+_r2_seelah_open["Choices"][3]["Forbids"].append(SEELAH_KILLED_AT_CAGE)
+_r2_seelah_open["Choices"][2]["Forbids"].append(SEELAH_KILLED_AT_CAGE)
+_r2_seelah_open["Choices"].append(c("Continue", "returned_cage", requires=(SEELAH_KILLED_AT_CAGE, SEELAH_BACK)))
+_r2_by[SEELAH]["Nodes"].extend([
+    jan("returned_cage", '"She came back. Seelah. I stood in front of her and couldn\'t get a word out. '
+        'You killed her after she broke my lock. I stepped over her to get out." '
+        '{n}She sets the tankard down hard.{/n} "She told me to fetch you. I did."',
+        c("[Face Seelah with her.]", "cage_paladin")),
+    nar("cage_paladin", '{n}Seelah waits on the gaol steps, arms folded.{/n} '
+        '"I broke a cage. You cut me down. Coming back doesn\'t make that a misunderstanding." '
+        '{n}She turns to Jannah.{/n} "And you. You walked past me. Say it."',
+        c("Continue", "cage_answer")),
+    jan("cage_answer", '"I walked past you. I was frightened. I left you there." '
+        '{n}Jannah keeps her eyes on Seelah. The paladin lowers her arms.{/n} '
+        '"Then start with that next time. Don\'t tell me the pretty version." '
+        '{n}Jannah nods once. She does not reach for your hand on the way back to the cell.{/n}',
+        c("[Return to the cell.]", flags=(RECKONED,))),
+])
+
+# Brief: an established couple ends the mock lesson and chooses a return.
+_r2_taught = _r2_nodes(TAUGHT)
+for _r2_id in ("still", "moved"):
+    _r2_taught[_r2_id]["Choices"][0]["Next"] = TAUGHT + ".explicit.1"
+_r2_by[TAUGHT]["Nodes"].append(jan(TAUGHT + ".explicit.1",
+    '{n}She rolls toward you and kisses you, her hand pulling at your shirt. '
+    'The lesson is over. She draws the blanket across the chalk; the lamp burns low beside the bunk.{/n} '
+    '"Stay. I\'ve something to tell you."', c("Continue", "future")))
+
+_r2_morning = next(s for s in _r2_jt.SCENES if s["Id"] == _r2_jt.MORNING)
+_r2_morning_end = next(n for n in _r2_morning["Nodes"] if n["Id"] == "houndheart")
+_r2_morning_end["Choices"][0]["Forbids"].append(JOINED)
+_r2_morning_end["Choices"].append(c("Continue", "friend_told", requires=(JOINED,),
+    forbids=("crossroute.seelah.unavailable",)))
+_r2_morning_end["Choices"].append(c("[Leave her to her grip.]", requires=(JOINED, "crossroute.seelah.unavailable")))
+_r2_morning["Nodes"].append(jan("friend_told",
+    '"I told Seelah myself. About us. She nearly choked on her beer." {n}Jannah tests the new grip, smiling.{/n} '
+    '"Then she wanted to know whether you still make me do drill. I told her I make you do it."',
+    c("[Leave her to her grip.]")))
