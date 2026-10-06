@@ -350,7 +350,7 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
         var regill = S(P + "react.regill_watch");
         check(!regill.Reaction && regill.Nodes.Count == 4 && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
-              && mine.Count(s => s.Reaction) == 4
+              && mine.Count(s => s.Reaction && s.Id.StartsWith(P, StringComparison.Ordinal)) == 4
               && S(P + "react.regill_echo").Reaction
               && S(P + "react.regill_echo").Requires.Contains(Rules.WenduagEchoPrefix + "returned")
               && regill.Forbids.Contains(Rules.WenduagEchoPrefix + "returned"),

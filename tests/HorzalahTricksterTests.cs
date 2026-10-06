@@ -87,7 +87,7 @@ internal static class HorzalahTricksterTests
         var rel = story.Relationships["horzalah"];
         var own = story.Scenes.Where(s => s.Relationship == "horzalah" && !s.Reaction && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var pages = story.Scenes.Where(s => s.Relationship == "horzalah" && s.Owner == "HorzalahEpilogue").ToArray();
-        var reactions = story.Scenes.Where(s => s.Relationship == "horzalah" && s.Reaction).ToArray();
+        var reactions = story.Scenes.Where(s => s.Id.StartsWith(P + "react.", StringComparison.Ordinal) && s.Reaction).ToArray();
         var scar = S(P + "ch4.scar");
         var box5 = S(P + "ch5.nothing");
         var mercy = S(P + "mercy.gift");
@@ -296,7 +296,7 @@ internal static class HorzalahTricksterTests
             "The late commit is not the R2-6 late_committed key, or eligibility ignores it.");
 
         // Reactors: Greybor (whose contract she held) and Wenduag, on their own hubs.
-        check(reactions.Length == 8 && reactions.Select(s => s.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Wenduag" })
+        check(reactions.Length == 10 && reactions.Select(s => s.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Wenduag" })
               && reactions.All(s => s.AnswerLists.Length == 1 && s.Forbids.Length > 0),
             "Horzalah's reactions are not Greybor and Wenduag on their hubs, each with its guard.");
 
@@ -399,10 +399,68 @@ internal static class HorzalahTricksterTests
         check(hunger.Single(c => c.Next == "thumb").Requires.Contains(Committed) && hunger.Single(c => c.Next == "thumb_early").Forbids.Contains(Committed),
             "Her remark about being taught to wait comes before she taught it.");
 
+        // Reviewed polish: exact native receipts decide biography, never romance eligibility.
+        check(story.SelectedAnswers["horzalah.yozz_killed"] == "da63ff8f158beaf42825a5d821128a96"
+              && story.SelectedAnswers["horzalah.yozz_knives"] == "0d313dee79e05da4994b7bfe481cb973"
+              && story.SelectedAnswers["horzalah.yozz_tortured"] == "ae3a61bbbc053484eb3117840d9455c0"
+              && story.SelectedAnswers["horzalah.yozz_released"] == "5e6e4baafff6a5d4da795553928f07a5"
+              && story.SeenCues["horzalah.yozz_confession_heard"].SequenceEqual(new[] { "1a302027ad5c3e94ebbd2313cb3f1e6e" }),
+            "Horzalah polish: Yozz's outcomes or optional confession are bound to the wrong native producer.");
+        var yozzBeat = S(P + "beat.yozz");
+        foreach (var (receipt, expected) in new[] {
+            ("horzalah.yozz_killed", "leash_dead"), ("horzalah.yozz_knives", "leash"),
+            ("horzalah.yozz_tortured", "leash"), ("horzalah.yozz_released", "leash"), ("", "leash_unvisited") })
+        foreach (bool freed in new[] { false, true })
+        {
+            var facts = new List<string> { "trickster", "trickster.ever", Wants, Tested };
+            if (receipt.Length > 0) facts.Add(receipt);
+            if (freed) facts.Add(P + "cost.gift_freed");
+            var world = Later(story, World(story, 5, facts.ToArray()), 24);
+            foreach (string source in new[] { "start", "own" })
+            {
+                var shown = yozzBeat.Nodes.Single(n => n.Id == source).Choices
+                    .Where(c => c.Next != null && c.Next.StartsWith("leash", StringComparison.Ordinal)
+                                && Rules.ChoiceAvailable(c, world)).ToArray();
+                check(shown.Length == 1 && shown[0].Next == expected, "Horzalah polish: Yozz history conflated at " + source);
+            }
+            check(Through(yozzBeat, world, expected, 0).Any(r => r.Has(P + "beat.yozz_heard"))
+                  && Through(yozzBeat, world, expected, 1).Any(r => r.Has(P + "beat.yozz_heard")),
+                "Horzalah polish: a biography variant has no selectable conclusion.");
+        }
+        var killedAndSpared = World(story, 5, "trickster", "trickster.ever", Wants, Tested,
+            "horzalah.yozz_killed", "horzalah.yozz_knives");
+        check(yozzBeat.Nodes.Single(n => n.Id == "start").Choices.Where(c => c.Next != null
+                  && c.Next.StartsWith("leash", StringComparison.Ordinal) && Rules.ChoiceAvailable(c, killedAndSpared))
+                  .Single().Next == "leash_dead", "Horzalah polish: Yozz's death loses to a historical survivor receipt.");
+        var confession = S(P + "beat.used");
+        var firstAdmission = S(P + "beat.used_first");
+        foreach (bool heard in new[] { false, true })
+        {
+            var world = World(story, 5, "trickster", "trickster.ever", Wants, Tested, P + "beat.yozz_heard");
+            if (heard) world.Flags.Add("horzalah.yozz_confession_heard");
+            check(Avail(confession, world) == heard && Avail(firstAdmission, world) != heard,
+                "Horzalah polish: optional confession memory and first admission overlap or both disappear.");
+            var consumed = Take(heard ? confession : firstAdmission, world, "little", 0, P + "beat.used_heard");
+            check(!Avail(confession, consumed) && !Avail(firstAdmission, consumed),
+                "Horzalah polish: both versions of the admission can be consumed.");
+        }
+        var cheekReaction = S(P + "react.wenduag_cheek");
+        check(cheekReaction.Relationship == "wenduag"
+              && Avail(cheekReaction, World(story, 5, "trickster", "trickster.ever", "wenduag.in_party", P + "threatened", Closed)),
+            "Horzalah polish: closing Horzalah suppresses Wenduag's historical judgment.");
+        foreach (string loss in new[] { "wenduag.killed", "wenduag.kicked_out" })
+            check(!Avail(cheekReaction, World(story, 5, "trickster", "trickster.ever", "wenduag.in_party", P + "threatened", Closed, loss)),
+                "Horzalah polish: unavailable Wenduag materializes for the cheek reaction.");
+        foreach (string kill in Kills)
+        {
+            var world = World(story, 6, "trickster", "trickster.ever", Started, Returned, Tested, Committed, Closed, "sacrifice", kill);
+            check(pages.All(s => !Avail(s, world)), "Horzalah polish: dead Horzalah receives a living or mourning page.");
+        }
+
         // Courtship: every beat and letter is reachable on some road.
-        check(beats.Length == 28 && letters.Length == 2 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
+        check(beats.Length == 29 && letters.Length == 2 && letters.All(s => Rules.IsRemote(s) && s.Kind == "letter" && s.Chapters.SequenceEqual(new[] { 5 }))
               && beats.All(s => s.ContactUnit == Unit && s.InteractionHub == "horzalah.presence" && s.Optional),
-            "Horzalah's courtship is not twenty-eight beats on her presence and two Chapter 5 letters.");
+            "Horzalah's courtship is not twenty-eight beats and their confession variant on her presence and two Chapter 5 letters.");
         var reachedIds = new HashSet<string>();
         void Play(Snapshot start, int chapter, int rounds, params string[] avoid)
         {
@@ -441,8 +499,9 @@ internal static class HorzalahTricksterTests
               && giftNight.DelayHours == gift.DelayHours && moveNight.DelayHours == move.DelayHours && collarNight.DelayHours == collar.DelayHours,
             "The refusal road to her commit is longer than 168 hours.");
         var road = World(story, 5, "trickster", "trickster.ever", "greybor.in_party", "horzalah.met_q3_a", "baphomet.named_horzalah", "baphomet.parley",
-            "horzalah.gift_delivered", "hepzamirah.trickster.returned", "horzalah.met_q2", P + "scar_noted", P + "cost.late", P + "beat.board_warned");
+            "horzalah.gift_delivered", "hepzamirah.trickster.returned", "horzalah.met_q2", "horzalah.yozz_confession_heard", P + "scar_noted", P + "cost.late", P + "beat.board_warned");
         Play(road, 5, 20, Ally, LeftFree, Declined, P + "threatened");
+        Play(World(story, 5, "trickster", "trickster.ever", Primed, Ear, Returned, Wants, Tested, P + "beat.yozz_heard"), 5, 2, Ally, LeftFree, Declined);
         Play(World(story, 5, "trickster", "trickster.ever", Primed, Ear, Returned, Wants, Ally), 5, 6);
         Play(World(story, 6, "trickster", "trickster.ever", Primed, Ear, Returned, Wants, Tested, Committed, Chamber), 6, 2);
         Play(World(story, 6, "trickster", "trickster.ever", Primed, Ear, Returned, Wants), 6, 2);
