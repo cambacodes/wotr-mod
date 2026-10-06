@@ -154,8 +154,8 @@ internal static class DorgelindaTricksterTests
         check(pages.Length == 6 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         // eng7-l13: preparation also requires the live outcome contract.
-        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard", "dorgelinda.outcome.route_open", "dorgelinda.trickster.late_committed.without.dorgelinda.trickster.declined" }),
-            "The late commit is not derived from the second book.");
+        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard", "dorgelinda.outcome.route_open", "dorgelinda.trickster.late_committed.without.dorgelinda.trickster.declined", "dorgelinda.outcome.accepted" }),
+            "The late entitlement lacks her explicit acceptance.");
 
         // Trk_Dorgelinda_Countersign: the rider, signed at the caravan council, before the tribunal.
         var caravans = World(story, 3, "trickster", "dorgelinda.caravans_known");
@@ -312,7 +312,9 @@ internal static class DorgelindaTricksterTests
         // Directive 12 on the generated text: the threshold stages desire and the initiating motion, and the cut lands
         // there, on the node's only choice; nothing past the start of the act is narrated.
         var threshold = night.Nodes.Single(n => n.Id == "threshold");
-        check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == null,
+        check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == L + "after_hours.explicit.1"
+              && night.Nodes.Single(n => n.Id == L + "after_hours.explicit.1").Choices.Single().Next == null
+              && night.Nodes.Single(n => n.Id == L + "after_hours.explicit.1").Choices.Single().Set.Contains(L + "night_kept"),
             "The cut does not land on the threshold.");
         var mornings = Play(morning, Later(story, nights.First(), 6));
         check(mornings.Count > 0 && Rules.Available(story, afterWar, Later(story, mornings.First(), 24))
@@ -327,7 +329,13 @@ internal static class DorgelindaTricksterTests
         // Her other columns: the Commander's answer decides. Honesty gets her terms, "my business" a colder allowance,
         // a lie her hard no (her cup back, the line ruled off) with its own page.
         var others = S(L + "other_columns");
-        var columns = Play(others, Later(story, mornings.First(), 24));
+        var soloColumns = Play(others, Later(story, mornings.First(), 24));
+        check(soloColumns.Any(r => r.Has(L + "sole_line")) && !soloColumns.Any(r => r.Has(L + "terms_kept")),
+            "A sole lover is made to disclose invented partners.");
+        var sharedColumns = Later(story, mornings.First(), 24);
+        sharedColumns.Flags.Add(L + "native_arueshalae");
+        Rules.Complete(story, sharedColumns);
+        var columns = Play(others, sharedColumns);
         check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed")) && columns.Any(r => r.Has(L + "narrowed") && !r.Has("dorgelinda.closed"))
               && columns.Any(r => r.Has("dorgelinda.closed")), "Her answer to the other columns is not a real choice.");
         check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", P + "methods_heard", "dorgelinda.closed"))

@@ -14,7 +14,7 @@ Her past before the supply service is her own telling in her own voice, and she 
 # Authored additions: courtship, supply counts, scar stories, wool, cup, bedroom,
 # Old Harrow and postwar shop extend her logistics service; they do not rewrite native verdicts.
 from story_format import c, p, scene
-from storylines.dorgelinda_trickster import (ABYSS, BOOTS_PAID, CARTS, CLEAN, CLOSED, COMMITTED, COUNTED, DECLINED, DIRTY, HANGED,
+from storylines.dorgelinda_trickster import (ABYSS, BOOTS_PAID, CARTS, CLEAN, CLOSED, CONSCIENCE, HARD_MEASURES, COMMITTED, COUNTED, DECLINED, DIRTY, HANGED,
                                              HANGED_LANN, HANGED_WENDUAG, HUSHED, LATE, METHODS, P, PRESENT, PRISON, REDEEMED,
                                              RETURNED, REVIEW, TRIBUNAL, d, nar, office)
 
@@ -284,7 +284,7 @@ office(DEBTS, "Old debts", '"You\'re writin\' letters. To whom?"', [
     d("forge", '''{n}She watches you do it: the treasury clerk's cramped hand, the flourish on the Chancellor's initial, the right grey wax, which she produces from a drawer without comment. When you hold it up to the lamp it would fool you. It very nearly fools her.{/n}
 "The Chancellor dots his i's with a tick, not a dot." {n}She points.{/n} "Did him wrong. Customs won't know. I know." {n}She blows on the ink.{/n}
 "If this comes back on us, it's my stores it comes back to, and your hand on the paper. You're gettin' very comfortable in my book, Commander."''',
-      c("[Seal it.]", "sent", flags=(FORGED,), crusade=("Materials", 100), alignment=("Chaotic", 1))),
+      c("[Seal it.]", "sent", flags=(FORGED,), alignment=("Chaotic", 1))),
     d("honest", '''"A threat." {n}She considers it.{/n} "From the Commander of the Fifth Crusade to a customs clerk in Ustalav. That's a sledgehammer on a thumbtack." {n}She pushes paper across.{/n}
 "Go on, then. Make it a good one. Mention the Worldwound, they don't like to think about the Worldwound down there." {n}She reads it when you finish, twice, and nods.{/n} "That'll frighten somebody. Maybe even the right somebody."''',
       c("[Seal it.]", "sent", flags=(HONEST_DEMAND,))),
@@ -352,9 +352,7 @@ office(RECEIPTS, "Receipts", '"You kept my column open?"', [
     d("miss", '''"Miss you?" {n}She leans back in her chair.{/n}
 "I missed bein' shouted at about boots. I missed somebody comin' through that door who didn't want somethin' off me." {n}She picks up the pen, and puts it down.{/n} "...Aye. I missed you. The clerks noticed. They think I've gone soft." {n}She picks the pen up again.{/n} "Don't tell the Council."''',
       c("Continue", "close", flags=(WELCOMED,))),
-    d("close", '''"Right." {n}She shuts the book on your column, carefully, as if something might fall out.{/n}
-"Everythin' in Drezen's gone to the Abyss while you were in it. Mendev's in pieces. The Queen marched on Iz and took the treasury's best clerks and every spare cart with her. I've got soldiers wearin' boots made of saddle leather." {n}She stands, and for once comes round the desk.{/n}
-"Don't do that again, Commander. The goin' away. I haven't the stock to lose you."''',
+    d("close", '''"Right." {n}She closes the issue book and comes round the desk.{/n} "Your party's back. I'll match what you brought against what we sent. The council's latest supply returns are in the other book." {n}Her hand catches your collar.{/n} "I missed you, Commander. Not just your damned receipts."''',
       c("[Let her straighten your coat.]", "collar")),
     nar("collar", '''{n}She straightens your coat with her good hand, the way a quartermaster straightens a recruit's kit before an inspection, and her fingers stay a moment at your throat. Then she goes back round the desk and sits down and picks up the pen, and whatever it was is back in its column.{/n}''',
         c("[Leave her to it.]")),
@@ -419,9 +417,7 @@ office(RATIONS, "Two out of three", '"You weren\'t at the mess."', [
 office(NIGHT, "After hours", '"The clerks have gone home."', [
     nar("start", '''{n}The last carter has gone. Dorgelinda shuts the ledger and pushes it to the far end of the desk. Her eye follows you to the door.{/n} "Bolt it."''',
         c("[Bolt it.]", "bolted")),
-    d("bolted", '''"Right." {n}She gets up and comes round the desk, and stops close enough that you can smell the lamp oil and wool and the good stuff that is on no manifest.{/n}
-{n}She does not say anything for a moment. Her good hand goes to the stack of requisitions on the corner of the desk and squares it, though it is already square, and then squares it again.{/n}
-"Hammer and tongs. I've not done this in..." {n}She stops, and does not finish the sum.{/n} "Long enough I've forgotten where the buckles go. You'll have to show me. Slowly. I've only the one hand, and it's shakin'."''',
+    d("bolted", '''{n}She comes round the desk and takes your collar in her good hand. Her other wrist braces against the wood. She kisses you, then swears at the fastening of her belt.{/n} "Bloody buckle. Give me a hand with it. I've had enough of waitin'."''',
       c("[Take off your coat. Let her count.]", "coat"),
       c("[Reach for the strap of her eye patch.]", "patch"),
       c('"Well? Are you going to count, or just look?"', "count")),
@@ -445,19 +441,20 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
     nar("threshold", '''{n}Her elbow sends the ledger to the floor. She leaves it there. You kick off a boot; it slides beneath the desk. She pulls you through the inner door, laughing against your mouth. At the bed you work her boots loose, then your remaining one. Her hand catches yours at her waist.{/n}
 "I want you. Here. Before some bastard comes askin' for horseshoes."
 {n}She draws you onto the rough wool. Her bare shoulder is warm beneath your lips; her good hand presses you close, and the last of your clothes falls beside the bed.{/n}''',
-        c("[The lamp gutters out.]", flags=(NIGHT_KEPT,))),
+        c("[The lamp gutters out.]", "dorgelinda.ledger.after_hours.explicit.1")),
+    # Explicit slot: chosen first night, her initiative, patch stays; no explicit prose here.
+    nar("dorgelinda.ledger.after_hours.explicit.1", '''{n}She catches your mouth again and pulls you down beside her. The rough wool bunches beneath her good hand. The last cart rattles away outside.{/n}''',
+        c("[Stay with her.]", flags=(NIGHT_KEPT,))),
 ], requires=("trickster.ever", COMMITTED), forbids=(NIGHT,), delay=12, chapters=(5,))
 
 
 # --- 8. The morning count. ----------------------------------------------------------------------------------------------
 
 office(MORNING, "The morning count", '"Mornin\'."', [
-    nar("start", '''{n}You wake to the scratch of a pen. She is sitting on the edge of the cot, fully dressed, boots laced, the ledger on her knee. It is barely light. Beyond the shutters a supply wagon is being shouted into the yard.{/n}
-{n}She is not writing. She is staring at the page with the pen in her hand, and she looks entirely thrown, which you have never once seen.{/n}''',
+    nar("start", '''{n}You wake with her good arm across you. A wagon rattles beyond the shutters. She pulls you close for a kiss, then reaches for the ledger beside the cot. The pen stops above the dawn entry.{/n}''',
         c('"What\'s wrong?"', "book"),
         c("[Pull her back down.]", "back")),
-    d("back", '''{n}She lets you, for exactly as long as it takes to kiss her, and then she is back on the edge of the cot with the ledger, and a hand flat on your chest to keep you where you are.{/n}
-"Wagons, Commander. They don't unload themselves. They'd like to. I've seen 'em try." {n}She finishes the line.{/n}''',
+    d("back", '''{n}She lets you pull her down and kisses you again. Then she pushes herself upright, warm and rumpled, with her hand on your chest.{/n} "Wagons, Commander. I'll have to get dressed. And you'll have to sit a campaign saddle today." {n}She looks at you with considerable satisfaction.{/n} "That hard one. Mind how you mount."''',
       c('"What\'s wrong?"', "book")),
     d("book", '''"I missed the dawn count." {n}She says it the way another woman might say she had lost a tooth.{/n}
 "Eleven years. I've not missed a dawn count in eleven years. Not for wounds, not for fever, not the week after Kenabres." {n}She shuts the ledger.{/n} "The sergeant ran it. He'll have run it wrong. There'll be lamp oil in with the flour and cloaks in with the blankets by noon."
@@ -498,7 +495,7 @@ office(INQUIRY, "The inquiry", '"You look like you\'ve had a letter."', [
       c("Continue", "dirty", requires=(DIRTY,)),
       c("Continue", "clean", requires=(CLEAN,), forbids=(DIRTY,)),
       c("Continue", "plain", forbids=(CLEAN, DIRTY))),
-    d("dirty", '''"And they'll see the other book, if they look in the right drawer. Their methods, my hand. Weight discrepancies here, carts that fell off in transit there." {n}She puts her good hand on the thin ledger, the one in the smaller script.{/n}
+    d("dirty", '''"And they'll see the other book, if they look in the right drawer. My methods, my hand. Weight discrepancies here, carts written off in transit there." {n}She puts her good hand on the thin ledger, the one she showed you beside the signed returns.{/n}
 "I kept it better than they ever did. That won't save either of us if the wrong clerk opens it."''',
       c("Continue", "offer")),
     d("clean", '''"No second book. I burned it." {n}She taps the letter.{/n} "But there's still your signature under those issues. A lord who wants a scandal won't stop because the sums add up."''',
@@ -513,13 +510,11 @@ office(INQUIRY, "The inquiry", '"You look like you\'ve had a letter."', [
     d("choice", '''"So. What goes to Nerosyan?"''', *INQUIRY_CHOICES),
     d("true_books", '''{n}She stacks every ledger, ties the bundle and leaves every page in place.{/n} "All of it, then. I'll send copies of the receipts with it. Nerosyan'll curse us. Let 'em do it with the figures in front of 'em."''',
       c("Continue", "after", flags=(TRUE_BOOKS,))),
-    d("clean_copy", '''{n}It takes you the whole night. She sits across from you and reads each page as you finish it, and corrects your arithmetic twice, and once your spelling. By dawn there is a stores ledger for Drezen that balances to the copper, in your hand, with no Commander's line and no second book in it. The couriers and the copyist who seals it will want paying, and paying well, for their silence.{/n}
-"Used, quietly." {n}She holds the last page to the lamp.{/n} "That's the best forgery I've ever seen, and I've seen 'em in three kingdoms." {n}She does not smile.{/n} "It's a lie in my book, Commander. First one I've ever sent to Nerosyan. I'll carry it. Don't ask me to like it."''',
+    d("clean_copy", '''{n}You spend the night copying the returns without the disputed issues. Dorgelinda checks each page. At dawn she sets the clean copy beside the original.{/n} "This will get this inquiry off our backs, if nobody asks for the receipts. It doesn't make the issue true." {n}She locks the original away.{/n} "The courier and copyist want pay for their silence. I'll keep the proof of what we sent."''',
       c("Continue", "after", flags=(CLEAN_COPY,))),
     d("her_name", '''{n}She writes her name beneath the list of disputed issues: D. Stranglehold, Quartermaster.{/n} "There. My responsibility." {n}She blots it without looking up.{/n} "I'll answer for it when the war's done. Not while there's a cart in this yard waitin' to be counted."''',
       c("Continue", "after", flags=(HER_NAME,))),
-    nar("after", '''{n}The courier leaves at noon. Out in the yard the carts are being loaded for the front, wagon after wagon, with whatever Drezen has left, which is not enough and will have to be.{/n}
-{n}She watches them from the doorway with her arms folded, the good one over the bad one, and does not come back in until the last one is through the gate.{/n}''',
+    nar("after", '''{n}The courier leaves at noon. In the yard, clerks match loaded wagons against the current supply returns. Dorgelinda checks the issue receipts before letting each cart through the gate. The disputed signatures travel to Nerosyan; the supplies travel to the front.{/n}''',
         c("[Wait for her.]")),
 ], requires=("trickster.ever", MORNING, METHODS), forbids=(INQUIRY,), delay=48, chapters=(5,))
 
@@ -533,16 +528,14 @@ LAST = (
 )
 
 office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
-    nar("start", '''{n}She is in the yard, not the office, in a travelling coat and her old campaign boots, checking the lashings on the last supply wagon with her good hand. The column is forming up for the march on the Wound. There is a pack on the wagon seat with her ledger strapped on top of it.{/n}''',
+    nar("start", '''{n}In the stores yard she checks a wagon packed for the future march on the Wound. Beside it lies the party's kit, labelled and ready. Her ledger is open on a bench; the carters wait for their loading orders.{/n}''',
         c("Continue", "going")),
-    d("going", '''"I'm ridin' with the wagons." {n}She does not stop checking lashings.{/n}
-"You're goin' to the end of the world, Commander, and the end of the world hasn't got a quartermaster. Somebody's got to make sure you've got arrows when you get there, and I'll not trust it to a clerk who's never seen a demon."
-{n}She tugs the last rope, tests it, and it holds.{/n} "Don't argue. I've heard every argument. I've a pen, a knife and one good hand, and the hand's the dangerous one."''',
+    d("going", '''"Packin' ahead. You'll want arrows when the order comes, and I'll not leave it to the last bloody hour." {n}She tests a lashing.{/n} "I'll count this again before it leaves. Till then, you know where my desk is."''',
       c('"I wasn\'t going to argue."', "wasnt"),
       c('"Stay. I need someone left to count what comes back."', "stay")),
-    d("stay", '''"Three clerks and a sergeant are stayin'. They can count the returnin' wagons." {n}She tests the last rope.{/n} "This one's goin' to the Wound. So am I. You'll want ammunition when you get there, whatever else you want of me."''',
+    d("stay", '''"Aye. Someone has to count what comes back." {n}She checks the kit against her ledger.{/n} "I'm still here, Commander. This wagon isn't goin' anywhere till we get the march order."''',
       c("Continue", "boots")),
-    d("wasnt", '''"Good." {n}She pulls the last rope tight.{/n} "Cart's packed. Don't hold it up."''',
+    d("wasnt", '''"Good. Hold that rope while I check the knot. Then I've a receipt for you."''',
       c("Continue", "boots")),
     d("boots", '''{n}She takes a folded paper and pencil from her pack.{/n} "Receipt for your party's kit. Sign when you bring it back. And bring yourself back with it. I don't want a clerk returnin' your boots without you."''',
       c("Continue", "paid", requires=(BOOTS_PAID,)),
@@ -554,7 +547,7 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
       c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
       c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
       c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid'))),
-    d("paid", '''"The boots stay here." {n}She nods at the stores door.{/n} "The last pair, the ones you paid your debt in. Top shelf, unworn. I'm not issuin' 'em to anyone else, and I'm not takin' 'em to the Wound to get demon on 'em." {n}Something moves in her face.{/n} "You come back and you can have 'em. Not before."''',
+    d("paid", '''"The boots stay here." {n}She nods at the stores door.{/n} "The last pair, the ones you paid your debt in. Top shelf, unworn. I'm not issuin' 'em to anyone else, and They're not goin' on this wagon to get demon on 'em." {n}Something moves in her face.{/n} "You come back and you can have 'em. Not before."''',
       c("Continue", "choose", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed'), requires=()),
       c("Continue", 'choose', requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
       c("Continue", 'choose_cold', requires=('dorgelinda.ledger.quarrel_unmended',), forbids=()),
@@ -563,37 +556,37 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
       c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
       c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
       c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended'))),
-    d("choose", '''{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}''', *LAST),
+    d("choose", '''{n}Around you the carters finish loading. A horn sounds the change of watch. The Wound's light is on every face in the yard.{/n}''', *LAST),
     d("receipt", '''{n}You write “Commander, returned” in pencil beside the issued kit. She reads it, folds the paper and puts it inside her coat.{/n} "Not yet, you aren't. You'd better make it true."''',
       c("Continue", "end", flags=(RECEIPT,))),
     d("kiss", '''{n}Every clerk in the yard sees it. So do two sergeants, a column of Mendevian levies, a paladin on a warhorse and the carter of the wagon behind, who drops his reins.{/n}
 {n}She lets it happen. Then she kisses you back, hard, with her good hand flat against your breastbone, pushing as much as holding, and lets go all at once.{/n}
-"Well, that's in the book now," {n}she says, rather hoarsely.{/n} "And theirs." {n}She climbs up onto the wagon seat.{/n} "Come back and sign the receipt, Commander. I'll not ask twice."''',
+"Well, that's in the book now," {n}she says, rather hoarsely.{/n} "And theirs." {n}She takes her ledger from the bench.{/n} "Come back and sign the receipt, Commander. I'll not ask twice."''',
       c("Continue", "end")),
     d("salute", '''{n}You salute her, properly, heel to heel, the way the ranks salute her and nobody above the rank of sergeant ever has.{/n}
 {n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the withered fingers held to her brow by nothing but the arm beneath them.{/n}
-"Commander." {n}Her voice does not waver.{/n} "Come back and sign the receipt." {n}She climbs up onto the wagon seat.{/n}''',
+"Commander." {n}Her voice does not waver.{/n} "Come back and sign the receipt." {n}She takes her ledger from the bench.{/n}''',
       c("Continue", "end")),
-    nar("end", '''{n}The wagon lurches toward the gate. Dorgelinda braces the ledger against her knee and calls the carter's name. He answers from the next wagon; she marks him present and calls the next.{/n}''',
-        c("[Watch the wagon go.]")),
+    nar("end", '''{n}Dorgelinda orders the wagon backed beneath the stores awning. She takes her ledger inside and calls the next carter to her desk. Your kit stays packed for the march.{/n}''',
+        c("[Leave her to the preparations.]")),
 
-    d('choose_cold', "{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}",
+    d('choose_cold', "{n}Around you the carters finish loading. A horn sounds the change of watch. The Wound's light is on every face in the yard.{/n}",
       c("[Sign the receipt now, in advance: \"Commander, returned. Received in good order.\"]", "receipt"),
       c("[Kiss her, in front of the wagons, and never mind the clerks.]", 'kiss_cold'),
       c("[Salute her. Properly. The way the ranks salute her.]", "salute")),
-    d('choose_reserved', "{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}",
+    d('choose_reserved', "{n}Around you the carters finish loading. A horn sounds the change of watch. The Wound's light is on every face in the yard.{/n}",
       c("[Sign the receipt now, in advance: \"Commander, returned. Received in good order.\"]", "receipt"),
       c("[Kiss her, in front of the wagons, and never mind the clerks.]", 'kiss_reserved'),
       c("[Salute her. Properly. The way the ranks salute her.]", "salute")),
-    d('choose_private', "{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}",
+    d('choose_private', "{n}Around you the carters finish loading. A horn sounds the change of watch. The Wound's light is on every face in the yard.{/n}",
       c("[Sign the receipt now, in advance: \"Commander, returned. Received in good order.\"]", "receipt"),
       c("[Kiss her, in front of the wagons, and never mind the clerks.]", 'kiss_reserved_private'),
       c("[Salute her. Properly. The way the ranks salute her.]", "salute")),
-    d('kiss_cold', '{n}She steps back and catches your wrist before you can kiss her. The clerks look down at their manifests.{/n} "Not here. Not after what you said." {n}She releases you and climbs onto the wagon.{/n} "Bring the kit back, Commander. The receipt\'s still yours."',
+    d('kiss_cold', '{n}She steps back and catches your wrist before you can kiss her. The clerks look down at their manifests.{/n} "Not here. Not after what you said." {n}She releases you and takes up her ledger.{/n} "Bring the kit back, Commander. The receipt\'s still yours."',
       c("Continue", "end")),
-    d('kiss_reserved', '{n}She turns her cheek and gives your hand a brief squeeze, then lets go.{/n} "My rooms, on the nights I say. We settled that. The yard\'s for wagons." {n}She climbs onto the seat.{/n} "Come back with your kit."',
+    d('kiss_reserved', '{n}She turns her cheek and gives your hand a brief squeeze, then lets go.{/n} "My rooms, on the nights I say. We settled that. The yard\'s for wagons." {n}She turns back to the kit.{/n} "Come back with your kit."',
       c("Continue", "end")),
-    d('kiss_reserved_private', '{n}She turns her cheek and lets your hand go.{/n} "Not in front of my clerks. You\'ve your business. This is mine." {n}She climbs onto the seat.{/n} "Come back with your kit."',
+    d('kiss_reserved_private', '{n}She turns her cheek and lets your hand go.{/n} "Not in front of my clerks. You\'ve your business. This is mine." {n}She turns back to the kit.{/n} "Come back with your kit."',
       c("Continue", "end")),
 ], requires=("trickster.ever", INQUIRY), forbids=(FORWARD,), delay=48, chapters=(5,))
 
@@ -702,7 +695,7 @@ office(BARTLEY, "The corporal's account", '"You look like you\'ve had news of Ba
 # --- 13. After the council: the other voices at her table. ----------------------------------------------------------
 
 office(COUNCIL, "After the council", '"You look like you\'ve sat through the Logistics Council."', [
-    d("start", '''"I've sat through the Logistics Council." {n}She sets the minutes beside the requisitions.{/n} "Woljif's got a scheme, Lann's got a way to stretch the grain, and the rest of the table wants us honest. We've still got demons on the walls. Somebody'll have to get the supplies there."''',
+    d("start", '''"Council's done." {n}She sets the current supply returns beside the requisitions.{/n} "Demons on the walls, carts on the road. Someone's still got to get the issue to the companies. Want the figures, or my opinion?"''',
       c('"Tell me what you really think of them."', "think", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
       c('"You like them."', "like", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
       c('"Give me the supply report."', "council_cold", requires=('dorgelinda.ledger.quarrel_unmended',), forbids=()),
@@ -711,12 +704,9 @@ office(COUNCIL, "After the council", '"You look like you\'ve sat through the Log
       c('"You like them."', 'like', requires=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',))),
     d("like", '''"Like 'em?" {n}She snorts.{/n} "I'd die for 'em. Doesn't mean I want another council meetin'. Go on. Ask me. I've been savin' it up."''',
       c("Continue", "think")),
-    d("think", '''{n}She pours two cups and sits down with the minutes between you.{/n}
-"Woljif." {n}She holds up one finger of the good hand.{/n} "Thinks every problem's a lock and every lock's a joke. He's right more often than I'd like. I'd trust him with my purse and not my stores, which you'll notice is the wrong way round, and I know it, and so does he."
-"The honest ones." {n}A second finger.{/n} "Ask me what we'd do without the Fellows. I'd start by findin' men who can get a cart through. Then I'd ask where they got the cart."''',
+    d("think", '''{n}She pours two cups and sets the supply minutes between you.{/n} "They want a recommendation. I want a cart that reaches the front. I'll hear a scheme, but I'll want to know where the stores come from."''',
       c("[Wait for the others.]", "others")),
-    d("others", '''"Lann." {n}Third finger.{/n} "Good lad. Thinks everyone can live on nothin' 'cause his people did. They can't. His people buried a lot of the ones who couldn't. He knows it. He doesn't say it."
-"And the hard ones." {n}She sets her hand flat on the minutes.{/n} "Would feed the strong and let the rest go hungry. Then I'm short six drivers and the strong ones haven't got ammunition. I'll not run my stores that way."''',
+    d("others", '''"And the hard ones would feed the strong and let the rest go hungry." {n}She sets her hand on the requisitions.{/n} "Then I'm short drivers and the strong ones haven't got ammunition. I'll not run my stores that way."''',
       c('"And you? What would you have them say about you?"', "her"),
       c('"And me?"', "me")),
     d("her", '''"Me." {n}She thinks about it seriously, as if it were a requisition.{/n}
@@ -739,7 +729,7 @@ office(COUNCIL, "After the council", '"You look like you\'ve sat through the Log
 
     d("council_cold", '"Wagons late. Soldiers hungry." {n}She hands you the written report.{/n} "My recommendation\'s at the bottom. Anything else goes through the clerk."',
       c("[Take the report.]")),
-], requires=("trickster.ever", DEBTS), forbids=(COUNCIL, "woljif.dead", "woljif.kicked_out", "lann.dead", "lann.kicked_out", "lann.plot_absent"), delay=48)
+], requires=("trickster.ever", DEBTS), forbids=(COUNCIL,), delay=48)
 
 
 # --- 14. The west gate: a supply wagon under attack. ----------------------------------------------------------------
@@ -790,34 +780,31 @@ office(WEIGHT, "A weight discrepancy", '"That\'s a lot of barrels for a crusade 
     d("free", '''"You gave me free rein at the council. So." {n}She spreads the good hand at the yard.{/n}
 "Old army pals, drinkin' partners, a few long-overdue debtors. Each one sends a cart, a barrel, a chest. Not enough to cause a fuss in Nerosyan. Just a weight discrepancy here, some cargo that must've dried out or fallen off in transit there."''',
       c("Continue", "how")),
-    d("refused", '''"You told the council we'd take no part in the plunderin' of Mendev. Very noble. It's just a shame your conscience can't fill an empty belly." {n}She spreads the good hand at the yard.{/n}
-"So these aren't plunder. These are old debts. Army pals, drinkin' partners, men who owe me. Each one sends a cart, a barrel, a chest, and I don't ask where it was before it was his."''',
+    d("refused", '''"You refused plunder at the council. These came from men who owe me." {n}She points to the barrels.{/n} "But I can't swear where they got every one. Have a look before I enter ’em."''',
       c("Continue", "how")),
-    d("plain", '''"There's no buyin' honest in Mendev this year. So I'm callin' in debts." {n}She spreads the good hand at the yard.{/n}
-"Old army pals, drinkin' partners, men who owe me. Each one sends a cart, a barrel, a chest. Just a weight discrepancy here, some cargo that must've dried out or fallen off in transit there."''',
+    d("plain", '''"I'm callin' in old debts. Army pals, drinkin' partners, men who owe me." {n}She spreads her good hand at the barrels.{/n} "This is the extra issue. Don't mistake it for the council's supply return."''',
       c("Continue", "how")),
     d("how", '''"Depot sends ten barrels. Carter swears one leaked. Nerosyan writes nine; I unload ten." {n}She taps the chalked figures.{/n} "Old army pal at the depot. Long-overdue debt. Don't look so pleased. I knew this one before you came to Drezen."''',
       c('"You\'re stealing from Mendev."', "stealing"),
       c('"You\'re better at it than the Fellows ever were."', "better")),
-    d("stealing", '''"I'm stealin' from Mendev." {n}She agrees without heat.{/n}
-"And Mendev's stealin' from itself, every lord in it, ever since the Queen squeezed it dry to march on Iz. Everythin' that's not nailed down's walkin'. I'd rather it walked here than into some baron's cellar." {n}She chalks another figure.{/n}
-"You want to stop me, you give the order, and I'll send every barrel back with an apology, and next month our lads'll eat their boots. Your call."''',
+    d("stealing", '''"Aye. That tenth barrel belongs at a Mendevian depot." {n}She chalks its weight.{/n} "It'd do more good here than in a baron's cellar. But you can order it back. All of it, not just the brewery's. I'll have less to issue than I've chalked here. Your call."''',
       c('"Keep them. But keep the true weights too. In your own book."', "keep"),
-      c('"Send the brewery\'s back. That\'s someone\'s living. Keep the army\'s."', "sort")),
-    d("better", '''"Better than the Fellows." {n}She considers it, chalk in hand.{/n}
-"They stole for themselves and called it fairness. I steal for the lads and don't call it anythin'. That's the only difference, and some days it's not much of one." {n}She looks at the barrels.{/n}
-"You'll want to decide if that's a compliment, Commander. I've decided to take it as one."''',
+      c('"Send the brewery\'s back. That\'s someone\'s living. Keep the army\'s."', "sort"),
+      c('"Send every barrel back. Enter the true loss."', "returned_all")),
+    d("better", '''"Bartley took the potions to his sick lads. He also beat my quartermaster and kept a warehouse for himself." {n}She taps her slate.{/n} "I'm enterin' these for the ranks. Still somebody else's barrels. Decide what we keep."''',
       c('"Keep them. But keep the true weights too. In your own book."', "keep"),
-      c('"Send the brewery\'s back. That\'s someone\'s living. Keep the army\'s."', "sort")),
+      c('"Send the brewery\'s back. That\'s someone\'s living. Keep the army\'s."', "sort"),
+      c('"Send every barrel back. Enter the true loss."', "returned_all")),
     d("keep", '''"The true weights." {n}The one eye comes up off the page and stays on you.{/n}
 "You want me to write down every stone I took, in my own hand, so there's one book in the world that knows." {n}She takes the slate back.{/n} "That's a dangerous book to keep, Commander. Any lord who got hold of it could hang me with it." {n}She tucks the slate under her arm.{/n} "...I'll keep it. Next to yours. They can hang together."''',
       c("Continue", "end", flags=(L + "true_weights",))),
     d("sort", '''"Somebody's livin'." {n}She repeats it, and snorts, and then she goes and finds the brewery barrels herself, all six, and has them loaded back on the carter's wagon, and pays him a silver from her own purse for his trouble.{/n}
 "There. One honest thing in the yard." {n}She dusts her hand.{/n} "Don't tell the lads. They'd rather have had the beer."''',
       c("Continue", "end", flags=(L + "brewery_returned",))),
-    d("end", '''{n}She chalks the last figure and hangs the slate on its nail.{/n}
-"Two out of three, Commander. Armed, armoured, fed. This month we'll manage fed." {n}She glances at you sidelong.{/n} "And you came out to the yard and let me show you. You'd make a fair thief, with trainin'. I'll not say that in front of the Council."''',
+    d("end", '''{n}She hangs the corrected slate on its nail.{/n} "That's this delivery. The clerks can match it against the stores before they issue another barrel. Hold the door; I've the slate to bring in."''',
       c("[Help her roll the last barrel in.]")),
+    d("returned_all", '''"All of it. Aye." {n}She orders the carrier to reload the barrels and crosses their weights off the proposed issue.{/n} "That's a hundred and fifty in stores I won't be handin' out. I'll send the depot the true count. They can choke on the apology."''',
+      c("[Help load the returning cart.]", flags=(L + "all_barrels_returned",), crusade=("Materials", -150))),
 ], requires=("trickster.ever", COUNTED, PRESENT), forbids=(WEIGHT,), delay=24, chapters=(5,))
 
 
@@ -875,11 +862,9 @@ office(FAITH, "Buying forgiveness", '"I didn\'t know you prayed."', [
     d("cathedral", '''"I don't." {n}She sets the hammer down.{/n} "I said so at the council. I've never been pious. If you want to placate the people, you build a temple. The priests get their gold, the gods get their prayers, and the people forget they've been robbed." {n}She looks at the hammer.{/n}
 "If prayin' for forgiveness doesn't work, maybe buyin' it will. I said that too. I've been thinkin' about it since."''',
       c("Continue", "hammer")),
-    d("plain", '''"I don't." {n}She sets the hammer down.{/n} "Not like the paladins do. Torag willin', I say, like my mother did. Torag doesn't come when you call, and he doesn't forgive when you pay. He's the Father of the forge. He wants the work done right." {n}She looks at the hammer.{/n}
-"We've done a lot of work this year, Commander. Not much of it right."''',
+    d("plain", '''"Not like the paladins." {n}She turns the small hammer in her palm.{/n} "My mother was a smith. Torag willin', she'd say, then get on with the work. I went for a soldier. She wasn't pleased."''',
       c("Continue", "hammer")),
-    d("hammer", '''"It was my mother's. She was a smith. She'd have wanted me to be one." {n}She turns it once more.{/n}
-"I went for a soldier instead, and then a quartermaster, which is a smith for things that aren't iron. Boots, carts, lies to the ranks about when the grain's comin'." {n}She puts the hammer in the drawer.{/n} "Torag's god of the forge, and of protection, and of plannin' a war. Hard on his enemies. I've done more harm to Mendev's common folk this year than half the demons in the Wound. I'd not blame him for bein' hard on me."''',
+    d("hammer", '''{n}She lays her mother's hammer beside the requisition book.{/n} "I've wounded troops waitin' on boots and barley. I can do somethin' about that. Torag can wait till the carts are loaded."''',
       c('"Do you want forgiveness?"', "want"),
       c('[Trickster] "Would you let me bargain with Torag on your behalf?"', "bargain")),
     d("want", '''"Want it?" {n}She thinks, the way she thinks about requisitions.{/n}
@@ -954,20 +939,24 @@ office(HELMETS, "Three hundred helmets", '"Is that what I think it is?"', [
         c("Continue", "arrived", forbids=(FORGED, HONEST_DEMAND, FENCE_CALLED))),
     d("arrived", '''"Three hundred helmets. Out of a customs yard in Ustalav at last, and don't ask me how, 'cause I wrote so many letters I've lost track of which one worked." {n}She lifts one and turns it in the lamplight.{/n}
 "Somebody in Ustalav finally read the word 'Worldwound' and decided they'd rather not have three hundred of our helmets on their conscience." {n}She sets it on a stack.{/n} "Three hundred heads. I'll take it."''',
-      c("Continue", "stack")),
+      c("Continue", "stack", flags=(L + "helmets_received",), forbids=(L + "helmets_received",), crusade=("Materials", 100)),
+      c("Continue", "stack", requires=(L + "helmets_received",))),
     d("forged", '''"Three hundred helmets. Out of a customs yard in Ustalav on the strength of a Mendevian treasury release with the Chancellor's i's dotted wrong." {n}She lifts one and turns it in the lamplight.{/n}
 "And a letter with 'em. Ustalavic customs, very polite, askin' the Chancellor to confirm his release, 'cause he's taken to dottin' his i's with a round dot lately and they wondered was he unwell." {n}She puts the helmet on a stack.{/n} "I've answered it. In his hand. He's very well, thank you, and a round dot is the fashion in Nerosyan."''',
       c('"You forged the Chancellor twice."', "twice")),
     d("twice", '''"I forged the Chancellor twice." {n}She seems to taste the words.{/n}
 "First time's the Commander's. Second time's mine. That's how it goes, isn't it. You start a thing in my book and then I'm the one keepin' it alive." {n}She sets the lantern on a crate.{/n}
 "It's a lie, and it's got my name nowhere on it, and three hundred lads'll go up the walls with iron on their heads 'cause of it. I've done worse for less." {n}She looks at you sidelong.{/n} "Don't make it a habit. Nerosyan's got clerks too, and some of 'em can count."''',
-      c("Continue", "stack")),
+      c("Continue", "stack", flags=(L + "helmets_received",), forbids=(L + "helmets_received",), crusade=("Materials", 100)),
+      c("Continue", "stack", requires=(L + "helmets_received",))),
     d("honest", '''"Three hundred helmets. No, two hundred and forty. The Ustalavic customs clerk sent sixty of 'em somewhere else before your letter reached him, and he's very sorry, and he's sent an apology on good paper." {n}She holds it up. It is very long.{/n}
 "He read the bit about the Worldwound. He put in a line of his own about how Ustalav prays for us nightly." {n}She folds it.{/n} "Two hundred and forty heads. Honestly come by. I didn't think you had it in you, Commander. Frightenin' a customs clerk with the truth."''',
-      c("Continue", "stack", crusade=("Materials", 75))),
+      c("Continue", "stack", flags=(L + "helmets_received",), forbids=(L + "helmets_received",), crusade=("Materials", 75)),
+      c("Continue", "stack", requires=(L + "helmets_received",))),
     d("fence", '''"Three hundred helmets. Came up the Nerosyan road on a wagon with Ustalavic customs seals nobody ever stamped, drove straight through the gate past a sergeant who swears he saw no driver, and stopped in my yard." {n}She lifts one and turns it in the lamplight.{/n}
 "No letter. No bill. My debt's paid. There's a nail on the wagon seat. Just the one." {n}She holds it up between her good finger and thumb.{/n} "That's his mark. He's tellin' me we're square, and he's tellin' me he could find a nail in my stores if he wanted." {n}She pockets it.{/n} "You'll not ask how. That was the rule."''',
-      c("Continue", "stack", crusade=("Materials", 100))),
+      c("Continue", "stack", flags=(L + "helmets_received",), forbids=(L + "helmets_received",), crusade=("Materials", 100)),
+      c("Continue", "stack", requires=(L + "helmets_received",))),
     nar("stack", '''{n}You help stack. It is slow work and cold, and the clerks go home one by one until it is only the two of you and the last crate. She hands you helmets and you set them on the stacks, and she counts each one aloud as you set it down, and does not lose count once.{/n}''',
         c("[Try one on.]", "try"),
         c("[Keep stacking.]", "last")),
@@ -1066,8 +1055,7 @@ office(OTHERS, "Other columns", '"You\'re quiet today."', [
       c('"That\'s my business, Quartermaster."', "unblessed"),
       c('[Lie] "There\'s nobody else. The sentries have bad arithmetic."', "lie"),
       c('"Nobody else. Not one. The sentries can bet on the weather."', "nobody")),
-    d("nobody", '''"Nobody." {n}She weighs it with the one eye, the way she weighs a manifest that adds up too neatly.{/n} "Then the sentries' arithmetic is worse than I thought." {n}She tears the page with their wagers out of the grey ledger and feeds it into the lamp.{/n}
-"If that changes, I hear it from you first. Not from a sentry, not from a clerk, not from the mess. That's all I'll ask."''',
+    d("nobody", '''"Aye. Then I've no other names to ask for." {n}She leaves the grey notebook closed and puts your cup within reach.{/n} "If that changes, I hear it from you first. Not from a sentry, not from a clerk. That's what I'll have."''',
       c("[Stay.]", flags=(L + "sole_line",))),
     d("unblessed", '''"Your business." {n}She says it slowly, as if entering it.{/n}
 "Right. Then it's yours, and my stores are mine. Nobody else draws on 'em on your seal, and I'll not ask, and you'll not tell." {n}She puts the grey ledger in a drawer and locks it.{/n}
@@ -1094,8 +1082,7 @@ office(OTHERS, "Other columns", '"You\'re quiet today."', [
     d("named", '''{n}You name them. She writes nothing. She listens to each name with the whole of her attention, the way she listens to a carter explain a shortfall, and once or twice she nods, and once her jaw sets and stays set.{/n}
 "Right." {n}She closes the grey ledger.{/n} "Here's what I'll have, then. Nobody draws on my stores on your seal but you. None of 'em sets foot in my rooms, ever. And you hear it from me first if one of 'em crosses me, and I hear it from you first if you ever mean to choose." {n}She holds out her good hand.{/n} "That's the whole of it. Shake on it or don't."''',
       c("[Shake on it.]", "shaken")),
-    d("shaken", '''{n}Her grip is exactly as its name promised. She holds on a moment past the shake.{/n}
-"Done." {n}She takes the grey ledger and, very deliberately, tears the page with the east wall's wagers out of it and feeds it into the lamp.{/n} "The sentries can bet on the weather."''',
+    d("shaken", '''{n}She closes her good hand around yours, holding on a moment after the shake.{/n} "Done. My rooms, my choice of company. Tell me before you change what you've promised." {n}She closes the grey notebook and takes your cup from the shelf.{/n}''',
       c("[Stay.]", flags=(L + "terms_kept",))),
     d("narrow", '''"It matters to me." {n}She puts the pen down.{/n}
 "You'll not tell me, then here's what you get. I'm your quartermaster, and I'm yours on the nights I say, in my rooms, and that's all. No mornings. No tellin' me what worries you. I'll not hand more of myself to a column I'm not allowed to read." {n}She closes the grey ledger.{/n}
@@ -1156,7 +1143,7 @@ office(MARCH, "The quartermaster of the march", '"Who\'s the transfer for?"', [
       c('"You did it for them. The same as the stores."', "same"),
       c("[Put your hand over hers, on the pen.]", "pen")),
     d("same", '''"The same as the stores." {n}She nods slowly.{/n} "Maybe. I'd like to think so. On a good day I think so." {n}She puts the pen down.{/n}
-"On a bad day I think I'm a one-eyed dwarf who's good at sums and bad at sayin' no." {n}She looks at you.{/n} "Today's a middlin' day. Thanks to you. Don't let it go to your head."''',
+"On a bad day I think I'm a one-eyed dwarf who's good at sums and bad at sayin' no." {n}She looks at you.{/n} "Today's a middlin' day. Thanks to you. Now let me get the next issue out."''',
       c("[Leave her to the tray.]")),
     d("pen", '''{n}She lets your hand lie over hers. The pen is between your fingers and hers. Neither of you moves it.{/n}
 "You'll get ink on you." {n}Very quietly.{/n}
@@ -1202,20 +1189,18 @@ office(SERGEANT, "The sergeant's version", '"Is the Quartermaster in?"', [
 
 QUARREL = (
     c('"I\'d do it again."', "again"),
-    c('"You\'re right. I should have told you first."', "sorry"),
+    c('"You\'re right. We were reckless. We need to answer together."', "sorry"),
     c('[Intimidate] "It was my seal. I don\'t need your leave."', "seal"),
 )
 
 office(QUARREL_SCENE, "Hammer and tongs", '"You wanted to see me?"', [
     d("start", '''"Nerosyan's cut our allotment. A quarter off grain, a third off powder, half off boots." {n}She flattens a creased letter on the desk.{/n} "Some bastard at court's read about your signatures under the irregular issues. Calls it a joke between friends. 'Irregular accounting,' he writes. The lads on the walls get less bread, and he gets a fine phrase."''',
       c('"That\'s not a joke between friends."', "friends")),
-    d("friends", '''"No. It's not." {n}She slaps the letter.{/n} "It's my name on the stores. When the court says irregular, it means me. And the lads on the walls get a quarter less bread for it. You signed in front of witnesses; now a lord at court wants to make somethin' of it. I should've heard from you before I heard from him."''',
+    d("friends", '''"No. It's not. I watched you sign. I let the issue through." {n}She slaps the letter.{/n} "Now he's punishin' the ranks for it. We gave him that opening, you and me. Don't sit there grinnin' as if we've outwitted him."''',
       *QUARREL),
     d("again", '''"You'd do it again. Course you would." {n}She sits down hard.{/n} "And I'd let you. I watched that ink dry. Thought we'd got the lads what they needed. Now I've a letter from Nerosyan and a quarter less bread." {n}She rubs her eye.{/n} "Hammer and tongs. I'm angry with you. And with myself."''',
       c("Continue", "cool")),
-    d("sorry", '''"First." {n}She repeats it, and some of the fight goes out of her.{/n}
-"Aye. First. Before the court heard it. Before it was a laugh in the mess and a line in some lord's report." {n}She sits down.{/n} "I don't mind the lies, Commander. I mind hearin' about 'em from Nerosyan."
-{n}She rubs her eye.{/n} "Tell me first. Every time. I'll carry any lie you like if I know I'm carryin' it."''',
+    d("sorry", '''"Together. Aye." {n}She sits, still holding the letter.{/n} "I knew what we signed. I thought gettin' the stores to the front would be enough. It wasn't." {n}She draws a fresh sheet toward her.{/n} "Next time we work out who can cut the allotment before we give him a laugh. And if you hear a threat from court, I hear it too."''',
       c("Continue", "cool", flags=(L + "tell_first",))),
     d("seal", '''{n}Silence. The kind that fills a room.{/n}
 "No," {n}she says at last, very evenly.{/n} "You don't. You're the Commander. You can sign for what you like and I'll write it down." {n}She folds the letter, precisely.{/n}
@@ -1227,7 +1212,7 @@ office(QUARREL_SCENE, "Hammer and tongs", '"You wanted to see me?"', [
     d("cool", '''"Right." {n}She takes a breath and lets it out.{/n} "Here's what we'll do." {n}She pulls a fresh sheet toward her.{/n}
 "I'll write to Nerosyan. Dull as ditchwater. Every cart and crate accounted for, all regular, all quiet, nothin' to laugh about. The Commander's line in a separate book, on my shelf, not theirs." {n}She dips the pen.{/n} "And you'll write a line under mine sayin' the Commander's full confidence is in the quartermaster. Your hand. Your seal. No jokes in it."''',
       c("[Write it. No jokes.]", "written")),
-    d("written", '''{n}She reads your letter twice, folds it with hers and seals them together.{/n} "There. That'll get us the powder back, if not the boots." {n}She sets the letters in the courier's tray.{/n} "Our first proper row, Commander. Mended. Have a drink before I find somethin' else to shout about."''',
+    d("written", '''{n}She reads your sober letter, folds it with hers and seals them together. Later, a treasury reply reaches her desk: the powder allocation is restored; the grain and boots remain cut.{/n} "There. Powder for the guns. The rest I'll have to find elsewhere." {n}She sets your cup beside the letter.{/n} "You stood behind me. That's mended. Sit a bit."''',
       c("[Shut the door.]", flags=(L + "quarrel_mended",))),
 ], requires=("trickster.ever", OTHERS), forbids=(QUARREL_SCENE,), delay=48, chapters=(5,))
 
@@ -1290,8 +1275,8 @@ office(INSPECTOR, "The inspector", '"Who\'s the gentleman in the good coat?"', [
 {n}The inspector does not smile. He turns your column toward you.{/n}
 "Commander. These issues in your name require an explanation."''',
       c('"Which line?"', "line")),
-    nar("line", '''{n}He reads it aloud, precisely, as if it were evidence: every entry since the first, down to the bottle that is on no manifest. His voice climbs a little on the largest of them. "This is not an accounting form, Commander. This is a blank cheque."{/n}
-{n}Dorgelinda does not move.{/n}''',
+    nar("line", '''{n}He reads the issues aloud. Dorgelinda brings a corrected tally from the yard and lays it across his open ledger.{/n} "That crate went to the south-wall levy. There's their receipt. My bottle came out of my purse. You can question the issue; you can't call both a gift to the Commander."
+{n}The inspector checks the tally, then copies the correction into his report. He keeps the disputed signature in view.{/n}''',
         c("Continue", "carts", requires=(CARTS,), forbids=(REVIEW, ABYSS)),
         c("Continue", "wet", requires=(LATE,), forbids=(CARTS, REVIEW)),
         c("Continue", "abyss", requires=(ABYSS,), forbids=(LATE,)),
@@ -1332,8 +1317,7 @@ office(INSPECTOR, "The inspector", '"Who\'s the gentleman in the good coat?"', [
     d("gone", '''{n}When he has gone she sits down in the chair he was in, your chair, and puts her face in her good hand for exactly the space of one breath.{/n}
 "Hammer and tongs," {n}she says through her fingers.{/n} "I sent for him. I sent for him myself, at the council. Someone experienced, ready to answer for the delivery with his life." {n}She lowers the hand.{/n} "And he is. He'll answer for it to the letter, and he'll put us both in it." {n}A short, tired laugh.{/n} "That's what you get for askin' for honest men, Commander. You get 'em."''',
       c("[Pour her a drink from the bottle that is on no manifest.]", "drink")),
-    d("drink", '''{n}She takes it without a word, and drinks, and holds the empty cup against her chest.{/n}
-"You stood there and didn't blink." {n}Quietly.{/n} "Neither did I. We're a pair." {n}She sets the cup down.{/n} "Don't let it go to your head. Go on. I'll write the inspector a letter of thanks. It'll be the most polite thing I ever wrote, and he'll know exactly what I mean by it."''',
+    d("drink", '''{n}She drains the cup and sets it beside the inspector's corrected tally.{/n} "He'll send both. The figures and the suspicion. Let him. I've kept the originals." {n}She pulls paper toward her.{/n} "Go on. I've a letter to write before he gets to Nerosyan."''',
       c("[Leave her to the letter.]")),
 ], requires=("trickster.ever", COUNTED, INSPECTORS), forbids=(INSPECTOR,), delay=48)
 
@@ -1344,17 +1328,17 @@ SCENES.append(scene(P + "epilogue.after_the_war", "", "DorgelindaEpilogue", 6, "
         paragraphs=(
             p("{n}There was a boot shop, in the end, on a street near the Drezen gate, with a sign that said STRANGLEHOLD'S BOOTS. THEY FIT. The jokesters were never allowed in. The Commander was measured there once a month, whether the Commander's feet had grown or not.{/n}", requires=(L + "boot_shop",)),
             p("{n}The Commander's postwar requisitions still came to Dorgelinda. She sent a clerk back whenever a quantity was missing, rank or no rank.{/n}", requires=(L + "joke_audited",)),
-            p('{n}The Commander had promised to find Dorgelinda when the war was over. Visits continued in the rooms behind the stores, after the last cart.{/n}', requires=('dorgelinda.ledger.signed_after',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+            p('{n}The Commander had promised to find Dorgelinda when the war was over. On returning to Drezen, the Commander found her issuing boots at the stores. That evening she pulled them through the inner door by the collar. The next morning she went out to count the carts.{/n}', requires=('dorgelinda.ledger.signed_after',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
             p("{n}Every pair of boots the Commander wore from then on came from the same shelf, and fitted, and was entered in her book.{/n}", requires=(L + "fitted",)),
             p("{n}Twelve soldiers from a plague ward in Drezen outlived the war. None of them ever learned whose column their potions were written in.{/n}", requires=(L + "ward_seen",)),
-            p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=('dorgelinda.ledger.narrowed',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
-            p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+            p("{n}On the nights she chose, Dorgelinda opened the door behind the stores and drew the Commander inside. Before breakfast she handed back their coat. The arrangement stayed as small as she had said.{/n}", requires=('dorgelinda.ledger.narrowed',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+            p("{n}Dorgelinda kept the Commander's company private. Outside her rooms she asked only about supplies; the Commander left the other relationships unspoken. She never opened her door to them.{/n}", requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
             p('{n}The quarrel about the seal remained unresolved. Dorgelinda continued supplying the army, but private visits stopped. The Commander saw her across the office desk, with a clerk waiting for the next requisition.{/n}', requires=(L + "quarrel_unmended",)),
             p('{n}When there was trouble with a requisition, the Commander heard it from Dorgelinda before Nerosyan did. The sergeant still left the office whenever their voices rose.{/n}', requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended',)),
 
-            p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
-            p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended')),
-            p('{n}The Commander had promised to find Dorgelinda when the war was over. Visits continued in the rooms behind the stores, after the last cart.{/n}', requires=('dorgelinda.ledger.signed_after', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+            p("{n}On the nights she chose, Dorgelinda opened the door behind the stores and drew the Commander inside. Before breakfast she handed back their coat. The arrangement stayed as small as she had said.{/n}", requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
+            p("{n}Dorgelinda kept the Commander's company private. Outside her rooms she asked only about supplies; the Commander left the other relationships unspoken. She never opened her door to them.{/n}", requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended')),
+            p('{n}The Commander had promised to find Dorgelinda when the war was over. On returning to Drezen, the Commander found her issuing boots at the stores. That evening she pulled them through the inner door by the collar. The next morning she went out to count the carts.{/n}', requires=('dorgelinda.ledger.signed_after', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
             p('{n}The quarrel about the seal remained unresolved. Dorgelinda continued supplying the army, but private visits stopped. The Commander saw her across the office desk, with a clerk waiting for the next requisition.{/n}', requires=('dorgelinda.ledger.quarrel_cold',), forbids=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended')),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
@@ -1394,9 +1378,9 @@ D. Stranglehold, Logistics."
 EPILOGUE_PARAGRAPHS = {
     P + "epilogue.committed": (
         (TRUE_BOOKS, '{n}The ledgers sent to Nerosyan were the true ones, disputed issues and all. The lords resented the admission. Among the ranks, it earned the Commander a few defenders who had no patience for court gossip.{/n}'),
-        (CLEAN_COPY, "{n}The copy she sent to Nerosyan during the war balanced to the copper, in the Commander's hand. It was the only lie she ever filed, and she kept the original, and never said where.{/n}"),
+        (CLEAN_COPY, "{n}The copy she sent to Nerosyan during the war balanced to the copper, in the Commander's hand. It concealed the disputed issues from this inquiry. She kept the original against a second demand for the books.{/n}"),
         (HER_NAME, "{n}After the war Dorgelinda went to Nerosyan to answer for the disputed issues bearing her name. She took the original receipts and argued over every cart and crate. The Commander received a copy of the inquiry's questions in her small, hard hand.{/n}"),
-        (RECEIPT, "{n}She kept a pencilled receipt folded small inside her coat for the rest of her life: Commander, returned. Received in good order. It was the only receipt in her whole career she was ever glad to close.{/n}"),
+        (RECEIPT, "{n}She kept a pencilled receipt folded small inside her coat for the rest of her life: Commander, returned. Received in good order. It remained in her coat after the Commander had actually returned to Drezen.{/n}"),
     ),
 }
 
@@ -1413,10 +1397,243 @@ def integrate(payload):
         page = by_id[sid]["Nodes"][0]
         page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in paras)
 
+    _round2_partners(payload)
+
     # Authored polish: retained account and private terms, after all old paragraph slots.
     by_id[P + "epilogue.committed"]["Nodes"][0]["Paragraphs"].extend((
         p("{n}The first disputed account had balanced before the war ended. She kept the Commander's confession with its receipts; no clerk was allowed to mistake it for missing stock.{/n}", requires=('dorgelinda.trickster.cost.told_all',), forbids=()),
         p('{n}The original issue remained unresolved. She kept its receipts together and still demanded an explanation whenever the Commander brought another requisition.{/n}', requires=(), forbids=('dorgelinda.trickster.cost.told_all',)),
-        p("{n}The Commander joined her at her table whenever the war's remaining business allowed, drinking from her dented cup.{/n}", requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
-        p("{n}The Commander joined her at her table whenever the war's remaining business allowed, drinking from her dented cup.{/n}", requires=(), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+        p("{n}When the Commander returned to Drezen, she finished the day's dispatches before taking their hand. Behind the stores she drew them close, kissed them hard and shut her own door. At dawn she was back in the yard.{/n}", requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+        p("{n}When the Commander returned to Drezen, she finished the day's dispatches before taking their hand. Behind the stores she drew them close, kissed them hard and shut her own door. At dawn she was back in the yard.{/n}", requires=(), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
     ))
+
+
+# Round 2: receipts for already stated supply consequences. These are authored
+# logistics extensions, not native verdict changes or additional romance prices.
+ALLOTMENT_LOST = L + "allotment_lost"
+POWDER_RESTORED = L + "powder_restored"
+WINE_OWED = L + "wine_owed"
+BILL_OWED = L + "cellar_bill_owed"
+CELLAR_PAID = L + "cellar_settled"
+REQUISITIONS = L + "requisitions_applied"
+OTHER_LOVER = L + "other_lover"
+
+
+def _round2_receipts():
+    from storylines.dorgelinda_trickster import SCENES as office_scenes
+    by = {s["Id"]: s for s in office_scenes + SCENES}
+    def node(sid, nid):
+        return next(n for n in by[sid]["Nodes"] if n["Id"] == nid)
+
+    # The old scene remains available in all its old histories. A receipt also
+    # protects resources if a conversation is interrupted before completion.
+    first = node(QUARREL_SCENE, "start")["Choices"][0]
+    first.update(Next="grain_receipt", Set=[ALLOTMENT_LOST],
+                 Forbids=[ALLOTMENT_LOST], Crusade=dict(Resource="Materials", Amount=-150))
+    node(QUARREL_SCENE, "start")["Choices"].append(
+        c("[Read the cut allotment.]", "friends", requires=(ALLOTMENT_LOST,)))
+    by[QUARREL_SCENE]["Nodes"].append(nar("grain_receipt",
+        "{n}She enters the cancelled grain issue beside the powder and boots: fifty from the food allocation, a hundred and fifty in military stores. The treasury notice is pinned to the loss.{/n}",
+        c("[Read the notice.]", "friends", crusade=("Finances", -50))))
+
+    for sid, nid in ((QUARREL_SCENE, "written"), (COLD_COUNTS, "letter")):
+        old = node(sid, nid)["Choices"][0]
+        old.update(Requires=[ALLOTMENT_LOST], Forbids=[POWDER_RESTORED],
+                   Crusade=dict(Resource="Materials", Amount=50))
+        old["Set"].append(POWDER_RESTORED)
+        # Old saves can reach the delayed repair without the newly added loss.
+        # Preserve their welcome and dialogue, but never mint replacement stock.
+        node(sid, nid)["Choices"].append(c(old["Text"], old["Next"],
+            flags=tuple(f for f in old["Set"] if f != POWDER_RESTORED), requires=(POWDER_RESTORED,)))
+        node(sid, nid)["Choices"].append(c(old["Text"], old["Next"],
+            flags=tuple(f for f in old["Set"] if f != POWDER_RESTORED), forbids=(ALLOTMENT_LOST, POWDER_RESTORED)))
+
+    # Existing failed/successful checks retain their positions. Leaving a bill
+    # owing is selectable at zero funds; payment never earns affection.
+    for nid, flag, amount in (("jest_won", WINE_OWED, 50), ("jest_lost", BILL_OWED, 200)):
+        old = node(REVELS, nid)["Choices"][0]
+        old["Text"] = "[Leave the bill owing.]"
+        old["Set"].append(flag)
+        node(REVELS, nid)["Choices"].append(c(
+            '[Authorize %s from the crusade treasury.]' % amount, "end",
+            flags=(CELLAR_PAID,), crusade=("Finances", -amount)))
+    won = node(REVELS, "jest_won")
+    won["Text"] = won["Text"].replace("You get the wine.", "Fifty for the wine. You get that.")
+    lost = node(REVELS, "jest_lost")
+    lost["Text"] = '"Nice try. Two hundred still owing." {n}She writes the full bill beneath your failed jest.{/n} "Crusade treasury, on your order. Pay it now, or I keep it here till you do. The surgeons get their wine first."'
+
+    grain = node(QUARREL_SCENE, "grain_receipt")
+    grain["Choices"][0]["Set"] = [L + "grain_allotment_lost"]
+    grain["Choices"][0]["Forbids"] = [L + "grain_allotment_lost"]
+    grain["Choices"].append(c("[Read the notice.]", "friends", requires=(L + "grain_allotment_lost",)))
+    node(QUARREL_SCENE, "start")["Choices"][-1]["Next"] = "grain_receipt"
+
+    # Existing surplus/requisition outcomes always outrank memories of crisis.
+    for sid, nid in ((RECEIPTS, "door"),):
+        old = node(sid, nid)
+        old["Text"] = "{n}Dorgelinda has the party's Abyss issue open beside the current council returns. A clerk waits with a stack of delivery receipts. She waves him out when she sees you.{/n}"
+    # The meal can follow donations too: hunger here is her missed meal,
+    # not an erased council recovery. Keep the same player responses/results.
+    for answer in node(RATIONS, "start")["Choices"]:
+        answer["Forbids"].append(CONSCIENCE)
+    node(RATIONS, "start")["Choices"].append(c("Continue", "provisioned", requires=(CONSCIENCE,)))
+    by[RATIONS]["Nodes"].append(d("provisioned",
+        '''"The donations are in. Plenty in the warehouses." {n}She nudges the bowl toward the young levy.{/n} "He missed the mess call fetchin' kit for the wounded. I gave him mine. I've been countin' carts since, and the cook's not waitin' on me. Don't make a council out of it."''',
+        *EAT_CHOICES))
+    methods = by[P + "after.fellows_methods"]
+    for answer in methods["Nodes"][0]["Choices"]:
+        answer["Requires"] = [REQUISITIONS if f == HARD_MEASURES else f for f in answer["Requires"]]
+        answer["Forbids"] = [REQUISITIONS if f == HARD_MEASURES else f for f in answer["Forbids"]]
+    council = by[COUNCIL]
+    old = node(COUNCIL, "think")["Choices"][0]
+    old.update(Next="woljif_opinion", Requires=["woljif.in_party"])
+    node(COUNCIL, "think")["Choices"].append(c("Continue", "lann_dispatch", forbids=("woljif.in_party",)))
+    council["Nodes"].extend((
+        d("woljif_opinion", '''"Woljif's scheme at the table? He can find us stores. I'll still check the weights myself."''', c("Continue", "lann_dispatch")),
+        nar("lann_dispatch", "{n}She turns to the ration figures.{/n}",
+            c("Continue", "lann_opinion", requires=("lann.in_party",)),
+            c("Continue", "others", forbids=("lann.in_party",))),
+        d("lann_opinion", '''"Lann's careful with grain. Knows what hunger does. My drivers need enough to haul, though. I'll count their rations before I stretch anythin'."''', c("Continue", "others")),
+    ))
+
+    # Record actual harm separately from the existence of an optional scene.
+    for target in ("keep", "sort"):
+        node(WEIGHT, target)["Choices"][0]["Set"].append(L + "barrels_kept")
+    returned = node(WEIGHT, "returned_all")
+    returned["Choices"][0]["Requires"] = [DIRTY]
+    returned["Choices"].append(c("[Help load the returning cart.]",
+        flags=(L + "all_barrels_returned",), forbids=(DIRTY,)))
+    returned["Text"] = '"All of it. Aye." {n}She orders the barrels reloaded and crosses their weights off the proposed issue.{/n} "A hundred and fifty in stores I won\'t be handin\' out. If we\'ve booked it in the reserve, I\'ll strike it out again. The depot gets the true count."'
+    for nid in ("cathedral", "plain"):
+        old = node(FAITH, nid)["Choices"][0]
+        old.update(Next="harm", Requires=[L + "harm_done"])
+        node(FAITH, nid)["Choices"].append(c("Continue", "restrained", forbids=(L + "harm_done",)))
+    by[FAITH]["Nodes"].extend((
+        d("harm", '"Those stores came out of somebody\'s house or depot. We sent them to the front. Doesn\'t put them back where we took them from." {n}She turns the hammer in her palm.{/n} "The folk back there can curse me. I\'ll not tell \u2019em they owe me thanks."', c("Continue", "hammer")),
+        d("restrained", '"We could have taken more. We didn\'t." {n}She studies the hammer.{/n} "Still got wounded lads comin\' through my stores. I\'d rather find their kit than spend the afternoon askin\' a priest whether I\'m forgiven."', c("Continue", "hammer")),
+    ))
+
+
+_round2_receipts()
+
+office(L + "cellar_settlement", "The remaining bill", '"The cellar bill, Quartermaster."', [
+    d("bill", '"Still here." {n}She brings the slate out of a drawer.{/n} "The surgeons\' wine first. No jokes this time."',
+      c("[Authorize two hundred from the crusade treasury.]", flags=(CELLAR_PAID,),
+        requires=(BILL_OWED,), crusade=("Finances", -200)),
+      c("[Authorize fifty for the wine.]", flags=(CELLAR_PAID,), requires=(WINE_OWED,),
+        forbids=(BILL_OWED,), crusade=("Finances", -50)),
+      c("[Leave it owing.]", abort=True)),
+], requires=("trickster.ever", "dorgelinda.present_now", REVELS), forbids=(CELLAR_PAID,), chapters=(5,),
+   RequiresAnyGroups=[[WINE_OWED, BILL_OWED]])
+
+
+def _round2_partners(payload):
+    """Route-local questions read the existing open, earned romantic entitlement.
+
+    Naming is the Commander's disclosure, not knowledge obtained from gossip,
+    a vision, or the stores ledger. No participant is brought into the room.
+    """
+    import copy
+    from storylines.household import PARTNERS
+    by = {s["Id"]: s for s in payload["Scenes"]}
+    other = by[OTHERS]
+    nodes = {n["Id"]: n for n in other["Nodes"]}
+    derived = payload.setdefault("Derived", {})
+    partners = [rel for rel in PARTNERS if rel not in ("dorgelinda", "ember", "aivu")]
+    native_romances = {"arueshalae": L + "native_arueshalae_open", "camellia": "camellia.romance",
+                       "galfrey": "galfrey.romance_active", "wenduag": "wenduag.romance_active"}
+    # Native Arueshalae has no shared romance reader in this export. Bind it
+    # here without altering her route. Native breakup completes this parent;
+    # the first-strike Fail child is a warning, not a persistent failure reader.
+    payload.setdefault("Etudes", {})[L + "native_arueshalae"] = "d6a90c0f6536331498cafa1f3195d886"
+    derived[L + "native_arueshalae_open"] = [[L + "native_arueshalae"]]
+    for rel in partners:
+        key = L + "current_other." + rel
+        derived[key] = [[rel + ".harem.eligible"]]
+        if rel in native_romances:
+            derived[key].append([native_romances[rel]])
+        payload.setdefault("DerivedOpenRoutes", {})[key] = [rel]
+    derived[OTHER_LOVER] = [[L + "current_other." + rel] for rel in partners]
+    derived[L + "harm_done"] = [[REQUISITIONS], [L + "barrels_kept"], [DIRTY]]
+    payload.setdefault("SeenCues", {})[REQUISITIONS] = ["1576c91c20be9064083a3181abb354a9"]
+    nodes["start"]["Text"] = '"Who else, Commander?" {n}She sets your dented cup beside a small grey notebook.{/n} "I want it from you. The sentries can keep their wagers. We\'ve had a night; that doesn\'t answer this."'
+    # Both legacy denials follow actual history. The labelled lie cannot create
+    # evidence on a solo run; the unlabelled denial cannot obtain a false sole yes.
+    for answer in nodes["says"]["Choices"]:
+        if answer["Next"] in ("nobody", "lie"):
+            answer["Forbids"].append(OTHER_LOVER)
+            answer["Next"] = "nobody"
+    nodes["says"]["Choices"].append(c('[Lie] "Nobody else."', "lie", requires=(OTHER_LOVER,)))
+    nodes["start"]["Choices"][0]["Text"] = '"Ask me yourself."'
+    nodes["says"]["Text"] = '"Are there others? I want the names if there are." {n}She pushes the cup toward you, then leaves her hand beside it.{/n}'
+    for answer in nodes["says"]["Choices"]:
+        if answer["Next"] in ("bother", "sign"):
+            answer["Requires"].append(OTHER_LOVER)
+        elif answer["Next"] == "nobody":
+            answer["Text"] = '"Nobody else. Not one."'
+    nodes["lie"]["Text"] = '"Nobody?" {n}She holds your cup between her hands.{/n} "Say it plain, Commander. I\'ll take an honest answer I don\'t like. If that was a lie, give me the cup back. I\'ll not keep a lover who promises me I\'m the only one and won\'t tell me the truth."'
+    nodes["lie"]["Choices"][0]["Text"] = "[Admit the lie and put her cup in her hand.]"
+    nodes["bother"]["Text"] = '"Aye, it matters." {n}She sets the cup down.{/n} "I don\'t want somebody turnin\' up in my stores with your seal and a claim on me. And I don\'t want promises you can\'t keep. Names first. Then I decide."'
+    nodes["sign"]["Text"] = '"Then tell me what you\'re signin\' for." {n}She leaves her good hand beside your cup.{/n} "The night was ours. I\'m askin\' what comes after it."'
+    nodes["named"]["Text"] = '"Tell me each name yourself. No clerk, no sentry." {n}She puts the pen aside and faces you.{/n}'
+    nodes["named"]["Choices"][0]["Next"] = "names.0"
+    nodes["named"]["Choices"][0]["Text"] = "[Tell her who you are with.]"
+    response = '"Right. Nobody draws on my stores on your seal but you. Nobody else sets foot in my rooms. If that changes, I hear it from you." {n}She holds out her good hand.{/n} "Shake on it, if that\'s what you want too."'
+    def name_answer(rel):
+        # This answer supplies information; it does not summon the named woman.
+        names = {"tirabade": ["Anevia", "Irabeth"],
+                 "minagho_chivarro": ["Minagho", "Chivarro"]}.get(rel, [PARTNERS[rel][1]])
+        return "[Give " + " and ".join(name + "'s name" for name in names) + ".]"
+
+    added = []
+    for rel in partners:
+        name = PARTNERS[rel][1]
+        nxt = "names_done"
+        words = {
+            "nocticula": '"A demon lord. Hammer and tongs." {n}Her jaw tightens.{/n} "No presents in my stores. No favours called in through you. If she wants somethin\', she asks me and I can say no."',
+            "shamira": '"The demon from Alushinyrra? She\'ll not have a key, or an issue on your seal. Tell her that before she comes askin\'."',
+            "jerribeth": '"A demon with a taste for soldiers. Keep her out of my ranks and out of my rooms. I mean it, Commander."',
+            "galfrey": '"Royal company." {n}She lets out a short breath.{/n} "No orders from her household about mine. I answer for the army\'s stores. My bed isn\'t an appointment she hands out."',
+            "anevia": '"She\'ll know how to keep a private door private. Tell her this one\'s mine."',
+            "irabeth": '"I\'ll not have her put in the middle of a lie. What you promise her, you keep. Same as what you promise me."',
+        }.get(rel, '"Aye." {n}She considers the name before nodding.{/n} "Your time with her is yours to arrange. My rooms and my stores stay mine."')
+        added.append(d("named." + rel, words, c("Continue", nxt)))
+    added.append(nar("names.0", "{n}She listens while you name the other relationships you have chosen.{/n}"))
+    added.append(d("names_done", response, c("[Take her hand.]", "shaken")))
+    # Acyclic, ordered disclosure: show only the next actual lover, never
+    # empty checklist pages or a loop through the conversation.
+    ordered_keys = [L + "current_other." + rel for rel in partners]
+    for index, rel in enumerate(partners):
+        replies = next(n for n in added if n["Id"] == "named." + rel)
+        replies["Choices"] = [c(name_answer(r), "named." + r,
+            requires=(ordered_keys[j],),
+            forbids=tuple(ordered_keys[index + 1:j])) for j, r in enumerate(partners) if j > index]
+        replies["Choices"].append(c("[Hear her answer.]", "names_done",
+            forbids=tuple(ordered_keys[index + 1:])))
+    opening = next(n for n in added if n["Id"] == "names.0")
+    opening["Choices"] = [c(name_answer(r), "named." + r,
+        requires=(ordered_keys[j],), forbids=tuple(ordered_keys[:j])) for j, r in enumerate(partners)]
+    opening["Choices"].append(c("[There are no other names.]", "names_done", forbids=tuple(ordered_keys)))
+    other["Nodes"].extend(added)
+    # The existing sole arrangement explicitly asks for renewed disclosure.
+    # This is its collection, not a new exclusivity demand or a reconciliation.
+    follow = copy.deepcopy(other)
+    follow["Id"] = L + "changed_columns"
+    follow["Title"] = "What changed"
+    follow["Entry"] = '"There\'s someone else. You said to tell you first."'
+    follow["Requires"] = ["trickster.ever", "dorgelinda.present_now", COMMITTED, L + "sole_line", OTHER_LOVER]
+    follow["Forbids"] = [CLOSED, follow["Id"]]
+    follow["DelayHours"] = 0
+    follow["Nodes"][0]["Text"] = '"Aye. I did." {n}She sets your cup between you.{/n} "Glad you came yourself. Now tell me who. Then I\'ll tell you what I can have."'
+    follow["Nodes"][0]["Choices"] = [c("[Name the other relationship.]", "terms"), c('"I won\'t name her."', "narrow")]
+    # Only the new follow-up is reduced; all saved original nodes stay intact.
+    follow_nodes = {n["Id"]: n for n in follow["Nodes"]}
+    reachable, pending = set(), [follow["Nodes"][0]["Id"]]
+    while pending:
+        nid = pending.pop()
+        if nid in reachable:
+            continue
+        reachable.add(nid)
+        pending.extend(a["Next"] for a in follow_nodes[nid]["Choices"] if a.get("Next"))
+    follow["Nodes"] = [n for n in follow["Nodes"] if n["Id"] in reachable]
+    payload["Scenes"].append(follow)

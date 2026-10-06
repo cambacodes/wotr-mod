@@ -1,0 +1,22 @@
+{
+  "voice": "DORGELINDA: blunt, practical, rough-humoured veteran; impatient with fuss, comfortable swearing, fiercely competent and protective of her troops. Wants private bodily closeness for herself, without turning supply duty or gratitude into payment for affection. A moment of nerves gives way to direct appetite. One-handed awkwardness is practical, never infantilizing. Narration is short, concrete and sensory. Write new dialogue from these traits; do not reuse source dialogue or the example.",
+  "facts": [
+    "Canon: middle-aged dwarf and chair of the Logistics Council, stationed in Drezen after her office opens.",
+    "Canon: scarred claw marks across her face, a black eye patch over one eye, and a numb damaged hand with crooked fingers withered to the bone.",
+    "Canon: left front-line service for supplies after her injury; remains competent with one good hand and refuses to divert wartime healing resources to herself.",
+    "Canon sources: Logistics_2/Cue_0001 d94aa015becda004ea2484ea8a50fff7; Logistics_Officer/Cue_0013 4145e730c140cfe4abfbd4ff33076221; Cue_0014 73a6ebd04f44a274bbd7d4cf915d8632. No other physical or sexual-history facts are supplied."
+  ],
+  "scene": "Reserved intimacy passage, not generated in this planning pass. Authored staging: Trickster Chapter 5, Dorgelinda's private rooms behind the Drezen stores, after the last cart. Both have already chosen the existing first night; this is their first mutually wanted sexual encounter, following the threshold kiss and undressing. Her eye patch remains on. Use only canon physical facts above; do not invent measurements, hair colour, healed injuries or past partners. Required beats: her active desire; awkward fastenings give way to confidence; her good hand draws the Commander close while the damaged hand is never portrayed as healed or fully sensitive; impatience with the possibility of another supply interruption; private pleasure distinct from a paid debt. No new confession, promise, commitment effect, resource charge or conditional reconciliation. No drunken incapacity, coercion, pity, partner interruption or extra speaker. Stop before aftermath; existing morning_count owns the missed count, recovered boot and gossip. If this slot remains unfilled, use the heated default in the plan. Any later user-supplied intimate passage must return to the exact last line below.",
+  "last_line": "N: The last cart rattles away outside.",
+  "speakers": {
+    "D": "Dorgelinda Stranglehold"
+  },
+  "example": "N: Dorgelinda catches your coat with her good hand and pulls you close.\nD: Took you long enough.\nN: She kisses you before you can answer.",
+  "commander": "variant-dependent; the Commander is addressed as you in common narration",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18
+}
