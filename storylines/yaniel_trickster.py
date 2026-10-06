@@ -808,7 +808,7 @@ COMMON = (
     p("{n}The painted martyr went into the cathedral of Drezen at midsummer, as the chaplains had planned. The chaplains never did find out why the Commander's household laughed every time the procession went by it.{/n}", requires=(NICHE,)),
     p("{n}The Half Measure in Drezen put her roast back on its board, on the old recipe, and Fye wrote her name beside it in chalk. Every spring she went down to Nerosyan to sit under the old tree by the town hall when it was in bloom, and came back and told the Half Measure it had been late again.{/n}", requires=(B_ROAST,)),
     p("{n}An old merchant of Nerosyan with a crutch and a cloudy eye was carried up to Drezen once more before he died, to see the gate. She held his hand on the parapet for an afternoon, and afterwards she would never say what they talked about, except that it was mostly turnips.{/n}", requires=(B_REFUGEE,)),
-    p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see.{/n}", requires=(B_STAUNTON,)),
+    p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see. She spoke Joran's name there too, quieter, and remembered how carefully he had fitted Radiance's scabbard.{/n}", requires=(B_STAUNTON,)),
     p("{n}The Church of Iomedae never did examine her. The chaplain who had come to the Commander's door with the seal of Nerosyan wrote to his superiors that the relic was in the hands it was meant for, and that he would not be the one to take it out of them, and after that nobody else volunteered.{/n}", requires=(B_CHURCH, CARRIES)),
     p("{n}She still asked her goddess to keep the watch safe. Some nights she simply told Her about the day, out loud, on the wall, in the tone of a sergeant making a report, and she swore that on some nights the report was received.{/n}", requires=(B_PRAYER,)),
     p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), forbids=(CUFF_WORN, Y + "cuff_pocketed", DECLINED)),
@@ -937,6 +937,32 @@ household.secret(
 
 
 # --- Registration -------------------------------------------------------------------------------------------------------
+
+# Authored memorial continuations (CANON-PARTNERS-DESIGN, Yaniel): native Answer_0029 / Cue_0030 establish his death.
+# Joran's unrequited love is disclosed only in revised-Aeon Cue_0021; Yaniel gains no knowledge of it here.
+# Apply after Last Call is assembled, appending after every existing paragraph so their saved addresses stay fixed.
+PARTNER_MEMORIES = {
+    Y + "epilogue." + ending:
+        "{n}When the Church spoke of Radiance, Yaniel still supplied the smith's name: Joran Vhane. He had died in Drezen on the demons' side. She remembered the hands that made her sword, and would not have his work credited to a nameless servant of the goddess.{/n}"
+    for ending in ("together", "commit", "broken", "unasked", "distrusted", "unsettled", "declined")
+}
+PARTNER_MEMORIES.update({
+    Y + "epilogue.left_free":
+        "{n}Around crusader campfires she sometimes spoke of Joran Vhane, the dead smith who had made Radiance. She remembered him fussing over its scabbard before Drezen fell. Few listeners knew the name; she made them hear it.{/n}",
+    Y + "epilogue.mourned":
+        "{n}At the vigil she named Joran Vhane too. The smith had died in Drezen, and the sword he made had outlasted him. She prayed for the smith before dawn, then for the Commander; by the morning watch her voice was hoarse.{/n}",
+    "yaniel.lastcall.page":
+        "{n}A sentry called Radiance the martyr's sword. Yaniel corrected him. \"Joran Vhane made it. He's dead. Remember his name when you praise the blade.\" Then she sent the man back to his post.{/n}",
+})
+
+
+def integrate_partner_memory(payload):
+    """Memory only: no live partner or stance for a dead man's unrequited love."""
+    by_id = {s["Id"]: s for s in payload["Scenes"]}
+    for scene_id, text in PARTNER_MEMORIES.items():
+        page = next(n for n in by_id[scene_id]["Nodes"] if n["Id"] == "page")
+        page.setdefault("Paragraphs", []).append(p(text))
+
 
 def _bind(payload, kind, table):
     for key, value in table.items():
