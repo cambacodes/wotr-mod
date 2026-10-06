@@ -244,6 +244,7 @@ internal static class IrabethIndependentTests
                 check(!Rules.Available(story, book, wrong), "Individual scene enters without bound actor.");
             }
         }
+        reached.UnionWith(IrabethPartnerStanceTests.Run(story, check));
         foreach (var book in newScenes)
         foreach (var page in book.Nodes)
             check(reached.Contains(book.Id + "/" + page.Id), "Unplayed Irabeth page: " + book.Id + "/" + page.Id);

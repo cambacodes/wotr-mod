@@ -715,7 +715,7 @@ SCENES.append(scene("irabeth.trickster.epilogue.under_orders", "Until the Wound 
 
 SCENES.append(scene("irabeth.trickster.epilogue.off_the_record", "Off the record", "Epilogue", 0, "", [
     n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed, and the Commander's bed when she was off duty, and she never once confused the two in front of the guard. She kept her own quarters, her own roster and her own counsel, and she argued with the Commander in council exactly as hard as before, which was very hard.{/n}
-{n}When the war was over she did not ask for a title or a manor. She asked for a week, the three of them or the two of them as the house on the corner saw fit, with no duty lists in it, and she got it.{/n}''',
+{n}When the war was over she did not ask for a title or a manor. She asked for a week with no duty lists in it, and she got it.{/n}''',
       portrait="Irabeth", paragraphs=UNDER_ORDERS_PARAGRAPHS)],
     requires=(RETURNED, "irabeth.committed"), forbids=("irabeth.campaign_kept", "trying", "committed", "sacrifice"), last=99,
     Relationship="irabeth",
@@ -781,7 +781,8 @@ SCENES.extend(REACTIONS)
 ANEVIA_GONE_LIFTED = ("irabeth.one_truth_to_tell", "irabeth.anevias_answer", "irabeth.the_evening_she_chose",
                       "irabeth.a_day_of_our_own", "irabeth.after_the_shared_answer")
 RETURNING_ENDINGS = ("irabeth.anevias_answer", "irabeth.ending_lasting", "irabeth.ending_open", "irabeth.ending_friends",
-                     "irabeth.ending_unfinished", "irabeth.ending_changed", "irabeth.ending_ascent", "irabeth.ending_sacrifice")
+                     "irabeth.ending_unfinished", "irabeth.ending_changed", "irabeth.ending_ascent", "irabeth.ending_sacrifice",
+                     "irabeth.partner_ending")
 # Sol COX: the shared finale's surviving Commander (trickster.commander_back) never gets the mourning page; the living
 # endings that Forbid `sacrifice` lift it through that flag instead (as Dorgelinda and Eliandra do).
 LIVING_ENDINGS = ("irabeth.ending_lasting", "irabeth.ending_open", "irabeth.ending_friends", "irabeth.ending_unfinished")
@@ -791,6 +792,8 @@ def integrate(payload):
     """Save-safe edits to the registered route (no id, node or choice changes): relationship patch, presence, grief
     overrides, the under-orders paragraphs on her registered endings, and the returned Irabeth kept out of her
     pre-Iz private scenes (they stay closed after IrabethDead, as before)."""
+    from storylines import irabeth_partner_stance
+    irabeth_partner_stance.integrate(payload)
     rel = payload["Relationships"]["irabeth"]
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
@@ -812,11 +815,14 @@ def integrate(payload):
         if s["Id"] == "irabeth.ending_unfinished":
             s["Forbids"].append("irabeth.trickster.recommitted")
         if s["Id"] in RETURNING_ENDINGS:
-            s.setdefault("ForbidOverrides", {})["irabeth_dead"] = RETURNED
+            if s["Id"] != "irabeth.partner_ending":
+                s.setdefault("ForbidOverrides", {})["irabeth_dead"] = RETURNED
             if s["Owner"].endswith("Epilogue"):
                 for node in s["Nodes"]:     # the pages that end the ending: every choice closes it
                     if all(ch.get("Next") is None for ch in node["Choices"]):
-                        node.setdefault("Paragraphs", []).extend(dict(x) for x in UNDER_ORDERS_PARAGRAPHS)
+                        node.setdefault("Paragraphs", []).extend(
+                            dict(x, Requires=[*x.get("Requires", []), RETURNED]) if s["Id"] == "irabeth.partner_ending"
+                            else dict(x) for x in UNDER_ORDERS_PARAGRAPHS)
         elif s["Id"] == "irabeth.ending_loss":
             s["Forbids"].append(RETURNED)
         elif not s["Owner"].endswith("Epilogue") and "irabeth_dead" not in s["Forbids"] \

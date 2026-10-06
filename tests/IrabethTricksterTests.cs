@@ -337,7 +337,7 @@ internal static class IrabethTricksterTests
         var end = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.trickster.cost.under_orders", Vell);
         check(Rules.Available(story, S("irabeth.ending_unfinished"), end) && !Rules.Available(story, S("irabeth.ending_loss"), end)
               && !Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), end), "G6 epilogue arbitration wrong for a lover.");
-        check(Rules.VisibleParagraphs(S("irabeth.ending_unfinished").Nodes[0], end).Length == 1, "Under-orders paragraph missing on her ending.");
+        check(Rules.VisibleParagraphs(S("irabeth.ending_unfinished").Nodes[0], end).Count(p => p.Requires.Contains(Vell)) == 1, "Under-orders paragraph missing on her ending.");
         var endFriend = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.cost.under_orders", Vell);
         check(Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), endFriend)
               && !story.Scenes.Where(s => s.Id.StartsWith("irabeth.ending_", StringComparison.Ordinal)).Any(s => Rules.Available(story, s, endFriend)),
@@ -384,7 +384,10 @@ internal static class IrabethTricksterTests
                   && (lie || pages.Contains("reckon") && pages.Contains("threshold") && pages.Contains("morning")),
                 "Irabeth's commit ignores Nevi's return.");
             // Wait-for-her no longer commits by the answer: she decides in node decides, and after an exposed lie she says not tonight.
-            check(outcomes.Count(r => r.Has("irabeth.committed")) == (lie ? 0 : 2), "Kiss offered after an exposed lie, or Kiss / Wait missing.");
+            check(lie ? outcomes.All(r => !r.Has("irabeth.committed"))
+                      : outcomes.Count(r => r.Has("irabeth.committed")) >= 2
+                        && outcomes.Where(r => r.Has("irabeth.committed")).All(r => r.Has("irabeth.partner_stance.share")),
+                "Kiss offered after an exposed lie, or accepted sharing missing.");
             check(outcomes.All(r => r.Has("irabeth.trickster.asked_nevi")), "Irabeth told the Commander she asked Nevi, and nothing recorded it.");
             check(!lie || pages.Contains("not_tonight"), "After an exposed lie, her decision is not her no.");
             check(outcomes.Any(r => r.Has("irabeth.trickster.declined") && !r.Has("irabeth.committed")), "Her no is gone once Nevi is home.");

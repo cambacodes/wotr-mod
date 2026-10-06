@@ -34,12 +34,12 @@ EDITS = (
      dict(Page="ae1f824fe248d9f4aac7d39ec2e12140", Sequence="f8d7f50e3bb88c143834d234c0b24474",
           Key="c174e4f2-0f7f-4fc4-9e21-88b56cb2506b"),
      [["trickster.now", "irabeth.committed", key("irabeth.encouraged")]],
-     '''{n}The Tirabades meant to retire together. The Eagle Watch needed another week, then another month, then years. The complaints grew louder, and no less proud. Irabeth did take her leave at last; she had promised herself a road beyond the next duty roster. She always returned to the Watch.{/n}'''),
+     '''{n}Irabeth meant to retire. The Eagle Watch needed another week, then another month, then years. The complaints grew louder, and no less proud. Irabeth did take her leave at last; she had promised herself a road beyond the next duty roster. She always returned to the Watch.{/n}'''),
     ("2d6b09c6508010e49b882741add89dcf", "irabeth", "retired",
      dict(Page="ae1f824fe248d9f4aac7d39ec2e12140", Sequence="f8d7f50e3bb88c143834d234c0b24474",
           Key="3ad4bedd-1e78-470d-812d-98d51d3ed1b2"),
      [["trickster.now", "irabeth.committed", key("irabeth.broken")]],
-     '''{n}After the victory, the Tirabades retired to the wilderness of the River Kingdoms. The Lost Chapel still followed Irabeth into sleep. Her wife woke her, held her, and waited for her to recognize the room. There were also quiet mornings, journeys, and letters in Irabeth's square hand. She kept her faith and her sword; she handed back her commission.{/n}'''),
+     '''{n}After the victory, Irabeth retired to the wilderness of the River Kingdoms. The Lost Chapel still followed her into sleep. Some nights she woke before she recognized the room. There were also quiet mornings, journeys, and letters in Irabeth's square hand. She kept her faith and her sword; she handed back her commission.{/n}'''),
     ("17249a81e2f0d7d4ca67937db86ef858", "minagho_chivarro", "debt",
      dict(Parent="c5f918382f54e4342b40334c2d9f854f", Dialog="257e13519dd1f5b4c8d992865ba0f609",
           Key="7cf9be7f-e702-408c-97b0-76cda664bcc5"),
@@ -63,6 +63,7 @@ def integrate(payload):
         target_type="cue", action="HIDE", key="terendelev.funeral_introduction",
         spec=dict(Target="21b10801b6c2b194d92506a137ef1307", Relationship="terendelev",
                   When=[["trickster.ever", "terendelev.trickster.returned"]]))
+    from storylines.irabeth_partner_stance import cover_native
     for target, relationship, suffix, location, when, text in EDITS:
         identity = relationship + ".native.eng7_f6c." + suffix
         payload["Scenes"].append(scene(identity, "", "NativeEpilogue", 0, "",
@@ -72,6 +73,7 @@ def integrate(payload):
             target_type="slide" if "Page" in location else "cue",
             action="SLIDE-SWAP" if "Page" in location else "REPLACE",
             spec=dict(location, Replacement=identity, When=when))
+    cover_native(payload)
 
 
 def reconcile_employment(payload):
@@ -100,3 +102,7 @@ def reconcile_employment(payload):
             p("{n}Irabeth retired to the River Kingdoms. The Lost Chapel still woke her screaming on some nights. Her letters came from the wilderness, without a rank beneath the signature.{/n}",
               requires=(key("irabeth.broken"),), forbids=("irabeth.trickster.returned",)),
         ))
+
+    # Append Irabeth's marriage account after all pre-existing ending paragraphs.
+    from storylines.irabeth_partner_stance import cover_endings
+    cover_endings(payload["Scenes"])

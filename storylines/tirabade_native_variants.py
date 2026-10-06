@@ -76,3 +76,7 @@ def integrate(payload):
         "Anevia never called the sacrifice a pardon.",
         [[path, ANEVIA, "sacrifice", "!" + BACK]],
         (path, ANEVIA, "sacrifice"), (BACK,))
+
+    # Only Irabeth-owned replacements: current wife and recorded stance.
+    from storylines.irabeth_partner_stance import cover_native
+    cover_native(payload)

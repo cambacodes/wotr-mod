@@ -1338,6 +1338,703 @@
       "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
     },
     {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v1/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.share"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v2/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.share.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v3/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.exclusive"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v4/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.exclusive.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v5/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.secret"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v6/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.secret.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v7/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.discovered"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v8/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.together.discovered.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v9/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.share"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v10/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.share.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v11/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.exclusive"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v12/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.exclusive.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v13/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.secret"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v14/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.secret.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v15/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.discovered"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v16/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.discovered.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v17/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.unset"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v18/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.returned.unset.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v19/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.share"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v20/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.share.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v21/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.exclusive"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v22/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.exclusive.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v23/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.secret"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v24/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.secret.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v25/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.discovered"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v26/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.discovered.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v27/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.unset"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v28/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.away.unset.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v29/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.share"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v30/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.share.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v31/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.exclusive"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v32/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.exclusive.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v33/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.secret"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v34/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.secret.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v35/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.discovered"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v36/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.discovered.mourning"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v37/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.unset"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v38/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired.partner.dead.unset.mourning"
+    },
+    {
       "Id": "2d6b09c6508010e49b882741add89dcf/control/off-Trickster",
       "Target": "2d6b09c6508010e49b882741add89dcf",
       "Dialog": "",
@@ -1884,6 +2581,7 @@
       "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
       "Chapter": 6,
       "Flags": [
+        "anevia_gone",
         "irabeth.trickster.returned",
         "trickster.ever"
       ],
@@ -1932,6 +2630,7 @@
       "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
       "Chapter": 6,
       "Flags": [
+        "anevia_gone",
         "irabeth.trickster.cost.dug_out",
         "trickster.ever"
       ],
@@ -1947,6 +2646,7 @@
       "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
       "Chapter": 6,
       "Flags": [
+        "anevia_gone",
         "irabeth.trickster.cost.dug_out",
         "irabeth.trickster.raised_on_record",
         "trickster.ever"
@@ -2032,6 +2732,7 @@
       "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
       "Chapter": 6,
       "Flags": [
+        "anevia_gone",
         "irabeth.trickster.cost.dug_out",
         "sacrifice",
         "trickster.ever"
@@ -2048,6 +2749,7 @@
       "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
       "Chapter": 6,
       "Flags": [
+        "anevia_gone",
         "irabeth.trickster.cost.dug_out",
         "irabeth.trickster.raised_on_record",
         "sacrifice",
@@ -2057,6 +2759,1480 @@
         "3a3e561c6b05a284d93eb3bff7b712a6"
       ],
       "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v10/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v11/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.share.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v12/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v13/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.exclusive.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v14/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v15/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.secret.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v16/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v17/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.discovered.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v18/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v19/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.together.unset.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v20/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v21/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.share.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v22/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v23/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.exclusive.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v24/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v25/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.secret.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v26/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v27/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.away.discovered.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v28/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v29/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.share.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v30/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v31/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.exclusive.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v32/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v33/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.secret.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v34/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v35/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.discovered.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v36/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v37/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_south.partner.dead.unset.mourning"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v38/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v38/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v39/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v39/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v40/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v40/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v41/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v41/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v42/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v42/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.together.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v43/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v43/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v44/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v44/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v45/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v45/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v46/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v46/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.away.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v47/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v47/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v48/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v48/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v49/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v49/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v50/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v50/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v51/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.trickster.cost.dug_out",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v51/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_away.partner.dead.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v52/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v52/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v53/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v53/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v54/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v54/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v55/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v55/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v56/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v56/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.together.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v57/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v57/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v58/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v58/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v59/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v59/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v60/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v60/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.away.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v61/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v61/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.share",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.share"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v62/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v62/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.exclusive",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.exclusive"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v63/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v63/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.secret"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v64/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v64/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.discovered"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v65/g0",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.trickster.cost.dug_out",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.unset"
+    },
+    {
+      "Id": "3a3e561c6b05a284d93eb3bff7b712a6/v65/g1",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.raised_on_record",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "3a3e561c6b05a284d93eb3bff7b712a6"
+      ],
+      "ExpectedCandidate": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement.partner.dead.unset"
     },
     {
       "Id": "3a3e561c6b05a284d93eb3bff7b712a6/control/off-Trickster",
@@ -10332,6 +12508,703 @@
       "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
     },
     {
+      "Id": "cba964e33d0a0704d847629be452b359/v1/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.share"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v2/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.share.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v3/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.exclusive"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v4/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.exclusive.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v5/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.secret"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v6/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.secret.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v7/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.discovered"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v8/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.together.discovered.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v9/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.share"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v10/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.share.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v11/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.exclusive"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v12/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.exclusive.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v13/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.secret"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v14/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.secret.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v15/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.discovered"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v16/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.discovered.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v17/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.unset"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v18/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.trickster.returned",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.returned.unset.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v19/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.share"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v20/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.share.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v21/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.exclusive"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v22/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.exclusive.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v23/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.secret"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v24/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.secret.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v25/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.discovered"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v26/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.discovered.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v27/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.unset"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v28/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_gone",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.away.unset.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v29/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.share"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v30/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.share",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.share.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v31/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.exclusive"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v32/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.exclusive",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.exclusive.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v33/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.secret"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v34/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.secret.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v35/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.discovered"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v36/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "irabeth.partner_stance.discovered",
+        "irabeth.partner_stance.secret",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.discovered.mourning"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v37/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.unset"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v38/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "anevia_dead",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service.partner.dead.unset.mourning"
+    },
+    {
       "Id": "cba964e33d0a0704d847629be452b359/control/off-Trickster",
       "Target": "cba964e33d0a0704d847629be452b359",
       "Dialog": "",
@@ -13556,6 +16429,19 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "tirabade.negotiated_ending_aeon"
+    },
+    {
+      "Id": "page/irabeth.partner_ending",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.closed",
+        "irabeth.partner_stance.exclusive"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "irabeth.partner_ending"
     },
     {
       "Id": "page/arsinoe_ending_kept",

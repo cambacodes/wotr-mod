@@ -1485,6 +1485,8 @@ s("after_the_answer_was_lost", "The answer grief could not supply",
 
 def integrate(payload):
     """Register observed native dialogue only; never write native morale or life states."""
+    from storylines import irabeth_partner_stance
+    irabeth_partner_stance.integrate(payload)
     payload.setdefault("SeenCues", {}).update({
         "irabeth.scar_known": ["c7a7717c516039d498a7525baf6abe04", "8e808b69a43ed4f43b8eb39d27990a4a"],
         "irabeth.queen_loss_known": ["d47bcd8d88f8ea149a596ca927e1153f"],
