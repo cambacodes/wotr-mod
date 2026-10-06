@@ -1,0 +1,34 @@
+# Areelu round 2 implementation
+
+All new situations and dependent afterlogue variants are **AUTHORED**. They use the existing finale/report delivery and native afterlogue continuation. The atlas reservation remains `experiment_or_ritual`, Threshold survival-wager conclusion across the hall, with failed prediction yielding chosen company tonight and unresolved child research tomorrow. No uniqueness registry was changed. Canon references C1-C7 remain in the copied set-piece sheet; Iz Cue_0024, AreeluCell Cue_0008 and GrandFinal Cue_0001 were checked directly against `/wrath/blueprints.zip` and `enGB.json` during implementation.
+
+## Situations and receipts
+
+- Entry and lens: her file remains private, observation is two-way, and recognition does not earn romance. Both lens deliveries share the appended recognition response. Actual cell-dialog history controls the laboratory invitation; actual promise-cue history controls the desk recollection. Fresh questions remain available. P37-39, F0-15 and F73: retain existing corrected Suture/first-disclosure/companion wording and finish the outstanding history siblings.
+- Wager: actual `areelu.committed` supplies all route-owned romance continuations. Primed late terms already produce no named-paper receipt and remain so. The entire raise forbids collected graft, including indirect life-term transitions. P5-27, P33 and F17-48: a wager or extraction buys neither a yes nor a night.
+- Registered turning point: `finale.company` puts a single diagnostic observation in the earned ordinary survival conclusion. Answering, declining examination and asking her purpose lead to her separate invitation and a selectable postponement. Her inference distinguishes the Commander's choices from an unknown choice her child might make. It performs no soul separation, retrieval or cure and creates no test-success flag.
+- Ordinary company: mortal and retained-graft staging follow recovery, not the bleeding finale. She closes the notebook, initiates contact and decides what happens in the morning. Child research remains on her own desk. `finale.unraised` supplies a factual settlement with no company. P34, P42, F23 and F86: no-burn retains unowed papers; the first ordinary night is no longer deferred until the fourth winter.
+- Outcome nights: H2 alone handles a sealed flask on the washstand. Both Iomedae returns use the outside-intervention account. Shared ascension keeps equal power and its existing quiet/refusal exit. Each morning carries its own consequence, and refusals do not imply a completed act. P29-32 and F49-56, F77-82.
+- Return and home: `report.inn` uses her own alias and a room without apparatus. It assumes no earlier consummation. The fourth-winter invitation deepens company; all four shared-room conditions, separate rooms, closed door, packed case and notebook ownership remain. Every report page offers an appended unread exit while preserving the original sequence and all old branches.
+- Discovery: the existing broken-hair evidence remains. Petition, daily postponement and burned-research departure stay distinct. Petition and postponement show her coming back to the lodging. Burn takes her packed case away; distant letters do not set arrival. Afterlogue accounts are retrospective and cannot claim lifelong cohabitation after this separation. P40-41 and F61.
+- Debts: no-burn does not collect the burn clause. Personal wound ownership reads actual cession; treatment remains possible without ownership. H1 never reopens the corked pull. The bounded vessel bargain, surrendered method, lifetime opening work, no appeal, first release and outstanding service remain. Existing temporary hunter diversion and distinct incursion casualties were retained. P35, F52, F64-70.
+- Presence: native Areelu death blockers are registered in her relationship. Only the exact collected rewrite overrides its sacrifice and co-held general death. Current-path bounds apply to the authored fate changes. Afterlogue variants cover ordinary wager-only survival, H2 and both Iomedae returns without supplying romance.
+
+## Explicit slots
+
+Eight dedicated slot nodes and their copied JSON briefs are present: company (two bodies), participation (two bodies), H2, Iomedae return, ascent and inn. Defaults are the brief's exact heated cut, followed by the matching morning. Slots set no flags. Existing intimate staging answers retain their original targets; appended answers enter the slots. No explicit prose was generated.
+
+## Save compatibility and scope
+
+The pre-edit route snapshot and post-edit route agree on every old scene/node order, every old choice index, target, explicit answer ID, Set/Abort effect, native continuation, mythic/alignment effect and check/revive field. New nodes and choices append. Existing CRLF and LF files retain their respective line endings. No commit, shared storyline edit, registry edit, new partner, echo, affection requirement, price or reconciliation condition was introduced.
+
+## Coordinator escalations
+
+- Shared catalogs must register the two new romantic payoff scenes and seven new presence/history scenes. Exact additions are in `areelu-vorlesh-contract-additions.json`; they are proposals for coordinator application, not applied changes.
+- The shared departure catalog also labels the existing `finale.unnamed`, `finale.stake_only` and `finale.report_stands` retrospective death/settlement pages as current presence. After the requested native relationship death blockers are registered, this suppresses their death accounts. The route rules test exposes the first of these. Their history classification must be corrected in the shared catalog; do not restore bodily availability after death to make the test pass.
+- `tools/payoff_contracts.json` still declares Areelu's late arm from `wager_struck + route_open`; `earned_outcomes` then exposes it through shared household eligibility. The route-owned readers now require acceptance, but shared Last Call and guest consumers need the contract corrected to use her actual accepted raise. This shared contract is outside the permitted edit paths.
+- Shared Last Call: intact hands, actual encounter history, the Commander's personal wound received (not Worldwound ceded), and H2-only flask references. These remain the P0/P36 and corresponding F findings; no shared file was edited.
+- Shared household/presence: carry current acceptance and her selected research-departure outcome. Epilogue choices are read-only, so the afterlogue was made departure-compatible instead of manufacturing a persistent reconciliation receipt.
+- Optional ARE-04 Targona confrontation was omitted: no approved shared present-now host was supplied. ARE-03 and rejected ARE-05 were not implemented.
+
+Gate results are reported by the implementer, not predicted here. No independent rubric score is claimed.

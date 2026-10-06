@@ -30,8 +30,8 @@ internal static class AreeluAfterlogueTests
         if (!shipped) return;
         foreach (var edit in new[] { cottage!, death! })
             check(edit.Parent == "5b567bdd747e497cb9f6984b1ca1dfc8" && edit.Dialog == "57e18f5158904030a84a772fb361ceb4" && edit.Page == "" && edit.Sequence == ""
-                  && Rules.EditVariants(edit).Length == 1 && story.Scenes.Single(s => s.Id == edit.Replacement).Relationship == "areelu",
-                "Trk_Areelu_Afterlogue: an afterlogue edit is not an E14i dialog edit on Cue_0001 with one Areelu line.");
+                  && Rules.EditVariants(edit).Length == (edit.Replacement == Spared ? 4 : 2) && story.Scenes.Single(s => s.Id == edit.Replacement).Relationship == "areelu",
+                "Trk_Areelu_Afterlogue: an afterlogue edit is not an E14i dialog edit on Cue_0001 with fate-specific Areelu lines.");
         check(cottage!.Replacement == Spared && death!.Replacement == Mortal, "Trk_Areelu_Afterlogue: the cottage and death lines swapped.");
         string Line(string id) => SurfaceIds.Of(story, story.Scenes.Single(s => s.Id == id).Nodes[0]);
         check(new[] { Spared, Mortal }.All(id => SurfaceIds.Has(Line(id), "[areelu.trickster.afterlogue.spared/line][areelu.trickster.afterlogue.mortal/line]")),
@@ -40,14 +40,14 @@ internal static class AreeluAfterlogueTests
             "Trk_Areelu_Afterlogue: only the rewritten (graft drawn) line makes her mortal.");
 
         const string T = "areelu.trickster.";
-        var common = new[] { "trickster.ever", T + "wager_struck", T + "bet_offered" };
+        var common = new[] { "trickster", "trickster.ever", T + "wager_struck", T + "bet_offered" };
         var rewrite = common.Concat(new[] { "areelu.sacrifice_trickster", "areelu.dead_fight", T + "graft_drawn" }).ToArray();
         var punch = common.Concat(new[] { "sacrifice", "ending.trickster", "trickster.commander_back" }).ToArray();
         // (what, RRT flags or null for the mod disabled, the native etudes: dead (AreeluDead), wound sacrifice, redeemed; expected line)
         var rows = new (string What, string[]? Flags, bool Dead, bool Wound, bool Redeemed, string Expected)[]
         {
             ("rewrite, committed", rewrite.Append("areelu.committed").ToArray(), true, false, false, Mortal),
-            ("rewrite, late-committed", rewrite, true, false, false, Mortal),
+            ("rewrite, unraised", rewrite, true, false, false, "areelu.trickster.afterlogue.mortal_wager"),
             ("rewrite, declined", rewrite.Append(T + "declined").ToArray(), true, false, false, Cue0005),
             ("rewrite, declined then committed", rewrite.Concat(new[] { T + "declined", "areelu.committed" }).ToArray(), true, false, false, Mortal),
             ("rewrite, stake only", rewrite.Append(T + "stake_only").ToArray(), true, false, false, Cue0005),
@@ -58,7 +58,7 @@ internal static class AreeluAfterlogueTests
             ("never on screen (no bet, lens or late terms)", new[] { "trickster.ever", T + "wager_struck", "areelu.sacrifice_trickster", "areelu.dead_fight",
                 T + "graft_drawn", "areelu.committed" }, true, false, false, Cue0005),
             ("punchline, committed, she lives", punch.Append("areelu.committed").ToArray(), false, false, false, Spared),
-            ("punchline, late-committed", punch, false, false, false, Spared),
+            ("punchline, unraised", punch, false, false, false, "areelu.trickster.afterlogue.spared_wager"),
             ("punchline, closed", punch.Append("areelu.closed").ToArray(), false, false, false, Cue0004),
             ("punchline, but she died in the fight", punch.Concat(new[] { "areelu.dead_fight", "areelu.committed" }).ToArray(), true, false, false, Cue0005),
             ("punchline, incinerated", punch.Concat(new[] { "areelu.incinerated", "areelu.committed" }).ToArray(), false, false, false, Cue0004),
