@@ -887,6 +887,10 @@ def integrate(payload):
                 if all(ch.get("Next") is None for ch in node["Choices"]):
                     node.setdefault("Paragraphs", []).append(dict(TIRABADE_PARAGRAPH))
 
+    # Round 2a: route-local commitment stances and current wife-state codas.
+    from storylines import anevia_partner_stance
+    anevia_partner_stance.integrate(payload)
+
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
