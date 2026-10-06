@@ -16,6 +16,9 @@ try {
     if (!(Test-Path -LiteralPath $dotnetPath)) { $dotnetPath = (Get-Command dotnet -ErrorAction Stop).Source }
     # Python tests shell out to dotnet by name; expose the resolved SDK on PATH for this run.
     $previousPath = $env:PATH
+    # Windows defaults to cp1252; tests and tools read UTF-8 data with bare read_text().
+    $previousUtf8 = $env:PYTHONUTF8
+    $env:PYTHONUTF8 = '1'
     $env:PATH = (Split-Path -Parent $dotnetPath) + [IO.Path]::PathSeparator + $env:PATH
     $env:PYTHONHASHSEED = '0'
     $env:RRT_GAME_DIR = $GameDir
@@ -158,5 +161,6 @@ try {
     $env:RRT_PARENT_BINDINGS = $previousBindings
     $env:RRT_TEST_EXPANDED_EPILOGUE = $previousExpandedEpilogue
     if ($previousPath) { $env:PATH = $previousPath }
+    $env:PYTHONUTF8 = $previousUtf8
     Pop-Location
 }
