@@ -53,7 +53,9 @@ internal static class NocticulaHarborJoinTests
         foreach (var history in histories)
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed" });
+            initial.Flags.UnionWith(new[] { "trickster", "noct.acq.audience_question", "seelah.committed", "arueshalae.committed",
+                // Keep the existing bridge matrix on the negotiated share; stance branches are exercised separately.
+                "nocticula.partner_terms", "nocticula.partner_stance.share" });
             initial.Flags.UnionWith(history);
             var available = entries.Where(s => Rules.Available(story, s, initial)).ToArray();
             check(available.Length == 1, "Bridge fixture lacks a unique acquisition entry.");

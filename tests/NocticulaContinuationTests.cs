@@ -37,7 +37,9 @@ internal static class NocticulaContinuationTests
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             initial.Flags.UnionWith(new[] { "noct.parent_active", "noct.parent_agreement_seen", "noct.gift",
-                "seelah.committed", "arueshalae.committed", "minachiv.complete" });
+                "seelah.committed", "arueshalae.committed", "minachiv.complete",
+                // Existing harbor matrix after a negotiated share; stance histories are tested separately.
+                "nocticula.partner_terms", "nocticula.partner_stance.share" });
             for (int bit = 0; bit < optionalHistory.Length; bit++)
                 if ((mask & (1 << bit)) != 0) initial.Flags.Add(optionalHistory[bit]);
             var nativeBefore = initial.Flags.Where(native.Contains).ToHashSet();
@@ -119,8 +121,10 @@ internal static class NocticulaContinuationTests
         check(finalWitnesses.Count == 3, "Not every Nocticula final relationship decision is playable.");
         foreach (var scene in visits)
         {
-            check(reached[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id)), "Unreached Nocticula branch: " + scene.Id);
-            check(reachedChoices[scene.Id].SetEquals(scene.Nodes.SelectMany(n => n.Choices.Select((c, i) => n.Id + "/" + i))),
+            check(reached[scene.Id].SetEquals(scene.Nodes.Where(n => !n.Id.StartsWith("partner_", StringComparison.Ordinal)).Select(n => n.Id)), "Unreached Nocticula branch: " + scene.Id);
+            check(reachedChoices[scene.Id].SetEquals(scene.Nodes.Where(n => !n.Id.StartsWith("partner_", StringComparison.Ordinal)).SelectMany(n => n.Choices.Select((c, i) => (c, i, n.Id))
+                    .Where(x => !(x.c.Next ?? "").StartsWith("partner_", StringComparison.Ordinal) && !x.c.Requires.Contains("nocticula.partner_secret_exposed"))
+                    .Select(x => x.Id + "/" + x.i))),
                 "Unreached Nocticula choice: " + scene.Id);
             check(Rules.IsRemote(scene) && scene.ContactUnit == null && scene.AdditionalContactUnits.Length == 0,
                 "Dream continuation claims an unverified physical actor.");
