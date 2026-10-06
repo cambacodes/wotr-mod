@@ -332,6 +332,15 @@ _eng8_integrate = integrate
 def integrate(payload):
     _eng8_integrate(payload)
     entries = {e["Id"]: e for e in payload["Books"]["trickster.ledger"]["Entries"]}
+    # esc1-shared: acquisition history changes wording only, including a pending rider return.
+    entries["owed.seelah"]["Lines"].extend([
+        p("{n}I took the seller's stones without paying him. They were for Seelah's rite.{/n}",
+          forbids=("seelah.trickster.cost.seller_paid", "seelah.trickster.cost.seller_taken")),
+        p("{n}I had the seller arrested and kept the stones for the rite by my order. The court lost its evidence; I lost its favors.{/n}",
+          requires=("seelah.trickster.cost.seller_taken",), forbids=("seelah.trickster.cost.seller_paid",)),
+        p("{n}My lift failed. Crusade gold bought the stones and the seller's silence. He left richer. I will have to answer for that.{/n}",
+          requires=("seelah.trickster.cost.seller_paid",)),
+    ])
     entries["owed.eliandra"]["Lines"].append(p(
         "{n}She asks me a question every morning. She has a hundred years of them saved up.{/n}",
         requires=(partners.EL_DAILY,)))

@@ -157,8 +157,8 @@ partner("anevia", "anevia", "anevia.committed", "anevia.closed", "Anevia, After"
     '''Anevia Tirabade had the watch on the walls of Drezen the night the rift took the Commander, or failed to. She had refused to give it up to anyone. She came down at dawn with a crossbow she had not fired and a face nobody asked about, and went looking for the one person in the city who owed her an explanation. She found {mf|him|her} in the kitchen, eating her bread.''',
     (
         page_p('''Socothbenoth collected his standing right in her own wardrobe. Anevia sat outside the door with a bottle and listened to him listen, and when he was done she told him that if he ever came back she would nail it shut from the inside. He said it was the kindest threat anyone had made him in a century.''', requires=(called("anevia"), A + "cost.socoth_listening")),
-        page_p('''The closet the Silken Sin had given the Commander stayed in her house. It opened only onto rooms the Commander had stood in, and never onto the same room twice. She used it to leave notes: short, rude, and always on the pillow.''', requires=(A + "cost.stolen_door",)),
-        page_p('''She never quite forgave the silence at the gate, when she asked what happened at Iz and got nothing. She kept the Commander's chair. She kept it at the far end of the table, and on the bad nights she raised her cup to Irabeth instead, and the Commander learned to drink to that as well.''', requires=(A + "cost.lie_exposed",)),
+        page_p('''The Commander kept the closet the Silken Sin had given {mf|him|her}. It opened only onto rooms the Commander had stood in, and never onto the same room twice. Anevia left her notes by hand: short, rude, and always on the pillow.''', requires=(A + "cost.stolen_door",)),
+        page_p('''She never quite forgave the lie about Iz. Beth had already told her the same story, in the same words. She kept the Commander's chair. She kept it at the far end of the table, and on the bad nights she raised her cup to Irabeth instead, and the Commander learned to drink to that as well.''', requires=(A + "cost.lie_exposed",)),
         page_p('''The crusade buried an empty coffin in Drezen. Anevia stood a watch over the grave for three nights with the crossbow she had not fired, in case anyone came to check what was in it. Someone did, twice. She never told the Commander who, and she never needed the crossbow either time.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen, it was Anevia who made the Commander sit down afterwards and eat something, and who told the priests to go and bless someone who needed it.''', requires=(H2,)),
     ), declined=A + "declined", page_forbids=("committed",),
@@ -353,10 +353,10 @@ partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", 
 
 S = "soana.trickster."
 partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
-    '''Soana went back to the Wintersun wood when the war ended and did not ask the Commander to follow. {mf|He|She} followed anyway, and she let {mf|him|her} stay on the understanding that {mf|he|she} would make {mf|himself|herself} useful and keep out of her graves. {mf|He|She} was useful, and kept out of most of them.''',
+    '''Soana had little patience for tales of Threshold. When the Commander came to her fire after the war, she put a basin in {mf|his|her} hands and told {mf|him|her} to wash before touching anything. Then she caught {mf|his|her} belt and pulled {mf|him|her} down beside her. The basin went over. She swore and kissed {mf|him|her} again.''',
     (
         page_p('''The knot still held, retied, one end in Soana and the other round the Commander's wrist where the knot had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.''', requires=(S + "cost.guardian_paid", S + "cost.knot_bearer")),
-        page_p('''The spirits came for their portion, and Soana stood between them and the Commander, and paid them in her own blood. She did not say it was for love. She said it was her wood and her debt, which is how Soana says it.''', requires=(called("soana"),)),
+        page_p('''The spirits came for their portion, and Soana stood between them and the Commander, and paid them in her own blood. She did not say it was for love. She said it was her wood and her debt.''', requires=(called("soana"),)),
         page_p('''She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. It only ever came up one way, which was the lead in it, and she said that was the point: it saved her the trouble of pretending she had not already decided.''', requires=(S + "cost.die_in_her_bowl",)),
         # Polish (Sol BEL): the returned Soana took the Commander back only after the accounting at her graves.
         page_p('''She had made the Commander answer at her graves for how she died before she let {mf|him|her} back to her fire. Bringing her back had bought no welcome. The welcome came later, after dirty work by the water, in her own sharp voice.''', requires=(S + "returned", S + "accounting_invited")),
@@ -428,11 +428,11 @@ partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work o
 
 SE = "seelah.trickster."
 partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Promise",
-    '''Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Solku: quietly, with a hand in someone else's pocket, and an apology afterwards.''',
+    '''Seelah still went where her sword was needed. When she came back to the Commander, she brought muddy boots, a fierce appetite, and complaints no herald would put in a song. She kissed the Commander before finishing them. Then she finished them.''',
     (
         page_p('''At the rift the Commander had called in her promise, and she kept it. The flask came out of the Commander's coat one evening in Drezen in her hand, as easily as a purse, and went back into it a moment later, heavier by one small coin. She never said which coin. She said the trick was not the hand, it was the apology.''', requires=(called("seelah"), BOTTLED)),
         page_p('''At the rift the Commander had called in her promise, and she kept it: she picked {mf|his|her} pocket the next evening in Drezen and took back what was hers, and would not say what else she took.''', requires=(called("seelah"),), forbids=(BOTTLED,)),
-        page_p('''She would not live under a false name, and the Commander was officially dead. So she kept her own name, and her own door, and walked through it into the Commander's rooms every evening, openly, and told anyone who asked exactly where she was going.''', requires=(ON_RECORD,)),
+        page_p('''The Commander was officially dead. Seelah kept her own name and walked openly through the Commander's door whenever her duties brought her back. Anyone who asked got an answer. Anyone who objected got the same answer, louder.''', requires=(ON_RECORD,)),
         page_p('''It was Seelah who found the flask at the edge of the Wound. She said it was the easiest theft of her life.''', requires=(H2,)),
     ), declined=SE + "declined",
     # Q10 r3: the qualified late commit (late_committed + her romance, seelah_trickster.LATE_CODA) also plays the coda;
@@ -442,7 +442,7 @@ partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Pr
     call=call('''[Call in the thief's promise] "Seelah, you swore you'd steal it back. Now's the time. Pick my pocket."''',
         '''{n}You feel it before you understand it: a light touch at your coat, a thief's apology, from a woman who is not here.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Seelah: a list to steal back", "At her bier I took Seelah's list of old thefts out of her purse, and robbed a grave-robber off its last line to pay for her. She swore she'd steal the list back. A thief who hasn't collected won't let you die."))
+    ledger=("Seelah: a list to steal back", "I opened Seelah's purse while she was dead. Her list led me to stones stolen from the Kenabres altars. The list is hers. Taking it was my doing."))
 
 T = "targona.trickster."
 partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet Ward",
@@ -642,7 +642,7 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
         # polish r3 (audit INT): she left over the wolves and said she would not eat at that fire again; nothing comes.
         # (The only closure after the salt is the wolves story, so G5 holds: her own cost flag, never nidalynn.closed.)
         ("[Listen. Nothing comes back over the snow.]", None, (NI + "goat.lie_kept",), ())),
-    ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. Among the Windstep that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
+    ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. By Reudger's own rite that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
 
 SH = "shamira.trickster."
 partner("shamira", "shamira", "shamira.committed", "shamira.closed", "The Ardent Dream",
