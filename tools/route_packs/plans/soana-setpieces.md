@@ -620,3 +620,52 @@ Coverage: 243 node rows, 564 indexed paragraph occurrences (40 distinct texts), 
 **PROPOSE:** none beyond the predecessor-authorized fallback and requested set pieces/heat slots. No new drinking, aphrodisiac, attraction, concealment, reconciliation or debt system.
 
 **RISKS:** authored Corven voice/private recollection must remain labelled and unknown until earned; DLC4 Roan presence is not universal; hand-imprint plausibility needs the on-page demonstration and exact native dependency sweep. Slot filling is a later user-selected pass, not proof of final heat quality. Shared eligibility/debt bugs cannot be fixed in this plan. Conditional family summaries can contradict base text unless implementation checks the entire outcome matrix. No claim that planning artifacts passed runtime gates or scored >=91.
+
+## Round 3 implementation contracts (authored continuity)
+
+The wedding question authenticates Corven; it does not disclose a lover. A
+`soana.round3.disclosed` receipt is written only when Soana sends a shared
+proposal. Authentication-only replies carry family news. A later proposal goes
+through the same relay before Corven answers it. At an actual homecoming, a
+proposal made at the door has its own response, without an earlier disclosure
+or sexual relationship. Both living and returned hosts use this distinction.
+Burning an inquiry before courtship has a family-only confession and the existing
+loss of welcome. No letter earns arrival; the escort price and journey remain.
+
+`corven_together` stays the legacy marriage receipt. The derived
+`soana.round3.arrangement` reads together plus sharing, minus family friendship
+and an ended romance. Family reunion and rejected lover terms have separate
+ending accounts. `soana.round3.family_known` reads authenticated identity, actual
+homecoming or the family reply. Courtship, the renewed promise, Chapter 5 return
+and commitment retain uncertainty only without that history; separation takes
+precedence over an earlier arrival. Family friendship stays friendship, without
+a reopening mechanic. Off Trickster, Corven stays unknown and pending sharing
+is explicitly an affair until he hears and answers for himself.
+
+After `quiet_homecoming`, existing encounters and their ritual objects move to
+a dry bank above the stream, away from Corven's house. Soana goes home alone;
+the Commander takes the longer path with the bundle. This covers living nights,
+commitment, both knot tokens, second asking, rebind, both luck invitations,
+postwar invitations and the Last Call coda. No concealment price, new discovery,
+family bargain or romance prerequisite is added. New bank slots have matching
+briefs. Epilogue briefs use `narration: third-past`. Old slot hosts, choice indices,
+exits and effects remain. Legacy epilogue exits and refusals do not produce
+postwar acceptance. The fresh yes writes `soana.round2.postwar_accepted`; the
+knot-vow yes also pays the existing `cost.knot_bearer`. Slots grant no reward.
+
+Current-path recovery remains `soana.round2.returned_now`, rather than the raw
+historical return. The graveyard keeps the raw return beside that reader solely
+as the existing 48-hour deed clock: derived readers have no stored timestamp.
+C# assertions use the current reader and test path conversion,
+fresh postwar acceptance and unaccepted invitations. Ordinary-chain coverage
+is separate from the family-state and stream-bank cases in
+`tests/test_soana_round3.py`. Shared stance-inventory additions are staged in
+`tools/route_packs/soana-contract-additions.json`; installing them requires a
+coordinator edit to the protected registry. Shared household, Last Call emitters,
+world bindings, return devices, creditors and other routes remain unchanged.
+
+Quick-gate repairs also preserve an effect-free postponement on the three
+partner-gated night/farewell pages. A first secret acceptance supplies its own
+existing affair stance; its formerly circular precondition is removed while
+the ended-romance block, renewed invitation and exact original price remain.
+Shared and exclusive answers still require the actual family response.

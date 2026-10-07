@@ -141,6 +141,38 @@ internal static class SoanaPartnerTests
             foreach (var w in Program.Walk(dispatch, World(returned, stance, 74, careful)))
                 check(!w.Has(K + "pursued") || w.Has("soana.round2.correspondence_only"), "Corven's escort is free when its debit is unaffordable.");
         }
+        // r3: authentication-only inquiries have their own reply/proposal and
+        // burned-letter outcomes, in both living and earned-return hosts.
+        foreach (bool returned in new[] { false, true })
+        {
+            var bare = World(returned, "soana.partner_stance.share");
+            bare.Flags.ExceptWith(new[] { "soana.partner_stance.share", "soana.committed" });
+            Refresh(bare);
+            var dispatch = S("dispatch", returned);
+            var sent = Program.Walk(dispatch, bare, (id, _) => allPages.Add(dispatch.Id + "/" + id)).ToList();
+            foreach (var letter in sent.Where(w => w.Has("soana.round2.correspondence_only")))
+            {
+                var reply = S("reply", returned);
+                var answers = Program.Walk(reply, Later(letter, 168), (id, _) => allPages.Add(reply.Id + "/" + id));
+                check(answers.Any(w => w.Has("soana.trickster.friends") && !w.Has("soana.round3.disclosed"))
+                    && answers.Any(w => w.Has("soana.round3.disclosed") && w.Has("soana.round2.reply_accepted")),
+                    "Authentication alone supplies lover terms, or cannot send a subsequent proposal.");
+            }
+            foreach (var letter in sent.Where(w => w.Has(K + "pursued") && !w.Has("soana.round2.correspondence_only")))
+            {
+                // Courtship chosen only after the question left: no disclosed bed.
+                letter.Flags.Add("soana.partner_stance.share"); Refresh(letter);
+                var home = S("homecoming", returned);
+                Program.Walk(home, Later(letter, 168), (id, _) => allPages.Add(home.Id + "/" + id));
+            }
+            foreach (var letter in sent.Where(w => w.Has(K + "buried")))
+            {
+                var burned = S("returned_letter", returned);
+                var answers = Program.Walk(burned, Later(letter, 72), (id, _) => allPages.Add(burned.Id + "/" + id));
+                check(answers.All(w => w.Has(K + "corven_distant") && w.Has(K + "romance_ended")
+                    && !w.Has(K + "affair_exposed")), "Burning a family inquiry invents a prior lover.");
+            }
+        }
         foreach (bool returned in new[] { false, true })
         {
             var late = story.Scenes.Single(s => s.Id == "soana.trickster.epilogue." + (returned ? "commit" : "luck_late"));
@@ -200,7 +232,7 @@ internal static class SoanaPartnerTests
                 "Kept-life hides Corven's state in a runtime postwar history.");
         }
         foreach (var s in story.Scenes.Where(s => s.Id.StartsWith(K, StringComparison.Ordinal)))
-            foreach (var page in s.Nodes)
+            foreach (var page in s.Nodes.Where(n => !n.Id.Contains("_r3_", StringComparison.Ordinal)))
                 check(allPages.Contains(s.Id + "/" + page.Id), "Unplayed Corven page: " + s.Id + "/" + page.Id);
         // Exercise the full runner's prerequisite-only fixture for these new
         // pages too, including a save with no other romance history supplied.

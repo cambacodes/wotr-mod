@@ -77,9 +77,9 @@ class SoanaRound2Tests(unittest.TestCase):
         self.assertIn('soana.round2.no_current_love',
                       self.by['soana.lastcall.page']['Forbids'])
 
-    def test_all_thirteen_slots_keep_a_cut_and_rejoin(self):
+    def test_all_slots_keep_a_cut_and_rejoin(self):
         briefs = Path('tools/route_packs/explicit_slots/soana')
-        self.assertEqual(len(list(briefs.glob('*.json'))), 13)
+        self.assertEqual(len(list(briefs.glob('*.json'))), 23)
         nodes = {n['Id']: (s, n) for s in self.story['Scenes'] for n in s['Nodes']}
         for brief in briefs.glob('*.json'):
             data = json.loads(brief.read_text(encoding='utf-8'))

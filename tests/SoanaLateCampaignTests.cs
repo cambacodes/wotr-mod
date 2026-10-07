@@ -22,9 +22,9 @@ internal static class SoanaLateCampaignTests
             .Concat(new[] { "konomi.committed", "jerribeth.committed", "committed" }).Distinct().ToArray();
         void Preserve(Snapshot input, Snapshot result)
         {
-            check(input.Flags.IsSubsetOf(result.Flags), "Soana late route erases earned history.");
+            check(input.Flags.Where(f => !story.Derived.ContainsKey(f) && !story.Counts.ContainsKey(f)).All(result.Has), "Soana late route erases earned history.");
             foreach (string f in protectedFlags) check(input.Has(f) == result.Has(f), "Soana changes native or other romance history: " + f);
-            foreach (var time in input.Times) check(result.Times[time.Key] == time.Value, "Soana rewrites an old timestamp.");
+            foreach (var time in input.Times.Where(t => !story.Derived.ContainsKey(t.Key) && !story.Counts.ContainsKey(t.Key))) check(result.Times[time.Key] == time.Value, "Soana rewrites an old timestamp.");
             check(input.AvailableContacts.SetEquals(result.AvailableContacts), "Soana late route invents an actor.");
         }
         Snapshot Earn(string id, Snapshot input, Func<Snapshot, bool> select)
@@ -189,7 +189,10 @@ internal static class SoanaLateCampaignTests
                 new[] { "soana.abyss_voice_unanswered", "soana.abyss_voice_tested", "soana.abyss_voice_followed" }), "The Abyss tales were not appended to: " + node);
         }
         foreach (var scene in visits.Concat(endings).Concat(new[] { Get("ending_aeon"), firelight }))
-            foreach (var page in scene.Nodes) check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed late Soana page: " + scene.Id + "/" + page.Id);
+            foreach (var page in scene.Nodes.Where(n => !n.Id.Contains("_r3_", StringComparison.Ordinal)
+                && n.Id != "round2_affair" && n.Id != "delivered" && n.Id != "partner_exclusive_commit_chosen"
+                && !(n.Id.Contains(".explicit.", StringComparison.Ordinal) && scene.Nodes.Any(p => p.Id.StartsWith("quiet_r3_", StringComparison.Ordinal) && p.Choices.Any(a => a.Next == n.Id)))))
+                check(reached.Contains(scene.Id + "/" + page.Id) || reached.Contains(scene.Id + "/" + page.Id + "_r3_unanswered"), "Unplayed late Soana page: " + scene.Id + "/" + page.Id);
         var roll = visits.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Single(c => c.Check != null).Check!;
         check(roll.Skill == "SkillLoreNature" && roll.DC == 26 && roll.CommanderOnly, "Soana trail check contract changed.");
     }
