@@ -86,20 +86,20 @@ s("arsinoe_after_rain", "The water under the step",
 s("arsinoe_two_doors", "The people on either side",
   '"Have the neighbors agreed to speak?"', [
     n("start", "Arsinoe", '''"They have agreed to arrive. I thought it best to begin with something measurable."
-{n}Arsinoe takes you to the cooper's empty workroom. Orvena has brought her estimate. The cooper, Senn, stands behind a stool as though it might protect him from the figure written on the page. Beside the open door waits Edris, who rents the rooms on the passage's other side.{/n}
+{n}Arsinoe takes you to the cooper's empty workroom. Orvena has brought her estimate. The cooper, Senn, stands behind a stool as though it might protect him from the figure written on the page. Beside the open door waits Edritha, who rents the rooms on the passage's other side.{/n}
 "I did not build it," {n}Senn begins.{/n}
-"Nor did I," {n}says Edris.{/n} "Nor, so far as I know, did she. Can we finish that part?"
+"Nor did I," {n}says Edritha.{/n} "Nor, so far as I know, did she. Can we finish that part?"
 {n}Orvena places the piece of drain between them. Arsinoe waits until both look at it.{/n}
 "The passage will remain closed while it is unsafe. We are deciding how to repair it. We are not deciding whether to ask people to fall through it until ownership becomes less embarrassing."
-{n}Edris takes the stool. Senn discovers that standing behind it now looks rather foolish, and fetches another.{/n}''',
+{n}Edritha takes the stool. Senn discovers that standing behind it now looks rather foolish, and fetches another.{/n}''',
       c('"Hear what each of them can actually offer."', "terms"),
       c('"I cannot stay for this discussion."', abort=True)),
-    n("terms", "Arsinoe", '''{n}Senn produces an old agreement permitting access through the passage. It assigns cleaning to the occupants of both properties but says nothing about replacing the drain. Edris has already paid for clearing it twice. She brings the receipts, with grease stains where they have lain in her kitchen.{/n}
+    n("terms", "Arsinoe", '''{n}Senn produces an old agreement permitting access through the passage. It assigns cleaning to the occupants of both properties but says nothing about replacing the drain. Edritha has already paid for clearing it twice. She brings the receipts, with grease stains where they have lain in her kitchen.{/n}
 "My tenants carry water up there," {n}she says.{/n} "I want it open. I cannot pay for a new drain out of their rent this month."
 "And I cannot close my yard while you decide," {n}Senn replies.{/n}
 "Your wall may decide first," {n}Orvena says.{/n}
 {n}Arsinoe asks the mason to separate the urgent work from the later paving. Then she asks each neighbor what they can pay now, before anybody begins discussing what a good person would offer.{/n}
-{n}The smaller sum is still too large. Senn can supply cartage and stone from a demolished shed. Edris can pay in installments. Neither contribution will feed Orvena's crew through the first week, with Drezen already provisioning an army.{/n}
+{n}The smaller sum is still too large. Senn can supply cartage and stone from a demolished shed. Edritha can pay in installments. Neither contribution will feed Orvena's crew through the first week, with Drezen already provisioning an army.{/n}
 "I can advance the difference," {n}Arsinoe says.{/n} "But I want an arrangement we can examine after the noise of today's meeting has gone away."''',
       c('"You would become their creditor. Do you want that?"', "creditor"),
       c('"Could the urgent part be done while the rest waits?"', "stages"),
@@ -110,21 +110,21 @@ s("arsinoe_two_doors", "The people on either side",
 "Then why would we pay?" {n}Senn asks, too quickly.{/n}
 {n}Arsinoe turns to him.{/n}
 "Because you would have agreed to. Because I shall ask. You have a written estimate, dates you can meet, and a priestess who will ask for her money. I expect you to keep the agreement. If these answers are inadequate, you need not accept my money."
-{n}Senn looks at Edris. She does not rescue him.{/n}
+{n}Senn looks at Edritha. She does not rescue him.{/n}
 "I asked badly," {n}he says at last.{/n}
 "You did. It was useful to hear before I lent it."''',
       c('"Compare that with doing the work in stages."', "comparison")),
     n("stages", "Arsinoe", '''{n}Orvena turns her estimate over and draws the passage. She can replace the broken drain and shore the side now. The upper paving can wait behind a narrower barrier. People on foot would regain the passage; carts would still take the long way.{/n}
 "Two visits cost more than one," {n}she says.{/n} "And I will not promise the second week until it is paid for."
-{n}Senn dislikes losing the cart route. Edris dislikes another round of work outside her rooms, but neither pretends the proposal is impossible.{/n}
+{n}Senn dislikes losing the cart route. Edritha dislikes another round of work outside her rooms, but neither pretends the proposal is impossible.{/n}
 "I could pay a smaller share outright," {n}Arsinoe says.{/n} "As a neighbor who uses the passage. Then no one owes me anything. It would leave less for other things I hoped to do."
-"You need not pay at all," {n}Edris says.{/n}
+"You need not pay at all," {n}Edritha says.{/n}
 "I know. I am deciding whether I want to. That is considerably easier while you remember the distinction."''',
       c('"Compare the two arrangements."', "comparison")),
     n("order", "Arsinoe", '''"They may agree very quickly. I should then have to discover which parts they cannot possibly do."
 {n}She draws the estimate toward her.{/n}
 "There are matters in which you must give an order. This is a repair whose cost ought to be known by the people meeting it. Let them disagree while disagreement is still inexpensive."
-{n}Senn opens his mouth, glances at you, and shuts it. Edris watches him rather than you.{/n}
+{n}Senn opens his mouth, glances at you, and shuts it. Edritha watches him rather than you.{/n}
 "For example," {n}Arsinoe says,{/n} "I believe we have just learned that he has another objection. I would rather hear it."
 {n}Senn admits that a promised delivery has not been paid for. His available money is smaller than the figure he first gave. Arsinoe crosses out the larger sum without praising his honesty.{/n}
 "There. We have improved the plan by making it less impressive."''',
@@ -237,15 +237,15 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
       c('"Did you find the outlet the woman showed us?"', "outlet", requires=("arsinoe.wall_opened",))),
     n("targeted", "Arsinoe", '''{n}Orvena shows you a stack of unused timber beside the landing.{/n}
 "That joint was the one. Supporting it directly left these spare. The people who paid for them can keep them for the next job. Dry, preferably."
-{n}Arsinoe asks Senn where he can store the wood. Edris follows him to look at the place, unwilling to have their common materials disappear into an unrecorded corner of his yard.{/n}
+{n}Arsinoe asks Senn where he can store the wood. Edritha follows him to look at the place, unwilling to have their common materials disappear into an unrecorded corner of his yard.{/n}
 "A useful observation," {n}Arsinoe says to you.{/n} "I should like the next repair to begin with materials already here. We shall see whether they can agree on which shed is sufficiently dry."
 {n}She waits until the timber has been carried in before asking about the rest of the account.{/n}''',
       c('"Discuss the full repair."', "loan", requires=("arsinoe.repair_loan",)),
       c('"Discuss what remains."', "staged", requires=("arsinoe.repair_staged",))),
     n("supported", "Arsinoe", '''"All of them," {n}Orvena says.{/n} "The wall began shifting as I lifted the tread. The props held it until we could pack beneath. I have used the timber allowance; there is none left for another job."
-{n}She shows Arsinoe the marks where the supports took the weight. The cost remains inside the agreed estimate, but Edris had hoped to keep something toward the later repairs.{/n}
+{n}She shows Arsinoe the marks where the supports took the weight. The cost remains inside the agreed estimate, but Edritha had hoped to keep something toward the later repairs.{/n}
 "You paid for timber that held up a wall," {n}Arsinoe tells her.{/n} "I believe we should resist the temptation to mourn its usefulness."
-{n}Edris laughs reluctantly. Arsinoe touches the dry stone, then asks Orvena for the rest of the account.{/n}''',
+{n}Edritha laughs reluctantly. Arsinoe touches the dry stone, then asks Orvena for the rest of the account.{/n}''',
       c('"Discuss the full repair."', "loan", requires=("arsinoe.repair_loan",)),
       c('"Discuss what remains."', "staged", requires=("arsinoe.repair_staged",))),
     n("outlet", "Arsinoe", '''{n}Orvena points beneath the lower landing. With the old outlet cleared, the repaired channel has a place to discharge before water can build against the wall.{/n}
@@ -258,7 +258,7 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
     n("loan", "Arsinoe", '''{n}The upper landing has been relaid. Senn brings a handcart through while Orvena watches the wheels. At the bottom he stops beside Arsinoe, takes out a folded paper, and begins explaining a delayed payment.{/n}
 {n}Arsinoe lets him finish.{/n}
 "You have missed a date we agreed. I will hear a new proposal. I will not pretend the first one was merely a suggestion."
-{n}His new dates are smaller and closer together. She asks which delivery will pay the first. This time he gives a specific answer. Edris has paid her installment already, a fact Arsinoe carefully avoids using to humiliate him.{/n}
+{n}His new dates are smaller and closer together. She asks which delivery will pay the first. This time he gives a specific answer. Edritha has paid her installment already, a fact Arsinoe carefully avoids using to humiliate him.{/n}
 {n}When he has gone, she opens her hand. Her fingers have left little crescents in her palm.{/n}
 "I wanted to box his ears. Abadar frowns on it, and he is heavier than he looks. I wanted this to be the afternoon the account closed, and he came up the steps with his paper folded like an apology."
 {n}She looks up at you.{/n}
@@ -266,8 +266,8 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
       c('"A priestess. You let him make a new promise."', "heard"),
       c('"A bailiff. You had him convicted before he opened his mouth."', "expected")),
     n("staged", "Arsinoe", '''{n}The repaired drain is sound. The upper landing remains uneven, behind the narrower barrier Orvena described. Pedestrians can use the passage again; carts still take the longer road.{/n}
-{n}Edris brings the crew a jug of water. She has begun setting aside money for the second visit, but Senn will not give a date until another delivery has been paid for. He complains that the short route is still closed to his business.{/n}
-"It is open to your feet," {n}Edris says.{/n} "Try delivering a smaller barrel."
+{n}Edritha brings the crew a jug of water. She has begun setting aside money for the second visit, but Senn will not give a date until another delivery has been paid for. He complains that the short route is still closed to his business.{/n}
+"It is open to your feet," {n}Edritha says.{/n} "Try delivering a smaller barrel."
 {n}Orvena intervenes before that becomes a discussion of each other's customers. She leaves them with a written price that will remain valid for a stated period, then gathers her tools.{/n}
 {n}Arsinoe watches a woman lead two laden companions carefully past the barrier.{/n}
 "This is what I paid for. I keep wanting to pay for the rest, but I have already spent the sum I agreed to give."

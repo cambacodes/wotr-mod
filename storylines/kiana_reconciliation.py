@@ -45,16 +45,16 @@ BRIDGES = {
 {n}She shuts the lid gently and takes the shawl from the chair.{/n}'''),
     ("blue_room", "supper_later"): ("supper_stairs",
         '''"I remember that table," {n}Kiana says.{/n} "Elan and Meral got it wedged on the stairs. Each insisted the other should have measured something."
-{n}Edris begins to apologize. Kiana shakes her head.{/n}
+{n}Edrava begins to apologize. Kiana shakes her head.{/n}
 "Tell that one. I supplied excellent advice and they ignored every word."
 {n}Her fingers stop turning her cup.{/n}
 "Have Meral write. I want to see whether that table has recovered from the journey."
 "I'll tell him."
 "Tell him to write. Let me answer him."''',
         '''"Ask Meral to write to me," {n}Kiana says.{/n} "And please don't arrange a surprise reunion because somebody thinks they have heard something."
-{n}Edris's face changes.{/n} "I wouldn't."
+{n}Edrava's face changes.{/n} "I wouldn't."
 "Good. Send me the guest list. I refuse to be surprised halfway up those stairs."
-{n}Edris nods, more slowly this time.{/n}
+{n}Edrava nods, more slowly this time.{/n}
 "I'll ask him to write."
 "Thank you. Now help Odrin with those plates before he proves his drink can dissolve them."'''),
     ("bakery_stairs", "history"): ("room",
@@ -64,7 +64,7 @@ BRIDGES = {
 "Shall we go up?"
 "Up we go. Take the bread before I eat our entire contribution."
 {n}She passes you the loaf and puts her hand on the rail.{/n}''',
-        '''"I asked Meral who would be here. He said Edris, us, and an alarming quantity of paper. No surprises."
+        '''"I asked Meral who would be here. He said Edrava, us, and an alarming quantity of paper. No surprises."
 {n}She rubs a spot of flour from the note.{/n}
 "The table was surprise enough when he moved in. Elan and Meral wedged it between these walls and argued about whose end needed turning. I stood down here offering advice. They were united in refusing it."
 "Meral has sent the names. I can stop imagining a surprise behind every door."

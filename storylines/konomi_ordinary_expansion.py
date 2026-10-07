@@ -87,7 +87,7 @@ s("a_useful_supper", "The price of a quiet street", '"You mentioned an invitatio
 s("the_upper_passage", "What reaches the rooms above", '"Shall we see what the yard sounds like?"', [
     n("start", "Narrator", """{n}Hesset has arrived early, which makes him impatient before anyone else has had an opportunity to be late. His wagon carries four empty barrels and a crate of loose wooden pegs. Varine has paid a porter named Bel to move them into the store and back.{/n}
 {n}Konomi wears a plain cloak over her good coat. Oselda leads you through the yard to a stair door, carrying the borrowed key.{/n}
-"This is Sella's passage," {n}she says.{/n} "She has her sister's children tonight. If she comes out, we finish."
+"This is Selvani's passage," {n}she says.{/n} "She has her sister's children tonight. If she comes out, we finish."
 {n}Konomi nods. A child's voice behind the nearest door asks whether that was a horse. Another voice says it was certainly not a horse and therefore should be ignored.{/n}
 "A promising beginning," {n}Konomi murmurs.{/n}
 {n}Below, Hesset calls to Bel. The first barrel lands on a plank with a hollow crack. Sound seems to run up the wall beneath your hand.{/n}
@@ -111,13 +111,13 @@ s("the_upper_passage", "What reaches the rooms above", '"Shall we see what the y
 {n}Konomi presses her lips together. For a moment you think she is trying not to be annoyed. Then she turns away, shoulders moving, and you realize she is laughing.{/n}
 "I apologize," {n}she tells Oselda.{/n} "It has had a difficult evening."
 {n}They lower the wagon and repeat the movements separately. The loose loading plank finally jumps against its iron bracket. Bel puts a foot on it, and the next barrel passes with a dull scrape.{/n}
-{n}The repeated unloading has taken long enough that the door opens. Sella stands there with a child asleep against her shoulder. She need not say anything. Oselda signals below, and the yard falls quiet.{/n}
+{n}The repeated unloading has taken long enough that the door opens. Selvani stands there with a child asleep against her shoulder. She need not say anything. Oselda signals below, and the yard falls quiet.{/n}
 "We have finished," {n}Konomi tells her.{/n} "Thank you for the time."
 {n}You go downstairs to settle the repair and the porter's extra work without another trial.{/n}""", c("[Listen to the porter explain what would be needed.]", "repair_late")),
     n("slow", "Narrator", """{n}Oselda repeats your request downstairs. Hesset moves the wagon a little. Bel lifts a barrel, sets it down, then rolls it slowly along the plank. Konomi tells him when to stop and asks you whether the sound changed.{/n}
 {n}On the fourth attempt the end of the plank springs upward against its bracket. Bel holds it with his boot, and the next movement loses its sharp report.{/n}
 "There," {n}Konomi says.{/n} "A repair, rather than an instruction to make less noise. I prefer problems that can be fastened to something."
-{n}The door opens before you can try again. Sella has a sleepy child against her shoulder. Oselda apologizes and signals that the trial is over.{/n}
+{n}The door opens before you can try again. Selvani has a sleepy child against her shoulder. Oselda apologizes and signals that the trial is over.{/n}
 "We said we would stop," {n}Konomi tells Varine when the merchant looks up from below.{/n} "We have learned enough for tonight."
 {n}You descend together. Bel has worked past the time he was hired for, and Varine begins counting the additional coins before Oselda can ask.{/n}""", c('[Ask Bel what a lasting repair would require.]', "repair_late")),
     n("repair", "Konomi", """{n}Bel wants two new supports and a carpenter who will fit them to the stone rather than nail another scrap over the old split. He names the cost. Varine turns her ring twice, then agrees to obtain an estimate.{/n}
@@ -239,7 +239,7 @@ s("the_trial_day", "An improvement with a bill attached", '"How is the trial goi
       c('[Arrange to meet her at another time.]', abort=True)),
     n("evening", "Narrator", """{n}The people upstairs have agreed to the limited trial. Oselda has put the finishing hour on a board beside the gate. Bel works with another porter; neither appears particularly grateful for having been discovered to possess a back.{/n}
 {n}The repaired plank still creaks. It no longer cracks against the wall. Hesset brings the wagon through, waits while the porters steady the load, and climbs down to help them release the first rope.{/n}
-{n}Varine wants Konomi to see how quickly the entrance clears. Konomi asks Oselda whether the upper passage is available. It is not. Sella's sister has returned, and the room is full. They listen from the stair landing instead.{/n}
+{n}Varine wants Konomi to see how quickly the entrance clears. Konomi asks Oselda whether the upper passage is available. It is not. Selvani's sister has returned, and the room is full. They listen from the stair landing instead.{/n}
 "We should say where we stood," {n}Konomi tells you.{/n} "The wall sounded different higher up."
 {n}Bel calls that one of the casks has a damaged binding. The second porter fetches another rope. The extra care consumes the time Varine hoped to save. When the finishing hour arrives, two casks remain on the wagon.{/n}
 "Ten minutes," {n}Varine says.{/n}
