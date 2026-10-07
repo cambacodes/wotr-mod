@@ -692,3 +692,61 @@ for _s in SCENES:
             e("exercise_again", '"A deliberate design cannot be a mistake. That was my inference." {n}She draws a line through it again on the fresh page.{/n} "No. Intention does not guarantee the result, or excuse it. This objection holds. I shall put it beside the Crossroads draft too."\n{n}She pushes her chair nearer yours.{/n} "There is your second exercise. Now answer the question I actually called this sitting for."',
                 c("[Return to her question.]", "start", flags=(M + "exercise_paid",))),
         ))
+
+
+# ROUND 3 AUTHORED: recall only the entry the Commander actually performed.
+# Append alternatives without changing legacy node or answer identities.
+import copy as _copy
+_hall_motion = "eritrice.trickster.council.motion"
+_late_motion = "eritrice.trickster.council.late_motion"
+_point = next(s for s in SCENES if s["Id"] == POINT_ONE)
+_nodes = {n["Id"]: n for n in _point["Nodes"]}
+for _name in ("rules", "closer"):
+    _answer = _nodes[_name]["Choices"][0]
+    _answer["Requires"].append(_hall_motion)
+    for _target, _req, _veto in (
+        ("motion_petition", (_late_motion,), (_hall_motion,)),
+        ("motion_reconciled", (), (_hall_motion, _late_motion)),
+    ):
+        _nodes[_name]["Choices"].append(c(_answer["Text"], _target, requires=_req, forbids=_veto))
+for _name, _opening in (
+    ("motion_petition", '"Your petition asked for a private debate. I have refined the motion. The surety remains sealed."'),
+    ("motion_reconciled", '"We have heard the grudge. Now I propose a private debate. You may answer for yourself; I shall answer for myself."'),
+):
+    _variant = _copy.deepcopy(_nodes["motion"])
+    _variant["Id"] = _name
+    _variant["Text"] = _opening + "\n" + _variant["Text"].split("\n", 1)[1]
+    _point["Nodes"].append(_variant)
+for _node in [n for n in _point["Nodes"] if n["Id"].startswith("motion")]:
+    _node["Choices"][2]["Requires"].append(_hall_motion)
+    _node["Choices"].extend((
+        c(_node["Choices"][2]["Text"], "minutes_petition", requires=(_late_motion,), forbids=(_hall_motion,)),
+        c(_node["Choices"][2]["Text"], "minutes_reconciled", forbids=(_hall_motion, _late_motion)),
+    ))
+for _name, _record in (
+    ("minutes_petition", '{n}She touches the sealed petition beside her scroll.{/n} "You staked a truth of your own. I admitted your petition; I did not carry it. Do not mistake the seal for my vote."'),
+    ("minutes_reconciled", '{n}She lays a claw beside the account of the extraction.{/n} "We agreed to hear the grudge, not erase it. I will keep that agreement here. This debate will have its own record."'),
+):
+    _variant = _copy.deepcopy(_nodes["minutes"])
+    _variant["Id"] = _name
+    _variant["Text"] = _variant["Text"].split(" {n}She looks at", 1)[0] + "\n" + _record
+    _point["Nodes"].append(_variant)
+_quill = next(s for s in SCENES if s["Id"] == QUILL)
+_held = next(n for n in _quill["Nodes"] if n["Id"] == "held")
+for _index in (0, 2):
+    _held["Choices"][_index]["Requires"].append(_hall_motion)
+_held["Choices"].extend((
+    c('[Hold out your hand for the quill.]', "hand_petition", requires=(_late_motion,), forbids=(_hall_motion,)),
+    c('[Hold out your hand for the quill.]', "hand_reconciled", forbids=(_hall_motion, _late_motion)),
+))
+_honest = next(n for n in _quill["Nodes"] if n["Id"] == "hand_honest")
+for _name, _recall in (
+    ("hand_petition", '"You ask for the quill, and leave your sealed truth in my keeping. That is a considerable trust, Commander. I shall not open the seal to answer this."'),
+    ("hand_reconciled", '"You ask for the record. Including the grudge. I have not forgotten what brought us to this table. Nor have I withdrawn my invitation."'),
+):
+    _variant = _copy.deepcopy(_honest)
+    _variant["Id"] = _name
+    _lines = _variant["Text"].split("\n")
+    _lines[1] = _recall
+    _variant["Text"] = "\n".join(_lines)
+    _quill["Nodes"].append(_variant)
