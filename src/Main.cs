@@ -689,11 +689,18 @@ namespace Tirabade
                     NativeCueTextEdit.Attach(source.Cue, () =>
                     {
                         if (!enabled || !initialized || Game.Instance?.Player == null) return null;
+                        if (story.NativeTextEdits.ContainsKey(pair.Key + "/Text"))
+                            return NativeTextEditRuntime.Replacement(source.Cue.Text);
                         int selected = Rules.SelectNativeEditVariant(story, variants, scenes, State());
                         return selected < 0 ? null : text[selected].ToString();
                     });
                 }
                 // eng7-f6b end
+                NativeTextEditRuntime.Install(story, () => enabled && initialized && Game.Instance?.Player != null
+                    && !degraded.Contains("kiana") ? State() : null,
+                    id => story.NativeEpilogueEdits.ContainsKey(id) && !nativeEditSources.ContainsKey(id)
+                        || story.NativeAnswerEdits.ContainsKey(id) && !nativeAnswers.Any(a => a.Target == id)
+                        ? null : ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), message => warnings.Add(message));
                 // E14d extension: a verified suppression hides its native cue while its When holds (never while the mod is disabled
                 // or uninitialized, or while its relationship is degraded).
                 foreach (var suppression in nativeSuppressions)
@@ -716,8 +723,7 @@ namespace Tirabade
                     {
                         bool Holds() => enabled && initialized && Game.Instance?.Player != null && Rules.NativeGateHolds(story, id, State());
                         // eng7-f6b: capture F1 attachment sites; retain the integration partial/full selection.
-                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(q3Recovery!, () => Holds()
-                            && Rules.Q3RecoverySkipsPatients(Rules.Q3RecoverySelection(story, State())));
+                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(q3Recovery!, Holds, State);
                         else foreach (var checker in gate.Checkers) NativeGate.Attach(gate.Owner, checker, Holds);
                         return new object();
                     });
@@ -2033,6 +2039,11 @@ namespace Tirabade
                     && Rules.PresenceWanted(presence.Spec, state);
                 // eng7-l06: eligibility comes from computed earned state; Tick alone witnesses loaded-area failure.
                 presence.Tick(wanted, story, state);
+                if (presence.Key == "kiana.presence" && presence.CharacterKilled)
+                {
+                    Set("kiana.closed");
+                    state.Flags.Add("kiana.closed");
+                }
                 // eng7-l06 end
                 string line = presence.Report(wanted);
                 if (!presenceStatus.TryGetValue(presence.Key, out var last) || last != line)

@@ -1,0 +1,284 @@
+{
+  "82213327a06db644fb2b5bb1410d4654/Text": {
+    "Type": "BlueprintCue",
+    "Key": "6962fab7-3d93-4c05-92fa-ca0c914d4e4d",
+    "Text": "\"All right, here's the deal.\" {n}Seelah gets straight to the point.{/n} \"While we were in the Abyss, these folks discovered where the souls are being kept — the ones that were stolen by the demons.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0003.jbp"
+  },
+  "3f29d60b9a30bbb49bc9d56eaae1f643/Text": {
+    "Type": "BlueprintCue",
+    "Key": "5d8e7c45-94d1-4c1a-9b5c-7987b289d282",
+    "Text": "{n}A shadow falls across Elan's face.{/n} \"Kiana's lifeless body is there now... with the bodies of all the other victims. I've barely left her side since it happened. This is the longest I've been away... I know it's just her body... a shell, and that her soul is somewhere else, but...\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0010.jbp"
+  },
+  "5fa8ed029a93b4348b82ec659e6839a0/Text": {
+    "Type": "BlueprintCue",
+    "Key": "60a2a08c-7b89-429f-8956-30184ad2712e",
+    "Text": "\"I'll leave at once. I'll keep watch on the cave and its surroundings. We can meet up there.\" {n}Elan sighs in frustration.{/n} \"I can't bear to wait any longer. I can't leave Kiana's soul in the clutches of those monsters!\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0013.jbp"
+  },
+  "f750317f25d754b41b465a9533216338/Text": {
+    "Type": "BlueprintCue",
+    "Key": "452340b8-848b-4057-8a4a-17435357540d",
+    "Text": "\"Oh, I'm just itching to give my blade a taste of those soul-stealing cultists! But the most important thing is that we save the victims... and that's exactly what we're going to do.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0015.jbp"
+  },
+  "81f0222e6856efd4bbdbd5dea796716a/Text": {
+    "Type": "BlueprintCue",
+    "Key": "baa20a60-7931-4084-b510-bf166145a1f2",
+    "Text": "\"Suit yourself. But I can't abandon those poor souls.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0016.jbp"
+  },
+  "a473e5412ffd0f54fbf395770a80a008/Text": {
+    "Type": "BlueprintCue",
+    "Key": "9e3e8d42-8f1c-4cb9-9dfb-d4c5712ff6d1",
+    "Text": "\"Well, I wouldn't say we 'discovered' it, exactly. I may be a cleric, but there are limits to my power... especially here in the Worldwound. However, we do know the general location. When I was looking for the souls, I had a vision. I saw a rock that looked like a gravestone, and beneath it was an entrance to a cave. I know that the rock is on the outskirts of the Winged Wood. It was not difficult to recognize the ancient forest — it's been burning for decades in an unquenchable fire started by the demons. I'm certain that this is where the souls are being held. But I don't know what awaits us beneath that rock.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0019.jbp"
+  },
+  "124ca3b348b3dff429ef708e5b24788a/Text": {
+    "Type": "BlueprintCue",
+    "Key": "d895a05d-ad4f-4d2d-9c28-70880a010585",
+    "Text": "\"Anyway, Elan and I have decided to go there, find the souls, and rough up any demon or cultist that gets in our way! But we'd love to have your help.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0020.jbp"
+  },
+  "613485017b96c3840a2f9eea886deff1/Text": {
+    "Type": "BlueprintCue",
+    "Key": "8b555c03-fe28-4d02-85be-b25b99bcd0b0",
+    "Text": "{n}Seelah hesitates for a moment, and you can sense her inner turmoil. Then she shakes her head.{/n} \"You have plenty of soldiers and companions, {name}. But the trapped souls of Sunhammer's victims... they don't stand a chance without me and Elan. I don't want to leave you, but it seems I have no choice. Farewell! Let's go, Elan. We need to prepare for our departure.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0023.jbp"
+  },
+  "086a160e51ef79c4d98750203cb4b641/Text": {
+    "Type": "BlueprintCue",
+    "Key": "87e38061-27ad-44e8-ad6b-2f52b7429fc6",
+    "Text": "\"What if something has happened to Kiana's soul? Who knows what that monster's done to her! It makes me sick just thinking about it!\" {n}Elan takes a deep breath, and tries to regain his composure.{/n} \"I... apologize for my sudden outburst. I'm just... tired.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0027.jbp"
+  },
+  "d759f7956ba304442b74a842ff6b14d5/Text": {
+    "Type": "BlueprintCue",
+    "Key": "a03f71db-e5e0-4f72-b29a-9834b4a48165",
+    "Text": "{n}There's an insane light in Elan's eyes.{/n} \"However, a soldier will fight better if they have a purpose... a reason to go into battle. They will do anything, go anywhere, if they truly believe in their cause. And I will stop at nothing to save Kiana.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0033.jbp"
+  },
+  "ff03c12b165989e479d7c80e9ce7a8f9/Text": {
+    "Type": "BlueprintCue",
+    "Key": "ec2188d1-671b-4077-8c5f-79fc07598302",
+    "Text": "\"Commander...\" {n}Jannah hesitates, then continues resolutely.{/n} \"I know about the stolen souls. I want to help you search for them. I've come to ask if you will let me join you and Seelah on this mission. Please, give me another chance!\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0009.jbp"
+  },
+  "901c1edd8887dfa4b9f108e106f38423/Text": {
+    "Type": "BlueprintAnswer",
+    "Key": "74e73e62-e594-4200-8f0b-51c206c927d7",
+    "Text": "\"We'll find Elan and the stolen souls!\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Answer_0009.jbp"
+  },
+  "01a184d01ff707748b6377c38d2912e5/Text": {
+    "Type": "BlueprintAnswer",
+    "Key": "b6aadd42-09ba-48cd-86fa-4f3ef5ba83bf",
+    "Text": "\"We'll find the stolen souls!\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Answer_0011.jbp"
+  },
+  "cb2e13e1ded36e5419d746ed92162a91/Text": {
+    "Type": "BlueprintCue",
+    "Key": "b8064d2c-fba2-4fa6-8a6f-b6dadab2aee7",
+    "Text": "\"Greetings, Commander.\" {n}Elan greets you with the discipline of a soldier. He is {d|Seelah Elan hope}calm{/d} and composed, and his voice is steady.{/n} \"I kept watch, just like you instructed. They're definitely keeping the trapped souls here. I've seen the jewelry myself. But the place is well guarded. We'll have to fight our way inside.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0003.jbp"
+  },
+  "e65e4b85197e6aa42a40d34abcea889c/Text": {
+    "Type": "BlueprintCue",
+    "Key": "a4e4b388-60b7-4030-9aaf-4f06f807f1e4",
+    "Text": "{n}It takes {g|Jannah}Jannah{/g} a moment to catch her breath.{/n} \"Thank goodness you're here! I followed your instructions. I met Elan here, and we were keeping watch, when... he saw that jeweler, Derek Sunhammer. He was carrying the stolen souls! Well, Elan went crazy. I tried to reason with him, I asked him to wait for you, but all he could think about was {d|Seelah Elan desperate}Kiana's soul{/d}. He rushed off on his own! He told me to stay here, and wait for your arrival. I've been so worried. He should never have gone in alone...\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0006.jbp"
+  },
+  "be05eef615c2eac44ac30ec0a2e49603/Text": {
+    "Type": "BlueprintCue",
+    "Key": "697942a5-46b2-4c85-975c-602efa20836b",
+    "Text": "\"There's one more thing I should mention... Darek Sunhammer is here. I saw him at the entrance to the cave. He had the trapped souls with him — or rather, the jewelry that contains the trapped souls. He was looking at the different pieces... holding their gemstones up to the light. I think he was admiring his handiwork. It's safe to assume that he's a significant figure within the cult, and that means he'll probably be a formidable opponent.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0016.jbp"
+  },
+  "5736cff83ea67644bb11346947b1eb2f/Text": {
+    "Type": "BlueprintCue",
+    "Key": "ba2425dd-420f-4ff6-abaa-2b5f0ae95741",
+    "Text": "\"A trap... there are so many... traps here. I saw Sunhammer with the jewelry. He had the souls... I dashed after him, heedless of anything else. I didn't realize the door was trapped. I went to open it, and...\" {n}Elan's body spasms, and he groans.{/n} \"Seelah, please... don't make the same mistake I did. Save Kiana and the others! I know you can...\" {n}His body spasms again, and he goes still.{/n}",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0003.jbp"
+  },
+  "dd9956385abff89418d83075e1b7774c/Text": {
+    "Type": "BlueprintCue",
+    "Key": "8fbff9f7-a739-4a19-b5cd-8102b2299891",
+    "Text": "\"Don't say that! It can be hard not to make stupid decisions when you're worried about someone you love. If Kiana's soul wasn't being held hostage by these scumbags, Elan would have never made a mistake like this...\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0011.jbp"
+  },
+  "22ced28b5ecb08348b35daa51ab112b1/Text": {
+    "Type": "BlueprintAnswer",
+    "Key": "ef6faada-c7c6-4c63-b1d6-f19a00da9c17",
+    "Text": "\"Give us back the souls, and I'll let you go.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0022.jbp"
+  },
+  "75220bf8ab5be034ea55b84d24c58de2/Text": {
+    "Type": "BlueprintCue",
+    "Key": "43e11168-7f70-4aa8-b527-b657268d390f",
+    "Text": "{n}Seelah sits quietly with her hands clasped together. She sighs softly, and there's a faraway look in her eyes. You can see from her troubled expression that something is bothering her.{/n} \"There you are, {name}! I'm just here, you know... waiting. Arsinoe is going to unite the souls and the bodies. Just a little longer, and we can put all of this behind us...\" {n}She falls silent, and looks down at her hands despondently.{/n}",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0001.jbp"
+  },
+  "096dd0fc12adbaf438bca7c7c9ebb4ba/Text": {
+    "Type": "BlueprintCue",
+    "Key": "cbbe11fe-01ff-4ba9-8f1f-2b2a9b4940a6",
+    "Text": "\"Ugh, where do I even start? There's a lot on my mind. But hey, {name}... there's something I have to ask. All of these souls will be returned to their bodies soon... and that means Curl will be free. But what if it's confirmed that he really did work with the cultists? What will you do to him?\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0005.jbp"
+  },
+  "3bdbd8728bc75bf4eadae1152a34f26b/Text": {
+    "Type": "BlueprintCue",
+    "Key": "cd9de62b-2a56-4220-b057-6c1a3ea86b25",
+    "Text": "\"Not long. Arsinoe is just taking a few precautions. She wants to make sure everything goes smoothly when the souls return to their bodies. She'll call us when everything is ready.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0006.jbp"
+  },
+  "01a1c98b38a78fd4abeaa0c09f3a5be9/Text": {
+    "Type": "BlueprintCue",
+    "Key": "9abb4bcf-bb04-4a8c-bd1c-4cbcb3de1e3e",
+    "Text": "\"I guess everything's turned out all right. We'll get the souls back, everyone will come back to life, and we'll put all of this behind us. When I took my oath as a paladin, I swore to 'guard the honor of my fellows,' 'have faith in them,' and 'learn the weight of my sword'... and I've done those things. So maybe I should stop worrying about what Sunhammer told me before his death... He was just being spiteful, right? His words were full of poison... not truth.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0038.jbp"
+  },
+  "aebbc1845e827dd4da4e28014e7b4162/Text": {
+    "Type": "BlueprintCue",
+    "Key": "1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c",
+    "Text": "{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} \"I was a wife for less than a minute... and now I'm a widow.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp"
+  },
+  "5a5a533c9ce630a48b877f9a194840cb/Description": {
+    "Type": "BlueprintQuest",
+    "Key": "b46d5fa9-4ea9-4e7a-9997-b95c458bd095",
+    "Text": "Upon {mf|his|her} return from the Abyss, the Commander is met with a new development — the souls stolen from a number of Mendevians in a devious plot have been tracked down in the Worldwound, and they can still be retrieved. In the long, arduous war against the demons, this episode is hardly noteworthy — just another grief endured, another loss borne, another moment spent hoping for salvation. But for the paladin Seelah, this story means something much, much more...",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp"
+  },
+  "7ac73c0b5de939b4b824a0aac54ba5f2/Description": {
+    "Type": "BlueprintQuestObjective",
+    "Key": "ef5f2b7e-8e8c-4338-a8c1-acce1e65618f",
+    "Text": "The priestess Arsinoe has found where the souls are being kept. It is a cave under a cliff in the southern Worldwound, on the edge of the Winged Wood. But even the faithful servant of Abadar could glean no details about the location from her vision. The knight Elan has gone on ahead to do reconnaissance, and the Commander and Seelah must join him at their destination.",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/01_JewelerHideot.jbp"
+  },
+  "83527eddea019674cb123a6a52bdf169/Title": {
+    "Type": "BlueprintQuestObjective",
+    "Key": "8f8bb69c-77fb-4b1a-af7a-589fa79bcb17",
+    "Text": "Find the jewelry containing the stolen souls",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/02_FindSoulGems.jbp"
+  },
+  "83527eddea019674cb123a6a52bdf169/Description": {
+    "Type": "BlueprintQuestObjective",
+    "Key": "e07e3559-8973-46ee-8c3f-85326d63c8aa",
+    "Text": "As suspected, the mysterious place turned out to be a Baphomite hideout. The jewelry is hidden somewhere within, and retrieving it without a fight seems very unlikely.",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/02_FindSoulGems.jbp"
+  },
+  "5b1e04caadc42114281d29db76c19c4f/Title": {
+    "Type": "BlueprintQuestObjective",
+    "Key": "fe6c829a-52b3-489e-814f-b9cbe22a8cd6",
+    "Text": "Ensure that the souls are returned to their bodies",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/03_ReturnSouls.jbp"
+  },
+  "5b1e04caadc42114281d29db76c19c4f/Description": {
+    "Type": "BlueprintQuestObjective",
+    "Key": "884bf99f-bd1e-42ea-ac54-996fe4e8dddb",
+    "Text": "The last chapter of this story awaits the Commander back in Drezen. The victims must be brought back to life. Seelah, who is guarding the jewelry containing the souls, will be waiting in the infirmary where the bodies have been kept.",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/03_ReturnSouls.jbp"
+  },
+  "ba857f1c903988f47a70a9d6a2d861fa/Description": {
+    "Type": "BlueprintQuestObjective",
+    "Key": "247343ee-0c87-4495-9857-310cc31fa663",
+    "Text": "Jannah, the convicted deserter, has expressed a desire to join her friends and go after the stolen souls",
+    "Path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/Add_JannahJoins.jbp"
+  },
+  "dc3a376f09759574f997995e8f07689a/Text": {
+    "Type": "BlueprintCue",
+    "Key": "1e776184-f15d-4a8a-9e96-830c5e929e6c",
+    "Text": "\"We're finally here! This whole time, I've been so worried. I just can't stop thinking about the stolen souls.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0001.jbp"
+  },
+  "5c09123a07ee1e047a292c542cce6b74/Text": {
+    "Type": "BlueprintCue",
+    "Key": "cb16d5c5-6f75-4238-9d9d-957abc3aa5a8",
+    "Text": "{n}Kiana smiles sadly.{/n} \"I married a crusader. I knew the risks. I understood that this might happen someday... I just didn't expect it to be so soon.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004.jbp"
+  },
+  "5d02b3f1d1f6774419ea9fd3795596e8/Text": {
+    "Type": "BlueprintAnswer",
+    "Key": "12e922e5-7d4c-4e06-a130-765d91876379",
+    "Text": "\"What happened to the bodies of these trapped souls?\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0006.jbp"
+  },
+  "56f96d3f22dac0942890ebc8dafdfc56/Text": {
+    "Type": "BlueprintCue",
+    "Key": "869d65f2-fb96-4999-9355-fd6a5c1719d1",
+    "Text": "\"No, we don't... But we can guess. Do you remember what, or rather, who started all of this? The esteemed jeweler Darek Sunhammer and his damned trinkets! Well, we did some digging on him, and we believe he's one of Baphomet's cultists. Think about their methods, their magic, and their ability to infiltrate society and strike when least expected — it all sounds exactly like our jeweler 'friend.' If we're right, we think this location might be a cultist hideout. It makes sense that he would take the stolen souls to a safe location in the Wound.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0008.jbp"
+  },
+  "6cac7bac2baea854d9c52b1d89046cd8/Text": {
+    "Type": "BlueprintCue",
+    "Key": "8515f2a6-a926-49a3-a566-f60b4e1dff3d",
+    "Text": "{n}Elan shakes his head.{/n} \"My apologies, Commander. Perhaps I am too emotional — but how can I control myself at a time like this? All I can think about is my wife.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0032.jbp"
+  },
+  "a819e8c85ef23324bb0d8117bb9d7df3/Text": {
+    "Type": "BlueprintCue",
+    "Key": "1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+    "Text": "\"Yes, it feels good to be married.\" {n}Kiana smiles.{/n} \"Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp"
+  },
+  "df45181e1968f26459f9e8bc2b995a34/Text": {
+    "Type": "BlueprintCue",
+    "Key": "0c8edca3-4bab-4535-a37b-ea3d3186213b",
+    "Text": "\"We're glad too,\" {n}Kiana replies.{/n} \"But I'm very displeased with the way my wedding ended. We didn't even get to enjoy our wedding night together... and it was all because of those damned demons!\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0007.jbp"
+  },
+  "0e50ec24099196a42b7089ffecdc46b2/Text": {
+    "Type": "BlueprintCue",
+    "Key": "0568c8c8-7e85-4fc3-ba62-309d2bebee00",
+    "Text": "\"Kiana, my love!\" {n}Elan blushes.{/n} \"Let's discuss that later... We don't want to embarrass the Commander.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0008.jbp"
+  },
+  "4cd264ce0432bb94a8e80a551190150d/Text": {
+    "Type": "BlueprintCue",
+    "Key": "b873d838-c522-4d2f-83e0-b017070b6102",
+    "Text": "\"Neither can I... See? That's why we make such a good couple. We have so much in common!\" {n}Kiana laughs.{/n}",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0011.jbp"
+  },
+  "73815b731281fdc47bbc59aba42b2126/Text": {
+    "Type": "BlueprintCue",
+    "Key": "afe4a854-e6c9-442f-8755-cc08e4fd140c",
+    "Text": "\"Greetings, Commander! I'm glad you are here. We are ready to return the stolen souls to their bodies, and bring these poor people back to life. We will need to help them get over their initial shock, and your presence will undoubtedly help ease their transition. First, however, I need your companion. Seelah, everyone is waiting for you.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0028.jbp"
+  },
+  "e9a5a4c03ea016f47b29d91b2ff3a00c/Text": {
+    "Type": "BlueprintCue",
+    "Key": "6ba1cb04-8e0b-40c5-ac6d-6cf64ff0e094",
+    "Text": "{n}Seelah gets to her feet.{/n} \"Me? Why?\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0029.jbp"
+  },
+  "2b133bf7ac66d6241a69a53dce2bf05f/Text": {
+    "Type": "BlueprintCue",
+    "Key": "c2e4632d-2c47-43cf-bebb-0f8dbbab495b",
+    "Text": "\"Because we want you to set the souls free. We all agreed that you should be the one to do it — after all, you saved these people. You should be the one to bring them back to life.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0030.jbp"
+  },
+  "b3e6076282402a1489b6f226567cf8fa/Text": {
+    "Type": "BlueprintCue",
+    "Key": "3cb6cfc5-ab5e-4ddb-a7d1-8ce3775b987f",
+    "Text": "\"You're confusing me with someone else. I'm Seelah the blockheaded paladin. I'm no hero.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0031.jbp"
+  },
+  "aeccec94d6e3246488d7f13577a8380d/Text": {
+    "Type": "BlueprintCue",
+    "Key": "58ee4b07-0488-4fab-a286-d50f786fe135",
+    "Text": "\"Like I said, it was a collective decision. We all agreed that it should be you — the loved ones of the victims, the Houndhearts, myself... and I'm not going to go back and ask them to find someone else! So stop arguing, and let's go.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0032.jbp"
+  },
+  "81109ea8fb20dbc478cf67116740f4a1/Text": {
+    "Type": "BlueprintCue",
+    "Key": "b261aab4-14ff-41e7-bd72-21aeeab7df44",
+    "Text": "{n}Elan and Kiana fall into each other's arms, heedless of everyone else around them.{/n}",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp"
+  },
+  "4255f49c18c69aa4ab4d5582d0b6f39e/Text": {
+    "Type": "BlueprintCue",
+    "Key": "8e4494ff-5209-44e1-9e80-98a8b9d2a6a9",
+    "Text": "{n}Seelah picks up the bowl of jewelry and pours the contents into a pouch. Inside the bag, the gemstones gleam ominously.{/n} \"We have the souls... I'll keep them with me until we reach Drezen. Let's go, {name}! I... don't want to stay here any longer.\"",
+    "Path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0051.jbp"
+  }
+}

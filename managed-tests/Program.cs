@@ -165,7 +165,7 @@ internal static class Program
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(KianaNativeTextManagedTests.NativeIds(story)).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
             RunSuite("SeelahRecoveryTests", () => SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check));
@@ -448,6 +448,7 @@ internal static class Program
         NativeGateManagedTests.Seed(native, Check);
         TerendelevNativeManagedTests.Seed(native, Check); // eng7-f6d
         NativeQ3RecoveryManagedTests.Seed(native, Check);
+        KianaNativeTextManagedTests.Seed(story, native, Check);
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
         main.GetField("story", PrivateStatic)!.SetValue(null, story);
@@ -889,6 +890,7 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) RunSuite("NativeEpilogueEditManagedTests.RunAfterlogue", () => NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunKianaSiblings", () => NativeEpilogueEditManagedTests.RunKianaSiblings(story, native, Id, Check));
         RunSuite("NativeQ3RecoveryManagedTests", () => NativeQ3RecoveryManagedTests.Run(story, Id, Check));
+        RunSuite("KianaNativeTextManagedTests", () => KianaNativeTextManagedTests.Run(story, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunDelivery", () => NativeEpilogueEditManagedTests.RunDelivery(story, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunDreamPage", () => NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunJewelerBowl", () => NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check));
