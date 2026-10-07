@@ -140,8 +140,16 @@ def polish_spine(scenes):
         nodes['clutch']['Choices'].append(c(text, 'marked',
             requires=('eggs.destroyed', cause), forbids=('eggs.omelet', 'eggs.druids'),
             flags=(P + 'returned', 'devarra.started', P + 'cost.woken_hungry', P + 'marked')))
-    nodes['marked']['Text'] = ('"Then you will watch what I choose next." {n}She lifts her chin off the ruined cart.{/n} '
-                              '"Keep your eyes open when I send for you."')
+    nodes['marked']['Text'] = ('"Dead while you stood there." {n}Her claw rakes the cart beside your hand.{/n} '
+        '"Now you can stand here while I decide what to do with you. Your story had better be very good."')
+    for index, cause in enumerate(CAUSES[:2]):
+        target = 'marked.responsible.' + str(index + 1)
+        nodes['clutch']['Choices'][-2 + index]['Next'] = target
+        visit['Nodes'].append(_voice(target,
+            ('"Your hand broke them."' if index == 0 else '"You ordered their deaths."') +
+            ' {n}She drives her claw through the cart between your arms, splitting it. The horses rear.{/n} '
+            '"Look at what you did. I shall hear your story, crusader. I like to play with my food. '
+            'Do not imagine that makes you anything else."', c('[Hold her gaze.]')))
     tithe = _nodes(_scene(scenes, P + 'after.tithe'))['tithe_free']
     tithe['Text'] = tithe['Text'].replace('now that she is off the stone\'s leash', 'now that she has left the mountain where she waited')
     # Account for the saved twelfth in all six fates without naming an unknown keeper.
@@ -151,10 +159,10 @@ def polish_spine(scenes):
                                            'No guard remained at the door.')
 
     greybor = _scene(scenes, 'devarra.react.greybor.flown')['Nodes'][0]
-    greybor['Text'] = ('{n}Greybor lays a torn strip of leather beside his blade.{/n} "Blood from her wing. '
-        'On the ledge where she took off. The same wound I opened; she did not leave a carcass behind." '
-        '{n}He puts the leather away.{/n} "Now she is on your ridge. My strike was real. So was her escape. '
-        'Next time you want a thing to live, say so before I draw. Let me decide whether to take the job."')
+    greybor['Text'] = ('{n}Greybor rests his hand on the pommel of his blade.{/n} "We hunted her. '
+        'Now she is on your ridge, alive. You have a dragon; I have an unfinished job." '
+        '{n}He looks toward the north wall.{/n} "Next time you want the quarry to live, tell me '
+        'before I take the contract. Let me decide whether the job is worth my name."')
     _scene(scenes, 'devarra.react.greybor.repeat_work')['Nodes'][0]['Text'] = (
         _scene(scenes, 'devarra.react.greybor.repeat_work')['Nodes'][0]['Text'].replace(
             'Greybor does not look up from the whetstone.', 'Greybor tests his edge with his thumb before he asks about the dragon.'))
@@ -408,7 +416,7 @@ def polish_epilogue(page):
                 'counted it whenever the Commander climbed.{/n}')
     # Slot brief: established annual return; no first-night replay or payment flags.
     page.setdefault('Paragraphs', []).extend([
-        dict(p('{n}In spring she returned to the ridge, and the Commander climbed to meet her.{/n}',
+        dict(p('{n}On a later visit the Commander climbed after the watch bells rang. Devarra lay on the unlit side of the tower, away from the brush fire. The Commander set down the armor and knelt beneath her raised wing, a hand against her warm scales.{/n} "You kept me waiting." {n}Her tail drew the visitor against her belly; the hand moved under her wing.{/n}',
                requires=(T + 'first_bite',)), Id=P + 'epilogue.woken.explicit.1'),
         p('{n}After she had lain among them in the vault, the eggs were carried east to the druids. '
           'The vault stood empty. On that night in later years she looked east from her ridge; the '

@@ -292,13 +292,13 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
 "Tell me one thing, and tell me true. Did you eat any?"''',
        c('"Yes. I was hungry too."', "ate_yes"),
        c('"No."', "ate_no")),
-    dv("ate_yes", '''{n}She turns her head and looks at you for a very long time.{/n} "Then you know what they tasted like, and I never will." {n}Her voice does not change at all.{/n} "Tell me. Tell me what they tasted like. Every word. You owe me that, and you have nothing else I want tonight."''',
+    dv("ate_yes", '''{n}Her jaws open beside your face. She draws a long breath through her teeth.{/n} "You too. Hungry little crusader." {n}Her tongue touches your cheek; then she pushes you down onto the stair with her snout.{/n} "Tell me how you ate them. Look at me while you do it."''',
        c("[Tell her.]", "ate_yes_told")),
-    nar("ate_yes_told", '''{n}You tell her. She listens with her eyes closed, and does not interrupt, and when you have finished she says nothing at all, and at the door the Storyteller shifts his weight at last.{/n}''',
+    nar("ate_yes_told", '''{n}You give her the account from the stair. Each time your eyes drop, her claw strikes the stone beside your boot. She makes you repeat the part about the shells. Below the ridge, the north watch changes; nobody comes up.{/n}''',
         c("Continue", "ate_yes_end")),
-    dv("ate_yes_end", '''"Herbs," {n}she says at last.{/n} "They put herbs in my children." {n}The eye opens.{/n} "Bring me the name of the herb-seller. Not the cook; the seller. I want to know who profits from my clutch. Then go home."''',
+    dv("ate_yes_end", '''"Herbs." {n}She scrapes the stair beside you, leaving a deep white gouge.{/n} "I shall smell them every time you climb. You saved your cook. Do not mistake that for saving yourself."''',
        c("Continue", "end")),
-    dv("ate_no", '''"No." {n}She tastes the air, once.{/n} "That is true. I can tell. You smell of a great many things, crusader, but not of them." {n}She lays her head back on the sill.{/n} "I do not know yet whether I am glad. Go home. Let me think about it at your city."''',
+    dv("ate_no", '''"Then you fed them to others." {n}Her snout drives you back against the stair. She looks past you toward the kitchens.{/n} "You stand between me and the cook. I can wait until you move. I can enjoy what you bring me while I wait."''',
        c("Continue", "end")),
 
     # The druids: she is hunting them.
@@ -357,13 +357,13 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
     dv("nest", '''"Watch," {n}she says.{/n} "You watched once. Watch again."''',
         c("[Watch.]", "watch", flags=(WATCHED,)),
         c("[Look away.]", "look_away", flags=(LOOKED_AWAY,))),
-    nar("watch", '''{n}You watch. She kills the three vrocks in less time than it takes to describe it, and then she stands over the nest, and she does not breathe fire on it at once. She looks at the eggs first, head low, exactly as the golems stood over hers.{/n}
+    nar("watch", '''{n}You watch. She crushes one vrock beneath her claw and tears the other two from the air, and then she stands over the nest, and she does not breathe fire on it at once. She looks at the eggs first, head low, exactly as the golems stood over hers.{/n}
 {n}Then she burns them. It takes a long time. She watches every moment of it, and so do you.{/n}''',
         c("Continue", "after_nest")),
     nar("look_away", '''{n}You look away, at the horizon, at the sky, at anything. Behind you there is shrieking, and then there is fire, and then there is the smell, and then there is only the sound of something burning very thoroughly.{/n}
 {n}When you look back she is watching you, not the ashes.{/n}''',
         c("Continue", "after_nest")),
-    dv("after_nest", '''"There." {n}Her voice is quite calm.{/n} "Now you have watched a mother do it to someone else's children. You did not stop me either." {n}She lowers her shoulder again.{/n} "We are even, crusader. I have decided. I do not want you to think it was forgiveness. It was arithmetic."''',
+    dv("after_nest", '''"There." {n}She studies your face before lowering her shoulder.{/n} "Did you want to look away? Remember that when you climb to me. Those ashes are not my children. Nothing you bring me will be."''',
        c("Continue", "end")),
 
     # Unknown: she wants the Commander to find them.
@@ -407,7 +407,7 @@ hub(T + "bane", "A trophy for your desk", '"What\'s in the sack, and why is it m
        c('[Keep the trophy] "It goes on my desk."', "keep", flags=(TROPHY, BANE_SEEN)),
        c('"Burn it. I don\'t need a demon\'s head to know what you are."', "burn", flags=(BANE_SEEN,), forbids=(FLOWN,)),
        c('"Burn it. I don\'t need a demon\'s head to know what you are."', "burn_free", flags=(BANE_SEEN,), requires=(FLOWN,))),
-    dv("keep", '''"On your desk." {n}The laugh again, the kiln door opening.{/n} "Where your generals will see it when they come to tell you the war is hopeless. Yes. Put it there." {n}She pushes the sack back toward you with the tip of her snout.{/n} "Bane of the Worldwound. They called me that in a language you do not speak, a long time ago. I did not deserve it then. I am going to deserve it now, and I want someone in your city to know it when it happens."''',
+    dv("keep", '''"On your desk." {n}Her claw pushes the writhing sack toward you.{/n} "Where your generals will hear it when they tell you the war is hopeless. Bane of the Worldwound. Let the demons learn why. I want the next one alive long enough to see what I did to this one."''',
        c("Continue", "end")),
     dv("burn", '''{n}The eye narrows, then opens again. She breathes on the sack, and the head inside it finally stops moving.{/n} "You do not need it to know what I am." {n}She lays her chin on her claws.{/n} "No. You watched what I am climb out of what I was. You would know it in the dark. That is a very unpleasant thing to be known by, crusader. I am getting used to it."''',
        c("Continue", "end")),
@@ -427,35 +427,35 @@ hub(T + "first_bite", "Once a year, where she chooses", '"She sent for me. Just 
 {n}There is fire on the ridge. She has lit it herself: a ring of burning brush around the base of the tower, low and orange, so that the whole ruin glows from inside like a lantern. The heat reaches you halfway up the path.{/n}''',
         c("Continue", "inside", forbids=(FLOWN,)),
         c("Continue", "inside_free", requires=(FLOWN,))),
-    dv("inside", '''"You came." {n}She is lying in the ring of fire as if it were a bath, the flames running over her new grey hide and doing nothing to it at all.{/n} "Take off the gauntlet, crusader. Not the sword arm. I remember." {n}Her eye goes down you slowly, the way it goes down a herd on the east road from the ridge, choosing.{/n} "Then the rest. I did not light a fire on my own mountain to bite a sleeve."''',
+    dv("inside", '''"You came." {n}She rises from the burning brush, flames sliding off her new grey hide. She crosses to the unlit side of the ruin and lies on the cold stone. You wait at the doorway while the night wind carries the smoke away. When you reach toward her, the scales are warm; you can keep your palm against them.{/n} "Not the sword arm. I remember. Now the gauntlet. And the rest. Your generals can have their iron back in the morning."''',
         c("[Take off the gauntlet, and then the rest.]", "close")),
-    nar("close", '''{n}The buckles are hot to the touch before you are halfway down them. You drop the last of it on the bones, and the firelight is on your bare skin, and so is she: she curls around you before you are aware that she has moved, the tail first, then the long body, grey coils closing one by one until there is nothing in the world but hot scaled hide against you from heel to nape, and her breath on the back of your neck like a forge door. It is hard to breathe. It is very hard to think.{/n}
-{n}Her head comes around slowly over your shoulder. She does not bite. She tastes first: the tongue, forked and hot and dry as paper, down the inside of your bared forearm from the elbow to the pulse of the wrist, once, and then again, slower, as if she were reading.{/n}''',
+    nar("close", '''{n}You unbuckle your armor beside the doorway, away from the burning brush. She curls around you on the unlit stone, her tail drawing your legs into the hollow beneath her wing. Her scales press against your skin. Behind her, the fire throws shadows up the wall.{/n}
+{n}She lowers her head over your shoulder and runs her tongue along your bared forearm, from elbow to wrist, then returns to the pulse. Her teeth hang beside it.{/n}''',
         c("Continue", "tasting", forbids=(FLOWN,)),
         c("Continue", "tasting_free", requires=(FLOWN,))),
     dv("tasting", '''"There," {n}she says, very low, and the word goes through the coils and through you.{/n} "Iron. Ink. Fear, a little; good. And under it the thing I tasted in the dark while I was dead. The story. You still taste of the story you paid my tariff with."
 {n}The coils tighten, just enough.{/n} "Look at me. I want you to watch. And tell me why you climbed up here with your belt already loose."''',
         c('[Look at her] "Because I\'ve wanted you since the first night you called me food."', "bite"),
         c("[Look at her, and let her read the answer off your skin.]", "bite")),
-    nar("bite", '''{n}Her eye is a hand's breadth from your face, orange as the fire, and it does not blink. Her jaws open. The teeth are very white and very clean, and they come down around your forearm slowly, so slowly, and you do not pull away. The points go in exactly as deep as her tariff says and no deeper. She drinks what wells up with her eye on yours, and the coils answer it, tightening until your ribs creak.{/n}
-{n}Then she lets the arm go, and the coils turn. They do not loosen; they roll, carrying you over the hot stone and onto her, and she lifts the grey wing off her flank like a blanket thrown back. Under it is the seam where the killing blow went in, and below the seam the pale, furnace-hot scales of her belly, the part of her she has kept from you until now. Her tail closes round your hips and draws you down into that heat, bare skin to burning scale, and holds you there. The sound she makes is too low to hear. You feel it in your teeth.{/n}
-"Mine," {n}she says against your hair.{/n} "All of it. Pay the rest."
-{n}And she pulls you in.{/n}''',
+    nar("bite", '''{n}Her eye stays on yours as her teeth close around your forearm. The points break the skin, no deeper than the small bite you promised. She drinks, then releases the arm. You bind it with the fleece beside you.{/n}
+{n}She raises her wing, exposing the seam where the killing blow went in. Her tail draws you across the cool stone and against her belly. You put your hand beneath the raised wing; she shifts into the touch, her claws grinding against the floor.{/n}
+"Mine," {n}she says against your hair.{/n} "Stay. I did not call you up here for your arm alone."
+{n}She draws you closer, and you reach for her.{/n}''',
         c("Continue", "morning")),
-    nar("morning", '''{n}The brush has burned to a black ring. You lie against her flank, inside the curve of her, with her heat against your bare skin. Her scales have printed their pattern from your shoulder to your knee, red where they pressed hardest. Your forearm is bound in a strip of fleece from the arrow slits; beneath it, the neat crescent of tooth marks throbs with your pulse.{/n}''',
+    nar("morning", '''{n}The brush has burned to a black ring. Dawn reaches the doorway where you left your armor. You lie beneath her wing on the unlit side of the tower. Her scales have pressed red marks into your shoulder and hip. The fleece around your forearm is spotted with blood; the crescent beneath it throbs when you move.{/n}''',
         c("Continue", "after")),
-    dv("after", '''"Small," {n}she says, without opening her eyes.{/n} "I said it would be small. I keep my bargains." {n}Her tail shifts, and you slide a little closer against the heat of her.{/n} "Go down when you like. Not yet. The old man is still pretending he did not hear anything, and it would be rude to spoil it for him."''',
+    dv("after", '''"Small." {n}Her eye opens as you inspect the bandage.{/n} "I said it would be small." {n}Her tail catches your ankle when you reach for your armor.{/n} "The bells have not rung. Your generals can wait."''',
        c("[Stay a little longer.]", flags=(BITTEN_ONCE,))),
-    dv("inside_free", '''"You came." {n}She is lying in the ring of fire as if it were a bath, the flames running over her hide and doing nothing to it at all, catching for a moment along the pale scar on her flank and sliding off.{/n} "Take off the gauntlet, crusader. Not the sword arm. I remember." {n}Her eye goes down you slowly, the way it goes down a herd on the east road from the ridge, choosing.{/n} "Then the rest. I did not light a fire on my own mountain to bite a sleeve."''',
+    dv("inside_free", '''"You came." {n}She rises from the burning brush, flames sliding off her scarred hide. She crosses to the unlit side of the ruin and lies on the cold stone. You wait at the doorway while the night wind carries the smoke away. When you reach toward her, the scales are warm; you can keep your palm against them.{/n} "Not the sword arm. I remember. Now the gauntlet. And the rest. Your generals can have their iron back in the morning."''',
         c("[Take off the gauntlet, and then the rest.]", "close")),
     dv("tasting_free", '''"There," {n}she says, very low, and the word goes through the coils and through you.{/n} "Iron. Ink. Fear, a little; good. And under it the thing I tasted in my lair, from behind the rocks, with a dwarf's knife a yard from my wing. The story. You still taste of the story you paid my tariff with."
 {n}The coils tighten, just enough.{/n} "Look at me. I want you to watch. And tell me why you climbed up here with your belt already loose."''',
         c('[Look at her] "Because I\'ve wanted you since the first night you called me food."', "bite_free"),
         c("[Look at her, and let her read the answer off your skin.]", "bite_free")),
-    nar("bite_free", '''{n}Her eye is a hand's breadth from your face, orange as the fire, and it does not blink. Her jaws open. The teeth are very white and very clean, and they come down around your forearm slowly, so slowly, and you do not pull away. The points go in exactly as deep as her tariff says and no deeper. She drinks what wells up with her eye on yours, and the coils answer it, tightening until your ribs creak.{/n}
-{n}Then she lets the arm go, and the coils turn. They do not loosen; they roll, carrying you over the hot stone and onto her, and she lifts the grey wing off her flank like a blanket thrown back. Under it is the long pale scar where your fight opened her to the ribs, the wound she flew on, and below it the furnace-hot scales of her belly, the part of her she has kept from you until now. Her tail closes round your hips and draws you down into that heat, bare skin to burning scale, and holds you there. The sound she makes is too low to hear. You feel it in your teeth.{/n}
-"Mine," {n}she says against your hair.{/n} "All of it. Pay the rest."
-{n}And she pulls you in.{/n}''',
+    nar("bite_free", '''{n}Her eye stays on yours as her teeth close around your forearm. The points break the skin, no deeper than the small bite you promised. She drinks, then releases the arm. You bind it with the fleece beside you.{/n}
+{n}She raises her wing, exposing the scar left by the fight in her lair. Her tail draws you across the cool stone and against her belly. You put your hand beneath the raised wing; she shifts into the touch, her claws grinding against the floor.{/n}
+"Mine," {n}she says against your hair.{/n} "Stay. I did not call you up here for your arm alone."
+{n}She draws you closer, and you reach for her.{/n}''',
         c("Continue", "morning")),
 ], requires=(COMMITTED, BITTEN, CLIMBED), forbids=(BITTEN_ONCE,), delay=24)   # the tower is climbed before it is lit
 
@@ -1507,11 +1507,11 @@ def integrate(payload):
     polish_epilogue(page)
     from storylines.devarra_round3 import epilogue as polish_round3_epilogue
     polish_round3_epilogue(page)
-    # The egg bill: collected at Last Call (lastcall_partners "The Grey Tariff"), or still standing.
+    # Calling her at Last Call never negotiated or settled the missing-life claim.
     page["Paragraphs"].extend([
-        p("{n}She collected the life the Commander owed her for it a month in every year, on the ridge, as she had named it at the edge of the world. The Commander never once missed a month. She never once let {mf|him|her} come down the same weight.{/n}",
+        p("{n}She had never named what she would take for the life missing from her clutch. When the Commander climbed, she spoke of the smallest egg again before turning to the visitor. The annual bite settled only the promise about the arm.{/n}",
           requires=(EGG_BILL, "devarra.lastcall.called")),
-        p("{n}She never named the life the Commander owed her for it. She said a bill that has not been collected is worth more than one that has, because it can still be called; and every winter, on the first cold night, the Commander looked up at the ridge and wondered whether this was the year.{/n}",
+        p("{n}She had never named what she would take for the life missing from her clutch. When the Commander climbed, she spoke of the smallest egg again before turning to the visitor. The annual bite settled only the promise about the arm.{/n}",
           requires=(EGG_BILL,), forbids=("devarra.lastcall.called",)),
     ])
 
