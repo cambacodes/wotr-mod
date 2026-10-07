@@ -11,7 +11,6 @@ internal static class JerribethProgressionTests
         var route = new Story { Scenes = story.Scenes.Where(s => s.Relationship == "jerribeth").ToList(), Relationships = story.Relationships };
         var future = Find("future");
         var farewell = Find("farewell");
-        var visit = Find("settlement_visit");
         var room = Find("room_measure");
         var catchup = Find("another_evening");
         var reaffirm = Find("promise_revisited");
@@ -19,10 +18,9 @@ internal static class JerribethProgressionTests
         var native = story.Etudes.Keys.Concat(story.CompletedQuests.Keys).Concat(story.CompletedEtudes.Keys)
             .Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Distinct().ToArray();
         var outcomes = new[] { "inspection_visible", "inspection_removed", "inspection_refused",
-            "catalogue_play", "catalogue_comedy", "catalogue_declined" };
-        var campaign = new[] { "offered_signature", "small_print", "unsold_evening", "purchaser_answer",
-            "counterfeit_guest", "counterfeit_hinge", "counterfeit_clerk", "counterfeit_audience",
-            "counterfeit_spoil", "counterfeit_after" };
+            "catalogue_play", "catalogue_comedy", "catalogue_declined", "new_public", "new_private" };
+        var campaign = new[] { "offered_signature", "unsold_evening",
+            "counterfeit_guest", "counterfeit_audience", "counterfeit_spoil" };
 
         void Preserve(Snapshot before, Snapshot after)
         {
@@ -50,6 +48,8 @@ internal static class JerribethProgressionTests
             var state = new Snapshot { Chapter = chapter, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             // eng7-l13: this suite plays the ordinary campaign; Trickster uses the authored budget fold.
             state.Flags.UnionWith(new[] { "jerribeth.met", "seelah.committed", "kiana.committed", "angel" });
+            state.Flags.UnionWith(new[] { "seelah.in_party", "regill.in_party", "wenduag.in_party",
+                "lann.in_party", "ulbrig.in_party", "greybor.in_party", "arueshalae.in_party" });
             // Sol r2: in Chapter 5 the second letter is the question_late twin (the Trickster late-start fold; inert off the path).
             foreach (string id in new[] { "invitation", chapter == 5 ? "question_late" : "question", "guise", "price", "evening", "commission" })
                 state = Play(id, state, queue: true);
@@ -96,7 +96,7 @@ internal static class JerribethProgressionTests
         shortRoute = Play("future", shortRoute, queue: true);
         check(shortRoute.Has("jerribeth.short_future_chosen") && !shortRoute.Has("jerribeth.developed_future"), "Short future grants developed history.");
         Endings(shortRoute, false);
-        var shortOrdinary = Play("ordinary", shortRoute, queue: true);
+        var shortOrdinary = Program.Copy(shortRoute);
         shortOrdinary.Hour += 100;
         check(!Program.CurrentAvailable(story, farewell, shortOrdinary), "Short promise silently schedules a campaign-cutting farewell.");
         check(Find("farewell_review").ManualOnly, "Farewell review steals unfinished visits from the rest queue.");
@@ -120,7 +120,7 @@ internal static class JerribethProgressionTests
         for (int option = 0; option < outcomes.Length; option++)
         foreach (string history in new[] { "fresh", "old", "farewell", "short" })
         {
-            bool publicAccount = option < 3;
+            bool publicAccount = option < 3 || option == 6;
             var state = history == "fresh" ? Core(option % 2 == 0 ? 3 : 5)
                 : Program.Copy(history == "short" ? shortRoute : legacy);
             if (history == "farewell")
@@ -136,7 +136,6 @@ internal static class JerribethProgressionTests
                 check(state.Has("jerribeth.catchup_requested") && state.Times["jerribeth.farewell"] == 600,
                     "Catch-up erases or retimes the old farewell.");
             }
-            if (history == "short") state = Play("ordinary", state, queue: true);
             if (state.Chapter == 3)
             {
                 // JER-08: the Chapter 3 courtship is eight letters; the campaign waits for Chapter 4-5.
@@ -147,9 +146,6 @@ internal static class JerribethProgressionTests
             foreach (string id in campaign)
             {
                 Func<Snapshot, bool>? pick = null;
-                if (id == "counterfeit_hinge") pick = s => s.Has(option % 3 == 0 ? "jerribeth.counter_cache_broken"
-                    : option % 3 == 1 ? "jerribeth.counter_stage_cut" : "jerribeth.counter_cache_intact");
-                if (id == "counterfeit_clerk") pick = s => s.Has(option % 2 == 0 ? "jerribeth.counter_return_agreement" : "jerribeth.counter_hold_agreement");
                 if (id == "counterfeit_audience") pick = s => s.Has(publicAccount ? "jerribeth.counter_public_account" : "jerribeth.counter_private_archive");
                 state = Play(id, state, pick, automatic);
                 if (history == "fresh")
@@ -159,20 +155,22 @@ internal static class JerribethProgressionTests
                 }
             }
             if (state.Chapter == 3)
-                check(!Program.CurrentAvailable(story, visit, state), "Settlement consequence ignores Act 5 restriction.");
+                check(!Program.CurrentAvailable(story, room, state), "Cabinet consequence ignores Act 5 restriction.");
             state.Chapter = 5;
-            check(!Program.CurrentAvailable(story, visit, state), "Settlement visitor ignores the freshly completed predecessor delay.");
-            state.Hour += visit.DelayHours;
-            check(Program.CurrentAvailable(story, visit, state), "Played settlement cannot begin after its delay.");
+            check(!Program.CurrentAvailable(story, room, state), "Cabinet visit ignores the freshly completed predecessor delay.");
+            state.Hour += room.DelayHours;
+            check(Program.CurrentAvailable(story, room, state), "Played cabinet cannot begin after its delay.");
             foreach (string flag in new[] { "jerribeth.closed", "jerribeth.unavailable" })
             {
                 var blocked = Program.Copy(state); blocked.Flags.Add(flag);
-                check(!Program.CurrentAvailable(story, visit, blocked), "Catch-up overrides native or authored closure: " + flag);
+                check(!Program.CurrentAvailable(story, room, blocked), "Catch-up overrides native or authored closure: " + flag);
             }
             var wrongArea = Program.Copy(state); wrongArea.Area = "elsewhere";
-            check(!Program.CurrentAvailable(story, visit, wrongArea), "Settlement ignores remote area restrictions.");
-            state = Play("settlement_visit", state, s => s.Has("jerribeth." + outcomes[option]), automatic);
-            check(!Program.CurrentAvailable(story, room, state), "Room follow-through ignores its fresh predecessor timestamp.");
+            check(!Program.CurrentAvailable(story, room, wrongArea), "Cabinet ignores remote area restrictions.");
+            // Six parked legacy inspection/catalogue histories and two fresh
+            // histories all reach the same kept cabinet without replaying its
+            // retired predecessor. The old flags stay serialized.
+            if (option < 6) state.Flags.Add("jerribeth." + outcomes[option]);
             state = Play("room_measure", state,
                 s => s.Has(option % 2 == 0 ? "jerribeth.room_loop" : "jerribeth.room_terrace")
                     && s.Has(option % 2 == 0 ? "jerribeth.room_desire" : "jerribeth.room_quiet"), automatic);
@@ -200,7 +198,16 @@ internal static class JerribethProgressionTests
             check(state.Has("seelah.committed") && state.Has("kiana.committed"), "Jerribeth progression changes unrelated romances.");
         }
 
-        foreach (var scene in new[] { visit, room, reaffirm })
+        foreach (string id in new[] { "ordinary", "settlement_visit" })
+        {
+            var retired = Find(id);
+            var parked = new Snapshot { Chapter = 5, Area = retired.Areas[0], Hour = 10000 };
+            parked.Flags.UnionWith(retired.Requires);
+            parked.Flags.Add("chapter_later");
+            check(retired.Forbids.Contains("chapter_later") && !Program.CurrentAvailable(story, retired, parked), "Retired progression surface reopened: " + id);
+            check(retired.Nodes.Count > 0, "Retired progression save graph removed: " + id);
+        }
+        foreach (var scene in new[] { room, reaffirm })
         foreach (var node in scene.Nodes)
             check(seen.Contains(scene.Id + "/" + node.Id), "Jerribeth progression node was not exercised: " + scene.Id + "/" + node.Id);
     }

@@ -1,0 +1,13 @@
+{
+  "note": "Edge job 4: retired hosts are dropped from the prose batch; saved slot nodes remain.",
+  "aliases": {
+    "jerribeth.counterfeit_after.explicit.1": [
+      {
+        "scene": "jerribeth.counterfeit_after",
+        "node": "jerribeth.counterfeit_after.explicit.1",
+        "retired": true,
+        "batch_status": "dropped"
+      }
+    ]
+  }
+}

@@ -923,7 +923,9 @@
         },
         {
           "scene": "jerribeth.commission",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.patron",
@@ -943,7 +945,10 @@
         },
         {
           "scene": "jerribeth.ordinary",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.farewell",
@@ -975,7 +980,9 @@
         },
         {
           "scene": "jerribeth.offered_signature",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.borrowed_sun",
@@ -983,7 +990,10 @@
         },
         {
           "scene": "jerribeth.small_print",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.unsold_evening",
@@ -991,23 +1001,36 @@
         },
         {
           "scene": "jerribeth.purchaser_answer",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.counterfeit_guest",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.counterfeit_hinge",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.counterfeit_clerk",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.counterfeit_audience",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.counterfeit_spoil",
@@ -1015,15 +1038,23 @@
         },
         {
           "scene": "jerribeth.counterfeit_after",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.settlement_visit",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.room_measure",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.short_invitation",

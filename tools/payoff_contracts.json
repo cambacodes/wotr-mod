@@ -4289,7 +4289,69 @@
         "open_routes": [
           "jerribeth"
         ]
-      }
+      },
+      "scaffolding_surfaces": [
+        {
+          "scene": "jerribeth.small_print",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.purchaser_answer",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.counterfeit_hinge",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.counterfeit_clerk",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.counterfeit_after",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.settlement_visit",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.ordinary",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.commission",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.offered_signature",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.counterfeit_guest",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.counterfeit_audience",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.room_measure",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        }
+      ]
     },
     "kaylessa": {
       "provenance": "derived from handoffs/trickster/kaylessa.md and shipped commitment producers",
