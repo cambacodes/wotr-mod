@@ -319,7 +319,7 @@ def integrate(payload):
     page["Paragraphs"].extend([
         p("{n}Socothbenoth never asked her for a favour again. Nobody saw him again at all. Chadali said she did not miss him, and baked his favourite anyway, once, and ate it herself.{/n}",
           requires=(SOCOTH_REFUSED,), any_groups=[list(gone)]),
-        p("{n}Socothbenoth vanished still owing the Commander a favour. Chadali called it the luckiest debt anyone ever skipped out on, and kept the note of it in her cookie tin.{/n}",
+        p("{n}Socothbenoth vanished without answering her counteroffer. Chadali threw out his flowers. Her worshippers had kept their morning luck; the Commander had no favour to collect.{/n}",
           requires=(SOCOTH_OBLIGED,), any_groups=[list(gone)]),
     ])
 
