@@ -538,5 +538,45 @@
     "scene": "soana.partner.homecoming.returned",
     "route": "soana",
     "finding": "soana:D11-D12"
+  },
+  {
+    "scene": "kiana.trickster.late_question",
+    "route": "kiana",
+    "finding": "kiana:D29,kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter",
+    "route": "kiana",
+    "finding": "kiana:D29,kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question.elan_reply",
+    "route": "kiana",
+    "finding": "kiana:D29"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter.elan_reply",
+    "route": "kiana",
+    "finding": "kiana:D29"
+  },
+  {
+    "scene": "kiana.trickster.late_question.elan_parting",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter.elan_parting",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question.after_delivery",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter.after_delivery",
+    "route": "kiana",
+    "finding": "kiana:D30"
   }
 ]

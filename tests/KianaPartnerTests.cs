@@ -33,11 +33,50 @@ internal static class KianaPartnerTests
         check((state.Has("kiana.company") || state.Has("kiana.trickster.met")) && state.Has("kiana.rehearsed"),
             "Played company/rehearsal history lost its proof before commitment.");
         state.Hour += 200;
+        System.Collections.Generic.List<Snapshot> ResumeLate(string host, Snapshot pending)
+        {
+            bool share = pending.Has("kiana.partner_late.share_sent");
+            var reply = S(host + (share ? ".elan_reply" : ".elan_parting"));
+            var waiting = Program.Copy(pending); Rules.Complete(story, waiting);
+            check(!waiting.Has("kiana.committed") && !waiting.Has("kiana.separated"),
+                "Dispatch grants commitment or separation before Elan's reply");
+            check(!Rules.Available(story, reply, waiting), "Elan replies in the dispatch interaction");
+            waiting.Hour += 47; Rules.Complete(story, waiting);
+            check(!Rules.Available(story, reply, waiting), "Elan's reply ignores its deed clock");
+            waiting.Hour++; Rules.Complete(story, waiting);
+            check(Rules.Available(story, reply, waiting), "Elan's reply does not arrive after the wait");
+            var replied = Program.Walk(reply, waiting);
+            if (share) return replied;
+            var results = new System.Collections.Generic.List<Snapshot>();
+            foreach (var meeting in replied)
+            {
+                var delivery = S(host + ".after_delivery");
+                check(meeting.Has("kiana.partner_late.delivery_wait") && !meeting.Has("kiana.committed")
+                    && !meeting.Has("kiana.separated"), "Elan's letter manufactures completed delivery");
+                Rules.Complete(story, meeting);
+                check(!Rules.Available(story, delivery, meeting), "Delivery and intimacy share the reply interaction");
+                meeting.Hour += 23; Rules.Complete(story, meeting);
+                check(!Rules.Available(story, delivery, meeting), "Delivery ignores its meeting clock");
+                meeting.Hour++; Rules.Complete(story, meeting);
+                check(Rules.Available(story, delivery, meeting), "Kiana cannot answer after Elan's delivery");
+                results.AddRange(Program.Walk(delivery, meeting));
+            }
+            return results;
+        }
         foreach (string id in new[] { "kiana.morning", "kiana.trickster.late_question" })
         {
             var ready = Program.Copy(state); Rules.Complete(story, ready);
             check(Rules.Available(story, S(id), ready), "Unsettled partner blocks existing commitment host: " + id);
             var outcomes = Program.Walk(S(id), ready);
+            if (id == "kiana.trickster.late_question")
+            {
+                var resumed = new System.Collections.Generic.List<Snapshot>();
+                foreach (var result in outcomes)
+                    if (result.Has("kiana.partner_late.share_sent") || result.Has("kiana.partner_late.breakup_sent"))
+                        resumed.AddRange(ResumeLate(id, result));
+                    else resumed.Add(result);
+                outcomes = resumed;
+            }
             foreach (string stance in new[] { "share", "exclusive", "secret" })
             {
                 var accepted = outcomes.Where(r => r.Has("kiana.committed") && r.Has("kiana.partner_stance." + stance)).ToArray();
