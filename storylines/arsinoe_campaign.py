@@ -283,14 +283,14 @@ s("arsinoe_the_first_cart", "What the repair leaves behind",
 {n}She brushes dust from her cuff.{/n}
 "With admiration afterward, naturally. I have no intention of giving that up for anyone."''',
       c('"I can manage both."', "home")),
-    n("expected", "Arsinoe", '''{n}Arsinoe is silent long enough that the sounds of the passage become conspicuous.{/n}
-"...Yes. That is unkind, and it is also accurate. I was ready to be disappointed in him, and I made him pay for my wet stocking as well as his debt."
-{n}She looks toward the cooper's door, then back at you.{/n}
-"I asked for that. I dislike it. Walk with me until I have finished disliking it."
-{n}You walk to the lower end of the passage together. By the time you reach it, she has stopped brushing at a mark on her cuff that disappeared several steps earlier.{/n}
-"I do want to go on being asked to supper after I have behaved foolishly," {n}she says.{/n} "I am discovering that this is a rather personal ambition."
-"You have not lost your invitation."
-"Good. I was about to ask for one."''',
+    n("expected", "Arsinoe", '''{n}Arsinoe raises an eyebrow and closes her hand over the marks in her palm.{/n}
+"Convicted? He missed his payment. I heard his explanation and accepted new dates. You heard me do it."
+{n}She looks toward the cooper's door.{/n}
+"I was impatient. I wanted the matter finished, and I wanted him to stop looking at me as though I had stolen his supper. Neither wish entitled me to box his ears. So I kept my hands to myself."
+{n}She takes your arm and starts down the dry steps.{/n}
+"You may find me difficult without making Senn my victim. I still expect him to pay. The mason has been paid, and the next crusader through here will not break a leg. I intend to enjoy that much of the afternoon."
+{n}At the foot of the stairs, she turns toward you.{/n}
+"And I still want your company at supper. Bring a better accusation, or something worth admiring."''',
       c('"Go home with her."', "home")),
     n("expected_staged", "Arsinoe", '''"Sulking."
 {n}She looks at the ugly upper landing, then at you, with the expression of a woman who has been caught complaining in public and intends to go on doing it.{/n}
@@ -699,7 +699,7 @@ _terms = next(s for s in SCENES if s["Id"] == "arsinoe_what_she_asks")
 _t = {page["Id"]: page for page in _terms["Nodes"]}
 _t["start"]["Text"] = _t["start"]["Text"].replace(
     'So I shall ask you what I would ask anyone whose business I wanted. What are you offering me, Commander? On the roof you gave me one answer. Terms are revisited when the goods improve, and I believe they have.',
-    'I want these evenings. I also want to know what you mean by coming back. The room is repaired; that settles the room. It does not settle us.')
+    'I want these evenings. I also want to know what you mean by coming back. The passage is safe again; that settles the stairs. It does not settle us.')
 _t["promise_kiss"]["Text"] = _t["promise_kiss"]["Text"].replace('A very satisfactory beginning to a difficult promise.', 'I mean to enjoy holding you to that promise.')
 
 # Endings collect a return, without promoting a promised visit into a played night.
