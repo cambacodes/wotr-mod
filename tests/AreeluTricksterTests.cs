@@ -103,7 +103,7 @@ internal static class AreeluTricksterTests
         var stands = S(P + "finale.report_stands");
         var ascended = S(P + "finale.ascended");
         var report = new[] { "rooms", "hunters", "grey", "graft", "sarkoris", "inn", "participation", "wound", "crossroads", "prison",
-                             "cult", "incursion", "dagger", "lady", "visitors", "name", "promise", "afterword" }
+                             "cult", "incursion", "convicts", "dagger", "commission", "lady", "visitors", "rival", "name", "promise", "afterword" }
             .Select(id => S(P + "report." + id)).ToArray();
         var nenio = S(P + "react.nenio_two_drafts");
         var ember = S(P + "react.ember_regret");

@@ -350,10 +350,9 @@ s("arsinoe_the_unprofitable_hour", "No notice on the door",
     n("game", "Arsinoe", '''{n}You choose the simple paper board from your first afternoon, or as close to it as either of you remembers. Arsinoe insists on a fixed gate. You agree, after extracting a promise that she will not call the moving one visionary when it favors her.{/n}
 {n}The first round is quick. The second develops an awkward middle in which both of you would prefer the other to make a mistake. Arsinoe reaches for a piece, stops, and looks up at you.{/n}
 "I had a plan to spend this evening being effortlessly charming. I now discover that I would rather win."
-"Your confidence is touching."
 {n}She makes the move. It is a good one. You spend a comfortable stretch of silence trying to undo its consequences, while she drinks and makes no effort to rescue you from them.{/n}
 {n}When the round ends, she leaves the pieces where they fell and turns her chair toward yours.{/n}''',
-      c('"Was the evening what you wanted?"', "answer")),
+      c('"Your confidence is touching. Was the evening what you wanted?"', "answer")),
     n("story", "Arsinoe", '''{n}You find the hero at the window and read on. He leaps for a roof much too far away, then survives by means of a hanging banner that neither of you remembers being mentioned. Arsinoe examines the earlier page to make certain the author has not earned this escape by stealth.{/n}
 "No banner. I am inclined to leave him on the pavement."
 "The princess has endured worse disappointments. She has listened to him speak."

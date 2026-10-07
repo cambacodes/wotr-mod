@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from tests.story_fixture import fresh_story
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
@@ -128,7 +129,7 @@ class StoryTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8"))
+        cls.story = fresh_story()
         cls.table = el.load()
         # Terendelev M21 first consumes this existing shared native binding.
         # The checked-in lifecycle row is coordinator-owned; classify only this
