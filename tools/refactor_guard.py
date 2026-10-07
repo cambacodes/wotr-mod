@@ -20,7 +20,9 @@ import shutil
 import signal
 import subprocess
 import sys
+import sysconfig
 import tempfile
+import time
 
 FORMAT = 1
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,6 +34,14 @@ PARENTS = tuple('reference/canon-review/' + name + '.json' for name in (
 EXPORTS = {'development/Story.json', 'package/Story.json'}
 NAMESPACE = 'RanRomance.Tirabade.v1/'
 TIMEOUT = 1800
+REQUIRED_GATES = ('python-discovery', 'strict-verifier', 'rules-progression')
+
+
+def host_environment():
+    # Keep interpreter/build discovery, not arbitrary inherited generator knobs.
+    keys = ('PATH', 'HOME', 'USERPROFILE', 'SYSTEMROOT', 'WINDIR', 'COMSPEC',
+            'PATHEXT', 'DOTNET_ROOT', 'LD_LIBRARY_PATH', 'SSL_CERT_FILE', 'SSL_CERT_DIR')
+    return {key: os.environ[key] for key in keys if key in os.environ}
 
 
 class GuardError(ValueError):
@@ -61,21 +71,33 @@ def git(source, *args):
 
 
 def source_files(source):
-    """Pin every tracked/nonignored file, plus ignored executable/data inputs.
+    """Pin tracked files and ignored inputs, excluding explicit output caches.
 
     A new contract, discovered row or ignored Python module must not silently
     escape the inventory. Only known outputs/build caches are excluded.
     """
     names = set(git(source, 'ls-files', '-z', '--cached', '--others',
                     '--exclude-standard').split('\0')) - {''}
-    for area in ('storylines', 'tools', 'reference', 'data', 'src', 'tests', 'authoring'):
-        for path in (source / area).rglob('*'):
-            if path.suffix in {'.py', '.json', '.cs', '.csproj', '.props'}:
-                names.add(path.relative_to(source).as_posix())
+    excluded_dirs = {'tools/.store', 'tools/scratch', 'reference/asset-extraction-env',
+                     'harness/.runs', 'harness/probes', 'backups', 'dist'}
+    for directory, dirs, entries in os.walk(source):
+        parent = Path(directory).relative_to(source)
+        dirs[:] = [name for name in dirs if name not in {'.git', '__pycache__', 'obj', 'bin'}
+                   and (parent / name).as_posix() not in excluded_dirs]
+        for name in dirs:
+            if (Path(directory) / name).is_symlink():
+                raise GuardError('Unpinned symlink input directory: ' + (parent / name).as_posix())
+        for name in entries:
+            if not name.endswith(('.pyc', '.log')):
+                names.add((parent / name).as_posix())
     result = {}
     for name in sorted(names - EXPORTS):
         path = source / name
         if any(part in {'.git', '__pycache__', 'obj', 'bin'} for part in Path(name).parts):
+            continue
+        if (name.startswith('tools/rrt_verify_report.') or name.endswith(('.pyc', '.log'))
+                or any(name.startswith(area + '/') for area in excluded_dirs)
+                or name.startswith('package/') and Path(name).suffix in {'.dll', '.exe', '.config'}):
             continue
         if path.is_symlink():
             raise GuardError('Unpinned symlink input: ' + name)
@@ -115,13 +137,27 @@ def runtime_inputs(source):
     declared = tuple(re.findall(r"'(reference/[^']+\.json)'", block))
     if declared != PARENTS:
         raise GuardError('Build-script parent order changed: ' + repr(declared))
+    # Python source, bytecode and extensions are executable inputs too. Third-
+    # party packages are excluded and the worker refuses reads from them.
+    library = Path(sysconfig.get_path('stdlib')).resolve()
+    libraries = {}
+    for directory, dirs, names in os.walk(library):
+        dirs[:] = sorted(set(dirs) - {'site-packages', 'dist-packages'})
+        for name in sorted(names):
+            p = Path(directory) / name
+            if p.suffix in {'.py', '.pyc', '.so', '.pyd', '.dll'}:
+                libraries[p.relative_to(library).as_posix()] = file_hash(p)
     return dict(python=sys.version, python_executable_sha256=file_hash(Path(sys.executable)),
+                python_library_digest=digest(canonical(libraries)),
                 dotnet=subprocess.check_output(['dotnet', '--version']).decode().strip(),
+                dotnet_executable_sha256=file_hash(Path(shutil.which('dotnet')).resolve()),
+                host_environment_sha256=digest(canonical(host_environment())),
                 platform=sys.platform, parent_order=[p for p in PARENTS if (source / p).is_file()],
                 profile='default-expansion/independent_tirabade=True',
+                generator_site='disabled (-S); stdlib and pinned source only',
                 hashseed='0', utf8='1', destination_seeds=['LF', 'CRLF'],
                 serializer='expansion.py CLI; raw bytes; no normalization',
-                required_suites=['python-discovery', 'strict-verifier', 'rules-progression'])
+                required_suites=list(REQUIRED_GATES), timeout_seconds=TIMEOUT)
 
 
 def temporary_output(path, source):
@@ -137,8 +173,7 @@ def temporary_output(path, source):
 def clean_environment(snapshot, scratch, game):
     # Preserve only host infrastructure. Inherited test fixtures, story output,
     # PYTHONPATH and route flags must not influence compilation or checks.
-    env = {key: value for key, value in os.environ.items()
-           if not key.startswith(('RRT_', 'PYTHON', 'GIT_'))}
+    env = host_environment()
     env.update(PYTHONHASHSEED='0', PYTHONUTF8='1', PYTHONDONTWRITEBYTECODE='1',
                RRT_ROOT=str(snapshot), RRT_GAME_DIR=str(game), RRT_PYTHON=sys.executable,
                RRT_PARENT_BINDINGS=os.pathsep.join(str(snapshot / p) for p in PARENTS
@@ -147,39 +182,107 @@ def clean_environment(snapshot, scratch, game):
                RRT_TEST_TIMINGS=str(scratch / 'rules-times.json'),
                RRT_NATIVE_COVERAGE_OUTPUT=str(scratch / 'native-coverage.json'),
                TMPDIR=str(scratch), TMP=str(scratch), TEMP=str(scratch),
-               GIT_OPTIONAL_LOCKS='0')
+               GIT_OPTIONAL_LOCKS='0', LC_ALL='C.UTF-8', TZ='UTC',
+               DOTNET_CLI_TELEMETRY_OPTOUT='1', DOTNET_SKIP_FIRST_TIME_EXPERIENCE='1')
     return env
 
 
 def execute(command, cwd, env, log, timeout=TIMEOUT):
-    """Bound the whole process group, including children left by failed parents.
+    """Bound a tree in a private supervisor, including detached Linux children.
 
-    H2's executor is a proposal in this checkout; no callable executor exists.
-    Keep this private until its coordinator-owned implementation is available.
+    Writer's H2 job executor requires a coordinator-owned immutable JobSpec and
+    launch grant. This standalone CLI has no such adapter; do not synthesize a
+    grant or import its mutable job state. Keep execution private to the guard.
     """
     started = datetime.now(timezone.utc).isoformat()
-    timed_out = False
-    with log.open('wb') as output:
-        process = subprocess.Popen(command, cwd=cwd, env=env, stdout=output,
-                                   stderr=subprocess.STDOUT, start_new_session=os.name != 'nt')
+    with tempfile.TemporaryDirectory(prefix='rrt-supervisor-', dir=log.parent) as temporary:
+        config = Path(temporary) / 'command.json'
+        status = Path(temporary) / 'status.json'
+        config.write_bytes(canonical(dict(command=command, cwd=str(cwd), env=env,
+                                         log=str(log), timeout=timeout)))
+        supervisor = subprocess.Popen([sys.executable, '-S', '-B', str(Path(__file__).resolve()),
+                                       '_supervise', '--config', str(config), '--status', str(status)],
+                                      env=env, start_new_session=True,
+                                      stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
         try:
-            code = process.wait(timeout=timeout)
+            _, error = supervisor.communicate(timeout=timeout + 10)
         except subprocess.TimeoutExpired:
-            timed_out = True
-            code = None
+            os.killpg(supervisor.pid, signal.SIGTERM)
+            try:
+                _, error = supervisor.communicate(timeout=5)
+            except subprocess.TimeoutExpired:
+                os.killpg(supervisor.pid, signal.SIGKILL)
+                _, error = supervisor.communicate()
+        if supervisor.returncode != 0 or not status.is_file():
+            # Unsupported supervision fails closed; never silently use a
+            # process-group-only fallback that can strand setsid descendants.
+            log.write_bytes(error or b'Whole-process-tree supervisor failed\n')
+            result = dict(exit=126, timed_out=False)
+        else:
+            result = json.loads(status.read_bytes())
+    return dict(**result, started=started, finished=datetime.now(timezone.utc).isoformat(),
+                log_sha256=file_hash(log))
+
+
+def supervise(config, status):
+    if sys.platform != 'linux':
+        raise GuardError('Whole-process-tree supervision requires Linux')
+    import ctypes
+    # A separate subreaper owns one command tree. This also keeps concurrent
+    # attempts from reaping one another's children.
+    libc = ctypes.CDLL(None, use_errno=True)
+    if libc.prctl(36, 1, 0, 0, 0):
+        raise GuardError('Linux subreaper unavailable')
+    cancelled = [False]
+    for signum in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(signum, lambda *_: cancelled.__setitem__(0, True))
+    spec = json.loads(config.read_bytes())
+    timed_out = False
+    with Path(spec['log']).open('wb') as output:
+        process = subprocess.Popen(spec['command'], cwd=spec['cwd'], env=spec['env'], stdout=output,
+                                   stderr=subprocess.STDOUT, start_new_session=True)
+        deadline = time.monotonic() + spec['timeout']
+        try:
+            while process.poll() is None and not cancelled[0] and time.monotonic() < deadline:
+                time.sleep(0.02)
+            timed_out = process.poll() is None
+            code = None if timed_out else process.returncode
         finally:
-            if os.name == 'nt':
-                if timed_out:
-                    subprocess.run(['taskkill', '/PID', str(process.pid), '/T', '/F'],
-                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            else:
-                try:
-                    os.killpg(process.pid, signal.SIGKILL)
-                except ProcessLookupError:
-                    pass
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            process.kill() if process.poll() is None else None
             process.wait()
-    return dict(exit=code, timed_out=timed_out, started=started,
-                finished=datetime.now(timezone.utc).isoformat(), log_sha256=file_hash(log))
+            # Detached or double-forked children are adopted by this supervisor
+            # as their parents die. Kill/reap successive generations to empty.
+            children_path = Path('/proc/self/task/%d/children' % os.getpid())
+            cleanup_deadline = time.monotonic() + 3
+            unfinished = False
+            while True:
+                children = [int(p) for p in children_path.read_text().split()]
+                if not children:
+                    break
+                unfinished = True
+                for child in children:
+                    try:
+                        os.kill(child, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                while True:
+                    try:
+                        pid, _ = os.waitpid(-1, os.WNOHANG)
+                    except ChildProcessError:
+                        break
+                    if not pid:
+                        break
+                if time.monotonic() >= cleanup_deadline:
+                    raise GuardError('Could not verify descendant cleanup')
+                time.sleep(0.01)
+            if unfinished and code == 0:
+                code = 125
+                output.write(b'Unfinished command descendants were terminated; stage failed\n')
+    status.write_bytes(canonical(dict(exit=code, timed_out=timed_out)))
 
 
 def first_difference(before, after, path='$'):
@@ -277,11 +380,24 @@ def worker(snapshot, inputs_path, reads_path):
     import runpy
     inputs = json.loads(inputs_path.read_text())
     allowed = set(inputs['files'])
-    external = {str(Path(p).resolve()) for p in inputs['external']}
-    libraries = {Path(sys.base_prefix).resolve(), Path(sys.prefix).resolve()}
+    external = {str(Path(p).resolve()): name for name, p in inputs['external'].items()}
+    library = Path(sysconfig.get_path('stdlib')).resolve()
     reads = set()
+    violations = []
+
+    def reject(message):
+        violations.append(message)
+        raise GuardError(message)
 
     def audit(event, args):
+        if event in {'subprocess.Popen', 'os.system', 'os.exec', 'os.posix_spawn',
+                     'os.fork', 'socket.__new__', 'ctypes.dlopen'}:
+            reject('Generator attempted unaccounted execution: ' + event)
+        if event in {'os.remove', 'os.rename', 'os.rmdir', 'os.symlink', 'os.link',
+                     'os.chmod', 'os.truncate', 'os.utime'}:
+            reject('Generator attempted unaccounted filesystem mutation: ' + event)
+        if event == 'os.mkdir' and Path(os.fsdecode(args[0])).resolve() != snapshot / 'development':
+            reject('Generator created unaccounted directory: ' + str(args[0]))
         if event != 'open' or isinstance(args[0], int):
             return
         path = Path(os.fsdecode(args[0])).resolve()
@@ -293,24 +409,28 @@ def worker(snapshot, inputs_path, reads_path):
             name = path.relative_to(snapshot).as_posix()
             if writing:
                 if name != 'development/Story.json':
-                    raise GuardError('Generator wrote unaccounted output: ' + name)
+                    reject('Generator wrote unaccounted output: ' + name)
             elif name not in allowed and name != 'development/Story.json':
-                raise GuardError('Generator read unaccounted input: ' + name)
+                reject('Generator read unaccounted input: ' + name)
             elif name in allowed:
                 reads.add(name)
         elif str(path) in external:
             if writing:
-                raise GuardError('Generator wrote external input: ' + str(path))
-            reads.add('external:' + str(path))
-        elif not any(path.is_relative_to(lib) for lib in libraries):
-            raise GuardError('Generator read unaccounted external input: ' + str(path))
+                reject('Generator wrote external input: ' + str(path))
+            reads.add('external:' + external[str(path)])
+        elif (writing or not path.is_relative_to(library)
+              or {'site-packages', 'dist-packages'} & set(path.parts)
+              or path.suffix not in {'.py', '.pyc', '.so', '.pyd', '.dll'}):
+            reject('Generator read unaccounted external input: ' + str(path))
 
     sys.addaudithook(audit)
-    sys.path.insert(0, str(snapshot))
+    sys.path[:] = [str(snapshot)] + [p for p in sys.path if p and Path(p).resolve().is_relative_to(library)]
     os.chdir(snapshot)
     sys.argv = ['expansion.py']
     try:
         runpy.run_path(str(snapshot / 'expansion.py'), run_name='__main__')
+        if violations:
+            raise GuardError('Generator caught an input-policy violation: ' + violations[0])
     finally:
         # This output is outside the audited source; write through a descriptor
         # opened before installing the audit hook by the command entry point.
@@ -331,9 +451,10 @@ def generation(source, files, game, externals, scratch, observations, failures):
             output.write_bytes(b'\r\n' if seed == 'CRLF' else b'\n')
             inputs = scratch / (label + '-inputs.json')
             reads = scratch / (label + '-reads.json')
-            inputs.write_bytes(canonical(dict(files=files, external=[str(p.resolve()) for p in externals.values()])))
+            inputs.write_bytes(canonical(dict(files=files, external={name: str(p.resolve())
+                                                                    for name, p in externals.items()})))
             log = scratch / (label + '.log')
-            command = [sys.executable, '-B', str(Path(__file__).resolve()), '_worker',
+            command = [sys.executable, '-S', '-B', str(Path(__file__).resolve()), '_worker',
                        '--source', str(work), '--inputs', str(inputs), '--reads', str(reads)]
             jobs.append((label, command, work, log, output, reads))
     # Fresh processes/snapshots are independent. Collect in fixed seed/repeat
@@ -346,7 +467,8 @@ def generation(source, files, game, externals, scratch, observations, failures):
             result = future.result()
             observations.append(dict(stage='generate-' + label, **result))
             if result['exit'] != 0 or result['timed_out']:
-                failures.append('Generation failed: ' + label + ': ' + log.read_text(errors='replace')[-2000:])
+                diagnostic = log.read_text(errors='replace')[-2000:].replace(str(scratch), '<temp>')
+                failures.append('Generation failed: ' + label + ': ' + diagnostic)
                 continue
             attempts[label.split('-')[0]].append(output.read_bytes())
             read_sets[label] = json.loads(reads.read_bytes())
@@ -368,6 +490,10 @@ def gate_commands(scratch):
                                    'development/Story.json'])]
 
 
+def recorded_command(command, scratch):
+    return [word.replace(str(scratch), '<temp>').replace(sys.executable, '<python>') for word in command]
+
+
 def gates(snapshot, scratch, game, observations):
     env = clean_environment(snapshot, scratch, game)
     env['RRT_TEST_STORY'] = str(snapshot / 'development/Story.json')
@@ -378,8 +504,8 @@ def gates(snapshot, scratch, game, observations):
         observed = execute(command, snapshot, env, log)
         observations.append(dict(stage=name, **observed))
         text = log.read_text(encoding='utf-8', errors='replace')
-        result = dict(stage=name, command=[x.replace(str(scratch), '<temp>').replace(sys.executable, '<python>')
-                                          for x in command], exit=observed['exit'], timed_out=observed['timed_out'])
+        result = dict(stage=name, command=recorded_command(command, scratch),
+                      exit=observed['exit'], timed_out=observed['timed_out'])
         if name == 'strict-verifier':
             match = re.search(r'HARD FAILURES: (\d+)', text)
             result['hard_failures'] = int(match[1]) if match else None
@@ -401,25 +527,44 @@ def receipt(evidence, observations):
 
 
 def load_baseline(path):
+    try:
+        return validate_baseline(path)
+    except (KeyError, TypeError, AttributeError, ValueError) as error:
+        raise GuardError('Malformed baseline receipt: ' + str(error)) from error
+
+
+def validate_baseline(path):
     data = json.loads((path / 'receipt.json').read_bytes())
-    if data.get('format') != FORMAT or data.get('identity') != digest(canonical(data['evidence'])):
+    if (type(data.get('format')) is not int or data['format'] != FORMAT
+            or data.get('identity') != digest(canonical(data['evidence']))):
         raise GuardError('Malformed baseline receipt or identity')
     evidence = data['evidence']
+    if (any(type(evidence.get(key)) is not bool for key in
+            ('structural_passed', 'gate_passed', 'accepted', 'tracked_export_stale'))
+            or type(evidence.get('scene_count')) is not int or evidence['scene_count'] < 0
+            or not isinstance(evidence.get('revision'), str)
+            or not re.fullmatch(r'[0-9a-f]{40}|[0-9a-f]{64}', evidence['revision'])
+            or evidence.get('changed_sources') != [] or evidence.get('authorized_sources') != []):
+        raise GuardError('Malformed capture status, count, revision or ownership scope')
     if evidence.get('source_digest') != digest(canonical(evidence.get('source_files'))):
         raise GuardError('Malformed source inventory digest')
     if evidence.get('operation') != 'capture' or not evidence.get('structural_passed'):
         raise GuardError('Baseline is stale/failed/incomplete')
-    if [g['stage'] for g in evidence.get('gates', [])] != ['python-discovery', 'strict-verifier', 'rules-progression']:
+    if [g['stage'] for g in evidence.get('gates', [])] != list(REQUIRED_GATES):
         raise GuardError('Missing required gate receipts')
     if set(evidence.get('exports', {})) != {'LF', 'CRLF'}:
         raise GuardError('Missing required frozen export')
     for gate in evidence['gates']:
+        expected = dict(gate_commands(Path('<temp>')))[gate['stage']]
         if (not isinstance(gate.get('command'), list) or not gate['command']
+                or gate['command'] != recorded_command(expected, Path('<temp>'))
                 or type(gate.get('timed_out')) is not bool
                 or gate.get('exit') is not None and type(gate['exit']) is not int
-                or gate.get('passed') != (gate.get('exit') == 0 and not gate['timed_out'])):
+                or type(gate.get('passed')) is not bool
+                or gate.get('passed') != (gate.get('exit') == 0 and not gate['timed_out']
+                    and (gate['stage'] != 'strict-verifier' or gate.get('hard_failures') == 0))):
             raise GuardError('Malformed required gate result: ' + gate['stage'])
-    if evidence.get('gate_debt') != [g for g in evidence['gates'] if not g['passed']]:
+    if canonical(evidence.get('gate_debt')) != canonical([g for g in evidence['gates'] if not g['passed']]):
         raise GuardError('Gate debt differs from required results')
     observed = data.get('observations', [])
     required = {'generate-LF-0', 'generate-LF-1', 'generate-CRLF-0', 'generate-CRLF-1',
@@ -427,6 +572,11 @@ def load_baseline(path):
     if {item.get('stage') for item in observed} != required or len(observed) != len(required):
         raise GuardError('Missing/duplicate required execution observations')
     for item in observed:
+        if (type(item.get('timed_out')) is not bool
+                or item.get('exit') is not None and type(item['exit']) is not int):
+            raise GuardError('Malformed execution status: ' + item['stage'])
+        if item['stage'] not in REQUIRED_GATES and (item['exit'] != 0 or item['timed_out']):
+            raise GuardError('Failed required structural execution: ' + item['stage'])
         try:
             begin = datetime.fromisoformat(item['started'])
             end = datetime.fromisoformat(item['finished'])
@@ -440,10 +590,54 @@ def load_baseline(path):
         item = next(item for item in observed if item['stage'] == gate['stage'])
         if (item.get('exit'), item.get('timed_out')) != (gate['exit'], gate['timed_out']):
             raise GuardError('Execution observation differs from gate result: ' + gate['stage'])
+    if (evidence['failures'] != [] or evidence['tracked_export_stale']
+            or evidence['frozen_savecompat'] != [] or evidence['guid_namespace'] != [NAMESPACE]
+            or evidence['gate_passed'] != all(g['passed'] for g in evidence['gates'])
+            or evidence['accepted'] != evidence['gate_passed']):
+        raise GuardError('Inconsistent acceptance/structural evidence')
+    if evidence['tracked_export_sha256'] not in {entry['sha256'] for entry in evidence['exports'].values()}:
+        raise GuardError('Tracked export does not match a frozen newline profile')
+    from tools import savecompat
+    if (evidence['frozen_baseline_revision'] != savecompat.BASELINE_REVISION
+            or evidence['frozen_baseline_sha256'] != evidence['source_files']['tools/savecompat_baseline.json']['sha256']):
+        raise GuardError('Missing or inconsistent released savecompat pin')
     for seed, entry in evidence['exports'].items():
         raw = (path / (seed + '-Story.json')).read_bytes()
-        if len(raw) != entry['bytes'] or digest(raw) != entry['sha256']:
+        if type(entry['bytes']) is not int or len(raw) != entry['bytes'] or digest(raw) != entry['sha256']:
             raise GuardError('Baseline export corrupted: ' + seed)
+        story = json.loads(raw)
+        if (len(story['Scenes']) != evidence['scene_count']
+                or canonical(predecessor_inventory(story)) != canonical(evidence['predecessor_inventory'])):
+            raise GuardError('Frozen export differs from predecessor inventory: ' + seed)
+    for name, entry in evidence['source_files'].items():
+        if (Path(name).is_absolute() or '..' in Path(name).parts
+                or type(entry['bytes']) is not int or entry['bytes'] < 0
+                or type(entry['executable']) is not bool
+                or not re.fullmatch(r'[0-9a-f]{64}', entry['sha256'])):
+            raise GuardError('Malformed source inventory entry: ' + name)
+    if not {'expansion.py', 'src/Main.cs', 'tools/savecompat.py',
+            'tools/savecompat_baseline.json', 'build-expansion.ps1'} <= evidence['source_files'].keys():
+        raise GuardError('Missing required pinned source inputs')
+    if not evidence['native_inputs'] or evidence['runtime']['required_suites'] != list(REQUIRED_GATES):
+        raise GuardError('Missing pinned native/runtime inputs')
+    for name, entry in evidence['native_inputs'].items():
+        if (type(entry['bytes']) is not int or entry['bytes'] < 0
+                or not re.fullmatch(r'[0-9a-f]{64}', entry['sha256'])):
+            raise GuardError('Malformed native input hash: ' + name)
+    runtime_keys = {'python', 'python_executable_sha256', 'python_library_digest', 'dotnet',
+                    'dotnet_executable_sha256', 'host_environment_sha256', 'platform', 'parent_order',
+                    'profile', 'generator_site', 'hashseed', 'utf8', 'destination_seeds', 'serializer',
+                    'required_suites', 'timeout_seconds'}
+    if not runtime_keys <= evidence['runtime'].keys():
+        raise GuardError('Incomplete pinned runtime inputs')
+    if set(evidence['generator_reads']) != {'LF-0', 'LF-1', 'CRLF-0', 'CRLF-1'}:
+        raise GuardError('Missing required generator read inventory')
+    for reads in evidence['generator_reads'].values():
+        if (not isinstance(reads, list) or reads != sorted(set(reads))
+                or any(name not in evidence['source_files'] and
+                       (not name.startswith('external:') or name[9:] not in evidence['native_inputs'])
+                       for name in reads)):
+            raise GuardError('Unaccounted frozen generator read')
     return evidence
 
 
@@ -466,6 +660,8 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
         changed, ownership = ownership_failures(old['source_files'], files, set(allowed))
         failures.extend(ownership)
     tracked = (source / 'development/Story.json').read_bytes()
+    if old and digest(tracked) != old['tracked_export_sha256']:
+        failures.append('Tracked export bytes/newline seed differ from predecessor')
     with tempfile.TemporaryDirectory(prefix='rrt-refactor-') as temporary:
         scratch = Path(temporary)
         outputs, reads, snapshot = generation(source, files, game, externals, scratch, observations, failures)
@@ -481,7 +677,13 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
             evidence['tracked_export_stale'] = difference is not None
             if difference:
                 failures.append(dict(stale_tracked_export=difference))
-            frozen = savecompat.check(story)
+            # The frozen inventory belongs to the captured revision, rather than
+            # whichever checkout happens to be hosting this guard invocation.
+            frozen = savecompat.check(story, json.loads((source / 'tools/savecompat_baseline.json').read_bytes()))
+            evidence['frozen_baseline_revision'] = savecompat.BASELINE_REVISION
+            evidence['frozen_baseline_sha256'] = files['tools/savecompat_baseline.json']['sha256']
+            if evidence['frozen_baseline_sha256'] != file_hash(savecompat.BASELINE_PATH):
+                failures.append('Released savecompat baseline differs from the guard checkout')
             evidence['frozen_savecompat'] = frozen
             failures.extend(frozen)
             inventory = predecessor_inventory(story)
@@ -524,6 +726,10 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
             evidence['gates'] = []
         if source_files(source) != files or git(source, 'rev-parse', 'HEAD') != revision:
             failures.append('Source changed during guard execution')
+        if (source / 'development/Story.json').read_bytes() != tracked:
+            failures.append('Tracked export changed during guard execution')
+        if runtime_inputs(source) != runtime:
+            failures.append('Runtime inputs changed during guard execution')
         if external_inputs(source, game)[0] != native:
             failures.append('Native inputs changed during guard execution')
         if file_hash(Path(__file__).resolve()) != guard_hash:
@@ -569,7 +775,13 @@ def main():
     command.add_argument('--source', type=Path, required=True)
     command.add_argument('--inputs', type=Path, required=True)
     command.add_argument('--reads', type=Path, required=True)
+    command = sub.add_parser('_supervise', help=argparse.SUPPRESS)
+    command.add_argument('--config', type=Path, required=True)
+    command.add_argument('--status', type=Path, required=True)
     args = parser.parse_args()
+    if args.operation == '_supervise':
+        supervise(args.config, args.status)
+        return 0
     if args.operation == '_worker':
         # Open private audit output before enforcing generator I/O policy.
         with args.reads.open('wb') as stream:

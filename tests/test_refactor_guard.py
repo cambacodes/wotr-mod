@@ -75,11 +75,12 @@ class GuardIntegrationTests(unittest.TestCase):
         self.addCleanup(patch.stopall)
         patch('sys.stdout', new_callable=io.StringIO).start()
         patch.object(guard, 'git', side_effect=fixture_git).start()
-        patch.object(guard, 'external_inputs', return_value=({'fixture-native': {'sha256': 'pinned'}}, {})).start()
+        patch.object(guard, 'external_inputs', return_value=({'fixture-native': {'sha256': '0' * 64, 'bytes': 0}}, {})).start()
         patch.object(savecompat, 'BASELINE_PATH', self.source / 'tools/savecompat_baseline.json').start()
-        self.gates = patch.object(guard, 'gates', return_value=[dict(stage=name, command=['fixture'],
-            exit=0, timed_out=False, passed=True) for name in
-            ('python-discovery', 'strict-verifier', 'rules-progression')]).start()
+        self.gates = patch.object(guard, 'gates').start()
+        self.gates.return_value = [dict(stage=name, command=guard.recorded_command(command, self.scratch),
+            exit=0, timed_out=False, passed=True, **({'hard_failures': 0} if name == 'strict-verifier' else {}))
+            for name, command in guard.gate_commands(self.scratch)]
         def fixture_gates(snapshot, scratch, game, observations):
             for result in self.gates.return_value:
                 observations.append(dict(stage=result['stage'], exit=result['exit'], timed_out=result['timed_out'],
@@ -105,6 +106,15 @@ class GuardIntegrationTests(unittest.TestCase):
         self.assertIn(b'\r\n', (self.baseline / 'CRLF-Story.json').read_bytes())
         self.assertNotIn(b'\r\n', (self.baseline / 'LF-Story.json').read_bytes())
 
+    def test_public_check_identity_is_stable_across_temp_paths_and_times(self):
+        for name in ('first', 'second'):
+            self.assertEqual(0, self.check(name)[0])
+        first = json.loads((self.scratch / 'first/receipt.json').read_bytes())
+        second = json.loads((self.scratch / 'second/receipt.json').read_bytes())
+        self.assertEqual(first['identity'], second['identity'])
+        self.assertEqual(first['evidence'], second['evidence'])
+        self.assertNotEqual(first['observations'], second['observations'])
+
     def test_stale_equal_count_export_rejected(self):
         export = self.source / 'development/Story.json'
         export.write_bytes(export.read_bytes().replace(b'Original words', b'Stale words'))
@@ -112,6 +122,21 @@ class GuardIntegrationTests(unittest.TestCase):
         self.assertEqual(1, code)
         self.assertTrue(evidence['tracked_export_stale'])
         self.assertTrue(any('stale_tracked_export' in f for f in evidence['failures'] if isinstance(f, dict)))
+
+    def test_tracked_newline_profile_change_and_bom_fail(self):
+        export = self.source / 'development/Story.json'
+        original = export.read_bytes()
+        export.write_bytes(original.replace(b'\n', b'\r\n'))
+        code, evidence = self.check('newline')
+        self.assertEqual(1, code)
+        # Both isolated seed profiles still match. The candidate changed the
+        # default tracked destination seed, which must also remain frozen.
+        self.assertFalse(evidence['tracked_export_stale'])
+        self.assertIn('Tracked export bytes/newline seed differ from predecessor', evidence['failures'])
+        export.write_bytes(b'\xef\xbb\xbf' + original)
+        code, evidence = self.check('bom')
+        self.assertEqual(1, code)
+        self.assertTrue(evidence['tracked_export_stale'])
 
     def test_different_count_and_same_count_wrong_fresh_export_rejected(self):
         original = (self.source / 'expansion.py').read_text()
@@ -156,12 +181,63 @@ class GuardIntegrationTests(unittest.TestCase):
         self.assertFalse(evidence['tracked_export_stale'])
         self.assertIn('Unaccounted input/source change: storylines/unregistered.py', evidence['failures'])
 
+    def test_ignored_input_is_pinned_even_when_only_its_existence_is_read(self):
+        path = self.source / '.env'
+        path.write_text('fixture=changed\n')
+        # Simulate git ignoring .env, as the production checkout does. The
+        # complete filesystem inventory must still catch the newly added input.
+        old_git = guard.git
+        def ignored(source, *args):
+            value = old_git(source, *args)
+            return '\0'.join(p for p in value.split('\0') if p != '.env') if args[0] == 'ls-files' else value
+        with patch.object(guard, 'git', side_effect=ignored):
+            code, evidence = self.check()
+        self.assertEqual(1, code)
+        self.assertIn('Unaccounted input/source change: .env', evidence['failures'])
+
+    def test_shared_collector_leak_rejected_with_producer_attribution(self):
+        module = self.source / 'storylines/collector.py'
+        module.parent.mkdir()
+        module.write_text('ROWS = []\ndef collect(row):\n    ROWS.append(row)\n    return ROWS\n')
+        generator = self.source / 'expansion.py'
+        generator.write_text(generator.read_text().replace('output = root',
+            'from storylines.collector import collect\n'
+            'payload["Scenes"].extend(collect(payload["Scenes"][0]))\noutput = root'))
+        status, evidence = self.check(allowed=['expansion.py', 'storylines/collector.py'])
+        self.assertEqual(1, status)
+        self.assertIn('storylines/collector.py', evidence['generator_reads']['LF-0'])
+        self.assertTrue(any(isinstance(row, dict) and row.get('export') == 'LF' and
+                            '$.Scenes: count 2 -> 3' in row['difference']['path']
+                            for row in evidence['failures']))
+
+    def test_existing_reference_drift_and_deleted_input_fail(self):
+        reference = self.source / 'data/payload.json'
+        reference.write_bytes(reference.read_bytes() + b' ')
+        status, evidence = self.check('reference', allowed=['data/payload.json'])
+        self.assertEqual(1, status)
+        self.assertFalse(evidence['tracked_export_stale'])
+        self.assertIn('Unaccounted input/source change: data/payload.json', evidence['failures'])
+        reference.unlink()
+        self.assertEqual(1, self.check('deleted')[0])
+
     def test_parent_native_and_tool_drift_fail(self):
-        with patch.object(guard, 'external_inputs', return_value=({'fixture-native': {'sha256': 'drift'}}, {})):
+        with patch.object(guard, 'external_inputs', return_value=({'fixture-native': {'sha256': '1' * 64, 'bytes': 0}}, {})):
             self.assertEqual(1, self.check('native')[0])
         source = self.source / 'tools/savecompat.py'
         source.write_bytes(source.read_bytes() + b'\n# changed verifier\n')
         self.assertEqual(1, self.check('tool', allowed=['tools/savecompat.py'])[0])
+
+    def test_runtime_drift_fails_despite_unchanged_export(self):
+        original = guard.runtime_inputs
+        def drift(source):
+            value = original(source)
+            value['python'] = 'changed-runtime'
+            return value
+        with patch.object(guard, 'runtime_inputs', side_effect=drift):
+            code, evidence = self.check()
+        self.assertEqual(1, code)
+        self.assertFalse(evidence['tracked_export_stale'])
+        self.assertIn('Pinned runtime/native/parent inputs changed', evidence['failures'])
 
     def test_wrong_namespace_fails_with_unchanged_story(self):
         (self.source / 'src/Main.cs').write_text('Encoding.UTF8.GetBytes("Wrong/" + name)')
@@ -176,6 +252,11 @@ class GuardIntegrationTests(unittest.TestCase):
         for name, statement in (
             ('read', 'Path(%r).read_bytes()' % str(secret)),
             ('write', '(root / "unaccounted.json").write_text("{}")'),
+            ('delete', '(root / "data/payload.json").unlink()'),
+            ('rename', '(root / "data/payload.json").rename(root / "stolen.json")'),
+            ('subprocess', 'import subprocess; subprocess.run(["true"])'),
+            ('caught-read', 'try:\n    Path(%r).read_bytes()\nexcept Exception:\n    pass' % str(secret)),
+            ('caught-write', 'try:\n    (root / "unaccounted.json").write_text("{}")\nexcept Exception:\n    pass'),
         ):
             with self.subTest(name=name):
                 (self.source / 'expansion.py').write_text(original + statement + '\n')
@@ -218,7 +299,11 @@ class GuardIntegrationTests(unittest.TestCase):
 
     def test_missing_or_malformed_gate_receipts_fail_even_with_rehashed_identity(self):
         original = json.loads((self.baseline / 'receipt.json').read_bytes())
-        for mutation in ('missing', 'malformed', 'missing-export', 'missing-source', 'missing-timestamp'):
+        for mutation in ('missing', 'malformed', 'missing-export', 'missing-source', 'missing-timestamp',
+                         'failed-generation', 'failed-savecompat', 'changed-command', 'false-acceptance',
+                         'wrong-inventory', 'missing-runtime', 'unaccounted-read', 'boolean-format',
+                         'string-status', 'numeric-acceptance', 'float-count', 'null-failures',
+                         'null-savecompat', 'float-length', 'missing-revision', 'bad-revision', 'capture-authorization'):
             with self.subTest(mutation=mutation):
                 value = copy.deepcopy(original)
                 evidence = value['evidence']
@@ -230,8 +315,42 @@ class GuardIntegrationTests(unittest.TestCase):
                     evidence['exports'].pop('CRLF')
                 elif mutation == 'missing-source':
                     evidence['source_files'].pop('expansion.py')
-                else:
+                elif mutation == 'missing-timestamp':
                     value['observations'][0].pop('started')
+                elif mutation == 'failed-generation':
+                    value['observations'][0]['exit'] = 1
+                elif mutation == 'failed-savecompat':
+                    next(row for row in value['observations'] if row['stage'] == 'frozen-savecompat')['timed_out'] = True
+                elif mutation == 'changed-command':
+                    evidence['gates'][0]['command'] = ['true']
+                elif mutation == 'false-acceptance':
+                    evidence['accepted'] = False
+                elif mutation == 'wrong-inventory':
+                    evidence['predecessor_inventory']['scene_order'].reverse()
+                elif mutation == 'missing-runtime':
+                    evidence.pop('runtime')
+                elif mutation == 'unaccounted-read':
+                    evidence['generator_reads']['LF-0'].append('external:unaccounted')
+                elif mutation == 'boolean-format':
+                    value['format'] = True
+                elif mutation == 'string-status':
+                    evidence['structural_passed'] = 'true'
+                elif mutation == 'numeric-acceptance':
+                    evidence['accepted'] = 1
+                elif mutation == 'float-count':
+                    evidence['scene_count'] = float(evidence['scene_count'])
+                elif mutation == 'null-failures':
+                    evidence['failures'] = None
+                elif mutation == 'null-savecompat':
+                    evidence['frozen_savecompat'] = None
+                elif mutation == 'float-length':
+                    evidence['exports']['LF']['bytes'] = float(evidence['exports']['LF']['bytes'])
+                elif mutation == 'missing-revision':
+                    evidence.pop('revision')
+                elif mutation == 'bad-revision':
+                    evidence['revision'] = 'not-an-immutable-revision'
+                else:
+                    evidence['authorized_sources'] = ['expansion.py']
                 value['identity'] = guard.digest(guard.canonical(evidence))
                 (self.baseline / 'receipt.json').write_bytes(guard.canonical(value))
                 with self.assertRaises(guard.GuardError):
@@ -281,14 +400,15 @@ class GuardPrimitiveTests(unittest.TestCase):
 
     def test_environment_discards_inherited_fixture_and_generator_controls(self):
         with patch.dict(os.environ, {'RRT_TEST_STORY': '/wrong', 'RRT_STORY_OUTPUT': '/wrong',
-                                    'PYTHONPATH': '/wrong', 'PYTHONHASHSEED': '123'}):
+                                    'PYTHONPATH': '/wrong', 'PYTHONHASHSEED': '123', 'CUSTOM_INPUT': 'wrong'}):
             env = guard.clean_environment(guard.ROOT, Path(tempfile.gettempdir()), Path('/game'))
         self.assertNotIn('RRT_TEST_STORY', env)
         self.assertNotIn('RRT_STORY_OUTPUT', env)
         self.assertNotIn('PYTHONPATH', env)
+        self.assertNotIn('CUSTOM_INPUT', env)
         self.assertEqual('0', env['PYTHONHASHSEED'])
 
-    @unittest.skipIf(os.name == 'nt', 'POSIX process-group witness')
+    @unittest.skipUnless(sys.platform == 'linux', 'Linux process-tree witness')
     def test_timeout_kills_child_and_returns_failure_observation(self):
         with tempfile.TemporaryDirectory(prefix='rrt-guard-child-') as temporary:
             scratch = Path(temporary)
@@ -303,6 +423,52 @@ class GuardPrimitiveTests(unittest.TestCase):
             # Waiting via a process also bounds the witness's own execution.
             subprocess.run([sys.executable, '-c', 'import time; time.sleep(1.2)'], check=True, timeout=3)
             self.assertFalse(marker.exists())
+
+    @unittest.skipUnless(sys.platform == 'linux', 'Linux detached-child witness')
+    def test_detached_child_cleaned_after_success_and_failure(self):
+        with tempfile.TemporaryDirectory(prefix='rrt-guard-detached-') as temporary:
+            scratch = Path(temporary)
+            for exit_code in (0, 1):
+                marker = scratch / ('child-%d.txt' % exit_code)
+                child = 'import time,pathlib; time.sleep(1); pathlib.Path(%r).write_text("leaked")' % str(marker)
+                parent = ('import subprocess,sys; subprocess.Popen([sys.executable,"-c",%r],'
+                          'start_new_session=True); sys.exit(%d)' % (child, exit_code))
+                result = guard.execute([sys.executable, '-c', parent], scratch, dict(os.environ), scratch / 'log', timeout=3)
+                self.assertEqual(125 if exit_code == 0 else exit_code, result['exit'])
+                self.assertFalse(result['timed_out'])
+                subprocess.run([sys.executable, '-c', 'import time; time.sleep(1.2)'], check=True, timeout=3)
+                self.assertFalse(marker.exists())
+
+    @unittest.skipUnless(sys.platform == 'linux', 'symlink input witness')
+    def test_ignored_symlink_directory_is_not_an_unpinned_input(self):
+        with tempfile.TemporaryDirectory(prefix='rrt-guard-symlink-') as temporary:
+            source = Path(temporary) / 'source'
+            source.mkdir()
+            (source / 'ignored-input').symlink_to(Path(temporary), target_is_directory=True)
+            with patch.object(guard, 'git', return_value=''):
+                with self.assertRaisesRegex(guard.GuardError, 'symlink input directory'):
+                    guard.source_files(source)
+
+    def test_cli_dirty_capture_fails_without_writing_a_baseline(self):
+        with tempfile.TemporaryDirectory(prefix='rrt-guard-cli-') as temporary:
+            scratch = Path(temporary)
+            source = scratch / 'source'
+            source.mkdir()
+            subprocess.run(['git', 'init', '-q', str(source)], check=True)
+            (source / 'expansion.py').write_text('raise AssertionError("must not execute")')
+            result = subprocess.run([sys.executable, '-B', str(Path(guard.__file__)), 'capture',
+                '--source', str(source), '--out', str(scratch / 'baseline')], capture_output=True, text=True)
+            self.assertNotEqual(0, result.returncode)
+            self.assertIn('clean predecessor', result.stderr)
+            self.assertFalse((scratch / 'baseline').exists())
+
+    def test_result_storage_never_overwrites_or_enters_the_source_tree(self):
+        with tempfile.TemporaryDirectory(prefix='rrt-guard-location-') as temporary:
+            source = Path(temporary) / 'source'
+            source.mkdir()
+            for path in (source, source / 'results', Path(tempfile.gettempdir())):
+                with self.assertRaises(guard.GuardError):
+                    guard.temporary_output(path, source)
 
 
 if __name__ == '__main__':
