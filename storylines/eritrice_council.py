@@ -134,8 +134,8 @@ sitting(PROOF, "Phrr", '"What does Cobblehoof actually say?"', [
 "He fears a mortal might reach for it. He would rather hide the purse than answer the request for aid." {n}Her whiskers lift.{/n} "That is his contribution to the debate."''',
       c("Continue", "orange", requires=(ORANGE,)),
       c("Continue", "close", forbids=(ORANGE,))),
-    e("orange", '''"And then you told Chadali there was a magical orange in his bag." {n}Her voice drops.{/n} "There are no magical orange trees in Axis. I said so. In session. On the record."
-"Chadali believed you, and clapped, and Cobblehoof looked as though his entire plane had been insulted." {n}A long pause.{/n} "It was the most undignified session of this Council's existence. I laughed. I had to minute that I laughed."''',
+    e("orange", '''"Back in that session, you told Chadali there was a magical orange in his bag." {n}Her voice drops.{/n} "There are no magical orange trees in Axis. I said so. In session. On the record."
+"Back in that session, Chadali believed you, and clapped, and Cobblehoof looked as though his entire plane had been insulted." {n}A long pause.{/n} "It was the most undignified session of this Council's existence. I laughed. I had to minute that I laughed."''',
       c('"You laughed?"', "laughed")),
     e("laughed", '''"Once. Briefly. In front of Alichino." {n}Her ears are flat with mortification.{/n}
 "Cobblehoof has not forgiven me. He snorts twice whenever I call the session to order now. Twice, Commander. That means it cannot be proven that I am fit to chair."''',
@@ -679,7 +679,7 @@ FAIR = K + "the_fair_copy"
 
 sitting(FAIR, "The fair copy", '"What\'s that?"', [
     e("start", '''{n}It is a scroll, but not one of the Council's. It is shorter, bound with a ribbon of amethyst silk, and it has been written in the upright hand from end to end, without a single correction.{/n}
-"A fair copy. Of our debate. Every sitting, every point, from the motion you had no right to carry to last night." {n}She holds it out, and then does not quite let go of it.{/n}
+"A fair copy. Of our debate. Every sitting, every point, from our first private debate to last night." {n}She holds it out, and then does not quite let go of it.{/n}
 "I made it for you. You are mortal, and you forget things, and your clerks lose your papers, and you are going into a war I cannot follow you into. I want you to have a true record. Of this. Of me."''',
       c("[Take it.]", "take"),
       c('"Keep it. You\'ll remember it better than I will."', "keep")),

@@ -428,7 +428,17 @@ def integrate_drezen_readings(payload):
         visit["Forbids"] = [f for f in visit["Forbids"] if f != LOST] + [original["Id"], visit["Id"]]
         for node in visit["Nodes"]:
             node["Text"] = node["Text"].replace("the hall", "the borrowed room").replace("The hall", "The borrowed room").replace("Council's long table", "borrowed long table").replace("Council's table", "borrowed table")
+            # AUTHORED borrowed furnishings stay in Drezen; no Council furniture was moved.
+            node["Text"] = node["Text"].replace("Council's chairs", "room's chairs").replace("Alichino's empty chair", "empty chair beside the table").replace("Alichino's chair", "chair beside the table")
+            if original["Id"] == "eritrice.minutes.adjourned":
+                if node["Id"] == "start":
+                    node["Text"] = node["Text"].replace("Tonight, in this hall, at my own table.", "Tonight, in this borrowed room. The table is Drezen's; the invitation is mine.")
+                if node["Id"] == "armour":
+                    node["Text"] = node["Text"].replace("When the last of it is on the floor", "She stacks the armour beneath the chair beside the table. When the last buckle is undone")
+            if original["Id"] == "eritrice.council.twice_nightly" and node["Id"] == original["Id"] + ".explicit.1":
+                node["Text"] = node["Text"].replace("beneath the table until morning", "beneath the chair beside the table until morning")
             for choice in node["Choices"]:
+                choice["Text"] = choice["Text"].replace("the hall", "the borrowed room")
                 if choice["Next"] is None and not choice["Abort"]:
                     choice["Set"].append(original["Id"])
         payload["Scenes"].append(visit)
