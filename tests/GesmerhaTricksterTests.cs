@@ -195,7 +195,7 @@ internal static class GesmerhaTricksterTests
         var atBench = Later(story, seen, 72);
         var committed = Pick(bench, atBench, "gesmerha.committed");
         var benchPages = Pages(bench, atBench);
-        check(benchPages.IsSupersetOf(new[] { "start", "monster", "ask", "terms", "postpone", "night", "morning" })
+        check(benchPages.IsSupersetOf(new[] { "start", "monster", "ask", "terms", "postpone", bench.Id + ".explicit.1", "morning" })
               && !benchPages.Contains("new") && !benchPages.Contains("flinch"),
             "Trk_Gesmerha_Commit: a page of the bench is unreachable, or the wrong statue stands on the trestles.");
         check(Pages(bench, Later(story, seenNew, 72)).Contains("new"), "The new figure never stands on the trestles.");
@@ -215,7 +215,7 @@ internal static class GesmerhaTricksterTests
             "The second ask costs the war nothing.");
         check(Play(secondAsk, Later(story, declined, 96)).Any(r => r.Has("gesmerha.closed") && !r.Has("gesmerha.committed")),
             "The Commander cannot refuse her raised price.");
-        check(Pages(secondAsk, Later(story, declined, 96)).IsSupersetOf(new[] { "sat", "night", "morning" }),
+        check(Pages(secondAsk, Later(story, declined, 96)).IsSupersetOf(new[] { "sat", secondAsk.Id + ".explicit.1", "morning" }),
             "The second ask skips the three days or the night.");
         var finished = Pick(bench, atBench, "gesmerha.closed");
         check(!finished.Has("gesmerha.committed"), "The Commander's own no commits.");
@@ -303,11 +303,25 @@ internal static class GesmerhaTricksterTests
         var likeness = S(P + "returned.likeness");
         check(likeness.ContactUnit == Unit && likeness.InteractionHub == "gesmerha.presence" && likeness.Areas.SequenceEqual(new[] { Drezen }),
             "The second work is not in the smith's yard.");
-        check(!Rules.Available(story, likeness, committed) && Rules.Available(story, likeness, Later(story, committed, 48))
-              && Rules.Available(story, likeness, Later(story, sat, 48)) && !Rules.Available(story, likeness, Later(story, declined, 200)),
-            "The second work ignores its two days, or opens without the commit.");
-        var owed = Pick(likeness, Later(story, committed, 48), P + "cost.likeness_owed");
-        var cutFromMemory = Pick(likeness, Later(story, committed, 48), P + "cost.likeness_cut");
+        Snapshot FinalCampaign(Snapshot state)
+        {
+            var final = Program.Copy(state);
+            final.Chapter = 5;
+            final.Flags.Add("iz.done");
+            Rules.Complete(story, final);
+            return final;
+        }
+        check(!Rules.Available(story, likeness, Later(story, committed, 48)),
+            "The Threshold farewell opens in Chapter 3.");
+        var beforeIz = FinalCampaign(Later(story, committed, 48)); beforeIz.Flags.Remove("iz.done");
+        check(!Rules.Available(story, likeness, beforeIz), "The Threshold farewell opens before Iz.");
+        check(!Rules.Available(story, likeness, FinalCampaign(committed))
+              && Rules.Available(story, likeness, FinalCampaign(Later(story, committed, 48)))
+              && Rules.Available(story, likeness, FinalCampaign(Later(story, sat, 48)))
+              && !Rules.Available(story, likeness, FinalCampaign(Later(story, declined, 200))),
+            "The final-campaign farewell ignores its delay or acceptance.");
+        var owed = Pick(likeness, FinalCampaign(Later(story, committed, 48)), P + "cost.likeness_owed");
+        var cutFromMemory = Pick(likeness, FinalCampaign(Later(story, committed, 48)), P + "cost.likeness_cut");
         check(!owed.Has(P + "cost.likeness_cut") && !cutFromMemory.Has(P + "cost.likeness_owed") && !Rules.Available(story, likeness, Later(story, owed, 48)),
             "The second work repeats, or leaves both states at once.");
         check(Choices(likeness).All(c => c.Crusade == null), "The unpaid face is paid for.");
@@ -385,11 +399,13 @@ internal static class GesmerhaTricksterTests
             var beat = sc.Nodes.Single(x => x.Id == cut);
             var slotId = sc.Id + ".explicit." + (cut == "first_night" ? "2" : "1");
             var slot = sc.Nodes.Single(x => x.Id == slotId);
-            check(beat.Choices.Count == 1 && beat.Choices[0].Next == slotId
-                  && slot.Choices.Count == 1 && slot.Choices[0].Next == after && slot.Choices[0].Set.Length == 0,
+            check(beat.Choices.Count == 1 && beat.Choices[0].Next == after && beat.Text == slot.Text
+                  && sc.Nodes.SelectMany(n => n.Choices).Any(c => c.Next == slotId)
+                  && sc.Nodes.SelectMany(n => n.Choices).Where(c => c.Next == cut).All(c => c.Requires.Intersect(c.Forbids).Any())
+                  && slot.Choices.Count == 2 && slot.Choices[0].Next == after && slot.Choices[0].Set.Length == 0,
                 "An intimate beat fades early or carries its own aftermath: " + sc.Id + "/" + cut);
         }
-        check(room.Nodes.Single(x => x.Id == "first_kiss").Choices.Any(c => c.Next == "first_night")
+        check(room.Nodes.Single(x => x.Id == "first_kiss").Choices.Any(c => c.Next == room.Id + ".explicit.2")
               && room.Nodes.Single(x => x.Id == "after_first_night").Choices[0].Set.Contains("gesmerha.committed"),
             "The late commit has no threshold of its own.");
         var afternoonReact = S("gesmerha.react.lann_afternoon");
@@ -426,7 +442,7 @@ internal static class GesmerhaTricksterTests
         }
         foreach (var (commitState, label) in new[] { (committed, "the vow"), (sat, "the sitting") })
         {
-            var after48 = Hub(Later(story, commitState, 48));
+            var after48 = Hub(FinalCampaign(Later(story, commitState, 48)));
             check(Rules.PresenceWanted(presenceSpec, after48) && after48.AvailableContacts.Contains(Unit),
                 "The presence is removed after the commit (" + label + ").");
             check(Rules.Available(story, likeness, after48)
@@ -589,9 +605,9 @@ internal static class GesmerhaTricksterTests
         // when the hands held), and both returned nights are recorded and answered by Anevia.
         var flinchAsk = Later(story, flinchNo, 96);
         var flinchPages = Pages(secondAsk, flinchAsk);
-        check(flinchPages.Contains("night_flinched") && !flinchPages.Contains("night"), "The flinched second ask plays the mallet night.");
+        check(flinchPages.Contains(secondAsk.Id + ".explicit.2") && !flinchPages.Contains(secondAsk.Id + ".explicit.1"), "The flinched second ask plays the mallet night.");
         var heldPages = Pages(secondAsk, Later(story, declined, 96));
-        check(heldPages.Contains("night") && !heldPages.Contains("night_flinched") && declined.Has(P + "held_still"),
+        check(heldPages.Contains(secondAsk.Id + ".explicit.1") && !heldPages.Contains(secondAsk.Id + ".explicit.2") && declined.Has(P + "held_still"),
             "The held second ask loses the mallet night.");
         var flinchSat = Pick(secondAsk, flinchAsk, "gesmerha.committed", P + "cost.hands_carved");
         var yardNight = S(P + "react.anevia_yard_night");
