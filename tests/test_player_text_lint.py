@@ -55,10 +55,23 @@ class PlayerTextTests(unittest.TestCase):
             if finding.get("item_id") == "E-Q7-21" and finding["route"] == "arsinoe":
                 node = finding["problem"].split()[1]
                 rewritten = {("arsinoe_price_of_an_evening", "charge"),
+                             ("arsinoe_printers_view", "counter"),
+                             ("arsinoe_the_unprofitable_hour", "game"),
                              ("arsinoe_two_doors", "comparison"),
                              ("arsinoe_a_stone_in_hand", "after_possibility")}
                 reported = any(r["scene"] == finding["scene"] and r["location"] == node for r in rows)
                 if (finding["scene"], node) in rewritten:
                     self.assertFalse(reported, finding["id"])
+                    if (finding["scene"], node) == ("arsinoe_printers_view", "counter"):
+                        page = next(s for s in story["Scenes"] if s["Id"] == finding["scene"])
+                        counter = next(n for n in page["Nodes"] if n["Id"] == node)
+                        self.assertEqual([c["Next"] for c in counter["Choices"]], ["source", "explanation"])
+                        self.assertTrue(all(c["Text"].startswith('"') for c in counter["Choices"]))
+                    if (finding["scene"], node) == ("arsinoe_the_unprofitable_hour", "game"):
+                        page = next(s for s in story["Scenes"] if s["Id"] == finding["scene"])
+                        game = next(n for n in page["Nodes"] if n["Id"] == node)
+                        self.assertNotIn('"Your confidence is touching."', game["Text"])
+                        self.assertEqual(game["Choices"][0]["Next"], "answer")
+                        self.assertIn("Your confidence is touching.", game["Choices"][0]["Text"])
                 else:
                     self.assertTrue(reported, finding["id"])
