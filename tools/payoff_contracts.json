@@ -1022,7 +1022,25 @@
         "open_routes": [
           "aranka"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        }
+      ]
     },
     "areelu": {
       "provenance": "derived from handoffs/trickster/areelu.md and shipped commitment producers",
@@ -1581,7 +1599,33 @@
         "open_routes": [
           "arueshalae"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        }
+      ]
     },
     "camellia": {
       "provenance": "derived from handoffs/trickster/camellia.md and shipped commitment producers; coffin life requires observed death, while the validated native-death battlefield scene preserves its legacy earned return",
@@ -2886,6 +2930,40 @@
         "gesmerha.future_friends",
         "gesmerha.future_open",
         "gesmerha.parted"
+      ],
+      "absence_surfaces": [
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        }
       ]
     },
     "hepzamirah": {
@@ -7200,6 +7278,14 @@
         {
           "scene": "nenio.trickster.epilogue.kenabres_pending",
           "reason": "Integrated negative/pending/guardian outcome; no continuing Commander romance is asserted. Existing earned history and independent availability remain."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
         }
       ]
     },
@@ -8937,6 +9023,38 @@
         {
           "scene": "soana.partner.epilogue.broken",
           "reason": "Integrated negative/pending/guardian outcome; no continuing Commander romance is asserted. Existing earned history and independent availability remain."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
         }
       ]
     },
