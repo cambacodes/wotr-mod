@@ -2152,6 +2152,46 @@
         {
           "scene": "soana.trickster.epilogue.living_late",
           "letter": false
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -2931,6 +2971,46 @@
         {
           "scene": "household.docket.gesmerha_jerribeth.account",
           "provenance": "Wave 2 private account; only the named claimant attends, guarded by current presence."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -3640,6 +3720,26 @@
         {
           "scene": "aranka.thall.reply",
           "letter": false
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -12011,6 +12111,36 @@
         {
           "scene": "household.pair.nenio_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -14542,6 +14672,16 @@
         {
           "scene": "household.pair.nenio_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
