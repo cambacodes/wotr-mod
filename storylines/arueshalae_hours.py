@@ -72,7 +72,7 @@ hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
 
 # --- The dose in the Abyss (Chapter 4) ---------------------------------------------------------------------
 
-hub(ABYSS_TOUCH, "The dose, adjusted", 5, '"You\'re thinking about the Abyss again."', [
+hub(ABYSS_TOUCH, "The Abyss in her ears", 5, '"You\'re thinking about the Abyss again."', [
     a("start", '{n}Back in Drezen, she brings it up without warning, sitting on the citadel steps with her wings drawn in, and the night comes back whole as she tells it: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}\n"Everything was worse there. The air tasted of it. Every scream from the dark tasted of it. It was like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}\n"I never asked for your hand out there. Not once, from the crossing to the day we came back. I didn\'t think I could stop, there, if I started. And since we came back, and I still don\'t know whether I left it behind or carried it back with me in my skin."',
         c('[Hold out your hand] "Doctor\'s orders. The dose is adjusted for altitude."', "take", requires=(TOUCHED,), forbids=(TOUCHED,)),   # retired
         c('"Then don\'t ask. I\'ll sit here instead."', "sit", flags=(ABYSS_TOUCH,)),
@@ -98,7 +98,7 @@ hub(ABYSS_TOUCH, "The dose, adjusted", 5, '"You\'re thinking about the Abyss aga
 
 # --- A bad day: the demon's temper ---------------------------------------------------------------------------
 
-hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
+hub(BAD_DAY, "A bad day", 3, '"Arueshalae?"', [
     a("start", '''"What?" {n}It comes out as a snarl, and there is something in it that you have not heard from her before: a harmonic under the voice, like a second voice, cold and very old.{/n}
 {n}She has her back to the tent pole. Her wings are half open and her nails are out, long and black, and she is breathing as if she has run a long way. When she sees it is you, she does not put any of it away.{/n}''',
         c("Continue", "tirade")),
@@ -117,7 +117,7 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
 
 # --- After the yes: a first quarrel ---------------------------------------------------------------------------
 
-hub(QUARREL, "Second opinion", 5, '"You\'re angry with me."', [
+hub(QUARREL, "A quarrel", 5, '"You\'re angry with me."', [
     a("start", '''"Yes. I am." {n}She has her arms folded and her chin up, and the quartermaster's ledger under one of them.{/n}
 "I counted the seals. Every seal I've watched the chaplain break over you since the procedure, every one of them so that I could hold your hand for seven minutes. And then I went to the scroll-sellers and asked the price, the way I used to price a mark's jewels." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take anything from anybody. And you've been paying for me by the minute, and you never once told me the sum."''',
         c("Continue", "fear")),

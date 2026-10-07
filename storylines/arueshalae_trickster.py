@@ -131,12 +131,12 @@ REFUSED = P + "terms_refused"                      # her own refusal key on ever
 RETIRED_TEXT = "{n}(Retired 2026-10-01: nothing in this route returns her from death.){/n}"
 
 RELATIONSHIP = dict(
-    Title="Treatment",
+    Title="Any caress",
     Description=("Arueshalae is hungry. She has always been hungry. I have read the chaplains' books on wards, and I have "
-                 "decided to treat it as a medical condition, one scroll at a time."),
+                 "found a way to hold her hand without losing my life to her hunger: a Scroll of Death Ward."),
     Objective="Speak with Arueshalae",
-    Guidance=("On the Trickster path, read up on her drain in the shrine library and take her pulse at her own hub in "
-              "Chapter 3; the sessions continue in Chapters 3 to 5. A protected touch needs a Scroll of Death Ward from the "
+    Guidance=("On the Trickster path, read up on her drain in the shrine library and offer her your hand at her own hub in "
+              "Chapter 3; spend time with her in Chapters 3 to 5. A protected touch needs a Scroll of Death Ward from the "
               "scroll merchants, and spends it. If she dies in the party, the crusade's own rites can raise her. If she "
               "falls, you can bring her back to the party at her lair; killing her there ends this road. If her romance "
               "fails, the shrine still needs a chaplain. Her native romance stands beside all of it."),

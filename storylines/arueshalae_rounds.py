@@ -48,7 +48,7 @@ def session(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, las
 
 # --- The cat on the smithy roof ---------------------------------------------------------------------------------
 
-session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
+session(CAT, "A sleeping cat", 3, '"You look pleased with yourself."', [
     a("start", '{n}She has straw in her hair. Her hand stays open, palm up, even while the smith calls his apprentices back to work.{/n} "The cat. The one on the smithy roof. It came to me. I\'ve tried sitting under that roof, again and again, being very still. This morning it climbed into my lap."',
         c("Continue", "want", requires=(RX_WANT,)),
         c("Continue", "watch", forbids=(RX_WANT,))),
@@ -147,7 +147,7 @@ session(OLD_NAME, "What they called me", 5, '"The woman in the Alushinyrra marke
 
 # --- The Commander wounded (Chapter 5): the doctor is the patient ---------------------------------------------
 
-session(WOUND, "The doctor is out", 5, '"You\'re sitting up. Good."', [
+session(WOUND, "Beside your bed", 5, '"You\'re sitting up. Good."', [
     nar("start", '''{n}The wound is not serious, the chaplains say, which is what they say about wounds that nearly were. You are propped up in the field hospital with your side strapped and a taste of healing potion in your mouth like old pennies, and she is sitting on the stool beside the cot where she has been sitting, the orderlies tell you, for eleven hours.{/n}''',
         c("Continue", "helpless")),
     a("helpless", '''"I couldn't do anything." {n}She is holding her own hands in her lap, as if they were a pair of animals that might get loose.{/n} "They carried you in and there was so much of you on the stretcher, and every healer in the tent went to work, and I just stood there. I knew exactly where it would hurt you, and not one thing to do about it."
@@ -168,7 +168,7 @@ session(WOUND, "The doctor is out", 5, '"You\'re sitting up. Good."', [
 
 # --- The dance (Chapter 5) --------------------------------------------------------------------------------------
 
-session(DANCE, "Recommended exercise", 5, '"There\'s music in the square."', [
+session(DANCE, "Music in the square", 5, '"There\'s music in the square."', [
     a("start", '''{n}There is. Someone has won something, or thinks they have, and the Drezen square is full of lanterns and bad fiddlers and soldiers dancing with anybody who will have them.{/n}
 "I've been watching them from the steps. I've watched mortals dance for years, at weddings, in taverns, wherever I could stand at the back and not be noticed." {n}She stops.{/n} "In the Upper City we danced, of course. It was a kind of hunting. Here it seems to be a kind of falling over while holding on to someone."''',
         c('[Hold out your hand] "Recommended exercise. Twice a week."', "dance", requires=(TOUCHED,), forbids=(TOUCHED,)),   # retired
@@ -194,7 +194,7 @@ session(DANCE, "Recommended exercise", 5, '"There\'s music in the square."', [
 
 # --- After the yes ---------------------------------------------------------------------------------------------
 
-session(AFTER_WAR, "Prognosis", 5, '"What will you do, after?"', [
+session(AFTER_WAR, "After the war", 5, '"What will you do, after?"', [
     a("start", '''{n}She answers in a rush, as if afraid of losing her nerve.{/n}
 "A kitchen. I want a kitchen. With a window, and a table that's too small, and a shelf for whatever cat decides to come in. I want to learn to cook. I'll be terrible at it."
 {n}She stops for breath.{/n} "When the Wound is closed. Nobody can send me out on patrol while I'm burning the supper. I could burn the whole pot if I liked."''',
