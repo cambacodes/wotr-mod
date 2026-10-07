@@ -443,5 +443,20 @@
     "scene": "nenio.folio.edge_arcade",
     "route": "nenio",
     "finding": "nenio:D16"
+  },
+  {
+    "scene": "nidalynn.trickster.hearth.listening",
+    "route": "nidalynn",
+    "finding": "nidalynn:D11"
+  },
+  {
+    "scene": "nidalynn.trickster.kiln.the_druids",
+    "route": "nidalynn",
+    "finding": "nidalynn:D12"
+  },
+  {
+    "scene": "nidalynn.trickster.kiln.the_druids.chosen",
+    "route": "nidalynn",
+    "finding": "nidalynn:D13"
   }
 ]
