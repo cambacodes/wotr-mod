@@ -154487,6 +154487,22 @@
       "ExpectedCandidate": "camellia.trickster.epilogue.refused"
     },
     {
+      "Id": "page/camellia.trickster.epilogue.refused_living",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.closed",
+        "camellia.life.available",
+        "camellia.present_now",
+        "camellia.trickster.returned.terms_alive",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "camellia.trickster.epilogue.refused_living"
+    },
+    {
       "Id": "page/camellia.lastcall.page",
       "Target": "",
       "Dialog": "",
