@@ -1,0 +1,12 @@
+{
+  "slot_id": "household.pair.seelah_arueshalae.choice.explicit.1",
+  "voice": "Seelah: warm, direct, irreverent about inconvenience, steadfast in duty. Redeemed Arueshalae: tentative but increasingly direct about ordinary personal wants, never a helpless ward; Desna's road remains hers. Their familiarity grows from friendship, not awe of the Commander. Traits only; no sentences from this brief reused.",
+  "facts": "Both women in earned current bodies; redeemed and not corrupted Arueshalae only. Existing route release or applied-protection rules must already make the represented contact valid; good classification alone is not release. Commander absent; no second-person address. No unsupported body colors or details. Mortal alcohol does not intoxicate Arueshalae.",
+  "scene": "NON-GRAPHIC EDITORIAL INTERVAL; leave the intimate act to user-supplied text. Authored Drezen shield-cleaning bench continuation, after mess company and both women's personal answers. They chose each other after deep friendship; no grateful rescue response, conversion, scientific demonstration or new purification. Their unattended shield carries tomorrow's crusade duty into the private interval. Move into two independent morning postings, without sending either woman permanently away or restarting courtship.",
+  "last_line": "A: Your shield is still on the bench.",
+  "speakers": {"S": "Seelah", "A": "Arueshalae"},
+  "example": "A: Will they need you at the east gate?\nS: At dawn. They can manage without me until then.",
+  "commander": "absent",
+  "min_lines": 14,
+  "max_lines": 20
+}
