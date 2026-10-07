@@ -1,11 +1,12 @@
 {
   "slot_id": "household.pair.camellia_arueshalae.choice.explicit.1",
   "voice": "Camellia: refined cover, precise threats, murderous appetite, fascinated by danger. Fallen Arueshalae: hungry, mocking, interested in the mask's owner; no Desnan remorse or redemption.",
-  "scene": "Authored Chapter 5 workbench interval. Both women have chosen each other, Camellia has received the freshly consumed Death Ward, the Commander has left. An answered kiss precedes naming desire. No poison, feeding, injury, incapacitation or coercion. The march against the Worldwound is waiting. Separate before the seven-minute interval ends; sleep separately. Tomorrow they dispute who invited whom.",
+  "scene": "Non-graphic editorial brief for the authored Chapter 5 poison-workbench interval; explicit prose is left for supplied text. Both women have chosen each other, Camellia has received the freshly consumed Death Ward, the Commander has left. Camellia clears the corked bottles and starts the kiss; Arueshalae answers and reaches for her clothes. Their physical answer precedes frank acknowledgment of desire. No poison, feeding, injury, incapacitation or coercion. The march against the Worldwound is waiting. Separate before the seven-minute interval ends; sleep separately. Camellia tries to conceal that she asked. Arueshalae challenges that cover; next morning Camellia claims the next visit and makes the succubus handle the explanation. Keep the mortal's murderous appetite and the demon's hunger; neither becomes harmless.",
+  "facts": "Two current earned bodies, fallen classification only. Death Ward protects Camellia against energy drain; it does not cure Arueshalae or prevent other violence or compulsion. The bottles are work for the crusade, never an instrument of seduction. Commander absent throughout the interval, no second-person address or Commander anatomy variants. Use no unverified physical traits.",
   "speakers": {"C": "Camellia", "A": "Arueshalae"},
   "commander": "absent",
   "last_line": "C: You will not tell them I asked.",
-  "default_text": "{n}The lamp at the workbench burns down while they remain together.{/n}\n\"You will not tell them I asked.\"",
+  "default_text": "{n}Their shadows move across the workbench in the lamplight.{/n}\n\"You will not tell them I asked.\"",
   "insertion": {
     "scene_id": "household.pair.camellia_arueshalae.choice",
     "after_node": "cut",
