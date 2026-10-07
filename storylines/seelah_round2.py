@@ -208,7 +208,7 @@ def prepare(scenes, presences, derived):
         'her list. The Commander felt the folded paper leave their coat and found '
         'her watching them, hand closed around it. "Warned you," she said. She '
         'kept her account of the Kenabres stones herself.{/n}',
-        Forbids=[GIVEN, ROBBED, SETTLED, "seelah.lastcall.called"])
+        Forbids=[GIVEN, ROBBED, SETTLED, "seelah.lastcall.list_returned"])
     blocks[6]["Text"] = ('{n}Once her own list was safe, Seelah sometimes lifted the '
         'Commander\'s purse on a visit and made them win it back. She returned '
         'every coin before leaving for her posting; the game belonged to them both.{/n}')

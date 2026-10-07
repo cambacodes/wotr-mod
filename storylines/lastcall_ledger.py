@@ -43,6 +43,16 @@ def _line(text, requires=(), forbids=(), any_groups=()):
     return dict(Text=text, Requires=list(requires), Forbids=list(forbids), AnyGroups=[list(g) for g in any_groups])
 
 
+def _settlement_line(receipts):
+    if not receipts:
+        return _line("{n}No payment or release is recorded here. The call alone settles nothing.{/n}", requires=[ACTIVE])
+    if len(receipts) == 1:
+        return _line("{n}A payment or release is recorded. Continuing terms remain on their own account.{/n}", requires=receipts[0])
+    # Multiple alternatives here are independent single receipts.
+    return _line("{n}A payment or release is recorded. Continuing terms remain on their own account.{/n}",
+                 any_groups=[[g[0] for g in receipts]])
+
+
 def _debt_entries():
     out = []
     for debt in partners.DEBTS:
@@ -50,7 +60,13 @@ def _debt_entries():
         lines = [_line("{n}Called in at the rift.{/n}", any_groups=[debt["called_by"]])]
         if debt.get("outlived"):
             lines.append(_line("{n}Outlived. There is nobody left to collect it.{/n}", any_groups=[debt["outlived"]]))
-        lines.append(_line("{n}Settled, one way or another. The book stays open anyway.{/n}", requires=[ACTIVE]))
+        receipts = partners.settlements(debt)
+        lines.append(_settlement_line(receipts))
+        if debt["key"] == "wintersun":
+            lines.extend([
+                _line("{n}The blood was given at Wintersun. Calling the account does not demand a second portion.{/n}", requires=[partners.S + "cost.blood_given"]),
+                _line("{n}The guardian paid for the return. The strand still tied to my life remains its own obligation.{/n}", requires=[partners.S + "cost.guardian_paid", partners.S + "cost.knot_bearer"]),
+            ])
         out.append(dict(Id="debt." + debt["key"], Section="Debts", Portrait=HOLDER_PORTRAIT[debt["key"]],
                         Title=debt["ledger_title"], Text="{n}" + debt["ledger_text"] + "{/n}", Lines=lines,
                         Requires=[], Forbids=[], AnyGroups=[holders], Tooltip="RRT_Debt"))
@@ -61,8 +77,15 @@ def _debt_entries():
         out.append(dict(Id="owed." + part["key"], Section="Debts", Portrait=PARTNER_PORTRAIT.get(part["key"], ""),
                         Title=part["ledger_title"], Text="{n}" + part["ledger_text"] + "{/n}",
                         Lines=([_line("{n}Called in at the rift.{/n}", requires=[part["rel"] + ".lastcall.called"])] if part["call"] else [])
-                              + [_line("{n}Settled, one way or another.{/n}", requires=[ACTIVE])],
+                              + [_settlement_line(partners.settlements(part))],
                         Requires=[], Forbids=[], AnyGroups=[deal], Tooltip="RRT_Debt"))
+        if part["rel"] == "horzalah":
+            out[-1]["Lines"].extend([
+                _line("{n}Her report from the Guild placed the trophy above the old hall in Alushinyrra. Its masters accepted her story.{/n}",
+                      requires=[partners.HZ + "cost.ear", partners.HZ + "primed", partners.HZ + "returned"]),
+                _line("{n}The ear is paid. No report has come from the Guild; I do not know where she keeps it or whether her masters believed her.{/n}",
+                      requires=[partners.HZ + "cost.ear"], forbids=[partners.HZ + "returned"]),
+            ])
     return out
 
 
@@ -93,17 +116,16 @@ def book():
 
 
 def journal_entries():
-    """The E15 journal objectives, one per Debts entry. Each is given when the debt is made, and completed when it is called
-    in, outlived, or the ending plays."""
+    """The E15 journal objectives, one per Debts entry. Each is given when the debt is made, and completed when it is
+    paid or released by a specific receipt, or its creditor is outlived."""
     out = []
     for debt in partners.DEBTS:
         out.append(dict(Id="debt." + debt["key"], Title=debt["ledger_title"], Description=debt["ledger_text"],
                         OpenWhen=[list(g) for g in debt["groups"]],
-                        SettledWhen=[[k] for k in debt["called_by"]] + [[k] for k in debt.get("outlived", ())] + [[ACTIVE]]))
+                        SettledWhen=partners.settlements(debt) + [[k] for k in debt.get("outlived", ())]))
     for part in partners.PARTNERS:
         if part.get("ledger_title"):
             out.append(dict(Id="owed." + part["key"], Title=part["ledger_title"], Description=part["ledger_text"],
                             OpenWhen=[list(g) for g in part["deal"]],
-                            # A debt made at the rift itself (Iomedae's banner) has no call-in: it settles with the ending.
-                            SettledWhen=([[part["rel"] + ".lastcall.called"]] if part["call"] else []) + [[ACTIVE]]))
+                            SettledWhen=partners.settlements(part)))
     return out

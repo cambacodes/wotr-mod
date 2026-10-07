@@ -730,7 +730,7 @@ page("claim", "A claim, held", '''{n}Elyanka Camilary did not go home to Ustalav
      requires=(COMMITTED,), paragraphs=(
          p('''{n}Hers was a claim on a corpse that would one day be hers; the Commander's, a claim on a corpse that would never be anybody's.{/n}''',
            forbids=(ACTIVE,)),
-         p('''{n}Hers was a claim on a corpse that would never fall due, since the Commander's death was corked in a flask; the Commander's, a claim on a corpse that would never be anybody's. Two claims, and not a copper paid. She said it was the most honest marriage she had ever seen.{/n}''',
+         p('''{n}The death in the flask had not yet made a corpse payable. Elyanka kept the bequest, and the Commander kept hers. Two claims, neither surrendered. She said it was the most honest marriage she had ever seen.{/n}''',
            requires=(ACTIVE,)),
      ) + HER_PARAGRAPHS)
 
@@ -836,3 +836,18 @@ def integrate(payload):
 for _s in SCENES:
     if _s.get("Id") == E + "react.seelah_rows":
         _s.setdefault("ForbidOverrides", {}).update({"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"})
+
+
+# endings1: recorded death and available corpse are distinct under the bequest.
+for _suffix in ("claim", "debt"):
+    _ep = next(s for s in SCENES if s["Id"] == E + "epilogue." + _suffix)
+    _nd = _ep["Nodes"][0]
+    for _para in _nd.get("Paragraphs", []):
+        if ACTIVE in _para["Requires"] and ("flask" in _para["Text"]):
+            _para["Requires"].append("lastcall.bottled_held")
+            _para["Forbids"].append("lastcall.dead_on_record")
+    _nd["Paragraphs"].extend([
+        p('{n}The death notice made Elyanka present her bequest. The returned body was living; possession was refused. She kept the claim contested, and watched the corked flask without pretending it erased the death.{/n}', requires=(ACTIVE, "lastcall.recovered_corked")),
+        p('{n}Elyanka examined the stranger behind closed curtains. The flask was empty and the death remained in Pharasma\'s book. She had demanded her corpse; no corpse had been delivered. She kept the bequest contested and the stranger\'s name to herself.{/n}', requires=("iomedae.trickster.buried_alive",)),
+    ])
+# end endings1

@@ -808,6 +808,724 @@
         "wenduag.trickster.abyss_cairn",
         "wenduag.trickster.street_cairn"
       ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.heroic",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "lastcall.public_return"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.heroic",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "lastcall.public_return"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.heroic",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.heroic",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.heroic",
+        "page",
+        "paragraph[8]"
+      ],
+      "requires": [
+        "lastcall.public_return"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.bottle",
+        "page",
+        "text"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.empty_flask",
+        "page",
+        "text"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.last_word",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "anevia.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "lastcall.h2"
+      ]
+    },
+    {
+      "surface": [
+        "irabeth.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "irabeth.lastcall.page",
+        "page",
+        "paragraph[20]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "nocticula.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "seelah.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "seelah.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "areelu.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "camellia.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "arueshalae.lastcall.page",
+        "page",
+        "paragraph[14]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "arueshalae.lastcall.page",
+        "page",
+        "paragraph[16]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "delamere.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "delamere.lastcall.page",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "nidalynn.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "nidalynn.lastcall.page",
+        "page",
+        "paragraph[7]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "jannah.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "jannah.lastcall.page",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "nenio.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "nenio.lastcall.page",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "terendelev.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "terendelev.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "horzalah.lastcall.page",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "horzalah.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "eliandra.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "eliandra.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "galfrey.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "galfrey.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "elyanka.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "elyanka.lastcall.page",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "lastcall.bottled_held"
+      ],
+      "forbids": []
+    },
+    {
+      "surface": [
+        "elyanka.lastcall.page",
+        "page",
+        "paragraph[9]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "melazmera.lastcall.page",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "melazmera.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "yaniel.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "yaniel.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "lastcall.h2"
+      ]
+    },
+    {
+      "surface": [
+        "iomedae.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "mielarah.lastcall.page",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "mielarah.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "devarra.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "lastcall.recovered_corked"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "devarra.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "chadali.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "chadali.lastcall.luck_returned"
+      ]
+    },
+    {
+      "surface": [
+        "seelah.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "seelah.lastcall.list_returned"
+      ]
+    },
+    {
+      "surface": [
+        "konomi.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "konomi.lastcall.terms_accepted"
+      ]
+    },
+    {
+      "surface": [
+        "konomi.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "konomi.lastcall.counteroffer"
+      ]
+    },
+    {
+      "surface": [
+        "konomi.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "konomi.lastcall.terms_refused"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.account.devarra",
+        "call",
+        "text"
+      ],
+      "requires": [
+        "trickster",
+        "trickster.lastcall.open",
+        "devarra.lastcall.account_due"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.account.nocticula",
+        "call",
+        "text"
+      ],
+      "requires": [
+        "trickster",
+        "trickster.lastcall.open",
+        "nocticula.lastcall.account_due"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "lastcall.debt.baphomet",
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[14]"
+      ],
+      "requires": [
+        "lastcall.debt.whispering_way",
+        "lastcall.dead_on_record"
+      ],
+      "forbids": [
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[15]"
+      ],
+      "requires": [
+        "lastcall.debt.whispering_way",
+        "iomedae.trickster.buried_alive"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[16]"
+      ],
+      "requires": [
+        "lastcall.debt.whispering_way"
+      ],
+      "forbids": [
+        "lastcall.dead_on_record"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "owed.horzalah",
+        "line[2]"
+      ],
+      "requires": [
+        "horzalah.trickster.cost.ear",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "owed.horzalah",
+        "line[3]"
+      ],
+      "requires": [
+        "horzalah.trickster.cost.ear"
+      ],
+      "forbids": [
+        "horzalah.trickster.returned"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "debt.wintersun",
+        "line[2]"
+      ],
+      "requires": [
+        "soana.trickster.cost.blood_given"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "debt.wintersun",
+        "line[3]"
+      ],
+      "requires": [
+        "soana.trickster.cost.guardian_paid",
+        "soana.trickster.cost.knot_bearer"
+      ]
     }
   ],
   "derived": {
@@ -823,6 +1541,100 @@
       ],
       [
         "trickster.lastcall.kiana_guests_freed"
+      ]
+    ],
+    "lastcall.bottled_held": [
+      [
+        "lastcall.active",
+        "trickster.lastcall.pillar.bottle"
+      ]
+    ],
+    "lastcall.bridge_return": [
+      [
+        "lastcall.active",
+        "iomedae.trickster.buried_alive"
+      ]
+    ],
+    "lastcall.recovered_corked": [
+      [
+        "lastcall.h2"
+      ]
+    ],
+    "lastcall.public_return": [
+      [
+        "lastcall.active"
+      ]
+    ],
+    "chadali.lastcall.luck_due": [
+      [
+        "chadali.trickster.cost.luck_lent"
+      ],
+      [
+        "chadali.trickster.cost.luck_owed"
+      ]
+    ],
+    "seelah.lastcall.list_due": [
+      [
+        "seelah.trickster.cost.holds_her_death"
+      ],
+      [
+        "seelah.trickster.cost.keeps_it"
+      ]
+    ],
+    "konomi.lastcall.favour_due": [
+      [
+        "konomi.trickster.favour_owed"
+      ]
+    ],
+    "nocticula.lastcall.favour_due": [
+      [
+        "nocticula.trickster.cost.shade_paid",
+        "noct.defeated_not_dead"
+      ]
+    ],
+    "chadali.lastcall.account_paid": [
+      [
+        "chadali.fortunes.loan_returned"
+      ]
+    ],
+    "chadali.lastcall.account_due": [
+      [
+        "chadali.lastcall.callable",
+        "chadali.lastcall.luck_due"
+      ],
+      [
+        "chadali.lastcall.callable",
+        "chadali.trickster.cost.needle_owed"
+      ]
+    ],
+    "seelah.lastcall.account_due": [
+      [
+        "seelah.lastcall.callable",
+        "seelah.lastcall.list_due"
+      ]
+    ],
+    "konomi.lastcall.account_due": [
+      [
+        "konomi.lastcall.callable",
+        "konomi.lastcall.favour_due"
+      ]
+    ],
+    "horzalah.lastcall.account_due": [
+      [
+        "horzalah.lastcall.callable",
+        "horzalah.trickster.cost.ear",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned"
+      ]
+    ],
+    "devarra.lastcall.account_due": [
+      [
+        "devarra.trickster.cost.egg_withheld"
+      ]
+    ],
+    "nocticula.lastcall.account_due": [
+      [
+        "nocticula.lastcall.favour_due"
       ]
     ]
   },
@@ -857,6 +1669,78 @@
         "kiana.lastcall.resolved",
         "trickster.lastcall.kiana_pardon"
       ]
+    },
+    {
+      "scene": "konomi.lastcall.call",
+      "node": "terms",
+      "choice": 1,
+      "sets": [
+        "konomi.lastcall.called",
+        "konomi.lastcall.resolved",
+        "konomi.lastcall.counteroffer"
+      ]
+    },
+    {
+      "scene": "konomi.lastcall.call",
+      "node": "terms",
+      "choice": 2,
+      "sets": [
+        "konomi.lastcall.called",
+        "konomi.lastcall.resolved",
+        "konomi.lastcall.terms_refused"
+      ]
+    },
+    {
+      "scene": "konomi.lastcall.call",
+      "node": "accepted",
+      "choice": 0,
+      "sets": [
+        "konomi.lastcall.called",
+        "konomi.lastcall.resolved",
+        "konomi.lastcall.terms_accepted"
+      ]
+    },
+    {
+      "scene": "seelah.lastcall.call",
+      "node": "list",
+      "choice": 0,
+      "sets": [
+        "seelah.lastcall.called",
+        "seelah.lastcall.resolved",
+        "seelah.lastcall.list_returned",
+        "seelah.trickster.death_returned",
+        "seelah.trickster.list_settled"
+      ]
+    },
+    {
+      "scene": "chadali.lastcall.call",
+      "node": "luck",
+      "choice": 0,
+      "sets": [
+        "chadali.lastcall.called",
+        "chadali.lastcall.resolved",
+        "chadali.lastcall.luck_returned",
+        "chadali.fortunes.loan_returned"
+      ]
+    },
+    {
+      "scene": "trickster.lastcall.account.devarra",
+      "node": "call",
+      "choice": 0,
+      "sets": [
+        "devarra.lastcall.resolved",
+        "devarra.lastcall.left_unspoken"
+      ]
+    },
+    {
+      "scene": "trickster.lastcall.account.nocticula",
+      "node": "call",
+      "choice": 0,
+      "sets": [
+        "nocticula.lastcall.called",
+        "nocticula.lastcall.resolved",
+        "trickster.lastcall.creditors_called"
+      ]
     }
   ],
   "unique_producers": {
@@ -867,6 +1751,21 @@
       "kiana.lastcall.call/letter/1",
       "kiana.lastcall.call/letter/2",
       "kiana.lastcall.call/release/0"
+    ],
+    "konomi.lastcall.counteroffer": [
+      "konomi.lastcall.call/terms/1"
+    ],
+    "konomi.lastcall.terms_refused": [
+      "konomi.lastcall.call/terms/2"
+    ],
+    "konomi.lastcall.terms_accepted": [
+      "konomi.lastcall.call/accepted/0"
+    ],
+    "seelah.lastcall.list_returned": [
+      "seelah.lastcall.call/list/0"
+    ],
+    "chadali.lastcall.luck_returned": [
+      "chadali.lastcall.call/luck/0"
     ]
   },
   "retired_choices": [
@@ -938,5 +1837,158 @@
         "new": "893d5a8cd8633cbeec2fc3cb09cf80a0a0b788678d54268c4f62c7c53a2959ed"
       }
     ]
+  },
+  "derived_forbids": {
+    "lastcall.bottled_held": [
+      "iomedae.trickster.buried_alive"
+    ],
+    "lastcall.recovered_corked": [
+      "iomedae.trickster.buried_alive"
+    ],
+    "lastcall.public_return": [
+      "iomedae.trickster.buried_alive"
+    ],
+    "chadali.lastcall.luck_due": [
+      "chadali.fortunes.loan_returned",
+      "chadali.wagers.luck_lost"
+    ],
+    "seelah.lastcall.list_due": [
+      "seelah.trickster.death_returned",
+      "seelah.trickster.cost.robbed_back",
+      "seelah.trickster.list_settled",
+      "seelah.lastcall.list_returned"
+    ],
+    "konomi.lastcall.favour_due": [
+      "konomi.trickster.debt_paid",
+      "konomi.lastcall.terms_accepted"
+    ],
+    "chadali.lastcall.account_paid": [
+      "chadali.trickster.cost.needle_owed"
+    ],
+    "chadali.lastcall.account_due": [
+      "chadali.lastcall.resolved"
+    ],
+    "seelah.lastcall.account_due": [
+      "seelah.lastcall.resolved"
+    ],
+    "konomi.lastcall.account_due": [
+      "konomi.lastcall.resolved"
+    ],
+    "horzalah.lastcall.account_due": [
+      "horzalah.lastcall.resolved"
+    ],
+    "devarra.lastcall.account_due": [
+      "devarra.lastcall.resolved"
+    ],
+    "nocticula.lastcall.account_due": [
+      "nocticula.lastcall.resolved"
+    ]
+  },
+  "endings1": {
+    "authored": "Survival reports and debt dispositions extend existing paid devices; no new rescue, romance gate or cost.",
+    "causes": [
+      "1: flask custody, bridge secrecy and 16 cork-preserving recovery recollections",
+      "2: historical bargains, live obligations, decisions, accepted terms and enacted receipts"
+    ],
+    "readers": {
+      "lastcall.bottled_held": [
+        [
+          "lastcall.active",
+          "trickster.lastcall.pillar.bottle"
+        ]
+      ],
+      "lastcall.bridge_return": [
+        [
+          "lastcall.active",
+          "iomedae.trickster.buried_alive"
+        ]
+      ],
+      "lastcall.recovered_corked": [
+        [
+          "lastcall.h2"
+        ]
+      ],
+      "lastcall.public_return": [
+        [
+          "lastcall.active"
+        ]
+      ],
+      "kiana.lastcall.guests_recovered": [
+        [
+          "seelah.souls_returned"
+        ],
+        [
+          "kiana.trickster.guests_ransomed"
+        ],
+        [
+          "kiana.trickster.guests_bought_back"
+        ],
+        [
+          "trickster.lastcall.kiana_guests_freed"
+        ]
+      ],
+      "chadali.lastcall.luck_due": [
+        [
+          "chadali.trickster.cost.luck_lent"
+        ],
+        [
+          "chadali.trickster.cost.luck_owed"
+        ]
+      ],
+      "seelah.lastcall.list_due": [
+        [
+          "seelah.trickster.cost.holds_her_death"
+        ],
+        [
+          "seelah.trickster.cost.keeps_it"
+        ]
+      ],
+      "konomi.lastcall.favour_due": [
+        [
+          "konomi.trickster.favour_owed"
+        ]
+      ],
+      "nocticula.lastcall.favour_due": [
+        [
+          "nocticula.trickster.cost.shade_paid",
+          "noct.defeated_not_dead"
+        ]
+      ],
+      "chadali.lastcall.account_paid": [
+        [
+          "chadali.fortunes.loan_returned"
+        ]
+      ]
+    },
+    "acceptance": [
+      "H1",
+      "H2 without bridge",
+      "romantic bridge",
+      "rescue-only bridge",
+      "loan already returned",
+      "needle-only oath",
+      "forfeited coin",
+      "returned or stolen-back list",
+      "prepaid consultation",
+      "settled endorsement",
+      "accepted/counteroffered/refused political terms",
+      "delivered blood after all three body bargains",
+      "forged wine",
+      "murdered courier",
+      "refused/departed dragon bill",
+      "unfinished ear bargain",
+      "paid favour with refused romance",
+      "reclaimed Wintersun leash",
+      "unresolved creditors"
+    ],
+    "canon": [
+      "SoulJar/Cue_0014 4eb79e6208b8e4c438826ff9cb9bf51c: empty, unidentified soul repository; wound bottling is authored.",
+      "Council_Chadali/Cue_0033 86822037eac848943abe4be795037ae7: essence extraction hurts; nursing cannot pay the substitution oath.",
+      "Goddesses_Summit/Cue_0016 2e46d7fc0945a4e4d876b13bbad69ece: limits on direct divine intervention; mortal appearance is emotional recall.",
+      "Nenio/Cue_0215 cdbc3902b0a3ea742b44922dedeee61b: mortal cloak-bridge legend; banner crossing and Pharasma terms are authored.",
+      "YozzDying/Cue_0015 88e13a2fad6652e40aba28c64de187d3 and Horzalah_Ambush/Cue_0061 bfe4e3daffa08f74fbfca97063d78874: ruthless Guild ownership.",
+      "Epilogues/Cue_0570 fb1347793c15a9342af9eaf03060056d: Socothbenoth vanishes; no absent creditor collection."
+    ],
+    "legacy_contracts": "Historical callable keys, native availability and all live contact contracts retain their registered definitions. account_due readers refine obligations; shared documentary scenes handle refused/absent creditors."
   }
 }

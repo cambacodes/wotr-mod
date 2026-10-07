@@ -132,7 +132,7 @@ at_the_rift("trickster.lastcall.threshold", "Last orders",
     '''[Call last orders] "Before anyone does anything final: last orders. I've a tab to settle."''', [
     nar("flask", '''{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. The dark silt at the bottom, the pull you poured into it in Drezen, stirs toward the rift and cannot reach it through the cork.{/n}
 {n}Across the rift, Areelu sees it. She knows her own work.{/n}''',
-        c('[Uncork the flask] "See this? My death. Bottled in Drezen. You\'ll have to go through the bottle."',
+        c('[Show the corked flask] "See this? My death. Bottled in Drezen. You\'ll have to go through the bottle."',
           flags=(OPEN, PILLAR_BOTTLE), requires=(PRIMED,)),
         c('[Hold the flask to the wound] "Last time you drank from me, you tasted of moonshine. Drink up."',
           flags=(OPEN, PILLAR_BOTTLE, COST_LATE, JOKE["funeral"]), requires=(VESSEL,), forbids=(PRIMED,)),
@@ -186,19 +186,19 @@ block_a("trickster.lastcall.page.interrupted", "The Report, Interrupted",
     ))
 
 block_a("trickster.lastcall.page.heroic", "The Report, Interrupted",
-    '''The sacrifice was real. I have checked. The Commander of the Fifth Crusade stepped into the Wound, and the Wound closed on everything {mf|he|she} had carried into it: the power the Abyss and I had poured into {mf|him|her}, spent to the last spark to seal the rift. I recorded it, correctly, as the end. I record also what I measured, and do not pretend to understand. The wound in {mf|his|her} chest was mine; I cut it, and I built the Worldwound to finish what it began by pulling through it. By Threshold that wound had been drained, in Drezen, into a crystal vessel of my own making, and corked. When the Wound closed, it pulled on the old cut and found nothing on the other end. Three days later a sentry found the Commander at the edge of the scorched earth where the rift had been, breathing, with the flask still corked in one fist.''',
+    '''The sacrifice was real. The Commander stepped into the Worldwound, and the power the Abyss and I had poured into {mf|him|her} sealed it. I entered the result as a death. Then reports arrived of a living body. I checked them. The Commander had returned. The rift remained closed; the power spent in it had not returned with {mf|him|her}. These are observations. My explanation follows.''',
     (H2,), SACRIFICE_PAGE, (
-        p('''{mf|He|She} was carried back to Drezen and set down at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.''', requires=(BLESSED, "fool_king.available")),
-        p('''{mf|He|She} was carried back to Drezen and laid on the cathedral steps, where the priests had already begun the rites for {mf|him|her}. I am told several of them have not recovered.''', forbids=(BLESSED,)),
+        p('''{mf|He|She} was carried back to Drezen and set down at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.''', requires=(BLESSED, "fool_king.available", "lastcall.public_return")),
+        p('''{mf|He|She} was carried back to Drezen and laid on the cathedral steps, where the priests had already begun the rites for {mf|him|her}. I am told several of them have not recovered.''', requires=("lastcall.public_return",), forbids=(BLESSED,)),
         p('''{mf|His|Her} first words were "Sorry I'm late." I will not pretend I did not hear them.''', requires=(JOKE["late"],)),
-        p('''{mf|His|Her} first words were "Did I miss anything?" Yes. You missed your own funeral. I attended, for professional reasons.''', requires=(JOKE["missed"],)),
+        p('''{mf|His|Her} first words were "Did I miss anything?" Yes. Your death had already been announced. I had begun my conclusions.''', requires=(JOKE["missed"],)),
         p('''{mf|His|Her} first words were "Whose funeral?" I have no answer that would satisfy the question.''', requires=(JOKE["funeral"],)),
-        p('''What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length. The soul is the Lady of Graves' in the end, as every soul is; the Commander has simply arranged to keep her waiting, and to die, when {mf|he|she} does, of the death {mf|he|she} carries rather than the one the Wound intended.''', requires=(COST_MORTAL,)),
+        p('''What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length. The soul is the Lady of Graves' in the end, as every soul is; the Commander has simply arranged to keep her waiting, and to die, when {mf|he|she} does, of the death {mf|he|she} carries rather than the one the Wound intended.''', requires=(COST_MORTAL, "lastcall.bottled_held")),
     ))
 
 block_a("trickster.lastcall.page.bottle", "The Bottle",
     '''The Commander carried {mf|his|her} own death in a hip flask for the rest of {mf|his|her} life. It did not slosh. It did not grow lighter. On cold nights it was warm.''',
-    (ACTIVE, PILLAR_BOTTLE), TRICKSTER_PAGE, (
+    (ACTIVE, "lastcall.bottled_held"), TRICKSTER_PAGE, (
         p('''The King's round was paid in full, and the court drank to the flask for a week on the crusade's coin. The treasurers of Mendev entered it as "morale".''', requires=(COST_ROUND,)),
         p('''The King's blessing went on the Commander's tab. Thaberdine's tab has no end and no ledger, and he mentions it every time they meet.''', requires=(COST_TAB,)),
         p('''It had been filled alone, in a tent, with nobody to laugh. The Commander was short of breath for a week afterwards and would not say why.''', requires=(COST_ALONE,)),
@@ -213,22 +213,37 @@ def _collectors():
     paras = []
     for debt in partners.DEBTS:
         if debt.get("page_called"):
-            paras.append(p(debt["page_called"], requires=("lastcall.debt." + debt["key"],),
-                           forbids=tuple(debt.get("outlived", ())), any_groups=[debt["called_by"]]))
+            forbids = tuple(debt.get("outlived", ()))
+            if debt["key"] in ("baphomet", "whispering_way"):
+                forbids += (partners.BRIDGE,)
+            witness = (ON_RECORD,) if debt["key"] == "whispering_way" else ()
+            paras.append(p(debt["page_called"], requires=("lastcall.debt." + debt["key"],) + witness,
+                           forbids=forbids, any_groups=[debt["called_by"]]))
+            if debt["key"] == "baphomet":
+                # Retain the joint bridge paragraph's position for existing contracts.
+                paras.append(p("Baphomet's seal did not vanish at the bridge. The Commander returned in secret; no body reached Baphomet's cells. He kept the claim, and his debtor kept the empty flask out of Drezen's records.",
+                               requires=("lastcall.debt.baphomet", partners.BRIDGE), any_groups=[debt["called_by"]]))
         if debt.get("page_outlived"):
             paras.append(p(debt["page_outlived"], requires=("lastcall.debt." + debt["key"],), any_groups=[debt["outlived"]]))
+        if debt["key"] == "whispering_way":
+            paras.extend((
+                p("The Whispering Way demanded the body named in the death notice. The coffin was empty. Its collector left without the concealed stranger's name, and without withdrawing the bequest.",
+                  requires=("lastcall.debt.whispering_way", partners.BRIDGE), any_groups=[debt["called_by"]]),
+                p("No death had made the whispered bequest payable. The Way's collector examined the sealed flask and left the living Commander to wait. The bequest remained on file in Caliphas.",
+                  requires=("lastcall.debt.whispering_way", H1), forbids=(ON_RECORD, partners.BRIDGE), any_groups=[debt["called_by"]]),
+            ))
     return tuple(paras)
 
 
 block_a("trickster.lastcall.page.collectors", "The Collectors",
-    '''A debtor who cheats death has not cheated the creditors, and the Commander's were patient, numerous, and in several cases not strictly alive. They came in the first year after Threshold, one after another, and I recorded their visits with more satisfaction than is proper in a scholar.''',
+    '''I checked the Commander's creditors after Threshold. Some had died. Others held a paid account, an unanswered demand or terms that would run for years. The call at the rift had not made those accounts alike. I record what each could still claim.''',
     (ACTIVE, CREDITORS_CALLED), TRICKSTER_PAGE, _collectors())
 
 
 # --- Block C: the last word (the end of the RanRomAdd sequence) ------------------------------------------------------------
 
 LAST_WORD = scene("trickster.lastcall.page.last_word", "The Last Word", "Epilogue", 1, "", [
-    nar("page", '''That concludes my report on the experiment called the Commander. It did not end as designed. It did not end at all, which I am told is the point. I have spent a very long time building a death for {mf|him|her}, and I would like it noted, for the benefit of whoever reads this after me, that the death is still in excellent condition. It is simply in the wrong place. Somebody will open it one day. I intend to be there.''',
+    nar("page", '''That concludes my report on the Commander. The experiment did not end as designed. The subject is alive; the Worldwound has its own recorded outcome. I have retained my measurements and every disputed account. The Commander has asked whether I intend to keep writing. I have asked {mf|him|her} to stop providing material.''',
         paragraphs=(
             p('''I have been asked to rewrite this ending twice now. I am not doing it a third time.''', requires=("trickster.rewrote",)),
             p('''The Fool King reigned over the merry city of Drezen for many years, and hosted one festival after another. People said that anyone who raised a glass to His Majesty's health had luck. The Commander raised a great many glasses, and would tell you that proves it.''', requires=("fool_king.available",), forbids=("fool_king.page_seen",)),
@@ -260,6 +275,10 @@ def derived():
     out[H2] = h2
     out[ACTIVE] = h1 + h2
     out[ON_RECORD] = [g + ["sacrifice"] for g in h1] + h2
+    out["lastcall.bottled_held"] = [[ACTIVE, PILLAR_BOTTLE]]
+    out["lastcall.bridge_return"] = [[ACTIVE, partners.BRIDGE]]
+    out["lastcall.recovered_corked"] = [[H2]]
+    out["lastcall.public_return"] = [[ACTIVE]]
     out.update(partners.derived())
     return out
 
@@ -274,6 +293,8 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting Last Call derived key: " + key)
         payload["Derived"][key] = groups
+    for key, forbids in partners.derived_forbids().items():
+        payload.setdefault("DerivedForbids", {})[key] = list(forbids)
     # Engine-q2 item 3: each partner coda plays only while her route is open (a return reopens it).
     for key, (groups, routes) in partners.page_guards().items():
         if any(rel not in payload["Relationships"] for rel in routes) or key in payload["Derived"]:
@@ -286,7 +307,8 @@ def integrate(payload):
         if missing or key in payload["Derived"]:
             raise ValueError("Last Call call-in guard: unknown route or conflicting key: " + key)
         payload["Derived"][key] = groups
-        payload.setdefault("DerivedOpenRoutes", {})[key] = list(routes)
+        if routes:
+            payload.setdefault("DerivedOpenRoutes", {})[key] = list(routes)
         payload.setdefault("DerivedForbids", {})[key] = list(forbids)
     # trickster_world.integrate expands only its own composites, so bind the native readers these composites stand on.
     for leaf in sorted({k for groups in derived().values() for g in groups for k in g}):
@@ -355,13 +377,6 @@ def integrate(payload):
         "{n}The knife-marked stone she left in my coat is still in my pocket.{/n}",
         requires=(partners.WD_POCKET,)))
     # Last Call activity resolves the spoken calls, not an unaccepted pardon.
-    entries["debt.abadar"]["Lines"][-1]["Requires"] = [partners.called("arsinoe")]
-    abadar_journal = next(e for e in payload["Relationships"][REL]["JournalEntries"] if e["Id"] == "debt.abadar")
-    abadar_journal["SettledWhen"] = [[partners.called("arsinoe")]]
-    sunhammer = entries["debt.sunhammer"]
-    sunhammer["Lines"][-1]["Requires"] = [partners.KI_SETTLED]
-    journal = next(e for e in payload["Relationships"][REL]["JournalEntries"] if e["Id"] == "debt.sunhammer")
-    journal["SettledWhen"] = [[partners.KI_SETTLED], ["kiana.sunhammer_dead"]]
     for host in payload["Scenes"]:
         for node in host["Nodes"]:
             for para in node.get("Paragraphs", []):
@@ -374,3 +389,21 @@ def integrate(payload):
                     witness = partners.KI_RECOVERED if "pouch" in para["Text"] or "promise to fetch" in para["Text"] else partners.KI_SETTLED
                     para["Forbids"] = [witness if key == "kiana.lastcall.called" else key for key in para["Forbids"]]
 # end eng8-q8g
+
+
+# endings1: append mechanism accounts after all retained paragraph positions.
+_shared_pages = {s["Id"]: s for s in SCENES}
+_hero = _shared_pages["trickster.lastcall.page.heroic"]["Nodes"][0]
+_hero["Paragraphs"].extend([
+    p('{n}The wound had drained into my crystal before Threshold. When the rift closed, its pull found the old cut emptied. Three days later a sentry found the Commander breathing beside the scorched earth, with the flask still corked in one fist. The recovery required no opening of the vessel.{/n}', requires=("lastcall.recovered_corked",)),
+    p('{n}The Commander returned across Iomedae\'s banner. The flask was empty; Pharasma kept the death in her book. A burial party found a stranger among the scorched stones. The stranger left before being recognized. Drezen buried an empty coffin. There was no toast at the King\'s table and no living Commander laid before the cathedral.{/n}', requires=("lastcall.bridge_return",)),
+    p('{n}The royal blessing remained paid, but the King was gone when the Commander returned. The wounded were brought to Drezen; the flask stayed corked beside the cot. There was no royal table waiting.{/n}', requires=(BLESSED, "fool_king.gone", "lastcall.public_return")),
+])
+LAST_WORD["Nodes"][0]["Paragraphs"].extend([
+    p('{n}The death I built remains in my flask, still corked. The Commander carries it. The Commander refuses to let me open it. I record that refusal as an impediment to further study.{/n}', requires=("lastcall.bottled_held",)),
+    p('{n}My flask came back empty. Pharasma has the death; the stranger has a borrowed coat and a life kept out of the crusade\'s books. I measured the crystal twice. Neither measurement gave me the right to undo her judgment.{/n}', requires=("lastcall.bridge_return",)),
+])
+block_a("trickster.lastcall.page.empty_flask", "The Empty Flask",
+    'The Commander kept my crystal after the crossing. It weighed less. There was nothing left in it to collect: the Lady of Graves had the death, and the world kept its notice of it. The stranger carried the empty flask beneath a borrowed coat.',
+    (ACTIVE, "lastcall.bridge_return"), TRICKSTER_PAGE, ())
+# end endings1

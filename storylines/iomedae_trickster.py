@@ -744,7 +744,7 @@ page("bridge", "The Bridge", [
 {n}The cathedral's white banner comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}''',
         c("Continue", "her")),
     nar("her", '''{n}At the far end of it, where the fire stops, a woman in plain steel stands with one hand on the staff and her whole weight against it.{/n}
-{n}It is Iomedae. She has made herself look as she looked then, and with the part of you that can still think, you understand why: so that the bridge will be the kind of thing a mortal woman could make. A cloak. A banner. Her weight on one end of it.{/n}
+{n}It is Iomedae. She wears the face you remember from the banner: the tired woman at the gorge. You recognize her before she takes your hand. The crossing rests on the terms she will answer for before Pharasma; that familiar face gives you something to hold on to.{/n}
 "I told you I would decide here," {n}she says.{/n} "I have decided. Walk."''',
         c("[Walk.]", "walk"),
         c('"You came."', "came"),
@@ -1036,9 +1036,9 @@ page("after", "Here and There", [
               requires=(HERALD_HEAVEN,)),
             p('''{n}Some nights she came and said nothing at all, and the stranger learned that those were the nights she was thinking of her herald.{/n}''',
               requires=(HERALD_FELL,), forbids=(HERALD_SAVED,)),
-            p('''{n}The flask never sloshed. Once she laid her hand over the pocket, as she had over the banner staff at the edge. In the bridge world the flask was empty; Pharasma kept the death.{/n}''',
-              requires=(ACTIVE, CARRIED)),
-            p('''{n}Once she set her palm against the pocket that held the flask. No banner had reached the Wound, and the bottle still held its death. She withdrew her hand without asking to take it.{/n}''', requires=(ACTIVE,), forbids=(CARRIED,)),
+            p('''{n}The flask never sloshed. Once she laid her hand over the pocket, as she had over the banner staff at the edge. After the crossing the flask was empty; Pharasma kept the death.{/n}''',
+              requires=(BURIED_ALIVE,)),
+            p('''{n}Once she set her palm against the pocket that held the flask. No banner had reached the Wound, and the bottle still held its death. She withdrew her hand without asking to take it.{/n}''', requires=("lastcall.bottled_held",), forbids=(BURIED_ALIVE,)),
             p('''{n}The stranger walked the roads of Mendev for the pleasure of it, as promised, and she said that of all the terms of the disputation it was the only one she had not expected to enjoy enforcing.{/n}''',
               requires=(AFTER_ROAD, KEPT)),
             p('''{n}The stranger kept a lamp on the Drezen road, two days south of the city, and watched over it without being thanked, as promised. The carters say the lamp-keeper has a visitor sometimes, a knight of some small order, and that on those nights the lamp burns until morning.{/n}''',
@@ -1167,33 +1167,7 @@ def integrate(payload):
     payload.setdefault("PortraitFallbacks", {}).setdefault("Iomedae", PORTRAIT_GUID)
 
 
-# Ledger row 6, decision 3: when the Appointment was kept the flask is empty (the death is in Pharasma's book). Runs after
-# lastcall.integrate. Each flask-holds-death paragraph yields to an Appointment variant placed right after it; the bottle page
-# yields to the Iomedae coda's own bottle paragraph.
-EMPTY_FLASK = [
-    ("elyanka.trickster.epilogue.claim", "corked in a flask",
-     "{n}Hers was a claim on a corpse that would never fall due: the flask in the Commander's pocket came out of the Wound empty, and the death was in the Lady of Graves' book. \"Pharasma was faster,\" she said, and kept her claim anyway. Two claims, and not a copper paid. She said it was the most honest marriage she had ever seen.{/n}"),
-    ("elyanka.trickster.epilogue.debt", "death was in a flask",
-     "{n}The terms were never repeated aloud. They did not need to be. The flask in the Commander's pocket was empty; the death was in the Lady of Graves' book, where no claim reaches. \"Pharasma was faster,\" she said, and inspected the collateral every spring anyway, out of professional spite.{/n}"),
-    ("elyanka.lastcall.page", "with a death corked in a flask",
-     "{n}The Commander stepped into the Wound, and gave everything, and came back out of it anyway, across a banner, with an empty flask in one pocket. The claim had not fallen due. It never would. She held out her hand for the flask, and was shown it, and weighed it with two cold fingers, and gave it back.{/n} \"Empty,\" {n}she said.{/n} \"Pharasma was faster.\" {n}She did not laugh. She said afterwards that it was the first time she had ever been outbid by a goddess, and that she intended it to be the last.{/n}"),
-    ("trickster.lastcall.page.collectors", "on its feet with its death corked in a flask",
-     "{n}Baphomet sent no one. The Lord of the Minotaurs does not send; he waits for his seal to bring him what it marks. It brought him nothing. A seal needs a body to own, and the one he had been promised was in an empty grave in Drezen, and its death was written in the Lady of Graves' book, where no seal reaches. It is said that the Prince of Beasts does not forgive a debtor who cheats him on a point of his own wording. It is also said that he has begun to reread his contracts.{/n}"),
-    ("trickster.lastcall.page.collectors", "the debtor's death was in a flask",
-     "{n}The Whispering Way's collector came after Threshold as a man in grey who spoke in the voice of the envoy who had bought the claim. He presented it in a whisper, word for word as it had been sold, and was told that the debtor's death was not in the debtor's keeping at all, but in the Lady of Graves' book, and that the terms had said nothing about goddesses. He agreed, in her voice, that they had not, and went away to repeat the answer to her. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one.{/n}"),
-]
-
-
+# endings1: shared flask consumers are partitioned at their sources. Both
+# Appointment and rescue-only crossings use BURIED_ALIVE; no paragraph insertion.
 def integrate_joint(payload):
-    by_id = {s_["Id"]: s_ for s_ in payload["Scenes"]}
-    for sid, needle, text in EMPTY_FLASK:
-        scene_ = by_id[sid]
-        hits = [(node, i_) for node in scene_["Nodes"] for i_, para in enumerate(node.get("Paragraphs") or []) if needle in para["Text"]]
-        if len(hits) != 1:
-            raise ValueError("Iomedae joint ending: expected one paragraph in %s with %r" % (sid, needle))
-        node, i_ = hits[0]
-        para = node["Paragraphs"][i_]
-        para["Forbids"] = [*para["Forbids"], KEPT]
-        node["Paragraphs"].insert(i_ + 1, dict(Text=text, Requires=[*para["Requires"], KEPT],
-                                               Forbids=[f for f in para["Forbids"] if f != KEPT], AnyGroups=[list(g) for g in para.get("AnyGroups") or []]))
-    by_id["trickster.lastcall.page.bottle"]["Forbids"].append(KEPT)
+    pass
