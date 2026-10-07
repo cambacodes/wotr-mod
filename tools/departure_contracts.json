@@ -13087,6 +13087,26 @@
         {
           "scene": "mielarah.trickster.charter.arrival.arcade",
           "letter": false
+        },
+        {
+          "scene": "mielarah.trickster.charter.acceptance",
+          "letter": true
+        },
+        {
+          "scene": "mielarah.deck.wounded.return",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.deck.wounded.return_alone",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.deck.wounded.return.arcade",
+          "letter": false
+        },
+        {
+          "scene": "mielarah.deck.wounded.return_alone.arcade",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -13141,6 +13161,14 @@
         {
           "scene": "mielarah.trickster.raid.ashore_drezen",
           "reason": "Earned physical recovery arrival; sibling of raid.ashore, before its return receipt is recorded."
+        },
+        {
+          "scene": "mielarah.trickster.raid.search_failed",
+          "reason": "r3: failed search after the storm; she is lost (closes the route), no presence implied"
+        },
+        {
+          "scene": "mielarah.trickster.raid.search_failed_drezen",
+          "reason": "r3: failed search after the storm; she is lost (closes the route), no presence implied"
         }
       ],
       "presences": [
