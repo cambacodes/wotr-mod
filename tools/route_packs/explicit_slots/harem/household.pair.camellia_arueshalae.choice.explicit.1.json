@@ -1,0 +1,15 @@
+{
+  "slot_id": "household.pair.camellia_arueshalae.choice.explicit.1",
+  "voice": "Camellia: refined cover, precise threats, murderous appetite, fascinated by danger. Fallen Arueshalae: hungry, mocking, interested in the mask's owner; no Desnan remorse or redemption.",
+  "scene": "Authored Chapter 5 workbench interval. Both women have chosen each other, Camellia has received the freshly consumed Death Ward, the Commander has left. An answered kiss precedes naming desire. No poison, feeding, injury, incapacitation or coercion. The march against the Worldwound is waiting. Separate before the seven-minute interval ends; sleep separately. Tomorrow they dispute who invited whom.",
+  "speakers": {"C": "Camellia", "A": "Arueshalae"},
+  "commander": "absent",
+  "last_line": "C: You will not tell them I asked.",
+  "default_text": "{n}The lamp at the workbench burns down while they remain together.{/n}\n\"You will not tell them I asked.\"",
+  "insertion": {
+    "scene_id": "household.pair.camellia_arueshalae.choice",
+    "after_node": "cut",
+    "retained_successor": "kept_warded",
+    "state_changes": "None. Keep the slot's Continue and all successor writes identical."
+  }
+}
