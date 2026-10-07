@@ -153,6 +153,11 @@ internal static class LastCallTests
             var own = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", Bottle }.Concat(bodyReturns).ToArray());
             // Availability is no substitute for the coda's actual earned partner.
             foreach (var prerequisite in Program.Prerequisites(coda)) HouseholdTests.Earn(story, own, prerequisite);
+            // The merged Corven negotiation requires a current answer and
+            // renewed welcome; the historical commitment alone is insufficient.
+            if (coda.Id == "soana.lastcall.page")
+                own.Flags.UnionWith(new[] { "soana.partner.corven_together", "soana.partner.corven_known_alive",
+                    "soana.partner_stance.share", "soana.trickster.accounting_invited" });
             own = Done(story, own);
             check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id
                 + "; missing=" + string.Join(",", coda.Requires.Where(k => !own.Has(k)))
@@ -189,16 +194,37 @@ internal static class LastCallTests
         foreach (var s in framework)
         {
             var reads = s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g))
-                .Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)))
-                .Concat(s.Nodes.SelectMany(n => n.Paragraphs).SelectMany(p => p.Requires.Concat(p.Forbids).Concat(p.AnyGroups.SelectMany(g => g))));
-            // Exception (coordinator ruling 2026-10-02, Aranka polish item 3): her coda forbids her own closed route explicitly.
-            // Engine-q2 item 3: a call-in reads her route's closure only through its own <rel>.lastcall.callable guard
-            // (Derived + DerivedOpenRoutes [her route] = Rules.RouteOpen), never a closed, death or return flag directly.
-            check(!reads.Any(k => closers.Contains(k) && k != "trickster.lastcall.closed"
-                                  && !(s.Id == "aranka.lastcall.page" && k == "aranka.extension_closed")), "G5: Last Call reads another route's closed flag: " + s.Id);
-            check(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("trickster.lastcall.", StringComparison.Ordinal) || f.EndsWith(".lastcall.called", StringComparison.Ordinal)
-                                                                                     || f.EndsWith(".lastcall.resolved", StringComparison.Ordinal)),
-                "Last Call writes a flag outside its own namespace: " + s.Id);
+                .Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)));
+            var ownRoute = s.Requires.Where(story.DerivedOpenRoutes.ContainsKey)
+                .SelectMany(k => story.DerivedOpenRoutes[k]).ToHashSet();
+            bool OwnClosure(string key) => key == "trickster.lastcall.closed"
+                || story.Relationships.Any(r => ownRoute.Contains(r.Key) && r.Value.ClosedFlag == key)
+                // The acquired account and the primary romance belong to the same woman.
+                || s.Id == "nocticula.acquisition.lastcall.page" && key == "noct.closed";
+            check(!reads.Any(k => closers.Contains(k) && !OwnClosure(k)),
+                "G5: Last Call reads another route's closed flag: " + s.Id);
+            // Merged household callbacks may mention another woman. Her own
+            // current-presence guard must accompany the closure exclusion.
+            foreach (var paragraph in s.Nodes.SelectMany(n => n.Paragraphs))
+                foreach (string key in paragraph.Requires.Concat(paragraph.Forbids)
+                    .Concat(paragraph.AnyGroups.SelectMany(g => g)).Where(closers.Contains))
+                    check(OwnClosure(key) || story.Relationships.Any(r => r.Value.ClosedFlag == key
+                        && (paragraph.Requires.Contains(r.Key + ".present_now")
+                            || paragraph.Requires.Contains("crossroute." + r.Key + ".available"))),
+                        "G5: Last Call cameo lacks its own current presence: " + s.Id + ": " + key);
+            // Job 1 enacted settlements have specific receipts. Their exact
+            // producers and refusal negatives are checked by the history suite.
+            check(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f =>
+                f.StartsWith("trickster.lastcall.", StringComparison.Ordinal)
+                || f.EndsWith(".lastcall.called", StringComparison.Ordinal)
+                || f.EndsWith(".lastcall.resolved", StringComparison.Ordinal)
+                || s.Id == "konomi.lastcall.call" && new[] { "konomi.lastcall.counteroffer", "konomi.lastcall.terms_accepted", "konomi.lastcall.terms_refused" }.Contains(f)
+                || s.Id == "seelah.lastcall.call" && f == "seelah.lastcall.list_returned"
+                || s.Id == "chadali.lastcall.call" && f == "chadali.lastcall.luck_returned"
+                || (s.Id == "devarra.lastcall.call" || s.Id == "trickster.lastcall.account.devarra") && f == "devarra.lastcall.left_unspoken"
+                || s.Id == "seelah.lastcall.call" && (f == "seelah.trickster.death_returned" || f == "seelah.trickster.list_settled")
+                || s.Id == "chadali.lastcall.call" && f == "chadali.fortunes.loan_returned"),
+                "Last Call writes an unreviewed settlement receipt: " + s.Id);
             if (s.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
                 check(s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null && c.Alignment == null),
                     "An epilogue page carries an effect: " + s.Id);
@@ -248,7 +274,10 @@ internal static class LastCallTests
         foreach (var s in framework.Where(s => !s.Id.StartsWith("trickster.", StringComparison.Ordinal)))
         {
             var guards = s.Requires.Where(k => k.EndsWith(".lastcall.route_open", StringComparison.Ordinal) || k.EndsWith(".lastcall.callable", StringComparison.Ordinal)).ToArray();
-            check(guards.Length == 1 && story.DerivedOpenRoutes.TryGetValue(guards[0], out var guardRoutes) && guardRoutes.Length == 1
+            check(guards.Length == 1 && story.DerivedOpenRoutes.TryGetValue(guards[0], out var guardRoutes)
+                  && (guardRoutes.Length == 1
+                      || s.Id == "nocticula.acquisition.lastcall.page"
+                          && guardRoutes.SequenceEqual(new[] { "nocticula.acquisition", "nocticula" }))
                   && story.Relationships.ContainsKey(guardRoutes[0]) && guards[0].StartsWith(guardRoutes[0] + ".lastcall.", StringComparison.Ordinal),
                 "Engine-q2: a Last Call scene naming a partner is not gated on her open route: " + s.Id);
         }

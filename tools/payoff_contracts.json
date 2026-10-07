@@ -40478,6 +40478,573 @@
         ]
       ],
       "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "jerribeth.marhevok_in_sanctum"
+      ],
+      "forbids": [
+        "jerribeth.marhevok_dead",
+        "gesmerha.marhevok_rules",
+        "jerribeth.trickster.returned",
+        "jerribeth.partner.exclusive_chosen"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          16
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.marhevok_in_sanctum",
+        "jerribeth.partner.exclusive_chosen"
+      ],
+      "forbids": [
+        "jerribeth.marhevok_dead",
+        "gesmerha.marhevok_rules",
+        "jerribeth.trickster.returned"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          19
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.share"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          20
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.exclusive",
+        "jerribeth.partner_exclusive_refused"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          21
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.exclusive",
+        "jerribeth.partner.exclusive_chosen"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          22
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret"
+      ],
+      "forbids": [
+        "jerribeth.partner_secret_exposed"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          9
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          9
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_secret_exposed",
+        "jerribeth.partner_exposure.plant"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          10
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          10
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_secret_exposed",
+        "jerribeth.partner_exposure.chief"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          11
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          11
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [],
+      "forbids": [
+        "jerribeth.partner_stance.share",
+        "jerribeth.partner_stance.exclusive",
+        "jerribeth.partner_stance.secret"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          12
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          12
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_exposure.plant"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          23
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          23
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_exposure.chief"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          24
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
     }
   ],
   "stance_evidence": "resolve-eng3: frozen integrated stance/partner paragraph guards, including existing acceptance receipts, refusal and exposure histories. No new prices, commitment states or reconciliation."

@@ -200,6 +200,12 @@ def install_terms(scene, entry_nodes, late=False):
                 paragraph["Text"] = paragraph["Text"].replace(
                     "He sat down at the Commander's table without being asked, and her voice came out of him, high and pleased.",
                     "The host sat down at the Commander's table without being asked. Jerribeth's voice came from the stolen mouth, high and pleased.")
+            if late and node['Id'] == 'offer':
+                continuation['Text'] = '{n}Jerribeth brings the contract back into view. Her claw waits beside the place for a signature.{/n} "Those are our terms. Now, your hand?"'
+                # Arrival was already shown before the partner negotiation.
+                # Keep the old paragraph positions for indexed consumers.
+                for block in continuation.get('Paragraphs', []):
+                    block.setdefault('Forbids', []).append('trickster.ever')
             continuations.append(continuation)
             for choice in eligible:
                 twin = copy.deepcopy(choice)

@@ -550,7 +550,7 @@ TRICKSTER_PARAGRAPHS = (
     p("{n}Lady Konomi reached Nerosyan eventually. She never explained the delay, and she billed the crown for three days of "
       "travel that had taken her nowhere.{/n}", requires=(RECESSED,), forbids=(OUTFOXED,)),
     p("{n}In Nerosyan they said the new envoy to Drezen had been appointed by the Commander, at her own suggestion, on terms "
-      "nobody else was shown.{/n}", requires=(RECESSED, OUTFOXED)),
+      "nobody else was shown.{/n}", requires=(RECESSED, OUTFOXED, ENVOY)),
     p("{n}She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.{/n}",
       requires=(FAVOUR,)),
     p("{n}Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's request. Lady Konomi had "
@@ -558,9 +558,8 @@ TRICKSTER_PARAGRAPHS = (
       "told plainly that she had died at her post and come back on her own fee. None of them ever again quite trusted a "
       "Commander who could afford it.{/n}",
       requires=(RETURNED, RECALLED)),
-    p("{n}In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', entered from "
-      "a dovecote's report two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the "
-      "query every spring, and sends it back.{/n}", requires=(RETURNED, ACCREDITED)),
+    p("{n}The Royal Council's register keeps the original entry from the dovecote beside Lady Konomi's signed correction. "
+      "Auditors query the two dates every spring. She sends them a copy of the witnessed arrival, and charges for the post.{/n}", requires=(RETURNED, ACCREDITED)),
 )
 
 SCENES.append(scene("konomi.trickster.epilogue.commit", "Accepted in advance", "Epilogue", 5, "", [
