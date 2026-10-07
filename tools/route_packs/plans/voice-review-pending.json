@@ -1,0 +1,17 @@
+[
+  {
+    "scene": "seelah.trickster.epilogue.refused",
+    "route": "seelah",
+    "finding": "D09-D10: Seelah refused; her existing terms still govern a renewed request."
+  },
+  {
+    "scene": "seelah.trickster.dead.list_reclaimed",
+    "route": "seelah",
+    "finding": "D11: first invitation for a fresh retained-body return; existing courtship retains its callback."
+  },
+  {
+    "scene": "seelah.trickster.after.list_reclaimed",
+    "route": "seelah",
+    "finding": "D12: same first/repeat invitation distinction for the courier return."
+  }
+]
