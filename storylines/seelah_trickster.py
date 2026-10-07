@@ -319,7 +319,7 @@ SCENES.append(scene("seelah.trickster.dismissed.setup", "Check your pockets", "S
    NativeReturnCue=FINAL_DECISION, EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="dismissed"))
 
 letter("seelah.trickster.dismissed.late", "A transfer on the clerk's desk", [   # Areas: the gate clerk is in Drezen (Sol PP1)
-    nar("start", '''{n}Two days on, her transfer is still on the gate clerk's desk, waiting for a courier to the Eagle Watch. The clerk is eating his lunch over it. There is a thumbprint of grease on the seal.{/n}''',
+    nar("start", '''{n}You find her transfer among the undelivered dispatches on the gate clerk's desk. No company has signed for her. The clerk pulls it from a stack of old post and lays it beside the letters for the next courier to the Eagle Watch. He is eating his lunch over them. There is a thumbprint of grease on the seal.{/n}''',
       c('[Lift the papers the way she taught you] "Excuse me. So sorry."', requires=(LESSON,), mythic="Trickster",
         check=dict(Skill="SkillThievery", DC=15, Success="lifted", Failure="caught", CommanderOnly=True)),
       c('[Lift the papers off the clerk\'s desk] "Excuse me."', forbids=(LESSON,), mythic="Trickster",

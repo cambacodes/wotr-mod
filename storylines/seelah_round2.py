@@ -89,7 +89,7 @@ def prepare(scenes, presences, derived):
         'Mud has dried on her boots all the way to the knees.{/n} '
         '{n}"Four days in the saddle. The chaplain put this in my hand himself."{/n}')
     node(by[PREFIX + "dead.effects_arrival"], "start")["Text"] = (
-        '{n}Two days after the chaplain\'s reply, the courier points across the yard. '
+        '{n}When you next find the courier, she points across the yard. '
         'Seelah stands beside the crusade notices, leaning on her sword. She lifts '
         'one hand when she sees you, palm open.{/n}\n'
         '{n}"She walked the last stretch," the courier says. "Wouldn\'t ride behind me."{/n}\n'
@@ -170,17 +170,17 @@ def prepare(scenes, presences, derived):
               'but I don\'t owe you a yes. You\'re getting one because I want '
               'another night with you." {n}She gets up, grinning.{/n} '
               '"First, let\'s see what you\'ve got in that coat."',
-              c('[Hear her offer.]', "price", flags=(PREFIX + "refusal_answered",)), portrait="Seelah"),
+              c('[Hear her offer.]', "offer", flags=(PREFIX + "refusal_answered",)), portrait="Seelah"),
             n("free_return", "Seelah", '{n}She drops her travel-stained gloves on the table.{/n}\n'
               '"I took my papers north, signed for the posting myself, and came back on leave. '
               'You didn\'t send for me. I wanted to see you. Now you can stop looking so damned relieved."',
-              c('[Ask her again.]', "price", flags=(PREFIX + "refusal_answered",)), portrait="Seelah"),
+              c('[Ask her again.]', "offer", flags=(PREFIX + "refusal_answered",)), portrait="Seelah"),
             n("list_return", "Seelah", '{n}She takes her list, reads it, and puts it inside her tunic.{/n}\n'
               '"Mine. At last. Don\'t make me ask twice for it again. Now, what was it you wanted to say?"',
-              c('[Ask her again.]', "price", flags=(GIVEN, SETTLED, PREFIX + "refusal_answered")), portrait="Seelah"),
+              c('[Ask her again.]', "offer", flags=(GIVEN, SETTLED, PREFIX + "refusal_answered")), portrait="Seelah"),
             n("list_acknowledged", "Seelah", '{n}She pats the folded list against her ribs.{/n}\n'
               '"Here. Where it belongs. You can ask about us without keeping this between us."',
-              c('[Ask her again.]', "price", flags=(SETTLED, PREFIX + "refusal_answered")), portrait="Seelah"),
+              c('[Ask her again.]', "offer", flags=(SETTLED, PREFIX + "refusal_answered")), portrait="Seelah"),
         ])
         # Successful pocket game is offered after settlement, in her own terms.
         node(s, "robbed")["Text"] = (
@@ -191,7 +191,7 @@ def prepare(scenes, presences, derived):
         add_flag(node(s, "price")["Choices"][0], SETTLED)
         threshold = node(s, "threshold")["Text"]
         add_cut(s, "threshold", threshold,
-            '{n}She takes the belt herself, tosses it aside, and draws you down '
+            '{n}She tosses the belt from her hand and draws you down '
             'into a kiss that leaves no room for another speech.{/n}\n'
             + ('{n}In the pale light from the window, Seelah begins lacing her boots.{/n}' if suffix == "second_ask" else
                '{n}By dawn, Seelah has found your shirt and is looking for her boots.{/n}'),
@@ -201,27 +201,57 @@ def prepare(scenes, presences, derived):
             '{n}'
             'A soldier calls her to muster. She answers with a curse, a laugh, '
             'and a promise to be down in a moment.{/n}')
+        # Receipt -> her offer -> embrace. Keep the saved price page and all
+        # its choices, but do not send a newly answered refusal back to it.
+        offer = n("offer", "Seelah",
+            '{n}She comes close and taps your coat.{/n}\n'
+            '"Hands at your sides. I take your purse, you try to look surprised, '
+            'and every coin goes back. Then upstairs, if you still want me."',
+            portrait="Seelah")
+        offer["Choices"] = copy.deepcopy(old_choices[:2])
+        s["Nodes"].append(offer)
     # Conditional prose stays on epilogue pages; ordinary encounters branch.
     pick = by[PREFIX + "epilogue.pickpocket"]
+    # The pickpocket page has two openers before the legacy paragraph tuple;
+    # the papers page slices that tuple. Detach both and target by history.
+    for ending in (pick, by[PREFIX + "epilogue.papers"]):
+        node(ending, "end")["Paragraphs"] = copy.deepcopy(node(ending, "end")["Paragraphs"])
     blocks = node(pick, "end")["Paragraphs"]
-    blocks[1].update(Text='{n}Before accepting another invitation, Seelah recovered '
+    given = next(b for b in blocks if GIVEN in b["Requires"])
+    given["Text"] = given["Text"].replace('tied in badly on purpose', 'tied securely')
+    unresolved = next(b for b in blocks if KEEPS in b["Requires"])
+    unresolved.update(Text='{n}Seelah recovered '
         'her list. The Commander felt the folded paper leave their coat and found '
         'her watching them, hand closed around it. "Warned you," she said. She '
         'kept her account of the Kenabres stones herself.{/n}',
+        Requires=[HOLDS],
         Forbids=[GIVEN, ROBBED, SETTLED, "seelah.lastcall.list_returned"])
-    blocks[6]["Text"] = ('{n}Once her own list was safe, Seelah sometimes lifted the '
-        'Commander\'s purse on a visit and made them win it back. She returned '
-        'every coin before leaving for her posting; the game belonged to them both.{/n}')
-    blocks[8]["Requires"].append(PRICE_NO)
+    reclaimed = next(b for b in blocks if ROBBED in b["Requires"])
+    reclaimed.update(Text='{n}Her list stayed against her ribs after she took it '
+        'back. The Commander knew where it was. Seelah no longer had to ask.{/n}',
+        Forbids=[GIVEN, "seelah.lastcall.list_returned"])
+    next(b for b in blocks if "seelah.closed" in b["Requires"])["Requires"].append(PRICE_NO)
     blocks.append(p('{n}The Commander ended their courtship. Seelah left for her '
         'posting with her papers and her own plans. When they met again on crusade '
         'business, she spoke plainly and kept their private evenings to herself.{/n}',
-        requires=("seelah.closed",), forbids=(PRICE_NO,)))
+        requires=("seelah.closed", PREFIX + "stay_decided"), forbids=(PRICE_NO,)))
+    blocks.append(p('{n}The Commander ended their courtship. Seelah kept her '
+        'place among the companions, but no longer sought out their room after '
+        'the watch. In battle she still guarded their flank.{/n}',
+        requires=("seelah.closed",), forbids=(PRICE_NO, PREFIX + "stay_decided")))
     # The papers ending has its own copies of the sliced legacy paragraphs.
     paper_blocks = node(by[PREFIX + "epilogue.papers"], "end")["Paragraphs"]
     if PRICE_NO not in paper_blocks[5]["Requires"]:
         paper_blocks[5]["Requires"].append(PRICE_NO)
-    paper_blocks.append(copy.deepcopy(blocks[-1]))
+    paper_blocks.extend(copy.deepcopy(blocks[-2:]))
+    paper_reclaimed = next(b for b in paper_blocks if ROBBED in b["Requires"])
+    paper_reclaimed.update(Text='{n}When she came back to hear the Commander ask '
+        'again, Seelah lifted their purse and returned every coin. They went '
+        'upstairs together. She took her papers with her when she left.{/n}')
+    game = p('{n}Once her own list was safe, Seelah sometimes lifted the '
+        'Commander\'s purse on a visit and made them win it back. She returned '
+        'every coin; the game belonged to them both.{/n}', requires=(GAME,))
+    blocks.append(game)
     refused = by[PREFIX + "epilogue.refused"]
     node(refused, "end")["Text"] = (
         '{n}Seelah kept the posting she had chosen. The Commander\'s refusal did '
@@ -240,11 +270,12 @@ def prepare(scenes, presences, derived):
     custody_gate(late)
     text = node(late, "end")["Text"]
     split = text.index('{n}By morning')
-    node(late, "end")["Text"] = text[:split]
+    node(late, "end")["Text"] = text[:split].replace(
+        'In the room above, she kicked off her boots',
+        'In the room above, she closed the door with her heel, kicked off her boots')
     # Explicit brief: postwar leave; this paragraph has its reserved identifier.
-    block = p('{n}She draws the Commander against her and closes the door with '
-        'her heel. By morning, Seelah was searching beneath the Commander\'s coat '
-        'for her missing boot.{/n}')
+    block = p('{n}She drew the Commander closer, her laughter giving way to '
+        'another hungry kiss.{/n}')
     block["Id"] = late["Id"] + ".explicit.1"
     node(late, "end")["Paragraphs"] = [block, p(text[split:])]
     # A custody disagreement cannot disappear inside an alley kiss.
@@ -310,14 +341,16 @@ def new_scenes(by):
           'the damned coin I paid."\n{n}She folds the receipt into her list.{/n}\n'
           '"First one. There will be plenty more. Now ask about me, Commander. '
           'You\'re allowed to want me while I still owe them."',
-          c('"I want another evening with you. As lovers."', "yes", flags=(COIN_PAID,)),
+          c('"I still want another evening with you. As lovers."', "yes", flags=(COIN_PAID,)),
           c('"I came to see you. We can leave the question for now."', "later", flags=(COIN_PAID,)),
           c('"I cannot promise you that. Let us be friends."', "friend", flags=(COIN_PAID, PREFIX + "friends")),
           portrait="Seelah"),
-        n("yes", "Seelah", '"Yes. That\'s my answer. Not Haldis\'s, not the '
-          'reliquary\'s." {n}She pushes back her chair and takes your hand.{/n}\n'
-          '"Come on. I have leave until morning, and I\'ve spent enough of it '
-          'making speeches."', c('[Ask her again, with the receipt between you.]'), portrait="Seelah"),
+        n("yes", "Seelah", '{n}She takes your hand across the table.{/n}\n'
+          '"Good. I wanted you to see that coin first. When you ask me again, '
+          'we can talk about us instead of Haldis\'s bowl."\n'
+          '{n}She lifts her tankard, grinning.{/n} "Finish your drink. '
+          'I\'m still thinking what to take out of that coat."',
+          c('[Finish the drink before asking her on her terms.]'), portrait="Seelah"),
         n("later", "Seelah", '"Then drink with me. I have a story about the '
           'sergeant\'s horse. No stolen saints in it. A very stupid sergeant, though."',
           c('[Share the evening.]', abort=True), portrait="Seelah"),
@@ -381,7 +414,7 @@ def early_situations():
           '"Gods. My mouth tastes like the street. Did I promise her dawn? '
           'Yes. I did. Stop looking at me like that, Jannah, I remember." '
           '{n}She gets to her feet herself, wincing.{/n}',
-          c('"I can tell her the Commander kept you busy."', "cover"),
+          c('"I can tell her I kept you busy."', "cover"),
           c('"We will move it together. You can explain while we work."', "help"),
           c('"You promised. Go and face her."', "alone"), portrait="Seelah"),
         n("cover", "Seelah", '"No. Don\'t get yourself into it." '
@@ -463,11 +496,14 @@ def ordinary_situations(by):
             c('[End the romance.]', flags=("seelah.closed", "seelah.parted")), portrait="Seelah"))
     # The repaired appointment ends in appetite, not another pastry performance.
     for id in ("seelah.promise", "seelah.kept"):
+        # Their source EVENING list shares objects. Detach both situations before
+        # changing any page, so kept's uninterrupted supper cannot overwrite promise.
+        by[id]["Nodes"] = copy.deepcopy(by[id]["Nodes"])
         node(by[id], "supper")["Text"] = (
             '{n}Seelah spreads the blanket and drops the food between you. '
             'Her clean shirt is creased where her armor pressed it. '
             'Beyond the camp, the watch is changing.{/n}\n'
-            '"There. They have help, we have supper, and I finally have you '
+            '"There. The recruit has had help, we have supper, and I finally have you '
             'to myself." {n}She catches your hand before you reach for the '
             'bread. Her thumb passes over your knuckles.{/n}\n'
             '"I\'ve been wanting to kiss you all damned day. Supper can wait a moment."'
@@ -477,6 +513,7 @@ def ordinary_situations(by):
             'catches your hand before you can reach for the food.{/n}\n'
             '"Kept it. The whole evening. Now come here before the next '
             'watch finds something else for us to do."')
+        node(by[id], "supper")["Choices"][0]["Text"] = '"Then come here and kiss me."'
         node(by[id], "kiss")["Text"] = (
             '{n}She kisses you with her hand tight around yours. When you '
             'draw back, she follows, impatient for another kiss. Your '
@@ -497,7 +534,10 @@ def ordinary_situations(by):
         '"I had a speech ready on the stairs. Come in before I remember it."')
     night = node(door, "night")["Text"]
     split = night.index('{n}The lamp survives.')
-    add_cut(door, "night", night[:split],
+    approach = night[:split].replace(
+        'She unbuckles her sword belt and hangs it on the bedpost as if it has earned a rest, then pulls',
+        'She pulls')
+    add_cut(door, "night", approach,
         '{n}She catches your mouth again and draws you down against her, '
         'the impatient tug of her hand giving way to a grip she keeps. The lamp '
         'survives, though neither of you reaches to put it out for a long while.{/n}',
@@ -506,11 +546,12 @@ def ordinary_situations(by):
     morning = by["seelah.morning"]
     start = node(morning, "start")
     # Ordinary quiet/changed histories still lead to their original bread day.
-    start["Text"] = ('{n}Seelah returns from the storehouse with a bag of bread '
-        'and a damp sleeve. A refugee needed somewhere dry for her bedding; '
-        'Seelah found the storekeeper before buying breakfast.{/n}\n'
-        '"One job before breakfast. I said one. Don\'t let anybody tell you '
-        'I\'m free for a second."')
+    start["Text"] = ('{n}Seelah carries four loaves in a cloth bag. One slips '
+        'out; she catches it against her damp sleeve.{/n}\n'
+        '"The woman behind the storehouse said she was hungry. I charged '
+        'straight at the baker. He looked so pleased to see my coin that '
+        'I bought fresh bread for half the bloody watch."\n'
+        '{n}She lowers the bag.{/n} "Now I have to carry it. Fine victory."')
     start["Choices"].append(c('[Catch her hand before she leaves.]', "night_remembered",
         requires=("seelah.private_night",)))
     morning["Nodes"].append(n("night_remembered", "Seelah",

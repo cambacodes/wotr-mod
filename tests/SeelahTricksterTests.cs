@@ -9,6 +9,7 @@ internal static class SeelahTricksterTests
 {
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string Npc = "90481a29cc75f424b9891a55c6dcbb53";
+    private const string Fye = "0f12118177d102f428a3b30b15b132eb";
     private const string Diamond = "6a7cdeb14fc6ef44580cf639c5cdc113";
     private const string Returned = "seelah.trickster.returned";
 
@@ -44,6 +45,25 @@ internal static class SeelahTricksterTests
     internal static void Run(Story story, Action<bool, string> check)
     {
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        Scene ArchivedTwin(string id)
+        {
+            // Round 2 retired these saved graphs in favor of the native locator.
+            // Verify the live retirement, then exercise the retained legacy graph
+            // in a detached fixture, without reopening it in the shipped story.
+            var live = S(id);
+            check(live.Forbids.Contains("seelah.trickster.in_drezen"), id + ": legacy twin retirement is missing.");
+            var blocked = World(story, 5, "trickster", "trickster.ever", "seelah_gone", "seelah.trickster.primed");
+            blocked.Flags.UnionWith(live.Requires);
+            blocked.Hour += 1000;
+            Rules.Complete(story, blocked);
+            check(blocked.Has("seelah.trickster.in_drezen") && !Rules.Available(story, live, blocked),
+                id + ": legacy twin opens despite the locator road.");
+            var options = new System.Text.Json.JsonSerializerOptions { IncludeFields = true };
+            var archive = System.Text.Json.JsonSerializer.Deserialize<Scene>(
+                System.Text.Json.JsonSerializer.Serialize(live, options), options)!;
+            archive.Forbids = archive.Forbids.Where(f => f != "seelah.trickster.in_drezen").ToArray();
+            return archive;
+        }
         var lesson = S("seelah.trickster.in_party.lift_lesson");
         var pick = S("seelah.trickster.dead.pickpocket");
         var wakes = S("seelah.trickster.dead.wakes");
@@ -51,7 +71,7 @@ internal static class SeelahTricksterTests
         var setup = S("seelah.trickster.dismissed.setup");
         var late = S("seelah.trickster.dismissed.late");
         var papers = S("seelah.trickster.dismissed.back_for_the_papers");
-        var papersLetter = S("seelah.trickster.dismissed.back_for_the_papers_letter");
+        var papersLetter = ArchivedTwin("seelah.trickster.dismissed.back_for_the_papers_letter");
         var stay = S("seelah.trickster.after.stay_or_go");
         var commit = S("seelah.trickster.dismissed.commit");
         var second = S("seelah.trickster.dismissed.second_ask");
@@ -78,7 +98,7 @@ internal static class SeelahTricksterTests
         check(rel.UnavailableOverrides["seelah_dead"] == Returned && rel.UnavailableOverrides["seelah_gone"] == Returned
               && rel.TricksterAccess.Count == 3, "Seelah relationship patch missing.");
         check(story.Presences.TryGetValue("seelah.presence", out var presence) && presence.Unit == Npc && presence.Mode == "spawn-copy"
-              && presence.At?.NearUnit == "0f12118177d102f428a3b30b15b132eb", "Seelah presence missing or on the companion unit.");
+              && presence.At?.Locator == "e077da41-372d-4b63-a6cb-b4aed6099291", "Seelah presence missing or on the companion unit.");
         check(story.RemovableItems.Contains(Diamond) && story.InventoryItems["seelah.diamond_held"] == Diamond, "Diamond not whitelisted.");
 
         // Trk_Seelah_InParty: the lesson is planted while she is in the party; no device opens.
@@ -178,7 +198,7 @@ internal static class SeelahTricksterTests
                     check(refusal.Count == 1 && refusal.Single().Next == "no_stones",
                         "Seelah repayment refusal uses the wrong seller history, including its visit twin.");
                     var page = S(commitId).Nodes.Single(n => n.Id == refusal.Single().Next);
-                    check(page.Choices.Single().Set.SequenceEqual(new[] { "seelah.trickster.declined" }),
+                    check(page.Choices.Single().Set.SequenceEqual(new[] { "seelah.trickster.declined", "seelah.trickster.stones_declined" }),
                         "Seelah repayment refusal invents successful training or changes her no.");
                 }
             }
@@ -202,20 +222,32 @@ internal static class SeelahTricksterTests
             "Trk_Seelah_Dead_NoBody: the rider rite returns her before the rider is back, or sets the wrong flags.");
         Snapshot NoBodyArrives(Snapshot dispatched, string name)
         {
-            var justSent = After(story, dispatched, 1);
+            // The courier is reached through Fye's native hub, not Seelah's contact.
+            // Contactless histories wait until the Commander visits that living hub.
+            var contactless = After(story, dispatched, 96);
+            contactless.AvailableContacts.Clear();
+            check(!Rules.Available(story, reply, contactless), name + ": courier reply appears without Fye.");
+            var delivery = Program.Copy(dispatched);
+            delivery.AvailableContacts.Add(Fye);
+            var justSent = After(story, delivery, 1);
             check(!justSent.Has("seelah.trickster.in_drezen") && !Any(justSent, effects, reply, arrival, stay),
                 name + ": something opens straight after the rider leaves.");
-            var waiting = After(story, dispatched, 95);
+            var waiting = After(story, delivery, 95);
             check(!Rules.Available(story, reply, waiting) && !waiting.Has("seelah.trickster.in_drezen"), name + ": the note comes before 96 h.");
-            var noted = After(story, dispatched, 96);
+            var noted = After(story, delivery, 96);
             check(Rules.Available(story, reply, noted) && !Rules.Available(story, stay, noted), name + ": no note at 96 h, or she is in Drezen early.");
             var replied = Program.Walk(reply, noted).Single();
             check(!replied.Has(Returned) && !Rules.Available(story, arrival, After(story, replied, 47)), name + ": she arrives with the note.");
             var come = After(story, replied, 48);
+            var absentHub = Program.Copy(come);
+            absentHub.AvailableContacts.Remove(Fye);
+            check(!Rules.Available(story, arrival, absentHub), name + ": arrival appears without Fye.");
             check(Rules.Available(story, arrival, come), name + ": she never arrives.");
             var arrived = Program.Walk(arrival, come).Single();
             check(arrived.Has(Returned) && arrived.Has("seelah.trickster.correspondent") && arrived.Has("seelah.started"),
                 name + ": the arrival does not return her.");
+            // Restore the fixture's original contacts after the two physical meetings.
+            arrived.AvailableContacts = new HashSet<string>(dispatched.AvailableContacts);
             return arrived;
         }
         var inTown = After(story, NoBodyArrives(dispatches[0], "Trk_Seelah_Dead_NoBody"), 30);
@@ -259,7 +291,7 @@ internal static class SeelahTricksterTests
         check(Rules.Available(story, papersLetter, failed), "The papers letter twin does not open when the presence fails.");
         var caught = Program.Copy(herded); caught.Flags.Add("seelah.trickster.cost.caught");
         var caughtPages = new HashSet<string>();
-        check(Program.Walk(papers, caught, (page, _) => caughtPages.Add(page)).Count == 2 && caughtPages.Contains("papers_caught"),
+        check(Program.Walk(papers, caught, (page, _) => caughtPages.Add(page)).Count == 2 && caughtPages.Contains("papers_caught_untaught"),
             "The caught variant blocks the papers or goes unsaid.");
 
         // Trk_Seelah_Dismissed_Late: the lift, now, at a worse price.
@@ -331,6 +363,18 @@ internal static class SeelahTricksterTests
         {
             check(!returned.Has("seelah.romance") && Rules.Available(story, stayScene, returned), name + ": no decision after the return.");
             var decided = Program.Walk(stayScene, returned).First(r => r.Has("seelah.trickster.stay_decided"));
+            // A rider return still owes her the list. Earn the existing
+            // reclamation before testing the later romantic invitation.
+            if (decided.Has("seelah.trickster.cost.holds_her_death")
+                && !decided.Has("seelah.trickster.death_returned")
+                && !decided.Has("seelah.trickster.cost.robbed_back")
+                && !decided.Has("seelah.trickster.list_settled"))
+            {
+                var reclaim = S("seelah.trickster.after.list_reclaimed");
+                check(Rules.Available(story, reclaim, decided), name + ": her list reclamation is unavailable.");
+                decided = Program.Walk(reclaim, decided).First(r => r.Has("seelah.trickster.cost.robbed_back")
+                    && !r.Has("seelah.trickster.list_game"));
+            }
             var waiting = After(story, decided, 60);
             check(!Rules.Available(story, commitScene, waiting) && Rules.Available(story, courtScene, waiting),
                 name + ": the commit opens before any courtship, or the courtship never opens.");
@@ -351,10 +395,10 @@ internal static class SeelahTricksterTests
         FreshReturnReachesCommit("No-unit walk", After(story, NoBodyArrives(Program.Walk(effects, freshNobody).First(r => r.Has("seelah.trickster.stones_sent")), "No-unit walk"), 30),
             stay, courtship, commit);
 
-        var stayVisit = S("seelah.trickster.after.stay_or_go_visit");
-        var courtVisit = S("seelah.trickster.after.courtship_visit");
-        var commitVisit = S("seelah.trickster.dismissed.commit_visit");
-        var secondVisit = S("seelah.trickster.dismissed.second_ask_visit");
+        var stayVisit = ArchivedTwin("seelah.trickster.after.stay_or_go_visit");
+        var courtVisit = ArchivedTwin("seelah.trickster.after.courtship_visit");
+        var commitVisit = ArchivedTwin("seelah.trickster.dismissed.commit_visit");
+        var secondVisit = ArchivedTwin("seelah.trickster.dismissed.second_ask_visit");
         check(new[] { stayVisit, courtVisit, commitVisit, secondVisit }.All(s => s.Remote && s.ContactUnit == null && s.Kind == "visit"
               && s.Requires.Contains("seelah.presence.failed")), "The failed-anchor visit twins are not remote visits.");
         var noContact = World(story, 5, "trickster", "trickster.ever", "seelah_gone", "seelah.trickster.primed", "seelah.presence.failed");
@@ -395,7 +439,7 @@ internal static class SeelahTricksterTests
             "Failed anchor: the visit second ask's yes loses the Last Call coda.");
 
         // Q10 r3: the no-unit seller word has a failed-anchor visit twin; one completion closes both.
-        var sellerVisit = S("seelah.trickster.dead_no_unit.seller_word_visit");
+        var sellerVisit = ArchivedTwin("seelah.trickster.dead_no_unit.seller_word_visit");
         check(sellerVisit.Remote && sellerVisit.ContactUnit == null && sellerVisit.Kind == "visit" && sellerVisit.Requires.Contains("seelah.presence.failed"),
             "The seller word's visit twin is not a remote visit.");
         var anchorless = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "seelah.diamond_held", "seelah.presence.failed");
@@ -418,10 +462,14 @@ internal static class SeelahTricksterTests
         check(!Any(failedPath, pick, effects, late), "Trk_Seelah_PathFailed: a device opened after the path failed.");
 
         // Registered route: G6(b) overrides; letters lift only for a Seelah back in the party; the retired revive.
-        foreach (var s in story.Scenes.Where(s => s.Relationship == "seelah" && !s.Id.StartsWith("seelah.trickster.", StringComparison.Ordinal)))
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "seelah" && !new[] { "seelah.early.cart_evening", "seelah.early.bad_cup" }.Contains(s.Id) && !s.Id.StartsWith("seelah.trickster.", StringComparison.Ordinal)))
             foreach (var flag in new[] { "seelah_dead", "seelah_gone" }.Where(s.Forbids.Contains))
                 check(s.ForbidOverrides.TryGetValue(flag, out var value)
                       && value == (s.Remote ? "seelah.trickster.rejoined" : Returned), "G6(b) override missing: " + s.Id + "/" + flag);
+        // Chapter-one invitations precede every return device; their native loss guards stay closed.
+        foreach (var early in story.Scenes.Where(s => new[] { "seelah.early.cart_evening", "seelah.early.bad_cup" }.Contains(s.Id)))
+            check(new[] { "seelah_dead", "seelah_gone" }.All(f => early.Forbids.Contains(f)
+                && !early.ForbidOverrides.ContainsKey(f)), "An early invitation inherits a later return: " + early.Id);
         check(S("seelah.fate_life").Forbids.Contains("trickster.ever") && S("seelah.fate_return").Forbids.Contains(Returned),
             "The old Trickster revive is not retired.");
         foreach (var id in new[] { "irabeth.trickster.dead.react_seelah", "irabeth.trickster.killed.react_seelah" })
