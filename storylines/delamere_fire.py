@@ -87,7 +87,7 @@ visit(P + "woken.white_stag", "The white stag", [
         c("Continue", "opened")),
     dl("form", '''{n}She stares at you. Then something breaks in her face and she laughs, really laughs, head back, a sound that sends a roosting bird clattering out of the next tree.{/n} "My form." {n}She wipes her eyes with a greasy thumb.{/n} "Four walls of stone and a Kellid seal and a witch eating off my belly, and the jester says: at least you held your form. Erastil help me. I did. Not one finger moved."''',
         c("Continue", "opened")),
-    dl("opened", '''"So now you know what you did with your horn." {n}She looks at you across the fire.{/n} "I do not know all of what I am, stag. I know what I am not. The lich-things are cold, and I see my breath every morning. They do not bleed, and I bleed. They do not dream, and I dream of snow."
+    dl("opened", '''"So now you know what you did with your horn." {n}She looks at you across the fire.{/n} "I do not know all of what I am, stag. My breath steams every morning. My blood is red and warm, and I feel my pulse in my throat when I run. I dream of snow. That is what I have to go on."
 {n}She turns her hand palm up in the firelight.{/n} "And I know what I have lost. When I was the Blessed I could lay these hands on a torn hound and feel Old Deadeye come down them like warm water. Since I woke, nothing. Whether he took it as the price of the waking, or I left it down there in the dark, I cannot tell you. The stag called, and I answered, because I swore I would. When I answered, my fingers opened at last. That much I know."
 {n}She reaches over and lays her hand flat on your thigh, over the place where the arrow went in.{/n} "Your leg is where it went. It had been waiting a very long time."''',
         c('"You kept a promise for centuries. I\'ve never kept one for a week."', "week"),
@@ -287,7 +287,8 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
         c("[Say nothing.]", "haddo_end"),
         c('"Delamere... it wasn\'t like that."', "not_like")),
     dl("not_like", '''"No?" {n}She waits. The chapel waits.{/n} "Then tell me what it was like."''',
-        c('"...Another time. Not in front of his priest."', "haddo_end")),
+        c('"...Another time. Not in front of his priest."', "haddo_end"),
+        c('"I blew the horn. I lied when I said Erastil sent me."', "confessed_here", flags=(CONFESSED,))),
     dl("borrowed", '''{n}She looks at you, and there is something new in it: not suspicion, not quite. The look a tracker gives a set of prints she has been following for days, when she understands at last which way they are going.{/n}
 "You blew a stag's call on my horn, and I came." {n}Her mouth tightens.{/n} "You borrowed my god's voice, jester. Did you know?"''',
         c('"Not until tonight. I\'m sorry if that spoils it."', "spoils"),
@@ -302,6 +303,11 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
 {n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} "Tonight I will pray again," {n}she says.{/n} "Not louder. He is not deaf. I will only listen harder."''',
         c("[Walk with her as far as the gate.]", flags=(DEADEYE,))),
 ], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEADEYE), delay=48, optional=True)
+
+# Authored R4 D17: append the chapel confession; the old postponement remains index 0.
+SCENES[-1]["Nodes"].append(dl("confessed_here",
+    '"In his house." {n}She tears her hand from yours and plants her bow between you.{/n} "You let me swear on a lie. You wanted a grateful priestess, and you put words in my god\'s mouth to get one." {n}Brother Haddo starts to speak. She cuts him off with a look.{/n} "I will hear no blessing for that, bean-grower." {n}She faces you again.{/n} "You blew the horn. I came. That much stands. His silence is his own, and you will leave it alone."',
+    c("Continue", "haddo_end")))
 
 
 # --- The names (the crypt wall; optional): "I will count them later. All of them." (the waking, gone) ------------------

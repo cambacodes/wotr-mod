@@ -139,10 +139,10 @@ visit(P + "woken.first_meat", "The hunter eats last", [
     dl("stop", '''"Stop." {n}She does not raise her voice. She has not raised it once since she woke.{/n} "You walk on the heel of that leg, because it hurts, and then you slap the good foot down to make up for it. Every beast in these hills has heard you twice. Put your weight on the outside of the foot. Roll it. Slower." {n}She watches you try.{/n} "Worse. Again."''',
         c('"You did this to my leg."', "did"),
         c("[Do it again, slower.]", "again")),
-    dl("did", '''"I did. So I will teach you to walk on it." {n}She kneels without warning and takes your bad leg in both hands, above and below the knee, and turns it a little, the way she would turn a foal's leg to see how it set.{/n} "There. Feel that? That is where the bone knit. You favour it, so the rest of you goes wrong around it. A stag with a bad leg does not favour it. He cannot afford to."''',
+    dl("did", '''"I did. So I will teach you to walk on it." {n}She kneels without warning and takes your bad leg in both hands, above and below the knee. She stops when you flinch.{/n} "Still swollen. The bandage holds, but you will not run on it today. Short steps. Stop slapping the good foot down. The demons need no help finding us."''',
         c("Continue", "again")),
     dl("again", '''{n}You try again. The bracken whispers less. She says nothing, which from her is praise.{/n}
-{n}Her hands, when she finally lets go of your leg, stay a heartbeat longer than they need to. She notices that herself, and frowns at them.{/n}''',
+{n}She sets your foot down herself, then points along the bracken with her bow. You go first; she watches each step.{/n}''',
         c("Continue", "sick")),
     nar("sick", '''{n}An hour later she stops again and goes down on one knee in the moss, and this time she has not stopped for you. Below you in a hollow a hind is feeding. It is too thin, and moves wrongly, jerking its head as if something were whispering in its ear, and where its hide has worn through on the flank the flesh underneath has gone the colour of a bruise.{/n}''',
         c("Continue", "wound")),
@@ -324,7 +324,7 @@ visit(P + "woken.red_blood", "Red", [
         c("Continue", "wants")),
     dl("both", '''{n}She stares at you. Then, unwillingly, something in her face gives.{/n} "A door open, and a fool walking through it making a noise." {n}She almost laughs.{/n} "Old Deadeye leaves no gate open without a reason, and no work half done. If he left that one open, he had his reason, and I will ask him for it on my knees." {n}She rubs her face.{/n} "Very well. My vow, and his door, and your noise. I can live with that. I am living with it."''',
         c("Continue", "wants")),
-    dl("wants", '''{n}She does not let go of your hand, still flat at her throat. If anything she presses it closer.{/n} "Do you know what the dead do not have, stag? Wanting. I stood at full draw in the dark for longer than there are words for, and I did not want anything, not even to let go."
+    dl("wants", '''{n}She presses your hand against her throat; her pulse beats against your palm.{/n} "I remember the dark, stag. I stood at full draw in the dark for longer than there are words for, and I did not want anything, not even to let go."
 "Now I want everything. Bread. Fire. Sleep. The smell of rain." {n}Her voice drops.{/n} "Your hands on me. Mine on you." {n}She keeps your hand at her throat.{/n} "I have not decided where I want that to end."''',
         c('"Take your time deciding."', "time", forbids=(BLOOD,)),        # retired by gating (Q6; index kept): three exits below
         c('[Kiss her.]', "kiss"),
@@ -641,9 +641,9 @@ visit(P + "woken.day_owed", "The day owed", [
         c('"Not yet. Hunt me again."', "again_new", forbids=(SAID_AGAIN,))),
     dl("no_finish", '''"No." {n}The knife goes back in its sheath.{/n} "I told you by the stream, after you caught me. I will say it every time. I will never finish it." {n}She bends down until her forehead rests on yours.{/n} "I want you running next frost. And coming back to my fire afterward."''',
         c("Continue", "cold")),
-    dl("again", '''{n}Her mouth tightens; then she laughs, shakily.{/n} "That is what you said the first time. With my arrow in you." {n}The knife goes back in its sheath.{/n} "You are a fool, and I have woken up in love with a fool, and I would not trade it for all of Sarkoris." {n}She bends down until her forehead rests on yours.{/n} "Again. Every frost, as long as your leg holds out. And longer."''',
+    dl("again", '''{n}Her mouth tightens; then she laughs, shakily.{/n} "That is what you said the first time. With my arrow in you." {n}The knife goes back in its sheath.{/n} "A fool. Mine, it seems." {n}She catches your coat and pulls you up against her.{/n} "At dawn I go north. There are demons in the old clearings, and families trying to plant there. They will have my arrows. Tonight you have me." {n}She kisses you hard, then looks down at the frozen tiles beneath your bare feet.{/n} "Again, next frost. Find a quieter roof."''',
         c("Continue", "cold")),
-    dl("again_new", '''{n}Her mouth tightens; then she laughs, shakily.{/n} "With my arrow in you, you said something else. You have learned the right words since." {n}The knife goes back in its sheath.{/n} "You are a fool, and I have woken up in love with a fool, and I would not trade it for all of Sarkoris." {n}She bends down until her forehead rests on yours.{/n} "Again. Every frost, as long as your leg holds out. And longer."''',
+    dl("again_new", '''{n}Her mouth tightens; then she laughs, shakily.{/n} "With my arrow in you, you said something else. You have learned the right words since." {n}The knife goes back in its sheath.{/n} "A fool. Mine, it seems." {n}She catches your coat and pulls you up against her.{/n} "At dawn I go north. There are demons in the old clearings, and families trying to plant there. They will have my arrows. Tonight you have me." {n}She kisses you hard, then looks down at the frozen tiles beneath your bare feet.{/n} "Again, next frost. Find a quieter roof."''',
         c("Continue", "cold")),
     nar("down", '''{n}She puts the knife away before you catch her lacing. She comes down laughing into your mouth, grips the back of your neck and kisses you until you are both breathless. One lace slips loose beneath your hand. A patrol lantern moves across the wall below; she sees it, bites back a laugh and closes her coat.{/n}''',
         c("Continue", "cold")),
