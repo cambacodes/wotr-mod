@@ -1505,6 +1505,8 @@ def integrate(payload):
     page["Paragraphs"].append(p(VAULT_SPENT, requires=(VAULT_OPENED, "eggs.destroyed"), forbids=("eggs.omelet",)))
     from storylines.devarra_round2 import polish_epilogue
     polish_epilogue(page)
+    from storylines.devarra_round3 import epilogue as polish_round3_epilogue
+    polish_round3_epilogue(page)
     # The egg bill: collected at Last Call (lastcall_partners "The Grey Tariff"), or still standing.
     page["Paragraphs"].extend([
         p("{n}She collected the life the Commander owed her for it a month in every year, on the ridge, as she had named it at the edge of the world. The Commander never once missed a month. She never once let {mf|him|her} come down the same weight.{/n}",

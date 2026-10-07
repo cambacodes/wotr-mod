@@ -65,6 +65,10 @@ def late_endings(payload, scenes):
     local_coda(node(dragon, 'late_refused'),
         '{n}The call at Threshold had bought no lover. Devarra kept the account under the terms already bargained; the Commander had refused her later invitation.{/n}')
 
+    # Devarra round 3: her late yes was played before this retrospective.
+    from storylines.devarra_round3 import accepted_ending
+    accepted_ending(dragon)
+
     demon = scenes['hepzamirah.trickster.epilogue.commit']
     offer(demon,
         '{n}After Threshold, Hepzamirah returned with her pack. She dropped it at the Commander\'s door.{/n}\n'

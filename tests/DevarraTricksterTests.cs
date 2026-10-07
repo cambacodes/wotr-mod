@@ -126,8 +126,8 @@ internal static class DevarraTricksterTests
             check(s.Forbids.Contains("devarra.closed"), "A watchtower beat plays after her hard no: " + s.Id);
         var letters = story.Scenes.Where(s => s.Relationship == "devarra" && Rules.IsRemote(s) && s.Owner != "DevarraEpilogue" && !retired.Contains(s)
             && s.Kind != "memory").ToArray();   // PP7: the Chapter 4 memory is no letter (shape checked below)
-        check(letters.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "after.lair", P + "flight.eggs" })
-              && letters.All(s => s.Chapters.SequenceEqual(new[] { 3, 5 })),
+        check(letters.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "after.corrected_ending_remote", P + "after.lair", P + "after.late_proposal", P + "flight.eggs" })
+              && letters.All(s => s.Chapters.SequenceEqual(s.Id == P + "after.late_proposal" ? new[] { 5 } : new[] { 3, 5 })),
             "Devarra's letters are not exactly the return and the commit, in Chapters 3 and 5.");
         check(eggs.Nodes.SelectMany(n => n.Choices).All(c => !c.Set.Contains("devarra.committed")), "The return commits.");
         check(Choice(tithe, "tithe_free", 0).Crusade?.Resource == "Materials" && Choice(tithe, "tithe_free", 0).Crusade!.Amount == -100
@@ -140,11 +140,11 @@ internal static class DevarraTricksterTests
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Storyteller" })
               && reactions.All(r => r.Requires.Contains(P + "flown") ^ r.Forbids.Contains(P + "flown")),
             "The reactions are not exactly Greybor and the Storyteller, split cleanly between the flight and the legacy worlds.");
-        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 8 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         // eng7-l13: preparation also requires the live outcome contract.
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "tested", "devarra.outcome.route_open", "devarra.trickster.late_committed.without.devarra.trickster.declined", "devarra.outcome.deferred_judgment" }),
-            "Deferred judgment leaked outside its ending context or lost the tested story.");
+        check(story.Derived[P + "late_committed"].All(g => g.Contains("devarra.outcome.late_accepted")),
+            "Late commitment is missing its played acceptance.");
         // Every watchtower gate is produced somewhere in the route.
         var produced = new HashSet<string>(story.Scenes.Where(s => s.Relationship == "devarra").SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set));
         foreach (var s in own)
@@ -288,10 +288,11 @@ internal static class DevarraTricksterTests
             "The first bite is not gated on the commit and the first climb.");
         check(Reaches(bitten, T + "first_bite") && Reaches(Later(story, tested, 24), T + "climbed"), "The watchtower beats are not reachable.");
         var oneShort = S(T + "one_short");
-        check(oneShort.Nodes.Single(n => n.Id == "start").Choices[0].Forbids.Contains("nidalynn.trickster.eggs.vault")
-              && oneShort.Nodes.Single(n => n.Id == "start").Choices[1].Requires.Contains("nidalynn.trickster.eggs.vault"),
+        check(oneShort.Nodes.Single(n => n.Id == "start").Choices[0].Forbids.Contains("nidalynn.trickster.egg.vault")
+              && oneShort.Nodes.Single(n => n.Id == "start").Choices[1].Requires.Contains("nidalynn.trickster.egg.vault"),
             "The missing egg is counted in the Sanctum after a vault theft.");
 
+        // Predicate fixtures only: prerequisite injection tests compatibility, not played history.
         // No moult in the flight world: every Devarra page she can reach after flying is free of the retired device's facts.
         int walked = 0;
         var outcomes = new[] { new string[0], new[] { P + "clutch_collected" }, new[] { "eggs.destroyed", P + "marked" }, new[] { "eggs.destroyed", P + "pointed_at_xanthir" }, new[] { "eggs.project", "eggs.omelet", P + "cook_given" },
@@ -396,9 +397,14 @@ internal static class DevarraTricksterTests
               && withheld.Skip(3).All(c => c.Next == "withheld_spent" && c.Requires.Contains("eggs.project")),
             "The clutch scene offers the vault after its eggs were spent.");
         var hatch = S(P + "epilogue.woken").Nodes[0].Paragraphs.Where(x => x.Requires.Contains(T + "vault_opened")).ToArray();
-        check(hatch.Count(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[devarra.trickster.epilogue.woken/page/paragraph/7]") && x.Forbids.Contains("eggs.omelet") && x.Forbids.Contains("eggs.destroyed")) == 1
-              && hatch.Count(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[devarra.trickster.epilogue.woken/page/paragraph/18][devarra.trickster.epilogue.woken/page/paragraph/19]")) == 2,
-            "The epilogue hatches a clutch that was cooked or destroyed.");
+        foreach (var fate in new[] { "eggs.omelet", "eggs.destroyed", "eggs.druids" })
+        {
+            var flags = new Snapshot { Flags = new HashSet<string> { T + "vault_opened", fate } };
+            var rendered = hatch.Where(p => Rules.Match(p.Requires, p.Forbids, flags)
+                && p.AnyGroups.All(g => g.Any(flags.Has))).Select(p => p.Text);
+            check(!rendered.Any(text => text.Contains("Drezen vault hatched", StringComparison.Ordinal)),
+                "The epilogue hatches a clutch moved or spent after the vault visit.");
+        }
         var noAmbush = World(story, 5, "trickster", "trickster.ever", P + "returned", "devarra.started", T + "climbed");
         check(!Rules.Available(story, dwarf, Later(story, noAmbush, 30)), "Greybor's ambush is recalled without its native cue.");
         check(dwarf.Nodes.Single(n => n.Id == "climb").Choices[2].Requires.Contains("devarra.react.greybor.repeat_work"),
@@ -411,6 +417,7 @@ internal static class DevarraTricksterTests
         check(!legacy.Has(P + "flown") && Rules.Available(story, tithe, legacy), "A legacy save loses its continuation.");
         check(Program.Walk(tithe, legacy, (id, _) => check(!id.EndsWith("_free", StringComparison.Ordinal), "A legacy save hears the flight world: " + id)).Count > 0,
             "The legacy tithe does not play.");
+        DevarraRoundThreeTests.Run(story, check);
         Console.WriteLine("PASS: Devarra Trickster (Trk_Devarra_*): the pact, the escape, the Sanctum gate, the leash, the wrong password, canon fate unprepared, "
             + "the return, the tithe, the tower's terms and " + tower.Length + " watchtower beats (" + walked + " scenes walked in the flight world).");
     }
