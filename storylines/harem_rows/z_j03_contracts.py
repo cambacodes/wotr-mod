@@ -104,10 +104,48 @@ def faith(payload):
             choice["Set"] = [p + "retry.seen" if f == p + "settle.seen" else f for f in choice["Set"]]
     body["Forbids"].extend(flags(p, "resolved", "permanent_refusal"))
     append(payload, retry)
+    faith_notes(payload)
     for a, b, deed, cost in (
         ("seelah", "camellia", "camellia_cover_limited", "cost.camellia_public_cover"),
         ("camellia", "seelah", "seelah_blessing_withheld", "cost.seelah_company_kept")):
         respect(payload, a + ".harem.attitude." + b + ".respect", p, deed, cost)
+
+
+def faith_notes(payload):
+    """S04's named Seating Notes surface reads discovery and actual deeds only."""
+    ledger = payload.get("Books", {}).get("trickster.ledger")
+    if ledger is None:
+        return
+    p = s04.P
+    entries = ledger.setdefault("Entries", [])
+    for entry in entries:
+        if entry["Id"] == "seating.seelah.camellia":
+            # Preserve the legacy note's identity/prose, but its murder claim
+            # needs actual knowledge and yields to the witnessed account.
+            if "camellia.mireya_unmasked" not in entry["Requires"]:
+                entry["Requires"].append("camellia.mireya_unmasked")
+            if p + "settle.seen" not in entry["Forbids"]:
+                entry["Forbids"].append(p + "settle.seen")
+    sid = "seating.seelah_camellia.faith"
+    if not any(entry["Id"] == sid for entry in entries):
+        entries.append(dict(Id=sid, Section="Seating Notes", Portrait="Seelah",
+            Title="The prayer for the dead",
+            Text="{n}Seelah's prayer for the crusade dead brought Camellia's courtesy into question.{/n}",
+            Requires=[p + "settle.seen"], Forbids=[], Lines=[
+                dict(Text=text, Requires=list(flags(p, *required)),
+                     Forbids=list(flags(p, *forbidden)))
+                for text, required, forbidden in (
+                    ("{n}I made the religious distinction. Seelah withheld the blessing; Camellia kept her place without its cover.{/n}",
+                     ("resolved", "method.religion", "seelah_blessing_withheld", "camellia_cover_limited"), ()),
+                    ("{n}Seelah heard the confession I retained. She withheld the blessing; Camellia lost that public cover.{/n}",
+                     ("resolved", "method.confession", "confession_kept", "seelah_confession_heard"), ()),
+                    ("{n}My Word settled the dispute. Seelah withheld the blessing. The Word's debt remained mine.{/n}",
+                     ("resolved", "method.word"), ()),
+                    ("{n}My argument failed. The prayer remained unfinished.{/n}",
+                     ("settle.failed",), ("resolved", "permanent_refusal")),
+                    ("{n}I left the blessing unsaid and the dispute unsettled.{/n}",
+                     ("permanent_refusal",), ("resolved",)),
+                )]))
 
 
 def power(payload):
@@ -125,7 +163,8 @@ def power(payload):
             root.append(c('[Diplomacy: present the same renunciation.]', check=check))
             body["Nodes"].append(pending("failed", "nocticula",
                 "want rank acknowledged / reject the repeated renunciation / public claim remains disputed",
-                c('Continue', flags=flags(p, "retry.seen", "permanent_refusal", "unsettled"))))
+                c('Continue', flags=flags(p, "retry.seen", "unsettled")),
+                c('"Then leave the claim disputed."', "refused")))
         else:
             root[0]["Check"] = check
         for node in body["Nodes"]:
@@ -140,6 +179,9 @@ def power(payload):
                         "refused": "want the crusade or her own appetite / withhold the renunciation / leave the claim disputed",
                     }[node["Id"]]
                     node["Text"] = "[PROSE PENDING: " + woman + " - " + beat + "]"
+        # These acquired correspondence forms are alternatives, never an
+        # AND requiring two mutually exclusive selections.
+        body["RequiresAnyGroups"] = [["noct.acq.channel_provisional", "noct.acq.channel_letters_only"]]
         body["ParticipantContacts"] = {"nocticula": contract_j01.authenticated_reply(
             ["noct.acq.renewed_agreement", "noct.acq.seal_received", "noct.acq.an_answer_of_her_own_done"],
             ["noct.closed", "noct.acq.closed", "noct.acq.council_fight"])}
@@ -225,7 +267,9 @@ def deed_contract(payload, p, primary, title, women, accepts, deeds, costs,
             delay=48 if step == "retry" else 0, overrides=overrides)
         if "hepzamirah" in women:
             body["ParticipantContacts"]["hepzamirah"] = dict(Kind="body", Requires=[hep.RET],
-                Forbids=[], Options=[dict(Units=[hep.BODY_UNIT], Requires=[], Forbids=[])])
+                Forbids=[hep.PRESENCE_FAILED], Options=[
+                    dict(Units=[hep.BODY_UNIT], Requires=[], Forbids=[hep.CONFINED]),
+                    dict(Units=[hep.BODY_UNIT], Requires=[hep.RELEASED], Forbids=[])])
             # Reuse the actual presence hunt window, including on continuation.
             # J01's live contact inventory excludes her absent copy during it.
         append(payload, body)

@@ -10,7 +10,7 @@ authenticates remote contacts and qualifies actual physical women.
 | Ruling / row | Concrete finish | Check / cost / single retry |
 |---|---|---|
 | 01 / S04 | Existing indices 0–2 activate Religion, retained evidence, and Word. Appended disclosure records the actually heard false-Mireya confession and tells present Seelah. Logical evidence flags are not inventory items. Camellia's cover is limited; Seelah withholds the blessing while retaining useful dangerous company. | Commander Religion 30, N1/D1. Existing public-cover/company costs; exact Word use `seelah_camellia`, existing availability/debt. Failed roll is pending. One 48h retry offers the same retained evidence or Word; refusal/Later remain. |
-| 02 / S08 | Both personality wrappers emit. Queen answers through the acquired authenticated seal, then Arueshalae answers herself; only their shared terminal produces resolution. Fallen/queen voices are pending. Old favour stays inert at its saved index. | Commander Diplomacy 37, N2/D2. Public defiance and limited claim, zero new gold; one protected completion per attempt. Append same roll to retry after 48h. Final rejection/refusal alone qualifies Arueshalae's grievance. |
+| 02 / S08 | Both personality wrappers emit. Queen answers through the acquired authenticated seal, then Arueshalae answers herself; only their shared terminal produces resolution. Fallen/queen voices are pending. Old favour stays inert at its saved index. | Commander Diplomacy 37, N2/D2. Public defiance and limited claim, zero new gold; one protected completion per attempt. Append same roll to retry after 48h. Failed retry remains owed; only an explicit terminal refusal qualifies Arueshalae's grievance. |
 | 04 / S18F | Horzalah gives one real Guild warning to an approaching crusade patrol instead of selling it. Hepzamirah accepts her control and lets the agent depart unmolested. Both explicit actions precede the kept-terms terminal. | Deed, no DC/fee. Lost sale and lost domination opportunity, existing concession witnesses and allowance. Botched relay pending; one 48h repeat. Only a final explicit sister counter-move names a grievance owner. No S18X flag is written. |
 | 17 / S05 | Existing no-reply precedence account retained. New live wrapper shares `precedence.seen`: queen and freely choosing Shamira reply separately and keep their court priority. Both channels remain current at every continuation. | No check/fee; two bounded political costs, one protected acknowledgment. Unsupported coup/exposure/retry remains unproduced and bodily slot remains withheld. No affair/Socothbenoth alias. |
 | 18 / S23 | Original turf history and answer positions retained. A historical wrapper shares turf.seen and supplies no current Herrax speech/action; a present-tense mention in the old account cannot veto the historical alternative. Live wrapper/retry share the existing step witnesses. Herrax's own message keeps the Delights and withholds recruiting Chivarro's current contacts through this offer; Chivarro's own message yields her old-chair claim and keeps her current house. | No DC/new fee/S48 price. Named recruiting/chair costs, one protected completion. Muddled names pending; one 48h corrected exchange. Explicit final counter-moves alone select Herrax→Chivarro or Chivarro→Herrax. |
@@ -73,3 +73,29 @@ uses, inert favour/coup/body reservations, S35's unchanged retry and voice locks
 Final generation, targeted rows, save compatibility, UTF-8, payoff/departure,
 strict voice/slot/verifier and managed construction are reported separately.
 Integrated schedule/K3/W5 consumers remain with J07/J05/J08, as assigned.
+
+## Resumed implementation corrections (2026-10-07)
+
+- Ruling 01: retain the legacy `seating.seelah.camellia` identity and prose,
+  but require the actually heard confession before its murder claim; retire it
+  after `settle.seen`. Append `seating.seelah_camellia.faith`, reading the actual
+  method/deeds/disclosure and distinguishing pending failure from final refusal.
+  Historical notes require no current body and do not clear or grant anything.
+- Ruling 02: both retry personalities preserve failed diplomacy as
+  `retry.seen,unsettled`, with no automatic permanent refusal/enmity. An appended
+  choice leads to the existing explicit refusal terminal. One retry remains
+  exhausted; no second check, favour or payment is created.
+- Rulings 04/19: Hepzamirah's two body-contact alternatives encode the same
+  entry restriction at continuation: unconfined, or actually released. Failed
+  flesh placement and hunt absence cannot be replaced by her ghost. No new
+  release condition or arrival device is added.
+- All seven contracts retain the preserved WIP. Added regression histories
+  cover exact DCs/no extra payment, shared exhaustion, owed retry rejection,
+  confinement/ghost/current contact and named-woman independence from the other
+  composite-seat member. The 71 J03 pending node records already appended by
+  the preserved WIP remain in `prose-pending.json`; this resume adds no new
+  edge-character lines requiring another record.
+- Ruling 02 class sweep: all four emitted personality/step wrappers express
+  the earned provisional and letters-only channel forms as one OR-group.
+  Single-flag groups in the inert draft are not copied as an AND; each sole
+  channel succeeds independently; missing both leaves the scene blocked.

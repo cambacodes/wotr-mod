@@ -207,6 +207,117 @@ class J03Contracts(unittest.TestCase):
                 if "remaining Nocticula favour" in choice["Text"]:
                     self.assertFalse(rules.sim_choice_available(choice, self.state(body)))
 
+    def test_s08_either_earned_correspondence_form_is_sufficient(self):
+        channels = {"noct.acq.channel_provisional", "noct.acq.channel_letters_only"}
+        for step in ("settle", "retry"):
+            for branch in ("redeemed", "corrupted"):
+                body = self.body("arueshalae_nocticula", step + "." + branch)
+                self.assertEqual(body["RequiresAnyGroups"], [list(sorted(channels, reverse=True))])
+                state = self.state(body)
+                state.flags.difference_update(channels)
+                self.assertFalse(rules.sim_available(self.model, body, state))
+                for channel in channels:
+                    state.flags.difference_update(channels)
+                    state.flags.add(channel)
+                    state.times[channel] = -1000
+                    self.assertTrue(rules.sim_available(self.model, body, state), (body["Id"], channel))
+                    self.assertTrue(rules.sim_contact_available(self.model, body, state), (body["Id"], channel))
+
+    def test_s08_retry_roll_failure_is_owed_until_explicit_refusal(self):
+        p = "household.pair.arueshalae_nocticula."
+        for branch in ("redeemed", "corrupted"):
+            body = self.body("arueshalae_nocticula", "retry." + branch)
+            state = self.state(body)
+            failed = next(n for n in body["Nodes"] if n["Id"] == "failed")
+            pending, refuse = failed["Choices"]
+            self.assertEqual(set(pending["Set"]), {p + "retry.seen", p + "unsettled"})
+            state.flags.update(pending["Set"])
+            rules.sim_complete(self.model, state)
+            self.assertNotIn(p + "permanent_refusal", state.flags)
+            self.assertNotIn("arueshalae.harem.enmity.nocticula", state.flags)
+            self.assertFalse(rules.sim_available(self.model, body, state))
+            self.assertEqual(refuse["Next"], "refused")
+            final = next(n for n in body["Nodes"] if n["Id"] == "refused")["Choices"][0]
+            self.assertIn(p + "permanent_refusal", final["Set"])
+            self.assertIn("arueshalae.harem.enmity.nocticula", final["Set"])
+
+    def test_approved_dcs_and_retired_tools_do_not_add_payments(self):
+        for pair, suffix, index, skill, dc in (
+                ("seelah_camellia", "settle", 0, "SkillLoreReligion", 30),
+                ("arueshalae_nocticula", "settle.redeemed", 0, "CheckDiplomacy", 37),
+                ("arueshalae_nocticula", "settle.corrupted", 0, "CheckDiplomacy", 37),
+                ("hepzamirah_minagho", "job", 1, "SkillThievery", 28)):
+            check = self.body(pair, suffix)["Nodes"][0]["Choices"][index]["Check"]
+            self.assertEqual((check["Skill"], check["DC"], check["CommanderOnly"]), (skill, dc, True))
+        for body in self.rows:
+            for node in body["Nodes"]:
+                for choice in node["Choices"]:
+                    self.assertFalse(choice.get("Crusade"), (body["Id"], node["Id"]))
+        body = self.body("hepzamirah_minagho", "job")
+        self.assertFalse(rules.sim_choice_available(body["Nodes"][0]["Choices"][0], self.state(body)))
+
+    def test_shared_incident_exhaustion_cannot_spend_again_through_a_wrapper(self):
+        for pair, suffixes, witness in (
+                ("arueshalae_nocticula", ("settle.redeemed", "settle.corrupted"), "settle.seen"),
+                ("arueshalae_nocticula", ("retry.redeemed", "retry.corrupted"), "retry.seen"),
+                ("nocticula_shamira", ("precedence", "precedence.live"), "precedence.seen"),
+                ("herrax_chivarro", ("turf", "turf.history", "turf.live"), "turf.seen")):
+            for suffix in suffixes:
+                body = self.body(pair, suffix)
+                state = self.state(body)
+                state.flags.add("household.pair." + pair + "." + witness)
+                self.assertFalse(rules.sim_available(self.model, body, state), body["Id"])
+
+    def test_hepzamirah_ghost_and_hunt_absence_cannot_perform_either_job(self):
+        from storylines import hepzamirah_trickster as hep
+        for pair, primary in (("horzalah_hepzamirah", "truce"), ("hepzamirah_minagho", "job")):
+            for suffix in (primary, "retry"):
+                body = self.body(pair, suffix)
+                state = self.state(body)
+                state.available_contacts.remove(hep.BODY_UNIT)
+                state.available_contacts.add(hep.GHOST_UNIT)
+                state.flags.add(hep.P + "bond.the_hunt")
+                self.assertFalse(rules.sim_available(self.model, body, state))
+                self.assertFalse(rules.sim_contact_available(self.model, body, state))
+                state.available_contacts.add(hep.BODY_UNIT)
+                state.flags.add(hep.CONFINED)
+                self.assertFalse(rules.sim_available(self.model, body, state))
+                self.assertFalse(rules.sim_contact_available(self.model, body, state))
+                state.flags.add(hep.RELEASED)
+                self.assertTrue(rules.sim_available(self.model, body, state))
+                self.assertTrue(rules.sim_contact_available(self.model, body, state))
+                state.flags.add(hep.PRESENCE_FAILED)
+                self.assertFalse(rules.sim_contact_available(self.model, body, state))
+
+    def test_qualified_woman_does_not_require_her_absent_partner(self):
+        for pair, suffix, absent in (
+                ("hepzamirah_minagho", "job", "chivarro"),
+                ("hepzamirah_minagho", "retry", "chivarro"),
+                ("herrax_chivarro", "turf.live", "minagho"),
+                ("herrax_chivarro", "retry", "minagho")):
+            body = self.body(pair, suffix)
+            state = self.state(body)
+            state.flags.update([absent + ".dead", absent + ".epoch_unavailable"])
+            state.flags.difference_update([absent + ".present_now", "participant." + absent + ".available"])
+            self.assertTrue(rules.sim_available(self.model, body, state), body["Id"])
+            self.assertTrue(rules.sim_contact_available(self.model, body, state), body["Id"])
+            self.assertNotIn(absent, body["ParticipantContacts"])
+
+    def test_s04_notes_follow_discovery_method_and_terminal_history(self):
+        entries = self.story["Books"]["trickster.ledger"]["Entries"]
+        old = next(e for e in entries if e["Id"] == "seating.seelah.camellia")
+        self.assertIn("camellia.mireya_unmasked", old["Requires"])
+        self.assertIn("household.pair.seelah_camellia.settle.seen", old["Forbids"])
+        note = next(e for e in entries if e["Id"] == "seating.seelah_camellia.faith")
+        p = "household.pair.seelah_camellia."
+        self.assertEqual(note["Requires"], [p + "settle.seen"])
+        for line in note["Lines"]:
+            if p + "settle.failed" in line["Requires"]:
+                self.assertEqual(set(line["Forbids"]), {p + "resolved", p + "permanent_refusal"})
+            if p + "method.confession" in line["Requires"]:
+                self.assertTrue({p + "confession_kept", p + "seelah_confession_heard"} <= set(line["Requires"]))
+        self.assertFalse(any("present_now" in flag for flag in note["Requires"]))
+
     def test_s35_existing_lien_word_and_nonroll_retry_remain_exact(self):
         body = self.body("arsinoe_nurah", "audit")
         root = body["Nodes"][0]["Choices"]
