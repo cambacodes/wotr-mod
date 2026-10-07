@@ -46,6 +46,8 @@ try {
     if ($LASTEXITCODE) { throw 'Payoff contract lint failed' }
     & $pythonPath tools/departure_lint.py --strict
     if ($LASTEXITCODE) { throw 'Departure lint failed' }
+    & $pythonPath tools/voice_lock_lint.py --strict
+    if ($LASTEXITCODE) { throw 'Claude voice lock lint failed' }
     # FULL preflight: every Python test, including save guards, L1-L6 and the ideal run.
     & $pythonPath -m unittest discover -s tests -p 'test_*.py' -q
     if ($LASTEXITCODE) { throw 'Full Python test gate failed' }
