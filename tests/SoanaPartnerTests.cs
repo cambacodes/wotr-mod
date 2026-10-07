@@ -153,10 +153,28 @@ internal static class SoanaPartnerTests
             foreach (var letter in sent.Where(w => w.Has("soana.round2.correspondence_only")))
             {
                 var reply = S("reply", returned);
-                var answers = Program.Walk(reply, Later(letter, 168), (id, _) => allPages.Add(reply.Id + "/" + id));
+                var answers = Program.Walk(reply, Later(letter, 168), (id, _) => allPages.Add(reply.Id + "/" + id)).ToList();
                 check(answers.Any(w => w.Has("soana.trickster.friends") && !w.Has("soana.round3.disclosed"))
-                    && answers.Any(w => w.Has("soana.round3.disclosed") && w.Has("soana.round2.reply_accepted")),
+                    && answers.Any(w => w.Has("soana.round4.proposal_sent") && !w.Has("soana.round2.reply_accepted")),
                     "Authentication alone supplies lover terms, or cannot send a subsequent proposal.");
+                var secondReply = S("proposal_reply", returned);
+                foreach (var proposal in answers.Where(w => w.Has("soana.round4.proposal_sent")))
+                {
+                    check(!Program.CurrentAvailable(story, secondReply, proposal)
+                        && !Program.CurrentAvailable(story, secondReply, Later(proposal, 167)),
+                        "The second southern letter answers before its relay returns.");
+                    var arrived = Later(proposal, 168);
+                    check(Program.CurrentAvailable(story, secondReply, arrived),
+                        "The second proposal never receives its timed reply.");
+                    var settled = Program.Walk(secondReply, arrived,
+                        (id, _) => allPages.Add(secondReply.Id + "/" + id)).ToList();
+                    check(settled.Any(w => w.Has("soana.round2.reply_accepted"))
+                        && settled.Any(w => w.Has("soana.trickster.friends"))
+                        && settled.All(w => w.Has("soana.round4.proposal_read")),
+                        "The returned proposal loses its existing acceptance or friendship answer.");
+                    check(settled.All(w => !Program.CurrentAvailable(story, secondReply, w)),
+                        "Corven's second answer can be replayed after settlement.");
+                }
             }
             foreach (var letter in sent.Where(w => w.Has(K + "pursued") && !w.Has("soana.round2.correspondence_only")))
             {
