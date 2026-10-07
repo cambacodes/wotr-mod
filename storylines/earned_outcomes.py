@@ -154,6 +154,11 @@ def integrate(payload):
         "Requires": ["arsinoe.trickster.late_committed"], "Forbids": ["arsinoe.committed"]})
     # end eng8-q8h
 
+    # Job 3's route-owned late graphs join the ordinary proof pass. Their local
+    # choices carry no campaign yes; their new prose gets the same live guards.
+    from storylines import endings_job3
+    endings_job3.integrate(payload)
+
     # The generator only adds a gate when the current path does not prove it.
     model = verify.Model(copy.deepcopy(payload))
     proof = Proof(model)

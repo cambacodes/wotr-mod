@@ -498,7 +498,7 @@ VERSE_PARAGRAPHS = (
 
 def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
     # Polish (R2-6): Chapter 6 only, in the data as well as through the native epilogue attachment.
-    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text, paragraphs=(*paragraphs, p(THALL_ENDING), THALL_MEMORY))], requires=requires,
+    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text, paragraphs=(*paragraphs, p(THALL_ENDING, requires=("aranka.thall.parting_spoken",), forbids=(THALL_DEAD, "lastcall.active")), dict(THALL_MEMORY, Forbids=["lastcall.active"])))], requires=requires,
                         forbids=(*forbids, KENABRES_ATTACKED), last=6, Relationship="aranka", Chapters=[6], **extra))
 
 
@@ -691,9 +691,9 @@ def integrate(payload):
     part["opener"] = (
         "{n}After Threshold, Aranka took her songs through the camps the crusade had left behind. "
         "She came back with mud on her hem and a new harmony she insisted the Commander learn "
-        "before hearing a single tale of the road. She put the lute between them and counted in.{/n}\n" + THALL_ENDING)
+        "before hearing a single tale of the road. She put the lute between them and counted in.{/n}")
     if THALL_MEMORY not in part["paragraphs"]:
-        part["paragraphs"] = (*part["paragraphs"], THALL_MEMORY)
+        part["paragraphs"] = (*part["paragraphs"], p(THALL_ENDING, requires=("aranka.thall.parting_spoken",), forbids=(THALL_DEAD,)), THALL_MEMORY)
     if not part["call"]["text"].endswith(THALL_CALL):
         part["call"]["text"] += "\n" + THALL_CALL
 

@@ -369,12 +369,13 @@ internal static class EliandraTricksterTests
             "The late pages do not follow whether she was courted before the war ran out.");
         check(story.SelectedAnswers["eliandra.northern_lights_awakened"] == "984d9d1432ea89044a6515be61a22125",
             "The Threshold lights paragraph does not read the artifact actually awakened.");
-        // Last Call (R2-6): her coda plays for the commit or the kept letter, and not for the soft no alone.
+        // Job 3: the kept letter is an invitation; its selected answer owns the local conclusion.
         var coda = S("eliandra.lastcall.page");
-        check(coda.RequiresAnyGroups.Length == 1 && coda.RequiresAnyGroups[0].Contains(Committed) && coda.RequiresAnyGroups[0].Contains(E + "late_committed")
-              && Rules.Available(story, coda, World(story, 6, kept.Flags.Concat(new[] { "lastcall.active" }).ToArray()))
+        check(coda.RequiresAnyGroups.Length == 1 && coda.RequiresAnyGroups[0].SequenceEqual(new[] { Committed })
+              && !Rules.Available(story, coda, World(story, 6, kept.Flags.Concat(new[] { "lastcall.active" }).ToArray()))
+              && Rules.Available(story, coda, World(story, 6, night.Flags.Concat(new[] { "lastcall.active" }).ToArray()))
               && !Rules.Available(story, coda, World(story, 6, no.Flags.Concat(new[] { "lastcall.active" }).ToArray())),
-            "Her Last Call coda does not follow the kept letter, or plays for the soft no alone.");
+            "Her campaign coda needs acceptance; a kept letter or soft no cannot supply it.");
         // The stranded Drezen state (audit r9): the shrine unit gone, the terms misheard on either presence; the wall observation
         // opens the rite there, and the yes is still reachable, with the King present or gone.
         foreach (var (twinId, gone) in new[] { (E + "ch5.terms_drezen", false), (E + "ch5.terms_drezen_mark", true) })
