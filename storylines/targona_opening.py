@@ -293,6 +293,7 @@ s("what_she_keeps", "A letter she wanted to write", [
 ], "targona.the_unscheduled_door")
 
 
+# R4 D11-D13: authored citadel repair/watch; ordinary unpaid dispatch and repair duty.
 s("the_open_threshold", "A door that opens both ways", [
     n("start", "Narrator", '''{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}
 "I am tending the wounded at a wayhouse on Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.
@@ -305,12 +306,12 @@ s("the_open_threshold", "A door that opens both ways", [
       c("Decline the meeting tonight and keep the correspondence open.", "declined"),
       c("Answer that you will leave the letter in the courier's hands.", "ordinary", forbids=("trickster",))),
     n("paper_setup", "Narrator", '''{n}Your folded corridor is still on your desk, the torn hinge beside it. She has told you what she thinks of doors she has not seen tested. Then give her one she can test.{/n}
-{n}In the citadel's east wall there is a postern the demons bricked up and warded while they held Drezen. The engineers have chalked it unsafe and left it alone. Beyond it a goat track runs down to the eastern road below the gate, out of sight of every sentry on the wall. Unbrick it, kill the old ward, fit a new lock, and an angel walking in from the wayhouse could reach the courtyard without being stared at by a single watchman.{/n}
+{n}In the citadel's east wall there is a postern the demons bricked up and warded while they held Drezen. The engineers have chalked it unsafe and left it alone. Beyond it a goat track runs down to the eastern road below the gate. The engineers will brace the opening and inspect the stonework once the ward is dead. The watch captain agrees to station a sentry inside, with orders to admit Targona and keep the door barred behind her. She can reach the courtyard without crossing the crowded gate.{/n}
 {n}The ward has to be truly dead first. If it is not, there is no invitation.{/n}''',
       c("[Knowledge (Arcana)] Unpick the demons' ward and test the postern before inviting her.", check=dict(Skill="SkillKnowledgeArcana", DC=30, Success="steady", Failure="falter", CommanderOnly=True)),
       c("Do not risk a passage. Send an ordinary invitation by the known courier road.", "road")),
     n("courier_setup", "Narrator", '''{n}The ordinary page hid no door, and you do not pretend it did. What you have is a named wayhouse, a courier who runs the eastern road twice a week, and a woman who wrote that she wants to see you.{/n}
-{n}You buy the dispatch clerk a bottle and a quiet hour, and your sealed invitation goes into the returns bag on top instead of at the bottom. The courier who was meant to carry a packet of requisitions reaches the wayhouse before her evening duty with your letter in his hand, and he never learns why the clerk was so cheerful.{/n}
+{n}The dispatch clerk reaches for the last letter just as you set yours down. Your invitation slips neatly into the returns bag before he ties it shut. The courier takes it with the requisitions on his usual round; you have gained a place in this packet, not a faster journey. By the time he reaches the wayhouse, her evening duty has begun.{/n}
 {n}She writes back in her own hand, on the back of yours. She will walk the public road to Drezen, if you still want her to come.{/n}''',
       c("Send the courier back with your invitation.", "road"),
       c("Do not send it. Keep the correspondence open.", "declined")),
@@ -323,9 +324,9 @@ s("the_open_threshold", "A door that opens both ways", [
 "You took me at my word. Few people do; they think an angel's no is only a yes that has not been prayed over long enough. I still want you. Keep writing to me, and one evening I will write back and name the night."
 {n}You answer with the smallest news you have, and ask for hers.{/n}''',
       c("Write back.", flags=("targona.visit_correspondence",))),
-    n("steady", "Narrator", '''{n}It takes two nights. The last thread of the ward parts with a smell like singed hair. You push an empty dispatch pouch through the gap from outside and from within, at dusk and again at midnight, and nothing answers it. A locksmith from the lower town fits a new lock with two keys and is paid not to wonder why.{/n}
+    n("steady", "Narrator", '''{n}It takes two nights. The last thread of the ward parts with a smell like singed hair. You push an empty dispatch pouch through the gap from outside and from within, at dusk and again at midnight, and nothing answers it. The engineers brace the opening, check the lintel and scrape away their warning. The citadel locksmith fits a lock from the repair stores, with two keys. The sentry takes one and bars the door from within.{/n}
 {n}The courier carries Targona a written account of the work, the way the goat track runs, and one of the keys. She reads every line of it. Her reply is one sentence: "I will inspect it myself."{/n}
-{n}She comes up the track after dark and examines the postern slowly, frame and hinges and the scorched stones where the ward was, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}
+{n}She comes up the track after dark. The sentry checks her name, admits her and drops the bar behind her. She examines the postern slowly, frame and hinges and the scorched stones where the ward was, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}
 "It is well made," {n}she says.{/n} "For a trick."''',
       c("Walk the wall with her.", "walk"),
       c("Tell her the wounded on the eastern road will want her at first light.", "close_passage")),
@@ -347,7 +348,7 @@ s("the_open_threshold", "A door that opens both ways", [
 "Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?"''',
       c("Ask her again, and wait for her answer.", "kiss"),
       c("Tell her you would rather continue the walk.", "continue")),
-    n("close_passage", "Narrator", '''{n}She looks east, where the watchfires are, and then locks the postern herself and tries the bolt twice.{/n}
+    n("close_passage", "Narrator", '''{n}She looks east, where the watchfires are, and then locks the postern herself and tries the bolt twice. The sentry takes his place beside it.{/n}
 "You are right, and I hate it. If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept." {n}She smiles, a little ruefully, and offers you her arm.{/n} "Walk me to the gate, at least. I will go out by it like an honest woman; I will not use your trick twice in one night."''',
       c("Walk with her to the road and say goodnight.", "departed")),
     n("close_road", "Narrator", '''{n}She looks east, where the watchfires are.{/n}
