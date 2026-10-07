@@ -189,7 +189,7 @@ def device_detects(rel, s):
 
 def next_nodes(c):
     if c.get("Check"): return [c["Check"]["Success"], c["Check"]["Failure"]]
-    return [c["Next"]] if c.get("Next") else []
+    return [c["Next"]] if c.get("Next") else [c["PostPayment"]] if c.get("PostPayment") else []
 
 
 def completes(s, c):
@@ -966,7 +966,7 @@ def validate(model):
                 or any(wid not in st.get("SeatWomen", {}) or st["SeatWomen"][wid]["Relationship"] not in participants for wid in women)
                 or pair and (len(pair) != 2 or len(set(pair)) != 2 or sorted(pair) != sorted(participants))):
             errs.append("Invalid pair participants: " + sid)
-        if s["Relationship"] == "household" and s.get("RestAllowance") and s["DelayHours"]:
+        if s.get('DelayClocks') or s["Relationship"] == "household" and s.get("RestAllowance") and s["DelayHours"]:
             from tools.harem_schedule_lint import delayed_clock_errors
             errs.extend(delayed_clock_errors(s, st))
         if s.get("RestAllowance") and s["RestAllowance"] not in st.get("RestAllowances", {}):
@@ -1076,6 +1076,21 @@ def validate(model):
         for n in s["Nodes"]:
             for c in n["Choices"]:
                 if set(c["Set"]) & CONTACT_EVIDENCE: errs.append("Authored contact evidence: " + sid)
+                refresh = c.get('RefreshTimes', [])
+                if refresh is None or len(set(refresh)) != len(refresh) or not set(refresh) <= set(c['Set']) or refresh and c['Abort']:
+                    errs.append('Invalid chosen clock refresh: %s/%s' % (sid, n['Id']))
+                if c.get('PostPayment'):
+                    receipt = nodes.get(c['PostPayment'])
+                    exits = receipt.get('Choices', []) if receipt else []
+                    if ((c.get('Crusade') or {}).get('Amount', 0) >= 0 or c['Next'] or c['Check'] or c['Abort']
+                            or c['Revive'] or c['NativeNext'] or receipt is n or not receipt
+                            or sum(answer.get('PostPayment') == c['PostPayment']
+                                   for host in s['Nodes'] for answer in host['Choices']) != 1
+                            or receipt.get('EnterSet') or receipt.get('Paragraphs') or len(exits) != 1
+                            or not exits[0]['Abort'] or any(exits[0].get(k) for k in
+                                ('Set', 'RefreshTimes', 'Next', 'PostPayment', 'Check', 'Crusade', 'Revive', 'NativeNext',
+                                 'RemoveItem', 'StartEtude', 'Mythic', 'Alignment', 'Requires', 'Forbids'))):
+                        errs.append('Invalid post-payment receipt: %s/%s' % (sid, n['Id']))
                 if c["Next"] is not None and c["Next"] not in nodes: errs.append("Missing node: %s/%s" % (sid, c["Next"]))
                 ck = c["Check"]
                 if ck and (c["Next"] is not None or c["Abort"] or c["Revive"] is not None or is_epilogue(s)
@@ -2212,6 +2227,10 @@ def sim_available(model, s, st):
     if s["Relationship"] == "tirabade":
         if not is_remote(s) and ch == 4: return False
         if s["Owner"] == "Together" and ch >= 5 and ("irabeth_away" in st.flags or "anevia_away" in st.flags): return False
+    if s["DelayHours"] > 0 and s.get("DelayClocks"):
+        clocks = [key for key in s["DelayClocks"] if key in st.flags]
+        return bool(clocks) and all(key in st.times and st.times[key] >= 0
+                                   and st.hour - st.times[key] >= s["DelayHours"] for key in clocks)
     held = list(s["Requires"]) + [f for g in s["RequiresAnyGroups"] for f in g if f in st.flags]
     last = max([st.times[k] for k in held if k in st.times] or [st.hour - s["DelayHours"]])
     return st.hour - last >= s["DelayHours"]
@@ -2297,6 +2316,26 @@ def sim_choice_available(choice, st):
                  and st.crusade_resources.get(cost["Resource"], 0) + cost["Amount"] >= 0))
 
 
+def sim_payment_context(model, scene, choice, st):
+    return (sim_contact_available(model, scene, st)
+            and (scene.get('PrivateParticipants') or model.rels[scene['Relationship']]['ClosedFlag'] not in st.flags)
+            and all(flag in st.flags for flag in choice['Requires'])
+            and not any(flag in st.flags for flag in set(choice['Forbids']) - set(choice['Set'])))
+
+
+def sim_post_payment_available(model, scene, choice, st):
+    return (bool(choice.get('PostPayment')) and payment_key(scene, choice) in st.flags
+            and scene['Id'] in st.flags and all(flag in st.flags for flag in choice['Set'])
+            and sim_payment_context(model, scene, choice, st))
+
+
+def sim_record_flags(writes, refresh, st):
+    for flag in writes:
+        if flag not in st.flags or flag in refresh:
+            st.flags.add(flag)
+            st.times[flag] = st.hour
+
+
 def sim_paid_choice(model, scene, choice, st, publish):
     """E9 mirrors the synchronous full-debit receipt and saved story rollback."""
     key = payment_key(scene, choice)
@@ -2309,7 +2348,9 @@ def sim_paid_choice(model, scene, choice, st, publish):
     before = (set(st.flags), dict(st.times), dict(st.rest_spent), dict(st.crusade_resources))
     try:
         st.crusade_resources[cost["Resource"]] += cost["Amount"]
+        if choice.get("PostPayment") and not sim_payment_context(model, scene, choice, st): raise ValueError("Payment contact lost during debit")
         publish()
+        if choice.get("PostPayment") and not sim_payment_context(model, scene, choice, st): raise ValueError("Payment contact lost during publication")
         st.flags.add(key)
         if not all(flag in st.flags for flag in choice["Set"]): raise ValueError("Paid story publication incomplete")
         terminal = not choice["Abort"] and choice["Next"] is None and choice.get("Check") is None
@@ -2376,12 +2417,11 @@ def sim_play(model, s, st, rel_flags, plan=None):
             if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
         # end eng7-l09
         def publish():
-            for f in c["Set"]:
-                if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
+            sim_record_flags(c["Set"], c.get("RefreshTimes", []), st)
             if c.get("Check") is None and c["Next"] is None and not c["Abort"]:
                 allowance = s.get("RestAllowance")
                 if allowance: st.rest_spent[allowance] = st.rest_spent.get(allowance, 0) + 1
-                st.flags.add(s["Id"]); st.times[s["Id"]] = st.hour
+                sim_record_flags([s["Id"]], [], st)
         if (c.get("Crusade") or {}).get("Amount", 0) < 0:
             if not sim_paid_choice(model, s, c, st, publish): return False
         else:
@@ -2395,7 +2435,7 @@ def sim_play(model, s, st, rel_flags, plan=None):
         if s.get("RestAllowance") and s["Id"] not in st.flags:
             key = s["RestAllowance"]
             st.rest_spent[key] = st.rest_spent.get(key, 0) + 1
-        st.flags.add(s["Id"]); st.times[s["Id"]] = st.hour
+        sim_record_flags([s["Id"]], [], st)
         return True
     return False
 

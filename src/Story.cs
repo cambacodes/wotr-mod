@@ -521,6 +521,8 @@ namespace Tirabade
         public int MinChapter = 1;
         public int MaxChapter = 5;
         public int DelayHours;
+        // Optional explicit predecessor clocks; other requirements only gate availability.
+        public string[] DelayClocks = Array.Empty<string>();
         public bool Optional;
         // E6: a one-node companion/NPC reaction to a Trickster device (story_format.reaction).
         public bool Reaction;
@@ -621,6 +623,10 @@ namespace Tirabade
         public string? Revive;
         public SkillCheck? Check;
         public string[] Set = Array.Empty<string>();
+        // Only an explicit selection may refresh these existing saved hour keys.
+        public string[] RefreshTimes = Array.Empty<string>();
+        // Terminal payment publishes completion atomically, then displays this receipt node.
+        public string? PostPayment;
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
         // E5 native answer effects. Mythic: a Kingmaker.DialogSystem.Blueprints.Mythic name (MythicRequirement plus the
@@ -821,7 +827,8 @@ namespace Tirabade
 
         public static IEnumerable<string> NextNodes(Choice choice) => choice.Check != null
             ? new[] { choice.Check.Success, choice.Check.Failure }
-            : choice.Next == null ? Array.Empty<string>() : new[] { choice.Next };
+            : choice.Next != null ? new[] { choice.Next }
+            : choice.PostPayment != null ? new[] { choice.PostPayment } : Array.Empty<string>();
 
         public static bool Match(IEnumerable<string> requires, IEnumerable<string> forbids, Snapshot state) =>
             requires.All(state.Has) && !forbids.Any(state.Has);
@@ -902,6 +909,12 @@ namespace Tirabade
                 if (waitedFor != null && (!state.Times.TryGetValue(waitedFor, out int requestedAt)
                     || requestedAt < 0 || (long)state.Hour - requestedAt < scene.DelayHours)) return false;
             }
+            if (scene.DelayHours > 0 && scene.DelayClocks.Length > 0)
+            {
+                var held = scene.DelayClocks.Where(state.Has).ToArray();
+                return held.Length > 0 && held.All(key => state.Times.TryGetValue(key, out int at)
+                    && at >= 0 && (long)state.Hour - at >= scene.DelayHours);
+            }
             int last = scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(group => group).Where(state.Has))
                 .Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
             return state.Hour - last >= scene.DelayHours;
@@ -964,6 +977,25 @@ namespace Tirabade
             foreach (string flag in node.EnterSet)
                 if (state.Flags.Add(flag)) state.Times[flag] = state.Hour;
         }
+
+        // Returns only flags whose persisted value/time actually changed. Ordinary
+        // already-earned witnesses keep their first timestamp, including on reload.
+        public static IEnumerable<string> RecordFlags(IEnumerable<string> writes, IEnumerable<string> refresh, Snapshot state)
+        {
+            var repeated = new HashSet<string>(refresh);
+            foreach (string key in writes.Distinct())
+                if (state.Flags.Add(key) || repeated.Contains(key))
+                { state.Times[key] = state.Hour; yield return key; }
+        }
+
+        public static bool PaymentContextAvailable(Story story, Scene scene, Choice choice, Snapshot state) =>
+            ContactAvailable(story, scene, state)
+            && (scene.PrivateParticipants || !state.Has(story.Relationships[scene.Relationship].ClosedFlag))
+            && Match(choice.Requires, choice.Forbids.Except(choice.Set), state);
+
+        public static bool PostPaymentAvailable(Story story, Scene scene, Choice choice, Snapshot state) =>
+            choice.PostPayment != null && state.Has(PaymentKey(scene, choice)) && state.Has(scene.Id)
+            && choice.Set.All(state.Has) && PaymentContextAvailable(story, scene, choice, state);
 
         public static bool PaymentExitAvailable(Node node, Snapshot state)
             => node.Choices.Any(choice => choice.Crusade?.Amount < 0)
@@ -1032,7 +1064,7 @@ namespace Tirabade
         // The caller owns the synchronous native effect and story publication. Every attempted mutation is rolled back
         // on a partial debit or publication exception; no paid witnesses precede the verified full removal.
         public static bool CrusadeTransaction(CrusadeChoice cost, Func<bool> guards, Func<int?> read,
-            Action<int> change, Action publish, Action restoreStory, Action<string> warn)
+            Action<int> change, Action publish, Action restoreStory, Action<string> warn, Func<bool>? live = null)
         {
             int? before = null;
             bool attempted = false;
@@ -1045,7 +1077,9 @@ namespace Tirabade
                 change(cost.Amount);
                 if (read() != (long)before.Value + cost.Amount)
                     throw new InvalidOperationException("Full crusade debit was not applied: " + cost.Resource);
+                if (live != null && !live()) throw new InvalidOperationException("Payment contact was lost during debit");
                 publish();
+                if (live != null && !live()) throw new InvalidOperationException("Payment contact was lost during publication");
                 return true;
             }
             catch (Exception ex)
@@ -2357,6 +2391,13 @@ namespace Tirabade
                 .Concat(story.Derived.Keys).Concat(story.Counts.Keys));
             foreach (var scene in story.Scenes)
             {
+                if (scene.DelayClocks == null || scene.DelayClocks.Distinct().Count() != scene.DelayClocks.Length
+                    || scene.DelayClocks.Any(key => !clocks.Contains(key)
+                        || !scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(g => g)).Contains(key))
+                    || scene.DelayClocks.Length > 0 && (scene.DelayHours <= 0
+                        || !scene.Requires.Any(scene.DelayClocks.Contains)
+                        && !scene.RequiresAnyGroups.Any(g => g.Length > 0 && g.All(scene.DelayClocks.Contains))))
+                    throw new InvalidOperationException("Invalid declared delay clocks: " + scene.Id);
                 if (scene.Relationship == "household" && scene.RestAllowance != null && scene.DelayHours > 0
                     && !scene.Requires.Any(clocks.Contains)
                     && !scene.RequiresAnyGroups.Any(group => group.Length > 0 && group.All(clocks.Contains)))
@@ -2576,6 +2617,25 @@ namespace Tirabade
                         if (choice.Revive == "konomi" && !choice.Set.SequenceEqual(new[] { "konomi.retained_return_confirmed" })
                             || choice.Set.Contains("konomi.retained_return_confirmed") && choice.Revive != "konomi")
                             throw new InvalidOperationException("Konomi restoration records only verified return, not relationship access: " + scene.Id);
+                        if (choice.RefreshTimes == null || choice.RefreshTimes.Distinct().Count() != choice.RefreshTimes.Length
+                            || choice.RefreshTimes.Any(key => !choice.Set.Contains(key))
+                            || choice.RefreshTimes.Length > 0 && choice.Abort)
+                            throw new InvalidOperationException("Invalid chosen clock refresh: " + scene.Id + "/" + node.Id);
+                        if (choice.PostPayment != null)
+                        {
+                            var receipt = scene.Nodes.FirstOrDefault(n => n.Id == choice.PostPayment);
+                            if (choice.Crusade == null || choice.Crusade.Amount >= 0 || choice.Next != null || choice.Check != null
+                                || choice.Abort || choice.Revive != null || choice.NativeNext != null || receipt == null || receipt == node
+                                || scene.Nodes.SelectMany(n => n.Choices).Count(c => c.PostPayment == choice.PostPayment) != 1
+                                || receipt.EnterSet.Length != 0 || receipt.Paragraphs.Count != 0 || receipt.Choices.Count != 1
+                                || !receipt.Choices[0].Abort || receipt.Choices[0].Set.Length != 0 || receipt.Choices[0].RefreshTimes.Length != 0
+                                || receipt.Choices[0].Next != null || receipt.Choices[0].PostPayment != null || receipt.Choices[0].Check != null || receipt.Choices[0].Crusade != null
+                                || receipt.Choices[0].Revive != null || receipt.Choices[0].NativeNext != null
+                                || receipt.Choices[0].RemoveItem != null || receipt.Choices[0].StartEtude != null
+                                || receipt.Choices[0].Mythic != null || receipt.Choices[0].Alignment != null
+                                || receipt.Choices[0].Requires.Length != 0 || receipt.Choices[0].Forbids.Length != 0)
+                                throw new InvalidOperationException("Invalid post-payment receipt: " + scene.Id + "/" + node.Id);
+                        }
                         if (choice.Next != null && !nodes.Contains(choice.Next)) throw new InvalidOperationException("Missing node: " + scene.Id + "/" + choice.Next);
                         if (choice.Check != null && (choice.Next != null || choice.Abort || choice.Revive != null
                             || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)

@@ -51,6 +51,14 @@ internal static class Program
             return BlueprintGuid.Parse(string.Concat(sha.ComputeHash(Encoding.UTF8.GetBytes("RanRomance.Tirabade.v1/" + name)).Take(16).Select(b => b.ToString("x2"))));
     }
 
+    private static void CheckNextPage(Scene scene, Tirabade.Node node, Choice choice, int index, BlueprintAnswer answer)
+    {
+        string nodeId = scene.Id + "." + node.Id;
+        var expected = choice.Check != null ? new[] { Id("check." + nodeId + "." + index) }
+            : Rules.NextNodes(choice).Select(next => Id("page." + scene.Id + "." + next)).ToArray();
+        Check(answer.NextCue.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Wrong next page: " + nodeId);
+    }
+
     private static T Reference<T>(string guid) where T : BlueprintReferenceBase, new()
     {
         var reference = new T();
@@ -745,12 +753,19 @@ internal static class Program
                 int kindLine = ReferenceEquals(node, scene.Nodes[0]) && Rules.IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     && (Rules.KindOf(scene) == "letter" || Rules.KindOf(scene) == "invitation" || Rules.KindOf(scene) == "sending" || Rules.KindOf(scene) == "memory") ? 1 : 0;
                 Check(page!.Cues.Count == kindLine + (string.IsNullOrWhiteSpace(node.Text) ? 0 : 1) + node.Paragraphs.Count && page.Cues.All(c => c.Get() is BlueprintCue), "Missing page cue: " + nodeId);
-                if (scene.ParticipantContacts.Count > 0 && !string.IsNullOrWhiteSpace(node.Text))
+                var receiptChoice = scene.Nodes.SelectMany(n => n.Choices).SingleOrDefault(c => c.PostPayment == node.Id);
+                if (receiptChoice != null)
+                    Check(page.Conditions.Conditions.Single() is Tirabade.Main.RouteCondition receipt
+                        && ReferenceEquals(receipt.ReceiptChoice, receiptChoice) && ReferenceEquals(receipt.PaidScene, scene),
+                        "Receipt page lost its paid transaction guard: " + nodeId);
+                if ((receiptChoice != null || scene.ParticipantContacts.Count > 0) && !string.IsNullOrWhiteSpace(node.Text))
                 {
                     var speech = ResourcesLibrary.TryGetBlueprint(Id("cue." + nodeId)) as BlueprintCue;
                     Check(speech != null && speech.Conditions.Conditions.Single() is Tirabade.Main.RouteCondition live
-                        && ReferenceEquals(live.Continuation, scene) && !live.ContactLost,
-                        "Living book speech survives contact loss: " + nodeId);
+                        && !live.ContactLost && (receiptChoice != null
+                            ? ReferenceEquals(live.ReceiptChoice, receiptChoice) && ReferenceEquals(live.PaidScene, scene)
+                            : ReferenceEquals(live.Continuation, scene) && live.ReceiptChoice == null),
+                        "Living book speech lost its contact or paid receipt guard: " + nodeId);
                 }
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
@@ -837,9 +852,28 @@ internal static class Program
                         && ReferenceEquals(((Tirabade.Main.RouteCondition)answer.SelectConditions.Conditions.Single()).Continuation, continuation)
                         && ReferenceEquals(action!.Continuation, continuation), "Contact continuation is not guarded at visibility, selection and mutation: " + nodeId);
                     Check(ReferenceEquals(action!.Complete, !ending && choice.Next == null && choice.Check == null && !choice.Abort ? scene : null), "Choice completes at the wrong point: " + nodeId);
-                    var expected = choice.Check != null ? new[] { Id("check." + nodeId + "." + i) }
-                        : choice.Next == null ? Array.Empty<BlueprintGuid>() : new[] { Id("page." + scene.Id + "." + choice.Next) };
-                    Check(answer.NextCue.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Wrong next page: " + nodeId);
+                    CheckNextPage(scene, node, choice, i, answer);
+                    if (choice.Crusade?.Amount < 0 && choice.Next == null && choice.Check == null)
+                    {
+                        // Every terminal payment must reject an undeclared continuation, even when a receipt is declared.
+                        var original = answer.NextCue.Cues.ToArray();
+                        bool rejected = false;
+                        try
+                        {
+                            answer.NextCue.Cues.Add(Reference<BlueprintCueBaseReference>(page.AssetGuid.ToString()));
+                            CheckNextPage(scene, node, choice, i, answer);
+                        }
+                        catch (InvalidOperationException error) when (error.Message == "Wrong next page: " + nodeId)
+                        {
+                            rejected = true;
+                        }
+                        finally
+                        {
+                            answer.NextCue.Cues.Clear();
+                            answer.NextCue.Cues.AddRange(original);
+                        }
+                        Check(rejected, "Terminal payment accepts an undeclared next page: " + nodeId);
+                    }
                     if (choice.Check != null)
                     {
                         var roll = answer.NextCue.Cues.Single().Get() as BlueprintCheck;
