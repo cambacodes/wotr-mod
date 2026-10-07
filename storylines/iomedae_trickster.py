@@ -763,11 +763,15 @@ page("bridge", "The Bridge", [
 {n}The cathedral's white banner comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}''',
         c("Continue", "her")),
     nar("her", '''{n}At the far end of it, where the fire stops, a woman in plain steel stands with one hand on the staff and her whole weight against it.{/n}
-{n}It is Iomedae. She wears the face you remember from the banner: the tired woman at the gorge. You recognize her before she takes your hand. The face gives you something to hold on to; it does not make her mortal. At the Summit she said the Worldwound was no longer the concern of mortals alone. Here she has chosen to act, and she will answer for this crossing before Pharasma.{/n}
+{n}It is Iomedae. You recognize her from Threshold before she takes your hand. The face gives you something to hold on to; it does not make her mortal. At the Summit she said the Worldwound was no longer the concern of mortals alone. Here she has chosen to act, and she will answer for this crossing before Pharasma.{/n}
 "I told you I would decide here," {n}she says.{/n} "I have decided. Walk."''',
         c("[Walk.]", "walk"),
         c('"You came."', "came"),
-        c('"Why?"', "why")),
+        c('"Why?"', "why"),
+        paragraphs=(
+            p("{n}It is the face the banner showed you at the gorge, the tired woman bracing herself while her company crossed.{/n}", requires=(BRIDGE_SEEN,)),
+            p("{n}You remember her forehead against yours in the dream at the gorge, before she sent you back to the war.{/n}", requires=(MORTAL_SEEN,), forbids=(BRIDGE_SEEN,)),
+        )),
     nar("came", '''"I came." {n}Her arm is shaking. Her face is not.{/n} "Walk, Commander. Do not look down. Do not look at me."''',
         c("[Walk.]", "walk")),
     nar("why", '''"Because you argued well, and because you meant it, and because I wanted to." {n}The fire leans at her and she does not lean back.{/n} "The last is not a reason a goddess gives. I am giving it anyway, here, where nobody but you and the Wound can hear me, and the Wound is closing. Walk."''',
@@ -1056,7 +1060,7 @@ page("after", "Here and There", [
             p('''{n}Some nights she came and said nothing at all, and the stranger learned that those were the nights she was thinking of her herald.{/n}''',
               requires=(HERALD_FELL,), forbids=(HERALD_SAVED,)),
             p('''{n}The flask never sloshed. Once she laid her hand over the pocket, as she had over the banner staff at the edge. After the crossing the flask was empty; Pharasma kept the death.{/n}''',
-              requires=(BURIED_ALIVE,)),
+              requires=(BURIED_ALIVE, H2, "trickster.lastcall.primed.bottle")),
             p('''{n}Once she set her palm against the pocket that held the flask. No banner had reached the Wound, and the bottle still held its death. She withdrew her hand without asking to take it.{/n}''', requires=("lastcall.bottled_held",), forbids=(BURIED_ALIVE, CARRIED)),
             p('''{n}The stranger walked the roads of Mendev for the pleasure of it, as promised, and she said that of all the terms of the disputation it was the only one she had not expected to enjoy enforcing.{/n}''',
               requires=(AFTER_ROAD, KEPT)),
@@ -1199,5 +1203,5 @@ def integrate_joint(payload):
     node["Paragraphs"].extend([
         p("{n}Her banner stood at the edge of the Worldwound. She stood beside it while the Commander chose what to do.{/n}", requires=(CARRIED,)),
         p("{n}The Commander had never raised her banner at Threshold. There had been no crossing on her cloth, no bargain with the Lady of Graves for a return. Iomedae's visits were her own choice; the flask had its own terms.{/n}", forbids=(CARRIED,)),
-        p("{n}Areelu later measured the empty flask and recorded what she had put into it. She had not witnessed the crossing inside the seam or heard its terms from Iomedae.{/n}", requires=(BURIED_ALIVE, H2, "crossroute.areelu.available")),
+        p("{n}Areelu later measured the empty flask and recorded what the Commander had drained from the Wound she created. She had not witnessed the crossing inside the seam or heard its terms from Iomedae.{/n}", requires=(BURIED_ALIVE, H2, "crossroute.areelu.available")),
     ])

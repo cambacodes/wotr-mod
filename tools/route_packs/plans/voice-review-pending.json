@@ -1,0 +1,17 @@
+[
+  {
+    "scene": "iomedae.trickster.epilogue.bridge",
+    "route": "iomedae",
+    "finding": "iomedae:D01"
+  },
+  {
+    "scene": "iomedae.lastcall.page",
+    "route": "iomedae",
+    "finding": "iomedae:D08"
+  },
+  {
+    "scene": "iomedae.lastcall.page",
+    "route": "iomedae",
+    "finding": "iomedae:D09"
+  }
+]
