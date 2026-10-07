@@ -1183,7 +1183,7 @@
       "surface": [
         "eliandra.lastcall.page",
         "page",
-        "paragraph[6]"
+        "paragraph[8]"
       ],
       "requires": [
         "iomedae.trickster.buried_alive"
@@ -1206,7 +1206,7 @@
       "surface": [
         "galfrey.lastcall.page",
         "page",
-        "paragraph[6]"
+        "paragraph[9]"
       ],
       "requires": [
         "iomedae.trickster.buried_alive"
@@ -1525,6 +1525,26 @@
       "requires": [
         "soana.trickster.cost.guardian_paid",
         "soana.trickster.cost.knot_bearer"
+      ]
+    },
+    {
+      "surface": [
+        "eliandra.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "eliandra.trickster.returned_from_fords"
+      ]
+    },
+    {
+      "surface": [
+        "galfrey.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "galfrey.trickster.returned"
       ]
     }
   ],
@@ -1990,5 +2010,8 @@
       "Epilogues/Cue_0570 fb1347793c15a9342af9eaf03060056d: Socothbenoth vanishes; no absent creditor collection."
     ],
     "legacy_contracts": "Historical callable keys, native availability and all live contact contracts retain their registered definitions. account_due readers refine obligations; shared documentary scenes handle refused/absent creditors."
+  },
+  "endings4": {
+    "review": "Job 2 location variants precede the bridge callbacks. Keep each bridge inventory attached to the delivered recovery paragraph; the added location assertions preserve the existing earned return witnesses."
   }
 }

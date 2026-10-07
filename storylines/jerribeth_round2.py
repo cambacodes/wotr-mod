@@ -565,8 +565,7 @@ def localize_late_choices(event):
             # The original ending exit is the actual exit, with unchanged
             # identity and mechanics. Only newly selected partner aftermath is
             # placed on the preceding page.
-            notes = [resolved(para, state) for para in original.get("Paragraphs", ())
-                     if any(f in local for f in para.get("Requires", ()) + para.get("Forbids", ()))]
+            notes = [resolved(para, state) for para in original.get("Paragraphs", ())]
             notes = [para for para in notes if para]
             signed = "__signature" in state
             private = "__private" in state
@@ -594,7 +593,7 @@ def localize_late_choices(event):
                 return cache[key]
             label = "job3_local_" + id + "_" + hashlib.sha256("|".join(sorted(state)).encode()).hexdigest()[:10]
             cache[key] = label
-            clones.append(n(label, "Narrator", '{n}The answer stood between them.{/n}',
+            clones.append(n(label, original['Speaker'], original['Text'],
                             c("Continue", id), portrait="Jerribeth", paragraphs=notes))
             return label
         key = (id, state)
@@ -606,6 +605,11 @@ def localize_late_choices(event):
         item["Id"] = label
         item["Choices"] = []
         item["Paragraphs"] = [out for para in item.get("Paragraphs", ()) if (out := resolved(para, state))]
+        # Partner summaries belong to the selected terminal, not each step.
+        summaries = {block['Text'] for block in partner.partner_paragraphs()}
+        for block in item["Paragraphs"]:
+            if block['Text'] in summaries:
+                block.setdefault('Forbids', []).append('trickster.ever')
         clones.append(item)
         for answer in original["Choices"]:
             out = resolved(answer, state)
@@ -644,6 +648,10 @@ def localize_late_choices(event):
                 answer[key] = [f for f in answer[key] if f not in local]
             if item is start:
                 answer["Forbids"].append("trickster.ever")
+    start['Text'] = '{n}Jerribeth opened the frame. The correspondence had survived Threshold; the new contract waited beside it.{/n}'
+    # The compiled offer owns the arrival. Retain the original slots dormant.
+    for block in start.get('Paragraphs', ()):
+        block.setdefault('Forbids', []).append('trickster.ever')
     start["Choices"].append(c('[Hear her offer.]', local_start))
     # Rules.Validate also checks structural reachability of saved pages. Keep
     # the retained graph connected by an appended, retired answer; this scene

@@ -17,7 +17,7 @@
   "min_lines": 16,
   "max_lines": 26,
   "slot_id": "minagho_chivarro.trickster.epilogue.commit.explicit.1",
-  "default_text": "{n}Chivarro drops the sword belt by the door. Minagho pulls her gown loose and kisses her, then reaches for you; Chivarro draws both of you onto the bed she chose herself.{/n}\n\"Bar it, Minagho. They have had the Commander long enough.\"",
+  "default_text": "{n}Minagho reaches back to bar the door, then catches Chivarro by the waist. Chivarro kisses her and draws the Commander between them, bare skin pressed close on the mattress.{/n}\n\"Three places, honey. Keep yours warm.\"",
   "source_nodes": [
     "went"
   ],

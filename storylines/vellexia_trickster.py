@@ -911,7 +911,7 @@ def integrate(payload):
     _node(mirror, "start").setdefault("Paragraphs", []).extend(_node(mirror, "start").pop("_Round2Receipts", []))
     _node(mirror, "start")["Paragraphs"].append(
         p("{n}She had promised to watch the Commander regret it. Behind the glass, she had time.{/n}",
-          any_groups=[[WATCHED, KEPT]]))
+          requires=(WATCHED,)))
     _forbid(_scene(by_id, "vellexia.ending_hostility"), "vellexia.spared", RETURNED)
     for name in ORDINARY_ENDINGS:
         s = _scene(by_id, "vellexia.ending_" + name)

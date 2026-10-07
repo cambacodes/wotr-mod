@@ -145,3 +145,7 @@ def integrate(story):
             gates = [key for key in scene.get("Requires", [])
                      if ".payoff." in key or key.endswith((".present_now", ".reachable_by_letter"))]
             variant["When"] = [list(dict.fromkeys([*group, *gates])) for group in variant.get("When", [])]
+
+    # Job 4 runs after indexed contracts: preserve their historical paragraph slots.
+    from storylines import endings_job4
+    endings_job4.integrate(story)
