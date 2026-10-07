@@ -12899,6 +12899,8 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `kiana.trickster.late_question/partner_stop/0` — [End the courtship.]; records `kiana.closed`
 - `kiana.trickster.late_question_letter/partner_refuse/0` — [Leave her.]; records `kiana.partner_stance.exclusive`, `kiana.closed`, `kiana.stayed_married`
 - `kiana.trickster.late_question_letter/partner_stop/0` — [End the courtship.]; records `kiana.closed`
+- `kiana.trickster.late_question.elan_reply/partner_stop/0` — [End the courtship.]; records `kiana.closed`
+- `kiana.trickster.late_question_letter.elan_reply/partner_stop/0` — [End the courtship.]; records `kiana.closed`
 - `kiana.wedding.cast/start/3` — [Let her get back to her guests.]; records `kiana.wedding.cast.seen`, `kiana.wedding.cast.declined`; ends without completing scene
 - `kiana.partner_discovery/end/0` — [Let her go.]; records `kiana.partner_secret_exposed`, `kiana.closed`, `kiana.stayed_married`
 
