@@ -523,12 +523,27 @@ def _debts(scenes):
             para["Text"] = ('{n}Before they parted, the Commander had paid blood into her silver bowl. '
                             'The scars remained. The battle spirits\' claim had been for her return, '
                             'not for her affection; closing the bedroom door did not erase it.{/n}')
-    text(old, "page", '{n}Camellia stopped coming to the Commander\'s rooms. After the war she went '
-         'her own way; a pressed camellia arrived without a letter, and the Commander recognised '
-         'the careful hand on the address.{/n}')
-    node(old, "page").setdefault("Paragraphs", []).append(p(
+    text(old, "page", '{n}The Commander had closed the door on Camellia. '
+         'Her name remained among the crusade\'s records.{/n}')
+    paragraphs = node(old, "page").setdefault("Paragraphs", [])
+    paragraphs.append(p(
         '{n}Until the war ended she answered the Commander\'s orders with exquisite courtesy. '
-        'She never mistook those orders for another invitation to their rooms.{/n}', forbids=(ct.RET,)))
+        'She never mistook those orders for another invitation to their rooms.{/n}',
+        requires=("camellia.present_now",), forbids=(ct.RET,)))
+    paragraphs.extend((
+        p('{n}After the war she went her own way. A pressed camellia arrived without a letter, '
+          'in the careful hand the Commander remembered.{/n}', requires=("camellia.present_now",)),
+        p('{n}She had been dismissed from the crusade. No further orders went to her; no reply '
+          'came from her.{/n}', requires=(ct.KICKED,), forbids=("camellia.present_now", ct.DEAD, ct.KILLED)),
+        p('{n}Her death stood. The room was cleared, and no new flowers arrived.{/n}',
+          any_groups=((ct.DEAD, ct.KILLED),), forbids=("camellia.present_now", P + "coffin_life")),
+        p('{n}She had returned once. Her later death left the room empty again. No new flowers arrived.{/n}',
+          requires=("camellia.returned_actor_lost",), forbids=("camellia.present_now",)),
+        p('{n}The woman who had returned from the coffin was dismissed from the crusade. '
+          'No further orders went to her, and no reply came.{/n}',
+          requires=(ct.KICKED, P + "coffin_life", "camellia.epoch_redeparted"),
+          forbids=("camellia.present_now", "camellia.returned_actor_lost")),
+    ))
 
 
 def _slots(scenes):

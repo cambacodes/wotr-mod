@@ -289,7 +289,7 @@ partner("vellexia", "vellexia", "vellexia.committed", "vellexia.closed", "Never 
     page_forbids=("vellexia.farewell_friends", "vellexia.farewell_slow", V + "kept_as_mirror", "vellexia.parted"),
     deal=[[V + "returned"], [V + "cost.predicted"], [V + "cost.trick_kept"]],
     call=call('''[Call in her bill] "Vellexia, I owe you, and you never let a debt go. I'll pay in instalments. Mind you're there to collect them."''',
-        '''{n}Across a great distance, a lady who is never bored sits up and pays attention, and reaches for her account book.{/n}''',
+        '''{n}Across a great distance, Vellexia's voice answers. "Instalments? How dreary. I shall charge for every evening you keep me waiting." Her laughter drowns out the wind.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Vellexia: an account kept", "I owe Lady Vellexia for what I did to her, and for what I made her do. She keeps a very precise account of things nobody else would think to bill."),
     # Q11: the late commit (vellexia.trickster.late_committed = the courting answer of the first call after a return) is a
@@ -698,7 +698,7 @@ partner("nenio", "nenio", "nenio.committed", "nenio.closed", "The Last Observati
 
 HX = "herrax.trickster."
 partner("herrax", "herrax", "herrax.committed", "herrax.closed", "The Keeper's Night",
-    '''Herrax did not close the Ten Thousand Delights on the night the rift took the Commander, or failed to. She had said she would close them for one night if the news was bad, and the news took three days to reach the Midnight Isles. She spent the three days on Chivarro's old dais with the lamps lit and the takings unread, pouring her own wine, which nobody in the house had ever seen her do. Rokhorn brought the jug up the steps each time it was empty. He did not smile once, and she did not ask him to.''',
+    '''Herrax did not close the Ten Thousand Delights on the night the rift took the Commander, or failed to. She had said she would close them for one night if the news was bad, and the news took three days to reach the Midnight Isles. She spent the three days on the dais she had inherited from Chivarro years ago, with the lamps lit and the takings unread, pouring her own wine, which nobody in the house had ever seen her do. Rokhorn brought the jug up the steps each time it was empty. He did not smile once, and she did not ask him to.''',
     (
         page_p('''The world buried the Commander. Herrax closed the Delights for one night, the first in a thousand years, and the whole of Alushinyrra said the madam had gone soft. She let them say it. The next night she opened again and charged double, and when a guest asked what the black ribbon on the arch was for, she told him it was the price of a room, and he paid it.''', requires=(ON_RECORD,)),
         page_p('''When the word came up the Wound roads that the Commander had walked out of the rift after all, she threw open the street doors of the Delights and let the whole Lower City drink until dawn at the house's expense. Then she sent the bill to the Lady in Shadow's court, marked "for the queen's amusement", and the court paid it without a word.''', requires=(H2,), forbids=("noct.defeated_not_dead",)),
@@ -737,14 +737,16 @@ partner("horzalah", "horzalah", "horzalah.committed", "horzalah.closed", "The Bo
 
 EL = "eliandra.trickster."
 partner("eliandra", "eliandra", "eliandra.committed", "eliandra.closed", "The Maiden's Lights",
-    '''Eliandra did not go to Threshold. She had meant to go as far as the siege camp with the healers, and on the last day a column of wounded came up the Drezen road who could not wait, and she stayed with them instead, one wound at a time, as she did everything now. When the night came she went up onto the north wall of Drezen with a cup of water and her travelling cloak, and stood facing the Wound, and waited to be told.''',
+    '''Eliandra did not go to Threshold. The wounded still needed her hands. When the evening reading ended, she set down her cup and waited for news of the Wound.''',
     (
-        page_p('''At the rift the Commander looked north and saw only a dark sky, and asked it, aloud, what it was doing. Far off on the north wall of Drezen a grey-cloaked woman turned her face up to a sky full of her Lady's lights, and answered, in the slow plain voice of the evening reading, exactly. The sentry beside her swore afterwards that he had heard both halves of the conversation, and nobody believed him, and he did not care.''', requires=(called("eliandra"),)),
+        page_p('''At the rift the Commander looked north and asked what the sky was doing. Eliandra answered with the evening reading, slow and exact. The words carried through the roar; the lights themselves remained beyond the Commander's sight.''', requires=(called("eliandra"),)),
         page_p('''The world buried the Commander. Eliandra read the evening's observation over the grave, as she had read it every evening for a hundred years, and at the end of it, where the corrections go, she wrote in her small exact hand: "Premature." Nobody crossed it out.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she was there with her question already chosen. It was, she admitted afterwards, not a very good one. She had been saving the good ones.''', requires=(H2,)),
         page_p('''Whatever the sky over Threshold did that night, the Commander could not see the part of it that belonged to the Maiden, and never would. She said that was all the proof she needed that the bargain had held, and went on describing it anyway.''', requires=(EL + "cost.lights_given",)),
         page_p('''She was not the strongest of her Lady's priestesses any more. She was, she said, strong enough to wait up.''', requires=(EL + "cost.reward_returned",)),
         page_p('''Her letter from the fords was still in the Commander's coat, its answer owed until the war was done. At the rift the Commander meant to write it the next morning, if there was a next morning. There was. It said: either.''', requires=(EL + "letter_kept",), forbids=("eliandra.committed",)),
+        page_p("She had returned from the fords before Threshold. That night she tended the wounded in Drezen, then went up onto the north wall to watch her Lady's lights.", requires=(EL + "returned_from_fords",)),
+        page_p("At the fords, the stargazers covered the last pallet for the night. Eliandra stood outside their tents, her cloak drawn tight, watching her Lady's lights above the ruined road.", forbids=(EL + "returned_from_fords",)),
     ), page_commit_groups=[["eliandra.committed"], [EL + "late_committed"]],
     deal=[[EL + "cost.lights_given"]],
     call=call('''[Look north] "Eliandra. Tell me what the sky is doing."''',
@@ -755,14 +757,17 @@ partner("eliandra", "eliandra", "eliandra.committed", "eliandra.closed", "The Ma
 
 GA = "galfrey.trickster."
 partner("galfrey", "galfrey", GA + "partner", "galfrey.closed", "The Face in the Crowd",
-    """Whoever she was by the last night of the war, the Queen of Mendev or a knight of a minor order whom nobody saluted, she spent it on the walls of Drezen, in the crowd of soldiers who had not been sent to Threshold and would not be told what happened there until morning. She stood among them in plain armour with an old sword, and watched the sky over the Wound the way she had watched it for a hundred years, and for once in all those years she was not the one everybody else was watching.""",
+    """On the last night of the war she watched the sky over the Wound with her sword at her side. Soldiers waited around her for word of the fighting. She checked their ranks before turning back toward the rift.""",
     (
         page_p("""At the rift the Commander called her name, the only one of her names nobody else in the world had the right to call: "Kitrane!" Far off, on the walls of Drezen, a knight in a green surcoat turned her head as if somebody had spoken at her elbow, and said "Here," to nobody, and the soldiers beside her swore afterwards that she had smiled like a girl.""", requires=(called("galfrey"),)),
-        page_p("""The world buried the Commander. She stood at the graveside in the crowd, where she had asked to be, with her hood up. She had been buried once herself, in Nerosyan, with every bell in the city, and she knew exactly how little it meant. She waited.""", requires=(ON_RECORD,)),
+        page_p("""The world buried the Commander. She stood at the graveside with her hood up and waited until the last prayer ended.""", requires=(ON_RECORD,)),
         page_p("""When the flask was opened in Drezen she was there, and said nothing at all, and took the Commander's hand and did not give it back for the rest of the evening.""", requires=(H2,)),
         page_p("""Mendev had its Queen back after Threshold, and a scandal to go with her, and the Commander answered for it: at the Crossroads, whenever the talk turned to Iz, somebody always asked how it had been done, and the Commander always told them, and never once told it the same way twice.""", requires=(GA + "crown_reclaimed",)),
         page_p("""She stayed Kitrane. There was a knight of the Green Crows at the Crossroads table for as long as there was a table, grey-haired in time, with a squire at her elbow and a very old sword, and nobody who sat down there ever learned who she had been.""", requires=(GA + "kitrane_forever",)),
         page_p("""The Queen of Mendev kept her crown and her Commander both, and never once asked Mendev's leave for the second.""", requires=("galfrey.final",)),
+        page_p("Kitrane stood on Drezen's wall among the soldiers left to guard the city. In her green surcoat she could pass from rank to rank without a herald announcing her.", requires=(GA + "returned",)),
+        page_p("Queen Galfrey waited at Threshold with the crusaders. Even there she found a crooked strap to correct before the fighting began.", forbids=(GA + "returned",)),
+        page_p("She had been buried once herself, in Nerosyan, with every bell in the city. The coffin beneath those honours had held another knight. She watched the Commander's grave until the mourners went home.", requires=(ON_RECORD, GA + "returned")),
     ), deal=[[GA + "cost.eulogy"]],
     call=call("""[Call her name] "Kitrane!\"""",
         """{n}You gave her that name at a deathbed, and she took it, and wore it into a crowd. You call it now over the rift, at the top of your voice, the way a sentry calls a password into the dark. It goes out over the Wound and is swallowed, and then, very far off, over a city you cannot see, somebody who used to be a queen answers to it.{/n}""",

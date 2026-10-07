@@ -577,6 +577,8 @@ internal static partial class Program
         }
         // eng8-q8a: always execute ordered latest-state acceptance, including in the full gate.
         if (!args.Contains("--bindings")) RunSuite("PayoffDepartureRulesTests", () => PayoffDepartureRulesTests.Run(story, Check));
+        if (!args.Contains("--bindings") && story.Scenes.Any(s => s.Id == "elyanka.trickster.epilogue.left_free_mourned"))
+            RunSuite("EndingLifecycleTests", () => EndingLifecycleTests.Run(story, Check));
         if (!args.Contains("--bindings")) RunSuite("LatestStateInventoryTests", () => LatestStateInventoryTests.Run(story, Check));
         if (args.Contains("--eng8-q8a"))
         {

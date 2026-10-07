@@ -570,7 +570,7 @@ SCENES.append(scene(W + "epilogue.unclaimed", "", EPI, 6, "", [
 {n}She stayed in the cellars under the citadel with the neathers, all the same. She hunted outside the south postern at night and came back with hares and once with a deer, and fought in the Commander's war where the fighting was worst, and was the Commander's in every way that mattered to her except the one she had not yet decided to ask for.{/n}
 {n}The spring after the Threshold, she caught something. What it was, and whose feet she dropped it at, and what they did with it, belongs to the years after the war.{/n}''',
         paragraphs=COMMON)],
-    requires=("trickster.ever", STARTED), forbids=(COMMITTED, CLOSED, "sacrifice", Q3_KILLED, Q3_SENT, HELLO_SENT, HELLO_ATTACKED),
+    requires=("trickster.ever", STARTED), forbids=(COMMITTED, CLOSED, NATIVE, "sacrifice", Q3_KILLED, Q3_SENT, HELLO_SENT, HELLO_ATTACKED),
     last=6, Relationship=REL, **SAC))
 tag(W + "epilogue.unclaimed", "T")
 

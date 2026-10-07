@@ -701,8 +701,13 @@ def _round2(payload, by_id):
             p('{n}With the clan dead, she went north to find another Sarkorian settlement. She carried her chisels; Drezen kept the finished work.{/n}', requires=(CLAN_DESTROYED,)),
             p('{n}She went north to find the surviving Wintersun carvers, with good Drezen chisels and work of her own to show them.{/n}', forbids=(CLAN_DESTROYED,)),
         ))
-    # Three sacrifice-safe independent conclusions are staged in the route pack.
-    # Shared departure/payoff inventory registration is required before enabling them.
+    # Authored job-2 sacrifice conclusions carry the same clan destinations.
+    for suffix in ("unvisited_mourned", "refusal_mourned", "finished_mourned"):
+        s = by_id[P + "epilogue." + suffix]
+        s["Nodes"][0]["Paragraphs"].extend((
+            p('{n}With the clan dead, she went north to find another Sarkorian settlement. She carried her chisels; Drezen kept the finished work.{/n}', requires=(CLAN_DESTROYED,)),
+            p('{n}She went north to find the surviving Wintersun carvers, with good Drezen chisels and work of her own to show them.{/n}', forbids=(CLAN_DESTROYED,)),
+        ))
 
     # Continuing living codas show a real return appropriate to the chosen relationship.
     for sid, text in (
@@ -712,3 +717,29 @@ def _round2(payload, by_id):
         ("gesmerha.late_ending_open", '{n}The Commander returned with the unflattering story she had requested. She laughed, moved her cup to make room, and asked for the parts still being left out.{/n}'),
     ):
         by_id[sid]["Nodes"][0]["Text"] += "\n" + text
+
+
+# Authored job-2 commission conclusions; sacrifice grants no reconciliation.
+MOURNING_STATUE_PARAGRAPHS = tuple({**paragraph, "Text": paragraph["Text"].replace(
+    "The surviving carvers never mentioned the memorial fire to the Commander again.",
+    "The surviving carvers remembered the coin sent to the memorial fire.")}
+    for paragraph in STATUE_PARAGRAPHS)
+page("unvisited_mourned", "The work that remained",
+     '{n}News of Threshold reached Gesmerha before the Commander ever entered the yard. '
+     'She finished the paid birch alone and put the coin beside it. She had known a patron, '
+     'not a lover. With the work done, she took her hands out of the cold water and chose another piece.{/n}',
+     requires=("trickster.ever", RETURNED, "sacrifice"),
+     forbids=("trickster.commander_back", YARD, PRESENCE_FAILED, COMMITTED, CLOSED, DECLINED),
+     paragraphs=MOURNING_STATUE_PARAGRAPHS)
+page("refusal_mourned", "Paid for, without a promise",
+     '{n}The Commander died at Threshold. Gesmerha finished the paid birch and gave the '
+     'journeyman directions for its delivery. The answer at her bench had been no. She '
+     'wrapped her tools and began work of her own; she carved no private likeness.{/n}',
+     requires=("trickster.ever", RETURNED, DECLINED, "sacrifice"),
+     forbids=("trickster.commander_back", COMMITTED, CLOSED), paragraphs=MOURNING_STATUE_PARAGRAPHS)
+page("finished_mourned", "The commission ended",
+     '{n}Gesmerha heard of Threshold after the Commander had ended their meetings. She '
+     'finished the paid work and left delivery to the smith. She kept the distance she '
+     'had been asked to keep, wrapped her chisels and chose another bench.{/n}',
+     requires=("trickster.ever", RETURNED, CLOSED, "sacrifice"),
+     forbids=("trickster.commander_back", COMMITTED), paragraphs=MOURNING_STATUE_PARAGRAPHS)

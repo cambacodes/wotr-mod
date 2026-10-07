@@ -23,12 +23,12 @@ EDITS = (
     ("62f20840e6aa33844b641c5c8e10f814", "horzalah", "guild",
      dict(Page="9669bef01411fd2498a466d2aef63bca", Sequence="fec3b6f28610c8a48a239f148ed3ed60",
           Key="8ccf1c23-ae95-4b2e-84cc-37b647aabebd"),
-     [["trickster.now", "horzalah.trickster.primed", "horzalah.trickster.returned", "!horzalah.dead"]],
+     [["trickster.now", "horzalah.trickster.primed", "horzalah.trickster.returned", "horzalah.trickster.guild_survives"]],
      '''{n}After the war, Greybor returned to Alushinyrra and killed four rivals for command of the Assassins' Guild's contracts. Horzalah kept the Guild itself. She had escaped her father's claim with the Commander's help and had no intention of surrendering her prize to a dwarf. Greybor chose his work, set his rates, and made the arrangement profitable enough to survive. Across many planes, the words "sweet dreams" still made people shudder.{/n}'''),
     ("8ae3220fd0a645809f59f54f8d89985f", "horzalah", "trio",
      dict(Parent="8b037c275d3423f44a2e5ecc02c003cf", Dialog="ae58532cb72b28b4eaaccb82eb78eaea",
           Key="1dd07de3-c767-4561-b659-4b9cea9cf6e7"),
-     [["trickster.now", "horzalah.trickster.primed", "horzalah.trickster.returned", "!horzalah.dead"]],
+     [["trickster.now", "horzalah.trickster.primed", "horzalah.trickster.returned", "horzalah.trickster.guild_survives"]],
      '''{n}She joined forces with Greybor, who commanded the Assassins' Guild's contracts under Horzalah, and Woljif, Alushinyrra's best fixer. The three former companions rose to power over the city's aristocracy. Horzalah took her share and left them to their own appetites. Their enemies hid and waited for one of the three to betray the others. To everyone's surprise, they were still waiting.{/n}'''),
     ("cba964e33d0a0704d847629be452b359", "irabeth", "service",
      dict(Page="ae1f824fe248d9f4aac7d39ec2e12140", Sequence="f8d7f50e3bb88c143834d234c0b24474",
@@ -59,6 +59,12 @@ EDITS = (
 
 
 def integrate(payload):
+    # Authored job-2 predicate: Guild ownership survives free departure,
+    # while her death or loss of the returned body leaves native ownership.
+    payload.setdefault("Derived", {})["horzalah.trickster.guild_survives"] = [
+        ["trickster.now", "horzalah.trickster.primed", "horzalah.trickster.returned"]]
+    payload.setdefault("DerivedForbids", {})["horzalah.trickster.guild_survives"] = [
+        "horzalah.dead", "horzalah.returned_actor_lost"]
     declare(payload, source=__name__ + ".eng7-f6c", target="21b10801b6c2b194d92506a137ef1307",
         target_type="cue", action="HIDE", key="terendelev.funeral_introduction",
         spec=dict(Target="21b10801b6c2b194d92506a137ef1307", Relationship="terendelev",
@@ -68,7 +74,8 @@ def integrate(payload):
         identity = relationship + ".native.eng7_f6c." + suffix
         payload["Scenes"].append(scene(identity, "", "NativeEpilogue", 0, "",
             [n("line", "Narrator", text, c())], last=99, Relationship=relationship,
-            requires=(when[0][0],)))
+            requires=tuple(k for k in when[0] if not k.startswith("!")) if relationship == "horzalah" else (when[0][0],),
+            forbids=tuple(k[1:] for k in when[0] if k.startswith("!")) if relationship == "horzalah" else ()))
         declare(payload, source=__name__ + ".eng7-f6c", target=target,
             target_type="slide" if "Page" in location else "cue",
             action="SLIDE-SWAP" if "Page" in location else "REPLACE",

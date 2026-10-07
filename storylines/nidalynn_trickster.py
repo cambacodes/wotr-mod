@@ -490,15 +490,18 @@ SALT_PARAGRAPHS = (
     p('''{n}The saddler whose name the Commander said at the fire below the east wall was never written down anywhere. Nine thousand, four hundred and some other names were never written down either. She kept them all, and taught the Commander one a night, when neither of them could sleep.{/n}''',
       requires=(P + "wake.name_said", COMMITTED), forbids=GONE),
     p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. Once a year a scale the colour of eggshell was left on the Commander's windowsill, the way a creditor leaves a card. Nidalynn said that was only manners, and that dragons have excellent manners when they are owed something.{/n}''',
-      requires=(DV_BILL, COMMITTED, "devarra.present_now"), forbids=("devarra.lastcall.called", *GONE)),
+      requires=(DV_BILL, COMMITTED, "devarra.present_now"), forbids=("devarra.lastcall.called", "devarra.trickster.refused", *GONE)),
     BILL_RECORD[1],   # named at the rift: the same record, then what it cost at home
     p('''{n}Nidalynn kept the kiln banked high every winter the Commander was away on the ridge, and fed the Commander for a week when the Commander came back thinner. "Eat first," she said, every year, and put the bowl down. "Then tell me what she had you do."{/n}''',
-      requires=(COMMITTED, DV_BILL, "devarra.lastcall.called", "devarra.present_now"), forbids=GONE),
+      requires=(COMMITTED, DV_BILL, "devarra.lastcall.called", "devarra.present_now"), forbids=("devarra.trickster.refused", *GONE)),
 )
 
 # Historical debt persists after departure; it does not make the creditor visit.
 SALT_PARAGRAPHS = (*SALT_PARAGRAPHS, p(BILL_RECORD[0]["Text"],
-    requires=(DV_BILL, COMMITTED), forbids=("devarra.lastcall.called", "devarra.present_now", *GONE)))
+    requires=(DV_BILL, COMMITTED), forbids=("devarra.lastcall.called", "devarra.present_now", "devarra.trickster.refused", *GONE)),
+    p('{n}Devarra never came back to a keeper. The grey tower stood empty. Her bill for the smallest egg remained '
+      'in the account beside the kiln. No scales arrived at the Commander\'s window.{/n}',
+      requires=(DV_BILL, COMMITTED, "devarra.trickster.refused"), forbids=("devarra.lastcall.called", *GONE)))
 
 epilogue("salt", '''{n}Nidalynn stayed in Drezen after the war, in the old lime-kiln below the east wall, which she roofed with slate and never once let cool. The refugees who stayed called her the widow long after she stopped looking like one, and brought her their disputes, their broken bones and their bread, and she fed every one of them before she let them talk.{/n}
 {n}She was never in a hurry. The Commander learned that it was not patience, exactly. It was that she had already decided, and she saw no reason to rush the part she was enjoying. When the Commander came home, she cleared the lime sacks from their bed herself. The next morning she opened the kiln door late, with her braid loose and no apology for it.{/n}''',
@@ -551,6 +554,7 @@ def integrate(payload):
     paragraphs[4]["Text"] = "{n}The young dragon visited her mother that summer and returned to the kiln. The grey one had named her bill at Threshold: a month of the Commander's every year. Before the first journey, Nidalynn heard the account at her own fire. She packed food for the ridge, and when the Commander came back she pulled out a chair beside hers.{/n}"
     for index in (3, 4):
         paragraphs[index]["Requires"] = list(dict.fromkeys([*paragraphs[index]["Requires"], "devarra.present_now"]))
+        paragraphs[index]["Forbids"] = list(dict.fromkeys([*paragraphs[index]["Forbids"], "devarra.trickster.refused"]))
     paragraphs[5]["Text"] = "{n}The salt was still unbroken when the war ended. In spring she brought it to the Commander's table with a loaf and a knife. She broke it over two pieces of bread. The Commander ate the offered piece; she ate hers. \"Now we're both of the same fire.\" That night they flew to her snowfield, and in the morning came home together.{/n}"
     partner["paragraphs"] = tuple(paragraphs)
     spec = partner["call"]
@@ -564,7 +568,9 @@ def integrate(payload):
         lastcall_partners.page_p("She had followed the expedition as far as its camp. When no call came she returned to Drezen, banked the kiln and kept the fire through the night, with bread and salt in her lap. The young dragon sat beside her and would not sleep. When the Commander returned, she made room on the step and kept hold of the Commander's hand long after the bread was gone.",
             requires=(COMMITTED,), forbids=("nidalynn.lastcall.called",)),
         lastcall_partners.page_p("The grey tower stood empty. Her bill for the smallest egg remained against the Commander's name. Nidalynn kept the account beside the kiln; nobody's absence made it paid.",
-            requires=(DV_BILL,), forbids=("devarra.present_now",)),
+            requires=(DV_BILL,), forbids=("devarra.present_now", "devarra.trickster.refused")),
+        lastcall_partners.page_p("Devarra never came back to a keeper. The grey tower stood empty. Her bill for the smallest egg remained against the Commander's name; Nidalynn kept the account beside the kiln.",
+            requires=(DV_BILL, "devarra.trickster.refused")),
     )
     for paragraph in additions:
         if paragraph not in partner["paragraphs"]:
