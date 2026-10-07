@@ -242,3 +242,7 @@ def integrate(payload):
         effects = tuple(flag(x) for x in ("partner_secret_exposed", *extra))
         pending(event, name, option(event, "return", flags=effects),
                 option(event, flags=(*effects, flag("closed"), flag("trickster.parted"))))
+
+    # Prose for every page and answer added above (edge job 10).
+    from storylines import jerribeth_voice
+    jerribeth_voice.fill(payload)
