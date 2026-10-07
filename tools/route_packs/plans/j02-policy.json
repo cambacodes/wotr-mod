@@ -283,6 +283,36 @@
       ],
       "enmity": "hepzamirah.harem.enmity.melazmera",
       "stance": "hepzamirah.harem.stance.tolerated"
+    },
+    {
+      "row": "kaylessa_camellia",
+      "ruling": 30,
+      "prefix": "household.pair.kaylessa_camellia.",
+      "terminal": [
+        "household.pair.kaylessa_camellia.exposure_unsettled"
+      ],
+      "enmity": "kaylessa.harem.enmity.camellia",
+      "stance": "kaylessa.harem.stance.tolerated"
+    },
+    {
+      "row": "kaylessa_anevia",
+      "ruling": 30,
+      "prefix": "household.pair.kaylessa_anevia.",
+      "terminal": [
+        "household.pair.kaylessa_anevia.trail_unsettled"
+      ],
+      "enmity": "kaylessa.harem.enmity.w.anevia",
+      "stance": "kaylessa.harem.stance.tolerated"
+    },
+    {
+      "row": "shamira_arueshalae",
+      "ruling": 30,
+      "prefix": "household.pair.shamira_arueshalae.",
+      "terminal": [
+        "household.pair.shamira_arueshalae.claim.unsettled"
+      ],
+      "enmity": "arueshalae.harem.enmity.shamira",
+      "stance": "arueshalae.harem.stance.tolerated"
     }
   ],
   "dispositions": [
@@ -330,24 +360,24 @@
     },
     {
       "rows": "S42",
-      "ruling": 44,
-      "status": "direction-blocked",
+      "ruling": 30,
+      "status": "supported",
       "final": "household.pair.kaylessa_camellia.exposure_unsettled",
-      "reason": "Exact final terminal input supported, but referenced sheet/registry declares no claimant direction. Do not pick either woman by scene order."
+      "reason": "Addendum 2026-10-07: Camellia's threat to sell Kaylessa's disguise description stays live; Kaylessa holds the grievance."
     },
     {
       "rows": "S43",
-      "ruling": 44,
-      "status": "direction-blocked",
+      "ruling": 30,
+      "status": "supported",
       "final": "household.pair.kaylessa_anevia.trail_unsettled",
-      "reason": "Final input supported; Anevia is the qualified woman, never Irabeth. Referenced sheet/registry supplies no claimant direction."
+      "reason": "Addendum 2026-10-07: Anevia keeps the scout's trail running to reach the buyer; Kaylessa's cover is exposed. Pair and solo wrappers use the same woman-level edge, never an Irabeth-only seat edge."
     },
     {
       "rows": "S44",
-      "ruling": 44,
-      "status": "direction-blocked",
+      "ruling": 30,
+      "status": "supported",
       "final": "household.pair.shamira_arueshalae.claim.unsettled",
-      "reason": "Final input supported, but referenced sheet/registry supplies no claimant direction. Cover/lust/optional refusals are not F failures."
+      "reason": "Addendum 2026-10-07: Shamira does not relinquish her freshly asserted claim; Arueshalae holds the grievance. Cover, lust and optional refusals remain excluded."
     },
     {
       "rows": "S36",

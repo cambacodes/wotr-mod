@@ -111,6 +111,102 @@ class ContractJ02(unittest.TestCase):
                 self.assertFalse(aborted.rest_spent)
                 self.assertFalse(any(".harem.enmity." in f for f in aborted.flags))
 
+    def claimant_rows(self):
+        # Every emitted wrapper shares its row's exact final input.
+        for pair, incident, edge, claimant in (
+            ("kaylessa_camellia", "exposure_unsettled",
+             "kaylessa.harem.enmity.camellia", "kaylessa"),
+            ("kaylessa_anevia", "trail_unsettled",
+             "kaylessa.harem.enmity.w.anevia", "kaylessa"),
+            ("shamira_arueshalae", "claim.unsettled",
+             "arueshalae.harem.enmity.shamira", "arueshalae"),
+        ):
+            prefix = "household.pair." + pair + "."
+            for scene in self.model.scenes:
+                if scene["Id"].startswith(prefix + "settle"):
+                    suffix = scene["Id"][len(prefix + "settle"):]
+                    yield prefix, scene, self.model.by_id[prefix + "retry" + suffix], prefix + incident, edge, claimant
+
+    def test_claimant_addendum_covers_every_wrapper_and_exact_terminal(self):
+        rows = list(self.claimant_rows())
+        self.assertEqual({settle["Id"] for _, settle, _, _, _, _ in rows}, {
+            "household.pair.kaylessa_camellia.settle",
+            "household.pair.kaylessa_anevia.settle.pair",
+            "household.pair.kaylessa_anevia.settle.solo",
+            "household.pair.shamira_arueshalae.settle.good",
+            "household.pair.shamira_arueshalae.settle.evil",
+        })
+        for prefix, _, _, incident, edge, claimant in rows:
+            rule = next(r for r in self.data["failures"] if r["prefix"] == prefix)
+            self.assertEqual(rule["terminal"], [incident])
+            self.assertEqual(rule["enmity"], edge)
+            self.assertEqual(rule["stance"], claimant + ".harem.stance.tolerated")
+        for row in ("S42", "S43", "S44"):
+            disposition = next(d for d in self.data["dispositions"] if d["rows"] == row)
+            self.assertEqual(disposition["status"], "supported")
+
+    def test_claimant_failed_first_attempt_then_success_or_abort_has_no_enmity(self):
+        for prefix, settle, retry, incident, edge, claimant in self.claimant_rows():
+            with self.subTest(scene=settle["Id"]):
+                first = walk(self, self.model, settle, self.state())
+                pending = [s for s in first if prefix + "settle.failed" in s.flags]
+                self.assertTrue(pending)
+                for failed in pending:
+                    rules.sim_complete(self.model, failed)
+                    self.assertNotIn(incident, failed.flags)
+                    self.assertFalse(any(".harem.enmity." in f for f in failed.flags))
+                    outcomes = walk(self, self.model, retry, failed)
+                    successes = [s for s in outcomes if prefix + "retry.done" in s.flags]
+                    aborts = [s for s in outcomes if prefix + "retry.seen" not in s.flags]
+                    self.assertTrue(successes)
+                    self.assertTrue(aborts)
+                    for done in successes + aborts:
+                        rules.sim_complete(self.model, done)
+                        self.assertIn(prefix + "settle.failed", done.flags)
+                        self.assertNotIn(incident, done.flags)
+                        self.assertNotIn(claimant + ".harem.stance.tolerated", done.flags)
+                        self.assertFalse(any(".harem.enmity." in f for f in done.flags))
+                    for aborted in aborts:
+                        self.assertEqual(aborted.rest_spent, failed.rest_spent)
+
+    def test_claimant_final_refusal_publishes_only_approved_woman_edge(self):
+        for prefix, settle, retry, incident, edge, claimant in self.claimant_rows():
+            first = walk(self, self.model, settle, self.state())
+            pending = next(s for s in first if prefix + "settle.failed" in s.flags)
+            rules.sim_complete(self.model, pending)
+            for scene, incoming in ((settle, self.state()), (retry, pending)):
+                with self.subTest(scene=scene["Id"]):
+                    finals = [s for s in walk(self, self.model, scene, incoming)
+                              if incident in s.flags]
+                    self.assertTrue(finals)
+                    for final in finals:
+                        rules.sim_complete(self.model, final)
+                        self.assertEqual({f for f in final.flags if ".harem.enmity." in f}, {edge})
+                        self.assertIn(claimant + ".harem.stance.tolerated", final.flags)
+                        self.assertIn(controller.owner(edge), final.flags)
+                        self.assertNotIn("household.controller.anevia.enmity_any", final.flags)
+                        self.assertNotIn("household.controller.irabeth.enmity_any", final.flags)
+
+    def test_claimant_first_target_survives_final_refusal_even_after_receipt(self):
+        for prefix, settle, retry, incident, edge, claimant in self.claimant_rows():
+            old = ("kaylessa.harem.enmity.w.anevia"
+                   if edge == "kaylessa.harem.enmity.camellia"
+                   else "kaylessa.harem.enmity.camellia"
+                   if claimant == "kaylessa"
+                   else "arueshalae.harem.enmity.nocticula")
+            for reconciled in (False, True):
+                for scene in (settle, retry):
+                    with self.subTest(scene=scene["Id"], reconciled=reconciled):
+                        state = self.state(old, prefix + "settle.failed",
+                                           *([controller._receipt(old)] if reconciled else []))
+                        finals = [s for s in walk(self, self.model, scene, state)
+                                  if incident in s.flags]
+                        self.assertTrue(finals)
+                        for final in finals:
+                            rules.sim_complete(self.model, final)
+                            self.assertEqual({f for f in final.flags if ".harem.enmity." in f}, {old})
+                            self.assertNotIn(claimant + ".harem.stance.tolerated", final.flags)
+
     def test_qualified_minagho_failure_does_not_infect_chivarro(self):
         prefix = "household.pair.arueshalae_minagho."
         scene = next(s for s in self.model.scenes if s["Id"].startswith(prefix + "retry"))
