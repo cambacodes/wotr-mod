@@ -1,3 +1,254 @@
 {
-  "locked": {}
+  "locked": {
+    "hepzamirah.trickster.colyphyr.offer": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "9d3b89506124bfd651cd359c99b6c557c13b95f76138fd28aee642f3aadab4e3"
+    },
+    "hepzamirah.trickster.ghost.deed_by_fire": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "c3cd0b9e5436bf5079c791ece9ce695236afb357fedf7a302f38da64eb3cf113"
+    },
+    "hepzamirah.trickster.ghost.body": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "30200bf7c90cc5170144f10230321c1c1067507bf10e5c8f4e7043bcf1ae6b78"
+    },
+    "hepzamirah.trickster.body.hounds": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "73e202195c9230310a708be13c5b1b8ba8579120eb524e24c9e5bf13567268a0"
+    },
+    "hepzamirah.trickster.body.terms": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "5aed4469450ecf249332b10ad56275f7fa7bd4a04b5694e816cc259d3123ca90"
+    },
+    "hepzamirah.trickster.epilogue.leavable": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "e92abc44369868e69ea60c29442276923a21691ac4e7190aadda2ef0f11bb34f"
+    },
+    "hepzamirah.trickster.flesh.first_morning": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "9f114223a76faf51c409f56dcf1b2312df1afe17af60c05c417b6705b96ac353"
+    },
+    "hepzamirah.trickster.flesh.the_pick": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "cbfef86d83af621822702475feaa7ef434baa9d6ea7ed002cb176812ffebd0d6"
+    },
+    "hepzamirah.trickster.flesh.chaplains": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "ed2da3367939ed3a2b53145e003b9ee2fd9c73c228457712ef114c6a0febf9af"
+    },
+    "hepzamirah.trickster.flesh.mirror": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "0c70e7aa96b109c80195c894b11d0a0b20960dcd6ae2b4c4798c0c6315e46216"
+    },
+    "hepzamirah.trickster.flesh.bloodline": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "f838968aae7995ffa239858e01e6dba1efb12a5a8fa70af8b4ba4af31b442402"
+    },
+    "hepzamirah.trickster.flesh.flowers": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "ae07d6841a40f827b2fc2af2e0867b6b32eea23df5bfb75515a7889f0d5247f9"
+    },
+    "hepzamirah.trickster.flesh.the_horn": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "4e8305969910c9f52581716cc7a6043c3bd3e62a2f56a9ed61c65a78363173f5"
+    },
+    "hepzamirah.trickster.bond.morning": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "bfdbe246fa88d1cb6ea7228d60119bb32023699bc977ede760a000e0453f623a"
+    },
+    "hepzamirah.trickster.bond.the_hunt": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "dfd86e8c841fe96fbd397dbe6107576683cb9b769e16c308ff0b1892395e4823"
+    },
+    "hepzamirah.trickster.bond.the_eye": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "5cd08fc67c2ef8782f884748162a2854f264c10fd805c4af6b8896413a1834a7"
+    },
+    "hepzamirah.trickster.bond.eve": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "6a80ea9892427d7ff946e94d4817441cafea7f39e504ec68b00876e6f4d88bc9"
+    },
+    "hepzamirah.trickster.flesh.the_market": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "1ee2d42303f9c96cd9949cf3644ae7e76b4f079e01b116bd0927d6c013d618f3"
+    },
+    "hepzamirah.trickster.flesh.sister": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "d7da76a1916e4189d6e8c371ac145a57e2449c3605218a362055c428b70b7552"
+    },
+    "hepzamirah.trickster.flesh.the_corner": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "74af8a56f58d5d0529e0ffda3f4b29b4c33548a8dd6661955c9d14925c53297c"
+    },
+    "hepzamirah.trickster.flesh.drill": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "f200dcf14e03a9bdc1a43bba8aa6d97f961372766ce3f7b129ca4860052cd69c"
+    },
+    "hepzamirah.trickster.flesh.princess": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "3036e1b9e56464a724ecd17e983ed83938b43a33b9a146bdb9d3717e50e2a74a"
+    },
+    "hepzamirah.trickster.bond.vorlesh": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "8a55c46c7117d2fbb6ab502088a26b7745fafde30f250de1c2ca23c0cf993928"
+    },
+    "hepzamirah.trickster.bond.sortie": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "c2969df6d4a0236caf9bfae3070b8443adca6387980ad5ce0f3131c5de0f0af4"
+    },
+    "hepzamirah.trickster.bond.the_weapon": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "eec7223cfd7954bd9b22d5ecdcec122b0f2be78fbbcd24595af61e92f4c17d7f"
+    },
+    "hepzamirah.trickster.flesh.apostate": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "abd3c257a9e919a88b6e2a8eb28afd8bc933d00ed8c6a6ed2afb178411dd581f"
+    },
+    "hepzamirah.trickster.bond.less_sad": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "4b1f392a99457d4252e38852b5ecba4a0e4c3ab604364bb2ce4947ba94d180b2"
+    },
+    "hepzamirah.trickster.bond.names": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "6ce770be5df5cf3d37c71f2c40d092df42e96cf8f8c5d837885efa527928f0d6"
+    },
+    "hepzamirah.trickster.bond.her_room": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "8e1d113fd4b3da4ae9e025378a19cda612928893cf8498c3ab68dc68c58128fd"
+    },
+    "hepzamirah.trickster.bond.gift": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "d2ed5f5392e8c690d0d504a93a9d9227fbb02e70a400c9589c8f90eee82103dc"
+    },
+    "hepzamirah.trickster.flesh.the_song": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "87cf2fc42d79cdb38f5140f77c762a2eb4af9993541d55a1f6cf37bc8cf7a91d"
+    },
+    "hepzamirah.trickster.bond.nerosyan": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "6705921297d9b11ad33e9e9200c8e120f35491b037a3b8853c227400c1fc5a27"
+    },
+    "hepzamirah.trickster.bond.treaty": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "6ed9fef2d8e88cd203e51fabe82018aa5cd8da2eb6b899dcdc2fe05ae6a2d704"
+    },
+    "hepzamirah.trickster.bond.hunt_caught": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "db31b3d627bc76f3128362e2e294656016fd63f88a40c17c1b7a965b9850348c"
+    },
+    "hepzamirah.trickster.flesh.drill_result": {
+      "owner": "claude",
+      "since": "d01b8e48",
+      "text_sha": "f14c4a66cdfb897d342a644afa45cbff3cc85b943fd20a9de743f0e8adc41064"
+    },
+    "melazmera.trickster.ch4.hunt": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "f09e22a7943f8e636b1a11bfc5ed10894d7f83f0bc6d476fddd422578c091bc5"
+    },
+    "melazmera.trickster.ch4.hunt_found": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "eb781f9e679f85cbf10649552f9d315fe2ca0564a2c11876f4d9b8b772ca814f"
+    },
+    "melazmera.trickster.ch5.hunt_window": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "91a26487101f954b7b4326f701c8762c40e157341500a4aaa7332ad8efe552a7"
+    },
+    "melazmera.trickster.ch5.hunger": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "44ad4c2713b6e22ae792184ebc1f283aa97e6988c447d709f41681c71faf7be0"
+    },
+    "melazmera.trickster.epilogue.together": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "18d9496ea01a74bcd6dc930c0c5ae419c4b716de3432f3bbb4a211230f9fefcf"
+    },
+    "melazmera.trickster.epilogue.commit": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "924c7f1cb3beba23c135ad445e66ec65e02553d60ba37a6bf7a4371ff85731d4"
+    },
+    "melazmera.trickster.epilogue.declined": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "edbc76b6a33def4b669a61213554e666ef6c52abb06bfb645ad2cf341816dda4"
+    },
+    "melazmera.trickster.epilogue.left_free": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "4d78999169ae7298d2c5b8b14dc34342e71aebd0b7368e0d238ae7bf8bf53421"
+    },
+    "melazmera.trickster.beat.crew": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "2d06ce01baf5447a7a7393e4ccbcbf1d34bd8194340ddc5eb70df690be121aa1"
+    },
+    "melazmera.trickster.beat.queen": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "e80c05ba6c49495d96624c04f3634deb6552f3aa5a36b06417e54b58970c2dd9"
+    },
+    "melazmera.trickster.beat.souls": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "13203cff5274641c2ce5164ad2d9bbdaa1251dfb6d1401a3192cb7a2885aafbb"
+    },
+    "melazmera.trickster.beat.greybor": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "a67cb1bfdfe6537666ffe5d6523779e603992464f1c4303574da40d08a7a6aaa"
+    },
+    "melazmera.trickster.beat.dinner": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "84c4c3e11f8d9b274bc88d278bdd8f1e12b6912bd62889a84a056dde1ab3eb6b"
+    },
+    "melazmera.trickster.beat.inquisitor": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "bf3a8820f8845bdb7e382fc1c500a30bde97917dc095dd145d808aab4279e4ef"
+    },
+    "melazmera.trickster.beat.putting_down": {
+      "owner": "claude",
+      "since": "9005695a",
+      "text_sha": "d975b122b3b371cadbfca757ab82c89687ec8d5c745950046ef52bcc0cecd9d4"
+    }
+  }
 }
