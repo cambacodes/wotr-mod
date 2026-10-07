@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines import household
 from storylines.harem_rows import s25
@@ -14,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class S25Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
         cls.payload = copy.deepcopy(cls.base)
         cls.entries_before = copy.deepcopy(household.ENTRIES)
         s25.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])

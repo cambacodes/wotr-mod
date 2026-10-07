@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s18x
 from storylines import foresight
@@ -15,7 +16,7 @@ class CaptivityAccount(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.consumers_before = dict(foresight.CONSUMERS)
-        cls.payload = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.payload = fresh_story(include_harem=False)
         s18x.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
         cls.model = rrt_verify.Model(cls.payload)
         cls.private = cls.model.by_id[s18x.P + "account"]

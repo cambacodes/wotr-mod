@@ -1,10 +1,8 @@
 """S09 progression against the assembled runtime model; no generated-file edits."""
 import copy
-import json
-import os
-from pathlib import Path
 import unittest
 
+from tests.story_fixture import fresh_story
 from storylines.harem_rows import s09
 from tools import rrt_verify as rules
 from tools.intimacy_contract_lint import walks
@@ -14,12 +12,7 @@ from tools.harem_schedule_lint import delayed_clock_errors
 class S09Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        exported = os.environ.get("RRT_STORY_OUTPUT")
-        if exported:
-            cls.story = json.loads(Path(exported).read_text(encoding="utf-8-sig"))
-        else:
-            from expansion import make_expansion
-            cls.story = make_expansion()
+        cls.story = fresh_story()
         cls.model = rules.Model(cls.story)
         cls.rows = {s["Id"]: s for s in cls.model.scenes if s["Id"].startswith(s09.PREFIX)}
 
@@ -171,6 +164,7 @@ class S09Tests(unittest.TestCase):
             protected = ".settle." in suffix or ".retry." in suffix
             self.assertEqual(scene["RestAllowance"], "household.protected" if protected else "household.pair")
             self.assertEqual(scene["HouseholdArcStart"], suffix.endswith("friend_wenduag"))
+            self.assertEqual(scene["HouseholdArc"], s09.PREFIX.rstrip('.'))
             root = scene["Nodes"][0]
             abort = root["Choices"][-1]
             self.assertTrue(abort["Abort"])

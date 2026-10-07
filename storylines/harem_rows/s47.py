@@ -83,10 +83,9 @@ def append_choice(node, choice):
 
 
 def register(payload, scenes, refs):
-    # make_story runs before expansion copies the route scenes. Append to the
-    # named source objects here; idempotence keeps repeated exports save-safe.
-    from storylines import yaniel_walls, yaniel_trickster, areelu_trickster, lastcall_ledger, lastcall_partners
-    beat = next(s for s in yaniel_walls.SCENES if s["Id"] == BEAT)
+    # Work on the assembled copies; source dialogue must survive repeat builds.
+    from storylines import yaniel_trickster
+    beat = next(s for s in scenes if s["Id"] == BEAT)
     for node in beat["Nodes"]:
         if node["Id"] in ("end", "end_refused", "end_unknown"):
             append_choice(node, c("[Ask what she wants carried to the witch.]", "household_face_request",
@@ -108,13 +107,12 @@ def register(payload, scenes, refs):
     for body in (commission, inspection()):
         if not any(s["Id"] == body["Id"] for s in scenes):
             scenes.append(body)
-    # expansion replaces early SeenCues; the existing route binding pass copies
-    # this registration after that reset, without editing its source file.
-    yaniel_trickster.SEEN_CUES[DESTROYED] = ["591acfaf8500cc94aa7a8918db767d43"]
+    # Bind the observed projector destruction on this assembled payload.
+    payload.setdefault("SeenCues", {})[DESTROYED] = ["591acfaf8500cc94aa7a8918db767d43"]
     payload.setdefault("Derived", {})[P + "contact.open"] = [["areelu.trickster.primed"]]
     payload.setdefault("DerivedOpenRoutes", {})[P + "contact.open"] = ["areelu", "yaniel"]
 
-    watch = next(s for s in yaniel_walls.SCENES if s["Id"] == "yaniel.trickster.after.watch")
+    watch = next(s for s in scenes if s["Id"] == "yaniel.trickster.after.watch")
     start = next(n for n in watch["Nodes"] if n["Id"] == "start")
     append_choice(start, c("[Return her comparison and describe the exclusion.]", "household_face_returned",
                           requires=(P + "proof.quest_done", P + "original.returned", *LIVE)))
@@ -129,7 +127,7 @@ def register(payload, scenes, refs):
           '{n}The relief horn sounds. She turns toward the stair without offering you the second cup.{/n}',
           c("[Finish the watch.]", flags=("yaniel.trickster.after.watch_stood",))),
     ])
-    wager = next(s for s in areelu_trickster.SCENES if s["Id"] == "areelu.trickster.wager.raised")
+    wager = next(s for s in scenes if s["Id"] == "areelu.trickster.wager.raised")
     append_choice(wager["Nodes"][0], c('"You excluded Yaniel\'s face from your work."', "household_face_price",
                                      requires=(P + "cost.areelu_specific_guise",)))
     append_nodes(wager, [n("household_face_price", "conversant",
@@ -137,14 +135,16 @@ def register(payload, scenes, refs):
                           c("[Return to the wager.]", "start"))])
 
     entry = dict(Id=P + "record", Section="Seating Notes", Portrait="Yaniel", Title="Yaniel's stolen face",
+                 Text="{n}Yaniel's stolen face.{/n}",
                  Requires=[P + "commission.seen"], Forbids=[], AnyGroups=[], Lines=[
         dict(Text="{n}Yaniel's comparison must reach the laboratory projection before I leave it behind or smash its crystal.{/n}", Requires=[P + "proof.ready"], Forbids=[P + "inspection.seen"]),
         dict(Text="{n}She wore Yaniel's face. I have brought back no undertaking about the next time.{/n}", Requires=[], Forbids=[P + "proof.quest_done", P + "mandate.broken"]),
         dict(Text="{n}One face excluded from the work. The woman who took it still keeps her notes. I gave up using that face against a cult lookout; Yaniel spent a watch making the comparison.{/n}", Requires=[P + "proof.quest_done"], Forbids=[]),
         dict(Text="{n}Yaniel lent me her comparison. I lent it on. She knows whose hands did that.{/n}", Requires=[P + "mandate.broken"], Forbids=[]),
     ])
-    if not any(e["Id"] == entry["Id"] for e in lastcall_ledger.EXTRA_ENTRIES):
-        lastcall_ledger.EXTRA_ENTRIES.append(entry)
+    entries = payload["Books"]["trickster.ledger"]["Entries"]
+    if not any(e["Id"] == entry["Id"] for e in entries):
+        entries.append(entry)
     # Epilogue-only historical readers: no new living attendance after a death
     # or an unreturned Commander sacrifice, and no implication of forgiveness.
     records = {
@@ -155,7 +155,8 @@ def register(payload, scenes, refs):
         ],
         "areelu": [p("{n}At the laboratory projection, Areelu traded away the use of Yaniel's name and likeness. She kept her notes and her other guises. The exclusion made no claim on her remorse.{/n}", requires=(P + "cost.areelu_specific_guise",))],
     }
-    for partner in lastcall_partners.PARTNERS:
-        if partner["key"] in records:
-            have = {para["Text"] for para in partner["paragraphs"]}
-            partner["paragraphs"] += tuple(para for para in records[partner["key"]] if para["Text"] not in have)
+    for partner, paragraphs in records.items():
+        host = next(s for s in scenes if s["Id"] == partner + ".lastcall.page")
+        target = host["Nodes"][0].setdefault("Paragraphs", [])
+        have = {para["Text"] for para in target}
+        target.extend(para for para in paragraphs if para["Text"] not in have)

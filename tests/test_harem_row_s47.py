@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s47
 from tools import rrt_verify
@@ -11,7 +12,7 @@ from tools import rrt_verify
 class S47Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.story = fresh_story()
         cls.model = rrt_verify.Model(cls.story)
         cls.by_id = cls.model.by_id
 
@@ -124,10 +125,10 @@ class S47Tests(unittest.TestCase):
 
     def test_registration_is_idempotent_and_readers_stay_in_permitted_hosts(self):
         from storylines import yaniel_walls, lastcall_ledger, lastcall_partners
-        payload = {"Scenes": []}
-        s47.register(payload, payload["Scenes"], {})
+        payload = copy.deepcopy(self.story)
+        s47.register(payload, payload["Scenes"], payload["Etudes"])
         before = copy.deepcopy((payload, yaniel_walls.SCENES, lastcall_ledger.EXTRA_ENTRIES, lastcall_partners.PARTNERS))
-        s47.register(payload, payload["Scenes"], {})
+        s47.register(payload, payload["Scenes"], payload["Etudes"])
         self.assertEqual(before, (payload, yaniel_walls.SCENES, lastcall_ledger.EXTRA_ENTRIES, lastcall_partners.PARTNERS))
         self.assertEqual(self.story["SeenCues"][s47.DESTROYED], ["591acfaf8500cc94aa7a8918db767d43"])
         self.assertEqual(self.story["DerivedOpenRoutes"][s47.P + "contact.open"], ["areelu", "yaniel"])

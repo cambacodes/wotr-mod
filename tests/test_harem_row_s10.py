@@ -7,6 +7,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s10
 from tools import rrt_verify as verify, savecompat
@@ -17,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class SeelahNenioRow(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
 
     def setUp(self):
         self.payload = copy.deepcopy(self.base)

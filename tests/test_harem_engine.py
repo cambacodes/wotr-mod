@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from story_format import c, n
 from storylines import household, harem_caps
@@ -12,6 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class HouseholdEngine(unittest.TestCase):
+    def test_verifier_recognizes_engine_word_budget_keys(self):
+        model = rrt_verify.Model(dict(Scenes=[], Relationships={}))
+        expected = {'trickster.wmt.available',
+                    *(f'trickster.wmt.left.{n}' for n in range(4))}
+        self.assertTrue(expected <= model.builtin_derived)
+        self.assertNotIn('trickster.wmt.left.4', model.builtin_derived)
+
     def test_registration_preserves_enmity_overrides_participants_and_allowance(self):
         previous = list(household.ENTRIES)
         consumers = dict(household.CONSUMERS)
@@ -58,7 +66,7 @@ class HouseholdEngine(unittest.TestCase):
         self.assertEqual(harem_schedule_lint.delayed_clock_errors(scene, story), [])
 
     def test_pending_page_is_false_and_stub_opens_only_current_trickster_stance(self):
-        story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        story = fresh_story()
         model = rrt_verify.Model(story)
         state = rrt_verify.SimState(3, 1000)
         state.flags.update(['trickster', 'seelah.committed', 'seelah.chosen_future', 'seelah.short_future_chosen'])
@@ -76,7 +84,7 @@ class HouseholdEngine(unittest.TestCase):
         self.assertNotIn(household.STANCE_ELIGIBLE, state.flags)
 
     def test_caps_are_evaluated_in_their_chapter_and_seat_attendance_matches_rules(self):
-        story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        story = fresh_story()
         story['Counts']['household.cap.ch5.arcs'] = dict(Of=['seelah.committed'], Min=1, Chapters=[5])
         model = rrt_verify.Model(story)
         for chapter in (3, 5):
@@ -102,7 +110,7 @@ class HouseholdEngine(unittest.TestCase):
         self.assertFalse(rrt_verify.sim_available(model, solo, state))
 
     def test_row28_reads_the_verified_cue_in_the_correct_direction(self):
-        story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        story = fresh_story()
         key = 'jerribeth.harem.vellexia_defection_seen'
         self.assertEqual(story['SeenCues'][key], ['e0ee422a413a5f94ea90bede3096ee56'])
         schedule = json.loads((ROOT / 'tools/harem-schedule.json').read_text(encoding="utf-8"))

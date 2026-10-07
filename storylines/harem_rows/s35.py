@@ -29,14 +29,14 @@ def result_nodes(step):
         n("audit_held", "Arsinoe", '''{n}You lay the freight calculation beside the demand. The same wagon has been charged twice. Arsinoe presses her seal across the false total before the waiting teamster can take it away.{/n}
 "That demand will not reach the stores. The hand is yours, Nurah. The sum does not follow."
 "At least you noticed the hand," {n}Nurah says. She takes the pen from beside Arsinoe's wrist and signs the correction with an extravagant flourish.{/n} "Don't credit some quartermaster with my work. He couldn't forge his own mother's blessing."
-"Your name stays on the forgery as well as the correction."
-"Good. Put yours beside it. I want to know who caught me."''',
+"Your name stays on the forgery as well as the correction," {n}Arsinoe says.{/n}
+"Good. Put yours beside it. I want to know who caught me," {n}Nurah says.{/n}''',
           c("Continue", flags=held(step, "audit"))),
         n("lien_held", "Arsinoe", '''{n}Arsinoe unfolds the existing cauldron lease beside the demand, keeping her palm on its gold seal.{/n}
 "I already hold your lien. Very well: I will withdraw this demand, rather than pursue both claims. The lease remains enforceable."
 {n}She marks the duplicated freight charge, then pushes the pen toward Nurah.{/n} "And this remains a forgery. Name its author."
-"Nurah Dendiwhar. No 'property of' above it."
-"Authorship is not title to the crusade's stores."
+"Nurah Dendiwhar. No 'property of' above it," {n}Nurah says.{/n}
+"Authorship is not title to the crusade's stores," {n}Arsinoe says.{/n}
 {n}Nurah signs, grinning.{/n} "You caught the wagon. I kept the name. We might both survive the afternoon."''',
           c("Continue", flags=held(step, "lien"))),
         n("word_held", "Arsinoe", '''{n}The total on the demand dwindles beneath Arsinoe's finger. The copied freight charge is still there. She holds the page against the lamp, watching the ink move.{/n}
@@ -56,7 +56,7 @@ def audit_nodes():
     return [
         n("start", "Arsinoe", '''{n}A teamster waits at the tavern door, his whip tucked under one arm. Arsinoe has spread a demand for the crusade's stores across the Table. Nurah is holding its corner down with her empty cup.{/n}
 "The temple is being asked to honor this before the wagons leave. It bears a convincing seal. It also bears Nurah's hand."
-"Convincing? I was hoping for impeccable."
+"Convincing? I was hoping for impeccable," {n}Nurah says.{/n}
 {n}Arsinoe moves the cup and sets the loading tally beside the demand.{/n} "Drezen needs those supplies. I want the charge proved before anyone opens the stores."
 "And I want my name on my work," {n}Nurah says.{/n} "Not yours, Commander. Not some fat fool who thinks holding the purse makes him the author."''',
           c('[Knowledge (World)] "Compare the freight charges before the wagons leave."',
@@ -81,7 +81,7 @@ def retry_nodes():
         n("start", "Arsinoe", '''{n}The loading tally has returned. Arsinoe puts it beside the disputed bill; Nurah swings her feet beneath the bench, watching the priestess rather than the paper.{/n}
 "One wagon. Two freight charges. Now there is time to compare them."
 "I wondered how long you would take," {n}Nurah says.{/n}
-"Long enough to prove it. Take the pen. This correction needs its author's name."
+"Long enough to prove it. Take the pen. This correction needs its author's name," {n}Arsinoe says.{/n}
 {n}Nurah catches the pen between two fingers.{/n} "Only the correction to this bill. You can find another woman to write a confession of wickedness."''',
           c('"Strike the duplicate charge and name its author."', "audit_held"),
           c('"Leave it in dispute."', "refused"),
@@ -108,7 +108,7 @@ def entry(step, nodes, delay=0):
                  ForbidOverrides={edge: a + ".harem.reconciled." + b
                                   for edge, (a, b) in zip(edges, (WOMEN, WOMEN[::-1]))},
                  RestAllowance="household.protected", HouseholdCategory="protected",
-                 HouseholdWitness=PREFIX + step + ".seen", Kind="event")
+                 HouseholdWitness=PREFIX + step + ".seen")
 
 
 SCENES = [entry("audit", audit_nodes()), entry("retry", retry_nodes(), 48)]

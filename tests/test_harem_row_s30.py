@@ -102,15 +102,18 @@ class S30Tests(unittest.TestCase):
         self.assertEqual(entry["Lines"][1]["Text"], "{n}They kept separate tasks.{/n}")
 
     def test_repeated_registration_does_not_duplicate_own_or_shared_entries(self):
-        from story import make_story
+        import copy
         from storylines import lastcall_ledger
-        make_story()
-        first = [s["Id"] for s in household.ENTRIES]
-        make_story()
-        self.assertEqual(first, [s["Id"] for s in household.ENTRIES])
-        self.assertEqual(sum(s["Id"] == s30.SCENE_ID for s in household.ENTRIES), 1)
-        self.assertEqual(sum(e["Id"] == s30.PREFIX + "seating"
-                             for e in lastcall_ledger.EXTRA_ENTRIES), 1)
+        from storylines.harem_rows import register_all
+        before = copy.deepcopy((household.ENTRIES, lastcall_ledger.EXTRA_ENTRIES))
+        first, second = fresh_story(include_harem=False), fresh_story(include_harem=False)
+        for payload in (first, second):
+            register_all(payload, payload['Scenes'], payload['Etudes'])
+        self.assertEqual(first, second)
+        self.assertEqual(before, (household.ENTRIES, lastcall_ledger.EXTRA_ENTRIES))
+        self.assertEqual(sum(s['Id'] == s30.SCENE_ID for s in first['Scenes']), 1)
+        self.assertEqual(sum(e['Id'] == s30.PREFIX + 'seating'
+                             for e in first['Books']['trickster.ledger']['Entries']), 1)
 
 
 if __name__ == "__main__":

@@ -128,7 +128,8 @@ def register(payload, scenes, refs):
         derived[key] = [list(flags(*deeds))]
     common = ["trickster", P + "ready", "minagho.present_now", "participant.minagho.available",
               P + "herrax_channel"]
-    forbidden = ["trickster.failed", "herrax.closed", "minachiv.closed", MC + "declined_minagho", "inhuman"]
+    forbidden = ["trickster.failed", "herrax.closed", "minachiv.closed", MC + "declined_minagho", "inhuman",
+                 "minagho.epoch_redeparted", "minagho.returned_actor_lost"]
     step_rules = {
         "notice": ([P + "target_current"], [P + "notice.seen"], [], 0),
         "historical": ([], [P + "notice.seen", P + "target_current"], [], 0),

@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines import household, foresight
 from storylines.harem_rows import s19
@@ -12,7 +13,7 @@ from tools import harem_schedule_lint, rrt_verify, savecompat
 class S19Contract(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
 
     def setUp(self):
         self.payload = copy.deepcopy(self.base)

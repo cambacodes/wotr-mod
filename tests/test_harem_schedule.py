@@ -23,6 +23,17 @@ def candidate(data, cid):
     return next(c for c in data["candidates"] if c["id"] == cid)
 
 
+class DynamicAllowance(unittest.TestCase):
+    def test_dynamic_pair_encounters_and_free_flavour_keep_their_allowances(self):
+        body = dict(Id='dynamic', HouseholdCategory='dynamic', DelayHours=0)
+        for allowance in (None, 'household.pair'):
+            body['RestAllowance'] = allowance
+            self.assertEqual(lint.scene_load_errors(dict(Scenes=[body]), {}), [])
+        body['RestAllowance'] = 'household.protected'
+        self.assertEqual(lint.scene_load_errors(dict(Scenes=[body]), {}),
+                         ['K8: dynamic category/RestAllowance mismatch'])
+
+
 class ShippedData(unittest.TestCase):
     def test_clean(self):
         self.assertEqual(errors(DATA), [])

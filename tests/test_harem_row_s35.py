@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s35
 from storylines import foresight
@@ -22,8 +23,7 @@ class S35Tests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json")
-                              .read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
         cls.story = copy.deepcopy(cls.base)
         cls.register_row(cls.story)
         cls.model = rules.Model(cls.story)

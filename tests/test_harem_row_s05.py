@@ -3,8 +3,9 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
-from storylines.harem_rows import register_all, s05
+from storylines.harem_rows import s05
 from storylines import foresight
 from tools import rrt_verify, savecompat
 
@@ -14,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class S05Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.original = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.original = fresh_story(include_harem=False)
 
     def setUp(self):
         consumers = dict(foresight.CONSUMERS)
@@ -80,7 +81,7 @@ class S05Tests(unittest.TestCase):
         old = savecompat.inventory(self.original)
         self.assertEqual(savecompat.check(self.story, old), [])
         before = copy.deepcopy(self.story)
-        register_all(self.story, self.story["Scenes"], self.story["Etudes"])
+        s05.register(self.story, self.story["Scenes"], self.story["Etudes"])
         self.assertEqual(before, self.story)
 
     def test_bodily_slot_and_reconciliation_remain_blocked(self):

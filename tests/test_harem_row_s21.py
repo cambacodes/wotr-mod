@@ -4,6 +4,7 @@ import itertools
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s21
 from tools import rrt_verify
@@ -12,8 +13,7 @@ from tools import rrt_verify
 class S21Watch(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((Path(__file__).resolve().parents[1] /
-                                "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.story = fresh_story(include_harem=False)
         # Also exercise the row in isolation when the coordinator's discovery
         # hook has not yet been installed in this integration base.
         s21.register(cls.story, cls.story["Scenes"], cls.story["Etudes"])

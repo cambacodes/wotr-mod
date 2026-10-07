@@ -1,6 +1,7 @@
 """S51 graphs, witnesses, clocks, current channels and known shared blockers."""
 import copy
 import unittest
+from tests.story_fixture import fresh_story
 
 import json
 from pathlib import Path
@@ -12,7 +13,7 @@ from tools.harem_schedule_lint import delayed_clock_errors
 class WindstepDocket(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
         cls.payload = copy.deepcopy(cls.base)
         s51.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
         cls.model = rules.Model(cls.payload)

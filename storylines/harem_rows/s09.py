@@ -55,7 +55,7 @@ def add(suffix, title, nodes, trigger, requires=(), forbids=(), delay=0, evil=Fa
         forbids=tuple(forbids) + (() if evil else ("arueshalae.corrupted",)),
         delay=delay, chapters=(5,), RestAllowance="household.protected" if protected else "household.pair",
         HouseholdCategory="protected" if protected else "pair", HouseholdWitness=p(witness or suffix + ".seen"),
-        HouseholdArcStart=arc_start)
+        HouseholdArc=PREFIX.rstrip("."), HouseholdArcStart=arc_start)
 
 
 def settlement(evil, retry=False):

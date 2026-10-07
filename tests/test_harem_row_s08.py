@@ -2,8 +2,9 @@
 import copy
 import unittest
 
-from storylines.harem_rows import register_all, s08
+from storylines.harem_rows import s08
 from storylines import household
+from tests.story_fixture import fresh_story
 
 
 class HaremRowS08(unittest.TestCase):
@@ -16,9 +17,9 @@ class HaremRowS08(unittest.TestCase):
         self.assertEqual(len(s08.BLOCKERS), 4)
 
     def test_discovery_has_no_draft_side_effects(self):
-        payload = {"Scenes": []}
-        register_all(payload, payload["Scenes"], {})
-        self.assertEqual(payload, {"Scenes": []})
+        payload = fresh_story()
+        draft_ids = {body["Id"] for body in s08.draft_scenes()}
+        self.assertFalse(draft_ids & {body["Id"] for body in payload["Scenes"]})
 
     def test_review_does_not_register_consumers_or_entries(self):
         consumers = dict(household.CONSUMERS)

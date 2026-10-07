@@ -34,7 +34,7 @@ ACCOUNTS = (
     ("exposed", "kiana.partner_secret_exposed", '"Elan knows. I have enough to answer for without having you two look at me over this poor man\'s head."'),
     ("separated", "kiana.separated", '"Elan and I have parted. I told him myself. Please don\'t make me explain it while I\'m trying to stop somebody bleeding."'),
     ("bereaved", "kiana.elan.death_known", '"I miss Elan. Some days I want to talk about him. Today I want this man to get home."'),
-    ("share", "kiana.partner_stance.share", '"Elan and I have our own letters to write. Our own evenings, too. Commander, his terms still stand. No officers sent to fetch me."'),
+    ("share", "kiana.partner_stance.share", '"Elan and I have our own letters to write. Our own evenings, too. Elan\'s terms still stand, Commander. No officers sent to fetch me."'),
     ("secret", "kiana.partner_stance.secret", '"I haven\'t told Elan about us, Commander. Don\'t turn a visit with Seelah into something I can pretend he agreed to."'),
     ("exclusive", "kiana.partner_stance.exclusive", '"What I promised you belongs in our own conversation, Commander. Seelah came to see me, too."'),
     ("reconciled", "kiana.stayed_married", '"Elan and I are still married. I\'ll tell him about this visit myself. He\'ll be delighted to hear Seelah lost an argument to a bandage."'),
@@ -118,6 +118,12 @@ def register(payload, scenes, refs):
         P("conscious"): [["seelah.souls_returned"], ["kiana.trickster.returned"], [P("soul_clear")]],
     })
     payload.setdefault("DerivedForbids", {})[P("soul_clear")] = ["kiana.possessed", "kiana.soul_lost"]
+    pending = payload.setdefault("PendingHooks", [])
+    for a, b in (PAIR, PAIR[::-1]):
+        for key in (a + ".harem.attitude." + b + ".friend",
+                    a + ".harem.enmity." + b, a + ".harem.reconciled." + b):
+            if key not in pending:
+                pending.append(key)
     # Single-woman qualified seats copy the existing relationship's narrow
     # overrides and epoch loss. No other woman's presence can veto this row.
     for woman in PAIR:

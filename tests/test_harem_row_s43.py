@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s43
 from tools import rrt_verify as verify, savecompat, harem_schedule_lint
@@ -14,7 +15,7 @@ P = s43.P
 class RowS43(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.story = fresh_story(include_harem=False)
         s43.register(cls.story, cls.story["Scenes"], cls.story["Etudes"])
         cls.model = verify.Model(cls.story)
         cls.rows = {s["Id"]: s for s in cls.story["Scenes"] if s["Id"].startswith(P) and s.get("InteractionHub")}

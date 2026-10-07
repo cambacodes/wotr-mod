@@ -13,6 +13,8 @@ class S02(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         source = make_story()
+        from storylines.harem_rows import s02
+        s02.register(source, source['Scenes'], source['Etudes'])
         cls.scenes = copy.deepcopy([s for s in hh.ENTRIES + hh.INVITATIONS if s['Id'].startswith(sw.PREFIX)])
         cls.story = dict(Scenes=cls.scenes, Derived=source['Derived'], DerivedForbids=source['DerivedForbids'],
                         RestAllowances=hh.REST_ALLOWANCES, PendingHooks=source['PendingHooks'],

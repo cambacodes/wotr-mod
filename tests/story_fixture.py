@@ -12,16 +12,21 @@ from pathlib import Path
 import subprocess
 import sys
 
+# Discovery imports both spellings; share the expensive isolated-build cache.
+sys.modules.setdefault('story_fixture', sys.modules[__name__])
+sys.modules.setdefault('tests.story_fixture', sys.modules[__name__])
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@lru_cache(maxsize=1)
-def _assembled():
-    path = os.environ.get('RRT_TEST_STORY')
+@lru_cache(maxsize=2)
+def _assembled(include_harem=True):
+    path = os.environ.get('RRT_TEST_STORY' if include_harem else 'RRT_TEST_BASE_STORY')
     if path:
         return json.loads(Path(path).read_text(encoding='utf-8-sig'))
+    setup = '' if include_harem else 'import storylines.harem_rows as rows; rows.register_all = lambda *args: None; '
     run = subprocess.run([sys.executable, '-B', '-c',
-                          'import expansion,json; print(json.dumps(expansion.make_expansion()))'],
+                          setup + 'import expansion,json; print(json.dumps(expansion.make_expansion()))'],
                          cwd=ROOT, env=dict(os.environ, PYTHONHASHSEED='0'),
                          capture_output=True, text=True)
     if run.returncode:
@@ -29,5 +34,5 @@ def _assembled():
     return json.loads(run.stdout)
 
 
-def fresh_story():
-    return copy.deepcopy(_assembled())
+def fresh_story(include_harem=True):
+    return copy.deepcopy(_assembled(include_harem))

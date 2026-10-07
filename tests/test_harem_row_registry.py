@@ -32,6 +32,22 @@ class RowRegistryTests(unittest.TestCase):
         self.assertIsNot(first["Scenes"], scenes)
         ids = [s["Id"] for s in first["Scenes"]]
         self.assertEqual(len(ids), len(set(ids)))
+        # The base builder has no presence/household contracts yet.
+        self.assertFalse(any(s['Id'].startswith('household.') for s in first['Scenes']))
+
+    def test_assembled_registration_keeps_late_rows_and_presence_contracts(self):
+        story = fresh_story()
+        from tools.rrt_verify import Model, household_presence_attachment
+        model = Model(story)
+        for sid in ('household.pair.shamira_arueshalae.settle.good',
+                    'household.pair.herrax_minagho.notice.minagho',
+                    'household.pair.wenduag_vellexia.notice',
+                    'household.pair.yaniel_areelu.commission'):
+            self.assertIn(sid, model.by_id)
+        for body in model.scenes:
+            if (body['Relationship'] == 'household' and body.get('ContactUnit')
+                    and body.get('InteractionHub')):
+                self.assertTrue(household_presence_attachment(story, body), body['Id'])
 
     def test_every_row_surface_is_classified_once(self):
         story = fresh_story()

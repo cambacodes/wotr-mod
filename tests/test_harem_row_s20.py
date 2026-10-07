@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from storylines.harem_rows import register_all, s20
+from storylines.harem_rows import s20
 from tests.story_fixture import fresh_story
 from tools import savecompat
 
@@ -16,7 +16,7 @@ def visible(record, flags):
 class S20ReaderTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.before = fresh_story()
+        cls.before = fresh_story(include_harem=False)
         cls.after = copy.deepcopy(cls.before)
         s20.register(cls.after, cls.after["Scenes"], cls.after["Etudes"])
         cls.entry = next(item for item in cls.after["Books"]["trickster.ledger"]["Entries"]
@@ -30,9 +30,9 @@ class S20ReaderTests(unittest.TestCase):
 
     def test_discovery_and_repeat_registration_are_safe(self):
         payload = copy.deepcopy(self.before)
-        register_all(payload, payload["Scenes"], payload["Etudes"])
+        s20.register(payload, payload["Scenes"], payload["Etudes"])
         once = copy.deepcopy(payload)
-        register_all(payload, payload["Scenes"], payload["Etudes"])
+        s20.register(payload, payload["Scenes"], payload["Etudes"])
         self.assertEqual(once, payload)
         self.assertEqual(self.entry, next(item for item in payload["Books"]["trickster.ledger"]["Entries"]
                                           if item["Id"] == s20.ENTRY_ID))

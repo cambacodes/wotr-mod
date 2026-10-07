@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s45
 from tools import rrt_verify, savecompat
@@ -11,7 +12,7 @@ from tools import rrt_verify, savecompat
 class S45(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
         cls.payload = copy.deepcopy(cls.base)
         s45.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
         cls.by = {s["Id"]: s for s in cls.payload["Scenes"]}

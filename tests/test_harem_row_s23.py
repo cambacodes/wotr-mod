@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s23
 from tools import rrt_verify
@@ -56,8 +57,7 @@ class S23Registration(unittest.TestCase):
 class S23CurrentAttendance(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        payload = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json")
-                             .read_text(encoding="utf-8-sig"))
+        payload = fresh_story(include_harem=False)
         s23.register(payload, payload["Scenes"], payload["Etudes"])
         cls.model = rrt_verify.Model(payload)
         cls.body = next(body for body in cls.model.scenes if body["Id"] == s23.PREFIX + "turf")

@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 from unittest.mock import patch
 
 from tools import rrt_verify as rules
@@ -106,7 +107,7 @@ class Transactions(unittest.TestCase):
 class PresenceAttachments(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        cls.story = fresh_story()
 
     def attachment(self, name):
         presence = self.story['Presences'][name]

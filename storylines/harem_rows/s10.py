@@ -25,25 +25,25 @@ def question():
 "Paladin girl! I heard you say 'shit' on the wall. Then you invoked Iomedae. Was the second utterance intended to cancel the first?"
 {n}Seelah pulls off a gauntlet. A strip of bloodied cloth clings to its edge.{/n}
 "No. The shit was for the cultist who shot our lantern. The prayer was for the fellow beside me. He couldn't see the ladder anymore."
-"Excellent. Two recipients! Commander, I require her account."
-"And I'd like her to hear it before she starts asking the next watch for curses."''',
+"Excellent. Two recipients! Commander, I require her account," {n}Nenio says.{/n}
+"And I'd like her to hear it before she starts asking the next watch for curses," {n}Seelah says.{/n}''',
                 c('"Ask her what the oath meant on watch."', "account"),
                 c('"Leave that question alone."', "declined"),
                 c("[Later.]", abort=True)),
             n("account", "Seelah", '''"He'd taken a bolt through the hand. Wanted me to pull him down the ladder. There were still people coming up behind him, and a cultist drawing another bead on us."
 {n}Seelah lays the lantern on its side, showing Nenio the hole through the shutter.{/n}
 "I put him behind the parapet and stood where the light had been. Told him to keep shouting so the others could find the ladder. I'd have liked to get below just as much as he did."
-"Did the prayer remove that preference?"
-"No! I was scared. I stayed anyway. Put down what I did. You've got enough bloody words."''',
+"Did the prayer remove that preference?" {n}Nenio asks.{/n}
+"No! I was scared. I stayed anyway. Put down what I did. You've got enough bloody words," {n}Seelah says.{/n}''',
                 c("[Hear Nenio's revised question.]", "revised")),
             n("revised", "Nenio", '''{n}Nenio draws a line through her heading and turns to a clean page.{/n}
 "Actions, then. Your oath does not predict your vocabulary. What would you have done if the wounded man could no longer shout?"
-"Dragged him clear first. Then yelled myself."
-"That would have disclosed your position."
-"So did standing in front of a bloody ladder. He wasn't bait, Nenio."
+"Dragged him clear first. Then yelled myself," {n}Seelah says.{/n}
+"That would have disclosed your position," {n}Nenio says.{/n}
+"So did standing in front of a bloody ladder. He wasn't bait, Nenio," {n}Seelah says.{/n}
 {n}Nenio writes that down. Seelah reaches for the lantern, but Nenio holds the broken shutter against the page to sketch the angle of the shot.{/n}
 "Leave this here, paladin girl. I have further questions."
-"All right. But I'm getting a drink before your next one."''',
+"All right. But I'm getting a drink before your next one," {n}Seelah says.{/n}''',
                 c("[Leave them to the lantern and the next question.]", flags=ANSWERED)),
             n("declined", "Seelah", '''{n}Seelah wraps the broken lantern in the bloodied cloth.{/n}
 "I'd rather she asked me than made up an answer. But I've got another watch coming."

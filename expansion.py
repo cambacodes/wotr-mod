@@ -681,6 +681,10 @@ def make_expansion(*, independent_tirabade=True):
     # E15: the RRT book UI (glossary tooltips, the guide book).
     rrt_ui.integrate(payload)
     rrt_portraits.integrate(payload)
+    # Harem rows consume the assembled routes, presences and household readers.
+    # Register on this payload before the final scene and availability passes.
+    from storylines.harem_rows import register_all
+    register_all(payload, payload["Scenes"], payload["Etudes"])
     # E15c: what each rest-delivered scene is (letter, visit, sending, memory, event), after every route and Last Call.
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)

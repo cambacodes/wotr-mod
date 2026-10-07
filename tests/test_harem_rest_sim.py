@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from tools import harem_rest_sim as sim, rrt_verify as e9
 
@@ -12,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class FullRosterBudget(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        cls.story = fresh_story()
         cls.data = json.loads(sim.SCHEDULE.read_text(encoding='utf-8'))
         cls.route_run = e9.simulate_rest_budget(e9.Model(copy.deepcopy(cls.story)))
 

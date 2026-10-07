@@ -136,6 +136,7 @@
   },
   "departure_exemptions": {
     "household": {
+      "household.pair.herrax_minagho.notice.dismissed": "S32: the Commander dismisses a disputed notice; neither household woman departs.",
       "household.pair.delamere_hepzamirah.cost.hepzamirah_captain_dismissed": "S37: Hepzamirah dismisses her requisition captain; neither household woman departs.",
       "household.pair.delamere_minagho.open.dismissed": "S38: the Commander dismisses the sanctuary dispatch objection; Delamere remains present and her romance stays open."
     }

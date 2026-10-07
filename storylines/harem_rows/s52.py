@@ -101,7 +101,7 @@ def office(step, nodes, live, forbids, delay=0, **extra):
                  forbids=forbids, delay=delay, last=5,
                  Relationship="household", Chapters=[5], Areas=[DREZEN], AnswerLists=[HUB],
                  ContactUnit=UNIT, AdditionalContactUnits=[WENDUAG_UNIT] if live else [],
-                 ReturnToList=True, Participants=[],
+                 Participants=[],
                  RestAllowance="household.protected", HouseholdCategory="protected",
                  HouseholdWitness=P + step + ".seen", **extra)
 

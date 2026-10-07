@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sys
 import unittest
+from tests.story_fixture import fresh_story
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -15,7 +16,7 @@ from tools.harem_schedule_lint import delayed_clock_errors
 class S50Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.story = fresh_story(include_harem=False)
         cls.before = savecompat.inventory(cls.story)
         s50.register(cls.story, cls.story["Scenes"], cls.story["Etudes"])
         cls.model = rules.Model(cls.story)

@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s17
 from tools import savecompat
@@ -108,7 +109,7 @@ class S17Tests(unittest.TestCase):
     def test_selection_rejects_stale_returns_and_nonbodily_histories(self):
         # Use the exported route contracts, including their epoch vetoes; even
         # stale ready/present flags cannot bypass current participant RouteOpen.
-        base = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8-sig"))
+        base = fresh_story(include_harem=False)
         fixture = copy.deepcopy(self.payload)
         fixture["Relationships"] = {key: base["Relationships"][key]
                                     for key in ("household", "vellexia", "shamira")}

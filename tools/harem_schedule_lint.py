@@ -202,7 +202,10 @@ def scene_load_errors(story, data):
         if category not in ("protected", "pair", "mend", "dynamic", "letter"):
             errors.append("K8: %s has an unknown household category" % s["Id"])
         expected = "household.protected" if category == "protected" else "household.pair" if category in ("pair", "mend") else None
-        if s.get("RestAllowance") != expected:
+        # Dynamic encounters may use the authored pair allowance; unkeyed
+        # flavour remains free. Neither form changes the three-event cap.
+        allowed = (None, "household.pair") if category == "dynamic" else (expected,)
+        if s.get("RestAllowance") not in allowed:
             errors.append("K8: %s category/RestAllowance mismatch" % s["Id"])
         if category == "protected" and any('.cap.' in f for f in s.get("Forbids", [])):
             errors.append("K8: protected discovery %s has a Counts cap" % s["Id"])

@@ -2901,6 +2901,10 @@
         {
           "scene": "gesmerha.trickster.epilogue.finished_mourned",
           "provenance": "Authored job-2 sacrifice commission: the patron died; the carver must still be alive."
+        },
+        {
+          "scene": "household.docket.gesmerha_jerribeth.account",
+          "provenance": "Wave 2 private account; only the named claimant attends, guarded by current presence."
         }
       ],
       "absence_variants": [
@@ -16302,6 +16306,10 @@
           "scene": "horzalah.trickster.beat.used_first",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "household.docket.horzalah_hepzamirah.account",
+          "provenance": "Wave 2 private account; only the named claimant attends, guarded by current presence."
         }
       ],
       "absence_variants": [
@@ -16924,6 +16932,10 @@
         {
           "scene": "yaniel.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "household.pair.yaniel_areelu.commission",
+          "provenance": "S47 private commission; Yaniel alone, current bodily presence required."
         }
       ],
       "absence_variants": [

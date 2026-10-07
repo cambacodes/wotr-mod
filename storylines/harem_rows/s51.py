@@ -43,7 +43,7 @@ def private(step, title, entry, nodes, requires=(), forbids=(), delay=0, groups=
         else:
             extra.update(HouseholdCategory="protected", RestAllowance="household.protected")
         result.append(scene(P + step + "." + body, title, "Nidalynn", 5, entry, nodes,
-                            requires=("trickster", *positive, *requires),
+                            requires=("trickster", "nidalynn.present_now", *positive, *requires),
                             forbids=tuple(dict.fromkeys(("trickster.failed", *presence["Forbids"],
                                                         "nidalynn.epoch_unavailable", P + step + ".seen", *forbids))),
                             delay=delay, last=5, **extra))

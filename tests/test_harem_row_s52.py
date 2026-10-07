@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s52
 from tools import rrt_verify as rules, savecompat
@@ -14,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class RowS52(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.payload = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.payload = fresh_story(include_harem=False)
         if not any(s["Id"] == s52.P + "docket" for s in cls.payload["Scenes"]):
             s52.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
         cls.model = rules.Model(cls.payload)

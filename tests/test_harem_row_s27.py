@@ -137,9 +137,11 @@ class S27Tests(unittest.TestCase):
         self.assertEqual(self.story['Derived'][P + 'respect'], [list(row.DEED)])
 
     def test_registration_is_repeatable_without_mutating_base_scene_list(self):
-        from story import make_story, scenes
+        from story import scenes
         before = copy.deepcopy(scenes)
-        first, second = make_story(), make_story()
+        first, second = fresh_story(include_harem=False), fresh_story(include_harem=False)
+        for payload in (first, second):
+            row.register(payload, payload["Scenes"], payload["Etudes"])
         self.assertEqual(scenes, before)
         self.assertEqual(first, second)
         for payload in (first, second):

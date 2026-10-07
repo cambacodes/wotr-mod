@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s26
 from tools import rrt_verify, departure_lint
@@ -13,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class S26Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.base = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.base = fresh_story(include_harem=False)
         # The coordinator's export may already contain this discovered row.
         # Build a clean row fixture while preserving every unrelated entry.
         cls.base["Scenes"] = [s for s in cls.base["Scenes"] if s["Id"] != s26.P + "account"]
@@ -135,13 +136,13 @@ class S26Tests(unittest.TestCase):
                     self.assertIn(answer["Next"], nodes)
 
     def test_shared_departure_blocker_has_an_exact_reviewable_classification(self):
-        errors = departure_lint.check(self.story)
-        self.assertIn(errors, ([], ["gesmerha/" + s26.P + "account: unclassified presence surface"]))
+        # The shared inventory names every merged row, so validate it against
+        # the complete export rather than a fixture containing only S26.
+        self.assertEqual(departure_lint.check(fresh_story()), [])
         fragment = json.loads((ROOT / "tools/route_packs/harem/s26-departure-surface.json").read_text(encoding="utf-8"))
         data = departure_lint.contracts()
-        if fragment["surface"] not in data["women"]["gesmerha"]["surfaces"]:
-            data["women"]["gesmerha"]["surfaces"].append(fragment["surface"])
-        self.assertEqual(departure_lint.check(self.story, data), [])
+        self.assertTrue(any(surface['scene'] == fragment['surface']['scene']
+                            for surface in data['women']['gesmerha']['surfaces']))
 
 
 if __name__ == "__main__":

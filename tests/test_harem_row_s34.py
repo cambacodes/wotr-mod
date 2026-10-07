@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s34
 
@@ -48,7 +49,7 @@ class S34ReservationTests(unittest.TestCase):
         self.assertEqual(["hepzamirah", "minagho"], row["women"])
 
     def test_current_export_has_no_unsupported_shared_job(self):
-        story = json.loads((ROOT / "development/Story.json").read_text(encoding="utf-8"))
+        story = fresh_story()
         self.assertFalse(any(scene["Id"].startswith(PREFIX) for scene in story["Scenes"]))
         self.assertFalse(any(key.startswith(PREFIX) for key in story.get("Derived", {})))
 

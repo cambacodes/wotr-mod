@@ -219,6 +219,8 @@ class Model:
         self.derived |= {"availability.observed"} if story.get("DepartureEpochs") else set()
         self.derived |= {key for woman, spec in story.get("DepartureEpochs", {}).items()
                          for key in (spec["UnavailableFlag"], woman + ".epoch_redeparted", woman + ".returned_actor_lost", woman + ".native_alive")}
+        # Rules.CompleteWordMadeTrue publishes these live campaign-budget keys.
+        self.derived |= {"trickster.wmt.available"} | {"trickster.wmt.left." + str(n) for n in range(4)}
         self.builtin_derived = set(self.derived)
         # E1 latches: authored flags the runtime records from native sources (never set by a choice).
         self.latches = {k: list(v) for k, v in (story.get("Latches") or {}).items()}
