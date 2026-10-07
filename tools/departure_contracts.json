@@ -334,6 +334,22 @@
         {
           "scene": "seelah.early.bad_cup",
           "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.company",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.desire",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.choice",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.morning",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -11911,6 +11927,22 @@
         {
           "scene": "arueshalae.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.company",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.desire",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.choice",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_arueshalae.morning",
+          "letter": false
         }
       ],
       "absence_variants": [
