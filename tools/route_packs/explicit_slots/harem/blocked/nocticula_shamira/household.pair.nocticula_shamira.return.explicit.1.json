@@ -1,0 +1,13 @@
+{
+  "id": "household.pair.nocticula_shamira.return.explicit.1",
+  "status": "blocked",
+  "voice": "Nocticula: predatory, regal, amused; her court remains hers. Shamira: imperious, sensual, ambitious; she wants the throne and keeps her own authority. Neither becomes repentant or benevolent.",
+  "facts": "Existing lovers, verified by Shamira_dialogue/Cue_0066. No verified shared Ch5 bodily venue. Correspondence, projection and a passenger voice are not bodies. No established age for a coup.",
+  "scene": "Editorial reservation only, outside normal batch discovery. Do not fill or dispatch until the route owner verifies both existing earned bodies in one venue and both personal answers. A return to intimacy between established lovers, never a first night, reconciliation payment, shared dream body or new return. Commander does not participate. No flags, costs or answers in filled text. Cut at the start of explicit acts; the unfilled interval retains the supplied non-graphic default.",
+  "default": "{n}Their private audience ends. Neither has yielded her claim on the court.{/n}",
+  "last_line": "S: My place has not changed.",
+  "speakers": {"N": "Narrator", "S": "Shamira", "Q": "Nocticula"},
+  "commander_variants": [],
+  "min_lines": 0,
+  "max_lines": 0
+}
