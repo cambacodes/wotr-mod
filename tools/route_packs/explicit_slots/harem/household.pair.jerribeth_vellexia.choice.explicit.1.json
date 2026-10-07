@@ -1,0 +1,12 @@
+{
+  "slot_id": "household.pair.jerribeth_vellexia.choice.explicit.1",
+  "status": "blocked: no owner-confirmed overlapping bodily window for the 152-hour arc",
+  "voice": "Jerribeth: calculating, amused, cruel collector who has chosen against her patron before. Vellexia: rank-conscious patron, cruelly playful, impatient and acquisitive. Particular attachment leaves both evil. Business and desire remain separate.",
+  "facts": "Vellexia is patron, Jerribeth client. Defection is only the actual SeenCue e0ee422a413a5f94ea90bede3096ee56. Two current original bodies at the same private audience are required, with current losses, Marhevok stance and earned defection reconciliation intact. An eye tenant, host, mirror, letter or shell cannot attend. Commander absent; no second-person narration. A one-visit presence cannot establish this multi-day sequence.",
+  "scene": "Authored optional Ch5 audience continuation. Both friendship deeds and both personal answers precede the slot; business has ended. Jerribeth stays because she wants Vellexia, not because patronage buys her. The non-graphic slot begins after their kiss, at the start of explicit acts. No explicit prose supplied. Empty mode retains the appointment node and later morning. Jerribeth leaves for her own collection; Vellexia wants her return without summoning her back. No memory room, mind exchange, rent, forgiven betrayal, forced desire or redemption.",
+  "last_line": "J: I have an appointment of my own.",
+  "speakers": {"J": "Jerribeth", "V": "Vellexia"},
+  "commander": "absent",
+  "min_lines": 14,
+  "max_lines": 20
+}
