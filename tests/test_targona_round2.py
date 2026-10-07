@@ -92,9 +92,8 @@ class TargonaRound2Tests(unittest.TestCase):
             anchor = brief["last_line"].removeprefix("N: ")
             self.assertIn(anchor, node["Text"])
 
-    @unittest.expectedFailure
     def test_shared_classifier_does_not_gate_history_on_other_romances(self):
-        """Pending shared-owner repair: P1 8-15 / F1 7-14, not prose evasions."""
+        """History references must stay independent of other romance closures."""
         cases = (("targona.unasked_question", "start", 0, "areelu.closed"),
                  ("targona.the_folded_room", "study", 0, "crossroute.irabeth.unavailable"),
                  ("targona.trickster.free.spent_light", "start", 1, "iomedae.closed"),
