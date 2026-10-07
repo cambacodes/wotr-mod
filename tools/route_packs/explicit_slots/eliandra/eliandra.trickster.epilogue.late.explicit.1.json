@@ -22,5 +22,6 @@
   "min_lines": 14,
   "max_lines": 20,
   "default_text": "{n}Eliandra lets the last tie fall loose, pulls you against her bare waist, and kisses you until the answer on the page is forgotten. She draws you onto the bed with her.{/n}",
-  "placement": "epilogue.late/page: paragraph anchor after arrival, reply/judgement and initiating kiss, before existing morning"
+  "placement": "epilogue.late/page: paragraph anchor after arrival, reply/judgement and initiating kiss, before existing morning",
+  "narration": "third-past"
 }

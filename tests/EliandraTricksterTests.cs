@@ -152,6 +152,8 @@ internal static class EliandraTricksterTests
         var unaskedRead = One(terms, One(firstWords, unasked, new[] { E + "dead_named" }), new[] { E + "terms_read" });
         check(!rite.Requires.Contains(ShrineLeft) && Rules.Available(story, rite, unaskedRead)
               && Program.Walk(rite, unaskedRead).Any(r => r.Has(Leave)), "Trk_Eliandra_Leave: the rite waits on the sanctuary question.");
+        check(!Program.Walk(rite, unaskedRead).Any(r => r.Has(Leave) && r.Has(Lights) && !r.Has(Reward)),
+            "Learned terms alone cannot earn the loved-lights sacrifice.");
         var lightsOffer = rite.Nodes.Single(n => n.Id == "name").Choices.Where(c => c.Check != null).ToList();
         check(rite.Nodes.Single(n => n.Id == "name_again").Choices.Where(c => c.Check != null).Select(c => c.Check!.DC).OrderBy(d => d).SequenceEqual(new[] { 18, 24 }),
             "Trk_Eliandra_Leave: after the refusal the lights are not offered at 24, or 18 with the terms.");
@@ -238,7 +240,7 @@ internal static class EliandraTricksterTests
               && tavern.Forbids.Contains("fool_king.gone") && tavern.Forbids.Contains("eliandra.presence.failed")
               && mark.At!.NearUnit == "bc1093231b1577a4485a730c29595195" && mark.At.Offset!.SequenceEqual(new[] { -5.2f, 3.2f }) && mark.RequiresAnyGroups.Any(g => g.Contains("eliandra.presence.failed") && g.Contains("fool_king.gone")),
             "Trk_Eliandra_NoLeaveAndKingList: the presence is not in front of the persistent tailor, with the jeweller street as fallback.");
-        foreach (var pair in story.Presences.Where(p => p.Key != "eliandra.presence" && p.Value.At?.NearUnit == tavern.At!.NearUnit))
+        foreach (var pair in story.Presences.Where(p => p.Key != "eliandra.presence" && p.Key != "eliandra.presence.arrival" && p.Value.At?.NearUnit == tavern.At!.NearUnit))
         {
             var a = Spot(tavern); var b = Spot(pair.Value);
             check(Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Z - b.Z) * (a.Z - b.Z)) >= 4.0, "Trk_Eliandra_NoLeaveAndKingList: " + pair.Key + " stands within 4 m of her.");
@@ -246,7 +248,7 @@ internal static class EliandraTricksterTests
         check(story.Presences.Values.Where(p => p.Unit == Unit).All(p => p.At?.NearUnit != Fye && p.At?.NearUnit != Wilcer && p.At?.NearUnit != Smith),
             "Trk_Eliandra_NoLeaveAndKingList: a presence of hers stands at Fye, the yard or the smith.");
         check(presenceBeats.All(s => s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })
-                                     && (s.InteractionHub == "eliandra.presence" || s.InteractionHub == "eliandra.presence.mark"))
+                                     && (s.InteractionHub == "eliandra.presence" || s.InteractionHub == "eliandra.presence.mark" || s.InteractionHub == "eliandra.presence.arrival"))
               && presenceBeats.Where(s => s.Id.StartsWith(E + "drezen.", StringComparison.Ordinal)).All(s => s.Requires.Contains(E + "heart_seen")),
             "Trk_Eliandra_NoLeaveAndKingList: a Drezen beat is not on her presence, or a courtship beat comes before the star-heart.");
         // Native lifecycle (audit r4): her shrine unit is in the captive pool that Pulura_Chapter05_Mechanics destroys once
@@ -390,14 +392,15 @@ internal static class EliandraTricksterTests
             One(S(E + "ch5.first_mile" + suffix), Later(story, eve, 30), new[] { Committed });
         }
         // The late yes is a romance only when the player chose one.
-        var friendLate = World(story, 6, One(rite, watched, new[] { Leave, Lights, Reward }).Flags.Where(f => f != E + "flirted").ToArray());
-        check(!friendLate.Has(E + "flirted") && Rules.Available(story, S(E + "epilogue.released"), friendLate)
+        var friendTreatment = One(S(E + "ch5.night_after"), World(story, 5, granted.Flags.Concat(new[] { E + "flirted" }).ToArray()), new[] { E + "friendship_chosen" });
+        var friendLate = World(story, 6, friendTreatment.Flags.ToArray());
+        check(friendLate.Has(E + "flirted") && Rules.Available(story, S(E + "epilogue.released"), friendLate)
               && !Rules.Available(story, S(E + "epilogue.unasked"), friendLate),
-            "A friend who never showed interest is given a romance on the late page.");
+            "An explicit friendship after earlier interest is given a romance on the late page.");
         // Rest-delivered pages in Chapter 5: the planning page, and the road letter on the soft no only.
         var remote5 = own.Where(s => Rules.IsRemote(s) && s.Chapters.Contains(5) && s.Owner != "EliandraEpilogue").Select(s => s.Id).ToList();
-        check(remote5.SequenceEqual(new[] { E + "ch5.road_letter", E + "ch5.return_from_fords" }),
-            "Chapter 5 delivers other than the soft-no letter and its earned return: " + string.Join(",", remote5));
+        check(remote5.SequenceEqual(new[] { E + "ch5.road_letter" }),
+            "Chapter 5 exceeds the single road-letter delivery: " + string.Join(",", remote5));
         var farewell = One(mile, Later(story, granted, 30), new[] { Closed });
         check(Rules.Available(story, S(E + "epilogue.closed"), World(story, 6, farewell.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.together"), World(story, 6, farewell.Flags.ToArray())),

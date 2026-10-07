@@ -646,7 +646,7 @@ shrine(E + "ch5.terms", "What the Maiden takes", '"What does your Lady take, in 
        c("Continue", "decide")),
     nar("mendev", '''{n}You have seen them: some cold night, from some wall or some road, a sky that moved, green and rose and white, and you stopped, as everyone stops, until your feet were numb. You have not thought about it in a long time. It surprises you how clearly you remember it.{/n}
 {n}The memory remains yours. The lights belong to her Lady. Beneath the list of rejected offerings, you write: my sight of them.{/n}''',
-       c("Continue", "decide")),
+       c("Continue", "decide", flags=(E + "lights_remembered",))),
     nar("decide", '''{n}Beneath the offering you write the price: never to see the lights again. Not over Sarkoris, not when the war is done. You read it three times.{/n}
 {n}The veil hides a valley by turning eyes aside. It could turn one more pair of eyes without breaking them. Under the price you add: the stars remain. Then you fold the sheet and hold it over the lamp until it catches.{/n}''',
        c("[Sleep on it.]", flags=(PLANNED,))),
@@ -709,7 +709,7 @@ shrine(E + "ch5.last_rite", "The last rite", '"Will you hold one last rite at th
         c("Continue", "veil", forbids=(ABYSS_DARK,))),
     nar("abyss", '''{n}You looked for these colours beneath the unfamiliar stars of the Midnight Isles and found none. Now they hang above the basin. You look until your eyes ache. You named the price; you will not have another chance.{/n}''',
         c("Continue", "veil")),
-    nar("veil", '''{n}The lights draw together, and turn, and come towards you. You do not flinch. They pass over your face like cool water, and your eyes sting, and then there is a feeling you know: the slide, the gentle wrongness of a gaze that has been told to look elsewhere. The same veil that hid her shrine from every unfriendly eye for a century, turned now on one pair of eyes.{/n}
+    nar("veil", '''{n}The lights draw together, and turn, and come towards you. You do not flinch. They pass over your face like cool water, and your eyes sting, and then your gaze slides aside, the gentle wrongness of a gaze that has been told to look elsewhere. The same veil that hid her shrine from every unfriendly eye for a century, turned now on one pair of eyes.{/n}
 {n}When you look up again the stars are still there. The lights are not. Eliandra is staring at the air above the basin where they must, for her, still be hanging, and there are tears on her face.{/n}''',
         c("Continue", "granted")),
     el("granted", '''"She has taken it," {n}she says. Her voice is her own again, and it shakes.{/n} "She turned her veil on you. Her lights will stand over Sarkoris every winter for as long as there is a sky, and you will never see them again. Wherever you look for them, your eyes will look somewhere else." {n}She lets out a breath that is half a sob.{/n} "And she has let me go. I felt it. Like a knot I had forgotten was tied."''',
@@ -965,6 +965,8 @@ def integrate(payload):
     fallbacks.setdefault("Katair", KATAIR_PORTRAIT)
     fallbacks.setdefault("Odden", ODDEN_PORTRAIT)
     payload.setdefault("DerivedForbids", {})[AWAY] = [RETURNED]
+    # Physical membership must wait for the earned arrival; correspondence stays open.
+    payload["DerivedForbids"].setdefault("eliandra.harem.eligible", []).append(AWAY)
 
 
 # Round 2 authored receipts: a mailed answer earns her acknowledgement and journey,
@@ -1029,3 +1031,27 @@ for _scene in SCENES:
         ])
 
 # Shared present_now departure epochs still require coordinator registration.
+
+
+# Round 3: authored attachment evidence; ritual knowledge alone is insufficient.
+ATTACHED = E + "lights_loved"
+DERIVED[ATTACHED] = [[LIGHTS_SEEN], [E + "lights_remembered"], [OBSERVED]]
+
+for _scene in SCENES:
+    _nodes = {node["Id"]: node for node in _scene["Nodes"]}
+    if _scene["Id"] == E + "ch5.last_rite":
+        for _id in ("name", "name_again"):
+            for _answer in _nodes[_id]["Choices"]:
+                if _answer.get("Check"):
+                    _answer.setdefault("Requires", []).append(ATTACHED)
+            _nodes[_id]["Choices"].append(c(
+                '[Offer the sight you never treasured] "My sight of her lights. It is yours, if it will help her."',
+                "counter", forbids=(ATTACHED,)))
+    if _scene["Id"] == E + "ch5.night_after":
+        # The counteroffer also costs her strength; do not praise it as the
+        # Commander's loved sacrifice on this sibling branch.
+        _nodes["start"]["Choices"][1].setdefault("Forbids", []).append(REWARD_RETURNED)
+        _nodes["start"]["Choices"].append(c('"Fool?"', "fool_counter", requires=(REWARD_RETURNED,)))
+        _scene["Nodes"].append(el("fool_counter",
+            '"Fool." {n}She holds the guard-room door, the bowl balanced against her hip.{/n} "You asked for my release and found that I must pay too. I chose it. Now sit down before you make me spill this."',
+            c("[Sit.]", "wash")))

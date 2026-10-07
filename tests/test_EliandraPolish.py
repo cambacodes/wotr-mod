@@ -4,7 +4,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from expansion import make_expansion
+from tests.story_fixture import fresh_story
 from tools.rrt_verify import Model, SimState, sim_available, sim_complete
 
 E = "eliandra.trickster."
@@ -24,7 +24,7 @@ def shown(item, flags):
 class EliandraPolishTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = make_expansion()
+        cls.story = fresh_story()
         cls.model = Model(cls.story)
         cls.scenes = cls.model.by_id
 
@@ -57,6 +57,7 @@ class EliandraPolishTests(unittest.TestCase):
             else:
                 current = answer["Next"]
             flags = self.state(flags).flags
+        flags = self.state(flags | {scene["Id"]}).flags
         return flags, set(trace), trace
 
     def test_eye_treatment_friend_and_romance_complete_separately(self):
@@ -162,7 +163,7 @@ class EliandraPolishTests(unittest.TestCase):
         for suffix in ("", "_drezen", "_drezen_mark"):
             for failure in (False, True):
                 flags, text, _ = self.play("ch5.last_rite" + suffix,
-                    {E + "terms_read"}, {"name": 2}, failure=failure)
+                    {E + "terms_read", E + "lights_seen"}, {"name": 2}, failure=failure)
                 self.assertTrue({LEAVE, LIGHTS} <= flags)
                 self.assertEqual(failure, REWARD in flags)
                 name = next(n for n in self.scenes[E + "ch5.last_rite" + suffix]["Nodes"] if n["Id"] == "name")
@@ -194,6 +195,49 @@ class EliandraPolishTests(unittest.TestCase):
         daily = next(n for n in call["Nodes"] if n["Id"] == "daily")
         self.assertEqual(call["Nodes"][0]["Choices"][0]["Next"], daily["Id"])
         self.assertIn("eliandra.committed", call["Nodes"][0]["Choices"][0]["Requires"])
+
+    def test_never_looked_cannot_pay_the_loved_lights_price(self):
+        planned, _, _ = self.play("ch5.terms", choices={"warn": 1, "left": 2}, start="warn")
+        self.assertNotIn(E + "lights_loved", planned)
+        for suffix in ("", "_drezen", "_drezen_mark"):
+            flags, _, trace = self.play("ch5.last_rite" + suffix,
+                {*planned, E + "terms_read"}, {"name": 5})
+            self.assertNotIn("taken", trace)
+            self.assertNotIn("fair", trace)
+            self.assertTrue({LEAVE, LIGHTS, REWARD} <= flags)
+            _, _, loved = self.play("ch5.last_rite" + suffix,
+                {E + "terms_read", E + "lights_seen"}, {"name": 2})
+            self.assertIn("fair", loved)
+        remembered, _, _ = self.play("ch5.terms", choices={"warn": 1, "left": 1}, start="warn")
+        self.assertIn(E + "lights_loved", remembered)
+
+    def test_earlier_flirt_then_actual_friendship_has_no_romance(self):
+        for choices in ({"kiss": 1}, {"eyes": 2}):
+            flags, _, _ = self.play("ch5.night_after", {LEAVE, LIGHTS, FLIRT}, choices)
+            postwar = self.state(flags, 6)
+            self.assertTrue(sim_available(self.model, self.scenes[E + "epilogue.released"], postwar))
+            self.assertFalse(sim_available(self.model, self.scenes[E + "epilogue.unasked"], postwar))
+
+    def test_written_yes_keeps_guest_absent_until_physical_return(self):
+        flags, _, _ = self.play("ch5.road_letter", {LEAVE, E + "declined"})
+        before = self.state(flags)
+        self.assertIn(E + "away", before.flags)
+        self.assertNotIn("eliandra.harem.eligible", before.flags)
+        guest = next(e for e in self.story["Books"]["trickster.ledger"]["Entries"] if e["Id"] == "guest.eliandra")
+        self.assertFalse(shown(guest, before.flags))
+        arrival = self.scenes[E + "ch5.return_from_fords"]
+        self.assertEqual("eliandra.presence.arrival", arrival["InteractionHub"])
+        self.assertFalse(arrival.get("Remote", False))
+        returned, _, _ = self.play("ch5.return_from_fords", flags)
+        self.assertNotIn(E + "away", returned)
+        self.assertIn("eliandra.harem.eligible", returned)
+
+    def test_fords_location_paragraph_survives_a_written_yes(self):
+        flags, _, _ = self.play("ch5.road_letter", {LEAVE, E + "declined"})
+        page = self.scenes["eliandra.lastcall.page"]["Nodes"][0]
+        text = page["Text"] + " ".join(p["Text"] for p in page["Paragraphs"] if shown(p, flags))
+        self.assertIn("At the fords", text)
+        self.assertNotIn("north wall", text)
 
 
 if __name__ == "__main__":

@@ -51,15 +51,28 @@ class EliandraRoundTwoTests(unittest.TestCase):
                 self.assertEqual([E + "drezen.road_open"], nodes[expected]["Choices"][0]["Set"])
 
     def test_away_blocks_both_hosts_and_all_physical_twins(self):
-        for host in stars.PRESENCES.values():
+        for key, host in stars.PRESENCES.items():
+            if key == stars.ARRIVAL:
+                self.assertIn(main.AWAY, host["Requires"])
+                self.assertEqual(48, host["DelayHours"])
+                continue
             self.assertIn(main.AWAY, host["Forbids"])
             self.assertIn("eliandra.attacked", host["Forbids"])
         for scene in stars.SCENES:
             self.assertIn(main.AWAY, scene["Forbids"])
             self.assertIn("eliandra.attacked", scene["Forbids"])
         returned = next(s for s in main.SCENES if s["Id"] == E + "ch5.return_from_fords")
-        self.assertTrue(returned["Remote"])
-        self.assertNotIn("ContactUnit", returned)
+        self.assertFalse(returned.get("Remote", False))
+        self.assertEqual(stars.ARRIVAL, returned["InteractionHub"])
+        self.assertEqual(main.UNIT, returned["ContactUnit"])
+        self.assertNotIn("Kind", returned)
+        self.assertFalse(returned.get("ReturnToList", False))
+        from tools.savecompat import choice_identities
+        for node in returned["Nodes"]:
+            self.assertEqual(
+                ["answer.%s.%s.%d" % (returned["Id"], node["Id"], i)
+                 for i in range(len(node["Choices"]))],
+                [identity["GuidFor"] for identity in choice_identities(returned, node)])
         self.assertIn(main.LETTER_ANSWERED, returned["Requires"])
         self.assertIn(main.AWAY, returned["Requires"])
         self.assertEqual(48, returned["DelayHours"])
