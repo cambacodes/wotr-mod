@@ -9,6 +9,7 @@ an unproved guard is reported, never silently treated as an earned outcome.
 import hashlib
 import json
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -77,6 +78,124 @@ def route_guard(model, route, woman=None):
     return AND(*parts)
 
 
+def satisfiable(clauses, check_deadline=lambda: None):
+    """DPLL with fixed-point propagation and per-query residual-CNF memoization.
+
+    Clause/literal order and duplicate literals do not affect SAT. Canonical
+    residuals let branches share answers without sharing historical assignments.
+    """
+    memo = {}
+
+    def propagate(cs):
+        remaining, occurrences, pending = {}, {}, []
+        for index, clause in enumerate(cs):
+            check_deadline()
+            remaining[index] = set(clause)
+            for x in clause:
+                occurrences.setdefault(x, []).append(index)
+            if len(clause) == 1:
+                pending.append(next(iter(clause)))
+        assigned = set()
+        while pending:
+            check_deadline()
+            x = pending.pop()
+            if -x in assigned:
+                return None
+            if x in assigned:
+                continue
+            assigned.add(x)
+            for index in occurrences.get(x, ()):
+                remaining.pop(index, None)
+            for index in occurrences.get(-x, ()):
+                clause = remaining.get(index)
+                if clause is None:
+                    continue
+                clause.discard(-x)
+                if not clause:
+                    return None
+                if len(clause) == 1:
+                    pending.append(next(iter(clause)))
+        return frozenset(frozenset(c) for c in remaining.values())
+
+    def solve(cs):
+        check_deadline()
+        original = cs
+        if original in memo:
+            return memo[original]
+        while cs:
+            check_deadline()
+            if frozenset() in cs:
+                memo[original] = False
+                return False
+            if any(len(c) == 1 for c in cs):
+                # Touch only clauses containing a propagated literal. Deep
+                # Tseitin chains no longer rescan every unaffected clause at
+                # each propagation round.
+                cs = propagate(cs)
+                if cs is None:
+                    memo[original] = False
+                    return False
+                continue
+            counts = {}
+            for clause in cs:
+                check_deadline()
+                for x in clause:
+                    counts[x] = counts.get(x, 0) + 1
+            pure = {x for x in counts if -x not in counts}
+            if pure:
+                cs = frozenset(c for c in cs if not c & pure)
+                continue
+            break
+        if not cs:
+            result = True
+        elif cs in memo:
+            result = memo[cs]
+        else:
+            # Once propagation removes a Tseitin root, unrelated definitions
+            # often separate. Solve those components independently rather
+            # than multiplying their possible assignments across branches.
+            owners, components = {}, []
+            for clause in cs:
+                check_deadline()
+                touched = {owners[abs(x)] for x in clause if abs(x) in owners}
+                if touched:
+                    index = min(touched)
+                    components[index].add(clause)
+                    for other in touched - {index}:
+                        components[index].update(components[other])
+                        for old in components[other]:
+                            for x in old:
+                                owners[abs(x)] = index
+                        components[other].clear()
+                else:
+                    index = len(components)
+                    components.append({clause})
+                for x in clause:
+                    owners[abs(x)] = index
+            separate = [frozenset(c) for c in components if c]
+            if len(separate) > 1:
+                result = all(solve(c) for c in sorted(separate, key=lambda c: (len(c), sorted(map(sorted, c)))))
+                memo[cs] = memo[original] = result
+                return result
+            # Count both polarities; prefer the common polarity of the most
+            # frequent variable. Numeric ties keep proofs reproducible.
+            variable = max({abs(x) for x in counts},
+                           key=lambda x: (counts.get(x, 0) + counts.get(-x, 0), -x))
+            x = variable if counts.get(variable, 0) >= counts.get(-variable, 0) else -variable
+            result = solve(cs | {frozenset((x,))}) or solve(cs | {frozenset((-x,))})
+            memo[cs] = result
+        memo[original] = result
+        return result
+
+    normalized = set()
+    for clause in clauses:
+        check_deadline()
+        clause = frozenset(clause)
+        if not any(-x in clause for x in clause):
+            normalized.add(clause)
+    return solve(frozenset(normalized))
+
+
 class Proof:
     """Prove context => target by checking that context AND NOT target is unsatisfiable.
 
@@ -107,12 +226,31 @@ class Proof:
             visit(key)
 
     def implies(self, context, target):
+        deadline = time.monotonic() + 30
+
+        def check_deadline():
+            if time.monotonic() >= deadline:
+                raise TimeoutError("Proof.implies exceeded 30 s: context=%r; target=%r" % (context, target))
+
         cache_key = context, target
         if cache_key in self.cache:
+            check_deadline()
             return self.cache[cache_key]
+        # Many presence checks ask for a literal already held by the scene or
+        # answer. Prove that conjunction directly, without encoding unrelated
+        # derived definitions. This is a propositional tautology, not an
+        # assumption about opaque counts or historical latches.
+        held = set(context[1:]) if context[0] == 'and' else {context}
+        if (target in held
+                or target[0] == 'and' and set(target[1:]) <= held
+                or target[0] == 'or' and any(part in held for part in target[1:])):
+            check_deadline()
+            self.cache[cache_key] = True
+            return True
         variables, clauses, active = {}, [], set()
 
         def encode(expr):
+            check_deadline()
             if expr[0] == "lit" and not expr[2]:
                 return -encode(lit(expr[1]))
             if expr in variables:
@@ -174,29 +312,8 @@ class Proof:
 
         clauses.extend([(encode(context),), (-encode(target),)])
 
-        def satisfiable(cs):
-            while True:
-                if any(not c for c in cs):
-                    return False
-                units = {c[0] for c in cs if len(c) == 1}
-                if any(-x in units for x in units):
-                    return False
-                if not units:
-                    break
-                cs = [tuple(x for x in c if -x not in units) for c in cs if not any(x in units for x in c)]
-            if not cs:
-                return True
-            counts = {}
-            for c in cs:
-                for x in c:
-                    counts[x] = counts.get(x, 0) + 1
-            pure = {x for x in counts if -x not in counts}
-            if pure:
-                return satisfiable([c for c in cs if not any(x in pure for x in c)])
-            x = min(cs, key=len)[0]
-            return satisfiable(cs + [(x,)]) or satisfiable(cs + [(-x,)])
-
-        result = not satisfiable(clauses)
+        result = not satisfiable(clauses, check_deadline)
+        check_deadline()
         self.cache[cache_key] = result
         return result
 
@@ -228,6 +345,15 @@ def node_conditions(model, scene):
         return {}, {}, {}
     first = scene["Nodes"][0]["Id"]
     held, changed, ancestors, pending = {first: frozenset()}, {first: frozenset()}, {first: frozenset()}, [first]
+    dependency_cache = {}
+
+    def inputs(expr):
+        # The model's input graph is fixed during this scene walk. Reuse its
+        # closures across incoming paths and receipt writes, without retaining
+        # a cache after the call or assuming the model stays fixed afterwards.
+        if expr not in dependency_cache:
+            dependency_cache[expr] = dependencies(model, expr)
+        return dependency_cache[expr]
 
     while pending:
         nid = pending.pop()
@@ -238,7 +364,7 @@ def node_conditions(model, scene):
             if sets:
                 # Only conditions reading a changed flag can become stale.
                 # An unrelated Set must not discard a still-live Derived guard.
-                carried = {e for e in carried if not dependencies(model, e).intersection(sets)}
+                carried = {e for e in carried if not inputs(e).intersection(sets)}
                 carried.update(lit(k) for k in sets)
             out = frozenset(carried)
             mutations = changed[nid] | frozenset(sets)
@@ -258,14 +384,21 @@ def node_conditions(model, scene):
 
 
 def dependencies(model, expr, seen=()):
-    if expr[0] != "lit":
-        return set().union(*(dependencies(model, x, seen) for x in expr[1:]))
-    key = expr[1]
-    result = {key}
-    if key in seen:
-        return result
-    for source in verify.composite_inputs(model, key):
-        result.update(dependencies(model, lit(source), (*seen, key)))
+    # A dependency is any reachable input, regardless of polarity or path.
+    # Rewalking every path through shared prefixes multiplies the work even
+    # though the result is a set. Visit each key once, retaining cycle inputs
+    # and the caller's blocked ancestors just as the recursive walk did.
+    result, visited, pending = set(), set(seen), [expr]
+    while pending:
+        part = pending.pop()
+        if part[0] != 'lit':
+            pending.extend(part[1:])
+            continue
+        key = part[1]
+        result.add(key)
+        if key not in visited:
+            visited.add(key)
+            pending.extend(lit(source) for source in verify.composite_inputs(model, key))
     return result
 
 

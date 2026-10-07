@@ -1,11 +1,9 @@
 """Authored disclosure repair: her judgment, named people, and later additions.
 
 No new romance price or reconciliation. The compact graph appends to the old
-graph, whose indices remain save references. Routine names are supplied in
-groups of four; exact history variants record only the people actually named.
+graph, whose indices remain save references. Each live, undisclosed partner
+has one predicate; only the people actually named receive receipts.
 """
-from itertools import product
-
 from story_format import c, n
 
 L = 'dorgelinda.ledger.'
@@ -168,19 +166,11 @@ def integrate(payload):
                 event['Nodes'].append(n('disclosure.reply.' + rel, 'Dorgelinda', words,
                     c('[Go on.]', nxt, flags=receipts(rel))))
             else:
-                choices = []
-                for bits in product((False, True), repeat=len(group)):
-                    present = [r for r, bit in zip(group, bits) if bit]
-                    absent = [r for r, bit in zip(group, bits) if not bit]
-                    text = '[Name ' + ', '.join(PARTNERS[r][1] for r in present) + ' and explain the arrangements.]' if present else 'Continue'
-                    choices.append(c(text, nxt, flags=tuple(f for r in present for f in receipts(r)),
-                        requires=tuple(keys[r] for r in present), forbids=tuple(keys[r] for r in absent)))
-                event['Nodes'].append(n(nid, 'Dorgelinda', '"Who else?"' if not changed else '"Anyone else I haven\'t heard about?"', *choices))
+                event['Nodes'].append(n(nid, 'Dorgelinda', '"Who else?"' if not changed else '"Anyone else I haven\'t heard about?"', c('Continue', nxt)))
         event['Nodes'].append(n('disclosure.' + str(len(steps)), 'Dorgelinda',
             '"Right. I\'ve heard you. My rooms stay mine. You come here yourself, and nobody draws stores on your seal behind my back." {n}She holds out her good hand.{/n}',
             c('[Take her hand.]', 'shaken')))
-        # Keep empty dispatches out of the playable graph by expanding skip
-        # gates; only consequential replies and occupied batches need a click.
+        # Skip absent/disclosed names directly, without subset predicates.
         compact(event, steps, keys, changed, payload)
 
     follow['Requires'] = ['trickster.ever', 'dorgelinda.present_now', 'dorgelinda.committed', L + 'new_columns']
@@ -213,67 +203,54 @@ def integrate(payload):
 
 
 def compact(event, steps, keys, changed, payload):
-    """Jump directly to the next occupied step with mutually exclusive gates."""
+    """An ordered disclosure chain using only each partner's live predicate.
+
+    Suffix answers skip empty steps without visible checklist pages. The flow
+    has one reply per partner and a constant-width prefix reader per partner,
+    rather than a product of possible rosters or long negative conjunctions.
+    Saved pre-round-three nodes/answers remain in place.
+    """
     nodes = {n['Id']: n for n in event['Nodes']}
     end = 'disclosure.' + str(len(steps))
-    derived, forbids = payload['Derived'], payload['DerivedForbids']
-
-    def dispatch(label, present, absent):
-        # Factor a snapshot predicate rather than carrying dozens of stale
-        # negative assumptions through every receipt-writing answer. Native
-        # entitlement remains a separate positive guard on the actual answer.
-        key = L + 'disclosure_dispatch.' + label
-        derived[key] = [[keys[r] for r in present]] if present else [['trickster.ever']]
-        if absent:
-            forbids[key] = list(absent)
-        else:
-            forbids.pop(key, None)
-        ready = key + '.ready'
-        payload.setdefault('Counts', {})[ready] = dict(Of=[key], Min=1)
-        return (ready, *(L + 'current_other.' + r for r in present))
-
-    prefix = []
-    predicates = {}
-    for i, (kind, group) in enumerate(steps):
-        if kind == 'special':
-            predicates[(i, (group,))] = dispatch(group, [group], prefix)
-            prefix.append(keys[group])
-        else:
-            for bits in product((False, True), repeat=len(group)):
-                present = tuple(r for r, bit in zip(group, bits) if bit)
-                if present:
-                    absent = [keys[r] for r, bit in zip(group, bits) if not bit]
-                    predicates[(i, present)] = dispatch('batch.' + str(i) + '.' + ''.join('1' if bit else '0' for bit in bits), present, prefix + absent)
-            prefix.extend(keys[r] for r in group)
-    done = dispatch('done', [], prefix)
+    order = [rel for kind, group in steps for rel in ([group] if kind == 'special' else group)]
+    derived, forbids, counts = payload['Derived'], payload['DerivedForbids'], payload['Counts']
+    ready, prefix = {}, None
+    for index, rel in enumerate(order):
+        selector = L + 'next_disclosure.' + rel
+        derived[selector] = [[keys[rel]]]
+        if prefix:
+            forbids[selector] = [prefix]
+        # Counts preserve the existing snapshot semantics: receipt writes do
+        # not turn earlier negative assumptions into current entitlement.
+        ready[rel] = selector + '.ready'
+        counts[ready[rel]] = dict(Of=[selector], Min=1)
+        current = L + 'disclosure_prefix.' + str(index)
+        derived[current] = [[keys[rel]]] + ([[prefix]] if prefix else [])
+        prefix = current
+    done = L + 'next_disclosure.done'
+    derived[done] = [['trickster.ever']]
+    forbids[done] = [prefix]
+    counts[done + '.ready'] = dict(Of=[done], Min=1)
 
     def next_choices(start):
         result = []
-        for i in range(start, len(steps)):
-            kind, group = steps[i]
-            if kind == 'special':
-                result.append(c(EXPLANATIONS.get(group, '[Explain your relationship with ' + person(group) + '.]'),
-                    'disclosure.reply.' + group, requires=predicates[(i, (group,))]))
-            else:
-                for bits in product((False, True), repeat=len(group)):
-                    present = [r for r, bit in zip(group, bits) if bit]
-                    if not present:
-                        continue
-                    receipt = [L + 'disclosed.' + r for r in present]
-                    # A batch has its own response, rather than jumping over
-                    # her acknowledgment to the next demand for names.
-                    result.append(c('[Name ' + ', '.join(person(r) for r in present) + ' and explain the arrangements.]',
-                        'disclosure.batch.' + str(i), flags=tuple(receipt),
-                        requires=predicates[(i, tuple(present))]))
-        result.append(c('[Hear her answer.]', end, requires=done))
+        for rel in order[start:]:
+            receipt = [L + 'disclosed.' + rel]
+            if rel == 'tirabade':
+                receipt.extend((L + 'disclosed.anevia', L + 'disclosed.irabeth'))
+            result.append(c(EXPLANATIONS.get(rel, '[Explain your relationship with ' + person(rel) + '.]'),
+                'disclosure.reply.' + rel, flags=receipt,
+                requires=(ready[rel], L + 'current_other.' + rel)))
+        result.append(c('[Hear her answer.]', end, requires=(done + '.ready',)))
         return result
 
     nodes['named']['Choices'][-1]['Next'] = 'disclosure.0'
     # Preserve appended dispatcher nodes as well; suspended saves can advance.
     for i, (kind, group) in enumerate(steps):
-        nodes['disclosure.' + str(i)]['Choices'] = next_choices(i)
+        start = sum(1 if k == 'special' else len(g) for k, g in steps[:i])
+        nodes['disclosure.' + str(i)]['Choices'] = next_choices(start)
         if kind == 'special':
-            nodes['disclosure.reply.' + group]['Choices'] = next_choices(i + 1)
+            nodes['disclosure.reply.' + group]['Choices'] = next_choices(start + 1)
         else:
             event['Nodes'].append(n('disclosure.batch.' + str(i), 'Dorgelinda',
                 ([
@@ -293,15 +270,22 @@ def compact(event, steps, keys, changed, payload):
                     '"That lot too? Hammer and tongs. I\'m keepin\' my own supper hour."',
                     '"Heard you. Nobody else uses my cup."',
                 ])[sum(kind == 'batch' for kind, _ in steps[:i])],
-                *next_choices(i + 1)))
-    # Mark a special name when the Commander supplies it, before her response.
-    for node in event['Nodes']:
-        for answer in node['Choices']:
-            target = answer.get('Next') or ''
-            if target.startswith('disclosure.reply.'):
-                rel = target[len('disclosure.reply.'):]
-                answer['Set'] = list(dict.fromkeys(answer['Set'] + [L + 'disclosed.' + rel] +
-                    ([L + 'disclosed.anevia', L + 'disclosed.irabeth'] if rel == 'tirabade' else [])))
+                *next_choices(start + len(group))))
+    # Routine disclosures retain their existing batch acknowledgment, now
+    # reached after each actual name. No new assertions about another woman's
+    # presence are introduced. Keep batch IDs for suspended development saves.
+    routine_responses = {rel: next(node['Text'] for node in event['Nodes']
+                                  if node['Id'] == 'disclosure.batch.' + str(i))
+                         for i, (kind, group) in enumerate(steps) if kind == 'batch' for rel in group}
+    for index, rel in enumerate(order):
+        if 'disclosure.reply.' + rel not in nodes:
+            event['Nodes'].append(n('disclosure.reply.' + rel, 'Dorgelinda',
+                routine_responses[rel], *next_choices(index + 1)))
+    # The validator requires retained nodes to stay structurally connected.
+    # Append retired links; they never display in this Trickster conversation.
+    nodes['disclosure.0']['Choices'].extend(
+        c('[Go on.]', 'disclosure.batch.' + str(i), forbids=('trickster.ever',))
+        for i, (kind, _) in enumerate(steps) if kind == 'batch')
     # Intermediate dispatchers were construction helpers, never shipped IDs.
     unused = {'disclosure.' + str(i) for i in range(1, len(steps))}
     event['Nodes'] = [node for node in event['Nodes'] if node['Id'] not in unused]

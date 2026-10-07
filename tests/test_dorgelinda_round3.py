@@ -1,6 +1,7 @@
-"""Disclosure histories: people, batched receipts, and two later additions."""
+"""Disclosure histories: individual receipts and repeated later additions."""
 import copy
 import unittest
+from unittest.mock import patch
 
 from storylines import dorgelinda_ledger as ledger, dorgelinda_trickster as trickster
 from tests.test_dorgelinda_polish import visible
@@ -16,13 +17,14 @@ class RoundThreeTests(unittest.TestCase):
         self.by = {s['Id']: s for s in self.payload['Scenes']}
 
     def complete(self, flags):
-        flags = {f for f in flags if not f.startswith((L + 'undisclosed.', L + 'disclosure_dispatch.')) and f != L + 'new_columns'}
+        flags = {f for f in flags if not f.startswith((L + 'undisclosed.', L + 'disclosure_dispatch.',
+                 L + 'disclosure_prefix.', L + 'next_disclosure.')) and f != L + 'new_columns'}
         for key, groups in self.payload['Derived'].items():
             if key.startswith(L + 'undisclosed.'):
                 if any(set(g) <= flags for g in groups) and not set(self.payload['DerivedForbids'].get(key, [])) & flags:
                     flags.add(key)
         for key, groups in self.payload['Derived'].items():
-            if key.startswith(L + 'disclosure_dispatch.'):
+            if key.startswith((L + 'disclosure_prefix.', L + 'next_disclosure.')):
                 if any(set(g) <= flags for g in groups) and not set(self.payload['DerivedForbids'].get(key, [])) & flags:
                     flags.add(key)
         for key, spec in self.payload.get('Counts', {}).items():
@@ -71,18 +73,19 @@ class RoundThreeTests(unittest.TestCase):
             _, named, pages, _ = self.disclose(sid, flags)
             self.assertEqual(set(named), set(REACTIONS))
             self.assertEqual(len(named), len(set(named)))
-            self.assertLess(len(pages), len(REACTIONS))
+            self.assertEqual(len(pages), len(REACTIONS))  # pair suppresses two individual replies
             replies = [node['Text'] for node in self.by[sid]['Nodes'] if node['Id'].startswith('named.')]
             self.assertEqual(len(replies), len(set(replies)))
             self.assertFalse(any('Your time with her is yours to arrange' in text for text in replies))
 
-    def test_routine_names_are_batched_without_invented_receipts(self):
+    def test_routine_names_have_individual_answers_without_invented_receipts(self):
         from storylines.dorgelinda_round3 import EXPLANATIONS
         actual = ('anevia', 'irabeth', 'seelah', 'konomi')
         flags = {'trickster.ever'} | {L + 'current_other.' + r for r in actual}
         final, named, pages, _ = self.disclose(ledger.OTHERS, flags)
         self.assertEqual(set(named), set(actual))
-        self.assertLess(len(pages), len(actual))
+        self.assertEqual(len(pages), len(actual) + 2)  # entry and final judgment
+        self.assertEqual(len([a for a in self.disclosure_answers if a.startswith('[Explain')]), len(actual))
         self.assertFalse(any(L + 'disclosed.' + r in final for r in EXPLANATIONS))
 
     def test_two_additions_after_solo_and_initial_shared_arrangements(self):
@@ -128,6 +131,63 @@ class RoundThreeTests(unittest.TestCase):
         page = next(n for n in self.by[L + 'carried_forward']['Nodes'] if n['Id'] == 'paid')
         self.assertIn("and they're not", page['Text'])
         self.assertNotIn("and They're", page['Text'])
+
+    def test_disclosure_predicates_are_linear_and_have_no_dispatch_counts(self):
+        from storylines.dorgelinda_round3 import REACTIONS
+        readers = [k for k in self.payload['Derived'] if k.startswith(L + 'undisclosed.')]
+        self.assertEqual(len(readers), len(REACTIONS))
+        for field in ('Derived', 'DerivedForbids', 'Counts'):
+            self.assertFalse(any(k.startswith(L + 'disclosure_dispatch.') for k in self.payload[field]))
+        prefixes = {k: groups for k, groups in self.payload['Derived'].items()
+                    if k.startswith(L + 'disclosure_prefix.')}
+        selectors = {k: groups for k, groups in self.payload['Derived'].items()
+                     if k.startswith(L + 'next_disclosure.')}
+        self.assertEqual(len(prefixes), len(REACTIONS))
+        self.assertEqual(len(selectors), len(REACTIONS) + 1)
+        self.assertTrue(all(len(groups) <= 2 and all(len(g) == 1 for g in groups) for groups in prefixes.values()))
+        self.assertTrue(all(len(groups) == 1 and len(groups[0]) == 1 for groups in selectors.values()))
+        self.assertTrue(all(len(self.payload['DerivedForbids'].get(k, [])) <= 1 for k in selectors))
+        for sid in (ledger.OTHERS, L + 'changed_columns'):
+            entry = next(n for n in self.by[sid]['Nodes'] if n['Id'] == 'disclosure.0')
+            retained = [a for a in entry['Choices'] if (a.get('Next') or '').startswith('disclosure.batch.')]
+            self.assertEqual(len(retained), 7)
+            self.assertTrue(all('trickster.ever' in a['Forbids'] for a in retained))
+
+    def test_pre_round_three_nodes_and_choice_references_stay_in_place(self):
+        before = {'Scenes': copy.deepcopy(trickster.SCENES + ledger.SCENES)}
+        with patch('storylines.dorgelinda_round3.integrate'):
+            trickster.integrate(before)
+            ledger.integrate(before)
+        for old_scene in before['Scenes']:
+            if old_scene['Id'] not in (ledger.OTHERS, L + 'changed_columns'):
+                continue
+            new_nodes = self.by[old_scene['Id']]['Nodes']
+            old_ids = [node['Id'] for node in old_scene['Nodes']]
+            self.assertEqual([node['Id'] for node in new_nodes if node['Id'] in old_ids], old_ids)
+            by = {node['Id']: node for node in new_nodes}
+            for old in old_scene['Nodes']:
+                new = by[old['Id']]
+                self.assertGreaterEqual(len(new['Choices']), len(old['Choices']))
+                for index, answer in enumerate(old['Choices']):
+                    self.assertEqual(new['Choices'][index]['Next'], answer['Next'])
+                    self.assertEqual(new['Choices'][index]['Set'], answer['Set'])
+
+    def test_sparse_histories_always_have_exactly_one_next_answer(self):
+        import random
+        from storylines.dorgelinda_round3 import REACTIONS
+        rng = random.Random(731)
+        for _ in range(80):
+            current = {r for r in REACTIONS if rng.randrange(2)}
+            disclosed = {r for r in REACTIONS if rng.randrange(2)}
+            flags = {'trickster.ever'} | {L + 'current_other.' + r for r in current}
+            flags |= {L + 'disclosed.' + r for r in disclosed}
+            _, named, _, _ = self.disclose(ledger.OTHERS, flags)
+            expected = current - disclosed
+            if 'tirabade' in current or 'tirabade' in disclosed:
+                expected -= {'anevia', 'irabeth'}
+            if 'tirabade' in expected:
+                expected |= {'anevia', 'irabeth'}
+            self.assertEqual(set(named), expected)
 
 
 if __name__ == '__main__':
