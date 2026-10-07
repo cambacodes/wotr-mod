@@ -3723,7 +3723,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Native answer-list host: `ecaf5cfe8087a4f45a2269974f4885c9`.
    Actor must be physically available: `a609ed9b2205d034bb3bb04d2a255681`.
    - `arsinoe_the_unprofitable_hour/start/0` — Set out a game.; Need all: `arsinoe.interest_games`
-   - `arsinoe_the_unprofitable_hour/game/0` — "Was the evening what you wanted?"
+   - `arsinoe_the_unprofitable_hour/game/0` — "Your confidence is touching. Was the evening what you wanted?"
    - `arsinoe_the_unprofitable_hour/answer/0` — "You can keep a life here as well as a purpose."
    - `arsinoe_the_unprofitable_hour/pace/0` — [Kiss her.]; Need all: `arsinoe.courting`
    - `arsinoe_the_unprofitable_hour/kiss/0` — Kiss her good night and leave her to rest.; records `arsinoe.continuation_kept`, `arsinoe.continuation_kiss`
