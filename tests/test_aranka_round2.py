@@ -1,7 +1,6 @@
 """Round-2 Aranka graph continuity and saved payoff receipts."""
 import json
-import runpy
-from story_format import c, n, scene as make_scene
+from copy import deepcopy
 from pathlib import Path
 import unittest
 
@@ -116,16 +115,75 @@ class ArankaRound2Tests(unittest.TestCase):
         self.assertIn("sacrifice", SCENES["aranka.trickster.epilogue.commit"]["Forbids"])
 
     def test_thall_contact_is_native_living_and_does_not_create_a_partner(self):
-        self.assertNotIn("aranka.thall.answer", SCENES)
-        scene = runpy.run_path(str(ROOT / "tools/route_packs/plans/aranka-thall-contact.py"),
-                              init_globals=dict(scene=make_scene, n=n, c=c,
-                                                BLOCKED=island.BLOCKED, AREA=island.AREA,
-                                                ANSWERS=island.ANSWERS))["THALL_CONTACT_PROPOSAL"]
-        self.assertEqual(scene["ContactUnit"], "8fb65bd79574771429526eaef26762a9")
-        self.assertEqual(scene["Areas"], [island.AREA])
-        self.assertIn(route.THALL_DEAD, scene["Forbids"])
-        self.assertEqual(scene["Nodes"][0]["Choices"][0]["Set"], [])
-        self.assertEqual(scene["Nodes"][0]["SpeakerUnit"], scene["ContactUnit"])
+        contact = SCENES["aranka.thall.answer"]
+        self.assertEqual(contact["ContactUnit"], "8fb65bd79574771429526eaef26762a9")
+        self.assertEqual(contact["AdditionalContactUnits"], [island.ACTOR])
+        self.assertEqual(contact["Areas"], [island.AREA])
+        self.assertIn(route.THALL_DEAD, contact["Forbids"])
+        graph = nodes(contact)
+        self.assertEqual(graph["answer"]["SpeakerUnit"], contact["ContactUnit"])
+        self.assertEqual(graph["answer"]["Choices"][0]["Set"], [route.THALL_ANSWERED])
+        self.assertNotIn("aranka.extension_kept", contact["Requires"])
+        self.assertFalse(any("partner_stance" in f for node in contact["Nodes"]
+                             for c in node["Choices"] for f in c["Set"]))
+
+    def test_correspondence_requires_dispatch_and_does_not_gate_romance(self):
+        reply = SCENES["aranka.thall.reply"]
+        self.assertIn(route.THALL_REQUESTED, reply["Requires"])
+        self.assertIn(route.THALL_SAFE, reply["Requires"])
+        self.assertIn(route.THALL_DEAD, reply["Forbids"])
+        self.assertEqual(reply["DelayHours"], 24)
+        for sid in ("aranka.thall.answer", "aranka.thall.question", "aranka.thall.question_yard", "aranka.thall.reply"):
+            self.assertIn("aranka.present_now", SCENES[sid]["Requires"])
+        self.assertEqual(nodes(reply)["start"]["Choices"][0]["Set"], [route.THALL_ANSWERED])
+        for scene in SCENES.values():
+            if scene["Id"].startswith(("aranka.trickster.verse.encore", "aranka.trickster.verse.third_verse")):
+                self.assertNotIn(route.THALL_REQUESTED, scene["Requires"])
+                self.assertNotIn(route.THALL_ANSWERED, scene["Requires"])
+
+    def test_thall_conclusions_follow_contact_death_and_terminal_ownership(self):
+        for ending in ("commit", "verse", "declined", "unanswered", "nerosyan"):
+            parts = route.thall_ending("aranka.trickster.epilogue." + ending)
+            alive, unknown, dead = parts
+            self.assertIn(route.THALL_ANSWERED, alive["Requires"])
+            self.assertIn(route.THALL_DEAD, alive["Forbids"])
+            self.assertIn(route.THALL_REQUESTED, unknown["Requires"])
+            self.assertIn(route.THALL_ANSWERED, unknown["Forbids"])
+            self.assertIn(route.THALL_DEAD, dead["Requires"])
+            self.assertEqual("aranka.thall.coda_delivered" in alive["Forbids"], ending in ("commit", "verse"))
+        self.assertIn(route.LATE_COMMITTED, route.thall_ending("aranka.trickster.epilogue.verse")[0]["Forbids"])
+
+    def test_intimate_slots_do_not_restart_completed_staging(self):
+        for scene in SCENES.values():
+            for node in scene["Nodes"]:
+                if ".explicit." in node["Id"]:
+                    self.assertNotIn("pulls you", node["Text"])
+        night = nodes(SCENES["aranka.no_encore_needed"])
+        self.assertNotIn("Later", night["night"]["Text"])
+
+    def test_merged_adapter_preserves_saved_nodes_without_forcing_thall_discussion(self):
+        from storylines import endings_job3
+        events = {sid: deepcopy(event) for sid, event in SCENES.items()}
+        events["aranka.lastcall.page"] = dict(Id="aranka.lastcall.page", Nodes=[dict(Id="page", Paragraphs=[])])
+        events["aranka.lastcall.call"] = dict(Id="aranka.lastcall.call", Nodes=[dict(Id="call", Text="The song")])
+        payload = dict(Derived={})
+        endings_job3.aranka(payload, events)
+        for sid, event in events.items():
+            targets = ("signed", "billing") if sid.startswith("aranka.trickster.verse.duet") else (
+                ("desire",) if sid == "aranka.no_encore_needed" else ())
+            for target in targets:
+                graph = nodes(event)
+                old = nodes(SCENES[sid])[target]["Choices"]
+                choices = graph[target]["Choices"]
+                self.assertIn("thall_" + target, graph)
+                self.assertIn("thall_dead_" + target, graph)
+                for choice in choices[len(old):len(old) + 2]:
+                    self.assertIn("trickster.ever", choice["Requires"])
+                    self.assertIn("trickster.ever", choice["Forbids"])
+                restored = choices[len(old) + 2:]
+                self.assertEqual([(c["Next"], c["Set"]) for c in restored],
+                                 [(c["Next"], c["Set"]) for c in old])
+                self.assertTrue(all("trickster.ever" in c["Requires"] for c in restored))
 
     def test_route_sources_keep_crlf_and_no_scripted_commander_dialogue(self):
         for file in ("aranka_continuation.py", "aranka_trickster.py"):

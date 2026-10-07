@@ -1,7 +1,7 @@
 {
   "voice": "ARANKA: Desnan singer and competitive bard; effusive, vain about her singing, playful, quick to laugh and quick to defend her work. Frank desire, teasing rather than solemn reassurance. She initiates closeness and keeps her chosen work and travel. Warmth does not erase her moral anger. Use new concise dialogue; musical diction sparingly, no maxims, no therapy language. Canon facts: she sings Starward Gaze received from Desna's servants in Elysium; she later arranges it and encourages Thall to sing. Physical details not established by those facts must not be invented; no assumed waking wings or fixed Commander anatomy.",
-  "scene": "Chapter 6 after one completed Nerosyan season and her chosen ordinary journey back; only Aranka and a living or already earned-return Commander. Existing native stay branch: Drezen desk under the lamp; native leave branch: agreed roadside lodging, travel table and luggage, never Drezen household business. User-supplied consensual reunion insertion; non-graphic continuity brief. Required beats: dust of the actual road, her initiating desire, satchel of new songs and successful work retained, no magical arrival or new commitment test. This is the eligible late reunion, not a duplicate roof night. Resume location-appropriate morning consequences: household/sentries only in stay; inn and road preparations for leave. Do not close the art career or grant sacrifice survival.",
-  "last_line": "N: At dawn, Aranka retrieves her satchel and begins to sing.",
+  "scene": "Chapter 6 after one completed Nerosyan season and her chosen ordinary journey back; only Aranka and a living or already earned-return Commander. Existing native stay branch: Drezen desk under the lamp; native leave branch: agreed roadside lodging, travel table and luggage, never Drezen household business. User-supplied consensual reunion insertion; non-graphic continuity brief. Required beats: dust of the actual road, her initiating desire, satchel of new songs and successful work retained, no magical arrival or new commitment test. This is the eligible late reunion, not a duplicate roof night. Resume location-appropriate morning consequences: household/sentries only in stay; inn and road preparations for leave. Do not close the art career or grant sacrifice survival. Continuity: the preceding threshold has already positioned both bodies. Begin from that position; never repeat the approach, pull onto cloak or shawl, or undressing. This node bridges directly to its existing aftermath.",
+  "last_line": "N: At dawn, Aranka retrieved her satchel and began to sing.",
   "speakers": {
     "A": "Aranka",
     "N": "Narrator"
@@ -13,5 +13,6 @@
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "narration": "third-past"
 }
