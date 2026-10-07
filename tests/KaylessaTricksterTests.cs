@@ -473,7 +473,10 @@ internal static class KaylessaTricksterTests
                   P + "after.rules", P + "clock_named", P + "after.dark_fate", P + "beast_met", P + "after.the_beast", P + "knife_shown",
                   P + "after.the_knife", W + "the_wasp", W + "soldier", W + "in_the_dark"),
         };
-        foreach (var beat in courtship)
+        // The supplement has its own played dispatch and thirty-day clock.
+        // Test that actual producer history rather than the four older sampled worlds.
+        KaylessaCourierHistoryTests.Run(story, check);
+        foreach (var beat in courtship.Where(s => s.Id != N + "courier_reply"))
             check(worlds.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);
         Console.WriteLine("PASS: Kaylessa Trickster (Trk_Kaylessa_*): the promise, Shyka's trade, Forn's courtesy and the amulet swap, the rules, the clock, the cells, the dagger, the hilt, the knife on the table, the pages, the oath, and "
                           + courtship.Length + " courtship beats.");

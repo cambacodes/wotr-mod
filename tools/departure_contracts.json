@@ -13057,6 +13057,10 @@
         {
           "scene": "kaylessa.clearing.the_arrow",
           "letter": false
+        },
+        {
+          "scene": "kaylessa.clearing.courier_reply",
+          "letter": false
         }
       ],
       "absence_variants": [

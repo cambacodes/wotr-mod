@@ -98,7 +98,7 @@ class KaylessaRoundTwoTests(unittest.TestCase):
         self.assertEqual([c['Next'] for c in self.choices(sid, 'anevia_route', set())], ['gate_absent'])
         self.assertEqual([c['Next'] for c in self.choices(sid, 'anevia_route', {'crossroute.anevia.available'})], ['gate'])
         sid = 'kaylessa.clearing.avennara'
-        self.assertEqual([c['Next'] for c in self.choices(sid, 'receipt', {'kaylessa.wasps.remembered_the_courier'})], ['courier'])
+        self.assertEqual([c['Next'] for c in self.choices(sid, 'receipt', {'kaylessa.wasps.remembered_the_courier', 'kaylessa.wasps.courier_in_first_letter'})], ['courier'])
 
     def test_reserved_slots_keep_old_exit_and_curse(self):
         sid = 'kaylessa.clearing.where_i_was_meant_to_die'
