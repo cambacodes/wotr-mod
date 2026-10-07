@@ -243,9 +243,28 @@ def integrate(payload):
     for (sid, nid), keys in sorted(guarded_choices.items()):
         node = next(n for n in scenes[sid]["Nodes"] if n["Id"] == nid)
         for key in sorted(keys):
-            node["Choices"].append(c("[Leave.]", forbids=(key,), abort=True))
+            _append_exit(node, key)
 
     normalize_lastcall(payload, eligibility)
+
+
+def _append_exit(node, key):
+    fallback = c("[Leave.]", forbids=(key,), abort=True)
+    if any(_covers_exit(answer, key) for answer in node["Choices"]):
+        # This generated position already exists in exported saves.
+        # Retire the duplicate without shifting any later answer.
+        fallback["Requires"].append(key)
+    node["Choices"].append(fallback)
+
+
+def _covers_exit(answer, missing_key):
+    """An existing effect-free abort covers every history of this fallback."""
+    if not answer.get("Abort"):
+        return False
+    if answer.get("Requires") or set(answer.get("Forbids", [])) - {missing_key}:
+        return False
+    return not any(value for field, value in answer.items()
+                   if field not in {"Text", "Abort", "Requires", "Forbids"})
 
 
 def normalize_lastcall(payload, eligibility):
