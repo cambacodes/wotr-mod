@@ -1,0 +1,42 @@
+[
+  {
+    "scene": "aranka.trickster.verse.duet",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.duet_yard",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "aranka.trickster.verse.duet_late",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.duet_yard_late",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore_yard",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore_late",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore_yard_late",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  }
+]
