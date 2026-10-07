@@ -22,7 +22,9 @@ class YanielRoundTwoTests(unittest.TestCase):
                 return True
             return any(all(has(k) for k in group) for group in yt.DERIVED.get(key, []))
         return [c for c in choices if all(has(k) for k in c["Requires"])
-                and not any(has(k) for k in c["Forbids"])]
+                and not any(has(k) for k in c["Forbids"])
+                and (not c.get("AnyGroups") or any(all(has(k) for k in group)
+                                                  for group in c["AnyGroups"]))]
 
     def test_raid_uses_actual_party_sword_form(self):
         # Apply the existing party-only integration to the two legacy selectors.
@@ -115,6 +117,57 @@ class YanielRoundTwoTests(unittest.TestCase):
                 for node in scene["Nodes"]:
                     for choice in node["Choices"]:
                         self.assertEqual(choice["Set"], [])
+
+    def test_lastcall_and_ledger_preserve_acquisition_and_earned_reports(self):
+        from storylines import lastcall_partners as partners
+        from storylines import yaniel_radiance as radiance
+        part = next(p for p in partners.PARTNERS if p["key"] == "yaniel")
+        page = {"Id": "page", "Paragraphs": copy.deepcopy(list(part["paragraphs"]))}
+        call = {"Id": "call", "Text": part["call"]["text"]}
+        debt = {"Id": "owed.yaniel", "Text": part["ledger_text"], "Lines": []}
+        payload = {"Scenes": [{"Id": "yaniel.lastcall.page", "Nodes": [page]},
+                              {"Id": "yaniel.lastcall.call", "Nodes": [call]}],
+                   "Books": {"trickster.ledger": {"Entries": [debt]}}, "Relationships": {}}
+        radiance._reconcile_lastcall(payload)
+
+        def visible(blocks, flags):
+            return [p["Text"] for p in blocks if all(k in flags for k in p["Requires"])
+                    and not any(k in flags for k in p["Forbids"])
+                    and (not p["AnyGroups"] or any(all(k in flags for k in g)
+                                                  for g in p["AnyGroups"]))]
+        for late in (False, True):
+            flags = {yt.OATH_STANDS, yt.JUDGES} | ({yt.LATE} if late else set())
+            text = " ".join(visible(page["Paragraphs"], flags))
+            self.assertNotIn("went to the Threshold", text)
+            self.assertIn("sworn on her wall" if late else "sworn underground", text)
+            ledger = debt["Text"] + " ".join(visible(debt["Lines"], flags))
+            self.assertNotIn("trade-back", ledger)
+            self.assertNotIn("vigil together", ledger)
+            self.assertEqual("Midnight Fane" in ledger, not late)
+        self.assertNotIn("since the Midnight Fane", call["Text"])
+        for flags, expected, absent in (
+            ({yt.CARRIES, yt.HOLY, yt.Y + "iz_song_reported"}, "sung in her hands", "after Iz"),
+            ({yt.CARRIES, yt.HOLY, yt.HANDED_LATE}, "after Iz", "sung in her hands"),
+            ({yt.CARRIES, yt.HOLY}, "checked its edge", "sung in her hands"),
+            ({yt.JUDGES, yt.SANG}, "heard Radiance sing", "sung in her hands"),
+        ):
+            text = " ".join(visible(page["Paragraphs"], flags))
+            self.assertIn(expected, text)
+            self.assertNotIn(absent, text)
+        report = next(s for s in yt.SCENES if s["Id"] == yt.Y + "verdict.letter")
+        sang = next(n for n in report["Nodes"] if n["Id"] == "sang")
+        self.assertIn(yt.Y + "iz_song_reported", sang["Choices"][0]["Set"])
+
+    def test_confidence_survives_all_cuff_positions_and_ending_states(self):
+        for suffix in ("together", "commit", "broken", "unasked", "unsettled", "distrusted", "declined"):
+            page = self.node("epilogue." + suffix, "page")
+            for cuff in (set(), {yt.CUFF_WORN}, {yt.Y + "cuff_pocketed"}):
+                flags = {yt.HUSK_FREED, yt.Y + "husk_told"} | cuff
+                visible = self.selected(page["Paragraphs"], flags)
+                self.assertFalse(any("never told anyone" in p["Text"] or "Nobody was told" in p["Text"]
+                                     for p in visible))
+        wall = next(s for s in yt.SCENES if s["Id"] == yt.Y + "late.wall")
+        self.assertIn("while the last carts fled", next(n for n in wall["Nodes"] if n["Id"] == "wall")["Text"])
 
     def test_spring_answer_appends_after_existing_memorial_only_to_living_couple(self):
         payload = {"Scenes": list(self.scenes.values()) + [{"Id": "yaniel.lastcall.page", "Nodes": [{"Id": "page"}]}]}

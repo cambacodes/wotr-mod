@@ -92,3 +92,56 @@ def integrate(payload):
 
     # Route-owned memorial prose: Last Call has been assembled by this late integration point.
     yt.integrate_partner_memory(payload)
+    _reconcile_lastcall(payload)
+
+def _reconcile_lastcall(payload):
+    """Route-owned callbacks, after shared Last Call assembly; no Threshold receipt is inferred."""
+    from story_format import p
+    by_id = {s["Id"]: s for s in payload["Scenes"]}
+    page = next(n for n in by_id["yaniel.lastcall.page"]["Nodes"] if n["Id"] == "page")
+    paragraphs = page["Paragraphs"]
+    # Keep all saved paragraph addresses. Holy custody is not proof of an Iz song.
+    holy = paragraphs[3]
+    holy["Text"] = ('{n}Radiance was on her hip on the wall that night. It did not sing. '
+                    'She checked its edge by lamplight before the watch changed.{/n}')
+    holy["Forbids"] = list(dict.fromkeys(holy.get("Forbids", []) + [yt.Y + "iz_song_reported", yt.HANDED_LATE]))
+    oath = paragraphs[5]
+    oath["Text"] = ('{n}After Iz, Yaniel heard the Commander\'s account and let the sword oath stand. '
+                    'The march to the Threshold was still ahead of them.{/n}')
+    paragraphs.extend((
+        p('{n}The oath had been sworn underground, beside the hook in the Midnight Fane.{/n}',
+          requires=(yt.OATH_STANDS,), forbids=(yt.LATE,)),
+        p('{n}The oath had been sworn on her wall in Drezen, before the march to Iz.{/n}',
+          requires=(yt.OATH_STANDS, yt.LATE), forbids=(yt.OATH_THRESHOLD,)),
+        p('{n}Radiance was on her hip during the last watch. At Iz it had sung in her hands; '
+          'she had told the Commander herself when she returned to Drezen.{/n}',
+          requires=(yt.CARRIES, yt.HOLY, yt.Y + "iz_song_reported"), forbids=(yt.HANDED_LATE,)),
+        p('{n}Radiance was on her hip during the last watch. The Commander had put it back in her hands '
+          'after Iz. She had not carried it into that battle.{/n}',
+          requires=(yt.CARRIES, yt.HOLY, yt.HANDED_LATE)),
+        p('{n}The Commander had heard Radiance sing over Iz. Yaniel listened to the account '
+          'from her place on the wall.{/n}', requires=(yt.JUDGES, yt.SANG), forbids=(yt.CARRIES,)),
+    ))
+    call = by_id["yaniel.lastcall.call"]
+    for node in call["Nodes"]:
+        if "You have carried her iron since the Midnight Fane" in node["Text"]:
+            node["Text"] = node["Text"].replace("You have carried her iron since the Midnight Fane:",
+                                               "You hold the iron you took from her wrist:")
+            node["Text"] = node["Text"].replace("held a gate until the last cart was through",
+                                               "held a gate while the last carts fled")
+    ledger = payload["Books"]["trickster.ledger"]
+    entry = next(e for e in ledger["Entries"] if e["Id"] == "owed.yaniel")
+    entry["Text"] = ("{n}I took the iron from Yaniel's wrist. She kept Radiance, or charged me to carry it "
+                     "to Deskari's heart. Taking the cuff did not finish that bargain.{/n}")
+    entry["Lines"].extend((
+        p("{n}I worked the pin out in the Midnight Fane, beside the hook.{/n}", forbids=(yt.LATE,)),
+        p("{n}I worked the pin out on her wall in Drezen.{/n}", requires=(yt.LATE,)),
+        p("{n}She offered the trade-back. We chose to keep what we had.{/n}",
+          requires=(yt.COMMITTED, yt.SHACKLE), forbids=(yt.VIGIL,)),
+        p("{n}After I refused the trade, we stood the vigil together. She gave me the iron again.{/n}",
+          requires=(yt.VIGIL, yt.SHACKLE)),
+    ))
+    for rel in payload["Relationships"].values():
+        for journal in rel.get("JournalEntries", []):
+            if journal.get("Id") == "owed.yaniel":
+                journal["Description"] = entry["Text"][3:-4]
