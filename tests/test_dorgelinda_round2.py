@@ -91,9 +91,11 @@ class RoundTwoTests(unittest.TestCase):
 
     def test_solo_denials_and_poly_denial_follow_real_state(self):
         sid = l.OTHERS
-        solo = [a for a in self.answers(sid, "says", set()) if a["Next"] in ("lie", "nobody")]
-        poly = [a for a in self.answers(sid, "says", {l.OTHER_LOVER}) if a["Next"] in ("lie", "nobody")]
-        self.assertTrue(solo)
+        solo = [a for a in self.answers(sid, "says", {"trickster.ever"}) if a["Next"] in ("lie", "nobody")]
+        poly = [a for a in self.answers(sid, "says", {"trickster.ever", l.OTHER_LOVER}) if a["Next"] in ("lie", "nobody")]
+        self.assertEqual(len(solo), 1)
+        self.assertEqual(len(poly), 1)
+        self.assertTrue(poly[0]["Text"].startswith("[Lie]"))
         self.assertEqual({a["Next"] for a in solo}, {"nobody"})
         self.assertEqual({a["Next"] for a in poly}, {"lie"})
         self.assertIn("Admit the lie", self.node(sid, "lie")["Choices"][0]["Text"])
@@ -103,15 +105,15 @@ class RoundTwoTests(unittest.TestCase):
 
     def test_names_are_disclosed_before_terms_and_new_relationship_has_followup(self):
         sid = l.OTHERS
-        answers = self.answers(sid, "names.0", {l.L + "current_other.nocticula"})
+        answers = self.answers(sid, "names.0", {l.L + "undisclosed.nocticula"})
         self.assertEqual([a["Next"] for a in answers], ["named.nocticula"])
         answer = self.node(sid, "named.nocticula")["Choices"][0]
         self.assertFalse(answer["Set"])
         self.assertEqual(self.payload["DerivedOpenRoutes"][l.L + "current_other.nocticula"], ["nocticula"])
         self.assertEqual(self.answers(sid, "names.0", set())[-1]["Next"], "names_done")
         follow = self.scenes[l.L + "changed_columns"]
-        self.assertIn(l.L + "sole_line", follow["Requires"])
-        self.assertIn(l.OTHER_LOVER, follow["Requires"])
+        self.assertEqual(follow["RequiresAnyGroups"], [[l.L + "sole_line", l.L + "terms_kept"]])
+        self.assertIn(l.L + "new_columns", follow["Requires"])
         self.assertIn(t.CLOSED, follow["Forbids"])
         nodes = {n["Id"]: n for n in follow["Nodes"]}
         reached, pending = set(), [follow["Nodes"][0]["Id"]]
@@ -127,7 +129,7 @@ class RoundTwoTests(unittest.TestCase):
         from storylines.household import PARTNERS
         partners = [r for r in PARTNERS if r != "dorgelinda"]
         for actual in ([], ["nocticula"], ["anevia", "galfrey"], partners):
-            flags = {l.L + "current_other." + r for r in actual}
+            flags = {l.L + "undisclosed." + r for r in actual if not (r in ("anevia", "irabeth") and "tirabade" in actual)}
             current, visited, named = "names.0", set(), []
             while current != "names_done":
                 self.assertNotIn(current, visited)
@@ -138,7 +140,7 @@ class RoundTwoTests(unittest.TestCase):
                 self.assertEqual(len(choices), 1, (current, actual))
                 flags.update(choices[0]["Set"])
                 current = choices[0]["Next"]
-            self.assertEqual(named, [r for r in partners if r in actual])
+            self.assertEqual(named, [r for r in partners if r in actual and not (r in ("anevia", "irabeth") and "tirabade" in actual)])
         for rel, native in (("arueshalae", l.L + "native_arueshalae_open"),
                             ("camellia", "camellia.romance"),
                             ("galfrey", "galfrey.romance_active"),
