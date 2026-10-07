@@ -2625,6 +2625,16 @@
         {
           "scene": "targona.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "targona.trickster.react.ix_a.yaniel",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.targona",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -16136,6 +16146,36 @@
           "scene": "galfrey.trickster.alive.after_no",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.queen",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.crown",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.kitrane",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.queen",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.crown",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.kitrane",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -17102,6 +17142,31 @@
         {
           "scene": "household.pair.yaniel_areelu.commission",
           "provenance": "S47 private commission; Yaniel alone, current bodily presence required."
+        },
+        {
+          "scene": "targona.trickster.react.ix_a.yaniel",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.yaniel",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.queen",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.crown",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.kitrane",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -19638,6 +19703,31 @@
         {
           "scene": "iomedae.lastcall.page",
           "provenance": "derived: current woman in her paid Last Call coda"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.queen",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.crown",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.kitrane",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.targona",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.yaniel",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
