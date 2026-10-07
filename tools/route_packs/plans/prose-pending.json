@@ -126,6 +126,503 @@
       "surface": "node",
       "index": null,
       "text_sha": "af2367a385abfe779335ccb5fda4d3bed4ec519ae08f73099c21d87f268e5c1d"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.settle",
+      "node": "reasoned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3e778047287703d10522925d30c194ab41e60c359d956f924586c30f28579d05"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.settle",
+      "node": "evidence",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3fd0c898e64024c3690f298f631f78a82b7a2b2408701fe48b66337fb8e72e30"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.retry",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "848bc9a63a2f816da42b32235ac846b583384afdd2ac0932fe281a753b8f968c"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.retry",
+      "node": "word",
+      "surface": "node",
+      "index": null,
+      "text_sha": "848bc9a63a2f816da42b32235ac846b583384afdd2ac0932fe281a753b8f968c"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.retry",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "848bc9a63a2f816da42b32235ac846b583384afdd2ac0932fe281a753b8f968c"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.retry",
+      "node": "reasoned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3e778047287703d10522925d30c194ab41e60c359d956f924586c30f28579d05"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.retry",
+      "node": "evidence",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3fd0c898e64024c3690f298f631f78a82b7a2b2408701fe48b66337fb8e72e30"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.redeemed",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "648cea88a985988098ad502eb8a0a86d816861373722714eee0686ceb0b2b71d"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.redeemed",
+      "node": "failed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "76214a873e68fa3d79359213425d0d5d840af83d31c0984c401f340fcd422a38"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "25903224eb1e7c116dc03b70e065cb75e2a8c4aaf11dc1e06eda8cded5aab55c"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "648cea88a985988098ad502eb8a0a86d816861373722714eee0686ceb0b2b71d"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+      "node": "answer",
+      "surface": "node",
+      "index": null,
+      "text_sha": "91eee380e82f1b468c58bc57fda24ec8d6ae2b385e686dc06eba7fb7ac0ebd7c"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f96adc39335434bbed1282e3adb0959cf79edd491a11f321e509f40db086cabf"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+      "node": "failed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "76214a873e68fa3d79359213425d0d5d840af83d31c0984c401f340fcd422a38"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.redeemed",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "648cea88a985988098ad502eb8a0a86d816861373722714eee0686ceb0b2b71d"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.redeemed",
+      "node": "failed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8204506a9901d92a55273bc6ef7826304059ff61dcceb5f2e294743c6dbc84df"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "25903224eb1e7c116dc03b70e065cb75e2a8c4aaf11dc1e06eda8cded5aab55c"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "648cea88a985988098ad502eb8a0a86d816861373722714eee0686ceb0b2b71d"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+      "node": "answer",
+      "surface": "node",
+      "index": null,
+      "text_sha": "91eee380e82f1b468c58bc57fda24ec8d6ae2b385e686dc06eba7fb7ac0ebd7c"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f96adc39335434bbed1282e3adb0959cf79edd491a11f321e509f40db086cabf"
+    },
+    {
+      "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+      "node": "failed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8204506a9901d92a55273bc6ef7826304059ff61dcceb5f2e294743c6dbc84df"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "62f6f32d4a49517d60bad0eec50aee328baefc11482340835e721baaef68e2d9"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "second",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d5e969ba3376e925ef6e7db226169adb15224c947fab90f3a77ce2ea34711fa5"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "6369308e016fe4f5f2b8fbb48a7de507795a8093ae1d14b38c1a2b20ff7ef533"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "missed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "fd0c89ec3dec8b46e320bbf57d46ec770d96652db559ccc9dcf14b2331cac1ea"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "40bcadfc707dab66cd8a675a641fec6bbca305f25b0974e531b244302c96ed06"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "broken_horzalah",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0bcd2f1ac928490d3b677b0831879dbe6317304718e5e21213500aff3812ccf9"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.truce",
+      "node": "broken_hepzamirah",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0389911c5b54fb94caeaafe4da2ca1652bec139b912f62e7e0d423b7480cc2af"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "62f6f32d4a49517d60bad0eec50aee328baefc11482340835e721baaef68e2d9"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "second",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d5e969ba3376e925ef6e7db226169adb15224c947fab90f3a77ce2ea34711fa5"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "6369308e016fe4f5f2b8fbb48a7de507795a8093ae1d14b38c1a2b20ff7ef533"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "missed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "fd0c89ec3dec8b46e320bbf57d46ec770d96652db559ccc9dcf14b2331cac1ea"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "40bcadfc707dab66cd8a675a641fec6bbca305f25b0974e531b244302c96ed06"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "broken_horzalah",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0bcd2f1ac928490d3b677b0831879dbe6317304718e5e21213500aff3812ccf9"
+    },
+    {
+      "scene": "household.pair.horzalah_hepzamirah.retry",
+      "node": "broken_hepzamirah",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0389911c5b54fb94caeaafe4da2ca1652bec139b912f62e7e0d423b7480cc2af"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e91d7ae800475d9eae7b4926f60b7f249baf93708c5ad0e42b476ae41ef90ce2"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "second",
+      "surface": "node",
+      "index": null,
+      "text_sha": "96067245a7b6a1a93fa2ed01d3bb00c71a352111cabb5e40d6bf6a3335cdcfd9"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8e5329d0e19e5f89cccd4d7706f631b6bedbc21fd059b4d18c6404a3f8495a9a"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "missed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "52fed50211c7424a899b68adf5714b837f35b1eb7357b2083dceec90c0f41338"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e7a71c247a1275fd375e84cd71b676154019bf3d049cb11e5a743569c122f86d"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "broken_minagho",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5c120cd06b840f4fbeb2d7a11222fbb6fbdb700732e54983feb0018b78491988"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "broken_hepzamirah",
+      "surface": "node",
+      "index": null,
+      "text_sha": "76045ed8f9664815a2d23ebf2397e24757d0be6c11da0c44ce852e3831f4a04d"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.job",
+      "node": "screen_failed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "dd6057a6cfeae4bf0b53e69ce00375b6c5f3bf2b0439e6f2b3cec65bba77aa8b"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e91d7ae800475d9eae7b4926f60b7f249baf93708c5ad0e42b476ae41ef90ce2"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "second",
+      "surface": "node",
+      "index": null,
+      "text_sha": "96067245a7b6a1a93fa2ed01d3bb00c71a352111cabb5e40d6bf6a3335cdcfd9"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "held",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8e5329d0e19e5f89cccd4d7706f631b6bedbc21fd059b4d18c6404a3f8495a9a"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "missed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "52fed50211c7424a899b68adf5714b837f35b1eb7357b2083dceec90c0f41338"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e7a71c247a1275fd375e84cd71b676154019bf3d049cb11e5a743569c122f86d"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "broken_minagho",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5c120cd06b840f4fbeb2d7a11222fbb6fbdb700732e54983feb0018b78491988"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "broken_hepzamirah",
+      "surface": "node",
+      "index": null,
+      "text_sha": "76045ed8f9664815a2d23ebf2397e24757d0be6c11da0c44ce852e3831f4a04d"
+    },
+    {
+      "scene": "household.pair.hepzamirah_minagho.retry",
+      "node": "screen_failed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "dd6057a6cfeae4bf0b53e69ce00375b6c5f3bf2b0439e6f2b3cec65bba77aa8b"
+    },
+    {
+      "scene": "household.pair.nocticula_shamira.precedence.live",
+      "node": "queen_reply",
+      "surface": "node",
+      "index": null,
+      "text_sha": "cb2fde579a3da0760b305b33e19ae2128abb2868bfe0d81142e54c5f9f4df4da"
+    },
+    {
+      "scene": "household.pair.nocticula_shamira.precedence.live",
+      "node": "shamira_reply",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f100e388bc565b6213cfaa05e4cd0db6fe0a970455a2d0f36dde2a17605fafc5"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.history",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "876e079b99d67964ebfe222d51a3b0aca107ef2abe78077076068dd7ad24bd41"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.history",
+      "node": "historical",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7d70126f0de4ff0909b67b387b7f53b75daeb6018ef622a1bdd23e0e0d8c62d3"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "eba601e0a851488a57db4b4650735721cd8e29f5cc3772c6badd17b6ee44def6"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "historical",
+      "surface": "node",
+      "index": null,
+      "text_sha": "eba601e0a851488a57db4b4650735721cd8e29f5cc3772c6badd17b6ee44def6"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "herrax_reply",
+      "surface": "node",
+      "index": null,
+      "text_sha": "60d48c9439b2d4b79bc48c145de3d584093613705ef2117c30fc5ededdcf2541"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "chivarro_reply",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5b307b3db47455be209e3f79f57f2d36a2c1cac6dc75b32ef56e337d24d39e1a"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "terms_kept",
+      "surface": "node",
+      "index": null,
+      "text_sha": "62bee299391628ecf2cc57988e835b3db7fe13327389714d74d049f784b5e75e"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "names_missed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "46d47a1c2caef9a85486de409fbe7710044fa9cf7dffb985127ec4a7d1d9c3a1"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.turf.live",
+      "node": "unsettled",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0b3f0433d2508141a991cfc1320d939b2201e032408126eff12dd7aaacc059ab"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "eba601e0a851488a57db4b4650735721cd8e29f5cc3772c6badd17b6ee44def6"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "historical",
+      "surface": "node",
+      "index": null,
+      "text_sha": "eba601e0a851488a57db4b4650735721cd8e29f5cc3772c6badd17b6ee44def6"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "herrax_reply",
+      "surface": "node",
+      "index": null,
+      "text_sha": "60d48c9439b2d4b79bc48c145de3d584093613705ef2117c30fc5ededdcf2541"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "chivarro_reply",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5b307b3db47455be209e3f79f57f2d36a2c1cac6dc75b32ef56e337d24d39e1a"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "terms_kept",
+      "surface": "node",
+      "index": null,
+      "text_sha": "62bee299391628ecf2cc57988e835b3db7fe13327389714d74d049f784b5e75e"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "names_missed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "46d47a1c2caef9a85486de409fbe7710044fa9cf7dffb985127ec4a7d1d9c3a1"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "unsettled",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0b3f0433d2508141a991cfc1320d939b2201e032408126eff12dd7aaacc059ab"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "herrax_term_broken",
+      "surface": "node",
+      "index": null,
+      "text_sha": "40ef9a1b1dc08a67cecb149e76ba7c0f5ec2a9856a0adb513074c9e8c239261f"
+    },
+    {
+      "scene": "household.pair.herrax_chivarro.retry",
+      "node": "chivarro_term_broken",
+      "surface": "node",
+      "index": null,
+      "text_sha": "980a77e19bbbc890051173b12a68766e8e17e003f61fa872e417031e097e9059"
     }
   ]
 }
