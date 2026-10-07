@@ -1,5 +1,14 @@
-# Preserve byte-exact source and export hashes recorded in review reports.
-* -text
+# Line endings (2026-10-07): the repository stores LF for every text file and Windows checks out LF as well
+# (core.autocrlf=false, core.eol=lf). Mixed CRLF/LF caused repeated tooling slips; merges use -X renormalize.
+# Hashes in historical review reports were taken over the old bytes and are not re-derived.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
 *.png binary
 *.jpg binary
 *.zip binary
+*.exe binary
+*.wav binary
+*.dll binary
+*.pdb binary
+*.zks binary
