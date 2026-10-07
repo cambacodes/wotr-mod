@@ -722,6 +722,14 @@ def integrate_participant_inventory(payload):
     import json
     from pathlib import Path
     contract = json.loads((Path(__file__).resolve().parents[1] / "tools/participant_inventory_contracts.json").read_text(encoding="utf-8"))
+    # r5-S1: exact audited delivery fields; no scene/answer identity or text changes.
+    scenes = {scene["Id"]: scene for scene in payload["Scenes"]}
+    for patch in contract.get("delivery_patches", []):
+        scene = scenes[patch["scene"]]
+        for field, value in patch["fields"].items():
+            if field not in ("Areas", "AdditionalContactUnits"):
+                raise ValueError("Unsupported delivery patch: " + field)
+            scene[field] = copy.deepcopy(value)
     payload.setdefault("Etudes", {}).update(contract["bindings"])
     for key, spec in contract["readers"].items():
         payload.setdefault("Derived", {})[key] = spec["groups"]

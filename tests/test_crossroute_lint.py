@@ -135,6 +135,18 @@ class CommanderTests(unittest.TestCase):
 
 
 class LocationTests(unittest.TestCase):
+    def test_r5_delamere_temple_delivery_is_not_a_portable_memory(self):
+        s = fixture('{n}The temple is quiet when you come to it.{/n}')
+        s['Relationships']['delamere'] = relationship('delamere')
+        scene = s['Scenes'][0]
+        scene.update(Id='delamere.trickster.crypt.stag_alone', Relationship='delamere',
+                     Remote=True, Kind='visit')
+        self.assertTrue(run(location_staging, s))
+        scene['Areas'] = ['bb6d82794aae9d94d9cc94d1a05e5f20']
+        self.assertEqual([], run(location_staging, s))
+        scene['Areas'].append('3538511f16d45f44f8249ff710777e2d')
+        self.assertTrue(run(location_staging, s))
+
     def test_drezen_window_at_wrong_area_and_chapter(self):
         s = fixture("{n}She stands at a window in Drezen's citadel.{/n}")
         scene = s["Scenes"][0]

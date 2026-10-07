@@ -1,17 +1,1164 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "lane": "eng8-q8f",
   "scope": "terendelev",
   "return": "terendelev.trickster.returned",
   "unit": "9e8401e7703907e4d94189d5992dd13e",
   "area": "2570015799edf594daf2f076f2f975d8",
-  "hubs": ["terendelev.presence", "terendelev.presence.awning"],
+  "hubs": [
+    "terendelev.presence",
+    "terendelev.presence.awning"
+  ],
   "entries": [
-    {"scene": "terendelev.trickster.react.galfrey.letter", "findings": ["terendelev:043"]},
-    {"scene": "terendelev.trickster.letter.watch_report", "findings": ["terendelev:044"]},
-    {"scene": "terendelev.trickster.letter.second_report", "findings": ["terendelev:045"]},
-    {"scene": "terendelev.trickster.watch.third_bell", "findings": ["terendelev:046", "terendelev:105"]},
-    {"scene": "terendelev.trickster.watch.at_the_gate", "findings": ["terendelev:047"]},
-    {"scene": "terendelev.trickster.watch.road", "findings": ["terendelev:048"]}
+    {
+      "scene": "terendelev.trickster.react.galfrey.letter",
+      "findings": [
+        "terendelev:043"
+      ]
+    },
+    {
+      "scene": "terendelev.trickster.letter.watch_report",
+      "findings": [
+        "terendelev:044"
+      ]
+    },
+    {
+      "scene": "terendelev.trickster.letter.second_report",
+      "findings": [
+        "terendelev:045"
+      ]
+    },
+    {
+      "scene": "terendelev.trickster.watch.third_bell",
+      "findings": [
+        "terendelev:046",
+        "terendelev:105"
+      ]
+    },
+    {
+      "scene": "terendelev.trickster.watch.at_the_gate",
+      "findings": [
+        "terendelev:047"
+      ]
+    },
+    {
+      "scene": "terendelev.trickster.watch.road",
+      "findings": [
+        "terendelev:048"
+      ]
+    }
+  ],
+  "route_entries": [
+    {
+      "scene": "aranka.react.arueshalae.dreamer",
+      "route": "aranka",
+      "findings": [
+        "aranka:D08"
+      ],
+      "status": "prose_pending",
+      "requirement": "Require the market Aranka actor as an additional contact and stage the meeting at that placement, or implement an explicit meeting that brings Arueshalae there.",
+      "checks": {
+        "AdditionalContactUnits": [
+          "430cba7801b149b4e8494ace6baf4f7c"
+        ],
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "ContactUnit": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+        "AnswerLists": [
+          "03ebad9587cbea0438d901a0f8df44f1"
+        ]
+      },
+      "blockers": [
+        "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+      ],
+      "delivery": {
+        "entry": "native contact",
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [
+          "a352873d37ec6c54c9fa8f6da3a6b3e1",
+          "430cba7801b149b4e8494ace6baf4f7c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "aranka.react.arueshalae.dreamer.yard",
+      "route": "aranka",
+      "findings": [
+        "aranka:D09"
+      ],
+      "status": "prose_pending",
+      "requirement": "Require bd0c4fe722aeef94b8495ac284b96bc8 as an additional contact and bind the encounter to the yard meeting.",
+      "checks": {
+        "AdditionalContactUnits": [
+          "bd0c4fe722aeef94b8495ac284b96bc8"
+        ],
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "ContactUnit": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+        "AnswerLists": [
+          "03ebad9587cbea0438d901a0f8df44f1"
+        ]
+      },
+      "blockers": [
+        "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+      ],
+      "delivery": {
+        "entry": "native contact",
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [
+          "a352873d37ec6c54c9fa8f6da3a6b3e1",
+          "bd0c4fe722aeef94b8495ac284b96bc8"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "aranka.react.arueshalae.fallen",
+      "route": "aranka",
+      "findings": [
+        "aranka:D10"
+      ],
+      "status": "prose_pending",
+      "requirement": "Verify the market Aranka actor as an additional contact and explicitly stage the meeting at her location.",
+      "checks": {
+        "AdditionalContactUnits": [
+          "430cba7801b149b4e8494ace6baf4f7c"
+        ],
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "ContactUnit": "e3bc95db7e2181d41847b3a1d858258d",
+        "AnswerLists": [
+          "7d6ad178bd7a1ef4ca737ab167570c79"
+        ]
+      },
+      "blockers": [
+        "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+      ],
+      "delivery": {
+        "entry": "native contact",
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [
+          "e3bc95db7e2181d41847b3a1d858258d",
+          "430cba7801b149b4e8494ace6baf4f7c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "aranka.react.arueshalae.fallen.yard",
+      "route": "aranka",
+      "findings": [
+        "aranka:D11"
+      ],
+      "status": "prose_pending",
+      "requirement": "Require the yard Aranka actor as an additional contact and test that failure of both anchors blocks this encounter.",
+      "checks": {
+        "AdditionalContactUnits": [
+          "bd0c4fe722aeef94b8495ac284b96bc8"
+        ],
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "ContactUnit": "e3bc95db7e2181d41847b3a1d858258d",
+        "AnswerLists": [
+          "7d6ad178bd7a1ef4ca737ab167570c79"
+        ]
+      },
+      "blockers": [
+        "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+      ],
+      "delivery": {
+        "entry": "native contact",
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [
+          "e3bc95db7e2181d41847b3a1d858258d",
+          "bd0c4fe722aeef94b8495ac284b96bc8"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "delamere.trickster.crypt.stag_alone",
+      "route": "delamere",
+      "findings": [
+        "delamere:D01"
+      ],
+      "status": "fixed",
+      "requirement": "Require Areas=[\"bb6d82794aae9d94d9cc94d1a05e5f20\"], the verified TempleOfDelamere area. Add a negative acceptance case proving the earned waking remains unavailable at an unrelated dungeon rest.",
+      "checks": {
+        "Areas": [
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      },
+      "blockers": [],
+      "delivery": {
+        "entry": "bounded narrated visit",
+        "areas": [
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "delamere.trickster.crypt.stag_late",
+      "route": "delamere",
+      "findings": [
+        "delamere:D02"
+      ],
+      "status": "fixed",
+      "requirement": "Add the TempleOfDelamere area restriction and test both local availability and rejection in an unrelated Chapter 5 dungeon. Preserve the existing Book-lock and live-Trickster gates.",
+      "checks": {
+        "Areas": [
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      },
+      "blockers": [],
+      "delivery": {
+        "entry": "bounded narrated visit",
+        "areas": [
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "delamere.trickster.woods.second_hunt_page",
+      "route": "delamere",
+      "findings": [
+        "delamere:D03"
+      ],
+      "status": "fixed",
+      "requirement": "Restrict delivery to Drezen or TempleOfDelamere, retaining the narrated local journey. Explicitly assert those Areas in the acceptance tests; the current conditional area checks skip scenes with no Areas.",
+      "checks": {
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8",
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      },
+      "blockers": [],
+      "delivery": {
+        "entry": "bounded narrated visit",
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8",
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "delamere.trickster.woods.second_hunt_late",
+      "route": "delamere",
+      "findings": [
+        "delamere:D04"
+      ],
+      "status": "fixed",
+      "requirement": "Apply the same Drezen/TempleOfDelamere delivery restriction and test an unrelated-dungeon negative independently for this twin.",
+      "checks": {
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8",
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      },
+      "blockers": [],
+      "delivery": {
+        "entry": "bounded narrated visit",
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8",
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": false,
+      "action_kinds": []
+    },
+    {
+      "scene": "household.ensemble.ch5.arrows",
+      "route": "delamere",
+      "findings": [
+        "delamere:D05"
+      ],
+      "status": "blocked",
+      "requirement": "Resolve its presentation contract: either supply an authored living actor and real contact option, or deliver the interaction through the route's existing narrated-visit mechanism without declaring an unsupported physical Table contact. Preserve earned presence and closure guards, and add a positive reachability test.",
+      "checks": {},
+      "blockers": [
+        "storylines/harem_rows/ensemble_ch5.py: Delamere body Options=[] cannot qualify. A living actor or the existing narrated-visit delivery requires the section 7 expanded scene/presentation scope."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "chadali.wagers.her_worshippers",
+      "route": "chadali",
+      "findings": [
+        "chadali:D13"
+      ],
+      "status": "blocked",
+      "requirement": "Make both affirmative branches produce an order awaiting execution. Add a world interaction or crusade event that completes the reassignment and records whether Chadali received the credit.",
+      "checks": {},
+      "blockers": [
+        "storylines/chadali_wagers.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "chadali.sessions.a_parcel_for_the_shrine",
+      "route": "chadali",
+      "findings": [
+        "chadali:D14"
+      ],
+      "status": "blocked",
+      "requirement": "Separate agreement, allocation, dispatch and completed personal delivery. Add a shrine interaction that records carried_the_parcel only after arrival and the knock; keep the runner outcome distinct.",
+      "checks": {},
+      "blockers": [
+        "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "chadali.hours.a_cookie_for_the_enemy",
+      "route": "chadali",
+      "findings": [
+        "chadali:D15"
+      ],
+      "status": "blocked",
+      "requirement": "Produce a delivery objective, stage the prisoner in the dungeon, and let his response establish whether he eats the cookie or keeps the flower. Gate those ending details on the completed encounter.",
+      "checks": {},
+      "blockers": [
+        "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "chadali.sessions.you_bet_with_people",
+      "route": "chadali",
+      "findings": [
+        "chadali:D16"
+      ],
+      "status": "blocked",
+      "requirement": "Connect both orders to a crusade event or authored field encounter with distinct costs and outcomes. Return the resulting casualty information to Chadali before the ending.",
+      "checks": {},
+      "blockers": [
+        "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "chadali.hours.for_luck",
+      "route": "chadali",
+      "findings": [
+        "chadali:D17"
+      ],
+      "status": "blocked",
+      "requirement": "Trigger the encounter from an earned injury or relevant combat/rest condition and implement an actual healing effect. Preserve the optional scar as a separate narrative receipt.",
+      "checks": {},
+      "blockers": [
+        "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "chadali.hours.make_some_stronger",
+      "route": "chadali",
+      "findings": [
+        "chadali:D18"
+      ],
+      "status": "blocked",
+      "requirement": "Give the chosen blessing a modest, finite gameplay effect with a clear duration or consumption point. Alternatively, explicitly stage this as encouragement and reserve the supernatural blessing for a separate implemented action.",
+      "checks": {},
+      "blockers": [
+        "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "devarra.trickster.flight.pact",
+      "route": "devarra",
+      "findings": [
+        "devarra:D02"
+      ],
+      "status": "blocked",
+      "requirement": "Implement the specified open negotiation and its distinct Greybor reaction, preserving the same earned pact and native fight continuation. Add a campaign witness beginning with failed stealth.",
+      "checks": {},
+      "blockers": [
+        "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "devarra.tower.the_generals",
+      "route": "devarra",
+      "findings": [
+        "devarra:D03"
+      ],
+      "status": "blocked",
+      "requirement": "Connect acceptance to a playable battle appearance or crusade event, then collect the account after an actual battle receipt. Alternatively, dramatize her withdrawal and its consequences before route completion.",
+      "checks": {},
+      "blockers": [
+        "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "devarra.tower.the_generals",
+      "route": "devarra",
+      "findings": [
+        "devarra:D04"
+      ],
+      "status": "blocked",
+      "requirement": "Give this branch its own surprise intervention and witnessed aftermath, distinct from the purchased battle and without awarding either branch the other's receipt.",
+      "checks": {},
+      "blockers": [
+        "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "devarra.trickster.epilogue.woken",
+      "route": "devarra",
+      "findings": [
+        "devarra:D05"
+      ],
+      "status": "blocked",
+      "requirement": "Resolve the accepted bargain during play. Have this paragraph reflect the delivered intervention, a dramatized refusal, or a consequential breach.",
+      "checks": {},
+      "blockers": [
+        "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "devarra.trickster.epilogue.woken",
+      "route": "devarra",
+      "findings": [
+        "devarra:D06"
+      ],
+      "status": "blocked",
+      "requirement": "Pay off her independently chosen intervention, or stage her decision to withhold it and the Commander's response before the finale.",
+      "checks": {},
+      "blockers": [
+        "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "household.docket.gesmerha_jerribeth.account",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D09"
+      ],
+      "status": "blocked",
+      "requirement": "Make retrieval a staged task with a Wintersun encounter or a paid transport/check branch, then unlock delivery and inspection from its completed outcome. Preserve an abandoned or failed retrieval as a distinct consequence.",
+      "checks": {},
+      "blockers": [
+        "storylines/harem_rows/z_j05_restitution.py and storylines/harem_rows/s26.py: cache task, transport, completed delivery/inspection and failed/abandoned histories require the section 7 owner handoff. Jerribeth voice remains Claude-owned."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.illusions.chief.orso",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D10"
+      ],
+      "status": "blocked",
+      "requirement": "Stage Soana beside the bench with a scoped placement or movement, bind both participants, and give her exchanges their own speaker nodes. Restore her ordinary placement afterwards.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.illusions.chief.lost",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D11"
+      ],
+      "status": "blocked",
+      "requirement": "Use the staged two-participant encounter and preserve the guardian_dead variant within it.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D12"
+      ],
+      "status": "blocked",
+      "requirement": "Use the staged two-participant encounter while retaining the Marhevok leadership and living-Orso gates.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D13"
+      ],
+      "status": "blocked",
+      "requirement": "Use the staged two-participant encounter with both existing outcome variants preserved.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.truth.chief.orso",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D14"
+      ],
+      "status": "blocked",
+      "requirement": "Stage and bind Soana's visit, retaining the truth and living-Orso conditions.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.truth.chief.lost",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D15"
+      ],
+      "status": "blocked",
+      "requirement": "Use the staged two-participant encounter and retain the guardian_dead response.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.truth.marhevok.orso",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D16"
+      ],
+      "status": "blocked",
+      "requirement": "Stage and bind both women while preserving the existing leadership and guardian conditions.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "gesmerha.react.soana.truth.marhevok.lost",
+      "route": "gesmerha",
+      "findings": [
+        "gesmerha:D17"
+      ],
+      "status": "blocked",
+      "requirement": "Use the staged two-participant encounter with the truth, retained-Marhevok, and guardian_dead variants intact.",
+      "checks": {},
+      "blockers": [
+        "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "0a5654e7dc18f074d9356009d55eb51b"
+        ],
+        "participants": [
+          "3ba3a0ff8575be8419159221177c1411",
+          "64805abb52739e44280a758f850b300c"
+        ],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "elyanka.trickster.beat.hunt",
+      "route": "elyanka",
+      "findings": [
+        "elyanka-and-camilary:D08"
+      ],
+      "status": "blocked",
+      "requirement": "Give interception a suitable Athletics or Mobility check with a distinct failure outcome, and make remaining still a deliberate alternative with its own consequence. Test both successful and failed histories.",
+      "checks": {},
+      "blockers": [
+        "storylines/elyanka_trickster.py: the specified checked interception and distinct stillness/failure branches require route-local choices and Claude outcomes, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": [
+        "skill_check"
+      ]
+    },
+    {
+      "scene": "nenio.folio.edge",
+      "route": "nenio",
+      "findings": [
+        "nenio:D11"
+      ],
+      "status": "blocked",
+      "requirement": "Implement the survey as a playable field encounter with a location, specimen interactions and a meaningful check or threat. Return to dictation with an earned survey receipt.",
+      "checks": {},
+      "blockers": [
+        "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nenio.folio.edge_visitor",
+      "route": "nenio",
+      "findings": [
+        "nenio:D12"
+      ],
+      "status": "blocked",
+      "requirement": "Make this placement initiate the same playable survey encounter, then deliver its earned findings through the visitor hub.",
+      "checks": {},
+      "blockers": [
+        "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nenio.folio.edge_arcade",
+      "route": "nenio",
+      "findings": [
+        "nenio:D13"
+      ],
+      "status": "blocked",
+      "requirement": "Connect this placement to the shared playable survey and require its actual completion before the return conversation.",
+      "checks": {},
+      "blockers": [
+        "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nurah.a_page_with_teeth",
+      "route": "nurah",
+      "findings": [
+        "nurah:D06"
+      ],
+      "status": "blocked",
+      "requirement": "Stage Sava's visit with a visible actor and evidence interaction, preserving the existing choices and consequences.",
+      "checks": {},
+      "blockers": [
+        "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nurah.the_borrowed_audience",
+      "route": "nurah",
+      "findings": [
+        "nurah:D07"
+      ],
+      "status": "blocked",
+      "requirement": "Provide a staged rehearsal location or keep the rehearsal physically at the existing host and revise the movement accordingly.",
+      "checks": {},
+      "blockers": [
+        "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nurah.the_editor_opens",
+      "route": "nurah",
+      "findings": [
+        "nurah:D08"
+      ],
+      "status": "blocked",
+      "requirement": "Stage the interview and its branch-specific visitors in a real location, with the case represented by an interactable object or equivalent encounter staging.",
+      "checks": {},
+      "blockers": [
+        "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nurah.the_case_goes_missing",
+      "route": "nurah",
+      "findings": [
+        "nurah:D09"
+      ],
+      "status": "blocked",
+      "requirement": "Make entry, case inspection and escape playable through a staged sidequest encounter; retain the informed-entry advantage and failed-check warning.",
+      "checks": {},
+      "blockers": [
+        "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nurah.the_subscribers_evening",
+      "route": "nurah",
+      "findings": [
+        "nurah:D10"
+      ],
+      "status": "blocked",
+      "requirement": "Stage the gathering with its participants and record custody in the world, making the withdrawal and public-demand branches visible.",
+      "checks": {},
+      "blockers": [
+        "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "nurah.the_unpurchased_sentence",
+      "route": "nurah",
+      "findings": [
+        "nurah:D11"
+      ],
+      "status": "blocked",
+      "requirement": "Stage the settlement at the collector's rooms and represent the record and disputed packet visibly, so the player's chosen concessions produce observable transfers.",
+      "checks": {},
+      "blockers": [
+        "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "iomedae.trickster.order.banner",
+      "route": "iomedae",
+      "findings": [
+        "iomedae:D01"
+      ],
+      "status": "blocked",
+      "requirement": "Implement a reversible, current-Trickster-only visibility override for the native sock and display the replacement banner while the authored replacement state holds. Test both the replacement and unchanged native worlds.",
+      "checks": {},
+      "blockers": [
+        "GLOBAL-R5-WORLD-ACTION: NativeWorldReconciliation visibility lease exists, but Story.ReviewedNativeWorldTargets has no sock/banner target and the adapter supports no replacement banner. src edits are excluded from S1."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": [
+        "native_world"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.order.banner",
+      "route": "iomedae",
+      "findings": [
+        "iomedae:D02"
+      ],
+      "status": "blocked",
+      "requirement": "Give the cathedral banner an authored world representation activated by order_banner, including the lost-banner world without the sock. Keep its activation separate from the native relic's protections.",
+      "checks": {},
+      "blockers": [
+        "GLOBAL-R5-WORLD-ACTION: NativeWorldReconciliation visibility lease exists, but Story.ReviewedNativeWorldTargets has no sock/banner target and the adapter supports no replacement banner. src edits are excluded from S1."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": [
+        "native_world"
+      ]
+    },
+    {
+      "scene": "konomi.private_reunion",
+      "route": "konomi",
+      "findings": [
+        "konomi:D03"
+      ],
+      "status": "blocked",
+      "requirement": "Deliver the invitation separately, then attach the reunion and its private_returned receipt to Konomi's supported physical presence. Keep a delayed, mutually exclusive fallback only for failed placement.",
+      "checks": {},
+      "blockers": [
+        "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    },
+    {
+      "scene": "konomi.new_letter",
+      "route": "konomi",
+      "findings": [
+        "konomi:D04"
+      ],
+      "status": "blocked",
+      "requirement": "Use an appropriate ability or skill check with distinct difficulties for the two targets, and write misses, victories and Konomi's reactions. Preserve the outing and romance after failure.",
+      "checks": {},
+      "blockers": [
+        "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": [
+        "skill_check"
+      ]
+    },
+    {
+      "scene": "konomi.private_new_letter",
+      "route": "konomi",
+      "findings": [
+        "konomi:D05"
+      ],
+      "status": "blocked",
+      "requirement": "Apply the same playable contest and failure-safe romantic continuation to this copy, with tests covering both results and their keepsake callbacks.",
+      "checks": {},
+      "blockers": [
+        "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": [
+        "skill_check"
+      ]
+    },
+    {
+      "scene": "seelah.early.bad_cup",
+      "route": "seelah",
+      "findings": [
+        "seelah:D10"
+      ],
+      "status": "blocked",
+      "requirement": "Deliver the consequence through a verified repeatable Chapter 1 contact or a properly staged timed event. If Jannah must appear, provide an earned, bounded placement after the celebration. Add a test covering native party completion, elapsed time and actor cleanup.",
+      "checks": {},
+      "blockers": [
+        "The celebration list is one-shot and rest cleanup hides Jannah. A repeatable contact/timed event and bounded Jannah placement need separately scoped route/presence entries."
+      ],
+      "delivery": {
+        "entry": null,
+        "areas": [],
+        "participants": [],
+        "completion_action": null
+      },
+      "requires_world_action": true,
+      "action_kinds": []
+    }
   ]
 }
