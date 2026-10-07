@@ -11,7 +11,7 @@ the druids (she was one), the clutch.
 """
 from story_format import c, scene
 from storylines.nidalynn_trickster import (
-    CLAIMED, CLOSED, COMMITTED, DV_BILL, DV_HUNTING, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS, FIRST_DEMON, FORM,
+    CLAIMED, CLOSED, COMMITTED, DV_BILL, DV_HUNTING, DV_PRESENT, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS, FIRST_DEMON, FORM,
     HAND, HAND_SET, HATCHED, KILN, KILN_AGREED, KISSED, LEFT_WITH_IT, LIE_KEPT, MET, MET_EARLY, NAME_NONE, NAME_PEBBLE, NAME_SOOT, P, PARTNER_DISGUISE, PROPOSED, BREAD_KEPT,
     REFUSED, RENOUNCED, SALT, SNOW, TORC_LEFT, nar, nd)
 from storylines.nidalynn_trickster import steps as _steps, visit as _visit
@@ -63,8 +63,9 @@ visit(OWN_FORM, "Her own face", [
         c("Continue", "now")),
     nd("now", '''"Why now?" {n}She looks down at her own hands on the edge of your table, as if they might know.{/n} "Because you gave her to me. In my own kiln, with nobody making you, and you didn't even haggle. That got you through my door. It didn't make me bring supper. I wanted an evening with you, without that belly between us."
 "And because she'll fly soon. The first time she looks down from the sky, I want her to see me, and not a cushion and a basket on a step." {n}Her chin comes up again.{/n} "That's two reasons. I had a third. I've lost it, standing here being looked at."''',
-        c("Continue", "mother", requires=(DV_RETURNED,)),
-        c("Continue", "eat", forbids=(DV_RETURNED,))),
+        c("Continue", "mother", requires=(DV_RETURNED, DV_PRESENT)),
+        c("Continue", "eat", forbids=(DV_RETURNED,)),
+        c("Continue", "eat", requires=(DV_RETURNED,), forbids=(DV_PRESENT,))),
     nd("mother", '''"And there's a grey dragon on the ridge above your city who comes down at night and lies on the east wall and looks at my kiln." {n}Her voice does not change.{/n} "She hasn't come closer. She hasn't tried, while I'm in it. I'm not afraid of her; I keep the kiln hot and the sergeant's men on the lane, and I'm not the one who hid this one from her. But I thought you should hear it from me, in this face, and not from your sentries."''',
         c("Continue", "eat")),
     nd("eat", '''"Now eat the soup, before it goes cold and I have to be the widow again to make you." {n}She sits down in your chair, the good one, and crosses her legs, and looks, now, very slightly unsure of herself, as if she had rehearsed everything up to this point and nothing after it.{/n}''',
@@ -240,7 +241,7 @@ visit(SNOWFIELD, "Where the snow stays", [
     nd("want", '''{n}She lifts her head. Her hair falls round your face, and her eyes in the starlight are not grey at all now; they have silver in them, all the way through.{/n} "I've watched you warmbloods hurry to bed as if the world's ending. Tonight I understand you." {n}Her voice is low and rough and perfectly unashamed.{/n} "I know now. I want you. All of you, here, in my snow, and I'm not going to be quick about it, and I'm not going to be polite."''',
         c('"Then don\'t be."', "cut"),
         c("[Answer her with your hands.]", "cut")),
-    nar("cut", '''{n}She comes over you, a knee on either side, and presses your wrists into the sheepskin. Her braid has come undone; you brush the hair out of her eyes and she kisses your palm.{/n}
+    nar("cut", '''{n}She comes over you, a knee on either side, and presses your wrists into the sheepskin. Her loose hair falls forward. She releases one wrist; you brush the hair out of her eyes and she kisses your palm.{/n}
 "No citadel bell. No knocking at the door." {n}She lowers herself to kiss you, slow and hungry.{/n} "You're here. Stay here."''',
         c("Continue", "explicit.1")),
     nar("morning", '''{n}Grey light on the snowfield. Your eyelashes have frozen together, and when you get them open the first thing you see is a red-black face, upside down, with a great many teeth in it, a hand's breadth from your own.{/n}
@@ -297,8 +298,9 @@ visit(FIRST_DEMON, "What she hunts", [
     nd("house", '''"The head of the house." {n}She says it again, as if testing it for weight.{/n} "I've been thinking about that. About what a house is, with you in it." {n}She makes room for you on the step.{/n}
 "I'll tell you how it is with me, since you'll want to know. I'm of your fire. That's salt; it doesn't go out, and I'll not pretend it does when it's inconvenient. What I ask of you is the same as I asked on the snow: don't lie to me about anything you love. That's all. It's more than most people manage."''',
         c("Continue", "bill", requires=(DV_BILL,)),
-        c("Continue", "druids", requires=(DV_HUNTING,), forbids=(DV_BILL,)),
-        c("Continue", "end", forbids=(DV_BILL, DV_HUNTING))),
+        c("Continue", "druids", requires=(DV_HUNTING, DV_PRESENT), forbids=(DV_BILL,)),
+        c("Continue", "end", forbids=(DV_BILL, DV_HUNTING)),
+        c("Continue", "druids_absent", requires=(DV_HUNTING,), forbids=(DV_BILL, DV_PRESENT))),
     nd("bill", '''"And the grey one's bill." {n}She does not look at the ridge, but her voice is careful.{/n} "I heard what she asked of you. A life, owed, to be named when she likes. I understand the bill; I'd not have written it so wide. A service, a risk, your own blood: that's fair dealing between dragons. If she names somebody else's child, she'll find me standing in front of it." {n}She puts her hand on yours.{/n} "When she names it, you come to me first. I'll not have her collect in the dark from somebody who's eaten my salt."''',
         c("Continue", "end")),
     nd("druids", '''"And the grey one's still following the druids." {n}Her mouth thins.{/n} "My people. You pointed her at them, and she's found the valley once already. The gold one can stand in front of a nest. He can't stand over eleven hunting-grounds once they're all on the wing." {n}She watches the young dragon down the lane, standing guard over what is left of the dretch.{/n} "The grey one's their mother. She has a right to be heard. She has no right to call them away to her tower, and that's what she'll try. If you hear where she goes next, you tell me, and I'll send word north before she gets there." {n}Then she looks at you.{/n} "I haven't forgiven you for sending her. I'm not going to. I've only decided it's a smaller thing than the rest of you. Don't make me decide again."''',
@@ -421,3 +423,7 @@ from storylines import nidalynn_kiln as _kiln, nidalynn_trickster as _trickster
 
 PATH_FIT = {s["Id"]: "T" for s in _trickster.SCENES + _kiln.SCENES + SCENES}
 PATH_FIT_V2 = {}   # candidate path: Gold Dragon (Chapter 5); a v2 route would need its own Kenabres meeting, not these
+
+# Round 3: the decision to send her survives her loss; an active hunt does not.
+next(s for s in SCENES if s["Id"] == P + "after.first_demon")["Nodes"].append(
+    nd("druids_absent", '"You sent the grey one after my people. She found their valley before she was lost." {n}She watches the young dragon guarding the dretch\'s remains.{/n} "They\'ve had no sign of her lately. I\'ll keep sending word north about the young ones. I haven\'t forgiven you for pointing her at them. I\'ve only decided it\'s a smaller thing than the rest of you."', c("Continue", "end")))

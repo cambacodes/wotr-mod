@@ -70,6 +70,44 @@ class NidalynnRoundTwoTests(unittest.TestCase):
         self.assertEqual(late["Choices"][0]["Set"], [])
         self.assertFalse(late["Choices"][0]["Next"])
 
+    def test_current_mother_branches_are_exhaustive_after_loss(self):
+        widow = nodes(route, "steps.widow")
+        hatching = nodes(kiln, "kiln.hatching")
+        custody = nodes(kiln, "kiln.whose")
+        reveal = nodes(salt, "door.own_form")
+        after = nodes(salt, "after.first_demon")
+        for returned, present, hunting, bill in itertools.product((False, True), repeat=4):
+            flags = {f for f, held in ((route.DV_RETURNED, returned),
+                                      (route.DV_PRESENT, present),
+                                      (route.DV_HUNTING, hunting),
+                                      (route.DV_BILL, bill)) if held}
+            for node, live in ((widow["mother"], "mother_alive"),
+                               (hatching["chaplain"], "sky"),
+                               (custody["whose"], "mother"),
+                               (custody["whose_straw"], "mother"),
+                               (reveal["now"], "mother")):
+                choices = selectable(node, flags)
+                self.assertEqual(len(choices), 1)
+                self.assertEqual(choices[0]["Next"] == live, returned and present)
+            for history in ("druids", "straw"):
+                choices = selectable(widow[history], flags)
+                self.assertEqual(len(choices), 1)
+                self.assertEqual(choices[0]["Next"],
+                                 "hunted" if hunting and present else
+                                 "hunted_absent" if hunting else "mother")
+            choices = selectable(after["house"], flags)
+            self.assertEqual(len(choices), 1)
+            self.assertEqual(choices[0]["Next"],
+                             "bill" if bill else "druids" if hunting and present else
+                             "druids_absent" if hunting else "end")
+        self.assertEqual(custody["mother_absent"]["Choices"][0]["Next"], "choose")
+        self.assertEqual(after["druids_absent"]["Choices"][0]["Next"], "end")
+
+    def test_snowfield_releases_wrist_and_keeps_loose_hair(self):
+        cut = nodes(salt, "ridge.snowfield")["cut"]["Text"]
+        self.assertIn("releases one wrist", cut)
+        self.assertNotIn("braid has come undone", cut)
+
     def test_lastcall_helper_wraps_each_appended_paragraph_once(self):
         from storylines import lastcall_partners
         route.integrate({"Presences": {}, "SeenCues": {}})
@@ -78,7 +116,7 @@ class NidalynnRoundTwoTests(unittest.TestCase):
             text = paragraph["Text"]
             self.assertEqual(text.count("{n}"), text.count("{/n}"))
             self.assertNotIn("{n}{n}", text)
-        self.assertEqual(len(partner["paragraphs"]), 10)
+        self.assertEqual(len(partner["paragraphs"]), 12)
 
 
 if __name__ == "__main__":
