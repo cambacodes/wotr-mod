@@ -278,6 +278,10 @@ def integrate(payload):
     install_slots(events)
     late_debts(events["jerribeth.trickster.epilogue.commit"])
     localize_late_choices(events["jerribeth.trickster.epilogue.commit"])
+    # Claude voice layer (edge job 10): text of existing nodes, before the
+    # scaffolding copies host answers onto its companion pages.
+    from storylines import jerribeth_voice
+    jerribeth_voice.revoice(payload)
     from storylines import jerribeth_scaffolding
     jerribeth_scaffolding.integrate(payload)
 

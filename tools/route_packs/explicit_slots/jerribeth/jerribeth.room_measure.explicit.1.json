@@ -1,46 +1,52 @@
 {
   "slot_id": "jerribeth.room_measure.explicit.1",
-  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
-  "scene": "Chapter 5 remote room-measure evening, after the existing settlement visit. Her unfinished city has become costly and she directs the conversation away from its architecture toward the Commander. Both remain on their own sides of the charm. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
-  "last_line": "N: The next watch is called outside your room.",
+  "voice": "JERRIBETH: oolioddroo demon of the Abyss, collector, illusionist, mind-planter. Insect-like: narrow body, antennae, delicate clawed fingers, wings. She speaks inside the Commander's head in a high, airy voice even when she is close enough to touch; her laughter is high and abrasive, like a buzzing insect. Courtly, oblique, contemptuous, precise. Near-zero profanity: her edge is contempt and exact description, never vulgar words. Desire, for her, is collecting: she wants the Commander held still so she can look, arrange and keep, and she resents how much she wants it. She gives orders, not reassurances. She never offers an exit, never asks permission twice, never speaks of feelings in modern terms, never moralises. Cruel and amused; possessive, not tender. She improvises; she never recites.\nWrite NEW dialogue. Do not reuse any sentence from this brief or from the facts.",
+  "scene": "SCENE: Chapter 5, Drezen, the top room of a narrow rented house in the upper town: her cabinet. For the first time in the base route she is there in person, not in the correspondence frame. Shuttered windows, lamps in glass, every wall glass-fronted shelving full of pinned and preserved things that are still aware; some of their eyes move. She has just sent the Commander's companions down to wait in the street. She sits the Commander in her own chair, the one that faces the door and the shelves, and arranges them like a specimen: wrists on the chair arms, chin lifted with one claw, head turned toward the lamp. Her rule: if the Commander moves, she stops. Build the scene on that rule: she takes her time, tests how long the Commander can hold still, and enjoys every small failure. Explicit, unhurried, Commander and Jerribeth only; the things in the cases watch and are never touched or involved. Keep her in her own insectile form; she does not put on a guise tonight. If Marhevok's pot is in the room (plant fate), his human eyes are open on the sill, facing the chair, and she makes sure the Commander knows he is watching. End when she decides it is over.",
+  "last_line": "J: There. Now you have held still for me. I shall want it again.",
   "speakers": {
     "J": "Jerribeth",
     "N": "Narrator"
   },
-  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
+  "example": "N: She sets one claw under your chin and turns your face a finger's width toward the lamp.\nJ: There. No, do not help me. Helping is moving.\nN: In the case behind her, something on a pin follows the movement of her hand.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
-  "min_lines": 8,
-  "max_lines": 14,
+  "min_lines": 14,
+  "max_lines": 20,
   "facts": [
     {
-      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
+      "fact": "Native greeting: a narrow shadow, antennae that quiver, hands linked tightly together, a high-pitched voice in the Commander's head.",
       "guid": "8a632a5249b3c2541a1381111cae9e37",
       "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
     },
     {
-      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
+      "fact": "She holds a locust between two delicate clawed fingers and slowly pushes a needle into it, watching its convulsions with fascination: preserving beauty is a lot of work.",
       "guid": "bf1542830cfa01d4c9db04546681084d",
       "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
     },
     {
-      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
+      "fact": "Her laughter is high and abrasive, like a buzzing insect, reverberating in the listener's mind.",
+      "localization_key": "0b920731"
+    },
+    {
+      "fact": "Marhevok loves her passionately and blindly; in the plant fate he is a potted plant with crazed human eyes in the bud.",
       "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
       "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
     }
   ],
   "required_beats": [
-    "She chooses the private direction herself.",
-    "Retain the unfinished street as a concrete setting rather than a generic bed scene.",
-    "No portal, physical visitation or automatic full commitment; later intimacy is a return."
+    "She arranges the Commander in the chair before anything else, like setting a specimen.",
+    "Her rule is stated and kept: if the Commander moves, she stops; she enforces it at least once.",
+    "Possessive, never tender: her last line claims the Commander for later.",
+    "Only the Commander and Jerribeth take part; the things in the cases watch and are never touched.",
+    "No exits, permission rituals or reassurances in her mouth."
   ],
-  "default_text": "{n}The unfinished street goes dark. She keeps her own image close until the next watch is called outside your room.{/n}",
+  "default_text": "{n}The lamp burns down. She keeps you exactly where she put you, and you hold still for her, for a very long time.{/n}",
   "placement": {
     "scene": "jerribeth.room_measure",
     "after_node": "desire",
     "resume_node": "end"
   },
-  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+  "authored_scope": "Authored romance continuation within the existing route guards (non-Trickster base layer, rebuild sheet §5.15 and §8). The Drezen cabinet room, her arrival by 'the road demons use' and the cabinet's contents are authored premises; canon physical facts are limited to the cited facts array. Explicit scope: Commander with Jerribeth only. The default remains a heated cut; no explicit prose is supplied here."
 }

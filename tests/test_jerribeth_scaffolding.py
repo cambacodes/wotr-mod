@@ -152,13 +152,16 @@ class ScaffoldingTests(unittest.TestCase):
             self.assertFalse(event.get("AnswerLists"))
             self.assertFalse(event.get("NativeReturnCue"))
 
-    def test_new_nodes_are_single_placeholder_paragraphs(self):
+    def test_new_nodes_and_answers_carry_authored_prose(self):
+        # Job 10 replaced every placeholder (storylines/jerribeth_voice.py).
         for sid, event in self.events.items():
             old = {n["Id"] for n in self.before[sid]["Nodes"]}
             for page in event["Nodes"]:
+                self.assertNotIn("[PROSE PENDING", page["Text"], (sid, page["Id"]))
+                for choice in page["Choices"]:
+                    self.assertNotIn("[PROSE PENDING", choice["Text"], (sid, page["Id"]))
                 if page["Id"] not in old:
-                    self.assertEqual(page["Text"], "[PROSE PENDING: %s]" % sid)
-                    self.assertFalse(page.get("Paragraphs"))
+                    self.assertTrue(page["Text"].strip(), (sid, page["Id"]))
 
     def test_binding_uses_native_observations_only(self):
         with patch.object(route, "integrate", wraps=route.integrate) as install:
