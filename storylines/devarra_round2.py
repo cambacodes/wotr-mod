@@ -185,6 +185,9 @@ def polish_spine(scenes):
     refused = _scene(scenes, P + 'epilogue.refused')['Nodes'][0]
     refused['Text'] = '{n}A grey woundwyrm hunted the old Wound for years. She passed over Drezen once, high above the north wall. She did not land. The tower stair kept the marks of the Commander\'s visits, with no new line beside them.{/n}'
 
+    from storylines.devarra_round3 import spine
+    spine(scenes)
+
 
 def polish_tower(scenes):
     """SP2 custody, SP3 reopening, SP4 first visit, SP5 wager, SP6 farewell."""
@@ -378,6 +381,9 @@ def polish_tower(scenes):
     _nodes(farewell)['climb']['Text'] = ('"They are preparing the march." {n}Her eye stays on the city.{/n} '
         '"To the place where the Wound goes all the way down. You came to me before the road takes you. Good."')
 
+    from storylines.devarra_round3 import tower
+    tower(scenes)
+
 
 def polish_epilogue(page):
     """Current fate/location, counted return, and the existing hoard counter-gift."""
@@ -402,7 +408,7 @@ def polish_epilogue(page):
                 'counted it whenever the Commander climbed.{/n}')
     # Slot brief: established annual return; no first-night replay or payment flags.
     page.setdefault('Paragraphs', []).extend([
-        dict(p('{n}In spring she returns to the ridge, and the Commander climbs to meet her.{/n}',
+        dict(p('{n}In spring she returned to the ridge, and the Commander climbed to meet her.{/n}',
                requires=(T + 'first_bite',)), Id=P + 'epilogue.woken.explicit.1'),
         p('{n}After she had lain among them in the vault, the eggs were carried east to the druids. '
           'The vault stood empty. On that night in later years she looked east from her ridge; the '

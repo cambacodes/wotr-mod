@@ -646,6 +646,8 @@ def integrate(payload):
     payload.setdefault("DerivedForbids", {})["devarra.outcome.deferred_judgment"] = [LEFT_HUNGRY]
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
+    from storylines.devarra_round3 import integrate as integrate_round3
+    integrate_round3(payload)
     # Option A: the latches, the golem cues and the reviewed native gates; the moult device is retired by gating.
     for key, sources in LATCHES.items():
         payload.setdefault("Latches", {})[key] = list(sources)
