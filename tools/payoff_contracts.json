@@ -1124,7 +1124,15 @@
           "predicate": "areelu.payoff.partner"
         },
         {
+          "scene": "areelu.trickster.report.convicts",
+          "predicate": "areelu.payoff.partner"
+        },
+        {
           "scene": "areelu.trickster.report.dagger",
+          "predicate": "areelu.payoff.partner"
+        },
+        {
+          "scene": "areelu.trickster.report.commission",
           "predicate": "areelu.payoff.partner"
         },
         {
@@ -1133,6 +1141,10 @@
         },
         {
           "scene": "areelu.trickster.report.visitors",
+          "predicate": "areelu.payoff.partner"
+        },
+        {
+          "scene": "areelu.trickster.report.rival",
           "predicate": "areelu.payoff.partner"
         },
         {
