@@ -119,3 +119,15 @@ Citation aliases below were checked directly against `/wrath/blueprints.zip` and
 - Shared historical-mention guards, Guest List/Last Call ownership, and duplicate ending dispatch may require shared code: coordinator handles them; this job changes only this sheet. Reserve the uniqueness entry centrally.
 - User instructions conflict on commit/gates: the task-specific HARD planning rule prohibits all gates; the final explicit “Do not git commit” is followed, so the sheet is left reviewable and uncommitted.
 - This sheet proposes only audit/debt repairs; no new mechanics, romance requirements, return entitlement, echo, partner or dark Commander scheme. Existing tampering/lie branches remain saved failure histories; v1 additions use good-intent nudges and her counter-moves.
+
+## Round 3 implementation (2026-10-07)
+
+Authored continuity repair only: all three existing night slots continue from Nenio astride the reclining Commander and leave the abandoned watch alone. The late postwar encounter now has a dedicated `nenio.trickster.epilogue.commit.explicit.1` node and third-past brief before `morning_after`. The saved `page.continue` exit remains inert; a new trailing read-on answer reaches the slot. No new mechanics, costs, affection gates, return conditions, or native-slide changes. Native characterization checked against Cue_0123, Cue_0186 and Cue_0066 with their existing blueprint/enGB citations above.
+
+Verified-fixed: the six Areelu historical ending paragraphs already read their architect outcomes independently of her availability. Generated-export C# coverage now walks Derived, DerivedForbids and DerivedOpenRoutes dependencies and tests both Areelu closure and death for each paragraph. Seven historical-reference scene guards remain shared-classifier escalation: the three commit.result variants, three folio.architect variants and folio.abyss.lamp. The tests detect their transitive closure inputs explicitly; they do not claim those scenes are fixed.
+
+The focused gate also exposed a stale Areelu visitor assertion: the returned-Nenio answer is no longer the final answer after a shared inert exit was appended. The test now locates the same answer by its destination and exact return/dissolution gates; no Areelu content or mechanics changed.
+
+Focused validation: 19 Python route/UTF-8 tests pass; NenioTricksterTests and NenioBodyCustodyTests pass 7,930 assertions on the regenerated export. Historical death coverage uses the exported `areelu.dead_fight` loss, rather than an invented `areelu.dead` flag. Save compatibility, payoff and departure tools report zero hard failures. Full discovery/rules attempts were terminated by the environment guard; no full-suite pass is claimed. No commit.
+
+Final strict gate: `python tools/rrt_verify.py --strict --gate-only` completed with zero hard failures (all strict checks; report-only world/budget analyses skipped). Generated Story.json was restored after validation to keep the final diff within the task allowlist. Temporary build/report files were deleted.
