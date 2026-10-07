@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claude prose work requests (not placeholder authority)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "scene",
+      "woman",
+      "beat",
+      "ruling"
+    ],
+    "properties": {
+      "scene": {
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "woman": {
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "beat": {
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "node": {
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "ruling": {
+        "oneOf": [
+          {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          {
+            "type": "integer",
+            "minimum": 1
+          }
+        ]
+      },
+      "choice": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "dependentRequired": {
+      "choice": [
+        "node"
+      ]
+    }
+  }
+}

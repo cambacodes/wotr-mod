@@ -116,7 +116,7 @@ class ContractJ04(unittest.TestCase):
         self.assertFalse(any(f.endswith(".lover") for f in state.flags))
 
     def test_every_new_pending_text_has_an_exact_manifest_address(self):
-        pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        pending = json.loads((ROOT / "tools/route_packs/plans/claude-work-queue.json").read_text(encoding="utf-8"))
         rows = [r for r in pending if r.get("ruling") in (3, 21)]
         self.assertGreaterEqual(len(rows), 15)
         addresses = {(row["scene"], row["node"], row.get("choice")) for row in rows}

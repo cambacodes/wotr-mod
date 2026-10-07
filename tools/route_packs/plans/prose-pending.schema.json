@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Integration and held scaffold prose targets",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "pending"],
+  "properties": {
+    "version": {"const": 1},
+    "pending": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scene", "node", "surface", "index", "text_sha"],
+        "properties": {
+          "scene": {"type": "string", "pattern": "\\S"},
+          "node": {"type": "string", "pattern": "\\S"},
+          "surface": {"enum": ["node", "paragraph", "choice"]},
+          "index": {"type": ["integer", "null"], "minimum": 0},
+          "text_sha": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "allOf": [{
+          "if": {"properties": {"surface": {"const": "node"}}},
+          "then": {"properties": {"index": {"type": "null"}}},
+          "else": {"properties": {"index": {"type": "integer", "minimum": 0}}}
+        }]
+      }
+    }
+  }
+}

@@ -71,13 +71,13 @@ class EvidenceTests(unittest.TestCase):
             report = directory / 'report.json'
             requirements = directory / 'requirements.json'
             out = directory / 'receipt.json'
-            report.write_text(json.dumps(self.report))
-            requirements.write_text(json.dumps([dict(self.requirement, kind='earned campaign')]))
+            report.write_text(json.dumps(self.report), encoding="utf-8")
+            requirements.write_text(json.dumps([dict(self.requirement, kind='earned campaign')]), encoding="utf-8")
             result = subprocess.run([sys.executable, str(root / 'tools/harness_evidence.py'), str(report),
                 '--requirements', str(requirements), '--out', str(out), '--source-hash', 'a' * 64,
                 '--export-hash', 'b' * 64], capture_output=True, text=True, timeout=10)
             self.assertEqual(2, result.returncode, result.stderr)
-            receipt = json.loads(out.read_text())
+            receipt = json.loads(out.read_text(encoding="utf-8"))
             self.assertEqual('a' * 64, receipt['source_hash'])
             self.assertEqual('b' * 64, receipt['export_hash'])
             self.assertEqual(64, len(receipt['policy_hash']))
@@ -92,14 +92,14 @@ class EvidenceTests(unittest.TestCase):
                 '<OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable>'
                 '</PropertyGroup><ItemGroup><Compile Include="' + str(root / 'harness/src/HarnessReport.cs') + '" />'
                 '<Reference Include="Newtonsoft.Json"><HintPath>' + str(newtonsoft) + '</HintPath></Reference>'
-                '</ItemGroup></Project>')
+                '</ItemGroup></Project>', encoding="utf-8")
             (temp / 'Models.cs').write_text('''namespace RRT.TestHarness {
 public class HarnessPlan { public string? SystemCasesJson; public bool NativeEpilogueSpike; }
 public class NativeSlideResult { public string Case="",Result=""; public bool Passed; public System.Collections.Generic.List<string> Findings=new(); }
 public class SystemCoverage { public string Scenario="",Result=""; public bool Passed; public System.Collections.Generic.List<string> Findings=new(); }
 public class ResidenceSpikeResult { public bool Passed; public System.Collections.Generic.List<string> Findings=new(); }
 public class PresenceSpikeResult { public bool Passed; public System.Collections.Generic.List<string> Findings=new(); }
-}''')
+}''', encoding="utf-8")
             (temp / 'Program.cs').write_text('''using System; using RRT.TestHarness;
 var r=new HarnessReport {Status="complete"}; r.Init.Initialized=true; r.Init.RrtModFound=true; r.Init.RrtVersion="v";
 var save=new SaveReport {LoadOk=true}; r.Saves.Add(save);
@@ -112,7 +112,7 @@ save.InventoryTruncated=true; r.ComputeSummary();
 if(r.Summary.AcceptanceComplete) throw new Exception("truncated counted as pass");
 save.InventoryTruncated=false; r.Init.RrtVersion=null; r.ComputeSummary();
 if(r.Summary.AcceptanceComplete) throw new Exception("missing mod version counted as pass");
-Console.WriteLine("PASS offline live report coverage");''')
+Console.WriteLine("PASS offline live report coverage");''', encoding="utf-8")
             env = dict(os.environ)
             env.pop('RRT_TEST_BUILD_ROOT', None)
             result = subprocess.run(['dotnet', 'run', '--project', str(temp / 'Report.csproj'), '-c', 'Release'],

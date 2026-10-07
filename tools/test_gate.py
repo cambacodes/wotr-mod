@@ -32,9 +32,26 @@ def stage_environment(env, label, scratch):
     return private
 
 
+def ownership_commands(commands, args, full):
+    """Preserve H04 authority flags within the current receipt gate."""
+    result = []
+    for label, argv in commands:
+        command = list(argv)
+        if label == 'voice':
+            command.append('--milestone' if full else '--integration')
+            if args.voice_job:
+                command += ['--job', str(args.voice_job.resolve())]
+            if args.append_approvals:
+                command += ['--append-approvals', str(args.append_approvals.resolve())]
+        result.append((label, command))
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--full', action='store_true')
+    parser.add_argument('--voice-job', type=Path, help='signed reviewed voice/scaffold job record')
+    parser.add_argument('--append-approvals', type=Path, help='signed pending-choice append approval record')
     parser.add_argument('--base', help='include committed changes since this git ref')
     parser.add_argument('--files', nargs='+', help='explicit changed-file list; replaces git detection')
     parser.add_argument('--plan', action='store_true', help='print selection without running commands')
@@ -56,6 +73,7 @@ def main():
     plan = select(args.files if args.files is not None else changed_files(args.base))
     if args.plan:
         commands = lint_commands(sys.executable, ROOT / 'development/Story.json', args.game, Path('<scratch>'), args.full)
+        commands = ownership_commands(commands, args, args.full)
         plan['coverage'] = validate_coverage(commands)
         plan['coverage']['python'] = {'kind': 'Python tests', 'tests': 'full discovery' if args.full else plan['python']}
         plan['coverage']['rules'] = {'kind': 'C# progression', 'suites': 'full discovery' if args.full else plan['suites']}
@@ -90,6 +108,7 @@ def main():
         baseline = load_baseline(args.baseline, args.baseline_sha256, mode, snapshot['policy_hash']) if args.baseline else None
         runner = StageRunner(ROOT, scratch, env, args.timeout, snapshot, baseline)
         lints = lint_commands(sys.executable, scratch / 'Story.json', args.game, scratch, args.full)
+        lints = ownership_commands(lints, args, args.full)
         coverage = validate_coverage(lints)
         coverage['python'] = {'kind': 'Python tests', 'tests': 'full discovery' if args.full else plan['python']}
         coverage['rules'] = {'kind': 'C# progression', 'suites': 'full discovery' if args.full else plan['suites']}

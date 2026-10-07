@@ -46,6 +46,7 @@ FAST_PYTHON = {
     'test_text_structure_lint', 'test_parent_bindings', 'test_test_selection', 'test_verifier_tiers',
     'test_foresight_echo',
     'test_test_gate', 'test_harness_evidence',
+    'test_voice_authority', 'test_voice_lock_lint', 'test_prose_integration',
 }
 
 

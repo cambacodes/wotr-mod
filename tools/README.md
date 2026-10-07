@@ -14,7 +14,12 @@ Killed, timed out and skipped stages cannot produce a passed gate.
 `--timeout 900` bounds each stage, including descendants; it is the default.
 `--plan` inventories required lints and selected Python/C# checks without running
 them. FAST and FULL both enforce the existing strict slot, payoff, departure and
-voice policies; the verifier supplies save compatibility and earned-presence checks.
+voice policies. FAST allows only exact registered integration placeholders;
+FULL forbids pending prose. Use `--voice-job` for signed voice/scaffold jobs
+and `--append-approvals` for the separately signed J05b pending-choice append
+record; see [ownership review](route_packs/ownership.md). The separate Claude
+request queue is checked by `python tools/claude_work_queue_lint.py`.
+The verifier supplies save compatibility and earned-presence checks.
 
 To separate existing debt from new failures, independently run the pinned baseline
 checkout with `--collect-failures --json /tmp/baseline.json`, then supply that receipt

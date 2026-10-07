@@ -31,16 +31,16 @@ class GateTests(unittest.TestCase):
         (self.repo / 'tools/test_selection.py').write_text(
             'from pathlib import Path\nROOT=Path(__file__).resolve().parents[1]\n'
             'def changed_files(base): return []\n'
-            'def select(files): return {"python":["tests.one","tests.two"],"suites":["FixtureProgression"]}\n')
+            'def select(files): return {"python":["tests.one","tests.two"],"suites":["FixtureProgression"]}\n', encoding="utf-8")
         (self.repo / 'tools/draft_contract_lint.py').write_text(
-            'from pathlib import Path\nROOT=Path(__file__).resolve().parents[1]\ndef inventory(): return []\n')
+            'from pathlib import Path\nROOT=Path(__file__).resolve().parents[1]\ndef inventory(): return []\n', encoding="utf-8")
         (self.repo / 'expansion.py').write_text(
-            'from pathlib import Path\nPath("development/Story.json").write_text(\'{"Scenes":[{"Id":"fixture"}]}\')\n')
+            'from pathlib import Path\nPath("development/Story.json").write_text(\'{"Scenes":[{"Id":"fixture"}]}\')\n', encoding="utf-8")
         for name in ('rrt_verify', 'crossroute_lint', 'pacing_lint', 'harem_schedule_lint',
                      'harem_smoothing_lint', 'slot_brief_lint', 'payoff_lint', 'departure_lint', 'voice_lock_lint', 'test_audit'):
-            (self.repo / 'tools' / (name + '.py')).write_text('print("HARD FAILURES: 0")\n')
+            (self.repo / 'tools' / (name + '.py')).write_text('print("HARD FAILURES: 0")\n', encoding="utf-8")
         executable = self.base / 'dotnet'
-        executable.write_text('#!/usr/bin/env python3\nprint("PASS synthetic C# command fixture")\n')
+        executable.write_text('#!/usr/bin/env python3\nprint("PASS synthetic C# command fixture")\n', encoding="utf-8")
         executable.chmod(0o755)
         self.env = dict(os.environ, PATH=str(self.base) + os.pathsep + os.environ['PATH'],
                         PYTHONDONTWRITEBYTECODE='1')
@@ -49,7 +49,7 @@ class GateTests(unittest.TestCase):
         result = subprocess.run(['bash', 'tools/fast_gate.sh', '--json', str(self.base / receipt),
                                  '--timeout', '3', *argv], cwd=self.repo, env=self.env,
                                 capture_output=True, text=True, timeout=25)
-        return result, json.loads((self.base / receipt).read_text())
+        return result, json.loads((self.base / receipt).read_text(encoding="utf-8"))
 
     def test_actual_commands_inventory_and_receipt_identity(self):
         result, receipt = self.gate()
@@ -66,6 +66,22 @@ class GateTests(unittest.TestCase):
         self.assertEqual('C# progression', rules['check_kind'])
         self.assertIn('--suites=FixtureProgression', rules['command'])
         self.assertFalse(any('discover' in s['command'] for s in receipt['stages']))
+
+    def test_ownership_modes_and_both_approval_records_survive_merge(self):
+        from argparse import Namespace
+        from tools.gate_receipts import lint_commands
+        commands = lint_commands('python', Path('story'), '/wrath', self.base)
+        args = Namespace(voice_job=self.base / 'voice.json', append_approvals=self.base / 'append.json')
+        for full in (False, True):
+            with self.subTest(full=full):
+                actual = test_gate.ownership_commands(commands, args, full)
+                voice = dict(actual)['voice']
+                self.assertIn('--milestone' if full else '--integration', voice)
+                self.assertNotIn('--integration' if full else '--milestone', voice)
+                self.assertEqual(str(args.voice_job), voice[voice.index('--job') + 1])
+                self.assertEqual(str(args.append_approvals), voice[voice.index('--append-approvals') + 1])
+                self.assertEqual([c for c in commands if c[0] != 'voice'], [c for c in actual if c[0] != 'voice'])
+        self.assertNotIn('--integration', dict(commands)['voice'])
 
     def test_required_lint_omission_through_public_plan_fails(self):
         from tools.gate_receipts import lint_commands
@@ -97,7 +113,7 @@ class GateTests(unittest.TestCase):
         self.assertFalse(receipt['coverage']['rules']['passed'])
 
     def test_exit_143_is_incomplete_and_receipt_survives(self):
-        (self.repo / 'expansion.py').write_text('raise SystemExit(143)\n')
+        (self.repo / 'expansion.py').write_text('raise SystemExit(143)\n', encoding="utf-8")
         result, receipt = self.gate()
         self.assertEqual(143, result.returncode)
         self.assertFalse(receipt['complete'])
@@ -108,12 +124,12 @@ class GateTests(unittest.TestCase):
 
     def test_baseline_red_and_new_red_are_distinct_without_exemption(self):
         lint = self.repo / 'tools/payoff_lint.py'
-        lint.write_text('print("HARD old defect")\nraise SystemExit(1)\n')
+        lint.write_text('print("HARD old defect")\nraise SystemExit(1)\n', encoding="utf-8")
         result, baseline = self.gate('baseline.json', '--collect-failures')
         self.assertEqual(1, result.returncode)
         self.assertTrue(baseline['complete'])
         pin = sha256(self.base / 'baseline.json')
-        lint.write_text('print("HARD old defect\\nHARD new defect")\nraise SystemExit(1)\n')
+        lint.write_text('print("HARD old defect\\nHARD new defect")\nraise SystemExit(1)\n', encoding="utf-8")
         result, current = self.gate('new.json', '--collect-failures', '--baseline', str(self.base / 'baseline.json'),
                                     '--baseline-sha256', pin)
         self.assertEqual(1, result.returncode)
@@ -153,7 +169,7 @@ class GateTests(unittest.TestCase):
         ready, escaped = self.base / 'ready', self.base / 'escaped'
         child = 'import time; from pathlib import Path; time.sleep(1); Path(' + repr(str(escaped)) + ').touch()'
         (self.repo / 'expansion.py').write_text('import subprocess,sys,time\nfrom pathlib import Path\n'
-            'subprocess.Popen([sys.executable,"-c",' + repr(child) + '])\nPath(' + repr(str(ready)) + ').touch()\ntime.sleep(20)\n')
+            'subprocess.Popen([sys.executable,"-c",' + repr(child) + '])\nPath(' + repr(str(ready)) + ').touch()\ntime.sleep(20)\n', encoding="utf-8")
         receipt = self.base / 'cancelled.json'
         process = subprocess.Popen(['bash', 'tools/fast_gate.sh', '--json', str(receipt), '--timeout', '5'],
             cwd=self.repo, env=self.env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -165,7 +181,7 @@ class GateTests(unittest.TestCase):
             process.send_signal(signal.SIGTERM)
             out, error = process.communicate(timeout=10)
             self.assertEqual(143, process.returncode, out + error)
-            self.assertFalse(json.loads(receipt.read_text())['complete'])
+            self.assertFalse(json.loads(receipt.read_text(encoding="utf-8"))['complete'])
             time.sleep(1.1)
             self.assertFalse(escaped.exists(), 'cancelled gate left a descendant')
         finally:
