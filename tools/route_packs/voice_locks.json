@@ -1523,7 +1523,7 @@
     "jerribeth.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "6ad32e8b9450bc0b33f95ef22b713c6427425a3d7065ba02284ae06ce59e2951"
+      "text_sha": "e5c0b00e196516ee449a4ff3220c8b0efd2bea0483a6a505279a5a695143e240"
     },
     "jerribeth.lastcall.page": {
       "owner": "claude",
@@ -2143,7 +2143,7 @@
     "arueshalae.lastcall.page": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "9c0cc703841ee811403ed858b029ae726965cf0ab11a9ccd052b3432a06cda98"
+      "text_sha": "44cccf5ef90ad36c0a951c478b73b6a4e86dfc33cb1ae4a477bb89dfafe0973c"
     },
     "arueshalae.trickster.chaplain.censer": {
       "owner": "claude",
@@ -2393,7 +2393,7 @@
     "hepzamirah.lastcall.page": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "9c060c57892c67d402d45dd0f357e6f487c5179bcc779d7b6f3c8d62e12a6acd"
+      "text_sha": "cc5ea21b26a6918d2102705a432dbf53fec7b943de787f63828f9efc60ec476b"
     },
     "hepzamirah.trickster.react.greybor": {
       "owner": "claude",
@@ -2683,7 +2683,7 @@
     "areelu.lastcall.page": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "54f7b6593028eac9a1154785db0bba472b28dc9f91861ee94e86013177893ec1"
+      "text_sha": "1c738bbbcff18e812d5ac2ee095fbc7fb6807415f0917e20ec0bfbf95cd2afea"
     },
     "areelu.early.two_masks": {
       "owner": "claude",
@@ -2848,7 +2848,7 @@
     "areelu.lastcall.call": {
       "owner": "claude",
       "since": "1dc46d5d",
-      "text_sha": "5b409595f8e7239c050f7ed0192d33f4d2b2a2e897345a03833fd0a601cd0e27"
+      "text_sha": "9760c071360f26fd8777021c0bcf26220a865dbdde63ad4af1ea5119c14ef201"
     },
     "melazmera.lastcall.call": {
       "owner": "claude",
