@@ -1,7 +1,7 @@
 {
   "voice": "KAYLESSA: blunt, watchful, sardonic and impatient with sentimental speeches. Desire is her decision; trust does not mean obedience. Her Calistrian revenge and the continuing Dark Fate remain real. Write fresh dialogue from these traits; reuse no example sentence. Canon physical facts only: dark skin, grey/white hair, crimson/red eyes, fanged teeth, vision in darkness and pain from bright light. Do not invent sexual anatomy, measurements, racial physiology, scars or tattoos. Do not assume the Commander's species, height or eyesight.",
   "scene": "RESERVED PRIVATE CONSUMMATION PASSAGE; non-graphic staging and handoff for a user-controlled fill. Existing kaylessa.trickster.epilogue.commit/page, Chapter 6 after Threshold, Commander's rooms. Only Kaylessa and the actually living/returned Commander. Insert as a reserved paragraph after her existing lamp-out bed invitation and before the existing morning paragraph; write third-person past-tense narration for this ending without changing its exit. Required beats: she carries forward the choice she just made rather than repeating the knife proposal; she initiates a hard kiss and keeps the encounter on her terms; the war has ended but her vigilance has not; preserve the existing nail/blade continuity only for the actual recorded custody; she remains uncured. This is a first night only where the clearing night did not happen; a prior night means return/deepening, never renewed virginity or erased intimacy. No Commander dialogue, new person, discovery, fee, debt settlement, flag, relationship condition or inferred forgiveness. Do not sexualize captivity, torture or the dagger. Finish before morning; the next paragraph must still collect her curse check and dry snoring remark. With no fill, use the plan's heated-cut default. This brief does not broaden the late receipt's eligibility.",
-  "last_line": "N: For that night, she left the war outside the shutters.",
+  "last_line": "N: In the morning the dagger hung on a nail by the door. Her first movement on waking was to check the clock. Then she told the Commander that they snored.",
   "speakers": {
     "K": "Kaylessa"
   },
@@ -14,5 +14,10 @@
   "min_lines": 10,
   "max_lines": 16,
   "narration": "third-past",
-  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief.",
+  "last_lines": {
+    "page/paragraph#3": "N: In the morning the dagger hung on a nail by the door. Her first movement on waking was to check the clock. Then she told the Commander that they snored.",
+    "page/paragraph#4": "N: In the morning the dagger was sheathed in her left boot. Her first movement on waking was to check the clock. Then she told the Commander that they snored.",
+    "page/paragraph#5": "N: She hunted at night and returned before daylight, tapping on the shutter. She kept her rules. On bad mornings she checked that the knife was within reach before climbing into bed. She was never cured."
+  }
 }

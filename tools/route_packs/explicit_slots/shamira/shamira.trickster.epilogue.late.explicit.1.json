@@ -2,7 +2,7 @@
   "voice": "Shamira: imperious, brazen, impatient, sensually acquisitive. She enjoys reading desire and displaying political claims. Cruelty and ambition remain; affection appears as pursuit and possessiveness, never gratitude for rescue or moral reform. Short, cutting speech; telepathic remarks retain her contempt and appetite. Write new dialogue; do not copy canon quotations or the example.",
   "facts": "Canon only: fallen celestial; Nocticula's longtime chosen lover and ally; seeks power and dominion over Alushinyrra. Nocticula visits her Harem for passion. Shamira reads memories and speaks inside the Commander's mind. She watched atrocities her dreams inspired instead of stopping them. Sources A1-A4 in shamira-setpieces.md. No additional anatomical features are assumed.",
   "scene": "Authored continuity: after Threshold, only the existing eligible late bodily resolution, empty Harem throne steps before the court returns. Their first bodily night only if the Chapter 5 night never occurred. Commander accepted an informed invitation, offered desire and heard her partner answer; Shamira reciprocated at partner_late_won. Brief for a user-selected writer: a mutually wanted sexual encounter; urgency comes from wanting this body and this encounter, not prophecy or an unpaid rescue fee. Required beats: answered initiating motion; renewed recognition after the war; terse remark about her chosen lover and unchanged political ambition; fountain sound. Existing late-court/private-exit choices follow unchanged. No second wager, manufactured willingness, coerced act, invented Nocticula body or forgiveness. Authored body continuity: collarbone seam only on cost.shell_torn, otherwise plain body. Do not assume wings, horns, tail, restored celestial fire or genital configuration. Full/edge access, partner stance and Nocticula's current state must come from the actual history. No sex on refusal or passenger histories.",
-  "last_line": "N: She pulls the loosened coat away and draws you down beside her. The fountains fill the empty Harem; the court has not yet returned.",
+  "last_line": "N: Afterwards, Shamira retrieved her pins from the steps. She kept one hand on the Commander's loosened coat while the musicians gathered outside. Her court would return at the third bell.",
   "speakers": {
     "S": "Shamira"
   },
@@ -13,5 +13,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "narration": "third-past"
+  "narration": "third-past",
+  "host_scene": "shamira.trickster.epilogue.late",
+  "host_node": "explicit.1"
 }

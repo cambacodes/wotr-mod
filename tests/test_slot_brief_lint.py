@@ -77,6 +77,44 @@ class SlotBriefLintTests(unittest.TestCase):
         story["Scenes"][0]["Nodes"].append({"Id": "other", "Speaker": "Narrator", "Text": "{n}Another dawn.{/n}"})
         self.assertIn("last_line", self.codes(story=story))
 
+    def test_branch_boundaries_are_exact_and_complete(self):
+        story = copy.deepcopy(self.story)
+        story["Scenes"][0]["Nodes"][1]["Choices"].append({"Next": "other"})
+        story["Scenes"][0]["Nodes"].append({"Id": "other", "Speaker": "Narrator", "Text": "{n}Another dawn.{/n}"})
+        brief = dict(self.brief, last_lines={"morning": "N: The watch changes.", "other": "N: Another dawn."})
+        self.assertEqual(set(), self.codes(brief, story))
+        brief["last_lines"]["other"] = "N: Wrong dawn."
+        self.assertIn("last_line", self.codes(brief, story))
+        brief["last_lines"] = {"morning": "N: The watch changes."}
+        self.assertIn("last_line", self.codes(brief, story))
+        self.assertIn("schema", self.codes(dict(self.brief, last_lines=[])))
+
+    def test_short_host_address_and_inline_anchor(self):
+        brief = dict(self.brief, host_scene="night", host_node="night.explicit.1")
+        self.assertEqual(set(), self.codes(brief))
+        story = copy.deepcopy(self.story)
+        story["Scenes"][0]["Nodes"][1]["Text"] = "{n}She kisses you. The watch changes.{/n}"
+        brief["after_text"] = "{n}She kisses you. "
+        self.assertEqual(set(), self.codes(brief, story))
+        brief["after_text"] = "Missing anchor"
+        self.assertIn("host", self.codes(brief, story))
+        brief["paragraph_index"] = 999
+        self.assertIn("host", self.codes(brief, story))
+
+    def test_evidenced_drop_cannot_hide_live_slot(self):
+        index = {self.brief["slot_id"]: {"status": "dropped", "reason": "No encounter remains", "evidence": "route report"}}
+        path = self.write()
+        self.assertIn("index", {f["code"] for f in lint.lint([path], self.story, slot_index=index)[0]})
+        self.assertEqual([], lint.lint([path], {"Scenes": []}, slot_index=index)[0])
+        del index[self.brief["slot_id"]]["reason"]
+        self.assertIn("index", {f["code"] for f in lint.lint([path], {"Scenes": []}, slot_index=index)[0]})
+
+    def test_harem_rebuild_ownership_is_not_an_exemption(self):
+        path = self.root / "harem" / "household.pair.camellia_vellexia.choice.explicit.1.json"
+        self.assertEqual("camellia", lint.route_name(path))
+        path = self.root / "harem" / "seelah_wenduag" / "household.pair.seelah_wenduag.choice.explicit.1.json"
+        self.assertEqual("seelah_wenduag", lint.route_name(path))
+
     def test_duplicate_divergence_checks_both_owners(self):
         paths = [self.write(route="nocticula"), self.write(dict(self.brief, voice="Different."))]
         findings, _ = lint.lint(paths, self.story, known_rebuilds=True)

@@ -12,7 +12,7 @@
     "Do not repeat the first-night reward: this is the late alternative; if future reuse follows an earlier night, explicitly treat it as a return.",
     "Leave her morning answer and any Daeran reaction outside the slot; close with the exact last line."
   ],
-  "last_line": "N: Beyond the door, the party goes on.",
+  "last_line": "N: In the morning there was a bruise on the Commander's throat. Vellexia was still in bed, watching {mf|him|her} discover it.",
   "speakers": {
     "V": "Vellexia"
   },
@@ -55,5 +55,8 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp"
     }
   ],
-  "implementation_status": "blocked_save_compatibility: runtime identifies paragraphs by numeric position; coordinator must supply identified-paragraph insertion before activating this slot"
+  "implementation_status": "blocked_save_compatibility: runtime identifies paragraphs by numeric position; coordinator must supply identified-paragraph insertion before activating this slot",
+  "host_scene": "vellexia.trickster.epilogue.commit",
+  "host_node": "start",
+  "paragraph_index": 2
 }
