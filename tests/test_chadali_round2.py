@@ -179,6 +179,28 @@ class ChadaliRound2Tests(unittest.TestCase):
         half = next(nd for nd in ending["Nodes"] if nd["Id"] == "half")["Text"]
         self.assertIn("haven't counted that as a yes", half)
 
+    def test_extraction_letter_preserves_coin_custody_and_forfeiture(self):
+        for history, expected, absent in (
+            ((), "hurt", "coin"),
+            ((t.PRIMED,), "coin", "coin_home"),
+            ((t.PRIMED, t.WAGERED), "coin", "coin_home"),
+            ((t.PRIMED, "chadali.wagers.coin_lost"), "coin_collected", "coin_home"),
+            ((t.PRIMED, s.COIN_TAKEN), "coin_home", "coin"),
+        ):
+            flags, _, seen, completed = play(t.P + "fought.lucky", {"refusal": 1}, history)
+            self.assertTrue(completed)
+            self.assertIn(expected, seen)
+            self.assertNotIn(absent, seen)
+            self.assertIn(t.NEEDLE_OWED, flags)
+            self.assertEqual(s.COIN_TAKEN in history, s.COIN_TAKEN in flags)
+            self.assertNotIn("chadali.lastcall.luck_returned", flags)
+
+    def test_epilogue_slot_brief_uses_past_tense(self):
+        import json
+        from pathlib import Path
+        path = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/chadali/chadali.trickster.epilogue.commit.explicit.1.json"
+        self.assertEqual("third-past", json.loads(path.read_text(encoding="utf-8"))["narration"])
+
 
 if __name__ == "__main__":
     unittest.main()

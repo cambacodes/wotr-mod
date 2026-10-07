@@ -379,7 +379,7 @@ _en["page"]["Choices"].append(c('"Come as a friend. There is always a place for 
 _ep["Nodes"].append(nar("friend", '{n}"A friend, then," Chadali said. "I\'ll come before supper. You can tell me when that doesn\'t suit you." She returned in autumn with a basket and a complaint about the road. The Commander made room at the table. No question about a bed hid beneath the cookies.{/n}'))
 # Explicit brief: earned postwar invitation, first night only if no earlier honey night.
 _slot = P + "epilogue.commit.explicit.1"
-_ep["Nodes"].append(nar(_slot, '{n}Chadali answers yes herself. She comes round the table and settles in the Commander\'s lap, kisses away the next sentence, and catches the hand reaching for the last fastening.{/n} "The basket can wait."', c("Continue", "stay")))
+_ep["Nodes"].append(nar(_slot, '{n}Chadali came round the table and settled in the Commander\'s lap. She kissed away the next sentence, then opened the last fastening herself. Her yellow silk slipped down beside the chair. She took the Commander\'s hand and led the way to bed, leaving the basket beneath the table.{/n} "The basket can wait."', c("Continue", "stay")))
 _en["page"]["Choices"][0]["Next"] = _slot
 _en["page"]["Choices"][2]["Text"] = '"And the coin?"'
 _en["page"]["Choices"][3]["Text"] = '"And the penny?"'
@@ -415,3 +415,22 @@ for _sc in SCENES:
                 if "chadali.wagers.coin_lost" not in _para["Forbids"]:
                     _para["Forbids"].append("chadali.wagers.coin_lost")
 # end endings1
+
+# Round 3: the Council-table reaction needs the coin still there and unpledged.
+_spine[P + "react.eritrice_coin"]["Forbids"].extend((
+    WAGERED, "chadali.wagers.coin_lost", "chadali.sessions.coin_taken_home",
+))
+
+# Authored custody variants: the extraction letter sends the coin only from her keeping.
+_letter = _spine[P + "fought.lucky"]
+_letter_nodes = {nd["Id"]: nd for nd in _letter["Nodes"]}
+_letter_nodes["start"]["Choices"][0]["Forbids"].append("chadali.sessions.coin_taken_home")
+_letter_nodes["start"]["Choices"].append(c("Continue", "coin_home", requires=(PRIMED, "chadali.sessions.coin_taken_home")))
+_letter_nodes["coin"]["Text"] = '{n}The Elysian coin lies flat in the envelope, heads up. She has wrapped it in the letter.{/n}'
+_letter_nodes["coin"]["Choices"][0]["Forbids"].append("chadali.wagers.coin_lost")
+_letter_nodes["coin"]["Choices"].append(c("Read the letter.", "coin_collected", requires=("chadali.wagers.coin_lost",)))
+_letter_nodes["shut_coin"]["Text"] = '{n}A sun has been drawn on the bottom of the parcel. There is no coin inside.{/n}'
+_letter["Nodes"].extend([
+    nar("coin_home", '{n}A crushed white flower lies in the envelope. The coin is still on its saucer in your quarters.{/n}', c("Read the letter.", "hurt")),
+    nar("coin_collected", '{n}Beneath the coin she has written: "Still flat. That wager stays paid, whatever you write next."{/n}', c("Read the letter.", "hurt")),
+])

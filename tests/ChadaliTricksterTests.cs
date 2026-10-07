@@ -263,7 +263,9 @@ internal static class ChadaliTricksterTests
         // R1:chadali:004: dispatch completes the sitting without personal delivery credit.
         // WalkVia records the chosen answer, rather than inferring it from the final flags.
         var shrine = Sc(S + "a_parcel_for_the_shrine");
-        var shrineWorld = World(story, 3, "trickster", "trickster.ever", "chadali.started", W + "her_worshippers");
+        var shrineBase = World(story, 3, "trickster", "trickster.ever", "chadali.started", P + "primed", W + "her_worshippers", W + "so_gloomy", W + "a_free_space");
+        var shrineWager = Program.WalkVia(wager, shrineBase, "bet", 0).Single();
+        var shrineWorld = Program.WalkVia(second, Later(story, shrineWager, 100), "her_test", 0).Single();
         check(Rules.Available(story, shrine, shrineWorld), "The earned shrine sitting is unavailable.");
         var personalPlaque = paras[29];
         check(personalPlaque.Requires.Contains(S + "carried_the_parcel"), "The shrine plaque lost its personal-delivery condition.");
@@ -276,7 +278,6 @@ internal static class ChadaliTricksterTests
             foreach (var delivery in deliveries)
             {
                 var epilogue = Later(story, delivery, 100, 6);
-                epilogue.Flags.Add("chadali.committed");
                 Rules.Complete(story, epilogue);
                 check(Rules.Available(story, pageNight, epilogue)
                       && Rules.VisibleParagraphs(pageNight.Nodes[0], epilogue).Contains(personalPlaque) == personal,
@@ -437,6 +438,28 @@ internal static class ChadaliTricksterTests
         check(lateOpen.Count == 5 && lateOpen[2].Next == "coin" && lateOpen[2].Requires.Contains(P + "primed")
               && lateOpen[3].Next == "penny" && lateOpen[3].Requires.Contains(P + "cost.late_wager") && lateOpen[3].Forbids.Contains(P + "primed"),
             "The late page hands back a keepsake the Commander never gave her.");
+        // Round 3: different accounts and coin histories retain different consequences.
+        var due = World(story, 5, "trickster", "trickster.ever", "chadali.started", P + "cost.luck_owed");
+        var settled = World(story, 5, "trickster", "trickster.ever", "chadali.started", P + "cost.luck_owed", F + "loan_returned");
+        var needleOnly = World(story, 5, "trickster", "trickster.ever", P + "returned", P + "cost.needle_owed");
+        check(due.Has("chadali.lastcall.luck_due") && !settled.Has("chadali.lastcall.luck_due")
+              && !needleOnly.Has("chadali.lastcall.luck_due") && !needleOnly.Has("chadali.lastcall.luck_returned"),
+            "An outstanding loan, a settled loan and the needle oath are conflated.");
+        foreach (var custody in new[] { W + "the_real_wager", W + "coin_lost", S + "coin_taken_home" })
+        {
+            var laterCoin = World(story, 5, "trickster", "trickster.ever", "chadali.started", P + "primed", custody);
+            check(!Rules.Available(story, Sc(P + "react.eritrice_coin"), laterCoin),
+                "Eritrice recreates a balanced Council coin: " + custody);
+        }
+        foreach (var history in new[] { "", W + "coin_lost", S + "coin_taken_home" })
+        {
+            var letterWorld = World(story, 5, "trickster", "trickster.ever", P + "primed", "council.fought", history);
+            var returnHistory = Program.WalkVia(lucky, letterWorld, "refusal", 1).Single();
+            check(returnHistory.Has(P + "cost.needle_owed") && !returnHistory.Has("chadali.lastcall.luck_returned")
+                  && returnHistory.Has(S + "coin_taken_home") == (history == S + "coin_taken_home"),
+                "The extraction letter changes coin custody or repays a luck loan: " + history);
+        }
+
         Console.WriteLine("PASS: Chadali Trickster (Trk_Chadali_*): coin, orange, second cookie, the seed, the sealed hall's letters, 'Lucky you' and the wagers.");
     }
 }

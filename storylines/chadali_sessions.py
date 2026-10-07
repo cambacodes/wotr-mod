@@ -140,7 +140,7 @@ session(LEXICON, "Written in a very interesting way", '"Did you understand the L
 "I'm going to listen properly now. At every session. Even the boring parts. Even Alichino's footnotes." {n}She looks at you.{/n} "And if anybody talks about you like a key again, I'm going to throw a cookie at them. A hard one. From last week."''',
       c("Continue", "close")),
     ch("worst", '''"You're good at avoiding things." {n}She nods, too many times.{/n} "Yes. That's true. You'll have to avoid this one too. You'll have to be better at it than you've ever been at anything."
-{n}And then, with sudden fury, she slaps the table so hard the coin on it jumps and, somehow, lands on its edge again.{/n} "But don't make it a joke! Not this one! You can joke about everything else, I'll laugh at everything else, but not this."''',
+{n}And then, with sudden fury, she slaps the table so hard the reports slide off the far end.{/n} "But don't make it a joke! Not this one! You can joke about everything else, I'll laugh at everything else, but not this."''',
       c('"Not this one. I promise."', "close")),
     ch("close", '''{n}She takes your hand and turns it over and looks at the palm, the way fortune-tellers do in the markets, though she does not pretend to read anything there.{/n}
 "I'll send you luck every morning. Double. I'll take it from Alichino's share. He won't notice; he never uses his."''',
@@ -411,7 +411,7 @@ for _nd in _shr["Nodes"]:
         _nd["Choices"][0]["Set"].append(S + "cache_allocated")
 _wish = next(sc for sc in SCENES if sc["Id"] == WISH)
 # Explicit brief: later chosen night, familiar cushions, her impatient invitation.
-_wish["Nodes"].append(ch(WISH + ".explicit.1", '{n}She pulls the familiar cushions into place, catches your sleeve and draws you down beside her. Her mouth meets yours before you can finish speaking.{/n} "You\'re staying."', c("[Stay.]")))
+_wish["Nodes"].append(ch(WISH + ".explicit.1", '{n}She loosens your collar, then pushes your coat off your shoulders. Her yellow silk joins it on the floor. She draws you down onto the cushions, her bracelets cold against your bare back, and pulls you closer.{/n} "You\'re staying."', c("[Stay.]")))
 next(nd for nd in _wish["Nodes"] if nd["Id"] == "stay")["Choices"][0]["Next"] = WISH + ".explicit.1"
 
 

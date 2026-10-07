@@ -314,7 +314,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
       c('"I wanted your people to have a good month. Is that so bad?"', "bad"),
       c('"I wanted you to see it work. Your luck. For once."', "see"),
       c('[Trickster] "Someone had to. You\'re always giving it away."', "giving"),
-      c('"You asked me to. In the hall, with her helmet in your hand, and you took the credit."', "asked")),
+      c('"You asked me to. In the hall, with her prayer on the paper, and you took the credit."', "asked")),
     ch("asked", '''"I know." {n}She does not look away, which is worse.{/n} "I asked. I wanted her to keep believing in me, and I wanted it more than I wanted to be honest with her, and you did exactly what I asked, and did it well."
 "That's why I'm cross with you instead of myself. It's easier." {n}She unfolds the letter again.{/n} "It's not fair. I know it's not fair. Now help me decide what to do about her roof."''',
       c("Continue", "choose")),
@@ -501,7 +501,7 @@ _rign = {nd["Id"]: nd for nd in _rig["Nodes"]}
 # No loaded-dice promise is presumed: this is a new offered gesture.
 _honey = next(sc for sc in SCENES if sc["Id"] == NIGHT)
 # Explicit brief: her prepared first night, hot kiss, cold bracelets, armour discarded.
-_honey["Nodes"].append(ch(NIGHT + ".explicit.1", '{n}Chadali draws you close among the cushions, her bracelets cold against your neck. She kisses you again, impatient with the last buckle.{/n} "Come here, lucky charm."', c("Continue", "cut")))
+_honey["Nodes"].append(ch(NIGHT + ".explicit.1", '{n}Chadali draws you close among the cushions, her bracelets cold against your neck. She kisses you again and pulls the loosened silk away, leaving it beside the discarded armour.{/n} "Come here, lucky charm."', c("Continue", "cut")))
 next(nd for nd in _honey["Nodes"] if nd["Id"] == "look")["Choices"][0]["Next"] = NIGHT + ".explicit.1"
 _morning = next(sc for sc in SCENES if sc["Id"] == MORNING)
 _mn = {nd["Id"]: nd for nd in _morning["Nodes"]}
