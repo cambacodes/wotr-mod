@@ -232,20 +232,15 @@ LUCK_KEPT_GIVING = H + "luck_kept_giving"
 hour(NUMBER, "Zero", '"What are you writing?"', [
     ch("start", '"A list." {n}She turns the paper round. A column copied from earlier sessions: she remembers Eritrice choosing one, Cobblehoof twelve, Alichino six hundred and sixty-six, "which he chose himself, which is cheating". Your name, and beside it, underlined three times, a two.{/n}\n{n}At the very bottom, in the same round hand, is her own name. Beside it is a nought.{/n}',
       c('"Why is yours zero?"', "zero")),
-    ch("zero", """{n}She tries to fold the list away. You put your hand on it.{/n}
-"Because I haven't got any left." {n}She says it to the table.{/n} "Every morning since the coin, I've been sending you mine. Not the Council's share. Mine. The bit I keep for myself. I thought nobody would notice. I'm chance; who checks whether chance is lucky?"
-"That's why I lost my earring. That's why the tray. I keep having unlucky days, and they're getting worse, and I don't mind." {n}Her chin lifts.{/n} "You're at the front. I'm in a hall with cookies. It's arithmetic." """,
+    ch("zero", '"Because I sent it to you!" {n}She holds the list where you can see it, tapping the nought beside her name.{/n} "My share, not the Council\'s. You\'re going out against demons. I wanted you lucky." {n}She rubs her bare earlobe.{/n} "But I want my earring back, too. And I\'m sick of picking up broken trays. Don\'t look pleased about this."',
       c('"Stop. Take it back. All of it."', "back"),
       c('"Half. You keep half, or I\'ll find a way to send it back myself."', "half", flags=(LUCK_GIVEN_BACK,)),
       c("[Say nothing. Let her keep giving it.]", "keep", flags=(LUCK_KEPT_GIVING,))),
-    ch("back", """"No." {n}The flat voice, the finger with the ring.{/n} "You don't get to decide that. It's mine. That's the whole point of it being mine."
-{n}Then she hears herself, and her finger wavers.{/n} "...You're doing the thing. Telling me when I'm spending myself." {n}She lets out a long breath.{/n} "Half. I'll keep half. That's the most I'll give you. Don't argue with an empyreal lord about arithmetic." """,
+    ch("back", '"All of it? No!" {n}She plants her finger on the list.{/n} "I chose where it went. I\'ll keep half now. I want a decent morning, and you can manage with the other half. Don\'t argue."',
       c("[Don't argue.]", "half", flags=(LUCK_GIVEN_BACK,))),
-    ch("half", '{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}\n"There. One. Like the number I remember Eritrice choosing." {n}A wet little laugh.{/n}\n"I\'m keeping one because I decided to, not because you told me to. Write that down somewhere." {n}She folds the list into her sleeve.{/n} "One is a perfectly respectable number. I remember Eritrice building a whole Council on it." ',
+    ch("half", '{n}She scratches out the nought and writes a firm one beside her name.{/n} "Half for me. There! I want my luck doing something about those trays." {n}She folds the list into her sleeve.{/n} "If you come back with both your ears, you can help me find what belongs in mine."',
       c("[Leave her with her one.]")),
-    ch("keep", """{n}You say nothing. She watches you say nothing, and understands it, and nods once.{/n}
-"All right." {n}Brightly, and it costs her.{/n} "You need it more. You're at the front. That's true."
-{n}She leaves the nought where it is. When you go, she is on her knees again, looking for something she has dropped, and she does not ask for help.{/n}""",
+    ch("keep", '{n}Chadali waits for an answer, then folds the list sharply.{/n} "Oh, you like this arrangement! Of course you do." {n}She kneels and peers beneath the Council table.{/n} "I\'ll keep sending it. I want you back from the front. But get down here and help me find my earring. I\'m not losing that as well."',
       c("[Go.]")),
 ], requires=(EARRING,), forbids=(NUMBER,))
 
@@ -296,8 +291,8 @@ EPILOGUE_PARAGRAPHS = [
     (EARRING_FOUND, "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She told it as if it were the best part of the war.{/n}"),
     (FIRST_SIGHT, "{n}She never stopped reminding the Council members who had laughed in the first session that she had been right. Eritrice minuted it every time, with the little squiggle.{/n}"),
     (PRISONER_FED, "{n}The cultist in the Drezen dungeon ate the cookie, the night before he was hanged. He never said a word about it. The white flower was found pressed in his prayer book, in the page about the Abyss.{/n}"),
-    (LUCK_GIVEN_BACK, "{n}Her list of lucky numbers survived the Council. Beside her own name, crossed out and rewritten, was a small crooked one. She never let it go back to nought, and the Commander checked.{/n}"),
-    (LUCK_KEPT_GIVING, "{n}She never did keep any luck for herself. The Commander won nearly everything, and never let themself ask why, and she lost earrings, and trays, and once a whole summer's honey, and never said a word.{/n}"),
+    (LUCK_GIVEN_BACK, "{n}Her list of lucky numbers survived the Council. She kept the one beside her own name, and complained whenever a tray broke anyway. The Commander still heard about the lost earring.{/n}"),
+    (LUCK_KEPT_GIVING, "{n}She kept sending her share of luck to the Commander. When she lost an earring or broke a tray, she came to their quarters and demanded help finding it or gathering the pieces. Her complaints often lasted longer than the search.{/n}"),
     (SOCOTH_REFUSED, "{n}Socothbenoth never asked her for a favour again. He sent flowers every year anyway, from somewhere warm, with a note that said only \"No hard feelings, darling.\" She put them in the bin, stem first, every year, and smiled.{/n}"),
     (SOCOTH_OBLIGED, "{n}Chadali kept her counteroffer to Socothbenoth: one morning's share only if he named the night and its purpose, and help for her worshippers in return. No agreement or delivery had followed. The Commander had no favour to collect.{/n}"),
     (REMEMBERED, "{n}When the Council's members publicly pretended they had never met, Chadali joined in. In private, she kept the date. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}"),
