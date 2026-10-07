@@ -85,9 +85,75 @@ internal static class HouseholdTransactionTests
             check(Rules.PaymentExitAvailable(story, scene, paidOnly, intermediate), "A spent paid answer left its page without an exit");
             check(Rules.ChoiceAvailable(scene.Nodes[0].Choices[1], World(null)), "Later disappeared with a missing kingdom");
         }
+        SharedClocksAndDeparture(check);
         LegacyPaidContinuation(check);
         PresenceAttachments(exported, check);
         DeedClockValidation(exported, check);
+    }
+
+    private static void SharedClocksAndDeparture(Action<bool, string> check)
+    {
+        var story = new Story { RestAllowances = new Dictionary<string, int> { ["protected"] = 2 } };
+        story.Relationships["test"] = new Relationship { ClosedFlag = "closed" };
+        var paid = new Choice { Set = new[] { "paid" }, PostPayment = "receipt",
+            Crusade = new CrusadeChoice { Resource = "Materials", Amount = -100 } };
+        var scene = new Scene { Id = "test.payment", Relationship = "test", MinChapter = 5, MaxChapter = 5,
+            ContactUnit = "00000000000000000000000000000001", Requires = new[] { "deed", "form" },
+            DelayHours = 48, DelayClocks = new[] { "deed" }, RestAllowance = "protected",
+            Nodes = new List<Node> { new Node { Id = "start", Choices = new List<Choice> { paid } },
+                new Node { Id = "receipt", Choices = new List<Choice> { new Choice { Abort = true } } } } };
+        var state = new Snapshot { Chapter = 5, Hour = 100, CrusadeResources = new Dictionary<string, int> { ["Materials"] = 100 } };
+        state.Flags.UnionWith(new[] { "deed", "form", "prior" });
+        state.Times["deed"] = 52; state.Times["form"] = 99; state.Times["prior"] = 12;
+        state.AvailableContacts.Add(scene.ContactUnit);
+        check(Rules.Available(story, scene, state), "A body change restarted the declared predecessor clock");
+        state.Hour = 99;
+        check(!Rules.Available(story, scene, state), "The predecessor wait opened an hour early");
+        state.Hour = 100; state.Times.Remove("deed");
+        check(!Rules.Available(story, scene, state), "A missing saved predecessor granted a wait");
+        state.Times["deed"] = 52;
+        var refresh = new Choice { Set = new[] { "deed", "prior" }, RefreshTimes = new[] { "deed" } };
+        foreach (int hour in new[] { 100, 124 })
+        {
+            state.Hour = hour;
+            Rules.RecordFlags(refresh.Set, refresh.RefreshTimes, state).ToArray();
+            check(state.Times["deed"] == hour && state.Times["prior"] == 12, "Explicit repeat refreshed the wrong clock");
+            state = Program.Copy(state);
+        }
+        state.Times["deed"] = 52; state.Hour = 100;
+        foreach (string fault in new[] { "debit", "publication", "closure", "none" })
+        {
+            var world = Program.Copy(state); var before = Program.Copy(world); int publications = 0;
+            check(!Rules.PostPaymentAvailable(story, scene, paid, world), "Receipt narrated before the debit");
+            bool result = Rules.CrusadeTransaction(paid.Crusade,
+                () => Rules.PaidChoiceAvailable(story, scene, paid, world),
+                () => world.CrusadeResources!["Materials"],
+                amount => { world.CrusadeResources!["Materials"] += amount;
+                    if (amount < 0 && fault == "debit") world.AvailableContacts.Clear(); },
+                () => {
+                    publications++;
+                    check(world.CrusadeResources!["Materials"] == 0, "Receipt preceded full debit");
+                    if (!Rules.SpendRestAllowance(story, scene, world)) throw new InvalidOperationException();
+                    Rules.RecordFlags(paid.Set.Concat(new[] { scene.Id }), Array.Empty<string>(), world).ToArray();
+                    world.Flags.Add(Rules.PaymentKey(scene, paid));
+                    if (fault == "publication") world.AvailableContacts.Clear();
+                    if (fault == "closure") world.Flags.Add("closed");
+                },
+                () => { world.Flags = before.Flags; world.Times = before.Times; world.RestSpent = before.RestSpent; },
+                _ => { }, () => Rules.PaymentContextAvailable(story, scene, paid, world));
+            check(result == (fault == "none"), "Departure during payment committed a transaction: " + fault);
+            check(publications == (fault == "debit" ? 0 : 1), "Departure during debit still published witnesses");
+            if (result)
+            {
+                check(world.CrusadeResources!["Materials"] == 0 && world.RestSpent["protected"] == 1
+                    && Rules.PostPaymentAvailable(story, scene, paid, world), "Atomic payment did not open its receipt");
+                world.AvailableContacts.Clear();
+                check(!Rules.PostPaymentAvailable(story, scene, paid, world), "A departed actor narrated the paid aftermath");
+            }
+            else check(world.CrusadeResources!["Materials"] == 100 && world.Flags.SetEquals(before.Flags)
+                && world.Times.OrderBy(p => p.Key).SequenceEqual(before.Times.OrderBy(p => p.Key)) && world.RestSpent.Count == 0,
+                "Departure rollback retained payment state");
+        }
     }
 
     private static void DeedClockValidation(Story exported, Action<bool, string> check)

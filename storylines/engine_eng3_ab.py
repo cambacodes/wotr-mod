@@ -153,3 +153,5 @@ def integrate(story):
     # J01: contact classification follows the final loss/return epoch registry.
     from storylines import contract_j01
     contract_j01.install(story)
+    from storylines import engine_clocks
+    engine_clocks.integrate(story)

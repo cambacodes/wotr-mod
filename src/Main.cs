@@ -790,7 +790,9 @@ namespace Tirabade
                 var cue = New<BlueprintCue>("cue." + id);
                 // Keep the book page and its safe exit visible after contact loss,
                 // but suppress the next living speech before it is displayed.
-                cue.Conditions = !inline && scene.ParticipantContacts.Count > 0
+                var receipt = scene.Nodes.SelectMany(n => n.Choices).SingleOrDefault(c => c.PostPayment == node.Id);
+                cue.Conditions = receipt != null
+                    ? Conditions(new RouteCondition { ReceiptChoice = receipt, PaidScene = scene }) : !inline && scene.ParticipantContacts.Count > 0
                     ? Conditions(new RouteCondition { Continuation = scene }) : Conditions();
                 cue.OnShow = inline && node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 cue.OnStop = Actions();
@@ -807,7 +809,7 @@ namespace Tirabade
                 }
                 var page = New<BlueprintBookPage>("page." + id);
                 page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
-                page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
+                page.Conditions = receipt != null ? Conditions(new RouteCondition { ReceiptChoice = receipt, PaidScene = scene }) : scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
                 page.OnShow = node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 page.Title = Text("title." + id, BookPolish.PageTitle(scene));
                 // E15c: the scene's first page says what it is ("Letter from Seelah", "A sending from Jerribeth", "A memory").
@@ -863,7 +865,8 @@ namespace Tirabade
                     answer.ShowConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
                     answer.SelectConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
                     answer.OnSelect = Actions(new RouteAction { Choice = choice, Continuation = continuation, Complete = !ending && choice.Next == null && choice.Check == null && !choice.Abort ? scene : null });
-                    if (choice.Next != null) answer.NextCue = Cues(local[choice.Next]);
+                    if (choice.PostPayment != null) answer.NextCue = Cues(local[choice.PostPayment]);
+                    else if (choice.Next != null) answer.NextCue = Cues(local[choice.Next]);
                     else if (choice.NativeNext != null && choice.Check == null)
                         // A missing target degraded the relationship in phase 1; keep the saved answer resolvable.
                         answer.NextCue = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(choice.NativeNext)) is BlueprintCue next
@@ -1610,9 +1613,12 @@ namespace Tirabade
             var availability = State();
             Rules.RecordAvailabilityEvents(story, availability, choice?.Set ?? Array.Empty<string>());
             PersistAvailabilityEpochs(availability);
-            foreach (var key in (choice?.Set ?? Array.Empty<string>()).Concat(complete == null ? Array.Empty<string>() : new[] { complete.Id }))
+            var writes = (choice?.Set ?? Array.Empty<string>()).Concat(complete == null ? Array.Empty<string>() : new[] { complete.Id }).ToArray();
+            // State also contains computed latches; timing follows the actual saved flag.
+            var progress = new Snapshot { Hour = (int)Game.Instance.Player.GameTime.TotalHours };
+            progress.Flags.UnionWith(writes.Where(key => Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[key]) > 0));
+            foreach (var key in Rules.RecordFlags(writes, choice?.RefreshTimes ?? Array.Empty<string>(), progress))
             {
-                if (Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[key]) > 0) continue;
                 Set("hour." + key, (int)Game.Instance.Player.GameTime.TotalHours + 1);
                 Set(key);
             }
@@ -2245,9 +2251,11 @@ namespace Tirabade
             public bool ContactLost;
             public Node? PaymentNode;
             public Scene? PaidScene;
+            public Choice? ReceiptChoice;
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
-                && (PaymentNode != null ? PaidScene == null ? Rules.PaymentExitAvailable(PaymentNode, State()) : Rules.PaymentExitAvailable(story, PaidScene, PaymentNode, State()) /* eng7-l09 */
+                && (ReceiptChoice != null ? PaidScene != null && Rules.PostPaymentAvailable(story, PaidScene, ReceiptChoice, State())
+                    : PaymentNode != null ? PaidScene == null ? Rules.PaymentExitAvailable(PaymentNode, State()) : Rules.PaymentExitAvailable(story, PaidScene, PaymentNode, State()) /* eng7-l09 */
                     // eng7-l11
                     : Scene != null ? PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Scene, State()) : Rules.Available(story, Scene, State())
                     // end eng7-l11
@@ -2321,6 +2329,7 @@ namespace Tirabade
                 InvalidateState();
                 var player = Game.Instance.Player;
                 var kingdom = player.Kingdom;
+                var priorSpent = new Dictionary<string, int>(State().RestSpent);
                 var saved = flags.ToDictionary(pair => pair.Key, pair => player.UnlockableFlags.GetFlagValue(pair.Value));
                 bool success = Rules.CrusadeTransaction(Cost,
                     () => ReferenceEquals(player, Game.Instance?.Player) && ReferenceEquals(kingdom, Game.Instance?.Player?.Kingdom)
@@ -2337,13 +2346,23 @@ namespace Tirabade
                         publish();
                         Set(Rules.PaymentKey(Scene, Choice));
                         var after = State();
-                        if (!Choice.Set.All(after.Has) || Complete != null && !after.Has(Complete.Id))
+                        if (!Choice.Set.All(after.Has) || Complete != null && (!after.Has(Complete.Id)
+                            || Complete.RestAllowance != null && (!after.RestSpent.TryGetValue(Complete.RestAllowance, out int spent)
+                                || spent != (priorSpent.TryGetValue(Complete.RestAllowance, out int prior) ? prior : 0) + 1)))
                             throw new InvalidOperationException("Paid story publication was incomplete");
                     },
                     () => {
                         foreach (var pair in saved) player.UnlockableFlags.SetFlagValue(flags[pair.Key], pair.Value);
                         InvalidateState();
-                    }, message => entry?.Logger.Log(message));
+                    }, message => entry?.Logger.Log(message),
+                    () => {
+                        InvalidateState();
+                        // Existing recovery effects keep their original publication contract.
+                        // Receipt continuations require the current body through the debit.
+                        return Choice.PostPayment == null || ReferenceEquals(player, Game.Instance?.Player)
+                            && ReferenceEquals(kingdom, Game.Instance?.Player?.Kingdom)
+                            && Rules.PaymentContextAvailable(story, Scene, Choice, State());
+                    });
                 InvalidateState();
                 return success;
             }

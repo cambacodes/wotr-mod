@@ -180,12 +180,20 @@ def walk_packet(packet, by_ref, errors):
 
 def delayed_clock_errors(scene, story):
     """Every selectable OR alternative must bring a timestamp, unless an unconditional Requires already does."""
-    if not scene.get("DelayHours"):
+    if not scene.get("DelayHours") and not scene.get("DelayClocks"):
         return []
     timestamped = set(story.get("Latches", {})) | {s["Id"] for s in story.get("Scenes", [])}
     timestamped |= {flag for s in story.get("Scenes", []) for n in s.get("Nodes", [])
                     for c in n.get("Choices", []) for flag in c.get("Set", [])}
     timestamped |= {flag for s in story.get("Scenes", []) for n in s.get("Nodes", []) for flag in n.get("EnterSet", [])}
+    clocks = scene.get('DelayClocks')
+    if clocks:
+        gates = set(scene.get('Requires', [])) | {key for group in scene.get('RequiresAnyGroups', []) for key in group}
+        if (scene.get('DelayHours', 0) <= 0 or len(set(clocks)) != len(clocks) or not set(clocks) <= timestamped & gates
+                or not set(clocks) & set(scene.get('Requires', []))
+                and not any(group and set(group) <= set(clocks) for group in scene.get('RequiresAnyGroups', []))):
+            return ['K8: %s invalid declared delay clocks' % scene['Id']]
+        return []
     if any(flag in timestamped for flag in scene.get("Requires", [])):
         return []
     if any(group and all(flag in timestamped for flag in group) for group in scene.get("RequiresAnyGroups", [])):
