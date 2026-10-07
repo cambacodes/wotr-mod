@@ -64,13 +64,14 @@ internal static class KonomiDeathLatchTests
 
         // Last Call: the coda and the call-in stay dark for the unreturned dead, and her debt does not strand the joke.
         var lastCall = new[] { "trickster", "trickster.ever", "lastcall.active", "trickster.lastcall.open", "konomi.committed",
-                               "konomi.trickster.cost.debt_owed" };
+                               "konomi.trickster.cost.debt_owed", "konomi.trickster.favour_owed" };
         var callDead = World(lastCall.Concat(new[] { Latched }).ToArray());
         var callBack = World(lastCall.Concat(new[] { Latched, Confirmed, "konomi.death_restored" }).ToArray());
         check(!Program.CurrentAvailable(story, coda, callDead) && Program.CurrentAvailable(story, coda, callBack),
             "Konomi death latch: her Last Call coda ignores her death or her recall.");
         check(!callDead.Has("konomi.lastcall.callable") && callBack.Has("konomi.lastcall.callable")
-              && Sc("trickster.lastcall.last_joke").Forbids.Contains("konomi.lastcall.callable"),
+              && !callDead.Has("konomi.lastcall.account_due") && callBack.Has("konomi.lastcall.account_due")
+              && Sc("trickster.lastcall.last_joke").Forbids.Contains("konomi.lastcall.account_due"),
             "Konomi death latch: a dead Konomi's call-in is still due (or a recalled one's is not).");
     }
 }

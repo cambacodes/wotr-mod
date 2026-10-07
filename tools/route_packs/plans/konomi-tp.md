@@ -102,3 +102,41 @@ All road, informer, private lodging, rite, correspondence and postwar-house deta
 - Register the section-5 proposal in `tools/route_packs/turning_points.json` after comparing pending sheets; the exact single-file task forbids editing it here. Konomi's unallocated foresight echo needs registry/coordinator resolution; do not allocate a slot silently.
 - Deliberate player killing/user-ruled closure is legitimate (rubric contexts 1–2): do not add a rescue obligation or change the existing death eligibility/one-raise ruling. All living outcomes require an earned return and living Commander (contexts 3–5); gates may rightly block yes. Any native dependent-content rewrite is Trickster-only, authored, proportionate and save-compatible under the DLC rule.
 - No extra mechanics, gates, costs, commitment scores, reconciliation conditions, partner subplot or dark Commander scheme proposed. Audit repairs above remain proposals until separately implemented; no score ≥91 is self-certified.
+
+## Round 3 implementation: audit-required situations
+
+Authored additions in `storylines/konomi_round3.py` retain all existing journeys,
+payment effects, choices and returns. The paid endorsement/reserve breakfast and
+the personal-favour breakfast now differ; the latter reports her own assessment
+and keeps the favour outstanding. The Bluff check concerns the Commander's
+expectation of refusal, not the paid driver's already disclosed involvement.
+Failure exposes the pretence but adds no political price. Only the accepted envoy
+offer earns appointment gossip. Every copied register coda preserves the original
+entry beside her signed correction; the annual mistake comes from an auditor
+copying the first line alone. Ordinary ending paragraphs record collection only
+after the existing Last Call terms acceptance; countered or refused terms leave
+the favour outstanding.
+
+Authored physical delivery: Anevia's existing Drezen briefing contact hands over
+the gate/chancery receipts and hosts the road and council-chair invitation setups. This
+uses `AneviaTirabade_DrezenCapital` (`b5e867e13503c6f41bb1316705efb4a2`) and
+`NPC_Common/Anevia/AnswersList_0003` (`33960c7f7af40cd43b7f801a76c87a0b`), checked
+in `/wrath/blueprints.zip`. It does not assume Konomi's actor is already visible.
+The road receipt remains 48h after payment and the accredited receipt 96h after
+dispatch. Recovery retains the runtime-required Remote delivery. Recovery plus
+dismissal consumes one Chapter-5 delivery; accredited contact plus the
+failed-presence letter and a later recovery consumes two Chapter-3 deliveries.
+No canon return applies
+off Trickster, and no new recovery or affection condition was added.
+
+All eight existing explicit slots and briefs now continue their established
+position, with the rival's dispatch already put away at the second supper. They
+retain the existing cut and aftermath, without replaying undressing or movement.
+The slot briefs remain for later generation; no explicit prose was generated.
+
+Shared integration still requires coordinator work: paid-account Last Call
+assistance, distinct ledger dispositions including a prepaid consultation receipt,
+and the useful-Crown-report Last Call opener. This pass leaves `lastcall*.py` and
+shared derivations untouched. The existing accepted/countered/refused Last Call
+choices were verified against the merged implementation. Scores require the
+independent auditor; this note claims no rubric score.
