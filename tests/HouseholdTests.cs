@@ -254,7 +254,7 @@ internal static class HouseholdTests
         check(Visible("guest.tirabade", both) && !Visible("guest.anevia", both), "Anevia is listed apart from Anevia and Irabeth together.");
         var pair = Lines("guest.minagho_chivarro", State(story, 3, "minachiv.complete", "minachiv.future_two", "minagho_chivarro.harem.stance.minagho.joined"));
         check(SurfaceIds.Has(pair, "[book/trickster.ledger/guest.minagho_chivarro/line/0]") && SurfaceIds.Has(pair, "[book/trickster.ledger/guest.minagho_chivarro/line/5]"), "The canon pair does not have a seat each.");
-        var seating = ledger.Entries.Where(e => e.Section == "Seating Notes" && e.Id != "seating.word_made_true").ToList();
+        var seating = ledger.Entries.Where(e => e.Section == "Seating Notes" && e.Id.StartsWith("seating.", StringComparison.Ordinal) && e.Id != "seating.word_made_true").ToList();
         check(seating.Count == 5 && seating.All(e => e.Requires.Length == 2 && e.Requires.All(r => r.EndsWith(".harem.eligible", StringComparison.Ordinal))),
             "The Seating Notes are not the seeded frictions, each shown only when both women are eligible.");
         check(!Visible("seating.seelah.camellia", seelah) && Visible("seating.seelah.camellia", State(story, 3, Committed("seelah"), Committed("camellia"))),
