@@ -148501,8 +148501,8 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "anevia.closed",
         "anevia.present_now",
+        "irabeth.closed",
         "irabeth.present_now",
         "irabeth.trickster.returned",
         "trickster.ever"
@@ -148540,7 +148540,7 @@
         "anevia.present_now",
         "irabeth.present_now",
         "irabeth.trickster.returned",
-        "rrt.degraded.anevia",
+        "rrt.degraded.irabeth",
         "trickster.ever"
       ],
       "NativeEligible": [
@@ -153119,6 +153119,7 @@
         "lastcall.active",
         "noct.acq.renewed_agreement",
         "nocticula.acquisition.lastcall.route_open",
+        "nocticula.acquisition.payoff.ordinary",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -153716,6 +153717,7 @@
       "Chapter": 6,
       "Flags": [
         "soana.partner.agreed",
+        "soana.present_now",
         "soana.round2.postwar_ready"
       ],
       "NativeEligible": [],
