@@ -200,6 +200,70 @@ class S28Tests(unittest.TestCase):
         self.assertEqual(brief["commander"], "absent")
         self.assertTrue(brief["status"].startswith("blocked"))
 
+    def test_w3_reservation_cannot_ship_even_with_every_personal_deed(self):
+        """No combination of historical visits or desire activates withheld pages."""
+        staged_ids = {s["Id"] for s in s28.OPTIONAL_CANDIDATES}
+        self.assertFalse(staged_ids.intersection(s["Id"] for s in self.payload["Scenes"]))
+        for defected in (False, True):
+            for mind in (False, True):
+                st = self.state(defected=defected, mind=mind)
+                st.flags.update(f for page in s28.OPTIONAL_CANDIDATES
+                                for node in page["Nodes"] for answer in node["Choices"]
+                                for f in answer["Set"])
+                st.flags.update(s28.BODY_REQUIRES)
+                st.flags.update(["jerribeth.trickster.visited", "vellexia.trickster.visited"])
+                rules.sim_complete(self.model, st)
+                self.assertFalse(staged_ids.intersection(s["Id"] for s in self.offered(st)))
+                self.assertNotIn(s28.P + "choice.explicit.1", self.model.authored)
+
+    def test_all_staged_steps_recheck_bodies_and_prescribed_clocks(self):
+        predecessors = ("account.kept", "company.both_friends",
+                        "invitation.both_interested", "choice.both_yes")
+        self.assertEqual(sum(s["DelayHours"] for s in s28.OPTIONAL_CANDIDATES), 152)
+        for page, predecessor in zip(s28.OPTIONAL_CANDIDATES, predecessors):
+            with self.subTest(step=page["Id"]):
+                self.assertIn(s28.P + predecessor, page["Requires"])
+                self.assertTrue(set(s28.BODY_REQUIRES).issubset(page["Requires"]))
+                self.assertTrue(set(s28.BODY_FORBIDS).issubset(page["Forbids"]))
+                self.assertTrue(set(s28.COMMON).issubset(page["Requires"]))
+                self.assertTrue(set(s28.LOSSES).issubset(page["Forbids"]))
+                self.assertEqual(page["Participants"], s28.PAIR)
+                self.assertEqual(page["RestAllowance"], "household.pair")
+                self.assertFalse(any(n.get("Paragraphs") for n in page["Nodes"]))
+
+    def test_staged_choices_keep_independent_no_friend_yes_and_abort_outcomes(self):
+        """Graph review only: no test body window is registered in production."""
+        for page in s28.OPTIONAL_CANDIDATES:
+            page = rules.norm_scene(page)
+            start = next(n for n in page["Nodes"] if n["Id"] == "start")
+            for index in range(len(start["Choices"])):
+                with self.subTest(step=page["Id"], answer=index):
+                    st = self.state()
+                    before = copy.deepcopy(st.__dict__)
+                    visited = self.finish(page, st, index)
+                    if start["Choices"][index]["Abort"]:
+                        self.assertEqual(st.__dict__, before)
+                        continue
+                    step = page["Id"].removeprefix(s28.P)
+                    self.assertIn(s28.P + step + ".seen", st.flags)
+                    self.assertEqual(st.rest_spent["household.pair"], 1)
+                    self.assertFalse(any(".reconciled." in f or ".enmity." in f for f in st.flags))
+                    if step == "choice":
+                        outcome = ("both_yes", "jerribeth_no", "vellexia_no", "friends_only")[index]
+                        self.assertIn(s28.P + "choice." + outcome, st.flags)
+                        self.assertEqual("explicit.1" in visited, index == 0)
+                        if index == 0:
+                            self.assertLess(visited.index("jerribeth_answer"), visited.index("mutual"))
+                            self.assertLess(visited.index("vellexia_answer"), visited.index("mutual"))
+                            self.assertEqual(visited[-1], "appointment")
+
+    def test_real_owner_presences_end_on_visited_and_cannot_supply_long_stay(self):
+        for woman in s28.PAIR:
+            presence = self.payload["Presences"][woman + ".presence"]
+            self.assertIn(woman + ".trickster.visited", presence["Forbids"])
+            self.assertEqual(presence["MinChapter"], 5)
+            self.assertEqual(presence["MaxChapter"], 5)
+
 
 if __name__ == "__main__":
     unittest.main()

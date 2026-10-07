@@ -8,5 +8,7 @@
   "speakers": {"J": "Jerribeth", "V": "Vellexia"},
   "commander": "absent",
   "min_lines": 14,
-  "max_lines": 20
+  "max_lines": 20,
+  "build_contract": "W3-S28 blocked reservation: do not emit any of company, invitation, choice or morning until the route/shared owners confirm the existing overlapping body/venue window and prescribed reconciliation, stage, Marhevok and cap readers. Delays from account to company/invitation/choice/morning are 48/96/144/152 hours; check current bodies at every step. No stay extension or new gate is authorized.",
+  "continuity": "choice: jerribeth_answer -> vellexia_answer -> mutual -> explicit.1 -> appointment. Only mutual publishes the existing both_yes witness; explicit.1 writes nothing. Empty slot retains appointment and the separately charged eight-hour morning. Named refusals and friends_only bypass the slot."
 }

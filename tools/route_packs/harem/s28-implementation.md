@@ -1,4 +1,4 @@
-# S28 implementation — authored addition, not deployed content
+# S28 implementation — deployed account; blocked W3-S28 bodily reservation
 
 Source: origin/claude/hs-C:tools/route_packs/harem/sheets/C.md, S28;
 WAVE-PLAN binding contract; Writer/plans/harem-lore-check.md shared corrections
@@ -71,13 +71,33 @@ overlay metadata, confirm the bodily venue/window and existing Marhevok stance,
 then include the candidates in the combined caps ledger. Last Call/highest-stage
 readers need their authorized shared hosts; this module supplies witnesses only.
 
-## Loader escalation
+## W3-S28 review on merge-h3
 
-This base has no harem_rows loader. story.make_story returns a literal dict;
-household integration actually happens much later in expansion.make_expansion.
-The coordinator's prohibition on editing either host is respected. The exact
-shared auto-discovery __init__.py is provided; no import side effects register
-rows. Call register(payload, payload['Scenes'], payload['Etudes']) on the
-completed payload to review all row scenes and the Ledger entry. A loader in
-the early make_story alone must also arrange the later Ledger registration.
-Normal expansion gates cannot certify deployment until that shared wiring lands.
+The merged base now auto-discovers this row. The eight separate-channel account
+wrappers and their historical Ledger entry are deployed; the four bodily
+candidates remain outside registration. No loader change is required here.
+W3-S28 cannot activate those candidates under the current route-owner contracts.
+The lore correction expressly requires keeping this 152-hour arc blocked.
+Holding visit history, all friendship/desire deeds, the page and reconciliation
+does not establish an overlapping bodily venue window. No new mechanic is
+authorized to provide one.
+
+Tests now walk every staged root answer through its actual graph: both independent
+refusals, friendship, both yeses, declines and aborts. They verify the prescribed
+48/48/48/8-hour predecessor guards, body and loss exclusions on all four steps,
+one arc start, inert empty slot and appointment continuity. These graph walks
+do not register a test-only bodily window or certify production availability.
+The production payload is checked separately to exclude every optional scene
+and slot even when all historical/personal witnesses are held. Both actual
+owner presences still forbid their respective visited flags.
+
+Surface classification: no new emitted page, choice, presence, payoff paragraph,
+native rewrite or living aftermath is added. The existing account pages retain
+their current letter/tenant channels; the Ledger remains a historical record.
+The slot brief is blocked editorial data for two women, Commander absent.
+Payoff/departure contract inventories therefore gain no new surfaces.
+
+Before activation, ESCALATE to the route/shared owners for the already specified
+body/venue window, central defection reconciliation and directional stage/client
+readers, existing Marhevok stance, and combined optional cap ledger. Their scope
+is unchanged; this unit adds no price, gate, attraction requirement or return.
