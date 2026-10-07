@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from story_fixture import fresh_story
+from tests.story_fixture import fresh_story
 from storylines.harem_rows import s03b
 from tools import harem_schedule_lint, rrt_verify
 
@@ -23,6 +23,16 @@ class FallenHearing(unittest.TestCase):
     def state(self, step="settle", hour=1000):
         state = rrt_verify.SimState(5, hour)
         state.flags.update(self.row(step)["Requires"])
+        # J01's qualified contact contract checks native eligibility inputs
+        # and actual actors, rather than accepting a seeded eligibility alias.
+        for woman in self.row(step)["ParticipantWomen"]:
+            state.flags.update(self.payload["SeatWomen"][woman]["Requires"])
+            state.flags.update(self.model.composites[woman + ".harem.eligible"][0])
+        state.available_contacts = {
+            next(option["Units"][0] for option in contact["Options"]
+                 if set(option["Requires"]) <= state.flags
+                 and not set(option["Forbids"]) & state.flags)
+            for contact in self.row(step)["ParticipantContacts"].values()}
         return state
 
     def test_registration_is_append_only_and_idempotent(self):

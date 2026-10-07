@@ -1,8 +1,7 @@
 """S04: earned attendance, parked missing contracts, refusal and saved allowance."""
 import copy
-import json
-from pathlib import Path
 import unittest
+from tests.story_fixture import fresh_story
 
 from storylines.harem_rows import s04
 from tools import rrt_verify as verify
@@ -11,14 +10,19 @@ from tools import rrt_verify as verify
 class S04Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((Path(__file__).resolve().parents[1] /
-                                "development/Story.json").read_text(encoding="utf-8-sig"))
+        cls.story = fresh_story()
         cls.model = verify.Model(cls.story)
         cls.scene = cls.model.by_id[s04.P + "settle"]
 
     def state(self):
         state = verify.SimState(5, 1000)
         state.flags.update(self.scene["Requires"])
+        for woman in self.scene["ParticipantWomen"]:
+            state.flags.update(self.story["SeatWomen"][woman]["Requires"])
+            state.flags.update(self.model.composites[woman + ".harem.eligible"][0])
+        state.available_contacts = {
+            contact["Options"][0]["Units"][0]
+            for contact in self.scene["ParticipantContacts"].values()}
         return state
 
     def test_earned_page_path_table_and_both_current_bodies(self):
@@ -98,7 +102,9 @@ class S04Tests(unittest.TestCase):
         self.assertEqual(state.rest_spent, {})
         refusal = next(n for n in self.scene["Nodes"] if n["Id"] == "refused")["Choices"][0]
         self.assertEqual(set(refusal["Set"]), {s04.P + "settle.seen",
-                                              s04.P + "permanent_refusal", s04.P + "unsettled"})
+                                              s04.P + "permanent_refusal", s04.P + "unsettled",
+                                              "seelah.harem.enmity.camellia",
+                                              "seelah.harem.stance.tolerated"})
         state.flags.update(refusal["Set"])
         self.assertFalse(verify.sim_available(self.model, self.scene, state))
         self.assertFalse(any(f.endswith(".closed") for f in refusal["Set"]))
