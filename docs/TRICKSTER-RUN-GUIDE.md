@@ -20,6 +20,10 @@ Use [the choice itinerary](#checked-choice-itinerary) during conversations,
 
 ## Read this before starting
 
+For the coordinator's local PC milestone, use the separate
+[harness system coverage scripts](HARNESS-SYSTEM-COVERAGE.md). Synthetic harness fixtures are
+test metadata and supply no earned history for this walkthrough.
+
 Stay **Trickster** from the Drezen choice through the final joke. Do not fail the path or convert at the
 Chapter 5 summit. Taking Shyka's page opens specific possibilities; each woman's own bargain, successful
 check and payment still has to happen. The page itself rescues nobody and commits nobody. Do not accept

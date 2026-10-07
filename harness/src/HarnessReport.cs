@@ -145,6 +145,7 @@ namespace RRT.TestHarness
         public int ScenesDriven;
         public int ChoicesTaken;
         public List<SceneRun> Runs = new List<SceneRun>();
+        public List<SystemCoverage> Systems = new List<SystemCoverage>();
         // BEGIN eng7-f5
         public List<NativeSlideResult> NativeSlides = new List<NativeSlideResult>();
         // END eng7-f5
@@ -196,6 +197,7 @@ namespace RRT.TestHarness
         public void ComputeSummary()
         {
             var s = new ReportSummary { Saves = Saves.Count };
+            if (Plan.SystemCasesJson != null && Saves.Count == 0) s.Failures.Add("No saves exercised system scenarios");
             // BEGIN eng7-f5
             if (Plan.NativeEpilogueSpike && Saves.Count == 0) s.Failures.Add("No save was exercised by the native slide probe.");
             // END eng7-f5
@@ -206,6 +208,9 @@ namespace RRT.TestHarness
                 if (gate.StartsWith("MISSING", StringComparison.Ordinal)) s.Failures.Add("Native gate not attached: " + gate);
             foreach (var save in Saves)
             {
+                if (Plan.SystemCasesJson != null && save.Systems.Count == 0) s.Failures.Add(save.Save + ": no applicable system scenarios ran");
+                foreach (var system in save.Systems.Where(c => !c.Passed))
+                    s.Failures.Add(save.Save + " / " + system.Scenario + ": " + system.Result + "; " + string.Join("; ", system.Findings));
                 if (save.LoadOk) s.SavesLoaded++;
                 else s.Failures.Add(save.Save + ": load failed: " + save.LoadError);
                 if (save.StateError != null) s.Failures.Add(save.Save + ": State() failed: " + save.StateError);
@@ -261,6 +266,7 @@ namespace RRT.TestHarness
                     && (save.Residence == null || save.Residence.Passed) && (save.PresenceSpike == null || save.PresenceSpike.Passed);
                 // BEGIN eng7-f5
                 save.Passed &= save.NativeSlides.All(r => r.Passed);
+                save.Passed &= save.Systems.All(r => r.Passed) && (Plan.SystemCasesJson == null || save.Systems.Count > 0);
                 // END eng7-f5
             }
             s.RelevantExceptions += GlobalExceptions.Count(e => e.Relevant);

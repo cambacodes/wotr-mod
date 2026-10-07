@@ -13,12 +13,14 @@ internal static class Program
 {
     static int failures;
     static string gameDir = @"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure";
+    static string repoRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
 
     static int Main(string[] args)
     {
         string rrtDll = args.Length > 0 ? args[0]
             : Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\..\src\bin\Release\net48\RanRomance.Tirabade.dll"));
         if (args.Length > 1) gameDir = args[1];
+        if (args.Length > 2) repoRoot = Path.GetFullPath(args[2]); // build outputs may live in system temp
         string managed = Path.Combine(gameDir, "Wrath_Data", "Managed");
         AppDomain.CurrentDomain.AssemblyResolve += (_, e) =>
         {
@@ -34,6 +36,7 @@ internal static class Program
         Console.WriteLine("  harness: " + typeof(HarnessPlan).Assembly.Location);
         Console.WriteLine("  rrt:     " + rrtDll);
         Run("plan parsing", PlanParsing);
+        Run("system scenarios reject malformed scripts and missing coverage", () => SystemScenarioChecks.Run(Check));
         Run("activation rule", Activation);
         Run("report writing", () => ReportWriting());
         Run("reflection lookups vs built RRT DLL", () => Reflection(rrtDll));
@@ -109,8 +112,10 @@ internal static class Program
         try { HarnessPlan.Parse(@"{ ""mode"": ""bfs"" }"); } catch (FormatException) { threw = true; }
         Check(threw, "bad mode is rejected");
 
-        Check(HarnessPlan.ResolveSave("Manual_3_x", @"C:\Saved Games") == @"C:\Saved Games\Manual_3_x.zks", "relative save name resolves into Saved Games");
-        Check(HarnessPlan.ResolveSave(@"D:\x\y.zks", @"C:\Saved Games") == @"D:\x\y.zks", "absolute save path kept");
+        string savesFolder = Path.Combine(Path.GetTempPath(), "Saved Games");
+        string absoluteSave = Path.Combine(Path.GetTempPath(), "external", "y.zks");
+        Check(HarnessPlan.ResolveSave("Manual_3_x", savesFolder) == Path.Combine(savesFolder, "Manual_3_x.zks"), "relative save name resolves into Saved Games");
+        Check(HarnessPlan.ResolveSave(absoluteSave, savesFolder) == absoluteSave, "absolute save path kept");
     }
 
     // Screenshot scene guard and the AIVO audio-shim filter (internal statics, reached by reflection).
@@ -166,7 +171,7 @@ internal static class Program
     // with the entry answer names the navigator looks for.
     static void InlineHostsFresh(string rrtDll)
     {
-        string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\.."));
+        string root = repoRoot;
         string hostsPath = Path.Combine(root, "harness", InlineHosts.FileName);
         Check(File.Exists(hostsPath), "inline-hosts.json exists at " + hostsPath);
         if (!File.Exists(hostsPath) || !File.Exists(rrtDll)) return;
@@ -231,7 +236,7 @@ internal static class Program
         Check(DerivedForcing.Leaves("any", d, persistent, new HashSet<string> { "any" }.Contains)!.Count == 0, "a held key needs nothing");
 
         // The built Story.json: household.any_eligible must resolve to authored commit flags.
-        string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\.."));
+        string root = repoRoot;
         string storyPath = Path.Combine(root, "development", "Story.json");
         if (!File.Exists(storyPath)) { Fail("Story.json missing at " + storyPath); return; }
         var story = Newtonsoft.Json.Linq.JObject.Parse(File.ReadAllText(storyPath));
@@ -283,7 +288,7 @@ internal static class Program
         Check(untimedNoFlag.Unmet == null && untimedNoFlag.Backdate.Count == 0, "an untimed key with no hour.* flag does not block");
 
         // The built Story.json: the scenes seen live as false entry-hidden carry DelayHours and the latch trickster.ever.
-        string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\.."));
+        string root = repoRoot;
         string storyPath = Path.Combine(root, "development", "Story.json");
         if (!File.Exists(storyPath)) { Fail("Story.json missing at " + storyPath); return; }
         var story = JObject.Parse(File.ReadAllText(storyPath));
@@ -371,6 +376,7 @@ internal static class Program
         if (!File.Exists(rrtDll)) return;
         var asm = Assembly.LoadFrom(rrtDll);
         var problems = RrtBridge.Validate(asm);
+        problems.AddRange(RrtBridge.Validate(asm, RrtBridge.SystemScenarioExpectations));
         foreach (var p in problems) Fail(p);
         Console.WriteLine("    " + RrtBridge.Expectations.Length + " member expectations checked, " + problems.Count + " problem(s)");
         if (problems.Count > 0) return;
@@ -378,8 +384,8 @@ internal static class Program
         var bridge = new RrtBridge(asm);
         Check(bridge.Assembly == asm, "bridge constructed");
         // Info.json dependency sanity: the harness must load after the RRT id it reads.
-        string info = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\Info.json"));
-        string rrtInfo = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\..\package\Info.json"));
+        string info = File.ReadAllText(Path.Combine(repoRoot, "harness", "Info.json"));
+        string rrtInfo = File.ReadAllText(Path.Combine(repoRoot, "package", "Info.json"));
         string rrtId = (string)JObject.Parse(rrtInfo)["Id"]!;
         var harnessInfo = JObject.Parse(info);
         Check(harnessInfo["LoadAfter"]!.Values<string>().Contains(rrtId), "harness LoadAfter contains RRT id " + rrtId);
