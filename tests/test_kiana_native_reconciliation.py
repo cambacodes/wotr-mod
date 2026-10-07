@@ -98,6 +98,15 @@ class KianaNativeArchiveTests(unittest.TestCase):
             return dict(StartedFlag=woman + '.started', ClosedFlag=woman + '.closed', CommittedFlag=woman + '.committed',
                         UnavailableFlags=[woman + '.dead', woman + '.gone'])
         def run(payload):
+            # Raw module scenes precede the current-contact classification pass.
+            # Reproduce its existing native-context prerequisite in this tiny fixture.
+            payload = copy.deepcopy(payload)
+            for edit in payload.get("NativeEpilogueEdits", {}).values():
+                for variant in [edit, *edit.get("Variants", [])]:
+                    for group in variant["When"]:
+                        group.append("kiana.present_now")
+            for host in payload["Scenes"]:
+                host["Requires"].append("kiana.present_now")
             model = verify.Model(payload)
             return other_woman.check(model, list(blocks(model)), Proof(model))
         story = dict(Relationships={w: relationship(w) for w in ['kiana', 'seelah', 'jannah', 'areelu', 'arsinoe']},

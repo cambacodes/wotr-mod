@@ -879,6 +879,18 @@ def validate(model):
     """Python port of the structural parts of Rules.Validate (src/Story.cs). Returns list of errors."""
     errs = []
     st, rels = model.story, model.rels
+    from tools.native_gate_contract_lint import check as check_q3
+    if check_q3(st):
+        errs.append("Invalid reviewed Q3 recovery gate: kiana.q3_recovery")
+    contracts = dict(re.findall(r'\["([0-9a-f]{32}/(?:Text|Title|Description|CompletionText))"\] = "([^"]+)"',
+                               (MOD / "src/Story.cs").read_text(encoding="utf-8")))
+    known = set(model.native) | model.derived | model.producers.keys()
+    for field, edit in st.get("NativeTextEdits", {}).items():
+        if (contracts.get(field) != edit.get("Type", "") + ":" + edit.get("Key", "") or not edit.get("Variants")
+                or any(not v.get("Text") or not v.get("When")
+                    or any("trickster.now" not in g or any(f.lstrip("!") not in known for f in g) for g in v["When"])
+                    or any(f not in known for f in v.get("Forbids", [])) for v in edit.get("Variants", []))):
+            errs.append("Invalid reviewed native text field: " + field)
     ids = set()
     pending = st.get("PendingHooks", [])
     reserved = ("rrt.degraded.", "rrt.rest.spent.", "rrt.payment.", "served.", "hour.", "revive.")
@@ -1758,6 +1770,8 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k in (story.get("ParentEpilogueEdits") or {}): want.append((k, "BlueprintCue", "ParentEpilogueEdit"))
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
         for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
+        for field, edit in story.get("NativeTextEdits", {}).items():
+            want.append((field.split("/")[0], edit["Type"], "NativeTextEdits." + field))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
             if e.get("Parent"):   # E14i: a common-dialog cue (its parent cue and dialog, no page or sequence)
                 # eng7-f6b: two text-only native cues retain their reviewed sequence parents.

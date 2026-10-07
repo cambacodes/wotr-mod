@@ -12,8 +12,9 @@ internal static class NativeGateContractParityTests
         const string id = "kiana.q3_recovery";
         var story = Copy(shipped);
         var spec = story.NativeGates[id];
-        check(spec.When.Length == 2 && spec.When.All(g => Rules.Q3RecoveryFullOutcomes.Any(g.Contains)),
-            "Route merge unexpectedly reintroduced the audited partial group; review the route producer.");
+        check(spec.When.Length == 3 && spec.When.Count(g => Rules.Q3RecoveryFullOutcomes.Any(g.Contains)) == 2
+            && spec.When.Any(g => g.SequenceEqual(Rules.Q3RecoveryPartialRequirements)),
+            "Shipped Q3 must retain both paid histories and the reviewed individual rescue.");
         var groups = Rules.Q3RecoveryFullOutcomes.Select(f => new[] { "trickster.now", f })
             .Concat(new[] { Rules.Q3RecoveryPartialRequirements }).ToArray();
         foreach (var group in groups)

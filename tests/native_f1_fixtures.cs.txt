@@ -47,6 +47,70 @@ internal static class F1NativeFixtures
         }
         return new ConditionsChecker { Operation = (Operation)Enum.Parse(typeof(Operation), (string)data["Operation"]!), Conditions = ((JArray)data["Conditions"]!).Cast<JObject>().Select(Map).ToArray() };
     }
+    private static object Generic(BlueprintScriptableObject? owner, JObject item, Type baseType)
+    {
+        var name = Type(item);
+        var type = typeof(GameAction).Assembly.GetTypes().FirstOrDefault(t => t.Name == name && baseType.IsAssignableFrom(t) && !t.IsAbstract)
+            ?? throw new InvalidOperationException("Unknown native " + baseType.Name + " type: " + name);
+        var created = Activator.CreateInstance(type)!;
+        foreach (var property in item.Properties())
+        {
+            if (property.Name == "$type" || property.Name == "name") continue;
+            FieldInfo? field = null;
+            for (var t = type; t != null && field == null; t = t.BaseType)
+                field = t.GetField(property.Name, Fields | BindingFlags.DeclaredOnly);
+            if (field == null) continue;
+            field.SetValue(created, Value(owner, field.FieldType, property.Value));
+        }
+        return created;
+    }
+    private static object? Value(BlueprintScriptableObject? owner, Type type, JToken token)
+    {
+        if (token.Type == JTokenType.Null) return null;
+        if (type == typeof(EntityReference)) return new EntityReference { UniqueId = (string)token["_entity_id"]!,
+            SceneAssetGuid = (string)token["SceneAssetGuid"]!, EntityNameInEditor = (string)token["EntityNameInEditor"]! };
+        if (typeof(BlueprintReferenceBase).IsAssignableFrom(type))
+        {
+            var reference = (BlueprintReferenceBase)Activator.CreateInstance(type)!;
+            var text = (string)token!;
+            if (text.StartsWith("!bp_", StringComparison.Ordinal))
+                typeof(BlueprintReferenceBase).GetField("deserializedGuid", Fields)!.SetValue(reference, BlueprintGuid.Parse(text.Replace("!bp_", "")));
+            return reference;
+        }
+        if (type == typeof(ActionList)) return Actions(owner!, (JArray)token["Actions"]!);
+        if (type == typeof(ConditionsChecker)) return Checker((JObject)token);
+        if (type.IsEnum) return token.Type == JTokenType.Integer ? Enum.ToObject(type, (long)token) : Enum.Parse(type, (string)token!);
+        if (type == typeof(string)) return (string?)token;
+        if (type.IsPrimitive || type == typeof(decimal)) return token.ToObject(type);
+        if (type.IsArray || (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>)))
+        {
+            var elem = type.IsArray ? type.GetElementType()! : type.GetGenericArguments()[0];
+            var items = ((JArray)token).Select(v => Value(owner, elem, v)).ToList();
+            var array = Array.CreateInstance(elem, items.Count);
+            for (int i = 0; i < items.Count; i++) array.SetValue(items[i], i);
+            return type.IsArray ? array : Activator.CreateInstance(type, array);
+        }
+        if (token is JObject obj)
+        {
+            var concrete = type;
+            if (obj["$type"] != null)
+            {
+                var n = Type(obj);
+                concrete = typeof(GameAction).Assembly.GetTypes().FirstOrDefault(t => t.Name == n && type.IsAssignableFrom(t) && !t.IsAbstract) ?? type;
+            }
+            var created = Activator.CreateInstance(concrete)!;
+            foreach (var property in obj.Properties())
+            {
+                if (property.Name == "$type") continue;
+                FieldInfo? field = null;
+                for (var t = concrete; t != null && field == null; t = t.BaseType)
+                    field = t.GetField(property.Name, Fields | BindingFlags.DeclaredOnly);
+                if (field != null) field.SetValue(created, Value(owner, field.FieldType, property.Value));
+            }
+            return created;
+        }
+        return token.ToObject(type);
+    }
     public static ActionList Actions(BlueprintScriptableObject owner, JArray data)
     {
         GameAction Map(JObject item)
@@ -59,6 +123,8 @@ internal static class F1NativeFixtures
                 case "Spawn": action = new Spawn { Spawners = ((JArray)item["Spawners"]!).Select(s => new EntityReference {
                     UniqueId = (string)s["_entity_id"]!, SceneAssetGuid = (string)s["SceneAssetGuid"]!, EntityNameInEditor = (string)s["EntityNameInEditor"]! }).ToArray(),
                     ActionsOnSpawn = Actions(owner, (JArray)item["ActionsOnSpawn"]!["Actions"]!) }; break;
+                case "PlayCutscene" when ((JArray)item["Parameters"]!["Parameters"]!).Count > 0:
+                    action = (GameAction)Generic(owner, item, typeof(GameAction)); break;
                 case "PlayCutscene":
                     var play = new PlayCutscene { PutInQueue = (bool)item["PutInQueue"]!, CheckExistence = (bool)item["CheckExistence"]! };
                     Reference(play, item, "m_Cutscene");
@@ -71,7 +137,7 @@ internal static class F1NativeFixtures
                     action = play; break;
                 case "StartEtude": action = new StartEtude(); Reference(action, item, "Etude"); break;
                 case "CompleteEtude": action = new CompleteEtude(); Reference(action, item, "Etude"); break;
-                default: throw new InvalidOperationException("Unreviewed Q3 action: " + Type(item));
+                default: action = (GameAction)Generic(owner, item, typeof(GameAction)); break;
             }
             action.Owner = owner; action.name = (string)item["name"]!;
             owner.ElementsArray.Add(action);
@@ -93,6 +159,12 @@ internal static class F1NativeFixtures
         var complete = Seed<CommandAction>(NativeQ3Recovery.Completion);
         complete.EntryCondition = Checker((JObject)native[NativeQ3Recovery.Completion]["EntryCondition"]!);
         complete.Action = Actions(etude, (JArray)native[NativeQ3Recovery.Completion]["Action"]!["Actions"]!);
+        foreach (string target in new[] { NativeQ3Recovery.Setup, NativeQ3Recovery.KianaRevive, NativeQ3Recovery.DogRevive })
+        {
+            var action = Seed<CommandAction>(target);
+            action.EntryCondition = Checker((JObject)native[target]["EntryCondition"]!);
+            action.Action = Actions(etude, (JArray)native[target]["Action"]!["Actions"]!);
+        }
         var verdict = Seed<BlueprintCue>(NativeQ3Recovery.Verdict);
         verdict.OnStop = Actions(verdict, (JArray)native[NativeQ3Recovery.Verdict]["OnStop"]!["Actions"]!);
         check(NativeQ3Recovery.Check(id => World.TryGetValue(id, out var bp) ? bp : null, out _) == null,
