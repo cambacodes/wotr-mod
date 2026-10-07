@@ -3,27 +3,24 @@
 
 Hashes cover ordered node Text, Paragraphs[].Text and Choices[].Text only,
 using compact UTF-8 JSON; IDs and gameplay metadata are excluded. A Claude
-voice job is a claude/voice-* or claude/pol[-ish]-* branch, or a commit message
-containing both Claude and a standalone voice, polish or pol token. Voice
-lock/lint/tool jobs are excluded. Merely having a Claude co-author or branch
-prefix is insufficient.
-
---update refreshes existing locks only, requires RRT_VOICE_OWNER=claude, and
-preserves owner/since (the original locking commit). It never enrolls scenes.
+voice delta requires a signed reviewed job and explicit per-scene approval.
+Branch names, commit messages and environment variables grant no authority.
+--update requires explicit signed update/enrollment approval and preserves
+existing owner/since. Policy and predecessor locks come from the reviewed ref.
 """
 import argparse
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
-import subprocess
+try:
+    from . import voice_authority as authority, prose_pending_lint as pending_lint
+except ImportError:
+    import voice_authority as authority
+    import prose_pending_lint as pending_lint
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCKS = ROOT / "tools/route_packs/voice_locks.json"
-VOICE_JOB = re.compile(
-    r"(?<![a-z0-9])(?:voice(?![-_\s]+(?:lock|lint|tool))|polish|pol)(?![a-z0-9])", re.I)
-CLAUDE = re.compile(r"(?<![a-z0-9])claude(?![a-z0-9])", re.I)
 
 
 def text_sha(scene):
@@ -67,56 +64,87 @@ def check(story, locks):
     return changed, errors
 
 
-def git_context():
-    def read(*args):
-        try:
-            return subprocess.run(
-                ["git", "-C", str(ROOT), *args], check=True, capture_output=True,
-                text=True, encoding="utf-8").stdout.strip()
-        except (OSError, subprocess.CalledProcessError):
-            return ""
-    return read("branch", "--show-current"), read("log", "-1", "--format=%B")
-
-
-def claude_voice_job(branch, message):
-    branch_job = branch.lower().startswith("claude/") and bool(VOICE_JOB.match(branch[7:]))
-    message_job = bool(CLAUDE.search(message) and VOICE_JOB.search(message))
-    return branch_job or message_job
-
-
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--story", type=Path, default=ROOT / "development/Story.json")
-    parser.add_argument("--locks", type=Path, default=LOCKS)
+    parser.add_argument("--repo", type=Path, default=ROOT)
+    parser.add_argument("--story", type=Path)
+    parser.add_argument("--locks", type=Path)
+    parser.add_argument("--job", type=Path, help="signed reviewed job record")
+    parser.add_argument("--milestone", action="store_true", help="forbid all pending prose")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--update", action="store_true")
     args = parser.parse_args(argv)
-    if args.update and os.environ.get("RRT_VOICE_OWNER") != "claude":
-        print("HARD --update requires RRT_VOICE_OWNER=claude")
-        return 1
+    root = args.repo.resolve()
+    args.story = args.story or root / "development/Story.json"
+    args.locks = args.locks or root / authority.LOCKS
     try:
-        data = json.loads(args.locks.read_text(encoding="utf-8-sig"))
+        base, policy, predecessor = authority.trusted(root)
+        old = validate_locks(predecessor)
+        data = authority.read_json(args.locks)
         locks = validate_locks(data)
-        story = json.loads(args.story.read_text(encoding="utf-8-sig"))
-        changed, errors = check(story, locks)
-        if args.update and not errors and changed:
-            for sid, digest in changed.items():
-                locks[sid]["text_sha"] = digest
+        story = authority.read_json(args.story)
+        job = authority.verify_job(root, args.story, args.job, policy, base) if args.job else None
+        if args.update and (not job or (job["actor"], job["kind"], job["status"]) !=
+                            ("claude", "voice", "reviewed") or not job["approvals"]
+                            or not any(entry["allow_update"] for entry in job["approvals"])):
+            raise ValueError("--update requires signed approval entries")
+        pending_path = root / authority.PENDING
+        pending = authority.read_json(pending_path) if pending_path.exists() else {"version": 1, "pending": []}
+        errors = pending_lint.check(story, pending, job, args.milestone)
+        changed, target_errors = check(story, old)
+        errors.extend(target_errors)
+        scenes = {}
+        for scene in story.get("Scenes", []):
+            if scene["Id"] in scenes:
+                errors.append(f"{scene['Id']}: ambiguous scene ID")
+            scenes[scene["Id"]] = scene
+        for entry in job["approvals"] if job else []:
+            sid = entry["scene"]
+            before = old[sid]["text_sha"] if sid in old else None
+            if (sid not in scenes or entry["before"] != before
+                    or entry["after"] != text_sha(scenes[sid])):
+                errors.append(f"{sid}: approval does not match the exact voice delta")
+        expected = json.loads(json.dumps(predecessor))
+        for sid, lock in old.items():
+            if authority.owner_for(policy, sid) != lock["owner"]:
+                errors.append(f"{sid}: lock lacks ownership enrollment")
+            if sid in changed:
+                digest = changed[sid]
+                if not authority.approved(job, sid, lock["text_sha"], digest):
+                    errors.append(f"{sid}: changed prose requires reviewed Claude approval")
+                if authority.approved(job, sid, lock["text_sha"], digest, update=True):
+                    expected["locked"][sid]["text_sha"] = digest
+                elif args.update:
+                    errors.append(f"{sid}: --update lacks signed update approval")
+        pending_scenes = {entry["scene"] for entry in pending["pending"]}
+        for sid, scene in scenes.items():
+            if authority.owner_for(policy, sid) and sid not in old:
+                digest = text_sha(scene)
+                if authority.approved(job, sid, None, digest, update=True):
+                    expected["locked"][sid] = dict(owner="claude", since=base, text_sha=digest)
+                    if not args.update and sid not in locks:
+                        errors.append(f"{sid}: approved enrollment requires --update")
+                elif sid not in pending_scenes or errors:
+                    errors.append(f"{sid}: missing ownership enrollment/approval")
+        # The only acceptable lock edits are the exact approved hash updates.
+        # Before an update the complete predecessor remains valid as input.
+        if data != predecessor and data != expected:
+            errors.append("altered lock file: differs from reviewed/approved inventory")
+        if args.update and not errors:
             newline = "\r\n" if b"\r\n" in args.locks.read_bytes() else "\n"
-            args.locks.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+            args.locks.write_text(json.dumps(expected, ensure_ascii=False, indent=2) + "\n",
                                   encoding="utf-8", newline=newline)
-            print(f"Voice locks: updated {len(changed)} hashes; owner/since preserved")
-            changed = {}
+            print("Voice locks: signed updates applied; owner/since preserved")
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(f"HARD Voice locks: {error}")
         return 1
-    allowed = bool(changed) and claude_voice_job(*git_context())
     for error in errors:
         print("HARD", error)
     for sid in changed:
-        print("CLAUDE VOICE JOB" if allowed else "CHANGED", f"{sid}: locked player text differs")
-    print(f"Voice locks: {len(locks)} locked scenes; {len(changed)} changed; {len(errors)} missing/ambiguous")
-    return int(bool(errors) or (args.strict and bool(changed) and not allowed))
+        print("CHANGED", f"{sid}: locked player text differs")
+    print(f"Voice locks: {len(locks)} locked scenes; {len(changed)} changed; {len(errors)} hard failures")
+    # Ownership failures are hard in every mode; --strict stays CLI-compatible.
+    return int(bool(errors))
 
 
 if __name__ == "__main__":

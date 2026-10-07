@@ -31,6 +31,7 @@ def main():
     parser.add_argument('--files', nargs='+', help='explicit changed-file list; replaces git detection')
     parser.add_argument('--plan', action='store_true', help='print selection without running commands')
     parser.add_argument('--game', default=os.environ.get('RRT_GAME_DIR', '/wrath'))
+    parser.add_argument('--voice-job', type=Path, help='signed reviewed ownership job record')
     parser.add_argument('--json', type=Path, help='retain timing and pass receipts outside the repository')
     args = parser.parse_args()
     if args.json and args.json.resolve().is_relative_to(ROOT):
@@ -87,6 +88,13 @@ def main():
         # Reuse exactly this gate's generated data. Differential generator tests
         # still build their own variants; fixture consumers get private copies.
         shutil.copyfile(ROOT / 'development/Story.json', scratch / 'Story.json')
+        ownership_command = [sys.executable, 'tools/voice_lock_lint.py', '--strict',
+                             '--story', str(scratch / 'Story.json')]
+        if args.full:
+            ownership_command.append('--milestone')
+        if args.voice_job:
+            ownership_command += ['--job', str(args.voice_job.resolve())]
+        run('ownership', ownership_command)
         env['RRT_TEST_STORY'] = str(scratch / 'Story.json')
         env['RRT_GATE_DRAFT_INVENTORY'] = str(draft_fixture)
         # Preserve advisory baselines: these CLIs enforce their existing hard
