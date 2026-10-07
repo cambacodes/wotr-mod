@@ -398,5 +398,35 @@
     "scene": "konomi.the_evening_she_kept",
     "route": "konomi",
     "finding": "konomi:D10"
+  },
+  {
+    "scene": "mielarah.deck.correction",
+    "route": "mielarah",
+    "finding": "mielarah:D12,mielarah:D14"
+  },
+  {
+    "scene": "mielarah.deck.correction.arcade",
+    "route": "mielarah",
+    "finding": "mielarah:D13,mielarah:D15"
+  },
+  {
+    "scene": "mielarah.deck.market",
+    "route": "mielarah",
+    "finding": "mielarah:D18"
+  },
+  {
+    "scene": "mielarah.deck.market.arcade",
+    "route": "mielarah",
+    "finding": "mielarah:D19"
+  },
+  {
+    "scene": "mielarah.deck.stowaway",
+    "route": "mielarah",
+    "finding": "mielarah:D16"
+  },
+  {
+    "scene": "mielarah.deck.stowaway.arcade",
+    "route": "mielarah",
+    "finding": "mielarah:D17"
   }
 ]
