@@ -1,0 +1,12 @@
+[
+  {
+    "scene": "nurah.trickster.ran_off.terms",
+    "route": "nurah",
+    "finding": "nurah:D03,D04,D05,D09"
+  },
+  {
+    "scene": "nurah.trickster.ran_off.terms_night",
+    "route": "nurah",
+    "finding": "nurah:D06,D07,D08,D09"
+  }
+]
