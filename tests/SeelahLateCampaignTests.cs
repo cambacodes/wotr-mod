@@ -133,6 +133,10 @@ internal static class SeelahLateCampaignTests
             foreach (var required in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
+                if (required == "seelah.trickster.custody_clear")
+                    // A derived custody fact is revoked by an outstanding list,
+                    // not by deleting the cached result before recomputation.
+                    missing.Flags.Add("seelah.trickster.cost.holds_her_death");
                 check(!Program.CurrentAvailable(story, scene, missing), "Seelah late scene ignores required history: " + required);
             }
             foreach (var blocker in new[] { "seelah.closed", "seelah_dead", "seelah_gone", "inhuman", "seelah.farewell" })
@@ -146,7 +150,7 @@ internal static class SeelahLateCampaignTests
                 check(!Program.CurrentAvailable(story, scene, elsewhere), "Seelah late scene escapes its Chapter 5 scope.");
             }
             check(scene.DelayHours == (scene == race ? 48 : 24), "Seelah late meeting loses its authored delay.");
-            ready.Times[scene.Requires.Last()] = ready.Hour;
+            ready.Times[scene.Requires.Last(key => !story.Derived.ContainsKey(key))] = ready.Hour;
             ready.Hour += scene.DelayHours - 1;
             check(!Program.CurrentAvailable(story, scene, ready), "Seelah meeting ignores a newly completed prerequisite timestamp.");
             ready.Hour++;
