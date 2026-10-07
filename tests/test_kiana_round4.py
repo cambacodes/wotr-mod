@@ -91,6 +91,28 @@ class KianaRound4Tests(unittest.TestCase):
                     sent | {kt_placed_failed}) if kp.SHARE in state]
         self.assertTrue(accepted)
 
+    def test_shipped_late_yes_exit_positions_survive_the_staging_split(self):
+        from tests.story_fixture import fresh_story
+        exported = {s["Id"]: s for s in fresh_story()["Scenes"]}
+        for books in (self.books, exported):
+            for sid in r4.HOSTS:
+                nodes = {n["Id"]: n for n in books[sid]["Nodes"]}
+                for name in ("partner_share_yes", "partner_exclusive_yes"):
+                    with self.subTest(exported=books is exported, sid=sid, node=name):
+                        answers = nodes[name]["Choices"]
+                        self.assertGreaterEqual(len(answers), 3)
+                        self.assertIsNone(answers[0]["Next"])
+                        self.assertEqual(answers[1]["Next"], "promise_accepted")
+                        exit = answers[2]
+                        self.assertEqual(exit["Text"], "[Leave.]")
+                        self.assertIsNone(exit["Next"])
+                        self.assertEqual(exit["Set"], [])
+                        self.assertTrue(exit["Abort"])
+                        self.assertIn("trickster.now", exit["Requires"])
+                        self.assertEqual(exit["Forbids"], ["trickster.now"])
+                        self.assertFalse(holds(exit, self.flags))
+                        self.assertFalse(holds(exit, self.flags - {"trickster.now"}))
+
 
 if __name__ == "__main__":
     unittest.main()

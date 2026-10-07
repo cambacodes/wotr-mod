@@ -95,6 +95,13 @@ def integrate(payload):
         followup(".after_delivery", "The case at her door", DELIVERY_WAIT,
                  ("partner_exclusive_yes", "promise_accepted"), 24)
 
+        # Shipped late-yes pages had a generated [Leave.] at index 2. The
+        # staging split no longer triggers its generator; retain the saved
+        # position explicitly, retired without changing the promise edges.
+        for name in ("partner_share_yes", "partner_exclusive_yes"):
+            nodes[name]["Choices"].append(c("[Leave.]", requires=("trickster.now",),
+                                             forbids=("trickster.now",), abort=True))
+
         # Neither dispatch grants a stance, separation, late yes or commitment.
         # Existing nodes and old targets remain present for saved references.
         for name, flag, label in (
