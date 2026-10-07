@@ -676,5 +676,26 @@
     "woman": "lastcall",
     "beat": "rename Venn -> Veldran (canon-fix1 B10)",
     "ruling": "canon-fix1"
+  },
+  {
+    "scene": "household.docket.horzalah_hepzamirah.account",
+    "node": "j05_instructions_destroyed",
+    "woman": "Horzalah",
+    "beat": "Keep captivity accusation; inspect and destroy surrendered mundane trap instructions; spend inspection/destruction, no pardon",
+    "ruling": "05"
+  },
+  {
+    "scene": "household.docket.horzalah_hepzamirah.account_table",
+    "node": "j05_instructions_destroyed",
+    "woman": "Horzalah",
+    "beat": "Keep captivity accusation; inspect and destroy surrendered mundane trap instructions; spend inspection/destruction, no pardon",
+    "ruling": "05"
+  },
+  {
+    "scene": "household.docket.gesmerha_jerribeth.account",
+    "node": "j05_cache_offer",
+    "woman": "Jerribeth",
+    "beat": "Keep leverage; yield a concealed ordinary timber/food cache for selected living Wintersun households; lose supply/leverage, no remorse",
+    "ruling": "07"
   }
 ]
