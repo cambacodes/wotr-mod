@@ -2889,6 +2889,18 @@
         {
           "scene": "gesmerha.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "gesmerha.trickster.epilogue.unvisited_mourned",
+          "provenance": "Authored job-2 sacrifice commission: the patron died; the carver must still be alive."
+        },
+        {
+          "scene": "gesmerha.trickster.epilogue.refusal_mourned",
+          "provenance": "Authored job-2 sacrifice commission: the patron died; the carver must still be alive."
+        },
+        {
+          "scene": "gesmerha.trickster.epilogue.finished_mourned",
+          "provenance": "Authored job-2 sacrifice commission: the patron died; the carver must still be alive."
         }
       ],
       "absence_variants": [
@@ -16273,14 +16285,6 @@
           "letter": true
         },
         {
-          "scene": "horzalah.native.eng7_f6c.guild",
-          "letter": false
-        },
-        {
-          "scene": "horzalah.native.eng7_f6c.trio",
-          "letter": false
-        },
-        {
           "scene": "hepzamirah.trickster.body.terms",
           "node": "price",
           "choice": 2,
@@ -16324,6 +16328,14 @@
         {
           "scene": "horzalah.trickster.react.greybor_amateur_no_ear",
           "reason": "Only Greybor speaks; the relationship owner is recalled, not present. Existing participant availability guards remain authoritative."
+        },
+        {
+          "scene": "horzalah.native.eng7_f6c.guild",
+          "reason": "Authored job-2 native reconciliation: paid Guild ownership survives free departure; current death and loss of the returned actor still exclude it."
+        },
+        {
+          "scene": "horzalah.native.eng7_f6c.trio",
+          "reason": "Authored job-2 native reconciliation: paid Guild ownership survives free departure; current death and loss of the returned actor still exclude it."
         }
       ],
       "presences": [
@@ -16510,6 +16522,10 @@
         {
           "scene": "elyanka.trickster.epilogue.left_free",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "elyanka.trickster.epilogue.left_free_mourned",
+          "reason": "Authored job-2: sacrifice news reaches the departed creditor in Ustalav; no current local presence or reconciliation."
         }
       ],
       "presences": [],

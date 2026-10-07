@@ -54,7 +54,7 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                         self.assertNotIn(route.PARTNER_DISGUISE, flags)
 
     def test_all_nine_endings_keep_existing_paragraph_indices(self):
-        counts = dict(salt=25, late=22, heel=22, wolves=0, unreturned=22,
+        counts = dict(salt=26, late=22, heel=22, wolves=0, unreturned=22,
                       apart=22, claimed=22, lie=22, given=0)
         for ending, count in counts.items():
             scene = self.scenes[route.P + "epilogue." + ending]
@@ -68,7 +68,7 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
     def test_lastcall_extension_is_local_and_idempotent(self):
         page = self.scenes["nidalynn.lastcall.page"]["Nodes"][0]
         self.assertEqual(page["Id"], "page")
-        self.assertEqual(len(page["Paragraphs"]), 10)
+        self.assertEqual(len(page["Paragraphs"]), 11)
         self.assertFalse(page["Paragraphs"][7]["Requires"])
         self.assertFalse(page["Paragraphs"][7]["Forbids"])
         def states():

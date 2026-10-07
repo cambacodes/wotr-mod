@@ -59,6 +59,7 @@ COMMANDER_ABSENT = {
     "kiana.trickster.ending_unfinished": "independent",
     "vellexia.ending_hostility": "independent",
     "arsinoe.trickster.epilogue.foreclosure_closed": "independent",
+    "arsinoe.trickster.epilogue.pot_returned": "independent",  # returned property; invitations guard life individually
     "nocticula.trickster.defeated.epilogue.fooled": "independent",
     "nocticula.trickster.defeated.epilogue.mirror": "independent",
     "aranka.trickster.epilogue.declined": "independent",

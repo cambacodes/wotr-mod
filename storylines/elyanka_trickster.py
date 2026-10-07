@@ -769,8 +769,7 @@ page("eaten", "The Wound ate my claim", '''{n}Word came to Drezen that the Comma
            requires=(E + "collateral.at_rift",)),
          p('''{n}Elyanka Camilary heard it in the dead-house by the south gate of Drezen, where she had waited with one candle, as the Commander had told her to. She sat on the shaft of the hearse for a day and a night without eating, which nobody who knew her would have believed. On the second morning she said, to nobody, "The Wound ate my claim," and harnessed the horses herself, and drove the hearse home to Ustalav, empty.{/n}''',
            requires=(E + "collateral.in_drezen",)),
-         p('''{n}The news reached Elyanka Camilary in Ustalav, months late, by a man in grey. She had gone home when she was sent, with a claim and nothing else. She heard him out, and said, to nobody, "The Wound ate my claim," and did not eat for a day and a night, which nobody who knew her would have believed.{/n}''',
-           requires=(LEFT_FREE,)),
+         p('''{n}The claim the Commander had given the Way could not be collected. No body came back from Threshold.{/n}''', requires=(LEFT_FREE,)),
          p('''{n}Elyanka Camilary heard it in the dead-house by the south gate of Drezen, from a sergeant who did not know what else to do with the news. She sat on the shaft of the hearse for a day and a night without eating. On the second morning she said, to nobody, "The Wound ate my claim," and drove the hearse that had been built for the Commander's corpse home to Ustalav, empty.{/n}''',
            forbids=(E + "collateral.at_rift", E + "collateral.in_drezen", LEFT_FREE)),
          p('''{n}She did not weep. She was hungry, and she stayed hungry.{/n}'''),
@@ -836,3 +835,12 @@ def integrate(payload):
 for _s in SCENES:
     if _s.get("Id") == E + "react.seelah_rows":
         _s.setdefault("ForbidOverrides", {}).update({"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"})
+
+
+# Authored job-2 ending: departure leaves a creditor in Ustalav, not in Drezen.
+page("left_free_mourned", "A claim without a body",
+     '{n}The news reached Elyanka Camilary in Ustalav, months late, by a man in grey. '
+     'She had gone home when she was sent, with a claim and nothing else. She heard him out, '
+     'then said, "The Wound ate my claim." She did not eat for a day and a night. '
+     'The Way kept the whispered account; there was no flesh to fetch.{/n}',
+     requires=(LEFT_FREE, OWNED, "sacrifice"), forbids=(BACK,), survived=False)
