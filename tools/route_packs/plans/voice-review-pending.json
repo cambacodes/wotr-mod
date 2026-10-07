@@ -318,5 +318,35 @@
     "scene": "herrax.trickster.late.next_move",
     "route": "herrax",
     "finding": "herrax:D26"
+  },
+  {
+    "scene": "horzalah.trickster.unmet.knife",
+    "route": "horzalah",
+    "finding": "horzalah:D02"
+  },
+  {
+    "scene": "horzalah.trickster.unmet.knife",
+    "route": "horzalah",
+    "finding": "horzalah:D09"
+  },
+  {
+    "scene": "horzalah.trickster.beat.spit",
+    "route": "horzalah",
+    "finding": "horzalah:D01"
+  },
+  {
+    "scene": "horzalah.trickster.beat.spit",
+    "route": "horzalah",
+    "finding": "horzalah:D03"
+  },
+  {
+    "scene": "horzalah.trickster.late.at_night",
+    "route": "horzalah",
+    "finding": "horzalah:D10"
+  },
+  {
+    "scene": "horzalah.native.eng7_f6c.guild",
+    "route": "horzalah",
+    "finding": "horzalah:D04"
   }
 ]
