@@ -1,0 +1,1061 @@
+{
+  "version": 1,
+  "ruling": "41",
+  "contexts": [
+    {
+      "scene": "targona.unasked_question",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "0c82e100b8457fca3843ba883a265cf333607fc9fd775fe40e6683431c2f589a",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.unasked_question",
+      "node": "drawing",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "279d97532f654ac4f66019583947dfe3e4b73b4020345ab694bf772b17ba8919",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.second_margin",
+      "node": "account",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "71e10c4c2acca097b13a9344d7dcfdcd14591c2a64f5c80ced8f6a38784314e4",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.second_margin",
+      "node": "account",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "71e10c4c2acca097b13a9344d7dcfdcd14591c2a64f5c80ced8f6a38784314e4",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.the_folded_room",
+      "node": "creased",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "40c9846e2e8b37d463e5e91448dc6798b4400cab355c1c5058e9d4e1d90a1e57",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.an_unpromised_future",
+      "node": "failed",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "85122d04993552bc7fb6cd217a6a327e98eb3bde908861408b5a624e0bbe1a72",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.an_unpromised_future",
+      "node": "failed",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "85122d04993552bc7fb6cd217a6a327e98eb3bde908861408b5a624e0bbe1a72",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.an_unpromised_future",
+      "node": "private",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "2945d0ce0559dcef1b5acb0e72eb51b5ac4225c914a31e19451b0162d27790f2",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.an_unpromised_future",
+      "node": "private",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "2945d0ce0559dcef1b5acb0e72eb51b5ac4225c914a31e19451b0162d27790f2",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.an_unpromised_future",
+      "node": "question",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "b9167c9f2ceed45421e69a5462144365e718898778e80e9c88ba47c26086e799",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.an_unpromised_future",
+      "node": "question_ward",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "81f1e39624807c9525296863914daf1b1b15e2bc2bd758973dd4754144024c35",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.the_unscheduled_door",
+      "node": "receiving",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "916ff7ac3a68d0b4f8b5d1ee228c511379da77fa4300675b04dad33f13d2dd48",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.the_open_threshold",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "270424382148e886e534e8d339d9b3531e7ecff3da79ce672a9af8b86af3ee65",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.the_open_threshold",
+      "node": "walk",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "2309b7e4fe6fdaf56dbbe6b70411d5d8625c15013f0590533352c7788d385868",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.setup",
+      "node": "chooses",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "aa3698e94bdbbc6b30f93633338c5cef4edb41b5f025dc881550dd5367189800",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.setup_open",
+      "node": "chooses",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "aa3698e94bdbbc6b30f93633338c5cef4edb41b5f025dc881550dd5367189800",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.setup_sleep",
+      "node": "sleep",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "ac8383bcdb25031841d5ef26cfdc314d5dd291e64f2e5d849362b26dbfe8ee32",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.setup_sleep",
+      "node": "plan",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "89524e06d36e39b5a1fe94f5c35d601677a1077aece8a018aa244b3d238959fb",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.setup_sleep",
+      "node": "chooses",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "86eb3c1435f23116fb050ad6f1809ab7353cb8cd15fd60a543b4a3415af2c6a6",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.late_light",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "d36359fd092dd3cce82fa3d1d922869de97573e74dd9f0fe9ad2394af131063d",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.late_crypt",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "ea226abcc34fb3c60f342267c4bd75d171b7e44e94bb11c3676363f21926e284",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.one_soul",
+      "node": "quiet",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "60caea801e2505b69350344bb09c60f23d8abcbb61fc294892cb7a3f4521f8a8",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.one_soul",
+      "node": "ring",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "8264eb5a409cefb2a9232eca51b8ff01a11c38150c8585ac62e9fe6a63136a72",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.one_soul",
+      "node": "ring",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "8264eb5a409cefb2a9232eca51b8ff01a11c38150c8585ac62e9fe6a63136a72",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.one_soul",
+      "node": "news_ring",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "d4075e868710f166d06f5f83d09f8ac4785b393bd7fb7c7de4c2ff657cfd9a29",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.long_sleep",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "fb6a765fee137e17b9fee8222f964aa9f8a0a26fef638baa79c12b6a1f040ed8",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.furlough",
+      "node": "pikeman",
+      "slot": "choice2",
+      "woman": "areelu",
+      "text_sha256": "67d119cf7c76b23da40d242631f1f85e5c6a204b9123d415ec2efd4720f2f398",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.furlough",
+      "node": "pikeman_late",
+      "slot": "choice2",
+      "woman": "areelu",
+      "text_sha256": "67d119cf7c76b23da40d242631f1f85e5c6a204b9123d415ec2efd4720f2f398",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.furlough",
+      "node": "truth",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "b771b7e1ad4361b2cae26b73d2c4504345d7cb242c6b730ea609ff04e662cd30",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.dead.furlough",
+      "node": "lie",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "d83f17a7b65385d8de46abcab9fb96212804726a42b2132fcb9949a470906dea",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.after.the_washing",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "7d215846b4a67dacf2ddee9eec9fc1f7465b131cfd5dfe68f1f782d4f57659d0",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.after.the_washing",
+      "node": "wash",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "2391bc6c1f4a773cdf37436a457754a88d37893bd23994098b52e716ef9ac920",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.free.spent_light",
+      "node": "report_hand",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "624e62358163448324c3dae8fd0c00da71158dbc6e8a42c076d5d4fbfd45da5b",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.after.ward",
+      "node": "refused_dawn",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "131fcfb71ab3da022460e9a79d461e281eac5c12082505a633cd4d76cab45288",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.free.the_names",
+      "node": "list",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "b97a549a36e4e4ce10974ae24e3329656b85f7f37f7f88bbf884cd9f08324633",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.free.the_names",
+      "node": "tended",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "3badacb91ad69a3ccdd903a9109016fba64aa187b8a56ddb2a9f8e5373cbc10e",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.free.the_names",
+      "node": "unasked",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "198bbfd3303b975334d2e6eda678e8398ddbc56d09a1dd912621f3cd9fd3bb4c",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "targona.trickster.react.seelah_furlough",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "0d771064362a9b3b7287ec504f3a9bf27f0d8abc30c0686eddb208edb082a92c",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "nidalynn.trickster.eggs.lamp_black",
+      "node": "held",
+      "slot": "text",
+      "woman": "devarra",
+      "text_sha256": "75bb8c9f52d5565d3271c685b36451ceb2ce202f76cf91083d3ac4ea25163b56",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "nidalynn.trickster.eggs.straw",
+      "node": "vault",
+      "slot": "text",
+      "woman": "devarra",
+      "text_sha256": "c17119fddedd9d003f94b53d9c15d68488e02d66ae1b149a468902f6068d6da4",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.hatching",
+      "node": "torches",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "2acc342b2c5b947bb59d0b9468e2b984893a0001c76273936fcafc371bb66f28",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.hatching",
+      "node": "lied2",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "81a511fc63217c3b9ca02a23d3bcd3c539aa8934729be7894a2ec84a7f16b642",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.the_chaplain",
+      "node": "kiln",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "53641cb095a114d90478fe315971f4ecaba4a3964d261bbd7ba2948158fb494b",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "nidalynn.trickster.kiln.the_chaplain",
+      "node": "end",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "35e7c36c741d53fdb3bebbde9cd727da5890da7c659a9ea29f7521e2f5e3b8e8",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "nidalynn.trickster.after.first_demon",
+      "node": "look",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "c2e31643282ba6d7f5da9d53d4743d3b2cf3fcf0356bb133d4430def12a44188",
+      "reason": "ancestry or religious affiliation; no current body summoned or staged"
+    },
+    {
+      "scene": "herrax.trickster.madam.schedule",
+      "node": "why",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "aa371c06047848c94705f982145c4613c41363d2e03fa11766db9a1a3ccc7845",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.schedule",
+      "node": "plan",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "004f1b8b4a1ef6d050f739f80780be3a59d36d9d98bce8ae6e4ce3b44cf802c0",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.sell_the_night",
+      "node": "bait",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "294f11e5b1b0ea7236243b57b31be5473df08d1d751f0d6f45a18b43f94ba668",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.the_night",
+      "node": "arch",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "c93432a09b56ea78e7805ae066d5fb6a39e3d4a20f87dc1fc1e584c5c4017246",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.the_night",
+      "node": "arch3",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "c42790def68c49f43faafa10bbc8f33ec23764fd83fdc367536ef71981038c4b",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.the_night",
+      "node": "arch.morevet_absent",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "531f7382fa3a2a70bed23e183821d15e79de7e500710d5753064b42ccd37e172",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.reachable",
+      "node": "cut",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f55033a4466bc5e230ccb5e55652f9d7030753ee4166c37167956a7f9e5e03d0",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.madam.reachable_restored",
+      "node": "cut",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f55033a4466bc5e230ccb5e55652f9d7030753ee4166c37167956a7f9e5e03d0",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.late.next_move",
+      "node": "why",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f05c18e350c1fee1a5076f464cc42673710fa7c2112879b2b2c6f92a3aaed29d",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.owed.night",
+      "node": "lesson",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "01cbf96e74d204087d5fec73caf15d95da6b6954e5abf53c401af024e88e4fe7",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.trickster.react.arueshalae_morning_unheard",
+      "node": "start",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "d66dbe8ca33467cb8d9ebc5765f4d6701930b249909ed59e687c0e639d61257d",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.labyrinth",
+      "node": "dais_end",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "34c79b1687a04b3d4f9337731e62acc73b675c0b87ca33f28f2c381e44bd4a48",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.predecessor",
+      "node": "start",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f50a7b877b47b180bd7311e099a034ae868061e65eea845f4cd138bd7908da0f",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.predecessor",
+      "node": "deposit",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "ae5b73310aa2861c5708baff05a9391b803c7556419cdf0654529bb77043d5f6",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.predecessor",
+      "node": "riches",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "3c49fca171fb18b15447211ca1c44f7a3e8399608add3e1f97d493f1678ffd9d",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.eye.two",
+      "node": "start",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f22aa9e35dbfcd566e269baf3970ba9952479fe2883b79249525421ebeabf920",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.rehearsal",
+      "node": "greed2",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "8d79f5498ceddb97533e2067578c53c56ea5ea5e296c7da568f8f1b536256237",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.eve",
+      "node": "where",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "a7c65efb7470473de476f8f8aa292fab7e32afcf44c4adbc91daf6f2c361b473",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.the_girl_upstairs",
+      "node": "after",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "228134a0ead286c4d04876abb7d8448626d8787e4aeedf8ccd1e3636e8fd3ceb",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.the_lesson_room",
+      "node": "end",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "7204d25cfbd458eab78247c2f7c037a31e15b922b4f0fba9c7ead4af6f3d78d1",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.last_night",
+      "node": "start",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "5e7f7853342063342ca4b8601b712e8fa7337c6cd28cc69229a4af0f55b10ccd",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.the_chair",
+      "node": "start",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "d214c03c3ee19d1b0ee9ae68abfc86927b224035af0a6d9b392b322d17340e9b",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.what_she_wants",
+      "node": "have",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "47af3d4d7a50eab3586bc66def6bf7faaefdb56976acd40d676bca942df42ca7",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.what_she_wants",
+      "node": "long",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "33a44f4ecbddb4262ffc456d1fe05154ba1bd0a45311431a23ef1ada9f8cb761",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.the_sinners",
+      "node": "work",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f52f3cb18407c9a134eafc4bcfc2d728ed4c4534a0c1eb935c47a119db480c41",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.the_coin",
+      "node": "how_many",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "a53f9a09492a5d4aefe961e6efe679c87c9fbbc70f960f30a413859682261ae7",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.a_night_late",
+      "node": "start",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "f793241aee23bdec2c502ebb107b234e73a7d7770e2c580c927e7fc2b00095cf",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "herrax.house.her_rooms",
+      "node": "expected",
+      "slot": "text",
+      "woman": "chivarro",
+      "text_sha256": "9e4979549fd5ac95d9f1c4ccaa2efd1be315b0b50022542da172a25e32754951",
+      "reason": "former employer, retained tenure/relic, or recorded rivalry; Chivarro does not act here"
+    },
+    {
+      "scene": "galfrey.trickster.react.seelah.majesty",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "da012b8e2c314bb9e8f575ed7db127644b97025e6b7bb0d773f9bee20adbf156",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.elixir",
+      "node": "frighten",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "201f3f68f34d5ca13b39011bb93276ea1c2b30221329bdcbfb2d7beaebae0d80",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.elixir_stall",
+      "node": "frighten",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "201f3f68f34d5ca13b39011bb93276ea1c2b30221329bdcbfb2d7beaebae0d80",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hands",
+      "node": "why",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "9a1a015ec6ce614869b10c54f9d424028d104ae22cfb54d0c5f4566e8c3f7659",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hands",
+      "node": "gods",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "55784057ac6a02db20920f23303770cc63ddd53d93b071b5a7aac1143b882442",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hands_stall",
+      "node": "why",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "9a1a015ec6ce614869b10c54f9d424028d104ae22cfb54d0c5f4566e8c3f7659",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hands_stall",
+      "node": "gods",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "55784057ac6a02db20920f23303770cc63ddd53d93b071b5a7aac1143b882442",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.iz",
+      "node": "dragon",
+      "slot": "text",
+      "woman": "terendelev",
+      "text_sha256": "ed8ebdb5575f9b7a9c5df752f0318ec80a56c9c54c0394096689fb35ab072880",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.iz",
+      "node": "priestess",
+      "slot": "text",
+      "woman": "terendelev",
+      "text_sha256": "74b0f18e6a7b8a58a60bfc10857e16cbbde4a3c3c5dd63bd45c203825b9125c3",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.iz_stall",
+      "node": "dragon",
+      "slot": "text",
+      "woman": "terendelev",
+      "text_sha256": "ed8ebdb5575f9b7a9c5df752f0318ec80a56c9c54c0394096689fb35ab072880",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.iz_stall",
+      "node": "priestess",
+      "slot": "text",
+      "woman": "terendelev",
+      "text_sha256": "74b0f18e6a7b8a58a60bfc10857e16cbbde4a3c3c5dd63bd45c203825b9125c3",
+      "reason": "religious allegiance or the named dragon/priestess campaign account; no present actor"
+    },
+    {
+      "scene": "yaniel.trickster.fane.swap",
+      "node": "start",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "dd688c39bfb10b1c51770fbd6c98dc330f1b5816404111ee10a70975159f738f",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.fane.swap",
+      "node": "kept",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "e3ffef70c92c431196b2db650906aaf227890d6d0d34e8514b2e4308348dd173",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.fane.swap_hope",
+      "node": "start",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "fdbc6894b8d13d46f26e7f2659b18329ba709e2869b6eb8e6c445a446791f64d",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.fane.swap_hope",
+      "node": "kept",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "82d6afc75aaa9d6380e18d78fa213cf8608b7075e09c977ac594db5cf121bb4b",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.fane.swap_hope",
+      "node": "kept",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "82d6afc75aaa9d6380e18d78fa213cf8608b7075e09c977ac594db5cf121bb4b",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.late.wall",
+      "node": "struck",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "7b961c6f3932eea672292a1bb2c1bac50feaa69baa75dafa3923d241d9538290",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.late.wall",
+      "node": "wall",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "7e1c5d0d719aa991d7fb24ffc3877d6124499be957376475df75976f99e45bbd",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.late.wall",
+      "node": "late_kept",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "f04409b3097884a5222db4f8cb590512202dd823beefc37cb719e1aa7a484615",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.found",
+      "node": "husk2",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "75eeaa0a80e3a82d4057d2e9519e9f105db74ee60b7950e8599732478fef194c",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.verdict.letter",
+      "node": "sang",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "3a290cb9449ee880a1ba8d09a0cd20f7dfadc63ec06426674fd4d4a51240e68d",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.react.sosiel_iron",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "96854644ccf946135841386570f5ca3eeac025575811f9fb7f254b9b5f5e304f",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.epilogue.unsettled",
+      "node": "page",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "2b825106f5f1a1ae7dd5bd630b74a88cd45e12d45fedf27dd91fc6071250ddcb",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch4.shackle",
+      "node": "start",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "0adba42dcb480ca8c6524e6f1fb47a5a14b0e11e7f8ae223aef3c53d958ab568",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch4.shackle",
+      "node": "city_dead",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "01aa9952ea04ca82596e5c67921b92fb83706ef829730f21e6006224aa997b5c",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.minagho",
+      "node": "heard",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "94cac4da2539d188c39f510f4cd144eb4a2db082642814f66aa66f900ea808a9",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.minagho",
+      "node": "ask",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "8cff14718ea842749f7eb382ee391fedf3b2f5f9cd37da7a393744d1610c3a62",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.minagho",
+      "node": "truth",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "6cb1a1caa39125c6ce78ef0b19cfe3b9d4d1df1476cbd2d9f5b731a409ffbeb1",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.minagho",
+      "node": "truth_close",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "a0f2fe369007854db9d7e35a727faa2b63360864febe12782ddc328e98f7b37b",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.walls",
+      "node": "happy",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "4182f2d9834a6ba3f07f3fb066d43cd9ad224dc7eed0936a9fb9f69da678eb42",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.walls",
+      "node": "way",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "c0f69d9684b29fc66cdea3c4caf9d233e814f9052d3369a80c46bc34d9bbee82",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.walls",
+      "node": "flirt",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "55d979a97b60fb95dc499a5a77a3c9eb0108817f3f6828e527b1b5c815039f87",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.staunton",
+      "node": "told",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "3156ef27685baab2aea6d0e169b67c3d3fbc255044d9b2b97463eee624c8738c",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.staunton",
+      "node": "learned",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "9622b46c3759484227aa60b0d74013be49594a0c56c7d182cf410a63f794e3c6",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.areelu",
+      "node": "freed",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "2d8982bd91afc29468d42c2f452f3f92c709ccb13307fa3de3abc7e94d90d680",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.areelu",
+      "node": "plain",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "76e8dcc308827fc3a9bb661bceff5ce07ea1a0124524edcf7d94e5bcdca5429d",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.areelu",
+      "node": "plain",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "76e8dcc308827fc3a9bb661bceff5ce07ea1a0124524edcf7d94e5bcdca5429d",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.areelu",
+      "node": "areelu",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "b324e50ebad163ae976e4a6f3fb0136104d4727c5190f4c44d33c86343a2fc22",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.areelu",
+      "node": "robbed",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "2c4a5c04643bf29504dc3c95c62ef2c810d634c961a900acb0fd35bac2d765af",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.areelu",
+      "node": "end_unknown",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "2b4798c042f5591b5839de2b8924195da8cbaf5a7db89e7497cb22c5dd7176c8",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.bout",
+      "node": "dirty2",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "b14bae8e1345761521cc1cea877cae7ccceb421f7a05603118a6d69d80bb8d6b",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.night",
+      "node": "talk",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "8e67026e5a0aae5d8df6c4bfe02b245dc58def90d28cf0215ddae68753746080",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.night",
+      "node": "true_power",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "6f14a3fb985f839bf33df72233ca8284c7fb6f5afa361978341d90bd3f99f9e8",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.night",
+      "node": "true_war",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "48854f6dec06b4fc1a05dc826e8eaa2fd07d0883c9ea349d0ead4ff33c177618",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.night",
+      "node": "true_war",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "48854f6dec06b4fc1a05dc826e8eaa2fd07d0883c9ea349d0ead4ff33c177618",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.church",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "4d07152d49474c3e3f7048e58bf20a65b8a5b5770548e679d1a4e88a158a9ea7",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.church",
+      "node": "choose",
+      "slot": "choice0",
+      "woman": "minagho",
+      "text_sha256": "2de3ce89a355766c1bc55c55606d9b3a299f3c9d264ecb173ad6135af098d068",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.church",
+      "node": "judges_cuff",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "8899690eaee146018fcfabce9fc5b9217cc1dc5f2530ef55c3f62fbe1f6a3237",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.raid",
+      "node": "after_struck",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "b7f1eba03e8135dcb4666f426d47f1cfed83fda8bfe4dd97b2a3f84a1afdfccd",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.prayer",
+      "node": "ask",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "a04f22b7bd1701634c980181c7438ff3cf23b8d898fea12c6377526c65f44a2d",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.after.watch",
+      "node": "s45.watch",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "89a1603a88e435497db92aabbc669276ff665a98d816f376188c14636294417a",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "yaniel.trickster.beat.light",
+      "node": "better",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "5212c985f565a40f4e73bf2ace93fd11ef72c378893b0d6bae9fd35aab43d7cc",
+      "reason": "campaign captivity/rescue history, or discussion of a known relationship; no current speaker or bodily participation"
+    },
+    {
+      "scene": "targona.trickster.react.ix_a.yaniel",
+      "node": "start",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "33ecc350d2907d2d4816682814d0da9866dd68d6a63445520c840c80f40b0ad1",
+      "reason": "prayer, a professional reference, or the account of campaign/laboratory harm; no new appearance"
+    },
+    {
+      "scene": "herrax.house.predecessor",
+      "node": "@Entry",
+      "slot": "Entry",
+      "woman": "chivarro",
+      "text_sha256": "750ed73ba862a4c8602ca72289783cc4ae74bdfc18809c51cd2aa75dd5384cbc",
+      "reason": "question about the recorded prior removal request; no present Chivarro"
+    },
+    {
+      "scene": "herrax.house.the_one_who_left",
+      "node": "@Entry",
+      "slot": "Entry",
+      "woman": "arueshalae",
+      "text_sha256": "a7054d15c83d873a5963e2453ddfd00aed0dca92441fc5d32ce3f2293683c757",
+      "reason": "question about past acquaintance; no present Arueshalae"
+    },
+    {
+      "scene": "herrax.house.predecessor",
+      "node": "start",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "f50a7b877b47b180bd7311e099a034ae868061e65eea845f4cd138bd7908da0f",
+      "reason": "past couple/tenure or scar-story recollection, including a former target; Minagho does not act now"
+    },
+    {
+      "scene": "herrax.house.predecessor",
+      "node": "miss",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "de1f4365042b5c1ceac63e5e18e44664ca5c383feccdae30f405a1572601660c",
+      "reason": "past couple/tenure or scar-story recollection, including a former target; Minagho does not act now"
+    },
+    {
+      "scene": "herrax.house.eye.two",
+      "node": "start",
+      "slot": "text",
+      "woman": "minagho",
+      "text_sha256": "f22aa9e35dbfcd566e269baf3970ba9952479fe2883b79249525421ebeabf920",
+      "reason": "past couple/tenure or scar-story recollection, including a former target; Minagho does not act now"
+    }
+  ],
+  "class_sweep": {
+    "targona": 39,
+    "nidalynn": 7,
+    "herrax": 33,
+    "galfrey": 11,
+    "yaniel": 41
+  }
+}

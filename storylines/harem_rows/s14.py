@@ -4,9 +4,9 @@ No native fact is changed. FaneFinal/Cue_0020 (f2ccd1c255733504093d837043db34de,
 enGB fc3209bb-241b-4a9e-b5b9-ad8529d0327d) supports Galfrey's reservations,
 not a universal recollection or unconditional trust. No physical intimacy.
 
-Registration is reviewable but attendance is fail-closed: the current Table
-API cannot authenticate two bodies. The pending input below must be replaced
-by current contact checks by the coordinator, never produced by a choice.
+Registration retains the read-only attendance name for saved wrappers. J01's
+post-epoch pass evaluates it from current qualified bodies at the Table,
+never from a saved flag or a choice's Set.
 Attitude, final failure ownership, and W5 readers remain integrator-owned.
 """
 import copy

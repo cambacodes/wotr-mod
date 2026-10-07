@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>RRT_J01_TESTS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="J01ContactTests.cs" />
+    <Compile Include="../src/Story.cs" Link="Story.cs" />
+  </ItemGroup>
+</Project>

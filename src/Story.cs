@@ -449,6 +449,22 @@ namespace Tirabade
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
     }
 
+    // J01: current contact observations, never saved relationship progress.
+    public sealed class ParticipantContact
+    {
+        public string Kind = "body";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public ContactOption[] Options = Array.Empty<ContactOption>();
+    }
+
+    public sealed class ContactOption
+    {
+        public string[] Units = Array.Empty<string>();
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+    }
+
     public sealed class Scene
     {
         public string Id = "";
@@ -475,6 +491,9 @@ namespace Tirabade
         public string[] Pair = Array.Empty<string>();
         public string[] Participants = Array.Empty<string>();
         public string[] ParticipantWomen = Array.Empty<string>();
+        public bool PrivateParticipants;
+        public Dictionary<string, ParticipantContact> ParticipantContacts = new Dictionary<string, ParticipantContact>();
+        public string? ContactWitness;
         public string? Recovery;
         public string? AfterRecovery;
         public string? AfterDeparture;
@@ -843,7 +862,7 @@ namespace Tirabade
             if (state.Chapter < scene.MinChapter || state.Chapter > scene.MaxChapter || state.Has(scene.Id)) return false;
             if (scene.Chapters.Length > 0 && !scene.Chapters.Contains(state.Chapter)) return false;
             if (scene.Areas.Length > 0 && !scene.Areas.Contains(state.Area)) return false;
-            if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state) && !(progressedForbids?.Contains(flag) ?? false))) return false;
+            if (!scene.Requires.All(flag => ContactRequirementHeld(scene, flag, state)) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state) && !(progressedForbids?.Contains(flag) ?? false))) return false;
             if (scene.RequiresAny.Length > 0 && !scene.RequiresAny.Any(state.Has)) return false;
             if (!scene.RequiresAnyGroups.All(group => group.Any(state.Has))) return false;
             if (!RestAllowanceAvailable(story, scene, state) || !ParticipantsAvailable(story, scene, state)) return false;
@@ -852,7 +871,7 @@ namespace Tirabade
             var relationship = story.Relationships[scene.Relationship];
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             if (recovery != null && !state.Has("revive." + scene.Recovery + ".available")) return false;
-            if (state.Has(relationship.ClosedFlag) && scene.Recovery != "konomi" && scene.AfterRecovery == null
+            if (state.Has(relationship.ClosedFlag) && !scene.PrivateParticipants && scene.Recovery != "konomi" && scene.AfterRecovery == null
                 || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
                     && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(relationship, flag, state, scene))) return false;
             if (scene.Relationship == "tirabade")
@@ -893,7 +912,20 @@ namespace Tirabade
             if (succeeded) state.RestSpent.Clear();
         }
 
-        public static bool ParticipantsAvailable(Story story, Scene scene, Snapshot state) => scene.Participants.All(id => {
+        public static bool ParticipantContactsAvailable(Scene scene, Snapshot state) => scene.ParticipantContacts.Values.All(contact =>
+            contact.Requires.All(state.Has) && !contact.Forbids.Any(state.Has)
+            && (contact.Kind != "body" || contact.Options.Any(option => option.Requires.All(state.Has)
+                && !option.Forbids.Any(state.Has) && option.Units.Length > 0 && option.Units.Any(state.AvailableContacts.Contains))));
+
+        private static bool ContactRequirementHeld(Scene scene, string flag, Snapshot state) => flag == scene.ContactWitness
+            ? scene.ParticipantContacts.Count > 0 && ParticipantContactsAvailable(scene, state) : state.Has(flag);
+
+        public static IEnumerable<string> ParticipantContactUnits(Scene scene) => scene.ParticipantContacts.Values
+            .SelectMany(contact => contact.Options).SelectMany(option => option.Units);
+
+        public static bool ParticipantsAvailable(Story story, Scene scene, Snapshot state) => ParticipantContactsAvailable(scene, state)
+            && (scene.PrivateParticipants ? scene.Participants.All(id => !state.Has(DegradedPrefix + id)
+                && !story.Relationships[id].UnavailableFlags.Any(flag => Blocks(story.Relationships[id], flag, state, scene))) : scene.Participants.All(id => {
             var named = scene.ParticipantWomen.Where(woman => story.SeatWomen[woman].Relationship == id).ToArray();
             var otherWomen = story.SeatWomen.Where(pair => pair.Value.Relationship == id && !named.Contains(pair.Key))
                 .SelectMany(pair => pair.Value.UnavailableFlags);
@@ -908,7 +940,7 @@ namespace Tirabade
                 return woman.Requires.All(state.Has) && !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
                     && !woman.UnavailableFlags.Any(flag => state.Has(flag)
                         && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
-            });
+            }));
 
         // eng7-l09: shared runtime/test contract for incurred transaction state.
         public static void EnterNode(Node node, Snapshot state)
@@ -1095,9 +1127,11 @@ namespace Tirabade
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
         {
             if (!ParticipantsAvailable(story, scene, state)) return false;
-            if (scene.Relationship == "household" && IsPresenceHubScene(scene)
+            if (IsTableScene(scene) && state.Has(story.Relationships[scene.Relationship].ClosedFlag)) return false;
+            if (!scene.PrivateParticipants && scene.Relationship == "household" && IsPresenceHubScene(scene)
                 && (!HouseholdPresenceAttachment(story, scene) || !PresenceWanted(story.Presences[scene.InteractionHub!], state))) return false;
-            if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
+            if (scene.ContactUnit == null && scene.ParticipantContacts.Count == 0 && scene.Participants.Length == 0
+                && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             var contacts = scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit });
             // eng7-l05: a failed nominated hub cannot advertise a generic native actor at another placement.
@@ -1111,8 +1145,11 @@ namespace Tirabade
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
-                && scene.Requires.All(state.Has)
-                && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && ForbidHolds(scene, flag, state))
+                && scene.Requires.All(flag => ContactRequirementHeld(scene, flag, state))
+                && !scene.Forbids.Any(flag => (IsNativeFlag(story, flag) || flag.EndsWith(".epoch_unavailable", StringComparison.Ordinal)
+                    || flag.EndsWith(".returned_actor_lost", StringComparison.Ordinal) || flag == "engine.l12.commander_unreturned"
+                    || flag.StartsWith("crossroute.", StringComparison.Ordinal) && flag.EndsWith("unavailable", StringComparison.Ordinal))
+                    && ForbidHolds(scene, flag, state))
                 && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
                     && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(story.Relationships[scene.Relationship], flag, state, scene))
                 && (scene.AfterDeparture == null || !state.Has(story.Relationships[scene.Relationship].ClosedFlag)
@@ -2297,6 +2334,8 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
             var clocks = new HashSet<string>(story.Latches.Keys.Concat(story.Scenes.Select(scene => scene.Id))
                 .Concat(story.Scenes.SelectMany(scene => scene.Nodes.SelectMany(node => node.EnterSet.Concat(node.Choices.SelectMany(choice => choice.Set))))));
+            var contactKeys = new HashSet<string>(authoredFlags.Concat(nativeKeys).Concat(derivedFlags)
+                .Concat(story.Derived.Keys).Concat(story.Counts.Keys));
             foreach (var scene in story.Scenes)
             {
                 if (scene.Relationship == "household" && scene.RestAllowance != null && scene.DelayHours > 0
@@ -2305,6 +2344,41 @@ namespace Tirabade
                     throw new InvalidOperationException("Delayed household scene lacks a deed clock on every alternative: " + scene.Id);
                 if (scene.RestAllowance != null && !story.RestAllowances.ContainsKey(scene.RestAllowance))
                     throw new InvalidOperationException("Unknown rest allowance: " + scene.Id);
+                if (scene.PrivateParticipants && (scene.Relationship != "household" || scene.InteractionHub == TableHub
+                    || scene.Participants.Length == 0 || scene.ParticipantContacts.Count == 0
+                    || !scene.Requires.Contains("trickster.now") || !scene.Forbids.Contains("engine.l12.commander_unreturned")))
+                    throw new InvalidOperationException("Invalid private participant channel: " + scene.Id);
+                foreach (var pair in scene.ParticipantContacts)
+                {
+                    var contact = pair.Value;
+                    if (string.IsNullOrWhiteSpace(pair.Key) || contact == null
+                        || !new[] { "body", "letter", "projection", "banner", "eye" }.Contains(contact.Kind)
+                        || contact.Requires == null || contact.Forbids == null || contact.Options == null
+                        || contact.Requires.Length == 0 || contact.Requires.Concat(contact.Forbids).Any(k => !contactKeys.Contains(k))
+                        || contact.Kind != "body" && contact.Options.Length != 0)
+                        throw new InvalidOperationException("Invalid current participant contact: " + scene.Id + "/" + pair.Key);
+                    foreach (var option in contact.Options)
+                        if (option == null || option.Units == null || option.Units.Length == 0
+                            || option.Units.Any(id => !Guid.TryParseExact(id, "N", out _))
+                            || option.Requires == null || option.Forbids == null
+                            || option.Requires.Concat(option.Forbids).Any(k => !contactKeys.Contains(k)))
+                            throw new InvalidOperationException("Invalid body contact alternative: " + scene.Id + "/" + pair.Key);
+                }
+                if (scene.ParticipantContacts.Count > 0)
+                    foreach (var route in scene.Participants)
+                    {
+                        var named = scene.ParticipantWomen.Where(w => story.SeatWomen[w].Relationship == route).ToArray();
+                        var required = named.Length > 0 ? named : scene.ParticipantContacts.ContainsKey(route) ? new[] { route }
+                            : story.SeatWomen.Where(p => p.Value.Relationship == route).Select(p => p.Key).ToArray();
+                        if (required.Length == 0 || required.Any(w => !scene.ParticipantContacts.ContainsKey(w)))
+                            throw new InvalidOperationException("Missing current participant contact: " + scene.Id + "/" + route);
+                    }
+                if (scene.ContactWitness != null && (!scene.Requires.Contains(scene.ContactWitness)
+                    || scene.ParticipantContacts.Count == 0 || scene.ParticipantContacts.Values.Any(c => c.Kind != "body")
+                    || authoredFlags.Contains(scene.ContactWitness)
+                    || nativeKeys.Contains(scene.ContactWitness) || story.Derived.ContainsKey(scene.ContactWitness)
+                    || story.Counts.ContainsKey(scene.ContactWitness) || story.Latches.ContainsKey(scene.ContactWitness)))
+                    throw new InvalidOperationException("Current contact witness must be evaluated, never saved: " + scene.Id);
                 if (scene.TableHosted && (!IsRemote(scene) || scene.Kind != "visit" || !IsTableScene(scene)))
                     throw new InvalidOperationException("TableHosted requires a Table visit: " + scene.Id);
                 if (scene.Participants == null || scene.ParticipantWomen == null || scene.Pair == null

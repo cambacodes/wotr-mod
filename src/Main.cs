@@ -424,7 +424,8 @@ namespace Tirabade
                 foreach (var pair in story.Revivals)
                     if (Resolve<BlueprintUnit>(pair.Value.Unit, "Revival unit " + pair.Key) is BlueprintUnit u) revivalUnits.Add(pair.Key, u);
                     else Degrade(pair.Value.Relationship, "revival unit for " + pair.Key + " is missing");
-                foreach (var guid in story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct())
+                foreach (var guid in story.Scenes.SelectMany(s => Rules.ParticipantContactUnits(s)
+                    .Concat(s.ContactUnit == null ? Array.Empty<string>() : new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits))).Distinct())
                     if (Resolve<BlueprintUnit>(guid, "Contact unit " + guid) is BlueprintUnit u) contactUnits.Add(guid, u);
                 foreach (var scene in story.Scenes.Where(s => s.ContactUnit != null))
                     if (new[] { scene.ContactUnit! }.Concat(scene.AdditionalContactUnits).Any(guid => !contactUnits.ContainsKey(guid)))
@@ -781,7 +782,10 @@ namespace Tirabade
             {
                 string id = scene.Id + "." + node.Id;
                 var cue = New<BlueprintCue>("cue." + id);
-                cue.Conditions = Conditions();
+                // Keep the book page and its safe exit visible after contact loss,
+                // but suppress the next living speech before it is displayed.
+                cue.Conditions = !inline && scene.ParticipantContacts.Count > 0
+                    ? Conditions(new RouteCondition { Continuation = scene }) : Conditions();
                 cue.OnShow = inline && node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 cue.OnStop = Actions();
                 cue.Speaker = inline ? InlineSpeaker(node, nativeReturn != null && node.Speaker == scene.Owner ? nativeReturn.Speaker : null)
@@ -832,7 +836,7 @@ namespace Tirabade
                 var page = local[node.Id];
                 var answers = page is BlueprintBookPage book ? book.Answers : ((BlueprintCue)page).Answers;
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
-                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0 || scene.ParticipantContacts.Count > 0) ? scene : null;
                 for (int i = 0; i < node.Choices.Count; i++)
                 {
                     var choice = node.Choices[i];
@@ -1025,7 +1029,7 @@ namespace Tirabade
             foreach (string list in scene.AnswerLists)
             {
                 string prefix = scene.Id + "." + list;
-                var continuation = scene.Participants.Length > 0 ? scene : null;
+                var continuation = scene.Participants.Length > 0 || scene.ParticipantContacts.Count > 0 ? scene : null;
                 CueSetup(out var returnCue, "cue." + prefix + ".return", scene.ReturnText ?? "{n}The moment passes. The conversation resumes.{/n}");
                 var listReference = new BlueprintAnswerBaseReference();
                 Field(listReference, "deserializedGuid", BlueprintGuid.Parse(list));
