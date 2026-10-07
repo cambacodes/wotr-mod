@@ -47,7 +47,8 @@ STING_FLIRTED = K + "sting_flirted"
 NOTE_RETURNED = K + "note_returned"
 LETTER_SOLD_TOLD = K + "letter_sold_told"
 LETTER_UNSENT_TOLD = K + "letter_unsent_told"
-MARKSMEN_TOLD = K + "marksmen_told"
+MARKSMEN_TOLD = K + "marksmen_told"  # Legacy receipt retained; no new discussion sets disclosure.
+INTRO_REQUESTED = K + "introduction_requested"
 MARKSMEN_KEPT = K + "marksmen_kept"
 KISSED = K + "kissed"
 LETTER_SENT = K + "letter_sent"
@@ -174,7 +175,7 @@ meet(LAST_WORDS, "Her story", '"You said you wanted to ask me something."', [
         c('"I don\'t know where they went."', "carry"),
         c('"Write it again. I\'ll see that it goes."', "carry")),
     kay("tomb", '''"And you sent it. My letter. To Avennara, at the border." {n}Her voice does something complicated on the name.{/n}
-"I know you did, because there's a stone with my name on it in the clearing where Forn's men shot me, and there are Kyonin marksmen in your barracks drinking to my memory. I saw them from the other side of the square. They looked well."''',
+"I know you did. Your officers recorded the Kyonin marksmen's arrival, and there's a stone with my name on it in the clearing where Forn's men shot me. Someone read my words and came west."''',
         c('"You could go and tell them you\'re alive."', "friends"),
         c('"It was what you asked for."', "asked")),
     kay("friends", '''"And say what? 'Hello, I'm your tragic martyr, I got better'?" {n}She almost laughs.{/n}
@@ -239,12 +240,12 @@ visit(HER_TOMB, "A very tasteful stone", [
         c("[Ride back beside her.]")),
     kay("under", '''"Is there anyone in it? Did they find me?" {n}She doesn't wait for an answer.{/n} "Don't tell me. I'd rather not know which of me is down there."
 {n}She turns away from the stone. Behind her the Worldwound's light is a sore red line along the horizon.{/n}
-"The marksmen who built this are in your army now, soldier. Fifty of them. I've heard them singing in the barracks at night. Kyonin songs I haven't heard since I was a girl."''',
+"Fifty marksmen came west when my letter reached home. They raised this before they went to war. I remember those songs from the border forts, soldier. I wonder how many of them will get home to sing them."''',
         c('"I could bring you to them."', "bring"),
         c('"They don\'t have to know. Not unless you want them to."', "keep")),
     kay("bring", '''{n}She is quiet for a while, looking at the carved wasp. Then, without turning her head:{/n}
-"Their captain. Only her. She was a wasp's sister once; she'll know what she's looking at." {n}A beat.{/n} "If she draws on me, soldier, you don't stop her. That's hers to decide."''',
-        c("[Wait while she lingers at the stone.]", "scratch", flags=(MARKSMEN_TOLD,))),
+"Find out who's left first. If their captain is alive, ask her to meet me. Only her." {n}She looks back at the carved wasp.{/n} "Not today. And don't tell her what I am before I get there. If she draws on me when she sees me, you don't stop her."''',
+        c("[Wait while she lingers at the stone.]", "scratch", flags=(INTRO_REQUESTED,))),
     kay("keep", '''"Good." {n}It comes out faster than she means it to.{/n}
 "Let them keep their martyr. She's better company than I am, and she never checks the clock in the mornings." "Thank you for riding out with me. I won't come often."''',
         c("[Wait while she lingers at the stone.]", "scratch", flags=(MARKSMEN_KEPT,))),
@@ -427,7 +428,7 @@ meet(OTHER_YOU, "The other one", '"You keep looking at me like I\'m someone else
     kay("compliment", '''"Take it however you like. I only said it because it's true, and rule three cuts both ways." {n}She looks away, at the muster, and doesn't take it back.{/n}''',
         c("[Leave it there.]")),
     kay("shyka_sending", '''"Shyka paid me a visit last night. It wore my face, then yours, then a goat's." {n}She grimaces.{/n}
-"It said you'd called into an empty hall until it answered. Then you paid what it asked. Somewhere you've said yes and meant every word. It has that somewhere put away, soldier. It was pleased with itself."''',
+"It said you'd laid your messengers' dust-stained letters on the camp table and spoken your offer over them. It answered in the dust. Then you paid what it asked. Somewhere you've said yes and meant every word. It has that somewhere put away, soldier. It was pleased with itself."''',
         c("Continue", "branch")),
 ], requires=(RULES, STALLED), delay=48)
 

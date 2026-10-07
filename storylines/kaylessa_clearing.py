@@ -111,10 +111,10 @@ away(NIGHT, "Where I was meant to die", [
     kay("down", '''"There. Now nobody's holding anything." {n}She is breathing hard, and her skin under your hands is cool as river stone and getting warmer, and every muscle Anemora's work put in her is moving at once.{/n}
 "Don't you dare be gentle with me, soldier. I've had enough careful hands for one life. I want yours."''',
         c("[Pull her down onto the cloak.]", "cut", flags=(NIGHT_FLAG,))),
-    nar("cut", '''{n}She lands on the cloak and catches you by the hair. Her leathers slip from one shoulder; she presses your hand against the bare skin and bites a laugh off against your mouth. "Here, soldier." She draws you over her, kissing hard, the courier's grey bunching beneath you.{/n}''',
+    nar("cut", '''{n}She lands on the cloak and catches you by the hair. Her leathers slip from one shoulder; she presses your hand against the bare skin and bites a laugh off against your mouth. "Here, soldier." She draws you over her, kissing hard, the courier's grey bunching beneath you. The dagger stays on the grass beside the cloak.{/n}''',
         c("[...]", "explicit.1")),
     # Explicit slot brief: private consummation; her initiative, actual custody, no cure.
-    nar("explicit.1", '''{n}Kaylessa catches your collar and draws you onto the cloak, kissing hard. The dagger lies beside you, where she put it. Behind the trees Drezen's watch calls out; she keeps you close.{/n}''', c("[...]")),
+    nar("explicit.1", '''{n}Behind the trees Drezen's watch calls out; she keeps you close.{/n}''', c("[...]")),
 ], requires=(), delay=12)
 
 
@@ -134,23 +134,23 @@ away(MORNING, "Grey light", [
         c("Continue", "fed", requires=(BEAST_FED,)),
         c("Continue", "clean", requires=(SWAP_CLEAN,), forbids=(BEAST_FED,)),
         c("Continue", "fumbled", requires=(SWAP_FUMBLED,), forbids=(BEAST_FED,))),
-    kay("stalled", '''"Still there. Same place. The thumb didn't slip." {n}She breathes out slowly.{/n} "I half thought it would. I thought something like last night was exactly the kind of thing that feeds it. It didn't. It just sat there, like a dog that's been told."''',
+    kay("stalled", '''"Still there. Same place. The thumb didn't slip." {n}That morning she had breathed out slowly.{/n} "I half thought it would. I thought something like last night was exactly the kind of thing that feeds it. It didn't. It just sat there, like a dog that's been told."''',
         c("Continue", "now")),
-    kay("fed", '''"It's quiet." {n}She says it as if it were bad news.{/n} "It's been hungry since your cells, soldier. Every night I can feel it at the back of my teeth. Last night it was quiet. I don't know if that's because of you or in spite of you, and I don't trust it either way."''',
+    kay("fed", '''"It's quiet." {n}She had said it as if it were bad news.{/n} "It's been hungry since your cells, soldier. Every night I can feel it at the back of my teeth. Last night it was quiet. I don't know if that's because of you or in spite of you, and I don't trust it either way."''',
         c("Continue", "now")),
-    kay("clean", '''"Same place as yesterday." {n}She finally looks at you, over the shawl.{/n} "I thought a night like that would feed it. It didn't get a crumb. It'll move again next week; it always does, a little, like water through a boot. But not for you. Not for last night." {n}She rubs her thumb over the knots.{/n} "I'm not going to say anything more about it in case it hears."''',
+    kay("clean", '''"Same place as yesterday." {n}She had finally looked at you over the shawl.{/n} "I thought a night like that would feed it. It didn't get a crumb. It'll move again next week; it always does, a little, like water through a boot. But not for you. Not for last night." {n}She had rubbed her thumb over the knots.{/n} "I'm not going to say anything more about it in case it hears."''',
         c("Continue", "now")),
-    kay("fumbled", '''"It's where it was after the ravine. No further." {n}She rubs her hands together, hard, as if they were cold.{/n} "I was afraid it would come for you. Last night. When I stopped thinking. It didn't. I don't know what that means, and I'm not going to ask."''',
+    kay("fumbled", '''"It's where it was after the ravine. No further." {n}She had rubbed her hands together, hard, as if they were cold.{/n} "I was afraid it would come for you. Last night. When I stopped thinking. It didn't. I don't know what that means, and I'm not going to ask."''',
         c("Continue", "now")),
-    kay("now", '''"They'll be missing you on the walls. There's a war on, apparently." {n}She stands, and holds out a hand to pull you up, and doesn't let go straight away once you're standing.{/n}
+    kay("now", '''"They'll be missing you on the walls. There's a war on, apparently." {n}She had stood and held out a hand to pull you up. She had kept hold of it after you were standing.{/n}
 "Rule one still stands, soldier. Not your drow. But last night I was yours, and I chose it, and I'll choose it again if I feel like it. Mind you remember the difference."''',
-        c('"I\'ll remember."', "ride"),
-        c('"Stay a little longer. The war can wait an hour."', "longer", flags=(HELD_HER,))),
-    kay("ride", '''"Good." {n}She's already walking toward the horses, and over her shoulder:{/n} "You snore, by the way. I'm putting it in my report."''',
-        c("[Ride back to Drezen.]")),
-    kay("longer", '''"It can't. That's the whole trouble with wars." {n}But she sits back down on the stone, and after a moment she leans against you, shoulder to shoulder, and lets the horns call twice more before she moves.{/n}
+        c("[Remember promising her you would.]", "ride"),
+        c("[Remember asking her to stay another hour.]", "longer", flags=(HELD_HER,))),
+    kay("ride", '''"Good." {n}She had already been walking toward the horses when she called over her shoulder:{/n} "You snore, by the way. I'm putting it in my report."''',
+        c("[Return to the present, under the awning.]")),
+    kay("longer", '''"It can't. That's the whole trouble with wars." {n}But she had sat back down on the stone and leaned against you, shoulder to shoulder. The horns had called twice more before she moved.{/n}
 "One hour, soldier. And then you go and be a Commander, and I go and sit under my awning, and the watch can keep its guesses."''',
-        c("[Ride back to Drezen.]")),
+        c("[Return to the present, under the awning.]")),
 ], requires=(NIGHT_FLAG,), delay=1, any_groups=((STALLED, SWAP_CLEAN, SWAP_FUMBLED),))
 
 
@@ -304,7 +304,7 @@ here(AVENNARA, "From the border", '"You\'ve got a letter."', [
         c("Continue", "end", forbids=("kaylessa.wasps.remembered_the_courier",))),
     nar("courier", '''{n}"Your account of the Green Road courier reached us. We are checking the missing riders against the rolls. What you remember of her capture will go to her family. We will put her own name on the message."{/n}
 {n}Kaylessa presses her thumb against the words until the paper creases.{/n}''', c("Continue", "end")),
-], requires=(LETTER_SENT,), delay=72)
+], requires=(LETTER_SENT,), delay=24 * 30)  # Authored round trip: ten days each way, plus circulation.
 
 
 # --- World-specific aftermath: Shyka's question, the Council's next hunter, the arrow's scar. -------------------------
