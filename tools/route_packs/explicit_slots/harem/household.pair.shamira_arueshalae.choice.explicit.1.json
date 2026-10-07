@@ -5,8 +5,15 @@
   "scene": "Authored Chapter 5, the Fool King's emptied upper gallery. Settlement first relinquished a freshly asserted naming claim; Arueshalae returned Shamira's ordinary bracelet. Two later separate political deeds preceded this encounter: Arueshalae kept Shamira's humiliating landing private; Shamira deliberately missed a counterstroke using Arueshalae's private predatory boast. Both independently want each other. The committing warded answer consumes one actual Scroll of Death Ward and the established chapel reader applies it to Shamira. Seven minutes remain at the cut. End bodily intimacy before the protection expires; there is no new cure or feeding, mind passenger exchange, compelled desire, victim or audience. Write only woman-woman intimacy, never an absent Commander participant. Empty slot preserves the heated cut and morning continuity.",
   "last_line": "Shamira catches Arueshalae by the waist. Arueshalae pulls her closer by the borrowed coat, laughing against her mouth. The chapel reader's ward has seven minutes left; they leave the cushions where they fall.",
   "aftermath": "Separate sleep. Arueshalae has appropriated the best cushions; Shamira demands them back and calls her Arueshalae. The returned bracelet remains Shamira's. Both retain appetite, predatory politics and the two costly secrets. Morning requires both current bodies, living Commander, current corruption and the actual prior choice; eight hours from the latest witness.",
-  "speakers": {"S": "Shamira", "A": "Arueshalae"},
-  "commander_variants": [],
+  "speakers": {
+    "S": "Shamira",
+    "A": "Arueshalae"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
   "min_lines": 14,
-  "max_lines": 20
+  "max_lines": 20,
+  "example": "N: The door remains closed."
 }

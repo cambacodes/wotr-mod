@@ -1,14 +1,9 @@
 {
   "slot_id": "targona.ward_evening.explicit.1",
   "voice": "TARGONA: compassionate soldier, earnest and plain-speaking; privately impatient, frank about wanting a living lover rather than tending another patient. Affectionate practical humor, decisive hands, desire owned without apology. She has anger of her own and detects the Commander's tricks. No demon-style domination, Heaven clerk, sermon, HR choreography or shame about sex. Write new dialogue; do not reuse the example.",
-  "facts": [
-    "Silver-haired angel with a natural white-feathered wing (TargonaWings/Cue_0001, 795e061825caf2f4fba256f50cabfe71).",
-    "The original artificial wing is mismatched bone, purple membrane and scabs/scales; no second feathered wing. Its current treatment state is not specified in this interval.",
-    "She is a compassionate captive of Areelu in native canon, not a demon seductress or someone healed by romantic contact.",
-    "The covered ward, guardroom, brazier and second-bell arrangement are authored implemented scene facts."
-  ],
+  "facts": "Silver-haired angel with a natural white-feathered wing (TargonaWings/Cue_0001, 795e061825caf2f4fba256f50cabfe71).\nThe original artificial wing is mismatched bone, purple membrane and scabs/scales; no second feathered wing. Its current treatment state is not specified in this interval.\nShe is a compassionate captive of Areelu in native canon, not a demon seductress or someone healed by romantic contact.\nThe covered ward, guardroom, brazier and second-bell arrangement are authored implemented scene facts.",
   "scene": "Chapter 5, Trickster ward-resident history, Drezen watchtower guardroom after the wall-walk kiss. Only Commander and Targona. This is a later intimate return, not another first night. Her patients already have the existing watched coverage: inspection-white-lie or disclosed paid novices, with no new payment. She has recognized the lie if that option was taken; do not repeat or forgive it in this shared interval. BEFORE: she lit the brazier, removed her habit, drew the Commander onto the bench, kissed their throat and reached for their belt. INTERVAL: mutual intimacy through warmth, kisses, close movement and her impatience, without graphic sexual description. REQUIRED BEATS: she seeks closeness of her own accord; the narrow bench prompts a practical adjustment and brief amusement; one direct affectionate line that belongs to an already-chosen lover; no wounded cot, novice, chaplain or sentry enters or observes. Her hour is real, not an enchanted unlimited night. End exactly at last_line. AFTER: existing second bell, she dresses first, returns for a hard farewell kiss and goes back to the rows. No new clock mechanic, debt, oath, flag or power exchange. PHYSICAL CONTINUITY: silver hair; a natural white-feathered wing. Leave the altered side undescribed across treatment histories; never invent black feathers or restored anatomy.",
-  "last_line": "N: For a while the brazier is the only sound in the room.",
+  "last_line": "N: At the second bell she straightens your collar, kisses the hollow beneath your jaw, and is on the stair before you have found your other boot. At the foot she stops, turns back, and kisses you once more, hard.",
   "speakers": {
     "T": "Targona"
   },

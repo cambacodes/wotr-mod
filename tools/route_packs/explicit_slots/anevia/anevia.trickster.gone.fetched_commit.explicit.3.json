@@ -1,13 +1,8 @@
 {
   "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
-  "facts": [
-    "Anevia is a woman and Irabeth Tirabade's wife.",
-    "Anevia works as a scout and investigator alongside the Eagle Watch.",
-    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
-    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
-  ],
+  "facts": "Anevia is a woman and Irabeth Tirabade's wife.\nAnevia works as a scout and investigator alongside the Eagle Watch.\nOne native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.\nNo canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them.",
   "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 5, authored gate-side private room while Beth is away with the Queen. Fetched history: Beth actually fetched her; retain the 96h journey and 6h commitment appointment, no wardrobe memory. Away-wife affair; wedding ring and live marriage remain. No helper or wife appears in the room. Her terms give these nights only; no new breakup or discovery condition. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
-  "last_line": "N: Anevia retrieves her boots before the next watch comes down from the wall.",
+  "last_line": "N: Before the muster bell, Anevia sits up and reaches for her boots. Her ring catches the last of the lantern light.",
   "speakers": {
     "A": "Anevia"
   },

@@ -1,7 +1,7 @@
 {
   "voice": "Gesmerha: proud Sarkorian woodshaper, ancestor-conscious, blunt and dryly funny; frank about wanting a lover, impatient with flattering patronage. She speaks in short concrete phrases, occasionally curses, and keeps authority over her work and her time. Blindness means she learns through touch and sound, not supernatural knowledge. No autonomous hands deciding affection, obedience test, therapeutic speech, maxims or redeemer role. Write new dialogue; voice traits are not lines to imitate. Canon facts: Marhevok personally cut out her eyes after her truthful carving exposed a monstrous Lady; journeymen finished his statue; she fears losing her hands and refuses further maiming. These facts support voice, not an erotic treatment of her injury. No invented body measurements, eye color, magical sight or healed eyes. Any hair, clothing, furniture or return scars in the scene are authored route staging, not additional canon biography.",
   "scene": "Registered Chapter 5 turning-point payoff at Drezen smith’s carver corner; also preserve the scene’s existing Chapter 3 branch. Gesmerha and Commander alone after smith goes home. Forge banked; finished paid sculpture set apart; sharp tools put away; cloth covers resting surface. Required beats: she completed the ancestral commission, washed her palms and herself chose this lover after the existing no-purses oath; ONE completed sculpture, no wooden-hands repair piece. Appetite is hers, not a supernatural motion of her hands. No blade test, forced stillness, bought body, resurrection gratitude or likeness obligation. Stage non-graphic chosen intimacy; leave sexual act unfilled. End before morning: she starts a smaller private likeness from memory and keeps it, then sends the Commander to the war with an invitation to return.",
-  "last_line": "G: The tools can wait.",
+  "last_line": "N: The forge is still banked. Gesmerha sits beside the trestles with a small block in her lap. She reaches back for your hand when she hears you wake, and presses it to the rough mouth she has carved.",
   "speakers": {
     "G": "Gesmerha"
   },
@@ -24,5 +24,6 @@
     "13f2b37e28864ba4b882d13fad90f7c5",
     "597b7e82dbec7804490f02048e4bf1ef"
   ],
-  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts."
+  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts.",
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

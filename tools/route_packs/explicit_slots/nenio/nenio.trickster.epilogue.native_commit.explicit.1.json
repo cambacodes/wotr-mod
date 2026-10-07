@@ -26,5 +26,6 @@
   "host_scene": "nenio.trickster.epilogue.native_commit",
   "anchor": "page: after initiating intimacy paragraph, before morning",
   "default_text": "{n}Nenio catches your collar and pulls you down with her. The fallen pencil rolls under the chair; she leaves it there. Her next kiss is impatient.{/n} \"The library can wait until morning.\"",
-  "continuity": "Alternative host of the same event; never render alongside its sibling. Supplied facts are canon constraints; the room and romantic event are labelled authored. The example demonstrates tags and voice only and is not required dialogue."
+  "continuity": "Alternative host of the same event; never render alongside its sibling. Supplied facts are canon constraints; the room and romantic event are labelled authored. The example demonstrates tags and voice only and is not required dialogue.",
+  "narration": "third-past"
 }
