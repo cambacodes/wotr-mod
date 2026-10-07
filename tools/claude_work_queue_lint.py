@@ -17,7 +17,7 @@ def check(data):
         return ["work queue must be a list"]
     errors = []
     required = {"scene", "woman", "beat", "ruling"}
-    allowed = required | {"node", "choice"}
+    allowed = required | {"node", "choice", "why", "finding", "dependency"}  # audit finding id, motivation, blocking dependency
     for index, entry in enumerate(data):
         if (not isinstance(entry, dict) or not required <= set(entry) <= allowed
                 or any(not isinstance(entry.get(k), str) or not entry[k].strip()
