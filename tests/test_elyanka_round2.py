@@ -2,7 +2,7 @@
 import unittest
 
 from tests.story_fixture import fresh_story
-from tools.rrt_verify import Model, SimState, sim_complete
+from tools.rrt_verify import Model, SimState, sim_complete, sim_available
 
 
 class ElyankaRound2Tests(unittest.TestCase):
@@ -44,7 +44,7 @@ class ElyankaRound2Tests(unittest.TestCase):
 
     def test_both_morning_answers_and_horse_receipts_after_daeran_loss(self):
         cord = self.node('visit.hearse', 'cord')
-        for loss in ('daeran.dead', 'daeran.kicked_out', 'daeran.plot_absent'):
+        for loss in ('daeran.dead', 'daeran.kicked_out', 'daeran.plot_absent', 'daeran.in_party'):
             flags = self.flags(loss, 'elyanka.committed')
             for index in (2, 3):
                 answer = cord['Choices'][index]
@@ -56,6 +56,81 @@ class ElyankaRound2Tests(unittest.TestCase):
                 self.assertEqual(['horses'], [c['Next'] for c in exits])
             self.assertIn('elyanka.trickster.horses_balked',
                           self.node('visit.hearse', 'horses2')['Choices'][0]['Set'])
+
+    def test_targona_recollection_requires_current_presence(self):
+        choices = self.node('beat.table', 'welcome')['Choices']
+        for history in ((), ('targona.trickster.returned',),
+                        ('targona.trickster.returned', 'targona.returned_actor_lost'),
+                        ('targona.trickster.returned', 'targona.epoch_unavailable')):
+            # Loss occurred long before yesterday; a historical return cannot date a visit.
+            flags = self.flags(*history)
+            enabled = [c['Next'] for c in choices if self.enabled(c, flags)]
+            self.assertEqual(['targona'] if 'targona.present_now' in flags
+                             and 'targona.trickster.in_drezen' in flags else ['choose'], enabled)
+
+    def test_dismissed_creditor_gets_only_distant_sacrifice_ending(self):
+        flags = self.flags('elyanka.trickster.left_free', 'elyanka.trickster.owned',
+                           'elyanka.closed', 'sacrifice')
+        scene = self.scenes['elyanka.trickster.epilogue.left_free_mourned']
+        self.assertTrue(self.enabled(scene, flags))
+        text = scene['Nodes'][0]['Text'] + ' '.join(
+            p['Text'] for p in scene['Nodes'][0]['Paragraphs'] if self.enabled(p, flags))
+        self.assertIn('in Ustalav, months late', text)
+        self.assertIn('no flesh to fetch', text)
+        self.assertFalse(self.enabled(self.scenes['elyanka.trickster.epilogue.eaten'], flags))
+        for blocker in ('trickster.commander_back', 'lastcall.active'):
+            self.assertFalse(self.enabled(scene, flags | {blocker}))
+
+    def test_minimum_and_delayed_delivery_have_consistent_accounts(self):
+        for delay in (24, 24 * 21):
+            state = SimState(5, delay)
+            state.flags.update(('trickster', 'elyanka.trickster.executor',
+                                'elyanka.trickster.door_seen'))
+            sim_complete(self.model, state)
+            state.times.update({f: 0 for f in state.flags})
+            scene = self.model.by_id['elyanka.trickster.executor.haggle']
+            self.assertTrue(sim_available(self.model, scene, state))
+            state.hour = 23
+            self.assertFalse(sim_available(self.model, scene, state))
+            self.assertIn('these orders stand', self.node('door.hearse', 'plan')['Text'])
+            self.assertIn('still not been shown', self.node('executor.haggle', 'why')['Text'])
+            self.assertNotIn('a day and a night', self.node('executor.haggle', 'why')['Text'])
+        for delay in (48, 24 * 21):
+            state = SimState(5, delay)
+            state.flags.update(('trickster', 'elyanka.trickster.declined',
+                                'elyanka.trickster.owned', 'elyanka.trickster.tested'))
+            sim_complete(self.model, state)
+            state.times.update({f: 0 for f in state.flags})
+            scene = self.model.by_id['elyanka.trickster.commit.her_move']
+            self.assertTrue(sim_available(self.model, scene, state))
+            state.hour = 47
+            self.assertFalse(sim_available(self.model, scene, state))
+            self.assertIn('Since that supper', self.node('commit.her_move', 'hair')['Text'])
+            self.assertNotIn('Two days', self.node('commit.her_move', 'hair')['Text'])
+
+    def test_full_claim_page_respects_all_inquiry_outcomes(self):
+        for inquiry in (None, 'told_seelah', 'misled', 'hers'):
+            history = ['elyanka.committed', 'trickster.secret.elyanka_rites']
+            if inquiry:
+                history.append('elyanka.trickster.inquiry.' + inquiry)
+            flags = self.flags(*history)
+            text = ' '.join(p['Text'] for p in self.node('epilogue.claim', 'page')['Paragraphs']
+                            if self.enabled(p, flags))
+            self.assertEqual(inquiry is None, 'nobody in authority ever came' in text)
+            self.assertEqual(inquiry is not None, 'counted the guests' in text)
+
+    def test_horse_and_warning_consequences_follow_their_causes(self):
+        self.assertIn('door slips from your hand', self.node('visit.hearse', 'horses')['Text'])
+        self.assertNotIn('trained to carry the dead', self.node('visit.hearse', 'horses')['Text'])
+        flags = self.flags('elyanka.trickster.horses_balked', 'elyanka.trickster.tyrant.lastwall_warned',
+                           'elyanka.trickster.master.killed')
+        text = ' '.join(p['Text'] for p in self.node('epilogue.claim', 'page')['Paragraphs']
+                        if self.enabled(p, flags))
+        self.assertIn('glass rattled', text)
+        self.assertIn('hopes to investigate', text)
+        self.assertIn('next envoy came with armed attendants', text)
+        self.assertNotIn('watched more closely', text)
+        self.assertNotIn('Way sent no one else', text)
 
     def test_nidalynn_flight_removes_only_the_question(self):
         flags = self.flags('nidalynn.started', 'nidalynn.closed', 'nidalynn.trickster.left_with_it')

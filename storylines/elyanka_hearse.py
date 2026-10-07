@@ -208,8 +208,9 @@ visit(E + "beat.table", "Her Lady's table", [
         c("Continue", "welcome")),
     el("welcome", '''"Commander." {n}Thirty masked faces turn toward you at once.{/n} "Do not look so surprised. Our church has more followers than it seems. It always has. They simply hide from the zealous eye of their enemies, and eat well when nobody is looking."
 "Our services to honour her are more luxurious than the most lavish feasts, the wildest orgies. This is a small one, a crusade one: the food is poor, and everyone goes home before the morning watch." {n}She gestures at the empty chair.{/n} "My Lady keeps a place for the one who holds my claim."''',
-       c("Continue", "targona", requires=("targona.trickster.in_drezen",)),
-       c("Continue", "choose", forbids=("targona.trickster.in_drezen",))),
+       c("Continue", "targona", requires=("targona.trickster.in_drezen", "targona.present_now")),
+       c("Continue", "choose", forbids=("targona.trickster.in_drezen",)),
+       c("Continue", "choose", requires=("targona.trickster.in_drezen",), forbids=("targona.present_now",))),
     el("targona", '''"Before you choose." {n}Her voice drops, for you only.{/n} "Your angel came to the gate of the yard yesterday. The one whose wing was made in the witch's laboratory. She stood there a long time, smelling us, the way a hound smells a fox's earth, and then she went away without a word." {n}Her mouth tightens.{/n}
 "Everything that shines hates my Lady. It is the one thing I envy them: they are so certain."''',
        c("Continue", "choose")),
@@ -518,21 +519,21 @@ visit(E + "beat.tyrant", "The Tyrant's seals", [
     el("talk", '''"When he comes back," {n}she says, and her eyes brighten as she traces the road to Gallowspire with one hard fingertip,{/n} "Ustalav will be what it was. The counts will kneel. The churches of the grey warden will be shut. My Lady will be worshipped openly in every town from Caliphas to Lastwall, and the dead will walk in the streets in daylight, and nobody will be afraid of them, because everyone will be one."
 "I will see it. My Lady will have adopted me by then. I will stand at his gate with a cup in my hand." {n}She drinks.{/n} "You will be under glass in Caliphas, preserved, very handsome. I shall visit."''',
        c("Continue", "choice")),
-    nar("choice", '''{n}She is a little drunk, or wants you to think so. She has told you the name of a prison, the state of its seals, and the hopes of an order that has hidden for six hundred years. Somewhere in Lastwall, on the other side of the map, there are knights whose whole lives are spent watching that black tower, and who would give a great deal for one evening like this.{/n}''',
+    nar("choice", '''{n}She is a little drunk, or wants you to think so. The prison and its seals are no secret. What she has shown you is her pleasure at the thought of Ustalav on its knees. She watches you over her cup, waiting to see whether you recoil or drink with her.{/n}''',
         c("[Remember every word. Say nothing. Tell no one yet.]", "kept"),
         c("[Later, alone, write to Lastwall.]", "warned"),
-        c('[Tell her what she has just done] "You\'ve told the Knight Commander of a crusade where your Tyrant\'s prison is weakest."', "told")),
+        c('[Tell her what she has just done] "You\'ve told the Knight Commander of a crusade how eagerly you await your Tyrant."', "told")),
     el("kept", '''{n}You say nothing. You drink her wine, and let her talk about the gate of Gallowspire and the counts kneeling in the rain, and you keep every word in the back of your head, filed, the way a quartermaster keeps a list of what is in the stores.{/n}
 {n}Near midnight she stops talking and looks at you over her cup.{/n} "You are very quiet. You are saving it. I can see you saving it." {n}She smiles, showing strong white teeth.{/n} "Good. I would think less of a debtor who did not."''',
        c("[Save it.]", flags=(TYRANT_KEPT,))),
     nar("warned", '''{n}You let her talk. You laugh in the right places. You leave the dead-house a little after midnight, and walk back up through the sleeping lower town to your quarters, and light a lamp, and write for an hour, very carefully, in a plain hand, to a knight of Lastwall whose name you know and who does not know yours.{/n}
-{n}It says nothing about her. It says a great deal about seals. You seal it with no device and send it south with a courier who owes you money.{/n}''',
+{n}It describes the Way's hopes as she spoke them tonight. It claims no new breach in the seals and names no planned attack. You seal it with no device and send it south with a courier who owes you money.{/n}''',
         c("Continue", "warned2")),
     nar("warned2", '''{n}She says nothing about it the next time you see her, or the next. She eats as she always does, and mocks your smell as she always does, and you begin to think that the Way does not know everything after all.{/n}
 {n}Then, one evening, she pauses with a piece of bread halfway to her mouth.{/n} "A courier who owes you money is a courier who owes other people money too," {n}she says pleasantly, and eats the bread, and says nothing else about it, then or ever.{/n}''',
         c("Continue", flags=(TYRANT_WARNED,))),
     el("told", '''{n}She stops with the cup at her lips. For a moment her face is perfectly still; then the colour comes up under her skin, slowly, from the throat.{/n}
-"Yes," {n}she says.{/n} "I have. I have told a crusader where the Tyrant's cage is thin." {n}She sets the cup down.{/n} "And you have told me that you noticed, instead of simply using it. That is either very foolish or very clever, and I do not know which, and I do not like not knowing."
+"Yes," {n}she says.{/n} "I have. I have told a crusader how much I want those churches shut." {n}She sets the cup down.{/n} "And you have told me that you noticed, instead of simply using it. That is either very foolish or very clever, and I do not know which, and I do not like not knowing."
 "Do what you like with it, Commander. It is a whisper. You cannot prove you heard it. I cannot prove I said it." {n}Her hand closes over yours on the table, cold and very hard.{/n} "But if a single knight of Lastwall rides for Gallowspire this year, I will know whose whisper sent him."''',
        c('"Then no knight will ride."', flags=(TYRANT_TOLD,)),
        c('"Then you\'ll know."', flags=(TYRANT_TOLD,))),
