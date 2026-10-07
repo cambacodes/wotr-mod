@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "source": "/work/Writer/plans/edge-fix-design.md §1, §3.1, §3.2, §3.5 and edge-audit.md §12.6; CHARACTER-TRUTH §5",
+  "policy": "Qualitative targets only: the design supplies no measured native rates or numeric quotas. Counts are a screen, never a requirement to insert swearing. Compare three native and three authored lines, including contempt, slurs and sexual frankness. native_keys are design citations verified present in enGB, including joint Minagho/Chivarro evidence and ending/quest text; they are not speaker-attributed rate samples. Other women have no supplied target in this job.",
+  "women": {
+    "Areelu": {"register": "zero", "description": "Prim; sharpen contempt instead.", "native_keys": ["9d626d22", "6bf6939c", "670f8e52"]},
+    "Arueshalae": {"register": "low", "layer_registers": {"fallen": "sweet_vicious"}, "description": "Redeemed: low; fallen: sweet-vicious. Do not confuse the registers.", "native_keys": ["3430652d", "f88dfc52"]},
+    "Camellia": {"register": "zero", "description": "Prim; killing appetite survives intimacy.", "native_keys": ["bde81fb1", "4819461c"]},
+    "Chivarro": {"register": "foul", "description": "Native foul mouth; base must not be noticeably cleaner than Trickster.", "native_keys": ["bb860eb1", "ab6d8100"]},
+    "Hepzamirah": {"register": "foul", "description": "Native foul mouth; restore her mouth without redeeming her.", "native_keys": ["84523473", "3caba7e8"]},
+    "Jerribeth": {"register": "near_zero", "description": "Near zero in native; edge comes from contempt.", "native_keys": ["66d1f6a4", "de70b6ee", "c4630d76"]},
+    "Melazmera": {"register": "occasional", "description": "Childish and gluttonous; occasional bitch.", "native_keys": []},
+    "Minagho": {"register": "foul", "description": "Native foul mouth; base must not be noticeably cleaner than Trickster.", "native_keys": ["bb860eb1", "ab6d8100"]},
+    "Nocticula": {"register": "regal", "description": "Contempt and sexual frankness; the court swears. No swearing quota for the queen.", "native_keys": ["b41c2c6c", "6507ad95"]},
+    "Shamira": {"register": "sharp", "description": "§3.8 names her sharp reference register; its 16 hits in 64k words are authored-route observations, not a measured native-rate quota.", "native_keys": []},
+    "Wenduag": {"register": "foul", "description": "Native foul mouth; edge-audit §11.7 identifies the profanity deficit.", "native_keys": []}
+  }
+}
