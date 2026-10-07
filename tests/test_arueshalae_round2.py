@@ -107,6 +107,22 @@ class RoundTwoTests(unittest.TestCase):
             self.assertNotIn('doctor', self.node(sid, 'start')['Text'].lower())
             self.assertNotIn('daybook', self.node(sid, 'start')['Text'].lower())
 
+    def test_redeemed_titles_and_journal_drop_the_clinic_frame(self):
+        suffixes = ('intake', 'mealtimes', 'relapse', 'touched', 'relapse_two',
+                    'prescription', 'morning', 'discharged', 'the_cat',
+                    'the_wound', 'the_dance', 'after_the_war', 'abyss_dose',
+                    'bad_day', 'first_quarrel')
+        clinic = r'(?i)\b(treatment|intake|case notes|relapse|procedure|contraindications|patient|discharged|field observations|doctor|recommended exercise|prognosis|dose|symptoms|second opinion|medical condition)\b'
+        for suffix in suffixes:
+            with self.subTest(scene=suffix):
+                self.assertNotRegex(self.scenes[polish.T + suffix]['Title'], clinic)
+        journal = arueshalae_trickster.RELATIONSHIP
+        self.assertEqual('Any caress', journal['Title'])
+        for field in ('Title', 'Description', 'Objective', 'Guidance'):
+            with self.subTest(journal=field):
+                self.assertNotRegex(journal[field], clinic)
+        self.assertIn('Scroll of Death Ward', journal['Description'])
+
     def test_changed_chaplain_question_and_refusal_are_not_hunger(self):
         sid = polish.P + 'terms'
         choices = self.node(sid, 'chaplain')['Choices']

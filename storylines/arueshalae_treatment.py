@@ -119,7 +119,7 @@ session(STUDIED, "Night reading", 3, '"You were in the shrine library until the 
 
 # --- Intake (Chapter 3): the pulse ----------------------------------------------------------------------------------
 
-session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let me take your pulse. When did you last eat?"', [
+session(INTAKE, "An open hand", 3, '[Hold out your hand, palm up] "You look pale. Let me take your pulse. When did you last eat?"', [
     nar("start", '''{n}She looks at your open hand the way a cat looks at a hand held out to it: as a question, and possibly a trap.{/n}
 "You know what touching me costs." {n}It is not a warning so much as a fact she has been asked to confirm.{/n} "In the Abyss I learned to look for what a held-out hand wants. What do you want?" {n}You tell her: her pulse. Only that. She considers it for a long breath, tilting her head, interested in spite of herself. Then she pulls her sleeve down over her hand, all the way to the knuckles, and lays her wrist in your palm, cuff and all, lightly, ready to take it back.{/n}
 {n}Her pulse, through the cloth, if a succubus has a pulse, is slow and faint and far too even, like a clock somebody forgot to wind. She watches your fingers on her sleeve, and then your face, and her ruby eyes are enormous.{/n}''',
@@ -153,7 +153,7 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
 
 # --- Mealtimes: the first report ----------------------------------------------------------------------------------
 
-session(MEALTIMES, "Case notes", 3, '"How is the patient?"', [
+session(MEALTIMES, "At the table", 3, '"How is the patient?"', [
     a("start", '''{n}She has a little book now, a clerk's daybook bought off a Drezen stationer, and she holds it against her chest as if she expected you to take it.{/n}
 "I've done as you said. I don't know if it's helping. I don't know what helping would look like." {n}She opens it, closes it, opens it.{/n} "Do you want to hear, or is this one of those prescriptions where the doctor doesn't care whether the patient takes it?"''',
         c("Continue", "watch", requires=(RX_WATCH,)),
@@ -176,7 +176,7 @@ session(MEALTIMES, "Case notes", 3, '"How is the patient?"', [
 
 # --- The relapse: a sergeant at Fye's ------------------------------------------------------------------------------
 
-session(RELAPSE, "Relapse", 3, '"You haven\'t been to see me."', [
+session(RELAPSE, "At Fye's", 3, '"You haven\'t been to see me."', [
     nar("start", '''{n}She has been avoiding you for two days. When you finally corner her behind the stables, she backs against the wall as if you were the one to be afraid of, and keeps her hands behind her back.{/n}''',
         c("Continue", "lab", requires=(LAB,)),
         c("Continue", "confess", forbids=(LAB,))),
@@ -202,7 +202,7 @@ session(RELAPSE, "Relapse", 3, '"You haven\'t been to see me."', [
 
 # --- The touch: the quack's cure ---------------------------------------------------------------------------------
 
-session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your hand."', [
+session(TOUCHED, "Seven minutes", 3, '"I want to try something. Give me your hand."', [
     a("start", '''{n}She puts both hands behind her back at once, the old habit of a woman who puts her hands away before a temptation can find them.{/n}
 "No. You know I can't. You know what happens." {n}She eyes your outstretched hand as if it were a drawn sword.{/n} "Any caress, Commander. Any caress of any kind. That's not a manner of speaking. It's what I am."''',
         c("Continue", "dream", requires=(DREAM,)),
@@ -320,7 +320,7 @@ session(KITCHEN, "A meal someone made", 5, '"Seventh bell. You said kitchens."',
 
 # --- The second relapse (Chapter 5): wanting the wrong thing ------------------------------------------------------
 
-session(RELAPSE_TWO, "Contraindications", 5, '''"You look as though you haven't rested."''', [
+session(RELAPSE_TWO, "The hunger returns", 5, '''"You look as though you haven't rested."''', [
     a("start", '''"I don't need sleep. I do need my thoughts to leave me alone for a while. They haven't." {n}She sits on the edge of her bedroll, the daybook open on her knees. The page is blank.{/n}
 "I have to tell you something. You're not going to like it, and I'm not going to be able to say it twice."''',
         c("Continue", "want")),
@@ -370,7 +370,7 @@ session(SLIPPED, "A missed night", 5, '"You\'re awake. Don\'t get up."', [
 
 # --- The proposal (Chapter 5): she asks (06-ROUTE-REGISTRY §3: "she proposes"; no test, no price) ---------------------
 
-session(T + "prescription", "The patient proposes", 5, '"You asked me to meet you here."', [
+session(T + "prescription", "Her offer", 5, '"You asked me to meet you here."', [
     nar("start", '''{n}The citadel wall at dusk, where she goes to watch the city light its lamps. She sent a page for you, which she has never done. She is standing very straight, with her hands clasped behind her back, like a soldier about to deliver a report she has rehearsed until it stopped making sense.{/n}''',
         c("Continue", "fast", requires=(FAST,)),
         c("Continue", "no_fast", requires=(NO_FAST,)),
@@ -461,7 +461,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
 
 # --- The morning after: first light on the tower -----------------------------------------------------------------
 
-session(MORNING, "Case notes, continued", 5, '"Good morning, doctor."', [
+session(MORNING, "First light", 5, '"Good morning, doctor."', [
     a("start", '''{n}The first light comes up grey over the Worldwound. She is sitting cross-legged on the broken stone with the daybook, writing, one wing folded over the cloak you are wrapped in like a second blanket. She has put on your shirt, which she wears as if she stole it on purpose, which she did.{/n}
 "Don't look. I'm writing up the procedure." {n}She shields the page with her hand.{/n} "It's very technical. There are a great many underlinings. I've drawn a diagram and then crossed it out because it was indecent, and then I drew it again because it was accurate."''',
         c("Continue", "count", forbids=(ELYSIUM,)),
@@ -489,7 +489,7 @@ for _scene in SCENES:
         _scene["Forbids"].append(ELYSIUM)
 
 DISCHARGED = T + "discharged"
-session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching things."', [
+session(DISCHARGED, "Without hunger", 5, '"You look different. You keep touching things."', [
     a("start", '''"I do, don't I?" {n}She is sitting on the edge of her bedroll with her bare hands in her lap, turning them over, as if they belonged to someone she had just been introduced to.{/n} "The Abyss let go of me, and since then I've touched the quartermaster, a horse, three novices and the cat. On purpose. Nobody went grey. Nobody even noticed."
 {n}She looks up at you, and laughs, and it shakes.{/n} "You've lost your only patient, doctor. There's nothing left in me for your scrolls to ward you from."''',
         c("Continue", "ask")),
