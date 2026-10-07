@@ -786,6 +786,8 @@ def integrate(payload):
     # Authored round-2 situations; only this route is changed.
     from storylines import konomi_round2
     konomi_round2.integrate(payload)
+    from storylines import konomi_round3
+    konomi_round3.integrate(payload)
 
 
 # Epilogue pages that do not stage a living Konomi: her loss page, and the copy of an invitation (names her, stages nobody).

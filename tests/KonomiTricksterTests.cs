@@ -26,6 +26,7 @@ internal static class KonomiTricksterTests
             HouseholdTests.Earn(story, state, context);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.AvailableContacts.Add(Contact);
+        state.AvailableContacts.Add("b5e867e13503c6f41bb1316705efb4a2"); // Physical briefing setups and arrival receipts.
         Rules.Complete(story, state);
         // Flags and latches are stamped when the runtime records them; here, well before the world is observed.
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
@@ -61,7 +62,11 @@ internal static class KonomiTricksterTests
         foreach (var s in new[] { recess, terms, priv, consult, audience })
             check(s.AnswerLists.SequenceEqual(new[] { Hub }) && s.ContactUnit == Contact && !Rules.IsRemote(s)
                   && s.Areas.SequenceEqual(new[] { Drezen }), "Konomi's in-person beat left her office: " + s.Id);
-        check(late.Remote && recalled.Remote && accredited.Remote, "A setup lost its letter.");
+        check(recalled.Remote && recalled.Recovery == "konomi", "Retained recovery lost its supported delivery mode.");
+        foreach (var setup in new[] { late, accredited, S("konomi.trickster.dismissed.arrival"), S("konomi.trickster.never_arrived.arrival") })
+            check(!Rules.IsRemote(setup) && setup.ContactUnit == "b5e867e13503c6f41bb1316705efb4a2"
+                  && setup.AnswerLists.SequenceEqual(new[] { "33960c7f7af40cd43b7f801a76c87a0b" })
+                  && setup.Areas.SequenceEqual(new[] { Drezen }), "Konomi receipt/setup lost its physical briefing contact: " + setup.Id);
         check(late.TricksterState == "konomi.dismissed" && recalled.TricksterState == "konomi.retained_dead"
               && accredited.TricksterState == "konomi.missed_contact_available" && recalled.Recovery == "konomi",
             "Device states mislabelled.");
@@ -170,7 +175,7 @@ internal static class KonomiTricksterTests
         check(envoyPages.Contains("paid_envoy") && !envoyPages.Contains("paid"), "The outfoxed price forgot her name on the letter.");
 
         // Trk_Konomi_Commit / Trk_Konomi_Refusal: the named producer, and her soft no.
-        var lover = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.lovers");
+        var lover = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.lovers", "konomi.trickster.debt_paid");
         check(Rules.Available(story, priv, lover), "Trk_Konomi_Commit: the private beat is unavailable.");
         var privPages = new HashSet<string>();
         var privOut = Program.Walk(priv, lover, (page, _) => privPages.Add(page));
@@ -181,8 +186,16 @@ internal static class KonomiTricksterTests
             "Trk_Konomi_Refusal: her soft no closes something.");
         check(!Rules.Available(story, priv, no[0]), "Her no is asked again at once.");
         var threshold = priv.Nodes.Single(n => n.Id == "threshold");
-        check(threshold.Choices.Single().Next == "konomi.trickster.dismissed.private.explicit.1" && priv.Nodes.Single(n => n.Id == "konomi.trickster.dismissed.private.explicit.1").Choices.Single().Next == "morning" && priv.Nodes.Single(n => n.Id == "answer").Choices[0].Set.Contains("konomi.committed"),
+        check(threshold.Choices.Single().Next == "konomi.trickster.dismissed.private.explicit.1" && priv.Nodes.Single(n => n.Id == "konomi.trickster.dismissed.private.explicit.1").Choices[0].Next == "morning" && priv.Nodes.Single(n => n.Id == "konomi.trickster.dismissed.private.explicit.1").Choices[1].Next == "morning_favour" && priv.Nodes.Single(n => n.Id == "answer").Choices[0].Set.Contains("konomi.committed"),
             "The committing answer is not [Take her hand].");
+        var favourLover = Program.Copy(lover);
+        favourLover.Flags.Remove("konomi.trickster.debt_paid");
+        favourLover.Flags.Add("konomi.trickster.favour_owed");
+        Rules.Complete(story, favourLover);
+        var favourBreakfastPages = new HashSet<string>();
+        var favourOut = Program.Walk(priv, favourLover, (page, _) => favourBreakfastPages.Add(page));
+        check(favourOut.Any(r => r.Has("konomi.committed")) && favourBreakfastPages.Contains("morning_favour") && !favourBreakfastPages.Contains("morning"),
+            "A personal favour received the paid endorsement breakfast.");
         // Sol BEL: a Commander who never courted her is asked why, at supper, before the private beat can commit.
         var colleague = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.debt_paid");
         var uncourted = new HashSet<string>();
