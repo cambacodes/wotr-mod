@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from story_format import c, n, scene
@@ -65,6 +66,10 @@ class GuardIntegrationTests(unittest.TestCase):
             if args == ('status', '--porcelain'):
                 return ''
             if args == ('rev-parse', 'HEAD'):
+                return revision
+            if args == ('for-each-ref', '--format=%(refname)'):
+                return 'refs/rrt/ownership-reviewed'
+            if args == ('rev-parse', 'refs/rrt/ownership-reviewed'):
                 return revision
             if args == ('rev-parse', '--git-common-dir'):
                 return str((guard.ROOT / common).resolve())
@@ -469,6 +474,168 @@ class GuardPrimitiveTests(unittest.TestCase):
             for path in (source, source / 'results', Path(tempfile.gettempdir())):
                 with self.assertRaises(guard.GuardError):
                     guard.temporary_output(path, source)
+
+
+class S1ProfileTests(unittest.TestCase):
+    """Real tiny generators falsify the extra command-profile boundaries."""
+
+    def setUp(self):
+        GuardIntegrationTests.setUp(self)
+        patch('tools.voice_authority.git', side_effect=lambda source, *args: guard.git(source, *args).encode('utf-8')).start()
+        generator = self.source / 'expansion.py'
+        generator.write_text(generator.read_text(encoding='utf-8') +
+            '\ndef make_expansion(*, independent_tirabade=True):\n'
+            '    result = json.loads((root / "data/payload.json").read_bytes())\n'
+            '    result["Scenes"][0]["Nodes"][0]["Text"] = "Joint words"\n'
+            '    return result\n', encoding='utf-8')
+        (self.source / 'story.py').write_text(GENERATOR.replace('development/Story.json', 'package/Story.json')
+            .replace('newline=newline', 'newline=None'), encoding='utf-8')
+        def fixture_gates(snapshot, scratch, game, observations, gate_profile='s0'):
+            results = []
+            for name, command in guard.gate_commands(scratch, gate_profile):
+                observations.append(dict(stage=name, exit=0, timed_out=False,
+                    started='2026-10-07T00:00:00+00:00', finished='2026-10-07T00:00:01+00:00',
+                    log_sha256='0' * 64))
+                results.append(dict(stage=name, command=guard.recorded_command(command, scratch),
+                    exit=0, timed_out=False, passed=True))
+            return results
+        self.gates.side_effect = fixture_gates
+        self.baseline = self.scratch / 's1-baseline'
+        status = guard.perform('capture', self.source, self.baseline, self.scratch, gate_profile='arch-s1')
+        evidence = json.loads((self.baseline / 'receipt.json').read_bytes())['evidence']
+        self.assertEqual(0, status, evidence['failures'])
+
+    def test_all_profiles_and_receipt_identity_survive_destination_seeds(self):
+        for name in ('first', 'second'):
+            self.assertEqual(0, guard.perform('check', self.source, self.scratch / name, self.scratch,
+                self.baseline, gate_profile='arch-s1'))
+        first = guard.load_baseline(self.baseline)
+        self.assertEqual({'base', 'joint'}, set(first['profiles']))
+        self.assertNotEqual(first['exports']['LF'], first['profiles']['joint']['exports']['LF'])
+        self.assertEqual(first['profiles']['base']['exports']['LF'], first['profiles']['base']['exports']['CRLF'])
+        self.assertEqual(json.loads((self.scratch / 'first/receipt.json').read_bytes())['identity'],
+                         json.loads((self.scratch / 'second/receipt.json').read_bytes())['identity'])
+
+    def test_joint_only_delta_fails_even_when_default_export_matches(self):
+        generator = self.source / 'expansion.py'
+        generator.write_text(generator.read_text(encoding='utf-8').replace('Joint words', 'Wrong joint words'),
+                             encoding='utf-8')
+        out = self.scratch / 'changed-joint'
+        self.assertEqual(1, guard.perform('check', self.source, out, self.scratch, self.baseline,
+            allowed=['expansion.py'], gate_profile='arch-s1'))
+        evidence = json.loads((out / 'receipt.json').read_bytes())['evidence']
+        self.assertTrue(any(isinstance(row, dict) and row.get('export') == 'joint-LF'
+                            for row in evidence['failures']))
+        self.assertEqual([], [row for row in evidence['failures']
+                             if isinstance(row, dict) and row.get('export') == 'LF'])
+
+    def test_missing_corrupt_or_unaccounted_profile_evidence_fails(self):
+        original = json.loads((self.baseline / 'receipt.json').read_bytes())
+        for mutation in ('missing-profile', 'missing-seed', 'unaccounted-read', 'wrong-inventory', 'missing-observation', 'missing-ownership'):
+            with self.subTest(mutation=mutation):
+                value = copy.deepcopy(original)
+                evidence = value['evidence']
+                if mutation == 'missing-profile':
+                    evidence['profiles'].pop('base')
+                elif mutation == 'missing-seed':
+                    evidence['profiles']['joint']['exports'].pop('CRLF')
+                elif mutation == 'unaccounted-read':
+                    evidence['profiles']['base']['reads']['LF-0'].append('unaccounted')
+                elif mutation == 'wrong-inventory':
+                    evidence['profiles']['joint']['predecessor_inventory']['scene_order'].reverse()
+                elif mutation == 'missing-observation':
+                    value['observations'] = [row for row in value['observations']
+                                             if row['stage'] != 'generate-base-LF-0']
+                else:
+                    evidence['runtime'].pop('ownership_reference')
+                value['identity'] = guard.digest(guard.canonical(evidence))
+                (self.baseline / 'receipt.json').write_bytes(guard.canonical(value))
+                with self.assertRaises(guard.GuardError):
+                    guard.load_baseline(self.baseline)
+        (self.baseline / 'receipt.json').write_bytes(guard.canonical(original))
+        (self.baseline / 'base-LF-Story.json').write_bytes(b'{}')
+        with self.assertRaisesRegex(guard.GuardError, 'corrupted'):
+            guard.load_baseline(self.baseline)
+
+
+class CompilerCommandTests(unittest.TestCase):
+    def test_exact_serialization_and_legacy_copy_policy(self):
+        from authoring.compiler import CompilationInputs, compile_story
+        from authoring._serialization import write_story
+        # Intentionally unsorted keys, UTF-8 and embedded CRLF in player text.
+        payload = {'z': 'é\r\ntext', 'a': ['second', 'first']}
+        module = SimpleNamespace(_make_story=lambda: payload,
+                                 _make_expansion=lambda **kwargs: payload)
+        with tempfile.TemporaryDirectory(prefix='rrt-compiler-') as temporary:
+            output = Path(temporary) / 'Story.json'
+            for profile, seed, newline in (
+                ('expansion', None, '\n'), ('expansion', b'\n', '\n'), ('expansion', b'\r\n', '\r\n'),
+                ('base', None, os.linesep), ('base', b'\n', os.linesep), ('base', b'\r\n', os.linesep)):
+                with self.subTest(profile=profile, seed=seed):
+                    if seed is None:
+                        output.unlink(missing_ok=True)
+                    else:
+                        output.write_bytes(seed)
+                    with patch('authoring.compiler._legacy_module', return_value=module):
+                        compiled = compile_story(profile, CompilationInputs(output))
+                    self.assertIs(payload, compiled.payload)
+                    expected = (json.dumps(payload, ensure_ascii=False, indent=2) + '\n').replace('\n', newline).encode('utf-8')
+                    self.assertEqual(expected, compiled.export_bytes)
+                    write_story(output, compiled)
+                    self.assertEqual(expected, output.read_bytes())
+
+    def test_factory_delegates_preserve_profile_argument_and_exception(self):
+        import expansion
+        import story as base_story
+        sentinel = ValueError('Conflicting Trickster binding: trickster.failed')
+        with patch('authoring.compiler.compile_story', return_value=SimpleNamespace(payload={'sentinel': True})) as compile:
+            self.assertEqual({'sentinel': True}, expansion.make_expansion(independent_tirabade=False))
+            compile.assert_called_once_with('expansion', independent_tirabade=False)
+            compile.reset_mock()
+            self.assertEqual({'sentinel': True}, base_story.make_story())
+            compile.assert_called_once_with('base')
+        with patch.object(expansion, '_make_expansion', side_effect=sentinel):
+            with self.assertRaises(ValueError) as caught:
+                expansion.make_expansion()
+            self.assertIs(sentinel, caught.exception)
+
+    def test_destination_read_error_precedes_json_serialization_error(self):
+        from authoring.compiler import CompilationInputs, compile_story
+        sentinel = PermissionError('destination cannot be read')
+        destination = SimpleNamespace(exists=lambda: True)
+        destination.read_bytes = lambda: (_ for _ in ()).throw(sentinel)
+        module = SimpleNamespace(_make_expansion=lambda **kwargs: {'unserializable': object()})
+        with patch('authoring.compiler._legacy_module', return_value=module):
+            with self.assertRaises(PermissionError) as caught:
+                compile_story('expansion', CompilationInputs(destination))
+        self.assertIs(sentinel, caught.exception)
+
+    def test_compiler_reuses_executing_cli_module(self):
+        from authoring.compiler import _legacy_module
+        for name in ('story', 'expansion'):
+            command = SimpleNamespace(__file__=str(guard.ROOT / (name + '.py')))
+            with patch.dict(sys.modules, {'__main__': command}), patch('importlib.import_module') as load:
+                self.assertIs(command, _legacy_module(name))
+                load.assert_not_called()
+
+    def test_cli_error_message_status_and_destination(self):
+        with tempfile.TemporaryDirectory(prefix='rrt-command-error-') as temporary:
+            parent = Path(temporary) / 'file'
+            parent.write_text('existing file', encoding='utf-8')
+            # Freeze the old Path.mkdir failure on this host (including the
+            # Windows WinError spelling), rather than hardcoding Linux errno.
+            with self.assertRaises(FileExistsError) as original_error:
+                parent.mkdir(exist_ok=True)
+            output = parent / 'Story.json'
+            env = guard.clean_environment(guard.ROOT, Path(temporary), Path('/wrath'))
+            env['RRT_STORY_OUTPUT'] = str(output)
+            result = subprocess.run([sys.executable, '-B', 'expansion.py'], cwd=guard.ROOT,
+                                    env=env, capture_output=True, text=True, encoding='utf-8')
+            self.assertEqual(1, result.returncode)
+            self.assertEqual('', result.stdout)
+            self.assertEqual("FileExistsError: " + str(original_error.exception),
+                             result.stderr.splitlines()[-1])
+            self.assertEqual('existing file', parent.read_text(encoding='utf-8'))
 
 
 if __name__ == '__main__':

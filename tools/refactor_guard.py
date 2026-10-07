@@ -6,7 +6,8 @@ check --baseline BASELINE --source CANDIDATE --out RESULTS
 
 No acceptance override or baseline refresh exists. Existing gate debt is evidence,
 never permission to accept a failing candidate. S0 freezes the default expansion;
-other profiles and same-process compiler isolation belong to S1.
+Use --gate-profile arch-s1 for the S1 command/serialization slice: base and
+both Tirabade profiles, with only its named Python and voice-lock gates.
 """
 import argparse
 from concurrent.futures import ThreadPoolExecutor
@@ -35,6 +36,22 @@ EXPORTS = {'development/Story.json', 'package/Story.json'}
 NAMESPACE = 'RanRomance.Tirabade.v1/'
 TIMEOUT = 1800
 REQUIRED_GATES = ('python-discovery', 'strict-verifier', 'rules-progression')
+S1_GATES = ('python-targeted', 'voice-lock')
+
+
+def required_gates(profile):
+    return S1_GATES if profile == 'arch-s1' else REQUIRED_GATES
+
+
+def ownership_reference(source):
+    # Reuse the voice authority's exact ref preference; never substitute HEAD
+    # for the coordinator's independent reviewed ownership context.
+    from tools.voice_authority import reviewed_revision
+    revision = reviewed_revision(source)
+    refs = git(source, 'for-each-ref', '--format=%(refname)').splitlines()
+    ref = next(name for name in ('refs/rrt/ownership-reviewed',
+                                'refs/remotes/origin/claude/trickster-expansion') if name in refs)
+    return dict(ref=ref, revision=revision)
 
 
 def host_environment():
@@ -131,7 +148,7 @@ def external_inputs(source, game):
     return evidence, paths
 
 
-def runtime_inputs(source):
+def runtime_inputs(source, gate_profile='s0'):
     script = (source / 'build-expansion.ps1').read_text(encoding='utf-8-sig')
     block = script.split('$env:RRT_PARENT_BINDINGS = (@(', 1)[1].split(')', 1)[0]
     declared = tuple(re.findall(r"'(reference/[^']+\.json)'", block))
@@ -147,7 +164,7 @@ def runtime_inputs(source):
             p = Path(directory) / name
             if p.suffix in {'.py', '.pyc', '.so', '.pyd', '.dll'}:
                 libraries[p.relative_to(library).as_posix()] = file_hash(p)
-    return dict(python=sys.version, python_executable_sha256=file_hash(Path(sys.executable)),
+    result = dict(python=sys.version, python_executable_sha256=file_hash(Path(sys.executable)),
                 python_library_digest=digest(canonical(libraries)),
                 dotnet=subprocess.check_output(['dotnet', '--version']).decode().strip(),
                 dotnet_executable_sha256=file_hash(Path(shutil.which('dotnet')).resolve()),
@@ -157,7 +174,11 @@ def runtime_inputs(source):
                 generator_site='disabled (-S); stdlib and pinned source only',
                 hashseed='0', utf8='1', destination_seeds=['LF', 'CRLF'],
                 serializer='expansion.py CLI; raw bytes; no normalization',
-                required_suites=list(REQUIRED_GATES), timeout_seconds=TIMEOUT)
+                required_suites=list(required_gates(gate_profile)), timeout_seconds=TIMEOUT,
+                gate_profile=gate_profile)
+    if gate_profile == 'arch-s1':
+        result['ownership_reference'] = ownership_reference(source)
+    return result
 
 
 def temporary_output(path, source):
@@ -347,7 +368,7 @@ def ownership_failures(before, after, allowed):
     return changed, failures
 
 
-def snapshot_source(source, target, files):
+def snapshot_source(source, target, files, ownership=None):
     target.mkdir()
     for name, entry in files.items():
         destination = target / name
@@ -369,6 +390,10 @@ def snapshot_source(source, target, files):
         common = source / common
     (metadata / 'objects/info/alternates').write_text(str(common.resolve() / 'objects') + '\n', encoding='utf-8')
     (metadata / 'refs').mkdir()
+    if ownership:
+        ref = metadata / ownership['ref']
+        ref.parent.mkdir(parents=True, exist_ok=True)
+        ref.write_text(ownership['revision'] + '\n', encoding='utf-8')
     (metadata / 'HEAD').write_text(git(source, 'rev-parse', 'HEAD') + '\n', encoding='utf-8')
     (metadata / 'config').write_text('[core]\n\trepositoryformatversion = 0\n\tbare = false\n', encoding='utf-8')
     subprocess.run(['git', '-C', str(target), 'read-tree', 'HEAD'], check=True,
@@ -384,6 +409,7 @@ def worker(snapshot, inputs_path, reads_path):
     library = Path(sysconfig.get_path('stdlib')).resolve()
     reads = set()
     violations = []
+    destination = inputs.get('destination', 'development/Story.json')
 
     def reject(message):
         violations.append(message)
@@ -396,7 +422,7 @@ def worker(snapshot, inputs_path, reads_path):
         if event in {'os.remove', 'os.rename', 'os.rmdir', 'os.symlink', 'os.link',
                      'os.chmod', 'os.truncate', 'os.utime'}:
             reject('Generator attempted unaccounted filesystem mutation: ' + event)
-        if event == 'os.mkdir' and Path(os.fsdecode(args[0])).resolve() != snapshot / 'development':
+        if event == 'os.mkdir' and Path(os.fsdecode(args[0])).resolve() != (snapshot / destination).parent:
             reject('Generator created unaccounted directory: ' + str(args[0]))
         if event != 'open' or isinstance(args[0], int):
             return
@@ -408,9 +434,9 @@ def worker(snapshot, inputs_path, reads_path):
         if path.is_relative_to(snapshot):
             name = path.relative_to(snapshot).as_posix()
             if writing:
-                if name != 'development/Story.json':
+                if name != destination:
                     reject('Generator wrote unaccounted output: ' + name)
-            elif name not in allowed and name != 'development/Story.json':
+            elif name not in allowed and name != destination:
                 reject('Generator read unaccounted input: ' + name)
             elif name in allowed:
                 reads.add(name)
@@ -426,9 +452,30 @@ def worker(snapshot, inputs_path, reads_path):
     sys.addaudithook(audit)
     sys.path[:] = [str(snapshot)] + [p for p in sys.path if p and Path(p).resolve().is_relative_to(library)]
     os.chdir(snapshot)
-    sys.argv = ['expansion.py']
+    profile = inputs.get('profile', 'default')
+    sys.argv = ['story.py' if profile == 'base' else 'expansion.py']
     try:
-        runpy.run_path(str(snapshot / 'expansion.py'), run_name='__main__')
+        if profile == 'joint':
+            # The legacy CLI has no false-mode switch. Freeze its factory with
+            # the same historical expansion serialization, in a fresh process.
+            output = snapshot / destination
+            if 'authoring/compiler.py' in allowed:
+                from authoring.compiler import CompilationInputs, compile_story
+                from authoring._serialization import write_story
+                compiled = compile_story('expansion', CompilationInputs(output), independent_tirabade=False)
+                write_story(output, compiled)
+                if output.read_bytes() != compiled.export_bytes:
+                    reject('Compiler bytes differ from the joint destination write')
+            else:
+                from expansion import make_expansion
+                payload = make_expansion(independent_tirabade=False)
+                newline = '\r\n' if output.exists() and b'\r\n' in output.read_bytes() else '\n'
+                output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n',
+                                  encoding='utf-8', newline=newline)
+        else:
+            command = runpy.run_path(str(snapshot / sys.argv[0]), run_name='__main__')
+            if 'compiled' in command and (snapshot / destination).read_bytes() != command['compiled'].export_bytes:
+                reject('Compiler bytes differ from the CLI destination write')
         if violations:
             raise GuardError('Generator caught an input-policy violation: ' + violations[0])
     finally:
@@ -437,7 +484,7 @@ def worker(snapshot, inputs_path, reads_path):
         os.write(inputs['reads_fd'], canonical(sorted(reads)))
 
 
-def generation(source, files, game, externals, scratch, observations, failures):
+def generation(source, files, game, externals, scratch, observations, failures, profile='default', ownership=None):
     outputs = {}
     read_sets = {}
     jobs = []
@@ -445,13 +492,15 @@ def generation(source, files, game, externals, scratch, observations, failures):
         for repeat in range(2):
             label = '%s-%d' % (seed, repeat)
             work = scratch / label
-            snapshot_source(source, work, files)
-            output = work / 'development/Story.json'
+            snapshot_source(source, work, files, ownership)
+            destination = 'package/Story.json' if profile == 'base' else 'development/Story.json'
+            output = work / destination
             output.parent.mkdir(exist_ok=True)
             output.write_bytes(b'\r\n' if seed == 'CRLF' else b'\n')
             inputs = scratch / (label + '-inputs.json')
             reads = scratch / (label + '-reads.json')
-            inputs.write_bytes(canonical(dict(files=files, external={name: str(p.resolve())
+            inputs.write_bytes(canonical(dict(files=files, profile=profile, destination=destination,
+                                             external={name: str(p.resolve())
                                                                     for name, p in externals.items()})))
             log = scratch / (label + '.log')
             command = [sys.executable, '-S', '-B', str(Path(__file__).resolve()), '_worker',
@@ -465,10 +514,11 @@ def generation(source, files, game, externals, scratch, observations, failures):
         attempts = {seed: [] for seed in ('LF', 'CRLF')}
         for (label, _, _, log, output, reads), future in zip(jobs, futures):
             result = future.result()
-            observations.append(dict(stage='generate-' + label, **result))
+            prefix = '' if profile == 'default' else profile + '-'
+            observations.append(dict(stage='generate-' + prefix + label, **result))
             if result['exit'] != 0 or result['timed_out']:
                 diagnostic = log.read_text(errors='replace', encoding='utf-8')[-2000:].replace(str(scratch), '<temp>')
-                failures.append('Generation failed: ' + label + ': ' + diagnostic)
+                failures.append('Generation failed: ' + prefix + label + ': ' + diagnostic)
                 continue
             attempts[label.split('-')[0]].append(output.read_bytes())
             read_sets[label] = json.loads(reads.read_bytes())
@@ -482,7 +532,11 @@ def generation(source, files, game, externals, scratch, observations, failures):
     return outputs, read_sets, scratch / 'LF-0'
 
 
-def gate_commands(scratch):
+def gate_commands(scratch, gate_profile='s0'):
+    if gate_profile == 'arch-s1':
+        return [('python-targeted', [sys.executable, '-m', 'unittest', 'tests.test_refactor_guard',
+                                    'tests.test_savecompat_baseline', 'tests.test_utf8_io', '-q']),
+                ('voice-lock', [sys.executable, 'tools/voice_lock_lint.py', '--strict'])]
     return [('python-discovery', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_*.py', '-q']),
             ('strict-verifier', [sys.executable, 'tools/rrt_verify.py', '--strict', '--json', str(scratch / 'verify.json'),
                                  '--text', str(scratch / 'verify.txt')]),
@@ -494,11 +548,11 @@ def recorded_command(command, scratch):
     return [word.replace(str(scratch), '<temp>').replace(sys.executable, '<python>') for word in command]
 
 
-def gates(snapshot, scratch, game, observations):
+def gates(snapshot, scratch, game, observations, gate_profile='s0'):
     env = clean_environment(snapshot, scratch, game)
     env['RRT_TEST_STORY'] = str(snapshot / 'development/Story.json')
     results = []
-    for name, command in gate_commands(scratch):
+    for name, command in gate_commands(scratch, gate_profile):
         log = scratch / (name + '.log')
         print('RUN ' + name, flush=True)
         observed = execute(command, snapshot, env, log)
@@ -539,6 +593,10 @@ def validate_baseline(path):
             or data.get('identity') != digest(canonical(data['evidence']))):
         raise GuardError('Malformed baseline receipt or identity')
     evidence = data['evidence']
+    gate_profile = evidence.get('runtime', {}).get('gate_profile', 's0')
+    if gate_profile not in ('s0', 'arch-s1'):
+        raise GuardError('Unknown pinned gate profile')
+    required_suites = required_gates(gate_profile)
     if (any(type(evidence.get(key)) is not bool for key in
             ('structural_passed', 'gate_passed', 'accepted', 'tracked_export_stale'))
             or type(evidence.get('scene_count')) is not int or evidence['scene_count'] < 0
@@ -550,12 +608,12 @@ def validate_baseline(path):
         raise GuardError('Malformed source inventory digest')
     if evidence.get('operation') != 'capture' or not evidence.get('structural_passed'):
         raise GuardError('Baseline is stale/failed/incomplete')
-    if [g['stage'] for g in evidence.get('gates', [])] != list(REQUIRED_GATES):
+    if [g['stage'] for g in evidence.get('gates', [])] != list(required_suites):
         raise GuardError('Missing required gate receipts')
     if set(evidence.get('exports', {})) != {'LF', 'CRLF'}:
         raise GuardError('Missing required frozen export')
     for gate in evidence['gates']:
-        expected = dict(gate_commands(Path('<temp>')))[gate['stage']]
+        expected = dict(gate_commands(Path('<temp>'), gate_profile))[gate['stage']]
         if (not isinstance(gate.get('command'), list) or not gate['command']
                 or gate['command'] != recorded_command(expected, Path('<temp>'))
                 or type(gate.get('timed_out')) is not bool
@@ -568,14 +626,17 @@ def validate_baseline(path):
         raise GuardError('Gate debt differs from required results')
     observed = data.get('observations', [])
     required = {'generate-LF-0', 'generate-LF-1', 'generate-CRLF-0', 'generate-CRLF-1',
-                'frozen-savecompat', 'python-discovery', 'strict-verifier', 'rules-progression'}
+                'frozen-savecompat', *required_suites}
+    if gate_profile == 'arch-s1':
+        required.update('generate-' + profile + '-' + seed + '-' + str(repeat)
+                        for profile in ('base', 'joint') for seed in ('LF', 'CRLF') for repeat in range(2))
     if {item.get('stage') for item in observed} != required or len(observed) != len(required):
         raise GuardError('Missing/duplicate required execution observations')
     for item in observed:
         if (type(item.get('timed_out')) is not bool
                 or item.get('exit') is not None and type(item['exit']) is not int):
             raise GuardError('Malformed execution status: ' + item['stage'])
-        if item['stage'] not in REQUIRED_GATES and (item['exit'] != 0 or item['timed_out']):
+        if item['stage'] not in required_suites and (item['exit'] != 0 or item['timed_out']):
             raise GuardError('Failed required structural execution: ' + item['stage'])
         try:
             begin = datetime.fromisoformat(item['started'])
@@ -618,7 +679,7 @@ def validate_baseline(path):
     if not {'expansion.py', 'src/Main.cs', 'tools/savecompat.py',
             'tools/savecompat_baseline.json', 'build-expansion.ps1'} <= evidence['source_files'].keys():
         raise GuardError('Missing required pinned source inputs')
-    if not evidence['native_inputs'] or evidence['runtime']['required_suites'] != list(REQUIRED_GATES):
+    if not evidence['native_inputs'] or evidence['runtime']['required_suites'] != list(required_suites):
         raise GuardError('Missing pinned native/runtime inputs')
     for name, entry in evidence['native_inputs'].items():
         if (type(entry['bytes']) is not int or entry['bytes'] < 0
@@ -638,17 +699,43 @@ def validate_baseline(path):
                        (not name.startswith('external:') or name[9:] not in evidence['native_inputs'])
                        for name in reads)):
             raise GuardError('Unaccounted frozen generator read')
+    if gate_profile == 'arch-s1':
+        ownership = evidence['runtime'].get('ownership_reference', {})
+        if (ownership.get('ref') not in ('refs/rrt/ownership-reviewed', 'refs/remotes/origin/claude/trickster-expansion')
+                or not re.fullmatch(r'[0-9a-f]{40}|[0-9a-f]{64}', ownership.get('revision', ''))):
+            raise GuardError('Missing pinned reviewed ownership context')
+        profiles = evidence.get('profiles', {})
+        if set(profiles) != {'base', 'joint'}:
+            raise GuardError('Missing required S1 profile')
+        for profile, entry in profiles.items():
+            if set(entry.get('exports', {})) != {'LF', 'CRLF'}:
+                raise GuardError('Missing required profile newline export: ' + profile)
+            if set(entry.get('reads', {})) != {'LF-0', 'LF-1', 'CRLF-0', 'CRLF-1'}:
+                raise GuardError('Missing required profile read inventory: ' + profile)
+            for reads in entry['reads'].values():
+                if (not isinstance(reads, list) or reads != sorted(set(reads))
+                        or any(name not in evidence['source_files'] and
+                               (not name.startswith('external:') or name[9:] not in evidence['native_inputs'])
+                               for name in reads)):
+                    raise GuardError('Unaccounted profile generator read: ' + profile)
+            for seed, export in entry['exports'].items():
+                raw = (path / (profile + '-' + seed + '-Story.json')).read_bytes()
+                if (type(export.get('bytes')) is not int or len(raw) != export['bytes']
+                        or digest(raw) != export['sha256']):
+                    raise GuardError('Baseline profile export corrupted: ' + profile + '-' + seed)
+                if predecessor_inventory(json.loads(raw)) != entry.get('predecessor_inventory'):
+                    raise GuardError('Profile predecessor inventory differs: ' + profile)
     return evidence
 
 
-def perform(operation, source, out, game, baseline=None, allowed=()):
+def perform(operation, source, out, game, baseline=None, allowed=(), gate_profile='s0'):
     source, game = source.resolve(), game.resolve()
     out = temporary_output(out, source)
     if operation == 'capture' and git(source, 'status', '--porcelain'):
         raise GuardError('Capture requires a clean predecessor; dirty source is not blessed')
     old = load_baseline(baseline.resolve()) if baseline else None
     files = source_files(source)
-    runtime = runtime_inputs(source)
+    runtime = runtime_inputs(source) if gate_profile == 's0' else runtime_inputs(source, gate_profile)
     native, externals = external_inputs(source, game)
     revision = git(source, 'rev-parse', 'HEAD')
     guard_hash = file_hash(Path(__file__).resolve())
@@ -664,7 +751,9 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
         failures.append('Tracked export bytes/newline seed differ from predecessor')
     with tempfile.TemporaryDirectory(prefix='rrt-refactor-') as temporary:
         scratch = Path(temporary)
-        outputs, reads, snapshot = generation(source, files, game, externals, scratch, observations, failures)
+        outputs, reads, snapshot = generation(source, files, game, externals, scratch, observations, failures,
+                                             ownership=runtime.get('ownership_reference'))
+        profile_outputs = {}
         evidence = dict(operation=operation, revision=revision, source_files=files,
                         source_digest=digest(canonical(files)), runtime=runtime, native_inputs=native,
                         guard_sha256=guard_hash,
@@ -719,7 +808,37 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
             observations.append(dict(stage='frozen-savecompat', **observed))
             if observed['exit'] != 0 or observed['timed_out']:
                 failures.append('Frozen savecompat CLI failed')
-            evidence['gates'] = gates(snapshot, scratch, game, observations)
+            if gate_profile == 'arch-s1':
+                evidence['profiles'] = {}
+                for profile in ('base', 'joint'):
+                    profile_scratch = scratch / profile
+                    profile_scratch.mkdir()
+                    raw_exports, profile_reads, _ = generation(source, files, game, externals,
+                        profile_scratch, observations, failures, profile=profile,
+                        ownership=runtime.get('ownership_reference'))
+                    profile_outputs[profile] = raw_exports
+                    if not raw_exports:
+                        continue
+                    profile_story = json.loads(raw_exports['LF'])
+                    profile_inventory = predecessor_inventory(profile_story)
+                    entry = dict(exports={seed: dict(bytes=len(raw), sha256=digest(raw))
+                                          for seed, raw in raw_exports.items()},
+                                 reads=profile_reads, predecessor_inventory=profile_inventory)
+                    evidence['profiles'][profile] = entry
+                    if old:
+                        for seed, raw in raw_exports.items():
+                            diff = byte_difference((baseline / (profile + '-' + seed + '-Story.json')).read_bytes(), raw)
+                            if diff:
+                                failures.append(dict(export=profile + '-' + seed, difference=diff))
+                        if old['profiles'][profile]['predecessor_inventory'] != profile_inventory:
+                            failures.append('Profile predecessor identities or targets changed: ' + profile)
+                        # Use the exact predecessor's full profile inventory.
+                        predecessor = json.loads((baseline / (profile + '-LF-Story.json')).read_bytes())
+                        profile_failures = savecompat.check(profile_story, savecompat.inventory(predecessor))
+                        failures.extend(profile + ': ' + failure for failure in profile_failures)
+                evidence['gates'] = gates(snapshot, scratch, game, observations, gate_profile)
+            else:
+                evidence['gates'] = gates(snapshot, scratch, game, observations)
             if (snapshot / 'development/Story.json').read_bytes() != outputs['LF']:
                 failures.append('Frozen gate export changed during checks')
         else:
@@ -728,7 +847,8 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
             failures.append('Source changed during guard execution')
         if (source / 'development/Story.json').read_bytes() != tracked:
             failures.append('Tracked export changed during guard execution')
-        if runtime_inputs(source) != runtime:
+        final_runtime = runtime_inputs(source) if gate_profile == 's0' else runtime_inputs(source, gate_profile)
+        if final_runtime != runtime:
             failures.append('Runtime inputs changed during guard execution')
         if external_inputs(source, game)[0] != native:
             failures.append('Native inputs changed during guard execution')
@@ -745,11 +865,14 @@ def perform(operation, source, out, game, baseline=None, allowed=()):
         out.mkdir(parents=True)
         for seed, raw in outputs.items():
             (out / (seed + '-Story.json')).write_bytes(raw)
+        for profile, exports in profile_outputs.items():
+            for seed, raw in exports.items():
+                (out / (profile + '-' + seed + '-Story.json')).write_bytes(raw)
         (out / 'receipt.json').write_bytes(canonical(result))
         # Logs/reports are retained only in this explicitly requested result
         # bundle. Private source snapshots/build/cache trees are always removed.
-        for log in scratch.glob('*.log'):
-            shutil.copyfile(log, out / log.name)
+        for log in scratch.rglob('*.log'):
+            shutil.copyfile(log, out / '-'.join(log.relative_to(scratch).parts))
         if (scratch / 'verify.json').is_file():
             shutil.copyfile(scratch / 'verify.json', out / 'verify.json')
         print(json.dumps(dict(receipt=str(out / 'receipt.json'), identity=result['identity'],
@@ -768,6 +891,7 @@ def main():
         command.add_argument('--source', type=Path, required=True)
         command.add_argument('--out', type=Path, required=True)
         command.add_argument('--game', type=Path, default=Path(os.environ.get('RRT_GAME_DIR', '/wrath')))
+        command.add_argument('--gate-profile', choices=('s0', 'arch-s1'), default='s0')
         if name == 'check':
             command.add_argument('--baseline', type=Path, required=True)
             command.add_argument('--allow-source', action='append', default=[], metavar='EXACT_CODE_PATH')
@@ -792,7 +916,7 @@ def main():
         return 0
     try:
         return perform(args.operation, args.source, args.out, args.game,
-                       getattr(args, 'baseline', None), getattr(args, 'allow_source', ()))
+                       getattr(args, 'baseline', None), getattr(args, 'allow_source', ()), args.gate_profile)
     except (GuardError, OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print('REFACTOR GUARD FAIL: ' + str(error), file=sys.stderr)
         return 1
