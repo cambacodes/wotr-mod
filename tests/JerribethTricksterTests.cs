@@ -484,9 +484,10 @@ internal static class JerribethTricksterTests
             var outs = Program.Walk(epCommit, w, (page, _) =>
             {
                 pages.Add(page);
-                // Round 2 compiles partner choices into ending-local pages.
+                // Round 2 and job 3 compile partner choices into ending-local pages.
                 // Preserve modality coverage without requiring persistent flags.
-                if (page.StartsWith("late_local_", StringComparison.Ordinal)
+                if ((page.StartsWith("late_local_", StringComparison.Ordinal)
+                     || page.StartsWith("job3_local_", StringComparison.Ordinal))
                     && page.Length > 22 && page[^11] == '_')
                     pages.Add(page.Substring(11, page.Length - 22));
             });
@@ -702,18 +703,21 @@ internal static class JerribethTricksterTests
             check(SurfaceIds.Has(text, "[jerribeth.trickster.epilogue.commit/offer/paragraph/1][jerribeth.trickster.epilogue.commit/offer/paragraph/2]") == tenantHistory && SurfaceIds.Has(text, "[jerribeth.trickster.epilogue.commit/offer/paragraph/0]") == !tenantHistory, "The late commit's opening claims the wrong history for " + label2 + ": " + text);
         }
 
-        // COX + HOW (R2-6): the late history (commission reached, no campaign commitment) has its Last Call coda; a parted or
-        // declined history has none, and the committed history does not read the late line.
+        // Job 3: readiness opens the offer; only campaign commitment opens the separate coda.
+        // Selected late answers carry their own Last Call paragraphs without persistent commitment.
         var lateLc = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", Taken, "ending.trickster");
         check(lateLc.Has("jerribeth.trickster.late_committed") && lateLc.Has("lastcall.active") && Rules.Available(story, epCommit, lateLc)
-              && Rules.Available(story, lcPage, lateLc) && Visible(lcPage, lateLc, "[jerribeth.lastcall.page/page/paragraph/5]") == 1,
-            "The late-commit history has no Last Call coda, or the coda claims a signed contract.");
+              && !Rules.Available(story, lcPage, lateLc) && Program.Walk(epCommit, lateLc).Count > 1
+              && epCommit.Nodes.Count(n => n.Id.StartsWith("job3_local_", StringComparison.Ordinal)
+                   && n.Paragraphs.Any(p => p.Requires.Contains("lastcall.active"))) > 2,
+            "Readiness grants a campaign coda, or selected late answers lose their local Last Call conclusions.");
         foreach (var guard in new[] { "jerribeth.trickster.parted", "jerribeth.trickster.declined" })
         {
             var guarded = Program.Copy(lateLc); guarded.Flags.Add(guard);
             check(!Rules.Available(story, lcPage, guarded), "Last Call plays for a history that ended: " + guard);
         }
         var committedLc = Program.Copy(lateLc); committedLc.Flags.Add("jerribeth.committed");
+        HouseholdTests.Earn(story, committedLc, "jerribeth.payoff.ordinary"); Rules.Complete(story, committedLc);
         check(Rules.Available(story, lcPage, committedLc) && Visible(lcPage, committedLc, "[jerribeth.lastcall.page/page/paragraph/5]") == 0, "The committed coda reads the late line.");
         check(story.Scenes.Where(s => s.Relationship == "jerribeth").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
                 .Where(ch => ch.Set.Contains("jerribeth.closed")).All(ch => ch.Set.Contains("jerribeth.trickster.parted")),

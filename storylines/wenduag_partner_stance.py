@@ -123,7 +123,7 @@ def ending_paragraphs():
           requires=(LANN_IN,), forbids=("lann.dead",), any_groups=(("lann.kicked_out", "lann.plot_absent"),)),
         p("{n}Lann was outside the company. Even the reports of his absence offered no news of the hunter who had once shared Wenduag's bed.{/n}",
           requires=("lann.plot_absent", "lann.kicked_out"), forbids=("lann.dead",)),
-        p("{n}The Commander had accepted sharing Wenduag. Lann had answered for himself: he would visit her when he wanted her, and would compete with nobody for the bed. Wenduag kept inviting him to hunt.{/n}",
+        p("{n}The Commander had accepted sharing Wenduag. Lann had heard the invitation and refused a contest over her bed. His bow stayed with the crusade; his nights were still his to choose. Wenduag kept inviting him to hunt.{/n}",
           requires=(COMMITTED, SHARE, SHARED, LANN_IN), forbids=LANN_GONE),
         p("{n}The Commander had accepted sharing Wenduag, but Lann had been absent from that bargain. His answer was still his to give.{/n}",
           requires=(COMMITTED, SHARE), forbids=(SHARED, "lann.dead")),

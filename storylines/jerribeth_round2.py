@@ -469,10 +469,10 @@ def write_situations(events):
     # that a single sentence saying 'not forgiven' settles the broken bargain.
     for event in (visit, future, late):
         resume = node(event, "partner_discovery_resume")
-        resume["Text"] = '''{n}She moves the frame, showing the sap or the chief's unanswered letter without hiding it.{/n}
-"I broke the secret. You are still here. I shall not pretend those are the same answer."
+        resume["Text"] = '''{n}She leaves the frame open. Her hands stay on her side of it.{/n}
+"You have heard what I kept, or what I lost. You are still here. How troublesome of you."
 {n}She leaves her hands at her sides.{/n}
-"Come closer if you want. Or keep the table between us. I have made both less comfortable."'''
+"Come closer, or keep the table between us. I am tired of watching you hover."'''
 
 
 def late_debts(event):
@@ -500,6 +500,163 @@ def late_debts(event):
 
 
 def localize_late_choices(event):
+    """Compile existing partner decisions into ending-local destinations.
+
+    Local Set receipts guide the dialogue while it is being authored, and are
+    never persisted. Original nodes/answer indices and terminal exits survive.
+    New paths converge on those same terminal exits. This does not infer a
+    prewar yes, arrival, stance or payment from a kiss or from the late offer.
+    """
+    # Retain every round-two generated node/answer identity. The revised graph
+    # uses a new namespace; the saved late graph remains available to old saves.
+    legacy = copy.deepcopy(event)
+    original_count = len(legacy["Nodes"])
+    for item in legacy["Nodes"]:
+        for answer in item["Choices"]:
+            if "jerribeth.partner.exclusive_memory_owed" in answer["Set"]:
+                answer["Set"] = [f for f in answer["Set"] if f != "jerribeth.partner.exclusive_memory_owed"]
+                answer["Set"].extend(("jerribeth.trickster.forfeit_named", "jerribeth.trickster.cost.forfeit"))
+    _legacy_localize_late_choices(legacy)
+    retained = legacy["Nodes"][original_count:]
+    originals = {item["Id"]: copy.deepcopy(item) for item in event["Nodes"]}
+    local = {f for item in originals.values() for a in item["Choices"] for f in a["Set"]}
+    # Include the slot staging receipts in the compiler: they are local flow,
+    # never evidence of a campaign visit or an earlier physical encounter.
+    local |= {f for item in originals.values() for a in item["Choices"]
+              for f in a["Requires"] if f.startswith("jerribeth.slot_seen.")}
+    from storylines import jerribeth_partner as partner
+    terms = {partner.SHARE, partner.EXCLUSIVE, partner.SECRET, partner.READY,
+             partner.CHOSEN, partner.REFUSED, partner.CAREFUL}
+    clones, cache = [], {}
+
+    def resolved(record, state):
+        # Campaign arrangements stay live until this graph selects new terms.
+        decided = local if partner.READY in state or partner.REFUSED in state else local - terms
+        remembered = {partner.EXPOSED, 'jerribeth.partner_exposure.plant',
+                      'jerribeth.partner_exposure.chief', 'jerribeth.partner.exclusive_memory_owed'}
+        decided = decided - (remembered - state)
+        if any(f in decided and f not in state for f in record.get("Requires", ())):
+            return None
+        if any(f in state for f in record.get("Forbids", ()) if f in decided):
+            return None
+        out = copy.deepcopy(record)
+        for key in ("Requires", "Forbids"):
+            out[key] = [f for f in out.get(key, ()) if f not in decided]
+        return out
+
+    def visit(id, state):
+        original = originals[id]
+        if all(a.get("Next") is None for a in original["Choices"]):
+            if any(a["Set"] for a in original["Choices"]):
+                key = (id, state)
+                if key not in cache:
+                    label = "job3_local_exit_" + id + "_" + hashlib.sha256("|".join(sorted(state)).encode()).hexdigest()[:10]
+                    cache[key] = label
+                    notes = [out for para in partner.partner_paragraphs(closed=True)
+                             if (out := resolved(para, state))]
+                    conclusion = (
+                        '{n}After Threshold the Commander closed the frame after signing, and left Jerribeth. She kept the signed contract and its war-memory forfeit. Their evenings ended; no later invitation followed.{/n}'
+                        if "__signature" in state else
+                        '{n}After Threshold the Commander closed the frame before signing a new contract. Jerribeth kept her old accounts. No shared evenings followed.{/n}')
+                    notes.append(p(conclusion, requires=("lastcall.active",)))
+                    clones.append(n(label, original["Speaker"], original["Text"],
+                                    c(), portrait="Jerribeth", paragraphs=notes))
+                return cache[key]
+            # The original ending exit is the actual exit, with unchanged
+            # identity and mechanics. Only newly selected partner aftermath is
+            # placed on the preceding page.
+            notes = [resolved(para, state) for para in original.get("Paragraphs", ())
+                     if any(f in local for f in para.get("Requires", ()) + para.get("Forbids", ()))]
+            notes = [para for para in notes if para]
+            signed = "__signature" in state
+            private = "__private" in state
+            if not signed:
+                for para in notes:
+                    para['Text'] = para['Text'].replace(
+                        'She kept the Commander alone as her lover, and the promised memory as her price.',
+                        'The promised memory was the price of severing Marhevok\'s claim. The Commander signed no commitment contract; that separate refusal left her with no new lover.')
+            if id == 'collected' and not signed:
+                key = (id, state)
+                if key not in cache:
+                    label = 'job3_local_unsigned_' + hashlib.sha256('|'.join(sorted(state)).encode()).hexdigest()[:10]
+                    cache[key] = label
+                    notes.append(p('{n}After Threshold the lease continued. No signed war-memory forfeit fell due; Jerribeth could collect only the prices already promised.{/n}', requires=('lastcall.active',)))
+                    clones.append(n(label, 'Narrator', '{n}She closed the frame when the evening ended. The Commander kept the memory of the war.{/n}', c(), portrait='Jerribeth', paragraphs=notes))
+                return cache[key]
+            aftermath = (
+                '{n}After Threshold Jerribeth kept the signed contract beside the frame. The war-memory forfeit fell due under that signature; any earlier memory promised for exclusivity remained a separate price.{/n}'
+                if signed else
+                '{n}The last call of the war left the tenant\'s lease intact. The Commander signed no new commitment or war-memory forfeit. Their private evening ended in conversation.{/n}' if private else
+                '{n}After Threshold the offered contract remained unsigned. Jerribeth could collect the old accounts; she could claim no lover under that refused signature.{/n}')
+            notes.append(p(aftermath, requires=("lastcall.active",)))
+            key = (id, state)
+            if key in cache:
+                return cache[key]
+            label = "job3_local_" + id + "_" + hashlib.sha256("|".join(sorted(state)).encode()).hexdigest()[:10]
+            cache[key] = label
+            clones.append(n(label, "Narrator", '{n}The answer stood between them.{/n}',
+                            c("Continue", id), portrait="Jerribeth", paragraphs=notes))
+            return label
+        key = (id, state)
+        if key in cache:
+            return cache[key]
+        label = "job3_local_" + id + "_" + hashlib.sha256("|".join(sorted(state)).encode()).hexdigest()[:10]
+        cache[key] = label
+        item = copy.deepcopy(original)
+        item["Id"] = label
+        item["Choices"] = []
+        item["Paragraphs"] = [out for para in item.get("Paragraphs", ()) if (out := resolved(para, state))]
+        clones.append(item)
+        for answer in original["Choices"]:
+            out = resolved(answer, state)
+            if out is None:
+                continue
+            next_state = state | frozenset(answer["Set"])
+            if answer.get("Next") in ("signed", "signed_mind"):
+                next_state |= {"__signature"}
+            if answer.get("Next", "").startswith("partner_private_"):
+                next_state |= {"__private"}
+            out["Set"] = []
+            if out.get("Next"):
+                out["Next"] = visit(out["Next"], next_state)
+            item["Choices"].append(out)
+        return label
+
+    start = node(event, "offer")
+    # A new entry choice uses the same text and native-history conditions. The
+    # saved offer/answers remain present; their producer effects are retired.
+    local_start = visit("offer", frozenset())
+    for item in event["Nodes"]:
+        terminal = all(a.get("Next") is None for a in item["Choices"])
+        if terminal:
+            # Existing campaign receipts remain meaningful; late selections
+            # have their own paragraph on the preceding page.
+            # The selected arrangement is printed on its compiled predecessor.
+            # Keep paragraph positions but retire their campaign-only copies;
+            # this terminal still has its original exit identity and mechanics.
+            for para in item.get("Paragraphs", ()):
+                if any(f in local for f in para.get("Requires", ()) + para.get("Forbids", ())):
+                    para.setdefault("Forbids", []).append("trickster.ever")
+            continue
+        for answer in item["Choices"]:
+            answer["Set"] = []
+            for key in ("Requires", "Forbids"):
+                answer[key] = [f for f in answer[key] if f not in local]
+            if item is start:
+                answer["Forbids"].append("trickster.ever")
+    start["Choices"].append(c('[Hear her offer.]', local_start))
+    # Rules.Validate also checks structural reachability of saved pages. Keep
+    # the retained graph connected by an appended, retired answer; this scene
+    # requires trickster.ever, so a new run cannot enter that earlier graph.
+    retained_start = node(legacy, "offer")["Choices"][-1]["Next"]
+    start["Choices"].append(c('Continue', retained_start, forbids=("trickster.ever",)))
+    event["Nodes"].extend(retained)
+    event["Nodes"].extend(clones)
+
+
+# Frozen round-two graph emitter: identity retention only; new offers enter
+# the job3_local graph above. Do not reorder its output or compact its answers.
+def _legacy_localize_late_choices(event):
     """Compile existing partner decisions into ending-local destinations.
 
     Local Set receipts guide the dialogue while it is being authored, and are

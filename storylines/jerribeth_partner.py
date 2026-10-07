@@ -164,7 +164,7 @@ def terms_nodes(origins):
             }[fate]
             nodes.append(j("partner_choose_" + fate, reaction,
                 c('"I accept the claim. Keep your promise."', resume,
-                  flags=(EXCLUSIVE, READY, CHOSEN, "jerribeth.trickster.forfeit_named", "jerribeth.trickster.cost.forfeit")),
+                  flags=(EXCLUSIVE, READY, CHOSEN, "jerribeth.partner.exclusive_memory_owed")),
                 c('"Keep him. I will share instead."', "partner_share_" + fate)))
         nodes.append(j("partner_answer_" + fate, '"Let me consider what you have given me, Commander."', *answer))
         secret = next(node for node in nodes if node["Id"] == "partner_secret_" + fate)
@@ -348,7 +348,7 @@ def install_shared_witness(scene, node_ids):
         scene["Nodes"].append(continuation)
 
 
-def partner_paragraphs(aeon=False):
+def partner_paragraphs(aeon=False, closed=False):
     if aeon:
         return [
             p("{n}The erased correspondence could grant no claim over Marhevok. His devotion to the Lady of the Sun belonged to the history that had been undone; whether either remembered it was unknown.{/n}"),
@@ -372,11 +372,19 @@ def partner_paragraphs(aeon=False):
         p("{n}The Commander had chosen to share her evenings. That bargain kept Marhevok's claim in view; it did not make his captivity willing or his farewell an invitation to return.{/n}", requires=(SHARE,)),
         p("{n}The demand for Jerribeth alone had met her refusal. She kept her possessions and her memories; the Commander lost her evenings.{/n}", requires=(EXCLUSIVE, REFUSED)),
         p("{n}Jerribeth had severed Marhevok's claim to her bed, without changing his fate. She kept the Commander alone as her lover, and the promised memory as her price. She named that debt whenever the Commander spoke as though the bargain had made her obedient.{/n}", requires=(EXCLUSIVE, CHOSEN)),
-        p("{n}The Commander had chosen secrecy. Where Marhevok still lived beyond their reach, he had never been told; no silence of his was counted as agreement.{/n}", requires=(SECRET,), forbids=(EXPOSED,)),
+        p("{n}The Commander had chosen secrecy. Jerribeth had kept their name out of her accounts of those evenings; no answer from Marhevok had been received.{/n}", requires=(SECRET,), forbids=(EXPOSED,)),
         p("{n}The secret had been exposed. Marhevok had struck the frame with a vine; Jerribeth had cut it loose. The sap dried on the frame. She never cleaned it off for the Commander.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.plant")),
         p("{n}Jerribeth had exposed the secret in a message to Marhevok. The Wintersun chief refused to receive another account of her bed. She kept Marhevok's letter. No more came. The Commander was left with the lover who had broken their bargain.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.chief")),
         p("{n}No arrangement with Marhevok had been settled. Jerribeth's unfinished correspondence did not settle it in his absence.{/n}", forbids=(SHARE, EXCLUSIVE, SECRET)),
     ]
+    if closed:
+        for block in paragraphs:
+            block['Text'] = block['Text'].replace('The Commander was left with the lover who had broken their bargain.',
+                'She had broken their secrecy before the later parting. The letter remained with her; the Commander no longer shared her evenings.')
+            block['Text'] = block['Text'].replace('She kept the Commander alone as her lover, and the promised memory as her price.',
+                'The Commander had been her sole lover while that promise lasted. The later parting ended that claim; the memory owed for breaking with Marhevok remained its own account.')
+            block['Text'] = block['Text'].replace('She named that debt whenever the Commander spoke as though the bargain had made her obedient.',
+                'The later parting forgave none of that earlier price.')
     return paragraphs
 
 
@@ -404,7 +412,7 @@ def integrate(payload):
     for scene in payload["Scenes"]:
         if scene.get("Relationship") == "jerribeth" and scene.get("Owner", "").endswith("Epilogue"):
             for node in scene["Nodes"]:
-                node.setdefault("Paragraphs", []).extend(partner_paragraphs(scene["Owner"] == "AeonEpilogue"))
+                node.setdefault("Paragraphs", []).extend(partner_paragraphs(scene["Owner"] == "AeonEpilogue", closed=scene["Id"] == "jerribeth.ending_apart"))
     # Last Call builds these pages later. Modify ONLY Jerribeth's named record,
     # in her route integrator; shared Last Call source and gates stay untouched.
     from storylines import lastcall_partners

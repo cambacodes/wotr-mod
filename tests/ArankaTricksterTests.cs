@@ -274,7 +274,9 @@ internal static class ArankaTricksterTests
         // Trk_Aranka_Duet: the billing, both ways; every opening variant is exclusive.
         var answered = World(story, 3, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
         check(Rules.Available(story, duet, answered), "Trk_Aranka_Duet: unavailable.");
-        var signed = After(duet, answered, "signed", 0);
+        var signed = After(duet, answered, "thall_signed", 0);
+        check(signed.Has("aranka.thall.parting_spoken") && duet.Nodes.Single(n => n.Id == "signed").Choices[0].Forbids.Contains("trickster.ever"),
+            "Job 3: the duet earns Thall's separation; the saved answer stays present and retired.");
         check(signed.Has(P + "duet_sung") && Play(duet, answered).Any(r => r.Has(P + "cost.vain")), "Trk_Aranka_Duet: flags.");
         check(!Rules.Available(story, encore, Later(story, signed, 71)) && Rules.Available(story, encore, Later(story, signed, 72)),
             "Trk_Aranka_Duet: the encore ignores its three days.");
@@ -558,7 +560,7 @@ internal static class ArankaTricksterTests
             var tooEarly = Place(Later(story, answeredAt, 23), marketAnchor, true);
             check(!Rules.Available(story, Venue(duet, tooEarly), tooEarly), label + ": the duet comes before its day.");
             var duetAt = Place(Later(story, answeredAt, 24), marketAnchor, true);
-            var sung = Pick(Venue(duet, duetAt), duetAt, "signed", 0);
+            var sung = Pick(Venue(duet, duetAt), duetAt, "thall_signed", 0);
             var encoreAt = Place(Later(story, sung, 24), marketAnchor, true);
             var stayed = Pick(Venue(encore, encoreAt), encoreAt, "choice", 0);
             check(stayed.Has(Kept) && stayed.Hour - t0 <= 168, label + ": her yes misses the week (" + (stayed.Hour - t0) + " h).");

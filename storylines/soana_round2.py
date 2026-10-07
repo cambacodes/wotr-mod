@@ -78,6 +78,10 @@ def family(scenes):
 "That is enough from you. Corven will have my words, not a tale you made softer for his ears."
 {n}When the scout has gone, she keeps hold of your sleeve.{/n} "I want you back. I have not forgotten whose clasp this is."''', c('[Leave her reply with the messenger.]'), portrait='Soana'))
         elif '.homecoming' in sid:
+            for item in event['Nodes']:
+                for answer in item['Choices']:
+                    if set(answer['Set']) & {P.TOGETHER, P.SEPARATED, P.QUIET_RETURN}:
+                        answer['Set'].append('soana.partner.homecoming_kept')
             # Arrival and correspondence are separate histories. Existing paid
             # escort retains its 168-hour journey; an unpaid letter stays a letter.
             event['Forbids'].append('soana.round2.correspondence_only')
@@ -417,7 +421,7 @@ def integrate(payload):
             for block in node.get('Paragraphs', []):
                 for field in ('Requires', 'Forbids'):
                     block[field] = [EFFECTIVE if k == R else k for k in block.get(field, [])]
-                if P.TOGETHER in block.get('Requires', []) and 'come home' in block['Text']:
+                if P.TOGETHER in block.get('Requires', []) and 'come home' in block['Text'] and event['Id'] not in P.LOSS_ENDINGS:
                     block['Text'] = '{n}Corven had answered for himself. He had agreed to keep the marriage, with his own bed and no messages passed through their children. Soana wrote him herself. Neither a letter nor a lover at her fire decided whether he came north.{/n}'
                 if P.CONFIRMED in block.get('Forbids', ()) and "fate was still unknown" in block['Text']:
                     block['Forbids'].append('soana.round2.family_reply')

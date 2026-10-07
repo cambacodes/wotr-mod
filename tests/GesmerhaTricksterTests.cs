@@ -648,13 +648,13 @@ internal static class GesmerhaTricksterTests
             "The called living advance is told as unspoken.");
         check(unspokenLiving.Count(x => SurfaceIds.Has(SurfaceIds.Of(story, x), "[gesmerha.lastcall.page/page/paragraph/5]")) == 1 && unspokenLiving.All(x => !SurfaceIds.Has(SurfaceIds.Of(story, x), "[gesmerha.lastcall.page/page/paragraph/4]")),
             "The unspoken living advance reports a call the Commander never made.");
-        // R2-6: the returned route's epilogue commit (a yard visit without the bench commit, or a failed presence) gets the coda
-        // too; a refusal, a Commander who ended it, and a carver never visited do not.
+        // Job 3: a yard visit or placement failure keeps paid commission delivery,
+        // but supplies no accepted romance for the separate Last Call coda.
         foreach (var (lateState, label) in new[] { (seen, "yard without commit"), (failed, "failed presence") })
         {
             check(Endings(lateState).SequenceEqual(new[] { P + "epilogue.commit" }), "The epilogue commit page is missing: " + label);
             var afterCall = Program.Walk(lcCall, AtRift(lateState)).First(r => r.Has("gesmerha.lastcall.resolved"));
-            check(Rules.Available(story, lcPage, Coda(afterCall)), "The epilogue commit gets no Last Call coda: " + label);
+            check(!Rules.Available(story, lcPage, Coda(afterCall)), "Commission delivery invents a romantic Last Call coda: " + label);
         }
         foreach (var (noCoda, label) in new[] { (returned, "never visited"), (declined, "her refusal"), (finished, "the Commander's own no") })
             check(!Rules.Available(story, lcPage, Coda(AtRift(noCoda))), "Last Call writes a coda for " + label + ".");
