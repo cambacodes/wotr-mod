@@ -93,6 +93,7 @@ class KianaRound4Tests(unittest.TestCase):
 
     def test_shipped_late_yes_exit_positions_survive_the_staging_split(self):
         from tests.story_fixture import fresh_story
+        from tools.savecompat import choice_identities
         exported = {s["Id"]: s for s in fresh_story()["Scenes"]}
         for books in (self.books, exported):
             for sid in r4.HOSTS:
@@ -103,6 +104,10 @@ class KianaRound4Tests(unittest.TestCase):
                         self.assertGreaterEqual(len(answers), 3)
                         self.assertIsNone(answers[0]["Next"])
                         self.assertEqual(answers[1]["Next"], "promise_accepted")
+                        self.assertEqual(
+                            choice_identities(books[sid], nodes[name])[:3],
+                            [dict(Id=None, GuidFor=f"answer.{sid}.{name}.{index}")
+                             for index in range(3)])
                         exit = answers[2]
                         self.assertEqual(exit["Text"], "[Leave.]")
                         self.assertIsNone(exit["Next"])
