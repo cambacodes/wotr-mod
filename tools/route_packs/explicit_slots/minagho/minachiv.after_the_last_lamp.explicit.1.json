@@ -3,36 +3,33 @@
   "source": {
     "scene": "minachiv.after_the_last_lamp",
     "node": "night",
-    "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
+    "baseline": "397d00d1"
   },
-  "voice": "Chivarro: exact appraisal, a madam's mercantile wit, jealous pride, predatory appetite, impatience with gratitude, sensual assurance and harsh temper when cheated. Affection for Minagho remains independent of the Commander. Write new dialogue from traits; do not copy brief sentences or native quotations.",
-  "facts": [
-    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
-    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
-    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
-    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
+  "source_nodes": [
+    "night"
   ],
-  "scene": "Authored expansion of minachiv.after_the_last_lamp/night. Chapter 5, before Threshold, Trickster history at Drezen, Chivarro's existing rented private room, couch or inner bed as staged in the source. Present: Chivarro and the Commander only. Existing accepting choice and the actual partner answer precede the slot. This source combines threshold and aftermath: insert before the existing later/dawn paragraph. This is a neutral production brief; write no additional event outside that interval.",
-  "required_beats": [
-    "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
-    "Carry the scene's existing appetite, rivalry and power into character dialogue; no generic romance recital, narrator verdict, moral maxim or modern consent script.",
-    "Keep clothing and furniture continuous with the source: already removed garments stay removed; the default is staging guidance, not a second undressing.",
-    "No new price, flag, gate, power, arrival, partner agreement, rescue entitlement or ending is generated.",
-    "Finish with the exact last_line; preserve the mapped original aftermath and legacy exit effects. If its opening repeats this connective, join it once without deleting its saved node.",
-    "Her own invitation and appetite are distinct from purchased service. Keep the actual receipt/rent history; do not invent a charge. Minagho's current place is not silently dissolved.",
-    "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
-  ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
-  "last_line": "N: Near dawn, a cart rattles beneath the window.",
+  "voice": "CHIVARRO: imperious, appraising, impatient, proprietorial, sexually frank; hospitality is a weapon, a bill can be a joke, a refusal can be vicious. Enjoys controlling a room and embarrassing arrogance. Her chosen affection does not redeem her cruelty or end her attachment to Minagho. Avoid repeated accounting metaphors, maxims, therapy language, consent choreography and professional-client reassurance. MINAGHO, when present: spiteful, proud, quick to threaten, hungry for her lover, amused by the Commander's discomfort; independently chooses every invitation. Write fresh short dialogue from these traits, not copied native sentences.",
+  "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: Chivarro's loft above her house, behind the bed curtain, the night after the house's opening night. SCENE: minachiv.after_the_last_lamp; existing node variant: night. Participants: Commander and Chivarro. The robe pin is already out and her robe is off one shoulder; she is tired, flush with takings and hungry for the guest, not delivering a professional show. Save history varies and the insert must read true for all of it: the Commander may have paid at her door, haggled, scrubbed her entrance floor on their knees in front of the queue, kept her out of their head, or pulled rank and been barred from upstairs and let up anyway. If coins are on the pillow, she has put the door money back because she will not be paid twice; never treat sex as paid for. Do not name which door outcome happened. Her point is that upstairs she does not sell, she chooses. Remember earlier intimacy. The cart noise and her demand for another hour come afterward in the existing aftermath. One obscenity from her is in register. No theatre, rehearsal or performance-notes language. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "C: Not for money. I chose this one.",
   "speakers": {
+    "N": "Narrator",
     "C": "Chivarro"
   },
-  "example": "N: Chivarro sets the folded account beyond reach and catches your collar.\nC: You have counted enough. Come here.\nN: She pulls you away from the table.",
+  "example": "N: Chivarro sweeps the pillow clear with her arm and pulls you down.\nC: Downstairs it's business, honey. Up here I take what I like.\nN: Her knee settles either side of you.",
   "commander": "a man",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 12,
-  "max_lines": 18
+  "max_lines": 20,
+  "default_text": "{n}Behind the curtain Chivarro lets the robe fall and pulls you down onto the bed with her, one knee either side of you, in no hurry at all.{/n}\n\"Not for money. I chose this one.\"",
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
 }

@@ -1,13 +1,22 @@
 {
+  "slot_id": "minachiv.a_room_she_likes.explicit.1",
+  "source": {
+    "scene": "minachiv.a_room_she_likes",
+    "node": "later",
+    "baseline": "397d00d1"
+  },
+  "source_nodes": [
+    "later"
+  ],
   "voice": "CHIVARRO: imperious, appraising, impatient, proprietorial, sexually frank; hospitality is a weapon, a bill can be a joke, a refusal can be vicious. Enjoys controlling a room and embarrassing arrogance. Her chosen affection does not redeem her cruelty or end her attachment to Minagho. Avoid repeated accounting metaphors, maxims, therapy language, consent choreography and professional-client reassurance. MINAGHO, when present: spiteful, proud, quick to threaten, hungry for her lover, amused by the Commander's discomfort; independently chooses every invitation. Write fresh short dialogue from these traits, not copied native sentences.",
   "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
-  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: Chivarro's existing rented rehearsal lodging near the bathhouse in Drezen, on her couch. SCENE: minachiv.a_room_she_likes; existing node variants: later. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Chivarro. Her hired private room near the established rehearsal location, after her invitation and the couch argument. She loosens her gown and takes control of the private evening. Keep the curtain, disliked couch and surviving chair as props, not a constant comedy interruption. Minagho has her own errands; separate rooms do not mean separation of lovers. Return/deepening if intimacy already occurred. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
-  "last_line": "C: Let the damned couch complain.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: Chivarro's own room above her house in Drezen: a loft under the burned market's roof, over the cellar pleasure-house she runs under a mortal name; red cloth on the walls, a cracked red glass lamp from the Delights, a bed behind a curtain. The house is open below: music, laughter and Sivane's voice come up through the floorboards, and Chivarro reads the room under her while she takes the Commander. SCENE: minachiv.a_room_she_likes; existing node variant: later. Participants: Commander and Chivarro. She has already stripped in the red lamplight, pushed the Commander down on the bed and climbed over them; continue from there, no second undressing. This is not purchased service: she does not charge, and says so in her own way. Minagho keeps her own room above the gaming house and climbs a ladder to start fights here; separate rooms do not mean separation of lovers. Return/deepening if intimacy already occurred. One obscenity from her is in register. No rehearsal, theatre or performance language. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "C: Let them hear it downstairs. They can pay for it.",
   "speakers": {
     "N": "Narrator",
     "C": "Chivarro"
   },
-  "example": "N: Chivarro sets the unopened account aside and catches your collar.\nC: That can wait. You have kept me waiting long enough.\nN: She draws you close.",
+  "example": "N: Chivarro pins your wrist to the bed and listens to the floor.\nC: Eleven customers down there, honey, and not one of them gets this.\nN: She bites your shoulder, not gently.",
   "commander": "a man",
   "commander_variants": [
     "a man",
@@ -15,11 +24,7 @@
   ],
   "min_lines": 12,
   "max_lines": 20,
-  "slot_id": "minachiv.a_room_she_likes.explicit.1",
-  "default_text": "{n}Chivarro loosens the laces beneath your hands and lets her gown slide. She pulls you against her, keeping your mouth occupied as the couch shifts under you.{/n}\n\"Let the damned couch complain.\"",
-  "source_nodes": [
-    "later"
-  ],
+  "default_text": "{n}Chivarro pins your wrists to the pillow and takes her time, head tilted, listening to her house through the floor as if it were applause.{/n}\n\"Let them hear it downstairs. They can pay for it.\"",
   "canon_refs": [
     "C1",
     "C2",
