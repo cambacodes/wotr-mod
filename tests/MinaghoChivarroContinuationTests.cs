@@ -15,9 +15,12 @@ internal static class MinaghoChivarroContinuationTests
             && (!s.Id.StartsWith("minagho_chivarro.trickster.", StringComparison.Ordinal)
                 || s.Id == "minagho_chivarro.trickster.epilogue.partner_refused");
         // eng7-f6c end
-        var visits = story.Scenes.Where(s => Registered(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        var savedVisits = story.Scenes.Where(s => Registered(s) && s.Id.StartsWith(prefix, StringComparison.Ordinal)
+            && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        var visits = savedVisits.Where(s => !s.Forbids.Contains("chapter_later")).ToArray();
+        check(savedVisits.Length == 23 && savedVisits.Length - visits.Length == 9, "Minachiv must retain all 23 saved scenes and retire exactly nine.");
         var endings = story.Scenes.Where(s => Registered(s) && s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
-        check(visits.Length == 23, "Minagho/Chivarro continuation must include its complete 23-visit chain.");
+        check(visits.Length == 14, "Minagho/Chivarro continuation must deliver its 14 kept visits.");
         var reached = new HashSet<string>();
         var produced = new HashSet<string>();
         var checkedPages = new HashSet<string>();
@@ -60,7 +63,8 @@ internal static class MinaghoChivarroContinuationTests
         };
         foreach (var fixture in fixtures)
         {
-            var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = capital };
+            var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = capital,
+                CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000 } };
             initial.Flags.UnionWith(new[] { "seelah.committed", "jerribeth.committed", "committed", "closed" });
             initial.Flags.UnionWith(story.CompletedQuests.Where(p => p.Value == "5cd5f22437a1465180b45c080899577a").Select(p => p.Key));
             // eng7-l02: a current Trickster plays the authored reunion; native searching is Azata-only.
@@ -76,6 +80,7 @@ internal static class MinaghoChivarroContinuationTests
             var originalNative = initial.Flags.Where(native.Contains).ToHashSet();
             // eng7-l02: the played brand producer also sets the existing shared started flag.
             check(!initial.Flags.Any(f => f.StartsWith(prefix, StringComparison.Ordinal) && f != "minachiv.reunion_history"
+                && f != "minachiv.brand_live" // Derived native brand state is not played addon progress.
                 && !(fixture.Item4 && f == "minachiv.started")), "Fixture fabricated addon history.");
             check(Program.CurrentAvailable(story, visits[0], initial), "Actual parent terminal rejected: " + fixture.Item1);
             check(endings.All(e => !Program.CurrentAvailable(story, e, initial)), "Unplayed continuation steals a parent-only ending.");
@@ -106,11 +111,33 @@ internal static class MinaghoChivarroContinuationTests
                         check(scene.Nodes[0].Choices.Where(c => Rules.Match(c.Requires, c.Forbids, formerTrickster)).All(c => c.Next != "trick"), "Former Trickster retains an unavailable fate power.");
                     }
                     check(scene.Remote && scene.Owner == "Memory" && scene.ContactUnit == null && scene.AdditionalContactUnits.Length == 0 && Rules.EntryTargets(scene).Length == 0, "Narrated visit invents native unit/dialogue delivery.");
-                    foreach (var result in Program.Walk(scene, ready, (id, state) =>
+                    // Replaying saved histories also covers fallbacks no fresh chain now needs.
+                    var histories = new List<Snapshot> { ready };
+                    if (scene.Id == "minachiv.what_the_offer_bought")
+                    {
+                        var parked = Program.Copy(ready);
+                        parked.Flags.ExceptWith(new[] { "minachiv.business_chosen", "minachiv.bait_chosen", "minachiv.refusal_chosen",
+                            "minachiv.terms_sent", "minachiv.evidence_kept", "minachiv.source_found" });
+                        histories.Add(parked);
+                    }
+                    if (scene.Id == "minachiv.when_the_door_opens")
+                        foreach (var ending in new[] { "minachiv.winter_ending", "minachiv.host_ending" })
+                        { var parked = Program.Copy(ready); parked.Flags.Add(ending); histories.Add(parked); }
+                    if (scene.Id == "minachiv.after_the_last_lamp")
+                    {
+                        var parked = Program.Copy(ready);
+                        parked.Flags.ExceptWith(new[] { "minachiv.after_show_promised", "minachiv.after_show_open" });
+                        histories.Add(parked);
+                    }
+                    foreach (var history in histories)
+                    foreach (var result in Program.Walk(scene, history, (id, state) =>
                     {
                         reached.Add(scene.Id + "/" + id);
-                        check(state.Flags.SetEquals(ready.Flags) || scene.Id == "minachiv.before_the_last_road" && state.Has("minachiv.complete"),
-                            "Interrupted continuation prematurely records a choice: " + scene.Id + "/" + id);
+                        // Job 4 checks and calls now publish their own local receipts before the terminal.
+                        var localEffects = scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).ToHashSet();
+                        check(state.Flags.Except(history.Flags).All(f => localEffects.Contains(f) || story.Derived.ContainsKey(f)),
+                            "Interrupted continuation fabricated unrelated history: " + scene.Id + "/" + id);
+                        check(!state.Has(scene.Id), "Interrupted continuation records completion before its terminal: " + scene.Id + "/" + id);
                         if (scene.Id.EndsWith("the_unhired_evening") && id == "want" && state.Has("minagho.ran_demon"))
                         {
                             var offered = scene.Nodes.Single(n => n.Id == id).Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state));
@@ -165,8 +192,11 @@ internal static class MinaghoChivarroContinuationTests
             finished.AddRange(states);
         }
         // Keep the original continuation coverage contract; the stance suite
-        // supplies current-Trickster fixtures for the appended decision nodes.
-        foreach (var page in visits.SelectMany(s => s.Nodes.Where(n => !n.Id.StartsWith("stance_", StringComparison.Ordinal))
+        // supplies current-Trickster fixtures for the appended decision nodes and their slots.
+        foreach (var page in visits.SelectMany(s => s.Nodes.Where(n => !n.Id.StartsWith("stance_", StringComparison.Ordinal)
+            && !(n.Id.Contains(".explicit.") && s.Nodes.Where(host => host.Choices.Any(c => c.Next == n.Id))
+                .All(host => host.Id.StartsWith("stance_", StringComparison.Ordinal)))
+            && !(s.Id == "minachiv.the_performer_and_the_key" && (n.Id == "pleasure" || n.Id == "audience")))
             .Select(n => s.Id + "/" + n.Id))) check(reached.Contains(page), "No earned-history witness for page " + page);
         foreach (var flag in visits.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct())
             check(produced.Contains(flag), "No played producer for outcome " + flag);

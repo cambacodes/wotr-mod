@@ -77,7 +77,7 @@ OVERRIDES = {
     "kiana.ink_after": "visit",
     "ember.after_applause": "visit",
     "minachiv.the_remaining_customers": "visit",
-    "minachiv.the_cost_in_daylight": "visit",
+    "minachiv.the_cost_in_daylight": "event",
     "anevia.trickster.gone.confession": "visit",
     "aranka.trickster.failure.second_verse": "visit",
     "aranka.trickster.failure.second_verse_late": "visit",      # its Chapter 5 twin (polish)
