@@ -20,7 +20,7 @@ class S30Tests(unittest.TestCase):
                             "trickster.foresight.cost.promise", household.KEPT,
                             "eliandra.committed", "targona.committed", "eliandra.met_ch5",
                             "eliandra.trickster.leave_granted", "targona.trickster.met",
-                            "targona.trickster.after.ward", *s30.FRIENDS})
+                            "targona.trickster.after.ward"})
         state.flags.difference_update(omit)
         state.flags.update(extra)
         verify.sim_complete(self.model, state)
@@ -44,8 +44,12 @@ class S30Tests(unittest.TestCase):
                 self.assertFalse(self.available(omit=("eliandra.met_ch5",), extra=history))
         self.assertFalse(self.available(omit=("targona.trickster.met",)))
 
-    def test_no_page_no_current_path_and_no_friendship_stay_blocked(self):
-        for key in ("trickster", "trickster.foresight.accepted", *s30.FRIENDS):
+    def test_page_and_current_path_guard_the_deed_that_earns_friendship(self):
+        # J02 derives friendship from this row's actual answer and costs;
+        # requiring that result on entry would make its producer unreachable.
+        self.assertTrue(self.available())
+        self.assertFalse(set(s30.FRIENDS) & set(self.scene["Requires"]))
+        for key in ("trickster", "trickster.foresight.accepted"):
             with self.subTest(key=key):
                 self.assertFalse(self.available(omit=(key,)))
         self.assertFalse(self.available(extra=("trickster.failed",)))
@@ -109,7 +113,7 @@ class S30Tests(unittest.TestCase):
         first, second = fresh_story(include_harem=False), fresh_story(include_harem=False)
         for payload in (first, second):
             register_all(payload, payload['Scenes'], payload['Etudes'])
-        self.assertEqual(first, second)
+        self.assertTrue(first == second, "Repeated registration changed the generated story")
         self.assertEqual(before, (household.ENTRIES, lastcall_ledger.EXTRA_ENTRIES))
         self.assertEqual(sum(s['Id'] == s30.SCENE_ID for s in first['Scenes']), 1)
         self.assertEqual(sum(e['Id'] == s30.PREFIX + 'seating'

@@ -1,0 +1,371 @@
+{
+  "schema": 1,
+  "rulings": [
+    29,
+    30,
+    31,
+    32
+  ],
+  "hook_count": 167,
+  "hook_sha256": "5bc667258cd57637cc922f31223c8b45ed3431bfbefc4a149992a52e6f54adeb",
+  "hooks": [
+    "seelah.harem.attitude.arueshalae.friend",
+    "arueshalae.harem.attitude.seelah.friend",
+    "seelah.harem.attitude.nenio.friend",
+    "nenio.harem.attitude.seelah.friend",
+    "nenio.harem.attitude.arueshalae.friend",
+    "arueshalae.harem.attitude.nenio.friend",
+    "seelah.harem.attitude.yaniel.friend",
+    "yaniel.harem.attitude.seelah.friend",
+    "seelah.harem.attitude.kiana.friend",
+    "kiana.harem.attitude.seelah.friend",
+    "eliandra.harem.attitude.targona.friend",
+    "targona.harem.attitude.eliandra.friend",
+    "seelah.harem.attitude.nenio.rival",
+    "seelah.harem.attitude.nenio.respect",
+    "seelah.harem.attitude.nenio.lover",
+    "nenio.harem.attitude.seelah.rival",
+    "nenio.harem.attitude.seelah.respect",
+    "nenio.harem.attitude.seelah.lover",
+    "seelah.harem.attitude.jannah.rival",
+    "seelah.harem.attitude.jannah.respect",
+    "seelah.harem.attitude.jannah.friend",
+    "seelah.harem.attitude.jannah.lover",
+    "jannah.harem.attitude.seelah.rival",
+    "jannah.harem.attitude.seelah.respect",
+    "jannah.harem.attitude.seelah.friend",
+    "jannah.harem.attitude.seelah.lover",
+    "seelah.harem.attitude.yaniel.rival",
+    "seelah.harem.attitude.yaniel.respect",
+    "seelah.harem.attitude.yaniel.lover",
+    "yaniel.harem.attitude.seelah.rival",
+    "yaniel.harem.attitude.seelah.respect",
+    "yaniel.harem.attitude.seelah.lover",
+    "seelah.harem.attitude.kiana.rival",
+    "seelah.harem.attitude.kiana.respect",
+    "seelah.harem.attitude.kiana.lover",
+    "kiana.harem.attitude.seelah.rival",
+    "kiana.harem.attitude.seelah.respect",
+    "kiana.harem.attitude.seelah.lover",
+    "eliandra.harem.attitude.targona.rival",
+    "eliandra.harem.attitude.targona.respect",
+    "eliandra.harem.attitude.targona.lover",
+    "targona.harem.attitude.eliandra.rival",
+    "targona.harem.attitude.eliandra.respect",
+    "targona.harem.attitude.eliandra.lover",
+    "seelah.harem.enmity.areelu",
+    "seelah.harem.enmity.camellia",
+    "arsinoe.harem.enmity.nurah",
+    "minagho_chivarro.harem.enmity.hepzamirah",
+    "nocticula.harem.enmity.arueshalae",
+    "nurah.harem.enmity.arsinoe",
+    "hepzamirah.harem.enmity.minagho_chivarro",
+    "camellia.harem.enmity.seelah",
+    "areelu.harem.enmity.seelah",
+    "arueshalae.harem.enmity.nocticula",
+    "camellia.harem.enmity.wenduag",
+    "wenduag.harem.enmity.camellia",
+    "seelah.harem.enmity.wenduag",
+    "wenduag.harem.enmity.seelah",
+    "seelah.harem.enmity.arueshalae",
+    "arueshalae.harem.enmity.seelah",
+    "wenduag.harem.enmity.arueshalae",
+    "arueshalae.harem.enmity.wenduag",
+    "seelah.harem.enmity.nenio",
+    "nenio.harem.enmity.seelah",
+    "camellia.harem.enmity.arueshalae",
+    "arueshalae.harem.enmity.camellia",
+    "nenio.harem.enmity.arueshalae",
+    "arueshalae.harem.enmity.nenio",
+    "galfrey.harem.enmity.arueshalae",
+    "arueshalae.harem.enmity.galfrey",
+    "vellexia.harem.enmity.shamira",
+    "shamira.harem.enmity.vellexia",
+    "arueshalae.harem.enmity.w.minagho",
+    "minagho_chivarro.harem.enmity.minagho.arueshalae",
+    "arueshalae.harem.enmity.minagho_chivarro",
+    "minagho_chivarro.harem.enmity.arueshalae",
+    "seelah.harem.enmity.yaniel",
+    "yaniel.harem.enmity.seelah",
+    "arueshalae.harem.enmity.vellexia",
+    "vellexia.harem.enmity.arueshalae",
+    "camellia.harem.enmity.vellexia",
+    "vellexia.harem.enmity.camellia",
+    "soana.harem.enmity.camellia",
+    "camellia.harem.enmity.soana",
+    "seelah.harem.enmity.kiana",
+    "kiana.harem.enmity.seelah",
+    "eliandra.harem.enmity.targona",
+    "targona.harem.enmity.eliandra",
+    "melazmera.harem.enmity.hepzamirah",
+    "hepzamirah.harem.enmity.melazmera",
+    "kaylessa.harem.enmity.camellia",
+    "camellia.harem.enmity.kaylessa",
+    "kaylessa.harem.enmity.w.anevia",
+    "tirabade.harem.enmity.anevia.kaylessa",
+    "anevia.harem.enmity.kaylessa",
+    "shamira.harem.enmity.arueshalae",
+    "arueshalae.harem.enmity.shamira",
+    "herrax.harem.enmity.w.minagho",
+    "minagho_chivarro.harem.enmity.minagho.herrax",
+    "wenduag.harem.enmity.vellexia",
+    "vellexia.harem.enmity.wenduag",
+    "seelah.harem.enmity.jannah",
+    "jannah.harem.enmity.seelah",
+    "seelah.harem.reconciled.areelu",
+    "seelah.harem.reconciled.camellia",
+    "arsinoe.harem.reconciled.nurah",
+    "minagho_chivarro.harem.reconciled.hepzamirah",
+    "nocticula.harem.reconciled.arueshalae",
+    "nurah.harem.reconciled.arsinoe",
+    "hepzamirah.harem.reconciled.minagho_chivarro",
+    "camellia.harem.reconciled.seelah",
+    "areelu.harem.reconciled.seelah",
+    "arueshalae.harem.reconciled.nocticula",
+    "camellia.harem.reconciled.wenduag",
+    "wenduag.harem.reconciled.camellia",
+    "seelah.harem.reconciled.wenduag",
+    "wenduag.harem.reconciled.seelah",
+    "seelah.harem.reconciled.arueshalae",
+    "arueshalae.harem.reconciled.seelah",
+    "wenduag.harem.reconciled.arueshalae",
+    "arueshalae.harem.reconciled.wenduag",
+    "seelah.harem.reconciled.nenio",
+    "nenio.harem.reconciled.seelah",
+    "camellia.harem.reconciled.arueshalae",
+    "arueshalae.harem.reconciled.camellia",
+    "nenio.harem.reconciled.arueshalae",
+    "arueshalae.harem.reconciled.nenio",
+    "galfrey.harem.reconciled.arueshalae",
+    "arueshalae.harem.reconciled.galfrey",
+    "vellexia.harem.reconciled.shamira",
+    "shamira.harem.reconciled.vellexia",
+    "arueshalae.harem.reconciled.w.minagho",
+    "minagho_chivarro.harem.reconciled.minagho.arueshalae",
+    "arueshalae.harem.reconciled.minagho_chivarro",
+    "minagho_chivarro.harem.reconciled.arueshalae",
+    "seelah.harem.reconciled.yaniel",
+    "yaniel.harem.reconciled.seelah",
+    "arueshalae.harem.reconciled.vellexia",
+    "vellexia.harem.reconciled.arueshalae",
+    "camellia.harem.reconciled.vellexia",
+    "vellexia.harem.reconciled.camellia",
+    "soana.harem.reconciled.camellia",
+    "camellia.harem.reconciled.soana",
+    "seelah.harem.reconciled.kiana",
+    "kiana.harem.reconciled.seelah",
+    "eliandra.harem.reconciled.targona",
+    "targona.harem.reconciled.eliandra",
+    "melazmera.harem.reconciled.hepzamirah",
+    "hepzamirah.harem.reconciled.melazmera",
+    "kaylessa.harem.reconciled.camellia",
+    "camellia.harem.reconciled.kaylessa",
+    "kaylessa.harem.reconciled.w.anevia",
+    "tirabade.harem.reconciled.anevia.kaylessa",
+    "anevia.harem.reconciled.kaylessa",
+    "shamira.harem.reconciled.arueshalae",
+    "arueshalae.harem.reconciled.shamira",
+    "herrax.harem.reconciled.w.minagho",
+    "minagho_chivarro.harem.reconciled.minagho.herrax",
+    "wenduag.harem.reconciled.vellexia",
+    "vellexia.harem.reconciled.wenduag",
+    "seelah.harem.reconciled.jannah",
+    "jannah.harem.reconciled.seelah",
+    "household.pair.seelah_wenduag.boundary.breached",
+    "household.pair.galfrey_arueshalae.bodies_current",
+    "household.docket.horzalah_hepzamirah.captivity_remedy_ready",
+    "household.docket.gesmerha_jerribeth.remedy.authorized",
+    "camellia.harem.strain.galfrey.1"
+  ],
+  "aliases": [
+    "minagho_chivarro.harem.enmity.hepzamirah",
+    "hepzamirah.harem.enmity.minagho_chivarro",
+    "arueshalae.harem.enmity.minagho_chivarro",
+    "minagho_chivarro.harem.enmity.arueshalae"
+  ],
+  "failures": [
+    {
+      "row": "seelah_camellia",
+      "ruling": 1,
+      "prefix": "household.pair.seelah_camellia.",
+      "terminal": [
+        "household.pair.seelah_camellia.permanent_refusal"
+      ],
+      "enmity": "seelah.harem.enmity.camellia",
+      "stance": "seelah.harem.stance.tolerated"
+    },
+    {
+      "row": "arueshalae_nocticula",
+      "ruling": 2,
+      "prefix": "household.pair.arueshalae_nocticula.",
+      "terminal": [
+        "household.pair.arueshalae_nocticula.permanent_refusal"
+      ],
+      "enmity": "arueshalae.harem.enmity.nocticula",
+      "stance": "arueshalae.harem.stance.tolerated"
+    },
+    {
+      "row": "nenio_camellia",
+      "ruling": 3,
+      "prefix": "household.pair.nenio_camellia.",
+      "terminal": [
+        "household.pair.nenio_camellia.unsettled"
+      ],
+      "enmity": "nenio.harem.enmity.camellia",
+      "stance": "nenio.harem.stance.tolerated"
+    },
+    {
+      "row": "arsinoe_nurah",
+      "ruling": 20,
+      "prefix": "household.pair.arsinoe_nurah.",
+      "terminal": [
+        "household.pair.arsinoe_nurah.permanent_refusal"
+      ],
+      "enmity": "arsinoe.harem.enmity.nurah",
+      "stance": "arsinoe.harem.stance.tolerated"
+    },
+    {
+      "row": "galfrey_konomi",
+      "ruling": 30,
+      "prefix": "household.pair.galfrey_konomi.",
+      "terminal": [
+        "household.pair.galfrey_konomi.retry.failed"
+      ],
+      "enmity": "galfrey.harem.enmity.konomi",
+      "stance": "galfrey.harem.stance.tolerated"
+    },
+    {
+      "row": "vellexia_shamira",
+      "ruling": 30,
+      "prefix": "household.pair.vellexia_shamira.",
+      "terminal": [
+        "household.pair.vellexia_shamira.retry.failed"
+      ],
+      "enmity": "shamira.harem.enmity.vellexia",
+      "stance": "shamira.harem.stance.tolerated"
+    },
+    {
+      "row": "arueshalae_minagho",
+      "ruling": 30,
+      "prefix": "household.pair.arueshalae_minagho.",
+      "terminal": [
+        "household.pair.arueshalae_minagho.retry.failed"
+      ],
+      "enmity": "minagho_chivarro.harem.enmity.minagho.arueshalae",
+      "stance": "minagho_chivarro.harem.stance.minagho.tolerated"
+    },
+    {
+      "row": "arueshalae_vellexia",
+      "ruling": 30,
+      "prefix": "household.pair.arueshalae_vellexia.",
+      "terminal": [
+        "household.pair.arueshalae_vellexia.retry.failed"
+      ],
+      "enmity": "arueshalae.harem.enmity.vellexia",
+      "stance": "arueshalae.harem.stance.tolerated"
+    },
+    {
+      "row": "soana_camellia",
+      "ruling": 30,
+      "prefix": "household.pair.soana_camellia.",
+      "terminal": [
+        "household.pair.soana_camellia.retry.failed"
+      ],
+      "enmity": "soana.harem.enmity.camellia",
+      "stance": "soana.harem.stance.tolerated"
+    },
+    {
+      "row": "melazmera_hepzamirah",
+      "ruling": 44,
+      "prefix": "household.pair.melazmera_hepzamirah.",
+      "terminal": [
+        "household.pair.melazmera_hepzamirah.permanent_refusal"
+      ],
+      "enmity": "hepzamirah.harem.enmity.melazmera",
+      "stance": "hepzamirah.harem.stance.tolerated"
+    }
+  ],
+  "dispositions": [
+    {
+      "rows": "S01/S03b/S09/S11/S14",
+      "ruling": 21,
+      "status": "inert",
+      "reason": "Approved deed-only tool exception preserves terminals, but approved ruling gives no final claimant direction; hs-B common section explicitly withholds that assignment. Existing terminal incidents remain playable."
+    },
+    {
+      "rows": "S05",
+      "ruling": 17,
+      "status": "inert",
+      "reason": "No supported coup exposure/reconciliation producer; chosen-lovers account is history only."
+    },
+    {
+      "rows": "S18F",
+      "ruling": 4,
+      "status": "awaiting-J03",
+      "reason": "Horzalah counter-move targets Horzalah to Hepzamirah; Hepzamirah counter-move targets Hepzamirah to Horzalah. Neutral mishandling/absence/direct refusal stays unsettled. No such authored counter-move terminal exists yet."
+    },
+    {
+      "rows": "S23",
+      "ruling": 18,
+      "status": "awaiting-J03",
+      "reason": "Broken recruiting term targets Herrax to qualified Chivarro; broken old-chair term targets qualified Chivarro to Herrax. Missing reply is owed, never final. No terms/broken-term terminal exists yet."
+    },
+    {
+      "rows": "S34",
+      "ruling": 19,
+      "status": "awaiting-J03",
+      "reason": "Only final failed screen targets qualified Minagho to Hepzamirah; explicit final refusal of her strike targets Hepzamirah to qualified Minagho. First failed screen is pending. No interception terminal emitted yet."
+    },
+    {
+      "rows": "S22",
+      "ruling": 6,
+      "status": "inert",
+      "reason": "No incident provenance or vigil emission; native murders are not battlefield-order losses."
+    },
+    {
+      "rows": "S07.truth/S15.truth",
+      "ruling": 22,
+      "status": "inert",
+      "reason": "Actual partner-secret/exposure and false-report knowledge remain their private obligations, never a generic new F enmity or reconciliation."
+    },
+    {
+      "rows": "S42",
+      "ruling": 44,
+      "status": "direction-blocked",
+      "final": "household.pair.kaylessa_camellia.exposure_unsettled",
+      "reason": "Exact final terminal input supported, but referenced sheet/registry declares no claimant direction. Do not pick either woman by scene order."
+    },
+    {
+      "rows": "S43",
+      "ruling": 44,
+      "status": "direction-blocked",
+      "final": "household.pair.kaylessa_anevia.trail_unsettled",
+      "reason": "Final input supported; Anevia is the qualified woman, never Irabeth. Referenced sheet/registry supplies no claimant direction."
+    },
+    {
+      "rows": "S44",
+      "ruling": 44,
+      "status": "direction-blocked",
+      "final": "household.pair.shamira_arueshalae.claim.unsettled",
+      "reason": "Final input supported, but referenced sheet/registry supplies no claimant direction. Cover/lust/optional refusals are not F failures."
+    },
+    {
+      "rows": "S36",
+      "ruling": 44,
+      "status": "supported",
+      "reason": "POLICY_INPUTS names Hepzamirah to Melazmera. Declared one-retry makes diversion.failed pending; only permanent_refusal is final. replacement.held with its costs and exact old enmity earns the one matching receipt."
+    },
+    {
+      "rows": "S37/S38/S40/S41/S45/S47/S50/S51/S52",
+      "ruling": 44,
+      "status": "inert",
+      "reason": "Fixed X actions, delivery, repair and ordinary resolved do not produce replaceable enmity or reconciliation; no new F direction/receipt contract is approved."
+    },
+    {
+      "rows": "S39",
+      "ruling": 44,
+      "status": "outside-E4",
+      "reason": "POLICY names Galfrey/Nocticula, absent from the 167-hook appendix. undertaking.failed is pending under its retry; no new hook or allocation introduced."
+    }
+  ]
+}
