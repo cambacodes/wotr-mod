@@ -139,7 +139,7 @@ class GuardIntegrationTests(unittest.TestCase):
         self.assertTrue(evidence['tracked_export_stale'])
 
     def test_different_count_and_same_count_wrong_fresh_export_rejected(self):
-        original = (self.source / 'expansion.py').read_text()
+        original = (self.source / 'expansion.py').read_text(encoding='utf-8')
         for name, mutation in (
             ('count', 'payload["Scenes"].pop()'),
             ('text', 'payload["Scenes"][0]["Nodes"][0]["Text"] = "Wrong words"'),
@@ -155,7 +155,7 @@ class GuardIntegrationTests(unittest.TestCase):
             ('relationship-id', 'payload["Relationships"]["replacement"] = payload["Relationships"].pop("route")'),
         ):
             with self.subTest(name=name):
-                (self.source / 'expansion.py').write_text(original.replace('output = root', mutation + '\noutput = root'))
+                (self.source / 'expansion.py').write_text(original.replace('output = root', mutation + '\noutput = root'), encoding='utf-8')
                 # Make the tracked file genuinely fresh. The golden still must
                 # reject it even when its scene count/IDs match the predecessor.
                 subprocess.run([sys.executable, '-B', 'expansion.py'], cwd=self.source, check=True)
@@ -167,7 +167,7 @@ class GuardIntegrationTests(unittest.TestCase):
     def test_new_and_changed_reference_inputs_cannot_be_authorized_as_code(self):
         path = self.source / 'reference/new.json'
         path.parent.mkdir()
-        path.write_text('{}')
+        path.write_text('{}', encoding='utf-8')
         code, evidence = self.check(allowed=['reference/new.json'])
         self.assertEqual(1, code)
         self.assertIn('Unaccounted input/source change: reference/new.json', evidence['failures'])
@@ -175,7 +175,7 @@ class GuardIntegrationTests(unittest.TestCase):
     def test_dead_source_edit_is_rejected_despite_identical_export(self):
         path = self.source / 'storylines/unregistered.py'
         path.parent.mkdir()
-        path.write_text('text = "Unregistered prose"\n')
+        path.write_text('text = "Unregistered prose"\n', encoding='utf-8')
         code, evidence = self.check()
         self.assertEqual(1, code)
         self.assertFalse(evidence['tracked_export_stale'])
@@ -183,7 +183,7 @@ class GuardIntegrationTests(unittest.TestCase):
 
     def test_ignored_input_is_pinned_even_when_only_its_existence_is_read(self):
         path = self.source / '.env'
-        path.write_text('fixture=changed\n')
+        path.write_text('fixture=changed\n', encoding='utf-8')
         # Simulate git ignoring .env, as the production checkout does. The
         # complete filesystem inventory must still catch the newly added input.
         old_git = guard.git
@@ -198,11 +198,11 @@ class GuardIntegrationTests(unittest.TestCase):
     def test_shared_collector_leak_rejected_with_producer_attribution(self):
         module = self.source / 'storylines/collector.py'
         module.parent.mkdir()
-        module.write_text('ROWS = []\ndef collect(row):\n    ROWS.append(row)\n    return ROWS\n')
+        module.write_text('ROWS = []\ndef collect(row):\n    ROWS.append(row)\n    return ROWS\n', encoding='utf-8')
         generator = self.source / 'expansion.py'
-        generator.write_text(generator.read_text().replace('output = root',
+        generator.write_text(generator.read_text(encoding='utf-8').replace('output = root',
             'from storylines.collector import collect\n'
-            'payload["Scenes"].extend(collect(payload["Scenes"][0]))\noutput = root'))
+            'payload["Scenes"].extend(collect(payload["Scenes"][0]))\noutput = root'), encoding='utf-8')
         status, evidence = self.check(allowed=['expansion.py', 'storylines/collector.py'])
         self.assertEqual(1, status)
         self.assertIn('storylines/collector.py', evidence['generator_reads']['LF-0'])
@@ -240,15 +240,15 @@ class GuardIntegrationTests(unittest.TestCase):
         self.assertIn('Pinned runtime/native/parent inputs changed', evidence['failures'])
 
     def test_wrong_namespace_fails_with_unchanged_story(self):
-        (self.source / 'src/Main.cs').write_text('Encoding.UTF8.GetBytes("Wrong/" + name)')
+        (self.source / 'src/Main.cs').write_text('Encoding.UTF8.GetBytes("Wrong/" + name)', encoding='utf-8')
         code, evidence = self.check()
         self.assertEqual(1, code)
         self.assertIn('GuidFor namespace changed', evidence['failures'])
 
     def test_external_read_and_extra_write_fail_in_worker(self):
         secret = self.scratch / 'unaccounted.json'
-        secret.write_text('{}')
-        original = (self.source / 'expansion.py').read_text()
+        secret.write_text('{}', encoding='utf-8')
+        original = (self.source / 'expansion.py').read_text(encoding='utf-8')
         for name, statement in (
             ('read', 'Path(%r).read_bytes()' % str(secret)),
             ('write', '(root / "unaccounted.json").write_text("{}")'),
@@ -259,16 +259,16 @@ class GuardIntegrationTests(unittest.TestCase):
             ('caught-write', 'try:\n    (root / "unaccounted.json").write_text("{}")\nexcept Exception:\n    pass'),
         ):
             with self.subTest(name=name):
-                (self.source / 'expansion.py').write_text(original + statement + '\n')
+                (self.source / 'expansion.py').write_text(original + statement + '\n', encoding='utf-8')
                 code, evidence = self.check(name, allowed=['expansion.py'])
                 self.assertEqual(1, code)
                 self.assertTrue(any('Generation failed:' in f and 'unaccounted' in f
                                     for f in evidence['failures'] if isinstance(f, str)))
 
     def test_nondeterministic_generator_rejected(self):
-        code = (self.source / 'expansion.py').read_text().replace('output = root',
+        code = (self.source / 'expansion.py').read_text(encoding='utf-8').replace('output = root',
             'import os\npayload["Nonce"] = os.getpid()\noutput = root')
-        (self.source / 'expansion.py').write_text(code)
+        (self.source / 'expansion.py').write_text(code, encoding='utf-8')
         status, evidence = self.check(allowed=['expansion.py'])
         self.assertEqual(1, status)
         self.assertTrue(any('nondeterministic' in f for f in evidence['failures'] if isinstance(f, dict)))
@@ -455,7 +455,7 @@ class GuardPrimitiveTests(unittest.TestCase):
             source = scratch / 'source'
             source.mkdir()
             subprocess.run(['git', 'init', '-q', str(source)], check=True)
-            (source / 'expansion.py').write_text('raise AssertionError("must not execute")')
+            (source / 'expansion.py').write_text('raise AssertionError("must not execute")', encoding='utf-8')
             result = subprocess.run([sys.executable, '-B', str(Path(guard.__file__)), 'capture',
                 '--source', str(source), '--out', str(scratch / 'baseline')], capture_output=True, text=True)
             self.assertNotEqual(0, result.returncode)

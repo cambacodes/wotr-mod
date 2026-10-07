@@ -260,7 +260,7 @@ def supervise(config, status):
             cleanup_deadline = time.monotonic() + 3
             unfinished = False
             while True:
-                children = [int(p) for p in children_path.read_text().split()]
+                children = [int(p) for p in children_path.read_text(encoding='utf-8').split()]
                 if not children:
                     break
                 unfinished = True
@@ -367,10 +367,10 @@ def snapshot_source(source, target, files):
     common = Path(git(source, 'rev-parse', '--git-common-dir'))
     if not common.is_absolute():
         common = source / common
-    (metadata / 'objects/info/alternates').write_text(str(common.resolve() / 'objects') + '\n')
+    (metadata / 'objects/info/alternates').write_text(str(common.resolve() / 'objects') + '\n', encoding='utf-8')
     (metadata / 'refs').mkdir()
-    (metadata / 'HEAD').write_text(git(source, 'rev-parse', 'HEAD') + '\n')
-    (metadata / 'config').write_text('[core]\n\trepositoryformatversion = 0\n\tbare = false\n')
+    (metadata / 'HEAD').write_text(git(source, 'rev-parse', 'HEAD') + '\n', encoding='utf-8')
+    (metadata / 'config').write_text('[core]\n\trepositoryformatversion = 0\n\tbare = false\n', encoding='utf-8')
     subprocess.run(['git', '-C', str(target), 'read-tree', 'HEAD'], check=True,
                    stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 
@@ -378,7 +378,7 @@ def snapshot_source(source, target, files):
 def worker(snapshot, inputs_path, reads_path):
     """Run the real CLI, auditing data reads after interpreter startup."""
     import runpy
-    inputs = json.loads(inputs_path.read_text())
+    inputs = json.loads(inputs_path.read_text(encoding='utf-8'))
     allowed = set(inputs['files'])
     external = {str(Path(p).resolve()): name for name, p in inputs['external'].items()}
     library = Path(sysconfig.get_path('stdlib')).resolve()
@@ -467,7 +467,7 @@ def generation(source, files, game, externals, scratch, observations, failures):
             result = future.result()
             observations.append(dict(stage='generate-' + label, **result))
             if result['exit'] != 0 or result['timed_out']:
-                diagnostic = log.read_text(errors='replace')[-2000:].replace(str(scratch), '<temp>')
+                diagnostic = log.read_text(errors='replace', encoding='utf-8')[-2000:].replace(str(scratch), '<temp>')
                 failures.append('Generation failed: ' + label + ': ' + diagnostic)
                 continue
             attempts[label.split('-')[0]].append(output.read_bytes())
