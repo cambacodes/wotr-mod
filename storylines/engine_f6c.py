@@ -24,7 +24,7 @@ EDITS = (
      dict(Page="9669bef01411fd2498a466d2aef63bca", Sequence="fec3b6f28610c8a48a239f148ed3ed60",
           Key="8ccf1c23-ae95-4b2e-84cc-37b647aabebd"),
      [["trickster.now", "horzalah.trickster.primed", "horzalah.trickster.returned", "horzalah.trickster.guild_survives"]],
-     '''{n}After the war, Greybor returned to Alushinyrra and killed four rivals for command of the Assassins' Guild's contracts. Horzalah kept the Guild itself. She had escaped her father's claim with the Commander's help and had no intention of surrendering her prize to a dwarf. Greybor chose his work, set his rates, and made the arrangement profitable enough to survive. Across many planes, the words "sweet dreams" still made people shudder.{/n}'''),
+     '''{n}After the war, Greybor returned to Alushinyrra and killed four rivals for command of the Assassins' Guild's contracts. Horzalah kept the Guild itself. The Commander's ear had helped her keep her chair when her own masters circled it. She had no intention of surrendering it to a dwarf. Greybor chose his work, set his rates, and made the arrangement profitable enough to survive. Across many planes, the words "sweet dreams" still made people shudder.{/n}'''),
     ("8ae3220fd0a645809f59f54f8d89985f", "horzalah", "trio",
      dict(Parent="8b037c275d3423f44a2e5ecc02c003cf", Dialog="ae58532cb72b28b4eaaccb82eb78eaea",
           Key="1dd07de3-c767-4561-b659-4b9cea9cf6e7"),
