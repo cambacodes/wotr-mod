@@ -355,18 +355,16 @@ inline(W + "early.yaniel", "A legend of the crusades", (3, 4, 5), '"You\'ve been
 
 SCENES.append(scene(W + "killed.stage", "Where the blow lands", "Wenduag", 3,
     '[Strike the blow yourself, and choose where it lands] "Say your piece to her, Lann. I\'ll be the one to finish it."', [
-    nar("start", '''{n}She is on her knees in the muck of the cave floor with one hand clamped over the hole in her side, and she is grinning at you through her own blood. Behind her the tunnel goes down into the dark. Beside you Lann has turned half away, the way a man turns from a fire he does not want to see go out. He will watch the end, because he is Lann. He will not watch closely.{/n}
-{n}You have killed enough to know how it looks. There is a place low on the left side, under the last rib, where a blade can go in to the hilt and bring out more blood than anyone should have in them, and miss everything that stops a heart. It looks like a death. It bleeds like a death. Done right, it is a very long sleep and a very bad morning.{/n}
-{n}You came down these tunnels knowing how Lann's reckoning was likely to end, and you came ready for it: a field dressing and a stoppered vial of healer's draught in your belt pouch, where nobody looks.{/n}
-{n}Done wrong, it is a death. And if Lann sees the edge turn, he will ask you why, and you will have to answer him.{/n}''',
-        c('[Strike low, under the ribs, and turn the edge at the last moment.]',
+    nar("start", '''{n}Wenduag kneels in the muck, pressing a hand to her wounded side. Lann turns half away. He will watch the end. He will not watch closely.{/n}
+{n}In your pouch lies a field surgeon's wax charm, carried with your dressing and healer's draught: a stabilizing spell bound to break on the first wound, with an enchantment to keep the wounded sleeper still. You thumb it onto your blade beneath the guard. Once it touches her blood, it is spent.{/n}
+{n}The charm can stop her bleeding and hide her breathing. It cannot mend a pierced heart. You must cut shallow, along the ribs, and let the blood already on her shirt sell the lie. A slipped edge will leave a wound the later draught cannot wholly mend.{/n}''',
+        c('[Strike along the ribs and turn the edge.]',
           check=dict(Skill="SkillMobility", DC=24, Success="clean", Failure="deep")),
         c('"Wait."', abort=True)),
-    nar("clean", '''{n}Your hand is steady. You settle your weight, measure the distance with your eyes, and put the whole of the killing in your face and none of it in your wrist. Lann sees a Commander about to end it. Wenduag, who has seen more killing blows coming than anyone alive, sees the same.{/n}
-{n}Good. Let them both believe it.{/n}''',
+    nar("clean", '''{n}You turn the edge outward. The wax leaves a dull smear beneath her torn shirt. Her eyelids sag as the enchantment takes hold; her hand loosens on the wound without a fresh rush of blood. To Lann, she is failing. Your blade is still poised to finish her.{/n}''',
         c("[Let her have her last word.]", native_next=KILL_ASK, flags=(STAGED, PRIMED, CLEAN))),
-    nar("deep", '''{n}Your grip is slick with her blood, and the angle is wrong: she has shifted on her knees, the way the dying do, and the place under the rib is not where it was. You know it before you move. It is going to go deeper than you want. It is going to go very close.{/n}
-{n}You do not stop. Stopping now would be the one thing Lann would never forget.{/n}''',
+    nar("deep", '''{n}She shifts beneath your hand. The wax catches on her shirt, and the blade will pass too deep. The stabilizing charge will keep her from bleeding out if you miss the heart. It will not spare her the scar.{/n}
+{n}Lann looks back. You hold your wrist steady. There is no clean way left to do this.{/n}''',
         c("[Let her have her last word.]", native_next=KILL_ASK, flags=(STAGED, PRIMED, DEEP))),
 ], requires=("trickster",), forbids=(STAGED,), last=3, Relationship=REL, Chapters=[3], AnswerLists=[KILL_LIST],
     NativeReturnCue=KILL_BACK, EntryMythic="PlayerIsTrickster", **device("killed")))
@@ -422,11 +420,11 @@ page(W + "killed.cairn", "The Mongrel cairn", [
 {n}Flat stones first, over her legs and body, set on edge against each other so that they roof her rather than press on her. Nothing she could not shift from underneath with her knees and her back. At the head end, which no grave you saw had, you leave a gap for air, packed loosely with fist-sized rocks that one push would send rolling. It takes a long time. It is the most careful thing you have done since you came to Drezen.{/n}
 {n}Her knife is in the muck of the cave where it fell when your blade went in. You fetch it, and wipe it on your own knee, and open her right hand, and close her fingers round the grip.{/n}''',
         *cairn_close((LANN_ALONE,))),
-    nar("build_watched", '''{n}You carry her into the side passage, with Lann's eyes on your back the whole way. "So she doesn't leak through the stones," you tell him, binding her side tight with the dressing from your pouch, and he looks away, because it is the kind of thing a soldier does for a corpse and he cannot bear to watch it. While he is looking away, the vial goes between her teeth.{/n}
+    nar("build_watched", '''{n}You carry her into the side passage, with Lann's eyes on your back the whole way. You bind her side with the dressing from your pouch, as a soldier binds a corpse for carrying. Lann looks away, because it is the kind of thing a soldier does for a corpse and he cannot bear to watch it. While he is looking away, the vial goes between her teeth.{/n}
 {n}You lay her beside the newest grave and you build the way you would build if you meant it: flat stones on edge, and at the head end loose rock. Whether the loose rock is for air or for want of better stones, Lann does not ask. He knows hunters' graves. He does not know you.{/n}
 {n}When you go back for her knife he says, "Right hand," before you can ask, and his voice cracks on it. You close her fingers round the grip while he watches. From where he stands it is a mercy. From where you kneel you can feel her pulse knock against your thumb through the hilt.{/n}''',
         *cairn_close((LANN_WATCHING,))),
-], requires=("trickster.ever", KILLED, STAGED), forbids=(CAIRN,), delay=2, chapters=(3,), kind="event", areas=(),
+], requires=("trickster", KILLED, STAGED), forbids=(CAIRN,), delay=2, chapters=(3,), kind="event", areas=(),
     **device("killed"))
 
 # The page's closing choices each record the cairn and the lie together.
@@ -696,9 +694,8 @@ page(W + "exile.ch5_hunt", "Outside the walls", [
 # --- 5. The falls (T): in Savamelekh's house (Lann's blow), and in the Drezen street. ---------------------------------------
 
 page(W + "abyss.fall", "The best of his daughters", [
-    nar("start", '''{n}You have washed his cellar's dust out of your hair twice since you left his house, and it is still in the creases of your knuckles. When you finally rest, it all comes back, in order, the way you did it.{/n}
-{n}Savamelekh called her "the best of all my daughters", and she went to him. She fought beside his children in his house with his poison making her quick and terrible, and nothing you could do would put her down. Then the others lay dead, and he was gone through his own door, and she stood breathing hard in the wreck of his hall and screamed at Lann that he would never win, and went for his throat.{/n}
-{n}Lann's blow took her in the side. She dropped like a cut rope.{/n}''',
+    nar("start", '''{n}Lann wipes the black streaks from his face. Behind him, Wenduag lies where his blow dropped her. Savamelekh has fled; his surviving children are dragging themselves out through the wreckage.{/n}
+{n}Her knife is still in her hand. Nobody has taken the body. There is time to look, before you leave this house.{/n}''',
         c("Continue", "bought", requires=(FALL_AGREED,)),
         c("Continue", "unbought", forbids=(FALL_AGREED,))),
     nar("bought", '''{n}She dropped exactly where she had told you she would: in front of what was left of his gang, where any of them who crawled away could carry it home. You saw her turn into Lann's blow in the last instant so that it went in low on the left side instead of the middle. Nobody else did. Lann did not. And you saw her bite down, as she fell, on the vial of healer's draught you gave her for exactly this, and swallow.{/n}
@@ -720,7 +717,7 @@ page(W + "abyss.fall", "The best of his daughters", [
 "I never wanted it to be me," {n}he says, to nobody.{/n} "I always thought, if anyone, it would be you." {n}He wipes his hands on his coat, carefully, all the way to the wrists, and goes to see to the others, and does not look back.{/n}''',
         c("Continue", "cairn", forbids=(UNPLANNED,)),
         c("Continue", "price", requires=(UNPLANNED,))),
-    nar("price", '''{n}Nobody bought this. There was no plan and no bargain: an hour ago she was trying to tear Lann's throat out for Savamelekh, and now you are on your knees in his hall choosing to bury her breathing. There is a price for deciding it here, now, with nothing prepared, and you pay it in front of everyone.{/n}
+    nar("price", '''{n}Nobody bought this. There was no plan and no bargain: she was trying to tear Lann's throat out for Savamelekh, and now you are on your knees in his hall choosing to bury her breathing. There is a price for deciding it here, now, with nothing prepared, and you pay it in front of everyone.{/n}
 {n}Your crusaders wait at the door of his house, in the Abyss, with the Wound's sky burning over them, while their Commander builds a cairn for the traitor who tried to kill one of their own. Every one of them will tell it in every camp from here to Drezen. Not one of them will tell it kindly.{/n}''',
         c("[Build it anyway.]", "cairn", crusade=("Favors", -100))),
     lann("knows", '''{n}Lann looks from your face to hers, and you watch him understand. It happens slowly, the way ice goes on a pond.{/n}
@@ -802,45 +799,45 @@ page(W + "abyss.back", "She followed his smell home", [
     wd("stay_dead", '''{n}She looks at you over the point of her knife for a long time.{/n}
 "Stay dead." {n}She almost smiles.{/n} "All right. I've practised." {n}She drops backwards into the dark of the cistern. You hear her land, far down, and then nothing, not even footsteps. The boy with the spear takes you back up the stair, and when you ask the neathers about her afterwards, they look at you as if you had asked about a ghost.{/n}''',
         c("Continue", flags=(CLOSED, STAY_DEAD))),
-], requires=("trickster.ever", DEAD, ABYSS_CAIRN, PASSAGE), forbids=(RETURNED,), delay=48, chapters=(5,), **device("abyss"))
+], requires=("trickster", DEAD, ABYSS_CAIRN, PASSAGE), forbids=(RETURNED,), delay=48, chapters=(5,), **device("abyss"))
 
 BRASK_PULL = dict(crusade=("Favors", -100))
 
 page(W + "street.fall", "The traitor in the street", [
-    nar("start", '''{n}By the time you rest, the street has been sluiced and the bodies carted off and the song about it is already being sung in the barracks. You go over it anyway, every step, the way you did it this morning.{/n}
-{n}They were waiting for you in the lower town, in the stink of smoke and old blood, the way Savamelekh had promised: a gang of his demons, and at their head the neather who had given them everything they knew about you. She called you worm. She told them that the honour of your head was hers alone. Then they came at you, and she came with them, and the street was very loud for a while.{/n}
-{n}Now it is quiet, and she is lying on her back on the cobbles among his dead with her knife still in her hand and a great deal of blood under her.{/n}''',
+    nar("start", '''{n}A gate runner comes while you are resting. Brask has carted the traitor's body to the south gate, bound with the rest of Savamelekh's dead. He wants her head for a pole.{/n}
+{n}You go to the gate's dead-room. The watch medic has packed every wound before sorting the living from the dead; a blood-soaked dressing covers Wenduag's side. Brask has kept her knife for his trophy. You take it from the shelf and kneel beside her. The lime bucket stands unopened.{/n}''',
         c("Continue", "bought", requires=(FALL_AGREED,)),
         c("Continue", "unbought", forbids=(FALL_AGREED,))),
-    nar("bought", '''{n}She fell where she told you she would, at the edge of the fight, in plain sight of the last of his demons as they broke and ran. You saw her take the blow on the side, low, and go down all at once, like a puppet with the strings cut. You also saw her tuck her chin as she fell, so that her head did not strike the stones, and bite down on the vial of healer's draught she had carried in her cheek since the morning.{/n}''',
+    nar("bought", '''{n}In the street she turned into the blow and fell where the fleeing demons could see her. You saw her bite the vial she had carried for it. That much was agreed.{/n}
+{n}The watch has not carried out her burial for you. Here, in the dead-room, you must still get her out of Brask's hands.{/n}''',
         c("Continue", "brask")),
-    nar("unbought", '''{n}She fought to kill. There was no plan in it, and no fall held back; she was trying for your throat when she went down, and she went down hard.{/n}''',
+    nar("unbought", '''{n}There was no bargain. She fought to kill you and fell hard. The medic's dressing is stiff with blood. Beneath it, her skin is still warm.{/n}''',
         c('[Kneel beside her, and look closely.]', check=dict(Skill="SkillPerception", DC=22, Success="breath", Failure="brask_sees"))),
     nar("breath", '''{n}A bubble of blood at the corner of her lips, swelling and shrinking, very slowly. She is still breathing. Neathers, she told you once, have short lives, but they are hardier than humans. Nobody else has seen it yet.{/n}''',
         c("Continue", "brask_late")),
-    n("brask", "Sergeant Brask", '''{n}The sergeant of the south gate comes picking his way through the bodies with a dozen of his watch behind him: a big man with a red neck and a new coat, spattered now to the elbows. He looks down at her with enormous satisfaction.{/n}
+    n("brask", "Sergeant Brask", '''{n}The sergeant of the south gate comes into the dead-room with two of his watch behind him: a big man with a red neck and a new coat, spattered now to the elbows. He looks down at her with enormous satisfaction.{/n}
 "The Commander's mongrel bitch." {n}He nudges her hip with his boot.{/n} "I knew it. I told them all she'd turn. Traitor's head goes on a pole over the south gate, Commander, that's the law, and I'd take it kindly if I could be the one to put it there. I've been wanting to since the day she walked through my gate."''',
         c("Continue", "lann_there", requires=(STREET_LANN,)),
         c("Continue", "claim", forbids=(STREET_LANN,))),
-    lann("lann_there", '''{n}Lann is standing a few paces off with his bow still in his hand. He has not moved since she fell. He looks at her the way you look at a house you grew up in, burning.{/n}
+    lann("lann_there", '''{n}Lann followed the cart from the street. He stands by the dead-room door with his bow in his hand. He looks at her the way you look at a house you grew up in, burning.{/n}
 "Wendu," {n}he says, very quietly, and nothing else.{/n}''',
         c("Continue", "claim_lann")),
-    nar("claim", '''{n}The watch is looking at you. So is half the lower town, from its doorways. A traitor's head on the south gate is exactly what Drezen needs to see this morning, and exactly what you cannot give them.{/n}''',
+    nar("claim", '''{n}The watch is looking at you. His men stand in the doorway. A traitor's head on the south gate is exactly what Drezen needs to see today, and exactly what you cannot give them.{/n}''',
         c('"She\'s mine. My kill, my prisoner, my traitor. Her people bury their own under stones, and I\'ll do it myself. Nobody touches her."',
           check=dict(Skill="CheckBluff", DC=22, Success="yields", Failure="pull_rank"))),
-    nar("claim_lann", '''{n}The watch is looking at you. So is Lann. So is half the lower town, from its doorways. A traitor's head on the south gate is exactly what Drezen needs to see this morning, and exactly what you cannot give them.{/n}''',
+    nar("claim_lann", '''{n}The watch is looking at you. So is Lann. His men stand in the doorway. A traitor's head on the south gate is exactly what Drezen needs to see today, and exactly what you cannot give them.{/n}''',
         c('"She\'s mine. My kill, my prisoner, my traitor. Her people bury their own under stones, and I\'ll do it myself. Nobody touches her."',
           check=dict(Skill="CheckBluff", DC=22, Success="yields_lann", Failure="pull_rank_lann"))),
-    n("brask_sees", "Sergeant Brask", '''{n}You see nothing, only blood. Then boots crunch on the stones beside you and the sergeant of the south gate squats down with a grunt: a big man with a red neck and a new coat, spattered to the elbows.{/n}
+    n("brask_sees", "Sergeant Brask", '''{n}You see only blood. The sergeant squats beside you on the dead-room floor: a big man with a red neck and a new coat, spattered to the elbows.{/n}
 "Well, would you look at that." {n}He points with his dagger at the corner of her mouth, where a bubble of blood swells and shrinks.{/n} "Still breathing, the bitch. Tough as old boots, these mongrels." {n}He shifts his grip on the dagger.{/n} "Want me to finish her, Commander? Traitor's head goes on a pole over the south gate. That's the law. I'd take it kindly if I could be the one to put it there."''',
         c('"That\'s the death rattle, sergeant. Put your knife away. Her people bury their own, and I\'ll do it myself."',
           check=dict(Skill="CheckBluff", DC=26, Success="yields_late", Failure="pull_rank_hard"))),
-    n("brask_late", "Sergeant Brask", '''{n}Boots crunch on the stones behind you. The sergeant of the south gate comes picking his way through the bodies: a big man with a red neck and a new coat, spattered to the elbows. He looks down at her with enormous satisfaction.{/n}
+    n("brask_late", "Sergeant Brask", '''{n}Boots scrape on the dead-room floor. The sergeant of the south gate comes up behind you: a big man with a red neck and a new coat, spattered to the elbows. He looks down at her with enormous satisfaction.{/n}
 "Traitor's head goes on a pole over the south gate, Commander. That's the law. I'd take it kindly if I could be the one to put it there. I told them all she'd turn."''',
         c('"She\'s mine. My kill, my traitor. Her people bury their own under stones, and I\'ll do it myself. Nobody touches her."',
           check=dict(Skill="CheckBluff", DC=26, Success="yields_late", Failure="pull_rank_hard"))),
     n("yields_late", "Sergeant Brask", '''{n}Brask looks at your face, and at hers, and puts his knife away. He does not like it.{/n} "Your kill, Commander." {n}He spits on the stones a hand's breadth from her head.{/n}
-{n}Nobody bought this; she was trying to kill you an hour ago, and you are claiming her body from your own watch with nothing prepared. That has a price, and you pay it on the spot: a cask for the gate, three days' leave for the men who saw, and your word, in front of half the lower town, that the Commander will answer for the traitor's grave. Before noon every barracks in Drezen knows what the Commander bought this morning, and for whom.{/n}''',
+{n}Nobody bought this; she was trying to kill you in the street, and you are claiming her body from your own watch with nothing prepared. That has a price, and you pay it on the spot: a cask for the gate, three days' leave for the men who saw, and your word, in front of half the lower town, that the Commander will answer for the traitor's grave. Before the next watch every barracks in Drezen knows what the Commander bought today, and for whom.{/n}''',
         c("Continue", "catacomb", crusade=("Favors", -50), forbids=(STREET_LANN,)),
         c("Continue", "lann_eyes", crusade=("Favors", -50), requires=(STREET_LANN,))),
     n("yields", "Sergeant Brask", '''{n}Brask opens his mouth, and looks at your face, and shuts it.{/n} "Your kill, Commander." {n}He does not like it. He steps back and spits on the stones, a hand's breadth from her head.{/n} "As you say. Mongrels bury mongrels."''',
@@ -849,11 +846,11 @@ page(W + "street.fall", "The traitor in the street", [
 {n}Lann says nothing at all. He walks over and closes her eyes with two fingers, gently, the way you close a book, and walks away down the street without looking back. He believes it. Of course he does. He has no reason not to.{/n}''',
         c("Continue", "catacomb_lann")),
     n("pull_rank", "Sergeant Brask", '''"With respect, Commander, it's the law." {n}Brask plants his feet. His men shuffle behind him.{/n} "The whole town saw her turn. They'll want to see her head."
-{n}They will. You tell him, in front of his men, exactly how many of the town's soldiers you have kept alive this year and how many of his you could stop keeping alive, and what the crusade will do for the lower town's wells and granaries if you are pleased this morning. It costs you. Every word of it will be repeated in every barracks before noon.{/n}
+{n}They will. You tell him, in front of his men, exactly how many of the town's soldiers you have kept alive this year and how many of his you could stop keeping alive, and what the crusade will do for the lower town's wells and granaries if you are pleased today. It costs you. Every word of it will be repeated in every barracks before the next watch.{/n}
 "...Your kill, Commander," {n}Brask says at last, very stiffly.{/n}''',
         c("Continue", "catacomb", **BRASK_PULL, flags=(WATCH,))),
     n("pull_rank_lann", "Sergeant Brask", '''"With respect, Commander, it's the law." {n}Brask plants his feet. His men shuffle behind him.{/n} "The whole town saw her turn."
-{n}So you buy her body from him in front of his men, with favours the lower town will count and remember. Before noon every barracks in Drezen knows the Commander paid good goodwill for a traitor's corpse.{/n}
+{n}So you buy her body from him in front of his men, with favours the lower town will count and remember. Before the next watch every barracks in Drezen knows the Commander paid good goodwill for a traitor's corpse.{/n}
 {n}Lann says nothing at all. He closes her eyes with two fingers, gently, and walks away down the street. He believes she is dead. He has no reason not to.{/n}''',
         c("Continue", "catacomb_lann", **BRASK_PULL, flags=(WATCH,))),
     n("pull_rank_hard", "Sergeant Brask", '''"Death rattle?" {n}Brask looks at you, and at her, and at you again, and something ugly and knowing comes into his red face.{/n} "Begging your pardon, Commander, but I've heard a death rattle. That's a live woman." {n}He stands up.{/n} "A live traitor. And you want her buried quiet."

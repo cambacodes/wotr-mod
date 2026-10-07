@@ -1769,7 +1769,13 @@
         "open_routes": [
           "camellia"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "camellia.trickster.epilogue.refused_living",
+          "reason": "personal late living refusal; no romantic payoff"
+        }
+      ]
     },
     "chadali": {
       "provenance": "derived from handoffs/trickster/chadali.md and shipped commitment producers",

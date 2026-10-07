@@ -106,6 +106,9 @@ INVENTORY = {COIN_HELD: COIN}
 MOREVET_DEAD = "herrax.morevet_dead"
 ETUDES = {MOREVET_DEAD: "3e26a59ceb2d45a2afc05d35092ceb54"}
 
+# Recovery: read-only native Nocticula_main/Cue_0022 dismissal; no authored audience.
+SEEN_CUES[H + "palace_dismissed"] = ["30469883ce1583743a6b4228d24778bc"]
+
 RELATIONSHIP = dict(
     Title="The keeper's night",
     Description=("Herrax keeps the Ten Thousand Delights, and keeps herself beyond anyone's reach. Her incubus still wants "

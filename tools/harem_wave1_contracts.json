@@ -132,6 +132,15 @@
       ],
       "history_books": [],
       "living_reader_hosts": []
+    },
+    "s04": {
+      "source": "storylines/harem_rows/s04.py",
+      "scenes": [
+        "household.pair.seelah_camellia.settle"
+      ],
+      "history_books": [],
+      "living_reader_hosts": [],
+      "classification": "authored living vigil; refusal/abort only until the reviewed success contracts are supplied"
     }
   },
   "departure_exemptions": {

@@ -6,7 +6,7 @@ from tests.structure import without_prose
 
 from storylines import crossroute_presence as guard
 from tools.crossroute_checks import other_woman
-from tools.crossroute_checks.common import AND, lit, Proof, verify, blocks, fields
+from tools.crossroute_checks.common import AND, NOT, lit, Proof, verify, blocks, fields
 from tools.crossroute_checks.mention_context import live_mentions, reference_reason
 from tests.test_crossroute_lint import fixture, relationship, run
 
@@ -216,6 +216,55 @@ class MentionContextTests(unittest.TestCase):
 
 
 class GuardPassTests(unittest.TestCase):
+    def test_native_soul_aftercare_keeps_owner_outcome_when_priestess_is_absent(self):
+        story = fixture()
+        story["Relationships"]["arsinoe"] = dict(relationship("arsinoe"),
+            UnavailableFlags=["arsinoe.victims_revived", "swarm", "true_lich"], UnavailableOverrides={})
+        scene = story["Scenes"][0]
+        scene.update(Id="seelah.souls", Relationship="seelah", Owner="Seelah",
+                     Requires=["seelah.morning", "seelah.souls_returned"])
+        scene["Nodes"] = [
+            dict(Id="start", Speaker="Seelah", Text="They opened their eyes.", Choices=[
+                dict(Text="Let us ask what they lack.", Next="care"),
+                dict(Text="What happened still hurts.", Next="hurt")]),
+            dict(Id="care", Speaker="Seelah", Text="Arsinoe's been looking after them. I'll ask her.",
+                 Choices=[dict(Text="I would like to speak to her too.", Next="end", Set=["arsinoe.introduced"])]),
+            dict(Id="hurt", Speaker="Seelah", Text="I still worry.", Choices=[dict(Text="Continue", Next="end")]),
+            dict(Id="end", Speaker="Seelah",
+                 Text="{n}She chooses a time to speak to Arsinoe about the people who still need help.{/n}",
+                 Choices=[dict(Text="Keep the evening.", Set=["seelah.aftercare"])])]
+        original = copy.deepcopy(scene)
+        guard.integrate(story)
+        scene = story["Scenes"][0]
+        nodes = {node["Id"]: node for node in scene["Nodes"]}
+        self.assertEqual(scene["Forbids"], [])
+        self.assertEqual(scene["Requires"], original["Requires"])
+        for node in original["Nodes"]:
+            for index, choice in enumerate(node["Choices"]):
+                self.assertEqual(nodes[node["Id"]]["Choices"][index].get("Next"), choice.get("Next"))
+        neutral = nodes["eng7_l14.end_without_arsinoe"]
+        self.assertNotIn("Arsinoe", neutral["Text"])
+        self.assertEqual(neutral["Choices"], original["Nodes"][-1]["Choices"])
+        proof = Proof(verify.Model(copy.deepcopy(story)))
+        losses = ["arsinoe.closed", *story["Relationships"]["arsinoe"]["UnavailableFlags"]]
+        paid = AND(lit("chapter_later"), lit("seelah.morning"), lit("seelah.souls_returned"))
+        live = AND(paid, *(lit(flag, False) for flag in losses))
+        self.assertTrue(proof.implies(live, fields(nodes["start"]["Choices"][0])))
+        self.assertTrue(proof.implies(live, fields(nodes["hurt"]["Choices"][0])))
+        self.assertTrue(proof.implies(live, NOT(fields(nodes["hurt"]["Choices"][1]))))
+        for loss in losses:
+            absent = AND(paid, lit(loss))
+            self.assertTrue(proof.implies(absent, fields(scene, overrides=True)), loss)
+            self.assertTrue(proof.implies(absent, fields(nodes["start"]["Choices"][1])), loss)
+            self.assertTrue(proof.implies(absent, fields(nodes["hurt"]["Choices"][1])), loss)
+            self.assertTrue(proof.implies(absent, NOT(fields(nodes["start"]["Choices"][0]))), loss)
+            self.assertTrue(proof.implies(absent, NOT(fields(nodes["hurt"]["Choices"][0]))), loss)
+            self.assertTrue(proof.implies(absent, lit("crossroute.arsinoe.unavailable")), loss)
+        self.assertEqual(run(other_woman, story), [])
+        once = copy.deepcopy(story)
+        guard.integrate(story)
+        self.assertEqual(story, once)
+
     def test_prologue_native_audience_uses_losses_without_a_later_chapter_flag(self):
         story = fixture("{n}Seelah stands beside Camellia.{/n}")
         scene = story["Scenes"][0]

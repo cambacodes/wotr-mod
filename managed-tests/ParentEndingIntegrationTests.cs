@@ -243,7 +243,7 @@ internal static class ParentEndingIntegrationTests
         var family = member.GetType().GetField("Binding", Members)!.GetValue(member)!;
         int Selected() => (int)family.GetType().GetField("selected", Members)!.GetValue(family)!;
         var pageActions = pageTarget.OnShow;
-        var flags = new HashSet<string>();
+        var flags = new HashSet<string> { "trickster" };
         int observations = 0;
         var harness = new Harmony("RanRomance.Tirabade.ParentEndingTest");
         try

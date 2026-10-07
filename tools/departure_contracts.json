@@ -350,6 +350,10 @@
         {
           "scene": "household.pair.seelah_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_camellia.settle",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -10243,6 +10247,14 @@
         },
         {
           "scene": "household.smooth.camellia.galfrey_1.later"
+        },
+        {
+          "scene": "camellia.trickster.epilogue.refused_living",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_camellia.settle",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -10377,6 +10389,10 @@
         {
           "scene": "camellia.trickster.epilogue.refused",
           "reason": "Commander-only cost and anonymous flowers; living report gated at paragraph 2"
+        },
+        {
+          "scene": "camellia.trickster.killed.late_curtain_prepared",
+          "reason": "authored prepaid coffin acquisition: confirmed current corpse and existing observed-death clock; not living attendance"
         }
       ],
       "presences": [

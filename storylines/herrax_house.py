@@ -991,9 +991,11 @@ beat(B + "the_glowworm", "A fey's joke", '"Tell me about your fey."', [
 "She's here because of a joke, lover. Some prank the Lantern King played on her back in the First World. She won't tell anyone what it was; she laughs until she cries and says it's too embarrassing. So she stays. My guests adore her. She makes them laugh so hard they forget their own names, and then they wake up without their boots."''',
        c('"A joke put her here?"', "joke"),
        c('"Does she want to leave?"', "leave")),
-    hx("joke", '''"The Lantern King's jokes put a great many people a great many places, I'm told." {n}She glances at you sidelong.{/n} "You've a reputation for jokes yourself, lover. The Isles say the mortal the Lady let walk out of her palace plays tricks, and that the tricks don't stay tricks."
-"If you ever feel like a joke in my house, honey, ask me first. I have a very particular sense of humour about my stock."''',
-       c("Continue", "end")),
+    hx("joke", '''"The Lantern King's jokes put a great many people a great many places, I'm told." {n}She glances at you sidelong.{/n} "You've a reputation for jokes yourself, lover."''',
+       # Retain the saved end target at index zero; retire it on this Trickster-only host.
+       c("Continue", "end", forbids=("trickster.ever",)),
+       c("Continue", "joke_before_audience", forbids=(H + "palace_dismissed",)),
+       c("Continue", "joke_after_audience", requires=(H + "palace_dismissed",))),
     hx("leave", '''"Leave?" {n}Herrax seems puzzled by the question.{/n} "Where would she go? The First World? With whatever the Lantern King did to her still stuck to her like a paper tail?" {n}She shakes her head.{/n}
 "Nobody in my house wants to leave, lover. That's not how it works. They want to stop wanting what brought them here. I sell them a night's worth of that at a time. It's the best business in the Abyss."''',
        c("Continue", "end")),
@@ -1001,7 +1003,12 @@ beat(B + "the_glowworm", "A fey's joke", '"Tell me about your fey."', [
 "There," {n}says Herrax.{/n} "Now she's happy. That's my whole job, honey. Everyone happy, for exactly as long as they can pay."''',
        c('"And you?"', "you")),
     hx("you", '''"Me?" {n}She considers it with real interest.{/n} "I'm happy when the takings come in and nobody tries for my chair. It's a very small happiness. It's the only kind that lasts."''',
-       c('"I\'ll see what I can do about the chair."'))],
+       c('"I\'ll see what I can do about the chair."')),
+    # Authored variants: only the native dismissal warrants a completed palace visit.
+    hx("joke_before_audience", '''"The Isles say the mortal who unseated Chivarro plays tricks, and that the tricks don't stay tricks. If you ever feel like a joke in my house, honey, ask me first. I have a very particular sense of humour about my stock."''',
+       c("Continue", "end")),
+    hx("joke_after_audience", '''"The Isles say the mortal the Lady let walk out of her palace plays tricks, and that the tricks don't stay tricks. If you ever feel like a joke in my house, honey, ask me first. I have a very particular sense of humour about my stock."''',
+       c("Continue", "end"))],
     requires=(FIRST_PRICE,), delay=24)
 
 

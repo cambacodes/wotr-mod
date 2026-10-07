@@ -35,6 +35,42 @@
       "reason": "S38: He refers to Minagho's male dispatch runner, who is the subject of the preceding sentence; no gender is assigned to the Commander.",
       "block": "harem-int-w1",
       "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "location": "start",
+      "code": "commander-gender",
+      "match": "Commander, and I will make him",
+      "reason": "The eighth-year one-armed male veteran is introduced at this page opening; Areelu offers him a graft while addressing the Commander. The pronoun him refers to the veteran.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "alone",
+      "code": "commander-gender",
+      "match": "his pamphlets under her arm and a look the Commander",
+      "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "He came to the house in a good coat, expecting the Commander",
+      "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 2
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "he had stopped looking at the Commander",
+      "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 2
     }
   ],
   "therapy_budgets": {},
