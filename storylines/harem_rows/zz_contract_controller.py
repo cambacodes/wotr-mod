@@ -97,6 +97,9 @@ def _publish(payload, scenes, rules):
     choose an owner from module order, timestamps or an unrelated .failed.
     """
     locks = json.loads((POLICY.parents[1] / "voice_locks.json").read_text(encoding="utf-8"))["locked"]
+    # Ruling 30's claimant addendum uses the same terminal-only publication
+    # for S42/S43/S44. Prefix matching covers every pair/solo and good/evil
+    # wrapper; S43's woman-level target stays independent of Anevia's seat.
     for rule in rules:
         enmity = rule["enmity"]
         aggregate = owner(enmity)
