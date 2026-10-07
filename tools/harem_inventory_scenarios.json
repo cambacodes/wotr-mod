@@ -2,15 +2,15 @@
   "schema_version": 1,
   "item": "E-Q7-36",
   "source": "HAREM-STATUS W0c; 16-HOUSEHOLD-DYNAMICS v8.1 section 4",
-  "campaign_ceilings": {"ideal": 81, "worst": 122},
+  "campaign_ceilings": {"ideal": 83, "worst": 124},
   "chapter_ceilings": {
     "2": {"ideal": 2, "worst": 2},
     "3": {"ideal": 9, "worst": 9},
     "4": {"ideal": 5, "worst": 5},
-    "5": {"ideal": 65, "worst": 106},
+    "5": {"ideal": 67, "worst": 108},
     "6": {"ideal": 0, "worst": 0}
   },
-  "chapter5_min_table_rests": 20,
+  "chapter5_min_table_rests": 22,
   "chapter5_worst_retries": 30,
   "protected_discoveries_uncapped": true,
   "expected_schedule_counts": {
@@ -20,7 +20,6 @@
   "expected_form_census": {"frictions": 5, "smoothing": 33, "combined": 38, "with_reservations": 53, "packets": 3, "charged": 56, "capacity": 64, "over_cap_forms": 0},
   "row_scene_ids": {},
   "data_blockers": [
-    "Wave 2 exposes 18 optional completion witnesses across four Chapter 5 arcs against the unchanged 16-step planning ceiling; coordinator schedule reconciliation is required.",
     "The emitted build-sheet scene references listed in missing_data have no serialized inventory binding; some planning sheets exist, but reservations are not delivered scenes.",
     "Tier-3 S9 native eligibility/gate-hour walk is not supplied.",
     "The 57 serialized enmity readers listed in missing_data have no choice Set producers."

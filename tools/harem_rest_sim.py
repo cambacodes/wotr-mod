@@ -135,7 +135,11 @@ def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=
             acknowledgment_beats = len(eligible)
         else:
             acknowledgment_beats = 0
-        reservations = [('reserved.optional.%d' % i) for i in range(10)] + [('reserved.mend.%d' % i) for i in range(4)]
+        caps = data['load_caps']['5']
+        # S02's six pair steps are scheduled explicitly; reserve every other
+        # optional completion and mend from the configured ceiling.
+        reservations = [('reserved.optional.%d' % i) for i in range(caps['optional'] - 6)] + [
+            ('reserved.mend.%d' % i) for i in range(caps['mend'])]
         dynamics = ['reserved.dynamic.%d' % i for i in range(3)]
         for hour in range(int(chapter_start + cadence), int(end) + 1, cadence):
             if chapter != 5:
@@ -187,7 +191,7 @@ def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=
         dynamic_beats = sum(kind is None for _, kind, _ in slots)
         # end eng7-f3
         # Reserve all other optional/mending/flavour load in the same allowance, not just the worked pair's six steps.
-        reserved_pair = 20 if chapter == 5 else 0
+        reserved_pair = math.ceil((caps['optional'] + caps['mend']) / story['RestAllowances']['household.pair']) if chapter == 5 else 0
         protected_total = protected_beats
         letters = data['load_caps'].get(str(chapter), {}).get('letters', 0)
         needed = max(route['rests_needed'] + letters, math.ceil(protected_total / 2), reserved_pair)

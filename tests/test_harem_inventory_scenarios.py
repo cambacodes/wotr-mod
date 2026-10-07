@@ -21,11 +21,10 @@ class HaremInventory(unittest.TestCase):
 
     def test_missing_build_sheets_and_native_walk_block_certification(self):
         result = sim.inventory_acceptance(self.story, self.schedule, self.scenarios)
-        # Merged optional arcs expose an existing planning mismatch. Keep the
-        # 16-step ceiling and report the exact excess until the coordinator
-        # reconciles the schedule; reservations still cannot certify delivery.
-        self.assertEqual(result['errors'], ['K8: Ch5 optional step sum 18 exceeds 16'])
-        self.assertEqual(result['status'], 'failed')
+        # ceiling-ruling.md records the 18-step conditional rest proof;
+        # reservations still cannot certify native delivery.
+        self.assertEqual(result['errors'], [])
+        self.assertEqual(result['status'], 'data_blocked')
         self.assertFalse(result['certified'])
         self.assertTrue(any('native eligibility/gate-hour' in b for b in result['blockers']))
         self.assertTrue(any('build-sheet scene missing' in b for b in result['blockers']))

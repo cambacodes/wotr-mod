@@ -127,6 +127,32 @@ class EritriceRoundTwoTests(unittest.TestCase):
         self.assertIn(minutes.EXTRACTED, report["Requires"])
         self.assertNotIn(minutes.ESSENCE_GIVEN, report["Requires"])
 
+    def test_cancelled_intervention_reads_only_recorded_outcomes(self):
+        sid = council.K + "protection_cancelled"
+        notice = self.scenes[sid]
+        receipts = (council.PUBLIC, council.LIE_SPOKEN, council.LIE_WITHDRAWN,
+                    council.TRUTH_SPOKEN, council.PROTECTION_SPOKEN)
+        self.assertTrue(set(receipts).isdisjoint(notice["Forbids"]))
+        self.assertNotIn(council.PUBLIC, self.scenes)
+        model = verify.Model(self.payload)
+        notice = model.by_id[sid]
+        exported = copy.deepcopy(self.payload)
+        council.integrate_public(exported)
+        public_model = verify.Model(exported)
+        public_notice = public_model.by_id[sid]
+        self.assertTrue(set(receipts) <= set(public_notice["Forbids"]))
+        for request in (council.LIED_FOR_HER, council.PROTECTION_REQUESTED, council.TRUTH_FOR_CHADALI):
+            for closing in notice["RequiresAnyGroups"][1]:
+                before = verify.SimState(5, 5000)
+                before.flags.update(("trickster.ever", council.K + "a_lie_for_the_chair", request))
+                self.assertFalse(verify.sim_available(model, notice, before))
+                before.flags.add(closing)
+                self.assertTrue(verify.sim_available(model, notice, before), (request, closing))
+                for receipt in receipts:
+                    after = copy.deepcopy(before)
+                    after.flags.add(receipt)
+                    self.assertFalse(verify.sim_available(public_model, public_notice, after), receipt)
+
     def test_first_night_and_repeat_have_distinct_mornings_and_slots(self):
         self.assertIn(minutes.M + "night", self.scenes[minutes.RECORD]["Requires"])
         self.assertNotIn(minutes.ADJOURNED, self.scenes[minutes.RECORD]["Requires"])

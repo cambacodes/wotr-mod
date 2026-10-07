@@ -61,6 +61,7 @@ internal static class EritriceTricksterTests
         var pages = story.Scenes.Where(s => s.Relationship == "eritrice" && s.Owner == "EritriceEpilogue").ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "eritrice" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "eritrice" && !s.Reaction && s.Owner == "Eritrice").ToArray();
+        // Required correspondence notices are not optional Council-hall sittings.
         var sittings = own.Where(s => !Rules.IsRemote(s) && s.Id != K + "chadalis_essence").Where(s => s.Id.StartsWith(M, StringComparison.Ordinal) || s.Id.StartsWith(K, StringComparison.Ordinal)).ToArray();
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
         Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];

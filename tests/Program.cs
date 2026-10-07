@@ -850,6 +850,8 @@ internal static partial class Program
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
         // eng8-q8a: current-body observations are runtime inputs, never authored effects.
         known.UnionWith(Rules.LatestStateRuntime);
+        // Word Made True charge/availability observations are runtime producers too.
+        known.UnionWith(Rules.WordMadeTrueKeys);
         known.UnionWith(Rules.AvailabilityRuntimeKeys(story));
         // end eng8-q8a
         // eng8-q8c: OnShow receipts are authored producers, including successful checks.

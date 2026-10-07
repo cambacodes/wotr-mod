@@ -58,7 +58,9 @@ internal static class NativeAudienceTests
                     "Inline cue Continue would override its authored answers: " + key);
                 check(cue.OnShow.Actions.Length == 0 && cue.OnStop.Actions.Length == 0,
                     "Inline node writes progress or starts another dialog outside a selected choice: " + key);
-                check(cue.Answers.Count == node.Choices.Count + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0),
+                // Contact-guarded scenes append a contact-loss exit before the payment exit.
+                check(cue.Answers.Count == node.Choices.Count + (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0 ? 1 : 0)
+                    + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0),
                     "Inline cue changed the authored choice count: " + key);
                 if (node.SpeakerUnit != null)
                     // E14f: a named unit speaks (its portrait and name, camera untouched).
