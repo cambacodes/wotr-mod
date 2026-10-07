@@ -10095,6 +10095,12 @@
         {
           "scene": "camellia.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "household.smooth.camellia.galfrey_1.first"
+        },
+        {
+          "scene": "household.smooth.camellia.galfrey_1.later"
         }
       ],
       "absence_variants": [
