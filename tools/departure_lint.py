@@ -14,7 +14,8 @@ def contracts():
 
 def check(story, data=None):
     data = data or contracts()
-    errors = []
+    from tools.harem_w5_readers_lint import check as check_w5_readers
+    errors = check_w5_readers(story)
     by = {s["Id"]: s for s in story.get("Scenes", [])}
     for key, groups in data.get("return_predicates", {}).items():
         if story.get("Derived", {}).get(key) != groups:

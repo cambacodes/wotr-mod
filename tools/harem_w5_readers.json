@@ -1,0 +1,1371 @@
+{
+  "scope": [
+    "s10",
+    "s20",
+    "s21",
+    "s29",
+    "s30"
+  ],
+  "source": "storylines/harem_rows/w5_readers.py",
+  "living": [
+    {
+      "row": "s10",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 5,
+      "requires": [
+        "household.readers.w5.s10.current",
+        "household.pair.seelah_nenio.question.seen",
+        "household.pair.seelah_nenio.question.answered",
+        "household.pair.seelah_nenio.deed.nenio_revised_question",
+        "household.pair.seelah_nenio.deed.seelah_named_decision",
+        "household.pair.seelah_nenio.cost.nenio_dropped_word_list",
+        "household.pair.seelah_nenio.cost.seelah_watch_account",
+        "seelah.present_now",
+        "nenio.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s10",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 6,
+      "requires": [
+        "household.readers.w5.s10.current",
+        "household.pair.seelah_nenio.question.seen",
+        "household.pair.seelah_nenio.question.declined",
+        "seelah.present_now",
+        "nenio.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s10",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 7,
+      "requires": [
+        "household.readers.w5.s10.current",
+        "seelah.present_now",
+        "nenio.present_now"
+      ],
+      "forbids": [
+        "household.pair.seelah_nenio.question.seen",
+        "household.pair.seelah_nenio.question.seen",
+        "household.pair.seelah_nenio.question.answered",
+        "household.pair.seelah_nenio.deed.nenio_revised_question",
+        "household.pair.seelah_nenio.deed.seelah_named_decision",
+        "household.pair.seelah_nenio.cost.nenio_dropped_word_list",
+        "household.pair.seelah_nenio.cost.seelah_watch_account",
+        "household.pair.seelah_nenio.question.declined"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 8,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.herself",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 9,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.told_for_her",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 10,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.kept",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 11,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.herself",
+        "jannah.circle.seelah.told_for_her",
+        "jannah.circle.seelah.kept"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s21",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 12,
+      "requires": [
+        "household.readers.w5.s21.current",
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.kept",
+        "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+        "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+        "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+        "household.pair.seelah_yaniel.cost.seelah_left_praise",
+        "seelah.present_now",
+        "yaniel.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s21",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 13,
+      "requires": [
+        "household.readers.w5.s21.current",
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.declined",
+        "seelah.present_now",
+        "yaniel.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s21",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 14,
+      "requires": [
+        "household.readers.w5.s21.current",
+        "seelah.present_now",
+        "yaniel.present_now"
+      ],
+      "forbids": [
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.kept",
+        "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+        "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+        "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+        "household.pair.seelah_yaniel.cost.seelah_left_praise",
+        "household.pair.seelah_yaniel.watch.declined"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s29",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 15,
+      "requires": [
+        "household.readers.w5.s29.current",
+        "household.pair.seelah_kiana.ward.seen",
+        "household.pair.seelah_kiana.ward.helped",
+        "household.pair.seelah_kiana.deed.kiana_named_patient",
+        "household.pair.seelah_kiana.deed.seelah_followed_healer",
+        "household.pair.seelah_kiana.cost.kiana_delayed_private_talk",
+        "household.pair.seelah_kiana.cost.seelah_worked_ward",
+        "seelah.present_now",
+        "kiana.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s29",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 16,
+      "requires": [
+        "household.readers.w5.s29.current",
+        "household.pair.seelah_kiana.ward.seen",
+        "household.pair.seelah_kiana.ward.declined",
+        "seelah.present_now",
+        "kiana.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s29",
+      "scene": "seelah.lastcall.page",
+      "node": "page",
+      "paragraph": 17,
+      "requires": [
+        "household.readers.w5.s29.current",
+        "seelah.present_now",
+        "kiana.present_now"
+      ],
+      "forbids": [
+        "household.pair.seelah_kiana.ward.seen",
+        "household.pair.seelah_kiana.ward.seen",
+        "household.pair.seelah_kiana.ward.helped",
+        "household.pair.seelah_kiana.deed.kiana_named_patient",
+        "household.pair.seelah_kiana.deed.seelah_followed_healer",
+        "household.pair.seelah_kiana.cost.kiana_delayed_private_talk",
+        "household.pair.seelah_kiana.cost.seelah_worked_ward",
+        "household.pair.seelah_kiana.ward.declined"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s30",
+      "scene": "targona.lastcall.page",
+      "node": "page",
+      "paragraph": 5,
+      "requires": [
+        "household.readers.w5.s30.current",
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.answered",
+        "household.pair.eliandra_targona.deed.eliandra_named_charges",
+        "household.pair.eliandra_targona.deed.targona_answered_duty",
+        "household.pair.eliandra_targona.cost.eliandra_spent_audience",
+        "household.pair.eliandra_targona.cost.targona_heard_delay",
+        "eliandra.present_now",
+        "targona.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s30",
+      "scene": "targona.lastcall.page",
+      "node": "page",
+      "paragraph": 6,
+      "requires": [
+        "household.readers.w5.s30.current",
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.declined",
+        "eliandra.present_now",
+        "targona.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s30",
+      "scene": "targona.lastcall.page",
+      "node": "page",
+      "paragraph": 7,
+      "requires": [
+        "household.readers.w5.s30.current",
+        "eliandra.present_now",
+        "targona.present_now"
+      ],
+      "forbids": [
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.answered",
+        "household.pair.eliandra_targona.deed.eliandra_named_charges",
+        "household.pair.eliandra_targona.deed.targona_answered_duty",
+        "household.pair.eliandra_targona.cost.eliandra_spent_audience",
+        "household.pair.eliandra_targona.cost.targona_heard_delay",
+        "household.pair.eliandra_targona.charges.declined"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "jannah.lastcall.page",
+      "node": "page",
+      "paragraph": 6,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.herself",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "jannah.lastcall.page",
+      "node": "page",
+      "paragraph": 7,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.told_for_her",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "jannah.lastcall.page",
+      "node": "page",
+      "paragraph": 8,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.kept",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s20",
+      "scene": "jannah.lastcall.page",
+      "node": "page",
+      "paragraph": 9,
+      "requires": [
+        "household.readers.w5.s20.current",
+        "seelah.present_now",
+        "jannah.present_now"
+      ],
+      "forbids": [
+        "jannah.circle.seelah",
+        "jannah.circle.seelah.herself",
+        "jannah.circle.seelah.told_for_her",
+        "jannah.circle.seelah.kept"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s30",
+      "scene": "eliandra.lastcall.page",
+      "node": "page",
+      "paragraph": 9,
+      "requires": [
+        "household.readers.w5.s30.current",
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.answered",
+        "household.pair.eliandra_targona.deed.eliandra_named_charges",
+        "household.pair.eliandra_targona.deed.targona_answered_duty",
+        "household.pair.eliandra_targona.cost.eliandra_spent_audience",
+        "household.pair.eliandra_targona.cost.targona_heard_delay",
+        "eliandra.present_now",
+        "targona.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s30",
+      "scene": "eliandra.lastcall.page",
+      "node": "page",
+      "paragraph": 10,
+      "requires": [
+        "household.readers.w5.s30.current",
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.declined",
+        "eliandra.present_now",
+        "targona.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s30",
+      "scene": "eliandra.lastcall.page",
+      "node": "page",
+      "paragraph": 11,
+      "requires": [
+        "household.readers.w5.s30.current",
+        "eliandra.present_now",
+        "targona.present_now"
+      ],
+      "forbids": [
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.seen",
+        "household.pair.eliandra_targona.charges.answered",
+        "household.pair.eliandra_targona.deed.eliandra_named_charges",
+        "household.pair.eliandra_targona.deed.targona_answered_duty",
+        "household.pair.eliandra_targona.cost.eliandra_spent_audience",
+        "household.pair.eliandra_targona.cost.targona_heard_delay",
+        "household.pair.eliandra_targona.charges.declined"
+      ],
+      "any_groups": []
+    },
+    {
+      "row": "s21",
+      "scene": "yaniel.lastcall.page",
+      "node": "page",
+      "paragraph": 13,
+      "requires": [
+        "household.readers.w5.s21.current",
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.kept",
+        "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+        "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+        "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+        "household.pair.seelah_yaniel.cost.seelah_left_praise",
+        "seelah.present_now",
+        "yaniel.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s21",
+      "scene": "yaniel.lastcall.page",
+      "node": "page",
+      "paragraph": 14,
+      "requires": [
+        "household.readers.w5.s21.current",
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.declined",
+        "seelah.present_now",
+        "yaniel.present_now"
+      ],
+      "forbids": [],
+      "any_groups": []
+    },
+    {
+      "row": "s21",
+      "scene": "yaniel.lastcall.page",
+      "node": "page",
+      "paragraph": 15,
+      "requires": [
+        "household.readers.w5.s21.current",
+        "seelah.present_now",
+        "yaniel.present_now"
+      ],
+      "forbids": [
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.seen",
+        "household.pair.seelah_yaniel.watch.kept",
+        "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+        "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+        "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+        "household.pair.seelah_yaniel.cost.seelah_left_praise",
+        "household.pair.seelah_yaniel.watch.declined"
+      ],
+      "any_groups": []
+    }
+  ],
+  "historical": [
+    "household.pair.seelah_yaniel.seating",
+    "household.pair.seelah_kiana.seating"
+  ],
+  "current_notes": [
+    "household.readers.w5.s10.seating",
+    "household.readers.w5.s20.seating",
+    "household.readers.w5.s21.seating",
+    "household.readers.w5.s29.seating",
+    "household.readers.w5.s30.seating"
+  ],
+  "current_predicates": {
+    "household.readers.w5.s10.current": {
+      "requires": [
+        "trickster.now",
+        "foresight.page_taken",
+        "household.table.kept",
+        "household.readers.w5.commander.alive",
+        "seelah.present_now",
+        "seelah.harem.eligible",
+        "nenio.present_now",
+        "nenio.harem.eligible",
+        "household.pair.seelah_nenio.body.seelah",
+        "household.pair.seelah_nenio.body.nenio"
+      ],
+      "forbids": [
+        "household.closed"
+      ],
+      "open_routes": [
+        "seelah",
+        "nenio"
+      ]
+    },
+    "household.readers.w5.s20.current": {
+      "requires": [
+        "trickster.now",
+        "foresight.page_taken",
+        "household.table.kept",
+        "household.readers.w5.commander.alive",
+        "seelah.present_now",
+        "seelah.harem.eligible",
+        "jannah.present_now",
+        "jannah.harem.eligible",
+        "jannah.trickster.returned"
+      ],
+      "forbids": [
+        "household.closed"
+      ],
+      "open_routes": [
+        "seelah",
+        "jannah"
+      ]
+    },
+    "household.readers.w5.s21.current": {
+      "requires": [
+        "trickster.now",
+        "foresight.page_taken",
+        "household.table.kept",
+        "household.readers.w5.commander.alive",
+        "seelah.present_now",
+        "seelah.harem.eligible",
+        "yaniel.present_now",
+        "yaniel.harem.eligible",
+        "yaniel.freed.latched",
+        "yaniel.trickster.returned"
+      ],
+      "forbids": [
+        "household.closed"
+      ],
+      "open_routes": [
+        "seelah",
+        "yaniel"
+      ]
+    },
+    "household.readers.w5.s29.current": {
+      "requires": [
+        "trickster.now",
+        "foresight.page_taken",
+        "household.table.kept",
+        "household.readers.w5.commander.alive",
+        "seelah.present_now",
+        "seelah.harem.eligible",
+        "kiana.present_now",
+        "kiana.harem.eligible",
+        "household.pair.seelah_kiana.conscious",
+        "household.pair.seelah_kiana.met"
+      ],
+      "forbids": [
+        "household.closed"
+      ],
+      "open_routes": [
+        "seelah",
+        "kiana"
+      ]
+    },
+    "household.readers.w5.s30.current": {
+      "requires": [
+        "trickster.now",
+        "foresight.page_taken",
+        "household.table.kept",
+        "household.readers.w5.commander.alive",
+        "eliandra.present_now",
+        "eliandra.harem.eligible",
+        "targona.present_now",
+        "targona.harem.eligible",
+        "eliandra.met_ch5",
+        "targona.trickster.in_drezen"
+      ],
+      "forbids": [
+        "household.closed",
+        "eliandra.trickster.away"
+      ],
+      "open_routes": [
+        "eliandra",
+        "targona"
+      ]
+    }
+  },
+  "book_surfaces": [
+    {
+      "entry": "household.readers.w5.s10.seating",
+      "requires": [
+        "household.readers.w5.s10.current"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "seelah.harem.enmity.nenio"
+          ],
+          "forbids": [
+            "seelah.harem.reconciled.nenio"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.seelah",
+            "seelah.harem.attitude.nenio.rival"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.nenio.respect",
+            "seelah.harem.attitude.nenio.friend",
+            "seelah.harem.attitude.nenio.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.seelah",
+            "seelah.harem.attitude.nenio.respect"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.nenio.friend",
+            "seelah.harem.attitude.nenio.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.seelah",
+            "seelah.harem.attitude.nenio.friend"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.nenio.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.seelah",
+            "seelah.harem.attitude.nenio.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "nenio.harem.enmity.seelah"
+          ],
+          "forbids": [
+            "nenio.harem.reconciled.seelah"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.nenio",
+            "nenio.harem.attitude.seelah.rival"
+          ],
+          "forbids": [
+            "nenio.harem.attitude.seelah.respect",
+            "nenio.harem.attitude.seelah.friend",
+            "nenio.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.nenio",
+            "nenio.harem.attitude.seelah.respect"
+          ],
+          "forbids": [
+            "nenio.harem.attitude.seelah.friend",
+            "nenio.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.nenio",
+            "nenio.harem.attitude.seelah.friend"
+          ],
+          "forbids": [
+            "nenio.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s10.current",
+            "household.readers.w5.s10.speaking.nenio",
+            "nenio.harem.attitude.seelah.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        }
+      ]
+    },
+    {
+      "entry": "household.readers.w5.s20.seating",
+      "requires": [
+        "household.readers.w5.s20.current"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "seelah.harem.enmity.jannah"
+          ],
+          "forbids": [
+            "seelah.harem.reconciled.jannah"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.seelah",
+            "seelah.harem.attitude.jannah.rival"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.jannah.respect",
+            "seelah.harem.attitude.jannah.friend",
+            "seelah.harem.attitude.jannah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.seelah",
+            "seelah.harem.attitude.jannah.respect"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.jannah.friend",
+            "seelah.harem.attitude.jannah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.seelah",
+            "seelah.harem.attitude.jannah.friend"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.jannah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.seelah",
+            "seelah.harem.attitude.jannah.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "jannah.harem.enmity.seelah"
+          ],
+          "forbids": [
+            "jannah.harem.reconciled.seelah"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.jannah",
+            "jannah.harem.attitude.seelah.rival"
+          ],
+          "forbids": [
+            "jannah.harem.attitude.seelah.respect",
+            "jannah.harem.attitude.seelah.friend",
+            "jannah.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.jannah",
+            "jannah.harem.attitude.seelah.respect"
+          ],
+          "forbids": [
+            "jannah.harem.attitude.seelah.friend",
+            "jannah.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.jannah",
+            "jannah.harem.attitude.seelah.friend"
+          ],
+          "forbids": [
+            "jannah.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s20.current",
+            "household.readers.w5.s20.speaking.jannah",
+            "jannah.harem.attitude.seelah.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        }
+      ]
+    },
+    {
+      "entry": "household.pair.seelah_yaniel.seating",
+      "requires": [
+        "household.pair.seelah_yaniel.watch.seen"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.pair.seelah_yaniel.watch.seen",
+            "household.pair.seelah_yaniel.watch.kept",
+            "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+            "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+            "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+            "household.pair.seelah_yaniel.cost.seelah_left_praise"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.pair.seelah_yaniel.watch.declined"
+          ],
+          "forbids": [],
+          "any_groups": []
+        }
+      ]
+    },
+    {
+      "entry": "household.readers.w5.s21.seating",
+      "requires": [
+        "household.readers.w5.s21.current"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "seelah.harem.enmity.yaniel"
+          ],
+          "forbids": [
+            "seelah.harem.reconciled.yaniel"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.seelah",
+            "seelah.harem.attitude.yaniel.rival"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.yaniel.respect",
+            "seelah.harem.attitude.yaniel.friend",
+            "seelah.harem.attitude.yaniel.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.seelah",
+            "seelah.harem.attitude.yaniel.respect"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.yaniel.friend",
+            "seelah.harem.attitude.yaniel.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.seelah",
+            "seelah.harem.attitude.yaniel.friend"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.yaniel.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.seelah",
+            "seelah.harem.attitude.yaniel.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "yaniel.harem.enmity.seelah"
+          ],
+          "forbids": [
+            "yaniel.harem.reconciled.seelah"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.yaniel",
+            "yaniel.harem.attitude.seelah.rival"
+          ],
+          "forbids": [
+            "yaniel.harem.attitude.seelah.respect",
+            "yaniel.harem.attitude.seelah.friend",
+            "yaniel.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.yaniel",
+            "yaniel.harem.attitude.seelah.respect"
+          ],
+          "forbids": [
+            "yaniel.harem.attitude.seelah.friend",
+            "yaniel.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.yaniel",
+            "yaniel.harem.attitude.seelah.friend"
+          ],
+          "forbids": [
+            "yaniel.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s21.current",
+            "household.readers.w5.s21.speaking.yaniel",
+            "yaniel.harem.attitude.seelah.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        }
+      ]
+    },
+    {
+      "entry": "household.pair.seelah_kiana.seating",
+      "requires": [
+        "household.pair.seelah_kiana.ward.seen"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.pair.seelah_kiana.ward.seen",
+            "household.pair.seelah_kiana.ward.helped",
+            "household.pair.seelah_kiana.deed.kiana_named_patient",
+            "household.pair.seelah_kiana.deed.seelah_followed_healer",
+            "household.pair.seelah_kiana.cost.kiana_delayed_private_talk",
+            "household.pair.seelah_kiana.cost.seelah_worked_ward"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.pair.seelah_kiana.ward.declined"
+          ],
+          "forbids": [],
+          "any_groups": []
+        }
+      ]
+    },
+    {
+      "entry": "household.readers.w5.s29.seating",
+      "requires": [
+        "household.readers.w5.s29.current"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "seelah.harem.enmity.kiana"
+          ],
+          "forbids": [
+            "seelah.harem.reconciled.kiana"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.seelah",
+            "seelah.harem.attitude.kiana.rival"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.kiana.respect",
+            "seelah.harem.attitude.kiana.friend",
+            "seelah.harem.attitude.kiana.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.seelah",
+            "seelah.harem.attitude.kiana.respect"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.kiana.friend",
+            "seelah.harem.attitude.kiana.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.seelah",
+            "seelah.harem.attitude.kiana.friend"
+          ],
+          "forbids": [
+            "seelah.harem.attitude.kiana.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.seelah",
+            "seelah.harem.attitude.kiana.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.harem.enmity.seelah"
+          ],
+          "forbids": [
+            "kiana.harem.reconciled.seelah"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.kiana",
+            "kiana.harem.attitude.seelah.rival"
+          ],
+          "forbids": [
+            "kiana.harem.attitude.seelah.respect",
+            "kiana.harem.attitude.seelah.friend",
+            "kiana.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.kiana",
+            "kiana.harem.attitude.seelah.respect"
+          ],
+          "forbids": [
+            "kiana.harem.attitude.seelah.friend",
+            "kiana.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.kiana",
+            "kiana.harem.attitude.seelah.friend"
+          ],
+          "forbids": [
+            "kiana.harem.attitude.seelah.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "household.readers.w5.s29.speaking.kiana",
+            "kiana.harem.attitude.seelah.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.partner_secret_exposed"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.separated"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.elan.death_known"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.partner_stance.share"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.partner_stance.secret"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known",
+            "kiana.partner_stance.share"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.partner_stance.exclusive"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known",
+            "kiana.partner_stance.share",
+            "kiana.partner_stance.secret"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.stayed_married"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known",
+            "kiana.partner_stance.share",
+            "kiana.partner_stance.secret",
+            "kiana.partner_stance.exclusive"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.elan.present"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known",
+            "kiana.partner_stance.share",
+            "kiana.partner_stance.secret",
+            "kiana.partner_stance.exclusive",
+            "kiana.stayed_married"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current",
+            "kiana.history_married"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known",
+            "kiana.partner_stance.share",
+            "kiana.partner_stance.secret",
+            "kiana.partner_stance.exclusive",
+            "kiana.stayed_married",
+            "kiana.elan.present"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s29.current"
+          ],
+          "forbids": [
+            "kiana.partner_secret_exposed",
+            "kiana.separated",
+            "kiana.elan.death_known",
+            "kiana.partner_stance.share",
+            "kiana.partner_stance.secret",
+            "kiana.partner_stance.exclusive",
+            "kiana.stayed_married",
+            "kiana.elan.present",
+            "kiana.history_married"
+          ],
+          "any_groups": []
+        }
+      ]
+    },
+    {
+      "entry": "household.readers.w5.s30.seating",
+      "requires": [
+        "household.readers.w5.s30.current"
+      ],
+      "lines": [
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "eliandra.harem.enmity.targona"
+          ],
+          "forbids": [
+            "eliandra.harem.reconciled.targona"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.eliandra",
+            "eliandra.harem.attitude.targona.rival"
+          ],
+          "forbids": [
+            "eliandra.harem.attitude.targona.respect",
+            "eliandra.harem.attitude.targona.friend",
+            "eliandra.harem.attitude.targona.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.eliandra",
+            "eliandra.harem.attitude.targona.respect"
+          ],
+          "forbids": [
+            "eliandra.harem.attitude.targona.friend",
+            "eliandra.harem.attitude.targona.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.eliandra",
+            "eliandra.harem.attitude.targona.friend"
+          ],
+          "forbids": [
+            "eliandra.harem.attitude.targona.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.eliandra",
+            "eliandra.harem.attitude.targona.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "targona.harem.enmity.eliandra"
+          ],
+          "forbids": [
+            "targona.harem.reconciled.eliandra"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.targona",
+            "targona.harem.attitude.eliandra.rival"
+          ],
+          "forbids": [
+            "targona.harem.attitude.eliandra.respect",
+            "targona.harem.attitude.eliandra.friend",
+            "targona.harem.attitude.eliandra.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.targona",
+            "targona.harem.attitude.eliandra.respect"
+          ],
+          "forbids": [
+            "targona.harem.attitude.eliandra.friend",
+            "targona.harem.attitude.eliandra.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.targona",
+            "targona.harem.attitude.eliandra.friend"
+          ],
+          "forbids": [
+            "targona.harem.attitude.eliandra.lover"
+          ],
+          "any_groups": []
+        },
+        {
+          "requires": [
+            "household.readers.w5.s30.current",
+            "household.readers.w5.s30.speaking.targona",
+            "targona.harem.attitude.eliandra.lover"
+          ],
+          "forbids": [],
+          "any_groups": []
+        }
+      ]
+    }
+  ]
+}
