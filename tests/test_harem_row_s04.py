@@ -1,4 +1,4 @@
-"""S04: earned attendance, parked missing contracts, refusal and saved allowance."""
+"""Row reservations stay stable; J03 explicitly activates only approved contracts."""
 import copy
 import unittest
 from tests.story_fixture import fresh_story
@@ -17,6 +17,7 @@ class S04Tests(unittest.TestCase):
     def state(self):
         state = verify.SimState(5, 1000)
         state.flags.update(self.scene["Requires"])
+        state.flags.add("trickster.now")
         for woman in self.scene["ParticipantWomen"]:
             state.flags.update(self.story["SeatWomen"][woman]["Requires"])
             state.flags.update(self.model.composites[woman + ".harem.eligible"][0])
@@ -84,14 +85,14 @@ class S04Tests(unittest.TestCase):
         state.flags.update(["camellia.mireya_unmasked", "trickster.wmt.available",
                             "camellia.trickster.returned"])
         choices = self.scene["Nodes"][0]["Choices"]
-        self.assertEqual(len(choices), 5)
+        self.assertEqual(len(choices), 7)
         self.assertEqual([i for i, c in enumerate(choices)
-                          if verify.sim_choice_available(c, state)], [3, 4])
+                          if verify.sim_choice_available(c, state)], [0, 2, 3, 4, 5])
         producers = {flag for scene in self.story["Scenes"] for node in scene["Nodes"]
                      for choice in node["Choices"] for flag in choice["Set"]}
         self.assertFalse(set(s04.BLOCKERS) & producers)
-        self.assertTrue(set(s04.BLOCKERS) <= set(self.story["PendingHooks"]))
-        self.assertNotIn(s04.P + "retry", self.model.by_id)
+        self.assertFalse(set(s04.BLOCKERS) & set(self.story["PendingHooks"]))
+        self.assertIn(s04.P + "retry", self.model.by_id)
 
     def test_abort_does_not_spend_and_refusal_exhausts_only_this_incident(self):
         state = self.state()
@@ -117,7 +118,7 @@ class S04Tests(unittest.TestCase):
         self.assertIn("trickster.wmt.available", choice["Requires"])
         self.assertEqual(set(choice["Set"]), {"trickster.wmt.use.seelah_camellia",
                                              "household.wmt.debt.seelah_camellia"})
-        self.assertIn(s04.BLOCKERS[2], choice["Requires"])
+        self.assertNotIn(s04.BLOCKERS[2], choice["Requires"])
         self.assertEqual(self.story["ForesightConsumers"][self.scene["Id"]], "foresight.page_taken")
 
     def test_repeated_registration_never_duplicates_or_mutates_original_scenes(self):

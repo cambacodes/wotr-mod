@@ -313,6 +313,72 @@
       ],
       "enmity": "arueshalae.harem.enmity.shamira",
       "stance": "arueshalae.harem.stance.tolerated"
+    },
+    {
+      "row": "horzalah_hepzamirah",
+      "ruling": 4,
+      "prefix": "household.pair.horzalah_hepzamirah.",
+      "terminal": [
+        "household.pair.horzalah_hepzamirah.permanent_refusal",
+        "household.pair.horzalah_hepzamirah.horzalah_term_broken"
+      ],
+      "enmity": "horzalah.harem.enmity.hepzamirah",
+      "stance": "horzalah.harem.stance.tolerated"
+    },
+    {
+      "row": "horzalah_hepzamirah",
+      "ruling": 4,
+      "prefix": "household.pair.horzalah_hepzamirah.",
+      "terminal": [
+        "household.pair.horzalah_hepzamirah.permanent_refusal",
+        "household.pair.horzalah_hepzamirah.hepzamirah_term_broken"
+      ],
+      "enmity": "hepzamirah.harem.enmity.horzalah",
+      "stance": "hepzamirah.harem.stance.tolerated"
+    },
+    {
+      "row": "herrax_chivarro",
+      "ruling": 18,
+      "prefix": "household.pair.herrax_chivarro.",
+      "terminal": [
+        "household.pair.herrax_chivarro.permanent_refusal",
+        "household.pair.herrax_chivarro.herrax_term_broken"
+      ],
+      "enmity": "herrax.harem.enmity.w.chivarro",
+      "stance": "herrax.harem.stance.tolerated"
+    },
+    {
+      "row": "herrax_chivarro",
+      "ruling": 18,
+      "prefix": "household.pair.herrax_chivarro.",
+      "terminal": [
+        "household.pair.herrax_chivarro.permanent_refusal",
+        "household.pair.herrax_chivarro.chivarro_term_broken"
+      ],
+      "enmity": "minagho_chivarro.harem.enmity.chivarro.herrax",
+      "stance": "minagho_chivarro.harem.stance.chivarro.tolerated"
+    },
+    {
+      "row": "hepzamirah_minagho",
+      "ruling": 19,
+      "prefix": "household.pair.hepzamirah_minagho.",
+      "terminal": [
+        "household.pair.hepzamirah_minagho.permanent_refusal",
+        "household.pair.hepzamirah_minagho.minagho_final_failed"
+      ],
+      "enmity": "minagho_chivarro.harem.enmity.minagho.hepzamirah",
+      "stance": "minagho_chivarro.harem.stance.minagho.tolerated"
+    },
+    {
+      "row": "hepzamirah_minagho",
+      "ruling": 19,
+      "prefix": "household.pair.hepzamirah_minagho.",
+      "terminal": [
+        "household.pair.hepzamirah_minagho.permanent_refusal",
+        "household.pair.hepzamirah_minagho.hepzamirah_final_failed"
+      ],
+      "enmity": "hepzamirah.harem.enmity.w.minagho",
+      "stance": "hepzamirah.harem.stance.tolerated"
     }
   ],
   "dispositions": [
@@ -326,25 +392,25 @@
       "rows": "S05",
       "ruling": 17,
       "status": "inert",
-      "reason": "No supported coup exposure/reconciliation producer; chosen-lovers account is history only."
+      "reason": "No supported coup exposure/reconciliation producer. J03 separately emits current two-channel precedence acknowledgment, with the original no-reply historical account retained."
     },
     {
       "rows": "S18F",
       "ruling": 4,
-      "status": "awaiting-J03",
-      "reason": "Horzalah counter-move targets Horzalah to Hepzamirah; Hepzamirah counter-move targets Hepzamirah to Horzalah. Neutral mishandling/absence/direct refusal stays unsettled. No such authored counter-move terminal exists yet."
+      "status": "supported",
+      "reason": "J03 emits exact final counter-move terminals: Horzalah to Hepzamirah for selling this warning, Hepzamirah to Horzalah for intercepting this agent. First failure is pending; neutral mishandling, absence and direct refusal supply no random target."
     },
     {
       "rows": "S23",
       "ruling": 18,
-      "status": "awaiting-J03",
-      "reason": "Broken recruiting term targets Herrax to qualified Chivarro; broken old-chair term targets qualified Chivarro to Herrax. Missing reply is owed, never final. No terms/broken-term terminal exists yet."
+      "status": "supported",
+      "reason": "J03 emits exact final broken-term terminals: Herrax to qualified Chivarro for renewed recruiting, qualified Chivarro to Herrax for reclaiming the old chair. Missing reply remains owed."
     },
     {
       "rows": "S34",
       "ruling": 19,
-      "status": "awaiting-J03",
-      "reason": "Only final failed screen targets qualified Minagho to Hepzamirah; explicit final refusal of her strike targets Hepzamirah to qualified Minagho. First failed screen is pending. No interception terminal emitted yet."
+      "status": "supported",
+      "reason": "J03 emits the current interception: first failed screen is pending, final screen loss targets qualified Minagho to Hepzamirah, explicit final refusal of the strike/credit targets Hepzamirah to qualified Minagho."
     },
     {
       "rows": "S22",
