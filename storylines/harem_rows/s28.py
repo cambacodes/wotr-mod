@@ -1,4 +1,4 @@
-"""S28: authored patronage audience; optional bodily arc withheld pending owner review.
+"""S28: authored patronage audience; W3 bodily arc remains a blocked reservation.
 
 Canon: Velexia_Third_Date/Cue_0055, e0ee422a413a5f94ea90bede3096ee56,
 enGB ecc42853-d2e6-4613-95c2-de90a01dbfd5. Jerribeth defects from HER
@@ -114,8 +114,11 @@ def settlement(defected, retry=False, mind=False):
 SCENES = tuple(settlement(d, r, m) for r in (False, True)
                for d in (True, False) for m in (False, True))
 
-# These are implementation candidates, deliberately not emitted by register().
-# A one-visit flag is not a 152h bodily window. No invented stay gate or quest.
+# W3-S28: these four steps are staging data, never emitted by register().
+# Both owners end bodily presence on visited. Even holding every personal deed
+# cannot turn either one-visit channel into the required 152h overlapping window.
+# Activation also awaits the shared defection/stage/Marhevok and caps review;
+# this row supplies neither a stay extension nor a replacement reconciliation.
 BODY_REQUIRES = ["jerribeth.present_now", "vellexia.present_now",
                  "jerribeth.trickster.visit_due", "vellexia.trickster.in_person"]
 BODY_FORBIDS = ["jerribeth.trickster.returned", "jerribeth.trickster.visited",
