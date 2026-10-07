@@ -10743,7 +10743,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 906. **Dorgelinda: Other columns** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.other_columns","chapter":5,"day":115,"completed":true,"choices":[["start",0],["says",2],["unblessed",0]]} -->
    Scene `dorgelinda.ledger.other_columns`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're quiet today."
-   Need all: `trickster.ever`, `dorgelinda.ledger.morning_count`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.other_columns`.
+   Need all: `trickster.ever`, `dorgelinda.ledger.morning_count`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.other_columns`, `swarm`.
    Native answer-list host: `fa57cf97ea01bf34e9a30f6ad444381e`.
    Actor must be physically available: `8692bff6041c47a0b13158d5977f291b`.
    - `dorgelinda.ledger.other_columns/start/0` — "Ask me yourself."
