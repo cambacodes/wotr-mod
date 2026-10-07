@@ -273,5 +273,30 @@
     "scene": "eritrice.minutes.a_serious_matter",
     "route": "eritrice",
     "finding": "eritrice:D02,D03,D04 (D01 local evasion)"
+  },
+  {
+    "scene": "galfrey.trickster.alive.after_no",
+    "route": "galfrey",
+    "finding": "galfrey:D16 class sweep"
+  },
+  {
+    "scene": "galfrey.trickster.commit.answer_again",
+    "route": "galfrey",
+    "finding": "galfrey:D16 class sweep"
+  },
+  {
+    "scene": "galfrey.trickster.commit.answer_again_stall",
+    "route": "galfrey",
+    "finding": "galfrey:D16 class sweep"
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.conversation",
+    "route": "galfrey",
+    "finding": "galfrey:D14"
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.conversation_stall",
+    "route": "galfrey",
+    "finding": "galfrey:D15"
   }
 ]
