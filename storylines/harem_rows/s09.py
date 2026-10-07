@@ -89,16 +89,16 @@ def friend_steps():
     add("friend_wenduag", "The flier's mark", [
         page("start", "Wenduag", '{n}Wenduag is copying the approach for her hunters. The roof line still bears Arueshalae\'s mark.{/n} "They asked if I drew that too. She thinks I\'ll say yes."',
              c('"Let her mark the approach."', "her"), c('"Keep this to the operation."', "refused"), later()),
-        terminal("her", "Wenduag", '{n}She pushes the map toward Arueshalae.{/n} "Show them your ridge. I\'m not explaining a flier\'s tricks for her." {n}Arueshalae bends over the map beside her, smiling. Wenduag keeps the succubus\'s mark on every copy.{/n} "You can come back when they have more questions. I might have one myself."',
+        terminal("her", "Wenduag", '{n}She calls her hunters back and pushes the map toward Arueshalae.{/n} "The roof line is hers. Watch her hands. If you run before she turns him, I\'ll leave you up there for the crows." {n}Arueshalae marks the turn on each copy. Wenduag watches her mouth while the hunters follow her finger.{/n} "Come back when they\'ve learned it. I want to see what else those wings can do."',
                  ("friend_wenduag.seen", *FRIEND_W)),
         terminal("refused", "Wenduag", '"Fine. She gets the roof. I get my hunt." {n}She rolls up the map without calling Arueshalae over.{/n}',
                  ("friend_wenduag.seen", "friend_wenduag.refused", "arc.declined"))],
-        "settle.done", requires=flags("settle.evil_done"),
+        "settle.done", requires=flags("settle.evil_done", *RESPECT),
         forbids=flags("friend_wenduag.seen", "arc.declined"), delay=48, evil=True, arc_start=True)
     add("friend_arueshalae", "Under the wall", [
         page("start", "Arueshalae", '{n}Arueshalae tests the turn with two fingers walking across the map.{/n} "A man running in the open looks wonderfully helpless. That would bring our lookout down, wouldn\'t it?" {n}Wenduag\'s knife stops the little march.{/n} "Try it with someone else\'s hunters."',
              c('"Let her answer the ground correction."', "her"), c('"Keep this to the hunt."', "refused"), later()),
-        terminal("her", "Arueshalae", '{n}She moves her fingers beneath the wall, following Wenduag\'s line.{/n} "Very well. I will have to be the tempting thing on the roof. Such hardship." {n}She laughs at Wenduag\'s bared teeth.{/n} "Keep them covered. I want to see you reach him."',
+        terminal("her", "Arueshalae", '{n}She moves her fingers beneath the wall, following Wenduag\'s line, then calls the waiting hunters over.{/n} "Stay here until he looks at me. I can show him something worth coming down for." {n}She draws her landing mark inside the cover, beside Wenduag\'s.{/n} "There. Your little pack stays out of sight, and I get to watch you tear his throat out." {n}Wenduag taps the two marks with a claw. Arueshalae leaves hers where it is.{/n}',
                  ("friend_arueshalae.seen", *FRIEND_A)),
         terminal("refused", "Arueshalae", '"Only the lookout, then. How industrious we are." {n}She lifts her fingers off the map.{/n}',
                  ("friend_arueshalae.seen", "friend_arueshalae.refused", "arc.declined"))],
@@ -109,14 +109,14 @@ def intimacy():
     add("choice", "Their map", [
         page("start", "Wenduag", '{n}The copies are finished. Wenduag has kept the original beneath her hand. Arueshalae stays beside it while the scouts leave.{/n} "She keeps finding excuses to inspect my route."',
              c('[Leave them their map.]', "wenduag_answer"), c('"Keep this company at the Table."', "refused"), later()),
-        page("wenduag_answer", "Wenduag", '{n}Wenduag follows Arueshalae\'s finger along the ridge without touching her skin. Then she looks up at her mouth.{/n} "You look better with your teeth showing. Bring that pretty face closer when I have armour against it. I want to hear what noise you make when you aren\'t boasting."', c("Continue", "arueshalae_answer")),
+        page("wenduag_answer", "Wenduag", '{n}Arueshalae lifts the map out from under Wenduag\'s hand. A beat of her wings carries her beyond the hunter\'s reach. Wenduag rises, grinning.{/n} "Keep flying, pretty thing. I\'ll have armour against that mouth tonight. Then we\'ll hear what comes out of it when you aren\'t boasting."', c("Continue", "arueshalae_answer")),
         page("arueshalae_answer", "Arueshalae", '"Oh, I can boast with my mouth full." {n}She leans close enough for Wenduag to feel her breath and stops there, enjoying the hunter\'s fixed stare.{/n} "Get your armour. Then come after me. I want those claws on me."', c("Continue", "protection")),
         page("protection", "Narrator", '{n}The chapel can read a scroll over Wenduag. Until then, the map stays between them.{/n}',
              c('[Spend a Scroll of Death Ward: have the ward read over Wenduag and let them go.]', "threshold",
                requires=("arueshalae.ward_held",) + LIVE, remove_item=SCROLL,
                flags=flags("cost.ward_scroll", "ward.applied_wenduag")),
              c('"Keep the map; leave the rest tonight."', "no_contact")),
-        page("threshold", "Wenduag", '{n}Wenduag returns with the ward cold on her skin. She catches Arueshalae by the belt and draws her toward the back stair.{/n} "Seven minutes. You spend one talking, I\'ll make you regret it." {n}The succubus laughs against her ear. Wenduag pulls her through the door.{/n}',
+        page("threshold", "Wenduag", '{n}Wenduag returns with the ward cold on her skin. Arueshalae holds the map above her head, wings spreading. Wenduag steps inside their sweep and catches her by the belt. The succubus folds her wings around them and presses her mouth to Wenduag\'s.{/n} "Seven minutes. You spend one talking, I\'ll make you regret it." {n}Arueshalae laughs against her lips, then draws her toward the back stair. Wenduag pulls her through the door.{/n}',
              c("Continue", p("choice.explicit.1"))),
         page("after", "Arueshalae", '{n}They separate while the ward still holds. Arueshalae smooths her belt; Wenduag retrieves the map before the succubus can take it.{/n} "With my correction." {n}Wenduag bares her teeth and rolls up the map with both lines intact. They leave for separate sleeping places.{/n}',
              c("Continue", flags=flags("choice.seen", "choice.both_yes", "deed.wenduag_desire_answer", "deed.arueshalae_desire_answer"))),
@@ -180,7 +180,8 @@ def register(payload, scenes, refs):
         derived[base + "respect"] = [list(flags(*RESPECT))]
         derived[base + "friend"] = [list(flags("settle.evil_done", *friendship)) + ["arueshalae.corrupted"]]
         derived[base + "lover"] = [list(flags("settle.evil_done", *FRIEND_W, *FRIEND_A, "choice.both_yes",
-                                                 "deed.wenduag_desire_answer", "deed.arueshalae_desire_answer")) + ["arueshalae.corrupted"]]
+                                                 "deed.wenduag_desire_answer", "deed.arueshalae_desire_answer",
+                                                 "cost.ward_scroll", "ward.applied_wenduag")) + ["arueshalae.corrupted"]]
         for stage in ("rival", "respect", "friend", "lover"):
             payload.setdefault("DerivedOpenRoutes", {})[base + stage] = list(PAIR)
         negative[base + "rival"] = [base + s for s in ("respect", "friend", "lover")]

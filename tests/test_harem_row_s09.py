@@ -7,6 +7,7 @@ from storylines.harem_rows import s09
 from tools import rrt_verify as rules
 from tools.intimacy_contract_lint import walks
 from tools.harem_schedule_lint import delayed_clock_errors
+from tests.harem_row_walk import walk
 
 
 class S09Tests(unittest.TestCase):
@@ -116,6 +117,8 @@ class S09Tests(unittest.TestCase):
             rules.sim_complete(self.model, lost)
             self.assertFalse(rules.sim_available(self.model, self.scene("choice"), lost))
         self.assertNotIn("wenduag.harem.attitude.arueshalae.lover", state.flags)
+        # The direct terminal helper does not execute intermediate ward removal.
+        state.flags.update(s09.flags("cost.ward_scroll", "ward.applied_wenduag"))
         self.finish(state, "choice", "after")
         self.assertIn("wenduag.harem.attitude.arueshalae.lover", state.flags)
         self.assertIn("arueshalae.harem.attitude.wenduag.lover", state.flags)
@@ -157,6 +160,79 @@ class S09Tests(unittest.TestCase):
         self.assertIn("after", paths[0][0])
         for node in ("threshold", s09.p("choice.explicit.1"), "after"):
             self.assertFalse(any(c["Abort"] for c in nodes[node]["Choices"]))
+
+    def test_optional_choice_walk_requires_fresh_ward_and_preserves_solo_bonds(self):
+        state = self.state()
+        self.finish(state, "settle.evil")
+        for step in ("friend_wenduag", "friend_arueshalae"):
+            state.hour += 48
+            self.finish(state, step, "her")
+        state.hour += 48
+        scene = self.scene("choice")
+        self.assertTrue(rules.sim_available(self.model, scene, state))
+        for fresh_ward in (False, True):
+            ready = copy.deepcopy(state)
+            ready.flags.add("arueshalae.trickster.fallen.warded")
+            if fresh_ward:
+                ready.flags.add("arueshalae.ward_held")
+            outcomes = walk(self, self.model, scene, ready)
+            lovers = [outcome for outcome in outcomes if s09.p("choice.both_yes") in outcome.flags]
+            self.assertEqual(len(lovers), int(fresh_ward))
+            for outcome in outcomes:
+                rules.sim_complete(self.model, outcome)
+                self.assertIn("wenduag.committed", outcome.flags)
+                self.assertIn("arueshalae.committed", outcome.flags)
+                mutual = s09.p("choice.both_yes") in outcome.flags
+                for a, b in (s09.PAIR, tuple(reversed(s09.PAIR))):
+                    self.assertEqual(a + ".harem.attitude." + b + ".lover" in outcome.flags, mutual)
+                if mutual:
+                    self.assertIn(s09.p("ward.applied_wenduag"), outcome.flags)
+                    self.assertIn(s09.p("cost.ward_scroll"), outcome.flags)
+                    self.assertEqual(outcome.rest_spent["household.pair"], 1)
+                    for receipt in ("deed.wenduag_desire_answer", "deed.arueshalae_desire_answer",
+                                    "cost.ward_scroll", "ward.applied_wenduag"):
+                        missing = copy.deepcopy(outcome)
+                        missing.flags.remove(s09.p(receipt))
+                        rules.sim_complete(self.model, missing)
+                        self.assertNotIn("wenduag.harem.attitude.arueshalae.lover", missing.flags)
+                        self.assertNotIn("arueshalae.harem.attitude.wenduag.lover", missing.flags)
+                else:
+                    self.assertNotIn(s09.p("ward.applied_wenduag"), outcome.flags)
+                    if s09.p("choice.declined") in outcome.flags:
+                        outcome.hour += 8
+                        self.assertFalse(rules.sim_available(self.model, self.scene("morning"), outcome))
+
+    def test_all_optional_entries_require_current_page_path_and_bodies(self):
+        state = self.state()
+        self.finish(state, "settle.evil")
+        for step, node, hours in (("friend_wenduag", "her", 48),
+                                  ("friend_arueshalae", "her", 48),
+                                  ("choice", "after", 48), ("morning", "kept", 8)):
+            state.hour += hours
+            scene = self.scene(step)
+            self.assertTrue(rules.sim_available(self.model, scene, state))
+            for removed in ("trickster", "trickster.foresight.accepted", "household.table.kept",
+                            "wenduag.in_party", "arueshalae.evil_recruited"):
+                missing = copy.deepcopy(state)
+                missing.flags.remove(removed)
+                rules.sim_complete(self.model, missing)
+                self.assertFalse(rules.sim_available(self.model, scene, missing), (step, removed))
+            for loss in ("wenduag.q3_killed", "arueshalae.evil_dead"):
+                lost = copy.deepcopy(state)
+                lost.flags.add(loss)
+                rules.sim_complete(self.model, lost)
+                self.assertFalse(rules.sim_available(self.model, scene, lost), (step, loss))
+            self.finish(state, step, node)
+
+    def test_optional_start_needs_actual_base_respect_deeds(self):
+        state = self.state()
+        self.finish(state, "settle.evil")
+        state.hour += 48
+        for receipt in s09.RESPECT:
+            missing = copy.deepcopy(state)
+            missing.flags.remove(s09.p(receipt))
+            rules.sim_complete(self.model, missing)
+            self.assertFalse(rules.sim_available(self.model, self.scene("friend_wenduag"), missing))
 
     def test_refusal_abort_allowances_enmity_and_clock_contracts(self):
         for suffix, scene in self.rows.items():
