@@ -413,3 +413,38 @@ _wish = next(sc for sc in SCENES if sc["Id"] == WISH)
 # Explicit brief: later chosen night, familiar cushions, her impatient invitation.
 _wish["Nodes"].append(ch(WISH + ".explicit.1", '{n}She pulls the familiar cushions into place, catches your sleeve and draws you down beside her. Her mouth meets yours before you can finish speaking.{/n} "You\'re staying."', c("[Stay.]")))
 next(nd for nd in _wish["Nodes"] if nd["Id"] == "stay")["Choices"][0]["Next"] = WISH + ".explicit.1"
+
+
+# endings1: coin_taken_home is produced by completed carriage, never intent.
+_last_coin = next(sc for sc in SCENES if sc["Id"] == LAST_EVENING)
+_last_coin["Forbids"].append("chadali.wagers.coin_lost")
+for _nd in _last_coin["Nodes"]:
+    for _answer in _nd["Choices"]:
+        if COIN_TAKEN in _answer["Set"]:
+            _answer["Set"].remove(COIN_TAKEN)
+# Preserve the saved terminal exits. The actual arrival has an appended
+# staging node, and produces the receipt before returning to the old exit.
+for _nd in _last_coin["Nodes"]:
+    for _answer in _nd["Choices"]:
+        if _answer.get("Next") in ("walk", "together"):
+            _answer["Next"] += "_home"
+_last_coin["Nodes"].extend([
+    nar("walk_home", '{n}You carry the saucer through the portal and into your quarters. At the shelf the coin is still standing. Only then do you breathe.{/n}', c("Continue", "walk", flags=(COIN_TAKEN,))),
+    nar("together_home", '{n}Chadali keeps her hand beneath the saucer all the way through the portal. In your quarters she waits until you have set it down, the coin still upright, then laughs and takes your hand.{/n}', c("Continue", "together", flags=(COIN_TAKEN,))),
+])
+_sessions_integrate = integrate
+def integrate(payload):
+    _sessions_integrate(payload)
+    for _sc in payload["Scenes"]:
+        if _sc["Id"] == "chadali.trickster.epilogue.lucky_night":
+            for _para in _sc["Nodes"][0].get("Paragraphs", []):
+                if COIN_TAKEN in _para["Requires"]:
+                    _para["Forbids"].append("chadali.wagers.coin_lost")
+# end endings1
+
+
+# endings1: the retained exits now follow the witnessed arrival above.
+_coin_exits = {nd["Id"]: nd for nd in _last_coin["Nodes"]}
+_coin_exits["walk"]["Text"] = '{n}The saucer rests on your shelf, the coin upright. Your hand is still cramped from carrying it. At the door you realize you have been smiling the whole way. Far off, beyond the portal, someone sings a terrible drinking song.{/n}'
+_coin_exits["together"]["Text"] = '{n}Chadali leaves the saucer on the shelf and slides her warm hand into yours. Her bracelets chime as she starts laughing.{/n} "All the way! And you did not drop it. I was watching." {n}She looks from the coin to your face.{/n} "You would have come back anyway. I know now."'
+# end endings1 coin arrival

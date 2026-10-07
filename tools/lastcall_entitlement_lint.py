@@ -86,6 +86,9 @@ def history_errors(story, contracts=None):
     for key, groups in contracts.get("derived", {}).items():
         if story.get("Derived", {}).get(key) != groups:
             failures.append(key + ": recovery reader differs from actual release witnesses")
+    for key, forbids in contracts.get("derived_forbids", {}).items():
+        if story.get("DerivedForbids", {}).get(key) != forbids:
+            failures.append(key + ": current-state exclusions differ from history contract")
     scenes = {s["Id"]: s for s in story["Scenes"]}
     for row in contracts.get("producers", []):
         scene = scenes.get(row["scene"], {})

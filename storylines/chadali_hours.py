@@ -299,7 +299,7 @@ EPILOGUE_PARAGRAPHS = [
     (LUCK_GIVEN_BACK, "{n}Her list of lucky numbers survived the Council. Beside her own name, crossed out and rewritten, was a small crooked one. She never let it go back to nought, and the Commander checked.{/n}"),
     (LUCK_KEPT_GIVING, "{n}She never did keep any luck for herself. The Commander won nearly everything, and never let themself ask why, and she lost earrings, and trays, and once a whole summer's honey, and never said a word.{/n}"),
     (SOCOTH_REFUSED, "{n}Socothbenoth never asked her for a favour again. He sent flowers every year anyway, from somewhere warm, with a note that said only \"No hard feelings, darling.\" She put them in the bin, stem first, every year, and smiled.{/n}"),
-    (SOCOTH_OBLIGED, "{n}Socothbenoth owed the Commander a favour for the rest of his long existence, and never quite knew how he had come to owe it. Chadali knew. She never said.{/n}"),
+    (SOCOTH_OBLIGED, "{n}Chadali kept her counteroffer to Socothbenoth: one morning's share only if he named the night and its purpose, and help for her worshippers in return. No agreement or delivery had followed. The Commander had no favour to collect.{/n}"),
     (REMEMBERED, "{n}When the Council's members publicly pretended they had never met, Chadali joined in. In private, she kept the date. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}"),
     (SCAR_KEPT, "{n}The Commander carried a thin pale scar for the rest of their life, curved at one end like the edge of a coin. She touched it for luck, every time, without asking.{/n}"),
 ]

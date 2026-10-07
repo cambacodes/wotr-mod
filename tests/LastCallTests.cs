@@ -145,7 +145,7 @@ internal static class LastCallTests
         var bodyReturns = new[] { "hepzamirah.trickster.returned", "delamere.trickster.returned", "terendelev.trickster.returned" };
         var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).Concat(bodyReturns).ToArray());
         var shown = codas.Where(s => Av(s, all)).Select(s => s.Id).ToList();
-        check(codas.Length == 40 && shown.Count == 38 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
+        check(codas.Length == 41 && shown.Count == 38 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
               && shown.Contains("tirabade.lastcall.page"),
             "LastCall_AllCommitted: expected 38 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
@@ -154,7 +154,9 @@ internal static class LastCallTests
             // Availability is no substitute for the coda's actual earned partner.
             foreach (var prerequisite in Program.Prerequisites(coda)) HouseholdTests.Earn(story, own, prerequisite);
             own = Done(story, own);
-            check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id);
+            check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id
+                + "; missing=" + string.Join(",", coda.Requires.Where(k => !own.Has(k)))
+                + "; excludes=" + string.Join(",", coda.Forbids.Where(own.Has)));
             var uncommitted = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle);
             check(!Av(coda, uncommitted), "LastCall_AllCommitted: a coda plays without her commit: " + coda.Id);
         }
@@ -211,17 +213,19 @@ internal static class LastCallTests
             string rel = call.Id.Substring(0, call.Id.Length - ".lastcall.call".Length), due = rel + ".lastcall.callable";
             // eng7-l13: stakes stay exact; Nenio control and Wenduag partnership are mandatory extra readers.
             string? eligibility = rel == "nenio" ? "nenio.outcome.eligible" : rel == "wenduag" ? "wenduag.trickster.partner" : null;
-            check(call.Requires.Contains(due) && story.DerivedOpenRoutes.TryGetValue(due, out var routes) && routes.SequenceEqual(new[] { rel })
+            check(call.Requires.Contains(due)
+                  && (story.DerivedOpenRoutes.TryGetValue(due, out var routes) && routes.SequenceEqual(new[] { rel }))
                   && story.DerivedForbids.TryGetValue(due, out var settled) && settled.First() == rel + ".lastcall.resolved"
                   && (eligibility == null || story.Derived[due].All(g => g.Contains(eligibility)))
                   && story.Derived[due].Select(g => g.Where(k => k != eligibility).Single()).OrderBy(k => k).SequenceEqual(call.RequiresAnyGroups.Single().OrderBy(k => k))
-                  && joke.Forbids.Contains(due) && jokeAreelu.Forbids.Contains(due),
+                  && joke.Forbids.Contains(new[] { "chadali", "seelah", "konomi", "horzalah", "devarra", "nocticula" }.Contains(rel) ? rel + ".lastcall.account_due" : due)
+                  && jokeAreelu.Forbids.Contains(new[] { "chadali", "seelah", "konomi", "horzalah", "devarra", "nocticula" }.Contains(rel) ? rel + ".lastcall.account_due" : due),
                 "Engine-q2: a call-in is not guarded by its partner's open route, or the last joke does not wait on it: " + call.Id);
             check(call.Requires.Contains(Open) && call.Forbids.Contains(Taken) && call.RequiresAnyGroups.Length == 1 && call.AnswerLists.Length == 5
                   && call.Forbids.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))
                   // eng8-q8g: intermediate answers reach the creditor's terms;
                   // every terminal still resolves the spoken or refused debt.
-                  && call.Nodes.SelectMany(n => n.Choices).Where(c => c.Next == null).All(c => c.Set.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))),
+                  && call.Nodes.SelectMany(n => n.Choices).Where(c => c.Next == null).All(c => c.Set.Contains(rel + ".lastcall.resolved")),
                 "A call-in is not a ledger line of the open ledger, or one of its answers leaves the debt unresolved: " + call.Id);
         }
         // Engine-q2 item 3: a closed or departed partner's call-in is not offered and does not strand the last joke; her
@@ -282,9 +286,9 @@ internal static class LastCallTests
         var owed = World(story, 5, "trickster.ever", "anevia.trickster.cost.socoth_listening");
         var paid = World(story, 6, "trickster.ever", "anevia.trickster.cost.socoth_listening", "anevia.lastcall.called");
         check(Rules.JournalStep(socoth, false, false, none) == null && Rules.JournalStep(socoth, false, false, owed) == "give"
-              && Rules.JournalStep(socoth, true, true, owed) == null && Rules.JournalStep(socoth, true, true, paid) == "complete"
+              && Rules.JournalStep(socoth, true, true, owed) == null && Rules.JournalStep(socoth, true, true, paid) == null
               && Rules.JournalStep(socoth, true, false, paid) == null,
-            "E15: a Ledger line is not given when the debt appears and completed when it is called in.");
+            "E15: a historical account must open, but a spoken call alone cannot complete it.");
         var authored = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).ToHashSet();
         // eng7-l13: NAME_GONE is an earned Derived stake, validated against its live producers.
         authored.UnionWith(story.Derived.Keys);
@@ -294,7 +298,7 @@ internal static class LastCallTests
         var devarraCall = Sc("devarra.lastcall.call");
         var refusedBill = new Snapshot { Chapter = 6 }; refusedBill.Flags.UnionWith(new[] { "devarra.trickster.cost.egg_withheld", "devarra.trickster.refused" });
         check(devarraCall.Nodes[0].Choices.Count(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)) == 1
-              && devarraCall.Nodes[0].Choices.Single(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)).Set.SequenceEqual(new[] { "devarra.lastcall.resolved" }),
+              && devarraCall.Nodes[0].Choices.Single(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)).Set.SequenceEqual(new[] { "devarra.lastcall.resolved", "devarra.lastcall.left_unspoken" }),
             "Devarra's refused bill still soft-locks the last joke, or her call-in is spoken anyway.");
     }
 

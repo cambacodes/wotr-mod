@@ -79,6 +79,21 @@ class ChadaliRound2Tests(unittest.TestCase):
         flags, _, _, _ = play(f.REPAID, {}, (t.LUCK_LENT,))
         self.assertNotIn(f.LOAN_RETURNED, flags)
 
+    def test_coin_custody_waits_for_arrival_and_preserves_old_exits(self):
+        scene = SCENES[s.LAST_EVENING]
+        nodes = {nd["Id"]: nd for nd in scene["Nodes"]}
+        self.assertIn("chadali.wagers.coin_lost", scene["Forbids"])
+        for nid in ("start", "keep", "walk", "together"):
+            self.assertTrue(all(s.COIN_TAKEN not in answer["Set"] for answer in nodes[nid]["Choices"]))
+        for choice in (0, 1):
+            flags, _, seen, done = play(s.LAST_EVENING, {"carry": choice})
+            self.assertTrue(done)
+            self.assertIn(s.COIN_TAKEN, flags)
+            self.assertIn("together_home" if choice == 0 else "walk_home", seen)
+        for nid in ("walk", "together"):
+            self.assertIsNone(nodes[nid]["Choices"][0]["Next"])
+            self.assertEqual([], nodes[nid]["Choices"][0]["Set"])
+
     def test_market_contact_flour_and_courtship_are_separate(self):
         self.assertIn("trickster.now", t.PRESENCES[t.MARKET]["Requires"])
         self.assertIn("chadali.present_now", t.PRESENCES[t.MARKET]["Requires"])

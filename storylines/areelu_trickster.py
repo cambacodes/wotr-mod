@@ -1669,7 +1669,7 @@ page("areelu.trickster.finale.prior_lien", "You burned", [
 # wager is settled the same way (the Commander burned and pays the wound), but the report goes on: the Wound is closed.
 page("areelu.trickster.finale.lien_bottled", "You burned, and came back", [
     nar("end", '''{n}"You burned." Areelu wrote it at the top of a clean page, and underlined it, and then, below it, in smaller letters: "And did not stay burned."{/n}
-{n}"The Lady of Graves had the prior lien. She always does. You paid her collector with my crystal: the death that should have gone to her was in my flask with the cork in, and the Wound, when it closed on you, closed on an empty hook." She looked at the flask as if it had been stolen from her, which it had. "I made that. I did not make it for this. I am recording that it worked."{/n}
+{n}"The Lady of Graves had the prior lien. She always does. You returned with my crystal. I have measured what remains in it. Your return did not reopen the Wound, and it did not restore the power burned there." She looked at the flask as if it had been stolen from her, which it had. "I made that. I did not make it for this. I am recording that it worked."{/n}
 {n}"The terms stand. Whoever burned pays. You burned. I keep the wound, as agreed: a closed scar on a closed rift, which I can measure and cannot open. It is enough to study for the rest of my life, and I intend to."{/n}''',
         c("Continue", "across", forbids=(DECLINED, STAKE_ONLY), requires=(COMMITTED,)),
         c("Continue", "stands", requires=(DECLINED,)),
@@ -1870,3 +1870,14 @@ def integrate(payload):
     for s in payload["Scenes"]:
         if s["Id"] in RETIRED:
             s["Forbids"].append("trickster.ever")
+
+
+# endings1: authorship of the vessel does not prove custody of the death.
+_bottled_finale = next(s for s in SCENES if s["Id"] == "areelu.trickster.finale.lien_bottled")
+_bottled_end = next(nd for nd in _bottled_finale["Nodes"] if nd["Id"] == "end")
+_bottled_end["Paragraphs"][1]["Requires"].append("lastcall.bottled_held")
+_bottled_end["Paragraphs"].extend([
+    p('{n}"The crystal held what you drained from the wound," she said. "The rift found an empty hook. You were recovered with the cork untouched. That is what I can establish."{/n}', requires=("lastcall.recovered_corked",)),
+    p('{n}"Empty," she said, setting her crystal beneath the lamp. "I made the vessel. I did not make the banner you crossed on. Pharasma kept the death; I have the glass to measure." She closed the shutters before writing the stranger\'s name in her private notes.{/n}', requires=("iomedae.trickster.buried_alive",)),
+])
+# end endings1

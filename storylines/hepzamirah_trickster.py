@@ -483,7 +483,7 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
 EP = dict(last=6, Relationship=REL)
 LEAVABLE_PARAS = (
     p("{n}She kept the scar her father gave her, and the milk-white eye, and never let a priest heal either.{/n}", requires=(WRONG_BODY,)),
-    p("{n}Somewhere a vat of Mutasafen's still held a little of the Commander. She meant to find it before he finished his work.{/n}", requires=(BLOOD, VIAL_PAID)),
+    p("{n}Somewhere a vat of Mutasafen's still held a little of the Commander. She meant to find it before he finished his work.{/n}", requires=(VIAL_PAID,)),
     p("{n}The crusade's books listed one laboratory \"in the Worldwound, address unknown\". The address, it turned out, was known to one person.{/n}", requires=(LAB,)),
     p("{n}Mutasafen found the wine on his second test. His next letter threatened repayment; she read it aloud and burned it.{/n}", requires=(VIAL_FORGED,)),
     p("{n}Mutasafen hired himself a quieter Apprentice to replace the one whose eyes came to him in a box with a ribbon, and went on writing to her. She read every letter aloud to the forge, and fed it to the coals.{/n}", requires=(COURIER_KILLED,)),

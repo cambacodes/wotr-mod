@@ -181,6 +181,120 @@ internal static class LastCallHistoryInventoryTests
         var dead = Program.Copy(dog); dead.Flags.Add("kiana.sunhammer_dead"); Refresh(dead);
         var deadEnds = Program.Walk(S("kiana.lastcall.call"), dead);
         check(deadEnds.All(w => w.Has("kiana.lastcall.resolved") && !w.Has(Pardon) && !w.Has(Freed)), "q8g dead jeweller offers pardon/release");
+
+        // endings1: native ending observations crossed with actual Last Call
+        // answers. Both bridge acceptances preserve death and concealed return.
+        var prepared = World(6, "trickster.lastcall.open", "trickster.lastcall.pillar.bottle");
+        foreach (bool heroic in new[] { false, true })
+        foreach (int crossing in new[] { 0, 1, 2 })
+        {
+            if (!heroic && crossing != 0) continue;
+            var state = Play(S("trickster.lastcall.last_joke"), Program.Copy(prepared), "wound", heroic ? 1 : 0);
+            state.Flags.Add(heroic ? "ending.wound_closed" : "ending.trickster");
+            if (heroic) state.Flags.Add("sacrifice");
+            if (crossing != 0)
+            {
+                state.Flags.Add("iomedae.trickster.banner_carried");
+                state.Flags.Add(crossing == 1 ? "iomedae.committed" : "iomedae.trickster.rescue_only");
+            }
+            Refresh(state);
+            bool bridge = crossing != 0;
+            check(state.Has("lastcall.bottled_held") == !bridge, "endings1: historical bottling implies current contents");
+            check(state.Has("lastcall.public_return") == !bridge, "endings1: bridge return becomes public");
+            check(state.Has("lastcall.recovered_corked") == (heroic && !bridge), "endings1: H2 recovery opens the flask or replaces the bridge");
+            check(state.Has("lastcall.dead_on_record") == heroic, "endings1: a living return erases the death record");
+            check(Rules.Available(story, S("trickster.lastcall.page.bottle"), state) == !bridge,
+                "endings1: bottle page survives the empty-flask crossing");
+            foreach (string rel in new[] { "anevia", "irabeth", "arueshalae", "devarra", "delamere", "mielarah", "nidalynn", "jannah", "nenio", "terendelev", "eliandra", "galfrey", "horzalah", "melazmera", "yaniel", "wenduag" })
+            {
+                var page = S(rel + ".lastcall.page").Nodes[0];
+                bool IsRecovery(Paragraph pp) => pp.Requires.Contains("lastcall.recovered_corked")
+                    || pp.Requires.Contains("lastcall.h2") && (pp.Requires.Contains("iomedae.trickster.buried_alive") || rel == "anevia" || rel == "wenduag");
+                // Recipient life/presence is an independent prerequisite. Supply
+                // it through the existing earned fixture, without changing the ending.
+                var recipient = Program.Copy(state);
+                foreach (string guard in page.Paragraphs.Where(IsRecovery).SelectMany(pp => pp.Requires)
+                    .Where(k => k != "lastcall.recovered_corked" && k != "lastcall.h2" && k != "iomedae.trickster.buried_alive"))
+                    HouseholdTests.Earn(story, recipient, guard);
+                Refresh(recipient);
+                var recovery = Rules.VisibleParagraphs(page, recipient).Where(IsRecovery).ToArray();
+                check(recovery.Length == (heroic ? 1 : 0) && recovery.All(pp => !pp.Text.Contains("flask was opened")),
+                    "endings1: wrong recovery/visibility for " + rel + "/" + crossing);
+            }
+        }
+        var needle = World(6, "trickster.lastcall.open", "chadali.trickster.cost.needle_owed");
+        var needleEnd = Play(S("chadali.lastcall.call"), needle, "call", 1);
+        check(!needleEnd.Has("chadali.lastcall.luck_returned") && !needleEnd.Has("chadali.fortunes.loan_returned"),
+            "endings1: needle-only call manufactures repayment");
+        var luck = World(6, "trickster.lastcall.open", "chadali.trickster.cost.luck_owed");
+        var luckEnd = Play(S("chadali.lastcall.call"), luck, "luck", 0);
+        check(luckEnd.Has("chadali.fortunes.loan_returned") && !luckEnd.Has("chadali.lastcall.luck_due"),
+            "endings1: real luck transfer lacks repayment receipt");
+        foreach (var old in new[] {
+            World(6, "trickster.lastcall.open", "chadali.trickster.cost.luck_owed", "chadali.fortunes.loan_returned"),
+            World(6, "trickster.lastcall.open", "chadali.trickster.cost.luck_owed", "chadali.wagers.stake_luck", "chadali.wagers.stake_collected") })
+            check(!old.Has("chadali.lastcall.account_due"), "endings1: returned/forfeited luck is called twice");
+        foreach (string paid in new[] { "seelah.trickster.death_returned", "seelah.trickster.cost.robbed_back", "seelah.trickster.list_settled" })
+            check(!World(6, "trickster.lastcall.open", "seelah.trickster.cost.keeps_it", paid).Has("seelah.lastcall.account_due"),
+                "endings1: reclaimed list generates another promise");
+        var listEnd = Play(S("seelah.lastcall.call"), World(6, "trickster.lastcall.open", "seelah.trickster.cost.keeps_it"), "list", 0);
+        check(listEnd.Has("seelah.trickster.death_returned") && listEnd.Has("seelah.lastcall.list_returned"),
+            "endings1: list dispatch does not resolve custody");
+        foreach (int answer in new[] { 0, 1, 2 })
+        {
+            var k = Play(S("konomi.lastcall.call"), World(6, "trickster.lastcall.open", "konomi.trickster.cost.debt_owed", "konomi.trickster.favour_owed"), "terms", answer);
+            check(k.Has("konomi.lastcall.terms_accepted") == (answer == 0), "endings1: counteroffer/refusal grants permanent political obligation");
+            check(Rules.JournalEntrySettled(story.Relationships["lastcall"].JournalEntries.Single(e => e.Id == "owed.konomi"), k) == (answer == 0),
+                "endings1: proposal alone discharges Konomi's account");
+        }
+        foreach (string paid in new[] { "konomi.trickster.debt_paid", "konomi.trickster.fee_paid" })
+            check(!World(6, "trickster.lastcall.open", "konomi.trickster.cost.debt_owed", paid).Has("konomi.lastcall.account_due"),
+                "endings1: prepaid/endorsed assistance reopens an unnamed debt");
+        var dragonBill = World(6, "trickster.lastcall.open", "devarra.trickster.cost.egg_withheld", "devarra.trickster.refused", "devarra.closed");
+        var unspoken = Play(S("trickster.lastcall.account.devarra"), dragonBill, "call", 0);
+        check(unspoken.Has("devarra.lastcall.left_unspoken") && !unspoken.Has("devarra.lastcall.called"),
+            "endings1: silent account summons a departed dragon");
+        foreach (string branch in new[] { "cost.blood_sample", "cost.lab_funded", "cost.mutasafen_grudge" })
+        {
+            var hz = Play(S("hepzamirah.trickster.body.hounds"), World(5, "hepzamirah.trickster.returned", "hepzamirah.trickster." + branch), "joke", 0);
+            check(hz.Has("hepzamirah.trickster.cost.vial_paid")
+                && Rules.VisibleParagraphs(S("hepzamirah.trickster.epilogue.leavable").Nodes[0], hz).Any(pp => pp.Requires.SequenceEqual(new[] { "hepzamirah.trickster.cost.vial_paid" })),
+                "endings1: blood sample consequence misses " + branch);
+        }
+        foreach (int courierAnswer in new[] { 1, 2 })
+        {
+            var refusedBlood = Play(S("hepzamirah.trickster.body.hounds"), World(5, "hepzamirah.trickster.returned", "hepzamirah.trickster.cost.blood_sample"), "joke", courierAnswer);
+            check(!refusedBlood.Has("hepzamirah.trickster.cost.vial_paid")
+                && !Rules.JournalEntrySettled(story.Relationships["lastcall"].JournalEntries.Single(e => e.Id == "debt.mutasafen"), refusedBlood),
+                "endings1: wine or murdered courier manufactures blood payment");
+        }
+        foreach (string terminal in new[] { "refused_page", "inn" })
+        {
+            var refusal = S("nocticula.trickster.epilogue.commit").Nodes.Single(n => n.Id == terminal);
+            var favour = refusal.Paragraphs.Single(pp => pp.Text.Contains("The chair was provided."));
+            var paidFavour = World(6, "nocticula.trickster.cost.shade_paid");
+            foreach (string guard in favour.Requires.Where(k => k != "nocticula.trickster.cost.shade_paid"))
+                HouseholdTests.Earn(story, paidFavour, guard);
+            Refresh(paidFavour);
+            var unpaidFavour = Program.Copy(paidFavour);
+            unpaidFavour.Flags.Remove("nocticula.trickster.cost.shade_paid"); Refresh(unpaidFavour);
+            check(refusal.Choices.Count == 1 && refusal.Choices[0].Next == null && refusal.Choices[0].Set.Length == 0
+                && Rules.ParagraphVisible(favour, paidFavour) && !Rules.ParagraphVisible(favour, unpaidFavour),
+                "endings1: paid favour cancels romantic refusal or charges an unpaid branch");
+        }
+        var shadowBill = World(6, "trickster.lastcall.open", "noct.dead", "noct.fooled", "noct.closed", "nocticula.trickster.cost.shade_paid");
+        var shadowAccount = Play(S("trickster.lastcall.account.nocticula"), shadowBill, "call", 0);
+        check(shadowAccount.Has("nocticula.lastcall.called") && shadowAccount.Has("nocticula.lastcall.resolved")
+            && !shadowAccount.Has("nocticula.lastcall.account_due") && !Rules.Available(story, S("nocticula.lastcall.call"), shadowBill),
+            "endings1: paid protection needs a current romance or summons the absent queen");
+        var ear = World(6, "trickster.lastcall.open", "horzalah.trickster.cost.ear");
+        check(!ear.Has("horzalah.lastcall.account_due")
+            && SurfaceIds.Has(Book("owed.horzalah", ear), "[book/trickster.ledger/owed.horzalah/line/3]")
+            && !SurfaceIds.Has(Book("owed.horzalah", ear), "[book/trickster.ledger/owed.horzalah/line/2]"),
+            "endings1: paid ear invents a Guild return or trophy location");
+        var unpaid = World(6, "trickster.lastcall.taken", "ending.trickster", "chadali.trickster.cost.needle_owed", "chadali.fortunes.loan_returned");
+        check(!Rules.JournalEntrySettled(story.Relationships["lastcall"].JournalEntries.Single(e => e.Id == "owed.chadali"), unpaid),
+            "endings1: luck repayment discharges the separate needle oath");
         Console.WriteLine("PASS: eng8-q8g Last Call history and enacted debt inventory.");
     }
 }

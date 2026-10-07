@@ -239,14 +239,14 @@ SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
     nar("page", '{n}The spring after Threshold, Chadali came up the road to Drezen with a basket of cookies and one orange. She found the Commander and set it between them.{/n}\n"Half, a whole evening, or just a visit?" {n}She sat down.{/n} "I haven\'t come to answer for you. Tell me what you want."',
         c('[Ask her.] "Stay."', "stay"),
         c('[Take the orange, and not the question.] "Half each. Then we\'ll see."', "half"),
-        c("[Give her back the coin.]", "coin", requires=(PRIMED,)),
+        c("[Give her back the coin.]", "coin", requires=(PRIMED, "chadali.sessions.coin_taken_home"), forbids=("chadali.wagers.coin_lost",)),
         # PP6 (Sol INT): a late wager by post sent a Drezen penny, not the Elysian coin.
         c("[Give her back the penny.]", "penny", requires=(LATE_WAGER,), forbids=(PRIMED,)),
         paragraphs=(
             p("{n}The orange was bruised on one side, the way the first one had been, on the road from the sealed hall.{/n}", requires=(LATE,)),
             p("{n}She wore a Drezen silver penny on a string round her neck, and tapped it, once, as she sat down.{/n}", requires=(LATE_WAGER,)),
             p("{n}She had said no once, in the hall, and had meant it at the time. The hall was sealed now, and the seed she had meant to bring was still in her sleeve. She had come up the road anyway, to find out whether she still meant it.{/n}", requires=(DECLINED,)),
-            p("{n}She had felt the coin fall at the rift, the night the Commander called in the luck she had borrowed, and had paid it all back at once, the way she did everything. She had come up the road, she said, to see what it had bought.{/n}", requires=("chadali.lastcall.called",)),
+            p("{n}She had returned the borrowed luck at the rift, all at once, and kept that loan off her books. She had come up the road, she said, to see what it had bought.{/n}", requires=("chadali.lastcall.luck_returned",)),
             p("{n}She had kept the apology the herald read in the square; she took it out of the basket, folded very small, and put it on top of the cookies, where the Commander would see it.{/n}", requires=(APOLOGISED,)),
             p("{n}Before anything else she held out a brooch-pin, point first, and then, while the Commander was still reaching for it, put it away again. \"No. The needle you owe me isn't a pin in a kitchen,\" she said. \"It's the next real one, the next time somebody comes for something you love with a needle in their hand. It stays on the books until then. I never forget a bet.\"{/n}", requires=(NEEDLE_OWED,)),
         )),
@@ -269,14 +269,14 @@ SCENES.append(scene(P + "epilogue.declined", "", "ChadaliEpilogue", 6, "", [
 SCENES.append(scene(P + "epilogue.lucky_night", "", "ChadaliEpilogue", 6, "", [
     nar("page", "{n}Chadali returned to the Commander's quarters before supper, as she had said she would. Her baskets sometimes held cookies, sometimes petitions from her worshippers. She put the latter aside herself when she came to bed, and took them up again in the morning.{/n}",
         paragraphs=(
-            p("{n}It had fallen once, at the rift, the night the Commander called in her luck. She stood it back up herself the next morning, and would never say which face it had shown.{/n}", requires=("chadali.lastcall.called",)),
+            p("{n}At the rift she returned the borrowed luck in one rush. She kept the loan off her books, and demanded to know what it had bought.{/n}", requires=("chadali.lastcall.luck_returned",)),
             p('{n}The Council ceased to convene. "In public I say I never met them," she said. "Here, I remember. Cobblehoof still sends my cookies back."{/n}', requires=("council.epilogue_ceased",)),
             p("{n}The Council never did work out whom it had forgotten to invite to its victory feast. Chadali left before the toasts with a tray of cookies under her arm, and never told them where she went.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and she went on bringing cookies to it, and every session she left a chair empty beside her with a coin standing on its edge on the seat.{/n}", requires=("council.epilogue_convened",)),
             p("{n}The tree she swore came from the top of Axis took in the best corner of the citadel garden, and bore fruit in its second year. The gardener swore the oranges were ordinary. Nobody who ate one believed him.{/n}", requires=(ORANGE_TREE,)),
-            p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED, "chadali.lastcall.called")),
-            p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. Whenever a wager went well, she demanded to know whether that counted towards the debt.{/n}", requires=(LUCK_OWED,), forbids=('chadali.fortunes.loan_returned', "chadali.lastcall.called")),
-            p("{n}She had paid back the borrowed luck all at once, with interest, in the hall, before the end. Afterwards she claimed every winning throw as proof that the interest was still coming in.{/n}", requires=(LUCK_OWED, 'chadali.fortunes.loan_returned'), forbids=("chadali.lastcall.called",)),
+            p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED, 'chadali.fortunes.loan_returned', "chadali.lastcall.luck_returned")),
+            p("{n}She paid back the borrowed luck, with interest, a little at a time, for the rest of the Commander's life. Whenever a wager went well, she demanded to know whether that counted towards the debt.{/n}", requires=(LUCK_OWED,), forbids=('chadali.fortunes.loan_returned', "chadali.lastcall.luck_returned")),
+            p("{n}She had paid back the borrowed luck all at once, with interest, in the hall, before the end. Afterwards she claimed every winning throw as proof that the interest was still coming in.{/n}", requires=(LUCK_OWED, 'chadali.fortunes.loan_returned'), forbids=("chadali.lastcall.luck_returned",)),
         ))],
     # PP6 (Sol INT): a Commander committed before the Council fight gets the page only after her reconciliation.
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "sacrifice", "council.fought", "council.fought_nocta_allied"),
@@ -403,3 +403,15 @@ ROUND2_PARAGRAPHS = [
 SCENES.append(scene(P + "epilogue.company", "", "ChadaliEpilogue", 6, "", [
     nar("page", '{n}Before supper, Chadali came up the road to Drezen with a basket. "I said I would come," she told the Commander. "Do move those reports. The cookies need a table." She brought news of her worshippers and asked after the wounded. Their visits continued without either calling them a romance.{/n}', paragraphs=(p('{n}The needle oath remained in her keeping. She still expected the Commander to take the next threatened extraction in place of somebody they loved.{/n}', requires=(NEEDLE_OWED,)),)),
 ], requires=("trickster.ever", "chadali.present_now"), forbids=(COMMITTED, CLOSED, P + "late_invited", DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"), RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={DECLINED: HALL_SEALED, "council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
+
+
+# endings1: forfeiture owns the coin; no balancing recollection revives it.
+for _sc in SCENES:
+    if not _sc.get("Owner", "").endswith("Epilogue"):
+        continue
+    for _nd in _sc["Nodes"]:
+        for _para in _nd.get("Paragraphs", []):
+            if "coin" in _para["Text"] and any(word in _para["Text"] for word in ("stood", "standing", "edge", "fall")):
+                if "chadali.wagers.coin_lost" not in _para["Forbids"]:
+                    _para["Forbids"].append("chadali.wagers.coin_lost")
+# end endings1

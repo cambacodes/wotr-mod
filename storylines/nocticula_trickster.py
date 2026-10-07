@@ -637,3 +637,14 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+
+# endings1: the paid favour survives the two epilogue-local romantic refusals.
+# These retained terminal exits keep their identity and carry no effects.
+_last_terms = next(sc for sc in SCENES if sc["Id"] == "nocticula.trickster.epilogue.commit")
+for _account_node in _last_terms["Nodes"]:
+    if _account_node["Id"] in ("refused_page", "inn"):
+        _account_node.setdefault("Paragraphs", []).append(p(
+            '{n}Her next sealed note named the favour bought at Threshold: a chair at the Commander\'s right hand when matters of state were heard. The chair was provided. The Lady in Shadow had bought that place with protection; she had not bought a lover. The refusal stood.{/n}',
+            requires=(PAID,)))
+# end endings1

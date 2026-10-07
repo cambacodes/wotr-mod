@@ -258,7 +258,7 @@ internal static class ChadaliTricksterTests
             "The feint is an atrocity the player never chose.");
         // BEL/COX: the committed page agrees with a called Last Call (the coin fell once) and with a loan paid back in the hall.
         var paras = pageNight.Nodes[0].Paragraphs;
-        check(paras.Any(p => p.Requires.Contains("chadali.lastcall.called")) && paras.Where(p => p.Requires.Contains(P + "cost.luck_owed")).Count() == 2 && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "loan_returned")).Forbids.Contains(F + "loan_returned") && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
+        check(paras.Any(p => p.Requires.Contains("chadali.lastcall.luck_returned")) && paras.Where(p => p.Requires.Contains(P + "cost.luck_owed")).Count() == 2 && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "loan_returned")).Forbids.Contains(F + "loan_returned") && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.luck_returned")),
             "The romance pages contradict the Last Call call-in or the repaid loan.");
         // R1:chadali:004: dispatch completes the sitting without personal delivery credit.
         // WalkVia records the chosen answer, rather than inferring it from the final flags.

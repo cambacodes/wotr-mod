@@ -128,7 +128,7 @@ PARTNERS = []
 
 
 def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, page_forbids=(), deal=(), call=None,
-            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None, call_forbids=()):
+            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None, call_forbids=(), outstanding=None, settled=()):
     """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
     route's late_committed key); `commit` stays first."""
     # eng7-f2: both retained coda variants use the same narrative opener.
@@ -141,7 +141,8 @@ def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, 
                          page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None,
                          page_forbid_overrides=dict(page_forbid_overrides or {}),
                          # Engine-q2: keys that also withhold her call-in (Derived, read through callable_key's DerivedForbids).
-                         call_forbids=tuple(call_forbids)))
+                         call_forbids=tuple(call_forbids), outstanding=outstanding,
+                         settled=[list(g) for g in settled]))
 
 
 def call(entry, text, *choices):
@@ -265,7 +266,7 @@ partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at 
     (
         page_p('''She named her favour at last in the second spring after Threshold: not a temple, not a war, not a soul. A chair. The chair at the Commander's right hand at every table {mf|he|she} would ever sit at, and nobody was to ask whose it was. Scholars of the Abyss still argue over which of them got the better bargain. Those who knew the Commander say {mf|he|she} laughed for a full minute before agreeing.''', requires=(NO + "cost.shade_paid",)),
         page_p('''The stalemate held. Twice her agents were found in the Commander's household, a cook who could not cook and a steward who counted the wrong things; twice the Commander sent them home with a joke pinned to their sleeves. The Midnight Isles learned to seat the two of them at opposite ends of every table, and neither ever raised the matter again.''', requires=(NO + "cost.shade_refused",)),
-        page_p('''She has never once been seen to look at the flask. Those who know her say that is how one can tell she is always looking at it.''', requires=(BOTTLED,)),
+        page_p('''She has never once been seen to look at the flask. Those who know her say that is how one can tell she is always looking at it.''', requires=("lastcall.bottled_held",)),
     ), declined=NO + "declined",
     deal=[[NO + "cost.shade_paid"], [NO + "cost.shade_refused"]],
     call=call('''[Call in the Queen's favour] "Your Majesty, you're owed a favour. Dead debtors are terrible payers."''',
@@ -522,7 +523,7 @@ partner("areelu", "areelu", "areelu.committed", "areelu.closed", "The Wager, Set
     (
         page_p('''At the rift the Commander called in our wager, and told me to take notes. I did. They are appended. They are very thorough.''', requires=(called("areelu"),)),
         page_p('''I ceded the Wound. I have not regretted it, which I record here because I promised to regret nothing, and I keep my promises when they are also my conclusions.''', requires=(AE + "cost.wound_ceded",)),
-        page_p('''The flask is mine. I made it. The Commander carries it. I have not tried to take it back, and I would like whoever reads this to understand how much that restraint costs me.''', requires=(BOTTLED,)),
+        page_p('''The flask is mine. I made it. The Commander carries it. I have not tried to take it back, and I would like whoever reads this to understand how much that restraint costs me.''', requires=("lastcall.bottled_held",)),
     ), declined=AE + "declined",
     deal=[[AE + "cost.bet_with_the_witch"], [AE + "wager_struck"]],
     call=call('''[Call in the wager] "Whoever burns at Threshold pays up. Watch closely, Areelu. You'll want notes."''',
@@ -552,7 +553,7 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
         page_p('''At the rift the Commander called in the new moon, and the spirits that had been fed on {mf|his|her} blood all winter came for the rest of what they were owed. Camellia would not let them take it for themselves. She held the bowl and made the cut, one last neat one, exactly where a friend would stand, and the voices in her head went quieter than she had ever heard them. They stayed quiet a month. She hated every day of it, and was delighted when they came back.''', requires=(called("camellia"),)),
         page_p('''The Commander had come to her coffin late, with a sexton's lantern and a purse of gold, after the spirits had had three days alone with her. She never forgot the sound of the coins. For a season she took her supper at the far end of the table, with her knife beside her own plate instead of the Commander's, and watched {mf|him|her} eat the way she read a bad notice. Then one evening the knife was back beside the Commander's plate, which in Camellia's house is how a lady admits that someone has been forgiven.''', any_groups=((CA + "cost.late", CA + "cost.bargain_late"),)),
         page_p('''Two names now stood in the crusade's register of the dead, hers and the Commander's, a few leaves from each other. She had the clerk copy both onto one sheet and framed it over the bed. She said she had always wanted a {mf|husband|wife} nobody could accuse her of murdering.''', requires=(ON_RECORD, "camellia.killed")),   # Q8: only her own recorded death
-        page_p('''She knew about the flask. She asked to hold it only once, and weighed it in her palm the way she weighs a stranger's throat, and gave it back. "Your death, corked," she said. "How very courteous of it, to wait for you."''', requires=(BOTTLED,)),
+        page_p('''She knew about the flask. She asked to hold it only once, and weighed it in her palm the way she weighs a stranger's throat, and gave it back. "Your death, corked," she said. "How very courteous of it, to wait for you."''', requires=("lastcall.bottled_held",)),
     ), declined=CA + "declined",
     deal=[[CA + "cost.blood_bargain"], [CA + "cost.spirits_owed"]],
     call=call('''[Call in the new moon] "Camellia's spirits, you've had my blood every dark of the moon. Come and collect the rest, from the living."''',
@@ -1101,3 +1102,240 @@ def call_in_scenes(factory):
         c("Continue", flags=(called("kiana"), resolved("kiana"), KI_SETTLED, KI_FREED))))
     return out
 # end eng8-q8g
+
+
+# endings1: authored survival/obligation distinctions. These read earned events;
+# no new return device, romance requirement or price is introduced.
+BRIDGE = "iomedae.trickster.buried_alive"
+HELD = "lastcall.bottled_held"
+RECOVERED = "lastcall.recovered_corked"
+PUBLIC = "lastcall.public_return"
+CH_LUCK_DUE = "chadali.lastcall.luck_due"
+CH_LUCK_PAID = "chadali.lastcall.luck_returned"
+SE_LIST_DUE = "seelah.lastcall.list_due"
+SE_LIST_BACK = "seelah.lastcall.list_returned"
+KO_DUE = "konomi.lastcall.favour_due"
+KO_ACCEPTED = "konomi.lastcall.terms_accepted"
+KO_COUNTER = "konomi.lastcall.counteroffer"
+KO_REFUSED = "konomi.lastcall.terms_refused"
+DV_UNSPOKEN = "devarra.lastcall.left_unspoken"
+NO_DUE = "nocticula.lastcall.favour_due"
+
+# The existing H2 paragraph positions stay fixed. The flask is never opened.
+# Bridge recollections happen privately after the concealed crossing.
+RECOVERY = {
+    "anevia": ("When the Commander was brought back to Drezen, Anevia made {mf|him|her} sit down and eat. The flask stayed corked beside the plate; she told the priests to bless someone who needed it.", "Behind a bolted kitchen door, Anevia put bread into the returned Commander's hands. She checked the empty flask, then pushed it aside. 'Eat. You can explain after.'"),
+    "irabeth": ("When the Commander returned to Drezen with the flask still corked, Irabeth saluted {mf|him|her}, then the flask, then {mf|him|her} again. She declined to explain the order of precedence.", "Irabeth closed her door before saluting the returned Commander. Her hand shook. She gripped the empty flask until it stopped, then gave it back without calling the watch."),
+    "arueshalae": ("When the Commander was brought back to Drezen, Arueshalae took the first pulse through the cuff. The flask remained corked. She held the wrist long after she had counted.", "Arueshalae took the stranger's wrist inside the shuttered room. She counted the pulse twice, kept holding it, and let the empty flask lie. She told no one whom she had welcomed."),
+    "delamere": ("When the Commander returned to Drezen, Delamere waited with an arrow on the string. She lowered the bow only after she had seen {mf|him|her} breathe. Nobody touched the cork.", "Delamere met the returned Commander away from the roads, with an arrow on the string. She lowered it, touched the warm throat and said, 'Good.' The empty flask interested her less."),
+    "nidalynn": ("When the Commander was brought back to Drezen, Nidalynn arrived with a loaf under her arm. Somebody would be hungry. She was right. The flask lay corked beside the bread.", "Nidalynn left a loaf inside the kiln door after dark. When the stranger came she pulled {mf|him|her} inside, barred the door and broke the bread. No one outside heard the name she used."),
+    "jannah": ("When the Commander returned to Drezen with the flask still corked, Jannah was first through the door with her blade raised in salute. She lowered it to take {mf|his|her} hand.", "Jannah met the returned Commander in the empty practice yard after dark. She drew {mf|him|her} into the shadow of the wall and held on. No salute gave the stranger away."),
+    "nenio": ("When the Commander was brought back to Drezen, Nenio timed the examination. She inspected the intact cork and wrote down that nobody had opened it. She kept the pulse count to herself.", "Nenio examined the empty flask behind closed shutters, then counted the stranger's pulse. She locked both observations away. Asked for a name, she said she had forgotten it."),
+    "terendelev": ("When the Commander was brought back to Drezen, Terendelev was ready with clean linen. She changed the dressing before anybody could speak. The flask stayed corked on the bedside table.", "Terendelev brought clean linen to the stranger's locked room after her watch. She changed the dressing, then held the living hand beneath it. She carried no news back to the turret."),
+    "horzalah": ("When the Commander returned to Drezen, Horzalah was already inside the room. She walked round {mf|him|her}, checking what was still attached, then put the Commander's hand on her throat. The flask stayed corked.", "Horzalah found the stranger without asking a sentry. Behind the locked door she checked what was still attached, then pressed the Commander's hand to her throat. The Guild received no report of that visit."),
+    "eliandra": ("When Eliandra next saw the returned Commander, her question was already chosen. It was, she admitted, not a very good one. She had been saving the good ones. The flask remained corked.", "When Eliandra next met the stranger alone, she asked the question she had saved. Halfway through it she caught {mf|his|her} hand. She kept the answer, and the name, out of her letters."),
+    "galfrey": ("When Galfrey next saw the returned Commander with the flask still corked, she said nothing. She took {mf|his|her} hand and did not give it back for the evening.", "Galfrey admitted the stranger alone. She set the empty flask aside, took the Commander's hand and held it all evening. Her door stayed closed; no herald was summoned."),
+    "melazmera": ("When the Commander returned to Drezen, Melazmera reached the windowsill first, wearing her woman's shape. She counted the fingers twice, then the teeth. The flask was still corked when she demanded to count the ribs.", "Melazmera found the stranger's window after dark, wearing her woman's shape. She counted the fingers, then the teeth, and pulled the shutters closed to inspect the rest. The empty flask could wait."),
+    "yaniel": ("When the Commander returned to Drezen, Yaniel entered in her wall cloak, lamp in hand. She examined {mf|his|her} wrist, put the iron back in the palm and closed the fingers over it. The flask stayed corked.", "Yaniel brought her lamp to the stranger's closed room. She examined the wrist, put the iron back in the Commander's palm and closed the fingers over it. She returned to the wall without an announcement."),
+    "wenduag": ("When the Commander returned to Drezen, Wenduag put her face against {mf|his|her} neck and breathed in, long and deep, checking the living flesh. 'Still good,' she said. She left the cork alone.", "Wenduag found the stranger in the dark and buried her face against the Commander's neck. She breathed in, checked the living flesh, and laughed softly. She knew how to keep a hunter's return quiet."),
+    "mielarah": ("When Mielarah next saw the returned Commander, she crossed the deck in four strides and took the place nearest {mf|his|her} elbow. The flask was still corked. She ordered the crew back to work.", "Mielarah brought the stranger below deck before asking a single question. The empty flask lay between them. She took the place nearest {mf|his|her} elbow, and kept the name out of the log."),
+    "devarra": ("When the Commander returned to Drezen, Devarra landed on the citadel roof before the garrison and waited until {mf|he|she} came up, the flask still corked. The north watch stopped taking wagers on her.", "Devarra waited above the ridge until the stranger came alone. She sniffed the living body, knocked the empty flask aside with a claw and demanded to hear everything. Drezen saw no landing."),
+}
+for _rel, (_public, _hidden) in RECOVERY.items():
+    _part = _history_partners[_rel]
+    _old = next(para for para in _part["paragraphs"] if "When the flask was opened" in para["Text"])
+    _old.update(Text="{n}" + _public + "{/n}", Requires=[RECOVERED])
+    if _rel in ("anevia", "wenduag"):
+        # Keep the appended stance paragraphs at their registered positions. This
+        # private meeting is also true after the publicly witnessed H2 recovery.
+        _old.update(Text="{n}" + _hidden.replace("the empty flask", "the corked flask") + "{/n}", Requires=[H2])
+    else:
+        _part["paragraphs"] += (page_p(_hidden, requires=(H2, BRIDGE)),)
+
+_ch = _history_partners["chadali"]
+_ch["opener"] = '{n}Chadali came after the news from Threshold with a basket and an argument. The crusade had stopped marching; her worshippers still needed her. She made the Commander move the reports before setting down supper.{/n}'
+_ch["paragraphs"][0].update(Text='{n}At the rift the Commander called for the borrowed luck. Chadali sent it back in one fierce rush. Afterwards she demanded to hear every detail of what it had bought.{/n}', Requires=[CH_LUCK_PAID])
+_ch["paragraphs"][1]["Text"] = '{n}The needle oath remained unpaid. Chadali meant a real extraction from someone the Commander loved, with the Commander taking their place. A fever and a bandage would not do. She kept the promise with her letters.{/n}'
+_ch["paragraphs"] += (
+    page_p('The coin she had collected stayed flat. She kept it in her basket and slapped away any finger that tried to stand it up again.', requires=("chadali.wagers.coin_lost",)),
+    page_p('The coin travelled home on its saucer before Threshold. Chadali asked about it on every visit, even when she had come to argue about the crusade.', requires=("chadali.sessions.coin_taken_home",), forbids=("chadali.wagers.coin_lost",)),
+    page_p('She had returned the loan before the march to Threshold. Calling last orders did not make her pay it twice.', requires=("chadali.fortunes.loan_returned",), forbids=(CH_LUCK_PAID,)),
+)
+_ch.update(outstanding=[[CH_LUCK_DUE], [CH + "cost.needle_owed"]], settled=[["chadali.lastcall.account_paid"]])
+_ch["ledger_text"] = "Chadali borrowed luck on the day of the coin. A returned loan stays returned. The needle oath is a separate promise: the next real extraction, in my place."
+_ch["call"].update(entry='[Call to Chadali] "Chadali. Our accounts, before the end."', text='{n}You remember the coin and the promise made before the Council. At the rift you name what is still owing.{/n}')
+
+_se = _history_partners["seelah"]
+_se.update(outstanding=[[SE_LIST_DUE]], settled=[[SE + "death_returned"], [SE + "cost.robbed_back"], [SE + "list_settled"], [SE_LIST_BACK]])
+_se["paragraphs"][0].update(Text='{n}The runner brought Seelah her list from the Threshold lines. She signed for it, then added, "Took you long enough." She kept the paper. The Commander kept her receipt.{/n}', Requires=[SE_LIST_BACK], Forbids=[])
+_se["paragraphs"][1].update(Text='{n}The list was already Seelah\'s again before Threshold. Last orders did not put it back in the Commander\'s coat.{/n}', Requires=[], Forbids=[], AnyGroups=[[SE + "death_returned", SE + "cost.robbed_back", SE + "list_settled"]])
+_se["paragraphs"][3].update(Text='{n}Seelah inspected the recovered flask and laughed at its intact cork. "Even death couldn\'t pick your pocket." She handed it back.{/n}', Requires=[RECOVERED])
+_se["paragraphs"][2]["Forbids"].append(BRIDGE)
+_se["paragraphs"] += (page_p('Seelah went openly to the stranger\'s door, but used no title there. The Commander stayed dead in the crusade\'s books. She kept that secret as stubbornly as she kept her own name.', requires=(BRIDGE,)),)
+_se["call"].update(entry='[Settle Seelah\'s list] "Seelah, your list. Before anyone writes my name among the dead."', text='{n}Her folded list is still in your coat. Kenabres altars, missing stones, names she meant to remember. A runner waits behind the siege line. You take out the paper.{/n}')
+
+_ko = _history_partners["konomi"]
+_ko.update(outstanding=[[KO_DUE]], settled=[[K + "debt_paid"], [KO_ACCEPTED]])
+_ko["ledger_text"] = "The letter endorsing Nerosyan's council and the prepaid consultation have receipts of their own. Only a favour left unnamed remains on account."
+_ko["paragraphs"][0].update(Text='{n}Konomi kept the Commander\'s acceptance of her political terms under a second seal. A seat for Nerosyan, her name on its invitation. She checked every invitation herself.{/n}', Requires=[KO_ACCEPTED])
+_ko["paragraphs"][2].update(Text='{n}The consultation fee had been paid before she gave her advice. Konomi kept that receipt separate from every favour and endorsement. She did not charge for the same consultation twice.{/n}', Requires=[K + "fee_paid"])
+_ko["paragraphs"] += (
+    page_p('The Commander offered a single audience after the war instead of a permanent seat. Konomi took the counteroffer home to Nerosyan. No agreement came back with her first dispatch; the favour remained outstanding.', requires=(KO_COUNTER,)),
+    page_p('The Commander refused her permanent seat. Konomi folded the refusal into her account. She had not forgiven the favour, and she would name other terms when it suited her.', requires=(KO_REFUSED,)),
+)
+_ko["call"].update(entry='[Hear Konomi\'s unpaid terms] "Lady Konomi. That favour still on your books."', text='{n}Konomi\'s sealed dispatch reached the siege camp before the assault. You open it beside the rift. "A seat for Nerosyan at every table where you conduct affairs of state. My name on the invitation. Your seal beneath these terms, Commander."{/n}')
+
+_dv = _history_partners["devarra"]
+_dv["call"]["entry"] = '[Read the grey dragon\'s bill] "The smallest egg. Still on account."'
+_dv["call"]["text"] = '{n}Devarra\'s bill names the egg you took and a life she has not yet chosen. Reading it brings no dragon to Threshold. You decide whether to call her name or leave the demand unanswered.{/n}'
+_dv["call"]["choices"][1] = ('[Leave the demand unanswered. The bill remains outstanding.]', None, (), ())
+_dv["paragraphs"][0]["Text"] = '{n}The grey dragon still held her bill for the smallest egg. Calling her name at the rift had bought no agreement. When she named a life in payment, the Commander still had to answer her.{/n}'
+
+_no = _history_partners["nocticula"]
+_no.update(outstanding=[[NO_DUE]])
+_no["call"]["entry"] = '[Read the Lady in Shadow\'s account] "One favour, still owing."'
+_no["call"]["text"] = '{n}The Lady in Shadow\'s claim survives a refused invitation. Her mark lies on the account in your pocket; no promise of a night together appears beside it. You read the debt aloud.{/n}'
+
+_hz = _history_partners["horzalah"]
+_hz["outstanding"] = [[HZ + "cost.ear", HZ + "primed", HZ + "returned"]]
+_hz["opener"] = '{n}Horzalah kept the Assassins\' Guild through the last night of the war. She barred her door and left the contracts unread until morning. Her masters heard nothing through it, and none dared knock.{/n}'
+_hz["ledger_title"] = "Horzalah: the paid ear"
+_hz["ledger_text"] = "Horzalah took my ear. No priest is to touch the wound: the Assassins Guild is to believe her story. The ear paid for entry to that bargain. Her report from the Guild records whether she completed it."
+_hz["paragraphs"][2]["Requires"].extend((HZ + "primed", HZ + "returned"))
+
+_hzp = _history_partners["hepzamirah"]
+_hzp["paragraphs"][0].update(Text='{n}The Apprentice had left with a vial of the Commander\'s blood. Mutasafen had his payment, and a sample to breed from. Hepzamirah meant to find his vats; she did not pretend the debt had cost her a drop.{/n}', Requires=[H + "cost.vial_paid"])
+_hzp["paragraphs"] += (
+    page_p('The laboratory had bought her flesh. The vial demanded at the gate was another price; until the courier was answered, Mutasafen\'s demand remained open.', requires=(H + "cost.lab_funded",), forbids=(H + "courier_seen",)),
+    page_p('Mutasafen was still waiting for the blood promised on delivery. Hepzamirah called the delay useful and kept a knife for his messenger.', requires=(H + "cost.blood_sample",), forbids=(H + "courier_seen",)),
+    page_p('The threat had bought a body and Mutasafen\'s grudge. Nobody had agreed on a payment. Hepzamirah preferred the grudge.', requires=(H + "cost.mutasafen_grudge",), forbids=(H + "courier_seen",)),
+    page_p('The Apprentice carried a vial of wine to Mutasafen. He detected the forgery and demanded repayment. Hepzamirah burned his letters; the demand survived them.', requires=(H + "cost.vial_forged",)),
+)
+
+_so = _history_partners["soana"]
+_so["paragraphs"][1].update(Text='{n}Soana had already taken her leash back. Last orders did not send the spirits to collect it again. She kept the knot in her own hands, and kept working at the graves.{/n}', Requires=[S + "cost.leash_reclaimed"])
+_so["call"]["entry"] = '[Name the Wintersun account] "Soana. The blood, the guardian, the knot. What still binds?"'
+_so["call"]["text"] = '{n}You name the price actually paid at Wintersun. The blood is gone; the guardian cannot be paid twice. A leash reclaimed is hers again. Only a strand still tied to you can pull at your wrist.{/n}'
+
+_ey = _history_partners["elyanka"]
+_ey["paragraphs"][4].update(Text='{n}The Commander had died at Threshold. Elyanka presented her bequest when the living body returned. She was refused possession: there was no corpse to hand over. She contested it, furious at having a death notice and breathing collateral. The cork did not erase her claim.{/n}', Requires=[H2, RECOVERED])
+_ey["paragraphs"][5]["Requires"].append(HELD)
+_ey["paragraphs"][5]["Text"] = '{n}The Commander walked away from Threshold carrying a bottled death. No death had yet made the bequest payable. Elyanka weighed the flask through the coat. "You insolent sack of meat," she said. "I can wait."{/n}'
+_ey["paragraphs"][6]["Text"] = '{n}The Commander\'s death notice reached Elyanka. She demanded the body and found the coffin empty. She refused to withdraw the bequest: someone had kept her collateral from her, and she intended to learn who.{/n}'
+_ey["paragraphs"] += (page_p('In private Elyanka inspected the returned body and the empty flask. The death remained in Pharasma\'s book. "A death proved, and no corpse delivered," she said. She kept her claim contested; she did not report the stranger to Drezen.', requires=(H2, BRIDGE)),)
+
+_io = _history_partners["iomedae"]
+_io["paragraphs"][0]["Requires"] = [BRIDGE, H2]
+_io["paragraphs"][2]["Forbids"].append(BRIDGE)
+_io["paragraphs"][3]["Forbids"].append(BRIDGE)
+_io["paragraphs"][5]["Text"] = 'She came afterwards as she had promised, in plain steel, when her war allowed it. The death in Pharasma\'s book and the stranger\'s concealed life remained the terms of the crossing. She never claimed that the other creditors had been paid.'
+_io["paragraphs"][5]["Text"] = '{n}' + _io["paragraphs"][5]["Text"] + '{/n}'
+
+# Creditors receive history-specific accounts, not invented second payments.
+_history_debts["mutasafen"]["page_called"] = "Mutasafen's account survived Threshold. Delivered blood remained on his bench; funding had bought the body, while a forged vial or a murdered courier left him demanding another payment. Hepzamirah did not call that paid in full."
+_history_debts["wintersun"]["page_called"] = "The Wintersun account was read against the old rites. Given blood and a dead guardian could not be collected again. A reclaimed leash stayed Soana's; a second strand still bound the life pledged to it. Last orders altered none of those terms."
+_history_debts["baphomet"]["page_called"] = "Baphomet's seal still marked the debtor. The returned Commander was breathing; a death notice did not deliver a body to the Lord of the Minotaurs. His claim remained disputed. No one in Drezen mistook his silence for forgiveness."
+_history_debts["whispering_way"]["page_called"] = "The Whispering Way demanded the body named in the death notice. Its collector was shown a living Commander and refused possession. He returned to Caliphas with the bequest still disputed."
+_history_debts["socoth"]["page_called"] = "Socothbenoth still held the listening right or the story promised him. Calling his account at Threshold had named the obligation; it had not supplied the conversation. His next demand arrived scented with perfume."
+_history_debts["ramisa"]["page_called"] = "Ramisa kept the seat or the bill sold in her market. The Commander had called her name at Threshold; no new dedication or flask had been promised with it. She kept asking what the performance was worth."
+_history_debts["herrax"]["page_called"] = "Herrax still held the favour on account. The call at Threshold gave her a living debtor to dun. It supplied no payment, and she let the interest stand."
+_history_debts["nocticula_summons"]["page_called"] = "The Lady in Shadow retained the summons or favour promised for Arueshalae. Naming it at Threshold did not spend it. Her agents kept the terms; the Commander waited for the demand."
+
+def settlements(record):
+    """Specific enacted receipts; called/resolved/active alone never discharge."""
+    if "rel" in record:
+        return record.get("settled", [])
+    return {
+        "abadar": [[called("arsinoe"), AR + "cost.lien"]],
+        "sunhammer": [[KI_SETTLED]],
+        "mutasafen": [[H + "cost.vial_paid"]],
+        "wintersun": [[S + "cost.leash_reclaimed"]],
+    }.get(record["key"], [])
+
+_survival_derived = derived
+def derived():
+    return {**_survival_derived(),
+        CH_LUCK_DUE: [[CH + "cost.luck_lent"], [CH + "cost.luck_owed"]],
+        SE_LIST_DUE: [[SE + "cost.holds_her_death"], [SE + "cost.keeps_it"]],
+        KO_DUE: [[K + "favour_owed"]],
+        NO_DUE: [[NO + "cost.shade_paid", "noct.defeated_not_dead"]],
+        "chadali.lastcall.account_paid": [["chadali.fortunes.loan_returned"]],
+    }
+
+def derived_forbids():
+    return {
+        HELD: [BRIDGE], RECOVERED: [BRIDGE], PUBLIC: [BRIDGE],
+        CH_LUCK_DUE: ["chadali.fortunes.loan_returned", "chadali.wagers.luck_lost"],
+        SE_LIST_DUE: [SE + "death_returned", SE + "cost.robbed_back", SE + "list_settled", SE_LIST_BACK],
+        KO_DUE: [K + "debt_paid", KO_ACCEPTED],
+        "chadali.lastcall.account_paid": [CH + "cost.needle_owed"],
+    }
+
+_accounts_call_in_scenes = call_in_scenes
+def call_in_scenes(factory):
+    out = _accounts_call_in_scenes(factory)
+    by = {s["Id"]: s for s in out}
+    host = by["chadali.lastcall.call"]
+    old = host["Nodes"][0]["Choices"][0]
+    old.update(Next="luck", Requires=[CH_LUCK_DUE])
+    host["Nodes"][0]["Choices"].append(c('[Keep the needle oath on account.]', flags=(called("chadali"), resolved("chadali")), requires=(CH + "cost.needle_owed",), forbids=(CH_LUCK_DUE,)))
+    host["Nodes"].append(n("luck", "Narrator", '{n}The luck she borrowed comes back in a rush that makes you stagger. Her voice follows it: "All of it! And you had better come back to tell me what you did with it!"{/n}', c("Continue", flags=(called("chadali"), resolved("chadali"), CH_LUCK_PAID, "chadali.fortunes.loan_returned"))))
+    host = by["seelah.lastcall.call"]
+    host["Nodes"][0]["Choices"][0]["Next"] = "list"
+    host["Nodes"].append(n("list", "Narrator", '{n}The runner takes Seelah\'s folded list through the siege lines. The runner returns with her signed receipt while you wait beside the rift. Beneath her name she has written, "Mine. Keep your hands off it." The list stays with her.{/n}', c("Continue", flags=(called("seelah"), resolved("seelah"), SE_LIST_BACK, SE + "death_returned", SE + "list_settled"))))
+    host = by["konomi.lastcall.call"]
+    host["Nodes"][0]["Choices"][0]["Next"] = "terms"
+    host["Nodes"].append(n("terms", "Narrator", '{n}The demand is permanent. The dispatch has room beneath her seal for your answer; her courier waits at the camp.{/n}',
+        c('[Accept the seat for Nerosyan. Seal her terms.]', "accepted"),
+        c('[Counteroffer] "One audience after the war. No permanent seat."', flags=(called("konomi"), resolved("konomi"), KO_COUNTER)),
+        c('[Refuse] "No permanent place for Nerosyan."', flags=(called("konomi"), resolved("konomi"), KO_REFUSED))))
+    host["Nodes"].append(n("accepted", "Narrator", '{n}Your seal fixes Nerosyan\'s seat in the terms she offered. The courier takes your acceptance back to Konomi. That obligation survives the war; she has the document to enforce it.{/n}', c("Continue", flags=(called("konomi"), resolved("konomi"), KO_ACCEPTED,))))
+    host = by["devarra.lastcall.call"]
+    first = host["Nodes"][0]["Choices"][0]
+    first["Requires"].append("devarra.lastcall.route_open")
+    host["Nodes"][0]["Choices"][1]["Set"].append(DV_UNSPOKEN)
+    return out
+# end endings1
+
+
+# endings1: preserve the legacy callable registry. Its historical cost arms
+# remain public contracts; account_due is the current obligation reader.
+# Documentary dispositions use shared IDs and stage no absent participant.
+def account_due(rel):
+    return rel + ".lastcall.account_due"
+
+ACCOUNT_ROUTES = ("chadali", "seelah", "konomi", "horzalah", "devarra", "nocticula")
+_legacy_call_guards = call_guards
+def call_guards():
+    out = _legacy_call_guards()
+    for rel in ACCOUNT_ROUTES:
+        part = _history_partners[rel]
+        groups = part["outstanding"] or part["deal"]
+        if rel not in ("devarra", "nocticula"):
+            groups = [[callable_key(rel), *g] for g in groups]
+        out[account_due(rel)] = (groups, [], [resolved(rel)])
+    return out
+
+def open_debts():
+    return [account_due(part["rel"]) if part["rel"] in ACCOUNT_ROUTES else callable_key(part["rel"])
+            for part in PARTNERS if part["call"]]
+
+_live_account_calls = call_in_scenes
+def call_in_scenes(factory):
+    out = _live_account_calls(factory)
+    for host in out:
+        rel = host["Id"].removesuffix(".lastcall.call")
+        if rel in ACCOUNT_ROUTES:
+            host["Requires"].append(account_due(rel))
+    out.append(factory("trickster.lastcall.account.devarra", "The Grey Bill",
+        '[Leave the grey dragon\'s bill unanswered.]', [
+            n("call", "Narrator", '{n}The bill for the smallest egg lies with the other demands in your pack. You leave it unanswered. No dragon is summoned, no life is promised, and the creditor\'s claim is not released.{/n}',
+                c("Continue", flags=(resolved("devarra"), DV_UNSPOKEN)))],
+        requires=(account_due("devarra"),), forbids=(resolved("devarra"),)))
+    out.append(factory("trickster.lastcall.account.nocticula", "The Shadow's Account",
+        '[Read the paid favour into the account.]', [
+            n("call", "Narrator", '{n}The Lady in Shadow\'s ledger still lists the price you pledged for protection: one favour, hers to name. A refused invitation did not cancel it. You mark it beside the other claims that will survive Threshold. No answer from her is needed to keep that entry.{/n}',
+                c("Continue", flags=(called("nocticula"), resolved("nocticula"), PILLAR)))],
+        requires=(account_due("nocticula"),), forbids=(resolved("nocticula"),)))
+    return out
+# end endings1 legacy contracts
