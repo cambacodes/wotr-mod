@@ -100,6 +100,20 @@ namespace RRT.TestHarness
         public static readonly (string Type, string Member, string Kind, string Shape)[] PresenceSpikeExpectations = SpikeExpectations
             .Concat(new[] { ("Tirabade.GuestPresence", "get_LastQuiet", "instance-method()", "CopyQuiet") }).ToArray();
 
+        public static readonly (string Type, string Member, string Kind, string Shape)[] SystemScenarioExpectations =
+        {
+            ("Tirabade.Main", "Update", "static-method()", "Void"),
+            ("Tirabade.Main", "pending", "static-field", "Scene"),
+            ("Tirabade.Main", "OpenView", "static-method(String,String)", "Boolean"),
+            ("Tirabade.Rules", "Complete", "static-method(Story,Snapshot)", "Void"),
+            ("Tirabade.Rules", "TableEntries", "static-method(Story,Snapshot)", "List<Scene>"),
+            ("Tirabade.Rules", "BookVisible", "static-method(BookSpec,Snapshot)", "List<BookEntry>"),
+            ("Tirabade.Rules", "RestFinished", "static-method(Snapshot,Boolean)", "Void"),
+            ("Tirabade.Snapshot", "RestSpent", "field", "Dictionary<String,Int32>"),
+            ("Tirabade.Story", "Books", "field", "Dictionary<String,BookSpec>"),
+            ("Tirabade.BookEntry", "Id", "field", "String"),
+        };
+
         public static string Shape(Type t)
         {
             if (t.IsArray) return Shape(t.GetElementType()!) + "[]";

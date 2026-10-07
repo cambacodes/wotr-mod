@@ -118,6 +118,13 @@ harness/
 
 ## Quick start
 
+The milestone systems use `-SystemCases harness/system-scenarios.json -NoRoundTrip`.
+See [system coverage and local-save scripts](../docs/HARNESS-SYSTEM-COVERAGE.md) for the Table,
+household W4/W5, Last Call, partner stance and ix-a/ix-b inventory, fixture boundaries and live debts.
+This mode uses exact authored choice identities and records coverage under `Saves[*].Systems`.
+When building SelfTest outside the checkout, pass its three arguments explicitly:
+`RRT.TestHarness.SelfTest.exe <built-RRT-DLL> <GameDir> <repo-root>`.
+
 ```powershell
 # 1. Build (0 errors expected). RRT itself is built by build.ps1 into src/bin/Release/net48.
 & "$env:LOCALAPPDATA\RanRomanceTools\dotnet\dotnet.exe" build harness/RRT.TestHarness.csproj -c Release

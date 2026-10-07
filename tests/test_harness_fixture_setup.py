@@ -13,7 +13,7 @@ class HarnessFixtureSetupTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="rrt-f7-harness-") as temp:
             temp = Path(temp)
             project = temp / "Fixture.csproj"
-            sources = ("HarnessPlan.cs", "PresenceSpikeModel.cs", "ResidenceSpikeModel.cs", "WalkableProbe.cs", "ProductionPresenceProbe.cs")
+            sources = ("HarnessPlan.cs", "PresenceSpikeModel.cs", "ResidenceSpikeModel.cs", "WalkableProbe.cs", "SystemScenarios.cs", "ProductionPresenceProbe.cs")
             # Compile only the policy half of the runtime probe, without Unity/game types.
             probe = (ROOT / "harness/src/ProductionPresenceProbe.cs").read_text(encoding="utf-8").split("    internal sealed partial class HarnessRunner")[0]
             probe = "\n".join(line for line in probe.splitlines() if not line.startswith("using Kingmaker") and line != "using UnityEngine;") + "\n}\n"

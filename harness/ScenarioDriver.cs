@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Diagnostics;
 using Kingmaker;
 using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
@@ -14,6 +15,116 @@ namespace RRT.TestHarness
 {
     internal sealed partial class HarnessRunner
     {
+        IEnumerator SystemScenarios(SaveReport save, string prefix)
+        {
+            var cases = SystemCases.Parse(plan.SystemCasesJson!).Cases.Where(c => (c.SaveChapter ?? c.Chapter) == save.State!.Chapter).ToList();
+            using (NativeEpilogueInventoryProbe.PreventSaves())
+            {
+                foreach (var scenario in cases)
+                {
+                    var coverage = new SystemCoverage { Scenario = scenario.Id, System = scenario.System,
+                        Evidence = plan.Force ? "synthetic chapter/flags; real area/contacts/resources; earning unproved" : "loaded save history" };
+                    save.Systems.Add(coverage);
+                    capture.Context = prefix + "system:" + scenario.Id;
+                    var error = new Box<string?>(); var ms = new Box<double>(); var idle = new Box<string?>();
+                    yield return LoadSave(save.ResolvedPath, error, ms, idle);
+                    if (error.Value != null || idle.Value != null)
+                    { coverage.Result = "load-failed"; coverage.Findings.Add(error.Value ?? idle.Value!); TryWrite(); continue; }
+                    if (plan.Force && scenario.FixtureFlags == null)
+                    { coverage.Result = "missing-fixture"; coverage.Findings.Add("Integration must supply the scene's fixture contract"); TryWrite(); continue; }
+                    using (var probe = new SystemScenarioProbe(rrt!, plan.Force ? scenario.FixtureFlags : null, scenario.Chapter))
+                        yield return new Guarded(DriveSystem(scenario, coverage, probe, save), ex => {
+                            coverage.Result = "exception"; coverage.Findings.Add(ex.ToString()); TryStopDialog();
+                        });
+                    coverage.Passed = coverage.Result == "completed" && coverage.Findings.Count == 0;
+                    TryStopDialog(); TryWrite();
+                }
+                // All effects and queued deliveries belong to a disposable load, including on an exception.
+                var restore = new Box<string?>(); var restoreMs = new Box<double>(); var restoreIdle = new Box<string?>();
+                yield return LoadSave(save.ResolvedPath, restore, restoreMs, restoreIdle);
+                if (restore.Value != null || restoreIdle.Value != null)
+                    save.Systems.Add(new SystemCoverage { Scenario = "restore", Result = "load-failed",
+                        Findings = new List<string> { restore.Value ?? restoreIdle.Value! } });
+            }
+        }
+
+        IEnumerator DriveSystem(SystemScenario scenario, SystemCoverage coverage, SystemScenarioProbe probe, SaveReport save)
+        {
+            var bridge = rrt!;
+            foreach (var step in scenario.Steps)
+            {
+                var scene = bridge.Scenes.Cast<object>().SingleOrDefault(s => RrtBridge.SceneId(s) == step.Scene);
+                if (scene == null) { coverage.Findings.Add("Missing scene: " + step.Scene); break; }
+                var state = SystemScenarioProbe.Control(bridge, bridge.State(), step);
+                bool available = bridge.Available(scene, state);
+                coverage.AvailabilityChecked.Add(step.Scene + ": " + available + "; remove=" + string.Join(",", step.Remove)
+                    + "; add=" + string.Join(",", step.Add) + "; spent=" + JsonConvert.SerializeObject(step.RestSpent));
+                var table = SystemScenarioProbe.TableEntries(bridge, state);
+                if (available != step.Available || step.Table && table.Contains(step.Scene) != step.Available)
+                { coverage.Findings.Add("Availability/Table assertion failed: " + step.Scene); break; }
+                var ledger = SystemScenarioProbe.LedgerEntries(bridge, state);
+                foreach (var entry in step.LedgerEntries)
+                    if (!ledger.Contains(entry)) coverage.Findings.Add("Ledger entry hidden: " + entry);
+                    else coverage.LedgerTouched.Add(entry);
+                foreach (var entry in step.HiddenLedgerEntries)
+                    if (ledger.Contains(entry)) coverage.Findings.Add("Ledger entry leaked: " + entry);
+                if (!step.Available || step.ProbeOnly) continue; // Controls assert rules on a copy; never fabricate live history.
+                if (step.Remove.Count > 0 || step.Add.Count > 0 || step.RestSpent.Count > 0)
+                { coverage.Findings.Add("Positive walks cannot use transient control mutations"); break; }
+                if (!bridge.Available(scene, bridge.State())) { coverage.Findings.Add("Live step became hidden: " + step.Scene); break; }
+                var run = new SceneRun { Scene = step.Scene, Relationship = RrtBridge.SceneRelationship(scene),
+                    AvailableAtStart = true, Forced = plan.Force, Strategy = "script:" + scenario.Id };
+                save.Runs.Add(run);
+                var watch = Stopwatch.StartNew();
+                var started = bridge.StartedFlag(run.Relationship);
+                if (started != null && !RrtBridge.SceneForbids(scene).Contains(started)) bridge.Set(started);
+                var before = RrtBridge.FlagSet(bridge.State());
+                var dc = Game.Instance.DialogController;
+                var ok = new Box<bool>();
+                int mark = capture.Mark();
+                if (step.Table)
+                {
+                    table = SystemScenarioProbe.TableEntries(bridge, bridge.State());
+                    int target = table.IndexOf(step.Scene);
+                    if (target < 0 || !probe.OpenTable()) { coverage.Findings.Add("Table did not open"); break; }
+                    for (int page = 0; page <= target / 6; page++)
+                    {
+                        yield return WaitFor(() => dc.CurrentCue != null && !IsCuePlayScheduled(dc) && dc.Answers.Any(), plan.Timeouts.StepSeconds, ok);
+                        if (!ok.Value) break;
+                        yield return WaitBound(dc);
+                        string name = page < target / 6 ? "RRT_answer.view.table.more" : "RRT_answer.view.table.slot." + target % 6;
+                        var answer = dc.Answers.SingleOrDefault(a => a.name == name);
+                        if (answer == null) { coverage.Findings.Add("Table answer hidden: " + name); break; }
+                        dc.SelectAnswer(answer); yield return null;
+                    }
+                }
+                else if (bridge.Dialogs[step.Scene] is Kingmaker.DialogSystem.Blueprints.BlueprintDialog dialog)
+                    dc.StartDialogWithoutTarget(dialog, null);
+                else { coverage.Findings.Add("Scene dialog missing: " + step.Scene); break; }
+                yield return WaitFor(() => dc.CurrentCue != null && ShotBelongs(dc.CurrentCue!.name, step.Scene), 10, ok);
+                if (!ok.Value) { run.Result = "not-started"; coverage.Findings.Add("Scripted scene did not start: " + step.Scene); break; }
+                coverage.ScenesTouched.Add(step.Scene);
+                save.ScenesDriven++;
+                yield return Walk(dc.Dialog, true, null, null, run, new List<int>(), step.Answers);
+                yield return Settle(run, before, Ending(scene));
+                run.Exceptions = capture.Since(mark); run.Passed = RunPassed(run);
+                run.Ms = watch.Elapsed.TotalMilliseconds;
+                save.ChoicesTaken += run.Choices.Count;
+                coverage.ChoicesTouched.AddRange(run.Choices.Select(c => c.StoryChoice ?? c.Answer));
+                var after = bridge.State();
+                foreach (var flag in step.ExpectFlags.Where(f => !RrtBridge.FlagSet(after).Contains(f)))
+                    coverage.Findings.Add("Expected effect absent: " + flag);
+                var spent = (Dictionary<string, int>)RrtBridge.Get(after, "RestSpent")!;
+                foreach (var pair in step.ExpectRestSpent)
+                    if (!spent.TryGetValue(pair.Key, out int used) || used != pair.Value)
+                        coverage.Findings.Add("Wrong rest allowance: " + pair.Key + "; expected " + pair.Value);
+                if (!run.Passed) coverage.Findings.Add("Scripted walk failed: " + run.Result + "; " + run.Detail);
+                if (coverage.Findings.Count > 0) break;
+            }
+            coverage.Result = coverage.Findings.Count == 0 && coverage.AvailabilityChecked.Count == scenario.Steps.Count
+                ? "completed" : "incomplete";
+        }
+
         // eng7-l11: use the exact runtime observations, never DialogSpeaker.GetEntity.
         ContactInventoryProbe CaptureContact(string guid, object before, bool witnesses)
         {

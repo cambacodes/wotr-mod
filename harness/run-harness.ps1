@@ -52,6 +52,7 @@
 param(
     [string]$GameDir = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure',
     [string[]]$Saves = @(),
+    [string]$SystemCases,
     [switch]$Force,
     [switch]$DryRun,
     [ValidateSet('random', 'dfs')][string]$Mode = 'random',
@@ -243,6 +244,12 @@ $plan = [ordered]@{
     timeouts          = [ordered]@{ globalSeconds = [Math]::Max(60, $TimeoutMinutes * 60 - 60) }
 }
 # BEGIN eng7-f5: JSON is embedded, so no extra mod-folder installation or shared runtime hook is needed.
+if ($SystemCases) {
+    if (!$NoRoundTrip -or $Inline -or $Spike -or $SceneFilter.Count -gt 0 -or $SetFlags.Count -gt 0 -or $StartEtudes.Count -gt 0 -or $SetPresenceFailures.Count -gt 0 -or $HoldEtudes.Count -gt 0 -or $SeenCues.Count -gt 0 -or $RemoveCompanions.Count -gt 0) {
+        throw '-SystemCases requires -NoRoundTrip and no Inline, Spike, SceneFilter or global fixture setup.'
+    }
+    $plan.systemCasesJson = Get-Content -LiteralPath $SystemCases -Raw
+}
 if ($Spike -eq 'NativeEpilogue') {
     if (!$NoRoundTrip -or $Inline -or $Headless) { throw '-Spike NativeEpilogue requires -NoRoundTrip, visible dialogs and no -Inline.' }
     if ($resolvedSaves.Count -eq 0) { throw '-Spike NativeEpilogue requires a loadable free-roam save.' }
