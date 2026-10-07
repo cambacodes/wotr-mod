@@ -10,8 +10,8 @@ PREFIX = "household.pair.camellia_arueshalae."
 PAIR = ("camellia", "arueshalae")
 SCROLL = "89e10c3f21fa50c4b8719e004c7628d3"
 SLOT = PREFIX + "choice.explicit.1"
-# S12 owns the lesson receipt; this arc uses the same work, never another prep.
-SHARED_CRAFT_WITNESS = "household.pair.nenio_camellia.deed.camellia_correction"
+# Ruling 03 shares witnessed work, never affection or S12 completion.
+SHARED_CRAFT_WITNESS = "household.craft.method_witnessed"
 
 
 def p(suffix):
@@ -101,6 +101,23 @@ def settlement(branch, retry=False):
         nodes.append(terminal("masked", "Arueshalae", '''"Harmless? Ask her to sit closer, then."
 {n}Camellia does not move. Neither woman takes up the work waiting at the bench.{/n}''',
                               "settle.seen", "settle.failed", "failed." + branch))
+    # Ruling 21: the successful deed includes the proposed workbench inspection,
+    # inside this protected host. No second preparation, roll or allowance.
+    owned = next(node for node in nodes if node["Id"] == "owned")["Choices"][0]
+    receipt = owned["Set"]
+    owned["Set"] = []
+    owned["Next"] = "inspection_camellia"
+    nodes.extend([
+        n("inspection_camellia", "Camellia",
+          "[PROSE PENDING: Camellia - retain control of the exposed work / turn the existing sample toward Arueshalae for inspection / surrender the harmless cover without preparing another sample]",
+          c("[Let Arueshalae inspect it.]", "inspection_arueshalae")),
+        n("inspection_arueshalae", "Arueshalae",
+          "[PROSE PENDING: fallen Arueshalae - keep her appetite / inspect Camellia's existing work without taking a taste / give up the easy feeding answer]" if evil else
+          '''{n}Arueshalae bends over the workbench, keeping her hands clear of Camellia. She examines the sample beneath the lamp.{/n}
+"This edge is uneven. There, beside your thumb."
+{n}Camellia turns it to the light, then draws it back to her side. Arueshalae leaves the chair empty.{/n}
+"I have seen the work. That was what we came here to do. The troops can have their preparations back."''',
+          c("[Finish the inspection.]", flags=receipt + [p("deed.workbench_inspected")]))])
     requires = [p("ready." + branch)]
     forbids = []
     if not evil:
@@ -116,7 +133,10 @@ def optional_scenes():
     company = entry("company", "The work under the smile", [
         n("start", "Camellia", '''{n}At the Table, Camellia sets a stoppered poison bottle beside the map of the Worldwound approaches. Arueshalae leans over it; Camellia puts a finger on the stopper.{/n}
 "The workroom is ready. She insists on inspecting my work. How flattering."''',
-          c('"Let her inspect the work."', "workbench"), c('"Keep this to business."', "declined"), later()),
+          c('"Let her inspect the work."', "workbench", forbids=(SHARED_CRAFT_WITNESS,)),
+          c('"Keep this to business."', "declined"), later(),
+          c("[PROSE PENDING: choice - leave them company over the already witnessed work]", "witnessed_company",
+            requires=(SHARED_CRAFT_WITNESS,))),
         n("workbench", "Camellia", '''{n}In the workroom, Camellia draws a strip of linen across a blade. Arueshalae reaches for the bottle. Camellia slides it out of reach and offers the blade instead.{/n}
 "You may look. I am not giving lessons."
 {n}She turns the treated edge toward the lamp, exposing her work to the succubus's scrutiny.{/n}''', c("[Continue.]", "kept")),
@@ -126,6 +146,9 @@ def optional_scenes():
 {n}Camellia stops wiping. Then she smiles and lays a second blade under the lamp. Arueshalae stays to examine it.{/n}''', *COMPANY),
         terminal("declined", "Camellia", '"Very well. I have work to finish."',
                  "company.seen", "company.declined", "arc.declined"),
+        terminal("witnessed_company", "Camellia",
+                 "[PROSE PENDING: Camellia - seek Arueshalae's company / keep her beside the already inspected work and receive her personal answer / spend private time without repeating the preparation]",
+                 *COMPANY),
     ], fallen + (p("settle.done"),) + RESPECT, optional=True)
     desire = entry("desire", "Courtesy set aside", [
         n("start", "Camellia", '''{n}Camellia brings two cups to the Table. The blades for the Worldwound march are packed; the workroom key lies beside her wine.{/n}
@@ -222,6 +245,12 @@ def register(payload, scenes, refs):
                                                     "choice.ward_spent", "ward.applied_camellia")]]
     additions = [settlement(branch, retry) for retry in (False, True) for branch in ("good", "evil")]
     additions.extend(optional_scenes())
+    craft = derived.setdefault(SHARED_CRAFT_WITNESS, [])
+    # The old company inspection is also a legitimate source; no S12 receipt
+    # is manufactured by either of these S11 acts.
+    for group in ([p("deed.workbench_inspected")], [p(x) for x in COMPANY]):
+        if group not in craft:
+            craft.append(group)
     existing = {s["Id"] for s in scenes}
     scenes.extend(s for s in additions if s["Id"] not in existing)
     household.CONSUMERS.update({s["Id"]: household.PAGE_TAKEN for s in additions})

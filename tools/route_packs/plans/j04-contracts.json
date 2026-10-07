@@ -1,0 +1,44 @@
+{
+  "job": "J04",
+  "rulings": [3, 6, 21],
+  "authored": true,
+  "shared_craft_witness": "household.craft.method_witnessed",
+  "craft_sources": [
+    "S12: correction, revision, both method/classification costs and Commander bench labour",
+    "S11: actual protected workbench inspection or existing witnessed company inspection"
+  ],
+  "lesson": {
+    "row": "S12",
+    "status": "implemented; edge prose pending",
+    "tools": ["limited demonstration", "Commander performs the same bench work"],
+    "dc": null,
+    "allowance": "household.protected",
+    "primary": "household.pair.nenio_camellia.settle",
+    "retry": "household.pair.nenio_camellia.retry",
+    "retry_hours": 48,
+    "clock": "household.pair.nenio_camellia.settle.failed",
+    "final": "household.pair.nenio_camellia.unsettled",
+    "claimant": "nenio.harem.enmity.camellia",
+    "stages": "Nenio respect / Camellia rival; no friend or lover",
+    "native_evidence": "N3 is a BarkBanter voice anchor, never a SeenCue or demonstration producer"
+  },
+  "deed_only_exceptions": [
+    {"row": "S01", "producer": "reversed snare; both women's deeds and existing snare labour", "primary_and_retry": "existing", "second_tool": "waived by ruling 21"},
+    {"row": "S03b", "producer": "current fallen woman's admission and Seelah's corrected account", "primary_and_retry": "existing", "second_tool": "waived by ruling 21"},
+    {"row": "S09", "producer": "both corrected ground and aerial routes", "primary_and_retry": "existing", "second_tool": "waived by ruling 21"},
+    {"row": "S11", "producer": "both answers followed by actual inspection of existing work", "primary_and_retry": "existing hosts; appended inspection nodes", "second_tool": "waived by ruling 21"},
+    {"row": "S14", "producer": "Galfrey/Kitrane holds the named place; current branch Arueshalae chooses it", "primary_and_retry": "existing", "second_tool": "waived by ruling 21"}
+  ],
+  "exception_limits": "DC N/A; original costs and allowances; no extra check, resource, attraction or reconciliation. J02 leaves undeclared failure directions inert.",
+  "vigil": {
+    "row": "S22",
+    "status": "not activated for beta",
+    "reserved_ids": ["household.pair.wenduag_irabeth.settle", "household.pair.wenduag_irabeth.retry"],
+    "schedule": "S22 and its existing retry allocation retained unchanged",
+    "reason": "N5 murders and complaint establish no battlefield losses under Wenduag's orders",
+    "dc": null,
+    "cost": 0,
+    "retry": null
+  },
+  "e4_disposition": "Existing J02 exact final/refusal policy consumed. No new E4 failure direction, reconciliation or warmer stage invented. S14 declared asymmetric stages now read only its actual deeds."
+}
