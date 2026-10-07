@@ -3598,6 +3598,22 @@
         {
           "scene": "aranka.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "aranka.thall.answer",
+          "letter": false
+        },
+        {
+          "scene": "aranka.thall.question",
+          "letter": false
+        },
+        {
+          "scene": "aranka.thall.question_yard",
+          "letter": false
+        },
+        {
+          "scene": "aranka.thall.reply",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -12311,6 +12327,26 @@
         {
           "scene": "devarra.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "devarra.trickster.after.corrected_ending",
+          "letter": false
+        },
+        {
+          "scene": "devarra.trickster.after.corrected_ending_remote",
+          "letter": false
+        },
+        {
+          "scene": "devarra.trickster.after.late_proposal",
+          "letter": false
+        },
+        {
+          "scene": "devarra.trickster.epilogue.pending",
+          "letter": false
+        },
+        {
+          "scene": "devarra.trickster.epilogue.claimed",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -12329,6 +12365,10 @@
         {
           "scene": "devarra.trickster.dead.woken",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "devarra.trickster.epilogue.canon_fate",
+          "reason": "r3: canon fate epilogue; she did not return (forbids devarra.trickster.returned), no presence implied"
         }
       ],
       "presences": [],
