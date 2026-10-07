@@ -251,6 +251,24 @@ internal static class IomedaeTricksterTests
               && Reachable(order, sock).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.order.banner/o.sock]")) && !Reachable(order, lost).Any(x => SurfaceIds.Has(x, "[iomedae.trickster.order.banner/o.sock]")),
             "Trk_Iomedae_Fallback: the oath is not Lawful 1, a failed theft does not become the oath, or the sock line plays without the sock.");
 
+        // Round 3: answer gates must work in the production Choice schema,
+        // including a first white dream after the late Summit/Iz opening.
+        var whiteBase = new[] { "trickster", "trickster.ever", Started, Latch, Called,
+                                P + "first_spoken", P + "summit_asked", P + "iz.night" };
+        var questions = S(P + "dream.questions");
+        var firstWhite = World(story, 5, whiteBase);
+        var whiteChoices = questions.Nodes.Single(n => n.Id == "start").Choices;
+        var firstAnswers = whiteChoices.Where(c => Rules.Match(c.Requires, c.Forbids, firstWhite)).ToList();
+        check(firstAnswers.Count == 1 && firstAnswers[0].Next == "first_white",
+              "Trk_Iomedae_WhiteHistory: a first sending recalls an unplayed white dream.");
+        foreach (var priorWhite in new[] { P + "dream.summit", P + "herald_dream" })
+        {
+            var returningWhite = World(story, 5, whiteBase.Concat(new[] { priorWhite }).ToArray());
+            var answers = whiteChoices.Where(c => Rules.Match(c.Requires, c.Forbids, returningWhite)).ToList();
+            check(answers.Count == 1 && answers[0].Next == "returning_white",
+                  "Trk_Iomedae_WhiteHistory: a completed dream does not select its returning variant.");
+        }
+
         // Trk_Iomedae_Disputation: the commit (her concession aloud), SkillLoreReligion DC 24 or plain, and every refusal
         // player-caused (the boast, the mocked madness, the lie about the theft); never after a yes or a no.
         // eng7-l13: new disputation commitments require current power.
