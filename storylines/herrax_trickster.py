@@ -770,7 +770,7 @@ SCENES.append(reaction("Arueshalae", H + "react.arueshalae_knife", ("trickster.e
 
 SCENES.append(reaction("Regill", H + "react.regill_night", ("trickster.ever", LESSON),
     '''{n}Regill looks up from his notes without raising his head.{/n}
-"The succubus took a challenge to her authority, set the hour herself, used a false seller to draw the offender into the open, and punished him in public before the entire establishment, with a mark that cannot be purchased away." {n}He makes a small note.{/n}
+"The succubus took a challenge to her authority, set the hour herself, used a false seller to draw the offender into the open, and punished him in public before the entire establishment, with a mark whose removal she forbids and punishes." {n}He makes a small note.{/n}
 "That is the most orderly thing I have seen in this city. I find it deeply unpleasant that it happened in a brothel, and that you were the false seller. Neither fact will appear in my report."''',
     answer_list=REGILL_HUB, chapter=4, last=5, entry='"About the Delights..."', portrait="Regill", **dict(RE_GUARD, forbids=(*RE_GUARD["forbids"], DECLINED))))
 
@@ -795,19 +795,19 @@ SCENES.append(reaction("Woljif", H + "react.woljif_cheek", ("trickster.ever", CH
 
 
 # Authored late return: preparation paid in Ch5 buys no affection. The actual
-# return completes the missing lesson before Herrax offers the unpaid night.
+# return settles any unfinished lesson before Herrax offers the unpaid night.
 # The original page/continue exit remains an inert affirmative-history exit.
 def _stage_late_return():
     ending = next(s for s in SCENES if s["Id"] == H + "epilogue.after_hours")
     old_page = ending["Nodes"][0]
     paragraphs = old_page["Paragraphs"]
-    # A sale is not the public lesson; a returned blade is not the witnessed cut.
+    # The Ch5 letter reports the unwitnessed cuts as completed, not owed.
     paragraphs[3]["Requires"].append(LESSON)
     paragraphs[5]["Requires"].append("herrax.house.a_night_late")
     preparation = [*paragraphs[:6],
-        p("{n}The sold invitation was still owed. Herrax summoned her attendants to the private floor; the coin brought Rokhorn to the arch, and the girl with the keys admitted him to the waiting room. Herrax had him brought below, cut his face before her house and kept the coin. The Commander stood at the front, as promised.{/n}", requires=(BAIT,), forbids=(LESSON, DECLINED)),
-        p("{n}Rokhorn had exposed the sale before the Commander left the Isles. Herrax gathered the house in her hall this time, brought him to his knees, and made her seller stand at the front with his claw mark on show. She cut him herself. When she dismissed the witnesses she told the Commander to come back at closing.{/n}", requires=(BLOWN,), forbids=(BAIT, LESSON, DECLINED)),
-        p("{n}The blade had been returned before the Commander left the Isles, but the house had never gathered for her delayed lesson. Herrax gathered it now. She found the Commander at the back of the hall, cut Rokhorn from lip to cheekbone, and let the witnesses carry the story downstairs. At closing she sent for her guest.{/n}", requires=(RESTORED,), forbids=("herrax.house.a_night_late",)),
+        p("{n}The invitation had brought Rokhorn upstairs after the Commander left the Isles. Herrax had described the cutting in her letter. Now he brought the wine with that scar on show. She made him wait while she looked her returning guest over. \"You missed my performance, lover. Stay for closing this time.\"{/n}", requires=(BAIT,), forbids=(LESSON, DECLINED)),
+        p("{n}Rokhorn had exposed the sale before the Commander left the Isles. Herrax had cut him anyway, before the whole house, as her letter promised to remind her absent seller. Now she caught the Commander by the chin and inspected the mark his claw had left. \"He was here for his lesson. You ran off to your war. Tonight you stay.\"{/n}", requires=(BLOWN,), forbids=(BAIT, LESSON, DECLINED)),
+        p("{n}The blade had been returned before the Commander left the Isles. Herrax had performed her delayed punishment the following night and reported it in her letter. The Commander had missed it. She tapped the bone sheath when her guest came upstairs. \"You gave it back. I used it. This time, lover, you will be here when I decide what I want.\"{/n}", requires=(RESTORED,), forbids=("herrax.house.a_night_late",)),
     ]
     visit_id = H + "epilogue.after_hours.invitation"
     slot_id = H + "epilogue.after_hours.explicit.1"
@@ -816,7 +816,7 @@ def _stage_late_return():
             c("Continue", "madam_offer", requires=(MADAM,)),
             c("Continue", "rooms_offer", forbids=(MADAM,)),
             paragraphs=tuple(preparation)),
-        n("madam_offer", "Herrax", '{n}At closing she sends the last attendant down the stairs and waits above the empty hall. The lamps stay lit.{/n} "You came back. You stood where I told you. Now come here because you want to, lover. My accounts are shut for tonight." {n}She holds out her hand.{/n}',
+        n("madam_offer", "Herrax", '{n}At closing she sends the last attendant down the stairs and waits above the empty hall. The lamps stay lit.{/n} "You came back. This time you stay for closing. Now come here because you want to, lover. My accounts are shut for tonight." {n}She holds out her hand.{/n}',
             c('"Yes. By me."', "desire"), c('"No. Keep the night."', "declined", flags=(CLOSED,)), portrait="Herrax"),
         n("rooms_offer", "Herrax", '{n}Herrax bars her own door against the guests calling from below. She lets you see her smile before she takes the key out of the lock.{/n} "The madam gets her share downstairs. I decide who stays in this room. Tonight I want you. No price, lover."',
             c('"Then I am staying."', "desire"), c('"No. Keep the night."', "declined", flags=(CLOSED,)), portrait="Herrax"),
@@ -869,7 +869,10 @@ def morevet_variants(scenes):
         swaps = {}
         for node in list(event["Nodes"]):
             def absent(text):
-                return text.replace("Morevet Honeyed Tongue with her lips parted;", "the girl who keeps the arch;").replace("Morevet with her lips parted,", "the girl who keeps the arch,").replace("Morevet", "the girl who keeps the arch")
+                text = text.replace("Morevet Honeyed Tongue with her lips parted;", "an attendant with her lips parted;").replace("Morevet with her lips parted,", "an attendant with her lips parted,").replace("Morevet", "the girl who keeps the arch")
+                # Preserve sentence openings, including quoted and paragraph starts.
+                import re
+                return re.sub(r'(^|[.!?]\s+|\n|["“])the girl who keeps the arch', r'\1The girl who keeps the arch', text)
             if "Morevet" in node["Text"]:
                 if node is event["Nodes"][0]:
                     node["Text"] = absent(node["Text"])

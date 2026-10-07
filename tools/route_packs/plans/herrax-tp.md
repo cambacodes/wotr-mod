@@ -107,3 +107,19 @@ All cue paths below are `World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/`
 - **C9 — discovery/request:** Cue_0045_KillChivarro `49135105da5bc6c4f93e312e80286f91`, `0a8cc36b-9d72-4515-8917-c2107eb35f1c`; authored courier uses the existing Worldwound journey and Ch5 Drezen area `2570015799edf594daf2f076f2f975d8`, native Rokhorn unit `25ad116e1f5008e488b13f9b968596d4`. No native seven-day arrival or three-week delivery is claimed.
 
 Scope: all items above are plans for audit repairs or explicitly requested missing decision/debt beats. No new mechanics, attraction requirements, reconciliation gates, costs, echo slots, return devices or dark Commander scheme layer are proposed for implementation here.
+
+
+## Round 3 audit repairs (authored additions)
+- Audit defects 20–21 verified fixed in assembled Last Call: committed overrides declined; no Chivarro availability guard remains.
+- Defect 28 / HEAT cap: existing herrax.house.the_stairs.explicit.1 node and matching brief retained and its staging requirements strengthened (undressing, bodies together, initiating motion). The brief requests a return encounter; no second first night is introduced. Filling remains the coordinator/user's explicit-slot workflow.
+- Defects 22–24: owed.night/sold, blown, blown_lost, and restored already report punishment completed after departure. Their spring continuations acknowledge it. Only unsold and still-withheld-knife histories perform an outstanding punishment.
+- Defects 25, 30–37: absence staging uses a separate waiting attendant; the arch keyholder remains with Rokhorn's entrance. Sentence capitalization is preserved across all Morevet substitutions.
+- Defect 26: healing remains possible. Herrax forbids and punishes removal of her mark, consistent with the courier's healer account.
+- Defect 27: court-letter answers append after legacy Continue: present lover, no lover, former lover, evasion, refusal. Truth uses existing noct.complete and noct.closed readers; receipts record the disclosure, and Herrax's later response recalls that disclosure rather than inferring it from future Nocticula state. No new price, commitment gate, or partner arrangement.
+- Defect 29: generated-story C# fixtures now check crossroute aliases and walk available route nodes under Chivarro death, Minagho/Chivarro closure and Nocticula closure.
+- Defects 1–19 remain a shared integration escalation: crossroute_presence.integrate adds unwanted availability guards after route integration. Herrax's source declares no such guards. Preserve actual Chivarro discovery presence requirements when the shared classifier is repaired.
+- Canon evidence remains the native cue/GUID inventory above and in herrax-setpieces.md. Native archives were unavailable for fresh archive verification; no new physical detail, scar origin or native event is asserted.
+
+- Final gates: expansion exported 3,848 scenes with exit 0; Herrax + UTF-8 quick tests passed (14); savecompat, strict payoff and strict departure lints had 0 hard failures. Direct HEAD comparison preserved old node order and choice mechanics.
+- Gate escalations: strict verifier lacks blueprints.zip; full rules hit unknown eritrice.council.chadalis_essence; Herrax-only rules expose historical crossroute guards. Broad discovery ran 1,121 tests with 42 failures and 12 errors; four relative-path failures passed in the temporary repository view using the final export.
+- Additional shared-classifier escalation: earned-outcome L4 classifies after_hours.invitation/declined as a romantic reward requiring RouteOpen, although that node is the legitimate closed-route refusal exit. Keep its identity and mechanics; fix the shared classification.
