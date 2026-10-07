@@ -1354,11 +1354,11 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Open: [Look at the smallest egg, the one at the edge of the straw]
    Need all: `trickster`; Blocked by: `nidalynn.trickster.primed`, `nidalynn.trickster.egg_crushed`, `eggs.destroyed`, `eggs.project`, `trickster.failed`.
    Native answer-list host: `dd8ac86f25e0f6b4cac75386eb528851`.
-   - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Mythic: PlayerIsTrickster
+   - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Blocked by: `crossroute.devarra.unavailable`; Mythic: PlayerIsTrickster
    - `nidalynn.trickster.eggs.lamp_black/taken/0` — Continue; records `nidalynn.trickster.egg.clean`
    - `nidalynn.trickster.eggs.lamp_black/held/0` — [Wrap it in your cloak and put it at the bottom of your pack.]
    - `nidalynn.trickster.eggs.lamp_black/rock/0` — "It's a rock. I painted it."; records `nidalynn.trickster.rock_joke`
-   - `nidalynn.trickster.eggs.lamp_black/packed/0` — [Turn back to the golems.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.golems`, `nidalynn.trickster.egg_owed`
+   - `nidalynn.trickster.eggs.lamp_black/packed/0` — [Turn back to the golems.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.golems`, `nidalynn.trickster.egg_owed`; Blocked by: `nidalynn.trickster.cost.hand`
 
 53. **Shamira: What the paper-eater swallowed** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.early.telmer_interrogation","chapter":3,"day":10,"completed":true,"choices":[["start",0],["recite",0]]} -->
    Scene `shamira.early.telmer_interrogation`; chapters 3–3 (only 3); wait at least 0h after the latest prerequisite; complete.
@@ -8967,7 +8967,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Actor must be physically available: `9d9c523bc2b17434bb66df212b127187`.
    - `mielarah.deck.correction/start/0` — [Follow her to her cabin.]
    - `mielarah.deck.correction/cabin/1` — Continue; Blocked by: `mielarah.amulets_used`
-   - `mielarah.deck.correction/box_first/0` — [Take her hands out of their heads] "Stop. Pay them, and let them choose what kind of men they are."; records `mielarah.deck.corrected`, `mielarah.deck.crew_freed`
+   - `mielarah.deck.correction/box_first/0` — [Try higher wages] "Double their pay. See whether they can keep the peace without daily correction."; records `mielarah.deck.corrected`, `mielarah.deck.crew_freed`
    - `mielarah.deck.correction/freed/0` — Continue; Blocked by: `mielarah.amulets_used`
    - `mielarah.deck.correction/after/0` — [Go back through the portal.]
 
@@ -15156,25 +15156,27 @@ On the Trickster path, in the Ivory Sanctum, look at the smallest of the eggs un
 Commitment: `nidalynn.committed`; closure: `nidalynn.closed`.
 Unavailable states: `nidalynn.epoch_unavailable`; failure states: none.
 - Recovery for **golems**: `nidalynn.trickster.eggs.lamp_black` (Out in the ash); native dialogue listed below; chapters 3–3; 0h delay. Need all: `trickster`; Blocked by: `nidalynn.trickster.primed`, `nidalynn.trickster.egg_crushed`, `eggs.destroyed`, `eggs.project`, `trickster.failed`. Return witness: `nidalynn.trickster.met`.
-  - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Mythic: PlayerIsTrickster
-  - `nidalynn.trickster.eggs.lamp_black/look/1` — [Trickery: roll a stone of the same size into the straw where it lay, and palm the egg into the ash-bin]; PASS SkillThievery DC 22 (Commander only); success → `taken`; failure → `fist`; Mythic: PlayerIsTrickster
+  - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Blocked by: `crossroute.devarra.unavailable`; Mythic: PlayerIsTrickster
+  - `nidalynn.trickster.eggs.lamp_black/look/1` — [Trickery: roll a stone of the same size into the straw where it lay, and palm the egg into the ash-bin]; PASS SkillThievery DC 22 (Commander only); success → `taken`; failure → `fist`; Blocked by: `crossroute.devarra.unavailable`; Mythic: PlayerIsTrickster
   - `nidalynn.trickster.eggs.lamp_black/look/2` — [Leave the eggs to the golems.]; ends without completing scene
   - `nidalynn.trickster.eggs.lamp_black/taken/0` — Continue; records `nidalynn.trickster.egg.clean`
   - `nidalynn.trickster.eggs.lamp_black/fist/0` — Continue; records `nidalynn.trickster.cost.hand`
   - `nidalynn.trickster.eggs.lamp_black/held/0` — [Wrap it in your cloak and put it at the bottom of your pack.]
   - `nidalynn.trickster.eggs.lamp_black/held/1` — [Put your heel through it. Some things are better never hatched.]; records `nidalynn.trickster.egg_crushed`
-  - `nidalynn.trickster.eggs.lamp_black/crushed/0` — [Step back from the clutch.]
+  - `nidalynn.trickster.eggs.lamp_black/crushed/0` — [Step back from the clutch.]; Blocked by: `nidalynn.trickster.cost.hand`
+  - `nidalynn.trickster.eggs.lamp_black/crushed/1` — [Draw your weapon.]; Need all: `nidalynn.trickster.cost.hand`
   - `nidalynn.trickster.eggs.lamp_black/rock/0` — "It's a rock. I painted it."; records `nidalynn.trickster.rock_joke`
   - `nidalynn.trickster.eggs.lamp_black/rock/1` — "A souvenir."
-  - `nidalynn.trickster.eggs.lamp_black/packed/0` — [Turn back to the golems.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.golems`, `nidalynn.trickster.egg_owed`
+  - `nidalynn.trickster.eggs.lamp_black/packed/0` — [Turn back to the golems.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.golems`, `nidalynn.trickster.egg_owed`; Blocked by: `nidalynn.trickster.cost.hand`
+  - `nidalynn.trickster.eggs.lamp_black/packed/1` — [Draw your weapon.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.golems`, `nidalynn.trickster.egg_owed`; Need all: `nidalynn.trickster.cost.hand`
 - Recovery for **vault**: `nidalynn.trickster.eggs.vault` (Coal); rest delivery / Satchel: event (Drezen); chapters 3–5; 24h delay. Need all: `trickster.ever`, `trickster`, `nidalynn.trickster.eggs_crated`; Blocked by: `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.trickster.primed`, `nidalynn.trickster.egg_crushed`, `eggs.druids`, `eggs.omelet`, `eggs.destroyed`, `trickster.failed`. Return witness: `nidalynn.trickster.met`.
   - `nidalynn.trickster.eggs.vault/vault/0` — [Stealth: go down before the eighth bell with a bucket of coal and your lantern's soot]; PASS SkillStealth DC 20 (Commander only); success → `coal`; failure → `clerk`; Mythic: PlayerIsTrickster
   - `nidalynn.trickster.eggs.vault/vault/1` — [Leave the crates to the quartermaster.]; ends without completing scene
   - `nidalynn.trickster.eggs.vault/coal/0` — Continue
-  - `nidalynn.trickster.eggs.vault/clerk/0` — Continue; records `nidalynn.trickster.clerk_saw`
-  - `nidalynn.trickster.eggs.vault/carry/0` — [Leave it in the ashes.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.vault`, `nidalynn.trickster.cost.palms`, `nidalynn.trickster.egg_owed`; Blocked by: `irabeth.chapter_five`
+  - `nidalynn.trickster.eggs.vault/clerk/0` — Continue; records `nidalynn.trickster.clerk_saw`, `nidalynn.trickster.cost.palms`
+  - `nidalynn.trickster.eggs.vault/carry/0` — [Leave it in the ashes.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.vault`, `nidalynn.trickster.egg_owed`; Blocked by: `irabeth.chapter_five`
   - `nidalynn.trickster.eggs.vault/carry/1` — [Leave it in the ashes.]; Need all: `irabeth.chapter_five`
-  - `nidalynn.trickster.eggs.vault/nights/0` — [Bank the fire.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.vault`, `nidalynn.trickster.cost.palms`, `nidalynn.trickster.hearth.grey_stone`, `nidalynn.trickster.egg_owed`
+  - `nidalynn.trickster.eggs.vault/nights/0` — [Bank the fire.]; records `nidalynn.trickster.primed`, `nidalynn.trickster.egg.vault`, `nidalynn.trickster.hearth.grey_stone`, `nidalynn.trickster.egg_owed`
 - Recovery for **straw**: `nidalynn.trickster.eggs.straw` (Disposed of); rest delivery / Satchel: event (Drezen); chapters 3–5; 12h delay. Need all: `trickster.ever`, `trickster`, `nidalynn.trickster.eggs_given`; Blocked by: `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.trickster.primed`, `nidalynn.trickster.egg_crushed`, `nidalynn.trickster.egg.straw`, `nidalynn.trickster.straw.burned`, `eggs.omelet`, `eggs.destroyed`, `trickster.failed`. Return witness: `nidalynn.trickster.met`.
   - `nidalynn.trickster.eggs.straw/chit/0` — [Go down to the vault and look at it yourself.]
   - `nidalynn.trickster.eggs.straw/chit/1` — [Put the chit aside for now.]; ends without completing scene
@@ -16468,11 +16470,16 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `household.pair.jerribeth_vellexia.settle.defected.mind/declined/0` — Continue; records `household.pair.jerribeth_vellexia.settle.seen`, `household.pair.jerribeth_vellexia.settle.declined`
 - `household.pair.jerribeth_vellexia.settle.client/declined/0` — Continue; records `household.pair.jerribeth_vellexia.settle.seen`, `household.pair.jerribeth_vellexia.settle.declined`
 - `household.pair.jerribeth_vellexia.settle.client.mind/declined/0` — Continue; records `household.pair.jerribeth_vellexia.settle.seen`, `household.pair.jerribeth_vellexia.settle.declined`
-- `household.pair.kaylessa_camellia.settle/declined/0` — [Leave them to pack what remains.] [Leave their dispute unsettled. The carrier keeps his question.]; records `household.pair.kaylessa_camellia.settle.seen`, `household.pair.kaylessa_camellia.settle.declined`, `household.pair.kaylessa_camellia.exposure_unsettled`
-- `household.pair.kaylessa_anevia.settle.pair/declined/0` — [Return to Drezen.]; records `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.settle.declined`, `household.pair.kaylessa_anevia.trail_unsettled`
-- `household.pair.kaylessa_anevia.settle.solo/declined/0` — [Return to Drezen.]; records `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.settle.declined`, `household.pair.kaylessa_anevia.trail_unsettled`
-- `household.pair.shamira_arueshalae.settle.good/declined/0` — [Clear the landing.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.declined`, `household.pair.shamira_arueshalae.claim.unsettled`
-- `household.pair.shamira_arueshalae.settle.evil/declined/0` — [Clear the landing.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.declined`, `household.pair.shamira_arueshalae.claim.unsettled`
+- `household.pair.kaylessa_camellia.settle/declined/0` — [Leave them to pack what remains.] [Leave their dispute unsettled. The carrier keeps his question.]; records `household.pair.kaylessa_camellia.settle.seen`, `household.pair.kaylessa_camellia.settle.declined`, `household.pair.kaylessa_camellia.exposure_unsettled`, `kaylessa.harem.enmity.camellia`, `kaylessa.harem.stance.tolerated`; Blocked by: `kaylessa.harem.enmity_any`
+- `household.pair.kaylessa_camellia.settle/declined/2` — [Leave them to pack what remains.] [Leave their dispute unsettled. The carrier keeps his question.]; records `household.pair.kaylessa_camellia.settle.seen`, `household.pair.kaylessa_camellia.settle.declined`, `household.pair.kaylessa_camellia.exposure_unsettled`; Need all: `kaylessa.harem.enmity_any`
+- `household.pair.kaylessa_anevia.settle.pair/declined/0` — [Return to Drezen.]; records `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.settle.declined`, `household.pair.kaylessa_anevia.trail_unsettled`, `kaylessa.harem.enmity.w.anevia`, `kaylessa.harem.stance.tolerated`; Blocked by: `kaylessa.harem.enmity_any`
+- `household.pair.kaylessa_anevia.settle.pair/declined/2` — [Return to Drezen.]; records `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.settle.declined`, `household.pair.kaylessa_anevia.trail_unsettled`; Need all: `kaylessa.harem.enmity_any`
+- `household.pair.kaylessa_anevia.settle.solo/declined/0` — [Return to Drezen.]; records `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.settle.declined`, `household.pair.kaylessa_anevia.trail_unsettled`, `kaylessa.harem.enmity.w.anevia`, `kaylessa.harem.stance.tolerated`; Blocked by: `kaylessa.harem.enmity_any`
+- `household.pair.kaylessa_anevia.settle.solo/declined/2` — [Return to Drezen.]; records `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.settle.declined`, `household.pair.kaylessa_anevia.trail_unsettled`; Need all: `kaylessa.harem.enmity_any`
+- `household.pair.shamira_arueshalae.settle.good/declined/0` — [Clear the landing.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.declined`, `household.pair.shamira_arueshalae.claim.unsettled`, `arueshalae.harem.enmity.shamira`, `arueshalae.harem.stance.tolerated`; Blocked by: `arueshalae.harem.enmity_any`
+- `household.pair.shamira_arueshalae.settle.good/declined/2` — [Clear the landing.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.declined`, `household.pair.shamira_arueshalae.claim.unsettled`; Need all: `arueshalae.harem.enmity_any`
+- `household.pair.shamira_arueshalae.settle.evil/declined/0` — [Clear the landing.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.declined`, `household.pair.shamira_arueshalae.claim.unsettled`, `arueshalae.harem.enmity.shamira`, `arueshalae.harem.stance.tolerated`; Blocked by: `arueshalae.harem.enmity_any`
+- `household.pair.shamira_arueshalae.settle.evil/declined/2` — [Clear the landing.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.declined`, `household.pair.shamira_arueshalae.claim.unsettled`; Need all: `arueshalae.harem.enmity_any`
 - `household.pair.nidalynn_devarra.notice.widow/refused/0` — [Leave.]; records `household.pair.nidalynn_devarra.notice.seen`, `household.pair.nidalynn_devarra.notice.refused`, `household.pair.nidalynn_devarra.unanswered`
 - `household.pair.nidalynn_devarra.notice.chosen/refused/0` — [Leave.]; records `household.pair.nidalynn_devarra.notice.seen`, `household.pair.nidalynn_devarra.notice.refused`, `household.pair.nidalynn_devarra.unanswered`
 - `household.pair.nidalynn_areelu.notice.widow/refused/0` — [Leave.]; records `household.pair.nidalynn_areelu.notice.seen`, `household.pair.nidalynn_areelu.notice.refused`, `household.pair.nidalynn_areelu.unanswered`
