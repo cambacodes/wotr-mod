@@ -1,7 +1,7 @@
 """Shamira after the waking: her city, her visit, the game she proposes, and the throne she still wants
 (shamira_trickster holds the device; shamira_mind the nights behind the Commander's eyes and the waking).
 
-The commit (11 §2): "think of anything but me". In the room where she first read the Commander (the Harem of Ardent Dream,
+The commit (11 §2): "think of anything but me". In the room where she first read the Commander (the Harem of Ardent Dreams,
 Shamira_dialogue: the mind-duel of Cue_0039 0a75cdac to Cue_0058 0e929c72), she proposes a game of her own trade, and the
 Commander loses it on purpose. Nothing is spoken: every answer in the game is a thought. Winning it is the soft no (she
 stays an ally); throwing her out of the Commander's head, as a Commander once did in public (Cue_0055 b15365b6), is the
@@ -269,13 +269,13 @@ hub(P + "after.visit", "Out of the wardrobe", '"You were in my room last night. 
 ], requires=(CITY,), forbids=(VISITED,) + LIVE, delay=48)
 
 
-# --- The commit: think of anything but me, in the Harem of Ardent Dream --------------------------------------------------
+# --- The commit: think of anything but me, in the Harem of Ardent Dreams --------------------------------------------------
 
 hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
     nar("start", '''{n}She finishes the King's wine and stands, and takes you by the wrist without a word. That night she comes for you out of your own wardrobe, in black, and you go back the way you went for her body: the wardrobe, the empty Council with its candles burning for nobody, Socothbenoth's purple door, the house full of listening closets.{/n}
 {n}In the street outside his house there is an arch of black stone. She walks you under it, and the city folds.{/n}''',
         c("Continue", "harem")),
-    nar("harem", '''{n}The Harem of Ardent Dream. Tonight it is empty. The couches are bare. The fountains still run, and the sound of them fills the great room the way a held breath fills a chest.{/n}
+    nar("harem", '''{n}The Harem of Ardent Dreams. Tonight it is empty. The couches are bare. The fountains still run, and the sound of them fills the great room the way a held breath fills a chest.{/n}
 {n}At the far end, on its dais, the throne. The light around it is low, a glow like coals under ash.{/n}''',
         c("Continue", "light_back", requires=(BARRACKS,)),
         c("Continue", "sits", forbids=(BARRACKS,))),

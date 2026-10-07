@@ -70,11 +70,11 @@ class SeelahRound2Tests(unittest.TestCase):
         reclaim = self.by[r.PREFIX + "dead.list_reclaimed"]
         self.assertIn(r.PREFIX + "woke", reclaim["Requires"])
         self.assertIn(r.KEEPS, reclaim["Requires"])
-        w.take(reclaim, "start", 1)
+        self.assertEqual("offer_first", w.take(reclaim, "start", 3))
         self.assertTrue(w.has(r.CUSTODY))
         self.assertIn(r.ROBBED, w.flags)
         self.assertNotIn("seelah.committed", w.flags)
-        w.take(reclaim, "offer", 1)
+        w.take(reclaim, "offer_first", 1)
         self.assertNotIn(r.GAME, w.flags)
         # Ordinary and immediately-returned histories owe no new custody test.
         self.assertTrue(Walk(self.story).has(r.CUSTODY))

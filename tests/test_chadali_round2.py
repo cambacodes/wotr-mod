@@ -184,7 +184,7 @@ class ChadaliRound2Tests(unittest.TestCase):
             ((), "hurt", "coin"),
             ((t.PRIMED,), "coin", "coin_home"),
             ((t.PRIMED, t.WAGERED), "coin", "coin_home"),
-            ((t.PRIMED, "chadali.wagers.coin_lost"), "coin_collected", "coin_home"),
+            ((t.PRIMED, "chadali.wagers.coin_lost"), "coin_collected", "coin"),
             ((t.PRIMED, s.COIN_TAKEN), "coin_home", "coin"),
         ):
             flags, _, seen, completed = play(t.P + "fought.lucky", {"refusal": 1}, history)

@@ -174,12 +174,12 @@ s("arsinoe_price_of_an_evening", "A place at the table",
       c('"Let us settle the size and the price together."', "terms")),
     n("price_objection", "Arsinoe", '''"They may. And I do not want to pretend that a low price is no price."
 {n}She looks toward the street before continuing.{/n}
-"But I will not tell Neral to work for our good intentions. If we choose a public evening, I can pay for two unclaimed places as well as my own. No names on those places. No announcement about who needed them. That is what I can afford to promise tonight."
-{n}Two places would be sold at the stated price; you and Arsinoe would pay for your own, making six in all.{/n}
-"Or we invite a small group and pay the whole sum between ourselves. I will cover my share. It will be a pleasant private evening, and we can stop asking it to solve the question of every evening after it."''',
+"But I will not tell Neral to work for our good intentions. If we choose a public evening, I can pay for two unclaimed places as well as yours and mine. No names on those places. No announcement about who needed them. That is what I can afford to promise tonight."
+{n}Two places would be sold at the stated price; Arsinoe would cover the other four, including yours and hers, making six in all.{/n}
+"Or I invite a small group and pay Neral for the whole evening myself. You can help me carry the chairs. It will be a pleasant private evening, and we can stop asking it to solve the question of every evening after it."''',
       c('"Show me both versions."', "terms")),
-    n("terms", "Arsinoe", '''{n}You work through the two arrangements. For the public gathering, Neral will collect two modest fees from guests; Arsinoe will pay for two places available without explanation to anyone who asks. You and Arsinoe will each cover your own place, making six. The notice will promise a game and a reading, with no mention of your attendance. People will be free to leave before paying if the prospect does not suit them.{/n}
-{n}For the private gathering, Arsinoe will invite Neral and three acquaintances from her ordinary business, making six with the two of you. You and Arsinoe will cover the room by a private arrangement. Nobody will be expected to buy anything afterward.{/n}
+    n("terms", "Arsinoe", '''{n}You work through the two arrangements. For the public gathering, Neral will collect two modest fees from guests; Arsinoe will pay for two places available without explanation to anyone who asks. Arsinoe will also pay for your place and hers, making six. The notice will promise a game and a reading, with no mention of your attendance. People will be free to leave before paying if the prospect does not suit them.{/n}
+{n}For the private gathering, Arsinoe will invite Neral and three acquaintances from her ordinary business, making six with the two of you. Arsinoe will pay Neral for the room herself. Nobody will be expected to buy anything afterward.{/n}
 "Whichever we choose, I will tell Neral tomorrow," {n}Arsinoe says.{/n} "And I will leave the next hour we spend alone entirely unprofitable. You may hold me to that."
 {n}Arsinoe checks the draft for any remaining mention of your attendance and strikes it out. The corrections remain visible; she does not replace the sheet with a tidier one.{/n}''',
       c('"Try the public evening, with the two places you described."', flags=("arsinoe.evening_public",)),
@@ -191,7 +191,7 @@ s("arsinoe_courtyard_company", "Company after closing",
   '"Is everything ready for the courtyard evening?"', [
     n("start", "Arsinoe", '''{n}Neral has hung a lamp at each end of the awning. The workshop is shut, though the courtyard still smells faintly of hot metal. Arsinoe stands on a low stool to straighten a wick, and hands you the chimney before you can offer advice from the ground.{/n}
 "There. Now we shall be able to see our terrible decisions."
-{n}The game waits on one table; a small stack of reading material lies on the other. Cups and a jug occupy the least level surface, which Neral has corrected with a folded scrap of leather.{/n}
+{n}Neral pockets the coins Arsinoe has brought for the agreed arrangement, then sets out the last chair. The game waits on one table; a small stack of reading material lies on the other. Cups and a jug occupy the least level surface, which Neral has corrected with a folded scrap of leather.{/n}
 {n}A patrol passes the courtyard without stopping. Arsinoe climbs down from the stool and checks the six places once more.{/n}
 "We should begin before I think of another improvement."''',
       c("Welcome the arriving customers.", "public", requires=("arsinoe.evening_public",)),
@@ -271,7 +271,7 @@ s("arsinoe_courtyard_company", "Company after closing",
 {n}The reading resumes in the quiet courtyard. There is room to hear the small changes in Arsinoe's voice, and enough time afterward for the company to disagree about the story's ending.{/n}
 {n}When the last guest leaves, she checks beneath each table for missing pieces. You find the key-bearing merchant by a chair leg.{/n}
 "At least one of us has found a private evening," {n}she says.{/n}
-{n}She wraps the board carefully, then puts the courier's unused cup back on the shelf while the others go on disputing the story's ending.{/n}''',
+{n}She wraps the board carefully, then puts the courier's unused cup back on the shelf. Neral waits by the courtyard gate with the keys.{/n}''',
       c("Walk back with Arsinoe.", flags=("arsinoe.company_quiet",))),
 ], "arsinoe_price_of_an_evening", delay=24)
 
@@ -302,7 +302,7 @@ s("arsinoe_another_hour", "What the evening cost",
     n("accounts", "Arsinoe", '''{n}She turns the paper over. The sums are small enough to fit in a few lines, and substantial enough to matter to the people who paid them.{/n}''',
       c("Examine the public gathering's account.", "public", requires=("arsinoe.evening_public",)),
       c("Ask about the cost of the private gathering.", "private", requires=("arsinoe.evening_private",))),
-    n("public", "Arsinoe", '''"The four paying places, including ours, covered their share. I paid for the other two as agreed. Neral received her full price. Nobody made a profit, and nobody had to explain why they took an available chair."
+    n("public", "Arsinoe", '''"The two paying guests covered their places. I paid for yours, mine, and the two unclaimed chairs as agreed. Neral received her full price. Nobody made a profit, and nobody had to explain why they took an available chair."
 {n}Arsinoe points to a second, smaller figure.{/n}
 "For the next evening, one of the original guests offered to cover a place. I accepted, on the same condition. No names announced, no gratitude collected at the door. It means I can afford to try this occasionally. It does not mean we have founded an institution."
 {n}The guest who wanted official business has not returned. Arsinoe heard that he found the evening disappointing.{/n}
@@ -311,7 +311,7 @@ s("arsinoe_another_hour", "What the evening cost",
 "There is one other expense I did not write down. I spent most of the first evening watching whether everyone else enjoyed it. I scarcely played with you."''',
       c('"I missed that too."', "alone"),
       c('"I enjoyed seeing you with your guests. But I would like another hour of our own."', "alone")),
-    n("private", "Arsinoe", '''"Neral has been paid. I can afford my share occasionally, as I promised. I cannot afford to make every idle evening a gathering, and I do not want you to begin paying for all of them."
+    n("private", "Arsinoe", '''"I paid Neral for the evening. I can afford to do that occasionally, as I promised. I cannot afford to make every idle evening a gathering."
 {n}She taps the list of names on the other side.{/n}
 "The wheelwright has offered his own room for a future reading. It is smaller, and we must not knock anything into the glue pot. I accepted an invitation to look at it. One evening. I will not promise his room to half the market."
 {n}She smiles, a little ruefully.{/n}

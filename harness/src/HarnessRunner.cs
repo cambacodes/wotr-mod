@@ -249,6 +249,7 @@ namespace RRT.TestHarness
             init.RrtModErrorOnLoading = entry?.ErrorOnLoading == true;
             var asm = RrtBridge.FindLoaded() ?? entry?.Assembly;
             init.RrtAssembly = asm?.Location;
+            init.RrtVersion = entry?.Info.Version;
             if (asm == null) { init.ReflectionProblems.Add("assembly " + RrtBridge.AssemblyName + " is not loaded"); }
             else
             {
@@ -372,7 +373,11 @@ namespace RRT.TestHarness
                 bool drivable = plan.Inline ? lists.Length > 0 : dialogs.Contains(id);
                 if ((available || plan.Force) && drivable && plan.IncludesScene(id)) targets.Add((scene!, id, available, lists));
             }
-            if (plan.MaxScenesPerSave > 0) targets = targets.Take(plan.MaxScenesPerSave).ToList();
+            if (plan.MaxScenesPerSave > 0)
+            {
+                sr.InventoryTruncated = targets.Count > plan.MaxScenesPerSave;
+                targets = targets.Take(plan.MaxScenesPerSave).ToList();
+            }
 
             bool dirty = false;
             // A forced run sets the scene's Requires, and any completed run records the scene and its choices. Without a
@@ -440,6 +445,7 @@ namespace RRT.TestHarness
                     }
                     TryWrite();
                 }
+                if (plan.Dfs && frontier.Count > 0) sr.InventoryTruncated = true;
             }
         }
 

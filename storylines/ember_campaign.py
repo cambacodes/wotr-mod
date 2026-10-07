@@ -108,15 +108,15 @@ s("the_empty_basket", "Things somebody might still want",
       c('"We can look when I have more time."', abort=True)),
     n("room", "Narrator", '''{n}The room stands behind a storehouse. An adult woman named Vessa is sweeping it while a man lifts broken boards through the doorway. She has kept two sound sleeping platforms and a table that needs a wedge beneath one leg.{/n}
 "For people coming in from the roads," {n}Vessa explains.{/n} "One night, perhaps two. They need somewhere before they know who to ask for work."
-{n}The man with the boards introduces himself as Deren. He has a flattened nose, broad hands, and the habit of looking toward the door whenever someone speaks sharply outside.{/n}
+{n}The man with the boards introduces himself as Dervan. He has a flattened nose, broad hands, and the habit of looking toward the door whenever someone speaks sharply outside.{/n}
 "The comb was beneath that platform," {n}he tells Ember.{/n} "Before you ask, I didn't put it there. I have been here three days."
 "I wasn't going to ask that."
 {n}He looks embarrassed, then shrugs.{/n}
 "People usually do."
 {n}Vessa rests her broom against the table. The room belonged to a family before it became storage. She knows where one of their former neighbors sells vegetables, though she cannot promise the woman remembers a comb.{/n}''',
       c('"Ask the neighbor about the family."', "neighbor"),
-      c('"Deren, why did you expect to be blamed?"', "deren")),
-    n("deren", "Ember", '''"Because I used to take things," {n}Deren says.{/n} "Sometimes from people who had less than I did. Vessa knows. I told her before she found out from someone else."
+      c('"Dervan, why did you expect to be blamed?"', "deren")),
+    n("deren", "Ember", '''"Because I used to take things," {n}Dervan says.{/n} "Sometimes from people who had less than I did. Vessa knows. I told her before she found out from someone else."
 {n}Ember looks at the basket, then back at him.{/n}
 "Did you give them back?"
 "Some. I couldn't find everyone. I couldn't remember everyone."
@@ -124,7 +124,7 @@ s("the_empty_basket", "Things somebody might still want",
 "Perhaps you can help us find this person. You remember where it was."
 "That won't return what I took."
 "No. It might return a comb."
-{n}Deren looks toward Vessa. She gives him a small nod, then points at the stack of boards he still has to move.{/n}
+{n}Dervan looks toward Vessa. She gives him a small nod, then points at the stack of boards he still has to move.{/n}
 "After those. I will be the one tripping over them while you do a good deed."
 {n}He finishes the work. Ember waits with the basket, turning the blue thread between her fingers.{/n}''',
       c('"Go to the neighbor when the doorway is clear."', "neighbor")),
@@ -133,7 +133,7 @@ s("the_empty_basket", "Things somebody might still want",
 {n}Ember holds the basket closer.{/n}
 "I was going to ask if she wanted it."
 "Then ask. And let her say no."
-{n}Heda writes the kitchen's location on the back of a discarded price notice. Deren reads it, then points out a shorter way. He knows the streets where the stores are, he says, with a smile that does not quite survive the explanation.{/n}
+{n}Heda writes the kitchen's location on the back of a discarded price notice. Dervan reads it, then points out a shorter way. He knows the streets where the stores are, he says, with a smile that does not quite survive the explanation.{/n}
 {n}At the kitchen, the woman is carrying two empty buckets. She introduces herself as Mara, listens to Ember, and studies the comb without taking it.{/n}
 "That was my mother's. I don't want it."''',
       c('"Then we will take it away. Thank you for looking."', "declined"),
@@ -146,7 +146,7 @@ s("the_empty_basket", "Things somebody might still want",
 "I hope they sleep well. The floor is cold by the door."
 {n}Ember thanks her and moves aside. You walk away with a lighter basket and the comb still lying on top.{/n}
 "I thought she would want that most," {n}Ember says.{/n} "She knew something about it I didn't know."
-{n}Deren carries the basket back while Ember walks beside you.{/n}''',
+{n}Dervan carries the basket back while Ember walks beside you.{/n}''',
       c('"Return the unclaimed things to Vessa without reserving them for Mara."', flags=("ember.keepsake_declined", "ember.room_known"))),
     n("later", "Ember", '''"No," {n}Mara says.{/n} "I don't want to know it is waiting for me. You can give it to someone who needs a comb."
 {n}Ember nods. She holds the basket while Mara looks through the rest. The woman takes the wooden handle, which her father made, and tells a short story about the troublesome tool it once belonged to.{/n}
@@ -154,66 +154,66 @@ s("the_empty_basket", "Things somebody might still want",
 "Perhaps that will be useful. More useful than keeping a comb for me."
 {n}On the way back, Ember looks at the blue thread.{/n}
 "I wanted to leave it where she could change her mind. But she didn't want another thing she had to decide about."
-{n}She turns to Deren, who has offered to carry the basket.{/n}
+{n}She turns to Dervan, who has offered to carry the basket.{/n}
 "We should tell Vessa about the cold floor. Mara wanted us to know that."
-{n}Deren says he has some sacks he can clean and lay under a mat. It is the first suggestion he has made without looking as though he expects to be refused.{/n}''',
+{n}Dervan says he has some sacks he can clean and lay under a mat. It is the first suggestion he has made without looking as though he expects to be refused.{/n}''',
       c('"Carry back Mara\'s useful warning and her refusal."', flags=("ember.keepsake_questioned", "ember.room_known"))),
 ], requires=("ember.campaign_started",))
 
 
 s("the_cold_side", "A place by the door",
   '"Did Vessa make the room ready?"', [
-    n("start", "Ember", '''"Almost. The door won't stay where she puts it. Deren says the wood has opinions."
+    n("start", "Ember", '''"Almost. The door won't stay where she puts it. Dervan says the wood has opinions."
 {n}Ember has a bundle of washed sacks under one arm. You walk with her to the room, where Vessa is testing the threshold with the flat of her foot. The door closes if pushed firmly, but springs open again when someone crosses the boards.{/n}
 "It didn't do that yesterday," {n}she says.{/n}
-"Yesterday we were holding it open with a bucket," {n}Deren reminds her.{/n}
+"Yesterday we were holding it open with a bucket," {n}Dervan reminds her.{/n}
 "Then it was more polite yesterday."
 {n}The sleeping platforms have clean coverings. Mara's warning has been remembered: a woven mat lies near the door, waiting for something beneath it to keep the cold from coming through.{/n}
 {n}Ember gives Vessa the sacks and asks whether anyone has come yet. Two people are expected tonight. One is an older traveler with a painful leg; the other has been sleeping outside the kitchen where he hopes to work.{/n}
 "Neither needs another night with a door that changes its mind," {n}Vessa says.{/n}''',
       c('"Look at how the door moves when the floor is stepped on."', "inspect"),
       c('"Ask a carpenter to examine it. We can finish the mat while we wait."', "carpenter")),
-    n("inspect", "Narrator", '''{n}Deren opens and closes the door while Vessa crosses the threshold. Its lower edge catches, then lifts away from the latch. The boards seem to move together, but the scrape on the floor is uneven.{/n}
+    n("inspect", "Narrator", '''{n}Dervan opens and closes the door while Vessa crosses the threshold. Its lower edge catches, then lifts away from the latch. The boards seem to move together, but the scrape on the floor is uneven.{/n}
 {n}Ember waits with the mat rolled beside her. She watches your face rather than offering an answer she does not have.{/n}''',
       c('[Perception] Follow the scrape and identify what lifts the door clear of its latch.',
         check=dict(Skill="SkillPerception", DC=24, CommanderOnly=True, Success="wedge", Failure="uncertain")),
       c('"I would rather ask the carpenter than guess."', "carpenter")),
-    n("wedge", "Narrator", '''{n}A loose chip has worked beneath the door's lower hinge. Each time the threshold flexes, the chip pushes the door slightly upward. You point it out. Deren holds the door while Vessa works the chip free with the end of a spoon.{/n}
-{n}The latch catches properly. Vessa crosses the boards again, then asks Deren to try. The door stays shut.{/n}
+    n("wedge", "Narrator", '''{n}A loose chip has worked beneath the door's lower hinge. Each time the threshold flexes, the chip pushes the door slightly upward. You point it out. Dervan holds the door while Vessa works the chip free with the end of a spoon.{/n}
+{n}The latch catches properly. Vessa crosses the boards again, then asks Dervan to try. The door stays shut.{/n}
 "We should still replace the loose screw," {n}she says.{/n} "But now I can do it tomorrow in daylight."
 {n}Ember tests the handle gently, pleased by the unremarkable click.{/n}
 "That is a good sound. I don't think I noticed it before."
-{n}The time saved leaves you free to make the cold corner more comfortable. Vessa finds a spare covering, and Deren offers to carry the older traveler's bundle from the place where she is waiting.{/n}''',
+{n}The time saved leaves you free to make the cold corner more comfortable. Vessa finds a spare covering, and Dervan offers to carry the older traveler's bundle from the place where she is waiting.{/n}''',
       c('"Finish the mat and help meet the arriving traveler."', "early")),
     n("uncertain", "Ember", '''{n}The scrape does not tell you enough. You test the threshold once more, then step aside rather than make the hinge bear an experiment. Vessa nods when you say you cannot identify the cause.{/n}
 "I can ask the carpenter. He will come after his present work. It means we will be late opening."
 {n}Ember looks at the sleeping platforms.{/n}
 "We should tell the people who are coming. They won't know where to go if they find the door shut."
-{n}Deren takes the message to the kitchen. You remain to help Vessa arrange the mat. The carpenter arrives near dusk, discovers a chip beneath the loose hinge, and repairs the fastening. He charges for the visit. Vessa pays without looking particularly happy about it.{/n}
+{n}Dervan takes the message to the kitchen. You remain to help Vessa arrange the mat. The carpenter arrives near dusk, discovers a chip beneath the loose hinge, and repairs the fastening. He charges for the visit. Vessa pays without looking particularly happy about it.{/n}
 "I had hoped to buy another covering," {n}she says.{/n} "That will wait. A closed door will help more tonight."
 {n}Ember gathers the unused sacks. There are enough to make a smaller pad for the cold corner, though it will be less comfortable than the covering.{/n}''',
       c('"Make the pad and wait for the guests to return."', "late")),
-    n("carpenter", "Ember", '''{n}Vessa asks Deren to fetch the carpenter. While he is gone, you help Ember lay the cleaned sacks beneath the mat. She tries the corner herself, sitting for a moment before deciding one part needs folding twice.{/n}
+    n("carpenter", "Ember", '''{n}Vessa asks Dervan to fetch the carpenter. While he is gone, you help Ember lay the cleaned sacks beneath the mat. She tries the corner herself, sitting for a moment before deciding one part needs folding twice.{/n}
 "Mara was right. You can feel it through the floor."
-{n}The carpenter arrives with Deren and a small bag of tools. He finds a chip beneath the loose hinge, works it free, and replaces the screw that allowed it to move. The charge leaves Vessa with less money for another covering, but the door stays closed while you test the threshold.{/n}
-{n}You finish in time to receive the guests. Deren goes to help the older traveler with her bundle, while Ember asks Vessa whether the remaining sacks can make another pad.{/n}
+{n}The carpenter arrives with Dervan and a small bag of tools. He finds a chip beneath the loose hinge, works it free, and replaces the screw that allowed it to move. The charge leaves Vessa with less money for another covering, but the door stays closed while you test the threshold.{/n}
+{n}You finish in time to receive the guests. Dervan goes to help the older traveler with her bundle, while Ember asks Vessa whether the remaining sacks can make another pad.{/n}
 "Yes. We can make do with that tonight."
 {n}Ember holds one end while you fold the other. The result is inelegant and usefully thick.{/n}''',
       c('"Put the extra pad where the traveler can reach it."', "on_time")),
-    n("early", "Narrator", '''{n}The older traveler introduces herself as Tessa. She is grateful for help with her bundle and less grateful for suggestions about where to put her painful leg. Ember stops giving those when Tessa asks, then holds the cushion where she points.{/n}
-{n}The other guest arrives while Vessa is still explaining the room. His name is Oren. He takes the place near the door before Tessa can apologize for wanting the warmer one.{/n}
+    n("early", "Narrator", '''{n}The older traveler introduces herself as Tesvara. She is grateful for help with her bundle and less grateful for suggestions about where to put her painful leg. Ember stops giving those when Tesvara asks, then holds the cushion where she points.{/n}
+{n}The other guest arrives while Vessa is still explaining the room. His name is Oren. He takes the place near the door before Tesvara can apologize for wanting the warmer one.{/n}
 "I'm used to outside," {n}he says.{/n}
 "You can be used to this instead," {n}Ember answers.{/n}
-{n}Deren puts the spare covering on the table for them to decide how to share. Vessa records where it belongs before she leaves.{/n}''',
+{n}Dervan puts the spare covering on the table for them to decide how to share. Vessa records where it belongs before she leaves.{/n}''',
       c('"Leave them with a working door and the extra covering."', flags=("ember.door_found", "ember.room_opened"))),
-    n("late", "Narrator", '''{n}The guests return after Deren finds them shelter beside the kitchen for the delay. Tessa is tired and cross, although she thanks him for carrying her bundle. Oren says very little until he sees the clean place prepared for him.{/n}
-{n}Ember apologizes that they had to wait. Tessa asks for a drink rather than an explanation. Ember brings one and sits nearby only after asking whether company would help.{/n}
-{n}The door holds when Vessa closes it. The extra pad is smaller than the covering she meant to buy, but Tessa puts it under her leg and sighs with relief.{/n}
+    n("late", "Narrator", '''{n}The guests return after Dervan finds them shelter beside the kitchen for the delay. Tesvara is tired and cross, although she thanks him for carrying her bundle. Oren says very little until he sees the clean place prepared for him.{/n}
+{n}Ember apologizes that they had to wait. Tesvara asks for a drink rather than an explanation. Ember brings one and sits nearby only after asking whether company would help.{/n}
+{n}The door holds when Vessa closes it. The extra pad is smaller than the covering she meant to buy, but Tesvara puts it under her leg and sighs with relief.{/n}
 "That will do. Thank you."
 {n}Ember leaves with you, carrying the empty water jug back to the kitchen.{/n}''',
       c('"Help put things away after the delayed opening."', flags=("ember.door_uncertain", "ember.room_opened"))),
-    n("on_time", "Narrator", '''{n}Tessa arrives with her bundle in Deren's arms. Oren follows, looking so cautiously at the clean sleeping place that Vessa has to tell him twice that it is the one he may use.{/n}
-{n}Ember offers the extra pad. Tessa accepts it and explains where it will help her leg. When Ember begins to suggest something else, Tessa asks her to wait until she has tried sitting down.{/n}
+    n("on_time", "Narrator", '''{n}Tesvara arrives with her bundle in Dervan's arms. Oren follows, looking so cautiously at the clean sleeping place that Vessa has to tell him twice that it is the one he may use.{/n}
+{n}Ember offers the extra pad. Tesvara accepts it and explains where it will help her leg. When Ember begins to suggest something else, Tesvara asks her to wait until she has tried sitting down.{/n}
 "Oh. Yes. I can wait."
 {n}She does. Outside, Vessa shuts the door and tests it one final time. The room has opened when promised, though another covering will have to wait until she can afford it.{/n}
 {n}Ember walks back beside you, pleased and tired enough to leave some of the walk quiet.{/n}''',
@@ -225,10 +225,10 @@ s("the_missing_covering", "Who has to answer",
   '"You said you wanted help at Vessa\'s room."', [
     n("start", "Ember", '''"I want you to listen. You can help with that, can't you?"
 {n}Ember walks beside you quickly, then slows when she notices. She has a piece of folded cloth in her hand. One edge is marked with dark blue stitches.{/n}
-"Vessa has lost a covering. Deren thinks she means he took it. She says she hasn't said that. But she keeps asking where he went yesterday."
+"Vessa has lost a covering. Dervan thinks she means he took it. She says she hasn't said that. But she keeps asking where he went yesterday."
 {n}She unfolds the corner enough to show the stitches.{/n}
 "This is how she marks the things that belong in the room. She gave me this bit so I would know what to look for. I haven't found it."
-{n}At the doorway, Deren is putting his few belongings into a bag. Vessa stands beside the table, visibly trying to choose each word before it leaves her mouth.{/n}
+{n}At the doorway, Dervan is putting his few belongings into a bag. Vessa stands beside the table, visibly trying to choose each word before it leaves her mouth.{/n}
 "I need to ask everyone who had the key," {n}she says.{/n} "You had it. That is why I am asking."
 "And if it was someone who looked more respectable? Would he be packing?"
 "I didn't tell you to pack."
@@ -236,63 +236,63 @@ s("the_missing_covering", "Who has to answer",
       c('"Ask what Ember would like to say before joining the argument."', "ember"),
       c('"Vessa, tell me what is missing and when you last saw it."', "facts")),
     n("ember", "Ember", '''"I don't know whether he took it. I don't want to say I know when I don't."
-{n}Deren looks away. Ember notices and turns toward him.{/n}
+{n}Dervan looks away. Ember notices and turns toward him.{/n}
 "I wanted you to stay while we looked. Going away won't help Vessa find it. And it won't tell us what happened."
 "Staying while everybody looks at me won't either."
 "Then perhaps we can look at the room."
 {n}She puts the marked scrap on the table. Vessa sits, as though the suggestion has given her permission to stop standing guard over a bag she never meant to search.{/n}
 "That would help," {n}she says.{/n} "I would like to explain what I actually know."
-{n}Deren does not unpack. He sets the bag beside the door and remains to listen.{/n}''',
+{n}Dervan does not unpack. He sets the bag beside the door and remains to listen.{/n}''',
       c('"Hear Vessa\'s account."', "facts")),
     n("facts", "Narrator", '''{n}Vessa laid a donated covering on the table yesterday. It had the blue corner mark, and a patched stripe down one side. She left the room to help at the kitchen. When she returned, it was gone.{/n}
-{n}Tessa has moved on with a cart going toward her relatives. Oren has begun working at the kitchen and still sleeps here. Deren was cleaning the platform nearest the door. Two other people came to ask about a bed. Vessa knows only one of their names.{/n}
+{n}Tesvara has moved on with a cart going toward her relatives. Oren has begun working at the kitchen and still sleeps here. Dervan was cleaning the platform nearest the door. Two other people came to ask about a bed. Vessa knows only one of their names.{/n}
 "I should have stayed," {n}she says.{/n}
 "You can't stay here all day," {n}Ember answers.{/n} "You have to eat too."
-{n}Deren says he saw someone take a rolled bundle through the door. He thought it was Tessa's. He did not ask. Now he is angry that Vessa seems to consider this less satisfactory than a confession.{/n}
+{n}Dervan says he saw someone take a rolled bundle through the door. He thought it was Tesvara's. He did not ask. Now he is angry that Vessa seems to consider this less satisfactory than a confession.{/n}
 "I haven't asked you to confess," {n}she says.{/n}
 "You've asked me four times."
 {n}Ember looks from one to the other, then at you. She wants the covering found. She also wants the two people in front of her to stop hurting each other while they try.{/n}''',
       c('"Ask Oren what he saw. Keep the question about the covering."', "oren"),
       c('"Search the room with Vessa first. It may have been put away."', "search"),
-      c('"Deren should show us his bag and end the suspicion."', "bag")),
+      c('"Dervan should show us his bag and end the suspicion."', "bag")),
     n("bag", "Ember", '''"That would show us his bag," {n}Ember says.{/n} "It wouldn't show us yesterday."
-{n}Deren puts a hand on the fastening. He looks ready to open it, though nothing in his expression suggests that he wants to.{/n}
+{n}Dervan puts a hand on the fastening. He looks ready to open it, though nothing in his expression suggests that he wants to.{/n}
 "Do you want to?" {n}Ember asks him.{/n}
 "I want to stop being looked at."
 {n}She turns back to you.{/n}
 "That isn't the same answer. Can we ask Oren first? He was here too."
 {n}Vessa presses her lips together, then nods.{/n}
 "Yes. I have let the room become a place where only one person is being asked to explain himself. That wasn't what I meant to do."
-{n}Deren takes his hand off the bag. He does not thank anyone. Ember does not appear to expect him to.{/n}''',
+{n}Dervan takes his hand off the bag. He does not thank anyone. Ember does not appear to expect him to.{/n}''',
       c('"Leave the bag closed and ask Oren."', "oren")),
-    n("search", "Narrator", '''{n}Vessa opens the cupboard and lifts the coverings from the platforms. Deren holds the table steady while you look beneath it. Ember checks the clean sacks without unfolding the ones already arranged for Oren.{/n}
+    n("search", "Narrator", '''{n}Vessa opens the cupboard and lifts the coverings from the platforms. Dervan holds the table steady while you look beneath it. Ember checks the clean sacks without unfolding the ones already arranged for Oren.{/n}
 {n}You find a wooden button and a spoon nobody admits owning. The missing covering is not in the room. Vessa checks her written list again, then puts it down.{/n}
 "I wanted to discover I had miscounted."
 "You still might have forgotten something," {n}Ember says.{/n} "Oren was here. He could remember a different bit."
-{n}Deren picks up the spoon and places it beside the cupboard. He leaves his bag where it is, but no longer holds its fastening.{/n}
+{n}Dervan picks up the spoon and places it beside the cupboard. He leaves his bag where it is, but no longer holds its fastening.{/n}
 "I'll come," {n}he says.{/n} "I want to hear the question the first time someone asks it."''',
       c('"Go to the kitchen together."', "oren")),
     n("oren", "Ember", '''{n}Oren is scraping a pot when you arrive. He sees Vessa's face and puts the scraper down before she speaks.{/n}
 "The striped covering? I lent it to the woman with the cart. Her little brother was shivering. She said she would bring it back."
 "You did not ask me," {n}Vessa says.{/n}
 "You weren't there. I thought helping was what the room was for."
-{n}Deren laughs once, without amusement. Ember waits until Oren has finished explaining where the cart went.{/n}
+{n}Dervan laughs once, without amusement. Ember waits until Oren has finished explaining where the cart went.{/n}
 "You wanted him to be warm," {n}she says.{/n} "Now somebody else might be cold. We have to look for it."
 "I didn't take it for myself."
 "I know. Where did they say they were staying?"
 {n}Oren gives a description of a yard near the city entrance. Vessa knows it. She asks him to come after his work and help her see whether the cart is still there.{/n}
-{n}Deren looks ready to leave. Before he does, Vessa says his name.{/n}''',
-      c('"Let Vessa answer Deren for herself."', "apology")),
+{n}Dervan looks ready to leave. Before he does, Vessa says his name.{/n}''',
+      c('"Let Vessa answer Dervan for herself."', "apology")),
     n("apology", "Ember", '''"I should have asked him as carefully as I asked you," {n}Vessa says.{/n} "I'm sorry."
-{n}Deren looks at her for a long moment.{/n}
+{n}Dervan looks at her for a long moment.{/n}
 "You knew where I was sleeping. It was easier to keep asking me."
 "Yes."
-{n}Ember waits beside the table while Deren rubs a thumb along his bag's fastening.{/n}
+{n}Ember waits beside the table while Dervan rubs a thumb along his bag's fastening.{/n}
 "I want my bag somewhere I can shut a door," {n}he says at last.{/n} "A different door. I can finish the work I promised. I don't want to sleep there tonight."
 {n}Vessa says she understands. Ember asks whether he wants help finding somewhere else. He considers the offer, then nods.{/n}
 "You can ask at the yard with the cart. One question while you're there. Not a speech about me."
 "I can ask one question," {n}Ember says.{/n} "I might need two if they don't understand the first."
-{n}That earns a reluctant smile. Deren picks up his tools and returns to finish the platform.{/n}''',
+{n}That earns a reluctant smile. Dervan picks up his tools and returns to finish the platform.{/n}''',
       c('"Offer to go with Ember and look for the missing covering."', flags=("ember.covering_misgiven", "ember.deren_distance"))),
 ], requires=("ember.room_opened", "ember.the_cold_side"))
 
@@ -338,24 +338,24 @@ s("a_question_at_the_yard", "The promise someone else made",
 "It isn't nothing," {n}she says when Selvi looks at it.{/n} "He can use it over his shoulders when he wakes."
 {n}The walk is slow. Vessa goes ahead to prepare the extra place. By the time you reach the room, the boy is yawning so widely that Ember begins to yawn too.{/n}
 {n}Selvi settles him with the striped covering, then thanks Vessa in a voice that still sounds tired and defensive. Vessa nods and points out where the water is kept.{/n}
-{n}Outside, Ember remembers Deren's request. You go back to the yard and ask about a place for an adult worker to sleep. There is one in a shared loft. The owner wants to meet him before agreeing. Ember carries that answer back exactly as it was given.{/n}''',
-      c('"Finish the evening by taking Deren the offer to meet."', flags=("ember.covering_room", "ember.covering_settled"))),
+{n}Outside, Ember remembers Dervan's request. You go back to the yard and ask about a place for an adult worker to sleep. There is one in a shared loft. The owner wants to meet him before agreeing. Ember carries that answer back exactly as it was given.{/n}''',
+      c('"Finish the evening by taking Dervan the offer to meet."', flags=("ember.covering_room", "ember.covering_settled"))),
     n("cart", "Ember", '''{n}Vessa names the time she will return in the morning. Selvi repeats it back. Oren promises to meet her there before going to work, and this time asks whether Vessa wants him to promise anything else.{/n}
 "Only what we've just said."
-{n}Ember asks the yard owner about Deren. There is a place in a shared loft, but the owner wants to meet him first. She thanks the man and does not add a recommendation that Deren asked her not to make.{/n}
+{n}Ember asks the yard owner about Dervan. There is a place in a shared loft, but the owner wants to meet him first. She thanks the man and does not add a recommendation that Dervan asked her not to make.{/n}
 {n}On the walk back, Oren complains about the kitchen floor. Ember listens, then asks which part is least cold. He laughs despite himself.{/n}
 "You aren't going to tell me it's my own fault?"
 "You know what you did. I wanted to know where you were going to sleep."
 {n}At the corner, she gives him the extra sack pad you helped carry from the room. Vessa has agreed it can go with him for the night. Oren checks that he heard this correctly before taking it.{/n}''',
-      c('"Take Deren the invitation to meet the yard owner."', flags=("ember.covering_cart", "ember.covering_settled"))),
+      c('"Take Dervan the invitation to meet the yard owner."', flags=("ember.covering_cart", "ember.covering_settled"))),
 ], requires=("ember.covering_misgiven", "ember.the_missing_covering"))
 
 
-s("what_did_not_mend", "Deren's other door",
-  '"Did Deren find somewhere to sleep?"', [
+s("what_did_not_mend", "Dervan's other door",
+  '"Did Dervan find somewhere to sleep?"', [
     n("start", "Ember", '''"Yes. The loft has a window. He told me that first."
 {n}Ember has brought two small rolls from the kitchen. She gives you one after explaining that the cook said they were for the people helping Vessa. Her own roll has already lost a corner.{/n}
-"He doesn't have to keep his bag by his feet now. The man at the yard gave him a place on a shelf. Deren said it is a very good shelf."
+"He doesn't have to keep his bag by his feet now. The man at the yard gave him a place on a shelf. Dervan said it is a very good shelf."
 {n}She considers this while chewing.{/n}
 "I think he meant it. I used to know which places stayed dry when it rained. Sometimes a dry place is the first thing you want to tell somebody about."
 {n}Vessa passes on her way back from the room. She stops to tell you how the arrangement with Selvi ended.{/n}''',
@@ -365,14 +365,14 @@ s("what_did_not_mend", "Deren's other door",
 "She asked whether she could bring something if she came this way again," {n}Vessa says.{/n} "I said to ask what we needed when she arrived. She looked relieved not to be given a list to carry away."
 {n}Oren has helped wash the used cloths. He now asks before lending even a spoon, which Vessa expects will become less irritating once he trusts himself to distinguish a spoon from a bed covering.{/n}
 {n}Ember asks whether Selvi's brother slept well. He did. That answer makes her smile before she asks anything else.{/n}''',
-      c('"Ask whether Deren has returned to help."', "distance")),
+      c('"Ask whether Dervan has returned to help."', "distance")),
     n("cart", "Narrator", '''{n}Oren met Vessa at the yard before work. Selvi had the covering folded and ready. Her brother was wrapped in two thinner cloths, one newly traded from another traveler. Oren carried the striped covering back, then washed it before going to the kitchen.{/n}
 "He complained about the floor," {n}Vessa says.{/n} "Then he asked where to put the clean covering. I consider that an improvement."
 {n}Selvi's cart left later that morning. She promised nothing more before going. Vessa seems content with the object actually returned.{/n}
 {n}Ember has finished her roll. She rubs the crumbs from her fingers over a bare patch of paving where the sparrows can find them.{/n}
 "I'm glad they found the other cloth. I kept thinking about his feet sticking out."
 {n}Vessa tells her that the boy was asleep when they came for the covering. Ember smiles at that.{/n}''',
-      c('"Ask whether Deren has returned to help."', "distance")),
+      c('"Ask whether Dervan has returned to help."', "distance")),
     n("distance", "Ember", '''"He finished the platform," {n}Vessa says.{/n} "He said he would. He hasn't come back since."
 {n}She looks tired, and more hurt than she seems to think she has a right to be.{/n}
 "I apologized. I meant it. I know he doesn't owe me a friendly answer, but I would still like one."
@@ -380,12 +380,12 @@ s("what_did_not_mend", "Deren's other door",
 "I can ask whether he wants to see you. I don't want to tell him that he does."
 "Don't ask today. Let him settle."
 {n}Vessa goes back to her work. Ember remains on the wall beside you, turning the empty paper from the rolls over in her lap.{/n}
-"I wanted everyone to stay friends. Now the covering is back and Deren has a room, but I didn't get the thing I was wishing for."
+"I wanted everyone to stay friends. Now the covering is back and Dervan has a room, but I didn't get the thing I was wishing for."
 {n}She looks at you.{/n}
 "I know those are good things. I can know that and still wish the other one."''',
       c('"Tell me what you miss about having them together."', "miss"),
       c('"Would you like company while you feel disappointed? We do not have to fix it."', "company")),
-    n("miss", "Ember", '''"They made each other laugh. When they were carrying the table, Deren said its short leg was trying to go home. Vessa told him to ask where it lived and take the rest with it."
+    n("miss", "Ember", '''"They made each other laugh. When they were carrying the table, Dervan said its short leg was trying to go home. Vessa told him to ask where it lived and take the rest with it."
 {n}Ember smiles at the memory, then looks down.{/n}
 "I don't know whether they will do that again. I keep wanting to remind them, as though they have forgotten. But they remember. They were there."
 {n}She folds the paper into a crooked square.{/n}
@@ -631,7 +631,7 @@ s("where_she_is_needed", "Someone who can say no",
   '"Have you decided where to spend the afternoon?"', [
     n("start", "Ember", '''"I was going to ask you. Then I thought I should decide what I wanted before asking."
 {n}Ember has a little bag beside her. It contains a clean cloth, the original letter to Anet, and a few things she has found worth keeping. She has taken them out and put them back with more attention than packing requires.{/n}
-"Deren asked whether I wanted to see the window in his loft. Vessa asked whether I could come to the room. Pella wants her basket back, which isn't really an invitation. I should do that first."
+"Dervan asked whether I wanted to see the window in his loft. Vessa asked whether I could come to the room. Pella wants her basket back, which isn't really an invitation. I should do that first."
 {n}She looks toward the street.{/n}
 "There are other people asking too. I used to think being wanted always meant I should go. Now I think it means somebody wants me to go. I still have to answer."
 {n}She gives you a small, uncertain smile.{/n}''',
@@ -644,42 +644,42 @@ s("where_she_is_needed", "Someone who can say no",
 {n}Ember looks at you.{/n}
 "If you visit somebody because you want to see them, they might tell you something they like. If you visit because everybody has stopped until you arrive, you spend all your time trying to make them begin again."
 {n}She smiles at the bag, remembering something.{/n}
-"Deren wanted me to see a shelf. It was a very ordinary thing to want from me. I liked being asked."
+"Dervan wanted me to see a shelf. It was a very ordinary thing to want from me. I liked being asked."
 {n}She closes the bag and leaves it beside her rather than getting up at once.{/n}''',
       c('"Ask which ordinary invitation she wants to accept."', "today")),
     n("law", "Ember", '''"I am. I don't want to learn to like it when someone is afraid of me."
 {n}She looks at her hands. The pause is longer than the words that follow.{/n}
 "I wanted the fighting to stop. It stopped. I can be glad people lived and still wish I had not frightened them. If someone says I should do it again every time they won't listen, I don't want that to become easy to hear."
 {n}You sit with her while she finds the next thought.{/n}
-"Deren knows I can do things he can't. He still told me not to make a speech about him. I was glad he could say that. I would be sad if all my friends started thanking me before they knew what I was going to do."
+"Dervan knows I can do things he can't. He still told me not to make a speech about him. I was glad he could say that. I would be sad if all my friends started thanking me before they knew what I was going to do."
 {n}She turns the bag's fastening between her fingers.{/n}
 "You can tell me if I make you afraid. I might not like hearing it. I would still want to know."
 {n}There is no new spell in the room, and no request for her to prove what the old one accomplished.{/n}''',
       c('"Agree to speak honestly, then ask what she wants today."', "today")),
     n("today", "Ember", '''"I want to see the window. He asked because he wanted to show me something, not because he thought I could make the room better."
 {n}She picks up Pella's basket, which has been waiting at her feet.{/n}
-"And then I want a little time with you. We can do the two things without making Deren come to Vessa's room first."
-{n}You return the basket, then walk to the yard. Deren meets you below the loft and asks you to wait while he checks that the other lodger is willing to receive visitors. She is, provided nobody touches the boots drying by the window.{/n}
-{n}The window looks over a low wall and several yards. There is nothing magnificent about it. Deren has put a small jar on the sill with a green cutting in it.{/n}
+"And then I want a little time with you. We can do the two things without making Dervan come to Vessa's room first."
+{n}You return the basket, then walk to the yard. Dervan meets you below the loft and asks you to wait while he checks that the other lodger is willing to receive visitors. She is, provided nobody touches the boots drying by the window.{/n}
+{n}The window looks over a low wall and several yards. There is nothing magnificent about it. Dervan has put a small jar on the sill with a green cutting in it.{/n}
 "Mara gave me that," {n}he says.{/n} "I carried water for the kitchen. She said it might take root."
 {n}Ember bends to look at the cutting. A fine pale root has begun to reach down through the water.{/n}''',
-      c('"Ask Deren what he likes about the view."', "view"),
-      c('"Let Ember and Deren talk while you look out."', "listen")),
-    n("view", "Ember", '''"I can see the gate before someone knocks," {n}Deren says.{/n} "That sounds suspicious, doesn't it?"
+      c('"Ask Dervan what he likes about the view."', "view"),
+      c('"Let Ember and Dervan talk while you look out."', "listen")),
+    n("view", "Ember", '''"I can see the gate before someone knocks," {n}Dervan says.{/n} "That sounds suspicious, doesn't it?"
 "It sounds useful," {n}Ember answers.{/n}
 {n}He shows her the shelf, the place where the roof stays dry, and the awkward nail that caught his shirt on the first night. She laughs at his imitation of the shirt refusing to let him go to work.{/n}
-{n}The visit is short. Deren has things to do, and the other lodger wants to close the window before the evening cools. At the door he tells Ember that she may come again, though not every day. He is enjoying having somewhere he does not have to explain himself.{/n}
+{n}The visit is short. Dervan has things to do, and the other lodger wants to close the window before the evening cools. At the door he tells Ember that she may come again, though not every day. He is enjoying having somewhere he does not have to explain himself.{/n}
 "Then I will ask first," {n}she says.{/n}
 {n}Outside, she seems pleased by the qualification rather than rejected by it.{/n}
 "He can say when he wants company. That is a good thing about having a door."''',
       c('"Walk back together."', flags=("ember.deren_visited", "ember.wishes_answered"))),
-    n("listen", "Narrator", '''{n}Deren asks about the missing covering. Ember tells him what happened without turning the account into a reason to visit Vessa. He listens, nods, and says he is glad the room is working.{/n}
+    n("listen", "Narrator", '''{n}Dervan asks about the missing covering. Ember tells him what happened without turning the account into a reason to visit Vessa. He listens, nods, and says he is glad the room is working.{/n}
 {n}Then he shows Ember how the window catches the afternoon light. The cutting's shadow makes a shape on the wall much larger than the plant itself. She moves one leaf to see whether the shadow changes as she expects.{/n}
 "It is very tall over there," {n}she says.{/n}
 "Cheaper than growing a tree."
-{n}They laugh. When the visit ends, Deren says she may come again if she asks when he is free. Ember agrees without adding an expectation that he become easier to visit somewhere else.{/n}
+{n}They laugh. When the visit ends, Dervan says she may come again if she asks when he is free. Ember agrees without adding an expectation that he become easier to visit somewhere else.{/n}
 {n}You leave the loft as it was, with a cutting in a jar and two people who might enjoy another ordinary conversation.{/n}''',
-      c('"Return with Ember, without carrying another request for Deren."', flags=("ember.deren_visited", "ember.wishes_answered"))),
+      c('"Return with Ember, without carrying another request for Dervan."', flags=("ember.deren_visited", "ember.wishes_answered"))),
 ], requires=("ember.answer_kept", "ember.an_answer_from_elsewhere"), chapters=(5,), delay=48)
 
 
@@ -847,7 +847,7 @@ def ending(id, title, text, requires, forbids=(), owner="Epilogue"):
 ORDINARY = ("ember.closed", "ember_dead", "ember_gone", "ember.absent", "sacrifice", "ascended", "ember.native_devastated")
 ending("ending_good_friend", "The visits she chose", '''{n}The Commander remained someone Ember could ask for an afternoon without first finding a reason to make it useful. Sometimes they talked about people she had helped. Sometimes she wanted to complain that Soot had stolen something, or show the Commander a small discovery that would mean very little to anybody else.{/n}
 {n}The Redeemed continued to make choices of their own. Ember was glad when she heard good news of them, worried when the news was difficult, and unwilling to become the person whose instructions replaced their own judgment. The Commander had seen her practice saying what she wanted even when somebody hoped for a different answer.{/n}
-{n}Deren kept his distance from Vessa for a time. The room still gave travelers somewhere to sleep. Ember visited where she was invited, asked before bringing other people, and occasionally forgot to do either as carefully as she meant to. Her friends could tell her. She did not always find it pleasant, but she listened.{/n}
+{n}Dervan kept his distance from Vessa for a time. The room still gave travelers somewhere to sleep. Ember visited where she was invited, asked before bringing other people, and occasionally forgot to do either as carefully as she meant to. Her friends could tell her. She did not always find it pleasant, but she listened.{/n}
 {n}There were days when the Commander wanted company and days when Ember did. They learned to ask. The invitations became a familiar part of lives that contained much more than their conversations.{/n}''',
     ("ember.campaign_developed", "ember.native_q3_complete", "ember.native_good"), ORDINARY)
 ending("ending_law_friend", "A friend who could disagree", '''{n}Ember did not grow comfortable with people being afraid of her. She remembered the fighting that had stopped and the lives preserved, but she also remembered how quickly fear could make someone agree before they had decided what they believed.{/n}

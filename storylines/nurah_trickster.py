@@ -872,7 +872,9 @@ def integrate(payload):
         raise ValueError("Conflicting derived key: " + P_CODA_ALIVE)
     derived[P_CODA_ALIVE] = alive
     seen = payload.setdefault("SeenCues", {})
-    for key, cues in ((EXEC_SIEGE, ["fc57e59b63872994089e92771068f3ad"]), (EXEC_PRISON, ["01592bbdcd954a243bcc4a50b6fe6dc6"])):
+    for key, cues in ((EXEC_SIEGE, ["fc57e59b63872994089e92771068f3ad"]), (EXEC_PRISON, ["01592bbdcd954a243bcc4a50b6fe6dc6"]),
+                      (PULURA_BETRAYAL, ["76f9bab08efef874eb2837acd7ed31e8"]),
+                      (PULURA_WINK, ["e5c3183a2c6252f4ebe3551db6dfd9ed"])):
         if seen.get(key, cues) != cues:
             raise ValueError("Conflicting seen cue: " + key)
         seen[key] = cues
@@ -1076,3 +1078,142 @@ for _scene in SCENES:
             _scene['ForbidOverrides'] = {
                 'camellia.killed': 'camellia.trickster.returned',
                 'camellia.dead': 'camellia.trickster.returned'}
+
+
+# R4-nurah D03-D09: authored recollections, not changes to the Pulura encounter.
+# Native enGB 57b14fa6-19f5-4cda-b240-89902dcbf8c1 (betrayal) and
+# 2e7e5ad2-8930-45a2-9a1e-b5ba5a0a8057 (recruited wink). Read the actual
+# appearances: recruitment alone never claims the Commander has visited Pulura.
+PULURA_BETRAYAL = 'nurah.native.pulura_betrayal_seen'
+PULURA_WINK = 'nurah.native.pulura_wink_seen'
+
+
+def _runaway_recollections(target):
+    # Authoring helpers reuse choice dictionaries across hosts and term pages.
+    # Isolate each page before gating its incoming answers.
+    target['Nodes'] = [copy.deepcopy(node) for node in target['Nodes']]
+    nodes = {node['Id']: node for node in target['Nodes']}
+    opening = nodes['start']
+    # Keep the old entry and answer indices. The manuscript now follows her
+    # arrival, with exhaustive variants instead of ordinary conditional paragraphs.
+    opening['Text'] = opening['Text'].split('\n{n}She holds up the parcel:', 1)[0]
+    opening['Text'] = opening['Text'].replace(' Not with you. You forge.', '')
+    manuscript = {
+        'ghost': ('{n}Nurah opens the pages at your forged dedication. '
+                  'She has underlined the insult to herself.{/n} '
+                  '"Kept it. It makes the rest of you harder to believe."\n' + TERMS_TEXT),
+        'pardon': ('{n}Nurah opens the pages at the account of her imprisonment. '
+                   'Beside your name she has drawn a tiny upside-down seal.{/n} '
+                   '"That pardon was a disgrace. My corrections go in the book too. '
+                   'I won\'t have anyone thinking I let that spelling pass."\n' + TERMS_TEXT),
+    }
+
+    def manuscript_choices():
+        return [c('Continue', 'manuscript.ghost.signed', requires=(GHOST, SIGNED)),
+                c('Continue', 'manuscript.ghost', requires=(GHOST,), forbids=(SIGNED,)),
+                c('Continue', 'manuscript.pardon.signed', requires=(SIGNED,), forbids=(GHOST,)),
+                c('Continue', 'manuscript.pardon', forbids=(GHOST, SIGNED))]
+
+    # Existing answers still distinguish signed/unsigned proofs. Append the
+    # pardon alternatives and the native-event responses after those two.
+    for old, new in zip(opening['Choices'], manuscript_choices()[:2]):
+        old['Next'] = new['Next']
+        old['Requires'].append(GHOST)
+        old['Forbids'].extend((PULURA_WINK, PULURA_BETRAYAL))
+    for choice in manuscript_choices()[2:]:
+        choice['Forbids'].extend((PULURA_WINK, PULURA_BETRAYAL))
+        opening['Choices'].append(choice)
+    opening['Choices'].extend([
+        c('"That wink at Pulura. What were you playing at?"', 'pulura.wink',
+          requires=(PULURA_WINK,)),
+        c('"You were gutting people with Mutasafen."', 'pulura.betrayal',
+          requires=(PULURA_BETRAYAL,), forbids=(PULURA_WINK,)),
+    ])
+    for history, text in manuscript.items():
+        for signed in (False, True):
+            target['Nodes'].append(nu('manuscript.' + history + ('.signed' if signed else ''),
+                text, c('Continue', 'terms_signed' if signed else 'terms')))
+
+    target['Nodes'].extend([
+        nu('pulura.wink',
+           '"Mutasafen likes an audience. I gave him one that could kill him. '
+           'You did notice the wink, then? I was beginning to think I\'d wasted it." '
+           '{n}She opens her account of Pulura and scratches out the word "Master" '
+           'before Mutasafen\'s name.{/n} "There. Let his friends read that. '
+           'I\'m tired of pretending to admire that hornheaded bore."',
+           *manuscript_choices()),
+        nu('pulura.betrayal',
+           '"Yes. They screamed, Commander. Stargazers bleed like everyone else." '
+           '{n}She opens her account of Pulura, crosses out "the unfortunate dead", '
+           'and writes "the people we gutted" above it.{/n} '
+           '"You want it plain? There it is, with my name beside his. '
+           'The crusaders who buy this will want my head. Let them. '
+           'I want them to know who held the knife." '
+           '{n}She pushes the page toward you.{/n} "Still want the book?"',
+           *manuscript_choices()),
+    ])
+
+    pardon_propositions = {
+        'done': ('"Then we have a book." {n}She ties the pages together and hooks a finger '
+                 'into your collar.{/n} "You left me that filthy pardon. I corrected it, '
+                 'then I left your cell. Neither makes me yours. '
+                 'Coming back through Drezen\'s gates with a price on my head was my idea too." '
+                 '{n}She pulls you down to her height.{/n} '
+                 '"I wanted another look at the bastard who thought I\'d sit quietly '
+                 'beside a bad forgery. Tonight I want rather more than a look."'),
+        'partners': ('"Our names together. That will make the crusaders choke." '
+                     '{n}Nurah laughs and drags her ink-stained thumb down your collar.{/n} '
+                     '"You left a pardon in my cell. I made it worth keeping. '
+                     'Now you want your name beside the traitor\'s? I\'ll print it. '
+                     'No hiding behind the halfling when the shouting starts." '
+                     '{n}She catches your lower lip between her teeth, then draws back.{/n} '
+                     '"Let\'s see what else you\'re good for."'),
+    }
+    for nid, text in pardon_propositions.items():
+        variant = copy.deepcopy(nodes[nid])
+        variant['Id'] = nid + '.pardon'
+        variant['Text'] = text
+        target['Nodes'].append(variant)
+        for node in list(target['Nodes']):
+            for choice in list(node['Choices']):
+                if choice.get('Next') == nid:
+                    alternate = copy.deepcopy(choice)
+                    alternate['Next'] = variant['Id']
+                    alternate['Forbids'].append(GHOST)
+                    choice['Requires'].append(GHOST)
+                    node['Choices'].append(alternate)
+
+    # Sibling courtship must not smuggle the dedication back into pardon history.
+    threshold = nodes['threshold']
+    threshold['Text'] = threshold['Text'].replace(
+        'without letting go of your hand', 'with a grip on your sleeve').replace(
+        'as if she is trying to read what you meant by the dedication off your tongue',
+        'hard enough to stop you looking at the pages')
+    for key, text in (
+        (PULURA_WINK, '"No bowing and scraping tonight. I had enough of that beside '
+                       'Mutasafen." {n}She catches your collar and pulls you toward the bed.{/n}'),
+        (PULURA_BETRAYAL, '"The account of Pulura stays as I wrote it." '
+                           '{n}She shoves the pages out of reach, then pulls you close '
+                           'by the belt.{/n} "You\'ve seen my hands bloody. '
+                           'Now I want yours on me."'),
+    ):
+        variant = copy.deepcopy(threshold)
+        variant['Id'] = 'threshold.' + ('wink' if key == PULURA_WINK else 'betrayal')
+        variant['Text'] = text + '\n' + threshold['Text']
+        target['Nodes'].append(variant)
+    for node in list(target['Nodes']):
+        for choice in list(node['Choices']):
+            if choice.get('Next') == 'threshold':
+                for key, suffix in ((PULURA_WINK, 'wink'), (PULURA_BETRAYAL, 'betrayal')):
+                    alternate = copy.deepcopy(choice)
+                    alternate['Next'] = 'threshold.' + suffix
+                    alternate['Requires'].append(key)
+                    if key == PULURA_BETRAYAL:
+                        alternate['Forbids'].append(PULURA_WINK)
+                    node['Choices'].append(alternate)
+                choice['Forbids'].extend((PULURA_WINK, PULURA_BETRAYAL))
+
+
+for _scene in SCENES:
+    if _scene['Id'] in ('nurah.trickster.ran_off.terms', 'nurah.trickster.ran_off.terms_night'):
+        _runaway_recollections(_scene)

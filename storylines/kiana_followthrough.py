@@ -20,7 +20,7 @@ s("bakery_stairs", "The room above the bread", [
     n("start", "Kiana", '''{n}Kiana waits at the foot of the bakery stairs with a folded note and a narrow loaf. The loaf has a bite missing from one end.{/n}
 "Meral said to bring nothing. I have disobeyed him twice. Once by buying this, and once by beginning it without him."
 {n}She offers you the bitten end. Above the stairwell a window stands open, letting out a warm smell of paint.{/n}
-"I wrote to ask what he had arranged. He wrote back on the corner of a bill. Edris was quite right about the room, though she left out the part about his furniture. He owns three chairs. One is currently holding up a shelf."
+"I wrote to ask what he had arranged. He wrote back on the corner of a bill. Edrava was quite right about the room, though she left out the part about his furniture. He owns three chairs. One is currently holding up a shelf."
 {n}Kiana glances at the note.{/n}
 "We are going this afternoon. Supper would involve sitting, and he has had enough trouble with that table already."''',
       c('"Lead the way. I will defend the bread."', "history"),
@@ -54,11 +54,11 @@ s("bakery_stairs", "The room above the bread", [
     n("room", "Narrator", '''{n}Meral is an angular man with paint on his sleeve and spectacles that slip whenever he looks down. He opens the door before Kiana can knock twice.{/n}
 "You found it. Mind the shelf."
 "Everyone has been warning me about furniture lately," {n}Kiana says.{/n} "I am beginning to take it personally."
-{n}The room is smaller than the table's difficult ascent had suggested. Meral has painted one wall cream; the next still carries a square of darker color where somebody's cupboard stood. Edris sits on the bed with a bundle of folded paper.{/n}
+{n}The room is smaller than the table's difficult ascent had suggested. Meral has painted one wall cream; the next still carries a square of darker color where somebody's cupboard stood. Edrava sits on the bed with a bundle of folded paper.{/n}
 "I brought enough for everybody," {n}Meral says, noticing the loaf.{/n}
 "You may keep your own half-eaten contribution," {n}Kiana tells him.{/n} "This is ours."
-{n}He laughs and moves a stool away from the shelf. Kiana tests it before sitting, then pats the place beside her on the window ledge.{/n}''', c('[Divide the bread while Edris unfolds the papers.]', "offer")),
-    n("offer", "Kiana", '''{n}"There," Edris says. "Names of people who asked about your princess. I didn't invite them. I remembered what you said."{/n}
+{n}He laughs and moves a stool away from the shelf. Kiana tests it before sitting, then pats the place beside her on the window ledge.{/n}''', c('[Divide the bread while Edrava unfolds the papers.]', "offer")),
+    n("offer", "Kiana", '''{n}"There," Edrava says. "Names of people who asked about your princess. I didn't invite them. I remembered what you said."{/n}
 "How many people did you tell?"
 "Enough to get these names."
 {n}Kiana counts, loses her place, and starts again.{/n}
@@ -66,26 +66,26 @@ s("bakery_stairs", "The room above the bread", [
 "The baker lets a room at the back on afternoons when she isn't storing sacks in it," {n}Meral says.{/n} "I asked the price. Then I thought I had better ask you."
 "In that order?"
 "Prices are easier to ask."
-{n}Kiana takes the list from Edris. Her smile has become intent.{/n}
+{n}Kiana takes the list from Edrava. Her smile has become intent.{/n}
 "I could read part of it. Properly this time. With the end written down before I arrive."
-"People could put something toward the room," {n}Edris says.{/n}
+"People could put something toward the room," {n}Edrava says.{/n}
 "People could also dislike it and tell their friends. I should like to be paid before that stage of the arrangement."
 {n}She is joking, but her finger stays on the list.{/n}''',
       c('"Read it to people who have not heard it. Find out what survives a roomful of strangers."', "audience", flags=("kiana.follow_audience",)),
       c('"Ask for a smaller reading first. You wanted it finished, not merely announced."', "workshop", flags=("kiana.follow_workshop",))),
     n("audience", "Kiana", '''"Strangers. You make them sound like weather."
 {n}She reads two names aloud and gives up on the third.{/n}
-"I want to try. Meral, ask about one afternoon. Edris, find out who actually wants to hear a play and who was merely being polite while you described it. Those are different lists."
-{n}Edris looks offended, then laughs.{/n}
+"I want to try. Meral, ask about one afternoon. Edrava, find out who actually wants to hear a play and who was merely being polite while you described it. Those are different lists."
+{n}Edrava looks offended, then laughs.{/n}
 "I shall make them choose."
-"Give them a chair, Edris, and tell them to laugh loudly. The princess has a deplorable appetite for applause."
+"Give them a chair, Edrava, and tell them to laugh loudly. The princess has a deplorable appetite for applause."
 {n}Kiana folds the list into her own purse. She has already begun arranging the first line under her breath.{/n}''', c('[Stay while they work out a possible afternoon.]', "leave")),
     n("workshop", "Kiana", '''"I did. I also liked seeing all the names."
 {n}She smooths the list, reluctant to put it down.{/n}
-"Six people, then. People who will say something afterward. Edris, you can find six who won't all be afraid of hurting my feelings."
+"Six people, then. People who will say something afterward. Edrava, you can find six who won't all be afraid of hurting my feelings."
 "I can find twelve."
 "Your efficiency is alarming. Six. We can use this room if Meral lends us the furniture he hasn't built into the walls."
-{n}Meral counts the chairs on his fingers and volunteers to borrow more. Kiana gives Edris the list back, keeping a blank sheet for herself.{/n}
+{n}Meral counts the chairs on his fingers and volunteers to borrow more. Kiana gives Edrava the list back, keeping a blank sheet for herself.{/n}
 "I can write the second invitation after I have survived the first. There. A plan involving less courage and more work. I expect I shall complain about both."''', c('[Help Meral measure where the borrowed chairs can go.]', "leave")),
     n("leave", "Kiana", '''{n}By the time you leave, the bread is gone and Meral has found the missing shelf supports inside his own coat. Kiana carries a sheet covered with dates, cancellations and one drawing of an audience member with an enormous ear.{/n}
 "I drew that while they were discussing chairs. It is my ideal listener. Very attentive. Incapable of speaking."
@@ -148,7 +148,7 @@ s("last_page", "The sentence she keeps", [
     n("your_part", "Kiana", '''{n}You try three replies. The first is solemn, the second too clever. The third is a request to move the chair away from a draft. Kiana laughs and writes it down.{/n}
 "Keep that. I can play a woman who has forgotten the window."
 {n}She looks toward the real window and gets up to close it.{/n}
-"Take the guest's part. Refuse, and I shall give it to Edris; she has been longing to order Lenna about."
+"Take the guest's part. Refuse, and I shall give it to Edrava; she has been longing to order Lenna about."
 {n}Kiana puts the revised pages beside you.{/n}''',
       c('"Give me the guest. I have had some practice being invited by you."', "read_guest", flags=("kiana.follow_guest_role",)),
       c('"Let me listen from the room. I want to hear what happens when someone else answers you."', "listen", flags=("kiana.follow_listens",))),
@@ -158,7 +158,7 @@ s("last_page", "The sentence she keeps", [
 "The chair has an important role."
 "It gets the princess out of the speech. I am deeply grateful to it."
 {n}She lets you have the pages, then bends to kiss your cheek before returning to her own copy.{/n}''', c('[Read until you can find the pauses together.]', "end")),
-    n("listen", "Kiana", '''"Then Edris can read the guest. She will enjoy asking Lenna where supper is. They have wanted to give each other instructions for years."
+    n("listen", "Kiana", '''"Then Edrava can read the guest. She will enjoy asking Lenna where supper is. They have wanted to give each other instructions for years."
 {n}Kiana settles beside you on the edge of the bed, the pages between your knees.{/n}
 "Sit where I can see you. If a line dies, I expect you to laugh outrageously and save it."
 "I can find somewhere."
@@ -189,9 +189,9 @@ s("first_readers", "People who have not heard it", [
 "I shall begin," {n}Kiana says, before anyone can offer another chair.{/n} "There is a princess. She is not a wise woman. This is unfortunate for her household and convenient for the story."
 {n}Someone laughs near the back. Kiana's grip on the pages loosens.{/n}
 "If you cannot hear, tell me. If you disagree with the princess, wait. Somebody else probably does too."
-{n}Edris closes the door, keeping the jar for room contributions on a stool beside it. Kiana watches one late arrival put in a coin, then makes herself look away.{/n}''', c('[Listen as she begins.]', "entrance")),
+{n}Edrava closes the door, keeping the jar for room contributions on a stool beside it. Kiana watches one late arrival put in a coin, then makes herself look away.{/n}''', c('[Listen as she begins.]', "entrance")),
     n("small_room", "Kiana", '''{n}Six listeners fit into Meral's room, though the one near the shelf has to keep a foot against its supporting chair. Kiana looks around the circle and recognizes only two faces.{/n}
-"Edris has found people with opinions. I asked her to. I intend to remember that when you give them."
+"Edrava has found people with opinions. I asked her to. I intend to remember that when you give them."
 {n}An older woman near the window lifts a folded sheet.{/n}
 "I brought something to write on."
 "How threatening. I shall begin before you improve your equipment."
@@ -206,13 +206,13 @@ s("first_readers", "People who have not heard it", [
 "Will they be eating?" {n}Lenna asks.{/n}
 {n}The laugh is larger than Kiana expected. She waits for it, smiling into the edge of her page.{/n}''',
       c('[Read the guest, arriving in the middle of their argument.]', "guest_role", requires=("kiana.follow_guest_role",)),
-      c('[Listen as Edris brings the guest into the argument.]', "audience_role", requires=("kiana.follow_listens",))),
+      c('[Listen as Edrava brings the guest into the argument.]', "audience_role", requires=("kiana.follow_listens",))),
     n("guest_role", "Narrator", '''{n}Your first line meets the end of another laugh and disappears. Kiana turns toward you as if the princess has failed to notice her own guest.{/n}
 "You will have to announce yourself again. My household has become unruly."
 {n}You repeat it more loudly. Lenna tells the guest where to put a coat, and the reading finds its pace. Kiana's glance brushes yours when you move the imaginary chair. You have learned to recognize the moment before she tries not to laugh.{/n}''', c('[Leave room for her final speech.]', "speech")),
-    n("audience_role", "Narrator", '''{n}Edris enters the story in a voice much lower than her own. Lenna looks at her over the apron, loses her place, and has to ask Kiana where they are.{/n}
+    n("audience_role", "Narrator", '''{n}Edrava enters the story in a voice much lower than her own. Lenna looks at her over the apron, loses her place, and has to ask Kiana where they are.{/n}
 "Still in the castle. Though I understand the desire to escape."
-{n}The room laughs with them. Edris tries her ordinary voice. It works better. From your seat you can see Kiana listening to an answer she knows by heart and finding something new in the way it is spoken.{/n}''', c('[Listen as the princess turns toward her guest.]', "speech")),
+{n}The room laughs with them. Edrava tries her ordinary voice. It works better. From your seat you can see Kiana listening to an answer she knows by heart and finding something new in the way it is spoken.{/n}''', c('[Listen as the princess turns toward her guest.]', "speech")),
     n("speech", "Narrator", '''{n}The cook goes to fetch supper. At last the princess is alone with the person she invited. Kiana lowers the page enough to let the room see her face.{/n}''',
       c('[Follow the pauses in the longer speech.]', "long", requires=("kiana.follow_long_speech",)),
       c('[Hear the shortened question and its answer.]', "short", requires=("kiana.follow_short_speech",))),
@@ -252,7 +252,7 @@ s("first_readers", "People who have not heard it", [
     n("notes", "Kiana", '''{n}She has six sheets, three legible names and one drawing of a better arrangement of chairs.{/n}
 "No coins. An impressive number of instructions. I did ask for them."
 {n}She separates the chair drawing from the comments about the princess.{/n}
-"I want to try the larger room after I have worked on this. Not tomorrow. If Edris asks, tell her I said not tomorrow very firmly."
+"I want to try the larger room after I have worked on this. Not tomorrow. If Edrava asks, tell her I said not tomorrow very firmly."
 {n}She glances at the closed purse she brought to buy the readers something to eat.{/n}
 "This cost me an afternoon and six pastries. I think I can bear to have learned something at that price."''', c('[Carry the borrowed stools down before walking home with her.]', flags=("kiana.readers_kept",))),
 ], after="kiana.last_page_kept", delay=72)
@@ -284,7 +284,7 @@ s("ink_after", "What she does with applause", [
 "I shall try it on someone who hasn't seen me decide that you liked it. You have become a rather sympathetic instrument."''', c('[Tell her where the new line made you laugh.]', "pages")),
     n("pages", "Kiana", '''"Meral can make clean copies. His ordinary work is copying accounts, but he says a princess cannot possibly have worse handwriting than his customers. I have shown him mine. He has withdrawn the comparison."
 {n}She puts a written estimate beside the script.{/n}
-"Three copies would let Lenna and Edris stop sharing. It would also leave me less for a room to work in. The place Meral used to copy in is available two afternoons a week. A desk. A door. No bed asking why I have covered it in paper."
+"Three copies would let Lenna and Edrava stop sharing. It would also leave me less for a room to work in. The place Meral used to copy in is available two afternoons a week. A desk. A door. No bed asking why I have covered it in paper."
 {n}She looks around her own room.{/n}
 "Or I could use his new room while he works downstairs for the baker. He would charge less. People would interrupt. I would have room to hear the words aloud."
 "What do you want?"
@@ -373,15 +373,15 @@ s("working_room", "A place for the unfinished", [
 "Downstairs," {n}Kiana says.{/n}
 {n}She starts again. A second knock follows almost at once.{/n}
 "If that is the same bill, I have begun to resent it personally."''', c('[Wait while she deals with the visitor.]', "shared_cost")),
-    n("shared_cost", "Kiana", '''{n}It is Edris, returning a stool. Kiana lets her in, then realizes she has stood up to welcome exactly the kind of interruption she meant to prevent.{/n}
+    n("shared_cost", "Kiana", '''{n}It is Edrava, returning a stool. Kiana lets her in, then realizes she has stood up to welcome exactly the kind of interruption she meant to prevent.{/n}
 "Put it there. Sit on it if you like. I need to finish this line before I become impossible."
-{n}Edris sits. Kiana writes, scratches out a word and asks what a cook would call a princess who keeps changing the supper hour.{/n}
-"Hungry," {n}Edris says.{/n}
+{n}Edrava sits. Kiana writes, scratches out a word and asks what a cook would call a princess who keeps changing the supper hour.{/n}
+"Hungry," {n}Edrava says.{/n}
 {n}Kiana puts down the pen and laughs.{/n}
 "That is better. I was going to make it much longer."
 {n}She writes the word, then puts a little line beneath it.{/n}
 "I want to try this room. But I shall need a notice for the door. Meral's customers must find Meral, and my guests must let me finish a sentence before improving it."
-{n}Edris volunteers to write the notice. Kiana takes the paper from her before it grows elaborate.{/n}
+{n}Edrava volunteers to write the notice. Kiana takes the paper from her before it grows elaborate.{/n}
 "Meral downstairs. Kiana working. That will do."''', c('[Help her fix the small notice beside the door.]', "terms")),
     n("terms", "Narrator", '''{n}Downstairs, Kiana pays for the first month and checks the days against her own list. The baker gives her a receipt with flour along one edge. Kiana folds it carefully rather than brushing it over the counter.{/n}
 {n}Outside, she looks at the key in her palm.{/n}
@@ -441,7 +441,7 @@ s("kept_evening", "The time beside her name", [
 "The new story has a cook who leaves at the end of her working day. I am beginning to understand why I like her."''', c('[Ask what the cook does with the evening.]', "hers")),
     n("shared", "Kiana", '''"The notice survived. Meral's customers mostly read it. My friends believe it means I am available for very short interruptions."
 {n}She takes a clean copy of the play from the shelf and lets you see the pages.{/n}
-"Lenna and Edris have theirs. We read the last scene again yesterday. Lenna found a place where the cook is still in the room after I sent her out. I have employed an extremely vigilant cook."
+"Lenna and Edrava have theirs. We read the last scene again yesterday. Lenna found a place where the cook is still in the room after I sent her out. I have employed an extremely vigilant cook."
 "Did you fix it?"
 "I gave her a reason to come back. She has forgotten her wages. Lenna approves."
 {n}Kiana closes the copy.{/n}
@@ -462,10 +462,10 @@ s("kept_evening", "The time beside her name", [
 "There. Written down. Ask me tomorrow whether I managed it, and be prepared for a magnificent excuse."''', c('[Leave the invitation open for another day.]', "future")),
     n("music", "Kiana", '''"Something I haven't helped write? What an extravagant idea."
 {n}She taps a finger against the cup, trying to remember a tune, then abandons it.{/n}
-"I shall ask Edris what she has heard. Ask where, I mean, before she sings it all to me and saves me the journey."
+"I shall ask Edrava what she has heard. Ask where, I mean, before she sings it all to me and saves me the journey."
 "Would you want company?"
 "Perhaps. I want to find it first. I like the thought of bringing you to something I have discovered, instead of asking you to watch me arrange another room."
-{n}She writes a question for Edris on a scrap and leaves it where she will see it in the morning.{/n}''', c('[Ask her to bring you to the music when she finds it.]', "future")),
+{n}She writes a question for Edrava on a scrap and leaves it where she will see it in the morning.{/n}''', c('[Ask her to bring you to the music when she finds it.]', "future")),
     n("future", "Narrator", '''{n}The meal is finished. Kiana carries the cups away, then returns to the place beside you. There are pages waiting, but she leaves them on the other side of the room.{/n}''',
       c('"I like coming home to you."', "steady", requires=("kiana.committed",)),
       c('"I am glad we kept this evening."', "present", forbids=("kiana.committed",))),

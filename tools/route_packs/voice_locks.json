@@ -878,42 +878,42 @@
     "noct.ending_company": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2"
+      "text_sha": "e31e8b9accfb27603d82d58d959c8c79e78b1ace5c335ed93b4fd8eabf5b72ce"
     },
     "noct.ending_alliance": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "a6e75c44db0977b1d62515831ade5c824fa0bfa2d4bd43a5b4857cb4bc589dff"
+      "text_sha": "20c0742a3f46ce66747f1b8a16bf83976a5cc66d2ff8911d0e9eade889d859ea"
     },
     "noct.ending_limit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "1c2ac275a3cbc5908325d8771591c5f320ba3101522ff81489a30b49e917d2d3"
+      "text_sha": "b4a1188f6932d36e95fd39eba088ee385a8ddfb1a5542d29c1526768a90d49a5"
     },
     "noct.ending_death": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad"
+      "text_sha": "d8ff8240177e3d641f2309931ed3c3354a0b33b429e3299e14f8ee2f2513f40d"
     },
     "noct.ending_sacrifice": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e"
+      "text_sha": "f5c5f1b5ea323aa2ec368dd2d7bb571dbbda2ee00e24cd3be1708ce1905815e2"
     },
     "noct.ending_ascent": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18"
+      "text_sha": "46a84d974f96630dfc84e39a60cbc675b5a87d86eb2591e62ead8f9055d25351"
     },
     "noct.ending_changed": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036"
+      "text_sha": "512f5dcd6180442e0e41bb0753e3b92260f948beff52295e798b18029520c006"
     },
     "noct.ending_aeon": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d"
+      "text_sha": "aeae447c8e4c66ea1445e8e0f735ef0d02238473fba16720f4a62791c818cf2b"
     },
     "noct.unlit_quay.acquired.new": {
       "owner": "claude",
@@ -1308,122 +1308,122 @@
     "noct.ending_company.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2"
+      "text_sha": "e31e8b9accfb27603d82d58d959c8c79e78b1ace5c335ed93b4fd8eabf5b72ce"
     },
     "noct.ending_company.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2"
+      "text_sha": "e31e8b9accfb27603d82d58d959c8c79e78b1ace5c335ed93b4fd8eabf5b72ce"
     },
     "noct.ending_company.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "2d59c4166e4c3c84207e20a450e52b35c17181c8509b819bba7409eed95beea2"
+      "text_sha": "e31e8b9accfb27603d82d58d959c8c79e78b1ace5c335ed93b4fd8eabf5b72ce"
     },
     "noct.ending_alliance.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "78d94d63e87732958007a46402857d11cf52ee1c75739e4c65e43a5b46147a15"
+      "text_sha": "c151b45ddc9dc7b5e5bd19d321baf37acf56f3efe90d2f499d0e245ff1c02e74"
     },
     "noct.ending_alliance.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "78d94d63e87732958007a46402857d11cf52ee1c75739e4c65e43a5b46147a15"
+      "text_sha": "c151b45ddc9dc7b5e5bd19d321baf37acf56f3efe90d2f499d0e245ff1c02e74"
     },
     "noct.ending_alliance.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "a6e75c44db0977b1d62515831ade5c824fa0bfa2d4bd43a5b4857cb4bc589dff"
+      "text_sha": "20c0742a3f46ce66747f1b8a16bf83976a5cc66d2ff8911d0e9eade889d859ea"
     },
     "noct.ending_limit.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "04afa71875b760af109132d523cd45d430c7263b1bc934494b7534e372a890c8"
+      "text_sha": "aeed529bfbf1bb45d2bf442303b3fbeee5ca261668e0d56cdf9d49370dff3bce"
     },
     "noct.ending_limit.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "04afa71875b760af109132d523cd45d430c7263b1bc934494b7534e372a890c8"
+      "text_sha": "aeed529bfbf1bb45d2bf442303b3fbeee5ca261668e0d56cdf9d49370dff3bce"
     },
     "noct.ending_limit.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "1c2ac275a3cbc5908325d8771591c5f320ba3101522ff81489a30b49e917d2d3"
+      "text_sha": "b4a1188f6932d36e95fd39eba088ee385a8ddfb1a5542d29c1526768a90d49a5"
     },
     "noct.ending_death.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad"
+      "text_sha": "d8ff8240177e3d641f2309931ed3c3354a0b33b429e3299e14f8ee2f2513f40d"
     },
     "noct.ending_death.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad"
+      "text_sha": "d8ff8240177e3d641f2309931ed3c3354a0b33b429e3299e14f8ee2f2513f40d"
     },
     "noct.ending_death.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "95b8c21b9f03738893f67b1f4dc788f0aa89e0e57e347b163f54e690da40e3ad"
+      "text_sha": "d8ff8240177e3d641f2309931ed3c3354a0b33b429e3299e14f8ee2f2513f40d"
     },
     "noct.ending_sacrifice.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e"
+      "text_sha": "f5c5f1b5ea323aa2ec368dd2d7bb571dbbda2ee00e24cd3be1708ce1905815e2"
     },
     "noct.ending_sacrifice.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e"
+      "text_sha": "f5c5f1b5ea323aa2ec368dd2d7bb571dbbda2ee00e24cd3be1708ce1905815e2"
     },
     "noct.ending_sacrifice.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "5fa0c838d36d7a0d0fc35a9408bf63124fe1b417e9bfa7928648c61b78a6b60e"
+      "text_sha": "f5c5f1b5ea323aa2ec368dd2d7bb571dbbda2ee00e24cd3be1708ce1905815e2"
     },
     "noct.ending_ascent.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18"
+      "text_sha": "46a84d974f96630dfc84e39a60cbc675b5a87d86eb2591e62ead8f9055d25351"
     },
     "noct.ending_ascent.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18"
+      "text_sha": "46a84d974f96630dfc84e39a60cbc675b5a87d86eb2591e62ead8f9055d25351"
     },
     "noct.ending_ascent.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "50b16387e8565fb8dc98e34cb8d77ba534fd136b40d13815f07eedfc22da5f18"
+      "text_sha": "46a84d974f96630dfc84e39a60cbc675b5a87d86eb2591e62ead8f9055d25351"
     },
     "noct.ending_changed.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036"
+      "text_sha": "512f5dcd6180442e0e41bb0753e3b92260f948beff52295e798b18029520c006"
     },
     "noct.ending_changed.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036"
+      "text_sha": "512f5dcd6180442e0e41bb0753e3b92260f948beff52295e798b18029520c006"
     },
     "noct.ending_changed.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e77ac32fe6b17f48d4cf59fb80d5f2241fc79d0e3fbd828c39d08cf502520036"
+      "text_sha": "512f5dcd6180442e0e41bb0753e3b92260f948beff52295e798b18029520c006"
     },
     "noct.ending_aeon.acquired.new": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d"
+      "text_sha": "aeae447c8e4c66ea1445e8e0f735ef0d02238473fba16720f4a62791c818cf2b"
     },
     "noct.ending_aeon.acquired.refused": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d"
+      "text_sha": "aeae447c8e4c66ea1445e8e0f735ef0d02238473fba16720f4a62791c818cf2b"
     },
     "noct.ending_aeon.acquired.prior": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "874d8131b68117980c5446783ba9041f394672906a1142543ae4092e393a9f7d"
+      "text_sha": "aeae447c8e4c66ea1445e8e0f735ef0d02238473fba16720f4a62791c818cf2b"
     },
     "noct.acq.audience_missed": {
       "owner": "claude",
@@ -1613,72 +1613,72 @@
     "nocticula.trickster.defeated.epilogue": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "6e34e46a72e838a8c52a54f5283356cd1ce1f73df0f427bb00c08b70faad8ffd"
+      "text_sha": "2c247a290311fa7bdefb674df14cec9eda4e5f9ab454ddb1c8671d5d85346278"
     },
     "nocticula.trickster.defeated.epilogue.fooled": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "aa718dc2f45d22c4111b02e347187fef3b714b7b6c8b757f536f50060f4e2379"
+      "text_sha": "028e1675775fd7a06855d33b99656425ba7d100c412a999f0573f9fcf9c2116e"
     },
     "nocticula.trickster.defeated.epilogue.punchline": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "52c8fc2ed3fbf44c70c5fbd6c363ea4b6d5ae3bf0609892466d3d3dc953ec72c"
+      "text_sha": "8c056ab0dc8081cbb1238fd5bed8715af94c7ef72b90a6c8abe9507ee6eb53ef"
     },
     "nocticula.trickster.defeated.epilogue.mirror": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "1d65043ff081ff53904c7f2d07a12c591840c05695500f75b6564d453472ea1e"
+      "text_sha": "5ab9200110b4e3ee74fe4844e3678cf842b7959741d3f7d289ef47e451a2d1fd"
     },
     "nocticula.trickster.defeated.epilogue.mirror_kept": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "852680123636fa8b271ab4a5cf3ad9ecead4e77b43b6cb8b50dfcd05fa5243f2"
+      "text_sha": "ff2c635243b9fcd5b04e275d31f13922033eedc5c8567789073e9623198698c6"
     },
     "nocticula.trickster.defeated.epilogue.favour": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "b2f670636598e9b893609d48ae1c0cbcc3c587489b11de4bc4c28a5d75703ab2"
+      "text_sha": "779aac94872aeff7e0ea07681f26e32a93daeab9cdf3e62d07a8ac634b4fd6bf"
     },
     "nocticula.trickster.defeated.epilogue.debt": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "d0f40dc17e38a0f557f0017dc99d9b116bc9803672ade2bdd64b2a09d3519bf3"
+      "text_sha": "df64cbba25aabadebd4e26dc060c9dff32204c318351aa975c7fcc7a7f7d8678"
     },
     "nocticula.trickster.defeated.epilogue.stalemate": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "363a8a3ab7e410e2be5ad6196659422b1f70e6fe4773295b8a9f261b27431f35"
+      "text_sha": "b543b8de0a7f464210b1917262977a7d9e30f08ee1c95713f46f70a9d902c625"
     },
     "nocticula.trickster.defeated.epilogue.unpriced": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "fb794c39a155bc32f27c83150d237d2e8b5e6d43615a0d370603008f15995fdb"
+      "text_sha": "50a680a30ad4b2eaca0678e1fe1cb16e242aecc33e5adea381ce38e4bbfb0a55"
     },
     "nocticula.trickster.defeated.epilogue.unanswered": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "d562dc7cebf8e2a6bd950fb4da07dce0c8403fd7a9a15cf33d726a3b6c9464a5"
+      "text_sha": "f89007a1999f686a3a6d599025c7421c14f78b170e2929533602fb2ef203d245"
     },
     "nocticula.trickster.defeated.epilogue.unjoked": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "1783312db5a26feab11b8d0f06917a36ef5e872c81dc303cf7b699a54218e27a"
+      "text_sha": "750898f505a806743dd8079356a7c2a4947dccb99a5f35624a8d21cfd4ed0b03"
     },
     "nocticula.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "61e1bf31676d6efb4add98a13a275719be629a88f43664dc18fae4623b02e3b3"
+      "text_sha": "c643a70d244274920bf62243efd4ece0f4df8a0b5bdd1dc7701007ff75deb19b"
     },
     "nocticula.trickster.epilogue.declined": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "bb81daec534575e7cfcbd21b665cec230a1bede173bab05bc3959004d7dd319b"
+      "text_sha": "0fdd0d9d2b1533f5175669bc6251de1126f3d747e417d79a4d39551f39546119"
     },
     "nocticula.lastcall.page": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "31981e57f0c8bf52a6e0418a68c3cf560e9e5d2ce7c36480b3781e39ebbb2cc7"
+      "text_sha": "50a4ba5598220ff128826d8597c8c2c500ab6be72965ecc2cce1beab6964b430"
     },
     "nocticula.trickster.reaction.daeran": {
       "owner": "claude",
@@ -1718,7 +1718,7 @@
     "nocticula.acquisition.lastcall.page": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "febb77a3538dd05c67dbe50960d58b9cbb22cd7650d5886aa143d5132895b300"
+      "text_sha": "4c37c08884f04d90172542df17b593e2edd341177679e26e69af01479fe64f73"
     },
     "minachiv.lastcall.page": {
       "owner": "claude",
@@ -2333,7 +2333,7 @@
     "noct.acq.epilogue.correspondence": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "c5af67d68d9b494d00d1b7886c242da04df92b49c8bd015676567c04aabdebba"
+      "text_sha": "111a40938b008dc57577e8ab4b17ccae8e336ad976693df85b8e127ab3de7a44"
     },
     "jerribeth.lastcall.call": {
       "owner": "claude",

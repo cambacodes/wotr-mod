@@ -8,7 +8,8 @@ already read by household.ARUESHALAE_BRANCH. Neither evidence supplies a body.
 
 The controller owns attitudes/enmity. STAGE_INPUTS specifies its reviewed
 directional inputs, without writing those states or choosing a failure owner.
-Second-tool approval and shared stage readers remain coordinator work.
+Ruling 21 approves the existing deed-only primary and single retry; no second
+tool, roll or extra charge is required. Failure direction stays controller-owned.
 """
 from story_format import c, n, scene
 from storylines import household

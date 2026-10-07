@@ -22,7 +22,7 @@ def requirements():
 def supported(group):
     full, partial = requirements()
     return isinstance(group, list) and all(isinstance(flag, str) for flag in group) and "trickster.now" in group and (
-        any(flag in group for flag in full) or all(flag in group for flag in partial))
+        any(flag in group for flag in full) or len(group) == len(partial) and all(flag in group for flag in partial))
 
 
 def check(payload):

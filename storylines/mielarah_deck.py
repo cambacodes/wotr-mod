@@ -315,7 +315,7 @@ deck(D + "correction", "Disciplinary thought-correction", '"I heard shouting on 
     mi("box_first", '''{n}She reaches under the bunk and brings out a lacquered box, and does not open it.{/n}
 "And when there are too many of them at once, I have these. Amulets. Twenty men at a time, like dolls on one string. I have opened this box twice in six years, and both times I was sick over the rail afterwards." {n}Her fingers stay well away from the lid.{/n} "I hate them more than I hate the curse. The curse, at least, is not something I chose."
 "Kerz keeps his crew by terror. Nocticula's captains keep theirs with the Lady's name. I keep mine with this, and I tell myself it's kinder, because at least nobody gets flogged." {n}She looks up at you.{/n} "You've seen the whole of it now. The captain with the honest reputation. Tell me what you would do."''',
-       c('[Take her hands out of their heads] "Stop. Pay them, and let them choose what kind of men they are."', "freed",
+       c('[Try higher wages] "Double their pay. See whether they can keep the peace without daily correction."', "freed",
          flags=(CORRECTED, FREED), alignment=("Good", 1)),
        c('"Tighten it. A crew is cargo; you said so yourself. Make sure the cargo never shifts."', "tightened",
          flags=(CORRECTED, TIGHTENED), alignment=("Evil", 1)),
@@ -325,16 +325,16 @@ deck(D + "correction", "Disciplinary thought-correction", '"I heard shouting on 
     mi("amulets", '''{n}She reaches under the bunk and brings out a lacquered box, and does not open it.{/n}
 "And when there are too many of them at once, I have these." {n}The amulets, the ones she wore when the crew rose; you know them by the way her fingers avoid the lid.{/n} "Twenty men like dolls on one string. I hate them more than I hate the curse. The curse, at least, is not something I chose."
 "Kerz keeps his crew by terror. Nocticula's captains keep theirs with the Lady's name. I keep mine with this, and I tell myself it's kinder, because at least nobody gets flogged." {n}She looks up at you.{/n} "You've seen the whole of it now. The captain with the honest reputation. Tell me what you would do."''',
-       c('[Take her hands out of their heads] "Stop. Pay them, and let them choose what kind of men they are."', "freed",
+       c('[Try higher wages] "Double their pay. See whether they can keep the peace without daily correction."', "freed",
          flags=(CORRECTED, FREED), alignment=("Good", 1)),
        c('"Tighten it. A crew is cargo; you said so yourself. Make sure the cargo never shifts."', "tightened",
          flags=(CORRECTED, TIGHTENED), alignment=("Evil", 1)),
        c('[Teach them limericks] "Let me have your crew for an evening. I know a better way to take the knife out of a man\'s hand."', "laughing",
          flags=(CORRECTED, LAUGHING), mythic="Trickster", alignment=("Chaotic", 1)),
        c('"Your crew, your call. I won\'t tell you how to keep your ship."', "kept", flags=(CORRECTED, KEPT))),
-    mi("freed", '''"Stop." {n}She says it after you, testing it.{/n} "Just stop. And the next time Mharah comes up under the keel, or a card game goes bad, or a crew decides its captain has protested once too often..."
-{n}She stops. Her hand has gone to her collar.{/n} "The last crew I let alone put the Second on the rocks of Alinythia, and I had to fight my own friends until I was the last one standing."
-"But you're right. I know you're right. I have known it for six years, and I kept finding reasons." {n}She pushes the lacquered box back under the bunk with her heel, hard.{/n} "I'll pay them. Every one. Double what they came aboard for, and a berth off the ship for anyone who wants it. And then we will see what kind of crew I actually have."''',
+    mi("freed", '''"They are paid already, Commander. Wages do not keep a knife out of a man's hand." {n}She taps her temple.{/n} "I keep them from doing things they cannot undo. The last crew I left alone put the Second on the rocks of Alinythia. I fought my own friends until I was the last one standing."
+{n}A shout comes through the cabin door. She listens, then pushes the lacquered box under the bunk.{/n} "But that knife is down. I shall try double wages and a berth ashore for anyone who wants one. No daily correction while they keep the peace. Let us see whether they can manage a watch without it."
+{n}She opens the door and calls the bosun over to give him the new orders.{/n} "If they draw steel again, I shall stop them. You may dislike my methods; I still have to get this crew home."''',
        c("Continue", "after", forbids=(AMULETS,)),
        c("Continue", "after_amulets", requires=(AMULETS,))),
     mi("tightened", '''{n}For a moment she only looks at you, and you watch her decide that she heard what she heard.{/n}
@@ -348,8 +348,9 @@ deck(D + "correction", "Disciplinary thought-correction", '"I heard shouting on 
 {n}That evening you recite, from the rigging, for two hours. By the end the crew is teaching you verses you did not know, and one of them is about her.{/n}''',
        c("Continue", "after", forbids=(AMULETS,)),
        c("Continue", "after_amulets", requires=(AMULETS,))),
-    mi("kept", '''"My call." {n}She breathes out, and it is not quite relief.{/n} "Everyone always says that. Everyone always means: I'd rather not know."
-"Very well. I'll go on as I have. Every day a little, and the amulets when I must, and I'll tell myself it's kinder than the lash." {n}She pushes the box back under the bunk with her heel.{/n} "I think I hoped you would tell me to stop. I think I hoped someone would, eventually. Never mind. It's my ship."''',
+    mi("kept", '''"Quite." {n}She puts the box under the bunk and rises at another shout from the deck.{/n} "There are men aboard who would have cut a throat over that card game. Now they will eat supper together. I would rather correct a thought than bury a sailor."
+{n}At the door she calls for the two gamblers. Neither is willing to meet her eye.{/n} "Separate watches for you both. And the knife stays in the galley."
+{n}She turns back to you.{/n} "They came out of the Abyss. Some of them may yet make decent sailors. That is why I took them aboard, and why I bother. They are still my crew." {n}She takes the gamblers up to their new watch stations.{/n} "Let us see them earn their supper."''',
        c("Continue", "after", forbids=(AMULETS,)),
        c("Continue", "after_amulets", requires=(AMULETS,))),
     mi("after", '''{n}Mielarah stands and straightens her coat. Her fingers catch on one button; she starts again.{/n}
@@ -381,9 +382,10 @@ deck(D + "market", "Nearest, in Drezen", '"Something happened in the market."', 
           flags=(MARKET, PRISONER), alignment=("Evil", 1)),
         c('"Then I walk beside her. Every time she comes down, I\'m the nearest thing to her in the square."', "escort",
           flags=(MARKET, ESCORTED))),
-    mi("stays", '''{n}The officer salutes again and goes, taking his men and his street with him, and the ring of people breaks up slowly, looking back.{/n}
-"You'll pay for that in funerals." {n}She has not moved.{/n} "One a week, perhaps, if I'm careful. Porters and apprentices and people who wanted to carry my rope. And every one of them will be your order, not mine, because I'd have gone."
-"I'd have gone, Commander. I've left better cities than this one." {n}She looks at the boot under the timber.{/n} "I'll moor higher. I'll come down at night, when the square is empty. I'll buy my rope from a man who leaves it on a step." {n}Her voice is flat.{/n} "And you'll have kept me, and I'll have let you. Remember the price when you're pleased with yourself."''',
+    mi("stays", '''{n}Before the officer can salute, Mielarah lifts the coil of rope between you.{/n}
+"Your order will not stop another scaffold falling. I left my home rather than keep burying people who happened to meet me."
+{n}She hands the coil to the officer at its full length.{/n} "I shall trade from above the walls. My crew can bring the cold iron through the portal without me. No porters aboard while I am loading; no passengers near the helm. Tell your quartermaster he gets his cargo at the gate. I am not coming into this square again."
+{n}The officer nods and sends a soldier to fetch the quartermaster. She looks up toward Starcatcher.{/n} "Your wounded still need a ship. That is reason enough to stay within reach. Fewer loads, more journeys, and I pay the crew for them. You can come aboard; I shall not bring my curse to your neighbours for the pleasure of seeing you."''',
        c("Continue", "boy")),
     mi("prisoner", '''{n}The officer blinks, and looks at you, and then at her, and does not quite understand what he has been told. She understands at once.{/n}
 "No." {n}The word comes out of her like something breaking.{/n} "No. Not a sailor, not a prisoner, not some poor fool you don't care about. I said it in my cabin. I said it as plainly as I have ever said anything."
@@ -620,8 +622,8 @@ deck(D + "stowaway", "The stowaway", '"Is that Woljif in your hold?"', [
 "And you." {n}This to Woljif, who is sidling toward the portal.{/n} "If you want to see an airship, you ask the captain, like a person. I show all my best customers the ship."
 {n}He stops sidling. "...Yeah? Could I hold the wheel?" She looks at him, and at you, and sighs.{/n} "For a count of ten."''',
        c("[Let him have his count of ten.]", flags=(STOWAWAY,))),
-    mi("scare", '''{n}She looks at you for a moment, as if she had expected something else. Then she shakes her head.{/n}
-"No. I only do it to crew, and only when I must, and I am trying to do it less." {n}The darkness leaves her eyes.{/n} "But he doesn't know that." {n}Pleasantly, to Woljif:{/n} "Off my ship, Master Woljif. If I find you in my hold again, I shall be much less restrained."
+    mi("scare", '''{n}She checks the pistols once more and puts them in her belt.{/n}
+"No. He is not my crew. I have my guns back. There is nothing left to correct." {n}She looks toward Woljif, who is inching toward the portal.{/n} "But he need not know that. Master Woljif, try my hold again and you will learn how I deal with thieves."
 {n}He goes through the portal so fast he trips over the step on the far side. You hear him swearing all the way across the market.{/n}''',
        c("[Watch him go.]", flags=(STOWAWAY,))),
     nar("bet", '''{n}Mielarah raises an eyebrow and begins a word in some tongue that makes your teeth ache. Woljif does not wait for the second syllable. His hand goes up and back and down again, and her tricorn is in it, feather and all, and he is holding it to his chest like a baby.{/n}
@@ -1033,3 +1035,23 @@ def _round3_wounded():
 
 
 _round3_wounded()
+
+# Round 4 authored callbacks: only an actual crew experiment warrants its recall.
+for _beat in SCENES:
+    if _beat["Id"].removesuffix(".arcade") == D + "stowaway":
+        _nodes = {node["Id"]: node for node in _beat["Nodes"]}
+        _nodes["threat"]["Choices"][1]["Forbids"] += [FREED, LAUGHING]
+        _nodes["threat"]["Choices"].extend([
+            c("\"Let her tidy it. He'll thank you later.\"", "scare_freed", requires=(FREED,)),
+            c("\"Let her tidy it. He'll thank you later.\"", "scare_laughing", requires=(LAUGHING,)),
+        ])
+        for _nid, _policy in (
+            ("scare_freed", "I am trying wages without daily correction aboard. I shall hardly begin with your thief."),
+            ("scare_laughing", "Your obscene verses kept my crew busy for an evening. Perhaps you can find him a verse about keeping his hands to himself."),
+        ):
+            _beat["Nodes"].append(mi(_nid,
+                '"No. He is not my crew. ' + _policy + '" '
+                '{n}She holsters the recovered pistols and turns to Woljif.{/n} '
+                '"Master Woljif, I have both my guns. Do not make me check what else you have in your pockets." '
+                '{n}He dives through the portal, catches his foot on the step, and swears from the market below.{/n}',
+                c("[Watch him go.]", flags=(STOWAWAY,))))

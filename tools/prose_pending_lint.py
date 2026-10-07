@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Allow registered prose placeholders only in a signed, held scaffold job."""
+"""Validate integration placeholders or signed held scaffold targets; forbid both at milestones."""
 import argparse
 from pathlib import Path
 import re
@@ -22,7 +22,7 @@ def text_surfaces(story):
                     yield (scene["Id"], node["Id"], surface, index), item.get("Text", "")
 
 
-def check(story, data, job=None, milestone=False):
+def check(story, data, job=None, milestone=False, integration=False):
     """Validate schema, exact text targets, registration and held-job authority."""
     if (not isinstance(data, dict) or set(data) != {"version", "pending"}
             or type(data["version"]) is not int or data["version"] != 1
@@ -57,7 +57,7 @@ def check(story, data, job=None, milestone=False):
     if registered:
         if milestone:
             errors.append("milestone builds forbid prose-pending entries")
-        elif not job or (job["kind"], job["status"]) != ("scaffold", "held"):
+        elif not integration and (not job or (job["kind"], job["status"]) != ("scaffold", "held")):
             errors.append("placeholders require a signed held scaffold job")
     return errors
 
@@ -68,6 +68,7 @@ def main(argv=None):
     parser.add_argument("--story", type=Path)
     parser.add_argument("--job", type=Path)
     parser.add_argument("--milestone", action="store_true")
+    parser.add_argument("--integration", action="store_true", help="allow exact registered integration placeholders")
     args = parser.parse_args(argv)
     root = args.repo.resolve()
     story_path = args.story or root / "development/Story.json"
@@ -76,7 +77,7 @@ def main(argv=None):
         job = authority.verify_job(root, story_path, args.job, policy, base) if args.job else None
         path = root / authority.PENDING
         data = authority.read_json(path) if path.exists() else {"version": 1, "pending": []}
-        errors = check(authority.read_json(story_path), data, job, args.milestone)
+        errors = check(authority.read_json(story_path), data, job, args.milestone, args.integration)
     except (OSError, ValueError, KeyError, TypeError) as error:
         errors = [str(error)]
     for error in errors:

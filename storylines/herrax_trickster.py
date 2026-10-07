@@ -546,10 +546,10 @@ When the Wound is shut, if you're alive, come back to the Isles and deliver it. 
          check=dict(Skill="CheckBluff", DC=22, Success="earnest_taken", Failure="earnest_doubted")),
        c('"Keep your ring. Tell her I\'m not for sale."', "refused", flags=(CLOSED,))),
     rl("earnest_taken", '''{n}He looks at you a long while, and then he laughs, and drops the ring into your palm.{/n}
-"Greedy. Good. Greedy I understand." {n}He doesn't let go of your hand. One claw comes out, idly, and draws a line across the heel of your palm, and before it stings he has lifted it to his mouth.{/n} "Sellers in the Isles seal in blood, hot stuff. Now I've had a taste of you. If you sell her to anyone else, I'll know you in the dark from across the city." {n}His eyes half close.{/n} "Mm. Greedy, and tired, and something burning. I'll remember it."''',
+"Greedy. Good. Greedy I understand." {n}He doesn't let go of your hand. One claw comes out, idly, and draws a line across the heel of your palm, and before it stings he has lifted it to his mouth.{/n} "Sellers in the Isles seal in blood, hot stuff. Now I've had a taste of you. If you sell her to anyone else, I'll know you in the dark from across the city." {n}He licks the last blood from his claw and laughs in his ordinary voice.{/n} "A taste, not a reading. Why spoil a good bargain with bad omens? Mm. Something burning. I'll remember it."''',
        c("[Close your hand on the ring and the cut.]", "promised", flags=(PRIMED, STARTED, PROMISED, COST_LATE, LATE_RING))),
     rl("earnest_doubted", '''{n}He studies your face, and the ring goes back onto his claw.{/n}
-"No. You're lying, or you're frightened of her, and I can't tell which without a taste, and you won't give me one." {n}He isn't angry. He sounds like a merchant who has been offered bad coin.{/n}
+"No. You're lying, or you're frightened of her. A taste and a reading would tell me which, but you keep your hands to yourself." {n}He isn't angry. He sounds like a merchant who has been offered bad coin.{/n}
 "Here's how it works in the Isles, hot stuff. People who mean it pay. The ones who only want to watch get a seat at the arena. Pay me for the privilege of selling to me, and I'll believe you're greedy. Greedy I trust."''',
        c("[Pay him out of the crusade's purse, for the privilege.]", "promised", crusade=("Finances", -500),
          flags=(PRIMED, STARTED, PROMISED, COST_LATE, LATE_PAID)),

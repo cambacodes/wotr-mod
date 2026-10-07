@@ -149,3 +149,7 @@ def integrate(story):
     # Job 4 runs after indexed contracts: preserve their historical paragraph slots.
     from storylines import endings_job4
     endings_job4.integrate(story)
+
+    # J01: contact classification follows the final loss/return epoch registry.
+    from storylines import contract_j01
+    contract_j01.install(story)

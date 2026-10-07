@@ -9,6 +9,8 @@ Authored, and labelled so in the spec: on a non-Azata run she has no native pres
 Azata_Aranka_DesnaPriest 430cba78 has no dialog component), so her life as a Desnan singer on the crusade's roads is
 invented here; the device is the Commander's own paid boast in a native Trickster venue, not Desna's luck. She keeps the
 billing, tours the camps every night and chooses whether to come back, and she can refuse, or be sent to a real stage.
+Authored R4 D05-D06: a visiting Nerosyan troupe-master hears the duet while her players perform for the garrison;
+she delivers the invitation locally. No journey to Nerosyan and back is needed for the Chapter 5 offer.
 """
 import copy
 
@@ -292,7 +294,8 @@ letter("aranka.trickster.verse.her_letter", "Somebody changed my song", [
 
 counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wanted the thief. Here I am."', [
     nar("start", '''@OPEN@
-{n}The woman on @SEAT@ is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head within earshot is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}''',
+{n}The woman on @SEAT@ is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head within earshot is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}
+{n}Beside @STAGE@, a visiting Nerosyan troupe-master listens with the soldiers. Her players have come to entertain the garrison; she stays when their wagon leaves.{/n}''',
         c("Continue", "mocking", requires=(MOCKING,)),
         c("Continue", "posters", requires=(ANNOUNCED,), forbids=(MOCKING,)),
         c("Continue", "denied", requires=(DENIED,), forbids=(MOCKING, ANNOUNCED)),
@@ -321,7 +324,7 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
 {n}She gives you the first note. You miss it. Her eyebrows go up, and then she finds whatever note you did hit, lays the harmony under it, and walks you back up to the tune a step at a time.{/n}
 "There you are! Again. I shall make a singer of you yet."
 {n}A sapper at the back beats time on his helmet. Two porters stop to listen; a third shoulders past them with a sack, complaining that the Knight-Commander has found another way to block the road. She takes the hard turn in the middle herself and leaves you the last rhyme.{/n}
-{n}The sapper starts clapping before the chord is finished. She holds it a little longer, eyes closed, and makes him wait.{/n}
+{n}The sapper starts clapping before the chord is finished. She holds it a little longer, eyes closed, and makes him wait. The troupe-master joins the applause.{/n}
 "My name goes first every time it's sung. Yours comes after. Quietly. Very quietly."''',
       c('[Take the harmony, not the credit] "Yours first. Mine after, quietly."', "signed"),
       c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
@@ -337,7 +340,7 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
     # Audit pol3 (VOI): the bard who outsang her in the Count's parlour (Cue_15) is no pupil; she makes it a contest again.
     a("duet_rival", '''"Apology accepted. Now the duet!"
 {n}She looks at you properly, and you watch her place you: the Count's parlour, the bard who outsang her with the demons hardly cold on the carpet.{/n} "Oh, it's you! Then you take the tune, and don't you dare show off."
-{n}You take the tune. She shows off. She climbs over your line in the second verse, throws in a run nobody wrote, and dares you with her eyebrows to follow it. A sapper at the back beats time on his helmet; a porter with a sack complains that the Knight-Commander has found another way to block the road. On the last rhyme she gives you the note and takes the harmony a third above it, so that nobody can say afterwards whose note it was.{/n}
+{n}You take the tune. She shows off. She climbs over your line in the second verse, throws in a run nobody wrote, and dares you with her eyebrows to follow it. A sapper at the back beats time on his helmet; a porter with a sack complains that the Knight-Commander has found another way to block the road. On the last rhyme she gives you the note and takes the harmony a third above it, so that nobody can say afterwards whose note it was. The troupe-master joins the applause.{/n}
 "My name goes first every time it's sung. You had your victory in Kenabres. This one's mine."''',
       c('[Take the harmony, not the credit] "Yours first. Mine after, quietly."', "signed"),
       c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
@@ -360,7 +363,7 @@ def night_nodes():
 counter("aranka.trickster.verse.encore", "An offer from Nerosyan", '"You came back again."', [
     nar("start", '''{n}She is on @SEAT@ again, lute across her knees, with a letter in her hand that has a Mendevian seal on it. She has read it enough times to soften the folds.{/n}''',
         c("Continue", "offer")),
-    a("offer", '''"A troupe in Nerosyan wants me. A real stage, a real hall, a hundred people a night who have paid to sit still. They want Starward Gaze, the new one. With your verse."
+    a("offer", '''"A troupe in Nerosyan wants me. A real stage, a real hall, a hundred people a night who have paid to sit still. Their troupe-master heard our duet here. She brought me this invitation herself this morning. They want Starward Gaze, the new one. With your verse."
 {n}She looks at the letter, and then at you, and then at the letter.{/n}
 "I went round the camps these last few nights. I sang it in all of them. The pikemen at the ford made me sing it three times and then sang it back to me wrong. And every night I came back here. I haven't decided why."''',
       c("Continue", "vain", requires=(VAIN,)),

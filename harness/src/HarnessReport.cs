@@ -26,6 +26,7 @@ namespace RRT.TestHarness
         public bool RrtModActive;
         public bool RrtModErrorOnLoading;
         public string? RrtAssembly;
+        public string? RrtVersion;
         public bool Initialized;
         public bool Enabled;
         public string? Error;
@@ -142,6 +143,7 @@ namespace RRT.TestHarness
         public string? StateError;
         public List<string> AvailableScenes = new List<string>();
         public List<string> ScenesWithoutDialog = new List<string>();
+        public bool InventoryTruncated;
         public int ScenesDriven;
         public int ChoicesTaken;
         public List<SceneRun> Runs = new List<SceneRun>();
@@ -172,6 +174,7 @@ namespace RRT.TestHarness
         public int RoundTripsPassed;
         public int RoundTripsFailed;
         public int SkippedInline;
+        public bool AcceptanceComplete;
         public List<string> Failures = new List<string>();
         // Saves that could not be exercised for reasons outside RRT (e.g. the save opens inside a native dialog).
         public List<string> Skipped = new List<string>();
@@ -228,9 +231,9 @@ namespace RRT.TestHarness
                         s.SkippedInline++;
                         s.Skipped.Add(save.Save + " / " + run.Scene + ": skipped-inline (" + run.Detail + ")");
                     }
-                    if (run.Result == "skipped-delay" || run.Result == "skipped-forbidden") s.Skipped.Add(save.Save + " / " + run.Scene + ": " + run.Result + " (" + run.Detail + ")");
-                    if (run.Passed) s.RunsPassed++;
-                    else s.Failures.Add(save.Save + " / " + run.Scene + " [" + run.Strategy + "]: " + run.Result
+                    if (run.Result.StartsWith("skipped", StringComparison.Ordinal) && run.Result != "skipped-inline") s.Skipped.Add(save.Save + " / " + run.Scene + ": " + run.Result + " (" + run.Detail + ")");
+                    if (run.Passed && run.Result == "completed") s.RunsPassed++;
+                    if (!run.Passed) s.Failures.Add(save.Save + " / " + run.Scene + " [" + run.Strategy + "]: " + run.Result
                         + (run.Detail != null ? " (" + run.Detail + ")" : "")
                         + (run.OracleFailures.Count > 0 ? " oracle: " + string.Join("; ", run.OracleFailures) : "")
                         + (run.Exceptions.Any(e => e.Relevant) ? " exception: " + run.Exceptions.First(e => e.Relevant).Message : ""));
@@ -271,8 +274,16 @@ namespace RRT.TestHarness
             }
             s.RelevantExceptions += GlobalExceptions.Count(e => e.Relevant);
             if (GlobalExceptions.Any(e => e.Relevant)) s.Failures.Add("Relevant errors outside any save: " + GlobalExceptions.First(e => e.Relevant).Message);
+            if (Saves.Any(save => save.InventoryTruncated)) s.Skipped.Add("Scene/path inventory truncated by diagnostic limit");
+            s.AcceptanceComplete = Status == "complete" && Saves.Count > 0 && s.Skipped.Count == 0
+                && !string.IsNullOrWhiteSpace(Init.RrtVersion) && Saves.All(save => save.LoadOk && save.NotIdle == null)
+                && (s.Runs > 0 || Saves.Any(save => save.Systems.Count > 0 || save.NativeSlides.Count > 0 || save.Residence != null || save.PresenceSpike != null))
+                && Saves.SelectMany(save => save.Runs).All(run => run.Passed && run.Result == "completed")
+                && Saves.SelectMany(save => save.Systems).All(run => run.Passed && run.Result == "completed")
+                && Saves.SelectMany(save => save.NativeSlides).All(run => run.Passed && run.Result == "completed");
             if (Status == "aborted") s.Failures.Add("Harness aborted: " + AbortReason);
             s.Passed = s.Failures.Count == 0 && Status == "complete";
+            s.AcceptanceComplete &= s.Passed;
             Summary = s;
         }
 

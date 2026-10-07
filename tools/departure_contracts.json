@@ -2185,6 +2185,16 @@
           "letter": false
         },
         {
+          "scene": "soana.partner.proposal_reply",
+          "letter": false,
+          "provenance": "R4-soana D09: delayed southern-relay reply read with the currently present Soana"
+        },
+        {
+          "scene": "soana.partner.proposal_reply.returned",
+          "letter": false,
+          "provenance": "R4-soana D10: delayed reply with the earned returned Soana, using her existing body guard"
+        },
+        {
           "scene": "soana.trickster.epilogue.living_late",
           "letter": false
         },
@@ -13056,6 +13066,10 @@
         },
         {
           "scene": "kaylessa.clearing.the_arrow",
+          "letter": false
+        },
+        {
+          "scene": "kaylessa.clearing.courier_reply",
           "letter": false
         }
       ],

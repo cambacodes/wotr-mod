@@ -1,4 +1,110 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "household.pair.camellia_arueshalae.settle.good",
+      "node": "inspection_camellia",
+      "surface": "node",
+      "index": null,
+      "text_sha": "ca66242ed400cb05c49c569411e7e0cde147cf618853b18af484dab32e97e40f"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.settle.evil",
+      "node": "inspection_camellia",
+      "surface": "node",
+      "index": null,
+      "text_sha": "ca66242ed400cb05c49c569411e7e0cde147cf618853b18af484dab32e97e40f"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.settle.evil",
+      "node": "inspection_arueshalae",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8c9c68e123a98fb2ad95f0b06a75cbbdecd82bda762607ea98a84860abe45144"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.retry.good",
+      "node": "inspection_camellia",
+      "surface": "node",
+      "index": null,
+      "text_sha": "ca66242ed400cb05c49c569411e7e0cde147cf618853b18af484dab32e97e40f"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.retry.evil",
+      "node": "inspection_camellia",
+      "surface": "node",
+      "index": null,
+      "text_sha": "ca66242ed400cb05c49c569411e7e0cde147cf618853b18af484dab32e97e40f"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.retry.evil",
+      "node": "inspection_arueshalae",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8c9c68e123a98fb2ad95f0b06a75cbbdecd82bda762607ea98a84860abe45144"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.company",
+      "node": "start",
+      "surface": "choice",
+      "index": 3,
+      "text_sha": "11b85a92fcfa1b9d4a3ffd1b10d681307cfbccabd64464b0a9ca71cb7039fa98"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.company",
+      "node": "witnessed_company",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d2617bcc432af7b5e1aa4460348f79aa7fbc39b2c2c5f238f456331185eef4fc"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.settle",
+      "node": "lesson",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1b845c14bd66676ed6a653e3efb586b9e4ebbf47b9df16fc9697b9ce8d750a76"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.settle",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "b692158dbe630d16e41740a83821758866842a386468d919f600cfbaec7e1e86"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.settle",
+      "node": "manual_correction",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3390eb9c27568c271bdcf0f399396d237a21884f9b32e70412fb57445f39897c"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.settle",
+      "node": "spoiled",
+      "surface": "node",
+      "index": null,
+      "text_sha": "192b6f1f2ebb2e17ad4ecb680441cf43a9944b9c4310136c104db56023193b65"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.retry",
+      "node": "lesson",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1b845c14bd66676ed6a653e3efb586b9e4ebbf47b9df16fc9697b9ce8d750a76"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.retry",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "b692158dbe630d16e41740a83821758866842a386468d919f600cfbaec7e1e86"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.retry",
+      "node": "manual_correction",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3390eb9c27568c271bdcf0f399396d237a21884f9b32e70412fb57445f39897c"
+    }
+  ]
 }

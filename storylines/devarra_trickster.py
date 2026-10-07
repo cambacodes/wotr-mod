@@ -323,7 +323,7 @@ letter(P + "dead.woken", "The hide splits", [
          forbids=EGGS, flags=(RETURNED, STARTED, HUNGRY, UNKNOWN))),
     dv("cook_given", '''"Good. I will be quick with him." {n}She stands, and the cart falls over, and the whole road seems to tilt with her.{/n} "I will not be quick with anyone else."''',
        c("[Watch her go.]")),
-    dv("cook_refused", '''{n}She considers you as though you were a door she had not decided whether to open.{/n} "Then I will be patient with your city. Dragons are very patient."''',
+    dv("cook_refused", '''{n}Her snout drives you against the overturned cart. One tooth catches your cloak and pins it to the wood.{/n} "Starving. That was your excuse." {n}She tears the cloak free and spits the cloth at your feet.{/n} "You keep the cook. I keep the smell of your kitchens. Every time you come to me, crusader, I shall remember what you fed them."''',
        c("[Watch her go.]")),
     dv("take_back", '''"Yes." {n}The word comes out of her with smoke on it.{/n} "That is the first sensible thing a crusader has ever said to me. Keep saying sensible things. It will keep you alive."''',
        c("[Watch her go.]")),
@@ -402,7 +402,7 @@ SCENES.append(scene(P + "flight.clutch_left", "Their mother is coming", "Devarra
 # --- Option A, 4. She comes for her eggs (remote, tier B: her only native unit is a hostile monster) --------------------
 
 letter(P + "flight.eggs", "What a dragon does with a promise", [
-    nar("road", '''{n}One night after the Ivory Sanctum the sentries on the east road lose four horses off the picket line, and nobody hears a thing until the last one screams.{/n}
+    nar("road", '''{n}On the night she comes down to Drezen, the sentries on the east road lose four horses off the picket line, and nobody hears a thing until the last one screams.{/n}
 {n}When you come out of your tent she is lying across the road with her chin on an overturned cart, darker than the dark and bigger than she looked in the gorge. The lair is still on her: the torn web of one wing stiff with dried blood, the long gash under it where your party opened her to the ribs, a split along her jaw where somebody's blade turned on the bone. She flew on all of it. Her eyes find you before the sentries do.{/n}''',
         c("Continue", "stone")),
     dv("stone", '''"You fought me well. Too well, at the end; one of yours wanted my heart badly enough to forget whose plan it was." {n}Smoke threads from her nostrils.{/n} "Then I flew. And the charm called, the way it has called me all season, and for the first time I did not go. I lay on a mountain with my wounds open and let it call, night after night, and did not go."
@@ -451,7 +451,7 @@ letter(P + "flight.eggs", "What a dragon does with a promise", [
           requires=(LEASH,), forbids=EGGS, flags=(RETURNED, STARTED, HUNGRY, COLLECTED, DEBT))),
     dv("cook_given", '''"Good. I will be quick with him." {n}She stands, and the cart falls over, and the whole road seems to tilt with her.{/n} "I will not be quick with anyone else."''',
        c("[Watch her go.]")),
-    dv("cook_refused", '''{n}She considers you as though you were a door she had not decided whether to open.{/n} "Then I will be patient with your city. Dragons are very patient."''',
+    dv("cook_refused", '''{n}Her snout drives you against the overturned cart. One tooth catches your cloak and pins it to the wood.{/n} "Starving. That was your excuse." {n}She tears the cloak free and spits the cloth at your feet.{/n} "You keep the cook. I keep the smell of your kitchens. Every time you come to me, crusader, I shall remember what you fed them."''',
        c("[Watch her go.]")),
     dv("take_back", '''"Yes." {n}The word comes out of her with smoke on it.{/n} "That is the first sensible thing a crusader has ever said to me. Keep saying sensible things. It will keep you alive."''',
        c("[Watch her go.]")),
@@ -556,7 +556,7 @@ letter(P + "after.lair", "A tower above Drezen", [
     dv("kept_back", '''"You kept the end back. Clever. A thing that owes me an ending cannot die before it pays, so I will keep you alive to collect."''',
        c("Continue", "hunted", requires=(HUNTS,)), c("Continue", "cultists", requires=(RUTHLESS,), forbids=(HUNTS,)),
        c("Continue", "terms", forbids=(HUNTS, RUTHLESS))),
-    dv("hunted", '''"The Worldwound tastes of rot. I eat it anyway. Someone should." {n}A shred of something black and many-jointed hangs from the parapet, drying.{/n} "They called me its bane once, in a language you do not speak. I have decided to deserve it."''',
+    dv("hunted", '''"The Worldwound tastes of rot." {n}She hooks the black, many-jointed carcass hanging from the parapet and tears off a limb. Something inside it still kicks.{/n} "This one screamed until I took its tongue. Its friends ran. Bane of the Worldwound — I shall make them choke on the name."''',
        c("Continue", "terms")),
     dv("cultists", '''"Your cultists screamed the name of their god. He did not come. They never do." {n}She sounds, if anything, disappointed in him.{/n} "I kept one alive for a day to see whether he would. I am a patient cook."''',
        c("Continue", "terms")),

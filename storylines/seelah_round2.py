@@ -254,12 +254,13 @@ def prepare(scenes, presences, derived):
     blocks.append(game)
     refused = by[PREFIX + "epilogue.refused"]
     node(refused, "end")["Text"] = (
-        '{n}Seelah kept the posting she had chosen. The Commander\'s refusal did '
-        'not cancel her work. She took her sword north, and the road companies '
+        '{n}Seelah had refused the Commander\'s request. She kept the posting '
+        'she had chosen and took her sword north. The road companies '
         'continued to hear her laugh over their fires.{/n}')
     node(refused, "end")["Paragraphs"] = [
         p('{n}On leave she returned to Drezen and shared a drink with the Commander. '
-          'She did not renew the invitation they had declined. When the company '
+          'She had not taken back her no. She had told them what to put right '
+          'before asking again. When the company '
           'mustered, she shouldered her pack and went back to it.{/n}',
           requires=(PREFIX + "returned", "seelah.romance")),
         p('{n}Her papers traveled north after her. She had said goodbye; the '
@@ -312,7 +313,12 @@ def new_scenes(by):
           'smile goes.{/n}\n"Acemi. The Kenabres stones. Mine to put right. You '
           'don\'t get to carry them for me just because you brought me back."',
           c('"It belongs with you. I should have returned it."', "private", flags=(ROBBED, SETTLED)),
-          c('"You have it. What happens between us now?"', "offer", flags=(ROBBED, SETTLED)),
+          c('"You have it. What happens between us now?"', "offer", flags=(ROBBED, SETTLED),
+            requires=("seelah.romance",)),
+          c('"You have it. What happens between us now?"', "offer", flags=(ROBBED, SETTLED),
+            requires=(PREFIX + "courted",), forbids=("seelah.romance",)),
+          c('"You have it. What happens between us now?"', "offer_first", flags=(ROBBED, SETTLED),
+            forbids=("seelah.romance", PREFIX + "courted")),
           portrait="Seelah"),
         n("private", "Seelah", '{n}She puts the list against her ribs and ties her purse properly.{/n}\n'
           '"Yes. You should. I\'m keeping it now. As for us... come and ask me '
@@ -321,6 +327,14 @@ def new_scenes(by):
           'damn you." {n}She taps your coat.{/n} "And if you want a pocket game, '
           'we play with your purse. My list stays with me. Nobody keeps what '
           'the other needs back."',
+          c('"Your rules. Show me how badly I can lose."', flags=(GAME,)),
+          c('"Keep the list private. I would rather have your company."'), portrait="Seelah"),
+        # Authored first invitation: a returned body/list is not a past date.
+        # The familiar offer and its saved answers remain at their old IDs.
+        n("offer_first", "Seelah", '"An evening with you? Yes, damn you. Fye\'s, '
+          'before the next muster." {n}She taps your coat.{/n} "And if you want '
+          'a pocket game, we play with your purse. My list stays with me. '
+          'Button your coat. I need a challenge."',
           c('"Your rules. Show me how badly I can lose."', flags=(GAME,)),
           c('"Keep the list private. I would rather have your company."'), portrait="Seelah"),
     ], requires=("trickster.ever", PREFIX + "returned", HOLDS, CUSTODY + ".unsettled"),

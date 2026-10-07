@@ -15,6 +15,8 @@ FRIEND = 'soana.trickster.friends'
 DISCLOSED = 'soana.round3.disclosed'
 ARRANGEMENT = 'soana.round3.arrangement'
 KNOWN = 'soana.round3.family_known'
+PROPOSAL_SENT = 'soana.round4.proposal_sent'
+PROPOSAL_READ = 'soana.round4.proposal_read'
 
 
 def page(event, key):
@@ -26,6 +28,30 @@ def add(block, field, *flags):
 
 
 def predicates(payload):
+    # Authored follow-up: the second letter travels by the same seven-day
+    # southern relay as the wedding inquiry, in both living/returned hosts.
+    from storylines.soana_round2 import correspondence_scene
+    for returned in (False, True):
+        followup = correspondence_scene(returned)
+        followup['Id'] = 'soana.partner.proposal_reply' + ('.returned' if returned else '')
+        followup['Title'] = 'The second fold'
+        followup['Requires'] = [f for f in followup['Requires'] if f != P.PURSUED]
+        add(followup, 'Requires', PROPOSAL_SENT, 'soana.present_now')
+        followup['Forbids'] = [f for f in followup['Forbids'] if f != FAMILY]
+        add(followup, 'Forbids', PROPOSAL_READ)
+        followup['Nodes'] = [deepcopy(page(followup, k)) for k in ('start', 'share', 'accepted', 'friend')]
+        start = page(followup, 'start')
+        start['Text'] = '''{n}The scout brings a second fold from the southern relay, its edges stained by rain. He leaves to join the demon-road patrol while Soana opens it beside the cold pot.{/n}
+"This time he has heard about you, hunter. Sit. I shall read his answer."'''
+        start['Choices'] = [c('[Hear Corven answer the proposal she sent.]', 'share')]
+        accepted = page(followup, 'accepted')
+        accepted['Text'] = accepted['Text'].replace(
+            'Her thumb rubs a callus on your palm. She does not let go until the scout has left.',
+            'She catches your wrist and pulls you back from the path as the scout leaves.')
+        for key in ('accepted', 'friend'):
+            for answer in page(followup, key)['Choices']:
+                add(answer, 'Set', PROPOSAL_READ)
+        payload['Scenes'].append(followup)
     payload['Derived'][KNOWN] = [[P.CONFIRMED], [FAMILY], [HOME]]
     # The old together receipt also covered ordinary family reunion. His
     # romance terms require a shared stance and no chosen family friendship.
@@ -109,8 +135,10 @@ def family(scenes):
               c('"Write your family news. I came as a friend."', 'family_friend')),
             n('send_proposal', 'Soana', '''{n}Soana writes beneath the family news. She reads the new lines to you, then folds the sheet into the scout's hand.{/n}
 "I want my husband. I want you too. He shall hear both, from me."
-{n}The scout takes it south with the next relay. On his return he brings a second fold. Soana opens it herself while you wait beside the cold pot.{/n}''',
-              c('[Hear Corven answer the proposal she sent.]', 'share', flags=(DISCLOSED,))),
+{n}The scout takes it south with the next relay. Soana sets the charcoal down and watches him pass the bend.{/n}''',
+              c('[Hear Corven answer the proposal she sent.]', 'share', flags=(DISCLOSED,), requires=('soana.closed',)),
+              c('[Leave the proposal with the relay. Return for his answer.]',
+                flags=(PROPOSAL_SENT, DISCLOSED, FAMILY))),
             n('family_friend', 'Soana', '''{n}She writes news of the spring and the forest, then gives the sheet to the waiting scout.{/n}
 "A friend. Bring news of the demon road next time. And something worth eating."
 {n}She puts Corven's answer inside her shawl.{/n}''',
@@ -403,8 +431,60 @@ def attributed_variants(scenes):
                 continue
             for line in commander_lines:
                 node['Text'] = node['Text'].replace('"' + line + '"\n', '')
-            # Consecutive speeches now belong to the same named speaker.
-            node['Text'] = re.sub(r'"\s*\n\s*"', ' ', node['Text'])
+            # A newline can separate different speakers. Keep quotations intact.
+            repairs = {
+                '"Until the grass eater lay down.': '"I stayed to watch until the grass eater lay down.',
+                '"Let him. I stacked it myself.': '"Varn can inspect the kindling too. I stacked it myself.',
+                'And you have reminded me twice.': 'And you have reminded me.',
+                '"So far."': '"So far I have only thought about it."',
+                '"They will survive a night without me.': '"The tools will survive a night without me.',
+                '"When I want that ground kept.': '"I will renew the notch when I want that ground kept.',
+                '"Two words. She tried to get a third.': '"I said I was wrong. Two words. She tried to get a third.',
+                '"After I asked how many last sacks followed the first. She tied them.': '"She stopped after I asked how many last sacks followed the first. She tied them.',
+                '"Left alone.': '"The warning was left alone.',
+                '"If she comes. Until then,': '"If she comes, I shall ask her for another report. Until then,',
+                '"Has it ever ceased? Sit down.': '"The forest is still in danger. Sit down.',
+                '"You came to silence me? Bold already."': '"A place beside my blanket? You will have to bear my tongue as well, hunter."',
+                '"At last, something simple from a Commander."': '"A simple request, even for a Commander."',
+                '"How long?"': '"You came for the evening. Sit before it is gone."',
+                'At the hour you named she rises.': 'Before the night is over she rises.',
+                '"They will keep. Yours may not have."': '"My scoldings will keep. Fine promises might not survive that road."',
+                '"Then stop boasting."': '"Come here. Give me something better to kiss."',
+                'Do not spoil a perfectly good complaint.': 'Bloody fool. I had plenty left to say.',
+            }
+            for old, new in repairs.items():
+                node['Text'] = node['Text'].replace(old, new)
+            # These variants are Soana's monologues. The homecoming proposals
+            # instead contain Corven, Soana and their son, with explicit turns.
+            if not event['Id'].startswith('soana.partner.homecoming'):
+                node['Text'] = re.sub(r'"\s*\n\s*"', ' ', node['Text'])
+
+
+def dead_histories(scenes):
+    """Select Corven's actual whereabouts before both dead and letter pages."""
+    event = scenes['soana.the_days_she_counted']
+    dead_choices = deepcopy(page(event, 'dead')['Choices'])
+    states = (
+        ('separated', P.SEPARATED, (), 'Corven is in the south. We ended our vows. He can read this with the family news.'),
+        ('home', HOME, (P.SEPARATED,), 'Corven is home. He will have a fine long answer to give me when he reads this.'),
+        ('known', KNOWN, (P.SEPARATED, HOME), 'Corven is alive in the south. This goes with the next relay; he will have a fine long answer to write.'),
+    )
+    for key in ('dead', 'letter'):
+        original = page(event, key)
+        for suffix, required, forbidden, line in states:
+            replacement = original['Text'].replace(
+                'Corven will have a fine long answer to give me, if he ever comes to read it.', line).replace(
+                'Corven. I finished what I began.', 'Corven. I finished what I began. ' + line)
+            if key == 'letter':
+                replacement = '"' + line + '"\n' + replacement
+            variant(event, key, replacement, requires=(required,), forbids=forbidden, suffix=suffix)
+        # Variants of dead carry their corresponding letter, rather than
+        # requiring the player to select history a second time.
+    for suffix, _, _, _ in states:
+        clone = page(event, 'dead_r3_' + suffix)
+        clone['Choices'] = deepcopy(dead_choices)
+        for answer in clone['Choices']:
+            answer['Next'] = 'letter_r3_' + suffix
 
 
 def finish(scenes):
@@ -413,6 +493,7 @@ def finish(scenes):
     add(scenes['soana.trickster.returned.graveyard'], 'Requires', P.RETURNED)
     family(scenes)
     histories(scenes)
+    dead_histories(scenes)
     # A secret answer declares the affair on this very choice. Requiring its
     # stance beforehand made that first answer circular. Keep her invitation,
     # every price, and all gates on honest shared/exclusive arrangements.

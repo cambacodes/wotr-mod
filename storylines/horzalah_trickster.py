@@ -346,14 +346,16 @@ SCENES.append(scene(H + "unmet.knife", "Hired help is so disappointing", "Horzal
        c("Continue", "demise")),
     hz("demise", '''"I have hired knives for you, Commander. Hired help is so disappointing: they take the money in advance and lose their nerve in the corridor." {n}She turns her blade so the lamplight runs along it.{/n}
 "So I came myself. I wanted to personally witness your demise!"''',
-       c("[Throw the blanket at her face and go for your sword.]", "fight"),
-       c('"You could have knocked."', "fight")),
+       c("[Throw the blanket at her face and go for your sword.]",
+         check=dict(Skill="SkillMobility", DC=30, Success="fight", Failure="outmatched", CommanderOnly=True)),
+       c('[Catch her knife wrist.] "You could have knocked."',
+         check=dict(Skill="SkillAthletics", DC=30, Success="fight", Failure="outmatched", CommanderOnly=True))),
     nar("fight", '''{n}It is short and ugly, and the room does not survive it. She is faster than anything you have fought in a bedchamber, and stronger than she looks, and she fights like someone who has been told her whole life that she is the lesser of two: every blow is meant to prove somebody wrong.{/n}
 {n}It is not enough. When she goes down against the wall, with your blade under her chin and her own knife somewhere under the bed, she does not look at you. She looks up, past the ceiling, and screams a name. "Father! FATHER!"{/n}
 {n}Nothing answers. Outside, your guards have started hammering on the door.{/n}''',
         c("Continue", "beaten")),
-    hz("beaten", '''{n}She sags against the wall. Her eyes come down from the ceiling slowly, as if they had to be fetched.{/n}
-"This is not how it was supposed to end," {n}she says, to nobody.{/n} "Why are you so strong, mortal? Nobody told me you were so strong." {n}Then, to you, flat:{/n} "Go on. I have nothing left. When my father hears of this, he will take everything from me. Even the Guild."''',
+    hz("beaten", '''{n}She slams her fist against the floor. A tile cracks beneath it.{/n}
+"This isn't how it was supposed to end! Why? Why are you so damn strong, mortal?" {n}She bares her teeth at the blade beneath her chin.{/n} "Go on, then! Finish it! When my father hears of this, he will take everything from me. Even the Guild."''',
        c('[Tell her your guess] "He won\'t. He didn\'t answer you just now, and he won\'t come for your Guild either. Your own knives will."',
          "guess", mythic="Trickster"),
        c('[Let her go] "Get out. Go home and tell them whatever you like."', "go"),
@@ -375,7 +377,12 @@ SCENES.append(scene(H + "unmet.knife", "Hired help is so disappointing", "Horzal
 "You will regret this mercy, mortal. Not because I will come back for you; because you will never know if I am coming." {n}The air folds around her like a curtain drawn by a hand you cannot see, and when your guards break the door in, there is nobody in the room but you.{/n}''',
        c("[Let them in.]", flags=(REFUSED, STARTED, CAME, LET_GO))),
     nar("kill", '''{n}You do it quickly, which is more than she came to do for you. She does not call her father's name again. By the time your guards break the door in, there is nothing left to guard you from, and nobody in Alushinyrra will ever know which of the Knight Commander's nights was the one she did not come home from.{/n}''',
-        c("Continue", flags=(KILLED_UNMET, CLOSED)))],
+        c("Continue", flags=(KILLED_UNMET, CLOSED))),
+    # Authored tactical failure: the watch interrupts her attack, not a victory.
+    hz("outmatched", '''{n}Her knife catches your sword arm. She kicks the lamp aside and drives you against the bedpost, blade at your throat. The guards batter the door; its hinge tears free.{/n}
+"A whole watch to save one mortal!" {n}She drags the edge across your skin, drawing blood, then pulls away from the splintering door.{/n} "Sleep with them in your bed next time."
+{n}The air folds around her. The guards burst in with drawn steel and find you bleeding beside the overturned lamp.{/n}''',
+       c("[Double the watch.]", flags=(GUARD, CLOSED)))],
     requires=("trickster", "iz.done", "coronation.seen"),
     forbids=(PRIMED, REFUSED, CLOSED, MET_A, MET_B, Q2_DONE), ForbidOverrides={Q2_DONE: LAPSED},
     last=6, Relationship=REL, Remote=True, Kind="visit", TricksterDevice=True, TricksterState="unmet"))
@@ -412,8 +419,10 @@ SCENES.append(scene(H + "late.at_night", "A night without sleep", "Horzalah", 5,
        c('[Offer her a better story] "They\'d smell a head. They won\'t smell an ear. Take a piece of me home and tell them you let me live to wear the loss."',
          "take", requires=(LET_GO,))),
     hz("take", '''{n}She looks at you for the length of three slow breaths. Then she sits down on the edge of your bed, and lays the knife across her knees.{/n}
-"I hate you," {n}she says, conversationally.{/n} "I want you to know that. I will hate you for this for longer than your whole line will live." {n}She takes a fistful of your hair.{/n} "The left one. Everyone who looks you in the face will see where it was."''',
-       c("[Turn your head for her.]", "cut")),
+"I hate you," {n}she says, conversationally.{/n} "I want you to know that. I will hate you for this for longer than your whole line will live." {n}She takes a fistful of your hair.{/n} "The left one. Everyone who looks you in the face will see where it was."
+{n}A demon leaving your quarters with a bloody trophy will frighten the lords who lend the crusade their men. Keeping those men at the front will mean calling in favors — a hundred of them — before the lords can recall them.{/n}''',
+       c("[Turn your head for her. Pledge 100 Favors to keep the lords' men.]", "cut"),
+       c("[Put the bargain off.]", abort=True)),
     nar("cut", '''{n}The knife is small and very sharp. There is a sound like a boot going through thin ice, and then a cold place on the side of your skull that is suddenly very large, and then the pain, all at once, filling the whole left side of the world. Your blood goes everywhere. It is a great deal of blood for one ear.{/n}
 {n}She makes a box out of the air, black paper and a white ribbon, and ties the bow over your ear one-handed, and is gone before your shout brings the guard.{/n}''',
         c("Continue", "morning")),
@@ -421,7 +430,7 @@ SCENES.append(scene(H + "late.at_night", "A night without sleep", "Horzalah", 5,
         c('"No priest. Leave it as it is."', "no_priest")),
     hz("no_priest", '''{n}The priest goes away offended. That night there is a note on your pillow, pinned through with a knife so thin you did not hear it go in. The hand is as sharp as a row of nails.{/n}
 "My people in your city tell me you sent the priest away. Good. The day they tell me otherwise, I will know you made a fool of me, and so will every knife that ever bows to that box. It is mine now. H."''',
-       c("[Pull the knife out of your pillow.]", flags=(PRIMED, EAR, LATE, STARTED), crusade=("Favors", -100))),
+       c("[Pull out the knife. Spend 100 Favors keeping the lords' men at the front.]", flags=(PRIMED, EAR, LATE, STARTED), crusade=("Favors", -100))),
     hz("guard", '''{n}You shout. She does not flinch at it. She only looks at you as though you had shown her something she had expected all along, and found it disappointing anyway.{/n}
 "Then keep your guards, mortal. Keep your head. See how long either lasts." {n}The air folds round her, and your door bursts open on an empty room.{/n}''',
        c("Continue", flags=(GUARD, CLOSED)))],

@@ -159,7 +159,7 @@ def partner_paragraphs(condition="body"):
     """Current partner position plus chosen terms, on every ending surface."""
     whereabouts = {
         "body": "Shamira had returned to her Harem in flesh. Nocticula had claimed her as her chosen lover; Shamira still coveted her throne.",
-        "alive": "Shamira remained in the Harem of Ardent Dream, Nocticula's chosen lover and ambitious steward.",
+        "alive": "Shamira remained in the Harem of Ardent Dreams, Nocticula's chosen lover and ambitious steward.",
         "mind": "Shamira had no body to bring to Nocticula's bed. What remained of the Ardent Dream was inside the Commander's mind; her old lover had no place there.",
         "gone": "Shamira was gone. Nocticula's chosen lover had left no body that could answer a summons to her bed.",
     }[condition]
@@ -337,7 +337,7 @@ def integrate(payload):
 
     door = scenes[P + "epilogue.closed_door"]
     door.setdefault("ForbidOverrides", {})[COMMITTED] = BROKEN
-    door["Nodes"][0]["Text"] = '''{n}Shamira returned to the Harem of Ardent Dream. She took the coal that kept her stolen body alive from the edge of the Commander's sleep, without a word. The Commander never mistook that silence for company.{/n}'''
+    door["Nodes"][0]["Text"] = '''{n}Shamira returned to the Harem of Ardent Dreams. She took the coal that kept her stolen body alive from the edge of the Commander's sleep, without a word. The Commander never mistook that silence for company.{/n}'''
     door["Nodes"][0].setdefault("Paragraphs", []).append(p(
         '''{n}The Commander had thrown her out of her own trade, in her own Harem. She never spoke the Commander's name again.{/n}''', forbids=(BROKEN, EXCLUSIVE)))
     for id, s in scenes.items():
@@ -352,7 +352,7 @@ def integrate(payload):
                 if P + "court.guest" in para.get("Requires", []):
                     # A public lover can still enter court as her guest. The
                     # old "never came near the truth" claim cannot survive it.
-                    para["Text"] = '''{n}In the Harem of Ardent Dream the Commander was always her guest, who drank her wine without asking, and whom she had not yet killed. Every visit started another quarrel over how much her invitation was worth.{/n}'''
+                    para["Text"] = '''{n}In the Harem of Ardent Dreams the Commander was always her guest, who drank her wine without asking, and whom she had not yet killed. Every visit started another quarrel over how much her invitation was worth.{/n}'''
                 if "nocticula.trickster.secret_known.shamira" in para.get("Requires", []):
                     para["Forbids"].extend([DEAD, HIDING, RETURNED, SHARE, EXPOSED])
     for node in late["Nodes"][1:]:

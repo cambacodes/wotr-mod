@@ -6,8 +6,30 @@ Use `tools/fast_gate.sh` after each coding round. It generates the expansion wit
 strict verifier check and the existing lint policies, selects Python regressions,
 then runs the relevant named RulesTests suites. Logs, native coverage receipts
 and .NET intermediates live in a disposable system temporary directory.
-Add `--json /tmp/gate-times.json` to retain stage timings and assertion receipts
-outside the repository. Remove that evidence file after reviewing it.
+Each run retains a receipt outside the repository (the default path is printed).
+Use `--json /tmp/gate-times.json` to choose its location and remove it after review.
+Receipts include command, exit, completeness, elapsed time, source/export/policy
+hashes, scene count, actual check coverage and separate Python/C# measurements.
+Killed, timed out and skipped stages cannot produce a passed gate.
+`--timeout 900` bounds each stage, including descendants; it is the default.
+`--plan` inventories required lints and selected Python/C# checks without running
+them. FAST and FULL both enforce the existing strict slot, payoff, departure and
+voice policies. FAST allows only exact registered integration placeholders;
+FULL forbids pending prose. Use `--voice-job` for signed voice/scaffold jobs
+and `--append-approvals` for the separately signed J05b pending-choice append
+record; see [ownership review](route_packs/ownership.md). The separate Claude
+request queue is checked by `python tools/claude_work_queue_lint.py`.
+The verifier supplies save compatibility and earned-presence checks.
+
+To separate existing debt from new failures, independently run the pinned baseline
+checkout with `--collect-failures --json /tmp/baseline.json`, then supply that receipt
+with `--baseline /tmp/baseline.json --baseline-sha256 <reviewed-file-hash>`.
+Collection finishes independent checks but still fails on every nonzero exit;
+killed prerequisites stop the run. Only complete, matching-profile/policy receipts
+are compared. Unmatched commands are unclassified, and baseline findings remain
+failures. Add binding documents with `--policy <path>`; the harness and Trickster
+rubrics are resolved via `RRT_WRITER_DIR` (default `/work/Writer`), with absent files
+recorded explicitly. These receipts certify mechanical evidence, not prose quality.
 
 ```bash
 tools/fast_gate.sh                         # staged, unstaged and untracked files

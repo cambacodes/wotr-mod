@@ -115,7 +115,7 @@ NATIVE_EPILOGUE_EDITS = {
 }
 
 NATIVE_GATES = {
-    "kiana.q3_recovery": dict(Target="2b4a5c01a192d1f4aa8c9d32aa149727", Relationship="kiana", When=HOME_WORLDS),
+    "kiana.q3_recovery": dict(Target="2b4a5c01a192d1f4aa8c9d32aa149727", Relationship="kiana", When=HOME_WORLDS + [["trickster.now", kt.RETURNED, kt.ROBBED]]),
     "arsinoe.souls_search_answer": dict(Target="41d9638f7d971164fab4efdbbbffbe70", Relationship="kiana",
                                         When=HOME_WORLDS),
 }
@@ -225,8 +225,89 @@ NATIVE_ANSWER_EDITS["5d02b3f1d1f6774419ea9fd3795596e8"] = dict(
 def integrate(payload):
     """Register the gates and the aftermath line (after kiana_trickster)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
+    payload.setdefault("NativeTextEdits", {}).update(copy.deepcopy(NATIVE_TEXT_EDITS))
     register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, gates=NATIVE_GATES)
     # eng7-f1
     for target, spec in NATIVE_ANSWER_EDITS.items():
         declare(payload, source=__name__, target=target, target_type="answer", action="REPLACE", spec=spec)
     # end eng7-f1
+
+
+# Authored DLC-tier consequences of the existing ransom or con.
+# These reviewed text fields keep every native speaker, choice, action and quest step.
+PARTIAL_WORLDS = [["trickster.now", kt.RETURNED, kt.ROBBED]]
+SEPARATED_WORLDS = [["trickster.now", "kiana.separated"]]
+NATIVE_TEXT_EDITS = {}
+
+
+def _text(guid, key, paid, partial=None, *, field="Text", kind="BlueprintCue", separated=False):
+    variants = [dict(Text=paid, When=SEPARATED_WORLDS if separated else HOME_WORLDS, Forbids=[])]
+    if partial:
+        variants.append(dict(Text=partial, When=PARTIAL_WORLDS, Forbids=[kt.DOG]))
+    NATIVE_TEXT_EDITS[guid + "/" + field] = dict(Type=kind, Key=key, Variants=variants)
+
+
+_text("901c1edd8887dfa4b9f108e106f38423", "74e73e62-e594-4200-8f0b-51c206c927d7", '"We\'ll find Elan and stop Sunhammer!"', kind="BlueprintAnswer")
+_text("01a184d01ff707748b6377c38d2912e5", "b6aadd42-09ba-48cd-86fa-4f3ef5ba83bf", '"We\'ll find Sunhammer and recover the stolen jewelry!"', kind="BlueprintAnswer")
+_text("22ced28b5ecb08348b35daa51ab112b1", "ef6faada-c7c6-4c63-b1d6-f19a00da9c17", '"Leave the stolen jewelry and get out of my sight. I\'ll let you go."', kind="BlueprintAnswer")
+_text("5a5a533c9ce630a48b877f9a194840cb", "b46d5fa9-4ea9-4e7a-9997-b95c458bd095",
+      "The wedding souls have returned to Drezen through the Commander's bargain, but their captor remains at large. Arsinoe has traced the place where Sunhammer kept them to the Worldwound. Seelah intends to confront the jeweler and his cult, and recover what he stole from the families. Her friends have suffered for this wedding. Bringing them home has not settled her doubts.", field="Description", kind="BlueprintQuest")
+_text("7ac73c0b5de939b4b824a0aac54ba5f2", "ef5f2b7e-8e8c-4338-a8c1-acce1e65618f",
+      "Arsinoe's search for the souls revealed a cave beneath Gravestone Rock, at the edge of the Winged Wood. The wedding guests have since been ransomed, but the cave may still shelter Sunhammer and his cult. Elan has gone ahead to keep watch. The Commander and Seelah must join him there.", field="Description", kind="BlueprintQuestObjective")
+_text("83527eddea019674cb123a6a52bdf169", "8f8bb69c-77fb-4b1a-af7a-589fa79bcb17", "Find Sunhammer and recover the stolen jewelry", field="Title", kind="BlueprintQuestObjective")
+_text("83527eddea019674cb123a6a52bdf169", "e07e3559-8973-46ee-8c3f-85326d63c8aa",
+      "The cave is a Baphomite hideout. The wedding souls are already home, but Sunhammer and the stolen settings remain within. Retrieving them without a fight seems unlikely.", field="Description", kind="BlueprintQuestObjective")
+_text("5b1e04caadc42114281d29db76c19c4f", "fe6c829a-52b3-489e-814f-b9cbe22a8cd6", "Bring the wedding jewelry back to Drezen", field="Title", kind="BlueprintQuestObjective")
+_text("5b1e04caadc42114281d29db76c19c4f", "884bf99f-bd1e-42ea-ac54-996fe4e8dddb",
+      "Seelah has the empty wedding settings. Arsinoe is gathering the recovered patients and their families at the Drezen infirmary. The Commander should attend and deliver what was taken from them.", field="Description", kind="BlueprintQuestObjective")
+_text("ba857f1c903988f47a70a9d6a2d861fa", "247343ee-0c87-4495-9857-310cc31fa663",
+      "Jannah, the convicted deserter, has asked to join her friends in finding Sunhammer and confronting his cult. The wedding guests are already home; the hunt for their captor continues.", field="Description", kind="BlueprintQuestObjective")
+
+# Sibling sweep: pursuit, reconnaissance and separated grief.
+_text('dc3a376f09759574f997995e8f07689a', '1e776184-f15d-4a8a-9e96-830c5e929e6c',
+      '"We\'re finally here! The guests are home, but I keep thinking about what Sunhammer did to them. He must be stopped."', kind='BlueprintCue')
+_text('5c09123a07ee1e047a292c542cce6b74', 'cb16d5c5-6f75-4238-9d9d-957abc3aa5a8',
+      '{n}Kiana smiles sadly.{/n} "I knew the risks when I married a crusader. Leaving him didn\'t make me forget them. I thought he would come home, and we would have time to get used to being apart."', kind='BlueprintCue', separated=True)
+_text('5d02b3f1d1f6774419ea9fd3795596e8', '12e922e5-7d4c-4e06-a130-765d91876379',
+      '"What happened to the victims while we were away?"', kind='BlueprintAnswer')
+_text('56f96d3f22dac0942890ebc8dafdfc56', '869d65f2-fb96-4999-9355-fd6a5c1719d1',
+      '"We don\'t know what\'s down there. But think about who started all this: Darek Sunhammer and his damned trinkets! We did some digging. We believe he\'s one of Baphomet\'s cultists. Their methods, their magic, their way of infiltrating society... it fits. You bought the souls back, but he may still be hiding with his friends in the Wound."', kind='BlueprintCue')
+_text('6cac7bac2baea854d9c52b1d89046cd8', '8515f2a6-a926-49a3-a566-f60b4e1dff3d',
+      '{n}Elan shakes his head.{/n} "My apologies, Commander. Kiana and I have separated. That doesn\'t mean I can forget what happened to her... or let the man who did it go."', kind='BlueprintCue', separated=True)
+
+# Authored history repair: romance closure cannot undo a rescue or a separation.
+# Native dialogue itself still decides whether its speaker is present.
+_scenes = {s["Id"]: s for s in SCENES}
+for _guid, _edit in NATIVE_EPILOGUE_EDITS.items():
+    _field = _guid + "/Text"
+    _variants = [_edit, *_edit.get("Variants", [])]
+    _history = []
+    for _variant in _variants:
+        _scene = _scenes[_variant["Replacement"]]
+        _when = copy.deepcopy(_variant["When"])
+        # An individual release must carry its original con receipt, never a bare return.
+        for _group in _when:
+            if kt.RETURNED in _group and kt.ROBBED not in _group:
+                _group.append(kt.ROBBED)
+        _history.append(dict(Text=_scene["Nodes"][0]["Text"], When=_when,
+                             Forbids=list(dict.fromkeys([*_scene.get("Forbids", []),
+                                 *([kt.DOG] if any(kt.RETURNED in g for g in _when) else [])]))))
+    NATIVE_TEXT_EDITS[_field] = dict(Type="BlueprintCue", Key=_edit["Key"], Variants=_history)
+for _guid, _edit in NATIVE_ANSWER_EDITS.items():
+    NATIVE_TEXT_EDITS[_guid + "/Text"]["Variants"][0]["Text"] = _edit["Text"]
+
+# The same wedding-to-widow compression is false after an early rescue without separation.
+NATIVE_TEXT_EDITS["aebbc1845e827dd4da4e28014e7b4162/Text"]["Variants"].extend([
+    dict(Text='{n}Kiana\'s hands are clasped to her chest. There is a dazed look in her eyes.{/n} "We survived that wedding. I heard him talk about what we would do afterwards... I thought we would have time."',
+         When=HOME_WORLDS, Forbids=["kiana.separated"]),
+    dict(Text='{n}Kiana\'s hands are clasped to her chest. There is a dazed look in her eyes.{/n} "You brought me back. I thought Elan would come home too... He was going after our guests. I kept their names for him."',
+         When=PARTIAL_WORLDS, Forbids=["kiana.separated", kt.DOG]),
+])
+
+# The registered journal adapter and this field adapter share the current wording.
+# Harmony prefix order must not select an obsolete account of the same rescue.
+from storylines.native_overrides import JOURNALS as _journals
+for _guid, (_description_key, _title_key, _title, _description) in _journals.items():
+    for _name, _wording in (("Title", _title), ("Description", _description)):
+        if _guid + "/" + _name in NATIVE_TEXT_EDITS:
+            NATIVE_TEXT_EDITS[_guid + "/" + _name]["Variants"][0]["Text"] = _wording

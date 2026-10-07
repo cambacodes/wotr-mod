@@ -120,6 +120,7 @@ class SoanaRound3Tests(unittest.TestCase):
             ('soana.a_promise_still_spoken', 'delivered', {'soana.courtship_chosen', P.PURSUED}),
             ('soana.when_the_road_returns', 'welcome', {'soana.later_courting', 'soana.nursery_saved', 'soana.path_cleft'}),
             ('soana.the_days_she_counted', 'letter', {'soana.later_courting'}),
+            ('soana.the_days_she_counted', 'guardian', {'soana.later_courting', 'soana.bear_dead'}),
         ]
         histories = [set(), {P.CONFIRMED, P.TOGETHER, P.SHARE, P.DECIDED},
                      {P.CONFIRMED, P.TOGETHER, P.SHARE, P.DECIDED, Q.HOME},
@@ -206,6 +207,90 @@ class SoanaRound3Tests(unittest.TestCase):
             self.assertNotIn('soana.committed', after)
         for after, _ in self.walk(sid, flags | {P.BROKEN}, 'partner_secret_bind'):
             self.assertNotIn('soana.committed', after)
+
+    def test_second_proposal_waits_for_a_separate_relay_reply(self):
+        for returned in ('', '.returned'):
+            sid = 'soana.partner.reply' + returned
+            outcomes = self.walk(sid, {P.PURSUED}, 'send_proposal')
+            self.assertTrue(outcomes)
+            for flags, path in outcomes:
+                self.assertNotIn('share', path)
+                self.assertIn(Q.PROPOSAL_SENT, flags)
+                self.assertNotIn(P.CONFIRMED, flags)
+            followup = self.scenes['soana.partner.proposal_reply' + returned]
+            self.assertEqual(followup['DelayHours'], 168)
+            self.assertIn(Q.PROPOSAL_SENT, followup['Requires'])
+            self.assertNotIn(Q.PROPOSAL_SENT, self.story['Derived'])
+            self.assertIn(Q.PROPOSAL_READ, followup['Forbids'])
+            for flags, path in self.walk(followup['Id'], {Q.PROPOSAL_SENT, P.SHARE}):
+                self.assertIn('share', path)
+                self.assertIn(Q.PROPOSAL_READ, flags)
+                self.assertIn(P.CONFIRMED, flags)
+
+    def test_dead_guardian_selects_actual_husband_history(self):
+        event = self.scenes['soana.the_days_she_counted']
+        guardian = Q.page(event, 'guardian')
+        for extra, target, wording in (
+                (set(), 'dead', 'if he ever comes'),
+                ({P.CONFIRMED}, 'dead_r3_known', 'alive in the south'),
+                ({Q.HOME, P.CONFIRMED}, 'dead_r3_home', 'Corven is home'),
+                ({Q.HOME, P.CONFIRMED, P.SEPARATED}, 'dead_r3_separated', 'ended our vows')):
+            with self.subTest(target=target):
+                choices = [a for a in guardian['Choices']
+                           if a['Next'].startswith('dead') and self.available(a, extra | {'soana.bear_dead'})]
+                self.assertEqual([a['Next'] for a in choices], [target])
+                node = Q.page(event, target)
+                self.assertIn(wording, node['Text'])
+                if target != 'dead':
+                    self.assertNotIn('if he ever comes', node['Text'])
+                    self.assertIn(wording, Q.page(event, node['Choices'][0]['Next'])['Text'])
+
+    def test_homecoming_twins_preserve_three_speakers(self):
+        for returned in ('', '.returned'):
+            event = self.scenes['soana.partner.homecoming' + returned]
+            for key in ('family_proposal', 'share_r3_proposal'):
+                text = Q.page(event, key)['Text']
+                self.assertIn('nothing of this."\n"I am saying it now,"', text)
+                self.assertIn('Leave me out of it."\n"I still want my wife,"', text)
+                self.assertIn('Soana answers', text)
+                self.assertIn('Corven says', text)
+
+    def test_removed_questions_leave_complete_observations(self):
+        cases = {
+            'soana.after_the_last_visitor': {
+                'quiet_r3_cleft': 'I stayed to watch until',
+                'quiet_r3_flood': 'Varn can inspect the kindling too',
+                'quiet_r3_desire': 'So far I have only thought about it',
+                'quiet_r3_quiet': 'The tools will survive',
+            },
+            'soana.the_days_she_counted': {
+                'quiet_r3_start': 'I will renew the notch when',
+                'quiet_r3_harvest': 'She stopped after I asked',
+                'quiet_r3_meret': 'I shall ask her for another report',
+                'quiet_r3_dead': 'The forest is still in danger',
+                'quiet_r3_commit': 'bear my tongue as well',
+                'quiet_r3_open': 'A simple request',
+            },
+            'soana.before_the_far_road': {
+                'quiet_r3_start': 'You came for the evening',
+                'quiet_r3_courtship': 'My scoldings will keep',
+                'quiet_r3_kiss': 'Before the night is over',
+            },
+        }
+        for sid, nodes in cases.items():
+            for key, wording in nodes.items():
+                self.assertIn(wording, Q.page(self.scenes[sid], key)['Text'], (sid, key))
+        for suffix in ('known', 'home', 'separated'):
+            self.assertNotIn('Do not spoil', Q.page(self.scenes['soana.when_the_road_returns'],
+                                                 'saved_r3_' + suffix)['Text'])
+
+    def test_speaker_repairs_add_no_strict_player_text_findings(self):
+        from tools import player_text_lint, player_text_baseline
+        route = {'Scenes': [s for s in self.story['Scenes'] if s['Id'].startswith('soana.')]}
+        lint = player_text_lint.check(route)
+        hard = player_text_baseline.new_findings(route, lint['review'],
+                                               therapy_counts=lint['therapy_counts'])
+        self.assertEqual(hard, [])
 
 
 if __name__ == '__main__':

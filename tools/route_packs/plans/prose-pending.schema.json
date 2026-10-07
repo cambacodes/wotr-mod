@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Held scaffold prose targets",
+  "title": "Integration and held scaffold prose targets",
   "type": "object",
   "additionalProperties": false,
   "required": ["version", "pending"],

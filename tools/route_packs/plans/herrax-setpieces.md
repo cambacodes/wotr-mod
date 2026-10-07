@@ -906,3 +906,11 @@ All 66 Herrax-named exported scenes are included below, including native injecte
 |---|---|---|
 | line | {n}Herrax's smile deepens. She touches the bone sheath at her hip.{/n} "You already know which door I leave open for you. But I have a house to run, dar… | 3/3 sound; preserve concrete appetite/consequence; **TERMS**. |
 
+
+## Round 4 local residue (authored)
+
+- D23/D24: the existing unpaid-lover terms in honeyed_tongue and unpriced_guest now require herrax.committed. Labyrinth access, priming the con, and Morevet's death do not grant that offer. No new price or relationship condition.
+- D25: the_stain/nothing wants the house cowed and Rokhorn humiliated; Herrax turns the Commander's cutting hand against her own scar and claims it as a threat to rivals. The Commander has already paid with the cut and its public association; fear does not earn absolution. Native register anchor: Cue_0054, enGB e37ee512-a025-4610-85d6-7206dbefbbf3 (cultists kept for amusement).
+- D26: sounding/read and rehearsal/done distinguish the blood sample from the subsequent spoken fate-reading. In late.next_move/earnest_taken, Rokhorn's successful buyer performance convinces him to take the blood price without invoking divination; he enjoys the bargain and dismisses bad omens. This is an authored choice by Rokhorn, not protection from his art. CheckBluff DC22, blood/ring price, and the existing failed-check gold alternative remain.
+- D26 canon anchor: Cue_0193, GUID 37ffd2b3d550b894885e1c4837d2adba, enGB a037e30c-1dfb-4344-9c3c-21653e308223: claw, lick, then a low strange voice reading fate. Rehearsal's Herrax voice anchor: Cue_0097, enGB 79d1fac5-23ab-460e-8e60-ce60a4a62ae1 (the keeper beyond anyone's reach). She wants her trap intact, demonstrates the threatened cut on the Commander's cheek, and risks her chair if the con is exposed.
+- Acceptance: tests/test_herrax_round4.py covers living/dead Morevet, primed/unprimed, committed/uncommitted and closed histories, plus the late con's unchanged check and prices. Voice-review-pending registers all four altered dialogue scenes.

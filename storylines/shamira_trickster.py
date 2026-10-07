@@ -640,7 +640,7 @@ SHELL_PARAGRAPHS = (
 )
 
 epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira the Ardent Dream died in the Lady in Shadow's own bedchamber, at the hand of the Commander, and that her essence burned in the syphon at Threshold with everything else it held. The chroniclers did not look behind the Commander's eyes.{/n}
-{n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dream again. Only that she wore the room as if it had never been emptied.{/n}''',
+{n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dreams again. Only that she wore the room as if it had never been emptied.{/n}''',
     requires=(EMBODIED, COMMITTED), forbids=(CLOSED,), paragraphs=(
         p('''{n}On the night before the rift she came into the Commander's sleep as she always did, and for once she did not warm her hands. "Come out of the hole, clown," she said, in the throne-room voice, and under it something that was not. "I have already died of one trick this year. I will not lose you to a hole in the ground. It would be a very poor joke, and you are not allowed to tell poor jokes. Not to me." Then she sat down at the edge of the dream and did not leave it until the drums.{/n}'''),
     ) + SHELL_PARAGRAPHS + (
@@ -655,9 +655,9 @@ epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira t
         p('''{n}The captain of the north postern kept his post to the end of the war and sold the templars of the Ivory Labyrinth a door every week, and every door was a wall of crossbows. His daughter came home in the second spring, in an exchange he had arranged himself. He never knew who had written his lists for him. Shamira always said it was the best joke she had ever been part of.{/n}''', requires=(P + "spy.turned",)),
         p('''{n}The captain of the north postern lived out the war, and a long life after it, a dull, loyal, careful man who never dreamed and never wondered why.{/n}''', requires=(P + "spy.fed",)),
         p('''{n}The chaplains of the crusade never forgave the Commander for the north barracks. They never said so; they only stopped praying aloud when the Commander walked into a room.{/n}''', requires=(P + "barracks.told",)),
-        p('''{n}In the Harem of Ardent Dream the Commander was always her fool: bowed in, bowed out, never assassinated, because nobody in the Abyss kills a joke. The Commander had to be funny every visit for the rest of {mf|his|her} life. It was, by general agreement, the hardest duty of the Fifth Crusade.{/n}''', requires=(P + "court.fool",)),
-        p('''{n}In the Harem of Ardent Dream the Commander was always her guest, who drank her wine without asking, and whom she had not yet killed. The court of Alushinyrra speculated about it for a hundred years and never once came near the truth.{/n}''', requires=(P + "court.guest",)),
-        p('''{n}In the Harem of Ardent Dream the Commander stood at her right hand, where a steward stands, where a lover stands, and Alushinyrra knew exactly what it was looking at, and was afraid of it.{/n}''', requires=(P + "court.equal",)),
+        p('''{n}In the Harem of Ardent Dreams the Commander was always her fool: bowed in, bowed out, never assassinated, because nobody in the Abyss kills a joke. The Commander had to be funny every visit for the rest of {mf|his|her} life. It was, by general agreement, the hardest duty of the Fifth Crusade.{/n}''', requires=(P + "court.fool",)),
+        p('''{n}In the Harem of Ardent Dreams the Commander was always her guest, who drank her wine without asking, and whom she had not yet killed. The court of Alushinyrra speculated about it for a hundred years and never once came near the truth.{/n}''', requires=(P + "court.guest",)),
+        p('''{n}In the Harem of Ardent Dreams the Commander stood at her right hand, where a steward stands, where a lover stands, and Alushinyrra knew exactly what it was looking at, and was afraid of it.{/n}''', requires=(P + "court.equal",)),
         p('''{n}They say the throne of the Midnight Isles stood empty after the war, with its mistress somewhere in the shadows. They say Shamira sat in it, once, alone, at night, and got up again before morning, and never told anyone how it had felt.{/n}''', requires=(NOCT_HIDING,)),
     ))
 
@@ -665,7 +665,7 @@ epilogue("late", '''{n}The war ended before the Ardent Dream could finish her ga
 {n}She won it. The Commander did not even try to hide her; she went through that head room by room and found herself in every one, and said afterwards that it was the least sporting victory of her long life, and the best. Nobody asked the Commander why a chair in the corner of the bedroom was always turned to face the wardrobe.{/n}''',
     requires=(LATE_COMMITTED, EMBODIED), forbids=(COMMITTED, CLOSED, ALLY), paragraphs=SHELL_PARAGRAPHS)
 
-epilogue("ally", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and sat her throne in the Harem of Ardent Dream as if she had never been dead.{/n}
+epilogue("ally", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and sat her throne in the Harem of Ardent Dreams as if she had never been dead.{/n}
 {n}She had lost one game in her life that she had meant to win, and she never played it again with anyone. She still came into the Commander's sleep every night, because the body would not live without it, and she sat at the far edge of every dream with her back turned, and never once looked round. She paid her debts exactly, and not one favour more.{/n}''',
     requires=(EMBODIED, ALLY), forbids=(COMMITTED,), paragraphs=(
         p('''{n}On the night before the rift she spoke in the Commander's sleep for the first time since the game. "You won. I said I would never ask you anything again, and I won't. This isn't asking. This is telling. Come back out of the hole, Golarian. I owe you a life, and I pay my debts, and I can't pay a corpse."{/n}'''),

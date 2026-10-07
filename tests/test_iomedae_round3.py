@@ -58,7 +58,8 @@ class IomedaeRound3Tests(unittest.TestCase):
              'death stayed in the bottle', 'Pharasma kept the death'),
             ({'lastcall.active', io.H2, 'lastcall.dead_on_record', 'lastcall.bottled_held'},
              'bottle still held its death', 'Pharasma kept the death'),
-            ({'lastcall.active', io.H2, io.BURIED_ALIVE, io.CARRIED},
+            ({'lastcall.active', io.H2, io.BURIED_ALIVE, io.CARRIED,
+              'trickster.lastcall.primed.bottle'},
              'Pharasma kept the death', 'bottle still held its death'),
         ]:
             account = ' '.join(p['Text'] for p in node['Paragraphs'] if matches(p, held))

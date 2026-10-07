@@ -1415,3 +1415,35 @@ def _round3_restitution():
 
 
 _round3_restitution()
+
+
+# R4 D14-16: a diversion is not a declaration; her answer is her own.
+# Authored dialogue, anchored on GalfreyInDisarray/Cue_0013's insistence
+# on finishing her confession. No new commitment gate or outcome.
+for _host in SCENES:
+    _sid = _host["Id"].removesuffix("_stall")
+    _nodes = {node["Id"]: node for node in _host["Nodes"]}
+    if _sid == P + "kitrane.conversation":
+        _choice = _nodes["eng8.cousin"]["Choices"][0]
+        _choice["Text"] = '"You were saying?"'
+        _choice["Next"] = "camp.select.new_courtship"
+        _choice["Set"] = []
+    elif _sid in (P + "alive.after_no", P + "commit.answer_again"):
+        _nodes["start"]["Text"] = (
+            '"I did. The sword is with my armourer. This time there is no oath between the question and my answer." '
+            '{n}She shuts the dispatch book and lays her hand over yours.{/n} '
+            '"Stay tonight. The next orders can wait until morning. I have kept you waiting long enough."'
+            if _sid == P + "alive.after_no" else
+            '"There is. The patrol is done." {n}She takes your hand, forestalling a salute.{/n} '
+            '"I want you. After the ninth bell I shall come to you, and I expect a better greeting than a report on the ford."')
+        _nodes["start"]["Choices"][1]["Text"] = '"I would rather remain your friend."'
+        _nodes["ally"]["Text"] = (
+            '"Then we shall." {n}She opens the dispatch book again.{/n} '
+            '"Sit down, Commander. We still have an army to get through the Wound."'
+            if _sid == P + "alive.after_no" else
+            '"Very well." {n}She releases your hand and fastens her helm to her belt.{/n} '
+            '"The Crows ride with you. Keep our place on the muster."')
+del _host, _sid, _nodes
+
+from storylines.galfrey_trickster import _round4_direct_histories
+_round4_direct_histories(SCENES)
