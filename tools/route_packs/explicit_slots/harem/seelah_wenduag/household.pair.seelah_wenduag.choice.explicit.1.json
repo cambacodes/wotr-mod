@@ -1,0 +1,12 @@
+{
+  "slot_id": "household.pair.seelah_wenduag.choice.explicit.1",
+  "voice": "Seelah: practical, companion-loyal, forthright, enjoys fighting and jokes; faith without shame about pleasure. Wenduag: blunt, proud of strength and command, patient hunter, possessive, wicked and unrepentant. Each acts for herself. Traits only; invent fresh dialogue rather than copying the brief.",
+  "facts": "Two women in their earned current bodies. Commander absent, keeping their watch below; no second-person Commander address. No unverified hair, eye, skin or anatomical detail. Wenduag's prisoner rule is not a moral conversion. Rusk remains alive in guarded custody in this history.",
+  "scene": "NON-GRAPHIC EDITORIAL INTERVAL, with the intimate act left for user-supplied text. Authored Trickster Ch5 lower-wall watch-tower, after the later unfinished-bout invitation and both independent answers. The approved full boundary and extraction-night observance were already kept, the debt was paid, and the Commander took the watch. Preserve the transition from sparring familiarity to chosen private company without adding a check, cure, promise or transaction. End into the morning's real custody/prayer consequence. No repeat of a first-night confession, feeding victim, coercion or reformation.",
+  "last_line": "W: My hunters know the rule.",
+  "speakers": {"S": "Seelah", "W": "Wenduag"},
+  "example": "S: You still owe the watch a report.\nW: My hunters know where to bring him.",
+  "commander": "absent",
+  "min_lines": 14,
+  "max_lines": 20
+}
