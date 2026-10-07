@@ -454,7 +454,9 @@ _h["kiss"]["Text"] = '''{n}Arsinoe meets your kiss with her hand against your ch
 _h["kiss"]["Choices"].append(c('"Then I will stay."', "arsinoe_the_unprofitable_hour.explicit.1"))
 # Explicit slot U: her chosen finery, unfinished drink, initiative; no future promise.
 _hour["Nodes"].extend([
-    n("arsinoe_the_unprofitable_hour.explicit.1", "Arsinoe", '''{n}Arsinoe leaves the book on the table and draws you to the bed. You kiss her as she loosens the silk at her throat; she lets it fall and pulls you down beside her. The lamp stays lit as she reaches for you.{/n}
+    n("arsinoe_the_unprofitable_hour.explicit.1", "Arsinoe", '''{n}Arsinoe leaves the book open and draws you to the bed. She loosens the silk at her throat, then catches your hand before you can help.{/n}
+"I chose it for you to admire. You have barely looked."
+{n}She takes her time with the last clasp, watching your face. When you kiss her she forgets the cloth, lets it fall, and pulls you down beside her. Her hand stays at your collar; the next kiss is hers.{/n}
 "The shop can wait until morning."''', c("Continue", "private_morning")),
     n("private_morning", "Arsinoe", '''{n}In the morning, Arsinoe searches beneath the bed for her clasp. You find it caught in your discarded collar. She takes it, then bends to kiss you before pinning up her hair.{/n}
 "I chose it carefully. Next time I shall choose something harder to lose."
