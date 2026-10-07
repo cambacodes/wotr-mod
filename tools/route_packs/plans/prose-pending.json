@@ -1,0 +1,680 @@
+[
+  {
+    "scene": "noct.acq.the_missing_line",
+    "woman": "nocticula.acquisition",
+    "beat": "rename Neris -> Nerethi (canon-fix1 B1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.acq.borrowed_signature",
+    "woman": "nocticula.acquisition",
+    "beat": "rename Neris -> Nerethi (canon-fix1 B1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.acq.the_paid_address",
+    "woman": "nocticula.acquisition",
+    "beat": "rename Neris -> Nerethi (canon-fix1 B1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.acq.the_retained_copy",
+    "woman": "nocticula.acquisition",
+    "beat": "rename Neris -> Nerethi (canon-fix1 B1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_death",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_death.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_death.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_death.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_sacrifice",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_changed",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_company.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_alliance.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_limit.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_sacrifice.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_sacrifice.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_sacrifice.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_ascent.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_changed.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_changed.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_changed.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.fooled",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.punchline",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.mirror",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.mirror_kept",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.favour",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.debt",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.stalemate",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.unpriced",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.unanswered",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.defeated.epilogue.unjoked",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.epilogue.commit",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.trickster.epilogue.declined",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.lastcall.page",
+    "woman": "lastcall",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.acquisition.lastcall.page",
+    "woman": "lastcall",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.acq.epilogue.correspondence",
+    "woman": "nocticula.acquisition",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_aeon",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_aeon.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_aeon.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.ending_aeon.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.demonstration",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.demonstration.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.demonstration.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.demonstration.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.voices_in_glass",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.voices_in_glass.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.voices_in_glass.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.voices_in_glass.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.return_count",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.return_count.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.return_count.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.return_count.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.after_the_lamps",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.after_the_lamps.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.after_the_lamps.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.after_the_lamps.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.last_buyer",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.last_buyer.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.last_buyer.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.last_buyer.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.uninvited_guest",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.uninvited_guest.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.uninvited_guest.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.uninvited_guest.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.closed_gallery",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.closed_gallery.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.closed_gallery.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.closed_gallery.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.bell_without_master",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.bell_without_master.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.bell_without_master.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.bell_without_master.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.counterseal",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.counterseal.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.counterseal.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.counterseal.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.no_applause",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.no_applause.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.no_applause.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.no_applause.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Mera -> Merzila (canon-fix1 B7)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.what_she_keeps",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.what_she_keeps.acquired.new",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.what_she_keeps.acquired.refused",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "noct.what_she_keeps.acquired.prior",
+    "woman": "nocticula",
+    "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
+    "ruling": "canon-fix1"
+  },
+  {
+    "scene": "nocticula.lastcall.page",
+    "woman": "lastcall",
+    "beat": "rename Venn -> Veldran (canon-fix1 B10)",
+    "ruling": "canon-fix1"
+  }
+]

@@ -183,10 +183,10 @@ def prepare(scenes):
     # Frustrated desire after the dangerous working, with Commander speech
     # left to the existing answer that admitted interrupting it.
     text(by['soana.what_followed_home'], 'interrupted', '''"You saw my signal. You broke the line anyway."
-{n}Her hands close on the stick. Outside, Meret cuts another spoiled length of cord.{/n}
+{n}Her hands close on the stick. Outside, Mervika cuts another spoiled length of cord.{/n}
 "The thing had Corven's voice. I heard it too. I thought I could draw it clear. My saplings are dead. You may congratulate yourself on my breathing somewhere else."
 {n}She looks toward the nursery, then nudges a stone away from your seat.{/n}
-"Someone else holds the lid next time. You carry clay. And water. Meret brought seed."
+"Someone else holds the lid next time. You carry clay. And water. Mervika brought seed."
 {n}She knocks the stick against the floor beside her.{/n} "Sit. I am tired of looking up at you, bloody hunter."''')
     # Existing road dispute now bears the wartime supply pressure (SOA-01).
     dispute = by['soana.the_unwelcome_path']

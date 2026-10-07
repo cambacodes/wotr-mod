@@ -1110,15 +1110,15 @@ s("the_person_who_returns", "The person at the door",
 {n}You keep your hands where she can see them. She draws a breath and picks the next subject herself.{/n}''', c('[Keep your hands where she can see them.]', "ahead", flags=("irabeth.harm_acknowledged",))),
     n("ahead", "Irabeth", '''"I want the instruction to work when I am not standing over the officer using it. I also want to go somewhere after the war without being invited to inspect the defenses."
 {n}The second admission brings a little warmth back into her voice.{/n}
-"There is a route-maker in the city. Sella. She has a collection of old road drawings, some useful and some apparently intended to make travelers admire the artist. I asked whether she would show me how she chooses between them."
+"There is a route-maker in the city. Selruna. She has a collection of old road drawings, some useful and some apparently intended to make travelers admire the artist. I asked whether she would show me how she chooses between them."
 "For the watch?"
 "For me. She asked the same question. I found it irritating both times."
 {n}Irabeth smiles to soften the rebuke.{/n}
 "The instruction will need a final review. After that, I would like to spend an afternoon learning enough about a road to choose it for pleasure. You could come. You may prefer a different road. You will be wrong."''', c('"I would like to see what you choose."', "end")),
-    n("end", "Irabeth", '''{n}She returns to the desk only long enough to take a small sheet from beneath the work papers. It names Sella and an hour, with two alternative days beneath it.{/n}
+    n("end", "Irabeth", '''{n}She returns to the desk only long enough to take a small sheet from beneath the work papers. It names Selruna and an hour, with two alternative days beneath it.{/n}
 "She gave me alternatives because I kept saying that something might happen. Apparently something may also happen to her. I found the reminder helpful and mildly offensive."
 {n}You choose a day together. Irabeth puts it where she will have to see it before accepting another appointment.{/n}
-"There. Sella's expecting us. Don't let me give the hour away to another report."''',
+"There. Selruna's expecting us. Don't let me give the hour away to another report."''',
       c('[Keep the day.]', flags=("irabeth.return_kept",))),
 ], requires=("irabeth.private_evening_kept",), chapters=(5,), delay=48)
 
@@ -1192,28 +1192,28 @@ s("when_the_instruction_is_used", "A rule in somebody else's hands",
 {n}Irabeth folds the update.{/n}
 "I'd still rather have kept Ordel in that warehouse. We lost his access. Brena got the original pages, and Vela used her corrections. Put all of that in the account."''', c('[Let the case close.]', "end")),
     n("end", "Irabeth", '''{n}Back at headquarters she ties the completed papers together. The changed form remains out for copying. She places the case on the finished side of the shelf and leaves it there.{/n}
-"Now I would like to see Sella's road drawings. I am going to ask a question whose answer need not improve military readiness."
+"Now I would like to see Selruna's road drawings. I am going to ask a question whose answer need not improve military readiness."
 {n}She turns toward you with a look of deliberate challenge.{/n}
 "Which view would I enjoy waking up to? I have several preferences. Some are inconvenient. I intend to defend them."''',
-      c('[Keep the appointment with Sella.]', flags=("irabeth.instruction_tested",))),
+      c('[Keep the appointment with Selruna.]', flags=("irabeth.instruction_tested",))),
 ], requires=("irabeth.return_kept",), chapters=(5,), delay=48)
 
 
 s("a_road_she_would_choose", "A road without an assignment",
-  '"Sella is expecting us. Have you decided what you want to ask?"', [
+  '"Selruna is expecting us. Have you decided what you want to ask?"', [
     n("start", "Irabeth", '''"Whether a view described as 'sublime' can be reached without spending four days climbing through rain. The descriptions are remarkably evasive about rain."
 {n}Irabeth has brought a small notebook. She holds it up before you can object.{/n}
 "Personal use. I am allowed to remember things."
-{n}You walk to Sella's room above a provisioner's shop. The route-maker is sorting drawings by age rather than destination. She explains that an old bridge remains an old bridge even when someone copies it beautifully onto new paper.{/n}
+{n}You walk to Selruna's room above a provisioner's shop. The route-maker is sorting drawings by age rather than destination. She explains that an old bridge remains an old bridge even when someone copies it beautifully onto new paper.{/n}
 {n}Irabeth looks immediately interested.{/n}
 "That is an excellent reason to distrust attractive handwriting."
-"Only when it describes a bridge," {n}Sella replies.{/n} "Otherwise it depends on what you want from the writer."
+"Only when it describes a bridge," {n}Selruna replies.{/n} "Otherwise it depends on what you want from the writer."
 {n}Irabeth glances at you and discovers you already looking at her.{/n}
 "We are here for roads," {n}she says, less firmly than she intended.{/n}''', c('[Make room for the drawings.]', "drawings")),
-    n("drawings", "Narrator", '''{n}Sella spreads three routes across the table. One follows a broad road between settled towns. It has inns, tolls and long views of cultivated land. Another turns into hills above a lake, with fewer stopping places and a stretch that becomes unpleasant after heavy rain. The third promises an impressive ruin and offers almost no useful information about the way home.{/n}
+    n("drawings", "Narrator", '''{n}Selruna spreads three routes across the table. One follows a broad road between settled towns. It has inns, tolls and long views of cultivated land. Another turns into hills above a lake, with fewer stopping places and a stretch that becomes unpleasant after heavy rain. The third promises an impressive ruin and offers almost no useful information about the way home.{/n}
 {n}Irabeth puts the third aside.{/n}
 {n}"I have seen enough impressive ruins without arranging a holiday around another."{/n}
-{n}Sella nods and shows you the notes beneath the first two. They are accounts from travelers, some agreeing, some contradicting one another. She distinguishes what she has walked herself from what she has only been told.{/n}
+{n}Selruna nods and shows you the notes beneath the first two. They are accounts from travelers, some agreeing, some contradicting one another. She distinguishes what she has walked herself from what she has only been told.{/n}
 {n}Irabeth asks about beds. Then about whether the lake can be seen from a sheltered place. Then, with a slightly defiant look, whether anyone describes the food.{/n}
 {n}"You may laugh," she tells you. "I have eaten enough meals whose chief virtue was being available."{/n}''',
       c('"I would choose the towns. A comfortable room at the end of the day matters to me."', "towns", flags=("irabeth.road_towns",)),
@@ -1221,18 +1221,18 @@ s("a_road_she_would_choose", "A road without an assignment",
     n("towns", "Irabeth", '''"So would I, some days. Then I look at the lake and imagine being somewhere no one expects me to recognize a name."
 {n}She lays a finger beside the hill route.{/n}
 "I would like a room. I would also like a morning outside a room with nothing to do except decide when to leave. Perhaps we could stay in the last town and walk partway rather than make every desire choose a different holiday."
-{n}Sella measures the distance with a strip of cord. The walk is possible, but it would be a long day. Irabeth considers the note about rain.{/n}
+{n}Selruna measures the distance with a strip of cord. The walk is possible, but it would be a long day. Irabeth considers the note about rain.{/n}
 "Then we keep a day with no plan after it. If the weather is bad, I intend to become very interested in the inn's breakfast."
 {n}She looks pleased with the compromise, then looks at you.{/n}
 "Would that be a journey you would actually enjoy, or have I merely made my preference sound reasonable?"''', c('"I would enjoy it. I want the unplanned day too."', "practice")),
     n("lake", "Irabeth", '''"That was the answer I hoped you would give. I should admit it before pretending I am considering all options impartially."
 {n}She studies the stopping places again.{/n}
 "But I want a bed at least some nights. And I want to be able to say I am cold without somebody reminding me that I have endured worse. I have endured many things I do not intend to buy as recreation."
-{n}Sella points to a longer way with a reliable inn before the hill section. It adds distance and removes a difficult crossing.{/n}
+{n}Selruna points to a longer way with a reliable inn before the hill section. It adds distance and removes a difficult crossing.{/n}
 "That one," {n}Irabeth says, then stops.{/n} "If it suits you. I have begun giving orders to an imaginary journey."
 {n}Her smile is rueful.{/n}
 "I do like choosing. I also like the thought of arriving with someone who wanted to come, rather than someone who followed the most confident finger across the map."''', c('"I want to come. Keep the inn and the slower crossing."', "practice")),
-    n("practice", "Narrator", '''{n}Sella gives Irabeth a copy of the relevant section and shows her how to compare the road's turns with the landmarks described beneath it. Then she sets a smaller drawing beside it: a route through Drezen with several deliberately misleading details.{/n}
+    n("practice", "Narrator", '''{n}Selruna gives Irabeth a copy of the relevant section and shows her how to compare the road's turns with the landmarks described beneath it. Then she sets a smaller drawing beside it: a route through Drezen with several deliberately misleading details.{/n}
 {n}"You can try the method without leaving the city," she says. "Bring back the error you dislike most."{/n}
 {n}Irabeth looks suspiciously pleased by the challenge.{/n}
 {n}You spend the next hour following the drawing. The first mistake is easy: a stair has been shown on the wrong side of a wall. The second sends you into a yard where a man politely asks whether you intend to buy onions. Irabeth considers the mistake, buys two and announces that the detour has therefore produced a useful result.{/n}
@@ -1283,7 +1283,7 @@ s("a_road_she_would_choose", "A road without an assignment",
 "Friends, then. Give me a few weeks before I'm easy company. I'm not sulking. I'm regrouping."
 {n}After a while she folds the drawing and looks back at you.{/n}
 "It was a good afternoon. I'm keeping it."''', c('[Accept the change in where you stand.]', "end")),
-    n("end", "Narrator", '''{n}You return the exercise to Sella. Irabeth describes the misleading passage in detail. Sella asks which clue finally made her trust the drawing or doubt it, and listens to the answer before returning the exercise to its place.{/n}
+    n("end", "Narrator", '''{n}You return the exercise to Selruna. Irabeth describes the misleading passage in detail. Selruna asks which clue finally made her trust the drawing or doubt it, and listens to the answer before returning the exercise to its place.{/n}
 {n}The real road drawing stays with Irabeth. She pays for the copy, places it inside her notebook and carries the onions home in the other hand. The afternoon has produced a plan, a mistake worth laughing at and an answer she does not bother to write down.{/n}''',
       c('[Carry the onions home.]', flags=("irabeth.future_chosen",))),
 ], requires=("irabeth.instruction_tested",), chapters=(5,), delay=48)
@@ -1301,7 +1301,7 @@ s("the_hour_before_battle", "What she asked you to keep",
 {n}She glances toward the shelf holding her completed account.{/n}
 "I also wanted to do work I could defend. The wagon case was untidy. The instruction had to be changed. I can still put my name beneath it. I would like to remember that when someone tells me a good officer must never look uncertain."
 {n}She turns back.{/n}
-"That's done. Whatever happens tomorrow can't take it back."''', c('[Ask about Sella\'s drawing.]', "future")),
+"That's done. Whatever happens tomorrow can't take it back."''', c('[Ask about Selruna\'s drawing.]', "future")),
     n("future", "Irabeth", '''{n}She takes the road drawing from a narrow shelf. It is folded along the same lines you made together.{/n}''',
       c('"I meant what I said at the arch. All of it."', "lasting", requires=("irabeth.future_lasting",)),
       c('"I meant the days, not a house. I still do."', "open", requires=("irabeth.future_open",)),
@@ -1363,7 +1363,7 @@ s("the_hour_before_battle", "What she asked you to keep",
 {n}When you step back she keeps your hand long enough to press it between both of hers.{/n}
 {n}"Next time I do this, I want it to be because you're only going across the street."{/n}
 {n}You tell her you would like that too. Neither of you calls it a promise.{/n}''', c('[Let her release you when it is time.]', "end", flags=("irabeth.farewell_held",))),
-    n("talk", "Narrator", '''{n}You stay by the window. The talk wanders from practical matters to the storehouse, then to an especially unlikely stretch of Sella's drawing. Irabeth gives the misleading passage a last offended description and makes you laugh.{/n}
+    n("talk", "Narrator", '''{n}You stay by the window. The talk wanders from practical matters to the storehouse, then to an especially unlikely stretch of Selruna's drawing. Irabeth gives the misleading passage a last offended description and makes you laugh.{/n}
 {n}When the hour is nearly gone she falls quiet. You don't hurry to fill it. She looks at you the way she looks at a map she means to carry in her head.{/n}
 {n}"I'm glad we had the days," she says.{/n}
 {n}You stay until it is time to stand.{/n}''', c('[Stand when it is time.]', "end", flags=("irabeth.farewell_talked",))),
@@ -1387,7 +1387,7 @@ ALIVE_END = ("irabeth_dead", "irabeth_gone", "inhuman", "swarm", "true_lich", "s
 
 ending("lasting", "The journeys she chose", [
     n("start", "Narrator", '''{n}After the war Irabeth kept her rank for exactly one more year, trained the officer who replaced her, and then took the fortnight's leave she had been threatening since Drezen. She slept through the first day of it. She spent the second arguing with an innkeeper about the price of a room with a view of the lake.{/n}
-{n}The Commander came on that journey, and on several after it. The road from Sella's drawing was washed out in two places. Irabeth called it a disgrace, took the long way round, and told the story for years as if she had planned the detour. When it rained she complained about the rain, and then asked to stay another day.{/n}
+{n}The Commander came on that journey, and on several after it. The road from Selruna's drawing was washed out in two places. Irabeth called it a disgrace, took the long way round, and told the story for years as if she had planned the detour. When it rained she complained about the rain, and then asked to stay another day.{/n}
 {n}They quarrelled like soldiers: loudly, briefly, and over the washing-up. She still recited the guard and the duke whenever anyone was fool enough to ask, and the duke grew more offended every year.{/n}''', c('[Remember the other life she kept with it.]', "marriage")),
     n("marriage", "Narrator", '''{n}Irabeth's ring stayed on her finger. She turned it when she was thinking, and she never once took it off on the Commander's account.{/n}''',
       c('[Remember the living marriage.]', "living", forbids=("anevia_dead", "anevia_gone")),
@@ -1414,7 +1414,7 @@ ending("open", "Another day freely chosen", [
 
 ending("friends", "The friendship after the courtship", [
     n("end", "Narrator", '''{n}The courtship ended before the war did. For a month Irabeth was stiffly polite, which was worse than her temper. Then one morning she marched into the Commander's office, dropped a bag of onions on the campaign map and announced that she was done sulking.{/n}
-{n}They stayed friends. She walked the road from Sella's drawing with two old sergeants from Kenabres and wrote back four pages of complaint about the inns. She kept on reciting, kept a place at the back of the room for the Commander, and never once pretended the kisses had not happened.{/n}'''),
+{n}They stayed friends. She walked the road from Selruna's drawing with two old sergeants from Kenabres and wrote back four pages of complaint about the inns. She kept on reciting, kept a place at the back of the room for the Commander, and never once pretended the kisses had not happened.{/n}'''),
 ], requires=("irabeth.campaign_kept", "irabeth.future_friends"), forbids=ALIVE_END)
 
 ending("unfinished", "An invitation with days still to come", [
@@ -1444,7 +1444,7 @@ ending("ascent", "The distance beyond the map", [
 
 ending("sacrifice", "The answer she could no longer hear", [
     n("end", "Narrator", '''{n}Irabeth did not weep at the memorial. She stood at attention through every speech and walked out before the hymn. That night she recited the guard and the duke to an empty storehouse, the whole piece, and left the duke's lines out.{/n}
-{n}The next summer she walked the road from Sella's drawing alone and argued with every innkeeper on it. When strangers told her the Commander had died for something greater, she said she knew that, and that she would still rather have had the Commander.{/n}'''),
+{n}The next summer she walked the road from Selruna's drawing alone and argued with every innkeeper on it. When strangers told her the Commander had died for something greater, she said she knew that, and that she would still rather have had the Commander.{/n}'''),
 ], requires=("sacrifice",), forbids=("irabeth_dead", "irabeth_gone", "inhuman", "swarm", "true_lich", "ascended"))
 
 ending("aeon", "A history without its meeting", [

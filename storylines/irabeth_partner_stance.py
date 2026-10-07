@@ -299,7 +299,7 @@ def secret_nodes(stem, original):
 "I'll tell her the watch ran late. She'll ask which watch. I'll have to give her a name."
 {n}She looks at you without smiling.{/n}
 "I wanted you. I chose it. Don't dress it up for me."''', accept, portrait="Irabeth"),
-        n(stem + "_end", "Narrator", '''{n}Later that morning Irabeth returns Sella's exercise herself. The drawing of the lake stays in her notebook. At the muster she gives her report without looking at you; when the officers disperse, she looks once.{/n}''',
+        n(stem + "_end", "Narrator", '''{n}Later that morning Irabeth returns Selruna's exercise herself. The drawing of the lake stays in her notebook. At the muster she gives her report without looking at you; when the officers disperse, she looks once.{/n}''',
           c('[Keep the journey, and the lie, between you.]', flags=("irabeth.future_chosen",)), portrait="Irabeth"),
     ]
 
