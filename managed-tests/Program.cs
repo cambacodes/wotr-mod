@@ -741,7 +741,7 @@ internal static class Program
                 Check(page != null, "Missing page: " + nodeId);
                 // E15c: a letter, sending or memory opens its first page with one kind line ("Letter from Seelah").
                 int kindLine = ReferenceEquals(node, scene.Nodes[0]) && Rules.IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
-                    && (Rules.KindOf(scene) == "letter" || Rules.KindOf(scene) == "sending" || Rules.KindOf(scene) == "memory") ? 1 : 0;
+                    && (Rules.KindOf(scene) == "letter" || Rules.KindOf(scene) == "invitation" || Rules.KindOf(scene) == "sending" || Rules.KindOf(scene) == "memory") ? 1 : 0;
                 Check(page!.Cues.Count == kindLine + (string.IsNullOrWhiteSpace(node.Text) ? 0 : 1) + node.Paragraphs.Count && page.Cues.All(c => c.Get() is BlueprintCue), "Missing page cue: " + nodeId);
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);

@@ -920,6 +920,10 @@ def integrate_public(payload):
     import copy
     from story_format import p
     payload["Scenes"].extend(copy.deepcopy(PUBLIC_SCENES))
+    # These are the exported intervention's completion and selected-answer receipts,
+    # never Chadali's native extraction state. Keep cancellation truthful after it.
+    cancelled = next(s for s in payload["Scenes"] if s["Id"] == K + "protection_cancelled")
+    cancelled["Forbids"].extend((PUBLIC, LIE_SPOKEN, LIE_WITHDRAWN, TRUTH_SPOKEN, PROTECTION_SPOKEN))
     page = next(s for s in payload["Scenes"] if s["Id"] == "eritrice.trickster.epilogue.we_did_meet")["Nodes"][0]
     for flag, text in PUBLIC_EPILOGUE_PARAGRAPHS:
         page.setdefault("Paragraphs", []).append(p(text, requires=(flag,)))
@@ -1019,12 +1023,14 @@ _hearing["Nodes"].extend([
 ])
 
 # The native event can close an unplayed public intervention; no draft becomes a rescue.
+# PUBLIC and its spoken/withdrawn receipts have producers only when the staged
+# public scene is exported. integrate_public adds their exclusions in that case.
 SCENES.append(scene(K + "protection_cancelled", "The unspoken objection", "Eritrice", 5, "", [
     e("cancelled", '"The opportunity to raise Chadali\'s contribution has passed. My private request was not spoken before the Council. I have marked it cancelled."\n{n}The enclosed draft has a ruled line through its proposed hearing date; the words remain legible.{/n} "Do not write that we won an exemption. There was no such vote."', c("[Keep the cancelled draft with its date.]")),
 ], requires=("trickster.ever", K + "a_lie_for_the_chair"),
     RequiresAnyGroups=[[LIED_FOR_HER, PROTECTION_REQUESTED, TRUTH_FOR_CHADALI],
         [EXTRACTED, "council.debrief_motion", "council.walked_out", "council.fought", "council.fought_nocta_allied"]],
-    forbids=(CLOSED, PUBLIC, K + "protection_cancelled", LIE_SPOKEN, LIE_WITHDRAWN, TRUTH_SPOKEN, PROTECTION_SPOKEN),
+    forbids=(CLOSED, K + "protection_cancelled"),
     Remote=True, Relationship="eritrice", last=5))
 
 # Mandatory extraction also closes the staged interjection before its shared hook is enabled.

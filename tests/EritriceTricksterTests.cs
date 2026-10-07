@@ -61,7 +61,8 @@ internal static class EritriceTricksterTests
         var pages = story.Scenes.Where(s => s.Relationship == "eritrice" && s.Owner == "EritriceEpilogue").ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "eritrice" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "eritrice" && !s.Reaction && s.Owner == "Eritrice").ToArray();
-        var sittings = own.Where(s => s.Id != K + "chadalis_essence").Where(s => s.Id.StartsWith(M, StringComparison.Ordinal) || s.Id.StartsWith(K, StringComparison.Ordinal)).ToArray();
+        // Required correspondence notices are not optional Council-hall sittings.
+        var sittings = own.Where(s => !Rules.IsRemote(s) && s.Id != K + "chadalis_essence").Where(s => s.Id.StartsWith(M, StringComparison.Ordinal) || s.Id.StartsWith(K, StringComparison.Ordinal)).ToArray();
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
         Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
         // The outcomes of a walk that took the named choice of the named node.
@@ -160,7 +161,12 @@ internal static class EritriceTricksterTests
         var ready = World(story, 5, "trickster", "trickster.ever", "eritrice.started", M + "quill");
         check(Rules.Available(story, second, ready) && !Rules.Available(story, third, ready), "Trk_Eritrice_Commit: the second reading is not available.");
         check(After(second, ready, "case", 0).All(r => r.Has("eritrice.committed")), "Trk_Eritrice_Commit: calling the question does not commit.");
-        check(second.Nodes.Single(n => n.Id == "open").Choices.Count == 2, "The second reading does not open on the lie when there was one.");
+        // The standing-grudge answer was appended after the original lie/plain answers.
+        var opening = second.Nodes.Single(n => n.Id == "open").Choices;
+        check(opening.Count == 3 && opening[0].Next == "start_lied"
+              && opening[0].Requires.Contains(P + "cost.caught_lying")
+              && opening[1].Next == "start" && opening[1].Forbids.Contains(P + "cost.caught_lying")
+              && opening[2].Next == "standing_grudge", "The second reading lost its lie/plain or appended grudge opening.");
 
         // Trk_Eritrice_Declined.
         var liar = World(story, 5, "trickster", "trickster.ever", "eritrice.started", M + "quill", P + "cost.caught_lying");

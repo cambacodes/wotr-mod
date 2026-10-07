@@ -42,7 +42,8 @@ class FullRosterBudget(unittest.TestCase):
                 start5 = sum(self.route_run['chapter_days'].get(ch, 0) * 24 for ch in range(5))
                 self.assertEqual(result['pair_eligibility'], start5 + 24 * 24)
                 self.assertEqual(result['chapters'][1]['deadline_misses'], [])
-                self.assertEqual(result['chapters'][1]['optional'], 20)
+                self.assertEqual(result['chapters'][1]['optional'], 22)
+                self.assertEqual(result['chapters'][1]['reserved_pair'], 22)
                 # eng7-f3: three flavour beats are unkeyed, not protected dockets.
                 self.assertEqual(result['chapters'][1]['protected'], 38 + int(rematch))
                 self.assertEqual(result['chapters'][1]['dynamic'], 3)
