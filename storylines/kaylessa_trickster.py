@@ -12,7 +12,7 @@ former comrades approached me, I could not find the strength to draw my dagger a
 (Kaylessa_Diary c669b34a). Anemora at Iz: "None... except for that blasted Kaylessa." (c5/Iz/Anemora/Cue_0146 c0fb6762).
 
 Devices, earned in play:
-- dead worlds (she died in Kenabres or the war camp, or at her plea): the Trickster trades with Shyka the Many at the
+- dead worlds (the plot-imposed Reveal death, never a voluntary early attack): the Trickster trades with Shyka the Many at the
   Council, a branch for a branch. Shyka keeps a timeline in which the Commander says yes to becoming Shyka (Shyka_Offer/
   Cue_0018 f40e9f35), the price the Eldest joined the Council to collect. She walks in from the branch that lived,
   remembering this one's death; the Dark Fate is stalled at the hour she died here.
@@ -45,6 +45,13 @@ CLOSED = "kaylessa.closed"
 COMMITTED = "kaylessa.committed"
 DEAD = "kaylessa.dead"
 DEAD_L = "kaylessa.dead.latched"
+# Native voluntary attacks close the route even if a legacy save already paid for a return.
+EARLY_KILLED = "kaylessa.early_player_killed"
+EARLY_ATTACKS = {
+    "kaylessa.attack_kenabres_masked": "ac4468a7eded7fd43946f1a730791ff0",  # Answer_0011
+    "kaylessa.attack_kenabres_drow": "53a2540656646e44e92e3d9b30b35179",    # Answer_0018
+    "kaylessa.attack_camp": "0673b59a2f25dbf459a4dfe1dfa09c7a",             # Answer_0029
+}
 BEGGED = "kaylessa.begged_death"
 MET = "kaylessa.met"
 UNMASKED = "kaylessa.unmasked"
@@ -61,7 +68,7 @@ ANEMORA_TOLD = "kaylessa.anemora_told"            # c5/Iz/Anemora/Cue_0146 "None
 TRICKERY1 = "trickster.trickery_tier1"            # MainCharacterFacts: TricksterTrickeryTier1Feature (dispel, as a device)
 WARNED_KENABRES = "kaylessa.warned_kenabres"      # Kaylessa_main/Answer_0028 "I believe you. Forn is at the Defender's Heart..."
 WARNED_CAMP = "kaylessa.warned_camp"              # Kaylessa_main/Answer_0058 "I believe you. Forn is in the camp, watch out for him."
-SELECTED_ANSWERS = {HEALED: "9f98ffa7f2c71cb4c9e5da0c7a053876", NOTE_DESTROYED: "30b5b35e84d649245b0fcba5e8d5cc02",
+SELECTED_ANSWERS = {**EARLY_ATTACKS, HEALED: "9f98ffa7f2c71cb4c9e5da0c7a053876", NOTE_DESTROYED: "30b5b35e84d649245b0fcba5e8d5cc02",
                     WARNED_KENABRES: "c3e2b86fef76ee441bc66c86ef5f071a", WARNED_CAMP: "8d741378ae169454f89a544029823135"}
 FIRST_WORDS = "kaylessa.first_words_seen"        # Kaylessa_main/Cue_0001 "What are you looking at, soldier? Like what you see?"
 SEEN_CUES = {ANEMORA_TOLD: ["c0fb6762c057bcc4894d1892a9eb22fc"], FIRST_WORDS: ["2d7d6df431933024591e74d6dfd873e4"]}
@@ -135,7 +142,7 @@ RELATIONSHIP = dict(
               "she never died, the hunter Forn will come to you in Chapter 5 to ask a favour; let him think he has it. "
               "She sets the rules, and she may leave."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[DEAD, "inhuman", LEFT], FailureFlags=[],
+    UnavailableFlags=[DEAD, "inhuman", LEFT, EARLY_KILLED], FailureFlags=[],
     UnavailableOverrides={DEAD: RETURNED},
     TricksterAccess={
         "dead": dict(detect=[DEAD], device=P + "dead.borrow", returned=RETURNED),
@@ -147,7 +154,7 @@ PRESENCES = {
     # A copy of her war-camp disguise under the tailor's awning in the capital market: the one patch of shade at noon, and
     # an anchor no other route stands at on this side (Arueshalae's evil fallback, if it ever spawns, is 3 m off at front 2.0).
     PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="left", Distance=2.5),
-                   Requires=["trickster.ever", PRESENCE_ON], Forbids=[CLOSED, LEFT], MinChapter=3, MaxChapter=5,
+                   Requires=["trickster.ever", PRESENCE_ON], Forbids=[CLOSED, LEFT, EARLY_KILLED], MinChapter=3, MaxChapter=5,
                    AnswerLists=[], Dialog="hub",
                    ContactWindows=[dict(Flag=PRIMED, MinAgeHours=12)],
                    Greeting="{n}In the shade of the tailor's awning, where the lamplight gives out, a woman in a courier's grey "
@@ -156,6 +163,7 @@ PRESENCES = {
 }
 
 DERIVED = {
+    EARLY_KILLED: [[answer] for answer in EARLY_ATTACKS],
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # R2-6: the last beat before the knife; the epilogue answers a question the war left no time to ask.
     LATE_COMMITTED: [["trickster.ever", KNIFE_SHOWN, READY, TRUTH_OK]],   # the last beats before her proposal (Sol quality pass, BEL)
@@ -271,7 +279,7 @@ SCENES.append(scene(P + "dead.borrow", "A branch for a branch", "Shyka", 3,
 
 
 # Shyka gone from the Council (Sol quality pass, INT): the Eldest still exists, so the Trickster leaves an offer in the
-# empty hall the way Shyka hears things, and haggles on worse terms, on screen. Chapter 5; the same return follows.
+# camp sending over messengers' letters, on worse terms. Chapter 5; the same return follows.
 SCENES.append(scene(P + "dead.borrow_sending", "An offer carried through dust", "Shyka", 5, "", [
     nar("start", '''{n}At your camp, you clear a space on the table for the replies your messengers brought back. They have spent your allies' patience tracing the departed Council: favours called in, guides borrowed from the war roads. None found a door you could use.{/n}
 {n}You speak the offer over their dust-stained letters: a branch for a branch, for the drow who called everyone soldier. You repeat it twice. The dust begins to gather against the wind.{/n}''',
@@ -437,15 +445,16 @@ visit(P + "alive.warning", "The face she wears", [
     kay("swap", '''"...On him." {n}Something moves in her face. It isn't a smile, but it used to be one.{/n}
 "His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose..." {n}She turns the amulet in her fingers.{/n}
 "You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier."
-"And when it's done I go down on the stones beside him and I stay down, under the girl's cloak, with his blood on it. From the ridge, in the dark, with the lantern knocked out, they'll count two bodies. They'll want to count two."''',
+"They won't come down while your patrol is on the south road. Have it pass at the watch change. I'll find you a hollow under the bank before we send for him. When they loose, kick out his lantern and roll into it. Let them see you fall." {n}She cups a hand over the unlit lamp.{/n}
+"I go down beside him, under the girl's cloak, with his blood on it. Two shapes down, his signal gone, your patrol coming. They can shoot into the dark or get off that ridge."''',
         c("Continue", "terms")),
     kay("terms", '''"One more thing. If it goes wrong, I take the arrows. Not you. It's my face they're aiming at, and my death they're owed."''',
         c('"Your face. Your arrows."', "agreed", flags=(PLANNED,)),
         c('"No. If it goes wrong, they hit me first."', "refused", flags=(PLANNED, SHIELD))),
-    kay("agreed", '''"Good." {n}She puts the courier's face back on with a touch, the way another woman might put on a glove.{/n} "Send the word when we are ready. Don't be early. And don't be kind to him. He'll use it."''',
+    kay("agreed", '''"Good." {n}She puts the courier's face back on with a touch, the way another woman might put on a glove.{/n} "I'll mark the hollow tonight. Send the word after your patrol has its orders. And don't be kind to him. He'll use it."''',
         c("[Light the lamp.]")),
     kay("refused", '''"Stubborn. Is that a Commander's disease, or a Trickster's?" {n}She looks at you for a while, deciding something, and doesn't tell you what she decides.{/n}
-"Fine. Just don't make me watch it happen."''',
+"Fine. Just don't make me watch it happen. I'll mark the hollow tonight. Send the word after your patrol has its orders."''',
         c("[Light the lamp.]")),
 ], requires=(PRIMED,), forbids=(DEAD, RETURNED, PLANNED), delay=12, chapter=5, optional=False)
 
@@ -460,7 +469,7 @@ visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
     hunter_s("forn_s", '''"Commander. And the courier." {n}Kaylessa comes down the slope behind you in the Green Road girl's face, her bow unstrung on her back, like a woman who has been told a friend is hurt.{/n}
 "Forn Autumn Haze would have apologised to you both. I never learned how. Come into the light."''',
         c("Continue", "ridge")),
-    nar("ridge", '''{n}A pebble rolls somewhere on the ridge above. Then another, on the other side. The hunter's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}''',
+    nar("ridge", '''{n}You have found the hollow she marked under the bank. The south patrol's first horn sounds beyond the ravine. A pebble rolls somewhere on the ridge above. Then another, on the other side. The hunter's good hand is already on his knife. Kaylessa's shoulder touches yours, once: the only signal you agreed on.{/n}''',
         c("[Unpick the glamour like a trap, and set it again on him]", requires=(TRICKERY1,),
           check=dict(Skill="SkillThievery", DC=24, Success="swap", Failure="fumble")),
         c("[Go for the arm you know is whole]", requires=(WOUND_SEEN,),
@@ -472,13 +481,13 @@ visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
         c("Continue", "volley", forbids=(SUCCESSOR,)),
         c("Continue", "volley_s", requires=(SUCCESSOR,))),
     nar("volley", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. Forn does not speak. He looks down at the fletching in his chest with an expression of courteous surprise, as if someone has broken a rule of etiquette he had believed was universal.{/n}
-{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is only Forn Autumn Haze, the Winter Council's hunter, killed by Kyonin.{/n}''',
+{n}You kick the lantern into the stones and fall sideways into the marked hollow. Kaylessa throws the courier's cloak over Forn as he collapses. The amulet flares beneath the cloth and burns out; from the ridge there are only two fallen shapes and a dying light. You press yourself below the bank. The patrol's next horn is closer.{/n}''',
         c("Continue", "after")),
     nar("volley_s", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. He looks down at the fletching in his chest as though it were an error in a report he had signed without reading.{/n}
-{n}The amulet at his throat sputters, flares white, and burns out. The girl's face runs off him like wax, and what slides down the stone is a Winter Council hunter who never gave his name, killed by Kyonin, in the same ravine his predecessor's work had led him to.{/n}''',
+{n}You kick the lantern into the stones and fall sideways into the marked hollow. Kaylessa throws the courier's cloak over the hunter as he collapses. The amulet flares beneath the cloth and burns out; from the ridge there are only two fallen shapes and a dying light. You press yourself below the bank. The patrol's next horn is closer.{/n}''',
         c("Continue", "after")),
-    kay("after", '''{n}Up on the ridge somebody shouts a single word in Elven, and then there is the sound of men running the other way. Kaylessa gets up off the stones and stands over him without moving.{/n}
-"They counted two. I heard one of them say it, up there, before they ran: two down, the face burnt, the job done." {n}She wipes his blood off the courier's cloak with a handful of grass.{/n} "No one in Kyonin will ever say otherwise. They'll write that he died hunting me, and that I died with him, because the men who saw it want it to be true and the truth is worse than a lie to them." {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}
+    kay("after", '''{n}Two more arrows strike the stones where you stood. Above you, a voice calls in Elven: "Two down. Patrol. Withdraw!" Boots scrape away along the ridge. You wait until the south patrol's lanterns pass the ravine mouth, then climb out of the hollow. Kaylessa rises beside the hunter and pulls the cloak from his face. The glamour is gone.{/n}
+"They'll report two dead. They didn't stay to turn us over." {n}She wipes his blood off the courier's cloak with a handful of grass.{/n} "If they come back to count, we'll be under a roof in Drezen. Let the Council send someone to ask where its hunter went." {n}She touches her throat where the cord was. There is nothing there now but her own dark skin.{/n}
 "That was the last elf face I had, soldier. The only one I could have walked home in. Burnt out on him."''',
         c("[Say nothing.]", "end"),
         c('"It suited him."', "joke")),
@@ -805,7 +814,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "KaylessaEpilogue", 6, "", [
             p('''{n}The Commander closed a hand around the hilt. She let go, finger by finger. "After the knife," she said, and caught their collar. Her free hand worked at the grey laces at her throat.{/n}''', forbids=("kaylessa.clearing.night",)),
             p('''{n}The Commander closed a hand around the hilt. She let go, finger by finger. "No grass this time, soldier." She caught their collar and drew them toward the bed.{/n}''', requires=("kaylessa.clearing.night",)),
             # Explicit slot: late first night or chosen return; no flags and no cure.
-            dict(p('''{n}She put out the lamp, caught the Commander\'s collar and drew them down beside her. Her kiss was hard, her hand steady. For tonight, she left the war outside the shutters.{/n}'''), Id=P + 'epilogue.commit.explicit.1'),
+            dict(p('''{n}She put out the lamp. Her kiss was hard, her hand steady. For tonight, she left the war outside the shutters.{/n}'''), Id=P + 'epilogue.commit.explicit.1'),
             p('''{n}In the morning the dagger hung on a nail by the door. Her first movement on waking was to check the clock. Then she told the Commander that they snored.{/n}''', forbids=(KNIFE_BACK,)),
             p('''{n}In the morning the dagger was sheathed in her left boot. Her first movement on waking was to check the clock. Then she told the Commander that they snored.{/n}''', requires=(KNIFE_BACK,)),
             p('''{n}She hunted at night and returned before daylight, tapping on the shutter. She kept her rules. On bad mornings she checked that the knife was within reach before climbing into bed. She was never cured.{/n}'''),
@@ -933,6 +942,10 @@ _LIVE_PRODUCERS = {
     'kaylessa.trickster.alive.amulet_swap',
     'kaylessa.trickster.dead.soldier',
 }
+for _route_scene in SCENES:
+    if _route_scene.get("Relationship") == REL or _route_scene["Id"].startswith(P + "epilogue."):
+        _route_scene["Forbids"] = list(dict.fromkeys([*_route_scene.get("Forbids", []), EARLY_KILLED]))
+
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

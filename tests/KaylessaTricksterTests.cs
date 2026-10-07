@@ -126,10 +126,10 @@ internal static class KaylessaTricksterTests
 
         // Shape and hooks.
         check(rel.StartedFlag == "kaylessa.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, "inhuman", P + "left_free" })
+              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, "inhuman", P + "left_free", "kaylessa.early_player_killed" })
               && rel.UnavailableOverrides.Single().Key == Dead && rel.UnavailableOverrides.Single().Value == Returned
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "alive", "dead" }),
-            "Kaylessa's relationship does not match the spec (dead/alive access, the return lifts her death).");
+            "Kaylessa's relationship does not match the spec: unavailable=" + string.Join(",", rel.UnavailableFlags) + "; overrides=" + string.Join(",", rel.UnavailableOverrides.Select(p => p.Key + "=" + p.Value)) + "; access=" + string.Join(",", rel.TricksterAccess.Keys));
         check(promise.AnswerLists.SequenceEqual(new[] { PleaList }) && promise.NativeReturnCue == PleaCue && promise.Nodes.Count == 1
               && promise.EntryMythic == "PlayerIsTrickster" && Ch(promise, "start", 0).NativeNext == Goodbye
               && Ch(promise, "start", 0).Set.SequenceEqual(new[] { P + "promised" }),
@@ -153,23 +153,34 @@ internal static class KaylessaTricksterTests
         check(!own.Any(s => s.AnswerLists.Contains("0f12118177d102f428a3b30b15b132eb") || s.AnswerLists.Contains("a380d926e92f70e429681eb9654478f9")),
             "A Kaylessa scene hangs on a crowded hub.");
 
-        // Trk_Kaylessa_DeadEarly.
-        var early = World(story, 3, "trickster", "trickster.ever", Dead);
+        // Trk_Kaylessa_DeadEarly: every voluntary attack permanently closes all roads.
+        foreach (var attack in new[] { "kaylessa.attack_kenabres_masked", "kaylessa.attack_kenabres_drow", "kaylessa.attack_camp" })
+            foreach (var council in new[] { "", "shyka.gone", "council.fought", "council.fought_nocta_allied" })
+            {
+                var killed = World(story, 5, "trickster", "trickster.ever", Dead, attack, council,
+                    P + "primed", Returned, Committed, P + "told_borrowed", P + "knife_shown", "kaylessa.wasps.in_the_dark");
+                check(killed.Has("kaylessa.early_player_killed") && !Rules.RouteOpen(rel, killed)
+                      && !killed.Has("kaylessa.harem.eligible") && !Avail(borrow, killed)
+                      && !Avail(S(P + "dead.borrow_sending"), killed) && !Avail(soldier, killed)
+                      && !Avail(commit, killed), "Trk_Kaylessa_DeadEarly: route reopened after " + attack + "/" + council);
+            }
+        // Positive payment, arrival and romance coverage belongs to plot-imposed Reveal deaths.
+        var early = World(story, 3, "trickster", "trickster.ever", Dead, Begged);
         check(Avail(borrow, early) && !Avail(hunter, World(story, 5, "trickster", "trickster.ever", Dead)) && !Avail(soldier, early),
-            "Trk_Kaylessa_DeadEarly: the borrow is not the only door.");
+            "Trk_Kaylessa_Reveal: the borrow is not the only door.");
         check(Ch(borrow, "which", 1).Requires.Contains(Begged) && Ch(borrow, "which", 2).Forbids.Contains(Begged)
               && Ch(borrow, "trade", 3).Requires.Contains(Begged),
-            "Trk_Kaylessa_DeadEarly: her plea's lines show without her plea.");
+            "Trk_Kaylessa_Reveal: her plea's lines show without her plea.");
         var primed = Take(borrow, early, "trade", 0, P + "primed", P + "cost.shyka_price");
-        check(Ch(borrow, "trade", 0).Alignment?.Direction == "Chaotic", "Trk_Kaylessa_DeadEarly: the trade is not a Chaotic act.");
+        check(Ch(borrow, "trade", 0).Alignment?.Direction == "Chaotic", "Trk_Kaylessa_Reveal: the trade is not a Chaotic act.");
         check(Avail(soldier, Later(story, primed, 12)) && !Avail(soldier, Later(story, primed, 6)),
-            "Trk_Kaylessa_DeadEarly: she does not arrive a day after the trade.");
+            "Trk_Kaylessa_Reveal: she does not arrive twelve hours after the trade.");
         var back = Take(soldier, Later(story, primed, 12), "speak", 0, Returned, P + "cost.dark_fate_stalled");
-        check(Reaches(back, Committed, 5), "Trk_Kaylessa_DeadEarly: no road to the commit.");
-        check(Reaches(primed, Committed, 3), "Trk_Kaylessa_DeadEarly: no road from the trade to the commit.");
+        check(Reaches(back, Committed, 5), "Trk_Kaylessa_Reveal: no road to the commit.");
+        check(Reaches(primed, Committed, 3), "Trk_Kaylessa_Reveal: no road from the trade to the commit.");
 
-        // Trk_Kaylessa_DeadEarly_Raised (the failed haggle).
-        var raised = Take(borrow, World(story, 5, "trickster", "trickster.ever", Dead), "raised", 0, P + "cost.shyka_raised");
+        // Trk_Kaylessa_Reveal_Raised (the failed haggle).
+        var raised = Take(borrow, World(story, 5, "trickster", "trickster.ever", Dead, Begged), "raised", 0, P + "cost.shyka_raised");
         check(raised.Has(P + "primed") && Ch(borrow, "raised", 1).Abort, "Trk_Kaylessa_Raised: the raised price cannot be paid or refused.");
         check(Ch(borrow, "trade", 2).Check?.Skill == "CheckDiplomacy" && Ch(borrow, "trade", 2).Check!.Failure == "raised",
             "Trk_Kaylessa_Raised: the haggle is not a Diplomacy check whose failure raises the price.");

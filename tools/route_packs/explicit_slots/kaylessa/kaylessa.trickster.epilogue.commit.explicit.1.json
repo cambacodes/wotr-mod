@@ -1,16 +1,17 @@
 {
   "voice": "KAYLESSA: blunt, watchful, sardonic and impatient with sentimental speeches. Desire is her decision; trust does not mean obedience. Her Calistrian revenge and the continuing Dark Fate remain real. Write fresh dialogue from these traits; reuse no example sentence. Canon physical facts only: dark skin, grey/white hair, crimson/red eyes, fanged teeth, vision in darkness and pain from bright light. Do not invent sexual anatomy, measurements, racial physiology, scars or tattoos. Do not assume the Commander's species, height or eyesight.",
-  "scene": "RESERVED PRIVATE CONSUMMATION PASSAGE; non-graphic staging and handoff for a user-controlled fill. Existing kaylessa.trickster.epilogue.commit/page, Chapter 6 after Threshold, Commander's rooms. Only Kaylessa and the actually living/returned Commander. Insert as a reserved paragraph after her existing lamp-out bed invitation and before the existing morning paragraph; the host is a third-person ending, so convert the generated second-person narration to that host perspective without changing its exit. Required beats: she carries forward the choice she just made rather than repeating the knife proposal; she initiates a hard kiss and keeps the encounter on her terms; the war has ended but her vigilance has not; preserve the existing nail/blade continuity only for the actual recorded custody; she remains uncured. This is a first night only where the clearing night did not happen; a prior night means return/deepening, never renewed virginity or erased intimacy. No Commander dialogue, new person, discovery, fee, debt settlement, flag, relationship condition or inferred forgiveness. Do not sexualize captivity, torture or the dagger. Finish before morning; the next paragraph must still collect her curse check and dry snoring remark. With no fill, use the plan's heated-cut default. This brief does not broaden the late receipt's eligibility.",
-  "last_line": "N: For tonight, she leaves the war outside the shutters.",
+  "scene": "RESERVED PRIVATE CONSUMMATION PASSAGE; non-graphic staging and handoff for a user-controlled fill. Existing kaylessa.trickster.epilogue.commit/page, Chapter 6 after Threshold, Commander's rooms. Only Kaylessa and the actually living/returned Commander. Insert as a reserved paragraph after her existing lamp-out bed invitation and before the existing morning paragraph; write third-person past-tense narration for this ending without changing its exit. Required beats: she carries forward the choice she just made rather than repeating the knife proposal; she initiates a hard kiss and keeps the encounter on her terms; the war has ended but her vigilance has not; preserve the existing nail/blade continuity only for the actual recorded custody; she remains uncured. This is a first night only where the clearing night did not happen; a prior night means return/deepening, never renewed virginity or erased intimacy. No Commander dialogue, new person, discovery, fee, debt settlement, flag, relationship condition or inferred forgiveness. Do not sexualize captivity, torture or the dagger. Finish before morning; the next paragraph must still collect her curse check and dry snoring remark. With no fill, use the plan's heated-cut default. This brief does not broaden the late receipt's eligibility.",
+  "last_line": "N: For that night, she left the war outside the shutters.",
   "speakers": {
     "K": "Kaylessa"
   },
-  "example": "N: She puts out the lamp and catches your collar before you can turn back to the table.\nK: Leave it. I came to see you.",
+  "example": "N: She put out the lamp and caught the Commander by the collar.\nK: Leave it. I came to see you.",
   "commander": "match the player's Commander; no assumed anatomy",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "narration": "third-past"
 }
