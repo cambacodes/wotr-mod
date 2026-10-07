@@ -244,15 +244,15 @@ letter(P + "fought.tabled", "Point of order", [
       c('[Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."',
         "ruling_betrayal", forbids=(THREAT,))),
     e("ruling_betrayal", '''{n}The answer is longer, and written with a steadier hand.{/n} "No point of order. The chair notes it, because it is the first letter in this correspondence that has not tried to be clever. You chose the Lady in Shadow over this Council and would again. That is a true statement, and the chair does not strike true statements."
-"It is not an apology. It is, however, admissible. The chair rules that the grudge may be tabled on the same terms as any other: a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge on every agenda for as long as there is an agenda, read aloud whenever you are present. Choose."''',
-      c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
+"It is not an apology. It is, however, admissible. The chair rules that the grudge may be tabled on the same terms as any other: a formal apology, spoken to the chair at a special sitting and circulated to the Council in its minutes, or the grudge on every agenda for as long as there is an agenda, read aloud whenever you are present. Choose."''',
+      c('[Arrange a special sitting; circulate the apology to the Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
         flags=(P + "apology_arranged", GRUDGE, ESSENCE)),
       c('[Let the grudge stand on every agenda] "Read it every time. I\'ll be there to hear it."',
         flags=(RETURNED, GRUDGE, ESSENCE, ON_AGENDA)),
       c('[Move to strike the grudge] "Then I move the grudge be struck from the record."', "struck")),
     e("ruling", '''{n}The answer is longer, and written with a steadier hand.{/n} "Point of order noted. It is, regrettably, correct: 'contribute your essence or I'll take it by force' was the chair's own motion. The chair rules that the grudge may be tabled. Tabled, Commander, not withdrawn."
-"The chair imposes terms. Either you make a formal apology, entered in the minutes and read aloud at a special session the chair will convene for that one purpose, or the grudge stands on every agenda for as long as there is an agenda, and the chair reads it aloud whenever you are present. Choose."''',
-      c('[Make the formal apology before the reconvened Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
+"The chair imposes terms. Either you make a formal apology, spoken to the chair at a special sitting and circulated to the Council in its minutes, or the grudge stands on every agenda for as long as there is an agenda, and the chair reads it aloud whenever you are present. Choose."''',
+      c('[Arrange a special sitting; circulate the apology to the Council] "Convene your session. I\'ll say it."', crusade=("Favors", -200),
         flags=(P + "apology_arranged", GRUDGE, ESSENCE)),
       c('[Let the grudge stand on every agenda] "Read it every time. I\'ll be there to hear it."',
         flags=(RETURNED, GRUDGE, ESSENCE, ON_AGENDA)),
@@ -276,7 +276,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "EritriceEpilogue", 6, "", [
             p("{n}The first of the forty letters began, as the chair's letters always did, by noting the delay.{/n}", requires=(LATE,)),
             p("{n}The surety the Commander had filed with the late motion came back folded inside the forty-first letter, its wax unbroken. She had carried it through the whole war and never opened it. \"I did not need to,\" she said. \"You were willing to let me.\"{/n}", requires=(SEALED,)),
             p("{n}Every letter opened with the grudge, read into the record in full.{/n}", requires=(ON_AGENDA,)),
-            p("{n}The apology the Commander had made before the reconvened Council was bound into the front of her scroll, where she could find it quickly.{/n}", requires=(APOLOGISED,)),
+            p("{n}The apology the Commander had spoken to Eritrice at the special sitting, then circulated to the Council in its minutes, was bound into the front of her scroll, where she could find it quickly.{/n}", requires=(APOLOGISED,)),
         )),
     nar("aye", '''{n}The reply came back within the week: "The chair votes aye. Minuted." Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate. She read all forty letters aloud in the Commander's study, standing, as if to a full session, and conceded nothing in any of them. At the forty-first she stopped, rolled the scroll shut and set it at the far end of the desk, out of harm's way. Then she unpinned her robe at the shoulder and let it fall, pushed the Commander back against the desk with one broad hand, and climbed after, claws sheathed only just, a growl rolling in her chest. "The floor has voted," she said against the Commander's mouth, and pulled the Commander's shirt open down the front.{/n}
 {n}The minutes of that night are one word long: "Carried." In the morning she read them back to the Commander over breakfast, in full, as the rules require, and then amended them in her own upright hand: "The chair moves that the floor attend in person hereafter, and not by post." It was carried. She did not wait for a second, and she did not leave for a long time, and when she did, it was only to fetch more ink.{/n}'''),
@@ -429,7 +429,11 @@ def integrate_drezen_readings(payload):
         for node in visit["Nodes"]:
             node["Text"] = node["Text"].replace("the hall", "the borrowed room").replace("The hall", "The borrowed room").replace("Council's long table", "borrowed long table").replace("Council's table", "borrowed table")
             # AUTHORED borrowed furnishings stay in Drezen; no Council furniture was moved.
-            node["Text"] = node["Text"].replace("Council's chairs", "room's chairs").replace("Alichino's empty chair", "empty chair beside the table").replace("Alichino's chair", "chair beside the table")
+            node["Text"] = node["Text"].replace("Council's chairs", "room's chairs").replace("Alichino's empty chair", "the empty chair beside the table").replace("Alichino's chair", "the chair beside the table")
+            if original["Id"] == "eritrice.minutes.a_standing_item" and node["Id"] == "close":
+                node["Text"] = node["Text"].replace("to a hall with nobody in it but you", "to the borrowed room with nobody in it but you")
+            if original["Id"] == "eritrice.council.personal_privilege" and node["Id"] == "both":
+                node["Text"] = node["Text"].replace("You come into my hall", "You come to my borrowed table")
             if original["Id"] == "eritrice.minutes.adjourned":
                 if node["Id"] == "start":
                     node["Text"] = node["Text"].replace("Tonight, in this hall, at my own table.", "Tonight, in this borrowed room. The table is Drezen's; the invitation is mine.")

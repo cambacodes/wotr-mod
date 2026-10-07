@@ -268,5 +268,10 @@
     "scene": "elyanka.trickster.beat.inquiry",
     "route": "elyanka-and-camilary",
     "finding": "elyanka-and-camilary:D08"
+  },
+  {
+    "scene": "eritrice.minutes.a_serious_matter",
+    "route": "eritrice",
+    "finding": "eritrice:D02,D03,D04 (D01 local evasion)"
   }
 ]

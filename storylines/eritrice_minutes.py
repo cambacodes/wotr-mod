@@ -372,21 +372,22 @@ ORDER_SCENE = SCENES[-1]
 ORDER_SCENE["RequiresAnyGroups"] = [[CHAIR_USURPED, CHAIR_IGNORED]]
 
 
+# R4 AUTHORED: copied sheets expand the native note-taking; the original stays returned.
 # --- 8. The cipher (Chapter 5). ---------------------------------------------------------------------------------------
 
 minutes(CIPHERED, "What the truth could not read", '"You looked at the Lexicon pages again."', [
-    e("start", '''{n}The pages of the Lexicon of Paradox lie on the table in front of her, in the order you left them. She has laid a sheet of clear glass over them, to keep them from curling, and has plainly been looking at them for days.{/n}
+    e("start", '''{n}Her copies of the Lexicon of Paradox's pages lie on the table in front of her. She made them while the Council examined the book, before returning it to you. She has laid a sheet of clear glass over them, to keep them from curling, and has plainly been looking at them for days.{/n}
 "There is something hidden within these pages. A cipher. I held them up close, and at a distance, and from every angle, and I could not read it. Alichino wanted a key. Shyka could read it, and would not." {n}Her voice is perfectly level.{/n} "The title promises a paradox. It has not helped me read the pages."''',
       c('"You wanted it to be true or false. It\'s both."', "both"),
       c('"You read for the truth. Areelu wrote for the lie."', "lie")),
     e("both", '''"Which two claims? A contradiction does not become legible because you call it a paradox."
-{n}She puts a claw on the glass covering the Lexicon.{/n} "Shyka read these pages. I did not. That tells us something about this cipher, not about the worth of truth. Give me an argument I can test."''',
+{n}She puts a claw on the glass covering her copies.{/n} "Shyka read these pages. I did not. That tells us something about this cipher, not about the worth of truth. Give me an argument I can test."''',
       c("Continue", "humbled")),
     e("lie", '''"Areelu concealed her work. That is not proof that every honest reader must fail. Shyka read it, and kept the reading to themself."
-{n}She turns the book toward you.{/n} "If you have deciphered it, tell me what you actually found. Otherwise we shall mark the pages unread. I will not put your guess in the minutes as Areelu\'s intention."''',
+{n}She turns the copied pages toward you.{/n} "If you have deciphered it, tell me what you actually found. Otherwise we shall mark the pages unread. I will not put your guess in the minutes as Areelu\'s intention."''',
       c("Continue", "humbled")),
     e("humbled", '''"Here is the inference I distrust: if Areelu intended the Worldwound, it cannot be a mistake."
-{n}She lifts the glass and sets the book aside.{/n} "Test it with me. Leave the cipher out of the argument; we have not opened it by talking."''',
+{n}She lifts the glass and sets her copies aside.{/n} "Test it with me. Leave the cipher out of the argument; we have not opened it by talking."''',
       c('"Close your eyes. Tell me something you know is true, and something you know is false."', "teach"),
       c('"No. You\'d stop being you."', "refuse")),
     e("teach", '''"Areelu intended to open it. She did not therefore intend every consequence. Nor does intention make a deed right."
@@ -479,14 +480,14 @@ minutes(SEATS, "Stay in your seats", '"They walked out on you."', [
 minutes(ESSENCE, "A very serious matter", '"The cauldron. The essences."', [
     e("start", '''"Essence extraction is a very serious matter." {n}She says it carefully, and then drops the care.{/n}
 "The Council has the cauldron now. The plan needs an essence from every plane the crossroads will touch. Mine is Nirvana's. Everyone at this table is prepared to sacrifice for such a good cause, of course. Everyone has also found an urgent reason why it should be someone else." {n}Her claws tap the scroll: once, twice.{/n}
-"I have not. That is what I wanted to tell you. If no one else will, I will give mine."''',
+"I have asked for alternatives too. I would much prefer a sample that does not have to be torn out of me." {n}She presses a claw against the word "Nirvana".{/n} "If we find none, my contribution must come before the Council. I want the crossroads built. I do not want the cauldron."''',
       c('"Does it hurt?"', "hurt"),
       c('"You don\'t have to be the one who pays for everything."', "pays")),
     e("hurt", '''"Shyka says it is agonizing. Shyka says it cheerfully. I have not endured it myself." {n}She considers.{/n}
-"I expect so. I am used to suffering for the sake of truth, Commander. Everyone who keeps honest minutes is. It is only a larger version of the same thing."''',
+"Yes. And no amount of debate will make it hurt less." {n}She draws the scroll away from the cauldron's rim.{/n} "I can defend the plan. That does not make me eager to put my hands on that thing."''',
       c("Continue", "choice")),
-    e("pays", '''"Someone always pays. The only question is whether they are told." {n}She rolls the quill between her fingers.{/n}
-"Everyone else on this Council is hoping that someone else will pay without being told. I would rather pay knowingly. It is the only way I know to keep the record clean."''',
+    e("pays", '''"Everything? I asked you to be the key. At worst, you would die. I found that quite acceptable." {n}She sets the quill beside the cauldron.{/n}
+"Now it is my essence, and I suddenly have a great many questions about alternatives. There. That is true too. I shall still put them to the Council. The plan needs Nirvana; it does not follow that Nirvana must be taken from me."''',
       c("Continue", "choice")),
     e("choice", '''"So. Tell me what you think I should do. I will not promise to do it. But I will listen, and I will write down what you said, and I will read it again when the time comes."''',
       c('"Nobody takes anything from you. Not the Council, not by force. I\'ll see to it."', "promised", flags=(PROMISED,)),
@@ -495,13 +496,13 @@ minutes(ESSENCE, "A very serious matter", '"The cauldron. The essences."', [
     e("promised", '''"You cannot promise that." {n}At once.{/n} "You do not command this Council. You barely attend it."
 {n}And then, slower, with her claws flat on the scroll:{/n} "You have done several things at this table that could not be done. I will write it down as you said it. If you break it, the record will show only that you meant it." {n}She writes. It is a short line, and she takes a long time over it.{/n}''',
       c("[Watch her write it.]")),
-    e("urged", '''"Yes." {n}Something in her shoulders loosens, as if a weight she had been carrying alone had been taken by the other end.{/n}
-"Thank you. Everyone else has been telling me to wait, to vote, to consider it from all sides. You told me the truth: that someone has to, and it should be someone who means it." {n}She writes it down.{/n}
-"If it is excruciating, Commander, I will tell you so. That is my side of the bargain."''',
+    e("urged", '''"The only one? You flatter me when it is your life at stake, and urge haste when it is mine." {n}She bares a tooth, then writes your advice beneath her own name.{/n}
+"Wait, analyze, vote — those are my arguments too. I will hear the alternatives before I give up any part of myself. If there is no other sample, I must answer for Nirvana. I cannot refute that by calling another sitting. If it is excruciating, Commander, I will tell you so."''',
       c("[Watch her write it.]")),
     e("warned", '''{n}Her ears flatten.{/n} "You think they will." {n}It is not a question.{/n}
-"I think so too. I have heard how readily they promise a sacrifice when they expect someone else to make it. I have been hoping, which is not the same as thinking, and I have been letting the hope chair the session." {n}She looks at her own hands.{/n}
-"If they betray this table, and I draw my claws anyway, it will be in the minutes that you told me not to. That is the worst punishment I know how to give myself. Write it."''',
+"I have heard their excuses. I have made some of them myself." {n}Her claws pierce the scroll beside your hand. She pulls them free, leaving four holes.{/n}
+"But if they take our work and betray us, I may demand their essences. Willingly, or by force. I would be taking from them what I dread surrendering myself. I know it. Do not mistake that knowledge for a promise to sit quietly."
+{n}She pushes the damaged scroll toward you.{/n} "Write your warning. I will read it before the sitting. You have not won the argument."''',
       c("[Write it.]")),
 ], requires=(CONVENING, "council.cauldron_given"), forbids=(ESSENCE, ESSENCE_GIVEN, "council.walked_out"), chapters=(5,))
 
@@ -591,7 +592,7 @@ minutes(STANDING, "A standing item", '"You\'ve added something to the agenda."',
     e("tease", '''"You will do no such thing." {n}And then, because it is her rule, and she keeps her rules:{/n} "...One meeting in three. And you ask the chair first."
 {n}She taps the scroll twice with a claw, watching you. Then, more quietly:{/n} "That was not an answer, Commander. That was a very charming refusal to answer. The item stands."''',
       c('"...Build your crossroads. Sit at your table. Argue with you."', "table")),
-    e("close", '''"The item is answered. For now." {n}She writes, and then does something you have never seen her do: she reads the item back aloud, in the voice she uses for the full Council, to a hall with nobody in it but you.{/n}
+    e("close", '''"The item is answered. For now." {n}She writes, then reads the item back aloud, in the voice she uses for the full Council, to a hall with nobody in it but you.{/n}
 "It wants a second. Not for the chair. For the record. Whatever becomes of this Council, I want one scroll that says we were here, and who seconded the motion."''',
       c("[Second it, aloud.]", flags=(AFTER_WAR,))),
 ], requires=(RECORD,), forbids=(STANDING,), delay=48)
@@ -600,7 +601,7 @@ minutes(STANDING, "A standing item", '"You\'ve added something to the agenda."',
 # --- 15. The blank line: her soft no, and what waits after it. ------------------------------------------------------
 
 minutes(BLANK, "The blank line", '"Is the motion still on the table?"', [
-    nar("open", '''{n}The scroll of the second reading lies at the head of the table, unrolled, as if it had never been put away. The heading is still there: "Motion: that the chair and the Commander be..." The rest of the line is still blank. A weight sits on each corner to keep it flat: an inkwell, a Lexicon page, a paperweight shaped like a hippogriff, and the dagger.{/n}''',
+    nar("open", '''{n}The scroll of the second reading lies at the head of the table, unrolled, as if it had never been put away. The heading is still there: "Motion: that the chair and the Commander be..." The rest of the line is still blank. A weight sits on each corner to keep it flat: an inkwell, a stone, a paperweight shaped like a hippogriff, and the dagger.{/n}''',
         c("Continue", "start")),
     e("start", '''"It is on the table. It is not before the chair." {n}She is precise about the difference.{/n} "A motion declined may be moved once more, by the rules I wrote. Once. When the mover is ready to stand behind it."
 "I have been looking at this line every day." {n}Her claws rest on the blank space.{/n} "It keeps me awake. That is not a reason to finish it."''',
