@@ -10923,7 +10923,15 @@
           "letter": false
         },
         {
+          "scene": "areelu.trickster.report.convicts",
+          "letter": false
+        },
+        {
           "scene": "areelu.trickster.report.dagger",
+          "letter": false
+        },
+        {
+          "scene": "areelu.trickster.report.commission",
           "letter": false
         },
         {
@@ -10932,6 +10940,10 @@
         },
         {
           "scene": "areelu.trickster.report.visitors",
+          "letter": false
+        },
+        {
+          "scene": "areelu.trickster.report.rival",
           "letter": false
         },
         {
