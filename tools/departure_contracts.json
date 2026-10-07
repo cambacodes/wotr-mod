@@ -11360,24 +11360,6 @@
           "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
         },
         {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman_late",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.unasked_question",
-          "node": "start",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "terendelev.trickster.watch.proof",
           "node": "living",
           "choice": 0,
@@ -19692,12 +19674,6 @@
           "letter": false
         },
         {
-          "scene": "elyanka.trickster.beat.writ",
-          "node": "chaplain",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "galfrey.trickster.kitrane.elixir",
           "node": "grow",
           "choice": 1,
@@ -19819,48 +19795,6 @@
         },
         {
           "scene": "irabeth.trickster.killed.late_step",
-          "node": "start",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "nidalynn.trickster.after.first_demon",
-          "node": "her",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.after.ward",
-          "node": "dawn",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman_late",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.free.spent_light",
-          "node": "night_spent",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.free.the_names",
-          "node": "start",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.free.the_names",
           "node": "start",
           "choice": 2,
           "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
