@@ -105,6 +105,27 @@
       "surface": "node",
       "index": null,
       "text_sha": "3390eb9c27568c271bdcf0f399396d237a21884f9b32e70412fb57445f39897c"
+    },
+    {
+      "scene": "household.docket.horzalah_hepzamirah.account",
+      "node": "j05_instructions_destroyed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5d9cbd2144a971a736b9c9b84dbb46ff79307c90154a0c5bd641eb2eb152e07c"
+    },
+    {
+      "scene": "household.docket.horzalah_hepzamirah.account_table",
+      "node": "j05_instructions_destroyed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5d9cbd2144a971a736b9c9b84dbb46ff79307c90154a0c5bd641eb2eb152e07c"
+    },
+    {
+      "scene": "household.docket.gesmerha_jerribeth.account",
+      "node": "j05_cache_offer",
+      "surface": "node",
+      "index": null,
+      "text_sha": "af2367a385abfe779335ccb5fda4d3bed4ec519ae08f73099c21d87f268e5c1d"
     }
   ]
 }
