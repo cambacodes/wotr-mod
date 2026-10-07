@@ -108,6 +108,22 @@ def also_in_drezen(scene_id, entry):
                     Forbids=list(dict.fromkeys(original["Forbids"] + ["eliandra.trickster.away"] + [o for o in ids if o != sid])),
                     RequiresAnyGroups=[list(g) for g in original.get("RequiresAnyGroups") or []]
                     + [list(g) for g in extra.get("RequiresAnyGroups", [])])
+        if scene_id == E + "ch5.last_rite":
+            # R4 D02/D03: authored travel from either capital host, not a
+            # restored sanctuary. The evacuation and offering remain intact.
+            nodes = {node["Id"]: node for node in twin["Nodes"]}
+            nodes["start"]["Text"] = nodes["start"]["Text"].replace(
+                "My people are packing.", "My people are preparing for the road north.")
+            nodes["leave"]["Text"] = nodes["leave"]["Text"].replace(
+                "Someone nearby is nailing a stargazer's crate shut.",
+                "Across the street, a stargazer is nailing a supply crate shut.")
+            for ident in ("heart_new", "heart_known"):
+                nodes[ident]["Text"] = (
+                    "{n}You leave Drezen with Eliandra and a small crusader escort. "
+                    "At Pulura's Fall, the soldiers search the approach and the empty corridors "
+                    "before taking watch outside the star-heart. The demons know this place; "
+                    "the stargazers' evacuation stands. This visit is for the rite alone.{/n}\n"
+                    + nodes[ident]["Text"])
         SCENES.append(twin)
     original["Forbids"] = list(dict.fromkeys(original["Forbids"] + ids[1:]))
 
@@ -230,12 +246,12 @@ drezen_pre(E + "ch5.first_mile", "The first mile", '"Walk with you? Where?"', [
 
 
 drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart still open?"', [
-    nar("start", '''{n}Pulura's Fall, after dark.{/n}''',
+    nar("start", '''{n}In Drezen, Eliandra rolls her last chart and reaches for her travelling cloak.{/n}''',
         c("Continue", "walk_back", forbids=(LETTER_ANSWERED,)),
         c("Continue", "ride_back", requires=(LETTER_ANSWERED,))),
-    nar("walk_back", '''{n}It is a long day's ride from Drezen to the dry fall, and she does not speak much on the way. The hidden door still opens for her. The shrine is very quiet with everyone gone; your boots echo in corridors that heard nothing but soft slippers for a hundred years. She walks ahead of you with a lamp, touching the walls as she passes, the way one touches the shoulders of friends at a funeral.{/n}''',
+    nar("walk_back", '''{n}You ride from Drezen together with a small crusader escort. At the dry fall the soldiers search the approach and the empty shrine, then take turns watching the entrance through the night. The demons know where the temple stands; one guarded visit will not make it a refuge again. Inside, Eliandra carries the lamp past the empty cells and stops at each door before leading you to the star-heart.{/n}''',
         c("Continue", "heart")),
-    nar("ride_back", '''{n}She walked back from the fords alone, two days on the old road, and asked you by a note left at the gate to meet her at the dry fall. She is waiting at the foot of it with a lamp and her hood down. At the hidden door she stops and does not seem to know what to do with her other hand. Then she gives it to you, and leads you in.{/n}''',
+    nar("ride_back", '''{n}Since your meeting beside the tailor's, she has kept the last chart for this journey. Odden still has the column at the fords. You leave Drezen together with a small crusader escort. At the dry fall the soldiers search the approach and the empty shrine, then take turns watching the entrance through the night. The temple's secrecy is lost; they can guard this visit, not settle her people here. Eliandra takes your hand at the hidden door and leads you to the star-heart.{/n}''',
         c("Continue", "heart")),
     nar("heart", '''{n}The star-heart is bare to the rock. The basin went with the carts; the long table did not, being too heavy to move, and her last charts lie on it half rolled, weighted with river stones. Overhead the sky burns, black and enormous, as it has burned for a century and will burn when there is nobody under it at all.{/n}
 {n}Eliandra sets the lamp down and blows it out. There is enough light without it.{/n}''',
