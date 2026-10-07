@@ -153,5 +153,55 @@
     "scene": "chadali.fortunes.honey",
     "route": "chadali",
     "finding": "chadali:D21"
+  },
+  {
+    "scene": "devarra.trickster.flight.eggs",
+    "route": "devarra",
+    "finding": "D03-D04"
+  },
+  {
+    "scene": "devarra.trickster.dead.woken",
+    "route": "devarra",
+    "finding": "D03 folded refusal"
+  },
+  {
+    "scene": "devarra.tower.the_clutch",
+    "route": "devarra",
+    "finding": "D05-D06,D17"
+  },
+  {
+    "scene": "devarra.trickster.after.lair",
+    "route": "devarra",
+    "finding": "D07"
+  },
+  {
+    "scene": "devarra.tower.bane",
+    "route": "devarra",
+    "finding": "D08"
+  },
+  {
+    "scene": "devarra.tower.first_bite",
+    "route": "devarra",
+    "finding": "D09"
+  },
+  {
+    "scene": "devarra.trickster.epilogue.commit",
+    "route": "devarra",
+    "finding": "D10,D14"
+  },
+  {
+    "scene": "devarra.trickster.epilogue.woken",
+    "route": "devarra",
+    "finding": "D11,D13,D18"
+  },
+  {
+    "scene": "devarra.react.greybor.flown",
+    "route": "devarra",
+    "finding": "D01 S1 local prose"
+  },
+  {
+    "scene": "devarra.tower.the_hunt",
+    "route": "devarra",
+    "finding": "D16"
   }
 ]
