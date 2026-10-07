@@ -1354,7 +1354,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Open: [Look at the smallest egg, the one at the edge of the straw]
    Need all: `trickster`; Blocked by: `nidalynn.trickster.primed`, `nidalynn.trickster.egg_crushed`, `eggs.destroyed`, `eggs.project`, `trickster.failed`.
    Native answer-list host: `dd8ac86f25e0f6b4cac75386eb528851`.
-   - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Blocked by: `crossroute.devarra.unavailable`; Mythic: PlayerIsTrickster
+   - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Mythic: PlayerIsTrickster
    - `nidalynn.trickster.eggs.lamp_black/taken/0` — Continue; records `nidalynn.trickster.egg.clean`
    - `nidalynn.trickster.eggs.lamp_black/held/0` — [Wrap it in your cloak and put it at the bottom of your pack.]
    - `nidalynn.trickster.eggs.lamp_black/rock/0` — "It's a rock. I painted it."; records `nidalynn.trickster.rock_joke`
@@ -1460,7 +1460,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Scene `targona.trickster.free.spent_light`; chapters 3–5 (only 3, 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `targona.free`, `targona.present_now`; Blocked by: `targona.trickster.cost.wand_unspent`, `targona.trickster.parent_romanced`, `targona.dead_lab`, `trickster.failed`.
    - `targona.trickster.free.spent_light/start/1` — [Spend every charge] "Give it to the chaplain. I'll get him another, and stay to help."; crusade Finances -500; Blocked by: `trickster.umd_tier2`
-   - `targona.trickster.free.spent_light/night_spent/0` — [Finish at dawn] Gather the wand splinters with the requisitions.; Need all: `iomedae.present_now`; Blocked by: `herald.killed`
+   - `targona.trickster.free.spent_light/night_spent/0` — [Finish at dawn] Gather the wand splinters with the requisitions.; Blocked by: `herald.killed`
    - `targona.trickster.free.spent_light/report_hand/0` — [Let the report go up.]; records `targona.trickster.primed`, `targona.trickster.cost.wand_unspent`, `targona.trickster.cost.charges_spent`
 
 63. **Commander: The Commander's rock** — rest delivery / Satchel: event (Drezen). <!-- rrt-step {"scene":"nidalynn.trickster.hearth.grey_stone","chapter":3,"day":10,"completed":true,"choices":[["hearth",0],["night",0],["end",0]]} -->
@@ -6673,7 +6673,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 529. **Herrax: Whose she is** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.the_lady","chapter":4,"day":99,"completed":true,"choices":[["start",1],["lady",0],["willodus",1],["patronless",1]]} -->
    Scene `herrax.house.the_lady`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "Who does a madam answer to, in Alushinyrra?"
-   Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.labyrinth`, `herrax.present_now`; Blocked by: `herrax.closed`, `crossroute.nocticula.unavailable`.
+   Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.labyrinth`, `herrax.present_now`; Blocked by: `herrax.closed`.
    Native answer-list host: `43f93812d6216c94db356622859397f1`.
    - `herrax.house.the_lady/start/1` — Continue; Blocked by: `arueshalae.nocticula_claimed`
    - `herrax.house.the_lady/lady/0` — "And Rokhorn? Does she remember him?"
@@ -7222,7 +7222,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.letters.the_courier/start/0` — Continue; records `herrax.letters.bundle`
    - `herrax.letters.the_courier/letter/0` — Continue; Need all: `herrax.trickster.knife_taken`
    - `herrax.letters.the_courier/letter_cut/0` — Continue
-   - `herrax.letters.the_courier/letter_end/0` — [Write back warmly] "I miss your stairs."; records `herrax.letters.reply.warm`; Blocked by: `crossroute.nocticula.unavailable`
+   - `herrax.letters.the_courier/letter_end/0` — [Write back warmly] "I miss your stairs."; records `herrax.letters.reply.warm`
    - `herrax.letters.the_courier/b_healers/0` — Continue
    - `herrax.letters.the_courier/b_healers2/1` — Continue; Blocked by: `herrax.trickster.cost.clawed_cheek`, `noct.defeated_not_dead`
    - `herrax.letters.the_courier/b_lady/0` — Continue; Blocked by: `herrax.morevet_dead`
@@ -11069,7 +11069,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.beat.writ/writ/0` — "Let's hear what she says. Come with me."
    - `elyanka.trickster.beat.writ/yard/0` — Continue
    - `elyanka.trickster.beat.writ/oath/0` — Continue
-   - `elyanka.trickster.beat.writ/chaplain/0` — [Uphold her oath] "She swore it. The law says she stays, and so does my seal. Go home."; Need all: `iomedae.present_now`; Blocked by: `iomedae.closed`
+   - `elyanka.trickster.beat.writ/chaplain/0` — [Uphold her oath] "She swore it. The law says she stays, and so does my seal. Go home."
    - `elyanka.trickster.beat.writ/upheld/0` — Continue
    - `elyanka.trickster.beat.writ/upheld2/0` — [Go away.]; records `elyanka.trickster.writ.upheld`
 
@@ -11591,7 +11591,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 990. **Elyanka: Her Lady's mercy** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.wards","chapter":5,"day":121,"completed":true,"choices":[["start",0],["her",0],["explain",0],["explain2",0],["stop",0],["stop2",0]]} -->
    Scene `elyanka.trickster.beat.wards`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
-   Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.wards.stopped`, `elyanka.trickster.wards.let`, `elyanka.trickster.wards.hopeless_only`, `crossroute.iomedae.unavailable`.
+   Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.wards.stopped`, `elyanka.trickster.wards.let`, `elyanka.trickster.wards.hopeless_only`.
    - `elyanka.trickster.beat.wards/start/0` — Continue
    - `elyanka.trickster.beat.wards/her/0` — [Wait until she has finished.]
    - `elyanka.trickster.beat.wards/explain/0` — Continue
@@ -13061,7 +13061,7 @@ Unavailable states: `targona.dead_lab`, `targona.dead_lair`, `targona.condemned`
   - `targona.trickster.free.spent_light/start/1` — [Spend every charge] "Give it to the chaplain. I'll get him another, and stay to help."; crusade Finances -500; Blocked by: `trickster.umd_tier2`
   - `targona.trickster.free.spent_light/start/2` — "Leave the rationing to the surgeons."; ends without completing scene
   - `targona.trickster.free.spent_light/night/0` — [Finish at dawn] Put the wand away. It is still full.; records `targona.trickster.primed`, `targona.trickster.cost.wand_unspent`
-  - `targona.trickster.free.spent_light/night_spent/0` — [Finish at dawn] Gather the wand splinters with the requisitions.; Need all: `iomedae.present_now`; Blocked by: `herald.killed`
+  - `targona.trickster.free.spent_light/night_spent/0` — [Finish at dawn] Gather the wand splinters with the requisitions.; Blocked by: `herald.killed`
   - `targona.trickster.free.spent_light/night_spent/1` — [Finish at dawn] Gather the wand splinters with the requisitions.; Need all: `herald.killed`
   - `targona.trickster.free.spent_light/report_hand/0` — [Let the report go up.]; records `targona.trickster.primed`, `targona.trickster.cost.wand_unspent`, `targona.trickster.cost.charges_spent`
   - `targona.trickster.free.spent_light/report_chapel/0` — [Let the report go up.]; records `targona.trickster.primed`, `targona.trickster.cost.wand_unspent`, `targona.trickster.cost.charges_spent`
@@ -15205,8 +15205,8 @@ On the Trickster path, in the Ivory Sanctum, look at the smallest of the eggs un
 Commitment: `nidalynn.committed`; closure: `nidalynn.closed`.
 Unavailable states: `nidalynn.epoch_unavailable`; failure states: none.
 - Recovery for **golems**: `nidalynn.trickster.eggs.lamp_black` (Out in the ash); native dialogue listed below; chapters 3–3; 0h delay. Need all: `trickster`; Blocked by: `nidalynn.trickster.primed`, `nidalynn.trickster.egg_crushed`, `eggs.destroyed`, `eggs.project`, `trickster.failed`. Return witness: `nidalynn.trickster.met`.
-  - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Blocked by: `crossroute.devarra.unavailable`; Mythic: PlayerIsTrickster
-  - `nidalynn.trickster.eggs.lamp_black/look/1` — [Trickery: roll a stone of the same size into the straw where it lay, and palm the egg into the ash-bin]; PASS SkillThievery DC 22 (Commander only); success → `taken`; failure → `fist`; Blocked by: `crossroute.devarra.unavailable`; Mythic: PlayerIsTrickster
+  - `nidalynn.trickster.eggs.lamp_black/look/0` — [Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]; PASS SkillStealth DC 22 (Commander only); success → `taken`; failure → `fist`; Mythic: PlayerIsTrickster
+  - `nidalynn.trickster.eggs.lamp_black/look/1` — [Trickery: roll a stone of the same size into the straw where it lay, and palm the egg into the ash-bin]; PASS SkillThievery DC 22 (Commander only); success → `taken`; failure → `fist`; Mythic: PlayerIsTrickster
   - `nidalynn.trickster.eggs.lamp_black/look/2` — [Leave the eggs to the golems.]; ends without completing scene
   - `nidalynn.trickster.eggs.lamp_black/taken/0` — Continue; records `nidalynn.trickster.egg.clean`
   - `nidalynn.trickster.eggs.lamp_black/fist/0` — Continue; records `nidalynn.trickster.cost.hand`
@@ -15698,7 +15698,7 @@ Unavailable states: `herrax.epoch_unavailable`; failure states: none.
   - `herrax.trickster.late.next_move/door/0` — "Why would I come to you and not to her?"; Need all: `herrax.madam`
   - `herrax.trickster.late.next_move/door/1` — [Play the buyer he wants] "Make me an offer, then."; Need all: `herrax.madam`
   - `herrax.trickster.late.next_move/door/2` — "Tell her I'm not for sale, and neither is anyone I know."; records `herrax.closed`
-  - `herrax.trickster.late.next_move/door/3` — "Why would I come to you and not to her?"; Blocked by: `herrax.madam`, `crossroute.chivarro.unavailable`
+  - `herrax.trickster.late.next_move/door/3` — "Why would I come to you and not to her?"; Blocked by: `herrax.madam`
   - `herrax.trickster.late.next_move/door/4` — [Play the buyer he wants] "Make me an offer, then."; Blocked by: `herrax.madam`
   - `herrax.trickster.late.next_move/why/0` — [Play the buyer he wants] "Tell her I'll come. And tell me what you're offering."; Need all: `herrax.madam`
   - `herrax.trickster.late.next_move/why/1` — "Tell her I'm not for sale, and neither is anyone I know."; records `herrax.closed`
