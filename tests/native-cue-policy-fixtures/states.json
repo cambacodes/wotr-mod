@@ -155356,8 +155356,11 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "devarra.committed",
         "devarra.present_now",
+        "devarra.trickster.late_accepted",
         "devarra.trickster.late_committed",
+        "devarra.trickster.returned",
         "devarra.trickster.tested",
         "trickster.ever",
         "trickster.now"
@@ -155410,6 +155413,49 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "devarra.trickster.epilogue.sacrifice"
+    },
+    {
+      "Id": "page/devarra.trickster.epilogue.pending",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "devarra.present_now",
+        "devarra.trickster.returned",
+        "devarra.trickster.tested",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "devarra.trickster.epilogue.pending"
+    },
+    {
+      "Id": "page/devarra.trickster.epilogue.claimed",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "devarra.present_now",
+        "devarra.trickster.ending_claimed",
+        "devarra.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "devarra.trickster.epilogue.claimed"
+    },
+    {
+      "Id": "page/devarra.trickster.epilogue.canon_fate",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "devarra.dead_lair",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "devarra.trickster.epilogue.canon_fate"
     },
     {
       "Id": "page/devarra.lastcall.page",
