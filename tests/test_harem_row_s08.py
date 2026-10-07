@@ -1,4 +1,4 @@
-"""S08 review safety: blocked contracts must never enter a playable export."""
+"""Row reservations stay stable; J03 explicitly activates only approved contracts."""
 import copy
 import unittest
 
@@ -19,7 +19,7 @@ class HaremRowS08(unittest.TestCase):
     def test_discovery_has_no_draft_side_effects(self):
         payload = fresh_story()
         draft_ids = {body["Id"] for body in s08.draft_scenes()}
-        self.assertFalse(draft_ids & {body["Id"] for body in payload["Scenes"]})
+        self.assertTrue(draft_ids <= {body["Id"] for body in payload["Scenes"]})
 
     def test_review_does_not_register_consumers_or_entries(self):
         consumers = dict(household.CONSUMERS)

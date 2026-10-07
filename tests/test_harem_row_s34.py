@@ -1,4 +1,4 @@
-"""Fail-closed coverage for the explicitly blocked S34 shared-job reservation."""
+"""Row reservations stay stable; J03 explicitly activates only approved contracts."""
 import copy
 import json
 from pathlib import Path
@@ -50,8 +50,8 @@ class S34ReservationTests(unittest.TestCase):
 
     def test_current_export_has_no_unsupported_shared_job(self):
         story = fresh_story()
-        self.assertFalse(any(scene["Id"].startswith(PREFIX) for scene in story["Scenes"]))
-        self.assertFalse(any(key.startswith(PREFIX) for key in story.get("Derived", {})))
+        self.assertTrue({PREFIX + "job", PREFIX + "retry"} <= {scene["Id"] for scene in story["Scenes"]})
+        self.assertFalse(any(PREFIX + "favour" in str(v) for v in story.get("Derived", {}).values()))
 
 
 if __name__ == "__main__":

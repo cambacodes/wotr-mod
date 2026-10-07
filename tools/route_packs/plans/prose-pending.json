@@ -676,5 +676,502 @@
     "woman": "lastcall",
     "beat": "rename Venn -> Veldran (canon-fix1 B10)",
     "ruling": "canon-fix1"
+  },
+  {
+    "scene": "household.pair.seelah_camellia.settle",
+    "node": "reasoned",
+    "woman": "camellia",
+    "beat": "want useful public cover / accept an unblessed place beside Seelah while Seelah completes the dead crusader's prayer / lose religious cover, Seelah keeps dangerous company",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.seelah_camellia.settle",
+    "node": "evidence",
+    "woman": "camellia",
+    "beat": "want her admission contained / face the actual retained confession and Seelah's refusal to bless murder / public cover lost, Seelah retains useful dangerous company",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.seelah_camellia.retry",
+    "node": "start",
+    "woman": "camellia",
+    "beat": "want public cover / repeat the limited prayer dispute with Seelah / keep the blessing withheld and dangerous company explicit",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.seelah_camellia.retry",
+    "node": "word",
+    "woman": "camellia",
+    "beat": "want public cover / repeat the limited prayer dispute with Seelah / keep the blessing withheld and dangerous company explicit",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.seelah_camellia.retry",
+    "node": "refused",
+    "woman": "camellia",
+    "beat": "want public cover / repeat the limited prayer dispute with Seelah / keep the blessing withheld and dangerous company explicit",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.seelah_camellia.retry",
+    "node": "reasoned",
+    "woman": "camellia",
+    "beat": "want useful public cover / accept an unblessed place beside Seelah while Seelah completes the dead crusader's prayer / lose religious cover, Seelah keeps dangerous company",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.seelah_camellia.retry",
+    "node": "evidence",
+    "woman": "camellia",
+    "beat": "want her admission contained / face the actual retained confession and Seelah's refusal to bless murder / public cover lost, Seelah retains useful dangerous company",
+    "ruling": 1
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.redeemed",
+    "node": "held",
+    "woman": "nocticula",
+    "beat": "want rank without conceding the throne / answer through the acquired seal, acknowledge Arueshalae's name / limit this claim, no summons",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.redeemed",
+    "node": "failed",
+    "woman": "nocticula",
+    "beat": "want obedience / return a sealed rejection / ownership claim remains disputed",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+    "node": "start",
+    "woman": "arueshalae",
+    "beat": "want her own name / publicly dictate renunciation over the crusade map / defy her former mistress",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+    "node": "held",
+    "woman": "nocticula",
+    "beat": "want rank without conceding the throne / answer through the acquired seal, acknowledge Arueshalae's name / limit this claim, no summons",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+    "node": "answer",
+    "woman": "arueshalae",
+    "beat": "want freedom from ownership / answer the queen in her own name and sign / public defiance",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+    "node": "refused",
+    "woman": "arueshalae",
+    "beat": "want the crusade or her own appetite / withhold the renunciation / leave the claim disputed",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.settle.corrupted",
+    "node": "failed",
+    "woman": "nocticula",
+    "beat": "want obedience / return a sealed rejection / ownership claim remains disputed",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.redeemed",
+    "node": "held",
+    "woman": "nocticula",
+    "beat": "want rank without conceding the throne / answer through the acquired seal, acknowledge Arueshalae's name / limit this claim, no summons",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.redeemed",
+    "node": "failed",
+    "woman": "nocticula",
+    "beat": "want rank acknowledged / reject the repeated renunciation / public claim remains disputed",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+    "node": "start",
+    "woman": "arueshalae",
+    "beat": "want her own name / publicly dictate renunciation over the crusade map / defy her former mistress",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+    "node": "held",
+    "woman": "nocticula",
+    "beat": "want rank without conceding the throne / answer through the acquired seal, acknowledge Arueshalae's name / limit this claim, no summons",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+    "node": "answer",
+    "woman": "arueshalae",
+    "beat": "want freedom from ownership / answer the queen in her own name and sign / public defiance",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+    "node": "refused",
+    "woman": "arueshalae",
+    "beat": "want the crusade or her own appetite / withhold the renunciation / leave the claim disputed",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.arueshalae_nocticula.retry.corrupted",
+    "node": "failed",
+    "woman": "nocticula",
+    "beat": "want rank acknowledged / reject the repeated renunciation / public claim remains disputed",
+    "ruling": 2
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "start",
+    "woman": "horzalah",
+    "beat": "want Guild leverage / give the approaching crusade patrol one real warning instead of selling it / lose that sale",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "second",
+    "woman": "hepzamirah",
+    "beat": "want dominance / accept Horzalah's control of this warning and leave her agent unmolested / yield this interception and Guild claim",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "held",
+    "woman": "hepzamirah",
+    "beat": "want a useful patrol alive / warning reaches the patrol, agent departs unmolested, each sister acknowledges her kept term / lost sale and lost domination",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "missed",
+    "woman": "horzalah",
+    "beat": "want the task done / reject the botched relay / neither promised deed is completed",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "refused",
+    "woman": "horzalah",
+    "beat": "want her own advantage / leave the limited bargain unsigned / dispute remains",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "broken_horzalah",
+    "woman": "horzalah",
+    "beat": "want the warning's sale price / sell this warning instead of delivering it to the patrol / break her own Guild-warning concession",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.truce",
+    "node": "broken_hepzamirah",
+    "woman": "hepzamirah",
+    "beat": "want mastery of the Guild warning / intercept Horzalah's agent and seize this warning / break her own noninterception concession",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "start",
+    "woman": "horzalah",
+    "beat": "want Guild leverage / give the approaching crusade patrol one real warning instead of selling it / lose that sale",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "second",
+    "woman": "hepzamirah",
+    "beat": "want dominance / accept Horzalah's control of this warning and leave her agent unmolested / yield this interception and Guild claim",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "held",
+    "woman": "hepzamirah",
+    "beat": "want a useful patrol alive / warning reaches the patrol, agent departs unmolested, each sister acknowledges her kept term / lost sale and lost domination",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "missed",
+    "woman": "horzalah",
+    "beat": "want the task done / reject the botched relay / neither promised deed is completed",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "refused",
+    "woman": "horzalah",
+    "beat": "want her own advantage / leave the limited bargain unsigned / dispute remains",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "broken_horzalah",
+    "woman": "horzalah",
+    "beat": "want the warning's sale price / sell this warning instead of delivering it to the patrol / break her own Guild-warning concession",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.horzalah_hepzamirah.retry",
+    "node": "broken_hepzamirah",
+    "woman": "hepzamirah",
+    "beat": "want mastery of the Guild warning / intercept Horzalah's agent and seize this warning / break her own noninterception concession",
+    "ruling": 4
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "start",
+    "woman": "minagho",
+    "beat": "want the current Baphomet collector off her trail / screen his threatening approach to the returned women / stake her own face on the screen",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "second",
+    "woman": "hepzamirah",
+    "beat": "want her own glory / strike this collector and accept Minagho's sole credit for the job / yield the credit",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "held",
+    "woman": "hepzamirah",
+    "beat": "want the collector dead / show Minagho's completed screen, Hepzamirah's strike and yielded credit / both named operational concessions",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "missed",
+    "woman": "minagho",
+    "beat": "want the task done / reject the botched relay / neither promised deed is completed",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "refused",
+    "woman": "minagho",
+    "beat": "want her own advantage / leave the limited bargain unsigned / dispute remains",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "broken_minagho",
+    "woman": "minagho",
+    "beat": "want the screen credited to her / fail to screen the collector's approach and lose face / leave Hepzamirah without the promised opening",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "broken_hepzamirah",
+    "woman": "hepzamirah",
+    "beat": "want sole glory for herself / explicitly refuse the promised strike with yielded credit / leave Minagho's screen unanswered",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.job",
+    "node": "screen_failed",
+    "woman": "minagho",
+    "beat": "want the collector screened / lose face when the approach sees through the screen / no strike or yielded credit",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "start",
+    "woman": "minagho",
+    "beat": "want the current Baphomet collector off her trail / screen his threatening approach to the returned women / stake her own face on the screen",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "second",
+    "woman": "hepzamirah",
+    "beat": "want her own glory / strike this collector and accept Minagho's sole credit for the job / yield the credit",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "held",
+    "woman": "hepzamirah",
+    "beat": "want the collector dead / show Minagho's completed screen, Hepzamirah's strike and yielded credit / both named operational concessions",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "missed",
+    "woman": "minagho",
+    "beat": "want the task done / reject the botched relay / neither promised deed is completed",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "refused",
+    "woman": "minagho",
+    "beat": "want her own advantage / leave the limited bargain unsigned / dispute remains",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "broken_minagho",
+    "woman": "minagho",
+    "beat": "want the screen credited to her / fail to screen the collector's approach and lose face / leave Hepzamirah without the promised opening",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "broken_hepzamirah",
+    "woman": "hepzamirah",
+    "beat": "want sole glory for herself / explicitly refuse the promised strike with yielded credit / leave Minagho's screen unanswered",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.hepzamirah_minagho.retry",
+    "node": "screen_failed",
+    "woman": "minagho",
+    "beat": "want the collector screened / lose face when the approach sees through the screen / no strike or yielded credit",
+    "ruling": 19
+  },
+  {
+    "scene": "household.pair.nocticula_shamira.precedence.live",
+    "node": "queen_reply",
+    "woman": "nocticula",
+    "beat": "want court precedence / separately answer through her acquired seal and assert her priority / tolerate her lover's public counterclaim",
+    "ruling": 17
+  },
+  {
+    "scene": "household.pair.nocticula_shamira.precedence.live",
+    "node": "shamira_reply",
+    "woman": "shamira",
+    "beat": "want her own court rank / freely send her distinct correspondence claiming precedence beside Nocticula / acknowledge the queen's bounded counterclaim",
+    "ruling": 17
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "start",
+    "woman": "chivarro",
+    "beat": "want her current own-house business / name Herrax's actual disputed offer / old chair remains Herrax's, no reinstatement",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "historical",
+    "woman": "chivarro",
+    "beat": "want her current own-house business / name Herrax's actual disputed offer / old chair remains Herrax's, no reinstatement",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "herrax_reply",
+    "woman": "herrax",
+    "beat": "want the Delights / send her own current message keeping the Delights, decline to recruit Chivarro's present contacts through this offer / withhold this recruiting claim",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "chivarro_reply",
+    "woman": "chivarro",
+    "beat": "want her present own-house trade / answer Herrax separately, give up the old chair through this offer / withhold this chair claim",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "terms_kept",
+    "woman": "chivarro",
+    "beat": "want her own business / inspect Herrax's delivered recruiting concession and send her own chair concession / both bounded claims withheld, no reinstatement",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "names_missed",
+    "woman": "chivarro",
+    "beat": "want her own named claim / reject the muddled messages / no concession delivered",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.live",
+    "node": "unsettled",
+    "woman": "chivarro",
+    "beat": "want her own house / keep the offer disputed / no terms kept",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "start",
+    "woman": "chivarro",
+    "beat": "want her current own-house business / name Herrax's actual disputed offer / old chair remains Herrax's, no reinstatement",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "historical",
+    "woman": "chivarro",
+    "beat": "want her current own-house business / name Herrax's actual disputed offer / old chair remains Herrax's, no reinstatement",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "herrax_reply",
+    "woman": "herrax",
+    "beat": "want the Delights / send her own current message keeping the Delights, decline to recruit Chivarro's present contacts through this offer / withhold this recruiting claim",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "chivarro_reply",
+    "woman": "chivarro",
+    "beat": "want her present own-house trade / answer Herrax separately, give up the old chair through this offer / withhold this chair claim",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "terms_kept",
+    "woman": "chivarro",
+    "beat": "want her own business / inspect Herrax's delivered recruiting concession and send her own chair concession / both bounded claims withheld, no reinstatement",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "names_missed",
+    "woman": "chivarro",
+    "beat": "want her own named claim / reject the muddled messages / no concession delivered",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "unsettled",
+    "woman": "chivarro",
+    "beat": "want her own house / keep the offer disputed / no terms kept",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "herrax_term_broken",
+    "woman": "herrax",
+    "beat": "want Chivarro's present contacts / explicitly renew recruiting those contacts through this offer / break her own recruiting concession",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.retry",
+    "node": "chivarro_term_broken",
+    "woman": "chivarro",
+    "beat": "want her old chair / explicitly renew claiming the Delights chair through this offer / break her own chair concession",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.history",
+    "node": "start",
+    "woman": "chivarro",
+    "beat": "want her current own-house trade / recall the actually heard earlier kill request / hostility remains, no respondent reply",
+    "ruling": 18
+  },
+  {
+    "scene": "household.pair.herrax_chivarro.turf.history",
+    "node": "historical",
+    "woman": "chivarro",
+    "beat": "want the old threat remembered / retain her own account of the earlier request / no new concession or reply",
+    "ruling": 18
   }
 ]
