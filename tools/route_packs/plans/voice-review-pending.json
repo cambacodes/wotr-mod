@@ -1,0 +1,17 @@
+[
+  {
+    "scene": "nenio.folio.edge",
+    "route": "nenio",
+    "finding": "nenio:D14"
+  },
+  {
+    "scene": "nenio.folio.edge_visitor",
+    "route": "nenio",
+    "finding": "nenio:D15"
+  },
+  {
+    "scene": "nenio.folio.edge_arcade",
+    "route": "nenio",
+    "finding": "nenio:D16"
+  }
+]

@@ -181,18 +181,24 @@ PLACES = {
         "@WHERE@": "at the edge of the camp",
         "@AROUND@": "the camp",
         "@SEAT@": "a coil of rope",
+        "@HER_SEAT@": "a coil of rope",
+        "@MY_SEAT@": "a coil of rope",
     }),
     "visitor": dict(suffix="_visitor", texts={
         "@DESK@": "two of the spice trader's crates",
         "@WHERE@": "behind the spice trader's awning",
         "@AROUND@": "the market",
         "@SEAT@": "a third crate, which the trader has given up asking for",
+        "@HER_SEAT@": "a third crate",
+        "@MY_SEAT@": "a third crate",
     }),
     "arcade": dict(suffix="_arcade", texts={
         "@DESK@": "the dry end of the jeweller's step",
         "@WHERE@": "under the jeweller's arcade",
         "@AROUND@": "the arcade",
         "@SEAT@": "the step beside her",
+        "@HER_SEAT@": "the jeweller's step",
+        "@MY_SEAT@": "the step beside me",
     }),
 }
 
@@ -315,7 +321,7 @@ SCENES.append(scene(P + "taken.riddle", "A riddle only she can answer", "Nenio",
 
 # The first conversation after the Enigma, on her hub: the shape of the place where the name was.
 meet(P + "after_enigma", "The shape of a name", '"You keep looking at me as if I were a misprint."', [
-    nar("open", '''{n}Nenio sits on @SEAT@ with an empty sheet on her knee. She looks at your face, then your sleeve, then the sheet.{/n}
+    nar("open", '''{n}Nenio sits on @HER_SEAT@ with an empty sheet on her knee. She looks at your face, then your sleeve, then the sheet.{/n}
 "A name for a name. I have kept mine. Now I shall file yours. Do not say it while I work."
 {n}She closes her eyes. Her lips form a word without sound. Then she opens her eyes, studies your face again, and leaves the pencil poised above the sheet.{/n} "No name. Let me check the rest."''',
         c("Continue", "missing")),
@@ -571,7 +577,7 @@ meet(P + "away.correction", "Erratum", '"You came."', [
 "The new entry is 'follower, probationary'. You will not tidy my notes. You will answer every question I ask, with numbers. The probation may be extended at the author's discretion, which is infinite." {n}She lifts her chin.{/n} "Say yes, or I leave on the next cart, and I shall not come back for any quantity of backwards vrocks."''',
         c('[Accept the probation] "Yes. Follower, probationary."', "yes", flags=(RETURNED, STARTED, DEMOTED, SCRIBE)),
         c('[Refuse her] "No. I wanted you back, not a probation."', "no", flags=(CLOSED,))),
-    nen("yes", '''"Good." {n}She writes it down.{/n} "Your first duty is to sit on @SEAT@ and hold this stone on page six so that it does not blow away. It is an important stone. I have been using it as a control."''',
+    nen("yes", '''"Good." {n}She writes it down.{/n} "Your first duty is to sit on @MY_SEAT@ and hold this stone on page six so that it does not blow away. It is an important stone. I have been using it as a control."''',
         c("[Hold the stone.]")),
     nen("no", '''{n}She nods, as if you had confirmed a figure she had already written down.{/n}
 "Then the record stands as it was." {n}She gathers up your eleven pages, squares them, and hands them back.{/n} "Keep them. The vrock is still wrong. I shall think about it on the cart."''',
