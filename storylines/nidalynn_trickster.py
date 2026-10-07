@@ -66,6 +66,7 @@ COMMITTED = "nidalynn.committed"
 CRATED = "nidalynn.trickster.eggs_crated"         # latch on eggs.project (trickster_world LATCHES)
 WOLJIF_SIGHED = "nidalynn.woljif_sighed"            # SeenCues DragonEggs/Cue_0018 d2f3ae3a (his sigh over the smashed clutch)
 DV_RETURNED = "devarra.trickster.returned"         # read in nodes only (ledger 05 row 5: neither route gates the other)
+DV_PRESENT = "devarra.present_now"                  # current actor, not a historical return
 DV_HUNTING = "devarra.trickster.hunting_druids"
 DV_BILL = "devarra.trickster.cost.egg_withheld"   # set by devarra_tower's "The smallest egg" (the bill lands on the Commander)
 
@@ -370,12 +371,14 @@ steps(P + "steps.widow", "The widow on the steps", "[Sit down on the step beside
     nd("omelet", '''"Your kitchens made them into a supper for the whole city. I stood at the back of the soup line and watched the soldiers eat it." {n}She says it very evenly.{/n} "They were hungry. I won't hold that against them. But the quartermaster's slate said the cooks had eleven. There were twelve in the Sanctum. I counted."''',
         c("Continue", "mother")),
     nd("druids", '''"I was one of the druids." {n}She says it plainly, as she might say she was one of the washerwomen.{/n} "Four of us came for them, with a handcart and a story about nature. None of us was a druid. We carried eleven eggs out of your citadel. Eleven. There were twelve in the Sanctum; I had counted them before you ever came."''',
-        c("Continue", "hunted", requires=(DV_HUNTING,)),
-        c("Continue", "mother", forbids=(DV_HUNTING,))),
+        c("Continue", "hunted", requires=(DV_HUNTING, DV_PRESENT)),
+        c("Continue", "mother", forbids=(DV_HUNTING,)),
+        c("Continue", "hunted_absent", requires=(DV_HUNTING,), forbids=(DV_PRESENT,))),
     nd("straw", '''"I was one of the druids." {n}She says it plainly, as she might say she was one of the washerwomen.{/n} "Four of us came for them, with a handcart and a story about nature. None of us was a druid. We carried eleven out of your citadel and left the twelfth in the straw. It had gone cold and quiet, and our eldest put his hand on it and listened, and said it was dead. I believed him. It was cold, and I was carrying eleven that were not."
 {n}Her needle stops.{/n} "I stopped believing him somewhere on the road, with the others safe in the cart. So I came back for it in this shawl. Your quartermaster would not hand the crusade's goods to a beggar-woman at his door; it was waiting on the Commander's word, he said. I don't take things out of other people's stores. I was raised better." {n}She looks across the square at the citadel.{/n} "Then the Commander gave the word, and your hearth began to sing."''',
-        c("Continue", "hunted", requires=(DV_HUNTING,)),
-        c("Continue", "mother", forbids=(DV_HUNTING,))),
+        c("Continue", "hunted", requires=(DV_HUNTING, DV_PRESENT)),
+        c("Continue", "mother", forbids=(DV_HUNTING,)),
+        c("Continue", "hunted_absent", requires=(DV_HUNTING,), forbids=(DV_PRESENT,))),
     nd("hunted", '''{n}Her mouth thins.{/n} "And something grey and hungry has been following our trail ever since, and it didn't find us by chance. You told her where to look." {n}She holds up a hand before you can speak.{/n} "Not now. We'll talk about that, you and I. Not on a step."''',
         c("Continue", "mother")),
     nd("vault", '''"There are eleven eggs cooling in straw under your citadel, and a clerk who counts them every night by lamplight." {n}She sniffs again.{/n} "There were twelve in the Sanctum. I counted them before you ever came."''',
@@ -383,8 +386,9 @@ steps(P + "steps.widow", "The widow on the steps", "[Sit down on the step beside
     nd("chamber", '''"I found the ash-bin by the wall dug out, and a place in the cinders where somebody had knelt." {n}She almost smiles.{/n} "There were twelve eggs in that chamber when I first went down to look at them. I had counted them. I'm good at counting eggs."''',
         c("Continue", "mother")),
     nd("mother", '''"So. One of them is in your hearth, and it's the smallest, and it's cold, and it's dying." {n}She says the last word gently, as a fact, the way a midwife would.{/n}''',
-        c("Continue", "mother_alive", requires=(DV_RETURNED,)),
-        c("Continue", "ask", forbids=(DV_RETURNED,))),
+        c("Continue", "mother_alive", requires=(DV_RETURNED, DV_PRESENT)),
+        c("Continue", "ask", forbids=(DV_RETURNED,)),
+        c("Continue", "mother_absent", requires=(DV_RETURNED,), forbids=(DV_PRESENT,))),
     nd("mother_alive", '''"And its mother is alive. I can smell her on your coat, Commander: hot iron and old meat. Don't tell me how. I can guess, and I would rather not know which of you I'd be angrier with."''',
         c("Continue", "ask")),
     nd("ask", '''"I'll come and look at it. Tonight, or tomorrow; when your guards have changed and the sergeant with the squint is on the door, because he lets pregnant women through and calls them 'mother'." {n}She picks up her mending, at last.{/n} "Keep the fire high until then. Higher than you think. And eat something, for pity's sake. You look like porridge."''',
@@ -603,3 +607,9 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+# Round 3: authored loss-aware continuations; original node order and answers stay intact.
+next(s for s in SCENES if s["Id"] == P + "steps.widow")["Nodes"].extend([
+    nd("hunted_absent", '"You sent their mother after us. She followed our trail before she was lost." {n}Her needle stops.{/n} "Her absence doesn\'t make that kinder, Commander. We\'ll talk about it. Not on a step."', c("Continue", "mother")),
+    nd("mother_absent", '"And you brought its mother back once. She\'s gone again." {n}She looks toward the citadel.{/n} "This one is still here. Keep the fire high."', c("Continue", "ask")),
+])

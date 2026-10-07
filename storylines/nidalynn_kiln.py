@@ -11,7 +11,7 @@ the lie, or the hatchling given to the fire), and whose the hatchling is afterwa
 """
 from story_format import c, n, p, scene
 from storylines.nidalynn_trickster import (
-    CHOSEN_UNIT, CLAIMED, CLERK, FORM, CLOSED, CONFESSED, DV_BILL, DV_HUNTING, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS,
+    CHOSEN_UNIT, CLAIMED, CLERK, FORM, CLOSED, CONFESSED, DV_BILL, DV_HUNTING, DV_PRESENT, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS,
     GIVEN_UP, GOAT_CORRECTED, GOAT_STANDS, GOLEM, HAND, HAND_SET, HATCHED, KILN, KILN_AGREED, LEFT_WITH_IT, LIE_KEPT, LIED, MET, NAME_NONE, NAME_PEBBLE,
     NAME_SOOT, P, PALMS, PARTNER_DISGUISE, REL, RENOUNCED, REVEALED, ROCK_JOKE, TOLD_EGG, TOLD_NOTHING, TOLD_ROCK, TORC_BOUGHT, TORC_LEFT,
     TORC_LIFTED, VAULT, WHY_COULD, WHY_DUNNO, WHY_SMALL, WHY_USE, nar, nd)
@@ -289,8 +289,9 @@ visit(P + "kiln.hatching", "What came out of the rock", [
     nar("chaplain", '''{n}The chaplain lowers his torch a little.{/n} "Then the sin of it is on your head, Commander."
 {n}Somebody spits. The woman in the Kenabres shawl turns away and goes back up the stair without a word, and that is worse than the spitting. The soldier with the burned jaw says he will remember this. He says it to you, not to the crowd, and you believe him.{/n}
 {n}It takes a long time for the lane to empty. It does, in the end, because you are still standing there, and because nobody wants to be the first to put a torch to the Commander's confession. The sergeant with the squint stays by the kiln door when the rest have gone, spear grounded, and says he's taking the watch here tonight, on his own time, if it's all the same to you.{/n}''',
-        c("Continue", "sky", requires=(DV_RETURNED,)),
-        c("Continue", "said", forbids=(DV_RETURNED,))),
+        c("Continue", "sky", requires=(DV_RETURNED, DV_PRESENT)),
+        c("Continue", "said", forbids=(DV_RETURNED,)),
+        c("Continue", "said", requires=(DV_RETURNED,), forbids=(DV_PRESENT,))),
     nar("sky", '''{n}High on the ridge above Drezen, where the old watchtower stands, something grey that has been lying very still for a long time lifts its head toward the lower town, and listens, and does not lie down again.{/n}''',
         c("Continue", "said")),
     nd("said", '''{n}When the lane is empty she sits down on the kiln step, all at once, as if her knees have gone. The hatchling has fallen asleep inside the shawl with a corner of it in its mouth.{/n}
@@ -370,12 +371,14 @@ visit(WHOSE, "Whose she is", [
     # PP10: the straw's Commander kept what everybody else, Nidalynn included, had given up.
     nd("whose_straw", '''"I'm not being clever. It's a real question, and I don't know the answer." {n}The hatchling butts her head against Nidalynn's knee and is ignored.{/n} "You kept her fair, if there's such a thing. Everybody else had given her up, me with them, and you put your mark to a lie on your own stores' slate to keep her. The crusade could say she's its own, a war-prize out of the Sanctum that the druids left behind, and there's not a court in Mendev would argue. A dragon on your side of the Wound. There are generals who'd sell their mothers for that."
 "I'm only an old woman with a kiln. I can't take what isn't given me. So I'm asking."''',
-        c("Continue", "mother", requires=(DV_RETURNED,)),
-        c("Continue", "choose", forbids=(DV_RETURNED,))),
+        c("Continue", "mother", requires=(DV_RETURNED, DV_PRESENT)),
+        c("Continue", "choose", forbids=(DV_RETURNED,)),
+        c("Continue", "mother_absent", requires=(DV_RETURNED,), forbids=(DV_PRESENT,))),
     nd("whose", '''"I'm not being clever. It's a real question, and I don't know the answer." {n}The hatchling butts her head against Nidalynn's knee and is ignored.{/n} "You stole her fair, if there's such a thing. You took her when nobody else would have, and paid for it. The crusade could say she's its own, a war-prize out of the Sanctum, and there's not a court in Mendev would argue. A dragon on your side of the Wound. There are generals who'd sell their mothers for that."
 "I'm only an old woman with a kiln. I can't take what isn't given me. So I'm asking."''',
-        c("Continue", "mother", requires=(DV_RETURNED,)),
-        c("Continue", "choose", forbids=(DV_RETURNED,))),
+        c("Continue", "mother", requires=(DV_RETURNED, DV_PRESENT)),
+        c("Continue", "choose", forbids=(DV_RETURNED,)),
+        c("Continue", "mother_absent", requires=(DV_RETURNED,), forbids=(DV_PRESENT,))),
     nd("mother", '''"And her mother's alive. She'll come for her. Not tomorrow, maybe, but dragons have long memories and she has a long reason." {n}She says it without fear, as she might say that the river floods in spring.{/n} "When she comes, she'll be told the truth, by me. That you took her child, and I kept it. I'll hear what she has to say. I won't hand over a frightened child because her mother has come to claim her. And she'll send her bill to you, Commander. Raising her doesn't wipe out what you took."''',
         c("Continue", "choose")),
     nd("choose", '''{n}The hatchling has found your boot and is chewing the lace with great concentration.{/n}''',
@@ -700,3 +703,7 @@ visit(P + "kiln.in_charge", "A day in charge", [
     nd("rift", '''{n}She wipes her eyes.{/n} "Good girl." {n}Then, more quietly, looking at the kiln:{/n} "You didn't go for a sword. You didn't send for a sergeant with a net. You went and fetched her yourself." {n}She turns her head and looks at you, and her face is warm, and a little rueful.{/n} "I'll fix the latch. And I'll pay for the maps. In barley, mostly. It's all I've got."''',
         c("[Accept the barley.]", flags=(P + "in_charge_done",))),
 ], requires=(RENOUNCED, HATCHED), forbids=(P + "in_charge_done", LIE_KEPT), delay=48, optional=True)
+
+# Round 3: authored custody response after a subsequent loss; no new debt or return.
+next(s for s in SCENES if s["Id"] == WHOSE)["Nodes"].append(
+    nd("mother_absent", '"Her mother is gone again. That doesn\'t make the child a war-prize." {n}She rests her hand on the hatchling\'s back.{/n} "You took her, and I kept her. I won\'t pretend we didn\'t. But she still needs feeding, and I still need your answer."', c("Continue", "choose")))

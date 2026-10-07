@@ -263,12 +263,41 @@ internal static class NidalynnTricksterTests
         check(snowed.Has(P + "snowfield") && snow.Nodes.Any(n => n.Id == "cut") && snow.Nodes.Single(n => n.Id == "cut").Choices.Count == 1,
             "Trk_Nidalynn_Snowfield: the ridge has no cut.");
 
+        // Round 3: a permanent return/hunt is not current bodily presence.
+        foreach (var loss in new[] { "devarra.returned_actor_lost", "devarra.epoch_redeparted" })
+        {
+            var lostMother = Later(story, World(story, 5, "trickster", "trickster.ever",
+                "devarra.trickster.returned", "devarra.trickster.hunting_druids", loss), 25);
+            check(!lostMother.Has("devarra.present_now"),
+                "Trk_Nidalynn_CurrentMother: subsequent loss still grants current presence.");
+            foreach (var branch in new[] {
+                (Scene: widow, Node: "mother", Live: "mother_alive", Fallback: "mother_absent"),
+                (Scene: widow, Node: "druids", Live: "hunted", Fallback: "hunted_absent"),
+                (Scene: widow, Node: "straw", Live: "hunted", Fallback: "hunted_absent"),
+                (Scene: hatching, Node: "chaplain", Live: "sky", Fallback: "said"),
+                (Scene: whose, Node: "whose", Live: "mother", Fallback: "mother_absent"),
+                (Scene: whose, Node: "whose_straw", Live: "mother", Fallback: "mother_absent"),
+                (Scene: S(P + "door.own_form"), Node: "now", Live: "mother", Fallback: "eat"),
+                (Scene: S(P + "after.first_demon"), Node: "house", Live: "druids", Fallback: "druids_absent")
+            })
+            {
+                var selectable = branch.Scene.Nodes.Single(n => n.Id == branch.Node).Choices
+                    .Where(c => Rules.ChoiceAvailable(c, lostMother)).ToArray();
+                check(selectable.Length == 1 && selectable[0].Next == branch.Fallback
+                      && selectable.All(c => c.Next != branch.Live),
+                    "Trk_Nidalynn_CurrentMother: " + branch.Scene.Id + "/" + branch.Node
+                    + " has no exclusive absence continuation after " + loss);
+            }
+        }
+
         // Devarra's bill (ledger 05 row 5): on her own hub, after the confession; it lands on the Commander on every answer.
         check(smallest.Relationship == "devarra" && smallest.Requires.Contains("nidalynn.trickster.confessed") && smallest.Requires.Contains("devarra.trickster.returned")
               && smallest.Nodes.Single(n => n.Id == "pay").Choices.All(c => c.Set.Contains(Bill)),
             "Trk_Nidalynn_Bill: Devarra's bill is not on her hub, or can be refused.");
         var shortScene = S("devarra.tower.one_short");
-        var dvPrimed = Later(story, World(story, 3, "trickster", "trickster.ever", "devarra.trickster.returned", "devarra.started", P + "primed"), 25);
+        var dvReceipt = Program.Copy(clean); // actual kept golem egg: ancestry and egg_owed
+        dvReceipt.Flags.UnionWith(new[] { "devarra.trickster.returned", "devarra.started" });
+        var dvPrimed = Later(story, dvReceipt, 25);
         check(shortScene.Relationship == "devarra" && Avail(shortScene, dvPrimed) && Program.Walk(shortScene, dvPrimed).All(r => r.Has("devarra.tower.one_short"))
               && shortScene.Nodes.SelectMany(n => n.Choices).All(c => !c.Set.Any(f => f.EndsWith(".closed", StringComparison.Ordinal))),
             "Trk_Nidalynn_Custody: Devarra has no beat when her twelfth egg is taken, or it closes something.");
@@ -458,7 +487,7 @@ internal static class NidalynnTricksterTests
         var strawKept = strawRuns.Where(r => r.Has(P + "egg.straw")).ToList();
         check(strawKept.Count == 2 && strawKept.All(r => r.Has(P + "cost.slate")) && strawKept.Any(r => r.Has(P + "quartermaster_knew")) && strawKept.Any(r => !r.Has(P + "quartermaster_knew"))
               && strawKept.All(r => !r.Has(P + "primed")) && Ch(straw, "vault", 0).Check?.Skill == "CheckBluff" && Ch(straw, "vault", 0).Mythic == "PlayerIsTrickster"
-              && Ch(straw, "chit", 1).Abort && S("devarra.tower.one_short").Requires.Contains(P + "primed"),
+              && Ch(straw, "chit", 1).Abort && S("devarra.tower.one_short").Requires.Contains(P + "egg_owed"),
             "Trk_Nidalynn_Straw: the slate's lie, the quartermaster who saw or the deferral is missing, or the straw's egg reaches Devarra's count.");
         var burnt = strawRuns.Single(r => r.Has(P + "straw.burned"));
         check(!burnt.Has(P + "egg.straw") && !Reaches(burnt, "nidalynn.started") && !Avail(straw, Later(story, burnt, 48)),
