@@ -23,7 +23,10 @@ REPLY_QUESTION = M + "stone.reply_question"
 FLIGHT = M + "beat.flight"
 LET_GO = M + "beat.flight_let_go"
 CREW = M + "beat.crew"
-CREW_PAID = M + "beat.crew_paid"            # she paid the dead sailors' kin, in drowned gold, because she was told to
+CREW_PAID = M + "beat.crew_paid"            # legacy: she was told to pay the dead sailors' kin (now: she paid, in illusion-gold)
+CREW_ILLUSION = M + "beat.crew_illusion_gold"  # she paid in illusion-gold under the Commander's seal; it turned to rock past the quay
+CREW_DEBT_STANDS = M + "beat.crew_debt_stands"  # ...and the Commander let the debt stand in the Commander's name
+CREW_DEBT_SETTLED = M + "beat.crew_debt_settled"  # ...and the Commander made it good in true gold from the crusade chest
 CAPTAIN_SPARED = M + "beat.captain_spared"  # the harpooner is under the Commander's protection
 QUEEN = M + "beat.queen"
 ILLUSION = M + "beat.illusion"
@@ -164,15 +167,17 @@ visit(M + "beat.crew", "Salt", [
         c('"They had families. You have gold. Pay them."', "pay", forbids=(GREY_CARRIED,)),
         c('"They were sailors. Sailors die. I only wanted you to know I remember them."', "remember"),
         c('"Nothing. But if you ever touch a ship of mine again, I will come to your cave with a harpoon myself."', "threat")),
-    mz("pay", '''"Pay for a meal after I have eaten it. To people who did not even cook it." {n}She laughs, then sees the shipping instructions you lay beside her hand.{/n}
-"A factor at the Alushinyrra docks. He keeps the hiring record?" {n}She runs a nail beneath the quay's name.{/n} "I have a sack of drowned gold. He can weigh it. I will take it through the hole myself. If he tries to keep it, you will need another factor."''',
+    mz("pay", '''"Pay." {n}She laughs until she has to hold the frame, and then she holds out her hand, and the old seal glitters on the smallest finger.{/n} "Pay! Gold! I have a sack of it from the drowned country, and nobody on your side of the hole has ever seen it. It is heavy, and it shines, and it is mine." {n}She taps the ring against the sill.{/n}
+"Press your name in the clay and they will take it from me. People take anything with your name on it. I have watched them do it with a crown." {n}Her eyes are very bright, and one corner of her mouth is not quite straight.{/n} "I will carry it to the Alushinyrra quay myself, to the ones whose men I salted. You said pay them. I am going to pay them."''',
         c("Continue", "paid")),
-    nar("paid", '''{n}Three nights later she drops an empty sack and a folded acknowledgment on your war map. The factor has listed the sailors, their kin and the weight delivered to each. Transport and exchange came out of the sack. Each payment bears the recipient's mark.{/n}
-"They would not let me land on their quay." {n}She presses a claw through the fee at the bottom.{/n} "I carried their gold across the Abyss. He took it down in a cart, and charged me for the cart."
-{n}She leaves the acknowledgment. The empty leather smells of salt; her claw has scored SALTY across it.{/n}''',
-        c("[Keep the sack.]", flags=(CREW, CREW_PAID))),
+    nar("paid", '''{n}She is gone three nights. On the fourth morning the sack is back on your war map, empty and damp, with the old seal pressed into its clay, and beside it lies a heap of rocks: grey, lumpy, ordinary, the kind a child could throw. Under them is a message from the Alushinyrra quay, in a docker's cramped hand, with the Knight Commander's seal pressed into the wax. It says that gold came off the quay stairs in the dragon's claws, and under the sun on the quay it was gold, and it was counted into the hands of the dead men's kin, one by one, and at the first bell of the morning every coin of it was a rock. The kin know whose seal was on the sack. They want what was promised them, and they have named the one who promised it.{/n}
+"They would not let me land." {n}She is on the sill, in the woman she wears, delighted, picking at a rock on her thumbnail.{/n} "They screamed and they threw things. So I let go of the sack from the sky." {n}She giggles.{/n} "You said pay them. You did not say in what."
+{n}The empty leather smells of salt. Her claw has scored SALTY across it.{/n}''',
+        c("[Keep the sack. Let the debt stand in your name.]", flags=(CREW, CREW_PAID, CREW_ILLUSION, CREW_DEBT_STANDS)),
+        c("[Make it good in true gold from the crusade chest.]", flags=(CREW, CREW_PAID, CREW_ILLUSION, CREW_DEBT_SETTLED),
+          crusade=("Finances", -100))),
     mz("remember", '''"You remember them." {n}She says it slowly, testing it.{/n} "I do not remember the things I eat. I remember that I ate them. That is different." {n}She looks down at the stone in her hand.{/n}
-"Very well. You remember them, and I remember that I ate them, and between us nothing is forgotten." {n}She sets the stone down on the sill, carefully, as though putting something back where it belongs.{/n} "That is more than most sailors get."''',
+"Then you keep them, and I will keep you keeping them. Say their names to me when I ask, thief. I will ask when I am bored, and I am bored a great deal." {n}She sets the stone down on the sill, carefully, as though putting something back where it belongs.{/n} "That is more than most sailors get. It is also a debt, and it is yours."''',
         c("[Leave the stone where she put it.]", flags=(CREW,))),
     mz("threat", '''{n}She turns round on the sill and looks at you properly for the first time, and her eyes are two coals blown bright.{/n}
 "A harpoon," {n}she says.{/n} "You." {n}She laughs so hard she nearly falls off the sill, and catches herself on the frame with a hand that for one heartbeat is a claw, and leaves four white scores in the wood.{/n}
@@ -183,8 +188,8 @@ visit(M + "beat.crew", "Salt", [
         c('"He was following my order. He\'s under my protection."', "spare"),
         c('"Then eat him last. Last is a long way off."', "last")),
     mz("spare", '''{n}You score the order into her stone: the captain acted at your command; he is under your protection. She reads it, with her lip lifted.{/n}
-"I have his roof. You have him. Very well."
-{n}When she returns from the Isles she brings the stone back, with a fresh line beneath yours: STILL ALIVE. She smells of tar and spilled beer.{/n} "He shut the shutters. I listened anyway. He made me smaller at the end."''',
+"I have his roof. You have him." {n}She bares her teeth.{/n} "I will take the hook that was in my side. That is mine, and I will have it off his wall."
+{n}When she returns from the Isles she brings the stone back, with a fresh line beneath yours: STILL ALIVE. She smells of tar and spilled beer, and the harpoon is over her shoulder, point and rope and all.{/n} "He shut the shutters. I listened anyway. He kept his arm, thief. He did not keep his hook. He made me smaller at the end, and I took the hook for it."''',
         c("[Let her have that.]", flags=(CREW, CAPTAIN_SPARED))),
     mz("last", '''"Last." {n}She smiles with every tooth.{/n} "Yes. I can leave a meal for later. Let him tell it while I hunt your rifts. When I go back to the Isles I want to hear how much bigger I have grown."''',
         c("Continue", flags=(CREW,))),
@@ -194,8 +199,8 @@ visit(M + "beat.crew", "Salt", [
         c('"A captain who knows the Midnight Isles. That\'s all you\'re getting."', "secret")),
     mz("me", '''"You." {n}She stares at you, and then she giggles, high and delighted.{/n} "You made me go hungry, then came back with a gift. I did not even know it was the same thief." {n}She puts her chin on her knees.{/n} "I should eat you. I keep saying that. It keeps not happening."''',
         c("Continue", flags=(CREW,))),
-    mz("secret", '''"That's all I am getting." {n}She repeats it, in a very fair imitation of your voice, and scowls.{/n} "You keep things from me. Nobody keeps things from me. They are all inside me, eventually, and then I know everything they knew." {n}She stands up on the sill.{/n}
-"Very well. Keep your captain. I will find out. I always find out. And when I do, I will not eat them, because you did not want me to, and I will be very, very bored about it."''',
+    mz("secret", '''"That is all I am getting." {n}She scowls.{/n} "You keep things from me. Nobody keeps things from me. They are all inside me, eventually, and then I know everything they knew." {n}She stands up on the sill.{/n}
+"Keep your captain, then. I will find him. I always find out. A man who can put a ship down in the one crevice I do not fit has a ship, and I will take the ship, hull and sail and all, and sleep on it. Or his arm, if he is slow about it." {n}She grins.{/n} "You said keep him. You did not say keep him whole."''',
         c("Continue", flags=(CREW,)))],
     requires=(), forbids=(CREW,))
 SCENES[-1]["Nodes"].extend([
@@ -243,7 +248,7 @@ visit(M + "beat.queen", "The thing in the swamp", [
 "I am the fat lizard." {n}She sounds more amused than offended.{/n} "She has been calling me that for years. When I am finished with your war, I am going to go back and sit on her swamp until it is dry."''',
         c('"Take me with you when you do."', "ask"),
         c('"Leave her be. She\'s harmless."', "keep")),
-    mz("keep", '''"She hunted the horned one's slaves. Then the horned one sent demons with sharp things, and the puddle slipped through her holes and ate more slaves." {n}She licks tallow from her fingers.{/n} "You can keep your pity. I have a cave on your side now."''',
+    mz("keep", '''"Harmless." {n}She licks tallow from her fingers.{/n} "She sent knights to be my supper for years and called it a present to herself. You can keep your pity. I have a cave on your side now."''',
         c("Continue", flags=(QUEEN,))),
     mz("ask", '''"Bring your steel, then." {n}She crunches the last candle.{/n} "I will bring my mouth. We can find something worth using both on. Not tonight. Your pickets have left me a warm trail."''',
         c("Continue", flags=(QUEEN,))),
@@ -255,7 +260,7 @@ visit(M + "beat.queen", "The thing in the swamp", [
 SCENES[-1]["Nodes"].extend([
     mz("happy", '"She thanked you for my bait." {n}Melazmera giggles, licking tallow off her thumb.{/n} "Next time she sends a knight, I shall ask him to bow to it."', c("Continue", flags=(QUEEN,))),
     mz("learned", '"You learned badly. I get a meal when somebody takes my crown. You got thanked." {n}She presses your seal into the candlewax on the desk.{/n} "Still. Her face. I wish I had seen her face."', c("Continue", flags=(QUEEN,))),
-    mz("dismiss", '{n}She crunches the last candle, then drops its blackened wick onto your report.{/n} "Very well. Your swamp is safe from my conversation. What is for supper?"', c("Continue", flags=(QUEEN,))),
+    mz("dismiss", '{n}She crunches the last candle, then drops its blackened wick onto your report.{/n} "Fine. I will not talk about your swamp. I did not say I would not sit on it. What is for supper?"', c("Continue", flags=(QUEEN,))),
     mz("withheld", '"You kept the crown where it belonged." {n}She laughs.{/n} "She sent a knight to rob me, and he defended my ledge. She will send a stupider one next time."', c("Continue", flags=(QUEEN,))),
 ])
 
@@ -312,9 +317,9 @@ visit(M + "beat.souls", "Even dead souls", [
         c('[Lie] "It\'s yours."', "lie"),
         c('"Ask me when the war is over."', "later")),
     mz("forbid", '''{n}She is quiet for so long that you think she has gone to sleep. Then she says, without opening her eyes:{/n} "Not one."
-"They go down very fast, your soldiers, and nobody is eating them, and it is a waste. But not one." {n}The tip of her tail moves on the slates, once, like a cat's.{/n} "If I eat your dead, your priests will come for me with their bells, and you will have to choose between us, and you might choose badly. You are worth more to me than a soldier. Even a young one."''',
+"They go down very fast, your soldiers, and nobody is eating them, and it is a waste. But not one." {n}The tip of her tail moves on the slates, once, like a cat's.{/n} "If I eat your dead, your priests will come for me with their bells, and you will have to choose between us, and you might choose badly. You are worth more to me than a soldier. Even a young one." {n}One eye opens.{/n} "Yours, thief. The ones that come up out of the hole already dead are not yours, and I will take those without asking."''',
         c("Continue", "mine")),
-    mz("no", '''"Where everyone's goes." {n}She snorts, and smoke curls up past the chimney.{/n} "To be weighed by a grey lady and sent to a place you did not choose. You would rather that than my heap." {n}She sounds more puzzled than hurt.{/n} "Very well. But I will be at the end of her line when you get there, thief, and I will watch you go past, and I will be very rude to her about it."''',
+    mz("no", '''"Where everyone's goes." {n}She snorts, and smoke curls up past the chimney.{/n} "To be weighed by a grey lady and sent to a place you did not choose. You would rather that than my heap." {n}She sounds more puzzled than hurt.{/n} "Then keep it. But I will be at the end of her line when you get there, thief, and I will watch you go past, and I will be very rude to her about it."''',
         c("Continue", flags=(SOULS, SOUL_REFUSED))),
     mz("lie", '''{n}She opens both eyes, and looks at you, and then she laughs, low and long, until the roof trembles.{/n}
 "That was a lie," {n}she says, pleased.{/n} "I can taste lies. They taste of copper. Everyone lies to me to stop me eating them. You lied to me so that I would be pleased." {n}She puts her head back down.{/n} "I am going to keep that lie on the heap. That one cost you nothing. I will keep it anyway."''',
@@ -355,7 +360,7 @@ visit(M + "beat.greybor", "The little man with the axe", [
         c('"He\'s not for sale. He\'s mine."', "mine", flags=(M + "beat.greybor_claimed",)),
         c('"Ask him yourself. Bring more coin."', "ask"),
         c('"He\'d charge you by the thief."', "charge")),
-    mz("mine", '''"Yours." {n}Her eyes narrow, and she looks at you, and then out of the window towards the gate, as though weighing something.{/n} "You keep him, then. The way I keep things." {n}She sniffs.{/n} "Very well. I will not take him. But I will know where he is, all the time, and when you are not using him, I will borrow him to look at thieves."''',
+    mz("mine", '''"Yours." {n}Her eyes narrow, and she looks at you, and then out of the window towards the gate, as though weighing something.{/n} "You keep him, then. The way I keep things." {n}She sniffs.{/n} "Fine. I will not take him. But I will know where he is, all the time, and when you are not using him, I will borrow him to look at thieves."''',
         c("Continue", flags=(AXE,))),
     mz("ask", '''"More coin." {n}She considers it, frowning.{/n} "I have a great deal of coin, from the drowned country, but it is square and nobody can spend it. He did not mind. He bit it and put it in his boot." {n}She laughs.{/n} "Yes. I will bring him a whole sack, and ask him properly, the way you ask. He will say no. I know he will say no. I want to hear how he says it."''',
         c("Continue", flags=(AXE,))),
@@ -382,7 +387,7 @@ visit(M + "beat.dinner", "What giving is", [
 {n}She bites a piece from the heart without letting go of your chin.{/n} "Next time I will bring you something that fights harder."''',
         c("Continue", flags=(DINNER, DINNER_EATEN))),
     mz("cook", '''"The cook." {n}She looks at the heart and then at you, and for a heartbeat the woman's face is not quite a woman's, and the lamp gutters.{/n} "I gave it to you. Not to the cook."
-{n}Then she laughs.{/n} "No. You are right, and I hate it. When you left your ring with me, it was mine, to eat or wear or sleep on. This is yours, to feed to a cook if you like." {n}She works it through like a sum she does not care for.{/n} "Very well. Tell the cook it will bite. I will be listening."''',
+{n}Then she laughs.{/n} "No. You are right, and I hate it. When you left your ring with me, it was mine, to eat or wear or sleep on. This is yours, to feed to a cook if you like." {n}She works it through like a sum she does not care for.{/n} "Fine. Tell the cook it will bite. I will be listening, and I will want to know which finger."''',
         c("Continue", "cook_after")),
     nar("cook_after", '''{n}It does bite. The cook loses the end of a finger to it before he gets it into the pot, and the stew he makes of it is so hot that the men who eat it do not sleep for two nights, and fight a skirmish on the north road on the third that the sergeants still talk about. Nobody asks where the meat came from. Several of them ask for more.{/n}''',
         c("Continue", flags=(DINNER,))),
@@ -587,7 +592,7 @@ visit(M + "beat.inquisitor", "Somebody is asking", [
         c('"No. He\'s mine to deal with."', "mine"),
         c('"Let him ask. He\'ll find nothing he can prove."', "prove"),
         c('[Evil] "Do it."', "do", alignment=("Evil", 1))),
-    mz("mine", '''"Yours." {n}She shrugs.{/n} "The prisoners were yours until you gave them to me. This one you are keeping. Very well. What will you tell him?"
+    mz("mine", '''"Yours." {n}She shrugs.{/n} "The prisoners were yours until you gave them to me. This one you are keeping, and he is thin, and he will keep. What will you tell him?"
 
 {n}She watches your face, then smiles.{/n} "Seven cells, and the locks still whole. I want to hear how you explain that."''',
         c("Continue", "after_mine")),
@@ -598,7 +603,7 @@ visit(M + "beat.inquisitor", "Somebody is asking", [
         c('"I gave them to Melazmera. They are dead. Put my name in your report."', "inquiry_admit"),
         c('"I will not answer. Send your findings to your superiors."', "inquiry_refuse")),
     mz("prove", '''"Nothing he can prove." {n}She repeats it, and giggles.{/n} "Yes. That is the best kind of nothing. I have a whole heap of it." {n}She slides off the desk.{/n}
-"Very well. I will leave him his lamp. But he will look at you, thief, every day, across your castle, with that face. The face of a man who knows there is a thing he cannot prove." {n}She looks back from the window.{/n} "I know that face. I have seen it on a great many knights, just before they touched my crown."''',
+"I will leave him his lamp. For now. If it goes out in the cellar, it will be the cold that blew it, and the cold goes where it likes. But he will look at you, thief, every day, across your castle, with that face. The face of a man who knows there is a thing he cannot prove." {n}She looks back from the window.{/n} "I know that face. I have seen it on a great many knights, just before they touched my crown."''',
         c("Continue", flags=(M + "beat.inquisitor_watched",))),
     mz("do", '''{n}She smiles at you, slowly, with every tooth she has, and for a moment the woman is not there at all.{/n}
 "There," {n}she says softly.{/n} "You are learning what I am for."
@@ -631,6 +636,6 @@ visit(M + "beat.putting_down", "A stronger claim", [
 {n}She is on her feet and at the window before you can answer.{/n} "I have a sapphire the size of her head. No; that is too good for her. I have a gold cup from a sunken temple. She will drink her soup out of it for the rest of her life, and every time she lifts it she will know whose she is."''',
         c("Continue", flags=(M + "beat.put_down",))),
     mz("know", '''{n}She stops turning the coin.{/n} "No," {n}she agrees, slowly.{/n} "If I eat her it is over, and I know nothing. That is what I always did, and I always knew nothing." {n}She looks at the coin as a scholar looks at a strange beetle.{/n}
-"Very well. I will try again. Tomorrow I will open my hand, if I have to hold it open with the other one, and put the coin in her bowl, and see who owns whom at the end of it." {n}She bares her teeth at you.{/n} "If it goes wrong, thief, I am coming back here and eating something of yours. I have not decided what. Something you like."''',
+"Fine. I will try again. Tomorrow I will open my hand, if I have to hold it open with the other one, and put the coin in her bowl, and see who owns whom at the end of it." {n}She bares her teeth at you.{/n} "If it goes wrong, thief, I am coming back here and eating something of yours. I have not decided what. Something you like."''',
         c("Continue", flags=(M + "beat.put_down",)))],
     requires=(COMMITTED, HEAP), forbids=(M + "beat.put_down",))

@@ -318,9 +318,9 @@ HUNT_BODY = [
     mz("truce", '''{n}She jerks her chin inland, towards the mines, where the island has shaken all week with picks.{/n}''',
         c("Continue", "truce_dead", requires=(HEPZ_DEAD,)),
         c("Continue", "truce_alive", forbids=(HEPZ_DEAD,))),
-    mz("truce_dead", '''"The horned one paid me in slaves to leave her diggers alone. A fat one every new moon, and I left them alone." {n}She says it the way a merchant speaks of a settled account.{/n} "She is dead now. I heard her die; the whole island heard it. So the truce is dead too, and her diggers are running about in the dark with nobody to pay for them." {n}She licks her lips.{/n} "Somebody killed my rent. I suppose that was you. You are an expensive thing to have walking about my island."''',
+    mz("truce_dead", '''"I hunted the horned one's diggers until she came to me, and we made a truce, and I left them alone. I was hungry about it for a long time." {n}She says it the way a cat speaks of a closed door.{/n} "She is dead now. I heard her die; the whole island heard it. So the truce is dead too, and her diggers are running about in the dark with nobody to speak for them." {n}She licks her lips.{/n} "They taste the way they always did. Somebody killed my truce. I suppose that was you. You are an expensive thing to have walking about my island."''',
         c("Continue", "name")),
-    mz("truce_alive", '''"The horned one pays me in slaves to leave her diggers alone. A fat one every new moon." {n}She says it the way a merchant speaks of a standing account.{/n} "She is digging for something she should not have. That is not my business. My business is what walks into my cave."
+    mz("truce_alive", '''"I hunted the horned one's diggers until she came to me, and we made a truce. Now I leave them alone. What she said to make me stop is between her and me." {n}She says it the way a cat speaks of a closed door.{/n} "She is digging for something she should not have. That is not my business. My business is what walks into my cave."
 "If you have come to kill her, I will not stop you. The truce says I will not eat her diggers. It says nothing at all about her." {n}She smiles.{/n} "And it says nothing about you."''',
         c("Continue", "name")),
     mz("name", '''{n}She stands. The shadow on the rocks stands with her, and goes on standing for some time after she has.{/n}
@@ -337,7 +337,7 @@ HUNT_BODY = [
 {n}She bends close enough to smell your throat.{/n} "I will come back. You can try to collect. I want to see what you dare ask for with my mouth this close."''',
         c("[Watch her go.]", "leaves")),
     mz("rent", '''"Rent." {n}Her eyebrows go up, and the rock on her head tilts with them.{/n} "You are paying me rent. For my island. With a ring."
-{n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} "The horned one pays me rent in slaves. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery." {n}She wipes her eyes with one knuckle.{/n} "Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are."''',
+{n}She throws her head back and laughs, and far up the cliffs a flock of something shrieks and scatters.{/n} "The horned one keeps a truce with me. The swamp queen pays me in knights, although she does not know it. And now the crusade pays me in jewellery." {n}She wipes her eyes with one knuckle.{/n} "Very well, tenant. I will come and inspect my tenant. Keep your fire lit. I like to see where things are."''',
         c("[Watch her go.]", "leaves")),
     nar("leaves", '''{n}She walks out of the firelight and does not come into the moonlight on the other side of it. There is a sound like a sail filling, very close, and then the night comes back all at once: the wind, the noise, a sentry sitting down very suddenly on the rock and staying there. Nobody says anything for some time.{/n}
 {n}In the morning there is a ring of scorched stone where she sat, and your cook-pot is empty, and the pork was not all she took from it. The ladle is gone too.{/n}''',
@@ -395,7 +395,7 @@ def _found_body():
     body = [x for x in copy.deepcopy(HUNT_BODY) if x["Id"] not in ("truce_dead", "truce_alive")]
     truce = next(x for x in body if x["Id"] == "truce")
     truce["Text"] = '''{n}She jerks her chin back the way she came, towards her island and its mines, a whole sea of the Abyss away.{/n}
-"The horned one paid me in slaves to leave her diggers alone. A fat one every new moon, while she had them to give." {n}She says it the way a merchant speaks of an old account.{/n} "What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards."'''
+"The horned one came to me once, and her diggers stopped being my dinner. What she said to make me stop is between her and me." {n}She says it the way a cat speaks of a closed door.{/n} "What becomes of her is not my business. My business is what walks into my cave, and what walks out of it, and where it goes afterwards."'''
     truce["Choices"] = [c("Continue", "name")]
     for node_id, old, new in (("speech", "Everything on this island that walks", "Everything on my island that walks"),
                               ("name", "Nobody on this island has ever needed it.", "Nobody on my island has ever needed it.")):
@@ -532,7 +532,7 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
         c("Continue", "city", forbids=(HEPZ_BACK, FED_HERD)),
         c("[Answer the cattle owner.]", "forbid_after", requires=(FED_HERD,))),
     mz("sister", '''"The horned one is walking about your city," {n}she says, with her mouth full.{/n} "In a new body. I smelt her from the roof. She smells of a jar and somebody else's blood, and she is eating onions by the smithy as if she had never been dead in her life."
-"Tell her I remember our truce. A fat slave every new moon." {n}She licks the last grease from her fingers.{/n} "She died without settling the account. I have a cave on your side now. She can send what she owes me there. It will spoil her onions."''',
+"Tell her I remember our truce." {n}She licks the last grease from her fingers.{/n} "It died when she did. I have a cave on your side now. If she wants another, she can come to it and talk me out of my supper again. It will spoil her onions."''',
         c("Continue", "city")),
     mz("city", '''"Your city is a larder," {n}she says, licking her fingers one at a time.{/n} "Everything in it is fat, and slow, and frightened, and has never been eaten by anything bigger than a plague. I have been walking about your walls, looking in. I have not eaten anybody." {n}She says it as though describing a feat of arms.{/n}
 "And I am hungry, thief. My new cave is at the edge of the hole, and the things that come up out of the hole taste of the hole. Ash and flies. I want something fat."''',
@@ -551,14 +551,14 @@ SCENES.append(scene(M + "ch5.hunger", "When the moon is thin", "Melazmera", 5, "
 {n}There is one stone on your windowsill, small and round, with a single word scored into it: FAT.{/n}''',
         c("Continue", flags=(FED, FED_CULTISTS, SECRET))),
     mz("demons", '''"Demons." {n}Her lip curls off her teeth.{/n} "They taste of the Abyss. I have been eating the Abyss for a very long time, thief. I know what it tastes like. It tastes like being bored."
-{n}She considers you, and the dark on the ceiling considers you with her.{/n} "Very well. This once. I want to see what your face does when a dragon obeys it." {n}She goes to the window.{/n} "If it feels bad, I will come back and eat your priests' prisoners anyway, and tell them it was your idea."''',
+{n}She considers you, and the dark on the ceiling considers you with her.{/n} "This once. I want to see what your face does when a dragon obeys it." {n}She goes to the window.{/n} "If it feels bad, I will come back and eat your priests' prisoners anyway, and tell them it was your idea."''',
         c("Continue", "demons_after")),
     nar("demons_after", '''{n}For three nights afterwards the pickets on the north road report the same thing: a noise out over the Wound's edge like a ship's sail filling, then screaming, then nothing, and in the morning, scattered across the scorched ground where the rifts open, pieces of things that came up out of the earth in the night and did not get any further.{/n}
 {n}On the fourth morning there is a stone on your windowsill, small and round, with two words scored into it: STILL BORED.{/n}''',
         c("Continue", flags=(FED, FED_DEMONS))),
     mz("forbid", '''{n}She stares at you. Then she laughs, delighted, the way she laughed at the fire on Colyphyr.{/n}
 "Nobody is food!" {n}She holds her stomach.{/n} "Oh, thief. Everybody is food. You are food. The only question is who is holding the spoon." {n}She gets up and goes to the window, still giggling.{/n}
-"Very well. Not your prisoners, and not your city. I will find something that is not yours." {n}She looks back at you over her shoulder, and her eyes gleam.{/n} "You did not say anything about your friends' cows."''',
+"Not your prisoners, and not your city. I will find something that is not yours." {n}She looks back at you over her shoulder, and her eyes gleam.{/n} "You did not say anything about your friends' cows."''',
         c("Continue", "forbid_after")),
     nar("forbid_after", '''{n}Two days later a Mendevian lord who has lent the crusade two hundred spears writes to the Knight Commander in a hand shaking with fury. His whole herd, driven up from the south to feed his men, is gone from its pen outside the walls in a single night: forty head of cattle, the pen whole, the gate shut, the herdsmen asleep, and nothing left in the morning but a stink of cold iron and the drovers' dogs, who will not stop howling.{/n}
 {n}He wants to know what the Knight Commander means to do about it. He wants to know it in writing. His letter lies beside the empty supper plate. From the roof comes a satisfied belch.{/n}''',
@@ -828,8 +828,10 @@ COMMON = (
     p("{n}A Mendevian lord was paid for his cattle out of the crusade's own chest, eventually, and grudgingly, and never found out where they had gone. His drovers' dogs never went north of the Drezen road again.{/n}", requires=(HERD_SETTLED, HERD_HIDDEN)),
     p("{n}In the archive of the Inquisition there is a report from Drezen, in a careful hand, about seven prisoners of the Knight Commander's who were moved to a place the Knight Commander would not name, and a cold in a cellar that would not come out of the stones. It was sent up the chain in the last year of the war. Nobody ever closed it.{/n}", requires=(M + "beat.inquisitor_lied",)),
     p("{n}An inquisitor of Iomedae went down into the cellars under the citadel one morning in the war with a lamp, and did not come up. His acolyte left the order within the year, and would never say why, and would never go below ground again.{/n}", requires=(M + "cost.inquisitor",)),
-    p("{n}At the Alushinyrra docks, the dead sailors' kin received weighed gold through a factor who had kept the voyage's hiring record. His fee came out of Melazmera's sack. They knew whose gold it was. They had refused to let her land on their quay.{/n}", requires=(M + "beat.crew_paid",)),
-    p("{n}During the war, the harpoon captain told the story in the Midnight Isles. Once, a dragon settled above the drinking-house and listened. A stone bearing the Commander's answer reached the roof. Melazmera left the captain alive. The shutters stayed closed until she flew back through the Wound.{/n}", requires=(M + "beat.captain_spared",)),
+    p("{n}The gold Melazmera paid the dead sailors' kin went round the Alushinyrra quay as gold for a night and as rocks by morning. The sack had the Commander's old seal in its clay. The debt stood in the Commander's name, and the kin did not forget whose name it was. Melazmera kept a rock from the heap, and told the joke whenever she had company: \"You said pay them. You did not say in what.\"{/n}", requires=(M + "beat.crew_debt_stands",)),
+    p("{n}The dead sailors' kin on the Alushinyrra quay were paid twice: once in rocks that had been gold for a night, and once, from the crusade chest, in true gold. Melazmera thought the second payment was the best part. She had paid nobody, and the Commander had paid for all of it.{/n}", requires=(M + "beat.crew_debt_settled",)),
+    p("{n}The gold Melazmera carried to the dead sailors' kin on the Alushinyrra quay was weighed out in their own hands. They knew whose gold it was. They had refused to let her land.{/n}", requires=(M + "beat.crew_paid",), forbids=(M + "beat.crew_illusion_gold",)),
+    p("{n}During the war, the harpoon captain told the story in the Midnight Isles. Once, a dragon settled above the drinking-house and listened. A stone bearing the Commander's answer reached the roof. Melazmera left the captain alive and took his harpoon off the wall. The shutters stayed closed until she flew back through the Wound.{/n}", requires=(M + "beat.captain_spared",)),
     p("{n}On Colyphyr, the Fulsome Queen wore a grey rock on her head and called it the Knight Commander's crown. When it slipped into her pool, she sent her knights in after it. They came out stinking, and she made them bow.{/n}", requires=(M + "queen_crowned",), forbids=("melazmera.fq_betrayed", "melazmera.queen_fought")),
 )
 
