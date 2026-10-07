@@ -198,7 +198,7 @@ def integrate(payload):
     for target in (rooms, "trickster.never_arrived.second_supper"):
         text(target, "morning", '''{n}At dawn your coat hangs over her chair. Konomi holds the supper account and a dispatch to Nerosyan apart.{/n}
 "The boy put our dinner against council hospitality. I caught it before collection. The wine goes on the private supper account we agreed. The Council does not pay for my evenings."
-{n}She corrects the line, then reaches inside your open coat and draws you down for a kiss.{/n}
+{n}She corrects the line, then catches the back of your bare neck and draws you down for a kiss.{/n}
 "Next week. Bring a better argument, and do not make me wait for the kiss."''')
 
     # SP1 invitation and SP3 political near-discovery/inspection, copied histories too.

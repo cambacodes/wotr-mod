@@ -1,0 +1,27 @@
+[
+  {
+    "scene": "konomi.disagreement",
+    "route": "konomi",
+    "finding": "konomi:D06"
+  },
+  {
+    "scene": "konomi.the_upper_passage",
+    "route": "konomi",
+    "finding": "konomi:D07"
+  },
+  {
+    "scene": "konomi.the_trial_day",
+    "route": "konomi",
+    "finding": "konomi:D08"
+  },
+  {
+    "scene": "konomi.a_name_beside_hers",
+    "route": "konomi",
+    "finding": "konomi:D09"
+  },
+  {
+    "scene": "konomi.the_evening_she_kept",
+    "route": "konomi",
+    "finding": "konomi:D10"
+  }
+]
