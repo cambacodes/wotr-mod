@@ -13,6 +13,13 @@ from pathlib import Path
 
 
 @lru_cache(maxsize=1)
+def j01_reference_contexts():
+    data = json.loads(Path(__file__).resolve().parents[1].joinpath(
+        "route_packs/plans/j01-reference-contexts.json").read_text(encoding="utf-8"))
+    return {(c["scene"], c["text_sha256"], c["woman"]) for c in data["contexts"]}
+
+
+@lru_cache(maxsize=1)
 def terendelev_reference_contexts():
     data = json.loads(Path(__file__).resolve().parents[1].joinpath("terendelev_reference_contracts.json").read_text(encoding="utf-8"))
     return {(c["scene"], c["text_sha256"], c["woman"]) for c in data["contexts"]}
@@ -232,6 +239,11 @@ def reference_reason(text, match, postwar=False):
 
 
 def live_mentions(text, pattern, postwar=False, scene_id=None):
+    if scene_id:
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        if any(scene == scene_id and checksum == digest and pattern.fullmatch(woman)
+               for scene, checksum, woman in j01_reference_contexts()):
+            return []
     # The final route merge classifies specific recollections and devotional references.
     # Match the entire reviewed text and scene; altered text or another route fails closed.
     if scene_id and scene_id.startswith("terendelev.trickster."):

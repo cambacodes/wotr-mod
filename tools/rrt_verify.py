@@ -16,7 +16,7 @@ Sections: A producers | B reachability per mythic world | C chapter/delay traps 
              --delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap, --sim-natives); also run per matrix supply
              profile in --matrix mode
 """
-import argparse, collections, contextlib, difflib, gc, hashlib, importlib, json, os, re, shutil, struct, sys, time, zipfile, zlib
+import argparse, collections, contextlib, copy, difflib, gc, hashlib, importlib, json, os, re, shutil, struct, sys, time, zipfile, zlib
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -79,7 +79,8 @@ def norm_scene(s):
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
              ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
              EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None, ReturnToList=False, ReturnText=None,
-             ContinueBefore=None, RestAllowance=None, TableHosted=False, Participants=[], ParticipantWomen=[], Pair=[])
+             ContinueBefore=None, RestAllowance=None, TableHosted=False, Participants=[], ParticipantWomen=[], Pair=[],
+             PrivateParticipants=False, ParticipantContacts={}, ContactWitness=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", ""); n.setdefault("Paragraphs", [])
@@ -1006,6 +1007,31 @@ def validate(model):
         for g in tg + list(s["Areas"]) + ([s["ContactUnit"]] if s["ContactUnit"] else []) + list(s["AdditionalContactUnits"]):
             if not hexre.match(g or ""): errs.append("Bad GUID in %s: %s" % (sid, g))
         if s["AdditionalContactUnits"] and not s["ContactUnit"]: errs.append("AdditionalContactUnits without ContactUnit: " + sid)
+        if s.get("PrivateParticipants") and (s["Relationship"] != "household" or s["InteractionHub"] == "household.table"
+                or not s.get("Participants") or not s.get("ParticipantContacts")
+                or "trickster.now" not in s["Requires"] or "engine.l12.commander_unreturned" not in s["Forbids"]):
+            errs.append("Invalid private participant channel: " + sid)
+        for woman, contact in s.get("ParticipantContacts", {}).items():
+            if (contact.get("Kind") not in {"body", "letter", "projection", "banner", "eye"}
+                    or not contact.get("Requires") or contact["Kind"] != "body" and contact.get("Options")
+                    or any(key not in known for key in contact.get("Requires", []) + contact.get("Forbids", []))):
+                errs.append("Invalid current participant contact: " + sid + "/" + woman)
+            for option in contact.get("Options", []):
+                if (not option.get("Units") or any(not hexre.fullmatch(unit) for unit in option["Units"])
+                        or any(key not in known for key in option.get("Requires", []) + option.get("Forbids", []))):
+                    errs.append("Invalid body contact alternative: " + sid + "/" + woman)
+        if s.get("ParticipantContacts"):
+            for route in s.get("Participants", []):
+                named = [w for w in s.get("ParticipantWomen", []) if model.story["SeatWomen"][w]["Relationship"] == route]
+                required = named or ([route] if route in s["ParticipantContacts"] else
+                    [w for w, seat in model.story.get("SeatWomen", {}).items() if seat["Relationship"] == route])
+                if not required or any(w not in s["ParticipantContacts"] for w in required):
+                    errs.append("Missing current participant contact: " + sid + "/" + route)
+        if s.get("ContactWitness") and (s["ContactWitness"] not in s["Requires"]
+                or not s.get("ParticipantContacts") or any(c["Kind"] != "body" for c in s["ParticipantContacts"].values())
+                or s["ContactWitness"] in model.authored or s["ContactWitness"] in model.native
+                or s["ContactWitness"] in model.composites or s["ContactWitness"] in model.latches):
+            errs.append("Current contact witness must be evaluated, never saved: " + sid)
         if s["Recovery"] and (s["Recovery"] not in model.revivals or model.revivals[s["Recovery"]]["Relationship"] != s["Relationship"] or not is_remote(s)):
             errs.append("Invalid recovery scene: " + sid)
         if any(c < s["MinChapter"] or c > s["MaxChapter"] for c in s["Chapters"]) or len(set(s["Chapters"])) != len(s["Chapters"]) or s["DelayHours"] < 0:
@@ -1673,6 +1699,8 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     contact_units = set()
     for s in model.scenes:
         if s["ContactUnit"]: contact_units |= {s["ContactUnit"], *s["AdditionalContactUnits"]}
+        contact_units.update(unit for contact in s.get("ParticipantContacts", {}).values()
+                             for option in contact["Options"] for unit in option["Units"])
     text_keys = collections.Counter()
     P("\n## G. Build()/State() mirrors")
     P("  New<T> registrations: %d (flags %d). Duplicate names (=> New throws 'Blueprint collision', Build aborts): %d %s"
@@ -1708,6 +1736,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
         for s in model.scenes:
             for g in ([s["ContactUnit"]] if s["ContactUnit"] else []) + list(s["AdditionalContactUnits"]): want.append((g, "BlueprintUnit", "ContactUnit@" + s["Id"]))
+            for woman, contact in s.get("ParticipantContacts", {}).items():
+                for option in contact["Options"]:
+                    for g in option["Units"]: want.append((g, "BlueprintUnit", "ParticipantContact@" + s["Id"] + "/" + woman))
             try:
                 for g in entry_targets(s): want.append((g, "BlueprintAnswersList", "AnswerList@" + s["Id"]))
             except ValueError: pass
@@ -1976,6 +2007,9 @@ class SimState:
         self.chapter, self.hour, self.flags, self.times = chapter, hour, set(), {}
         self.rest_spent = {}
         self.crusade_resources = None
+        # None retains the itinerary oracle's documented all-contact assumption.
+        self.available_contacts = None
+        self.area = None
 
     def has(self, f): return f in self.flags
 
@@ -2078,13 +2112,39 @@ def contact_windows_for_scene(model, s, st, area=None):
                if p["Unit"] in units and (not areas or p["Area"] in areas))
 
 
+def sim_participant_contacts(s, st):
+    contacts = getattr(st, "available_contacts", None)
+    for spec in s.get("ParticipantContacts", {}).values():
+        if not set(spec.get("Requires", [])) <= st.flags or set(spec.get("Forbids", [])) & st.flags:
+            return False
+        if spec["Kind"] == "body" and not any(
+                option["Units"] and set(option.get("Requires", [])) <= st.flags
+                and not set(option.get("Forbids", [])) & st.flags
+                and (contacts is None or set(option["Units"]) & contacts)
+                for option in spec.get("Options", [])):
+            return False
+    if contacts is not None:
+        needed = {s.get("ContactUnit"), *s.get("AdditionalContactUnits", [])} - {None}
+        if not needed <= contacts:
+            return False
+    area = getattr(st, "area", None)
+    return area is None or not s.get("Areas") or area in s["Areas"]
+
+
+def sim_contact_requirement(s, flag, st):
+    if flag == s.get("ContactWitness"):
+        return bool(s.get("ParticipantContacts")) and sim_participant_contacts(s, st)
+    return flag in st.flags
+
+
 def sim_available(model, s, st):
     """Mirror of Rules.Available with every contact present and the player in the right area (Recovery scenes excluded)."""
     ch = st.chapter
     if "rrt.degraded." + s["Relationship"] in st.flags: return False
     if ch < s["MinChapter"] or ch > s["MaxChapter"] or s["Id"] in st.flags: return False
     if s["Chapters"] and ch not in s["Chapters"]: return False
-    if not all(f in st.flags for f in s["Requires"]): return False
+    if not all(sim_contact_requirement(s, f, st) for f in s["Requires"]): return False
+    if not sim_participant_contacts(s, st): return False
     for f in s["Forbids"]:
         ov = s["ForbidOverrides"].get(f)
         if f in st.flags and not (ov and ov in st.flags): return False
@@ -2092,7 +2152,14 @@ def sim_available(model, s, st):
     if not all(any(f in st.flags for f in g) for g in s["RequiresAnyGroups"]): return False
     allowance = s.get("RestAllowance")
     if allowance and st.rest_spent.get(allowance, 0) >= model.story.get("RestAllowances", {}).get(allowance, 0): return False
-    for participant in s.get("Participants", []):
+    if any("rrt.degraded." + participant in st.flags for participant in s.get("Participants", [])): return False
+    if s.get("PrivateParticipants"):
+        for participant in s.get("Participants", []):
+            rel = model.rels[participant]
+            if any(flag in st.flags and rel.get("UnavailableOverrides", {}).get(flag) not in st.flags
+                   for flag in rel.get("UnavailableFlags", [])):
+                return False
+    for participant in ([] if s.get("PrivateParticipants") else s.get("Participants", [])):
         named = [wid for wid in s.get("ParticipantWomen", []) if model.story["SeatWomen"][wid]["Relationship"] == participant]
         absent = {flag for wid, woman in model.story.get("SeatWomen", {}).items()
                   if woman["Relationship"] == participant and named and wid not in named
@@ -2109,7 +2176,7 @@ def sim_available(model, s, st):
                         or any(flag in st.flags for flag in model.derived_forbids.get(eligible, []))): return False
             elif eligible not in st.flags: return False
         elif eligible not in st.flags: return False
-    for wid in s.get("ParticipantWomen", []):
+    for wid in ([] if s.get("PrivateParticipants") else s.get("ParticipantWomen", [])):
         woman = model.story["SeatWomen"][wid]
         if not all(flag in st.flags for flag in woman.get("Requires", [])): return False
         if model.rels[woman["Relationship"]]["ClosedFlag"] in st.flags: return False
@@ -2117,13 +2184,13 @@ def sim_available(model, s, st):
         if any(f in st.flags and overrides.get(f) not in st.flags for f in woman.get("UnavailableFlags", [])): return False
     if is_epilogue(s): return True
     if s["Recovery"] is not None: return False
-    if s["Relationship"] == "household" and is_presence_hub(s):
+    if not s.get("PrivateParticipants") and s["Relationship"] == "household" and is_presence_hub(s):
         if not household_presence_attachment(model.story, s): return False
         presence = model.story["Presences"][s["InteractionHub"]]
         if not presence_wanted(presence, st, presence["Area"]): return False
     if not contact_windows_for_scene(model, s, st): return False
     rel = model.rels.get(s["Relationship"], {})
-    if rel.get("ClosedFlag") in st.flags and s["AfterRecovery"] is None: return False
+    if rel.get("ClosedFlag") in st.flags and not s.get("PrivateParticipants") and s["AfterRecovery"] is None: return False
     detects = device_detects(rel, s) if s["TricksterDevice"] else set()
     for f in rel.get("UnavailableFlags", []):
         ov = (rel.get("UnavailableOverrides") or {}).get(f)
@@ -2134,6 +2201,18 @@ def sim_available(model, s, st):
     held = list(s["Requires"]) + [f for g in s["RequiresAnyGroups"] for f in g if f in st.flags]
     last = max([st.times[k] for k in held if k in st.times] or [st.hour - s["DelayHours"]])
     return st.hour - last >= s["DelayHours"]
+
+
+def sim_contact_available(model, scene, state):
+    probe = copy.deepcopy(state)
+    probe.flags.discard(scene["Id"])
+    probe.rest_spent.clear()
+    current = dict(scene, DelayHours=0)
+    current["Forbids"] = [flag for flag in scene["Forbids"] if flag in model.native
+        or flag.endswith((".epoch_unavailable", ".returned_actor_lost"))
+        or flag == "engine.l12.commander_unreturned"
+        or flag.startswith("crossroute.") and flag.endswith("unavailable")]
+    return sim_available(model, current, probe)
 
 
 def sim_bag(model, st, served, size, queued=(), cap=10 ** 9, skip=()):

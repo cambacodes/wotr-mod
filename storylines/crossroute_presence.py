@@ -13,14 +13,14 @@ from tools.crossroute_checks.other_woman import presence_guard, correspondence_r
 from tools.crossroute_checks.mention_context import live_mentions
 
 
-def availability(payload, woman, route, known=None, distant=False):
+def availability(payload, woman, route, known=None, distant=False, native_audience=False):
     """A live predicate; never a latch on yesterday's availability.
 
     Use the runtime chapter inputs as a tautology in Chapters 1–6. Prologue
     scenes use direct scene forbids instead. Independent relationships read
     current losses; legacy pair seats read only the named woman's own losses.
     """
-    key = "crossroute.%s.%s" % (woman, "correspondent" if distant else "available")
+    key = "crossroute.%s.%s" % (woman, "native_available" if native_audience else "correspondent" if distant else "available")
     derived = payload.setdefault("Derived", {})
     if key in derived:
         return key
@@ -54,7 +54,7 @@ def availability(payload, woman, route, known=None, distant=False):
         payload.setdefault("DerivedForbids", {})[native_key] = list(rel.get("UnavailableFlags", []))
         derived[closure_key] = [[open_key], [native_key]]
         inputs.append(closure_key)
-    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL:
+    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL and not native_audience:
         payload.setdefault("DerivedForbids", {})[key] = [rel["ClosedFlag"]]
     for i, loss in enumerate(f for f in rel.get("UnavailableFlags", []) if f not in other):
         if loss not in overrides:
@@ -81,11 +81,11 @@ def unavailability(payload, woman, route, known=None, distant=False):
 def scene_guard(scene, payload, woman, route, known=None, distant=False):
     # The composite reads existing losses and returns without requiring
     # another romance's progression. Register it as the participant contract.
-    key = availability(payload, woman, route, known, distant)
     audience = NATIVE_AUDIENCES.get(woman)
     window = set(scene.get("Chapters") or range(scene.get("MinChapter", 0), scene.get("MaxChapter", 99) + 1))
     if (window != {0} and audience and audience[0] in scene.get("AnswerLists", [])
             and window <= audience[1] and scene.get("NativeReturnCue")):
+        key = availability(payload, woman, route, known, distant, native_audience=woman == "nocticula")
         # eng7-l14: native inline audiences retain their fixed Requires/
         # Forbids lists. RequiresAnyGroups conjoins its OR groups: append a
         # singleton group so no existing alternative can bypass presence.
@@ -93,6 +93,7 @@ def scene_guard(scene, payload, woman, route, known=None, distant=False):
         if [key] not in groups:
             groups.append([key])
         return
+    key = availability(payload, woman, route, known, distant)
     rel = payload["Relationships"][route]
     rel = dict(rel, UnavailableFlags=[*rel.get("UnavailableFlags", []), *PRESENCE_LOSSES.get(woman, [])])
     if distant:
@@ -320,6 +321,8 @@ def integrate(payload):
     if not payload.get("Etudes"):
         known = None   # symbolic, partial test stories have no binding registry
     originals = {s["Id"]: s for s in payload["Scenes"]}
+    from tools.crossroute_checks.other_woman import native_participation_contexts
+    native_contexts = native_participation_contexts(model)
     # If an unreturned body loss excludes both the owner and a live guest,
     # there is no legitimate owner-only scene to preserve in that history.
     # Read the shared loss at entry. Keep every local/registered earned
@@ -508,6 +511,9 @@ def integrate(payload):
             seat = (payload.get("SeatWomen") or {}).get(woman, {})
             if route == block.route or seat.get("Relationship") == block.route or block.route.startswith(woman + "."):
                 continue
+            native = native_contexts.get(block.scene["Id"], {})
+            if any(pattern.fullmatch(name) for name in native.get("Speakers", [])) or pattern.search(native.get("Mentions", "")):
+                continue  # inherited native participation, validated against the original cue graph
             speaking = block.slot == "text" and pattern.fullmatch(block.node.get("Speaker", ""))
             if not speaking and not live_mentions(block.text, pattern, postwar(block.scene), block.scene["Id"]):
                 continue

@@ -9,6 +9,7 @@ from tests.story_fixture import fresh_story
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from storylines.harem_rows import s50
+from storylines import contract_j01
 from tools import rrt_verify as rules, savecompat
 from tools.harem_schedule_lint import delayed_clock_errors
 
@@ -19,6 +20,7 @@ class S50Tests(unittest.TestCase):
         cls.story = fresh_story(include_harem=False)
         cls.before = savecompat.inventory(cls.story)
         s50.register(cls.story, cls.story["Scenes"], cls.story["Etudes"])
+        contract_j01.install(cls.story)
         cls.model = rules.Model(cls.story)
         cls.rows = {s["Id"]: s for s in cls.model.scenes if s["Id"].startswith(s50.P)}
 
@@ -32,6 +34,8 @@ class S50Tests(unittest.TestCase):
                             "trickster.ever", "nidalynn.harem.eligible"))
         if scene["RequiresAnyGroups"]:
             state.flags.add(scene["RequiresAnyGroups"][0][0])
+        state.flags.add("nidalynn.present_now")
+        state.available_contacts = {scene["ContactUnit"]}
         state.times.update({f: 0 for f in state.flags})
         return state
 
@@ -111,11 +115,14 @@ class S50Tests(unittest.TestCase):
         self.assertNotIn(s50.P + "resolved", failure["Set"])
         self.assertNotIn(s50.P + "feed_delivered", failure["Set"])
 
-    def test_shared_private_attendance_blocker_is_exposed_without_granting_romance(self):
+    def test_private_attendance_works_unromanced_with_table_closed(self):
         scene = self.row("notice"); state = self.state(scene)
         self.assertTrue(rules.sim_available(self.model, scene, state))
         state.flags.remove("nidalynn.harem.eligible")
-        # Shared ParticipantsAvailable currently demands eligibility even on protected private errands.
+        state.flags.add("household.closed")
+        self.assertTrue(rules.sim_available(self.model, scene, state))
+        self.assertNotIn("foresight.page_taken", state.flags)
+        state.available_contacts.clear()
         self.assertFalse(rules.sim_available(self.model, scene, state))
         self.assertFalse(any("harem.eligible" in c["Set"] for s in self.rows.values()
                              for n in s["Nodes"] for c in n["Choices"]))

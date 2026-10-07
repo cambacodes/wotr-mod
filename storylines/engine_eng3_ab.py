@@ -145,3 +145,7 @@ def integrate(story):
             gates = [key for key in scene.get("Requires", [])
                      if ".payoff." in key or key.endswith((".present_now", ".reachable_by_letter"))]
             variant["When"] = [list(dict.fromkeys([*group, *gates])) for group in variant.get("When", [])]
+
+    # J01: contact classification follows the final loss/return epoch registry.
+    from storylines import contract_j01
+    contract_j01.install(story)
