@@ -95,11 +95,70 @@ class GesmerhaRoundTwoTests(unittest.TestCase):
         for sid, nid, after, index in slots:
             ns = self.nodes(sid)
             slot = sid + ".explicit." + str(index)
-            self.assertEqual(slot, ns[nid]["Choices"][0]["Next"])
+            self.assertEqual(after, ns[nid]["Choices"][0]["Next"])
             self.assertEqual(after, ns[slot]["Choices"][0]["Next"])
+            self.assertEqual(ns[nid]["Text"], ns[slot]["Text"])
             self.assertFalse(ns[slot]["Choices"][0]["Set"])
-            self.assertTrue(ns[slot]["Text"].startswith("{n}"))
+            incoming = [c for n in ns.values() for c in n["Choices"] if c.get("Next") == slot]
+            self.assertTrue(incoming, sid)
+            retired = [c for n in ns.values() for c in n["Choices"] if c.get("Next") == nid]
+            self.assertTrue(retired, sid)
+            self.assertTrue(all(set(c["Requires"]) & set(c["Forbids"]) for c in retired), sid)
+            self.assertEqual(1, len([c for c in ns[slot]["Choices"] if matches(c, set())]))
+            self.assertEqual(1, len([c for c in ns[slot]["Choices"] if matches(c, {"trickster.now"})]))
         self.assertEqual([route.NIGHT_YARD], self.nodes(route.P + "returned.bench")["morning"]["Choices"][0]["Set"])
+
+    def test_farewell_waits_for_chapter_five_and_iz(self):
+        s = self.scenes[route.P + "returned.likeness"]
+        self.assertEqual(5, s["MinChapter"])
+        self.assertEqual([5], s["Chapters"])
+        history = {"trickster.ever", route.RETURNED, route.COMMITTED}
+        self.assertFalse(matches(s, history))
+        self.assertTrue(matches(s, history | {"iz.done"}))
+
+    def test_ulbrig_reads_actual_commission_release(self):
+        before = next(s for s in route.REACTIONS if s["Id"] == route.P + "react.ulbrig_return")
+        history = {route.RETURNED, "ulbrig.in_party"}
+        self.assertTrue(matches(before, history))
+        for nid in ("monster", "new"):
+            for choice in self.nodes(route.P + "returned.bench")[nid]["Choices"]:
+                released = history | {route.WORK_FINISHED}  # runtime marks completed scenes by ID
+                self.assertFalse(matches(before, released))
+                self.assertNotIn(route.COMMITTED, choice["Set"])
+        self.assertFalse(matches(before, history | {"ulbrig.dead"}))
+
+    def test_objective_survives_relocation(self):
+        self.assertEqual("Speak with Gesmerha", self.story["Relationships"]["gesmerha"]["Objective"])
+
+    def test_shared_sacrifice_fixes_cover_exact_histories(self):
+        # Ending arbitration adds sacrifice guards and placement observation receipts.
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
+        scenes = story["Scenes"]
+        pages = [s for s in scenes if s["Id"].startswith(route.P + "epilogue.")]
+        base = {"trickster.ever", route.RETURNED, route.DEAD, "sacrifice", "availability.observed"}
+        for receipt, expected in ((None, "unvisited_mourned"),
+                                  (route.DECLINED, "refusal_mourned"),
+                                  (route.CLOSED, "finished_mourned")):
+            history = base | ({receipt} if receipt else set())
+            # Native availability has been observed; expand its existing earned-return proof.
+            for _ in range(4):
+                for key, groups in story["Derived"].items():
+                    if key.startswith("gesmerha.present_now") and any(set(g) <= history for g in groups):
+                        if not set(story.get("DerivedForbids", {}).get(key, ())) & history:
+                            history.add(key)
+            available = [s["Id"] for s in pages if matches(s, history)]
+            self.assertEqual([route.P + "epilogue." + expected], available)
+
+    def test_shared_lastcall_fix_excludes_unaccepted_deliveries(self):
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
+        page = next(s for s in story["Scenes"] if s["Id"] == "gesmerha.lastcall.page")
+        self.assertEqual([[route.COMMITTED]], page["RequiresAnyGroups"])
+        for receipt in (route.YARD, "gesmerha.presence.failure_observed"):
+            history = set(page["Requires"]) | {route.RETURNED, receipt, route.P + "late_committed"}
+            self.assertFalse(matches(page, history))
+        self.assertEqual([["gesmerha.payoff.ordinary"]], story["Derived"]["gesmerha.payoff.partner"])
 
     def test_clan_memorial_and_mourning_likeness_have_distinct_receipts(self):
         pred = self.story["Derived"][route.CLAN_DESTROYED]

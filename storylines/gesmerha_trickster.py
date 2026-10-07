@@ -56,6 +56,7 @@ NIGHT_YARD = P + "night_yard"            # a returned night in the smith's yard,
 SLOW = P + "cost.campaign_slow"
 LIKENESS = P + "cost.likeness_owed"         # the Commander's face left unfinished on her bench, to be sat for after Threshold
 LIKENESS_DONE = P + "cost.likeness_cut"     # cut from memory before Threshold: a grave-post whether the Commander returns or not
+WORK_FINISHED = P + "returned.bench"  # existing scene-completion receipt, never romantic acceptance
 PRESENCE_FAILED = "gesmerha.presence.failed"
 
 RELATIONSHIP_PATCH = dict(
@@ -431,8 +432,8 @@ REACTIONS = [
              '''"You sent a joke to a funeral. In Sarkoris. The boy who carried it looked like he wanted to be sick." {n}Lann scratches the back of his neck.{/n} "What did it say? No. Don't tell me. I'll hear about it anyway."''',
              answer_list=LANN_HUB, forbids=LANN["forbids"], chapter=3, last=3, delay=24, entry='"About the carver\'s pyre..."'),
     reaction("Ulbrig", P + "react.ulbrig_return", (RETURNED, *ULBRIG["requires"]),
-             '''"A Wintersun carver got up off the carvers' ground, they're saying, and went straight back to work." {n}Ulbrig sets his mug down, which he does not do lightly.{/n} "Where I come from, the dead don't come back for love. They come back for unfinished business, and they don't leave till it's done. Pray she finishes slow, warchief."''',
-             answer_list=ULBRIG_HUB, forbids=ULBRIG["forbids"], chapter=3, last=5, delay=24, entry='"About the carver from Wintersun..."'),
+             '''"A Wintersun carver got up off the carvers' ground, they're saying, and went straight back to work." {n}Ulbrig sets his mug down, which he does not do lightly.{/n} "Unfinished work brought her back? Then I want to know what happens when she puts the chisel down. I would be there for the last cut, warchief."''',
+             answer_list=ULBRIG_HUB, forbids=(*ULBRIG["forbids"], WORK_FINISHED), chapter=3, last=5, delay=24, entry='"About the carver from Wintersun..."'),
     reaction("Anevia", P + "react.anevia_yard_night", (NIGHT_YARD,),
              '''"The smith came to me again. Not about his corner this time." {n}Anevia keeps a straight face for as long as she can manage it, which is not long.{/n} "He banked the forge, went home, came back at dawn, and found the Commander of the crusade asleep in his shavings with sawdust in places he wouldn't name to a married woman. He wants to know whether he can charge you rent. I told him to ask the carver. He went a very interesting colour."''',
              answer_list=ANEVIA_HUB, forbids=("anevia_gone", "anevia_dead"), chapter=3, last=5, delay=24,
@@ -503,6 +504,7 @@ def _paragraphs(scene_, paragraphs):
 def integrate(payload):
     """Save-safe edits to the registered route: no id, node or choice is renamed, removed or reordered."""
     rel = payload["Relationships"]["gesmerha"]
+    rel["Objective"] = "Speak with Gesmerha"
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(x) for k, x in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, a Gesmerha who died with paid work on her bench may not stay dead; look for "
@@ -652,33 +654,39 @@ def _round2(payload, by_id):
         '"Jerribeth gave them a beautiful face to kneel to. They cut out my eyes when the wood showed what was behind it. '
         'That carving will keep its teeth. I will not make her bargain pretty for anyone."', c("Continue", "ask")))
 
+    # Authored r3: Threshold farewell belongs after the Iz expedition, in Chapter 5.
+    likeness["MinChapter"] = 5
+    likeness["Chapters"] = [5]
+    likeness["Requires"].append("iz.done")
+
     # Explicit slots append to node lists; all original answers and aftermath receipts retain their indices/effects.
-    def slot(sid, before, after, number, text):
+    def slot(sid, before, after, number):
         s = by_id[sid]
         nid = sid + ".explicit." + str(number)
         x = nodes(sid)[before]
         assert x["Choices"][0]["Next"] == after, (sid, before)
-        x["Choices"][0]["Next"] = nid
-        s["Nodes"].append(g(nid, text, c("Continue", after)))
+        # The slot IS the existing threshold, not a second draw-down after it.
+        # Saved threshold nodes remain intact and still lead to their aftermath.
+        for node in s["Nodes"]:
+            for choice in node["Choices"]:
+                if choice.get("Next") == before:
+                    choice["Next"] = nid
+        # An inert appended arc keeps the saved node structurally reachable.
+        s["Nodes"].append(g(nid, x["Text"], c("Continue", after),
+                                c("Continue", before, requires=("trickster.now",), forbids=("trickster.now",))))
 
     # Brief: workshop pallet, her initiative; the barred door keeps clan errands outside.
-    slot("gesmerha.what_she_asks", "private", "after_private", 1,
-         '{n}She draws you against her on the pallet and kisses you again. The door stays barred through the afternoon.{/n}')
+    slot("gesmerha.what_she_asks", "private", "after_private", 1)
     # Brief: sorting-hall reunion after the box and lesson; her own evening.
-    slot(room["Id"], "night", "after_night", 1,
-         '{n}She draws the blanket around you and kisses you until the last footsteps in the hall have passed.{/n}')
+    slot(room["Id"], "night", "after_night", 1)
     # Brief: the slow lover accepts her first sexual night; distinct commitment aftermath.
-    slot(room["Id"], "first_night", "after_first_night", 2,
-         '{n}She pulls you close beneath the blanket. The lamp burns low while the closed door holds the hall outside.{/n}')
+    slot(room["Id"], "first_night", "after_first_night", 2)
     # Brief: one completed ancestral commission, paid work set apart; she owns the invitation.
-    slot(bench["Id"], "night", "morning", 1,
-         '{n}She keeps you close on the covered bench. The forge is banked and the wrapped chisels stay on their shelf.{/n}')
+    slot(bench["Id"], "night", "morning", 1)
     # Brief: three-day alternative sitting completed; two carved works, unpaid chosen night.
-    slot(P + "returned.second_ask", "night", "morning", 1,
-         '{n}She draws you down beside her on the cloth. The wooden hands rest beside the finished commission; her living hands hold you close.{/n}')
+    slot(P + "returned.second_ask", "night", "morning", 1)
     # Brief: spoiled cut repaired through patient sittings with breaks; no bodily endurance test.
-    slot(P + "returned.second_ask", "night_flinched", "morning", 2,
-         '{n}She kisses you again and settles beside you. The tools stay wrapped, and the yard is quiet until dawn.{/n}')
+    slot(P + "returned.second_ask", "night_flinched", "morning", 2)
 
     # Collect the actual likeness and no-purses/sitting debts, rather than recarving eyes twice.
     mourning = by_id[P + "epilogue.bench_mourned"]["Nodes"][0]

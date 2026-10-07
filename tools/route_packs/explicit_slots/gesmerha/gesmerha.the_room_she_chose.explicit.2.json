@@ -18,11 +18,11 @@
     "first_night",
     "after_first_night"
   ],
-  "default_text": "{n}She pulls you close beneath the blanket. The lamp burns low while the closed door holds the hall outside.{/n}",
+  "default_text": "{n}She laughs softly and keeps your hand.{/n}\n\"Yes. Stay the night. I was hoping you would ask.\"\n{n}She pulls her shift over her head. Your shirt takes longer: her fingers pause at your shoulders, learning their shape before she lets the cloth go. The bed creaks when she draws you down, and she tells it to be quiet.{/n}\n{n}She kisses you again and pulls the blanket around you both. Her hand rests at your waist as she draws closer.{/n}",
   "canon_sources": [
     "0365c24e7237b3d409fc4bd40cca548b",
     "13f2b37e28864ba4b882d13fad90f7c5",
     "597b7e82dbec7804490f02048e4bf1ef"
   ],
-  "production_scope": "Non-graphic continuity brief; explicit act deliberately unfilled. No state mutations or invented canon physical facts."
+  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts."
 }

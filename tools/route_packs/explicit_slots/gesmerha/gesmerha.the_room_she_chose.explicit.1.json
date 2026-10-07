@@ -18,11 +18,11 @@
     "night",
     "after_night"
   ],
-  "default_text": "{n}She draws the blanket around you and kisses you until the last footsteps in the hall have passed.{/n}",
+  "default_text": "\"Then stay.\"\n{n}She frees her braid and pulls off her shift. Her chin lifts toward your breath.{/n}\n\"Come here. I have been wanting you all day.\"\n{n}Her rough palms pass over your shoulders. She undoes your belt herself, then draws you into bed. A board creaks; she laughs against your mouth and shifts until you both fit, close and warm beneath the blanket.{/n}",
   "canon_sources": [
     "0365c24e7237b3d409fc4bd40cca548b",
     "13f2b37e28864ba4b882d13fad90f7c5",
     "597b7e82dbec7804490f02048e4bf1ef"
   ],
-  "production_scope": "Non-graphic continuity brief; explicit act deliberately unfilled. No state mutations or invented canon physical facts."
+  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts."
 }

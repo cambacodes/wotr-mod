@@ -18,11 +18,11 @@
     "night",
     "morning"
   ],
-  "default_text": "{n}She keeps you close on the covered bench. The forge is banked and the wrapped chisels stay on their shelf.{/n}",
+  "default_text": "{n}She hangs the chisels out of reach, spreads a folded cloth over the bench, and turns back to you. Her damp palms rest against your cheeks.{/n}\n\"One commission finished. And you stayed to hear what I wanted when it was done. Come closer. I have had enough patrons.\"\n{n}She kisses you, then draws you back for a second kiss that leaves her breathing hard. Her fingers find your belt; she opens it, laughing when you catch the buckle before it falls. She pulls off her shift and guides your hands to her waist.{/n}\n\"Here. The bench will hold us. I checked.\"\n{n}She draws you down with her onto the cloth. Beyond the yard a patrol passes toward the walls; she keeps you close until its boots fade.{/n}",
   "canon_sources": [
     "0365c24e7237b3d409fc4bd40cca548b",
     "13f2b37e28864ba4b882d13fad90f7c5",
     "597b7e82dbec7804490f02048e4bf1ef"
   ],
-  "production_scope": "Non-graphic continuity brief; explicit act deliberately unfilled. No state mutations or invented canon physical facts."
+  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts."
 }
