@@ -801,15 +801,26 @@ internal static class Program
                     Check(answer.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition shown && ReferenceEquals(shown.Choice, choice) && ReferenceEquals(shown.Owner, answer), "Choice lost its visibility guard or owner: " + nodeId);
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
-                    int nativeEffects = (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
+                    int nativeEffects = (choice.Crusade?.Amount > 0 && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
                     Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
-                        && answer.OnSelect.Actions[choice.Crusade == null || scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 0 : 1] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
-                    if (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal))
+                        && answer.OnSelect.Actions[choice.Crusade?.Amount > 0 && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                    if (choice.Crusade?.Amount > 0 && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal))
                     {
                         var payment = answer.OnSelect.Actions[0] is Tirabade.Main.GuardedRemoveCrusadeResources remove ? remove.Payment
                             : ((Tirabade.Main.GuardedAddCrusadeResources)answer.OnSelect.Actions[0]).Payment;
                         Check(payment != null && ReferenceEquals(payment, action.Payment) && ReferenceEquals(payment.Cost, choice.Crusade),
                             "Paid progress has no resource-action witness: " + nodeId);
+                    }
+                    if (choice.Crusade?.Amount < 0)
+                    {
+                        Check(action.Payment != null && ReferenceEquals(action.Payment.Cost, choice.Crusade)
+                            && ReferenceEquals(action.Payment.Scene, scene)
+                            && ((Tirabade.Main.RouteCondition)answer.ShowConditions.Conditions.Single()).PaidScene == scene
+                            && ((Tirabade.Main.RouteCondition)answer.SelectConditions.Conditions.Single()).PaidScene == scene
+                            && !answer.OnSelect.Actions.OfType<Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources>().Any(),
+                            "Negative payment is not owned by its story transaction: " + nodeId);
+                        Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + Rules.PaymentKey(scene, choice))) is BlueprintUnlockableFlag,
+                            "Negative payment lacks a saved replay receipt: " + nodeId);
                     }
                     Check((answer.MythicRequirement.ToString() == (choice.Mythic ?? "None")) && (answer.AlignmentShift?.Value ?? 0) == (choice.Alignment?.Value ?? 0), "Choice native mythic/alignment drifted: " + nodeId);
                     Check(action != null && ReferenceEquals(action.Choice, choice) && ReferenceEquals(action.Owner, answer), "Choice lost its effects or action owner: " + nodeId);

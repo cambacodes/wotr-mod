@@ -377,7 +377,7 @@ namespace Tirabade
             return actor != null && Loaded(actor) ? actor : null;
         }
         internal bool OwnsOriginal => Data() != null;
-        internal bool ApplyChoice(Scene scene, Choice choice, Action recordProgress)
+        internal bool ApplyChoice(Scene scene, Choice choice, Action recordProgress, bool alreadyPaid = false)
         {
             var state = snapshot();
             if (state == null || !LivePath(state) || !Page(state) || Closed(state)) return false;
@@ -386,7 +386,7 @@ namespace Tirabade
             if ((scene.Id == E + "pickup" || scene.Id == E + "return")
                 && (actor == null || !Loaded(actor) || data!.Phase != (scene.Id == E + "pickup" ? "down" : "arrived"))) return false;
             var kingdom = Game.Instance.Player.Kingdom;
-            int cost = choice.Crusade == null ? 0 : Math.Abs(choice.Crusade.Amount);
+            int cost = alreadyPaid || choice.Crusade == null ? 0 : Math.Abs(choice.Crusade.Amount);
             if (cost != 0 && (kingdom == null || kingdom.Resources.Finances < cost)) return false;
             var storage = actor?.HoldingState;
             bool inGame = actor?.IsInGame ?? false;

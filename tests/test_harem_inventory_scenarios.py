@@ -42,7 +42,7 @@ class HaremInventory(unittest.TestCase):
     def test_conditional_profiles_share_rests_and_do_not_certify_native_delivery(self):
         for profile in self.scenarios['scenarios']:
             with self.subTest(profile=profile['id']):
-                options = {k: profile[k] for k in ('conditional', 'rematch', 'fallback', 'late_s06') if k in profile}
+                options = {k: profile[k] for k in ('conditional', 'rematch', 'fallback', 'late_s06', 'arueshalae_state') if k in profile}
                 result = sim.simulate(self.story, self.schedule, self.route_run, **options)
                 if not profile['conditional']:
                     self.assertTrue(result['blocked'])
@@ -63,7 +63,8 @@ class HaremInventory(unittest.TestCase):
                 ch5 = result['chapters'][1]
                 self.assertGreaterEqual(ch5['rests_needed'], 20)
                 counted = ch5['household_beats'] + (30 if profile.get('fallback') else 0)
-                ceiling = self.scenarios['chapter_ceilings']['5']['worst' if profile.get('fallback') or profile.get('rematch') else 'ideal']
+                budget_profile = profile.get('budget_profile', 'worst' if profile.get('fallback') or profile.get('rematch') else 'ideal')
+                ceiling = self.scenarios['chapter_ceilings']['5'][budget_profile]
                 self.assertLessEqual(counted, ceiling)
 
     # eng7-f3

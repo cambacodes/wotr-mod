@@ -800,6 +800,7 @@ internal static partial class Program
         RunSuite("BookTests", () => BookTests.Run(story, Check));
         RunSuite("HouseholdTests", () => HouseholdTests.Run(story, Check));
         RunSuite("HouseholdEngineTests", () => HouseholdEngineTests.Run(story, Check));
+        RunSuite("HouseholdTransactionTests", () => HouseholdTransactionTests.Run(story, Check));
         RunSuite("ArueshalaeBranchTests", () => ArueshalaeBranchTests.Run(story, Check));
         RunSuite("PrerequisiteGroupsTests", () => PrerequisiteGroupsTests.Run(Check));
         Profile("TargonaContinuation", () => TargonaContinuation());

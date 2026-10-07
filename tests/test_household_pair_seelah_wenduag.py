@@ -76,6 +76,43 @@ class SheetTests(unittest.TestCase):
         self.assertRejects(lambda s: s[P("choice")].__setitem__(
             "outcomes", {1: s[P("choice")]["outcomes"][0], 2: s[P("choice")]["outcomes"][1]}), "0..n-1")
 
+    def test_amended_steps_keep_existing_ids_and_append_invitation(self):
+        self.assertEqual([step['id'] for step in sw.STEPS], [P(name) for name in (
+            'init', 'spar', 'rematch', 'watch', 'restraint', 'restraint.after_stood', 'stood',
+            'stood.after_restraint', 'debt_repayment', 'choice', 'morning', 'invite')])
+        steps = {step['id']: step for step in sw.STEPS}
+        self.assertEqual(steps[P('invite')]['delay'], 0)
+        self.assertEqual(steps[P('invite')]['rest_allowance'], None)
+        self.assertEqual(steps[P('rematch')]['outcomes'][1]['flags'], (P('rematch.seen'), P('rematch.declined')))
+        self.assertEqual(steps[P('debt_repayment')]['outcomes'][2]['flags'],
+                         (P('debt_repayment.seen'), P('captive.rusk_dead'), P('debt.betrayed')))
+        self.assertIn(P('choice.watch_taken'), steps[P('choice')]['outcomes'][0]['flags'])
+        self.assertNotIn(P('choice.back_room'), sw._produced(sw.STEPS))
+        self.assertNotIn(P('boundary.breached'), sw._produced(sw.STEPS))
+
+    def test_rejects_missing_participant_and_wrong_allowance(self):
+        self.assertRejects(lambda s: s[P('stood.after_restraint')].__setitem__('participants', ('wenduag',)), 'both participants')
+        self.assertRejects(lambda s: s[P('rematch')].__setitem__('rest_allowance', 'household.pair'), 'wrong rest allowance')
+
+    def test_rejects_missing_clock_or_invented_invitation_delay(self):
+        self.assertRejects(lambda s: s[P('watch')].__setitem__('any_groups', ()), 'alternative respect clocks')
+        self.assertRejects(lambda s: s[P('invite')].__setitem__('delay', 48), 'invalid invitation delay')
+
+    def test_rejects_abort_writer_and_outcomeless_terminal(self):
+        self.assertRejects(lambda s: s[P('choice')]['outcomes'][2].__setitem__('flags', (P('choice.seen'),)), 'Abort writes nothing')
+        self.assertRejects(lambda s: s[P('morning')]['outcomes'][0].__setitem__('flags', (P('morning.seen'),)), 'seen and an outcome')
+
+    def test_rejects_missing_wound_cost_on_either_terminal_or_wrapper(self):
+        for name in ('stood', 'stood.after_restraint'):
+            for terminal in ('success', 'failure'):
+                self.assertRejects(lambda s, name=name, terminal=terminal: s[P(name)].__setitem__(
+                    terminal, tuple(flag for flag in s[P(name)][terminal] if flag != P('cost.seelah_wounded'))), 'record Seelah wounded')
+
+    def test_rejects_missing_betrayal_or_breach_gate(self):
+        for flag in (P('debt.betrayed'), P('captive.rusk_dead'), P('boundary.breached')):
+            self.assertRejects(lambda s, flag=flag: s[P('choice')].__setitem__(
+                'forbids', tuple(value for value in s[P('choice')]['forbids'] if value != flag)), 'choice must forbid')
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -85,8 +85,8 @@ internal static class NativeAudienceTests
                     // E5/E11: the only actions after the RouteAction are the choice's own native effects (the mythic-choice
                     // counter, a crusade resource change, an item removal), each present only when authored.
                     var effects = answer!.OnSelect.Actions.Where(a => !(a is Main.RouteAction)).ToArray();
-                    check(answer.OnSelect.Actions.Length >= 1 && answer.OnSelect.Actions[choice.Crusade == null || scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 0 : 1] is Main.RouteAction
-                        && effects.Count(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources) == (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0)
+                    check(answer.OnSelect.Actions.Length >= 1 && answer.OnSelect.Actions[choice.Crusade?.Amount > 0 && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0] is Main.RouteAction
+                        && effects.Count(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources) == (choice.Crusade?.Amount > 0 && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0)
                         && effects.All(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.RemoveItemFromPlayer && choice.RemoveItem != null
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.StartEtude && choice.StartEtude != null

@@ -111,13 +111,17 @@ internal static class ChoiceExtensionManagedTests
             "Archive cost actions no longer have the shape the E11 extension imitates.");
         check(IsItem(native, Scale), "Removable-item fixture is not a BlueprintItem.");
         var pay = Answer("more", 1);
-        var spend = pay.OnSelect.Actions.OfType<Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources>().SingleOrDefault();
+        var progress = pay.OnSelect.Actions.OfType<Main.RouteAction>().Single();
         var removal = pay.OnSelect.Actions.OfType<RemoveItemFromPlayer>().SingleOrDefault();
-        check(pay.OnSelect.Actions[0] is Main.GuardedRemoveCrusadeResources payment && pay.OnSelect.Actions[1] is Main.RouteAction progress
-            && payment.Payment != null && ReferenceEquals(payment.Payment, progress.Payment) && spend != null && removal != null, "Cost answer lacks its route action or native costs.");
-        var spent = (Kingmaker.Kingdom.KingdomResourcesAmount)typeof(Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources)
-            .GetField("m_ResourcesAmount", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)!.GetValue(spend);
-        check(spent.Equals(Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(500)), "Crusade cost has the wrong amount or resource.");
+        check(progress.Payment != null && progress.Payment.Scene == scene
+            && progress.Payment.Choice == scene.Nodes.Single(n => n.Id == "more").Choices[1]
+            && !pay.OnSelect.Actions.OfType<Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources>().Any()
+            && removal != null, "Paid answer does not have one transaction owner.");
+        check(progress.Payment!.Cost.Resource == "Finances" && progress.Payment.Cost.Amount == -500,
+            "Transaction has the wrong price or resource.");
+        check(pay.ShowConditions.Conditions.OfType<Main.RouteCondition>().Single().PaidScene == scene
+            && pay.SelectConditions.Conditions.OfType<Main.RouteCondition>().Single().PaidScene == scene,
+            "Paid answer does not recheck its scene at selection.");
         check(removal!.ItemToRemove?.AssetGuid == BlueprintGuid.Parse(Scale) && removal.Quantity == 1 && !removal.RemoveAll && !removal.Money,
             "Item removal differs from the native RemoveItemFromPlayer shape.");
         var gain = Answer("more", 2).OnSelect.Actions.OfType<Kingmaker.Kingdom.Blueprints.AddCrusadeResources>().SingleOrDefault();
@@ -127,18 +131,18 @@ internal static class ChoiceExtensionManagedTests
         // The native crusade actions call KingdomState.Instance (Game.Instance.Player.Kingdom) with no null check, so a
         // crusade choice taken where no crusade exists (Chapter 1-2, a forced or out-of-order conversation) threw in game
         // logic. Build must use the guarded subclasses, and running them with no kingdom must skip, not throw.
-        check(spend is Main.GuardedRemoveCrusadeResources && gain is Main.GuardedAddCrusadeResources,
+        check(progress.Payment != null && gain is Main.GuardedAddCrusadeResources,
             "Crusade effects are not the guarded actions (a missing kingdom would throw in game logic).");
         bool hadGame = Kingmaker.Game.HasInstance;
         bool noKingdom = !hadGame || Kingmaker.Game.Instance.State?.PlayerState?.Kingdom == null;
         check(noKingdom, "The managed fixture unexpectedly has a crusade state; the no-kingdom guard cannot be exercised.");
-        foreach (var action in new Kingmaker.ElementsSystem.GameAction[] { spend!, gain! })
+        foreach (var action in new Kingmaker.ElementsSystem.GameAction[] { gain! })
         {
             Exception? thrown = null;
             try { action.RunAction(); } catch (Exception ex) { thrown = ex; }
             check(thrown == null, "A crusade effect threw with no crusade state: " + thrown?.GetType().Name + " " + thrown?.Message);
         }
-        check(!((Main.GuardedRemoveCrusadeResources)spend!).Payment!.Applied, "Missing kingdom minted a payment witness.");
+        check(!progress.Payment!.Commit(() => throw new InvalidOperationException("Must not publish")), "Missing kingdom minted a payment witness.");
         check(Kingmaker.Game.HasInstance == hadGame, "The no-kingdom guard created a Game instance as a side effect.");
         check(Enum.GetNames(typeof(Kingmaker.Kingdom.KingdomResource)).Except(new[] { "None" }).SequenceEqual(Rules.CrusadeResources),
             "Rules.CrusadeResources differs from Kingmaker.Kingdom.KingdomResource.");

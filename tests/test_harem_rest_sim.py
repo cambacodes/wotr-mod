@@ -75,3 +75,17 @@ class FullRosterBudget(unittest.TestCase):
         self.assertIn('S06.ack', result['completed'])
         self.assertNotIn('S46', result['completed'])
         self.assertGreater(result['chapters'][1]['protected'], 41)
+
+    def test_corrupted_roster_uses_its_own_docket_on_both_s02_paths(self):
+        for rematch in (False, True):
+            with self.subTest(rematch=rematch):
+                result = sim.simulate(self.story, self.data, self.route_run, conditional=True,
+                                      rematch=rematch, arueshalae_state='corrupted')
+                self.assertTrue(result['pair_complete'])
+                self.assertEqual(result['arueshalae_state'], 'corrupted')
+                self.assertIn('S03b', result['completed'])
+                self.assertEqual(result['chapters'][1]['protected'], 39 + int(rematch))
+                self.assertEqual(result['blocked'], [])
+                for chapter in result['chapters']:
+                    self.assertEqual(chapter['deadline_misses'], [])
+                    self.assertLessEqual(chapter['load'], 1.0)

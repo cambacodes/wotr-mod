@@ -28,7 +28,9 @@
     {"id": "native-walk-missing", "conditional": false, "expected_status": "data_blocked"},
     {"id": "conditional-ideal", "conditional": true, "rematch": false, "fallback": false, "late_s06": false, "expected_status": "conditional"},
     {"id": "conditional-fallback-rematch", "conditional": true, "rematch": true, "fallback": true, "late_s06": true, "expected_status": "conditional"},
-    {"id": "conditional-rematch", "conditional": true, "rematch": true, "fallback": false, "late_s06": false, "expected_status": "conditional"}
+    {"id": "conditional-rematch", "conditional": true, "rematch": true, "fallback": false, "late_s06": false, "expected_status": "conditional"},
+    {"id": "conditional-corrupted", "conditional": true, "arueshalae_state": "corrupted", "budget_profile": "worst", "rematch": false, "fallback": false, "late_s06": false, "expected_status": "conditional"},
+    {"id": "conditional-corrupted-rematch", "conditional": true, "arueshalae_state": "corrupted", "budget_profile": "worst", "rematch": true, "fallback": false, "late_s06": false, "expected_status": "conditional"}
   ],
   "_eng7-f3": "DATA inventory only: missing emitted scenes and choice producers belong to harem writing; conditional budgets never certify native delivery.",
   "packet_scene_ids": {},

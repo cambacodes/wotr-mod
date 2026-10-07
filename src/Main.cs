@@ -464,6 +464,9 @@ namespace Tirabade
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 foreach (string key in story.Relationships.Keys.Select(key => Rules.ServedPrefix + key))
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                foreach (var scene in story.Scenes)
+                    foreach (var choice in scene.Nodes.SelectMany(node => node.Choices).Where(choice => choice.Crusade?.Amount < 0))
+                        flags.Add(Rules.PaymentKey(scene, choice), New<BlueprintUnlockableFlag>("flag." + Rules.PaymentKey(scene, choice)));
                 foreach (string key in story.RestAllowances.Keys.Select(key => Rules.RestSpentPrefix + key))
                     flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 // E1: each latch is an ordinary authored flag (with its hour) recorded by Update().
@@ -913,7 +916,7 @@ namespace Tirabade
             var leave = New<BlueprintAnswer>("answer." + (prefix ?? scene.Id) + "." + node.Id + ".payment_unavailable");
             InitializeAnswer(leave);
             leave.Text = Text(leave.name, "[Leave.]");
-            leave.ShowConditions = Conditions(new RouteCondition { PaymentNode = node });
+            leave.ShowConditions = Conditions(new RouteCondition { PaymentNode = node, PaidScene = scene });
             if (nativeReturn != null) leave.NextCue = Cues(nativeReturn);
             answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
         }
@@ -941,7 +944,16 @@ namespace Tirabade
             }
             bool echoPayment = story.Scenes.Where(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal))
                 .Any(s => s.Nodes.Any(n => n.Choices.Contains(choice)));
-            if (choice.Crusade != null && !echoPayment)
+            if (choice.Crusade?.Amount < 0)
+            {
+                var progress = (answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).OfType<RouteAction>().SingleOrDefault();
+                var scene = progress?.Continuation ?? progress?.Complete ?? story.Scenes.Single(s => s.Nodes.Any(n => n.Choices.Contains(choice)));
+                if (progress == null) throw new InvalidOperationException("Paid answer lacks story action: " + answer.name);
+                progress.Payment = new CrusadePayment { Cost = choice.Crusade, Choice = choice, Scene = scene, Complete = progress.Complete };
+                answer.ShowConditions = Conditions(new RouteCondition { Choice = choice, Continuation = progress.Continuation, PaidScene = scene });
+                answer.SelectConditions = Conditions(new RouteCondition { Choice = choice, Continuation = progress.Continuation, PaidScene = scene });
+            }
+            if (choice.Crusade?.Amount > 0 && !echoPayment)
             {
                 int amount = Math.Abs(choice.Crusade.Amount);
                 var resources = choice.Crusade.Resource == "Finances" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(amount)
@@ -1573,12 +1585,16 @@ namespace Tirabade
                     Game.Instance.Player.UnlockableFlags.SetFlagValue(flag, pair.Value);
         }
 
-        private static void RecordProgress(Choice? choice, Scene? complete)
+        private static void RecordProgress(Choice? choice, Scene? complete, bool updateJournal = true)
         {
             if (complete != null && !State().Has(complete.Id))
             {
                 var spend = State();
-                if (!Rules.SpendRestAllowance(story, complete, spend)) return;
+                if (!Rules.SpendRestAllowance(story, complete, spend))
+                {
+                    if (!updateJournal) throw new InvalidOperationException("Scene allowance was consumed: " + complete.Id);
+                    return;
+                }
                 if (complete.RestAllowance != null) Set(Rules.RestSpentPrefix + complete.RestAllowance, spend.RestSpent[complete.RestAllowance]);
             }
             var availability = State();
@@ -1591,6 +1607,11 @@ namespace Tirabade
                 Set(key);
             }
             if (complete != null) entry.Logger.Log("Completed scene: " + complete.Id);
+            if (updateJournal) UpdateProgressJournal(choice);
+        }
+
+        private static void UpdateProgressJournal(Choice? choice)
+        {
             var state = State();
             foreach (var pair in objectives)
             {
@@ -2208,16 +2229,18 @@ namespace Tirabade
             public Scene? Continuation;
             public bool ContactLost;
             public Node? PaymentNode;
+            public Scene? PaidScene;
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
-                && (PaymentNode != null ? Rules.PaymentExitAvailable(PaymentNode, State()) /* eng7-l09 */
+                && (PaymentNode != null ? PaidScene == null ? Rules.PaymentExitAvailable(PaymentNode, State()) : Rules.PaymentExitAvailable(story, PaidScene, PaymentNode, State()) /* eng7-l09 */
                     // eng7-l11
                     : Scene != null ? PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Scene, State()) : Rules.Available(story, Scene, State())
                     // end eng7-l11
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
-                        && Rules.ChoiceAvailable(Choice, State()) && EchoPaymentAvailable(Choice));
+                        && (PaidScene == null ? Rules.ChoiceAvailable(Choice, State()) : LivePaidChoiceAvailable(PaidScene, Choice))
+                        && EchoPaymentAvailable(Choice));
         }
 
         // E8b: a mailbag entry is listed while its letter is in the bag and still available.
@@ -2275,7 +2298,40 @@ namespace Tirabade
             public Scene? Complete;
             public Choice? Choice;
             public Scene? Continuation;
+            public Scene? Scene;
             public bool Applied;
+            public bool Commit(Action publish)
+            {
+                if (Scene == null || Choice == null || KingdomMissing(Cost.Resource)) return false;
+                InvalidateState();
+                var player = Game.Instance.Player;
+                var kingdom = player.Kingdom;
+                var saved = flags.ToDictionary(pair => pair.Key, pair => player.UnlockableFlags.GetFlagValue(pair.Value));
+                bool success = Rules.CrusadeTransaction(Cost,
+                    () => ReferenceEquals(player, Game.Instance?.Player) && ReferenceEquals(kingdom, Game.Instance?.Player?.Kingdom)
+                        && Rules.PaidChoiceAvailable(story, Scene, Choice, State()),
+                    () => CrusadeBalance(kingdom.Resources, Cost.Resource),
+                    amount => {
+                        var resources = Cost.Resource == "Finances" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(Math.Abs(amount))
+                            : Cost.Resource == "Materials" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromMaterials(Math.Abs(amount))
+                            : Kingmaker.Kingdom.KingdomResourcesAmount.FromFavors(Math.Abs(amount));
+                        if (amount < 0) kingdom.SpendResource(resources); else kingdom.GainResource(resources);
+                        InvalidateState();
+                    },
+                    () => {
+                        publish();
+                        Set(Rules.PaymentKey(Scene, Choice));
+                        var after = State();
+                        if (!Choice.Set.All(after.Has) || Complete != null && !after.Has(Complete.Id))
+                            throw new InvalidOperationException("Paid story publication was incomplete");
+                    },
+                    () => {
+                        foreach (var pair in saved) player.UnlockableFlags.SetFlagValue(flags[pair.Key], pair.Value);
+                        InvalidateState();
+                    }, message => entry?.Logger.Log(message));
+                InvalidateState();
+                return success;
+            }
             public void Apply(Action effect)
             {
                 Applied = false;
@@ -2301,6 +2357,12 @@ namespace Tirabade
         {
             public CrusadePayment? Payment;
             public override void RunAction() { if (Payment != null) Payment.Apply(() => base.RunAction()); else if (!KingdomMissing(name)) base.RunAction(); }
+        }
+
+        private static bool LivePaidChoiceAvailable(Scene scene, Choice choice)
+        {
+            InvalidateState();
+            return Rules.PaidChoiceAvailable(story, scene, choice, State());
         }
 
         private static bool EchoPaymentAvailable(Choice choice)
@@ -2345,6 +2407,38 @@ namespace Tirabade
                 if (Choice != null)
                 {
                     if (Continuation != null && !Rules.ContactAvailable(story, Continuation, State())) return;
+                    if (Payment?.Cost.Amount < 0)
+                    {
+                        bool committed = Payment.Commit(() => {
+                            if (Payment.Scene?.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal) == true)
+                            {
+                                if (wenduagEcho == null || !wenduagEcho.ApplyChoice(Payment.Scene, Choice,
+                                    () => RecordProgress(Choice, Complete, false), alreadyPaid: true))
+                                    throw new InvalidOperationException("Paid custody change was not confirmed");
+                                return;
+                            }
+                            if (Choice.Revive != null)
+                            {
+                                if (Complete == null) throw new InvalidOperationException("Recovery has no completion");
+                                string message;
+                                bool restored = Choice.Revive == "konomi"
+                                    ? KonomiRecovery.Request(KonomiRequestIdentity(Complete, Choice), true, out message) == KonomiRecovery.Outcome.Confirmed
+                                    : Fate.TryRevive(Choice.Revive, revivalUnits[Choice.Revive], Complete, Choice, out message);
+                                ReportRecovery(message);
+                                if (!restored) throw new InvalidOperationException("Paid recovery was not confirmed");
+                            }
+                            RecordProgress(Choice, Complete, false);
+                        });
+                        if (!committed)
+                        {
+                            Game.Instance.DialogController?.StopDialog();
+                            if (Payment.Scene != null) Queue(Payment.Scene);
+                            return;
+                        }
+                        UpdateProgressJournal(Choice);
+                        if (Choice.Revive != null && Choice.Revive != "konomi") Fate.Clear(Choice.Revive);
+                        return;
+                    }
                     if (Payment != null)
                     {
                         bool applied = Payment.Applied;
