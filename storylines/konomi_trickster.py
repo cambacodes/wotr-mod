@@ -716,6 +716,11 @@ def _gate(choice, forbids=(), requires=()):
 def integrate(payload):
     """Save-safe edits to the registered route: no id, node or choice is renamed, removed or reordered. New choices are
     appended; the scenes and choices they replace on a Trickster run are gated off."""
+    # konomihx3: settled terms and an old lover's history survive an envoy-only answer.
+    # Withhold her romantic household eligibility while keeping the political route open.
+    eligibility_forbids = payload.setdefault("DerivedForbids", {}).setdefault("konomi.harem.eligible", [])
+    if ENVOY not in eligibility_forbids:
+        eligibility_forbids.append(ENVOY)
     rel = payload["Relationships"]["konomi"]
     rel["TricksterAccess"] = {k_: dict(v) for k_, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, a dismissed Konomi may find the road back to Drezen longer than she "

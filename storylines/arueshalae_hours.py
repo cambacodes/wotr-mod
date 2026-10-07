@@ -126,7 +126,7 @@ hub(QUARREL, "A quarrel", 5, '"You\'re angry with me."', [
         c('"I\'ll tell you. Before. Every time."', "promise", flags=(QUARREL,)),
         c('"No. It\'s my coin, and it\'s my hand. I\'ll spend both as I like."', "cant", flags=(QUARREL,))),
     a("promise", '''"Every time." {n}She glares at you through her tears.{/n} "You say that about everything. Every time. It's the most frightening thing you say." {n}Then she sits down next to you, hard, and leans her head on your shoulder, on the cloth, the careful way.{/n} "I'm still angry. This is me being angry. Don't move."''', c()),
-    a("cant", '''"No. I know you won't." {n}She wipes her face.{/n} "That's what makes it a real quarrel, I suppose. In the Upper City we never quarrelled. We just waited until someone was asleep." {n}She sits down, not next to you, but not far.{/n} "I'm going to be angry for two days, then. And afterwards I'll still be here, and I'll still take your hand when you've paid for it, and I'll hate that I do. That's new too."''', c()),
+    a("cant", '''"No. I know you won't." {n}She wipes her face.{/n} "That's what makes it a real quarrel, I suppose. In the Upper City we never quarrelled. We just waited until someone turned their back." {n}She sits down, not next to you, but not far.{/n} "I'm going to be angry for two days, then. And afterwards I'll still be here, and I'll still take your hand when you've paid for it, and I'll hate that I do. That's new too."''', c()),
 ], (MORNING, CURED), delay=48, chapters=(5,))   # Sol r1 BEL: the quarrel is over the scrolls the player actually bought
 
 

@@ -83,7 +83,8 @@ for cue_guid, edit in PARENT_EPILOGUE_EDITS.items():
     } else "minachiv.invitation_kept"]
     edit["LocalizedKey"] = "Tirabade.Minachiv.ParentEnding." + cue_guid
     edit["Owner"] = "Epilogue"
-    edit["Forbids"] = ["minagho.dead", "chivarro.dead"]
+    edit["Requires"].insert(0, "trickster")
+    edit["Forbids"] = ["minagho.dead", "chivarro.dead", "trickster.failed", "dragon", "legend", "swarm"]
 
 # Apply only in the ordinary epilogue sequence after a matching addon loss page
 # is available or already played. Evaluation failure leaves the original intact.
@@ -93,8 +94,8 @@ for cue_guid, edit in PARENT_EPILOGUE_EDITS.items():
 # Original page order, selectors and OnShow actions remain unchanged.
 PARENT_EPILOGUE_LOSS_RULES = [{'Id': 'both_lost',
   'Owner': 'Epilogue',
-  'Requires': ['minachiv.invitation_kept', 'minagho.dead', 'chivarro.dead'],
-  'Forbids': [],
+  'Requires': ['trickster', 'minachiv.invitation_kept', 'minagho.dead', 'chivarro.dead'],
+  'Forbids': ['trickster.failed', 'dragon', 'legend', 'swarm'],
   'ReplacementScenes': ['minachiv.ending_both_lost', 'minachiv.ending_both_lost_completed'],
   'SuppressPages': ['951e4432cf844a36a8a222b27589fb43',
                     '6db8635856e74b6cac46330bd82b4ff5',
@@ -110,8 +111,8 @@ PARENT_EPILOGUE_LOSS_RULES = [{'Id': 'both_lost',
   'SurvivorAlternates': {}},
  {'Id': 'minagho_lost',
   'Owner': 'Epilogue',
-  'Requires': ['minachiv.invitation_kept', 'minagho.dead'],
-  'Forbids': ['chivarro.dead'],
+  'Requires': ['trickster', 'minachiv.invitation_kept', 'minagho.dead'],
+  'Forbids': ['chivarro.dead', 'trickster.failed', 'dragon', 'legend', 'swarm'],
   'ReplacementScenes': ['minachiv.ending_minagho_lost', 'minachiv.ending_minagho_lost_completed'],
   'SuppressPages': ['951e4432cf844a36a8a222b27589fb43',
                     '6db8635856e74b6cac46330bd82b4ff5',
@@ -127,8 +128,8 @@ PARENT_EPILOGUE_LOSS_RULES = [{'Id': 'both_lost',
   'SurvivorAlternates': {}},
  {'Id': 'chivarro_lost',
   'Owner': 'Epilogue',
-  'Requires': ['minachiv.invitation_kept', 'chivarro.dead'],
-  'Forbids': ['minagho.dead'],
+  'Requires': ['trickster', 'minachiv.invitation_kept', 'chivarro.dead'],
+  'Forbids': ['minagho.dead', 'trickster.failed', 'dragon', 'legend', 'swarm'],
   'ReplacementScenes': ['minachiv.ending_chivarro_lost', 'minachiv.ending_chivarro_lost_completed'],
   'SuppressPages': ['5c95d8e3fa4f3b44896914987cb04b0b'],
   'SuppressCues': ['e87b43c31c1c4253a7137c7d6c05b246',

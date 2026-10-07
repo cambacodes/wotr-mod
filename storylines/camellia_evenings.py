@@ -69,10 +69,10 @@ living(PUPPY, "A barking ball of happiness", '"Tell me about the puppy."', [
 
 SALLE_LEADS_OUT = '''"You cheated at my game once, with the truth. I'm going to cheat at yours with this."'''
 living(SALLE, "Hit me where it counts", '"You\'re holding two swords. Should I be worried?"', [
-    cam("open", '''"Foils." {n}She tosses you one, hilt first, and it is only when you catch it that you see the button on the point.{/n} "Practice blades. My father's fencing master would have fainted to see me use such cheap ones, but the quartermaster had nothing better, and I haven't practised in months. I'm getting sloppy."
-"And I want to see how you fight. Not on the battlefield. Everybody fights well on a battlefield. It's the only place where nobody is watching you."''',
+    cam("open", '''"Foils." {n}She tosses you one, hilt first, and it is only when you catch it that you see the button on the point.{/n} "Practice blades. My father's fencing master would have fainted to see me use such cheap ones, but the quartermaster had nothing better, and I have been fighting demons. Their reach is quite different from yours."
+"In battle you have an army watching you. Tonight I shall have a better view."''',
         c("Continue", "rules")),
-    cam("rules", '''"First touch to the body wins. Not the arm, not the leg. A touch to the arm is a wound and a touch to the body is a conversation. I made that rule up just now. I like it." {n}She salutes, very correctly, blade to her lips.{/n} "Let us converse."''',
+    cam("rules", '''"First touch to the body. I shall not count your sleeve. I want to know whether you can keep me away from somewhere that matters." {n}She salutes, very correctly, blade to her lips.{/n} "Let us converse."''',
         c("Continue", "out", requires=(OUT_LIED,)),
         c("Continue", "bout", forbids=(OUT_LIED,))),
     cam("out", SALLE_LEADS_OUT, c("Continue", "bout")),
@@ -91,7 +91,7 @@ living(SALLE, "Hit me where it counts", '"You\'re holding two swords. Should I b
 "You let me," {n}she says, almost accusingly.{/n} "Why did you let me?"
 {n}You tell her you wanted to see what she would look like. She takes the foil away, and for once she has nothing clever to say at all.{/n}''',
         c("Continue", "close")),
-    cam("close", '''"We shall do this again." {n}She is putting the foils back in their rack, very carefully, as though they were the real thing.{/n} "Often. I learn more about a person in a salle than in a bedroom, you know. People are so much more honest when they think the only thing at stake is a point."''',
+    cam("close", '''{n}She returns the foils to their rack.{/n} "Again tomorrow, if the muster allows it. You watched my point more carefully after the first touch. I should like to know what else you learned."''',
         c("[Help her with the foils]")),
 ], requires=(MIREYA,), delay=48)
 
@@ -105,28 +105,25 @@ living(STRANGERS, "A table for strangers", '"Buy you a drink, Camellia?"', [
 "I'll go first." {n}She nods towards a stout man by the fire, laughing with a group of soldiers.{/n} "Him. He is telling everyone he is happy to be home on leave. He is lying. He has not written to his wife. He is afraid of what she'll say when she sees his hands. They shake."''',
         c('"How can you know that?"', "how"),
         c('"My turn."', "yours")),
-    cam("how", '''"I don't know it. I see it." {n}She sips nothing.{/n} "Look at his hands, around the cup. Look at the ring he keeps turning. Look at the soldiers: they are laughing because he is paying. Everybody's lie is in their hands, my friend. The face is only the curtain." {n}She turns her head.{/n} "Your turn. Choose someone."''',
+    cam("how", '''"Look at the cup. He can scarcely lift it without spilling. And he keeps turning his wedding ring." {n}She glances toward the laughing soldiers.{/n} "They have let him pay for every round. I doubt they will go home with him to explain those hands. Your turn."''',
         c("Continue", "yours")),
     cam("yours", '''{n}She waits, bright-eyed, as you look around the room.{/n}''',
         c('"The barmaid. She says she hates the soldiers. She\'s in love with one of them."', "barmaid"),
         c('[Trickster] "You. You\'re telling everyone in this room you\'re harmless."', "you"),
         c('"The priest in the corner. He\'s not a priest."', "priest")),
-    cam("barmaid", '''"Oh, well done." {n}She claps softly.{/n} "The tall one with the scar. She's filled his cup three times and taken his coin once. That's love, or madness, which I'm told are the same." {n}She watches the girl go by.{/n} "She'll be sorry. They always are. Soldiers are very bad at being loved."''',
+    cam("barmaid", '''"Oh, well done." {n}She watches the girl go by.{/n} "Three cups for the scarred one, and she charged him once. She has expensive tastes. I wonder whether his pay will cover them."''',
         c("Continue", "last")),
     cam("priest", '''{n}Camellia glances at the man in grey. Her eyes narrow very slightly.{/n}
-"No," {n}she says quietly.{/n} "He isn't, is he. Look at his boots. Nobody takes a vow of poverty in boots like that." {n}She turns her glass a quarter turn.{/n} "I shall remember him. I have a very good memory for people who pretend to be something kind."''',
+"No," {n}she says quietly.{/n} "He isn't, is he. Look at his boots. Those boots cost more than mine. I wonder who paid for his charitable work." {n}She turns her glass a quarter turn.{/n} "I shall remember him. I have a very good memory for people who pretend to be something kind."''',
         c("Continue", "last")),
-    cam("you", '''{n}For a moment she genuinely doesn't understand. Then she does, and her face lights up as if you had given her a present.{/n}
-"Me. You chose me." {n}She presses her fingertips together.{/n} "In a room full of liars, you looked at the woman across your own table and you saw straight through her curtain."
-"Yes. I'm telling everyone I'm harmless. I've told everyone that my whole life." {n}She leans across the table.{/n} "Tell me what you see behind it."''',
+    cam("you", '''{n}Her face lights up.{/n} "Me? In a room full of people you might safely offend?" {n}She leans across the table.{/n} "Yes. I have been very well behaved tonight. What persuaded you not to believe it?"''',
         c('"Someone who is very, very good at waiting."', "waiting"),
         c('"Someone I want to know better."', "better")),
     cam("waiting", '''"Yes." {n}Barely a breath.{/n} "Oh, yes. That's exactly it." {n}She sits back, and she is quiet for a moment, and when she speaks again her voice is lighter.{/n} "You're a dangerous person to have a drink with, my friend. I'm going to have to do it more often."''',
         c("Continue", "last")),
-    cam("better", '''"Do you?" {n}She considers you over the rim of the glass she isn't drinking from.{/n} "People always say that. They never mean it. They mean they want to know the curtain better, because it's pretty." {n}She puts the glass down.{/n} "But you might. You might actually mean it. How very strange."''',
+    cam("better", '''"Better?" {n}She considers you over the rim of her glass.{/n} "You know my dresses, my manners, and my father's purse. Which part did you wish to examine next?" {n}She sets the glass down.{/n} "Do be specific. I dislike disappointing an admirer."''',
         c("Continue", "last")),
-    cam("last", '''{n}She walks back with you through the dark streets, her hand in the crook of your arm, naming the lie of every passer-by in a low, pleased murmur, like a woman naming birds. At the citadel gate she stops.{/n}
-"Thank you for the drink. I didn't touch it. I never drink in company I'm reading." {n}She smiles.{/n} "It makes them think they can see behind the curtain."''',
+    cam("last", '''{n}She walks back with her hand in the crook of your arm. At the citadel gate, a sentry straightens and steps aside for her.{/n} "Such a pleasant evening. Did you see him hurry to open the gate?" {n}Her smile sharpens.{/n} "You shall have to escort me again. He has decided I am a lady worth helping."''',
         c("[Say good night]")),
 ], requires=(TWO_LIES,), delay=48, chapters=(3, 5))
 
@@ -144,7 +141,7 @@ living(GLOVES, "A pair of gloves", '"Are those for me?"', [
 "There. Now I shall always know you by your hands, even in the dark." {n}She reaches out and straightens the cuff of the left one, very precisely.{/n} "I measured them while you slept, one night by the fire. You didn't wake. You never do, when I'm near. I find that very touching, and very foolish."''',
         c('"You measured my hands while I slept?"', "slept"),
         c('[Trickster] "I was awake. I wanted to see what you\'d do."', "awake")),
-    cam("slept", '''"With a ribbon. It took no time at all." {n}She says it as though it were the most natural thing in the world.{/n} "One should always know the measurements of the people one cares for. Hands, throats, the distance between one rib and the next." {n}She laughs.{/n} "Oh, your face. I'm teasing, my friend. Mostly about the ribs."''',
+    cam("slept", '''"With a ribbon. It took no time at all." {n}She says it as though it were the most natural thing in the world.{/n} "Your left hand was hanging out from under the blanket. I measured that one first. You did not even stir." {n}She laughs.{/n} "Oh, your face. I have not measured your throat yet. I should like you awake for that."''',
         c("Continue", "close")),
     cam("awake", '''{n}Her hand stops on your cuff. For the length of a breath she is perfectly still, the way she goes still when she is listening to something nobody else can hear.{/n}
 "You were awake." {n}Very softly.{/n} "You lay there and let me measure you with a ribbon in the dark, and you never moved." {n}Then she smiles, slow and radiant.{/n} "That's either brave or insulting. I'll decide later, when it's more convenient for me."''',
@@ -163,14 +160,14 @@ SCENES.append(scene(WIDOW, "The widow from Nerosyan", "Camellia", 3, '"Mireya. S
         c("Continue", "room")),
     cam("room", '''{n}She tilts her head at the room: a dozen crusaders, a pair of merchants, a chaplain, two girls from the laundry, all drinking, all talking, all very much alive.{/n}
 "Half of the people in this room came to my funeral," {n}she murmurs.{/n} "The one with the eyepatch carried my coffin. The laundry girls cried. The chaplain read the service. And not one of them has looked twice at the widow at the end of the bar."
-"People see what they've been told is there. You told them I was dead, and so I am. It's the most wonderful thing anyone has ever given me."''',
-        c('"Doesn\'t it frighten you? Being invisible?"', "frighten"),
+"The coffin-bearer has seen my veil twice and my face not at all. Keep him talking if he comes over."''',
+        c('"Doesn\'t it frighten you, hiding among them?"', "frighten"),
         c('"What are you going to do with it?"', "do")),
     cam("frighten", '''"Frighten me?" {n}She laughs softly into her untouched wine.{/n} "My friend, I spent my whole life being seen. Being watched. Maids who went white when I came into a room, physicians with their little notebooks, priests who crossed themselves over my bed. Father, watching, always watching, to see what I'd do next."
-{n}She lets the veil fall.{/n} "This is the first time in my life that nobody is watching. It's like taking off a corset."''',
+"Now the coffin-bearer is looking straight past me." {n}She lowers the veil.{/n} "He has asked you three times for news from the front. Do keep obliging him."''',
         c("Continue", "do")),
     cam("do", '''"Do?" {n}She turns her glass a quarter turn.{/n} "I haven't decided. That's the lovely thing about being dead. There's no hurry. Nobody's expecting anything of me."
-{n}Across the room, the crusader with the eyepatch laughs at something, and she watches him with her head a little on one side.{/n} "I could do anything at all," {n}she says, pleasantly.{/n} "And no one would ever think to look for me."''',
+{n}Across the room, the crusader with the eyepatch laughs at something, and she watches him with her head a little on one side.{/n} "I could do anything at all," {n}she says, pleasantly.{/n} "He carried my coffin. I wonder how long it would take him to recognize me without this lace."''',
         c('"But you won\'t."', "wont"),
         c('[Trickster] "You could. But then you\'d have to go back to being alive, to enjoy the credit."', "credit")),
     cam("wont", '''"Won't I?" {n}She looks at you, and under the lace her smile is very fond and not reassuring at all.{/n} "You say that as if you'd decided it for me. That's very sweet. It's also very like you." {n}She pats your hand.{/n} "Don't worry. I'm waiting for you. I'm not in the mood for anyone else just now."''',
@@ -178,7 +175,7 @@ SCENES.append(scene(WIDOW, "The widow from Nerosyan", "Camellia", 3, '"Mireya. S
     cam("credit", '''{n}She stares at you. Then she laughs, genuinely, too loudly for a widow, and two of the laundry girls look round.{/n}
 "Oh, that's true," {n}she whispers, when they've looked away.{/n} "That's horribly true. A widow who laughs too loudly is remembered, and a remembered widow is the first person the watch asks about the next body." {n}She shakes her head.{/n} "You've quite spoiled my evening. I shall have to be very dull in public for a month, and save all my interesting habits for my friends."''',
         c("Continue", "close")),
-    cam("close", '''"Go on. You're drawing looks. Commanders don't usually sit with widows." {n}She lowers her veil completely.{/n} "Come back soon. I like being invisible with you. You're the only one who knows where to look."''',
+    cam("close", '''"Go on. You're drawing looks. Commanders don't usually sit with widows." {n}She lowers her veil completely.{/n} "Come back soon. Next time I shall choose a quieter table."''',
         c("[Leave her at the end of the bar]")),
     ], requires=("trickster.ever", RET, KILLED, GRAVE), forbids=(CLOSED,), delay=24, last=5, optional=True, Relationship=REL,
     Chapters=[3, 5], ContactUnit=UNIT, Areas=[DREZEN], InteractionHub=PRESENCE))
@@ -203,7 +200,7 @@ SCENES.append(scene(CENSUS, "The chaplains' census", "Camellia", 3, '"The chapla
         c("Continue", "chaplain")),
     nar("chaplain", '''{n}The flap of the chapel tent opens and a young chaplain comes out, a thin man with ink on his fingers. He sees Camellia and stops. He sees you, and some of the colour comes back into his face. He holds out his hand for the form, and she gives it to him with a charming smile, and he goes back inside without reading it.{/n}''',
         c("Continue", "after")),
-    cam("after", '''"He's afraid of me." {n}She watches the tent flap settle.{/n} "They all are, here. They don't know why. They've been praying over me for a week and they still don't know why." {n}She smooths her skirt.{/n} "It's so much nicer when people are afraid of me for no reason. It's like being loved."''',
+    cam("after", '''"He's afraid of me." {n}She watches the tent flap settle.{/n} "They all are, here. They don't know why. The chaplain folded my answers without reading them. He can pray over those, if he likes." {n}She smooths her skirt.{/n} "It's so much nicer when people are afraid of me for no reason. It's like being loved."''',
         c("[Walk her back to camp]")),
     ], requires=("trickster.ever", RET, DUE), forbids=(CLOSED, KILLED), delay=24, last=5, optional=True, Relationship=REL,
     AnswerLists=[HUB_LIST], ContactUnit=UNIT))
@@ -221,7 +218,7 @@ met(OBITUARY, "An obituary, corrected", '"What are you writing?"', [
         c('"It\'s honest."', "honest"),
         c('"Go on."', "more", requires=(KILLED,)),
         c('"Go on."', "more_d", forbids=(KILLED,))),
-    cam("honest", '''"It's honest." {n}She seems pleased, and faintly surprised, as if you had complimented a dress she had not expected anyone to notice.{/n} "I've never written anything honest before. It's much harder than lying. You have to choose every word, and none of them are pretty." {n}She dips the pen.{/n} "There's more."''',
+    cam("honest", '''"It's honest." {n}She seems pleased, and faintly surprised, as if you had complimented a dress she had not expected anyone to notice.{/n} "I crossed out 'beloved' three times. It kept making the next sentence sound ridiculous." {n}She dips the pen.{/n} "There's more."''',
         c("Continue", "more", requires=(KILLED,)),
         c("Continue", "more_d", forbids=(KILLED,))),
     cam("more_d", '''"'She died once, on a battlefield, of nothing in particular. A friend stood over her body and told it that it was overacting. She got up, out of sheer offence.'"
@@ -234,7 +231,7 @@ met(OBITUARY, "An obituary, corrected", '"What are you writing?"', [
         c('[Trickster] "End it with \'To be continued.\'"', "continued"),
         c('"End it with my name."', "name"),
         c('"Leave it unfinished."', "unfinished")),
-    cam("continued", '''"'To be continued.'" {n}She writes it. She sits back and looks at it, and slowly, delightedly, she begins to laugh.{/n} "Oh, that's perfect. That's so perfectly vulgar. Like the end of a chapbook." {n}She blows on the ink.{/n} "Every obituary in the world should end like that. Just to frighten people."''',
+    cam("continued", '''"'To be continued.'" {n}She writes it. She sits back and looks at it, and slowly, delightedly, she begins to laugh.{/n} "Oh, that's perfect. That's so perfectly vulgar. Like the end of a chapbook." {n}She blows on the ink.{/n} "The chaplain would hate that ending. I wish he could read this one."''',
         c("Continue", "done")),
     cam("name", '''{n}She holds the pen above the page until a drop of ink falls. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it the way she looks at a knife she means to keep.{/n}
 "There," {n}she says softly.{/n} "Now it ends with the only thing I'm sure of." {n}She folds the paper in three.{/n} "That's more romantic than anything I've ever said out loud. You're a very bad influence."''',
@@ -314,9 +311,9 @@ met(PRISONER, "The prisoner", '"Camellia. They told me you were in the cells."',
     cam("yes", '''"Thank you." {n}She says it quite simply, the way one thanks a friend for passing the salt. She takes a small, clean knife from her sleeve.{/n} "You should go now, my friend. Or stay. It's up to you. I know it isn't pretty."
 {n}You leave. Behind you, as the door closes, you hear her begin to talk to him, softly, pleasantly, as if she were telling him a bedtime story. The guards on the stair do not look at you. Later, the chaplain records that the prisoner died in his chains of a failure of the heart.{/n}''',
         c("[Walk up into the light]", flags=(PRISONER_HERS,))),
-    cam("watch", '''{n}She blinks. Then she smiles, slowly, the smile of a performer told which seat the critic has taken.{/n}
-"Mine?" {n}She lets out a breath.{/n} "How discerning. Most spectators waste their attention on the wrong person."
-{n}So you stand against the wall, and you watch her. You do not look at the man. You look at her face, the whole long time, and she looks back at you over his shoulder, and it is the most intimate and the most terrible thing you have ever shared with anyone. Afterwards she washes her hands in the bucket, slowly, and dries them finger by finger, and studies your expression.{/n} "Well, my friend? Was the spectacle worth keeping him alive for?"''',
+    cam("watch", '''{n}Camellia blinks, then smiles.{/n} "My face? How discerning."
+
+{n}You stand against the wall. She watches you over the prisoner's shoulder while she works. His breath catches, breaks into a wet rattle, and stops. Her eyes stay on yours. Afterward she washes her hands in the bucket and dries each finger before approaching you.{/n} "Well, my friend? You had a very good view."''',
         c("[Hold her]", flags=(PRISONER_HERS,))),
     cam("no", '''{n}For a moment you see it: the flash of something bright and furious behind her eyes, gone almost before it is there, the look of a woman who has had her plate taken away.{/n}
 "Trial," {n}she says.{/n} "Of course. How very correct of you."
@@ -327,12 +324,12 @@ met(PRISONER, "The prisoner", '"Camellia. They told me you were in the cells."',
 
 # --- The mirror. ------------------------------------------------------------------------------------------------------
 
-MIRROR_LEADS_NEW = '''"'Mireya Voss, widow, of Nerosyan.'" {n}She tries a curtsey at the glass.{/n} "She has a very good posture. Much better than mine. Widows always do; they've nothing left to bend for."'''
+MIRROR_LEADS_NEW = '"Mireya Voss, widow of Nerosyan." {n}She tries a curtsey at the glass, then lifts her chin.{/n} "Too deep. Her husband left her money. She need not be grateful to every fool who opens a door."'
 met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
     cam("open", '''"Have I?" {n}She is standing in front of the long glass in your room with the black veil in her hands, putting it on and taking it off, putting it on and taking it off, watching her own face appear and disappear.{/n} "I'm practising. I've been three people this year. Camellia, and a dead woman, and whoever I am now. I keep forgetting which face I've got on."''',
         c("Continue", "voss", requires=(NEW_NAME,)),
         c("Continue", "which", forbids=(NEW_NAME,))),
-    cam("voss", MIRROR_LEADS_NEW, c("Continue", "which")),
+    cam("voss", '''"Mireya Voss, widow of Nerosyan." {n}She tries a curtsey at the glass, then lifts her chin.{/n} "Too deep. Her husband left her money. She need not be grateful to every fool who opens a door."''', c("Continue", "which")),
     cam("which", '''"Father brought healers to the house when I was small, and clerics, and in the end exorcists. I remember their faces better than my own. The clerics had a face for praying over me: very gentle, and a little afraid to touch." {n}She lowers the veil.{/n}
 "I used to copy it in the glass, afterwards, so I would know it when I saw it again. Or I tell myself I did. I tell myself a great many things about that house. Some of them are even true. I never once practised my own face. I never knew what it was supposed to look like."''',
         c('"Let me show you."', "show"),

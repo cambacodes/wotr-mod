@@ -226,6 +226,36 @@ def integrate(payload):
                 additions.extend([bereaved, alternate])
             node["Choices"].extend(additions)
         scene["Nodes"].append(neutral)
+    # eng7-integ5 authored absence variant: Seelah's native soul-rescue
+    # aftermath belongs to the rescued people, including when Arsinoe's
+    # existing loss/busy flags bar a visit. Keep the original priestess
+    # branch and ending, and append the same aftercare without that visit.
+    for scene in payload["Scenes"]:
+        if scene["Id"] != "seelah.souls" or "arsinoe" not in payload["Relationships"]:
+            continue
+        variant_id = "eng7_l14.end_without_arsinoe"
+        if any(n["Id"] == variant_id for n in scene["Nodes"]):
+            continue
+        ending = next(n for n in scene["Nodes"] if n["Id"] == "end")
+        neutral = copy.deepcopy(ending)
+        neutral["Id"] = variant_id
+        neutral["Text"] = neutral["Text"].replace(
+            "speak to Arsinoe about the people who still need help",
+            "visit the people who still need help")
+        available = availability(payload, "arsinoe", "arsinoe")
+        absent = unavailability(payload, "arsinoe", "arsinoe")
+        for node in scene["Nodes"]:
+            additions = []
+            for choice in node["Choices"]:
+                if choice.get("Next") != "end":
+                    continue
+                alternate = copy.deepcopy(choice)
+                alternate["Next"] = variant_id
+                alternate.setdefault("Forbids", []).append(available)
+                choice.setdefault("Forbids", []).append(absent)
+                additions.append(alternate)
+            node["Choices"].extend(additions)
+        scene["Nodes"].append(neutral)
     # eng7-l14: the native south-road branch still names a living Irabeth.
     # If another recorded loss now makes her unavailable, use the existing
     # reproach/killer page rather than stage her through the wall. Append

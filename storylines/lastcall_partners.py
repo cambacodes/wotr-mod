@@ -258,7 +258,7 @@ partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepte
     page_commit_groups=[["konomi.committed"], [K + "late_committed"]],   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
     # Engine-q2 item 4: a Konomi who died at her post and was never recalled has no coda and no call-in (konomi_trickster.LOST:
     # her death latch, lifted by the dead.recalled rite). Her own route's key, not another route's closure (G5).
-    page_forbids=("konomi.dead.unreturned",), call_forbids=("konomi.dead.unreturned",))
+    page_forbids=("konomi.dead.unreturned", K + "envoy"), call_forbids=("konomi.dead.unreturned",))
 
 NO = "nocticula.trickster."
 partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at Her Right Hand",
@@ -553,7 +553,7 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
         page_p('''At the rift the Commander called in the new moon, and the spirits that had been fed on {mf|his|her} blood all winter came for the rest of what they were owed. Camellia would not let them take it for themselves. She held the bowl and made the cut, one last neat one, exactly where a friend would stand, and the voices in her head went quieter than she had ever heard them. They stayed quiet a month. She hated every day of it, and was delighted when they came back.''', requires=(called("camellia"),)),
         page_p('''The Commander had come to her coffin late, with a sexton's lantern and a purse of gold, after the spirits had had three days alone with her. She never forgot the sound of the coins. For a season she took her supper at the far end of the table, with her knife beside her own plate instead of the Commander's, and watched {mf|him|her} eat the way she read a bad notice. Then one evening the knife was back beside the Commander's plate, which in Camellia's house is how a lady admits that someone has been forgiven.''', requires=(CA + "cost.late",)),
         page_p('''Two names now stood in the crusade's register of the dead, hers and the Commander's, a few leaves from each other. She had the clerk copy both onto one sheet and framed it over the bed. She said she had always wanted a {mf|husband|wife} nobody could accuse her of murdering.''', requires=(ON_RECORD, "camellia.killed")),   # Q8: only her own recorded death
-        page_p('''She knew about the flask. She asked to hold it only once, and weighed it in her palm the way she weighs a stranger's throat, and gave it back. "Your death, corked," she said. "How very courteous of it, to wait for you."''', requires=("lastcall.bottled_held",)),
+        page_p('She knew about the flask and watched it where the Commander kept it. "Your death, corked. Open it for me one day, my friend. I should like to hear what escaped you." The flask remained with the Commander.', requires=("lastcall.bottled_held",)),
     ), declined=CA + "declined",
     deal=[[CA + "cost.blood_bargain"], [CA + "cost.spirits_owed"]],
     call=call('''[Call in the new moon] "Camellia's spirits, you've had my blood every dark of the moon. Come and collect the rest, from the living."''',

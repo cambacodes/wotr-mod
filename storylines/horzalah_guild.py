@@ -839,7 +839,7 @@ letter(H + "letter.first", "Pinned", [
     nar("start", '''{n}You wake with a knife in the post of your bed, a hand's breadth above your head, so thin you did not hear it go in. It pins a folded sheet of black paper. The hand is as sharp as a row of nails.{/n}''',
         c("Continue", "read")),
     hz("read", '''"Mortal.
-You have gone off to your war without saying goodbye, which is rude, and without telling me where, which is sensible. I found you anyway. You will have noticed.
+You were not by the old elf's shelves when I came looking. Your war keeps you busy. So does mine, and I still found time to find your bed. You will have noticed.
 I do not write letters. I write contracts. This is not a contract. I have no idea what it is. I am sending it because I was standing in your street by the old elf's shelves and you were not in it, and I found that I minded, and I do not like minding things. It is very bad for business."''',
        c("[Read on.]", "board")),
     hz("board", '''"You will want to know that your name is no longer on any board in Alushinyrra. Not mine, not the two lesser Guilds by the docks, not the one the Lady's court keeps for itself and pretends it does not. I had them taken down. The lesser Guilds took some persuading. One of them no longer exists.
