@@ -825,11 +825,11 @@ SCENES.append(scene(P + "epilogue.article", "", "NenioEpilogue", 6, "", [
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DISSOLVED, "sacrifice", *LOSSES),
     ForbidOverrides={"sacrifice": "trickster.commander_back", **LOSS_BACK}, **EP))
 
-# Brief reserved: nenio.trickster.epilogue.commit.explicit.1.
-# Stable inline slot IDs need shared renderer support; this page keeps its heated cut.
+# AUTHORED late encounter: the appended slot owns the cut and morning.
+# The legacy page exit remains inert; readers may continue through the new answer.
 SCENES.append(scene(P + "epilogue.commit", "", "NenioEpilogue", 6, "", [
     nar("page", '''{n}On her return, Nenio brought the Commander the result of their unfinished experiment. "Retained," she announced. "I repeated the test. The other entries required corrections. Yours required a visit." She put down the sheet and caught the Commander's collar for a kiss. "I want you. Now."{/n}
-{n}Inside, she dropped her coat on a chair. The Commander unfastened her shirt; Nenio drew {mf|him|her} closer, then moved the candle beyond reach. "Fire would spoil the result." She backed toward the bed, pulling the Commander with her. The pencil rolled under the chair; she left it there. "The library can wait until morning."{/n}
+{n}Inside, she dropped her coat on a chair. The Commander unfastened her shirt; Nenio drew {mf|him|her} closer, then moved the candle beyond reach. "Fire would spoil the result." She backed toward the bed, pulling the Commander with her. The pencil rolled under the chair; she left it there.{/n}
 {n}In the morning the stopwatch lay beside the observations. "No duration recorded," she said. "We shall have to repeat it." She pressed the Commander's hand against her waist. "Stay." Her new sheet began "Subject: Commander. Study ongoing". She folded it into her coat before leaving, then came back for the pencil beneath the chair — and another kiss.{/n}''',
         paragraphs=(
             p("{n}She still did not have the Commander's name. She said the door had been the right one anyway, which was more than could be said for most names.{/n}", requires=(NAME_GONE,)),
@@ -1077,14 +1077,29 @@ for _physical in SCENES:
         _watch = next(node for node in _physical["Nodes"] if node["Id"] == "watch")
         _slot_id = _physical["Id"] + ".explicit.1"
         # Brief: Nenio abandons measurement for her first chosen encounter.
-        _cut = ('{n}Nenio pulls you down onto the blanket and kisses you hard enough to interrupt her own breath. '
-                'The watch ticks beside her discarded coat. She reaches for it, changes her mind, and draws you closer instead.{/n} '
-                '"Leave it. I want you here."')
+        _cut = '{n}Still astride you, Nenio bends to kiss you. Her hands settle on your shoulders; she holds you close as the kiss deepens. The watch keeps ticking beside the blanket.{/n} "Leave it. I want you here."'
         import copy as _slot_copy
         _exit = _slot_copy.deepcopy(_watch["Choices"][0])
         _watch["Choices"][0]["Forbids"] = list(dict.fromkeys([*_watch["Choices"][0]["Forbids"], "trickster.ever"]))
         _watch["Choices"].append(c("Continue", _slot_id))
         _physical["Nodes"].append(nar(_slot_id, _cut, _exit))
+
+
+# Round 3: append a real slot without changing the saved ending exit.
+_late = next(s for s in SCENES if s["Id"] == P + "epilogue.commit")
+_page = _late["Nodes"][0]
+_buildup, _morning = _page["Text"].rsplit("\n", 1)
+_page["Text"] = _buildup
+_page["Choices"][0]["Id"] = "continue"
+_late_slot = P + "epilogue.commit.explicit.1"
+_page["Choices"].append(c("[Read on.]", _late_slot))
+# Brief: first chosen encounter after her return; third-person past narration.
+_late_cut = ('{n}Nenio sat on the bed and drew the Commander down beside her. '
+             'She caught {mf|his|her} face in both hands and kissed {mf|him|her} again, '
+             'then pulled {mf|him|her} close enough that neither could reach the notes.{/n} '
+             '"The library can wait until morning."')
+_late["Nodes"].append(nar(_late_slot, _late_cut, c("Continue", "morning_after")))
+_late["Nodes"].append(nar("morning_after", _morning))
 
 # Native public summary and supplementary private consequence are different
 # passages. No extra suppression/edit, ending gate, or saved exit is introduced.

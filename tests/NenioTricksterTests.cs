@@ -319,6 +319,54 @@ internal static class NenioTricksterTests
         check(!own.Any(s => Avail(s, World(story, 5, "trickster", "trickster.ever", "nenio.dissolved", "nenio.asked_to_leave"))),
             "Trk_Nenio_Dissolved: a scene opens after 'Farewell, Nenio.'.");
 
+        // Round 3: historical paragraphs must survive another route's closure
+        // or native death. Traverse all derived dependencies, including forbids
+        // and open-route contracts; a direct-flag check missed these in r2.
+        HashSet<string> Dependencies(IEnumerable<string> roots)
+        {
+            var found = new HashSet<string>();
+            var pending = new Stack<string>(roots);
+            while (pending.Count > 0)
+            {
+                var flag = pending.Pop();
+                if (!found.Add(flag) || !story.Derived.ContainsKey(flag)) continue;
+                foreach (var input in Rules.DerivedInputs(story, flag)) pending.Push(input);
+            }
+            return found;
+        }
+        foreach (var ending in new[] { "epilogue.article", "epilogue.commit" })
+        foreach (var receipt in new[] { "the_dead", "agreed", "footnote" })
+        {
+            var flag = F + "architect." + receipt;
+            var paragraph = S(P + ending).Nodes[0].Paragraphs.Single(p => p.Requires.Contains(flag));
+            var deps = Dependencies(paragraph.Requires.Concat(paragraph.Forbids).Concat(paragraph.AnyGroups.SelectMany(g => g)));
+            check(!deps.Any(f => f.StartsWith("areelu.", StringComparison.Ordinal)
+                                || f.StartsWith("crossroute.areelu.", StringComparison.Ordinal)),
+                "Historical Areelu paragraph reads her current availability: " + ending + "/" + receipt);
+            foreach (var loss in new[] { story.Relationships["areelu"].ClosedFlag, "areelu.dead_fight" })
+            {
+                var history = World(story, 6, "trickster", "trickster.ever", Started, Scribe,
+                    ending == "epilogue.article" ? Committed : Test, flag, loss);
+                check(Avail(S(P + ending), history) && Rules.ParagraphVisible(paragraph, history),
+                    "Historical Areelu payoff disappears after " + loss + ": " + ending + "/" + receipt);
+            }
+        }
+        // These generated guards remain shared-classifier debt. Prove that
+        // the transitive checker detects them, rather than letting them pass
+        // the direct-state assertion below. No live interaction is exempted.
+        foreach (var pair in new[] { (P + "commit.result", "galfrey"),
+                                    (F + "architect", "areelu"),
+                                    (F + "abyss.lamp", "nocticula") })
+        {
+            foreach (var scene in own.Where(s => s.Id == pair.Item1 || s.Id == pair.Item1 + "_visitor" || s.Id == pair.Item1 + "_arcade"))
+            {
+                var guard = "crossroute." + pair.Item2 + ".unavailable";
+                if (!scene.Forbids.Contains(guard)) continue; // shared fix may land independently
+                check(Dependencies(new[] { guard }).Contains(story.Relationships[pair.Item2].ClosedFlag),
+                    "Transitive coexistence check missed historical-reference debt: " + scene.Id);
+            }
+        }
+
         // Coexistence: no state closes or reads another relationship; no crowded hub; the presence is off Fye, the yard and the smith.
         var others = story.Relationships.Where(r => r.Key != "nenio").SelectMany(r => new[] { r.Value.StartedFlag, r.Value.ClosedFlag, r.Value.CommittedFlag }).ToHashSet();
         check(story.Scenes.Where(s => s.Relationship == "nenio").All(s => s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g)).All(f => !others.Contains(f))
@@ -489,7 +537,7 @@ internal static class NenioTricksterTests
               && !areeluReact.ForbidOverrides.ContainsKey("nenio.dissolved"),
             "Areelu's reaction does not carry the G6(b) overrides to Nenio's return.");
         var visitors = S("areelu.trickster.report.visitors").Nodes.Single(n => n.Id == "start").Choices;
-        check(visitors.Last().Next == "nenio" && visitors.Last().Requires.SequenceEqual(new[] { Returned }) && visitors.Last().Forbids.SequenceEqual(new[] { "nenio.dissolved" }),
+        check(visitors.Any(c => c.Next == "nenio" && c.Requires.SequenceEqual(new[] { Returned }) && c.Forbids.SequenceEqual(new[] { "nenio.dissolved" })),
             "Areelu's 'Let Nenio in' has no appended G6(b) twin for a returned Nenio.");
     }
 }
