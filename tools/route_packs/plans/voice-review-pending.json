@@ -458,5 +458,30 @@
     "scene": "nidalynn.trickster.kiln.the_druids.chosen",
     "route": "nidalynn",
     "finding": "nidalynn:D13"
+  },
+  {
+    "scene": "kaylessa.wasps.watching_hands",
+    "route": "kaylessa",
+    "finding": "kaylessa:D01"
+  },
+  {
+    "scene": "kaylessa.trickster.alive.warning",
+    "route": "kaylessa",
+    "finding": "kaylessa:D02-D04; kaylessa:K01"
+  },
+  {
+    "scene": "kaylessa.trickster.alive.amulet_swap",
+    "route": "kaylessa",
+    "finding": "kaylessa:D02-D04; kaylessa:K01"
+  },
+  {
+    "scene": "kaylessa.clearing.once_when_it_counts",
+    "route": "kaylessa",
+    "finding": "kaylessa:D09"
+  },
+  {
+    "scene": "kaylessa.clearing.courier_reply",
+    "route": "kaylessa",
+    "finding": "kaylessa:D05"
   }
 ]

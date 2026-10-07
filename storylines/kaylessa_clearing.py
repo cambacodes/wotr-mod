@@ -12,7 +12,7 @@ Every scene here Requires the commit (the late yes of "Put down somewhere" count
 Intimacy (Directive 12): the clearing, by starlight that suits her eyes; the cut lands at the start.
 """
 from story_format import c, scene
-from storylines.kaylessa_wasps import SOLDIER
+from storylines.kaylessa_wasps import SOLDIER, COURIER_SUPPLEMENT, COURIER_ACK, COURIER_IN_LETTER
 from storylines.kaylessa_trickster import (FIRST_WORDS, AMULET, ARROW, BEAST_FED, BEGGED, CLOSED, COMMITTED, COUNCIL_KNOWS, DEAD_L,
                                            DREZEN, HER_ARROW, KNIFE_BACK, KNIFE_HELD, LEFT, MET, PRESENCE, REL, SHYKA_RAISED,
                                            STALLED, SWAP_CLEAN, SWAP_FUMBLED, TOMB, UNIT, WASP_SENT, kay, nar)
@@ -226,15 +226,15 @@ here(NAME, "Once, when it counts", '"The bells..."', [
     kay("name_fresh", '''"{name}."
 {n}She says it once, quite clearly, as if she were laying a coin on a table where you would find it later.{/n}
 "There. You never asked, so I never used it. Now I have. Don't get used to it, soldier." {n}And she's gone, up a drainpipe and over a gutter onto the roofs, fast as a thrown knife.{/n}''',
-        c("[Go to the wall.]", "after")),
+        c("[Go to the wall.]", "wall")),
     kay("name", '''"{name}."
 {n}She says it once, quite clearly, as if she were laying a coin on a table where you would find it later.{/n}
 "I said after the war. The swarm isn't waiting for after. There. Once, when it counts. Don't get used to it, soldier." {n}And she's gone, up a drainpipe and over a gutter onto the roofs, fast as a thrown knife.{/n}''',
-        c("[Go to the wall.]", "after")),
-    nar("after", '''{n}Afterwards, when the swarm is broken and the wall is being cleared of what's left of it, you find a dozen vescavors on the rooftops round the market square with an arrow through each of their heads, all at the same angle, all from the same roof. She's sitting on the ridge of it with her bow across her knees, looking entirely pleased with herself.{/n}''',
+        c("[Go to the wall.]", "wall")),
+    nar("after", '''{n}Afterwards, when the swarm is broken and the wall is being cleared of what's left of it, you find a dozen vescavors on the parapet and the rooftops round the market square, each pierced by an arrow from the same roof. She's sitting on the ridge of it with her bow across her knees, looking entirely pleased with herself.{/n}''',
         c("Continue", "roof")),
     kay("roof", '''"Twelve." {n}She holds up the empty quiver.{/n} "I'd have had thirteen if your crossbowmen hadn't taken the last one. It was mine. I'd been watching it for a whole minute."
-{n}She holds out her hand for you to help her down, and when you've got her down she doesn't let go of it.{/n} "You were good on the wall. I watched you too. From up there you look like someone who isn't going to die today. Keep looking like that."''',
+{n}She drops from the gutter and catches your forearm to steady herself. A crushed vescavor wing clings to your sleeve; she picks it off.{/n} "I saw you on the wall. So did the sergeant. He'll have something to shout at the next batch of recruits. Try to live long enough to disappoint them, soldier."''',
         c("[Keep hold of her hand.]", "her_name")),
     kay("her_name", '''{n}Under the awning again she pulls the shawl down, still holding your hand.{/n} "Kaylessa. Not your ghost. Not the courier. When it's just us, that's what I want to hear."''',
         c("Continue", "name_breach", requires=("kaylessa.wasps.claimed_as_scout",)),
@@ -243,6 +243,14 @@ here(NAME, "Once, when it counts", '"The bells..."', [
         c("[Keep hold of her hand.]", forbids=(LETTER_SENT, "kaylessa.wasps.claimed_as_scout", "kaylessa.wasps.let_them_look"))),
     kay("name_breach", '''"The market got my face without me choosing it. Your scout, or something for them to stare at." {n}She tightens her grip.{/n} "Here I choose. Don't turn this into another announcement, soldier."''', c("[Stay beside her.]")),
     kay("name_letter", '''"The letter needed my name. I put it there myself. This isn't for Kyonin." {n}She touches your mouth with two fingers, then lets you go.{/n}''', c("[Stay beside her.]")),
+    # Authored defense: both tactics put the Commander under the swarm with witnesses.
+    nar("wall", '''{n}At the east parapet, a sergeant is beating a vescavor off a crossbowman's face with his helmet. The swarm dips toward a stair packed with wounded. Across the market, Kaylessa climbs onto a roof ridge and draws her bow. Her first arrow knocks a flyer away from the sergeant's bare head.{/n}''',
+        c("[Cover the wounded. Bring the shields over the stair.]", "shields"),
+        c("[Take the flank. Draw the swarm across the crossbowmen.]", "flank")),
+    nar("shields", '''{n}You wrench a shield from the rack and brace it above the stair. Claws scrape its rim; a vescavor catches your sleeve and tears it before an arrow pins it to the rail. Kaylessa is already nocking another. The sergeant gets his men beside you, shields overlapping, while the wounded crawl beneath them. "Last one's through, Commander!" He hauls the stair gate shut. You push back onto the parapet together, driving the flyers into the crossbows' line.{/n}''',
+        c("[Hold the parapet until the last flyer falls.]", "after")),
+    nar("flank", '''{n}You strike the nearest flyer and move along the exposed parapet. The swarm turns after you. "Wait for them to clear the stair!" the sergeant shouts to his crossbowmen. Wings batter your head; you catch the stone with one hand. An arrow from Kaylessa's roof takes the creature clawing at your fingers. You regain your footing as the crossbows loose across your flank. The sergeant pulls you behind a merlon, then bellows for his men to reload.{/n}''',
+        c("[Join the next volley and clear the parapet.]", "after")),
 ], requires=(MORNING,), delay=24)
 
 
@@ -300,10 +308,11 @@ here(AVENNARA, "From the border", '"You\'ve got a letter."', [
 {n}Kaylessa reads it twice, the second time with her lips moving. Then she folds it very small and puts it inside her shirt, over her heart, and does not say anything at all for the rest of the afternoon, and does not let go of your hand.{/n}''',
         c("[Leave her with it.]")),
     nar("receipt", '''{n}She turns the sheet over to read the last lines.{/n}''',
-        c("Continue", "courier", requires=("kaylessa.wasps.remembered_the_courier",)),
-        c("Continue", "end", forbids=("kaylessa.wasps.remembered_the_courier",))),
+        c("Continue", "courier", requires=(COURIER_IN_LETTER,), forbids=(COURIER_SUPPLEMENT,)),
+        c("Continue", "end", forbids=(COURIER_IN_LETTER,)),
+        c("Continue", "end", requires=(COURIER_SUPPLEMENT,))),
     nar("courier", '''{n}"Your account of the Green Road courier reached us. We are checking the missing riders against the rolls. What you remember of her capture will go to her family. We will put her own name on the message."{/n}
-{n}Kaylessa presses her thumb against the words until the paper creases.{/n}''', c("Continue", "end")),
+{n}Kaylessa presses her thumb against the words until the paper creases.{/n}''', c("Continue", "end", flags=(COURIER_ACK,))),
 ], requires=(LETTER_SENT,), delay=24 * 30)  # Authored round trip: ten days each way, plus circulation.
 
 
@@ -387,3 +396,11 @@ here(SCAR, "The arrow", '"Let me see that."', [
     nar("end", '''{n}When it's done she ties off the linen with a knot you've seen her tie on a bowstring, and then she leaves her hand where it is, flat over the bandage, a moment longer than the work needed.{/n}''',
         c("[Stay there.]")),
 ], requires=(), delay=24, any_groups=((ARROW, HER_ARROW),))
+
+# Authored courier supplement: the same thirty-day round trip, starting at its own dispatch.
+here(N + "courier_reply", "The missing rider", '"Has Avennara answered the second letter?"', [
+    nar("open", '''{n}A rider from the southern forts has brought a folded sheet bearing Avennara's mark. Kaylessa tears it open under the awning.{/n}
+{n}"Your second letter reached us. We are checking the Green Road's missing riders against the rolls. What you remember of the courier's capture will go to her family. We will put her own name on the message."{/n}
+{n}Kaylessa folds the sheet around her copy of the account and tucks both inside her shirt.{/n}''',
+        c("[Leave her with the letter.]", flags=(COURIER_ACK,))),
+], requires=(COURIER_SUPPLEMENT,), forbids=(COURIER_ACK,), delay=24 * 30)
