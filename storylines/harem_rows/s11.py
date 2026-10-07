@@ -10,6 +10,8 @@ PREFIX = "household.pair.camellia_arueshalae."
 PAIR = ("camellia", "arueshalae")
 SCROLL = "89e10c3f21fa50c4b8719e004c7628d3"
 SLOT = PREFIX + "choice.explicit.1"
+# S12 owns the lesson receipt; this arc uses the same work, never another prep.
+SHARED_CRAFT_WITNESS = "household.pair.nenio_camellia.deed.camellia_correction"
 
 
 def p(suffix):
@@ -112,36 +114,38 @@ def settlement(branch, retry=False):
 def optional_scenes():
     fallen = ("arueshalae.corrupted", p("ready.evil"), p("settle.evil_done"))
     company = entry("company", "The work under the smile", [
-        n("start", "Camellia", '''{n}Camellia lays out a stoppered bottle and a strip of linen. The equipment is intended for the next operation against the demons. Arueshalae watches her hands rather than the bottle.{/n}
-"She wishes to inspect my work. How flattering."''',
+        n("start", "Camellia", '''{n}At the Table, Camellia sets a stoppered poison bottle beside the map of the Worldwound approaches. Arueshalae leans over it; Camellia puts a finger on the stopper.{/n}
+"The workroom is ready. She insists on inspecting my work. How flattering."''',
           c('"Let her inspect the work."', "workbench"), c('"Keep this to business."', "declined"), later()),
-        n("workbench", "Camellia", '''{n}Camellia draws the linen across a blade, then leaves the blade on the bench for inspection.{/n}
-"The edge, not the handle. And the bottles stay where I put them."
-{n}She does not hide the treated strip when Arueshalae bends over it.{/n}''', c("[Continue.]", "kept")),
-        terminal("kept", "Arueshalae", '''"Careful work. You would hate to waste it on the wrong throat."
-{n}Arueshalae points out a missed patch near the hilt. Camellia takes the strip back and corrects it.{/n}
-"I came to see how you do it. If I wanted a meal, I would not be standing here talking about your knife."''', *COMPANY),
+        n("workbench", "Camellia", '''{n}In the workroom, Camellia draws a strip of linen across a blade. Arueshalae reaches for the bottle. Camellia slides it out of reach and offers the blade instead.{/n}
+"You may look. I am not giving lessons."
+{n}She turns the treated edge toward the lamp, exposing her work to the succubus's scrutiny.{/n}''', c("[Continue.]", "kept")),
+        terminal("kept", "Arueshalae", '''"You missed a patch. Such a pity if the cultist lived long enough to scream."
+{n}Arueshalae points beside the hilt. Camellia examines the blade, then takes the linen to it again.{/n}
+"There. I would rather watch your hands than eat you tonight."
+{n}Camellia stops wiping. Then she smiles and lays a second blade under the lamp. Arueshalae stays to examine it.{/n}''', *COMPANY),
         terminal("declined", "Camellia", '"Very well. I have work to finish."',
                  "company.seen", "company.declined", "arc.declined"),
     ], fallen + (p("settle.done"),) + RESPECT, optional=True)
     desire = entry("desire", "Courtesy set aside", [
-        n("start", "Camellia", '''{n}The blades for the Worldwound march have been packed away. Camellia has kept back a chair and a cup of wine.{/n}
-"Not everything at this bench is meant for the army."''',
+        n("start", "Camellia", '''{n}Camellia brings two cups to the Table. The blades for the Worldwound march are packed; the workroom key lies beside her wine.{/n}
+"I have no more work to show her. She may come anyway."''',
           c('"Leave them their invitation."', "camellia_answer"),
           c('"Keep it company."', "declined"), later()),
-        n("camellia_answer", "Camellia", '''"I asked for you, Arueshalae. Not an inspection. Not an audience."
-{n}Camellia leaves the second cup in plain sight.{/n}
+        n("camellia_answer", "Camellia", '''"I asked for you, Arueshalae. The soldiers may think you came to inspect the equipment. You need not."
+{n}Camellia pushes the second cup toward her.{/n}
 "I should be very annoyed if you made me say it twice."''', c("[Continue.]", "arueshalae_answer")),
-        n("arueshalae_answer", "Arueshalae", '''"You want something dangerous at your elbow. And you want everyone else to think it wandered there by accident."
-{n}Arueshalae takes the chair.{/n}
-"I came back for you. There are easier meals in Drezen."''', c("[Continue.]", "named")),
-        terminal("named", "Camellia", '"Then we understand one another. Leave the bottles alone."', *DESIRE),
+        n("arueshalae_answer", "Arueshalae", '''"And what shall I tell them when they ask why you keep inviting a succubus?"
+{n}Arueshalae takes the cup, watching Camellia over its rim.{/n}
+"I'll come for you, Cami. Your bottles bore me. But you'll have to do your own lying."''', c("[Continue.]", "named")),
+        terminal("named", "Camellia", '''"How fortunate that I am better at it."
+{n}Camellia leaves the key between them and drinks.{/n}''', *DESIRE),
         terminal("declined", "Arueshalae", '"Company, then. She can keep her pretty excuses."',
                  "desire.seen", "desire.declined", "arc.declined"),
     ], fallen + (p("company.kept"),), delay=48, optional=True)
     contact = entry("choice", "No harmless invitation", [
         n("start", "Camellia", '''{n}At the Table, Camellia sets down the key to the workroom. Arueshalae traps it beneath one finger. Outside, soldiers are being called to their posts.{/n}
-"We shall not be long. The march can spare us seven minutes."''',
+"Seven minutes under the ward, then I have blades to deliver."''',
           c('"Leave them alone."', "camellia_yes", requires=("arueshalae.ward_held",)),
           c('"Keep it friendship."', "declined"), later()),
         n("camellia_yes", "Camellia", '''"I said company. Do try to distinguish an invitation from a serving dish."
@@ -149,17 +153,19 @@ def optional_scenes():
 "Come with me. I want you there."''', c("[Continue.]", "arueshalae_yes")),
         n("arueshalae_yes", "Arueshalae", '''"You were very careful to make both sound alike."
 {n}Arueshalae lifts her finger from the key.{/n}
-"Yes, Cami. Tonight I want the woman who asked."''', c("[Continue.]", "ward_application")),
+"Yes, Cami. Tonight I want the woman who asked. Keep your poison corked."''', c("[Continue.]", "ward_application")),
         n("ward_application", "Narrator", '''{n}The shrine chaplain unrolls the Scroll of Death Ward. Camellia stands before him while Arueshalae waits clear of her. The ward must be read over Camellia before they leave together.{/n}''',
           c("[Have the ward read over Camellia.]", "cut", requires=("arueshalae.ward_held",),
             remove_item=SCROLL, flags=(p("choice.ward_spent"), p("ward.applied_camellia"))),
           c('"Keep their company; leave the rest tonight."', "declined")),
-        n("cut", "Narrator", '''{n}At the workbench, Camellia catches Arueshalae by the collar and kisses her. Arueshalae's hands close on her waist; she answers the kiss without taking the life beneath it. Camellia pulls her nearer. You leave them and shut the door.{/n}''',
+        n("cut", "Narrator", '''{n}You leave them in the workroom and shut the door. Camellia pushes the corked bottles aside, catches Arueshalae by the collar and kisses her. The succubus grips her waist and answers. Camellia draws her against the cleared bench; Arueshalae's fingers catch at the fastenings of her clothes.{/n}''',
           c("[Continue.]", SLOT)),
-        n(SLOT, "Camellia", '{n}The lamp at the workbench burns down while they remain together.{/n}\n"You will not tell them I asked."',
+        n(SLOT, "Camellia", '{n}Their shadows move across the workbench in the lamplight.{/n}\n"You will not tell them I asked."',
           c("[Continue.]", "kept_warded")),
         terminal("kept_warded", "Arueshalae", '''{n}Camellia straightens her clothes and steps away before the ward expires. Arueshalae laughs from the other side of the bench.{/n}
-"You did ask. And you enjoyed my answer. Call it desire if you like — I will still remember who turned the key."
+"You did ask. Shall I tell them how sweetly?"
+{n}Camellia turns back, one fastening still undone.{/n}
+"Oh, I know. You wanted me. Next time, you can say it before you kiss me."
 {n}They leave separately for their own quarters.{/n}''',
                  "choice.seen", "choice.both_yes", "deed.a_chose", "deed.b_chose", "choice.ward_spent",
                  "ward.applied_camellia"),
@@ -167,15 +173,15 @@ def optional_scenes():
                  "choice.seen", "choice.declined", "arc.declined"),
     ], fallen + FRIENDS + tuple(p(x) for x in COMPANY[1:] + DESIRE[1:]), delay=48, optional=True)
     morning = entry("morning", "Who kept the key", [
-        n("start", "Camellia", '''{n}Eight hours later, the two chairs at the Table stand apart. Camellia has a packed case beside her. Arueshalae's bow rests against the wall. The troops are assembling outside.{/n}
-"I trust this morning will contain fewer impertinent questions."''',
+        n("start", "Camellia", '''{n}At the Table the next morning, Camellia snaps a case of treated blades shut. Arueshalae has brought her bow and the workroom key. Outside, the troops are assembling for the Worldwound march.{/n}
+"You have brought that back very publicly."''',
           c('"Whose invitation was it?"', "cover"), later()),
         n("cover", "Camellia", '''"Mine. You may stop looking so pleased about it."
-{n}Camellia snaps the case shut.{/n}
-"And when the soldiers ask, we were preparing equipment for the march. That much is true."''', c("[Continue.]", "done")),
-        terminal("done", "Arueshalae", '''"I will tell them you were very thorough."
-{n}Arueshalae shoulders her bow without touching Camellia.{/n}
-"Go on, Cami. Keep your respectable face. I know where to find the other one."
+{n}Camellia presses her palm over the case's latch.{/n}
+"Next time, I shall come to you. You can explain my visit for a change."''', c("[Continue.]", "done")),
+        terminal("done", "Arueshalae", '''"To me? With that sweet little smile? They'll think you've come to be eaten."
+{n}Arueshalae slides the key across the Table and shoulders her bow without touching Camellia.{/n}
+"Wear it anyway. I like knowing what you hide behind it."
 {n}Camellia leaves with her case; Arueshalae follows the troops toward the gate.{/n}''',
                  "morning.seen", "morning.done", "deed.a_returned_to_duty", "deed.b_returned_to_duty"),
     ], fallen + (p("choice.both_yes"),), delay=8, optional=True)
