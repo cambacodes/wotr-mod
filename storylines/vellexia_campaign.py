@@ -334,7 +334,7 @@ SCENES[-1]["Nodes"][0]["Text"] = (
     "\"Ah. Too near.\"\n"
     "{n}Vellexia moves her shell farther away. Her face comes into view. She wears an expression of annoyance that becomes "
     "amusement as soon as she sees you noticing it.{/n}\n"
-    "\"You took your time answering. I have been calling a crusader who was busy being somewhere my shell could not follow. "
+    "\"Must I compete with every dying soldier for your ear? I have been calling a crusader who was busy being somewhere my shell could not follow. "
     "I have decided to find that flattering, provisionally.\"")
 SCENES[-1]["Forbids"] = [*SCENES[-1]["Forbids"], "vellexia.the_second_invitation", "vellexia.case_opened"]
 
@@ -1062,7 +1062,7 @@ ending("interrupted", "The last conversation", '''{n}The reunion went no further
 ending("closed", "A cover left closed", '''{n}Vellexia kept her last answer. She had enjoyed the Commander while she wanted the Commander; she did not send a gentler refusal afterward.{/n}''', requires=("vellexia.closed",), forbids=(*BAD_END, "inhuman"))
 ending("dead", "The unanswered request", '''{n}Vellexia died. The shell could carry no answer from her. It had never contained the woman whose voice had used it.{/n}
 {n}The Commander remembered her appetite for novelty, her cruelty, and the rare pleasure of having genuinely surprised her. Death did not make her harmless in retrospect, and nobody who had been her guest pretended that it did.{/n}''', requires=("vellexia.dead",), forbids=("vellexia.mirrored",))
-ending("mirror", "No voice borrowed from glass", '''{n}Vellexia remained imprisoned in the mirror, by the Commander's hand and with her own spell. Behind the cloth her eyes stayed open. She had promised to watch the Commander regret it, and she had time.{/n}''', requires=("vellexia.mirrored",))
+ending("mirror", "No voice borrowed from glass", '''{n}Vellexia remained imprisoned in the mirror, by the Commander's hand and with her own spell. Behind the cloth her eyes stayed open. The haze shifted when anyone approached the glass. The spell still held.{/n}''', requires=("vellexia.mirrored",))
 ending("coercion", "The invitation cannot answer", '''{n}The Commander's demonic rage had frightened Vellexia into surrender. Her old invitations could not disguise what followed as affection, and she never pretended that they could.{/n}
 {n}The shell stayed dark. Domination had ended the courtship, and the woman who had once laughed at the Commander across a ring tray kept her laughter for people she did not fear.{/n}''', requires=("vellexia.native_coercion",), forbids=("vellexia.dead", "vellexia.mirrored"))
 ending("hostility", "The invitation overtaken", '''{n}Violence overtook the invitation Vellexia had made. The shell did not preserve a safe, unchanged hostess somewhere beyond the quarrel. An earlier pleasant hour was no guarantee that either could resume the conversation that followed it.{/n}

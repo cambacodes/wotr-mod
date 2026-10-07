@@ -232,8 +232,15 @@ internal static class VellexiaTricksterTests
         check(unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => ch.Next == "nice" || ch.Next == "no_sparks")
                   .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade?.Amount < 0),
             "Trk_Vellexia_NoPowerUnmaking: the house is not bought.");
-        check(likeness.Nodes.Single(n => n.Id == "spell").Choices.All(ch => ch.Set.Contains(P + "cost.sat_for_painter")),
-            "Trk_Vellexia_NoPowerUnmaking: the painter's sitting costs the Commander nothing.");
+        foreach (var host in new[] { likeness, likenessStores })
+        {
+            var fee = host.Nodes.Single(n => n.Id == "spell").Choices;
+            check(fee.Count == 2 && fee[0].Next == "sitting" && fee[0].Set.Length == 0
+                  && fee[1].Abort && fee[1].Set.Length == 0,
+                "Trk_Vellexia_PainterFee: disclosure must offer acceptance and an unpaid postponement: " + host.Id);
+            check(host.Nodes.Single(n => n.Id == "sitting").Choices.Single().Set.Contains(P + "cost.sat_for_painter"),
+                "Trk_Vellexia_NoPowerUnmaking: the accepted sitting is unpaid: " + host.Id);
+        }
         // The native sequence can free her guests first and then mirror her (Cue_0095, then Answer_0091): no furniture is left
         // to prove she holds the knot, so the reading and the lever change (the stripped house bought back), same flags.
         var freedMirror = Program.Copy(primed); freedMirror.Flags.Add("vellexia.slaves_freed");
@@ -274,7 +281,7 @@ internal static class VellexiaTricksterTests
         var canvas = World(story, 5, "trickster", "trickster.ever", "vellexia.final_fight", "vellexia.dead", P + "primed");
         check(Rules.Available(story, likeness, canvas) && !Rules.Available(story, likenessStores, canvas), "Trk_Vellexia_Likeness: unavailable.");
         var woken = Play(likeness, canvas);
-        check(woken.Count > 0 && woken.All(r => new[] { "returned", "cost.diminished", "presumed_dead" }.All(f => r.Has(P + f))
+        check(woken.Count > 0 && woken.All(r => new[] { "returned", "cost.diminished", "presumed_dead", "cost.sat_for_painter" }.All(f => r.Has(P + f))
                                                  && r.Has("vellexia.prediction_known")), "Trk_Vellexia_Likeness: the wrong flags.");
         check(Rules.Available(story, visit, Later(story, woken[0], 24)), "Trk_Vellexia_Likeness: she is never tested in person.");
         check(Reaches(woken[0], "vellexia.committed"), "Trk_Vellexia_Likeness: no road to the commit.");
