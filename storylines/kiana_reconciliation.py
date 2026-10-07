@@ -132,7 +132,7 @@ SCENES = [letter("former_grief", "What she still remembers", [
         c('[Ask what became of the ribbons.]', "separation")),
     n("kindness", "Narrator", '''{n}You write that Elan should have bought the ugliest ribbon in the city and dared her to wear it.{/n}
 {n}Her reply arrives on the back of your own sheet.{/n}
-"Yes. It was harder. I was cross with him for being so pleased, which was remarkably unjust of me.
+"He would have done it, too. Then I would have had to wear the damned thing to supper.
 "Thank you for laughing. I wanted somebody to laugh at the right part. I tried telling it to an acquaintance and she squeezed my arm before I reached the second ribbon. I spent the rest of the conversation comforting her."
 {n}The ink changes a little farther down. She seems to have returned to the page after a pause.{/n}''', c('[Read the rest.]', "request")),
     n("separation", "Narrator", '''{n}You ask whether the ribbons ever appeared in the vampire princess's wardrobe.{/n}

@@ -356,3 +356,6 @@ def integrate(payload):
             if nid in pages:
                 pages[nid]["Text"] += '''
 {n}Under cover of the voices from the table, Kiana brushes your hand and smiles at you before turning back to her friends.{/n}'''
+
+    from storylines import kiana_round3
+    kiana_round3.integrate(payload)
