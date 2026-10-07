@@ -125,7 +125,7 @@ SCENES = [
 # Recollection is optional knowledge, not a new choice or an outcome producer.
 KNOWN = '''{n}The slave master's account of a dragon truce on Colyphyr comes back to you. Melazmera catches your glance.{/n}
 "Oh, that was me. Her miners were eating into my hunting ground."
-"And you were eating the miners," {n}Hepzamirah says.{/n} "You got your truce. You will get no tribute here."'''
+"And you were eating the miners," {n}Hepzamirah says.{/n} "You got your truce. You will get nothing else here."'''
 UNKNOWN = '''{n}Hepzamirah points at the wagon, then at the ridge.{/n}
 "Your hoard is uphill. My stores are here. Keep your hunting away from this load."
 "For two passages," {n}Melazmera says.{/n} "Don't mistake me for your hired guards."'''
