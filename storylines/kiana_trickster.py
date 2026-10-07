@@ -889,3 +889,7 @@ def integrate_ward(payload):
         caller["Choices"].extend((
             c('[Do the left side.]', "rounds_captive", forbids=(H_BETROTHED, WARD_GUESTS_HOME)),
             c('[Do the left side.]', "rounds_no_wedding", requires=(H_BETROTHED,))))
+
+# D29/D30: reserve route-local followups before the outcome pass indexes scenes.
+from storylines import kiana_round4
+kiana_round4.reserve_scenes(SCENES)

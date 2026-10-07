@@ -1658,6 +1658,36 @@
           "scene": "kiana.partner_discovery",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question.elan_reply",
+          "letter": false,
+          "provenance": "D29: later counter visit after Elan's reply; existing current Kiana presence"
+        },
+        {
+          "scene": "kiana.trickster.late_question.elan_parting",
+          "letter": true,
+          "provenance": "D30: Elan's reply enclosed by Kiana; existing correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question.after_delivery",
+          "letter": false,
+          "provenance": "D30: new counter visit after the belongings meeting; existing current Kiana presence"
+        },
+        {
+          "scene": "kiana.trickster.late_question_letter.elan_reply",
+          "letter": true,
+          "provenance": "D29: delayed postal reply under existing failed-placement correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question_letter.elan_parting",
+          "letter": true,
+          "provenance": "D30: delayed Elan reply under existing failed-placement correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question_letter.after_delivery",
+          "letter": true,
+          "provenance": "D30: later invitation after belongings delivery under existing correspondence terms"
         }
       ],
       "absence_variants": [

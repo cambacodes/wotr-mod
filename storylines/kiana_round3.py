@@ -294,3 +294,6 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
         # Explicit brief: renewed intimacy on the desk / private bed, never
         # another first night. Default cuts at her initiating movement.
         ns[slot]["Text"] = ('''{n}Kiana opens the last buttons and lets her dress slip to her waist. She climbs onto the cleared desk, draws you between her bare knees and pulls you against her. Her ink-stained hand leaves a mark on your collar.{/n}''' if sid == "kiana.ink_after" else '''{n}Kiana lets her dress fall beside the bed, draws you down and rolls over you, catching your hand against her bare waist. The key stays in the locked door.{/n}''')
+
+    from storylines import kiana_round4
+    kiana_round4.integrate(payload)
