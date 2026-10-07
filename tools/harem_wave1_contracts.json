@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "authored": "Wave 1 registry integration: existing row deeds and attendance; no new outcomes or gates.",
+  "rows": {
+    "s02": {
+      "source": "storylines/household_pair_seelah_wenduag.py",
+      "scenes": [
+        "household.pair.seelah_wenduag.spar",
+        "household.pair.seelah_wenduag.rematch",
+        "household.pair.seelah_wenduag.watch",
+        "household.pair.seelah_wenduag.restraint",
+        "household.pair.seelah_wenduag.restraint.after_stood",
+        "household.pair.seelah_wenduag.stood",
+        "household.pair.seelah_wenduag.stood.after_restraint",
+        "household.pair.seelah_wenduag.debt_repayment",
+        "household.pair.seelah_wenduag.choice",
+        "household.pair.seelah_wenduag.morning",
+        "household.pair.seelah_wenduag.invite"
+      ],
+      "history_books": [],
+      "living_reader_hosts": []
+    },
+    "s06": {
+      "source": "storylines/household_pair_minagho_chivarro.py",
+      "scenes": [
+        "household.pair.minagho_chivarro.ack",
+        "household.pair.minagho_chivarro.ack.minagho",
+        "household.pair.minagho_chivarro.ack.chivarro",
+        "household.pair.minagho_chivarro.ack.spared",
+        "household.pair.minagho_chivarro.ack.pair_spared"
+      ],
+      "history_books": [],
+      "living_reader_hosts": []
+    },
+    "s07": {
+      "source": "storylines/household_pair_anevia_irabeth.py",
+      "scenes": [
+        "household.pair.anevia_irabeth.ack"
+      ],
+      "history_books": [],
+      "living_reader_hosts": []
+    },
+    "s36": {
+      "source": "storylines/household_pair_melazmera_hepzamirah.py",
+      "scenes": [
+        "household.pair.melazmera_hepzamirah.open",
+        "household.pair.melazmera_hepzamirah.diversion",
+        "household.pair.melazmera_hepzamirah.replacement"
+      ],
+      "history_books": [
+        "household.pair.melazmera_hepzamirah.reader.ledger",
+        "household.pair.melazmera_hepzamirah.reader.seating"
+      ],
+      "living_reader_hosts": [
+        "hepzamirah.lastcall.page",
+        "melazmera.lastcall.page"
+      ]
+    },
+    "s37": {
+      "source": "storylines/household_pair_delamere_hepzamirah.py",
+      "scenes": [
+        "household.pair.delamere_hepzamirah.open",
+        "household.pair.delamere_hepzamirah.hearing",
+        "household.pair.delamere_hepzamirah.repair"
+      ],
+      "history_books": [
+        "household.pair.delamere_hepzamirah.reader.ledger",
+        "household.pair.delamere_hepzamirah.reader.seating"
+      ],
+      "living_reader_hosts": [
+        "hepzamirah.lastcall.page",
+        "delamere.lastcall.page"
+      ]
+    },
+    "s38": {
+      "source": "storylines/household_pair_delamere_minagho.py",
+      "scenes": [
+        "household.pair.delamere_minagho.open",
+        "household.pair.delamere_minagho.interception",
+        "household.pair.delamere_minagho.repair"
+      ],
+      "history_books": [
+        "household.pair.delamere_minagho.reader.ledger",
+        "household.pair.delamere_minagho.reader.seating"
+      ],
+      "living_reader_hosts": [
+        "delamere.lastcall.page",
+        "trickster.lastcall.page.last_word"
+      ]
+    },
+    "s39": {
+      "source": "storylines/household_pair_galfrey_nocticula.py",
+      "scenes": [
+        "household.pair.galfrey_nocticula.open",
+        "household.pair.galfrey_nocticula.open.kitrane",
+        "household.pair.galfrey_nocticula.undertaking",
+        "household.pair.galfrey_nocticula.undertaking.kitrane",
+        "household.pair.galfrey_nocticula.last_litter",
+        "household.pair.galfrey_nocticula.last_litter.kitrane"
+      ],
+      "history_books": [
+        "household.pair.galfrey_nocticula.reader.ledger",
+        "household.pair.galfrey_nocticula.reader.seating"
+      ],
+      "living_reader_hosts": [
+        "nocticula.lastcall.page",
+        "galfrey.lastcall.page"
+      ]
+    },
+    "s40": {
+      "source": "storylines/household_pair_iomedae_nocticula.py",
+      "scenes": [
+        "household.pair.iomedae_nocticula.open",
+        "household.pair.iomedae_nocticula.delivery",
+        "household.pair.iomedae_nocticula.ransom"
+      ],
+      "history_books": [
+        "household.pair.iomedae_nocticula.reader.ledger",
+        "household.pair.iomedae_nocticula.reader.seating"
+      ],
+      "living_reader_hosts": [
+        "nocticula.lastcall.page",
+        "iomedae.lastcall.page"
+      ]
+    },
+    "s41": {
+      "source": "storylines/household_pair_iomedae_areelu.py",
+      "scenes": [
+        "household.pair.iomedae_areelu.open",
+        "household.pair.iomedae_areelu.reconstruction",
+        "household.pair.iomedae_areelu.repair"
+      ],
+      "history_books": [],
+      "living_reader_hosts": []
+    }
+  },
+  "departure_exemptions": {
+    "household": {
+      "household.pair.delamere_hepzamirah.cost.hepzamirah_captain_dismissed": "S37: Hepzamirah dismisses her requisition captain; neither household woman departs.",
+      "household.pair.delamere_minagho.open.dismissed": "S38: the Commander dismisses the sanctuary dispatch objection; Delamere remains present and her romance stays open."
+    }
+  }
+}

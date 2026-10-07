@@ -26,6 +26,15 @@
       "reason": "Deren needs a worker sleeping place in the shared loft, distinct from the child shelter described in the scene.",
       "block": "eng8-q8c",
       "max_occurrences": 1
+    },
+    {
+      "scene": "household.pair.delamere_minagho.interception",
+      "location": "seized",
+      "code": "commander-gender",
+      "match": "He shouts that the Commander",
+      "reason": "S38: He refers to Minagho's male dispatch runner, who is the subject of the preceding sentence; no gender is assigned to the Commander.",
+      "block": "harem-int-w1",
+      "max_occurrences": 1
     }
   ],
   "therapy_budgets": {},

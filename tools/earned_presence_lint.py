@@ -211,6 +211,10 @@ def producer_presence_errors(story):
     hard = []
     producers = return_producers(story)
     rels = story.get("Relationships") or {}
+    # Row-local captain/claim dismissals are historical deeds, not partner losses.
+    row_policy = ROOT / "tools/harem_wave1_contracts.json"
+    row_exemptions = (json.loads(row_policy.read_text(encoding="utf-8")).get("departure_exemptions", {})
+                      if row_policy.exists() else {})
     trk = Trickster(story)
     # eng7-l06: every pending return must have an existing current-Trickster producer (cell acquisition is native).
     for name, declaration in (story.get("PresenceExceptions") or {}).items():
@@ -233,6 +237,7 @@ def producer_presence_errors(story):
                 for flag in c.get("Set") or []:
                     if (DEPARTURE_FLAG.search(flag) and flag not in (rels.get(rel) or {}).get("UnavailableFlags", [])
                             and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()
+                            and not (row_exemptions.get(rel, {}).get(flag) or "").strip()
                             and not registered_closing_departure(rel, s["Id"], n["Id"], i, c, flag)):  # eng8-q8a
                         hard.append("P1 %s: departure %s must be in %s.UnavailableFlags or allowlisted with a reason"
                                     % (s["Id"], flag, rel))

@@ -212,6 +212,32 @@ class S36Tests(unittest.TestCase):
         self.assertEqual(row.POLICY_INPUTS["reconciliation"], row.P + "replacement.held")
         self.assertEqual(row.RESPECT_GROUPS, [[row.P + "diversion.held"], [row.P + "replacement.held"]])
 
+    def test_exported_row_and_all_payment_histories(self):
+        from tests.story_fixture import fresh_story
+        from tests.harem_row_walk import walk
+        exported = fresh_story()
+        bodies = [s for s in exported["Scenes"] if s["Id"].startswith(row.P)]
+        self.assertEqual([s["Id"] for s in bodies], [s["Id"] for s in row.SCENES])
+        model = rules.Model(dict(exported, Scenes=bodies))
+        for body in model.scenes:
+            for funds in (0, 299, 300, 399, 400, 1000):
+                for known in (False, True):
+                    s = state()
+                    s.flags.update(body["Requires"])
+                    s.times.update({flag: s.hour - 48 for flag in body["Requires"]})
+                    if known:
+                        s.flags.add(row.TRUCE)
+                    s.crusade_resources["Finances"] = funds
+                    histories = walk(self, model, body, s)
+                    self.assertTrue(histories)
+                    for end in histories:
+                        self.assertFalse(any(end.flags & {exported["Relationships"][w]["ClosedFlag"]}
+                                             for w in row.WOMEN))
+                        if row.P + "resolved" in end.flags:
+                            self.assertTrue(end.flags & {row.P + "diversion.held", row.P + "replacement.held"})
+                            loaded = copy.deepcopy(end)
+                            self.assertFalse(rules.sim_available(model, body, loaded))
+
 
 if __name__ == "__main__":
     unittest.main()
