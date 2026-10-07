@@ -103,5 +103,20 @@
     "scene": "delamere.trickster.woken.red_blood",
     "route": "delamere",
     "finding": "delamere:D01-D07 class sweep"
+  },
+  {
+    "scene": "arsinoe_the_first_cart",
+    "route": "arsinoe",
+    "finding": "arsinoe:D01"
+  },
+  {
+    "scene": "arsinoe_price_of_an_evening",
+    "route": "arsinoe",
+    "finding": "arsinoe:D04,D05"
+  },
+  {
+    "scene": "arsinoe_another_hour",
+    "route": "arsinoe",
+    "finding": "arsinoe:D04,D05"
   }
 ]

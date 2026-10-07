@@ -4,6 +4,7 @@ from pathlib import Path
 import unittest
 
 from storylines import arsinoe_opening, arsinoe_continuation, arsinoe_campaign, arsinoe_trickster
+from tools.slot_brief_lint import first_beat
 
 
 MODULES = (arsinoe_opening, arsinoe_continuation, arsinoe_campaign, arsinoe_trickster)
@@ -121,7 +122,13 @@ class ArsinoeRound2Tests(unittest.TestCase):
         self.assertEqual({p.stem for p in briefs}, set(nodes))
         for path in briefs:
             brief = json.loads(path.read_text(encoding="utf-8"))
-            self.assertTrue(nodes[path.stem]["Text"].endswith('"' + brief["last_line"][3:] + '"'))
+            host = next(s for s in SCENES.values() if nodes[path.stem] in s["Nodes"])
+            following = {n["Id"]: n for n in host["Nodes"]}
+            targets = {c["Next"] for c in nodes[path.stem]["Choices"] if c.get("Next")}
+            self.assertTrue(targets, path.stem)
+            for target in targets:
+                self.assertEqual(brief.get("last_lines", {}).get(target, brief["last_line"]),
+                                 first_beat(following[target], brief["speakers"]), path.stem)
             self.assertEqual(["a man", "a woman"], brief["commander_variants"])
             if "late.commit" in path.name:
                 self.assertEqual("third-past", brief["narration"])
