@@ -274,9 +274,40 @@ internal static class ArankaTricksterTests
         // Trk_Aranka_Duet: the billing, both ways; every opening variant is exclusive.
         var answered = World(story, 3, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
         check(Rules.Available(story, duet, answered), "Trk_Aranka_Duet: unavailable.");
-        var signed = After(duet, answered, "thall_signed", 0);
-        check(signed.Has("aranka.thall.parting_spoken") && duet.Nodes.Single(n => n.Id == "signed").Choices[0].Forbids.Contains("trickster.ever"),
-            "Job 3: the duet earns Thall's separation; the saved answer stays present and retired.");
+        // Thall's reply moved to his own encounter. Saved branches stay dormant;
+        // the appended billing answer completes the duet without speaking for him.
+        var signed = Program.WalkVia(duet, answered, "signed", 3).First();
+        foreach (var sibling in new[] { duet, duetL, S(duet.Id + "_yard"), S(duet.Id + "_yard_late") })
+        {
+            var billing = sibling.Nodes.Single(n => n.Id == "signed").Choices;
+            check(billing.Take(3).All(c => c.Forbids.Contains("trickster.ever"))
+                  && billing[1].Next == "thall_signed" && billing[2].Next == "thall_dead_signed"
+                  && sibling.Nodes.Any(n => n.Id == "thall_signed") && sibling.Nodes.Any(n => n.Id == "thall_dead_signed")
+                  && billing[3].Set.Contains(P + "duet_sung") && !billing[3].Set.Contains("aranka.thall.parting_spoken")
+                  && !signed.Has("aranka.thall.parting_spoken"),
+                "The duet speaks for Thall or loses its retired saved branches: " + sibling.Id);
+        }
+        // r5-S1: both Arueshalae variants require the matching physical Aranka copy.
+        foreach (var variant in new[] { "dreamer", "fallen" })
+        foreach (var suffix in new[] { "", ".yard" })
+        {
+            var reaction = S("aranka.react.arueshalae." + variant + suffix);
+            var matching = suffix == "" ? Unit : YardUnit;
+            var other = suffix == "" ? YardUnit : Unit;
+            var at = ParticipantInventoryTests.World(story, reaction);
+            check(reaction.AdditionalContactUnits.SequenceEqual(new[] { matching }),
+                "Arueshalae's reaction names the wrong Aranka copy: " + reaction.Id);
+            at.AvailableContacts.Remove(Unit);
+            at.AvailableContacts.Remove(YardUnit);
+            check(!Rules.Available(story, reaction, at), "Arueshalae reacts without Aranka: " + reaction.Id);
+            at.AvailableContacts.Add(other);
+            check(!Rules.Available(story, reaction, at), "Arueshalae reacts beside the wrong Aranka copy: " + reaction.Id);
+            at.AvailableContacts.Remove(other);
+            at.AvailableContacts.Add(matching);
+            check(Rules.Available(story, reaction, at), "The matching-copy reaction is shut: " + reaction.Id);
+            at.AvailableContacts.Remove(reaction.ContactUnit!);
+            check(!Rules.Available(story, reaction, at), "Arueshalae reacts while absent: " + reaction.Id);
+        }
         check(signed.Has(P + "duet_sung") && Play(duet, answered).Any(r => r.Has(P + "cost.vain")), "Trk_Aranka_Duet: flags.");
         check(!Rules.Available(story, encore, Later(story, signed, 71)) && Rules.Available(story, encore, Later(story, signed, 72)),
             "Trk_Aranka_Duet: the encore ignores its three days.");
@@ -560,7 +591,7 @@ internal static class ArankaTricksterTests
             var tooEarly = Place(Later(story, answeredAt, 23), marketAnchor, true);
             check(!Rules.Available(story, Venue(duet, tooEarly), tooEarly), label + ": the duet comes before its day.");
             var duetAt = Place(Later(story, answeredAt, 24), marketAnchor, true);
-            var sung = Pick(Venue(duet, duetAt), duetAt, "thall_signed", 0);
+            var sung = Pick(Venue(duet, duetAt), duetAt, "signed", 3);
             var encoreAt = Place(Later(story, sung, 24), marketAnchor, true);
             var stayed = Pick(Venue(encore, encoreAt), encoreAt, "choice", 0);
             check(stayed.Has(Kept) && stayed.Hour - t0 <= 168, label + ": her yes misses the week (" + (stayed.Hour - t0) + " h).");
@@ -618,9 +649,9 @@ internal static class ArankaTricksterTests
         var oldSave = World(story, 5, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "duet_sung", duet.Id);
         check(!Rules.Available(story, duetL, oldSave) && Rules.Available(story, encoreL, oldSave), "An old Chapter 5 duet replays, or strands the encore.");
 
-        // Reactions: exactly Anevia, Woljif and Lann (ledger 05 3.1), with their guards.
+        // Reactions: the original reactors plus Aranka-owned Arueshalae encounters, with their guards.
         var reactions = story.Scenes.Where(s => s.Relationship == "aranka" && s.Reaction).ToArray();
-        check(reactions.Select(s => s.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Anevia", "Lann", "Woljif" }),
+        check(reactions.Select(s => s.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Anevia", "Aranka", "Lann", "Woljif" }),
             "Aranka's reactors changed.");
         var anevia = S(P + "react.anevia_verse");
         var aneviaAlone = S(P + "react.anevia_verse_alone");
