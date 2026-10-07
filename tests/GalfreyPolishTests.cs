@@ -114,8 +114,8 @@ internal static class GalfreyPolishTests
             var dispatched = Play("alive.plan", Wait(evening, S("alive.plan").DelayHours), P + "alive.plan_dispatched");
             check(!dispatched.Has(P + "alive.plan_kept") && dispatched.CrusadeResources!["Materials"] == 850
                 && !Rules.Available(story, S("alive.trial"), Wait(dispatched, 100)), "Galfrey dispatch buys immediate success.");
-            check(!Rules.Available(story, S("alive.plan_report"), Wait(dispatched, 47)), "Galfrey plan report early.");
-            var planKept = Play("alive.plan_report", Wait(dispatched, 48), P + "alive.plan_kept");
+            check(!Rules.Available(story, S("alive.plan_report"), Wait(dispatched, 23)), "Galfrey plan report early.");
+            var planKept = Play("alive.plan_report", Wait(dispatched, 24), P + "alive.plan_kept");
             check(planKept.CrusadeResources!["Materials"] == 850, "Galfrey report charges the wagons twice.");
             var started = Play("alive.trial", Wait(planKept, S("alive.trial").DelayHours), P + "alive.trial_started");
             check(!started.Has(P + "alive.trial_kept") && started.CrusadeResources!["Finances"] == 900,

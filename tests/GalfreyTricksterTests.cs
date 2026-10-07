@@ -225,10 +225,29 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Kitrane: the commit is not the Commander refusing her oath.");
         var night = One(tent, Later(story, yes, 10), new[] { P + "tent_seen", P + "morning_drill" });
         var beats = new[] { "armour", "buckles", "mail", "want", "bed", "cut", "after", "morning", "drill" };
-        check(beats.All(b => tent.Nodes.Any(n => n.Id == b)) && tent.Nodes.Single(n => n.Id == "cut").Choices.All(c => c.Next == "after"),
+        check(beats.All(b => tent.Nodes.Any(n => n.Id == b)),
             "Trk_Galfrey_Kitrane: the tent is not staged up to the cut and carried into the morning drill.");
         check(Rules.Available(story, S(P + "epilogue.kitrane"), World(story, 6, Program.PersistentFlags(story, night).ToArray())),
             "Trk_Galfrey_Kitrane: the Kitrane page does not play for a committed Kitrane.");
+
+        // Both hubs stage the threshold, traverse an inert slot, and retain the aftermath.
+        foreach (var suffix in new[] { "", "_stall" })
+        {
+            var variant = S(P + "visit.tent" + suffix);
+            var slotId = variant.Id + ".explicit.1";
+            var slot = variant.Nodes.Single(n => n.Id == slotId);
+            check(beats.All(b => variant.Nodes.Any(n => n.Id == b))
+                && variant.Nodes.Single(n => n.Id == "cut").Choices.All(c => c.Next == slotId)
+                && slot.EnterSet.Length == 0 && slot.Paragraphs.Count == 0
+                && slot.Choices.Count == 1 && slot.Choices[0].Next == "after"
+                && slot.Choices[0].Set.Length == 0 && slot.Choices[0].Requires.Length == 0
+                && slot.Choices[0].Forbids.Length == 0 && slot.Choices[0].Check == null
+                && !slot.Choices[0].Abort && slot.Choices[0].Revive == null
+                && slot.Choices[0].Crusade == null && slot.Choices[0].RemoveItem == null
+                && slot.Choices[0].StartEtude == null && slot.Choices[0].NativeNext == null
+                && slot.Choices[0].Mythic == null && slot.Choices[0].Alignment == null,
+                "Galfrey tent slot must remain inert and resume its original aftermath: " + variant.Id);
+        }
 
         // Trk_Galfrey_RefusedThenYes: blind; framed for Mendev she refuses and names her condition; framed for her she takes it.
         var refused = Program.Walk(offer, bed).Where(r => r.Has(P + "offer_refused") && r.Has(Taken) && r.Has(P + "blind")).ToList();
@@ -295,7 +314,9 @@ internal static class GalfreyTricksterTests
         Program.Walk(cortege, unplanted, (id, _) => bierNodes.Add(id));
         var metNodes = new List<string>();
         Program.Walk(cortege, Later(story, unplanted, 0, null, "galfrey.incognito_met"), (id, _) => metNodes.Add(id));
-        check(bierNodes.Contains("flare_told") && !bierNodes.Contains("flare") && metNodes.Contains("flare") && !metNodes.Contains("flare_told"),
+        check(bierNodes.Any(id => id == "flare_told" || id.StartsWith("flare_told.", StringComparison.Ordinal))
+              && !bierNodes.Contains("flare") && metNodes.Contains("flare")
+              && !metNodes.Any(id => id == "flare_told" || id.StartsWith("flare_told.", StringComparison.Ordinal)),
             "Trk_Galfrey_Cortege: the Commander remembers a war-camp meeting that never happened.");
         var bierRefused = Program.Walk(cortege, unplanted).First(r => r.Has(P + "let_die"));
         var bierEpi = World(story, 6, Program.PersistentFlags(story, bierRefused).Concat(new[] { "trickster", "trickster.ever" }).ToArray());
@@ -366,9 +387,9 @@ internal static class GalfreyTricksterTests
         var plan = S(P + "alive.plan");
         check(Program.Walk(plan, Later(story, evening, 50)).Any(r => !r.Has(P + "alive.plan_kept")), "Trk_Galfrey_Living: a half-told plan still earns her.");
         var dispatched = One(plan, Later(story, evening, 50), new[] { P + "alive.plan_dispatched" }, P + "alive.plan_kept");
-        check(!Rules.Available(story, S(P + "alive.plan_report"), Later(story, dispatched, 47)),
+        check(!Rules.Available(story, S(P + "alive.plan_report"), Later(story, dispatched, 23)),
             "Trk_Galfrey_Living: dispatch completes before the column returns.");
-        var planKept = One(S(P + "alive.plan_report"), Later(story, dispatched, 48), new[] { P + "alive.plan_kept" });
+        var planKept = One(S(P + "alive.plan_report"), Later(story, dispatched, 24), new[] { P + "alive.plan_kept" });
         // Q12: one kept plan is a beginning; the next one is a decision she objects to, and her objection must be answered.
         var trial = S(P + "alive.trial");
         check(!Rules.Available(story, S(P + "alive.oath"), Later(story, planKept, 50)) && Rules.Available(story, trial, Later(story, planKept, 50)),

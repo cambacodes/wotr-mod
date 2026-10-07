@@ -1160,3 +1160,130 @@ def _round2_history():
 
 
 _round2_history()
+
+
+
+def _round3_rescue():
+    # Authored Trickster intervention, not a native property of either Iz spell.
+    # No new checks, costs, gates or effects: READ still buys the earlier release.
+    for host in SCENES:
+        nodes = {node["Id"]: node for node in host["Nodes"]}
+        sid = host["Id"]
+        if sid == BRIEFED_ID:
+            setup = (' {n}You turn the sergeant\'s cloak inside out. For a moment its shadow wears a crown; '
+                'then you fold that shadow into the lining. He drops the whetstone.{/n} '
+                '"What the hell have you put in my cloak?" {n}You show him how to wrap the fallen Queen in it, '
+                'turn the lining outward over her discarded armour, and carry the armour in the royal coffin. '
+                'The trick leaves the dying Queen with the crown and carries the wounded knight away. '
+                'Without you there to separate them cleanly, the Crows must finish the division at her vigil: '
+                'name the Queen dead before the coffin, then call Kitrane out among the living. '
+                'He makes you repeat it, and tries the folds himself.{/n} '
+                '"Only if she commands it. I will not bury her while she can still give me an order."')
+            for key in ("take", "take_supplies"):
+                nodes[key]["Text"] += setup
+        elif sid == OFFER:
+            nodes["read"]["Text"] = ('{n}You lift the broken rim of her breastplate and lay its crowned crest '
+                'against the bloodied cloak. Your shadow moves before your hand does. A second outline of Galfrey '
+                'lies beneath the armour, dying; the woman beside it draws a sharp breath.{/n} '
+                '{n}When you address the Queen, the dark light leaps toward the crest. When you call Kitrane, '
+                'it stretches between the two outlines. You catch the single black strand joining them '
+                'and wind it around the crest. Her fingers unclench. The armour must go into the royal coffin; '
+                'you keep the strand pinned there until the knights lift it away.{/n}')
+            nodes["sight"]["Text"] = ('{n}The doubled shadows have seams you can see as plainly as a loose stitch. '
+                'The sorcery still grips the dying Queen beneath the crest. You have pulled the knight out '
+                'of its reach; now the Crows must carry the two apart.{/n}')
+            nodes["blind"]["Text"] = ('{n}You lay the crowned crest against the cloak. Your shadow reaches '
+                'under the armour before your hand does, and another outline of Galfrey lies there. '
+                'The dark light spreads between them. You cannot find where to divide it. '
+                'Her breath catches; you stop before you tear away what remains of her soul.{/n}')
+            nodes["offer"]["Choices"][0]["Text"] = ('[Offer her another name] "I have given it a dying Queen '
+                'to hold. Let the Crows carry her armour away. Walk out as Kitrane."')
+            nodes["pitch"]["Text"] = ('{n}You show her the two shadows, one beneath the crown, one beneath '
+                'the Crows\' cloak. Neither the dragon nor the priestess struck at a title: you have made '
+                'a second victim for the rending to follow. The Queen\'s armour must be buried under her name. '
+                'If you have missed a strand, sealing the coffin will not finish it. At the vigil, '
+                'her knights must proclaim the Queen dead and call Kitrane out of the mourners. '
+                'Their voices will give the divided shadows separate places among the dead and living.{/n} '
+                '{n}She watches the dark light pull at the crest. The crown, the coffin, and the lie '
+                'would be hers to leave behind. The trick has not healed her; it might yet tear her apart.{/n}')
+            nodes["address"]["Text"] = ('{n}You recall the hag\'s advice about giving a curse another name '
+                'to follow. Advice alone would have done nothing. The doubled shadow under Galfrey\'s '
+                'armour is your doing, and you cannot promise it will hold.{/n}')
+        elif sid == P + "iz.road":
+            nodes["read"]["Text"] = nodes["read"]["Text"].replace(
+                'Then the sergeant hammered the lead seal onto the Queen\'s coffin, with her name on the lid, and it let go.',
+                'The strand you wound around the crest stayed with my armour. The sergeant put it in the royal coffin, '
+                'then hammered on the lead seal. Only then did it let go.')
+            nodes["fever"]["Text"] += (' {n}The sergeant shows you the cloak\'s lining. Its shadow still '
+                'reaches toward the sealed coffin. You could not separate those strands at Iz; '
+                'he has kept the cloak folded as you left it. The vigil must finish the work.{/n}')
+        elif sid == P + "iz.alone":
+            for key in ("letter3", "letter3.crows_supplies"):
+                nodes[key]["Text"] = nodes[key]["Text"].replace(
+                    'I think it is waiting to hear the Queen\'s death proclaimed where she was loved.',
+                    'The shadow in the cloak you left with the sergeant still pulls toward my armour in the coffin. '
+                    'He showed me the folds, and repeated your instructions for the vigil. '
+                    'Have the knights name the Queen dead, then call Kitrane among the living.')
+                nodes[key]["Text"] = nodes[key]["Text"].replace(
+                    'I think it needs to hear the Queen\'s death proclaimed where she was loved.',
+                    'Your trick in the sergeant\'s cloak has left two shadows joined. He showed me, '
+                    'and repeated your instructions: the knights must name the Queen dead at the vigil, '
+                    'then call Kitrane among the living.')
+        elif sid == P + "iz.cortege":
+            nodes["surgeon"]["Choices"][0]["Text"] = ('[Diplomacy DC 24] "Your knights have another name for her. Let me try it."')
+            nodes["surgeon"]["Text"] = ('{n}An old Crow guards the chapel door.{/n} "Commander. '
+                'The surgeon packed the wound with salt and wrapped her for the road. We are taking her home '
+                'before the rot takes her. You should have come to Iz." {n}His hand stays on his sword.{/n} '
+                '"They seal her at first light."')
+            nodes["in"]["Text"] = ('{n}She lies cold on the bier. Salt has crusted the linen at her collarbone. '
+                'There is no breath, no movement. You put a hand beneath the broken breastplate. '
+                'Your shadow reaches farther, through the black wound; when you draw it back, '
+                'it holds a dark thread stretched taut beyond the chapel wall. You wind it around her sword. '
+                'A breath rattles in the dead woman\'s throat, but her eyes remain shut. '
+                'You cannot draw her through the wound that killed her. You need another way out.{/n}')
+            for key in ("flare", "flare_told", "flare_told.unworn"):
+                nodes[key]["Text"] = nodes[key]["Text"].replace(
+                    'the fact that it is the only name in the world this thing does not know',
+                    'the thread held on her sword, and a name she can answer without stepping back into the Queen\'s death')
+                nodes[key]["Text"] += (' {n}You lay the crowned breastplate beside her and pull '
+                    'your shadow across it. A second outline settles beneath the crest. The thread '
+                    'divides between them; a hoarse breath escapes her lips. You keep your hand '
+                    'on the sword while she finds her voice.{/n}')
+            nodes["choose"]["Text"] = nodes["choose"]["Text"].replace(
+                'It wants to hear it said.',
+                'Have the Crows name the Queen dead, then call Kitrane out of the vigil. '
+                'I felt the thread pull when you divided it. Do not leave me between them.')
+            nodes["sergeant"]["Text"] += (' {n}You keep the divided shadow pinned to the sword until '
+                'first light. The Crows lift her into the green cloak and put her armour on Anselm. '
+                'The vigil must finish the division: name the Queen dead, then call Kitrane. '
+                'Until then the thread still joins her shadow to the crest. He keeps the cloak folded. '
+                'She coughs blood into the cloak, and he carries her straight to the surgeon.{/n}')
+            nodes["rest"]["Text"] += (' {n}You ease the thread from the sword. Her hand goes still; '
+                'the shadow slips away through the black wound.{/n}')
+
+
+_round3_rescue()
+
+
+# The vigil enacts the standing instructions; recollections use the same device.
+for _host in SCENES:
+    _nodes = {node["Id"]: node for node in _host["Nodes"]}
+    if _host["Id"] == OFFER:
+        _nodes["seelah"]["Text"] = ('{n}Seelah\'s cry is still in the air: "Your Majesty!" '
+            'Galfrey struggles for breath. You look from the crowned crest on her broken armour '
+            'to the green cloak beneath her. The Crows already have a name for a knight without that crown.{/n}')
+    elif _host["Id"].removesuffix("_stall") == P + "iz.eulogy":
+        _nodes["tent"]["Text"] = ('{n}At the bells the Crows\' sergeant stands before the coffin '
+            'and names the Queen dead. Then he goes to the wounded woman in his tent and calls, '
+            '"Kitrane. Your watch." The squire unfolds the cloak as you showed the sergeant. '
+            'Its shadow parts from the coffin\'s; the dark light under her bandage goes out. '
+            'She answers her name, hoarsely, and falls asleep. The squire stays beside her '
+            'until morning, listening to her breathe.{/n}')
+    if _host["Id"] in (P + "epilogue.kitrane", P + "epilogue.sworn", P + "epilogue.late", P + "epilogue.widow"):
+        for _para in _nodes["page"].get("Paragraphs", []):
+            if FOREVER in _para.get("Requires", []) and "purse" in _para["Text"]:
+                _para["Text"] += (' {n}She sent Anselm\'s daughter an account signed by the surviving Crows. '
+                    'It named the man in the royal crypt. The sergeant offered to accompany her '
+                    'if she petitioned the cathedral to move him. Kitrane kept the regents\' crown '
+                    'out of that letter; she did not keep his death out of it.{/n}')
+del _host, _nodes
