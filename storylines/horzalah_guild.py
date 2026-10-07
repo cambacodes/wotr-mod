@@ -976,6 +976,15 @@ def polish_sister_consumers(payload):
         nodes = {nd["Id"]: nd for nd in scene["Nodes"]}
         prefix = "" if scene["Id"] == H + "guild.kept" else "eng8.guild."
         target = prefix + "sister"
+        # Every incoming report edge must select exactly one history. This
+        # also runs on already-prepared folded copies: split is idempotent.
+        for node in scene["Nodes"]:
+            if node["Id"] not in {prefix + source for source in ("hall", "came", "late", "box")}:
+                continue
+            for choice in node["Choices"]:
+                if choice.get("Next") == prefix + "pivot":
+                    choice["Forbids"] = list(dict.fromkeys([
+                        *choice["Forbids"], HEPZ_BACK]))
         if target + "_departed" in nodes:
             continue
         # The copied Chapter 6 reports predate participant integration. Read the
@@ -1057,9 +1066,9 @@ def _round2_guild():
     ns["take"]["Text"]='''"You are smiling." {n}She catches your coat and draws you close enough to feel her mouth against your cheek.{/n} "Good. Let the sentry see who refused that money."'''
     ns=nodes("letter.first")
     ns["read"]["Text"]='''"Mortal.
-You left for your war without saying goodbye. My people found you before your quartermaster had finished pitching the tents.
+Your soldiers keep finding business for you. My people found your bed before you found time for me.
 I have refused three offers for your head this week. They were generous. I kept the names of those who made them.
-Come back to Drezen. I want another visit, and I do not mean a report from your surgeon. Until then, turn your bed away from the door. You keep giving my rivals ideas."'''
+I want another visit when your war lets you breathe, and I do not mean a report from your surgeon. Until then, turn your bed away from the door. You keep giving my rivals ideas."'''
     ns=nodes("beat.second_night")
     slot=H+"beat.second_night.explicit.1"
     ns["cut"]["Choices"][0]["Next"]=slot

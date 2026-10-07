@@ -751,7 +751,7 @@ SCENES.append(scene(H + "epilogue.together", "", "HorzalahEpilogue", 6, "", [
                     p("{n}Her assassins remembered the morning the Knight Commander walked down the Guild's main stair and out of the front door, and the masters remembered standing up for it. It was, they agreed afterwards, the most frightening thing any of them had ever seen her do.{/n}", requires=(MORNING,)),
                     p("{n}The Commander never once reached for her collar. She took the Commander's hand and put it there herself, whenever she chose, and she chose more often than anyone in Alushinyrra would have believed.{/n}", forbids=(DECLINED,)),
                     p("{n}The Commander learned to wait. She said it took the longest of any lesson she had ever taught, and that she had once taught a wizard's apprentice to hold his breath until he died.{/n}", requires=(DECLINED,)),
-                    p("{n}On the night before the Threshold there was a knife in the pole of the Commander's tent, above the Commander's head, pinning a sheet of black paper tied with a badly tied bow. The bets in her hall stood at eleven days, it said. She had placed none. She had bought up, through third parties, every wager that the Commander would not come back, so that she would be very rich and very angry, or a great many demons would owe her money and never know why. *Come back with everything else attached. I have one piece of you. I do not intend to settle for it.*{/n}"),
+                    p("{n}On the night before the Threshold there was a knife in the pole of the Commander's tent, above the Commander's head, pinning a sheet of black paper tied with a badly tied bow. The bets in her hall stood at eleven days, it said. She had placed none. She had bought up, through third parties, every wager that the Commander would not come back, so that she would be very rich and very angry if the Commander died. If the Commander returned, she would lose every coin. *Make me lose it,* she wrote. *Come back with everything else attached. I have one piece of you. I do not intend to settle for it.*{/n}"),
                     p("{n}She wore a white ribbon at her collar in her hall every day of her reign, tied in a bow that was very slightly lopsided. No master of the Guild ever mentioned it. The Commander tied it, when the Commander was there, and practised on the maps when not.{/n}", requires=(P_RIBBON,)),
                     p("{n}The Commander carried a very thin knife with no maker's mark through the rest of the war and never once cleaned it. Horzalah said that was the most romantic thing anyone had ever done for her, and that she would kill anyone who repeated it.{/n}", requires=(P_KNIFE,)),
                     p("{n}A certain dwarf never did get his whistle back. It hung at Horzalah's throat on a white ribbon for years, and whenever he came into a room where she was, she would lift it to her lips, and not blow it, and neither of them ever said a word about it.{/n}", requires=(P_WHISTLE,)),
@@ -1117,9 +1117,24 @@ def _round2_situations():
         ns["word3"]["Text"] = '''"I want you, mortal. I intend to have you in my own rooms, and walk you past those knives alive in the morning. They can swallow it or choke." {n}She draws close, her mouth beside your wounded ear.{/n}
 "Tomorrow night I will come for you. Not for your head. Leave your councils waiting. I shall have waited quite enough."'''
         ns["word3"]["Choices"][0]["Text"] = "[Draw her closer.]"
+    # Distinguish the two existing refusals in both location twins.
+    for suffix in ("commit.collar", "commit.collar_night"):
+        ns = nodes(suffix)
+        ns["buyer"]["Choices"][0]["Set"].append(H + "refused.reached")
+        ns["brand"]["Choices"][0]["Set"].append(H + "refused.brand")
     # Both twins have already been constructed before these prose changes.
     for suffix in ("commit.her_move", "commit.her_move_night"):
         ns=nodes(suffix)
+        # Authored refusal-history receipts; neither changes eligibility.
+        brand_refusal = H + "refused.brand"
+        for choice in ns["start"]["Choices"]:
+            if choice.get("Next") == "decided":
+                choice["Forbids"].append(brand_refusal)
+        ns["start"]["Choices"].append(c("Continue", "decided_brand", requires=(brand_refusal,)))
+        scenes[H + suffix]["Nodes"].append(hz("decided_brand",
+            '"My masters offered to find me a lover who would be easier to manage. A grateful one. They know several." {n}Her lip curls.{/n} "I told them I had already chosen, and their next suggestion had better concern a contract."\n'
+            '"You asked whose brand I wore. I showed you my throat, and you looked for its owner. I disliked it. I still want you. Look at me this time."',
+            c("Continue", "move")))
         ns["decided"]["Text"] = '''"My masters offered to find me a lover who would be easier to manage. A grateful one. They know several." {n}Her lip curls.{/n} "I told them I had already chosen, and their next suggestion had better concern a contract."
 "You reached like a buyer. I disliked it. I still want you. Try to understand both things this time."'''
         ns["yes"]["Text"] = '''{n}She pulls you against her, catching your mouth in a brief, hard kiss. Then she releases your hand and steps back.{/n} "Tomorrow night. My rooms. You will come down the front stair afterwards, where my masters can see you. Let them wonder what I kept you for."'''
