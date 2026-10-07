@@ -443,6 +443,7 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
         c("Continue", "greet_treated", requires=(TREATED, CHARGES), forbids=("targona.correspondence_opened",)),
         c("Continue", "greet_lab_sleep", requires=(LAB_LINE, SLEEP), forbids=(TREATED,)),
         # r5: she was already writing to the Commander from the wayhouse on the eastern road when the chaplain's letter came.
+        # fix-inherited2: unspent physician/correspondent arrivals retain their canonical greeting and saved nodes.
         c("Continue", "greet_wayhouse", requires=(TREATED, "targona.correspondence_opened", CHARGES)),
         c("Continue", "greet_unspent", forbids=(LAB_LINE, TREATED, CHARGES)),
         c("Continue", "greet_treated_unspent", requires=(TREATED,), forbids=("targona.correspondence_opened", CHARGES)),
@@ -476,10 +477,10 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
       c('[Explain] "They were dying. I could help, and give them the night."', "why")),
     t("greet_treated_unspent", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
 "You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then the chaplain wrote that you worked his last healing wand through the night. Word reached me in the halls of Heaven. I came down to see whether it was the same hand."''',
-      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "greet_treated")),
     t("greet_wayhouse_unspent", '''"Commander. Greetings, my rescuer, and my correspondent." {n}She does not smile.{/n}
 "I have been writing to you from the wayhouse on the eastern road, about doors and cups and a sergeant called Merovan. Then the chaplain wrote that you worked his last healing wand through the night. His letter found me at the wayhouse. I walked in to see whether it was the same hand that writes to me."''',
-      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "greet_wayhouse")),
 ], requires=("trickster.ever", WAND, FREE), forbids=(MET, CLOSED), delay=0)
 
 
