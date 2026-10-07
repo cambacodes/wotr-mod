@@ -345,7 +345,7 @@ late_nodes = [
        c("Continue", "wall")),
     yn("fresh", '''{n}She hears your boots on the stair and turns her head, not her body, the way a sentry does who has decided you are not worth turning around for.{/n} "Commander," {n}she says.{/n} "They told me in the square that is what you are now. The one who cut me down in the Fane and gave me back my sword, and then took it back again, very politely, and pointed me at an angel." {n}Her mouth twitches.{/n} "I have been walking for a long time to come and look at you."''',
        c("Continue", "wall")),
-    yn("wall", '''{n}She lays her palm flat on the broken parapet.{/n} "This gate. The day the city fell I stood here with a hundred refugees behind me and a demon for every one of them coming up the road. I held it until the last cart was through. Then I held it a little longer, because I was young and stupid and thought someone might come back for me."
+    yn("wall", '''{n}She lays her palm flat on the broken parapet.{/n} "This gate. The day the city fell I stood here with a hundred refugees behind me and a demon for every one of them coming up the road. I held it while the last carts fled. Then I held it a little longer, because I was young and stupid and thought someone might come back for me."
 "Nobody came. Minagho came." {n}She takes her hand off the stone and looks at the cuff on her wrist, and then, deliberately, at your hands.{/n} "I came up here to see whether I could stand on it without being sick. I can. I am not sure it is the victory I hoped."''',
        c("[Take her wrist and work the pin out of the cuff.]", "cuff_sword", requires=(HELD,)),
        c("[Take her wrist and work the pin out of the cuff.]", "cuff_empty", requires=(RADIANCE_SEEN,), forbids=(HELD,)),
@@ -489,7 +489,7 @@ hub(Y + "verdict.letter", "What Iz was like", '"You weren\'t on the wall."', [
        c("Continue", "sang", requires=(HOLY,)),
        c("Continue", "quiet", forbids=(HOLY,))),
     yn("sang", '''"And Radiance sang. There is no other word for it, Commander, and I have tried to find one all night. It grew bright, and then it grew hot, and then it was singing in my hands, and I could not have let go of it if Minagho herself had come up behind me and asked me to."''',
-       c("Continue", "letter_iz")),
+       c("Continue", "letter_iz", flags=(Y + "iz_song_reported",))),
     yn("quiet", '''"Radiance did not sing. The old songs say it used to light up every time I raised it; the songs are liars, like the statue. His voice went over it like wind over a stone. It was a good sword, and it did good work, and I was glad of that. I did not want it to do anything I could not do myself."''',
        c("Continue", "letter_iz")),
     yn("letter_iz", '''"I should tell you what Iz was like, since you were somewhere at the front of it and will have seen only the front. At the back it was dust and flies and orders nobody could hear. The foot went in through what used to be a gate and is now a hole, over stones that were somebody's house when Sarkoris was a country. There were dead in the streets older than I am. Some of them got up.
@@ -810,8 +810,8 @@ COMMON = (
     p("{n}When the war was over she went to the place where Staunton Vhane was buried, as she had said she would, and shouted at the ground for most of an hour. Then she sat down on it and wept for him at last, and the Commander stood between her and the road so that nobody would see. She spoke Joran's name there too, quieter, and remembered how carefully he had fitted Radiance's scabbard.{/n}", requires=(B_STAUNTON,)),
     p("{n}The Church of Iomedae never did examine her. The chaplain who had come to the Commander's door with the seal of Nerosyan wrote to his superiors that the relic was in the hands it was meant for, and that he would not be the one to take it out of them, and after that nobody else volunteered.{/n}", requires=(B_CHURCH, CARRIES)),
     p("{n}She still asked her goddess to keep the watch safe. Some nights she simply told Her about the day, out loud, on the wall, in the tone of a sergeant making a report, and she swore that on some nights the report was received.{/n}", requires=(B_PRAYER,)),
-    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), forbids=(CUFF_WORN, Y + "cuff_pocketed", DECLINED)),
-    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and never told anyone why there were two.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), requires=(CUFF_WORN,), forbids=(Y + "cuff_pocketed", DECLINED)),
+    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack beside the other, and kept the rescue out of the campfire stories.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), forbids=(CUFF_WORN, Y + "cuff_pocketed", DECLINED)),
+    p("{n}Somewhere in the Midnight Isles a woman with a face that did not quite fit her lived out her years as nobody's collector's item, and the Commander kept her iron at the bottom of a pack, and wore the other, and kept the rescue out of the campfire stories.{/n}", any_groups=((HUSK_FREED, HUSK_BOUGHT),), requires=(CUFF_WORN,), forbids=(Y + "cuff_pocketed", DECLINED)),
 )
 
 SCENES.append(scene(Y + "epilogue.together", "", "YanielEpilogue", 6, "", [
@@ -909,7 +909,7 @@ for _page in SCENES:
                        ("together", "commit", "broken", "unasked", "distrusted", "unsettled", "declined")}:
         _paragraphs = _page["Nodes"][0]["Paragraphs"]
         _paragraphs.extend((
-            p("{n}The rescued woman's iron stayed at the bottom of the Commander's pack. Yaniel's was kept in a pocket, where a hand could find the sheared link. Nobody was told why there were two.{/n}",
+            p("{n}The rescued woman's iron stayed at the bottom of the Commander's pack. Yaniel's was kept in a pocket, where a hand could find the sheared link. The rescue stayed out of the campfire stories.{/n}",
               requires=(Y + "cuff_pocketed",), forbids=(DECLINED,), any_groups=((HUSK_FREED, HUSK_BOUGHT),)),
             p("{n}After the vigil, the Commander kept both irons: the rescued woman's cuff and Yaniel's, with its sheared link. Yaniel sometimes asked to hold hers. She always gave it back.{/n}",
               requires=(DECLINED, VIGIL, SHACKLE), any_groups=((HUSK_FREED, HUSK_BOUGHT),)),

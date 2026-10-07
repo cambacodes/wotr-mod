@@ -158,6 +158,49 @@ internal static class YanielTricksterTests
         var minagho = S(P + "ch5.minagho");
         var beats = own.Where(s => s.Id.StartsWith(P + "beat.", StringComparison.Ordinal)).ToArray();
 
+        // Round 3: exported callbacks read the actual acquisition, Iz report and trade receipts.
+        var lastPage = S("yaniel.lastcall.page").Nodes.Single(n => n.Id == "page");
+        string PageText(params string[] flags) => string.Join(" ", Rules.VisibleParagraphs(lastPage,
+            World(story, 6, flags)).Select(p => p.Text));
+        var oathOnly = PageText(Stands, Judges);
+        check(oathOnly.Contains("account") && oathOnly.Contains("Midnight Fane")
+              && !oathOnly.Contains("went to the Threshold"),
+            "An accepted Iz account awards an unearned Threshold sword payoff.");
+        var lateOath = PageText(Stands, Judges, Late);
+        check(lateOath.Contains("sworn on her wall") && !lateOath.Contains("sworn underground"),
+            "Last Call forgets the late-wall oath provenance.");
+        var holyReport = PageText(Carries, P + "carries_holy", P + "iz_song_reported");
+        check(holyReport.Contains("sung in her hands") && !holyReport.Contains("put it back in her hands after Iz"),
+            "Holy custody lacks Yaniel's earned Iz report callback.");
+        var holyLate = PageText(Carries, P + "carries_holy", P + "handed_after_iz");
+        check(holyLate.Contains("after Iz") && !holyLate.Contains("sung in her hands"),
+            "A sword handed over after Iz invents her song in that battle.");
+        check(!PageText(Stands, Judges).Contains("went to the Threshold"),
+            "Sword absent at Threshold inherits an Iz sword-success receipt.");
+        check(S("yaniel.lastcall.call").Nodes.All(n => !n.Text.Contains("since the Midnight Fane")),
+            "The exported Last Call assumes Fane acquisition for a late-wall history.");
+        var debt = story.Books["trickster.ledger"].Entries.Single(e => e.Id == "owed.yaniel");
+        string DebtText(params string[] flags) => debt.Text + " " + string.Join(" ", debt.Lines
+            .Where(p => Rules.ParagraphVisible(p, World(story, 6, flags))).Select(p => p.Text));
+        var initialDebt = DebtText(Oath, Judges);
+        check(initialDebt.Contains("Midnight Fane") && !initialDebt.Contains("trade-back")
+              && !initialDebt.Contains("vigil together"),
+            "The oath-only debt recalls an unplayed trade or vigil.");
+        var lateDebt = DebtText(Oath, Judges, Late);
+        check(lateDebt.Contains("wall in Drezen") && !lateDebt.Contains("Midnight Fane"),
+            "The late-wall debt invents Fane acquisition.");
+        check(DebtText(Committed, Shackle).Contains("trade-back")
+              && DebtText(Committed, Shackle, P + "vigil_stood").Contains("vigil together")
+              && !DebtText(Committed, Shackle, P + "vigil_stood").Contains("trade-back"),
+            "The Ledger conflates the actual trade and vigil histories.");
+        foreach (var ending in pages)
+        {
+            foreach (var para in ending.Nodes.SelectMany(n => n.Paragraphs))
+                check(!para.Text.Contains("never told anyone why there were two")
+                      && !para.Text.Contains("Nobody was told why there were two"),
+                    "A two-iron callback erases husk_told on " + ending.Id);
+        }
+
         // Shape and hooks (Trk_Yaniel_Bindings; tools/verify-game-bindings.py resolves every GUID against blueprints.zip).
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
               && rel.UnavailableFlags.SequenceEqual(new[] { Killed, P + "left_free" }) && rel.UnavailableOverrides.Count == 0
