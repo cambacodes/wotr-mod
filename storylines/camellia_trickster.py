@@ -641,7 +641,8 @@ SCENES.append(scene(P + "epilogue.kept_on_record", "", "CamelliaEpilogue", 6, ""
 
 SCENES.append(scene(P + "epilogue.commit", "The knife, returned", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring she let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}
-{n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she was surprised to find that it was still there, and so was she.{/n}''')],
+{n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she looked at the Commander asleep, and at the knife, and was never sure which of them she was waiting on.{/n}
+{n}In the first spring of the peace a name was crossed off the list she carried in her sleeve, in her small schoolroom hand. It was a stranger's. The Commander's stayed where she could see it.{/n}''')],
     requires=("trickster.ever", TERMS), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice", KILLED, DEAD, KICKED),
     ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET, KICKED: P + "killed_held"}, **EP))
 

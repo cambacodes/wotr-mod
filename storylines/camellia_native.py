@@ -60,11 +60,15 @@ def slide(id, text):
 slide(NATIVE_TE_STAYED, "Camellia's delight in semidivine power soon passed. Killing without danger bored her. She stayed beside the Commander, whose tricks she still could not predict, and watched for something that might surprise her.")
 slide(NATIVE_TE_OWN_PATH, "Camellia refused to share in the Commander's semidivine power. She had her own path to follow. "
       "Where it led, she never told anyone, except that every evening it passed the Commander's door, and stopped there.")
-slide(NATIVE_STAYED, "Camellia remained with the Commander after the war. She complained of dull company, made new acquaintances, and kept her own hours. When she returned to the Commander's rooms, she brought wine and a small, clean knife. She expected to be entertained.")
+slide(NATIVE_STAYED, "After the end of the war, Camellia remained with the Commander. Everyone who knew her waited for the "
+      "moonless night when boredom, her worst enemy, would win at last and she would simply vanish. The night never came. "
+      "Every night she sat up with her knife and the sound of the Commander's breathing, and did not once look away.")
 slide(NATIVE_THRESHOLD, "After the victory at Threshold, Camellia refused to join the crusader army retreating to Drezen. "
       "She waited among the ruins of the empty fortress, alone, listening to the wind for a familiar voice. When it came "
       "back, she went where it went.")
-slide(NATIVE_STAYED_PLAIN, 'After the war, Camellia stayed with the Commander. She wore her finest dresses to dinner and watched the guests with an attention they mistook for kindness. In private she kept her knife within reach. The Commander could still make her laugh, and she stayed to see what would happen next.')
+slide(NATIVE_STAYED_PLAIN, "Once the war had ended, Camellia grew bored and irritable, as everyone had expected. Everyone "
+      "also expected her to vanish on some moonless night. Instead she stayed at the Commander's side, because there was one "
+      "person left whom she had not finished watching, and the small clean knife stayed in her sleeve.")
 
 NATIVE_EPILOGUE_EDITS = {
     CUE_0392: dict(Page=PAGE, Sequence=COMPANIONS, Key="8f73fe38-c791-4d7e-9bd0-553f1f0b07aa", Replacement=NATIVE_TE_STAYED,
