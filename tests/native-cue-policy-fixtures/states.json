@@ -31371,7 +31371,7 @@
       "Page": "9669bef01411fd2498a466d2aef63bca",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "trickster.now"
@@ -31388,7 +31388,7 @@
       "Page": "9669bef01411fd2498a466d2aef63bca",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned"
       ],
@@ -31419,7 +31419,7 @@
       "Chapter": 6,
       "Flags": [
         "horzalah.closed",
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "trickster.now"
@@ -31436,7 +31436,7 @@
       "Page": "9669bef01411fd2498a466d2aef63bca",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "sacrifice",
@@ -31454,7 +31454,7 @@
       "Page": "9669bef01411fd2498a466d2aef63bca",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "rrt.degraded.horzalah",
@@ -31472,7 +31472,7 @@
       "Page": "9669bef01411fd2498a466d2aef63bca",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "trickster.now"
@@ -118813,7 +118813,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "trickster.now"
@@ -118830,7 +118830,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned"
       ],
@@ -118861,7 +118861,7 @@
       "Chapter": 6,
       "Flags": [
         "horzalah.closed",
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "trickster.now"
@@ -118878,7 +118878,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "sacrifice",
@@ -118896,7 +118896,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "rrt.degraded.horzalah",
@@ -118914,7 +118914,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "horzalah.present_now",
+        "horzalah.trickster.guild_survives",
         "horzalah.trickster.primed",
         "horzalah.trickster.returned",
         "trickster.now"
@@ -152762,7 +152762,6 @@
       "Chapter": 6,
       "Flags": [
         "jerribeth.commission",
-        "jerribeth.payoff.partner",
         "jerribeth.present_now",
         "jerribeth.trickster.late_committed",
         "trickster.ever",
@@ -153852,7 +153851,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "gesmerha.payoff.partner",
         "gesmerha.present_now",
         "gesmerha.trickster.returned",
         "gesmerha.trickster.yard_seen",
@@ -153869,7 +153867,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "gesmerha.payoff.partner",
         "gesmerha.present_now",
         "gesmerha.trickster.returned",
         "gesmerha.trickster.yard_seen",
@@ -153938,6 +153935,53 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "gesmerha.trickster.epilogue.finished"
+    },
+    {
+      "Id": "page/gesmerha.trickster.epilogue.unvisited_mourned",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "gesmerha.present_now",
+        "gesmerha.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "gesmerha.trickster.epilogue.unvisited_mourned"
+    },
+    {
+      "Id": "page/gesmerha.trickster.epilogue.refusal_mourned",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "gesmerha.present_now",
+        "gesmerha.trickster.declined",
+        "gesmerha.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "gesmerha.trickster.epilogue.refusal_mourned"
+    },
+    {
+      "Id": "page/gesmerha.trickster.epilogue.finished_mourned",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "gesmerha.closed",
+        "gesmerha.present_now",
+        "gesmerha.trickster.returned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "gesmerha.trickster.epilogue.finished_mourned"
     },
     {
       "Id": "page/gesmerha.lastcall.page",
@@ -154180,9 +154224,9 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "hepzamirah.payoff.partner",
         "hepzamirah.present_now",
         "hepzamirah.trickster.courier_seen",
+        "hepzamirah.trickster.late_committed",
         "trickster.ever",
         "trickster.now"
       ],
@@ -155075,9 +155119,9 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "chadali.payoff.partner",
         "chadali.present_now",
         "chadali.started",
+        "chadali.trickster.late_committed",
         "trickster.ever",
         "trickster.now"
       ],
@@ -155312,8 +155356,8 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "devarra.payoff.partner",
         "devarra.present_now",
+        "devarra.trickster.late_committed",
         "devarra.trickster.tested",
         "trickster.ever",
         "trickster.now"
@@ -156448,7 +156492,6 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "eliandra.payoff.partner",
         "eliandra.present_now",
         "eliandra.trickster.late_committed",
         "trickster.ever",
@@ -156970,6 +157013,21 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "elyanka.trickster.epilogue.turned_away"
+    },
+    {
+      "Id": "page/elyanka.trickster.epilogue.left_free_mourned",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "elyanka.trickster.left_free",
+        "elyanka.trickster.owned",
+        "sacrifice",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "elyanka.trickster.epilogue.left_free_mourned"
     },
     {
       "Id": "page/elyanka.lastcall.page",
@@ -157518,8 +157576,8 @@
       "Chapter": 6,
       "Flags": [
         "lastcall.active",
-        "trickster.ever",
-        "trickster.lastcall.pillar.bottle"
+        "lastcall.bottled_held",
+        "trickster.ever"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "trickster.lastcall.page.bottle"
@@ -157537,6 +157595,20 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "trickster.lastcall.page.collectors"
+    },
+    {
+      "Id": "page/trickster.lastcall.page.empty_flask",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "lastcall.active",
+        "lastcall.bridge_return",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "trickster.lastcall.page.empty_flask"
     },
     {
       "Id": "page/trickster.lastcall.page.last_word",
