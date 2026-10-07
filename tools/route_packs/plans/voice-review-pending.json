@@ -1,0 +1,37 @@
+[
+  {
+    "scene": "chadali.fortunes.worthless",
+    "route": "chadali",
+    "finding": "chadali:D01-D05; chadali:K01"
+  },
+  {
+    "scene": "chadali.trickster.epilogue.lucky_night",
+    "route": "chadali",
+    "finding": "chadali:D06,D11; chadali:K01"
+  },
+  {
+    "scene": "chadali.wagers.just_joking",
+    "route": "chadali",
+    "finding": "chadali:D07; chadali:K01"
+  },
+  {
+    "scene": "chadali.hours.a_lucky_number",
+    "route": "chadali",
+    "finding": "chadali:D08-D10; chadali:K01"
+  },
+  {
+    "scene": "chadali.fortunes.rigged",
+    "route": "chadali",
+    "finding": "chadali:D12"
+  },
+  {
+    "scene": "chadali.wagers.a_lucky_charm",
+    "route": "chadali",
+    "finding": "chadali:D13,D14"
+  },
+  {
+    "scene": "chadali.fortunes.honey",
+    "route": "chadali",
+    "finding": "chadali:D21"
+  }
+]

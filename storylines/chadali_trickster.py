@@ -395,7 +395,7 @@ ROUND2_PARAGRAPHS = [
     p('{n}Their coin stood on a shelf. She flicked it on her way to bed, then caught it and stood it up again herself.{/n}', requires=(PRIMED,), forbids=("chadali.wagers.coin_lost",)),
     p('{n}The coin she collected stayed flat in her basket. She brought it on her visits, and never asked the Commander to balance it again.{/n}', requires=("chadali.wagers.coin_lost",)),
     p('{n}The luck she collected went to her shrine. Their private wagers stayed ordinary throws; she would still cheat back when she caught the Commander cheating openly.{/n}', requires=("chadali.wagers.luck_lost",)),
-    p('{n}She kept the needle oath with the apology letters. It still meant the next threatened extraction from somebody the Commander loved. No bandage, pin or kiss paid it.{/n}', requires=(NEEDLE_OWED,)),
+    p('{n}She kept the needle oath with their correspondence. It still meant the next threatened extraction from somebody the Commander loved. No bandage, pin or kiss paid it.{/n}', requires=(NEEDLE_OWED,)),
 ]
 
 # Friendship after renewed contact has its own effect-free slide. The shared
@@ -424,13 +424,14 @@ _spine[P + "react.eritrice_coin"]["Forbids"].extend((
 # Authored custody variants: the extraction letter sends the coin only from her keeping.
 _letter = _spine[P + "fought.lucky"]
 _letter_nodes = {nd["Id"]: nd for nd in _letter["Nodes"]}
-_letter_nodes["start"]["Choices"][0]["Forbids"].append("chadali.sessions.coin_taken_home")
-_letter_nodes["start"]["Choices"].append(c("Continue", "coin_home", requires=(PRIMED, "chadali.sessions.coin_taken_home")))
+_letter_nodes["start"]["Choices"][0]["Forbids"].extend(("chadali.sessions.coin_taken_home", "chadali.wagers.coin_lost"))
+_letter_nodes["start"]["Choices"].append(c("Continue", "coin_home", requires=(PRIMED, "chadali.sessions.coin_taken_home"), forbids=("chadali.wagers.coin_lost",)))
+_letter_nodes["start"]["Choices"].append(c("Continue", "coin_collected", requires=(PRIMED, "chadali.wagers.coin_lost")))
 _letter_nodes["coin"]["Text"] = '{n}The Elysian coin lies flat in the envelope, heads up. She has wrapped it in the letter.{/n}'
 _letter_nodes["coin"]["Choices"][0]["Forbids"].append("chadali.wagers.coin_lost")
 _letter_nodes["coin"]["Choices"].append(c("Read the letter.", "coin_collected", requires=("chadali.wagers.coin_lost",)))
 _letter_nodes["shut_coin"]["Text"] = '{n}A sun has been drawn on the bottom of the parcel. There is no coin inside.{/n}'
 _letter["Nodes"].extend([
     nar("coin_home", '{n}A crushed white flower lies in the envelope. The coin is still on its saucer in your quarters.{/n}', c("Read the letter.", "hurt")),
-    nar("coin_collected", '{n}Beneath the coin she has written: "Still flat. That wager stays paid, whatever you write next."{/n}', c("Read the letter.", "hurt")),
+    nar("coin_collected", '{n}A sun is drawn at the foot of the letter. Beside it she has written: "The coin stays flat in my basket. That wager stays paid, whatever you write next." There is no coin in the envelope.{/n}', c("Read the letter.", "hurt")),
 ])
