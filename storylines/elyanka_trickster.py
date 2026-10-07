@@ -631,7 +631,7 @@ COMMON = (
       requires=(EXPOSED,)),
     p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The chaplains asked after them for a year, and were told nothing.{/n}''',
       requires=(GAVE_DEAD,), forbids=(E + "seelah_prayed",)),
-    p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The Commander remembered Seelah counting them, row by row, before the carts went. Her sixty-one chalk marks remained on the floor after the bodies were gone.{/n}''',
+    p('''{n}The sixty-one unnamed dead of Iz were never buried. They went south to Ustalav in the Way's carts, some to a table and some to stand again in grey. The Commander remembered Seelah counting them, row by row, before the carts went.{/n}''',
       requires=(GAVE_DEAD, E + "seelah_prayed")),
     p('''{n}The sixty-one unnamed dead of Iz went into the ground with lime and prayers. Elyanka attended the burial, at the back, in grey, and ate an apple all through the service, and told the Commander afterwards that it was the only honest debt she had ever seen a crusade pay.{/n}''',
       requires=(REFUSED_DEAD,)),
@@ -643,7 +643,7 @@ COMMON = (
       requires=(E + "face.looked",)),
     p('''{n}There were men in the old granary by the north wall who died smiling, that winter, with a name on their lips the chaplains did not recognize. The Commander had let her in.{/n}''',
       requires=(E + "wards.let",)),
-    p('''{n}The boy with one arm from the fever ward lived to be a baker in the lower town of Drezen. He never knew who had sat with him the night he did not die, or who had been sent away from his bed so that he could be sure of it.{/n}''',
+    p('''{n}The boy with one arm from the fever ward lived to be a baker in the lower town of Drezen. He never knew who had sat with him the night he did not die, or who had been sent away from his bed before she could win his prayers.{/n}''',
       requires=(E + "wards.stopped",)),
     p('''{n}She kept her word in the fever ward: the eleven, and not one more. The chaplains never learned why seven of their hopeless died so quietly. The Commander never told them.{/n}''',
       requires=(E + "wards.hopeless_only",)),
@@ -655,7 +655,7 @@ COMMON = (
       requires=(E + "whisper.lie",)),
     p('''{n}The Commander remembered Seelah hearing the truth about the sixty-one from the mouth that had ordered their removal. The count went to the chaplains; a witness stood at the dead-house door. Elyanka had stayed out of the paladin's road.{/n}''',
       requires=(E + "inquiry.told_seelah",)),
-    p('''{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. The Commander remembered Seelah at the gallows with the carters' testimony in her pocket. The Commander's order had kept her from stopping the carts, not from recording who sent them. The chaplains received the testimony; a witness stood at the dead-house door.{/n}''',
+    p('''{n}A resurrection man hanged at the south gate of Drezen for sixty-one bodies he never touched. The Commander remembered Seelah blocking the gallows steps with the carters' testimony, and the watch forcing her down under the Commander's seal. The Commander's order had kept her from stopping the carts, not from recording who sent them. The chaplains received the testimony; a witness stood at the dead-house door.{/n}''',
       requires=(E + "inquiry.misled",)),
     p('''{n}Elyanka told the paladin the truth about the sixty-one herself, in the dead-house yard, without one lie. The Commander remembered Seelah refusing the excuse that the dead could not suffer. She had taken the names and count to the chaplains and put a witness at the dead-house door. Neither culprit had received her forgiveness.{/n}''',
       requires=(E + "inquiry.hers",)),
@@ -709,7 +709,7 @@ HER_PARAGRAPHS = COMMON + LATER + UNPAID + (
     p('''{n}The lock of silver-grey hair bound in black thread stayed where the Commander kept it. She never asked where that was. She was sure, she said, that it was somewhere the Commander would see it every day, because otherwise she would have to be angry, and she was too patient a creditor to waste anger on a debtor's drawer.{/n}''',
       requires=(LOCK,)),
     p('''{n}Her Lady's table was laid in the dead-house by the south gate every seventh night for as long as she was in Drezen, for the Pallid Princess's worshippers in a crusader city, and nobody in authority ever came to the door. When somebody did at last, years later, the Commander's name was the reason they went away again, and the lower town knew it, and said so in the taverns.{/n}''',
-      requires=(SECRET_RITES,), forbids=(E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers")),
+      requires=(SECRET_RITES,), forbids=(E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers", WRIT_UPHELD, WRIT_LIED, WRIT_HERS)),
     p('''{n}The Commander sat at that table more than once, and ate what was put on it, and never asked. She said it was the most romantic thing a living person had ever done for her, and that if it were repeated to anyone she would poison them.{/n}''',
       requires=(TABLE_SAT,)),
     p('''{n}On her Lady's nights the Commander kept the door of the dead-house, and nobody went in or out who had not been let. She called it the first useful thing she had ever seen a crusader do with a sword.{/n}''',
@@ -863,3 +863,10 @@ for _suffix in ("claim", "debt"):
 # Authored round-3 consequence: the existing inquiry watch also sees the rites.
 HER_PARAGRAPHS_WATCH = p('''{n}Her Lady's table was still laid every seventh night. The witness at the dead-house door counted the guests and took their names to the chaplains. Elyanka made him stand outside while her worshippers ate, and sent the bones out under his lamp. The Commander's protection kept her in Drezen; it did not silence the testimony.{/n}''', requires=(SECRET_RITES,), any_groups=((E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers"),))
 next(s for s in SCENES if s["Id"] == E + "epilogue.claim")["Nodes"][0]["Paragraphs"].append(HER_PARAGRAPHS_WATCH)
+
+# Round-4: prayer/counting alone does not establish the performed chalk inquiry.
+for _ending in ("claim", "debt", "lock", "left_free"):
+    next(s for s in SCENES if s["Id"] == E + "epilogue." + _ending)["Nodes"][0]["Paragraphs"].append(
+        p('''{n}The Commander remembered the sixty-one chalk marks on the dead-house floor after the inquiry. Elyanka had swept around them; a witness had stood at the door.{/n}''',
+          requires=(GAVE_DEAD,), any_groups=((E + "inquiry.told_seelah", E + "inquiry.misled", E + "inquiry.hers"),))
+    )

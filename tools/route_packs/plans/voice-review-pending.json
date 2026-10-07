@@ -1,0 +1,32 @@
+[
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D03"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D04"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D05"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D06"
+  },
+  {
+    "scene": "elyanka.trickster.beat.inquiry",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D07"
+  },
+  {
+    "scene": "elyanka.trickster.beat.inquiry",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D08"
+  }
+]
