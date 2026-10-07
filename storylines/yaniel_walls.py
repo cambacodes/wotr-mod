@@ -733,3 +733,6 @@ def integrate(payload):
         if have is not None and have != [list(g) for g in groups]:
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+
+# Phase 4: append the five requested cross-character reaction encounters.
+from storylines import character_interactions_ix_a  # noqa: E402,F401

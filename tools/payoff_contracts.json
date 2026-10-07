@@ -13647,6 +13647,142 @@
       "requires": [
         "camellia.trickster.death_observed"
       ]
+    },
+    {
+      "scene": "targona.trickster.react.ix_a.yaniel",
+      "requires": [
+        "trickster",
+        "targona.present_now",
+        "yaniel.present_now",
+        "targona.trickster.in_drezen",
+        "yaniel.trickster.returned"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.galfrey.queen",
+      "requires": [
+        "trickster",
+        "galfrey.present_now",
+        "galfrey.final",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.galfrey.crown",
+      "requires": [
+        "trickster",
+        "galfrey.present_now",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.crown_reclaimed",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.galfrey.kitrane",
+      "requires": [
+        "trickster",
+        "galfrey.present_now",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.kitrane_forever",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.targona",
+      "requires": [
+        "trickster",
+        "targona.present_now",
+        "targona.trickster.in_drezen",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.yaniel",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "yaniel.trickster.returned",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "yaniel.trickster.react.ix_a.galfrey.queen",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "galfrey.present_now",
+        "yaniel.trickster.returned",
+        "galfrey.final"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
+    },
+    {
+      "scene": "yaniel.trickster.react.ix_a.galfrey.crown",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "galfrey.present_now",
+        "yaniel.trickster.returned",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.crown_reclaimed"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
+    },
+    {
+      "scene": "yaniel.trickster.react.ix_a.galfrey.kitrane",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "galfrey.present_now",
+        "yaniel.trickster.returned",
+        "galfrey.trickster.returned"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
     }
   ],
   "evidence": {
