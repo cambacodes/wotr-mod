@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import unittest
 from tests.story_fixture import fresh_story
+from tests.harem_row_walk import walk as walk_answers
 
 from storylines import household
 from storylines.harem_rows import s25
@@ -167,6 +168,79 @@ class S25Tests(unittest.TestCase):
         self.assertFalse(writes.intersection(self.payload["Derived"]))
         self.assertTrue(all(f.startswith(s25.P) for f in writes))
         self.assertFalse(any("enmity" in f or "reconciled" in f or "committed" in f or "closed" in f for f in writes))
+
+    def candidate(self, step):
+        # Remove ONLY the retirement veto in a test copy. This exposes the
+        # independent contract gates; it never enables the shipped row.
+        body = copy.deepcopy(self.rows[step])
+        body["Forbids"].remove(s25.P + "ready")
+        return body
+
+    def test_reserved_continuations_recheck_bodies_and_losses_independently(self):
+        for step in ("company", "desire", "choice", "morning"):
+            body = self.candidate(step)
+            state = self.state(step, s25.flags("settle.kept"))
+            self.assertTrue(rrt_verify.sim_available(self.model, body, state), step)
+            for missing in s25.ENVELOPE:
+                absent = copy.deepcopy(state)
+                absent.flags.remove(missing)
+                absent.flags.update(("shyka.met", "trickster.ever", "vellexia.trickster.returned"))
+                self.assertFalse(rrt_verify.sim_available(self.model, body, absent), (step, missing))
+            for lost in s25.EXCLUSIONS:
+                absent = copy.deepcopy(state)
+                absent.flags.update((lost, "camellia.trickster.returned", "vellexia.trickster.returned"))
+                self.assertFalse(rrt_verify.sim_available(self.model, body, absent), (step, lost))
+            self.assertTrue(all(not node["Paragraphs"] for node in body["Nodes"]))
+
+    def test_reserved_sequence_uses_deed_clocks_and_refusals_stop_successors(self):
+        for settle, root in (("settle", 0), ("settle", 1), ("retry", 0)):
+            state = rrt_verify.SimState(5, 1000)
+            state.flags.update(s25.ENVELOPE)
+            state.flags.update(self.walk(settle, root)[0])
+            state.times.update({flag: 1000 for flag in state.flags})
+            rrt_verify.sim_complete(self.model, state)
+            for step, due, following in (("company", 1048, "desire"), ("desire", 1096, "choice"),
+                                         ("choice", 1144, "morning"), ("morning", 1152, None)):
+                body = self.candidate(step)
+                state.hour = due - 1
+                self.assertFalse(rrt_verify.sim_available(self.model, body, state), (settle, step))
+                state.hour = due
+                self.assertTrue(rrt_verify.sim_available(self.model, body, state), (settle, step))
+                outcomes = walk_answers(self, self.model, body, state)
+                # Every refusal/abort lacks the deed needed by the successor.
+                if following:
+                    for outcome in outcomes[1:]:
+                        outcome.hour += 1000
+                        outcome.rest_spent.clear()
+                        rrt_verify.sim_complete(self.model, outcome)
+                        self.assertFalse(rrt_verify.sim_available(self.model, self.candidate(following), outcome))
+                state = outcomes[0]
+                rrt_verify.sim_complete(self.model, state)
+                self.assertEqual(state.rest_spent["household.pair"], 1)
+                state.rest_spent.clear()  # A later rest restores the existing allowance.
+                for woman in s25.PAIR:
+                    stage = "friend" if step in ("company", "desire") else "lover"
+                    self.assertIn(s25.P + woman + "." + stage, state.flags)
+            self.assertIn(s25.P + "morning.blame_contested", state.flags)
+
+    def test_slot_brief_and_surface_classification_match_reserved_contract(self):
+        brief = json.loads((ROOT / "tools/route_packs/explicit_slots/harem" /
+                            (s25.P + "choice.explicit.1.json")).read_text(encoding="utf-8"))
+        self.assertEqual(brief["slot_id"], s25.P + "choice.explicit.1")
+        self.assertEqual(brief["commander"], "absent")
+        self.assertEqual(brief["speakers"], {"C": "Camellia", "V": "Vellexia"})
+        self.assertTrue(brief["status"].startswith("blocked"))
+        self.assertEqual(brief["last_line"], "V: That display was hideous anyway.")
+        # All six surfaces are household interactions, not route epilogues,
+        # departure reports, revival producers or committed-romance payoffs.
+        for body in self.rows.values():
+            self.assertEqual(body["Relationship"], "household")
+            self.assertEqual(body["Participants"], list(s25.PAIR))
+            self.assertFalse(rrt_verify.is_epilogue(body))
+            self.assertTrue(set(s25.BODY) <= set(body["Requires"]))
+        record = s25.ledger_entry()
+        self.assertEqual(record["Id"], s25.P + "record")
+        self.assertNotIn(record, self.payload["Books"]["trickster.ledger"]["Entries"])
 
     def test_registration_savecompat_clocks_consumers_and_existing_data(self):
         self.assertEqual(len(self.rows), 6)
