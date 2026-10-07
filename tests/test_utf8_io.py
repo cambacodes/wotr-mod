@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = ["tests", "tools", "storylines", "story.py", "expansion.py"]
+SOURCES = ["tests", "tools", "authoring", "storylines", "story.py", "expansion.py"]
 
 
 def _files():

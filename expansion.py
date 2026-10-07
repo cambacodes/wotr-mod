@@ -112,6 +112,11 @@ ROOT = Path(__file__).parent
 
 
 def make_expansion(*, independent_tirabade=True):
+    from authoring.compiler import compile_story
+    return compile_story("expansion", independent_tirabade=independent_tirabade).payload
+
+
+def _make_expansion(*, independent_tirabade=True):
     payload = copy.deepcopy(make_story())
     # Explicit legacy metadata also lets older authored Story.json files keep using
     # the C# defaults while this larger export carries independent relationships.
@@ -818,7 +823,9 @@ def trickster_engine(payload):
 if __name__ == "__main__":
     output = Path(os.environ.get("RRT_STORY_OUTPUT", ROOT / "development/Story.json"))
     output.parent.mkdir(exist_ok=True)
-    payload = make_expansion()
-    newline = "\r\n" if output.exists() and b"\r\n" in output.read_bytes() else "\n"
-    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline=newline)
+    from authoring.compiler import CompilationInputs, compile_story
+    from authoring._serialization import write_story
+    compiled = compile_story("expansion", CompilationInputs(destination=output))
+    write_story(output, compiled)
+    payload = compiled.payload
     print(f"INCOMPLETE DEVELOPMENT EXPORT: {len(payload['Scenes'])} scenes -> {output}")
