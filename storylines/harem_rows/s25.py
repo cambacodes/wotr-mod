@@ -97,10 +97,10 @@ def optional_nodes():
           c('"Keep this an ordinary salon evening."', "declined"), c("Later.", abort=True)),
         result("company", "Camellia", '''"I envy you. There — enjoy hearing it. You need not dress your appetite in a pious little story."
 {n}Vellexia reaches for the cloth meant to unveil her display, then pulls it off and drops it over a chair.{/n}
-"I had a spectacle prepared. It would bore you. Sit down. Tell me which of my guests you most wanted to silence."
+"I had a spectacle prepared. It would bore you. Sit down. Tell me which of my guests you most wanted to silence. Permanently."
 {n}Camellia taps her nail against the chair arm.{/n} "The one who laughed before I spoke."
-{n}Vellexia smiles.{/n} "I shall not invite him when you come again. I want to hear you."
-{n}Camellia takes the chair beside her.{/n} "Then I shall come for you. Your guests have very little to recommend them."''',
+{n}Vellexia smiles.{/n} "Then he can find other company. I want a friend with better conversation. You will do nicely."
+{n}Camellia takes the chair beside her.{/n} "A friend, then. How fortunate that we have such similar tastes. I shall come for you — your guests have very little to recommend them."''',
                "company.seen", "company.both_friends", "camellia.criticism_entrusted", "vellexia.private_answer_kept",
                "cost.camellia.private_envy_owned", "cost.vellexia.spectacle_abandoned"),
         result("declined", "Camellia", '''"Then call your guests back. I have no wish to speak over them."
@@ -138,7 +138,7 @@ def optional_nodes():
         n("explicit.1", "Narrator", "{n}They leave the dismantled display for someone else to clear.{/n}", c(next="after")),
         result("after", "Narrator", '''{n}The room stays locked. Below, the court's noise dwindles; beyond the walls, the watch calls the hour.{/n}''',
                "choice.seen", "choice.both_yes", "choice.room_cleared"),
-        result("camellia_no", "Camellia", '''"Indeed. I have no intention of being dragged before the officers for your entertainment."
+        result("camellia_no", "Camellia", '''"Indeed. The officers are expecting me at muster. I would rather get it over with than listen to them complain all tomorrow."
 {n}She takes her cloak. Vellexia watches her go, one hand still resting on the platform.{/n}''', "choice.seen", "choice.camellia_no"),
         result("vellexia_no", "Vellexia", '''"So it is. I should hate to leave them thinking they had bored me into bed."
 {n}She gathers her skirts and opens the door. Camellia's hand falls from the key.{/n}''', "choice.seen", "choice.vellexia_no"),
