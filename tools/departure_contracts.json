@@ -11965,6 +11965,30 @@
         {
           "scene": "household.pair.seelah_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.ack",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.company",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.desire",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.choice",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.choice.warded",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.morning",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -14472,6 +14496,30 @@
           "scene": "nenio.trickster.epilogue.kenabres_pending",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.ack",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.company",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.desire",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.choice",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.choice.warded",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.nenio_arueshalae.morning",
+          "letter": false
         }
       ],
       "absence_variants": [

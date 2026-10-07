@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "row": "W3-S13",
+  "authored": "Refusal acknowledgment and observation-bench courtship; no native history rewrite.",
+  "source": "storylines/harem_rows/s13.py",
+  "scenes": [
+    "household.pair.nenio_arueshalae.ack",
+    "household.pair.nenio_arueshalae.company",
+    "household.pair.nenio_arueshalae.desire",
+    "household.pair.nenio_arueshalae.choice",
+    "household.pair.nenio_arueshalae.choice.warded",
+    "household.pair.nenio_arueshalae.morning"
+  ],
+  "presence": {"nenio": "current qualified SeatWomen body + present_now + RouteOpen", "arueshalae": "current recruited good companion + native_alive + present_now + RouteOpen"},
+  "history_books": [],
+  "living_reader_hosts": [],
+  "explicit_slots": [{
+    "id": "household.pair.nenio_arueshalae.choice.explicit.1",
+    "participants": ["nenio", "arueshalae"],
+    "commander": "absent",
+    "hosts": ["household.pair.nenio_arueshalae.choice", "household.pair.nenio_arueshalae.choice.warded"],
+    "aftermath": "Separation, separate duties and a mutually chosen later bench meeting; no retained-name or specimen-report payoff.",
+    "state_effects": []
+  }],
+  "payoff_classification": "Pair deed surfaces only; no Commander romance payoff, departure, return or native rewrite. Local friend/lover descriptions require deed witnesses, not the slot. W5 historical ledger_entry is reserved, not emitted.",
+  "optional_status": "Retired pending BUDGET-D review; Requires and Forbids the existing ack.heard witness. No new mechanic or price. Four optional completions, one start; safe/warded choice wrappers share choice.seen and the same allowance witness.",
+  "reader_owner": "W5: qualified route contacts, Seating Notes and Last Call. The integrator owns directional attitude adapters; no shared file modified.",
+  "uniqueness": {
+    "device": "experiment_or_ritual: Nenio abandons measurement to ask her own personal question",
+    "setting": "observation bench, wall patrols and bats above Drezen",
+    "payoff": "Both arrange another meeting after their separate research and patrol duties, with no private-name retention or specimen-report payoff.",
+    "comparisons": ["Nenio solo selective-forgetting/retained identity: no forgetting trial, name revelation or blank public account", "S10 faith inquiry: no oath classification", "S12 controlled craft lesson: no specimen method or hostile disclosure"]
+  }
+}
