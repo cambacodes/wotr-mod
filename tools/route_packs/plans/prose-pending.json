@@ -676,5 +676,111 @@
     "woman": "lastcall",
     "beat": "rename Venn -> Veldran (canon-fix1 B10)",
     "ruling": "canon-fix1"
+  },
+  {
+    "scene": "household.pair.nenio_camellia.settle",
+    "node": "lesson",
+    "woman": "camellia",
+    "beat": "keep control of her method / correct the inert sample while the Commander assists / reveal only one limited method",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.nenio_camellia.settle",
+    "node": "refused",
+    "woman": "camellia",
+    "beat": "keep her secrets / take away the unfinished lesson / leave Nenio without the correction",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.nenio_camellia.settle",
+    "node": "manual_correction",
+    "woman": "camellia",
+    "beat": "expose no more than the same limited method / direct the Commander's correction on the inert sample / surrender one technical advantage to Nenio's scrutiny",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.nenio_camellia.settle",
+    "node": "spoiled",
+    "woman": "camellia",
+    "beat": "deny an accusation / remove the sample before the demonstration / leave Nenio's classification unfinished",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.nenio_camellia.retry",
+    "node": "lesson",
+    "woman": "camellia",
+    "beat": "keep control of her method / correct the inert sample while the Commander assists / reveal only one limited method",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.nenio_camellia.retry",
+    "node": "refused",
+    "woman": "camellia",
+    "beat": "keep her secrets / take away the unfinished lesson / leave Nenio without the correction",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.nenio_camellia.retry",
+    "node": "manual_correction",
+    "woman": "camellia",
+    "beat": "expose no more than the same limited method / direct the Commander's correction on the inert sample / surrender one technical advantage to Nenio's scrutiny",
+    "ruling": 3
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.settle.good",
+    "node": "inspection_camellia",
+    "woman": "camellia",
+    "beat": "retain control of the exposed work / turn the existing sample toward Arueshalae for inspection / surrender the harmless cover without preparing another sample",
+    "ruling": 21
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.settle.evil",
+    "node": "inspection_camellia",
+    "woman": "camellia",
+    "beat": "retain control of the exposed work / turn the existing sample toward Arueshalae for inspection / surrender the harmless cover without preparing another sample",
+    "ruling": 21
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.settle.evil",
+    "node": "inspection_arueshalae",
+    "woman": "arueshalae",
+    "beat": "keep her appetite / inspect Camellia's existing work without taking a taste / give up the easy feeding answer",
+    "ruling": 21
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.retry.good",
+    "node": "inspection_camellia",
+    "woman": "camellia",
+    "beat": "retain control of the exposed work / turn the existing sample toward Arueshalae for inspection / surrender the harmless cover without preparing another sample",
+    "ruling": 21
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.retry.evil",
+    "node": "inspection_camellia",
+    "woman": "camellia",
+    "beat": "retain control of the exposed work / turn the existing sample toward Arueshalae for inspection / surrender the harmless cover without preparing another sample",
+    "ruling": 21
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.retry.evil",
+    "node": "inspection_arueshalae",
+    "woman": "arueshalae",
+    "beat": "keep her appetite / inspect Camellia's existing work without taking a taste / give up the easy feeding answer",
+    "ruling": 21
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.company",
+    "node": "start",
+    "woman": "camellia",
+    "beat": "leave them company over the already witnessed work",
+    "ruling": 21,
+    "choice": 3
+  },
+  {
+    "scene": "household.pair.camellia_arueshalae.company",
+    "node": "witnessed_company",
+    "woman": "camellia",
+    "beat": "seek Arueshalae's company / keep her beside the already inspected work and receive her personal answer / spend private time without repeating the preparation",
+    "ruling": 21
   }
 ]

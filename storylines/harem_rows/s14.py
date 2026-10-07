@@ -7,7 +7,8 @@ not a universal recollection or unconditional trust. No physical intimacy.
 Registration retains the read-only attendance name for saved wrappers. J01's
 post-epoch pass evaluates it from current qualified bodies at the Table,
 never from a saved flag or a choice's Set.
-Attitude, final failure ownership, and W5 readers remain integrator-owned.
+Ruling 21 enables the declared read-only stage views. Final failure ownership
+and W5 readers remain integrator-owned.
 """
 import copy
 
@@ -19,7 +20,7 @@ ATTENDANCE = P + "bodies_current"
 DEEDS = tuple(P + suffix for suffix in (
     "deed.galfrey_place_kept", "deed.arueshalae_place_kept",
     "cost.galfrey_public_judgment", "cost.arueshalae_unclaimed_place_yielded"))
-# Metadata for W0c; this module never writes attitude or enmity.
+# Ruling 21's read-only stages; choices never write attitude or enmity.
 STAGES = {
     "galfrey.harem.attitude.arueshalae.rival": [[P + "settle.seen"]],
     "arueshalae.harem.attitude.galfrey.respect": [[P + "settle.seen"]],
@@ -109,6 +110,20 @@ def register(payload, scenes, refs):
     scenes.extend(copy.deepcopy(s) for s in SCENES if s["Id"] not in existing)
     derived = payload.setdefault("Derived", {})
     forbids = payload.setdefault("DerivedForbids", {})
+    for key, groups in STAGES.items():
+        derived[key] = copy.deepcopy(groups)
+        payload.setdefault("DerivedOpenRoutes", {})[key] = list(PAIR)
+        guards = []
+        for a, b in (PAIR, PAIR[::-1]):
+            guard = P + "blocked." + a
+            derived[guard] = [[a + ".harem.enmity." + b]]
+            forbids[guard] = [a + ".harem.reconciled." + b]
+            guards.append(guard)
+        higher = {"galfrey.harem.attitude.arueshalae.rival":
+                  "galfrey.harem.attitude.arueshalae.respect",
+                  "arueshalae.harem.attitude.galfrey.respect":
+                  "arueshalae.harem.attitude.galfrey.friend"}
+        forbids[key] = guards + ([higher[key]] if key in higher else [])
     for branch, personality in (("good", "redeemed"), ("evil", "corrupted")):
         derived[P + "ready." + branch] = [[
             "galfrey.harem.eligible", "arueshalae.harem.eligible",

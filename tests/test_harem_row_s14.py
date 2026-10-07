@@ -40,13 +40,15 @@ class S14Tests(unittest.TestCase):
         rules.sim_complete(model, state)
         return story, model, scene, state
 
-    def test_registration_is_local_idempotent_and_does_not_publish_stages(self):
+    def test_registration_is_local_idempotent_and_only_derives_approved_stages(self):
         story, _, _, _ = self.fixture()
         before = copy.deepcopy(story)
         s14.register(story, story["Scenes"], story["Etudes"])
         self.assertEqual(before, story)
         self.assertEqual(len(story["Scenes"]), 4)
-        self.assertTrue(set(s14.STAGES).isdisjoint(story["Derived"]))
+        for key, groups in s14.STAGES.items():
+            self.assertEqual(story["Derived"][key], groups)
+        self.assertFalse(any(key.endswith(".lover") for key in story["Derived"]))
         self.assertTrue({s14.ATTENDANCE, *s14.ENMITY, *s14.ENMITY.values()} <= set(story["PendingHooks"]))
         produced = {f for s in story["Scenes"] for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]}
         self.assertNotIn(s14.ATTENDANCE, produced)
@@ -153,6 +155,29 @@ class S14Tests(unittest.TestCase):
             self.assertTrue(rules.sim_available(model, scene, probe))
             probe.flags.add("galfrey.closed")
             self.assertFalse(rules.sim_available(model, scene, probe))
+
+    def test_deed_stages_keep_asymmetry_and_matching_enmity_precedence(self):
+        _, model, _, state = self.fixture()
+        state.flags.update((s14.P + "settle.seen", *s14.DEEDS))
+        stages = ("galfrey.harem.attitude.arueshalae.respect",
+                  "arueshalae.harem.attitude.galfrey.friend")
+        rules.sim_complete(model, state)
+        self.assertTrue(all(stage in state.flags for stage in stages))
+        self.assertNotIn("galfrey.harem.attitude.arueshalae.rival", state.flags)
+        self.assertNotIn("arueshalae.harem.attitude.galfrey.respect", state.flags)
+        self.assertFalse(any(flag.endswith(".lover") for flag in state.flags))
+        for enmity, receipt in s14.ENMITY.items():
+            probe = copy.deepcopy(state)
+            probe.flags.add(enmity)
+            rules.sim_complete(model, probe)
+            self.assertFalse(any(stage in probe.flags for stage in stages))
+            wrong = next(value for value in s14.ENMITY.values() if value != receipt)
+            probe.flags.add(wrong)
+            rules.sim_complete(model, probe)
+            self.assertFalse(any(stage in probe.flags for stage in stages))
+            probe.flags.add(receipt)
+            rules.sim_complete(model, probe)
+            self.assertTrue(all(stage in probe.flags for stage in stages))
 
     def test_exhaustive_terminals_indices_abort_and_protected_budget(self):
         for raw in s14.SCENES:

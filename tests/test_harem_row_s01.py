@@ -26,7 +26,10 @@ class SnareRow(unittest.TestCase):
         state.flags.update(('trickster', 'household.table.kept', 'trickster.foresight.accepted',
                             'camellia.committed', 'camellia.trickster.terms_named',
                             'wenduag.committed', 'wenduag.trickster.proved', 'wenduag.trickster.gate_seen',
-                            'wenduag.trickster.claim.given'))
+                            'wenduag.trickster.claim.given', 'wenduag.in_party', 'chapter_later'))
+        state.available_contacts = {option['Units'][0]
+                                    for contact in self.model.by_id[s01.p('settle')]['ParticipantContacts'].values()
+                                    for option in contact['Options']}
         verify.sim_complete(self.model, state)
         return state
 
@@ -118,6 +121,7 @@ class SnareRow(unittest.TestCase):
 
     def test_returns_do_not_override_later_loss_or_closure(self):
         state = self.state()
+        state.flags.remove('wenduag.in_party')
         state.flags.update(('camellia.killed', 'camellia.trickster.cost.knows_you_tried',
                             'camellia.trickster.native_death_observed', 'wenduag.dead_any', 'wenduag.trickster.returned'))
         self.assertTrue(self.available(state))
