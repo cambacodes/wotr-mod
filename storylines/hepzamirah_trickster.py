@@ -251,7 +251,7 @@ SCENES.append(scene(P + "colyphyr.offer", "A standing offer", "Hepzamirah", 4,
     hz("laugh", '''{n}For a moment the daughter of Baphomet only stares at you. Then she laughs, and the sound goes round the cavern twice before the rock swallows it.{/n}
 "Look you *up*? You are a gnat that has flown into the forge, crusader, and you offer the smith a favour?"
 {n}Her horns dip. Above her, the angel's chains shift, as if even he wants to hear the answer.{/n}
-"My father does not let his heirs die. He tests them. I have passed every test he ever set me. I gave him my mother. I gave him my brothers and sisters by the hundred. What have you ever given anyone, clown, except jokes?"''',
+"My father does not let his heirs die. He tests them. I have passed every test he ever set me. I gave him my mother. I gave him my brothers and sisters by the hundred. What have you ever given anyone, whelp, except jokes?"''',
        c('"It\'s a standing offer. It doesn\'t expire."', "shelf"),
        c('[Grin] "I\'ll bring flowers to the funeral."', "shelf"),
        c('"He\'s already weighing you against someone. I can see it on you."', "weighed")),
@@ -337,7 +337,7 @@ SCENES.append(scene(P + "ghost.deed_by_fire", "A deed, by fire", "Hepzamirah", 5
           "burned", mythic="Trickster", alignment=("Chaotic", 2), crusade=("Favors", -200), flags=(SCAR,)),
         c('"Let her rot. Break the altar."', flags=(CLOSED,), alignment=("Lawful", 1))),
     nar("burned", '''{n}Your blood smokes on the stone. A chaplain begins a letter to Nerosyan. The brazier spits, and a crushed face appears in its coals, one eye hanging loose.{/n}
-"You walked past my corner. Now you kneel at his altar? Get up, clown. If you mean to steal, make sure the jailers hear you."''',
+"You walked past my corner. Now you kneel at his altar? Get up, worm. If you mean to steal, make sure the jailers hear you."''',
         c("[Go up into the air.]")),
     ], requires=("trickster", DEAD, "baphomet.parley.latched"), forbids=(PRIMED, CLOSED), delay=72, last=5, optional=True,
     Relationship=REL, AnswerLists=["6dccfd39947ef4242a8afbe36b21a46c"],
@@ -384,12 +384,12 @@ M."{/n}
           "flesh", flags=(RET, WRONG_BODY))),
     *lead([("flesh", nar, '''{n}Somewhere, very far away, a glass vial cracks on a laboratory shelf. The cold on your shoulder is gone. The thing in the crate opens its one good eye.{/n}
 {n}She sits up in the brine and touches the scar, the stump and the dead eye, slowly, the way a moneylender counts coins that have been clipped.{/n}''', None),
-           ("flesh_late", hz, '''"You came late, clown. The jailers had time to learn your name, and they whispered it all the way to Drezen. I counted every whisper."''', LATE),
+           ("flesh_late", hz, '''"You came late, whelp. The jailers had time to learn your name, and they whispered it all the way to Drezen. I counted every whisper."''', LATE),
            ("flesh_altar", hz, '''"You walked past me in his prison. Then you knelt at his altar in your own city and cut his mark into your own arm, to reach me. I felt the corner come loose like a rotten tooth." {n}Her lip curls, and her eye goes to your sleeve and stays there.{/n} "My father's mark. On you. Roll up that sleeve. I want to see what you let his priests cut into my landlord."''', ALTAR),
            ("flesh_offer", hz, '''"'Look me up.' You said it in Colyphyr, over the angel's head. I have looked you up, clown. Here I am, in a crate."''', OFFER)],
           "first_rent"),
     hz("first_rent", '''"You *mended* me." {n}It is said the way another woman would say "you spat on me".{/n} "Baphomet's daughter, grown in a jar by my own servant and unwrapped by a clown with a crowbar."
-"Very well. I am alive, and I owe you rent. Here is the first payment. My father's archpriestess could call him, and he had to come. One day I will find out if that is still true. When I do, you may stand where he can see you. When I kill Mutasafen, you may not. That one is mine."''',
+"Very well. I am alive, and I owe you. Here is the first payment. My father's archpriestess could call him, and he had to come. One day I will find out if that is still true. When I do, you may stand where he can see you. When I kill Mutasafen, you may not. That one is mine."''',
        c('"I\'ll bring snacks."'),
        c('[Intimidate] "You\'ll pay the rent I name."', flags=(LANDLORD,), alignment=("Evil", 1))),
     ], requires=("trickster.ever", PRIMED), forbids=(RET, CLOSED), delay=48, last=5, optional=True, Relationship=REL,
@@ -410,7 +410,7 @@ SCENES.append(scene(P + "body.hounds", "The Apprentice at the gate", "Memory", 5
         c("Continue", "throat")),
     *lead([("throat", hz, '''"Your postman came back. I have him by the throat. He says he is owed a vial of you. He says his master will know if it is not your blood. I say his master will know nothing, because I am going to post his master the Apprentice's eyes, one at a time, in a box with a ribbon."''', None),
            *COURIER_LEADS], "joke"),
-    hz("joke", '''"Unless you have a better joke. You usually do. Come down and tell it before I get bored, clown. I get bored quickly now. Flesh itches."''',
+    hz("joke", '''"Unless you have a better joke. You usually do. Come down and tell it before I get bored, worm. I get bored quickly now. Flesh itches."''',
        c('[Hand over the vial] "Let him go. A deal is a deal, even with him."', "vial", flags=(CS, VIAL_PAID)),
        c('[Let her have him] "He\'s yours."', flags=(CS, COURIER_KILLED), alignment=("Evil", 1)),
        c('[Send him back with a forged vial] "Here. Areelu\'s work. Mind the label."', flags=(CS, VIAL_FORGED),
@@ -443,7 +443,7 @@ TERMS_LEADS[0] = ("ember", ember_node, '''{n}Ember is sitting on an upturned buc
 yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
     *lead([("open", nar, '''{n}She is by the far wall of the smith's yard, where the light does not reach, arms crossed over a body she did not choose. Her heavy pick leans against the wall beside her, head down, like a hound told to wait.{/n}''', None),
            *TERMS_LEADS], "price"),
-    hz("price", '''"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Listen, clown, because I will say this once."
+    hz("price", '''"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Listen, whelp, because I will say this once."
 "I stay. My own door, my own guards, and no priest mends anything else of mine. When I go for Mutasafen, nobody follows. And my father is mine. The day I call him, you will not bargain with him over my head."
 "In return I stand beside you in every fight until then. I will not pretend to be grateful. Do not ask me to."''',
        c('[Agree to all of it] "Done. Your door, your guards, your father."', "rent"),
@@ -451,12 +451,12 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
          alignment=("Evil", 1)),
        c('"Why stay at all? The door\'s Leavable. You could walk out tonight."', "why")),
     hz("why", '''"Walk out to where? My father's cult calls me apostate. Mutasafen wants me back on his bench. Vorlesh had my place before I was cold. I expect she would like my soul in a jar beside it."
-{n}She points to the room behind the forge.{/n} "Here there is steel between me and them, and a landlord I can kill if the lease sours. I can do the sums. Now give me that room on my terms."''',
+{n}She points to the room behind the forge.{/n} "Here there is steel between me and them, and a keeper I can kill if the bargain sours. I can do the sums. Now give me that room on my terms."''',
        c('[Agree to all of it] "Done. Your door, your guards, your father."', "rent"),
        c('[Counter] "You\'ll serve as my blade. Guests don\'t get conditions."', "refused", flags=(LANDLORD,),
          alignment=("Evil", 1))),
     hz("rent", '''"Words. My father gave me words too. *Protection of a rare kind*, he said, and the protection was a leash."
-{n}She steps close enough that you can see where the scar pulls the corner of her mouth, and the heat of her comes off her like the heat off the forge.{/n} "Say the other thing. That if I walk out of your door, you let me."''',
+{n}She steps close enough that you can see where the scar pulls the corner of her mouth, and the heat of her comes off her like the heat off the forge.{/n} "So tell me what holds me here, worm. Not your word. His word held until it did not. Give me something I can use."''',
        c('"The door is Leavable. So are you. Stay anyway."', "sealed"),
        c("[Say nothing]", "refused"),
        c('[Trickster] "If you walk out, I\'ll rename the whole city Leavable and come after you through the wall."', "sealed_joke")),
@@ -472,7 +472,7 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
 {n}She opens the latch herself. Inside, she tears your coat open at the buckles and pushes her own clothes off her shoulders. Your hands follow the rough skin along her ribs; she presses your palm there before drawing you down onto the cot.{/n}
 "Mine tonight." {n}She bends to kiss you again. You meet her halfway.{/n}''',
         c("[Let her have her rule.]")),
-    hz("refused", '''"I knelt once, to a father who promised me everything. I will not do it for a landlord."
+    hz("refused", '''"I knelt once, to a father who promised me everything. I will not do it for a jailer with good manners."
 {n}She walks out of the yard without a glance at anyone. By morning her door stands open and her room is empty, except for the jar of wildflowers, unbroken, set in the middle of the floor.{/n}''',
        c('"Then go."', flags=(CLOSED,))),
 ], requires=("trickster.ever", RET, CS, FIRST, PICK), forbids=(COMMITTED,), delay=24)
@@ -491,9 +491,9 @@ LEAVABLE_PARAS = (
     p("{n}Of her father she spoke once a year, on the day of Colyphyr, and only to say that she had not called him yet.{/n}", requires=(GRUDGE,)),
 )
 SCENES.append(scene(P + "epilogue.leavable", "", "HepzamirahEpilogue", 6, "", [
-    nar("page", '''{n}In spring she came back from the Worldwound with soot in her hair and a crystal-cutter's lens on a cord. She kicked the mud from her boots in the Commander's doorway and dropped her pack beside the mended cot.{/n}
-"Another bench burned. Move over."
-{n}The door stayed unlatched. When the chaplains came to object, she answered it wearing the Commander's coat.{/n}''',
+    nar("page", '''{n}In spring she came back from the Worldwound with soot in her hair, a crystal-cutter's lens on a cord, and a string of cultists' ears she did not trouble to explain. She kicked the mud from her boots in the Commander's doorway and dropped her pack beside the mended cot.{/n}
+"Another bench burned. Move over, worm. I am not here for the cot. You are the sharpest thing I own, and my father is not dead yet."
+{n}Nobody in Drezen could say which of them was keeping the other. When the chaplains came to object, she met them in the doorway with the pick over her shoulder and asked which of them wished to be the season's example.{/n}''',
         paragraphs=LEAVABLE_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
@@ -504,8 +504,8 @@ SCENES.append(scene(P + "epilogue.leavable_on_record", "", "HepzamirahEpilogue",
 
 SCENES.append(scene(P + "epilogue.commit", "", "HepzamirahEpilogue", 6, "", [
     nar("page", '''{n}After the Threshold, Hepzamirah returned to the Commander's door with her pack. She set it down herself.{/n}
-"I left. I came back. My guards, no priest, and my quarry stays mine. Do you still have a room for me, clown?"
-{n}She took the room on those terms. The door never acquired a lock.{/n}''')],
+"I left. I came back. Do not mistake it for anything softer. My guards, no priest, my quarry stays mine, and you stand where my father can see you when I call him. Do you still have a room for me, worm, or must I take one off your chaplains?"
+{n}She took the room on those terms, and had broken a sergeant's nose over the door by the end of the week.{/n}''')],
     requires=("trickster.ever", CS), forbids=(COMMITTED, CLOSED, "sacrifice"),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
@@ -686,7 +686,7 @@ _live_page["Paragraphs"].extend([
     p('{n}She collected the favor owed for Woljif\'s survival in front of the court: the Commander had to name her as the woman who had spared Ygefeles\'s heir. She kept him alive as proof of what her restraint could buy. Nobody called it mercy twice.{/n}', requires=(FAVOUR_OWED,)),
     p('{n}Woljif kept a table between himself and Hepzamirah at the next gathering. "Yeah, chief. Tell them I am alive. Just leave out the bit where I am her proof." She laughed and made the Commander name the bargain anyway.{/n}', requires=(FAVOUR_OWED, "woljif.present_now")),
     p('{n}For forbidding the call in Drezen, the Commander had to acknowledge before the court that the city was protected, not her quarry confiscated. Hepzamirah chose ground outside its walls. Baphomet had not yet answered her; the choice of when to try remained hers.{/n}', requires=(CALL_FORBIDDEN,)),
-    p('{n}She still expected the Commander beside her if the Lord of Beasts answered. She had not made the call. The invitation remained unpaid rent, and she meant to choose the day herself.{/n}', requires=(CALL_SWORN,)),
+    p('{n}She still expected the Commander beside her if the Lord of Beasts answered. She had not made the call. The invitation remained an unpaid debt, and she meant to choose the day herself.{/n}', requires=(CALL_SWORN,)),
     p('{n}The Commander had promised her Vorlesh\'s first sight at the inner door. The crusade never opened a passage for her into that chamber. She came home alive from the outer fighting, planted her pick beside the cot, and demanded an account of the refused place. The victory had not fulfilled that promise.{/n}', requires=(P + "vorlesh_first",)),
     p('{n}Their promised entrance side by side never happened: the crusade gave her no passage into Vorlesh\'s chamber. Back at their room she made the Commander tell her what the witch had said. "Half a step in front," she reminded them. "You owe me that still."{/n}', requires=(P + "bond.vorlesh",), forbids=(P + "vorlesh_first",)),
     p('{n}At the final march the scouts\' tested ground warning had changed the watches and the pike orders. Hepzamirah inspected those orders herself before taking her place in front.{/n}', requires=(P + "bond.scouts_result",)),
