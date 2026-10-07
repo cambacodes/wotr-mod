@@ -1378,5 +1378,26 @@
     "woman": "chivarro",
     "beat": "want the old threat remembered / retain her own account of the earlier request / no new concession or reply",
     "ruling": 18
+  },
+  {
+    "scene": "soana.ending_kept_life",
+    "woman": "soana",
+    "node": "start",
+    "beat": "fix-inherited2 finding 1: locked living ending is structurally valid after each earned Commander return. Review a concise Soana-specific acknowledgement of the return for trickster.commander_back histories, retaining the ordinary living text and Corven continuity; do not claim a return after an unreturned sacrifice or add gates. Prose remains unchanged pending Claude ownership.",
+    "ruling": "fix-inherited2"
+  },
+  {
+    "scene": "targona.trickster.free.furlough",
+    "woman": "targona",
+    "node": "greet_wayhouse_unspent",
+    "beat": "fix-inherited2 finding 2: saved unspent greeting now continues to greet_wayhouse so both ward histories reach the placed correspondence arrival. Rewrite this locked node and its choice 0 as a concise arrival bridge retaining the actual last-wand work and eastern-road wayhouse origin, without repeating the canonical greeting or the Commander explanation that follows it. Keep IDs and choice index, the earned ward/correspondence gates, and the continuation to greet_wayhouse. Authored addition; prose unchanged pending Claude ownership.",
+    "ruling": "fix-inherited2"
+  },
+  {
+    "scene": "targona.trickster.free.furlough",
+    "woman": "targona",
+    "node": "greet_treated_unspent",
+    "beat": "fix-inherited2 finding 2 class sweep: the saved unspent arrival now continues to greet_treated. Rewrite this locked node and choice 0 as a concise arrival bridge retaining the actual last-wand ward work and origin in Heaven after the earned wing treatment; preserve physician recognition. Avoid the repeated greeting and Commander explanation now preceding the canonical greeting. Keep IDs, index, continuation and existing gates. Authored addition; prose unchanged pending Claude ownership.",
+    "ruling": "fix-inherited2"
   }
 ]

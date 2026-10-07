@@ -231,6 +231,31 @@ internal static class TargonaTricksterTests
         Program.Walk(freeFurlough, wayhouseNight, (page, _) => wayhousePages.Add(page));
         check(wayhousePages.Contains("greet_wayhouse") && !wayhousePages.Contains("greet_treated") && !wayhousePages.Contains("greet"),
             "The wayhouse correspondent arrives as if from Heaven.");
+        // fix-inherited2: the paid-supplies and unspent-wand histories share
+        // the placed correspondence arrival; neither wand history moves her to Heaven.
+        var suppliedWayhousePages = new HashSet<string>();
+        Program.Walk(freeFurlough, World(story, 5, "trickster", "trickster.ever", "targona.free",
+            P + "cost.wand_unspent", P + "cost.charges_spent", "targona.ran_treatment_completed",
+            "targona.correspondence_opened"), (page, _) => suppliedWayhousePages.Add(page));
+        check(suppliedWayhousePages.Contains("greet_wayhouse") && !suppliedWayhousePages.Contains("greet_treated")
+              && !suppliedWayhousePages.Contains("greet") && wayhousePages.Contains("greet_wayhouse_unspent")
+              && !suppliedWayhousePages.Contains("greet_wayhouse_unspent"),
+            "A ward-cost variant bypasses the placed correspondent arrival.");
+        var noLettersPages = new HashSet<string>();
+        Program.Walk(freeFurlough, World(story, 5, "trickster", "trickster.ever", "targona.free",
+            P + "cost.wand_unspent", "targona.ran_treatment_completed"), (page, _) => noLettersPages.Add(page));
+        check(noLettersPages.Contains("greet_treated_unspent") && noLettersPages.Contains("greet_treated")
+              && !noLettersPages.Contains("greet_wayhouse") && !noLettersPages.Contains("greet"),
+            "Targona recalls correspondence that never happened.");
+        var untreatedPages = new HashSet<string>();
+        Program.Walk(freeFurlough, World(story, 5, "trickster", "trickster.ever", "targona.free",
+            P + "cost.wand_unspent"), (page, _) => untreatedPages.Add(page));
+        check(untreatedPages.Contains("greet_unspent") && !untreatedPages.Contains("greet")
+              && !untreatedPages.Contains("greet_treated") && !untreatedPages.Contains("greet_wayhouse"),
+            "The unspent ward arrival invents treatment or correspondence.");
+        check(!Rules.Available(story, freeFurlough, World(story, 5, "trickster", "trickster.ever", "targona.free",
+            "targona.ran_treatment_completed", "targona.correspondence_opened")),
+            "Correspondence alone earns Targona's ward arrival without the ward work.");
         check(Rules.Available(story, ward, metOnly), "Trk_Targona_Declined: the ward is closed to the freed state.");
         var declined = After(ward, metOnly, "refused", 0);
         check(declined.Has(P + "declined") && !declined.Has(Committed) && !declined.Has(Closed), "Trk_Targona_Declined: flags.");
