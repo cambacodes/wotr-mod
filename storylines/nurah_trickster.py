@@ -1023,20 +1023,20 @@ _intimate_slot('nurah.trickster.prison.terms',
     '{n}Nurah catches your coat before it falls on the pages. She throws it onto the floor '
     'instead, pulls you against her on the narrow bunk, and bites back a laugh when the frame strikes the wall.{/n}')
 _intimate_slot('nurah.trickster.prison.terms_late',
-    '{n}She pushes the finished pages beyond your elbow, then draws you down onto the bunk. '
-    'This time she has no interest in counting the hours on the wall.{/n}')
+    '{n}Nurah hooks her ankle behind your knee on the narrow bunk and pulls you closer. '
+    'Her ink-stained fingers slide beneath your loosened collar.{/n}')
 _intimate_slot('nurah.trickster.ran_off.terms',
-    '{n}Her coat lands beside the pamphlets. Nurah pulls you onto the bed with her and keeps '
-    'your mouth occupied until the footsteps outside have passed.{/n}')
+    '{n}Nurah presses closer on the bed and catches your lower lip between her teeth. '
+    'Footsteps pass outside; she draws your hand down to her bare hip.{/n}')
 _intimate_slot('nurah.trickster.ran_off.terms_night',
-    '{n}Nurah shuts the window, catches your hand, and leads it back to her waist. '
-    'The pamphlets stay tied; she has quite different work for you tonight.{/n}')
+    '{n}Nurah shifts beneath you on the bed, catches your hand, and draws it to her bare waist. '
+    'The tied pamphlets rustle under your elbow; she kicks them onto the floor and pulls you closer.{/n}')
 _intimate_slot('nurah.trickster.terms',
-    '{n}She pushes your dispatches aside and draws you against her. Her laugh catches at your throat; '
-    'she reaches for you again before it has finished.{/n}')
+    '{n}Nurah tightens her legs around you as you carry her to the bed. '
+    'She tugs at your belt before your knees reach the mattress, laughing against your throat.{/n}')
 _intimate_slot('nurah.trickster.terms_night',
-    '{n}The bolt drops behind you. Nurah draws you away from the scattered dispatches and onto the bed, '
-    'keeping hold of you all the way.{/n}')
+    '{n}Still clinging to you, Nurah points toward the bed. You carry her past the scattered '
+    'dispatches; she catches your belt before you can straighten up from the mattress.{/n}')
 
 
 def _embedded_slot(sid, nid, marker, number, text):
@@ -1058,12 +1058,13 @@ def _embedded_slot(sid, nid, marker, number, text):
 
 _embedded_slot('nurah.trickster.epilogue.commit', 'read',
     '{n}The next edition', 1,
-    '{n}Nurah puts the closed book beyond your reach and settles into your lap. '
-    'When you look toward the open door, she catches your chin and kisses you again.{/n}')
+    '{n}The Commander glanced toward the open door. Nurah caught the Commander\'s chin '
+    'and kissed away the hesitation, shifting closer in the chair and drawing a hand to her thigh. '
+    'The book stayed closed on the floor.{/n}')
 _embedded_slot('nurah.trickster.epilogue.commit', 'went',
     '{n}In the morning', 2,
-    '{n}The book falls shut among the proofs. Nurah draws you against her on the table '
-    'and does not let you rescue the pages beneath your hands.{/n}')
+    '{n}A proof slid beneath the Commander\'s elbow. Nurah caught the reaching hand, '
+    'pressed it to her hip, and pulled the Commander closer on the table. The closed book stayed where it lay.{/n}')
 
 # Newly appended reaction siblings read the same live reactor as the originals.
 for _scene in SCENES:
