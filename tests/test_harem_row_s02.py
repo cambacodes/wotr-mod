@@ -173,6 +173,39 @@ class S02(unittest.TestCase):
         from tools import player_text_lint
         self.assertEqual(player_text_lint.check(self.story)['review'], [])
 
+    def test_exported_native_and_authored_eligibility_keep_both_orders(self):
+        from tests.story_fixture import fresh_story
+        exported = fresh_story()
+        for native in (True, False):
+            for first in (True, False):
+                # Replace only the local test's mocked Wenduag eligibility with
+                # the owning export's earned predicate and native history latch.
+                specification = copy.deepcopy(self.story)
+                specification['Derived']['wenduag.harem.eligible'] = copy.deepcopy(exported['Derived']['wenduag.harem.eligible'])
+                specification['Derived']['wenduag.payoff.ordinary'] = copy.deepcopy(exported['Derived']['wenduag.payoff.ordinary'])
+                model = v.Model(specification)
+                st = self.state()
+                st.flags.difference_update(['wenduag.committed', 'wenduag.harem.eligible'])
+                if native:
+                    st.flags.add('wenduag.romance_finished.latched')
+                    self.assertEqual(exported['Latches']['wenduag.romance_finished.latched'], ['wenduag.romance_finished'])
+                else:
+                    st.flags.update(exported['Derived']['wenduag.payoff.ordinary'][0])
+                v.sim_complete(model, st)
+                self.assertIn('wenduag.harem.eligible', st.flags)
+                previous = self.model
+                self.model = model
+                try:
+                    self.prepare(st, first)
+                    self.enact(st, 'debt_repayment', 1)
+                    self.rest(st)
+                    self.enact(st, 'choice')
+                    self.rest(st, 8)
+                    self.enact(st, 'morning')
+                    self.assertFalse(v.sim_available(model, self.scene('choice'), st))
+                finally:
+                    self.model = previous
+
 
 if __name__ == '__main__':
     unittest.main()

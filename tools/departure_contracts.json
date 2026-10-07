@@ -19792,6 +19792,18 @@
           "node": "end",
           "paragraph": 1,
           "letter": false
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.minagho"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.spared"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.pair_spared"
         }
       ],
       "absence_variants": [
@@ -20248,6 +20260,15 @@
           "node": "end",
           "paragraph": 6,
           "letter": false
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.chivarro"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.pair_spared"
         }
       ],
       "absence_variants": [

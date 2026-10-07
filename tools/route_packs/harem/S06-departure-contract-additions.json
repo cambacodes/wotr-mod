@@ -1,0 +1,38 @@
+{
+  "authored": true,
+  "row": "S06",
+  "target": "tools/departure_contracts.json",
+  "operation": "append to women.<woman>.surfaces; preserve existing entries",
+  "reason": "Classify route-owned fixed-couple acknowledgment surfaces. This registration adds no mechanics or gates. Actual per-woman presence is already required by the emitted scenes; solo absent losses use existing PresenceExceptions.",
+  "women": {
+    "minagho": {
+      "surfaces": [
+        {
+          "scene": "household.pair.minagho_chivarro.ack"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.minagho"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.spared"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.pair_spared"
+        }
+      ]
+    },
+    "chivarro": {
+      "surfaces": [
+        {
+          "scene": "household.pair.minagho_chivarro.ack"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.chivarro"
+        },
+        {
+          "scene": "household.pair.minagho_chivarro.ack.pair_spared"
+        }
+      ]
+    }
+  }
+}

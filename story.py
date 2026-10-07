@@ -1029,28 +1029,8 @@ def make_story():
     refs.update(sacrifice="381a296094804761af0893d2e70dc2df",
                 ascend_all="07ad18ffb08145b69522f8eee0230857", ascend_alone="08e47548e25945e286fe77b896884b32",
                 ascend_areelu="63279a971792474ba0439b9f75795a7a", ascend_companions="9fc5161813f1497f8eaad1563ac54211")
-    # S02 only: register witnesses before household copies its entries.
-    from storylines import harem_s02, household_pair_seelah_wenduag as sw
-    harem_s02.register()
-    payload = dict(Scenes=scenes, Etudes=refs, Derived={}, DerivedForbids={},
-                   PendingHooks=list(sw.RESERVED_READS))
-    # Controller-owned stages read enacted deeds; pair prose writes no attitudes.
-    for a, other in (sw.PAIR, sw.PAIR[::-1]):
-        # The reviewed pair is separate from the generic friction roster.
-        payload["PendingHooks"].extend([a + ".harem.enmity." + other,
-                                        a + ".harem.reconciled." + other])
-        blocked = sw.P(a + ".enmity_unreconciled")
-        payload["Derived"][blocked] = [[a + ".harem.enmity." + other]]
-        payload["DerivedForbids"][blocked] = [a + ".harem.reconciled." + other]
-        for stage in sw.STAGES:
-            key = sw.att(a, other, stage)
-            if stage == "rival":
-                groups = [["seelah.harem.eligible", "wenduag.harem.eligible"]]
-            else:
-                rung = next(r for r in sw.LADDER if r["edge"] == (a, other) and r["to"] == stage)
-                groups = [[flag] for flag in rung["reads"]]
-            payload["Derived"][key] = groups
-            payload["DerivedForbids"][key] = [blocked] + list(sw._above(a, other, stage))
+    payload = dict(Scenes=list(scenes), Etudes=refs, Derived={}, DerivedForbids={}, PendingHooks=[])
+    __import__("storylines.harem_rows", fromlist=["register_all"]).register_all(payload, scenes, refs)
     return payload
 
 

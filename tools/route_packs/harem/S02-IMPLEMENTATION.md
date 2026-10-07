@@ -57,10 +57,9 @@ the mutual answer and retains prayer, live custody and independent duties.
 The brief is under `tools/route_packs/explicit_slots/harem/seelah_wenduag/`;
 the default slot contains only the heated cut. No explicit prose or echo.
 
-Acceptance: `test_harem_s02` executes both personal-deed orders, all major
+Acceptance: `test_harem_row_s02` executes both personal-deed orders, all major
 negative histories, abort, attendance, paid-page and reconciliation guards,
-clocks and allowance metadata. `HaremS02Tests` walks both orders for native
-finished romance and authored Wenduag courtship, using exported native-aware
-predicates and the actual C# answer graph. W5 Ledger and
+clocks and allowance metadata. Wave 1 uses Python row checks; the registry
+retains the owning native and authored Wenduag eligibility predicates. W5 Ledger and
 Last Call readers are separately scheduled work; this implementation does
 not edit their shared hosts or claim whole-roster enmity certification.
