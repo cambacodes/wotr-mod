@@ -45,6 +45,7 @@ FAST_PYTHON = {
     'test_draft_contract_lint', 'test_earned_presence', 'test_player_text_lint',
     'test_text_structure_lint', 'test_parent_bindings', 'test_test_selection', 'test_verifier_tiers',
     'test_foresight_echo',
+    'test_test_gate', 'test_harness_evidence',
 }
 
 
@@ -77,7 +78,7 @@ def catalog():
 
 def changed_files(base=None):
     def git(*args):
-        return subprocess.check_output(['git', *args], cwd=ROOT).decode().splitlines()
+        return subprocess.check_output(['git', *args], cwd=ROOT, timeout=30).decode().splitlines()
     files = git('diff', '--name-only', 'HEAD') + git('ls-files', '--others', '--exclude-standard')
     if base:
         files += git('diff', '--name-only', base + '...HEAD')
@@ -93,7 +94,7 @@ def python_names(path, files):
     current = ast.parse(path.read_text(encoding='utf-8-sig'))
     try:
         old = ast.parse(subprocess.check_output(['git', 'show', 'HEAD:tests/test_foresight_echo.py'],
-                                               cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8-sig'))
+                                               cwd=ROOT, stderr=subprocess.DEVNULL, timeout=30).decode('utf-8-sig'))
         body = lambda tree: next(ast.dump(n) for n in ast.walk(tree)
                                  if isinstance(n, ast.FunctionDef) and n.name == expensive)
         if body(current) != body(old):
