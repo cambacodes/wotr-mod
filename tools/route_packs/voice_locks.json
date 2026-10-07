@@ -1,3 +1,49 @@
 {
-  "locked": {}
+  "locked": {
+    "noct.unlit_quay": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "b907992d927a7a4cebe379b4c01c8743ad2f74f867f5d2bfda2fcf46e8ef0e4c"
+    },
+    "noct.sixth_passenger": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "391cd5028652382077f9e5e24d742e24225b0aef5fb5d02ab6b962a1600bf62f"
+    },
+    "noct.captains_reply": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "cb610433b0420d2543485495a3deda9d9e194f6a0b66d464dd80e6409b4ec1e2"
+    },
+    "noct.her_own_face": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "b7d776e7f3ad57e2c99de8e067d9b4b3a2fdc60bd3849f1e6d1c8c5a86d75abb"
+    },
+    "noct.demonstration": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "37fb77cf0c23c4ca725c00aae18602f5ac43a65152c0bcfb72d98e8501055490"
+    },
+    "noct.return_count": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "f7753803a281a39b7ade74e48f4e4acfd12be2e25abca86022ea46d52d9b6a95"
+    },
+    "noct.another_place": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "e0e401c6e2a55bc290ad9b55185602c41ffd86259ff3ecea442d39ba243a3220"
+    },
+    "noct.hearing": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "8302508675fd9960bd4d67f2c0fb476dc438f61dbb613b744abdd2e65176216a"
+    },
+    "noct.empty_chair": {
+      "owner": "claude",
+      "since": "bfc02ebc",
+      "text_sha": "edd6890ad15c578f0498f92c5adac30c1d661b1caf656ac9ff07e1e6e05cbdb7"
+    }
+  }
 }
