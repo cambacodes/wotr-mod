@@ -145,7 +145,7 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
 {n}Only one card is left. It is pinned to the inside of your door at eye height by her small clean knife, driven into the wood to the hilt: the laughing man, mask side out, turned so that anyone who opens the door will see the mask first.{/n}
 {n}It takes you both hands to work the knife free. When you do, there is a line scratched into the back of the card in her small schoolroom hand: "I still don't know. Keep the knife where I can find it."{/n}''',
         c("[Keep the card, and the knife]")),
-    cam("close", '''"Whatever the truth is," {n}she says, some time later, from somewhere near your collar,{/n} "I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave alone."''',
+    cam("close", '''"Whatever the truth is," {n}she says, some time later, from somewhere near your collar,{/n} "I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave breathing, so I can keep watching it."''',
         c("[Leave the cards where they fell]", "morning")),
     # Q-near-miss (Sol BEL): the kept spread has its own ending; the scattered cards and the stacked-deck question belong to
     # "stacked" alone, which now reaches "close" after the cut and the morning after it.
@@ -205,7 +205,7 @@ Three." {n}She holds your eyes.{/n} "I love you."''',
 # --- After her answer: the amulet. -------------------------------------------------------------------------------------
 
 met(AMULET, "The amulet", '"You haven\'t fed Mireya in weeks."', [
-    cam("open", '''"No." {n}She is sitting by the window with the bone snake of the amulet in her open palm, looking at it as one looks at a letter from a relative one has stopped writing to.{/n} "I don't need to. I've been meaning to tell you why. I kept putting it off, because it's the last thing, and after it there won't be any more secrets, and I don't know what I'll do without them."''',
+    cam("open", '''"No." {n}She is sitting by the window with the bone snake of the amulet in her open palm, looking at it as one looks at a letter from a relative one has stopped writing to.{/n} "I don't need to. I've been meaning to tell you why. I kept putting it off, because it's the last thing, and after it there won't be any more secrets, and I'll have to find someone new to keep them from."''',
         c('"Tell me."', "tell", forbids=(UNMASKED,)),
         c('"Tell me."', "known", requires=(UNMASKED,))),
     cam("known", '''"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up." {n}She turns the little snake over.{/n} "What I never told you is why I kept wearing her afterwards. Even after I'd confessed."

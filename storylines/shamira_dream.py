@@ -432,8 +432,8 @@ hub(P + "after.throne", "The chair she wants", '"You have that look. The one fro
         c('"I won\'t help you and I won\'t stop you. I\'ll stand where you can see me. That\'s all."', "stand", flags=(THRONE, STAND)),
         c('[Lie] "Of course I will."', "lie", flags=(THRONE, LIED_HER))),
     sh("not_her", '''{n}She does not answer for a while. She reads it: all of it, whatever it is in you that says no, and why.{/n}
-"You mean it." {n}Flatly.{/n} "You would help me take any throne in the Abyss but hers." {n}A long breath.{/n} "I should hate you for that. I find I only hate that you have a reason, and that I can see it, and that it is not a bad one."
-"Very well. Keep your reason. I will keep wanting. We will see which of us gets tired first."''',
+"You mean it." {n}Flatly.{/n} "You would help me take any throne in the Abyss but hers." {n}A long breath.{/n} "I should hate you for that, and I do. Keep your reason, Golarian. It will not be in the room when I need you."
+"I will keep wanting. We will see which of us gets tired first." {n}She turns your cup so the rim faces you, and drinks from the other side.{/n}''',
         c("Continue", "socoth")),
     sh("stand", '''"Stand where I can see you." {n}She turns the cup between her hands.{/n} "I ruled my lady's city and warmed her bed. Neither was enough. I wanted her throne, and I still do."
 {n}Her smile returns, thin and deliberate.{/n} "If you mean to do nothing, do it where I can watch you. I shall have enough knives at my back without wondering what is in your hand."''',
