@@ -1,0 +1,67 @@
+[
+  {
+    "scene": "delamere.trickster.crypt.stag",
+    "route": "delamere",
+    "finding": "delamere:D01"
+  },
+  {
+    "scene": "delamere.trickster.crypt.stag_alone",
+    "route": "delamere",
+    "finding": "delamere:D02"
+  },
+  {
+    "scene": "delamere.trickster.crypt.stag_late",
+    "route": "delamere",
+    "finding": "delamere:D03"
+  },
+  {
+    "scene": "delamere.trickster.drezen.stag",
+    "route": "delamere",
+    "finding": "delamere:D04"
+  },
+  {
+    "scene": "delamere.trickster.react.kyado_woken",
+    "route": "delamere",
+    "finding": "delamere:D05"
+  },
+  {
+    "scene": "delamere.trickster.woken.white_stag",
+    "route": "delamere",
+    "finding": "delamere:D06"
+  },
+  {
+    "scene": "delamere.trickster.woken.feasting_table",
+    "route": "delamere",
+    "finding": "delamere:D07"
+  },
+  {
+    "scene": "delamere.trickster.woken.day_owed",
+    "route": "delamere",
+    "finding": "delamere:D08,D09"
+  },
+  {
+    "scene": "delamere.trickster.woken.first_meat",
+    "route": "delamere",
+    "finding": "delamere:D14"
+  },
+  {
+    "scene": "delamere.trickster.woken.count",
+    "route": "delamere",
+    "finding": "delamere:D15"
+  },
+  {
+    "scene": "delamere.trickster.woken.count_late",
+    "route": "delamere",
+    "finding": "delamere:D16"
+  },
+  {
+    "scene": "delamere.trickster.woken.old_deadeye",
+    "route": "delamere",
+    "finding": "delamere:D17"
+  },
+  {
+    "scene": "delamere.trickster.woken.red_blood",
+    "route": "delamere",
+    "finding": "delamere:D01-D07 class sweep"
+  }
+]

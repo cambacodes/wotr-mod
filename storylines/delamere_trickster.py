@@ -247,7 +247,7 @@ PLACES = {
 {n}Three strides is what a stag gets, from a hunter who has waited this long.{/n}''',
         after=kyado("after", '''{n}Kyado comes out of the dark with the relit lamp held high and a roll of bandage clenched in his teeth. He takes one look at the woman kneeling over you, and his knees go.{/n} "She's... she's breathing. Erastil. Erastil, is it... is it the l-lich thing? The death thing? Commander, tell me you d-didn't..."''',
             c("Continue", "not_grave")),
-        not_grave=dl("not_grave", '''{n}She turns her head and looks at him. He stops talking.{/n} "Do I stink of the grave, boy?" {n}Her voice is a dry scrape, a door that has not been opened in a long time.{/n} "Smell me. Go on. I stink of dust and a long sleep, and I am hungry enough to eat that lamp. The dead do not get hungry. Bring me the bandage, and then bring me bread."''',
+        not_grave=dl("not_grave", '''{n}She turns her head and looks at him. He stops talking.{/n} "Do I stink of the grave, boy?" {n}Her voice is a dry scrape, a door that has not been opened in a long time.{/n} "Smell me. Go on. I stink of dust and a long sleep, and I am hungry enough to eat that lamp. Here. Feel my wrist. There is a pulse under all that dust. Bring me the bandage, and then bring me bread."''',
             c("Continue", "cut")),
     ),
     "alone": dict(
@@ -260,7 +260,7 @@ PLACES = {
 {n}Three strides is what a stag gets, from a hunter who has waited this long.{/n}''',
         after=nar("after", '''{n}There is nobody to bring a lamp. She lights nothing, needs nothing; she sees you in the dark the way she saw you on the stair. When she speaks again her voice is a dry scrape, a door that has not been opened in a long time.{/n}''',
             c("Continue", "not_grave")),
-        not_grave=dl("not_grave", '''"You are wondering whether I am one of the dead that walk. I can hear you wondering." {n}She leans down until you can smell her: dust, cold stone, old leather, and under it, faint and rising, the warm salt smell of a living body.{/n} "The dead do not get hungry, and I could eat a horse, hooves and all. The dead do not bleed, either. Lie flat. This will hurt you more than it hurts me."''',
+        not_grave=dl("not_grave", '''"You are wondering whether I am one of the dead that walk. I can hear you wondering." {n}She leans down until you can smell her: dust, cold stone, old leather, and under it, faint and rising, the warm salt smell of a living body.{/n} "My heart is beating. My blood is warm and red. And I could eat a horse, hooves and all. Lie flat. This will hurt you more than it hurts me."''',
             c("Continue", "cut")),
     ),
     "drezen": dict(
@@ -273,7 +273,7 @@ PLACES = {
 {n}Three strides is what a stag gets, from a hunter who has waited this long.{/n}''',
         after=nar("after", '''{n}She kneels beside you with her knife in her hand. The woman who lay dead in the chapel is breathing hard.{/n}''',
             c("Continue", "not_grave")),
-        not_grave=dl("not_grave", '''"You are wondering whether I am one of the dead that walk. I can hear you wondering." {n}Her lip curls.{/n} "The dead do not get hungry, and they do not smell a city and want to be sick. I am both. Lie flat. This will hurt you more than it hurts me."''',
+        not_grave=dl("not_grave", '''"You are wondering whether I am one of the dead that walk. I can hear you wondering." {n}Her lip curls.{/n} "My heart is beating hard enough to hurt. And this city makes my stomach heave. Smoke, sewage, too many people. I want bread, and clean air. Lie flat. This will hurt you more than it hurts me."''',
             c("Continue", "cut")),
     ),
 }
@@ -494,7 +494,7 @@ ULBRIG = dict(requires=("ulbrig.in_party",), forbids=("ulbrig.dead", "ulbrig.kic
 WOLJIF = dict(forbids=("woljif.dead", "woljif.kicked_out", "chapter_later"))
 
 SCENES.append(reaction("Kyado", P + "react.kyado_woken", (RETURNED,),
-    '''{n}Kyado is on his knees by the altar with a brush and a pail, scrubbing at a stain that is not there any more.{/n} "She eats everything, Commander. Everything. She ate the pilgrims' bread and the turnips and the candles, nearly. She says the dead don't get hungry. I looked it up in Rathimus's scrolls, and they don't." {n}He sits back and wipes his forehead with his wrist.{/n} "She told me I sweep like a man who expects to be forgiven for it. Then she took the broom and did it herself, and it's the cleanest it's ever been. I don't know if I'm the prior any more. I don't think I mind."''',
+    '''{n}Kyado is on his knees by the altar with a brush and a pail, scrubbing at a stain that is not there any more.{/n} "She eats everything, Commander. Everything. She ate the pilgrims' bread and the turnips and the candles, nearly. She made me put two fingers to her wrist. There was a pulse, Commander. Her skin was warm. Then she told me to stop gawping and fetch another loaf." {n}He sits back and wipes his forehead with his wrist.{/n} "She told me I sweep like a man who expects to be forgiven for it. Then she took the broom and did it herself, and it's the cleanest it's ever been. I don't know if I'm the prior any more. I don't think I mind."''',
     answer_list=KYADO_HUB, relationship="delamere", forbids=(KYADO_DEAD, CLOSED), entry='"How are you getting on with Delamere?"',
     chapter=3, last=3, delay=24, NativeReturnCue=KYADO_RETURN))
 SCENES.append(reaction("Kyado", P + "react.kyado_caught", (COMMITTED,),
