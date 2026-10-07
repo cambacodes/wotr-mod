@@ -418,7 +418,7 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
        c("Continue", "gave_it", requires=(LIGHTS_GIVEN,)),
        c("Continue", "chose_you", forbids=(LIGHTS_GIVEN,))),
     kt("gave_it", '"You paid for her release. I am grateful. That does not put her people in your debt." {n}He glances towards the road.{/n} "We will need good horses in spring. Remember that when she brings you the map."',
-       c('"I won\'t."', "end"),
+       c('"I\'ll remember."', "end"),
        c('[Offer your hand] "Come and drink with us at the Stone Tree, when the war\'s over."', "tree")),
     kt("chose_you", '''"She gave that up herself, and then she chose you. I did not choose you, and I do not understand why she did, and I will not stand between her and the first thing she has ever taken for her own. Do not make me regret it."''',
        c('"I won\'t."', "end"),
@@ -567,7 +567,7 @@ drezen(E + "drezen.questions", "Every morning", '"What is it today?"', [
     el("miss_strong", '''"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow..." {n}A pause.{/n} "The certainty. For a century I never once had to choose what I was for; my Lady had chosen, and I had agreed, and a hundred people are alive because I never wavered. I would make that vow again. But now I choose every morning, and it frightens me, and I have told no one that but you."''',
        c("Continue", "end")),
     el("end", '{n}She puts the pen away and catches your hand before you rise.{/n} "Tomorrow you will have more orders. Come before you read them. I want a little of the morning."',
-       c("[Promise to be an expert on horses by tomorrow.]", flags=(QUESTIONS,))),
+       c("[Promise to come before the morning orders.]", flags=(QUESTIONS,))),
 ], requires=(CHART,), forbids=(QUESTIONS,), delay=24)
 
 
@@ -641,3 +641,30 @@ for _scene in SCENES:
         _scene["Nodes"].append(el("war_letter",
             '"Then I will ask again when it is done. You wrote that I could ask every morning." {n}She folds the map.{/n} "Keep that letter in mind when you think the spring too far away to discuss."',
             c("[Leave the spring open.]", flags=(E + "drezen.road_open",))))
+
+
+# Round 3: the one road letter is followed by a physical caravan arrival.
+# Authored staging at the established capital frontage, independent of the
+# ordinary host that remains absent until the player greets her here.
+from storylines.eliandra_trickster import AWAY, RETURNED
+ARRIVAL = "eliandra.presence.arrival"
+PRESENCES[ARRIVAL] = dict(
+    Unit=UNIT, Area=DREZEN, Mode="spawn-copy",
+    At=dict(NearUnit=TAILOR, Side="front", Distance=8.0),
+    Requires=["trickster.ever", MET, COMMITTED, LETTER_ANSWERED, AWAY],
+    Forbids=[CLOSED, DEAD, "eliandra.attacked", RETURNED],
+    MinChapter=5, MaxChapter=5, DelayHours=48, AnswerLists=[], Dialog="hub",
+    Greeting="{n}A dusty pack rests beside the tailor's frontage. Eliandra waits beside it, still wearing her travelling cloak.{/n}")
+_arrival = next(s for s in SCENES_MAIN if s["Id"] == E + "ch5.return_from_fords")
+_arrival.pop("Remote", None)
+_arrival.pop("Kind", None)
+_arrival.update(InteractionHub=ARRIVAL, Areas=[DREZEN], ContactUnit=UNIT, Entry='"Eliandra. You came back."')
+_arrival_nodes = {node["Id"]: node for node in _arrival["Nodes"]}
+_arrival_nodes["start"]["Text"] = '{n}Two days after your reply, you find Eliandra beside the tailor\'s frontage, dust on her cloak and her pack at her feet.{/n} "Odden has the column. I have come for your answer in person."'
+_arrival_nodes["start"]["Choices"][0]["Text"] = "[Tell her what you meant.]"
+_arrival_nodes["start"]["Choices"][1]["Text"] = "[Welcome her.]"
+_arrival_nodes["truth"]["Text"] = '"You meant to take my release and recover your offering afterwards. Then you called it a cramp. I have read your answer twice. I believe this one. I have not forgiven the other."'
+_arrival_nodes["truth"]["Choices"][0]["Text"] = "[Listen.]"
+_arrival_nodes["answer"]["Text"] = '"I still mean to ask you. Odden will keep the column at the fords while I am here. We have wounded waiting, Commander. I cannot stay long."'
+_arrival_nodes["answer"]["Choices"][0]["Text"] = "[Take her hand.]"
+_arrival_nodes["return"]["Text"] = '{n}She takes your hand and leaves it there.{/n} "Either, then. I have brought no carts today. They are waiting for me, and I mean to go back."'
