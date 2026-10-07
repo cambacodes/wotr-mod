@@ -212,12 +212,21 @@ internal static class ArsinoeTricksterTests
         check(!Rules.Available(story, lateCommit, business), "A lease kept to business offers a late romance.");
         var latePages = new HashSet<string>();
         var lateResults = Program.Walk(lateCommit, flirted, (page, _) => latePages.Add(page));
-        check(latePages.SetEquals(lateCommit.Nodes.Where(n => n.Id != "business").Select(n => n.Id)), "Accepted coda pages missing or refusal replayed.");
+        check(latePages.SetEquals(new[] { "offer", "night", "arsinoe.trickster.late.commit.explicit.1", "morning",
+            "deferred_evening", "arsinoe.trickster.late.commit.explicit.2", "table" }), "First-time coda includes a return or omits an earned appointment.");
+        var returning = Program.Copy(flirted); returning.Flags.Add("arsinoe.unprofitable_night_shared"); Rules.Complete(story, returning);
+        var returnPages = new HashSet<string>();
+        Program.Walk(lateCommit, returning, (page, _) => returnPages.Add(page));
+        check(returnPages.SetEquals(latePages.Except(new[] { "night" }).Append("late_return")), "Returning coda replays the first-time approach.");
         // R2-6: an epilogue writes no flags; the yes (night or table) and the refusal are narrative branches only.
         check(lateCommit.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0), "The late epilogue writes flags.");
-        check(new[] { "night", "table", "business" }.All(id => lateCommit.Nodes.Single(n => n.Id == "offer").Choices.Any(c => c.Next == id)),
+        check(new[] { "night", "deferred_evening", "business", "late_return" }.All(id => lateCommit.Nodes.Single(n => n.Id == "offer").Choices.Any(c => c.Next == id)),
             "Late commitment lacks a night, a deferred yes or a refusal.");
-        check(lateCommit.Nodes.Single(n => n.Id == "night").Choices.Single().Next == "morning", "Late night has no morning after.");
+        foreach (string approach in new[] { "night", "late_return" })
+            check(lateCommit.Nodes.Single(n => n.Id == approach).Choices.Single().Next == "arsinoe.trickster.late.commit.explicit.1", "Late approach misses its slot: " + approach);
+        check(lateCommit.Nodes.Single(n => n.Id == "arsinoe.trickster.late.commit.explicit.1").Choices.Single().Next == "morning", "Late slot has no morning after.");
+        check(lateCommit.Nodes.Single(n => n.Id == "deferred_evening").Choices.Single().Next == "arsinoe.trickster.late.commit.explicit.2"
+              && lateCommit.Nodes.Single(n => n.Id == "arsinoe.trickster.late.commit.explicit.2").Choices.Single().Next == "table", "Deferred appointment misses its slot or breakfast.");
 
         // Sol r2 INT: the late page never visits a dead or ascended Commander; a Commander brought back is visited.
         foreach (var (extra, open, why) in new (string[], bool, string)[] {

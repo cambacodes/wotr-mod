@@ -48,15 +48,15 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
       c("Continue", "terms")),
     n("terms", "Arsinoe", '''"The law is simple, and it is old, and I did not write it. Property of the Treasury that leaves the Treasury without a contract is stolen. Stolen goods return to their owner. I will have it crated for Absalom with the next caravan south, under temple seal."
 {n}She says it pleasantly. She has already reached under the counter for a crate and a handful of straw.{/n}
-"It is nothing personal. I like you a great deal more than I like most people who walk in here with the Treasury's property. But the Treasury does not care whom I like."''',
-      c('"It\'s leased, not stolen. Returnable at the end of the world."', "rent", mythic="Trickster",
+"It is nothing personal. I like you a great deal more than I like most people who walk in here with the Treasury's property. But the Treasury does not care whom I like. If you propose a lease, the first five hundred crowns must come from the crusade chest today. Renewal terms come after that payment."''',
+      c('"Five hundred now. It\'s leased, not stolen. Returnable at the end of the world."', "rent", mythic="Trickster",
         alignment=("Lawful", 1), crusade=("Finances", -500)),
       c('"It stays with me. Abadar can send a bill."', "refused"),
       c('"Another time."', abort=True)),
     n("rent", "Arsinoe", '''{n}The straw stops halfway to the crate.{/n}
 "Leased."
 {n}Her mouth curves, the way it does for a customer who has finally made an offer worth her time.{/n}
-"A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it. I shall send Absalom a drawing of the stamp. If they deny title, the lease lapses and the temple keeps the rent for its trouble. If they confirm it, they receive lawful rent instead of an explanation of how I lost their stone. Until they rule, you answer for it under this lease. I sign for that arrangement too. Rent, then. Five hundred crowns to the temple, from the crusade's chest, today. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen."''',
+"A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it. I shall send Absalom a drawing of the stamp. If they deny title, the lease lapses and the temple keeps the rent for its trouble. If they confirm it, they receive lawful rent instead of an explanation of how I lost their stone. Until they rule, you answer for it under this lease. I sign for that arrangement too. The five hundred crowns are entered as your first payment. Rent, then. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen."''',
       c('"Agreed."', "leased"),
       c('"Five hundred a season is robbery with a halo."',
         check=dict(Skill="CheckDiplomacy", DC=25, Success="discount", Failure="raised", CommanderOnly=True))),
@@ -94,7 +94,7 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
     # guests_robbed) are added by kiana_trickster.integrate: it gates these two choices off on guests_robbed and appends the
     # wedding / wedding_dog nodes, with restitution (Q3 or bought back) skipping straight to the pledge (tested below).
     n("rider", "Arsinoe", '''{n}She turns back a page of the ledger, to a line in red ink she has clearly been waiting to show you.{/n}
-"One more entry, while the book is open. The Mendevian consulate billed the crusade for Lady Konomi's recall rider. A clerk's rider, one, sent after a dispatch that said she was dead. Paid." {n}She taps the figure.{/n} "It came across my desk because I keep the only honest books in Drezen. I know what it bought. I simply wanted you to know that I saw it, and that I entered it at cost."''',
+"One more entry, while the book is open. The Mendevian consulate's old invoice. Lady Konomi's name, a recall rider, five lines explaining why they sent him after a dispatch that said she was dead. Paid." {n}She taps the figure.{/n} "It came across my desk because I keep the only honest books in Drezen. I know what it bought. I simply wanted you to know that I saw it, and that I entered it at cost."''',
       c("Continue", "pledge")),
     n("pledge", "Arsinoe", '''{n}She dips her pen and waits, the nib a finger's width above the page.{/n}
 "So. What does the Commander pledge?"''',
@@ -125,7 +125,7 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 "The lien stands. This is outside the lease. Close the curtains."
 {n}While you do, she undoes her collar, then the clasps of her robe. The silk falls around her feet. She steps out of it, pauses in the lamplight, and lifts her chin.{/n}
 "Well? I have had enough of watching you admire the stone."
-{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside. You sit on the cleared edge of the counter, and she settles astride your lap, bare skin beneath your hands. She kisses you again, catches her breath against your mouth, and reaches down between you.{/n}''',
+{n}She takes your hand and pulls you close. Her mouth is warm and deliberate; the second kiss leaves her breathing harder. She pushes the ledger aside. You sit on the cleared edge of the counter, and she settles astride your lap, bare skin beneath your hands. She kisses you again, catches her breath against your mouth, and holds you there.{/n}''',
       c("Continue", "morning")),
     n("morning", "Arsinoe", '''{n}The sign still says CLOSED when you wake. Outside, customers are already arguing over whose turn it is. Arsinoe sits at the counter in her shift, hair unbound, a cold cup of tea beside the ledger.{/n}
 "The lease has not changed. Nor has the price of a scroll, whatever they are shouting out there."
@@ -338,7 +338,7 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
          )),
     late("night", '''{n}Arsinoe stood close while you opened her collar, gold eyes fixed on yours. At the next clasp she caught your hands and kissed you hard.{/n}
 "I waited for the campaign to end. These fastenings have had quite enough of my patience."
-{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed you back toward the bed. She climbed over you, put your hands on her bare waist, and held them there until your fingers tightened. Then she bent to your mouth. Her composure broke on a breath, and she reached down between you.{/n}''',
+{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed you back toward the bed. She climbed over you, put your hands on her bare waist, and held them there until your fingers tightened. Then she bent to your mouth. Her composure broke on a breath.{/n}''',
          c("Continue", "morning")),
     late("morning", '''{n}In the morning she sat at the Commander's table in her shift, hair loose, drinking from the better cup. The other stood within reach of the bed.{/n}
 "Go back to sleep. I mean to open late, and I want company."
@@ -531,7 +531,7 @@ _col["threshold"]["Text"] = _col["threshold"]["Text"].replace('Well? I have had 
     'I have had enough of watching you admire the stone. Look at me.')
 _col["threshold"]["Choices"][0]["Next"] = "arsinoe.trickster.cauldron.collection.explicit.1"
 # Explicit slot C: secured till, cleared counter, personal invitation; lien unchanged.
-_collection["Nodes"].append(n("arsinoe.trickster.cauldron.collection.explicit.1", "Arsinoe", '''{n}Arsinoe kisses you on the cleared counter, holding you close while the till stays locked beneath it. The ledger slips against the wall; she leaves it there and draws you back to her.{/n}
+_collection["Nodes"].append(n("arsinoe.trickster.cauldron.collection.explicit.1", "Arsinoe", '''{n}Still astride your lap, Arsinoe catches your hand against her waist. The ledger lies where she pushed it; she gives it no further attention.{/n}
 "The ledger stays shut tonight."''', c("Continue", "morning")))
 
 # Arrival is established in the existing accepted paragraphs, before any recall.
@@ -553,7 +553,7 @@ _ln["table"]["Text"] = '''{n}The next morning Arsinoe returned from opening the 
 _offer["Choices"][1]["Next"] = "deferred_evening"
 _late["Nodes"].extend([
     # Explicit slot L: impatience with fastenings after an accepted physical arrival.
-    late("arsinoe.trickster.late.commit.explicit.1", '''{n}Arsinoe pushes the discarded robes away with her foot and comes back into your arms. Her kiss leaves her breathless; she draws you down to the bed and reaches for you.{/n}
+    late("arsinoe.trickster.late.commit.explicit.1", '''{n}Arsinoe remained over the Commander, her fingers closing around theirs against her waist. The discarded robes lay beside the bed.{/n}
 "Tomorrow, you may tell me how patient I was."''', c("Continue", "morning")),
     late("deferred_evening", '''{n}At supper she took the Commander's hand across the table and kissed them firmly before sitting back.{/n}
 "Tonight we eat. The rest in a month. I can afford four weeks, and I intend to enjoy looking forward to them."
@@ -561,7 +561,9 @@ _late["Nodes"].extend([
 "I kept the date. Now put that down and come to me."
 {n}She caught the Commander's sleeve, kissed them and led them toward the bed.{/n}''', c("Continue", "arsinoe.trickster.late.commit.explicit.2")),
     # Explicit slot D: kept four-week appointment, distinct from immediate arrival.
-    late("arsinoe.trickster.late.commit.explicit.2", '''{n}Arsinoe leaves the unopened bottle on the table. Her hands move from your collar to your waist as she pulls you into a kiss; she draws you down with her, all her careful preparations abandoned within reach.{/n}
+    late("arsinoe.trickster.late.commit.explicit.2", '''{n}At the bedside Arsinoe paused to undo the remaining clasps herself. She laid the robes over the chair, then caught the Commander by the collar and kissed them, smiling against their mouth.{/n}
+"Four weeks. I have been insufferable all day."
+{n}She drew them down beside her and stayed close, the unopened bottle beyond either of their reach.{/n}
 "You have kept me waiting long enough."''', c("Continue", "table")),
 ])
 

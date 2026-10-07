@@ -1,16 +1,17 @@
 {
   "voice": "Arsinoe: composed, proud, observant, competitive, practical, dryly amused; enjoys beauty and being admired, can be impatient when desire interrupts careful arrangements. Her clerical dignity survives private appetite. Speak briefly and directly; no therapy vocabulary, maxims, devotional sex magic or constant billing jokes. Canon facts: aasimar priestess of Abadar from Absalom, traveler formerly resident in the Stolen Lands, helping Drezen; dusky face, molten-gold eyes, gold-embroidered clerical robes (VendorArsinoe Cue_0001/Cue_0016). No established partner. Do not invent hair color, body measurements, special sexual physiology, previous lovers or celibacy vows. Write new dialogue, do not reuse the example.",
-  "scene": "Chapter 6, spring after Threshold, Trickster history, living or actually returned Commander’s room in Drezen. Arsinoe physically arrived on her recorded accepted Ch5 invitation; no later ordinary future decision superseded it. The immediate night answer was selected. Plan private sexual intimacy in non-graphic terms. Required beats: impatience with robe fastenings, direct personal appetite, her own arrival rather than a letter, satisfaction that the war no longer owns this evening. Earlier intimacy, if played, means reunion, not another first time; roof-only history must not recall an invented bed. No fresh proposal, bill, resurrection or new promise. End before the existing morning at the table and return to bed.",
+  "scene": "Chapter 6, spring after Threshold, Trickster history, living or actually returned Commander’s room in Drezen. Arsinoe physically arrived on her recorded accepted Ch5 invitation; no later ordinary future decision superseded it. The immediate night answer was selected. Explicit fill slot: continue the established approach into consensual sex; the default text cuts before the act. Required beats: impatience with robe fastenings, direct personal appetite, her own arrival rather than a letter, satisfaction that the war no longer owns this evening. Earlier intimacy, if played, means reunion, not another first time; roof-only history must not recall an invented bed. No fresh proposal, bill, resurrection or new promise. End before the existing morning at the table and return to bed. Narration is third-person past tense throughout, referring to the Commander as they/them. Immediate histories already place her over the Commander on the bed: do not stand up, return to their arms or draw them down again.",
   "last_line": "A: Tomorrow, you may tell me how patient I was.",
   "speakers": {
     "A": "Arsinoe"
   },
-  "example": "N: Arsinoe lays the book face down and catches your sleeve before you can reach for it.\nA: You can quarrel with the author tomorrow. Come here.",
+  "example": "N: Arsinoe laid the last clasp on the chair and turned back to the Commander.\nA: I chose those robes carefully. I shall complain about them tomorrow.",
   "commander": "Use the selected Commander variant; keep physical references accurate without assuming gender from title or pronouns.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "narration": "third-past"
 }

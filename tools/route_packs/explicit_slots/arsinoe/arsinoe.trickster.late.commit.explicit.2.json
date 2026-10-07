@@ -1,16 +1,17 @@
 {
   "voice": "Arsinoe: composed, proud, observant, competitive, practical, dryly amused; enjoys beauty and being admired, can be impatient when desire interrupts careful arrangements. Her clerical dignity survives private appetite. Speak briefly and directly; no therapy vocabulary, maxims, devotional sex magic or constant billing jokes. Canon facts: aasimar priestess of Abadar from Absalom, traveler formerly resident in the Stolen Lands, helping Drezen; dusky face, molten-gold eyes, gold-embroidered clerical robes (VendorArsinoe Cue_0001/Cue_0016). No established partner. Do not invent hair color, body measurements, special sexual physiology, previous lovers or celibacy vows. Write new dialogue, do not reuse the example.",
-  "scene": "Chapter 6, Trickster history, living or actually returned Commander’s Drezen room, at the appointment four weeks after the accepted late visit’s supper. The existing table/deferred answer applies; preserve its month-long wait and legacy effects. She has returned in person on the appointed evening and led the Commander beyond the supper table. Plan private sexual intimacy in non-graphic terms. Required beats: the wait acknowledged once, eager return, amused pride that both kept the appointment, an address to come back to rather than a permanent resignation from her ministry. No repeated first-night claim if previous intimacy was played; no direct-immediate-night event receipt. End before the existing recurring-appointment and late-opening-morning summary.",
+  "scene": "Chapter 6, Trickster history, living or actually returned Commander’s Drezen room, at the appointment four weeks after the accepted late visit’s supper. The existing table/deferred answer applies; preserve its month-long wait and legacy effects. She has returned in person on the appointed evening and led the Commander beyond the supper table. Explicit fill slot: continue the established approach into consensual sex; the default text cuts before the act. Required beats: the wait acknowledged once, eager return, amused pride that both kept the appointment, an address to come back to rather than a permanent resignation from her ministry. No repeated first-night claim if previous intimacy was played; no direct-immediate-night event receipt. End before the existing recurring-appointment and late-opening-morning summary. Narration is third-person past tense throughout, referring to the Commander as they/them. Immediate histories already place her over the Commander on the bed: do not stand up, return to their arms or draw them down again. Develop the four weeks of anticipation through her own impatience and deliberate undressing. Stage them together on the bed and a clear initiating motion at the transition into the act; no generic kiss-to-breakfast jump.",
   "last_line": "A: You have kept me waiting long enough.",
   "speakers": {
     "A": "Arsinoe"
   },
-  "example": "N: Arsinoe lays the book face down and catches your sleeve before you can reach for it.\nA: You can quarrel with the author tomorrow. Come here.",
+  "example": "N: Arsinoe laid the last clasp on the chair and turned back to the Commander.\nA: I chose those robes carefully. I shall complain about them tomorrow.",
   "commander": "Use the selected Commander variant; keep physical references accurate without assuming gender from title or pronouns.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "narration": "third-past"
 }

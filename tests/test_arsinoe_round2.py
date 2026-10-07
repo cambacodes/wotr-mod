@@ -96,6 +96,12 @@ class ArsinoeRound2Tests(unittest.TestCase):
             self.assertEqual(2, len(outcomes))
             self.assertTrue(any("deferred_evening" in t and "table" in t for t, _ in outcomes))
             self.assertFalse(any("business" in t for t, _ in outcomes))
+            immediate = next(t for t, _ in outcomes if "morning" in t)
+            self.assertIn("late_return" if returning else "night", immediate)
+            self.assertNotIn("night" if returning else "late_return", immediate)
+            self.assertIn("arsinoe.trickster.late.commit.explicit.1", immediate)
+            deferred = next(t for t, _ in outcomes if "table" in t)
+            self.assertEqual(("offer", "deferred_evening", "arsinoe.trickster.late.commit.explicit.2", "table"), deferred)
         declined = paths("arsinoe.trickster.late.commit", {arsinoe_trickster.LATE_DECLINED})
         self.assertEqual(1, len(declined))
         self.assertIn("business", declined[0][0])
@@ -117,6 +123,14 @@ class ArsinoeRound2Tests(unittest.TestCase):
             brief = json.loads(path.read_text(encoding="utf-8"))
             self.assertTrue(nodes[path.stem]["Text"].endswith('"' + brief["last_line"][3:] + '"'))
             self.assertEqual(["a man", "a woman"], brief["commander_variants"])
+            if "late.commit" in path.name:
+                self.assertEqual("third-past", brief["narration"])
+
+    def test_initial_payment_is_disclosed_before_acceptance(self):
+        nodes = {n["Id"]: n for n in SCENES[arsinoe_trickster.LEASE]["Nodes"]}
+        self.assertIn("first five hundred crowns", nodes["terms"]["Text"])
+        self.assertIn("Five hundred now.", nodes["terms"]["Choices"][0]["Text"])
+        self.assertIn("first payment", nodes["rent"]["Text"])
 
 
 if __name__ == "__main__":

@@ -673,6 +673,9 @@ for _page in _stone["Nodes"]:
 _window = next(s for s in SCENES if s["Id"] == "arsinoe_the_window_opens")
 _w = {page["Id"]: page for page in _window["Nodes"]}
 _stage = _w["night"]["Text"].split('{n}In the morning,')[0].strip()
+# The patrol passes before the approach; the slot continues their position.
+_stage = '{n}Beyond the open window a patrol calls the hour. Arsinoe listens until the boots pass, then turns back to you.{/n}\n' + _stage
+_stage = _stage.replace("and reaches between you.", "and holds you close.")
 _w["night"]["Text"] = '''{n}In the morning, the shop is still shuttered an hour after opening. Arsinoe's robes hang over the chair; she is trying to find a fastening beneath them. She gives up long enough to kiss you, then smooths your collar without making it much more respectable.{/n}
 "They will talk. Let them. I have a customer who will insist that the price of a scroll has offended him personally."
 {n}She sets a second cup beside her own. The knocking comes again. She finishes her drink before turning the sign.{/n}
@@ -687,7 +690,7 @@ _window["Nodes"].extend([
       'Stay again. This time I have fixed the window instead of complaining about it.'),
       c("Continue", "arsinoe_the_window_opens.explicit.1")),
     # Explicit slot W: her chosen display; the repaired room is a return, not a reward.
-    n("arsinoe_the_window_opens.explicit.1", "Arsinoe", '''{n}Arsinoe pulls you close on the bed. Her mouth finds yours again; beyond the open window a patrol calls the hour. She listens, then draws you down with her.{/n}
+    n("arsinoe_the_window_opens.explicit.1", "Arsinoe", '''{n}Arsinoe keeps her hand against your back, her eyes on yours. The lamp lights the bed and the robes she left beside it.{/n}
 "Leave the lamp burning."''', c("Continue", "night")),
 ])
 
