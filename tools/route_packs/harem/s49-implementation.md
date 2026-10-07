@@ -34,7 +34,7 @@ handover costs Materials 150; recovery costs Materials 200. Only the successful
 full-debit terminal publishes both deeds and its completion witness.
 
 The stage producers are the sheet's two deed-dependent respect groups.
-There are no friend or lover producers, explicit slots or unreachable intimate
+There are no friend or lover producers, runtime explicit slots or unreachable intimate
 stubs. The sheet explicitly authorizes this complete baseline when the optional
 ceiling extension is not enabled. Reviewed optional ceiling/ladder metadata and
 the full later body-window contract remain integration prerequisites for Nera's
@@ -58,12 +58,34 @@ voice evidence. No duplicate native cue binding is added.
 
 ## Integration boundaries
 
-The exact auto-discovery initializer is supplied. This checkout has no discovery
-caller: `story.make_story()` returns a dict directly and has no `payload` local.
-The coordinator must supply its shared registration hook; the row does not edit
-the prohibited `story.py` or `expansion.py`. Review validation explicitly attaches
-the module to the exported payload in system temp, and does not claim that
-unmodified `expansion.py` discovers S49.
+The merged baseline now calls `register_all` from `expansion.py`; S49 is
+auto-discovered. No shared registration edit or manual export attachment is
+needed in W3-S49.
+
+W3-S49 remains blocked by two independently required contracts:
+
+- `tools/harem-schedule.json`, row `49`, still declares `rom=false` and
+  `ceiling=respect/respect`. The sheet's section 7 requires an integrator-owned
+  reviewed optional extension before friend/lover producers are enabled.
+  The classification lint also still rejects romance eligibility for these
+  promoted rows. This job does not change shared classification policy.
+- `vellexia.presence` in `storylines/vellexia_trickster.py` requires historical
+  `in_person` and forbids `visited`. There is no separately earned, current
+  bodily stay covering the required 152 hours from settlement through morning.
+  The lore-check's S49 correction explicitly requires such a window at every
+  optional continuation. A shell, return history or settlement is insufficient.
+  Establishing it would require another route's attendance contract, outside
+  this job's permitted entries. No synthetic lease, free arrival or new gate
+  is introduced here.
+
+The exact planning brief is retained under
+`explicit_slots/blocked/wenduag_vellexia/household.pair.wenduag_vellexia.desire.explicit.1.json`.
+It is non-graphic editorial material for two women, Commander absent; it is
+not an exported node or an eligible runtime interval. After the shared blockers
+are resolved, the row implementation still needs bond, observance, desire and
+morning as specified by the sheet, including their full terminal write tables,
+48/48/48/8-hour clocks and four charged optional steps. No unreachable desire
+stub is shipped. This report does not claim that the optional unit is complete.
 
 Shared Seating Notes and the women's Last Call readers are separate W5 work.
 Successful and unresolved friction witnesses use the shared Seating Notes naming
@@ -78,23 +100,39 @@ boundaries, unknown versus observed history, insufficient funds, atomic payment,
 completion replay, Abort, one recovery, append-only registration and isolation
 from shared authoring globals. No independent audit score is claimed.
 
-## Gate record
+## W3-S49 class sweep and validation
 
-With `PYTHONHASHSEED=0`, `python -B expansion.py` succeeded with
-`RRT_STORY_OUTPUT` pointing to system temp (3,830 baseline scenes). Explicitly
-registering S49 on that export produced the 3,833-scene review payload.
-`rrt_verify.py --strict --gate-only` passed that corrected payload with zero
-hard failures. Save compatibility, payoff and departure checks also returned
-zero hard failures. The targeted savecompat/UTF-8/household/harem modules passed
-84 tests; a final focused S49 plus UTF-8 run passed eight tests.
+All three emitted steps were checked for current bodies, paid page/live path,
+closure and later loss, both enmity edges, actual timestamped predecessors,
+refusal and Abort. Both directed stage producers remain respect-only. No new
+runtime surface was added: payoff/departure inventories need no new entry.
+Native history remains recall only, and no echo or native rewrite is introduced.
+Compared the planned recognition/encore/false-name aftermath with S25 and the
+women's solo devices; the brief retains the sheet's distinct recognition device.
 
-The requested unittest discovery was terminated by `/work/testguard.sh`, which
-blocks full suites in `RRT-hi-*` worktrees. The C# project compiled with output
-and intermediates in system temp; `dotnet run` then looked for its executable
-in the default repo output path. Direct execution of the compiled DLL caught
-the missing pair hook declarations, which were fixed. The corrected C# run was
-terminated by the same workspace guard before it reported a result. Therefore
-C# progression/page coverage is pending coordinator validation, not a pass.
+With PYTHONHASHSEED=0 and bytecode writes disabled:
 
-All temporary exports, reports and compiled output were deleted. No commit was
-made, following the task's final instruction.
+- expansion.py succeeded: 3,992 scenes, including all three S49 scenes, exported
+  via RRT_STORY_OUTPUT to system temp; shared auto-discovery confirmed.
+- S49 + UTF-8 unittests passed 11 tests. Direct exported-story savecompat,
+  payoff and departure checks each returned zero hard failures. A broader
+  savecompat unittest invocation was stopped because it repeatedly regenerates
+  the entire export; its direct exported-story check had already passed.
+- tools/rrt_verify.py --strict --story <temporary export> --game /wrath
+  completed its full pass once: zero hard failures, zero validation errors,
+  zero shipped structural errors and zero draft contract diagnostics.
+- Requested full unittest discovery was terminated with exit 143 by the
+  workspace guard that blocks full suites in RRT-hw worktrees.
+- dotnet run compiled with --artifacts-path in system temp, then failed to
+  launch from its default tests/bin location. Direct execution of the compiled
+  RulesTests.dll was terminated with exit 143 by the same workspace guard.
+  Progression and selectable-answer coverage are unverified, not passes.
+
+Temporary exports, verifier reports and C# output were removed from system
+temp. Existing LF endings were preserved; the reserved JSON is byte-identical
+to the planning source. git diff --check passed. No scene/node/relationship ID,
+choice index or runtime text changed.
+
+No independent audit score is claimed. No commit is made, per the task's final
+instruction. W3-S49 is incomplete pending the reviewed metadata and real body
+window; the baseline is preserved rather than quietly enabling its extension.

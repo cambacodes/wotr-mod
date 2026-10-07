@@ -1,5 +1,7 @@
 """S49's actual emitted gates, terminal deeds and full-debit recovery."""
 import copy
+import json
+from pathlib import Path
 import unittest
 
 from storylines import household
@@ -142,6 +144,46 @@ class RowS49(unittest.TestCase):
         self.assertEqual([s["Id"] for s in self.payload["Scenes"]], [s49.P + x for x in ("notice", "handover", "retry")])
         self.assertTrue(all(s["Chapters"] == [5] and s["Participants"] == list(s49.PAIR)
                             and s["RestAllowance"] == "household.protected" for s in self.by.values()))
+
+    def test_unreviewed_extension_cannot_publish_above_ceiling_or_intimacy(self):
+        # W3-S49 is conditional on reviewed metadata AND a whole-arc body
+        # window. Baseline registration must not manufacture either contract.
+        root = Path(__file__).resolve().parents[1]
+        schedule = json.loads((root / "tools/harem-schedule.json").read_text(encoding="utf-8"))
+        row = schedule["rows"]["49"]
+        self.assertFalse(row["rom"])
+        self.assertEqual(row["ceiling"], "respect/respect")
+        optional = {s49.P + step for step in ("bond", "observance", "desire", "morning")}
+        self.assertFalse(optional.intersection(s["Id"] for s in self.payload["Scenes"]))
+        self.assertFalse(any(k.endswith((".friend", ".lover")) for k in self.payload["Derived"]))
+        for scene in self.payload["Scenes"]:
+            for node in scene["Nodes"]:
+                self.assertNotIn("explicit", node["Id"])
+                for choice in node["Choices"]:
+                    self.assertFalse(set(choice["Set"]).intersection(s49.flags(
+                        "bond.both_deeds", "observance.kept", "desire.both_wanted", "morning.done")))
+
+    def test_historical_body_and_settlement_do_not_extend_vellexias_stay(self):
+        for step in self.by:
+            state = self.state(step)
+            state.flags.update(s49.flags("wenduag_quarry_yielded", "vellexia_watch_kept",
+                                         "cost.wenduag_kill_yielded", "cost.vellexia_amusement_yielded"))
+            state.flags.add("vellexia.trickster.returned")
+            self.assertTrue(rules.sim_available(self.model, self.by[step], state), step)
+            state.flags.add("vellexia.trickster.visited")
+            self.assertIn("vellexia.trickster.in_person", state.flags)
+            self.assertFalse(rules.sim_available(self.model, self.by[step], state), step)
+
+    def test_reserved_brief_is_woman_pair_editorial_material_only(self):
+        root = Path(__file__).resolve().parents[1]
+        slot = s49.P + "desire.explicit.1"
+        path = root / "tools/route_packs/harem/explicit_slots/blocked/wenduag_vellexia" / (slot + ".json")
+        brief = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(brief["slot_id"], slot)
+        self.assertEqual(brief["commander"], "absent")
+        self.assertEqual(set(brief["speakers"].values()), {"Wenduag", "Vellexia"})
+        self.assertIn("NON-GRAPHIC EDITORIAL INTERVAL", brief["scene"])
+        self.assertFalse(any(slot == n["Id"] for s in self.payload["Scenes"] for n in s["Nodes"]))
 
 
 if __name__ == "__main__":
