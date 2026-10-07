@@ -801,6 +801,8 @@ internal static partial class Program
         RunSuite("HouseholdTests", () => HouseholdTests.Run(story, Check));
         RunSuite("HouseholdEngineTests", () => HouseholdEngineTests.Run(story, Check));
         RunSuite("HouseholdTransactionTests", () => HouseholdTransactionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "household.pair.seelah_wenduag.spar"))
+            RunSuite("HaremS02Tests", () => HaremS02Tests.Run(story, Check));
         RunSuite("ArueshalaeBranchTests", () => ArueshalaeBranchTests.Run(story, Check));
         RunSuite("PrerequisiteGroupsTests", () => PrerequisiteGroupsTests.Run(Check));
         Profile("TargonaContinuation", () => TargonaContinuation());

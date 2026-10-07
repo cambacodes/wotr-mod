@@ -23,11 +23,12 @@ class SheetTests(unittest.TestCase):
     def test_sheet_is_clean(self):
         self.assertTrue(sw.validate(set(household.PARTNERS)))
 
-    def test_no_shipped_pair_ids(self):
-        for name in ("development/Story.json", "package/Story.json"):
-            path = ROOT / name
-            if path.exists():
-                self.assertNotIn(sw.PREFIX, path.read_text(encoding="utf-8"), name)
+    def test_implementation_keeps_reviewed_step_ids(self):
+        from storylines import harem_s02
+        harem_s02.register()
+        actual = [s['Id'] for s in household.ENTRIES + household.INVITATIONS
+                  if s['Id'].startswith(sw.PREFIX)]
+        self.assertEqual(actual, [s['id'] for s in sw.STEPS if s.get('kind') != 'derived'])
 
     def test_debt_and_custody_outcomes(self):
         produced = sw._produced(sw.STEPS)
