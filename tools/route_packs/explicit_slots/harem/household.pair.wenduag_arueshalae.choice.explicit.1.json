@@ -1,0 +1,17 @@
+{
+  "slot_id": "household.pair.wenduag_arueshalae.choice.explicit.1",
+  "scene": "household.pair.wenduag_arueshalae.choice",
+  "node": "household.pair.wenduag_arueshalae.choice.explicit.1",
+  "next": "after",
+  "participants": ["Wenduag", "fallen Arueshalae"],
+  "commander": "absent",
+  "authored": true,
+  "device": "she_pursues",
+  "situation": "The lower-town lookout map: shared ground and aerial credit, then two independent friendship deeds and personal answers. Wenduag pursues; Arueshalae answers from appetite.",
+  "protection": "One fresh Scroll of Death Ward is consumed and read over Wenduag immediately before this interval. Seven minutes, including build-up and separation. It prevents energy drain, not violence or compulsion. An old Commander ward is irrelevant.",
+  "continuity": "Keep both women predatory and competitive. No feeding, cure, conversion, victim payment or automatic sharing of the Commander. End contact before the ward expires; separate sleep. Morning is eight hours later, across the map, with no touch.",
+  "default": "{n}The lower-town map stays open while they take their argument elsewhere.{/n}",
+  "exact_last_line": "W: They will use my route at dawn.",
+  "state": "No flags, answers, item effects or anatomy variants in slot content. The unchanged after[0] produces the mutual-answer witnesses. Empty and filled content take the same path.",
+  "batch_status": "Commander-absent content requires the existing batch owner's support; retain the empty default until supplied."
+}
