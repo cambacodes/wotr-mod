@@ -214,6 +214,8 @@ def soana(scenes):
     coda['Text'] = '{n}After Threshold the Commander took the Wintersun path again. Soana still had her forest to watch.{/n}'
     coda.setdefault('Paragraphs', []).append(p(original, forbids=(partner.QUIET_RETURN,)))
 
+    from storylines import soana_round3
+    soana_round3.finish(scenes)
 
 def pair(scenes):
     page = node(scenes['minachiv.lastcall.page'], 'page')

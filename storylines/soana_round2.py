@@ -367,6 +367,8 @@ def postwar(event, kind):
 
 def integrate(payload):
     """Apply only Soana-owned readers/scenes after the existing route emitter."""
+    from storylines import soana_round3
+    soana_round3.predicates(payload)
     derived = payload.setdefault('Derived', {})
     negatives = payload.setdefault('DerivedForbids', {})
     def negative(key, flags):

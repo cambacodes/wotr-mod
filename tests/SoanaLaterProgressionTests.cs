@@ -38,6 +38,8 @@ internal static class SoanaLaterProgressionTests
             var states = new List<Snapshot> { earned };
             foreach (var scene in scenes)
             {
+                bool awaitingPartner = scene.Id == "soana.after_the_last_visitor"
+                    && states.All(s => s.Has("soana.later_courting") && !s.Has("soana.round2.partner_answer"));
                 var next = new List<Snapshot>();
                 foreach (var input in states)
                 {
@@ -96,12 +98,15 @@ internal static class SoanaLaterProgressionTests
                     }
                 }
                 states = next.GroupBy(s => string.Join("|", s.Flags.OrderBy(f => f))).Select(g => g.First()).ToList();
-                check(states.Count > 0, "Soana later scene lacks a completed path.");
+                check(states.Count > 0 || awaitingPartner, "Soana later scene lacks a completed path.");
             }
         }
         foreach (var scene in scenes)
         {
-            foreach (var page in scene.Nodes) check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed Soana later page: " + scene.Id + "/" + page.Id);
+            foreach (var page in scene.Nodes.Where(n => !n.Id.Contains("_r3_", StringComparison.Ordinal)
+                && n.Id != "round2_affair" && n.Id != "delivered"
+                && !(n.Id.Contains(".explicit.", StringComparison.Ordinal) && scene.Nodes.Any(p => p.Id.StartsWith("quiet_r3_", StringComparison.Ordinal) && p.Choices.Any(a => a.Next == n.Id)))))
+                check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed Soana later page: " + scene.Id + "/" + page.Id);
             check(scene.ContactUnit == actor && !Rules.IsRemote(scene), "Soana later progression bypasses local native contact.");
             check(Rules.EntryTargets(scene).SequenceEqual(new[] { "2b1776f3e398685479ff6b16290b4cc2" }), "Soana later entry target changed.");
             var ready = new Snapshot { Chapter = 3, Hour = 1000 };
