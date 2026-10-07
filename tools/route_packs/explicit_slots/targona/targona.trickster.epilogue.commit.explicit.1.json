@@ -8,15 +8,16 @@
     "The emptied infirmary, loft and later new ward are authored implemented epilogue facts, not native canon claims."
   ],
   "scene": "Postwar Trickster epilogue, Drezen drying loft as the last cots are folded. Only Targona and a living or already-earned-returned Commander. Existing late-commitment outcome with mutual attraction, not a colleague, closed/refused history, unreturned sacrifice, or previously committed first night. BEFORE: Targona asks; the Commander answers by taking her offered hand; she leads upstairs, undresses and draws the Commander onto the blanket. INTERVAL: mutual intimacy described as a brief retrospective epilogue passage through kisses, warmth and chosen closeness, without graphic sexual description. REQUIRED BEATS: her initiative is answered, she puts the cloth aside, she wants this particular person and does not apologize for wanting; keep the setting of the last bandages being taken down rather than another active medical vigil. Use N lines for third-person epilogue narration ('the Commander'), not second-person adventure narration. T may speak briefly, no Commander dialogue inside her node. End exactly at last_line. AFTER: original morning feather/Wilcer/new infirmary payoff, no duplicate morning or added mechanic. No oath, miracle, transformation, pregnancy, flag or extra participant. Preserve the original epilogue Continue exit identity and effects. PHYSICAL CONTINUITY: silver hair; a natural white-feathered wing. Leave the altered side undescribed across treatment histories; never invent black feathers or restored anatomy.",
-  "last_line": "N: The last bandages sway above the blanket.",
+  "last_line": "N: The last bandages swayed above the blanket.",
   "speakers": {
     "T": "Targona"
   },
-  "example": "N: Targona sets the folded linen beside the lamp and turns back to the Commander.\nT: I have wanted to ask you for so long.\nN: Her offered hand is taken, and she answers with a kiss.",
+  "example": "N: Targona set the folded linen beside the lamp and turned back to the Commander.\nT: I have wanted to ask you for so long.\nN: Her offered hand was taken, and she answered with a kiss.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 6,
-  "max_lines": 10
+  "max_lines": 10,
+  "narration": "third-past"
 }

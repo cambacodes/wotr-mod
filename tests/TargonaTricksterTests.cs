@@ -188,8 +188,17 @@ internal static class TargonaTricksterTests
         check(nightPages.Contains("threshold") && nightPages.Contains("morning")
               && Program.Walk(ward, ready).Any(o => o.Has(Committed) && o.Has(P + "night_kept")),
             "The commit has no night (Directive 12).");
-        check(ward.Nodes.Single(n => n.Id == "threshold").Choices.All(c => c.Next == "morning"),
-            "The threshold does not cut to the morning.");
+        foreach (var firstNight in new[] { ward, quiet })
+        {
+            var cutId = firstNight.Id + ".explicit.1";
+            var cut = firstNight.Nodes.Single(n => n.Id == cutId);
+            check(firstNight.Nodes.Single(n => n.Id == "threshold").Choices.All(c => c.Next == cutId)
+                  && cut.Choices.Count == 1 && cut.Choices[0].Next == "morning"
+                  && cut.Choices[0].Set.Length == 0 && cut.Choices[0].Requires.Length == 0
+                  && cut.Choices[0].Forbids.Length == 0 && !cut.Choices[0].Abort
+                  && firstNight.Nodes.Single(n => n.Id == "morning").Choices[0].Set.SequenceEqual(new[] { P + "night_kept" }),
+                "The first-night cut changes the continuation or night receipts: " + firstNight.Id);
+        }
         var left = Program.Walk(ward, ready).Where(o => o.Has(P + "cost.left_the_ward")).ToList();
         check(left.Count > 0 && left.All(o => o.Has(Closed) && !o.Has(Committed)), "Leaving before dawn does not close her route.");
 

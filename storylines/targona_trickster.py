@@ -439,26 +439,29 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
 {n}She carries a basin down the same rows you worked through the night. At each cot she kneels, and gives the man in it her whole attention before she moves on to the next.{/n}''',
         c("Continue", "greet_lab", requires=(LAB_LINE,), forbids=(TREATED, SLEEP)),        # the legacy scroll primer only
 
-        c("Continue", "greet", forbids=(LAB_LINE, TREATED)),
-        c("Continue", "greet_treated", requires=(TREATED,), forbids=("targona.correspondence_opened",)),
+        c("Continue", "greet", requires=(CHARGES,), forbids=(LAB_LINE, TREATED)),
+        c("Continue", "greet_treated", requires=(TREATED, CHARGES), forbids=("targona.correspondence_opened",)),
         c("Continue", "greet_lab_sleep", requires=(LAB_LINE, SLEEP), forbids=(TREATED,)),
         # r5: she was already writing to the Commander from the wayhouse on the eastern road when the chaplain's letter came.
-        c("Continue", "greet_wayhouse", requires=(TREATED, "targona.correspondence_opened"))),
+        c("Continue", "greet_wayhouse", requires=(TREATED, "targona.correspondence_opened", CHARGES)),
+        c("Continue", "greet_unspent", forbids=(LAB_LINE, TREATED, CHARGES)),
+        c("Continue", "greet_treated_unspent", requires=(TREATED,), forbids=("targona.correspondence_opened", CHARGES)),
+        c("Continue", "greet_wayhouse_unspent", requires=(TREATED, "targona.correspondence_opened"), forbids=(CHARGES,))),
     t("greet_wayhouse", '''"Commander. Greetings, my rescuer, and my correspondent." {n}She does not smile.{/n}
 "I have been writing to you from the wayhouse on the eastern road, about doors and cups and a sergeant called Meret. Then the chaplain wrote that you kept the rows supplied and worked beside him all night, and the chaplain's letter found me at the wayhouse. I walked in to see whether it was the same hand that writes to me."''',
-      c('[Explain] "They were dying. I could get supplies, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
     t("greet_treated", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
 "You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then the chaplain wrote that you kept the rows supplied and worked beside him all night, and word of it reached me in the halls of Heaven, and I came down to see whether it was the same one."''',
-      c('[Explain] "They were dying. I could get supplies, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
     t("greet_lab_sleep", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "Behind the barrier you asked me to lie back down in her sleep if it came to blood, and I said yes. Then you broke the barrier instead, and I went home to Heaven's healers after all. And then I heard you had spent a night tending strangers in the ward, with the chaplain. I came to see who would do such a thing, and why."''',
-      c('[Explain] "They were dying. I could get supplies, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
     t("greet_lab", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "Behind the barrier you showed me a scroll up your sleeve and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then I heard you had spent a night tending strangers in the ward, with the chaplain. I came to see who would do such a thing, and why."''',
-      c('[Explain] "They were dying. I could get supplies, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
     t("greet", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "The chaplain sent word of a night you spent at the cots, buying supplies and tending strangers beside him. His letter reached me in the halls of Heaven. I came to see who would do such a thing, and why."''',
-      c('[Explain] "They were dying. I could get supplies, and give them the night."', "why")),
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
     t("why", '''"For the wounded." {n}She considers you with sad, clear eyes.{/n}
 "Then I will stay, for the wounded. I have written to my healers in Heaven to say where I am; they will not like it, and they will forgive me. They have been very kind to me, and very patient with this wing." {n}She shifts the basin against her hip.{/n} "Here nobody has time to be patient with it. I find I prefer that.
 "And I would like to know what kind of person sits up all night with strangers. I have not decided whether I approve."''',
@@ -467,6 +470,16 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
     t("drawn", '''{n}She looks at you over the basin. A drop falls from the cloth before she remembers to wring it out.{/n}
 "That is not what I came for." {n}She wrings out the cloth.{/n} "It may be a reason I stay anyway. Ask me again when the ward is quiet, Commander, and not over a dying man."''',
       c("[Leave her to the rows.]")),
+    # Round 3: authored recollections of the UMD2 night's actual work; append-only.
+    t("greet_unspent", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
+"The chaplain sent word that you worked his last healing wand through the night, from cot to cot. His letter reached me in the halls of Heaven. I came to see who would do such a thing, and why."''',
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
+    t("greet_treated_unspent", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
+"You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then the chaplain wrote that you worked his last healing wand through the night. Word reached me in the halls of Heaven. I came down to see whether it was the same hand."''',
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
+    t("greet_wayhouse_unspent", '''"Commander. Greetings, my rescuer, and my correspondent." {n}She does not smile.{/n}
+"I have been writing to you from the wayhouse on the eastern road, about doors and cups and a sergeant called Meret. Then the chaplain wrote that you worked his last healing wand through the night. His letter found me at the wayhouse. I walked in to see whether it was the same hand that writes to me."''',
+      c('[Explain] "They were dying. I could help, and give them the night."', "why")),
 ], requires=("trickster.ever", WAND, FREE), forbids=(MET, CLOSED), delay=0)
 
 
@@ -573,7 +586,8 @@ def night_nodes(scene_id, oath=False, prefix=""):
 
 ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
     t("start", '''{n}Wilcer hands you a lamp at the stores without being asked. It is late. There is one lamp lit in the ward, and one man in it who is not sleeping: a Mendevian sergeant, grey in the face, breathing in short pulls. Arrow in the lung, from the east wall.{/n}
-"Sit with this man until dawn," {n}Targona says, shifting the basin so you can take the stool on his other side.{/n} "He wakes when I leave him. I must see to the others. Then ask me."''',
+"Sit with this man until dawn," {n}Targona says, shifting the basin so you can take the stool on his other side.{/n} "He wakes when I leave him. I must see to the others. Then ask me."
+{n}She glances at your hand on the lamp.{/n} "And leave my brother out of it. What his sword left in you is not another healing wand. I will not have you beg him for a life."''',
       c('[Sit with him until dawn] Sit down on the stool beside the cot.', "dawn"),
       c('[Ask her now] "Ask you now."', "refused"),
       c('[Leave before dawn] "I have a war to run."', "left", flags=(LEFT, CLOSED))),
@@ -608,7 +622,7 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
 
 ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
     t("start", '''{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}
-"Ask, then. But first promise me something. My brother's sword left something of him in you. I know what it is to pray for a miracle when no help is coming. Promise me you will never beg what remains of him to cheat death. Not unnoticed, not for me, not for anyone. If I fall, let me go. Do not make my brother answer for it."''',
+"Ask, then. But first promise me something. I meant what I said about my brother at the sergeant's cot. His sword left something of him in you. I know what it is to pray for a miracle when no help is coming. Promise me you will never beg what remains of him to cheat death. Not unnoticed, not for me, not for anyone. If I fall, let me go. Do not make my brother answer for it."''',
       c('[Promise, and ask her] "I promise. Stay with me."', "promised", flags=(COMMITTED, SEALED)),
       c('[Refuse the promise] "I can\'t promise that."', "unpromised", flags=(CLOSED,))),
     t("promised", '''{n}She puts the last bandage on the pile and squares it with both hands, very neatly, the way she does when she is trying not to let them shake.{/n}
@@ -719,7 +733,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
 # Explicit interval production address; unconditional text paragraph.
 EXPLICIT_PARAGRAPHS = {
     "targona.trickster.epilogue.commit.explicit.1":
-        "{n}Targona draws the Commander down beside her, smiling against the next kiss. The last bandages sway above the blanket.{/n}",
+        "{n}Targona drew the Commander down beside her, smiling against the next kiss. The last bandages swayed above the blanket.{/n}",
 }
 
 page(P + "epilogue.commit", "When the ward was quiet",
