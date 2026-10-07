@@ -979,3 +979,57 @@ def _round2_deck():
                 nodes[nid]["Text"] = nodes[nid]["Text"].replace('her hand finds your sleeve and stays there', 'her hand finds your waist and draws you against her').replace('finds your sleeve exactly where it expects to', 'finds your waist and draws you against her')
 
 _round2_deck()
+
+# Round 3: the evacuation's departure and return are separate world events.
+WOUNDED_JOINED = D + "wounded_joined"
+WOUNDED_RESOLVED = D + "wounded_resolved"
+
+
+def _round3_wounded():
+    from storylines import mielarah_trickster as route
+    by = {beat["Id"]: beat for beat in SCENES}
+    for suffix in ("", ".arcade"):
+        departure = by[D + "wounded" + suffix]
+        ns = {node["Id"]: node for node in departure["Nodes"]}
+        carried = copy.deepcopy(ns["carry"])
+        home = copy.deepcopy(ns["home"])
+        alone = copy.deepcopy(ns["alone"])
+        for nid in ("sum", "sum_refused"):
+            answer = ns[nid]["Choices"][0]
+            answer["Set"] = []
+            ns[nid]["Choices"][1]["Set"] = []
+        ns["carry"]["Text"] = (
+            "{n}She opens the portal. You take your station half a stride from the wheel while the surgeon and crew secure the forward hold. Three lanterns hang above the bow; she orders them lowered for the first landing.{/n}\n"
+            "{n}Starcatcher turns toward the red badlands. Five stretchers per load, and forty men to fetch. The hospital lanterns are still behind you.{/n}")
+        ns["carry"]["Choices"][0]["Next"] = "home"
+        ns["carry"]["Choices"][0]["Text"] = "[Fly with her.]"
+        ns["home"]["Text"] = "{n}The lanterns above the streambed come into view. Mielarah brings the bow around while the crew ready their lines. You stay at her elbow for the first landing.{/n}"
+        ns["home"]["Choices"][0]["Text"] = "[Stay at the helm.]"
+        ns["home"]["Choices"][0]["Set"] = [WOUNDED, WOUNDED_JOINED]
+        ns["alone"]["Text"] = (
+            "{n}She goes without you. Starcatcher turns toward the Wound, six stretchers ready in the forward hold. Below her, the hospital staff clear the yard for the first load.{/n}")
+        ns["alone"]["Choices"][0]["Set"] = [WOUNDED, WOUNDED_LEFT]
+        carried["Id"] = "start"
+        home["Choices"][0]["Set"] += [WOUNDED_CARRIED, WOUNDED_RESOLVED]
+        alone["Id"] = "start"
+        alone["Choices"][0]["Set"].append(WOUNDED_RESOLVED)
+        alone["Text"] = alone["Text"].replace(
+            "She does not come down from her ship that day, or the next.",
+            "She sends word that she will stay aboard today and tomorrow. The crew bring her meals to the wheel.")
+        for name, result, required in (
+                ("wounded.return", [carried, home], WOUNDED_JOINED),
+                ("wounded.return_alone", [alone], WOUNDED_LEFT)):
+            SCENES.append(scene(D + name + suffix, "Back from the Wound", "Mielarah", 5, "", result,
+                requires=("trickster.ever", WOUNDED, required),
+                forbids=(CLOSED, KILLED, WOUNDED_RESOLVED), delay=24, last=5,
+                Relationship=REL, Chapters=[5], Remote=True, Kind="event"))
+
+    # Both placements share the same clocks: one day flying, then two aboard if refused.
+    # ContactWindows restore presence automatically; there is no extra reconciliation demand.
+    windows = [dict(Flag=WOUNDED, MinAgeHours=24),
+               dict(Flag=WOUNDED_LEFT, MinAgeHours=72)]
+    for presence in route.PRESENCES.values():
+        presence.setdefault("ContactWindows", []).extend(copy.deepcopy(windows))
+
+
+_round3_wounded()

@@ -102,3 +102,45 @@ Read directly from `/wrath/blueprints.zip` and `/wrath/Wrath_Data/StreamingAsset
 - Shared Nocticula reference classifier, tests/acceptance fixtures, Last Call coda if further repair is needed, route-spec labels and uniqueness registry are outside this sheet-only authorization. Report them to coordinator; do not change shared files or generated Story.json.
 - Source-level closure/ending guards and current generated eligibility differ in places; preserve their native bindings/identity and have coordinator inspect regeneration in the later implementation pass. Do not bypass gates or write generated data to compensate.
 - No new mechanics, spending, attraction thresholds, partner stance, reconciliation condition or guarantees proposed. Required travel/arrival stamps and reuse of existing settlement are audit repairs; actual elapsed round-trip timing remains a coordinator review point.
+
+## Round 3: authored timing and late-rescue corrections
+
+Native evidence: `World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0033.jbp`
+(`fd7b46bf735b00246a02675345687c82`), enGB key
+`23bb6d12-38ed-42d2-aa84-144b9e964e27`, completes the expedition and
+relieves the Commander of captaincy at Colyphyr. Neither late search inherits
+contractual command of Starcatcher.
+
+The late rescue instead acquires the ship from the mutineers by the existing
+intimidation or wage-buyout choices. The authored northern opening has Oskel
+guide their attempted sale of Starcatcher to the crusade: buyers in the Isles
+have heard of the hanging, while the mutineers hope Drezen has not. His
+counter-move puts their ship within the Commander's reach. This is a new
+Trickster-only situation, not a native charter debt or a free rescue.
+
+Posting the rumour charter ends that encounter. Acceptance waits 216 hours
+from `charter.request_sent`; its existing arrival stage then waits 336 hours
+from acceptance/`charter.posted`. The pre-voyage charter and the direct, already-inbound offer keep their
+existing mechanics through a separate `charter.direct_inbound` flag. The
+clerk already holds copied shipping rolls; there is no research-time jump.
+
+Declining the herald launches an unpaid search. The hat and closure arrive
+in separate outcome scenes after 264 hours (Colyphyr) or 936 hours (Drezen).
+Both searches exclude the paid rescue outcomes; `raid.sent_back` continues
+to exclude competing departures. The local failed result can survive the
+Chapter 4-to-5 transition. No return, affection or commitment is awarded.
+
+The wounded-column set piece now separates departure from the day-and-night
+return (24 hours). Departure flags are stamped on the terminal answer,
+so the absence window cannot cancel the departure dialogue. Only the return earns `wounded_carried`, so later memory
+cannot claim the rescue before it occurred. Both ground placements use
+existing ContactWindows: ground contact waits 24 hours after departure;
+a refusal also keeps the captain aboard for the next 48 hours (72 hours
+total). Restoration is automatic, with no added reconciliation demand.
+The original wounded flags, node identities, choice indices and inert
+ending exits remain. New outcome scenes append after existing scenes.
+
+The existing first-night slots and four briefs were checked and retained.
+No additional intimate situation or explicit slot is required by this audit.
+The same unimplemented time jump in Oskel's payment sibling was removed:
+she calls him to her table and pays him during the encounter.
