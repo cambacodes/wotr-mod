@@ -947,6 +947,12 @@ internal static partial class Program
         RunSuite("ContactDisambiguationTests", () => ContactDisambiguationTests.Run(Check));
         // eng7-l05
         RunSuite("ParticipantInventoryTests", () => ParticipantInventoryTests.Run(story, Check));
+        // J-A1 replacements also run at the full milestone, including if a
+        // required scene is accidentally removed from a registered route.
+        if (story.Relationships.ContainsKey("elyanka")) RunSuite("ElyankaReferenceAvailabilityTests", () => ElyankaReferenceAvailabilityTests.Run(story, Check));
+        if (story.Relationships.ContainsKey("targona")) RunSuite("TargonaReferenceAvailabilityTests", () => TargonaReferenceAvailabilityTests.Run(story, Check));
+        if (story.Relationships.ContainsKey("nidalynn")) RunSuite("NidalynnReferenceAvailabilityTests", () => NidalynnReferenceAvailabilityTests.Run(story, Check));
+        if (story.Relationships.ContainsKey("herrax")) RunSuite("HerraxReferenceAvailabilityTests", () => HerraxReferenceAvailabilityTests.Run(story, Check));
         RunSuite("PresenceTransitionInventoryTests", () => PresenceTransitionInventoryTests.Run(story, Check)); // eng7-l05
         if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) RunSuite("NativeDialogEditTests", () => NativeDialogEditTests.Run(story, Check));
         RunSuite("TricksterOnlyNativeTests", () => TricksterOnlyNativeTests.Run(story, Check));

@@ -62,13 +62,18 @@ class MentionContextTests(unittest.TestCase):
             "I have been called Seelah by my father's guests.",
             "Seelah came to visit, the first year. Then she stopped coming.",
             "Seelah was the cleverest of us.",
+            "Everyone answers to Seelah, whether she has looked at us or not.",
+            "Every soldier in the city belongs to Seelah. Last night she sent a messenger.",
+            "I want Seelah to fall, and the next queen after her.",
+            "The mortal who unseated Seelah plays tricks.",
+            "Seelah keeps the chair. Herrax keeps the corner.",
             '"Tell me about Seelah."', "Keep Seelah's war out of the palace.",
             "Not served, the way Seelah served.",
             "I remember Lady Seelah's guests.", "A table like Lady Seelah's.",
             "Lady Seelah's guests spent everything to sit at her table.",
             "There was a Seelah on my menu. A boy who wore her face.",
             "You put a deposit on her corpse. 'One Seelah, forever.'", "Speak about losing Seelah.", "Seelah's grave is outside the walls.", "We speak about Seelah's absence.",
-            "Seelah's reputation survived the siege.", "Seelah gave me this sword in Kenabres.",
+            "Seelah's reputation survived the siege.", "Seelah's get will hatch soon.", "Seelah gave me this sword in Kenabres.",
             "Seelah is brave.", "Seelah would tell me that is not how to read it.",
             "\"Seelah's. Nothing important.\"",
             "{n}She tells a small story about a pen Seelah swore she had not stolen.{/n}",
@@ -81,8 +86,14 @@ class MentionContextTests(unittest.TestCase):
         pattern = re.compile(r"Iomedae|Inheritor", re.I)
         for text in ("The Church of Iomedae asks for the sword.", "Iomedae help me.",
                      "An acolyte of Iomedae put it out.", "The Inheritor's crusade.",
-                     "The Hand of the Inheritor is holding the Fane.", "I thank Iomedae."):
+                     "The Hand of the Inheritor is holding the Fane.", "I thank Iomedae.",
+                     "The Inheritor sees what is done in her name.",
+                     "A chaplain of Iomedae held the torch.",
+                     "She holds the sword of Iomedae and turns it face down."):
             self.assertEqual(live_mentions(text, pattern), [])
+        for text in ("The Inheritor sees what is done in her name, but she waits here tonight.",
+                     "She holds the sword of Iomedae, and she stands beside us tonight."):
+            self.assertTrue(live_mentions(text, pattern))
         self.assertEqual(live_mentions("The Iomedaean chapter-master wrote to you.", re.compile("Iomedaean", re.I)), [])
 
     def test_live_staging_dialogue_reactions_and_plans_require_availability(self):
@@ -135,6 +146,12 @@ class MentionContextTests(unittest.TestCase):
             "Seelah's old letters lie on the desk; she arrives tonight.",
             "Seelah's old letters lie on the desk; she is here now.",
             "Seelah's old letters lie on the desk; she holds my hand.",
+            "Seelah's get sleeps here, but she waits at the gate.",
+            "Everyone answers to Seelah, who stands beside the fire.",
+            "Every soldier in the city belongs to Seelah, but she waits here tonight.",
+            "I want Seelah to fall, but she is here now.",
+            "The mortal who unseated Seelah watches as she stands at the gate tonight.",
+            "Seelah keeps the chair, but she waits at the gate tonight.",
         ):
             with self.subTest(text=text):
                 story = fixture(text)
