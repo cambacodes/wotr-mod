@@ -51,14 +51,23 @@ internal static class EarnedOutcomeInventoryTests
             throw new InvalidOperationException("Insert cycle in " + scene + "/" + node);
         }
 
-        var devarra = World("devarra.trickster.tested");
+        var devarra = World("devarra.trickster.tested", "devarra.trickster.returned");
+        check(!devarra.Has("devarra.trickster.late_committed"), "An unaccepted Devarra proposal grants the late road.");
+        devarra.Chapter = 5;
+        devarra.Flags.Remove("chapter.six"); Refresh(devarra);
+        var proposal = S("devarra.trickster.after.late_proposal");
+        check(Rules.Available(story, proposal, devarra), "Earned Devarra late proposal is unavailable.");
+        devarra = Program.WalkVia(proposal, devarra, "offer", 0).First();
+        devarra.Chapter = 6;
+        devarra.Flags.Add("chapter.six"); Refresh(devarra);
         check(devarra.Has("devarra.trickster.late_committed"), "Earned Devarra late road lost.");
+        var acceptedFlags = devarra.Flags.Except(story.Derived.Keys).Except(story.Counts.Keys).ToArray();
         // Main.State supplies this built-in aggregate from the native path.
         devarra.Flags.UnionWith(new[] { "swarm", "inhuman" }); Refresh(devarra);
         check(!devarra.Has("devarra.trickster.late_committed"), "Swarm retains Devarra's late road.");
         // A separate native history tests death; removing Swarm from its
         // old snapshot must never erase a witnessed conversion epoch.
-        devarra = World("devarra.trickster.tested", "devarra.dead_lair");
+        devarra = World(acceptedFlags.Where(f => f != "devarra.trickster.returned").Append("devarra.dead_lair").ToArray());
         check(!devarra.Has("devarra.trickster.late_committed"), "Unreturned death retains late entitlement.");
         devarra.Flags.Add("devarra.trickster.returned"); Refresh(devarra);
         check(devarra.Has("devarra.trickster.late_committed"), "Matching earned Devarra return over-blocked.");
