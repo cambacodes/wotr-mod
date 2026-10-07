@@ -1,7 +1,7 @@
 {
   "voice": "Arsinoe: composed, proud, observant, competitive, practical, dryly amused; enjoys beauty and being admired, can be impatient when desire interrupts careful arrangements. Her clerical dignity survives private appetite. Speak briefly and directly; no therapy vocabulary, maxims, devotional sex magic or constant billing jokes. Canon facts: aasimar priestess of Abadar from Absalom, traveler formerly resident in the Stolen Lands, helping Drezen; dusky face, molten-gold eyes, gold-embroidered clerical robes (VendorArsinoe Cue_0001/Cue_0016). No established partner. Do not invent hair color, body measurements, special sexual physiology, previous lovers or celibacy vows. Write new dialogue, do not reuse the example.",
   "scene": "Chapter 5, Trickster run, Drezen, Arsinoe’s room beside the repaired window. Current campaign_lover history and the existing night choice apply. She turned the carved face away, deliberately displayed her chosen robes, and invited the Commander to stay with the lamp on. Explicit fill slot: continue the established approach into consensual sex; the default text cuts before the act. Required beats: her pride in being looked at, reciprocal eagerness, the open window and a war still unresolved. This may be a first shared night or a return after the played unprofitable-hour/collection night; never assert first time universally. Do not replay lease inspection or commitment. End before the existing morning, second cup, queue and sign turning. Continue their existing position without replaying kisses, undressing or seating. The patrol/ledger observations occur before this threshold. Stage one initiating motion, then the act.",
-  "last_line": "A: Leave the lamp burning.",
+  "last_line": "N: In the morning, the shop is still shuttered an hour after opening. Arsinoe's robes hang over the chair; she is trying to find a fastening beneath them. She gives up long enough to kiss you, then smooths your collar without making it much more respectable.",
   "speakers": {
     "A": "Arsinoe"
   },
@@ -12,5 +12,6 @@
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

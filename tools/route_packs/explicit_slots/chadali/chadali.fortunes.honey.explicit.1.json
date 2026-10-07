@@ -1,7 +1,7 @@
 {
   "voice": "Chadali: warm, exuberant, generous, impulsive, bossy when flustered; quick delight and blunt refusal; a patron with her own worshippers and work. Brief concrete speech, teasing impatience, no philosophical maxims, therapy language or narrator explanation. Write new dialogue, not borrowed canon lines. Canon-true appearance only: dark-skinned, middle-aged Vudrani woman; yellow silk; long black hair with white flowers; dimples; plump fingers with white-gold ring. Native C1/C4 in the sheet. No invented anatomy, virginity, former partner or supernatural sexual effects.",
   "scene": "Trickster, Ch3 or Ch5, open Council hall after her independently spoken yes. Alone on the cushions she arranged after dark, with crooked candles and discarded armor. Reserved sexual encounter: mutual lovemaking following the heated-cut default. Build from returned kisses, cold bracelets at neck, armour already completely removed; no fastening reappears and her purposeful invitation. Required beats: she owns preparing the evening; both choose closeness; retain room/cushions/flower continuity; the reserved passage continues the mutually chosen encounter, in her own voice. This is their first night only if no earlier night occurred; subsequent scenes are returns. Existing look affirmative choice carries night receipt; this slot sets nothing. Resume cut terminal and burnt_edges; no third party arrives. Continue from the default staging into the reserved encounter; do not repeat the approach or restore removed clothing. The slot covers the initiating motion and act; leave the existing exit and aftermath intact.",
-  "last_line": "C: Come here, lucky charm.",
+  "last_line": "N: She pulls the silk loose the rest of the way and draws you down to her, and her laugh against your mouth is the last thing you hear clearly. Somewhere along the table a candle tips over and goes out, and neither of you notices, and neither of you minds.",
   "speakers": {
     "C": "Chadali"
   },
@@ -11,5 +11,6 @@
     "a woman"
   ],
   "min_lines": 8,
-  "max_lines": 12
+  "max_lines": 12,
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

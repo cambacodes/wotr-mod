@@ -1,7 +1,7 @@
 {
   "voice": "KIANA: playful, warm, wry, self-mocking and impulsive; theatrical teasing is an amateur's improvisation, never professional patter. Frank about wanting closeness; guilt makes her drop an evasion rather than diagnose herself. Affection for Elan can coexist with desire for the Commander. Do not copy wording from this brief or native dialogue.",
   "scene": "CANON FACTS: Kiana worships Desna; she is Elan's bride/wife in the relevant living marriage history. Native introduction describes a slender woman with striking blue-green eyes. Her vampire princess is a wedding costume, not an undead species. She likes dresses, candles and red wine, laughs against fear, and complains that demons stole her wedding night. No verified cleric status, Sarenrae worship, special genital anatomy, blue skin, crystals, hair texture or temperature is asserted. The amateur play and borrowed room are authored route situations, not native canon.\n\nPLACEMENT: Chapter 5, Drezen, existing kiana.unborrowed_evening/kiss after her locked-door invitation, before the retained shoulder-rest aftermath. Current continuation eligibility stays unchanged. Act category: renewed sexual intimacy, staged to a heated cut only. REQUIRED BEATS: she has answered the yard's public intrusion and now chooses a private evening; keep the uncertain/separated/bereaved/affair histories honest without recycling their testimony during contact; desire is neither thanks for rescue nor a cure for grief. She initiates, moves the unreliable chair aside, locks the door and leaves the quarrel outside. Later she rests against Commander, still opinionated and pleased; do not diagnose, redeem or tame her. Existing walk alternative stays nonsexual. End before explicit acts.",
-  "last_line": "N: The key stays in the locked door.",
+  "last_line": "N: Later, she rests her head against your shoulder. The quarrel in the yard has not vanished; her pages still wait by the door.",
   "speakers": {
     "K": "Kiana"
   },
@@ -11,5 +11,6 @@
     "a woman"
   ],
   "min_lines": 14,
-  "max_lines": 20
+  "max_lines": 20,
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

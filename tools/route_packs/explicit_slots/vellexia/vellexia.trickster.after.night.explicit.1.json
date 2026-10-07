@@ -1,14 +1,7 @@
 {
   "slot_id": "vellexia.trickster.after.night.explicit.1",
   "voice": "Vellexia: aristocratic, impatient, predatory, witty, vain, possessive and openly hungry for novelty. She directs the pace, notices hesitation and enjoys being looked at. Affection toward this guest coexists with cruelty toward others. Give her short particular demands, not a love maxim, moral disclaimer, modern negotiation language or generic seductress monologue. Write new dialogue; do not quote native lines or this brief's example.",
-  "facts": [
-    "Vellexia is a demon encountered in Alushinyrra in Chapter 4.",
-    "Her native dialogue treats love as dangerous self-deception and exposing one's throat to possible betrayal.",
-    "She has collected transformed living creatures as furnishings for millennia.",
-    "Her native passionate farewell dismisses the guest first because being left would wound her pride.",
-    "Native mercy ends the brief affair rather than granting automatic continuing romance.",
-    "No current canon partner has been identified for her in the binding partner evidence."
-  ],
+  "facts": "Vellexia is a demon encountered in Alushinyrra in Chapter 4.\nHer native dialogue treats love as dangerous self-deception and exposing one's throat to possible betrayal.\nShe has collected transformed living creatures as furnishings for millennia.\nHer native passionate farewell dismisses the guest first because being left would wound her pride.\nNative mercy ends the brief affair rather than granting automatic continuing romance.\nNo current canon partner has been identified for her in the binding partner evidence.",
   "scene": "Authored continuity: Trickster route, Chapter 5, the Commander's Drezen quarters, an ordinary war night after her lovers' farewell and earned bodily arrival. Vellexia has crossed the rift road at her own inconvenient hour. The preceding node stages a lower-lip bite, Commander-led unlacing, discarded silk, mutual undressing and her offered-throat challenge. This slot reserves the existing night of intimacy for external filling; this brief supplies non-graphic dramatic direction, not sexual choreography. She wants this particular guest, rather than performing gratitude for a rescue. The Worldwound map and rattling shutters keep the war in the room. No partner interruption or new encounter. The following old morning node carries a throat bruise, a map print and her demand that the Commander survive.",
   "required_beats": [
     "The reserved act is mutually chosen sex; continue the existing encounter with her unmistakable initiative and appetite, without changing the dramatic situation.",
@@ -18,14 +11,24 @@
     "Retain the already-staged throat mark as continuity for morning without inventing wounds, costs or mechanics.",
     "End at the exact last line; leave the existing morning decision and farewell outside the slot."
   ],
-  "last_line": "N: The lamp burns low.",
-  "speakers": { "V": "Vellexia" },
+  "last_line": "N: At dawn she sits on the edge of the bed, watching you discover the bruise on your throat. Your abandoned clothes cover the Worldwound map. She lifts one corner, finds the lip-paint print beneath it, and laughs.",
+  "speakers": {
+    "V": "Vellexia"
+  },
   "example": "N: Vellexia pushes the rolled map away from the edge of the bed.\nV: You can quarrel with your generals in the morning.\nN: She pulls you nearer and watches whether you follow.",
-  "commander_variants": ["a man", "a woman"],
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
   "min_lines": 12,
   "max_lines": 18,
   "default_text": "{n}Vellexia draws you against her. Your abandoned clothes lie across the Worldwound map; she leaves them there and turns the lamp low.{/n}",
-  "insertion": { "scene": "vellexia.trickster.after.night", "after_node": "threshold", "before_node": "morning", "slot_kind": "appended_node_definition" },
+  "insertion": {
+    "scene": "vellexia.trickster.after.night",
+    "after_node": "threshold",
+    "before_node": "morning",
+    "slot_kind": "appended_node_definition"
+  },
   "continuity": [
     "No new flags, prices, gates or terminal effects; retain the old morning completion answer.",
     "Bodily presence only; captive mirror and remote shell cannot enter this slot.",
@@ -34,8 +37,20 @@
     "Use the heated-cut default when no external take exists; no empty page or player-facing placeholder."
   ],
   "canon_refs": [
-    { "guid": "ec58f45a60bec6d438a84993c6a1696e", "key": "b32c0915-1616-48cc-86e3-8c6245f58af9", "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0085.jbp" },
-    { "guid": "33fbc8d0ca697f044861681fc2cecbf6", "key": "638b91d0-3684-4579-8276-2a79bce725fc", "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0106.jbp" },
-    { "guid": "834295fb4d1eade489494f6759972074", "key": "7ce56d20-a865-4157-821b-3f51eb63ca6c", "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0075.jbp" }
+    {
+      "guid": "ec58f45a60bec6d438a84993c6a1696e",
+      "key": "b32c0915-1616-48cc-86e3-8c6245f58af9",
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0085.jbp"
+    },
+    {
+      "guid": "33fbc8d0ca697f044861681fc2cecbf6",
+      "key": "638b91d0-3684-4579-8276-2a79bce725fc",
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0106.jbp"
+    },
+    {
+      "guid": "834295fb4d1eade489494f6759972074",
+      "key": "7ce56d20-a865-4157-821b-3f51eb63ca6c",
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0075.jbp"
+    }
   ]
 }

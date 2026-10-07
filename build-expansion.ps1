@@ -32,6 +32,9 @@ try {
 
     & $pythonPath expansion.py
     if ($LASTEXITCODE) { throw 'Expansion generation failed' }
+    # Held Gemory briefs: rebuilding routes remain visible as known findings.
+    & $pythonPath tools/slot_brief_lint.py --strict --known-rebuilds --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Slot brief lint failed' }
     # ENGINE-Q6A: cross-route audit debt is reported; existing findings do not fail packaging.
     & $pythonPath tools/crossroute_lint.py --story development/Story.json
     # Report mode returns zero even with findings. Strict baseline enforcement is opt-in.

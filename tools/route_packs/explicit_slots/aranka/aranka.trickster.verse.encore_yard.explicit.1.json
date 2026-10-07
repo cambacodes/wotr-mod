@@ -1,7 +1,7 @@
 {
   "voice": "ARANKA: Desnan singer and competitive bard; effusive, vain about her singing, playful, quick to laugh and quick to defend her work. Frank desire, teasing rather than solemn reassurance. She initiates closeness and keeps her chosen work and travel. Warmth does not erase her moral anger. Use new concise dialogue; musical diction sparingly, no maxims, no therapy language. Canon facts: she sings Starward Gaze received from Desna's servants in Elysium; she later arranges it and encourages Thall to sing. Physical details not established by those facts must not be invented; no assumed waking wings or fixed Commander anatomy.",
   "scene": "Chapter 3, Drezen; roof of the carters' lodging above the mule lines. Only Aranka and the Commander are present. This follows her own affirmative choice to stay after the stage offer. The completed-parent history is a renewed encounter between established lovers, never a second first night. The insertion is reserved for user-supplied consensual sexual encounter; this brief supplies non-graphic staging and continuity only. Required beats: she initiates, laughter and the interrupted tune retain her vanity and pleasure, her cloak stays on the tiles, nobody arrives or magically watches; no confession or state award occurs here. End before the existing morning song and noise fine she pays herself. Continuity: the preceding threshold has already positioned both bodies. Begin from that position; never repeat the approach, pull onto cloak or shawl, or undressing. This node bridges directly to its existing aftermath.",
-  "last_line": "N: Below the roof, the first carts begin to move.",
+  "last_line": "N: The whole lodging house wakes to her singing from the roof, something new and unfinished that stops and starts again, and by the time you come down the ladder every carter at the long table is very busy looking at the sky.",
   "speakers": {
     "A": "Aranka",
     "N": "Narrator"
@@ -13,5 +13,6 @@
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

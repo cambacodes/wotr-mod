@@ -5,8 +5,12 @@
   "facts": "Authored ordinary display prop in the Fool King's Ch5 upper room, not living-soul furniture or a transported manor. Both currently embodied, routes open, full friendships earned, counterinvitation witnessed, and each woman's personal yes spoken before the interval. Neither a shell, mirror nor historical visit supplies a body. Do not invent physical colors, anatomy, transformations or victims as payment.",
   "scene": "Non-graphic editorial brief; explicit prose is left for user-supplied text. Camellia refuses exhibit status; Vellexia steps down for her. Commander clears the room and leaves before their answers and encounter. Mutual → explicit.1 → after; the interval writes nothing. Preserve their chosen appetite and damage to the ordinary prop. No second-person Commander address, coerced performance, redemption or sexual payment. Morning 8 hours after the mutual terminal: Camellia disputes blame; Vellexia resumes her salon plans; the crusade's march continues. Do not activate without the verified full body/venue window.",
   "last_line": "V: That display was hideous anyway.",
-  "speakers": {"C": "Camellia", "V": "Vellexia"},
+  "speakers": {
+    "C": "Camellia",
+    "V": "Vellexia"
+  },
   "commander": "absent",
   "min_lines": 14,
-  "max_lines": 20
+  "max_lines": 20,
+  "example": "N: Camellia turns the key.\nC: No applause. No pretty little mortal on your stand. I want you here, with me."
 }

@@ -3,7 +3,10 @@
   "scene": "household.pair.wenduag_arueshalae.choice",
   "node": "household.pair.wenduag_arueshalae.choice.explicit.1",
   "next": "after",
-  "participants": ["Wenduag", "fallen Arueshalae"],
+  "participants": [
+    "Wenduag",
+    "fallen Arueshalae"
+  ],
   "commander": "absent",
   "authored": true,
   "device": "she_pursues",
@@ -13,5 +16,13 @@
   "default": "{n}The lower-town map stays open while they take their argument elsewhere.{/n}",
   "exact_last_line": "W: They will use my route at dawn.",
   "state": "No flags, answers, item effects or anatomy variants in slot content. The unchanged after[0] produces the mutual-answer witnesses. Empty and filled content take the same path.",
-  "batch_status": "Commander-absent content requires the existing batch owner's support; retain the empty default until supplied."
+  "batch_status": "Commander-absent content requires the existing batch owner's support; retain the empty default until supplied.",
+  "facts": "Wenduag and fallen Arueshalae are the only participants. Commander absent. The freshly consumed Death Ward protects against energy drain, not violence or compulsion; the seven-minute interval includes build-up and separation. Separate sleep; no touch eight hours later. This encounter is authored, not native history. Do not invent physical traits.",
+  "last_line": "N: They separate while the ward still holds. Arueshalae smooths her belt; Wenduag retrieves the map before the succubus can take it.",
+  "example": "N: Arueshalae lifts the map out from under Wenduag’s hand.\nW: Keep flying, pretty thing.",
+  "voice": "Wenduag: predatory, competitive hunter, proud of her scouts and chosen route; desire does not tame her. Fallen Arueshalae: hungry, mocking, quick to answer a challenge; no Desnan remorse or redemption. Keep both women predatory and competitive. Write new dialogue; do not reuse the example.",
+  "speakers": {
+    "W": "Wenduag",
+    "A": "Arueshalae"
+  }
 }

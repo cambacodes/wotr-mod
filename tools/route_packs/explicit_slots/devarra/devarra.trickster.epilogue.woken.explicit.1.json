@@ -14,13 +14,7 @@
   "max_lines": 10,
   "slot_id": "devarra.trickster.epilogue.woken.explicit.1",
   "default_text": "{n}In spring she returned to the ridge, and the Commander climbed to meet her.{/n}",
-  "facts": [
-    "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).",
-    "She held the Storyteller captive and demanded an impressive story in exchange for his life.",
-    "Greybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.",
-    "The Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.",
-    "No verified native humanoid transformation or sexual anatomy is supplied."
-  ],
+  "facts": "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).\nShe held the Storyteller captive and demanded an impressive story in exchange for his life.\nGreybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.\nThe Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.\nNo verified native humanoid transformation or sexual anatomy is supplied.",
   "required_beats": [
     "This is a later meeting between already committed participants; no relationship state changes.",
     "Show her return, not merely her departure.",

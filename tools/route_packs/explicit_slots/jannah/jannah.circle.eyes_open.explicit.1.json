@@ -3,12 +3,15 @@
   "facts": "Jannah is a half-elf woman according to the native League introduction (enGB 2f96db80-cb7e-4148-b72c-64fac97ceab7), a Mivon fencing apprentice and Eagle Watch recruit. Use dialogue identity for physical description; her unit's mechanical race entry is HumanRace and is not a reason to rewrite her identity. No fixed hair, eye, skin colour, body measurements or sexual history is supplied. Do not add a universal temple scar. Floor, lamp, bare feet and chalk are authored scene staging.",
   "voice": "JANNAH: proud, playful, impatient, physically confident in a lesson and newly frank in affection. Competitive humour, short imperatives, laughter when the Commander surprises her. She decides when the game ends and returns because she wants closeness. No obedience-as-love, formal permission choreography, healing-through-sex, sentimental maxims or generalised dominatrix persona. Write new dialogue; do not copy sentences from this brief except the required last line.",
   "scene": "AUTHORED SCENE: Trickster, Chapter 5, the last cell of Drezen's old gaol, an existing voluntary visit after their first yard night. Jannah and the Commander are alone; the lamp is low, boots off, a small chalk circle on cold stone. Her mock lesson in holding the yield has ended. In the still branch she steps outside the circle and voluntarily comes back beside the Commander; in the moved branch she answers the Commander's pull with laughter and stays. Start with their mutually welcomed kiss and continue a second chosen sexual encounter; the user-selected filler supplies the intimate act. Required beats: the formal yield is already over before intimacy; she takes initiative even if the Commander stayed still, and welcomes initiative if they moved; the lesson becomes a private joke rather than a demand or test; this is deepening familiar desire, never another first night. Keep room, floor, lamp and the ordinary war outside concrete. No coercive restraint, weapon use, wound aggravation, spectators, potion, drunkenness, new vow or new relationship price. Finish with Jannah's exact line inviting the existing future conversation about teaching the forms after the war. Her intention to open a salle remains uncertain because the war may kill them. Canon facts: she is a half-elf Mivon fencing apprentice, proud of her former unbeaten record (native Ch1 introduction, Deserter/Cue_0018), who fled demons and was caged (Cue_0015, Cue_0002). The floor lesson and future salle are authored additions, not native Mivon law. Do not invent hair, eye or skin colour, anatomy traits, universal scars or sexual history. Keep this common slot compatible with both preceding choices and either Commander's anatomy. Only Jannah speaks; Commander speech belongs to game answers.",
-  "last_line": "J: Stay. I've something to tell you.",
+  "last_line": "N: After a while, lying there, she says:",
   "speakers": {
     "J": "Jannah"
   },
   "example": "N: Jannah returns to the chalk and catches your hand, laughing.\nJ: Enough lying still. Come here.",
-  "commander_variants": ["a man", "a woman"],
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
   "min_lines": 12,
   "max_lines": 18
 }
