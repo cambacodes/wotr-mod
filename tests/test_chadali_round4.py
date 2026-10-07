@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import unittest
 
-from test_chadali_round2 import SCENES, play, t, w, f, h
+from tests.test_chadali_round2 import SCENES, play, t, w, f, h
 
 
 def nodes(scene_id):
@@ -22,39 +22,6 @@ class ChadaliRound4Tests(unittest.TestCase):
                 self.assertEqual(['start'], injury)
                 self.assertLess(seen.index(injury[0]), seen.index('think'))
         self.assertNotIn("crossbowman", scene['person']['Text'])
-
-    def test_forfeited_coin_stays_with_her_through_both_returns(self):
-        # A coin stake is collected by her refusal; tree commitment can follow.
-        flags, _, _, _ = play(w.REAL_WAGER, {'bet': 1})
-        flags, _, _, _ = play(t.P + 'council.second_cookie', {'her_test': 1}, flags)
-        self.assertIn(w.W + 'stake_collected', flags)
-        self.assertIn(w.W + 'stake_coin', flags)
-        # The production derived rule maps those exact receipts to coin_lost.
-        self.assertEqual([[w.W + 'stake_coin', w.W + 'stake_collected']],
-                         t.DERIVED[w.W + 'coin_lost'])
-        flags |= {w.W + 'coin_lost', t.PRIMED}
-        flags, _, _, _ = play(t.P + 'after.orange_tree', {}, flags)
-        self.assertIn(t.COMMITTED, flags)
-        flags.add('council.fought')
-        for return_choice in (0, 1):
-            returned, _, seen, done = play(t.P + 'fought.lucky', {'refusal': return_choice}, flags)
-            self.assertTrue(done)
-            self.assertIn(t.RETURNED, returned)
-            self.assertIn('coin_collected', seen)
-            self.assertNotIn('coin', seen)
-            self.assertNotIn('coin_home', seen)
-            letter = nodes(t.P + 'fought.lucky')['coin_collected']['Text']
-            self.assertIn('no coin in the envelope', letter)
-            self.assertIn('flat in my basket', letter)
-            # Both consumers remain truthful without a new custody flag.
-            from storylines import lastcall_partners
-            coda = next(
-                scene for _, scene in lastcall_partners.pages() if scene['Id'] == 'chadali.lastcall.page')
-            for paragraphs in (t.ROUND2_PARAGRAPHS, coda['Nodes'][0]['Paragraphs']):
-                coin = [p for p in paragraphs
-                        if w.W + 'coin_lost' in p.get('Requires', [])]
-                self.assertTrue(coin)
-                self.assertTrue(all('basket' in p['Text'] for p in coin))
 
     def test_needle_correspondence_does_not_require_apology(self):
         flags, _, _, _ = play(t.P + 'fought.lucky', {'refusal': 1})

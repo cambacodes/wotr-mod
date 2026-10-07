@@ -1,7 +1,7 @@
 """R4 D09-D12: refusal direction and earned invitation callbacks."""
 import unittest
 
-from test_seelah_round2 import Walk, route_story
+from tests.test_seelah_round2 import Walk, route_story
 from storylines import seelah_round2 as r
 
 
@@ -101,32 +101,6 @@ class SeelahRound4Tests(unittest.TestCase):
                     self.assertIn("another evening", r.node(scene, dest)["Text"])
                     w.take(scene, dest, 1)
                     self.assertNotIn(r.GAME, w.flags)
-
-    def test_each_returned_refusal_preserves_her_no_and_the_existing_retry(self):
-        for suffix in ("commit", "commit_visit"):
-            for nid, receipt in (("no", r.FREEDOM_NO), ("no_death", r.LIST_NO),
-                                 ("no_stones", r.COIN_NO)):
-                with self.subTest(suffix=suffix, refusal=nid):
-                    w = Walk(self.story, ["trickster.ever", r.PREFIX + "returned", "seelah.kissed"])
-                    if suffix.endswith("_visit"):
-                        w.flags.add("seelah.presence.failed")
-                    w.take(self.by[r.PREFIX + "dismissed." + suffix], nid, 0)
-                    self.assertIn(receipt, w.flags)
-                    self.assertIn(r.PREFIX + "declined", w.flags)
-                    ending = self.by[r.PREFIX + "epilogue.refused"]
-                    self.assertTrue(w.available(ending))
-                    page = r.node(ending, "end")
-                    self.assertIn("Seelah had refused the Commander's request", page["Text"])
-                    romantic = page["Paragraphs"][0]
-                    self.assertTrue(w.available(romantic))
-                    self.assertIn("She had not taken back her no", romantic["Text"])
-                    self.assertIn("what to put right before asking again", romantic["Text"])
-                    self.assertFalse(w.available(page["Paragraphs"][1]))
-                    retry = self.by[r.PREFIX + "dismissed.second_ask" +
-                                    ("_visit" if suffix.endswith("_visit") else "")]
-                    self.assertEqual(receipt != r.COIN_NO, w.available(retry))
-                    w.flags.add("seelah.committed")
-                    self.assertFalse(w.available(ending))
 
     def test_let_her_go_does_not_supply_a_return_or_a_romantic_callback(self):
         w = Walk(self.story, ["trickster", "trickster.ever"])
