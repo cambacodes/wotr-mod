@@ -278,6 +278,8 @@ def integrate(payload):
     install_slots(events)
     late_debts(events["jerribeth.trickster.epilogue.commit"])
     localize_late_choices(events["jerribeth.trickster.epilogue.commit"])
+    from storylines import jerribeth_scaffolding
+    jerribeth_scaffolding.integrate(payload)
 
 
 def write_situations(events):
