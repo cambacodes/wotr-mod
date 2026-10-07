@@ -889,7 +889,7 @@ EPILOGUE_PARAGRAPHS = (
       requires=(E + "regnard_swords_home",)),
     p('''{n}She saw the sea at last, the second summer after the war: a lake with no other side, exactly as the trader had promised. She stood in it to her knees in her grey robe and would not come out, and said that she had been right not to believe him, because he had not described it properly at all.{/n}''',
       requires=(E + "drezen.sea",)),
-    p('''{n}Whatever the demon had carried off from Pulura's Fall, the Commander burned where it was found, every page, as promised. Eliandra never asked what it had cost to find. She only asked, every year on that day, whether it had all burned. It had.{/n}''',
+    p('''{n}The promise to burn Mutasafen's stolen pages remained unfulfilled. Each year Eliandra asked whether any had been found. She sent the Commander the stargazers' descriptions of the missing work, and kept her own copies locked away. The stolen knowledge of how to tear another Wound was still unaccounted for.{/n}''',
       requires=(RESEARCH_BURN, "eliandra.research_stolen")),
     p('''{n}The demon had carried nothing of theirs away; the Commander had seen to that at the shrine, and there was nothing in his hands to burn. The stargazers' work went to the crusade's scholars as she had wanted, in chests under her own seal, and she read every report they wrote from it, and corrected the margins.{/n}''',
       requires=(RESEARCH_BURN,), forbids=("eliandra.research_stolen",)),

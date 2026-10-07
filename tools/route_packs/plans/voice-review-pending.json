@@ -1,0 +1,37 @@
+[
+  {
+    "scene": "eliandra.trickster.ch5.last_rite_drezen",
+    "route": "eliandra",
+    "finding": "eliandra:D02"
+  },
+  {
+    "scene": "eliandra.trickster.ch5.last_rite_drezen_mark",
+    "route": "eliandra",
+    "finding": "eliandra:D03"
+  },
+  {
+    "scene": "eliandra.trickster.visit.star_heart",
+    "route": "eliandra",
+    "finding": "eliandra:D04; eliandra:D06"
+  },
+  {
+    "scene": "eliandra.trickster.visit.star_heart_mark",
+    "route": "eliandra",
+    "finding": "eliandra:D05; eliandra:D07"
+  },
+  {
+    "scene": "eliandra.trickster.epilogue.together",
+    "route": "eliandra",
+    "finding": "eliandra:D10"
+  },
+  {
+    "scene": "eliandra.trickster.epilogue.late",
+    "route": "eliandra",
+    "finding": "eliandra:D11"
+  },
+  {
+    "scene": "eliandra.trickster.epilogue.unasked",
+    "route": "eliandra",
+    "finding": "eliandra:D12"
+  }
+]
