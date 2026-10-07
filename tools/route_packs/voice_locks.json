@@ -249,6 +249,71 @@
       "owner": "claude",
       "since": "9005695a",
       "text_sha": "d975b122b3b371cadbfca757ab82c89687ec8d5c745950046ef52bcc0cecd9d4"
+    },
+    "areelu.trickster.report.hunters": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "5f89dc58aa12be8a6435ae8352219d11a5202a82e046d2851f0b08a2d5ae82de"
+    },
+    "areelu.trickster.report.graft": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "a39396791a974075b8d1372ed2b44351bb5de6e831f3df906920ee52c595d0b5"
+    },
+    "areelu.trickster.report.sarkoris": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "d9b18d27b155623483ca1fec77be7fee75941f69d06ed9344b99c0ef25bbed9b"
+    },
+    "areelu.trickster.report.participation": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "634fd9f588426b93f5314ede409364a963fcec19469faccbc026216e798157e2"
+    },
+    "areelu.trickster.report.prison": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "5c221a76689d5097ff64465e96c40bdf47517ccf581c950d186e7d8dfdb90540"
+    },
+    "areelu.trickster.report.cult": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "cc1ea4e50ffefb4c415b1e02fb83606789feda0555ee8bcbad355cbb88c1db41"
+    },
+    "areelu.trickster.report.convicts": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "78229be0125d5f286b6f278b2b53b98d10294bbb0778072c7774ae67bd3f8628"
+    },
+    "areelu.trickster.report.commission": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "0f55d811fe75422d364e6f7459177754bb6bc79324277fe807b72a6eb8657d91"
+    },
+    "areelu.trickster.report.dagger": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "e868c804cd5d1fcdb7374032508ea8e4302aac626d6dd77f2c3352ac4cddaeae"
+    },
+    "areelu.trickster.report.lady": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "85a168c3571b2d7d1ff3120ca2ce4101146bc6c204cf5c6a5f07d45c2bf8444b"
+    },
+    "areelu.trickster.report.visitors": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "535ffd4eb709b35196f67fd736318dca36002b92b80d1456c1db17cb2b5b6b2e"
+    },
+    "areelu.trickster.report.rival": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "90f85b58ad1acccd695988717f655a886feb1f4640f6144106a975b7d18c23ec"
+    },
+    "areelu.trickster.finale.lien_bottled": {
+      "owner": "claude",
+      "since": "b2c3ef01",
+      "text_sha": "d213bd93de79d4351c721ea396f04f4abe25d4d4a50ce2bfeeaf453df5553700"
     }
   }
 }
