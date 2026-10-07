@@ -1029,7 +1029,9 @@ def make_story():
     refs.update(sacrifice="381a296094804761af0893d2e70dc2df",
                 ascend_all="07ad18ffb08145b69522f8eee0230857", ascend_alone="08e47548e25945e286fe77b896884b32",
                 ascend_areelu="63279a971792474ba0439b9f75795a7a", ascend_companions="9fc5161813f1497f8eaad1563ac54211")
-    return dict(Scenes=scenes, Etudes=refs)
+    payload = dict(Scenes=list(scenes), Etudes=refs)
+    __import__("storylines.harem_rows", fromlist=["register_all"]).register_all(payload, scenes, refs)
+    return payload
 
 
 def build():
