@@ -154823,6 +154823,24 @@
       "ExpectedCandidate": "areelu.trickster.report.cult"
     },
     {
+      "Id": "page/areelu.trickster.report.convicts",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.committed",
+        "areelu.payoff.partner",
+        "areelu.present_now",
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "areelu.trickster.report.convicts"
+    },
+    {
       "Id": "page/areelu.trickster.report.incursion",
       "Target": "",
       "Dialog": "",
@@ -154840,6 +154858,24 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.incursion"
+    },
+    {
+      "Id": "page/areelu.trickster.report.commission",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.committed",
+        "areelu.payoff.partner",
+        "areelu.present_now",
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "areelu.trickster.report.commission"
     },
     {
       "Id": "page/areelu.trickster.report.dagger",
@@ -154895,6 +154931,24 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.visitors"
+    },
+    {
+      "Id": "page/areelu.trickster.report.rival",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.committed",
+        "areelu.payoff.partner",
+        "areelu.present_now",
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "areelu.trickster.report.rival"
     },
     {
       "Id": "page/areelu.trickster.report.name",
