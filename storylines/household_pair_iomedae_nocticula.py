@@ -136,15 +136,22 @@ def living_paragraphs(woman):
         groups = [BANNERS] if woman == "iomedae" else []
         # Outcome history is recollected by this woman alone, never a new absent reply.
         prose = "{n}" + (texts[woman] if flag == "resolved" else text) + "{/n}"
-        out.extend((p(prose, requires=req, forbids=[*forbids, "sacrifice"], any_groups=groups),
+        channel_forbids = [*forbids, "iomedae.trickster.buried_alive"] if woman == "iomedae" and flag == "resolved" else forbids
+        out.extend((p(prose, requires=req, forbids=[*channel_forbids, "sacrifice"], any_groups=groups),
                     p(prose, requires=[*req, "sacrifice", "trickster.commander_back"],
-                      forbids=forbids, any_groups=groups)))
+                      forbids=channel_forbids, any_groups=groups)))
     for cost, text in COSTS.items():
         req = [P + "cost." + cost, reader_key(woman)]
         groups = [BANNERS] if woman == "iomedae" else []
         out.extend((p("{n}" + text + "{/n}", requires=req, forbids=["sacrifice"], any_groups=groups),
                     p("{n}" + text + "{/n}", requires=[*req, "sacrifice", "trickster.commander_back"],
                       any_groups=groups)))
+    if woman == "iomedae":
+        # D08: append the named rescue recollection after every retained entry.
+        # The crossing consumed either banner; retain the earned rescue reader.
+        prose = "{n}" + texts[woman].replace("Through the banner, Iomedae recalls", "In plain steel, Iomedae recalls") + "{/n}"
+        out.append(p(prose, requires=[P + "resolved", reader_key(woman), "sacrifice",
+                                     "trickster.commander_back", "iomedae.trickster.buried_alive"]))
     return out
 
 

@@ -358,5 +358,20 @@
     "scene": "nurah.trickster.ran_off.terms_night",
     "route": "nurah",
     "finding": "nurah:D06,D07,D08,D09"
+  },
+  {
+    "scene": "iomedae.trickster.epilogue.bridge",
+    "route": "iomedae",
+    "finding": "iomedae:D01"
+  },
+  {
+    "scene": "iomedae.lastcall.page",
+    "route": "iomedae",
+    "finding": "iomedae:D08"
+  },
+  {
+    "scene": "iomedae.lastcall.page",
+    "route": "iomedae",
+    "finding": "iomedae:D09"
   }
 ]
