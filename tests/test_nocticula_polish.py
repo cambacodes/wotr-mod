@@ -2,14 +2,8 @@
 from itertools import product
 import unittest
 
-from tests.structure import without_prose
-
 from storylines import nocticula_continuation as route
-from tests.structure import without_prose
-
 from storylines import nocticula_acquired_harbor as acquired
-from tests.structure import without_prose
-
 from storylines.nocticula_trickster_acquisition import allowed
 
 
@@ -28,11 +22,11 @@ class LodgeReportTests(unittest.TestCase):
 
     def preparation(self, method):
         state = {"trickster"}
-        scene = self.scenes["noct.mask_and_bell"]
-        index = {"silent": 0, "failed": 0, "guest": 1, "announcement": 2}[method]
-        node = self.pick(scene, "start", index, state, success=method != "failed")
-        self.assertEqual(self.pick(scene, node, 0, state), "limits")
-        self.pick(scene, "limits", 0, state)
+        scene = self.scenes["noct.empty_chair"]
+        index = {"silent": 1, "failed": 1, "guest": 0, "announcement": 2}[method]
+        node = self.pick(scene, "entrance", index, state, success=method != "failed")
+        if node:
+            self.pick(scene, node, 0, state)
         operation = self.scenes["noct.uninvited_guest"]
         options = [(i, c) for i, c in enumerate(operation["Nodes"][0]["Choices"])
                    if c["Next"] != "withdraw_undertaking" and allowed(c, state)]
@@ -40,6 +34,9 @@ class LodgeReportTests(unittest.TestCase):
         node = self.pick(operation, "start", options[0][0], state)
         self.assertEqual(self.pick(operation, node, 0, state), "gallery")
         node = self.pick(operation, "gallery", 0, state)
+        self.assertEqual(node, "bell")
+        node = self.pick(operation, node, 1, state)
+        node = self.pick(operation, node, 0, state)
         self.pick(operation, node, 0, state)
         return state
 
@@ -56,11 +53,7 @@ class LodgeReportTests(unittest.TestCase):
                 judgment = self.scenes["noct.bell_without_master"]
                 node = self.pick(judgment, "judgment", int(house == "kept_house"), state)
                 node = self.pick(judgment, node, 0, state)
-                self.pick(judgment, node, 0, state)
-                debt_scene = self.scenes["noct.counterseal"]
-                node = self.pick(debt_scene, "price", int(debt == "purchased"), state)
-                node = self.pick(debt_scene, node, 0, state)
-                self.pick(debt_scene, node, 0, state)
+                self.pick(judgment, node, int(debt == "purchased"), state)
                 self.assertTrue(receipts <= state)
                 node = self.pick(report, "start", int(house == "kept_house"), state)
                 node = self.pick(report, node, 0, state)
@@ -73,8 +66,12 @@ class LodgeReportTests(unittest.TestCase):
                 node = self.pick(report, node, options[0][0], state)
                 self.assertEqual(node, expected)
                 self.assertNotIn(node, {"agent", "agent_announcement", "wound"} - {expected})
+                self.assertEqual(self.pick(report, node, 0, state), "wager")
+                node = self.pick(report, "wager", 0 if debt == "purchased" else 2, state)
+                self.assertEqual(node, "run.caught" if debt == "purchased" else "run.free")
                 self.assertEqual(self.pick(report, node, 0, state), "credit")
-                self.assertEqual(self.pick(report, "credit", 0, state), "answer")
+                self.assertIn("noct.wager_won", state)
+                self.assertEqual(self.pick(report, "credit", 2, state), "answer")
                 self.pick(report, "answer", 0, state)
                 self.assertIn("noct.lodge_consequences_finished", state)
                 self.assertTrue(receipts <= state)
@@ -86,7 +83,7 @@ class LodgeReportTests(unittest.TestCase):
                 self.assertFalse(any(allowed(c, {"noct.lodge_unmarked"}) for c in node["Choices"]))
         ready = set(report["Requires"])
         self.assertTrue(allowed(report, ready))
-        self.assertFalse(allowed(report, ready - {"noct.lodge_debt_answered"}))
+        self.assertFalse(allowed(report, ready - {"noct.lodge_judgment_finished"}))
         for blocker in ("noct.closed", "noct.dead", "noct.parent_rejected"):
             self.assertFalse(allowed(report, ready | {blocker}))
         state = self.preparation("announcement")
@@ -95,14 +92,15 @@ class LodgeReportTests(unittest.TestCase):
         self.assertTrue({"noct.closed", "noct.undertaking_withdrawn"} <= state)
         self.assertNotIn("noct.lodge_consequences_finished", state)
 
-    def test_retired_copies_inherit_reports_and_terminal_receipts(self):
-        donor = self.scenes["noct.no_applause"]
+    def test_retired_copies_keep_frozen_reports_and_terminal_receipts(self):
+        baseline = {s["Id"]: s for s in acquired.BASELINE["Scenes"]}
         for history in ("new", "refused", "prior"):
             clone = next(s for s in acquired.SCENES if s["Id"] == "noct.no_applause.acquired." + history)
+            donor = baseline[clone["Id"]]
             self.assertEqual([n["Id"] for n in clone["Nodes"]], [n["Id"] for n in donor["Nodes"]])
             for original, copied in zip(donor["Nodes"], clone["Nodes"]):
                 if original["Id"] in ("agent", "agent_announcement", "wound", "debt_refused", "debt_bought"):
-                    self.assertEqual(without_prose(copied), without_prose(original))
+                    self.assertEqual(copied, original)
             answer = next(n for n in clone["Nodes"] if n["Id"] == "answer")["Choices"][0]
             self.assertEqual(answer["Set"], ["noct.lodge_consequences_finished", "noct.no_applause"])
 

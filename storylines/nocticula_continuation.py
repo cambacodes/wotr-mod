@@ -1,7 +1,7 @@
 """Living, gifted Chapter 5 continuation of the accepted RanRomance dream bargain.
 
 New incidents and named agents are authored fiction. All participants are adults.
-Dream reconstructions are not live actors, remote surveillance, or native quest changes.
+Dreams carry the sleeping Commander into her real court (user decision 2026-10-07).
 This module does not implement acquisition, resurrection, gift replacement, or a triad.
 """
 from copy import deepcopy
@@ -17,15 +17,17 @@ ETUDES = {
     "noct.gift": "0c1695f4a362f0243a4afcfd1957eb0d",
     "noct.dead": "e581f609dc0f44a481e7e88824ac39da",
 }
+# enGB 43ca3072: Nocticula states the native Aeon trial conditions.
 SEEN_CUES = {
+    "noct.native_trials_seen": ["a5472a3492d23c542b5f77cb6e591ca3"],
     "noct.parent_agreement_seen": ["631bf0ede36742559cee476f34dcb5de", "cb13766be07b448f8cacb477be32e13c", "5388a7d7a1da48deb333d34abab1a6d0"],
     "noct.parent_ambition_heard": ["b3a4ce99bc30440fa9ebcbfce2776176"],
     "noct.parent_feelings_uncertain": ["1110f2b6304549999fb546e7ecc4c8a1"],
     "noct.socoth_plan_exposed": ["bb552fe4e21cb874fa3c98c2cc328186"],
 }
 RELATIONSHIP = dict(
-    Title="The uncounted shore", Description="Nocticula has offered me a private undertaking beyond our original bargain.",
-    Objective="Hear her proposal", Guidance="After accepting RanRomance's Chapter 5 dream relationship, rest in Drezen while Nocticula lives and her Profane Gift remains. These optional narrated dreams continue an existing relationship; they do not recover a missed or rejected one.",
+    Title="Under her black flower", Description="Someone sold passage under Nocticula's black flower. She wants me watching while she collects.",
+    Objective="Sleep, and see what she has caught", Guidance="After accepting RanRomance's Chapter 5 dream relationship, rest in Drezen while Nocticula lives and her Profane Gift remains. While the Gift holds, her dreams carry you into her court; what you decide there happens. These meetings do not recover a missed or rejected relationship.",
     StartedFlag="noct.started", ClosedFlag="noct.closed", CommittedFlag="noct.complete",
     UnavailableFlags=["noct.dead", "inhuman", "legend", "dragon"], FailureFlags=[])
 SCENES = []
@@ -2096,6 +2098,10 @@ The two doors, the copied lens, and the bollard beside the hearth belonged to me
 There was no empty place in Nocticula's chamber where the room ought to have been. It had been made for somebody she had not met in that way, during evenings the new world had never contained.{/n}''', owner="AeonEpilogue")
 
 
+from storylines.nocticula_n1 import scaffold
+scaffold(SCENES)
+
+
 def integrate(payload):
     """Register only verified read-only bindings; root owns export registration."""
     for name, bindings in (("Etudes", ETUDES), ("SeenCues", SEEN_CUES)):
@@ -2104,6 +2110,15 @@ def integrate(payload):
             if key in target and target[key] != value:
                 raise ValueError("Conflicting Nocticula parent binding: " + key)
             target[key] = deepcopy(value)
+    # Native Epilogues/Cue_0294 (enGB 13a9b9dc) requires this flag,
+    # the Wound closed, and Nocticula alive. Read only; no authored producer.
+    payload.setdefault("UnlockableFlags", {})["noct.native_redeemed"] = "48909f9355f52e14ab3a8748fa3e81a0"
+    payload.setdefault("Derived", {})["noct.redeemed_epilogue"] = [["noct.native_redeemed", "ending.wound_closed"]]
+    payload.setdefault("DerivedForbids", {})["noct.redeemed_epilogue"] = ["noct.dead"]
+    # Existing reserved-key registry: known to validation, never produced.
+    pending = payload.setdefault("PendingHooks", [])
+    if "noct.retired" not in pending:
+        pending.append("noct.retired")
     relationships = payload.setdefault("Relationships", {})
     if "nocticula" in relationships and relationships["nocticula"] != RELATIONSHIP:
         raise ValueError("Conflicting Nocticula relationship registration")

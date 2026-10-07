@@ -46,6 +46,8 @@ def integrate(payload):
     scenes = {s["Id"]: s for s in payload["Scenes"]}
     for host, guest, gate, wait in FOLDS:
         fold(scenes[P + host], scenes[P + guest], gate, wait, guest)
+    from storylines.nocticula_n1 import bypass_retained_copy
+    bypass_retained_copy(payload)
     # Only the NEW fill/aftermath IDs are mapped to their delivery host.
     # Legacy folded nodes and choice indices are untouched.
     paid = scenes[P + "the_paid_address"]

@@ -85,10 +85,10 @@ OVERRIDES = {
     "vellexia.trickster.sword.late_portrait": "visit",
     # She speaks through her charm, or meets the Commander in Nocticula's dream harbour.
     "jerribeth.purchaser_answer": "sending",
-    "noct.counterseal": "sending",
-    "noct.counterseal.acquired.new": "sending",
-    "noct.counterseal.acquired.refused": "sending",
-    "noct.counterseal.acquired.prior": "sending",
+    "noct.counterseal": "memory",
+    "noct.counterseal.acquired.new": "memory",
+    "noct.counterseal.acquired.refused": "memory",
+    "noct.counterseal.acquired.prior": "memory",
     # The Commander alone with a page, a map or a mended pouch.
     "konomi.retained_attempt": "memory",
     "konomi.private_absence": "memory",

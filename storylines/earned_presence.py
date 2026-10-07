@@ -167,7 +167,7 @@ GROUP_RELATIONSHIPS = ("tirabade", "minagho_chivarro")
 # Engine-q5: these departures concern someone else, correspondence, or a dream rather than a physical partner.
 DEPARTURE_EXEMPTIONS = {
     ("konomi", "konomi.private_departed"): "Her private romance continues by post; her physical presence explicitly forbids this flag.",
-    ("nocticula", "noct.ilvara_exiled"): "Ilvara is the hearing's subject, not Nocticula.",
+    ("nocticula", "noct.ilvara_exiled"): "Ilvara is stripped of the black flower and sold; she is the trial's subject, not Nocticula.",
     ("dorgelinda", "dorgelinda.ledger.driver_sent_home"): "The convoy driver leaves, not Dorgelinda.",
     ("kaylessa", "kaylessa.trickster.wasp_sent_home"): "The wasp is dismissed, not Kaylessa.",
     ("galfrey", "galfrey.trickster.envoy.sent_home"): "The envoy leaves, not Galfrey.",
