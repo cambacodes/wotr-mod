@@ -604,8 +604,8 @@ met(P + "kills_answered.oath", "The kill that didn't take", '"You look like some
 
 EP = dict(last=6, Relationship=REL)
 KEPT_PARAS = (
-    p("{n}Camellia came and went from the Commander's rooms at hours the watch disliked. The guards learned to recognize her step. She found their attention irritating, and made a point of greeting each of them by name.{/n}", forbids=(KILLED,)),
-    p("{n}Camellia sometimes spoke of leaving, when the urge to kill the Commander grew particularly strong. On those evenings she set her knife by the wine and watched for the Commander's answer. She did not promise that she would keep asking.{/n}", requires=(ROMANCE,), forbids=(KILLED,)),
+    p("{n}The crusade's chroniclers wrote that once the war had ended Camellia grew bored, and on a moonless night simply vanished. She read the line over the Commander's shoulder and was enormously pleased with it. She had vanished from the chroniclers, which was all she had ever wanted from them, and she went on vanishing every evening into the Commander's rooms.{/n}", forbids=(KILLED,)),
+    p("{n}The same chroniclers wrote that years later she came back, and left again, because she was afraid of what she wanted to do to the one she loved. The Commander read that page aloud to her at breakfast. She said it was the only true line in the book, and that the leaving was a detail.{/n}", requires=(ROMANCE,), forbids=(KILLED,)),
     p("{n}Once a year she named a date, and the Commander found her a stranger nobody would miss, as promised over a glass of wine a lifetime ago. Neither of them ever said who.{/n}", requires=(OATH_FED,)),
     p("{n}She kept the Commander's name as her price, and said so at dinner parties, and everyone laughed, and she did not.{/n}", requires=(MARKED,)),
     p("{n}The Commander wore long sleeves in every season, and never said why. Under them, along the inside of one wrist, ran a ladder of fine white scars, one for every time she had asked.{/n}", requires=(BLED,)),
@@ -613,13 +613,13 @@ KEPT_PARAS = (
     p("{n}Anevia never stopped looking for the lower-city killer. She never found anyone, and she never quite believed that.{/n}", requires=(INVESTIGATED,)),
     p("{n}Once, when the Commander had been gone a season, she was found in the dark of the citadel with a knife in one hand and the other flat on the Commander's empty pillow, counting. Nobody asked her what.{/n}", requires=(NOT_TODAY,)),
     p("{n}She had been entered in the crusade's register as dead, and never troubled to correct it. Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}", requires=(KILLED,)),
-    p('{n}The grave at the edge of the Drezen cemetery still bears her name. She never presented herself to the Gwerm lawyers. What lies in her coffin, only two people ever knew, and she never once asked for her name back.{/n}', requires=(FILLED,)),
+    p("{n}The grave at the edge of the Drezen cemetery still bears her name. The Gwerm estate went to a cousin the lawyers found. What lies in her coffin, only two people ever knew, and she never once asked for her name back.{/n}", requires=(FILLED,)),
     p("{n}Some nights the Commander still dreamed of the weight of a hanged man on a borrowed cart.{/n}", requires=(GALLOWS,)),
     p("{n}In Nerosyan, a widow named Mireya Voss kept a rented house for many years, and paid her taxes, and was said to have been married to a wine merchant who died of eels. Nobody ever saw her husband's grave.{/n}", requires=(NEW_NAME,)),
     p("{n}Over the Commander's bed hung a charcoal rubbing of a gravestone, framed. Guests who asked about it were told it was a family memorial, and that the family member in question was in the next room.{/n}", requires=(OLD_NAME,)),
     p("{n}The cells under the citadel were never quite used again. The guards said a prisoner had died down there of a failure of the heart, and that the last one to hear him had heard him laughing, and then not laughing.{/n}", requires=(PRISONER_HERS,)),
     p("{n}She never stopped asking. Once a season she would find a prisoner nobody loved and bring the Commander to the cell door and ask. The Commander said no. She said thank you, and waited for the next one. She was very good at waiting.{/n}", requires=(PRISONER_SPARED,)),
-    p("{n}She kept the list on the Commander's shelf and entered new names in the same careful hand. The Commander's name remained among the uncrossed entries. Visitors who asked to read the paper received a very polite refusal.{/n}", requires=(LIST_KEPT,)),
+    p("{n}She kept the list on the Commander's shelf all her life. Nobody on it ever changed.{/n}", requires=(LIST_KEPT,)),
     p("{n}On a shelf in the Commander's rooms hung a little bone snake on a cord. Visitors were told it held a very old and very beautiful spirit. The Commander never said otherwise.{/n}", requires=(AMULET_KEPT,)),
     p("{n}A witness who had once seen a dead woman in church lived to a great age in Drezen, telling children about the singing ghost with the dog made of mist.{/n}", requires=(WITNESS_LIED, KILLED)),
     p("{n}There was a railing on the river steps now. People said somebody had fallen there, once, in the dark.{/n}", requires=(WITNESS_HERS,)),
@@ -628,7 +628,7 @@ KEPT_PARAS = (
 )
 SCENES.append(scene(P + "epilogue.kept", "", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}Camellia Gwerm stayed at the Commander's side through the Threshold and after it, a lady in black whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}
-{n}She took no new friends, or said she took none. Once a year, on a date she would not explain, she brought the Commander breakfast on the point of a knife. The Commander ate from the blade while she watched.{/n}
+{n}She took no new friends, or said she took none. Once a year, on a date she would never explain, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}
 {n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED, KILLED, DEAD, KICKED),

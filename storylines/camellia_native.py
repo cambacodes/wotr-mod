@@ -57,7 +57,10 @@ def slide(id, text):
                         requires=("trickster.ever", ct.RET, ct.COMMITTED), last=99, Relationship=REL))
 
 
-slide(NATIVE_TE_STAYED, "Camellia's delight in semidivine power soon passed. Killing without danger bored her. She stayed beside the Commander, whose tricks she still could not predict, and watched for something that might surprise her.")
+slide(NATIVE_TE_STAYED, "Camellia's euphoria at gaining semidivine power quickly passed. Murder brought her nothing but "
+      "boredom now that she was never in any danger. She did not lose herself among the planes, as everyone had expected: "
+      "there was still one person in the multiverse she could not be sure of, and she stayed at the Commander's side to "
+      "keep watching.")
 slide(NATIVE_TE_OWN_PATH, "Camellia refused to share in the Commander's semidivine power. She had her own path to follow. "
       "Where it led, she never told anyone, except that every evening it passed the Commander's door, and stopped there.")
 slide(NATIVE_STAYED, "After the end of the war, Camellia remained with the Commander. Everyone who knew her waited for the "

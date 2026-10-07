@@ -1738,7 +1738,7 @@
     "camellia.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "067877aa39c7fb2a5aecdff52a373d9d68bb09a50941857ad83711812edecaf8"
+      "text_sha": "dffd60c8a8769a7819640e4744ea6beaa202ccd8d46125d08ad582a56c854c6a"
     },
     "camellia.trickster.epilogue.commit_on_record": {
       "owner": "claude",
@@ -1763,7 +1763,7 @@
     "camellia.trickster.epilogue.native_stayed": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "f9f91e6fec004781667fcf72e61eb0c749812a6141e9a25dcc399fe134c846d2"
+      "text_sha": "bdd2723d54057e485a9d2af052a775ff461a250110a18c00b4868f9fd470cce0"
     },
     "camellia.trickster.epilogue.native_threshold_waited": {
       "owner": "claude",
@@ -1773,7 +1773,7 @@
     "camellia.trickster.epilogue.native_stayed_plain": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "fcee2d82efd46f3bcecee6f43695e2158d289e2df47fad5da8ab215410667f98"
+      "text_sha": "8345d31ed282e24b65802febdae5793dd9caccd7a174f6418619a18ac73f57cd"
     },
     "arueshalae.trickster.dead.starving": {
       "owner": "claude",
