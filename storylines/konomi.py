@@ -186,14 +186,14 @@ s("disagreement", "The advice she will still give", 3, '"Your latest memorandum 
       c('"I agree about the reserve. I dislike being treated as if I have not considered it."', "respect", flags=("konomi.reserve_priority",)),
       c('"I am worried that sharing your supper table will make one of us go easy on the other\'s memoranda."', "frank", flags=("konomi.frank_disagreement",))),
     n("mercy", "Konomi", '''"I understand perfectly. Understanding you is not the same as being convinced."
-{n}The sharpness of the answer surprises her. She sets the memorandum down.{/n}
-"I do not want children elsewhere to go hungry. I also know whose names will be on the next petition if our reserve fails."
-{n}After a moment, she adds:{/n}
-"I should have begun there, instead of writing as though you needed a lesson in arithmetic."''', c('"Get the figures. Then argue with me using them."', "end")),
-    n("respect", "Konomi", '''{n}She reads her own opening paragraph again. Her mouth tightens.{/n}
-"That sentence was written for somebody in Nerosyan. I put your name above it because I was already irritated."
-{n}She draws a line through it.{/n}
-"The recommendation stands. The insult can go. I would appreciate the same distinction when you answer."''', c('"You will have it."', "end")),
+{n}She sets the memorandum on top of the petition, covering its appeal.{/n}
+"When Drezen's reserve fails, those petitioners will not answer to the capital. You will. My recommendation will reach Nerosyan with your decision beside it."
+{n}She taps the names beneath the appeal.{/n}
+"I shall get their figures. If they can spare more than they admit, I intend to find out before you give them ours."''', c('"Get the figures. Then argue with me using them."', "end")),
+    n("respect", "Konomi", '''{n}She reads her opening paragraph again, then turns the memorandum toward you.{/n}
+"That sentence was written for Nerosyan as well as for you. They will ask whether I warned you. I intend to leave them no doubt."
+{n}Her finger rests on the reserve figure.{/n}
+"You agree with the recommendation. Excellent. Give me an answer I can send to the capital, and we can spend supper on something more interesting."''', c('"You will have it."', "end")),
     n("frank", "Konomi", '''"You believe I am in danger of becoming too agreeable?"
 {n}She nearly smiles, then sees that you mean the question.{/n}
 "I am far more likely to overcharge you to prove that I am not. Ask anyone I have ever been fond of."

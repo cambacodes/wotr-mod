@@ -84,7 +84,11 @@ class KonomiRound3Tests(unittest.TestCase):
         self.assertGreaterEqual(len(copies), 18)
         for para in copies:
             self.assertIn("signed correction", para["Text"])
-            self.assertIn("copied the first line without the second", para["Text"])
+            self.assertIn("dovecote", para["Text"])
+            self.assertIn("two dates", para["Text"])
+            self.assertIn("witnessed arrival", para["Text"])
+            self.assertIn("konomi.trickster.returned", para["Requires"])
+            self.assertIn("konomi.trickster.cost.accredited", para["Requires"])
 
     def test_new_lastcall_obligation_requires_an_actual_acceptance(self):
         page = self.by["konomi.lastcall.page"]
