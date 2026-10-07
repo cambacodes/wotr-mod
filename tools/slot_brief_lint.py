@@ -2,7 +2,10 @@
 
 The boundary is the first complete beat of each selectable next node, converted
 to Gemory's tags without rewriting its words. Terminal slots have no next beat;
-their boundaries require editorial review. Missing/planned slots are failures.
+their boundaries require editorial review. Short runtime IDs and inline source
+mappings use host_scene/host_node and optional paragraph_index/after_text.
+last_lines maps branch targets to exact boundaries when they differ. Missing
+slots are failures unless the slot index records an evidenced editorial drop.
 --known-rebuilds reports the coordinator's ten rebuilding routes separately;
 it never suppresses their findings or exempts another route.
 """
@@ -30,6 +33,9 @@ ANATOMY = re.compile(r"\b(?:anatomy|anatomical|genital\w*|penis|vagina|cock|clit
 
 def route_name(path):
     name = ALIASES.get(path.parent.name, path.parent.name)
+    if "harem" in path.parts:
+        pair = path.stem.removeprefix("household.pair.").split(".")[0].split("_")
+        return next((r for r in sorted(REBUILDING) if r in pair), name)
     # A paired route containing a rebuilding character is owned by that rebuild.
     return next((r for r in sorted(REBUILDING) if name.startswith(r + "_")), name)
 
@@ -108,7 +114,7 @@ def following_paragraphs(scene, node, index):
             break
 
 
-def lint(paths, story, known_rebuilds=False):
+def lint(paths, story, known_rebuilds=False, slot_index=None):
     findings, counts, identities = [], Counter(), {}
     scenes = story.get("Scenes", [])
     nodes = {}
@@ -147,9 +153,21 @@ def lint(paths, story, known_rebuilds=False):
                                                or not isinstance(n, str) or not n for t, n in speakers.items()):
             add(path, "schema", "speakers must map single uppercase tags to names")
             speakers = {}
+        boundaries = brief.get("last_lines", {})
+        if not isinstance(boundaries, dict) or any(not isinstance(k, str) or not isinstance(v, str) or not v
+                                                   for k, v in boundaries.items()):
+            add(path, "schema", "last_lines must map target addresses to nonempty text")
+            boundaries = {}
         slot = brief.get("slot_id", path.stem)
         if not isinstance(slot, str) or not slot:
             add(path, "schema", "slot_id must be nonempty text")
+            continue
+        disposition = (slot_index or {}).get(slot, {})
+        if disposition.get("status") == "dropped":
+            if not disposition.get("reason") or not disposition.get("evidence"):
+                add(path, "index", "Dropped slot needs a reason and evidence")
+            elif any(host_active(s, n["Id"]) for s, n, _ in nodes.get(slot, [])):
+                add(path, "index", "Dropped slot still has an active runtime host")
             continue
         signature = json.dumps(brief, sort_keys=True, ensure_ascii=False)
         if slot in identities and signature != identities[slot][0]:
@@ -158,6 +176,13 @@ def lint(paths, story, known_rebuilds=False):
         identities.setdefault(slot, (signature, path))
         matches = nodes.get(slot, [])
         declared = brief.get("host_scene") or (brief.get("insertion", {}).get("scene") if isinstance(brief.get("insertion"), dict) else None)
+        if brief.get("host_node") and not declared:
+            add(path, "schema", "host_node requires host_scene")
+        if ("paragraph_index" in brief or "after_text" in brief) and not brief.get("host_node"):
+            add(path, "schema", "Inline/paragraph addresses require host_node")
+        if brief.get("host_node") and declared:
+            matches = [(s, n, brief.get("paragraph_index")) for s in scenes if s["Id"] == declared
+                       for n in s.get("Nodes", []) if n["Id"] == brief["host_node"]]
         if declared:
             matches = [(s, n, i) for s, n, i in matches if s["Id"] == declared]
         elif len(matches) > 1:
@@ -171,15 +196,36 @@ def lint(paths, story, known_rebuilds=False):
             add(path, "host", "Ambiguous slot host: " + slot)
         else:
             scene, node, paragraph_index = matches[0]
+            if paragraph_index is not None and (type(paragraph_index) is not int or
+                    not 0 <= paragraph_index < len(node.get("Paragraphs", []))):
+                add(path, "host", "paragraph_index is outside the declared host")
+                continue
             if not host_active(scene, node["Id"]):
                 add(path, "retired", "Host/slot is retired, disconnected or gated off: " + scene["Id"])
+            if paragraph_index is not None and not gate_possible(node["Paragraphs"][paragraph_index]):
+                add(path, "retired", "Slot paragraph is gated off")
             by_id = {n["Id"]: n for n in scene["Nodes"]}
-            if paragraph_index is None:
+            if brief.get("after_text"):
+                anchor = brief["after_text"]
+                text = node.get("Text", "") if paragraph_index is None else node.get("Paragraphs", [])[paragraph_index].get("Text", "")
+                if not isinstance(anchor, str) or text.count(anchor) != 1:
+                    add(path, "host", "Inline anchor must occur exactly once in the declared host")
+                    targets = set()
+                else:
+                    tail = text.split(anchor, 1)[1].strip()
+                    if not tail:
+                        add(path, "host", "Inline anchor has no following beat")
+                        targets = set()
+                    else:
+                        prefix = text[:text.index(anchor) + len(anchor)]
+                        if not tail.startswith(("{n}", '"')) and prefix.count("{n}") > prefix.count("{/n}"):
+                            tail = "{n}" + tail
+                        by_id["inline"] = dict(Text=tail, Speaker=node.get("Speaker"))
+                        targets = {"inline"}
+            elif paragraph_index is None:
                 targets = {c.get("Next") for c in node.get("Choices", []) if gate_possible(c) and c.get("Next")}
             else:
                 paragraph = node["Paragraphs"][paragraph_index]
-                if not gate_possible(paragraph):
-                    add(path, "retired", "Slot paragraph is gated off")
                 targets = set()
                 # Each conditional paragraph before the first unconditional
                 # paragraph can be the next displayed beat on some history.
@@ -196,10 +242,15 @@ def lint(paths, story, known_rebuilds=False):
                 following = by_id.get(target)
                 if not following:
                     add(path, "next", "Missing next node " + target)
-                elif brief.get("last_line") not in (following.get("Text"), first_beat(following, speakers)):
+                elif (boundaries.get(target, brief.get("last_line"))
+                      not in (following.get("Text"), first_beat(following, speakers))):
                     mismatches.append(target + ": " + repr(first_beat(following, speakers)))
             if mismatches:
                 add(path, "last_line", "Boundary differs in " + scene["Id"] + "; expected next beats: " + " | ".join(mismatches))
+            if boundaries and set(boundaries) != targets:
+                add(path, "last_line", "last_lines must cover exactly the current next-beat addresses")
+            if boundaries and brief.get("last_line") not in boundaries.values():
+                add(path, "last_line", "last_line must match one of the declared branch boundaries")
             if (scene.get("Owner", "").endswith("Epilogue") or ".epilogue." in scene["Id"]) and brief.get("narration") != "third-past":
                 add(path, "narration", "Epilogue requires narration=third-past")
         if ".epilogue." in slot and brief.get("narration") != "third-past" and not matches:
@@ -254,13 +305,15 @@ def main(argv=None):
     parser.add_argument("--story", type=Path, default=ROOT / "development/Story.json")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--known-rebuilds", action="store_true")
+    parser.add_argument("--index", type=Path, default=ROOT / "tools/route_packs/plans/slot-brief-index.json")
     args = parser.parse_args(argv)
     try:
         story = json.loads(args.story.read_text(encoding="utf-8-sig"))
         paths = list(args.briefs.rglob("*.json"))
         if not paths or not isinstance(story, dict) or not isinstance(story.get("Scenes"), list):
             raise ValueError("No briefs or invalid story Scenes")
-        findings, counts = lint(paths, story, args.known_rebuilds)
+        slot_index = json.loads(args.index.read_text(encoding="utf-8-sig")) if args.index.exists() else {}
+        findings, counts = lint(paths, story, args.known_rebuilds, slot_index)
     except (OSError, ValueError, TypeError, KeyError) as exc:
         print("Slot brief lint: input failure: " + str(exc))
         return 1

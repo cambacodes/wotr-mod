@@ -10,7 +10,7 @@
     "No hurt demanded because of trauma, no captive-role reenactment, no body canon invented, no mechanical flag awarded by the act.",
     "End with the exact nonexplicit last line. The next existing paragraph starts afterwards with the lamp burned low, Yaniel against the plinth in the Commander's shirt. Do not write the morning, Radiance argument or Seelah witness inside the insert."
   ],
-  "last_line": "N: Above you, the painted martyr keeps her eyes on heaven.",
+  "last_line": "N: Afterwards the lamp has burned down to a blue bead. She sits against the plinth, one knee drawn up, your shirt around her shoulders. Her thumb finds the sheared link of the iron you kept.",
   "speakers": {
     "Y": "Yaniel",
     "N": "Narration"
@@ -30,5 +30,9 @@
     "slot_id": "yaniel.trickster.visit.niche.explicit.1",
     "speaker_tags": "Y for Yaniel; N for narration. Commander speech stays in player answers, not an NPC paragraph.",
     "implementation_status": "Implemented: appended slot; existing threshold2 continuation enters it. Its default rejoins morning or the appended worn-cuff morning, according to actual cuff ownership."
+  },
+  "last_lines": {
+    "morning": "N: Afterwards the lamp has burned down to a blue bead. She sits against the plinth, one knee drawn up, your shirt around her shoulders. Her thumb finds the sheared link of the iron you kept.",
+    "morning_worn": "N: Afterwards she sits against the plinth in your shirt. She turns your wrist toward the dying lamp. The iron is still fastened there; she runs her thumb along the sheared link, then kisses the skin above it."
   }
 }

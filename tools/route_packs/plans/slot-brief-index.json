@@ -1,0 +1,94 @@
+{
+  "three_open_road.explicit.1": {
+    "status": "active",
+    "scene": "three_open_road",
+    "node": "night"
+  },
+  "three_rooms_unlocked.explicit.1": {
+    "status": "active",
+    "scene": "three_rooms_unlocked",
+    "node": "night"
+  },
+  "gesmerha.trickster.epilogue.commit.explicit.1": {
+    "status": "dropped",
+    "reason": "The seventh brief remains dormant: the current ending delivers a carving, not a private encounter. Its prerequisite repair belongs to shared consumers.",
+    "evidence": "tools/route_packs/plans/gesmerha-setpieces.md: round-three slot inventory"
+  },
+  "kaylessa.clearing.where_i_was_meant_to_die.explicit.1": {
+    "status": "active",
+    "scene": "kaylessa.clearing.where_i_was_meant_to_die",
+    "node": "explicit.1"
+  },
+  "kiana.partner_discovery.explicit.1": {
+    "status": "dropped",
+    "reason": "Current discovery starts after Kiana kissed Elan and he found the play. No sexual prelude is present; adding one would require a source rewrite beyond this brief-only task.",
+    "evidence": "storylines/kiana_round3.py: discovery knowledge repair; /work/Writer/drafts/codex-impl/r3-kiana-20261007-043511/report.md"
+  },
+  "mielarah.deck.quarterdeck.arcade.explicit.1": {
+    "status": "active",
+    "scene": "mielarah.deck.quarterdeck.arcade",
+    "node": "explicit.1"
+  },
+  "mielarah.deck.quarterdeck.explicit.1": {
+    "status": "active",
+    "scene": "mielarah.deck.quarterdeck",
+    "node": "explicit.1"
+  },
+  "mielarah.deck.wheel.arcade.explicit.1": {
+    "status": "active",
+    "scene": "mielarah.deck.wheel.arcade",
+    "node": "explicit.1"
+  },
+  "mielarah.deck.wheel.explicit.1": {
+    "status": "active",
+    "scene": "mielarah.deck.wheel",
+    "node": "explicit.1"
+  },
+  "nenio.trickster.epilogue.native_commit.explicit.1": {
+    "status": "dropped",
+    "reason": "The native ending now summarizes the completed private experiment; the physical late encounter is hosted only by nenio.trickster.epilogue.commit. Do not stage a second return.",
+    "evidence": "storylines/nenio_trickster.py: round-three late encounter; /work/Writer/drafts/codex-impl/r3-nenio-20261007-053645/report.md"
+  },
+  "nidalynn.trickster.ridge.snowfield.explicit.1": {
+    "status": "active",
+    "scene": "nidalynn.trickster.ridge.snowfield",
+    "node": "explicit.1"
+  },
+  "shamira.trickster.epilogue.late.explicit.1": {
+    "status": "active",
+    "scene": "shamira.trickster.epilogue.late",
+    "node": "explicit.1"
+  },
+  "shamira.trickster.harem.explicit.1": {
+    "status": "active",
+    "scene": "shamira.trickster.harem",
+    "node": "explicit.1"
+  },
+  "shamira.trickster.harem_awning.explicit.1": {
+    "status": "active",
+    "scene": "shamira.trickster.harem_awning",
+    "node": "explicit.1"
+  },
+  "targona.the_open_threshold.explicit.1": {
+    "status": "active",
+    "scene": "targona.the_open_threshold",
+    "node": "buckles"
+  },
+  "targona.trickster.epilogue.commit.explicit.1": {
+    "status": "active",
+    "scene": "targona.trickster.epilogue.commit",
+    "node": "end"
+  },
+  "vellexia.trickster.epilogue.commit.explicit.1": {
+    "status": "active",
+    "scene": "vellexia.trickster.epilogue.commit",
+    "node": "start",
+    "paragraph_index": 2
+  },
+  "wenduag.trickster.epilogue.pack.explicit.1": {
+    "status": "active",
+    "scene": "wenduag.trickster.epilogue.pack",
+    "node": "page",
+    "paragraph_index": 6
+  }
+}
