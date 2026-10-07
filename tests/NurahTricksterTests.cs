@@ -322,69 +322,81 @@ internal static class NurahTricksterTests
         // NM1 (Sol COX): the worst early runaway (primed in Chapter 3, Camellia killed and back veiled at Fye's, her own
         // placement failed) takes at most two Chapter 5 deliveries: the card on the pamphlet rides in the proofs packet.
         var veiledDraft = S("nurah.trickster.react.camellia_veiled_draft");
-        var worst = Program.Copy(ran5);
-        foreach (var f in new[] { "camellia.killed", "camellia.trickster.native_death_observed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried" }) { worst.Flags.Add(f); worst.Times[f] = worst.Hour - (f == "camellia.killed" ? 101 : 100); }
-        Rules.Complete(story, worst);
-        var worstCh5 = new HashSet<string>();
-        void Deliveries(Snapshot w)
-        {
-            foreach (var s in story.Scenes.Where(s => s.Id.StartsWith("nurah.", StringComparison.Ordinal) && Rules.IsRemote(s) && Rules.Available(story, s, w)))
-                worstCh5.Add(s.Id);
-        }
-        Deliveries(worst);
-        var packetPages = new HashSet<string>();
-        Program.Walk(proofs, worst, (page, _) => packetPages.Add(page));
-        var worstSeen = Program.Walk(proofs, worst).First(r => r.Has("nurah.trickster.veiled_draft_folded"));
-        Deliveries(Observed(story, Later(story, worstSeen, 72), "nurah.presence", anchorOnly));
-        var worstNight = Observed(story, Later(story, worstSeen, 168), "nurah.presence", anchorOnly);
-        Deliveries(worstNight);
-        Deliveries(Later(story, Program.Walk(ranNight, worstNight).First(r => r.Has("nurah.complete")), 72));
-        check(packetPages.Contains("card_draft") && !veiledDraft.Chapters.Contains(5) && !Rules.Available(story, veiledDraft, worst)
-              && worstCh5.SetEquals(new[] { proofs.Id, ranNight.Id }),
-            "Trk_Nurah_WorstRunawayBudget: the early runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", worstCh5));
-        // A card already delivered in Chapter 3 is not repeated in the packet.
-        var cardSeen = Program.Copy(worst); cardSeen.Flags.Add(veiledDraft.Id); Rules.Complete(story, cardSeen);
-        var cardSeenPages = new HashSet<string>();
-        Program.Walk(proofs, cardSeen, (page, _) => cardSeenPages.Add(page));
-        check(!cardSeenPages.Contains("card_draft") && Program.Walk(proofs, cardSeen).Any(r => r.Has("nurah.trickster.proofs_seen")),
-            "Trk_Nurah_WorstRunawayBudget: the Chapter 3 card is repeated in the packet, or the packet strands.");
-        // Polish (2026-10-02, COX): the same worst runaway, but pardoned in her cell before the native release. Camellia's
-        // pardon card is no longer a standalone Chapter 5 letter: it rides in the proofs packet, once, and both cards fold.
         var veiledPardon = S("nurah.trickster.react.camellia_veiled_pardon");
-        var pardonedWorst = Program.Copy(worst);
-        foreach (var f in new[] { "nurah.trickster.cost.ledger_lie", "nurah.trickster.released" }) { pardonedWorst.Flags.Add(f); pardonedWorst.Times[f] = pardonedWorst.Hour - 100; }
-        Rules.Complete(story, pardonedWorst);
-        var pardonedCh5 = new HashSet<string>();
-        void PardonedDeliveries(Snapshot w)
+        foreach (var disclosed in new[] { false, true })
         {
-            foreach (var s in story.Scenes.Where(s => s.Id.StartsWith("nurah.", StringComparison.Ordinal) && Rules.IsRemote(s) && Rules.Available(story, s, w)))
-                pardonedCh5.Add(s.Id);
+            var draftPage = disclosed ? "card_draft" : "card_draft_discreet";
+            var otherDraftPage = disclosed ? "card_draft_discreet" : "card_draft";
+            var worst = Program.Copy(ran5);
+            foreach (var f in new[] { "camellia.killed", "camellia.trickster.native_death_observed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried" }) { worst.Flags.Add(f); worst.Times[f] = worst.Hour - (f == "camellia.killed" ? 101 : 100); }
+            if (disclosed) { worst.Flags.Add("nurah.camellia_disclosed"); worst.Times["nurah.camellia_disclosed"] = worst.Hour - 100; }
+            Rules.Complete(story, worst);
+            var worstCh5 = new HashSet<string>();
+            void Deliveries(Snapshot w)
+            {
+                foreach (var s in story.Scenes.Where(s => s.Id.StartsWith("nurah.", StringComparison.Ordinal) && Rules.IsRemote(s) && Rules.Available(story, s, w)))
+                    worstCh5.Add(s.Id);
+            }
+            Deliveries(worst);
+            void CardVisit(string page, Snapshot w)
+            {
+                if (page == "card_pardon") check(!w.Has("nurah.trickster.veiled_pardon_folded"), "Pardon card repeats in one history.");
+                if (page == "card_draft" || page == "card_draft_discreet")
+                    check(!w.Has("nurah.trickster.veiled_draft_folded"), "Draft card repeats in one history.");
+            }
+            var packetPages = new HashSet<string>();
+            Program.Walk(proofs, worst, (page, w) => { packetPages.Add(page); CardVisit(page, w); });
+            var worstSeen = Program.Walk(proofs, worst).First(r => r.Has("nurah.trickster.veiled_draft_folded"));
+            Deliveries(Observed(story, Later(story, worstSeen, 72), "nurah.presence", anchorOnly));
+            var worstNight = Observed(story, Later(story, worstSeen, 168), "nurah.presence", anchorOnly);
+            Deliveries(worstNight);
+            Deliveries(Later(story, Program.Walk(ranNight, worstNight).First(r => r.Has("nurah.complete")), 72));
+            check(packetPages.Contains(draftPage) && !packetPages.Contains(otherDraftPage) && !veiledDraft.Chapters.Contains(5) && !Rules.Available(story, veiledDraft, worst)
+                  && worstCh5.SetEquals(new[] { proofs.Id, ranNight.Id }),
+                "Trk_Nurah_WorstRunawayBudget: the early runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", worstCh5));
+            // A card already delivered in Chapter 3 is not repeated in the packet.
+            var cardSeen = Program.Copy(worst); cardSeen.Flags.Add(veiledDraft.Id); Rules.Complete(story, cardSeen);
+            var cardSeenPages = new HashSet<string>();
+            Program.Walk(proofs, cardSeen, (page, _) => cardSeenPages.Add(page));
+            check(!cardSeenPages.Contains("card_draft") && !cardSeenPages.Contains("card_draft_discreet") && Program.Walk(proofs, cardSeen).Any(r => r.Has("nurah.trickster.proofs_seen")),
+                "Trk_Nurah_WorstRunawayBudget: the Chapter 3 card is repeated in the packet, or the packet strands.");
+            // Polish (2026-10-02, COX): the same worst runaway, but pardoned in her cell before the native release. Camellia's
+            // pardon card is no longer a standalone Chapter 5 letter: it rides in the proofs packet, once, and both cards fold.
+            var pardonedWorst = Program.Copy(worst);
+            foreach (var f in new[] { "nurah.trickster.cost.ledger_lie", "nurah.trickster.released" }) { pardonedWorst.Flags.Add(f); pardonedWorst.Times[f] = pardonedWorst.Hour - 100; }
+            Rules.Complete(story, pardonedWorst);
+            var pardonedCh5 = new HashSet<string>();
+            void PardonedDeliveries(Snapshot w)
+            {
+                foreach (var s in story.Scenes.Where(s => s.Id.StartsWith("nurah.", StringComparison.Ordinal) && Rules.IsRemote(s) && Rules.Available(story, s, w)))
+                    pardonedCh5.Add(s.Id);
+            }
+            PardonedDeliveries(pardonedWorst);
+            var pardonedPages = new HashSet<string>();
+            Program.Walk(proofs, pardonedWorst, (page, w) => { pardonedPages.Add(page); CardVisit(page, w); });
+            var pardonedSeen = Program.Walk(proofs, pardonedWorst).Where(r => r.Has("nurah.trickster.veiled_pardon_folded")).ToList();
+            check(pardonedWorst.Has("nurah.trickster.veiled_pardon_due") && !Rules.Available(story, veiledPardon, pardonedWorst)
+                  && pardonedPages.Contains("card_pardon") && pardonedPages.Contains(draftPage) && !pardonedPages.Contains(otherDraftPage) && pardonedSeen.Count > 0
+                  && pardonedSeen.All(r => r.Has("nurah.trickster.proofs_seen") && r.Has("nurah.trickster.veiled_draft_folded")),
+                "Trk_Nurah_PardonedRunawayCard: the pardon card is not folded into the proofs packet, or the packet strands: due="
+                + pardonedWorst.Has("nurah.trickster.veiled_pardon_due") + " standalone=" + Rules.Available(story, veiledPardon, pardonedWorst)
+                + " pages=" + string.Join(",", pardonedPages) + " folded=" + pardonedSeen.Count);
+            var pardonedNight = Observed(story, Later(story, pardonedSeen[0], 168), "nurah.presence", anchorOnly);
+            PardonedDeliveries(Observed(story, Later(story, pardonedSeen[0], 72), "nurah.presence", anchorOnly));
+            PardonedDeliveries(pardonedNight);
+            check(!Rules.Available(story, veiledPardon, pardonedNight) && Rules.Available(story, ranNight, pardonedNight) && pardonedSeen.All(r => Commits(ranNight, Observed(story, Later(story, r, 168), "nurah.presence", anchorOnly))),
+                "Trk_Nurah_PardonedRunawayCard: the night terms lose their commitment after the folded card.");
+            PardonedDeliveries(Later(story, Program.Walk(ranNight, pardonedNight).First(r => r.Has("nurah.complete")), 72));
+            check(pardonedCh5.SetEquals(new[] { proofs.Id, ranNight.Id }),
+                "Trk_Nurah_PardonedRunawayBudget: the pardoned runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", pardonedCh5));
+            // Read in Chapter 3 already: no second copy, and the original continuation is offered again.
+            var pardonRead = Program.Copy(pardonedWorst); pardonRead.Flags.Add(veiledPardon.Id); Rules.Complete(story, pardonRead);
+            var pardonReadPages = new HashSet<string>();
+            Program.Walk(proofs, pardonRead, (page, _) => pardonReadPages.Add(page));
+            check(!pardonReadPages.Contains("card_pardon") && pardonReadPages.Contains("courier")
+                  && Program.Walk(proofs, pardonRead).Any(r => r.Has("nurah.trickster.proofs_seen")),
+                "Trk_Nurah_PardonedRunawayCard: a card read in Chapter 3 is repeated, or the packet strands.");
         }
-        PardonedDeliveries(pardonedWorst);
-        var pardonedPages = new HashSet<string>();
-        Program.Walk(proofs, pardonedWorst, (page, _) => pardonedPages.Add(page));
-        var pardonedSeen = Program.Walk(proofs, pardonedWorst).Where(r => r.Has("nurah.trickster.veiled_pardon_folded")).ToList();
-        check(pardonedWorst.Has("nurah.trickster.veiled_pardon_due") && !Rules.Available(story, veiledPardon, pardonedWorst)
-              && pardonedPages.Contains("card_pardon") && pardonedPages.Contains("card_draft") && pardonedSeen.Count > 0
-              && pardonedSeen.All(r => r.Has("nurah.trickster.proofs_seen")),
-            "Trk_Nurah_PardonedRunawayCard: the pardon card is not folded into the proofs packet, or the packet strands: due="
-            + pardonedWorst.Has("nurah.trickster.veiled_pardon_due") + " standalone=" + Rules.Available(story, veiledPardon, pardonedWorst)
-            + " pages=" + string.Join(",", pardonedPages) + " folded=" + pardonedSeen.Count);
-        var pardonedNight = Observed(story, Later(story, pardonedSeen[0], 168), "nurah.presence", anchorOnly);
-        PardonedDeliveries(Observed(story, Later(story, pardonedSeen[0], 72), "nurah.presence", anchorOnly));
-        PardonedDeliveries(pardonedNight);
-        check(!Rules.Available(story, veiledPardon, pardonedNight) && Rules.Available(story, ranNight, pardonedNight) && Commits(ranNight, pardonedNight),
-            "Trk_Nurah_PardonedRunawayCard: the night terms lose their commitment after the folded card.");
-        PardonedDeliveries(Later(story, Program.Walk(ranNight, pardonedNight).First(r => r.Has("nurah.complete")), 72));
-        check(pardonedCh5.SetEquals(new[] { proofs.Id, ranNight.Id }),
-            "Trk_Nurah_PardonedRunawayBudget: the pardoned runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", pardonedCh5));
-        // Read in Chapter 3 already: no second copy, and the original continuation is offered again.
-        var pardonRead = Program.Copy(pardonedWorst); pardonRead.Flags.Add(veiledPardon.Id); Rules.Complete(story, pardonRead);
-        var pardonReadPages = new HashSet<string>();
-        Program.Walk(proofs, pardonRead, (page, _) => pardonReadPages.Add(page));
-        check(!pardonReadPages.Contains("card_pardon") && pardonReadPages.Contains("courier")
-              && Program.Walk(proofs, pardonRead).Any(r => r.Has("nurah.trickster.proofs_seen")),
-            "Trk_Nurah_PardonedRunawayCard: a card read in Chapter 3 is repeated, or the packet strands.");
         // A prisoner who stays keeps the standalone card in either chapter.
         var pardonedStays = World(story, 5, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.cost.ledger_lie", "nurah.trickster.released",
             "camellia.killed", "camellia.trickster.native_death_observed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried");

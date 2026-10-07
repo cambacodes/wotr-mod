@@ -1476,17 +1476,17 @@ _night['Nodes'].append(n('near.build_up', 'Nurah', _before,
     c('Continue', 'nurah.the_letter_she_wrote.explicit.1'), portrait='Nurah'))
 # Brief: established lovers choose a night while Vhal's plot remains unresolved.
 _night['Nodes'].append(n('nurah.the_letter_she_wrote.explicit.1', 'Narrator',
-    '{n}Nurah pulls you down beside her. The old letter stays on the table; her hand closes '
-    'over yours when you try to reach past her for the lamp.{/n}', c('Continue', 'near'), portrait='Nurah'))
+    '{n}Nurah braces a hand beside your head on the mattress and leans down to kiss you. '
+    'Her other hand slips to your belt; the cold lamp and the letter stay out of reach on the table.{/n}', c('Continue', 'near'), portrait='Nurah'))
 
 _margin = next(s for s in SCENES if s['Id'] == 'nurah.a_margin_for_you')
 for _nid, _number, _cut in (
     ('teasing', 1, '{n}She settles against you in the chair, bare shoulders warm beneath your '
      'hands, and kisses away the clever answer you were about to give.{/n}'),
-    ('kiss', 2, '{n}Nurah drops the loosened laces over the bedpost and pulls you close again. '
-     'Nobody outside hears the remark she makes against your mouth.{/n}'),
-    ('stay', 3, '{n}She lets the dress fall, draws you back onto the bed, and stays close '
-     'when the passage falls quiet.{/n}'),
+    ('kiss', 2, '{n}Nurah presses closer astride you, her open bodice brushing your chest. '
+     'Her hand finds your belt while her mouth keeps yours occupied.{/n}'),
+    ('stay', 3, '{n}Nurah hooks a knee over your hip on the bed and catches your mouth again. '
+     'When the passage falls quiet, she draws your hand down her bare side.{/n}'),
 ):
     _branch = next(n for n in _margin['Nodes'] if n['Id'] == _nid)
     _slot = 'nurah.a_margin_for_you.explicit.' + str(_number)
