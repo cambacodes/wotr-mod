@@ -5484,7 +5484,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Native answer-list host: `2f5b7e0b76d3c5a42a431e1e33a8db09`.
    - `devarra.tower.the_hunt/start/0` — Continue
    - `devarra.tower.the_hunt/flight/0` — Continue
-   - `devarra.tower.the_hunt/wait/0` — Continue
+   - `devarra.tower.the_hunt/wait/0` — [Wait for her shadow to reach the demons.]
    - `devarra.tower.the_hunt/strike/0` — Continue
    - `devarra.tower.the_hunt/offer/0` — [Take the first bite, and hold her eye while you do.]
    - `devarra.tower.the_hunt/bite/0` — Continue
@@ -8231,7 +8231,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Native answer-list host: `e649f211c6b002a49a0c633061877927`.
    - `chadali.fortunes.worthless/open/0` — Continue
    - `chadali.fortunes.worthless/start/0` — "You were frightened. I know."
-   - `chadali.fortunes.worthless/frightened/0` — "Everyone has a worst moment. That was yours."; records `chadali.fortunes.forgave_worthless`; Need all: `chadali.fortunes.burnt_edges`
+   - `chadali.fortunes.worthless/frightened/0` — "I would rather hear you shout than watch him volunteer you."; records `chadali.fortunes.forgave_worthless`; Need all: `chadali.fortunes.burnt_edges`
    - `chadali.fortunes.worthless/forgive/0` — Continue
    - `chadali.fortunes.worthless/close/0` — [Go.]
 
@@ -14578,9 +14578,10 @@ Commitment: `chadali.committed`; closure: `chadali.closed`.
 Unavailable states: `chadali.lost_at_council`, `chadali.epoch_unavailable`; failure states: none.
 - `chadali.lost_at_council` is overridden only by earned `chadali.trickster.returned`.
 - Recovery for **chadali.lost_at_council**: `chadali.trickster.fought.lucky` (Lucky you); rest delivery / Satchel: letter (owner contact / rest); chapters 5–5; 24h delay. Need all: `trickster`, `chadali.lost_at_council.latched`; Blocked by: `chadali.trickster.returned`, `trickster.failed`. Return witness: `chadali.trickster.returned`.
-  - `chadali.trickster.fought.lucky/start/0` — Continue; Need all: `chadali.trickster.primed`; Blocked by: `chadali.sessions.coin_taken_home`
+  - `chadali.trickster.fought.lucky/start/0` — Continue; Need all: `chadali.trickster.primed`; Blocked by: `chadali.sessions.coin_taken_home`, `chadali.wagers.coin_lost`
   - `chadali.trickster.fought.lucky/start/1` — Continue; Blocked by: `chadali.trickster.primed`
-  - `chadali.trickster.fought.lucky/start/2` — Continue; Need all: `chadali.trickster.primed`, `chadali.sessions.coin_taken_home`
+  - `chadali.trickster.fought.lucky/start/2` — Continue; Need all: `chadali.trickster.primed`, `chadali.sessions.coin_taken_home`; Blocked by: `chadali.wagers.coin_lost`
+  - `chadali.trickster.fought.lucky/start/3` — Continue; Need all: `chadali.trickster.primed`, `chadali.wagers.coin_lost`
   - `chadali.trickster.fought.lucky/coin/0` — Read the letter.; Blocked by: `chadali.wagers.coin_lost`
   - `chadali.trickster.fought.lucky/coin/1` — Read the letter.; Need all: `chadali.wagers.coin_lost`
   - `chadali.trickster.fought.lucky/hurt/0` — [Bet on her luck] "Lucky you. I bet the whole fight you'd walk away. I never lose a bet on you."; Mythic: PlayerIsTrickster
