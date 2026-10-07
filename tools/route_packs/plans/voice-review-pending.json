@@ -1,0 +1,42 @@
+[
+  {
+    "scene": "soana.partner.proposal_reply",
+    "route": "soana",
+    "finding": "soana:D09"
+  },
+  {
+    "scene": "soana.partner.proposal_reply.returned",
+    "route": "soana",
+    "finding": "soana:D10"
+  },
+  {
+    "scene": "soana.after_the_last_visitor",
+    "route": "soana",
+    "finding": "soana:D13-D18"
+  },
+  {
+    "scene": "soana.the_days_she_counted",
+    "route": "soana",
+    "finding": "soana:D08,D19-D26"
+  },
+  {
+    "scene": "soana.before_the_far_road",
+    "route": "soana",
+    "finding": "soana:D27-D29"
+  },
+  {
+    "scene": "soana.when_the_road_returns",
+    "route": "soana",
+    "finding": "soana:D30"
+  },
+  {
+    "scene": "soana.partner.homecoming",
+    "route": "soana",
+    "finding": "soana:D11-D12"
+  },
+  {
+    "scene": "soana.partner.homecoming.returned",
+    "route": "soana",
+    "finding": "soana:D11-D12"
+  }
+]
