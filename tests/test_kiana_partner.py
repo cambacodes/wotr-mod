@@ -123,9 +123,16 @@ class KianaPartnerTests(unittest.TestCase):
                 continue
             for node in host["Nodes"]:
                 paragraphs = node.get("Paragraphs", [])
+                negotiation = (host["Id"] == "kiana.trickster.epilogue.commit"
+                               and node["Id"] not in ("margin", "stage", "blank")
+                               and not node["Id"].startswith("partner_resolved_"))
                 for state in (set(), {partner.DEAD}, {partner.LIVE, partner.SHARE},
                               {partner.LIVE, partner.SECRET}, {partner.LIVE, "kiana.separated"}):
-                    self.assertTrue(any(holds(p, state) for p in paragraphs), host["Id"] + "/" + node["Id"])
+                    active = any(holds(p, state | {"trickster.ever"}) for p in paragraphs)
+                    if negotiation:
+                        self.assertFalse(active, host["Id"] + "/" + node["Id"])
+                    else:
+                        self.assertTrue(active, host["Id"] + "/" + node["Id"])
         self.assertEqual(payload["SeenCues"]["kiana.elan.death_seen"], partner.DEATH_CUES)
         self.assertEqual(payload["Etudes"][partner.LIVE], "e5e3765b11eec1244a2137c2999f00d1")
         # A Drezen-only Playing etude cannot supply a global death observer.
