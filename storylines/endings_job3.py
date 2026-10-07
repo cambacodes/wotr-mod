@@ -269,27 +269,32 @@ def aranka(payload, scenes):
             for block in page.get('Paragraphs', []):
                 if 'unfinished letter to Thall' in block['Text'] or 'Thall\'s death in the Midnight Fane' in block['Text']:
                     block['Forbids'] = [delivered if f == 'lastcall.active' else f for f in block['Forbids']]
-    # A contextual separation in her existing duet conversation. The native
-    # glances are remembered without locating Thall or inventing a reunion.
+    # Retain the merged round-2 contextual nodes and choice indices as dormant
+    # save references. New contact is route-owned; it no longer interrupts billing
+    # or the intimate threshold and never awards a response from an absent Thall.
     for event in scenes.values():
-        if not event['Id'].startswith('aranka.') or event['Owner'].endswith('Epilogue'):
-            continue
-        for page in list(event['Nodes']):
-            if 'my Wallflower' not in page['Text'] and "Thall my Wallflower" not in page['Text']:
-                continue
-            continuation = deepcopy(page)
-            continuation['Id'] = 'thall_' + page['Id']
-            page['Text'] = '{n}Aranka sorts the low parts of Starward Gaze, then leaves one sheet apart.{/n}\n"That was for Thall. My Wallflower. Such a voice, and always a scroll to hide in."'
+        sid = event['Id']
+        targets = ('signed', 'billing') if sid.startswith('aranka.trickster.verse.duet') else (
+            ('desire',) if sid == 'aranka.no_encore_needed' else ())
+        for target in targets:
+            page = node(event, target)
+            original = deepcopy(page)
             old_choices = page['Choices']
-            page['Choices'] = [deepcopy(a) for a in old_choices]
-            for answer in page['Choices']:
+            for answer in old_choices:
                 answer['Forbids'].append('trickster.ever')
-            page['Choices'].append(c('"Have you heard from him?"', continuation['Id'], flags=(receipt,), forbids=(route.THALL_DEAD,)))
-            dead = deepcopy(continuation)
-            dead['Id'] = 'thall_dead_' + page['Id']
-            dead['Text'] = ('{n}She lays her hand over the unfinished low part.{/n}\n"He died in the Midnight Fane. I wanted him to sing with me. I never asked him for a bed, and he never asked me. I shall miss his voice."\n' + dead['Text'])
-            page['Choices'].append(c('"Have you heard from him?"', dead['Id'], flags=(receipt,), requires=(route.THALL_DEAD,)))
-            continuation['Text'] = ('{n}She taps the unfinished low part.{/n}\n"No letter. I wanted him to sing with me. I never asked him for a bed, and he never asked me. I shall leave his part here. If he finds me, he can complain about the notes himself."\n' + continuation['Text'])
+            continuation = deepcopy(original)
+            continuation['Id'] = 'thall_' + target
+            dead = deepcopy(original)
+            dead['Id'] = 'thall_dead_' + target
+            page['Choices'].append(c('"Have you heard from him?"', continuation['Id'],
+                flags=(receipt,), requires=('trickster.ever',), forbids=(route.THALL_DEAD, 'trickster.ever')))
+            page['Choices'].append(c('"Have you heard from him?"', dead['Id'],
+                flags=(receipt,), requires=(route.THALL_DEAD, 'trickster.ever'), forbids=('trickster.ever',)))
+            # The old answers remain at their saved positions. Appended answers
+            # restore the same musical/romantic continuation on Trickster.
+            for answer in original['Choices']:
+                answer['Requires'].append('trickster.ever')
+                page['Choices'].append(answer)
             event['Nodes'].extend((continuation, dead))
     # The Last Call page owns the single conclusion when it is delivered;
     # ordinary ending callbacks yield it in Last Call histories.

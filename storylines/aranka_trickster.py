@@ -14,17 +14,19 @@ import copy
 
 from story_format import c, n, p, reaction, scene
 
-# Authored partner clarification, round 2a: DesnaAdepts/Cue_0004 (13cbf1a6)
-# shows only Thall's glances; Cue_0005 (2c84efa6) shows her interest in his voice.
-# CANON-PARTNERS-DESIGN exempts a one-sided bond from share/exclusive/secret.
-# No mutual romance, current Thall location, return or fate is invented here.
-THALL_ENDING = '''{n}Aranka kept an unfinished letter to Thall among her song sheets. She had addressed it only to her Wallflower. "Wallflower," she had written, "I still want to hear you sing." He had never been her lover; she had not forgotten her fellow Desnan. She kept his place among the Desnan songs.{/n}'''
-THALL_CALL = '''{n}The song brings no news of Thall, the quiet Desnan adept from Kenabres: neither his whereabouts nor his fate. No second voice joins it beneath the roar.{/n}'''
+# Authored ordinary correspondence, grounded in DesnaAdepts/Cue_0004-0007.
+# Thall's interest is one-sided; no return, former partnership or island is created.
+THALL_SAFE = "aranka.thall.left_kenabres"  # DesnaAdept3/Cue_0026: rescued, goes to temple
+THALL_CALL = "{n}The song brings no news of Thall, the quiet Desnan adept from Kenabres: neither his whereabouts nor his fate. No second voice joins it beneath the roar.{/n}"  # legacy shared cleanup token
+THALL_REQUESTED = "aranka.thall.letter_sent"
+THALL_ANSWERED = "aranka.thall.parting_spoken"
+THALL_ENDING = '{n}Thall sent Aranka a hymn with the low part marked. She sent it back with his name beside the melody and three corrections. The next packet contained four.{/n}'
+THALL_CALLBACK = '{n}Among her new songs was the hymn Thall had sent. His corrections still crowded the margin; she sang his low part without trying to improve it.{/n}'
 
 THALL_DEAD = "aranka.thall.dead"  # native TallDead_in_Fane, verified in blueprints.zip
 COMMANDER_STAYS = "aranka.commander.stays"
 COMMANDER_LEAVES = "aranka.commander.leaves"
-THALL_MEMORY = p("""{n}When word of Thall's death in the Midnight Fane reached her, she folded the letter away. She sang the low part herself, once, and could not finish it.{/n}""", requires=(THALL_DEAD,))
+THALL_MEMORY = p("""{n}When word of Thall's death in the Midnight Fane reached her, she put aside the song she had meant to send him. She sang the low part herself, once, and could not finish it.{/n}""", requires=(THALL_DEAD,))
 
 SCENES = []
 UNIT = "430cba7801b149b4e8494ace6baf4f7c"           # Azata_Aranka_DesnaPriest (no dialog component; the presence copy)
@@ -325,12 +327,12 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
       c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
     a("signed", '''"Good." {n}She turns to the crowd and gives them the song's name and her own, clear as a bell, and then yours, into her cup, so quietly the front row has to lean in to catch it.{/n}
 "I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."
-{n}She leans close, lowering her voice beneath the crowd's applause.{/n} "And if you've heard me call Thall my Wallflower, don't start composing a wedding hymn! He's a fellow Desnan from Kenabres. Such a lovely voice, and he'd rather bury his nose in a scroll! I wanted him to sing with me. We were never lovers." {n}Her eyes stray to your mouth.{/n} "I know very well who I want to kiss. That duet is paid. Next time, I want you singing beside me again. If the war takes you away, leave me your road. I can find an inn."''',
+{n}She leans close, lowering her voice beneath the crowd's applause.{/n} {n}Her eyes stray to your mouth.{/n} "I know very well who I want to kiss. That duet is paid. Next time, I want you singing beside me again. If the war takes you away, leave me your road. I can find an inn."''',
       c('"I\'ll be here. If I take the road, I\'ll leave you the route."', flags=(DUET, CREDITED))),
     a("billing", '''"Your verse." {n}She laughs, delighted and not at all moved.{/n} "Your verse is a bad rhyme and a great deal of nerve, Commander. My name goes first. Argue with me again and it goes first in capitals."
 {n}She tells the crowd both names anyway, hers twice and loud, yours once and into her sleeve.{/n}
 "I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."
-{n}She leans close, lowering her voice beneath the crowd's applause.{/n} "And if you've heard me call Thall my Wallflower, don't start composing a wedding hymn! He's a fellow Desnan from Kenabres. Such a lovely voice, and he'd rather bury his nose in a scroll! I wanted him to sing with me. We were never lovers." {n}Her eyes stray to your mouth.{/n} "I know very well who I want to kiss. That duet is paid. Next time, I want you singing beside me again. If the war takes you away, leave me your road. I can find an inn."''',
+{n}She leans close, lowering her voice beneath the crowd's applause.{/n} {n}Her eyes stray to your mouth.{/n} "I know very well who I want to kiss. That duet is paid. Next time, I want you singing beside me again. If the war takes you away, leave me your road. I can find an inn."''',
       c('"I\'ll be here. If I take the road, I\'ll leave you the route."', flags=(DUET, VAIN))),
     # Audit pol3 (VOI): the bard who outsang her in the Count's parlour (Cue_15) is no pupil; she makes it a contest again.
     a("duet_rival", '''"Apology accepted. Now the duet!"
@@ -496,9 +498,27 @@ VERSE_PARAGRAPHS = (
 )
 
 
+def thall_ending(id):
+    # One terminal conclusion: late reunion owns it instead of the song slide;
+    # the shared coda owns it when Last Call is active.
+    guards = ["aranka.thall.coda_delivered"] if id.endswith((".commit", ".verse")) else []
+    if id.endswith(".verse"):
+        guards.append(LATE_COMMITTED)
+    endings = {
+        "declined": '{n}Aranka sent Thall the two-verse arrangement. His reply asked about the missing verse. She wrote that she had other songs to finish, and sent him one of those instead.{/n}',
+        "unanswered": '{n}Aranka sent Thall songs from her travels. He returned them with the low parts marked, but declined her invitation to join the tour. She stopped asking him to perform and kept sending the songs.{/n}',
+        "nerosyan": '{n}Thall declined Aranka\'s invitation to sing in Nerosyan. She sent him the arrangements instead. His corrections arrived between engagements; she complained about them and tried every one.{/n}',
+    }
+    return (
+        p(endings.get(id.rsplit(".", 1)[-1], THALL_ENDING), requires=(THALL_ANSWERED,), forbids=(THALL_DEAD, *guards)),
+        p('{n}Aranka left her letter to Thall with the Desnan pilgrims. No reply reached her before she moved on. At each stop she asked after him before unpacking her lute.{/n}', requires=(THALL_REQUESTED,), forbids=(THALL_ANSWERED, THALL_DEAD, *guards)),
+        dict(THALL_MEMORY, Forbids=guards),
+    )
+
+
 def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
     # Polish (R2-6): Chapter 6 only, in the data as well as through the native epilogue attachment.
-    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text, paragraphs=(*paragraphs, p(THALL_ENDING, requires=("aranka.thall.parting_spoken",), forbids=(THALL_DEAD, "lastcall.active")), dict(THALL_MEMORY, Forbids=["lastcall.active"])))], requires=requires,
+    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text, paragraphs=(*paragraphs, *thall_ending(id)))], requires=requires,
                         forbids=(*forbids, KENABRES_ATTACKED), last=6, Relationship="aranka", Chapters=[6], **extra))
 
 
@@ -509,7 +529,7 @@ page("aranka.trickster.epilogue.commit", "The last night in Nerosyan",
          p("""{n}The Commander had left Mendev. Aranka followed the itinerary they had agreed on before the final march and caught up at a roadside inn. She dropped her satchel beside the luggage, pushed the travel map off the table and kissed the Commander before the road dust had settled. Her fingers found the bodice knot; she pulled it loose herself.{/n}""", requires=(COMMANDER_LEAVES,)),
          p("""{n}Aranka found the Commander at their agreed lodging with a satchel full of songs and no patience for introductions. She put the lute down safely, took the Commander's hands and kissed away the first question about Nerosyan.{/n}""", forbids=(COMMANDER_STAYS, COMMANDER_LEAVES)),
          # User-supplied reunion insertion: her chosen return, road dust, wanted intimacy.
-         dict(p("""{n}She draws the Commander down after her by the collar. The songs spill unopened onto the floor. At dawn, Aranka retrieves her satchel and begins to sing.{/n}"""), Id='aranka.trickster.epilogue.commit.explicit.1'),
+         dict(p("""{n}She drew the Commander down after her by the collar. The songs spilled unopened onto the floor. At dawn, Aranka retrieved her satchel and began to sing.{/n}"""), Id='aranka.trickster.epilogue.commit.explicit.1'),
          p("""{n}The north-wall sentries learned the new tune by week's end. Aranka took it to the camp survivors herself, and came back that evening to demand the Commander's harmony.{/n}""", requires=(COMMANDER_STAYS,), forbids=(COMMANDER_LEAVES,)),
          p("""{n}The innkeeper learned the new tune before breakfast. Aranka packed her songs with the Commander's map and insisted on singing the steepest stretch of their next day's road.{/n}""", requires=(COMMANDER_LEAVES,)),
          *VERSE_PARAGRAPHS,
@@ -675,6 +695,7 @@ def integrate(payload):
                         "spice trader's stall in the Drezen market, in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     payload.setdefault("Derived", {})[NO_KING] = [[KING_GONE]]
+    payload.setdefault("SeenCues", {})[THALL_SAFE] = ["7d3c179096d67b24a962c3e77a82c416"]
     payload.setdefault("Etudes", {}).update({
         COMMANDER_STAYS: "84e00414803841e428c3d47572c7d588",
         COMMANDER_LEAVES: "7fde872463d2d2647b159a733d40ea98",
@@ -693,9 +714,7 @@ def integrate(payload):
         "She came back with mud on her hem and a new harmony she insisted the Commander learn "
         "before hearing a single tale of the road. She put the lute between them and counted in.{/n}")
     if THALL_MEMORY not in part["paragraphs"]:
-        part["paragraphs"] = (*part["paragraphs"], p(THALL_ENDING, requires=("aranka.thall.parting_spoken",), forbids=(THALL_DEAD,)), THALL_MEMORY)
-    if not part["call"]["text"].endswith(THALL_CALL):
-        part["call"]["text"] += "\n" + THALL_CALL
+        part["paragraphs"] = (*part["paragraphs"], p(THALL_CALLBACK, requires=(THALL_ANSWERED,), forbids=(THALL_DEAD,)), THALL_MEMORY)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
@@ -725,7 +744,7 @@ for _roof in SCENES:
         _nodes["threshold"]["Choices"][0]["Next"] = _slot
         # User-supplied roof insertion: she leads, loses the tune, resumes at dawn.
         _roof["Nodes"].append(nar(_slot,
-            '{n}Aranka pulls you onto her cloak, the tiles warm beneath it. Her unfinished note breaks against your mouth. Below the roof, the first carts begin to move.{/n}',
+            '{n}Below the roof, the first carts begin to move.{/n}',
             c("Continue", "morning")))
         _nodes["morning"]["Text"] += '\n{n}Her voice is rough; your cloak still holds the cold of the tiles. She tests a new line about the noise, then grins at your expression.{/n}'
         _nodes["morning"]["Choices"].append(c(
@@ -733,3 +752,26 @@ for _roof in SCENES:
         _roof["Nodes"].append(a("song_counter",
             '\"Your name? I can do better than your name!\" {n}She sings the line again, replacing your rank with a traveller and the stair with a roadside hedge. A carter at the gate chokes on his tea.{/n} \"There. Let them quarrel over who it was. You still owe me the harmony.\"',
             c('[Keep the bill and the new tune.]', flags=(NIGHT,))))
+
+
+# Round 3 authored contact: ordinary pilgrims carry the question and reply.
+# Optional throughout; correspondence never earns romance or revives Thall.
+counter("aranka.thall.question", "The Wallflower", '\"What about Thall? He seemed fond of you.\"', [
+    a("start", '''"My Wallflower! Such a voice, and he hides it in his scrolls. I wanted him to sing with me. He wanted... well, he never said."
+{n}She sets down the lute.{/n} "I like him. I don't want his kisses. Yours are becoming a dreadful distraction."
+"The pilgrims take letters between the camps. I could send him the new verse. And tell him who I keep coming back to see."''',
+      c('"Send it. Let him hear it from you."', "sent"),
+      c('"Leave the letter for now. Sing with me."', abort=True)),
+    a("sent", '''{n}She writes on the back of a song sheet, then folds it with the verse inside.{/n} "There. No ballad about two tragic lovers. He'll know what I mean."
+{n}She takes it to the pilgrims waiting beside the supply wagon and asks them to pass it to Thall. When she returns, she catches your sleeve.{/n} "Now. Where were we?"''',
+      c("Continue", flags=(THALL_REQUESTED,))),
+], requires=("trickster.ever", DUET, "aranka.present_now"), forbids=(CLOSED, THALL_REQUESTED, THALL_DEAD, KENABRES_ATTACKED), delay=0)
+
+letter("aranka.thall.reply", "The low part", [
+    a("start", '''{n}The returning pilgrims bring a folded sheet. Aranka recognizes the hand before she opens it. She reads aloud.{/n}
+"Aranka. I had hoped you might... No. You have told me plainly. Thank you. I would rather you hadn't put it beside that rhyme. I had to read both twice."
+"I won't sing in front of your Commander. Or anyone else. But I have enclosed the hymn you asked about. Don't change the low part. Please."
+{n}Aranka reads the last line again, more quietly. She puts the letter beneath the hymn.{/n} "I did ask him. Before all this. I'll write back. About the hymn this time."
+{n}She tries its first phrase, stops, and leaves the low part as written.{/n}''',
+      c('[Listen to the hymn.]', flags=(THALL_ANSWERED,))),
+], requires=("trickster.ever", THALL_REQUESTED, THALL_SAFE, "aranka.present_now"), forbids=(CLOSED, THALL_ANSWERED, THALL_DEAD, KENABRES_ATTACKED), delay=24)

@@ -90,3 +90,46 @@ All proposed additions are authored, mundane extensions of her singing/Desnan tr
 8. Register the proposal only when coordinator authorizes `turning_points.json`; run the sameness check then. Run deterministic export, Python tests, strict verifier and C# progression gate from temporary storage, with no in-repo artifacts; shared Last Call/ledger/ending-registration changes require separate authorization.
 
 Binding contexts (1)–(5): Kenabres `DesnaTempleFinal/Answer_0026` `3259064c6a1ac284c80ecc7d3fad6135` (enGB `e29542d5-7e10-405e-af13-432efff8172a`) is the player's attack and a user-ruled closure: no resurrection is proposed. Incomplete parent stories remain parent-owned; failure needs the existing deed; every presence/return/yes is earned, all canon-dependent rewrites are Trickster-only, and no other woman must die or close. Shyka's paid fate gate, where the global return uses it, is neither an affection producer nor a substitute for the return bargain; no new echo is allocated.
+
+
+## Round 3: contextual Thall contact (supersedes the round-2 disclaimer/proposal)
+
+Authored additions: ordinary Desnan pilgrim correspondence from Aranka's existing
+Drezen presence, not a magical return or a newly created island. After the duet,
+`aranka.thall.question` (market/yard, chapters 3/5) lets the Commander ask about
+Thall's interest. Aranka names friendship and chooses to write. Sending the sheet
+sets `aranka.thall.letter_sent`; declining adds no romance debt. After 24 hours,
+`aranka.thall.reply` lets her read his answer and try his hymn. A living reply
+requires the native rescued departure `DesnaAdept3/Cue_0026`, GUID
+`7d3c179096d67b24a962c3e77a82c416`, whose OnStop completes his rescue objective.
+It forbids the verified Fane death and the player's Kenabres attack. No response
+is supplied to histories that did not save him. The letter's delivery earns the
+existing `aranka.thall.parting_spoken` receipt; it never earns romance.
+
+`aranka.thall.answer` now ships on the inherited island road, at native list
+`5ff8a80442182f84e849b4281f98b9ca`. Both real actors must be present; Thall's unit
+is `8fb65bd79574771429526eaef26762a9`, Aranka's is `430cba7801b149b4e8494ace6baf4f7c`.
+He acknowledges his unrequited hope and chooses musical friendship. No mutual
+former affair, mandatory stance, Thall return or spawned island actor is authored.
+Canon verified in `/wrath/blueprints.zip` and `/wrath/Wrath_Data/StreamingAssets/Localization/enGB.json`:
+DesnaAdepts/Cue_0004 glances, Cue_0005 her musical encouragement, Cue_0007 his
+reserved refusal; native death etude `49c99adbf91a0c84aaa550061a60cb19`.
+
+The selected ending carries correspondence, unanswered dispatch or verified death.
+The late reunion owns its conclusion instead of the separate song slide; the
+existing `aranka.thall.coda_delivered` reader gives Last Call ownership only when
+that coda actually delivers. Closed/stage endings retain their own conclusions.
+The merged `thall_*` nodes and old answers are preserved as dormant save references;
+new continuation answers append after them. Neither contact gates an intimate,
+commitment or reconciliation payoff. All eleven existing explicit slots remain;
+briefs require continuation from the already completed threshold, with third-past
+narration for the epilogue slot.
+
+
+Coordinator integration requirement (outside this worktree's edit allowlist):
+add physical `surfaces` rows under `women.aranka` in
+`tools/departure_contracts.json` for `aranka.thall.answer`,
+`aranka.thall.question`, `aranka.thall.question_yard`, and `aranka.thall.reply`.
+Each is an on-page Aranka encounter and explicitly requires `aranka.present_now`;
+the reply's Remote delivery does not license an absent Aranka to read it aloud.
+No new departure rule, return, letter permission or survival predicate is needed.
