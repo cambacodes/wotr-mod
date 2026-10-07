@@ -7,7 +7,8 @@ consolidation packets of tools/harem-schedule.json (doc 16 section 8c.2).
 Hard errors (exit 1): roster or tag drift from doc 16 section 2.3, seat overrides, indifferent rows with repairs, a susceptible
 woman without one, unknown forms in the smoothing data, bad nearest-three, duplicate mechanisms or motive-action pairs, Arueshalae
 variants not keyed on positive states, malformed enGB keys, a relationship the household does not know, and (with --story) any
-reserved smoothing/strain/mend name already present in Story.json (this unit produces none).
+unclassified smoothing/strain/mend name in Story.json. W4's declared knowledge
+producer is checked before its strain name is accepted; repair names stay reserved.
 
 Form cap (08 section 5: no form more than twice across frictions, repairs, reservations and packets). Rulings D1/D2 (W0b): the
 vocabulary is expanded and the allocation passes; build-expansion.ps1 runs with --strict-forms, which fails on any form over the cap
@@ -29,6 +30,54 @@ DOC16 = Path(r"C:\Users\Z\Documents\Projects\Writer\handoffs\16-HOUSEHOLD-DYNAMI
 KEY = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 RESERVED_IN_STORY = re.compile(r"household\.smooth\.|\.harem\.strain\.|\.harem\.mend\.")
 FRIENDSHIP_ONLY = {"ember", "aivu"}
+
+
+def knowledge_inventory(story_text):
+    """Allow only W4's indexed, visible disclosure; never a generic strain escape.
+
+    The planning-only blanket ban predates W4. Keep it for all other names and
+    require this slice's exact outcome, current learner and terminal producer.
+    """
+    flag = "seelah.harem.strain.aranka.1"
+    if flag not in story_text:
+        return story_text
+    try:
+        story = json.loads(story_text)
+    except (ValueError, TypeError):
+        return story_text
+    sid = "household.knowledge.seelah_aranka"
+    by = {s.get("Id"): s for s in story.get("Scenes", [])}
+    body = by.get(sid, {})
+    nodes = {n.get("Id"): n for n in body.get("Nodes", [])}
+    start = nodes.get("start", {}).get("Choices", [])
+    learned = nodes.get("learned", {}).get("Choices", [])
+    producers = [(s.get("Id"), n.get("Id"), i)
+                 for s in story.get("Scenes", []) for n in s.get("Nodes", [])
+                 for i, c in enumerate(n.get("Choices", [])) if flag in c.get("Set", [])]
+    guards = {"trickster", "foresight.page_taken", "household.table.kept",
+              "household.stance_eligible", "seelah.harem.eligible",
+              "seelah.present_now", "aranka.trickster.night_kept"}
+    seat = story.get("SeatWomen", {}).get("seelah", {})
+    if (producers != [(sid, "learned", 0)]
+            or not guards <= set(body.get("Requires", []))
+            or not {sid + ".seen", "fool_king.gone", "trickster.failed"} <= set(body.get("Forbids", []))
+            or body.get("Relationship") != "household"
+            or body.get("ParticipantWomen") != ["seelah"]
+            or body.get("Participants") != ["seelah"]
+            or body.get("InteractionHub") != "household.table"
+            or body.get("Chapters") != [3, 5]
+            or seat.get("Relationship") != "seelah"
+            or "seelah.present_now" not in seat.get("Requires", [])
+            or len(seat.get("Requires", [])) < 2
+            or len(start) != 2 or start[0].get("Next") != "learned"
+            or start[0].get("Set") or start[0].get("Abort")
+            or not start[1].get("Abort") or start[1].get("Set")
+            or len(learned) != 1 or learned[0].get("Next")
+            or learned[0].get("Abort")
+            or learned[0].get("Set") != [sid + ".seen", flag]):
+        return story_text
+    # Match the full JSON string, so a suffixed, unclassified event still fails.
+    return story_text.replace(json.dumps(flag), '"classified.W4.knowledge"')
 
 
 def load_json(path):
@@ -156,9 +205,9 @@ def lint(data, story_text=None, engb=None, partners=None, pair_women=None):
                 if f.startswith("arueshalae."):
                     E("%s: reads an Arueshalae personality key" % w["id"])
     if story_text is not None:
-        hits = sorted(set(m.group(0) for m in RESERVED_IN_STORY.finditer(story_text)))
+        hits = sorted(set(m.group(0) for m in RESERVED_IN_STORY.finditer(knowledge_inventory(story_text))))
         if hits:
-            E("Story.json already uses reserved smoothing/strain/mend names %s: build sheets must replace this data-only check" % hits)
+            E("Story.json uses unclassified smoothing/strain/mend names %s" % hits)
     return errs
 
 
@@ -199,7 +248,7 @@ def report(data, frictions, packets):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--data", default=str(DEFAULT_DATA))
-    ap.add_argument("--story", help="development/Story.json: reserved names must stay unused")
+    ap.add_argument("--story", help="Story.json: validate W4 knowledge; other reserved names must stay unused")
     ap.add_argument("--engb", nargs="?", const=str(ENGB), help="check every canon key exists in enGB.json")
     ap.add_argument("--doc16", nargs="?", const=str(DOC16), help="check doc16_tags against the 16 section 2.3 table")
     ap.add_argument("--strict-forms", action="store_true", help="fail when any form exceeds the cap")
