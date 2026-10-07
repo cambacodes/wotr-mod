@@ -374,7 +374,7 @@ def waking(place):
         nar("stag", '''{n}Her eyes move from the horn to your face. The arrow follows. You lower the horn. She keeps the bow drawn, its point trained on your chest.{/n}''',
             c("[Mobility: run.]", check=dict(Skill="SkillMobility", DC=24, Success="ran_far", Failure="ran_short", CommanderOnly=True))),
         nar("ran_far", t["run_far"], c("Continue", "moonset", flags=(RAN_FAR,))),
-        nar("moonset", '''{n}Three days and three nights she hunted Erastil's white stag. You last until the moon goes down, which for a stag with a sword on its hip and no idea where the deer paths run is a very long time, and the woods will talk about it for a while.{/n}
+        nar("moonset", '''{n}Three days and three nights she hunted Erastil's white stag. You last until the moon goes down, which for a stag who does not know the deer paths is a very long time, and the woods will talk about it for a while.{/n}
 {n}When the arrow comes, it comes from nowhere you were watching: twenty-five inches of ash and grey goose feather into the back of your thigh. Your leg goes out from under you, and the ground comes up, and you are on your face in the wet leaves with your mouth full of earth.{/n}''',
             c("Continue", "down")),
         nar("ran_short", t["run_short"], c("Continue", "doorstep", flags=(RAN_SHORT,))),

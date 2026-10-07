@@ -67,7 +67,38 @@ internal static class DelamereRound2Tests
             check(pages.Contains(P + suffix + ".explicit.1") && pages.Contains("boundary_" + village),
                   "First night or earned boundary morning missing: " + suffix);
         }
-        Console.WriteLine("PASS: Delamere round-2 native reports, runtime location guards, first-night deliveries and boundary mornings.");
+        foreach (var suffix in new[] { "woods.second_hunt", "woods.second_hunt_page", "woods.second_hunt_late" })
+        {
+            var hunt = story.Scenes.Single(s => s.Id == P + suffix);
+            var state = World(hunt);
+            if (suffix.EndsWith("_page")) state.Flags.Add("kyado.dead");
+            else state.Flags.Remove("kyado.dead");
+            state.Flags.Remove(P + "second_hunt_postponed");
+            state.Times.Remove(P + "second_hunt_postponed");
+            check(Rules.Available(story, hunt, state), "First hunt must not require postponement: " + suffix);
+            state.Flags.Add(P + "told_truth");
+            var postponed = Program.Walk(hunt, state).First(s => s.Has(P + "second_hunt_postponed")
+                && !s.Has("delamere.committed") && !s.Has("delamere.closed"));
+            check(!postponed.Has(hunt.Id), "Postponement must abort, preserving retry: " + suffix);
+            check(Rules.RouteOpen(story.Relationships["delamere"], postponed), "Postponement closed the relationship: " + suffix);
+            check(!Rules.Available(story, hunt, postponed), "Immediate postponed retry available: " + suffix);
+            postponed.Hour += hunt.DelayHours - 1;
+            check(!Rules.Available(story, hunt, postponed), "Postponed retry opened early: " + suffix);
+            // An ending during the wait must retain the already earned late road.
+            var ending = Program.Copy(postponed);
+            ending.Chapter = 6;
+            Rules.Complete(story, ending);
+            var late = story.Scenes.Single(s => s.Id == P + "epilogue.late");
+            check(Rules.Available(story, late, ending), "War ending during wait lost late payoff: " + suffix);
+            check(late.Nodes.SelectMany(n => n.Paragraphs).Any(p => p.Requires.Contains(P + "second_hunt_postponed")
+                && Rules.Match(p.Requires, p.Forbids, ending)), "Postponed ending paragraph lost: " + suffix);
+            postponed.Hour++;
+            check(Rules.Available(story, hunt, postponed), "Postponed retry did not reopen after interval: " + suffix);
+            // Both anchors matter: a recent invitation still imposes its original delay.
+            postponed.Times[P + "second_hunt_offered"] = postponed.Hour;
+            check(!Rules.Available(story, hunt, postponed), "Recent invitation clock ignored: " + suffix);
+        }
+        Console.WriteLine("PASS: Delamere native reports, local arrivals, first-night branches and postponed retry clocks.");
     }
 }
 

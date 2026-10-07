@@ -227,7 +227,7 @@ temple(P + "temple.prior_lessons", "The prior's lessons", '"Kyado, what happened
     nar("again", '''{n}He draws again, with her hands on his. His eyes stay open, streaming. The arrow goes into the straw a foot below the demon's chin, and stays there.{/n}
 {n}Kyado stares at it. Then he sits down in the dust, very suddenly, as if somebody had cut the strings behind his knees.{/n}''',
         c("Continue", "you")),
-    dl("you", '''{n}She lets him sit. She turns to you with the bow still in her hand.{/n} "Now you, stag. You carry a sword like a man carrying a ladder. Let us see what you do with a string."''',
+    dl("you", '''{n}She lets him sit. She turns to you with the bow still in her hand.{/n} "Now you, stag. I have seen you run. Let us see what you do with a string."''',
         c("Continue", "yew_given", requires=(YEW_BOW, BOW_RETURNED)),
         c("Continue", "plain", forbids=(YEW_BOW,)),
         c("Continue", "plain", requires=(YEW_BOW,), forbids=(BOW_RETURNED,))),
@@ -309,7 +309,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
 visit(P + "woken.names", "The names", [
     nar("wall", '''{n}She has taken the lamp from its hook in the crypt and hung it on the carved stag's antler, which Kyado would think was sacrilege and she thinks is what antlers are for. Below it the wall is scored with lines of old Kellid letters, cut small and deep with a chisel she must have borrowed from someone who has not noticed yet. Stone dust lies in drifts along the floor. Her hands are white with it to the wrist.{/n}''',
         c('"What are you carving?"', "names")),
-    dl("names", '''"Tell me their names." {n}She sits back on her heels, the cord across her lap.{/n} "Everyone you bring to your fire. I will hear what they have done from their own mouths when we meet. I may dislike them. I will know them."''',
+    dl("names", '''"My people. The villages I guarded before I died." {n}She brushes stone dust from a half-cut letter.{/n} "I knew them all once. Now I have to stop and remember."''',
         c('"How many so far?"', "how_many"),
         c("[Look along the wall.]", "look")),
     nar("look", '''{n}The lines go on further than the lamp reaches. There is a hare, and a crooked ash tree, and a mark like an otter, and a mark like three stones, and under every mark a column of names. Some are cut clean. Some have been started and scratched through and started again.{/n}''',

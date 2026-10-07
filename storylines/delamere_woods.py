@@ -550,22 +550,25 @@ def second_hunt(opening, scene_id):
 
 
 HUNT_REQUIRES = ("trickster.ever", SECOND_HUNT)
+# SECOND_HUNT already gates entry; this alternative also supplies the postponed
+# receipt to Rules.Available's latest-receipt delay without requiring postponement.
+HUNT_CLOCK = ((SECOND_HUNT, HUNT_POSTPONED),)
 HUNT_FORBIDS = (CLOSED, COMMITTED)
 
 temple(P + "woods.second_hunt", "The second hunt", '"Kyado. Is Delamere in the woods tonight?"', second_hunt(
     kyado("start", '''{n}Kyado looks up from his broom, and goes red to the ears.{/n} "She left at dusk. She said you'd c-come. She said, 'Tell the stag the woods are open.' And then she ate a whole loaf standing up, and went out of the door without her cloak." {n}He looks at the dark beyond the temple door, and then at your leg, and then very hard at the floor.{/n} "Commander, it's the new moon. You know what the old Kellid songs say about the new m-moon."''',
         c('"I know."', "woods")), P + "woods.second_hunt"),
-    requires=HUNT_REQUIRES, forbids=HUNT_FORBIDS, delay=24)
+    requires=HUNT_REQUIRES, forbids=HUNT_FORBIDS, delay=24, RequiresAnyGroups=HUNT_CLOCK)
 
 visit(P + "woods.second_hunt_page", "The second hunt", second_hunt(
     nar("start", '''{n}No message comes. None is needed. On the night of the new moon you take the old horn from where you have hung it, and a lantern you do not light, and you ride out alone to the woods below her temple, and tie the horse at the edge of the trees.{/n}''',
         c("Continue", "woods")), P + "woods.second_hunt_page"),
-    requires=HUNT_REQUIRES + (KYADO_DEAD,), forbids=HUNT_FORBIDS, delay=24, chapters=(3, 5))
+    requires=HUNT_REQUIRES + (KYADO_DEAD,), forbids=HUNT_FORBIDS, delay=24, chapters=(3, 5), RequiresAnyGroups=HUNT_CLOCK)
 
 visit(P + "woods.second_hunt_late", "The second hunt", second_hunt(
     nar("start", '''{n}No message comes. None is needed. On the night of the new moon you take the old horn from where you have hung it since her waking, and a lantern you do not light, and you ride out alone to the woods below her temple. The war has been through these hills since you last walked them. The trees have not noticed.{/n}''',
         c("Continue", "woods")), P + "woods.second_hunt_late"),
-    requires=HUNT_REQUIRES, forbids=HUNT_FORBIDS + (KYADO_DEAD,), delay=24, chapters=(5, 5))
+    requires=HUNT_REQUIRES, forbids=HUNT_FORBIDS + (KYADO_DEAD,), delay=24, chapters=(5, 5), RequiresAnyGroups=HUNT_CLOCK)
 
 
 # --- 7. Fifty-three, again (Chapter 5: what came of the count) --------------------------------------------------------

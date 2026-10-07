@@ -107,6 +107,26 @@ class DelamereRound2Tests(unittest.TestCase):
         for suffix in ("caught", "late", "unfinished", "apart", "never", "healed"):
             self.assertIn("sacrifice", self.scenes[P + "epilogue." + suffix]["Forbids"])
 
+    def test_memorial_stays_with_the_dead_and_hide_names_stay_local(self):
+        memorial = self.scenes[P + "woken.names"]
+        node = next(n for n in memorial["Nodes"] if n["Id"] == "names")
+        self.assertIn("villages I guarded before I died", node["Text"])
+        self.assertNotIn("cord", node["Text"])
+        self.assertEqual(["how_many", "look"], [c["Next"] for c in node["Choices"]])
+        for branch in (0, 1):
+            flags, seen = play(memorial, set(), choices={"names": branch})
+            self.assertIn("how_many", seen)
+            self.assertIn(P + "names_cut", flags)
+        hide = self.scenes[P + "woken.hide"]
+        paid = next(n for n in hide["Nodes"] if n["Id"] == "names_paid")
+        self.assertIn("knots the cord", paid["Text"])
+        for suffix in ("crypt.stag", "crypt.stag_alone", "crypt.stag_late", "drezen.stag"):
+            flags, seen = play(self.scenes[P + suffix], {"delamere.tomb_opened"})
+            self.assertIn("moonset", seen)
+            text = next(n for n in self.scenes[P + suffix]["Nodes"] if n["Id"] == "moonset")["Text"]
+            self.assertIn("stag who does not know the deer paths", text)
+            self.assertNotIn("sword", text)
+
 if __name__ == "__main__":
     unittest.main()
 
