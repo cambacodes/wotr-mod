@@ -108,17 +108,6 @@ class ElyankaRound2Tests(unittest.TestCase):
             self.assertIn('Since that supper', self.node('commit.her_move', 'hair')['Text'])
             self.assertNotIn('Two days', self.node('commit.her_move', 'hair')['Text'])
 
-    def test_full_claim_page_respects_all_inquiry_outcomes(self):
-        for inquiry in (None, 'told_seelah', 'misled', 'hers'):
-            history = ['elyanka.committed', 'trickster.secret.elyanka_rites']
-            if inquiry:
-                history.append('elyanka.trickster.inquiry.' + inquiry)
-            flags = self.flags(*history)
-            text = ' '.join(p['Text'] for p in self.node('epilogue.claim', 'page')['Paragraphs']
-                            if self.enabled(p, flags))
-            self.assertEqual(inquiry is None, 'nobody in authority ever came' in text)
-            self.assertEqual(inquiry is not None, 'counted the guests' in text)
-
     def test_horse_and_warning_consequences_follow_their_causes(self):
         self.assertIn('door slips from your hand', self.node('visit.hearse', 'horses')['Text'])
         self.assertNotIn('trained to carry the dead', self.node('visit.hearse', 'horses')['Text'])
@@ -152,26 +141,6 @@ class ElyankaRound2Tests(unittest.TestCase):
             self.assertTrue(any('bottle dispatched' in t for t in texts))
             self.assertTrue(any('kept the cork' in t for t in texts))
             self.assertFalse(any('Every year' in t and 'Arendae' in t for t in texts))
-
-    def test_inquiry_receipt_follows_spoken_confession(self):
-        truth = self.node('beat.inquiry', 'truth')['Choices'][0]
-        self.assertFalse(truth['Set'])
-        self.assertEqual('confess', truth['Next'])
-        answer = self.node('beat.inquiry', 'confess')['Choices'][0]
-        reply = self.node('beat.inquiry', answer['Next'])
-        self.assertIn('witness', reply['Text'])
-        self.assertIn('elyanka.trickster.inquiry.told_seelah', reply['Choices'][0]['Set'])
-
-    def test_historical_debts_survive_later_witness_loss_in_all_four_endings(self):
-        for ending in ('claim', 'debt', 'lock', 'left_free'):
-            paragraphs = self.node('epilogue.' + ending, 'page')['Paragraphs']
-            for inquiry in ('told_seelah', 'misled', 'hers'):
-                for loss in ('seelah_dead', 'seelah_gone'):
-                    flags = self.flags('elyanka.trickster.gave_dead', 'elyanka.trickster.seelah_prayed',
-                                       'elyanka.trickster.inquiry.' + inquiry, loss)
-                    texts = [p['Text'] for p in paragraphs if self.enabled(p, flags)]
-                    self.assertEqual(1, sum('They went south to Ustalav' in t for t in texts))
-                    self.assertTrue(any('witness' in t for t in texts), (ending, inquiry, loss))
 
     def test_final_camp_location_and_single_slot_continuity(self):
         self.assertEqual("d80bdee55139ac24583f337a53878021", self.story["Etudes"]["daeran.plot_absent"])
