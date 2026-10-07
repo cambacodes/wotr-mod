@@ -34,9 +34,50 @@ internal static class ParticipantInventoryTests
         return state;
     }
 
+    private static void DeliveryWitnesses(Story story, Action<bool, string> check)
+    {
+        const string market = "430cba7801b149b4e8494ace6baf4f7c";
+        const string yard = "bd0c4fe722aeef94b8495ac284b96bc8";
+        foreach (var variant in new[] { "dreamer", "fallen" })
+        foreach (var suffix in new[] { "", ".yard" })
+        {
+            var scene = story.Scenes.Single(s => s.Id == "aranka.react.arueshalae." + variant + suffix);
+            var state = World(story, scene);
+            state.AvailableContacts.Remove(market);
+            state.AvailableContacts.Remove(yard);
+            if (suffix == ".yard") state.Flags.Add("aranka.presence.failed");
+            else state.Flags.Remove("aranka.presence.failed");
+            state.Flags.Add("aranka.presence.yard.failed");
+            check(!Rules.Available(story, scene, state), scene.Id + " appears after both copies fail.");
+            state.Flags.Remove("aranka.presence.yard.failed");
+            state.AvailableContacts.Add(suffix == "" ? market : yard);
+            check(Rules.Available(story, scene, state), scene.Id + " rejects the matching staged contacts.");
+            state.AvailableContacts.Remove(suffix == "" ? market : yard);
+            state.AvailableContacts.Add(suffix == "" ? yard : market);
+            check(!Rules.Available(story, scene, state), scene.Id + " accepts the other copy's contact.");
+            state.AvailableContacts.Remove(suffix == "" ? yard : market);
+            state.AvailableContacts.Add(suffix == "" ? market : yard);
+            state.AvailableContacts.Remove(scene.ContactUnit!);
+            check(!Rules.Available(story, scene, state), scene.Id + " appears without Arueshalae.");
+        }
+        const string temple = "bb6d82794aae9d94d9cc94d1a05e5f20";
+        foreach (var id in new[] { "delamere.trickster.crypt.stag_alone", "delamere.trickster.crypt.stag_late",
+            "delamere.trickster.woods.second_hunt_page", "delamere.trickster.woods.second_hunt_late" })
+        {
+            var scene = story.Scenes.Single(s => s.Id == id);
+            var state = World(story, scene);
+            state.Area = temple;
+            foreach (var clock in scene.DelayClocks.Where(state.Has)) state.Times[clock] = 0;
+            check(Rules.Available(story, scene, state), id + " cannot play at the earned temple visit.");
+            state.Area = "3538511f16d45f44f8249ff710777e2d";
+            check(!Rules.Available(story, scene, state), id + " wakes in an unrelated dungeon.");
+        }
+    }
+
     internal static void Run(Story story, Action<bool, string> check)
     {
         if (!story.Derived.ContainsKey("participant.lann.available")) return; // legacy standalone export
+        DeliveryWitnesses(story, check);
         using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine("tools", "participant_inventory_contracts.json")));
         var contract = doc.RootElement;
         var native = new Dictionary<string, string[]> {

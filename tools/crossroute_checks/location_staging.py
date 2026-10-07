@@ -102,7 +102,18 @@ def staged(text, name):
 
 def check(model, blocks, proof):
     out = []
+    # r5-S1: exact temple/hunt hosts, including prose that names no searchable place.
+    contract = json.loads(Path(__file__).resolve().parents[1].joinpath("gameplay_entry_inventory_contracts.json").read_text(encoding="utf-8"))
+    bounded = {row['scene']: row['checks']['Areas'] for row in contract.get('route_entries', [])
+               if row['route'] == 'delamere' and 'Areas' in row['checks']}
+    seen = set()
     for b in blocks:
+        sid = b.scene['Id']
+        if sid in bounded and sid not in seen:
+            seen.add(sid)
+            if not b.scene.get('Areas') or not set(b.scene['Areas']) <= set(bounded[sid]):
+                out.append(finding("L3", b, "Audited delivery requires Areas subset %s" % bounded[sid],
+                                   "Delamere temple delivery", b.text[:240]))
         if b.slot.startswith("choice") or b.slot in ("Entry", "ReturnText"):
             continue  # an offered trip does not assert the present scene's setting
         if b.node.get("Speaker") != "Narrator" and "{n}" not in b.text:

@@ -1399,5 +1399,535 @@
     "node": "greet_treated_unspent",
     "beat": "fix-inherited2 finding 2 class sweep: the saved unspent arrival now continues to greet_treated. Rewrite this locked node and choice 0 as a concise arrival bridge retaining the actual last-wand ward work and origin in Heaven after the earned wing treatment; preserve physician recognition. Avoid the repeated greeting and Commander explanation now preceding the canonical greeting. Keep IDs, index, continuation and existing gates. Authored addition; prose unchanged pending Claude ownership.",
     "ruling": "fix-inherited2"
+  },
+  {
+    "scene": "aranka.react.arueshalae.dreamer",
+    "node": "start",
+    "woman": "aranka",
+    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
+    "why": "The scene attaches to Arueshalae's native hub and checks only Arueshalae's ContactUnit. aranka.present_now establishes availability, not the presence of Aranka's market copy. The scene can describe both women together without verifying Aranka's actual actor, including when her placement fails.",
+    "finding": "aranka:D08",
+    "ruling": "r5-S1",
+    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+  },
+  {
+    "scene": "aranka.react.arueshalae.dreamer.yard",
+    "node": "start",
+    "woman": "aranka",
+    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
+    "why": "The yard variant checks market-anchor failure but never checks that the fallback Aranka actor actually exists. It remains attached to Arueshalae's hub with only her ContactUnit, so both failed placements can still produce this joint encounter.",
+    "finding": "aranka:D09",
+    "ruling": "r5-S1",
+    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+  },
+  {
+    "scene": "aranka.react.arueshalae.fallen",
+    "node": "start",
+    "woman": "aranka",
+    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
+    "why": "The market variant verifies only evil Arueshalae's actor. Aranka's logical availability does not establish that her copy is on screen, and the native Arueshalae hub does not establish this wagon encounter.",
+    "finding": "aranka:D10",
+    "ruling": "r5-S1",
+    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+  },
+  {
+    "scene": "aranka.react.arueshalae.fallen.yard",
+    "node": "start",
+    "woman": "aranka",
+    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
+    "why": "The yard variant requires market failure but does not verify successful yard placement. It can narrate Aranka beside the wagon when neither Aranka copy is available.",
+    "finding": "aranka:D11",
+    "ruling": "r5-S1",
+    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
+  },
+  {
+    "scene": "household.ensemble.ch5.arrows",
+    "node": "start",
+    "woman": "delamere",
+    "beat": "Stage the living Delamere arrows exchange through the approved narrated visit or a real living contact; no undead stand-in. Preserve earned return, closure and the other women's existing agendas.",
+    "why": "This registered Delamere interaction is unreachable. Its ParticipantContacts.delamere declares Kind=\"body\" with Options=[]. Rules.ParticipantContactsAvailable requires a qualifying unit option for every body contact, so no earned campaign state can satisfy it. contract_j01 explicitly leaves this for J10. The lack of a living native prefab justifies avoiding an undead spawn, but does not make this completed interaction playable.",
+    "finding": "delamere:D05",
+    "ruling": "r5-S1",
+    "dependency": "storylines/harem_rows/ensemble_ch5.py: Delamere body Options=[] cannot qualify. A living actor or the existing narrated-visit delivery requires the section 7 expanded scene/presentation scope."
+  },
+  {
+    "scene": "chadali.wagers.her_worshippers",
+    "node": "open",
+    "woman": "chadali",
+    "beat": "Distinguish agreeing to the reassignment from its executed order; write Chadali's response to the actual completed outcome and preserve who receives credit.",
+    "why": "Both affirmative branches resolve the soldier's reassignment inside a Council conversation by setting prayer_answered. There is no playable order, soldier contact or resource consequence; rigged and the epilogue subsequently treat the reassignment as accomplished. This is a consequential crusade intervention presented entirely as narration.",
+    "finding": "chadali:D13",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_wagers.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.sessions.a_parcel_for_the_shrine",
+    "node": "start",
+    "woman": "chadali",
+    "beat": "Distinguish agreement, allocation, runner dispatch and the Commander's actual shrine arrival/knock. Write the shrine/runner outcome and truthful ending history only after the structural delivery receipts exist.",
+    "why": "start/0 and what/0 immediately set carried_the_parcel, before allocation or delivery. The route ends at '[Carry it.]' without showing the shrine encounter or knock, yet the ending awards 'The Commander knocked here.' The cache dispute, personal delivery and runner delivery remain a reading sequence rather than the promised world activity.",
+    "finding": "chadali:D14",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.a_cookie_for_the_enemy",
+    "node": "murderer",
+    "woman": "chadali",
+    "beat": "Write the dungeon encounter and the cultist's own response to cookie and flower after the Commander accepts the parcel. Keep promise, delivered parcel, eaten cookie and kept flower distinct in prose and ending claims.",
+    "why": "The affirmative answers set prisoner_fed while the Commander is still accepting the parcel in the hall. No dungeon encounter follows. The epilogue nevertheless states that the cultist ate it and kept the flower. The most potentially distinctive dark-world interaction is resolved offscreen.",
+    "finding": "chadali:D15",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.a_cookie_for_the_enemy",
+    "node": "why",
+    "woman": "chadali",
+    "beat": "Write the dungeon encounter and the cultist's own response to cookie and flower after the Commander accepts the parcel. Keep promise, delivered parcel, eaten cookie and kept flower distinct in prose and ending claims.",
+    "why": "The affirmative answers set prisoner_fed while the Commander is still accepting the parcel in the hall. No dungeon encounter follows. The epilogue nevertheless states that the cultist ate it and kept the flower. The most potentially distinctive dark-world interaction is resolved offscreen.",
+    "finding": "chadali:D15",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.sessions.you_bet_with_people",
+    "node": "start",
+    "woman": "chadali",
+    "beat": "Write the operation and the return of the actual casualty roll for both orders, matching the implemented event costs/outcomes; agreement alone cannot describe the battle as completed.",
+    "why": "The pivotal military choice sets feint_signed or feint_refused and charges Finances only for refusal. The company, operation and casualty roll never become playable events. The epilogue supplies deaths and wounded after either order, leaving the scene's military stakes disconnected from the crusade.",
+    "finding": "chadali:D16",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.for_luck",
+    "node": "heal",
+    "woman": "chadali",
+    "beat": "Write both healing and scar-kept variants from the actual injury and healing effect. Preserve the optional scar; narration must match the implemented condition change.",
+    "why": "The scene assumes a bleeding battlefield wound without reading the Commander's condition, then narrates healing without changing that condition. Both heal and heal_scar are text-only. Native Cue_0007 says 'I heal some, make some stronger'; the implementation demonstrates neither power in gameplay.",
+    "finding": "chadali:D17",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.make_some_stronger",
+    "node": "start",
+    "woman": "chadali",
+    "beat": "Write the chosen finite blessing to match its actual benefit/duration, or the audit's explicit encouragement alternative after that choice is scoped. Do not claim repeated supernatural battle help from the existing flag.",
+    "why": "The blessing records blessed but supplies no temporary benefit or battle-linked consequence. Native Cue_0007's 'make some stronger' is reduced to a narrated feeling; the ending then claims repeated pre-battle blessings without an implemented encounter or effect.",
+    "finding": "chadali:D18",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "devarra.trickster.flight.pact",
+    "node": "cover",
+    "woman": "devarra",
+    "beat": "Write the specified failed-stealth open negotiation and its distinct Greybor reaction, retaining the earned pact and native fight continuation.",
+    "why": "The closing specification explicitly records a paid pact_open alternative for failed stealth, hooked to BadEnter/AnswersList_0004, GUID c5d8690968d13994f95a22ecefabaa5b. The implemented export contains neither pact_open nor its Greybor reaction; its sole pact hook is c8298f1630fd82046986d313ba35f601. No closing deferral explains this omission. This is missing specified negotiation content, not an objection to requiring an earned pact.",
+    "finding": "devarra:D02",
+    "ruling": "r5-S1",
+    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+  },
+  {
+    "scene": "devarra.tower.the_generals",
+    "node": "bargain",
+    "woman": "devarra",
+    "beat": "Write the purchased battle appearance and the account Devarra collects after the actual battle; retain her stated terms and distinguish it from her voluntary intervention.",
+    "why": "Accepting this bargain sets one_battle_sold and battle_price_accepted, but no implemented battle or subsequent collection fulfills it. A concrete crusade bargain becomes conversation flags without the promised gameplay consequence.",
+    "finding": "devarra:D03",
+    "ruling": "r5-S1",
+    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+  },
+  {
+    "scene": "devarra.tower.the_generals",
+    "node": "ask",
+    "woman": "devarra",
+    "beat": "Write her independently chosen surprise intervention and its witnessed aftermath; preserve her conditions and keep its receipt distinct from the purchased branch.",
+    "why": "The voluntary offer also has no producer for an actual intervention. Her independently chosen terms provide a strong character-specific gameplay opportunity, but the implementation never delivers it.",
+    "finding": "devarra:D04",
+    "ruling": "r5-S1",
+    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+  },
+  {
+    "scene": "devarra.trickster.epilogue.woken",
+    "node": "page",
+    "woman": "devarra",
+    "beat": "Replace the outstanding purchased promise account only after its played fulfillment or consequential refusal/breach exists. Describe that history without giving her the voluntary branch's outcome.",
+    "why": "The completed bargain ends as an unexplained outstanding promise. Correctly avoiding a fabricated battle receipt prevents an earned-outcome leak, but does not supply narrative resolution: neither participant follows through, renegotiates, or reacts to the failure.",
+    "finding": "devarra:D05",
+    "ruling": "r5-S1",
+    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+  },
+  {
+    "scene": "devarra.trickster.epilogue.woken",
+    "node": "page",
+    "woman": "devarra",
+    "beat": "Resolve her independently chosen intervention or played withholding and the Commander's response before the finale; make this coda consume that actual history.",
+    "why": "The voluntary offer receives the same unresolved treatment. The epilogue merely acknowledges missing implementation instead of completing her choice or showing why she abandoned it.",
+    "finding": "devarra:D06",
+    "ruling": "r5-S1",
+    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
+  },
+  {
+    "scene": "household.docket.gesmerha_jerribeth.account",
+    "node": "j05_cache_route",
+    "woman": "gesmerha",
+    "beat": "Write retrieval, transport, delivery and inspection from the staged cache task's completed/failed/abandoned histories. Jerribeth retains leverage and evil methods; no remorse, placeholder or invented extra price.",
+    "why": "The threatened retrieval, transport, delivery, and inspection all resolve inside one dialogue anchored in Drezen. The retrieval answer sets cost.commander_retrieval but performs no resource debit, check, combat, travel gate, or elapsed-time consequence. The stated danger and cost have no corresponding gameplay.",
+    "finding": "gesmerha:D09",
+    "ruling": "r5-S1",
+    "dependency": "storylines/harem_rows/z_j05_restitution.py and storylines/harem_rows/s26.py: cache task, transport, completed delivery/inspection and failed/abandoned histories require the section 7 owner handoff. Jerribeth voice remains Claude-owned."
+  },
+  {
+    "scene": "gesmerha.react.soana.illusions.chief.orso",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "Soana is narrated at Gesmerha's bench, but the scene binds only Gesmerha's contact. soana.present_now proves survival, not arrival at this bench; her registered presence is in her cave. No participant contact or placement stages this encounter.",
+    "finding": "gesmerha:D10",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.illusions.chief.lost",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "This Orso-dead variant also substitutes global survival for Soana's physical presence at the bench and binds only Gesmerha.",
+    "finding": "gesmerha:D11",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "The retained-Marhevok variant narrates Soana's visit without staging or binding her at the bench.",
+    "finding": "gesmerha:D12",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "The retained-Marhevok, Orso-dead variant has the same unstaged second participant.",
+    "finding": "gesmerha:D13",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.truth.chief.orso",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "The truth-revealed variant binds Gesmerha but merely assumes Soana has left her cave and reached the bench.",
+    "finding": "gesmerha:D14",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.truth.chief.lost",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "The truth-revealed, Orso-dead variant likewise lacks Soana's encounter placement and participant binding.",
+    "finding": "gesmerha:D15",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.truth.marhevok.orso",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "The truth-revealed, retained-Marhevok variant still treats Soana's global availability as local presence.",
+    "finding": "gesmerha:D16",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "gesmerha.react.soana.truth.marhevok.lost",
+    "node": "start",
+    "woman": "gesmerha",
+    "beat": "Stage Soana's visit beside Gesmerha's bench and her return to her ordinary cave placement. Give Soana her own speaker delivery; retain this twin's illusion/truth, chief/Marhevok and Orso history.",
+    "why": "The final outcome variant repeats the same unstaged Soana visit.",
+    "finding": "gesmerha:D17",
+    "ruling": "r5-S1",
+    "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
+  },
+  {
+    "scene": "elyanka.trickster.beat.hunt",
+    "node": "stag",
+    "woman": "elyanka",
+    "beat": "Write checked interception success/failure and the distinct deliberate-stillness outcome of the hart hunt. Preserve danger, both women's agency and the existing evil rites; mechanical checks remain Codex-owned.",
+    "why": "The scene presents a tactical choice between concealment and physically intercepting a charging hart, but both choices automatically achieve the same kill. Neither tests the Commander, changes a resource, nor produces a distinct outcome flag. The dangerous action is decorative narration where the character-truth gameplay rule calls for playable consequence.",
+    "finding": "elyanka-and-camilary:D08",
+    "ruling": "r5-S1",
+    "dependency": "storylines/elyanka_trickster.py: the specified checked interception and distinct stillness/failure branches require route-local choices and Claude outcomes, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "nenio.folio.edge",
+    "node": "walk",
+    "woman": "nenio",
+    "beat": "Write the shared field survey's departure, specimen/check or threat and earned findings, matching the implemented encounter location; each of the three hosts initiates and later receives the same played expedition.",
+    "why": "The field expedition is entirely narrated inside a companion-hub conversation. Selecting departure performs no travel, survey check, specimen acquisition or encounter; the promised need to fight at the boundary never becomes gameplay. This falls short of CHARACTER-TRUTH's binding gameplay requirement.",
+    "finding": "nenio:D11",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
+  },
+  {
+    "scene": "nenio.folio.edge_visitor",
+    "node": "walk",
+    "woman": "nenio",
+    "beat": "Write the shared field survey's departure, specimen/check or threat and earned findings, matching the implemented encounter location; each of the three hosts initiates and later receives the same played expedition.",
+    "why": "The market interaction narrates the entire expedition and return without leaving the interaction hub or implementing its fieldwork.",
+    "finding": "nenio:D12",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
+  },
+  {
+    "scene": "nenio.folio.edge_arcade",
+    "node": "walk",
+    "woman": "nenio",
+    "beat": "Write the shared field survey's departure, specimen/check or threat and earned findings, matching the implemented encounter location; each of the three hosts initiates and later receives the same played expedition.",
+    "why": "The arcade interaction likewise substitutes a reading sequence for the proposed expedition.",
+    "finding": "nenio:D13",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
+  },
+  {
+    "scene": "nurah.a_page_with_teeth",
+    "node": "start",
+    "woman": "nurah",
+    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
+    "why": "Sava's arrival, evidence presentation and negotiation exist entirely inside Nurah's arrival-hub text. The implemented scene supplies only Nurah's ContactUnit and no visitor placement or encounter staging. This is a substantial new quest participant delivered as a reading sequence rather than an encounter in the game world.",
+    "finding": "nurah:D06",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "nurah.the_borrowed_audience",
+    "node": "start",
+    "woman": "nurah",
+    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
+    "why": "The implemented host remains nurah.arrival on NurahCapital. The borrowed rehearsal room, movement and props are narrated without a corresponding placement or staging action. The location change separates the mechanics from what the player is told happens.",
+    "finding": "nurah:D07",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "nurah.the_editor_opens",
+    "node": "start",
+    "woman": "nurah",
+    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
+    "why": "The interview still executes through nurah.arrival with only Nurah's contact. Carrow, his case and the visiting subscribers have no implemented world presence; their encounter is contained in a long dialogue at the unrelated arrival host.",
+    "finding": "nurah:D08",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "nurah.the_case_goes_missing",
+    "node": "access",
+    "woman": "nurah",
+    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
+    "why": "The burglary is narrated from the arrival hub. Its stair, locked room, warning thread, hiding from footsteps and escape never become world actions. The Trickery check does carry consequences, but it does not satisfy the binding requirement to implement showable gameplay.",
+    "finding": "nurah:D09",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "nurah.the_subscribers_evening",
+    "node": "start",
+    "woman": "nurah",
+    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
+    "why": "The public confrontation is another nurah.arrival conversation. Vhal, Edran, Carrow, Sava and the audience appear only in prose, including the secretary's consequential departure with the record. The route's principal public payoff lacks its implemented public setting.",
+    "finding": "nurah:D10",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "nurah.the_unpurchased_sentence",
+    "node": "settle",
+    "woman": "nurah",
+    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
+    "why": "The final confrontation and transfer of the collection occur entirely in arrival-hub narration. No Vhal, Edran, chest or transferred materials are staged. Following the previous narrated encounters, this makes the continuation's climax predominantly a document-negotiation reading sequence.",
+    "finding": "nurah:D11",
+    "ruling": "r5-S1",
+    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
+  },
+  {
+    "scene": "konomi.private_reunion",
+    "node": "start",
+    "woman": "konomi",
+    "beat": "Separate the invitation from her supported physical reunion and receipt. Write the arrival/private meeting at the actual placement; retain only the existing delayed placement-failure fallback.",
+    "why": "The implemented return is Remote=true, Kind=visit, with no ContactUnit or AnswerLists. Its invitation, arrival, meeting and return receipt consequently happen through the rest-delivery system rather than a world encounter. Ledger R2-3 explicitly requires a beat narrating her arrival in person to be physical when a supported actor exists. This repository already supports Konomi's native actor and reuse-native placement; Kind=visit changes presentation but does not make the scene non-remote.",
+    "finding": "konomi:D03",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.new_letter",
+    "node": "rooster",
+    "woman": "konomi",
+    "beat": "Write both difficult rooster and easier ribbon wins/misses, Konomi's competitive reactions and true keepsake callbacks. Keep the outing and romance after a miss; checks are Codex-owned.",
+    "why": "Choosing to aim at the hardest prize guarantees success without a check or failure branch. The easier ribbon likewise guarantees success. A scene introduced as a competitive challenge therefore lets the player select the result rather than play the contest. The acceptance tests verify prize flags and callbacks, but not a contest with uncertain outcomes.",
+    "finding": "konomi:D04",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.private_new_letter",
+    "node": "rooster",
+    "woman": "konomi",
+    "beat": "Give the private copy the same checked rooster/ribbon wins/misses and truthful keepsake callbacks, retaining the romantic continuation after failure.",
+    "why": "The private-route copy repeats the guaranteed hardest-prize victory: neither target has a check or failure branch. Its competitive premise again resolves through outcome selection rather than gameplay.",
+    "finding": "konomi:D05",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "seelah.early.bad_cup",
+    "node": "start",
+    "woman": "seelah",
+    "beat": "Write the morning consequence at the verified repeatable Chapter 1 host or bounded timed Jannah placement after native celebration cleanup. Preserve Seelah's agency and existing choices; do not imply a hidden actor or repeatable celebration conversation.",
+    "why": "The scene requires completion of early.cart_evening plus 24 hours, but its only AnswerLists hook is f1e7b7a6740caaa44a3762033c5f0a5a, the initial celebration's AnswersList_0007. Native SeelahMeetsFriends_dialog 0cfe2725333dad944b2113413520f241 completes its introduction objective; it is delivered by the celebration cutscene rather than a repeatable Jannah conversation. Defender's Heart's native rest cleanup also hides the nominated Jannah actor. ContactUnit merely checks contact availability; it does not create a repeatable dialogue. The promised next-morning consequence therefore has no usable delivery surface.",
+    "finding": "seelah:D10",
+    "ruling": "r5-S1",
+    "dependency": "The celebration list is one-shot and rest cleanup hides Jannah. A repeatable contact/timed event and bounded Jannah placement need separately scoped route/presence entries."
+  },
+  {
+    "scene": "chadali.sessions.a_parcel_for_the_shrine",
+    "node": "what",
+    "woman": "chadali",
+    "beat": "Distinguish agreement, allocation, runner dispatch and the Commander's actual shrine arrival/knock. Write the shrine/runner outcome and truthful ending history only after the structural delivery receipts exist.",
+    "why": "start/0 and what/0 immediately set carried_the_parcel, before allocation or delivery. The route ends at '[Carry it.]' without showing the shrine encounter or knock, yet the ending awards 'The Commander knocked here.' The cache dispute, personal delivery and runner delivery remain a reading sequence rather than the promised world activity.",
+    "finding": "chadali:D14",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.sessions.a_parcel_for_the_shrine",
+    "node": "yes",
+    "woman": "chadali",
+    "beat": "Distinguish agreement, allocation, runner dispatch and the Commander's actual shrine arrival/knock. Write the shrine/runner outcome and truthful ending history only after the structural delivery receipts exist.",
+    "why": "start/0 and what/0 immediately set carried_the_parcel, before allocation or delivery. The route ends at '[Carry it.]' without showing the shrine encounter or knock, yet the ending awards 'The Commander knocked here.' The cache dispute, personal delivery and runner delivery remain a reading sequence rather than the promised world activity.",
+    "finding": "chadali:D14",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.sessions.a_parcel_for_the_shrine",
+    "node": "runner",
+    "woman": "chadali",
+    "beat": "Distinguish agreement, allocation, runner dispatch and the Commander's actual shrine arrival/knock. Write the shrine/runner outcome and truthful ending history only after the structural delivery receipts exist.",
+    "why": "start/0 and what/0 immediately set carried_the_parcel, before allocation or delivery. The route ends at '[Carry it.]' without showing the shrine encounter or knock, yet the ending awards 'The Commander knocked here.' The cache dispute, personal delivery and runner delivery remain a reading sequence rather than the promised world activity.",
+    "finding": "chadali:D14",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.sessions.a_parcel_for_the_shrine",
+    "node": "close",
+    "woman": "chadali",
+    "beat": "Distinguish agreement, allocation, runner dispatch and the Commander's actual shrine arrival/knock. Write the shrine/runner outcome and truthful ending history only after the structural delivery receipts exist.",
+    "why": "start/0 and what/0 immediately set carried_the_parcel, before allocation or delivery. The route ends at '[Carry it.]' without showing the shrine encounter or knock, yet the ending awards 'The Commander knocked here.' The cache dispute, personal delivery and runner delivery remain a reading sequence rather than the promised world activity.",
+    "finding": "chadali:D14",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_sessions.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.a_cookie_for_the_enemy",
+    "node": "start",
+    "woman": "chadali",
+    "beat": "Write the dungeon encounter and the cultist's own response to cookie and flower after the Commander accepts the parcel. Keep promise, delivered parcel, eaten cookie and kept flower distinct in prose and ending claims.",
+    "why": "The affirmative answers set prisoner_fed while the Commander is still accepting the parcel in the hall. No dungeon encounter follows. The epilogue nevertheless states that the cultist ate it and kept the flower. The most potentially distinctive dark-world interaction is resolved offscreen.",
+    "finding": "chadali:D15",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.a_cookie_for_the_enemy",
+    "node": "fed",
+    "woman": "chadali",
+    "beat": "Write the dungeon encounter and the cultist's own response to cookie and flower after the Commander accepts the parcel. Keep promise, delivered parcel, eaten cookie and kept flower distinct in prose and ending claims.",
+    "why": "The affirmative answers set prisoner_fed while the Commander is still accepting the parcel in the hall. No dungeon encounter follows. The epilogue nevertheless states that the cultist ate it and kept the flower. The most potentially distinctive dark-world interaction is resolved offscreen.",
+    "finding": "chadali:D15",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "chadali.hours.for_luck",
+    "node": "heal_scar",
+    "woman": "chadali",
+    "beat": "Write both healing and scar-kept variants from the actual injury and healing effect. Preserve the optional scar; narration must match the implemented condition change.",
+    "why": "The scene assumes a bleeding battlefield wound without reading the Commander's condition, then narrates healing without changing that condition. Both heal and heal_scar are text-only. Native Cue_0007 says 'I heal some, make some stronger'; the implementation demonstrates neither power in gameplay.",
+    "finding": "chadali:D17",
+    "ruling": "r5-S1",
+    "dependency": "storylines/chadali_hours.py: agreement currently has no completed world encounter/effect. Implement only the audit-requested action after the route-local allow-list is expanded."
+  },
+  {
+    "scene": "konomi.new_letter",
+    "node": "your_turn",
+    "woman": "konomi",
+    "beat": "Write both difficult rooster and easier ribbon wins/misses, Konomi's competitive reactions and true keepsake callbacks. Keep the outing and romance after a miss; checks are Codex-owned.",
+    "why": "Choosing to aim at the hardest prize guarantees success without a check or failure branch. The easier ribbon likewise guarantees success. A scene introduced as a competitive challenge therefore lets the player select the result rather than play the contest. The acceptance tests verify prize flags and callbacks, but not a contest with uncertain outcomes.",
+    "finding": "konomi:D04",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.new_letter",
+    "node": "ribbon",
+    "woman": "konomi",
+    "beat": "Write both difficult rooster and easier ribbon wins/misses, Konomi's competitive reactions and true keepsake callbacks. Keep the outing and romance after a miss; checks are Codex-owned.",
+    "why": "Choosing to aim at the hardest prize guarantees success without a check or failure branch. The easier ribbon likewise guarantees success. A scene introduced as a competitive challenge therefore lets the player select the result rather than play the contest. The acceptance tests verify prize flags and callbacks, but not a contest with uncertain outcomes.",
+    "finding": "konomi:D04",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.new_letter",
+    "node": "keepsake",
+    "woman": "konomi",
+    "beat": "Write both difficult rooster and easier ribbon wins/misses, Konomi's competitive reactions and true keepsake callbacks. Keep the outing and romance after a miss; checks are Codex-owned.",
+    "why": "Choosing to aim at the hardest prize guarantees success without a check or failure branch. The easier ribbon likewise guarantees success. A scene introduced as a competitive challenge therefore lets the player select the result rather than play the contest. The acceptance tests verify prize flags and callbacks, but not a contest with uncertain outcomes.",
+    "finding": "konomi:D04",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.private_new_letter",
+    "node": "your_turn",
+    "woman": "konomi",
+    "beat": "Give the private copy the same checked rooster/ribbon wins/misses and truthful keepsake callbacks, retaining the romantic continuation after failure.",
+    "why": "The private-route copy repeats the guaranteed hardest-prize victory: neither target has a check or failure branch. Its competitive premise again resolves through outcome selection rather than gameplay.",
+    "finding": "konomi:D05",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.private_new_letter",
+    "node": "ribbon",
+    "woman": "konomi",
+    "beat": "Give the private copy the same checked rooster/ribbon wins/misses and truthful keepsake callbacks, retaining the romantic continuation after failure.",
+    "why": "The private-route copy repeats the guaranteed hardest-prize victory: neither target has a check or failure branch. Its competitive premise again resolves through outcome selection rather than gameplay.",
+    "finding": "konomi:D05",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
+  },
+  {
+    "scene": "konomi.private_new_letter",
+    "node": "keepsake",
+    "woman": "konomi",
+    "beat": "Give the private copy the same checked rooster/ribbon wins/misses and truthful keepsake callbacks, retaining the romantic continuation after failure.",
+    "why": "The private-route copy repeats the guaranteed hardest-prize victory: neither target has a check or failure branch. Its competitive premise again resolves through outcome selection rather than gameplay.",
+    "finding": "konomi:D05",
+    "ruling": "r5-S1",
+    "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
   }
 ]

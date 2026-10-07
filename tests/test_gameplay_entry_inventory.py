@@ -13,8 +13,50 @@ ROOT = Path(__file__).resolve().parents[1]
 class GameplayEntryInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
+        from tests.story_fixture import fresh_story
+        cls.story = fresh_story()
         cls.contract = json.loads((ROOT / 'tools/gameplay_entry_inventory_contracts.json').read_text(encoding="utf-8"))
+
+    def test_r5_inventory_covers_all_served_findings_without_claiming_delivery(self):
+        diagnostics = hub_attachment_lint.gameplay_entry_diagnostics(self.story)
+        expected = {
+            'aranka': range(8, 12), 'delamere': range(1, 6),
+            'chadali': range(13, 19), 'devarra': range(2, 7),
+            'gesmerha': range(9, 18), 'elyanka-and-camilary': [8],
+            'nenio': range(11, 14), 'nurah': range(6, 12),
+            'iomedae': range(1, 3), 'konomi': range(3, 6), 'seelah': [10],
+        }
+        self.assertEqual({f'{route}:D{n:02d}' for route, ns in expected.items() for n in ns},
+                         {f for row in diagnostics for f in row['findings']})
+        for row in diagnostics:
+            with self.subTest(scene=row['scene']):
+                if row['status'] != 'fixed':
+                    self.assertTrue(row['blockers'])
+                    self.assertTrue(row['requirement'])
+
+    def test_r5_flag_only_delivery_cannot_be_certified(self):
+        for row in self.contract['route_entries']:
+            if not row.get('requires_world_action'):
+                continue
+            with self.subTest(finding=row['findings']):
+                contract = copy.deepcopy(self.contract)
+                candidate = next(r for r in contract['route_entries'] if r['findings'] == row['findings'])
+                candidate.update(status='fixed', blockers=[])
+                candidate['delivery']['completion_action'] = {'kind': 'flag', 'target': 'accepted'}
+                result = next(r for r in hub_attachment_lint.gameplay_entry_diagnostics(self.story, contract)
+                              if r['findings'] == row['findings'])
+                self.assertTrue(result['errors'])
+                self.assertIn('no supported completion-producing world action; authored flags are not proof',
+                              result['deficits'])
+
+    def test_r5_missing_action_and_empty_body_remain_explicit_debts(self):
+        diagnostics = hub_attachment_lint.gameplay_entry_diagnostics(self.story)
+        arrows = next(r for r in diagnostics if r['findings'] == ['delamere:D05'])
+        self.assertIn('empty body contact: delamere', arrows['deficits'])
+        self.assertEqual('blocked', arrows['status'])
+        for row in diagnostics:
+            if row['status'] == 'blocked':
+                self.assertTrue(row['deficits'], row['findings'])
 
     def test_production_entries_and_helpers(self):
         self.assertEqual([], hub_attachment_lint.gameplay_entry_lint(self.story))
