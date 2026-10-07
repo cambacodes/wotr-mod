@@ -640,8 +640,11 @@ internal static class DelamereTricksterTests
         {
             var node = S(P + "epilogue." + id).Nodes.Last();
             var withAnswer = World(story, 6, "trickster.ever", P + "returned", P + "bark_letter", P + "bark_answered");
-            check(Rules.VisibleParagraphs(node, withAnswer).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[delamere.trickster.epilogue.caught/page/paragraph/12][delamere.trickster.epilogue.late/page/paragraph/13][delamere.trickster.epilogue.sacrifice/page/paragraph/12][delamere.trickster.epilogue.apart/page/paragraph/12][delamere.trickster.epilogue.unfinished/page/paragraph/12][delamere.trickster.epilogue.apart_sacrifice/page/paragraph/12][delamere.trickster.epilogue.unfinished_sacrifice/page/paragraph/12]"))
-                  && !Rules.VisibleParagraphs(node, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[delamere.trickster.epilogue.caught/page/paragraph/12][delamere.trickster.epilogue.late/page/paragraph/13][delamere.trickster.epilogue.sacrifice/page/paragraph/12][delamere.trickster.epilogue.apart/page/paragraph/12][delamere.trickster.epilogue.unfinished/page/paragraph/12][delamere.trickster.epilogue.apart_sacrifice/page/paragraph/12][delamere.trickster.epilogue.unfinished_sacrifice/page/paragraph/12]")),
+            // Appended round-three paragraphs shifted the displayed indices.
+            // Identify the answered-bark reader by its receipt on each sibling.
+            var answeredBark = node.Paragraphs.Single(p => p.Requires.Contains(P + "bark_answered"));
+            check(Rules.ParagraphVisible(answeredBark, withAnswer)
+                  && !Rules.ParagraphVisible(answeredBark, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")),
                 "Trk_Delamere_Bark: her page does not keep the answered bark: " + id);
         }
 

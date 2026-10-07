@@ -463,7 +463,7 @@ internal static class KaylessaTricksterTests
         {
             World(story, 5, "trickster", "trickster.ever", Returned, Dead, "kaylessa.started", P + "cost.dark_fate_stalled", P + "cost.shyka_price", P + "cost.shyka_raised",
                   Begged, "kaylessa.tomb", "kaylessa.camellia_killed", "kaylessa.anevia_caught", "kaylessa.unmasked", "kaylessa.ember_met",
-                  "iz.done", "kaylessa.anemora_told", "kaylessa.met", "kaylessa.trickster.react.shyka_note"),
+                  "iz.done", "kaylessa.anemora_told", "kaylessa.met", "kaylessa.trickster.react.shyka_note", "woljif.in_party"),
             World(story, 5, "trickster", "trickster.ever", Returned, Dead, "kaylessa.started", P + "cost.dark_fate_stalled", P + "cost.shyka_price", "kaylessa.note_held",
                   "kaylessa.healed_by_force", "iz.anemora_dead", "kaylessa.trickster.react.shyka_note"),
             World(story, 5, "trickster", "trickster.ever", Returned, "kaylessa.started", "kaylessa.met", P + "alive.swap_fumbled", P + "cost.amulet_burnt",
@@ -551,11 +551,11 @@ internal static class KaylessaTricksterTests
             if (fedBeast) w.Flags.Add(fed);
             foreach (var id in new[] { kept, late })
             {
-                var text = Visible(id, w);
-                var consequences = text.Where(t => SurfaceIds.Has(t, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/3][kaylessa.trickster.epilogue.no_lamb/page/paragraph/18][kaylessa.trickster.epilogue.commit/page/paragraph/1][kaylessa.trickster.epilogue.commit/page/paragraph/5]")).ToArray();
+                var consequences = Rules.VisibleParagraphs(Node(id, "page"), w)
+                    .Where(p => p.Requires.Contains(fed)).ToArray();
                 check(consequences.Length == (fedBeast ? 1 : 0), "Polish Kaylessa: fed consequence missing/doubled in " + id);
                 if (fedBeast)
-                    check(SurfaceIds.Has(consequences[0], "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/3][kaylessa.trickster.epilogue.commit/page/paragraph/1]") == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
+                    check(consequences[0].Requires.Contains(stalled) == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
             }
             var knife = Visible(kept, w).Where(t => SurfaceIds.Has(t, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/12][kaylessa.trickster.epilogue.no_lamb/page/paragraph/13]")).ToArray();
             check(knife.Length == 1 && SurfaceIds.Has(knife[0], holder.EndsWith("knife_held") ? "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/12]" : "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/13]"),

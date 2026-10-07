@@ -82,7 +82,9 @@ internal static class HouseholdTests
         bool LostAfterAcceptance(string rel, string flag)
         {
             var state = State(story, 3, "trickster", Committed(rel));
-            state.Flags.Add(flag);
+            // Derived losses must be backed by their native observations;
+            // Complete discards an injected composite before recomputing it.
+            Earn(story, state, flag);
             Rules.RecordAvailabilityEvents(story, state, new[] { flag });
             Rules.Complete(story, state);
             return !state.Has(rel + ".harem.eligible");

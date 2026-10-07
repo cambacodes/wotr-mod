@@ -33,6 +33,28 @@ class ContractTests(unittest.TestCase):
             "Text": "Unclassified", "Requires": ["soana.partner.exclusive_chosen"]})
         self.assertTrue(any("unclassified stance payoff" in error for error in payoff_lint.check(story)))
 
+    def test_round3_family_and_concealed_visit_keep_their_history_guards(self):
+        # A family friendship is not Corven's romance arrangement; his return
+        # also cannot supply Soana's separate invitation after the grave work.
+        cases = (
+            ("soana.ending_kept_life", "start", 5, "Requires", "soana.round3.arrangement"),
+            ("soana.ending_kept_life", "start", 20, "Requires", "soana.trickster.friends"),
+            ("soana.ending_kept_life", "start", 21, "Forbids", "soana.trickster.friends"),
+            ("soana.ending_native_loss", "dead", 15, "Forbids", "soana.partner.homecoming_kept"),
+            ("soana.ending_native_loss", "dead", 17, "Requires", "soana.partner.homecoming_kept"),
+            ("soana.trickster.epilogue.unvowed", "start", 19, "Requires", "soana.trickster.accounting_invited"),
+            ("soana.lastcall.page", "page", 24, "Requires", "soana.partner.quiet_homecoming"),
+        )
+        for sid, nid, index, field, receipt in cases:
+            with self.subTest(scene=sid, paragraph=index, receipt=receipt):
+                story = copy.deepcopy(self.story)
+                block = next(n for s in story["Scenes"] if s["Id"] == sid
+                             for n in s["Nodes"] if n["Id"] == nid)["Paragraphs"][index]
+                block[field].remove(receipt)
+                self.assertTrue(any(f"{sid}/{nid}/paragraph[{index}]" in error
+                                    and "missing stance acceptance/history guard" in error
+                                    for error in payoff_lint.check(story)))
+
     def test_mixed_ordinary_late_paragraph_keeps_earned_alternatives(self):
         story = copy.deepcopy(self.story)
         scene = next(s for s in story["Scenes"] if s["Id"] == "areelu.trickster.finale.prior_lien")

@@ -51,14 +51,26 @@ internal static class EarnedOutcomeInventoryTests
             throw new InvalidOperationException("Insert cycle in " + scene + "/" + node);
         }
 
-        var devarra = World("devarra.trickster.tested");
+        Snapshot AcceptedDevarra()
+        {
+            var state = World("devarra.trickster.tested", "devarra.trickster.returned");
+            check(!state.Has("devarra.trickster.late_committed"), "A submitted story supplies Devarra's unplayed late yes.");
+            state.Chapter = 5; Refresh(state);
+            check(Rules.Available(story, S("devarra.trickster.after.late_proposal"), state), "Devarra's campaign proposal is unavailable.");
+            Select("devarra.trickster.after.late_proposal", "offer", 0, state);
+            state.Chapter = 6; Refresh(state);
+            return state;
+        }
+        var devarra = AcceptedDevarra();
         check(devarra.Has("devarra.trickster.late_committed"), "Earned Devarra late road lost.");
         // Main.State supplies this built-in aggregate from the native path.
         devarra.Flags.UnionWith(new[] { "swarm", "inhuman" }); Refresh(devarra);
         check(!devarra.Has("devarra.trickster.late_committed"), "Swarm retains Devarra's late road.");
         // A separate native history tests death; removing Swarm from its
         // old snapshot must never erase a witnessed conversion epoch.
-        devarra = World("devarra.trickster.tested", "devarra.dead_lair");
+        devarra = AcceptedDevarra();
+        devarra.Flags.Remove("devarra.trickster.returned");
+        devarra.Flags.Add("devarra.dead_lair"); Refresh(devarra);
         check(!devarra.Has("devarra.trickster.late_committed"), "Unreturned death retains late entitlement.");
         devarra.Flags.Add("devarra.trickster.returned"); Refresh(devarra);
         check(devarra.Has("devarra.trickster.late_committed"), "Matching earned Devarra return over-blocked.");
