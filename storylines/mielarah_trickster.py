@@ -448,7 +448,7 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
 "If he stays, he stays because he chose to, knowing why. Not because you arranged him like a chair at a dinner." {n}Her voice does not rise.{/n} "That is the only way Oskel stands at my elbow."''',
        c('"Pay him. Tell him everything."', "paid", flags=(MINDER, PAID, MEANT)),
        c('"Then leave it. I won\'t spend your gold on my theory."', "withdrawn", flags=(REFUSED,))),
-    nar("paid", '''{n}She does it that night, at the table with nobody at the next one. You are not invited; you watch from the bar. She talks, and he listens with his big scarred hands flat on the table, and at the end she counts coins into a purse, all of them, and pushes it across to him.{/n}
+    nar("paid", '''{n}She calls Oskel to the table and sends you to the bar. Nobody sits at the next table. She talks, and he listens with his big scarred hands flat on the table, and at the end she counts coins into a purse, all of them, and pushes it across to him.{/n}
 {n}Oskel looks at the purse, and at her, and across the room at you. Then he puts the purse inside his shirt, stands, picks up his stool, carries it round the table, and sets it down at her elbow. He sits on it.{/n}
 {n}When she comes to the bar afterwards her face has no expression at all.{/n} "He said, 'Figured.' Then he said a man doesn't retire on a debt, and he'll buy his quiet life after Colyphyr, out of his own wages, thank you." {n}She takes the cup out of your hand and finishes it.{/n} "I have just paid a man his freedom so that he can sit where my curse will reach him. If he dies at my elbow, Commander, I'll know whose theory put him there, and so will you, and neither of us will ever be able to pretend otherwise."''',
         c("[Leave her to her list.]")),
@@ -932,7 +932,7 @@ remote(P + "charter.rumour", "Six crew in two years", [
     nar("muddle", '''{n}The broadsheets disagree about everything but the count. One man fell from the yard, or was pushed, or was drunk; one choked, or was poisoned, or was cursed twice. You need the rolls, not the gossip.{/n}''',
         c("[Pay the clerk for the rolls.]", "clerk", crusade=("Finances", -200)),
         c("[Put the broadsheet down.]", abort=True)),
-    nar("clerk", '''{n}The clerk is a thin tiefling who keeps the Isles' shipping rolls in a cellar and charges by the line. Two days later he brings you six entries in a copying hand, with the watch, the weather and the station of every man.{/n}''',
+    nar("clerk", '''{n}The clerk is a thin tiefling who keeps the Isles' shipping rolls in a cellar and charges by the line. He opens a roll already copied for the merchants buying her cargo and shows you six entries, with the watch, the weather and the station of every man.{/n}''',
         c("Continue", "rule")),
     nar("rule", '''{n}The entries name the dead sailors' stations, the watch and the weather. In each account the captain was beside the man who died. Nobody entered an injury against her name.{/n} {n}The pattern is worth putting to her. She has records of her own.{/n}''',
         c("Continue", "write")),
@@ -1093,7 +1093,7 @@ remote(P + "raid.overboard", "The man at the plank", [
     nar("leave", '''{n}He hears it without any change in his face. Then he nods once, the way a bosun acknowledges an order he did not want, and goes back into the dark toward the moorings.{/n}
 {n}Starcatcher is gone from Colyphyr by morning, the crew's ship now, with her captain's hat nailed to the mainmast for luck.{/n}''',
         c("[Put it out of your mind.]", flags=(CLOSED,))),
-    nar("act", '''{n}The expedition is paid for until you are back in Alushinyrra, and on this ship, until then, your word is the captain's. You go down to the moorings with Oskel at your back and the crew's pay in a sack.{/n}
+    nar("act", '''{n}The expedition ended at Colyphyr. You have no command here. Oskel will take the ship back for his captain if you can get the mutineers off her deck. You go down to the moorings with Oskel at your back and the crew's pay in a sack.{/n}
 {n}They are at the rail when you come aboard, twenty men who hanged their captain and drowned her body, and they know what you are.{/n}''',
         c('[Intimidation DC 24] "Off my ship. All of you. Your wages are on the quay. Take them and don\'t come back aboard."',
           check=dict(Skill="CheckIntimidate", DC=24, Success="cleared", Failure="bought", CommanderOnly=True)),
@@ -1121,15 +1121,14 @@ remote(P + "raid.overboard", "The man at the plank", [
 ], requires=("trickster", "trickster.ever", DEAD_LATCH, VOYAGE), forbids=(MINDER, SELF, RETURNED, CLOSED, OVERBOARD), delay=24,
     chapters=(4,), kind="event", TricksterDevice=True, TricksterState="raid")
 
-# Sol r3 INT: carried into Chapter 5 unread, the same news reaches Drezen: the crew bring her ship north to sell the rest of
-# the charter back to the Commander. Same nodes, its own opening; the two never both play (OVERBOARD / CLOSED).
+# Sol r3 INT: carried into Chapter 5 unread, the same news reaches Drezen: the crew bring her ship north to sell it to the crusade, with Oskel guiding them to expose the mutiny. Same nodes, its own opening; the two never both play (OVERBOARD / CLOSED).
 _late = copy.deepcopy(SCENES[-1]["Nodes"])
 for _node in _late:
     if _node["Id"] == "start":
-        _node["Text"] = '''{n}Starcatcher comes down over Drezen's walls one grey morning with her captain's hat nailed to the mainmast, and the crew send word to the citadel that they would like the rest of the charter fee. Oskel brings the message. He does not go back to the ship afterwards. He stands at the edge of the lamplight in your quarters, broad as a hatch cover, with the slaver's brand gone white on the side of his neck and his wings folded tight.{/n}
+        _node["Text"] = '''{n}Starcatcher comes down over Drezen's walls one grey morning with her captain's hat nailed to the mainmast, and the crew offer her to the crusade as a troop carrier. No buyer in the Isles would touch a ship whose captain they hanged; here they hope nobody has heard. Oskel steered them through the Wound. He wanted the ship within your reach. Oskel brings the message. He does not go back to the ship afterwards. He stands at the edge of the lamplight in your quarters, broad as a hatch cover, with the slaver's brand gone white on the side of his neck and his wings folded tight.{/n}
 {n}"Commander. There's a thing the crew won't tell you. I'm telling you." His voice is low and careful. "It's about how we buried the captain."{/n}'''
     elif _node["Id"] == "act":
-        _node["Text"] = '''{n}The charter is yours until it is paid off, and on that ship, until then, your word is the captain's. You go down to the mooring field below the walls with Oskel at your back and the crew's pay in a sack.{/n}
+        _node["Text"] = '''{n}The expedition ended at Colyphyr. This is no longer your ship to command. Oskel will take her back for his captain if you can get the mutineers off her deck. You go down to the mooring field below the walls with Oskel at your back and the crew's pay in a sack.{/n}
 {n}They are at the rail when you come aboard, twenty men who hanged their captain and drowned her body, and they know what you are.{/n}'''
     elif _node["Id"] == "cleared":
         _node["Text"] = '''{n}By noon the ship is empty but for you, Oskel, and six hands from the Drezen field who will crew anything for silver and ask nothing. Oskel takes the wheel. He flies her the way she flew her, a little heavy on the helm.{/n}
@@ -1363,3 +1362,64 @@ for _beat in SCENES:
                 _paragraph["Text"] = '{n}In Drezen Mielarah still sent for her escort before coming down. The Commander walked at her elbow while she watched every scaffold they passed. The city remembered the boy who had carried her rope.{/n}'
             if D + "offered_prisoner" in _paragraph["Requires"]:
                 _paragraph["Text"] = '{n}When a porter stepped too close, she stopped unloading and sent him forward. The Commander had once offered her a prisoner for that station. She never let anyone be posted there again.{/n}'
+
+# Round 3 authored outcome stages: dates begin at posting/departure, never at the native death.
+UNPAID_SEARCH = P + "raid.search_unpaid"
+UNPAID_NORTH = P + "raid.search_unpaid_north"
+CHARTER_SENT = P + "charter.request_sent"
+
+
+def _round3_route():
+    by = {beat["Id"]: beat for beat in SCENES}
+    rumour = by[P + "charter.rumour"]
+    ns = {node["Id"]: node for node in rumour["Nodes"]}
+    # Keep the old reply and its answer identity for saves; new posting ends at the post.
+    reply = copy.deepcopy(ns["reply"])
+    ns["write"]["Choices"][0]["Next"] = "reply"
+    ns["write"]["Choices"][0]["Set"].append(CHARTER_SENT)
+    ns["reply"]["Text"] = "{n}The portal-merchant takes the sealed request and its fee. His next dispatch leaves tonight. He tells you to ask for an answer in nine days.{/n}"
+    ns["reply"]["Choices"][0]["Text"] = "[Leave the post.]"
+    ns["reply"]["Choices"][0]["Set"] = []
+    rumour["Forbids"].append(CHARTER_SENT)
+    reply["Id"] = "start"
+    remote(P + "charter.acceptance", "The captain's answer", [reply],
+        requires=("trickster", "trickster.ever", CHARTER_SENT),
+        forbids=(CHARTER, CLOSED, KILLED), delay=216, chapters=(5,), kind="letter")
+    # Only the already-inbound direct offer can use the old direct-contact predicate.
+    direct = P + "charter.direct_inbound"
+    for sid in (P + "tavern.charter", P + "charter.letter"):
+        for node in by[sid]["Nodes"]:
+            for answer in node["Choices"]:
+                if CHARTER in answer["Set"]:
+                    answer["Set"].append(direct)
+    DERIVED[P + "charter.direct"] = [[CHARTER, direct]]
+
+    for suffix, wait, launch in (("", 264, UNPAID_SEARCH), ("_drezen", 936, UNPAID_NORTH)):
+        departure = by[P + "raid.overboard" + suffix]
+        dn = {node["Id"]: node for node in departure["Nodes"]}
+        result = copy.deepcopy(dn["blind"])
+        result["Id"] = "start"
+        # The failed outcome retains the existing late-search cost.
+        result["Choices"][0]["Set"].append(LATE)
+        # The refusal still goes to blind. The hat and closure belong to its dated return.
+        dn["blind"]["Text"] = (
+            "{n}The grey figure vanishes. Oskel keeps his hands on the wheel. He has no bearing, only the water where they threw her overboard. He takes Starcatcher out to search it.{/n}"
+            if not suffix else
+            "{n}The grey figure vanishes. Oskel turns Starcatcher south. A fortnight to the Ishiar, eleven days to search, a fortnight home. He has no bearing to steer by.{/n}")
+        dn["blind"]["Choices"][0]["Next"] = "blind_departure"
+        dn["blind"]["Choices"][0]["Text"] = "[Watch the ship leave.]"
+        dn["blind"]["Choices"][0]["Set"] = [launch]
+        departure["Nodes"].append(nar("blind_departure",
+            "{n}Her lanterns dwindle beyond the moorings. Oskel has gone to look; no word has come back.{/n}",
+            c("[Leave the moorings.]")))
+        # Failure remains deliverable after a chapter transition; no second rescue can race it.
+        remote(P + "raid.search_failed" + suffix, "The captain's hat", [result],
+            requires=("trickster.now", "trickster.ever", launch), forbids=(CLOSED, RETURNED),
+            delay=wait, chapters=(5,) if suffix else (4, 5), kind="event",
+            TricksterDevice=True, TricksterState="raid")
+    for beat in SCENES:
+        if beat["Id"] in (P + "raid.ashore", P + "raid.ashore_drezen"):
+            beat["Forbids"] += [UNPAID_SEARCH, UNPAID_NORTH]
+
+
+_round3_route()

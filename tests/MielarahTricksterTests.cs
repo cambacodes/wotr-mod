@@ -93,7 +93,7 @@ internal static class MielarahTricksterTests
         // eng7-f6a end
         var reactions = story.Scenes.Where(s => s.Relationship == "mielarah" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "mielarah" && !s.Reaction && s.Owner == "Mielarah").ToArray();
-        var deck = own.Where(s => s.Id.StartsWith(D, StringComparison.Ordinal)).ToArray();
+        var deck = own.Where(s => s.Id.StartsWith(D, StringComparison.Ordinal) && !Rules.IsRemote(s)).ToArray();
         Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
@@ -252,7 +252,7 @@ internal static class MielarahTricksterTests
         // Sol r3 TRK: the search is bought from the Gravedragger (the Commander's name, hour blank); refusing him loses her.
         var bought = sentBack.Where(r => r.Has(P + "cost.herald_debt")).ToList();
         check(bought.Count > 0 && bought.All(r => !r.Has("mielarah.closed"))
-              && sentBack.Where(r => !r.Has(P + "cost.herald_debt")).All(r => r.Has("mielarah.closed"))
+              && sentBack.Where(r => !r.Has(P + "cost.herald_debt")).All(r => r.Has(P + "raid.search_unpaid") && !r.Has("mielarah.closed"))
               && overboard.Nodes.Single(n => n.Id == "price").Choices[0].Mythic == "PlayerIsTrickster",
             "Sol r3 TRK: the late rescue is not a priced [Trickster] bargain with the Gravedragger.");
         // Sol r3 INT: carried unread into Chapter 5, the same fallback reaches Drezen; the two never both play.
@@ -263,6 +263,18 @@ internal static class MielarahTricksterTests
               && Program.Walk(overboardLate, unprepared5).Any(r => r.Has(P + "cost.herald_debt") && !r.Has("mielarah.closed"))
               && !Rules.Available(story, overboardLate, With(unprepared5, P + "raid.sent_back")),
             "Sol r3 INT: an unprepared hanging carried into Chapter 5 has no fallback.");
+        foreach (var pair in new[] { (overboard, unprepared, "", 264), (overboardLate, unprepared5, "_drezen", 936) })
+        {
+            var failed = S(P + "raid.search_failed" + pair.Item3);
+            var launched = Program.Walk(pair.Item1, pair.Item2).First(r => r.Has(
+                P + (pair.Item3 == "" ? "raid.search_unpaid" : "raid.search_unpaid_north")));
+            check(!launched.Has("mielarah.closed")
+                  && !Rules.Available(story, failed, Later(story, launched, pair.Item4 - 1))
+                  && Rules.Available(story, failed, Later(story, launched, pair.Item4))
+                  && Program.Walk(failed, Later(story, launched, pair.Item4)).All(r => r.Has("mielarah.closed"))
+                  && !Rules.Available(story, ashore, Later(story, launched, pair.Item4)),
+                "Unpaid search must return its hat only after its full journey.");
+        }
         var ashoreWorld = Later(story, bought[0], 49);
         check(Rules.Available(story, ashore, ashoreWorld) && !Rules.Available(story, rock, ashoreWorld), "Trk_Mielarah_LateAfterDeath: she never comes ashore, or the rock plays without her ship.");
         var ashoreBack = Program.Walk(ashore, ashoreWorld).First(r => r.Has(P + "returned"));
@@ -335,7 +347,12 @@ internal static class MielarahTricksterTests
             check(Rules.IsRemote(rumour) && Rules.Available(story, rumour, stranger) && !Rules.Available(story, charterLetter, stranger)
                   && !Rules.Available(story, rumour, World(story, 5, "trickster", "trickster.ever", captain)),
                 "Trk_Mielarah_Charter: no Chapter 5 entry without her table (" + captain + ").");
-            var signed = Program.Walk(rumour, stranger).Where(r => r.Has(P + "charter")).ToList();
+            var posted = Program.Walk(rumour, stranger).First(r => r.Has(P + "charter.request_sent"));
+            var acceptance = S(P + "charter.acceptance");
+            check(!posted.Has(P + "charter") && !Rules.Available(story, acceptance, Later(story, posted, 215))
+                  && Rules.Available(story, acceptance, Later(story, posted, 216)),
+                "The charter accepts before its nine-day reply.");
+            var signed = Program.Walk(acceptance, Later(story, posted, 216)).Where(r => r.Has(P + "charter")).ToList();
             check(signed.Count > 0 && signed.All(r => r.Has(P + "primed.pattern") && r.Has(P + "cost.late") && r.Has("mielarah.started"))
                   && !Later(story, signed[0], 10, 5).Has(P + "contact"),
                 "Trk_Mielarah_Charter: the rumour does not bring her north, or has no road to the commit (" + captain + ").");
@@ -387,8 +404,8 @@ internal static class MielarahTricksterTests
             var extra = new List<string> { "trickster.ever", P + "landfall", "mielarah.started" };
             if (needs.Contains(P + "cost.ship_lost") || needs.Contains(P + "cost.oskel")) extra.Add(P + "returned");
             if (needs.Contains(D + "declined") || s.Id == D + "after_no") extra.Add(P + "declined");
-            if (needs.Contains("mielarah.trickster.charter")) { extra.Remove(P + "landfall"); extra.Add("captain.kerz"); extra.Add("captain.kerz"); }
-            if (s.Id == D + "other_voyage") { extra.Remove(P + "landfall"); extra.Add("captain.kerz"); }
+            if (needs.Contains("mielarah.trickster.charter")) { extra.Remove(P + "landfall"); extra.Add("captain.kerz"); extra.Add(P + "charter.direct_inbound"); }
+            if (s.Id == D + "other_voyage") { extra.Remove(P + "landfall"); extra.Add("captain.kerz"); extra.Add(P + "charter.direct_inbound"); }
             if (s.Id == D + "fourth") extra.Add(P + "storm.owned");
             var w = World(story, 5, extra.Concat(needs).Distinct().ToArray());
             check(Rules.Available(story, s, Later(story, w, s.DelayHours + 1)), "A Chapter 5 beat never opens: " + s.Id);
@@ -519,8 +536,27 @@ internal static class MielarahTricksterTests
                 var visited = Visited(wounded, state);
                 check(visited.Contains(refused ? "sum_refused" : "sum") && !visited.Contains(refused ? "sum" : "sum_refused"),
                     "The wounded scene asks for moral advice after she refused it: " + suffix);
+                var joined = After(wounded, state, refused ? "sum_refused" : "sum", 0).First();
+                var alone = After(wounded, state, refused ? "sum_refused" : "sum", 1).First();
+                var returnJoined = S(D + "wounded.return" + suffix);
+                var returnAlone = S(D + "wounded.return_alone" + suffix);
+                check(!Rules.Available(story, returnJoined, Later(story, joined, 23))
+                      && Rules.Available(story, returnJoined, Later(story, joined, 24))
+                      && !Rules.Available(story, returnAlone, Later(story, alone, 23))
+                      && Rules.Available(story, returnAlone, Later(story, alone, 24))
+                      && Program.Walk(returnJoined, Later(story, joined, 24)).All(r => r.Has(D + "wounded_carried")),
+                    "Evacuation resolves before a day and night have passed.");
+                foreach (var groundHub in new[] { "mielarah.presence", "mielarah.presence.arcade" })
+                {
+                    var presence = story.Presences[groundHub];
+                    check(!Rules.ContactWindowsAvailable(presence.ContactWindows, joined)
+                          && Rules.ContactWindowsAvailable(presence.ContactWindows, Later(story, joined, 24))
+                          && !Rules.ContactWindowsAvailable(presence.ContactWindows, Later(story, alone, 71))
+                          && Rules.ContactWindowsAvailable(presence.ContactWindows, Later(story, alone, 72)),
+                        "The ground presence bypasses the evacuation or her two days aboard.");
+                }
                 var sum = refused ? "sum_refused" : "sum";
-                check(After(wounded, state, sum, 0).All(w => w.Has(D + "wounded_carried") && !w.Has(D + "wounded_left"))
+                check(After(wounded, state, sum, 0).All(w => w.Has(D + "wounded_joined") && !w.Has(D + "wounded_carried") && !w.Has(D + "wounded_left"))
                       && After(wounded, state, sum, 1).All(w => w.Has(D + "wounded_left") && !w.Has(D + "wounded_carried")),
                     "Wounded transport lost its existing outcomes: " + suffix);
             }
@@ -544,5 +580,85 @@ internal static class MielarahTricksterTests
         }
         Console.WriteLine("PASS: Mielarah Trickster (Trk_Mielarah_*): the rule read, the bosun, the hanging, the storm, the landfall, the charter, "
                           + deck.Length / 2 + " Chapter 5 beats and the wheel.");
+    }
+}
+
+// Bounded timing regressions, independent of the route's campaign-wide reachability search.
+internal static class MielarahRound3Tests
+{
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        const string P = "mielarah.trickster.", D = "mielarah.deck.";
+        const string Unit = "9d9c523bc2b17434bb66df212b127187", Drezen = "2570015799edf594daf2f076f2f975d8";
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        Snapshot World(int chapter, params string[] flags)
+        {
+            var w = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "",
+                CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000 } };
+            w.Flags.UnionWith(flags);
+            w.Flags.Add("chapter_later");
+            w.AvailableContacts.Add(Unit);
+            Rules.Complete(story, w);
+            foreach (var flag in w.Flags) w.Times[flag] = 4800;
+            return w;
+        }
+        Snapshot Later(Snapshot w, int hours)
+        {
+            var next = Program.Copy(w);
+            next.Hour += hours;
+            Rules.Complete(story, next);
+            return next;
+        }
+        void Boundary(Scene s, Snapshot w, int hours)
+        {
+            check(!Rules.Available(story, s, Later(w, hours - 1)), s.Id + " delivered early");
+            check(Rules.Available(story, s, Later(w, hours)), s.Id + " missed its return boundary");
+        }
+        foreach (var northern in new[] { false, true })
+        {
+            var suffix = northern ? "_drezen" : "";
+            var w = World(northern ? 5 : 4, "trickster", "trickster.ever", "mielarah.dead",
+                "mielarah.dead.latched", "mielarah.voyage_begun");
+            var unpaid = P + (northern ? "raid.search_unpaid_north" : "raid.search_unpaid");
+            var launched = Program.Walk(S(P + "raid.overboard" + suffix), w).First(r => r.Has(unpaid));
+            check(!launched.Has("mielarah.closed") && !launched.Has(P + "returned"), "Departure resolves unpaid search");
+            var failed = S(P + "raid.search_failed" + suffix);
+            Boundary(failed, launched, northern ? 936 : 264);
+            check(Program.Walk(failed, Later(launched, northern ? 936 : 264)).All(r => r.Has("mielarah.closed")),
+                "Failed search does not close after delivery");
+            foreach (var rescue in new[] { "raid.ashore", "raid.ashore_drezen" })
+                check(!Rules.Available(story, S(P + rescue), Later(launched, 1000)), "Unpaid search receives paid rescue");
+        }
+        var stranger = World(5, "trickster", "trickster.ever", "captain.kerz", "mielarah.met");
+        var posted = Program.Walk(S(P + "charter.rumour"), stranger).First(r => r.Has(P + "charter.request_sent"));
+        check(!posted.Has(P + "charter"), "Posting accepts the charter");
+        Boundary(S(P + "charter.acceptance"), posted, 216);
+        var accepted = Program.Walk(S(P + "charter.acceptance"), Later(posted, 216)).First();
+        check(!accepted.Has(P + "contact"), "Acceptance delivers the ship");
+        Boundary(S(P + "charter.arrival"), accepted, 336);
+        foreach (var suffix in new[] { "", ".arcade" })
+        {
+            var w = World(5, "trickster", "trickster.ever", P + "landfall", "mielarah.started", D + "corrected");
+            if (suffix != "") { w.Flags.Add("mielarah.presence.failed"); Rules.Complete(story, w); }
+            foreach (var join in new[] { true, false })
+            {
+                var departure = Program.Walk(S(D + "wounded" + suffix), w, (node, state) =>
+                    check(Rules.ContactWindowsAvailable(story.Presences["mielarah.presence"].ContactWindows, state),
+                        "Evacuation withdraws contact before the departure dialogue ends"))
+                    .First(r => r.Has(D + (join ? "wounded_joined" : "wounded_left")));
+                var returned = S(D + (join ? "wounded.return" : "wounded.return_alone") + suffix);
+                check(!departure.Has(D + "wounded_carried"), "Rescue memory precedes rescue");
+                Boundary(returned, departure, 24);
+                check(Program.Walk(returned, Later(departure, 24)).All(r => r.Has(D + "wounded_resolved")),
+                    "Evacuation return has no resolution");
+                foreach (var hub in new[] { "mielarah.presence", "mielarah.presence.arcade" })
+                {
+                    var windows = story.Presences[hub].ContactWindows;
+                    var end = join ? 24 : 72;
+                    check(!Rules.ContactWindowsAvailable(windows, Later(departure, end - 1))
+                        && Rules.ContactWindowsAvailable(windows, Later(departure, end)), "Ground placement bypasses absence");
+                }
+            }
+        }
     }
 }
