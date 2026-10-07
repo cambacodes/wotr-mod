@@ -1393,13 +1393,12 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.voice.where/square/0` — Continue
    - `terendelev.trickster.voice.where/end/0` — [Leave him to his cup.]
 
-56. **Galfrey: The Green Crows** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.ch3.crows","chapter":3,"day":10,"completed":true,"choices":[["start",2],["first.select.new_name",0],["first",0],["frame",0],["mooted",0],["end",0]]} -->
+56. **Galfrey: The Green Crows** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.ch3.crows","chapter":3,"day":10,"completed":true,"choices":[["start",2],["first",0],["frame",0],["mooted",0],["end",0]]} -->
    Scene `galfrey.trickster.ch3.crows`; chapters 3–3 (only 3); wait at least 0h after the latest prerequisite; complete.
    Open: "Will you ride with the minor orders again, Your Majesty?"
    Need all: `galfrey.present_now`; Blocked by: `galfrey.trickster.crows_mooted`, `galfrey.trickster.crows_refused`, `galfrey.dead`.
    Native answer-list host: `44704bddb6223b84989dd26bcf20b601`.
-   - `galfrey.trickster.ch3.crows/start/2` — Continue; Blocked by: `galfrey.early.kitrane.mooted`, `galfrey.early.kitrane.refused`
-   - `galfrey.trickster.ch3.crows/first.select.new_name/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+   - `galfrey.trickster.ch3.crows/start/2` — Continue; Need all: `galfrey.trickster.native_incognito_service`; Blocked by: `galfrey.early.kitrane.mooted`, `galfrey.early.kitrane.refused`
    - `galfrey.trickster.ch3.crows/first/0` — Continue
    - `galfrey.trickster.ch3.crows/frame/0` — [As a friend] "Don't retire her. Kitrane deserves a longer war than the Queen will be given."; records `galfrey.trickster.crows_mooted`
    - `galfrey.trickster.ch3.crows/mooted/0` — [Say nothing more about it.]
@@ -1770,12 +1769,11 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.wound.weeps/test/1` — [Bind the wound and go back to sleep.]
    - `terendelev.trickster.wound.weeps/sleep/0` — [Break camp.]
 
-92. **Galfrey: Standing orders** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"galfrey.trickster.ch3.standing_orders","chapter":3,"day":11,"completed":true,"choices":[["start",0],["orders",0],["why.select.drezen",0],["why",0],["take",0]]} -->
+92. **Galfrey: Standing orders** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"galfrey.trickster.ch3.standing_orders","chapter":3,"day":11,"completed":true,"choices":[["start",0],["orders",0],["why",0],["take",0]]} -->
    Scene `galfrey.trickster.ch3.standing_orders`; chapters 3–3 (only 3); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster`, `galfrey.present_now`; Blocked by: `galfrey.trickster.crows_briefed`, `galfrey.dead`, `trickster.failed`; Need one of: `galfrey.early.kitrane.mooted`, `galfrey.trickster.crows_mooted`, `galfrey.trickster.crows_pressed`.
    - `galfrey.trickster.ch3.standing_orders/start/0` — "If the Queen ever falls where I cannot reach her, I want the Crows to have orders."
-   - `galfrey.trickster.ch3.standing_orders/orders/0` — "If she is dying, and she calls herself Kitrane, you carry out Kitrane. Not the Queen. Whatever it costs, and whoever asks."
-   - `galfrey.trickster.ch3.standing_orders/why.select.drezen/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+   - `galfrey.trickster.ch3.standing_orders/orders/0` — "If she is dying, and she calls herself Kitrane, you carry out Kitrane. Not the Queen. Whatever it costs, and whoever asks."; Need all: `galfrey.trickster.native_incognito_service`
    - `galfrey.trickster.ch3.standing_orders/why/0` — [Pay 100 Finances] "For a cart, a cloak, and a surgeon who does not know her face."; crusade Finances -100; records `galfrey.trickster.crows_briefed`, `galfrey.trickster.standing_orders.paid`
    - `galfrey.trickster.ch3.standing_orders/take/0` — [Leave the Crows to their tent.]
 
@@ -7040,13 +7038,12 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.first_words/hello/0` — Continue
    - `eliandra.trickster.ch5.first_words/end/0` — [Leave her to her dead.]; records `eliandra.trickster.dead_named`
 
-562. **Galfrey: As Kitrane** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.kitrane","chapter":5,"day":102,"completed":true,"choices":[["start",1],["never.select.new_name",0],["never",0],["offer",0],["tell",0],["accept",0]]} -->
+562. **Galfrey: As Kitrane** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.kitrane","chapter":5,"day":102,"completed":true,"choices":[["start",1],["never",0],["offer",0],["tell",0],["accept",0]]} -->
    Scene `galfrey.trickster.alive.kitrane`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Will you hear one of my plans before I put it into motion?"
    Need all: `trickster`, `galfrey.final`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.trickster.alive.evening`, `trickster.failed`.
    Native answer-list host: `fed166af2f1d509478d18ea63a40339f`.
-   - `galfrey.trickster.alive.kitrane/start/1` — Continue; Blocked by: `galfrey.native_refused`
-   - `galfrey.trickster.alive.kitrane/never.select.new_name/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+   - `galfrey.trickster.alive.kitrane/start/1` — Continue; Need all: `galfrey.trickster.native_incognito_service`; Blocked by: `galfrey.native_refused`
    - `galfrey.trickster.alive.kitrane/never/0` — Continue
    - `galfrey.trickster.alive.kitrane/offer/0` — "Come out tonight, in the Crows' surcoat. Nobody will look twice. I'll tell you one plan of mine before I carry it out, and you can watch me keep it."; records `galfrey.trickster.alive.evening`
    - `galfrey.trickster.alive.kitrane/tell/0` — [Tell her the whole plan: the empty wagons up the eastern road, loudly, and the real column a day behind by the dry riverbed.]; records `galfrey.trickster.alive.plan_told`
@@ -11557,7 +11554,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 986. **Elyanka: Her Lady's mercy** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.wards","chapter":5,"day":121,"completed":true,"choices":[["start",0],["her",0],["explain",0],["explain2",0],["stop",0],["stop2",0]]} -->
    Scene `elyanka.trickster.beat.wards`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
-   Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.wards.stopped`, `elyanka.trickster.wards.let`, `elyanka.trickster.wards.hopeless_only`.
+   Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.wards.stopped`, `elyanka.trickster.wards.let`, `elyanka.trickster.wards.hopeless_only`, `crossroute.iomedae.unavailable`.
    - `elyanka.trickster.beat.wards/start/0` — Continue
    - `elyanka.trickster.beat.wards/her/0` — [Wait until she has finished.]
    - `elyanka.trickster.beat.wards/explain/0` — Continue
@@ -14527,10 +14524,10 @@ Unavailable states: `eritrice.lost_at_council`, `eritrice.epoch_unavailable`; fa
   - `eritrice.trickster.fought.tabled/stranger/1` — [Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."; Blocked by: `eritrice.threatened_by_force`
   - `eritrice.trickster.fought.tabled/lover/0` — [Raise a point of order] "Point of order: 'contribute your essence or I'll take it by force' was the chair's own motion. I seconded it. I move we table the grudge."; Need all: `eritrice.threatened_by_force`; Mythic: PlayerIsTrickster
   - `eritrice.trickster.fought.tabled/lover/1` — [Answer her plainly] "No point of order. I chose the Lady in Shadow over your Council, and I would choose it again. I am asking what it costs."; Blocked by: `eritrice.threatened_by_force`
-  - `eritrice.trickster.fought.tabled/ruling_betrayal/0` — [Make the formal apology before the reconvened Council] "Convene your session. I'll say it."; crusade Favors -200; records `eritrice.trickster.apology_arranged`, `eritrice.trickster.cost.grudge`, `eritrice.trickster.cost.essence_taken`
+  - `eritrice.trickster.fought.tabled/ruling_betrayal/0` — [Arrange a special sitting; circulate the apology to the Council] "Convene your session. I'll say it."; crusade Favors -200; records `eritrice.trickster.apology_arranged`, `eritrice.trickster.cost.grudge`, `eritrice.trickster.cost.essence_taken`
   - `eritrice.trickster.fought.tabled/ruling_betrayal/1` — [Let the grudge stand on every agenda] "Read it every time. I'll be there to hear it."; records `eritrice.trickster.returned`, `eritrice.trickster.cost.grudge`, `eritrice.trickster.cost.essence_taken`, `eritrice.trickster.cost.grudge_on_agenda`
   - `eritrice.trickster.fought.tabled/ruling_betrayal/2` — [Move to strike the grudge] "Then I move the grudge be struck from the record."
-  - `eritrice.trickster.fought.tabled/ruling/0` — [Make the formal apology before the reconvened Council] "Convene your session. I'll say it."; crusade Favors -200; records `eritrice.trickster.apology_arranged`, `eritrice.trickster.cost.grudge`, `eritrice.trickster.cost.essence_taken`
+  - `eritrice.trickster.fought.tabled/ruling/0` — [Arrange a special sitting; circulate the apology to the Council] "Convene your session. I'll say it."; crusade Favors -200; records `eritrice.trickster.apology_arranged`, `eritrice.trickster.cost.grudge`, `eritrice.trickster.cost.essence_taken`
   - `eritrice.trickster.fought.tabled/ruling/1` — [Let the grudge stand on every agenda] "Read it every time. I'll be there to hear it."; records `eritrice.trickster.returned`, `eritrice.trickster.cost.grudge`, `eritrice.trickster.cost.essence_taken`, `eritrice.trickster.cost.grudge_on_agenda`
   - `eritrice.trickster.fought.tabled/ruling/2` — [Move to strike the grudge] "Then I move the grudge be struck from the record."
   - `eritrice.trickster.fought.tabled/struck/0` — [Close the correspondence] "Accepted."; records `eritrice.closed`
@@ -15893,6 +15890,7 @@ Unavailable states: `galfrey.dead`, `galfrey.killed_by_commander`, `galfrey.epoc
 - `galfrey.dead` is overridden only by earned `galfrey.trickster.returned`.
 - Recovery for **dead**: `galfrey.trickster.return.kitrane` (A knight of the Green Crows); Drezen; hub `galfrey.presence.sergeant`; chapters 5–5; 24h delay. Need all: `trickster.ever`, `galfrey.trickster.kitrane_taken`, `galfrey.dead`, `coronation.seen`, `galfrey.trickster.cost.eulogy`, `trickster.now`; Blocked by: `galfrey.trickster.returned`, `galfrey.closed`, `galfrey.trickster.cost.rent_scar`, `galfrey.trickster.return.kitrane_scarred`, `galfrey.trickster.return.kitrane_stall`, `galfrey.presence.sergeant.failed`. Return witness: `galfrey.trickster.returned`.
   - `galfrey.trickster.return.kitrane/start/0` — Continue
+  - `galfrey.trickster.return.kitrane/start/1` — Continue; Need all: `galfrey.trickster.return.kitrane`
   - `galfrey.trickster.return.kitrane/name/0` — "Your Majesty."; Blocked by: `iomedae.closed`
   - `galfrey.trickster.return.kitrane/name/1` — "Kitrane. You're late."; Blocked by: `iomedae.closed`
   - `galfrey.trickster.return.kitrane/name/2` — [Say nothing. Look at her.]; Blocked by: `iomedae.closed`
@@ -15903,10 +15901,14 @@ Unavailable states: `galfrey.dead`, `galfrey.killed_by_commander`, `galfrey.epoc
   - `galfrey.trickster.return.kitrane/heard/1` — Continue; Need all: `galfrey.trickster.eulogy.legend`, `iomedae.present_now`
   - `galfrey.trickster.return.kitrane/heard/2` — Continue; Need all: `galfrey.trickster.eulogy.sign`
   - `galfrey.trickster.return.kitrane/heard/3` — Continue; Blocked by: `galfrey.trickster.eulogy.true`, `galfrey.trickster.eulogy.legend`, `galfrey.trickster.eulogy.sign`
-  - `galfrey.trickster.return.kitrane/e_true/0` — Continue
-  - `galfrey.trickster.return.kitrane/e_legend/0` — Continue
-  - `galfrey.trickster.return.kitrane/e_sign/0` — Continue
-  - `galfrey.trickster.return.kitrane/e_none/0` — Continue
+  - `galfrey.trickster.return.kitrane/e_true/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_true/1` — Continue; Blocked by: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_legend/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_legend/1` — Continue; Blocked by: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_sign/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_sign/1` — Continue; Blocked by: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_none/0` — Continue; Need all: `galfrey.trickster.native_incognito_service`
+  - `galfrey.trickster.return.kitrane/e_none/1` — Continue; Blocked by: `galfrey.trickster.native_incognito_service`
   - `galfrey.trickster.return.kitrane/why/0` — Continue; Need all: `galfrey.trickster.cost.alone`, `galfrey.trickster.iz.alone_replied`
   - `galfrey.trickster.return.kitrane/why/1` — Continue; Need all: `galfrey.trickster.cost.alone`; Blocked by: `galfrey.trickster.iz.alone_replied`, `galfrey.trickster.cost.found_late`
   - `galfrey.trickster.return.kitrane/why/2` — Continue; Need all: `galfrey.trickster.cost.found_late`, `galfrey.trickster.cortege.paid`
@@ -15983,8 +15985,8 @@ Unavailable states: `horzalah.dead`, `horzalah.trickster.left_free`, `horzalah.e
   - `horzalah.trickster.unmet.knife/met/0` — Continue
   - `horzalah.trickster.unmet.knife/met_first/0` — Continue
   - `horzalah.trickster.unmet.knife/stranger/0` — Continue
-  - `horzalah.trickster.unmet.knife/demise/0` — [Throw the blanket at her face and go for your sword.]
-  - `horzalah.trickster.unmet.knife/demise/1` — "You could have knocked."
+  - `horzalah.trickster.unmet.knife/demise/0` — [Throw the blanket at her face and go for your sword.]; PASS SkillMobility DC 30 (Commander only); success → `fight`; failure → `outmatched`
+  - `horzalah.trickster.unmet.knife/demise/1` — [Catch her knife wrist.] "You could have knocked."; PASS SkillAthletics DC 30 (Commander only); success → `fight`; failure → `outmatched`
   - `horzalah.trickster.unmet.knife/fight/0` — Continue
   - `horzalah.trickster.unmet.knife/beaten/0` — [Tell her your guess] "He won't. He didn't answer you just now, and he won't come for your Guild either. Your own knives will."; Mythic: PlayerIsTrickster
   - `horzalah.trickster.unmet.knife/beaten/1` — [Let her go] "Get out. Go home and tell them whatever you like."
@@ -16010,6 +16012,7 @@ Unavailable states: `horzalah.dead`, `horzalah.trickster.left_free`, `horzalah.e
   - `horzalah.trickster.unmet.knife/refused_go/0` — [Let them in.]; records `horzalah.trickster.refused`, `horzalah.started`, `horzalah.trickster.came_herself`
   - `horzalah.trickster.unmet.knife/go/0` — [Let them in.]; records `horzalah.trickster.refused`, `horzalah.started`, `horzalah.trickster.came_herself`, `horzalah.trickster.let_go`
   - `horzalah.trickster.unmet.knife/kill/0` — Continue; records `horzalah.trickster.killed_unmet`, `horzalah.closed`
+  - `horzalah.trickster.unmet.knife/outmatched/0` — [Double the watch.]; records `horzalah.trickster.guard_called`, `horzalah.closed`
   - `horzalah.trickster.unmet.knife/eng8.guild.arrival/0` — Continue
   - `horzalah.trickster.unmet.knife/eng8.guild.start/0` — Continue
   - `horzalah.trickster.unmet.knife/eng8.guild.looks/0` — Continue
@@ -16070,11 +16073,12 @@ Unavailable states: `horzalah.dead`, `horzalah.trickster.left_free`, `horzalah.e
   - `horzalah.trickster.late.at_night/head/1` — [Offer her a better story] "They'd smell a head. They won't smell an ear. Take a piece of me home and tell them you let me live to wear the loss."; Blocked by: `horzalah.trickster.refused`
   - `horzalah.trickster.late.at_night/head/2` — [Call the guard.]
   - `horzalah.trickster.late.at_night/head/3` — [Offer her a better story] "They'd smell a head. They won't smell an ear. Take a piece of me home and tell them you let me live to wear the loss."; Need all: `horzalah.trickster.let_go`
-  - `horzalah.trickster.late.at_night/take/0` — [Turn your head for her.]
+  - `horzalah.trickster.late.at_night/take/0` — [Turn your head for her. Pledge 100 Favors to keep the lords' men.]
+  - `horzalah.trickster.late.at_night/take/1` — [Put the bargain off.]; ends without completing scene
   - `horzalah.trickster.late.at_night/cut/0` — Continue; on entering page: `horzalah.trickster.cost.ear`, `horzalah.trickster.cost.late`
   - `horzalah.trickster.late.at_night/morning/0` — "No priest. Leave it as it is."
-  - `horzalah.trickster.late.at_night/no_priest/0` — [Pull the knife out of your pillow.]; crusade Favors -100; records `horzalah.trickster.primed`, `horzalah.trickster.cost.ear`, `horzalah.trickster.cost.late`, `horzalah.started`; Blocked by: `chapter.six`
-  - `horzalah.trickster.late.at_night/no_priest/1` — [Pull the knife out of your pillow.]; crusade Favors -100; records `horzalah.trickster.primed`, `horzalah.trickster.cost.ear`, `horzalah.trickster.cost.late`, `horzalah.started`; Need all: `chapter.six`
+  - `horzalah.trickster.late.at_night/no_priest/0` — [Pull out the knife. Spend 100 Favors keeping the lords' men at the front.]; crusade Favors -100; records `horzalah.trickster.primed`, `horzalah.trickster.cost.ear`, `horzalah.trickster.cost.late`, `horzalah.started`; Blocked by: `chapter.six`
+  - `horzalah.trickster.late.at_night/no_priest/1` — [Pull out the knife. Spend 100 Favors keeping the lords' men at the front.]; crusade Favors -100; records `horzalah.trickster.primed`, `horzalah.trickster.cost.ear`, `horzalah.trickster.cost.late`, `horzalah.started`; Need all: `chapter.six`
   - `horzalah.trickster.late.at_night/guard/0` — Continue; records `horzalah.trickster.guard_called`, `horzalah.closed`
   - `horzalah.trickster.late.at_night/eng8.guild.arrival/0` — Continue
   - `horzalah.trickster.late.at_night/eng8.guild.start/0` — Continue
@@ -16127,6 +16131,7 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `horzalah.trickster.unmet.knife/refused_go/0` — [Let them in.]; records `horzalah.trickster.refused`, `horzalah.started`, `horzalah.trickster.came_herself`
 - `horzalah.trickster.unmet.knife/go/0` — [Let them in.]; records `horzalah.trickster.refused`, `horzalah.started`, `horzalah.trickster.came_herself`, `horzalah.trickster.let_go`
 - `horzalah.trickster.unmet.knife/kill/0` — Continue; records `horzalah.trickster.killed_unmet`, `horzalah.closed`
+- `horzalah.trickster.unmet.knife/outmatched/0` — [Double the watch.]; records `horzalah.trickster.guard_called`, `horzalah.closed`
 - `horzalah.trickster.unmet.knife/eng8.guild.free/0` — "Choose well."; records `horzalah.trickster.returned`, `horzalah.trickster.left_free`, `horzalah.trickster.guild.kept`
 - `horzalah.trickster.unmet.knife/eng8.guild.threat_end/0` — Continue; records `horzalah.trickster.threatened`, `horzalah.closed`, `horzalah.trickster.returned`, `horzalah.trickster.guild.kept`
 - `horzalah.trickster.late.at_night/guard/0` — Continue; records `horzalah.trickster.guard_called`, `horzalah.closed`
