@@ -541,6 +541,14 @@ HALL = (c("Continue", "silenced", requires=(SILENCED,)),
 STATE = state()
 GO = (CARRIED,)
 
+# Only a present witness speaks; neither cameo is needed to carry the banner.
+_NOCT_WITNESS = "crossroute.nocticula.available"
+_AREELU_WITNESS = "crossroute.areelu.available"
+_WITNESSES = tuple(dict(answer, Forbids=[*answer.get("Forbids", []), _NOCT_WITNESS, _AREELU_WITNESS]) for answer in HALL) + (
+    c("Continue", "nocticula_objection", requires=(_NOCT_WITNESS,)),
+    c("Continue", "areelu_objection", requires=(_AREELU_WITNESS,), forbids=(_NOCT_WITNESS,)),
+)
+
 SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
     '[Unfurl the banner] "Before anyone goes in: I\'m carrying something."', [
     nar("plant", '''{n}You drive the staff into the scorched rock at the edge, where the ground is hot through your boots, and let the cloth go. The wind out of the Wound takes it at once and stretches it flat toward the rift, the way the wind in the gorge once stretched a cloak.{/n}''',
@@ -548,14 +556,14 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
         c("Continue", "comes", forbids=(WITNESSED,)),
         c("[Furl it again. Not yet.]", abort=True)),
     nar("comes", '''{n}The light at the edge changes. It does not brighten; it steadies, the way light does in a church when the doors swing shut behind you. Iomedae stands beside her banner at the lip of the Worldwound, in her own shape, and you are looking at her, not at her shadow on the stones.{/n}
-{n}Nobody else at the edge says anything. It would not occur to them to.{/n}''',
-        *HALL),
+{n}She plants her feet beside the staff. The cloth strains toward the fire between you.{/n}''',
+        *_WITNESSES),
     nar("here", '''{n}She has only just bowed her head to you. She lifts it when she sees what is in your hand, and for the space of a breath the goddess of valour looks at her banner at the edge of the Wound as a woman looks at a letter in her own hand that she does not remember sending.{/n}
 "The Lady in Shadow wanted you in there for her reasons," {n}says Iomedae.{/n} "Go in for yours."''',
-        *HALL),
-    nar("silenced", '''{n}In the hall below, she silenced the Lady in Shadow for you with one sentence: you have lost the battle for this mortal soul. She does not mention it now. Neither do you. It is enough that you both remember who was in the hall.{/n}''',
+        *_WITNESSES),
+    nar("silenced", '''{n}Before the ascent, in the hall below, she silenced the Lady in Shadow for you with one sentence: you have lost the battle for this mortal soul. She does not mention it now. Neither do you. It is enough that you both remember who was in the hall.{/n}''',
         *STATE),
-    nar("sighed", '''{n}In the hall below, when the Lady in Shadow's voice had faded, something lingered there and sighed. You did not know then whose sigh it was. You know now.{/n}''',
+    nar("sighed", '''{n}Before the ascent, in the hall below, when the Lady in Shadow's voice had faded, something lingered there and sighed. You did not know then whose sigh it was. You know now.{/n}''',
         *STATE),
     nar("committed", '''"The argument stands," {n}says Iomedae.{/n} "I conceded it, and I do not take back what I have said aloud." {n}The violet fire of the Wound is in her eyes. It does not seem to trouble her.{/n} "I have not decided. I told you I would decide here. I am deciding."''',
         c('"Then decide quickly. I\'m going in."', "go"),
@@ -634,6 +642,17 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
     Chapters=[6], AnswerLists=list(FINAL_LISTS), ReturnToList=True, ReturnText=THRESHOLD_RETURN,
     RequiresAnyGroups=[[BANNER_HELD, ORDER_BANNER]]))
 tag(E + "threshold.banner")
+
+# Append witness branches after the retained finale nodes. Her answer does
+# not guarantee rescue, settle Pharasma's terms, or grant the personal yes.
+SCENES[-1]["Nodes"].extend([
+    nar("nocticula_objection", '''{n}The Lady in Shadow watches the cloth stretch toward the rift.{/n} "A touching gesture. Are you going to close it with a banner, Inheritor? Or will your champion still have to do the unpleasant part?"
+"The key must still close the Wound," {n}Iomedae answers.{/n} "You will not choose what I do afterwards."''',
+        c("Continue", "areelu_objection", requires=(_AREELU_WITNESS,)),
+        *(dict(answer, Forbids=[*answer.get("Forbids", []), _AREELU_WITNESS]) for answer in HALL)),
+    nar("areelu_objection", '''{n}Areelu studies the staff, then the place where the cloth meets the fire.{/n} "The connection runs through the soul. Your relic cannot make another key."
+"I am not making one," {n}says Iomedae. Her hand stays on the staff.{/n} "You have explained what the lock demands. The Commander will answer for the choice. So will I."''', *HALL),
+])
 
 
 # --- The afterlogue (E14e): at Areelu's trial, when the Commander intervened, Pharasma's closing line to a sacrificed Commander
@@ -744,7 +763,7 @@ page("bridge", "The Bridge", [
 {n}The cathedral's white banner comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}''',
         c("Continue", "her")),
     nar("her", '''{n}At the far end of it, where the fire stops, a woman in plain steel stands with one hand on the staff and her whole weight against it.{/n}
-{n}It is Iomedae. She wears the face you remember from the banner: the tired woman at the gorge. You recognize her before she takes your hand. The crossing rests on the terms she will answer for before Pharasma; that familiar face gives you something to hold on to.{/n}
+{n}It is Iomedae. She wears the face you remember from the banner: the tired woman at the gorge. You recognize her before she takes your hand. The face gives you something to hold on to; it does not make her mortal. At the Summit she said the Worldwound was no longer the concern of mortals alone. Here she has chosen to act, and she will answer for this crossing before Pharasma.{/n}
 "I told you I would decide here," {n}she says.{/n} "I have decided. Walk."''',
         c("[Walk.]", "walk"),
         c('"You came."', "came"),
@@ -1038,7 +1057,7 @@ page("after", "Here and There", [
               requires=(HERALD_FELL,), forbids=(HERALD_SAVED,)),
             p('''{n}The flask never sloshed. Once she laid her hand over the pocket, as she had over the banner staff at the edge. After the crossing the flask was empty; Pharasma kept the death.{/n}''',
               requires=(BURIED_ALIVE,)),
-            p('''{n}Once she set her palm against the pocket that held the flask. No banner had reached the Wound, and the bottle still held its death. She withdrew her hand without asking to take it.{/n}''', requires=("lastcall.bottled_held",), forbids=(BURIED_ALIVE,)),
+            p('''{n}Once she set her palm against the pocket that held the flask. No banner had reached the Wound, and the bottle still held its death. She withdrew her hand without asking to take it.{/n}''', requires=("lastcall.bottled_held",), forbids=(BURIED_ALIVE, CARRIED)),
             p('''{n}The stranger walked the roads of Mendev for the pleasure of it, as promised, and she said that of all the terms of the disputation it was the only one she had not expected to enjoy enforcing.{/n}''',
               requires=(AFTER_ROAD, KEPT)),
             p('''{n}The stranger kept a lamp on the Drezen road, two days south of the city, and watched over it without being thanked, as promised. The carters say the lamp-keeper has a visitor sometimes, a knight of some small order, and that on those nights the lamp burns until morning.{/n}''',
@@ -1055,9 +1074,11 @@ page("after", "Here and There", [
               requires=(TESTED,), forbids=(SLIP_BURNED,)),
             p('''{n}When veterans praised the fight in Baphomet's prison, you told them how you had killed the Herald out of spite. Iomedae never called that admission absolution. Neither did you.{/n}''', requires=(HERALD_ACCOUNTED,)),
             p('''{n}When the second appointment comes there will be no appeal; she has said so. She comes anyway.{/n}''', requires=(KEPT,)),
+            p('''{n}Her banner had stood at the edge, but the Commander walked away with the Wound still open. No crossing emptied the flask. Once she rested her hand over the cork through the coat, then withdrew it. The death stayed in the bottle.{/n}''',
+              requires=("lastcall.h1", "lastcall.bottled_held", CARRIED), forbids=(BURIED_ALIVE,)),
         )),
-    # Slot B: a later visit after the ninth-year truth vigil; the debt is paid before intimacy.
-    nar(E + "epilogue.after.explicit.1", '''{n}She sets her sword within reach and catches your coat before you can turn toward the door. Her mouth meets yours hard; the hand at your collar does not release you when the kiss breaks.{/n} "You can stay tonight." {n}Beyond the shutter, a watchman calls the hour.{/n}''',
+    # Slot B: established lovers after the paid vigil; undressing and reunion on the bed, then the heated cut.
+    nar(E + "epilogue.after.explicit.1", '''{n}She set her sword beside the bed and caught the stranger by the coat. She kissed them hard, then pushed the coat from their shoulders. The gauntlets were already off; she unbuckled her breastplate and laid it beside the sword. They helped each other out of the remaining straps and clothes, as they had on other brief nights together.{/n} "Stay. I rode through the night for this." {n}She drew them down beside her, bare skin warm beneath the blankets. Her hand settled at their hip; she kissed them again and pulled them closer. Beyond the shutter, a watchman called the hour.{/n}''',
         c("Continue", "vigil_morning")),
     nar("vigil_morning", '''{n}At dawn she sits on the bed's edge, tugging her boots on. You catch her loose braid and she turns back for a kiss, one knee against the blankets. Outside, the wounded are being brought in.{/n} "I must go." {n}She presses your hand once before reaching for her sword.{/n}''',
         c("Continue")),
@@ -1167,7 +1188,16 @@ def integrate(payload):
     payload.setdefault("PortraitFallbacks", {}).setdefault("Iomedae", PORTRAIT_GUID)
 
 
-# endings1: shared flask consumers are partitioned at their sources. Both
-# Appointment and rescue-only crossings use BURIED_ALIVE; no paragraph insertion.
+# Shared flask consumers remain partitioned at their sources. Reconcile
+# only this route's named coda, retaining its paragraph positions and exit.
 def integrate_joint(payload):
-    pass
+    coda = next(s for s in payload["Scenes"] if s["Id"] == "iomedae.lastcall.page")
+    node = coda["Nodes"][0]
+    node["Text"] = "{n}Iomedae kept her war. She came to the Commander when it allowed, in plain steel. The flask stayed corked beneath the coat.{/n}"
+    crossing = node["Paragraphs"][0]
+    crossing["Text"] = "{n}The Commander went into the Wound with a death corked in a flask, and came out across her banner, laid over the fire as her cloak had once lain over a gorge. The flask came out empty. The death stayed in the Lady of Graves' book, as Iomedae had agreed. The stranger carried the empty flask afterwards, corked, out of habit.{/n}"
+    node["Paragraphs"].extend([
+        p("{n}Her banner stood at the edge of the Worldwound. She stood beside it while the Commander chose what to do.{/n}", requires=(CARRIED,)),
+        p("{n}The Commander had never raised her banner at Threshold. There had been no crossing on her cloth, no bargain with the Lady of Graves for a return. Iomedae's visits were her own choice; the flask had its own terms.{/n}", forbids=(CARRIED,)),
+        p("{n}Areelu later measured the empty flask and recorded what she had put into it. She had not witnessed the crossing inside the seam or heard its terms from Iomedae.{/n}", requires=(BURIED_ALIVE, H2, "crossroute.areelu.available")),
+    ])

@@ -11,6 +11,7 @@ dream in which she chooses to look as she did. Chapter 6: the night before Thres
 The device, the disputation, the Threshold, the reactions and the pages live in iomedae_trickster. Path fit: all T (v1).
 """
 from story_format import c, n, p, scene
+from storylines.iomedae_trickster import SCENES as REMOTE_SCENES
 from storylines.iomedae_trickster import (
     E, REL, CLOSED, STARTED, COMMITTED, DREZEN, IOMEDAE_UNIT, SUMMIT_LIST, KEY_DIES, KEY_LATCH, IZ_DONE, BANNER_HELD,
     ORDER_BANNER, HERALD_SAVED, HERALD_FELL, HERALD_FOUGHT, NENIO, DREAM_BANNER, SENT_AWAY, QUESTION_SENT, ASKED_WHOSE, ASKED_MIND,
@@ -420,14 +421,14 @@ remote(E + "dream.summit", "The truth in the square", [
 {n}There is no rain, no gorge, nobody's hands. There is a white space like the inside of a cloud, and a voice in it, and the voice is speaking to you.{/n}''',
         c("Continue", "asked", requires=(SUMMIT_ASKED,)),
         c("Continue", "square", forbids=(SUMMIT_ASKED,))),
-    io("asked", '''"You asked me in the square whether I asked anyone's leave." {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "I answered you in front of the Lady in Shadow, briefly, because she did not deserve more. You did."''',
+    io("asked", '''"You asked me in the square whether I asked anyone's leave." {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "Back in the square, I answered you in front of the Lady in Shadow, briefly, because she did not deserve more. You did."''',
        c("Continue", "truth")),
-    io("square", '''"You stood in the square before the cathedral and heard what I came to say." {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "I said it in front of the Lady in Shadow, because she deserved to hear it said. You deserved to hear it differently."''',
+    io("square", '''"You stood in the square before the cathedral and heard what I came to say." {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "Back in the square, I said it in front of the Lady in Shadow, because she deserved to hear it said. You deserved to hear it differently."''',
        c("Continue", "truth")),
     io("truth", '''"I told you that the lock will destroy the key. I did not tell you gently. Gentleness would have been a lie of emphasis, and the Lady in Shadow had already left you ignorant; I would not leave you comforted instead." {n}A pause.{/n} "My herald's dying prayer revealed your origin to me. Until then, I watched without intervening. I have stopped observing. I do not know yet what I have started."''',
        c("Continue", "face", requires=(FALSE_FACE,)),
        c("Continue", "ask", forbids=(FALSE_FACE,))),
-    io("face", '''"Something in the Lady in Shadow's city put on my face for you once, in a dream, and asked you to come to it." {n}The voice cools by a degree.{/n} "You knew it for a forgery by what it asked. I observed that. I did not intervene. I would like you to know that I noticed."''',
+    io("face", '''"Back in the Abyss, something in the Lady in Shadow's city put on my face for you once, in a dream, and asked you to come to it." {n}The voice cools by a degree.{/n} "You knew it for a forgery by what it asked. I observed that. I did not intervene. I would like you to know that I noticed."''',
        c("Continue", "ask")),
     io("ask", '''"So I will ask you now what I could not ask in front of her. You know what you are, and what closing the Wound will cost. What will you do?"''',
        c('"Close it."', "close"),
@@ -559,8 +560,10 @@ remote(E + "silence", "No answer", [
 # --- After her concession (Chapter 5-6): questions that are not about the war. ------------------------------------------------
 
 remote(E + "dream.questions", "Not in any report", [
-    nar("start", '''{n}The white again, and her voice in it. Tonight she has brought into the dream something she has never brought before: a question that is not about the war.{/n}''',
-        c("Continue", "ask")),
+    nar("start", '''{n}The orders lie unfinished beside your bed. Her voice reaches you as you close your eyes.{/n}''',
+        c("Continue", "returning_white", requires=(E + "dream.summit",)),
+        c("Continue", "first_white", forbids=(E + "dream.summit", HERALD_DREAM)),
+        c("Continue", "returning_white", requires=(HERALD_DREAM,), forbids=(E + "dream.summit",))),
     io("ask", '''"My priests send reports of your victories. They tell me nothing of the person who has to sleep after them." {n}She pauses.{/n} "Tell me something you would not send to a chaplain."''',
        c('"I was nobody. Then I was the Commander. There wasn\'t much in between."', "nobody"),
        c('"I stole things, before. Never anything that couldn\'t be spared."', "stole"),
@@ -597,6 +600,13 @@ remote(E + "dream.questions", "Not in any report", [
     io("professional", '''"Then finish them. I will hear the banner's case when you bring it." {n}The white withdraws. The orders are still beside your bed when you wake.{/n}''', c("[Wake.]")),
 ], requires=(STARTED, KEY_LATCH, CALLED), forbids=(PERSONAL, DECLINED, CLOSED, HERALD_SPITE), delay=0, chapters=(5,),
     ForbidOverrides={HERALD_SPITE: HERALD_ACCOUNTED})
+
+# Append the dream-history variants without moving any retained node.
+_questions = next(s for s in REMOTE_SCENES if s["Id"] == E + "dream.questions")
+_questions["Nodes"].extend([
+    nar("returning_white", '''{n}The white returns. This time she has brought a question that is not about the war.{/n}''', c("Continue", "ask")),
+    nar("first_white", '''{n}White replaces the room, without a wall or a horizon. Iomedae speaks close beside you. Her first question concerns neither the banner nor the war.{/n}''', c("Continue", "ask")),
+])
 
 
 # --- Chapter 6. The night before Threshold: she has not decided; neither has the Commander. ---------------------------------
@@ -639,7 +649,7 @@ remote(E + "dream.eve", "The night before", [
     io("unargued", '''"You have not brought your case before me. I know what the war has cost you." {n}A pause.{/n} "If you bring my sign to the Wound, make your case there. Briefly. The Worldwound will not wait for us."''',
        c("Continue", "others")),
     io("others", '''"The Architect built you to die in her lock. She is not wrong about the lock. She is wrong about what she is owed for it."
-"And the Lady in Shadow wants you in the Wound as well, for reasons she will call kind. Do not go in for hers. Go in for yours, or do not go."''',
+"At the Summit, the Lady in Shadow wanted you in the Wound as well. Do not go in for hers. Go in for yours, or do not go."''',
        c('"And if you don\'t answer?"', "if_not"),
        c('"I\'ll see you there."', "there"),
        c('"You could just tell me now."', "now"),
