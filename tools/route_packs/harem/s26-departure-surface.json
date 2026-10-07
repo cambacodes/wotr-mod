@@ -1,0 +1,8 @@
+{
+  "target": "tools/departure_contracts.json",
+  "operation": "append to women.gesmerha.surfaces",
+  "surface": {
+    "scene": "household.docket.gesmerha_jerribeth.account"
+  },
+  "reason": "Classify the earned private claimant account; the scene already requires gesmerha.present_now. Shared registry edits are outside this row job."
+}
