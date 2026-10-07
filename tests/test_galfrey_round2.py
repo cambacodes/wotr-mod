@@ -128,6 +128,47 @@ class GalfreyRound2Tests(unittest.TestCase):
         present = self.traverse(scene, {g.CROWS_DREZEN, "irabeth.present_now"})
         self.assertIn("Irabeth grips the edge", present)
 
+    def test_rescue_setup_and_release_agree_across_histories(self):
+        prepared = self.traverse(self.scenes[g.BRIEFED_ID], set())
+        self.assertIn("tries the folds himself", prepared)
+        self.assertIn("Only if she commands it", prepared)
+        offer = {n["Id"]: n for n in self.scenes[g.OFFER]["Nodes"]}
+        self.assertIn("wind it around the crest", offer["read"]["Text"])
+        self.assertIn("cannot find where to divide it", offer["blind"]["Text"])
+        self.assertIn("Neither the dragon nor the priestess", offer["pitch"]["Text"])
+        for suffix in ("", "_stall"):
+            vigil = {n["Id"]: n for n in self.scenes[g.P + "iz.eulogy" + suffix]["Nodes"]}
+            self.assertIn("unfolds the cloak", vigil["tent"]["Text"])
+        for paid in (False, True):
+            flags = {g.CROWS_MOOTED, g.KC_KEPT}
+            if paid:
+                flags.add(g.P + "standing_orders.paid")
+            letter = self.traverse(self.scenes[g.P + "iz.alone"], flags)
+            self.assertIn("instructions", letter)
+            self.assertNotIn("I think it", letter)
+
+    def test_late_recovery_is_performed_before_she_speaks(self):
+        nodes = {n["Id"]: n for n in self.scenes[g.P + "iz.cortege"]["Nodes"]}
+        self.assertIn("Salt has crusted", nodes["in"]["Text"])
+        self.assertIn("wind it around her sword", nodes["in"]["Text"])
+        for key in ("flare", "flare_told", "flare_told.unworn"):
+            self.assertIn("pull your shadow across it", nodes[key]["Text"])
+        self.assertIn("thread still joins", nodes["sergeant"]["Text"])
+        self.assertIn("shadow slips away", nodes["rest"]["Text"])
+
+    def test_private_restitution_does_not_require_reclaiming_crown(self):
+        for suffix in ("", "_stall"):
+            coffin = self.traverse(self.scenes[g.P + "kitrane.coffin" + suffix], set())
+            self.assertIn("private petition", coffin)
+            self.assertNotIn("only person", coffin)
+            crown = self.traverse(self.scenes[g.P + "kitrane.crown" + suffix], {g.KEPT})
+            self.assertIn("help her petition", crown)
+        for ending in ("kitrane", "sworn", "late", "widow"):
+            paragraphs = self.scenes[g.P + "epilogue." + ending]["Nodes"][0]["Paragraphs"]
+            for paragraph in paragraphs:
+                if g.FOREVER in paragraph["Requires"] and "purse" in paragraph["Text"]:
+                    self.assertIn("signed by the surviving Crows", paragraph["Text"])
+
 
 if __name__ == "__main__":
     unittest.main()

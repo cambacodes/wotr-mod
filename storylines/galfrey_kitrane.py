@@ -1378,3 +1378,40 @@ ALIVE_UNFINISHED = scene(P + "epilogue.alive_unfinished", "The orders still wait
 ], requires=("trickster.ever", FINAL, EVENING),
     forbids=(DEAD, RETURNED, COMMITTED, ROMANCE, FINISHED, CLOSED, "sacrifice", "lastcall.active"),
     last=6, Relationship=REL, ForbidOverrides={"sacrifice": "trickster.commander_back"})
+
+
+
+def _round3_restitution():
+    # Apply to both physical hubs; retain all original decisions and flags.
+    for host in SCENES:
+        sid = host["Id"].removesuffix("_stall")
+        nodes = {node["Id"]: node for node in host["Nodes"]}
+        if sid == P + "kitrane.iz":
+            nodes["read"]["Text"] = nodes["read"]["Text"].replace(
+                'You saw it flinch at my title.',
+                'You made it follow the crest, then wound the last strand around it.')
+        elif sid == P + "kitrane.coffin":
+            nodes["letter"]["Text"] = ('"I could send a letter. You and the Crows could sign it." '
+                '{n}She folds the broadsheet.{/n} "His daughter could learn where he lies without learning '
+                'who I am. I ordered the substitution. I have not yet had the courage to tell her."')
+            nodes["named"]["Text"] = ('"You and the sergeant can attest to his death. A private petition '
+                'could get his remains out of the crypt. I need not wear the crown to do that." '
+                '{n}Her thumb presses the torn crease.{/n} "But I sent Mendev a dead Queen and left '
+                'the regents to rule over her grave. If I return, I answer for that before the court '
+                'as well as before his daughter. Anselm deserves his name. Mendev deserves an answer from me."')
+            nodes["belt"]["Text"] = nodes["belt"]["Text"].replace(
+                'That is the most I can give her today, and it is a coward\'s gift, and I gave it anyway.',
+                'That is what I sent today. Not all I could send. I know the difference.')
+        elif sid == P + "kitrane.crown":
+            nodes["named"]["Text"] += (' "The Crows could have brought his daughter the truth privately. '
+                'I shall not make her bear the secrecy of my command. Nor will I leave the regents '
+                'to answer for a Queen who let them believe her dead."')
+            nodes["must"]["Text"] = ('"His daughter can have the truth without my crown. The sergeant '
+                'can testify; you can testify. I am returning because I left Mendev to others '
+                'under a lie I ordered. I shall face the court myself."')
+            nodes["kept"]["Text"] += (' "I will write to her with the sergeant\'s account and yours. '
+                'She may ask to move him to her family\'s grave. The Crows will help her petition '
+                'the cathedral. I shall not claim she must keep my secret to have her father back."')
+
+
+_round3_restitution()
