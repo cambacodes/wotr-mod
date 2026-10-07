@@ -1185,4 +1185,40 @@ _con_memory(B + "rokhorn.whole", "start", "")
 beat(B + "unpriced_guest", "The house still charges", '"Do your other guests get the same welcome?"', [
     hx("start", '"No. And neither do your friends. The Sinners charge by the night, the bar charges by the cup, and I take my share of both." {n}Herrax pulls you close enough to speak against your mouth.{/n} "Keep whoever you like in Drezen, lover. Buy whoever you like here. Try to pay me, and you go back downstairs."', c('"Then keep the bill for somebody else."'))], requires=(LABYRINTH, MOREVET_DEAD, "herrax.present_now"), delay=24)
 
+
 morevet_variants(SCENES)
+
+
+# Authored court-letter answers: keep the packet's original nodes and answer indices.
+def _court_answer_receipts():
+    packet = next(s for s in SCENES if s["Id"] == COURIER)
+    # The existing Morevet-absent Continue was appended at index 1 in round 2.
+    # Add court answers only after that transformation has preserved it.
+    for question in packet["Nodes"]:
+        if question["Id"] in ("b_lady", "b_lady_hiding"):
+            question["Choices"].extend([
+                c('"The Lady and I are lovers."', "court_reply_truth", requires=("noct.complete",), forbids=("noct.closed",), flags=(L + "court.truth", L + "court.lover",)),
+                c('"We are not lovers."', "court_reply_none", forbids=("noct.complete",), flags=(L + "court.truth",)),
+                c('"Ask her what she wants from me."', "court_reply_evade", flags=(L + "court.evaded",)),
+                c('"That is between the Lady and me."', "court_reply_refuse", flags=(L + "court.refused",)),
+                c('"We were lovers. It ended."', "court_reply_none", requires=("noct.complete", "noct.closed"), flags=(L + "court.truth", L + "court.former",)),
+            ])
+    packet["Nodes"].extend([
+    nar("court_reply_truth", '{n}You seal your answer separately from the house news. Rokhorn reads the address, then looks at you with sudden interest.{/n} "The Lady? Oh, mistress will enjoy that." {n}He tucks the sealed answer inside his coat.{/n}', c("Continue", "b_news")),
+    nar("court_reply_none", '{n}You seal your answer separately from the house news. Rokhorn weighs the little packet in his hand.{/n} "No palace scandal? Mistress will be disappointed." {n}He puts it away unopened.{/n}', c("Continue", "b_news")),
+    nar("court_reply_evade", '{n}Rokhorn reads the short answer before you seal it. His grin widens.{/n} "Sending mistress to ask the Lady herself? I would pay to watch." {n}He puts the answer away.{/n}', c("Continue", "b_news")),
+    nar("court_reply_refuse", '{n}Rokhorn reads the short answer before you seal it.{/n} "A shut door. She does hate those." {n}His smile shows teeth as he puts it away.{/n}', c("Continue", "b_news")),
+    ])
+    for node in packet["Nodes"]:
+        if node["Id"].startswith("court_reply_"):
+            node["Choices"][0]["Forbids"].append(MOREVET_DEAD)
+            node["Choices"].append(c("Continue", "b_news.morevet_absent", requires=(MOREVET_DEAD,)))
+    from storylines import herrax_trickster
+    ending = next(s for s in herrax_trickster.SCENES if s["Id"] == H + "epilogue.reachable")
+    ending["Nodes"][0]["Paragraphs"].extend([
+        dict(Text='{n}Herrax answered the court confession with a warning: "So the Lady has excellent taste for once. I expect she\'s quite annoyed with me."{/n}', Requires=[L + "court.lover"], Forbids=[]),
+        dict(Text='{n}Herrax answered the news of the ended affair in a cramped line beneath her signature: "Then she can amuse herself elsewhere. I\'m busy."{/n}', Requires=[L + "court.former"], Forbids=[]),
+        dict(Text='{n}Herrax sent the Commander\'s evasion back with a hole through the seal. "I asked you, lover. Not the palace. Your answer wasn\'t worth blunting my knife."{/n}', Requires=[L + "court.evaded"], Forbids=[]),
+        dict(Text='{n}Herrax returned the refused answer unopened. On the outside she wrote: "Fine. Rokhorn\'s lies are more entertaining anyway."{/n}', Requires=[L + "court.refused"], Forbids=[]),
+    ])
+_court_answer_receipts()

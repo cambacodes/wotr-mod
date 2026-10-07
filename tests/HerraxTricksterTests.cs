@@ -111,7 +111,7 @@ internal static class HerraxTricksterTests
                   && rok.Nodes.Where(n => n.Speaker == "Rokhorn").All(n => n.SpeakerUnit == "25ad116e1f5008e488b13f9b968596d4"),
                 "A Rokhorn scene is not inline on his list, returning to Cue_0159, with his own portrait: " + rok.Id);
         check(own.All(s => s.Id == seen.Id || s.Id == seen.Id + "_stall" || !s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g))
-                           .Any(f => f.StartsWith("minagho_chivarro.", StringComparison.Ordinal) || f == "chivarro.dead" || f.StartsWith("minachiv.", StringComparison.Ordinal))),
+                           .Any(f => f.StartsWith("minagho_chivarro.", StringComparison.Ordinal) || f == "chivarro.dead" || f.StartsWith("minachiv.", StringComparison.Ordinal) || f.StartsWith("crossroute.chivarro.", StringComparison.Ordinal) || f.StartsWith("crossroute.minagho.", StringComparison.Ordinal))),
             "A Herrax scene other than the one discovery gates on Minagho or Chivarro (node-level reads only).");
         check(!own.Any(s => s.AnswerLists.Contains("0f12118177d102f428a3b30b15b132eb") || s.AnswerLists.Contains("a380d926e92f70e429681eb9654478f9")
                             || s.AnswerLists.Contains("15f754455d1d87c42a4e14df456d5415"))
@@ -441,6 +441,47 @@ internal static class HerraxTricksterTests
         var debtPaths = Program.Walk(courier, World(story, 5, lost.Flags.Where(f => f != "trickster").ToArray()));
         check(debtPaths.All(r => r.Has("herrax.letters.arena.bet_collected")) && Take(nightOut, World(story, 4, Base.Concat(new[] { Committed }).ToArray()), "bet", 0).Flags.All(f => f != "herrax.house.arena.bet_lost"),
             "Trk_Herrax_Bet: the lost bet is never collected, or a won bet is owed.");
+
+        // Every earned sale motive retains its Bluff at both native client DCs.
+        foreach (var loss in new[] { "chivarro.dead", "minachiv.closed" })
+            foreach (bool client in new[] { false, true })
+                foreach (var motive in new[] { P + "lie.greed", P + "lie.spite", P + "lie.hunger" })
+                {
+                    var saleWorld = World(story, 4, Base.Concat(new[] { Started, Primed, loss, motive })
+                        .Concat(client ? new[] { "herrax.rokhorn_client" } : Array.Empty<string>()).ToArray());
+                    var historicalSale = S(P + "madam.sell_the_night");
+                    var saleNode = historicalSale.Nodes.Single(n => n.Id == "wary");
+                    var bluff = saleNode.Choices.Where(c => c.Check?.Skill == "CheckBluff"
+                        && Rules.ChoiceAvailable(c, saleWorld)).ToList();
+                    check(bluff.Count == 1 && bluff[0].Check!.DC == (client ? 23 : 28),
+                        "R3 sale lost its motive/client Bluff under " + loss + "/" + motive);
+                    Program.Walk(historicalSale, saleWorld);
+                }
+
+        // R3: actual generated aliases must resolve native death and relationship closure.
+        // Walk every available route node; the walker checks each reached page's answers.
+        foreach (var loss in new[] { "chivarro.dead", "minachiv.closed", "noct.closed" })
+        {
+            foreach (var chapter in new[] { 4, 5 })
+            {
+                foreach (var history in new[] {
+                    Base,
+                    Base.Concat(new[] { Started, Primed }).ToArray(),
+                    Base.Concat(new[] { Started, Primed, Bait }).ToArray(),
+                    Base.Concat(new[] { Started, Primed, Blown }).ToArray(),
+                    Base.Concat(new[] { Started, Primed, Bait, Lesson, P + "knife_taken" }).ToArray(),
+                    Base.Concat(new[] { Started, Primed, Bait, Lesson, Declined, Restored, "herrax.house.a_night_late" }).ToArray(),
+                    Base.Concat(new[] { Started, Primed, Bait, Lesson, P + "knife_taken", Committed }).ToArray() })
+                {
+                    var absentWorld = World(story, chapter, history.Concat(new[] { loss }).ToArray());
+                    if (loss == "chivarro.dead" || loss == "minachiv.closed")
+                        check(absentWorld.Has("crossroute.chivarro.unavailable"),
+                            "R3 independence fixture did not resolve Chivarro absence: " + loss);
+                    foreach (var candidate in own.Where(s => Avail(s, absentWorld)))
+                        Program.Walk(candidate, absentWorld);
+                }
+            }
+        }
 
         // Sol COX (ledger 05 row 2): after the Council the Lady is in hiding; the packet's court letter says so.
         var hidingSeen = new HashSet<string>();

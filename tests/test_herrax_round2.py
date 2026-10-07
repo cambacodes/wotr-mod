@@ -85,18 +85,23 @@ class HerraxRound2Tests(unittest.TestCase):
             self.assertIn(house.STAIRS + ".explicit.1", visited)
             self.assertIn("return_morning", visited)
 
-    def test_late_return_collects_the_missing_act_once(self):
-        arrival = SCENES[route.H + "epilogue.after_hours.invitation"]["Nodes"][0]
-        cases = [({route.BAIT}, "The sold invitation was still owed"),
-                 ({route.BLOWN}, "Rokhorn had exposed the sale"),
-                 ({route.RESTORED, route.DECLINED, route.LESSON}, "the house had never gathered"),
+    def test_late_return_remembers_completed_punishments(self):
+        visit = SCENES[route.H + "epilogue.after_hours.invitation"]
+        arrival = visit["Nodes"][0]
+        offer = next(n for n in visit["Nodes"] if n["Id"] == "madam_offer")
+        self.assertNotIn("You stood where I told you", offer["Text"])
+        cases = [({route.BAIT}, "had described the cutting in her letter"),
+                 ({route.BLOWN}, "had cut him anyway"),
+                 ({route.RESTORED, route.DECLINED, route.LESSON}, "performed her delayed punishment"),
                  ({route.RESTORED, route.DECLINED, route.LESSON, "herrax.house.a_night_late"}, "face bore the cut")]
         for flags, expected in cases:
             shown = [p["Text"] for p in arrival["Paragraphs"] if available(p, flags)
                      and all(any(f in flags for f in group) for group in p.get("AnyGroups", ()))]
             self.assertIn(expected, " ".join(shown))
             if "herrax.house.a_night_late" in flags:
-                self.assertNotIn("the house had never gathered", " ".join(shown))
+                self.assertNotIn("performed her delayed punishment", " ".join(shown))
+            self.assertNotIn("She cut him herself", " ".join(shown))
+            self.assertNotIn("Herrax gathered it now", " ".join(shown))
 
     def test_bet_collection_does_not_depend_on_reading_the_packet(self):
         for suffix in ("reachable", "after_hours"):
@@ -135,6 +140,40 @@ class HerraxRound2Tests(unittest.TestCase):
         self.assertIn("I tasted the lie", by["reply.con_blown"]["Text"])
         self.assertIn("tried to sell", by["b_offer.con_blown"]["Text"])
         self.assertNotIn("can't cut me", str(SCENES[house.B + "rokhorn.whole"]))
+
+
+    def test_court_question_has_local_answers_before_packet_continues(self):
+        event = SCENES[house.COURIER]
+        for node_id in ("b_lady", "b_lady_hiding"):
+            for lover, closed in ((False, False), (True, False), (True, True)):
+                flags = {route.COMMITTED}
+                if closed:
+                    flags.add("noct.closed")
+                if lover:
+                    flags.add("noct.complete")
+                nodes = {n["Id"]: n for n in event["Nodes"]}
+                question = nodes[node_id]
+                self.assertEqual("b_news", question["Choices"][0]["Next"])
+                self.assertEqual("b_news.morevet_absent", question["Choices"][1]["Next"])
+                choices = [a for a in question["Choices"][2:] if available(a, flags)]
+                self.assertEqual(3, len(choices))
+                truth = next(a for a in choices if house.L + "court.truth" in a["Set"])
+                self.assertEqual(lover and not closed, house.L + "court.lover" in truth["Set"])
+                self.assertEqual(closed, house.L + "court.former" in truth["Set"])
+                for answer in choices:
+                    receipt = nodes[answer["Next"]]
+                    self.assertTrue(any(available(a, flags) and a.get("Next", "").startswith("b_news") for a in receipt["Choices"]))
+
+    def test_morevet_absence_preserves_sentence_case_and_separate_observer(self):
+        import re
+        for event in SCENES.values():
+            for node in event["Nodes"]:
+                for text in [node["Text"], *(p["Text"] for p in node.get("Paragraphs", ()))]:
+                    self.assertIsNone(re.search(r'(^|[.!?]\s+|\n|["“])the girl who keeps the arch', text), (event["Id"], node["Id"]))
+        night = SCENES[route.H + "madam.the_night"]
+        absent = next(n for n in night["Nodes"] if n["Id"] == "arch.morevet_absent")
+        self.assertIn("an attendant with her lips parted", absent["Text"])
+        self.assertNotIn("the girl who keeps the arch;", absent["Text"])
 
     def test_all_four_briefs_have_reachable_default_nodes(self):
         folder = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/herrax"
