@@ -54,7 +54,6 @@ COMMANDER_ABSENT = {
     "ending_loss": "independent",
     "tirabade.negotiated_ending_loss": "independent",
     # Her life after a romance that ended or never began; no postwar meeting with the Commander.
-    "jerribeth.ending_unfinished": "independent",
     "kiana.ending_apart": "independent",
     "kiana.ending_unfinished": "independent",
     "kiana.trickster.ending_unfinished": "independent",

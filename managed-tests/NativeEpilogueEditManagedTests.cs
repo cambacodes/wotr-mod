@@ -850,18 +850,23 @@ internal static partial class NativeEpilogueEditManagedTests
         string Selected() => parent.Continue.Cues.Select(reference => byGuid[reference.Guid])
             .FirstOrDefault(entry => entry.Native() && entry.Cue.Conditions.Conditions.All(c => c.Check())).Name ?? "(none)";
         const string Dead = "936af39436c74953b43a4165bfbcc9f9", Redeemed = "127e8a018a0840b080c276b4704e58a2", T = "areelu.trickster.";
-        var common = new[] { "trickster.ever", T + "wager_struck", T + "bet_offered", T + "wager_on_screen", T + "late_committed" };
+        // Round 2: a wager alone earns survival; her accepted company is a separate receipt.
+        // Native rewrites also read the current Trickster path, not only its historical latch.
+        var common = new[] { "trickster", "trickster.ever", T + "wager_struck", T + "bet_offered", T + "wager_on_screen", "areelu.committed" };
         var rewritten = common.Concat(new[] { "areelu.sacrifice_trickster", "areelu.dead_fight", T + "graft_drawn", T + "survives", T + "rewritten",
             "areelu.died_at_finale" }).ToArray();
         var spared = common.Concat(new[] { "sacrifice", "ending.trickster", "trickster.cheated_death", T + "survives" }).ToArray();
         var rows = new (string What, string[] Etudes, string[]? Flags, string Plays)[]
         {
-            ("rewrite, late-committed", new[] { Dead }, rewritten, "areelu.trickster.afterlogue.mortal"),
+            ("rewrite, accepted company", new[] { Dead }, rewritten, "areelu.trickster.afterlogue.mortal"),
+            ("rewrite, wager without company", new[] { Dead }, rewritten.Where(f => f != "areelu.committed").ToArray(), "areelu.trickster.afterlogue.mortal_wager"),
+            ("rewrite, former Trickster", new[] { Dead }, rewritten.Append("trickster.failed").ToArray(), "1b53c189b767412f921b8294b980a51c"),
             ("rewrite, mod disabled", new[] { Dead }, null, "1b53c189b767412f921b8294b980a51c"),
             ("rewrite, closed", new[] { Dead }, rewritten.Append("areelu.closed").ToArray(), "1b53c189b767412f921b8294b980a51c"),
             ("punchline, she lives", new string[0], spared, "areelu.trickster.afterlogue.spared"),
             ("punchline, mod disabled", new string[0], null, "825786e8c5db4511ae30950bb286f0e9"),
-            ("punchline, declined", new string[0], spared.Append(T + "declined").ToArray(), "825786e8c5db4511ae30950bb286f0e9"),
+            ("punchline, wager without company", new string[0], spared.Where(f => f != "areelu.committed").ToArray(), "areelu.trickster.afterlogue.spared_wager"),
+            ("punchline, declined", new string[0], spared.Where(f => f != "areelu.committed").Append(T + "declined").ToArray(), "825786e8c5db4511ae30950bb286f0e9"),
             ("redeemed, flags of a live romance", new[] { Redeemed }, spared, "aa857d545e124ce9a5148221e07194b9"),
         };
         foreach (var row in rows)

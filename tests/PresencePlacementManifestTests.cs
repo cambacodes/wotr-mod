@@ -162,8 +162,8 @@ internal static class PresencePlacementManifestTests
             if (entry["kind"]!.GetValue<string>() == "remote_event")
             {
                 var scene = story.Scenes.Single(s => s.Id == entry["consumer"]!.GetValue<string>());
-                check(Rules.IsRemote(scene) && scene.ContactUnit == null && !story.Presences.Keys.Any(k => k.StartsWith(entry["route"]!.GetValue<string>()) && entry["route"]!.GetValue<string>() == "chadali"),
-                    "E-Q7-33: remote-only inventory is stale; a live placement now needs evidence");
+                check(Rules.IsRemote(scene) && scene.ContactUnit == null && scene.InteractionHub == null,
+                    "E-Q7-33: remote-event consumer now declares a live contact and needs placement evidence: " + scene.Id);
             }
             if (status == "pending") Console.WriteLine("PENDING LIVE: E-Q7-33 " + entry["id"] + " — " + entry["remainder"]);
         }

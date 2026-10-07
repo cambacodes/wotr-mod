@@ -219,17 +219,31 @@ internal static class TerendelevTricksterTests
         check(backIrabeth.Has("terendelev.started") && !backIrabeth.Has(Committed), "Trk_Terendelev_IrabethHost: the flags differ from the Queen's list.");
 
         // Trk_Terendelev_LateAndDecline: the Queen fought it alone; the late page, the debt, the release.
-        var alone = World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", "iz.left_early");   // the kill observed in Iz
+        var alone = World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", "iz.left_early", "iz.done");   // the completed Iz journey, now back in Drezen
         check(!Rules.Available(story, bones, alone), "Trk_Terendelev_LateAndDecline: the bones open without the battle.");
-        check(Rules.Available(story, late, alone) && !Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever"))
-              && !Rules.Available(story, late, World(story, 5, "trickster.ever", "iz.monster_dead.live")),
+        check(Rules.Available(story, late, alone) && !Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever", "iz.done"))
+              && !Rules.Available(story, late, World(story, 5, "trickster.ever", "iz.monster_dead.live", "iz.done")),
             "Trk_Terendelev_LateAndDecline: the late page is shut, or comes without the kill or the live path.");
+        check(!Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", "iz.left_early")),
+            "Trk_Terendelev_LateAndDecline: the late journey opens before Iz is completed.");
+        var notHome = Program.Copy(alone);
+        notHome.Area = "not-drezen";
+        check(!Rules.Available(story, late, notHome), "Trk_Terendelev_LateAndDecline: the journey starts outside Drezen.");
+        // R2/P22: a historical Queen loss and an unrelated divine refusal cannot withhold this paid return.
+        foreach (var foreign in new[] { "galfrey.dead", "galfrey.killed_by_commander", "galfrey.closed", "iomedae.closed" })
+        {
+            var history = World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", "iz.left_early", "iz.done", foreign);
+            check(Rules.Available(story, late, history), "Historical Queen/divine romance state blocks Terendelev's late return: " + foreign);
+            check(Program.Walk(late, history).Any(r => r.Has(Returned)), "Paid late return has no continuation: " + foreign);
+        }
         var lateBack = One(late, alone, new[] { Returned, P + "cost.late", P + "cost.wound_open", P + "grounded" });
         var lateRest = One(late, alone, new[] { P + "rested", Closed }, Returned);
         Snapshot Killed(Snapshot w)
         {
             var after = Program.Copy(w);
             after.Flags.Add("iz.monster_dead.live");
+            if (story.Derived.ContainsKey("iz.done")) HouseholdTests.Earn(story, after, "iz.done");
+            else after.Flags.Add("iz.done");
             Rules.Complete(story, after);
             foreach (var flag in after.Flags.ToList()) after.Times[flag] = after.Hour - 200;
             return after;
@@ -266,7 +280,8 @@ internal static class TerendelevTricksterTests
         check(turret.Has(Committed) && !turret.Has(Closed), "Trk_Terendelev_Commit: the turret closes her.");
         var beats = new[] { "want", "wound", "hoard", "throat", "cloak", "cut", "grey", "morning" };
         check(beats.All(b => night.Nodes.Any(n => n.Id == b))
-              && night.Nodes.Single(n => n.Id == "cut").Choices.All(c => c.Next == "grey")
+              && night.Nodes.Single(n => n.Id == "cut").Choices.All(c => c.Next == night.Id + ".explicit.1")
+              && night.Nodes.Single(n => n.Id == night.Id + ".explicit.1").Choices.All(c => c.Next == "grey" && c.Set.Length == 0)
               && night.Nodes.Single(n => n.Id == "grey").Choices.All(c => c.Next == "morning"),
             "Trk_Terendelev_Commit: the night is not staged up to the cut and carried into the morning.");
         var seelah = reactions.Single(s => s.Id == P + "react.seelah.watch");
@@ -344,7 +359,7 @@ internal static class TerendelevTricksterTests
             .Where(f => f != Committed && f != "storyteller.dead_main" && f != "storyteller.dead_delayed" && f != "irabeth_dead").ToArray());
         allHome.Flags.Add("sacrifice"); Rules.Complete(story, allHome);
         check(Rules.Available(story, guardianSacrifice, allHome) && !Rules.Available(story, guardianPage, allHome), "Guardian sacrifice shows a living Commander.");
-        allHome.Flags.Add("trickster.commander_back"); Rules.Complete(story, allHome);
+        HouseholdTests.Earn(story, allHome, "trickster.commander_back"); Rules.Complete(story, allHome);
         check(!Rules.Available(story, guardianSacrifice, allHome) && Rules.Available(story, guardianPage, allHome), "Earned Commander return does not select the living guardian ending.");
 
         foreach (var id in new[] { "watch", "late", "debt", "guardian" })
@@ -386,7 +401,13 @@ internal static class TerendelevTricksterTests
         check(Rules.Available(story, S(P + "epilogue.rest"), World(story, 6, rested.Flags.ToArray())), "The rest page does not follow the rest granted.");
 
         // Quality pass Q6.
-        HashSet<string> PagesOf(Scene scene, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(scene, w, (page, _) => seen.Add(page)); return seen; }
+        HashSet<string> PagesOf(Scene scene, Snapshot w)
+        {
+            check(Rules.Available(story, scene, w), "Historical branch unavailable before traversal: " + scene.Id);
+            var seen = new HashSet<string>();
+            Program.Walk(scene, w, (page, _) => seen.Add(page));
+            return seen;
+        }
         // CAN: she remembers the Commander at the second death only when the Commander fought there.
         var withQueen = World(story, 5, "trickster.ever", Returned, "terendelev.started");
         var leftEarly = World(story, 5, "trickster.ever", Returned, "terendelev.started", "iz.left_early");
@@ -395,6 +416,16 @@ internal static class TerendelevTricksterTests
             "She remembers the Commander at a battle the Commander left.");
         // COX: a Queen brought back on her own route is alive in Terendelev's chapel talk, and still writes.
         var galScene = S(P + "watch.galfrey");
+        foreach (var suffix in new[] { "", "_awning" })
+        foreach (var foreign in new[] { "galfrey.dead", "galfrey.killed_by_commander", "galfrey.closed", "iomedae.closed" })
+        {
+            var history = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", foreign,
+                suffix.Length == 0 ? "chapter_later" : "terendelev.presence.failed");
+            var mourning = S(P + "watch.galfrey" + suffix);
+            check(Rules.Available(story, mourning, history), "Historical Queen/faith conversation unavailable: " + mourning.Id + "/" + foreign);
+            PagesOf(mourning, history);
+        }
+
         var queenBack = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "galfrey.trickster.returned");
         var queenGone = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead");
         check(PagesOf(galScene, queenBack).Contains("queen_back") && !PagesOf(galScene, queenBack).Contains("dead_late") && !PagesOf(galScene, queenBack).Contains("carry")

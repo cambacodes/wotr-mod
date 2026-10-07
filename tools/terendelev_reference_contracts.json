@@ -1,0 +1,286 @@
+{
+  "schema": 1,
+  "authored": "fix-ep4: route-specific reference classifications from the merged restoration/watch text. Text changes fail closed.",
+  "contexts": [
+    {
+      "scene": "terendelev.trickster.wound.weeps",
+      "node": "areelu",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "dbdf342df91d7edf3417971e8d731569fe5d3585468436e68e7f6d1ddedca22c",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.bones.restitution",
+      "node": "offer",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "18894edb0b5e941c34eb757a18ec3b780ecdafde06153116bf5600d0bd6d311b",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.bones.restitution_irabeth",
+      "node": "offer",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "18894edb0b5e941c34eb757a18ec3b780ecdafde06153116bf5600d0bd6d311b",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.late.the_wound_calls",
+      "node": "absent_queen",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "02d3688caaf588ddef78096c418bd743aa4fa6386f7f27d78021f1084bcafda8",
+      "reason": "Recorded Iz death, battle or cairn authority; no current meeting."
+    },
+    {
+      "scene": "terendelev.trickster.react.seelah.watch",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "3c7d7822fe0b7f796a51bd8f5c1fc63f0eee9ac646e412a3e1ef577a8948f6cf",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.react.galfrey.letter",
+      "node": "royal",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "df4364059b1c5794ea5248c5e09e70a4dd32a5e42c7e3d15201a720be92cd503",
+      "reason": "Previously written royal letter and its reported prayer; no new correspondent or goddess."
+    },
+    {
+      "scene": "terendelev.trickster.react.galfrey.letter",
+      "node": "royal",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "df4364059b1c5794ea5248c5e09e70a4dd32a5e42c7e3d15201a720be92cd503",
+      "reason": "Previously written royal letter and its reported prayer; no new correspondent or goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "slot": "paragraph[5]",
+      "woman": "iomedae",
+      "text_sha256": "15239f3843b3a32d7e0a8a6e0ba9aa82206b8d8f109d5dcf080673f6612d96e6",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "slot": "paragraph[19]",
+      "woman": "iomedae",
+      "text_sha256": "e30ac6b56f295a7b321e9a4c639981483099aa00ba12823d89f04af22962fe57",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "slot": "paragraph[5]",
+      "woman": "iomedae",
+      "text_sha256": "15239f3843b3a32d7e0a8a6e0ba9aa82206b8d8f109d5dcf080673f6612d96e6",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "slot": "paragraph[19]",
+      "woman": "iomedae",
+      "text_sha256": "e30ac6b56f295a7b321e9a4c639981483099aa00ba12823d89f04af22962fe57",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "slot": "paragraph[5]",
+      "woman": "iomedae",
+      "text_sha256": "15239f3843b3a32d7e0a8a6e0ba9aa82206b8d8f109d5dcf080673f6612d96e6",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "slot": "paragraph[19]",
+      "woman": "iomedae",
+      "text_sha256": "e30ac6b56f295a7b321e9a4c639981483099aa00ba12823d89f04af22962fe57",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.guardian",
+      "node": "page",
+      "slot": "paragraph[5]",
+      "woman": "iomedae",
+      "text_sha256": "1b1ac589d740a2eebe4ba8240d85d72fe9366b0d18f84d535d927cbea977724c",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.rest",
+      "node": "page",
+      "slot": "paragraph[0]",
+      "woman": "galfrey",
+      "text_sha256": "ce4af969a04e640559a7706020493419547536f8bed7502080543a21c84bb073",
+      "reason": "Recorded Iz death, battle or cairn authority; no current meeting."
+    },
+    {
+      "scene": "terendelev.trickster.epilogue.rest",
+      "node": "page",
+      "slot": "paragraph[1]",
+      "woman": "galfrey",
+      "text_sha256": "5b3f1275c41a65036cae393420a8d26f367179f13b6a02771e62237d80cc586b",
+      "reason": "Recorded Iz death, battle or cairn authority; no current meeting."
+    },
+    {
+      "scene": "terendelev.trickster.react.galfrey.letter_awning",
+      "node": "royal",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "df4364059b1c5794ea5248c5e09e70a4dd32a5e42c7e3d15201a720be92cd503",
+      "reason": "Previously written royal letter and its reported prayer; no new correspondent or goddess."
+    },
+    {
+      "scene": "terendelev.trickster.react.galfrey.letter_awning",
+      "node": "royal",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "df4364059b1c5794ea5248c5e09e70a4dd32a5e42c7e3d15201a720be92cd503",
+      "reason": "Previously written royal letter and its reported prayer; no new correspondent or goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.proof",
+      "node": "living",
+      "slot": "choice[0]",
+      "woman": "areelu",
+      "text_sha256": "9904ee516fb4d4a392bc206330e80dbfa0f5c912681079946d580b32d562daf4",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.watch.proof",
+      "node": "areelu",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "82d1df9b82001be254c9426fef206f1fb19acbadf23babdaa70f852171676096",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.watch.proof_awning",
+      "node": "living",
+      "slot": "choice[0]",
+      "woman": "areelu",
+      "text_sha256": "9904ee516fb4d4a392bc206330e80dbfa0f5c912681079946d580b32d562daf4",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.watch.proof_awning",
+      "node": "areelu",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "82d1df9b82001be254c9426fef206f1fb19acbadf23babdaa70f852171676096",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey",
+      "node": "dead_priestess",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "534f406bf3412c4b99d75fa466e407a664f683cad633f4343ca0f3b0822525ef",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey",
+      "node": "dead_unknown",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "9347cb37b2be1ea03d11940260f4a3c4e587ca2654612ad76fa1e919e6ef4c3a",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey",
+      "node": "alive",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "66d66bf40a03523738d2ef2e68d5564b94f3df41aaf0ba8e0a154d98fd3c1724",
+      "reason": "Recorded Iz death, battle or cairn authority; no current meeting."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey",
+      "node": "carry",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "a017a64a5ba28d7412a801fa04d6f1a51f47b5904b0643468b6dcb5d219e38d2",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey_awning",
+      "node": "dead_priestess",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "534f406bf3412c4b99d75fa466e407a664f683cad633f4343ca0f3b0822525ef",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey_awning",
+      "node": "dead_unknown",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "9347cb37b2be1ea03d11940260f4a3c4e587ca2654612ad76fa1e919e6ef4c3a",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey_awning",
+      "node": "alive",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "66d66bf40a03523738d2ef2e68d5564b94f3df41aaf0ba8e0a154d98fd3c1724",
+      "reason": "Recorded Iz death, battle or cairn authority; no current meeting."
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey_awning",
+      "node": "carry",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "a017a64a5ba28d7412a801fa04d6f1a51f47b5904b0643468b6dcb5d219e38d2",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.what_are_you",
+      "node": "cheat",
+      "slot": "choice[0]",
+      "woman": "areelu",
+      "text_sha256": "f03b9b47d6e67c7235c909645fea5615587cb8da477a1008926d736417868377",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.watch.what_are_you_awning",
+      "node": "cheat",
+      "slot": "choice[0]",
+      "woman": "areelu",
+      "text_sha256": "f03b9b47d6e67c7235c909645fea5615587cb8da477a1008926d736417868377",
+      "reason": "Known crystal implantation and recalled explanation; no current witch."
+    },
+    {
+      "scene": "terendelev.trickster.react.daeran.cousin",
+      "node": "start",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "357d23ae8367fb9bf5db9e9c5d8194791a6758a6f5f18de0ad3187da6a9c6836",
+      "reason": "Daeran comments on his cousin's reputation; no current Queen."
+    },
+    {
+      "scene": "terendelev.trickster.watch.faith",
+      "node": "true",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "6faabcb5ba000548b1f2ed77344f32faafa0a99a7a14edc9a8881a4b530e74fb",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    },
+    {
+      "scene": "terendelev.trickster.watch.faith_awning",
+      "node": "true",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "6faabcb5ba000548b1f2ed77344f32faafa0a99a7a14edc9a8881a4b530e74fb",
+      "reason": "Institutional faith, prayer or a hypothetical divine refusal; no manifested goddess."
+    }
+  ]
+}

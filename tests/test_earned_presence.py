@@ -352,6 +352,12 @@ class GeneratedStory(unittest.TestCase):
                 self.assertEqual(edit["Replacement"], sid)
                 self.assertEqual(edit["When"], [list(dict.fromkeys([*g, "galfrey.present_now"])) for g in galfrey_queen_slide.WHEN])
 
+    def test_jerribeth_unfinished_keeps_earned_commander_return_guard(self):
+        scene = next(s for s in self.story["Scenes"] if s["Id"] == "jerribeth.ending_unfinished")
+        self.assertNotIn(scene["Id"], ep.COMMANDER_ABSENT)
+        self.assertIn(ep.SACRIFICE, scene["Forbids"])
+        self.assertEqual(scene["ForbidOverrides"][ep.SACRIFICE], ep.COMMANDER_BACK)
+
     def test_off_trickster_canon_stands(self):
         """Worst-case off-Trickster world: every key that does not imply the Trickster path holds (native state and every
         authored flag reachable without it), closed under Story.Derived and Latches. No native slide is replaced, no native

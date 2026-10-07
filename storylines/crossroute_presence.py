@@ -338,7 +338,7 @@ def integrate(payload):
             if (route == own_route or own_route.startswith(woman + ".")
                     or (payload.get("SeatWomen", {}).get(woman) or {}).get("Relationship") == own_route):
                 continue
-            if not (any(live_mentions(t, pattern, postwar(scene)) for t in texts)
+            if not (any(live_mentions(t, pattern, postwar(scene), scene["Id"]) for t in texts)
                     or any(pattern.fullmatch(n.get("Speaker", "")) for n in scene["Nodes"])):
                 continue
             guest = payload["Relationships"][route]
@@ -362,7 +362,7 @@ def integrate(payload):
                           if r != scene.get("Relationship", "tirabade")
                           and (payload.get("SeatWomen", {}).get(w) or {}).get("Relationship") != scene.get("Relationship", "tirabade")
                           and not scene.get("Relationship", "tirabade").startswith(w + ".")
-                          and live_mentions(unit, p, True)]
+                          and live_mentions(unit, p, True, scene["Id"])]
                 if guests:
                     variants.append(dict(Text=unit, Requires=[availability(payload, w, r, known) for w, r in guests]))
                 else:
@@ -454,7 +454,7 @@ def integrate(payload):
                                 continue
                             fallback_target = next((n for n in scene["Nodes"] if n["Id"] == other.get("Next")), None)
                             if fallback_target and (names[woman][1].fullmatch(fallback_target.get("Speaker", ""))
-                                           or live_mentions(fallback_target.get("Text", ""), names[woman][1], postwar(scene))):
+                                           or live_mentions(fallback_target.get("Text", ""), names[woman][1], postwar(scene), scene["Id"])):
                                 continue   # an unavailable guest needs a neutral target
                             alternate = copy.deepcopy(other)
                             alternate["Forbids"].remove(present)
@@ -509,7 +509,7 @@ def integrate(payload):
             if route == block.route or seat.get("Relationship") == block.route or block.route.startswith(woman + "."):
                 continue
             speaking = block.slot == "text" and pattern.fullmatch(block.node.get("Speaker", ""))
-            if not speaking and not live_mentions(block.text, pattern, postwar(block.scene)):
+            if not speaking and not live_mentions(block.text, pattern, postwar(block.scene), block.scene["Id"]):
                 continue
             # An original branch may already exclude every live loss. Read
             # its incoming answers as well as its own fields before gating a
@@ -533,7 +533,7 @@ def integrate(payload):
                 units = re.split(r"(?<=\{/n\})\s*(?=\{n\})", node.get("Text", ""))
                 live, neutral = [], []
                 for unit in units:
-                    (live if live_mentions(unit, pattern, True) else neutral).append(unit)
+                    (live if live_mentions(unit, pattern, True, scene["Id"]) else neutral).append(unit)
                 if live and neutral:
                     node["Text"] = "\n".join(neutral).strip()
                     node.setdefault("Paragraphs", []).append(dict(Text="\n".join(live).strip(),

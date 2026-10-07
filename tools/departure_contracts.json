@@ -15070,6 +15070,139 @@
           "scene": "terendelev.trickster.watch.galfrey_reckoning_awning",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.watch",
+          "node": "page",
+          "paragraph": 24,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.watch",
+          "node": "page",
+          "paragraph": 30,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.watch",
+          "node": "page",
+          "paragraph": 31,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.watch",
+          "node": "page",
+          "paragraph": 32,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.watch",
+          "node": "page",
+          "paragraph": 33,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.late",
+          "node": "page",
+          "paragraph": 24,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.late",
+          "node": "page",
+          "paragraph": 30,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.late",
+          "node": "page",
+          "paragraph": 31,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.late",
+          "node": "page",
+          "paragraph": 32,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.late",
+          "node": "page",
+          "paragraph": 33,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.debt",
+          "node": "page",
+          "paragraph": 24,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.debt",
+          "node": "page",
+          "paragraph": 30,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.debt",
+          "node": "page",
+          "paragraph": 31,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.debt",
+          "node": "page",
+          "paragraph": 32,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.debt",
+          "node": "page",
+          "paragraph": 33,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.guardian",
+          "node": "page",
+          "paragraph": 24,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.guardian",
+          "node": "page",
+          "paragraph": 30,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.guardian",
+          "node": "page",
+          "paragraph": 31,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
+        },
+        {
+          "scene": "terendelev.trickster.epilogue.guardian",
+          "node": "page",
+          "paragraph": 32,
+          "letter": false,
+          "provenance": "fix-ep4 round 2: the added callback depicts the restored woman already required by its containing page"
         }
       ],
       "absence_variants": [

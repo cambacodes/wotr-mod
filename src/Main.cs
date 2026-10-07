@@ -624,7 +624,8 @@ namespace Tirabade
                 bool parentAttached = parentEndings != null
                     && Optional<object>("Parent ending attachment", () => { parentEndings!.Attach(); return new object(); }) != null;
                 if (!parentAttached) parentEndings = null;
-                foreach (var scene in story.Scenes)
+                foreach (var scene in Rules.EpilogueInsertionOrder(story)
+                    .Concat(story.Scenes.Where(s => !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal))))
                 {
                     if (degraded.Contains(scene.Relationship)) continue;
                     if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))

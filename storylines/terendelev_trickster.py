@@ -237,7 +237,7 @@ page(P + "wound.weeps", "What the wound weeps", [
     nar("test", '{n}A vrock came over the north wall during the last watch. The sentries killed it. Its carcass lies outside the gate, feathers stiff with filth. You take your knife and a scrap of clean linen.{/n}',
         c("[Catch a drop on your knife and lay it on the vrock's hide.]", "vrock", flags=(BLOOD_TESTED,)),
         c("[Bind the wound and go back to sleep.]", "sleep")),
-    nar("vrock", "{n}The drop hisses. It eats a hole the size of a coin through the hide and goes on eating, down into the meat, until there is a smoking pit you could put your thumb in. The smell is appalling.{/n}\n{n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood.{/n}\n{n}It burns what belongs to the enemy, then, and leaves alone what does not. You try it on a camp rat the dogs killed: the rat stays a dead rat. It does not mend, or make, or raise. Whatever the wound's blood is for, it is for taking things away.{/n}\n{n}You write down what the blood touched and what it burned. One dead demon is a poor foundation for a theory. It is what you have.{/n}",
+    nar("vrock", "{n}The drop hisses. It eats through the hide and the meat beneath it. You slide the clean blade under the burning scrap. The hissing stops at the steel; red blood pools there without scorching it. On a second scrap the same thing happens. The smell is appalling.{/n}\n{n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood.{/n}\n{n}It burns what belongs to the enemy, then, and leaves alone what does not. You try it on a camp rat the dogs killed: the rat stays a dead rat. It does not mend, or make, or raise. Whatever the wound's blood is for, it is for taking things away.{/n}\n{n}You write down what the blood touched and what it burned. One dead demon is a poor foundation for a theory. It is what you have.{/n}",
         c("Continue", "scale_choice", requires=(SCALE_HELD,)),
         c("Continue", "sleep", forbids=(SCALE_HELD,))),
     nar("scale_choice", "{n}Terendelev's scale is in your pack. You unwrap it beside the bloodstained knife.{/n}",
@@ -272,7 +272,7 @@ PERCEPTION = (
 HOSTS = {
     "galfrey": dict(
         list=GALFREY_LIST, back=GALFREY_RETURN, suffix="",
-        watch='''{n}Galfrey follows your gaze. She has not sheathed her sword; she leans on it, as she leaned on it through the fight.{/n} "She sheltered Kenabres for longer than I have worn a crown. We gave her the only mercy we had to give." {n}Her jaw sets.{/n} "Let it burn, Commander. It is her pyre now."''',
+        watch='''{n}Galfrey follows your gaze. She has not sheathed her sword; she leans on it, as she leaned on it through the fight.{/n} "She stood beside us through this war. Kenabres was her home. We gave her the only mercy we had to give." {n}Her jaw sets.{/n} "Let it burn, Commander. It is her pyre now."''',
         fail_line='''{n}Galfrey's hand comes to rest on your shoulder, briefly, the way a commander touches a soldier who has stood too long at a grave.{/n} "There is nothing of her left in that. Come away."''',
         fail_exit='"She deserved better than this, Your Majesty. So did all of Kenabres."',
         claim_line='''{n}Galfrey has been watching you, not the fire. Whatever she heard, she keeps it behind her face.{/n} "Commander. Whatever you were speaking to, I pray it was only grief."''',
@@ -374,7 +374,7 @@ def bones(host):
 {n}You go down on your knees at the edge of the pyre and lean out over it, the cut side down, and let the blood run out from under your ribs into the fire.{/n}''',
              c("Continue", "measured", requires=(BLOOD_TESTED,)),
              c("Continue", "unmeasured", forbids=(BLOOD_TESTED,))),
-        fire("measured", "{n}You watched the vrock's hide outside Drezen's gate and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}",
+        fire("measured", "{n}Outside Drezen, the hissing stopped where the vrock\'s filth met clean steel. You watch for that edge now. White fire eats the black marrow; then its hiss dies and the blood runs red over clean bone. You press the dressing against your side. The cleansing is done. Whether she can make flesh of what remains is still her gamble.{/n}",
              c("Continue", "burn")),
         fire("unmeasured", '''{n}You have no idea how much it will take. The fire drinks and drinks. Your sight begins to grey at the edges, and the knights behind you have started to shout.{/n}''',
              c("[Knowledge (Arcana) DC 24] Watch the flames and stop at the moment the fire has what it needs.",
@@ -456,7 +456,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
         c('"Then take something from me instead."', "gamble")),
     nar("gamble", '''{n}You tell her what you have. A wound that has never closed, and is open now. Blood that burns what belongs to the Abyss and leaves other things alone. Her own spirit, which has done this once already with nothing to work in but itself. It is a guess, and you tell her it is a guess.{/n}''',
         c("Continue", "risk")),
-    te("risk", '''"And if it makes me another thing like the one you killed? Or burns me with the rest of his?" {n}The flame is very small.{/n} "And there is less of me than there was. Whatever comes out of this fire now will be less than what went in. I think the wings are gone already. I felt them go, the second night."''',
+    te("risk", '''"And if it makes me another thing like the one you killed? Or burns me with the rest of his?" {n}The flame is very small.{/n} "And there is less of me than there was. Whatever comes out of this fire now will be less than what went in. I think the wings are gone already. I felt them go while I waited in the ash."''',
         c('"Less of you is still you. I\'m asking."', "choose"),
         c('[Let her rest] "Then rest. I won\'t make you."', "rest", flags=(RESTED, CLOSED))),
     te("choose", '"Asking. Yes. You are." {n}The flame gathers itself.{/n} "Very well, wounded one. I have been cold, listening for you. Open it."',
@@ -468,7 +468,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
         c('[Wrap her in your cloak.] "Let\'s go home."', flags=(RETURNED, STARTED, WOUND_OPEN, GROUNDED, LATE))),
     te("rest", '''"Thank you." {n}The flame gutters.{/n} "You came back. That will do. Tell no one in Kenabres; let them remember the square."''',
         c("[Stay until it goes out.]")),
-], requires=("trickster", MONSTER_DEAD, MONSTER_LATCH), forbids=(RETURNED, CLOSED, *PARENT_EMBODIED), delay=24,
+], requires=("trickster", MONSTER_DEAD, MONSTER_LATCH, "iz.done"), Areas=[DREZEN], forbids=(RETURNED, CLOSED, *PARENT_EMBODIED), delay=24,
     TricksterDevice=True, TricksterState="late")
 
 
@@ -477,6 +477,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
 SCENES.append(reaction("Seelah", P + "react.seelah.watch", (P + "night.seen",),
     '{n}Seelah is sitting on the edge of the practice ring with a whetstone she is not using.{/n} "So. The north turret." {n}She grins, then doesn\'t.{/n} "My first festival in Kenabres, when I was still new to the order. Old habits: I caught my own hand halfway into a merchant\'s purse, and when I looked round she was standing right behind me in her human shape. She didn\'t call the watch. She asked whether the Inheritor paid her paladins so badly, and when I said yes, she laughed like bells and bought me a pie." {n}She turns the stone over.{/n} "The sentries say she came down off that turret this morning laughing like that again. I knew that laugh. Hearing it here was something else." {n}Her voice roughens.{/n} "Be good to her, Commander. She\'s been somebody\'s weapon. Don\'t let her be anybody\'s again. Not even yours."',
     answer_list=SEELAH_HUB, relationship=REL, forbids=("seelah_dead", "seelah_gone", CLOSED),
+    ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"},
     entry='"You look like you\'ve heard something, Seelah."', chapter=5, last=5, delay=12, portrait="Seelah"))
 
 SCENES.append(reaction("Irabeth", P + "react.irabeth.dressing", (P + "dressing",),
@@ -488,6 +489,7 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth.dressing", (P + "dressing",
 SCENES.append(reaction("Anevia", P + "react.anevia.kenabres", (RETURNED, P + "watch.kenabres_told"),
     '{n}Anevia is sitting with her bad leg up on a crate.{/n} "So the silver lady asked after me. By name. Nice of her." {n}She picks at a splinter.{/n} "Half of Kenabres used to go up on the roofs to watch her fly over the Wardstone of an evening. I went up for the view and stayed for the pickpocketing. Everyone\'s looking up, see." {n}She stops smiling.{/n} "I watched her come down, too. The day the city fell. For a long while I couldn\'t look up without seeing that scythe again." {n}She shrugs, badly.{/n} "Tell her I said hello. And tell her if she ever wants to go and see what\'s left of the old square, I know the way over the roofs. Bad leg or no."',
     answer_list=ANEVIA_HUB, relationship=REL, forbids=("anevia_gone", "anevia_dead", CLOSED),
+    ForbidOverrides={"anevia_dead": "anevia.trickster.returned", "anevia_gone": "anevia.trickster.returned"},
     entry='"Terendelev asked after you."', chapter=5, last=5, delay=24))
 
 SCENES.append(reaction("Storyteller", P + "react.storyteller.quiet", (RETURNED, VOICE),
@@ -556,11 +558,11 @@ epilogue("watch", '''{n}Terendelev stayed in Drezen. She kept the north turret's
 {n}She healed whoever came to her. She never healed the Commander, because she could not, and she never stopped trying.{/n}''',
          requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
 
-epilogue("late", '''{n}The war ended before Terendelev had answered her own question: what she owed, and how to pay it. The evening after Threshold she climbed the stair to the Commander's rooms with a roll of clean linen under her arm, knelt, and changed the dressing on the wound without asking. When it was done she stayed kneeling, and said that she had decided, and that it would take the rest of the Commander's life, and that she hoped that would be long.{/n}''',
+epilogue("late", '''{n}The evening after the Commander returned from Threshold, Terendelev climbed the stair with clean linen under her arm. She laid it beside the bed. "You told me nothing was owed. I have not forgotten." She took the Commander's hand. "I want to stay. Not until an account is settled. With you." The linen waited while she drew the Commander close. At dawn she opened the bundle and changed the dressing; afterward she went down to relieve the turret watch.{/n}''',
          requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, P + "declined", "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS,
          **SURVIVED)
 
-epilogue("debt", '''{n}Terendelev paid her debt. She stood between the Commander and harm at Threshold and after, and never once let it be said that a silver dragon had failed to settle what she owed. She stood watch on the north turret every night of the war, and never once let the Commander join her there.{/n}
+epilogue("debt", '''{n}Terendelev paid her debt. She tended the wounded who remained in Drezen while the army went to Threshold, and never once let it be said that a silver dragon had failed to settle what she owed. She stood watch on the north turret every night of the war, and never once let the Commander join her there.{/n}
 {n}It was a very correct arrangement. Everyone in Drezen said so, and some of them said it kindly.{/n}
 {n}On the last night of the war she was seen on the north turret, alone, with the linen folded in its square in her lap, looking at the Commander's lit window for a long while. Then she put the linen down on the parapet and went down the stair, and in the morning the dressing was changed at the proper hour, correctly, and she did not speak.{/n}''',
          requires=(P + "declined",), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
@@ -702,7 +704,7 @@ _royal_start["Choices"][0]["Forbids"].append("galfrey.trickster.returned")
 _royal_start["Choices"].append(c("Continue", "private", requires=("galfrey.trickster.returned",)))
 _royal_letter["Nodes"].extend([
     nar("royal", '{n}The letter is sealed with the royal arms of Mendev, and written in a firm, old-fashioned hand.{/n}\n"Commander. I took my knights to Iz to grant rest to her soul and her body. It was my duty and I would do it again. You have undone it. I have asked the Inheritor whether I ought to be glad.\n"She has not answered. I have decided I am glad regardless, which is either faith or its opposite, and at my age I am no longer sure there is a difference.\n"She was our protector and our friend. See that you are hers."\n{n}It is signed with the one word, Galfrey, and nothing else: no title.{/n}', _entry_copy.deepcopy(_royal_terminal)),
-    nar("private", '{n}Terendelev passes you a letter sealed with plain wax. The hand is familiar.{/n} "I went to Iz with the crusade. To grant our friend rest was my duty. I did not expect to learn afterward that she lived. I have prayed over it, and I am glad. Give her my thanks for every watch she has stood. Deliver them quietly." {n}There is no name beneath the last line.{/n}', c("[Fold the letter and put it away.]")),
+    nar("private", '{n}Terendelev passes you a letter sealed with green wax. The hand is familiar.{/n} "I went to Iz with the crusade. To grant our friend rest was my duty. I did not expect to learn afterward that she lived. I have prayed over it, and I am glad. Give her my thanks for every watch she has stood. Deliver them quietly." {n}Beneath the last line is one name: Kitrane.{/n}', c("[Fold the letter and put it away.]")),
 ])
 _royal_awning = _entry_copy.deepcopy(_royal_letter)
 _royal_awning["Id"] += "_awning"
@@ -718,3 +720,80 @@ SCENES.append(_royal_awning)
 epilogue("guardian_sacrifice", '{n}The news reached Terendelev in Kenabres. She read the letter in her room by the east gate, then went down to relieve the sentry. She kept the whole night watch.{/n} {n}Afterward she put away the linen she had meant to send to Drezen. She still lit a candle before sleeping. When a child asked whom it was for, she answered, "Someone who came back for me."{/n} {n}She stayed in Kenabres. There were people there who needed her, and she had not finished keeping them.{/n}',
     requires=(RETURNED, P + "guardian", "sacrifice"), forbids=("trickster.commander_back",),
     paragraphs=(p("{n}She never regained her wings. She did not call that loss a debt the dead could pay.{/n}", requires=(LATE,)),))
+
+
+# Round 2 authored receipts: disposal is performed, not merely promised.
+HAL_MET = P + "hal_met"
+BINDINGS.setdefault("SeenCues", {})[HAL_MET] = ["195ef1a822c1c144f80f3cd6d5669d63"]
+HAL_LETTER = P + "watch.hal_refuge_delivery"
+DESKARI_NOTICE = P + "watch.deskari_notice"
+DESKARI_SETTLED = P + "watch.deskari_settled"
+for _s in SCENES:
+    if _s["Id"] in (P + "bones.restitution", P + "bones.restitution_irabeth"):
+        _answer = next(nd for nd in _s["Nodes"] if nd["Id"] == "answer")
+        _answer["Text"] += (' {n}Before the column leaves, the knights rake the last ribs into the fire. '
+            'Terendelev watches until they crumble. She takes a handful of ash and scatters it across the rubble; '
+            'the knights scatter the rest. Nothing is taken for a reliquary.{/n}')
+    if _s["Id"] == P + "late.the_wound_calls":
+        _after = next(nd for nd in _s["Nodes"] if nd["Id"] == "after")
+        _after["Text"] += (' {n}Wrapped in your cloak, she waits while your soldiers break the last bones into the embers. '
+            'She scatters the first handful of ash herself. They empty the skull and leave it to burn.{/n}')
+    if _s["Id"] == P + "react.seelah.watch":
+        _s["Nodes"][0]["Text"] = ('{n}Seelah catches your arm as you pass the practice ring.{/n} '
+            '"The sentry at the sixth bell has been trying to tell me something without saying it. The north turret, eh?" '
+            '{n}She grins.{/n} "At the festival in Kenabres I bought a pie for a hungry child. Terendelev caught me '
+            'looking at it and asked whether the Inheritor starved her paladins. Then she bought another and laughed '
+            'when I ate it before the child finished his." {n}Seelah glances up at the turret.{/n} '
+            '"I heard that laugh again this morning. Tell her to come down for supper. There is room at our table."')
+    if _s["Id"] == P + "react.irabeth.dressing":
+        _s["Nodes"][0]["Text"] = ('{n}Irabeth intercepts the relief sentry at the stair, checks his bandaged wrist, '
+            'and sends another knight up in his place.{/n} "Terendelev took his watch as well as her own. '
+            'I have told her to eat before she takes a third." {n}She turns to you.{/n} '
+            '"She borrowed my knife to cut a shirt into dressings. I want the knife back. And if you keep her on that '
+            'turret until dawn again, send word to the officer of the watch. He needs a relief, not the details."')
+    if _s["Id"] in (P + "epilogue.watch", P + "epilogue.late", P + "epilogue.debt", P + "epilogue.guardian"):
+        _pars = _s["Nodes"][0]["Paragraphs"]
+        # Existing letter receipt remains sufficient; knowledge only changes the destination.
+        _mountain = _pars[9]
+        _mountain["Forbids"].append(HAL_LETTER)
+        _home = _s["Id"] == P + "epilogue.guardian"
+        _pars.append(p('{n}The courier left her letter at the old refuge. Months later a traveller brought back '
+            'a gold scale wrapped in the same sheet, with every crossing-out carefully preserved. '
+            + ('Terendelev hung it in her room by the east gate of Kenabres.' if _home else
+               'Terendelev hung it beside the hearth in Drezen.') +
+            ' She laughed when she unfolded the sheet, and would not explain why.{/n}',
+            requires=(P + "watch.letter_written", HAL_LETTER)))
+        _pars[24]["Text"] = ('{n}She had asked to face Deskari again. Before the army left, she counted the '
+            'wounded who could not march and chose to remain with them. She released the Commander from the escort '
+            'promise herself. His name still made her fingers tighten on her pike.{/n}')
+        _pars[24]["Requires"].append(DESKARI_SETTLED)
+        _pars.append(p('{n}The Commander had promised word if Deskari appeared again. She watched for the dispatches '
+            'with the other sentries; no place in the marching column had been promised.{/n}',
+            requires=(DESKARI_NOTICE,)))
+        if _s["Id"] == P + "epilogue.watch":
+            _s["Nodes"][0]["Text"] += (' {n}After her visit to Kenabres, she came back to Drezen with worn boots '
+                'and a parcel of fried bread. She left the pike by the door and caught the Commander by the collar. '
+                '"The east gate has its watch. Tonight you have me."{/n}')
+        if not _home:
+            _pars[18]["Text"] = ('{n}She still spoke of the mountain winds. Then she would come down from the '
+                'turret, unfasten her cloak beside the Commander, and draw their chair nearer the fire with her foot.{/n}')
+            # The shirt is a consequence of the night actually played, never of rescue or an oath alone.
+            _pars.append(p('{n}The sixth-bell sentry remembered the missing shirt long after the war. '
+                'When the relief found them on the turret again, Terendelev held up a roll of linen. '
+                '"Provisioned this time," she said. The sentry went down. She caught the Commander by the collar and kissed them.{/n}',
+                requires=(P + "night.seen", COMMITTED)))
+
+
+# A skipped farewell does not silently collect the escort debt in an ending.
+for _s in SCENES:
+    if _s["Id"] in (P + "epilogue.watch", P + "epilogue.late", P + "epilogue.debt", P + "epilogue.guardian"):
+        _pars = _s["Nodes"][0]["Paragraphs"]
+        _pars[24]["Forbids"].append(DESKARI_NOTICE)
+        _pars.append(p('{n}The army marched without settling her request to face Deskari. '
+            'When the Commander next spoke of Iz, she asked why the promised horse had never come. '
+            'She heard the answer standing, with her hand closed on the pike.{/n}',
+            requires=(P + "watch.deskari_vow",), forbids=(DESKARI_NOTICE, DESKARI_SETTLED)))
+    if _s["Id"] == P + "epilogue.guardian":
+        _s["Nodes"][0]["Text"] += (' {n}At dusk she returned from the healing room to the east gate. '
+            'The ribbon-seller had left a blue length on the sill. Terendelev took it up to the watch, '
+            'tied it where the street could see it, and called the relief sentry by name.{/n}')

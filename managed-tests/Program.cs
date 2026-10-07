@@ -670,17 +670,16 @@ internal static class Program
             var expected = originalCues[pair.Key].Select(reference => reference.Guid).ToList();
             if (pair.Key == Rules.PlayerFinalChoice)
             {
-                // E14a/E14h: each page lands right after its anchor (a native member or an earlier RRT page), after any pages
-                // already anchored there, in story order; the native members keep their order and instances.
+                // E14a/E14h: scene anchors are installed before their dependants. Native members retain their order.
                 var anchored = new HashSet<BlueprintGuid>();
-                foreach (var s in story.Scenes.Where(s => s.EpilogueSequence == "PlayerFinalChoice"))
+                foreach (var s in Rules.EpilogueInsertionOrder(story).Where(s => s.EpilogueSequence == "PlayerFinalChoice"))
                 {
                     var page = Id("page." + s.Id + "." + s.Nodes[0].Id);
                     int at = expected.IndexOf(BlueprintGuid.Parse(Rules.EpilogueAnchor(story, s.EpilogueAfter, name => Id(name).ToString())!));
-                    int index = at + 1;
+                    int index = at < 0 ? expected.Count : at + 1;
                     while (index < expected.Count && anchored.Contains(expected[index])) index++;
                     expected.Insert(index, page);
-                    anchored.Add(page);
+                    if (at >= 0) anchored.Add(page);   // runtime's missing-anchor fallback appends without an anchor marker
                 }
                 Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "E14a pages misplaced in PlayerFinalChoice.");
                 Check(pair.Value.Cues.Where(c => originalCues[pair.Key].Contains(c)).SequenceEqual(originalCues[pair.Key]),
@@ -688,12 +687,20 @@ internal static class Program
                 continue;
             }
             // A native epilogue edit's replacement (E14d) is swapped in for its native cue on the native page, never appended.
-            expected.AddRange(story.Scenes.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.EpilogueSequence == null
-                && !Rules.IsNativeReplacement(story, s)
-                && (s.Owner == "AeonEpilogue" ? sequenceIds[1] : sequenceIds[0]) == pair.Key)
-                .Select(s => Id("page." + s.Id + "." + s.Nodes[0].Id)));
+            var addedPages = new HashSet<BlueprintGuid>();
+            foreach (var s in Rules.EpilogueInsertionOrder(story).Where(s => s.EpilogueSequence == null
+                && (s.Owner == "AeonEpilogue" ? sequenceIds[1] : sequenceIds[0]) == pair.Key))
+            {
+                var page = Id("page." + s.Id + "." + s.Nodes[0].Id);
+                string? after = Rules.EpilogueAnchor(story, s.EpilogueAfter, name => Id(name).ToString());
+                int at = after == null ? -1 : expected.IndexOf(BlueprintGuid.Parse(after));
+                int index = at < 0 ? expected.Count : at + 1;
+                while (index < expected.Count && addedPages.Contains(expected[index])) index++;
+                expected.Insert(index, page);
+                if (at >= 0) addedPages.Add(page);
+            }
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);
-            Check(pair.Value.Cues.Take(originalCues[pair.Key].Length).SequenceEqual(originalCues[pair.Key]), "Native epilogue reference instances replaced");
+            Check(pair.Value.Cues.Where(c => originalCues[pair.Key].Contains(c)).SequenceEqual(originalCues[pair.Key]), "Native epilogue reference instances replaced");
         }
         var genericEndingExits = new HashSet<string>(JsonConvert.DeserializeObject<string[]>(File.ReadAllText(Path.Combine(
             Environment.GetEnvironmentVariable("RRT_TEST_REPO_ROOT") ?? Directory.GetCurrentDirectory(),

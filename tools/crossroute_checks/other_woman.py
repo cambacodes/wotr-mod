@@ -294,7 +294,7 @@ def check(model, blocks, proof):
             if (route == b.route or seat.get("Relationship") == b.route
                     or b.route.startswith(woman + ".")):
                 continue
-            matches = live_mentions(b.text, pattern, is_postwar)
+            matches = live_mentions(b.text, pattern, is_postwar, b.scene["Id"])
             match = matches[0] if matches else None
             if not match and not speaking:
                 continue

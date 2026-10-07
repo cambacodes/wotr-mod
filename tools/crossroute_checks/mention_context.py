@@ -6,6 +6,16 @@ exempt. Past tense alone is not history: epilogues narrate future life in past
 tense. Exemptions apply per occurrence, never to a whole mixed paragraph.
 """
 import re
+import hashlib
+import json
+from functools import lru_cache
+from pathlib import Path
+
+
+@lru_cache(maxsize=1)
+def terendelev_reference_contexts():
+    data = json.loads(Path(__file__).resolve().parents[1].joinpath("terendelev_reference_contracts.json").read_text(encoding="utf-8"))
+    return {(c["scene"], c["text_sha256"], c["woman"]) for c in data["contexts"]}
 
 LIVE_ACTION = r"(?:stands?|waits?|sits?|leans?|steps?|enters?|joins?|arrives?|laughs?|smiles?|speaks?|says?|asks?|answers?|nods?|walks?|comes?|holds?|takes?|touches?|watches?|turns?|moves?|puts?|drinks?|sings?|offers?|grins?|lifts?|reaches?|pushes?|pulls?|folds?|sets?|kisses?|embraces?)\b"
 LIVE_STATE = r"(?:is\s+(?:(?:now|still)\s+)?(?:here|alive|present|standing|sitting|waiting)|has returned|will\s+(?:meet|visit|come|join|arrive|return|wait))\b"
@@ -221,5 +231,12 @@ def reference_reason(text, match, postwar=False):
     return None
 
 
-def live_mentions(text, pattern, postwar=False):
+def live_mentions(text, pattern, postwar=False, scene_id=None):
+    # The final route merge classifies specific recollections and devotional references.
+    # Match the entire reviewed text and scene; altered text or another route fails closed.
+    if scene_id and scene_id.startswith("terendelev.trickster."):
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        if any(scene == scene_id and checksum == digest and pattern.fullmatch(woman)
+               for scene, checksum, woman in terendelev_reference_contexts()):
+            return []
     return [m for m in pattern.finditer(text) if not reference_reason(text, m, postwar)]

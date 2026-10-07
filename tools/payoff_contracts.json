@@ -12997,6 +12997,280 @@
         ]
       ],
       "provenance": "resolve-eng3: preserve the ordinary-or-late payoff alternatives; coarse commitment alone cannot assert the lovers' bed"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "paragraph": 24,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_settled",
+        "terendelev.trickster.watch.deskari_settled",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "paragraph": 30,
+      "requires": [
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.hal_refuge_delivery"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "paragraph": 31,
+      "requires": [
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "paragraph": 32,
+      "requires": [
+        "terendelev.trickster.night.seen",
+        "terendelev.committed",
+        "terendelev.payoff.ordinary"
+      ],
+      "forbids": [],
+      "classification": "earned romantic callback",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.watch",
+      "node": "page",
+      "paragraph": 33,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "paragraph": 24,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_settled",
+        "terendelev.trickster.watch.deskari_settled",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "paragraph": 30,
+      "requires": [
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.hal_refuge_delivery"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "paragraph": 31,
+      "requires": [
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "paragraph": 32,
+      "requires": [
+        "terendelev.trickster.night.seen",
+        "terendelev.committed",
+        "terendelev.payoff.ordinary"
+      ],
+      "forbids": [],
+      "classification": "earned romantic callback",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.late",
+      "node": "page",
+      "paragraph": 33,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "paragraph": 24,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_settled",
+        "terendelev.trickster.watch.deskari_settled",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "paragraph": 30,
+      "requires": [
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.hal_refuge_delivery"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "paragraph": 31,
+      "requires": [
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "paragraph": 32,
+      "requires": [
+        "terendelev.trickster.night.seen",
+        "terendelev.committed",
+        "terendelev.payoff.ordinary"
+      ],
+      "forbids": [],
+      "classification": "earned romantic callback",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.debt",
+      "node": "page",
+      "paragraph": 33,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.guardian",
+      "node": "page",
+      "paragraph": 24,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.guardian",
+      "node": "page",
+      "paragraph": 30,
+      "requires": [
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.hal_refuge_delivery"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.guardian",
+      "node": "page",
+      "paragraph": 31,
+      "requires": [
+        "terendelev.trickster.watch.deskari_notice"
+      ],
+      "forbids": [],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
+    },
+    {
+      "route": "terendelev",
+      "scene": "terendelev.trickster.epilogue.guardian",
+      "node": "page",
+      "paragraph": 32,
+      "requires": [
+        "terendelev.trickster.watch.deskari_vow"
+      ],
+      "forbids": [
+        "terendelev.trickster.watch.deskari_notice",
+        "terendelev.trickster.watch.deskari_settled"
+      ],
+      "classification": "receipt-backed letter or escort history",
+      "provenance": "fix-ep4 Terendelev round 2: retain the existing night, delivery, notification and escort receipts; no new prerequisite"
     }
   ],
   "derived": {

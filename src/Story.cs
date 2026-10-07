@@ -1587,6 +1587,32 @@ namespace Tirabade
             return scene == null ? after : pageGuid("page." + scene.Id + "." + scene.Nodes[0].Id);
         }
 
+        // E14a/E14h: install scene anchors before their dependants, even when authored later.
+        // This schedules attachment only; the serialized scene order and save identities stay intact.
+        public static List<Scene> EpilogueInsertionOrder(Story story)
+        {
+            var pending = story.Scenes.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                && !IsNativeReplacement(story, s)).ToList();
+            var pages = new HashSet<string>(pending.Select(s => s.Id));
+            var ordered = new List<Scene>();
+            var placed = new HashSet<string>();
+            while (pending.Count > 0)
+            {
+                // Choose the first ready page so siblings retain their authored order.
+                int index = pending.FindIndex(s => s.EpilogueAfter == null
+                    || !s.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal)
+                    || !pages.Contains(s.EpilogueAfter.Substring("scene:".Length))
+                    || placed.Contains(s.EpilogueAfter.Substring("scene:".Length)));
+                if (index < 0)
+                    throw new InvalidOperationException("Cyclic epilogue scene anchor: " + pending[0].Id);
+                var page = pending[index];
+                pending.RemoveAt(index);
+                placed.Add(page.Id);
+                ordered.Add(page);
+            }
+            return ordered;
+        }
+
         // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
         // E15: book entries visible now, in section order then authored order.
         public static bool BookEntryVisible(BookEntry entry, Snapshot state) =>

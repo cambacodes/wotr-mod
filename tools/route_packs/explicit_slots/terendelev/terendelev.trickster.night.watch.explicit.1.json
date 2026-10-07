@@ -1,0 +1,22 @@
+{
+  "voice": "TERENDELEV: composed oathkeeper; healer's practical attention; dry, confident humor; direct about wanting company; stubborn protector who keeps her own judgment. Warmth never becomes grateful obedience. Desire belongs to her, independently of rescue, blood, or debt. Write fresh dialogue from these traits, not borrowed quotations.",
+  "facts": [
+    "Terendelev is the silver-dragon protector of Kenabres.",
+    "She used a human guise among festival crowds before her death.",
+    "She teased the Commander about her ice breath and laughed melodiously.",
+    "Her festival treatment dulled the Commander's pain and she promised further help.",
+    "Silver-dragon customs value oaths and honorable conduct. The revised-Aeon cue supports characterization only, not Trickster witnessed history."
+  ],
+  "scene": "Chapter 5, the authored north turret above the Commander's Drezen rooms, after Iz and the freely chosen oath. This slot is the first consummation of the existing north-turret encounter. The helper has gone; the practical dressing is finished. Terendelev has set aside her pike, initiated the kisses and drawn the Commander onto her cloak beside the brazier. Both want the intimacy. Carry her direct appetite and dry watch-post humor, the wind and brazier, and the choice to stay as a woman after the healing work. The wound remains bound and is neither arousal nor a cure. Her desire is independent of blood, rescue and debt. No partner is invented. End with the exact last line; the continuation is the existing grey-hour closeness, sixth-bell relief sentry and her shirt used as an improvised dressing. These two host briefs describe one mutually exclusive encounter. The runtime retains a heated-cut default until the user supplies the optional passage.",
+  "last_line": "N: The cloak closes over you both; the pike rests against the parapet.",
+  "speakers": {
+    "T": "Terendelev"
+  },
+  "example": "N: Terendelev puts the pike against the stone and catches your coat.\nT: Come closer. You are letting the wind in.",
+  "min_lines": 4,
+  "max_lines": 8,
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ]
+}
