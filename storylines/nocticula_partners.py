@@ -113,7 +113,7 @@ def terms_nodes(prefix, resume, closed):
         base = prefix + "." + state
         name = next(node for node in out if node["Id"] == prefix + ".name." + state)
         name["Choices"][1]["Next"] = base + ".answer"
-        out.append(nt(base + ".answer", '"You have asked for a great deal. Let us see what you have brought me."',
+        out.append(nt(base + ".answer", '"Me, alone? You do ask for expensive things. Show me you are worth the price."',
             c("Continue", base + ".chosen", requires=(EARNED,)),
             c("Continue", base + ".exclusive", forbids=(EARNED,))))
         # Every response is delivered from her CURRENT form. The partner's body
@@ -411,6 +411,8 @@ def integrate(payload):
             payload["Scenes"][i] = frozen[s["Id"]]
     from storylines.nocticula_n1 import finish_partners
     finish_partners(payload)
+    from storylines.nocticula_n3 import write as write_n3
+    write_n3(payload)
 
 
 def node(scene_, key):
@@ -505,23 +507,13 @@ def polish_situation(s):
         node(s, "start")["Text"] = node(s, "start")["Text"].replace(
             "This time there is no harbor.", "Nocticula sweeps the harbor accounts away with one hand. No voices remain in the chamber.")
     elif donor == "noct.second_door":
-        node(s, "end")["Text"] = '''{n}At the door, Nocticula catches your sleeve. She straightens the fold she has gripped, then draws you back for a last kiss.{/n}
-"I shall send for you. Keep the questions I disliked. I intend to win those arguments."
-{n}You wake with the pull of her hand still in your shoulder. The lamp in Drezen has gone cold. A clerk knocks again: the morning dispatch is late. You reach for it before dressing, and find yourself looking for another invitation beneath the papers.{/n}'''
-        slot(s, "yes", 1, "{n}She draws you close by the wrist. Later, the lamp still burns beside the couch.{/n}",
-             split="Later, the lamp burns")
+        # N3: end/yes/power prose lives in the base scene (voice-locked).
+        slot(s, "yes", 1, "{n}The latch falls behind you. Through the door, the Harem has gone very quiet.{/n}",
+             split="Much later, the room comes back.")
         slot(s, "power", 2, "{n}She pulls you down beside her. Much later, she remembers the courtier.{/n}",
-             split="The curtains close")
+             split="A long while afterwards she asks")
     elif donor == "noct.unborrowed_evening":
-        node(s, "want")["Text"] = '''"Nobody in that street knew what I intended to do next."
-{n}She points the knife toward the perfume seller's shutters. The borrowed view sharpens for a moment: a stair, a torn garment, a woman watching the upstairs window.{/n}
-"That woman thought I was somebody's expensive mistake. She told me to buy the room in my own name. I already owned the building."
-{n}Nocticula sets the knife down beside the pear, then takes your plate away before you have finished with it.{/n}
-"I wanted you here. I still do. Tell me what you want while the lodge can do nothing about it."'''
-        node(s, "honest")["Text"] = '''{n}She cuts another slice of pear and holds it against your lower lip. When you reach for it, she draws it back and eats it herself.{/n}
-"You have spent the evening confessing appetites. I had hoped to occupy one."
-{n}Her foot finds your ankle beneath the couch. The knife stays on the plate; she watches your hand leave it there.{/n}
-"Stay. The next report can wait until morning. Istrava is learning to wait for my answer. You may keep her company."'''
+        pass  # N3: want/honest prose now lives in the base scene (voice-locked).
     elif sid == "noct.acq.the_retained_copy":
         node(s, "end")["Text"] = '''{n}Nocticula has written a time across the top of the clean sheet: after tomorrow's reports. Beneath it she has copied one line from your last question, changing nothing. You start a business reply. Her mark crosses the first figure before you finish it.{/n}
 "Not that page. The other one."
@@ -625,20 +617,36 @@ def add_acquisition_coda(payload, lastcall, partner):
 
 
 def harbor_receipts():
-    from storylines.nocticula_n1 import placeholder
-    return [
-        p("{n}They named conflicts before turning them into bargains. Nocticula brought the next offer against one of the Commander's lovers to the quay herself. She watched the answer closely, then tore up the buyer's copy.{/n}", requires=("noct.conflicts_named",)),
-        p("{n}The room stayed private. Nocticula sent back a broker's question about another lover unopened, with one cut made through its seal. The Commander's other rooms remained beyond that door.{/n}", requires=("noct.privacy_named",)),
-        p("{n}Ilvara had seen the strengthened road. Nocticula kept the intact chart locked away and watched for a captain who had learned too much. The passengers' names stayed beside the price of the stronger crossing.{/n}", requires=("noct.door_reinforced", "noct.chart_intact")),
-        p("{n}Vessa's damaged hand never vanished from the account of the narrower crossing. The crushed bell went back to her; Nocticula kept the broken instrument and sent away buyers who mistook it for a working road.{/n}", requires=("noct.door_unreinforced", "noct.vessa_injured", "noct.chart_lost")),
-        p("{n}The allotted crossings were spent. Nocticula kept the final token beside the chart, and made the next petitioner explain why she should spend another.{/n}", requires=("noct.door_limited", "noct.chart_limited")),
-        p("{n}The attendants received their canceled entries. Nocticula retained the purchased guarantor's signature; the next collector found her name where he had expected a frightened servant's.{/n}", requires=("noct.lodge_debt_purchased",)),
-        p("{n}Tazren kept his original claim. Nocticula paid for the names of anyone still willing to buy it, and sent each buyer the published denial before asking how much he had lost.{/n}", requires=("noct.lodge_debt_denied",)),
-        p("{n}Nocticula kept the lodge's guest list and position. The old attendants left with their possessions; a new chamberlain answered the door in her name.{/n}", requires=("noct.lodge_kept_house",), forbids=("noct.lodge_given_rhez",)),
-        p("{n}The lodge stayed closed. Nocticula sent away an offer to reopen its hunting rooms, then brought the letter to the quay to complain about the profit the Commander had denied her.{/n}", requires=("noct.lodge_closed_house",)),
-    ] + [p(placeholder("noct.harbor_receipts"), requires=("noct." + flag,))
-         for flag in ("orren_hand_taken", "orren_lamp", "orren_given", "orren_run",
-                      "captain_sold", "threat_sent", "returned_sold", "returned_harem",
-                      "returned_released", "ilvara_executed", "sentence_overruled",
-                      "quarry_istrava", "quarry_suth", "quarry_guests", "lodge_given_rhez",
-                      "wager_lost", "laulieh_rewarded", "work_named")]
+    """Deed receipts for the harbor endings (N5 prose). Order and gates are N1's."""
+    old = [
+        p("{n}Offers made for the Commander still reached Alushinyrra now and then. They went to Nocticula, as agreed. She answered each one in person, and no buyer ever made a second.{/n}", requires=("noct.conflicts_named",)),
+        p("{n}The Commander's other rooms stayed the Commander's. When a Middle City broker tried to sell a key to one of them, Nocticula sent his letter back unopened with one of his fingers folded inside it.{/n}", requires=("noct.privacy_named",)),
+        p("{n}Her flower went on burning in the cliff on the coast of the Midnight Isles. Captains who sailed past at night saw it and paid her for the crossing. The few who tried to cross without paying stayed inside.{/n}", requires=("noct.door_reinforced", "noct.chart_intact")),
+        p("{n}The cliff stayed shut. Vessa kept her ruined hand and the flower on her collar, and Nocticula kept the cracked lens on a black table, crack outward, so that she would always remember who had told her to hold the door narrow.{/n}", requires=("noct.door_unreinforced", "noct.vessa_injured", "noct.chart_lost")),
+        p("{n}The counted crossings were spent, and the door never opened again for anyone. Nocticula kept the dead threads of her old flower in a glass dish and told visitors exactly what she had paid for them, and to whom.{/n}", requires=("noct.door_limited", "noct.chart_limited")),
+        p("{n}Suth collected under a black flower for the rest of his life. His forty men learned to say 'owe' only of debts the Lady had signed, and Suth worked very hard at being grateful.{/n}", requires=("noct.lodge_debt_purchased",)),
+        p("{n}Suth's hands stayed on his collectors' table until they were bones. Nobody bought his paper, and nobody in Alushinyrra ever again collected on a debt the Lady had not signed.{/n}", requires=("noct.lodge_debt_denied",)),
+        p("{n}The lodge above the old pleasure garden opened every season under her seal. Istrava ran the first night of each one, on her own tail, through her own hedges, and Nocticula's guests bet on which fountain she would reach.{/n}", requires=("noct.lodge_kept_house",), forbids=("noct.lodge_given_rhez",)),
+        p("{n}Istrava's lodge stayed a black shell on the hill. Three other houses that had hunted under the Lady's protection shut their doors without being told, and one sent her its bell in a box.{/n}", requires=("noct.lodge_closed_house",)),
+    ]
+    new = {
+        "orren_hand_taken": "Orren's hand, the one he stole with, hung on a hook beside the chair in her cells, where the next thief to sit there could look at it while he decided how much to say.",
+        "orren_lamp": "Orren burned in the rock beside the cliff door for as long as anyone sailed that coast at night. Nocticula told guests he had been a thief, and that he was much better company now.",
+        "orren_given": "Orren was given to the people he had sold. They took a long time about it on the wet rock, the court bet on how long, and Nocticula won.",
+        "orren_run": "Orren ran when Rhez reached a hundred. Nobody in the Middle City admits to seeing where he got to. Nocticula says she knows, and that she is saving him for an evening when she is bored.",
+        "captain_sold": "The captain lasted most of a year in the tanner's pits. Dessa kept his ship at the Fleshmarket quay, with his book under her arm and the Lady's collar at her throat.",
+        "threat_sent": "Dessa served in the Harem of Ardent Dreams with her mother's knife at her belt. The captain wore one ear for the rest of his life and never told anyone where the other had gone.",
+        "returned_sold": "The returned were sold at the Fleshmarket with their story read out from the block, and fetched more for it. The Commander's share reached Drezen in a plain chest. Nobody asked where the gold had been.",
+        "returned_harem": "The returned served in the Harem of Ardent Dreams. Shamira's court treated them as the Lady's property, because they were, and the Ardent Dream had to be gracious about it, which she hated.",
+        "returned_released": "The returned were let loose in Alushinyrra with her flower taken off them. Nocticula had bet a night that none would last the week. She had the news of each one brought to her as it came, and kept count.",
+        "ilvara_executed": "Ilvara's white shoes hung on a hook in the gallery above the Harem. Nocticula looked at them when she was bored, and remarked that she had been right about her own hands.",
+        "sentence_overruled": "What came out of the cauldron was sold at the Fleshmarket as a magician. Nocticula had wiped the word off her slate, never out of her memory; whenever the Commander asked her for mercy afterwards, she said, \"Cauldron,\" and smiled.",
+        "quarry_istrava": "The bell had been rung for its own mistress. In the Middle City they still say 'rung for Istrava' of anyone fool enough to hunt in a house the Lady protects.",
+        "quarry_suth": "The attendants had hunted their own collector with his quarry's bell. Suth never again walked through a garden at night without stopping to listen.",
+        "quarry_guests": "The bell had been rung for every guest at once. Her assassins came out of the hedges for all of them, and the families of those who did not come home sent the Lady gifts for a year, in case.",
+        "lodge_given_rhez": "Rhez held Istrava's lodge on the Lady's leash. The first season she bit nobody. The second, a guest said 'owe' in her hall, and Nocticula let her keep his teeth.",
+        "wager_lost": "The Commander had lost the wager at the city gate. Nocticula collected on a night of her own choosing, without warning, and the Commander did not like the time.",
+        "laulieh_rewarded": "Laulieh's hatbox hung framed over the Lady's bed. Laulieh dusted it herself, and told anyone who asked that it commemorated a very good night's service.",
+        "work_named": "Ossin left her cells carrying the Commander's name and sold it in three cities before he thought better of it. Nocticula sent the Commander the names of the cities, and nothing else.",
+    }
+    return old + [p("{n}" + text + "{/n}", requires=("noct." + flag,)) for flag, text in new.items()]

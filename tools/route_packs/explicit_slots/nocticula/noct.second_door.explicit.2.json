@@ -1,18 +1,21 @@
 {
-  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
   "facts": [
-    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
-    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
-    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
-    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+    "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins.",
+    "Shamira is her chosen lover and covets her throne.",
+    "The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen.",
+    "No fixed Commander gender or anatomy. Invent no physical feature beyond those stated.",
+    "The crimson mark is narration only, with no mechanical effect.",
+    "Explicit scope: the Commander with Nocticula only. No other participant.",
+    "In front of the Harem she has just put off punishing a courtier (keep it generic: 'the courtier') who sold introductions to her; she told him to wait where she can find him."
   ],
-  "scene": "Chapter 5, authored hosted harbor room, alliance branch power; mutually exclusive with company slot. Nocticula and Commander alone, return/deepening rather than a reset first night. She has set pillow-confidence secrecy and put off a courtier's punishment for her own pleasure. User-supplied continuation of consensual intimacy. Keep real ambition and her delight in cruelty; no oath of obedience or sex price for an alliance. End at her remembering the courtier, before the existing creditor-answer exchange. Current Shamira stance and parent bargain remain in force.",
+  "scene": "Chapter 5, Drezen sleep; alliance branch. Nocticula's bedchamber behind the black door off the Harem of Ardent Dreams; she opened it herself with one hand and pulled the Commander through by the shirt. She has put off the courtier's punishment for her own pleasure, and the Harem outside is silent with fear. Real ambition and delight in cruelty: she talks, once, about what they will take together, and enjoys the thought of the courtier waiting. No sex as the price of alliance; no oath. End before the aftermath, where she asks what the Commander would have done with the courtier.",
   "last_line": "N: Much later, she remembers the courtier.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"
   },
-  "example": "N: Nocticula catches your sleeve before you can set the glass down.\nL: Leave it. I have had enough of watching you drink.",
+  "example": "N: She shoves you back onto the black silk and stands over you, unpinning her hair.\nL: Let him sweat out there. I'm busy with the better half of my evening.",
   "commander_variants": [
     "a man",
     "a woman"
