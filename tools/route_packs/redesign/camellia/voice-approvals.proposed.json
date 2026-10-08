@@ -1,0 +1,297 @@
+{
+  "version": 1,
+  "note": "Three Claude-locked scenes changed (before_sha = main export; lock_sha = voice_locks.json, already stale on main for some). The other 29 changed scenes are not locked; proposed as new Claude locks below.",
+  "proposed": [
+    {
+      "scene": "camellia.trickster.epilogue.kept",
+      "before_sha": "ff8f0d3b99fbb495f8839c331641be4e4499ab4dd0c515b98307d224a7ebf6cb",
+      "lock_sha": "ff8f0d3b99fbb495f8839c331641be4e4499ab4dd0c515b98307d224a7ebf6cb",
+      "after_sha": "b847df65ddd80d73da37a2e072a57abc9ae5ef6623af082c4b9e48fc527ae1c2",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia design-first pass: closure contradiction (raised then left), promise and household readers appended, report-register paragraphs re-voiced (see tools/route_packs/redesign/camellia/cloud-review.md)"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.commit",
+      "before_sha": "dffd60c8a8769a7819640e4744ea6beaa202ccd8d46125d08ad582a56c854c6a",
+      "lock_sha": "dffd60c8a8769a7819640e4744ea6beaa202ccd8d46125d08ad582a56c854c6a",
+      "after_sha": "022329e153eafb9eb21d328f8c95c24e9b630bed030d06a1b6a826748aee4515",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia design-first pass: closure contradiction (raised then left), promise and household readers appended, report-register paragraphs re-voiced (see tools/route_packs/redesign/camellia/cloud-review.md)"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.refused",
+      "before_sha": "9a042328229273f788a19a180eefcf754a13857741c8c05c6588c134beed1d8f",
+      "lock_sha": "9a042328229273f788a19a180eefcf754a13857741c8c05c6588c134beed1d8f",
+      "after_sha": "4af3ef57f074ab2f0928d56525e2073f95be04476ae6497aab019b6ba88b098b",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia design-first pass: closure contradiction (raised then left), promise and household readers appended, report-register paragraphs re-voiced (see tools/route_packs/redesign/camellia/cloud-review.md)"
+    },
+    {
+      "scene": "camellia.lastcall.page",
+      "before_sha": "a1864dead9a647a0a3acfe72c495c0dc42ccc7e2b6d7d76738e0668d3d2d1db4",
+      "after_sha": "a7a9d35a4d2e62d07bb5b77889446a9a33f8818a91acf988b2e87c3b88cd5e4d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.bond.not_today",
+      "before_sha": "73c0cc350a45fdf014af86341d78f02931ca3e73204c3674eebe7111f324a319",
+      "after_sha": "c652a8bb3ab3b232899217ff028d0d7fc1cdd0f6f0b954315037a24496069b9e",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.bond.not_today_alive",
+      "before_sha": "73c0cc350a45fdf014af86341d78f02931ca3e73204c3674eebe7111f324a319",
+      "after_sha": "c652a8bb3ab3b232899217ff028d0d7fc1cdd0f6f0b954315037a24496069b9e",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.bond.not_today_camp",
+      "before_sha": "73c0cc350a45fdf014af86341d78f02931ca3e73204c3674eebe7111f324a319",
+      "after_sha": "c652a8bb3ab3b232899217ff028d0d7fc1cdd0f6f0b954315037a24496069b9e",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.bond.witness",
+      "before_sha": "915919de04447235e8b4c4543e9f0571e51c415b5758a3e9d6dc1ca4a067ab5e",
+      "after_sha": "ea9e9e909139655284a09d8b213e01c9c0c6435519fb569805fbfde124e0be2b",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.bond.witness_alive",
+      "before_sha": "c95913f595c49d7ef0b875f1af2d4befbd78ca9707ca3a4b0de62e611096cdf8",
+      "after_sha": "cde3834bfc669217119b144f84db91c73666e31196142b9342af830efc4c983d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.bond.witness_camp",
+      "before_sha": "8288e38db1b5d4687a1b648bee5f905707c48b77f1984cca45197641bf9198eb",
+      "after_sha": "10f17cfe9dbc373816af722f31d43a04b3ac0fa20b6166a54b55008be5883940",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.refused_living",
+      "before_sha": "8154cdd3ab077815aa6548065b49f6115bfa7fb62a0f4cc33afd95623f0f4871",
+      "after_sha": "c4e3ad46d4003c588534e3db11c117a92488db6adf2f8f2577daa936c58dfba9",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.evening.the_prisoner",
+      "before_sha": "0dfa42effc7f96552326361bae378fa827f476aeb3346a3dc456dc87cc15d889",
+      "after_sha": "afb1ad31eb764fcd7968c4da323611892bda645dc0747390e6007549dfb138fc",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.evening.the_prisoner_alive",
+      "before_sha": "0dfa42effc7f96552326361bae378fa827f476aeb3346a3dc456dc87cc15d889",
+      "after_sha": "afb1ad31eb764fcd7968c4da323611892bda645dc0747390e6007549dfb138fc",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.evening.the_prisoner_camp",
+      "before_sha": "0dfa42effc7f96552326361bae378fa827f476aeb3346a3dc456dc87cc15d889",
+      "after_sha": "afb1ad31eb764fcd7968c4da323611892bda645dc0747390e6007549dfb138fc",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.returned.terms",
+      "before_sha": "5d3b76bbc600fa57a830047fbb5b098e9318c3e4ad17689a13eeb5a5335765d4",
+      "after_sha": "8feec975c1352dd019e9d48608407f3d277a291986f72dda93ff2e844307cf22",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.returned.terms_alive",
+      "before_sha": "5d3b76bbc600fa57a830047fbb5b098e9318c3e4ad17689a13eeb5a5335765d4",
+      "after_sha": "8feec975c1352dd019e9d48608407f3d277a291986f72dda93ff2e844307cf22",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "camellia.trickster.returned.terms_camp",
+      "before_sha": "5d3b76bbc600fa57a830047fbb5b098e9318c3e4ad17689a13eeb5a5335765d4",
+      "after_sha": "8feec975c1352dd019e9d48608407f3d277a291986f72dda93ff2e844307cf22",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.company",
+      "before_sha": "5fb6199d75a4628a9c7d7f3dc41e3953887129673bda6ffe89fc071eb09ea7c8",
+      "after_sha": "c9cbf002acefedbb39fc0a1b802bb3d6ef093116ead43c15f875b6ea6974ca1f",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.retry.evil",
+      "before_sha": "592a47851b09178f8e2b0ad2ac135b1fdcda02675ff5dfd93ad104b082dc6f5a",
+      "after_sha": "cf6070bff8de54cd655dda62573445ae82623fe30e705e94399f3283f39f8643",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.retry.good",
+      "before_sha": "e7b8effa6b1a32b4e200c6e28d6bce50e0a426b2bd5d47d61238ae135da63b44",
+      "after_sha": "d0b1bfab27813acf15afb353436d19703e26cc3ecc1e5682771cda0ec515e17d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.settle.evil",
+      "before_sha": "53a9ad7de22de190ddc19cf06aefd751d9e6ad2e0c4f12ad266694127b9ead8d",
+      "after_sha": "1845505ca859f0b69094f3a1d0baf7fbccd17269b328ba930116a5353a89f86b",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_arueshalae.settle.good",
+      "before_sha": "7d6e3a6e72b26720d33d0c75bb3a24a0884fc8fe4ae3146e975da983a6a2a9af",
+      "after_sha": "5b5e0e7d14d3e1030e7b18e6858600d3350ac0934f733649a489afd4b0657097",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_wenduag.retry",
+      "before_sha": "5986fb7884707a5e23d06c9ad6b291d90235b5dd6286177472d6391ee9bed7fc",
+      "after_sha": "d62b1628139108021790e16e9def29255a7c045e0272bc8db09b0be067ff249f",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.camellia_wenduag.settle",
+      "before_sha": "3cfd75eb39089c6a460169e7775b18836d6a9445d514143f55f1cf2569e56fb7",
+      "after_sha": "072aa04f71b64b7e258850a84ec0e25f4df3826ce60fec8289d85cd97a9ac247",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.kaylessa_camellia.retry",
+      "before_sha": "250221fddad80776f251708ca2313bd2fccfb829745389e381965a1086eb442d",
+      "after_sha": "44b66a9029d91b63ea7c94b95bb5999a256633ee51f00ddc7dd707a246e62e40",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.kaylessa_camellia.settle",
+      "before_sha": "2b13aca143630b66ea97f6712bdae11a0564c70241252e06abc8b8284d08526f",
+      "after_sha": "d69a80d128891e6e44ac21201301561c44ba5ebb6f05b12c2b302ada0ffff6bc",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.retry",
+      "before_sha": "94528c5598152f992379751c8f17192364cabc0832258a6130fcee5173ebbce1",
+      "after_sha": "3562bd27c02255e728edf4e578b1680993dc47025f28dbac4ff0e207a435c8d0",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.nenio_camellia.settle",
+      "before_sha": "eb0abf2442ee302cbe113bbf6827043d94c16b117263d303e55344bc2f8653a9",
+      "after_sha": "2cfab733f53f3014c693f229a35623ed28a354a6a4daae291d56c081df361703",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.retry",
+      "before_sha": "9323e0a82c33e6eabe9ad58f4837d2f684219ad253b8a5d4db7013b6dc74d0f4",
+      "after_sha": "4943621a07b56655028dd979a0094b397dcfd413ce0b1e85f93f097672a491f9",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "household.pair.seelah_camellia.settle",
+      "before_sha": "77af8e4b7bda352f5f162c19059086ca599e5834345e35ae231ffd3b9762e8c9",
+      "after_sha": "53c3753f3d7a5ab850c83e26c8aaa88076dd469b6d10073a2485fb11077fe397",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "nurah.trickster.react.camellia_draft",
+      "before_sha": "6e7c642f7b56757e4c30c45f2ca809cd514bc0d9585008c83b16421982f3d4dd",
+      "after_sha": "7597babd123f6fa33661a7a55ec30f546bc54639fa063606e938502a65b2427e",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    },
+    {
+      "scene": "nurah.trickster.react.camellia_veiled_draft",
+      "before_sha": "88d293dde79739ee8f7790edec143518c8f93bd15829f3dc78796412451c8e64",
+      "after_sha": "bf6fc795c7c716d72564bee2d83ba918a8efa046974d606c939c42a4df070ff6",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-camellia",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-camellia: proposed new lock (re-voiced or placeholder voiced)"
+    }
+  ]
+}

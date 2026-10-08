@@ -929,6 +929,9 @@ def integrate(payload):
         _paragraphs(s, consequences)
         _node(s, "start").setdefault("Paragraphs", []).extend(new_receipts)
     _forbid(_scene(by_id, "vellexia.ending_interrupted"), LATE_COMMITTED)
+    # Cloud voice-owner pass (villain-route-vellexia): text and read-only paragraphs, applied last.
+    from storylines import vellexia_cloud
+    vellexia_cloud.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

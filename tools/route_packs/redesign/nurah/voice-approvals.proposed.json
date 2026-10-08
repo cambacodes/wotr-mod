@@ -1,0 +1,115 @@
+{
+ "route": "nurah",
+ "note": "No changed scene is voice-locked, so nothing needs approval under voice_lock_lint. before/after text_sha of every re-voiced scene are recorded for lock enrollment if the coordinator chooses to lock them.",
+ "proposed_approvals": [],
+ "enrollment_candidates": [
+  {
+   "scene": "household.pair.arsinoe_nurah.audit",
+   "locked": false,
+   "before_sha": "ee509511b8945ab0911f08b1428a82f9a01167f10cde8b005a25250f78e73e14",
+   "after_sha": "94c404377e8e52d2e895f44c127fedcfb46031039f77a15aa525f45bf96acca1"
+  },
+  {
+   "scene": "household.pair.arsinoe_nurah.retry",
+   "locked": false,
+   "before_sha": "074e83e689f1fc96295b5ddd655978d06560f970a40c663122f69bb5c255422e",
+   "after_sha": "0d5761dfc964d1fbec4b58fc3e4600b45d1348f8381747bf0690036decd945c1"
+  },
+  {
+   "scene": "nurah.a_margin_for_you",
+   "locked": false,
+   "before_sha": "7fc525e7bb66e9b768f19eb6350596f8dade2881508eea45550bffab1ede1c1d",
+   "after_sha": "bfe0495e978b36eea4c326db160587971d5dcd09c13d538b0a252147598c152c"
+  },
+  {
+   "scene": "nurah.a_page_with_teeth",
+   "locked": false,
+   "before_sha": "5f8c528677334c9b9dfbf692b12c4e67f10f595c9b7333f95e670e926534a6a7",
+   "after_sha": "fa9a7c4b5a7c83ff51afc06bbbf5d2ae3837f5ba0848e7ef73af69d43f96af1b"
+  },
+  {
+   "scene": "nurah.lastcall.page",
+   "locked": false,
+   "before_sha": "823f9a17153473a741fb3d08771c9294898ed3c088106fd8c802aa4ef2f6f512",
+   "after_sha": "9d639d6da7f59f54f50a79dfec8a62943645c4b92a7fc0ef081e161641638338"
+  },
+  {
+   "scene": "nurah.the_borrowed_audience",
+   "locked": false,
+   "before_sha": "15228e320b99aa90f6ebd0a54d74b598a5762d82afa7c87866ed29fab599ed43",
+   "after_sha": "28adb98788d2ac948e57d63f7d79249c3d97d84bac346032ed207ab68bd9946e"
+  },
+  {
+   "scene": "nurah.the_case_goes_missing",
+   "locked": false,
+   "before_sha": "fb04dcf46ca5bf67e46372dade20a8d42de37bc63abfad3c2a71e9560fe86718",
+   "after_sha": "9e0d4ae439e58764d05c190938e429b963808ae6cc690ca5e13eea04d346b88a"
+  },
+  {
+   "scene": "nurah.the_copies_that_survive",
+   "locked": false,
+   "before_sha": "646d9552d71a2aa1cabdbe1f26016482eebcba2244efb45f62c952e01d2fd9b3",
+   "after_sha": "dea4a3f122090646ece1aeaf22dd123d3dc59cef14a62f3c6faef19373b6efc9"
+  },
+  {
+   "scene": "nurah.the_editor_opens",
+   "locked": false,
+   "before_sha": "7cfc60d4c09b528ef586f4408b8d9f2bc56accd46a2865e412ce069fedb2311e",
+   "after_sha": "82262dc7d506bf31fd052918942c71b043e1ce405a198e2ec0353f64f92338d2"
+  },
+  {
+   "scene": "nurah.the_price_of_a_warning",
+   "locked": false,
+   "before_sha": "e1a0d66690a60de587aa5d67e1a2ebd5618952c9c4f48a09114807be387dcfaa",
+   "after_sha": "abde33b63b65442494abb4900e83c90eaaf92039c284bdca456389c162132a5e"
+  },
+  {
+   "scene": "nurah.the_subscribers_evening",
+   "locked": false,
+   "before_sha": "512be045f3c6c39ac234aed130a82485397c45dd4945ce23179fdc84a0e5b48f",
+   "after_sha": "f6668dbd01199cd74cb0dbf084ced2a35283baf07e0c116f5b669f022d327093"
+  },
+  {
+   "scene": "nurah.the_unpurchased_sentence",
+   "locked": false,
+   "before_sha": "18571917a4baa69d3426f8a91d5b766091edce8bb43797e0ba3f00f2e9b02206",
+   "after_sha": "aaab959164a4d5aec659646bd27f3aa4bc64cbf52c3d8c9040bc709eb44e8888"
+  },
+  {
+   "scene": "nurah.trickster.epilogue.book_only",
+   "locked": false,
+   "before_sha": "a709ae350b86db358ca084241bf10289243a3b41f991e226a0b2408ada542fd2",
+   "after_sha": "88b4ff4adc56ece0fdb130362fc6677855889c7fb219a6bd383e4c97bbc73e97"
+  },
+  {
+   "scene": "nurah.trickster.epilogue.commit",
+   "locked": false,
+   "before_sha": "19983f88d93997168c337b2a73bab6a79c8910f94c9e80154cc0d01341b4301e",
+   "after_sha": "fd38aab50fc4eed7e6603bbe1457c30880e4da231f57944a67b45c701a6829cf"
+  },
+  {
+   "scene": "nurah.trickster.epilogue.the_margin",
+   "locked": false,
+   "before_sha": "7a48692c0b983d73dc9643493af196b559e82521e8aca5b56b678ada5db343dc",
+   "after_sha": "c5493d852b35676345de68d69a4c68c726b6f74e0bb4f4aa496590794e68acfd"
+  },
+  {
+   "scene": "nurah.trickster.prison.night_out",
+   "locked": false,
+   "before_sha": "21319b632d61617d8f1de01dcf78fd8cfd0774cc1a55f82f56c884ec4c4a547f",
+   "after_sha": "ec2124922eaa155e71114f95cd78e046f3c54bf904dedec77daf008903fd23f9"
+  },
+  {
+   "scene": "nurah.trickster.prison.night_out_late",
+   "locked": false,
+   "before_sha": "21319b632d61617d8f1de01dcf78fd8cfd0774cc1a55f82f56c884ec4c4a547f",
+   "after_sha": "ec2124922eaa155e71114f95cd78e046f3c54bf904dedec77daf008903fd23f9"
+  },
+  {
+   "scene": "nurah.trickster.react.irabeth_manuscript",
+   "locked": false,
+   "before_sha": "055bcf7d498db095822b2265d23a42dfc219bd0762b597025d0e1219266fe849",
+   "after_sha": "e8b9c6786cc511c253b2b3617bf03d4e1160b4ab25519a5be311d85d75ed4505"
+  }
+ ]
+}
