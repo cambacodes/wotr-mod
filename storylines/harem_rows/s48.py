@@ -58,11 +58,11 @@ def graph(step, unfinished=False, debt=False):
 "Then keep out of it. When Herrax asks why her boys stopped coming home, she can pay someone else to listen."''',
                   c("Continue", flags=flags("notice.seen", "notice.dismissed")))]
     if step == "reply":
-        return [n("start", "Narrator", '''{n}The returning courier brings Herrax's black wax seal, impressed with a gold coin. Her signed reply lies beside Minagho's warning.{/n}
-"Keep her out of my house and your hunters off my boys. I can afford to let one bitch keep breathing. But I want the hunters recalled before my next messenger leaves."
-{n}Minagho scrapes the seal off with her thumbnail.{/n}
+        return [n("start", "Narrator", '''{n}Herrax's courier comes back up the road from the rift with a fresh bruise on his jaw, from someone at the Delights who wanted to be sure he remembered the message. He recites it in Herrax's own purr, and does it badly.{/n}
+"Keep her out of my house and your hunters off my boys. I can afford to let one bitch keep breathing. But I want the hunters called off before my next messenger leaves."
+{n}Minagho laughs in his face, close enough that he flinches.{/n}
 "She keeps breathing because I am here. Don't flatter yourself."
-{n}Minagho has her recall ready. Neither woman will send hers first; the courier waits beyond the stores, watching the crusade's sentries.{/n}''',
+{n}Minagho has her answer ready: one of her hunters' knives, to be sent back clean. Neither woman will move first; the courier waits beyond the stores, watching the crusade's sentries and trying not to watch Minagho.{/n}''',
                   c('[Diplomacy] "Exchange the withdrawal and the recall through me."', check=dict(
                       Skill="CheckDiplomacy", DC=22, Success="exchanged", Failure="failed", CommanderOnly=True)),
                   c('"I will escort the exchange and answer for either of you breaking it."',
@@ -94,9 +94,9 @@ def graph(step, unfinished=False, debt=False):
 
 
 def exchange_text():
-    return '''{n}Herrax's courier hands over the authenticated withdrawal. It names Chivarro and revokes every kill order and paid inducement Herrax controls, including those passed through intermediaries. Herrax has signed beneath the names.{/n}
-"Chivarro doesn't get my chair. Or my house. If she wants a throne, she can climb onto your lap."
-{n}Minagho sends her recall with the same courier. Her hunters' acknowledgments come back with the seal intact; neither Herrax nor her messengers remain their quarry over this contract.{/n}
+    return '''{n}It happens in the yard behind the quartermaster's stores at dusk, with you standing between them. Herrax's courier unrolls a cloth on a crate: a ring, a bootlace and a tooth, one from each of the knives Herrax had hired for Chivarro, and beside each the coin she paid them, bent double and taken back. Calling off a killer is cheaper, it seems, when the killer is not there to argue.{/n}
+"Chivarro doesn't get my chair. Or my house. If she wants a throne, she can climb onto your lap," {n}the courier recites.{/n}
+{n}Minagho turns the tooth over with a claw, satisfied, and sends her own answer back with him: a hunter's knife, wiped clean, with no throat at the end of it. Her people on the road out of the rift come home that week with empty hands and sour faces.{/n}
 "Tell her I can remember two things at once. A bargain, and who wanted Chivarro dead."'''
 
 
