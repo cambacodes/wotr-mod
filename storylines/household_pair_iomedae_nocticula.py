@@ -106,14 +106,14 @@ COSTS = {
     "iomedae_sanctuary_watch": "Iomedae assigned the sanctuary's watch to the six rescued crusaders.",
     "nocticula_patronage_burned": "Nocticula surrendered the broker's protection payment and stripped him of six men's resale value.",
     "commander_last_man_carried": "I carried Rul into care and missed the evening's court entertainment.",
-    "commander_reception_delayed": "My failed inspection delayed the reception; Venn and Rul remained captive.",
+    "commander_reception_delayed": "My failed inspection delayed the reception; Veldran and Rul remained captive.",
     "ransom_paid": "The inspected ransom cost five hundred.",
     "late_crossing_paid": "The correction cost seven hundred for the inspected crossing.",
 }
 OUTCOMES = (
     ("resolved", "All six named crusaders were received alive into sanctuary.", ()),
     ("delivery.failed", "Two names still lacked their men after my failed inspection.", (P + "resolved",)),
-    ("ransom.held", "I retrieved Venn and Rul after the failed reception.", ()),
+    ("ransom.held", "I retrieved Veldran and Rul after the failed reception.", ()),
     ("open.token_substituted", "I asked for a gesture instead of the men.", ()),
     ("delivery.account_falsified", "She refused my false count.", ()),
     ("ransom.declined", "Two remained in the slaver's claim when I abandoned their retrieval.", ()),

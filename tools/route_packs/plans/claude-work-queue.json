@@ -366,18 +366,6 @@
     "ruling": "canon-fix1"
   },
   {
-    "scene": "nocticula.lastcall.page",
-    "woman": "lastcall",
-    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
-    "ruling": "canon-fix1"
-  },
-  {
-    "scene": "nocticula.acquisition.lastcall.page",
-    "woman": "lastcall",
-    "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
-    "ruling": "canon-fix1"
-  },
-  {
     "scene": "noct.acq.epilogue.correspondence",
     "woman": "nocticula.acquisition",
     "beat": "rename Harem of Ardent Dream -> Harem of Ardent Dreams (canon-fix1 A1)",
@@ -669,12 +657,6 @@
     "scene": "noct.what_she_keeps.acquired.prior",
     "woman": "nocticula",
     "beat": "rename Vessa -> Vezhara (canon-fix1 B4)",
-    "ruling": "canon-fix1"
-  },
-  {
-    "scene": "nocticula.lastcall.page",
-    "woman": "lastcall",
-    "beat": "rename Venn -> Veldran (canon-fix1 B10)",
     "ruling": "canon-fix1"
   },
   {
