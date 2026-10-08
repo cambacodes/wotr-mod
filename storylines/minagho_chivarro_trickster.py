@@ -1065,6 +1065,9 @@ def integrate(payload):
     minagho_round2.integrate(payload)
     from storylines import chivarro_setpieces
     chivarro_setpieces.integrate(payload)
+    # Job 4: minachiv-only scaffolding after legacy prose and slot overlays.
+    from storylines import minachiv_scaffolding
+    minachiv_scaffolding.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
