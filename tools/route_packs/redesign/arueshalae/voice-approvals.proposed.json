@@ -1,0 +1,501 @@
+{
+  "version": 1,
+  "proposed": [
+    {
+      "scene": "arueshalae.lastcall.page",
+      "before_sha": "44cccf5ef90ad36c0a951c478b73b6a4e86dfc33cb1ae4a477bb89dfafe0973c",
+      "after_sha": "6f890223ecd0c876372813fa0cc4befaebb5681d7b268962d1ab5d18d09aad72",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.abyss_dose",
+      "before_sha": "29d62407fcd70e3bc9018fd9fae14cb54d4f5d34bc52fd1be99af1292762d25b",
+      "after_sha": "9790175398e9717460c3dde1bd30f4bf5b403a62f2dc49eda97c7ef61d8c8ae0",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.after_the_war",
+      "before_sha": "e35d509a3b4a313354a2a8526071c2194ee4d24b75bf137ef15b20a9926372f1",
+      "after_sha": "af2ac6a13a51cd7fd97c1298b51cd686dcb6851d4584ec4e8cce49001aed6528",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.alushinyrra",
+      "before_sha": "7923db49487adb12ea8dd729ef7f3928e188cdc5d0aaf604ee8ce65550b8f664",
+      "after_sha": "f2b3de7f9f521737f510a0092bcf3d2d1894c13b29804b814a353cbebab17525",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.alushinyrra_drezen",
+      "before_sha": "c2d5cf5a0946feff7a546fa60393ab5122941afb072215032afa0131b119ad3a",
+      "after_sha": "2181a1a141c71eb298b39af00dec9239aac4f050472bf7c7e7b1729304706d03",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.bad_day",
+      "before_sha": "1ef12261d6e25f7643e29de6bd9fe8808bf9878bf7741442cd28b78adfff6408",
+      "after_sha": "a7dcc3254fbef2d29b223608fa580d493410f76de2932c509d39b007669e737e",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.day_forty",
+      "before_sha": "9d5f2ce144e940f3d07b4ee7ae068a4d70a0ae51c3b90a22163496adf33e36f5",
+      "after_sha": "0da807bc2f513d20fc5cdb4d7dfca6ddafc79b3749247d64489e55d09d030bd3",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.discharged",
+      "before_sha": "c8a2fddadc0007aa9eccf92318b137baff2af7e3cddc1734c3d5828c5de42347",
+      "after_sha": "e70f5dbe05edc5cd7c218b872ad01a2e068eeeb2cd717cfbb689df76ca21609b",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.epilogue.together",
+      "before_sha": "8632ac83249174899df3504f071abff62a4794b51dc847df62f669f0a5e36e76",
+      "after_sha": "2200dcc361fc930e0f1934f5f4eaa3626d59fb095a08df8449a1d86fdeb6d37b",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.first_quarrel",
+      "before_sha": "11fcae9070398a29f42c3a7f13c7b6f7cfc62e0afc542a504364c876b793d26b",
+      "after_sha": "286d4302875297500b9bf3589740389ac61dce496e0faa17452223ece0de3aa9",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.intake",
+      "before_sha": "c842f7d20289266579380a249962de7b47f0188a759d515f4cfc1cb96e1ae4bf",
+      "after_sha": "da9af384282c1a726092e2a8b78ff9f4ef0f22b3a70fabcb63fe662d420ce9fd",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.kitchen",
+      "before_sha": "7f1dddd4e77becddba20837fc11bb38956f3a977bb347c8c195f8fbfb5094d1e",
+      "after_sha": "a5571854e8b391df9f71e3bb6bab444771f05285d9ea8b241a8d11b892d326d8",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.mealtimes",
+      "before_sha": "64de069f2b9f9612a3b459fe5ac990466ef16e50aa40bd4ed079ebb9b4b3567e",
+      "after_sha": "efbb4c1708285784991b7e235211dd7a15a28224ff3f6a8b8da68e0366c12247",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.morning",
+      "before_sha": "b7444af91c5250844ae1dade9adb68ec52983612808f2601eee0a6ef349b69de",
+      "after_sha": "0d5ca17dae77e617ca749161106e36cd52b88cf0f0dbc6e93b62b224adc97c62",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.night",
+      "before_sha": "6c91cfb82fb38748b2124e0584ef2811c74ff9a0ffb37c5b8e8df3a836dec440",
+      "after_sha": "239329b01d94b0d6d246c9e121d5835a1d7ee9f5e59999021fb1da80a9f0f1f7",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.nightmare",
+      "before_sha": "6ea79fd50ce4fdce385ae236663ac29cd155c169a008e161a65d41d014247bb0",
+      "after_sha": "2df6e31be305ea355c016403c1a3e97de85022b2ed294b2346c3ef350118c8e0",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.old_name",
+      "before_sha": "47933d3048fbff195b2e99288bc708436f6198724011d5f6e00e04ea72636f1e",
+      "after_sha": "39f02d614871e0136e1c121992dc945ff7b5710a461228ceca7ad6c30499a4de",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.prescription",
+      "before_sha": "230b3c866ad80b30e4193ec8ce5d1f5c89513eb2683d601f7e195a1d84b1e853",
+      "after_sha": "e9955ccfcea23af8114facd9c9a27fd2cb145a35588be89281e636ca935070b7",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.prescription_again",
+      "before_sha": "d372abddba47f348249ba46aa95d3018ae202b150937521e46296cf6caee83a4",
+      "after_sha": "6fb57faab57e68be665efcb0ce6fd6ba722aeaf2f2d76e62d4750a501a2d2f0d",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.rainy_day",
+      "before_sha": "61c894e961c111349e2770f4be51fe6d2536b6710ac7825ccfa6db0ef64a92f8",
+      "after_sha": "9cd2a6af697b02893176f3676b71737ef1fa8c93211b8fedfdc8ae9a11c195b5",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.react.lann_kitchen",
+      "before_sha": "432b51b19e6485cc0baaa7836bf1a457ded40724e3f15b0fe697acd5354a3e03",
+      "after_sha": "61680fb75c051172681eeeb607f09d5c3f1cc6c2f998710647fbc5144e136d2f",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.react.sosiel_morning",
+      "before_sha": "067f4d08e6480853c514e06b3485a36a83a29556b28891c6cb66635638d45782",
+      "after_sha": "035cf745be5612276b6c94ae7fd4a721e4fb7195c863eaa8cf274ccf085d3803",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.relapse",
+      "before_sha": "be3ea14f524963a6623f695fecaf3c08f0237433bb77ce92c7b551f844a04b8c",
+      "after_sha": "25dca600b8deb7ec18d83d1d6e09992275f3da8ddf8056c949026f194d796072",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.relapse_two",
+      "before_sha": "bff8c615cc86e24f73e968ecbd2aad2e39c397e133498482879d3e92f19c6d83",
+      "after_sha": "42f23db749beb92fcb28b3c6f736b6b39f7ce49694974f4ffbc58df4b4d0dc65",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.rite_slipped",
+      "before_sha": "f444dcc3a91a6bccddab86f79c3f7cedfd3ec80ad4031b994120ea4b74b46e24",
+      "after_sha": "bcb142bc5203b3ebae3c697c74b16a1fd13c4cd7dbefa0deef546ad5d96f1f07",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.studied",
+      "before_sha": "d288f0d4f09e743e07136c14bcfedcdb3f36f860d1c5c8e60b7865744a899a18",
+      "after_sha": "408025f27a19591398c3acad3ab981a8aa649c32d5ec24aa2d07094ae88825a8",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.teach_me",
+      "before_sha": "83cd3dc43be72a89dbc5dfc33d6be9f00abdc2a7f13eb4aa27179e263fd0c882",
+      "after_sha": "7a44522e315e4e230eedcb95a26cca1a010a119a818120dee8be110a9db29142",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.the_bakery",
+      "before_sha": "a6cd00bdd408e15fec5d56f30e18d8dfada7ba443e9ab4bf06a6f16297b51898",
+      "after_sha": "8547734921e4790944032a2bafebb6efabc066b55f2a7fd4c02d8b9f5fbd2eea",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.the_cat",
+      "before_sha": "7c357445f8ed383f5c106bffd6b71d7fb445e7b59923831b79a52c8538246613",
+      "after_sha": "1888b3d717e926f0fdd3459f6088713a146f8b70fcb34103d99f45c3baebf5a9",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.the_dance",
+      "before_sha": "6de96d17f8f125ac6204722f1f686904752542cdd379006d20b8e675392dc046",
+      "after_sha": "4537bba5e2f0f1c2df9c66943f33a4ba36407582f2987f71177aa81801bbe239",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.the_eve",
+      "before_sha": "c878d60f6f35a79ff9592e71aaaa6e40198a9bb65e67f64ece777d690c20d54d",
+      "after_sha": "58a891333aadf40aaae8261cc9dbf92b33096d3e1ae4b2d4ead38d3a85fad189",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.the_wound",
+      "before_sha": "2eff3d49431a99221762114777f22cb09a19f97a03ea274a4f8a3231c7f00447",
+      "after_sha": "b231260c2d847306cf7e67a101a65068eeb3e8c5626bc012a86b878accdcc7f4",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.treatment.touched",
+      "before_sha": "a692f3ed808220adc69408da0215be47e4eee03b3629b97cf5c9af5e2232f972",
+      "after_sha": "1658849f66bbe41252b0a5ef03a7c366748741c1209d7cd21a5ca159e6aac665",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.chaplain.censer",
+      "before_sha": "a3d8a8182e9927602f9b064793ea8a0e35338b418c68d38a2b9f5eceaa0ae561",
+      "after_sha": "2b92bcbd55ec562a7fc5884496a38a2903e9f3d5a9d7f2553812ad1557a970b3",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.chaplain.complaint",
+      "before_sha": "2e7297b25c643d13a9ac03ccfc70fe341329cce41d3c0907a9952ea58c14e969",
+      "after_sha": "3e1d8b42a9af267d7dbd6d4429e3269194c52dcc04e522c000d47a9942596c12",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.chaplain.wedding",
+      "before_sha": "34eab7765a99309a6fe13b7e0b85f485275521f8400fb9eb58f9f2a62e0dd733",
+      "after_sha": "f70f9e3ad3763db7e02e55f3c213cd7a92207d7fcea326369a4abaf75851c2f3",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.dead.starving",
+      "before_sha": "0edf63fe66c7138f42c5bc25c075ea07f1a52837f65850d89ddf861167d2de31",
+      "after_sha": "f469d10a821adacb6d93959ad1429d25d5b74108e1508c8a38cb82ec840102f8",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.epilogue.commit",
+      "before_sha": "8c056becfe734b3681056b78e48f8505db23221aad9153428ccdf3f28184f3b5",
+      "after_sha": "e297d8ce49393a6917a2ab021359eb7b168f2b2a4d436b93a0f15a44fb45343e",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.epilogue.declined",
+      "before_sha": "0edd3aed5e6d4429494f34a1c54672869c27c0247931b8cba59da83104eda09d",
+      "after_sha": "ff6c0afe3d39f9bca2f26836090b5fe070bc3ea5f60127665161dcb8065f9793",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.epilogue.kept",
+      "before_sha": "446ab17365cd72ab906f711d2553ed644e6cbe712de45a877da578e082ade0cc",
+      "after_sha": "897f03f122eef5f1f428b90022ec7d112fb273479371f0aa2ff990b2aede8e2c",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.daybook",
+      "before_sha": "85ea567fd8154c4dd2bad414ef68d2d7a6cb281095782847b1b251d81c5b0f7e",
+      "after_sha": "b9b240bdb0054a8ffd36bec90ad10c1012d3b945311514e354ed4276a9c86d68",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.daybook_yard",
+      "before_sha": "85ea567fd8154c4dd2bad414ef68d2d7a6cb281095782847b1b251d81c5b0f7e",
+      "after_sha": "b9b240bdb0054a8ffd36bec90ad10c1012d3b945311514e354ed4276a9c86d68",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.home_visit",
+      "before_sha": "9402c05da0427d0318ea9a950bf154542683455cbfec2b55b65d3c1e809a4e51",
+      "after_sha": "de2dac2c9cb7cafa755a6b99966764df58b408a742d469110d983307dc07ab00",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.reunion",
+      "before_sha": "26ea66abc2d15b3e78becea96828f28072d17c260503e2656bd13e6ca9359e18",
+      "after_sha": "3787305531ddf06a72340ad2bb2ae8a1f885dca115dd71a93a6461acb5a4ad15",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.reunion_city",
+      "before_sha": "8b0bc3a9b1452bd23dbfd50a60d2ab7353614aee65613b723689b652ae783c5e",
+      "after_sha": "347091f7369ccea4dfe2d570596332afe0c35644cc29c4df9c693deaea6490c5",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.reunion_city_yard",
+      "before_sha": "8b0bc3a9b1452bd23dbfd50a60d2ab7353614aee65613b723689b652ae783c5e",
+      "after_sha": "347091f7369ccea4dfe2d570596332afe0c35644cc29c4df9c693deaea6490c5",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.terms",
+      "before_sha": "ea80071ff4aca4bd0d2f637d3c0c020fa0d089e0b106d0deb2a1a0536c335fff",
+      "after_sha": "7d9a86c28c55870bccc0e451a5d4912159a2dd90b2373fd56fd6def62c80d510",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.evil.terms_yard",
+      "before_sha": "715ba6f3be58d7ac36e3eb09ae778909b3ea28b441ff97d89021a81e484af348",
+      "after_sha": "24bc40728a4689d95cc56e7513c5ec458573ef2f08f80efd979aaa61a5240d7e",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.failed.chaplain",
+      "before_sha": "c29633b505d668ffe12828efae6efca2165b6b1148308e95cc62380614a0348e",
+      "after_sha": "4c4601538bf65428cc2f9ea7a25df671163de8c2c85d0c2e78229a275bfae712",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.fallen.house_call",
+      "before_sha": "79ac93fcc843b00c574fdbc841110f4ba915610c0d22c1da948001318cb230a8",
+      "after_sha": "4bc72e0fbdb1db03010095c87b66cb0659f94da88d69759562813e5b837fb965",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.fallen.lock",
+      "before_sha": "951debc779c0c1b9a15725f73828da36484f42bfabed958e84227715f94f5eec",
+      "after_sha": "86f22a15e3cc538733476beb847d3c4559d96df560b0fa226eabf89c5b9ef184",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.returned.aftertaste",
+      "before_sha": "a76d03f84211910bfc55b6d359f0fa03bcedbdb263b5f41b9eccb8fce2a1ca0d",
+      "after_sha": "11f2970d96dc2ab636e22e8d9fe007c853f8a447ea05b65836031da5bdc4c606",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.terms_again",
+      "before_sha": "c32999c488695c8f2656ce6d2e88db68bf2bef9ca5c011575d2ea58e502be727",
+      "after_sha": "f4c0604b95e8d76029d4708d254dbda9293c88c8f069024bdbaed760b920cbe9",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    },
+    {
+      "scene": "arueshalae.trickster.terms_again_chaplain",
+      "before_sha": "e30ae46f9c466fae30e3e9f8d586d288ec9e281f5411d2c215df221a961413a5",
+      "after_sha": "b929f05a95937b080912f22652a199c4cad9c0edbf08c0e1654a5ce5d315e1f0",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat"
+    }
+  ],
+  "enroll": [
+    {
+      "scene": "arueshalae.treatment.old_acquaintance",
+      "after_sha": "2b177627b5865dd66d3cbe030fd37477f8bd6b4e98aa8ad3eb4d68b1c450411f",
+      "owner": "claude",
+      "source_branch": "cloud/arue12",
+      "source_commit": "(this branch head)",
+      "reason": "arue12 (edge-fix-design 3.6): redeemed reframe, clinic frame removed, morning/discharged/abyss_dose/epilogue.together rebuilt, exits trimmed, fallen knock-on retexts, Chapter 4 old acquaintance beat; new Claude-voiced scene, not yet locked"
+    }
+  ]
+}

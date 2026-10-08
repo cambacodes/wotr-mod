@@ -307,7 +307,7 @@ hub(P + "insurance", "Insurance", 3, '"If you died tomorrow, what would happen?"
 # below (fallen.house_call / lock / roof) continues from there. The held-out hand at the lair is the Trickster's own way into that
 # native line. The old referral to her queen (diagnosis, late_referral, second_opinion) is RETIRED by gating, ids, nodes and
 # choice indices kept; the reunion, arcade and window scenes after it stay only for saves that already hold its return.
-SCENES.append(scene(P + "evil.diagnosis", "At the lair", "Arueshalae", 5, '[Take her pulse from across the room]', [
+SCENES.append(scene(P + "evil.diagnosis", "At the lair", "Arueshalae", 5, '[Look her over from across the lair]', [
     a("start", R, c("[Brace yourself.]", native_next=TASTE_CUE, flags=(PRIMED,))),
 ], requires=("trickster",), forbids=(PRIMED, EVIL_DEAD, RECRUITED), last=5, Relationship="arueshalae", Chapters=[5],
     AnswerLists=[MEET_EVIL_LIST], NativeReturnCue=GANG_CUE, EntryMythic="PlayerIsTrickster",
