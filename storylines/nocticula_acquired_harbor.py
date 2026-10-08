@@ -23,161 +23,29 @@ BRIDGE = (
 )
 RELATIONSHIP = deepcopy(original.RELATIONSHIP)
 RELATIONSHIP.update(
-    Description="Nocticula has invited me to investigate a hidden harbor through the meetings we chose together.",
-    Guidance="After completing the Trickster correspondence and accepting the hosted meetings, rest in Drezen to hear Nocticula's harbor proposal. Her invitation does not accept an earlier refused offer, restore a lost Gift or settle the Worldwound. Each undertaking and private invitation can still be declined.",
+    Description=original.RELATIONSHIP["Description"],
+    Guidance="After completing the Trickster correspondence and accepting the hosted meetings, rest in Drezen to hear Nocticula's harbor proposal. While the Gift holds, her dreams carry you into her court; what you decide there happens. Her invitation does not accept an earlier refused offer, restore a lost Gift or settle the Worldwound. Each undertaking and private invitation can still be declined.",
 )
 
 
-def replace(page, before, after):
-    """Fail visibly if the donor prose changed underneath this adaptation."""
-    assert page["Text"].count(before) == 1, (page["Id"], before)
-    page["Text"] = page["Text"].replace(before, after)
+# Coordinator N1 ruling: freeze both authoring and integrated clone surfaces.
+# The baseline is persistent save-compatible source data, not a generated export.
+import json
+from pathlib import Path
+
+BASELINE = json.loads(Path(__file__).with_name("nocticula_acquired_baseline.json").read_text(encoding="utf-8"))
+SCENES = deepcopy(BASELINE["Scenes"])
 
 
-def adapt(source, history, gift=None):
-    current = deepcopy(source)
-    original_id = source["Id"]
-    current["Id"] = original_id + ".acquired." + history + ("." + gift if gift else "")
-    current["Requires"] = [x for x in current["Requires"] if x not in (
-        "noct.parent_active", "noct.parent_agreement_seen", "noct.gift")]
-    current["Requires"] += [*BRIDGE, HISTORIES[history]]
-    current["Forbids"] = [x for x in current["Forbids"] if x != "noct.parent_rejected"]
-    current["Forbids"] += [original_id, *(v for k, v in HISTORIES.items() if k != history)]
-    if source["Owner"] == "Memory":
-        current["Requires"] += ["trickster", "noct.acq.renewed_agreement"]
-        current["Forbids"] += ["noct.acq.council_fight", "noct.acq.closed", "noct.join.closed"]
-    if gift == "renewed":
-        current["Requires"].append("noct.acq.gift_renewed")
-    elif gift == "original":
-        current["Requires"].append("noct.gift")
-        current["Forbids"].append("noct.acq.gift_renewed")
-    elif gift == "absent":
-        current["Forbids"] += ["noct.gift", "noct.acq.gift_renewed"]
-    pages = {p["Id"]: p for p in current["Nodes"]}
-
-    if original_id == "noct.unlit_quay":
-        replace(pages["start"],
-            "And this is not an improvement to the accommodation I promised you.",
-            "And this is not a palace door hidden inside the invitation you accepted.")
-        # The bridge's first question gets an answer before this new undertaking.
-        first = pages["start"]["Choices"].pop(0)
-        for name, flag, answer, text in (
-            ("passengers", "noct.join.first_question_passengers",
-             '"I asked you to bring the travelers\' accounts. Whose voice am I going to hear?"',
-             '''"The returned passenger first. I kept the missing names too. You need not look so ready to accuse me of losing them."
-{n}She takes a folded strip from beneath the sailcloth. Three names cross it in different hands. The last has been written twice; somebody disputed its spelling.
-You touch that correction. Nocticula watches the movement.{/n}
-"You can ask about him. I have not brought you enough to pretend I know where he is."
-"And what do you want from the person doing the asking?"
-{n}She draws the strip back slowly enough that her fingers pass over yours.{/n}'''),
-            ("profit", "noct.join.first_question_profit",
-             '"I asked who profits. Have you brought a price or a man who thinks he can name one?"',
-             '''"A man. Prices become more informative when their owners have to explain them."
-{n}She lays the sailcloth over your wrist, fitting the embroidered flower against your pulse as though considering a bracelet.{/n}
-"He expects payment for his story. You expect a return for useful advice. I shall have an expensive evening if neither of you learns to be useful."
-"You agreed to hear what I wanted."
-"I am hearing it. I have not offered you a share of a road neither of us understands."
-{n}She lifts the cloth away. Its light pressure remains in your attention longer than it did against your skin.{/n}
-"Then tell me what sort of adviser you mean to purchase."'''),
-        ):
-            pages["start"]["Choices"].insert(0, c(answer, "first_" + name, requires=(flag,)))
-            current["Nodes"].append(n("first_" + name, "Nocticula", text,
-                c(first["Text"], first["Next"]), portrait="Nocticula"))
-        pages["council"]["Choices"] = deepcopy(pages["start"]["Choices"][:2])
-        if history != "prior":
-            reply = ('''"Your refusal remains a refusal. I am not offering to make it disappear beneath an attractive evening. You would notice, and then I should have to listen to you explain why you noticed."
-"A terrible price."
-"One I have already paid. The letters are ours. The Worldwound is still a disagreement."'''
-                if history == "refused" else
-                '''"The letters continue. You have promised me neither the Worldwound nor obedience, and I have offered you no solution to either. Try to remember that when you find yourself enjoying my company."
-"I might enjoy it more for remembering."
-"Then you have discovered an inexpensive way to improve your evening."''')
-            replace(pages["offer"],
-                '"Continues. This is not a new price secretly added to it. The Worldwound remains the price we discussed, and you are still quite capable of disappointing me about that."', reply)
-            replace(pages["decline_undertaking"],
-                '"I will take this elsewhere. Our earlier agreement remains precisely what it was. You have declined an invitation, not renegotiated the Worldwound."',
-                '"I will take this elsewhere. Send me a better subject in your next letter. You have declined this undertaking; you have not settled the much larger thing we still disagree about."')
-
-    withdrawal = pages.get("withdraw_undertaking")
-    if withdrawal and history != "prior":
-        if '"And our earlier bargain?"' in withdrawal["Text"]:
-            replace(withdrawal,
-                '"And our earlier bargain?"\n"Was not about a harbor. I have not forgotten its terms because you have tired of these."',
-                '"The letters?"\n"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was."')
-        else:
-            replace(withdrawal,
-                '"Our earlier bargain still stands too."\n"I did not confuse it with an evening\'s company. Do me the courtesy of remembering that."',
-                '"I would still write to you."\n"Then write. I shall decide how to answer when I have read something besides your departure."')
-        withdrawal["Choices"][0]["Text"] = '[End these harbor meetings. Keep the personal correspondence without a new invitation.]'
-    if withdrawal and original_id == "noct.counterseal":
-        # The new creditor dispute is still work, despite the older late-exit text.
-        for choice in pages["start"]["Choices"]:
-            if choice.get("Next") == "withdraw_undertaking":
-                choice["Text"] = '"I will not take on this new claim. I am ending the harbor meetings."'
-        replace(withdrawal, '"I invited you because the business was settled. You need not explain the distinction to me."',
-                '"A claimant arrives, and you discover that our business ought to have ended yesterday. How convenient."')
-
-    if original_id == "noct.her_own_face":
-        replace(pages["start"],
-            '"You have used dreams to offer me things I wanted," {n}you say.{/n} "Does this room mean you know what I want tonight?"',
-            '"You have arranged another room around a question," {n}you say.{/n} "Does that mean you know what I want tonight?"')
-        pages["start"]["Choices"][0]["Text"] = '"I wanted an evening in which I could look at you without pretending to study the evidence."'
-        replace(pages["face"],
-            '"That is either a very good compliment or a remarkably provincial objection to variety."\n"You may choose the interpretation you like."\n"I usually do. It saves time."',
-            '"You have been remarkably diligent about studying the wrong parts of the room."\n"I did not hear you complain."\n"I was enjoying your attempts to look industrious."')
-        replace(pages["face"],
-            'When she kisses you, she does not change her shape. The kiss lasts long enough for you to answer, then she draws back with a pleased, almost challenging glance.',
-            'She catches your hand before you can turn it over and study hers. Her kiss gives you something else to attend to. It lasts long enough for you to answer, then she draws back with a pleased, almost challenging glance.')
-        replace(pages["face"], 'There are disadvantages to recognizing me.',
-            'There are disadvantages to knowing my habits.')
-        if gift == "renewed":
-            replace(pages["start"], 'Your gift has not gone away.', 'You have given me your power again. I have not forgotten what that permits.')
-            replace(pages["start"], '"No," {n}she says.{/n} "It has not."', '"Nor have I," {n}she says.{/n} "You should be suspicious if I pretended otherwise."')
-        elif gift == "absent":
-            replace(pages["start"],
-                '"You could make the invitation rather difficult to refuse. Your gift has not gone away."\n"No," {n}she says.{/n} "It has not."',
-                '"There is no gift between us tonight. There is still a room which exists because you want me in it."\n"And a door you asked me to open. I opened it because I wanted you through it. Try not to make me regret the hinges."')
-        if history != "prior":
-            replace(pages["start"],
-                '"You should remember it. Particularly if you begin imagining that a pleasant evening has altered our older bargain."',
-                '"You should remember whom you are visiting. Particularly if you begin imagining that wanting you has made me safe."')
-        elif gift == "absent":
-            replace(pages["start"],
-                '"You should remember it. Particularly if you begin imagining that a pleasant evening has altered our older bargain."',
-                '"You should remember it. The loss of a privilege did not make me harmless, or erase the older bargain. Neither will a pleasant evening."')
-
-    if original_id == "noct.second_door":
-        if history != "prior":
-            replace(pages["future"], 'Our original bargain still has its own terms.',
-                'We have chosen company, and we have done useful work. You have not bought my agreement to your larger ambitions.')
-            replace(pages["limited"], 'Our earlier arrangement remains what it was.',
-                'Then the letters remain. The rooms I make are for guests who come to them.')
-            pages["limited"]["Choices"][0]["Text"] = '[Keep the correspondence. Decline the larger invitation.]'
-            pages["limited"]["Choices"][0]["Set"].append("noct.join.letters_after_harbor")
-        replace(pages["power"],
-            'A minor courtier has been selling introductions to me. I thought you might enjoy deciding what he ought to receive for his trouble.',
-            'A minor courtier has sold the same balcony to three guests for an execution none of them arranged. After Salven, one might have hoped for a little imagination in choosing a fraud. I thought you might enjoy deciding who ought to receive the best view.')
-        replace(pages["power"], 'Send him an introduction to his creditors.',
-            'Seat his creditors on the balcony. Let him explain why the entertainment has been canceled.')
-
-    if original_id == "noct.ending_alliance" and history != "prior":
-        replace(pages["end"], 'The older Worldwound bargain still awaited its reckoning.',
-            'They had made no Worldwound bargain in those rooms. The larger disagreement still awaited its answer.')
-    if original_id == "noct.ending_limit" and history != "prior":
-        replace(pages["end"], 'The Commander kept the earlier arrangement and declined to enlarge it.',
-            'The Commander kept their personal correspondence and declined further private rooms or a larger alliance.')
-
-    for page in current["Nodes"]:
-        for choice in page["Choices"]:
-            if not choice.get("Next") and not choice.get("Check") and not choice["Abort"]:
-                choice["Set"].append(original_id)
-    return current
-
-
-SCENES = [adapt(source, history, gift)
-          for source in original.SCENES
-          for history in HISTORIES
-          for gift in (("absent", "original", "renewed") if source["Id"] == "noct.her_own_face" else (None,))]
+def frozen_integrated():
+    from storylines.nocticula_n1 import RETIRED, retire
+    scenes = deepcopy(BASELINE["IntegratedScenes"])
+    for s in scenes:
+        if not s["Owner"].endswith("Epilogue") and "chapter_later" not in s["Forbids"]:
+            s["Forbids"].append("chapter_later")
+        if s["Id"].split(".acquired.")[0].removeprefix("noct.") in RETIRED:
+            retire(s)
+    return scenes
 
 
 def validate():

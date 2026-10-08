@@ -1,0 +1,1711 @@
+{
+  "schema": 1,
+  "source": "Claude N0 nocticula-rebuild §4; authored N1 structure, prose remains pending",
+  "flags": [
+    "noct.retired",
+    "noct.flower_real_seen",
+    "noct.orren_lie_caught",
+    "noct.orren_hand_taken",
+    "noct.captain_sold",
+    "noct.crimson_mark",
+    "noct.mark_shown",
+    "noct.mark_hidden",
+    "noct.ilvara_shamed",
+    "noct.orren_carries",
+    "noct.returned_sold",
+    "noct.returned_harem",
+    "noct.returned_released",
+    "noct.orren_lamp",
+    "noct.orren_given",
+    "noct.orren_run",
+    "noct.laulieh_rewarded",
+    "noct.sentence_overruled",
+    "noct.ilvara_executed",
+    "noct.native_trials_seen",
+    "noct.quarry_istrava",
+    "noct.quarry_suth",
+    "noct.quarry_guests",
+    "noct.lodge_given_rhez",
+    "noct.wager_won",
+    "noct.wager_lost"
+  ],
+  "rewires": {
+    "noct.captains_reply": {
+      "old": "noct.method_chosen",
+      "new": "noct.witness_heard"
+    },
+    "noct.demonstration": {
+      "old": "noct.meeting_planned",
+      "new": "noct.evening_kept"
+    },
+    "noct.return_count": {
+      "old": "noct.crossing_ready",
+      "new": "noct.next_measure"
+    },
+    "noct.another_place": {
+      "old": "noct.aftermath_heard",
+      "new": "noct.crossing_finished"
+    },
+    "noct.uninvited_guest": {
+      "old": "noct.lodge_method_ready",
+      "new": "noct.lodge_proposed"
+    },
+    "noct.unborrowed_evening": {
+      "old": "noct.lodge_answer_sent",
+      "new": "noct.lodge_hunt_ended"
+    },
+    "noct.no_applause": {
+      "old": "noct.lodge_debt_answered",
+      "new": "noct.lodge_judgment_finished"
+    }
+  },
+  "retired_scenes": [
+    "noct.after_the_lamps",
+    "noct.closed_gallery",
+    "noct.cost_of_return",
+    "noct.counterseal",
+    "noct.lamp_measure",
+    "noct.mask_and_bell",
+    "noct.voices_in_glass",
+    "noct.white_shoes",
+    "noct.acq.the_retained_copy"
+  ],
+  "retired_classification": {
+    "scene_kind": "memory",
+    "presence": "disabled retained manuscript",
+    "payoff": "legacy receipts retained; never-set noct.retired blocks entry",
+    "departure": "inherits existing Nocticula epoch and loss guards; no new return"
+  },
+  "frozen_clones": [
+    "noct.unlit_quay.acquired.new",
+    "noct.unlit_quay.acquired.refused",
+    "noct.unlit_quay.acquired.prior",
+    "noct.sixth_passenger.acquired.new",
+    "noct.sixth_passenger.acquired.refused",
+    "noct.sixth_passenger.acquired.prior",
+    "noct.lamp_measure.acquired.new",
+    "noct.lamp_measure.acquired.refused",
+    "noct.lamp_measure.acquired.prior",
+    "noct.captains_reply.acquired.new",
+    "noct.captains_reply.acquired.refused",
+    "noct.captains_reply.acquired.prior",
+    "noct.her_own_face.acquired.new.absent",
+    "noct.her_own_face.acquired.new.original",
+    "noct.her_own_face.acquired.new.renewed",
+    "noct.her_own_face.acquired.refused.absent",
+    "noct.her_own_face.acquired.refused.original",
+    "noct.her_own_face.acquired.refused.renewed",
+    "noct.her_own_face.acquired.prior.absent",
+    "noct.her_own_face.acquired.prior.original",
+    "noct.her_own_face.acquired.prior.renewed",
+    "noct.white_shoes.acquired.new",
+    "noct.white_shoes.acquired.refused",
+    "noct.white_shoes.acquired.prior",
+    "noct.demonstration.acquired.new",
+    "noct.demonstration.acquired.refused",
+    "noct.demonstration.acquired.prior",
+    "noct.voices_in_glass.acquired.new",
+    "noct.voices_in_glass.acquired.refused",
+    "noct.voices_in_glass.acquired.prior",
+    "noct.cost_of_return.acquired.new",
+    "noct.cost_of_return.acquired.refused",
+    "noct.cost_of_return.acquired.prior",
+    "noct.return_count.acquired.new",
+    "noct.return_count.acquired.refused",
+    "noct.return_count.acquired.prior",
+    "noct.after_the_lamps.acquired.new",
+    "noct.after_the_lamps.acquired.refused",
+    "noct.after_the_lamps.acquired.prior",
+    "noct.another_place.acquired.new",
+    "noct.another_place.acquired.refused",
+    "noct.another_place.acquired.prior",
+    "noct.hearing.acquired.new",
+    "noct.hearing.acquired.refused",
+    "noct.hearing.acquired.prior",
+    "noct.last_buyer.acquired.new",
+    "noct.last_buyer.acquired.refused",
+    "noct.last_buyer.acquired.prior",
+    "noct.empty_chair.acquired.new",
+    "noct.empty_chair.acquired.refused",
+    "noct.empty_chair.acquired.prior",
+    "noct.mask_and_bell.acquired.new",
+    "noct.mask_and_bell.acquired.refused",
+    "noct.mask_and_bell.acquired.prior",
+    "noct.uninvited_guest.acquired.new",
+    "noct.uninvited_guest.acquired.refused",
+    "noct.uninvited_guest.acquired.prior",
+    "noct.closed_gallery.acquired.new",
+    "noct.closed_gallery.acquired.refused",
+    "noct.closed_gallery.acquired.prior",
+    "noct.unborrowed_evening.acquired.new",
+    "noct.unborrowed_evening.acquired.refused",
+    "noct.unborrowed_evening.acquired.prior",
+    "noct.bell_without_master.acquired.new",
+    "noct.bell_without_master.acquired.refused",
+    "noct.bell_without_master.acquired.prior",
+    "noct.counterseal.acquired.new",
+    "noct.counterseal.acquired.refused",
+    "noct.counterseal.acquired.prior",
+    "noct.no_applause.acquired.new",
+    "noct.no_applause.acquired.refused",
+    "noct.no_applause.acquired.prior",
+    "noct.what_she_keeps.acquired.new",
+    "noct.what_she_keeps.acquired.refused",
+    "noct.what_she_keeps.acquired.prior",
+    "noct.second_door.acquired.new",
+    "noct.second_door.acquired.refused",
+    "noct.second_door.acquired.prior",
+    "noct.ending_company.acquired.new",
+    "noct.ending_company.acquired.refused",
+    "noct.ending_company.acquired.prior",
+    "noct.ending_alliance.acquired.new",
+    "noct.ending_alliance.acquired.refused",
+    "noct.ending_alliance.acquired.prior",
+    "noct.ending_limit.acquired.new",
+    "noct.ending_limit.acquired.refused",
+    "noct.ending_limit.acquired.prior",
+    "noct.ending_death.acquired.new",
+    "noct.ending_death.acquired.refused",
+    "noct.ending_death.acquired.prior",
+    "noct.ending_sacrifice.acquired.new",
+    "noct.ending_sacrifice.acquired.refused",
+    "noct.ending_sacrifice.acquired.prior",
+    "noct.ending_ascent.acquired.new",
+    "noct.ending_ascent.acquired.refused",
+    "noct.ending_ascent.acquired.prior",
+    "noct.ending_changed.acquired.new",
+    "noct.ending_changed.acquired.refused",
+    "noct.ending_changed.acquired.prior",
+    "noct.ending_aeon.acquired.new",
+    "noct.ending_aeon.acquired.refused",
+    "noct.ending_aeon.acquired.prior"
+  ],
+  "new_nodes": [
+    {
+      "scene": "noct.unlit_quay",
+      "node": "stitch",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.unlit_quay",
+      "node": "demon",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.sixth_passenger",
+      "node": "read_lie",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.sixth_passenger",
+      "node": "missed_lie",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.sixth_passenger",
+      "node": "sentence",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.captains_reply",
+      "node": "sold",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.captains_reply",
+      "node": "waking",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.captains_reply",
+      "node": "waking.lann",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.captains_reply",
+      "node": "waking.woljif",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.captains_reply",
+      "node": "waking.greybor",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "node": "mark",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "node": "waking",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "node": "waking.daeran",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "node": "waking.wenduag",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "node": "waking.seelah",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.her_own_face",
+      "node": "waking.woljif",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.demonstration",
+      "node": "court",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.demonstration",
+      "node": "exposed",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.demonstration",
+      "node": "laughed",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.return_count",
+      "node": "orren",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.return_count",
+      "node": "carrier",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.return_count",
+      "node": "assign",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.return_count",
+      "node": "orren_end",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.another_place",
+      "node": "noct.another_place.explicit.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.another_place",
+      "node": "noct.another_place.aftermath.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "overruled",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "execute",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "demon_ask",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "aeon",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "aeon.native_trials",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "waking",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "waking.regill",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "waking.seelah",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.hearing",
+      "node": "waking.lann",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "entrance",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "entrance.silence",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "entrance.fracture",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "bell",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "hunt.istrava",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "caught.clean",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "caught.costly",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "hunt.suth",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "hunt.guests",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "waking",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "waking.wenduag",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "waking.greybor",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.uninvited_guest",
+      "node": "waking.daeran",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.unborrowed_evening",
+      "node": "noct.unborrowed_evening.explicit.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.unborrowed_evening",
+      "node": "noct.unborrowed_evening.aftermath.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.bell_without_master",
+      "node": "rhez",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.no_applause",
+      "node": "wager",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.no_applause",
+      "node": "run.caught",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.no_applause",
+      "node": "run.free",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.what_she_keeps",
+      "node": "executed",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "waking",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "waking.arueshalae",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "waking.daeran",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.second_door",
+      "node": "waking.seelah",
+      "kind": "waking coda within existing dream host",
+      "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.last_buyer",
+      "node": "noct.last_buyer.explicit.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.last_buyer",
+      "node": "noct.last_buyer.aftermath.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "noct.empty_chair.explicit.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "noct.empty_chair.aftermath.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    }
+  ],
+  "new_paragraphs": [
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 33,
+      "requires": [
+        "noct.orren_hand_taken"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 34,
+      "requires": [
+        "noct.orren_lamp"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 35,
+      "requires": [
+        "noct.orren_given"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 36,
+      "requires": [
+        "noct.orren_run"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 37,
+      "requires": [
+        "noct.captain_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 38,
+      "requires": [
+        "noct.threat_sent"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 39,
+      "requires": [
+        "noct.returned_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 40,
+      "requires": [
+        "noct.returned_harem"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 41,
+      "requires": [
+        "noct.returned_released"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 42,
+      "requires": [
+        "noct.ilvara_executed"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 43,
+      "requires": [
+        "noct.sentence_overruled"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 44,
+      "requires": [
+        "noct.quarry_istrava"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 45,
+      "requires": [
+        "noct.quarry_suth"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 46,
+      "requires": [
+        "noct.quarry_guests"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 47,
+      "requires": [
+        "noct.lodge_given_rhez"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 48,
+      "requires": [
+        "noct.wager_lost"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 49,
+      "requires": [
+        "noct.laulieh_rewarded"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 50,
+      "requires": [
+        "noct.work_named"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_company",
+      "node": "end",
+      "paragraph": 51,
+      "requires": [
+        "noct.redeemed_epilogue"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 33,
+      "requires": [
+        "noct.orren_hand_taken"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 34,
+      "requires": [
+        "noct.orren_lamp"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 35,
+      "requires": [
+        "noct.orren_given"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 36,
+      "requires": [
+        "noct.orren_run"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 37,
+      "requires": [
+        "noct.captain_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 38,
+      "requires": [
+        "noct.threat_sent"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 39,
+      "requires": [
+        "noct.returned_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 40,
+      "requires": [
+        "noct.returned_harem"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 41,
+      "requires": [
+        "noct.returned_released"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 42,
+      "requires": [
+        "noct.ilvara_executed"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 43,
+      "requires": [
+        "noct.sentence_overruled"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 44,
+      "requires": [
+        "noct.quarry_istrava"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 45,
+      "requires": [
+        "noct.quarry_suth"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 46,
+      "requires": [
+        "noct.quarry_guests"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 47,
+      "requires": [
+        "noct.lodge_given_rhez"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 48,
+      "requires": [
+        "noct.wager_lost"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 49,
+      "requires": [
+        "noct.laulieh_rewarded"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 50,
+      "requires": [
+        "noct.work_named"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_alliance",
+      "node": "end",
+      "paragraph": 51,
+      "requires": [
+        "noct.redeemed_epilogue"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 33,
+      "requires": [
+        "noct.orren_hand_taken"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 34,
+      "requires": [
+        "noct.orren_lamp"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 35,
+      "requires": [
+        "noct.orren_given"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 36,
+      "requires": [
+        "noct.orren_run"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 37,
+      "requires": [
+        "noct.captain_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 38,
+      "requires": [
+        "noct.threat_sent"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 39,
+      "requires": [
+        "noct.returned_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 40,
+      "requires": [
+        "noct.returned_harem"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 41,
+      "requires": [
+        "noct.returned_released"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 42,
+      "requires": [
+        "noct.ilvara_executed"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 43,
+      "requires": [
+        "noct.sentence_overruled"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 44,
+      "requires": [
+        "noct.quarry_istrava"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 45,
+      "requires": [
+        "noct.quarry_suth"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 46,
+      "requires": [
+        "noct.quarry_guests"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 47,
+      "requires": [
+        "noct.lodge_given_rhez"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 48,
+      "requires": [
+        "noct.wager_lost"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 49,
+      "requires": [
+        "noct.laulieh_rewarded"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 50,
+      "requires": [
+        "noct.work_named"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_limit",
+      "node": "end",
+      "paragraph": 51,
+      "requires": [
+        "noct.redeemed_epilogue"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 33,
+      "requires": [
+        "noct.orren_hand_taken"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 34,
+      "requires": [
+        "noct.orren_lamp"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 35,
+      "requires": [
+        "noct.orren_given"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 36,
+      "requires": [
+        "noct.orren_run"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 37,
+      "requires": [
+        "noct.captain_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 38,
+      "requires": [
+        "noct.threat_sent"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 39,
+      "requires": [
+        "noct.returned_sold"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 40,
+      "requires": [
+        "noct.returned_harem"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 41,
+      "requires": [
+        "noct.returned_released"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 42,
+      "requires": [
+        "noct.ilvara_executed"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 43,
+      "requires": [
+        "noct.sentence_overruled"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 44,
+      "requires": [
+        "noct.quarry_istrava"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 45,
+      "requires": [
+        "noct.quarry_suth"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 46,
+      "requires": [
+        "noct.quarry_guests"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 47,
+      "requires": [
+        "noct.lodge_given_rhez"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 48,
+      "requires": [
+        "noct.wager_lost"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 49,
+      "requires": [
+        "noct.laulieh_rewarded"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    },
+    {
+      "scene": "noct.ending_ascent",
+      "node": "end",
+      "paragraph": 50,
+      "requires": [
+        "noct.work_named"
+      ],
+      "forbids": [],
+      "kind": "epilogue",
+      "presence": "inherits ending host",
+      "departure": "inherits host's current Nocticula/Commander loss guards",
+      "payoff": "Requires the named played deed or exact native redeemed selector; inherits host payoff predicate"
+    }
+  ],
+  "native_hooks": {
+    "trials": {
+      "key": "noct.native_trials_seen",
+      "field": "SeenCues",
+      "guid": "a5472a3492d23c542b5f77cb6e591ca3",
+      "source": "World/Dialogs/c4/Nocticula_main/Cue_0418.jbp",
+      "enGB": "43ca3072-fb51-41fb-9ceb-14f7bcd1513d"
+    },
+    "redeemed": {
+      "key": "noct.native_redeemed",
+      "field": "UnlockableFlags",
+      "guid": "48909f9355f52e14ab3a8748fa3e81a0",
+      "source": "World/Encounters/AlushinyrraLowerCity/UnlockableFlags/EmberQ2_NocticulaPersuasionSuccess.jbp",
+      "selector": "World/Dialogs/Epilogues/Cue_0294.jbp",
+      "requires": [
+        "noct.native_redeemed",
+        "ending.wound_closed"
+      ],
+      "forbids": [
+        "noct.dead"
+      ],
+      "enGB": "13a9b9dc-43f5-4a43-b200-37653cc8e17c"
+    }
+  },
+  "dropped_hooks": {
+    "laulieh_drezen_breakfast": "KTC_ReinforcementsFromNocta delivers an army/dialogue; no clean continuing Laulieh-in-Drezen presence flag found. Seeing Cue_0001 is not proof she remains available."
+  },
+  "retired_clones": [
+    "noct.lamp_measure.acquired.new",
+    "noct.lamp_measure.acquired.refused",
+    "noct.lamp_measure.acquired.prior",
+    "noct.white_shoes.acquired.new",
+    "noct.white_shoes.acquired.refused",
+    "noct.white_shoes.acquired.prior",
+    "noct.voices_in_glass.acquired.new",
+    "noct.voices_in_glass.acquired.refused",
+    "noct.voices_in_glass.acquired.prior",
+    "noct.cost_of_return.acquired.new",
+    "noct.cost_of_return.acquired.refused",
+    "noct.cost_of_return.acquired.prior",
+    "noct.after_the_lamps.acquired.new",
+    "noct.after_the_lamps.acquired.refused",
+    "noct.after_the_lamps.acquired.prior",
+    "noct.mask_and_bell.acquired.new",
+    "noct.mask_and_bell.acquired.refused",
+    "noct.mask_and_bell.acquired.prior",
+    "noct.closed_gallery.acquired.new",
+    "noct.closed_gallery.acquired.refused",
+    "noct.closed_gallery.acquired.prior",
+    "noct.counterseal.acquired.new",
+    "noct.counterseal.acquired.refused",
+    "noct.counterseal.acquired.prior"
+  ]
+}

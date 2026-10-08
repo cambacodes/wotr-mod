@@ -1,23 +1,18 @@
 {
-  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
-  "facts": [
-    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
-    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
-    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
-    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
-  ],
-  "scene": "Chapter 5, authored hosted harbor room, company branch yes. Nocticula and Commander alone, a return after the played first night. Her own invitation, lamp and couch, impatience and the ruler who has enjoyed an ambassador's fear. User-supplied continuation of consensual intimacy. Keep current Shamira terms and parent Worldwound bargain unchanged. End before her arm across the waist and demand to leave the lamp burning; next morning returns to Drezen and the current discovery receipt.",
-  "last_line": "N: Later, the lamp still burns beside the couch.",
+  "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
+  "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. Shamira is her chosen lover and covets her throne. The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen. No fixed Commander gender or anatomy. Invent no physical feature beyond those stated. The crimson mark is narration only, with no mechanical effect. Explicit scope: the Commander with Nocticula only. No other participant. The Harem of Ardent Dreams is Shamira's court; Nocticula's bedchamber door behind its dais has no outer handle, and tonight she told the whole Harem that only the Commander may open it unbidden.",
+  "scene": "Chapter 5, Drezen sleep; company branch. Nocticula's bedchamber behind the black door off the Harem of Ardent Dreams, opened a moment ago by the Commander's own hand in front of Shamira's whole court, who heard the latch. She pushed the Commander through and kicked the door shut, and has the Commander against the inside of it in the dark. Possession displayed: she says, once, that the Harem heard the latch. No oath, no vow, no tenderness speech; appetite and ownership spoken fondly. End before the aftermath, where the Harem outside starts talking again and she pins the Commander's wrist.",
+  "last_line": "N: Much later, the room comes back. You are lying on something soft in the dark, with her weight on you and her hair over both your faces, and from very far away, through the door, the Harem has started talking again: one voice, then many, the sound of a whole court beginning to sell what it saw.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"
   },
-  "example": "N: Nocticula catches your sleeve before you can set the glass down.\nL: Leave it. I have had enough of watching you drink.",
+  "example": "N: The latch is still ringing in the wood behind you when her mouth finds your throat.\nL: Hold still. They're listening, and I want them to hear the right things.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 10,
   "max_lines": 18,
-  "default_text": "{n}She draws you close by the wrist. Later, the lamp still burns beside the couch.{/n}"
+  "default_text": "{n}The latch falls behind you. Through the door, the Harem has gone very quiet.{/n}"
 }
