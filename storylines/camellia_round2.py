@@ -557,7 +557,9 @@ def _slots(scenes):
     root = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/camellia"
     for path in sorted(root.glob("*.json")):
         brief = json.loads(path.read_text(encoding="utf-8"))
-        spec = brief["insertion"]
+        spec = brief.get("insertion")
+        if not spec:
+            continue  # tracker brief (Gemory) still waiting for its structure hook
         h = scenes[spec["scene_id"]]
         anchor = spec["after_node"]
         if anchor == "end":

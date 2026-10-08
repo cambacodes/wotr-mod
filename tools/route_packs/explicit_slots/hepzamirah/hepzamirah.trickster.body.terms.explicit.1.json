@@ -1,22 +1,6 @@
 {
   "voice": "HEPZAMIRAH: proud, vicious, blunt, possessive, easily insulted; former archpriestess and commander who thinks in quarry, spoil and practical leverage. Appetite is direct; tenderness appears through chosen contact and returning, never moral reform. She initiates and counters rather than reciting agreements. Short harsh clauses, impatient humor, occasional profanity suited to a discarded daughter of Baphomet. Write new dialogue; voice instructions are traits, not lines to quote.",
-  "facts": [
-    {
-      "fact": "Hepzamirah is a mortal nephilim daughter of Baphomet, not an ordinary demon.",
-      "blueprint_guid": "c1c8de1235d14cc4b85b2454855b90a5",
-      "enGB_key": "7962aba1-180c-4b6f-8eec-d4c4b9777dec"
-    },
-    {
-      "fact": "Her native ghost has a crushed skull and one displaced eye.",
-      "blueprint_guid": "5e4a94e4f9a58974583be0c79bfe8e55",
-      "enGB_key": "a757af15-e373-4c05-983f-9619d5ffcc06"
-    },
-    {
-      "fact": "She sacrificed her mother and hundreds of siblings and resents her father discarding her.",
-      "blueprint_guid": "f99fcbc6f6ad7734a94346de8517b73b",
-      "enGB_key": "84523473-150d-4d3f-ab64-bd7103184dd4"
-    }
-  ],
+  "facts": "Hepzamirah is a mortal nephilim daughter of Baphomet, not an ordinary demon.\nHer native ghost has a crushed skull and one displaced eye.\nShe sacrificed her mother and hundreds of siblings and resents her father discarding her.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
   "scene": "SCENE: Authored Trickster romance, Chapter 5, her forge room in Drezen, first mutual sexual encounter after her voiced counterterms and the existing commitment answer. Only Hepzamirah and Commander are present. She has brought the Commander inside; the already-staged kiss and undressing show mutual desire. Required beats: her appetite and physical initiative; Commander visibly reciprocates; she owns this restored body and expects to leave the door when she chooses; no cure, submission by incapacity, gratitude debt or redemption. Keep action connected to the subsequent broken cot/door and public morning claim. Stage a consensual intimate encounter; do not introduce a third participant or a new required act. Finish on the exact terminal narration below, then morning occurs through the existing delayed scene.",
   "last_line": "N: Before dawn, the cot gives way beneath you both.",
   "speakers": {
@@ -33,6 +17,7 @@
   "default_text": "{n}She pulls you down with her, her mouth fierce against yours. The door shudders in its frame; she does not loosen her grip.{/n}",
   "authored_continuity": {
     "body": "Authored returned vessel: existing skull ridge, milk-white unseeing eye and horn stump; none is native anatomy evidence. Preserve existing horn-kept/cut context. Remove unverified rib scars and racial body-temperature claims from incoming staging.",
-    "props": "Door is intact enough to kick shut at entry and broken by morning; cot/furs staging must be harmonized before the take. The cot breaks once at the terminal beat."
+    "props": "Door is intact enough to kick shut at entry and broken by morning; cot/furs staging must be harmonized before the take. The cot breaks once at the terminal beat.",
+    "fact_sources": "Hepzamirah is a mortal nephilim daughter...: blueprint c1c8de1235d14cc4b85b2454855b90a5, enGB 7962aba1-180c-4b6f-8eec-d4c4b9777dec; Her native ghost has a crushed skull and...: blueprint 5e4a94e4f9a58974583be0c79bfe8e55, enGB a757af15-e373-4c05-983f-9619d5ffcc06; She sacrificed her mother and hundreds o...: blueprint f99fcbc6f6ad7734a94346de8517b73b, enGB 84523473-150d-4d3f-ab64-bd7103184dd4"
   }
 }

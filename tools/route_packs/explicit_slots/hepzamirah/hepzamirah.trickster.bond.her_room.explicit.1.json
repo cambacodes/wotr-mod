@@ -1,0 +1,38 @@
+{
+  "slot_id": "hepzamirah.trickster.bond.her_room.explicit.1",
+  "host_scene": "hepzamirah.trickster.bond.her_room",
+  "host_node": "sit_say",
+  "participants": [
+    "Hepzamirah",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Hepzamirah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HEPZAMIRAH: foul-mouthed, martial, proprietary; terms stated, never asked. Two or three crude insults (whelp, worm, wench, scum), 'clown' kept for the Trickster Commander in private, one obscene or bodily threat spoken as appetite. Heat is domination, ownership and pain, never seduction or tenderness-led. Never an apology, mercy credited to herself, a built-in exit line, gratitude or redemption. Short harsh clauses. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Hepzamirah is a mortal nephilim daughter of Baphomet, once archpriestess of the cult and mistress of the Ivory Labyrinth templars; she is not an ordinary demon.\nShe sacrificed her mother and hundreds of siblings to Baphomet and hates having been discarded.\nHer native appetite is domination, owning bodies and inflicting pain; no native seduction line exists.\nHer living body is the mod's authored Trickster vessel: a scarred side of the face, a milk-white unseeing eye and a horn stump. These are authored continuity, not native anatomy evidence.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, Drezen, her small hot room behind the smith's forge; the door cannot be locked or shut. Every object in the room is a trophy she took, was given or refused to give back (the history may supply the laundress's split paddle, the RETURNED TO SENDER note, Ember's blue flowers, the crystal-cutter's lens, Mutasafen's letter, the sawn horn splinters, or the Apprentice's dried hands on the bedpost). The Commander sat beside her on the mended cot; she took the Commander's hand, turned it over and studied it the way she studied her shelf, and said she keeps this too, she has decided, and that the Commander has seen what she does to people who take her things. Continue: she makes the claim physical. The Commander is added to the collection on her terms; possession is the heat, the trophies are watching. Only Hepzamirah and the Commander are present. End with the Commander still in her room before dawn.",
+  "required_beats": [
+    "Begin from her closing her hand on the Commander's; she leads and decides.",
+    "Ownership spoken plainly ('mine', 'kept'); the room's trophies are part of the staging, at least one by name from the history.",
+    "Crude insults and one bodily threat said as appetite; no tenderness speech.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "Keep the authored vessel's scar, blind eye and horn stump; the unshuttable door stays open.",
+    "No witness, apology, gratitude or redemption; close exactly on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored room scene behind the Drezen smithy; the trophies are mod continuity, selected by the route's flags (market_struck, cult_trapped, flowers_kept, eye_burned, princess_letter_kept, horn_cut, cost.courier_killed).",
+    "history": "Committed Trickster Hepzamirah after her first morning (bond.morning); a return encounter, not a first night.",
+    "resumption": "hepzamirah.trickster.bond.her_room/keeps -> [Sit beside her on the cot.] -> sit -> sit_say -> reserved node -> scene exit. The like branch never reaches this slot. The host is terminal, so last_line is the slot's own closing beat; needs a structure hook (a reserved node after sit_say) before generation."
+  },
+  "last_line": "N: Before dawn she is asleep across the cot with your hand still in hers, and she has not let go of it.",
+  "default_text": "{n}She does not let go of your hand. She pulls you down onto the cot by it, and the door swings open behind you both.{/n}",
+  "example": "N: Hepzamirah closes her fist round your fingers.\nH: Kept. Mine. Lie down, clown.\nN: She pulls you down among her trophies.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Hepzamirah only, for the separate writer. Both Commander variants are required. Keep possession and her cruelty; no invented anatomy, cure or redemption."
+}

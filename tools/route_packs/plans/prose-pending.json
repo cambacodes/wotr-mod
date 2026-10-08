@@ -107,20 +107,6 @@
       "text_sha": "3390eb9c27568c271bdcf0f399396d237a21884f9b32e70412fb57445f39897c"
     },
     {
-      "scene": "household.docket.horzalah_hepzamirah.account",
-      "node": "j05_instructions_destroyed",
-      "surface": "node",
-      "index": null,
-      "text_sha": "5d9cbd2144a971a736b9c9b84dbb46ff79307c90154a0c5bd641eb2eb152e07c"
-    },
-    {
-      "scene": "household.docket.horzalah_hepzamirah.account_table",
-      "node": "j05_instructions_destroyed",
-      "surface": "node",
-      "index": null,
-      "text_sha": "5d9cbd2144a971a736b9c9b84dbb46ff79307c90154a0c5bd641eb2eb152e07c"
-    },
-    {
       "scene": "household.pair.seelah_camellia.settle",
       "node": "reasoned",
       "surface": "node",
@@ -266,104 +252,6 @@
       "surface": "node",
       "index": null,
       "text_sha": "8204506a9901d92a55273bc6ef7826304059ff61dcceb5f2e294743c6dbc84df"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "start",
-      "surface": "node",
-      "index": null,
-      "text_sha": "62f6f32d4a49517d60bad0eec50aee328baefc11482340835e721baaef68e2d9"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "second",
-      "surface": "node",
-      "index": null,
-      "text_sha": "d5e969ba3376e925ef6e7db226169adb15224c947fab90f3a77ce2ea34711fa5"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "held",
-      "surface": "node",
-      "index": null,
-      "text_sha": "6369308e016fe4f5f2b8fbb48a7de507795a8093ae1d14b38c1a2b20ff7ef533"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "missed",
-      "surface": "node",
-      "index": null,
-      "text_sha": "fd0c89ec3dec8b46e320bbf57d46ec770d96652db559ccc9dcf14b2331cac1ea"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "refused",
-      "surface": "node",
-      "index": null,
-      "text_sha": "40bcadfc707dab66cd8a675a641fec6bbca305f25b0974e531b244302c96ed06"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "broken_horzalah",
-      "surface": "node",
-      "index": null,
-      "text_sha": "0bcd2f1ac928490d3b677b0831879dbe6317304718e5e21213500aff3812ccf9"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.truce",
-      "node": "broken_hepzamirah",
-      "surface": "node",
-      "index": null,
-      "text_sha": "0389911c5b54fb94caeaafe4da2ca1652bec139b912f62e7e0d423b7480cc2af"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "start",
-      "surface": "node",
-      "index": null,
-      "text_sha": "62f6f32d4a49517d60bad0eec50aee328baefc11482340835e721baaef68e2d9"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "second",
-      "surface": "node",
-      "index": null,
-      "text_sha": "d5e969ba3376e925ef6e7db226169adb15224c947fab90f3a77ce2ea34711fa5"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "held",
-      "surface": "node",
-      "index": null,
-      "text_sha": "6369308e016fe4f5f2b8fbb48a7de507795a8093ae1d14b38c1a2b20ff7ef533"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "missed",
-      "surface": "node",
-      "index": null,
-      "text_sha": "fd0c89ec3dec8b46e320bbf57d46ec770d96652db559ccc9dcf14b2331cac1ea"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "refused",
-      "surface": "node",
-      "index": null,
-      "text_sha": "40bcadfc707dab66cd8a675a641fec6bbca305f25b0974e531b244302c96ed06"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "broken_horzalah",
-      "surface": "node",
-      "index": null,
-      "text_sha": "0bcd2f1ac928490d3b677b0831879dbe6317304718e5e21213500aff3812ccf9"
-    },
-    {
-      "scene": "household.pair.horzalah_hepzamirah.retry",
-      "node": "broken_hepzamirah",
-      "surface": "node",
-      "index": null,
-      "text_sha": "0389911c5b54fb94caeaafe4da2ca1652bec139b912f62e7e0d423b7480cc2af"
     },
     {
       "scene": "household.pair.nocticula_shamira.precedence.live",

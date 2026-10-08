@@ -1,0 +1,105 @@
+{
+ "version": 1,
+ "proposed": [
+  {
+   "scene": "hepzamirah.lastcall.page",
+   "lock_sha": "cc5ea21b26a6918d2102705a432dbf53fec7b943de787f63828f9efc60ec476b",
+   "before_sha": "cc5ea21b26a6918d2102705a432dbf53fec7b943de787f63828f9efc60ec476b",
+   "after_sha": "22432ca04799d2b75e031b6c118f30e21eed290c2e6146a3498547cdbe51e332",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.body.hounds",
+   "lock_sha": "73e202195c9230310a708be13c5b1b8ba8579120eb524e24c9e5bf13567268a0",
+   "before_sha": "73e202195c9230310a708be13c5b1b8ba8579120eb524e24c9e5bf13567268a0",
+   "after_sha": "d34590ac0176e564003de40d8222ce45c6004ecc2eb5b3a96bcb15af9cb62d9e",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.body.terms",
+   "lock_sha": "5aed4469450ecf249332b10ad56275f7fa7bd4a04b5694e816cc259d3123ca90",
+   "before_sha": "5aed4469450ecf249332b10ad56275f7fa7bd4a04b5694e816cc259d3123ca90",
+   "after_sha": "11b3ba159c8d0469c3fc65d4f002b1921528225d135ac5e0966f7ae82083e58c",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.bond.her_room",
+   "lock_sha": "8e1d113fd4b3da4ae9e025378a19cda612928893cf8498c3ab68dc68c58128fd",
+   "before_sha": "8e1d113fd4b3da4ae9e025378a19cda612928893cf8498c3ab68dc68c58128fd",
+   "after_sha": "9b091f3059891244327120481bf2c1f26770964f6e98a79dd223f027860e88c6",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.bond.nerosyan",
+   "lock_sha": "6705921297d9b11ad33e9e9200c8e120f35491b037a3b8853c227400c1fc5a27",
+   "before_sha": "6705921297d9b11ad33e9e9200c8e120f35491b037a3b8853c227400c1fc5a27",
+   "after_sha": "f290ce65528acf9b13d409b49af6d73b5f15af4c2854a0b7a38ad3ad600cec11",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.epilogue.leavable",
+   "lock_sha": "e92abc44369868e69ea60c29442276923a21691ac4e7190aadda2ef0f11bb34f",
+   "before_sha": "e92abc44369868e69ea60c29442276923a21691ac4e7190aadda2ef0f11bb34f",
+   "after_sha": "8b53023e549337b6dfe18297b130e0fdd5dcfa6225a10c32df9da0922bdccd0b",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.epilogue.leavable_on_record",
+   "lock_sha": "0b2134770c7142f7c4cd35f486ba9181cc4d4eee732beed279e216fcec8c615a",
+   "before_sha": "0b2134770c7142f7c4cd35f486ba9181cc4d4eee732beed279e216fcec8c615a",
+   "after_sha": "64b41ad4abe49c9a1328d8e8a64bdb9449e6b7d188d1be23d4d225bb4419d5dd",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.flesh.apostate",
+   "lock_sha": "abd3c257a9e919a88b6e2a8eb28afd8bc933d00ed8c6a6ed2afb178411dd581f",
+   "before_sha": "abd3c257a9e919a88b6e2a8eb28afd8bc933d00ed8c6a6ed2afb178411dd581f",
+   "after_sha": "4ff5541fb05e3f6a25f610534c009c4d0e8ae9b0c92162e33bf4e7c0854a75db",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.flesh.chaplains",
+   "lock_sha": "ed2da3367939ed3a2b53145e003b9ee2fd9c73c228457712ef114c6a0febf9af",
+   "before_sha": "ed2da3367939ed3a2b53145e003b9ee2fd9c73c228457712ef114c6a0febf9af",
+   "after_sha": "50b9d16b4fae6f0f062fb4bfd3700b322e9d677a4e82684fef12c826facbe5b1",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  },
+  {
+   "scene": "hepzamirah.trickster.flesh.drill_result",
+   "lock_sha": "f14c4a66cdfb897d342a644afa45cbff3cc85b943fd20a9de743f0e8adc41064",
+   "before_sha": "f14c4a66cdfb897d342a644afa45cbff3cc85b943fd20a9de743f0e8adc41064",
+   "after_sha": "5e2395d553aebd306c75c1b23b02faafc79a568a7660e954a0488a4d47242a58",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-hepzamirah",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-hepzamirah design-first pass: on-screen courier kill, gate scene medium, earned props, promise readers, re-voiced paperwork (see tools/route_packs/redesign/hepzamirah/cloud-review.md)"
+  }
+ ]
+}
