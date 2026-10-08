@@ -1,0 +1,34 @@
+{
+  "slot_id": "elyanka.trickster.beat.table.explicit.1",
+  "host_scene": "elyanka.trickster.beat.table",
+  "host_node": "door2",
+  "participants": [
+    "Elyanka",
+    "Commander"
+  ],
+  "speakers": {
+    "E": "Elyanka",
+    "N": "Narrator"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "ELYANKA: imperious proclamations with mad cackling under them; terms of endearment that are claims; boastful about her passion; disgust at warm living flesh mixed with greed for it; the Whispering Way's idiom of things said in whispers and never written. Never humble, never praising mortal life or death's peace, never a frail sweet old lady. No diagnosis, maxims or negotiated etiquette. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Canon: a tall old woman with tangled grey hair, an imperious face, a plain worn grey robe and no jewellery; royal bearing, bird-like eyes and strong white teeth.\nCanon: priestess of Urgathoa, the Pallid Princess, and Whispering Way envoy; still mortal and bitter about her delayed adoption; the cult's teaching passes in whispers.\nCanon: Urgathoa is the queen of pleasure, gluttony and undeath; her services are 'more luxurious than the most lavish feasts, the wildest orgies' (Elyanka_MainDialogue/Cue_0055).\nAuthored staging: Chapter 5, the dead-house by Drezen's south gate after her Lady's table (thirty masked worshippers, gone home before the morning watch); the Commander kept the door all night and would not sit.\nNo canon genital detail, ancestry, exact height or youthful body is asserted. Both are adults.",
+  "scene": "Explicit intimacy brief for the Commander and Elyanka only. Host: elyanka.trickster.beat.table/door2, after 'Come inside when they have gone. There is food left, and I am still hungry.' The masked guests are gone; the long room is guttering candles, fat meat, wine and her Lady's table. The Commander who would not sit at the table is fed at it now, on her terms: appetite as worship, the hound brought in from the doorstep. Mutual, active participation, her contempt for the warm body alongside her greed for it. Aftermath: she sends the Commander out before the morning watch with the taste of the feast still on them. STRUCTURE HOOK NEEDED before generation: door2 is terminal (its only answer sets elyanka.trickster.table.kept_door), so a slot node must be inserted by a structure job without changing that answer's Set.",
+  "required_beats": [
+    "After the guests have gone; nobody else in the dead-house; no worshipper, escort or corpse participates.",
+    "Food and wine from her Lady's table are part of the act; appetite as her creed, never therapy.",
+    "She calls the Commander her hound or her doorkeeper and means ownership by it.",
+    "Act by Commander variant; an old woman's body without invented specifics.",
+    "Her claim on the future corpse stays a debt, not control over the living body.",
+    "Second person present for the Commander, as the host scene."
+  ],
+  "last_line": "E: Come inside when they have gone. There is food left, and I am still hungry.",
+  "example": "N: She pushes the last plate across the table to you with two fingers.\nE: Eat. My Lady's door has been kept long enough.",
+  "default_text": "{n}When the last guest has gone she pulls you in from the doorstep by your belt, and the candles burn down on what is left of the feast.{/n}",
+  "min_lines": 6,
+  "max_lines": 10,
+  "content_scope": "Reserved explicit slot for the Commander and Elyanka only. Both Commander variants are required."
+}

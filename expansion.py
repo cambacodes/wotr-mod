@@ -745,6 +745,9 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-areelu (cloud): Areelu's text-only voice layer, after every appender so indices stay put.
     from storylines import areelu_cloud
     areelu_cloud.integrate(payload)
+    # villain-route-elyanka (cloud): Elyanka's text-only layer, after every appender so indices stay put.
+    from storylines import elyanka_cloud
+    elyanka_cloud.integrate(payload)
     # villain-route-horzalah (cloud): Horzalah's text-only voice layer, last, so appended paragraphs move no index.
     from storylines import horzalah_cloud
     horzalah_cloud.integrate(payload)

@@ -1149,16 +1149,6 @@
     "dependency": "Soana is placed in her cave. A scoped bench placement/movement and ordinary placement restoration need a separate route-local scope; contact availability alone would not stage this visit."
   },
   {
-    "scene": "elyanka.trickster.beat.hunt",
-    "node": "stag",
-    "woman": "elyanka",
-    "beat": "Write checked interception success/failure and the distinct deliberate-stillness outcome of the hart hunt. Preserve danger, both women's agency and the existing evil rites; mechanical checks remain Codex-owned.",
-    "why": "The scene presents a tactical choice between concealment and physically intercepting a charging hart, but both choices automatically achieve the same kill. Neither tests the Commander, changes a resource, nor produces a distinct outcome flag. The dangerous action is decorative narration where the character-truth gameplay rule calls for playable consequence.",
-    "finding": "elyanka-and-camilary:D08",
-    "ruling": "r5-S1",
-    "dependency": "storylines/elyanka_trickster.py: the specified checked interception and distinct stillness/failure branches require route-local choices and Claude outcomes, outside the S1 shared allow-list."
-  },
-  {
     "scene": "nenio.folio.edge",
     "node": "walk",
     "woman": "nenio",
