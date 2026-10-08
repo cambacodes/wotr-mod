@@ -1,0 +1,39 @@
+{
+  "slot_id": "horzalah.trickster.epilogue.decided.explicit.1",
+  "host_scene": "horzalah.trickster.epilogue.decided",
+  "host_node": "page",
+  "participants": [
+    "Horzalah",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Horzalah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "narration": "third-past",
+  "voice": "HORZALAH: severe, commanding, venomous; contempt first, curiosity second; 'mortal' as a leash and a possessive 'mine' when she takes something. She gives orders even in bed and decides when the Commander may touch her; crude only in mockery; exclamation only in rage. Never sincere thanks, never slavery as trauma to be healed, never an abolitionist turn, no therapy talk, maxims or modern slang. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Horzalah is Baphomet's nephilim daughter and Hepzamirah's younger sister, once sold in advance as a concubine to Yozz; she later claimed Yozz and the Guild as her property.\nAttested: a collar-shaped scar at her throat and shrewd evil eyes with dark flames; native Chapter 5 dialogue says her seals are lifted.\nHer collar, rooms, paid ear trophy and romance are authored route continuity, not further native physical facts.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, the spring after the Threshold, the Commander's rooms in Drezen, epilogue.decided: in Chapter 5 the Commander reached for her collar like a buyer or asked whose brand it was, she withdrew to decide, and the war ended before she had finished. She came through no door at all, found the Commander at the window, said 'I chose you. Now keep still', took the Commander's hand without asking and put it under the edge of her collar on the scar, and held it there until the Commander understood, and waited. Continue from that hand on her throat: the lesson she said was the slowest she ever gave. She sets every term; the Commander may move only where she puts the Commander's hands, and she enjoys making the Commander wait. This is this ending's first night, not a retelling of a Chapter 5 night (the page requires that the Commander never committed in Chapter 5). THIRD-PERSON epilogue narration: 'the Commander', never gameplay 'you'. Only Horzalah and the Commander; no servant, dresser, guard or Guild member present.",
+  "required_beats": [
+    "Begin from the Commander's hand on her scar under the collar, where she put it; the collar comes off by her hand only.",
+    "She commands and the Commander waits, then answers actively when she allows it; mutual participation throughout.",
+    "One venomous jab at the reach she punished in Chapter 5 (a buyer's hand, or a question about whose brand it was), as appetite, not grievance therapy.",
+    "A possessive 'mine' about the missing ear and the rest of the Commander.",
+    "Act by Commander variant without inventing anatomy; no horns, wings, tail or flame mechanics.",
+    "Close on the supplied last line; no thanks, apology, redemption or abolitionist turn."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored epilogue page; the collar, the scar staging and the Commander's rooms are mod continuity.",
+    "history": "Trickster Horzalah after the ear con and her return (primed, cost.ear, returned), declined in Chapter 5 (horzalah.trickster.declined: refused.reached or refused.brand), never committed, not left free.",
+    "resumption": "TRACKER: epilogue.decided/page has no reserved paragraph yet. Before generation, append a paragraph with this slot id after the existing paragraphs of epilogue.decided/page (after P3; payoff contracts register epilogue paragraphs by index), with no extra gate beyond the page's own, ending on the supplied last line. The page text before it stays as written; its closing line ('the slowest lesson ...') precedes the slot and is not repeated."
+  },
+  "last_line": "N: By morning the collar was buckled again, and she went back to her Guild the way she had come, through no door at all.",
+  "default_text": "{n}She kept the Commander's hand where she had put it, and made the Commander wait for every other thing.{/n}",
+  "example": "N: Horzalah keeps the Commander's hand flat on the scar.\nH: Still. You reached like a buyer once. Learn what it is to be given something.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Horzalah only, for the separate writer. Both Commander variants are required. Keep her command and contempt; no invented anatomy."
+}
