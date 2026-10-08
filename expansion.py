@@ -748,6 +748,12 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-horzalah (cloud): Horzalah's text-only voice layer, last, so appended paragraphs move no index.
     from storylines import horzalah_cloud
     horzalah_cloud.integrate(payload)
+    # villain-route-nurah (cloud): Nurah's text-only voice layer, last, so appended paragraphs never shift an index.
+    from storylines import nurah_cloud
+    nurah_cloud.integrate(payload)
+    # villain-route-camellia (cloud): Camellia's text-only voice layer, last for the same reason.
+    from storylines import camellia_cloud
+    camellia_cloud.integrate(payload)
     return payload
 
 

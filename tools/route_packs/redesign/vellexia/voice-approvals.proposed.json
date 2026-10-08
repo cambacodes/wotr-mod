@@ -1,0 +1,182 @@
+{
+  "proposed_by": "cloud voice owner, villain-route-vellexia, 2026-10-08",
+  "base": "wotr-mod main 723ccae",
+  "note": "Proposed enrollment only; voice_locks.json and voice-approvals.json are not edited by this branch. household.pair.arueshalae_vellexia.*: Vellexia lines only (Arueshalae voice owned by arue12).",
+  "scenes": [
+    {
+      "scene": "vellexia.unfinished_likeness",
+      "owner": "claude",
+      "before_text_sha": "46681a9be0e8e3971431f184155ef3211bd57c7395aa3fb48dcfd31472b40b25",
+      "after_text_sha": "adc20d59121f47893504743bc9cc4a255a0710fce540750b8cd6b3592a2341c4",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.second_painter",
+      "owner": "claude",
+      "before_text_sha": "10ff0ec35ab309554c298ccb18724315626a06fff699adde67ea9ba5211c465d",
+      "after_text_sha": "ec2468976358169c109cf885ed483ea1eb15f18db780ea45b398f6b0f995f4d5",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.price_of_novelty",
+      "owner": "claude",
+      "before_text_sha": "6874d27446f012f625047fd321b51a0d1cf4b03f949370f75f7f9d9143b0ccb9",
+      "after_text_sha": "7f18db01acd18d9c2ea2aa5887ca12dcb96facffe2dc346cb75b7c5efdec1e2b",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_unused_reply",
+      "owner": "claude",
+      "before_text_sha": "cfe3b178c3e72d5357b644c34064c7006358b64b8e4cbe70e6ba64e112998246",
+      "after_text_sha": "f631eaebc985687b99c7e1ecf19971f0fa7e2f49922497fcd2407b44bd02900d",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_price_of_tomorrow",
+      "owner": "claude",
+      "before_text_sha": "28d55d6c6b1007212c09d88e1982db5a517d147576fe4034b53053dd0d33b32a",
+      "after_text_sha": "a847fdd97a32a27d7df641cf4b8acb0d4113987caa3cb3b7b31129360c600a9e",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_second_invitation",
+      "owner": "claude",
+      "before_text_sha": "aa996aa833f1c6dabcd77a011652932fd903ece8cd353d2dbb30252e4195185e",
+      "after_text_sha": "4d87c79c6fb384797f6024732367f3a71bca0ee82a6365969d189f5d24cc2b03",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_second_invitation_drezen",
+      "owner": "claude",
+      "before_text_sha": "27224180039eddfd12a0827c63ac7ff1a9d073dcdb38b024570786e1bb61ddfc",
+      "after_text_sha": "d7a4532ba95dbc8ca363a35d0863590d86b6b1d9f7d0e48651f30afa2c6b96d9",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_claim_before_the_event",
+      "owner": "claude",
+      "before_text_sha": "d5cf25b9bbdeb1c220130ad8034dde2ebb68e8bcbd4ee4b5998151ecf0a27011",
+      "after_text_sha": "602b2752df976b16692687cde6e81817b9a676920352afc8e4a2bcb92c16a98e",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_clerks_own_price",
+      "owner": "claude",
+      "before_text_sha": "9fa33fe1ba78adb2f1d864919cc3a195975fefa5a7b1d1366865639791501289",
+      "after_text_sha": "8af297477f33d92be83c38b557f8759fdeb522baf5fb5c5b550ec0220b5dbbf1",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_wager_with_an_edge",
+      "owner": "claude",
+      "before_text_sha": "21753e9d721f3b69d6b2ef0b301fe27b3e8fb6df9c2f52f4cebb323c41c45a2a",
+      "after_text_sha": "eac27c4adf1418262e04a30c0155e76487e3c21d6bd99f5de02250f59ab24792",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.an_hour_that_counts",
+      "owner": "claude",
+      "before_text_sha": "57f5d71cd102ccceacd22ec1feaa437602ebb2ac399124298819e034428e958c",
+      "after_text_sha": "ff61046b912db4d735ad0f3c766c5d44b5638f7c71624a4ea1de29ce1a956f92",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_question_after_business",
+      "owner": "claude",
+      "before_text_sha": "23ab625880f89a8d0f91924de7235d293dcde744f31d6bf1c6e0a3c3b5fd42b4",
+      "after_text_sha": "83502eb08d952def4ffde14d1eb2a42550e78d8ee0904345728a3bf078e0b0ad",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.the_voice_after_the_abyss",
+      "owner": "claude",
+      "before_text_sha": "375d4b80154b6de9146560075efab65494918684f04ae62c9db7fc0aae29813a",
+      "after_text_sha": "2ceecb34514d63799b7fca71f3ff6773815a2892fa76676c1b625a4d3c53c7e5",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.two_unremarkable_pleasures",
+      "owner": "claude",
+      "before_text_sha": "14d837cf2544f5e6645f4cd44e313e4b6a448c6b566011528b94b58d85e4013c",
+      "after_text_sha": "378191df10eb87f78da4fdafa7735f92256741b0652494732ddb51e06065f620",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.ending_interrupted",
+      "owner": "claude",
+      "before_text_sha": "866af253431c31863ae0fc015a392b2c9f58139445d507f81e373e7f422bb62c",
+      "after_text_sha": "186acfa60a3a3451b1601fa2096c986036d20efbf724b6e760c68f6b68311ead",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.ending_dead",
+      "owner": "claude",
+      "before_text_sha": "b7a6f39595c631b86ae7a2f50267609041add8f6aa54ce465ece24c849513cd4",
+      "after_text_sha": "414b4013449f3d1451db1da5ef1b035d3ec172f7bda30c45ed579bb9a4acee07",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.ending_coercion",
+      "owner": "claude",
+      "before_text_sha": "84df2ff567012f1b25e5c3c8116e5e1a2bce4e076461ffe3229831fb578858ca",
+      "after_text_sha": "357cc9359e087ad189411587799335afb696566d62c332bff6d4561aa298cb3c",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.ending_hostility",
+      "owner": "claude",
+      "before_text_sha": "016d70673f3a72a6ee2441cab260af233f60b112ecffb3a586da07cb81590f37",
+      "after_text_sha": "4ef4a23f81ee954089ef28a2e89b19fcc01e43abae76e66f5167863a758e2015",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.ending_changed",
+      "owner": "claude",
+      "before_text_sha": "6ed28f96bf583a2ef0db4249578f91839aa6e4ab2cb523de071dfc883de62a0c",
+      "after_text_sha": "6cb27821d70acd6202ae741ac1d08e8f8b32e55765a077f796868e819f8deab8",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.trickster.after.visit",
+      "owner": "claude",
+      "before_text_sha": "6135a6c3e0e408fc12823da4f9d351254eed941787b964c44c424382cc2d3e4a",
+      "after_text_sha": "72f8197580d3497b12acb59887f77cbcae498b94a2787bfbc0c2e37c9e83f92f",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "vellexia.trickster.after.visit_quarters",
+      "owner": "claude",
+      "before_text_sha": "55d7c0dbdf68a1d1dc0959794f86a3ac1b1c5575f5b824bb3aff5e4180ce74ab",
+      "after_text_sha": "ab215fd63ef5160b1b15d3564a871da9b0666db825c6556aa600d0946497e2d6",
+      "source": "storylines/vellexia_cloud.py"
+    },
+    {
+      "scene": "household.pair.arueshalae_vellexia.settle.good",
+      "owner": "claude",
+      "before_text_sha": "d27751cd27b70f2d9c59eeaf7a479fba49d6e0e36dd2d91a846fdf40f0bf00cf",
+      "after_text_sha": "4a29219c2b110cf5775c2ddf729b3c4d425d6d47c34b408a714c66de360b868c",
+      "source": "storylines/harem_rows/zzz_vellexia_pairs.py"
+    },
+    {
+      "scene": "household.pair.arueshalae_vellexia.settle.fallen",
+      "owner": "claude",
+      "before_text_sha": "45abf6f109607b21110cbc4dd84925bc852d1fafa3423500d993ff8645724beb",
+      "after_text_sha": "a7954b2c32ac763f0ade620d6935580a3b2a2a82274558f07951c6c83e5da9ef",
+      "source": "storylines/harem_rows/zzz_vellexia_pairs.py"
+    },
+    {
+      "scene": "household.pair.arueshalae_vellexia.retry.good",
+      "owner": "claude",
+      "before_text_sha": "e32922938e4d916382704280d53f495428f088fdf225fca3dfcf3ba2614545d3",
+      "after_text_sha": "4f82863ac6c119696998ba6f65f8102b18acb46869e8150176a5ee341f8911c6",
+      "source": "storylines/harem_rows/zzz_vellexia_pairs.py"
+    },
+    {
+      "scene": "household.pair.arueshalae_vellexia.retry.fallen",
+      "owner": "claude",
+      "before_text_sha": "c82a7b9358f63c7030c72b390a9eebd55fa4696ef923504aad50384efc740169",
+      "after_text_sha": "98e04c89718f3006411c6084d4aac2235d3e77b77dbcead750d703df761bb0dd",
+      "source": "storylines/harem_rows/zzz_vellexia_pairs.py"
+    }
+  ]
+}
