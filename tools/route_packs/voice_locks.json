@@ -383,7 +383,7 @@
     "jerribeth.farewell": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "d13151bbb9468ebede902ca66200532ec36963a25956973222dfc2f6e55da490"
+      "text_sha": "dfbfe0bafbac269e04a5e7c5104c1e48185715578c200db34417223a9c141b82"
     },
     "jerribeth.parting": {
       "owner": "claude",
@@ -393,12 +393,12 @@
     "jerribeth.ending_together": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "63c834c0b7bb5912c7a2c42e49333325644f766439c65a1d62c210bdacb37d90"
+      "text_sha": "e17762884d74d4b24820790ba2d34b6ecbe9e26e5195bf9e619620f62455413f"
     },
     "jerribeth.ending_ascended": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "000ed05facb9e9d8a98d52a9477492a4117727c32c5a1024e2f20b2096a61e95"
+      "text_sha": "4fa97bf4db41d7407b7be2ef3bfbb5121786f7cf6bff6759fd78c7132556f236"
     },
     "jerribeth.ending_apart": {
       "owner": "claude",
@@ -423,7 +423,7 @@
     "jerribeth.offered_signature": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "117e808dec85689aee27fd580f462127fc843a7f46d404076ac01740a7ddd48b"
+      "text_sha": "69b85f127c36176ce53092d5a6e0a63944d5dae3aecb1f1824d1aec59f755379"
     },
     "jerribeth.borrowed_sun": {
       "owner": "claude",
@@ -448,7 +448,7 @@
     "jerribeth.counterfeit_guest": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "b1c845f1bca25d59c4065b960e009d078d700bfd1bd1326e47fe32e1d5ff4370"
+      "text_sha": "29b8110923bc7ebde06ef044c555564c0dc3d29da597ad792c07f3e3effbfc4c"
     },
     "jerribeth.counterfeit_hinge": {
       "owner": "claude",
@@ -463,12 +463,12 @@
     "jerribeth.counterfeit_audience": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "79629f49ae317de016e10833f275775ca9dad0d4c54f680b019efd2c75292d1f"
+      "text_sha": "98c28a33a62f827605bb94e62b37aea1ad4f2a1b9206794339c775ba74c010ae"
     },
     "jerribeth.counterfeit_spoil": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "68756f548f2faeeb7f1a1e85e479b91230163b9e9d27584ecf1bc349b4ecb906"
+      "text_sha": "e66de168381c8d042aa53948ad7e554184d69eef0bea8a872a3aba6d8b14c6a4"
     },
     "jerribeth.counterfeit_after": {
       "owner": "claude",
