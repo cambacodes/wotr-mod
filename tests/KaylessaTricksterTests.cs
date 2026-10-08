@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Tirabade;
 
 // Kaylessa, Trickster (Writer/handoffs/trickster/kaylessa.md; binding plan 11-ROSTER-PLAN-2 §2): "No lamb to the slaughter".
@@ -87,7 +88,21 @@ internal static class KaylessaTricksterTests
                 : Explore(Program.Copy(start), chapter, keep).Any(s => s.Has(flag));
         IEnumerable<Snapshot> Explore(Snapshot start, int chapter, Func<Snapshot, bool>? keep)
         {
-            var seen = new HashSet<string>();
+            // Exact flag-set keys: one persistent bit per flag, without retaining
+            // a full joined copy of hundreds of derived names for every outcome.
+            var flagIndices = new Dictionary<string, int>(StringComparer.Ordinal);
+            BigInteger Key(Snapshot state)
+            {
+                var bits = new byte[(flagIndices.Count + state.Flags.Count + 7) / 8];
+                foreach (var flag in state.Flags)
+                {
+                    if (!flagIndices.TryGetValue(flag, out var index))
+                        flagIndices[flag] = index = flagIndices.Count;
+                    bits[index / 8] |= (byte)(1 << (index % 8));
+                }
+                return new BigInteger(bits, isUnsigned: true);
+            }
+            var seen = new HashSet<BigInteger>();
             var frontier = new List<Snapshot> { start };
             for (int depth = 0; depth < 20 && frontier.Count > 0; depth++)
             {
@@ -101,10 +116,12 @@ internal static class KaylessaTricksterTests
                         {
                             yield return r;
                             if (keep != null && !keep(r)) continue;
-                            if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                            // Still observe/deduplicate every outcome. Retain only
+                            // the first 300, exactly as the old Take(300) did below.
+                            if (seen.Add(Key(r)) && next.Count < 300) next.Add(r);
                         }
                 }
-                frontier = next.Take(300).ToList();
+                frontier = next;
             }
         }
 

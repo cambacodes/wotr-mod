@@ -267,7 +267,12 @@ internal static class KianaTricksterTests
         var late = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.history_married");
         check(Rules.Available(story, epCommit, late) && !Any(late, S("kiana.ending_unfinished"), S("kiana.trickster.ending_unfinished")),
             "Trk_Kiana_EpilogueCommit failed.");
-        check(epCommit.Nodes[0].Choices.Count == 8 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
+        // The ninth answer names Elan and opens the existing partner negotiation.
+        check(epCommit.Nodes[0].Choices[8].Next == "partner_terms_informed"
+              && epCommit.Nodes[0].Choices[8].Requires.Contains("kiana.partner_unsettled")
+              && epCommit.Nodes[0].Choices[8].Requires.Contains("kiana.partner_visits_agreed"),
+            "The ninth late-commit answer lost Elan's negotiation.");
+        check(epCommit.Nodes[0].Choices.Count == 9 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
         var notYet = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.morning", "kiana.uncertain");
         check(!Rules.Available(story, epCommit, notYet) && Rules.Available(story, S("kiana.trickster.ending_unfinished"), notYet)
               && !Rules.Available(story, S("kiana.ending_unfinished"), notYet), "Her 'then don't promise it' is not honoured.");

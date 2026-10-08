@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "route": "seelah",
+  "source_job": "r5-S2",
+  "follow_up": "r5-S2-fix",
+  "activation_stage": 4,
+  "policy": "Pending witnesses are not active tests or expected failures. Stage 4 must add each witness together with its owner fix.",
+  "findings": [
+    {
+      "route": "seelah",
+      "finding": "seelah:D03",
+      "audit_finding": "| seelah:D03 | `seelah.trickster.dead.pickpocket` | INT | A | SCORE | CODEX; IN: seelah | The sole initiating answer forbids iomedae.closed. Closing Iomedae's romance disables Seelah's rescue and leaves only the abort answer. Ending a romance with the goddess does not abolish her chapel, clergy or resurrection magic. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates",
+          "exact_assertion": "self.assert_independent(choice, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates(self):\n        for sid in (\"seelah.trickster.dead.pickpocket\", \"seelah.trickster.dead.pickpocket_effects\",\n                    \"seelah.trickster.dead.seller_word\", \"seelah.trickster.dead_no_unit.seller_word\"):\n            for node in self.by[sid][\"Nodes\"]:\n                for index, choice in enumerate(node[\"Choices\"]):\n                    with self.subTest(scene=sid, node=node[\"Id\"], index=index):\n                        self.assert_independent(choice, \"irabeth\")\n                        self.assert_independent(choice, \"iomedae\")\n            self.assertIn(\"seelah.closed\", self.by[sid][\"Forbids\"])\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "seelah.trickster.dead.pickpocket",
+            "node": "coin",
+            "choice_index": 0,
+            "block": {
+              "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
+              "Next": "stall",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.closed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "preserve_choice_forbids"
+    },
+    {
+      "route": "seelah",
+      "finding": "seelah:D04",
+      "audit_finding": "| seelah:D04 | `seelah.trickster.dead.pickpocket_effects` | INT | A | SCORE | CODEX; IN: seelah | Both diamond-held and diamond-absent initiating answers forbid iomedae.closed. Consequently, closing Iomedae's romance also prevents the field-chaplain rescue, with no narrative explanation. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates",
+          "exact_assertion": "self.assert_independent(choice, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates(self):\n        for sid in (\"seelah.trickster.dead.pickpocket\", \"seelah.trickster.dead.pickpocket_effects\",\n                    \"seelah.trickster.dead.seller_word\", \"seelah.trickster.dead_no_unit.seller_word\"):\n            for node in self.by[sid][\"Nodes\"]:\n                for index, choice in enumerate(node[\"Choices\"]):\n                    with self.subTest(scene=sid, node=node[\"Id\"], index=index):\n                        self.assert_independent(choice, \"irabeth\")\n                        self.assert_independent(choice, \"iomedae\")\n            self.assertIn(\"seelah.closed\", self.by[sid][\"Forbids\"])\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "seelah.trickster.dead.pickpocket_effects",
+            "node": "purse",
+            "choice_index": 0,
+            "block": {
+              "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
+              "Next": "stall",
+              "Set": [],
+              "Requires": [
+                "seelah.diamond_held"
+              ],
+              "Forbids": [
+                "iomedae.closed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates",
+          "exact_assertion": "self.assert_independent(choice, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates(self):\n        for sid in (\"seelah.trickster.dead.pickpocket\", \"seelah.trickster.dead.pickpocket_effects\",\n                    \"seelah.trickster.dead.seller_word\", \"seelah.trickster.dead_no_unit.seller_word\"):\n            for node in self.by[sid][\"Nodes\"]:\n                for index, choice in enumerate(node[\"Choices\"]):\n                    with self.subTest(scene=sid, node=node[\"Id\"], index=index):\n                        self.assert_independent(choice, \"irabeth\")\n                        self.assert_independent(choice, \"iomedae\")\n            self.assertIn(\"seelah.closed\", self.by[sid][\"Forbids\"])\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "seelah.trickster.dead.pickpocket_effects",
+            "node": "purse",
+            "choice_index": 1,
+            "block": {
+              "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
+              "Next": "stall",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.diamond_held",
+                "iomedae.closed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "preserve_choice_forbids"
+    }
+  ],
+  "source_revision": "0b188fa3b3c68f286a1263622b8a91b6eb35cfe9",
+  "production_fixture_setup": "    def setUpClass(cls):\n        from tests.story_fixture import fresh_story\n        cls.story = fresh_story()\n        cls.by = {s[\"Id\"]: s for s in cls.story[\"Scenes\"]}\n",
+  "production_fixture_node_helper": "    def node(self, sid, nid):\n        return next(n for n in self.by[sid][\"Nodes\"] if n[\"Id\"] == nid)\n"
+}

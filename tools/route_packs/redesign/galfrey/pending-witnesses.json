@@ -1,0 +1,393 @@
+{
+  "schema": 1,
+  "route": "galfrey",
+  "source_job": "r5-S2",
+  "follow_up": "r5-S2-fix",
+  "activation_stage": 4,
+  "policy": "Pending witnesses are not active tests or expected failures. Stage 4 must add each witness together with its owner fix.",
+  "findings": [
+    {
+      "route": "galfrey",
+      "finding": "galfrey:D08",
+      "audit_finding": "| galfrey:D08 | `galfrey.trickster.return.kitrane` | HOW | A | SCORE | CODEX; IN: galfrey | The heard-to-e_legend answer Requires iomedae.present_now. With eulogy.legend held and Iomedae unavailable, the true, sign and none alternatives are also ineligible. Iomedae does not participate in this recollection. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_galfrey_four_return_greetings_and_legend_transitions",
+          "exact_assertion": "self.assertEqual(legend[\"Next\"], \"e_legend\")\nself.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\nself.assert_independent(legend, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_galfrey_four_return_greetings_and_legend_transitions(self):\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            sid = \"galfrey.trickster.return.kitrane\" + suffix\n            for index, choice in enumerate(self.node(sid, \"name\")[\"Choices\"][:3]):\n                with self.subTest(scene=sid, node=\"name\", index=index):\n                    self.assert_independent(choice, \"iomedae\")\n            with self.subTest(scene=sid, node=\"heard\", history=\"legend\"):\n                legend = self.node(sid, \"heard\")[\"Choices\"][1]\n                self.assertEqual(legend[\"Next\"], \"e_legend\")\n                self.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\n                self.assert_independent(legend, \"iomedae\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_solver.S2ClosureProofTests.test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed",
+          "exact_assertion": "self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed(self):\n        from tests.story_fixture import fresh_story\n        story = fresh_story()\n        model = verify.Model(story)\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            scene = model.by_id[\"galfrey.trickster.return.kitrane\" + suffix]\n            nodes = {n[\"Id\"]: n for n in scene[\"Nodes\"]}\n            state = verify.SimState(5, 1000)\n            state.flags.update({\"trickster\", \"chapter_later\", \"iomedae.closed\",\n                                \"galfrey.trickster.eulogy.legend\"})\n            verify.sim_complete(model, state)\n            self.assertIn(\"iomedae.closed\", state.flags)\n            self.assertIn(\"iomedae.present_now\", state.flags)\n            for index, choice in enumerate(nodes[\"name\"][\"Choices\"][:3]):\n                with self.subTest(scene=scene[\"Id\"], node=\"name\", index=index):\n                    self.assertTrue(verify.sim_choice_available(choice, state))\n            with self.subTest(scene=scene[\"Id\"], node=\"heard\", history=\"legend\"):\n                self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": {
+              "chapter": 5,
+              "hour": 1000,
+              "flags": [
+                "trickster",
+                "chapter_later",
+                "iomedae.closed",
+                "galfrey.trickster.eulogy.legend"
+              ],
+              "complete": "verify.sim_complete(model, state)"
+            }
+          }
+        }
+      ],
+      "owner_contract_section": "women.iomedae.surfaces"
+    },
+    {
+      "route": "galfrey",
+      "finding": "galfrey:D09",
+      "audit_finding": "| galfrey:D09 | `galfrey.trickster.return.kitrane_scarred` | HOW | A | SCORE | CODEX; IN: galfrey | The same iomedae.present_now requirement strands the legend history in the scarred return. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_galfrey_four_return_greetings_and_legend_transitions",
+          "exact_assertion": "self.assertEqual(legend[\"Next\"], \"e_legend\")\nself.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\nself.assert_independent(legend, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_galfrey_four_return_greetings_and_legend_transitions(self):\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            sid = \"galfrey.trickster.return.kitrane\" + suffix\n            for index, choice in enumerate(self.node(sid, \"name\")[\"Choices\"][:3]):\n                with self.subTest(scene=sid, node=\"name\", index=index):\n                    self.assert_independent(choice, \"iomedae\")\n            with self.subTest(scene=sid, node=\"heard\", history=\"legend\"):\n                legend = self.node(sid, \"heard\")[\"Choices\"][1]\n                self.assertEqual(legend[\"Next\"], \"e_legend\")\n                self.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\n                self.assert_independent(legend, \"iomedae\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane_scarred",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_solver.S2ClosureProofTests.test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed",
+          "exact_assertion": "self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed(self):\n        from tests.story_fixture import fresh_story\n        story = fresh_story()\n        model = verify.Model(story)\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            scene = model.by_id[\"galfrey.trickster.return.kitrane\" + suffix]\n            nodes = {n[\"Id\"]: n for n in scene[\"Nodes\"]}\n            state = verify.SimState(5, 1000)\n            state.flags.update({\"trickster\", \"chapter_later\", \"iomedae.closed\",\n                                \"galfrey.trickster.eulogy.legend\"})\n            verify.sim_complete(model, state)\n            self.assertIn(\"iomedae.closed\", state.flags)\n            self.assertIn(\"iomedae.present_now\", state.flags)\n            for index, choice in enumerate(nodes[\"name\"][\"Choices\"][:3]):\n                with self.subTest(scene=scene[\"Id\"], node=\"name\", index=index):\n                    self.assertTrue(verify.sim_choice_available(choice, state))\n            with self.subTest(scene=scene[\"Id\"], node=\"heard\", history=\"legend\"):\n                self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane_scarred",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": {
+              "chapter": 5,
+              "hour": 1000,
+              "flags": [
+                "trickster",
+                "chapter_later",
+                "iomedae.closed",
+                "galfrey.trickster.eulogy.legend"
+              ],
+              "complete": "verify.sim_complete(model, state)"
+            }
+          }
+        }
+      ],
+      "owner_contract_section": "women.iomedae.surfaces"
+    },
+    {
+      "route": "galfrey",
+      "finding": "galfrey:D10",
+      "audit_finding": "| galfrey:D10 | `galfrey.trickster.return.kitrane_stall` | HOW | A | SCORE | CODEX; IN: galfrey | The fallback repeats the legend transition's iomedae.present_now requirement, with no eligible alternative when that requirement fails. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_galfrey_four_return_greetings_and_legend_transitions",
+          "exact_assertion": "self.assertEqual(legend[\"Next\"], \"e_legend\")\nself.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\nself.assert_independent(legend, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_galfrey_four_return_greetings_and_legend_transitions(self):\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            sid = \"galfrey.trickster.return.kitrane\" + suffix\n            for index, choice in enumerate(self.node(sid, \"name\")[\"Choices\"][:3]):\n                with self.subTest(scene=sid, node=\"name\", index=index):\n                    self.assert_independent(choice, \"iomedae\")\n            with self.subTest(scene=sid, node=\"heard\", history=\"legend\"):\n                legend = self.node(sid, \"heard\")[\"Choices\"][1]\n                self.assertEqual(legend[\"Next\"], \"e_legend\")\n                self.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\n                self.assert_independent(legend, \"iomedae\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane_stall",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_solver.S2ClosureProofTests.test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed",
+          "exact_assertion": "self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed(self):\n        from tests.story_fixture import fresh_story\n        story = fresh_story()\n        model = verify.Model(story)\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            scene = model.by_id[\"galfrey.trickster.return.kitrane\" + suffix]\n            nodes = {n[\"Id\"]: n for n in scene[\"Nodes\"]}\n            state = verify.SimState(5, 1000)\n            state.flags.update({\"trickster\", \"chapter_later\", \"iomedae.closed\",\n                                \"galfrey.trickster.eulogy.legend\"})\n            verify.sim_complete(model, state)\n            self.assertIn(\"iomedae.closed\", state.flags)\n            self.assertIn(\"iomedae.present_now\", state.flags)\n            for index, choice in enumerate(nodes[\"name\"][\"Choices\"][:3]):\n                with self.subTest(scene=scene[\"Id\"], node=\"name\", index=index):\n                    self.assertTrue(verify.sim_choice_available(choice, state))\n            with self.subTest(scene=scene[\"Id\"], node=\"heard\", history=\"legend\"):\n                self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane_stall",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": {
+              "chapter": 5,
+              "hour": 1000,
+              "flags": [
+                "trickster",
+                "chapter_later",
+                "iomedae.closed",
+                "galfrey.trickster.eulogy.legend"
+              ],
+              "complete": "verify.sim_complete(model, state)"
+            }
+          }
+        }
+      ],
+      "owner_contract_section": "women.iomedae.surfaces"
+    },
+    {
+      "route": "galfrey",
+      "finding": "galfrey:D11",
+      "audit_finding": "| galfrey:D11 | `galfrey.trickster.return.kitrane_scarred_stall` | HOW | A | SCORE | CODEX; IN: galfrey | The scarred fallback repeats the legend transition's unrelated presence requirement and dead end. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_galfrey_four_return_greetings_and_legend_transitions",
+          "exact_assertion": "self.assertEqual(legend[\"Next\"], \"e_legend\")\nself.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\nself.assert_independent(legend, \"iomedae\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_galfrey_four_return_greetings_and_legend_transitions(self):\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            sid = \"galfrey.trickster.return.kitrane\" + suffix\n            for index, choice in enumerate(self.node(sid, \"name\")[\"Choices\"][:3]):\n                with self.subTest(scene=sid, node=\"name\", index=index):\n                    self.assert_independent(choice, \"iomedae\")\n            with self.subTest(scene=sid, node=\"heard\", history=\"legend\"):\n                legend = self.node(sid, \"heard\")[\"Choices\"][1]\n                self.assertEqual(legend[\"Next\"], \"e_legend\")\n                self.assertIn(\"galfrey.trickster.eulogy.legend\", legend[\"Requires\"])\n                self.assert_independent(legend, \"iomedae\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane_scarred_stall",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_solver.S2ClosureProofTests.test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed",
+          "exact_assertion": "self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed(self):\n        from tests.story_fixture import fresh_story\n        story = fresh_story()\n        model = verify.Model(story)\n        for suffix in (\"\", \"_scarred\", \"_stall\", \"_scarred_stall\"):\n            scene = model.by_id[\"galfrey.trickster.return.kitrane\" + suffix]\n            nodes = {n[\"Id\"]: n for n in scene[\"Nodes\"]}\n            state = verify.SimState(5, 1000)\n            state.flags.update({\"trickster\", \"chapter_later\", \"iomedae.closed\",\n                                \"galfrey.trickster.eulogy.legend\"})\n            verify.sim_complete(model, state)\n            self.assertIn(\"iomedae.closed\", state.flags)\n            self.assertIn(\"iomedae.present_now\", state.flags)\n            for index, choice in enumerate(nodes[\"name\"][\"Choices\"][:3]):\n                with self.subTest(scene=scene[\"Id\"], node=\"name\", index=index):\n                    self.assertTrue(verify.sim_choice_available(choice, state))\n            with self.subTest(scene=scene[\"Id\"], node=\"heard\", history=\"legend\"):\n                self.assertTrue(verify.sim_choice_available(nodes[\"heard\"][\"Choices\"][1], state))\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.return.kitrane_scarred_stall",
+            "node": "heard",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "e_legend",
+              "Set": [],
+              "Requires": [
+                "galfrey.trickster.eulogy.legend",
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": {
+              "chapter": 5,
+              "hour": 1000,
+              "flags": [
+                "trickster",
+                "chapter_later",
+                "iomedae.closed",
+                "galfrey.trickster.eulogy.legend"
+              ],
+              "complete": "verify.sim_complete(model, state)"
+            }
+          }
+        }
+      ],
+      "owner_contract_section": "women.iomedae.surfaces"
+    },
+    {
+      "route": "galfrey",
+      "finding": "galfrey:D12",
+      "audit_finding": "| galfrey:D12 | `galfrey.trickster.kitrane.elixir` | INT | A | SCORE | CODEX; IN: galfrey | This question about Galfrey's aging Requires iomedae.present_now. Her answer involves no appearance or intervention by Iomedae; the guard disconnects an ordinary personal question from its emotional context. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_galfrey_all_audited_choice_guards",
+          "exact_assertion": "self.assert_independent(choice, woman)",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_galfrey_all_audited_choice_guards(self):\n        cases = [(\"galfrey.early.kitrane\", \"guessed\", \"anevia\"),\n                 (\"galfrey.trickster.iz.offer\", \"mendev\", \"irabeth\"),\n                 (\"galfrey.trickster.iz.offer\", \"for_mendev\", \"irabeth\")]\n        for beat, nid in ((\"elixir\", \"grow\"), (\"hulrun\", \"why\"), (\"likeness\", \"why\")):\n            for suffix in (\"\", \"_stall\"):\n                sid = \"galfrey.trickster.kitrane.\" + beat + suffix\n                # The likeness answer is addressed by its target, below.\n                if beat == \"likeness\":\n                    for node in self.by[sid][\"Nodes\"]:\n                        for index, choice in enumerate(node[\"Choices\"]):\n                            if choice.get(\"Next\") == \"helps\":\n                                with self.subTest(scene=sid, node=node[\"Id\"], index=index):\n                                    self.assert_independent(choice, \"iomedae\")\n                else:\n                    cases.append((sid, nid, \"iomedae\"))\n        for sid, nid, woman in cases:\n            for index, choice in enumerate(self.node(sid, nid)[\"Choices\"]):\n                with self.subTest(scene=sid, node=nid, index=index):\n                    self.assert_independent(choice, woman)\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.kitrane.elixir",
+            "node": "grow",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"Does it frighten you?\"",
+              "Next": "frighten",
+              "Set": [],
+              "Requires": [
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.iomedae.surfaces"
+    },
+    {
+      "route": "galfrey",
+      "finding": "galfrey:D13",
+      "audit_finding": "| galfrey:D13 | `galfrey.trickster.kitrane.elixir_stall` | INT | A | SCORE | CODEX; IN: galfrey | The fallback repeats the unrelated iomedae.present_now requirement on the aging question. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_galfrey_all_audited_choice_guards",
+          "exact_assertion": "self.assert_independent(choice, woman)",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_galfrey_all_audited_choice_guards(self):\n        cases = [(\"galfrey.early.kitrane\", \"guessed\", \"anevia\"),\n                 (\"galfrey.trickster.iz.offer\", \"mendev\", \"irabeth\"),\n                 (\"galfrey.trickster.iz.offer\", \"for_mendev\", \"irabeth\")]\n        for beat, nid in ((\"elixir\", \"grow\"), (\"hulrun\", \"why\"), (\"likeness\", \"why\")):\n            for suffix in (\"\", \"_stall\"):\n                sid = \"galfrey.trickster.kitrane.\" + beat + suffix\n                # The likeness answer is addressed by its target, below.\n                if beat == \"likeness\":\n                    for node in self.by[sid][\"Nodes\"]:\n                        for index, choice in enumerate(node[\"Choices\"]):\n                            if choice.get(\"Next\") == \"helps\":\n                                with self.subTest(scene=sid, node=node[\"Id\"], index=index):\n                                    self.assert_independent(choice, \"iomedae\")\n                else:\n                    cases.append((sid, nid, \"iomedae\"))\n        for sid, nid, woman in cases:\n            for index, choice in enumerate(self.node(sid, nid)[\"Choices\"]):\n                with self.subTest(scene=sid, node=nid, index=index):\n                    self.assert_independent(choice, woman)\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "galfrey.trickster.kitrane.elixir_stall",
+            "node": "grow",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"Does it frighten you?\"",
+              "Next": "frighten",
+              "Set": [],
+              "Requires": [
+                "iomedae.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.iomedae.surfaces"
+    }
+  ],
+  "source_revision": "0b188fa3b3c68f286a1263622b8a91b6eb35cfe9",
+  "production_fixture_setup": "    def setUpClass(cls):\n        from tests.story_fixture import fresh_story\n        cls.story = fresh_story()\n        cls.by = {s[\"Id\"]: s for s in cls.story[\"Scenes\"]}\n",
+  "production_fixture_node_helper": "    def node(self, sid, nid):\n        return next(n for n in self.by[sid][\"Nodes\"] if n[\"Id\"] == nid)\n"
+}

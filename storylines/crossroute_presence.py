@@ -10,7 +10,7 @@ import copy
 
 from tools.crossroute_checks.common import Block, AND, OR, Proof, blocks, fields, roster, verify, postwar, lit
 from tools.crossroute_checks.other_woman import presence_guard, correspondence_reference, local_return_overrides, LIVING_AFTER_ROMANCE_REFUSAL, NATIVE_COMPANIONS, BODY_RETURNS, PRESENCE_LOSSES, NATIVE_AUDIENCES
-from tools.crossroute_checks.mention_context import live_mentions
+from tools.crossroute_checks.mention_context import live_mentions, j01_reference_contexts, j01_contract
 
 
 def availability(payload, woman, route, known=None, distant=False, native_audience=False):
@@ -344,6 +344,49 @@ def integrate(payload):
                 variant.setdefault("Requires", []).append(availability(payload, "irabeth", "irabeth"))
                 additions.append(variant)
             node.setdefault("Paragraphs", []).extend(additions)
+    # S2: an audited historical paragraph can carry an older explicit
+    # inference guard. Release only its named guards, at its exact reviewed
+    # address and text hash; retain its earned deed and the owner's presence.
+    import hashlib
+    by_scene = {s["Id"]: s for s in payload["Scenes"]}
+    for reviewed in j01_reference_contexts():
+        removals = reviewed.get("remove_reference_guards")
+        if not removals or reviewed["scene"] not in by_scene:
+            continue
+        scene = by_scene[reviewed["scene"]]
+        node = next((n for n in scene["Nodes"] if n["Id"] == reviewed["node"]), None)
+        if node is None or not reviewed["slot"].startswith("paragraph["):
+            continue
+        index = int(reviewed["slot"][10:-1])
+        if index >= len(node.get("Paragraphs", [])):
+            continue
+        paragraph = node["Paragraphs"][index]
+        if hashlib.sha256(paragraph["Text"].encode("utf-8")).hexdigest() != reviewed["text_sha256"]:
+            continue
+        for field, flags in removals.items():
+            paragraph[field] = [f for f in paragraph.get(field, []) if f not in flags]
+    # S2: reviewed optional participants keep their current-life check on
+    # the incoming branch. Use existing neutral continuations for later loss;
+    # append answers without changing any saved index, target or choice text.
+    for branch in j01_contract().get("participant_branches", []):
+        scene = by_scene.get(branch["scene"])
+        if scene is None:
+            continue
+        nodes = {n["Id"]: n for n in scene["Nodes"]}
+        absent = unavailability(payload, branch["woman"], branch["relationship"])
+        for nid, index in branch["incoming"]:
+            choice = nodes[nid]["Choices"][index]
+            if absent not in choice.setdefault("Forbids", []):
+                choice["Forbids"].append(absent)
+        for fallback in branch["fallbacks"]:
+            choice = copy.deepcopy(nodes[fallback["copy_node"]]["Choices"][fallback["copy_choice"]])
+            for field in ("Requires", "Forbids"):
+                choice[field] = [f for f in choice.get(field, [])
+                                 if f not in fallback.get("remove_" + field.lower(), [])]
+                choice[field] = list(dict.fromkeys(choice[field] + fallback.get(field.lower(), [])))
+            choice["Requires"] = list(dict.fromkeys(choice["Requires"] + [absent]))
+            if choice not in nodes[fallback["node"]]["Choices"]:
+                nodes[fallback["node"]]["Choices"].append(choice)
     model = verify.Model(copy.deepcopy(payload))
     names = roster(model)
     known = (model.authored | set(model.native) | model.builtin_derived

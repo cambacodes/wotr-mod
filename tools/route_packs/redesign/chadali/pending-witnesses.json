@@ -1,0 +1,1149 @@
+{
+  "schema": 1,
+  "route": "chadali",
+  "source_job": "r5-S2",
+  "follow_up": "r5-S2-fix",
+  "activation_stage": 4,
+  "policy": "Pending witnesses are not active tests or expected failures. Stage 4 must add each witness together with its owner fix.",
+  "findings": [
+    {
+      "route": "chadali",
+      "finding": "chadali:D02",
+      "audit_finding": "| chadali:D02 | `chadali.wagers.the_recipe` | INT | A | SCORE | CODEX; IN: chadali | start/2 requires eritrice.present_now. Eritrice's availability determines whether the Commander can guess Chadali's ingredient, although Eritrice neither participates nor supplies the answer. Her remembered nutmeg guess does not require her current presence. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.the_recipe",
+            "node": "start",
+            "choice_index": 2,
+            "block": {
+              "Text": "[Trickster] \"Luck. You put luck in them.\"",
+              "Next": "right",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D03",
+      "audit_finding": "| chadali:D03 | `chadali.wagers.born_lucky` | INT | A | SCORE | CODEX; IN: chadali | start/1 requires eritrice.present_now solely because Chadali subsequently recalls Eritrice calculating the odds. A historical calculation becomes an unrelated present-day availability gate. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.born_lucky",
+            "node": "start",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"What were the odds?\"",
+              "Next": "odds",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D04",
+      "audit_finding": "| chadali:D04 | `chadali.wagers.a_lucky_charm` | INT | A | SCORE | CODEX; IN: chadali | start/0 and start/2 both require eritrice.present_now. The Commander cannot object to Chadali's nickname or ask whose charm they are when Eritrice is unavailable. Neither exchange involves her participation. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.a_lucky_charm",
+            "node": "start",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"I'm not a charm. I'm a person. I bleed, and I choose.\"",
+              "Next": "person",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.a_lucky_charm",
+            "node": "start",
+            "choice_index": 2,
+            "block": {
+              "Text": "[Flirt] \"Whose charm, exactly?\"",
+              "Next": "whose",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D05",
+      "audit_finding": "| chadali:D05 | `chadali.wagers.knucklebones` | INT | A | SCORE | CODEX; IN: chadali | start/0, start/1, honest/0 and open_cheat/0 require eritrice.present_now. Chadali's private game thus loses its honest and openly cheating branches because an absent spectator is recalled in the common closing node. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.knucklebones",
+            "node": "start",
+            "choice_index": 0,
+            "block": {
+              "Text": "[Throw them honestly.]",
+              "Next": "honest",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.knucklebones",
+            "node": "start",
+            "choice_index": 1,
+            "block": {
+              "Text": "[Trickster] [Load the throw. Openly, grinning, so she sees.]",
+              "Next": "open_cheat",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.knucklebones",
+            "node": "honest",
+            "choice_index": 0,
+            "block": {
+              "Text": "Continue",
+              "Next": "fair",
+              "Set": [
+                "chadali.wagers.lost_fairly"
+              ],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.wagers.knucklebones",
+            "node": "open_cheat",
+            "choice_index": 0,
+            "block": {
+              "Text": "Continue",
+              "Next": "fair",
+              "Set": [
+                "chadali.wagers.cheated_openly"
+              ],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D06",
+      "audit_finding": "| chadali:D06 | `chadali.fortunes.a_great_big_fair` | INT | A | SCORE | CODEX; IN: chadali | souls/0 requires eritrice.present_now, although the answer and its continuation concern Chadali's own fair and contain no participation by Eritrice. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.a_great_big_fair",
+            "node": "souls",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"Because you'd want to know. If it were your fair and your crack.\"",
+              "Next": "know",
+              "Set": [
+                "chadali.fortunes.saw_the_fair_plainly"
+              ],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D07",
+      "audit_finding": "| chadali:D07 | `chadali.fortunes.burnt_edges` | INT | A | SCORE | CODEX; IN: chadali | The entire morning scene requires eritrice.present_now, with duplicate requirements on open/0, open/1, secret/0, start/0, eat/0, eat/1, more/0 and bed/0. Eritrice does not appear in this intimate aftermath. Her availability arbitrarily controls Chadali's breakfast and the subsequent courtship chain. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "open",
+            "choice_index": 0,
+            "block": {
+              "Text": "Continue",
+              "Next": "secret",
+              "Set": [],
+              "Requires": [
+                "chadali.wagers.guessed_the_spice",
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "open",
+            "choice_index": 1,
+            "block": {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [
+                "chadali.wagers.guessed_the_spice"
+              ],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "secret",
+            "choice_index": 0,
+            "block": {
+              "Text": "[Take one. Eat it.]",
+              "Next": "eat",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "start",
+            "choice_index": 0,
+            "block": {
+              "Text": "[Take one. Eat it.]",
+              "Next": "eat",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "eat",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"They're awful. Make more.\"",
+              "Next": "more",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "eat",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"Come back to bed. The oven can wait.\"",
+              "Next": "bed",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "more",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"It wasn't luck.\"",
+              "Next": "not_luck",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": "bed",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"Was it lucky, last night?\"",
+              "Next": "not_luck",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_audited_entry_guards",
+          "exact_assertion": "self.assert_independent(self.by[twin], woman)",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_audited_entry_guards(self):\n        cases = {\n            \"eritrice.trickster.fought.tabled\": \"nocticula\",\n            \"galfrey.trickster.iz.offer\": \"seelah\",\n            \"galfrey.trickster.kitrane.hulrun\": \"iomedae\",\n            \"galfrey.trickster.kitrane.irabeth\": \"irabeth\",\n            \"galfrey.trickster.kitrane.iz\": \"terendelev\",\n            \"galfrey.trickster.commit.oath\": \"iomedae\",\n            \"galfrey.trickster.alive.oath\": \"iomedae\",\n            \"mielarah.trickster.tavern.captains\": \"nocticula\",\n            \"nenio.trickster.commit.result\": \"galfrey\",\n            \"nenio.folio.architect\": \"areelu\",\n            \"nenio.folio.abyss.lamp\": \"nocticula\",\n            \"kaylessa.clearing.where_i_was_meant_to_die\": \"camellia\",\n            \"seelah.trickster.dead.pickpocket\": \"irabeth\",\n            \"seelah.trickster.dead.pickpocket_effects\": \"irabeth\",\n            \"seelah.trickster.dead.seller_word\": \"irabeth\",\n            \"seelah.trickster.dead_no_unit.seller_word\": \"irabeth\",\n            \"kiana.trickster.after.temple\": \"seelah\",\n            \"chadali.fortunes.burnt_edges\": \"eritrice\",\n            \"chadali.hours.our_new_friend\": \"eritrice\",\n        }\n        for sid, woman in cases.items():\n            for twin in (sid, sid + \"_stall\", sid + \"_visitor\", sid + \"_arcade\"):\n                if twin not in self.by:\n                    continue\n                with self.subTest(scene=twin, woman=woman):\n                    self.assert_independent(self.by[twin], woman)\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.fortunes.burnt_edges",
+            "node": null,
+            "choice_index": null,
+            "block": {
+              "Id": "chadali.fortunes.burnt_edges",
+              "Title": "Burnt edges",
+              "Owner": "Chadali",
+              "MinChapter": 3,
+              "MaxChapter": 5,
+              "Entry": "\"Is something burning?\"",
+              "Nodes": [
+                {
+                  "Id": "open",
+                  "Speaker": "Narrator",
+                  "Text": "{n}There is an oven in the hall now. You are fairly sure there was not an oven in the hall yesterday. Chadali is kneeling in front of it in the yellow robe, with her hair in a wild knot and a tray in her mitted hands, and the tray is smoking.{/n}",
+                  "Choices": [
+                    {
+                      "Text": "Continue",
+                      "Next": "secret",
+                      "Set": [],
+                      "Requires": [
+                        "chadali.wagers.guessed_the_spice",
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    },
+                    {
+                      "Text": "Continue",
+                      "Next": "start",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [
+                        "chadali.wagers.guessed_the_spice"
+                      ],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "secret",
+                  "Speaker": "Chadali",
+                  "Text": "\"Don't look!\" {n}She tries to hide the tray behind her back and burns her wrist on it.{/n} \"You know about these. You're the only one who knows about these.\"\n\"I was going to eat them all myself, alone, the way I always do.\" {n}She looks at the black cookies, and at you, and her mouth twitches.{/n} \"And then I thought, I'm not alone. That's the whole point. That's what last night was.\"",
+                  "Choices": [
+                    {
+                      "Text": "[Take one. Eat it.]",
+                      "Next": "eat",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "start",
+                  "Speaker": "Chadali",
+                  "Text": "\"Don't look!\" {n}She tries to hide the tray behind her back and burns her wrist on it.{/n} \"They're not for you. They're burnt. I burn them sometimes. Nobody knows. I eat them myself, alone, the way I always do.\"\n{n}She looks at the black cookies, and at you, and her mouth twitches.{/n} \"And now you know. Oh, what a morning.\"",
+                  "Choices": [
+                    {
+                      "Text": "[Take one. Eat it.]",
+                      "Next": "eat",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "eat",
+                  "Speaker": "Chadali",
+                  "Text": "{n}It is truly terrible. It crunches like a cinder and tastes, faintly, underneath the char, of honey and of something that is not like anything at all.{/n}\n{n}Chadali watches you chew with her hands pressed to her mouth. When you swallow, she laughs, loudly, and takes one herself.{/n}\n\"Burnt. Very unlucky for you. You're eating another one anyway.\" {n}She bites hers in half and points at you with the rest.{/n} \"And you're not leaving yet. Last night was the best luck I've had since I was born, and I was born under three skies at once, so sit down and let me look at you.\"",
+                  "Choices": [
+                    {
+                      "Text": "\"They're awful. Make more.\"",
+                      "Next": "more",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    },
+                    {
+                      "Text": "\"Come back to bed. The oven can wait.\"",
+                      "Next": "bed",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "more",
+                  "Speaker": "Chadali",
+                  "Text": "\"I will! I'll make a hundred. I'll burn all of them, and you'll eat all of them, and that's how I'll know.\" {n}She is still laughing and crying.{/n}\n{n}Then, suddenly shy, she tucks her hair behind her ear.{/n} \"Was it... last night. Was it lucky?\"",
+                  "Choices": [
+                    {
+                      "Text": "\"It wasn't luck.\"",
+                      "Next": "not_luck",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "bed",
+                  "Speaker": "Chadali",
+                  "Text": "\"The oven cannot wait. The oven is on fire.\" {n}It is, a little. She throws a cushion at it, which does not help, and then a bucket of water she seems to have had ready, which does.{/n}\n{n}In the steam she turns round, soot on her nose, and says, very seriously:{/n} \"Now the oven can wait.\"",
+                  "Choices": [
+                    {
+                      "Text": "\"Was it lucky, last night?\"",
+                      "Next": "not_luck",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "not_luck",
+                  "Speaker": "Chadali",
+                  "Text": "{n}She pushes the smoking tray out of reach and catches your wrist.{/n} \"I wanted to stay beside you. Instead I got up to make breakfast, and look what happened.\"\n{n}She pulls you down for a kiss, soot and all.{/n} \"Tomorrow you wake me before you go. I want a proper goodbye. Then come back before supper.\"",
+                  "Choices": [
+                    {
+                      "Text": "[Kiss the soot off her nose.]",
+                      "Next": "equipment_check",
+                      "Set": [],
+                      "Requires": [],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "equipment_check",
+                  "Speaker": "Narrator",
+                  "Text": "{n}Chadali straightens her robe as footsteps pass the outer door.{/n}",
+                  "Choices": [
+                    {
+                      "Text": "Continue",
+                      "Next": "equipment_return",
+                      "Set": [],
+                      "Requires": [
+                        "chadali.sessions.cache_allocated"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    },
+                    {
+                      "Text": "[Kiss her again.]",
+                      "Next": null,
+                      "Set": [],
+                      "Requires": [],
+                      "Forbids": [
+                        "chadali.sessions.cache_allocated"
+                      ],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "equipment_return",
+                  "Speaker": "Chadali",
+                  "Text": "{n}A knock follows. The provisioner wants his oven and tray for the ration issue. Chadali opens the door herself, yellow robe hastily knotted, and hands him the cleaned tray.{/n} \"All of it is here. The oven too. Mind the hot side!\" {n}She waits until he has wheeled it away, then comes back to you.{/n} \"There goes my windfall. Next time I bake a smaller batch. You can come and help me eat it.\"",
+                  "Choices": [
+                    {
+                      "Text": "[Kiss the soot off her nose.]",
+                      "Next": null,
+                      "Set": [],
+                      "Requires": [],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                }
+              ],
+              "Requires": [
+                "trickster.ever",
+                "chadali.fortunes.honey",
+                "eritrice.present_now",
+                "chadali.present_now"
+              ],
+              "Forbids": [
+                "chadali.closed",
+                "chadali.lost_at_council",
+                "chadali.fortunes.burnt_edges"
+              ],
+              "DelayHours": 6,
+              "Optional": true,
+              "Relationship": "chadali",
+              "Chapters": [
+                3,
+                5
+              ],
+              "AnswerLists": [
+                "e649f211c6b002a49a0c633061877927"
+              ]
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D08",
+      "audit_finding": "| chadali:D08 | `chadali.sessions.what_you_said` | INT | A | SCORE | CODEX; IN: chadali | question/1 requires eritrice.present_now. The Commander's honest response to an insult reported by Alichino or Cobblehoof depends on a third woman's availability. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.sessions.what_you_said",
+            "node": "question",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"I meant it. Then. I didn't know you.\"",
+              "Next": "meant",
+              "Set": [
+                "chadali.sessions.meant_it"
+              ],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D09",
+      "audit_finding": "| chadali:D09 | `chadali.hours.our_new_friend` | INT | A | SCORE | CODEX; IN: chadali | The scene and start/0, start/1, fast/0, why/0, why/1 and votes/0 require eritrice.present_now, although Chadali is remembering the first Council meeting. Current presence is incorrectly substituted for historical participation. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": "start",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"Why did you defend me? You'd never met me.\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": "start",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"You decided that fast?\"",
+              "Next": "fast",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": "fast",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"And that made me lucky?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": "why",
+            "choice_index": 0,
+            "block": {
+              "Text": "\"You did help. You still do.\"",
+              "Next": "helped",
+              "Set": [
+                "chadali.hours.first_sight"
+              ],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": "why",
+            "choice_index": 1,
+            "block": {
+              "Text": "\"You couldn't even give me votes, in the second session.\"",
+              "Next": "votes",
+              "Set": [],
+              "Requires": [
+                "chadali.aid_regretted",
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": "votes",
+            "choice_index": 0,
+            "block": {
+              "Text": "Continue",
+              "Next": "helped",
+              "Set": [
+                "chadali.hours.first_sight"
+              ],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        },
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_audited_entry_guards",
+          "exact_assertion": "self.assert_independent(self.by[twin], woman)",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_audited_entry_guards(self):\n        cases = {\n            \"eritrice.trickster.fought.tabled\": \"nocticula\",\n            \"galfrey.trickster.iz.offer\": \"seelah\",\n            \"galfrey.trickster.kitrane.hulrun\": \"iomedae\",\n            \"galfrey.trickster.kitrane.irabeth\": \"irabeth\",\n            \"galfrey.trickster.kitrane.iz\": \"terendelev\",\n            \"galfrey.trickster.commit.oath\": \"iomedae\",\n            \"galfrey.trickster.alive.oath\": \"iomedae\",\n            \"mielarah.trickster.tavern.captains\": \"nocticula\",\n            \"nenio.trickster.commit.result\": \"galfrey\",\n            \"nenio.folio.architect\": \"areelu\",\n            \"nenio.folio.abyss.lamp\": \"nocticula\",\n            \"kaylessa.clearing.where_i_was_meant_to_die\": \"camellia\",\n            \"seelah.trickster.dead.pickpocket\": \"irabeth\",\n            \"seelah.trickster.dead.pickpocket_effects\": \"irabeth\",\n            \"seelah.trickster.dead.seller_word\": \"irabeth\",\n            \"seelah.trickster.dead_no_unit.seller_word\": \"irabeth\",\n            \"kiana.trickster.after.temple\": \"seelah\",\n            \"chadali.fortunes.burnt_edges\": \"eritrice\",\n            \"chadali.hours.our_new_friend\": \"eritrice\",\n        }\n        for sid, woman in cases.items():\n            for twin in (sid, sid + \"_stall\", sid + \"_visitor\", sid + \"_arcade\"):\n                if twin not in self.by:\n                    continue\n                with self.subTest(scene=twin, woman=woman):\n                    self.assert_independent(self.by[twin], woman)\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.our_new_friend",
+            "node": null,
+            "choice_index": null,
+            "block": {
+              "Id": "chadali.hours.our_new_friend",
+              "Title": "Our new friend",
+              "Owner": "Chadali",
+              "MinChapter": 3,
+              "MaxChapter": 5,
+              "Entry": "\"Do you remember the first session?\"",
+              "Nodes": [
+                {
+                  "Id": "start",
+                  "Speaker": "Chadali",
+                  "Text": "\"Of course I do! I remember everything that makes me happy, and it made me very happy.\" {n}She settles in, like someone about to tell a favourite story.{/n}\n\"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. I remember Eritrice asking you questions. Shyka laughed at something nobody else could see. Cobblehoof said 'Phrr'.\"\n\"And I looked at you and said, just look how cute they are! They'll be our lucky charm!\" {n}Her eyes gleam.{/n} \"And everyone laughed. And I was right.\"",
+                  "Choices": [
+                    {
+                      "Text": "\"Why did you defend me? You'd never met me.\"",
+                      "Next": "why",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    },
+                    {
+                      "Text": "\"You decided that fast?\"",
+                      "Next": "fast",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "fast",
+                  "Speaker": "Chadali",
+                  "Text": "\"Faster!\" {n}She claps.{/n} \"I decided before you'd sat down. You came through the door and stood there looking at all of us, a demon lord and a devil and a hippogriff and the Eldest and two empyreal lords, and you weren't frightened at all. You were counting the exits.\"\n{n}She laughs.{/n} \"Everybody who's frightened of us counts the exits. You were counting them the way a general does. To see which one we'd come in by.\"",
+                  "Choices": [
+                    {
+                      "Text": "\"And that made me lucky?\"",
+                      "Next": "why",
+                      "Set": [],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "why",
+                  "Speaker": "Chadali",
+                  "Text": "{n}She is quiet for a moment, turning her bracelet.{/n}\n\"You looked like someone who'd been unlucky for a very long time and had decided to do something about it.\" {n}Softly.{/n}\n\"I know that look. I see it on the faces of the people who pray to me the hardest. The ones who don't expect anything, and pray anyway.\" {n}She looks up.{/n} \"I've never been able to help most of them. I thought, maybe this one I can. So I called you our lucky charm. It's the best thing I know how to call anyone.\"",
+                  "Choices": [
+                    {
+                      "Text": "\"You did help. You still do.\"",
+                      "Next": "helped",
+                      "Set": [
+                        "chadali.hours.first_sight"
+                      ],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    },
+                    {
+                      "Text": "\"You couldn't even give me votes, in the second session.\"",
+                      "Next": "votes",
+                      "Set": [],
+                      "Requires": [
+                        "chadali.aid_regretted",
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "votes",
+                  "Speaker": "Chadali",
+                  "Text": "\"I know!\" {n}She covers her face.{/n} \"You asked for material aid and I said I'd be happy to help even without the votes, and I was sorry I couldn't. I was so sorry. I sent you good wishes instead.\" {n}Through her fingers:{/n} \"That's a terrible thing to send an army.\"\n{n}She lowers her hands.{/n} \"But I meant them. Every one. That's all I had that day. Now I have cookies, and you.\" {n}She beams.{/n} \"I'm much better equipped.\"",
+                  "Choices": [
+                    {
+                      "Text": "Continue",
+                      "Next": "helped",
+                      "Set": [
+                        "chadali.hours.first_sight"
+                      ],
+                      "Requires": [
+                        "eritrice.present_now"
+                      ],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                },
+                {
+                  "Id": "helped",
+                  "Speaker": "Chadali",
+                  "Text": "\"Good.\" {n}She says it very firmly, as if settling an old account.{/n} \"Then I was right, and everybody who laughed at me in the first session was wrong, and I'm going to remind them at the next one.\"\n\"I'll put the little squiggle on my own copy. They'll hate that.\"",
+                  "Choices": [
+                    {
+                      "Text": "[Leave her pleased with herself.]",
+                      "Next": null,
+                      "Set": [],
+                      "Requires": [],
+                      "Forbids": [],
+                      "Abort": false
+                    }
+                  ],
+                  "Portrait": "Chadali"
+                }
+              ],
+              "Requires": [
+                "trickster.ever",
+                "chadali.wagers.a_lucky_charm",
+                "eritrice.present_now",
+                "chadali.present_now"
+              ],
+              "Forbids": [
+                "chadali.closed",
+                "chadali.lost_at_council",
+                "chadali.hours.our_new_friend"
+              ],
+              "DelayHours": 24,
+              "Optional": true,
+              "Relationship": "chadali",
+              "Chapters": [
+                3,
+                5
+              ],
+              "AnswerLists": [
+                "e649f211c6b002a49a0c633061877927"
+              ]
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    },
+    {
+      "route": "chadali",
+      "finding": "chadali:D10",
+      "audit_finding": "| chadali:D10 | `chadali.hours.the_seat_beside_her` | INT | A | SCORE | CODEX; IN: chadali | start/1 requires eritrice.present_now, but the continuation discusses what the other Council members might think when they return. Eritrice's availability has no causal role in asking this question. |",
+      "status": "blocked",
+      "why_blocked": "tools/departure_contracts.json reinstalls the audited foreign presence/closure guard after S2 inference; the owner contract is outside the r5-S2-fix edit allow-list.",
+      "owner_files_needed": [
+        "tools/departure_contracts.json"
+      ],
+      "integration_files": [
+        "storylines/engine_eng3_ab.py"
+      ],
+      "stage_4": "Repair the named contract entry with the route fix, then restore every witness below to its original test module. Keep all earned gates and live participant checks.",
+      "witnesses": [
+        {
+          "test_name": "tests.test_crossroute_presence.S2ProductionWitnessTests.test_s2_chadali_all_audited_choices",
+          "exact_assertion": "self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")",
+          "assertion_helper": "    def assert_independent(self, block, woman):\n        route = {\"nocticula\": \"noct\"}.get(woman, woman)\n        forbidden = {woman + \".present_now\", \"crossroute.\" + woman + \".unavailable\",\n                     \"crossroute.\" + woman + \".available\", route + \".closed\"}\n        self.assertFalse(forbidden.intersection(block.get(\"Requires\", []) + block.get(\"Forbids\", [])))\n",
+          "original_test_source": "    def test_s2_chadali_all_audited_choices(self):\n        cases = {\n            \"wagers.the_recipe\": {\"start\": [2]},\n            \"wagers.born_lucky\": {\"start\": [1]},\n            \"wagers.a_lucky_charm\": {\"start\": [0, 2]},\n            \"wagers.knucklebones\": {\"start\": [0, 1], \"honest\": [0], \"open_cheat\": [0]},\n            \"fortunes.a_great_big_fair\": {\"souls\": [0]},\n            \"fortunes.burnt_edges\": {\"open\": [0, 1], \"secret\": [0], \"start\": [0],\n                                     \"eat\": [0, 1], \"more\": [0], \"bed\": [0]},\n            \"sessions.what_you_said\": {\"question\": [1]},\n            \"hours.our_new_friend\": {\"start\": [0, 1], \"fast\": [0], \"why\": [0, 1], \"votes\": [0]},\n            \"hours.the_seat_beside_her\": {\"start\": [1]},\n        }\n        for beat, nodes in cases.items():\n            for nid, indices in nodes.items():\n                for index in indices:\n                    with self.subTest(scene=beat, node=nid, index=index):\n                        self.assert_independent(self.node(\"chadali.\" + beat, nid)[\"Choices\"][index], \"eritrice\")\n",
+          "fixture": {
+            "builder": "tests.story_fixture.fresh_story()",
+            "scene": "chadali.hours.the_seat_beside_her",
+            "node": "start",
+            "choice_index": 1,
+            "block": {
+              "Text": "[Take the seat and her hand.] \"Should we be more careful?\"",
+              "Next": "careful",
+              "Set": [],
+              "Requires": [
+                "eritrice.present_now"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            "state": null
+          }
+        }
+      ],
+      "owner_contract_section": "women.eritrice.surfaces"
+    }
+  ],
+  "source_revision": "0b188fa3b3c68f286a1263622b8a91b6eb35cfe9",
+  "production_fixture_setup": "    def setUpClass(cls):\n        from tests.story_fixture import fresh_story\n        cls.story = fresh_story()\n        cls.by = {s[\"Id\"]: s for s in cls.story[\"Scenes\"]}\n",
+  "production_fixture_node_helper": "    def node(self, sid, nid):\n        return next(n for n in self.by[sid][\"Nodes\"] if n[\"Id\"] == nid)\n"
+}

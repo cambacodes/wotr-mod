@@ -338,7 +338,10 @@ internal static class NenioTricksterTests
         foreach (var receipt in new[] { "the_dead", "agreed", "footnote" })
         {
             var flag = F + "architect." + receipt;
-            var paragraph = S(P + ending).Nodes[0].Paragraphs.Single(p => p.Requires.Contains(flag));
+            // endings_job4 places late lifetime history after the encounter.
+            var historyNode = S(P + ending).Nodes.Single(n => n.Id ==
+                (ending == "epilogue.commit" ? "morning_after" : "page"));
+            var paragraph = historyNode.Paragraphs.Single(p => p.Requires.Contains(flag));
             var deps = Dependencies(paragraph.Requires.Concat(paragraph.Forbids).Concat(paragraph.AnyGroups.SelectMany(g => g)));
             check(!deps.Any(f => f.StartsWith("areelu.", StringComparison.Ordinal)
                                 || f.StartsWith("crossroute.areelu.", StringComparison.Ordinal)),
