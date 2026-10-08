@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "description": "Conservative mod-authored entity registry; only explicit source introductions are seeded. Unregistered candidates remain findings.",
+  "entities": [
+    {
+      "name": "Meret",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Harbor broker employed by Nocticula",
+      "introducing_text": "She chooses a broker named Meret",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Dessa",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Enslaved harbor servant who copies passenger transfers",
+      "introducing_text": "The servant is named Dessa.",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Ilvara",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Collector negotiating ownership of passengers",
+      "introducing_text": "wrote to someone named Ilvara",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Teren",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Pilot testing unstable return passages",
+      "introducing_text": "I had a pilot named Teren examine the return arrangements.",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Rhez",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Nocticula's agent counting and recovering passage travelers",
+      "introducing_text": "a sharp-faced woman called Rhez",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Breva",
+      "source": "storylines/seelah_late_campaign.py",
+      "role": "Courier recruited for Seelah's preparations",
+      "introducing_text": "a broad woman named Breva",
+      "authored": true,
+      "introducing_route": "seelah"
+    },
+    {
+      "name": "Salven",
+      "source": "storylines/nocticula_trickster_concession.py",
+      "role": "Itinerant broker selling letter passage",
+      "introducing_text": "An itinerant broker named Salven",
+      "authored": true,
+      "introducing_route": "nocticula.acquisition"
+    },
+    {
+      "name": "Orrel Vask",
+      "source": "storylines/vellexia_trickster.py",
+      "role": "Cambion factor carrying wine and gossip",
+      "introducing_text": "a cambion factor named Orrel Vask",
+      "authored": true,
+      "introducing_route": "vellexia",
+      "aliases": [
+        "Vask"
+      ]
+    },
+    {
+      "name": "Oswin",
+      "source": "storylines/devarra_tower.py",
+      "role": "Clerk accompanying the tower climb",
+      "introducing_text": "The clerk is a thin young man named Oswin",
+      "authored": true,
+      "introducing_route": "devarra"
+    },
+    {
+      "name": "Varn",
+      "source": "storylines/soana_later_progression.py",
+      "role": "Second hunter brought to meet Soana",
+      "introducing_text": "a broad-shouldered man called Varn",
+      "authored": true,
+      "introducing_route": "soana"
+    },
+    {
+      "name": "Sella",
+      "source": "storylines/aranka_continuation.py",
+      "role": "Woman who taught Aranka a wagon song",
+      "introducing_text": "A woman named Sella taught me the first bit.",
+      "authored": true,
+      "introducing_route": "aranka"
+    },
+    {
+      "name": "Edris",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Former lodge attendant providing a lower-gallery sketch",
+      "introducing_text": "A woman named Edris delivered it with a sketch",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Tomar",
+      "source": "storylines/nocticula_continuation.py",
+      "role": "Sailor trapped in the unstable harbor",
+      "introducing_text": "a young sailor called Tomar",
+      "authored": true,
+      "introducing_route": "nocticula"
+    },
+    {
+      "name": "Pella",
+      "source": "storylines/aivu_campaign.py",
+      "role": "Owner of a garden cart",
+      "introducing_text": "Its owner is called Pella.",
+      "authored": true,
+      "introducing_route": "aivu"
+    },
+    {
+      "name": "Dask",
+      "source": "storylines/mielarah_trickster.py",
+      "role": "One-horned ship quartermaster",
+      "introducing_text": "the quartermaster, a one-horned man called Dask",
+      "authored": true,
+      "introducing_route": "mielarah"
+    },
+    {
+      "name": "Reth Carrow",
+      "source": "storylines/nurah_continuation.py",
+      "role": "Editor representing the collector locally",
+      "introducing_text": "an editor named Reth Carrow",
+      "authored": true,
+      "introducing_route": "nurah",
+      "aliases": [
+        "Carrow"
+      ]
+    },
+    {
+      "name": "Sava Lorn",
+      "source": "storylines/nurah_continuation.py",
+      "role": "Compositor carrying the appointment sheet",
+      "introducing_text": "a compositor named Sava Lorn",
+      "authored": true,
+      "introducing_route": "nurah",
+      "aliases": [
+        "Sava"
+      ]
+    },
+    {
+      "name": "Edran",
+      "source": "storylines/nurah_continuation.py",
+      "role": "Collector's secretary moving papers away from Nurah",
+      "introducing_text": "Her secretary, a narrow man called Edran",
+      "authored": true,
+      "introducing_route": "nurah"
+    },
+    {
+      "name": "Bressa",
+      "source": "storylines/nurah_continuation.py",
+      "role": "Woman whose account appears in the disputed edition",
+      "introducing_text": "an account of a woman named Bressa",
+      "authored": true,
+      "introducing_route": "nurah"
+    },
+    {
+      "name": "Veyr",
+      "source": "storylines/minagho_chivarro_continuation.py",
+      "role": "Former arranger of introductions for Chivarro",
+      "introducing_text": "There is someone called Veyr",
+      "authored": true,
+      "introducing_route": "minagho_chivarro"
+    },
+    {
+      "name": "Orven",
+      "source": "storylines/minagho_chivarro_continuation.py",
+      "role": "Factor bringing a sample invitation",
+      "introducing_text": "a factor named Orven",
+      "authored": true,
+      "introducing_route": "minagho_chivarro"
+    },
+    {
+      "name": "Sivane",
+      "source": "storylines/minagho_chivarro_continuation.py",
+      "role": "Succubus performer previously booked by Chivarro",
+      "introducing_text": "Someone called Sivane.",
+      "authored": true,
+      "introducing_route": "minagho_chivarro"
+    },
+    {
+      "name": "Bel",
+      "source": "storylines/konomi_ordinary_expansion.py",
+      "introducing_route": "konomi",
+      "role": "Porter hired by Varine to move barrels; incidental loading-yard laborer",
+      "introducing_text": "Varine has paid a porter named Bel",
+      "authored": true
+    },
+    {
+      "name": "Pim",
+      "source": "storylines/jannah_circle.py",
+      "introducing_route": "jannah",
+      "role": "Housebreaker conscript remembered by Jannah; incidental fellow fighter",
+      "introducing_text": "a housebreaker from Nerosyan called Pim",
+      "authored": true
+    },
+    {
+      "name": "Oris",
+      "source": "storylines/chadali_sessions.py",
+      "introducing_route": "chadali",
+      "role": "Incidental crusader spearman named once on the company roll; no unique canon office",
+      "introducing_text": "ch(\"felt\", '{n}You open the company roll between you. Sergeant Venn, spearman Oris, scout Desrani: you read each name aloud, all the way to the last. Chadali repeats the names she catches herself stumbling over. Then she holds your hand beside the signed order.{/n}\\n\"Now you know whom you\\'re sending. So do I. Bring this back afterwards. I want to know who returned.\"',",
+      "authored": true
+    },
+    {
+      "name": "Neris",
+      "source": "storylines/aranka_continuation.py",
+      "introducing_route": "aranka",
+      "role": "bereaved listener and Deren's sister",
+      "introducing_text": "\"This is Neris. She heard a verse I was trying.\"",
+      "authored": true
+    },
+    {
+      "name": "Deren",
+      "source": "storylines/aranka_continuation.py",
+      "introducing_route": "aranka",
+      "role": "Neris's missing brother",
+      "introducing_text": "\"His name was Deren. He was my brother. He left us before the fighting began. I waited at the gate because he told me to. I waited until I could see the smoke coming down the street. I don't know where he went. Don't give him a brave death because it's easier to sing.\"",
+      "authored": true
+    },
+    {
+      "name": "Vessa",
+      "source": "storylines/ember_campaign.py",
+      "introducing_route": "ember",
+      "role": "woman preparing sleeping rooms",
+      "introducing_text": "n(\"room\", \"Narrator\", '''{n}The room stands behind a storehouse. An adult woman named Vessa is sweeping it while a man lifts broken boards through the doorway. She has kept two sound sleeping platforms and a table that needs a wedge beneath one leg.{/n}",
+      "authored": true
+    },
+    {
+      "name": "Mera",
+      "source": "storylines/seelah_aftermath.py",
+      "introducing_route": "seelah",
+      "role": "gray-haired Drezen carpenter",
+      "introducing_text": "\"Mera is teaching me. She's the carpenter. Orsa does the washing. They've both said you can come, provided you don't mind being told where to stand.\"''',",
+      "authored": true
+    },
+    {
+      "name": "Hessa",
+      "source": "storylines/jerribeth_progression.py",
+      "introducing_route": "jerribeth",
+      "role": "dwarf construction inspector",
+      "introducing_text": "\"Hessa. She says she has been paid to examine the construction, and would like me to stop improving it until she has finished.\"''', c('\"Let her begin.\"', \"underneath\")),",
+      "authored": true
+    },
+    {
+      "name": "Venn",
+      "source": "storylines/chadali_sessions.py",
+      "introducing_route": "chadali",
+      "role": "company sergeant",
+      "introducing_text": "ch(\"felt\", '{n}You open the company roll between you. Sergeant Venn, spearman Oris, scout Desrani: you read each name aloud, all the way to the last. Chadali repeats the names she catches herself stumbling over. Then she holds your hand beside the signed order.{/n}\\n\"Now you know whom you\\'re sending. So do I. Bring this back afterwards. I want to know who returned.\"',",
+      "authored": true
+    },
+    {
+      "name": "Tessa",
+      "source": "storylines/tirabade_reckoning.py",
+      "introducing_route": "tirabade",
+      "role": "bowling lane proprietor",
+      "introducing_text": "\"Tessa knows a fiddler. The daughter of one of her regular players. Her name is Veska. She will play a few dances in exchange for supper.\"",
+      "authored": true
+    },
+    {
+      "name": "Mervika",
+      "source": "storylines/soana_round2.py",
+      "introducing_route": "soana",
+      "role": "hunter bringing Varn",
+      "introducing_text": "{n}Her hands close on the stick. Outside, Mervika cuts another spoiled length of cord.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B2"
+    },
+    {
+      "name": "Merovan",
+      "source": "storylines/targona_trickster.py",
+      "introducing_route": "targona",
+      "role": "crusader sergeant",
+      "introducing_text": "\"I have been writing to you from the wayhouse on the eastern road, about doors and cups and a sergeant called Merovan. Then the chaplain wrote that you kept the rows supplied and worked beside him all night, and the chaplain's letter found me at the wayhouse. I walked in to see whether it was the same hand that writes to me.\"''',",
+      "authored": true,
+      "finding": "canon-fix1 B2"
+    },
+    {
+      "name": "Edrava",
+      "source": "storylines/kiana_consequences.py",
+      "introducing_route": "kiana",
+      "role": "neighbor beside Lenna's workshop",
+      "introducing_text": "n(\"recognition\", \"Narrator\", '''{n}A woman carrying a covered basket recognizes Kiana and stops. Kiana introduces her as Edrava, who lives beside Lenna's workshop. Edrava gives you a startled nod and nearly dislodges the cloth covering her basket.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B3"
+    },
+    {
+      "name": "Edritha",
+      "source": "storylines/arsinoe_campaign.py",
+      "introducing_route": "arsinoe",
+      "role": "tenant responsible for drain receipts",
+      "introducing_text": "{n}Arsinoe takes you to the cooper's empty workroom. Orvena has brought her estimate. The cooper, Senn, stands behind a stool as though it might protect him from the figure written on the page. Beside the open door waits Edritha, who rents the rooms on the passage's other side.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B3"
+    },
+    {
+      "name": "Dervan",
+      "source": "storylines/ember_campaign.py",
+      "introducing_route": "ember",
+      "role": "former thief repairing sleeping rooms",
+      "introducing_text": "{n}The man with the boards introduces himself as Dervan. He has a flattened nose, broad hands, and the habit of looking toward the door whenever someone speaks sharply outside.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B5"
+    },
+    {
+      "name": "Selvra",
+      "source": "storylines/gesmerha_late_campaign.py",
+      "introducing_route": "gesmerha",
+      "role": "Halvek's sister and pattern claimant",
+      "introducing_text": "n(\"claim\", \"Gesmerha\", '''\"Selvra. Halvek's sister. She has a sharper tongue and better reasons for using it than he would prefer.\"",
+      "authored": true,
+      "finding": "canon-fix1 B6"
+    },
+    {
+      "name": "Selruna",
+      "source": "storylines/irabeth_independent.py",
+      "introducing_route": "irabeth",
+      "role": "road-drawing specialist",
+      "introducing_text": "\"There is a route-maker in the city. Selruna. She has a collection of old road drawings, some useful and some apparently intended to make travelers admire the artist. I asked whether she would show me how she chooses between them.\"",
+      "authored": true,
+      "finding": "canon-fix1 B6"
+    },
+    {
+      "name": "Selvani",
+      "source": "storylines/konomi_ordinary_expansion.py",
+      "introducing_route": "konomi",
+      "role": "passage resident caring for her sister's children",
+      "introducing_text": "\"This is Selvani's passage,\" {n}she says.{/n} \"She has her sister's children tonight. If she comes out, we finish.\"",
+      "authored": true,
+      "finding": "canon-fix1 B6"
+    },
+    {
+      "name": "Hesvara",
+      "source": "storylines/soana_late_campaign.py",
+      "introducing_route": "soana",
+      "role": "camp trapper and Tarn's owner",
+      "introducing_text": "{n}The woman gives her name as Hesvara. Her hand stays on Tarn's back as he tries the injured foot. Soana watches him stand.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B8"
+    },
+    {
+      "name": "Desrani",
+      "source": "storylines/chadali_sessions.py",
+      "introducing_route": "chadali",
+      "role": "company scout",
+      "introducing_text": "ch(\"felt\", '{n}You open the company roll between you. Sergeant Venn, spearman Oris, scout Desrani: you read each name aloud, all the way to the last. Chadali repeats the names she catches herself stumbling over. Then she holds your hand beside the signed order.{/n}\\n\"Now you know whom you\\'re sending. So do I. Bring this back afterwards. I want to know who returned.\"',",
+      "authored": true,
+      "finding": "canon-fix1 B9"
+    },
+    {
+      "name": "Veldran",
+      "source": "storylines/household_pair_iomedae_nocticula.py",
+      "introducing_route": "household_pair_iomedae_nocticula",
+      "role": "captive crusader on the ransom list",
+      "introducing_text": "\"My broker has mistaken my protection for his property. Return his protection payment. Deliver Orren, Davit, Hald, Marten, Veldran and Rul. Alive. Should he find this ruinous, remind him what my displeasure costs.\"",
+      "authored": true,
+      "finding": "canon-fix1 B10"
+    },
+    {
+      "name": "Vennorik",
+      "source": "storylines/terendelev_continuation.py",
+      "introducing_route": "terendelev",
+      "role": "petition organizer",
+      "introducing_text": "n(\"meeting\", \"Narrator\", '''{n}The storehouse is crowded with people who came to dispute different things. Builders sit beside residents whose homes have been marked. A clerk guards a locked case of original assessments. At the far end, an organizer named Vennorik has arranged the chairs so that the petition's supporters face the door.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B10"
+    },
+    {
+      "name": "Tesvara",
+      "source": "storylines/ember_campaign.py",
+      "introducing_route": "ember",
+      "role": "older traveler needing a warm sleeping place",
+      "introducing_text": "n(\"early\", \"Narrator\", '''{n}The older traveler introduces herself as Tesvara. She is grateful for help with her bundle and less grateful for suggestions about where to put her painful leg. Ember stops giving those when Tesvara asks, then holds the cushion where she points.{/n}",
+      "authored": true,
+      "finding": "canon-fix1 B11"
+    }
+  ],
+  "pending_entities": [
+    {
+      "name": "Nerethi",
+      "source": "storylines/nocticula_trickster_concession.py",
+      "introducing_route": "nocticula.acquisition",
+      "role": "clerk investigating Salven",
+      "introducing_text": "Your clerk Neris has held it back from the incoming petitioners. She asks whether the seal is yours.",
+      "authored": true,
+      "finding": "canon-fix1 B1",
+      "pending_voice_rename": "Neris"
+    },
+    {
+      "name": "Vezhara",
+      "source": "storylines/nocticula_partners.py",
+      "introducing_route": "nocticula",
+      "role": "repair-yard harbor passenger",
+      "introducing_text": "p(\"{n}Vessa's damaged hand never vanished from the account of the narrower crossing. The crushed bell went back to her; Nocticula kept the broken instrument and sent away buyers who mistook it for a working road.{/n}\", requires=(\"noct.door_unreinforced\", \"noct.vessa_injured\", \"noct.chart_lost\")),",
+      "authored": true,
+      "finding": "canon-fix1 B4",
+      "pending_voice_rename": "Vessa"
+    },
+    {
+      "name": "Merzila",
+      "source": "storylines/nocticula_continuation.py",
+      "introducing_route": "nocticula",
+      "role": "lodge captive beside Istrava's trophies",
+      "introducing_text": "Edris cuts the ribbon rather than pulling against its hidden hook. The freed attendant runs into the yard. Her sister, Mera, remains beside the cabinet.",
+      "authored": true,
+      "finding": "canon-fix1 B7",
+      "pending_voice_rename": "Mera"
+    }
+  ]
+}

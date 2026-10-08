@@ -243,7 +243,7 @@ def integrate(payload):
             # bed decision. Generic whereabouts recount the prior claim,
             # rather than contradicting that receipt with a new present claim.
             for para in list(node.get("Paragraphs", [])):
-                para["Text"] = para["Text"].replace("Shamira remained in the Harem of Ardent Dream, Nocticula's chosen lover and ambitious steward.", "Shamira remained in the Harem of Ardent Dream. Nocticula had once claimed her bed; her political claim to the ambitious steward survived.")
+                para["Text"] = para["Text"].replace("Shamira remained in the Harem of Ardent Dreams, Nocticula's chosen lover and ambitious steward.", "Shamira remained in the Harem of Ardent Dreams. Nocticula had once claimed her bed; her political claim to the ambitious steward survived.")
                 para["Text"] = para["Text"].replace("Shamira's tie to her old lover stretched across that absence", "Shamira's political tie to her lady stretched across that absence")
                 para["Text"] = para["Text"].replace("Shamira still wanted her old lover, and still wanted her throne", "Shamira still wanted her lady's throne")
 

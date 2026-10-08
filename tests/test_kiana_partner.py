@@ -46,10 +46,28 @@ class KianaPartnerTests(unittest.TestCase):
         return payload
 
     def test_every_commitment_host_offers_each_stance_with_earned_outcomes(self):
+        from storylines import kiana_round4 as r4
         data = self.payload()
+        books = {s["Id"]: s for s in data["Scenes"]}
         for sid in ("kiana.morning", "kiana.trickster.late_question", "kiana.trickster.late_question_letter", "kiana.trickster.epilogue.commit"):
             host = next(s for s in data["Scenes"] if s["Id"] == sid)
             outcomes = walk(host["Nodes"], "partner_terms", {partner.OPEN, "kiana.company", "kiana.rehearsed"})
+            # Late living-partner talks now dispatch rather than manufacture
+            # Elan's reply immediately. Continue each history at its later
+            # delivery; the separate D29/D30 tests assert elapsed-time gates.
+            if sid in r4.HOSTS:
+                resumed = []
+                for state in outcomes:
+                    state |= {"trickster.now", "trickster.ever"}
+                    if r4.SHARE_SENT in state:
+                        resumed.extend(walk(books[sid + ".elan_reply"]["Nodes"], "partner_elan_terms", state))
+                    elif r4.BREAKUP_SENT in state:
+                        waiting = walk(books[sid + ".elan_parting"]["Nodes"], "partner_breakup", state)
+                        for delivered in waiting:
+                            resumed.extend(walk(books[sid + ".after_delivery"]["Nodes"], "partner_exclusive_yes", delivered))
+                    else:
+                        resumed.append(state)
+                outcomes = resumed
             for stance in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET):
                 accepted = [s for s in outcomes if stance in s and "kiana.closed" not in s]
                 self.assertTrue(accepted, sid + ": " + stance)

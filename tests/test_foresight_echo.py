@@ -149,13 +149,11 @@ class ForesightSurfaceTests(unittest.TestCase):
     def test_registered_consumer_contract_matches_export(self):
         story = fresh_story()
         consumers = {s["Id"]: foresight.PAGE_TAKEN for s in story["Scenes"] if foresight.PAGE_TAKEN in s["Requires"]}
-        # Authorized consumers: the four played Wenduag echo pages and the
-        # household table in each supported chapter. This is an independent
-        # contract, not the generator's mutable registration table.
-        expected = {key: "foresight.page_taken" for key in (
-            "wenduag.trickster.echo.abyss.prepare", "wenduag.trickster.echo.abyss.pickup",
-            "wenduag.trickster.echo.abyss.return", "wenduag.trickster.echo.abyss.trust",
-            "household.table.offered", "household.table.offered_c5")}
+        # Four allocated Wenduag echo pages and the paid-page household
+        # consumers added by the merged row jobs. Keep an exact independent
+        # inventory: additions and removals both need review.
+        expected = {key: foresight.PAGE_TAKEN for key in json.loads(
+            (ROOT / "tests/foresight_consumers.json").read_text(encoding="utf-8"))}
         self.assertEqual(consumers, expected)
         self.assertEqual(story["ForesightConsumers"], expected)
         self.assertEqual(story["Derived"]["household.stance_eligible"], [[foresight.PAGE_TAKEN, "trickster.now"]])
@@ -165,10 +163,20 @@ class ForesightSurfaceTests(unittest.TestCase):
             self.assertTrue(all("trickster.ever" in group and "trickster.now" not in group for group in story["Derived"][key]))
 
     def test_late_consumer_registration_is_serialized(self):
-        story = expansion.make_expansion()
+        from unittest.mock import patch
+        from storylines import harem_rows
         consumer = "acceptance.fate.late_registration"
-        try:
+        register = harem_rows.register_all
+
+        def late_registration(*args):
+            # This assembly stage follows foresight.integrate. The final
+            # export is a snapshot; late means during assembly, not afterward.
             foresight.CONSUMERS[consumer] = foresight.PAGE_TAKEN
+            return register(*args)
+
+        try:
+            with patch.object(harem_rows, "register_all", side_effect=late_registration):
+                story = expansion.make_expansion()
             exported = json.loads(json.dumps(story))
             self.assertEqual(exported["ForesightConsumers"][consumer], foresight.PAGE_TAKEN)
         finally:

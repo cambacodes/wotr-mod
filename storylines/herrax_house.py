@@ -327,7 +327,7 @@ SCENES.append(scene(SOUNDING, "Hot stuff", "Herrax", 4, '"Tell me about yourself
     rk("novelty", '''"Everything's a novelty to her for a week." {n}He shrugs his heavy shoulders.{/n} "Then she prices it, and then she sells it, and then she forgets it existed. Ask me how I know."''',
        c("Continue", "read")),
     rk("read", '''{n}He lifts one hand, the claws half out, and turns it in the lamplight in front of your face.{/n}
-"You know what I like best about mortals, hot stuff? You bleed so easily. One scratch, one taste, and I can read you like a menu: what you want, what you fear, what you're lying about. A demonologist taught me the trick once, to buy my attention." {n}His smile widens.{/n} "Most of my guests pay extra for it. Some of them pay extra for me not to."''',
+"You know what I like best about mortals, hot stuff? You bleed so easily. One scratch gives me a taste. Then, if I like, I speak the words and read your fate: what you want, what you fear, what you're lying about. A demonologist taught me the trick once, to buy my attention." {n}His smile widens.{/n} "Most of my guests pay extra for it. Some of them pay extra for me not to."''',
        c('"Then I\'ll keep my cheeks to myself."', "end"),
        c('"And what do you want, Rokhorn?"', "wants")),
     rk("wants", '''"Everything." {n}He says it with total sincerity.{/n} "The whole world, on its knees, begging me not to stop. But I'd settle, for now, for a chair." {n}His eyes go across the hall, to the dais, and come back to you, merry and flat.{/n} "You didn't hear that. And if you did, you'll forget it. Everyone in this house forgets things for me, eventually."''',
@@ -338,6 +338,7 @@ SCENES.append(scene(SOUNDING, "Hot stuff", "Herrax", 4, '"Tell me about yourself
     Relationship=REL, AnswerLists=[ROK_LIST], NativeReturnCue=ROK_RET))
 
 
+# Authored blood-art limit (Cue_0193): a taste supplies blood; spoken divination reads fate.
 # Authored con detail: the spite grievance is performed here, before the seller leaves for Rokhorn.
 beat(REHEARSAL, "The lie, rehearsed", '"Help me get the lie right."', [
     hx("start", '''"Lie?" {n}Herrax looks shocked.{/n} "There isn't going to be a lie, lover. There's going to be a truth with one hole in it. That's harder. Sit."
@@ -363,7 +364,7 @@ beat(REHEARSAL, "The lie, rehearsed", '"Help me get the lie right."', [
     hx("hunger2", '''"Because when you tell it, he'll look at your face, and he'll see whether it's true." {n}She watches you.{/n} "So make sure you know the answer before you go to him. I'd hate for you to find out in front of him."''',
        c("[Take the floor coin.]", "done", flags=(LIE_HUNGER,))),
     hx("done", '''{n}She sweeps the other two coins back into her purse.{/n}
-"And whatever else he says, don't let him scratch you. He reads people in their blood; it's his party trick, and he's better at it than he looks. If his claws come out, you've already lost the sale." {n}She taps your cheek with one finger, exactly where a claw would go.{/n} "Keep your face, lover. I'll need it after."''',
+"And whatever else he says, don't let him scratch you. Blood first, then the words that read your fate. You'll hear his voice change. By then you've lost the sale. Keep his claws off you; don't give him a chance to start." {n}She taps your cheek with one finger, exactly where a claw would go.{/n} "Keep your face, lover. I'll need it after."''',
        c('"I\'ll keep it."'))],
     requires=(PRIMED,), forbids=(BAIT, BLOWN, LIE_GREED, LIE_SPITE, LIE_HUNGER), delay=0)
 
@@ -423,7 +424,7 @@ beat(B + "honeyed_tongue", "Honeyed tongue", '"One of your girls keeps looking a
     hx("end", '''{n}Morevet, on the far couch, raises her cup to Herrax in a mocking little toast. Herrax raises hers back, and smiles at her the way a cat smiles at a bird in a very small cage.{/n}
 "She knows who owns her," {n}Herrax says, not lowering her voice.{/n} "It's the only thing she's ever been shy about."''',
        c('"Remind me never to annoy you."'))],
-    requires=(LABYRINTH,), delay=24)
+    requires=(LABYRINTH, COMMITTED), delay=24)
 
 
 beat(B + "the_lesson_room", "A thief in the house", '"Something\'s happened."', [
@@ -967,7 +968,7 @@ beat(B + "the_stain", "Don't scrub it", '"The girls are sweeping round that stai
        c('"Like paying a debt."', "debt"),
        c('"Good."', "good")),
     hx("nothing", '''{n}She looks at you for a while with her good eye, and the blind one drifts after it.{/n}
-"That's how it starts, honey. Nothing, the first time. Then something, the fifth time, and you don't like what the something is." {n}She shrugs.{/n} "Or you stop at one. Most mortals do. It's the ones who stop at one I end up trusting."''',
+"Nothing? He screamed loud enough to shake the lamps." {n}She catches your wrist and turns your cutting hand palm up.{/n} "I liked that part. All those girls watching him bleed, and not one laughing at my face." {n}She presses your hand against the scar at her mouth.{/n} "Be frightened, lover. You still held the knife steady. Now every little climber in my house knows whose hand I put it in."''',
        c("Continue", "end")),
     hx("debt", '''"A debt." {n}She tastes the word.{/n} "Yes. You sold him, so you owed him the cut. That's very tidy. That's how a devil would think of it." {n}She laughs.{/n} "Don't let it go to your head, lover. Devils end up owning everything and enjoying none of it."''',
        c("Continue", "end")),
@@ -991,9 +992,11 @@ beat(B + "the_glowworm", "A fey's joke", '"Tell me about your fey."', [
 "She's here because of a joke, lover. Some prank the Lantern King played on her back in the First World. She won't tell anyone what it was; she laughs until she cries and says it's too embarrassing. So she stays. My guests adore her. She makes them laugh so hard they forget their own names, and then they wake up without their boots."''',
        c('"A joke put her here?"', "joke"),
        c('"Does she want to leave?"', "leave")),
-    hx("joke", '''"The Lantern King's jokes put a great many people a great many places, I'm told." {n}She glances at you sidelong.{/n} "You've a reputation for jokes yourself, lover. The Isles say the mortal the Lady let walk out of her palace plays tricks, and that the tricks don't stay tricks."
-"If you ever feel like a joke in my house, honey, ask me first. I have a very particular sense of humour about my stock."''',
-       c("Continue", "end")),
+    hx("joke", '''"The Lantern King's jokes put a great many people a great many places, I'm told." {n}She glances at you sidelong.{/n} "You've a reputation for jokes yourself, lover."''',
+       # Retain the saved end target at index zero; retire it on this Trickster-only host.
+       c("Continue", "end", forbids=("trickster.ever",)),
+       c("Continue", "joke_before_audience", forbids=(H + "palace_dismissed",)),
+       c("Continue", "joke_after_audience", requires=(H + "palace_dismissed",))),
     hx("leave", '''"Leave?" {n}Herrax seems puzzled by the question.{/n} "Where would she go? The First World? With whatever the Lantern King did to her still stuck to her like a paper tail?" {n}She shakes her head.{/n}
 "Nobody in my house wants to leave, lover. That's not how it works. They want to stop wanting what brought them here. I sell them a night's worth of that at a time. It's the best business in the Abyss."''',
        c("Continue", "end")),
@@ -1001,7 +1004,12 @@ beat(B + "the_glowworm", "A fey's joke", '"Tell me about your fey."', [
 "There," {n}says Herrax.{/n} "Now she's happy. That's my whole job, honey. Everyone happy, for exactly as long as they can pay."''',
        c('"And you?"', "you")),
     hx("you", '''"Me?" {n}She considers it with real interest.{/n} "I'm happy when the takings come in and nobody tries for my chair. It's a very small happiness. It's the only kind that lasts."''',
-       c('"I\'ll see what I can do about the chair."'))],
+       c('"I\'ll see what I can do about the chair."')),
+    # Authored variants: only the native dismissal warrants a completed palace visit.
+    hx("joke_before_audience", '''"The Isles say the mortal who unseated Chivarro plays tricks, and that the tricks don't stay tricks. If you ever feel like a joke in my house, honey, ask me first. I have a very particular sense of humour about my stock."''',
+       c("Continue", "end")),
+    hx("joke_after_audience", '''"The Isles say the mortal the Lady let walk out of her palace plays tricks, and that the tricks don't stay tricks. If you ever feel like a joke in my house, honey, ask me first. I have a very particular sense of humour about my stock."''',
+       c("Continue", "end"))],
     requires=(FIRST_PRICE,), delay=24)
 
 
@@ -1183,7 +1191,7 @@ _con_memory(L + "the_courier", "b_offer", '{n}Rokhorn follows you into the squar
 _con_memory(B + "rokhorn.whole", "start", "")
 
 beat(B + "unpriced_guest", "The house still charges", '"Do your other guests get the same welcome?"', [
-    hx("start", '"No. And neither do your friends. The Sinners charge by the night, the bar charges by the cup, and I take my share of both." {n}Herrax pulls you close enough to speak against your mouth.{/n} "Keep whoever you like in Drezen, lover. Buy whoever you like here. Try to pay me, and you go back downstairs."', c('"Then keep the bill for somebody else."'))], requires=(LABYRINTH, MOREVET_DEAD, "herrax.present_now"), delay=24)
+    hx("start", '"No. And neither do your friends. The Sinners charge by the night, the bar charges by the cup, and I take my share of both." {n}Herrax pulls you close enough to speak against your mouth.{/n} "Keep whoever you like in Drezen, lover. Buy whoever you like here. Try to pay me, and you go back downstairs."', c('"Then keep the bill for somebody else."'))], requires=(LABYRINTH, COMMITTED, MOREVET_DEAD, "herrax.present_now"), delay=24)
 
 
 morevet_variants(SCENES)

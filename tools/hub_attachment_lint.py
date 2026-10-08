@@ -17,14 +17,86 @@ HUB_REACTIONS = {**dict.fromkeys(HUBS, REACTIONS), CH6_HUB: REACTIONS[:1]}
 # end eng7-f3
 
 
+def gameplay_entry_diagnostics(story, contract=None):
+    """Exact R5 inventory. Unimplemented actions remain blockers, never delivery proof.
+
+    The Terendelev v1 contract is retained below. R5 rows distinguish completed
+    shared fields from pending presentation/action work; fixed is not inferred
+    from Remote/Kind or a flag-producing answer.
+    """
+    if contract is None:
+        contract = json.loads(Path(__file__).with_name('gameplay_entry_inventory_contracts.json').read_text(encoding="utf-8"))
+    scenes = {scene['Id']: scene for scene in story['Scenes']}
+    routes = set(story.get('Relationships', {})) | {s.get('Relationship') for s in scenes.values()}
+    out = []
+    for row in contract.get('route_entries', []):
+        if row['route'] not in routes and row['scene'] not in scenes:
+            continue
+        errors = []
+        deficits = []
+        scene = scenes.get(row['scene'])
+        if not scene:
+            errors.append('missing registered scene')
+        else:
+            for field, value in row['checks'].items():
+                if scene.get(field) != value:
+                    errors.append('missing audited ' + field)
+            entry = row['delivery']['entry']
+            if entry == 'native contact' and (scene.get('Remote') or scene.get('ManualOnly')
+                    or not scene.get('Entry') or not scene.get('ContactUnit') or not scene.get('AnswerLists')):
+                errors.append('missing physical native entry')
+            if entry == 'bounded narrated visit' and (not scene.get('Remote') or scene.get('ManualOnly')
+                    or not scene.get('Areas') or scene.get('Kind') != 'visit'):
+                errors.append('missing bounded narrated visit')
+            for woman, contact in scene.get('ParticipantContacts', {}).items():
+                if contact.get('Kind') == 'body' and not any(option.get('Units') for option in contact.get('Options', [])):
+                    deficits.append('empty body contact: ' + woman)
+        if row.get('requires_world_action'):
+            action = row['delivery'].get('completion_action') or {}
+            supported = False
+            if action.get('kind') in row.get('action_kinds', []):
+                if action['kind'] == 'native_world':
+                    spec = story.get('NativeWorldReconciliations', {}).get(action.get('target'), {})
+                    supported = bool(spec.get('Relationship') == row['route'] and spec.get('When')
+                                     and all('trickster.now' in g for g in spec['When']))
+                elif action['kind'] == 'skill_check' and scene:
+                    node = next((n for n in scene['Nodes'] if n['Id'] == action.get('node')), {})
+                    choices = node.get('Choices', [])
+                    index = action.get('choice')
+                    if isinstance(index, int) and 0 <= index < len(choices):
+                        check = choices[index].get('Check') or {}
+                        targets = {n['Id'] for n in scene['Nodes']}
+                        supported = bool(check.get('Skill') and check.get('DC', 0) > 0
+                                         and check.get('Success') in targets and check.get('Failure') in targets
+                                         and check['Success'] != check['Failure'])
+            if not supported:
+                deficits.append('no supported completion-producing world action; authored flags are not proof')
+        if row['status'] == 'fixed':
+            errors.extend(deficits)
+        if row['status'] not in ('fixed', 'prose_pending', 'blocked'):
+            errors.append('invalid delivery status')
+        if not row['requirement'] or not row['findings']:
+            errors.append('missing finding/requirement')
+        if row['status'] == 'fixed' and (not row['delivery']['entry'] or row['blockers'] or not row['checks']):
+            errors.append('delivery lacks reviewed entry/field proof')
+        if row['status'] != 'fixed' and not row['blockers']:
+            errors.append('unimplemented delivery has no owner blocker')
+        out.append(dict(scene=row['scene'], findings=row['findings'], status=row['status'],
+                        requirement=row['requirement'], blockers=row['blockers'], deficits=deficits, errors=errors))
+    return out
+
+
 # eng8-q8f: manual reading is never an in-world entry witness.
 def gameplay_entry_lint(story):
     contract = json.loads((Path(__file__).with_name('gameplay_entry_inventory_contracts.json')).read_text(encoding="utf-8"))
     scenes = {s['Id']: s for s in story['Scenes']}
     if (contract['scope'] not in story.get('Relationships', {})
             and not any(s.get('Relationship') == contract['scope'] for s in scenes.values())):
-        return []  # Other-route unit fixtures carry no Terendelev inventory.
-    errors = []
+        return [row['scene'] + ': ' + error for row in gameplay_entry_diagnostics(story, contract)
+                for error in row['errors']]
+    errors = [row['scene'] + ': ' + error + ' (' + ','.join(row['findings']) + ')'
+              for row in gameplay_entry_diagnostics(story, contract)
+              for error in row['errors']]
     for row in contract['entries']:
         for suffix, hub in zip(('', '_awning'), contract['hubs']):
             sid = row['scene'] + suffix
@@ -112,6 +184,9 @@ if __name__ == '__main__':
     parser.add_argument('--story', default=str(Path(__file__).resolve().parents[1] / 'development/Story.json'))
     args = parser.parse_args()
     errors = lint(json.loads(Path(args.story).read_text(encoding='utf-8-sig')))
+    for row in gameplay_entry_diagnostics(json.loads(Path(args.story).read_text(encoding='utf-8-sig'))):
+        if row['status'] != 'fixed':
+            print('REVIEW ' + ','.join(row['findings']) + ': ' + '; '.join(row['blockers']))
     for error in errors:
         print('HARD ' + error)
     print('hub attachment lint: %d hard' % len(errors))

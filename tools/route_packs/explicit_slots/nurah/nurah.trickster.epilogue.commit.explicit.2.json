@@ -1,7 +1,7 @@
 {
   "voice": "NURAH: sharp, spiteful, acquisitive, observant, impatient with flattery; amused by a successful con, capable of affection without becoming good. Short barbs and concrete appetite. Chosen initiative and playful control; possessiveness is never ownership. Literary wit is occasional, not every sentence. No therapy language, generic porn voice, moral diagnosis, maxims, visions or audience address. Write new dialogue; do not reuse the example or staging sentences.",
   "scene": "Canon-true facts: Nurah Dendiwhar is a halfling, formerly enslaved by Lord Axilar Trezbot in Isger, educated as his secretary and a historian of the Worldwound. She is a treacherous former cultist, not a redeemed innocent; she is not a mage. Trezbot was her owner, not a canon romantic partner. No canon husband or lover is established. Do not invent eye/hair colors, measurements, sexual history, pregnancy, or the Commander's scars. AUTHORED LATE PAYOFF: two years after Threshold, Nurah's writing room, shut door, writing table and loose proofs. Earned late first reunion after personal yes, alternate to reading-chair branch. She has pulled the living Commander inside, read a marked sentence against their mouth, worked the belt and let the book fall shut. Both actively choose the encounter; her initiative and greedy pleasure do not absolve the hostile memoir. Required additional beat: they choose each other over rescuing the loose pages. Existing morning has damaged proofs and her printer note; do not duplicate them or change legacy exit mechanics. Production brief for the user-selected explicit fill, not player-facing exposition. Only Nurah and the Commander participate; both are willing and alert. The intended act is consensual sex following the already staged undressing and embrace. Do not invent a new sexual practice or third participant for novelty. Required beats: mutual bodily initiative, Nurah's chosen control answered by active participation, one short in-character desire/power remark, a distinct situational pressure, then the exact final line. No abuse memory or debt as a sexual inducement, no incapacity, ownership, redemption, added gate, fee, commitment or automatic forgiveness. Commander anatomy is supplied by commander_variants; avoid default masculine pronouns. Only N: narration and U: Nurah speech; no voiced Commander lines. Return at the final hinge; do not write the existing morning or publication footnote. ",
-  "last_line": "N: The loose proofs remained scattered beneath the closed book.",
+  "last_line": "N: In the morning half the proofs were ruined, creased and smeared and one of them torn clean through. She sent the whole sheaf back to the printer anyway, with a note that the author approved every correction on them, and that he was on no account to ask how they had been made.",
   "speakers": {
     "U": "Nurah"
   },
@@ -12,5 +12,6 @@
   ],
   "min_lines": 12,
   "max_lines": 18,
-  "narration": "third-past"
+  "narration": "third-past",
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

@@ -1,47 +1,35 @@
 {
   "slot_id": "jerribeth.trickster.visit.explicit.1",
-  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
-  "scene": "Chapter 5 actual Drezen visit after the market rendezvous and chosen physical threshold. The Commander offered wrists; she chose the encounter in her own form or an acknowledged authored guise. Preserve the physical modality and player-selected approach. Stage non-graphic closeness then cut. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
-  "last_line": "N: The next watch passes without another knock.",
+  "voice": "JERRIBETH: chaotic evil demon, illusionist and collector; served Baphomet only while it paid. Her voice is telepathic, inside the listener's head: high, airy, precise, with laughter like a buzzing insect. Courtly and oblique in phrasing, near-zero profanity; contempt and precision instead. Cruelty is curation: she pins, preserves and watches the victim stay aware. Desire is collecting: to want someone is to want to keep them, and she resents the wanting. She enjoys the other's awareness and every small failure of their composure. Never tender for its own sake, never reassuring; no exits, permission rituals, therapy speech or remorse in her mouth. Write new lines from these traits; do not quote canon.",
+  "facts": "Jerribeth is a female demon with an insect-like form: a narrow insectile head with antennae, wings, a hard ridged carapace and delicate clawed hands (native Wintersun reveal and Ivory Sanctum cues).\nShe speaks telepathically, directly in the mind; her laughter is high and abrasive, like a buzzing insect (enGB 0b920731).\nShe pushes a needle into a living locust and watches it convulse (eb28ad3b); she preserves what she wants to keep, 'in some form' (de70b6ee).\nShe served her master only as long as it profited her (c4630d76) and calls deals with demons a losing game she enjoys playing (8ef95ea9).\nMarhevok, the Wintersun chief, loved her blindly (b003e047); in one canon fate he is a potted plant with human eyes (6edde3ab). He is never a participant.\nThe correspondence frame, the elven guise with its deliberate seam of light, and her tenancy in the Commander's skull are authored mod premises.\nNo canon genital anatomy is specified for her. Do not invent native physiology beyond carapace, wings, antennae, clawed hands and mouthparts.",
   "speakers": {
     "J": "Jerribeth",
     "N": "Narrator"
   },
-  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
-  "min_lines": 8,
-  "max_lines": 14,
-  "facts": [
-    {
-      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
-      "guid": "8a632a5249b3c2541a1381111cae9e37",
-      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
-    },
-    {
-      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
-      "guid": "bf1542830cfa01d4c9db04546681084d",
-      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
-    },
-    {
-      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
-      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
-      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
-    }
+  "participants": [
+    "Jerribeth",
+    "Commander"
   ],
+  "scene": "Chapter 5, the Commander's quarters in Drezen, the night of the market collection. She is here in her own body, or in the authored elven guise with the seam of light at its jaw, as chosen earlier in the scene; she has come to collect the named forfeit in person. The Commander held out both wrists. She walked them back to the bed without tightening her grip, let them fall, followed, and pressed the wrists into the blanket with her claws, wings half open over the lamp. Build on that hold: she handles the Commander like a specimen she has decided to keep, attentive to every reaction, delighted by each small loss of control, and her telepathic commentary runs on inside the Commander's head while her body is on them. If Marhevok's pot was set by the bed earlier, his human eyes are open toward it and she makes sure the Commander knows. Explicit, unhurried and graphic where the act is, in her own register (precise, possessive, amused); Commander and Jerribeth only. Marhevok's pot, the cabinet's specimens and any host body never take part. End at the stop line.",
   "required_beats": [
-    "Her collecting appetite stays dangerous and personal.",
-    "A chosen pause bypasses the slot; the future bargain alone does not authorize the night.",
-    "Afterward preserves existing wrist marks and locust-wing forfeit message, with no tenant rent.",
-    "Marhevok state and any distressed captive reaction are handled in separate non-graphic partner nodes, never as willing participation."
+    "The wrists stay where she put them; she enforces it once, with pleasure.",
+    "Her voice in the Commander's head continues throughout: precise, possessive, never tender for its own sake.",
+    "Her claws leave small, exact crescents on the wrists; she counts them.",
+    "She ends it herself and leaves before the watch changes; no promises, no reassurance."
   ],
+  "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
+  "min_lines": 12,
+  "max_lines": 20,
   "default_text": "{n}Her wings shut out the lamp. Her voice is against your ear now, and the next watch passes without another knock.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.visit",
     "after_node": "threshold",
     "resume_node": "morning"
   },
-  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+  "last_line": "N: She is gone before the watch changes. The sheets smell of cold stone. There are small crescents on your skin where her claws rested, very precise, as if she had counted them. You press a thumb to one. It stings, exactly as much as she meant it to, and you find you are in no hurry for it to heal.",
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images, the elven guise and mental tenancy are authored premises. Canon physical facts are limited to the facts field. Rewritten by the cloud voice owner (villain-route-jerribeth)."
 }

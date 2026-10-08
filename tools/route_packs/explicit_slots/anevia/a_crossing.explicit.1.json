@@ -1,13 +1,8 @@
 {
   "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
-  "facts": [
-    "Anevia is a woman and Irabeth Tirabade's wife.",
-    "Anevia works as a scout and investigator alongside the Eagle Watch.",
-    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
-    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
-  ],
+  "facts": "Anevia is a woman and Irabeth Tirabade's wife.\nAnevia works as a scout and investigator alongside the Eagle Watch.\nOne native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.\nNo canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them.",
   "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 3, existing private room in Drezen after reports. Existing secret affair entry; she has said Beth has not agreed. Stay-night only, never the stopped-after-kiss history. Keep her culpable desire, passing footsteps, and later dressing/return home. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
-  "last_line": "N: The scarf is still on the floor when Anevia reaches for her clothes.",
+  "last_line": "N: Later, she dresses in silence. She puts her scarf on twice before she is satisfied with how it sits. At the door she presses her forehead briefly to yours.",
   "speakers": {
     "A": "Anevia"
   },

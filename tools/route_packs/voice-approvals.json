@@ -1,0 +1,320 @@
+{
+  "version": 1,
+  "approvals": [
+    {
+      "scene": "minachiv.a_factor_at_the_table",
+      "before_sha": "5d0eb8e2fc495558b5c5b847134862f50a5ed6b8049245766395a59a5a7fdd01",
+      "after_sha": "0b08517414b3d5c02b3b5cb42770154dd7fb20b1dc2786ea671f10b9191ef7d1",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.a_room_she_likes",
+      "before_sha": "3ced90ed5af50311341045961aab34858b07919bb97b5104f505a85a4ddb7529",
+      "after_sha": "bab1689f6a3325434f7dadaa283ec645d8e536ffa77efd43f5fceb9a8f0443f2",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.after_the_last_lamp",
+      "before_sha": "4f006c18c977cf8a43ea08eea163878a0373e50936023ed5f32bd83ea3a446d9",
+      "after_sha": "917fb655590e6445a025a2a6a0cd08ccb240c5cf65341cb982faf2a02c0cf1c2",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.before_the_last_road",
+      "before_sha": "961bfebc8cdbaf66fb2dce9e6e35f141a3f42e4277f2d3ff72ab52fda663f2eb",
+      "after_sha": "daba0b5a68943fead80e971742773e92bb777b238d2f90602503a8c4e1d07346",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.ending_changed",
+      "before_sha": "340480142609e499971b35c7768c834e7ed21a23213f2ab320d45d3de7923e5c",
+      "after_sha": "8572020a4855c92380ce85d99ba4955208fbc5bfe254bcea9864609a2a94b633",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.ending_changed_completed",
+      "before_sha": "340480142609e499971b35c7768c834e7ed21a23213f2ab320d45d3de7923e5c",
+      "after_sha": "8572020a4855c92380ce85d99ba4955208fbc5bfe254bcea9864609a2a94b633",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.ending_chivarro_lost",
+      "before_sha": "9be3994b0b7e0eb3e863fdc57f7e20bbe12040add0937bccea86e8643ed4a402",
+      "after_sha": "b52330abd5e6d6ca9fc9002e37ba8384a315aad78861609edfe85dcf6a58429b",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.ending_chivarro_lost_completed",
+      "before_sha": "9be3994b0b7e0eb3e863fdc57f7e20bbe12040add0937bccea86e8643ed4a402",
+      "after_sha": "b52330abd5e6d6ca9fc9002e37ba8384a315aad78861609edfe85dcf6a58429b",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.ending_minagho_lost",
+      "before_sha": "f050ab9229bf2f33ed02f851a24e4022c1f3381f64b05fa61842e51eb936d751",
+      "after_sha": "39939675b059635c3a49f2f0d27d861b227898a6578d466e318aa24547f72edf",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.ending_minagho_lost_completed",
+      "before_sha": "f050ab9229bf2f33ed02f851a24e4022c1f3381f64b05fa61842e51eb936d751",
+      "after_sha": "39939675b059635c3a49f2f0d27d861b227898a6578d466e318aa24547f72edf",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.minaghos_unfinished_sentence",
+      "before_sha": "aeadd861793322c8e2993aca70cc704102c72bd69a451ff07171fa0598d98723",
+      "after_sha": "e1224b860c6d9b2e2b807cf82e74696d16c552609f6e348133a409d37c6b57d8",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_answer_after_business",
+      "before_sha": "6266d71ef52fbee896a44db0466d4f313739d811488a597880283498550d5f60",
+      "after_sha": "97b24bf8f873573da7f52a7cd4d29e83a1a870b212630953803612295ba123c2",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_cost_in_daylight",
+      "before_sha": "41bfa515136baac45af064c13fc7311a4ea6616c8035ce317f3136ff15c7b532",
+      "after_sha": "43f91cfda5d767faeb74614ab73e8cabc544fef98b50978767f038354a3f0a2d",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_entrance_she_wants",
+      "before_sha": "bf4e92b485bb38685023c38f6a1471d1fb62df53e1a0f7947f1e81d69478c538",
+      "after_sha": "358d8cfc7d568557020fa5ac81222251231c75cde836ce06d1a4d139cabd2478",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_first_small_audience",
+      "before_sha": "bdba727dfca84df3ed235dbec624672cdcd644c55e03df01dbe57d2b84d41805",
+      "after_sha": "07ee3b641c179cd2c1d529b5380fd75d1b281b0426e6a4a58951bd57a8399988",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_key_in_your_hand",
+      "before_sha": "bbf625635bce3c270787f744c593e995f9f90572724ee45198c5e2cc3b0a3247",
+      "after_sha": "43bcf8dd37cc573db0a3acd52a603a087ba11e201dd74ff083d1ee66c0e9e246",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_man_who_remembers",
+      "before_sha": "6a5ca14e27c089e649efcdebdec726ebeb3826233e0ce6bb02aa4c3a71fb534d",
+      "after_sha": "23e1a92c9072569853849d0c43dbc5ff681ed53d4877f5b7f698649258eeaa56",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_paper_she_kept",
+      "before_sha": "825743bcf0d0f3cea805526435241eb38a74965cd1d5bbe36bf991354b26dea2",
+      "after_sha": "d5436cdb1c9874cd35647f226d6e54055c2206c86971e775c468837f76d664da",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_performer_and_the_key",
+      "before_sha": "7db83e778ed9aa028eed5c7c59684d4713c07ad1eba27aa875dd7e867b0b7cf1",
+      "after_sha": "9bf0dca9a58507e6f0bbfcb223eb0b95f4ca855b0b4d1a9c7d8c99448a98e388",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_price_of_her_name",
+      "before_sha": "0a06c81c997947ecac37ec6b3fac7908fa53be33d65043fe2df95f9da5148b8d",
+      "after_sha": "84d4377ee9a6cd06cf89a8cfc0a145e4f1b87487b9bfe90aae686f9be9db542c",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_remaining_customers",
+      "before_sha": "84f4c5a260db478a21178181dd560d80170c5baacadccd77a17e364d440731f0",
+      "after_sha": "6e2a4821d99f7a4ccb78418023a5373c9559812f95af18283df426c5cf53f81a",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_second_address",
+      "before_sha": "b550f0c18b06c739b19f82652c05ad310c4523be25cb4361933c582d792fee56",
+      "after_sha": "a769bcef5cf442b7571cdadbfb3f6802c4e0d0abb6ccd8486b3a738d1b467e22",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.the_unhired_evening",
+      "before_sha": "347fac207d385708ab3d7088202e41be11fd2452dc47014b2699fa9ceb63e8b1",
+      "after_sha": "df80bc36426bd27521e61c5a9b665845d6a239b78d9c252b6c64c79918a88968",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.two_answers",
+      "before_sha": "173d92724b3aebfae8197e22ad26cde0800aeb0a1f1f8ba3464e7f76de1a1066",
+      "after_sha": "6b38e564ac042b4f7f333566062d78c6925b1f91ceade144839925bb18a93c89",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.what_she_will_take",
+      "before_sha": "e72fa4483d505b934afe1f509ce7d518f7dee9c18e79042beb8fcb3a9c022c6a",
+      "after_sha": "eef90fa3dc9e379d25ba5ba71cc25951d3b8f25c36cf47ec8b87d3d0947b1660",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.what_the_offer_bought",
+      "before_sha": "2cd52649c0cf894563f230594d7e9f8e791f8380f1946118594c2bdf34ed1310",
+      "after_sha": "21a0d8672d6886f4f209d88c82278ecf65dba1c6e775ee65dae5041c746218ac",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.when_the_door_opens",
+      "before_sha": "067e8d7e5cedd6f324222fe3b89ca61536e4802c3c926bab4a4686394ec36b86",
+      "after_sha": "d018b0b7b65eba559c61f587612039db67b38ea9159dd4ebccf82b82dbdc9e3a",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "minachiv.who_keeps_the_house",
+      "before_sha": "a5b85351251927951888e45cf722a46007b0cc29a17ad96cca40b5aeabffde2d",
+      "after_sha": "2b8b7a1cc155ebb13a79a6bf5a843b14a67ee64a0fabcb2add44efe86802a677",
+      "owner": "claude",
+      "source_branch": "claude/cj-minachiv9",
+      "source_commit": "3dd4c57af4822e2840be5db9e2bf85b5f3e205e7",
+      "reason": "Claude Minagho/Chivarro voice rebuild (minachiv9) on edge-minachiv scaffold; 28 locked scenes re-voiced by the owner"
+    },
+    {
+      "scene": "jerribeth.counterfeit_audience",
+      "before_sha": "79629f49ae317de016e10833f275775ca9dad0d4c54f680b019efd2c75292d1f",
+      "after_sha": "98c28a33a62f827605bb94e62b37aea1ad4f2a1b9206794339c775ba74c010ae",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    },
+    {
+      "scene": "jerribeth.counterfeit_guest",
+      "before_sha": "b1c845f1bca25d59c4065b960e009d078d700bfd1bd1326e47fe32e1d5ff4370",
+      "after_sha": "29b8110923bc7ebde06ef044c555564c0dc3d29da597ad792c07f3e3effbfc4c",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    },
+    {
+      "scene": "jerribeth.counterfeit_spoil",
+      "before_sha": "68756f548f2faeeb7f1a1e85e479b91230163b9e9d27584ecf1bc349b4ecb906",
+      "after_sha": "e66de168381c8d042aa53948ad7e554184d69eef0bea8a872a3aba6d8b14c6a4",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    },
+    {
+      "scene": "jerribeth.ending_ascended",
+      "before_sha": "000ed05facb9e9d8a98d52a9477492a4117727c32c5a1024e2f20b2096a61e95",
+      "after_sha": "4fa97bf4db41d7407b7be2ef3bfbb5121786f7cf6bff6759fd78c7132556f236",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    },
+    {
+      "scene": "jerribeth.ending_together",
+      "before_sha": "63c834c0b7bb5912c7a2c42e49333325644f766439c65a1d62c210bdacb37d90",
+      "after_sha": "e17762884d74d4b24820790ba2d34b6ecbe9e26e5195bf9e619620f62455413f",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    },
+    {
+      "scene": "jerribeth.farewell",
+      "before_sha": "d13151bbb9468ebede902ca66200532ec36963a25956973222dfc2f6e55da490",
+      "after_sha": "dfbfe0bafbac269e04a5e7c5104c1e48185715578c200db34417223a9c141b82",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    },
+    {
+      "scene": "jerribeth.offered_signature",
+      "before_sha": "117e808dec85689aee27fd580f462127fc843a7f46d404076ac01740a7ddd48b",
+      "after_sha": "69b85f127c36176ce53092d5a6e0a63944d5dae3aecb1f1824d1aec59f755379",
+      "owner": "claude",
+      "source_branch": "claude/cj-jerribeth10-fix",
+      "source_commit": "95bab1283f00b11231605a7f10e8f33e1a0cd070",
+      "reason": "Claude Jerribeth verifier fix (jerribeth10-fix): player-text findings rephrased in her voice"
+    }
+  ]
+}

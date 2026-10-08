@@ -466,34 +466,34 @@ visit(E + "beat.wards", "Her Lady's mercy", [
 {n}You know the shape before you are close enough to see her face.{/n}''',
         c("Continue", "her")),
     el("her", '''"Commander." {n}She does not straighten from the cot she is bending over. On it a boy with a bandaged stump where his right arm was looks up at her with enormous, grateful eyes.{/n}
-"Do not make a scene. He is nearly asleep." {n}She holds a cup to his lips, and he drinks, and she wipes his mouth with a corner of her grey sleeve, gently, as no one in this ward has had time to be gentle with him.{/n}''',
+"Do not make a scene. He is nearly asleep." {n}She holds a cup to his lips, and he drinks, and she wipes his mouth with a corner of her grey sleeve. Her free hand closes over the little sword of Iomedae on his blanket and turns it face down.{/n}''',
        c("[Wait until she has finished.]", "explain"),
        c('"What did you give him?"', "cup")),
-    el("cup", '''"Poppy, and wine, and honey. Nothing else. Do you think I poison children in their beds?" {n}Her mouth twists.{/n} "I have poisoned exactly one family, Commander, and they had it coming."''',
+    el("cup", '''"Poppy, and wine, and honey. Nothing else. Do you think I poison children in their beds?" {n}Her mouth twists.{/n} "My family died over a dish of lamb. I raised them afterward. All but my father. He stayed in the ground." {n}She tips the cup to show you the dregs.{/n} "This is wine. I want him listening, not dead."''',
        c("Continue", "explain")),
     el("explain", '''{n}She moves on to the next cot, and you follow. A sergeant with a belly wound, grey in the face, breathing through his teeth. She kneels beside him, and takes his hand, and bends until her mouth is by his ear, and whispers. You cannot hear what she says. You can see his face ease.{/n}
-"I am telling them about the table," {n}she says, when she rises.{/n} "That there is a queen who does not care what they did, or whether they were brave, or whom they prayed to. That she sits at a long table where nobody is ever hungry, and there is a place kept for everyone who comes hungry to her door."''',
+"I am telling them about the table," {n}she says, when she rises.{/n} "Your chaplains taught them to be ashamed of hunger. I tell them my Lady wants it. Meat, wine, flesh — everything they have been denying themselves while demons chew through their comrades. Let them call on her for once."''',
        c("Continue", "explain2")),
     el("explain2", '''"Your chaplains tell them about judgment. The grey warden and her scales and her long queue. Half these men are more frightened of dying than of the demon that killed them." {n}She looks down the long dark ward.{/n}
-"I ask Urgathoa to bestow her mercy on them. Some of them will listen. A few will come to her table, after, rather than to the Boneyard. Your crusade will lose nothing it has not already lost." {n}She meets your eyes.{/n} "Well, Commander? It is your ward."''',
+"I promise them my Lady's feast beyond the grave. Let the grey warden try to keep them from it. Your chaplains have a whole city to preach in. I want these cots." {n}She meets your eyes.{/n} "Well, Commander? It is your ward."''',
        c('[Stop her] "Not here. These men are crusaders. They die as crusaders."', "stop"),
        c('[Let her] "If it eases them, whisper."', "let"),
        c('[Only the hopeless] "The ones the chaplains have given up on. Nobody else."', "hopeless")),
     el("stop", '''{n}She looks at you over the sergeant's cot. Then she sets the cup down on the floor by the sergeant's cot, very precisely, and folds her hands in her sleeves.{/n}
-"As crusaders. In lime, with prayers, in a queue." {n}No mockery; only a kind of weariness.{/n} "As you like. They are yours. I only came because nobody else was awake."
-{n}At the door she stops.{/n} "The boy with the arm will die before morning. He asked me to stay. I told him I would. Tell him yourself that I could not."''',
+"As crusaders. In lime, with prayers, in a queue." {n}She bares her strong white teeth.{/n} "Your chaplains leave them trembling all night, and you would rather keep them frightened than let them call on my Lady."
+{n}She snatches up the cup and empties it into the slop bucket.{/n} "Fetch a chaplain, then. Let him hear what they say about his goddess when the poppy wears off."''',
        c("Continue", "stop2")),
     nar("stop2", '''{n}You sit with the boy until the lamp goes out. He does not ask for her again, and he does not die before morning, and he does not die the morning after either. When the chaplains come round he is sitting up and asking for bread.{/n}
-{n}You never tell Elyanka. You think, from the way she does not ask, that she already knows, and that she has decided not to be glad.{/n}''',
+{n}Elyanka passes the open granary door as a chaplain brings him a loaf. She sees the little sword of Iomedae hanging at his throat again and spits into the gutter.{/n}''',
         c("Continue", flags=(WARDS_STOPPED,))),
     nar("let", '''{n}She bows her head to you, the smallest movement, and goes back to her cots. You stand at the door and watch her work down the ward, kneeling by each one, whispering, holding cups, wiping mouths, the grey robe dragging in the straw.{/n}
 {n}Near dawn the sergeant with the belly wound dies. He dies smiling, with her hand in his, and his last word is a name that is not Pharasma's.{/n}''',
         c("Continue", "let2")),
-    el("let2", '''"There," {n}she says, closing his eyes with two fingers.{/n} "He went to a feast instead of a courtroom. Is that so terrible?"
-{n}She stands, and her face in the grey light is very tired, and very satisfied, and not kind at all.{/n} "You let me, Commander. Your chaplains will never know. Somewhere tonight my Lady has one more guest than she had, and she knows whose ward it was. That is a debt, too. She keeps a very long book."''',
+    el("let2", '''"There," {n}she says, closing his eyes with two fingers.{/n} "He called for my Lady. Not yours."
+{n}She pulls the sergeant's blanket over his face and takes his untouched ration of wine.{/n} "I promised him a seat. I shall ask her to keep it for him." {n}She drinks, then kneels at the next cot. The lamp is burning low.{/n} "Your chaplains can have the burial. I had his last prayer."''',
        c("[Leave her with the dead.]", flags=(WARDS_LET,))),
     el("hopeless", '''"The hopeless." {n}She tastes it, and something like approval moves in her face.{/n} "Your chaplains have given up on eleven in this ward. I counted them before you came. You would let me have the ones the grey warden already has her hand on, and not one more."
-"You haggle over the dying, Commander. At the edge of the grave, you haggle." {n}She almost smiles.{/n} "Very well. Eleven. I will not touch the others. You have my word, and my word is worth more than a chaplain's, because I have nothing to gain by breaking it."''',
+"You haggle over the dying, Commander. At the edge of the grave, you haggle." {n}She almost smiles.{/n} "Eleven, then. Keep the rest for your chaplains." {n}She pushes the boy's cot aside to reach the dying sergeant.{/n} "Bring another lamp. I will not lose one of these to the dark."''',
        c("Continue", "hopeless2")),
     nar("hopeless2", '''{n}She keeps it. You watch her pass the boy with the arm without a glance, though he calls after her, and kneel by the eleven, one by one, with her cup and her whisper.{/n}
 {n}Seven of them die before dawn. All seven die quietly. The boy with the arm lives, and in the morning asks the chaplain where the grey lady went, and the chaplain does not know what he means.{/n}''',
@@ -705,8 +705,9 @@ visit(E + "beat.inquiry", "The paladin's questions", [
 "You will tell a paladin of the Inheritor that you gave sixty-one of her crusade's dead to a priestess of Urgathoa, for nothing, on a whim, to see what I would do." {n}A dry breath.{/n} "She will never look at you the same way again. Neither will I."
 "Go and do it, then. I will stay out of her road. I have no wish to be struck by a woman praying." {n}At the door she adds, without turning round:{/n} "It was very stupid, and very honest. I do not know which I dislike more."''',
        c("[Go and find Seelah.]", "confess")),
-    nar("mislead", '''{n}At your order, the watch drags two resurrection men out of the lower town, men who have sold bodies to a hedge-necromancer in Kenabres. The captain needs a confession about Elyanka's carts. He gets one with a locked cellar and a mailed fist. One of the prisoners confesses to things he did and to several he did not, and hangs at the south gate with a placard on his chest.{/n}
-{n}Seelah stands at the foot of the gallows with her chalk still in her pocket and watches him hang. Afterwards she unfolds the two carters' testimony before the captain. The captain looks toward the citadel.{/n}''',
+    nar("mislead", '''{n}At your order, the watch drags two resurrection men out of the lower town, men who have sold bodies to a hedge-necromancer in Kenabres. The captain needs a confession about Elyanka's carts. He gets one with a locked cellar and a mailed fist. One of the prisoners confesses to things he did and to several he did not.{/n}
+{n}Before the hangman can put the rope around his neck, Seelah climbs the gallows steps and thrusts the two carters' testimony at the captain.{/n} "Stop. He did not take those bodies. Read it."
+{n}She pulls the prisoner behind her. The captain calls up the guards and orders them to take her down: the sentence bears the Commander's seal. They crowd the narrow steps, shields pressed against her, until she must retreat or draw on crusaders. She comes down with the testimony crushed in her fist. The prisoner hangs at the south gate with a placard on his chest.{/n}''',
         c("Continue", "mislead_witness")),
     el("mislead2", '''"You hanged a man for my carts." {n}Elyanka does not sound shocked. Her pale eyes settle on you with fresh interest.{/n}
 "A thief, and a liar, and he would have died of something stupid in a year anyway. My Lady will have him, since your paladin's goddess will not." {n}She almost smiles.{/n} "Your paladin did not believe you, Commander. She has the carters. What she does not have is an order to bring my carts back over the border. Remember that she will go on not believing you, every day, for as long as you know each other."''',
@@ -727,7 +728,7 @@ visit(E + "beat.inquiry", "The paladin's questions", [
         c("[Let her take the testimony inside.]", flags=(INQUIRY_TRUTH, "trickster.secret.elyanka_siege_dead.known.seelah"))),
     n("mislead_witness", "Seelah", '''"These men saw her carts. Your prisoner did not drive them."
 {n}The captain refuses to reopen the Commander's gate order. The carts are already across the border. Seelah folds the testimony, slowly.{/n}
-"Then the chaplains will have this. And there will be a witness at the dead-house when the next bodies arrive. Hang whom you like. I counted sixty-one."''',
+"You dragged me off those steps to hang a man for another woman's crime. The chaplains will have his name and your order, along with this testimony. And a witness will be at the dead-house when the next bodies arrive. You will not get another confession out of that cellar while I am here."''',
         c("Continue", "mislead2")),
     n("hers_answer", "Seelah", '''"Did they suffer?" {n}Elyanka opens her mouth, but the paladin holds up a hand.{/n} "And do not tell me their families cannot. Sixty-one. I counted them. The chaplains will have that count, and the names when we find them. There will be a witness here when the next dead arrive."
 {n}She looks at you.{/n} "You let those carts through. I will remember that too."''',

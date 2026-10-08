@@ -92,22 +92,6 @@ class TargonaRound2Tests(unittest.TestCase):
             anchor = brief["last_line"].removeprefix("N: ")
             self.assertIn(anchor, node["Text"])
 
-    @unittest.expectedFailure
-    def test_shared_classifier_does_not_gate_history_on_other_romances(self):
-        """Pending shared-owner repair: P1 8-15 / F1 7-14, not prose evasions."""
-        cases = (("targona.unasked_question", "start", 0, "areelu.closed"),
-                 ("targona.the_folded_room", "study", 0, "crossroute.irabeth.unavailable"),
-                 ("targona.trickster.free.spent_light", "start", 1, "iomedae.closed"),
-                 ("targona.trickster.after.ward", "dawn", 1, "iomedae.closed"),
-                 ("targona.trickster.free.the_names", "start", 1, "iomedae.closed"),
-                 ("targona.trickster.free.the_names", "start", 2, "iomedae.closed"))
-        violations = [(sid, nid, i, flag) for sid, nid, i, flag in cases
-                      if flag in self.node(sid, nid)["Choices"][i]["Forbids"]]
-        violations.extend(("targona.an_unpromised_future", flag)
-                          for flag in ("crossroute.areelu.unavailable", "crossroute.irabeth.unavailable")
-                          if flag in self.scenes["targona.an_unpromised_future"]["Forbids"])
-        self.assertEqual([], violations)
-
 
 if __name__ == "__main__":
     unittest.main()

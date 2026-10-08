@@ -1,7 +1,7 @@
 {
-  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Possessive affection does not redeem her. Concrete short threats and questions; no therapy language, sentimental diagnosis, maxims or narrator excuses. Write fresh non-graphic dialogue, not recycled cue quotations.",
-  "scene": "NON-GRAPHIC CONTINUITY SCENE: Chapter 3 or 5, authored north-ridge watchtower outside Drezen. Devarra and Commander are alone after her existing accepted bargain and ordinary annual forearm tariff collection. Focus on her choice to receive the visitor, the coming dawn and the unfinished account. End at the cut. Do not depict or describe sexual acts, sexual anatomy, arousing bodily detail or eroticized injury. No witnesses inside the tower; the Storyteller has left the path. No new bite or cost. Resume at the existing bandaged-arm morning. The first visit happens once.",
-  "last_line": "N: The fire burns low around the ruined tower. Before dawn, the path remains empty.",
+  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Possessive affection does not redeem her. Concrete short threats and questions; no therapy language, sentimental diagnosis, maxims or narrator excuses. Write fresh dialogue at her native register, not recycled cue quotations.",
+  "scene": "EXPLICIT CONTINUATION: Chapter 3 or 5, the authored north-ridge watchtower outside Drezen. Devarra and the Commander are alone after the accepted annual forearm bite, already bandaged. She has left the burning brush for the unlit stone; the night wind has carried away the heat, and the Commander has tested the scales by touch before undressing. Continue the mutually initiated encounter beneath her wing with bodily detail and sexual acts consistent with her established dragon body and the Commander variant. Her invitation is separate from the tariff; no extra payment or bite. Keep the fire outside their resting place, no immunity or new protective item. No witnesses or other participants. Resume at the exact bandaged morning.",
+  "last_line": "N: The brush has burned to a black ring. Dawn reaches the doorway where you left your armor. You lie beneath her wing on the unlit side of the tower. Her scales have pressed red marks into your shoulder and hip. The fleece around your forearm is spotted with blood; the crescent beneath it throbs when you move.",
   "speakers": {
     "D": "Devarra"
   },
@@ -14,18 +14,12 @@
   "max_lines": 12,
   "slot_id": "devarra.tower.first_bite.explicit.1",
   "default_text": "{n}The fire burns low around the ruined tower. Before dawn, the path remains empty.{/n}",
-  "facts": [
-    "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).",
-    "She held the Storyteller captive and demanded an impressive story in exchange for his life.",
-    "Greybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.",
-    "The Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.",
-    "No verified native humanoid transformation or sexual anatomy is supplied."
-  ],
+  "facts": "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).\nShe held the Storyteller captive and demanded an impressive story in exchange for his life.\nGreybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.\nThe Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.\nNo verified native humanoid transformation or sexual anatomy is supplied.",
   "required_beats": [
     "Preserve her independent invitation; rescue did not buy affection.",
     "The existing pact payment has already occurred; do not repeat it or conflate it with intimacy.",
     "Keep her dragon form; do not invent anatomy, shapechange or fire immunity for the Commander.",
-    "Leave the eventual private events undescribed; the morning has the existing mark and bandage.",
+    "Continue the initiating touch into the reserved explicit encounter; preserve her appetite and independent invitation.",
     "Keep the flight and legacy-return histories distinct in predecessor nodes, not mixed memories inside this slot."
   ],
   "authored_continuity": {
@@ -33,5 +27,5 @@
     "history": "Only the already earned living/committed history of its existing host scene.",
     "resumption": "devarra.tower.first_bite/bite or bite_free -> reserved node -> morning -> after"
   },
-  "content_scope": "Non-graphic romance and continuity only; this is not a prompt for graphic sexual generation."
+  "content_scope": "Reserved explicit continuation for the Commander and Devarra only, for the separate writer. Both Commander variants are required. Preserve her sapient dragon body, cruelty and appetite; no invented humanoid transformation or undocumented dragon sexual organs."
 }

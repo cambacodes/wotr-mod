@@ -8,11 +8,11 @@
   },
   "targona.trickster.after.quiet_ward.explicit.1": {
     "scene": "targona.trickster.after.quiet_ward",
-    "node": "targona.trickster.after.quiet_ward.explicit.1"
+    "node": "morning"
   },
   "targona.trickster.after.ward.explicit.1": {
     "scene": "targona.trickster.after.ward",
-    "node": "targona.trickster.after.ward.explicit.1"
+    "node": "morning"
   },
   "targona.trickster.epilogue.commit.explicit.1": {
     "scene": "targona.trickster.epilogue.commit",
@@ -23,6 +23,6 @@
   },
   "targona.ward_evening.explicit.1": {
     "scene": "targona.ward_evening",
-    "node": "targona.ward_evening.explicit.1"
+    "node": "bell"
   }
 }

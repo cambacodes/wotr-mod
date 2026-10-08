@@ -51,6 +51,14 @@ internal static class Program
             return BlueprintGuid.Parse(string.Concat(sha.ComputeHash(Encoding.UTF8.GetBytes("RanRomance.Tirabade.v1/" + name)).Take(16).Select(b => b.ToString("x2"))));
     }
 
+    private static void CheckNextPage(Scene scene, Tirabade.Node node, Choice choice, int index, BlueprintAnswer answer)
+    {
+        string nodeId = scene.Id + "." + node.Id;
+        var expected = choice.Check != null ? new[] { Id("check." + nodeId + "." + index) }
+            : Rules.NextNodes(choice).Select(next => Id("page." + scene.Id + "." + next)).ToArray();
+        Check(answer.NextCue.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Wrong next page: " + nodeId);
+    }
+
     private static T Reference<T>(string guid) where T : BlueprintReferenceBase, new()
     {
         var reference = new T();
@@ -159,12 +167,13 @@ internal static class Program
         var sequenceIds = new[] { "ed4baeaf69394754902344f0598d7e5a", "ced82f299d246f448b48afa0b630dd70" };
         // E12b anchors are native units the game loads like any other; a presence whose anchor does not resolve is skipped.
         var unitIds = story.Revivals.Values.Select(r => r.Unit).Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)))
+            .Concat(story.Scenes.SelectMany(Rules.ParticipantContactUnits))
             .Concat(story.Presences.Values.Where(p => p.At?.NearUnit != null).Select(p => p.At!.NearUnit!))
             .Concat(story.Presences.Values.Select(p => p.Unit))
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(KianaNativeTextManagedTests.NativeIds(story)).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
             RunSuite("SeelahRecoveryTests", () => SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check));
@@ -447,6 +456,7 @@ internal static class Program
         NativeGateManagedTests.Seed(native, Check);
         TerendelevNativeManagedTests.Seed(native, Check); // eng7-f6d
         NativeQ3RecoveryManagedTests.Seed(native, Check);
+        KianaNativeTextManagedTests.Seed(story, native, Check);
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
         main.GetField("story", PrivateStatic)!.SetValue(null, story);
@@ -599,8 +609,8 @@ internal static class Program
                 "Optional epilogue omits or reorders addon endings.");
         }
         var contacts = (Dictionary<string, BlueprintUnit>)main.GetField("contactUnits", PrivateStatic)!.GetValue(null)!;
-        var expectedContacts = story.Scenes.Where(s => s.ContactUnit != null)
-            .SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct().ToArray();
+        var expectedContacts = story.Scenes.SelectMany(s => Rules.ParticipantContactUnits(s)
+            .Concat(s.ContactUnit == null ? Array.Empty<string>() : new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits))).Distinct().ToArray();
         Check(new HashSet<string>(contacts.Keys).SetEquals(expectedContacts), "Build omitted or added native contact observers.");
         foreach (string guid in expectedContacts)
             Check(contacts[guid].AssetGuid == BlueprintGuid.Parse(guid), "Contact observer uses the wrong unit: " + guid);
@@ -743,9 +753,23 @@ internal static class Program
                 int kindLine = ReferenceEquals(node, scene.Nodes[0]) && Rules.IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     && (Rules.KindOf(scene) == "letter" || Rules.KindOf(scene) == "invitation" || Rules.KindOf(scene) == "sending" || Rules.KindOf(scene) == "memory") ? 1 : 0;
                 Check(page!.Cues.Count == kindLine + (string.IsNullOrWhiteSpace(node.Text) ? 0 : 1) + node.Paragraphs.Count && page.Cues.All(c => c.Get() is BlueprintCue), "Missing page cue: " + nodeId);
+                var receiptChoice = scene.Nodes.SelectMany(n => n.Choices).SingleOrDefault(c => c.PostPayment == node.Id);
+                if (receiptChoice != null)
+                    Check(page.Conditions.Conditions.Single() is Tirabade.Main.RouteCondition receipt
+                        && ReferenceEquals(receipt.ReceiptChoice, receiptChoice) && ReferenceEquals(receipt.PaidScene, scene),
+                        "Receipt page lost its paid transaction guard: " + nodeId);
+                if ((receiptChoice != null || scene.ParticipantContacts.Count > 0) && !string.IsNullOrWhiteSpace(node.Text))
+                {
+                    var speech = ResourcesLibrary.TryGetBlueprint(Id("cue." + nodeId)) as BlueprintCue;
+                    Check(speech != null && speech.Conditions.Conditions.Single() is Tirabade.Main.RouteCondition live
+                        && !live.ContactLost && (receiptChoice != null
+                            ? ReferenceEquals(live.ReceiptChoice, receiptChoice) && ReferenceEquals(live.PaidScene, scene)
+                            : ReferenceEquals(live.Continuation, scene) && live.ReceiptChoice == null),
+                        "Living book speech lost its contact or paid receipt guard: " + nodeId);
+                }
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
-                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0 || scene.ParticipantContacts.Count > 0) ? scene : null;
                 // The frozen contracts cover old exits; new inert one-answer pages use the same runtime rule.
                 var sole = node.Choices.Count == 1 ? node.Choices[0] : null;
                 bool legacyEnding = genericEndingExits.Contains(nodeId);
@@ -828,9 +852,28 @@ internal static class Program
                         && ReferenceEquals(((Tirabade.Main.RouteCondition)answer.SelectConditions.Conditions.Single()).Continuation, continuation)
                         && ReferenceEquals(action!.Continuation, continuation), "Contact continuation is not guarded at visibility, selection and mutation: " + nodeId);
                     Check(ReferenceEquals(action!.Complete, !ending && choice.Next == null && choice.Check == null && !choice.Abort ? scene : null), "Choice completes at the wrong point: " + nodeId);
-                    var expected = choice.Check != null ? new[] { Id("check." + nodeId + "." + i) }
-                        : choice.Next == null ? Array.Empty<BlueprintGuid>() : new[] { Id("page." + scene.Id + "." + choice.Next) };
-                    Check(answer.NextCue.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Wrong next page: " + nodeId);
+                    CheckNextPage(scene, node, choice, i, answer);
+                    if (choice.Crusade?.Amount < 0 && choice.Next == null && choice.Check == null)
+                    {
+                        // Every terminal payment must reject an undeclared continuation, even when a receipt is declared.
+                        var original = answer.NextCue.Cues.ToArray();
+                        bool rejected = false;
+                        try
+                        {
+                            answer.NextCue.Cues.Add(Reference<BlueprintCueBaseReference>(page.AssetGuid.ToString()));
+                            CheckNextPage(scene, node, choice, i, answer);
+                        }
+                        catch (InvalidOperationException error) when (error.Message == "Wrong next page: " + nodeId)
+                        {
+                            rejected = true;
+                        }
+                        finally
+                        {
+                            answer.NextCue.Cues.Clear();
+                            answer.NextCue.Cues.AddRange(original);
+                        }
+                        Check(rejected, "Terminal payment accepts an undeclared next page: " + nodeId);
+                    }
                     if (choice.Check != null)
                     {
                         var roll = answer.NextCue.Cues.Single().Get() as BlueprintCheck;
@@ -881,6 +924,7 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) RunSuite("NativeEpilogueEditManagedTests.RunAfterlogue", () => NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunKianaSiblings", () => NativeEpilogueEditManagedTests.RunKianaSiblings(story, native, Id, Check));
         RunSuite("NativeQ3RecoveryManagedTests", () => NativeQ3RecoveryManagedTests.Run(story, Id, Check));
+        RunSuite("KianaNativeTextManagedTests", () => KianaNativeTextManagedTests.Run(story, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunDelivery", () => NativeEpilogueEditManagedTests.RunDelivery(story, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunDreamPage", () => NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check));
         RunSuite("NativeEpilogueEditManagedTests.RunJewelerBowl", () => NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check));

@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "job_id": "J05b-pending-choice-appends",
+  "actor": "codex",
+  "kind": "scaffold",
+  "status": "awaiting-coordinator-approval",
+  "authored": true,
+  "rulings": [
+    5,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "approval_rule": "Exact coordinator-reviewed per-scene before/after approval only after candidate generation; preserve all old prose and choices. No lock updates or enrollment authorized.",
+  "hosts": [
+    {
+      "scene": "hepzamirah.trickster.body.terms",
+      "before": "5aed4469450ecf249332b10ad56275f7fa7bd4a04b5694e816cc259d3123ca90",
+      "rulings": [
+        5
+      ],
+      "surface": "choice",
+      "append_only": true,
+      "label_pattern": "[PROSE PENDING: choice - <intent>]",
+      "intents": [
+        "Surrender authored mundane trap instructions; carrying and lost knowledge must be witnessed."
+      ]
+    },
+    {
+      "scene": "areelu.trickster.wager.struck",
+      "before": "887c67693e219a576e5e93afa6469b905fb6512a431f87f82f00f6d12f9c7cc4",
+      "rulings": [
+        10,
+        11,
+        13,
+        14
+      ],
+      "surface": "choice",
+      "append_only": true,
+      "label_pattern": "[PROSE PENDING: choice - <intent>]",
+      "intents": [
+        "Authorize distinct burial stock, shelter timber/tools, tested wounded withdrawal and triage instruments through the existing wager."
+      ]
+    },
+    {
+      "scene": "areelu.trickster.rivalry.lens",
+      "before": "f4df64b6d72f0df8175a407cd4b2e5a7aac26aaa84f238324a0bb9421ebb9c22",
+      "rulings": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "surface": "choice",
+      "append_only": true,
+      "label_pattern": "[PROSE PENDING: choice - <intent>]",
+      "intents": [
+        "Authorize distinct material concessions through the current lens/laboratory contact; inert preparation sample and witnessed control assay remain separate acts."
+      ]
+    }
+  ],
+  "limits": [
+    "Ruling 16 authorizes packet readers only; it adds no locked-host prose waiver.",
+    "An authorization or lens cannot hand over physical goods. Use the approved actual pickup/use/inspection witnesses.",
+    "New nodes/scenes belong outside locked hosts and need their own exact registry entries; extra emitted scenes still require J07 schedule approval.",
+    "After text/source/export/registry changes, regenerate approval identities and obtain a new coordinator signature."
+  ]
+}

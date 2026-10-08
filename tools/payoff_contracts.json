@@ -1022,7 +1022,25 @@
         "open_routes": [
           "aranka"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        }
+      ]
     },
     "areelu": {
       "provenance": "derived from handoffs/trickster/areelu.md and shipped commitment producers",
@@ -1124,7 +1142,15 @@
           "predicate": "areelu.payoff.partner"
         },
         {
+          "scene": "areelu.trickster.report.convicts",
+          "predicate": "areelu.payoff.partner"
+        },
+        {
           "scene": "areelu.trickster.report.dagger",
+          "predicate": "areelu.payoff.partner"
+        },
+        {
+          "scene": "areelu.trickster.report.commission",
           "predicate": "areelu.payoff.partner"
         },
         {
@@ -1133,6 +1159,10 @@
         },
         {
           "scene": "areelu.trickster.report.visitors",
+          "predicate": "areelu.payoff.partner"
+        },
+        {
+          "scene": "areelu.trickster.report.rival",
           "predicate": "areelu.payoff.partner"
         },
         {
@@ -1581,7 +1611,33 @@
         "open_routes": [
           "arueshalae"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        }
+      ]
     },
     "camellia": {
       "provenance": "derived from handoffs/trickster/camellia.md and shipped commitment producers; coffin life requires observed death, while the validated native-death battlefield scene preserves its legacy earned return",
@@ -1713,7 +1769,13 @@
         "open_routes": [
           "camellia"
         ]
-      }
+      },
+      "absence_surfaces": [
+        {
+          "scene": "camellia.trickster.epilogue.refused_living",
+          "reason": "personal late living refusal; no romantic payoff"
+        }
+      ]
     },
     "chadali": {
       "provenance": "derived from handoffs/trickster/chadali.md and shipped commitment producers",
@@ -2886,6 +2948,40 @@
         "gesmerha.future_friends",
         "gesmerha.future_open",
         "gesmerha.parted"
+      ],
+      "absence_surfaces": [
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        }
       ]
     },
     "hepzamirah": {
@@ -4289,7 +4385,69 @@
         "open_routes": [
           "jerribeth"
         ]
-      }
+      },
+      "scaffolding_surfaces": [
+        {
+          "scene": "jerribeth.small_print",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.purchaser_answer",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.counterfeit_hinge",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.counterfeit_clerk",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.counterfeit_after",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.settlement_visit",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.ordinary",
+          "retired": true,
+          "classification": "retired save surface; no live payoff"
+        },
+        {
+          "scene": "jerribeth.commission",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.offered_signature",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.counterfeit_guest",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.counterfeit_audience",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        },
+        {
+          "scene": "jerribeth.room_measure",
+          "retired": false,
+          "classification": "campaign scene; existing earned payoff predicates unchanged"
+        }
+      ]
     },
     "kaylessa": {
       "provenance": "derived from handoffs/trickster/kaylessa.md and shipped commitment producers",
@@ -7200,6 +7358,14 @@
         {
           "scene": "nenio.trickster.epilogue.kenabres_pending",
           "reason": "Integrated negative/pending/guardian outcome; no continuing Commander romance is asserted. Existing earned history and independent availability remain."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
         }
       ]
     },
@@ -8937,6 +9103,38 @@
         {
           "scene": "soana.partner.epilogue.broken",
           "reason": "Integrated negative/pending/guardian outcome; no continuing Commander romance is asserted. Existing earned history and independent availability remain."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "reason": "Nonromantic campaign reaction; no commitment, attraction, return or relationship progression granted."
         }
       ]
     },
@@ -13647,6 +13845,142 @@
       "requires": [
         "camellia.trickster.death_observed"
       ]
+    },
+    {
+      "scene": "targona.trickster.react.ix_a.yaniel",
+      "requires": [
+        "trickster",
+        "targona.present_now",
+        "yaniel.present_now",
+        "targona.trickster.in_drezen",
+        "yaniel.trickster.returned"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.galfrey.queen",
+      "requires": [
+        "trickster",
+        "galfrey.present_now",
+        "galfrey.final",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.galfrey.crown",
+      "requires": [
+        "trickster",
+        "galfrey.present_now",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.crown_reclaimed",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.galfrey.kitrane",
+      "requires": [
+        "trickster",
+        "galfrey.present_now",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.kitrane_forever",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.targona",
+      "requires": [
+        "trickster",
+        "targona.present_now",
+        "targona.trickster.in_drezen",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "iomedae.trickster.react.ix_a.yaniel",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "yaniel.trickster.returned",
+        "iomedae.reachable_by_letter",
+        "iomedae.trickster.first_spoken",
+        "iomedae.trickster.disputation.called"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded",
+      "channel_requires_any": [
+        "iomedae.banner_in_hand",
+        "iomedae.trickster.order_banner"
+      ]
+    },
+    {
+      "scene": "yaniel.trickster.react.ix_a.galfrey.queen",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "galfrey.present_now",
+        "yaniel.trickster.returned",
+        "galfrey.final"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
+    },
+    {
+      "scene": "yaniel.trickster.react.ix_a.galfrey.crown",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "galfrey.present_now",
+        "yaniel.trickster.returned",
+        "galfrey.trickster.returned",
+        "galfrey.trickster.crown_reclaimed"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
+    },
+    {
+      "scene": "yaniel.trickster.react.ix_a.galfrey.kitrane",
+      "requires": [
+        "trickster",
+        "yaniel.present_now",
+        "galfrey.present_now",
+        "yaniel.trickster.returned",
+        "galfrey.trickster.returned"
+      ],
+      "classification": "nonromantic_reaction",
+      "provenance": "ix-a interaction gap: no commitment, return, or household payoff awarded"
     }
   ],
   "evidence": {
@@ -18842,7 +19176,8 @@
     {
       "requires": [
         "soana.partner.corven_together",
-        "soana.outcome.route_open"
+        "soana.outcome.route_open",
+        "soana.round3.arrangement"
       ],
       "forbids": [],
       "any_groups": [],
@@ -19260,7 +19595,8 @@
     },
     {
       "requires": [
-        "soana.partner.corven_together"
+        "soana.partner.corven_together",
+        "soana.round3.arrangement"
       ],
       "forbids": [],
       "any_groups": [],
@@ -20151,6 +20487,51 @@
           "soana.trickster.epilogue.living_late",
           "round2_morning",
           4
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_share_start",
+          19
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_secret_start",
+          19
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "round2_vow",
+          1
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_share_start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_secret_start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          18
+        ],
+        [
+          "soana.lastcall.page",
+          "page",
+          24
         ]
       ]
     },
@@ -34172,6 +34553,46 @@
           "soana.lastcall.page",
           "page",
           21
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_share_start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_secret_start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "round2_vow",
+          0
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_share_start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_secret_start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          17
         ]
       ],
       "provenance": "endings job 3: selected local graph or explicit arrival/correspondence history; campaign stance remains guarded until superseded on-page"
@@ -34357,7 +34778,8 @@
     {
       "requires": [
         "soana.partner.corven_together",
-        "soana.partner.homecoming_kept"
+        "soana.partner.homecoming_kept",
+        "soana.round3.arrangement"
       ],
       "forbids": [],
       "any_groups": [],
@@ -39469,7 +39891,1240 @@
         ]
       ],
       "provenance": "endings job 3: selected local graph or explicit arrival/correspondence history; campaign stance remains guarded until superseded on-page"
+    },
+    {
+      "requires": [
+        "soana.partner.corven_together",
+        "soana.trickster.friends"
+      ],
+      "forbids": [
+        "soana.round3.arrangement"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.ending_kept_life",
+          "start",
+          20
+        ],
+        [
+          "soana.ending_chosen_visits",
+          "start",
+          19
+        ],
+        [
+          "soana.ending_familiar_company",
+          "start",
+          19
+        ],
+        [
+          "soana.ending_sacrifice",
+          "start",
+          19
+        ],
+        [
+          "soana.ending_beyond_the_forest",
+          "start",
+          18
+        ],
+        [
+          "soana.ending_unrecognizable_return",
+          "start",
+          15
+        ],
+        [
+          "soana.ending_aeon",
+          "start",
+          10
+        ],
+        [
+          "soana.ending_unfinished_sacrifice",
+          "start",
+          15
+        ],
+        [
+          "soana.ending_unfinished_ascent",
+          "start",
+          15
+        ],
+        [
+          "soana.ending_unfinished_change",
+          "start",
+          15
+        ],
+        [
+          "soana.partner.epilogue.broken",
+          "start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.knot",
+          "start",
+          21
+        ],
+        [
+          "soana.trickster.epilogue.luck",
+          "start",
+          19
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "start",
+          24
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_share_start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_secret_start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start_answer",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start_chosen",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "start",
+          19
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_share_start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_secret_start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start_answer",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start_chosen",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.declined",
+          "start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.unfinished",
+          "start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.unbound",
+          "start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.unvowed",
+          "start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.friends",
+          "start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.slack",
+          "start",
+          21
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          17
+        ],
+        [
+          "soana.lastcall.page",
+          "page",
+          22
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.partner.corven_together"
+      ],
+      "forbids": [
+        "soana.round3.arrangement",
+        "soana.trickster.friends"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.ending_kept_life",
+          "start",
+          21
+        ],
+        [
+          "soana.ending_chosen_visits",
+          "start",
+          20
+        ],
+        [
+          "soana.ending_familiar_company",
+          "start",
+          20
+        ],
+        [
+          "soana.ending_sacrifice",
+          "start",
+          20
+        ],
+        [
+          "soana.ending_beyond_the_forest",
+          "start",
+          19
+        ],
+        [
+          "soana.ending_unrecognizable_return",
+          "start",
+          16
+        ],
+        [
+          "soana.ending_aeon",
+          "start",
+          11
+        ],
+        [
+          "soana.ending_unfinished_sacrifice",
+          "start",
+          16
+        ],
+        [
+          "soana.ending_unfinished_ascent",
+          "start",
+          16
+        ],
+        [
+          "soana.ending_unfinished_change",
+          "start",
+          16
+        ],
+        [
+          "soana.partner.epilogue.broken",
+          "start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.knot",
+          "start",
+          22
+        ],
+        [
+          "soana.trickster.epilogue.luck",
+          "start",
+          20
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "start",
+          25
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_share_start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_secret_start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start_answer",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.commit",
+          "partner_exclusive_start_chosen",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "start",
+          20
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_share_start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_secret_start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start_answer",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.luck_late",
+          "partner_exclusive_start_chosen",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.declined",
+          "start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.unfinished",
+          "start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.unbound",
+          "start",
+          19
+        ],
+        [
+          "soana.trickster.epilogue.unvowed",
+          "start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.friends",
+          "start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.slack",
+          "start",
+          22
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          18
+        ],
+        [
+          "soana.lastcall.page",
+          "page",
+          23
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.partner.corven_together",
+        "soana.trickster.friends"
+      ],
+      "forbids": [
+        "soana.partner.homecoming_kept",
+        "soana.round3.arrangement"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.ending_native_loss",
+          "start",
+          15
+        ],
+        [
+          "soana.ending_native_loss",
+          "camellia",
+          15
+        ],
+        [
+          "soana.ending_native_loss",
+          "dead",
+          15
+        ],
+        [
+          "soana.ending_native_loss",
+          "forest",
+          15
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "start",
+          15
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "camellia",
+          15
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "dead",
+          15
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "forest",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.luck_lost",
+          "start",
+          15
+        ],
+        [
+          "soana.trickster.epilogue.by_your_hand",
+          "start",
+          19
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.partner.corven_together"
+      ],
+      "forbids": [
+        "soana.partner.homecoming_kept",
+        "soana.round3.arrangement",
+        "soana.trickster.friends"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.ending_native_loss",
+          "start",
+          16
+        ],
+        [
+          "soana.ending_native_loss",
+          "camellia",
+          16
+        ],
+        [
+          "soana.ending_native_loss",
+          "dead",
+          16
+        ],
+        [
+          "soana.ending_native_loss",
+          "forest",
+          16
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "start",
+          16
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "camellia",
+          16
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "dead",
+          16
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "forest",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.luck_lost",
+          "start",
+          16
+        ],
+        [
+          "soana.trickster.epilogue.by_your_hand",
+          "start",
+          20
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.partner.corven_together",
+        "soana.partner.homecoming_kept",
+        "soana.trickster.friends"
+      ],
+      "forbids": [
+        "soana.round3.arrangement"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.ending_native_loss",
+          "start",
+          17
+        ],
+        [
+          "soana.ending_native_loss",
+          "camellia",
+          17
+        ],
+        [
+          "soana.ending_native_loss",
+          "dead",
+          17
+        ],
+        [
+          "soana.ending_native_loss",
+          "forest",
+          17
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "start",
+          17
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "camellia",
+          17
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "dead",
+          17
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "forest",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.luck_lost",
+          "start",
+          17
+        ],
+        [
+          "soana.trickster.epilogue.by_your_hand",
+          "start",
+          21
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.partner.corven_together",
+        "soana.partner.homecoming_kept"
+      ],
+      "forbids": [
+        "soana.round3.arrangement",
+        "soana.trickster.friends"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.ending_native_loss",
+          "start",
+          18
+        ],
+        [
+          "soana.ending_native_loss",
+          "camellia",
+          18
+        ],
+        [
+          "soana.ending_native_loss",
+          "dead",
+          18
+        ],
+        [
+          "soana.ending_native_loss",
+          "forest",
+          18
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "start",
+          18
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "camellia",
+          18
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "dead",
+          18
+        ],
+        [
+          "soana.ending_unfinished_loss",
+          "forest",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.luck_lost",
+          "start",
+          18
+        ],
+        [
+          "soana.trickster.epilogue.by_your_hand",
+          "start",
+          22
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.trickster.accounting_invited"
+      ],
+      "forbids": [
+        "soana.partner.quiet_homecoming"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.unvowed",
+          "start",
+          0
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "soana.trickster.accounting_invited",
+        "soana.partner.quiet_homecoming"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.unvowed",
+          "start",
+          19
+        ]
+      ],
+      "provenance": "contracts-r3: reviewed Soana family friendship/refusal, southern history versus earned homecoming, and invited home/bank continuations; existing receipts only"
+    },
+    {
+      "requires": [
+        "jerribeth.marhevok_in_sanctum"
+      ],
+      "forbids": [
+        "jerribeth.marhevok_dead",
+        "gesmerha.marhevok_rules",
+        "jerribeth.trickster.returned",
+        "jerribeth.partner.exclusive_chosen"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          16
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          16
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.marhevok_in_sanctum",
+        "jerribeth.partner.exclusive_chosen"
+      ],
+      "forbids": [
+        "jerribeth.marhevok_dead",
+        "gesmerha.marhevok_rules",
+        "jerribeth.trickster.returned"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          19
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          19
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.share"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          20
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          20
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.exclusive",
+        "jerribeth.partner_exclusive_refused"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          21
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          21
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.exclusive",
+        "jerribeth.partner.exclusive_chosen"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          22
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          22
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret"
+      ],
+      "forbids": [
+        "jerribeth.partner_secret_exposed"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          9
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          9
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_secret_exposed",
+        "jerribeth.partner_exposure.plant"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          10
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          10
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_secret_exposed",
+        "jerribeth.partner_exposure.chief"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          11
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          11
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [],
+      "forbids": [
+        "jerribeth.partner_stance.share",
+        "jerribeth.partner_stance.exclusive",
+        "jerribeth.partner_stance.secret"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_ba26446d6a",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_1f6916258b",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_80874e4796",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_382806bce3",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_e3b0c44298",
+          12
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_8907e0f2fc",
+          26
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          25
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_torn_mind_e3b0c44298",
+          12
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_exposure.plant"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          23
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_e5acfdefbc",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          23
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_401ea037de",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          23
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
+    },
+    {
+      "requires": [
+        "jerribeth.partner_stance.secret",
+        "jerribeth.partner_exposure.chief"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_5aea7663cf",
+          24
+        ],
+        [
+          "jerribeth.trickster.epilogue.commit",
+          "job3_local_collected_d649e1ed5e",
+          24
+        ]
+      ],
+      "provenance": "endings4: resolved Jerribeth terminal history relocated from its saved exit; selected local terms and native fate witnesses retained, no new gate"
     }
   ],
-  "stance_evidence": "resolve-eng3: frozen integrated stance/partner paragraph guards, including existing acceptance receipts, refusal and exposure histories. No new prices, commitment states or reconciliation."
+  "stance_evidence": "resolve-eng3: frozen integrated stance/partner paragraph guards, including existing acceptance receipts, refusal and exposure histories. No new prices, commitment states or reconciliation.",
+  "minachiv_retired_surfaces": {
+    "minachiv.the_second_address": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.a_factor_at_the_table": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_answer_after_business": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_key_in_your_hand": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_paper_she_kept": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_man_who_remembers": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_entrance_she_wants": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.who_keeps_the_house": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_cost_in_daylight": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence."
+  }
 }

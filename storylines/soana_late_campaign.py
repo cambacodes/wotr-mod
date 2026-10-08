@@ -58,7 +58,7 @@ memory_nodes = [
 {n}Then it had used her own voice, younger and furious, and you watched her go pale and keep speaking.{/n}
 {n}You cannot tell what is out there tonight. You remember what she taught you.{/n}''',
         *VOICE_CHOICES),
-    n("told", "Narrator", '''{n}Before the working she told Meret what the thing would do, with you standing beside them. "If the voices come afterwards, they are scraps it has left behind. Do not follow them into the trees." And, when Meret asked whether it would keep her brother: "A stolen sound is not your brother."{/n}
+    n("told", "Narrator", '''{n}Before the working she told Mervika what the thing would do, with you standing beside them. "If the voices come afterwards, they are scraps it has left behind. Do not follow them into the trees." And, when Mervika asked whether it would keep her brother: "A stolen sound is not your brother."{/n}
 {n}You cannot tell what is out there tonight. You remember what she taught you.{/n}''',
         *VOICE_CHOICES),
     n("silent", "Narrator", '''{n}You put another stick on the fire. The voice tells you again that you have let it get low, in the same words and the same tone, and then a third time.{/n}
@@ -135,19 +135,19 @@ s("when_the_road_returns", "When the road returns", '"I wondered what you would 
 {n}She wipes sap from her fingers onto her skirt.{/n}
 "I still have no news of him. A thing stealing his voice knew no more than I did. It never stole that laugh. It could not have borne the scolding."''', c('[Return toward the upper path with her.]', "path")),
     n("lost", "Soana", '''{n}A few seedlings stand in a sheltered corner. Between them the soil is bare. Soana kneels and lifts a fallen twig from a tender shoot.{/n}
-"Meret's seed. Some took. The rest has given me ample cause to curse."
+"Mervika's seed. Some took. The rest has given me ample cause to curse."
 "You have begun again."
 "A forest does not wait for me to finish mourning it. Nor do dead stems turn green because I plant beside them. Look up there."
 {n}Pale sticks stand farther along the slope. The dry ridge where the thing was contained has no green shoots.{/n}
 "The bowl stays shut. The shrine stays shut. Let the fools who think silence means safety put their own fingers into a sleeping adder's mouth."
 {n}She rises, brushing soil from her palm.{/n}
-"Meret has found something beyond the hollow. She wants me to see it before her camp leaves. I was beginning to think you would arrive after every last hunter had gone. Then I could have blamed the whole lot of you at once."
-{n}She takes up her stick and points toward the upper path.{/n}''', c('[Ask what Meret found.]', "path")),
-    n("path", "Soana", '''{n}Meret waits at the upper bend with a cut length of wire wrapped around a stick. Her bow is on her back, the worn family mark at her belt.{/n}
+"Mervika has found something beyond the hollow. She wants me to see it before her camp leaves. I was beginning to think you would arrive after every last hunter had gone. Then I could have blamed the whole lot of you at once."
+{n}She takes up her stick and points toward the upper path.{/n}''', c('[Ask what Mervika found.]', "path")),
+    n("path", "Soana", '''{n}Mervika waits at the upper bend with a cut length of wire wrapped around a stick. Her bow is on her back, the worn family mark at her belt.{/n}
 "Snares beyond the hollow," {n}she says.{/n} "Not ours. Fresh hazel cuts, too, and sacks dragged over the ground. This one was empty. I left the others alone."
 "You have kept your ankles, then," {n}Soana says.{/n}
 "And I intend to keep up with my camp when it leaves."
-{n}Soana tightens her mouth. Meret holds the wire out to you.{/n}
+{n}Soana tightens her mouth. Mervika holds the wire out to you.{/n}
 "I watched the eastern paths, as I said I would. Now you can follow what I found. Do not wait for me to settle here and grow a beard."
 "I had not asked you to."
 "Good. She has asked enough for both of you."
@@ -157,20 +157,20 @@ s("when_the_road_returns", "When the road returns", '"I wondered what you would 
         c('"The carts stayed out of the cleft. Let us see who went beyond the path."', "cleft", requires=("soana.path_cleft",)),
         c('"We let them shelter from floods, not lay snares. Let us find the trapper."', "flood", requires=("soana.path_flood",))),
     n("cleft", "Soana", '''"Varn still carries his loads through. I hear his curses at the narrow turn before I see his face. He has found several new ones."
-{n}Meret gives a short laugh.{/n}
+{n}Mervika gives a short laugh.{/n}
 "These cuts are beyond his carrying path. We follow the feet that went there. I will not frighten every fool carrying a sack and let the one with the knife escape."
 "What would you have done without me?"
 "Tracked them. Caught them. Found out whether a sharp word or a sharper fright would put some sense into their heads. Do you suppose I sat on that stone waiting for a Commander to tell me how?"
-{n}She gives the wire back to Meret.{/n}
+{n}She gives the wire back to Mervika.{/n}
 "Leave it outside the cave. I want to see whether the next trap has the same knots. And mind the loose end. Whoever made it did not trouble to smooth the cut."''', c('[Agree to inspect the eastern ground in daylight.]', "end")),
     n("flood", "Soana", '''"The families sheltered there twice. They left the marker and brought back kindling. One bundle was so wet I nearly sent it back tied to the fool who carried it."
 "Did you tell Varn?"
 "He heard. So did everyone within half a day's walk."
-{n}Meret turns aside, her shoulders shaking once.{/n}
+{n}Mervika turns aside, her shoulders shaking once.{/n}
 "The camp ends well short of this wire," {n}Soana says.{/n} "I want the hands that set it. And I want every loop out of the ground. Whether its owner leaves with ringing ears or a ringing head we can discover afterwards."
-{n}She hands the wrapped wire back to Meret.{/n}
+{n}She hands the wrapped wire back to Mervika.{/n}
 "Keep it by the cave. No bare fingers through the loop. It was made to close on something struggling. A hunter should know better than to lend it a hand."''', c('[Agree to inspect the eastern ground in daylight.]', "end")),
-    n("end", "Soana", '''{n}Meret will show you the trail before her camp leaves. Soana starts to speak, then taps the wire with her stick.{/n}
+    n("end", "Soana", '''{n}Mervika will show you the trail before her camp leaves. Soana starts to speak, then taps the wire with her stick.{/n}
 "And your last report?"
 "Here. I can stay for the inspection. After that you will have to manage without my grandmother looking over your shoulder."
 "Your grandmother knew when to stop enjoying a point."
@@ -198,80 +198,80 @@ s("when_the_road_returns", "When the road returns", '"I wondered what you would 
         c('"Like enough to follow. Not like enough to scold me."', "nursery")),
 ], "soana.progression_kept", delay=0)
 
-s("a_track_with_two_ends", "A track with two ends", '"Show me where Meret found the wire."', [
-    n("start", "Soana", '''{n}Meret leads you beyond the upper bend to churned earth. Soana carries a short hooked stick, its lower end wrapped in cloth.{/n}
+s("a_track_with_two_ends", "A track with two ends", '"Show me where Mervika found the wire."', [
+    n("start", "Soana", '''{n}Mervika leads you beyond the upper bend to churned earth. Soana carries a short hooked stick, its lower end wrapped in cloth.{/n}
 "For lifting wire. Keep your sword out of it unless you want a loop round your wrist."
 {n}Dragged sacks have left two furrows. Hoofprints cross them. A narrower trail passes beneath a hazel with its low branches cut away. Coarse gray hair clings to a thorn.{/n}
-"I heard something there," {n}Meret says.{/n} "It stopped when I stopped. A wolf, perhaps."
+"I heard something there," {n}Mervika says.{/n} "It stopped when I stopped. A wolf, perhaps."
 {n}Soana bends toward the hair, keeping her fingers off it.{/n}
 "Perhaps. Keep your feet back. You have already muddied enough ground for a herd of swine."
-{n}Beyond the hazel something scrapes against a root. Meret lifts her head and listens. Soana points the hook toward the narrow trail.{/n}
+{n}Beyond the hazel something scrapes against a root. Mervika lifts her head and listens. Soana points the hook toward the narrow trail.{/n}
 "Now look. The earth has kept better count than the hunter."''',
         c('[Lore Nature DC 26] [Read the animal tracks and the trail of the trappers.]', check=dict(Skill="SkillLoreNature", DC=26, Success="read", Failure="mistake", CommanderOnly=True)),
-        c('[Set Meret to watch while you and Soana examine the ground a strip at a time.]', "slow"),
+        c('[Set Mervika to watch while you and Soana examine the ground a strip at a time.]', "slow"),
         c('"We should come back when we can watch every step."', abort=True)),
     n("read", "Narrator", '''{n}The thorn carrying the hair stands below the height of the hoofprints' owner. The smaller tracks belong to a dog. A tether dragged beside them has brushed a line into the wet soil. Under the cut hazel the paw marks bunch together and stop.{/n}
-{n}You point out the tether. Meret circles the hazel over bare stone and looks down at a dog lying with a hind foot caught in a wire loop.{/n}
+{n}You point out the tether. Mervika circles the hazel over bare stone and looks down at a dog lying with a hind foot caught in a wire loop.{/n}
 "Alive. He would like me to count his teeth."
 {n}Soana crouches where the dog can see her. She murmurs to it. A growl answers.{/n}
 "Keep them, foolish beast. Nobody is taking your teeth."
-{n}You trace the wire to its peg and show Meret where to slacken it. Soana lifts the loop with the padded hook. The dog bites the cloth, drags its leg free and crawls beneath the hazel before attempting to stand.{/n}
+{n}You trace the wire to its peg and show Mervika where to slacken it. Soana lifts the loop with the padded hook. The dog bites the cloth, drags its leg free and crawls beneath the hazel before attempting to stand.{/n}
 "Back," {n}she says.{/n} "Let it smell you before you thrust another hand at it."
-{n}Beyond the freed animal more knots of wire run toward the camp along the small beasts' tracks. One loop holds a dead hare. Meret lifts her boot over an empty snare and points out the next.{/n}''', c('[Mark the other loops before following the tether toward its owner.]', "found_end")),
+{n}Beyond the freed animal more knots of wire run toward the camp along the small beasts' tracks. One loop holds a dead hare. Mervika lifts her boot over an empty snare and points out the next.{/n}''', c('[Mark the other loops before following the tether toward its owner.]', "found_end")),
     n("found_end", "Soana", '''{n}The tether leads toward a woman carrying two empty sacks. The dog limps out to her. She drops the sacks and kneels.{/n}
 "Tarn! You were tied."
-{n}She finds the bitten tether, then sees the wire in Meret's hand.{/n}
+{n}She finds the bitten tether, then sees the wire in Mervika's hand.{/n}
 "My snare. I did not set it for him."
 "You are not hungry enough to eat your dog yet, then," {n}Soana says.{/n} "What were you after?"
 "Hares. People at camp have to eat."
-{n}The woman gives her name as Hessa. Her hand stays on Tarn's back as he tries the injured foot. Soana watches him stand.{/n}
+{n}The woman gives her name as Hesvara. Her hand stays on Tarn's back as he tries the injured foot. Soana watches him stand.{/n}
 "Show me the traps. All of them."
 "Now?"
 "While we can see them. Unless you would rather find the next with your own foot."
-{n}Hessa leads you along the line, Tarn limping beside her. Before the light fails, every peg has been found and every loop pulled up. You gather the dead hare. Hessa takes it, leaving the dismantled snares wound tight around the stick.{/n}
+{n}Hesvara leads you along the line, Tarn limping beside her. Before the light fails, every peg has been found and every loop pulled up. You gather the dead hare. Hesvara takes it, leaving the dismantled snares wound tight around the stick.{/n}
 "Settle the dog," {n}Soana tells her.{/n} "Then come to my cave. Bring whoever counts your stores. I want to hear how much of this wood you meant to carry away."
-{n}Hessa picks up the sacks and nods.{/n}''', c('[Return knowing who set the snares and where they ran.]', flags=("soana.late_track_read", "soana.late_trail_known"))),
+{n}Hesvara picks up the sacks and nods.{/n}''', c('[Return knowing who set the snares and where they ran.]', flags=("soana.late_track_read", "soana.late_trail_known"))),
     n("mistake", "Narrator", '''{n}You take the narrow trail for the passage of an animal still moving in the scrub. A dry patch lies ahead. You step onto it. Wire draws tight against a branch, and a hoarse yelp comes from beneath the hazel.{/n}
 {n}Soana catches your sleeve and jerks you back into your own footprint.{/n}
 "Another line, bloody hunter! Use your eyes before your boots."
 {n}A dog struggles beneath the branches. A snare holds its hind foot; its loose tether has caught in a second loop. Your step has pulled that line and sent the animal wrenching against the wire.{/n}
-{n}Meret reaches bare stone beyond the hazel and calls to it. A woman comes running down the slope. Soana thrusts her stick across the woman's path.{/n}
+{n}Mervika reaches bare stone beyond the hazel and calls to it. A woman comes running down the slope. Soana thrusts her stick across the woman's path.{/n}
 "Look down!"
 "Tarn. Stay, you foolish thing. Stay."
 {n}At his owner's voice the dog stops pulling. She reaches him over the stone, supports his chest and holds him while Soana lifts the wire. Afterwards he stands on three feet, keeping the fourth raised.{/n}
 {n}You say where you went wrong. The woman nods and bends over the injured foot. Soana winds the loose wire onto her stick.{/n}
-"Now we look at every inch. Your blundering has not pulled the other snares out for us."''', c('[Help carry the dog clear, then inspect with Hessa rather than guessing again.]', "late_end")),
-    n("slow", "Soana", '''{n}Meret climbs above the hazel and watches from a rock. She calls down when she has a clear view.{/n}
+"Now we look at every inch. Your blundering has not pulled the other snares out for us."''', c('[Help carry the dog clear, then inspect with Hesvara rather than guessing again.]', "late_end")),
+    n("slow", "Soana", '''{n}Mervika climbs above the hazel and watches from a rock. She calls down when she has a clear view.{/n}
 "A dog. Low to the ground. He is pulling toward a tether caught on a root. There is wire at his foot. I cannot see the end."
 {n}You and Soana begin at undisturbed earth. Her stick points to a bent twig, a leaf lying against its neighbors, a scrape at a root. You trace each line before moving anything. The dog growls whenever a branch shifts.{/n}
 "Yes, yes," {n}Soana mutters.{/n} "Bite the air if you must. Leave that foot alone."
-{n}An empty loop comes first. The second holds the tether; a third grips the dog's hind foot. You call their positions to Meret. She repeats them, then climbs down over stone.{/n}
-{n}A woman from the camp hears you and arrives while you loosen the first peg. She names herself Hessa and the traps as hers. Soana sends her over the stone to hold the dog while the wire comes away.{/n}
+{n}An empty loop comes first. The second holds the tether; a third grips the dog's hind foot. You call their positions to Mervika. She repeats them, then climbs down over stone.{/n}
+{n}A woman from the camp hears you and arrives while you loosen the first peg. She names herself Hesvara and the traps as hers. Soana sends her over the stone to hold the dog while the wire comes away.{/n}
 {n}Tarn limps out of the scrub. He can walk, though he keeps stopping to lick the foot. The search has taken most of the clear afternoon. Shadows now cover the rest of the line.{/n}
 "No one crosses tonight," {n}Soana says.{/n} "Not even the fool who swears she remembers every peg. Especially her."''', c('[Mark the closed approach and arrange to finish the inspection in daylight.]', "slow_end")),
-    n("late_end", "Soana", '''{n}Hessa carries Tarn to dry ground near the camp and settles him on an old cloak. She will keep him off the foot and watch it. No one offers a cure.{/n}
+    n("late_end", "Soana", '''{n}Hesvara carries Tarn to dry ground near the camp and settles him on an old cloak. She will keep him off the foot and watch it. No one offers a cure.{/n}
 {n}You follow her back along the traps she remembers. Those loops come up; the remaining approach is marked. At the first failing light Soana plants her stick across the path.{/n}
 "Enough. You have half your wits beside that dog. I will not lend my ankle to find what the other half has forgotten."
-{n}At dawn Hessa meets you alone. Tarn is with someone at camp. Two more loops lie hidden under leaves. You dismantle them and take up the remaining wire. Hessa lifts the hare from the snare that caught it.{/n}
+{n}At dawn Hesvara meets you alone. Tarn is with someone at camp. Two more loops lie hidden under leaves. You dismantle them and take up the remaining wire. Hesvara lifts the hare from the snare that caught it.{/n}
 "I will bring our stores keeper to hear what you want."
 "You have ears. Bring someone who can answer for what you took."
-{n}Hessa wraps the empty wire around a piece of wood and agrees. Meret has held back her departure to finish the inspection. She shoulders her pack again and points toward the cave.{/n}
+{n}Hesvara wraps the empty wire around a piece of wood and agrees. Mervika has held back her departure to finish the inspection. She shoulders her pack again and points toward the cave.{/n}
 "The meeting, then I go. You can quarrel without me."''', c('[Return after the inspection, remembering Tarn\'s injured foot.]', flags=("soana.late_track_missed", "soana.late_trail_known"))),
-    n("slow_end", "Soana", '''{n}Hessa takes Tarn to camp. The marked approach remains empty overnight. In the morning she brings the sacks and walks the trap line from its beginning, pointing out every loop before anyone crosses it.{/n}
-{n}Tarn follows for a short distance. Hessa sends him back. He lifts his sore foot, looks at the scrub and limps toward camp without further argument.{/n}
-{n}You dismantle the line. One snare holds a hare. Hessa glances at Soana before taking it.{/n}
+    n("slow_end", "Soana", '''{n}Hesvara takes Tarn to camp. The marked approach remains empty overnight. In the morning she brings the sacks and walks the trap line from its beginning, pointing out every loop before anyone crosses it.{/n}
+{n}Tarn follows for a short distance. Hesvara sends him back. He lifts his sore foot, looks at the scrub and limps toward camp without further argument.{/n}
+{n}You dismantle the line. One snare holds a hare. Hesvara glances at Soana before taking it.{/n}
 "Eat it," {n}the shaman says.{/n} "I have no use for hungry people and a rotting hare. Then bring whoever counts your stores to my cave. I want to hear what else you meant to take."
-{n}Hessa ties the bundle of wire. Meret has stayed for the search and will leave after the meeting.{/n}
+{n}Hesvara ties the bundle of wire. Mervika has stayed for the search and will leave after the meeting.{/n}
 "I stayed for this," {n}she tells Soana.{/n} "My grandmother has no hand on my pack."
 "I heard you the first time."
 "Then the second should be easy."
 {n}Soana studies the bundled snares. The corner of her mouth twitches; she presses it flat with a thumb.{/n}''', c('[Return after the careful search has established the whole line.]', flags=("soana.late_track_slow", "soana.late_trail_known"))),
 ], "soana.late_returned")
 
-s("what_the_hollow_costs", "What the hollow costs", '"Hessa said she would bring someone to answer for the stores."', [
-    n("start", "Soana", '''{n}Hessa brings a narrow sack and a woman with a bandaged palm. They wait outside the cave. Meret stands by the path, her pack fastened.{/n}
+s("what_the_hollow_costs", "What the hollow costs", '"Hesvara said she would bring someone to answer for the stores."', [
+    n("start", "Soana", '''{n}Hesvara brings a narrow sack and a woman with a bandaged palm. They wait outside the cave. Mervika stands by the path, her pack fastened.{/n}
 "Mava. I count our food. And the things people swear they cannot eat until their bellies growl."
-{n}Hessa opens the sack. Hazelnuts and loose husks lie inside, with thin branches cut for smoking meat.{/n}
+{n}Hesvara opens the sack. Hazelnuts and loose husks lie inside, with thin branches cut for smoking meat.{/n}
 "We can give these back," {n}Mava says.{/n} "The hare has been eaten. I cannot pull that out of anyone's belly."
 "How many sacks?" {n}Soana asks.{/n}
 "Two. This is the rest of the second."
@@ -279,36 +279,36 @@ s("what_the_hollow_costs", "What the hollow costs", '"Hessa said she would bring
 "And those branches?"
 "The hazel crowded the trail."
 "Its own ground, and you cut it for being in your way."
-{n}Mava looks at the fresh ends. Hessa shifts the sack so the branches no longer protrude toward Soana.{/n}''',
+{n}Mava looks at the fresh ends. Hesvara shifts the sack so the branches no longer protrude toward Soana.{/n}''',
         c('[Hear Soana question them about the harvest.]', "stores"),
         c('"We must hear this through. Let us meet again when there is time."', abort=True)),
-    n("stores", "Soana", '''"Three days of gathering," {n}Mava says.{/n} "We sell the good nuts for meal and keep the small ones. Hessa can smoke what she catches."
+    n("stores", "Soana", '''"Three days of gathering," {n}Mava says.{/n} "We sell the good nuts for meal and keep the small ones. Hesvara can smoke what she catches."
 "Nothing from that hollow."
 "There was no notice."
 "A forest in a country the Abyss is eating, and you wanted a notice before you stripped it? Pff!"
-{n}Hessa draws the sack shut. Mava watches the knot form.{/n}
+{n}Hesvara draws the sack shut. Mava watches the knot form.{/n}
 "Our first store was taken on the road. The next village sells meal for money, not for what we swear we will earn later. Send us there with less if you mean to. But look in this sack first."
-{n}Soana turns toward Meret. The hunter shakes her head.{/n}
+{n}Soana turns toward Mervika. The hunter shakes her head.{/n}
 "I cannot feed two camps. I can show them the road when mine leaves."
 "I had not asked."
 "I know that look."
 {n}Soana's nostrils flare. She turns back to Mava.{/n}
 "The deer cannot buy meal in your village. Nor can the hares you missed. You empty their hollow and walk away. The next hungry mouths find husks. I shall still be here to see what your sacks have cost."''', c('"What can the ground bear? Show us that much before we decide."', "ground")),
-    n("ground", "Soana", '''{n}Together you walk to the hazel edge. Meret waits where she can watch the camp's approach and the path home. Mava opens the sack and looks from its contents to the nuts overhead.{/n}
+    n("ground", "Soana", '''{n}Together you walk to the hazel edge. Mervika waits where she can watch the camp's approach and the path home. Mava opens the sack and looks from its contents to the nuts overhead.{/n}
 {n}Soana points out stripped branches and heaps of husks. Farther south, rougher ground carries a heavier crop. Full sacks would be harder to carry from there, but the gatherers would stay clear of the deer hollow.{/n}
 "Three visits, in daylight. No snares. No cutting. Empty sacks past me on the way in, full sacks past me on the way out. I shall spend three mornings counting what I would rather leave on the trees."
 "Enough?" {n}you ask Mava.{/n}
 "Less meal. Enough to bargain for some."
 "And if they go now?"
-"They leave this sack and take Meret's road. I keep the edge shut while the animals feed. And watch it. Words have never stopped a hungry hand reaching for a branch."
+"They leave this sack and take Mervika's road. I keep the edge shut while the animals feed. And watch it. Words have never stopped a hungry hand reaching for a branch."
 {n}Soana knocks her stick against a low root.{/n}
 "I can put a fright into someone coming this way. No farther. The whole wood will not fit under my shawl, child."
 "Tell them what fright."
 "They shall hear. Before I put it in their path."''', c('[Hear the working and its limits.]', "thorn")),
     n("thorn", "Soana", '''"A turning thorn. Three cuts in dead wood, ash from that branch, and a name for this patch of ground. Cross the mark and you hear feet behind you. Press farther in, they follow closer. Turn back, they stop."
-"Whose feet?" {n}Hessa asks.{/n}
+"Whose feet?" {n}Hesvara asks.{/n}
 "Nobody's. A sound I remember. Nothing lives inside it, and nothing bites. A stubborn fool can walk through. A frightened one may run and break an ankle on those roots. Look at them before you laugh."
-{n}Hessa folds her arms.{/n}
+{n}Hesvara folds her arms.{/n}
 "You mean to frighten us."
 "I mean to keep something in this hollow when my back is turned. Your empty bellies have not made the deer's belly any fuller."
 {n}Soana draws a line in the dirt.{/n}
@@ -319,24 +319,24 @@ s("what_the_hollow_costs", "What the hollow costs", '"Hessa said she would bring
 "The thorn goes beyond the southern trees. They fill their sacks on this side. More ground left open, more nuts carried off. I shall count every one of those sacks."''',
         c('"Close the hollow. They have a road out. Leave its food for the animals."', "reserve"),
         c('"Give them three days at the southern trees. Mark the inner approach and let them sell a harvest."', "harvest")),
-    n("reserve", "Soana", '''"Leave the sack," {n}Soana says.{/n} "Take the road Meret showed you. Keep the hare in your bellies. I have no spell for getting it back, nor any wish to see one."
-{n}Mava looks at the nuts. Hessa asks for enough to eat on the morning's walk. Soana measures a portion into her empty hands and takes the rest.{/n}
+    n("reserve", "Soana", '''"Leave the sack," {n}Soana says.{/n} "Take the road Mervika showed you. Keep the hare in your bellies. I have no spell for getting it back, nor any wish to see one."
+{n}Mava looks at the nuts. Hesvara asks for enough to eat on the morning's walk. Soana measures a portion into her empty hands and takes the rest.{/n}
 "You know our names," {n}Mava says.{/n} "Use them when you tell yourself why we arrived hungry."
 "I will remember. And I would remember an empty hollow."
-{n}Mava ties the nearly empty sack. Meret tells her how far they can travel before dark. The women discuss which loads to lighten. Hessa will stay to see the marked approach before they go. Meret repeats the directions and leaves to join her own camp.{/n}
+{n}Mava ties the nearly empty sack. Mervika tells her how far they can travel before dark. The women discuss which loads to lighten. Hesvara will stay to see the marked approach before they go. Mervika repeats the directions and leaves to join her own camp.{/n}
 {n}Soana waits until they have moved away.{/n}
 "That is the answer I wanted. Do not let Mava lay it all at your feet."
 "You heard her."
 "I have ears. I heard the dog, too, and saw what her hungry friend laid for the hares."
 {n}She lifts her stick toward the inner path.{/n}
 "Now the thorn. I will hear it myself before it goes after anyone else. Stay and hold the cloth. If it follows me out, wipe those cuts clean."''', c('[Agree to test the closed approach with her.]', flags=("soana.late_reserve", "soana.late_boundary_agreed"))),
-    n("harvest", "Soana", '''{n}Soana stares at the southern hazel, then names three mornings. Each visit will end at midday, leaving light for her inspection. Mava repeats the days. Hessa adds, without prompting, that no snares will go in.{/n}
+    n("harvest", "Soana", '''{n}Soana stares at the southern hazel, then names three mornings. Each visit will end at midday, leaving light for her inspection. Mava repeats the days. Hesvara adds, without prompting, that no snares will go in.{/n}
 "This sack?" {n}Mava asks.{/n}
 "Counts toward what you take. Do not bring me one sack and call the rest untouched."
-{n}Mava nods. She and Hessa will gather and leave later than Meret's camp. The road will have fewer travelers with them. Meret describes the safer fork twice and makes Hessa point toward it before lifting her pack.{/n}
+{n}Mava nods. She and Hesvara will gather and leave later than Mervika's camp. The road will have fewer travelers with them. Mervika describes the safer fork twice and makes Hesvara point toward it before lifting her pack.{/n}
 "Now I am going."
 "Go," {n}Soana says.{/n} "Before I find another wire for you to pull out of the bushes."
-{n}Meret hands Hessa the wrapped snares. The deer hollow lies beyond the gathering ground. Soana watches the hunters part, then strikes her stick against the earth.{/n}
+{n}Mervika hands Hesvara the wrapped snares. The deer hollow lies beyond the gathering ground. Soana watches the hunters part, then strikes her stick against the earth.{/n}
 "Three mornings. The trees will hear me curse every sack. We test the inner line before the first one goes in. I will not have somebody running through those roots because I put a fright where it could not be escaped."
 {n}She looks toward the slope and measures the approach with her eyes.{/n}''', c('[Test the line before the gathering begins.]', flags=("soana.late_harvest", "soana.late_boundary_agreed"))),
 ], "soana.late_trail_known")
@@ -367,7 +367,7 @@ s("where_the_steps_end", "Where the steps end", '"I am ready to hear the thorn b
 "Have you used this before?"
 "A smaller sign round a store people would not leave alone. Frightened a thief. Frightened a visitor I was expecting, too. After that I showed people where to put their feet."
 {n}She picks up the last thorn.{/n}
-"Not on this slope. Sound runs strangely between banks. We shall find where it goes before Hessa brings her sacks through."
+"Not on this slope. Sound runs strangely between banks. We shall find where it goes before Hesvara brings her sacks through."
 "You could have done the walking yourself."
 "And listened from both sides at once? A fine new skill you credit me with. Perhaps I could grow a second pair of ears for your next visit."
 {n}She taps your elbow as she passes, then points toward the ground to be marked. The wet cloth drips against your knuckles.{/n}
@@ -382,14 +382,14 @@ s("where_the_steps_end", "Where the steps end", '"I am ready to hear the thorn b
 "That one is real. Sit down if your knees are shaking. Then tell me where the other feet stopped."''',
         c('"Keep the sound this strong. The end is clear, and a warning must make someone stop."', "strong"),
         c('"Make it softer. Someone running from that could be hurt before they understand the way out."', "soft")),
-    n("strong", "Soana", '''"Again," {n}Soana says.{/n} "With me walking. Hessa will know the mark. A stranger may not."
+    n("strong", "Soana", '''"Again," {n}Soana says.{/n} "With me walking. Hesvara will know the mark. A stranger may not."
 {n}You stand beside the marker. Soana crosses the first thorn. Her hand tightens on her stick when the steps sound behind her. She turns without hurrying and returns to the outer stone.{/n}
 "I dislike being followed. Good. So will the next person with a sack."
 {n}You walk the outer edge together. Beneath one bank a distant scrape reaches you though neither has crossed the mark. Soana moves the second thorn toward the first and speaks over its notch again. On the next circuit the outer ground remains silent.{/n}
 "A smaller patch. It will have to do."
-{n}Hessa and Mava come to see the marker. Mava stops at the first sound and looks carefully at the way back.{/n}
+{n}Hesvara and Mava come to see the marker. Mava stops at the first sound and looks carefully at the way back.{/n}
 "Someone arriving late could miss that stick."
-{n}Soana sets pale stones on either side of the first thorn. Hessa looks from them to the roots beyond.{/n}
+{n}Soana sets pale stones on either side of the first thorn. Hesvara looks from them to the roots beyond.{/n}
 "Tell your people," {n}Soana says.{/n} "The stones mean turn back. If they cannot remember two pale stones, keep them out of my wood."''', c('[Stay while she marks the beginning and checks where the sound ends.]', "strong_end")),
     n("soft", "Soana", '''{n}Soana looks past you at the roots and broken earth.{/n}
 "A trespasser would find the one place to break a leg. Then I should have that to deal with as well."
@@ -398,7 +398,7 @@ s("where_the_steps_end", "Where the steps end", '"I am ready to hear the thorn b
 "Some would walk through the louder one."
 "More will walk through this. Keep your eyes on those roots, child. I have heard your argument."
 {n}You circle the outer ground. A faint scrape reaches beneath the bank. She moves the second thorn inward. On the next test no sound escapes the marked approach.{/n}
-{n}Hessa and Mava come to see it. Hessa crosses one step and retreats at the tread.{/n}
+{n}Hesvara and Mava come to see it. Hesvara crosses one step and retreats at the tread.{/n}
 "I would have looked for something in the bushes."
 "Yes. Look, then go back past these stones. Show everyone you bring."
 {n}Mava says she would rather hear a request to leave.{/n}
@@ -409,7 +409,7 @@ s("where_the_steps_end", "Where the steps end", '"I am ready to hear the thorn b
 "And the rest of the forest?"
 "Still there. Still larger than three sticks. Must we count every unguarded tree before I sit down?"
 {n}She raises a finger as you open your mouth.{/n}
-"Hessa saw the line. Mava saw the stones. The sound stays where I put it. One morning without a loose snare round someone's ankle. I call that a good morning."
+"Hesvara saw the line. Mava saw the stones. The sound stays where I put it. One morning without a loose snare round someone's ankle. I call that a good morning."
 {n}She taps the stone beside her with her palm.{/n}
 "Sit. Tell me about the first step. Heavy boots, or bare feet? I heard it here. I want to know what followed you there."
 {n}She leans forward to hear, the wet cloth slowly darkening the rim of the pot.{/n}''', c('[Keep the stronger warning and return to hear about the gatherers.]', flags=("soana.late_thorn_strong", "soana.late_thorn_tested"))),
@@ -422,23 +422,23 @@ s("where_the_steps_end", "Where the steps end", '"I am ready to hear the thorn b
 "Leaves underfoot. The sound did not seem so close."
 "And you could turn without stumbling?"
 {n}You describe the tread, the roots you could see and the first mark where the sound ended. She traces that point in spilled ash with one finger.{/n}
-"There, then. I will look at those roots again before Hessa arrives. She has enough trouble with the dog's foot. I do not want hers added to it."''', c('[Keep the gentler warning and return to hear about the gatherers.]', flags=("soana.late_thorn_soft", "soana.late_thorn_tested"))),
+"There, then. I will look at those roots again before Hesvara arrives. She has enough trouble with the dog's foot. I do not want hers added to it."''', c('[Keep the gentler warning and return to hear about the gatherers.]', flags=("soana.late_thorn_soft", "soana.late_thorn_tested"))),
 ], "soana.late_boundary_agreed", delay=0)
 
-s("the_days_she_counted", "The days she counted", '"How did Hessa and Mava keep the bargain?"', [
+s("the_days_she_counted", "The days she counted", '"How did Hesvara and Mava keep the bargain?"', [
     n("start", "Soana", '''{n}Soana sits outside the cave with a marked thorn across her knees. Rain has washed one notch clean. She turns the pale cut toward you.{/n}
 "Rain. No respect for a shaman's labor. I went to look afterwards. Not a footstep left in the approach."
 "Will you renew it?"
 "When I want that ground kept. I will not feed ash to a useless stick because I carved it myself."
 {n}She sets it beside her walking stick and knocks dust off the stone beside her.{/n}
-"Sit. Hessa and Mava did not vanish when we finished quarrelling. You shall hear what they took and what they left."
+"Sit. Hesvara and Mava did not vanish when we finished quarrelling. You shall hear what they took and what they left."
 {n}A trace of ash remains on her knee. She brushes at it, misses and turns to you instead.{/n}''',
         c('[Ask about the families who left without the harvest.]', "reserve", requires=("soana.late_reserve",)),
         c('[Ask about the three days of gathering.]', "harvest", requires=("soana.late_harvest",)),
         c('"I want to hear it when I can stay."', abort=True)),
-    n("reserve", "Soana", '''"The nuts stayed. Hessa carried the wire wound so tight nothing could put a foot through it. Mava asked which village sold meal. I told her, and gave her the road."
+    n("reserve", "Soana", '''"The nuts stayed. Hesvara carried the wire wound so tight nothing could put a foot through it. Mava asked which village sold meal. I told her, and gave her the road."
 {n}Soana looks toward the upper bend.{/n}
-"Tarn walked until his foot hurt. Hessa made a sling out of an empty sack. Last I saw, she was trying to persuade him to lie in it while he tried to climb out."
+"Tarn walked until his foot hurt. Hesvara made a sling out of an empty sack. Last I saw, she was trying to persuade him to lie in it while he tried to climb out."
 "Anything else?"
 "Mava said I would find the hollow quiet. I did."
 {n}She turns a pebble with the end of her stick.{/n}
@@ -447,7 +447,7 @@ s("the_days_she_counted", "The days she counted", '"How did Hessa and Mava keep 
 "Yes. Mava may curse me over her thin supper. I shall not pretend she walked out of a full larder. Nor shall I empty this hollow to stop her cursing."
 {n}Her stick leaves a furrow beside the pebble.{/n}
 "You came to a forest shaman, child. The animals have no stores keeper to stand here speaking for them."''', c('[Stay to hear the rest of her account.]', "meret")),
-    n("harvest", "Soana", '''"Three mornings. Six sacks. Seven complaints about the climb. One branch cut before they arrived, which Hessa was delighted to rub under my nose."
+    n("harvest", "Soana", '''"Three mornings. Six sacks. Seven complaints about the climb. One branch cut before they arrived, which Hesvara was delighted to rub under my nose."
 "Did you say you were wrong?"
 "Two words. She tried to get a third."
 {n}One corner of her mouth lifts.{/n}
@@ -457,10 +457,10 @@ s("the_days_she_counted", "The days she counted", '"How did Hessa and Mava keep 
 {n}Soana brushes ash from her sleeve.{/n}
 "Fewer tracks there next morning. Six sacks do not walk quietly. I cannot tell you which beasts will come back first. The inner hollow was untouched, and the camp is empty."
 "The warning?"
-"Left alone. Hessa carried off the wire. Tarn walked part of the road and rode in a sack for the rest. Perhaps he will smell a trap next time and keep his foot out."
+"Left alone. Hesvara carried off the wire. Tarn walked part of the road and rode in a sack for the rest. Perhaps he will smell a trap next time and keep his foot out."
 {n}She taps the clean notch of the thorn.{/n}
-"Three mornings, child. They got three mornings. When the next crop ripens, Mava will have to speak to me again."''', c('[Ask about Meret after the camp departed.]', "meret")),
-    n("meret", "Soana", '''"Meret went with her people before Hessa was ready. I pointed out another patch she might inspect on the road. She asked if I was showing her the way or trying to keep her here."
+"Three mornings, child. They got three mornings. When the next crop ripens, Mava will have to speak to me again."''', c('[Ask about Mervika after the camp departed.]', "meret")),
+    n("meret", "Soana", '''"Mervika went with her people before Hesvara was ready. I pointed out another patch she might inspect on the road. She asked if I was showing her the way or trying to keep her here."
 "Which?"
 "Both. She took the directions and went. Impudent girl."
 {n}Soana folds her hands over one knee.{/n}
@@ -472,7 +472,7 @@ s("the_days_she_counted", "The days she counted", '"How did Hessa and Mava keep 
 "Another task?"
 "Must I find a broken handle whenever I want you on that stone? Sit, child. The handle can wait."
 {n}She shifts closer and knocks a burr from your sleeve. It clings to her finger. She curses and flicks it into the dust.{/n}''', c('[Ask what to record before you leave again.]', "guardian")),
-    n("guardian", "Soana", '''"Write down the thorn. Where the steps began, where they stopped, what Hessa took. No fine title. Anyone reading it should find the right path, not come here expecting Soana the Seer to have an answer for every root in the wood."
+    n("guardian", "Soana", '''"Write down the thorn. Where the steps began, where they stopped, what Hesvara took. No fine title. Anyone reading it should find the right path, not come here expecting Soana the Seer to have an answer for every root in the wood."
 {n}Her hand rises to the hollow at her throat, then drops onto her knee.{/n}
 "And put this in plainly. The clay medallion was another working. So was the brand on Orso. No fool is to read your account and think a damp rag across three sticks could undo that knot."
 {n}She points toward the thorn beside her stick.{/n}
@@ -675,7 +675,7 @@ ending("chosen_visits", "The next invitation", '''{n}The Commander's belongings 
 {n}The forest claimed most mornings. She inspected shoots and renewed ash, quarrelled with hunters and remembered which branches had been cut. But a familiar step at the cave mouth could leave the roots half sorted on their stone. "They will keep," she would say, already reaching for the visitor's hand.{/n}''',
     requires=("soana.late_campaign_kept", "soana.late_open"), forbids=(*ORDINARY, "soana.committed"))
 ending("familiar_company", "Company without a debt", '''{n}The Commander kept visiting as Soana's friend. A second cup stood by the water pot. There were disputes over a working, a path and the proper words of a goat song. Soana could spend more breath correcting a verse than explaining a rite, particularly when the wrong verse made her laugh.{/n}
-{n}Meret carried her grandmother's mark away with her own camp. When she returned through the eastern woods, Soana asked what she had seen and grumbled over what she had missed. Other hunters brought reports too. They learned to point out their tracks before the shaman pointed out their foolishness.{/n}
+{n}Mervika carried her grandmother's mark away with her own camp. When she returned through the eastern woods, Soana asked what she had seen and grumbled over what she had missed. Other hunters brought reports too. They learned to point out their tracks before the shaman pointed out their foolishness.{/n}
 {n}The worn proposal remained beneath its weight, both sides crowded with corrections. In the last bare corner Soana wrote the date of an evening spent singing. When the Commander next reached for the page, she took it back at once. "Mine," she said, and put it where the rain could not reach.{/n}''',
     requires=("soana.late_campaign_kept", "soana.late_friends"), forbids=(*ORDINARY, "soana.committed", "soana.late_open"))
 ending("sacrifice", "The visit that did not follow", '''{n}The news from the Worldwound reached Soana's cave with praise for the Commander who had closed it. She heard the account to its end. When the messenger began the praise again, she sent him down the path with words he did not repeat in his next telling.{/n}

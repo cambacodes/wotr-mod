@@ -3,6 +3,7 @@ import copy
 import unittest
 
 from storylines.harem_rows import s14
+from storylines import contract_j01
 from tools import rrt_verify as rules
 
 
@@ -13,11 +14,21 @@ class S14Tests(unittest.TestCase):
                        CommittedFlag=name + ".committed", UnavailableFlags=[])
             for name in ("household", *s14.PAIR)}, RestAllowances={"household.protected": 2})
         s14.register(story, story["Scenes"], story["Etudes"])
+        story.update(Presences={"galfrey.presence": {"Unit": "11111111111111111111111111111111"},
+                                "arueshalae.presence.evil": {"Unit": "22222222222222222222222222222222"}},
+                     Revivals={"arueshalae": {"Unit": "33333333333333333333333333333333"}},
+                     SeatWomen={}, DepartureEpochs={})
+        contract_j01.install(story)
         model = rules.Model(story)
         sid = s14.P + ("retry." if retry else "settle.") + branch
         scene = next(s for s in model.scenes if s["Id"] == sid)
         state = rules.SimState(5, 100)
         state.flags.update(s14.COMMON)
+        state.flags.discard(s14.ATTENDANCE)
+        state.flags.update(("galfrey.present_now", "arueshalae.present_now"))
+        state.available_contacts = {option["Units"][0] for contact in scene["ParticipantContacts"].values()
+                                    for option in contact["Options"]}
+        state.area = scene["Areas"][0]
         state.flags.add("arueshalae." + ("redeemed" if branch == "good" else "corrupted"))
         if returned:
             state.flags.add("galfrey.trickster.returned")
@@ -29,13 +40,15 @@ class S14Tests(unittest.TestCase):
         rules.sim_complete(model, state)
         return story, model, scene, state
 
-    def test_registration_is_local_idempotent_and_does_not_publish_stages(self):
+    def test_registration_is_local_idempotent_and_only_derives_approved_stages(self):
         story, _, _, _ = self.fixture()
         before = copy.deepcopy(story)
         s14.register(story, story["Scenes"], story["Etudes"])
         self.assertEqual(before, story)
         self.assertEqual(len(story["Scenes"]), 4)
-        self.assertTrue(set(s14.STAGES).isdisjoint(story["Derived"]))
+        for key, groups in s14.STAGES.items():
+            self.assertEqual(story["Derived"][key], groups)
+        self.assertFalse(any(key.endswith(".lover") for key in story["Derived"]))
         self.assertTrue({s14.ATTENDANCE, *s14.ENMITY, *s14.ENMITY.values()} <= set(story["PendingHooks"]))
         produced = {f for s in story["Scenes"] for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]}
         self.assertNotIn(s14.ATTENDANCE, produced)
@@ -45,7 +58,9 @@ class S14Tests(unittest.TestCase):
     def test_missing_body_input_blocks_even_paid_committed_present_histories(self):
         _, model, scene, state = self.fixture()
         self.assertTrue(rules.sim_available(model, scene, state))
-        state.flags.remove(s14.ATTENDANCE)
+        self.assertNotIn(s14.ATTENDANCE, state.flags)
+        state.available_contacts.clear()
+        state.flags.add(s14.ATTENDANCE)  # A stale/manufactured flag cannot stand in for bodies.
         self.assertFalse(rules.sim_available(model, scene, state))
 
     def test_all_four_personality_title_combinations_and_reclaimed_crown(self):
@@ -77,6 +92,8 @@ class S14Tests(unittest.TestCase):
             for retry in (False, True):
                 _, model, scene, state = self.fixture(branch, returned=True, retry=retry)
                 for missing in s14.COMMON:
+                    if missing == s14.ATTENDANCE:
+                        continue
                     probe = copy.deepcopy(state)
                     probe.flags.remove(missing)
                     self.assertFalse(rules.sim_available(model, scene, probe), (scene["Id"], missing))
@@ -84,10 +101,37 @@ class S14Tests(unittest.TestCase):
                     probe = copy.deepcopy(state)
                     probe.flags.add(loss)
                     self.assertFalse(rules.sim_available(model, scene, probe), (scene["Id"], loss))
+                for woman in s14.PAIR:
+                    probe = copy.deepcopy(state)
+                    probe.flags.add(woman + ".epoch_unavailable")
+                    self.assertFalse(rules.sim_contact_available(model, scene, probe))
+                for unit in ("11111111111111111111111111111111",
+                             "33333333333333333333333333333333" if branch == "good"
+                             else "22222222222222222222222222222222"):
+                    probe = copy.deepcopy(state)
+                    probe.available_contacts.remove(unit)
+                    self.assertFalse(rules.sim_available(model, scene, probe))
+                    for node in scene["Nodes"]:
+                        self.assertFalse(rules.sim_contact_available(model, scene, probe), node["Id"])
                 for chapter in (3, 4, 6):
                     probe = copy.deepcopy(state)
                     probe.chapter = chapter
                     self.assertFalse(rules.sim_available(model, scene, probe))
+
+    def test_wrong_body_or_venue_cannot_supply_attendance(self):
+        for branch in ("good", "evil"):
+            for returned in (False, True):
+                _, model, scene, state = self.fixture(branch, returned=returned)
+                # Keep only the other Galfrey form and the other Arueshalae branch.
+                state.available_contacts = {"8c5dcc93d68d0ed44afd43902201da40" if returned
+                                            else "11111111111111111111111111111111",
+                                            "22222222222222222222222222222222" if branch == "good"
+                                            else "33333333333333333333333333333333"}
+                self.assertFalse(rules.sim_available(model, scene, state))
+                state.available_contacts.update(option["Units"][0] for contact in scene["ParticipantContacts"].values()
+                                                for option in contact["Options"])
+                state.area = "wrong venue"
+                self.assertFalse(rules.sim_available(model, scene, state))
 
     def test_retry_uses_stamped_failure_not_ready_and_stays_personality_specific(self):
         _, model, scene, state = self.fixture(retry=True)
@@ -111,6 +155,29 @@ class S14Tests(unittest.TestCase):
             self.assertTrue(rules.sim_available(model, scene, probe))
             probe.flags.add("galfrey.closed")
             self.assertFalse(rules.sim_available(model, scene, probe))
+
+    def test_deed_stages_keep_asymmetry_and_matching_enmity_precedence(self):
+        _, model, _, state = self.fixture()
+        state.flags.update((s14.P + "settle.seen", *s14.DEEDS))
+        stages = ("galfrey.harem.attitude.arueshalae.respect",
+                  "arueshalae.harem.attitude.galfrey.friend")
+        rules.sim_complete(model, state)
+        self.assertTrue(all(stage in state.flags for stage in stages))
+        self.assertNotIn("galfrey.harem.attitude.arueshalae.rival", state.flags)
+        self.assertNotIn("arueshalae.harem.attitude.galfrey.respect", state.flags)
+        self.assertFalse(any(flag.endswith(".lover") for flag in state.flags))
+        for enmity, receipt in s14.ENMITY.items():
+            probe = copy.deepcopy(state)
+            probe.flags.add(enmity)
+            rules.sim_complete(model, probe)
+            self.assertFalse(any(stage in probe.flags for stage in stages))
+            wrong = next(value for value in s14.ENMITY.values() if value != receipt)
+            probe.flags.add(wrong)
+            rules.sim_complete(model, probe)
+            self.assertFalse(any(stage in probe.flags for stage in stages))
+            probe.flags.add(receipt)
+            rules.sim_complete(model, probe)
+            self.assertTrue(all(stage in probe.flags for stage in stages))
 
     def test_exhaustive_terminals_indices_abort_and_protected_budget(self):
         for raw in s14.SCENES:

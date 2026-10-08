@@ -30,8 +30,7 @@ def _situations(pages):
             '"You volunteer? For his ledger? Look at what he did to me, Golarian. He will take considerably longer with you."\n'
             '{n}She wipes her brow and holds the blood toward you.{/n} "I could sell him your name. '
             'I could let him collect it himself. Yes. Put it down. I want to see which amuses me more."')
-    # This Azata-only hook remains saved, but is not a purported Trickster meeting.
-    pages[P + "minagho_dead.setup_c3"]["Forbids"].append("trickster.ever")
+    # Keep the saved primer available when its native brand recital is observed.
 
     # SP2: proof belongs to the actual transfer, not the earlier promise.
     for suffix in ("minagho_dead.brand", "minagho_dead.brand_letter", "minagho_dead.collateral",

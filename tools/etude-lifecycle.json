@@ -847,6 +847,30 @@
     "conditional"
    ]
   },
+  "28582721f157405da88b3bf0afae97d6": {
+   "ancestors_completed": [
+    "AutoKingdomProjectsControllerCh3"
+   ],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SideAutoKingdomDelayKaylessa",
+    "AutoKingdomProjectsControllerCh3",
+    "Ch3_KTC_And_Timeline",
+    "CapitalMechanic",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "Ch3_KTC_And_Timeline: EtudeStatus"
+   ],
+   "name": "SideAutoKingdomDelayKaylessa",
+   "traits": [
+    "conditional",
+    "event_cascade"
+   ]
+  },
   "285ae03094c379045b7cb3106e3f8abf": {
    "ancestors_completed": [],
    "areas": {},
@@ -1248,6 +1272,25 @@
     "hold"
    ]
   },
+  "3b8ccafc1be912a4187350ac473cdc0e": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "SeelahNotInParty_AccordingToThePlot",
+    "SeelahCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "SeelahNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "SeelahNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
+   ]
+  },
   "3c1405201bec99f4db67371f41a3c32a": {
    "ancestors_completed": [],
    "areas": {},
@@ -1304,6 +1347,24 @@
    "name": "ArueshalaeNotInParty_KickedOut",
    "traits": [
     "conditional"
+   ]
+  },
+  "3e26a59ceb2d45a2afc05d35092ceb54": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MorevetKilled",
+    "MorevetRoleplay",
+    "Chapter04_States",
+    "Chapter04_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MorevetKilled",
+   "traits": [
+    "hold"
    ]
   },
   "3f1a8be9cc6d082469d17da642655f53": {
@@ -1556,6 +1617,23 @@
     "hold"
    ]
   },
+  "49c99adbf91a0c84aaa550061a60cb19": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TallDead_in_Fane",
+    "AzataStates",
+    "MythicAzata",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TallDead_in_Fane",
+   "traits": [
+    "hold"
+   ]
+  },
   "4a29c758798d47a1a32f506d1ca6081b": {
    "areas": {},
    "cascade_chapter": null,
@@ -1656,6 +1734,23 @@
    "completed_by": [],
    "conditional": [],
    "name": "Marhevok_InSunctum",
+   "traits": [
+    "hold"
+   ]
+  },
+  "50bab3193d6d41c390494ab755765f43": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "StorytellerDeadDelayed",
+    "Storyteller",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "StorytellerDeadDelayed",
    "traits": [
     "hold"
    ]
@@ -2155,6 +2250,23 @@
     "hold"
    ]
   },
+  "716fb3c200abcc04c817d5061bd54155": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TE_LexiconTrue",
+    "TrueEnding",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TE_LexiconTrue",
+   "traits": [
+    "hold"
+   ]
+  },
   "71f85264d9064074f9cf74999ecbffa9": {
    "ancestors_completed": [],
    "areas": {},
@@ -2383,6 +2495,26 @@
     "conditional"
    ]
   },
+  "7fde872463d2d2647b159a733d40ea98": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerDecidedToLeave",
+    "Chapter05_Outcomes",
+    "Chapter05_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Ending_AngelGone2Heaven",
+    "TE_Final"
+   ],
+   "conditional": [],
+   "name": "PlayerDecidedToLeave",
+   "traits": [
+    "self_completed"
+   ]
+  },
   "806ece7bcf18a374e9ad1f7b9e3bc580": {
    "ancestors_completed": [],
    "areas": {
@@ -2444,6 +2576,26 @@
    "name": "SeelahInParty",
    "traits": [
     "conditional"
+   ]
+  },
+  "84e00414803841e428c3d47572c7d588": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "PlayerDecidedToStay",
+    "Chapter05_Outcomes",
+    "Chapter05_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Ending_AngelGone2Heaven",
+    "TE_Final"
+   ],
+   "conditional": [],
+   "name": "PlayerDecidedToStay",
+   "traits": [
+    "self_completed"
    ]
   },
   "857c9366224c4b278fcc4ba3273b4b6b": {
@@ -2678,6 +2830,25 @@
    "name": "Ending_AreeluDead",
    "traits": [
     "hold"
+   ]
+  },
+  "94503247ce3979a468c54a42a4b862bd": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "NenioInParty",
+    "NenioCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "NenioInParty: CompanionInParty"
+   ],
+   "name": "NenioInParty",
+   "traits": [
+    "conditional"
    ]
   },
   "94bc04d1ed474feaab54af2f77a94574": {
@@ -3929,6 +4100,35 @@
     "hold"
    ]
   },
+  "d6a90c0f6536331498cafa1f3195d886": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeRomance",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "Answer_0001",
+    "Answer_0014",
+    "Answer_0024",
+    "Answer_0025",
+    "Answer_0026",
+    "Answer_0028",
+    "Answer_0029",
+    "Answer_0030"
+   ],
+   "conditional": [
+    "ArueshalaeRomance: EtudeStatus"
+   ],
+   "name": "ArueshalaeRomance",
+   "traits": [
+    "conditional",
+    "self_completed"
+   ]
+  },
   "d70304f3d15343fca38e48da6027f89c": {
    "ancestors_completed": [],
    "areas": {},
@@ -3964,6 +4164,25 @@
    "name": "HurlunDead",
    "traits": [
     "hold"
+   ]
+  },
+  "d80bdee55139ac24583f337a53878021": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DaeranNotInParty_AccordingToThePlot",
+    "DaeranCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "DaeranNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "DaeranNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
    ]
   },
   "d99770b13ebc47447881d33763209b03": {
@@ -4144,6 +4363,25 @@
     "Seelah_BadEnding: EtudeStatus"
    ],
    "name": "Seelah_BadEnding",
+   "traits": [
+    "conditional"
+   ]
+  },
+  "e49732bbb3126ec4280cf7f12946abad": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DaeranInParty",
+    "DaeranCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "DaeranInParty: CompanionInParty"
+   ],
+   "name": "DaeranInParty",
    "traits": [
     "conditional"
    ]

@@ -443,8 +443,9 @@ visit(P + "alive.warning", "The face she wears", [
         c('"Then let him catch it. On somebody else."', "swap"),
         c('"Could that amulet hang round another neck?"', "swap")),
     kay("swap", '''"...On him." {n}Something moves in her face. It isn't a smile, but it used to be one.{/n}
-"His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose..." {n}She turns the amulet in her fingers.{/n}
-"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier."
+"His marksmen will be up on the ridge with orders: the courier's face, first shot, don't let her speak. If the face is on him when they loose..." {n}She turns the amulet in her fingers, showing you the thin crystal inside its setting.{/n}
+"Keep that whole and it'll wear the face for years. Crack it and the spell burns through the break. Then it's gone. Those arrows won't spare it, soldier." {n}She holds the setting up to the lamp.{/n}
+"You'd have to lift it off my neck and put it on his in the middle of a fight, with his knife out. It's an alley trick. We did things like it in Kyonin, in Calistria's name, when I was a wasp and not a drow. You'd have to be quick, soldier." {n}She draws the cord taut between her hands.{/n}
 "They won't come down while your patrol is on the south road. Have it pass at the watch change. I'll find you a hollow under the bank before we send for him. When they loose, kick out his lantern and roll into it. Let them see you fall." {n}She cups a hand over the unlit lamp.{/n}
 "I go down beside him, under the girl's cloak, with his blood on it. Two shapes down, his signal gone, your patrol coming. They can shoot into the dark or get off that ridge."''',
         c("Continue", "terms")),
@@ -480,10 +481,10 @@ visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
 {n}Two fingers under the cord at her neck, a turn of the wrist, and the cord is over his head before his arm finishes its stroke, the way a wasp's sting is in before the hand can slap. The glamour takes him like water takes dye. For a heartbeat there are two of her in the lamplight: a freckled Green Road girl with the hunter's knife in her hand, and a drow woman throwing herself flat on the stones.{/n}''',
         c("Continue", "volley", forbids=(SUCCESSOR,)),
         c("Continue", "volley_s", requires=(SUCCESSOR,))),
-    nar("volley", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. Forn does not speak. He looks down at the fletching in his chest with an expression of courteous surprise, as if someone has broken a rule of etiquette he had believed was universal.{/n}
+    nar("volley", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. Forn does not speak. One arrow punches through the amulet against his breastbone; splinters of crystal catch the lantern light. He looks down at the fletching in his chest with an expression of courteous surprise.{/n}
 {n}You kick the lantern into the stones and fall sideways into the marked hollow. Kaylessa throws the courier's cloak over Forn as he collapses. The amulet flares beneath the cloth and burns out; from the ridge there are only two fallen shapes and a dying light. You press yourself below the bank. The patrol's next horn is closer.{/n}''',
         c("Continue", "after")),
-    nar("volley_s", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. He looks down at the fletching in his chest as though it were an error in a report he had signed without reading.{/n}
+    nar("volley_s", '''{n}The ridge looses. Six bows, perhaps eight, every one at the face they were told to shoot before it could speak. He does not speak. One arrow punches through the amulet against his breastbone; splinters of crystal catch the lantern light. He looks down at the fletching in his chest and tries to draw breath.{/n}
 {n}You kick the lantern into the stones and fall sideways into the marked hollow. Kaylessa throws the courier's cloak over the hunter as he collapses. The amulet flares beneath the cloth and burns out; from the ridge there are only two fallen shapes and a dying light. You press yourself below the bank. The patrol's next horn is closer.{/n}''',
         c("Continue", "after")),
     kay("after", '''{n}Two more arrows strike the stones where you stood. Above you, a voice calls in Elven: "Two down. Patrol. Withdraw!" Boots scrape away along the ridge. You wait until the south patrol's lanterns pass the ravine mouth, then climb out of the hollow. Kaylessa rises beside the hunter and pulls the cloak from his face. The glamour is gone.{/n}
@@ -496,7 +497,7 @@ visit(P + "alive.amulet_swap", "Kyonin's own arrows", [
     kay("end", '''"Take me somewhere with a roof, soldier. I'd like to sit down in a place where nobody is aiming at me."''',
         c("[Take her back up the slope.]", flags=(RETURNED, AMULET, SWAP_CLEAN), forbids=(SUCCESSOR,), **SWAP_OUT),
         c("[Take her back up the slope.]", flags=(RETURNED, AMULET, SWAP_CLEAN), requires=(SUCCESSOR,))),
-    nar("fumble", '''{n}Your fingers find the cord, and the hunter finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you, blazing, half a face on it and half off.{/n}''',
+    nar("fumble", '''{n}Your fingers find the cord, and the hunter finds your wrist. He is faster than a wounded man and stronger than a courteous one. The amulet comes off her neck and hangs in his fist between the three of you. He slams it against the stone at his back. The crystal cracks; light pours through the split, half a face on it and half off.{/n}''',
         c("Continue", "fumble_you", requires=(SHIELD,)),
         c("Continue", "fumble_her", forbids=(SHIELD,))),
     nar("fumble_you", '''{n}The ridge looses at the glare. You get your body between Kaylessa and the light, because you said you would, and the first arrow takes you high in the shoulder, and the second skips off your armour, and then she is past you.{/n}''',
@@ -792,7 +793,7 @@ KEPT_PARAS = (
     p('''{n}Her living account reached Avennara. The Council called it a lie and forbade copies; the border guards made copies anyway. The Council had to answer a living witness, not a buried name. Kaylessa read the opened reply, strung her bow and kept watch.{/n}''', requires=("kaylessa.wasps.letter_sent",)),
     p('''{n}The Council investigated the Commander\'s drow scout. Kaylessa changed her night patrols and watched the eastern roads. She kept her name from strangers who came asking at the tailor's.{/n}''', requires=("kaylessa.wasps.claimed_as_scout",), forbids=("kaylessa.wasps.letter_sent",)),
     p('''{n}Word of the drow archer in Drezen's market travelled east. Hunters began asking at the tailor's. Kaylessa kept her own name from their questions and came home by a different gate.{/n}''', requires=("kaylessa.wasps.let_them_look",), forbids=("kaylessa.wasps.letter_sent", "kaylessa.wasps.claimed_as_scout")),
-    p('''{n}Avennara's reply acknowledged the account of the Green Road courier. The border kept rolls; her family would have the truth of the capture. Kaylessa kept the acknowledgement with her own papers.{/n}''', requires=("kaylessa.wasps.remembered_the_courier", "kaylessa.wasps.letter_sent")),
+    p('''{n}Avennara's reply acknowledged the account of the Green Road courier. The border kept rolls; her family would have the truth of the capture. Kaylessa kept the acknowledgement with her own papers.{/n}''', requires=("kaylessa.wasps.courier_acknowledged",)),
     p("{n}The hunter from the cooper's cellar returned to Kyonin with broken fingers and a letter pinned to his coat. Kaylessa signed her name in full. The Council could no longer pretend not to know who lived in Drezen.{/n}", forbids=(COUNCIL_KNOWS,), any_groups=(("kaylessa.clearing.hunter_turned_back", "kaylessa.clearing.hunter_hers"),)),
 
 )

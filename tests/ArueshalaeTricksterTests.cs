@@ -260,8 +260,11 @@ internal static class ArueshalaeTricksterTests
             foreach (var ch in sc.Nodes.SelectMany(n => n.Choices).Where(ch => ch.RemoveItem != null))
                 check(ch.RemoveItem == Scroll && (ch.Requires.Contains(Ward) || sc.Requires.Contains(Ward)),
                     "Trk_Arueshalae_DeathWard: a removal that is not the scroll, or not gated on holding one: " + sc.Id);
-        check(story.Scenes.SelectMany(sc => sc.Nodes).SelectMany(n => n.Choices).All(ch => !ch.Forbids.Contains(Ward))
-              && story.Scenes.All(sc => !sc.Forbids.Contains(Ward)),
+        // Only this route is explored below. Household rows legitimately
+        // postpone a warded encounter when the required scroll is absent.
+        var wardScenes = story.Scenes.Where(sc => sc.Relationship == "arueshalae").ToArray();
+        check(wardScenes.SelectMany(sc => sc.Nodes).SelectMany(n => n.Choices).All(ch => !ch.Forbids.Contains(Ward))
+              && wardScenes.All(sc => !sc.Forbids.Contains(Ward)),
             "Trk_Arueshalae_DeathWard: an answer forbids holding a scroll (the rest simulation then cannot model the purchase).");
         check(new[] { 0, 1 }.All(i => Ch(touch, "explain", i).Requires.Intersect(Ch(touch, "explain", i).Forbids).Any())
               && Ch(touch, "explain", 3).RemoveItem == Scroll && Ch(touch, "explain", 3).Requires.Contains(Ward)
@@ -391,7 +394,7 @@ internal static class ArueshalaeTricksterTests
               && !Rules.Available(story, S(T + "epilogue.together"), Later(story, World(story, 6, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "intake", "arueshalae.evil_recruited"), 1)),
             "The recruited fallen commit has no ending, or reads the redeemed daybook ending.");
         var morning = S(T + "morning");
-        var elysium = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "night", "arueshalae.elysium"), 10);
+        var elysium = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "intake", T + "night", "arueshalae.elysium"), 10);
         check(Rules.Available(story, morning, elysium) && Program.WalkVia(morning, elysium, "start", 0).Count == 0
               && Program.WalkVia(morning, elysium, "start", 1).Count > 0,
             "After the native Elysium ending, the morning still counts a drain.");

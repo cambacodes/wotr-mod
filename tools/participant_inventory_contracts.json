@@ -355,7 +355,10 @@
       "scene": "wenduag.trickster.court.vellexia",
       "reader": "participant.vellexia.available",
       "kind": "remembered",
-      "eng8-q8e": {"availability": "scene", "reason": "Both physical hosts now require current Vellexia; keep the remembered node and answer indices for saves."}
+      "eng8-q8e": {
+        "availability": "scene",
+        "reason": "Both physical hosts now require current Vellexia; keep the remembered node and answer indices for saves."
+      }
     },
     {
       "scene": "chadali.trickster.epilogue.lucky_night",
@@ -649,5 +652,102 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_AccordingToThePlot.jbp",
       "type": "BlueprintEtude"
     }
+  },
+  "delivery_patches": [
+    {
+      "scene": "aranka.react.arueshalae.dreamer",
+      "fields": {
+        "AdditionalContactUnits": [
+          "430cba7801b149b4e8494ace6baf4f7c"
+        ]
+      }
+    },
+    {
+      "scene": "aranka.react.arueshalae.dreamer.yard",
+      "fields": {
+        "AdditionalContactUnits": [
+          "bd0c4fe722aeef94b8495ac284b96bc8"
+        ]
+      }
+    },
+    {
+      "scene": "aranka.react.arueshalae.fallen",
+      "fields": {
+        "AdditionalContactUnits": [
+          "430cba7801b149b4e8494ace6baf4f7c"
+        ]
+      }
+    },
+    {
+      "scene": "aranka.react.arueshalae.fallen.yard",
+      "fields": {
+        "AdditionalContactUnits": [
+          "bd0c4fe722aeef94b8495ac284b96bc8"
+        ]
+      }
+    },
+    {
+      "scene": "delamere.trickster.crypt.stag_alone",
+      "fields": {
+        "Areas": [
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      }
+    },
+    {
+      "scene": "delamere.trickster.crypt.stag_late",
+      "fields": {
+        "Areas": [
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      }
+    },
+    {
+      "scene": "delamere.trickster.woods.second_hunt_page",
+      "fields": {
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8",
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      }
+    },
+    {
+      "scene": "delamere.trickster.woods.second_hunt_late",
+      "fields": {
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8",
+          "bb6d82794aae9d94d9cc94d1a05e5f20"
+        ]
+      }
+    }
+  ],
+  "delivery_evidence": {
+    "bb6d82794aae9d94d9cc94d1a05e5f20": {
+      "type": "BlueprintArea",
+      "path": "World/Areas/Act_3_DemonsHerecy/TempleOfDelamere/TempleOfDelamere.jbp"
+    },
+    "2570015799edf594daf2f076f2f975d8": {
+      "type": "BlueprintArea",
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp"
+    },
+    "430cba7801b149b4e8494ace6baf4f7c": {
+      "type": "BlueprintUnit",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_DesnaPriest.jbp"
+    },
+    "bd0c4fe722aeef94b8495ac284b96bc8": {
+      "type": "BlueprintUnit",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_RankupSpeaker.jbp"
+    }
+  },
+  "minachiv_retired_surfaces": {
+    "minachiv.the_second_address": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.a_factor_at_the_table": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_answer_after_business": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_key_in_your_hand": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_paper_she_kept": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_man_who_remembers": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_entrance_she_wants": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.who_keeps_the_house": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_cost_in_daylight": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence."
   }
 }

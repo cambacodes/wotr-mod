@@ -21,7 +21,7 @@ living(FLOWERS, "The language of flowers", '"Did you leave a flower on my pillow
         c('"A white rose."', "rose"),
         c('"Something with berries on it."', "berries"),
         c('[Trickster] "It was a lily. The white kind. For a wedding."', "lily")),
-    cam("rose", '''"A white rose means 'I am worthy of you.'" {n}She says it primly, like a governess.{/n} "Which is a lie, of course. Nobody is ever worthy of anybody. But it's a very pretty lie, and it's the one people most like to be told." {n}She closes the herbarium.{/n} "I left it because I thought you'd like to hear it. From someone who knows exactly how much it's worth."''',
+    cam("rose", '''"A white rose means 'I am worthy of you.'" {n}She says it with a governess's primness.{/n} "A rather ambitious claim for a single flower. I thought you would enjoy it." {n}She closes the herbarium.{/n} "You are welcome to try to prove me wrong."''',
         c("Continue", "yours")),
     cam("berries", '''"Nightshade." {n}She is delighted.{/n} "It means 'I am a dangerous companion.' My teacher said you should only ever send it to someone who already knows. It isn't a warning, you see. It's a compliment. It means 'I trust you to have noticed.'"
 {n}She tilts her head.{/n} "You didn't eat it, I hope. It would spoil the whole message."''',
@@ -35,8 +35,7 @@ living(FLOWERS, "The language of flowers", '"Did you leave a flower on my pillow
         c("[Close the book without choosing]", "none")),
     cam("foxglove", '''"Foxglove. 'Insincerity.'" {n}She smiles slowly.{/n} "You chose the flower for liars. For me, or for you? No, don't answer. It's better if I never know which of us you meant."''',
         c("Continue", "close")),
-    cam("forget", '''{n}She looks at the little blue flower for a long time before she says anything.{/n}
-"Forget-me-not." {n}Her voice is very soft.{/n} "It means exactly what it says. It's the only flower that does. It's the only honest thing in the whole book." {n}She takes it out of the page with great care and tucks it into the lace at her throat, beside the amulet.{/n} "I shan't. I never forget anyone. Ask anybody who ever knew me."''',
+    cam("forget", '''{n}She lifts the small blue flower out of the page.{/n} "Forget-me-not. How demanding for something so small." {n}She tucks it into the lace at her throat.{/n} "Very well. Think of me when you put on your armor. When you take it off, you may be more attentive."''',
         c("Continue", "close")),
     cam("none", '''"No flower." {n}She regards the closed book.{/n} "That's a message too, you know. In the old language, an empty hand means 'I have nothing to say that you do not already know.'" {n}She draws the herbarium back into her lap.{/n} "It's either very romantic or very rude. My teacher said it depended entirely on the face."''',
         c("Continue", "close")),
@@ -50,7 +49,7 @@ living(FLOWERS, "The language of flowers", '"Did you leave a flower on my pillow
 met(EVE, "The eve", '"Tomorrow we march on the Threshold."', [
     cam("open", '''"I know. The whole citadel is praying. I can hear them through the floor, like mice." {n}She is sitting on the end of your bed with her knife across her knees, polishing it, very slowly, with a square of silk.{/n} "I've never been to a battle where everyone expected to die. It's rather beautiful. Everyone is being so kind to everyone else."''',
         c("Continue", "ask")),
-    cam("ask", '''"May I ask you something, my friend? I've never asked anyone this before, because nobody I asked it of ever lived long enough to answer." {n}She holds the blade up to the lamp, and turns it.{/n} "If you die tomorrow, will you do it convincingly?"''',
+    cam("ask", '''"I have asked people what they thought of dying before. I seldom let them finish their answers." {n}She turns the knife under the lamp.{/n} "You may finish yours. If you die tomorrow, will you do it convincingly?"''',
         c('"I don\'t intend to die."', "intend"),
         c('[Trickster] "No. I\'ll do it so badly you\'ll have to come and tell me I\'m overacting."', "badly"),
         c('"If I do, I want your face to be the last thing I see."', "face")),

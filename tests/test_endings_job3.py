@@ -95,7 +95,7 @@ class EndingsJob3Tests(unittest.TestCase):
         for sid in S.LOSS_ENDINGS:
             paragraphs = self.scenes[sid]['Nodes'][0]['Paragraphs']
             for at_home in (False, True):
-                flags = {S.TOGETHER}
+                flags = {S.TOGETHER, S.SHARE}
                 if at_home:
                     flags.add('soana.partner.homecoming_kept')
                 shown = [p['Text'] for p in paragraphs if self.enabled(p, flags)]
@@ -174,27 +174,38 @@ class EndingsJob3Tests(unittest.TestCase):
             self.assertIn('wenduag.partner.vellexia_exception', exception['Choices'][0]['Set'])
 
     def test_thall_callback_is_contextual_and_delivered_once(self):
-        callbacks = [p for s in self.story['Scenes'] if s['Id'].startswith('aranka.')
-                     for n in s['Nodes'] for p in n.get('Paragraphs', [])
-                     if 'unfinished letter to Thall' in p['Text']]
-        self.assertTrue(callbacks)
-        for p in callbacks:
-            self.assertIn('aranka.thall.parting_spoken', p['Requires'])
-            self.assertIn('aranka.thall.dead', p['Forbids'])
-        self.assertTrue(any('aranka.thall.parting_spoken' in a['Set'] for s in self.story['Scenes']
+        from storylines import aranka_trickster as A
+        ending = self.page('aranka.trickster.epilogue.commit', 'end')
+        coda = self.page('aranka.lastcall.page', 'page')
+        conclusion = next(p for p in ending['Paragraphs'] if p['Text'] == A.THALL_ENDING)
+        callback = next(p for p in coda['Paragraphs'] if p['Text'] == A.THALL_CALLBACK)
+        self.assertIn(A.THALL_ANSWERED, conclusion['Requires'])
+        self.assertIn(A.THALL_DEAD, conclusion['Forbids'])
+        self.assertIn(A.THALL_ANSWERED, callback['Requires'])
+        self.assertIn(A.THALL_DEAD, callback['Forbids'])
+        self.assertFalse(self.enabled(conclusion, set()))
+        self.assertTrue(self.enabled(conclusion, {A.THALL_ANSWERED}))
+        history = {A.THALL_ANSWERED, 'trickster.lastcall.taken', 'ending.trickster',
+                   'trickster.ever', 'availability.observed', 'aranka.extension_kept',
+                   'aranka.after_song_kept', 'aranka.extension_night'}
+        self.assertFalse(self.enabled(conclusion, history))
+        self.assertTrue(self.enabled(callback, history))
+        self.assertTrue(any(A.THALL_ANSWERED in a['Set'] for s in self.story['Scenes']
                             for n in s['Nodes'] for a in n['Choices']))
         call = self.page('aranka.lastcall.call', 'call')
         self.assertNotIn('quiet Desnan adept', call['Text'])
 
-    def test_thall_conversation_acknowledges_verified_death(self):
-        scene = self.scenes['aranka.trickster.verse.duet']
-        page = self.page(scene['Id'], 'signed')
-        question, death = page['Choices'][-2:]
-        self.assertIn('aranka.thall.dead', question['Forbids'])
-        self.assertIn('aranka.thall.dead', death['Requires'])
-        reply = self.page(scene['Id'], death['Next'])
-        self.assertIn('He died in the Midnight Fane', reply['Text'])
-        self.assertNotIn('If he finds me', reply['Text'])
+    def test_thall_verified_death_replaces_correspondence(self):
+        from storylines import aranka_trickster as A
+        ending = self.page('aranka.trickster.epilogue.commit', 'end')
+        memory = next(p for p in ending['Paragraphs'] if p['Text'] == A.THALL_MEMORY['Text'])
+        conclusion = next(p for p in ending['Paragraphs'] if p['Text'] == A.THALL_ENDING)
+        flags = {A.THALL_DEAD, A.THALL_ANSWERED}
+        self.assertTrue(self.enabled(memory, flags))
+        self.assertFalse(self.enabled(conclusion, flags))
+        self.assertIn('Midnight Fane', memory['Text'])
+        for sid in ('aranka.thall.answer', 'aranka.thall.reply'):
+            self.assertIn(A.THALL_DEAD, self.scenes[sid]['Forbids'])
 
     def test_legacy_exit_identities_and_mechanics(self):
         self.assertEqual(check(self.story), [])

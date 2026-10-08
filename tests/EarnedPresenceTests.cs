@@ -28,6 +28,12 @@ internal static class EarnedPresenceTests
     private static Snapshot World(Story story, Scene scene, IEnumerable<string> extra, bool sacrifice)
     {
         var state = new Snapshot { Chapter = Math.Min(Math.Max(6, scene.MinChapter), scene.MaxChapter), Hour = 100000 };
+        // fix-inherited2: the accepted Soana fixture must earn a real partner stance.
+        // The non-Trickster fallback stops holding when a Trickster return is added;
+        // a coarse commitment is not an agreement with Soana about Corven.
+        if (scene.Relationship == "soana" && scene.Requires.Any(k => k == "soana.round2.current_love"
+                || k == "soana.round2.current_courtship" || k == "soana.round2.postwar_ready"))
+            state.Flags.UnionWith(new[] { "soana.partner_stance.secret", "soana.partner.agreed" });
         foreach (var flag in scene.Requires.Where(requiredKey => !requiredKey.EndsWith(".present_now", StringComparison.Ordinal) && !requiredKey.EndsWith(".reachable_by_letter", StringComparison.Ordinal)))
         {
             HouseholdTests.Earn(story, state, flag);
@@ -90,6 +96,22 @@ internal static class EarnedPresenceTests
             + $"{restored} return worlds restored, {mourning} mourning pages quiet after every return.");
         check(restored > (living - bare) * 3, "Too few earned-return worlds restored a living page (" + restored + " for " + living + " pages).");
         check(mourning >= 40, "Too few mourning pages exercised (" + mourning + ").");
+
+        // fix-inherited2: every return restores an accepted Soana history, while
+        // the return itself earns neither her partner stance nor renewed love.
+        var soana = story.Scenes.Single(s => s.Id == "soana.ending_kept_life");
+        foreach (var (name, flags) in Returns)
+        {
+            var accepted = World(story, soana, flags, true);
+            check(accepted.Has("soana.partner_stance.secret") && accepted.Has("soana.partner.agreed")
+                  && Program.CurrentAvailable(story, soana, accepted), "Soana's accepted history is lost after " + name + ".");
+            var unagreed = Program.Copy(accepted);
+            unagreed.Flags.Remove("soana.partner_stance.secret");
+            unagreed.Flags.Remove("soana.partner.agreed");
+            unagreed.Flags.Add("trickster"); // exercise the current-path stance gate even in an Iomedae fixture
+            Rules.Complete(story, unagreed);
+            check(!Program.CurrentAvailable(story, soana, unagreed), "The Commander return invents Soana's partner agreement: " + name + ".");
+        }
 
         // The audited case (Seelah, GrandFinal Answer_0017): no "Now we're even" and no fireside after the Commander died.
         foreach (var id in new[] { "seelah.trickster.epilogue.commit", "seelah.ending_together" })

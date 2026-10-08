@@ -1,14 +1,8 @@
 {
   "voice": "DELAMERE: blunt, proud, older rural priestess and huntress; devout even when angry with her god; physically decisive, impatient with fuss, dry rather than coy. Desire is frank and vigorous. She enjoys catching and being caught but rejects ownership. No undead hiss in this authored living return. No therapy language, consent speeches, maxims, divine messages, or generic conquest boasting. Write new dialogue; do not reuse brief or route sentences.",
-  "facts": [
-    "Delamere was a Kellid priestess of Erastil in old Sarkoris, known for hard methods and protecting villagers.",
-    "She disliked cities and enforced the fifty-three-person settlement rule.",
-    "She hunted Erastil's white stag for three days, offered its meat to him, and made a bow and breastplate from its antlers and hide.",
-    "Native TombOfDelamere_BookEvent/Cue_0057 describes regal bearing, a proud chin, broad shoulders and strong archer's arms. No other physical specificity is established here.",
-    "Native Delamere rejects being ordered like a dog. No established canon spouse or current lover is supplied by the binding inputs."
-  ],
+  "facts": "Delamere was a Kellid priestess of Erastil in old Sarkoris, known for hard methods and protecting villagers.\nShe disliked cities and enforced the fifty-three-person settlement rule.\nShe hunted Erastil's white stag for three days, offered its meat to him, and made a bow and breastplate from its antlers and hide.\nNative TombOfDelamere_BookEvent/Cue_0057 describes regal bearing, a proud chin, broad shoulders and strong archer's arms. No other physical specificity is established here.\nNative Delamere rejects being ordered like a dog. No established canon spouse or current lover is supplied by the binding inputs.",
   "scene": "SCENE: Trickster-only authored living Delamere, first spring after Threshold. The Commander survived or has actually earned the existing return. Delamere brought venison to Drezen and invited the Commander to her woods herself. They have never had their first night: this is the legacy late-ending road, including an earlier postponed hunt. Below her temple, the new-moon stream hollow and hunter's blind, warm stag hide and banked fire. Two present: Delamere and Commander. ACT BRIEF: their first mutually chosen sexual encounter on the stag hide, with Delamere initially on top; subsequent positioning accommodates the old leg wound and the selected Commander anatomy. Her appetite and chosen pace drive the encounter. No new sexual preference is presented as canon. No other partner or interruption. This paragraph sits inside a retrospective ending: surrounding summary remains third person, this tagged passage can address the Commander as you. AUTHORED CONTINUITY, NOT NATIVE FACTS: she is alive, warm and unbound after the earned horn waking; the Commander has the retained leg wound; the hunt vow, blind, hide arrangement, rural courtship and lost blessing belong to this mod. Existing scars may be acknowledged without inventing more scars, anatomy measurements, eye color, hair color, or new age claims. If a religious lie occurred it was confessed before this encounter; never imply it occurred on every history. The Commander's old wound is not fresh, is not erotic injury and is not worsened. REQUIRED BEATS: (1) Delamere actively draws the willing Commander close and chooses how the encounter proceeds; the old blade is out of the encounter. (2) Both reciprocate; she adjusts for the bad leg through practical motion, without turning care into a speech or pain into proof of love. (3) Her desire sounds like a proud living huntress, with one brief personal admission amid physical action, not a string of hunting proverbs. (4) Her faith survives pleasure; the offering and village provision were already paid before the encounter, not an invented divine blessing or sexual rite. (5) Do not call the Commander owned or make sex settle disagreement about her law or absolve a lie. (6) Finish at spent fire/dawn, ready for her independent return to temple work and the following morning's real settlement argument; no second encounter or invented first-night flag. Exactly preserve the last line.",
-  "last_line": "N: At dawn she takes up her bow and leads you home.",
+  "last_line": "N: On the road home she stopped at a moved stake. \"The volunteers need water,\" she said, \"and their neighbours need the path to it. I marked it too close to the hearth.\" She pulled the stake herself and waited for the household to come out and argue.",
   "speakers": {
     "D": "Delamere"
   },
@@ -18,5 +12,13 @@
     "a woman"
   ],
   "min_lines": 14,
-  "max_lines": 20
+  "max_lines": 20,
+  "narration": "third-past",
+  "last_lines": {
+    "page/paragraph#1": "N: On the road home she stopped at a moved stake. \"The volunteers need water,\" she said, \"and their neighbours need the path to it. I marked it too close to the hearth.\" She pulled the stake herself and waited for the household to come out and argue.",
+    "page/paragraph#2": "N: On the road home a woman met them beside a heap of bundles. \"You sent her here,\" Delamere told the Commander. \"I chose her. Now she has to move her hearth again.\" She took up the first bundle. The woman followed her, cursing, and Delamere answered every word.",
+    "page/paragraph#3": "N: At Drezen the camp carts blocked the well path. Delamere halted the Commander there. \"You kept them here. Make your captain clear it.\" When the carts moved she went back to her temple; the city still stank, even after that night.",
+    "page/paragraph#4": "N: Two of Drezen's elders were disputing the same patch beside the well when the lovers came down the road. Delamere put her bow between them. \"I chose you both. I will hear you both.\" The Commander waited beside her while they marked a passage in the mud.",
+    "page/paragraph#5": "N: She kept her home below the temple. At the first frost she came for her day. The Commander ran again, and she caught them again, then walked home beside them. The next year she came earlier. Neither ever called the hunt finished."
+  }
 }

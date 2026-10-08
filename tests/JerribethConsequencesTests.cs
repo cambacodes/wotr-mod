@@ -17,7 +17,7 @@ internal static class JerribethConsequencesTests
             if (wintersun) initial.Flags.Add("jerribeth.wintersun_known");
             var ids = new List<string> { "offered_signature" };
             if (wintersun) ids.Add("borrowed_sun");
-            ids.AddRange(new[] { "small_print", "unsold_evening", "purchaser_answer" });
+            ids.Add("unsold_evening");
             var states = new List<Snapshot> { initial };
             foreach (string id in ids)
             {
@@ -50,9 +50,9 @@ internal static class JerribethConsequencesTests
                             continue;
                         }
                         check(result.Has("jerribeth.offer_performance") != result.Has("jerribeth.offer_design"), "Jerribeth loses selected work.");
-                        if (id == "small_print" || id == "unsold_evening" || id == "purchaser_answer")
+                        if (id == "offered_signature" || id == "unsold_evening")
                             check(result.Has("jerribeth.sale_corrected") != result.Has("jerribeth.sale_withdrawn"), "Jerribeth loses sale outcome.");
-                        if (id == "purchaser_answer") check(result.Has("jerribeth.consequences_kept"), "Jerribeth purchaser chain lacks completion.");
+                        check(result.Has("jerribeth.consequences_kept") && result.Has("jerribeth.sale_terms_set"), "Jerribeth absorbed purchaser chain lacks completion.");
                         continuing.Add(result);
                     }
                 }
@@ -61,9 +61,18 @@ internal static class JerribethConsequencesTests
             }
             if (!wintersun) check(!Program.CurrentAvailable(story, Find("borrowed_sun"), states[0]), "Wintersun scene invents knowledge.");
         }
-        foreach (var scene in story.Scenes.Where(s => new[] { "offered_signature", "borrowed_sun", "small_print", "unsold_evening", "purchaser_answer" }.Any(id => s.Id == "jerribeth." + id)))
+        foreach (string id in new[] { "small_print", "purchaser_answer" })
         {
-            var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[scene.Chapters[0] == 4 ? 1 : 0], Hour = 1000 };
+            var retired = Find(id);
+            var parked = new Snapshot { Chapter = 5, Area = retired.Areas[0], Hour = 10000 };
+            parked.Flags.UnionWith(retired.Requires);
+            parked.Flags.Add("chapter_later");
+            check(retired.Forbids.Contains("chapter_later") && !Program.CurrentAvailable(story, retired, parked), "Retired purchaser surface reopened: " + id);
+            check(retired.Nodes.Count > 0, "Retired purchaser save graph was removed: " + id);
+        }
+        foreach (var scene in story.Scenes.Where(s => new[] { "offered_signature", "borrowed_sun", "unsold_evening" }.Any(id => s.Id == "jerribeth." + id)))
+        {
+            var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[0], Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires);
             check(Program.CurrentAvailable(story, scene, ready), "Jerribeth consequence readiness fixture invalid.");
             check(!Rules.EntryTargets(scene).Any(), "Remote Jerribeth scene attaches to native conversation.");

@@ -1287,3 +1287,52 @@ for _host in SCENES:
                     'if she petitioned the cathedral to move him. Kitrane kept the regents\' crown '
                     'out of that letter; she did not keep his death out of it.{/n}')
 del _host, _nodes
+
+
+def _round4_direct_histories(hosts):
+    """Keep saved selector nodes; dispatch on the incoming answer instead.
+
+    The saved answer index takes the first history; alternatives append after
+    all existing answers. Nested selectors contribute gates, never clicks.
+    """
+    import copy
+    for host in hosts:
+        selectors = {node["Id"]: node for node in host["Nodes"]
+                     if ".select." in node["Id"]}
+
+        def leaves(target, requires=(), forbids=()):
+            if target not in selectors:
+                return [(target, requires, forbids)]
+            result = []
+            for branch in selectors[target]["Choices"]:
+                assert not branch.get("Set") and not branch.get("Check")
+                result.extend(leaves(branch["Next"],
+                    requires + tuple(branch.get("Requires", [])),
+                    forbids + tuple(branch.get("Forbids", []))))
+            return result
+
+        for node in host["Nodes"]:
+            if node["Id"] in selectors:
+                continue  # Saved selector answers retain their destinations.
+            appended = []
+            for choice in node["Choices"]:
+                if choice.get("Next") not in selectors:
+                    continue
+                original = copy.deepcopy(choice)
+                for index, (target, requires, forbids) in enumerate(leaves(original["Next"])):
+                    direct = choice if index == 0 else copy.deepcopy(original)
+                    direct["Next"] = target
+                    for key, gates in (("Requires", requires), ("Forbids", forbids)):
+                        direct[key] = list(dict.fromkeys(original.get(key, []) + list(gates)))
+                    if index:
+                        appended.append(direct)
+            node["Choices"].extend(appended)
+        # Rules.Validate follows all edges, including retired answers. The
+        # scene's completion flag cannot hold while this scene is available.
+        # These append-only links retain the saved nodes without live clicks.
+        for selector in selectors:
+            host["Nodes"][0]["Choices"].append(
+                c("Continue", selector, requires=(host["Id"],)))
+
+
+_round4_direct_histories(SCENES)

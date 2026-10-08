@@ -1,0 +1,32 @@
+{
+  "slot_id": "minachiv.before_the_last_road.explicit.8",
+  "host_scene": "minachiv.before_the_last_road",
+  "host_node": "together",
+  "after_text": "The third knocks the case off the table, and nobody picks it up.",
+  "source_nodes": [
+    "together"
+  ],
+  "voice": "MINAGHO: foul-mouthed and sugared at once ('darling', 'sweetie' as a leash), gloating, impatient, possessive of Chivarro first; she bites and keeps score. CHIVARRO: the madam of the Delights, appraising and imperious, reads what the others want before it is said and decides whether to sell it; 'honey' is her word; jealous of Minagho, proprietorial about her own room. The two women want each other as much as the Commander. No therapy language, no consent choreography, no gratitude script. Write fresh short dialogue from these traits.",
+  "facts": "Canon facts only: Minagho and Chivarro are adult female eyeless lilitu and established lovers; Minagho was Baphomet's general, branded for her failure at Kenabres; Chivarro was the mistress of the Ten Thousand Delights and reads minds. No eyes, eye colour or glances. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. The loft above Chivarro's house under the burned market, the red lamp, the packing case, the plums and the knife are authored scene staging from this scene, not lore. Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, the last base-route meeting before the Commander's departure, only on the together answer (minachiv.minagho_chosen and minachiv.chivarro_lasting) and only when minagho_chivarro.outcome.eligible holds. STRUCTURE HOOK NEEDED: like the_unhired_evening:together_kiss, the insert needs its own slot node between the together text and its existing exit, gated on minagho_chivarro.outcome.eligible; until that node exists this brief is tracking only. WHERE: Chivarro's loft above her house, red lamp lit, the house open and loud below the boards. Participants: the Commander, Minagho and Chivarro (woman with woman, Commander present and participating). The three kisses have just knocked the packing case off the table. Both women initiate; each also wants the other, and their own rivalry over who moved which chair carries into it. Required beats: Chivarro taking charge of her own room; Minagho competing for her; the Commander actively reciprocating with both; power play stays voluntary; no coercion-as-romance. Do not resolve the departure, the commitment answer or any stance inside the insert. Narrative second person, present tense; Commander dialogue stays in player choices outside the insert. End before the existing 'When you sit back' beat, which resumes verbatim.",
+  "last_line": "N: When you sit back, their hands are still on you. Chivarro starts describing the new couch with such precision that Minagho asks how long she has been planning to break it. She doesn't get an answer.",
+  "speakers": {
+    "N": "Narrator",
+    "M": "Minagho",
+    "C": "Chivarro"
+  },
+  "participants": [
+    "Minagho",
+    "Chivarro"
+  ],
+  "example": "N: Chivarro hooks a foot round the leg of your chair and drags it closer.\nC: Leave the case, honey. It's insured.\nM: Nothing in this room is insured. Least of all you.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 22,
+  "default_text": "{n}Nobody picks up the case. Chivarro pulls Minagho down onto the couch by her collar and you with her, and the red lamp gutters over the three of you.{/n}",
+  "continuity": "Chapter 5 farewell, after the_unhired_evening and a_room_she_likes: no first-night reset. Actual earned presence only. No flags from this text. The together exit and its Set remain the existing commitment answer."
+}

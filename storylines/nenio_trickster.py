@@ -181,18 +181,24 @@ PLACES = {
         "@WHERE@": "at the edge of the camp",
         "@AROUND@": "the camp",
         "@SEAT@": "a coil of rope",
+        "@HER_SEAT@": "a coil of rope",
+        "@MY_SEAT@": "a coil of rope",
     }),
     "visitor": dict(suffix="_visitor", texts={
         "@DESK@": "two of the spice trader's crates",
         "@WHERE@": "behind the spice trader's awning",
         "@AROUND@": "the market",
         "@SEAT@": "a third crate, which the trader has given up asking for",
+        "@HER_SEAT@": "a third crate",
+        "@MY_SEAT@": "a third crate",
     }),
     "arcade": dict(suffix="_arcade", texts={
         "@DESK@": "the dry end of the jeweller's step",
         "@WHERE@": "under the jeweller's arcade",
         "@AROUND@": "the arcade",
         "@SEAT@": "the step beside her",
+        "@HER_SEAT@": "the jeweller's step",
+        "@MY_SEAT@": "the step beside me",
     }),
 }
 
@@ -315,7 +321,7 @@ SCENES.append(scene(P + "taken.riddle", "A riddle only she can answer", "Nenio",
 
 # The first conversation after the Enigma, on her hub: the shape of the place where the name was.
 meet(P + "after_enigma", "The shape of a name", '"You keep looking at me as if I were a misprint."', [
-    nar("open", '''{n}Nenio sits on @SEAT@ with an empty sheet on her knee. She looks at your face, then your sleeve, then the sheet.{/n}
+    nar("open", '''{n}Nenio sits on @HER_SEAT@ with an empty sheet on her knee. She looks at your face, then your sleeve, then the sheet.{/n}
 "A name for a name. I have kept mine. Now I shall file yours. Do not say it while I work."
 {n}She closes her eyes. Her lips form a word without sound. Then she opens her eyes, studies your face again, and leaves the pencil poised above the sheet.{/n} "No name. Let me check the rest."''',
         c("Continue", "missing")),
@@ -571,7 +577,7 @@ meet(P + "away.correction", "Erratum", '"You came."', [
 "The new entry is 'follower, probationary'. You will not tidy my notes. You will answer every question I ask, with numbers. The probation may be extended at the author's discretion, which is infinite." {n}She lifts her chin.{/n} "Say yes, or I leave on the next cart, and I shall not come back for any quantity of backwards vrocks."''',
         c('[Accept the probation] "Yes. Follower, probationary."', "yes", flags=(RETURNED, STARTED, DEMOTED, SCRIBE)),
         c('[Refuse her] "No. I wanted you back, not a probation."', "no", flags=(CLOSED,))),
-    nen("yes", '''"Good." {n}She writes it down.{/n} "Your first duty is to sit on @SEAT@ and hold this stone on page six so that it does not blow away. It is an important stone. I have been using it as a control."''',
+    nen("yes", '''"Good." {n}She writes it down.{/n} "Your first duty is to sit on @MY_SEAT@ and hold this stone on page six so that it does not blow away. It is an important stone. I have been using it as a control."''',
         c("[Hold the stone.]")),
     nen("no", '''{n}She nods, as if you had confirmed a figure she had already written down.{/n}
 "Then the record stands as it was." {n}She gathers up your eleven pages, squares them, and hands them back.{/n} "Keep them. The vrock is still wrong. I shall think about it on the cart."''',
@@ -808,7 +814,7 @@ KEPT_PARAS = (
     p("{n}Her entry on Areelu's work carried a list of the dead of Sarkoris as long as the entry itself. She put it there because a follower had once made her read it aloud, and she left it there because an entry without its costs was a sloppy entry. It did not soften a word of her admiration. Scholars in Absalom have been arguing for years about which half of the entry she meant.{/n}", requires=(ARCH_DEAD,)),
     p("{n}Her entry on Areelu's work remained the most admiring in the Encyclopedia. Scholars in Absalom walked out of her lectures over it, and she let them go, and went on, and never once apologised.{/n}", requires=(ARCH_AGREED,)),
     p("{n}Her entry on Areelu's work has a footnote longer than the entry, in a legible hand, listing every Sarkorian town by name. Nobody knows who wrote it. Nenio claimed it was a printer's error, too.{/n}", requires=(ARCH_TRICK,)),
-    p('{n}On her return she unfolded the slip from their wartime study. "When this war is over, what do you want?" This time the Commander had an answer. She listened without reaching for a pencil, then said, "Good. I have a question about that as well."{/n}', requires=(F + "longitudinal.ask_after",)),
+    p('{n}The slip from their wartime study stayed between the pages of volume one. "When this war is over, what do you want?" This time the Commander had an answer. She listened without reaching for a pencil, then said, "Good. I have a question about that as well."{/n}', requires=(F + "longitudinal.ask_after",)),
 )
 # Sol r4 INT: epilogues bypass UnavailableFlags; each living page guards every loss, lifted only by her Trickster return.
 
@@ -1097,7 +1103,9 @@ _page["Choices"].append(c("[Read on.]", _late_slot))
 _late_cut = ('{n}Nenio sat on the bed and drew the Commander down beside her. '
              'She caught {mf|his|her} face in both hands and kissed {mf|him|her} again, '
              'then pulled {mf|him|her} close enough that neither could reach the notes.{/n} '
-             '"The library can wait until morning."')
+              '"The library can wait until morning." '
+             '{n}She pulled off the remaining clothes and drew the Commander between her knees. '
+             'Her hands closed on {mf|his|her} hips; she stopped {mf|him|her} with one more kiss, then lifted her hips to meet {mf|his|hers}.{/n}')
 _late["Nodes"].append(nar(_late_slot, _late_cut, c("Continue", "morning_after")))
 _late["Nodes"].append(nar("morning_after", _morning))
 

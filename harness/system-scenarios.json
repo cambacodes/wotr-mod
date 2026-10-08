@@ -1,0 +1,1730 @@
+{
+  "Schema": 1,
+  "Cases": [
+    {
+      "Id": "pair-w5/household.pair.seelah_nenio.question",
+      "System": "pair-w5",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.table.kept",
+        "nenio.committed",
+        "nenio.harem.attitude.seelah.friend",
+        "nenio.in_party",
+        "nenio.trickster.first_night",
+        "nenio.trickster.test_running",
+        "seelah.chosen_future",
+        "seelah.committed",
+        "seelah.harem.attitude.nenio.friend",
+        "seelah.in_party",
+        "seelah.short_future_chosen",
+        "trickster",
+        "trickster.foresight.accepted"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Table": true,
+          "Available": false,
+          "Remove": [
+            "foresight.page_taken",
+            "trickster.foresight.accepted"
+          ]
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Table": true,
+          "Available": false,
+          "Add": [
+            "seelah.closed"
+          ]
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Table": true,
+          "Available": false,
+          "Remove": [
+            "trickster"
+          ]
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Table": true,
+          "Available": true,
+          "ProbeOnly": true,
+          "RestSpent": {
+            "household.pair": 1
+          },
+          "RestSucceeded": true
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Table": true,
+          "Available": false,
+          "ProbeOnly": true,
+          "RestSpent": {
+            "household.pair": 1
+          },
+          "RestSucceeded": false
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Table": true,
+          "Available": false,
+          "Add": [
+            "seelah_dead"
+          ]
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Answers": [
+            "household.pair.seelah_nenio.question/start/0",
+            "household.pair.seelah_nenio.question/account/0",
+            "household.pair.seelah_nenio.question/revised/0"
+          ],
+          "ExpectFlags": [
+            "household.pair.seelah_nenio.cost.nenio_dropped_word_list",
+            "household.pair.seelah_nenio.cost.seelah_watch_account",
+            "household.pair.seelah_nenio.deed.nenio_revised_question",
+            "household.pair.seelah_nenio.deed.seelah_named_decision",
+            "household.pair.seelah_nenio.question.answered",
+            "household.pair.seelah_nenio.question.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.pair": 1
+          }
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Available": false,
+          "Table": true,
+          "LedgerEntries": [
+            "household.readers.w5.s10.seating"
+          ]
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Available": false,
+          "Add": [
+            "seelah.closed"
+          ],
+          "HiddenLedgerEntries": [
+            "household.readers.w5.s10.seating"
+          ]
+        },
+        {
+          "Scene": "household.pair.seelah_nenio.question",
+          "Available": false,
+          "Add": [
+            "sacrifice"
+          ],
+          "HiddenLedgerEntries": [
+            "household.readers.w5.s10.seating"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "pair-w5/jannah.circle.seelah",
+      "System": "pair-w5",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.table.kept",
+        "jannah.committed",
+        "jannah.seelah_killed_at_cage",
+        "jannah.trickster.challenge",
+        "jannah.trickster.returned",
+        "seelah.chosen_future",
+        "seelah.committed",
+        "seelah.short_future_chosen",
+        "seelah.trickster.returned",
+        "trickster",
+        "trickster.ever",
+        "trickster.foresight.accepted"
+      ],
+      "Steps": [
+        {
+          "Scene": "jannah.circle.seelah",
+          "Answers": [
+            "jannah.circle.seelah/open/5",
+            "jannah.circle.seelah/returned_cage/0",
+            "jannah.circle.seelah/cage_paladin/0",
+            "jannah.circle.seelah/cage_answer/0"
+          ],
+          "ExpectFlags": [
+            "jannah.circle.seelah.cage_reckoned"
+          ]
+        },
+        {
+          "Scene": "jannah.circle.seelah",
+          "Available": false,
+          "LedgerEntries": [
+            "household.readers.w5.s20.seating"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "pair-w5/household.pair.seelah_yaniel.watch",
+      "System": "pair-w5",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.table.kept",
+        "seelah.chosen_future",
+        "seelah.committed",
+        "seelah.harem.attitude.yaniel.friend",
+        "seelah.short_future_chosen",
+        "trickster",
+        "trickster.foresight.accepted",
+        "yaniel.committed",
+        "yaniel.freed.latched",
+        "yaniel.harem.attitude.seelah.friend",
+        "yaniel.trickster.cost.shackle_kept",
+        "yaniel.trickster.returned",
+        "yaniel.trickster.verdict"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.pair.seelah_yaniel.watch",
+          "Answers": [
+            "household.pair.seelah_yaniel.watch/start/1",
+            "household.pair.seelah_yaniel.watch/declined/0"
+          ],
+          "ExpectFlags": [
+            "household.pair.seelah_yaniel.watch.declined",
+            "household.pair.seelah_yaniel.watch.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.pair": 1
+          }
+        },
+        {
+          "Scene": "household.pair.seelah_yaniel.watch",
+          "Available": false,
+          "LedgerEntries": [
+            "household.readers.w5.s21.seating"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "pair-w5/household.pair.seelah_kiana.ward",
+      "System": "pair-w5",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.table.kept",
+        "kiana.aftermath_seen",
+        "kiana.committed",
+        "kiana.harem.attitude.seelah.friend",
+        "kiana.lovers",
+        "seelah.chosen_future",
+        "seelah.committed",
+        "seelah.harem.attitude.kiana.friend",
+        "seelah.in_party",
+        "seelah.short_future_chosen",
+        "seelah.souls_returned",
+        "trickster",
+        "trickster.foresight.accepted"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.pair.seelah_kiana.ward",
+          "Answers": [
+            "household.pair.seelah_kiana.ward/start/1",
+            "household.pair.seelah_kiana.ward/declined/0"
+          ],
+          "ExpectFlags": [
+            "household.pair.seelah_kiana.ward.declined",
+            "household.pair.seelah_kiana.ward.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.pair": 1
+          }
+        },
+        {
+          "Scene": "household.pair.seelah_kiana.ward",
+          "Available": false,
+          "LedgerEntries": [
+            "household.readers.w5.s29.seating"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "pair-w5/household.pair.eliandra_targona.charges",
+      "System": "pair-w5",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "eliandra.committed",
+        "eliandra.harem.attitude.targona.friend",
+        "eliandra.met_ch5",
+        "eliandra.trickster.declined",
+        "eliandra.trickster.letter_answered",
+        "household.table.kept",
+        "targona.committed",
+        "targona.harem.attitude.eliandra.friend",
+        "targona.trickster.after.ward",
+        "targona.trickster.returned",
+        "trickster",
+        "trickster.foresight.accepted"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.pair.eliandra_targona.charges",
+          "Answers": [
+            "household.pair.eliandra_targona.charges/start/1",
+            "household.pair.eliandra_targona.charges/declined/0"
+          ],
+          "ExpectFlags": [
+            "household.pair.eliandra_targona.charges.declined",
+            "household.pair.eliandra_targona.charges.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.pair": 1
+          }
+        },
+        {
+          "Scene": "household.pair.eliandra_targona.charges",
+          "Available": false,
+          "LedgerEntries": [
+            "household.readers.w5.s30.seating"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "household-pairs/household.pair.seelah_wenduag.spar",
+      "System": "household-pairs",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.pair.seelah_wenduag.invited",
+        "household.table.kept",
+        "seelah.chosen_future",
+        "seelah.committed",
+        "seelah.short_future_chosen",
+        "trickster",
+        "trickster.foresight.accepted",
+        "wenduag.committed",
+        "wenduag.trickster.claim.given",
+        "wenduag.trickster.gate_seen",
+        "wenduag.trickster.proved"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.pair.seelah_wenduag.spar",
+          "Answers": [
+            "household.pair.seelah_wenduag.spar/start/1",
+            "household.pair.seelah_wenduag.spar/result_1/0"
+          ],
+          "ExpectFlags": [
+            "household.pair.seelah_wenduag.spar.declined",
+            "household.pair.seelah_wenduag.spar.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.protected": 1
+          }
+        }
+      ]
+    },
+    {
+      "Id": "household-pairs/household.pair.delamere_hepzamirah.open",
+      "System": "household-pairs",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "delamere.committed",
+        "delamere.trickster.caught",
+        "delamere.trickster.returned",
+        "delamere.trickster.second_hunt_offered",
+        "hepzamirah.trickster.returned",
+        "household.table.kept",
+        "trickster",
+        "trickster.foresight.accepted"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.pair.delamere_hepzamirah.open",
+          "Answers": [
+            "household.pair.delamere_hepzamirah.open/start/0",
+            "household.pair.delamere_hepzamirah.open/impounded/0"
+          ],
+          "ExpectFlags": [
+            "household.pair.delamere_hepzamirah.goods.equipment_impounded",
+            "household.pair.delamere_hepzamirah.known.present_claim",
+            "household.pair.delamere_hepzamirah.open.ready",
+            "household.pair.delamere_hepzamirah.open.seen"
+          ],
+          "ExpectRestSpent": {
+            "household.protected": 1
+          }
+        }
+      ]
+    },
+    {
+      "Id": "w4-ensemble/household.ensemble.ch3.supper",
+      "System": "w4-ensemble",
+      "Chapter": 3,
+      "SaveChapter": 3,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.table.kept",
+        "nenio.committed",
+        "nenio.in_party",
+        "nenio.trickster.first_night",
+        "nenio.trickster.test_running",
+        "seelah.chosen_future",
+        "seelah.committed",
+        "seelah.in_party",
+        "seelah.short_future_chosen",
+        "trickster",
+        "trickster.foresight.accepted",
+        "wenduag.committed",
+        "wenduag.in_party",
+        "wenduag.trickster.claim.given",
+        "wenduag.trickster.gate_seen",
+        "wenduag.trickster.proved"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.ensemble.ch3.supper",
+          "Answers": [
+            "household.ensemble.ch3.supper/start/0",
+            "household.ensemble.ch3.supper/sample/0"
+          ],
+          "ExpectFlags": [
+            "household.ensemble.ch3.supper.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.pair": 1
+          }
+        }
+      ]
+    },
+    {
+      "Id": "w4-knowledge/household.knowledge.nenio_seelah",
+      "System": "w4-knowledge",
+      "Chapter": 3,
+      "SaveChapter": 3,
+      "FixtureFlags": [
+        "availability.observed",
+        "household.table.kept",
+        "nenio.committed",
+        "nenio.in_party",
+        "nenio.trickster.first_night",
+        "nenio.trickster.test_running",
+        "seelah.platform_kept",
+        "trickster",
+        "trickster.foresight.accepted"
+      ],
+      "Steps": [
+        {
+          "Scene": "household.knowledge.nenio_seelah",
+          "Answers": [
+            "household.knowledge.nenio_seelah/start/0",
+            "household.knowledge.nenio_seelah/learned/0"
+          ],
+          "ExpectFlags": [
+            "household.knowledge.nenio_seelah.seen"
+          ],
+          "Table": true,
+          "ExpectRestSpent": {
+            "household.pair": 1
+          }
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/anevia.a_key_that_is_hers/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "anevia.case_consequence_kept",
+        "anevia.lover",
+        "anevia.return_ready",
+        "availability.observed"
+      ],
+      "Steps": [
+        {
+          "Scene": "anevia.a_key_that_is_hers",
+          "Answers": [
+            "anevia.a_key_that_is_hers/start/0",
+            "anevia.a_key_that_is_hers/yes/0",
+            "anevia.a_key_that_is_hers/key/0",
+            "anevia.a_key_that_is_hers/room/1",
+            "anevia.a_key_that_is_hers/end/0"
+          ],
+          "ExpectFlags": [
+            "anevia.committed",
+            "anevia.future_chosen",
+            "anevia.partner_stance.share",
+            "anevia.shared_key"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/anevia.a_key_that_is_hers/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "anevia.case_consequence_kept",
+        "anevia.lover",
+        "anevia.return_ready",
+        "availability.observed"
+      ],
+      "Steps": [
+        {
+          "Scene": "anevia.a_key_that_is_hers",
+          "Answers": [
+            "anevia.a_key_that_is_hers/start/4",
+            "anevia.a_key_that_is_hers/partner_exclusive/1"
+          ],
+          "ExpectFlags": [
+            "anevia.closed",
+            "anevia.parted",
+            "anevia.partner_stance.exclusive"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/anevia.a_key_that_is_hers/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "anevia.case_consequence_kept",
+        "anevia.lover",
+        "anevia.return_ready",
+        "availability.observed",
+        "irabeth_away"
+      ],
+      "Steps": [
+        {
+          "Scene": "anevia.a_key_that_is_hers",
+          "Answers": [
+            "anevia.a_key_that_is_hers/start/6",
+            "anevia.a_key_that_is_hers/round2.buildup.partner_absent_night/0",
+            "anevia.a_key_that_is_hers/anevia.a_key_that_is_hers.explicit.3/0",
+            "anevia.a_key_that_is_hers/partner_absent_night/0"
+          ],
+          "ExpectFlags": [
+            "anevia.committed",
+            "anevia.future_chosen",
+            "anevia.partner.absence_kept",
+            "anevia.partner_stance.secret"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/irabeth.a_road_she_would_choose/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "irabeth.instruction_tested"
+      ],
+      "Steps": [
+        {
+          "Scene": "irabeth.a_road_she_would_choose",
+          "Answers": [
+            "irabeth.a_road_she_would_choose/start/0",
+            "irabeth.a_road_she_would_choose/drawings/0",
+            "irabeth.a_road_she_would_choose/towns/0",
+            "irabeth.a_road_she_would_choose/practice/0",
+            "irabeth.a_road_she_would_choose/measured/0",
+            "irabeth.a_road_she_would_choose/want/0",
+            "irabeth.a_road_she_would_choose/lasting/2",
+            "irabeth.a_road_she_would_choose/partner_lasting_0_exclusive/1"
+          ],
+          "ExpectFlags": [
+            "irabeth.closed",
+            "irabeth.future_lasting",
+            "irabeth.partner_stance.exclusive",
+            "irabeth.road_towns",
+            "irabeth.walk_measured"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/irabeth.a_road_she_would_choose/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "irabeth.instruction_tested"
+      ],
+      "Steps": [
+        {
+          "Scene": "irabeth.a_road_she_would_choose",
+          "Answers": [
+            "irabeth.a_road_she_would_choose/start/0",
+            "irabeth.a_road_she_would_choose/drawings/0",
+            "irabeth.a_road_she_would_choose/towns/0",
+            "irabeth.a_road_she_would_choose/practice/0",
+            "irabeth.a_road_she_would_choose/measured/0",
+            "irabeth.a_road_she_would_choose/want/0",
+            "irabeth.a_road_she_would_choose/lasting/3",
+            "irabeth.a_road_she_would_choose/partner_lasting_0_secret/0",
+            "irabeth.a_road_she_would_choose/partner_lasting_0_lie/0",
+            "irabeth.a_road_she_would_choose/partner_lasting_0_night/1",
+            "irabeth.a_road_she_would_choose/irabeth.a_road_she_would_choose.explicit.1/0",
+            "irabeth.a_road_she_would_choose/partner_lasting_0_morning/0",
+            "irabeth.a_road_she_would_choose/partner_lasting_0_end/0"
+          ],
+          "ExpectFlags": [
+            "irabeth.committed",
+            "irabeth.future_chosen",
+            "irabeth.future_lasting",
+            "irabeth.partner_stance.secret",
+            "irabeth.road_towns",
+            "irabeth.walk_measured"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/irabeth.a_road_she_would_choose/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "irabeth.instruction_tested"
+      ],
+      "Steps": [
+        {
+          "Scene": "irabeth.a_road_she_would_choose",
+          "Answers": [
+            "irabeth.a_road_she_would_choose/start/0",
+            "irabeth.a_road_she_would_choose/drawings/0",
+            "irabeth.a_road_she_would_choose/towns/0",
+            "irabeth.a_road_she_would_choose/practice/0",
+            "irabeth.a_road_she_would_choose/measured/0",
+            "irabeth.a_road_she_would_choose/want/0",
+            "irabeth.a_road_she_would_choose/lasting/0",
+            "irabeth.a_road_she_would_choose/end/0"
+          ],
+          "ExpectFlags": [
+            "irabeth.committed",
+            "irabeth.future_chosen",
+            "irabeth.future_lasting",
+            "irabeth.partner_stance.share",
+            "irabeth.road_towns",
+            "irabeth.walk_measured"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/jerribeth.future/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "jerribeth.commission",
+        "jerribeth.marhevok_dead",
+        "jerribeth.settlement_kept"
+      ],
+      "Steps": [
+        {
+          "Scene": "jerribeth.future",
+          "Answers": [
+            "jerribeth.future/future_entry/4",
+            "jerribeth.future/partner_name/0",
+            "jerribeth.future/partner_dead/1",
+            "jerribeth.future/partner_answer_dead/0",
+            "jerribeth.future/partner_demand_dead/2",
+            "jerribeth.future/partner_refused/0"
+          ],
+          "ExpectFlags": [
+            "jerribeth.closed",
+            "jerribeth.partner_exclusive_refused",
+            "jerribeth.partner_origin.future.future_entry",
+            "jerribeth.partner_stance.exclusive",
+            "jerribeth.trickster.parted"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/jerribeth.future/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "jerribeth.commission",
+        "jerribeth.marhevok_dead",
+        "jerribeth.partner_origin.future.short_future",
+        "jerribeth.settlement_kept"
+      ],
+      "Steps": [
+        {
+          "Scene": "jerribeth.future",
+          "Answers": [
+            "jerribeth.future/future_entry/4",
+            "jerribeth.future/partner_name/0",
+            "jerribeth.future/partner_dead/2",
+            "jerribeth.future/partner_secret_dead/0",
+            "jerribeth.future/partner_resume/1",
+            "jerribeth.future/partner_continue_short_future/0",
+            "jerribeth.future/short_end/0"
+          ],
+          "ExpectFlags": [
+            "jerribeth.chosen_future",
+            "jerribeth.committed",
+            "jerribeth.future_settled",
+            "jerribeth.partner_origin.future.future_entry",
+            "jerribeth.partner_stance.secret",
+            "jerribeth.partner_terms_chosen",
+            "jerribeth.short_future_chosen"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/jerribeth.future/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "jerribeth.commission",
+        "jerribeth.marhevok_dead",
+        "jerribeth.partner_origin.future.short_future",
+        "jerribeth.settlement_kept"
+      ],
+      "Steps": [
+        {
+          "Scene": "jerribeth.future",
+          "Answers": [
+            "jerribeth.future/future_entry/4",
+            "jerribeth.future/partner_name/0",
+            "jerribeth.future/partner_dead/0",
+            "jerribeth.future/partner_share_dead/0",
+            "jerribeth.future/partner_resume/1",
+            "jerribeth.future/partner_continue_short_future/0",
+            "jerribeth.future/short_end/0"
+          ],
+          "ExpectFlags": [
+            "jerribeth.chosen_future",
+            "jerribeth.committed",
+            "jerribeth.future_settled",
+            "jerribeth.partner_origin.future.future_entry",
+            "jerribeth.partner_stance.share",
+            "jerribeth.partner_terms_chosen",
+            "jerribeth.short_future_chosen"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/kiana.morning/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "kiana.bereaved",
+        "kiana.lovers",
+        "kiana.separated",
+        "seelah.souls_returned"
+      ],
+      "Steps": [
+        {
+          "Scene": "kiana.morning",
+          "Answers": [
+            "kiana.morning/start/0",
+            "kiana.morning/bereaved/0",
+            "kiana.morning/work/0",
+            "kiana.morning/seat/0",
+            "kiana.morning/promise/0",
+            "kiana.morning/yes/1"
+          ],
+          "ExpectFlags": [
+            "kiana.committed",
+            "kiana.partner_stance.exclusive"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/kiana.morning/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "kiana.bereaved",
+        "kiana.lovers",
+        "kiana.partner_unsettled",
+        "seelah.souls_returned"
+      ],
+      "Steps": [
+        {
+          "Scene": "kiana.morning",
+          "Answers": [
+            "kiana.morning/start/0",
+            "kiana.morning/bereaved/0",
+            "kiana.morning/work/0",
+            "kiana.morning/seat/0",
+            "kiana.morning/promise/0",
+            "kiana.morning/yes/2",
+            "kiana.morning/partner_terms/2",
+            "kiana.morning/partner_secret/0"
+          ],
+          "ExpectFlags": [
+            "kiana.affair",
+            "kiana.committed",
+            "kiana.partner_stance.secret"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/kiana.morning/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "kiana.bereaved",
+        "kiana.lovers",
+        "kiana.partner_unsettled",
+        "seelah.souls_returned"
+      ],
+      "Steps": [
+        {
+          "Scene": "kiana.morning",
+          "Answers": [
+            "kiana.morning/start/0",
+            "kiana.morning/bereaved/0",
+            "kiana.morning/work/0",
+            "kiana.morning/seat/0",
+            "kiana.morning/promise/0",
+            "kiana.morning/yes/2",
+            "kiana.morning/partner_terms/0",
+            "kiana.morning/partner_share/0",
+            "kiana.morning/partner_elan_terms/0",
+            "kiana.morning/partner_share_yes/0"
+          ],
+          "ExpectFlags": [
+            "kiana.committed",
+            "kiana.partner_elan_terms_kept",
+            "kiana.partner_stance.share"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/minagho_chivarro.trickster.after.before_the_last_road_letter/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "chapter_one",
+        "minagho_chivarro.presence.chivarro.failed",
+        "minagho_chivarro.trickster.chivarro_in",
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.tprev.house",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "minagho_chivarro.trickster.after.before_the_last_road_letter",
+          "Answers": [
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/start/5",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_0_exclusive_minagho/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_0_exclusive_minagho_present/1"
+          ],
+          "ExpectFlags": [
+            "minachiv.closed",
+            "minagho_chivarro.partner_stance.cooled",
+            "minagho_chivarro.partner_stance.exclusive"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/minagho_chivarro.trickster.after.before_the_last_road_letter/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "chapter_one",
+        "minagho_chivarro.partner_stance.secret",
+        "minagho_chivarro.presence.chivarro.failed",
+        "minagho_chivarro.trickster.chivarro_in",
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.tprev.house",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "minagho_chivarro.trickster.after.before_the_last_road_letter",
+          "Answers": [
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/start/6",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_0_secret_minagho/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_0_night_minagho/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.2/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_morning_route/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_discovery/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_discovery_chivarro/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_discovery_minagho_answers/0"
+          ],
+          "ExpectFlags": [
+            "minachiv.closed",
+            "minachiv.complete",
+            "minachiv.future_minagho",
+            "minagho_chivarro.partner_stance.cooled",
+            "minagho_chivarro.partner_stance.exposed",
+            "minagho_chivarro.partner_stance.minagho",
+            "minagho_chivarro.partner_stance.secret",
+            "minagho_chivarro.trickster.committed",
+            "minagho_chivarro.trickster.cost.half_the_pair",
+            "minagho_chivarro.trickster.cost.morning_after",
+            "minagho_chivarro.trickster.night.minagho"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/minagho_chivarro.trickster.after.before_the_last_road_letter/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "chapter_one",
+        "minagho_chivarro.presence.chivarro.failed",
+        "minagho_chivarro.trickster.chivarro_in",
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.tprev.house",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "minagho_chivarro.trickster.after.before_the_last_road_letter",
+          "Answers": [
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/start/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/stance_0_share/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/came/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/minagho_chivarro.trickster.after.before_the_last_road_letter.explicit.1/0",
+            "minagho_chivarro.trickster.after.before_the_last_road_letter/morning/0"
+          ],
+          "ExpectFlags": [
+            "minachiv.complete",
+            "minachiv.future_two",
+            "minagho_chivarro.partner_stance.share",
+            "minagho_chivarro.trickster.committed",
+            "minagho_chivarro.trickster.cost.morning_after",
+            "minagho_chivarro.trickster.night.pair"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/nocticula.trickster.partner_terms.threshold/exclusive",
+      "System": "partner-stance",
+      "Chapter": 6,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "nocticula.trickster.returned",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "nocticula.trickster.partner_terms.threshold",
+          "Answers": [
+            "nocticula.trickster.partner_terms.threshold/terms/0",
+            "nocticula.trickster.partner_terms.threshold/terms.name.alive/1",
+            "nocticula.trickster.partner_terms.threshold/terms.alive.answer/1",
+            "nocticula.trickster.partner_terms.threshold/terms.alive.exclusive/2"
+          ],
+          "ExpectFlags": [
+            "noct.closed",
+            "nocticula.partner_exclusive_refused",
+            "nocticula.partner_stance.exclusive"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/nocticula.trickster.partner_terms.threshold/secret",
+      "System": "partner-stance",
+      "Chapter": 6,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "nocticula.trickster.returned",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "nocticula.trickster.partner_terms.threshold",
+          "Answers": [
+            "nocticula.trickster.partner_terms.threshold/terms/0",
+            "nocticula.trickster.partner_terms.threshold/terms.name.alive/2",
+            "nocticula.trickster.partner_terms.threshold/terms.alive.secret/0",
+            "nocticula.trickster.partner_terms.threshold/accepted/0"
+          ],
+          "ExpectFlags": [
+            "nocticula.partner_stance.secret",
+            "nocticula.partner_terms"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/nocticula.trickster.partner_terms.threshold/share",
+      "System": "partner-stance",
+      "Chapter": 6,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "nocticula.trickster.returned",
+        "shamira.trickster.cost.kept_captive",
+        "shamira.trickster.returned",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "nocticula.trickster.partner_terms.threshold",
+          "Answers": [
+            "nocticula.trickster.partner_terms.threshold/terms/3",
+            "nocticula.trickster.partner_terms.threshold/terms.name.captive/0",
+            "nocticula.trickster.partner_terms.threshold/terms.captive.share/0",
+            "nocticula.trickster.partner_terms.threshold/accepted/0"
+          ],
+          "ExpectFlags": [
+            "nocticula.partner_stance.share",
+            "nocticula.partner_terms"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/shamira.trickster.harem/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "noct.dead",
+        "shamira.threw_out",
+        "shamira.trickster.embodied",
+        "shamira.trickster.game_proposed",
+        "shamira.trickster.visited",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "shamira.trickster.harem",
+          "Answers": [
+            "shamira.trickster.harem/start/0",
+            "shamira.trickster.harem/harem/1",
+            "shamira.trickster.harem/sits/0",
+            "shamira.trickster.harem/where_duel/0",
+            "shamira.trickster.harem/rules/0",
+            "shamira.trickster.harem/begin/0",
+            "shamira.trickster.harem/wound/0",
+            "shamira.trickster.harem/search/0",
+            "shamira.trickster.harem/lost/0",
+            "shamira.trickster.harem/partner_status/2",
+            "shamira.trickster.harem/partner_status_dead/0",
+            "shamira.trickster.harem/partner_start/0",
+            "shamira.trickster.harem/partner_share/2",
+            "shamira.trickster.harem/partner_share_dead/1"
+          ],
+          "ExpectFlags": [
+            "shamira.closed",
+            "shamira.partner.exclusivity_demanded",
+            "shamira.partner_stance.exclusive",
+            "shamira.trickster.arch",
+            "shamira.trickster.lost_on_purpose"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/shamira.trickster.harem/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "nocticula.trickster.returned",
+        "shamira.partner.leave_before_court",
+        "shamira.threw_out",
+        "shamira.trickster.cost.shell_torn",
+        "shamira.trickster.embodied",
+        "shamira.trickster.game_proposed",
+        "shamira.trickster.visited",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "shamira.trickster.harem",
+          "Answers": [
+            "shamira.trickster.harem/start/0",
+            "shamira.trickster.harem/harem/1",
+            "shamira.trickster.harem/sits/0",
+            "shamira.trickster.harem/where_duel/0",
+            "shamira.trickster.harem/rules/0",
+            "shamira.trickster.harem/begin/0",
+            "shamira.trickster.harem/wound/0",
+            "shamira.trickster.harem/search/0",
+            "shamira.trickster.harem/lost/0",
+            "shamira.trickster.harem/partner_status/0",
+            "shamira.trickster.harem/partner_status_returned/0",
+            "shamira.trickster.harem/partner_start/2",
+            "shamira.trickster.harem/partner_secret/0",
+            "shamira.trickster.harem/rise/0",
+            "shamira.trickster.harem/steps/0",
+            "shamira.trickster.harem/cut/0",
+            "shamira.trickster.harem/explicit.1/0",
+            "shamira.trickster.harem/morning/0",
+            "shamira.trickster.harem/watch/3",
+            "shamira.trickster.harem/want/0",
+            "shamira.trickster.harem/go/1",
+            "shamira.trickster.harem/partner_private_exit/0"
+          ],
+          "ExpectFlags": [
+            "shamira.committed",
+            "shamira.partner_stance.secret",
+            "shamira.trickster.arch",
+            "shamira.trickster.lost_on_purpose",
+            "shamira.trickster.morning.held"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/shamira.trickster.harem/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "noct.dead",
+        "shamira.partner.leave_before_court",
+        "shamira.partner_stance.secret",
+        "shamira.threw_out",
+        "shamira.trickster.cost.shell_torn",
+        "shamira.trickster.embodied",
+        "shamira.trickster.game_proposed",
+        "shamira.trickster.visited",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "shamira.trickster.harem",
+          "Answers": [
+            "shamira.trickster.harem/start/0",
+            "shamira.trickster.harem/harem/1",
+            "shamira.trickster.harem/sits/0",
+            "shamira.trickster.harem/where_duel/0",
+            "shamira.trickster.harem/rules/0",
+            "shamira.trickster.harem/begin/0",
+            "shamira.trickster.harem/wound/0",
+            "shamira.trickster.harem/search/0",
+            "shamira.trickster.harem/lost/0",
+            "shamira.trickster.harem/partner_status/2",
+            "shamira.trickster.harem/partner_status_dead/0",
+            "shamira.trickster.harem/partner_start/0",
+            "shamira.trickster.harem/partner_share/2",
+            "shamira.trickster.harem/partner_share_dead/0",
+            "shamira.trickster.harem/rise/0",
+            "shamira.trickster.harem/steps/0",
+            "shamira.trickster.harem/cut/0",
+            "shamira.trickster.harem/explicit.1/0",
+            "shamira.trickster.harem/morning/0",
+            "shamira.trickster.harem/watch/3",
+            "shamira.trickster.harem/want/0",
+            "shamira.trickster.harem/go/1",
+            "shamira.trickster.harem/partner_private_exit/0"
+          ],
+          "ExpectFlags": [
+            "shamira.committed",
+            "shamira.partner_stance.share",
+            "shamira.trickster.arch",
+            "shamira.trickster.lost_on_purpose",
+            "shamira.trickster.morning.held"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/soana.trickster.missed.bowl/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "soana.partner.corven_known_alive",
+        "soana.partner.corven_separated",
+        "soana.trickster.luck_kept",
+        "soana.trickster.luck_tested",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "soana.trickster.missed.bowl",
+          "Answers": [
+            "soana.trickster.missed.bowl/start/3",
+            "soana.trickster.missed.bowl/terms/5",
+            "soana.trickster.missed.bowl/partner_exclusive_terms_answer/2",
+            "soana.trickster.missed.bowl/partner_exclusive_terms/0",
+            "soana.trickster.missed.bowl/partner_exclusive_end_terms/0"
+          ],
+          "ExpectFlags": [
+            "soana.partner.agreed",
+            "soana.partner_stance.exclusive",
+            "soana.trickster.friends"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/soana.trickster.missed.bowl/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "soana.trickster.luck_kept",
+        "soana.trickster.luck_tested",
+        "trickster",
+        "trickster.ever"
+      ],
+      "Steps": [
+        {
+          "Scene": "soana.trickster.missed.bowl",
+          "Answers": [
+            "soana.trickster.missed.bowl/start/3",
+            "soana.trickster.missed.bowl/terms/6",
+            "soana.trickster.missed.bowl/partner_secret_terms/0",
+            "soana.trickster.missed.bowl/night/0",
+            "soana.trickster.missed.bowl/threshold/1",
+            "soana.trickster.missed.bowl/soana.trickster.missed.bowl.explicit.1/0",
+            "soana.trickster.missed.bowl/morning/0"
+          ],
+          "ExpectFlags": [
+            "soana.committed",
+            "soana.partner.agreed",
+            "soana.partner_stance.secret",
+            "soana.trickster.cost.die_in_her_bowl"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/soana.the_days_she_counted/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "soana.after_quest",
+        "soana.late_reserve",
+        "soana.late_thorn_tested",
+        "soana.later_courting",
+        "soana.old_defender",
+        "soana.progression_kept"
+      ],
+      "Steps": [
+        {
+          "Scene": "soana.the_days_she_counted",
+          "Answers": [
+            "soana.the_days_she_counted/start/0",
+            "soana.the_days_she_counted/reserve/0",
+            "soana.the_days_she_counted/meret/0",
+            "soana.the_days_she_counted/guardian/0",
+            "soana.the_days_she_counted/bound/0",
+            "soana.the_days_she_counted/letter/0",
+            "soana.the_days_she_counted/future/0",
+            "soana.the_days_she_counted/commit/6",
+            "soana.the_days_she_counted/partner_share_commit_r3_unanswered/0"
+          ],
+          "ExpectFlags": [
+            "soana.committed",
+            "soana.late_future_chosen",
+            "soana.partner.agreed",
+            "soana.partner_stance.share"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/wenduag.trickster.court.claim_in_person/exclusive",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "trickster",
+        "trickster.ever",
+        "wenduag.in_party",
+        "wenduag.trickster.gate_seen",
+        "wenduag.trickster.proved",
+        "wenduag.trickster.returned"
+      ],
+      "Steps": [
+        {
+          "Scene": "wenduag.trickster.court.claim_in_person",
+          "Answers": [
+            "wenduag.trickster.court.claim_in_person/start/0",
+            "wenduag.trickster.court.claim_in_person/her/1",
+            "wenduag.trickster.court.claim_in_person/why/0",
+            "wenduag.trickster.court.claim_in_person/partner_intro/1",
+            "wenduag.trickster.court.claim_in_person/partner_exclusive_answer/1",
+            "wenduag.trickster.court.claim_in_person/partner_exclusive_refused/2"
+          ],
+          "ExpectFlags": [
+            "wenduag.closed",
+            "wenduag.partner.exclusive_refused",
+            "wenduag.partner_stance.exclusive"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/wenduag.trickster.court.claim_in_person/secret",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "trickster",
+        "trickster.ever",
+        "wenduag.in_party",
+        "wenduag.trickster.gate_seen",
+        "wenduag.trickster.proved",
+        "wenduag.trickster.returned"
+      ],
+      "Steps": [
+        {
+          "Scene": "wenduag.trickster.court.claim_in_person",
+          "Answers": [
+            "wenduag.trickster.court.claim_in_person/start/0",
+            "wenduag.trickster.court.claim_in_person/her/1",
+            "wenduag.trickster.court.claim_in_person/why/0",
+            "wenduag.trickster.court.claim_in_person/partner_intro/2",
+            "wenduag.trickster.court.claim_in_person/partner_secret/0",
+            "wenduag.trickster.court.claim_in_person/want/3",
+            "wenduag.trickster.court.claim_in_person/no/0"
+          ],
+          "ExpectFlags": [
+            "wenduag.closed",
+            "wenduag.partner.acknowledged",
+            "wenduag.partner_stance.secret",
+            "wenduag.trickster.court.claim_refused"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "partner-stance/wenduag.trickster.court.claim_in_person/share",
+      "System": "partner-stance",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "availability.observed",
+        "trickster",
+        "trickster.ever",
+        "wenduag.in_party",
+        "wenduag.trickster.gate_seen",
+        "wenduag.trickster.proved",
+        "wenduag.trickster.returned"
+      ],
+      "Steps": [
+        {
+          "Scene": "wenduag.trickster.court.claim_in_person",
+          "Answers": [
+            "wenduag.trickster.court.claim_in_person/start/0",
+            "wenduag.trickster.court.claim_in_person/her/1",
+            "wenduag.trickster.court.claim_in_person/why/0",
+            "wenduag.trickster.court.claim_in_person/partner_intro/0",
+            "wenduag.trickster.court.claim_in_person/partner_share_call/1",
+            "wenduag.trickster.court.claim_in_person/partner_share_away/0",
+            "wenduag.trickster.court.claim_in_person/want/3",
+            "wenduag.trickster.court.claim_in_person/no/0"
+          ],
+          "ExpectFlags": [
+            "wenduag.closed",
+            "wenduag.partner.acknowledged",
+            "wenduag.partner_stance.share",
+            "wenduag.trickster.court.claim_refused"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "lastcall/anevia.lastcall.call",
+      "System": "lastcall",
+      "Chapter": 6,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "anevia.trickster.cost.socoth_listening",
+        "availability.observed",
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Steps": [
+        {
+          "Scene": "anevia.lastcall.call",
+          "Available": false,
+          "Remove": [
+            "anevia.trickster.cost.socoth_listening",
+            "anevia.trickster.cost.stolen_door",
+            "anevia.trickster.cost.wrong_door"
+          ]
+        },
+        {
+          "Scene": "anevia.lastcall.call",
+          "Available": false,
+          "Add": [
+            "anevia.closed"
+          ]
+        },
+        {
+          "Scene": "anevia.lastcall.call",
+          "Available": false,
+          "Remove": [
+            "trickster"
+          ]
+        },
+        {
+          "Scene": "anevia.lastcall.call",
+          "Answers": [
+            "anevia.lastcall.call/call/0"
+          ],
+          "ExpectFlags": [
+            "anevia.lastcall.called",
+            "anevia.lastcall.resolved",
+            "trickster.lastcall.creditors_called"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "lastcall-entitlement/trickster.lastcall.last_joke",
+      "System": "lastcall-entitlement",
+      "Chapter": 6,
+      "SaveChapter": 6,
+      "FixtureFlags": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open",
+        "trickster.lastcall.pillar.bottle"
+      ],
+      "Steps": [
+        {
+          "Scene": "trickster.lastcall.last_joke",
+          "Available": false,
+          "Add": [
+            "anevia.trickster.cost.socoth_listening"
+          ]
+        },
+        {
+          "Scene": "trickster.lastcall.last_joke",
+          "Answers": [
+            "trickster.lastcall.last_joke/wound/0"
+          ],
+          "ExpectFlags": [
+            "trickster.lastcall.cost.bottled",
+            "trickster.lastcall.taken"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/targona.trickster.react.ix_a.yaniel",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "targona.trickster.react.ix_a.yaniel"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/iomedae.trickster.react.ix_a.galfrey.queen",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "iomedae.trickster.react.ix_a.galfrey.queen"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/iomedae.trickster.react.ix_a.galfrey.crown",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "iomedae.trickster.react.ix_a.galfrey.crown"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/iomedae.trickster.react.ix_a.galfrey.kitrane",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "iomedae.trickster.react.ix_a.galfrey.kitrane"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/iomedae.trickster.react.ix_a.targona",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "iomedae.trickster.react.ix_a.targona"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/iomedae.trickster.react.ix_a.yaniel",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "iomedae.trickster.react.ix_a.yaniel"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/yaniel.trickster.react.ix_a.galfrey.queen",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "yaniel.trickster.react.ix_a.galfrey.queen"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/yaniel.trickster.react.ix_a.galfrey.crown",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "yaniel.trickster.react.ix_a.galfrey.crown"
+        }
+      ]
+    },
+    {
+      "Id": "ix-a/yaniel.trickster.react.ix_a.galfrey.kitrane",
+      "System": "ix-a",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "yaniel.trickster.react.ix_a.galfrey.kitrane"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.truth.marhevok.lost",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.truth.marhevok.lost"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.truth.marhevok.orso",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.truth.marhevok.orso"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.truth.chief.lost",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.truth.chief.lost"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.truth.chief.orso",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.truth.chief.orso"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.illusions.marhevok.lost",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.illusions.marhevok.lost"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.illusions.marhevok.orso",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.illusions.marhevok.orso"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.illusions.chief.lost",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.illusions.chief.lost"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/gesmerha.react.soana.illusions.chief.orso",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "gesmerha.react.soana.illusions.chief.orso"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/aranka.react.arueshalae.fallen",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "aranka.react.arueshalae.fallen"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/aranka.react.arueshalae.fallen.yard",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "aranka.react.arueshalae.fallen.yard"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/aranka.react.arueshalae.dreamer",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "aranka.react.arueshalae.dreamer"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/aranka.react.arueshalae.dreamer.yard",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "aranka.react.arueshalae.dreamer.yard"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/nenio.react.fallen_arueshalae.scholar",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "nenio.react.fallen_arueshalae.scholar"
+        }
+      ]
+    },
+    {
+      "Id": "ix-b/nenio.react.fallen_arueshalae.replacement",
+      "System": "ix-b",
+      "Chapter": 5,
+      "SaveChapter": 6,
+      "Steps": [
+        {
+          "Scene": "nenio.react.fallen_arueshalae.replacement"
+        }
+      ]
+    }
+  ]
+}

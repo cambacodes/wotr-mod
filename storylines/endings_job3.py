@@ -132,8 +132,9 @@ def eliandra(payload, scenes):
         old_paragraphs = deepcopy(page.get('Paragraphs', []))
         romance = old_paragraphs[len(EPILOGUE_PARAGRAPHS):]
         # Historical costs stay on the offer; the journey and night follow yes.
-        page['Paragraphs'] = old_paragraphs[:len(old_paragraphs) - len(romance)]
-        for block in page['Paragraphs']:
+        history = old_paragraphs[:len(old_paragraphs) - len(romance)]
+        page['Paragraphs'] = []
+        for block in history:
             block['Text'] = block['Text'].replace('because she had chosen a lover', 'because the war had ended')
         offer(event,
             '{n}After Threshold, Eliandra\'s letter from the Sarkorian fords reached the Commander. Her question remained: Drezen, or the road? The stargazers would need an answer before they packed the carts.{/n}' if kind == 'late' else
@@ -147,15 +148,26 @@ def eliandra(payload, scenes):
             ('"Come as my friend. I will help your people."',
              '{n}She unrolled the road map on the table.{/n} "A friend, then. Start with this ford. The carts cannot cross it without help."\n'
              '{n}She kept a room with her people, and brought the Commander their news whenever the road led back to Drezen.{/n}'))
+        # Disclosure precedes the question; it does not narrate acceptance.
+        page['Text'] = ('{n}After Threshold, Eliandra\'s letter from the Sarkorian fords reached the Commander. The stargazers were waiting to know where to take their carts.{/n}' if kind == 'late' else
+            '{n}After Threshold, Eliandra reached the Commander\'s door in Drezen, her travelling pack still on her shoulder.{/n}')
+        page['Paragraphs'] = [p('{n}Before answering, the Commander gave her the whole account of the hidden hand: the intended loophole and the excuse on the road. Eliandra\'s answer was sharp.{/n} "I paid my own offering because yours was a lie. Do not mistake this invitation for forgetting it."', requires=('eliandra.trickster.lied_about_hand',))] if kind == 'late' else [p('{n}The Commander explained the plan to recover the offering. Eliandra stood in the doorway until the account was finished.{/n} "I paid my own offering because yours was a lie. You will not bring that plan into my bed."', requires=('eliandra.trickster.cost.tried_to_cheat',))]
+        page['Paragraphs'].append(p('"Drezen, or the road?" {n}Her question waited for an answer.{/n}'))
+        node(event, 'late_accepted')['Text'] = '{n}Eliandra set down her pack.{/n} "Both, then. I shall make you say it again tomorrow."'
         # Keep the previously allocated intimate paragraph identity.
-        node(event, 'late_accepted')['Paragraphs'] = romance
+        # The offer already stages arrival and asks the question once.
+        night = [block for block in romance if not any(phrase in block['Text'] for phrase in (
+            'Before she asked', 'Then she asked', 'The day after', 'A month later'))]
+        node(event, 'late_accepted')['Paragraphs'] = night
         if kind == 'late':
             node(event, 'late_accepted')['Text'] = '{n}The Commander sent the answer to the fords. Eliandra replied before the next convoy left; a month later she reached Drezen with her people and put her pack in the Commander\'s rooms.{/n}\n"Both. I have brought them all. Tonight I want you."'
         for key, text in (
             ('late_accepted', '{n}The war ended before they had answered each other. Afterwards Eliandra kept the road to Sarkoris and the place she had now accepted beside the Commander.{/n}'),
             ('late_refused', '{n}Eliandra remembered the help given her people before Threshold. It bought no place in the Commander\'s rooms after her invitation was refused.{/n}'),
             ('late_friend', '{n}When the last call of the war was over, Eliandra and the Commander remained friends. She still took her people north; their help on the road asked for no shared bed.{/n}')):
+            node(event, key).setdefault('Paragraphs', []).extend(deepcopy(history))
             local_coda(node(event, key), text)
+        node(event, 'page_exit')['Paragraphs'] = []
 
 
 def soana(scenes):

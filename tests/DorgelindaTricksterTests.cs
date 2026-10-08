@@ -338,6 +338,31 @@ internal static class DorgelindaTricksterTests
         var columns = Play(others, sharedColumns);
         check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed")) && columns.Any(r => r.Has(L + "narrowed") && !r.Has("dorgelinda.closed"))
               && columns.Any(r => r.Has("dorgelinda.closed")), "Her answer to the other columns is not a real choice.");
+        // Round 3: generated-story receipts permit successive additions after
+        // an initially shared arrangement. Native romances supply actual readers.
+        var soloAnswers = others.Nodes.Single(n => n.Id == "says").Choices
+            .Where(c => Rules.ChoiceAvailable(c, mornings.First()) && (c.Next == "lie" || c.Next == "nobody")).ToArray();
+        check(soloAnswers.Length == 1 && soloAnswers[0].Next == "nobody", "Solo denial is duplicated.");
+        var honestShared = columns.First(r => r.Has(L + "terms_kept"));
+        check(honestShared.Has(L + "disclosed.arueshalae"), "Initial disclosure has no named receipt.");
+        var changed = S(L + "changed_columns");
+        var ongoing = changed;
+        var addition = Later(story, honestShared, 24);
+        addition.Flags.Add("galfrey.romance_active");
+        Rules.Complete(story, addition);
+        check(Rules.Available(story, changed, addition), "Shared arrangement cannot disclose another lover.");
+        var renewed = Program.Walk(changed, addition).First(r => r.Has(L + "disclosed.galfrey"));
+        check(!renewed.Has(changed.Id) && !renewed.Has(L + "new_columns"), "First renewal was not recorded accurately.");
+        renewed.Flags.Add("camellia.romance");
+        Rules.Complete(story, renewed);
+        check(Rules.Available(story, ongoing, renewed), "Second addition has no conversation.");
+        var again = Program.Walk(ongoing, renewed).First(r => r.Has(L + "disclosed.camellia"));
+        check(!again.Has(ongoing.Id) && !again.Has(L + "new_columns"), "Renewal cannot recur or invents an undisclosed lover.");
+        again.Flags.Add("wenduag.romance_active");
+        Rules.Complete(story, again);
+        check(Rules.Available(story, ongoing, again), "Third addition cannot use the continuing conversation.");
+        check(Program.Walk(ongoing, again).Any(r => r.Has(L + "disclosed.wenduag")), "Third addition was not disclosed.");
+
         check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", P + "methods_heard", "dorgelinda.closed"))
               && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", P + "methods_heard", "dorgelinda.closed")),
             "Her ruled-off line has no page, or the committed page still plays.");

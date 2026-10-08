@@ -97,7 +97,10 @@ def presence_guard(model, route, woman, block=None):
     """
     guard = route_guard(model, route, woman)
     closed_guard = lit(model.rels[route]["ClosedFlag"], False)
-    excluded = ({closed_guard} if woman in LIVING_AFTER_ROMANCE_REFUSAL | NATIVE_COMPANIONS else set())
+    audience = NATIVE_AUDIENCES.get(woman)
+    native_audience = bool(block is not None and audience and audience[0] in block.scene.get("AnswerLists", [])
+        and set(block.scene.get("Chapters") or range(block.scene["MinChapter"], block.scene["MaxChapter"] + 1)) <= audience[1])
+    excluded = ({closed_guard} if woman in LIVING_AFTER_ROMANCE_REFUSAL | NATIVE_COMPANIONS or native_audience else set())
     if block is not None and correspondence_reference(block, woman):
         away = woman + "_gone"
         back = model.rels[route].get("UnavailableOverrides", {}).get(away)
@@ -228,6 +231,30 @@ def guarded_on_paths(model, items, proof, block, target, scene_contexts=None):
     return visit(block.node["Id"])
 
 
+def native_participation_contexts(model):
+    """Verified inherited native speakers; never a new romance/body producer."""
+    from tools import kiana_native_policy
+    contexts = {}
+    approved = kiana_native_policy.contracts()
+    for row in model.story.get("NativeOverrides", []):
+        target = row.get("Target")
+        if target not in approved or row.get("Field") != "NativeEpilogueEdits" or row.get("Action") != "REPLACE":
+            continue
+        spec = model.story.get("NativeEpilogueEdits", {}).get(row.get("RuntimeKey"))
+        context = kiana_native_policy.native_context()[target]
+        try:
+            kiana_native_policy.check(target, spec or {}, context["Found"])
+        except ValueError:
+            continue
+        for variant in [spec, *spec.get("Variants", [])]:
+            # The native graph is inherited only under its existing scoped
+            # current-path/body contract. A historical path latch is insufficient.
+            if variant.get("When") and all({"trickster.now", "kiana.present_now"} <= set(group)
+                                            for group in variant["When"]):
+                contexts[variant["Replacement"]] = context
+    return contexts
+
+
 def check(model, blocks, proof):
     names = roster(model)
     # These incoming contexts are the same for every actor proof in a scene.
@@ -239,21 +266,7 @@ def check(model, blocks, proof):
     seats = model.story.get("SeatWomen") or {}
     # eng7-f6b: text-only native dialogue keeps canon speakers and native eligibility.
     # A romance refusal never removes Seelah/Jannah/Arsinoe from their native quest.
-    from tools import kiana_native_policy
-    native_scenes = {}
-    approved = kiana_native_policy.contracts()
-    for row in model.story.get('NativeOverrides', []):
-        target = row.get('Target')
-        if target not in approved or row.get('Field') != 'NativeEpilogueEdits' or row.get('Action') != 'REPLACE':
-            continue
-        spec = model.story.get('NativeEpilogueEdits', {}).get(row.get('RuntimeKey'))
-        context = kiana_native_policy.native_context()[target]
-        try:
-            kiana_native_policy.check(target, spec or {}, context['Found'])
-        except ValueError:
-            continue
-        for variant in [spec, *spec.get('Variants', [])]:
-            native_scenes[variant['Replacement']] = context
+    native_scenes = native_participation_contexts(model)
     # eng7-f6b end
     out = []
     # eng8-q8e begin: identity contracts catch sister/pronoun consumers and spawns.

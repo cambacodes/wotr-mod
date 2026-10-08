@@ -350,6 +350,10 @@
         {
           "scene": "household.pair.seelah_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_camellia.settle",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -939,7 +943,9 @@
         },
         {
           "scene": "jerribeth.commission",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.patron",
@@ -959,7 +965,10 @@
         },
         {
           "scene": "jerribeth.ordinary",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.farewell",
@@ -991,7 +1000,9 @@
         },
         {
           "scene": "jerribeth.offered_signature",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.borrowed_sun",
@@ -999,7 +1010,10 @@
         },
         {
           "scene": "jerribeth.small_print",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.unsold_evening",
@@ -1007,23 +1021,36 @@
         },
         {
           "scene": "jerribeth.purchaser_answer",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.counterfeit_guest",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.counterfeit_hinge",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.counterfeit_clerk",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.counterfeit_audience",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.counterfeit_spoil",
@@ -1031,15 +1058,23 @@
         },
         {
           "scene": "jerribeth.counterfeit_after",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.settlement_visit",
-          "letter": true
+          "letter": true,
+          "retired": true,
+          "classification": "retired by chapter_later gating; save surfaces and old guards retained",
+          "provenance": "edge job 4, rebuild sheet §9.1"
         },
         {
           "scene": "jerribeth.room_measure",
-          "letter": true
+          "letter": false,
+          "classification": "authored in-person visit; Remote book delivery",
+          "provenance": "edge job 4, rebuild sheet §§5,9.7"
         },
         {
           "scene": "jerribeth.short_invitation",
@@ -1623,6 +1658,36 @@
           "scene": "kiana.partner_discovery",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question.elan_reply",
+          "letter": false,
+          "provenance": "D29: later counter visit after Elan's reply; existing current Kiana presence"
+        },
+        {
+          "scene": "kiana.trickster.late_question.elan_parting",
+          "letter": true,
+          "provenance": "D30: Elan's reply enclosed by Kiana; existing correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question.after_delivery",
+          "letter": false,
+          "provenance": "D30: new counter visit after the belongings meeting; existing current Kiana presence"
+        },
+        {
+          "scene": "kiana.trickster.late_question_letter.elan_reply",
+          "letter": true,
+          "provenance": "D29: delayed postal reply under existing failed-placement correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question_letter.elan_parting",
+          "letter": true,
+          "provenance": "D30: delayed Elan reply under existing failed-placement correspondence terms"
+        },
+        {
+          "scene": "kiana.trickster.late_question_letter.after_delivery",
+          "letter": true,
+          "provenance": "D30: later invitation after belongings delivery under existing correspondence terms"
         }
       ],
       "absence_variants": [
@@ -2150,8 +2215,58 @@
           "letter": false
         },
         {
+          "scene": "soana.partner.proposal_reply",
+          "letter": false,
+          "provenance": "R4-soana D09: delayed southern-relay reply read with the currently present Soana"
+        },
+        {
+          "scene": "soana.partner.proposal_reply.returned",
+          "letter": false,
+          "provenance": "R4-soana D10: delayed reply with the earned returned Soana, using her existing body guard"
+        },
+        {
           "scene": "soana.trickster.epilogue.living_late",
           "letter": false
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -2625,6 +2740,16 @@
         {
           "scene": "targona.lastcall.call",
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
+        },
+        {
+          "scene": "targona.trickster.react.ix_a.yaniel",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.targona",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -2921,6 +3046,46 @@
         {
           "scene": "household.docket.gesmerha_jerribeth.account",
           "provenance": "Wave 2 private account; only the named claimant attends, guarded by current presence."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.illusions.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.chief.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.orso",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "gesmerha.react.soana.truth.marhevok.lost",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -3630,6 +3795,26 @@
         {
           "scene": "aranka.thall.reply",
           "letter": false
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -10133,6 +10318,14 @@
         },
         {
           "scene": "household.smooth.camellia.galfrey_1.later"
+        },
+        {
+          "scene": "camellia.trickster.epilogue.refused_living",
+          "letter": false
+        },
+        {
+          "scene": "household.pair.seelah_camellia.settle",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -10267,6 +10460,10 @@
         {
           "scene": "camellia.trickster.epilogue.refused",
           "reason": "Commander-only cost and anonymous flowers; living report gated at paragraph 2"
+        },
+        {
+          "scene": "camellia.trickster.killed.late_curtain_prepared",
+          "reason": "authored prepaid coffin acquisition: confirmed current corpse and existing observed-death clock; not living attendance"
         }
       ],
       "presences": [
@@ -10965,7 +11162,15 @@
           "letter": false
         },
         {
+          "scene": "areelu.trickster.report.convicts",
+          "letter": false
+        },
+        {
           "scene": "areelu.trickster.report.dagger",
+          "letter": false
+        },
+        {
+          "scene": "areelu.trickster.report.commission",
           "letter": false
         },
         {
@@ -10974,6 +11179,10 @@
         },
         {
           "scene": "areelu.trickster.report.visitors",
+          "letter": false
+        },
+        {
+          "scene": "areelu.trickster.report.rival",
           "letter": false
         },
         {
@@ -11177,24 +11386,6 @@
         {
           "scene": "hepzamirah.trickster.bond.the_call",
           "node": "if",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman_late",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.unasked_question",
-          "node": "start",
           "choice": 0,
           "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
         },
@@ -11993,6 +12184,36 @@
         {
           "scene": "household.pair.nenio_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.dreamer.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.react.arueshalae.fallen.yard",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -12861,6 +13082,10 @@
         },
         {
           "scene": "kaylessa.clearing.the_arrow",
+          "letter": false
+        },
+        {
+          "scene": "kaylessa.clearing.courier_reply",
           "letter": false
         }
       ],
@@ -14524,6 +14749,16 @@
         {
           "scene": "household.pair.nenio_arueshalae.morning",
           "letter": false
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.scholar",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "nenio.react.fallen_arueshalae.replacement",
+          "letter": false,
+          "provenance": "Authored ix-b current encounter; both named women must be present."
         }
       ],
       "absence_variants": [
@@ -16128,6 +16363,36 @@
           "scene": "galfrey.trickster.alive.after_no",
           "letter": false,
           "provenance": "resolve-eng3: integrated partner/polish scene, existing physical availability or correspondence terms"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.queen",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.crown",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.kitrane",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.queen",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.crown",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.kitrane",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -17094,6 +17359,31 @@
         {
           "scene": "household.pair.yaniel_areelu.commission",
           "provenance": "S47 private commission; Yaniel alone, current bodily presence required."
+        },
+        {
+          "scene": "targona.trickster.react.ix_a.yaniel",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.yaniel",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.queen",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.crown",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "yaniel.trickster.react.ix_a.galfrey.kitrane",
+          "letter": false,
+          "provenance": "ix-a: current Drezen body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -19418,12 +19708,6 @@
           "letter": false
         },
         {
-          "scene": "elyanka.trickster.beat.writ",
-          "node": "chaplain",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "galfrey.trickster.kitrane.elixir",
           "node": "grow",
           "choice": 1,
@@ -19550,48 +19834,6 @@
           "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
         },
         {
-          "scene": "nidalynn.trickster.after.first_demon",
-          "node": "her",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.after.ward",
-          "node": "dawn",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.dead.furlough",
-          "node": "pikeman_late",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.free.spent_light",
-          "node": "night_spent",
-          "choice": 0,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.free.the_names",
-          "node": "start",
-          "choice": 1,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
-          "scene": "targona.trickster.free.the_names",
-          "node": "start",
-          "choice": 2,
-          "provenance": "derived: existing branch stages this current actor, eng3-ab L1 class sweep"
-        },
-        {
           "scene": "terendelev.trickster.bones.restitution",
           "node": "want",
           "choice": 0,
@@ -19630,6 +19872,31 @@
         {
           "scene": "iomedae.lastcall.page",
           "provenance": "derived: current woman in her paid Last Call coda"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.queen",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.crown",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.galfrey.kitrane",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.targona",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
+        },
+        {
+          "scene": "iomedae.trickster.react.ix_a.yaniel",
+          "letter": true,
+          "provenance": "ix-a: current earned banner voice; no divine body; nonromantic interaction reaction"
         }
       ],
       "absence_variants": [
@@ -21199,5 +21466,16 @@
       ],
       "reason": "Existing earned wardrobe visit/explicit living southern absence report; current death or a later unrecovered loss cannot use its historical return."
     }
-  ]
+  ],
+  "minachiv_retired_surfaces": {
+    "minachiv.the_second_address": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.a_factor_at_the_table": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_answer_after_business": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_key_in_your_hand": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_paper_she_kept": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_man_who_remembers": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_entrance_she_wants": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.who_keeps_the_house": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_cost_in_daylight": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence."
+  }
 }

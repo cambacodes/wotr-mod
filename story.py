@@ -1014,6 +1014,11 @@ s("ending_aeon", "A life not remembered", "AeonEpilogue", 0, "", [
 
 
 def make_story():
+    from authoring.compiler import compile_story
+    return compile_story("base").payload
+
+
+def _make_story():
     etudes = json.loads((ROOT / "data/etudes.json").read_text(encoding="utf-8"))
     aliases = {
         "anevia_dead": "AneviaDead", "irabeth_dead": "IrabethDead",
@@ -1034,8 +1039,11 @@ def make_story():
 
 
 def build():
-    payload = make_story()
-    (ROOT / "package/Story.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    from authoring.compiler import CompilationInputs, compile_story
+    from authoring._serialization import write_story
+    output = ROOT / "package/Story.json"
+    compiled = compile_story("base", CompilationInputs(destination=output))
+    write_story(output, compiled)
     words = sum(len(node['Text'].split()) + sum(len(c['Text'].split()) for c in node['Choices']) for scene in scenes for node in scene['Nodes'])
     print(f"{len(scenes)} scenes, {sum(len(s['Nodes']) for s in scenes)} pages, {words:,} words")
 

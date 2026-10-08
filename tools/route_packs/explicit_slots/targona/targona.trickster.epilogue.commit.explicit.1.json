@@ -1,14 +1,9 @@
 {
   "slot_id": "targona.trickster.epilogue.commit.explicit.1",
   "voice": "TARGONA: compassionate, humble angel and soldier; direct desire finally spoken when the ward has emptied. Emotional initiative without sermon, moral certificate or apology. Tenderness has practical weight: hands still accustomed to dressings, a lamp, a blanket, an actual lover. Retrospective epilogue voice, concise and concrete. No generic triumphant redemption, narrator maxim, HR speech or sanctification of sex. Write new dialogue; do not reuse the example.",
-  "facts": [
-    "Targona's native physical description is silver hair, one natural white-feathered wing and an originally artificial wing of bone, purple membrane and scabs/scales (Cue_0001, 795e061825caf2f4fba256f50cabfe71).",
-    "Omit the altered side's appearance because its treatment history may vary. A feather may come from the natural wing; desire does not restore a wing.",
-    "Native non-Angel rescue sends her to Heaven's healers (Herald/Cue_0126, afc32621ab47fd64c93e2c04e9ad86a9); this Drezen service and loft encounter belong to the earned authored Trickster return.",
-    "The emptied infirmary, loft and later new ward are authored implemented epilogue facts, not native canon claims."
-  ],
+  "facts": "Targona's native physical description is silver hair, one natural white-feathered wing and an originally artificial wing of bone, purple membrane and scabs/scales (Cue_0001, 795e061825caf2f4fba256f50cabfe71).\nOmit the altered side's appearance because its treatment history may vary. A feather may come from the natural wing; desire does not restore a wing.\nNative non-Angel rescue sends her to Heaven's healers (Herald/Cue_0126, afc32621ab47fd64c93e2c04e9ad86a9); this Drezen service and loft encounter belong to the earned authored Trickster return.\nThe emptied infirmary, loft and later new ward are authored implemented epilogue facts, not native canon claims.",
   "scene": "Postwar Trickster epilogue, Drezen drying loft as the last cots are folded. Only Targona and a living or already-earned-returned Commander. Existing late-commitment outcome with mutual attraction, not a colleague, closed/refused history, unreturned sacrifice, or previously committed first night. BEFORE: Targona asks; the Commander answers by taking her offered hand; she leads upstairs, undresses and draws the Commander onto the blanket. INTERVAL: mutual intimacy described as a brief retrospective epilogue passage through kisses, warmth and chosen closeness, without graphic sexual description. REQUIRED BEATS: her initiative is answered, she puts the cloth aside, she wants this particular person and does not apologize for wanting; keep the setting of the last bandages being taken down rather than another active medical vigil. Use N lines for third-person epilogue narration ('the Commander'), not second-person adventure narration. T may speak briefly, no Commander dialogue inside her node. End exactly at last_line. AFTER: original morning feather/Wilcer/new infirmary payoff, no duplicate morning or added mechanic. No oath, miracle, transformation, pregnancy, flag or extra participant. Preserve the original epilogue Continue exit identity and effects. PHYSICAL CONTINUITY: silver hair; a natural white-feathered wing. Leave the altered side undescribed across treatment histories; never invent black feathers or restored anatomy.",
-  "last_line": "N: The last bandages swayed above the blanket.",
+  "last_line": "N: Before dawn she caught the Commander's sleeve for one last kiss, then found her smock beneath the blanket. Wilcer Garms found a white feather on the ladder and wrote in his ledger. When the new infirmary opened near the Commander's house, she hung that feather over the door.",
   "speakers": {
     "T": "Targona"
   },
@@ -19,5 +14,8 @@
   ],
   "min_lines": 6,
   "max_lines": 10,
-  "narration": "third-past"
+  "narration": "third-past",
+  "host_scene": "targona.trickster.epilogue.commit",
+  "host_node": "end",
+  "after_text": "{n}Targona drew the Commander down beside her, smiling against the next kiss. The last bandages swayed above the blanket.{/n}"
 }

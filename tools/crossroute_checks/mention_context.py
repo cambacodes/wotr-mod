@@ -13,6 +13,17 @@ from pathlib import Path
 
 
 @lru_cache(maxsize=1)
+def j01_contract():
+    data = json.loads(Path(__file__).resolve().parents[1].joinpath(
+        "route_packs/plans/j01-reference-contexts.json").read_text(encoding="utf-8"))
+    return data
+
+
+def j01_reference_contexts():
+    return j01_contract()["contexts"]
+
+
+@lru_cache(maxsize=1)
 def terendelev_reference_contexts():
     data = json.loads(Path(__file__).resolve().parents[1].joinpath("terendelev_reference_contracts.json").read_text(encoding="utf-8"))
     return {(c["scene"], c["text_sha256"], c["woman"]) for c in data["contexts"]}
@@ -21,7 +32,7 @@ LIVE_ACTION = r"(?:stands?|waits?|sits?|leans?|steps?|enters?|joins?|arrives?|la
 LIVE_STATE = r"(?:is\s+(?:(?:now|still)\s+)?(?:here|alive|present|standing|sitting|waiting)|has returned|will\s+(?:meet|visit|come|join|arrive|return|wait))\b"
 
 
-def live_continuation(after):
+def live_continuation(after, indirect=False):
     """eng7-l14: a reference cannot swallow a claim about the same actor.
 
     Stay inside this sentence. Relative clauses and coordinated predicates
@@ -30,13 +41,13 @@ def live_continuation(after):
     """
     clause = re.split(r"[.!?]\s+|\n|\{/n\}", after)[0]
     action = LIVE_ACTION
-    possessed = re.match(r"['’]s\b", clause)
+    possessed = indirect or re.match(r"['’]s\b", clause)
     state = LIVE_STATE
     if re.match(r"\s*,?\s*who\s+(?:(?:now|still)\s+)?(?:" + action + "|" + state + ")", clause, re.I):
         return True
-    if not possessed and re.search(r"\b(?:and|but)\s+(?:she\s+)?(?:(?:now|still)\s+)?" + action, clause, re.I):
-        return True
     subject = r"she\s+" if possessed else r"(?:she\s+)?"
+    if re.search(r"\b(?:and|but)\s+" + subject + r"(?:(?:now|still)\s+)?" + action, clause, re.I):
+        return True
     if re.search(r"\b(?:and|but)\s+" + subject + r"(?:will|shall)\s+(?:meet|visit|come|join|arrive|return|wait)\b", clause, re.I):
         return True
     if re.search(r"\bshe\s+" + action + r"[^.!?;]{0,60}\b(?:here|now|tonight|tomorrow)\b", clause, re.I):
@@ -60,7 +71,11 @@ def reference_reason(text, match, postwar=False):
             and "{n}You hear" in text and match.start() < text.index("{n}You hear")
             and text.rfind("{n}", 0, match.start()) < text.rfind("{/n}", 0, match.start())):
         return "paid recollection of an earlier morning"
-    if live_continuation(after):
+    # A title/relic makes the named woman an indirect referent. Bare
+    # coordination then belongs to the priest or the person handling it;
+    # an explicit "she" or live relative clause still requires availability.
+    institution = re.search(r"(?:church|paladin|priest|priestess|cleric|acolyte|chaplain|temple|knight|servant|hand|herald|faith|order|sword|blade|blessing|shrine|image|statue|mark|sign)\s+of\s+(?:the\s+)?$", before, re.I)
+    if live_continuation(after, indirect=bool(institution)):
         return None
     if re.match(r"\s+said,?\s+when the news reached camp\b", after, re.I):
         return "recorded reaction to campaign news"
@@ -142,7 +157,7 @@ def reference_reason(text, match, postwar=False):
     if re.search(r"\bwhether she(?:['’]s| is) here\b[^.!?]{0,60}\bor not\b", after, re.I):
         return "explicitly holds in her absence"
     # A title names an institution/other person, not the goddess herself.
-    if re.search(r"(?:church|paladin|priest|priestess|cleric|acolyte|temple|knight|servant|hand|herald|faith|order|sword|blade|blessing|shrine|image|statue|mark|sign)\s+of\s+(?:the\s+)?$", before, re.I):
+    if institution:
         return "institution or title"
     if re.match(r"['’]s\s+(?:church|faith|temple|paladins|priests|knights|company|regiment|war|crusade|symbol|holy symbol|sword|court|courts)\b", after, re.I):
         return "institution or relic"
@@ -162,8 +177,20 @@ def reference_reason(text, match, postwar=False):
             return "religious court and official reporting"
         if (re.search(r"\b(?:serve|serves|served|serving|thank|thanked|pray|praying|prayers|chaplains|priests|churches|image|sign|swear|swore)\b[^.!?]{0,50}$", before, re.I)
                 or re.match(r"['’]s\s+(?:court|door|army|little lamps)\b", after, re.I)
-                or re.match(r"\s+(?:can take it up|has a plan|asks us to forgive|chooses her paladins|knows it|hears about it|saw that|is going to have words)\b", after, re.I)):
+                or re.match(r"\s+(?:can take it up|has a plan|asks us to forgive|chooses her paladins|knows it|hears about it|saw that|is going to have words|sees what is done in her name)\b", after, re.I)):
             return "religious belief or institution"
+    # Standing political allegiance is a fact about a house or people, not
+    # attendance by their sovereign. Concrete live continuations were checked
+    # above; a wish for a ruler's fall likewise promises no new appearance.
+    if not narrated and re.search(r"\b(?:everyone answers to|(?:every|all)\b[^.!?]{0,65}\bbelongs? to)\s+(?:the\s+)?$", before, re.I):
+        return "political allegiance"
+    if (not narrated and re.search(r"\b(?:want|wish for)\s+(?:the\s+)?$", before, re.I)
+            and re.match(r"\s+to fall\b", after, re.I)):
+        return "hypothetical political succession"
+    if not postwar and not narrated and re.match(r"\s+keeps the chair\b", after, re.I):
+        return "professional office"
+    if not postwar and not narrated and re.search(r"\bwho unseated\s+$", before, re.I):
+        return "reported earlier displacement"
     if re.search(r"\b(?:remember(?:s|ed)?|recall(?:s|ed)?|memory of|memories of|mourn(?:s|ed)?|grieve(?:s|d)?|grave of|death of|killed|executed|buried|lost|losing)\s+(?:(?:the|a|her|my|your|with|how|when|of|Lady|Queen)\s+)*$", before, re.I):
         return "explicit memory or mourning"
     if (not postwar and not narrated
@@ -175,6 +202,8 @@ def reference_reason(text, match, postwar=False):
         return "death or departure"
     if re.match(r"\s+(?:(?:had|has|did) not (?:come back|returned|return)|never (?:came back|returned))\b", after, re.I):
         return "explicit unreturned absence"
+    if re.match(r"['’]s\s+(?:get|offspring|child|children|daughter|son|eggs?)\b", after, re.I):
+        return "ancestry"
     if re.match(r"['’]s(?:[.!?]|[\"”])", after):
         return "remembered possession"
     if re.match(r"['’]s\s+(?:grave|death|absence|departure|disappearance|corpse|bones|memory|spare\s+surcoat|old\s+letter|old\s+letters|name|reputation|ledger|barrier|racks|smiths|work|house|palace|lair|refuge|laboratory|notes|secrets|quills|handwriting)\b", after, re.I):
@@ -232,6 +261,16 @@ def reference_reason(text, match, postwar=False):
 
 
 def live_mentions(text, pattern, postwar=False, scene_id=None):
+    reviewed = []
+    if scene_id:
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        reviewed = [c for c in j01_reference_contexts()
+                    if c["scene"] == scene_id and c["text_sha256"] == digest
+                    and pattern.fullmatch(c["woman"])]
+    # Old reviewed blocks retain their contract. New S2 reviews bind each
+    # occurrence: another mention in the same text must earn its own proof.
+    def exempt(match):
+        return any("mentions" not in c or list(match.span()) in c["mentions"] for c in reviewed)
     # The final route merge classifies specific recollections and devotional references.
     # Match the entire reviewed text and scene; altered text or another route fails closed.
     if scene_id and scene_id.startswith("terendelev.trickster."):
@@ -239,4 +278,5 @@ def live_mentions(text, pattern, postwar=False, scene_id=None):
         if any(scene == scene_id and checksum == digest and pattern.fullmatch(woman)
                for scene, checksum, woman in terendelev_reference_contexts()):
             return []
-    return [m for m in pattern.finditer(text) if not reference_reason(text, m, postwar)]
+    return [m for m in pattern.finditer(text)
+            if not exempt(m) and not reference_reason(text, m, postwar)]

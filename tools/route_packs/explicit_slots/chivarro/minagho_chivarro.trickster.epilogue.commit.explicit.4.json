@@ -16,7 +16,7 @@
   "min_lines": 12,
   "max_lines": 20,
   "slot_id": "minagho_chivarro.trickster.epilogue.commit.explicit.4",
-  "default_text": "{n}Chivarro leaves the unanswered letter folded on the table and lets her gown slip. She draws you onto the bed herself; the unlit lamp stays beyond her reach.{/n}\n\"Put the letter aside. I am tired of waiting.\"",
+  "default_text": "{n}On the mattress she catches the Commander against her bare body. Her hand closes at their hip; the next kiss stops their reply.{/n}\n\"Quiet, honey. That letter can wait.\"",
   "source_nodes": [
     "late_waiting_secret"
   ],

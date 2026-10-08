@@ -9,6 +9,9 @@ using Tirabade;
 internal static class DelamereTricksterTests
 {
     private const string P = "delamere.trickster.";
+    private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    // blueprints.zip: TempleOfDelamere/TempleOfDelamere.jbp (BlueprintArea).
+    private const string Temple = "bb6d82794aae9d94d9cc94d1a05e5f20";
     private const string KyadoHub = "d7aadaa261a8023489bdba49216cc334";
     private const string KyadoReturn = "5230d5fd7201db04287903ac6a95d30c";
     private const string Bow = "5fd95b425dd0b73488554abcb68382d3";
@@ -34,6 +37,14 @@ internal static class DelamereTricksterTests
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
+        return state;
+    }
+
+    // Crypt histories happen at her stone; native tomb/Book facts remain explicit inputs.
+    private static Snapshot AtTemple(Story story, int chapter, params string[] flags)
+    {
+        var state = World(story, chapter, flags);
+        state.Area = Temple;
         return state;
     }
 
@@ -106,6 +117,9 @@ internal static class DelamereTricksterTests
                 {
                     yield return from;
                     var w = Later(story, from, 200, chapter);
+                    // After the earned Temple waking, "Limp home" returns to Drezen
+                    // for the ridge/fire visits. Tomb facts alone never move the fixture.
+                    if (w.Has(P + "returned")) w.Area = Drezen;
                     foreach (var scene in own.Where(s => Rules.Available(story, s, w)))
                         foreach (var r in Program.Walk(scene, w))
                         {
@@ -182,7 +196,7 @@ internal static class DelamereTricksterTests
                     "Delamere needs someone else dead or closed: " + s.Id + " " + key);
 
         // Trk_Delamere_HornLore: Kyado's foresight lowers the call.
-        var visited = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened");
+        var visited = AtTemple(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened");
         check(Rules.Available(story, lore, visited), "Trk_Delamere_HornLore: Kyado's lore is shut.");
         check(After(lore, visited, "roar", 0).First().Has(P + "primed"), "Trk_Delamere_HornLore: the roar is not learned.");
 
@@ -201,7 +215,7 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_Declined: sending her back to her grave is not a hard no.");
 
         // Quality pass Q6 (INT): the opened body is read from the tomb's own outcomes, not from starting the book event.
-        var visitedUnopened = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", P + "primed");
+        var visitedUnopened = AtTemple(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", P + "primed");
         var cryptPages = Pages(crypt, visitedUnopened);
         check(cryptPages.Contains("body_sealed") && !cryptPages.Contains("body_open"), "A tomb visited but never opened is shown open.");
         // PP10 (Sol CAN/BEL): the knife openings count as opened (a lid closed again is still a broken seal); a whole seal
@@ -219,7 +233,7 @@ internal static class DelamereTricksterTests
         {
             var ch = s == late ? 5 : 3;
             var extra = s == alone ? new[] { "kyado.dead" } : Array.Empty<string>();
-            Snapshot W(params string[] f) => World(story, ch, new[] { "trickster", "trickster.ever" }.Concat(extra).Concat(f).ToArray());
+            Snapshot W(params string[] f) => AtTemple(story, ch, new[] { "trickster", "trickster.ever" }.Concat(extra).Concat(f).ToArray());
             check(!Rules.Available(story, s, W("delamere.tomb_visited")) && !Rules.Available(story, s, W("delamere.tomb_visited", P + "primed"))
                   && !Rules.Available(story, s, W("kyado.initiated")) && !Rules.Available(story, s, W("delamere.tomb_visited", "delamere.tomb_opened_bruteforce"))
                   && Rules.Available(story, s, W("delamere.tomb_visited", "delamere.tomb_book_locked_forced"))
@@ -228,6 +242,15 @@ internal static class DelamereTricksterTests
                   && !Rules.Available(story, s, W("delamere.tomb_visited", "delamere.tomb_book_locked_forced", "delamere.tomb_opened_forced"))
                   && W("delamere.tomb_book_locked_forced").Has("delamere.tomb_opened"),
                 "Trk_Delamere_BookLocked: a crypt waking opens while the native Book can still play, or after the order to move her to Drezen: " + s.Id);
+            // The remote twins still require a visit to the Temple, even after earning the Book lock.
+            if (s != crypt)
+                foreach (var area in new[] { Drezen, "unrelated-dungeon" })
+                {
+                    var away = W("delamere.tomb_visited", "delamere.tomb_book_locked_opened");
+                    away.Area = area;
+                    check(!Rules.Available(story, s, away),
+                        "A Temple waking plays away from her stone: " + s.Id + " in " + area);
+                }
             // New-game histories: lore, initiation and an opened lid never substitute for closing the native Book.
             var unlocked = W("delamere.tomb_visited", "kyado.initiated", P + "primed", "delamere.tomb_opened_bruteforce");
             check(!unlocked.Has("delamere.tomb_book_locked") && !Reaches(unlocked, P + "living_wake", ch)
@@ -252,7 +275,7 @@ internal static class DelamereTricksterTests
                                        "delamere.tomb_opened_bruteforce", "delamere.tomb_closed_forced",
                                        "delamere.tomb_close_peaceful_selected", "delamere.tomb_close_forced_selected" })
         {
-            var o = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", opened);
+            var o = AtTemple(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", opened);
             var op = Pages(crypt, o);
             check(o.Has("delamere.tomb_opened") && op.Contains("body_open") && !op.Contains("body_sealed") && !SealBreaks(o),
                 "An opened tomb is shown sealed: " + opened);
@@ -268,7 +291,7 @@ internal static class DelamereTricksterTests
               && story.SeenCues["delamere.tomb_opened_forced"].SequenceEqual(new[] { "a70275fb77f483847a68fe01586091ec" }),
             "Trk_Delamere_NativeOpenings: the brute-force and closing witnesses are not bound to their native GUIDs (or the old witness moved).");
         // Brute force, no loot: Cue_0040 then Answer_0050 / Cue_0054. The opened stone, the bow still in her hands, no relics flag.
-        var bruteNoLoot = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_opened_bruteforce",
+        var bruteNoLoot = AtTemple(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_opened_bruteforce",
             "delamere.tomb_close_forced_selected", "delamere.tomb_closed_forced");
         var bruteNoLootPages = Pages(crypt, bruteNoLoot);
         check(bruteNoLootPages.Contains("body_open") && bruteNoLootPages.Contains("in_hands") && bruteNoLootPages.Contains("rise")
@@ -286,8 +309,8 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_LivingWoken: a living waking (or an old save's refusal at the grave) is not recognised, or contact alone counts.");
 
         // Trk_Delamere_Unvisited: the initiated key, the sealed tomb.
-        var initiated = World(story, 3, "trickster", "trickster.ever", "kyado.initiated");
-        var initiatedOpened = World(story, 3, "trickster", "trickster.ever", "kyado.initiated", "delamere.tomb_visited", "delamere.tomb_book_locked_forced");
+        var initiated = AtTemple(story, 3, "trickster", "trickster.ever", "kyado.initiated");
+        var initiatedOpened = AtTemple(story, 3, "trickster", "trickster.ever", "kyado.initiated", "delamere.tomb_visited", "delamere.tomb_book_locked_forced");
         check(!Rules.Available(story, crypt, initiated) && Rules.Available(story, lore, initiated) && Rules.Available(story, crypt, initiatedOpened),
             "Trk_Delamere_Unvisited: the initiated key wakes her before her stone is opened (or shuts the lore, or the opened crypt).");
         check(Program.Walk(crypt, initiatedOpened).Any(r => r.Has(P + "returned")), "Trk_Delamere_Unvisited: the opened tomb cannot be woken.");
@@ -297,12 +320,12 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_NoReason: a waking opens with no native reason to go down.");
 
         // Trk_Delamere_KyadoDead and Trk_Delamere_Late: the page twins.
-        var noKyado = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened", "kyado.dead");
+        var noKyado = AtTemple(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened", "kyado.dead");
         check(!Rules.Available(story, crypt, noKyado) && Rules.Available(story, alone, noKyado),
             "Trk_Delamere_KyadoDead: the page twin does not replace the temple scene.");
         var aloneWoken = After(alone, noKyado, "home_alone", 0).First();
         check(aloneWoken.Has(P + "returned") && Reaches(aloneWoken, "delamere.committed"), "Trk_Delamere_KyadoDead: no road to the commit.");
-        var chapter5 = World(story, 5, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened");
+        var chapter5 = AtTemple(story, 5, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_book_locked_opened");
         check(Rules.Available(story, late, chapter5) && !Rules.Available(story, crypt, chapter5), "Trk_Delamere_Late: the Chapter 5 waking is shut.");
         check(Reaches(After(late, chapter5, "home_late", 0).First(), "delamere.committed"), "Trk_Delamere_Late: no road to the commit.");
 
@@ -331,9 +354,10 @@ internal static class DelamereTricksterTests
         check(story.StartedDialogs.TryGetValue("delamere.tomb_visited", out var tombBook) && tombBook == "96993dc62aebc38469f890b857173117"
               && !mine.SelectMany(s => s.Nodes).SelectMany(nd => nd.Choices).Any(c => c.Set.Contains("delamere.tomb_visited")),
             "Trk_Delamere_Pilgrim: arrival at her stone is not the native tomb Book's own start.");
-        var stoneOnly = Later(story, roadKnown, 24); stoneOnly.Flags.Add("delamere.tomb_visited"); Rules.Complete(story, stoneOnly);
+        var stoneOnly = Later(story, roadKnown, 24); stoneOnly.Area = Temple; stoneOnly.Flags.Add("delamere.tomb_visited"); Rules.Complete(story, stoneOnly);
         check(!Rules.Available(story, late, stoneOnly), "Trk_Delamere_Pilgrim: the waking opens while her Book can still play.");
         var arrived = Later(story, roadKnown, 24);
+        arrived.Area = Temple;
         foreach (var f in new[] { "delamere.tomb_visited", "delamere.tomb_opened_bruteforce", "delamere.tomb_close_forced_selected",
                                   "delamere.tomb_closed_forced", "delamere.tomb_book_locked_forced" }) arrived.Flags.Add(f);
         Rules.Complete(story, arrived);
@@ -360,7 +384,7 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_AfterFailure: a lost Trickster wakes her.");
 
         // Trk_Delamere_Bow: the bow carried off the tomb goes back into her hands, or she hunts with the yew.
-        var carried = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.relics_taken", "delamere.bow_held");
+        var carried = AtTemple(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.relics_taken", "delamere.bow_held");
         var laid = After(crypt, carried, "taken_held", 0).First();
         check(laid.Has(P + "bow_returned") && Choice(crypt, "taken_held", 0).RemoveItem == Bow, "Trk_Delamere_Bow: laying the bow back does not return it.");
         var yew = After(crypt, carried, "taken_held", 1).First();
@@ -640,8 +664,11 @@ internal static class DelamereTricksterTests
         {
             var node = S(P + "epilogue." + id).Nodes.Last();
             var withAnswer = World(story, 6, "trickster.ever", P + "returned", P + "bark_letter", P + "bark_answered");
-            check(Rules.VisibleParagraphs(node, withAnswer).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[delamere.trickster.epilogue.caught/page/paragraph/12][delamere.trickster.epilogue.late/page/paragraph/13][delamere.trickster.epilogue.sacrifice/page/paragraph/12][delamere.trickster.epilogue.apart/page/paragraph/12][delamere.trickster.epilogue.unfinished/page/paragraph/12][delamere.trickster.epilogue.apart_sacrifice/page/paragraph/12][delamere.trickster.epilogue.unfinished_sacrifice/page/paragraph/12]"))
-                  && !Rules.VisibleParagraphs(node, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")).Any(t => SurfaceIds.Has(SurfaceIds.Of(story, t), "[delamere.trickster.epilogue.caught/page/paragraph/12][delamere.trickster.epilogue.late/page/paragraph/13][delamere.trickster.epilogue.sacrifice/page/paragraph/12][delamere.trickster.epilogue.apart/page/paragraph/12][delamere.trickster.epilogue.unfinished/page/paragraph/12][delamere.trickster.epilogue.apart_sacrifice/page/paragraph/12][delamere.trickster.epilogue.unfinished_sacrifice/page/paragraph/12]")),
+            // Appended round-three paragraphs shifted the displayed indices.
+            // Identify the answered-bark reader by its receipt on each sibling.
+            var answeredBark = node.Paragraphs.Single(p => p.Requires.Contains(P + "bark_answered"));
+            check(Rules.ParagraphVisible(answeredBark, withAnswer)
+                  && !Rules.ParagraphVisible(answeredBark, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")),
                 "Trk_Delamere_Bark: her page does not keep the answered bark: " + id);
         }
 

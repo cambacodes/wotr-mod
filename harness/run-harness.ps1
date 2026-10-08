@@ -52,6 +52,8 @@
 param(
     [string]$GameDir = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure',
     [string[]]$Saves = @(),
+    [string]$SystemCases,
+    [string]$EvidenceRequirements,
     [switch]$Force,
     [switch]$DryRun,
     [ValidateSet('random', 'dfs')][string]$Mode = 'random',
@@ -243,6 +245,12 @@ $plan = [ordered]@{
     timeouts          = [ordered]@{ globalSeconds = [Math]::Max(60, $TimeoutMinutes * 60 - 60) }
 }
 # BEGIN eng7-f5: JSON is embedded, so no extra mod-folder installation or shared runtime hook is needed.
+if ($SystemCases) {
+    if (!$NoRoundTrip -or $Inline -or $Spike -or $SceneFilter.Count -gt 0 -or $SetFlags.Count -gt 0 -or $StartEtudes.Count -gt 0 -or $SetPresenceFailures.Count -gt 0 -or $HoldEtudes.Count -gt 0 -or $SeenCues.Count -gt 0 -or $RemoveCompanions.Count -gt 0) {
+        throw '-SystemCases requires -NoRoundTrip and no Inline, Spike, SceneFilter or global fixture setup.'
+    }
+    $plan.systemCasesJson = Get-Content -LiteralPath $SystemCases -Raw
+}
 if ($Spike -eq 'NativeEpilogue') {
     if (!$NoRoundTrip -or $Inline -or $Headless) { throw '-Spike NativeEpilogue requires -NoRoundTrip, visible dialogs and no -Inline.' }
     if ($resolvedSaves.Count -eq 0) { throw '-Spike NativeEpilogue requires a loadable free-roam save.' }
@@ -317,6 +325,7 @@ foreach ($s in $resolvedSaves) { if (!(Test-Path -LiteralPath $s)) { $pre += "Sa
 if ($resolvedSaves.Count -eq 0) { $pre += 'No saves: pass -Saves <name or path>.' }
 if (Get-Process -Name 'Wrath' -ErrorAction SilentlyContinue) { $pre += 'Wrath is already running; close it first.' }
 if ($Inline -and !(Test-Path -LiteralPath $inlineHosts)) { $pre += 'No harness/inline-hosts.json: run  python harness/resolve-inline-hosts.py' }
+if ($EvidenceRequirements -and !(Test-Path -LiteralPath $EvidenceRequirements)) { $pre += 'Evidence requirements file is missing.' }
 
 if ($DryRun) {
     Say '=== RRT harness dry run: nothing is copied, launched or modified ===' Cyan
@@ -373,6 +382,14 @@ if ($pre.Count) { Say 'Preflight failed:' Red; $pre | ForEach-Object { Say "  - 
 # ---------------------------------------------------------------------------------------------
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 $RunDir = Join-Path $HarnessDir ".runs\$stamp"
+if ($EvidenceRequirements) {
+    Push-Location $Repo
+    try {
+        $evidenceSourceHash = & (Get-Command python -ErrorAction Stop).Source -c 'from pathlib import Path; from tools.gate_receipts import source_hash; print(source_hash(Path.cwd()))'
+        if ($LASTEXITCODE) { throw 'Evidence source hashing failed' }
+        $evidenceExportHash = (Get-FileHash -LiteralPath $storySource -Algorithm SHA256).Hash.ToLowerInvariant()
+    } finally { Pop-Location }
+}
 New-Item -ItemType Directory -Force -Path (Join-Path $RunDir 'backup') | Out-Null
 if ($Screenshots) {
     $plan.screenshotDir = Join-Path $RunDir 'shots'
@@ -501,9 +518,17 @@ try {
         if ($s.PSObject.Properties['SkippedInline'] -and $s.SkippedInline) { Say ("Skipped inline (host or list not reachable): {0}" -f $s.SkippedInline) Yellow }
         foreach ($f in @($s.Failures) | Select-Object -First 25) { Say "  - $f" Red }
         if ($s.PSObject.Properties['Skipped']) { foreach ($k in @($s.Skipped)) { Say "  (skipped) $k" Yellow } }
-        if ($s.Passed) { Say 'PASS' Green; $exitCode = 0 }
+        if ($s.Passed -and $s.PSObject.Properties['AcceptanceComplete'] -and !$s.AcceptanceComplete) {
+            Say 'INCOMPLETE coverage (execution checks passed)' Yellow; $exitCode = 2
+        }
+        elseif ($s.Passed) { Say 'PASS execution checks; campaign earning requires separate evidence' Green; $exitCode = 0 }
         elseif ($r.Status -ne 'complete') { Say 'FAIL (harness did not complete)' Red; $exitCode = 2 }
         else { Say 'FAIL' Red; $exitCode = 1 }
+        if (!$s.PSObject.Properties['AcceptanceComplete']) { Say 'Legacy report: acceptance coverage is unavailable; rebuild the harness for H09 metadata.' Yellow }
+        if ($EvidenceRequirements) {
+            & (Get-Command python -ErrorAction Stop).Source (Join-Path $Repo 'tools/harness_evidence.py') $archived --requirements $EvidenceRequirements --source-hash $evidenceSourceHash --export-hash $evidenceExportHash --out (Join-Path $RunDir 'evidence-receipt.json')
+            if ($LASTEXITCODE) { $exitCode = 2; Say 'INCOMPLETE acceptance: see evidence-receipt.json' Yellow }
+        }
         Say "Report: $archived"
     }
 }

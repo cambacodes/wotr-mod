@@ -418,7 +418,7 @@
       "row": "s21",
       "scene": "yaniel.lastcall.page",
       "node": "page",
-      "paragraph": 13,
+      "paragraph": 18,
       "requires": [
         "household.readers.w5.s21.current",
         "household.pair.seelah_yaniel.watch.seen",
@@ -437,7 +437,7 @@
       "row": "s21",
       "scene": "yaniel.lastcall.page",
       "node": "page",
-      "paragraph": 14,
+      "paragraph": 19,
       "requires": [
         "household.readers.w5.s21.current",
         "household.pair.seelah_yaniel.watch.seen",
@@ -452,7 +452,7 @@
       "row": "s21",
       "scene": "yaniel.lastcall.page",
       "node": "page",
-      "paragraph": 15,
+      "paragraph": 20,
       "requires": [
         "household.readers.w5.s21.current",
         "seelah.present_now",

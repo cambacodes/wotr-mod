@@ -1,7 +1,7 @@
 """Shamira after the waking: her city, her visit, the game she proposes, and the throne she still wants
 (shamira_trickster holds the device; shamira_mind the nights behind the Commander's eyes and the waking).
 
-The commit (11 §2): "think of anything but me". In the room where she first read the Commander (the Harem of Ardent Dream,
+The commit (11 §2): "think of anything but me". In the room where she first read the Commander (the Harem of Ardent Dreams,
 Shamira_dialogue: the mind-duel of Cue_0039 0a75cdac to Cue_0058 0e929c72), she proposes a game of her own trade, and the
 Commander loses it on purpose. Nothing is spoken: every answer in the game is a thought. Winning it is the soft no (she
 stays an ally); throwing her out of the Commander's head, as a Commander once did in public (Cue_0055 b15365b6), is the
@@ -269,13 +269,13 @@ hub(P + "after.visit", "Out of the wardrobe", '"You were in my room last night. 
 ], requires=(CITY,), forbids=(VISITED,) + LIVE, delay=48)
 
 
-# --- The commit: think of anything but me, in the Harem of Ardent Dream --------------------------------------------------
+# --- The commit: think of anything but me, in the Harem of Ardent Dreams --------------------------------------------------
 
 hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
     nar("start", '''{n}She finishes the King's wine and stands, and takes you by the wrist without a word. That night she comes for you out of your own wardrobe, in black, and you go back the way you went for her body: the wardrobe, the empty Council with its candles burning for nobody, Socothbenoth's purple door, the house full of listening closets.{/n}
 {n}In the street outside his house there is an arch of black stone. She walks you under it, and the city folds.{/n}''',
         c("Continue", "harem")),
-    nar("harem", '''{n}The Harem of Ardent Dream. Tonight it is empty. The couches are bare. The fountains still run, and the sound of them fills the great room the way a held breath fills a chest.{/n}
+    nar("harem", '''{n}The Harem of Ardent Dreams. Tonight it is empty. The couches are bare. The fountains still run, and the sound of them fills the great room the way a held breath fills a chest.{/n}
 {n}At the far end, on its dais, the throne. The light around it is low, a glow like coals under ash.{/n}''',
         c("Continue", "light_back", requires=(BARRACKS,)),
         c("Continue", "sits", forbids=(BARRACKS,))),
@@ -432,8 +432,8 @@ hub(P + "after.throne", "The chair she wants", '"You have that look. The one fro
         c('"I won\'t help you and I won\'t stop you. I\'ll stand where you can see me. That\'s all."', "stand", flags=(THRONE, STAND)),
         c('[Lie] "Of course I will."', "lie", flags=(THRONE, LIED_HER))),
     sh("not_her", '''{n}She does not answer for a while. She reads it: all of it, whatever it is in you that says no, and why.{/n}
-"You mean it." {n}Flatly.{/n} "You would help me take any throne in the Abyss but hers." {n}A long breath.{/n} "I should hate you for that. I find I only hate that you have a reason, and that I can see it, and that it is not a bad one."
-"Very well. Keep your reason. I will keep wanting. We will see which of us gets tired first."''',
+"You mean it." {n}Flatly.{/n} "You would help me take any throne in the Abyss but hers." {n}A long breath.{/n} "I should hate you for that, and I do. Keep your reason, Golarian. It will not be in the room when I need you."
+"I will keep wanting. We will see which of us gets tired first." {n}She turns your cup so the rim faces you, and drinks from the other side.{/n}''',
         c("Continue", "socoth")),
     sh("stand", '''"Stand where I can see you." {n}She turns the cup between her hands.{/n} "I ruled my lady's city and warmed her bed. Neither was enough. I wanted her throne, and I still do."
 {n}Her smile returns, thin and deliberate.{/n} "If you mean to do nothing, do it where I can watch you. I shall have enough knives at my back without wondering what is in your hand."''',

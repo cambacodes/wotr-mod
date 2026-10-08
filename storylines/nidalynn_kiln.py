@@ -95,7 +95,7 @@ visit(P + "hearth.listening", "Nobody's widow", [
         c('"A dragon on the crusade\'s side could be useful."', "useful", flags=(WHY_USE,)),
         c('"I don\'t know. I still don\'t."', "dunno", flags=(WHY_DUNNO,))),
     nd("why_vault", '''{n}She settles into your chair, with a hand under the belly, pours herself a cup of your wine, and turns it without drinking.{/n} "Now you. I've told you what I am. You tell me why you did it."
-"The clutch was crated in your own vault. The druids wanted it, and your cooks wanted it, and you'd only to wait and let somebody else decide. Instead you went down at night with a coal bucket, past your own clerk, and carried the smallest egg of a dragon who tried to burn your army out of the sky up four flights in your bare hands. Why?"''',
+"The clutch was crated in your own vault. The druids wanted it, and your cooks wanted it, and you'd only to wait and let somebody else decide. Instead you went down at night with a coal bucket, past your own clerk, and carried the smallest egg of a dragon who tried to burn your army out of the sky up four flights wrapped in your coat. Why?"''',
         c('"It was the smallest. Nobody was going to miss it."', "small", flags=(WHY_SMALL,)),
         c('"Because the cooks or the druids were going to have it, and I could stop them."', "could", flags=(WHY_COULD,)),
         c('"A dragon on the crusade\'s side could be useful."', "useful", flags=(WHY_USE,)),
@@ -123,7 +123,7 @@ visit(P + "hearth.listening", "Nobody's widow", [
 {n}She takes the two broken fingers between her thumbs. You are expecting it to hurt. It hurts more than you are expecting. Something grates, and something else clicks into a place it had forgotten, and she is binding them to a spill of kindling from your own wood-basket before you have finished swearing.{/n}
 "There. The Windstep had a bonesetter for the horses, and he taught me on the foals. You've better bones than a foal. Worse manners."''',
         c("Continue", "kiln", flags=(HAND_SET,))),
-    nd("palms", '''"Give me those hands. Both of them." {n}She turns them palm up to the firelight and looks at the blisters for a while without saying anything.{/n} "You carried it up the stairs against your chest. Didn't you. The whole way, with the skin coming off." {n}She takes a little pot out of her mending basket, something that smells of goose-fat and yarrow, and works it into your palms with her thumbs, slowly, not gently.{/n} "Idiot. You should have wrapped it in wet sacking. Any shepherd's child could have told you. The Windstep children carried coals from camp to camp in wet sacking, in their bare hands, and sang while they did it."''',
+    nd("palms", '''"Give me those hands. Both of them." {n}She turns them palm up to the firelight and looks at the blisters for a while without saying anything.{/n} "Your clerk told me about the lamp. You caught it before the oil reached it." {n}She takes a little pot out of her mending basket, something that smells of goose-fat and yarrow, and works it into your palms with her thumbs, slowly, not gently.{/n} "Hold still. You saved the egg; now let me see to these. There's wet sacking in the basket. Take it next time. The Windstep children carried coals in it without losing their skin."''',
         c("Continue", "kiln", flags=(HAND_SET,))),
     nd("kiln", '''"Now. It's cold, and your fire isn't enough, and I'm not going to sit on it in your quarters; your steward would have a seizure." {n}She thinks.{/n} "There's an old lime-kiln under the east wall, below the tanners' stair. The crusade hasn't used it since they finished the new curtain. The bricks are sound. If I fire it right, the heart of it gets as hot as a dragon's belly and stays hot all night."
 "Tomorrow night. Bring the egg. Wrap it in your coat, not your arms." {n}She gets up, belly first, with a hand on the chair.{/n} "And have your cook make you a proper supper before you come. I won't have you fainting on my kiln."''',
@@ -281,7 +281,7 @@ visit(P + "kiln.hatching", "What came out of the rock", [
 {n}You tell them the rest of it, because once you have started there is no sense stopping. The druids and their handcart. The twelfth egg on the straw heap, cold, that four of them gave up for dead. The slate, and the lie on it with your mark beside it. The quartermaster read back your order; he did not give it. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
         c("Continue", "chaplain")),
     nar("confess_vault", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
-{n}You tell them the rest of it, because once you have started there is no sense stopping. The vault. The soot. The lump of coal in the straw where the egg had been. The clerk's count was wrong because you took the twelfth; he will not answer for your theft. The stairs, and your palms. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
+{n}You tell them the rest of it, because once you have started there is no sense stopping. The vault. The soot. The lump of coal in the straw where the egg had been. The clerk's count was wrong because you took the twelfth; he will not answer for your theft. The egg wrapped in your coat on the stairs. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
         c("Continue", "chaplain")),
     nar("confess", '''{n}The lane goes quiet in a way that is worse than shouting.{/n}
 {n}You tell them the rest of it, because once you have started there is no sense stopping. The golems. The ash. The hearth. The "rock". You tell them your steward did not know, and the sergeant did not know, and the widow is a widow who knows eggs. You tell them that if it ever burns a wagon or a barn or a man, they are to bring the bill to the citadel, and it will be paid, by you, in whatever coin is owed.{/n}''',
@@ -524,8 +524,9 @@ visit(P + "kiln.the_druids", "Four druids and a handcart", [
         c('"What will you tell them?"', "tell"),
         c('"Why are you still here?"', "tell")),
     nd("tell", '''"That she's the smallest, and she was the coldest, and she'd not have lived the road." {n}She looks at the kiln.{/n} "That's true. It's not all of it. I'll tell them the rest when I know what the rest is." {n}She glances at you.{/n} "They'll laugh. Dragons are terrible gossips. The gold one will fly over one night to have a look at you, pretending to be a stork."''',
-        c("Continue", "hunted", requires=(DV_HUNTING,)),
-        c("Continue", "end", forbids=(DV_HUNTING,))),
+        c("Continue", "hunted", requires=(DV_HUNTING, DV_PRESENT)),
+        c("Continue", "end", forbids=(DV_HUNTING,)),
+        c("Continue", "hunted_absent", requires=(DV_HUNTING,), forbids=(DV_PRESENT,))),
     nd("hunted", '''{n}She picks up the letter again.{/n} "And there's this. They say a grey woundwyrm has been working along the rivers, looking for the valley. She found the white stone. She stood off. The gold one stood in front of the nest and she stood off." {n}Her mouth thins.{/n} "You sent her, Commander. I know you did. You'd your reasons, and she's their mother, and I've been trying to decide what I think of it ever since."''',
         c('"She had a right to know where her children were."', "right", flags=(DRUIDS_DEFENDED,)),
         c('"I was wrong to send her."', "wrong", flags=(DRUIDS_REGRETTED,))),
@@ -535,6 +536,12 @@ visit(P + "kiln.the_druids", "Four druids and a handcart", [
         c("Continue", "end")),
     nd("end", '''"I'll write back tonight. I'll tell them the little one's well, and that the Commander of the crusade feeds my kiln with wood at midnight and eats my bread." {n}Her ears have gone pink again.{/n} "That'll give them something to talk about for a century."''',
         c("[Leave her to her letter.]")),
+    # Authored later-loss continuation; nm1 copies it to the chosen-form host.
+    # Native voice anchor: DragonsKenabres/Cue_0009, ea186e49-81e7-4e9a-a90a-2a0c56e90ad1.
+    nd("hunted_absent", '''"They wrote this before she was lost." {n}She taps the letter.{/n} "She followed the rivers to the white stone. The gold one stood before the nest, and she stood off. You sent her there."
+{n}She reaches for a fresh sheet and draws the inkpot closer.{/n} "I'll tell them she's gone. They can stop watching the river for her. That won't undo the fright you gave them, Commander."''',
+        c('"She had a right to know where her children were."', "right", flags=(DRUIDS_DEFENDED,)),
+        c('"I was wrong to send her."', "wrong", flags=(DRUIDS_REGRETTED,))),
 ], requires=(KILN, "eggs.druids"), forbids=(LIE_KEPT,), delay=48, optional=True)
 
 

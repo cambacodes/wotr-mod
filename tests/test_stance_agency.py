@@ -76,7 +76,8 @@ class StanceAgencyTests(unittest.TestCase):
                 self.assertTrue(any(j.REFUSED in flags and "jerribeth.closed" in flags for flags, _ in results))
             for flags, _ in results:
                 if j.CHOSEN in flags:
-                    self.assertIn("jerribeth.trickster.cost.forfeit", flags)
+                    self.assertIn("jerribeth.partner.exclusive_memory_owed", flags)
+                    self.assertNotIn("jerribeth.trickster.cost.forfeit", flags)
                     self.assertNotIn(j.DEAD, flags)
         # Paid work cannot summon a living possession through a bodiless tenant.
         results = self.walk(sid, "partner_answer_distant", {"trickster", j.PLANT, j.RETURNED, "jerribeth.shared_work"}, ("partner_resume",))
@@ -113,7 +114,8 @@ class StanceAgencyTests(unittest.TestCase):
 
     def test_soana_and_wenduag_answer_the_existing_run(self):
         for proof, expected in ((set(), False), ({"soana.late_thorn_tested"}, True)):
-            results = self.walk("soana.the_days_she_counted", "partner_exclusive_commit_answer", {"trickster", *proof})
+            results = self.walk("soana.the_days_she_counted", "partner_exclusive_commit_answer",
+                                {"trickster", so.TOGETHER, so.CONFIRMED, *proof})
             self.assertEqual(any(so.CHOSEN in flags for flags, _ in results), expected)
             if not expected:
                 self.assertTrue(any(so.SHARE in flags and "soana.committed" in flags for flags, _ in results))
@@ -150,8 +152,10 @@ class StanceAgencyTests(unittest.TestCase):
         self.assertNotIn(w.DISCOVERED, quiet["Nodes"][0]["Choices"][0]["Set"])
 
     def test_queen_absence_is_not_an_irabeth_survival_or_return_receipt(self):
-        page = self.scenes["anevia.a_key_that_is_hers"]["Nodes"][0]
-        quiet = next(c for c in page["Choices"] if c.get("Next") == "partner_absent_night")
+        quiet = next(c for node in self.scenes["anevia.a_key_that_is_hers"]["Nodes"]
+                     for c in node["Choices"]
+                     if (c.get("Next") or "").endswith("absent_night")
+                     and "irabeth_away" in c["Requires"])
         self.assertTrue(visible(quiet, {"irabeth_away"}))
         for changed in ("irabeth_dead", "irabeth_gone", *a.SURVIVAL):
             self.assertFalse(visible(quiet, {"irabeth_away", changed}), changed)
@@ -160,7 +164,9 @@ class StanceAgencyTests(unittest.TestCase):
                 continue
             for node in scene["Nodes"]:
                 for answer in node["Choices"]:
-                    if (answer.get("Next") or "").endswith("absent_night"):
+                    # Folded cut continuations follow an already guarded entry.
+                    if ((answer.get("Next") or "").endswith("absent_night")
+                            and "irabeth_away" in answer["Requires"]):
                         self.assertTrue(set(("irabeth_dead", "irabeth_gone", *a.SURVIVAL)) <= set(answer["Forbids"]))
 
     def test_soanas_paid_search_carries_the_exclusive_answer(self):

@@ -1,0 +1,582 @@
+[
+  {
+    "scene": "aranka.trickster.verse.duet",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.duet_yard",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "aranka.trickster.verse.duet_late",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.duet_yard_late",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore_yard",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore_late",
+    "route": "aranka",
+    "finding": "aranka:D05"
+  },
+  {
+    "scene": "aranka.trickster.verse.encore_yard_late",
+    "route": "aranka",
+    "finding": "aranka:D06"
+  },
+  {
+    "scene": "delamere.trickster.crypt.stag",
+    "route": "delamere",
+    "finding": "delamere:D01"
+  },
+  {
+    "scene": "delamere.trickster.crypt.stag_alone",
+    "route": "delamere",
+    "finding": "delamere:D02"
+  },
+  {
+    "scene": "delamere.trickster.crypt.stag_late",
+    "route": "delamere",
+    "finding": "delamere:D03"
+  },
+  {
+    "scene": "delamere.trickster.drezen.stag",
+    "route": "delamere",
+    "finding": "delamere:D04"
+  },
+  {
+    "scene": "delamere.trickster.react.kyado_woken",
+    "route": "delamere",
+    "finding": "delamere:D05"
+  },
+  {
+    "scene": "delamere.trickster.woken.white_stag",
+    "route": "delamere",
+    "finding": "delamere:D06"
+  },
+  {
+    "scene": "delamere.trickster.woken.feasting_table",
+    "route": "delamere",
+    "finding": "delamere:D07"
+  },
+  {
+    "scene": "delamere.trickster.woken.day_owed",
+    "route": "delamere",
+    "finding": "delamere:D08,D09"
+  },
+  {
+    "scene": "delamere.trickster.woken.first_meat",
+    "route": "delamere",
+    "finding": "delamere:D14"
+  },
+  {
+    "scene": "delamere.trickster.woken.count",
+    "route": "delamere",
+    "finding": "delamere:D15"
+  },
+  {
+    "scene": "delamere.trickster.woken.count_late",
+    "route": "delamere",
+    "finding": "delamere:D16"
+  },
+  {
+    "scene": "delamere.trickster.woken.old_deadeye",
+    "route": "delamere",
+    "finding": "delamere:D17"
+  },
+  {
+    "scene": "delamere.trickster.woken.red_blood",
+    "route": "delamere",
+    "finding": "delamere:D01-D07 class sweep"
+  },
+  {
+    "scene": "arsinoe_the_first_cart",
+    "route": "arsinoe",
+    "finding": "arsinoe:D01"
+  },
+  {
+    "scene": "arsinoe_price_of_an_evening",
+    "route": "arsinoe",
+    "finding": "arsinoe:D04,D05"
+  },
+  {
+    "scene": "arsinoe_another_hour",
+    "route": "arsinoe",
+    "finding": "arsinoe:D04,D05"
+  },
+  {
+    "scene": "chadali.fortunes.worthless",
+    "route": "chadali",
+    "finding": "chadali:D01-D05; chadali:K01"
+  },
+  {
+    "scene": "chadali.trickster.epilogue.lucky_night",
+    "route": "chadali",
+    "finding": "chadali:D06,D11; chadali:K01"
+  },
+  {
+    "scene": "chadali.wagers.just_joking",
+    "route": "chadali",
+    "finding": "chadali:D07; chadali:K01"
+  },
+  {
+    "scene": "chadali.hours.a_lucky_number",
+    "route": "chadali",
+    "finding": "chadali:D08-D10; chadali:K01"
+  },
+  {
+    "scene": "chadali.fortunes.rigged",
+    "route": "chadali",
+    "finding": "chadali:D12"
+  },
+  {
+    "scene": "chadali.wagers.a_lucky_charm",
+    "route": "chadali",
+    "finding": "chadali:D13,D14"
+  },
+  {
+    "scene": "chadali.fortunes.honey",
+    "route": "chadali",
+    "finding": "chadali:D21"
+  },
+  {
+    "scene": "devarra.trickster.flight.eggs",
+    "route": "devarra",
+    "finding": "D03-D04"
+  },
+  {
+    "scene": "devarra.trickster.dead.woken",
+    "route": "devarra",
+    "finding": "D03 folded refusal"
+  },
+  {
+    "scene": "devarra.tower.the_clutch",
+    "route": "devarra",
+    "finding": "D05-D06,D17"
+  },
+  {
+    "scene": "devarra.trickster.after.lair",
+    "route": "devarra",
+    "finding": "D07"
+  },
+  {
+    "scene": "devarra.tower.bane",
+    "route": "devarra",
+    "finding": "D08"
+  },
+  {
+    "scene": "devarra.tower.first_bite",
+    "route": "devarra",
+    "finding": "D09"
+  },
+  {
+    "scene": "devarra.trickster.epilogue.commit",
+    "route": "devarra",
+    "finding": "D10,D14"
+  },
+  {
+    "scene": "devarra.trickster.epilogue.woken",
+    "route": "devarra",
+    "finding": "D11,D13,D18"
+  },
+  {
+    "scene": "devarra.react.greybor.flown",
+    "route": "devarra",
+    "finding": "D01 S1 local prose"
+  },
+  {
+    "scene": "devarra.tower.the_hunt",
+    "route": "devarra",
+    "finding": "D16"
+  },
+  {
+    "scene": "eliandra.trickster.ch5.last_rite_drezen",
+    "route": "eliandra",
+    "finding": "eliandra:D02"
+  },
+  {
+    "scene": "eliandra.trickster.ch5.last_rite_drezen_mark",
+    "route": "eliandra",
+    "finding": "eliandra:D03"
+  },
+  {
+    "scene": "eliandra.trickster.visit.star_heart",
+    "route": "eliandra",
+    "finding": "eliandra:D04; eliandra:D06"
+  },
+  {
+    "scene": "eliandra.trickster.visit.star_heart_mark",
+    "route": "eliandra",
+    "finding": "eliandra:D05; eliandra:D07"
+  },
+  {
+    "scene": "eliandra.trickster.epilogue.together",
+    "route": "eliandra",
+    "finding": "eliandra:D10"
+  },
+  {
+    "scene": "eliandra.trickster.epilogue.late",
+    "route": "eliandra",
+    "finding": "eliandra:D11"
+  },
+  {
+    "scene": "eliandra.trickster.epilogue.unasked",
+    "route": "eliandra",
+    "finding": "eliandra:D12"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D03"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D04"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D05"
+  },
+  {
+    "scene": "elyanka.trickster.beat.wards",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D06"
+  },
+  {
+    "scene": "elyanka.trickster.beat.inquiry",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D07"
+  },
+  {
+    "scene": "elyanka.trickster.beat.inquiry",
+    "route": "elyanka-and-camilary",
+    "finding": "elyanka-and-camilary:D08"
+  },
+  {
+    "scene": "eritrice.minutes.a_serious_matter",
+    "route": "eritrice",
+    "finding": "eritrice:D02,D03,D04 (D01 local evasion)"
+  },
+  {
+    "scene": "galfrey.trickster.alive.after_no",
+    "route": "galfrey",
+    "finding": "galfrey:D16 class sweep"
+  },
+  {
+    "scene": "galfrey.trickster.commit.answer_again",
+    "route": "galfrey",
+    "finding": "galfrey:D16 class sweep"
+  },
+  {
+    "scene": "galfrey.trickster.commit.answer_again_stall",
+    "route": "galfrey",
+    "finding": "galfrey:D16 class sweep"
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.conversation",
+    "route": "galfrey",
+    "finding": "galfrey:D14"
+  },
+  {
+    "scene": "galfrey.trickster.kitrane.conversation_stall",
+    "route": "galfrey",
+    "finding": "galfrey:D15"
+  },
+  {
+    "scene": "herrax.house.the_stain",
+    "route": "herrax",
+    "finding": "herrax:D25"
+  },
+  {
+    "scene": "herrax.house.rehearsal",
+    "route": "herrax",
+    "finding": "herrax:D26"
+  },
+  {
+    "scene": "herrax.house.rokhorn.sounding",
+    "route": "herrax",
+    "finding": "herrax:D26"
+  },
+  {
+    "scene": "herrax.trickster.late.next_move",
+    "route": "herrax",
+    "finding": "herrax:D26"
+  },
+  {
+    "scene": "horzalah.trickster.unmet.knife",
+    "route": "horzalah",
+    "finding": "horzalah:D02"
+  },
+  {
+    "scene": "horzalah.trickster.unmet.knife",
+    "route": "horzalah",
+    "finding": "horzalah:D09"
+  },
+  {
+    "scene": "horzalah.trickster.beat.spit",
+    "route": "horzalah",
+    "finding": "horzalah:D01"
+  },
+  {
+    "scene": "horzalah.trickster.beat.spit",
+    "route": "horzalah",
+    "finding": "horzalah:D03"
+  },
+  {
+    "scene": "horzalah.trickster.late.at_night",
+    "route": "horzalah",
+    "finding": "horzalah:D10"
+  },
+  {
+    "scene": "horzalah.native.eng7_f6c.guild",
+    "route": "horzalah",
+    "finding": "horzalah:D04"
+  },
+  {
+    "scene": "nurah.trickster.ran_off.terms",
+    "route": "nurah",
+    "finding": "nurah:D03,D04,D05,D09"
+  },
+  {
+    "scene": "nurah.trickster.ran_off.terms_night",
+    "route": "nurah",
+    "finding": "nurah:D06,D07,D08,D09"
+  },
+  {
+    "scene": "iomedae.trickster.epilogue.bridge",
+    "route": "iomedae",
+    "finding": "iomedae:D01"
+  },
+  {
+    "scene": "iomedae.lastcall.page",
+    "route": "iomedae",
+    "finding": "iomedae:D08"
+  },
+  {
+    "scene": "iomedae.lastcall.page",
+    "route": "iomedae",
+    "finding": "iomedae:D09"
+  },
+  {
+    "scene": "konomi.disagreement",
+    "route": "konomi",
+    "finding": "konomi:D06"
+  },
+  {
+    "scene": "konomi.the_upper_passage",
+    "route": "konomi",
+    "finding": "konomi:D07"
+  },
+  {
+    "scene": "konomi.the_trial_day",
+    "route": "konomi",
+    "finding": "konomi:D08"
+  },
+  {
+    "scene": "konomi.a_name_beside_hers",
+    "route": "konomi",
+    "finding": "konomi:D09"
+  },
+  {
+    "scene": "konomi.the_evening_she_kept",
+    "route": "konomi",
+    "finding": "konomi:D10"
+  },
+  {
+    "scene": "mielarah.deck.correction",
+    "route": "mielarah",
+    "finding": "mielarah:D12,mielarah:D14"
+  },
+  {
+    "scene": "mielarah.deck.correction.arcade",
+    "route": "mielarah",
+    "finding": "mielarah:D13,mielarah:D15"
+  },
+  {
+    "scene": "mielarah.deck.market",
+    "route": "mielarah",
+    "finding": "mielarah:D18"
+  },
+  {
+    "scene": "mielarah.deck.market.arcade",
+    "route": "mielarah",
+    "finding": "mielarah:D19"
+  },
+  {
+    "scene": "mielarah.deck.stowaway",
+    "route": "mielarah",
+    "finding": "mielarah:D16"
+  },
+  {
+    "scene": "mielarah.deck.stowaway.arcade",
+    "route": "mielarah",
+    "finding": "mielarah:D17"
+  },
+  {
+    "scene": "nenio.folio.edge",
+    "route": "nenio",
+    "finding": "nenio:D14"
+  },
+  {
+    "scene": "nenio.folio.edge_visitor",
+    "route": "nenio",
+    "finding": "nenio:D15"
+  },
+  {
+    "scene": "nenio.folio.edge_arcade",
+    "route": "nenio",
+    "finding": "nenio:D16"
+  },
+  {
+    "scene": "nidalynn.trickster.hearth.listening",
+    "route": "nidalynn",
+    "finding": "nidalynn:D11"
+  },
+  {
+    "scene": "nidalynn.trickster.kiln.the_druids",
+    "route": "nidalynn",
+    "finding": "nidalynn:D12"
+  },
+  {
+    "scene": "nidalynn.trickster.kiln.the_druids.chosen",
+    "route": "nidalynn",
+    "finding": "nidalynn:D13"
+  },
+  {
+    "scene": "kaylessa.wasps.watching_hands",
+    "route": "kaylessa",
+    "finding": "kaylessa:D01"
+  },
+  {
+    "scene": "kaylessa.trickster.alive.warning",
+    "route": "kaylessa",
+    "finding": "kaylessa:D02-D04; kaylessa:K01"
+  },
+  {
+    "scene": "kaylessa.trickster.alive.amulet_swap",
+    "route": "kaylessa",
+    "finding": "kaylessa:D02-D04; kaylessa:K01"
+  },
+  {
+    "scene": "kaylessa.clearing.once_when_it_counts",
+    "route": "kaylessa",
+    "finding": "kaylessa:D09"
+  },
+  {
+    "scene": "kaylessa.clearing.courier_reply",
+    "route": "kaylessa",
+    "finding": "kaylessa:D05"
+  },
+  {
+    "scene": "seelah.trickster.epilogue.refused",
+    "route": "seelah",
+    "finding": "D09-D10: Seelah refused; her existing terms still govern a renewed request."
+  },
+  {
+    "scene": "seelah.trickster.dead.list_reclaimed",
+    "route": "seelah",
+    "finding": "D11: first invitation for a fresh retained-body return; existing courtship retains its callback."
+  },
+  {
+    "scene": "seelah.trickster.after.list_reclaimed",
+    "route": "seelah",
+    "finding": "D12: same first/repeat invitation distinction for the courier return."
+  },
+  {
+    "scene": "soana.partner.proposal_reply",
+    "route": "soana",
+    "finding": "soana:D09"
+  },
+  {
+    "scene": "soana.partner.proposal_reply.returned",
+    "route": "soana",
+    "finding": "soana:D10"
+  },
+  {
+    "scene": "soana.after_the_last_visitor",
+    "route": "soana",
+    "finding": "soana:D13-D18"
+  },
+  {
+    "scene": "soana.the_days_she_counted",
+    "route": "soana",
+    "finding": "soana:D08,D19-D26"
+  },
+  {
+    "scene": "soana.before_the_far_road",
+    "route": "soana",
+    "finding": "soana:D27-D29"
+  },
+  {
+    "scene": "soana.when_the_road_returns",
+    "route": "soana",
+    "finding": "soana:D30"
+  },
+  {
+    "scene": "soana.partner.homecoming",
+    "route": "soana",
+    "finding": "soana:D11-D12"
+  },
+  {
+    "scene": "soana.partner.homecoming.returned",
+    "route": "soana",
+    "finding": "soana:D11-D12"
+  },
+  {
+    "scene": "kiana.trickster.late_question",
+    "route": "kiana",
+    "finding": "kiana:D29,kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter",
+    "route": "kiana",
+    "finding": "kiana:D29,kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question.elan_reply",
+    "route": "kiana",
+    "finding": "kiana:D29"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter.elan_reply",
+    "route": "kiana",
+    "finding": "kiana:D29"
+  },
+  {
+    "scene": "kiana.trickster.late_question.elan_parting",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter.elan_parting",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question.after_delivery",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  },
+  {
+    "scene": "kiana.trickster.late_question_letter.after_delivery",
+    "route": "kiana",
+    "finding": "kiana:D30"
+  }
+]

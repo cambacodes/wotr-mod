@@ -412,22 +412,24 @@ tag(W + "traitor.nerves", "T")
 
 visit(W + "court.neathers", "The weak get eaten", [
     nar("start", '''{n}She takes you down to the cellars in the middle of the afternoon and stops at the mouth of the furthest one without going in.{/n}
-{n}There is an old neather lying on a pile of straw inside: a man with a grey muzzle and milky eyes and a cough that shakes his whole body. His ribs show. Beside him somebody has left a bowl of broth and a wooden cup of water, both untouched, and a spear with a cracked shaft that he will never throw again.{/n}''',
+{n}The straw inside is flattened where a body lay, and empty. Beside it somebody has left a bowl of broth and a wooden cup of water, both untouched. The rack on the wall has a gap in it the length of a spear.{/n}''',
         c("Continue", "her")),
-    wd("her", '''"Old Tuhk. He was the best trapper in Neathholm when I was small. He taught me to set a snare." {n}Her voice is quite matter-of-fact.{/n} "Lung rot. He eats nothing and coughs on the little ones. Your chaplain says he can drive the sickness out. He wants Tuhk upstairs, away from the children, with a bed and someone to feed him. While the soldiers wait for those same beds." {n}She folds her arms.{/n} "Sull would keep handing him broth until we were all hungry. I know what a winter does to a hunter who cannot hunt." {n}Her lip curls.{/n} "I'd walk him down to the deep tunnels tonight and leave him there with his spear. Then the little ones eat his share. Your priest wants to spend soldiers' prayers on him instead. I\'ve carried his share down this stair every day. Tonight I\'d carry him down instead."''',
+    wd("her", '''"Old Tuhk. He was the best trapper in Neathholm when I was small. He taught me to set a snare." {n}Her voice is quite matter-of-fact.{/n} "Lung rot. He wouldn't eat, and he coughed on the little ones. Your chaplain wanted him upstairs, away from the children, in a bed, while the soldiers wait for those same beds. Sull would've kept handing him broth until we were all hungry. I know what a winter does to a hunter who can't hunt." {n}Her lip curls.{/n} "So I walked him down the oldest stair last night, past my cairn, and left him in the dark with his spear. Nobody carried him. He walked it, and knew where it went. The little ones ate his share this morning and nobody asked where it came from."''',
         c("Continue", "ask")),
-    wd("ask", '''{n}She looks at you sideways.{/n} "The hunters down here do what I say now. I made them; it took three fights and a bitten ear. But they're in your city, under your roof, and your chaplains come down here sometimes with their bread and their prayers." {n}Her yellow eyes are steady.{/n} "So I'm asking. I'm asking you, because I'm yours. Tonight I walk him down the oldest stair, past my cairn, and leave him in the dark with his spear. Or I don't. Say which."''',
-        c('"Do it. It\'s your tribe, and your arithmetic."', "cull", alignment=("Evil", 1)),
-        c('"No. Nobody gets left in the dark to die in my city."', "forbid"),
-        c('"Take him up to the chaplains\' infirmary. Tonight. I\'ll pay for his bed."', "infirmary", alignment=("Good", 1),
+    wd("ask", '''{n}She looks at you sideways.{/n} "The hunters down here do what I say now. I made them; it took three fights and a bitten ear. But it's your city, and your chaplains come down here with their bread and their prayers, and sooner or later one of them counts heads." {n}Her yellow eyes are steady.{/n} "I'd have told you he wandered off. You'd have nodded. You'd have said yes if I'd asked, so I didn't ask. Now you know. He's down there still, as far as I know, in the cold. Say what you do about it."''',
+        c('"Nobody asks. He went down on his own feet, and that is what the chaplain hears."', "cull", alignment=("Evil", 1)),
+        c('"You don\'t make that call in my city. Go down and carry him back up yourself, past every soldier on the stair."', "forbid"),
+        c('"It\'s done, and the winter arithmetic is real. He still goes upstairs on my coin: a bed from the war chest. Tonight."', "infirmary", alignment=("Good", 1),
           crusade=("Finances", -100))),
     wd("cull", '''{n}She nods, as if you had confirmed a sum.{/n}
-"Yes." {n}Then, lower:{/n} "Nobody ever said *do it* to me out loud before, so that somebody else carried half." {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}
-{n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}''',
+"Yes. That's what I'd have said." {n}For once she does not grin.{/n} "He went down humming some old trapper's thing, with the spear in both hands. I stood at the top until I couldn't hear it."
+{n}You do not go down the oldest stair that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away. When the chaplain comes asking, Wenduag tells him exactly where she left Tuhk, and does not say who walked him there, and he goes down with a lamp and comes back without him.{/n}''',
         c("Continue", flags=(W + "neathers.culled",))),
-    wd("forbid", '''"Then you come down here when he coughs. You don't get to say no and forget him." {n}Her fingers tighten around the cracked spear.{/n} "I'll move the children to the next cellar. Your chaplain can try his prayer down here when he comes with the bread. But I'm not carrying Tuhk up past your soldiers while you stand here giving orders." {n}She thrusts the spear back into the straw.{/n} "Your city. He stays."''',
+    wd("forbid", '''{n}Her face does not move. Then the grin comes, slow and not kind.{/n}
+"Carry him. In daylight. Past every soldier on that stair, every one of whom has called me mongrel at least once." {n}She takes it like a blow she has been waiting for.{/n} "Fine. Hit me where it shows. I'll carry him up, and I'll remember who watched." {n}She goes down the stair with her teeth set.{/n}
+"He goes back on his straw. I move the children to the next cellar, and your chaplain can bring his prayer down here with the bread. Your city. He stays."''',
         c("Continue", flags=(W + "neathers.forbidden",))),
-    wd("infirmary", '''"A bed from the war chest. For him." {n}Wenduag looks from Tuhk\'s cracked spear to the stair.{/n} "Your chaplains will scrub him and pray over him. He\'ll hate that." {n}She crouches beside the straw.{/n} "Let the priest drive the rot out first. A dry bed won't do that. I'll watch him try." {n}She lifts him; he coughs against her shoulder.{/n} "I\'ll carry him. Tell the priest to save his sermon."''',
+    wd("infirmary", '''"A bed from the war chest. For a man I already put in the ground." {n}She almost laughs.{/n} "Not in the ground. Close enough." {n}Her yellow eyes go from you to the stair.{/n} "So you grant it was needed, and then you pay to undo it. Your chaplains will scrub him and pray over him, and he'll hate every minute. Let the priest try to drive the rot out first. A dry bed won't. I'll watch him fail." {n}She is already moving.{/n} "I'll carry him. Tell the priest to save his sermon."''',
         c("Continue", flags=(W + "neathers.infirmary",))),
 ], requires=(COMMITTED,), optional=True)
 
@@ -672,7 +674,7 @@ _reckoning = _polish_node(_trial, "reckoning")
 _reckoning["Choices"][0].update(Text='"I spared you to fight him, not to pretend you kept your word. Show me what you choose now."', Next="reckoning_answer")
 _trial["Nodes"].append(wd("reckoning_answer", '"Then watch. I took his offer because I wanted what he fed me. '
     'You left me alive after I lost. I want to know what you do when I come at you with my own knife." '
-    '{n}She shifts her knee off your ribs, leaving you room to move.{/n}', c("Continue", "her")))
+    '{n}She shifts her knee off your ribs.{/n}', c("Continue", "her")))
 
 _stinger = _polish_scene("court.stinger")
 _take = _polish_node(_stinger, "take")

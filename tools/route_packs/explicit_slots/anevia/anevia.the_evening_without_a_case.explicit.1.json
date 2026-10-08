@@ -1,13 +1,8 @@
 {
   "voice": "ANEVIA: sharp, observant, suspicious scout; dry and occasionally crude humor, impatient appetite, dropped final g in colloquial speech without caricature; deflects embarrassment with a practical joke, then makes her own decision. Loyal to Irabeth; desire for the Commander does not erase that loyalty or her culpability when she lies. Voice as traits only. Write new NPC dialogue; Commander speech stays in choices outside this passage.",
-  "facts": [
-    "Anevia is a woman and Irabeth Tirabade's wife.",
-    "Anevia works as a scout and investigator alongside the Eagle Watch.",
-    "One native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.",
-    "No canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them."
-  ],
+  "facts": "Anevia is a woman and Irabeth Tirabade's wife.\nAnevia works as a scout and investigator alongside the Eagle Watch.\nOne native Chapter 5 departure cue follows Irabeth's death; other native spouse/departure states remain distinct. The rented room and romance are authored additions.\nNo canon body measurements, genital configuration or surgical details are specified by this brief. Do not invent them.",
   "scene": "AUTHORED SCENE: Trickster planning handoff. Chapter 3, existing borrowed room in Drezen after the goat game. She chose this evening after her own investigation. Her desire is independent of case success. First night only if no earlier night; otherwise renewed intimacy. Sleep-only is a separate untouched branch. Keep humor falling quiet and her kept night at home with Beth. Intimate encounter, staged at the start of sexual intimacy. Required beats: retain her initiating decision, one character-specific practical detail, the history-specific marriage consequence, and a clean transition to the existing aftermath. This brief supplies situation and continuity rather than explicit prose. Do not resolve any quest, return, partner stance or commitment inside the passage.",
-  "last_line": "N: The crooked goat is still facing the wall when the window begins to lighten.",
+  "last_line": "N: In the morning Anevia wakes with one arm across you and a complaint about the window already forming. She abandons it when you turn toward her. For a while neither of you gets up to discover whether the complaint was justified.",
   "speakers": {
     "A": "Anevia"
   },

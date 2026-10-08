@@ -6,7 +6,7 @@ from tests.structure import without_prose
 
 from storylines import crossroute_presence as guard
 from tools.crossroute_checks import other_woman
-from tools.crossroute_checks.common import AND, lit, Proof, verify, blocks, fields
+from tools.crossroute_checks.common import AND, NOT, lit, Proof, verify, blocks, fields
 from tools.crossroute_checks.mention_context import live_mentions, reference_reason
 from tests.test_crossroute_lint import fixture, relationship, run
 
@@ -62,13 +62,18 @@ class MentionContextTests(unittest.TestCase):
             "I have been called Seelah by my father's guests.",
             "Seelah came to visit, the first year. Then she stopped coming.",
             "Seelah was the cleverest of us.",
+            "Everyone answers to Seelah, whether she has looked at us or not.",
+            "Every soldier in the city belongs to Seelah. Last night she sent a messenger.",
+            "I want Seelah to fall, and the next queen after her.",
+            "The mortal who unseated Seelah plays tricks.",
+            "Seelah keeps the chair. Herrax keeps the corner.",
             '"Tell me about Seelah."', "Keep Seelah's war out of the palace.",
             "Not served, the way Seelah served.",
             "I remember Lady Seelah's guests.", "A table like Lady Seelah's.",
             "Lady Seelah's guests spent everything to sit at her table.",
             "There was a Seelah on my menu. A boy who wore her face.",
             "You put a deposit on her corpse. 'One Seelah, forever.'", "Speak about losing Seelah.", "Seelah's grave is outside the walls.", "We speak about Seelah's absence.",
-            "Seelah's reputation survived the siege.", "Seelah gave me this sword in Kenabres.",
+            "Seelah's reputation survived the siege.", "Seelah's get will hatch soon.", "Seelah gave me this sword in Kenabres.",
             "Seelah is brave.", "Seelah would tell me that is not how to read it.",
             "\"Seelah's. Nothing important.\"",
             "{n}She tells a small story about a pen Seelah swore she had not stolen.{/n}",
@@ -81,8 +86,14 @@ class MentionContextTests(unittest.TestCase):
         pattern = re.compile(r"Iomedae|Inheritor", re.I)
         for text in ("The Church of Iomedae asks for the sword.", "Iomedae help me.",
                      "An acolyte of Iomedae put it out.", "The Inheritor's crusade.",
-                     "The Hand of the Inheritor is holding the Fane.", "I thank Iomedae."):
+                     "The Hand of the Inheritor is holding the Fane.", "I thank Iomedae.",
+                     "The Inheritor sees what is done in her name.",
+                     "A chaplain of Iomedae held the torch.",
+                     "She holds the sword of Iomedae and turns it face down."):
             self.assertEqual(live_mentions(text, pattern), [])
+        for text in ("The Inheritor sees what is done in her name, but she waits here tonight.",
+                     "She holds the sword of Iomedae, and she stands beside us tonight."):
+            self.assertTrue(live_mentions(text, pattern))
         self.assertEqual(live_mentions("The Iomedaean chapter-master wrote to you.", re.compile("Iomedaean", re.I)), [])
 
     def test_live_staging_dialogue_reactions_and_plans_require_availability(self):
@@ -135,6 +146,12 @@ class MentionContextTests(unittest.TestCase):
             "Seelah's old letters lie on the desk; she arrives tonight.",
             "Seelah's old letters lie on the desk; she is here now.",
             "Seelah's old letters lie on the desk; she holds my hand.",
+            "Seelah's get sleeps here, but she waits at the gate.",
+            "Everyone answers to Seelah, who stands beside the fire.",
+            "Every soldier in the city belongs to Seelah, but she waits here tonight.",
+            "I want Seelah to fall, but she is here now.",
+            "The mortal who unseated Seelah watches as she stands at the gate tonight.",
+            "Seelah keeps the chair, but she waits at the gate tonight.",
         ):
             with self.subTest(text=text):
                 story = fixture(text)
@@ -216,6 +233,55 @@ class MentionContextTests(unittest.TestCase):
 
 
 class GuardPassTests(unittest.TestCase):
+    def test_native_soul_aftercare_keeps_owner_outcome_when_priestess_is_absent(self):
+        story = fixture()
+        story["Relationships"]["arsinoe"] = dict(relationship("arsinoe"),
+            UnavailableFlags=["arsinoe.victims_revived", "swarm", "true_lich"], UnavailableOverrides={})
+        scene = story["Scenes"][0]
+        scene.update(Id="seelah.souls", Relationship="seelah", Owner="Seelah",
+                     Requires=["seelah.morning", "seelah.souls_returned"])
+        scene["Nodes"] = [
+            dict(Id="start", Speaker="Seelah", Text="They opened their eyes.", Choices=[
+                dict(Text="Let us ask what they lack.", Next="care"),
+                dict(Text="What happened still hurts.", Next="hurt")]),
+            dict(Id="care", Speaker="Seelah", Text="Arsinoe's been looking after them. I'll ask her.",
+                 Choices=[dict(Text="I would like to speak to her too.", Next="end", Set=["arsinoe.introduced"])]),
+            dict(Id="hurt", Speaker="Seelah", Text="I still worry.", Choices=[dict(Text="Continue", Next="end")]),
+            dict(Id="end", Speaker="Seelah",
+                 Text="{n}She chooses a time to speak to Arsinoe about the people who still need help.{/n}",
+                 Choices=[dict(Text="Keep the evening.", Set=["seelah.aftercare"])])]
+        original = copy.deepcopy(scene)
+        guard.integrate(story)
+        scene = story["Scenes"][0]
+        nodes = {node["Id"]: node for node in scene["Nodes"]}
+        self.assertEqual(scene["Forbids"], [])
+        self.assertEqual(scene["Requires"], original["Requires"])
+        for node in original["Nodes"]:
+            for index, choice in enumerate(node["Choices"]):
+                self.assertEqual(nodes[node["Id"]]["Choices"][index].get("Next"), choice.get("Next"))
+        neutral = nodes["eng7_l14.end_without_arsinoe"]
+        self.assertNotIn("Arsinoe", neutral["Text"])
+        self.assertEqual(neutral["Choices"], original["Nodes"][-1]["Choices"])
+        proof = Proof(verify.Model(copy.deepcopy(story)))
+        losses = ["arsinoe.closed", *story["Relationships"]["arsinoe"]["UnavailableFlags"]]
+        paid = AND(lit("chapter_later"), lit("seelah.morning"), lit("seelah.souls_returned"))
+        live = AND(paid, *(lit(flag, False) for flag in losses))
+        self.assertTrue(proof.implies(live, fields(nodes["start"]["Choices"][0])))
+        self.assertTrue(proof.implies(live, fields(nodes["hurt"]["Choices"][0])))
+        self.assertTrue(proof.implies(live, NOT(fields(nodes["hurt"]["Choices"][1]))))
+        for loss in losses:
+            absent = AND(paid, lit(loss))
+            self.assertTrue(proof.implies(absent, fields(scene, overrides=True)), loss)
+            self.assertTrue(proof.implies(absent, fields(nodes["start"]["Choices"][1])), loss)
+            self.assertTrue(proof.implies(absent, fields(nodes["hurt"]["Choices"][1])), loss)
+            self.assertTrue(proof.implies(absent, NOT(fields(nodes["start"]["Choices"][0]))), loss)
+            self.assertTrue(proof.implies(absent, NOT(fields(nodes["hurt"]["Choices"][0]))), loss)
+            self.assertTrue(proof.implies(absent, lit("crossroute.arsinoe.unavailable")), loss)
+        self.assertEqual(run(other_woman, story), [])
+        once = copy.deepcopy(story)
+        guard.integrate(story)
+        self.assertEqual(story, once)
+
     def test_prologue_native_audience_uses_losses_without_a_later_chapter_flag(self):
         story = fixture("{n}Seelah stands beside Camellia.{/n}")
         scene = story["Scenes"][0]
@@ -812,6 +878,147 @@ class GuardPassTests(unittest.TestCase):
         self.assertNotIn("ContactUnit", s["Scenes"][0])
         self.assertNotIn("AdditionalContactUnits", s["Scenes"][0])
         self.assertEqual(run(other_woman, s), [])
+
+
+
+
+class S2ProductionWitnessTests(unittest.TestCase):
+    """Read the final export; blocked owner witnesses live in redesign/*/pending-witnesses.json."""
+
+    @classmethod
+    def setUpClass(cls):
+        from tests.story_fixture import fresh_story
+        cls.story = fresh_story()
+        cls.by = {s["Id"]: s for s in cls.story["Scenes"]}
+
+    def node(self, sid, nid):
+        return next(n for n in self.by[sid]["Nodes"] if n["Id"] == nid)
+
+    def assert_independent(self, block, woman):
+        route = {"nocticula": "noct"}.get(woman, woman)
+        forbidden = {woman + ".present_now", "crossroute." + woman + ".unavailable",
+                     "crossroute." + woman + ".available", route + ".closed"}
+        self.assertFalse(forbidden.intersection(block.get("Requires", []) + block.get("Forbids", [])))
+
+    def test_s2_galfrey_four_return_greetings(self):
+        for suffix in ("", "_scarred", "_stall", "_scarred_stall"):
+            sid = "galfrey.trickster.return.kitrane" + suffix
+            for index, choice in enumerate(self.node(sid, "name")["Choices"][:3]):
+                with self.subTest(scene=sid, node="name", index=index):
+                    self.assert_independent(choice, "iomedae")
+
+    def test_s2_mielarah_both_chains_survive_nocticula_closure(self):
+        for suffix in ("", ".arcade"):
+            for beat in ("correction", "captains", "other_voyage", "market", "wheel", "last_night"):
+                sid = "mielarah.deck." + beat + suffix
+                with self.subTest(scene=sid):
+                    self.assert_independent(self.by[sid], "nocticula")
+                    for node in self.by[sid]["Nodes"]:
+                        for choice in node["Choices"]:
+                            self.assert_independent(choice, "nocticula")
+
+    def test_s2_nenio_badges_survive_areelu_closure(self):
+        for suffix in ("", "_visitor", "_arcade"):
+            sid = "nenio.folio.edge" + suffix
+            with self.subTest(scene=sid):
+                self.assert_independent(self.by[sid], "areelu")
+                for node in self.by[sid]["Nodes"]:
+                    for choice in node["Choices"]:
+                        self.assert_independent(choice, "areelu")
+
+    def test_s2_audited_entry_guards(self):
+        cases = {
+            "eritrice.trickster.fought.tabled": "nocticula",
+            "galfrey.trickster.iz.offer": "seelah",
+            "galfrey.trickster.kitrane.hulrun": "iomedae",
+            "galfrey.trickster.kitrane.irabeth": "irabeth",
+            "galfrey.trickster.kitrane.iz": "terendelev",
+            "galfrey.trickster.commit.oath": "iomedae",
+            "galfrey.trickster.alive.oath": "iomedae",
+            "mielarah.trickster.tavern.captains": "nocticula",
+            "nenio.trickster.commit.result": "galfrey",
+            "nenio.folio.architect": "areelu",
+            "nenio.folio.abyss.lamp": "nocticula",
+            "kaylessa.clearing.where_i_was_meant_to_die": "camellia",
+            "seelah.trickster.dead.pickpocket": "irabeth",
+            "seelah.trickster.dead.pickpocket_effects": "irabeth",
+            "seelah.trickster.dead.seller_word": "irabeth",
+            "seelah.trickster.dead_no_unit.seller_word": "irabeth",
+            "kiana.trickster.after.temple": "seelah",
+        }
+        for sid, woman in cases.items():
+            for twin in (sid, sid + "_stall", sid + "_visitor", sid + "_arcade"):
+                if twin not in self.by:
+                    continue
+                with self.subTest(scene=twin, woman=woman):
+                    self.assert_independent(self.by[twin], woman)
+
+
+    def test_s2_kaylessa_completed_cover_history_survives_camellia_loss(self):
+        paragraph = self.node("kaylessa.trickster.epilogue.no_lamb", "page")["Paragraphs"][24]
+        self.assertIn("household.pair.kaylessa_camellia.cost.kaylessa_cover_changed", paragraph["Requires"])
+        self.assert_independent(paragraph, "camellia")
+
+    def test_s2_galfrey_all_audited_choice_guards(self):
+        cases = [("galfrey.early.kitrane", "guessed", "anevia"),
+                 ("galfrey.trickster.iz.offer", "mendev", "irabeth"),
+                 ("galfrey.trickster.iz.offer", "for_mendev", "irabeth")]
+        for beat, nid in (("elixir", "grow"), ("hulrun", "why"), ("likeness", "why")):
+            for suffix in ("", "_stall"):
+                sid = "galfrey.trickster.kitrane." + beat + suffix
+                # The likeness answer is addressed by its target, below.
+                if beat == "likeness":
+                    for node in self.by[sid]["Nodes"]:
+                        for index, choice in enumerate(node["Choices"]):
+                            if choice.get("Next") == "helps":
+                                with self.subTest(scene=sid, node=node["Id"], index=index):
+                                    self.assert_independent(choice, "iomedae")
+                else:
+                    cases.append((sid, nid, "iomedae"))
+        for sid, nid, woman in cases:
+            for index, choice in enumerate(self.node(sid, nid)["Choices"]):
+                # D12/D13: only the frighten edge is pending the owner fix.
+                if sid in ("galfrey.trickster.kitrane.elixir", "galfrey.trickster.kitrane.elixir_stall") and index == 1:
+                    continue
+                with self.subTest(scene=sid, node=nid, index=index):
+                    self.assert_independent(choice, woman)
+
+    def test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates(self):
+        for sid in ("seelah.trickster.dead.pickpocket", "seelah.trickster.dead.pickpocket_effects",
+                    "seelah.trickster.dead.seller_word", "seelah.trickster.dead_no_unit.seller_word"):
+            for node in self.by[sid]["Nodes"]:
+                for index, choice in enumerate(node["Choices"]):
+                    with self.subTest(scene=sid, node=node["Id"], index=index):
+                        self.assert_independent(choice, "irabeth")
+                        if (sid, node["Id"], index) not in {
+                            ("seelah.trickster.dead.pickpocket", "coin", 0),
+                            ("seelah.trickster.dead.pickpocket_effects", "purse", 0),
+                            ("seelah.trickster.dead.pickpocket_effects", "purse", 1),
+                        }:
+                            self.assert_independent(choice, "iomedae")
+            self.assertIn("seelah.closed", self.by[sid]["Forbids"])
+
+    def test_s2_mielarah_earned_limerick_remains_independent(self):
+        sid = "mielarah.trickster.colyphyr.landfall"
+        for node in self.by[sid]["Nodes"]:
+            for choice in node["Choices"]:
+                if choice.get("Next") == "limericks":
+                    self.assertIn("mielarah.limericks", choice["Requires"])
+                    self.assert_independent(choice, "nocticula")
+
+
+    def test_s2_actual_irabeth_branch_blocks_a_later_unrecovered_departure(self):
+        model = verify.Model(copy.deepcopy(self.story))
+        proof = Proof(model)
+        lost = AND(lit("chapter_later"), lit("trickster.ever"), lit("irabeth_gone"),
+                   lit("irabeth_dead", False), lit("irabeth.trickster.returned", False))
+        self.assertFalse(proof.implies(lost, lit("irabeth_gone", False)))
+        cameo = self.node("galfrey.trickster.iz.offer", "command")["Choices"][0]
+        self.assertTrue(proof.implies(lost, NOT(fields(cameo))))
+        dead = AND(lit("chapter_later"), lit("irabeth_dead"), lit("irabeth.trickster.returned", False))
+        self.assertTrue(proof.implies(dead, NOT(fields(cameo))))
+        self.assertEqual(cameo["Next"], "irabeth")
+        self.assertNotIn("crossroute.irabeth.unavailable", self.by["galfrey.trickster.iz.offer"]["Forbids"])
 
 
 if __name__ == "__main__":

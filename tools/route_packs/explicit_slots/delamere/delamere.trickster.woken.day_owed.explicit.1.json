@@ -1,0 +1,38 @@
+{
+  "slot_id": "delamere.trickster.woken.day_owed.explicit.1",
+  "host_scene": "delamere.trickster.woken.day_owed",
+  "host_node": "again",
+  "participants": [
+    "Delamere",
+    "Commander"
+  ],
+  "speakers": {
+    "D": "Delamere"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "DELAMERE (woken, living, authored): a judge's spine without the undead hiss; short rural sentences, dry, blunt and devout to Erastil even when angry; the hunt as her metaphor for everything. Desire is frank, vigorous and unashamed; she enjoys catching and being caught and rejects being owned. No therapy language, consent speeches, divine messages, maxims or generic conquest boasting. Write new dialogue; do not quote this brief.",
+  "facts": "Delamere was a Kellid priestess of Erastil in old Sarkoris, known for hard methods and protecting villagers; she disliked cities and enforced the fifty-three-person settlement rule.\nShe hunted Erastil's white stag for three days and made a bow and breastplate from its antlers and hide.\nNative description gives regal bearing, a proud chin, broad shoulders and strong archer's arms; nothing else physical is established.\nAuthored Trickster continuity: she is alive and warm after the horn waking; her arrow's bone stays in the Commander's leg, an old wound, not fresh and not erotic injury.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 3 or 5, Drezen, the night of the first frost. Delamere came through the open shutter for her owed day, counted to a hundred in Kellid and hunted the barefoot Commander through the kitchens, over the garden wall and the lower town onto the frozen roofs, stepped out from behind a chimney, tripped the bad leg and pinned the Commander to the tiles with a knee and the knife. The Commander said 'Not yet. Hunt me again.' She sheathed the knife, laughed shakily, called the Commander a fool and hers, pulled the Commander up against her: at dawn she goes north to the old clearings, 'Tonight you have me.' She kissed the Commander hard. Continue there, on the roof in the lee of the chimney, with Drezen asleep and white below: predatory and unashamed, the hunt as foreplay, her breath still hard from the chase. She chooses the pace and the position, practical about the frost and the bad leg without making care a speech. Only Delamere and the Commander. End when their noise draws a watchman's lantern.",
+  "required_beats": [
+    "Begin from 'Tonight you have me' and the hard kiss; she does not wait for a quieter roof.",
+    "The chase is foreplay: catching and being caught, her pleasure in the quarry who ran well.",
+    "She adjusts for the frozen tiles and the old arrow wound through practical motion, never a speech or pain as proof of love.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "Her faith and her dawn departure to the clearings stay intact; no ownership of her, no vow, no first-night claim.",
+    "No witness on the roof; end on the supplied last line as the lantern swings toward them."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored first-frost hunt over Drezen's roofs; the woken living Delamere and the arrow wound are mod continuity.",
+    "history": "Committed Trickster Delamere with the hunt owed (delamere.trickster.cost.hunt_owed). Neutral about any earlier night: neither claim nor deny a first night.",
+    "resumption": "delamere.trickster.woken.day_owed/caught_again or caught_again_short -> \"Not yet. Hunt me again.\" -> again (or again_new, same successor) -> reserved node -> cold. The no_finish and down branches go straight to cold and never reach this slot."
+  },
+  "last_line": "N: Somewhere below, a watchman's lantern is swinging round to find the noise.",
+  "default_text": "{n}She does not let go of your coat. In the lee of the chimney the frost cracks under her knee.{/n}",
+  "example": "N: Delamere pushes you back against the chimney stack, breath white.\nD: You ran well. Now hold still. I caught you fairly.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Delamere only, for the separate writer. Both Commander variants are required. Living, unhissing Delamere; keep her hunter's appetite and faith; no invented anatomy."
+}

@@ -90,6 +90,8 @@ internal static class NativeQ3RecoveryManagedTests
     private static object? Value(BlueprintScriptableObject? owner, Type type, JToken token)
     {
         if (token.Type == JTokenType.Null) return null;
+        if (type == typeof(EntityReference)) return new EntityReference { UniqueId = (string)token["_entity_id"]!,
+            SceneAssetGuid = (string)token["SceneAssetGuid"]!, EntityNameInEditor = (string)token["EntityNameInEditor"]! };
         if (typeof(BlueprintReferenceBase).IsAssignableFrom(type))
         {
             var reference = (BlueprintReferenceBase)Activator.CreateInstance(type)!;
@@ -144,6 +146,8 @@ internal static class NativeQ3RecoveryManagedTests
                 case "Spawn": action = new Spawn { Spawners = ((JArray)item["Spawners"]!).Select(s => new EntityReference {
                     UniqueId = (string)s["_entity_id"]!, SceneAssetGuid = (string)s["SceneAssetGuid"]!, EntityNameInEditor = (string)s["EntityNameInEditor"]! }).ToArray(),
                     ActionsOnSpawn = Actions(owner, (JArray)item["ActionsOnSpawn"]!["Actions"]!) }; break;
+                case "PlayCutscene" when ((JArray)item["Parameters"]!["Parameters"]!).Count > 0:
+                    action = (GameAction)Generic(owner, item, typeof(GameAction)); break;
                 case "PlayCutscene":
                     var play = new PlayCutscene { PutInQueue = (bool)item["PutInQueue"]!, CheckExistence = (bool)item["CheckExistence"]! };
                     Reference(play, item, "m_Cutscene");
@@ -180,10 +184,17 @@ internal static class NativeQ3RecoveryManagedTests
         var complete = Seed<CommandAction>(NativeQ3Recovery.Completion);
         complete.EntryCondition = Checker((JObject)native[NativeQ3Recovery.Completion]["EntryCondition"]!);
         complete.Action = Actions(etude, (JArray)native[NativeQ3Recovery.Completion]["Action"]!["Actions"]!);
+        foreach (string target in new[] { NativeQ3Recovery.Setup, NativeQ3Recovery.KianaRevive, NativeQ3Recovery.DogRevive })
+        {
+            var action = Seed<CommandAction>(target);
+            action.EntryCondition = Checker((JObject)native[target]["EntryCondition"]!);
+            action.Action = Actions(etude, (JArray)native[target]["Action"]!["Actions"]!);
+        }
         var verdict = Seed<BlueprintCue>(NativeQ3Recovery.Verdict);
         verdict.OnStop = Actions(verdict, (JArray)native[NativeQ3Recovery.Verdict]["OnStop"]!["Actions"]!);
-        check(NativeQ3Recovery.Check(id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out _) == null,
-            "Installed Q3 actions do not match the reviewed branch");
+        var refusal = NativeQ3Recovery.Check(id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out _);
+        check(refusal == null,
+            "Installed Q3 actions do not match the reviewed branch: " + refusal);
         // Reproduce the contradiction through native actions: victim spawn plus the cutscene after an earlier release.
         check(trigger.Actions.Actions.Last() is Conditional && verdict.OnStop.Actions.First() is PlayCutscene,
             "Native fixture no longer reproduces duplicate recovery");
@@ -212,6 +223,37 @@ internal static class NativeQ3RecoveryManagedTests
             spawn.Holds = revive.Holds = () => earned;
             check(ReferenceEquals(spawn.Selected(), earned ? spawn.Earned : spawn.Original)
                 && ReferenceEquals(revive.Selected(), earned ? revive.Earned : revive.Original), "Q3 branch selection differs between spawn and revival");
+        }
+        foreach (string history in new[] { "unpaid", "bare-return", "con", "dog", "paid", "bought" })
+        foreach (string path in new[] { "trickster", "angel", "legend", "failed", "degraded" })
+        {
+            var state = new Snapshot { Chapter = 5 };
+            state.Flags.Add(path == "failed" || path == "degraded" ? "trickster" : path);
+            if (path == "failed") state.Flags.Add("trickster.failed");
+            if (path == "degraded") state.Flags.Add(Rules.DegradedPrefix + "kiana");
+            if (history == "bare-return" || history == "con" || history == "dog") state.Flags.Add("kiana.trickster.returned");
+            if (history == "con" || history == "dog") state.Flags.Add("kiana.trickster.cost.guests_robbed");
+            if (history == "dog") state.Flags.Add("kiana.trickster.dog_saved");
+            if (history == "paid") state.Flags.Add("kiana.trickster.guests_ransomed");
+            if (history == "bought") state.Flags.Add("kiana.trickster.guests_bought_back");
+            // Closing romance does not reset the earned native rescue.
+            state.Flags.Add("kiana.closed");
+            Rules.Complete(story, state);
+            NativeQ3Recovery.Attach(etude, () => Rules.NativeGateHolds(story, NativeQ3Recovery.Gate, state), () => state);
+            var setup = (CommandAction)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NativeQ3Recovery.Setup));
+            var kiana = (NativeQ3Recovery.Branch)((CommandAction)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NativeQ3Recovery.KianaRevive))).Action.Actions.Single();
+            var dog = (NativeQ3Recovery.Branch)((CommandAction)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NativeQ3Recovery.DogRevive))).Action.Actions.Single();
+            bool full = path == "trickster" && (history == "paid" || history == "bought");
+            bool single = path == "trickster" && history == "con";
+            bool pet = path == "trickster" && history == "dog";
+            check(ReferenceEquals(spawn.Selected(), full ? spawn.Earned : single ? spawn.Partial : spawn.Original), "Q3 spawn history: " + history + "/" + path);
+            check(ReferenceEquals(revive.Selected(), full ? revive.Earned : revive.Original), "Partial Q3 skipped the patients' recovery.");
+            check(ReferenceEquals(kiana.Selected(), single ? kiana.Earned : kiana.Original)
+                && ReferenceEquals(dog.Selected(), pet ? dog.Earned : dog.Original), "Individual Q3 revival history: " + history + "/" + path);
+            var first = (NativeQ3Recovery.Branch)setup.Action.Actions[0];
+            check(ReferenceEquals(first.Selected(), single ? first.Earned : first.Original), "Q3 setup changed the unrecovered victim.");
+            check(!single || kiana.Earned.Length == 0 && spawn.Partial!.Last() is Spawn, "Kiana-only Q3 lacks the native awake-wife placement.");
+            check(!pet || dog.Earned.Length == 0, "Dog-only Q3 repeats the dog's revival.");
         }
         spawn.Holds = () => throw new InvalidOperationException("observation failure");
         check(ReferenceEquals(spawn.Selected(), spawn.Original) && spawn.LastObservationError != null, "Q3 observation failure suppresses native actions");

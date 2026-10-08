@@ -1,7 +1,7 @@
 {
-  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Possessive affection does not redeem her. Concrete short threats and questions; no therapy language, sentimental diagnosis, maxims or narrator excuses. Write fresh non-graphic dialogue, not recycled cue quotations.",
-  "scene": "NON-GRAPHIC CONTINUITY CODA: Chapter 6 retrospective, the same authored north-ridge tower. A living Commander with an already accepted commitment meets Devarra at a later annual appointment. This is a return after an established first visit, not a repeated first night. Her appetite for the next installment survives the war; affection has not made her benevolent. Show an arrival and leave private events undescribed. No sexual acts, sexual anatomy, arousing bodily detail or eroticized injury. The missing-egg life bill and annual tariff remain separate; do not call either paid here. No fatal unreturned sacrifice, pending judgment or refused romance enters this coda.",
-  "last_line": "N: In spring she returned to the ridge, and the Commander climbed to meet her.",
+  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Possessive affection does not redeem her. Concrete short threats and questions; no therapy language, sentimental diagnosis, maxims or narrator excuses. Write fresh dialogue at her native register, not recycled cue quotations.",
+  "scene": "EXPLICIT CONTINUATION CODA: Chapter 6 retrospective, the same authored north-ridge tower. An established committed couple meets on a later visit, after the war. The approach already places the Commander beneath her raised wing on the unlit side of the tower, hand against her warm scales, and she draws the visitor against her belly. Continue that mutual initiating touch into an explicit encounter consistent with her sapient dragon body and each Commander variant. Her possessive appetite remains cruel; she has not become benevolent. No new bite, bill settlement or price. Neither intimacy nor the annual arm tariff pays the missing-egg claim. Preserve existing living, commitment, judgment and egg-fate guards. Return to the exact following consequence paragraphs.",
+  "last_line": "N: After she had lain among them in the vault, the eggs were carried east to the druids. The vault stood empty. On that night in later years she looked east from her ridge; the Commander climbed there to meet her.",
   "speakers": {
     "D": "Devarra"
   },
@@ -13,17 +13,11 @@
   "min_lines": 6,
   "max_lines": 10,
   "slot_id": "devarra.trickster.epilogue.woken.explicit.1",
-  "default_text": "{n}In spring she returned to the ridge, and the Commander climbed to meet her.{/n}",
-  "facts": [
-    "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).",
-    "She held the Storyteller captive and demanded an impressive story in exchange for his life.",
-    "Greybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.",
-    "The Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.",
-    "No verified native humanoid transformation or sexual anatomy is supplied."
-  ],
+  "default_text": "{n}On a later visit the Commander climbed after the watch bells rang. Devarra lay on the unlit side of the tower, away from the brush fire. The Commander set down the armor and knelt beneath her raised wing, a hand against her warm scales.{/n} \"You kept me waiting.\" {n}Her tail drew the visitor against her belly; the hand moved under her wing.{/n}",
+  "facts": "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).\nShe held the Storyteller captive and demanded an impressive story in exchange for his life.\nGreybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.\nThe Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.\nNo verified native humanoid transformation or sexual anatomy is supplied.",
   "required_beats": [
     "This is a later meeting between already committed participants; no relationship state changes.",
-    "Show her return, not merely her departure.",
+    "Continue the initiating touch into the reserved explicit encounter; preserve her appetite and independent invitation.",
     "She remains cruel and territorial, with an unfinished story to demand.",
     "Do not invent the current keeper, hatchling location, egg survival or settled bill; those belong to existing consequence paragraphs.",
     "The exact final line resumes the annual-visit account without an arrival flag or new ending mechanic."
@@ -33,6 +27,17 @@
     "history": "Only the already earned living/committed history of its existing host scene.",
     "resumption": "devarra.trickster.epilogue.woken/page -> optional reserved coda paragraph -> existing consequence paragraphs and exit"
   },
-  "content_scope": "Non-graphic romance and continuity only; this is not a prompt for graphic sexual generation.",
-  "narration": "third-past"
+  "content_scope": "Reserved explicit continuation for the Commander and Devarra only, for the separate writer. Both Commander variants are required. Preserve her sapient dragon body, cruelty and appetite; no invented humanoid transformation or undocumented dragon sexual organs.",
+  "narration": "third-past",
+  "last_lines": {
+    "page/paragraph#24": "N: After she had lain among them in the vault, the eggs were carried east to the druids. The vault stood empty. On that night in later years she looked east from her ridge; the Commander climbed there to meet her.",
+    "page/paragraph#25": "N: The silver carried the child north. That was where she grew, beyond Drezen's smoke. Years later she flew south to the grey ridge herself. Devarra watched her land, counted once, and demanded her story.",
+    "page/paragraph#26": "N: The smallest shell remained in the silver's keeping by the east wall. Devarra never called the thief's bill a price paid for custody.",
+    "page/paragraph#27": "N: The book closed after Devarra's first low flight over the wall. Later she returned to the citadel roof for the Commander's view. The sentries learned to leave that window clear.",
+    "page/paragraph#28": "N: Her unannounced landing settled the soldiers' wager. She returned to the roof anyway. When they shouted odds she asked the Commander to tell her what they were shouting about.",
+    "page/paragraph#29": "N: Devarra had offered one battle on a field of her choosing. The generals waited for word of where and when. No report arrived before the march to Threshold; her offer remained unfulfilled.",
+    "page/paragraph#30": "N: Two vrocks escaped her reprisal when the Commander jumped between her and their nest. She remembered it each time she saw their kind over the old Wound. The Commander heard about her own broken clutch again, however many years had passed.",
+    "page/paragraph#31": "N: She had never named what she would take for the life missing from her clutch. When the Commander climbed, she spoke of the smallest egg again before turning to the visitor. The annual bite settled only the promise about the arm.",
+    "page/paragraph#32": "N: She had never named what she would take for the life missing from her clutch. When the Commander climbed, she spoke of the smallest egg again before turning to the visitor. The annual bite settled only the promise about the arm."
+  }
 }

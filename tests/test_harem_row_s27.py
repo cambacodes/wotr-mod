@@ -2,7 +2,7 @@
 import copy
 import unittest
 
-from story_fixture import fresh_story
+from tests.story_fixture import fresh_story
 from storylines.harem_rows import s27 as row
 from tools import rrt_verify as rules
 from tools.harem_schedule_lint import delayed_clock_errors
@@ -131,9 +131,16 @@ class S27Tests(unittest.TestCase):
             for node in scene['Nodes']:
                 self.assertEqual(node.get('Paragraphs', []), [])
                 for choice in node['Choices']:
-                    self.assertTrue(all(flag.startswith(P) for flag in choice['Set']))
+                    final_failure = P + 'retry.failed' in choice['Set']
+                    controller_flags = {'soana.harem.enmity.camellia', 'soana.harem.stance.tolerated'}
+                    actual_controller = set(choice['Set']) & controller_flags
+                    self.assertEqual(actual_controller,
+                                     controller_flags if final_failure and
+                                     'soana.harem.enmity_any' in choice['Forbids'] else set())
+                    incident = set(choice['Set']) - controller_flags
+                    self.assertTrue(all(flag.startswith(P) for flag in incident))
                     self.assertFalse(any(term in flag for term in ('.attitude.', '.enmity.', '.stance.', '.lover')
-                                         for flag in choice['Set']))
+                                         for flag in incident))
         self.assertEqual(self.story['Derived'][P + 'respect'], [list(row.DEED)])
 
     def test_registration_is_repeatable_without_mutating_base_scene_list(self):

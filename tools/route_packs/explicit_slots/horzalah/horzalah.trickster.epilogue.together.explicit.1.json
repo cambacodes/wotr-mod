@@ -1,7 +1,7 @@
 {
   "voice": "HORZALAH: proud, vicious, acquisitive, sexually direct and suspicious of being purchased; sharp contempt, economical commands, malicious amusement, competitive pleasure. She enjoys control and may willingly yield for a moment when it pleases her. Affection does not redeem her, end slavery or make her a crusader. Do not quote source dialogue or repeat sample sentences. Invent fresh, concise speech; no HR negotiations, maxims, therapy, narrator judgement or modern slang.",
   "scene": "VERIFIED CANON: she is Baphomet's daughter and Hepzamirah's younger sister, formerly an advance-payment concubine to Yozz; later she claims Yozz and his Guild as property. Her Ch4 projection is tall, extremely emaciated, with shackle marks and flaming seals; native Ch5 dialogue says the seals are lifted. The collar-shaped throat scar and shrewd evil eyes with dark flames are attested. Do not claim Ch4 emaciation is an erotic ideal or invent a Ch5 recovery. No verified detail of genital anatomy, breasts, horns, wings, tail, scent, or species sexual mechanics is supplied. Do not invent those details. Her costume, claw staging, paid ear trophy, rooms and romance are authored route continuity, not additional native physical facts. No partner, slave or family member participates.\nTrickster postwar; old Alushinyrra Guild-room paragraph of epilogue.together, only on the existing history with commitment and no chamber_seen visit. The Commander is alive or has already earned their return. Two willing lucid adult lovers alone. This is the deferred first night of a bond already chosen, not a reward for the ear itself. THIRD-PERSON epilogue framing: 'the Commander', gender-neutral narration; do not switch to gameplay 'you'. Authored continuity: old hall holds city contracts, headquarters are in Baphomet's realm; windowless room, collar across closed strongbox, permanent missing left ear, no other actors inside. REQUIRED BEATS: she deliberately comes back for the promised lover; frank impatient appetite; mutual sexual intimacy; Guild business waits by her choice, not reform. No prewar stair display or morning receipt retrospectively claimed. End at watch bell; next prose shows her opening the door and refusing the waiting assassin's offer. Preserve room and ongoing vicious profession. Intended act: consensual sex between the two adults, adapted to the selected Commander anatomy; no compulsory permanent power role. Keep anatomy consistent with the selected variant, without asserting unsupported species anatomy.",
-  "last_line": "N: A watch bell rings in the old hall.",
+  "last_line": "N: She opened the door herself and told the waiting assassin to come back with a better offer. Later she sent the Commander home through her passage. She returned to Drezen the next week with a new city contract to complain about.",
   "speakers": {
     "H": "Horzalah"
   },
@@ -12,5 +12,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "slot_id": "horzalah.trickster.epilogue.together.explicit.1"
+  "slot_id": "horzalah.trickster.epilogue.together.explicit.1",
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief.",
+  "narration": "third-past"
 }

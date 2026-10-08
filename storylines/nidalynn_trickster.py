@@ -33,7 +33,8 @@ the eggs, since no native blueprint, dialog or cue describes one): under the gol
 takes the smallest egg, the coldest, and buries it in the chamber's ash-bin, and carries it out grey with ash as "a rock".
 Earned by a Stealth or Trickery check; a failed check puts the Commander's hand under a golem fist (the golems natively
 answer intruders, Cue_0047 / Cue_0034), and the egg is saved all the same. Then the Commander chooses not to smash it. Fallback, while the
-crated clutch waits in the Drezen vault: the same soot among the crates, and the egg carried out hot (burnt palms).
+crated clutch waits in the Drezen vault: the same soot among the crates; a dropped lamp on the detected branch
+burns the Commander rescuing the egg before the straw catches. Clean retrieval uses the coat without burns.
 
 Authored, and labelled as authored: that metallic dragons were watching the clutch on Trickster too; that Nidalynn lives
 in Drezen as the same pregnant widow she plays in canon Kenabres, on the steps opposite the jeweller where the refugees
@@ -53,6 +54,7 @@ JEWELLER = "bc1093231b1577a4485a730c29595195"      # JewelerCapitalTrader (Arues
 WIDOW_UNIT = "e24a8cb4f83960748b5bead99d58a36e"    # Commoner_Noble_Female_Refugee2 (a Kenabres refugee woman; no Drezen spawner uses it)
 CHOSEN_UNIT = "3191b154bbed71b4595a5154ad067e90"   # Commoner_Noble_Female_Refugee1 (her own chosen form; a different body)
 GOLEM_LIST = "dd8ac86f25e0f6b4cac75386eb528851"    # IvorySanctum/Golems_DragonEggs/AnswersList_0002
+GOLEM_ALARM = "95bebf5d25d792743a92fe5291b0b3cb"   # Cue_0034 -> Cue_0032: native group SwitchFaction to hostile
 GOLEM_RETURN = "d39b1e850904daa43b7e6dab3a6e7f83"  # Golems_DragonEggs/Cue_0046 "Only a very large creature could lay eggs like these."
 GREYBOR_LIST = "174d6c94b6725f44aad1d2a76993a926"  # Companions/Grimbor/AnswersList_0002
 ULBRIG_HUB = "0a50c9c878844ed4a69b8d6131304c5e"    # DLC4_Shifter/Shifter_CompanionDialogue/AnswersList_0001
@@ -85,7 +87,7 @@ STORYTELLER_SUPPLIES = "storyteller.supplies"     # PP10: SeenCues StoryTeller_M
 SLATE = P + "cost.slate"                           # PP10: the lie on the stores' slate, in the Commander's mark (confessed at the kiln)
 CLEAN = P + "egg.clean"
 HAND = P + "cost.hand"                             # a golem fist, on the failed check
-PALMS = P + "cost.palms"                           # the vault egg carried out hot
+PALMS = P + "cost.palms"                           # burns rescuing the vault egg when the clerk drops his lamp
 CLERK = P + "clerk_saw"
 CRUSHED = P + "egg_crushed"
 ROCK_JOKE = P + "rock_joke"
@@ -222,22 +224,24 @@ SCENES.append(scene(P + "eggs.lamp_black", "Out in the ash", "Nidalynn", 3, "[Lo
         c("Continue", "held", flags=(CLEAN,))),
     nar("fist", '''{n}You have the egg in your hands and one step taken toward the wall when the nearest golem's head turns. It is not quick. It does not need to be.{/n}
 {n}The fist comes down. You get the egg out from under it and your hand does not quite follow; stone and stone meet across your knuckles with a sound like a dropped plate. The egg goes out of your grip and into the ash-bin, and the ash goes up in a grey cloud over both of you.{/n}
-{n}The magical mouth shrieks about intruders, and the whole row of fists swings toward you. Somebody in your company is already shouting, drawing them off with steel and noise, and you go to your knees by the bin with your hand pressed against your chest. It is not a shape a hand should be.{/n}''',
+{n}The magical mouth draws breath for an alarm. Your company crowds between you and the fists, weapons raised. You crouch by the bin with your hand pressed against your chest. It is not a shape a hand should be. There are seconds left to get the egg out of the ash.{/n}''',
         c("Continue", "held", flags=(HAND,))),
     nar("held", '''{n}When you dig it out of the bin it looks like a stone: grey with ash, black with cinders, dull. Only when you hold it does it give itself away, heavier than a stone and warm through the grime, and something inside it turns over against your palm, slowly, the way a sleeper turns.{/n}
-{n}The golems stand over eleven eggs with their fists up. Whatever happens to those eleven now will happen whatever you do with the one in your hand.{/n}
+{n}Eleven eggs lie exposed beneath the golems. Saving this one has done nothing for the rest.{/n}
 {n}It is a woundwyrm, or it will be: Devarra's get, the spawn of the thing that tried to burn your army out of the sky. Greybor would say it needs smashing. The heel of your boot would finish it.{/n}''',
         c("[Wrap it in your cloak and put it at the bottom of your pack.]", "rock"),
         c("[Put your heel through it. Some things are better never hatched.]", "crushed", flags=(CRUSHED,))),
     nar("crushed", '''{n}The shell holds longer than you expect, and then it doesn't. What comes out into the ash is hot and wet and very small, and it does not live long.{/n}
-{n}The golems do not turn their heads. Whatever they are watching for, it is not this.{/n}''',
-        c("[Step back from the clutch.]")),
+{n}You scrape your boot through the ash. Eleven eggs remain in the straw beyond the bin.{/n}''',
+        c("[Step back from the clutch.]", forbids=(HAND,)),
+        c("[Draw your weapon.]", requires=(HAND,), native_next=GOLEM_ALARM)),
     nar("rock", '''{n}Somebody in your company asks what you have just put in your pack, and why it made you swear.{/n}''',
         c('"It\'s a rock. I painted it."', "packed", flags=(ROCK_JOKE,)),
         c('"A souvenir."', "packed")),
-    nar("packed", '''{n}Nobody believes you, and nobody asks again, because the golems are still standing over eleven eggs with their fists up, and that is a more pressing question.{/n}
+    nar("packed", '''{n}Nobody believes you. Nobody asks again with eleven eggs still beneath the golems and your company waiting on you.{/n}
 {n}At the bottom of your pack, wrapped in your cloak and grey with ash, something the golems failed to crush is still warm.{/n}''',
-        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM, EGG_OWED))),
+        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM, EGG_OWED), forbids=(HAND,)),
+        c("[Draw your weapon.]", flags=(PRIMED, GOLEM, EGG_OWED), requires=(HAND,), native_next=GOLEM_ALARM)),
 ], requires=("trickster",), forbids=(PRIMED, CRUSHED, "eggs.destroyed", "eggs.project"), last=3, Relationship=REL,
     Chapters=[3], AnswerLists=[GOLEM_LIST], NativeReturnCue=GOLEM_RETURN, TricksterDevice=True, TricksterState="golems"))
 
@@ -251,7 +255,7 @@ HEARTH_FOLD = '''{n}It lives in the ashes of your hearth after that, at the back
 
 # --- The fallback (a page, Chapters 3 and 5): the same soot, in the citadel vault -------------------------------------
 # The clutch was crated to Drezen (DragonEggsProjectGained) and waits for the druids or the cooks. Worse terms: the vault
-# clerk, and an egg that has to be carried out hot.
+# clerk; if he drops his lamp, the Commander catches the egg before oil and burning straw reach it.
 
 visit(P + "eggs.vault", "Coal", [
     nar("vault", '''{n}The eggs came up from the Ivory Sanctum packed in straw, twelve to a wagon, and the quartermaster put them in the dry vault under the citadel, next to the lamp oil, because it was the warmest room he had. They are still warm. The whole corridor smells of hot stone.{/n}
@@ -263,14 +267,14 @@ visit(P + "eggs.vault", "Coal", [
 {n}At the eighth bell the clerk counts eleven, frowns, counts again, and writes down twelve, because the slate says twelve and he would rather be wrong about eggs than about the slate.{/n}''',
         c("Continue", "carry")),
     nar("clerk", '''{n}You have the egg in the coal bucket and the lump of coal in the straw when the lamp comes round the corner an hour early.{/n}
-{n}The clerk is young, and very tired, and he looks at the Commander of the crusade standing in the vault at night with soot to the elbow and a bucket of coal, and you watch him decide that he has not seen anything, because he would like to keep his post.{/n}
-{n}He will remember it all the same. People always do.{/n}''',
-        c("Continue", "carry", flags=(CLERK,))),
-    nar("carry", '''{n}The coal bucket is no good for the stairs; it tips. You take the egg out and carry it up in your hands, under your coat, against your chest, the way you would carry a lamp through wind.{/n}
-{n}It is much hotter than it looked. By the second landing the skin of both palms has gone white and tight, and by your own door it has started to blister. You do not put it down until it is in the ashes of your hearth, and then you sit on the floor and hold your hands in the washbasin, and the water goes warm.{/n}''',
-        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS, EGG_OWED), forbids=(CH5,)),
+{n}He startles. The lamp hits the bucket rim, the bucket overturns, and the egg rolls toward the broken lamp. Oil runs under the straw. You catch the shell in both hands before it reaches the flame and shove it onto the bare stone behind you. Heat bites into your palms.{/n}
+{n}The clerk stamps out the burning straw while you wrap the egg in your coat. He looks from your hands to the shell, then bends to gather the shards without a word. He has seen enough to remember.{/n}''',
+        c("Continue", "carry", flags=(CLERK, PALMS))),
+    nar("carry", '''{n}You fold your coat thickly around the egg and knot the sleeves beneath it. The wool keeps the hot shell off your hands. You carry the bundle up the stairs, stopping at each landing to check the wrapping. Behind the vault door, eleven eggs wait for the quartermaster's next count.{/n}
+{n}At your hearth you lower the bundle into the ashes and pull the coat free with the poker. Soot has worked into the wool. You hang it away from the fire and fill the washbasin.{/n}''',
+        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, EGG_OWED), forbids=(CH5,)),
         c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
-    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(PRIMED, VAULT, PALMS, HEARTH, EGG_OWED))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(PRIMED, VAULT, HEARTH, EGG_OWED))),
 ], requires=("trickster", CRATED), forbids=(PRIMED, CRUSHED, "eggs.druids", "eggs.omelet", "eggs.destroyed"), delay=24,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="vault")
 
@@ -465,7 +469,7 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}A jeweller in Drezen swore for years that a copper torc had walked off his counter on its own. The Kellid woman who wore it swore just as hard that she had never sold it.{/n}''', requires=(TORC_LIFTED,)),
     p('''{n}The Commander carried a white scar across two knuckles of one hand from the day in the Sanctum. A Sarkorian bonesetter had set the fingers before any priest got to them, and the crusade's healers found nothing left to mend but the scar, which she would not let them touch. She said a hand ought to remember what it did.{/n}''', requires=(HAND, HAND_SET)),
     p('''{n}The Commander carried a white scar across two knuckles of one hand from the day in the Sanctum. The crusade's healers mended the bones; nobody mended the scar, and the Commander never asked them to.{/n}''', requires=(HAND,), forbids=(HAND_SET,)),
-    p('''{n}The Commander's palms stayed shiny and tight for the rest of the war, like a smith's, and never took a callus again. The only person who ever asked about them was told that a dragon's egg is a hot thing to carry and a hotter thing to put down.{/n}''', requires=(PALMS,)),
+    p('''{n}The Commander's palms stayed shiny and tight for the rest of the war, like a smith's, and never took a callus again. Asked about them, the Commander spoke of a dropped lamp, burning straw, and an egg caught before the fire reached it.{/n}''', requires=(PALMS,)),
     p('''{n}The soldier from the ford took his twenty lashes and his month in the cells, and deserted in the spring, and was not seen in Drezen again. The kiln's sergeant said he had gone north to look for the grey one's tower. Nobody ever heard whether he found it.{/n}''', requires=(P + "spear.provost",)),
     p('''{n}The soldier from the ford lived out the war and a good deal longer, and never spoke of the night on the tanners' stair. He was the first man in Drezen to take his hat off when the young dragon flew over.{/n}''', requires=(P + "spear.freed",)),
     p('''{n}The soldier from the ford came down to the kiln every week after that, for as long as there was a dragon in it, with a pig's ear in his pocket, and sat on the step without saying much. The young dragon bit him only once, and he said it was fair, and that her mother had done worse.{/n}''', requires=(P + "spear.seen",)),

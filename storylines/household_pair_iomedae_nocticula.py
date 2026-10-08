@@ -34,7 +34,7 @@ def visit(step, title, nodes, requires=(), forbids=(), delay=0):
 
 
 RECEPTION = '''{n}The courier reads Nocticula's order aloud beside the receiving wagon.{/n}
-"My broker has mistaken my protection for his property. Return his protection payment. Deliver Orren, Davit, Hald, Marten, Venn and Rul. Alive. Should he find this ruinous, remind him what my displeasure costs."
+"My broker has mistaken my protection for his property. Return his protection payment. Deliver Orren, Davit, Hald, Marten, Veldran and Rul. Alive. Should he find this ruinous, remind him what my displeasure costs."
 {n}The attendants check each man against his name and wounds. Rul cannot stand. You carry him into the sanctuary, his filthy bandage soaking your sleeve. The invitation to tonight's court entertainment lies unopened beside the wagon.{/n}
 {n}A sword-shaped gleam crosses the banner. Iomedae's voice reaches you beneath it.{/n}
 "Nocticula ordered their release. Record that. Record also who sold them. My sanctuary will keep watch over these six. Her markets remain an abomination."
@@ -42,7 +42,7 @@ RECEPTION = '''{n}The courier reads Nocticula's order aloud beside the receiving
 
 SCENES = [
     visit("open", "Six names", [
-        n("start", "Narrator", '''{n}You bring the captive list to Drezen's banner platform. Six crusaders, six descriptions: Orren's broken front tooth, Davit's branded wrist, Hald's crooked finger, Marten's scalp wound, Venn's missing ear, Rul's splinted leg. The courier has brought a reply bearing Nocticula's seal.{/n}
+        n("start", "Narrator", '''{n}You bring the captive list to Drezen's banner platform. Six crusaders, six descriptions: Orren's broken front tooth, Davit's branded wrist, Hald's crooked finger, Marten's scalp wound, Veldran's missing ear, Rul's splinted leg. The courier has brought a reply bearing Nocticula's seal.{/n}
 "My broker keeps them under my protection. How tiresome of him to forget whose protection it is. I will deprive him of six profitable possessions. Let the goddess name who gave the order. You will pay the crossing."
 {n}Light gathers along the banner's sword. Iomedae speaks through it.{/n}
 "Six names were given. I will receive six living men. Bring their wounds into the account, too. I will not have this trade hidden beneath a gracious gesture."''',
@@ -68,12 +68,12 @@ SCENES = [
           c("[Pay the inspected ransom for the six named prisoners and conduct the reception yourself.]", "paid"),
           c('"Accept the substitutes. Six bodies will look the same in the account."', "falsified"),
           c("[Later.]", abort=True)),
-        terminal("six", '''{n}The man called Venn has both ears. The other man's legs are sound. You confront the escort with the list before the wagon can be unloaded. The courier breaks Nocticula's seal. Her order sends the escort back through the paid crossing for the two men he withheld; the sick substitutes go to the healers as well.{/n}
+        terminal("six", '''{n}The man called Veldran has both ears. The other man's legs are sound. You confront the escort with the list before the wagon can be unloaded. The courier breaks Nocticula's seal. Her order sends the escort back through the paid crossing for the two men he withheld; the sick substitutes go to the healers as well.{/n}
 ''' + RECEPTION, HELD),
-        terminal("paid", '''{n}You authorize the inspected ransom. The escort must fetch Venn and Rul before he receives it. The sick strangers are taken to the healers; neither is allowed to stand for a missing name.{/n}
+        terminal("paid", '''{n}You authorize the inspected ransom. The escort must fetch Veldran and Rul before he receives it. The sick strangers are taken to the healers; neither is allowed to stand for a missing name.{/n}
 ''' + RECEPTION, HELD + ("cost.ransom_paid",), ("Finances", -500)),
-        terminal("short", '''{n}You let the escort finish unloading before checking the wounds. His wagon is already returning through the crossing when the attendants discover that neither stranger is Venn or Rul. The four named men and the sick strangers receive care; the sanctuary's reception remains incomplete.{/n}
-"You let the broker depart with a false count," {n}Iomedae says.{/n} "Nocticula's broker still holds Venn and Rul. Fetch them."
+        terminal("short", '''{n}You let the escort finish unloading before checking the wounds. His wagon is already returning through the crossing when the attendants discover that neither stranger is Veldran or Rul. The four named men and the sick strangers receive care; the sanctuary's reception remains incomplete.{/n}
+"You let the broker depart with a false count," {n}Iomedae says.{/n} "Nocticula's broker still holds Veldran and Rul. Fetch them."
 {n}The courier records your delay for his queen. Her unopened release order remains beside the list.{/n}''',
                  ("delivery.seen", "delivery.failed", "unsettled", "proof.manifest_short",
                   "cost.commander_reception_delayed")),
@@ -82,19 +82,19 @@ SCENES = [
                  ("delivery.seen", "delivery.account_falsified", "permanent_refusal")),
     ], requires=("open.ready",), delay=48),
     visit("ransom", "The two withheld men", [
-        n("start", "Narrator", '''{n}You return to the banner with an inspected crossing booked in your own name. The broker still holds Venn and Rul. His demand has risen to seven hundred. Nocticula's courier brings her order separately; there is no meeting between the queen and the goddess.{/n}
+        n("start", "Narrator", '''{n}You return to the banner with an inspected crossing booked in your own name. The broker still holds Veldran and Rul. His demand has risen to seven hundred. Nocticula's courier brings her order separately; there is no meeting between the queen and the goddess.{/n}
 "He imagines delay has made him indispensable. Commander, pay the ransom. The broker's protection ends with this delivery. I shall enjoy explaining that to him."
 {n}Iomedae's voice reaches you through the banner.{/n}
 "Four men are under our watch. Two are still in his cages. I have kept their places."''',
           c("[Retrieve the two withheld men through the inspected paid crossing.]", "complete"),
           c('"Four is enough."', "declined"),
           c("[Later.]", abort=True)),
-        terminal("complete", '''{n}You pay for the inspected crossing and take the last escort yourself. Venn has the missing ear on your list; Rul's splint has cut into his leg. You bring both to the wagon. The courier reads the release order only when their captor has surrendered them.{/n}
+        terminal("complete", '''{n}You pay for the inspected crossing and take the last escort yourself. Veldran has the missing ear on your list; Rul's splint has cut into his leg. You bring both to the wagon. The courier reads the release order only when their captor has surrendered them.{/n}
 ''' + RECEPTION,
                  ("ransom.seen", "ransom.held") + HELD[2:] + ("cost.late_crossing_paid",),
                  ("Finances", -700)),
         terminal("declined", '''"Enough for whom?" {n}Iomedae asks through the banner.{/n}
-{n}The attendants keep tending the four men. Venn's and Rul's places remain empty. You dismiss the courier without commissioning their retrieval.{/n}''',
+{n}The attendants keep tending the four men. Veldran's and Rul's places remain empty. You dismiss the courier without commissioning their retrieval.{/n}''',
                  ("ransom.seen", "ransom.declined", "permanent_refusal")),
     ], requires=("delivery.failed",), forbids=("resolved", "permanent_refusal"), delay=48),
 ]
@@ -136,15 +136,22 @@ def living_paragraphs(woman):
         groups = [BANNERS] if woman == "iomedae" else []
         # Outcome history is recollected by this woman alone, never a new absent reply.
         prose = "{n}" + (texts[woman] if flag == "resolved" else text) + "{/n}"
-        out.extend((p(prose, requires=req, forbids=[*forbids, "sacrifice"], any_groups=groups),
+        channel_forbids = [*forbids, "iomedae.trickster.buried_alive"] if woman == "iomedae" and flag == "resolved" else forbids
+        out.extend((p(prose, requires=req, forbids=[*channel_forbids, "sacrifice"], any_groups=groups),
                     p(prose, requires=[*req, "sacrifice", "trickster.commander_back"],
-                      forbids=forbids, any_groups=groups)))
+                      forbids=channel_forbids, any_groups=groups)))
     for cost, text in COSTS.items():
         req = [P + "cost." + cost, reader_key(woman)]
         groups = [BANNERS] if woman == "iomedae" else []
         out.extend((p("{n}" + text + "{/n}", requires=req, forbids=["sacrifice"], any_groups=groups),
                     p("{n}" + text + "{/n}", requires=[*req, "sacrifice", "trickster.commander_back"],
                       any_groups=groups)))
+    if woman == "iomedae":
+        # D08: append the named rescue recollection after every retained entry.
+        # The crossing consumed either banner; retain the earned rescue reader.
+        prose = "{n}" + texts[woman].replace("Through the banner, Iomedae recalls", "In plain steel, Iomedae recalls") + "{/n}"
+        out.append(p(prose, requires=[P + "resolved", reader_key(woman), "sacrifice",
+                                     "trickster.commander_back", "iomedae.trickster.buried_alive"]))
     return out
 
 

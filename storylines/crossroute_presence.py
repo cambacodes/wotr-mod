@@ -10,17 +10,17 @@ import copy
 
 from tools.crossroute_checks.common import Block, AND, OR, Proof, blocks, fields, roster, verify, postwar, lit
 from tools.crossroute_checks.other_woman import presence_guard, correspondence_reference, local_return_overrides, LIVING_AFTER_ROMANCE_REFUSAL, NATIVE_COMPANIONS, BODY_RETURNS, PRESENCE_LOSSES, NATIVE_AUDIENCES
-from tools.crossroute_checks.mention_context import live_mentions
+from tools.crossroute_checks.mention_context import live_mentions, j01_reference_contexts, j01_contract
 
 
-def availability(payload, woman, route, known=None, distant=False):
+def availability(payload, woman, route, known=None, distant=False, native_audience=False):
     """A live predicate; never a latch on yesterday's availability.
 
     Use the runtime chapter inputs as a tautology in Chapters 1–6. Prologue
     scenes use direct scene forbids instead. Independent relationships read
     current losses; legacy pair seats read only the named woman's own losses.
     """
-    key = "crossroute.%s.%s" % (woman, "correspondent" if distant else "available")
+    key = "crossroute.%s.%s" % (woman, "native_available" if native_audience else "correspondent" if distant else "available")
     derived = payload.setdefault("Derived", {})
     if key in derived:
         return key
@@ -54,7 +54,7 @@ def availability(payload, woman, route, known=None, distant=False):
         payload.setdefault("DerivedForbids", {})[native_key] = list(rel.get("UnavailableFlags", []))
         derived[closure_key] = [[open_key], [native_key]]
         inputs.append(closure_key)
-    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL:
+    elif woman not in LIVING_AFTER_ROMANCE_REFUSAL and not native_audience:
         payload.setdefault("DerivedForbids", {})[key] = [rel["ClosedFlag"]]
     for i, loss in enumerate(f for f in rel.get("UnavailableFlags", []) if f not in other):
         if loss not in overrides:
@@ -81,11 +81,11 @@ def unavailability(payload, woman, route, known=None, distant=False):
 def scene_guard(scene, payload, woman, route, known=None, distant=False):
     # The composite reads existing losses and returns without requiring
     # another romance's progression. Register it as the participant contract.
-    key = availability(payload, woman, route, known, distant)
     audience = NATIVE_AUDIENCES.get(woman)
     window = set(scene.get("Chapters") or range(scene.get("MinChapter", 0), scene.get("MaxChapter", 99) + 1))
     if (window != {0} and audience and audience[0] in scene.get("AnswerLists", [])
             and window <= audience[1] and scene.get("NativeReturnCue")):
+        key = availability(payload, woman, route, known, distant, native_audience=woman == "nocticula")
         # eng7-l14: native inline audiences retain their fixed Requires/
         # Forbids lists. RequiresAnyGroups conjoins its OR groups: append a
         # singleton group so no existing alternative can bypass presence.
@@ -93,6 +93,7 @@ def scene_guard(scene, payload, woman, route, known=None, distant=False):
         if [key] not in groups:
             groups.append([key])
         return
+    key = availability(payload, woman, route, known, distant)
     rel = payload["Relationships"][route]
     rel = dict(rel, UnavailableFlags=[*rel.get("UnavailableFlags", []), *PRESENCE_LOSSES.get(woman, [])])
     if distant:
@@ -226,6 +227,36 @@ def integrate(payload):
                 additions.extend([bereaved, alternate])
             node["Choices"].extend(additions)
         scene["Nodes"].append(neutral)
+    # eng7-integ5 authored absence variant: Seelah's native soul-rescue
+    # aftermath belongs to the rescued people, including when Arsinoe's
+    # existing loss/busy flags bar a visit. Keep the original priestess
+    # branch and ending, and append the same aftercare without that visit.
+    for scene in payload["Scenes"]:
+        if scene["Id"] != "seelah.souls" or "arsinoe" not in payload["Relationships"]:
+            continue
+        variant_id = "eng7_l14.end_without_arsinoe"
+        if any(n["Id"] == variant_id for n in scene["Nodes"]):
+            continue
+        ending = next(n for n in scene["Nodes"] if n["Id"] == "end")
+        neutral = copy.deepcopy(ending)
+        neutral["Id"] = variant_id
+        neutral["Text"] = neutral["Text"].replace(
+            "speak to Arsinoe about the people who still need help",
+            "visit the people who still need help")
+        available = availability(payload, "arsinoe", "arsinoe")
+        absent = unavailability(payload, "arsinoe", "arsinoe")
+        for node in scene["Nodes"]:
+            additions = []
+            for choice in node["Choices"]:
+                if choice.get("Next") != "end":
+                    continue
+                alternate = copy.deepcopy(choice)
+                alternate["Next"] = variant_id
+                alternate.setdefault("Forbids", []).append(available)
+                choice.setdefault("Forbids", []).append(absent)
+                additions.append(alternate)
+            node["Choices"].extend(additions)
+        scene["Nodes"].append(neutral)
     # eng7-l14: the native south-road branch still names a living Irabeth.
     # If another recorded loss now makes her unavailable, use the existing
     # reproach/killer page rather than stage her through the wall. Append
@@ -313,6 +344,49 @@ def integrate(payload):
                 variant.setdefault("Requires", []).append(availability(payload, "irabeth", "irabeth"))
                 additions.append(variant)
             node.setdefault("Paragraphs", []).extend(additions)
+    # S2: an audited historical paragraph can carry an older explicit
+    # inference guard. Release only its named guards, at its exact reviewed
+    # address and text hash; retain its earned deed and the owner's presence.
+    import hashlib
+    by_scene = {s["Id"]: s for s in payload["Scenes"]}
+    for reviewed in j01_reference_contexts():
+        removals = reviewed.get("remove_reference_guards")
+        if not removals or reviewed["scene"] not in by_scene:
+            continue
+        scene = by_scene[reviewed["scene"]]
+        node = next((n for n in scene["Nodes"] if n["Id"] == reviewed["node"]), None)
+        if node is None or not reviewed["slot"].startswith("paragraph["):
+            continue
+        index = int(reviewed["slot"][10:-1])
+        if index >= len(node.get("Paragraphs", [])):
+            continue
+        paragraph = node["Paragraphs"][index]
+        if hashlib.sha256(paragraph["Text"].encode("utf-8")).hexdigest() != reviewed["text_sha256"]:
+            continue
+        for field, flags in removals.items():
+            paragraph[field] = [f for f in paragraph.get(field, []) if f not in flags]
+    # S2: reviewed optional participants keep their current-life check on
+    # the incoming branch. Use existing neutral continuations for later loss;
+    # append answers without changing any saved index, target or choice text.
+    for branch in j01_contract().get("participant_branches", []):
+        scene = by_scene.get(branch["scene"])
+        if scene is None:
+            continue
+        nodes = {n["Id"]: n for n in scene["Nodes"]}
+        absent = unavailability(payload, branch["woman"], branch["relationship"])
+        for nid, index in branch["incoming"]:
+            choice = nodes[nid]["Choices"][index]
+            if absent not in choice.setdefault("Forbids", []):
+                choice["Forbids"].append(absent)
+        for fallback in branch["fallbacks"]:
+            choice = copy.deepcopy(nodes[fallback["copy_node"]]["Choices"][fallback["copy_choice"]])
+            for field in ("Requires", "Forbids"):
+                choice[field] = [f for f in choice.get(field, [])
+                                 if f not in fallback.get("remove_" + field.lower(), [])]
+                choice[field] = list(dict.fromkeys(choice[field] + fallback.get(field.lower(), [])))
+            choice["Requires"] = list(dict.fromkeys(choice["Requires"] + [absent]))
+            if choice not in nodes[fallback["node"]]["Choices"]:
+                nodes[fallback["node"]]["Choices"].append(choice)
     model = verify.Model(copy.deepcopy(payload))
     names = roster(model)
     known = (model.authored | set(model.native) | model.builtin_derived
@@ -320,6 +394,8 @@ def integrate(payload):
     if not payload.get("Etudes"):
         known = None   # symbolic, partial test stories have no binding registry
     originals = {s["Id"]: s for s in payload["Scenes"]}
+    from tools.crossroute_checks.other_woman import native_participation_contexts
+    native_contexts = native_participation_contexts(model)
     # If an unreturned body loss excludes both the owner and a live guest,
     # there is no legitimate owner-only scene to preserve in that history.
     # Read the shared loss at entry. Keep every local/registered earned
@@ -508,6 +584,9 @@ def integrate(payload):
             seat = (payload.get("SeatWomen") or {}).get(woman, {})
             if route == block.route or seat.get("Relationship") == block.route or block.route.startswith(woman + "."):
                 continue
+            native = native_contexts.get(block.scene["Id"], {})
+            if any(pattern.fullmatch(name) for name in native.get("Speakers", [])) or pattern.search(native.get("Mentions", "")):
+                continue  # inherited native participation, validated against the original cue graph
             speaking = block.slot == "text" and pattern.fullmatch(block.node.get("Speaker", ""))
             if not speaking and not live_mentions(block.text, pattern, postwar(block.scene), block.scene["Id"]):
                 continue

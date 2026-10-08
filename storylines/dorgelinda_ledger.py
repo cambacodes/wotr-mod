@@ -547,7 +547,7 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
       c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
       c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
       c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid'))),
-    d("paid", '''"The boots stay here." {n}She nods at the stores door.{/n} "The last pair, the ones you paid your debt in. Top shelf, unworn. I'm not issuin' 'em to anyone else, and They're not goin' on this wagon to get demon on 'em." {n}Something moves in her face.{/n} "You come back and you can have 'em. Not before."''',
+    d("paid", '''"The boots stay here." {n}She nods at the stores door.{/n} "The last pair, the ones you paid your debt in. Top shelf, unworn. I'm not issuin' 'em to anyone else, and they're not goin' on this wagon to get demon on 'em." {n}Something moves in her face.{/n} "You come back and you can have 'em. Not before."''',
       c("Continue", "choose", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed'), requires=()),
       c("Continue", 'choose', requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
       c("Continue", 'choose_cold', requires=('dorgelinda.ledger.quarrel_unmended',), forbids=()),
@@ -1398,6 +1398,8 @@ def integrate(payload):
         page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in paras)
 
     _round2_partners(payload)
+    from storylines.dorgelinda_round3 import integrate as round3
+    round3(payload)
 
     # Authored polish: retained account and private terms, after all old paragraph slots.
     by_id[P + "epilogue.committed"]["Nodes"][0]["Paragraphs"].extend((

@@ -1,0 +1,1506 @@
+{
+  "schema": 1,
+  "hook_count": 167,
+  "hook_sha256": "5bc667258cd57637cc922f31223c8b45ed3431bfbefc4a149992a52e6f54adeb",
+  "counts": {
+    "produced": 8,
+    "derived": 15,
+    "runtime-evaluated": 1,
+    "legitimately-inert": 143
+  },
+  "rows": [
+    {
+      "hook": "seelah.harem.attitude.arueshalae.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_arueshalae.ready",
+          "arueshalae.redeemed"
+        ]
+      ],
+      "forbids": [
+        "household.controller.seelah.arueshalae.blocked",
+        "household.controller.arueshalae.seelah.blocked",
+        "arueshalae.corrupted",
+        "seelah.harem.attitude.arueshalae.lover"
+      ]
+    },
+    {
+      "hook": "arueshalae.harem.attitude.seelah.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_arueshalae.ready",
+          "arueshalae.redeemed"
+        ]
+      ],
+      "forbids": [
+        "household.controller.arueshalae.seelah.blocked",
+        "household.controller.seelah.arueshalae.blocked",
+        "arueshalae.corrupted",
+        "arueshalae.harem.attitude.seelah.lover"
+      ]
+    },
+    {
+      "hook": "seelah.harem.attitude.nenio.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_nenio.question.answered",
+          "household.pair.seelah_nenio.deed.nenio_revised_question",
+          "household.pair.seelah_nenio.deed.seelah_named_decision",
+          "household.pair.seelah_nenio.cost.nenio_dropped_word_list",
+          "household.pair.seelah_nenio.cost.seelah_watch_account"
+        ]
+      ],
+      "forbids": [
+        "household.controller.seelah.nenio.blocked",
+        "household.controller.nenio.seelah.blocked"
+      ]
+    },
+    {
+      "hook": "nenio.harem.attitude.seelah.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_nenio.question.answered",
+          "household.pair.seelah_nenio.deed.nenio_revised_question",
+          "household.pair.seelah_nenio.deed.seelah_named_decision",
+          "household.pair.seelah_nenio.cost.nenio_dropped_word_list",
+          "household.pair.seelah_nenio.cost.seelah_watch_account"
+        ]
+      ],
+      "forbids": [
+        "household.controller.nenio.seelah.blocked",
+        "household.controller.seelah.nenio.blocked"
+      ]
+    },
+    {
+      "hook": "nenio.harem.attitude.arueshalae.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "nenio.experiment_refused",
+          "household.pair.nenio_arueshalae.ack.heard",
+          "household.pair.nenio_arueshalae.company.kept",
+          "household.pair.nenio_arueshalae.deed.b_company",
+          "household.pair.nenio_arueshalae.cost.b_company",
+          "household.pair.nenio_arueshalae.deed.b_personal_answer",
+          "household.pair.nenio_arueshalae.cost.b_personal_answer"
+        ]
+      ],
+      "forbids": [
+        "household.controller.nenio.arueshalae.blocked",
+        "household.controller.arueshalae.nenio.blocked",
+        "arueshalae.corrupted",
+        "nenio.harem.attitude.arueshalae.lover"
+      ]
+    },
+    {
+      "hook": "arueshalae.harem.attitude.nenio.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "nenio.experiment_refused",
+          "household.pair.nenio_arueshalae.ack.heard",
+          "household.pair.nenio_arueshalae.company.kept",
+          "household.pair.nenio_arueshalae.deed.a_company",
+          "household.pair.nenio_arueshalae.cost.a_company",
+          "household.pair.nenio_arueshalae.deed.a_personal_answer",
+          "household.pair.nenio_arueshalae.cost.a_personal_answer"
+        ]
+      ],
+      "forbids": [
+        "household.controller.arueshalae.nenio.blocked",
+        "household.controller.nenio.arueshalae.blocked",
+        "arueshalae.corrupted",
+        "arueshalae.harem.attitude.nenio.lover"
+      ]
+    },
+    {
+      "hook": "seelah.harem.attitude.yaniel.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_yaniel.watch.kept",
+          "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+          "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+          "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+          "household.pair.seelah_yaniel.cost.seelah_left_praise"
+        ]
+      ],
+      "forbids": [
+        "household.controller.seelah.yaniel.blocked",
+        "household.controller.yaniel.seelah.blocked"
+      ]
+    },
+    {
+      "hook": "yaniel.harem.attitude.seelah.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_yaniel.watch.kept",
+          "household.pair.seelah_yaniel.deed.yaniel_directed_watch",
+          "household.pair.seelah_yaniel.deed.seelah_followed_direction",
+          "household.pair.seelah_yaniel.cost.yaniel_spent_legend",
+          "household.pair.seelah_yaniel.cost.seelah_left_praise"
+        ]
+      ],
+      "forbids": [
+        "household.controller.yaniel.seelah.blocked",
+        "household.controller.seelah.yaniel.blocked"
+      ]
+    },
+    {
+      "hook": "seelah.harem.attitude.kiana.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_kiana.ward.helped",
+          "household.pair.seelah_kiana.deed.kiana_named_patient",
+          "household.pair.seelah_kiana.deed.seelah_followed_healer",
+          "household.pair.seelah_kiana.cost.kiana_delayed_private_talk",
+          "household.pair.seelah_kiana.cost.seelah_worked_ward"
+        ]
+      ],
+      "forbids": [
+        "household.controller.seelah.kiana.blocked",
+        "household.controller.kiana.seelah.blocked"
+      ]
+    },
+    {
+      "hook": "kiana.harem.attitude.seelah.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.seelah_kiana.ward.helped",
+          "household.pair.seelah_kiana.deed.kiana_named_patient",
+          "household.pair.seelah_kiana.deed.seelah_followed_healer",
+          "household.pair.seelah_kiana.cost.kiana_delayed_private_talk",
+          "household.pair.seelah_kiana.cost.seelah_worked_ward"
+        ]
+      ],
+      "forbids": [
+        "household.controller.kiana.seelah.blocked",
+        "household.controller.seelah.kiana.blocked"
+      ]
+    },
+    {
+      "hook": "eliandra.harem.attitude.targona.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.eliandra_targona.charges.answered",
+          "household.pair.eliandra_targona.deed.eliandra_named_charges",
+          "household.pair.eliandra_targona.deed.targona_answered_duty",
+          "household.pair.eliandra_targona.cost.eliandra_spent_audience",
+          "household.pair.eliandra_targona.cost.targona_heard_delay"
+        ]
+      ],
+      "forbids": [
+        "household.controller.eliandra.targona.blocked",
+        "household.controller.targona.eliandra.blocked"
+      ]
+    },
+    {
+      "hook": "targona.harem.attitude.eliandra.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "household.pair.eliandra_targona.charges.answered",
+          "household.pair.eliandra_targona.deed.eliandra_named_charges",
+          "household.pair.eliandra_targona.deed.targona_answered_duty",
+          "household.pair.eliandra_targona.cost.eliandra_spent_audience",
+          "household.pair.eliandra_targona.cost.targona_heard_delay"
+        ]
+      ],
+      "forbids": [
+        "household.controller.targona.eliandra.blocked",
+        "household.controller.eliandra.targona.blocked"
+      ]
+    },
+    {
+      "hook": "seelah.harem.attitude.nenio.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.nenio.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.nenio.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "nenio.harem.attitude.seelah.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "nenio.harem.attitude.seelah.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "nenio.harem.attitude.seelah.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.jannah.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.jannah.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.jannah.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "jannah.circle.seelah",
+          "jannah.circle.seelah.herself"
+        ]
+      ],
+      "forbids": [
+        "household.controller.seelah.jannah.blocked",
+        "household.controller.jannah.seelah.blocked"
+      ]
+    },
+    {
+      "hook": "seelah.harem.attitude.jannah.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "jannah.harem.attitude.seelah.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "jannah.harem.attitude.seelah.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "jannah.harem.attitude.seelah.friend",
+      "ruling": 29,
+      "status": "derived",
+      "witnesses": [
+        [
+          "jannah.circle.seelah",
+          "jannah.circle.seelah.herself"
+        ]
+      ],
+      "forbids": [
+        "household.controller.jannah.seelah.blocked",
+        "household.controller.seelah.jannah.blocked"
+      ]
+    },
+    {
+      "hook": "jannah.harem.attitude.seelah.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.yaniel.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.yaniel.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.yaniel.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "yaniel.harem.attitude.seelah.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "yaniel.harem.attitude.seelah.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "yaniel.harem.attitude.seelah.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.kiana.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.kiana.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.attitude.kiana.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "kiana.harem.attitude.seelah.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "kiana.harem.attitude.seelah.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "kiana.harem.attitude.seelah.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "eliandra.harem.attitude.targona.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "eliandra.harem.attitude.targona.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "eliandra.harem.attitude.targona.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "targona.harem.attitude.eliandra.rival",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "targona.harem.attitude.eliandra.respect",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "targona.harem.attitude.eliandra.lover",
+      "ruling": 29,
+      "status": "legitimately-inert",
+      "reason": "No approved directional group: below/above friendship-only ceiling or unearned stage."
+    },
+    {
+      "hook": "seelah.harem.enmity.areelu",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.enmity.camellia",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.seelah_camellia.settle",
+          "node": "refused",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "seelah.harem.enmity_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "arsinoe.harem.enmity.nurah",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.arsinoe_nurah.audit",
+          "node": "refused",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "arsinoe.harem.enmity_any"
+          ]
+        },
+        {
+          "scene": "household.pair.arsinoe_nurah.retry",
+          "node": "refused",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "arsinoe.harem.enmity_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "minagho_chivarro.harem.enmity.hepzamirah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "Composite alias is inert; use the qualified woman only."
+    },
+    {
+      "hook": "nocticula.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "nurah.harem.enmity.arsinoe",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "hepzamirah.harem.enmity.minagho_chivarro",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "Composite alias is inert; use the qualified woman only."
+    },
+    {
+      "hook": "camellia.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "areelu.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.nocticula",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "camellia.harem.enmity.wenduag",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "wenduag.harem.enmity.camellia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.enmity.wenduag",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "wenduag.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "wenduag.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.wenduag",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.enmity.nenio",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "nenio.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "camellia.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.camellia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "nenio.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.nenio",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "galfrey.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.galfrey",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "vellexia.harem.enmity.shamira",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "shamira.harem.enmity.vellexia",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.vellexia_shamira.retry",
+          "node": "failed",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "shamira.harem.enmity_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "arueshalae.harem.enmity.w.minagho",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "minagho_chivarro.harem.enmity.minagho.arueshalae",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.arueshalae_minagho.retry.good",
+          "node": "failed",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "minagho_chivarro.harem.enmity.minagho_any"
+          ]
+        },
+        {
+          "scene": "household.pair.arueshalae_minagho.retry.fallen",
+          "node": "failed",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "minagho_chivarro.harem.enmity.minagho_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "arueshalae.harem.enmity.minagho_chivarro",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "Composite alias is inert; use the qualified woman only."
+    },
+    {
+      "hook": "minagho_chivarro.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "Composite alias is inert; use the qualified woman only."
+    },
+    {
+      "hook": "seelah.harem.enmity.yaniel",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "yaniel.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.vellexia",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.arueshalae_vellexia.retry.good",
+          "node": "failed",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "arueshalae.harem.enmity_any"
+          ]
+        },
+        {
+          "scene": "household.pair.arueshalae_vellexia.retry.fallen",
+          "node": "failed",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "arueshalae.harem.enmity_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "vellexia.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "camellia.harem.enmity.vellexia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "vellexia.harem.enmity.camellia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "soana.harem.enmity.camellia",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.soana_camellia.retry",
+          "node": "failed",
+          "choice": 0,
+          "requires": [],
+          "forbids": [
+            "soana.harem.enmity_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "camellia.harem.enmity.soana",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.enmity.kiana",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "kiana.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "eliandra.harem.enmity.targona",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "targona.harem.enmity.eliandra",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "melazmera.harem.enmity.hepzamirah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "hepzamirah.harem.enmity.melazmera",
+      "ruling": 30,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.melazmera_hepzamirah.open",
+          "node": "start",
+          "choice": 1,
+          "requires": [],
+          "forbids": [
+            "hepzamirah.harem.enmity_any"
+          ]
+        },
+        {
+          "scene": "household.pair.melazmera_hepzamirah.diversion",
+          "node": "start",
+          "choice": 2,
+          "requires": [],
+          "forbids": [
+            "hepzamirah.harem.enmity_any"
+          ]
+        },
+        {
+          "scene": "household.pair.melazmera_hepzamirah.replacement",
+          "node": "start",
+          "choice": 1,
+          "requires": [],
+          "forbids": [
+            "hepzamirah.harem.enmity_any"
+          ]
+        }
+      ]
+    },
+    {
+      "hook": "kaylessa.harem.enmity.camellia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "camellia.harem.enmity.kaylessa",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "kaylessa.harem.enmity.w.anevia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "tirabade.harem.enmity.anevia.kaylessa",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "anevia.harem.enmity.kaylessa",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "shamira.harem.enmity.arueshalae",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "arueshalae.harem.enmity.shamira",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "herrax.harem.enmity.w.minagho",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "minagho_chivarro.harem.enmity.minagho.herrax",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "wenduag.harem.enmity.vellexia",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "vellexia.harem.enmity.wenduag",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.enmity.jannah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "jannah.harem.enmity.seelah",
+      "ruling": 30,
+      "status": "legitimately-inert",
+      "reason": "No emitted approved final terminal with this exact claimant direction; see row dispositions."
+    },
+    {
+      "hook": "seelah.harem.reconciled.areelu",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.camellia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arsinoe.harem.reconciled.nurah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "minagho_chivarro.harem.reconciled.hepzamirah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "nocticula.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "nurah.harem.reconciled.arsinoe",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "hepzamirah.harem.reconciled.minagho_chivarro",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "camellia.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "areelu.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.nocticula",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "camellia.harem.reconciled.wenduag",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "wenduag.harem.reconciled.camellia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.wenduag",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "wenduag.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "wenduag.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.wenduag",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.nenio",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "nenio.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "camellia.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.camellia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "nenio.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.nenio",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "galfrey.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.galfrey",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "vellexia.harem.reconciled.shamira",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "shamira.harem.reconciled.vellexia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.w.minagho",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "minagho_chivarro.harem.reconciled.minagho.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.minagho_chivarro",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "minagho_chivarro.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.yaniel",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "yaniel.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.vellexia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "vellexia.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "camellia.harem.reconciled.vellexia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "vellexia.harem.reconciled.camellia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "soana.harem.reconciled.camellia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "camellia.harem.reconciled.soana",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.kiana",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "kiana.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "eliandra.harem.reconciled.targona",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "targona.harem.reconciled.eliandra",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "melazmera.harem.reconciled.hepzamirah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "hepzamirah.harem.reconciled.melazmera",
+      "ruling": 31,
+      "status": "derived",
+      "witnesses": [
+        [
+          "hepzamirah.harem.enmity.melazmera",
+          "household.pair.melazmera_hepzamirah.replacement.held",
+          "household.pair.melazmera_hepzamirah.cost.melazmera_hunt_yielded",
+          "household.pair.melazmera_hepzamirah.cost.hepzamirah_guards_detoured",
+          "household.pair.melazmera_hepzamirah.cost.commander_watch_kept",
+          "household.pair.melazmera_hepzamirah.cost.replacement_carried"
+        ]
+      ],
+      "forbids": []
+    },
+    {
+      "hook": "kaylessa.harem.reconciled.camellia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "camellia.harem.reconciled.kaylessa",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "kaylessa.harem.reconciled.w.anevia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "tirabade.harem.reconciled.anevia.kaylessa",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "anevia.harem.reconciled.kaylessa",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "shamira.harem.reconciled.arueshalae",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "arueshalae.harem.reconciled.shamira",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "herrax.harem.reconciled.w.minagho",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "minagho_chivarro.harem.reconciled.minagho.herrax",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "wenduag.harem.reconciled.vellexia",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "vellexia.harem.reconciled.wenduag",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "seelah.harem.reconciled.jannah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "jannah.harem.reconciled.seelah",
+      "ruling": 31,
+      "status": "legitimately-inert",
+      "reason": "No approved one-reconciliation terminal; ordinary success, X remedy and reciprocal receipts are excluded."
+    },
+    {
+      "hook": "household.pair.seelah_wenduag.boundary.breached",
+      "ruling": 32,
+      "status": "produced",
+      "terminals": [
+        {
+          "scene": "household.pair.seelah_wenduag.debt_repayment",
+          "node": "result_2",
+          "choice": 0,
+          "requires": [],
+          "forbids": []
+        }
+      ]
+    },
+    {
+      "hook": "household.pair.galfrey_arueshalae.bodies_current",
+      "ruling": 33,
+      "status": "runtime-evaluated",
+      "contact_scenes": [
+        "household.pair.galfrey_arueshalae.settle.good",
+        "household.pair.galfrey_arueshalae.settle.evil",
+        "household.pair.galfrey_arueshalae.retry.good",
+        "household.pair.galfrey_arueshalae.retry.evil"
+      ]
+    },
+    {
+      "hook": "household.docket.horzalah_hepzamirah.captivity_remedy_ready",
+      "ruling": 34,
+      "status": "legitimately-inert",
+      "reason": "Awaiting J05's actual surrender, ruling 05."
+    },
+    {
+      "hook": "household.docket.gesmerha_jerribeth.remedy.authorized",
+      "ruling": 34,
+      "status": "legitimately-inert",
+      "reason": "Awaiting J05's actual cache delivery, ruling 07."
+    },
+    {
+      "hook": "camellia.harem.strain.galfrey.1",
+      "ruling": 35,
+      "status": "legitimately-inert",
+      "reason": "No approved knowledge beat; presence cannot produce jealousy."
+    }
+  ],
+  "failure_mappings": [
+    {
+      "row": "seelah_camellia",
+      "ruling": 1,
+      "prefix": "household.pair.seelah_camellia.",
+      "terminal": [
+        "household.pair.seelah_camellia.permanent_refusal"
+      ],
+      "enmity": "seelah.harem.enmity.camellia",
+      "stance": "seelah.harem.stance.tolerated"
+    },
+    {
+      "row": "arueshalae_nocticula",
+      "ruling": 2,
+      "prefix": "household.pair.arueshalae_nocticula.",
+      "terminal": [
+        "household.pair.arueshalae_nocticula.permanent_refusal"
+      ],
+      "enmity": "arueshalae.harem.enmity.nocticula",
+      "stance": "arueshalae.harem.stance.tolerated"
+    },
+    {
+      "row": "nenio_camellia",
+      "ruling": 3,
+      "prefix": "household.pair.nenio_camellia.",
+      "terminal": [
+        "household.pair.nenio_camellia.unsettled"
+      ],
+      "enmity": "nenio.harem.enmity.camellia",
+      "stance": "nenio.harem.stance.tolerated"
+    },
+    {
+      "row": "arsinoe_nurah",
+      "ruling": 20,
+      "prefix": "household.pair.arsinoe_nurah.",
+      "terminal": [
+        "household.pair.arsinoe_nurah.permanent_refusal"
+      ],
+      "enmity": "arsinoe.harem.enmity.nurah",
+      "stance": "arsinoe.harem.stance.tolerated"
+    },
+    {
+      "row": "galfrey_konomi",
+      "ruling": 30,
+      "prefix": "household.pair.galfrey_konomi.",
+      "terminal": [
+        "household.pair.galfrey_konomi.retry.failed"
+      ],
+      "enmity": "galfrey.harem.enmity.konomi",
+      "stance": "galfrey.harem.stance.tolerated"
+    },
+    {
+      "row": "vellexia_shamira",
+      "ruling": 30,
+      "prefix": "household.pair.vellexia_shamira.",
+      "terminal": [
+        "household.pair.vellexia_shamira.retry.failed"
+      ],
+      "enmity": "shamira.harem.enmity.vellexia",
+      "stance": "shamira.harem.stance.tolerated"
+    },
+    {
+      "row": "arueshalae_minagho",
+      "ruling": 30,
+      "prefix": "household.pair.arueshalae_minagho.",
+      "terminal": [
+        "household.pair.arueshalae_minagho.retry.failed"
+      ],
+      "enmity": "minagho_chivarro.harem.enmity.minagho.arueshalae",
+      "stance": "minagho_chivarro.harem.stance.minagho.tolerated"
+    },
+    {
+      "row": "arueshalae_vellexia",
+      "ruling": 30,
+      "prefix": "household.pair.arueshalae_vellexia.",
+      "terminal": [
+        "household.pair.arueshalae_vellexia.retry.failed"
+      ],
+      "enmity": "arueshalae.harem.enmity.vellexia",
+      "stance": "arueshalae.harem.stance.tolerated"
+    },
+    {
+      "row": "soana_camellia",
+      "ruling": 30,
+      "prefix": "household.pair.soana_camellia.",
+      "terminal": [
+        "household.pair.soana_camellia.retry.failed"
+      ],
+      "enmity": "soana.harem.enmity.camellia",
+      "stance": "soana.harem.stance.tolerated"
+    },
+    {
+      "row": "melazmera_hepzamirah",
+      "ruling": 44,
+      "prefix": "household.pair.melazmera_hepzamirah.",
+      "terminal": [
+        "household.pair.melazmera_hepzamirah.permanent_refusal"
+      ],
+      "enmity": "hepzamirah.harem.enmity.melazmera",
+      "stance": "hepzamirah.harem.stance.tolerated"
+    }
+  ],
+  "dispositions": [
+    {
+      "rows": "S01/S03b/S09/S11/S14",
+      "ruling": 21,
+      "status": "inert",
+      "reason": "Approved deed-only tool exception preserves terminals, but approved ruling gives no final claimant direction; hs-B common section explicitly withholds that assignment. Existing terminal incidents remain playable."
+    },
+    {
+      "rows": "S05",
+      "ruling": 17,
+      "status": "inert",
+      "reason": "No supported coup exposure/reconciliation producer; chosen-lovers account is history only."
+    },
+    {
+      "rows": "S18F",
+      "ruling": 4,
+      "status": "awaiting-J03",
+      "reason": "Horzalah counter-move targets Horzalah to Hepzamirah; Hepzamirah counter-move targets Hepzamirah to Horzalah. Neutral mishandling/absence/direct refusal stays unsettled. No such authored counter-move terminal exists yet."
+    },
+    {
+      "rows": "S23",
+      "ruling": 18,
+      "status": "awaiting-J03",
+      "reason": "Broken recruiting term targets Herrax to qualified Chivarro; broken old-chair term targets qualified Chivarro to Herrax. Missing reply is owed, never final. No terms/broken-term terminal exists yet."
+    },
+    {
+      "rows": "S34",
+      "ruling": 19,
+      "status": "awaiting-J03",
+      "reason": "Only final failed screen targets qualified Minagho to Hepzamirah; explicit final refusal of her strike targets Hepzamirah to qualified Minagho. First failed screen is pending. No interception terminal emitted yet."
+    },
+    {
+      "rows": "S22",
+      "ruling": 6,
+      "status": "inert",
+      "reason": "No incident provenance or vigil emission; native murders are not battlefield-order losses."
+    },
+    {
+      "rows": "S07.truth/S15.truth",
+      "ruling": 22,
+      "status": "inert",
+      "reason": "Actual partner-secret/exposure and false-report knowledge remain their private obligations, never a generic new F enmity or reconciliation."
+    },
+    {
+      "rows": "S42",
+      "ruling": 44,
+      "status": "direction-blocked",
+      "final": "household.pair.kaylessa_camellia.exposure_unsettled",
+      "reason": "Exact final terminal input supported, but referenced sheet/registry declares no claimant direction. Do not pick either woman by scene order."
+    },
+    {
+      "rows": "S43",
+      "ruling": 44,
+      "status": "direction-blocked",
+      "final": "household.pair.kaylessa_anevia.trail_unsettled",
+      "reason": "Final input supported; Anevia is the qualified woman, never Irabeth. Referenced sheet/registry supplies no claimant direction."
+    },
+    {
+      "rows": "S44",
+      "ruling": 44,
+      "status": "direction-blocked",
+      "final": "household.pair.shamira_arueshalae.claim.unsettled",
+      "reason": "Final input supported, but referenced sheet/registry supplies no claimant direction. Cover/lust/optional refusals are not F failures."
+    },
+    {
+      "rows": "S36",
+      "ruling": 44,
+      "status": "supported",
+      "reason": "POLICY_INPUTS names Hepzamirah to Melazmera. Declared one-retry makes diversion.failed pending; only permanent_refusal is final. replacement.held with its costs and exact old enmity earns the one matching receipt."
+    },
+    {
+      "rows": "S37/S38/S40/S41/S45/S47/S50/S51/S52",
+      "ruling": 44,
+      "status": "inert",
+      "reason": "Fixed X actions, delivery, repair and ordinary resolved do not produce replaceable enmity or reconciliation; no new F direction/receipt contract is approved."
+    },
+    {
+      "rows": "S39",
+      "ruling": 44,
+      "status": "outside-E4",
+      "reason": "POLICY names Galfrey/Nocticula, absent from the 167-hook appendix. undertaking.failed is pending under its retry; no new hook or allocation introduced."
+    }
+  ]
+}

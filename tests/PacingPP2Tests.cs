@@ -168,7 +168,9 @@ internal static class PacingPP2Tests
         {
             var terms = S("camellia.trickster.returned.terms" + twin);
             var deck = S("camellia.trickster.cards.the_deck_again" + twin);
-            check(C(deck, "wont", 0).Next == "wont_close" && C(deck, "silk", 0).Next == "close" && C(deck, "close", 0).Next == "morning"
+            string cut = C(deck, "silk", 0).Next!;
+            bool reachesClose = cut == "close" || (cut == deck.Id + ".explicit.1" && C(deck, cut, 0).Next == "close");
+            check(C(deck, "wont", 0).Next == "wont_close" && reachesClose && C(deck, "close", 0).Next == "morning"
                   && C(deck, "wont_close", 0).Next == null,
                 "Camellia: the kept spread (" + twin + ") still shares the stacked deck's scattered-cards close.");
             var w = World(story, 5, "trickster.ever", "camellia.committed", "camellia.trickster.returned", "camellia.killed",
@@ -177,6 +179,9 @@ internal static class PacingPP2Tests
             var viaStacked = Program.WalkVia(deck, w, "meaning", 1);
             check(viaWont.Count == 1 && viaStacked.Count == 1, "Camellia: the deck's two answers do not each end once.");
         }
+        var curtain = N(S("camellia.trickster.killed.late_curtain"), "scroll").Text;
+        check(curtain.Contains("There was no bargain to keep her") && curtain.Contains("Her chest moves") && !curtain.Contains("three nights more"),
+            "Camellia: the late curtain still bargains for three nights it then skips.");
 
         // Sol r1 (CAN cap): both cemetery pages are delivered only in Drezen.
         foreach (var id in new[] { "camellia.trickster.killed.late_curtain", "camellia.trickster.killed.third_night" })

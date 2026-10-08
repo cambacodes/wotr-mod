@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Tirabade;
 
 // Kaylessa, Trickster (Writer/handoffs/trickster/kaylessa.md; binding plan 11-ROSTER-PLAN-2 §2): "No lamb to the slaughter".
@@ -87,7 +88,21 @@ internal static class KaylessaTricksterTests
                 : Explore(Program.Copy(start), chapter, keep).Any(s => s.Has(flag));
         IEnumerable<Snapshot> Explore(Snapshot start, int chapter, Func<Snapshot, bool>? keep)
         {
-            var seen = new HashSet<string>();
+            // Exact flag-set keys: one persistent bit per flag, without retaining
+            // a full joined copy of hundreds of derived names for every outcome.
+            var flagIndices = new Dictionary<string, int>(StringComparer.Ordinal);
+            BigInteger Key(Snapshot state)
+            {
+                var bits = new byte[(flagIndices.Count + state.Flags.Count + 7) / 8];
+                foreach (var flag in state.Flags)
+                {
+                    if (!flagIndices.TryGetValue(flag, out var index))
+                        flagIndices[flag] = index = flagIndices.Count;
+                    bits[index / 8] |= (byte)(1 << (index % 8));
+                }
+                return new BigInteger(bits, isUnsigned: true);
+            }
+            var seen = new HashSet<BigInteger>();
             var frontier = new List<Snapshot> { start };
             for (int depth = 0; depth < 20 && frontier.Count > 0; depth++)
             {
@@ -101,10 +116,12 @@ internal static class KaylessaTricksterTests
                         {
                             yield return r;
                             if (keep != null && !keep(r)) continue;
-                            if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                            // Still observe/deduplicate every outcome. Retain only
+                            // the first 300, exactly as the old Take(300) did below.
+                            if (seen.Add(Key(r)) && next.Count < 300) next.Add(r);
                         }
                 }
-                frontier = next.Take(300).ToList();
+                frontier = next;
             }
         }
 
@@ -463,7 +480,7 @@ internal static class KaylessaTricksterTests
         {
             World(story, 5, "trickster", "trickster.ever", Returned, Dead, "kaylessa.started", P + "cost.dark_fate_stalled", P + "cost.shyka_price", P + "cost.shyka_raised",
                   Begged, "kaylessa.tomb", "kaylessa.camellia_killed", "kaylessa.anevia_caught", "kaylessa.unmasked", "kaylessa.ember_met",
-                  "iz.done", "kaylessa.anemora_told", "kaylessa.met", "kaylessa.trickster.react.shyka_note"),
+                  "iz.done", "kaylessa.anemora_told", "kaylessa.met", "kaylessa.trickster.react.shyka_note", "woljif.in_party"),
             World(story, 5, "trickster", "trickster.ever", Returned, Dead, "kaylessa.started", P + "cost.dark_fate_stalled", P + "cost.shyka_price", "kaylessa.note_held",
                   "kaylessa.healed_by_force", "iz.anemora_dead", "kaylessa.trickster.react.shyka_note"),
             World(story, 5, "trickster", "trickster.ever", Returned, "kaylessa.started", "kaylessa.met", P + "alive.swap_fumbled", P + "cost.amulet_burnt",
@@ -473,7 +490,10 @@ internal static class KaylessaTricksterTests
                   P + "after.rules", P + "clock_named", P + "after.dark_fate", P + "beast_met", P + "after.the_beast", P + "knife_shown",
                   P + "after.the_knife", W + "the_wasp", W + "soldier", W + "in_the_dark"),
         };
-        foreach (var beat in courtship)
+        // The supplement has its own played dispatch and thirty-day clock.
+        // Test that actual producer history rather than the four older sampled worlds.
+        KaylessaCourierHistoryTests.Run(story, check);
+        foreach (var beat in courtship.Where(s => s.Id != N + "courier_reply"))
             check(worlds.Any(w => Reaches(w, beat.Id)), "Courtship beat unreachable in every test world: " + beat.Id);
         Console.WriteLine("PASS: Kaylessa Trickster (Trk_Kaylessa_*): the promise, Shyka's trade, Forn's courtesy and the amulet swap, the rules, the clock, the cells, the dagger, the hilt, the knife on the table, the pages, the oath, and "
                           + courtship.Length + " courtship beats.");
@@ -551,11 +571,11 @@ internal static class KaylessaTricksterTests
             if (fedBeast) w.Flags.Add(fed);
             foreach (var id in new[] { kept, late })
             {
-                var text = Visible(id, w);
-                var consequences = text.Where(t => SurfaceIds.Has(t, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/3][kaylessa.trickster.epilogue.no_lamb/page/paragraph/18][kaylessa.trickster.epilogue.commit/page/paragraph/1][kaylessa.trickster.epilogue.commit/page/paragraph/5]")).ToArray();
+                var consequences = Rules.VisibleParagraphs(Node(id, "page"), w)
+                    .Where(p => p.Requires.Contains(fed)).ToArray();
                 check(consequences.Length == (fedBeast ? 1 : 0), "Polish Kaylessa: fed consequence missing/doubled in " + id);
                 if (fedBeast)
-                    check(SurfaceIds.Has(consequences[0], "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/3][kaylessa.trickster.epilogue.commit/page/paragraph/1]") == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
+                    check(consequences[0].Requires.Contains(stalled) == (device == stalled), "Polish Kaylessa: living curse acquired stasis.");
             }
             var knife = Visible(kept, w).Where(t => SurfaceIds.Has(t, "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/12][kaylessa.trickster.epilogue.no_lamb/page/paragraph/13]")).ToArray();
             check(knife.Length == 1 && SurfaceIds.Has(knife[0], holder.EndsWith("knife_held") ? "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/12]" : "[kaylessa.trickster.epilogue.no_lamb/page/paragraph/13]"),

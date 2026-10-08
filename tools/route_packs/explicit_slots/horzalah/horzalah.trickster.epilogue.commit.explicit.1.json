@@ -1,7 +1,7 @@
 {
   "voice": "HORZALAH: proud, vicious, acquisitive, sexually direct and suspicious of being purchased; sharp contempt, economical commands, malicious amusement, competitive pleasure. She enjoys control and may willingly yield for a moment when it pleases her. Affection does not redeem her, end slavery or make her a crusader. Do not quote source dialogue or repeat sample sentences. Invent fresh, concise speech; no HR negotiations, maxims, therapy, narrator judgement or modern slang.",
   "scene": "VERIFIED CANON: she is Baphomet's daughter and Hepzamirah's younger sister, formerly an advance-payment concubine to Yozz; later she claims Yozz and his Guild as property. Her Ch4 projection is tall, extremely emaciated, with shackle marks and flaming seals; native Ch5 dialogue says the seals are lifted. The collar-shaped throat scar and shrewd evil eyes with dark flames are attested. Do not claim Ch4 emaciation is an erotic ideal or invent a Ch5 recovery. No verified detail of genital anatomy, breasts, horns, wings, tail, scent, or species sexual mechanics is supplied. Do not invent those details. Her costume, claw staging, paid ear trophy, rooms and romance are authored route continuity, not additional native physical facts. No partner, slave or family member participates.\nTrickster spring after Threshold; Commander's rooms in Drezen, epilogue.commit after the delayed report/test history and her explicit present choice. Living or earned-returned Commander and Horzalah, two willing lucid adults alone. THIRD-PERSON epilogue narration: 'the Commander', never gameplay 'you'. This is this ending's deferred first night, not a second retelling of the Ch5 first night. Authored continuity: war maps remain on table, discarded collar across them, Commander loosens her leather costume and she finishes the motion herself; ear missing after paid con. REQUIRED BEATS: her decision spoken before intimacy; impatience is appetite, not indecision; mutual sexual intimacy in the Commander's room; a proud comment on the now-ended war, not redemption or gratitude for buying her freedom. End with boots outside, after the private night, not a lover interrupting. Next prose: she has dressed, orders breakfast, shuts the door on the sentry; her appetite and independent Guild life continue. No new arrival state, first-night flag, cost, oath or prewar scene claimed. Intended act: consensual sex between the two adults, adapted to the selected Commander anatomy; no compulsory permanent power role. Keep anatomy consistent with the selected variant, without asserting unsupported species anatomy.",
-  "last_line": "N: Bootsteps stop outside the Commander's door.",
+  "last_line": "N: By morning the collar was fastened again. Horzalah sent the sentry for breakfast, then shut the door in his face. The councils waited until she had eaten. She left to run her Guild and returned a fortnight later, demanding the same room and a less inquisitive watch.",
   "speakers": {
     "H": "Horzalah"
   },
@@ -12,5 +12,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "slot_id": "horzalah.trickster.epilogue.commit.explicit.1"
+  "slot_id": "horzalah.trickster.epilogue.commit.explicit.1",
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief.",
+  "narration": "third-past"
 }

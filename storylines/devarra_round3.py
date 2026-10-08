@@ -176,15 +176,75 @@ def tower(scenes):
     _add(generals['ask']['Choices'][0], 'Set', VOLUNTARY)
     _add(generals['bargain']['Choices'][0], 'Set', PURCHASED)
 
+    # D16: act before the kill is settled, with consequences in the same outing.
+    hunt = _scene(scenes, T + 'the_hunt')
+    nodes = _nodes(hunt)
+    nodes['wait']['Choices'][0]['Text'] = '[Wait for her shadow to reach the demons.]'
+    nodes['wait']['Choices'].append(c(
+        '[Circle the hollow and drive the stragglers toward her.]',
+        check={'Skill': 'SkillStealth', 'DC': 22,
+               'Success': 'drive_stragglers', 'Failure': 'spotted'}))
+    hunt['Nodes'].extend([
+        n('drive_stragglers', 'Narrator',
+          '{n}You slip down the far slope. When Devarra drops into the hollow, two babaus '
+          'break toward you. You meet them with your weapon drawn. They recoil, straight '
+          'into her claws. She pins one alive and turns its face toward you.{/n}',
+          c('Continue', 'shared_kill')),
+        _voice('shared_kill', '"That one was yours." {n}She bites through its spine and '
+               'pushes the twitching body toward you.{/n} "Take it. Before I change my mind."',
+               c('[Take your share.]', 'bite'),
+               c('"Keep it. I wanted the kill."', 'gesture')),
+        n('spotted', 'Narrator',
+          '{n}Loose shale shifts beneath your boot. The babaus look up. One leaps toward '
+          'you, forcing you back against the rock with its spear. Devarra strikes before '
+          'it can thrust again; her claw crushes its chest beside your face.{/n}',
+          c('Continue', 'rescued')),
+        _voice('rescued', '"You spoiled the waiting." {n}She drags the demon away from '
+               'you and tears it open.{/n} "Stand there. This mouthful is mine."',
+               c('[Hold the ridge while she finishes the hunt.]', 'finish_spotted')),
+        n('finish_spotted', 'Narrator',
+          '{n}You hold the ridge against the fleeing demons. Below, Devarra pulls '
+          'the remaining babaus from the rocks, one by one. The last tries to crawl '
+          'beneath its dead companions. She digs it out and kills it slowly.{/n}',
+          c('Continue', 'offer')),
+    ])
+
+    # D17: an intervention changes the reprisal; neither outcome erases her loss.
+    clutch = _scene(scenes, T + 'the_clutch')
+    nodes = _nodes(clutch)
+    nodes['nest']['Choices'].append(c(
+        '[Jump down between her jaws and the nest.]', 'intervene_nest',
+        flags=(T + 'nest_intervened',)))
+    clutch['Nodes'].extend([
+        n('intervene_nest', 'Narrator',
+          '{n}You jump from her shoulder and land beside the eggs. Her jaws stop above '
+          'your head. A vrock snatches an egg and takes wing; another follows. Devarra '
+          'crushes the third beneath her foreclaw. Its blood spatters your boots.{/n}',
+          c('Continue', 'intervention_judged')),
+        _voice('intervention_judged', '"Now you move." {n}Her teeth close around the dead '
+               'vrock. She tears off its head and drops it beside you.{/n} '
+               '"You found your courage for these. Keep it for the next time I ask '
+               'about mine." {n}She lowers her shoulder, watching the escaping vrocks.{/n}',
+               c('[Climb back onto her shoulder.]', 'end')),
+    ])
+
 
 def epilogue(page):
     for paragraph in page.get('Paragraphs', []):
         if T + 'one_battle_sold' in paragraph.get('Requires', []):
             _add(paragraph, 'Requires', PURCHASED)
+            paragraph['Text'] = ('{n}The generals still had no battle to enter in their dispatches. '
+                'Devarra had named her price: the Commander would tell her every death in it, '
+                'on the ridge the night after. No such account had been collected.{/n}')
     page.setdefault('Paragraphs', []).append(p(
-        '{n}Devarra chose her battlefield and broke a demon host before dawn. The generals learned '
-        'of it from the survivors. She returned to her ridge before anyone could thank her; '
-        'she had asked for neither a dispatch nor a story in payment.{/n}', requires=(VOLUNTARY,), forbids=(PURCHASED,)))
+        '{n}Devarra had offered one battle on a field of her choosing. The generals waited for word '
+        'of where and when. No report arrived before the march to Threshold; '
+        'her offer remained unfulfilled.{/n}', requires=(VOLUNTARY,), forbids=(PURCHASED,)))
+    page['Paragraphs'].append(p(
+        '{n}Two vrocks escaped her reprisal when the Commander jumped between her '
+        'and their nest. She remembered it each time she saw their kind over the '
+        'old Wound. The Commander heard about her own broken clutch again, '
+        'however many years had passed.{/n}', requires=(T + 'nest_intervened',)))
 
 
 def integrate(payload):
@@ -205,9 +265,16 @@ def integrate(payload):
 def accepted_ending(event):
     """Retire the merged effect-free proposal after a campaign yes; keep its IDs."""
     page = event['Nodes'][0]
-    page['Text'] = ('{n}In spring Devarra returned to the north ridge. The Commander climbed to her fire '
-        'and bared the arm promised before the march to Threshold. She took her first small bite '
-        'and watched the Commander bind it.{/n} "You kept me waiting long enough. Stay."')
+    page['Text'] = ('{n}In spring Devarra returned to the north ridge. The Commander climbed '
+        'with the arm bared, as promised before Threshold.{/n}')
+    page.setdefault('Paragraphs', []).extend([
+        p('{n}She took another small annual bite and watched the Commander bind it.{/n} '
+          '"Back again. Stay. I want the rest of you."', requires=(T + 'first_bite',)),
+        p('{n}She took her first small bite and watched the Commander bind it.{/n} '
+          '"You kept me waiting long enough. Stay."', forbids=(T + 'first_bite',)),
+    ])
+    # Frozen .continue answers must stay inert. Make the optional terminal exit explicit.
+    page['Choices'][0]['Text'] = 'End the account.'
     for answer in page['Choices'][1:3]:
         _add(answer, 'Forbids', LATE_YES)
     page['Choices'].append(c('Continue', 'late_accepted', requires=(LATE_YES,)))

@@ -185,38 +185,29 @@ fortune(BOWS, "Matching ribbons", '"You offered Nocticula ribbons."', [
 # --- 4. Worthless. -----------------------------------------------------------------------------------------------------
 
 fortune(MEAN, "Worthless", '"About what you said to Socothbenoth."', [
-    nar("open", '''{n}She is on her feet the moment she sees you, and then she does not come any closer. There is a parcel in her hands. It is not wrapped in yellow silk this time; it is wrapped in something grey, as if she had not been able to bear the yellow.{/n}''',
+    nar("open", '{n}Chadali sets a grey parcel on the Council table and pushes a chair towards you. A burnt edge shows through the wrapping.{/n}',
         c("Continue", "start")),
-    ch("start", '''"I know what I said." {n}Her voice is tight.{/n} "In front of everyone. Socothbenoth said we all like to talk and none of us want to act, and I told him it was easy for him to say, because nobody needs his worthless essence."
-"Worthless." {n}She says it again, as if it tasted of something rotten.{/n} "I said that. Out loud. With my lucky charm sitting right there watching me say it."''',
+    ch("start", '"Yes, I called his essence worthless. He was telling us to act while that needle was waiting for the rest of us!" {n}She tears the wrapping open.{/n} "I burnt these thinking about it. Now sit down. I want to know what made you pull that face."',
       c('"You were frightened. I know."', "frightened"),
       c('"It was ugly to hear."', "hurt"),
       c('"You weren\'t wrong. Nobody needs his."', "wrong")),
-    ch("frightened", '''"I was frightened." {n}She nods, too many times.{/n} "I was so frightened that I went looking for the meanest thing in the room, and it was me." {n}She holds the grey parcel out, stiffly.{/n}
-"Everybody thinks I'm only nice. I'm not. I'm nice the way a sunny day is nice: because nothing's gone wrong yet. When something goes wrong, I can be as mean as Alichino. Meaner. He at least means it on purpose."''',
-      c('"Everyone has a worst moment. That was yours."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
+    ch("frightened", '"Of course I was frightened! Would you put your hand out for that thing?" {n}She jabs a finger towards Socothbenoth\'s empty chair.{/n} "He can afford to be brave. Nobody needs his essence. I wanted him to stop volunteering mine. And I still do."',
+      c('"I would rather hear you shout than watch him volunteer you."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
       c('"Then don\'t do it again."', "again"),
-      c('"Everyone has a worst moment. That was yours."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
-    ch("hurt", '''{n}She flinches as if you had thrown something.{/n}
-"Good," {n}she says, and then, horrified:{/n} "No. Not good. I meant... good that you told me. Not good that you had to hear it." {n}She presses the grey parcel against her chest.{/n}
-"I'm not used to hurting people. I'm used to hurting for them. I don't know what to do with this. I baked. I burnt them. They're in here."''',
+      c('"I would rather hear you shout than watch him volunteer you."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
+    ch("hurt", '"It was ugly to hear him offering us up, too!" {n}She snaps a blackened cookie in two; crumbs fall over the table.{/n} "I wanted to hurt his feelings. There. I did. You can dislike that without pretending he was right."',
       c("[Take the burnt cookies, and eat one.]", "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
       c("[Take the burnt cookies, and eat one.]", "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
-    ch("wrong", '''"Don't." {n}The flat no, the raised finger.{/n} "Don't say that. I said it to be cruel, and you're saying it to agree with me, and both of those are lies."
-"The Abyss is in the Wound already; that part was even true. But I didn't say it because it was true. I said it to make him small, in front of you." {n}Her finger trembles.{/n} "I knew that when I said it. That's what made it so mean."''',
-      c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
-      c('"Then we\'re even. Your worst moment, and my agreeing with it."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
-    ch("again", '''"I won't." {n}Instantly, fiercely.{/n} "I'll try not to. I'll be frightened again, I know I will, and when I am, I'll eat a cookie and say something nice about the weather instead."
-{n}Her mouth wobbles.{/n} "That's a promise. I don't know if I can keep it. I'm telling you that too, because that's fair."''',
+    ch("wrong", '"Exactly!" {n}She slaps the table, then shakes the crumbs from her fingers.{/n} "The Abyss is already connected to the Wound. What was he risking? I should have asked him that before I shouted. Then he would have had to answer instead of looking offended."',
+      c('"Then make him answer next time. I\'ll back you."', "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
+      c('"Then make him answer next time. I\'ll back you."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
+    ch("again", '"Don\'t order me about!" {n}She pulls the parcel back to her side of the table.{/n} "If he offers me to that needle again, I\'ll shout again. You can have a cookie when you stop making that face."',
       c("Continue", "close")),
-    ch("forgive_early", '''{n}The cookies are very burnt. You eat one anyway. She watches you with enormous wet eyes.{/n}
-"You ate one." {n}Her voice cracks.{/n} "They're horrible. They're burnt all the way through, and I made them while I was being mean, and you ate one anyway." {n}She sets the grey parcel down and puts both her hands over her face.{/n} "That's the worst cookie I've ever baked, and you ate it for me."''',
+    ch("forgive_early", '{n}You take a burnt cookie. Chadali watches you bite through it, then reaches for another herself.{/n} "Oh, that is horrible. Give me the black ones. I\'m not wasting all that honey because Socothbenoth made me cross."',
       c("Continue", "close")),
-    ch("forgive", '''{n}The cookies are very burnt. You eat one anyway. She watches you with enormous wet eyes.{/n}
-"You ate the burnt one." {n}Her voice cracks.{/n} "I told you about the burnt ones. I told you I eat them myself, alone, so nobody knows." {n}She sets the grey parcel down and puts both her hands over her face.{/n} "Now somebody knows."''',
+    ch("forgive", '{n}You take a burnt cookie. Chadali bites into another and scowls at it.{/n} "Worse than the ones I told you about! I\'ll eat these. You pick out the ones with some honey left. We\'ll need something nicer before the next session."',
       c("Continue", "close")),
-    ch("close", '''{n}When she takes her hands away, her face is blotched and her dimples are back.{/n}
-"Next time you're mean to me, I'll forgive you straight away. That's the rule. You went first."''',
+    ch("close", '{n}She folds the wrapping around the remaining cookies and tucks it beneath her arm.{/n} "Bring tea next time. And don\'t expect a cookie to settle every quarrel. I\'m still cross with Socothbenoth."',
       c("[Go.]")),
 ], requires=(STARTED, WORTHLESS), forbids=(MEAN,), chapters=(5,))
 
@@ -272,7 +263,7 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
     ch("look", '''{n}When the last of it is off she pulls you down among the cushions, and the candles gutter in the draught you make, and for a moment she simply lies there looking up at you, flushed and dishevelled, one hand spread flat on your chest as if feeling for a heartbeat she had bet on.{/n}
 "Lucky me," {n}she whispers, and she does not mean it as a joke.{/n}''',
       c("[Lean down to her.]", "cut", flags=(NIGHT_FLAG,))),
-    ch("cut", '''{n}She pulls the silk loose the rest of the way and draws you down to her, and her laugh against your mouth is the last thing you hear clearly. Somewhere along the table a candle tips over and goes out, and neither of you notices, and neither of you minds.{/n}''',
+    ch("cut", '{n}A guttered candle has left wax on the Council table. Chadali lies against you among the scattered cushions, her silk still beside your armour. She reaches up and plucks a crushed flower from your hair.{/n} "Look at that! All my arranging, and we\'ve flattened them. You\'re helping me clear this up before they come back."',
       c("[...]")),
 ], requires=(COMMITTED,), forbids=(NIGHT,), delay=12)
 
@@ -318,12 +309,9 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
     ch("asked", '''"I know." {n}She does not look away, which is worse.{/n} "I asked. I wanted her to keep believing in me, and I wanted it more than I wanted to be honest with her, and you did exactly what I asked, and did it well."
 "That's why I'm cross with you instead of myself. It's easier." {n}She unfolds the letter again.{/n} "It's not fair. I know it's not fair. Now help me decide what to do about her roof."''',
       c("Continue", "choose")),
-    ch("bad", '''"Yes!" {n}The calm cracks.{/n} "Yes, it's bad! They think it was me. They think their prayers worked. They'll pray harder, and next month you'll be off marching somewhere without a stamp, and nothing will happen, and they'll think I've stopped loving them."
-{n}She throws the letter on the table.{/n} "You can't rig somebody's luck because you love them. That's not luck, that's a leash."''',
+    ch("bad", '"She\'s paying for a roof, not a good month!" {n}She throws the letter on the table.{/n} "I wanted her brother safe. I asked you to move him. I did not expect her to spend her wages on a miracle we arranged between us. Now I have to tell her."',
       c("Continue", "choose")),
-    ch("see", '''{n}That stops her. For a moment she looks at you with a kind of helpless tenderness, and then her mouth sets again.{/n}
-"That's the sweetest, stupidest thing anyone's ever done for me." {n}She presses the heels of her hands to her eyes.{/n}
-"But it wasn't my luck. It was yours, wearing my name. And they can't tell the difference. That's the part that frightens me. If you can do it, and nobody can tell, then what am I for?"''',
+    ch("see", '"For once?" {n}She flattens the priest\'s letter beneath her palm.{/n} "I hear their prayers. I send what I can. You moved a soldier off the wall because I asked, and now she\'s spending her wages thanking me for your order!" {n}She pulls the letter towards her.{/n} "I\'ll write to her myself. She can decide whether she still wants to pay for that roof."',
       c("Continue", "choose")),
     ch("giving", '''"I'm always giving it away because that's what it's for!" {n}She stamps her foot. Somewhere far away, you are certain, something unlucky happens to someone who deserved it.{/n}
 "You don't get to decide where it goes. Not mine. You decide where the army goes, and where the money goes, and where half of Golarion goes. Leave me this."''',
@@ -331,8 +319,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
     ch("choose", '"No more orders wearing my name." {n}She holds out her little finger.{/n} "I\'ll tell her what I asked you to do. She gets her thanks back to give to the right person. You can help with the roof openly."',
       c("[Link fingers.] \"I'll stop.\"", "stopped", flags=(NO_MORE_RIGGING,)),
       c('"I can\'t promise that. If I see your people going hungry, I\'ll act."', "kept", flags=(KEPT_RIGGING,))),
-    ch("stopped", '''{n}She shakes on it, once, firmly, and some tension goes out of her shoulders that you had not known was there.{/n}
-"Good. Now I'll forgive you. I always do; it's very annoying." {n}She sniffs.{/n} "And you can mend their roof. Openly. With a sign on it that says it was the Commander. That's allowed. That's honest."''',
+    ch("stopped", '{n}She shakes your linked fingers once, firmly, then picks up the letter.{/n} "Good. I\'ll tell her what happened. She may be furious. I would be! And if you help mend the roof, put your own name on it."',
       c("[Promise to put up a sign.]")),
     ch("kept", '''{n}She looks at your hand, and at her own outstretched little finger, and slowly curls it back into her fist.{/n}
 "Then do it with your name on it." {n}Very quietly.{/n} "If you have to act, act. Just don't do it wearing my face. I'll never ask you not to feed them. I'm asking you not to pretend you're me while you do it."
@@ -441,7 +428,7 @@ EPILOGUE_PARAGRAPHS = [
     (PROMISED_SAFE, "{n}She kept, in the drawer where she kept her ribbons, a note in the Commander's hand from the week of the cauldron: \"Nobody takes it by force.\" She never needed to show it to anyone. She liked to read it anyway.{/n}"),
     (HELD_AFTER, "{n}Every time the Commander came to her, for the rest of their life, the first thing the Commander asked was \"Is it growing?\" and every time she said yes. By the end, it was true.{/n}"),
     (SAW_THE_FAIR, "{n}Her fair was built, in the end, at the edge of what had been the Wound: acrobats, lollipops, and a three-headed puppy that ate nobody. There was a devil's stall. It sold lollipops. Chadali watched it herself, every day, with a very big one.{/n}"),
-    (FORGAVE_MEAN, "{n}She was mean twice more in all their years together, and both times she came straight to the Commander and, before the Commander could say anything, said, \"You went first,\" and the Commander laughed, and it was over.{/n}"),
+    (FORGAVE_MEAN, "{n}She still snapped when someone spoiled her mood. The Commander brought tea after their quarrels; she brought cookies, sometimes burnt. Neither always got the answer they wanted.{/n}"),
     (NO_MORE_RIGGING, "{n}Her priests in Drezen had ordinary luck after that, good months and bad. The Commander mended their roof once more, openly, with a sign. She kept the sign.{/n}"),
     (KEPT_RIGGING, "{n}When her priests went hungry the Commander fed them, with the crusade's stamp on every sack, and she never once complained about it, and once she was seen kissing a sack.{/n}"),
     (ELYSIUM_PROMISED, "{n}The Commander saw the meadows, in the end, and sat in the river, and was fed cookies until they stopped looking at the horizon. It took three years. She had said it might.{/n}"),

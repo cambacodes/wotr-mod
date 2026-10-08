@@ -290,14 +290,14 @@ s("future", "A future she has not rehearsed", [
       c('"I cannot promise you a future together."', "part")),
     n("fate", "Jerribeth", '''"Find a loophole large enough for two, then. I refuse to spend eternity applauding you from the wrong side of a closed door."
 {n}Her amusement is bright and eager.{/n}
-"I would enjoy helping. Imagine the indignity of being an inevitable ending and discovering that somebody has read the smaller print."
+"I would enjoy helping. Imagine the indignity of being an inevitable ending and discovering that somebody has found the gap in it."
 {n}She pauses.{/n}
-"Tell me before you sign anything on my behalf. I prefer to choose which impossible arrangements I enter."''', c('"Then we will examine the arrangement together."', "promise", flags=("jerribeth.fate_terms",))),
+"Tell me before you bargain with anything on my behalf. I prefer to choose which impossible arrangements I enter."''', c('"Then we will examine the arrangement together."', "promise", flags=("jerribeth.fate_terms",))),
     n("promise", "Jerribeth", '''"Then here is what I want, since you so rarely ask. More than evenings. When I decide how much more, you will discover the price, and you will pay it, because by then you will already have had the goods."
 {n}A faint vibration of amusement returns.{/n}
-"This is the part where a mortal says that the other matters. I will not say it. I will tell you that I turned away two commissions this month to keep the frame free on your evenings, and that I do not turn away money. Draw your own conclusion. I already have."''',
-      c('"You matter to me. Write that into whatever you are drafting, and read it as closely as you like."', "end", flags=("jerribeth.committed",)),
-      c('"I want you in my life. Needles, small print and all."', "end", flags=("jerribeth.committed",))),
+"This is the part where a mortal says that the other matters. I will not say it. I will tell you that I let a perfectly good specimen spoil this month, because the night I meant to pin him was one of your evenings, and I do not let things spoil. Draw your own conclusion. I already have."''',
+      c('"You matter to me. Pin that wherever you like, and look at it as closely as you like."', "end", flags=("jerribeth.committed",)),
+      c('"I want you in my life. Needles, cases and all."', "end", flags=("jerribeth.committed",))),
     n("end", "Jerribeth", '''{n}She lets the answer stand without testing it, which for her is a considerable concession, and then tests it anyway.{/n}
 "I shall hold you to every word. You should know that I have kept a copy. Tomorrow, then. If the world is still ending, it can spare us another conversation."
 {n}Before the image fades, the seam of the invented horizon appears behind her. She has kept it.{/n}''', c('[Keep the next evening for her.]', "future_conclusion", flags=("jerribeth.chosen_future",))),
@@ -383,7 +383,7 @@ def ending(id, text, requires=(), forbids=(), owner="Epilogue"):
             c('[Remember the promise and the invitations still unanswered.]', "earlier", forbids=("jerribeth.developed_future",)), portrait="Jerribeth"))
         nodes.extend([
             n("earlier", "Narrator", '''{n}The promise was real, though much of the life it invited remained to be discovered. Jerribeth still wanted another evening, and made no attempt to disguise her impatience when arranging one became difficult.{/n}
-{n}She kept working on her illusions, and kept an account, in a hand nobody else could read, of every evening the Commander had promised and every evening the Commander had come. She never said what she meant to do with the difference. She enjoyed not saying.{/n}''', c(), portrait="Jerribeth"),
+{n}She kept working on her illusions, and kept a pin for every evening the Commander had promised, in a case nobody else could open, and pushed one home for every evening the Commander came. She never said what she meant to do with the pins left standing. She enjoyed not saying.{/n}''', c(), portrait="Jerribeth"),
             n("settlement", "Narrator", "{n}The room Jerribeth wanted had begun with a bargain whose costs neither of them could forget.{/n}",
                 c('[Remember the account and the inspection.]', "account", requires=("jerribeth.counter_public_account",)),
                 c('[Remember the catalogue and its clients.]', "catalogue", requires=("jerribeth.counter_private_archive",), forbids=("jerribeth.counter_public_account",)), portrait="Jerribeth"),
@@ -413,7 +413,7 @@ ending("aeon", '''{n}The history that might have joined Jerribeth and the Comman
 # Earned presence (rubric Binding context (3)): a Commander who stepped into the Wound and prepared no return is mourned.
 SCENES.append(scene("jerribeth.ending_sacrifice", "The guest who knocked", "Epilogue", 5, "", [
     n("start", "Narrator", """{n}The correspondence charm went cold at the hour the Wound closed. Jerribeth knew before the heralds did, and spent the night trying to make it warm again by every means she had, several of which would have had her burned in Drezen's square if anyone there had known her name.{/n}
-{n}Nothing answered. She did not grieve where anyone could see; she was a demon, and she did not concede that she could. She kept the account she had always kept, in the hand nobody else could read: every evening promised, every evening come. The difference was final now, and she hated that more than the death.{/n}
+{n}Nothing answered. She did not grieve where anyone could see; she was a demon, and she did not concede that she could. She kept the pins she had always kept: one for every evening promised, one pushed home for every evening come. The ones left standing would stand for ever now, and she hated that more than the death.{/n}
 {n}She told a priest once, when he was unwise enough to offer her comfort, that she had never before been left holding a debt she could not collect, and that she meant to find out whom in the Boneyard to bill. He did not sleep well for a month.{/n}""", c(),
       portrait="Jerribeth"),
 ], Relationship="jerribeth", last=99, requires=("sacrifice",),

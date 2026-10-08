@@ -502,6 +502,10 @@ def _paragraphs(scene_, paragraphs):
 
 
 def integrate(payload):
+    # Authored phase-4 ix-b reactions; appended without changing saved scene references.
+    import copy
+    from storylines.trickster_interactions_ix_b import SCENES as interactions
+    payload["Scenes"].extend(copy.deepcopy(interactions))
     """Save-safe edits to the registered route: no id, node or choice is renamed, removed or reordered."""
     rel = payload["Relationships"]["gesmerha"]
     rel["Objective"] = "Speak with Gesmerha"

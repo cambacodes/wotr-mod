@@ -465,10 +465,11 @@ beat(H + "beat.spit", "In the street", '"What happened here?"', [
 "Thank you. I will not say that again, so do not ask."''',
        c("[Don't ask.]", flags=(SPIT,))),
     nar("hers", '''{n}She moves once. The boy's sword is in the gutter, and the boy is on his knees in front of her, with her fingers under his chin, tipping his face up to hers. She has not drawn a knife. She does not need to.{/n}
-"You lost your family to my kind," {n}she says, quite gently.{/n} "I can see it. I can smell it on you. So listen. Your family were not killed by me. Mine were not killed by you. Next time, find the right demon, and spit at that one, and do it with a better weapon than your mouth."''',
+"Your family?" {n}She digs a claw beneath his chin until he stops struggling.{/n} "The Commander killed my sister in Colyphyr. I enjoyed hearing about it. You look less pleased with your loss."
+{n}She wipes the spit from her cheek with her free hand and smears it across his mouth.{/n} "Lick it up. There. You can swallow something besides grief."''',
         c("Continue", "hers2")),
     hz("hers2", '''{n}She lets him go. He picks up his sword and does not look at her, and his friends take him away, and the street starts breathing again.{/n}
-{n}Horzalah wipes her cheek with one knuckle.{/n} "That," {n}she says to you,{/n} "was the most mercy I have shown anybody in a hundred years. I did it because it was your street, and you would have been tiresome about blood on it. Do not count on it twice."''',
+{n}Horzalah inspects the blood beneath her claw.{/n} "I wanted his tongue. But your watch would have swarmed me, and I came to Drezen for better sport." {n}She flicks the blood onto the cobbles.{/n} "Let him explain to his friends why he knelt."''',
        c("[You won't.]", flags=(SPIT,))),
     nar("between", '''{n}You step in between them, and for a heartbeat both of them look at you with the same expression, the one people wear when they have been denied something they badly wanted.{/n}
 {n}The boy sheathes his sword first. His friends take him away. Horzalah wipes her cheek with one knuckle.{/n}''',
@@ -839,7 +840,7 @@ letter(H + "letter.first", "Pinned", [
     nar("start", '''{n}You wake with a knife in the post of your bed, a hand's breadth above your head, so thin you did not hear it go in. It pins a folded sheet of black paper. The hand is as sharp as a row of nails.{/n}''',
         c("Continue", "read")),
     hz("read", '''"Mortal.
-You have gone off to your war without saying goodbye, which is rude, and without telling me where, which is sensible. I found you anyway. You will have noticed.
+You were not by the old elf's shelves when I came looking. Your war keeps you busy. So does mine, and I still found time to find your bed. You will have noticed.
 I do not write letters. I write contracts. This is not a contract. I have no idea what it is. I am sending it because I was standing in your street by the old elf's shelves and you were not in it, and I found that I minded, and I do not like minding things. It is very bad for business."''',
        c("[Read on.]", "board")),
     hz("board", '''"You will want to know that your name is no longer on any board in Alushinyrra. Not mine, not the two lesser Guilds by the docks, not the one the Lady's court keeps for itself and pretends it does not. I had them taken down. The lesser Guilds took some persuading. One of them no longer exists.

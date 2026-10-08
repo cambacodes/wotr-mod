@@ -1,0 +1,20 @@
+{
+  "revision": "5ac9d60a81ad68114c789c8373e47d58efecefdc",
+  "export_sha256": "489ea8428ac04a611f023130202f41828990e535e4086bc44accb6eb94ecf967",
+  "scene_count": 4051,
+  "relationship_count": 49,
+  "source": "frozen unmodified J01 base; generated with parent-binding manifests",
+  "rulings": [
+    33,
+    41
+  ],
+  "elapsed_seconds": 133.956,
+  "parent_bindings": [
+    "reference/canon-review/expansion-parent-bindings.json",
+    "reference/canon-review/nurah-parent-bindings.json",
+    "reference/canon-review/nurah-parent-runtime-cue-bindings.json",
+    "reference/canon-review/terendelev-parent-bindings.json"
+  ],
+  "save_inventory_sha256": "025b6d60c5ee4154a626ee6e69cc9ed70e45a9b91a8d6ea8f3454c9318facd77",
+  "notes": "Immutable pre-J01 identities/prose; current contacts never migrate a saved commitment into bodily attendance. Native loss/recovery rewrites and withheld-row emission remain with the owning jobs."
+}

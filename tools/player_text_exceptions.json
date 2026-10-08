@@ -35,6 +35,672 @@
       "reason": "S38: He refers to Minagho's male dispatch runner, who is the subject of the preceding sentence; no gender is assigned to the Commander.",
       "block": "harem-int-w1",
       "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "location": "start",
+      "code": "commander-gender",
+      "match": "Commander, and I will make him",
+      "reason": "Him is the one-armed male Drezen veteran seeking a graft; Commander is the person Areelu asks to fund his hand.",
+      "block": "fix-r3c",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "alone",
+      "code": "commander-gender",
+      "match": "his pamphlets under her arm and a look the Commander",
+      "reason": "His pamphlets belong to the male natural philosopher identified at the start; the Commander recognizes Areelu's expression.",
+      "block": "fix-r3c",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "He came to the house in a good coat, expecting the Commander",
+      "reason": "He is the male natural philosopher visiting for an interview; the Commander is his expected host and later witness to Areelu's interrogation.",
+      "block": "fix-r3c",
+      "max_occurrences": 2
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "he had stopped looking at the Commander",
+      "reason": "He is the male natural philosopher visiting for an interview; the Commander is his expected host and later witness to Areelu's interrogation.",
+      "block": "fix-r3c",
+      "max_occurrences": 2
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_ba26446d6a/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_ba26446d6a/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_1f6916258b/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_1f6916258b/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_e5acfdefbc/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_e5acfdefbc/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_5aea7663cf/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_5aea7663cf/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_80874e4796/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_80874e4796/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_382806bce3/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_382806bce3/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_8907e0f2fc/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_8907e0f2fc/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_401ea037de/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_401ea037de/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_d649e1ed5e/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_d649e1ed5e/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_b75e1fce14/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_b75e1fce14/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_7c7964fada/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_7c7964fada/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_973926d77b/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_973926d77b/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_e499f883a9/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_e499f883a9/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_d72eecc170/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_d72eecc170/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_49a4ed41e3/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_49a4ed41e3/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_9e26008d80/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_9e26008d80/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_e9c5c2ee5f/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_e9c5c2ee5f/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_ccb9494f0c/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_ccb9494f0c/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_ee6a5dc132/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_ee6a5dc132/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_bf65428f5c/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_bf65428f5c/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_0d24309b97/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_0d24309b97/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_63afe59bfe/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_63afe59bfe/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_5a6a93051a/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_5a6a93051a/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_75641c4ab4/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_75641c4ab4/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_12ad776075/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_12ad776075/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_1ed777753a/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_1ed777753a/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_057f51486c/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander's household for the rest of his",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "jerribeth.trickster.epilogue.commit",
+      "location": "job3_local_collected_057f51486c/paragraph/10",
+      "code": "commander-gender",
+      "match": "his cup in the Fool King's tavern served in the Commander",
+      "reason": "Endings4: unchanged terminal account relocated into the selected local conclusion. The masculine subject is the explicitly named man from the stockade or Wintersun deserter, not the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "location": "start",
+      "code": "commander-gender",
+      "match": "Commander, and I will make him",
+      "reason": "Merged ending review: him refers to the male veteran introduced as the volunteer with a missing arm. Areelu promises that veteran a hand.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "alone",
+      "code": "commander-gender",
+      "match": "his pamphlets under her arm and a look the Commander",
+      "reason": "Merged ending review: masculine pronouns refer to the male pamphleteer, whose interview and published pamphlets are the subject of this scene.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "He came to the house in a good coat, expecting the Commander",
+      "reason": "Merged ending review: masculine pronouns refer to the male pamphleteer, whose interview and published pamphlets are the subject of this scene.",
+      "block": "endings4",
+      "max_occurrences": 2
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "he had stopped looking at the Commander",
+      "reason": "Merged ending review: masculine pronouns refer to the male pamphleteer, whose interview and published pamphlets are the subject of this scene.",
+      "block": "endings4",
+      "max_occurrences": 2
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.together",
+      "location": "page/paragraph/25",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.late",
+      "location": "late_accepted/paragraph/22",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.late",
+      "location": "late_refused/paragraph/20",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.late",
+      "location": "late_friend/paragraph/20",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.unasked",
+      "location": "late_accepted/paragraph/23",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.unasked",
+      "location": "late_refused/paragraph/20",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "eliandra.trickster.epilogue.unasked",
+      "location": "late_friend/paragraph/20",
+      "code": "commander-gender",
+      "match": "Commander had seen to that at the shrine, and there was nothing in his",
+      "reason": "Endings4: lifetime paragraph moved after the selected encounter. His hands belong to the demon in the opening clause; no Commander gender is assigned.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "iomedae.trickster.epilogue.after",
+      "location": "vigil_morning/paragraph/5",
+      "code": "commander-gender",
+      "match": "Commander in private, and in his prayers he told Her so, and was, he",
+      "reason": "Endings4: lifetime paragraph moved after the vigil morning. His prayers and he refer to the old cathedral canon who blames the Commander.",
+      "block": "endings4",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "location": "start",
+      "code": "commander-gender",
+      "match": "Commander, and I will make him",
+      "reason": "The eighth-year one-armed male veteran is introduced at this page opening; Areelu offers him a graft while addressing the Commander. The pronoun him refers to the veteran.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "alone",
+      "code": "commander-gender",
+      "match": "his pamphlets under her arm and a look the Commander",
+      "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 1
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "He came to the house in a good coat, expecting the Commander",
+      "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 2
+    },
+    {
+      "scene": "areelu.trickster.report.rival",
+      "location": "kitchen",
+      "code": "commander-gender",
+      "match": "he had stopped looking at the Commander",
+      "reason": "The ninth-autumn male natural philosopher/pamphleteer is introduced on report.rival/start. His pamphlets, his visit and his gaze refer to that visitor; no pronoun assigns a gender to the Commander.",
+      "block": "recovery-strict-gate",
+      "max_occurrences": 2
     }
   ],
   "therapy_budgets": {},

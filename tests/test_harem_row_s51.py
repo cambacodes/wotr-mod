@@ -6,6 +6,7 @@ from tests.story_fixture import fresh_story
 import json
 from pathlib import Path
 from storylines.harem_rows import s51
+from storylines import contract_j01
 from tools import rrt_verify as rules, savecompat
 from tools.harem_schedule_lint import delayed_clock_errors
 
@@ -16,6 +17,7 @@ class WindstepDocket(unittest.TestCase):
         cls.base = fresh_story(include_harem=False)
         cls.payload = copy.deepcopy(cls.base)
         s51.register(cls.payload, cls.payload["Scenes"], cls.payload["Etudes"])
+        contract_j01.install(cls.payload)
         cls.model = rules.Model(cls.payload)
         cls.rows = {s["Id"][len(s51.P):]: s for s in cls.model.scenes if s["Id"].startswith(s51.P)}
 
@@ -25,6 +27,8 @@ class WindstepDocket(unittest.TestCase):
                             "availability.observed", "chapter_later",
                             "nidalynn.trickster.hearth.grey_stone" if body == "widow" else "nidalynn.trickster.form_chosen"))
         rules.sim_complete(self.model, state)
+        state.available_contacts = {p["Unit"] for k, p in self.payload["Presences"].items()
+                                    if k.startswith("nidalynn.presence")}
         return state
 
     def graph_play(self, name, state, choices, check_success=True):
@@ -50,10 +54,6 @@ class WindstepDocket(unittest.TestCase):
         return rules.sim_play(self.model, scene, state, (), plan=(0, path))
 
     def physical_available(self, name, state):
-        # Isolate contact/clock from the existing eligibility defect. These flags
-        # are simulation inputs only; S51 never writes or replaces their producer.
-        state = copy.deepcopy(state)
-        state.flags.update(("nidalynn.harem.eligible", "areelu.harem.eligible"))
         return rules.sim_available(self.model, self.rows[name], state)
 
     def test_registration_has_exact_graphs_and_no_existing_identity_changes(self):
@@ -176,14 +176,16 @@ class WindstepDocket(unittest.TestCase):
         state.flags.add("nidalynn.trickster.form_chosen")
         self.assertFalse(self.physical_available("notice.chosen", state))
 
-    def test_shared_engine_still_blocks_independent_unromanced_discovery(self):
-        # Regression evidence for ESCALATE, not a claim that this is desired.
+    def test_independent_unromanced_discovery_with_table_closed(self):
         state = self.state()
         self.assertNotIn("foresight.page_taken", state.flags)
         self.assertNotIn("nidalynn.committed", state.flags)
         self.assertNotIn("nidalynn.harem.eligible", state.flags)
-        self.assertFalse(rules.sim_available(self.model, self.rows["notice.widow"], state))
+        state.flags.add("household.closed")
+        self.assertTrue(rules.sim_available(self.model, self.rows["notice.widow"], state))
         self.assertTrue(self.physical_available("notice.widow", state))
+        state.available_contacts.clear()
+        self.assertFalse(self.physical_available("notice.widow", state))
 
     def test_readers_are_historical_or_existing_epilogue_pages(self):
         entry = next(e for e in self.payload["Books"]["trickster.ledger"]["Entries"] if e["Id"] == "seating.s51.windstep")

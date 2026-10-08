@@ -82,7 +82,10 @@ def custody_nodes():
 {n}She takes her own bowl and turns toward the slope.{/n}''',
           c('[Spend 100 Materials. Deliver the load for her inspection.]',
             flags=writes("custody", *DEEDS, "cost.commander_delivery_paid"),
-            requires=(RENOUNCED,), crusade=("Materials", -100))),
+            requires=(RENOUNCED,), crusade=("Materials", -100)),
+          # J06: withdrawing before an affordable debit must remain possible.
+          # The runtime's insufficient-funds exit is not offered with full stock.
+          c('[Later.]', abort=True)),
         n("spilled", "Nidalynn", '''{n}The cart slews against a stone. A sack splits, spilling the extra meat into the gutter. Nidalynn catches the cart before it overturns, then looks at the mud.{/n}
 "Leave that. She isn't eating it. I've enough in my own bowl for tonight."
 {n}She lifts the bowl away from your hands.{/n}

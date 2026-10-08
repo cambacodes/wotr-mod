@@ -16,7 +16,7 @@
   "min_lines": 12,
   "max_lines": 20,
   "slot_id": "minagho_chivarro.trickster.epilogue.commit.explicit.3",
-  "default_text": "{n}Chivarro opens her gown and catches your hands at her waist. She draws you down onto the bed, kissing you before your next reply can reach the barred door.{/n}\n\"Quiet. You have already made me laugh too loudly.\"",
+  "default_text": "{n}Chivarro keeps the Commander close against her, one hand spread at their back. She stifles another laugh against their mouth and pulls them between her knees.{/n}\n\"Quiet. You have already made me laugh too loudly.\"",
   "source_nodes": [
     "late_secret_chivarro"
   ],

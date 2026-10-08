@@ -231,7 +231,7 @@ partner("jerribeth", "jerribeth", "jerribeth.committed", "jerribeth.closed", "Re
         page_p('''She sent the man she had taken in payment for the toast to pour the Commander's cup at the feast, smiling two finger-widths too wide. The toast had been paid for, she said, and she liked to see her property used.''', requires=(J + "cost.toast_host",)),
         # R2-6 (Sol r3): the late history (commission reached, no campaign commitment) plays this coda too. Whether the
         # contract is signed is the epilogue page's question; this line holds whichever answer is given there.
-        page_p('''There was no contract yet, only one she had drafted and left on the Commander's table, the clause she was saving written in very small, very neat print. She came to the feast anyway, uninvited, to watch the Commander not sign it. Whether the Commander ever would was a question she asked every spring, and she enjoyed the asking more than she would have enjoyed an answer.''', requires=(J + "late_committed",), forbids=("jerribeth.committed",)),
+        page_p('''There was no promise between them yet, only one of her pins left lying on the Commander's table, point toward the chair. She came to the feast anyway, uninvited, to watch the Commander not pick it up. Whether the Commander ever would was a question she asked every spring, and she enjoyed the asking more than she would have enjoyed an answer.''', requires=(J + "late_committed",), forbids=("jerribeth.committed",)),
     ), declined=J + "declined", page_forbids=(J + "parted",),
     page_commit_groups=[["jerribeth.committed"], [J + "late_committed"]],
     deal=[[J + "cost.tenant"], [J + "cost.lodger"], [J + "cost.host"], [J + "cost.toast"], [J + "cost.forfeit"]],
@@ -244,7 +244,7 @@ partner("jerribeth", "jerribeth", "jerribeth.committed", "jerribeth.closed", "Re
 
 K = "konomi.trickster."
 partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepted",
-    '''Konomi returned to the court of Nerosyan after the war as its attaché to whatever the Commander had become, a post the court invented for her because nobody else would take it. Her reports were exact, witty and quite useless to anyone who wanted to know what the Commander was actually doing, which was the point.''',
+    '''Konomi returned to the court of Nerosyan after the war as its attaché to whatever the Commander had become, a post the court invented for her because nobody else would take it. Her reports were exact and sharp enough to make the council wince. She kept her private evenings out of them; the crusade's failures received no such protection.''',
     (
         page_p('''She named her price the night after Threshold, as she had said she would: a seat for Nerosyan at every table the Commander ever sat at, and her own name on the invitation. The Commander agreed before she had finished, which she found suspicious, and she spent a year looking for the catch.''', requires=(called("konomi"),)),
         page_p('''She had outfoxed the Commander once, fairly, at the recess, and she never let it be forgotten. It was, she said, the only victory over the Fifth Crusade that the court of Nerosyan ever won.''', requires=(K + "cost.outfoxed",)),
@@ -258,7 +258,7 @@ partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepte
     page_commit_groups=[["konomi.committed"], [K + "late_committed"]],   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
     # Engine-q2 item 4: a Konomi who died at her post and was never recalled has no coda and no call-in (konomi_trickster.LOST:
     # her death latch, lifted by the dead.recalled rite). Her own route's key, not another route's closure (G5).
-    page_forbids=("konomi.dead.unreturned",), call_forbids=("konomi.dead.unreturned",))
+    page_forbids=("konomi.dead.unreturned", K + "envoy"), call_forbids=("konomi.dead.unreturned",))
 
 NO = "nocticula.trickster."
 partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at Her Right Hand",
@@ -455,8 +455,8 @@ partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet 
         page_p('''The Commander kept the promise at the rift. {mf|He|She} did not ask Lariel for a miracle, and told Targona so afterwards. She took {mf|his|her} hand and held it while the ward's first bell rang. Then she put a second chair by her desk, and it was never empty for long.''', requires=(T + "cost.light_sealed",), forbids=(called("targona"),)),
         page_p('''At the rift the Commander begged what was left of Lariel to cheat death, and broke the one promise Targona had asked of {mf|him|her}. Nothing answered. {mf|He|She} told her that too. "You promised me," she said. "I believed you." She stayed in the ward and went on tending its wounded. For a year she carried her own lamp, even when the Commander offered to take it.''', requires=(called("targona"), T + "cost.light_sealed")),
         page_p('''She had told Heaven everything, as her price for coming back. Heaven, it seemed, had listened, and had not recalled her. She took that as an answer and did not ask for another.''', any_groups=[[T + "cost.she_told_heaven", T + "cost.raised_openly"]]),
-        page_p('''She never forgave the joke at her bier, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.''', requires=(T + "cost.unforgiven",), forbids=(T + "forgiven",)),
-        page_p('''She forgave the joke at her bier in the end, when it had been apologised for properly, but she never forgot it. Some evenings she would bring it up at table, precisely, word for word, and watch the Commander wince, and then pour the wine.''', requires=(T + "cost.unforgiven", T + "forgiven")),
+        page_p('''She never forgave the joke at her ward, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.''', requires=(T + "cost.unforgiven",), forbids=(T + "forgiven",)),
+        page_p('''She forgave the joke at her ward in the end, when it had been apologised for properly, but she never forgot it. Some evenings she would bring it up at table, precisely, word for word, and watch the Commander wince, and then pour the wine.''', requires=(T + "cost.unforgiven", T + "forgiven")),
     ), declined=T + "declined",
     deal=[[T + "cost.raised_openly"], [T + "cost.she_told_heaven"], [T + "cost.raised_the_hard_way"], [T + "cost.light_sealed"]],
     call=call('''[Call on Lariel's light] "Lariel, whatever of you is left in me: a miracle, if you have one."''',
@@ -494,7 +494,7 @@ partner("hepzamirah", "hepzamirah", "hepzamirah.committed", "hepzamirah.closed",
     (
         page_p('''Mutasafen came for his price, and she received him herself, and she paid him in full. She said she would not owe that creature a single drop. She said it smiling, and nobody who saw the smile asked what the payment had been.''', requires=(called("hepzamirah"),)),
         page_p('''She had killed Mutasafen's courier once, because the Commander let her, and she remembered it fondly. She said it was the nicest thing anyone had ever done for her.''', requires=(H + "cost.courier_killed",)),
-        page_p('''The Commander had broken her terms once, sending a chaplain to heal her against her will. She never let that go. She lived at the Commander's side and kept the healed scar uncovered, where {mf|he|she} would see it every time {mf|he|she} looked at her, and she made sure {mf|he|she} looked.''', requires=(H + "cost.healed_against_terms",)),
+        page_p('''The Commander had broken her terms once, sending a chaplain to heal her against her will. She never let that go. She lived at the Commander's side and kept the smooth, healed patch uncovered, where {mf|he|she} would see it every time {mf|he|she} looked at her, and she made sure {mf|he|she} looked.''', requires=(H + "cost.healed_against_terms",)),
     ),
     deal=[[H + "cost.favour_owed"], [H + "cost.mutasafen_grudge"], [H + "cost.lab_funded"], [H + "cost.blood_sample"], [H + "cost.vial_paid"],
           [H + "cost.vial_forged"], [H + "cost.baphomet_grudge"]],
@@ -522,12 +522,12 @@ partner("areelu", "areelu", "areelu.committed", "areelu.closed", "The Wager, Set
     '''I will record, since I am obliged to record everything, that the wager was settled. Whoever burned at Threshold was to pay. I have gone over the terms many times since, looking for the flaw, and I have not found one, which is the most irritating thing I can say about any experiment.''',
     (
         page_p('''At the rift the Commander called in our wager, and told me to take notes. I did. They are appended. They are very thorough.''', requires=(called("areelu"),)),
-        page_p('''I ceded the Wound. I have not regretted it, which I record here because I promised to regret nothing, and I keep my promises when they are also my conclusions.''', requires=(AE + "cost.wound_ceded",)),
+        page_p('''The Commander ceded the wound to me for study. It still answers my touch. I have kept the observations; the Commander has kept the wound.''', requires=(AE + "cost.wound_ceded",)),
         page_p('''The flask is mine. I made it. The Commander carries it. I have not tried to take it back, and I would like whoever reads this to understand how much that restraint costs me.''', requires=("lastcall.bottled_held",)),
     ), declined=AE + "declined",
     deal=[[AE + "cost.bet_with_the_witch"], [AE + "wager_struck"]],
     call=call('''[Call in the wager] "Whoever burns at Threshold pays up. Watch closely, Areelu. You'll want notes."''',
-        '''{n}Across the rift, Areelu Vorlesh folds her one hand over the wrist that has none, and watches you the way she has watched you since Iz: as a result she has not finished recording.{/n}''',
+        '''{n}Across the rift, Areelu Vorlesh folds her hands before her, and watches you the way she has watched you since Iz: as a result she has not finished recording.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Areelu: a wager on who burns", "Whoever burns at Threshold pays. Areelu keeps better records than I do. I intend to be the one reading them afterwards."))
 
@@ -551,9 +551,9 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
     '''Camellia Gwerm wore black to the victory feast, since nobody could tell her which of the dead she was allowed to mourn, and she brought lilies to the Commander's door the morning after the rift: white ones, the wedding kind, left on the step with a card that said only that she had been told the Commander liked a performance.''',
     (
         page_p('''At the rift the Commander called in the new moon, and the spirits that had been fed on {mf|his|her} blood all winter came for the rest of what they were owed. Camellia would not let them take it for themselves. She held the bowl and made the cut, one last neat one, exactly where a friend would stand, and the voices in her head went quieter than she had ever heard them. They stayed quiet a month. She hated every day of it, and was delighted when they came back.''', requires=(called("camellia"),)),
-        page_p('''The Commander had come to her coffin late, with a sexton's lantern and a purse of gold, after the spirits had had three days alone with her. She never forgot the sound of the coins. For a season she took her supper at the far end of the table, with her knife beside her own plate instead of the Commander's, and watched {mf|him|her} eat the way she read a bad notice. Then one evening the knife was back beside the Commander's plate, which in Camellia's house is how a lady admits that someone has been forgiven.''', any_groups=((CA + "cost.late", CA + "cost.bargain_late"),)),
+        page_p('''The Commander had come to her coffin late, with a sexton's lantern and a purse of gold, after the spirits had had three days alone with her. She never forgot the sound of the coins. For a season she took her supper at the far end of the table, with her knife beside her own plate instead of the Commander's, and watched {mf|him|her} eat the way she read a bad notice. Then one evening the knife was back beside the Commander's plate, which in Camellia's house is how a lady admits that someone has been forgiven.''', requires=(CA + "cost.late",)),
         page_p('''Two names now stood in the crusade's register of the dead, hers and the Commander's, a few leaves from each other. She had the clerk copy both onto one sheet and framed it over the bed. She said she had always wanted a {mf|husband|wife} nobody could accuse her of murdering.''', requires=(ON_RECORD, "camellia.killed")),   # Q8: only her own recorded death
-        page_p('''She knew about the flask. She asked to hold it only once, and weighed it in her palm the way she weighs a stranger's throat, and gave it back. "Your death, corked," she said. "How very courteous of it, to wait for you."''', requires=("lastcall.bottled_held",)),
+        page_p('She knew about the flask and watched it where the Commander kept it. "Your death, corked. Open it for me one day, my friend. I should like to hear what escaped you." The flask remained with the Commander.', requires=("lastcall.bottled_held",)),
     ), declined=CA + "declined",
     deal=[[CA + "cost.blood_bargain"], [CA + "cost.spirits_owed"]],
     call=call('''[Call in the new moon] "Camellia's spirits, you've had my blood every dark of the moon. Come and collect the rest, from the living."''',
@@ -591,7 +591,7 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
         page_p('''She kept the box of scrolls on her own shelf for the rest of their lives, bought them out of her own pay, and decided herself when a seal was broken. Once, years after the war, the Commander reached for her half-asleep with the seal still whole; this time she was across the room before the hand landed, and it still took a week to coax her back.''', requires=("arueshalae.trickster.cost.drained",), forbids=("arueshalae.changed",)),
         page_p('''She kept the arrangement to the letter: she came when she was hungry, and the door was open. Some months she was hungry more often than the arrangement strictly allowed, and the door was open then too.''', requires=(AU + "cost.open_door",)),
         page_p('''She renewed her vows at the altar rail every spring, and the Commander stood at the back with the second company and announced nothing at all, as promised.''', requires=(AU + "cost.no_staging",), forbids=("arueshalae.evil_recruited",)),
-        page_p('''She served as chaplain until the second company was disbanded, and she never resigned; nobody had ever given her the chance, and she did not intend to take it now.''', requires=(AU + "cost.chaplain",), forbids=("arueshalae.evil_recruited",)),
+        page_p('''She served as chaplain until the second company was disbanded, and she never resigned. The Commander had offered her a choice; she had chosen the company, and stayed.''', requires=(AU + "cost.chaplain",), forbids=("arueshalae.evil_recruited",)),
         page_p('''The Commander had promised her nothing would be done to her again without her say, and she held {mf|him|her} to it by never once dying again, which she said was the only reliable way to keep a Trickster honest.''', requires=(AU + "cost.no_second_joke",)),
         page_p('''The Commander had once asked her for only the good days, and she had refused. She made the Commander pay for asking at the table: for a month {mf|he|she} ate at the far end, apart, while she was very polite about it, until she finally went and sat at that end too.''', requires=(AU + "cost.saint_only",)),
         page_p('''The world buried the Commander. Arueshalae sat through the funeral with her hands behind her back and did not cry, because she had taken the Commander's pulse that morning and knew exactly how the joke ended.''', requires=(ON_RECORD,)),
@@ -650,7 +650,7 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
 
 SH = "shamira.trickster."
 partner("shamira", "shamira", "shamira.committed", "shamira.closed", "The Ardent Dream",
-    '''Shamira the Ardent Dream did not come to Threshold. She sat her throne in the Harem of Ardent Dream with the court sent away and the fountains running, and held very still, with the night's coal of the Commander burning in her chest, and listened. Through it she could feel the Commander walk into the rift the way you feel a draught come under a door.''',
+    '''Shamira the Ardent Dream did not come to Threshold. She sat her throne in the Harem of Ardent Dreams with the court sent away and the fountains running, and held very still, with the night's coal of the Commander burning in her chest, and listened. Through it she could feel the Commander walk into the rift the way you feel a draught come under a door.''',
     (
         page_p('''At the rift the Commander thought of her, hard, the way the Commander had once thought of carpets. A long way off, on an empty throne, a woman who had been sitting very still stood up. For the space of one breath the Commander, awake, at the edge of the world, was not alone behind {mf|his|her} own eyes. Then {mf|he|she} was. It was enough.''', requires=(called("shamira"),)),
         page_p('''For three days after Threshold she did not come into the Commander's sleep, because there was no sleep to come into, and the coal in her went out, and she sat on her throne with her fingertips going white and would not let anyone light a fire. On the third night there was a dream again: the war tables, the lamps, the same argument about the same river crossing. She walked into it without knocking and sat down on a map chest and wept, which nobody who knew her would have believed, and the Commander, in the dream, pretended not to notice.''', requires=(H2,)),
@@ -760,7 +760,7 @@ GA = "galfrey.trickster."
 partner("galfrey", "galfrey", GA + "partner", "galfrey.closed", "The Face in the Crowd",
     """On the last night of the war she watched the sky over the Wound with her sword at her side. Soldiers waited around her for word of the fighting. She checked their ranks before turning back toward the rift.""",
     (
-        page_p("""At the rift the Commander called her name, the only one of her names nobody else in the world had the right to call: "Kitrane!" Far off, on the walls of Drezen, a knight in a green surcoat turned her head as if somebody had spoken at her elbow, and said "Here," to nobody, and the soldiers beside her swore afterwards that she had smiled like a girl.""", requires=(called("galfrey"),)),
+        page_p("""At the rift the Commander called her name, the name she had taken at her false deathbed: "Kitrane!" Far off, on the walls of Drezen, a knight in a green surcoat turned her head as if somebody had spoken at her elbow, and said "Here," to nobody, and the soldiers beside her swore afterwards that she had smiled like a girl.""", requires=(called("galfrey"),)),
         page_p("""The world buried the Commander. She stood at the graveside with her hood up and waited until the last prayer ended.""", requires=(ON_RECORD,)),
         page_p("""When the flask was opened in Drezen she was there, and said nothing at all, and took the Commander's hand and did not give it back for the rest of the evening.""", requires=(H2,)),
         page_p("""Mendev had its Queen back after Threshold, and a scandal to go with her, and the Commander answered for it: at the Crossroads, whenever the talk turned to Iz, somebody always asked how it had been done, and the Commander always told them, and never once told it the same way twice.""", requires=(GA + "crown_reclaimed",)),
@@ -831,7 +831,7 @@ partner("wenduag", "wenduag", WD + "partner", "wenduag.closed", "The Cairn",
     '''Wenduag did not go to Threshold. Nobody had asked her to, and she would not have gone if they had: a hunter does not walk into a hole somebody else dug. She spent the last night of the war at the bottom of the oldest stair under Drezen's citadel, in the dark, sitting on her own cairn with her knife across her knees, listening. The neathers in the cellars above her say she did not move all night, and did not sleep, and that toward morning she was heard to laugh at nothing, and then to say a name.''',
     (
         page_p('''At the rift the Commander put a hand in a coat pocket and closed it round a flat grey stone, and said into the dark, the way the neathers say it in the tunnels when one hunter has gone ahead of another: "Dig." Far away, at the bottom of a stair in Drezen, a woman sitting on a heap of stones lifted her head.''', requires=(called("wenduag"),)),
-        page_p('''The world buried the Commander, with an empty coffin and a great deal of singing. Wenduag listened to it from the cellar stair and said the rhymes were even worse than the ones they had sung for her. Then she went down to the catacombs and packed the head end of a niche with loose stones, very carefully, and waited, because she knew how these things were done.''', requires=(ON_RECORD,)),
+        page_p('''The world buried the Commander, with an empty coffin and a great deal of singing. Wenduag listened to it from the cellar stair and said the rhymes were worse than Lann's speech beside her cairn. Then she went down to the catacombs and packed the head end of a niche with loose stones, very carefully, and waited, because she knew how these things were done.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she was already in the room, though nobody had seen her come in, and she put her face into the Commander's neck and breathed in, long and deep, the way a hunter checks that the meat is still good. It was. She said so.''', requires=(H2,)),
         page_p('''The native romance had run its own course, in its own way, through Savamelekh's lair and past it, and nothing the Commander had done at a cairn had any part in it. She had never been buried. She did not need a stone to know which way was hers.''', requires=("wenduag.romance_finished.latched",), forbids=("wenduag.committed",)),
         page_p('''Lann, who had never once gone down the cellar stair, came down it at dawn and found her sitting on the cairn, and said nothing, and sat down on the bottom step. They waited together until the news came. Neither of them ever told the Commander about it.''', requires=(WD + "lann.paid",)),
@@ -1078,7 +1078,7 @@ def call_in_scenes(factory):
     out = _eng8_call_in_scenes(factory)
     calls = {s["Id"]: s for s in out}
     for rel, witness, text, target in (
-        ("eliandra", EL_DAILY, "{n}You ask as she once asked you every morning. The familiar reading carries through the roar.{/n}", "daily"),
+        ("eliandra", EL_DAILY, "{n}You repeat the question she brought to Drezen. Her answer carries through the roar.{/n}", "daily"),
         ("wenduag", WD_POCKET, "{n}The flat grey stone is still in your pocket, its knife-scratched line against your palm. You close your hand until the edges bite and call again: \"Dig.\"{/n}", "stone"),
     ):
         host = calls[rel + ".lastcall.call"]
@@ -1339,3 +1339,8 @@ def call_in_scenes(factory):
         requires=(account_due("nocticula"),), forbids=(resolved("nocticula"),)))
     return out
 # end endings1 legacy contracts
+
+# Job 4: append the immediate curtain history without moving saved paragraph slots.
+_history_partners["camellia"]["paragraphs"] += (
+        page_p('''The Commander drew the curtain late and paid her price before she died. Camellia remembered being made to name it. For a season she kept her knife beside her own plate; when she set it beside the Commander's again, she offered no explanation.''', requires=(CA + "cost.bargain_late",), forbids=(CA + "cost.late",)),
+)

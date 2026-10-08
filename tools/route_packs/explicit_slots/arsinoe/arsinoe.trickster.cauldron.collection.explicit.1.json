@@ -1,7 +1,7 @@
 {
   "voice": "Arsinoe: composed, proud, observant, competitive, practical, dryly amused; enjoys beauty and being admired, can be impatient when desire interrupts careful arrangements. Her clerical dignity survives private appetite. Speak briefly and directly; no therapy vocabulary, maxims, devotional sex magic or constant billing jokes. Canon facts: aasimar priestess of Abadar from Absalom, traveler formerly resident in the Stolen Lands, helping Drezen; dusky face, molten-gold eyes, gold-embroidered clerical robes (VendorArsinoe Cue_0001/Cue_0016). No established partner. Do not invent hair color, body measurements, special sexual physiology, previous lovers or celibacy vows. Write new dialogue, do not reuse the example.",
   "scene": "Chapter 5, Trickster run, Drezen vendor shop after the existing paid lease inspection and collateral selection. Only the existing campaign_lover threshold reaches this slot; business-only or collection flirt alone does not. She secured the till, drew curtains, undressed and drew the Commander close on the cleared counter. Explicit fill slot: continue the established approach into consensual sex; the default text cuts before the act. Required beats: her physical initiative, pleasure chosen outside business, awkward counter rather than a generic bedroom, ledger deliberately left alone. The lien and rent stand; sex earns neither discount nor commitment. This is a return if an earlier night actually happened, otherwise do not fabricate one. End before existing morning with cold tea, unbound hair, shift and customers arguing outside. Continue their existing position without replaying kisses, undressing or seating. The patrol/ledger observations occur before this threshold. Stage one initiating motion, then the act.",
-  "last_line": "A: The ledger stays shut tonight.",
+  "last_line": "N: The sign still says CLOSED when you wake. Outside, customers are already arguing over whose turn it is. Arsinoe sits at the counter in her shift, hair unbound, a cold cup of tea beside the ledger.",
   "speakers": {
     "A": "Arsinoe"
   },
@@ -12,5 +12,6 @@
     "a woman"
   ],
   "min_lines": 10,
-  "max_lines": 16
+  "max_lines": 16,
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

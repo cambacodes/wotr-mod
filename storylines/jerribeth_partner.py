@@ -200,6 +200,12 @@ def install_terms(scene, entry_nodes, late=False):
                 paragraph["Text"] = paragraph["Text"].replace(
                     "He sat down at the Commander's table without being asked, and her voice came out of him, high and pleased.",
                     "The host sat down at the Commander's table without being asked. Jerribeth's voice came from the stolen mouth, high and pleased.")
+            if late and node['Id'] == 'offer':
+                continuation['Text'] = '{n}Jerribeth sets the pin back on the table between you, point toward you.{/n} "Those are our terms. Now, your hand?"'
+                # Arrival was already shown before the partner negotiation.
+                # Keep the old paragraph positions for indexed consumers.
+                for block in continuation.get('Paragraphs', []):
+                    block.setdefault('Forbids', []).append('trickster.ever')
             continuations.append(continuation)
             for choice in eligible:
                 twin = copy.deepcopy(choice)
@@ -351,38 +357,38 @@ def install_shared_witness(scene, node_ids):
 def partner_paragraphs(aeon=False, closed=False):
     if aeon:
         return [
-            p("{n}The erased correspondence could grant no claim over Marhevok. His devotion to the Lady of the Sun belonged to the history that had been undone; whether either remembered it was unknown.{/n}"),
-            p("{n}The promise to share Jerribeth's evenings belonged to the erased history. It could give Marhevok no knowledge of the Commander in the new world.{/n}", requires=(SHARE,)),
-            p("{n}The Commander's demand for Jerribeth alone, and her refusal, had been erased with the correspondence. Neither could bind Marhevok in the new world.{/n}", requires=(EXCLUSIVE,)),
-            p("{n}The secret evenings were gone with the history that had held them. They could neither betray Marhevok anew nor leave a memory of the Commander.{/n}", requires=(SECRET,)),
+            p("{n}Marhevok's blind devotion went with the history that had been undone. Whether he still dreamed of a sun he had never seen was a question nobody in the new world knew to ask.{/n}"),
+            p("{n}The evenings she had agreed to share went with that history. Marhevok would never learn whom he had been asked to share her with.{/n}", requires=(SHARE,)),
+            p("{n}The demand for Jerribeth alone, and her laughter at it, went with the frame and the evenings. Neither could reach Marhevok in the new world.{/n}", requires=(EXCLUSIVE,)),
+            p("{n}The secret evenings were gone with the history that had held them. There was nothing left to betray, and nobody left who remembered the Commander's name in her bed.{/n}", requires=(SECRET,)),
         ]
     texts = {
-        "dead": "Marhevok remained dead. Jerribeth still named the Wintersun chief when she spoke of things she had lost; none of her later lovers replaced him in that account.",
-        "chief": "Marhevok remained chief in Wintersun, apart from Jerribeth by his own farewell. She had not brought him back to her bed or made his people's debts disappear.",
-        "plant": "Marhevok remained alive in his pot beside Jerribeth's bed. His human eyes followed her. She had kept her lover; she had not given him back his voice.",
-        "distant": "Marhevok's last known place was his pot in the Ivory Sanctum. Jerribeth's lease in the Commander's skull brought no plant with it. No later word established whether he survived there.",
-        "unknown": "Marhevok's fate remained unknown. Jerribeth named him without producing news; the silence did not establish his death, his agreement, or a place in anyone's bed.",
+        "dead": "Marhevok stayed dead. Jerribeth still said his name when she listed the things she had lost, in the same breath as a broken needle and a good case of locusts, and watched the Commander's face while she did it.",
+        "chief": "Marhevok stayed in Wintersun and ruled what was left of his people, and never answered her again. Once a year she wrote to him anyway, to tell him who was in her bed. She liked to imagine him reading it.",
+        "plant": "Marhevok lived on in his pot beside Jerribeth's bed, and his human eyes followed her everywhere she went in the room. She kept him watered. She never gave him back his voice, and she always made sure he had something to watch.",
+        "distant": "Marhevok was left in his pot in the Ivory Sanctum when she lost her body, and nobody went back for him. Behind the Commander's eye she sometimes wondered aloud whether anyone was watering him. She never once asked the Commander to send somebody.",
+        "unknown": "Nobody ever learned what became of Marhevok. Jerribeth could have invented news of him whenever she liked, and sometimes did, a different story each time, to see which one the Commander would believe.",
     }
     paragraphs = [p("{n}" + text + "{/n}", **guard)
                   for fate, guard in fate_guards().items() for text in (texts[fate],)]
     plant = paragraphs[2]
     plant["Forbids"].append(CHOSEN)
-    paragraphs.append(p("{n}Marhevok lived in his pot on a shelf beyond Jerribeth's bedroom curtain. She had cut the vine that caught her wrist when she carried him there. He remained her captive possession; she had ended his place beside her bed.{/n}", requires=(PLANT, CHOSEN), forbids=(DEAD, CHIEF, RETURNED)))
+    paragraphs.append(p("{n}Marhevok lived in his pot on a shelf beyond the bedroom curtain, where she had carried him the night she cut his vine. He could hear the bed. He could not see it. She considered that fair to everyone.{/n}", requires=(PLANT, CHOSEN), forbids=(DEAD, CHIEF, RETURNED)))
     paragraphs += [
-        p("{n}The Commander had chosen to share her evenings. That bargain kept Marhevok's claim in view; it did not make his captivity willing or his farewell an invitation to return.{/n}", requires=(SHARE,)),
-        p("{n}The demand for Jerribeth alone had met her refusal. She kept her possessions and her memories; the Commander lost her evenings.{/n}", requires=(EXCLUSIVE, REFUSED)),
-        p("{n}Jerribeth had severed Marhevok's claim to her bed, without changing his fate. She kept the Commander alone as her lover, and the promised memory as her price. She named that debt whenever the Commander spoke as though the bargain had made her obedient.{/n}", requires=(EXCLUSIVE, CHOSEN)),
-        p("{n}The Commander had chosen secrecy. Jerribeth had kept their name out of her accounts of those evenings; no answer from Marhevok had been received.{/n}", requires=(SECRET,), forbids=(EXPOSED,)),
+        p("{n}The Commander had agreed to share her. Jerribeth kept that bargain the way she kept everything: precisely, and in front of Marhevok, who never once agreed to anything.{/n}", requires=(SHARE,)),
+        p("{n}The Commander had demanded her alone, and she had laughed. She kept her possessions and her memories. The Commander lost the evenings, and she made sure to be seen enjoying them elsewhere.{/n}", requires=(EXCLUSIVE, REFUSED)),
+        p("{n}Jerribeth had cut Marhevok out of her bed and left him in her collection. She kept the Commander alone as her lover, and the promised memory as her price. She named that debt whenever the Commander spoke as though the bargain had made her obedient.{/n}", requires=(EXCLUSIVE, CHOSEN)),
+        p("{n}The Commander had wanted it kept quiet, and for a while she kept it. Marhevok never wrote to ask. She found his silence almost as satisfying as a confession.{/n}", requires=(SECRET,), forbids=(EXPOSED,)),
         p("{n}The secret had been exposed. Marhevok had struck the frame with a vine; Jerribeth had cut it loose. The sap dried on the frame. She never cleaned it off for the Commander.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.plant")),
-        p("{n}Jerribeth had exposed the secret in a message to Marhevok. The Wintersun chief refused to receive another account of her bed. She kept Marhevok's letter. No more came. The Commander was left with the lover who had broken their bargain.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.chief")),
-        p("{n}No arrangement with Marhevok had been settled. Jerribeth's unfinished correspondence did not settle it in his absence.{/n}", forbids=(SHARE, EXCLUSIVE, SECRET)),
+        p("{n}Jerribeth had written the secret to Marhevok, in detail. The Wintersun chief wrote back once, to ask her never to describe her bed to him again. She kept that letter. No more came. The Commander was left with the lover who had broken their bargain.{/n}", requires=(SECRET, EXPOSED, "jerribeth.partner_exposure.chief")),
+        p("{n}Nothing about Marhevok was ever settled between them. Jerribeth preferred it that way: an open question is a hook, and she liked the Commander hooked.{/n}", forbids=(SHARE, EXCLUSIVE, SECRET)),
     ]
     if closed:
         for block in paragraphs:
             block['Text'] = block['Text'].replace('The Commander was left with the lover who had broken their bargain.',
-                'She had broken their secrecy before the later parting. The letter remained with her; the Commander no longer shared her evenings.')
+                'She had broken the secret before the Commander left her. She kept his letter, and read it aloud to whoever had her evenings next.')
             block['Text'] = block['Text'].replace('She kept the Commander alone as her lover, and the promised memory as her price.',
-                'The Commander had been her sole lover while that promise lasted. The later parting ended that claim; the memory owed for breaking with Marhevok remained its own account.')
+                'The Commander had been her only lover while that promise lasted. The later parting ended that claim; the memory owed for Marhevok she still meant to take.')
             block['Text'] = block['Text'].replace('She named that debt whenever the Commander spoke as though the bargain had made her obedient.',
                 'The later parting forgave none of that earlier price.')
     return paragraphs

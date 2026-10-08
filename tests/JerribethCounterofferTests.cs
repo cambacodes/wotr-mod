@@ -8,17 +8,17 @@ internal static class JerribethCounterofferTests
     internal static void Run(Story story, Action<bool, string> check)
     {
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "jerribeth." + id);
-        var scenes = story.Scenes.Where(s => s.Id.StartsWith("jerribeth.counterfeit_")).ToArray();
+        var scenes = new[] { "counterfeit_guest", "counterfeit_audience", "counterfeit_spoil" }.Select(Find).ToArray();
         var observed = new HashSet<string>();
         foreach (int chapter in scenes[0].Chapters)   // JER-08: Chapters 4-5
         foreach (bool exposed in new[] { false, true })
         {
-            var state = new Snapshot { Chapter = chapter, Area = scenes[0].Areas[chapter == 4 ? 1 : 0], Hour = 1000 };
+            var state = new Snapshot { Chapter = chapter, Area = scenes[0].Areas[0], Hour = 1000 };
             state.Flags.UnionWith(new[] { "jerribeth.commission", "jerribeth.terms", "jerribeth.lovers", "seelah.committed" });
             if (exposed) state.Flags.Add("jerribeth.wintersun_known");
             var predecessors = new List<string> { "offered_signature" };
             if (exposed) predecessors.Add("borrowed_sun");
-            predecessors.AddRange(new[] { "small_print", "unsold_evening", "purchaser_answer" });
+            predecessors.Add("unsold_evening");
             foreach (string id in predecessors)
             {
                 var scene = Find(id);
@@ -54,11 +54,20 @@ internal static class JerribethCounterofferTests
             }
             check(states.All(s => s.Has("jerribeth.counter_public_account") != s.Has("jerribeth.counter_private_archive")), "Counteroffer loses bargain choice.");
         }
-        foreach (string outcome in new[] { "counter_cache_intact", "counter_cache_broken", "counter_stage_cut", "counter_clerk_witness", "counter_clerk_rehearsal", "counter_clerk_hidden", "counter_public_account", "counter_private_archive" })
+        foreach (string outcome in new[] { "counter_mechanism_known", "counter_clerk_dealt", "counter_public_account", "counter_private_archive" })
             check(observed.Contains("jerribeth." + outcome), "Counteroffer misses consequential outcome: " + outcome);
+        foreach (string id in new[] { "counterfeit_hinge", "counterfeit_clerk", "counterfeit_after" })
+        {
+            var retired = Find(id);
+            var parked = new Snapshot { Chapter = 5, Area = retired.Areas[0], Hour = 10000 };
+            parked.Flags.UnionWith(retired.Requires);
+            parked.Flags.Add("chapter_later");
+            check(retired.Forbids.Contains("chapter_later") && !Program.CurrentAvailable(story, retired, parked), "Retired counteroffer surface reopened: " + id);
+            check(retired.Nodes.Count > 0, "Retired counteroffer save graph removed: " + id);
+        }
         foreach (var scene in scenes)
         {
-            var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[scene.Chapters[0] == 4 ? 1 : 0], Hour = 1000 };   // JER-08
+            var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[0], Hour = 1000 };   // JER-08
             ready.Flags.UnionWith(scene.Requires);
             check(Program.CurrentAvailable(story, scene, ready), "Counteroffer valid baseline unavailable.");
             foreach (string blocker in scene.Forbids)

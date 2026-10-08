@@ -1,6 +1,7 @@
 param(
     [string]$GameDir = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure',
-    [string]$Python = 'python'
+    [string]$Python = 'python',
+    [string]$VoiceJob = ''
 )
 $ErrorActionPreference = 'Stop'
 $previousHashSeed = $env:PYTHONHASHSEED
@@ -32,6 +33,9 @@ try {
 
     & $pythonPath expansion.py
     if ($LASTEXITCODE) { throw 'Expansion generation failed' }
+    # Held Gemory briefs: rebuilding routes remain visible as known findings.
+    & $pythonPath tools/slot_brief_lint.py --strict --known-rebuilds --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Slot brief lint failed' }
     # ENGINE-Q6A: cross-route audit debt is reported; existing findings do not fail packaging.
     & $pythonPath tools/crossroute_lint.py --story development/Story.json
     # Report mode returns zero even with findings. Strict baseline enforcement is opt-in.
@@ -46,7 +50,9 @@ try {
     if ($LASTEXITCODE) { throw 'Payoff contract lint failed' }
     & $pythonPath tools/departure_lint.py --strict
     if ($LASTEXITCODE) { throw 'Departure lint failed' }
-    & $pythonPath tools/voice_lock_lint.py --strict
+    $voiceArgs = @('tools/voice_lock_lint.py', '--strict', '--milestone')
+    if ($VoiceJob) { $voiceArgs += @('--job', $VoiceJob) }
+    & $pythonPath @voiceArgs
     if ($LASTEXITCODE) { throw 'Claude voice lock lint failed' }
     # FULL preflight: every Python test, including save guards, L1-L6 and the ideal run.
     & $pythonPath -m unittest discover -s tests -p 'test_*.py' -q

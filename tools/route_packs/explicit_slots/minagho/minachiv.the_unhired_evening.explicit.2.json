@@ -5,34 +5,31 @@
     "node": "chivarro_kiss",
     "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
   },
-  "voice": "Chivarro: exact appraisal, a madam's mercantile wit, jealous pride, predatory appetite, impatience with gratitude, sensual assurance and harsh temper when cheated. Affection for Minagho remains independent of the Commander. Write new dialogue from traits; do not copy brief sentences or native quotations.",
-  "facts": [
-    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
-    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
-    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
-    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
+  "source_nodes": [
+    "chivarro_kiss"
   ],
-  "scene": "Authored expansion of minachiv.the_unhired_evening/chivarro_kiss. Chapter 5, before Threshold, Trickster history at Drezen, the gaming-house couch and cushions already staged in the source. Present: Chivarro and the Commander only. Existing accepting choice and the actual partner answer precede the slot. This source combines threshold and aftermath: insert before the existing later/dawn paragraph. This is a neutral production brief; write no additional event outside that interval.",
-  "required_beats": [
-    "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
-    "Carry the scene's existing appetite, rivalry and power into character dialogue; no generic romance recital, narrator verdict, moral maxim or modern consent script.",
-    "Keep clothing and furniture continuous with the source: already removed garments stay removed; the default is staging guidance, not a second undressing.",
-    "No new price, flag, gate, power, arrival, partner agreement, rescue entitlement or ending is generated.",
-    "Finish with the exact last_line; preserve the mapped original aftermath and legacy exit effects. If its opening repeats this connective, join it once without deleting its saved node.",
-    "Her own invitation and appetite are distinct from purchased service. Keep the actual receipt/rent history; do not invent a charge. Minagho's current place is not silently dissolved.",
-    "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
-  ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the cushions. She draws you close, her loosened hair brushing your face.{/n}",
-  "last_line": "N: Later, the game stones still lie beside the couch.",
+  "voice": "CHIVARRO: imperious, appraising, impatient, proprietorial, sexually frank; hospitality is a weapon, a bill can be a joke, a refusal can be vicious. Enjoys controlling a room and embarrassing arrogance. Her chosen affection does not redeem her cruelty or end her attachment to Minagho. Avoid repeated accounting metaphors, maxims, therapy language, consent choreography and professional-client reassurance. MINAGHO, when present: spiteful, proud, quick to threaten, hungry for her lover, amused by the Commander's discomfort; independently chooses every invitation. Write fresh short dialogue from these traits, not copied native sentences.",
+  "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: the already-used gaming-house room in Drezen, after the mask game. SCENE: minachiv.the_unhired_evening; existing node variant: chivarro_kiss. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Chivarro. Gaming-house couch after business correspondence has been put away. Minagho knowingly gives them an hour and goes for wine. This is shared permission, not cheating. Chivarro initiates an unpaid personal night; if a prior route night happened, she remembers it. End before Minagho's already-written wine complaint. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "C: If she brings the wine, she can leave it outside.",
   "speakers": {
+    "N": "Narrator",
     "C": "Chivarro"
   },
-  "example": "N: Chivarro sets the folded account beyond reach and catches your collar.\nC: You have counted enough. Come here.\nN: She pulls you away from the table.",
+  "example": "N: Chivarro sets the unopened account aside and catches your collar.\nC: That can wait. You have kept me waiting long enough.\nN: She draws you close.",
   "commander": "a man",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 12,
-  "max_lines": 18
+  "max_lines": 20,
+  "default_text": "{n}Chivarro pushes the empty game tray aside. She loosens her bodice, lets you watch it fall, then draws you close enough to feel her impatient breath against your mouth.{/n}\n\"If she brings the wine, she can leave it outside.\"",
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
 }

@@ -214,23 +214,23 @@ s("an_unpromised_future", "A tale for the fever ward", [
 ], "targona.the_folded_room")
 
 
-s("the_unscheduled_door", "Meret of the host", [
+s("the_unscheduled_door", "Merovan of the host", [
     n("start", "Narrator", '''{n}The tale Targona sends is short, and written in a hand meant to be read aloud by lamplight. She has given its soldier a name that is not her own.{/n}
-"I have called her Meret. A sergeant from Kenabres says he knew a Meret, and that she would have liked this. I chose to believe him."
-{n}Meret, a sergeant of the host, wakes in a room with a chair, a closed door, and a parcel tied with a thoroughly unreasonable quantity of string. Meret sets the parcel on the chair and reaches for the door.{/n}
+"I have called her Merovan. A sergeant from Kenabres says he knew a Merovan, and that she would have liked this. I chose to believe him."
+{n}Merovan, a sergeant of the host, wakes in a room with a chair, a closed door, and a parcel tied with a thoroughly unreasonable quantity of string. Merovan sets the parcel on the chair and reaches for the door.{/n}
 "I read it to the fever ward last night," {n}Targona writes.{/n} "They argued about the string for an hour. Nobody died before morning. I am not saying the two are connected. I am not saying they are not."
 {n}You read the ending your suggestion gave her.{/n}''',
-      c("Read Meret's departure.", "leaving", requires=("targona.story_leaving",)),
-      c("Read Meret's invitation.", "receiving", requires=("targona.story_receiving",))),
-    n("leaving", "Narrator", '''{n}Meret takes the chair to the door, breaks the lock with its leg, and walks out into a street she does not recognize. A watchman asks whether she is expected somewhere. She says that she is, at the nearest muster, and asks him the way.{/n}
+      c("Read Merovan's departure.", "leaving", requires=("targona.story_leaving",)),
+      c("Read Merovan's invitation.", "receiving", requires=("targona.story_receiving",))),
+    n("leaving", "Narrator", '''{n}Merovan takes the chair to the door, breaks the lock with its leg, and walks out into a street she does not recognize. A watchman asks whether she is expected somewhere. She says that she is, at the nearest muster, and asks him the way.{/n}
 {n}She carries the parcel with her, because it is hers. On a bench by the muster gate she unpicks the knots. Inside is a cup she has never liked. She trades it at the first stall for a chipped blue one and spends the difference on something sweet enough to make the vendor warn her.{/n}
 "The men wanted her to kill the demon on the way out," {n}Targona writes.{/n} "I told them the demon was not in the story, because the demon does not deserve a line. They accepted this. One of them cried, which he has asked me not to tell you."
-{n}The last line says only that Meret reaches the muster before roll call. A little ink has spread beneath the word 'reaches'.{/n}''', c("Consider what you might add.", "method")),
-    n("receiving", "Narrator", '''{n}Meret does not leave. She sets the chair against the door, draws her sword, and holds the room. Then she opens the parcel and finds a cup she has never liked, and puts it on the table anyway, because a garrison should be able to offer a guest something.{/n}
+{n}The last line says only that Merovan reaches the muster before roll call. A little ink has spread beneath the word 'reaches'.{/n}''', c("Consider what you might add.", "method")),
+    n("receiving", "Narrator", '''{n}Merovan does not leave. She sets the chair against the door, draws her sword, and holds the room. Then she opens the parcel and finds a cup she has never liked, and puts it on the table anyway, because a garrison should be able to offer a guest something.{/n}
 {n}She chalks a notice on the door: KNOCK. THE CUP IS NOT FOR LENDING.{/n}
-{n}The first to knock is a crusader who has lost his company and wants to borrow a spoon. Meret nearly runs him through, then decides an honest request deserves an honest answer. She lends him the spoon, refuses him the cup, and asks whether he knows anywhere selling better ones. He directs her to a stall at the corner. She chooses a chipped blue cup, leaves the old one for guests, and makes him swear by Iomedae to return her spoon.{/n}
+{n}The first to knock is a crusader who has lost his company and wants to borrow a spoon. Merovan nearly runs him through, then decides an honest request deserves an honest answer. She lends him the spoon, refuses him the cup, and asks whether he knows anywhere selling better ones. He directs her to a stall at the corner. She chooses a chipped blue cup, leaves the old one for guests, and makes him swear by Iomedae to return her spoon.{/n}
 "The ward liked her," {n}Targona writes.{/n} "She is less gracious than I meant her to be. The man with the spoon is a corporal from the third cot, and he has demanded to be in the next one."
-{n}Meret props the door open with the chair.{/n}''', c("Consider what you might add.", "method")),
+{n}Merovan props the door open with the chair.{/n}''', c("Consider what you might add.", "method")),
     n("method", "Narrator", '''{n}Targona has left the other side of the sheet blank for your part. She has written one condition at its top, in a soldier's capitals: THE MEN HAVE VOTED. SHE DOES NOT DIE.{/n}
 {n}You can add another street to the tale, a reply from the corporal with the spoon, or simply tell her which line made the ward laugh. You copy out her ending first. By the time you reach the parcel, you have developed a strong dislike of its string.{/n}''',
       c("[Trickster] Give the copied page a folded ending that refuses to stay last.", "trick", requires=("trickster",)),
@@ -240,8 +240,8 @@ s("the_unscheduled_door", "Meret of the host", [
 {n}Your first attempt tears at the hinge. You keep it beside the sound one and copy the folding instructions onto the back, step by step, the way you would write orders for a man who has to do it in the dark.{/n}
 "There is another corridor under THE END," {n}you write.{/n} "Lift the hinge and unfold it."
 {n}You enclose both attempts with her unchanged original. The torn one gets a warning in the margin: "Do not pull this one too hard."{/n}''', c("Send the altered copy alongside the unchanged original.", flags=("targona.extra_ending",))),
-    n("ordinary", "Narrator", '''{n}You leave Meret's ending where Targona put it. On the next page you give her a soldier's inconvenience: the chipped blue cup will not fit in a pack, and a sergeant of the host cannot be seen carrying crockery through the muster.{/n}
-{n}Meret tries to pack the cup between her spare shirt and her whetstone. Meret makes an unnecessarily elaborate plan involving her helmet, abandons it, and carries the cup in her hand through the whole muster with her chin up. You sketch the helmet plan and discover halfway through that you cannot make it work either.{/n}
+    n("ordinary", "Narrator", '''{n}You leave Merovan's ending where Targona put it. On the next page you give her a soldier's inconvenience: the chipped blue cup will not fit in a pack, and a sergeant of the host cannot be seen carrying crockery through the muster.{/n}
+{n}Merovan tries to pack the cup between her spare shirt and her whetstone. Merovan makes an unnecessarily elaborate plan involving her helmet, abandons it, and carries the cup in her hand through the whole muster with her chin up. You sketch the helmet plan and discover halfway through that you cannot make it work either.{/n}
 "The third cot can have his spoon back in the next one," {n}you add.{/n} "Tell him I said so."
 {n}You return the two scenes together, including the failed sketch.{/n}''', c("Send the second scene with her original.", flags=("targona.ordinary_ending",))),
 ], "targona.an_unpromised_future")
@@ -255,11 +255,11 @@ s("what_she_keeps", "A letter she wanted to write", [
       c("Read her response to the ordinary continuation.", "ordinary", requires=("targona.ordinary_ending",))),
     n("trick", "Narrator", '''"I opened your door and found your corridor, and followed your instructions, and my first corridor came out upside down. I have kept it. I kept the torn one too, and did not pull it too hard.
 "For a moment I wished there had been such a fold in her laboratory. There was not. I will not draw one into my account; my comrades must not look for a passage that was never there.
-"But I can put one in Meret's story. The corporal from the third cot insists she should take the corridor, and carry her cup carefully. He has tried your torn hinge and made it worse, and is very proud of himself.
+"But I can put one in Merovan's story. The corporal from the third cot insists she should take the corridor, and carry her cup carefully. He has tried your torn hinge and made it worse, and is very proud of himself.
 "Send me another street when you have time. I have promised him no more than that."
-{n}She has drawn Meret opening the door from its unexpected side. The figure carries a cup.{/n}''', c("Read the next page.", "voices")),
+{n}She has drawn Merovan opening the door from its unexpected side. The figure carries a cup.{/n}''', c("Read the next page.", "voices")),
     n("ordinary", "Narrator", '''"The ward laughed at the helmet plan until the chaplain came to see whether we were all dying. Then I improved the plan in the margin, which I believe was exactly the trap you laid for me.
-"I gave Meret a companion for the next street: the corporal from the third cot, who talks too much about his mother's pottery. She discovers she does not mind. He has his spoon back. The ward voted on that as well.
+"I gave Merovan a companion for the next street: the corporal from the third cot, who talks too much about his mother's pottery. She discovers she does not mind. He has his spoon back. The ward voted on that as well.
 "I still wake with the old room in my thoughts sometimes. I have no triumphant ending to attach to that sentence. But there are other things on the table now. A cup I like, a tale the men ask for, and letters I am glad to receive.
 "I did not expect a cup to do so much. I suppose that is what cups are for."
 {n}She has enclosed the beginning of the new street, stopping before the corporal can explain a second glaze.{/n}''', c("Read the next page.", "voices")),
@@ -269,7 +269,7 @@ s("what_she_keeps", "A letter she wanted to write", [
       c("Read Targona's private note.", "personal", forbids=("targona.ran_trickster", "targona.ran_aeon"))),
     n("two", "Anograt", '''"Silver says I may write this part myself. An extraordinary concession, considering that I have been writing in the margins from the beginning.
 "You sent your page back. Good. When we disagree about a story you get two letters, not one sensible compromise. Nobody has ever made a sensible compromise with a wing.
-"My opinion is that Meret should keep the bad cup and use it to hold the collector's rejected adjectives. Eventually she could sell them. There is clearly a market." {n}Targona's reply sits immediately below.{/n}
+"My opinion is that Merovan should keep the bad cup and use it to hold the collector's rejected adjectives. Eventually she could sell them. There is clearly a market." {n}Targona's reply sits immediately below.{/n}
 "I prefer the chipped blue cup. I also prefer Anograt saying what she thinks under her own name, rather than in my margins pretending to be me.
 "Keep addressing the letters to me. Add a page for her if you wish. She will read over my shoulder either way; I would rather she did it openly. Yesterday she rewrote my last sentence while I was fetching ink. At least now I know which words are hers."''', c("Read Targona's final lines.", "personal")),
     n("personal", "Narrator", '''"There is something else. Every letter I have sent you has had the laboratory in it somewhere. That is not what I think about when I think about you."
@@ -293,6 +293,7 @@ s("what_she_keeps", "A letter she wanted to write", [
 ], "targona.the_unscheduled_door")
 
 
+# R4 D11-D13: authored citadel repair/watch; ordinary unpaid dispatch and repair duty.
 s("the_open_threshold", "A door that opens both ways", [
     n("start", "Narrator", '''{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}
 "I am tending the wounded at a wayhouse on Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.
@@ -305,12 +306,12 @@ s("the_open_threshold", "A door that opens both ways", [
       c("Decline the meeting tonight and keep the correspondence open.", "declined"),
       c("Answer that you will leave the letter in the courier's hands.", "ordinary", forbids=("trickster",))),
     n("paper_setup", "Narrator", '''{n}Your folded corridor is still on your desk, the torn hinge beside it. She has told you what she thinks of doors she has not seen tested. Then give her one she can test.{/n}
-{n}In the citadel's east wall there is a postern the demons bricked up and warded while they held Drezen. The engineers have chalked it unsafe and left it alone. Beyond it a goat track runs down to the eastern road below the gate, out of sight of every sentry on the wall. Unbrick it, kill the old ward, fit a new lock, and an angel walking in from the wayhouse could reach the courtyard without being stared at by a single watchman.{/n}
+{n}In the citadel's east wall there is a postern the demons bricked up and warded while they held Drezen. The engineers have chalked it unsafe and left it alone. Beyond it a goat track runs down to the eastern road below the gate. The engineers will brace the opening and inspect the stonework once the ward is dead. The watch captain agrees to station a sentry inside, with orders to admit Targona and keep the door barred behind her. She can reach the courtyard without crossing the crowded gate.{/n}
 {n}The ward has to be truly dead first. If it is not, there is no invitation.{/n}''',
       c("[Knowledge (Arcana)] Unpick the demons' ward and test the postern before inviting her.", check=dict(Skill="SkillKnowledgeArcana", DC=30, Success="steady", Failure="falter", CommanderOnly=True)),
       c("Do not risk a passage. Send an ordinary invitation by the known courier road.", "road")),
     n("courier_setup", "Narrator", '''{n}The ordinary page hid no door, and you do not pretend it did. What you have is a named wayhouse, a courier who runs the eastern road twice a week, and a woman who wrote that she wants to see you.{/n}
-{n}You buy the dispatch clerk a bottle and a quiet hour, and your sealed invitation goes into the returns bag on top instead of at the bottom. The courier who was meant to carry a packet of requisitions reaches the wayhouse before her evening duty with your letter in his hand, and he never learns why the clerk was so cheerful.{/n}
+{n}The dispatch clerk reaches for the last letter just as you set yours down. Your invitation slips neatly into the returns bag before he ties it shut. The courier takes it with the requisitions on his usual round; you have gained a place in this packet, not a faster journey. By the time he reaches the wayhouse, her evening duty has begun.{/n}
 {n}She writes back in her own hand, on the back of yours. She will walk the public road to Drezen, if you still want her to come.{/n}''',
       c("Send the courier back with your invitation.", "road"),
       c("Do not send it. Keep the correspondence open.", "declined")),
@@ -323,9 +324,9 @@ s("the_open_threshold", "A door that opens both ways", [
 "You took me at my word. Few people do; they think an angel's no is only a yes that has not been prayed over long enough. I still want you. Keep writing to me, and one evening I will write back and name the night."
 {n}You answer with the smallest news you have, and ask for hers.{/n}''',
       c("Write back.", flags=("targona.visit_correspondence",))),
-    n("steady", "Narrator", '''{n}It takes two nights. The last thread of the ward parts with a smell like singed hair. You push an empty dispatch pouch through the gap from outside and from within, at dusk and again at midnight, and nothing answers it. A locksmith from the lower town fits a new lock with two keys and is paid not to wonder why.{/n}
+    n("steady", "Narrator", '''{n}It takes two nights. The last thread of the ward parts with a smell like singed hair. You push an empty dispatch pouch through the gap from outside and from within, at dusk and again at midnight, and nothing answers it. The engineers brace the opening, check the lintel and scrape away their warning. The citadel locksmith fits a lock from the repair stores, with two keys. The sentry takes one and bars the door from within.{/n}
 {n}The courier carries Targona a written account of the work, the way the goat track runs, and one of the keys. She reads every line of it. Her reply is one sentence: "I will inspect it myself."{/n}
-{n}She comes up the track after dark and examines the postern slowly, frame and hinges and the scorched stones where the ward was, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}
+{n}She comes up the track after dark. The sentry checks her name, admits her and drops the bar behind her. She examines the postern slowly, frame and hinges and the scorched stones where the ward was, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}
 "It is well made," {n}she says.{/n} "For a trick."''',
       c("Walk the wall with her.", "walk"),
       c("Tell her the wounded on the eastern road will want her at first light.", "close_passage")),
@@ -347,7 +348,7 @@ s("the_open_threshold", "A door that opens both ways", [
 "Commander. You have looked at me like that the whole length of the wall. Are you going to do anything about it?"''',
       c("Ask her again, and wait for her answer.", "kiss"),
       c("Tell her you would rather continue the walk.", "continue")),
-    n("close_passage", "Narrator", '''{n}She looks east, where the watchfires are, and then locks the postern herself and tries the bolt twice.{/n}
+    n("close_passage", "Narrator", '''{n}She looks east, where the watchfires are, and then locks the postern herself and tries the bolt twice. The sentry takes his place beside it.{/n}
 "You are right, and I hate it. If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept." {n}She smiles, a little ruefully, and offers you her arm.{/n} "Walk me to the gate, at least. I will go out by it like an honest woman; I will not use your trick twice in one night."''',
       c("Walk with her to the road and say goodnight.", "departed")),
     n("close_road", "Narrator", '''{n}She looks east, where the watchfires are.{/n}

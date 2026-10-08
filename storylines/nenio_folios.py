@@ -103,7 +103,7 @@ m(FIRST, "A follower with a pencil", '"What are you writing?"', [
 
 
 m(DEMONS, "Demons, by smell", '"Ready when you are. Which letter?"', [
-    nen("open", '''"D. Demons, classification of." {n}She is sitting on @SEAT@ with her knees drawn up and her notes spread around her on the ground like the pieces of a broken plate.{/n}
+    nen("open", '''"D. Demons, classification of." {n}She is sitting on @HER_SEAT@ with her knees drawn up and her notes spread around her on the ground like the pieces of a broken plate.{/n}
 "The priests classify them by the layer of the Abyss they come from, which is useless, because nobody can get to the layers to check. The Pathfinders classify them by what they are called, which is worse, because demons lie. I classify them by smell. Smell does not lie. Write."''',
         c("Continue", "smells")),
     nen("smells", '''"Babau: vinegar, and something like a tannery. Vrock: wet feathers and old graves; the graves may be circumstantial. Brimorak: burnt hair. Their own. Hezrou: I decline to describe the hezrou; the students of Absalom are young and have their whole lives ahead of them." {n}She pauses to let you catch up.{/n}
@@ -526,6 +526,7 @@ m(WHO, "Who are you?", '"You\'ve been quiet since the Ruins."', [
 ], requires=(SCRIBE, FOX_REVEALED), forbids=(RIDDLE_DONE, ENIGMA_RESOLVED), delay=24, places=("hub",))
 
 
+# Authored field survey: badges date the moving boundary; loss does not reform her scientific priorities.
 m(EDGE, "The edge of the Wound", '"You want to go where?"', [
     nen("open", '''"The edge. Not the Wound itself; I am not a fool. The edge, where the ground changes its mind." {n}She has a satchel packed with jars, a surveyor's chain and a sausage.{/n} "I need a sample of soil from each side of the line, and from the line itself if there is one, which I doubt. You are coming, because I cannot carry the chain and the sausage and also fight whatever lives at the edge."''',
         c('"Fine. We go now."', "walk"),
@@ -542,19 +543,19 @@ m(EDGE, "The edge of the Wound", '"You want to go where?"', [
         c('"The maps are enough. We should go."', "maps"),
         c("[Say nothing, and let her look.]", "look")),
     nen("read", '''{n}You read them. A hand and a sword. A white horse. Three stars on blue. A badge you do not know, and she does, and says it without being asked. She writes them all down, one to a line, with the distance from the edge beside each, and the list goes over onto the back of the page.{/n}
-"This is not science," {n}she says, halfway down the second side.{/n} "This is a list of the dead. I do not do lists of the dead."''',
+"A white horse. Which regiment?" {n}She holds the pencil above the second page.{/n} "If you cannot identify it, say so. I need a date for the shield, not a stirring account of its owner's death."''',
         c("Continue", "sarkoris", requires=(ARCH_DEAD,)),
         c("Continue", "read_first", forbids=(ARCH_DEAD,))),
-    nen("read_first", '''"I kept the losses as a total. This field report needs the badges too." {n}She writes the next badge anyway, and the next.{/n} "The number for this line is somewhere past two hundred. I have written every name so far to arrive at it. It is a very inefficient way to count, and I find I cannot stop, and I do not like finding things out about myself on a battlefield."''',
+    nen("read_first", '''"Two hundred shields. Not necessarily two hundred dead. Someone might have dropped one and run away. Sensible of them." {n}She crosses out the total and starts a column for the badges.{/n} "The maps have dates. These shields may have dates too. Read the next one. We shall miss supper, but I brought the sausage."''',
         c("Continue", "home")),
-    nen("maps", '''"The maps are not enough." {n}She says it sharply, and then seems surprised at herself.{/n} "My estimate from the maps was three miles. The shields say three miles of people. I did not know that until I stood here. I should have known it. I am supposed to know everything." {n}She takes one more measurement and gets up.{/n} "Very well. We go. But I am coming back with a longer chain."''',
+    nen("maps", '''"The maps are not enough. They disagree with the ground, and the ground is here." {n}She prises a shield free, spilling black soil over her boots, and straps it to her satchel.{/n} "We go. You will carry this. I shall identify the badge at camp and compare the dates. Next time, a longer chain."''',
         c("Continue", "home")),
     nar("look", '''{n}You let her look. She looks for a long while, and then she takes the pencil from behind her ear and writes something at the bottom of the chapter on the Worldwound's expansion, in capitals, slowly, so that anyone could read it: "SEE SHIELDS."{/n}''',
         c("Continue", "home")),
-    nen("sarkoris", '''"I did Sarkoris once, because you made me read it aloud. It did not change my opinion of the Architect. It has not left me either." {n}She writes the next badge anyway.{/n} "It turns out the dead are also data. Everything is. It is extremely inconvenient."''',
+    nen("sarkoris", '''"Yes, more victims of the Worldwound. I have already counted the losses in Sarkoris. Repeating them will not explain how fast this line moved." {n}She turns the sheet over and rules another column.{/n} "The badges might. Identify the next one. Areelu Vorlesh did not open the Worldwound merely to give us something to mourn."''',
         c("Continue", "home")),
-    nen("home", '''{n}On the ride back she sits behind you, because she says the horse dislikes her, and holds the jars in her lap and her other arm around your waist, for balance.{/n}
-"Thank you for coming," {n}she says to your back, somewhere near the picket line.{/n} "I would have gone alone. I would have measured the shields and written down the numbers and come home and not felt anything, and then in a hundred years I would have wondered why that chapter was wrong." {n}Her arm tightens, briefly.{/n} "It is less wrong now. That is your fault."''',
+    nen("home", '''{n}On the ride back Nenio wedges the jars between you and reaches around your waist to write against your saddle. A bump sends her pencil through the paper. She scowls and starts again.{/n}
+"Hold still, follower. I have a chapter to revise before I forget which jar came from which side." {n}At the picket she hands you the torn sheet and reaches for a fresh one.{/n} "Copy this. Leave room for the dates. Your dispatches can wait; the Worldwound has supplied me with a correction."''',
         c("[Ride on.]")),
 ], requires=(SCRIBE,), delay=48, RequiresAnyGroups=[list(twin_ids(DEMONS)) + list(twin_ids(ARCHITECT))])
 

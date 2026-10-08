@@ -1,5 +1,27 @@
 # RRT in-game test harness (GLOBAL-20)
 
+H09 evidence receipts are available beside the existing live entry point with
+`-EvidenceRequirements <reviewed-json-path>`. This optional switch invokes
+`tools/harness_evidence.py` after archiving the report; Python must be available.
+The JSON is a list of requirements with `case`, `kind`, `save`, `area`, `chapter`,
+`mod_version`, `contacts`, `host`, `path`, `placement`, and `owner`. `path` is the
+observed native navigation list; `placement` currently proves the loaded area only.
+Requirements for exact actor position need the separate presence probe and remain open.
+The receipt retains launch source/export hashes, requirement hash, command, exit,
+elapsed time, scene count and the contexts/owners of deferred cases.
+
+Evidence kinds are `synthetic fixture`, `managed construction`, `real save`,
+`rendered`, and `earned campaign`. Forced flags/native state establish fixture
+execution only. Unmodified saves establish saved history; captured pages add
+rendering evidence. Neither proves campaign earning. Earning requires separately
+reviewed campaign history; this driver never manufactures it or opens gameplay gates.
+Missing host/path/save/contact/mod version, skipped cases and truncated inventories
+leave acceptance open. The ordinary summary reports execution separately; incomplete
+coverage exits 2. With reviewed requirements, an unmet requirement also exits 2.
+Legacy harness binaries retain their execution exit status and explicitly leave
+acceptance unavailable. Rebuild the harness to obtain H09 coverage metadata;
+`-EvidenceRequirements` fails closed when that metadata is missing.
+
 <!-- BEGIN eng7-f5 -->
 ## Native epilogue/afterlogue inventory (E-Q7-34)
 
@@ -117,6 +139,13 @@ harness/
 ```
 
 ## Quick start
+
+The milestone systems use `-SystemCases harness/system-scenarios.json -NoRoundTrip`.
+See [system coverage and local-save scripts](../docs/HARNESS-SYSTEM-COVERAGE.md) for the Table,
+household W4/W5, Last Call, partner stance and ix-a/ix-b inventory, fixture boundaries and live debts.
+This mode uses exact authored choice identities and records coverage under `Saves[*].Systems`.
+When building SelfTest outside the checkout, pass its three arguments explicitly:
+`RRT.TestHarness.SelfTest.exe <built-RRT-DLL> <GameDir> <repo-root>`.
 
 ```powershell
 # 1. Build (0 errors expected). RRT itself is built by build.ps1 into src/bin/Release/net48.

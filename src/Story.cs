@@ -65,6 +65,7 @@ namespace Tirabade
         // E18: reviewed native gates (NativeGate.Reviewed), keyed by gate id. While When holds, the gated native checker reads
         // false and the native content takes its own false branch. Never starts or completes a native etude.
         public Dictionary<string, NativeGateSpec> NativeGates = new Dictionary<string, NativeGateSpec>();
+        public Dictionary<string, NativeTextEdit> NativeTextEdits = new Dictionary<string, NativeTextEdit>();
         // eng7-f1: state-scoped DisplayText replacements keep the native answer identity and behavior.
         public Dictionary<string, NativeAnswerEditSpec> NativeAnswerEdits = new Dictionary<string, NativeAnswerEditSpec>();
         // end eng7-f1
@@ -190,6 +191,20 @@ namespace Tirabade
         public List<JournalEntry> JournalEntries = new List<JournalEntry>();
     }
 
+    public sealed class NativeTextEdit
+    {
+        public string Type = "", Key = "";
+        public NativeTextVariant[] Variants = Array.Empty<NativeTextVariant>();
+    }
+
+    public sealed class NativeTextVariant
+    {
+        public string Text = "";
+        public string[][] When = Array.Empty<string[]>();
+        public string[] Forbids = Array.Empty<string>();
+    }
+
+
     public sealed class JournalEntry
     {
         public string Id = "";
@@ -306,6 +321,7 @@ namespace Tirabade
         public bool CopyInitializing; // F9: submitted copy awaiting its first usable view, or a ready copy culled by distance.
         public bool ContactAmbiguous;
         public bool NativeOwnedCopy;   // F9: a sibling placement owns this actor; never adopt it as native.
+        public bool NativeKilled;      // death of a previously delivered native contact, never mere absence
         public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
         public bool NativeHidden;      // that unit is out of game (hidden by native state)
         public bool NativeAtPosition = true;
@@ -449,6 +465,22 @@ namespace Tirabade
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
     }
 
+    // J01: current contact observations, never saved relationship progress.
+    public sealed class ParticipantContact
+    {
+        public string Kind = "body";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public ContactOption[] Options = Array.Empty<ContactOption>();
+    }
+
+    public sealed class ContactOption
+    {
+        public string[] Units = Array.Empty<string>();
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+    }
+
     public sealed class Scene
     {
         public string Id = "";
@@ -475,6 +507,9 @@ namespace Tirabade
         public string[] Pair = Array.Empty<string>();
         public string[] Participants = Array.Empty<string>();
         public string[] ParticipantWomen = Array.Empty<string>();
+        public bool PrivateParticipants;
+        public Dictionary<string, ParticipantContact> ParticipantContacts = new Dictionary<string, ParticipantContact>();
+        public string? ContactWitness;
         public string? Recovery;
         public string? AfterRecovery;
         public string? AfterDeparture;
@@ -486,6 +521,8 @@ namespace Tirabade
         public int MinChapter = 1;
         public int MaxChapter = 5;
         public int DelayHours;
+        // Optional explicit predecessor clocks; other requirements only gate availability.
+        public string[] DelayClocks = Array.Empty<string>();
         public bool Optional;
         // E6: a one-node companion/NPC reaction to a Trickster device (story_format.reaction).
         public bool Reaction;
@@ -586,6 +623,10 @@ namespace Tirabade
         public string? Revive;
         public SkillCheck? Check;
         public string[] Set = Array.Empty<string>();
+        // Only an explicit selection may refresh these existing saved hour keys.
+        public string[] RefreshTimes = Array.Empty<string>();
+        // Terminal payment publishes completion atomically, then displays this receipt node.
+        public string? PostPayment;
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
         // E5 native answer effects. Mythic: a Kingmaker.DialogSystem.Blueprints.Mythic name (MythicRequirement plus the
@@ -786,7 +827,8 @@ namespace Tirabade
 
         public static IEnumerable<string> NextNodes(Choice choice) => choice.Check != null
             ? new[] { choice.Check.Success, choice.Check.Failure }
-            : choice.Next == null ? Array.Empty<string>() : new[] { choice.Next };
+            : choice.Next != null ? new[] { choice.Next }
+            : choice.PostPayment != null ? new[] { choice.PostPayment } : Array.Empty<string>();
 
         public static bool Match(IEnumerable<string> requires, IEnumerable<string> forbids, Snapshot state) =>
             requires.All(state.Has) && !forbids.Any(state.Has);
@@ -843,7 +885,7 @@ namespace Tirabade
             if (state.Chapter < scene.MinChapter || state.Chapter > scene.MaxChapter || state.Has(scene.Id)) return false;
             if (scene.Chapters.Length > 0 && !scene.Chapters.Contains(state.Chapter)) return false;
             if (scene.Areas.Length > 0 && !scene.Areas.Contains(state.Area)) return false;
-            if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state) && !(progressedForbids?.Contains(flag) ?? false))) return false;
+            if (!scene.Requires.All(flag => ContactRequirementHeld(scene, flag, state)) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state) && !(progressedForbids?.Contains(flag) ?? false))) return false;
             if (scene.RequiresAny.Length > 0 && !scene.RequiresAny.Any(state.Has)) return false;
             if (!scene.RequiresAnyGroups.All(group => group.Any(state.Has))) return false;
             if (!RestAllowanceAvailable(story, scene, state) || !ParticipantsAvailable(story, scene, state)) return false;
@@ -852,7 +894,7 @@ namespace Tirabade
             var relationship = story.Relationships[scene.Relationship];
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             if (recovery != null && !state.Has("revive." + scene.Recovery + ".available")) return false;
-            if (state.Has(relationship.ClosedFlag) && scene.Recovery != "konomi" && scene.AfterRecovery == null
+            if (state.Has(relationship.ClosedFlag) && !scene.PrivateParticipants && scene.Recovery != "konomi" && scene.AfterRecovery == null
                 || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
                     && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(relationship, flag, state, scene))) return false;
             if (scene.Relationship == "tirabade")
@@ -866,6 +908,12 @@ namespace Tirabade
                     : scene.Id == "irabeth.return_first_words" ? "irabeth.return_meeting_accepted" : null;
                 if (waitedFor != null && (!state.Times.TryGetValue(waitedFor, out int requestedAt)
                     || requestedAt < 0 || (long)state.Hour - requestedAt < scene.DelayHours)) return false;
+            }
+            if (scene.DelayHours > 0 && scene.DelayClocks.Length > 0)
+            {
+                var held = scene.DelayClocks.Where(state.Has).ToArray();
+                return held.Length > 0 && held.All(key => state.Times.TryGetValue(key, out int at)
+                    && at >= 0 && (long)state.Hour - at >= scene.DelayHours);
             }
             int last = scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(group => group).Where(state.Has))
                 .Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
@@ -893,7 +941,20 @@ namespace Tirabade
             if (succeeded) state.RestSpent.Clear();
         }
 
-        public static bool ParticipantsAvailable(Story story, Scene scene, Snapshot state) => scene.Participants.All(id => {
+        public static bool ParticipantContactsAvailable(Scene scene, Snapshot state) => scene.ParticipantContacts.Values.All(contact =>
+            contact.Requires.All(state.Has) && !contact.Forbids.Any(state.Has)
+            && (contact.Kind != "body" || contact.Options.Any(option => option.Requires.All(state.Has)
+                && !option.Forbids.Any(state.Has) && option.Units.Length > 0 && option.Units.Any(state.AvailableContacts.Contains))));
+
+        private static bool ContactRequirementHeld(Scene scene, string flag, Snapshot state) => flag == scene.ContactWitness
+            ? scene.ParticipantContacts.Count > 0 && ParticipantContactsAvailable(scene, state) : state.Has(flag);
+
+        public static IEnumerable<string> ParticipantContactUnits(Scene scene) => scene.ParticipantContacts.Values
+            .SelectMany(contact => contact.Options).SelectMany(option => option.Units);
+
+        public static bool ParticipantsAvailable(Story story, Scene scene, Snapshot state) => ParticipantContactsAvailable(scene, state)
+            && (scene.PrivateParticipants ? scene.Participants.All(id => !state.Has(DegradedPrefix + id)
+                && !story.Relationships[id].UnavailableFlags.Any(flag => Blocks(story.Relationships[id], flag, state, scene))) : scene.Participants.All(id => {
             var named = scene.ParticipantWomen.Where(woman => story.SeatWomen[woman].Relationship == id).ToArray();
             var otherWomen = story.SeatWomen.Where(pair => pair.Value.Relationship == id && !named.Contains(pair.Key))
                 .SelectMany(pair => pair.Value.UnavailableFlags);
@@ -908,7 +969,7 @@ namespace Tirabade
                 return woman.Requires.All(state.Has) && !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
                     && !woman.UnavailableFlags.Any(flag => state.Has(flag)
                         && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
-            });
+            }));
 
         // eng7-l09: shared runtime/test contract for incurred transaction state.
         public static void EnterNode(Node node, Snapshot state)
@@ -916,6 +977,25 @@ namespace Tirabade
             foreach (string flag in node.EnterSet)
                 if (state.Flags.Add(flag)) state.Times[flag] = state.Hour;
         }
+
+        // Returns only flags whose persisted value/time actually changed. Ordinary
+        // already-earned witnesses keep their first timestamp, including on reload.
+        public static IEnumerable<string> RecordFlags(IEnumerable<string> writes, IEnumerable<string> refresh, Snapshot state)
+        {
+            var repeated = new HashSet<string>(refresh);
+            foreach (string key in writes.Distinct())
+                if (state.Flags.Add(key) || repeated.Contains(key))
+                { state.Times[key] = state.Hour; yield return key; }
+        }
+
+        public static bool PaymentContextAvailable(Story story, Scene scene, Choice choice, Snapshot state) =>
+            ContactAvailable(story, scene, state)
+            && (scene.PrivateParticipants || !state.Has(story.Relationships[scene.Relationship].ClosedFlag))
+            && Match(choice.Requires, choice.Forbids.Except(choice.Set), state);
+
+        public static bool PostPaymentAvailable(Story story, Scene scene, Choice choice, Snapshot state) =>
+            choice.PostPayment != null && state.Has(PaymentKey(scene, choice)) && state.Has(scene.Id)
+            && choice.Set.All(state.Has) && PaymentContextAvailable(story, scene, choice, state);
 
         public static bool PaymentExitAvailable(Node node, Snapshot state)
             => node.Choices.Any(choice => choice.Crusade?.Amount < 0)
@@ -984,7 +1064,7 @@ namespace Tirabade
         // The caller owns the synchronous native effect and story publication. Every attempted mutation is rolled back
         // on a partial debit or publication exception; no paid witnesses precede the verified full removal.
         public static bool CrusadeTransaction(CrusadeChoice cost, Func<bool> guards, Func<int?> read,
-            Action<int> change, Action publish, Action restoreStory, Action<string> warn)
+            Action<int> change, Action publish, Action restoreStory, Action<string> warn, Func<bool>? live = null)
         {
             int? before = null;
             bool attempted = false;
@@ -997,7 +1077,9 @@ namespace Tirabade
                 change(cost.Amount);
                 if (read() != (long)before.Value + cost.Amount)
                     throw new InvalidOperationException("Full crusade debit was not applied: " + cost.Resource);
+                if (live != null && !live()) throw new InvalidOperationException("Payment contact was lost during debit");
                 publish();
+                if (live != null && !live()) throw new InvalidOperationException("Payment contact was lost during publication");
                 return true;
             }
             catch (Exception ex)
@@ -1095,9 +1177,11 @@ namespace Tirabade
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
         {
             if (!ParticipantsAvailable(story, scene, state)) return false;
-            if (scene.Relationship == "household" && IsPresenceHubScene(scene)
+            if (IsTableScene(scene) && state.Has(story.Relationships[scene.Relationship].ClosedFlag)) return false;
+            if (!scene.PrivateParticipants && scene.Relationship == "household" && IsPresenceHubScene(scene)
                 && (!HouseholdPresenceAttachment(story, scene) || !PresenceWanted(story.Presences[scene.InteractionHub!], state))) return false;
-            if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
+            if (scene.ContactUnit == null && scene.ParticipantContacts.Count == 0 && scene.Participants.Length == 0
+                && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             var contacts = scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit });
             // eng7-l05: a failed nominated hub cannot advertise a generic native actor at another placement.
@@ -1111,8 +1195,11 @@ namespace Tirabade
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
-                && scene.Requires.All(state.Has)
-                && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && ForbidHolds(scene, flag, state))
+                && scene.Requires.All(flag => ContactRequirementHeld(scene, flag, state))
+                && !scene.Forbids.Any(flag => (IsNativeFlag(story, flag) || flag.EndsWith(".epoch_unavailable", StringComparison.Ordinal)
+                    || flag.EndsWith(".returned_actor_lost", StringComparison.Ordinal) || flag == "engine.l12.commander_unreturned"
+                    || flag.StartsWith("crossroute.", StringComparison.Ordinal) && flag.EndsWith("unavailable", StringComparison.Ordinal))
+                    && ForbidHolds(scene, flag, state))
                 && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
                     && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(story.Relationships[scene.Relationship], flag, state, scene))
                 && (scene.AfterDeparture == null || !state.Has(story.Relationships[scene.Relationship].ClosedFlag)
@@ -1909,6 +1996,9 @@ namespace Tirabade
         // reuse-native presence fails whenever no single live, friendly native actor stands in the area (absent, dead,
         // hostile or ambiguous), whether or not its anchor resolved; a spawn-copy fails when its anchor is gone and no copy
         // or native unit stands in for it. Transient: observed per tick, never saved.
+        public static bool PresenceKilled(PresenceObservation seen) => seen.AreaLoaded
+            && (seen.CopyFound && !seen.CopyAlive || seen.NativeKilled);
+
         public static bool PresenceFailed(Presence presence, bool wanted, PresenceObservation seen)
         {
             // eng7-l05: the same usable contact and repair plan drive hubs and failure twins.
@@ -2297,14 +2387,58 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
             var clocks = new HashSet<string>(story.Latches.Keys.Concat(story.Scenes.Select(scene => scene.Id))
                 .Concat(story.Scenes.SelectMany(scene => scene.Nodes.SelectMany(node => node.EnterSet.Concat(node.Choices.SelectMany(choice => choice.Set))))));
+            var contactKeys = new HashSet<string>(authoredFlags.Concat(nativeKeys).Concat(derivedFlags)
+                .Concat(story.Derived.Keys).Concat(story.Counts.Keys));
             foreach (var scene in story.Scenes)
             {
+                if (scene.DelayClocks == null || scene.DelayClocks.Distinct().Count() != scene.DelayClocks.Length
+                    || scene.DelayClocks.Any(key => !clocks.Contains(key)
+                        || !scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(g => g)).Contains(key))
+                    || scene.DelayClocks.Length > 0 && (scene.DelayHours <= 0
+                        || !scene.Requires.Any(scene.DelayClocks.Contains)
+                        && !scene.RequiresAnyGroups.Any(g => g.Length > 0 && g.All(scene.DelayClocks.Contains))))
+                    throw new InvalidOperationException("Invalid declared delay clocks: " + scene.Id);
                 if (scene.Relationship == "household" && scene.RestAllowance != null && scene.DelayHours > 0
                     && !scene.Requires.Any(clocks.Contains)
                     && !scene.RequiresAnyGroups.Any(group => group.Length > 0 && group.All(clocks.Contains)))
                     throw new InvalidOperationException("Delayed household scene lacks a deed clock on every alternative: " + scene.Id);
                 if (scene.RestAllowance != null && !story.RestAllowances.ContainsKey(scene.RestAllowance))
                     throw new InvalidOperationException("Unknown rest allowance: " + scene.Id);
+                if (scene.PrivateParticipants && (scene.Relationship != "household" || scene.InteractionHub == TableHub
+                    || scene.Participants.Length == 0 || scene.ParticipantContacts.Count == 0
+                    || !scene.Requires.Contains("trickster.now") || !scene.Forbids.Contains("engine.l12.commander_unreturned")))
+                    throw new InvalidOperationException("Invalid private participant channel: " + scene.Id);
+                foreach (var pair in scene.ParticipantContacts)
+                {
+                    var contact = pair.Value;
+                    if (string.IsNullOrWhiteSpace(pair.Key) || contact == null
+                        || !new[] { "body", "letter", "projection", "banner", "eye" }.Contains(contact.Kind)
+                        || contact.Requires == null || contact.Forbids == null || contact.Options == null
+                        || contact.Requires.Length == 0 || contact.Requires.Concat(contact.Forbids).Any(k => !contactKeys.Contains(k))
+                        || contact.Kind != "body" && contact.Options.Length != 0)
+                        throw new InvalidOperationException("Invalid current participant contact: " + scene.Id + "/" + pair.Key);
+                    foreach (var option in contact.Options)
+                        if (option == null || option.Units == null || option.Units.Length == 0
+                            || option.Units.Any(id => !Guid.TryParseExact(id, "N", out _))
+                            || option.Requires == null || option.Forbids == null
+                            || option.Requires.Concat(option.Forbids).Any(k => !contactKeys.Contains(k)))
+                            throw new InvalidOperationException("Invalid body contact alternative: " + scene.Id + "/" + pair.Key);
+                }
+                if (scene.ParticipantContacts.Count > 0)
+                    foreach (var route in scene.Participants)
+                    {
+                        var named = scene.ParticipantWomen.Where(w => story.SeatWomen[w].Relationship == route).ToArray();
+                        var required = named.Length > 0 ? named : scene.ParticipantContacts.ContainsKey(route) ? new[] { route }
+                            : story.SeatWomen.Where(p => p.Value.Relationship == route).Select(p => p.Key).ToArray();
+                        if (required.Length == 0 || required.Any(w => !scene.ParticipantContacts.ContainsKey(w)))
+                            throw new InvalidOperationException("Missing current participant contact: " + scene.Id + "/" + route);
+                    }
+                if (scene.ContactWitness != null && (!scene.Requires.Contains(scene.ContactWitness)
+                    || scene.ParticipantContacts.Count == 0 || scene.ParticipantContacts.Values.Any(c => c.Kind != "body")
+                    || authoredFlags.Contains(scene.ContactWitness)
+                    || nativeKeys.Contains(scene.ContactWitness) || story.Derived.ContainsKey(scene.ContactWitness)
+                    || story.Counts.ContainsKey(scene.ContactWitness) || story.Latches.ContainsKey(scene.ContactWitness)))
+                    throw new InvalidOperationException("Current contact witness must be evaluated, never saved: " + scene.Id);
                 if (scene.TableHosted && (!IsRemote(scene) || scene.Kind != "visit" || !IsTableScene(scene)))
                     throw new InvalidOperationException("TableHosted requires a Table visit: " + scene.Id);
                 if (scene.Participants == null || scene.ParticipantWomen == null || scene.Pair == null
@@ -2320,6 +2454,7 @@ namespace Tirabade
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeTexts(story, authoredFlags, nativeKeys, derivedFlags);
             // eng7-l04: Main.Load and the offline suite use the identical target/state contracts.
             ValidateNativeWorld(story, authoredFlags, nativeKeys, derivedFlags);
             // eng7-f1
@@ -2482,6 +2617,25 @@ namespace Tirabade
                         if (choice.Revive == "konomi" && !choice.Set.SequenceEqual(new[] { "konomi.retained_return_confirmed" })
                             || choice.Set.Contains("konomi.retained_return_confirmed") && choice.Revive != "konomi")
                             throw new InvalidOperationException("Konomi restoration records only verified return, not relationship access: " + scene.Id);
+                        if (choice.RefreshTimes == null || choice.RefreshTimes.Distinct().Count() != choice.RefreshTimes.Length
+                            || choice.RefreshTimes.Any(key => !choice.Set.Contains(key))
+                            || choice.RefreshTimes.Length > 0 && choice.Abort)
+                            throw new InvalidOperationException("Invalid chosen clock refresh: " + scene.Id + "/" + node.Id);
+                        if (choice.PostPayment != null)
+                        {
+                            var receipt = scene.Nodes.FirstOrDefault(n => n.Id == choice.PostPayment);
+                            if (choice.Crusade == null || choice.Crusade.Amount >= 0 || choice.Next != null || choice.Check != null
+                                || choice.Abort || choice.Revive != null || choice.NativeNext != null || receipt == null || receipt == node
+                                || scene.Nodes.SelectMany(n => n.Choices).Count(c => c.PostPayment == choice.PostPayment) != 1
+                                || receipt.EnterSet.Length != 0 || receipt.Paragraphs.Count != 0 || receipt.Choices.Count != 1
+                                || !receipt.Choices[0].Abort || receipt.Choices[0].Set.Length != 0 || receipt.Choices[0].RefreshTimes.Length != 0
+                                || receipt.Choices[0].Next != null || receipt.Choices[0].PostPayment != null || receipt.Choices[0].Check != null || receipt.Choices[0].Crusade != null
+                                || receipt.Choices[0].Revive != null || receipt.Choices[0].NativeNext != null
+                                || receipt.Choices[0].RemoveItem != null || receipt.Choices[0].StartEtude != null
+                                || receipt.Choices[0].Mythic != null || receipt.Choices[0].Alignment != null
+                                || receipt.Choices[0].Requires.Length != 0 || receipt.Choices[0].Forbids.Length != 0)
+                                throw new InvalidOperationException("Invalid post-payment receipt: " + scene.Id + "/" + node.Id);
+                        }
                         if (choice.Next != null && !nodes.Contains(choice.Next)) throw new InvalidOperationException("Missing node: " + scene.Id + "/" + choice.Next);
                         if (choice.Check != null && (choice.Next != null || choice.Abort || choice.Revive != null
                             || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
@@ -2663,11 +2817,81 @@ namespace Tirabade
             }
         }
 
+        // Kiana Q3: exact native type, field and localization key, checked against the installed archive again at attachment.
+        public static readonly Dictionary<string, string> ReviewedNativeTexts = new Dictionary<string, string>
+        {
+            ["82213327a06db644fb2b5bb1410d4654/Text"] = "BlueprintCue:6962fab7-3d93-4c05-92fa-ca0c914d4e4d",
+            ["3f29d60b9a30bbb49bc9d56eaae1f643/Text"] = "BlueprintCue:5d8e7c45-94d1-4c1a-9b5c-7987b289d282",
+            ["5fa8ed029a93b4348b82ec659e6839a0/Text"] = "BlueprintCue:60a2a08c-7b89-429f-8956-30184ad2712e",
+            ["f750317f25d754b41b465a9533216338/Text"] = "BlueprintCue:452340b8-848b-4057-8a4a-17435357540d",
+            ["81f0222e6856efd4bbdbd5dea796716a/Text"] = "BlueprintCue:baa20a60-7931-4084-b510-bf166145a1f2",
+            ["a473e5412ffd0f54fbf395770a80a008/Text"] = "BlueprintCue:9e3e8d42-8f1c-4cb9-9dfb-d4c5712ff6d1",
+            ["124ca3b348b3dff429ef708e5b24788a/Text"] = "BlueprintCue:d895a05d-ad4f-4d2d-9c28-70880a010585",
+            ["613485017b96c3840a2f9eea886deff1/Text"] = "BlueprintCue:8b555c03-fe28-4d02-85be-b25b99bcd0b0",
+            ["086a160e51ef79c4d98750203cb4b641/Text"] = "BlueprintCue:87e38061-27ad-44e8-ad6b-2f52b7429fc6",
+            ["d759f7956ba304442b74a842ff6b14d5/Text"] = "BlueprintCue:a03f71db-e5e0-4f72-b29a-9834b4a48165",
+            ["ff03c12b165989e479d7c80e9ce7a8f9/Text"] = "BlueprintCue:ec2188d1-671b-4077-8c5f-79fc07598302",
+            ["901c1edd8887dfa4b9f108e106f38423/Text"] = "BlueprintAnswer:74e73e62-e594-4200-8f0b-51c206c927d7",
+            ["01a184d01ff707748b6377c38d2912e5/Text"] = "BlueprintAnswer:b6aadd42-09ba-48cd-86fa-4f3ef5ba83bf",
+            ["cb2e13e1ded36e5419d746ed92162a91/Text"] = "BlueprintCue:b8064d2c-fba2-4fa6-8a6f-b6dadab2aee7",
+            ["e65e4b85197e6aa42a40d34abcea889c/Text"] = "BlueprintCue:a4e4b388-60b7-4030-9aaf-4f06f807f1e4",
+            ["be05eef615c2eac44ac30ec0a2e49603/Text"] = "BlueprintCue:697942a5-46b2-4c85-975c-602efa20836b",
+            ["5736cff83ea67644bb11346947b1eb2f/Text"] = "BlueprintCue:ba2425dd-420f-4ff6-abaa-2b5f0ae95741",
+            ["dd9956385abff89418d83075e1b7774c/Text"] = "BlueprintCue:8fbff9f7-a739-4a19-b5cd-8102b2299891",
+            ["22ced28b5ecb08348b35daa51ab112b1/Text"] = "BlueprintAnswer:ef6faada-c7c6-4c63-b1d6-f19a00da9c17",
+            ["75220bf8ab5be034ea55b84d24c58de2/Text"] = "BlueprintCue:43e11168-7f70-4aa8-b527-b657268d390f",
+            ["096dd0fc12adbaf438bca7c7c9ebb4ba/Text"] = "BlueprintCue:cbbe11fe-01ff-4ba9-8f1f-2b2a9b4940a6",
+            ["3bdbd8728bc75bf4eadae1152a34f26b/Text"] = "BlueprintCue:cd9de62b-2a56-4220-b057-6c1a3ea86b25",
+            ["01a1c98b38a78fd4abeaa0c09f3a5be9/Text"] = "BlueprintCue:9abb4bcf-bb04-4a8c-bd1c-4cbcb3de1e3e",
+            ["aebbc1845e827dd4da4e28014e7b4162/Text"] = "BlueprintCue:1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c",
+            ["5a5a533c9ce630a48b877f9a194840cb/Description"] = "BlueprintQuest:b46d5fa9-4ea9-4e7a-9997-b95c458bd095",
+            ["7ac73c0b5de939b4b824a0aac54ba5f2/Description"] = "BlueprintQuestObjective:ef5f2b7e-8e8c-4338-a8c1-acce1e65618f",
+            ["83527eddea019674cb123a6a52bdf169/Title"] = "BlueprintQuestObjective:8f8bb69c-77fb-4b1a-af7a-589fa79bcb17",
+            ["83527eddea019674cb123a6a52bdf169/Description"] = "BlueprintQuestObjective:e07e3559-8973-46ee-8c3f-85326d63c8aa",
+            ["5b1e04caadc42114281d29db76c19c4f/Title"] = "BlueprintQuestObjective:fe6c829a-52b3-489e-814f-b9cbe22a8cd6",
+            ["5b1e04caadc42114281d29db76c19c4f/Description"] = "BlueprintQuestObjective:884bf99f-bd1e-42ea-ac54-996fe4e8dddb",
+            ["ba857f1c903988f47a70a9d6a2d861fa/Description"] = "BlueprintQuestObjective:247343ee-0c87-4495-9857-310cc31fa663",
+            ["dc3a376f09759574f997995e8f07689a/Text"] = "BlueprintCue:1e776184-f15d-4a8a-9e96-830c5e929e6c",
+            ["5c09123a07ee1e047a292c542cce6b74/Text"] = "BlueprintCue:cb16d5c5-6f75-4238-9d9d-957abc3aa5a8",
+            ["5d02b3f1d1f6774419ea9fd3795596e8/Text"] = "BlueprintAnswer:12e922e5-7d4c-4e06-a130-765d91876379",
+            ["56f96d3f22dac0942890ebc8dafdfc56/Text"] = "BlueprintCue:869d65f2-fb96-4999-9355-fd6a5c1719d1",
+            ["6cac7bac2baea854d9c52b1d89046cd8/Text"] = "BlueprintCue:8515f2a6-a926-49a3-a566-f60b4e1dff3d",
+            ["a819e8c85ef23324bb0d8117bb9d7df3/Text"] = "BlueprintCue:1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+            ["df45181e1968f26459f9e8bc2b995a34/Text"] = "BlueprintCue:0c8edca3-4bab-4535-a37b-ea3d3186213b",
+            ["0e50ec24099196a42b7089ffecdc46b2/Text"] = "BlueprintCue:0568c8c8-7e85-4fc3-ba62-309d2bebee00",
+            ["4cd264ce0432bb94a8e80a551190150d/Text"] = "BlueprintCue:b873d838-c522-4d2f-83e0-b017070b6102",
+            ["73815b731281fdc47bbc59aba42b2126/Text"] = "BlueprintCue:afe4a854-e6c9-442f-8755-cc08e4fd140c",
+            ["e9a5a4c03ea016f47b29d91b2ff3a00c/Text"] = "BlueprintCue:6ba1cb04-8e0b-40c5-ac6d-6cf64ff0e094",
+            ["2b133bf7ac66d6241a69a53dce2bf05f/Text"] = "BlueprintCue:c2e4632d-2c47-43cf-bebb-0f8dbbab495b",
+            ["b3e6076282402a1489b6f226567cf8fa/Text"] = "BlueprintCue:3cb6cfc5-ab5e-4ddb-a7d1-8ce3775b987f",
+            ["aeccec94d6e3246488d7f13577a8380d/Text"] = "BlueprintCue:58ee4b07-0488-4fab-a286-d50f786fe135",
+            ["81109ea8fb20dbc478cf67116740f4a1/Text"] = "BlueprintCue:b261aab4-14ff-41e7-bd72-21aeeab7df44",
+            ["4255f49c18c69aa4ab4d5582d0b6f39e/Text"] = "BlueprintCue:8e4494ff-5209-44e1-9e80-98a8b9d2a6a9",
+        };
+
+        private static void ValidateNativeTexts(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeTextEdits == null) throw new InvalidOperationException("NativeTextEdits cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeTextEdits)
+            {
+                var edit = pair.Value;
+                if (edit == null || !ReviewedNativeTexts.TryGetValue(pair.Key, out var contract) || contract != edit.Type + ":" + edit.Key
+                    || edit.Variants == null || edit.Variants.Length == 0 || edit.Variants.Any(v => v == null || string.IsNullOrWhiteSpace(v.Text)
+                        || v.When == null || v.When.Length == 0 || v.When.Any(g => g == null || !g.Contains("trickster.now") || g.Length == 0 || g.Any(f => !Known(f.StartsWith("!", StringComparison.Ordinal) ? f.Substring(1) : f)))
+                        || v.Forbids == null || v.Forbids.Any(f => !Known(f))))
+                    throw new InvalidOperationException("Invalid reviewed native text field: " + pair.Key);
+            }
+        }
+
+        public static string? NativeText(NativeTextEdit edit, Snapshot state) => state.Has(DegradedPrefix + "kiana") ? null : edit.Variants
+            .FirstOrDefault(v => WhenHolds(v.When, state) && !v.Forbids.Any(state.Has))?.Text;
+
         // eng7-l04 begin: shared reviewed contracts, also read by the Python export validator.
         public static readonly string[] Q3RecoveryFullOutcomes = new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" };
         public static readonly string[] Q3RecoveryPartialRequirements = new[] { "trickster.now", "kiana.trickster.returned", "kiana.trickster.cost.guests_robbed" };
         public static bool Q3RecoveryGroupSupported(string[] group) => group != null && group.Contains("trickster.now")
-            && (Q3RecoveryFullOutcomes.Any(group.Contains) || Q3RecoveryPartialRequirements.All(group.Contains));
+            && (Q3RecoveryFullOutcomes.Any(group.Contains) || group.Length == Q3RecoveryPartialRequirements.Length && Q3RecoveryPartialRequirements.All(group.Contains));
         public static Q3RecoveryOutcome Q3RecoverySelection(Story story, Snapshot state)
         {
             if (!NativeGateHolds(story, "kiana.q3_recovery", state) || !state.Has("trickster.now")) return Q3RecoveryOutcome.Native;

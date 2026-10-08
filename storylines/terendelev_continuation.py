@@ -165,15 +165,15 @@ add("kenabres_petition", "A name used as a seal", "Terendelev", [
 {n}She looks at you directly.{/n}
 
 "I want you to challenge me if I begin treating a remembered street as though it were unchanged. You were there during the attack. Your memory is not mine, and mine is not a map of every life that has continued without me."''', c('[Go to the meeting and listen before either of you argues.]', "meeting", flags=f("evidence.context"))),
-    n("meeting", "Narrator", '''{n}The storehouse is crowded with people who came to dispute different things. Builders sit beside residents whose homes have been marked. A clerk guards a locked case of original assessments. At the far end, an organizer named Venn has arranged the chairs so that the petition's supporters face the door.{/n}
+    n("meeting", "Narrator", '''{n}The storehouse is crowded with people who came to dispute different things. Builders sit beside residents whose homes have been marked. A clerk guards a locked case of original assessments. At the far end, an organizer named Vennorik has arranged the chairs so that the petition's supporters face the door.{/n}
 
 {n}Terendelev does not sit at the head of the room. She waits until the residents have found places and then stands beside you, not behind a lectern.{/n}
 
 "I was told my name would persuade you to accept this plan," she says. "It cannot. I have not approved it. I am here to hear what danger you see and to learn what evidence you used."
 
-{n}A resident interrupts Venn: her roof was listed as collapsed when she has been sleeping beneath it for three years. The room turns toward the two of you.{/n}''',
-      c('[Let the resident explain before questioning Venn.]', "resident", flags=f("meeting.resident_first")),
-      c('[Ask Venn to produce the original assessments now.]', "records", requires=f("evidence.records")),
+{n}A resident interrupts Vennorik: her roof was listed as collapsed when she has been sleeping beneath it for three years. The room turns toward the two of you.{/n}''',
+      c('[Let the resident explain before questioning Vennorik.]', "resident", flags=f("meeting.resident_first")),
+      c('[Ask Vennorik to produce the original assessments now.]', "records", requires=f("evidence.records")),
       c('[Ask the clerk how notices became eviction rumors.]', "clerk", requires=f("evidence.clerk")),
       c('[Ask Terendelev to open with the limits of her own authority.]', "opening", flags=f("meeting.limits"))),
     n("resident", "Narrator", '''{n}The woman gives her name as Asla. She describes the roof, the repair she made with her brother, and the winter she spent sleeping in the back room because the front was unsafe. She does not ask for charity. She wants the inspection repeated by someone who understands the difference between a patched roof and an empty house.{/n}
@@ -181,14 +181,14 @@ add("kenabres_petition", "A name used as a seal", "Terendelev", [
 {n}Terendelev listens without interrupting. When Asla finishes, the dragon asks what she would need to make the home safe before the first snow. The answer is lumber, two days of labor, and a stove pipe that does not leak.{/n}
 
 "That is a plan we can assess," Terendelev says. "It is not the same as a promise that every house can remain."''', c('[Ask the committee to fund a second inspection and a repair estimate.]', "decision", flags=f("resident.heard"))),
-    n("records", "Narrator", '''{n}Venn opens the case. The originals are not a single report, but a stack of notes from three inspections. One uses an obsolete street grid. Another records a dangerous foundation without stating that the house is empty. The third is missing the inspector's signature.{/n}
+    n("records", "Narrator", '''{n}Vennorik opens the case. The originals are not a single report, but a stack of notes from three inspections. One uses an obsolete street grid. Another records a dangerous foundation without stating that the house is empty. The third is missing the inspector's signature.{/n}
 
-{n}No single page proves that Venn forged anything. Together they show that the petition's confident totals were assembled from records that cannot bear the weight put on them.{/n}
+{n}No single page proves that Vennorik forged anything. Together they show that the petition's confident totals were assembled from records that cannot bear the weight put on them.{/n}
 
-Terendelev asks Venn whether he knew the gaps were there. He admits that he did. He thought the danger of delay was greater than the harm of a few mistaken notices.''', c('[Require a public correction and a fresh inspection before any clearance.]', "decision", flags=f("records.opened"))),
+Terendelev asks Vennorik whether he knew the gaps were there. He admits that he did. He thought the danger of delay was greater than the harm of a few mistaken notices.''', c('[Require a public correction and a fresh inspection before any clearance.]', "decision", flags=f("records.opened"))),
     n("clerk", "Narrator", '''{n}The clerk says the notice was written to invite inspections. The courier who carried it told residents that inspectors would return with guards. He had been promised a paid position on the clearance crews if the petition passed.{/n}
 
-{n}The clerk cannot say whether the courier invented the threat or repeated what he had heard from Venn. The evidence establishes a financial interest and a false rumor, not who first ordered it.{/n}
+{n}The clerk cannot say whether the courier invented the threat or repeated what he had heard from Vennorik. The evidence establishes a financial interest and a false rumor, not who first ordered it.{/n}
 
 Terendelev asks for the courier's name and the dates of the deliveries. She will not call it a deliberate plot until residents can be questioned without the organizer present.''', c('[Separate the paid courier from the inspection plan and investigate both.]', "decision", flags=f("delivery.traced"))),
     n("opening", "Terendelev", '''"My name is not an order," Terendelev says. "I have not inspected these homes. I have not approved the numbers in this petition. I have agreed to hear the people who live here and the people who fear the wall will fail."

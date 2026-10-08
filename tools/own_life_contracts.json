@@ -275,5 +275,16 @@
     "wenduag:033",
     "wenduag:034",
     "wenduag:035"
-  ]
+  ],
+  "minachiv_retired_surfaces": {
+    "minachiv.the_second_address": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.a_factor_at_the_table": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_answer_after_business": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_key_in_your_hand": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_paper_she_kept": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_man_who_remembers": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_entrance_she_wants": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.who_keeps_the_house": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence.",
+    "minachiv.the_cost_in_daylight": "Chapter-5 legacy save surface; forbidden by chapter_later, nodes and answers retained. No new postwar or physical presence."
+  }
 }

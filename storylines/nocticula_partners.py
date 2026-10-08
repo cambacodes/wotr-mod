@@ -218,7 +218,7 @@ def ending_paragraphs(nocticula_dead=False):
     out = []
     for state, req, bad in STATES:
         text = {
-            "alive": '{n}Shamira\'s court remained in the Harem of Ardent Dream. Its mistress was still Nocticula\'s chosen lover and would-be rival. Her place in the Midnight Isles had not passed to the Commander.{/n}',
+            "alive": '{n}Shamira\'s court remained in the Harem of Ardent Dreams. Its mistress was still Nocticula\'s chosen lover and would-be rival. Her place in the Midnight Isles had not passed to the Commander.{/n}',
             "body": '{n}Shamira\'s court had its mistress back in the body the Commander earned for her. Survival had not restored her old place in Nocticula\'s bed or settled her claim on the throne.{/n}',
             "mind": '{n}Shamira\'s name was spoken inside the Commander\'s head. She remained bodiless there. Nocticula\'s former lover could listen there; she could neither occupy the royal bed nor sit beside its owner.{/n}',
             "captive": '{n}Shamira\'s name remained in the court\'s accounts. What survived of her remained captive inside the Commander. She had once shared Nocticula\'s bed and coveted her throne. No answer had come from the cage to the new invitation.{/n}',
@@ -227,12 +227,12 @@ def ending_paragraphs(nocticula_dead=False):
             "declined": '{n}Shamira was dead; her last remnant had gone under. Her Harem outlasted her. Its courtiers could not claim their mistress had willingly surrendered her place beside Nocticula.{/n}',
         }[state]
         if nocticula_dead and state == "alive":
-            text = '{n}Shamira\'s court remained in the Harem of Ardent Dream. Its mistress had been Nocticula\'s chosen lover and would-be rival. After Nocticula\'s death, the Harem shut its doors to mourners. Its courtiers began buying reports from the other islands.{/n}'
+            text = '{n}Shamira\'s court remained in the Harem of Ardent Dreams. Its mistress had been Nocticula\'s chosen lover and would-be rival. After Nocticula\'s death, the Harem shut its doors to mourners. Its courtiers began buying reports from the other islands.{/n}'
         if state == "alive":
             out.append(p(text, requires=req, forbids=(*bad, EXPOSED, CHOSEN)))
             out.append(p('{n}Shamira remained in her Harem. Nocticula had ended her claim to the royal bed. The dismissal had cost Nocticula her favorite; Shamira had kept the Harem and answered the Lady in Shadow\'s orders with threats of her own.{/n}', requires=(*req, CHOSEN), forbids=bad))
-            separated = ('{n}Shamira\'s court remained in the Harem of Ardent Dream. Before Nocticula\'s death, its mistress had closed her doors to her former lover over the exposed affair. The courtiers kept their copies of the invitations and began buying reports from the other islands.{/n}' if nocticula_dead else
-                         '{n}Shamira\'s court remained in the Harem of Ardent Dream. Its mistress had closed her doors to Nocticula over the exposed affair. She was alive, separated from her former lover, and still buying intelligence about the Lady in Shadow\'s throne.{/n}')
+            separated = ('{n}Shamira\'s court remained in the Harem of Ardent Dreams. Before Nocticula\'s death, its mistress had closed her doors to her former lover over the exposed affair. The courtiers kept their copies of the invitations and began buying reports from the other islands.{/n}' if nocticula_dead else
+                         '{n}Shamira\'s court remained in the Harem of Ardent Dreams. Its mistress had closed her doors to Nocticula over the exposed affair. She was alive, separated from her former lover, and still buying intelligence about the Lady in Shadow\'s throne.{/n}')
             out.append(p(separated, requires=(*req, EXPOSED), forbids=bad))
             continue
         if state in {"body", "mind", "captive"}:
@@ -345,7 +345,7 @@ def integrate(payload):
                 if not any(not choice["Next"] for choice in node["Choices"]):
                     continue
                 if s["Owner"] == "AeonEpilogue":
-                    node.setdefault("Paragraphs", []).append(p('{n}In the lost history, Shamira had been Nocticula\'s chosen lover in the Harem of Ardent Dream. The Commander\'s demands, bargains and secret invitations belonged to that erased court; none settled her place in the remade world.{/n}'))
+                    node.setdefault("Paragraphs", []).append(p('{n}In the lost history, Shamira had been Nocticula\'s chosen lover in the Harem of Ardent Dreams. The Commander\'s demands, bargains and secret invitations belonged to that erased court; none settled her place in the remade world.{/n}'))
                     for stance in ("share", "exclusive", "secret"):
                         node["Paragraphs"].append(p('{n}' + {
                             "share": 'The agreement to share Nocticula\'s company had been erased with those evenings.',

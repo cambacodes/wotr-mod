@@ -5,10 +5,14 @@
   "facts": "Vellexia is patron, Jerribeth client. Defection is only the actual SeenCue e0ee422a413a5f94ea90bede3096ee56. Two current original bodies at the same private audience are required, with current losses, Marhevok stance and earned defection reconciliation intact. An eye tenant, host, mirror, letter or shell cannot attend. Commander absent; no second-person narration. A one-visit presence cannot establish this multi-day sequence.",
   "scene": "Authored optional Ch5 audience continuation. Both friendship deeds and both personal answers precede the slot; business has ended. Jerribeth stays because she wants Vellexia, not because patronage buys her. The non-graphic slot begins after their kiss, at the start of explicit acts. No explicit prose supplied. Empty mode retains the appointment node and later morning. Jerribeth leaves for her own collection; Vellexia wants her return without summoning her back. No memory room, mind exchange, rent, forgiven betrayal, forced desire or redemption.",
   "last_line": "J: I have an appointment of my own.",
-  "speakers": {"J": "Jerribeth", "V": "Vellexia"},
+  "speakers": {
+    "J": "Jerribeth",
+    "V": "Vellexia"
+  },
   "commander": "absent",
   "min_lines": 14,
   "max_lines": 20,
   "build_contract": "W3-S28 blocked reservation: do not emit any of company, invitation, choice or morning until the route/shared owners confirm the existing overlapping body/venue window and prescribed reconciliation, stage, Marhevok and cap readers. Delays from account to company/invitation/choice/morning are 48/96/144/152 hours; check current bodies at every step. No stay extension or new gate is authorized.",
-  "continuity": "choice: jerribeth_answer -> vellexia_answer -> mutual -> explicit.1 -> appointment. Only mutual publishes the existing both_yes witness; explicit.1 writes nothing. Empty slot retains appointment and the separately charged eight-hour morning. Named refusals and friends_only bypass the slot."
+  "continuity": "choice: jerribeth_answer -> vellexia_answer -> mutual -> explicit.1 -> appointment. Only mutual publishes the existing both_yes witness; explicit.1 writes nothing. Empty slot retains appointment and the separately charged eight-hour morning. Named refusals and friends_only bypass the slot.",
+  "example": "J: I have an appointment of my own."
 }

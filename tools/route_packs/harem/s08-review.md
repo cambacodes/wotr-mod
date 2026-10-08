@@ -1,3 +1,5 @@
+> J03 status (2026-10-07): approved rulings 01, 02, 04, 17–20 supersede the staging/blocker claims below for this row. The append-only implementation and precise remaining inert reservations are documented in [j03-contracts.md](../plans/j03-contracts.md). Edge prose remains pending with the authorized voice owner.
+
 # S08 implementation staging
 
 Authored addition: Arueshalae publicly names herself beside a crusade scout's

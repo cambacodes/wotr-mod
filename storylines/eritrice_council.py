@@ -991,7 +991,7 @@ for _s in SCENES:
         # S2: user's fill process supplies the return to an established lover.
         _carried["Choices"][0]["Next"] = TWICE + ".explicit.1"
         _s["Nodes"].append(nar(TWICE + ".explicit.1",
-            '{n}Her gown falls across the abandoned scroll. She brings you down with her, still kissing; the candle has gone out before either of you reaches the table. The fallen scroll waits beneath the table until morning.{/n}', c("[...]")))
+            '{n}Her gown falls across the abandoned scroll. She draws you from the edge onto the tabletop, still kissing, and lies back beneath you in the dark. The fallen scroll waits beneath Alichino\'s chair until morning.{/n}', c("[...]")))
 
 sitting(K + "second_morning", "Worth the ink", '"You promised another record."', [
     e("morning", '{n}She retrieves the scroll from under Alichino\'s chair, then your shirt. Her gown is tied crookedly; she catches you looking and pulls you into a brief, hungry kiss.{/n}\n"I did. A second private session. Carried."\n{n}She writes the line on a fresh sheet and reads it aloud while fastening your collar.{/n} "I have a sitting to chair. Tonight I intend to come back. Leave the lamp where it is."', c("[Help her gather the scattered clothing.]")),

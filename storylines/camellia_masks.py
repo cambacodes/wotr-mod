@@ -18,7 +18,7 @@ from storylines.camellia_trickster import (BY_ORDER, CLOSED, COMMITTED, DANCED, 
                                            GRAVE, HUB_LIST, INVENTED, KILLED, KNIFE_NOTICED, LATE, LESSON, LIST_BURNED,
                                            LIST_KEPT, NAME_LEFT, NAMED, NOT_TODAY, OUT_LIED, OUTLIVE, OWED, P, PRESENCE, QUIET,
                                            REL, RET, ROMANCE, SCENES, SHE_WON, SHELF, STARTED, STEADY, UNIT, WITNESS_HERS,
-                                           WITNESS_LIED, cam, lead, met, nar)
+                                           WITNESS_LIED, MIREYA_KNOWN, cam, lead, met, nar)
 
 M = P + "masks."
 # PP2 early beats (camellia_early: path-neutral, set in the Prologue and Chapter 2), read here only.
@@ -70,7 +70,7 @@ living(TWO_LIES, "Two lies and a truth", '"You look bored, Camellia. That seems 
 {n}She holds a dried poppy up to the lamp, turns it, and drops it into the silk bag.{/n} "But since you are here, and since you are looking at me in that clever way, would you like to play a game? My teacher taught it to me when I was small. The old Varisian woman my father paid to live with us. She said it was how she learned when the spirits were lying."''',
         c('"What game?"', "rules"),
         c('"Do spirits lie?"', "spirits")),
-    cam("spirits", '''"Constantly." {n}She says it with deep affection.{/n} "They are like children, or courtiers. They tell you what they think will please you, and what they want, and very occasionally what is true, all in the same breath. One learns to listen for the seam." {n}She runs a manicured nail along the edge of a pressed leaf, very slowly.{/n} "Everyone has a seam."''',
+    cam("spirits", '''"They tell me what I wish to hear. Much like the servants at home." {n}She runs a nail along a pressed leaf.{/n} "A servant always looked at the door before lying to papa. You have better manners. I shall have to watch you more closely."''',
         c('"And the game?"', "rules")),
     cam("rules", '''"Two lies and a truth. I tell you three things. You tell me which one is true. Then you do the same to me, and we see who is better at it." {n}At last she looks up. Her eyes are very bright.{/n} "I warn you, I was a lonely child, and I practised a great deal. I had very little else to do behind those windows."''',
         c('"Go on, then."', "hers")),
@@ -97,7 +97,7 @@ Three." {n}She smiles.{/n} "I have never told you a single lie."''',
         c('[Tell her three lies] "I\'m afraid of you. I\'m tired of this crusade. I\'m not enjoying myself."', "three_lies")),
     cam("out_lied", '''{n}She studies you for a long time, head on one side, one finger tapping her chin.{/n}
 "The cards are a lie. You do not need to cheat; you simply make the other person think you have. The sleep is true, I have heard you walk at night. And the last one..." {n}She stops. Her finger stops.{/n}
-"You're waiting for me to say the last one is a lie." {n}Her voice has dropped.{/n} "You said them all in exactly the same voice. All three. I cannot find the seam."''',
+"All three in the same voice. You did not hesitate over the last one at all." {n}Her finger stops tapping.{/n} "I expected you to look away. How troublesome."''',
         c('"They\'re all true."', "confess"),
         c('[Say nothing, and smile]', "confess_silent")),
     cam("confess", '''"All true." {n}She repeats it, and a faint colour comes up in her cheeks, which she does nothing to hide, and which you suspect she could hide perfectly well if she wanted to.{/n} "That is cheating, you know. Telling the truth in a game about lies. It is the most underhanded thing anyone has ever done to me, and I have met my father."''',
@@ -105,7 +105,7 @@ Three." {n}She smiles.{/n} "I have never told you a single lie."''',
     cam("confess_silent", '''{n}She waits. You wait. The lamp gutters. At last she laughs, softly, and looks down at the flowers in her lap as if they had said something indiscreet.{/n}
 "You are not going to tell me. Of course you're not. You are going to leave me wondering which part of you likes me." {n}She plucks a dried rose and hands it to you, stem first.{/n} "I shall wonder very thoroughly."''',
         c("Continue", "close_won", flags=(GAME, OUT_LIED, STARTED))),
-    cam("fair", '''"Absalom." {n}No hesitation at all.{/n} "You've been to Absalom. Everyone who has been to Absalom says 'Absalom' as if it owed them money." {n}She beams.{/n} "One point to me. Don't sulk. I did warn you. I have been listening for seams since I was six years old."''',
+    cam("fair", '''"Absalom." {n}She answers at once.{/n} "You said that one much too carefully. I shall take my point, my friend." {n}She beams.{/n} "Papa's servants used to practice their excuses before they knocked. You sounded just like them."''',
         c("Continue", "close_lost", flags=(GAME, SHE_WON, STARTED))),
     cam("three_lies", '''"Oh, all three are lies. You aren't afraid of me, which is very foolish of you. You aren't tired of the crusade, you're far too entertained by it. And you are enjoying yourself enormously." {n}She tips her head back and laughs.{/n} "You broke the rules, my friend. There was supposed to be one true thing. I shall have to assume it's hiding somewhere else."''',
         c("Continue", "close_lost", flags=(GAME, SHE_WON, STARTED))),
@@ -119,8 +119,9 @@ Three." {n}She smiles.{/n} "I have never told you a single lie."''',
 # --- 2. Mireya's name. -------------------------------------------------------------------------------------------------
 
 living(MIREYA, "A name for a spirit", '"Who are you talking to?"', [
-    nar("open", '''{n}Camellia sits apart from the fire with the bone snake of her amulet cupped in both hands, very close to her mouth, murmuring. When she hears you she does not startle. She finishes her sentence, whatever it was, and only then looks up.{/n}''',
-        c("Continue", "who")),
+    nar("open", '''{n}Camellia sits apart from the fire, murmuring to herself. When she hears you she finishes her sentence before looking up.{/n}''',
+        c("Continue", "who", forbids=(MIREYA_KNOWN,)),
+        c("Continue", "who_known", requires=(MIREYA_KNOWN,))),
     cam("who", '''"Mireya." {n}She holds up the amulet so that the firelight catches the little snake's eyes.{/n} "The spirit in here. I found her when she was hardly anything, a shred of rage and madness blowing about the ruins like a scrap of paper. I locked her in, and I've taken care of her ever since."
 "I talk to her in the evenings. She doesn't answer yet. She needs a great deal more before she can." {n}She licks her lips, a small, absent movement.{/n} "But she listens. I am sure she listens."''',
         c('"Mireya. Is that her name?"', "name"),
@@ -136,24 +137,33 @@ living(MIREYA, "A name for a spirit", '"Who are you talking to?"', [
         c('[Offer a name] "Call her Toilday. Nobody\'s afraid of a Toilday."', "tuesday"),
         c('[Trickster] "I had a friend like that once. Sergeant Barnaby Quill. He never answered me either."', "barnaby"),
         c('"Keep the one you gave her. It\'s yours."', "keep")),
-    cam("tuesday", '''"Toilday!" {n}She laughs so suddenly that the amulet swings on its cord.{/n} "Oh, that's dreadful. Toilday. She would never forgive me."
-{n}She holds the snake up to her ear, as if listening, and her face goes grave.{/n} "No. She says she is Mireya, and she would like you to know that she is taking it very personally." {n}Her eyes glitter.{/n} "Now you've done it. Now she knows your voice."''',
+    cam("tuesday", '''"Toilday!" {n}She laughs suddenly.{/n} "Oh, that's dreadful. Toilday. She would never forgive me."
+{n}She tilts her head as if listening, and her face goes grave.{/n} "No. She says she is Mireya, and she would like you to know that she is taking it very personally." {n}Her eyes glitter.{/n} "Now you've done it. Now she knows your voice."''',
         c("Continue", "after", flags=(NAMED,))),
     cam("barnaby", '''"Sergeant Barnaby Quill," {n}she repeats, slowly, testing the weight of it.{/n} "Tell me about him."
 {n}So you do. He was from Mendev. He had a limp from a vrock, a wife in Nerosyan he wrote to every week, and a laugh like a mule falling downstairs. You make up the mule on the spot. You make up the wife's name too. Camellia listens with her chin on her hands and her eyes never leaving your mouth.{/n}''',
         c("Continue", "made_up")),
     cam("made_up", '''"You made him up." {n}Very softly. Not a question.{/n} "Just now. All of him. The limp and the wife and the mule. You made him up and put him in my head, and now he's in there, and I shall never get him out."
-{n}She is quiet for a moment, turning the amulet in her fingers.{/n} "How did it feel? To make a person up, and have someone believe in them?"''',
+{n}She is quiet for a moment, folding her hands.{/n} "How did it feel? To make a person up, and have someone believe in them?"''',
         c('"Lonely."', "lonely"),
         c('"Wonderful."', "wonderful")),
     cam("lonely", '''"Yes." {n}She says it at once, and then looks as though she wishes she hadn't.{/n} "Yes, that's exactly it. You make them up so that you have someone to talk to, and then you have to keep them alive all by yourself, and nobody else can ever really see them." {n}She laughs, lightly, and it doesn't quite work.{/n} "How silly. We are being very silly tonight."''',
         c("Continue", "after", flags=(INVENTED,))),
-    cam("wonderful", '''"Wonderful," {n}she agrees, and her smile is the widest you have seen it.{/n} "It is, isn't it? Like having a secret door in a house nobody knows you live in." {n}She presses the amulet to her lips.{/n} "I think we could be very good friends, you and I. Better than anyone I've ever had. I have had a great many friends."''',
+    cam("wonderful", '''"Wonderful," {n}she agrees, and her smile is the widest you have seen it.{/n} "It is, isn't it? Like having a secret door in a house nobody knows you live in." {n}She leans nearer.{/n} "I think we could be very good friends, you and I. Better than anyone I've ever had. I have had a great many friends."''',
         c("Continue", "after", flags=(INVENTED,))),
-    cam("keep", '''"Mine." {n}She considers the word, and you can see her decide she likes it.{/n} "Yes. She is mine, isn't she. I made her what she is." {n}She tucks the snake back into the lace at her throat, carefully.{/n} "You're very generous, my friend. Most people want to take things away from me. You keep telling me to keep them."''',
+    cam("keep", '''"Mine." {n}She considers the word, and you can see her decide she likes it.{/n} "Yes. She is mine, isn't she. I made her what she is." {n}She smooths her cuff.{/n} "You're very generous, my friend. Most people want to take things away from me. You keep telling me to keep them."''',
         c("Continue", "after", flags=(NAME_LEFT,))),
-    cam("after", '''"Go to bed. You look like something the spirits would enjoy." {n}She turns back to the fire and lifts the amulet to her mouth again.{/n} "Mireya and I have a great deal to discuss. Most of it is about you."''',
+    cam("after", '''"Go to bed, my friend. The sentries will want you awake tomorrow." {n}She watches to see whether you leave.{/n} "I have not finished discussing you."''',
         c("[Leave her to her conversation]")),
+
+    cam("who_known", '''"Mireya, of course." {n}She smiles at you.{/n} "You know perfectly well there is nobody in that amulet. Must I give up an agreeable habit merely because you caught me?"''',
+        c('"What are you telling her?"', "needs_known"),
+        c('"We could give her another name."', "name_known")),
+    cam("needs_known", '''"That the crusade has been most accommodating. So many bodies, and such a helpful Commander." {n}She lowers her voice.{/n} "She would be grateful, if I had troubled to make her grateful."''', c('"And her name?"', "name_known")),
+    cam("name_known", '''"Mireya has served me very well. The chaplains were quite moved by her suffering." {n}Her smile sharpens.{/n} "But do suggest something. I should like to hear how you would improve my lie."''',
+        c('[Offer a name] "Call her Toilday. Nobody\'s afraid of a Toilday."', "tuesday"),
+        c('[Trickster] "I had a friend like that once. Sergeant Barnaby Quill. He never answered me either."', "barnaby"),
+        c('"Keep the one you gave her. It\'s yours."', "keep")),
 ], requires=(GAME,), delay=48)
 
 
@@ -194,11 +204,10 @@ living(FLIES, "Flies at a window", '"You\'ve gone pale. Is it the spirits?"', [
 living(FUNERAL_SCENE, "The funeral I would like", '"You\'re watching the procession."', [
     nar("open", '''{n}A crusader's funeral goes down the street below the citadel wall: four bearers, a chaplain with a book, a widow walking behind with her hand on the coffin, and a cart of white lilies that someone has tied up with a blue ribbon. Camellia watches it from the parapet with the absorbed attention of a woman at a play.{/n}''',
         c("Continue", "critic")),
-    cam("critic", '''"The lilies are wrong." {n}She says it the way a dressmaker says "the hem is wrong".{/n} "White lilies are for weddings. No one has told them. And the blue ribbon, with that widow's coat? Dreadful."
-"And look at her. She keeps touching the coffin. As if he might knock." {n}She tilts her head.{/n} "Everyone at a funeral is waiting for the same thing, you know. They are waiting for the dead to prove them wrong. They never do. It's the one performance nobody can stop giving."''',
+    cam("critic", '''"White lilies. With that blue ribbon? Dreadful." {n}She watches the widow touch the coffin.{/n} "She has done that six times since the chaplain began. The man beside her counts each touch, then looks at the purse on her belt. I wonder which of them paid for the flowers."''',
         c('"What would you want at yours?"', "hers"),
         c('"You enjoy funerals."', "enjoy")),
-    cam("enjoy", '''"I enjoy honesty." {n}She smiles down at the widow.{/n} "A funeral is the only place where people stop pretending that the person they're looking at is going to be there tomorrow. Everywhere else, everyone lies about that all day long. You. Me. That chaplain." {n}A pause.{/n} "Him especially."''',
+    cam("enjoy", '''"Look at the widow. She waits until someone turns toward her before she wipes her eyes." {n}Camellia smiles.{/n} "The chaplain has noticed. He is prolonging the prayer so she can do it again. I do hope she tips him."''',
         c('"What would you want at yours?"', "hers")),
     cam("hers", '''"Mine?" {n}She lights up like a child asked about her birthday.{/n} "Oh, I've planned it for years. A small chapel. Rain, if it can be arranged. Very good music. And the wrong flowers, on purpose. White lilies, the wedding kind, heaps of them, so that no one knows whether they ought to weep or congratulate me."
 {n}She leans her elbows on the parapet.{/n} "And at the very back, one person who doesn't believe a word of it. Who stands there with their arms folded and waits for me to sit up. I have always wanted someone like that."''',
@@ -238,7 +247,7 @@ living(DANCE, "A dance with a knife in it", '"Camellia? You wanted to see me?"',
     cam("silent", '''{n}She notices that you noticed. You can tell because she stops counting aloud, and because her eyes, which have been on your collar all this time as a good pupil's should, lift to yours and stay there.{/n}
 "You didn't look down," {n}she says, very softly, not missing a step.{/n} "Everybody looks down."''',
         c("Continue", "anticipation", flags=(DANCED,))),
-    cam("armed", '''"Of course I'm armed." {n}She laughs, delighted, and turns under your arm.{/n} "A lady should always be armed at a dance. You never know who will ask you." {n}She comes back into your hands.{/n} "My dancing master said the only difference between a waltz and a duel is who knows it's happening. I have always thought he was being modest."''',
+    cam("armed", '''"Of course I'm armed." {n}She laughs, delighted, and turns under your arm.{/n} "A lady should always be armed at a dance. You never know who will ask you." {n}She comes back into your hands.{/n} "My dancing master would have told you to keep your hand higher. I find this much more instructive."''',
         c("Continue", "anticipation", flags=(KNIFE_NOTICED,))),
     cam("lifted", '''{n}On the next turn the knife is in your hand and her strap is empty, and she does not notice for a full three steps. Then she does. She stops dead.{/n}
 "Give that back," {n}she says, in a completely different voice.{/n}
@@ -256,7 +265,7 @@ living(DANCE, "A dance with a knife in it", '"Camellia? You wanted to see me?"',
 
 GRAVE_LEADS = [
     ("late", nar, '''{n}The sexton is there, by the gate, with his lantern. He sees the Commander, and then he sees the veiled woman on the Commander's arm, and he sets the lantern down very carefully on the path and walks away into the dark without once looking back.{/n}''', LATE),
-    ("order", cam, '''"Your Mendevian sergeant came here, you know. The morning after. She stood exactly where you are standing and said, to the stone, 'Nothing personal.' I thought that was very sweet of her. I am going to remember it for a long time."''', BY_ORDER),
+    ("order", cam, '"The sexton told me your sergeant came here the morning after the burial. She stood by the stone and said, \'Nothing personal.\'" {n}Camellia brushes a leaf off the inscription.{/n} "How courteous. I shall remember that when we meet."', BY_ORDER),
 ]
 SCENES.append(scene(P + "beat.her_own_grave", "Her own grave", "Camellia", 3,
     '"You look like a woman with somewhere to be."', [
@@ -289,16 +298,16 @@ SCENES.append(scene(P + "beat.her_own_grave", "Her own grave", "Camellia", 3,
 
 SCENES.append(scene(P + "beat.spirits_due", "The spirits' due", "Camellia", 3,
     '"You\'re up. You\'re well. You\'re frightening the quartermaster."', [
-    cam("open", '''"I am well, thank you, my friend. I am better than well." {n}She is sitting at the edge of camp with her feet in the grass and her face turned up to the sun, like a woman at a spa.{/n} "Do you know what dying is like? It's like the moment after a very long concert, when the music stops and nobody has begun to clap. I lay in that silence for a day and a half. I've never heard anything so beautiful."''',
+    cam("open", '''"Quite well, thank you." {n}She sits with her face turned toward the sun. Beyond the wagons, soldiers are burying the rearguard's dead.{/n} "I remember no voices. No demands. Then yours, ordering me to get up. You have been very generous, my friend, and very tiresome."''',
         c("Continue", "chosen")),
-    cam("chosen", '''"And then you called me back, and you made me a promise, and the spirits heard it." {n}She turns her head and looks at you, still smiling, and lifts the silver bowl from the grass beside her.{/n} "The new moon is tonight. I thought you ought to know. I thought you ought to have the afternoon to decide how brave you mean to be."''',
+    cam("chosen", '''"And then you called me back, and you made me a promise, and the spirits heard it." {n}She turns her head and looks at you, still smiling, and lifts the silver bowl from the grass beside her.{/n} "I shall have your blood at the new moon, my friend. Do not make me come looking for it."''',
         c('"How much will they want?"', "who"),
         c("[Say nothing, and hold out your wrist]", "silent"),
         c('"What if I stop you?"', "not")),
-    cam("who", '''"As much as I decide." {n}Quite gently.{/n} "That was the bargain. You don't ask, and I don't tell you. I promise I'll stop before you faint. Probably." {n}She pats your hand.{/n} "Most people would have bargained harder for their own blood. You didn't bargain at all. You'll have to decide tonight what kind of person that makes you, which I think you've been putting off."''',
+    cam("who", '''"As much as I decide." {n}Quite gently.{/n} "That was the bargain. You don't ask, and I don't tell you. I promise I'll stop before you faint. Probably." {n}She pats your hand.{/n} "Most people would have bargained harder for their own blood. You didn't bargain at all. You'll have to decide before the new moon what kind of person that makes you, which I think you've been putting off."''',
         c("Continue", "unmissed")),
     cam("silent", '''{n}She looks at your wrist in the sunlight, and then up at you. Her smile changes, very slightly, into something warmer and much more alarming.{/n}
-"Oh, you're good. Not tonight, darling. Put it away. Anticipation quickens the imagination." {n}She takes a long breath of the morning air.{/n} "I'm so glad I didn't stay dead."''',
+"Oh, you're good. Not yet, darling. Put it away. Anticipation quickens the imagination." {n}She takes a long breath of the morning air.{/n} "I'm so glad I didn't stay dead."''',
         c("Continue", "unmissed")),
     cam("not", '''"Then you stop me." {n}She shrugs.{/n} "And the spirits remember that you promised and didn't pay, and so do I, and I lie back down, and this time nobody calls me overacting." {n}She considers.{/n} "But you won't. I've watched you. You keep your promises when they're expensive. It's the only thing about you I don't understand."''',
         c("Continue", "unmissed")),
@@ -369,7 +378,7 @@ met(P + "bond.shelf", "The shelf", '"Camellia. What have you done to my room?"',
         c("[Hold it to the candle]", "burned"),
         c('"There are names on here that aren\'t crossed out."', "names")),
     cam("what_d", '''"Those are my friends." {n}She says it with great tenderness.{/n} "All my friends. The ones with lines through them, I have finished being friends with. The others are still waiting. They don't know that. It's the only kindness I can do them."
-{n}She slices the apple.{/n} "I crossed you out the day I died, lying under that cloak by the wagons. It seemed only fair; I was leaving. Then you told my corpse it was overacting, and I wrote you in again. I thought you ought to have it. It's the most romantic thing I own."''',
+{n}She slices the apple.{/n} "I crossed you out before that battle. I had decided where to put the knife. After I woke by the wagons, I wrote you in again. I thought you ought to have it. It is the most romantic thing I own."''',
         c("[Fold it and put it back on the shelf]", "kept"),
         c("[Hold it to the candle]", "burned"),
         c('"There are names on here that aren\'t crossed out."', "names")),
@@ -417,9 +426,9 @@ met(P + "bond.witness", "The witness", '"You\'re worried. You never look worried
 # --- Not today. --------------------------------------------------------------------------------------------------------
 
 NOT_TODAY_LEADS = [
-    ("kept", cam, '''"You still have my list on your shelf. I look at it every night before I sleep. Nobody on it has changed." {n}A small, wry smile.{/n} "You see what you've done to me. I'm keeping accounts."''', LIST_KEPT),
+    ("kept", cam, '"You still have my list on your shelf. I look at it every night before I sleep. Your name is still where I put it." {n}A small, wry smile.{/n} "You see what you\'ve done to me. I\'m keeping accounts."', LIST_KEPT),
     ("burned", cam, '''"You burned my list. I rewrote it the next morning, from memory, and then I burned it myself. It seemed only polite to finish what you started."''', LIST_BURNED),
-    ("ghost", cam, '''"They're still telling the story of the singing ghost in the chapel, you know. I heard it in the market yesterday. The dog has grown wings."''', WITNESS_LIED),
+    ("ghost", cam, '"They are still telling your ghost story. I heard it in the market. The dog has grown wings." {n}She laughs softly.{/n} "Nobody asks about the witness now. How thorough of you."', WITNESS_LIED),
     ("steps", cam, '''"I walked by the river steps last night. Somebody has put up a railing." {n}She says it without any expression at all.{/n}''', WITNESS_HERS),
 ]
 met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
@@ -427,8 +436,9 @@ met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
         c("Continue", "lead")),
     *lead([("lead", cam, '''"I'm thinking." {n}She draws a line in the condensation on the glass, and then another across it.{/n} "About after. After the war. After your Wound is closed and your crusade is over and everyone goes home."''', None),
            *NOT_TODAY_LEADS], "after"),
-    cam("after", '''"I'll want it back, you know. The knife. One day." {n}Now she turns round.{/n} "Not because I've stopped loving you. Because I will have. That's how it works, with me. The more I love someone, the more I want to see their face when they understand. It's the only thing I've ever wanted, and I have wanted it so very much."
-"I'm telling you so you'll know the day. I'll be smiling. I promised you that."''',
+    cam("after", '''"I shall want the knife back one day." {n}She turns from the window.{/n} "I am growing very fond of you. That makes me wonder what your face would look like when you finally understood why I had drawn it." {n}Her thumb rests on the hilt.{/n} "You have given me so many other things to enjoy. For now, I would rather keep them."
+
+"When I want the knife, I shall be smiling. I promised you that."''',
         c('"Then I\'ll be smiling back."', "smile"),
         c('[Trickster] "When that day comes, I\'ll die convincingly. You\'ll never know if I meant it."', "convincing"),
         c('"Not today, though."', "today")),

@@ -90,6 +90,7 @@ namespace RRT.TestHarness
         [JsonIgnore] public bool NativeEpilogueSpike => string.Equals(Spike, "nativeepilogue", StringComparison.OrdinalIgnoreCase);
         // END eng7-f5
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
+        public string? SystemCasesJson;
 
         [JsonIgnore] public bool ResidenceSpike => string.Equals(Spike, "residence", StringComparison.OrdinalIgnoreCase);
         [JsonIgnore] public bool PresenceSpike => string.Equals(Spike, "presence", StringComparison.OrdinalIgnoreCase);
@@ -132,6 +133,12 @@ namespace RRT.TestHarness
             SeenCues = FixtureGuids(SeenCues, "seenCues");
             RemoveCompanions = FixtureGuids(RemoveCompanions, "removeCompanions");
             Timeouts ??= new HarnessTimeouts();
+            if (SystemCasesJson != null)
+            {
+                SystemCases.Parse(SystemCasesJson);
+                if (Saves.Count == 0 || RoundTrip || Inline || Spike != null || HasFixtureSetup || SceneFilter.Count > 0)
+                    throw new FormatException("System scenarios need saves, NoRoundTrip, no Inline/spike/filter/global fixture setup.");
+            }
             if (!Dfs && !string.Equals(Mode, "random", StringComparison.OrdinalIgnoreCase))
                 throw new FormatException("Plan mode must be \"random\" or \"dfs\", not \"" + Mode + "\".");
             if (WalksPerScene < 1) WalksPerScene = 1;

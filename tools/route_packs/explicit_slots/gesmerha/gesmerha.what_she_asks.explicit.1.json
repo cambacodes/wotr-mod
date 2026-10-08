@@ -1,7 +1,7 @@
 {
   "voice": "Gesmerha: proud Sarkorian woodshaper, ancestor-conscious, blunt and dryly funny; frank about wanting a lover, impatient with flattering patronage. She speaks in short concrete phrases, occasionally curses, and keeps authority over her work and her time. Blindness means she learns through touch and sound, not supernatural knowledge. No autonomous hands deciding affection, obedience test, therapeutic speech, maxims or redeemer role. Write new dialogue; voice traits are not lines to imitate. Canon facts: Marhevok personally cut out her eyes after her truthful carving exposed a monstrous Lady; journeymen finished his statue; she fears losing her hands and refuses further maiming. These facts support voice, not an erotic treatment of her injury. No invented body measurements, eye color, magical sight or healed eyes. Any hair, clothing, furniture or return scars in the scene are authored route staging, not additional canon biography.",
   "scene": "Chapter 3, Wintersun workshop pallet behind the curtain. Gesmerha and Commander alone, after the existing mutual lover acceptance and her evening/clan-road terms. Required beats: she has chosen to bar the door and welcome this lover; tools are away; her joke about the shelf belongs to the cramped workshop. Establish a chosen intimate encounter without graphic sexual description; leave the sexual act unfilled for separate user production. Avoid payment, test or a second first confession. Return to after_private: afternoon light, her head on the Commander’s shoulder, and she redirects a hand away from her old eye injury to her neck. Do not resolve the injury or advance to morning.",
-  "last_line": "G: Mind the shelf.",
+  "last_line": "N: Later, the light through the shutter has gone from white to gold. She lies with her head on your shoulder and her hair across your chest, and when your hand wanders toward the old scars at her temple she catches it and moves it, without fuss, to the side of her neck.",
   "speakers": {
     "G": "Gesmerha"
   },
@@ -24,5 +24,6 @@
     "13f2b37e28864ba4b882d13fad90f7c5",
     "597b7e82dbec7804490f02048e4bf1ef"
   ],
-  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts."
+  "production_scope": "Replace this single threshold slot; its next node is the established aftermath. No repeated approach, second draw-down, new state mutations or invented canon physical facts.",
+  "facts": "No additional physical facts are supplied. Do not invent hair, eye or skin colour, measurements, scars, form-specific features or fixed Commander anatomy. The intimate encounter is authored; preserve the scene situation and existing relationship state supplied in this brief."
 }

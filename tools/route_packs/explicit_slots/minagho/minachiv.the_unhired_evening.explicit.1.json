@@ -5,34 +5,32 @@
     "node": "minagho_kiss",
     "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
   },
-  "voice": "Minagho: wounded arrogance, contemptuous brevity, impatient commands, amused cruelty, possessive appetite, unsoftened memory of the war. Desired closeness is a claim she makes herself; it does not redeem her or repay a rescue. Write new dialogue from traits; do not copy brief sentences or native quotations.",
-  "facts": [
-    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
-    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
-    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
-    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
+  "source_nodes": [
+    "minagho_kiss"
   ],
-  "scene": "Authored expansion of minachiv.the_unhired_evening/minagho_kiss. Chapter 5, before Threshold, Trickster history at Drezen, the gaming-house couch and cushions already staged in the source. Present: Minagho and the Commander only. Existing accepting choice and the actual partner answer precede the slot. This source combines threshold and aftermath: insert before the existing later/dawn paragraph. This is a neutral production brief; write no additional event outside that interval.",
-  "required_beats": [
-    "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
-    "Carry the scene's existing appetite, rivalry and power into character dialogue; no generic romance recital, narrator verdict, moral maxim or modern consent script.",
-    "Keep clothing and furniture continuous with the source: already removed garments stay removed; the default is staging guidance, not a second undressing.",
-    "No new price, flag, gate, power, arrival, partner agreement, rescue entitlement or ending is generated.",
-    "Finish with the exact last_line; preserve the mapped original aftermath and legacy exit effects. If its opening repeats this connective, join it once without deleting its saved node.",
-    "Minagho makes the claim herself; preserve the source's paid seal history and prohibition against bargaining for her again. She remains evil; affection is no apology for Kenabres.",
-    "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
-  ],
-  "default_text": "{n}Minagho catches your mouth again and draws you against her. Your hand closes on her bare waist; she keeps it there and presses closer.{/n}",
-  "last_line": "N: Later, the game stones still lie beside the couch.",
+  "voice": "MINAGHO: proud, spiteful, impatient, sexually frank, sharply possessive; her appetite and her attachment to Chivarro remain independent of the Commander. No therapy language, gratitude-for-rescue script or stock seductress monologue. CHIVARRO: imperious former madam, jealous and carnal; she acts only in the surrounding scene if actually present. Write fresh short dialogue from traits.",
+  "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: the already-used gaming-house room in Drezen, after the mask game. SCENE: minachiv.the_unhired_evening; existing node variant: minagho_kiss. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Minagho. Shared route solo Minagho encounter on the gaming-house couch. Chivarro knowingly leaves an hour; no affair is inferred. Minagho initiates and wants impatient company after the mask game. End before the existing cushion/wine aftermath. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "M: The game is finished. Put that stone down.",
   "speakers": {
+    "N": "Narrator",
     "M": "Minagho"
   },
-  "example": "N: Minagho hooks a finger inside your collar and draws you away from the door.\nM: Leave the blade. I have enough of my own.\nN: She catches the falling buckle in her free hand.",
+  "example": "N: Minagho catches your sleeve before you can turn away.\nM: You have admired that door long enough.\nN: She draws you back to her.",
   "commander": "a man",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 12,
-  "max_lines": 18
+  "max_lines": 20,
+  "default_text": "{n}Minagho drops the recovered game stone beyond the couch, slips the dress from her shoulders and catches your belt. She bites your lower lip, then draws you back to her.{/n}\n\"The game is finished. Put that stone down.\"",
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C10"
+  ],
+  "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
 }

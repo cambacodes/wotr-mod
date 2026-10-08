@@ -271,7 +271,7 @@ session(BETTING_LIVES, "You bet with people", '"You\'ve heard about the feint."'
     ch("refuse", '''"...Oh." {n}She looks at the unopened parcel as if it had done something surprising.{/n} "It will cost you. A longer march. More of the other kind of dying, the slow kind, in the snow, where nobody writes the names down at all."
 "I don't know if that's better. I'm chance; I never know if it's better." {n}She unties the ribbon.{/n} "But you looked at it, here, where I could see, and you decided it yourself. That's all I wanted. Eat a cookie. You're going to need your strength for the long way round."''',
       c("[Eat one.]")),
-    ch("felt", '{n}You open the company roll between you. Sergeant Venn, spearman Oris, scout Dessa: you read each name aloud, all the way to the last. Chadali repeats the names she catches herself stumbling over. Then she holds your hand beside the signed order.{/n}\n"Now you know whom you\'re sending. So do I. Bring this back afterwards. I want to know who returned."',
+    ch("felt", '{n}You open the company roll between you. Sergeant Venn, spearman Oris, scout Desrani: you read each name aloud, all the way to the last. Chadali repeats the names she catches herself stumbling over. Then she holds your hand beside the signed order.{/n}\n"Now you know whom you\'re sending. So do I. Bring this back afterwards. I want to know who returned."',
       c("[Hold on.]")),
 ], requires=(MORNING,), forbids=(BETTING_LIVES,))
 

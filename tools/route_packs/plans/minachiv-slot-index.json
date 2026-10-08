@@ -1,0 +1,97 @@
+{
+  "authored": "Job 4: slot-host status; job 9: duplicate briefs resolved and new street slot briefed",
+  "retired_hosts": [
+    "minachiv.the_second_address",
+    "minachiv.a_factor_at_the_table",
+    "minachiv.the_answer_after_business",
+    "minachiv.the_key_in_your_hand",
+    "minachiv.the_paper_she_kept",
+    "minachiv.the_man_who_remembers",
+    "minachiv.the_entrance_she_wants",
+    "minachiv.who_keeps_the_house",
+    "minachiv.the_cost_in_daylight"
+  ],
+  "dropped_slots": [],
+  "resolved_duplicate_briefs": [
+    {
+      "slot_id": "minachiv.a_room_she_likes.explicit.1",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.a_room_she_likes.explicit.1.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.a_room_she_likes.explicit.1.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.after_the_last_lamp.explicit.1",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.after_the_last_lamp.explicit.1.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.after_the_last_lamp.explicit.1.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.before_the_last_road.explicit.1",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.before_the_last_road.explicit.1.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.before_the_last_road.explicit.1.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.before_the_last_road.explicit.2",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.before_the_last_road.explicit.2.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.before_the_last_road.explicit.2.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.before_the_last_road.explicit.3",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.before_the_last_road.explicit.3.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.before_the_last_road.explicit.3.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.before_the_last_road.explicit.4",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.before_the_last_road.explicit.4.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.before_the_last_road.explicit.4.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.the_unhired_evening.explicit.1",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.the_unhired_evening.explicit.1.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.the_unhired_evening.explicit.1.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.the_unhired_evening.explicit.2",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.the_unhired_evening.explicit.2.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.the_unhired_evening.explicit.2.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    },
+    {
+      "slot_id": "minachiv.the_unhired_evening.explicit.3",
+      "files": [
+        "tools/route_packs/explicit_slots/minagho/minachiv.the_unhired_evening.explicit.3.json",
+        "tools/route_packs/explicit_slots/chivarro/minachiv.the_unhired_evening.explicit.3.json"
+      ],
+      "resolution": "identical canonical brief in both files; host is the node that redirects to this slot id"
+    }
+  ],
+  "new_slots": [
+    {
+      "slot_id": "minachiv.minaghos_unfinished_sentence.explicit.1",
+      "file": "tools/route_packs/explicit_slots/minachiv/minachiv.minaghos_unfinished_sentence.explicit.1.json",
+      "host": "minachiv.minaghos_unfinished_sentence/hand",
+      "installed_by": "storylines/minachiv_scaffolding.py (node) and storylines/minachiv_voice.py (default text); kept out of minagho/ because minagho_round2 installs every brief there"
+    }
+  ]
+}

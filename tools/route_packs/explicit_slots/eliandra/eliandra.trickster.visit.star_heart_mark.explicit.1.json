@@ -1,16 +1,9 @@
 {
   "slot_id": "eliandra.trickster.visit.star_heart_mark.explicit.1",
   "voice": "ELIANDRA: precise, protective, severe when deceived; a devout priestess with dry practical humor, accustomed to giving directions and completing difficult work. Private appetite becomes direct once she chooses a lover. Brief imperatives, concrete corrections, occasional awkwardness without infantilization. Faith and service remain hers. New dialogue only; do not reuse the example or source quotations. Avoid therapy/HR language, poetic maxims, endless observation metaphors, modern pornography register or generic domination.",
-  "facts": [
-    "Native unit e349079a648cb15448a27f9049344bf1 is female, Chaotic Good and aasimar.",
-    "HeraldPulura/Cue_0009 (24d719b48b3195949b3d96a5afb5721b): discovered healing gift at thirteen; never married or had a family; devoted her life to service and received exceptional priestly strength. Childhood is nonsexual history only.",
-    "Elyandra_main/Cue_0050 (09ace5be98925f74da06c1ea967d461f): banned temple romances after Vestari and Cristry's quarrels disrupted research.",
-    "PuluraLeaderSaved/Cue_0026 (cb48db9773f775b428f0a5f20757145e): Pulura prolonged the inhabitants' lives for the mission.",
-    "PuluraLeaderSaved/Cue_0030 (28e3b35d52e24fb4da16778f68b2b1c2): she leads survivors to safety after the shrine is exposed.",
-    "No native sexual anatomy, measurements, virginity, erotic preferences or scar provenance is established by these facts. Do not add them."
-  ],
+  "facts": "Native unit e349079a648cb15448a27f9049344bf1 is female, Chaotic Good and aasimar.\nHeraldPulura/Cue_0009 (24d719b48b3195949b3d96a5afb5721b): discovered healing gift at thirteen; never married or had a family; devoted her life to service and received exceptional priestly strength. Childhood is nonsexual history only.\nElyandra_main/Cue_0050 (09ace5be98925f74da06c1ea967d461f): banned temple romances after Vestari and Cristry's quarrels disrupted research.\nPuluraLeaderSaved/Cue_0026 (cb48db9773f775b428f0a5f20757145e): Pulura prolonged the inhabitants' lives for the mission.\nPuluraLeaderSaved/Cue_0030 (28e3b35d52e24fb4da16778f68b2b1c2): she leads survivors to safety after the shrine is exposed.\nNo native sexual anatomy, measurements, virginity, erotic preferences or scar provenance is established by these facts. Do not add them.",
   "scene": "Same Ch5 first night and continuity as the normal-host star-heart visit, on the mutually exclusive jeweller fallback. The Commander and Eliandra are alone in the evacuated star-heart after their actual journey, not at the merchant stall. She initiated kissing, loosened her robes and guided a hand to her bare waist; charts are sliding off the heavy table. Reserve their first consensual sexual encounter, then resting beneath her cloak. Required beats: her initiative and practical hesitation; continued worship without apology for wanting a lover; distinguish the release from her choice of the Commander; one brief exacting instruction; charts remain recoverable. No other speaker, supernatural desire, mid-act arrival, new forgiveness or second first night. End before existing morning/Katair discovery. Present-day adult intimacy only. This is a brief for a later user-selected fill; keep the staging and aftermath coherent in both Commander variants.",
-  "last_line": "N: Near dawn she draws her cloak over you both on the stone floor.",
+  "last_line": "N: You wake beneath her cloak with a star chart stuck to your back. Eliandra is pressed along your side, her hair caught under your shoulder. She frees it with an irritated tug and kisses you before getting up.",
   "speakers": {
     "E": "Eliandra"
   },

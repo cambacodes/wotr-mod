@@ -249,6 +249,7 @@ namespace RRT.TestHarness
             init.RrtModErrorOnLoading = entry?.ErrorOnLoading == true;
             var asm = RrtBridge.FindLoaded() ?? entry?.Assembly;
             init.RrtAssembly = asm?.Location;
+            init.RrtVersion = entry?.Info.Version;
             if (asm == null) { init.ReflectionProblems.Add("assembly " + RrtBridge.AssemblyName + " is not loaded"); }
             else
             {
@@ -295,6 +296,12 @@ namespace RRT.TestHarness
             catch (Exception ex) { sr.StateError = ex.GetType().Name + ": " + ex.Message; capture.Add("harness", "Exception", "State() threw", ex.ToString()); yield break; }
 
             // BEGIN eng7-f5: probe uses this runner's existing load, exception and report conventions.
+            if (plan.SystemCasesJson != null)
+            {
+                yield return SystemScenarios(sr, prefix);
+                TryWrite();
+                yield break;
+            }
             if (plan.NativeEpilogueSpike)
             {
                 yield return NativeEpilogueInventory(sr, prefix);
@@ -366,7 +373,11 @@ namespace RRT.TestHarness
                 bool drivable = plan.Inline ? lists.Length > 0 : dialogs.Contains(id);
                 if ((available || plan.Force) && drivable && plan.IncludesScene(id)) targets.Add((scene!, id, available, lists));
             }
-            if (plan.MaxScenesPerSave > 0) targets = targets.Take(plan.MaxScenesPerSave).ToList();
+            if (plan.MaxScenesPerSave > 0)
+            {
+                sr.InventoryTruncated = targets.Count > plan.MaxScenesPerSave;
+                targets = targets.Take(plan.MaxScenesPerSave).ToList();
+            }
 
             bool dirty = false;
             // A forced run sets the scene's Requires, and any completed run records the scene and its choices. Without a
@@ -434,6 +445,7 @@ namespace RRT.TestHarness
                     }
                     TryWrite();
                 }
+                if (plan.Dfs && frontier.Count > 0) sr.InventoryTruncated = true;
             }
         }
 
@@ -628,7 +640,7 @@ namespace RRT.TestHarness
         /// dialog, for a scene played inside its host). leaveEnds (-Inline): the walk also completes when the current cue is no
         /// longer one of the scene's, i.e. a native_next or the return cue handed the conversation back to the host.
         /// </summary>
-        IEnumerator Walk(BlueprintDialog? ownDialog, bool leaveEnds, List<int>? prefixPath, System.Random? rng, SceneRun run, List<int> counts)
+        IEnumerator Walk(BlueprintDialog? ownDialog, bool leaveEnds, List<int>? prefixPath, System.Random? rng, SceneRun run, List<int> counts, List<string>? script = null)
         {
             var bridge = rrt!;
             var dc = Game.Instance.DialogController;
@@ -665,8 +677,9 @@ namespace RRT.TestHarness
                 if (dc.Dialog == null) { run.Result = "completed"; break; }
                 var answers = dc.Answers.ToList();
                 counts.Add(answers.Count);
-                int index = prefixPath != null ? (step < prefixPath.Count ? prefixPath[step] : 0) : rng!.Next(answers.Count);
-                if (index >= answers.Count)
+                int index = script != null ? step < script.Count ? answers.FindIndex(a => choices.TryGetValue(a.name, out var c) && c.Label == script[step]) : -1
+                    : prefixPath != null ? (step < prefixPath.Count ? prefixPath[step] : 0) : rng!.Next(answers.Count);
+                if (index < 0 || index >= answers.Count)
                 {
                     run.Result = "path-diverged";
                     run.Detail = "replayed path expects answer " + index + " but only " + answers.Count + " shown at step " + step;
@@ -699,6 +712,11 @@ namespace RRT.TestHarness
                         run.OracleFailures.Add(info.Label + ": terminal choice did not record completion flag '" + info.SceneId + "'");
                 }
                 yield return null;
+            }
+            if (script != null && run.Result == "completed" && run.Choices.Count != script.Count)
+            {
+                run.Result = "path-diverged";
+                run.Detail = "Dialog ended before the complete answer script was consumed";
             }
         }
 

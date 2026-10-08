@@ -3,27 +3,25 @@
 
 Hashes cover ordered node Text, Paragraphs[].Text and Choices[].Text only,
 using compact UTF-8 JSON; IDs and gameplay metadata are excluded. A Claude
-voice job is a claude/voice-* or claude/pol[-ish]-* branch, or a commit message
-containing both Claude and a standalone voice, polish or pol token. Voice
-lock/lint/tool jobs are excluded. Merely having a Claude co-author or branch
-prefix is insufficient.
-
---update refreshes existing locks only, requires RRT_VOICE_OWNER=claude, and
-preserves owner/since (the original locking commit). It never enrolls scenes.
+voice delta requires an exact coordinator approval at the protected reviewed
+ref. Branch names, commit messages and environment variables grant no authority.
+--update applies approved hashes, preserving existing owner/since. Enrollments
+use the approval's source_commit for since. Policy and predecessor locks come
+from the reviewed ref.
 """
 import argparse
 import hashlib
 import json
-import os
 from pathlib import Path
 import re
-import subprocess
+try:
+    from . import voice_authority as authority, prose_pending_lint as pending_lint
+except ImportError:
+    import voice_authority as authority
+    import prose_pending_lint as pending_lint
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCKS = ROOT / "tools/route_packs/voice_locks.json"
-VOICE_JOB = re.compile(
-    r"(?<![a-z0-9])(?:voice(?![-_\s]+(?:lock|lint|tool))|polish|pol)(?![a-z0-9])", re.I)
-CLAUDE = re.compile(r"(?<![a-z0-9])claude(?![a-z0-9])", re.I)
 
 
 def text_sha(scene):
@@ -67,56 +65,135 @@ def check(story, locks):
     return changed, errors
 
 
-def git_context():
-    def read(*args):
-        try:
-            return subprocess.run(
-                ["git", "-C", str(ROOT), *args], check=True, capture_output=True,
-                text=True, encoding="utf-8").stdout.strip()
-        except (OSError, subprocess.CalledProcessError):
-            return ""
-    return read("branch", "--show-current"), read("log", "-1", "--format=%B")
-
-
-def claude_voice_job(branch, message):
-    branch_job = branch.lower().startswith("claude/") and bool(VOICE_JOB.match(branch[7:]))
-    message_job = bool(CLAUDE.search(message) and VOICE_JOB.search(message))
-    return branch_job or message_job
+def pending_choice_append(before, after, pending):
+    """Only appended registered choice labels may differ from locked prose."""
+    old_nodes, new_nodes = before.get("Nodes", []), after.get("Nodes", [])
+    if len(old_nodes) != len(new_nodes):
+        return False
+    targets = {(e["scene"], e["node"], e["surface"], e["index"]): e["text_sha"]
+               for e in pending["pending"]}
+    appended = False
+    for old, new in zip(old_nodes, new_nodes):
+        if (old.get("Id") != new.get("Id") or old.get("Text", "") != new.get("Text", "")
+                or [p.get("Text", "") for p in old.get("Paragraphs", [])] !=
+                   [p.get("Text", "") for p in new.get("Paragraphs", [])]):
+            return False
+        old_choices, new_choices = old.get("Choices", []), new.get("Choices", [])
+        if (len(new_choices) < len(old_choices)
+                or [c.get("Text", "") for c in old_choices] !=
+                   [c.get("Text", "") for c in new_choices[:len(old_choices)]]):
+            return False
+        for index in range(len(old_choices), len(new_choices)):
+            text = new_choices[index].get("Text", "")
+            key = (after["Id"], new["Id"], "choice", index)
+            if (not re.fullmatch(r"\[PROSE PENDING: choice - [^\]\r\n]+\]", text)
+                    or targets.get(key) != authority.digest(text)):
+                return False
+            appended = True
+    return appended
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--story", type=Path, default=ROOT / "development/Story.json")
-    parser.add_argument("--locks", type=Path, default=LOCKS)
+    parser.add_argument("--repo", type=Path, default=ROOT)
+    parser.add_argument("--story", type=Path)
+    parser.add_argument("--locks", type=Path)
+    parser.add_argument("--job", type=Path, help="coordinator-reviewed held scaffold job record")
+    parser.add_argument("--integration", action="store_true", help="allow registered integration placeholders")
+    parser.add_argument("--append-approvals", type=Path, help="separate coordinator-reviewed pending-choice append records")
+    parser.add_argument("--milestone", action="store_true", help="forbid all pending prose")
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--update", action="store_true")
     args = parser.parse_args(argv)
-    if args.update and os.environ.get("RRT_VOICE_OWNER") != "claude":
-        print("HARD --update requires RRT_VOICE_OWNER=claude")
-        return 1
+    root = args.repo.resolve()
+    args.story = args.story or root / "development/Story.json"
+    args.locks = args.locks or root / authority.LOCKS
     try:
-        data = json.loads(args.locks.read_text(encoding="utf-8-sig"))
+        base, policy, predecessor = authority.trusted(root)
+        old = validate_locks(predecessor)
+        data = authority.read_json(args.locks)
         locks = validate_locks(data)
-        story = json.loads(args.story.read_text(encoding="utf-8-sig"))
-        changed, errors = check(story, locks)
-        if args.update and not errors and changed:
-            for sid, digest in changed.items():
-                locks[sid]["text_sha"] = digest
+        story = authority.read_json(args.story)
+        job = authority.verify_job(root, args.story, args.job, policy, base) if args.job else None
+        records = authority.approvals(root, policy)
+        if args.update and not records["approvals"]:
+            raise ValueError("--update requires coordinator approval entries")
+        pending_path = root / authority.PENDING
+        pending = authority.read_json(pending_path) if pending_path.exists() else {"version": 1, "pending": []}
+        errors = pending_lint.check(story, pending, job, args.milestone, args.integration)
+        append_records = authority.approvals(root, policy, args.append_approvals) if args.append_approvals else None
+        if append_records and (not args.integration or args.milestone or args.update
+                               or not append_records["approvals"]):
+            raise ValueError("pending append approvals require integration and no lock updates")
+        changed, target_errors = check(story, old)
+        errors.extend(target_errors)
+        scenes = {}
+        for scene in story.get("Scenes", []):
+            if scene["Id"] in scenes:
+                errors.append(f"{scene['Id']}: ambiguous scene ID")
+            scenes[scene["Id"]] = scene
+        approved_appends = set()
+        if append_records:
+            baseline_story = json.loads(authority.git(root, "show",
+                f"{authority.reviewed_revision(root)}:development/Story.json"))
+            baseline_scenes = {}
+            for scene in baseline_story.get("Scenes", []):
+                baseline_scenes.setdefault(scene["Id"], []).append(scene)
+            for entry in append_records["approvals"]:
+                sid = entry["scene"]
+                matches = baseline_scenes.get(sid, [])
+                if (sid not in old or len(matches) != 1 or sid not in scenes
+                        or entry["before_sha"] != old[sid]["text_sha"]
+                        or entry["before_sha"] != text_sha(matches[0])
+                        or entry["after_sha"] != text_sha(scenes[sid])
+                        or not pending_choice_append(matches[0], scenes[sid], pending)):
+                    errors.append(f"{sid}: approval is not an exact registered pending-choice append")
+                else:
+                    approved_appends.add(sid)
+        expected = json.loads(json.dumps(predecessor))
+        for sid, lock in old.items():
+            if authority.owner_for(policy, sid) != lock["owner"]:
+                errors.append(f"{sid}: lock lacks ownership enrollment")
+            if sid in changed:
+                digest = changed[sid]
+                if sid not in approved_appends and not authority.approved(records, sid, lock["text_sha"], digest):
+                    errors.append(f"{sid}: changed prose requires reviewed Claude approval")
+                if authority.approved(records, sid, lock["text_sha"], digest):
+                    expected["locked"][sid]["text_sha"] = digest
+                elif args.update:
+                    errors.append(f"{sid}: --update lacks coordinator approval")
+        pending_scenes = {entry["scene"] for entry in pending["pending"]}
+        for sid, scene in scenes.items():
+            if authority.owner_for(policy, sid) and sid not in old:
+                digest = text_sha(scene)
+                if authority.approved(records, sid, None, digest):
+                    entry = authority.approved(records, sid, None, digest)
+                    expected["locked"][sid] = dict(owner=entry["owner"], since=entry["source_commit"], text_sha=digest)
+                    if not args.update and sid not in locks:
+                        errors.append(f"{sid}: approved enrollment requires --update")
+                elif sid not in pending_scenes or errors:
+                    errors.append(f"{sid}: missing ownership enrollment/approval")
+        # The only acceptable lock edits are the exact approved hash updates.
+        # Before an update the complete predecessor remains valid as input.
+        if data != predecessor and data != expected:
+            errors.append("altered lock file: differs from reviewed/approved inventory")
+        if args.update and not errors:
             newline = "\r\n" if b"\r\n" in args.locks.read_bytes() else "\n"
-            args.locks.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+            args.locks.write_text(json.dumps(expected, ensure_ascii=False, indent=2) + "\n",
                                   encoding="utf-8", newline=newline)
-            print(f"Voice locks: updated {len(changed)} hashes; owner/since preserved")
-            changed = {}
+            print("Voice locks: approved updates applied; owner/since preserved")
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(f"HARD Voice locks: {error}")
         return 1
-    allowed = bool(changed) and claude_voice_job(*git_context())
     for error in errors:
         print("HARD", error)
+    if approved_appends:
+        print(f"Voice locks: {len(approved_appends)} approved pending-choice appends; predecessor hashes retained")
     for sid in changed:
-        print("CLAUDE VOICE JOB" if allowed else "CHANGED", f"{sid}: locked player text differs")
-    print(f"Voice locks: {len(locks)} locked scenes; {len(changed)} changed; {len(errors)} missing/ambiguous")
-    return int(bool(errors) or (args.strict and bool(changed) and not allowed))
+        print("CHANGED", f"{sid}: locked player text differs")
+    print(f"Voice locks: {len(locks)} locked scenes; {len(changed)} changed; {len(errors)} hard failures")
+    # Ownership failures are hard in every mode; --strict stays CLI-compatible.
+    return int(bool(errors))
 
 
 if __name__ == "__main__":

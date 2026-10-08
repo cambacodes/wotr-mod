@@ -135,6 +135,18 @@ class CommanderTests(unittest.TestCase):
 
 
 class LocationTests(unittest.TestCase):
+    def test_r5_delamere_temple_delivery_is_not_a_portable_memory(self):
+        s = fixture('{n}The temple is quiet when you come to it.{/n}')
+        s['Relationships']['delamere'] = relationship('delamere')
+        scene = s['Scenes'][0]
+        scene.update(Id='delamere.trickster.crypt.stag_alone', Relationship='delamere',
+                     Remote=True, Kind='visit')
+        self.assertTrue(run(location_staging, s))
+        scene['Areas'] = ['bb6d82794aae9d94d9cc94d1a05e5f20']
+        self.assertEqual([], run(location_staging, s))
+        scene['Areas'].append('3538511f16d45f44f8249ff710777e2d')
+        self.assertTrue(run(location_staging, s))
+
     def test_drezen_window_at_wrong_area_and_chapter(self):
         s = fixture("{n}She stands at a window in Drezen's citadel.{/n}")
         scene = s["Scenes"][0]
@@ -363,6 +375,32 @@ class ReportingTests(unittest.TestCase):
         proof = Proof(m)
         self.assertTrue(proof.implies(lit("konomi.dead.unreturned", False), lit("konomi.retained_dead", False)))
         self.assertFalse(proof.implies(lit("konomi.retained_return_confirmed"), lit("konomi.retained_dead", False)))
+
+
+
+
+class S2OccurrenceContractTests(unittest.TestCase):
+    def test_reviewed_reference_does_not_swallow_a_second_live_occurrence(self):
+        import hashlib
+        import re
+        from unittest.mock import patch
+        from tools.crossroute_checks.mention_context import live_mentions, j01_contract
+        text = "Seelah's calculation filled the retained list. Seelah stands here."
+        reviewed = dict(scene="galfrey.test", woman="seelah",
+                        text_sha256=hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                        mentions=[[0, 6]])
+        pattern = re.compile("Seelah", re.I)
+        j01_contract.cache_clear()
+        try:
+            with patch("tools.crossroute_checks.mention_context.Path.read_text",
+                       return_value=json.dumps({"contexts": [reviewed]})):
+                self.assertEqual([m.start() for m in live_mentions(text, pattern, scene_id="galfrey.test")],
+                                 [text.rindex("Seelah")])
+                self.assertEqual(len(live_mentions(text, pattern, scene_id="other.test")), 2)
+                self.assertEqual(len(live_mentions(text + " Again.", pattern, scene_id="galfrey.test")), 2)
+        finally:
+            j01_contract.cache_clear()
+        self.assertTrue(run(other_woman, fixture(text)))
 
 
 if __name__ == "__main__":

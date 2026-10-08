@@ -181,13 +181,11 @@ wager(PRAYERS, "A prayer in Drezen", '"Do people in Drezen pray to you?"', [
 # --- 4. A lucky charm. -----------------------------------------------------------------------------------------------
 
 wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
-    ch("start", '''"Because you are!" {n}She says it the way other people say the sky is up.{/n}
-"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You walk into a room and things start going well. You make things go well just by standing near them."
-{n}She reaches over and pats your cheek, twice, as if you were a very good dog.{/n}''',
+    ch("start", '"Because you are!" {n}She pats your cheek twice.{/n} "You bring blood and field reports into this hall, and you still come back. I like that part. A sergeant came to my shrine with a crushed hand. I healed what I could, but he still can\'t draw a bow. I\'d rather have you here complaining about a name."',
       c('"I\'m not a charm. I\'m a person. I bleed, and I choose."', "person"),
       c('"I don\'t mind being cute. I mind being an ornament."', "ornament"),
       c('[Flirt] "Whose charm, exactly?"', "whose")),
-    ch("person", '{n}Her hand drops from your cheek.{/n} "I know. The crossbowman\'s brother wasn\'t the only one on those walls. Her sergeant came to my shrine with a crushed hand. I healed what I could. He still can\'t draw a bow."\n"You can object to the name. Don\'t tell me I haven\'t seen blood." {n}She folds her hands.{/n} "I call you lucky because I want you coming back through that door. In one piece, preferably."',
+    ch("person", '"I know. That sergeant can\'t choose to grow another hand, either." {n}Her hand drops from your cheek.{/n} "You can object to the name. Don\'t tell me I haven\'t seen blood. I call you lucky because I want you coming back through that door. In one piece, preferably."',
       c('"It\'s rude. Keep doing it anyway."', "anyway", flags=(CHARMED,)),
       c('"Think about it. The bleeding. Somebody at this table has to."', "think", flags=(NOT_A_CHARM,))),
     ch("ornament", '"An ornament! Ornaments sit on shelves. You bring field reports and blood into my hall." {n}She draws her hand back.{/n} "I did pat your cheek. Twice. All right. I\'ll stop that. The name stays until you find me a better one."',
@@ -251,20 +249,15 @@ wager(DEVIL, "Just joking", '"About Alichino..."', [
       c("Continue", "exposed", requires=(DEVIL_EXPOSED,)),
       c("Continue", "excused", requires=(DEVIL_EXCUSED,), forbids=(DEVIL_EXPOSED,)),
       c("Continue", "wager", forbids=(DEVIL_EXPOSED, DEVIL_EXCUSED))),
-    ch("exposed", '''{n}And then the smile falters, because she remembers.{/n}
-"You told me he isn't my friend. That he said out loud he's only here for his own profit. I thought he was joking. I thought everybody here was joking, a little, all the time." {n}She clenches her little fists.{/n}
-"What a scoundrel. And I trusted him." {n}The fists open again, slowly.{/n} "I still give him cookies. I don't know how to stop. Isn't that silly?"''',
+    ch("exposed", '{n}She snatches a cookie from the place before Alichino\'s empty chair.{/n} "He was serious. All that time! I thought he was teasing us." {n}She bites into it, scattering crumbs.{/n} "Well, he can come here and tell us what he wants. No more hiding behind jokes while we do his work. I\'ll ask him in front of everyone."',
       c('"It\'s kind. Kind isn\'t silly."', "kind"),
       c('"Stop. He\'ll use it against you."', "stop")),
     ch("excused", '''{n}She waves a hand, bracelets clinking.{/n} "You said once that he isn't my friend. Oh, don't listen to him, I said. He might be a devil, but that doesn't mean he's without a conscience."
 "I still think so." {n}She tilts her head.{/n} "You don't. You look at him the way Eritrice looks at a badly drafted motion. That's all right. Somebody has to look at him like that. I'll look at him the nice way, and between us he'll come out even."''',
       c("Continue", "wager")),
-    ch("kind", '''"Kind." {n}She tries the word, and seems to like it better than her own.{/n}
-"All right. I'll keep giving him cookies, and I'll count them. Eritrice taught me to count things. She says it's the first step to not being robbed." {n}A small, fierce smile.{/n} "I'll be kind with a list."''',
+    ch("kind", '"I can give him cookies and still make him answer!" {n}She pushes the remaining cookie back towards his chair.{/n} "Let him try talking about friendship with his mouth full. I want to hear him explain that profit of his."',
       c("Continue", "wager")),
-    ch("stop", '''"Use cookies against me? How?" {n}She genuinely wants to know.{/n}
-{n}You explain. It takes some time. By the end she is very quiet and has eaten four cookies without appearing to notice.{/n}
-"That's horrible," {n}she says.{/n} "Devils are horrible. I knew that. I just didn't want to know it about Alichino." {n}She sighs.{/n} "Fine. Only one cookie a session. He can analyse that."''',
+    ch("stop", '"Yes. He can do without them." {n}She tips the cookies from his plate into her basket.{/n} "He\'ll complain. Good! Then he\'ll have to speak to me, and I\'ll ask him what else he\'s been pretending about."',
       c("Continue", "wager")),
     ch("wager", '''"I'll make you a bet." {n}She leans across the table, eyes shining.{/n}
 "Next session, Alichino doesn't come. He'll send a note saying he's detained by urgent business in Hell. I bet you a whole tray he does." {n}She holds out her hand.{/n} "And you have to bet he comes. Otherwise it isn't a bet, it's just agreeing."''',

@@ -37,9 +37,14 @@ def alternative(host, nid, new_id, body, flag):
     old = node(host, nid)
     twin = copy.deepcopy(old)
     twin["Id"], twin["Text"] = new_id, body
-    host["Nodes"].append(twin)
+    existing = next((page for page in host["Nodes"] if page["Id"] == new_id), None)
+    if existing is None:
+        host["Nodes"].append(twin)
+    else:
+        existing["Text"] = body
+        existing["Choices"] = twin["Choices"]
     # Snapshot: do not redirect the variant's own outgoing answers.
-    for page in host["Nodes"][:-1]:
+    for page in [page for page in host["Nodes"] if page["Id"] != new_id]:
         for answer in list(page["Choices"]):
             if answer.get("Next") != nid:
                 continue
@@ -47,7 +52,9 @@ def alternative(host, nid, new_id, body, flag):
             alt["Next"] = new_id
             alt["Requires"].append(flag)
             answer["Forbids"].append(flag)
-            page["Choices"].append(alt)
+            if not any(choice.get("Next") == new_id and flag in choice.get("Requires", [])
+                       for choice in page["Choices"]):
+                page["Choices"].append(alt)
 
 
 def _entry(scenes):
@@ -210,7 +217,7 @@ def _return(scenes):
 
 
 def _knowledge(scenes, payload):
-    payload.setdefault("Derived", {})[KNOWN] = [[ct.UNMASKED], [DISCLOSED]]
+    payload.setdefault("Derived", {})[KNOWN] = [[ct.UNMASKED], [DISCLOSED], [ct.AMULET_KEPT]]
     payload["Derived"][P + "kills_answered.present_victim"] = [
         ["nurah.present_now", "nurah.dead_camellia"],
         ["soana.present_now", "soana.killed_by_camellia"],
@@ -427,8 +434,8 @@ def _continuity(scenes):
                 answer["Requires"].append(answer["Next"] + ".present_now")
         # If the earlier historical victim has left, let the current one answer.
         node(h, "start")["Choices"].extend([
-            c("Continue", "soana", requires=("soana.present_now", "soana.killed_by_camellia"), forbids=("nurah.present_now",)),
-            c("Continue", "kaylessa", requires=("kaylessa.present_now", "kaylessa.camellia_killed"),
+            c("Continue", "soana", requires=("soana.present_now", "soana.killed_by_camellia", "nurah.trickster.returned", "nurah.dead_camellia"), forbids=("nurah.present_now",)),
+            c("Continue", "kaylessa", requires=("kaylessa.present_now", "kaylessa.camellia_killed", "camellia.kill_returned.earlier"),
               forbids=("nurah.present_now", "soana.present_now"))])
     h = scenes[P + "cards.the_cutler"]
     text(h, "choose", '{n}She takes down a long serrated blade and checks its balance, then puts '

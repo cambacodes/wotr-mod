@@ -269,7 +269,7 @@ s("room_measure", "A room before its walls", [
 s("short_invitation", "An evening before the promises", [
     n("start", "Jerribeth", '''"You have been turning the frame toward you as though there is something you mean to ask."
 {n}She leaves her work where it is.{/n}
-"If it concerns how little time you have, I have already counted it. Make your offer. I dislike learning that somebody has vanished from my books by reading it in theirs."''',
+"If it concerns how little time you have, I have already counted it. Make your offer. I dislike learning that a thing of mine has gone missing by hearing it from somebody else."''',
       c('"I want to keep seeing you after the war, even if we cannot make time for the longer visits before it ends."', "short"),
       c('"I want to make that time. Let us return to what you wanted to show me."', abort=True)),
     n("short", "Jerribeth", '''"Then ask me for that, properly, and I shall name what it costs. We have had evenings I want repeated. I have not yet had the ones I want most."

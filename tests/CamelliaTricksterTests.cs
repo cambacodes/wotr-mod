@@ -156,6 +156,11 @@ internal static class CamelliaTricksterTests
         var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead, P + "primed", P + "spirits_bargained"), 100);
         check(!Avail(third, failedPaid), "A paid bargain performs a return after the path failed.");
         // Q8 (Sol BEL): the scratching belongs to the prepared branch only.
+        check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratch") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratch")
+              && !third.Nodes.Single(n => n.Id == "unbargained").Text.Contains("scratch"),
+            "The coffin scratches on a branch where nobody bargained.");
+        check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).Any(n => n.Text.Contains("raise dead")),
+            "A clerical scroll came back as her return device.");
         check(Avail(performance, Later(story, raisedNight, 100)), "The veiled mourner does not follow the raise.");
         var primed = World(story, 5, "trickster", "trickster.ever", Killed, Dead, P + "primed", P + "raised");
         check(Avail(performance, primed) && !Avail(overacting, primed) && !Avail(late, primed) && !Avail(letter, primed),
@@ -198,7 +203,7 @@ internal static class CamelliaTricksterTests
         // Trk_Camellia_KilledAfterFailure
         var q3Kill = World(story, 5, "trickster", "trickster.ever", Killed, Dead, "camellia.kicked_out");
         check(Avail(late, q3Kill), "A Q3 kill (kicked_out co-held with the kill) is closed as a dismissal.");
-        var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed);
+        var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed, Dead);
         check(!Avail(late, failed) && !Avail(performance, failed), "Trk_Camellia_KilledAfterFailure: a lost path must not open a new trick.");
 
         // Trk_Camellia_DeadOtherwise
@@ -363,8 +368,10 @@ internal static class CamelliaTricksterTests
               && quarters.AnswerLists.SequenceEqual(new[] { "2366a8db6481070439fee222c0c52e45" })
               && Avail(quarters, World(story, 5, "trickster", "trickster.ever", Committed, "regill.in_party")),
             "Nobody in the party notices the commit (Directive 12: a companion reaction to the intimacy).");
-        check(test.Nodes.Any(n => n.Id == "threshold") && Ch(test, "threshold", 0).Next == "morning",
-            "The night after her answer does not cut at the start of the act and wake to the morning.");
+        string cut = Ch(test, "threshold", 0).Next!;
+        check(cut == "morning" || (cut == test.Id + ".explicit.1"
+              && Ch(test, cut, 0).Next == "morning"),
+            "The night after her answer does not retain the cut and morning continuation.");
         var together = World(story, 5, "trickster", "trickster.ever", Killed, Returned, P + "cost.knows_you_tried", Committed);
         check(Avail(S(P + "bond.shelf"), together), "The shelf does not follow the commit.");
         var shelved = Take(S(P + "bond.shelf"), together, "kept", 0, P + "bond.shelf", P + "bond.list_kept");
@@ -390,7 +397,7 @@ internal static class CamelliaTricksterTests
         // E14d native-slide replacements (camellia_native) are cue texts, not pages; CamelliaNativeSlideTests covers them.
         var pages = story.Scenes.Where(s => s.Relationship == "camellia" && s.Owner == "CamelliaEpilogue" && !Rules.IsNativeReplacement(story, s))
             .Select(s => s.Id).ToArray();
-        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.commit_on_record", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused" }),
+        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.commit_on_record", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused", P + "epilogue.refused_living" }),
             "Camellia's epilogue pages do not match: " + string.Join(", ", pages));
         check(S(P + "epilogue.commit").Requires.Contains(P + "terms_named") && S(P + "epilogue.commit").Forbids.Contains(Committed),
             "The late commit page does not rest on her named price.");
@@ -426,8 +433,8 @@ internal static class CamelliaTricksterTests
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, P + "cost.knows_you_tried"))
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, P + "cost.knows_you_tried", "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
-        // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
-        check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
+        // Q8 (Sol INT): the physical reunion follows the raise, and the presence-failure letter waits 96 hours; a refused test closes the coda.
+        check(performance.DelayHours == 0 && letter.DelayHours == 96, "The fallback letter arrives before its physical twin has had its 96 hours.");
         var coda = story.Scenes.SingleOrDefault(s => s.Id == "camellia.lastcall.page");
         // Q8 coordinator ruling: the coda needs her commitment and does not play after her death or dismissal unless she returned.
         check(coda != null && coda.Requires.Contains(Committed), "The Last Call coda does not require her commitment.");
@@ -447,6 +454,7 @@ internal static class CamelliaTricksterTests
         check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named", "camellia.outcome.route_open", "camellia.trickster.late_committed.without.camellia.trickster.declined" }),
             "The Derived late commit does not rest on her named price.");
 
+        CamelliaPolishTests.Run(story, check);
         Console.WriteLine("PASS: Camellia Trickster (Trk_Camellia_*): the joke at every kill, the late curtain, the veiled mourner, the body told it's overacting, her price, her test, the oath, and the life around them.");
     }
 }

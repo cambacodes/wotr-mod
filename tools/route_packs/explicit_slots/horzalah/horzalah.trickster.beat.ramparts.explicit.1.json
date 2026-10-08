@@ -1,0 +1,38 @@
+{
+  "slot_id": "horzalah.trickster.beat.ramparts.explicit.1",
+  "host_scene": "horzalah.trickster.beat.ramparts",
+  "host_node": "hand",
+  "participants": [
+    "Horzalah",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Horzalah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HORZALAH: severe, commanding, venomous; contempt first, curiosity second; 'mortal' as a leash and a possessive 'mine' when she takes something. She gives orders even in bed; crude only in mockery; exclamation only in rage. Never sincere thanks, never slavery as trauma to be healed, never an abolitionist turn, no therapy talk, maxims or modern slang. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Horzalah is Baphomet's nephilim daughter and Hepzamirah's younger sister, once sold in advance as a concubine to Yozz; she later claimed Yozz and the Guild as her property.\nAttested: a collar-shaped scar at her throat and shrewd evil eyes with dark flames; native Chapter 5 dialogue says her seals are lifted.\nHer collar, ribbon, rooms and romance are authored route continuity, not further native physical facts.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, the Drezen walls after the last watch has changed; the camp dark but for the forges, the Worldwound a low red stain in the north. At the corner tower she tore a client's contract on the Commander's life across the price and kept the name, closed her hand on the Commander's coat and said 'Stay here a little longer.' The Commander held out a hand and waited; she took it and put it flat against her throat under the collar, on the scar, and held it there until the next watch came up the stair and went very quickly down again. Continue on the wall-walk in the lee of the corner tower: the stair is now clear and nobody else comes up before the relief. Commanding and possessive, crude only in mockery, she gives orders in sex as everywhere; the collar comes off, if at all, by her hand only, and the Commander's hand on her scar is her choice. Only Horzalah and the Commander.",
+  "required_beats": [
+    "Begin from the Commander's hand on her throat under the collar; she moves it, and herself, where she wants.",
+    "She commands; the Commander answers actively; mutual participation throughout.",
+    "One venomous, mocking jab (the fled watch, the client who wanted the Commander dead) and a possessive 'mine'.",
+    "The torn contract is not payment for sex; she refused the money for her own reasons.",
+    "Act by Commander variant without inventing anatomy; no horns, wings, tail or flame mechanics.",
+    "No sentry, assassin or witness interrupts; close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored rampart walk; the contract, collar and scar staging are mod continuity.",
+    "history": "Committed Trickster Horzalah. GATE NOTE: the host scene requires horzalah.committed but not horzalah.trickster.chamber_seen, so the reserved node must require horzalah.trickster.chamber_seen (the first Guild-room night, horzalah.trickster.visit.chamber) and otherwise route straight to scene exit; this slot is a return, never a first night.",
+    "resumption": "horzalah.trickster.beat.ramparts/end -> [Take her hand, and wait.] -> hand -> [Stay until she lets go.] (sets horzalah.trickster.beat.ramparts_walked) -> reserved node -> scene exit. The take branch never reaches this slot. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: Before the relief comes up the stair, she fastens her collar again and lets go of your hand.",
+  "default_text": "{n}She keeps your hand where she put it and turns you into the lee of the tower, out of the forge light.{/n}",
+  "example": "N: Horzalah presses your palm harder against the scar.\nH: The watch ran, mortal. You did not. Stay where I put you.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Horzalah only, for the separate writer. Both Commander variants are required. Keep her contempt, command and acquisitiveness; no invented anatomy, no first night."
+}

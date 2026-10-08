@@ -443,10 +443,11 @@ meet(HANDS, "Hands", '"Who are you watching?"', [
         c("Continue", "camellia_killed", requires=(CAM_KILLED,)),
         c("Continue", "camellia", forbids=(CAM_KILLED,))),
     kay("camellia_killed", '''"Your shaman. The one with the lilies. She's the one who asked everyone else to give us privacy, at the end." {n}Her thumb goes to her collarbone.{/n}
-"I'm not going to ask you to choose, soldier. I'm not a child, and it's not a choice I'd win. If she's still at your side, keep her." {n}Her voice doesn't change at all.{/n} "I'll watch her hands. That's all. Every time she's in a room with me, I'll know exactly where both of them are."''',
+"She had my throat once. She won't find it waiting for her again." {n}Kaylessa draws a narrow knife from her sleeve and lays it across her knees. A column of spearmen passes on its way to the north gate; she waits for their boots to fade.{/n}
+"Put us in the same room and I'll watch her hands. If one comes toward me with a blade, I'll nail it to the table. You can explain the blood to your guests, soldier."''',
         c('"That seems fair."', "anevia_route"),
         c('"She won\'t touch you again."', "promise")),
-    kay("promise", '''"You can't promise that. Nobody can promise what that one does." {n}She doesn't sound angry. Only precise.{/n} "Don't make promises for other people's knives, soldier. Just keep your own where I can see it."''',
+    kay("promise", '''"Then watch her. I'll keep the knife." {n}She slides it back into her sleeve.{/n} "And if you want to stand between us, soldier, mind which way the point is facing."''',
         c("Continue", "anevia_route")),
     kay("camellia", '''"Your shaman, if she's still with you. The one with the lilies and the soft voice." {n}She watches something only she can see.{/n}
 "She looks at people the way a butcher looks at a queue. I've seen that look. I used to wear it, on nights when the names came in." {n}A shrug.{/n} "I'm not telling you anything. I'm telling you I'll watch her hands. That's all."''',
@@ -742,6 +743,9 @@ meet(WOLJIF, "The goat", '"Why is Woljif avoiding the market?"', [
 GIRLS_FACE = K + "the_girls_face"
 TRANCE = K + "trance"
 REMEMBERED_GIRL = K + "remembered_the_courier"
+COURIER_SUPPLEMENT = K + "courier_supplement_sent"
+COURIER_ACK = K + "courier_acknowledged"
+COURIER_IN_LETTER = K + "courier_in_first_letter"
 
 meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
     kay("start", '''"Do I?" {n}She takes her hand away from the place where the amulet's cord used to sit, and looks at it as if it had been doing something without permission. Down the street a crier is shouting for volunteers to carry water to the northern forts, and nobody is volunteering.{/n}
@@ -764,8 +768,8 @@ meet(GIRLS_FACE, "The courier's face", '"You keep touching your throat."', [
     kay("better", '''"Liar." {n}But she doesn't say it the way rule three would.{/n} "Nobody likes this one better. They like it because they're supposed to be frightened of it, and that's more interesting than being bored."
 {n}She tilts her chin up, all the same, and lets you look.{/n} "Go on, then. Look at it. It's the only one I've got."''',
         c("[Look at her.]")),
-    kay("courier_unsent", '''"I'll put her in my letter to Avennara. The face I wore, and where its owner ended up. No more letting people think she walked away." {n}She begins to write.{/n}''', c("[Stay with her.]", flags=(REMEMBERED_GIRL,))),
-    kay("courier_followup", '''"The letter's already gone. I'll send another with the next dispatch. This one can go under my own mark. It can't give away more than the first." {n}She writes the Green Road at the top of a fresh sheet.{/n}''', c("[Stay until she folds it for the rider.]", flags=(REMEMBERED_GIRL,))),
+    kay("courier_unsent", '''"I'll put her in my letter to Avennara. The face I wore, and where its owner ended up. No more letting people think she walked away." {n}She begins to write.{/n}''', c("[Stay with her.]", flags=(REMEMBERED_GIRL, COURIER_IN_LETTER,))),
+    kay("courier_followup", '''"The letter's already gone. I'll send another with the next dispatch. This one can go under my own mark. It can't give away more than the first." {n}She writes the Green Road at the top of a fresh sheet.{/n}''', c("[Stay until she folds it for the rider.]", flags=(REMEMBERED_GIRL, COURIER_SUPPLEMENT,))),
 ], requires=(RULES, AMULET), delay=48)
 
 

@@ -80,6 +80,7 @@ namespace Tirabade
         internal bool AnchorFailed { get; private set; }
         // E12c: the unit a click-to-talk hub attaches to (our copy, else the present native unit), refreshed each tick.
         internal UnitEntityData? Actor { get; private set; }
+        internal bool CharacterKilled { get; private set; }
         private readonly PresenceReadiness readiness = new PresenceReadiness();
         private readonly System.Diagnostics.Stopwatch readinessClock = System.Diagnostics.Stopwatch.StartNew();
 
@@ -253,6 +254,7 @@ namespace Tirabade
         // Main thread, idle only. Never throws.
         internal void Tick(bool wanted, Story? receiptStory = null, Snapshot? receiptState = null)  // eng7-l06
         {
+            CharacterKilled = false;
             bool demanded = wanted; // eng7-l05: retain accurate demand even if observation throws.
             try
             {
@@ -265,12 +267,23 @@ namespace Tirabade
                     demanded = !state.Has(Rules.DegradedPrefix + Rules.PresenceRelationship(Key))
                         && Rules.PresenceWanted(Spec, state, Rules.PresenceFailedFlag(Key));
                 }
+                var priorActor = Actor;
                 var seen = Observe(out var native, out var copy, out var record);
+                // Only a route-owned copy or a previously delivered native contact is a death witness.
+                // Missing, hidden, disposed and ambiguous actors remain availability observations.
+                seen.NativeKilled = Key == "kiana.presence" && seen.AreaLoaded
+                    && Game.Instance.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>().Any(unit =>
+                        (unit == priorActor || record != null && (unit.UniqueId == record.NativeUnitId
+                            || unit.UniqueId == record.NativeContactId))
+                        && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed
+                        && (unit.State.IsDead || unit.State.IsFinallyDead));
+                CharacterKilled = Key == "kiana.presence" && Rules.PresenceKilled(seen);
                 if (record != null && seen.AreaLoaded && (seen.CopyFound && !seen.CopyAlive
                     || Game.Instance.State.Units.Any(unit =>
                         (unit.UniqueId == record.NativeUnitId || unit.UniqueId == record.NativeContactId)
                         && (unit.State.IsDead || unit.State.IsFinallyDead))))
                 { record.Lost = true; Write(record); }
+                if (CharacterKilled) { Actor = null; AnchorFailed = false; Status = "character killed"; return; }
                 LastQuiet = CopyQuiet.None;
                 // Repair an older recorded copy before failure/receipt observation (hostile blueprint copies included).
                 if (copy != null && seen.CopyAlive)

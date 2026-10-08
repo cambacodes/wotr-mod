@@ -68,6 +68,8 @@ internal static class LastCallHistoryInventoryTests
             check(w.Has("lastcall.active"), "q8g finish lacks earned Last Call state");
         }
 
+        GHistoryTests.Run(story, check);
+
         // Actual lease producer and all three collateral answers, crossed with
         // destruction, Wound closure and recorded Commander death (24 worlds).
         var lease = Play(S("arsinoe.trickster.cauldron.lease"), World(5, "arsinoe.capital", "council.cauldron_given", "fool_king.crowned"), "terms", 0);

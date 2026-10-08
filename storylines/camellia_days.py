@@ -1,6 +1,6 @@
 """Camellia: four days (camellia_trickster, camellia_masks, camellia_evenings, camellia_cards).
 
-The market, where a dead woman buys flowers; the day of her funeral, a year on, or of her fall; the second dance, which
+The market, where a dead woman buys flowers; another wake for her funeral or her fall; the second dance, which
 finishes the first; and a new friend, which is the most dangerous thing she can have. The last is the villain's day: she
 does not change. She waits, and the Commander learns what waiting costs other people.
 """
@@ -18,23 +18,21 @@ NEW_FRIEND = D + "a_new_friend"
 # --- The flower market (killed): a dead woman buys flowers. ----------------------------------------------------------
 
 SCENES.append(scene(MARKET, "The flower market", "Camellia", 3, '"You look like you\'re going out."', [
-    cam("open", '''"I am. We are. It's market day, and I've been dead for weeks, and I want flowers." {n}She pins the veil in place and offers you her arm.{/n} "Don't look at me like that. Dead women have every right to flowers. We're practically their best customers."''',
+    cam("open", '''"We are going to the market. I have had quite enough grave flowers." {n}She pins the veil in place and offers her arm.{/n} "I want to choose my own. The sellers have been far too careless with me."''',
         c("Continue", "market")),
-    nar("market", '''{n}The flower market is in the square below the cathedral, a dozen barrows under striped awnings, most of the stock gone brown at the edges from the cold. Camellia walks among them like a duchess at a fair. The sellers call out to the Commander. None of them call out to the veiled woman on the Commander's arm. Their eyes slide off her as rain slides off glass.{/n}''',
+    nar("market", '''{n}The flower market is in the square below the cathedral, a dozen barrows under striped awnings, most of the stock gone brown at the edges from the cold. Camellia walks among them like a duchess at a fair. The sellers call out to the Commander. None of them call out to the veiled woman on the Commander's arm. They look to your insignia and your purse. Camellia keeps her face behind the lace.{/n}''',
         c("Continue", "choose")),
-    cam("choose", '''"Look at them," {n}she murmurs, delighted.{/n} "They can't see me at all. I could take anything I liked." {n}She stops at a barrow of hothouse roses, very expensive, very red.{/n} "When I was alive, sellers used to follow me round the stalls. They could tell I had money. Now they can tell I'm nothing at all."
-"It's so restful, being nothing. You have no idea."''',
+    cam("choose", '''"None of them has asked my name." {n}She stops at the red roses.{/n} "They see your purse and my veil. Let us see how long their manners hold."''',
         c('"Buy what you like. I\'ll pay."', "pay"),
         c('[Trickster] "Take what you like. I\'ll distract them."', "take"),
         c('"You\'re not nothing."', "not")),
-    cam("pay", '''"You'll pay." {n}She laughs softly.{/n} "The Commander of the crusade, paying for a dead woman's roses. The seller will tell his wife about it tonight. 'The Commander bought an armful of roses and walked off with nobody.'"
+    cam("pay", '''"You'll pay." {n}She laughs softly.{/n} "The Commander of the crusade, paying for a dead woman's roses. The seller will tell his wife about it tonight. 'The Commander bought roses for a widow who would not give her name.'"
 {n}She chooses, very carefully, one white rose, one red, and a sprig of something dark with berries on it that the seller warns her is poisonous. She thanks him and takes it anyway.{/n}''',
         c("Continue", "home")),
-    cam("take", '''{n}You ask the rose-seller a very long question about the provenance of his soil. You ask him about his brother-in-law. You ask him whether the rumours about the Nerosyan tulip blight are true. By the time you have finished, Camellia is at the far end of the square with a whole barrow's worth of roses in her arms and the look of a girl who has stolen the moon.{/n}
-"That was vulgar," {n}she whispers, when you catch up.{/n} "That was completely vulgar, and I've never been so happy in my life."''',
+    cam("take", '''{n}You ask the rose-seller a very long question about the provenance of his soil. You ask him about his brother-in-law. You ask him whether the rumours about the Nerosyan tulip blight are true. By the time you have finished, Camellia waits at the far end of the square, roses heaped against her veil.{/n}
+"You made him explain the soil while I emptied his barrow. How vulgar. Do tell me what he said."''',
         c("Continue", "home")),
-    cam("not", '''{n}She turns her veiled face to you and says nothing, while a flower-seller shouts about tulips and a cart goes by with a broken wheel.{/n}
-"No," {n}she says at last, very quietly.{/n} "Not to you. That's the trouble, isn't it. I've found a way to be nothing to everyone in the world, and there's one person who won't let me." {n}She squeezes your arm.{/n} "Buy me a rose. A red one. Before I say something I mean."''',
+    cam("not", '''{n}She squeezes your arm.{/n} "You keep looking under the veil. The sellers have been more polite. Buy me a red rose before I reward your curiosity."''',
         c("Continue", "home")),
     cam("home", '''{n}On the way back she stops at the cemetery gate, and goes in alone, and comes back without the flowers. When you ask, she says she left them on a grave she liked the look of.{/n}
 "Mine," {n}she adds, after a moment.{/n} "It seemed rude not to. Everyone else had forgotten."''',
@@ -46,7 +44,7 @@ SCENES.append(scene(MARKET, "The flower market", "Camellia", 3, '"You look like 
 # --- The anniversary. --------------------------------------------------------------------------------------------------
 
 met(ANNIVERSARY, "The anniversary", '"You\'re dressed in black."', [
-    cam("open", '''"I am in mourning." {n}She smooths the black silk at her waist with both hands.{/n} "It's the anniversary. Well, not a year. I couldn't wait a year. It's the monthly anniversary. I've decided to keep them. Why waste an excellent dress?"''',
+    cam("open", '''"I am in mourning." {n}She smooths the black silk at her waist.{/n} "I have decided to hold another wake. Mine was badly arranged, and the crusade has not yet worn out this dress."''',
         c("Continue", "killed_a", requires=(KILLED,)),
         c("Continue", "dead_a", forbids=(KILLED,))),
     cam("killed_a", '''"Since I died convincingly. Since they put me under that plain little stone with the wedding lilies." {n}She lifts a glass of wine she will not drink.{/n} "To the dead. To me. To the only woman in Drezen who has read her own eulogy and found it wanting."''',
@@ -55,35 +53,33 @@ met(ANNIVERSARY, "The anniversary", '"You\'re dressed in black."', [
         c("Continue", "toast")),
     cam("toast", '''"You're supposed to drink to the dead, you know. It's the custom." {n}She holds the glass out to you.{/n} "I never drink at my own wake. Drink for me. Tell me what you remember about me. The way people do at a wake. I want to hear what they'd have said, if they'd known me."''',
         c('"I remember that you cheated at cards."', "cards"),
-        c('"I remember your face at the end."', "face"),
+        c('[Lie] "I imagine your face at the end."', "face"),
         c('[Trickster] "I remember that you were a terrible person and a wonderful liar, and nobody has missed you at all."', "missed")),
     cam("cards", '''"I never cheated at cards." {n}She is outraged.{/n} "I cheated at everything else, but never at cards. It makes the cheating everywhere else so much more convincing." {n}Then she stops.{/n} "You're lying. You're lying at my wake. That's..." {n}She begins to laugh.{/n} "That's exactly what I would have wanted. Say another one."''',
         c("Continue", "close")),
-    cam("face", '''{n}She goes very still.{/n} "What did it look like? My face. I've always wondered. I've never seen it from the outside, at that moment. Nobody who has ever seen it has been in any condition to tell me."
-{n}You tell her what you saw: surprise, and then, just before the end, something very like pleasure, as if someone had finally told a joke she hadn't heard before.{/n}
-{n}She listens to the end, and when you are done she puts down the glass very carefully.{/n} "Surprised," {n}she says.{/n} "How embarrassing. We shall omit that from your account. The pleased part you may keep."''',
+    cam("face", '''"Do you? Then tell me." {n}Camellia leans closer. You invent the surprise, the lifted chin, the smile just before the end. She listens without interrupting.{/n} "Surprised? How embarrassing. Leave that part out." {n}She puts down her glass.{/n} "The smile you may keep. You have been looking at me quite closely to make up that much."''',
         c("Continue", "close")),
     cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, one small sip, which is more than she usually allows herself in company.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
         c("Continue", "close")),
-    cam("close", '''"Next month," {n}she says,{/n} "we'll do it again. And the month after. Until one of us is dead properly, and then the other one can do it alone." {n}She sets down the glass.{/n} "I'd prefer it to be me who does it alone. I'd do it so much better. But I won't insist."''',
+    cam("close", '''"We shall do this again when I choose. You will know by the dress." {n}She sets down the glass.{/n} "If one of us is properly dead by then, the other may have the wine. I should prefer it to be me."''',
         c("[Stay with her until the candle burns out]")),
 ], requires=("trickster.ever", COMMITTED, SHELF), delay=96, optional=True)
 
 
 # --- The second dance: the lesson, finished. ---------------------------------------------------------------------------
 
-met(SECOND_DANCE, "The second dance", '"Three steps and a turn?"', [
-    cam("open", '''"You remembered." {n}She has already cleared the floor. The candles are in the corners again, as they were the first time, and she is barefoot, and her skirt is pinned up to the ankle.{/n} "I promised myself, the first time, that I would finish the lesson one day. I never finish lessons. I get bored halfway, or the other person dies. You're the first one who's still here for the second half."''',
+met(SECOND_DANCE, "The second dance", '"You cleared the floor."', [
+    cam("open", '''{n}Camellia has cleared a space between the bed and the table. Candles burn in the corners. She is barefoot, her skirt pinned above her ankles; her rapier lies beside tomorrow's marching orders.{/n} "Come here. I intend to make you forget your feet."''',
         c("Continue", "danced_d", requires=(DANCED,)),
         c("Continue", "noticed_d", requires=(KNIFE_NOTICED,), forbids=(DANCED,)),
         c("Continue", "new_d", forbids=(DANCED, KNIFE_NOTICED))),
-    cam("danced_d", '''"And last time you didn't look down. You felt the knife and you went on dancing." {n}She takes your left hand, and puts your right at her waist.{/n} "It's still there. It's always there. Tonight you may look, if you like."''',
+    cam("danced_d", '''"You kept dancing when you felt the knife. I remember." {n}She takes your left hand and puts your right at her waist.{/n} "We shall finish that lesson tonight. You may look this time."''',
         c("Continue", "dance")),
-    cam("noticed_d", '''"And last time you found the knife, and said so, and I was very cross with you, and I have forgiven you entirely." {n}She takes your left hand, and puts your right at her waist.{/n} "It's still there. Tonight I shan't be cross."''',
+    cam("noticed_d", '''"You found the knife last time. Let us see what you do with it tonight." {n}She takes your left hand and puts your right at her waist.{/n} "Keep that hand where I can feel it."''',
         c("Continue", "dance")),
-    cam("new_d", '''"We never had a first half, did we? We neglected your lessons. So I shall teach you the whole thing at once, which is how I prefer to learn things, and people." {n}She takes your left hand and puts your right at her waist, a little lower than a dancing master would.{/n} "Three steps and a turn. Don't look at your feet."''',
+    cam("new_d", '''"We never had that lesson, did we? How negligent of me." {n}She takes your left hand and sets your right low at her waist.{/n} "Three steps and a turn. Keep your eyes on me."''',
         c("Continue", "dance")),
-    nar("dance", '''{n}Three steps and a turn. She counts under her breath, one-two-three, one-two-three, and the candles go round the walls. She is closer than the dance requires, and then closer still. Your hand at her waist finds the knife strapped high on her thigh, and this time she stops, and puts her own hand over yours, and holds it there.{/n}''',
+    nar("dance", '''{n}Three steps and a turn. She counts under her breath, one-two-three, one-two-three, and the candles go round the walls. She is closer than the dance requires, and then closer still. Your hand at her waist finds the knife strapped high on her thigh, and she stops, and puts her own hand over yours, and holds it there.{/n}''',
         c("[Unbuckle the strap]", "strap"),
         c("[Leave it where it is]", "leave")),
     cam("strap", '''{n}She watches your face while you do it. The buckle is stiff; she does not help. When it gives, the knife slides down into your palm, warm from her skin, and she lets out a long, shaky breath.{/n}

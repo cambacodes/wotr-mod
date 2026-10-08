@@ -236,10 +236,14 @@ class DevarraRoundTwoTests(unittest.TestCase):
             if r2.NORTH in flags:
                 self.assertIn('where she grew', text)
                 self.assertNotIn('by the east wall', text)
-        # Supplied slot last lines agree byte-for-byte with their default insertion.
+        # Slot boundaries resume at the successor, rather than repeating the insertion.
         for path in (Path(__file__).resolve().parents[1] / 'tools/route_packs/explicit_slots/devarra').glob('*.json'):
             brief = json.loads(path.read_text(encoding='utf-8'))
-            self.assertEqual(brief['last_line'][3:], brief['default_text'].removeprefix('{n}').removesuffix('{/n}'))
+            if 'tower.first_bite' in path.name:
+                expected = self.node(r2.T + 'first_bite', 'morning')['Text'].removeprefix('{n}').removesuffix('{/n}')
+                self.assertEqual(brief['last_line'], 'N: ' + expected)
+            else:
+                self.assertIn(brief['last_line'], brief['last_lines'].values())
 
 
 if __name__ == '__main__':
