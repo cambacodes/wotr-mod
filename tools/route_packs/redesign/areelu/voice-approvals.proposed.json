@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "proposed": [
+    {
+      "scene": "areelu.lastcall.page",
+      "before_sha": "1c738bbbcff18e812d5ac2ee095fbc7fb6807415f0917e20ec0bfbf95cd2afea",
+      "after_sha": "b19323ada35b4ee57e913c9b52f6cf6044e5f5d7f5a9ea054beb41a43560468b",
+      "locked_sha": "1c738bbbcff18e812d5ac2ee095fbc7fb6807415f0917e20ec0bfbf95cd2afea",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.mortal",
+      "before_sha": "c2694f0ac5301601a19c2d70d7d8ec2ebc8624043404aaa3d00a301d42247391",
+      "after_sha": "b6fb3156a99dfb428b8fd0bac82d6a3d35400194a440d7827b16f49905bf3bf6",
+      "locked_sha": "c2694f0ac5301601a19c2d70d7d8ec2ebc8624043404aaa3d00a301d42247391",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.mortal_wager",
+      "before_sha": "84c15a5caa6aa1656c3192a2f18c2f51cb3700b70e38879cc175bc21285ce369",
+      "after_sha": "3d78cbba4d0d23efd223dc9d67484ee4dedf8f148d1f680dccec2ad49d8c3abe",
+      "locked_sha": "84c15a5caa6aa1656c3192a2f18c2f51cb3700b70e38879cc175bc21285ce369",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.return_mortal",
+      "before_sha": "3195f7e077719022653842ccdf40e59d5f6537397928a9cdebc475cca58cc148",
+      "after_sha": "c891ca524339d26f464bfe7074a809585162e0ddfa39dc16c0a65946b857800c",
+      "locked_sha": "3195f7e077719022653842ccdf40e59d5f6537397928a9cdebc475cca58cc148",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.return_witch",
+      "before_sha": "6227115467a14699667ff44fe76259859d9653e50a9678c4179d3621e263d60b",
+      "after_sha": "88c49098d5ed0cd6b349eb5b970be94f917d8b75640554fff2453509dbd3e84b",
+      "locked_sha": "6227115467a14699667ff44fe76259859d9653e50a9678c4179d3621e263d60b",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.spared",
+      "before_sha": "b023b90f2a8bddf5c7628e2baa7f8c01c2448013087d5cf2960307f2f6262a47",
+      "after_sha": "233a8e9e9d61b68d3fcefff098edc4f1595a199b5751c0f869b514abef4a3dd7",
+      "locked_sha": "b023b90f2a8bddf5c7628e2baa7f8c01c2448013087d5cf2960307f2f6262a47",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.spared_wager",
+      "before_sha": "44ff0f5770bf7c43e3113551aeed1ca91148a84d27c21573597f3f318429f5bd",
+      "after_sha": "4e525abf6e98c461f42d54331271755efdabcc9fbfa4068c39cc015311554721",
+      "locked_sha": "44ff0f5770bf7c43e3113551aeed1ca91148a84d27c21573597f3f318429f5bd",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.finale.lien_bottled",
+      "before_sha": "d213bd93de79d4351c721ea396f04f4abe25d4d4a50ce2bfeeaf453df5553700",
+      "after_sha": "154b2833f08925253323c84acb9d772832843d46e9ab62ad13393b3550e3b1dd",
+      "locked_sha": "d213bd93de79d4351c721ea396f04f4abe25d4d4a50ce2bfeeaf453df5553700",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.finale.report_stands",
+      "before_sha": "64177b2836c8ba23b23ad6a093ca6e00379e51a131659351df27d4800007e321",
+      "after_sha": "89dcc17a134f02c19cb044c3f320b9f6aeaa213876248f4e7304899aa120746b",
+      "locked_sha": "64177b2836c8ba23b23ad6a093ca6e00379e51a131659351df27d4800007e321",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.finale.stake_only",
+      "before_sha": "d499821cfa12753428a3df1cba2336dbc0ce657f95a91084436fca69cd2d3530",
+      "after_sha": "561be86dde8008b457c78c4ddcfc1ff6adca23c475bdee27dbeaca2270f05ef1",
+      "locked_sha": "d499821cfa12753428a3df1cba2336dbc0ce657f95a91084436fca69cd2d3530",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.finale.unnamed",
+      "before_sha": "69294385e7425ad9a9dc4f7351990ab40b49c51fc4e7c96cd0198c16ad8d7b1c",
+      "after_sha": "c685e45b9f81c76b3c618e49558cfde5df0abcc55b89abfdf1cfd110d7b9efa9",
+      "locked_sha": "69294385e7425ad9a9dc4f7351990ab40b49c51fc4e7c96cd0198c16ad8d7b1c",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.lens.watched",
+      "before_sha": "414ee453131dd0eb95d33b9d35d69c708f5811c7bbf8e8a5a66fcd3516c8bc33",
+      "after_sha": "3f1ac4c3091a105d7c863bf2017c2f44b7f70ae044a5056ea4d23dcfa0ec01c3",
+      "locked_sha": "414ee453131dd0eb95d33b9d35d69c708f5811c7bbf8e8a5a66fcd3516c8bc33",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.report.dagger",
+      "before_sha": "e868c804cd5d1fcdb7374032508ea8e4302aac626d6dd77f2c3352ac4cddaeae",
+      "after_sha": "9bf4ae196fa792fe1ea7e1d386a2844eb86b16f3efb0a80a68cbc72788535e8d",
+      "locked_sha": "e868c804cd5d1fcdb7374032508ea8e4302aac626d6dd77f2c3352ac4cddaeae",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.report.prison",
+      "before_sha": "5c221a76689d5097ff64465e96c40bdf47517ccf581c950d186e7d8dfdb90540",
+      "after_sha": "258841abf73dd0ea5c0fcbe893c806f7fae1e2da31f32a082482f012117dcc36",
+      "locked_sha": "5c221a76689d5097ff64465e96c40bdf47517ccf581c950d186e7d8dfdb90540",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.rivalry.lens",
+      "before_sha": "f4df64b6d72f0df8175a407cd4b2e5a7aac26aaa84f238324a0bb9421ebb9c22",
+      "after_sha": "f703867838b66e257bea020a94dd95f08f602dbcde59ce58d46594f2ce5481b2",
+      "locked_sha": "f4df64b6d72f0df8175a407cd4b2e5a7aac26aaa84f238324a0bb9421ebb9c22",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.threshold.welcome",
+      "before_sha": "75ac01290b12d111212210c41e0690e4ccfadb7daa364ffa1d1e69cff38b96ff",
+      "after_sha": "9e8e535143090ac6ca14bc478a6a76a295b9cf1a28ba06c8b67b56893e63635d",
+      "locked_sha": "75ac01290b12d111212210c41e0690e4ccfadb7daa364ffa1d1e69cff38b96ff",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    },
+    {
+      "scene": "areelu.trickster.wager.struck",
+      "before_sha": "887c67693e219a576e5e93afa6469b905fb6512a431f87f82f00f6d12f9c7cc4",
+      "after_sha": "657919b22fcde2414a6a6cf2ac841e14e8dc327ee053008cfaaf31bf28e0aa63",
+      "locked_sha": "887c67693e219a576e5e93afa6469b905fb6512a431f87f82f00f6d12f9c7cc4",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-areelu",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-areelu design-first pass (see tools/route_packs/redesign/areelu/cloud-review.md)"
+    }
+  ]
+}
