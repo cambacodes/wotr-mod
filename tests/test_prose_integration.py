@@ -1,17 +1,16 @@
-"""Integration policy and coordinator-ref lifecycle with real signed CLI probes."""
+"""Integration policy and coordinator-ref lifecycle with real protected-ref CLI probes."""
 import copy
 import json
 import subprocess
 import sys
 import unittest
 
-from tests.test_voice_authority import AuthorityTests, sample
+from tests.test_voice_authority import AuthorityFixture, sample
 from tools import prose_pending_lint as pending, voice_authority as authority
 from tools import claude_work_queue_lint as queue, prepare_voice_job
 
 
-class IntegrationTests(AuthorityTests):
-    # Inherited H04 probes deliberately still exercise the default scaffold policy.
+class IntegrationTests(AuthorityFixture, unittest.TestCase):
     def invoke_pending(self, *args):
         return subprocess.run([sys.executable, str(pending.ROOT / "tools/prose_pending_lint.py"),
             "--repo", str(self.root), "--story", str(self.root / "Story.json"), *args],
@@ -67,7 +66,7 @@ class IntegrationTests(AuthorityTests):
         result = self.invoke()
         self.assertEqual(0, result.returncode, result.stdout)
         self.assertEqual(self.ownership, authority.trusted(self.root)[1])
-        self.ownership["reviewers"]["forged"] = self.ownership["reviewers"]["reviewer"]
+        self.ownership["scene_prefixes"]["forged"] = "claude"
         self.write(authority.OWNERSHIP, self.ownership)
         self.assertEqual(1, self.invoke().returncode)
 
@@ -83,26 +82,26 @@ class IntegrationTests(AuthorityTests):
         self.write(authority.PENDING, dict(version=1, pending=[dict(scene="route.scene", node="start",
             surface="choice", index=1, text_sha=authority.digest(node["Choices"][1]["Text"]))]))
         request = dict(version=1, job_id="J05b-pending-choice-appends", actor="codex", kind="scaffold",
-            status="awaiting-coordinator-signature", hosts=[dict(scene="route.scene",
+            status="awaiting-coordinator-approval", hosts=[dict(scene="route.scene",
             before=self.locks["locked"]["route.scene"]["text_sha"])])
         return self.write(prepare_voice_job.REQUEST, request)
 
-    def test_exact_signed_append_separate_from_voice_job_and_no_lock_update(self):
+    def test_exact_reviewed_append_separate_from_voice_approvals_and_no_lock_update(self):
         request = self.append_fixture()
         before = (self.root / authority.LOCKS).read_bytes()
         job = prepare_voice_job.prepare(self.root, self.root / "Story.json", request)
-        signed = self.sign(job)
+        records = self.review(job, "append-approvals.json")
         self.assertEqual(1, self.invoke("--integration").returncode)
-        self.assertEqual(1, self.invoke("--integration", job=signed).returncode)
-        result = self.invoke("--integration", "--append-approvals", str(signed))
+        self.assertEqual(1, self.invoke("--integration", job=records).returncode)
+        result = self.invoke("--integration", "--append-approvals", str(records))
         self.assertEqual(0, result.returncode, result.stdout)
-        self.assertIn("1 signed pending-choice appends", result.stdout)
+        self.assertIn("1 approved pending-choice appends", result.stdout)
         for flags in (("--update",), ("--milestone",)):
-            self.assertEqual(1, self.invoke("--integration", "--append-approvals", str(signed), *flags).returncode)
-        self.assertEqual(1, self.invoke("--append-approvals", str(signed)).returncode)
+            self.assertEqual(1, self.invoke("--integration", "--append-approvals", str(records), *flags).returncode)
+        self.assertEqual(1, self.invoke("--append-approvals", str(records)).returncode)
         self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
 
-    def test_signed_append_rejects_old_text_change_nodes_and_unregistered_labels(self):
+    def test_reviewed_append_rejects_old_text_change_nodes_and_unregistered_labels(self):
         self.append_fixture()
         valid = copy.deepcopy(self.story)
         for mode in ("node", "paragraph", "old-choice", "new-node", "plain-label", "reorder", "delete-choice"):
@@ -124,10 +123,10 @@ class IntegrationTests(AuthorityTests):
                 else:
                     node["Choices"].pop(0)
                 self.write("Story.json", self.story)
-                job = self.sign(self.job(job_id="J05b-pending-choice-appends", actor="codex", kind="scaffold", status="reviewed"))
+                job = self.review(dict(version=1, approvals=[self.approval()]), "append-approvals.json")
                 self.assertEqual(1, self.invoke("--integration", "--append-approvals", str(job)).returncode)
 
-    def test_request_is_not_authority_and_unsigned_preparation_needs_actual_append(self):
+    def test_request_is_not_authority_and_preparation_needs_actual_append(self):
         request = self.append_fixture()
         self.assertEqual(1, self.invoke("--integration", "--append-approvals", str(request)).returncode)
         self.story = sample()
@@ -135,6 +134,71 @@ class IntegrationTests(AuthorityTests):
         self.write(authority.PENDING, dict(version=1, pending=[]))
         with self.assertRaisesRegex(ValueError, "no pending-choice append"):
             prepare_voice_job.prepare(self.root, self.root / "Story.json", request)
+
+    def test_worker_append_records_not_at_ref_are_rejected(self):
+        request = self.append_fixture()
+        data = prepare_voice_job.prepare(self.root, self.root / "Story.json", request)
+        path = self.write("append-approvals.json", data)
+        result = self.invoke("--integration", "--append-approvals", str(path))
+        self.assertEqual(1, result.returncode, result.stdout)
+        self.pin(path)
+        self.assertEqual(0, self.invoke("--integration", "--append-approvals", str(path)).returncode)
+
+    def test_held_scaffold_requires_reviewed_record_and_milestone_still_forbids_it(self):
+        self.register()
+        path = self.write("held-job.json", self.job())
+        self.assertEqual(1, self.invoke(job=path).returncode)
+        self.pin(path)
+        result = self.invoke(job=path)
+        self.assertEqual(0, result.returncode, result.stdout)
+        self.assertEqual(0, self.invoke_pending("--job", str(path)).returncode)
+        self.assertEqual(1, self.invoke("--milestone", job=path).returncode)
+        self.assertEqual(1, self.invoke_pending("--milestone", "--job", str(path)).returncode)
+        self.review(self.job(status="reviewed"), "held-job.json")
+        self.assertEqual(1, self.invoke(job=path).returncode)
+
+    def test_held_job_stale_identity_and_locked_placeholder_fail_without_writes(self):
+        self.register()
+        job = self.job()
+        path = self.review(job, "held-job.json")
+        self.assertEqual(0, self.invoke(job=path).returncode)
+        before = (self.root / authority.LOCKS).read_bytes()
+        for mode in ("export", "source", "input-json", "pending", "base", "branch", "locked"):
+            with self.subTest(mode=mode):
+                self.story = sample()
+                self.register()
+                (self.root / "expansion.py").write_text("# generator\n", encoding="utf-8")
+                (self.root / "tools/settings.json").unlink(missing_ok=True)
+                self.command("git", "checkout", "claude/pol-forged")
+                if mode == "export":
+                    self.story["Scenes"][1]["Nodes"][0]["Text"] += " changed"
+                    self.write("Story.json", self.story)
+                elif mode == "source":
+                    (self.root / "expansion.py").write_text("# changed\n", encoding="utf-8")
+                elif mode == "input-json":
+                    self.write("tools/settings.json", {"changed": True})
+                elif mode == "pending":
+                    self.write(authority.PENDING, dict(version=1, pending=[]))
+                elif mode == "branch":
+                    self.command("git", "checkout", "-qb", "codex/other")
+                elif mode == "base":
+                    self.command("git", "commit", "--allow-empty", "-qm", "Worker advanced HEAD")
+                else:
+                    self.story["Scenes"][0]["Nodes"][0]["Text"] = "[PROSE PENDING: locked]"
+                    self.write("Story.json", self.story)
+                self.assertEqual(1, self.invoke(job=path).returncode)
+                self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+
+    def test_integration_never_waives_locked_placeholder_or_enrolls_pending_scene(self):
+        self.register(sid="route.scene")
+        self.story["Scenes"] = self.story["Scenes"][1:]
+        self.write("Story.json", self.story)
+        self.assertEqual(1, self.invoke("--integration").returncode)
+        self.story = sample()
+        self.register()
+        before = (self.root / authority.LOCKS).read_bytes()
+        self.assertEqual(0, self.invoke("--integration").returncode)
+        self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
 
 
 class QueueTests(unittest.TestCase):

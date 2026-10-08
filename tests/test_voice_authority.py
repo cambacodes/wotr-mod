@@ -1,5 +1,4 @@
-"""H04 fault injection at the CLI, with real Git and reviewer signatures."""
-import base64
+"""Protected-ref approvals exercised through real Git and CLI counterexamples."""
 import copy
 import json
 import os
@@ -9,7 +8,7 @@ import sys
 import tempfile
 import unittest
 
-from tools import voice_lock_lint as lint
+from tools import voice_authority as authority, voice_lock_lint as lint, voice_approve
 
 
 def sample():
@@ -17,9 +16,9 @@ def sample():
              "Paragraphs": [{"Text": "Aside"}], "Choices": [{"Text": "Stay", "Next": "end"}]}]}]}
 
 
-class AuthorityTests(unittest.TestCase):
+class AuthorityFixture:
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory(prefix="rrt-h04-")
+        self.temp = tempfile.TemporaryDirectory(prefix="rrt-voice-approvals-")
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name) / "repo"
         self.root.mkdir()
@@ -27,26 +26,25 @@ class AuthorityTests(unittest.TestCase):
         self.command("git", "config", "user.email", "fixture@example.invalid")
         self.command("git", "config", "user.name", "Fixture")
         self.command("git", "checkout", "-qb", "claude/pol-forged")
-        self.key = Path(self.temp.name) / "reviewer.pem"
-        self.command("openssl", "genpkey", "-algorithm", "ED25519", "-out", str(self.key))
-        public = self.command("openssl", "pkey", "-in", str(self.key), "-pubout").stdout
         self.story = sample()
         self.locks = {"locked": {"route.scene": {"owner": "claude", "since": "abc123",
                       "text_sha": lint.text_sha(self.story["Scenes"][0])}}}
-        self.ownership = {"version": 1, "scene_prefixes": {"route": "claude"},
-                          "reviewers": {"reviewer": {"public_key": public}}}
-        self.write("tools/route_packs/voice_locks.json", self.locks, crlf=True)
-        self.write("tools/route_packs/ownership.json", self.ownership)
-        self.write("tools/route_packs/plans/prose-pending.json", {"version": 1, "pending": []})
+        self.ownership = {"version": 1, "scene_prefixes": {"route": "claude"}}
+        self.write(authority.LOCKS, self.locks, crlf=True)
+        self.write(authority.OWNERSHIP, self.ownership)
+        self.write(authority.APPROVALS, dict(version=1, approvals=[]))
+        self.write(authority.PENDING, dict(version=1, pending=[]))
         (self.root / "expansion.py").write_text("# generator\n", encoding="utf-8")
         self.command("git", "add", ".")
         self.command("git", "commit", "-qm", "Polish\nCo-Authored-By: Claude Opus")
         self.base = self.command("git", "rev-parse", "HEAD").stdout.strip()
-        self.command("git", "update-ref", "refs/rrt/ownership-reviewed", self.base)
+        self.command("git", "update-ref", authority.REVIEWED_REF, self.base)
         self.write("Story.json", self.story)
+        self.write("Base.json", sample())
 
     def command(self, *args):
-        return subprocess.run(args, cwd=self.root, check=True, capture_output=True, text=True)
+        return subprocess.run(args, cwd=self.root, check=True, capture_output=True,
+                              text=True, encoding="utf-8")
 
     def write(self, name, value, crlf=False):
         path = self.root / name
@@ -55,35 +53,45 @@ class AuthorityTests(unittest.TestCase):
                         newline="\r\n" if crlf else "\n")
         return path
 
+    def pin(self, path):
+        """Simulate coordinator CAS without moving the worker's HEAD."""
+        previous = self.command("git", "rev-parse", authority.REVIEWED_REF).stdout.strip()
+        self.command("git", "add", str(path.relative_to(self.root)))
+        tree = self.command("git", "write-tree").stdout.strip()
+        commit = self.command("git", "commit-tree", tree, "-p", previous,
+                              "-m", "Coordinator reviewed records").stdout.strip()
+        self.command("git", "update-ref", authority.REVIEWED_REF, commit, previous)
+
+    def review(self, data, name=authority.APPROVALS):
+        path = self.write(name, data)
+        self.pin(path)
+        return path
+
+    def approval(self, sid="route.scene", **overrides):
+        scene = next(scene for scene in self.story["Scenes"] if scene["Id"] == sid)
+        entry = dict(scene=sid, before_sha=self.locks["locked"].get(sid, {}).get("text_sha"),
+                     after_sha=lint.text_sha(scene), owner="claude", source_branch="claude/voice",
+                     source_commit=self.base, reason="Coordinator accepted the owned voice rewrite")
+        entry.update(overrides)
+        return entry
+
+    def approve(self, *entries):
+        return self.review(dict(version=1, approvals=list(entries or [self.approval()])))
+
     def job(self, **overrides):
-        from tools.voice_authority import snapshot
-        job = dict(version=1, job_id="codex-named-claude/pol-forged", actor="claude",
-                   kind="voice", status="reviewed", branch="claude/pol-forged", base=self.base,
-                   approvals=overrides.get("approvals", [self.approval()] if self.story["Scenes"] else []),
-                   **snapshot(self.root, self.root / "Story.json", self.base))
+        job = dict(version=1, job_id="held-scaffold", actor="codex", kind="scaffold", status="held",
+                   branch=self.command("git", "branch", "--show-current").stdout.strip(),
+                   base=self.command("git", "rev-parse", "HEAD").stdout.strip(), approvals=[],
+                   **authority.snapshot(self.root, self.root / "Story.json"))
         job.update(overrides)
         return job
 
-    def approval(self, update=False):
-        return dict(scene="route.scene", before=self.locks["locked"]["route.scene"]["text_sha"],
-                    after=lint.text_sha(self.story["Scenes"][0]), allow_update=update)
-
-    def sign(self, job):
-        from tools.voice_authority import canonical
-        payload, sig = Path(self.temp.name) / "payload", Path(self.temp.name) / "signature"
-        payload.write_bytes(canonical(job))
-        self.command("openssl", "pkeyutl", "-sign", "-rawin", "-inkey", str(self.key),
-                     "-in", str(payload), "-out", str(sig))
-        signed = copy.deepcopy(job)
-        signed["signature"] = dict(key_id="reviewer", value=base64.b64encode(sig.read_bytes()).decode())
-        return self.write("job.json", signed)
-
-    def invoke(self, *args, job=None):
-        command = [sys.executable, str(lint.ROOT / "tools/voice_lock_lint.py"), "--repo", str(self.root),
-                   "--story", str(self.root / "Story.json"), "--strict"]
+    def invoke(self, *args, job=None, script=None):
+        command = [sys.executable, str(script or lint.ROOT / "tools/voice_lock_lint.py"),
+                   "--repo", str(self.root), "--story", str(self.root / "Story.json"), "--strict"]
         if job:
             command += ["--job", str(job)]
-        result = subprocess.run([*command, *args], capture_output=True, text=True,
+        result = subprocess.run([*command, *args], capture_output=True, text=True, encoding="utf-8",
                                 env=dict(os.environ, RRT_VOICE_OWNER="claude", PYTHONDONTWRITEBYTECODE="1"))
         self.assertNotEqual(2, result.returncode, result.stderr)
         return result
@@ -93,123 +101,106 @@ class AuthorityTests(unittest.TestCase):
         {"node": node, "paragraph": node["Paragraphs"][0], "choice": node["Choices"][0]}[surface]["Text"] += " revised"
         self.write("Story.json", self.story)
 
+
+class AuthorityTests(AuthorityFixture, unittest.TestCase):
     def test_branch_message_env_cannot_authorize(self):
         self.change()
         result = self.invoke()
         self.assertEqual(1, result.returncode, result.stdout)
         self.assertIn("approval", result.stdout)
-
-    def test_forged_coauthor_without_claude_branch_cannot_authorize(self):
         self.command("git", "checkout", "-qb", "codex/structure")
-        self.change()
-        result = self.invoke()
-        self.assertEqual(1, result.returncode, result.stdout)
+        self.assertEqual(1, self.invoke().returncode)
+        self.assertEqual(1, self.invoke("--update").returncode)
 
-    def test_owner_env_without_branch_or_coauthor_cannot_authorize_update(self):
-        self.command("git", "checkout", "-qb", "codex/structure")
-        self.command("git", "commit", "--amend", "-qm", "Structure job")
-        self.change()
-        result = self.invoke("--update")
-        self.assertEqual(1, result.returncode, result.stdout)
-
-    def test_update_without_any_signed_entry_fails(self):
-        job = self.sign(self.job(approvals=[]))
-        result = self.invoke("--update", job=job)
-        self.assertEqual(1, result.returncode, result.stdout)
-
-    def test_valid_claude_delta_all_surfaces(self):
+    def test_exact_reviewed_approval_all_surfaces(self):
         for surface in ("node", "paragraph", "choice"):
             with self.subTest(surface=surface):
                 self.story = sample()
                 self.change(surface)
-                result = self.invoke(job=self.sign(self.job()))
+                self.approve()
+                result = self.invoke()
                 self.assertEqual(0, result.returncode, result.stdout)
 
-    def test_unauthorized_delta_all_surfaces(self):
-        for surface in ("node", "paragraph", "choice"):
-            with self.subTest(surface=surface):
-                self.story = sample()
-                self.change(surface)
-                self.assertEqual(1, self.invoke().returncode)
+    def test_worker_written_and_committed_approval_is_not_authority(self):
+        self.change()
+        self.write(authority.APPROVALS, dict(version=1, approvals=[self.approval()]))
+        self.assertEqual(1, self.invoke().returncode)
+        self.command("git", "add", ".")
+        self.command("git", "commit", "-qm", "Claude approved voice")
+        self.assertEqual(1, self.invoke().returncode)
 
-    def test_duplicate_and_missing_scene_fail_with_signed_authority(self):
-        for scenes in ([], sample()["Scenes"] * 2):
+    def test_wrong_before_after_scene_and_owner_rejected_without_writes(self):
+        self.change()
+        before = (self.root / authority.LOCKS).read_bytes()
+        for change in (dict(before_sha="0" * 64), dict(after_sha="0" * 64),
+                       dict(scene="route.other"), dict(owner="codex"), dict(before_sha=None)):
+            with self.subTest(change=change):
+                self.approve(self.approval(**change))
+                for flags in ((), ("--update",)):
+                    self.assertEqual(1, self.invoke(*flags).returncode)
+                    self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+
+    def test_missing_duplicate_and_unlocked_owned_scene_fail(self):
+        for scenes in ([], sample()["Scenes"] * 2,
+                       sample()["Scenes"] + [dict(Id="route.new", Nodes=[dict(Text="Unenrolled")])]):
             with self.subTest(count=len(scenes)):
                 self.story["Scenes"] = scenes
                 self.write("Story.json", self.story)
-                result = self.invoke(job=self.sign(self.job(approvals=[])))
-                self.assertEqual(1, result.returncode, result.stdout)
+                self.assertEqual(1, self.invoke().returncode)
+                self.assertEqual(1, self.invoke("--update").returncode)
 
-    def test_signed_enrollment_is_required_and_idempotent(self):
-        self.story["Scenes"].append({"Id": "route.new", "Nodes": [{"Id": "start", "Text": "New"}]})
+    def test_enrollment_uses_source_commit_and_is_idempotent(self):
+        self.story["Scenes"].append(dict(Id="route.new", Nodes=[dict(Id="start", Text="New")]))
         self.write("Story.json", self.story)
-        entry = dict(scene="route.new", before=None, after=lint.text_sha(self.story["Scenes"][1]), allow_update=True)
-        job = self.sign(self.job(approvals=[entry]))
-        self.assertEqual(1, self.invoke(job=job).returncode)
-        result = self.invoke("--update", job=job)
-        self.assertEqual(0, result.returncode, result.stdout)
-        first = (self.root / "tools/route_packs/voice_locks.json").read_bytes()
-        self.assertEqual(0, self.invoke("--update", job=job).returncode)
-        self.assertEqual(first, (self.root / "tools/route_packs/voice_locks.json").read_bytes())
-
-    def test_pending_only_signed_held_scaffold_and_never_milestone(self):
-        from tools.voice_authority import digest
-        scene = {"Id": "route.new", "Nodes": [{"Id": "start", "Text": "[[PROSE_PENDING:slot]]"}]}
-        self.story["Scenes"].append(scene)
-        self.write("Story.json", self.story)
-        entry = dict(scene="route.new", node="start", surface="node", index=None,
-                     text_sha=digest(scene["Nodes"][0]["Text"]))
-        self.write("tools/route_packs/plans/prose-pending.json", {"version": 1, "pending": [entry]})
+        entry = self.approval("route.new", source_commit="a" * 40)
+        self.approve(entry)
         self.assertEqual(1, self.invoke().returncode)
-        job = self.sign(self.job(actor="codex", kind="scaffold", status="held", approvals=[]))
-        result = self.invoke(job=job)
+        result = self.invoke("--update")
         self.assertEqual(0, result.returncode, result.stdout)
-        self.assertEqual(1, self.invoke("--milestone", job=job).returncode)
-        job = self.sign(self.job(actor="codex", kind="scaffold", status="reviewed", approvals=[]))
-        self.assertEqual(1, self.invoke(job=job).returncode)
+        target = self.root / authority.LOCKS
+        first = target.read_bytes()
+        self.assertEqual(dict(owner="claude", since="a" * 40, text_sha=entry["after_sha"]),
+                         json.loads(first)["locked"]["route.new"])
+        self.assertEqual(0, self.invoke("--update").returncode)
+        self.assertEqual(first, target.read_bytes())
 
-    def test_pending_schema_stale_duplicate_unregistered_and_locked_text_fail(self):
-        from tools.voice_authority import digest
-        self.story["Scenes"][0]["Nodes"][0]["Text"] = "[[PROSE_PENDING:slot]]"
-        self.write("Story.json", self.story)
-        entry = dict(scene="route.scene", node="start", surface="node", index=None,
-                     text_sha=digest("[[PROSE_PENDING:slot]]"))
-        for entries in ([], [entry], [entry, entry], [dict(entry, index=0)],
-                        [dict(entry, text_sha="0" * 64)], [dict(entry, extra=True)]):
-            with self.subTest(entries=entries):
-                self.write("tools/route_packs/plans/prose-pending.json", {"version": 1, "pending": entries})
-                job = self.sign(self.job(actor="codex", kind="scaffold", status="held", approvals=[]))
-                result = self.invoke(job=job)
-                self.assertEqual(1, result.returncode, result.stdout)
-
-    def test_pending_cli_node_paragraph_and_choice_targets(self):
-        from tools.voice_authority import digest
-        for surface in ("node", "paragraph", "choice"):
-            with self.subTest(surface=surface):
-                node = {"Id": "start", "Text": "Scaffold", "Paragraphs": [{"Text": "Aside"}],
-                        "Choices": [{"Text": "Stay"}]}
-                target = {"node": node, "paragraph": node["Paragraphs"][0], "choice": node["Choices"][0]}[surface]
-                target["Text"] = "[[PROSE_PENDING:slot]]"
-                self.story = sample()
-                self.story["Scenes"].append({"Id": "route.new", "Nodes": [node]})
-                self.write("Story.json", self.story)
-                entry = dict(scene="route.new", node="start", surface=surface,
-                             index=None if surface == "node" else 0, text_sha=digest(target["Text"]))
-                self.write("tools/route_packs/plans/prose-pending.json", {"version": 1, "pending": [entry]})
-                job = self.sign(self.job(actor="codex", kind="scaffold", status="held", approvals=[]))
-                command = [sys.executable, str(lint.ROOT / "tools/prose_pending_lint.py"),
-                           "--repo", str(self.root), "--story", str(self.root / "Story.json"), "--job", str(job)]
-                result = subprocess.run(command, capture_output=True, text=True,
-                                        env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
-                self.assertEqual(0, result.returncode, result.stdout + result.stderr)
-                result = subprocess.run([*command, "--milestone"], capture_output=True, text=True,
-                                        env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
-                self.assertEqual(1, result.returncode, result.stdout + result.stderr)
-
-    def test_codex_claim_signed_by_reviewer_still_denied(self):
+    def test_update_only_approved_scene_preserves_other_locks_and_crlf(self):
+        second = dict(Id="route.other", Nodes=[dict(Id="start", Text="Keep")])
+        self.story["Scenes"].append(second)
+        self.locks["locked"]["route.other"] = dict(owner="claude", since="keep-since", text_sha=lint.text_sha(second))
+        target = self.write(authority.LOCKS, self.locks, crlf=True)
+        self.pin(target)
         self.change()
-        result = self.invoke(job=self.sign(self.job(actor="codex")))
-        self.assertEqual(1, result.returncode, result.stdout)
+        before = target.read_bytes()
+        self.assertEqual(1, self.invoke("--update").returncode)
+        self.assertEqual(before, target.read_bytes())
+        self.approve()
+        result = self.invoke("--update")
+        self.assertEqual(0, result.returncode, result.stdout)
+        result_data = json.loads(target.read_bytes())["locked"]
+        self.assertEqual(self.locks["locked"]["route.other"], result_data["route.other"])
+        self.assertEqual("abc123", result_data["route.scene"]["since"])
+        self.assertEqual("claude", result_data["route.scene"]["owner"])
+        self.assertEqual(lint.text_sha(self.story["Scenes"][0]), result_data["route.scene"]["text_sha"])
+        self.assertNotIn(b"\n", target.read_bytes().replace(b"\r\n", b""))
+        self.assertEqual(0, self.invoke().returncode)
+        second["Nodes"][0]["Text"] += " unauthorized"
+        self.write("Story.json", self.story)
+        after = target.read_bytes()
+        self.assertEqual(1, self.invoke("--update").returncode)
+        self.assertEqual(after, target.read_bytes())
+
+    def test_historical_approval_does_not_authorize_later_delta(self):
+        self.change()
+        first = self.approval()
+        self.approve(first)
+        self.assertEqual(0, self.invoke("--update").returncode)
+        self.pin(self.root / authority.LOCKS)
+        self.change()
+        self.assertEqual(1, self.invoke().returncode)
+        current_before = first["after_sha"]
+        self.approve(first, self.approval(before_sha=current_before))
+        self.assertEqual(0, self.invoke("--update").returncode)
 
     def test_structure_only_passes(self):
         scene = self.story["Scenes"][0]
@@ -223,83 +214,137 @@ class AuthorityTests(unittest.TestCase):
         self.write("Story.json", self.story)
         self.assertEqual(0, self.invoke().returncode)
 
-    def test_committed_lock_and_key_tampering_cannot_change_reviewed_authority(self):
-        self.change()
-        self.locks["locked"]["route.scene"]["text_sha"] = lint.text_sha(self.story["Scenes"][0])
-        self.write("tools/route_packs/voice_locks.json", self.locks)
-        self.command("git", "add", ".")
-        self.command("git", "commit", "-qm", "Claude voice polish")
-        self.assertEqual(1, self.invoke().returncode)
-
-    def test_altered_locks_missing_enrollment_and_owner_map_fail(self):
-        for mode in ("hash", "delete", "new-scene", "owner-map", "missing-map"):
+    def test_altered_locks_and_owner_map_fail(self):
+        for mode in ("hash", "delete", "owner", "since", "owner-map", "missing-map"):
             with self.subTest(mode=mode):
                 self.story = sample()
                 locks = copy.deepcopy(self.locks)
-                self.write("tools/route_packs/ownership.json", self.ownership)
+                self.write(authority.OWNERSHIP, self.ownership)
                 if mode == "hash":
                     self.change()
                     locks["locked"]["route.scene"]["text_sha"] = lint.text_sha(self.story["Scenes"][0])
                 elif mode == "delete":
                     locks["locked"].clear()
-                elif mode == "new-scene":
-                    self.story["Scenes"].append({"Id": "route.new", "Nodes": [{"Text": "Unenrolled"}]})
+                elif mode in ("owner", "since"):
+                    locks["locked"]["route.scene"][mode] = "forged"
                 elif mode == "owner-map":
-                    self.write("tools/route_packs/ownership.json", {"version": 1, "scene_prefixes": {}, "reviewers": {}})
+                    self.write(authority.OWNERSHIP, dict(version=1, scene_prefixes={}))
                 else:
-                    (self.root / "tools/route_packs/ownership.json").unlink()
+                    (self.root / authority.OWNERSHIP).unlink()
                 self.write("Story.json", self.story)
-                self.write("tools/route_packs/voice_locks.json", locks)
-                result = self.invoke()
-                self.assertEqual(1, result.returncode, result.stdout)
+                self.write(authority.LOCKS, locks)
+                self.assertEqual(1, self.invoke().returncode)
 
-    def test_update_signed_entry_crlf_and_provenance(self):
+    def test_registry_schema_and_byte_identity(self):
         self.change()
-        target = self.root / "tools/route_packs/voice_locks.json"
-        before = target.read_bytes()
-        for job in (None, self.sign(self.job())):
-            result = self.invoke("--update", job=job)
-            self.assertEqual(1, result.returncode, result.stdout)
-            self.assertEqual(before, target.read_bytes())
-        job = self.sign(self.job(approvals=[self.approval(update=True)]))
-        result = self.invoke("--update", job=job)
-        self.assertEqual(0, result.returncode, result.stdout)
-        raw = target.read_bytes()
-        self.assertEqual("abc123", json.loads(raw)["locked"]["route.scene"]["since"])
-        self.assertNotIn(b"\n", raw.replace(b"\r\n", b""))
-        self.assertEqual(0, self.invoke(job=job).returncode)
+        approved = dict(version=1, approvals=[self.approval()])
+        path = self.review(approved)
+        self.assertEqual(0, self.invoke().returncode)
+        path.write_text(json.dumps(approved) + "\n", encoding="utf-8")
+        self.assertEqual(1, self.invoke().returncode)
+        for data in (dict(approved, version=True), dict(approved, extra=True),
+                     dict(version=1, approvals=approved["approvals"] * 2),
+                     dict(version=1, approvals=[self.approval(source_commit="short")]),
+                     dict(version=1, approvals=[self.approval(reason="")])):
+            with self.subTest(data=data):
+                self.review(data)
+                self.assertEqual(1, self.invoke().returncode)
 
-    def test_stale_and_forged_job_fail_without_writes(self):
+    def test_absent_legacy_registry_bootstrap_grants_no_approval(self):
+        self.command("git", "rm", authority.APPROVALS)
+        self.command("git", "commit", "-qm", "Legacy reviewed inventory")
+        self.command("git", "update-ref", authority.REVIEWED_REF,
+                     self.command("git", "rev-parse", "HEAD").stdout.strip())
+        self.write(authority.APPROVALS, dict(version=1, approvals=[]))
+        self.assertEqual(0, self.invoke().returncode)
         self.change()
-        signed = self.sign(self.job(approvals=[self.approval(update=True)]))
-        before = (self.root / "tools/route_packs/voice_locks.json").read_bytes()
-        original_job = signed.read_bytes()
-        for mutation in ("export", "source", "input-json", "signature", "approval", "base", "key"):
+        self.write(authority.APPROVALS, dict(version=1, approvals=[self.approval()]))
+        self.assertEqual(1, self.invoke().returncode)
+
+    def test_missing_reviewed_ref_cannot_approve_from_remote(self):
+        self.change()
+        self.approve()
+        reviewed = self.command("git", "rev-parse", authority.REVIEWED_REF).stdout.strip()
+        self.command("git", "update-ref", "refs/remotes/origin/claude/trickster-expansion", reviewed)
+        self.command("git", "update-ref", "-d", authority.REVIEWED_REF)
+        self.assertEqual(1, self.invoke().returncode)
+
+    def test_coordinator_cli_prepares_selected_exact_deltas_and_keeps_history(self):
+        self.change()
+        other = dict(Id="route.other", Nodes=[dict(Id="start", Text="New scene")])
+        self.story["Scenes"].append(other)
+        self.write("Story.json", self.story)
+        command = [sys.executable, str(lint.ROOT / "tools/voice_approve.py"), "--repo", str(self.root),
+                   "--base", str(self.root / "Base.json"), "--candidate", str(self.root / "Story.json"),
+                   "--prefixes", "route.scene", "--source-branch", "claude/voice", "--source-commit", self.base,
+                   "--reason", "Coordinator accepted the owned voice rewrite"]
+        result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        data = authority.read_json(self.root / authority.APPROVALS)
+        self.assertEqual([self.approval()], data["approvals"])
+        self.assertEqual(1, self.invoke().returncode)  # Preparation never advances the ref.
+        self.pin(self.root / authority.APPROVALS)
+        command[command.index("route.scene")] = "route.other"
+        result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        self.assertEqual([self.approval(), self.approval("route.other")],
+                         authority.read_json(self.root / authority.APPROVALS)["approvals"])
+        self.pin(self.root / authority.APPROVALS)
+        self.assertEqual(0, self.invoke("--update").returncode)
+
+    def test_coordinator_rejects_stale_base_and_missing_or_unowned_targets(self):
+        self.change()
+        before = (self.root / authority.APPROVALS).read_bytes()
+        self.write("Base.json", self.story)
+        with self.assertRaisesRegex(ValueError, "base export differs from current lock"):
+            voice_approve.prepare(self.root, self.root / "Base.json", self.root / "Story.json",
+                                  ["route"], "claude/voice", self.base, "Reviewed")
+        self.write("Base.json", sample())
+        for mode in ("missing", "duplicate", "deleted", "unowned"):
+            with self.subTest(mode=mode):
+                story = sample()
+                prefixes = ["route"]
+                if mode == "missing":
+                    prefixes = ["absent"]
+                elif mode == "duplicate":
+                    story["Scenes"] *= 2
+                elif mode == "deleted":
+                    story["Scenes"] = []
+                else:
+                    story["Scenes"].append(dict(Id="unowned.new", Nodes=[]))
+                    prefixes = ["unowned"]
+                self.write("Story.json", story)
+                with self.assertRaises(ValueError):
+                    voice_approve.prepare(self.root, self.root / "Base.json", self.root / "Story.json",
+                                          prefixes, "claude/voice", self.base, "Reviewed")
+                self.assertEqual(before, (self.root / authority.APPROVALS).read_bytes())
+
+    def test_mutations_prove_ref_and_exact_hash_witnesses(self):
+        self.change()
+        # Each mutant is confined to system temp and exercised by the same CLI.
+        for mutation in ("ref", "before", "after"):
             with self.subTest(mutation=mutation):
-                signed.write_bytes(original_job)
-                self.write("Story.json", self.story)
-                (self.root / "expansion.py").write_text("# generator\n", encoding="utf-8")
-                (self.root / "tools/settings.json").unlink(missing_ok=True)
-                if mutation == "export":
-                    self.write("Story.json", sample())
-                elif mutation == "source":
-                    (self.root / "expansion.py").write_text("# changed\n", encoding="utf-8")
-                elif mutation == "input-json":
-                    self.write("tools/settings.json", {"changed": True})
-                else:
-                    data = json.loads(signed.read_bytes())
-                    if mutation == "signature":
-                        data["signature"]["value"] = base64.b64encode(bytes(64)).decode()
-                    elif mutation == "approval":
-                        data["approvals"][0]["allow_update"] = False
-                    elif mutation == "key":
-                        data["signature"]["key_id"] = "self-selected"
-                    else:
-                        data["base"] = "0" * 40
-                    self.write("job.json", data)
-                result = self.invoke("--update", job=signed)
-                self.assertEqual(1, result.returncode, result.stdout)
-                self.assertEqual(before, (self.root / "tools/route_packs/voice_locks.json").read_bytes())
+                folder = Path(self.temp.name) / mutation
+                folder.mkdir()
+                for name in ("voice_authority.py", "voice_lock_lint.py", "prose_pending_lint.py"):
+                    source = (lint.ROOT / "tools" / name).read_text(encoding="utf-8")
+                    if name == "voice_authority.py":
+                        if mutation == "ref":
+                            source = source.replace('        reviewed_file(root, path)', '        pass  # mutant skips protected ref')
+                        else:
+                            expression = (' and entry["before_sha"] == before' if mutation == "before"
+                                          else 'and entry["after_sha"] == after')
+                            source = source.replace(expression, '' if mutation == "before" else 'and True')
+                    (folder / name).write_text(source, encoding="utf-8")
+                entry = self.approval(**({mutation + "_sha": "0" * 64} if mutation != "ref" else {}))
+                path = self.write(authority.APPROVALS, dict(version=1, approvals=[entry]))
+                if mutation != "ref":
+                    self.pin(path)
+                self.assertEqual(1, self.invoke().returncode)
+                result = self.invoke(script=folder / "voice_lock_lint.py")
+                self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+                # Restore empty reviewed registry before the next witness.
+                self.review(dict(version=1, approvals=[]))
 
 
 if __name__ == "__main__":

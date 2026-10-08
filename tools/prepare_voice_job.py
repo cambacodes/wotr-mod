@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare exact unsigned J05b append approvals for coordinator signing."""
+"""Prepare exact J05b append approval records for the coordinator to commit and pin."""
 import argparse
 import json
 from pathlib import Path
@@ -15,11 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUEST = "tools/route_packs/plans/j05b-append-approval-request.json"
 
 
-def prepare(root, story_path, request_path):
+def prepare(root, story_path, request_path, source_branch=None, source_commit=None, reason="J05b registered pending-choice appends"):
     base, policy, predecessor = authority.trusted(root)
     request = authority.read_json(request_path)
     if (request.get("version") != 1 or request.get("job_id") != "J05b-pending-choice-appends"
-            or request.get("status") != "awaiting-coordinator-signature"
+            or request.get("status") != "awaiting-coordinator-approval"
             or (request.get("actor"), request.get("kind")) != ("codex", "scaffold")):
         raise ValueError("invalid J05b approval request")
     story = authority.read_json(story_path)
@@ -47,12 +47,15 @@ def prepare(root, story_path, request_path):
                 or locks.text_sha(before[sid]) != old_hash
                 or not locks.pending_choice_append(before[sid], after[sid], pending)):
             raise ValueError(f"{sid}: delta exceeds the explicit J05b append request")
-        approvals.append(dict(scene=sid, before=old_hash, after=digest, allow_update=False))
+        approvals.append(dict(scene=sid, before_sha=old_hash, after_sha=digest, owner="claude",
+                              source_branch=source_branch or authority.git(root, "branch", "--show-current").decode().strip(),
+                              source_commit=source_commit or base, reason=reason))
     if not approvals:
-        raise ValueError("no pending-choice append to approve; implement J05b before signing")
-    return dict(version=1, job_id=request["job_id"], actor="codex", kind="scaffold", status="reviewed",
-                branch=authority.git(root, "branch", "--show-current").decode().strip(), base=base,
-                approvals=approvals, **authority.snapshot(root, story_path))
+        raise ValueError("no pending-choice append to approve; implement J05b before review")
+    result = dict(version=1, approvals=approvals)
+    authority.validate_approvals(result, policy)
+    return result
+
 
 
 def main(argv=None):
@@ -60,18 +63,20 @@ def main(argv=None):
     parser.add_argument("--repo", type=Path, default=ROOT)
     parser.add_argument("--story", type=Path)
     parser.add_argument("--request", type=Path)
-    parser.add_argument("--output", type=Path, required=True, help="unsigned canonical payload outside the repo")
+    parser.add_argument("--output", type=Path, required=True, help="repository path for the coordinator-reviewed append records")
+    parser.add_argument("--source-branch")
+    parser.add_argument("--source-commit")
+    parser.add_argument("--reason", default="J05b registered pending-choice appends")
     args = parser.parse_args(argv)
     root = args.repo.resolve()
-    if args.output.resolve().is_relative_to(root):
-        parser.error("--output must be outside the repository")
     try:
-        job = prepare(root, args.story or root / "development/Story.json", args.request or root / REQUEST)
+        job = prepare(root, args.story or root / "development/Story.json", args.request or root / REQUEST,
+                      args.source_branch, args.source_commit, args.reason)
         args.output.write_bytes(authority.canonical(job))
     except (OSError, ValueError, KeyError, TypeError) as error:
         print("HARD Approval preparation:", error)
         return 1
-    print("Unsigned exact append review payload:", args.output)
+    print("Exact append approval records (commit and pin before use):", args.output)
     return 0
 
 

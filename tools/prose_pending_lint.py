@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate integration placeholders or signed held scaffold targets; forbid both at milestones."""
+"""Validate integration placeholders or coordinator-reviewed held scaffold targets; forbid both at milestones."""
 import argparse
 from pathlib import Path
 import re
@@ -58,7 +58,7 @@ def check(story, data, job=None, milestone=False, integration=False):
         if milestone:
             errors.append("milestone builds forbid prose-pending entries")
         elif not integration and (not job or (job["kind"], job["status"]) != ("scaffold", "held")):
-            errors.append("placeholders require a signed held scaffold job")
+            errors.append("placeholders require a coordinator-reviewed held scaffold job")
     return errors
 
 

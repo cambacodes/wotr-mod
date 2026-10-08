@@ -577,6 +577,5 @@
     "areelu.trickster.native.ascension_shared": "claude",
     "areelu.trickster.native.ascension_without": "claude",
     "areelu.trickster.native.cauldron_test": "claude"
-  },
-  "reviewers": {}
+  }
 }

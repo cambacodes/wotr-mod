@@ -3,7 +3,7 @@
   "job_id": "J05b-pending-choice-appends",
   "actor": "codex",
   "kind": "scaffold",
-  "status": "awaiting-coordinator-signature",
+  "status": "awaiting-coordinator-approval",
   "authored": true,
   "rulings": [
     5,
@@ -15,7 +15,7 @@
     15,
     16
   ],
-  "approval_rule": "Exact signed per-scene before/after approval only after candidate generation; preserve all old prose and choices. No lock updates or enrollment authorized.",
+  "approval_rule": "Exact coordinator-reviewed per-scene before/after approval only after candidate generation; preserve all old prose and choices. No lock updates or enrollment authorized.",
   "hosts": [
     {
       "scene": "hepzamirah.trickster.body.terms",
