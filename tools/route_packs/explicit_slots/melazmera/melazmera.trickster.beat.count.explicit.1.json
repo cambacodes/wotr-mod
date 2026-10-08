@@ -1,0 +1,26 @@
+{
+  "slot_id": "melazmera.trickster.beat.count.explicit.1",
+  "host_scene": "melazmera.trickster.beat.count",
+  "host_node": "ate",
+  "voice": "MELAZMERA: an umbral dragon wearing a woman, not a woman. Childish-gluttonous with a predator's grin: short sentences, repetition, possession stated as fact ('mine', 'thief' as a pet name), counting things, food and eating as her measure of everything, the giggle (native report 70c883b1). Appetite without apology; she takes, holds, bites and keeps; affection shows only as possession and as not eating. Crude where she is hungry, never coy. No therapy language, no consent choreography, no vows, no gratitude script, no generic seductress voice. Write fresh lines; do not reuse sentences from this brief.",
+  "facts": "Canon facts only: Melazmera is the female umbral dragon of Colyphyr (unit 85c7a3fd80f93db43a3e588ba5f5f9bc); she ate the sailors on the deck with a purr of satisfaction (2433842e), brags of eating everything, even dead souls, and giggles (70c883b1), and keeps a hoard of real treasure disguised as rocks behind illusory bait (832dc662). Everything else is authored route staging, not lore: the folded woman-shape with patches of cold plate under warm skin (beat.illusion), the old seal on her smallest finger, the grey sapphire the Commander carries, the heap of forty stones in her rift cave, the Commander's quarters in Drezen. No dragon-form sexual action. No feeding on the Commander, no injury mechanics, no soul bargain.",
+  "scene": "WHEN: Chapter 5, after the first night on the heap (visit.heap; this scene requires melazmera.committed and melazmera.trickster.heap_seen), in the Commander's own quarters in Drezen, at night. She has walked round the room counting the Commander's hoard (sword: real; maps: not real; her stones on the shelf: real; the drawer of other people's letters: real, and she does not like them), and has just sat on the edge of the Commander's bed with her hand closed over the sapphire through the Commander's clothes: 'You were still there when I woke. I counted twice.' Participants: the Commander and Melazmera (Commander + woman). STRUCTURE HOOK NEEDED: the ate node ends the scene (terminal Continue); the insert needs its own slot node between ate and its exit, gated on melazmera.committed, before generation; until that node exists this brief is tracking only. Required beats: she counts the Commander as part of her hoard, out loud, by touch, and does not let go of the stone; her appetite leads, the Commander answers it in action; the cold plate under her skin where the woman-shape stops; the letters in the drawer as the one thing in the room she resents. Do not resolve anything, add a vow or change a stance. Second person, present tense; the Commander's speech stays in player choices outside the insert. End on a quiet beat with her still holding the stone; the scene then closes.",
+  "last_line": "N: Her hand stays on the stone. She counts it again, and you with it, and does not let go.",
+  "speakers": {
+    "N": "Narrator",
+    "M": "Melazmera"
+  },
+  "participants": [
+    "Melazmera"
+  ],
+  "example": "N: She pulls you down onto your own bed by the front of your shirt, the stone still in her fist.\nM: One sword. One seal. One thief. Hold still, I am counting.",
+  "commander": "the Commander; no assumed gender or anatomy",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18,
+  "default_text": "{n}She pulls you down beside her by the front of your shirt, her fist still closed on the stone, and counts you again, slowly, by hand.{/n}",
+  "continuity": "Chapter 5, after visit.heap's first night: no first-night reset. Earned presence only (the scene requires committed and heap_seen). No new flag, cost, gate or relationship effect; beat.count's existing Set (melazmera.trickster.beat.counted) stays on its existing Continue."
+}

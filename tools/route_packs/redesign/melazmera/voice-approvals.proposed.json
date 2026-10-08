@@ -1,0 +1,155 @@
+{
+ "version": 1,
+ "proposed": [
+  {
+   "scene": "melazmera.lastcall.page",
+   "before_sha": "9a3a520a6f13b239ddb0aed5db04baf20cba2a7d4b4e73562442fd93e92c1253",
+   "after_sha": "ac8ba0d0bfb4205311d2294a09b169c843309d8f7d29952010e8777b57e0e277",
+   "lock_sha": "9a3a520a6f13b239ddb0aed5db04baf20cba2a7d4b4e73562442fd93e92c1253",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.beat.crew",
+   "before_sha": "2d06ce01baf5447a7a7393e4ccbcbf1d34bd8194340ddc5eb70df690be121aa1",
+   "after_sha": "96d02bca852aca2d4ddbbde1efa9675f63a0a7b40e08f24df3e03086c8eac79b",
+   "lock_sha": "2d06ce01baf5447a7a7393e4ccbcbf1d34bd8194340ddc5eb70df690be121aa1",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.beat.inquisitor",
+   "before_sha": "bf3a8820f8845bdb7e382fc1c500a30bde97917dc095dd145d808aab4279e4ef",
+   "after_sha": "7cab560330ba8f573efd90f405b57d87cf8b01e76e871fa7df01bf2467f19425",
+   "lock_sha": "bf3a8820f8845bdb7e382fc1c500a30bde97917dc095dd145d808aab4279e4ef",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.beat.joke",
+   "before_sha": "7525b103d8355e2b8ebb7d66909693d8eb03010046303a291f35921438457178",
+   "after_sha": "8b34bab53ec5917ae2357289a86983015dcefb1c48ea3ff6fb2c96f033c05b82",
+   "lock_sha": "7525b103d8355e2b8ebb7d66909693d8eb03010046303a291f35921438457178",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.beat.queen",
+   "before_sha": "e80c05ba6c49495d96624c04f3634deb6552f3aa5a36b06417e54b58970c2dd9",
+   "after_sha": "0f781f26b233e796283f14e703fae32ce9e43021e3f708c7e244d8d9b1d27f9f",
+   "lock_sha": "e80c05ba6c49495d96624c04f3634deb6552f3aa5a36b06417e54b58970c2dd9",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.ch4.hunt",
+   "before_sha": "f09e22a7943f8e636b1a11bfc5ed10894d7f83f0bc6d476fddd422578c091bc5",
+   "after_sha": "537edd74353ee2cf1ad62d8bf8c27af990a12f24deac55d46802b5d60fdf140d",
+   "lock_sha": "f09e22a7943f8e636b1a11bfc5ed10894d7f83f0bc6d476fddd422578c091bc5",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.ch4.hunt_found",
+   "before_sha": "eb781f9e679f85cbf10649552f9d315fe2ca0564a2c11876f4d9b8b772ca814f",
+   "after_sha": "8b0078d68b5c24b486934c07610960dbb563a896658ae60ea49b8ab882c86ca1",
+   "lock_sha": "eb781f9e679f85cbf10649552f9d315fe2ca0564a2c11876f4d9b8b772ca814f",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.ch5.hunger",
+   "before_sha": "44ad4c2713b6e22ae792184ebc1f283aa97e6988c447d709f41681c71faf7be0",
+   "after_sha": "2ef535bc919e0a682ad0406fc69497a7fe0968711d9c1bdb1c44d61647a909d8",
+   "lock_sha": "44ad4c2713b6e22ae792184ebc1f283aa97e6988c447d709f41681c71faf7be0",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.ch5.hunt_window",
+   "before_sha": "91a26487101f954b7b4326f701c8762c40e157341500a4aaa7332ad8efe552a7",
+   "after_sha": "c5dc54916378450edeea2a1142c5bfd75a61553533f8970a349c4e436f951514",
+   "lock_sha": "91a26487101f954b7b4326f701c8762c40e157341500a4aaa7332ad8efe552a7",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.commit.stone",
+   "before_sha": "2b5f83aae2a314b14de459b9002fa535e644105a2c90e6a3f67217577acce4eb",
+   "after_sha": "780b4b15409cc3fe16ef14a2b81eb54addba5efc06c712ed76289ac8cb690625",
+   "lock_sha": "2b5f83aae2a314b14de459b9002fa535e644105a2c90e6a3f67217577acce4eb",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.epilogue.commit",
+   "before_sha": "924c7f1cb3beba23c135ad445e66ec65e02553d60ba37a6bf7a4371ff85731d4",
+   "after_sha": "900ec57c352549a924c7e8a5999853f6af5afca2f33b275cdb2df1809b9c2ee0",
+   "lock_sha": "924c7f1cb3beba23c135ad445e66ec65e02553d60ba37a6bf7a4371ff85731d4",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.epilogue.declined",
+   "before_sha": "edbc76b6a33def4b669a61213554e666ef6c52abb06bfb645ad2cf341816dda4",
+   "after_sha": "f83fce13678b6d03ff21f60b37ec9ab935c757a91c221a426356109574a61cac",
+   "lock_sha": "edbc76b6a33def4b669a61213554e666ef6c52abb06bfb645ad2cf341816dda4",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.epilogue.left_free",
+   "before_sha": "4d78999169ae7298d2c5b8b14dc34342e71aebd0b7368e0d238ae7bf8bf53421",
+   "after_sha": "b7e84aaa3a98641825af61cbf7bed279079422f8e5583042e59ed31982e0dde5",
+   "lock_sha": "4d78999169ae7298d2c5b8b14dc34342e71aebd0b7368e0d238ae7bf8bf53421",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.epilogue.mourned",
+   "before_sha": "77142318666b54b9a6d9cb7758a92c0243028ca4dc2d3970695b82b9b26f3c29",
+   "after_sha": "4ad2bc1aaf6422d8af89d6abd876c2e4b6ed0f0b118c835ca23bcb6cbb7432d7",
+   "lock_sha": "77142318666b54b9a6d9cb7758a92c0243028ca4dc2d3970695b82b9b26f3c29",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  },
+  {
+   "scene": "melazmera.trickster.epilogue.together",
+   "before_sha": "18d9496ea01a74bcd6dc930c0c5ae419c4b716de3432f3bbb4a211230f9fefcf",
+   "after_sha": "45c54cea4db43ac7828f649b54a954500dd2e8a49e61f00bc687151c50de2fd5",
+   "lock_sha": "18d9496ea01a74bcd6dc930c0c5ae419c4b716de3432f3bbb4a211230f9fefcf",
+   "owner": "claude",
+   "source_branch": "cloud/villain-route-melazmera",
+   "source_commit": "(this branch head)",
+   "reason": "Cloud villain-route-melazmera design-first pass: split terms.owed reply, dead-truce lines, promise readers, paperwork restaged on screen, candle-crunching removed (see tools/route_packs/redesign/melazmera/cloud-review.md)"
+  }
+ ]
+}
