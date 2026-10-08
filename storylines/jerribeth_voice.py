@@ -324,7 +324,7 @@ text("counterfeit_guest", "previous_buyer.reply.1", '''"He wants a great deal mo
 
 text("counterfeit_guest", "maker", '''"Vardess. He buys other people's inventions and shows them at his own table as though he had dreamed them himself. He keeps the best salon in Drezen: officers, merchants' wives, a priestess or two. He has wanted me at it for some time."
 {n}She turns the card that came with the theatre so you can read it. The hand is elegant and pressed too hard.{/n}
-"He has heard that I spend my evenings with the Commander. He offers me a Commander who kneels. Such solicitude."''',
+"He has heard that I spend my evenings with the Commander. Vardess offers me a Commander who kneels. Such solicitude."''',
      (2, '"What does he really want?"'))
 
 text("counterfeit_guest", "maker.reply.1", '''"To show it with my approval. The Commander at my feet. Me at his table, acknowledging that he has supplied something I wanted. Everyone in the room beneath someone else. He will consider the arrangement elegant."
@@ -363,7 +363,7 @@ text("counterfeit_guest", "lining", '''{n}She turns the little theatre round. Be
 
 text("counterfeit_guest", "square", '''"So do I. But I should like to be sure before I spend an evening on him. Fashionable caps are not proof. Filed horns can be a carver's joke."
 {n}The frame shows you a street through her eyes: a tall house below the citadel, lamps at the door, servants carrying chairs in for tonight.{/n}
-"His house is a quarter of an hour from where you are sitting. Go and look at him, Commander. I want to know what you see."''',
+"His house is a quarter of an hour from where you are sitting. Go and look at him. I want to know what you see, Commander."''',
      (2, '"I trust your eyes. No need to look."'),
      (3, '[Perception DC 30] [Go and watch him come and go from his own door.]'),
      (4, '[Knowledge (World) DC 30] [Go and ask after him along the merchants\' street, and test his story against what you know of Drezen.]'))
@@ -414,7 +414,7 @@ text("counterfeit_audience", "entrance", '''{n}He makes the entrance he has rehe
      (4, '[Wenduag has leaned forward.]'))
 
 text("counterfeit_audience", "challenge", UNMASK + '''
-"I make people see demons as men," {n}Jerribeth says, very softly, inside your head,{/n} "and men as demons. Tonight I am only letting them see a demon as a demon. It is almost honest of me. Look at his face, Commander. Look at it."
+"I make people see demons as men," {n}Jerribeth says, very softly, inside your head,{/n} "and men as demons. Tonight I am only letting them see a demon as a demon. It is almost honest of me. Commander, look. Look at his face."
 ''' + GRAB,
      (0, '[Shout for the room to look at the mirrors.]'),
      (1, '[Make him look at himself.]'),
@@ -436,7 +436,7 @@ text("counterfeit_audience", "leverage", '''{n}The salon is silent except for Va
 text("counterfeit_audience", "leverage.reply.1", '''{n}He looks up at you from the floor. Without the cap he is younger than you thought, and much more frightened.{/n}
 "Commander. Commander, please. I have done nothing in this city but sell pictures..."
 {n}Inside your head, Jerribeth's voice is warm and close.{/n}
-"This can end two ways. Give him to your crusade: the inquisitors take him out of here in chains, there is a trial, then the square and the smell, and everyone in this room will say for years that they were here the night the Commander unmasked a demon. Or give him to me. Tell them it was a masque. My masque. They will be delighted to believe it, and Vardess will leave with his guests, and nobody in Drezen will ever see him again."
+"This can end two ways. Give him to your crusade: the inquisitors take him out of here in chains, there is a trial, then the square and the smell. Everyone in this room will say for years that they were here the night the Commander unmasked a demon. Or give him to me. Tell them it was a masque. My masque. They will be delighted to believe it, and Vardess will leave with his guests, and nobody in Drezen will ever see him again."
 "He is unique, you know. A cambion who wanted so badly to be a man that he made himself one out of a hat. I cannot allow such a creature to disappear entirely."''',
      (0, '"Give him to the Inquisition."'),
      (1, '"Tell them it was a masque. He is yours."'),
@@ -463,7 +463,7 @@ text("counterfeit_audience", "departure", '''{n}Outside, the street is cold and 
 
 text("counterfeit_audience", "departure.reply.1", '''"I still am. It has improved my week considerably."
 {n}The puppet's head turns in your hand to look at you. Its smile stays where it is.{/n}
-"Keep that. I shall send for it. Go home, Commander, and wash his parquet off your knees."''',
+"Keep that. I shall send for it. Go home, Commander, and wash that parquet off your knees."''',
      (0, '[Go home.]'))
 
 # ---- counterfeit_spoil (frame) -----------------------------------------------------------
@@ -525,7 +525,7 @@ text("counterfeit_spoil", "price.reply.1", '''{n}She leaves the drawer half open
          p('''"Now. Tell me what you thought of my evening."'''),
      ))
 
-text("counterfeit_spoil", "object", '''"You need not lay a wreath. I watched your face when I unmasked him, Commander, and it was not grieving."
+text("counterfeit_spoil", "object", '''"You need not lay a wreath. I watched your face when I unmasked him. It was not grieving, Commander."
 {n}She turns the lamp down. The drawer's brass handle vanishes into shadow.{/n}
 "You looked at me differently afterward. I noticed. I am still noticing."''',
      (1, '"Good."'))
@@ -755,7 +755,7 @@ for _ending in ("ending_together", "ending_ascended"):
     text(_ending, "account", '''{n}Vardess burned in the square below the citadel. Jerribeth bought what was left from the man who swept it, and kept the ash in a glass dish on the shelf nearest her door, labelled in her own hand.{/n}
 {n}She never forgave the Commander for the inquisitors. She brought it up at intervals, unprompted, with relish, as one might worry at a favourite scar.{/n}''')
     text(_ending, "catalogue", '''{n}Vardess remained on his pin, awake, in the case with the best light. He had been given a window, and later a chair at their table, which he could not leave and could not decline.{/n}
-{n}Jerribeth talked to him in the evenings. She liked to tell him what the Commander had said that day. She liked to watch him listen.{/n}''')
+{n}Jerribeth talked to him in the evenings. She liked to tell Vardess what the Commander had said that day. She liked to watch him listen.{/n}''')
     text(_ending, "room", '''{n}The cabinet went on growing. It went where she went: a rented room in the upper town, a cellar a day's ride out, a hall nobody else could find. Wherever it stood, there was a chair in it turned to face the door.{/n}
 {n}Their charm remained a way of speaking, and became, on certain nights, a way of arriving. She never pretended that the Commander was anything other than the best thing on her shelves. She never pretended that the Commander held still.{/n}''',
          paras=(
@@ -913,7 +913,7 @@ new("offered_signature", "widow_fee", '''"Half."
 {n}In the morning a purse lies on your table beside the frame. The coins are the widow's own, old Kenabres mintings, some of them worn smooth by a dead man's thumb. Under them, folded small in a napkin, are two silver spoons engraved with a family crest.{/n}
 "Your share. I kept the rest of the set. One should never break up a collection entirely."''')
 
-new("offered_signature", "companion_regill", '''{n}Regill has come as your escort and has stood by the wall all evening without touching the wine. When the widow walks the false Commander to the door, he steps into the passage beside you.{/n}
+new("offered_signature", "companion_regill", '''{n}Regill has come as your escort and has stood by the wall all evening without touching the wine. When the widow walks the false Commander to the door, Regill steps into the passage beside you.{/n}
 "Impersonating the Commander of the crusade is treason, whatever the species of the impersonator. That woman paid for it. I will want this house searched and her correspondence read before the week is out."
 {n}Inside your head, Jerribeth laughs.{/n}
 "Search away; he will find sixty crowns' worth of nothing. Now hush, both of you. I have one idea left to plant. For the rest of her life, every man who comes through that door will be you, and she will know each time that it is not. Well, Commander? You were her guest too."''')
@@ -932,7 +932,7 @@ NEW_CHOICES.update({
 
 new("counterfeit_guest", "scout_known", '''{n}It takes you an hour between his doorstep and the merchants' street. The hatter who makes his caps lines them with buckram, twice as stiff as fashion needs. His cook buys meat for one and has never seen him eat bread. He came to Drezen after the city was retaken, with money and no family, and nobody you ask remembers him in Kenabres, where he says he was born.{/n}
 {n}Then he steps out onto his own step to scold a servant: a lean, handsome man in a high collar and a tall velvet cap. He walks with his weight a little forward, like a man used to carrying something heavier on his head than a hat. When he turns, the cap does not move with him quite as cloth should.{/n}
-"Yes," {n}Jerribeth breathes, when you tell her.{/n} "Oh, yes. And now you know it as well as I do, which means you could do something about it before I do. How exciting. What will you do with him?"''')
+"Yes," {n}Jerribeth breathes, delighted.{/n} "Oh, yes. And now you know it as well as I do, which means you could do something about it before I do. How exciting. What will you do with him?"''')
 
 new("counterfeit_guest", "scout_unknown", '''{n}You spend an hour at it and learn nothing worth the hour. Vardess is a rich man with a good hatter and a high collar. His servants like him. The merchants' street calls him generous. If there is anything under his cap, he keeps it there.{/n}
 "Nothing? You looked at him for an hour and saw a man. That is what he wants everyone to see; do not feel too stupid. I shall show you the rest tonight."''')
@@ -954,7 +954,7 @@ new("counterfeit_audience", "chase_fail", '''{n}You go over the table and you ar
 {n}Petrik is screaming. He will live. He will wear that face for the rest of his life, and every time he looks in a mirror he will remember this room.{/n}
 "A pity about the boy. He was pretty," {n}Jerribeth says.{/n} "Still. You have the cambion, and the cambion has learned what it is to be seen."''')
 
-new("counterfeit_audience", "raid_dismissed", '''{n}You meet them on the stair: four of them, and a sergeant with a warrant in his fist. You tell him there has been a misunderstanding. You tell him the Commander's own friends were played a masque tonight, rather a good one, by an acquaintance of the Commander's, that a lieutenant had a fright, and that you will answer personally for anything else he cares to ask about in the morning.{/n}
+new("counterfeit_audience", "raid_dismissed", '''{n}You meet them on the stair: four of them, and a sergeant with a warrant in his fist. You tell him there has been a misunderstanding. You tell the sergeant the Commander's own friends were played a masque tonight, rather a good one, by an acquaintance of the Commander's, that a lieutenant had a fright, and that you will answer personally for anything more the sergeant cares to ask about in the morning.{/n}
 {n}The sergeant looks past you up the stair, at the light and the laughter beginning again. He looks at you. He goes.{/n}
 "You lied to your own Inquisition for me," {n}Jerribeth says.{/n} "To their faces. I have never been so flattered."''')
 
@@ -1124,7 +1124,7 @@ new("farewell", "traitor_given", '''"Mine? Oh, Commander."
 "He is quite safe, and in very good company; you have met some of it. Thank you. You give the most thoughtful presents."''')
 
 new("farewell", "traitor_fed", '''"Feed him lies? You want to do my work?"
-{n}You do it properly. Over the next days the dispatches on his desk acquire small, careful errors: a column that will not be where it is said to be, a bridge that is not held, an illness in the Commander's staff that does not exist. He copies them twice, as always. Somewhere in the Abyss somebody pays for them, and believes them.{/n}
+{n}You do it properly. Over the next days the dispatches on the clerk's desk acquire small, careful errors: a column that will not be where it is said to be, a bridge that is not held, an illness in the Commander's staff that does not exist. He copies them twice, as always. Somewhere in the Abyss somebody pays for them, and believes them.{/n}
 "Oh, that is elegant. That is my art in your hands, Commander. You have made a whole army see something that is not there. I have never been so jealous, or so pleased."''')
 
 new("farewell", "traitor_failed", '''{n}You try. But the errors you plant are too clean, or too many, and the clerk is better at his trade than you thought. Within two days his desk is empty. He is gone, and so is the last true dispatch he copied.{/n}
@@ -1154,8 +1154,7 @@ new("farewell", "discovery_dead", '''"Marhevok is dead. You knew that. You wante
     (0, '"Take it, then."'),
     (1, '"You enjoy that too much. We are finished."'))
 
-new("farewell", "discovery_distant", '''"Marhevok is in his pot in the Sanctum, where I left him when I lost my body. He cannot hear me from here. I tried. Last night, with your name: I said it over and over, as loudly as I can say anything, toward where he is."
-"I do not know whether it reached him. I hope it did. I hope he is turning toward the sound right now, and cannot find it."
+new("farewell", "discovery_distant", '''"Marhevok is in his pot in the Sanctum, where I left him when I lost my body. He cannot hear me from here. I tried. Last night, with your name: I said it over and over, as loudly as I can say anything, toward where he is. I do not know whether it reached him. I hope it did. I hope he is turning toward the sound right now, and cannot find it."
 "You asked me to keep it quiet. I did not even try."''',
     (0, '"Then I hope he heard."'),
     (1, '"You did that to hurt me. We are finished."'))
