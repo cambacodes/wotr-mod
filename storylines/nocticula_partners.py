@@ -292,6 +292,8 @@ def integrate(payload):
     # R2: the existing arrangement is heard before the first physical approach.
     # The commitment wrappers below reuse its receipt rather than charging twice.
     for s in payload["Scenes"]:
+        if ".acquired." in s["Id"]:
+            continue  # N1 frozen baseline, restored below
         donor = s["Id"].split(".acquired.")[0]
         if donor == "noct.unlit_quay":
             wrap_commit(s, "offer", 1)
@@ -308,6 +310,8 @@ def integrate(payload):
                 wrap_commit(s, "ambition", i)
 
     for s in list(payload["Scenes"]):
+        if ".acquired." in s["Id"]:
+            continue  # do not re-match or re-voice frozen clones
         if s["Id"] == "noct.second_door" or s["Id"].startswith("noct.second_door.acquired."):
             for i in range(3):
                 wrap_commit(s, "future", i)
@@ -399,6 +403,14 @@ def integrate(payload):
     # Acquisition has its own open-route guard; a closed parent road cannot
     # suppress an independently earned correspondence coda. No shared entry changes.
     add_acquisition_coda(payload, lastcall_partners, partner)
+
+    from storylines.nocticula_acquired_harbor import frozen_integrated
+    frozen = {s["Id"]: s for s in frozen_integrated()}
+    for i, s in enumerate(payload["Scenes"]):
+        if s["Id"] in frozen:
+            payload["Scenes"][i] = frozen[s["Id"]]
+    from storylines.nocticula_n1 import finish_partners
+    finish_partners(payload)
 
 
 def node(scene_, key):
@@ -613,6 +625,7 @@ def add_acquisition_coda(payload, lastcall, partner):
 
 
 def harbor_receipts():
+    from storylines.nocticula_n1 import placeholder
     return [
         p("{n}They named conflicts before turning them into bargains. Nocticula brought the next offer against one of the Commander's lovers to the quay herself. She watched the answer closely, then tore up the buyer's copy.{/n}", requires=("noct.conflicts_named",)),
         p("{n}The room stayed private. Nocticula sent back a broker's question about another lover unopened, with one cut made through its seal. The Commander's other rooms remained beyond that door.{/n}", requires=("noct.privacy_named",)),
@@ -621,6 +634,11 @@ def harbor_receipts():
         p("{n}The allotted crossings were spent. Nocticula kept the final token beside the chart, and made the next petitioner explain why she should spend another.{/n}", requires=("noct.door_limited", "noct.chart_limited")),
         p("{n}The attendants received their canceled entries. Nocticula retained the purchased guarantor's signature; the next collector found her name where he had expected a frightened servant's.{/n}", requires=("noct.lodge_debt_purchased",)),
         p("{n}Tazren kept his original claim. Nocticula paid for the names of anyone still willing to buy it, and sent each buyer the published denial before asking how much he had lost.{/n}", requires=("noct.lodge_debt_denied",)),
-        p("{n}Nocticula kept the lodge's guest list and position. The old attendants left with their possessions; a new chamberlain answered the door in her name.{/n}", requires=("noct.lodge_kept_house",)),
+        p("{n}Nocticula kept the lodge's guest list and position. The old attendants left with their possessions; a new chamberlain answered the door in her name.{/n}", requires=("noct.lodge_kept_house",), forbids=("noct.lodge_given_rhez",)),
         p("{n}The lodge stayed closed. Nocticula sent away an offer to reopen its hunting rooms, then brought the letter to the quay to complain about the profit the Commander had denied her.{/n}", requires=("noct.lodge_closed_house",)),
-    ]
+    ] + [p(placeholder("noct.harbor_receipts"), requires=("noct." + flag,))
+         for flag in ("orren_hand_taken", "orren_lamp", "orren_given", "orren_run",
+                      "captain_sold", "threat_sent", "returned_sold", "returned_harem",
+                      "returned_released", "ilvara_executed", "sentence_overruled",
+                      "quarry_istrava", "quarry_suth", "quarry_guests", "lodge_given_rhez",
+                      "wager_lost", "laulieh_rewarded", "work_named")]
