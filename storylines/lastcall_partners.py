@@ -103,7 +103,7 @@ DEBTS = [
     dict(key="nocticula_summons", groups=[["arueshalae.trickster.cost.nocticula_debt"], ["arueshalae.trickster.cost.nocticula_favour"]],
          called_by=[called("arueshalae")], outlived=["trickster.lastcall.summons_outlived"],
          ledger_title="The Lady in Shadow: one summons, for a succubus",
-         ledger_text="I sent Arueshalae to her queen for a second opinion, and the queen sent her back on credit. One summons, once, at an hour of the Lady's choosing, or a favour in my own name. The Lady in Shadow does not forget a patient.",
+         ledger_text="I sent Arueshalae to her queen, and the queen sent her back on credit. One summons, once, at an hour of the Lady's choosing, or a favour in my own name. The Lady in Shadow does not forget a debt.",
          page_called="The Lady in Shadow called in her summons on a night in the first winter after Threshold, when the Commander was away. The black pearl at Arueshalae's throat went warm, and she went, as she had said she would. What the queen asked of her, and what she answered, she never told. She came back before dawn with the pearl gone cold and a flower of the Midnight Isles in her hair, and she left the window unlocked behind her, as she always did.",
          page_outlived="The debt had no one left to collect it. Arueshalae knew that, and for a week she said nothing to anyone. Then she went to the Commander anyway, and it was the first thing she ever did that she owed no one for."),
     # Elyanka (11 §2 R5): the Commander's body, sold to the Whispering Way at the wake, due at death. A live power: the
@@ -568,7 +568,7 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
 
 
 AU = "arueshalae.trickster."
-partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed", "Treatment, Continued",
+partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed", "Any Caress, Continued",
     '''Arueshalae was waiting in the Commander's rooms in Drezen when the news of Threshold came in.''',
     (
         # 2026-10-01 (device redesign, ruling 6): the redeemed and the fallen opening each read her positive state.
@@ -592,7 +592,7 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
         page_p('''She kept the arrangement to the letter: she came when she was hungry, and the door was open. Some months she was hungry more often than the arrangement strictly allowed, and the door was open then too.''', requires=(AU + "cost.open_door",)),
         page_p('''She renewed her vows at the altar rail every spring, and the Commander stood at the back with the second company and announced nothing at all, as promised.''', requires=(AU + "cost.no_staging",), forbids=("arueshalae.evil_recruited",)),
         page_p('''She served as chaplain until the second company was disbanded, and she never resigned; nobody had ever given her the chance, and she did not intend to take it now.''', requires=(AU + "cost.chaplain",), forbids=("arueshalae.evil_recruited",)),
-        page_p('''The Commander had promised her no more doctoring without her say, and she held {mf|him|her} to it by never once dying again, which she said was the only reliable way to keep a Trickster honest.''', requires=(AU + "cost.no_second_joke",)),
+        page_p('''The Commander had promised her nothing would be done to her again without her say, and she held {mf|him|her} to it by never once dying again, which she said was the only reliable way to keep a Trickster honest.''', requires=(AU + "cost.no_second_joke",)),
         page_p('''The Commander had once asked her for only the good days, and she had refused. She made the Commander pay for asking at the table: for a month {mf|he|she} ate at the far end, apart, while she was very polite about it, until she finally went and sat at that end too.''', requires=(AU + "cost.saint_only",)),
         page_p('''The world buried the Commander. Arueshalae sat through the funeral with her hands behind her back and did not cry, because she had taken the Commander's pulse that morning and knew exactly how the joke ended.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen, she was the one who took the first pulse, through the cuff, out of habit, and she held the wrist long after she had counted it.''', requires=(H2,)),
@@ -602,12 +602,12 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
     ), declined=AU + "declined", page_forbid_overrides={"arueshalae_dead": AU + "returned", "arueshalae.evil_dead": AU + "returned"},
     page_forbids=(AU + "ally", AU + "terms_refused", "arueshalae.evil_dead", "arueshalae.kicked_out", "arueshalae.kicked_out_evil"), page_commit_groups=[["arueshalae.committed"], [AU + "late_committed"]],
     deal=[[AU + "cost.nocticula_debt"], [AU + "cost.nocticula_favour"]],
-    call=call('''[Call in the second opinion] "Your Majesty, you sent her back on credit. Collect your summons tonight. I'll be here to be collected from."''',
+    call=call('''[Call in the summons] "Your Majesty, you sent her back on credit. Collect your summons tonight. I'll be here to be collected from."''',
         '''{n}A long way off, a black pearl on a string goes warm against a succubus's throat. She puts her hand over it and does not look at you, and does not take it away.{/n}''',
         (PILLAR_CHOICE, (PILLAR,), (), ("noct.dead",)),
         (PLAIN_CHOICE, (), ("noct.dead", "noct.defeated_not_dead"), ()),
         (PLAIN_CHOICE, ("trickster.lastcall.summons_outlived",), ("noct.dead",), ("noct.defeated_not_dead",))),
-    ledger=("Arueshalae: a patient under treatment", "Arueshalae is still my patient. A doctor who dies before the treatment is finished is no kind of doctor at all."))
+    ledger=("Arueshalae: seven minutes at a time", "Arueshalae counts the minutes on every scroll I buy her. If I die before the war is done, she will have counted them for nothing, and she has never once in her long life let anybody waste her time."))
 
 DL = "delamere.trickster."
 partner("delamere", "delamere", "delamere.committed", "delamere.closed", "First Frost",

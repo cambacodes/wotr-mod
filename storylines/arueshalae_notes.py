@@ -1,4 +1,4 @@
-"""Arueshalae, the last case notes: the list, the watcher watched, the ward she cannot learn but can spend, the
+"""Arueshalae, the last pages of her book: the list, the watcher watched, the ward she cannot learn but can spend, the
 chaplain's sermon, and the second chair (Trickster path; arueshalae.md F18). The glover and the fallen wager are retired
 by gating (2026-10-01; ids and indices kept).
 
@@ -59,10 +59,10 @@ hub(FORTY, "Number forty", 3, '"How\'s the list?"', [
         c("Continue", "forty")),
     a("forty", '''"And number forty." {n}She hesitates, and turns the page so you can't see it.{/n} "Number forty I'm not going to read to you. It's about you. It isn't what you're thinking; I checked, I was very careful. But I'm not ready to say it out loud."
 "No. I'm keeping that page. Don't look at me like that."''',
-        c('"Of course. Every patient\'s allowed one secret from their doctor."', "secret", flags=(FORTY,)),
-        c('[Straight-faced] "Absolutely not. Hand it over. Medical necessity."', "tease", flags=(FORTY,))),
+        c('"Of course. Everyone\'s allowed one secret."', "secret", flags=(FORTY,)),
+        c('[Straight-faced] "Absolutely not. Hand it over. Crusade business."', "tease", flags=(FORTY,))),
     a("secret", '''"One secret." {n}She folds the list up very small and tucks it inside her bodice, against her skin.{/n} "I've kept a great many secrets for other people, and sold some. This one isn't intelligence for anyone. It's mine." {n}She pats the place where the paper is.{/n} "Thank you. I'll tell you on number four hundred. Maybe."''', c()),
-    a("tease", '''{n}She snatches the list out of reach and holds it behind her back, laughing.{/n} "No! Absolutely not! Medical necessity, the doctor says." {n}She backs away, still laughing.{/n} "You'll hear number forty when I'm good and ready, doctor, and not a moment before. That's my prescription for you. It's called patience. You've never taken it."''', c()),
+    a("tease", '''{n}She snatches the list out of reach and holds it behind her back, laughing.{/n} "No! Absolutely not! Crusade business, the Commander says." {n}She backs away, still laughing.{/n} "I've had generals try to get papers off me, and princes, and one very determined balor. You'll hear number forty when I'm good and ready, and not a moment before. Learn some patience. You've never tried it."''', c()),
 ], (MEALTIMES, RX_WANT), delay=48, chapters=(3, 4, 5))
 
 
@@ -94,7 +94,7 @@ hub(TEACH, "The one trick", 5, '"Teach me how you do it."', [
         c('"Then I\'ll hold the hands you can\'t. You point, I hold."', "point", flags=(TEACH,)),
         c('[Take one of your own scrolls out of the case and put it in her hand] "Then buy it. This one\'s yours. Spend it on whoever you like."',
           "hers", flags=(TEACH, HER_BOX), requires=(WARD_HELD,), remove_item=SCROLL)),
-    a("need", '''{n}She stares at you, and then she hears the joke, and then the thing under it that you did not make a joke of.{/n} "You're jealous. Of the baker's girl. Of a pikeman with one leg." {n}Her mouth twists.{/n} "Lady Vellexia kept the good wine locked in a cabinet only she could open, so the guests would come back for it. Every one of them came back. I poured." {n}She looks at the scroll case on your belt.{/n} "And here's the doctor, keeping the only key in {mf|his|her} own satchel. I ought to hate that. Tender of Dreams forgive me, I'm going to come back for it every night."''', c()),
+    a("need", '''{n}She stares at you, and then she hears the joke, and then the thing under it that you did not make a joke of.{/n} "You're jealous. Of the baker's girl. Of a pikeman with one leg." {n}Her mouth twists.{/n} "Lady Vellexia kept the good wine locked in a cabinet only she could open, so the guests would come back for it. Every one of them came back. I poured." {n}She looks at the scroll case on your belt.{/n} "And here's the Commander, keeping the only key in {mf|his|her} own satchel. I ought to hate that. Tender of Dreams forgive me, I'm going to come back for it every night."''', c()),
     a("point", '''"I point, and you hold." {n}Her mouth twitches.{/n} "The Commander of the crusade, going round the field hospital holding the hands of everyone a succubus points at." {n}Then she stops smiling.{/n} "You'd do it, wouldn't you. You'd actually do it." {n}She takes a fold of your sleeve, and doesn't try anything, and just holds it.{/n} "All right. I'll point. Carefully."''', c()),
     a("hers", '''{n}She looks at the sealed scroll in her palm as if it were a live coal, or a ring.{/n} "Mine. To spend on whoever I like." {n}Her fingers close on it.{/n} "You know who it's going to be. You knew before you took it out."
 "The baker's girl. Tomorrow, before dawn. The shrine's chaplain will read it over her for me; he won't ask why, he'll only ask whether she's had breakfast. And for seven minutes I'll stand at the trough beside her and let her lean on me, and show her how to fold the dough with my hands on hers, and nothing will go out of her at all." {n}She tucks the scroll inside her bodice, against her skin, the way she keeps her list.{/n} "It's the most extravagant thing anyone has ever let me do. I'm going to remember this."''', c()),
@@ -161,11 +161,11 @@ hub(RAIN, "Nothing happening", 5, '"It\'s raining."', [
     a("start", '''"It is." {n}She says it with deep satisfaction. She is lying on her cot with her boots off and her wings spread across the blankets like a second cloak, watching the rain run down the shutters.{/n}
 "Number thirty-six. I want to be bored. And today there's no march, no council, no drill, the second company's confined to barracks, and it's raining." {n}She turns her head on the pillow to look at you.{/n} "I've been lying here for three hours doing nothing, and nobody wants anything, and I'm not hungry, and I'm not afraid. Is this it? Is this boredom?"''',
         c("Continue", "stay")),
-    a("stay", '''"It's wonderful." {n}She sounds almost frightened by how wonderful it is.{/n} "I keep expecting someone to call for me, and nobody does. In the Abyss, every moment is a move in a game. In the crusade, every moment is a war. This is the first moment that isn't anything." {n}She pats the edge of the cot.{/n} "Stay. Be bored with me. Doctor's orders. Mine, this time."''',
+    a("stay", '''"It's wonderful." {n}She sounds almost frightened by how wonderful it is.{/n} "I keep expecting someone to call for me, and nobody does. In the Abyss, every moment is a move in a game. In the crusade, every moment is a war. This is the first moment that isn't anything." {n}She pats the edge of the cot.{/n} "Stay. Be bored with me. That's an order. Mine, this time."''',
         c("[Lie down beside her and watch the rain.]", "lie", flags=(RAIN,)),
         c("[Sit on the floor with your back to the cot, and report on the rain.]", "floor", flags=(RAIN,))),
     nar("lie", '''{n}You lie beside her on top of the blankets, careful of her wings. The rain goes on. Somewhere a bell rings the hour, and then the next. She takes your hand through a fold of the blanket and holds it there.{/n}
-"This," {n}she says softly,{/n} "is the best thing I have ever been prescribed."''', c()),
+"This," {n}she says softly,{/n} "is number thirty-six. I'm crossing it off."''', c()),
     nar("floor", '''{n}You sit with your back against the cot and give the rain a staff officer's report: strength, advance, enemy intentions. She laughs into the pillow until she has to wipe her eyes. Then she lies quiet, watching the water run down the shutters.{/n}
 "No march," {n}she murmurs.{/n} "No one calling for me. I could get used to this."
 {n}You stay until the rain stops. She watches it with you.{/n}''', c()),

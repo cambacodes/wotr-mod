@@ -50,7 +50,7 @@ def integrate(payload):
     # A cat's ordinary claws cannot account for a succubus scar. Keep the old
     # scene/node/answer identities; the keepsake is now the played acceptance.
     sid = T + 'the_cat'
-    node(sid, 'science')['Choices'][1]['Text'] = '"Let me examine this famous hand, then."'
+    node(sid, 'science')['Choices'][1]['Text'] = '"Let me see this famous hand, then."'
     sid = T + 'the_scar'
     scenes[sid]['Title'] = 'The empty hand'
     node(sid, 'start')['Text'] = ('{n}She offers her hand, back uppermost. It is unmarked.{/n} '
@@ -78,7 +78,7 @@ def integrate(payload):
     for sid in (T + 'teach_me', T + 'the_second_chair'):
         scenes[sid]['Forbids'] = [key for key in scenes[sid]['Forbids'] if not key.startswith('vellexia.')]
 
-    # Shared treatment language exists only in histories that undertook intake.
+    # The tower's daybook passage exists only in histories that undertook the open hand (intake).
     sid = T + 'morning'
     scenes[sid]['Entry'] = '"Good morning."'
     start = node(sid, 'start')
@@ -88,7 +88,7 @@ def integrate(payload):
         'one wing resting over your wrapped shoulders. She catches you looking and smiles without looking away.{/n} '
         '"I am keeping this until we go down. You can explain it at council."')
     start['Choices'].append(c('Continue', 'ordinary', forbids=(INTAKE,)))
-    # Clinical comedy is retained as an appended intake-specific passage, so
+    # Her daybook passage is retained as an appended intake-specific passage, so
     # untreated released/chaplain lovers never acquire somebody else's daybook.
     for answer in start['Choices'][:2]:
         old = answer['Next']
@@ -170,8 +170,8 @@ def integrate(payload):
         *old_answers)
     # Retry lines cannot invent a witnessed week of repeated wards.
     node(T + 'rite_slipped', 'vow')['Text'] = ('"On the road." {n}She stays in the far corner.{/n} '
-        '"Then a week apart before we try again. And when we do, awake, with the ward read. '
-        'I want to hear the seal break before you reach for me."')
+        '"Desnans don\'t swear on the road lightly; travellers die on it. Then a week apart, and I\'ll count it. '
+        'When it\'s done I\'ll come to you, not the other way round, and I\'ll be hungry, and you\'ll be warded."')
 
     # First-quarrel disclosure is collected by later paid contact, without a
     # new fee/gate. The seal/price is stated before either reading is chosen.
@@ -208,12 +208,14 @@ def integrate(payload):
         add(sid, sid + '.explicit.1', text,
             c('Continue', dest), speaker='Narrator')
 
-    # Fallen recruit first negotiation: the quack joke is newly proposed;
-    # research and daybook callbacks require their actual separate histories.
+    # Fallen recruit first negotiation (arue12: no physician, no fee); research
+    # and daybook callbacks require their actual separate histories.
     sid = P + 'fallen.house_call'
     start = node(sid, 'start')
     start['Text'] = ('{n}She lets you count through the silk cuff, laughing softly.{/n} '
-        '"A physician? For me? Look at the earnest face. You will have to work hard at keeping that face when I name my fee."')
+        '"Counting? There\'s nothing in there worth counting, darling. Look at the earnest face." '
+        '{n}She leans in until her mouth is at your ear.{/n} "I worship one god now, and she\'s standing right here, and she\'s starving. '
+        'Keep that face. I want to watch it when I tell you what I eat."')
     guard(start['Choices'][0], 'Requires', T + 'studied', INTAKE)
     # Existing untreated alternative stays at index 1, now complementary to
     # all treatment fragments, not just one coarse derived key.
@@ -229,11 +231,7 @@ def integrate(payload):
     node(sid, 'candles')['Text'] = ('"The shrine books. Your sums in the margin. My careful notes." '
         '{n}She hooks a nail in your cuff.{/n} "I burned the daybook. I read the pages as they caught. '
         'I remember wanting you. I am less afraid of admitting it now."')
-    # Legacy charred cat page retains no unearned pet recollection.
-    sid = P + 'evil.daybook'
-    for twin in (sid, sid + '_yard'):
-        book = node(twin, 'book')
-        book['Text'] = book['Text'].replace("It says 'the cat'. I don't know why I kept it. There was a cat. It slept on my hand.", 'I kept a corner. Do not ask me why.')
+    # arue12: the charred corner is burned in front of the Commander (base text); no kept regret.
 
     # Endings: no paid ward after release, no invented abstinence or absolution.
     for sid in (T + 'epilogue.together', T + 'epilogue.freed', P + 'epilogue.kept'):
@@ -242,8 +240,6 @@ def integrate(payload):
             '{n}Once her nature changed, she kept her cottage away from the settlements. The Commander visited, '
             'and she sometimes came to Drezen, carrying her own bag and expecting supper. She went home again when she wished.{/n}', requires=(CHANGED,)))
     page = node(T + 'epilogue.together', 'page')
-    for par in page.get('Paragraphs', []):
-        par['Text'] = par['Text'].replace('that was the first dream she was certain was hers', 'she had wanted to make that journey herself')
     page['Paragraphs'] += [
         p('{n}When another scroll was wanted, its price was spoken before the seal broke. She still sometimes refused. '
           'The Commander waited with the case shut until she changed her mind.{/n}', requires=(promise_read,), forbids=(CHANGED,)),
@@ -277,7 +273,7 @@ def integrate(payload):
     for par in page.get('Paragraphs', []):
         if 'daybook' in par['Text']:
             guard(par, 'Requires', INTAKE)
-            par['Text'] = '{n}She kept her treatment daybook. The unfinished question did not stop her writing the next page.{/n}'
+            par['Text'] = '{n}She kept her daybook. The unfinished question did not stop her writing the next page.{/n}'
     page['Paragraphs'] += [
         p('{n}When asked for only the parts of her that prayed, she had refused. She did not take back that refusal merely because the war ended.{/n}', requires=(P + 'cost.saint_only',)),
         p('{n}She had asked first. The Commander had asked for time. She left the next question to {mf|him|her}, and went on with her life.{/n}',

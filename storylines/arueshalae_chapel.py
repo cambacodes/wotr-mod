@@ -66,7 +66,7 @@ hub(CENSER, "Which end of the censer", 3, '"How is the shrine, Chaplain?"', [
 "He slept that night. The first whole night in months. He came back to tell me. And I've been wondering ever since whether that's a blessing, or whether I just fed on him in a new way."''',
         c('"It\'s a blessing. You gave him something and took nothing."', "blessing", flags=(CENSER,)),
         c('"Maybe both. Maybe that\'s what chaplains do."', "both", flags=(CENSER,))),
-    a("blessing", '''"Gave and took nothing." {n}She turns it over, testing it the way she tests your prescriptions for the trick.{/n} "He came back smiling. He slept because I spoke to him, and I didn't take anything for it. I keep wondering how that can be enough." {n}She almost smiles.{/n} "Don't tell the Iomedaeans. They'll want me to do the sermons."''', c()),
+    a("blessing", '''"Gave and took nothing." {n}She turns it over, testing it the way she tests your jokes for the hook.{/n} "He came back smiling. He slept because I spoke to him, and I didn't take anything for it. I keep wondering how that can be enough." {n}She almost smiles.{/n} "Don't tell the Iomedaeans. They'll want me to do the sermons."''', c()),
     a("both", '''{n}She laughs, startled.{/n} "That's what the acolyte said. The one with the cloak. He said all chaplains live on other people's sins; it's only a question of what you do with them afterwards." {n}She looks at the soot on her knuckle.{/n} "I'm going to learn which end of the censer is which. And then I'm going to do this properly."''', c()),
 ], (CHAPLAIN,), delay=24, chapters=(3, 5))
 
@@ -88,12 +88,12 @@ hub(COMPLAINT, "A formal complaint", 3, '"I hear you\'ve been sent for."', [
 {n}She holds herself very straight.{/n} "He's right. By every rule he knows, he's right. So I've come to resign. You appointed me out loud; you can dismiss me out loud. Say it and I'll hand back the censer."''',
         c('"Tell him you\'re the only chaplain who knows exactly what she\'s blessing them against."', "against",
           flags=(COMPLAINT, STAYS_CHAPLAIN)),
-        c('"If you want to go, go. It was always your choice."', "choice", flags=(COMPLAINT,))),
+        c('"Hand it back, then. I\'ll find somebody who\'s less trouble."', "choice", flags=(COMPLAINT,))),
     a("against", '''{n}Her mouth falls open. Then she laughs, and it is not the startled laugh; it is something rougher and prouder.{/n}
 "The only chaplain who knows exactly what she's blessing them against." {n}She says it again, slowly, to keep it.{/n} "I'm going to write that on the vestry door. He's going to see it every morning." {n}She hesitates.{/n} "You know he'll only write again."
 "Let him," {n}you tell her.{/n} "I'll give him a seat in the front pew for your first sermon."''', c()),
     a("choice", '''{n}She stands there, holding the censer she brought to hand back.{/n}
-"It was always my choice." {n}She sets the censer down on your table, and then, slowly, picks it up again.{/n} "Then I choose to keep it. Not because you said so. Because the second company asked me to bless their swords before the march, and I said yes, and I'm not going to go back on a yes." {n}She turns at the door.{/n} "Tell the chapter-master I'll pray for him. He'll hate that."''', c(flags=(STAYS_CHAPLAIN,))),
+"Less trouble." {n}She sets the censer down on your table, and then, slowly, picks it up again, and her smile has teeth in it.{/n} "You'll find somebody who's less use. Do you know what he's afraid of, your chapter-master? Not me. What I know about the men he blesses." {n}She tucks the censer under her arm.{/n} "I'm keeping it. The second company asked me to bless their swords before the march, and I said yes, and I don't go back on a yes. Tell him I'll pray for him. He'll hate that."''', c(flags=(STAYS_CHAPLAIN,))),
 ], (CHAPLAIN,), delay=48, chapters=(3, 5))
 
 
@@ -148,12 +148,12 @@ tavern(DAYBOOK, "The daybook", '"You kept something of hers?"', [
     a("start", '''"Hers?" {n}She laughs.{/n} "Mine. I'm not someone else, darling. I'm the same succubus with the same memories. I just stopped pretending I didn't like the taste." {n}She reaches into her bodice and takes out a small burnt thing: the charred corner of a clerk's daybook, the kind bought off a Drezen stationer.{/n}''',
         c("Continue", "book", requires=("arueshalae.treatment.rx_watch",)),
         c("Continue", "feather", forbids=("arueshalae.treatment.rx_watch",))),
-    a("book", '"\'Watch people eat. Three times a day.\' Your prescription. I burned it the night I left. I burned it page by page, in the Worldwound, and I read every page before it went in." {n}She turns the charred corner over.{/n}\n"And I kept this bit. It says \'the cat\'. I don\'t know why I kept it. There was a cat. It slept on my hand." {n}Her face does something complicated.{/n} "Don\'t. Don\'t look at me like that, like a doctor. I\'m not your patient any more. I\'m cured."',
+    a("book", '"\'Watch people eat. Three times a day.\' Your little dare. I burned the book the night I left, page by page, in the Worldwound, and I read every page before it went in. All those careful notes about how mortals pass the bread." {n}She turns the charred corner over.{/n}\n"And I kept this bit back. To burn in front of you." {n}She holds it to the candle and lets it catch, and watches your face, not the flame, while it goes.{/n} "Don\'t look at me like that, as if I\'d lost something. I\'m the one who\'s finally eating."',
         c("Continue", "end")),
-    a("feather", '''"No, you're right, it's not a book. It's nothing. A page of prayers to a goddess who lied to me." {n}She holds it to the candle, and does not quite let it catch.{/n}
+    a("feather", '''"No, you're right, it's not a book. It's nothing. A page of prayers to a goddess who lied to me." {n}She holds it to the candle, and lets it catch.{/n}
 "I read them sometimes. To laugh. 'And what do you dream of?' She asked me that. As if a demon dreams. As if I'd ever want anything as soft as a dream when I can have what I want, when I want it."''',
         c("Continue", "end")),
-    a("end", '''{n}She puts it away again, very carefully, next to her skin.{/n} "Buy me another drink, and don't ask me anything else tonight. You have a way of asking things that makes me answer, and I don't like it." {n}A thin smile.{/n} "Ask me again and I'll find somebody less tedious to drink with."''',
+    a("end", '''{n}She drops the last burning scrap into your cup and watches the ash go round.{/n} "Drink that. Then buy me another, and don't ask me anything else tonight. You have a way of asking things that makes me answer, and I don't like it." {n}A thin smile.{/n} "Ask me again and I'll find somebody less tedious to drink with."''',
         c("[Buy her another drink.]", flags=(DAYBOOK,))),
 ], (), delay=24)
 
