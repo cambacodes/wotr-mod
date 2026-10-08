@@ -139,4 +139,21 @@ should wait for the coordinator to settle that count.
 
 ## 6. Validation
 
-See the commit message of the branch head for the final numbers (filled from the runs below).
+- Build: `python expansion.py` cannot run here (no `blueprints.zip`). Stubbed full build (only the zip readers stubbed:
+  `native_facts.verify`, `tools.native_fact_inventory.verify_inventory`, `native_overrides.finalize`,
+  `crossroute_checks.other_woman.native_participation_contexts`) of untouched origin/main 723ccae reproduces main's
+  committed export scene for scene (only `NativeOverrides` differs, zip-derived, carried from main).
+- Branch export = branch stubbed build, `NativeOverrides` and `targona.lastcall.page` (RequiresAnyGroups member order,
+  run to run) carried from main. Diff vs main: 32 scenes, all listed in this review; checked structurally: every
+  non-text field identical, existing paragraphs identical in order and gates, new paragraphs only appended.
+- savecompat 0, payoff_lint 0, prose_pending_lint (integration) 0, claude_work_queue_lint 0 (22 + 22 Camellia entries
+  removed; none left), player_text_lint 4 = main 4, text_structure_lint 2 = main 2, voice_lock_lint: changed-lock set
+  = main's + `camellia.trickster.epilogue.kept/commit/refused` (approvals proposed in voice-approvals.proposed.json, with
+  29 proposed new locks for the unlocked scenes this pass wrote), slot_brief_lint --strict: 346 briefs, 213 hard, 184
+  warnings before and after (all Camellia findings pre-existing: schema/last_line on the 21 inserted slots, the blocked
+  Vellexia host). edge_lint camellia/trickster business:menace 0.062 -> 0.050 (business 35 -> 29, menace 569 -> 584);
+  locked-text regressions = main's + kept and refused (the approvals above).
+- Unit tests (stubbed, RRT_TEST_STORY = the export), 15 modules (camellia_round2, harem rows s11/s12/s25/s27/s35/s42,
+  j02, j03, smoothing, nurah_round2, payoff_departure_contracts, edge_lint, slot_brief_lint, voice_lock_lint): 143 run,
+  3 failures + 5 errors, identical by name on main's export: s25/s27/s35/s42 read `blueprints.zip`; camellia_round2
+  expects 21 Camellia briefs (23 on main); nurah_round2 slots, j02/j03 contract checks fail on main too. C# tests not run.
