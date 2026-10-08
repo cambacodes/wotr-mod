@@ -1,0 +1,223 @@
+{
+  "route": "villain-route-shamira",
+  "branch": "cloud/villain-route-shamira",
+  "note": "Proposed only; the coordinator applies approvals and lock enrollment. No shamira scene was locked at base.",
+  "scenes": {
+    "shamira.trickster.ch4.read": {
+      "before_text_sha": "2a72232405717f790e0b5dee12ab9c782e65e9e3687b399a06b396100002d0e8",
+      "after_text_sha": "ab727d15ac3ab9b6ea90f9a05fc0e6773c298746cedb069c60a626ef4608665e",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.killed.voice_letter": {
+      "before_text_sha": "78a8c03b65c582fe295a668c8fd98144103b4fb4991f8e07572d9dfa58e9c65e",
+      "after_text_sha": "56fd669868af374731024ea9769ef023ff569cdd336866470a8d68d7b5ec8f05",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.killed.drowning": {
+      "before_text_sha": "7dfda103f95fd921b855a677f05b212b7f88c52ea7947693f00693e1ad8fc352",
+      "after_text_sha": "901fb3e002e533b5d3dce49f79fa106a791a8dbb7c5bb62e3cb20f1767e9d178",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.kept": {
+      "before_text_sha": "f0cd9a672204ce079cc974b14651763c9671ab494e36983b965e4803a1286ba7",
+      "after_text_sha": "11b550bb63297413a9764932ca1845f9c70ad42080c7a62fa1867f47df6e64bc",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.late": {
+      "before_text_sha": "93bfaf065dd1f6a551af15ff91763ee534818da99753531efa82b81687943b06",
+      "after_text_sha": "2a05be229e4d4f14bef324a223cddb5e22aded836ad6ff9dbdcc0739ba43ba4f",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.ally": {
+      "before_text_sha": "63605f2d06c38aeb9c2121490815c48de7139d7e9eb408477aecc0acaf3adc12",
+      "after_text_sha": "64d67db4179b87e461c36901d8d2cdb03a6cfc3fe05b308d29560681735f8afa",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.closed_door": {
+      "before_text_sha": "a865ea0cf2f41a3de37b0e25d7bc027a673a0c496be5ad90468247b344675f4f",
+      "after_text_sha": "4009176da8404ea09ee813cf641aad8948e193402d22faefa766a27cf0f141c7",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.captive": {
+      "before_text_sha": "2a94a2c0c70b5e4897a2d6af964b31845b6acfa36cdb0a795fb1b62c5e6be26c",
+      "after_text_sha": "46eca8ba48fceec873351ecd41fdd4541385fd2a68ba7b4a16c315811a93b0dd",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.cast_out": {
+      "before_text_sha": "9ac41fbe2d7421155e1068f700925be40fe512d3ebb0956e77018c8921e628b4",
+      "after_text_sha": "37922743e94a0d0a194eff429c319c5ac2a67944fd231133dc92436223aaaafe",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.drowned": {
+      "before_text_sha": "62de9154d65043f861fa10db74c747344f041831afc889b2c6acf0363cad8684",
+      "after_text_sha": "453d01eb90b419c7f17417d1d198d4f009ad80992f2d063e583a08d182a0d9e8",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.never": {
+      "before_text_sha": "3a33984a9f0b8814be0ec7fda0ba7fadaa72a7ee118d93c1ddbda099d2a38a65",
+      "after_text_sha": "af35cf01b124a4e81ed17c7c19326a27367d3075d6ae2d5720f01d41516036a6",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.walked": {
+      "before_text_sha": "f8d12b1abf0f6c8f9015087f97952f2bdf7903431569f58208feb8cc87925c1d",
+      "after_text_sha": "4a42a6d97b437afe3cd02ef48da7e8850218855c71f26710be173fffad7b0758",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.unhoused": {
+      "before_text_sha": "030f291a5ecc202b7e83f161e04c66f277b5f816e371416dc327b65b6b8d3dcb",
+      "after_text_sha": "368570d23d3881dca6792d174d45a0f981639871f7927508b445aa024af05068",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.mourned": {
+      "before_text_sha": "4f9c13cae8e2ba89a0bdcefb4f524adfb1ad597e7518ad66a565673deb005c63",
+      "after_text_sha": "44097f0de09eb625df56e3881e2c05eeb683f635874896768c4b0d04c25e4a71",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.mind.first_night": {
+      "before_text_sha": "1c73be3ddb70d835648b404ebcbbc6191137a7e583458c54b6e008f8cf637dab",
+      "after_text_sha": "91c4e0f352ec5f58c52dd1b87a544b99fa3b6cc75f7ef34bd75f749c289a1ad9",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.mind.dream": {
+      "before_text_sha": "bb28b542d9e6a0209c7b586f28dcac9f2f0b8109d03c4040592a10ad28b3cbe2",
+      "after_text_sha": "81d3b0520b62217e94007217c62ed8cd1ab425f5f789c2dc445c4e92b247cbb6",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.mind.fuel": {
+      "before_text_sha": "01b2d2ee96abdf5f85ad3d6113997a41a9287584b5f5963271d25b7d40009af8",
+      "after_text_sha": "1e3237fbb27dde9d5810483448afda5dc88f541264932b3147ae39ca95668296",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.mind.waking": {
+      "before_text_sha": "f52c8dd9dfd8ecf2ca38e194d1969ff5e951f70909341c278f4972408a955f2a",
+      "after_text_sha": "7181778605369b9d86688f5fdbd8f798e0873326e2a04d7a7d2279803d3fe009",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.first_company": {
+      "before_text_sha": "9d1d4b7bf68417699942d1833d2e43b2bc1c7508ee7813fc056791ede827751b",
+      "after_text_sha": "be2da399c9c356a66b10bcbb8192eee92458ab0a3da8a6803666ca8d0d4b049c",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.city": {
+      "before_text_sha": "e747a421e95e70f241e6983c4e8cf9fb6c9aaef8d599cb7fb0a3e2a7fa3f51b0",
+      "after_text_sha": "5f990379fa4306d6d934f76d482f497ea8c79d8c5be7487a63d0f1857680f450",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.city_awning": {
+      "before_text_sha": "65bdb931b9389266cceca1b93e0f2915364213570f993734205d5fd024acf2f3",
+      "after_text_sha": "3bdb399c1777dc42486b536d76b42a9ac5cf7f98a80e38ee81e8037b772d1c8a",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.visit": {
+      "before_text_sha": "97a854239e8e90e30b1a66b70259798ec2e87fa898bd73a4b65c8b847bbac79e",
+      "after_text_sha": "46a686620921aa84edadabf0892ae8ac33315828c56f5f8d64ecd5d8ef08f9ba",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.visit_awning": {
+      "before_text_sha": "1a989011ee3c5d060af1ec8e9506bc965ca4e68cce4eaba9c9018fe9d24bf3f9",
+      "after_text_sha": "bd2061720cf47a892425ada0f4d06bfd32a92c7961c194d2e939c26de7e5db7a",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.harem": {
+      "before_text_sha": "c167fc73193ffee5f020d25b6385946971f7138c7302705d909b3c62548f0170",
+      "after_text_sha": "a4684cc1298301d54feb4286abac524bcead3dd570815435985e5909a21689cd",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.harem_awning": {
+      "before_text_sha": "a6732c66c0f3fcce98d6654e51a560aeb57e8010c88b392109f6bddd1dc57e4d",
+      "after_text_sha": "dbb8d681b12cb931b493cd44e17d999eed12b496b23d3f867a04affe54ae19c3",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.night_alone": {
+      "before_text_sha": "aa7e3eff7cf8d5a3852a5aa2329b30b455c5078f721a69ed48b0293b562e5837",
+      "after_text_sha": "a295a5394cc4a31639eeb477967fd77ef60808d9b89e4fddce91c1d568da6402",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.after.night_alone_awning": {
+      "before_text_sha": "aa7e3eff7cf8d5a3852a5aa2329b30b455c5078f721a69ed48b0293b562e5837",
+      "after_text_sha": "a295a5394cc4a31639eeb477967fd77ef60808d9b89e4fddce91c1d568da6402",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.mind.barracks_inquiry": {
+      "before_text_sha": "a8058192c2be67ca50cac1326033d3990aaca5e63a206ca9a95cfb61839535de",
+      "after_text_sha": "0a8d136192ddd8bf0e95d58bd9c5853ba7f5f820d8475cf9861f302043732b4c",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.trickster.epilogue.invited": {
+      "before_text_sha": "c1a40e4c8aa17572a88e17920c08f04da74507e6be4e979fa6be654b0f349ac3",
+      "after_text_sha": "58b8ddc3acc89c259d355d902146fd0a05052c3c1a19c34d401811cf85d53341",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "shamira.lastcall.page": {
+      "before_text_sha": "755cac94b704b408504ff0d2c9e3dc8b25fdea0408c73fc25eeb7061839c4f0d",
+      "after_text_sha": "df5fbe62f750a9851473511470dd4a2142e8fda95b94d3f248935a81e34b44f3",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "household.pair.vellexia_shamira.settle": {
+      "before_text_sha": "bf5f6c099312059f0bda063e81c22029da1cea484c9611fad1632303ecc988c7",
+      "after_text_sha": "13a31ac8f5413c5a5d247138a2560bf2acc15a8970eb03286b1a00d1a7fd417b",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "household.pair.vellexia_shamira.retry": {
+      "before_text_sha": "0fe05eea37925aef4ba368b5e955161274d5825cc866fd32ac22e68f95eaf890",
+      "after_text_sha": "fa4c19f0b3739900c2c6db8eb88bfba5e188b853214cd3874f16f0d4a6eece0d",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "household.pair.shamira_arueshalae.settle.good": {
+      "before_text_sha": "98e3320de75295406feac4b038e46539732231a6db1891b817248e780c69f173",
+      "after_text_sha": "0b63433f31661db6f89636fbd8dbcfe32c2916f426e98eebe50385a8c1dd1a28",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "household.pair.shamira_arueshalae.settle.evil": {
+      "before_text_sha": "74c6fcf60e1158f5b81d03ab61545c2ace2cd4d18b1d094ba370ba6e4c3b2ce6",
+      "after_text_sha": "72edc21b252e47030e24411bbdbd558d4503bd3fe1ec622f1b3c622ab4b4f46b",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "household.pair.shamira_arueshalae.retry.good": {
+      "before_text_sha": "70556c139e3992767ab1060495847232662ca87dafafc71f56d9611ddaed1d1d",
+      "after_text_sha": "f6bff218ed7950700eb5dd836fdd6e1976168533e1c8294c83cfb9c2ada55f91",
+      "currently_locked": false,
+      "proposal": "enroll"
+    },
+    "household.pair.shamira_arueshalae.retry.evil": {
+      "before_text_sha": "a7cf1fe6517b27dc8db0ebcb4448aebbb7f88b2a66356c5f560115d8c6e85372",
+      "after_text_sha": "1f412c574957705049ea367ab8c2bc2bb5adb0def249c777e45aa23b9d677ff4",
+      "currently_locked": false,
+      "proposal": "enroll"
+    }
+  }
+}

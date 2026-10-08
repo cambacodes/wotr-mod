@@ -587,6 +587,9 @@ def integrate(payload):
     shamira_partner.integrate(payload)
     from storylines import shamira_round2
     shamira_round2.integrate(payload)
+    # villain-route-shamira cloud pass: text and read-only paragraphs, last.
+    from storylines import shamira_cloud
+    shamira_cloud.integrate(payload)
     # Her presence (the King's corner table, or the awning); the native keys read here bind on demand.
     for key, value in PRESENCES.items():
         have = payload.setdefault("Presences", {}).get(key)
