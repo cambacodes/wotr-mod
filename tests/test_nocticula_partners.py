@@ -58,11 +58,17 @@ class NocticulaPartnerTests(unittest.TestCase):
                     # R2 fill nodes splice the heated cut before the old
                     # aftermath. The saved answer index survives; its effects
                     # and old destination remain on the matching continuation.
-                    if ".explicit." in (current.get("Next") or ""):
+                    if ".explicit." in (current.get("Next") or "") and previous.get("Next") != current.get("Next"):
                         fill = next(n for n in new["Nodes"] if n["Id"] == current["Next"])
                         if len(fill["Choices"]) == 1 and ".aftermath." in (fill["Choices"][0].get("Next") or ""):
                             fill = next(n for n in new["Nodes"] if n["Id"] == fill["Choices"][0]["Next"])
                         current = fill["Choices"][a["Choices"].index(previous)]
+                    # N1 splices the marked aftermath before the old morning.
+                    if old["Id"] == "noct.her_own_face" and a["Id"] == "night":
+                        self.assertEqual(current["Next"], "mark")
+                        current = dict(current, Next="morning")
+                    if old["Id"] == "noct.second_door" and current.get("Next") == "waking":
+                        current = dict(current, Next=None)
                     for key in ("Next", "Set", "Abort", "Check", "NativeNext"):
                         self.assertEqual(previous.get(key), current.get(key), (old["Id"], a["Id"], key))
 
@@ -156,7 +162,8 @@ class NocticulaPartnerTests(unittest.TestCase):
             self.assertTrue(any(partner.EXPOSED in p["Requires"] for p in living))
 
     def test_compiled_terms_never_require_shamiras_physical_availability(self):
-        payload = json.loads((Path(__file__).resolve().parents[1] / "development" / "Story.json").read_text(encoding="utf-8"))
+        from tests.story_fixture import fresh_story
+        payload = fresh_story()
         for scene in payload["Scenes"]:
             if scene["Id"] not in ("noct.second_door", "noct.acq.an_answer_of_her_own",
                                    "nocticula.trickster.defeated.chair", "nocticula.trickster.partner_terms.threshold"):
@@ -165,7 +172,8 @@ class NocticulaPartnerTests(unittest.TestCase):
                 self.assertFalse(any(f.startswith("crossroute.shamira.") for f in item["Requires"] + item["Forbids"]), scene["Id"])
 
     def test_compiled_ending_families_keep_stance_and_current_fate(self):
-        payload = json.loads((Path(__file__).resolve().parents[1] / "development" / "Story.json").read_text(encoding="utf-8"))
+        from tests.story_fixture import fresh_story
+        payload = fresh_story()
         covered = set()
         for scene in payload["Scenes"]:
             if (scene.get("Relationship") not in ("nocticula", "nocticula.acquisition")

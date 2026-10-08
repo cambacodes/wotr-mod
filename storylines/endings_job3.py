@@ -272,6 +272,9 @@ def wenduag(payload, scenes):
                     block['Text'] = '{n}Lann remained with the company. His nights with Wenduag in Neathholm belonged to their old life; serving beside her had promised no return to her bed.{/n}'
     payload['Derived']['wenduag.partner.no_exclusive_claim'] = [['trickster.ever']]
     payload.setdefault('DerivedForbids', {})['wenduag.partner.no_exclusive_claim'] = [stance.EXCLUSIVE]
+    # villain-route-wenduag (cloud): late text-only layer; keep it last for her text.
+    from storylines import wenduag_cloud
+    wenduag_cloud.integrate(payload)
 
 
 def aranka(payload, scenes):

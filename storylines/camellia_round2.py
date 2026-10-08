@@ -560,6 +560,9 @@ def _slots(scenes):
         spec = brief.get("insertion")
         if not spec:
             continue  # tracker brief (Gemory) still waiting for its structure hook
+        if "insertion" not in brief:
+            continue  # opportunity brief (no structure hook yet): tracking only, nothing to insert
+        spec = brief["insertion"]
         h = scenes[spec["scene_id"]]
         anchor = spec["after_node"]
         if anchor == "end":

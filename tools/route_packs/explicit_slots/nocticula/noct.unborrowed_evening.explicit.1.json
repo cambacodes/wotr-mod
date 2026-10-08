@@ -1,0 +1,18 @@
+{
+  "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
+  "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. Shamira is her chosen lover and covets her throne. The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen. No fixed Commander gender or anatomy. Invent no physical feature beyond those stated. The crimson mark is narration only, with no mechanical effect. Explicit scope: the Commander with Nocticula only. No other participant. Istrava is the lamia hostess who hunted under Nocticula's protection; tonight Nocticula turned Istrava's own hunt on her house, and the Commander chose whom the bell named. Do not restate which quarry; say only 'the hunt'.",
+  "scene": "Chapter 5, Drezen sleep; a high window in Nocticula's palace over Alushinyrra at night, the city lit red below. The night after the hostess hunt. She is still in her black gown from the lodge, dried blood at the hem, moth powder on one cheekbone; she is flushed and hungry from the chase. A cut pear and a plain kitchen knife on the sill. She has just moved the knife to the far end of the sill, out of the Commander's reach and within hers, and pulled the Commander down onto the cushions under the window. Hungry and fast at first, then slow because she decides so. She names the hunt once. She glances at the knife once, and leaves it where it is. Stop before dawn talk; the next node opens with the pear still on the sill and her drawing on the Commander's chest with a fingernail.",
+  "last_line": "N: The pear is still on the sill when the window greys. The knife is where she put it.\nShe lies across you on the cushions, heavy and warm and entirely awake, drawing idly on your chest with one sticky fingernail: a fountain, a bell, a little serpent with its tail tied in a knot. Down in the city the night's bells have stopped, and the morning's have not yet begun.",
+  "speakers": {
+    "N": "Narrator",
+    "L": "Nocticula"
+  },
+  "example": "N: She has your collar in her fist before you are fully down.\nL: Slower. No. I said slower, and I meant it, and now I've changed my mind.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 18,
+  "default_text": "{n}You stop talking. She moves the knife to the far end of the sill, out of your reach and well within hers, and pulls you down under the window, with the city burning on the other side of the glass.{/n}"
+}

@@ -50,7 +50,7 @@ def integrate(payload):
     # A cat's ordinary claws cannot account for a succubus scar. Keep the old
     # scene/node/answer identities; the keepsake is now the played acceptance.
     sid = T + 'the_cat'
-    node(sid, 'science')['Choices'][1]['Text'] = '"Let me examine this famous hand, then."'
+    node(sid, 'science')['Choices'][1]['Text'] = '"Let me see this famous hand, then."'
     sid = T + 'the_scar'
     scenes[sid]['Title'] = 'The empty hand'
     node(sid, 'start')['Text'] = ('{n}She offers her hand, back uppermost. It is unmarked.{/n} '
@@ -78,7 +78,7 @@ def integrate(payload):
     for sid in (T + 'teach_me', T + 'the_second_chair'):
         scenes[sid]['Forbids'] = [key for key in scenes[sid]['Forbids'] if not key.startswith('vellexia.')]
 
-    # Shared treatment language exists only in histories that undertook intake.
+    # The tower's daybook passage exists only in histories that undertook the open hand (intake).
     sid = T + 'morning'
     scenes[sid]['Entry'] = '"Good morning."'
     start = node(sid, 'start')
@@ -88,7 +88,7 @@ def integrate(payload):
         'one wing resting over your wrapped shoulders. She catches you looking and smiles without looking away.{/n} '
         '"I am keeping this until we go down. You can explain it at council."')
     start['Choices'].append(c('Continue', 'ordinary', forbids=(INTAKE,)))
-    # Clinical comedy is retained as an appended intake-specific passage, so
+    # Her daybook passage is retained as an appended intake-specific passage, so
     # untreated released/chaplain lovers never acquire somebody else's daybook.
     for answer in start['Choices'][:2]:
         old = answer['Next']
@@ -170,8 +170,8 @@ def integrate(payload):
         *old_answers)
     # Retry lines cannot invent a witnessed week of repeated wards.
     node(T + 'rite_slipped', 'vow')['Text'] = ('"On the road." {n}She stays in the far corner.{/n} '
-        '"Then a week apart before we try again. And when we do, awake, with the ward read. '
-        'I want to hear the seal break before you reach for me."')
+        '"Desnans don\'t swear on the road lightly; travellers die on it. Then a week apart, and I\'ll count it. '
+        'When it\'s done I\'ll come to you, not the other way round, and I\'ll be hungry, and you\'ll be warded."')
 
     # First-quarrel disclosure is collected by later paid contact, without a
     # new fee/gate. The seal/price is stated before either reading is chosen.
@@ -191,7 +191,7 @@ def integrate(payload):
     undress = node(sid, 'undress')
     for index, suffix, dest, text in (
         (0, 'explicit.2', 'morning_after', '{n}She answers your kiss with another, her wings closing around you on the cloak. Later she settles her ear against your chest and listens to your heartbeat.{/n}'),
-        (1, 'explicit.1', 'morning_after_paid', '{n}She draws you close on the cloak, counting softly between kisses. Before the ward expires, she breaks skin contact and draws her cloak between you.{/n}'),
+        (1, 'explicit.1', 'morning_after_paid', '{n}She draws you down onto the cloak, counting under her breath between kisses. Before the ward runs out she tears herself off you and drags her cloak between your skin and hers, panting, furious at the clock.{/n}'),
     ):
         undress['Choices'][index]['Next'] = sid + '.' + suffix
         # Content brief lives in tools/route_packs/explicit_slots/arueshalae/.
@@ -208,32 +208,30 @@ def integrate(payload):
         add(sid, sid + '.explicit.1', text,
             c('Continue', dest), speaker='Narrator')
 
-    # Fallen recruit first negotiation: the quack joke is newly proposed;
-    # research and daybook callbacks require their actual separate histories.
+    # Fallen recruit first negotiation (arue12: no physician, no fee); research
+    # and daybook callbacks require their actual separate histories.
     sid = P + 'fallen.house_call'
     start = node(sid, 'start')
-    start['Text'] = ('{n}She lets you count through the silk cuff, laughing softly.{/n} '
-        '"A physician? For me? Look at the earnest face. You will have to work hard at keeping that face when I name my fee."')
+    start['Text'] = ('{n}She lets you take her wrist through the black silk, and laughs, low and delighted, and does not pull away.{/n} '
+        '"Still holding a succubus through a sleeve, darling? Look at the earnest face." '
+        '{n}She leans in until her mouth is at your ear.{/n} "I worship one god now, and she\'s standing right here, and she\'s starving. '
+        'Keep that face. I want to watch it when I tell you what I eat."')
     guard(start['Choices'][0], 'Requires', T + 'studied', INTAKE)
     # Existing untreated alternative stays at index 1, now complementary to
     # all treatment fragments, not just one coarse derived key.
     start['Choices'][1]['Forbids'] = []
     start['Choices'][1]['Next'] = 'research_check'
     add(sid, 'research_check',
-        '"You brought a pulse to a succubus. How thoughtful." {n}She draws a nail along your cuff.{/n}',
+        '"You came all this way with your blood still in you. How thoughtful." {n}She draws a nail along your cuff, over the vein.{/n}',
         c('Continue', 'price', forbids=(T + 'studied',)),
         c('Continue', 'research_only', requires=(T + 'studied',), forbids=(INTAKE,)),
         c('Continue', 'price', requires=(T + 'studied', INTAKE)))
     add(sid, 'research_only',
         '"I remember those books. Did you find a price you liked?" {n}She smiles.{/n} "I can improve on it."', c('Continue', 'price'))
     node(sid, 'candles')['Text'] = ('"The shrine books. Your sums in the margin. My careful notes." '
-        '{n}She hooks a nail in your cuff.{/n} "I burned the daybook. I read the pages as they caught. '
-        'I remember wanting you. I am less afraid of admitting it now."')
-    # Legacy charred cat page retains no unearned pet recollection.
-    sid = P + 'evil.daybook'
-    for twin in (sid, sid + '_yard'):
-        book = node(twin, 'book')
-        book['Text'] = book['Text'].replace("It says 'the cat'. I don't know why I kept it. There was a cat. It slept on my hand.", 'I kept a corner. Do not ask me why.')
+        '{n}She hooks a nail in your cuff.{/n} "I burned the daybook. I read every page as it caught, all those little notes about how mortals pass the bread, '
+        'and I laughed until the smoke made me cough. I remember wanting you, too. I still do. It\'s just that now I want you the way I want everything else."')
+    # arue12: the charred corner is burned in front of the Commander (base text); no kept regret.
 
     # Endings: no paid ward after release, no invented abstinence or absolution.
     for sid in (T + 'epilogue.together', T + 'epilogue.freed', P + 'epilogue.kept'):
@@ -242,45 +240,43 @@ def integrate(payload):
             '{n}Once her nature changed, she kept her cottage away from the settlements. The Commander visited, '
             'and she sometimes came to Drezen, carrying her own bag and expecting supper. She went home again when she wished.{/n}', requires=(CHANGED,)))
     page = node(T + 'epilogue.together', 'page')
-    for par in page.get('Paragraphs', []):
-        par['Text'] = par['Text'].replace('that was the first dream she was certain was hers', 'she had wanted to make that journey herself')
     page['Paragraphs'] += [
-        p('{n}When another scroll was wanted, its price was spoken before the seal broke. She still sometimes refused. '
-          'The Commander waited with the case shut until she changed her mind.{/n}', requires=(promise_read,), forbids=(CHANGED,)),
-        p('{n}They still quarrelled over the cost of the scrolls. She came back after each quarrel; she did not pretend she liked being paid for.{/n}', requires=(refusal_read,), forbids=(CHANGED,)),
-        p('{n}No bargain with her queen followed. When Nocticula was mentioned, Arueshalae looked at the Commander and squeezed a fold of {mf|his|her} sleeve.{/n}', requires=(T + 'promised_no_deals',)),
+        p('{n}Every scroll after that had its price named before the seal broke, as she had made the Commander swear. Some nights she heard the price and said no, '
+          'and lay awake beside the shut case, hungry, and would not be bought. Most nights she said yes, and made very sure the gold was the cheapest thing either of them spent.{/n}', requires=(promise_read,), forbids=(CHANGED,)),
+        p('{n}They went on quarrelling over the scrolls for years. She hated being paid for, and said so at length, in front of guests; then she came to bed, and the seal was broken, and she let it be paid for anyway, and was furious about it in the morning.{/n}', requires=(refusal_read,), forbids=(CHANGED,)),
+        p('{n}There was no bargain with her queen. When Nocticula was mentioned at table, Arueshalae smiled the old smile from the long tables of the Upper City, and took a fold of the Commander\'s sleeve in her fist, as if somebody might try to take it from her.{/n}', requires=(T + 'promised_no_deals',)),
     ]
     page = node(P + 'epilogue.kept', 'page')
     for par in page.get('Paragraphs', []):
         if 'kept the stole' in par['Text']:
-            par['Text'] = '{n}She kept the stole. On visits to Drezen she blessed the second company\'s swords, then went to find the Commander. The altar and the visit were both her choices.{/n}'
+            par['Text'] = '{n}She kept the stole. On visits to Drezen she blessed the second company\'s swords at dawn and went hunting for the Commander by noon, and if anyone in the company had an opinion about the order of the two, they kept it to themselves.{/n}'
         if 'pulse first' in par['Text']:
             guard(par, 'Forbids', CHANGED)
-            par['Text'] = '{n}She kept a tally book. At each reunion she found the Commander\'s pulse through a cuff, remembered what she had been given back, and stayed to hear the news.{/n}'
+            par['Text'] = '{n}She kept a tally book of every minute the scrolls had bought her. At each reunion she stood close enough to smell the Commander\'s blood under the skin, the way she had once stood beside the men she meant to finish, and did not touch, and stayed to hear the news.{/n}'
     for sid in (P + 'epilogue.kept', P + 'epilogue.commit', T + 'epilogue.together'):
         node(sid, 'page').setdefault('Paragraphs', []).extend([
-            p('{n}The Commander announced nothing at her altar. When she returned, she hung up the stole herself and asked for {mf|him|her} in private.{/n}', requires=(P + 'cost.no_staging',)),
-            p('{n}There was no second joke with her life. She kept the promised say in what was done for her, and returned on her own terms.{/n}', requires=(P + 'cost.no_second_joke',)),
+            p('{n}The Commander never again announced anything at her altar. When she came back from her service she hung up the stole herself and came looking for {mf|him|her} in private, where nobody was kneeling and nobody was watching.{/n}', requires=(P + 'cost.no_staging',)),
+            p('{n}There was no second joke played with her life. She had been the punchline once, and she made very sure, for the rest of the Commander\'s days, that she was never anybody\'s joke again, the Commander\'s least of all.{/n}', requires=(P + 'cost.no_second_joke',)),
         ])
     page = node(P + 'epilogue.commit', 'page')
     for par in list(page.get('Paragraphs', [])):
         if 'hunger and the prayer' in par['Text']:
             guard(par, 'Forbids', CHANGED)
             alt = deepcopy(par);alt['Forbids'].remove(CHANGED);guard(alt, 'Requires', CHANGED)
-            alt['Text'] = '{n}On the chapel steps she chose to keep her service and separately chose the Commander. Her hunger was gone. Her memories stayed, and she would not hide them to be loved.{/n}'
+            alt['Text'] = '{n}On the chapel steps she kept her service and took the Commander as well, because she wanted both and saw no reason to go hungry for either. Her hunger was gone. Her memories were not; she told them at table, and would not be loved by anyone who needed her to forget them.{/n}'
             page['Paragraphs'].append(alt)
         if 'month after Threshold' in par['Text']:
-            par['Text'] = ('{n}She asked for a future, with the city lamps below the citadel wall. '
-                'When the question was settled after the war, it was still hers to answer as well. '
-                'She took a fold of the Commander\'s sleeve and asked {mf|him|her} to stay.{/n}')
+            par['Text'] = ('{n}She had asked for a future on the citadel wall, with the city lamps below. '
+                'When the war was over and the question came round again, she did not wait to be answered. '
+                'She took a fold of the Commander\'s sleeve in her fist and said "Stay," as if it were an order, and it was.{/n}')
     page = node(P + 'epilogue.declined', 'page')
     for par in page.get('Paragraphs', []):
         if 'daybook' in par['Text']:
             guard(par, 'Requires', INTAKE)
-            par['Text'] = '{n}She kept her treatment daybook. The unfinished question did not stop her writing the next page.{/n}'
+            par['Text'] = '{n}She kept her daybook. The question the Commander had left unanswered sat alone on one page for a year; then she turned the page and wrote something else, and did not cross it out.{/n}'
     page['Paragraphs'] += [
-        p('{n}When asked for only the parts of her that prayed, she had refused. She did not take back that refusal merely because the war ended.{/n}', requires=(P + 'cost.saint_only',)),
-        p('{n}She had asked first. The Commander had asked for time. She left the next question to {mf|him|her}, and went on with her life.{/n}',
+        p('{n}The Commander had once asked her for only the parts of her that prayed, and she had refused. The end of the war did not change her answer. She was all of herself or none, and the Commander had chosen none.{/n}', requires=(P + 'cost.saint_only',)),
+        p('{n}She had asked first. The Commander had asked for time, and she gave it, and did not ask again. The next question was the Commander\'s to ask, and she was far too proud, and far too busy living, to sit and wait for it.{/n}',
           requires=(T + 'relapse_two',), forbids=(P + 'cost.saint_only',)),
     ]
 

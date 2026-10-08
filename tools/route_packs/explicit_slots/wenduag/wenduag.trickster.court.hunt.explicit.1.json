@@ -1,0 +1,30 @@
+{
+  "slot_id": "wenduag.trickster.court.hunt.explicit.1",
+  "host_scene": "wenduag.trickster.court.hunt",
+  "host_node": "ate",
+  "after_text": "and licks the thumb.{/n}",
+  "source_nodes": [
+    "ate"
+  ],
+  "voice": "WENDUAG: an adult female mongrel hunter and native companion. Predatory, blunt, crude, competitive, opportunistic; strength and the kill are her appetite, and the first bite is hers by right ('I made the kill. I get the first bite.'). She initiates, keeps score, and wants to be thrown as much as to throw ('No one can best me in battle, on the dance floor, or in bed!'). Affection is possessive and chosen; she does not become merciful, dutiful or grateful property. Short dialogue, concrete bodily action (blood, teeth, meat, thorn, cold ground), no maxims, therapy language, fate explanations or copied canon lines. Hosilla coerced her in the past; never frame that history as love or as permission for the present.",
+  "facts": "Canon facts only: Wenduag is an adult female mongrel (neather) hunter from Neathholm with a tail; in late chapters she may show the spider legs of her native evil path, but do not add them unless the run's native state supplies them. No invented hair, eye or skin colour, measurements, scars or mutation-based sexual claims. The burnt orchards outside Drezen's south postern, the thin moon, the red smear of the Worldwound to the north, the spear, the knife and the young deer with its heart cut out are authored staging from this scene, not lore. Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5, court.hunt (and its .native_visit twin), only on the ate branch (the Commander ate the raw heart she offered), and only when wenduag.trickster.court.cairn already holds: the catacomb night is her chosen first encounter, so this brief must never become a first night. STRUCTURE HOOK NEEDED: the ate answer is terminal today; the insert needs its own slot node between ate and the end of the scene, gated on wenduag.trickster.court.cairn (and an ungated plain exit kept at the current choice index for every other history). Until that node exists this brief is tracking only. WHERE: the thorn at the edge of the burnt orchards an hour after midnight, barefoot, the deer open between them, blood still on both mouths, no light. Participants: the Commander and Wenduag. Required beats: she has just wiped the blood off the Commander's chin and licked her thumb; she decides it is not finished; the kill and the hunt are the heat (blood, the warm carcass, the cold ground, the thorn), and she wants a contest more than tenderness; the Commander answers actively and can win a round of it; nobody is coerced and no magic or debt buys willingness. Do not resolve anything about Lann, Brask, the cairn, Savamelekh or any stance inside the insert. Narrative second person, present tense; Commander dialogue stays in choices outside the insert. End before her existing line about the tunnels, which resumes verbatim.",
+  "last_line": "W: I like it better in the tunnels.",
+  "speakers": {
+    "N": "Narrator",
+    "W": "Wenduag"
+  },
+  "participants": [
+    "Wenduag"
+  ],
+  "example": "N: Wenduag shoves the carcass aside with her heel and catches you by the collar.\nW: You ate. Now you're mine to finish.\nN: The thorn bites your back. She laughs when you roll her into it instead.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "default_text": "{n}She does not let go of your chin. Whatever she meant to say next waits a long while in the thorn, until the moon has moved and the deer has gone cold between you.{/n}",
+  "continuity": "After court.cairn and court.morning: no first-night reset. Actual earned presence only (wenduag.present_now, with_you). No flags from this text. The ate exit and its Set (wenduag.trickster.hunt.ate) stay exactly as they are."
+}

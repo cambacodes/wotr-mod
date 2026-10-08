@@ -1,0 +1,38 @@
+{
+  "slot_id": "shamira.trickster.after.night_alone.offered.explicit.1",
+  "host_scene": "shamira.trickster.after.night_alone",
+  "host_node": "offered",
+  "participants": [
+    "Shamira",
+    "Commander"
+  ],
+  "speakers": {
+    "S": "Shamira"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "SHAMIRA: imperious, theatrical, venomous; the Ardent Dream on her own dais, a queen-in-waiting who has just been handed a public victory she did not have to pay for. Proprietary sexual frankness, contempt for tenderness and fondness, 'Golarian' or 'clown' as a sneer, one swear if crossed. Telepathic remarks inside the Commander's head may undercut her spoken ones. At most one wistful leak, at once mocked. No pity, gratitude, apology or moral reform. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Shamira is a fallen celestial, Nocticula's longtime chosen lover, keeper of the Harem of Ardent Dream, who covets Nocticula's throne.\nShe reads memories and speaks inside the Commander's mind.\nAuthored Trickster continuity: she wears a stolen body sustained by warmth (the 'coal') taken from the Commander's sleep each night; the Commander came to her Harem to ask for one night alone before her court and then gave it back, so tonight's coal is still owed and still taken.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, the Harem of Ardent Dream, on the steps of her throne, the night the Commander asked for a night alone in front of her court and then refused to take it (shamira.trickster.night_alone.given_back). The court has seen the request; she has the Commander on the step beside her, her cold fingers round the back of the Commander's neck, and has just said she will take the coal tonight and keep the memory offered on the wardrobe floor, because she never gives anything back. Continue: she takes the Commander on the warm steps of her own dais as a queen takes tribute, proprietary and amused, the given-back night turned into hers in every sense. A RETURN encounter after the Harem first night, never a first bodily night. Telepathic remarks may cut across her spoken ones. Only Shamira and the Commander; the court is beyond the doors, not watching. STRUCTURE HOOK NEEDED: offered is terminal ([Stay on the steps with her a while.] exits the scene); a reserved slot node between that answer and the exit is required before generation. Until it exists this brief is tracking only.",
+  "required_beats": [
+    "Begin from her hand on the back of the Commander's neck; she directs the encounter and treats it as her due.",
+    "Her body is cool at the edges until the end; the coal is still taken in sleep tonight, sex is not a new feeding mechanic or a substitute payment.",
+    "One jab at the Commander for giving the night back, and one at the court that will gossip about it.",
+    "Contempt for fondness and one sneer at mortal sentiment; at most one wistful leak, at once mocked.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "No court, servant, Nocticula or other participant in the act; close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored Harem dais (shamira.trickster.after.night_alone/offered); the stolen body and the nightly coal are mod continuity.",
+    "history": "Committed, embodied Trickster Shamira after the throne talk and the Harem first night; the Commander asked for a night alone (kneel or stand) and gave it back. The take branch reaches the separate morning slot shamira.trickster.after.night_alone.explicit.1, never this one.",
+    "resumption": "shamira.trickster.after.night_alone/offered -> [Stay on the steps with her a while.] -> reserved node (to be added) -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: When the third bell goes, she is already dressed and on her throne, and you are still on the step below it.",
+  "default_text": "{n}She pulls you down onto the warm stone by the back of your neck, and does not let go of it.{/n}",
+  "example": "N: Shamira sets one cold hand flat on your chest and pushes until your back is on the step.\nS: You gave it back, clown. In front of all of them. Now lie still while I collect.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Shamira only, for the separate writer. Both Commander variants are required. Keep her contempt, ambition and the nightly coal; no new feeding mechanic or invented anatomy."
+}

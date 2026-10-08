@@ -1,5 +1,5 @@
 {
-  "note": "Reuse the donor fill in these hosts; these are alternative or retired histories, not additional first nights. Dedicated cut nodes contain no aftermath prose.",
+  "note": "Reuse the donor fill in these hosts; these are alternative or retired histories, not additional first nights. Dedicated cut nodes contain no aftermath prose. N1: acquired aliases are frozen retired references, excluded from the Gemory batch; the two new base slots await N7 briefs.",
   "aliases": {
     "noct.unlit_quay.explicit.1": [
       {
@@ -105,6 +105,8 @@
         "node": "noct.acq.the_paid_address.explicit.1",
         "retired": false
       }
-    ]
+    ],
+    "noct.another_place.explicit.1": [],
+    "noct.unborrowed_evening.explicit.1": []
   }
 }

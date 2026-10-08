@@ -1,0 +1,25 @@
+{
+  "slot_id": "noct.empty_chair.explicit.1",
+  "participants": [
+    "Commander",
+    "Nocticula"
+  ],
+  "voice": "NOCTICULA, the Lady in Shadow, Queen of the Succubi: regal, amused, sexually frank, possessive, cruel. Short concrete lines; contempt and appetite; she gives orders and enjoys the Commander's obedience and defiance about equally. Native register to match: \"How many of them I have... tasted?\" (eb394ace-5e24-4dc7-89a7-d5dc07cc4e9a); \"I am the Queen of the Succubi, the ruler of passions and secret desires.\" (8cc20b45-8d05-4c38-b2e9-167812022be4); \"The next person who calls me that risks becoming acquainted with my collection of torture implements.\" (d3d9a3e6-b9ec-4457-8a4a-ba1d378d7a31). She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
+  "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. The Commander is here because her Gift carried the sleeping mind into her palace; the body sleeps in Drezen. The mask was sent by Istrava, a lamia vassal who runs a hunting lodge; it smiles too wide, and a small steel hook sewn into its ribbon catches in the wearer's hair, so tearing it off takes a scalp. Nocticula has just tied it on the Commander herself and left the hook in. No fixed Commander gender or anatomy; invent no physical feature beyond those stated. Explicit scope: the Commander with Nocticula only; no servant, Rhez or Edris present.",
+  "scene": "Chapter 5, Drezen sleep; her small private dining room, black table laid for three, candles, the Edris sketch and the wax model of the lodge on the table, the Middle City burning red beyond the window. She has just masked the Commander as Istrava's quarry are masked and said it suits the Commander; the Commander chose '[Keep the mask on.]'. She plays the hunt on the Commander before the real one: she makes the Commander hold still because the hook takes a scalp, she uses the mask's painted smile against the Commander, she takes the Commander on or against the table among the plans for the lodge (a wax stair gets crushed). Predatory and amused, the hostess's game done better than the hostess does it. The mask stays on throughout. Stop with the mask still on; the aftermath node opens later, with the model's stair crushed and the plan smeared, as she unhooks it.",
+  "last_line": "N: Later the model of the lodge has lost one of its stairs, crushed flat under somebody's shoulder, and the charcoal plan is smeared past reading. Nocticula does not mind. She has it by heart. She unhooks the mask from your hair at last, with one fingernail, slowly, and keeps the strand that tore on the steel, winding it round her finger.",
+  "speakers": {
+    "N": "Narrator",
+    "L": "Nocticula"
+  },
+  "example": "N: She does not untie it.\nL: Hold still, quarry. Pull and you leave your hair on my table.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 18,
+  "aftermath": "Dedicated aftermath node noct.empty_chair.aftermath.1 (authored): the crushed wax stair and smeared plan; she unhooks the mask with a fingernail and keeps the torn strand; then '[Plan the entrance.]' unchanged.",
+  "heat": "Her native heat: frank appetite and domination; the hunt as foreplay (the hook, the painted smile, the lodge model under them); never tender, never reassuring.",
+  "default_text": "{n}She does not untie the mask. She puts you against the edge of the table instead, among the wax and the charcoal, and keeps one hand on the ribbon at the back of your head, where the hook is.{/n}"
+}
