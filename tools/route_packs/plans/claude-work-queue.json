@@ -1174,46 +1174,6 @@
     "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
   },
   {
-    "scene": "devarra.tower.the_generals",
-    "node": "bargain",
-    "woman": "devarra",
-    "beat": "Write the purchased battle appearance and the account Devarra collects after the actual battle; retain her stated terms and distinguish it from her voluntary intervention.",
-    "why": "Accepting this bargain sets one_battle_sold and battle_price_accepted, but no implemented battle or subsequent collection fulfills it. A concrete crusade bargain becomes conversation flags without the promised gameplay consequence.",
-    "finding": "devarra:D03",
-    "ruling": "r5-S1",
-    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
-  },
-  {
-    "scene": "devarra.tower.the_generals",
-    "node": "ask",
-    "woman": "devarra",
-    "beat": "Write her independently chosen surprise intervention and its witnessed aftermath; preserve her conditions and keep its receipt distinct from the purchased branch.",
-    "why": "The voluntary offer also has no producer for an actual intervention. Her independently chosen terms provide a strong character-specific gameplay opportunity, but the implementation never delivers it.",
-    "finding": "devarra:D04",
-    "ruling": "r5-S1",
-    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
-  },
-  {
-    "scene": "devarra.trickster.epilogue.woken",
-    "node": "page",
-    "woman": "devarra",
-    "beat": "Replace the outstanding purchased promise account only after its played fulfillment or consequential refusal/breach exists. Describe that history without giving her the voluntary branch's outcome.",
-    "why": "The completed bargain ends as an unexplained outstanding promise. Correctly avoiding a fabricated battle receipt prevents an earned-outcome leak, but does not supply narrative resolution: neither participant follows through, renegotiates, or reacts to the failure.",
-    "finding": "devarra:D05",
-    "ruling": "r5-S1",
-    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
-  },
-  {
-    "scene": "devarra.trickster.epilogue.woken",
-    "node": "page",
-    "woman": "devarra",
-    "beat": "Resolve her independently chosen intervention or played withholding and the Commander's response before the finale; make this coda consume that actual history.",
-    "why": "The voluntary offer receives the same unresolved treatment. The epilogue merely acknowledges missing implementation instead of completing her choice or showing why she abandoned it.",
-    "finding": "devarra:D06",
-    "ruling": "r5-S1",
-    "dependency": "storylines/devarra_trickster.py, storylines/devarra_tower.py: the failed-stealth native entry and distinct purchased/voluntary battle producers and collection are route-local; their expanded section 6 scope is required."
-  },
-  {
     "scene": "household.docket.gesmerha_jerribeth.account",
     "node": "j05_cache_route",
     "woman": "gesmerha",

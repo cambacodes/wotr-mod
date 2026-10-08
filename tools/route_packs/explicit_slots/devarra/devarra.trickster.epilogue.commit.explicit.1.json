@@ -31,6 +31,9 @@
     "resumption": "devarra.trickster.epilogue.commit/page -> late_accepted text 'The Commander stayed until dawn.' -> inline reserved paragraph -> 'The stair bore a fresh scratch...' -> optional lastcall paragraph -> page_exit."
   },
   "last_line": "N: The stair bore a fresh scratch when Devarra returned the following spring; the appointment had been kept.",
+  "last_lines": {
+    "inline": "N: The stair bore a fresh scratch when Devarra returned the following spring; the appointment had been kept."
+  },
   "default_text": "{n}She drew the Commander under her raised wing on the unlit side of the tower and did not let the visitor go until the sky greyed.{/n}",
   "example": "N: Her tail drew the Commander against her belly.\nD: You stayed. Then all of you stays.\nN: The wing came down over them both.",
   "min_lines": 6,

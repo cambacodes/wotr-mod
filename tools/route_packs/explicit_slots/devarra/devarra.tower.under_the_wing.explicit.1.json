@@ -30,6 +30,9 @@
     "resumption": "devarra.tower.under_the_wing/her -> \"Why did you call me up in the storm?\" -> why -> reserved node -> sleep. The direct [Sleep against her.] choice from her shares the same successor and may route through the same reserved node."
   },
   "last_line": "N: You sleep. Sometime in the night you wake, and the storm is still raging somewhere beyond the wing, and her great head has come around in the dark and is resting on the floor beside you, one eye half-open, orange as a coal, watching you breathe.",
+  "last_lines": {
+    "sleep": "N: You sleep. Sometime in the night you wake, and the storm is still raging somewhere beyond the wing, and her great head has come around in the dark and is resting on the floor beside you, one eye half-open, orange as a coal, watching you breathe."
+  },
   "default_text": "{n}The wing comes lower. The heat of her flank closes round you, and the storm goes very far away.{/n}",
   "example": "N: Her tail draws your legs into the hollow beneath the wing.\nD: Shivering. Good. I like my food frightened first.\nN: The wing settles over you both.",
   "min_lines": 8,

@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "note": "No Devarra, Nidalynn, S50 or Last Call account scene is in voice_locks.json today; these are proposed new Claude locks for every scene this pass changed (Nidalynn's pages flagged in their reason: the coordinator may prefer to leave them unlocked for her own owner).",
+  "proposed": [
+    {
+      "scene": "devarra.trickster.after.tithe",
+      "before_sha": "323bf5e8365fdca9cd74a88c4728f07b752f414237b4461bc6bbf260efd8e030",
+      "after_sha": "fc4fc5ba5afee9d01df6036378c7bf0b469a1b5d3f5ff168df951baf5a304a6a",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.woken",
+      "before_sha": "a88567921edf317fa7e32894a0d2d62a8f313c402987e6c7f0c5bd19d1f02249",
+      "after_sha": "b595675a1f058f97d4dbaa3ef1e356cd2fb2a038f03b5920a38c4718aa206254",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.commit",
+      "before_sha": "6869997a725581213aab0801b0913801c12057a74e4a334bd0bc6dfdd0ed1614",
+      "after_sha": "22af0372f06f3f2b5fdf5856ec33c887eb7fdd6305c75595b9ce688d933bf4a0",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.refused",
+      "before_sha": "50b46d0795b81a442a0909c7c6c0c743ca54e2730d7fc72123c9dc5f9876dfbc",
+      "after_sha": "7f83e4777a355e702e437b1ba59a5e435afd666e1d8413b8b7294174c04c8edc",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.hungry",
+      "before_sha": "a4b5045e1d6a649c4e6c8bf8ba58713f4faf9d7eb583930a60d8fa54701a2325",
+      "after_sha": "b6819e06c14434aae4a45a4b05007b5ccac118af734181f92b5d086ca3c0106d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.pending",
+      "before_sha": "14cb7b24f17089f6d5f42b43edd72d3f8ab41f34ba4ddafb10c1ea21ca870781",
+      "after_sha": "acdf8b9567d7b01b01c8033204c4febcf067f3561eab552803eae21d18b1b8f7",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.claimed",
+      "before_sha": "dc355b3d940c772a6063f9c9b63c79c8b427b643bf4da9c5ee7554696a45b6e7",
+      "after_sha": "5d3aa1d42ac8d64f1ff9f003bb091f9b5a01dbdb940e5cfc739f25381c895101",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.tower.the_clutch",
+      "before_sha": "0f93e1ac388b248f615498c1717c153d91f5fb7ad14db0dbbf19b4f5ecad29d7",
+      "after_sha": "f64701167ddee98c1a6978ae711a2e1bff8a1f8e2e00459bb133498d1ef8fec8",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.tower.the_dwarf",
+      "before_sha": "ea1d561282318aa3225e04887647751b25c5baf95eaf7de16649e7ec2e3e107c",
+      "after_sha": "47a7eb14a956381a6ed17b407494a029a4776d857bf50c5eb51bcd0b38a58178",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.tower.before_the_end",
+      "before_sha": "6dceb39109e257c2a0601f39663771c2cd919cb7f5a04c0c73e39a638f511aa9",
+      "after_sha": "b53603813471e3eab505068e7488b47648ddcb5a245ffd3f80a431181928dfda",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "before_sha": "7a0fd244c6a784af253b6dde59b7fb119a1ee461e0f2ad81736ab98f40ee0bf0",
+      "after_sha": "8c3f8e1dbe23b8c2bc32118dab2f24b82acf7193f4971318082db14e57167457",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.tower.the_cells",
+      "before_sha": "4dc7339e2b137a0694105ec64f20e1ae6adb79a474f3ddab975fa7c02fbf3762",
+      "after_sha": "ac06cfad7a48ed809436c3871a0eae04c00d5bc91ffc19e14253132de4a6ed4c",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.tower.the_scar",
+      "before_sha": "b82f1790b64f035ac73f5994f44ac5c3ddb630a3dbdee32478c3bbcf5b92d007",
+      "after_sha": "17f16e6228405e9bf9dda1b8f5f467f5473f5bc3028f978c8b78b99dafc8447d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "devarra.lastcall.page",
+      "before_sha": "70e2f1ac0155e6aec8c69392dd05b14786fa2aeb1927a2a22abf72828db5f78f",
+      "after_sha": "d67184313c55f824b079d9574fd17a813b7a47bdd46426746b7b4b67761edea0",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.salt",
+      "before_sha": "e93c0c302162b0c9c7498bc58d1319dfc214cf6fbe506d9e97a46479dcc0cd14",
+      "after_sha": "5a32643b649114f64307c0d07f9ead3af94bc90ccd10ad2ec9680fe8afd7e61a",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.late",
+      "before_sha": "fa15e28b35c9d9c559dcb1aa0c87f7f9929dcda22c84e8fbd741cf87040af65f",
+      "after_sha": "c39cc735610551d3bf1d5ffdc7f028760ff4a6c4196b46402b2781767ca9b344",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.heel",
+      "before_sha": "c289d5ea933193eb29a931fc1013c770e3199edfe8e407dc610e6068aa6b4c8a",
+      "after_sha": "dc8fdf0e44c6fc64500c15cada4188a6f6dd83fbb06058c8d7aa69c88983474d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.unreturned",
+      "before_sha": "527f3f7e93372825fa75b75154e917b3dd565145c5e746adb1bbdcb14b45bcb9",
+      "after_sha": "f9785c66c6f9f821311326fb00c58ef08e85bc862a0d1f51f245cacfe73e548f",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.apart",
+      "before_sha": "a89de139e010f7a58caefd5099eb36a251593fd84c4d90b76aa69bac618a33ef",
+      "after_sha": "95aab00d0538dfc66825cadd3e554b239d2dca4ad2697830c9f3db8217748e12",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.claimed",
+      "before_sha": "c2161d36af81dddd0e2e8e0354acc923d1784effdb37acc249636eaa43f44bf6",
+      "after_sha": "09b5d39a8a92552799e7b7440d22bd36f40be6c86858d5122735c8cc56240bea",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.trickster.epilogue.lie",
+      "before_sha": "cfd49a8a44200b544bc0c4cf26807765926d1c3de805bde3ac50599e9eeb4993",
+      "after_sha": "fbffd2ac6e5d60dbb2e8217958d9309b403d6846968942db95b6af886ae66bb3",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "nidalynn.lastcall.page",
+      "before_sha": "aa21f8e157993f65e5cbad27ff5e455345254ea12bfafbe349d2fb7f50133044",
+      "after_sha": "bbae5a0693857ee348d6f2487b4659b3d7300ae310fc7078db8335938d734bac",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra: only the claim about Devarra's named price aligned (S1); Nidalynn's voice otherwise untouched"
+    },
+    {
+      "scene": "devarra.lastcall.call",
+      "before_sha": "80232919102feca5bd474cf657ce734eaa02d59cfda10c6ac717d7e779a5a992",
+      "after_sha": "29e07fdda9afc3f75d2c0f3f738148cdf9fb44e69a042d73ba20368b6f4af812",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "trickster.lastcall.account.devarra",
+      "before_sha": "bb18448c12a383fcf9c589f7a4f69e0a16cc323a21eb2d338d4eedeeee5d0f69",
+      "after_sha": "2b56538eaec8f3d99f7706c84396fd6d4a0d318646fb795019a9b5915568bcd0",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "household.pair.nidalynn_devarra.notice.widow",
+      "before_sha": "220b4025cb67de92a7418d31980460993d883b7b9bca3c43cbac9f4efd785a20",
+      "after_sha": "f8b76288c18219e1327f3ad20f198a78395a6c93e42f5f11a5ba599fd9032daf",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    },
+    {
+      "scene": "household.pair.nidalynn_devarra.notice.chosen",
+      "before_sha": "220b4025cb67de92a7418d31980460993d883b7b9bca3c43cbac9f4efd785a20",
+      "after_sha": "f8b76288c18219e1327f3ad20f198a78395a6c93e42f5f11a5ba599fd9032daf",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-devarra",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-devarra design-first pass: smallest-egg debt, battle bargains, promise readers, Last Call without paper, S50 speaker fixes (see tools/route_packs/redesign/devarra/cloud-review.md)"
+    }
+  ]
+}
