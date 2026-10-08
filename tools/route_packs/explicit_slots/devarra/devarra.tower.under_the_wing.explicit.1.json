@@ -1,0 +1,38 @@
+{
+  "slot_id": "devarra.tower.under_the_wing.explicit.1",
+  "host_scene": "devarra.tower.under_the_wing",
+  "host_node": "why",
+  "participants": [
+    "Devarra",
+    "Commander"
+  ],
+  "speakers": {
+    "D": "Devarra"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Concrete short threats and questions, food-and-fear words for people, a possessive 'mine'; 'what happened next?' as her one hunger besides meat. Possessive affection does not redeem her. No swearing, no therapy language, consent tutoring, sentimental diagnosis or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Native dragon/woundwyrm with scaled hide, wings and fire; she roars, hisses and threatens to burn, bite in half and trample.\nShe demanded an impressive story in exchange for a captive's life and says she loves to play with her food.\nHer clutch was pillaged and her offspring died before birth; she does not forget it.\nNo verified native humanoid transformation or dragon sexual anatomy is supplied; do not invent either, or fire immunity for the Commander.",
+  "scene": "EXPLICIT CONTINUATION: Chapter 3 or 5, a storm night inside the authored north-ridge watchtower outside Drezen. Devarra sent 'Come up.' because it was a bad night for climbing; the Commander climbed soaked through the rain and ducked under her lifted wing. She lies around the whole tower floor, her body the wall and her wing the roof, warmer than any hall in Drezen; the Commander sits against her flank, hot as a banked hearth. She said she will not bite, it is not the day, and explained she once lay alone through such a storm and found it dull, and wanted to know whether it would still be dull with a thing beside her she could frighten: 'It is not. Sleep.' Continue: she does not let the Commander sleep yet. The wet clothes come off against the heat of her hide; she draws the Commander into the hollow beneath her lowered wing. A RETURN encounter after the first bite night. Predatory and possessive, food-and-fear words, amused by nerve. No bite, no tariff, no fire on the Commander. Only Devarra and the Commander; the storm stays outside the wing.",
+  "required_beats": [
+    "Begin from her 'Sleep.'; she overrides it herself with an invitation separate from the annual tariff.",
+    "Keep her dragon form throughout; no shapechange, no invented dragon sexual anatomy, no fire immunity for the Commander.",
+    "Her possessive appetite speaks in food and fear words (prey, playing with her food); she remains cruel and territorial.",
+    "Continue the initiating touch into the reserved explicit encounter, consistent with each Commander variant.",
+    "No bite: the annual bite belongs to its day. No payment, rescue debt or egg claim settled.",
+    "End with the Commander falling asleep against her; the existing next beat wakes the Commander in the night."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored watchtower; no native romance is claimed.",
+    "history": "Requires devarra.tower.first_bite, so this is a later return, not a first night; storyteller alive.",
+    "resumption": "devarra.tower.under_the_wing/her -> \"Why did you call me up in the storm?\" -> why -> reserved node -> sleep. The direct [Sleep against her.] choice from her shares the same successor and may route through the same reserved node."
+  },
+  "last_line": "N: You sleep. Sometime in the night you wake, and the storm is still raging somewhere beyond the wing, and her great head has come around in the dark and is resting on the floor beside you, one eye half-open, orange as a coal, watching you breathe.",
+  "default_text": "{n}The wing comes lower. The heat of her flank closes round you, and the storm goes very far away.{/n}",
+  "example": "N: Her tail draws your legs into the hollow beneath the wing.\nD: Shivering. Good. I like my food frightened first.\nN: The wing settles over you both.",
+  "min_lines": 8,
+  "max_lines": 12,
+  "content_scope": "Reserved explicit continuation for the Commander and Devarra only, for the separate writer. Both Commander variants are required. Preserve her sapient dragon body, cruelty and appetite; no invented humanoid transformation or undocumented dragon sexual organs."
+}

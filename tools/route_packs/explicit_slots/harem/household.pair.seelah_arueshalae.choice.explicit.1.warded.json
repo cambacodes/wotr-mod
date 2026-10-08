@@ -1,0 +1,36 @@
+{
+  "slot_id": "household.pair.seelah_arueshalae.choice.explicit.1.warded",
+  "host_scene": "household.pair.seelah_arueshalae.choice",
+  "host_node": "explicit.1.warded",
+  "participants": [
+    "Seelah",
+    "Arueshalae"
+  ],
+  "speakers": {
+    "S": "Seelah",
+    "A": "Arueshalae"
+  },
+  "commander": "absent",
+  "voice": "SEELAH: human paladin of Iomedae, once a thief in Solku; blunt, hearty, quick to laugh at herself, physically direct and eager without elegant speeches; soldier humour, faith and desire side by side. ARUESHALAE (redeemed): halting and warm, devout to Desna, sexually frank about what she was and what she wants now, loud when she says it; one hard flash of the old demon's appetite or contempt. No clinic or treatment words, no therapy talk about healing or boundaries, no exit speeches. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Seelah is an adult human paladin of Iomedae and former Solku thief.\nArueshalae is an adult succubus, horned and broad-winged, redeemed and devoted to Desna; she owns her Abyssal past of seduction and killing.\nUntil her nature changes, any caress from her drains mortal life (mod device). A Scroll of Death Ward protects only its recipient, only against energy drain, and only for the seven minutes stated here.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them.",
+  "scene": "WOMAN-WOMAN EXPLICIT SLOT: Trickster Chapter 5, Drezen household, the quarters off the bench. The Commander is absent and is never addressed or watching. Seelah left her shield on the bench; each woman spoke her own yes. The chapel reader spent the Death Ward scroll on Seelah's wrist; back at the bench Arueshalae kissed her, 'Not sister like that.' 'No. Not like that.' Seelah glanced at the chapel clock and drew her toward the quarters. Their door closes. Continue into a mutually wanted sexual encounter inside the seven minutes the ward holds: frank and fast, Seelah laughing, direct and eager, Arueshalae hungry and devout at once, loud about wanting her, aware of the clock. Bare skin only while the ward holds. Before it fades Arueshalae draws back and Seelah pulls the fallen blanket between them. No drain on screen, no cure, no feeding and no third person.",
+  "required_beats": [
+    "Both women initiate and answer; neither is passive or performing for anyone.",
+    "The seven-minute ward is a real limit: the chapel clock or Seelah's count is felt once mid-scene.",
+    "Arueshalae's appetite shows one flash of the old demon (hunger or contempt), then her own choice to keep to the ward's time.",
+    "Seelah's faith and humour sit beside desire; no sermon and no shame.",
+    "No invented anatomy, wing or horn mechanics beyond horns and broad wings; no new lore about the drain or Desna.",
+    "Before the ward fails Arueshalae draws back and the blanket goes between them; end on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored household pair scene; the bench, shield, chapel reader and scroll item are mod continuity.",
+    "history": "Redeemed, unchanged Arueshalae (arueshalae.ward_held, not arueshalae.changed); both personal answers given; the scroll was consumed on Seelah.",
+    "resumption": "household.pair.seelah_arueshalae.choice/ward_application -> cut_warded -> explicit.1.warded (this reserved node) -> kept_warded. The unwarded cut/explicit.1 path stays non-explicit and is not covered by this brief."
+  },
+  "last_line": "A: Your shield is still on the bench.",
+  "default_text": "{n}Their door closes. Before the seven minutes end, Arueshalae draws back and Seelah gathers the fallen blanket between them.{/n}",
+  "example": "N: Seelah kicks the door shut and drags her shirt over her head.\nS: Seven minutes. I've won fights in less.\nA: Then stop talking and win this one.",
+  "min_lines": 10,
+  "max_lines": 14,
+  "content_scope": "Reserved explicit slot for Seelah and redeemed Arueshalae only, woman with woman, for the separate writer. The Commander is absent and not a participant or witness. Only the warded variant is explicit; skin contact ends before the ward expires."
+}

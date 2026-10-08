@@ -1,0 +1,38 @@
+{
+  "slot_id": "shamira.trickster.after.night_alone.explicit.1",
+  "host_scene": "shamira.trickster.after.night_alone",
+  "host_node": "read",
+  "participants": [
+    "Shamira",
+    "Commander"
+  ],
+  "speakers": {
+    "S": "Shamira"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "SHAMIRA: imperious, theatrical, venomous; the Ardent Dream as a queen-in-waiting. Proprietary sexual frankness, contempt for tenderness and fondness, 'Golarian' or 'clown' as a sneer, one swear if crossed. Telepathic remarks inside the Commander's head may undercut her spoken ones. At most one wistful leak, at once mocked. No pity, gratitude, apology or moral reform. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Shamira is a fallen celestial, Nocticula's longtime chosen lover and ally, keeper of the Harem of Ardent Dream, who covets dominion over Alushinyrra.\nShe reads memories and speaks inside the Commander's mind.\nAuthored Trickster continuity: she wears a stolen body sustained by warmth (the 'coal') taken from the Commander's sleep under agreed terms; after the night alone her fingertips stay white for good.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, the Commander's own bed in Drezen, the morning after the night alone the Commander asked for before her court. For want of the coal her stolen body went cold: she sits at the end of the bed in the red Harem dress with the Commander's blanket round her shoulders, lips grey, long hands slow, fingertips white. She said the fingertips will stay white and every fool who kisses them will see it, that tonight she comes back for the coal they agreed, and 'You may look at me while I warm these hands.' The Commander lifted the blanket. Continue: she comes in under it and warms herself on the Commander bodily now, cold hands on warm skin, proprietary and contemptuous of tenderness, a queen collecting what is hers. A RETURN encounter, never a first bodily night. Telepathic remarks may cut across her spoken ones. Only Shamira and the Commander. Colour returns to her lips; the fingertips do not warm.",
+  "required_beats": [
+    "Begin from the lifted blanket; she takes the invitation as her due and directs the encounter.",
+    "Her cold is physical and plain on the Commander's skin; it fades from her mouth but never from the fingertips.",
+    "The agreed coal is still taken tonight in sleep, as she said; sex is not a new feeding mechanic or a substitute payment.",
+    "Contempt for fondness and one sneer at mortal sentiment; at most one wistful leak, at once mocked.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "No court, servant, Nocticula or other participant; close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored morning in the Commander's Drezen bed; the stolen body, coal terms and white fingertips are mod continuity.",
+    "history": "Committed, embodied Trickster Shamira after the throne talk and the Harem first night; the night alone was taken (shamira.trickster.night_alone.taken). The read_edge branch (back-turned edge terms) does not reach this slot.",
+    "resumption": "shamira.trickster.after.night_alone/morning -> read -> [Lift the blanket.] -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: By the time the bell rings, her lips have colour again. Her fingertips are still white.",
+  "default_text": "{n}She lets the blanket fall from her shoulders and comes in under the one you hold up, and her hands are very cold.{/n}",
+  "example": "N: Shamira lays both white-tipped hands flat on your chest.\nS: Do not flinch, Golarian. You did this. Hold still while I take it back.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Shamira only, for the separate writer. Both Commander variants are required. Keep her contempt, ambition and the permanent white fingertips; no new feeding mechanic or invented anatomy."
+}
