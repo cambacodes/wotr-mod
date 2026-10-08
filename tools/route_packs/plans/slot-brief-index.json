@@ -90,5 +90,10 @@
     "scene": "wenduag.trickster.epilogue.pack",
     "node": "page",
     "paragraph_index": 6
+  },
+  "jerribeth.counterfeit_after.explicit.1": {
+    "status": "dropped",
+    "reason": "Host scene jerribeth.counterfeit_after is retired by gating (Forbids chapter_later, held from Chapter 2; the route starts in Chapter 3). The brief file stays so install_slots keeps the save node.",
+    "evidence": "storylines/jerribeth_scaffolding.py: RETIRED; tools/route_packs/redesign/jerribeth/cloud-review.md: D2"
   }
 }

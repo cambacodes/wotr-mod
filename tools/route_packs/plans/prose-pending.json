@@ -121,13 +121,6 @@
       "text_sha": "5d9cbd2144a971a736b9c9b84dbb46ff79307c90154a0c5bd641eb2eb152e07c"
     },
     {
-      "scene": "household.docket.gesmerha_jerribeth.account",
-      "node": "j05_cache_offer",
-      "surface": "node",
-      "index": null,
-      "text_sha": "af2367a385abfe779335ccb5fda4d3bed4ec519ae08f73099c21d87f268e5c1d"
-    },
-    {
       "scene": "household.pair.seelah_camellia.settle",
       "node": "reasoned",
       "surface": "node",

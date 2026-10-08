@@ -1,47 +1,36 @@
 {
   "slot_id": "jerribeth.trickster.epilogue.commit.explicit.1",
-  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
-  "scene": "First spring after Threshold, living-body branch after the late offer is answered and the night is separately chosen. Breakfast remains uncleared. If an earlier intimate evening was completed, this is a return, not another first-night reward. The chapter is the route's postwar epilogue. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
-  "last_line": "N: The uncleared breakfast table waits outside the bedroom door.",
+  "voice": "JERRIBETH: chaotic evil demon, illusionist and collector; served Baphomet only while it paid. Her voice is telepathic, inside the listener's head: high, airy, precise, with laughter like a buzzing insect. Courtly and oblique in phrasing, near-zero profanity; contempt and precision instead. Cruelty is curation: she pins, preserves and watches the victim stay aware. Desire is collecting: to want someone is to want to keep them, and she resents the wanting. She enjoys the other's awareness and every small failure of their composure. Never tender for its own sake, never reassuring; no exits, permission rituals, therapy speech or remorse in her mouth. Write new lines from these traits; do not quote canon.",
+  "facts": "Jerribeth is a female demon with an insect-like form: a narrow insectile head with antennae, wings, a hard ridged carapace and delicate clawed hands (native Wintersun reveal and Ivory Sanctum cues).\nShe speaks telepathically, directly in the mind; her laughter is high and abrasive, like a buzzing insect (enGB 0b920731).\nShe pushes a needle into a living locust and watches it convulse (eb28ad3b); she preserves what she wants to keep, 'in some form' (de70b6ee).\nShe served her master only as long as it profited her (c4630d76) and calls deals with demons a losing game she enjoys playing (8ef95ea9).\nMarhevok, the Wintersun chief, loved her blindly (b003e047); in one canon fate he is a potted plant with human eyes (6edde3ab). He is never a participant.\nThe correspondence frame, the elven guise with its deliberate seam of light, and her tenancy in the Commander's skull are authored mod premises.\nNo canon genital anatomy is specified for her. Do not invent native physiology beyond carapace, wings, antennae, clawed hands and mouthparts.",
   "speakers": {
     "J": "Jerribeth",
     "N": "Narrator"
   },
-  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
-  "min_lines": 8,
-  "max_lines": 14,
-  "facts": [
-    {
-      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
-      "guid": "8a632a5249b3c2541a1381111cae9e37",
-      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
-    },
-    {
-      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
-      "guid": "bf1542830cfa01d4c9db04546681084d",
-      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
-    },
-    {
-      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
-      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
-      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
-    }
+  "participants": [
+    "Jerribeth",
+    "Commander"
   ],
+  "scene": "Epilogue, the first spring after Threshold, the Commander's house. The Commander gave her a hand at the breakfast table and she said 'Mine'. She let the guise go at the bedroom door, all of it, too big for the room, undid the Commander's collar one fastening at a time, walked them to the bed by the wrists and settled astride, buzzing low enough to be felt in the teeth. Narrate in third person, past tense. Build on that: postwar, unhurried, a collector finally handling the piece she bargained for, with her telepathic commentary running through it. Explicit, unhurried and graphic where the act is, in her own register (precise, possessive, amused); Commander and Jerribeth only. Marhevok's pot, the cabinet's specimens and any host body never take part. End at the stop line.",
   "required_beats": [
-    "Pay any still-unpaid toast account before signing, outside the intimate slot.",
-    "Preserve her own chosen appetite, current partner arrangement and authored form without inventing native physiology.",
-    "A declined night/unsigned future does not traverse this slot.",
-    "Return to night_after: marks and forfeit, no living-body rent receipt; no epilogue persistent flags."
+    "Third person past throughout; the Commander is 'the Commander'.",
+    "The breakfast table stays uncleared; the household keeps away.",
+    "Claw crescents on both wrists and a folded locust wing on the pillow afterwards.",
+    "She is gone by noon, which she calls restraint."
   ],
-  "default_text": "{n}She pulls you away from the uncleared table. Behind the bedroom door, her wings scrape once against the frame.{/n}",
+  "example": "N: Her claws closed on the Commander's wrists and pressed them into the blanket.\nJ: Hold still. No. Stiller than that.\nN: Her laughter buzzed behind the Commander's eye, very pleased.",
+  "min_lines": 10,
+  "max_lines": 18,
+  "narration": "third-past",
+  "default_text": "{n}She pulled the Commander away from the uncleared table. Behind the bedroom door her wings scraped once against the frame, and the household found reasons to be elsewhere until noon.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.epilogue.commit",
     "after_node": "night",
     "resume_node": "night_after"
   },
-  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+  "last_line": "N: She was gone by noon, which she called restraint. The Commander found small crescents on both wrists where her claws had rested, very precise, as if counted, and one folded locust wing on the pillow. They healed slowly. The Commander was in no hurry for them to.",
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images, the elven guise and mental tenancy are authored premises. Canon physical facts are limited to the facts field. Rewritten by the cloud voice owner (villain-route-jerribeth)."
 }
