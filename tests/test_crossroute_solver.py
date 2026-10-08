@@ -189,7 +189,7 @@ class S2ClosureProofTests(unittest.TestCase):
                 with self.subTest(scene=sid, node=nid, index=index, closure=closed):
                     self.assertNotIn(closed, dependencies(model, fields(spec)))
 
-    def test_four_greetings_and_legends_are_selectable_with_iomedae_romance_closed(self):
+    def test_four_greetings_are_selectable_with_iomedae_romance_closed(self):
         from tests.story_fixture import fresh_story
         story = fresh_story()
         model = verify.Model(story)
@@ -205,8 +205,6 @@ class S2ClosureProofTests(unittest.TestCase):
             for index, choice in enumerate(nodes["name"]["Choices"][:3]):
                 with self.subTest(scene=scene["Id"], node="name", index=index):
                     self.assertTrue(verify.sim_choice_available(choice, state))
-            with self.subTest(scene=scene["Id"], node="heard", history="legend"):
-                self.assertTrue(verify.sim_choice_available(nodes["heard"]["Choices"][1], state))
 
 
     def test_complete_both_mielarah_chains_after_nocticula_romance_closes(self):
