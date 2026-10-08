@@ -1075,76 +1075,67 @@ She gives the instructions to her real agents after the dream. Their answers wil
 ], "lodge_proposed")
 
 s("uninvited_guest", "The entertainment answers back", [
-    n("start", "Narrator", '''{n}Nocticula arrives without a model. She stands on a stair with one hand resting against the rail. Below her, a dining room is caught in the stillness of a painting.
-A woman with a serpent's lower body occupies the highest couch. Her dark hair is threaded with tiny gold cages, each containing a moth. An empty cage rests beside her wine.
-The other guests have turned toward the entrance. You can see which ones were smiling when the moment was remembered.{/n}
-"Istrava," {n}Nocticula says.{/n} "Before she discovered how many people can regret an invitation at once."
-"You have been there."
-"The evening is over. I am giving you the parts for which we prepared. If you interrupt the recollection, its guests will not hear you. I will. Be selective."
-{n}She lets the image move. Her remembered self enters the dining room without escort, pauses where a servant reaches for her cloak, and lets him withdraw his hand before he touches her.
-Istrava raises her glass. The moths in her hair beat against their cages.{/n}
+    n("start", "Narrator", '''{n}You fall asleep in Drezen and wake standing up, in a mask, on a stair you have only seen in charcoal.
+The lodge is louder than Edris's sketch. Below you lies Istrava's dining hall: long couches in a horseshoe, bowls of something that is still moving, a hundred candles burning in a smell of musk and spilled wine. Above the far end of the hall hangs the bell chamber, open on one side like a box at the theater, and in it the little brass bell on its hook, and beside it a narrow man in grey holding a baton across his palms like a priest holding a relic. Vhal. Below the hall, behind a railing, runs the lower gallery, where three attendants stand very still in white masks with their mouths cut too wide.
+Nocticula is beside you. She wears black, and a mask of plain black silk that hides nothing; every person in this house knows who she is, and the mask is there so that they must pretend not to.{/n}
+"Don't wake up," {n}she says without turning her head.{/n} "I went to a great deal of trouble to bring you, and you look lovely in that."
+{n}On the highest couch lies the hostess. From the waist down Istrava is serpent, a long coil of dark green and gold that runs off the couch and across the floor and back again; from the waist up she is a handsome woman with a heavy jaw, and her black hair is threaded with tiny gold cages, each one holding a live moth. The moths beat against the bars whenever she laughs. She is laughing now. Around her the guests recline in their own masks, demons and worse and a few rich mortals with the shine of terror on them that they mistake for excitement. Three of them are Ossin's friends. Ossin is not among them. Nocticula knows exactly where Ossin is.
+Istrava sees the black mask on the stair and raises her glass.{/n}
 "Lady in Shadow. We had begun to fear you would take offense."
 "At being invited so late? I assumed you had difficulty finding a chair you could afford to lose."
-{n}Nocticula stops the memory before the guests can finish laughing. The real woman beside you studies one particularly delighted face.{/n}
-"That one had wagered that I would refuse. He spent the rest of the evening trying to discover how to collect from himself."
-"You enjoyed arriving."
-"More than I expected. The difficulty came afterward."''',
-      c('"Show me what happened when she tried to ring the bell."', "silent", requires=f("lodge_silent_bell")),
-      c('"Show me how Rhez reached the chamberlain."', "guest", requires=f("lodge_guest_entry")),
-      c('"Did the musicians announce their hostess?"', "announcement", requires=f("lodge_self_invitation"))),
-    n("silent", "Nocticula", '''{n}Istrava takes a slender baton from beside her couch and gives it to Vhal. He walks beneath the silver bell with the solemnity of a priest who has forgotten which god is watching.
-His first touch makes no sound.
-He looks up. The guests look at him. Nocticula's remembered self asks whether the entertainment consists of watching a man discover silence.
-Before he can strike again, Rhez reaches the stair beside him carrying a tray. She drops it at his feet. He steps backward, curses, and finds her hand already on the baton. The struggle tips them both against the rail.
-The bell rings once as the baton falls. It is an accidental blow against the outside. No marks appear on the attendants' masks.{/n}
-"The wax bought precisely as much time as you said," {n}Nocticula tells you.{/n} "I was pleased to discover an estimate which had not improved in the telling."
-{n}Rhez catches the baton on the lower landing. Vhal follows, intent on recovering it. Behind him, Edris opens the service door. The cleaner is already outside with her payment and a very firm opinion about never polishing silver again.
-The copied room freezes with Istrava halfway upright. She has not yet understood that the servants are moving without waiting for her announcement.{/n}
-"She was still deciding whether an accusation would sound less foolish than a joke," {n}Nocticula says.{/n} "I let her take her time."''', c('"And the people in the gallery?"', "gallery", flags=f("lodge_unmarked"))),
-    n("guest", "Nocticula", '''{n}Istrava rises to receive Nocticula. Vhal takes the baton from her couch and withdraws toward the bell. Rhez follows from the service stair, but a guest stops her to demand another drink.
-She answers him. Those few words give Vhal time to turn.
-The first ringing sends a line of pale fire across the masks below. Nocticula's remembered self is already moving when the guests begin to applaud. She catches the demanding guest by the collar and deposits him in Istrava's empty chair.{/n}
+{n}The laugh goes round the horseshoe a beat too late. Nocticula smiles at it the way one smiles at a dog that has learned to sit.{/n}
+"Stay here, at the rail," {n}she tells you, low.{/n} "Nobody in this house can touch you. The Gift sees to that, and so do I, and every one of them can smell it on you. You won't fight tonight, darling. You'll watch. And when I look up at you, you'll choose a name for the bell."
+"Whose name?"
+"Whoever you like. That's the joke." {n}She takes her hand off the rail.{/n} "She rings it, and her guests chase whoever it names. She does it under my protection, in my city, on my people. Hunting is a privilege, and in Alushinyrra the privilege is mine. Let's go and remind her."''',
+      c('[Watch Vhal strike the bell you silenced.]', "silent", requires=f("lodge_silent_bell")),
+      c('[Watch Rhez go for the baton.]', "guest", requires=f("lodge_guest_entry")),
+      c('[Let the musicians read out her invitation.]', "announcement", requires=f("lodge_self_invitation"))),
+    n("silent", "Nocticula", '''{n}Istrava claps twice. The musicians stop. Vhal steps to the bell with the baton raised, and the whole horseshoe leans toward him the way a crowd leans toward a gallows.
+He strikes.
+Nothing. Brass on brass, a dull little tap like a spoon on a cup, and then silence. The attendants in the gallery do not move. No light comes. Vhal strikes again, harder, and the bell swings on its hook and taps the wall, and someone at the end of the horseshoe giggles.{/n}
+"Is that the entertainment?" {n}Nocticula asks the room, pleasantly.{/n} "A man discovering silence? I've seen it done better in my cells. They usually scream first."
+{n}Istrava's coils tighten on the couch. She says something sharp to Vhal. Vhal, sweating, lifts the baton for a third try, and finds Nocticula standing beside him in the bell chamber, though nobody saw her climb the stair. She takes the baton out of his hand the way one takes a toy from a child.{/n}
+"You won't need this. It doesn't work. I had it seen to." {n}She glances up at your rail, and her eyes in the black silk are laughing.{/n} "By someone with very clever thumbs."
+{n}Vhal reaches for the baton. She lets him get his fingers on it and then breaks two of them, without looking, and he folds down onto his knees and stays there.{/n}
+"Listen to me, all of you." {n}She does not raise her voice. She has never had to.{/n} "The bell has no working left in it. It's only a bell. But you all know what it means when it rings in this house. That was the only magic it ever had: you, doing as you're told." {n}She taps the brass with the baton, very lightly. It gives a small, clear note.{/n} "So it still works. It simply works for me."''',
+      c('"Now the gallery."', "gallery", flags=f("lodge_unmarked"))),
+    n("guest", "Nocticula", '''{n}Rhez comes in on Nocticula's arm, masked, in the green coat, looking bored. She has been invited as the guest of honor and she walks like it, straight down the middle of the horseshoe toward the bell chamber, and Vhal comes down from the chamber to bow to her with the baton across his palms, as the house rules say he must.
+He is still bowing when she takes it.
+It is very neat. It would have been perfect, except that a guest on the nearest couch, a bull-necked thing with a jeweled snout who has been drinking since before the candles were lit, sees the baton change hands and does not like it, and puts a knife into Rhez's arm.
+Rhez does not drop the baton. She cannot stop it ringing, either: it strikes the bell as she twists away, once, and a line of pale fire runs across the masks in the lower gallery, and below you the three attendants scream together. The guests applaud. They think it has begun.
+Rhez hits the bell again on purpose, harder, the second stroke that ends the marks, and the fire goes out. Then she sits down on the floor with her back to the bell chamber wall, holding her arm, and bleeds.
+Nocticula has the snouted guest by the collar. She lifts him off his couch, walks him across the hall with his feet kicking, and drops him into Istrava's own seat, which Istrava has just vacated in a hurry.{/n}
 "You wanted service," {n}she tells him.{/n} "Begin by keeping it warm."
-{n}Rhez abandons the tray and tackles Vhal against the wall. The baton strikes the stair twice before she catches it. He takes a knife from his sleeve. She breaks his wrist against the rail, then backs toward the bell with the knife pointed away from her.
-The second ringing ends the marks. It does not end the guests' excitement. Several are already following the attendants toward the gallery.{/n}
-"Rhez cut her arm," {n}Nocticula says.{/n} "She kept the hand. Her own, in case you were about to admire her for collecting his."
-"Did the warning reach the attendants?"
-"Yes. They were running before the light appeared. One guest complained that we had spoiled the beginning. I suggested he improve the ending by sitting down."
-{n}She stops the account at the head of the lower stair. The bell is silent, but the house has not yet decided who is allowed to leave.{/n}''', c('"Show me the gallery before anyone calls this finished."', "gallery", flags=f("lodge_mark_ended", "lodge_rhez_hurt"))),
-    n("announcement", "Nocticula", '''{n}The musicians begin Istrava's welcome just as she reaches the middle of her own speech. A thin tenor proclaims the hostess the evening's most honored quarry.
-For one breath the room is perfectly quiet. Then somebody laughs.
-Istrava looks toward the musicians. Vhal leaves her couch with the baton raised to stop them. Rhez steps into his path and asks whether he intends to strike a guest with the instrument of welcome.
-He answers with his free hand. She lets the blow turn her, catches the baton against her shoulder and drives him into the empty place beside the musicians. The tenor finishes the announcement while they struggle.{/n}
-"Courage," {n}you say.{/n}
-"Spite. His mistress had made him rehearse it eleven times. We should not deprive the smaller virtues of their achievements."
-{n}Vhal loses the baton. Istrava calls for the hunt to begin, but the musician holding the bell rope has already let it go. Rhez stands below the housing with the baton at her side, and the hostess discovers that her voice alone does not enchant anybody.
-Nocticula steps between Istrava and the musicians. She asks whether the hostess wishes to demonstrate the entertainment she advertised. The question travels through the room more effectively than another threat would have done.
-The joke has exposed the mechanism. It has not made the guests harmless. Two leave their seats and start toward the lower gallery without waiting for permission.{/n}
-"They had paid for a hunt," {n}Nocticula says.{/n} "They resented discovering that the household had developed a sense of timing."''', c('"A good opening. Show me how the attendants got out."', "gallery", flags=f("lodge_unmarked", "lodge_host_exposed"))),
-    n("gallery", "Narrator", '''{n}Nocticula has no complete memory of the lower gallery. She replaces it with Edris's account: the open service door, a toppled basket, somebody crying because a borrowed mask will not come off.
-Edris cuts the ribbon rather than pulling against its hidden hook. The freed attendant runs into the yard. Her sister, Mera, remains beside the cabinet.
-The shoes are there. So are Istrava's smaller trophies: a comb, a child's wooden whistle a grown servant had kept since girlhood, three rings, a letter whose seal has been opened and closed too often. Mera refuses to leave them behind for the mistress to use against somebody else.
-Edris calls her name. Mera does not move.{/n}
-"They were not all hers to carry," {n}Nocticula says beside you.{/n} "That did not make her wrong about their use. It made the doorway too narrow for everything she wanted to save."
-{n}A guest reaches the end of the gallery. His mouth is full of teeth that were not visible at dinner. He tells the sisters that the performance has become convincing.
-Rhez appears behind him with Vhal's baton. She strikes the back of his knee. He falls hard enough to break the cabinet's lower door, and Mera snatches the shoes through the gap.
-The rest of the possessions spill onto the floor. Edris pulls her sister toward the yard. Rhez follows last, facing the guest until the door is closed between them.
-Nocticula does not show you the guest's injury. The next image is the service-yard door from outside, bowed inward by a blow.{/n}
-"Rhez broke his knee with the hostess's own baton," {n}she says.{/n} "Istrava has billed me for the cabinet. I shall send her the splinters."
-"Where were you?"
-"Preventing Istrava from ordering the yard locked. She had begun to understand which door mattered."
-{n}The image changes. Nocticula's remembered hand lies over Istrava's wrist. Neither woman smiles. The cages in the hostess's hair tremble with the effort of remaining still.{/n}''', c('"What did you make her surrender?"', "held")),
-    n("held", "Nocticula", '''"The yard. The names of the people she had invited to hunt. Her belief that I would leave once the immediate embarrassment had passed. And one of the moths from her hair, which I took out of its cage and ate in front of her guests. She will dream about it. I shall see to that personally."
-{n}She releases the copied wrist. In the remembered room, Istrava remains seated. Every guest has had enough time to see who asked permission to rise.
-The attendants reached Rhez's waiting escort. Mera has the shoes. The other possessions remain in the lodge, and the guest who pursued her has claimed that Rhez attacked him without provocation. Istrava has offered to dismiss his complaint if the escaped attendants return to confirm her account.
-Nocticula repeats the offer with an expression that makes the still room seem colder.{/n}
-"She has discovered that a hostage can be made out of a story. I have decided not to reward the discovery."
-"Then the hunt is over. The answer is not."
-"Exactly. I wanted you to see what happened before advising me what to pretend it meant."
-{n}She lets the dining room go. You find yourselves beside the old quay, the dining chair still lying where it first appeared. Nocticula steps over it rather than putting it back.
-She has not asked whether you are pleased with her. You realize that she has instead shown you where the plan failed, where her agents improvised and where she chose to remain. There are easier ways to arrange an evening with someone whose admiration you want.
-You tell her that Rhez should give her own account before either of you decides the next move.
-Nocticula answers that the account is already waiting. This time the quick reply feels less like correction than the pleasure of having reached the same unwelcome conclusion.{/n}''', c('[Hear the agents before choosing the answer to Istrava.]', flags=f("lodge_hunt_ended"))),
+{n}She picks the baton up off the floor where Rhez has let it roll, and looks at the blood on it, and at Rhez.{/n}
+"That arm cost me twenty years and three dead masters," {n}she says, to the whole room.{/n} "I'll remember who opened it." {n}The snouted guest, in Istrava's chair, begins very quietly to cry.{/n} "Rhez. Don't die. It would be so inconvenient." {n}Rhez, white to the lips, tells her lady where she can put the inconvenience. Nocticula laughs, delighted, and looks up at your rail.{/n}''',
+      c('"Rhez is cut. Make someone pay for it."', "gallery", flags=f("lodge_mark_ended", "lodge_rhez_hurt"))),
+    n("announcement", "Nocticula", '''{n}Istrava rises on her coils to make her welcome. Before she can open her mouth the musicians strike up, and a thin tenor steps forward with a card in his hand, and reads it out in a voice that fills the hall.
+It is Istrava's own invitation. You know, because you wrote it. It is in her hand, and her seal is on it, and it announces, in her own flowery phrases, that this evening's most honored quarry will be the lady of the house.
+Nobody moves. Then somebody laughs, high and nervous, and stops.
+Vhal comes down out of the bell chamber with the baton raised to strike the tenor, and Rhez, who has been standing behind the musicians in her green coat all evening holding a tray, steps into his way and asks him whether he means to hit a guest with the instrument of welcome. He hits her with his other hand instead. She lets the blow turn her, catches the baton against her shoulder, and puts him on the floor. The tenor, bless his spite, reads the card to the end.{/n}
+"Her rules," {n}Nocticula says, with enormous pleasure.{/n} "The house has rules, and she wrote them, and she signed them. I adore people who write their own sentences. It saves me the effort." {n}She takes the baton from Rhez, who gives it up with a bow.{/n}
+{n}Istrava is still standing on her coils at the head of the horseshoe. Her guests are looking at her. They are looking at her the way they looked at the attendants in the gallery when they came in: measuring, appetite stirring under the masks. She sees it. She sits down very slowly, and the moths in her hair throw themselves against their cages.{/n}
+"Look at their faces, darling," {n}Nocticula says up to your rail.{/n} "They're doing sums. Which is more dangerous: the hostess, or the house rule? They've never had to ask before."''',
+      c('"Let them keep doing sums. The gallery."', "gallery", flags=f("lodge_unmarked", "lodge_host_exposed"))),
+    n("gallery", "Narrator", '''{n}The lower gallery is a long room behind a railing, lined with cabinets, lit low so that the guests above can see down into it and the people in it cannot easily see up. The three attendants are dressed as Nocticula's returned passengers: sea-stained clothes, a fake brass bell for Vessa, a boot for Halren. Their masks have hooks sewn into the ribbons. One of them is crying behind hers and cannot stop.
+The service door at the far end opens a crack. Edris slips through it, in her yellow sleeve, and goes straight to the smallest of the three and takes her by the shoulders. That is Mera. She is wearing her mother's shoes, which are red, and a size too small, and she will not leave the cabinet where Istrava keeps the rest of the trophies: a comb, three rings, a child's wooden whistle that a grown servant kept from her girlhood. Edris cuts her mask's ribbon instead of pulling it, and hisses at her to come, and Mera shakes her head.
+A guest has come down into the gallery to watch them. Not one of the drunk ones. He is lean and plain-dressed, with a collector's iron chain of office round his neck and a tally-stick in his belt, and he leans on the railing and smiles at the sisters as though they were a debt he had been waiting a long time to collect.{/n}
+"That one," {n}Edris says, loud enough to carry, pointing up at him with the knife.{/n} "That's Suth. He buys the ones who run, and he collects on the ones who don't. He's got paper on both of us."
+{n}Suth touches his brow to her, courteously.
+Up in the bell chamber, Nocticula stands with the baton held loosely under the little brass bell. The hall below her has gone quiet. Istrava is watching her. The guests are watching her. Suth, in the gallery, has stopped smiling and is watching her too.
+Then she lifts her eyes, past all of them, to your rail.{/n}''',
+      c("[Meet her eyes across the hall.]", "held")),
+    n("held", "Nocticula", '''{n}Afterwards the hall is a mess. Couches overturned, wine and worse on the tiles, a mask lying face up in a puddle and smiling at the ceiling. The musicians have hidden under their own platform. Somewhere in the gardens a guest is still screaming, more and more faintly, as though walking away.
+Istrava lies on the floor of her own dining hall with her long tail tangled round a broken couch and Nocticula's bare foot on the back of her neck. Half the moth cages in her hair are crushed. The moths that got out are crawling on her face.
+Nocticula has taken the hostess's chair. She sits with one leg crossed over the other and the baton across her knee, and you stand at her right, where she has put you, still masked.{/n}
+"There," {n}she says.{/n} "Now we can talk like civilized people."
+{n}Istrava talks. It pours out of her, the way it does when people realize the floor they are lying on is the last floor they will own. Her patrons; the names of the people who paid for every hunt this season and the last; the house, the gardens, the gold in her strongbox, the list of every servant she ever rented and to whom. She will give all of it. She will give anything. She knows things about other houses. She knows things about the Ten Thousand Delights. She has a cousin—{/n}
+"Names, sweetheart," {n}Nocticula says.{/n} "All of them. Sing it like you mean it."
+{n}She reaches down without looking and picks a moth off Istrava's cheek, and eats it, slowly, in front of everyone who is left. Istrava stops talking. Nocticula licks the powder off her fingers.{/n}
+"You hunted under my protection," {n}she says, to Istrava, gently.{/n} "You took my name off the door and used it to make your guests feel safe while they ate people I'd never been asked about. That's a kind of theft I don't have a word for, because nobody ever tried it often enough to need one." {n}She lifts her foot. Istrava does not dare move.{/n} "And now you want to sell me my own city back, a piece at a time, and keep your skin."
+{n}She looks up at you. Behind the black silk her eyes are bright and hungry and perfectly calm.{/n}
+"What do I give her for it, darling?"''',
+      c('"Take the list from her mouth. Promise nothing."', flags=f("lodge_hunt_ended"))),
 ], "lodge_method_ready")
 
 s("closed_gallery", "The price of keeping a door shut", [
@@ -1229,176 +1220,130 @@ Nocticula signs Edris's passage order, adds a coat to Rhez's payment, and holds 
 ], "lodge_hunt_ended")
 
 s("unborrowed_evening", "An evening she did not borrow", [
-    n("start", "Narrator", '''{n}Nocticula is cutting a pear when you arrive. There is a plate beside her, a narrow couch and a window that looks onto the backs of unfamiliar buildings. The knife is plain. She has already eaten the neatest slice.
-She holds up the remaining half without rising.{/n}
-"I have no report for you."
-"A warning or an apology?"
-"An opportunity to discover how you behave without instructions."
-{n}You approach the window. Washing hangs between two balconies. One garment keeps catching on a broken shutter. Nocticula has copied the view from a room she once used above a perfume seller's shop. She does not tell you when.
-The room itself is new. She could have supplied a palace. Instead she has supplied a view with somebody else's washing in it and a couch too short for two people to sit without noticing each other.{/n}
-"Was the perfume good?"
-"Very. The seller watered it after becoming prosperous. I found the progression disappointing."
-"Did you kill him?"
-"I bought from his apprentice. His distress was much more educational."
-{n}She sets the knife on the plate, its edge turned away from the place beside her. You notice the gesture because the rest of the room has been so carefully indifferent to your arrival.
-When you look back at her, she has noticed you noticing.{/n}
-"If you intend to make an admirable speech about a knife, I shall have to put it back."
-"I was admiring your confidence that I might be distracted enough to sit on it."
-"Better. Come and disappoint my expectations in person."''',
-      c('[Sit beside her. Let the evening become private company.]', "close", flags=f("lodge_evening_close")),
-      c('"I want your company. Tonight I would rather talk than touch."', "talk", flags=f("lodge_evening_talk")),
-      c('"I cannot give you an unguarded evening tonight. Let us leave this one here."', "leave")),
-    n("close", "Nocticula", '''{n}She shifts just enough to make room. Your knee touches hers before either of you finds a more elaborate way of acknowledging that you chose the couch.
-Nocticula offers you a slice of pear. You take it from her fingers. She watches your mouth, then looks away first, which feels deliberate enough to be another kind of attention.{/n}
-"You are pleased with yourself," {n}you say.{/n}
-"I invited somebody whose questions usually improve an evening. I have temporarily removed the objects about which you ask them."
-"You remain."
-"I had noticed the flaw."
-{n}You kiss her. She lets the first kiss end, keeps her hand against your jaw, and decides how to begin the second. The difference is small and impossible to mistake.
-When you draw back, her expression has lost the amusement she uses to make other people explain themselves. She studies your face without immediately rewarding you for it.{/n}
-"You are not waiting for me to become somebody else," {n}she says.{/n}
-"Not tonight."
-"A careful answer."
-"You would distrust an unlimited one."
-{n}Her thumb moves once against your cheek. Then she takes her hand away and leans back, and lets you want the next one, because she enjoys watching it.
-The pear has begun to brown on its cut surface. Neither of you improves it.{/n}''', c('"Tell me what you were hoping I would ask."', "want")),
-    n("talk", "Nocticula", '''{n}She leaves the place beside her open and moves the plate to it. You take the chair near the window.
-For a little while she says nothing. The garment outside catches on the shutter again. She could free it by thinking of a better wind. She does not.{/n}
-"I had imagined a different arrangement," {n}she says at last.{/n}
-{n}You remind her that admitting it need not make this room disappear.{/n}
-"I am aware. I am deciding whether you will become unbearable if I demonstrate it."
-{n}You ask about the room above the perfume seller. She tells you that the back stair creaked on every fourth step and that a customer once spent an hour trying to identify a fragrance he had smelled on a woman who wished to avoid him. The apprentice sold him something entirely different and suggested he describe it to everybody he met.
-Nocticula admired the apprentice's judgment more than his price.{/n}
-{n}You ask whether the woman escaped him.{/n}
-"I do not know. I was there for perfume."
-{n}She divides the remaining pear between two plates and passes yours across the space you chose to keep.{/n}''', c('"You brought me somewhere you remember. Why this view?"', "want")),
-    n("leave", "Nocticula", '''{n}She sets the pear down. For an instant she looks as though she might ask which part of the invitation you cannot afford. Then she draws the knife toward herself and begins cutting the remaining fruit into smaller pieces.{/n}
-"Another answer I should have expected after inviting one."
-"The work can continue. I am not leaving you to answer Istrava alone."
-"I did not invite you here to purchase another day's assistance. Do not offer it as payment for disappointing me."
-{n}You let the correction stand. It is more honest than assuring her that you intended no disappointment.
-She looks up again. Her expression has settled into the familiar composure, though the plate now holds more slices than either of you would have needed.{/n}
-"Go, then. I will bring the answer about the lodge when there is an answer. You need not earn the right to hear it by staying on this couch."
-{n}The dream ends without a kiss or a promise of a later one. The operation remains open; this invitation does not.{/n}''', c('[Decline this private evening and continue the agreed work.]', flags=f("lodge_evening_finished", "lodge_evening_declined"))),
-    n("want", "Nocticula", '''"Because nobody in that street knew what I intended to do next."
-{n}She looks toward the balconies. For a moment the dream's light shifts, and you see a different arrangement of shutters beneath the present one. The memory has survived more than one version of the building.{/n}
-"They knew I could pay. They knew I disliked the perfume seller's new mixture. One woman decided I was somebody's expensive mistake. She advised me to acquire the room in my own name."
-"Did you?"
-"I already owned the building. It seemed unkind to interrupt her best advice."
-{n}The familiar arrogance makes you smile. Nocticula watches the smile with an attention that leaves the joke behind.{/n}
-"You see why I am difficult to advise. There is often a fact which makes the satisfying answer less useful."
-"You could supply the fact sooner."
-"And lose the answer people give when they believe I need them?"
-"That is one way to make sure you never learn what they would say if they knew you wanted them."
-{n}The remark lands harder than you intended. She sets her plate down carefully. Outside, the caught garment finally pulls free of the shutter and falls out of sight.
-You do not apologize merely because she has stopped smiling. Nocticula looks at the window, then back at you.{/n}
-"I wanted you here," {n}she says.{/n} "There. No missing fact. You may discover how much better it makes your judgment."
-"It makes the evening more difficult to dismiss."
-"A modest improvement. I shall endure it."
-{n}She asks what you do with an hour in which nobody has brought you a decision. You tell her such an hour usually acquires a decision before you have finished recognizing it. She laughs, cuts another slice of the pear, and asks again, and this time she waits with the knife still in her hand.{/n}
-"What do you want, when nobody is watching you want it? And which of your wants do you ruin for yourself?"''',
+    n("start", "Narrator", '''{n}This time she does not bother with a stair or a mask. You close your eyes in Drezen and open them in a high room in her palace, at a window, with the whole of Alushinyrra lying below you on fire.
+It is not burning. It only looks that way at night: the Middle City in its terraces of red lamps, the Fleshmarkets glowing like a brazier, the black canals between them catching the light and throwing it back. Somewhere down there is a hunting lodge with its doors kicked in. From here you cannot tell which light it is.
+Nocticula is sitting in the window. She has not changed since the hunt. There is still dried blood at the hem of her black gown that is not hers, and a smear of moth powder, gold and grey, along one cheekbone. She is cutting a pear on the sill with a plain kitchen knife, and she is eating the slices off the blade.{/n}
+"I'm hungry," {n}she says, without looking round.{/n} "A hunt does that. It always has. Mortals think it's the blood. It's the running. Everyone running at once, in the dark, and only one of them going to be caught, and none of them knowing which."
+{n}She holds the pear and the knife out to you, one in each hand.{/n}
+"Peel it. I want to watch your hands do something careful after tonight."
+{n}You take them. The pear is cold, as if it has come out of a well, and the knife is sharper than it looks. She watches your hands the whole time, the way she watched the bell chamber, and when the peel comes away in one long curl she takes it from your fingers and eats that too.{/n}
+{n}Below the window a procession is crossing the nearest bridge: lanterns, a curtained litter, a line of slaves on a chain shuffling behind it. She points at it with her chin.{/n}
+"One of Istrava's guests. Going home. He thinks he got out of that garden because he's clever." {n}She bites a slice off the blade.{/n} "He got out because I left a gate open for him, so that he'd go home and tell everyone on his street what he saw. By morning the whole Middle City will know whose garden it was. Dead guests don't gossip. Frightened ones never stop."
+"And Istrava?"
+"In her own cellar, with Rhez sitting on the door eating an apple. I'll go and look at her tomorrow night. I want her to have one whole day to think about what I'm going to do to her, and I haven't decided, and she knows that too." {n}She licks pear juice from her thumb.{/n} "Most of them break on the thinking, darling. The chains are only for decoration."
+"You found her," {n}she says.{/n} "Or you chose who'd be found, which is better. Do you know how long it has been since anybody gave me a name for a bell? Nobody gives me anything. They pay me. It's not the same." {n}She leans back against the window frame and puts her bare feet up in your lap, as if you were furniture she had bought for the purpose.{/n} "Sit. No, closer. The knife stays on the sill. I like to see it there while I decide."
+"Decide what?"
+"Whether I'm going to be patient." {n}She smiles. It is not a reassuring smile.{/n} "I was patient all evening. I let her talk. I'm tired of it."''',
+      c('[Sit beside her. Let her have the night.]', "close", flags=f("lodge_evening_close")),
+      c('"Talk to me first. Tell me what you see from this window."', "talk", flags=f("lodge_evening_talk")),
+      c('"Not tonight. Send me back to Drezen."', "leave")),
+    n("close", "Nocticula", '''{n}You sit where she has decided you will sit, with her feet in your lap and the city burning at your back. She takes the pear out of your hand and bites it, and then she takes your jaw in the same sticky hand and kisses you, and her mouth tastes of pear and of something under it, metallic, from the gardens.
+She does not let the kiss end when you would end it. She ends it when she likes, and pulls back an inch, and looks at you from very close.{/n}
+"There," {n}she says.{/n} "That's what I wanted in her hall, with my foot on her neck. I thought about it the whole time she was begging." {n}Her thumb moves along your lower lip, wiping off the juice, not gently.{/n} "Don't look shocked. You were watching through my eyes. You know exactly what I was thinking."
+{n}You do. That is the uncomfortable part.
+The knife lies on the sill beside her hip, where she can reach it and you cannot. She sees you notice, and is pleased.{/n}
+"Now," {n}she says.{/n} "You can ask me what I was hoping you'd ask. Or you can stop talking."''',
+      c('"Why here? Why this window, and not your bed?"', "want")),
+    n("talk", "Nocticula", '''{n}She looks at you for a long moment, as if deciding whether to be insulted. Then she takes her feet out of your lap, turns on the sill, and looks out.{/n}
+"Everything," {n}she says.{/n} "I see everything from this window. That's why I took it."
+{n}She points with the knife. The tower you are in, she tells you, belonged to somebody else once, a long time ago. A demon of some importance, who liked the view, and liked her, and had her brought up here to look at it with him. She does not remember his name. She remembers that he talked through the whole evening about what he owned, pointing at it, and that she let him, and that when he finally took her to bed she killed him in it, and then she came back to this window, alone, and looked at the city, and decided she wanted all of it.{/n}
+"It took longer than the evening," {n}she says.{/n} "Not much longer. Most of the people who owned those lights died in beds. The rest died in worse places. I built the islands on what was left of them." {n}She looks at you sideways.{/n} "Don't make that face. You asked what I see. I see everything I took."
+"And tonight?"
+"Tonight I took one more house, and watched a hostess learn whose hunt it was in a garden she thought was hers, and someone I like stood at a rail and decided it." {n}She cuts the last of the pear in two and gives you half.{/n} "That's a good night, in Alushinyrra. You should be flattered I shared it."''',
+      c('"Why bring me up here, then?"', "want")),
+    n("leave", "Nocticula", '''{n}She stops chewing. For a moment the only sound in the room is the noise of the city coming up through the window, music and screaming and bells, the ordinary noise of Alushinyrra at night.
+Then she takes her feet out of your lap and puts them back on the floor, one at a time, very deliberately.{/n}
+"Not tonight," {n}she repeats.{/n} "After a hunt. After I gave you my eyes. You stood in my city and chose who'd be torn apart, and you enjoyed it; I know you did, I was inside your head. And now you'd like to go home to your cot." {n}She laughs, and it is genuinely amused, which is worse than if it were angry.{/n} "Oh, darling. The work isn't the part you're afraid of, is it? It never is, with your sort."
+{n}She leans close, close enough that you can smell the gardens on her: crushed leaves, spilled wine, a stranger's blood gone brown at her hem.{/n} "You're afraid of the part where you lie here afterwards and know you liked both. The hunt and me. The same night, with the same hands." {n}She taps the flat of the knife against your knuckles, once, not quite hard enough to cut.{/n} "Get used to it. I did, a very long time ago, and look how well I've done."
+"The work goes on. I'm not walking away from the lodge."
+"I know you're not. I'd have you brought back if you tried." {n}She picks the knife up off the sill and cleans it on the hem of her gown, slowly, both sides.{/n} "I keep a list of nights owed. It's a very short list; most people don't live long enough to be on it. You're on it now. I'll collect when it suits me, and you won't be asked." {n}She sets the knife down.{/n} "Go on, then. I'll send for Laulieh. She's never once told me not tonight."
+{n}She lifts two fingers. Your cot in Drezen is suddenly very hard, and very cold, and you can still taste the pear.{/n}''',
+      c('[Wake in Drezen. The work goes on; the night is owed.]', flags=f("lodge_evening_finished", "lodge_evening_declined"))),
+    n("want", "Nocticula", '''"Because up here nobody in that city knows what I'll do next. Not Shamira, not my brother, not the dealers in the Fleshmarket who bet on my moods." {n}She turns the knife on the sill so that the lamplight runs along it.{/n} "Everything down there I took from somebody. You I only borrow, a night at a time, out of your cot. I want to see what you do with the nights."
+{n}She sits up. Her eyes, without the black silk, are the eyes you looked out of in the garden: very bright, very patient, entirely without pity.{/n}
+"You asked me nothing all night. You chose. Now I'm going to ask." {n}She points the knife at you, lightly, the tip just touching your breastbone.{/n} "What do you want, Commander? When there's no crusade watching and nobody kneeling. Not what you're owed. What you want. And which of your wants do you ruin for yourself, because you're afraid of what it would make you?"''',
       c('"I keep looking for the next danger. Sometimes I bring it into rooms where it was not invited."', "honest", flags=f("lodge_vigilance_admitted")),
       c('"I enjoy being necessary. I have called it duty when appetite would have been more honest."', "honest", flags=f("lodge_appetite_admitted")),
       c('"Small things. A meal while it is still hot. A voice without a report behind it. Enough sleep that waking is not an argument."', "want_small", flags=f("lodge_vigilance_admitted")),
       c('"Power. More of it than I have, and yours to measure it against."', "want_power", flags=f("lodge_appetite_admitted")),
       c('"The moment before the knife comes out. I have never found anything to match it."', "want_danger", flags=f("lodge_appetite_admitted")),
       c('"You. Here. With the knife put down."', "want_pleasure", flags=f("lodge_appetite_admitted"))),
-    n("want_small", "Nocticula", '''"How very mortal." {n}She says it the way another woman might say how very rare, and eats the slice she has cut.{/n} "A hot meal. I have had kings poisoned in the middle of theirs, and you want one. I could give you a dream of every one of those things tonight, solved, finished, never cold." {n}She does not. She watches you understand that she has chosen not to.{/n} "No. You would stop wanting them, and then what would I hold over you?"''',
+    n("want_small", "Nocticula", '''"How very mortal." {n}She says it the way another woman might say how very rare, and eats the slice she has cut.{/n} "A hot meal. I've had kings poisoned in the middle of theirs, and you want one. I could give you every one of those things tonight in a dream, finished, never cold." {n}She does not. She watches you understand that she has chosen not to.{/n} "No. You'd stop wanting them, and then what would I hold over you?"''',
       c("Continue", "honest")),
-    n("want_power", "Nocticula", '''{n}Her eyes brighten, the way a cat's do at a movement in the grass.{/n} "At last, an appetite with teeth. Measure it against mine, then, and discover how short your ruler is." {n}She taps the flat of the knife against your knee, once.{/n} "Most mortals who want power want the chair. The clever ones want the person who gives the chairs away. I have not yet decided which you are. Either way, I shall enjoy the attempt."''',
+    n("want_power", "Nocticula", '''{n}Her eyes brighten, the way a cat's do at a movement in the grass.{/n} "At last, an appetite with teeth. Measure it against mine, then, and discover how short your ruler is." {n}She taps the flat of the knife against your knee, once.{/n} "Most mortals who want power want the chair. The clever ones want the person who gives the chairs away. I haven't decided which you are. Either way, I'll enjoy watching you try."''',
       c("Continue", "honest")),
-    n("want_danger", "Nocticula", '''{n}She turns the knife so the lamplight runs along the edge, and lays it on the couch between you, point toward your hand.{/n} "Then you have come to the right couch." {n}She does not pick it up again.{/n} "I have killed people for sitting where you sit. I may yet kill you for it. And you are enjoying this more than the pear." {n}Her smile is slow.{/n} "So am I. How inconvenient for us both."''',
+    n("want_danger", "Nocticula", '''{n}She turns the knife so the lamplight runs along the edge, and lays it on the sill between you, point toward your hand.{/n} "Then you've come to the right window." {n}She does not pick it up again.{/n} "I've killed people for sitting where you're sitting. I may yet kill you for it. And you're enjoying this more than the pear." {n}Her smile is slow.{/n} "So am I. How inconvenient for us both."''',
       c("Continue", "honest")),
-    n("want_pleasure", "Nocticula", '''{n}She looks at the knife in her hand as if she had forgotten it, and sets it down on the plate, very precisely, where you can see it and cannot easily reach it.{/n} "There. Put down." {n}Her foot finds your ankle under the edge of the couch and stays there.{/n} "You ask for so little, for a Commander. I shall have to teach you to be greedier. Not tonight. Tonight I want to see how long you can bear to want it."''',
+    n("want_pleasure", "Nocticula", '''"Put down?" {n}She looks at the knife on the sill beside her hip, and back at you.{/n} "It's on the sill, where I can reach it. That's as down as it goes." {n}Her foot finds your thigh and stays there.{/n} "You ask for so little, for a Commander. I'll have to teach you to be greedier. Not all at once. I want to see how long you can bear to want it."''',
       c("Continue", "honest")),
-    n("honest", "Nocticula", '''"Then I shall resist congratulating you for noticing. People become remarkably satisfied with a confession which has not yet cost them anything."
-"And you?"
-"I have arranged an evening without an audience and spent much of it finding out whether I can still direct the conversation."
-"Can you?"
-"Less reliably than I prefer. More often than you admit."
-{n}She lets that answer sit between you, and pours the last of the wine into one cup, and drinks half of it before she hands it to you.
-You ask what she did after leaving the room above the perfume seller. She says she went somewhere she had been advised not to go. When you ask whether the advice was good, she answers that it would have kept her alive and left her dissatisfied. She found a third result, and the one who warned her did not.
-She does not tell you the place, or the name. She smiles at your wanting it.{/n}
-"Do not turn that into encouragement to ignore every warning I give you," {n}she says.{/n}
-"I was considering whether to ask for the address of the perfume shop."
-"The apprentice bought it. His successor waters the stock. I have found other disappointments."
-{n}She rises and goes to the window. The fallen garment is gone. The broken shutter remains. For a little while you watch the quiet view together, with the distance you chose earlier still between you, and Nocticula very plainly deciding how long she will let you keep it.
-When the dream thins, she is still at the window, and she does not turn round to watch you go.{/n}''', c('[Watch the window with her until the dream lets go.]', flags=f("lodge_evening_finished"))),
+    n("honest", "Nocticula", '''{n}She cuts the last slice of pear and holds it against your lower lip. When you reach for it with your mouth she draws it back and eats it herself.{/n}
+"That's a better confession than most," {n}she says.{/n} "It hasn't cost you anything yet, which is why you could say it. I'll make it cost something later. I'm good at that."
+{n}She turns back to the window. Below, the city goes on burning. A bell is ringing somewhere toward the Fleshmarkets, a big one, for a sale.{/n}
+"Istrava asked me tonight, while she was begging, why I care what one lamia does in one garden. It's a reasonable question. I have a thousand Istravas." {n}She is quiet for a while.{/n} "The answer is that she did it with my name. She made her guests feel safe by telling them I was watching over the house. I was. I was watching her steal from me, and enjoying it, and waiting for the right evening." {n}She glances at you.{/n} "And then you came, and it was the right evening."
+{n}It is the nearest she has come to saying anything kind. She leaves it there, at the window, with her face turned away from you so that you only see the side of it, gold with moth powder. Then she turns back, and it is gone, and she is smiling.{/n}
+"Don't make anything of that," {n}she says.{/n} "Go home. I'll send for you when the house is ready."''',
+      c('[Watch the city burn with her until the dream lets go.]', flags=f("lodge_evening_finished"))),
 ], "lodge_answer_sent")
 
 s("bell_without_master", "A bell without a master", [
-    n("start", "Narrator", '''{n}The silver bell stands on the quay with its housing removed. It is not the real bell, and Nocticula says so before you can ask whether she has begun furnishing the dream with stolen property.
-Beside it lies a folded coat. The lining is bright green.{/n}
-"Rhez chose it. She says she will enjoy discovering which people can recognize her without a tray in her hands."
-"Did you approve the expense?"
-"I had already promised a coat. It was an instructive lesson in allowing another person to finish a sentence."
-{n}Istrava has surrendered the hunting apparatus and the disputed possessions. She remains in her upper rooms under guard while Nocticula decides whether the lodge should remain hers to keep. Suth has supplied an account in which he mistook the escaping attendants for willing performers.
-His account is contradicted by Vhal, who admits that the masks' hooks were intended to keep the performers from abandoning their roles. Vhal has made the admission after being told that Istrava offered Suth as the sole culprit. He resents discovering that her bargain contained no protection for him.
-Nocticula has not mistaken his resentment for honesty. She has had the supplier compare the hooks to the original order. Istrava requested them herself.{/n}
-"Three people discovering how little loyalty they purchased," {n}she says.{/n} "I would find it more entertaining if it had not cost me so many good servants' nerves. Frightened staff drop things."
-{n}She turns the bell until its dark inner lip faces you. The marking inscription is visible inside, a chain of precise strokes whose purpose is uglier than their workmanship.{/n}''',
-      c('"What did our reply to her private offer obtain?"', "bounded", requires=f("lodge_offer_bounded")),
-      c('"Did she name the other patrons before realizing we had promised nothing?"', "bait", requires=f("lodge_offer_bait"))),
-    n("bounded", "Nocticula", '''"Suth's letters, a description of two meetings and another request to speak with me alone. The request was refused."
-{n}The letters establish that Suth purchased the right to choose one performer. They do not establish that he invented the hunt. Nocticula has preserved that distinction in the charge against him, despite Istrava's insistence that the payments should prove everything she wants them to prove.
-The hostess withheld the names of several other guests who helped finance the evening. Identifying them will take longer. Nocticula will not send the escaped attendants back into the lodge to describe faces; she has spent too much getting them out to risk them on a guest list.{/n}
-"A narrower answer," {n}Nocticula says.{/n} "It has the advantage that nobody can truthfully say I promised to listen to her favorite excuse in private."
-"Will she stop asking?"
-"No. Persistence is sometimes the last possession a foolish person has not managed to sell."
-{n}She places the letters beneath the coat, leaving the personal request outside the pile. The difference is deliberate: usable evidence has entered the account; the proposed access has not.
-The guests she has not yet named she writes on a separate sheet, in a smaller hand, and folds it into her sleeve. "Those," she says, "I shall visit personally."{/n}''', c('"Then decide the lodge\'s future without pretending the whole audience is accounted for."', "judgment")),
-    n("bait", "Nocticula", '''"Four. Two were already known to me. The third had paid through a servant. The fourth believed the evening had been canceled. He was furious to learn that his hosts had kept his money."
-{n}Your feigned interest drew a longer list from Istrava. It also gave her a story to sell: that Nocticula had considered a private bargain and abandoned it only when the price became inconvenient.
-Nocticula has answered by publishing the exact message she sent. Its silence about forgiveness is plain. Its willingness to receive more information is equally plain. Some readers will call that a distinction made for convenience. She cannot control whether they enjoy the accusation.{/n}
-"You knew she would try that," {n}you say.{/n}
-"Yes. I decided the names were worth hearing the complaint. I do not intend to call the decision spotless merely because you helped make it."
-{n}The new names let her guards identify a collector waiting near Edris's lodging. He left when asked which guest had paid him. Edris and Mera departed by a different street.
-Nocticula places that brief report beside the longer public answer. One is a practical gain. The other is the price of obtaining it by letting an enemy believe she had begun to negotiate.{/n}
-"I would make the purchase again," {n}she says.{/n} "You may disagree, but you should know what I believe I bought."''', c('"Keep the gain and the cost in the account. What becomes of the lodge?"', "judgment")),
-    n("judgment", "Nocticula", '''{n}There are two proposals. Under the first, Istrava loses the lodge and leaves the city under escort after surrendering the bell and paying the attendants from the sale of its furnishings. She retains her life and her capacity to resent both of you. The house will close until somebody can operate it without the hunt.
-Under the second, she remains as a watched proprietor beneath Nocticula's authority. The gallery becomes a place where visitors may request protection in exchange for naming the patron who threatened them. Nocticula would gain informants, a useful address and an unhappy hostess whose survival depends on remembering the new rules.
-Neither proposal returns the old trophies to her. Suth must surrender the people his collectors are presently holding under the lodge's authority; cases outside that authority remain separate, dangerous work. Vhal will lose his position and give evidence before he is permitted to leave.
-Nocticula does not offer to destroy every similar house in the city as part of this decision.{/n}
-"You could kill Istrava," {n}you say.{/n}
-"I could. I have no shortage of dead enemies. At present she can finance part of her own defeat, which recommends keeping her alive long enough to discover how much she dislikes it."
-"And afterward?"
-"If she begins another hunt under a name she thinks I will not recognize, I will reconsider how educational I wish to be."
-{n}She looks at you over the bell. She wants the house; it is written in the way her hand rests on the housing, as if it were already hers. She has laid the other proposal beside it all the same, and she is watching to see whether you have the nerve to take something she wants away from her.{/n}''',
-      c('"Close it. Give the attendants their property and the means to leave. Do not make their escape an advertisement for your new address."', "close", flags=f("lodge_closed_house")),
-      c('"Keep the address and break her monopoly over fear. We can make her house useful to people she used to trap."', "keep", flags=f("lodge_kept_house"))),
-    n("close", "Nocticula", '''"You prefer a smaller result which cannot quietly grow into one of my advantages."
-"I prefer these people to know when the arrangement has ended. You have other advantages."
-"I do. I am fond of acquiring more."
-{n}She sends the order to close the lodge. The gallery is emptied before the furnishings are sold. The attendants can claim their share without returning to serve a final evening or thanking Nocticula before an audience.
-The sale will take time. Until it is completed, she advances the agreed payments and claims reimbursement from the proceeds. Some of the expensive furniture proves less valuable when its history accompanies it. She bears that difference, and tells you exactly why she dislikes doing so.
-Istrava departs alive. Her escort does not promise her an agreeable destination. It does prevent her from taking one last servant as luggage.{/n}
-"I had begun imagining a very useful room," {n}Nocticula says.{/n}
-"You have been building one on this quay."
-{n}She looks sharply at you. Then the expression changes, though not into surrender.{/n}
-"That room is not a consolation prize for every other room you persuade me to abandon. Be careful how often you offer it that employment."
-"Fair. I wanted the house closed. I will not pretend I have paid you for it."
-{n}She lets the bell's shadow lengthen across the quay. The agreement remains, with the disagreement plainly inside it.{/n}''', c('[Accept the closure, its expense and Istrava\'s surviving hostility.]', "last", flags=f("lodge_payment_advanced"))),
-    n("keep", "Nocticula", '''"A useful sentence. It will sound better to the people seeking protection than to the hostess required to provide it."
-{n}Nocticula appoints a supervisor whom Istrava cannot dismiss. Visitors may come and go without names. Those who want her protection pay for it in the only coin she wants from them: who frightened them, and where he sleeps. The old attendants are paid off and sent away with their possessions; people who know the rooms that well are more dangerous inside than out.
-Istrava keeps a share of the business and no authority over the gallery's exits. She accepts because the alternative is losing everything the house supplies. Nocticula watches her sign with the expression of a cat that has been handed the mouse and asked to keep it alive.{/n}
-"She will look for a way around it," {n}you say.{/n}
-"She already has. She asked whether private rooms were outside the gallery's rules. I told her the doors would be removed until she developed a better question."
-"You enjoyed that."
-"You helped give me the occasion. Do not become shy about your contribution now."
-{n}There is approval in the answer, and a demand. If you stand beside her while she acquires power, she will not let you attribute every uncomfortable part of the victory to her nature alone.
-The address becomes one of her instruments. It may save somebody who would otherwise have nowhere to go. It will also tell her who is afraid of whom, and she intends to use what she learns.{/n}''', c('[Keep the useful house and accept responsibility for the information it will sell.]', "last", flags=f("lodge_information_post"))),
-    n("last", "Nocticula", '''{n}Nocticula lifts the copied bell. Without its housing it looks smaller than the fear it caused.
-She asks what should happen to its real inscription. You answer that nobody should be marked as quarry by that bell again. She has already arranged for the inner lip to be cut away and melted separately. The rest can be sold as silver or hung somewhere its noise has an ordinary purpose.
-She keeps the baton. It has no authority without the inscription, and she enjoys the idea of Istrava wondering where it is.{/n}
-"You do not need it," {n}you say.{/n}
-"No. I am allowed an occasional unnecessary pleasure."
-{n}She sets it beside the green-lined coat. Two objects out of a night's violence, neither doing the work for which its former owner intended it.
-You ask whether Rhez knows what became of Suth's complaint. Nocticula answers that Rhez received the dismissal before receiving the coat. She insisted on that order herself.
-For a moment Nocticula looks almost offended by how much she approves of the insistence.{/n}
-"She is going to become expensive," {n}she says.{/n}
-"You could hire someone easier to impress."
-"I have been trying that for centuries. The results have made this evening possible."
-{n}She lets you hear the unmarked bell once. It has a clear, ordinary note. Nothing in the dream begins to hunt.{/n}''', c('[Finish the answer to the lodge and hear what the survivors choose next.]', flags=f("lodge_judgment_finished"))),
+    n("start", "Narrator", '''{n}The next night she takes you back to the lodge.
+It is empty now, or nearly. The candles are out. The couches in the dining hall have been righted and stripped, and someone has scrubbed the tiles, not well; in the light of the lamp Nocticula carries you can see where the scrubbing gave up. The garden doors are boarded. The smell of musk is still in the walls.
+She walks it the way a woman walks a house she has just bought: slowly, touching things, opening cupboards to see how deep they go. She runs a finger along the back of Istrava's couch and looks at the dust on it and wipes it on the wall. She tries the bell chamber stair and finds the third step creaks, and goes up and down it twice to be sure.
+The bell itself lies on the floor of the hall, where it fell. A little brass thing, no bigger than a fist, dented on one side. Nocticula nudges it with her bare toe, and it rolls, and gives a small flat note.{/n}
+"What does one do with a hunting lodge?" {n}she asks you.{/n} "Hunt, darling. Obviously. The question is who."
+{n}Below your feet, through the floor, something knocks: slow, heavy, irregular, like a tail striking stone.
+Istrava is in her own cellar. Rhez put her there last night and has been sitting on the cellar door since, with her coat over her shoulders, eating an apple. When Nocticula comes past she gets up and opens it without being told, and the smell that comes up is wine and damp and lamia. In the dark at the bottom of the stair the hostess of the house lies chained to her own racks by the throat and the wrists and the root of the tail, and her hair is full of empty cages.{/n}
+"She hasn't stopped talking," {n}Rhez says.{/n} "I put a cork in her for an hour. She talked round it."
+"She'll stop when I'm finished with her," {n}Nocticula says.{/n} "And the guests?"
+"The ones who are left? Upstairs. In the long room. Still drinking." {n}Rhez shrugs.{/n} "They think they're your guests now. Nobody told them otherwise."
+{n}Nocticula smiles at that, and closes the cellar door on the knocking, and turns to you with the lamp held up so that she can see your face.{/n}''',
+      c('"What did her list give you?"', "bounded", requires=f("lodge_offer_bounded")),
+      c('"Did she sing every name before she understood she\'d bought nothing?"', "bait", requires=f("lodge_offer_bait"))),
+    n("bounded", "Nocticula", '''"Everything she had," {n}Nocticula says.{/n} "Which is what one gets, promising nothing. People give much more when they're not sure of the price."
+{n}She tells you what the list was worth, ticking it off on her fingers like a girl counting presents. Eleven patrons who paid for this season's hunts, and where they sleep. Four other houses that run the same game under her protection, smaller and quieter, in the Ten Thousand Delights. A Fleshmarket dealer who rented Istrava her quarry by the night and took them back afterwards in whatever condition they were in.{/n}
+"I've visited two of the patrons already, this afternoon," {n}she says.{/n} "One of them is in the cellar now, beside her; I thought she'd like the company. The other wasn't at home, so I took his house instead. I'm going to have so many houses." {n}She sounds delighted.{/n} "The dealer I'm saving. He'll keep. Dealers always think they can sell their way out, and I want to hear what he offers."
+"And Istrava? What does she think she bought?"
+"Nothing. I told her nothing, and she believed me, which is the only clever thing she's done all year." {n}She swings the lamp toward the cellar door.{/n} "She keeps asking me what I'm going to do with her. I keep telling her I haven't decided. It's true. I like to watch her hope."''',
+      c('"Then decide what the house is for."', "judgment")),
+    n("bait", "Nocticula", '''"Every one," {n}Nocticula says, with enormous satisfaction.{/n} "Every patron, every house, every dealer who ever rented her a body for the night. She sang it like a canary. She thought each name was buying her another hour, and so it was, in a way. She just didn't know how few hours there were."
+{n}She tells you about the moment Istrava understood. It was near the end, after the last name. Istrava had stopped, and waited, and looked up from the floor at the Lady in Shadow sitting in her chair, and asked what she had bought. And Nocticula had told her: you, darling, have bought the right to know that you told me everything. Nobody else in the city will ever be able to say that.{/n}
+"Her face," {n}Nocticula says. She closes her eyes, remembering it, and smiles.{/n} "You gave me that. You said: let her think she's buying her life. I'll keep that face in my collection forever."
+"Has the story got out?"
+"Of course it has. Half the Middle City knows Istrava tried to buy herself from me and was robbed in the process. Several of them have written to say how shocked they are that I'd bargain with such a creature." {n}She laughs.{/n} "They're terrified I'll bargain with them. Good. Let them write. Let them wonder what I'd charge."''',
+      c('"Then decide what the house is for."', "judgment")),
+    n("judgment", "Nocticula", '''{n}She sets the lamp down on Istrava's couch and walks out into the middle of the hall, where the bell lies, and turns round slowly, looking up at the bell chamber, the gallery, the boarded garden doors.{/n}
+"I can think of three things to do with it," {n}she says.{/n} "I can burn it. Tonight, with the guests upstairs, still drunk, still thinking they're mine. Leave the doors open; it'll draw better. The whole Middle City will see it from the canals, and everyone who ever paid to hunt in a house under my protection will know exactly what the smoke means."
+{n}She nudges the bell with her toe again. It rolls.{/n}
+"Or I can keep it. Hunt here myself. It's a good house for it; she was a fool but she had taste. I'd keep her in the cellar for the season and let her out on the first night, and see how well she knows her own gardens when she's the one running." {n}Her eyes glitter.{/n} "Or I give it to Rhez. On a leash. Rhez has never been given anything in her life. I want to see whether she bites."
+{n}Rhez, in the doorway with her apple, says nothing at all. She has stopped chewing.{/n}
+"You decide," {n}Nocticula says to you.{/n} "I'll enjoy any of them. That's the luxury of owning things."''',
+      c('"Burn it. Guests inside."', "close", flags=f("lodge_closed_house")),
+      c('"Keep it. Hunt here yourself."', "keep", flags=f("lodge_kept_house"))),
+    n("close", "Nocticula", '''"Oh, good," {n}she says, softly.{/n}
+{n}She does it herself. She goes up the stair to the long room, where you can hear the guests laughing, and opens the door and says something, and the laughing gets louder. Then she comes back down and locks the door behind her with Istrava's own key, and drops the key into the bell's mouth, and touches the wall.
+The fire starts in the walls, not on them. It comes up through the plaster like a blush. In a few breaths the whole upper floor is roaring, and the laughing has turned into something else, and fists are hammering on the locked door, and then not.
+At the last moment she goes down into the cellar, alone, and comes back up the stair dragging Istrava by the chain round her throat. The hostess is coughing, sooty, her tail thrashing on the steps. Nocticula hauls her out into the yard like a sack and drops her on the gravel.{/n}
+"For the collection," {n}she says to you, a little breathless, delighted.{/n} "I couldn't let her miss it. Look, Istrava. Look at your house."
+{n}Istrava looks. Behind you the lodge burns, all of it, the gallery and the cabinets and the bell chamber, and the light of it goes up over the old pleasure garden and out across the canals, and down in the Middle City people come out onto their roofs to watch.
+Nocticula stands in the yard with the fire on her face and her hand wound in the chain, and laughs, long and hard, the way she laughed in the throne hall when the court laughed with her. There is nobody here to laugh with her now except Rhez. Rhez does.{/n}''',
+      c('[Watch it burn.]', "last", flags=f("lodge_payment_advanced"))),
+    n("keep", "Nocticula", '''"Yes," {n}she says, and you can hear that it is the answer she wanted.{/n}
+{n}She goes down into the cellar, and you go with her, and she crouches in front of Istrava in the wet dark and takes her chin in one hand and turns her face up to the lamp.{/n}
+"You're staying," {n}she tells her.{/n} "Isn't that nice? It's your house. You know every hedge in that garden, every dry fountain, every hole in the wall. I'm going to open the house again at the end of the month, with new guests, and on the first night of the season I'm going to take the chains off you and ring that little bell, and they're going to find out how well you know it." {n}She pats Istrava's cheek.{/n} "If you're very clever, you'll last till dawn. If you last till dawn, I'll put you back down here, and we'll do it again next season."
+{n}Istrava says nothing. She has finally stopped talking.
+Upstairs, Nocticula gives her orders. The guests in the long room are to be woken and thanked and sent home, all of them, with a gift each: an invitation to the opening of the season, in Istrava's hand, under Nocticula's seal. They will all come. Nobody refuses the Lady in Shadow's invitations, and it will be an excellent opportunity to see which of them were Istrava's friends.{/n}
+"I'll keep the bell," {n}she says, picking it up off the floor and turning it in her fingers.{/n} "Dented. I like it dented. It'll remind her."''',
+      c('[Leave Istrava in her cellar for the season.]', "last", flags=f("lodge_information_post"))),
+    n("last", "Nocticula", '''{n}When you come out into the yard there is a man waiting there under guard.
+It is Suth, the collector from the gallery. He has been kept somewhere overnight, and it shows: his plain coat is torn, there is blood dried in his beard, and both his hands are bound up in rags, because Rhez spent part of the night asking him questions about them. But he has his chain of office round his neck still, and his tally-stick in his belt, and when he sees Nocticula he goes down on one knee on the gravel, carefully, like a man who has knelt to a great many important people and knows exactly how low to go.{/n}
+"Lady," {n}he says.{/n} "With respect. I'm a collector. Lawful. I've a hall in the Middle City and forty men and my paper's good in every court on the islands." {n}He nods toward the gate, where Edris and Mera stand with Rhez.{/n} "Those two cunts owe me forty silver apiece. Their mother sold them to Istrava's house on my credit. They carry my marks. Lawful debts, Lady. I'm only asking what's mine."
+{n}Nocticula looks at him for a long moment. Then she looks at Rhez.{/n}
+"Rhez," {n}she says,{/n} "he said 'owe'. In my house."
+"I heard him, Lady."
+"Lawful." {n}She tastes the word.{/n} "In my city. Say it again, Suth. Slowly. I want Rhez to hear it properly."
+{n}Suth does not say it again. He has gone very pale above the beard. He is looking at you now, because you are the only one in the yard who has not yet said anything, and he has seen in the gallery who chose the name for the bell.{/n}
+"Well, darling?" {n}Nocticula says.{/n} "What do I do with a man who collects in my city on paper I never signed?"''',
+      c('"Send his hands to his collectors\' hall."', flags=f("lodge_judgment_finished"))),
 ], "lodge_evening_finished")
 
 s("counterseal", "The name beneath the debt", [
@@ -1492,358 +1437,221 @@ When the desk disappears, its short leg leaves a crooked impression in the dust.
 ], "lodge_judgment_finished")
 
 s("no_applause", "No applause at the departure", [
-    n("start", "Narrator", '''{n}The report arrives without a reconstructed audience. Nocticula reads it while standing beside the quay, where she has placed a single narrow bench.
-Edris and Mera have left by the known route Nocticula offered. They took the shoes, the remaining wages and a small trunk purchased from a woman who tried to charge extra after learning whose agent was paying. Rhez refused the increase. Mera found a cheaper trunk herself.
-The letter says they did not wait for a farewell ceremony. It also says Edris asked whether her account would be sold to a playwright.{/n}
-"I told her I had not commissioned one," {n}Nocticula says.{/n} "She asked me to maintain that excellent judgment."
+    n("start", "Narrator", '''{n}Dawn, in so far as Alushinyrra has one: a thinning of the red over the Middle City, and a grey light coming up off the canals.
+She has brought you to a gate. It is one of the old landward gates of the Middle City, a high black arch with the docks beyond it and the long road down to the water, and the night's traffic is coming in through it: carts of meat, a coffle of slaves on a chain, a drunk incubus singing. Just inside the arch there is a stone bench, and Nocticula is sitting on it with her legs crossed, eating cherries out of a paper twist and spitting the stones into the gutter.
+Across the road, against the wall of a cookshop, stand Edris and Mera. They have a trunk between them, a small cheap one with a broken strap, and Mera is wearing her mother's red shoes. They are holding hands. They look the way people look when they have been told something very good and have not yet worked out what is wrong with it.{/n}
+"I took my flower off them this morning," {n}Nocticula says.{/n} "Both of them. Stood them in front of me and took it off, like a collar. They're free." {n}She spits a stone.{/n} "Do you know what free means, in my city?"
+"Tell me."
+"It means nobody's. It means that anyone who catches them may keep them." {n}She holds out the twist of cherries to you.{/n} "Every dealer in the Fleshmarket knows their faces by now. Every collector. Every bored thing on the docks that likes the look of red shoes. I've given them the road, and the morning, and nothing else. Let's see how far a bird gets without a cage in Alushinyrra."
+{n}Mera has noticed you. She is looking across the road at the Lady on the bench with an expression you cannot read: fear, certainly, and something sharper than fear.{/n}''',
+      c('"There\'s still smoke on the hill."', "closed_account", requires=f("lodge_closed_house")),
+      c('"And your new house? Did the season open?"', "kept_account", requires=f("lodge_kept_house"))),
+    n("closed_account", "Nocticula", '''{n}She follows your look. Up on the hill above the old pleasure garden a thin column of smoke still stands against the grey, going straight up in the windless air.{/n}
+"It burned all night," {n}she says, pleased.{/n} "I sat up and watched. The Middle City sat up with me; I could see them on the roofs. Three other houses closed their doors before morning without being asked. One of them sent me its bell in a box, with a very frightened letter." {n}She smiles.{/n} "I'm going to have a shelf of bells. Istrava's I keep by my bed. She has a cage in my gallery now, and every night I ring it once, and she flinches. It's a lovely sound."''',
+      c('"And the collector?"', "debt_report")),
+    n("kept_account", "Nocticula", '''"Last night." {n}She looks satisfied enough to purr.{/n} "New guests, new masks, the same old gardens. They all came; nobody refuses my invitations. I took the chains off her myself at midnight and rang her own little dented bell, and you should have seen her go."
+"Did she last till dawn?"
+"She lasted till the second fountain. They brought her back with a guest's teeth still in her tail, and I put her back in the cellar to heal for next time." {n}She eats a cherry.{/n} "Whoever holds the keys to that house, it's mine. That's the point of it. Every guest who came last night knows now what happens to a house that hunts on my name, and every one of them was too frightened to leave early." {n}She spits the stone.{/n} "Good business. Better sport."''',
+      c('"And the collector?"', "debt_report")),
+    n("debt_report", "Narrator", '''{n}At the name, Edris looks up sharply from across the road. Mera's hand tightens on her sister's. Nocticula sees both and is amused, and does not lower her voice at all when she answers.{/n}''',
+      c('"Did his hands reach his hall?"', "debt_refused", requires=f("lodge_debt_denied")),
+      c('"Is he collecting for you yet?"', "debt_bought", requires=f("lodge_debt_purchased"))),
+    n("debt_refused", "Nocticula", '''"In a box. Rhez took them herself, and set them on his table in front of his forty men, and asked who was in charge now." {n}Nocticula spits a cherry stone into the gutter.{/n} "Nobody was. They've closed the hall. They're selling his paper in the Fleshmarket by the bale, very cheaply, and nobody is buying it, because nobody wants to be the next collector to say 'owe' in my city."
+{n}Across the road Mera has heard every word. She is staring at Nocticula. Edris has one hand pressed flat over her own mouth.{/n}
+"So there's no paper on them anywhere now," {n}Nocticula says.{/n} "Nobody's chasing them for a debt. They're simply free." {n}She smiles at the sisters, and waves her fingers at them.{/n} "Which is a different thing entirely."''',
+      c('"How is Rhez\'s arm?"', "wound", requires=f("lodge_rhez_hurt")),
+      c('"What does Rhez want next?"', "agent", requires=f("lodge_unmarked", "lodge_silent_bell")),
+      c('"What does Rhez want next?"', "agent_announcement", requires=f("lodge_unmarked", "lodge_self_invitation"), forbids=f("lodge_silent_bell"))),
+    n("debt_bought", "Nocticula", '''"He started this morning." {n}Nocticula tilts her head toward the far end of the road, where it goes down between the warehouses to the docks.{/n}
+{n}You look. Down there, under a cookshop awning, a lean man in a plain coat is standing with half a dozen others round him, and his hands are bandaged, and he has a new chain of office round his neck. Even from here you can see that the badge on it is a black flower.{/n}
+"He collects for me now," {n}she says.{/n} "His hall, his forty men, his lovely paper; all mine. I bought him for the price of his hands, and gave him the hands back. He's very grateful. You'd be surprised how hard a grateful man works." {n}She spits a stone.{/n} "And he does know those two. Their faces. Their mother. The street their aunt lives on. He knows them better than anyone in Alushinyrra."
+{n}Across the road Edris has seen him too. She has gone very still.{/n}''',
+      c('"How is Rhez\'s arm?"', "wound", requires=f("lodge_rhez_hurt")),
+      c('"What does Rhez want next?"', "agent", requires=f("lodge_unmarked", "lodge_silent_bell")),
+      c('"What does Rhez want next?"', "agent_announcement", requires=f("lodge_unmarked", "lodge_self_invitation"), forbids=f("lodge_silent_bell"))),
+    n("wound", "Nocticula", '''"Healing. She can use the hand. She can't yet fasten the coat without swearing, which she does beautifully." {n}Nocticula looks pleased with Rhez, the way one is pleased with a good horse.{/n} "She came to me yesterday and asked for the man with the jeweled snout. The one who opened her arm. I'd kept him for her."
+"What did she do with him?"
+"Nothing yet. She's making him wait in a cell beside the one where Vhal is giving his evidence. Vhal gives it standing up, by the way, for as long as it takes; I thought that was fair, for a man who used to make the servants stand all night." {n}She eats a cherry.{/n} "When they've both finished, Rhez may decide which hand each of them leaves my city with. I thought she'd like to choose. You see, darling, I can be generous with the people who bleed for me."''',
+      c('"Let Rhez collect. Then let\'s see your wager."', "credit")),
+    n("agent", "Nocticula", '''"The next job." {n}Nocticula smiles.{/n} "She always wants the next job. She came to me last night with her coat on and asked what was after Istrava, and I told her nothing, yet, and she looked so disappointed that I almost found her someone to kill on the spot."
 "Will you?"
-"I prefer my celebrations to have an audience that is afraid of me, not one that is merely relieved. Relief goes stale by the second course."
-{n}She folds the letter along an existing crease. There is no message of gratitude hidden inside. Edris thanked Rhez, named the guard who stayed by the service door, and asked that Mera's new location remain private. Nocticula received a factual account of a promise fulfilled.
-She has brought it to you without correcting that omission.{/n}
-"You expected more," {n}you say.{/n}
-"I expected her to ask for more. I am deciding whether to be relieved or insulted by how little she wishes to do with me."
-"Both seems available."
-"You have become very generous with answers which cost you nothing."''',
-      c('"What did closing the house leave us to answer?"', "closed_account", requires=f("lodge_closed_house")),
-      c('"What has your new address cost its first visitors?"', "kept_account", requires=f("lodge_kept_house"))),
-    n("closed_account", "Nocticula", '''"An empty building, a bill and several people who can no longer be summoned back merely because their former employer dislikes an absence."
-{n}She places the sale account beside Edris's letter. The advance has not yet been repaid in full. Two buyers lowered their offers when they discovered she would not include the attendants' debts among the furnishings.{/n}
-"You knew it would cost you."
-"I knew it would cost something. People confuse those statements when they want me to stop reading a bill."
-{n}She folds the account with one sharp crease.{/n}
-"I gave up a useful address. I have not given up the right to remember why."''',
-      c('"And the creditor who tried to follow them out?"', "debt_report")),
-    n("kept_account", "Nocticula", '''"Two visitors have requested protection. One named a patron I knew. The other named the first visitor. My supervisor has had an interesting morning."
-{n}She shows you the report with the names inked out; those belong to her. Both visitors have been given rooms that lock from the outside while their stories are set against each other. One of them will turn out to be lying, and she is looking forward to finding out which.{/n}
-"A useful address," {n}you say.{/n}
-"Yes. Also a place where somebody will eventually tell a convincing lie. I appointed an investigator, not a collector of agreeable accusations."
-{n}She keeps the report when you have finished looking.{/n}
-"I acquired this advantage. I intend to keep it worth owning."''',
-      c('"And the creditor who tried to follow them out?"', "debt_report")),
-    n("debt_report", "Narrator", '''{n}Beneath the lodge account lies the answer to the debt broker. Nocticula has left his seal intact beside the copy of her own order.{/n}''',
-      c('"Did your public refusal hold?"', "debt_refused", requires=f("lodge_debt_denied")),
-      c('"Did the purchase reveal the guarantor?"', "debt_bought", requires=f("lodge_debt_purchased"))),
-    n("debt_refused", "Nocticula", '''"He withdrew the claim against my household. He has not withdrawn his opinion of you."
-{n}Her notice has made the supposed transfer impossible to sell as an acknowledged debt. One lender nevertheless offered the broker a small price for the chance of collecting from Mera herself. Nocticula bought the name of that lender from his clerk. Rhez sent the warning ahead of the sisters, with the original dates needed to challenge a claim.
-The danger is smaller, and specific enough to watch. It has not vanished beneath a magnificent signature.{/n}
-"You wanted him to lose the market," {n}you say.{/n}
-"He has lost the comfortable part. I shall be interested to discover how much he enjoys the remainder."''',
-      c('"How is Rhez\'s arm?"', "wound", requires=f("lodge_rhez_hurt")),
-      c('"What does Rhez want next?"', "agent", requires=f("lodge_unmarked", "lodge_silent_bell")),
-      c('"What does Rhez want next?"', "agent_announcement", requires=f("lodge_unmarked", "lodge_self_invitation"), forbids=f("lodge_silent_bell"))),
-    n("debt_bought", "Nocticula", '''"A patron who guaranteed Istrava's purchases and now regrets the precision of his signature. He has offered to pay half. I have sent him the part of the document concerning the other half."
-{n}The broker delivered the original schedule. Mera's entry bears a date before she entered Istrava's service; the extra charge was invented afterward. Nocticula canceled that entry and sent the canceled original to her. The household guarantor remains liable for the amount he actually promised, without a claim against the former servants.
-It is a smaller debt than the one the broker hoped to sell. Nocticula has bought it cheaply enough to remain pleased.{/n}
-"He called my purchase an act of mercy," {n}she says.{/n}
-"An expensive misunderstanding."
-"For him. You begin to understand why I wanted the original."''',
-      c('"How is Rhez\'s arm?"', "wound", requires=f("lodge_rhez_hurt")),
-      c('"What does Rhez want next?"', "agent", requires=f("lodge_unmarked", "lodge_silent_bell")),
-      c('"What does Rhez want next?"', "agent_announcement", requires=f("lodge_unmarked", "lodge_self_invitation"), forbids=f("lodge_silent_bell"))),
-    n("wound", "Nocticula", '''"Healing. She can use the hand. She cannot yet fasten the coat without swearing, which she does beautifully."
-{n}The healer expects the arm to recover. He declined to name a day, and Nocticula has decided to let him keep his tongue until he does. Rhez is on paid rest. She has begun sending corrections to the account of the stairway, particularly the part in which one onlooker claimed she disarmed Vhal elegantly.
-She says she hit him until he dropped what she wanted. Nocticula has retained that version.{/n}
-{n}You point out that Rhez heard the bell and kept moving.{/n}
-"She did. Do you know what it costs to make a Rhez? Twenty years of the Lower City, three masters who each tried to kill her, and the one lesson in a thousand that takes. And a hired cambion put his knife into that arm because we were a breath late on a stair." {n}Her voice does not rise. It does not need to.{/n}
-"Vhal is going to give his evidence standing, for as long as it takes to give it. When he has finished, Rhez may decide which hand he leaves my city with. I thought she would like to choose."
-{n}Nocticula squares the healer's note beneath Rhez's account. At the line describing Vhal's knife, her nail catches the paper and tears it. She lays that page on top.{/n}''', c('"Let Rhez collect from Vhal. Then give her something worth saying yes to."', "credit")),
-    n("agent", "Nocticula", '''"A month without serving anybody a drink. After that, she thinks she will decide whether to stay in my service or take the money and vanish."
-{n}You ask whether she would let Rhez go.{/n}
-"She is a knife I have spent years sharpening. A knife that goes missing is a nuisance. A knife that goes missing and turns up in somebody else's hand is a war." {n}She smiles, and it is not a kind smile.{/n} "So I have made staying worth more than any buyer in the city can pay. She will do the sum. Rhez always does the sum."
-{n}Rhez has the promised coat. The woman who packed the bell's rim has her payment and has taken work with her cousin. She left before the hunt, as agreed.
-Nocticula has folded the cleaner's receipt beneath Rhez's report. Rhez's own account is still open on top.{/n}
-"You look disappointed," {n}she says.{/n}
-{n}You tell her you are listening to the part she left out.{/n}
-"Rhez knows what happens to a knife that finds another hand. I have no need to repeat myself."
-{n}She taps Rhez's name with a nail, then folds the report inward.{/n}''', c('"And if she chooses to go, keep the offer you actually made."', "credit")),
-    n("credit", "Nocticula", '''{n}She unfolds a second letter. A minor poet has already offered to commemorate the affair under the title The Lady's Mercy. He has supplied eight lines, four of which describe her eyes with increasing difficulty.
-Nocticula reads the last one aloud. You suggest that the poet may have been injured halfway through writing it. She says she intends to spare him the opportunity to recover.{/n}
-"No commission?"
-"No reply. A more severe punishment for that particular profession."
-{n}She asks whether you want your part in the lodge's answer added to the account. Whatever you chose before still stands; she asks only because she likes watching you decide a thing twice.
-You tell her to keep the existing arrangement. The work should not acquire a new public author because its ending proved more flattering than its beginning.
-Nocticula nods. Her hand rests on the folded paper, keeping the wind from taking it.{/n}
-"I dislike how readily the story becomes mercy," {n}she says.{/n} "I protected people whom somebody threatened beneath my name. I answered an insult. Both were mine to answer, and Istrava's chamberlain has still to learn what the second one costs."
-"They did require you to choose."
-"Yes. That is the part the poet found least suitable for a refrain."
-{n}She looks toward the place where the lodge's copied bell stood. There is no mark left on the quay. The absence makes the space seem larger than it did while you were planning what to put there.{/n}
-"You saw enough to dislike me more accurately," {n}she says.{/n} "Have you made use of the opportunity?"''',
+"Of course. Something worthy of her. There's a dealer in the Fleshmarket who rented Istrava her quarry by the night. I've been saving him." {n}She spits a stone into the gutter.{/n} "Rhez is a knife I spent years sharpening. A knife you don't use goes dull, or goes looking for another hand. I don't let my knives go looking." {n}She glances at you.{/n} "Remember that, the next time you feel restless."''',
+      c('"Give her the dealer. Then let\'s see your wager."', "credit")),
+    n("credit", "Nocticula", '''{n}She settles back on the bench and wipes cherry juice off her fingers on your sleeve.{/n}
+"You bet against your own hand, or with it, and you didn't even notice." {n}She sounds delighted with you.{/n} "Two nights ago, in that yard, you decided what Suth was. That decided everything. I knew how this morning would end the moment you said it. I only asked you to bet on yourself."
+{n}She pulls a little iron key out of her bodice and drops it in your lap. It is warm.{/n}
+"Istrava's strongbox. I had it carried up from her cellar before I burned or kept anything. If that was a win, it'll be in Drezen before you wake, and you can buy your crusade something shiny with a lamia's money." {n}She leans close.{/n} "If it wasn't, you owe me. Not gold. I don't want your gold. I'll collect at a time of my choosing, and you won't like the time."
+{n}She kisses the corner of your mouth, quickly, and sits back to look at you.{/n}
+"So. You've watched me hunt, and burn, and set two birds loose to see how far they get. You've helped with all of it. And you're still sitting on this bench." {n}Her eyes are very bright.{/n} "Tell me why."''',
       c('"I dislike what you can make sound reasonable. I also want you. I will have to keep answering both facts."', "answer", flags=f("lodge_desire_contested")),
-      c('"I liked watching you take the room from her. I will not pretend that attraction belongs to someone less ambitious than I am."', "answer", flags=f("lodge_danger_desired"))),
-    n("answer", "Nocticula", '''"Then do not tell me later that I concealed which woman you were choosing."
-{n}She says it lightly, and she has plainly been waiting to say it. You have given her the admission; she folds it away like a letter she means to reread later, somewhere private, with a glass of something old.
-You sit on the bench. She does not. She stands over you with the wind pulling at her skirts and looks down at you as though you were a city she had been told she could not have. Then she sets one knee on the bench beside your thigh, takes your jaw in her hand and turns your face up to hers.
-"Both," she says. "Good. Either one alone would have bored me by spring."
-She kisses you hard, on the open quay, with the waterless drop at your back, and lets you go only when she has decided to. Then she sits down beside you as if nothing had happened, and looks out over the edge.{/n}
-"I have been considering a wall," {n}she says eventually.{/n}
-"Here?"
-"Somewhere the wind will cease interfering with objects I put down. I am tired of constructing rooms for arguments and dismissing them before discovering whether they have another use."
-"You could simply stop the wind."
-{n}She turns toward you with the beginning of a smile.{/n}
-"I could. You could stop giving the answer which allows me to avoid deciding what I want."
-{n}You leave the question with her. The bench remains when the dream fades, small enough that neither of you could mistake it for a throne.{/n}''', c('[Let the completed lodge affair become part of the company you continue to choose.]', flags=f("lodge_consequences_finished"))),
+      c('"I liked watching you take the house from her. I will not pretend that attraction belongs to someone less ambitious than I am."', "answer", flags=f("lodge_danger_desired"))),
+    n("answer", "Nocticula", '''"Then don't tell me later that I hid which woman you were choosing."
+{n}She stands. She does not sit back down beside you; she stands over you with the dawn wind pulling at her skirts and looks down at you as though you were a city she had been told she could not have. Then she sets one knee on the bench beside your thigh, takes your jaw in her hand, and turns your face up to hers.{/n}
+"Both," {n}she says.{/n} "Good. Either one alone would have bored me by spring."
+{n}She kisses you hard, in the open gate, in front of the meat carts and the coffle and the singing incubus, and lets you go only when she has decided to. A carter stares. She looks at him, once, and he finds something urgent to do with his mule.
+Then she sits down beside you as if nothing had happened, and picks up the cherries again, and looks out through the arch at the road going down to the docks, where it is quite empty now.{/n}
+"I'm going to show you my collection next," {n}she says.{/n} "Everything we've taken. You've earned a look at it."
+"Our collection?"
+{n}She turns her head and considers you, with a cherry halfway to her mouth.{/n}
+"We'll see," {n}she says.{/n} "That depends on whether you can stand being seen holding it."''',
+      c('[Let the gate and the morning go. Keep the woman on the bench.]', flags=f("lodge_consequences_finished"))),
 ], "lodge_debt_answered")
 # Append after s() adds the existing withdrawal node; its saved position must survive.
-SCENES[-1]["Nodes"].append(n("agent_announcement", "Nocticula", '''"A month without serving anybody a drink. After that, she thinks she will decide whether to stay in my service or take the money and vanish."
-{n}You ask whether she would let Rhez go.{/n}
-"She is a knife I have spent years sharpening. A knife that goes missing is a nuisance. A knife that goes missing and turns up in somebody else's hand is a war." {n}She smiles, and it is not a kind smile.{/n} "So I have made staying worth more than any buyer in the city can pay. She will do the sum. Rhez always does the sum."
-{n}Rhez has the promised coat. The musicians have been paid for the welcome that made Istrava the quarry at her own dinner. They are still arguing over their shares. Nocticula has refused an encore.
-Their bill lies beneath Rhez's report. She folds it out of sight and keeps the report open.{/n}
-"You look disappointed," {n}she says.{/n}
-{n}You tell her you are listening to the part she left out.{/n}
-"Rhez knows what happens to a knife that finds another hand. I have no need to repeat myself."
-{n}She taps Rhez's name with a nail, then folds the report inward.{/n}''', c('"And if she chooses to go, keep the offer you actually made."', "credit"), portrait="Nocticula"))
+SCENES[-1]["Nodes"].append(n("agent_announcement", "Nocticula", '''"The next job." {n}Nocticula smiles.{/n} "She always wants the next job. She came to me last night with her coat on and asked what was after Istrava. And the musicians who read out Istrava's own invitation in her own hall have come to me as well, all six of them, asking to be taken into my service, because they say nobody else in the Middle City will ever hire them again."
+"Will you take them?"
+"The tenor. He has a lovely voice and no sense at all of when to stop, which is exactly what I want in a herald. The rest I've sold." {n}She spits a cherry stone.{/n} "And Rhez gets a dealer in the Fleshmarket who rented Istrava her quarry by the night. I've been saving him for her. A knife you don't use goes dull, or goes looking for another hand. I don't let my knives go looking." {n}She glances at you.{/n} "Remember that, the next time you feel restless."''', c('"Give her the dealer. Then let\'s see your wager."', "credit"), portrait="Nocticula"))
 
 s("what_she_keeps", "What she keeps", [
-    n("start", "Narrator", '''{n}Nocticula has returned to the waterless quay. The ropes are gone. She is trying to build a wall where the bollard stands.
-The first line of stone runs through the iron. She frowns, moves the wall, and finds that its doorway now opens onto the waterless drop.{/n}
-"You could move the bollard," {n}you say.{/n}
-"I have moved it. Twice. It continues to look better where it was."
-{n}She erases the wall with an impatient movement. A gust lifts the papers at her feet. You catch one before it slips over the edge.{/n}
-"Ossin has withdrawn the offer. He described the affair as a misunderstanding between parties of mutual importance. I have asked him which importance he believes was mutual."
-"Will he answer?"
-"Not soon. I find that satisfactory."
-{n}She takes the escaped page from you and puts it beneath the bollard's foot. The report you have come to hear lies on top of the others, held down by the copied lens.{/n}
-"Before you ask," {n}she says,{/n} "the difficulty with the wall is none of your business."
-"You brought me here."
-"Yes. I begin to see the error."''',
-      c('"What became of the intact chart?"', "chart", requires=f("chart_intact")),
-      c('"What can be learned from the broken instrument?"', "broken", requires=f("chart_lost")),
-      c('"What remains after the limited permission closed?"', "limited", requires=f("chart_limited"))),
-    n("chart", "Nocticula", '''"I kept it. I expect you are not surprised."
-{n}The chart identifies a remaining fold in the old passage, but not a safe route through it. Nocticula has forbidden live crossings until the return can be proven without a captive holding the door open. She is candid about why: every trapped passenger is a claim somebody can sell against her, and she has already lost three shipments' revenue to claims of exactly that kind.
-The folded statement of those claims is tucked inside the chart. She catches it as it slips free.{/n}
-"It could become a route under my control. It could become a warning worth selling to people who believe every abandoned door is an opportunity. Either would repay some of the inconvenience."
-"And if it never works?"
-"Then I have purchased knowledge of a method that fails. Rulers who cannot tolerate that expense tend to buy the same failure several times."
-{n}She rolls the chart tightly, concealing the copied flower at its edge.{/n}
-"The passengers are ashore. The chart is mine. When the next captain wants that road, he will pay me for it. You may help me count what you saved."
-{n}She keeps the chart herself. The gesture is possessive and entirely candid.{/n}''', c('"Tell me what she is allowed to do with the knowledge now."', "disposition")),
-    n("broken", "Nocticula", '''"Less than I wanted. More than nothing."
-{n}The broken brass shows where the strain exceeded its maker's expectation. Vessa's account supplies the sequence of sounds. The passengers describe different intervals, and nobody has yet made all of them agree without throwing away an inconvenient witness.
-Nocticula has forbidden that shortcut, and not from delicacy. A witness thrown away cannot be questioned again.{/n}
-"If we reconstruct it, we will be reconstructing a theory, not reopening a door we understand. I dislike paying for a theory under the name of an acquisition."
-"Then call it research."
-"A word people use when they would like another payment before producing the thing promised by the first."
-{n}She smiles, but her irritation remains. You chose to protect her old route secret at the cost of the stronger rescue. Vessa's hand and the broken chart are part of the resulting account.
-Nocticula has paid what she promised. She has not forgiven the expense merely because everyone survived.{/n}
-"I will continue reading the reports," {n}she says.{/n} "I will also continue asking whether the next experiment is worth more than the clever explanation for the last one. That is not pessimism. It is ownership."''', c('"Tell me what she is allowed to do with the knowledge now."', "disposition")),
-    n("limited", "Nocticula", '''"An instrument that no longer opens the harbor. A set of observations. Several living people. A limitation I agreed to before I knew precisely how much I would dislike it."
-{n}She places the brass lens on the empty quay. It reflects the same impossible absence of water that you can see with your own eyes.{/n}
-"Your counted permission ended when the last claim was satisfied. It did not leave me a secret second door. I have checked."
-"Would you have used one?"
-"Of course. I agreed to the stated terms, not to stop noticing opportunities."
-{n}There is no accusation in the answer. She would consider it insulting if you expected her to be less exact about a bargain she lost.
-What remains is a method for placing limits around an unstable passage. It may prove useful elsewhere. It will not be assumed safe merely because it worked once under exceptional circumstances.{/n}
-"You have cost me a harbor and left me interested in the person who did it," {n}she says.{/n} "That is an unusually successful negotiation. Do not imagine it will become a habit without further effort."
-{n}She lifts the lens and offers it for you to examine. When you close your hand around it, the brass thins into lamplight. The scratch lies bright across your palm a moment longer, then fades.{/n}''', c('"Tell me what she is allowed to do with the knowledge now."', "disposition")),
-    n("disposition", "Narrator", '''{n}While she speaks, Nocticula has raised the wall again, this time behind the bollard. The new room has one doorway and no roof. Its central table is just wide enough for Ilvara's account and the surviving half-coin from her hearing.
-You move toward the doorway. Nocticula reaches it first and rests a hand against the jamb, watching you look past her at the unfinished room.{/n}
-"The magician," {n}she says.{/n} "I have not finished telling you about her."''',
-      c('"You confined her."', "confined", requires=f("ilvara_confined")),
-      c('"You commissioned her."', "commissioned", requires=f("ilvara_commissioned")),
-      c('"You sent her away."', "exiled", requires=f("ilvara_exiled"))),
-    n("confined", "Nocticula", '''"She has written an account twice as long as the one she first offered. Half of the new material explains why she should be permitted to supervise the research herself."
-{n}Nocticula's researchers have reproduced a small part of the mechanism using marked stones. No stone has yet arrived before it was sent. Ilvara says this proves they are incompetent. The researchers say it proves the demonstration requires a hidden condition she has not disclosed.
-Nocticula has asked both sides to show their work.{/n}
-"Her confinement continues. She sends her requests for release on such fine paper that I have begun using the backs for my replies."
-"You have accepted the slow way."
-"I have accepted this slow way. Do not generalize recklessly."
-{n}She touches the blackened coin and the roofless room gains a window. It looks toward nothing in particular, which seems to please her.
-The newest bill contains three replacement stones, a larger basin, and another week's pay. She folds it beneath Ilvara's request for release.{/n}''', c('"And what do you believe we learned about each other?"', "ambition")),
-    n("commissioned", "Nocticula", '''"She has already attempted to expand the commission. She calls it correcting an omission. Her observer calls it the thing she was told not to do."
-{n}Nocticula denied the request. Ilvara then proposed an experiment using objects with witnessed owners and no living travelers. The proposal is still being examined. It might work; it might reveal another expensive misunderstanding.
-The observer has learned enough to repeat the basic preparation without Ilvara's hands. That displeases her more than the denied request.{/n}
-"You told me to make her teach," {n}Nocticula says.{/n} "It was sound advice. She is becoming useful in a way that does not depend entirely upon everyone else remaining ignorant."
-"Do you trust her?"
-"To prefer a profitable life to an unprofitable death. Beyond that, I continue reading the reports."
-{n}She turns the inscribed coin over and lays the observer's account beside it.{/n}''',
-      c('"Has the admission about her storage fees been useful?"', "fee_admission", requires=f("hearing_proof")),
-      c('"Who is watching the danger she would not explain?"', "extra_observer", requires=f("hearing_uncertain")),
-      c('"What became of the return condition we required?"', "return_condition", requires=f("hearing_limits")),
-      c('"What did you finally agree to pay her?"', "new_price", requires=f("hearing_business"))),
-    n("fee_admission", "Nocticula", '''"Very. She tried to submit a charge for maintaining the unused test chamber. My observer asked whether it was another storage fee."
-"And?"
-"She withdrew it before he finished reading her admission aloud. I have told him to keep a copy on his desk."
-{n}Nocticula draws a line through the disputed charge. Beneath it, Ilvara has supplied the chamber's actual preparation costs, with the power source named.{/n}
-"A useful distinction," {n}she says.{/n} "Between maintaining an experiment and charging me for allowing her to keep it mysterious. You found it. I intend to get considerable use from it."''', c('"And what do you believe we learned about each other?"', "ambition")),
-    n("extra_observer", "Nocticula", '''"Two people. The first watches her hands. The second asks what she would do if the return witness failed. She has grown to dislike the second."
-{n}The extra observer's fee is copied beneath the commission. Two proposed trials have been delayed while he checks Ilvara's explanations against the older accounts.{/n}
-"She says I am paying someone to prevent her from working. For the present, she is correct. Until she explains the danger she used to refuse those relatives, I want someone paid to interrupt her."
-"You could have demanded an answer at the hearing."
-"I demanded several. She remains remarkably capable of giving me a different one. If you find a cheaper way of detecting it, I will be delighted to hear it."''', c('"And what do you believe we learned about each other?"', "ambition")),
-    n("return_condition", "Nocticula", '''"It stopped her first proposal. She offered to let her assistant stand as witness to every object in the trial. The assistant had never seen half of them."
-"A paid clerk again."
-"With a better title. I have asked whether he receives a better salary. She disliked the question."
-{n}The revised proposal names the owner of each object and the appointment by which it is expected back. One owner has declined, leaving an empty place in the planned trial.{/n}
-"She must find another object," {n}Nocticula says.{/n} "I am curious to see how ingenious she becomes when the cheapest answer keeps being taken away."''', c('"And what do you believe we learned about each other?"', "ambition")),
-    n("new_price", "Nocticula", '''"One payment for the preparation my observer can repeat. Another if the object returns. Nothing for a description of the marvelous route she will open once I become sufficiently generous."
-"She accepted?"
-"She offered me a share of the future profits instead. I asked how she intended to pay my share of nothing. We returned to the smaller figures."
-{n}Nocticula places a fingertip on the first installment. Ilvara has earned it; the second remains blank.{/n}
-"Your question has become the one I ask before every new expense. What would fail if I understood what I was buying? So far, chiefly her price."''', c('"And what do you believe we learned about each other?"', "ambition")),
-    n("exiled", "Nocticula", '''"She departed under a name she has not used in years. Rhez supplied it to the people at her destination who would be most interested in recognizing her."
-"You did not promise her a comfortable exile."
-"I did not promise to become stupid the moment she left."
-{n}Ilvara has no instrument, no protected sailcloth, and several former buyers who now know more than they intended to admit. She still has her skill and her appetite. Nocticula has received one report that she is seeking work as a navigator. The report does not establish whether she has found it.
-The messenger's seal has been cut away and kept with the report. Nocticula turns it between her fingers while she speaks.{/n}
-"I have ended the immediate bargain," {n}Nocticula says.{/n} "If she makes a new threat, I will answer it as a new threat, and I shall enjoy it more the second time. Expulsion is not omniscience. I have never confused the two."
-{n}She leaves the place where the third coin fell empty. The absence is intentional.
-She sets the messenger's seal there instead, then closes her hand over it.{/n}''', c('"And what do you believe we learned about each other?"', "ambition")),
-    n("ambition", "Nocticula", '''"That you can help me obtain something without becoming indistinguishable from the people I employ. That you can also deny me something without assuming I will cease to want it."
-{n}She walks through the unfinished doorway and waits for you to follow.{/n}
-"I want power that does not require me to repeat the same defense forever. I want enemies who cannot reach me merely by waiting for the moment I grow tired. I want more than a successful harbor inspection."
-"You have never seemed short of ambition."
-"Most people enjoy the word until it begins making demands upon their plans."
-{n}She faces you across the room's unbuilt threshold. The absence of a roof makes the meeting feel strangely exposed, despite its place inside a dream.{/n}
-"You may want me because I am dangerous. You may want to make me less dangerous. You may want both and call the contradiction fascinating. I would prefer you knew which desire you intended to obey when they disagree."''',
+    n("start", "Narrator", '''{n}Her gallery is above the Harem of Ardent Dreams, in a long room under the roof with slatted floors, so that the music and the heat and the smell of the Harem come up through the boards. You can look down through the slats and see the couches below, and the bodies on them, and the succubi going between them with trays. Nobody below looks up. It is not done.
+The gallery itself is lined with what she keeps.
+She walks you through it the way a girl shows off a dollhouse, holding your hand, pulling you from one thing to the next before you have finished looking at the last. Here is a crown she took off a king who is still alive, somewhere, without it. Here is a jar with something in it that blinks. Here is a whole wall of masks, every one of them a face somebody once wore to her court and then could not take off. Here, newer, a row of little gold cages, each with a moth in it, beating against the bars. The moths are fresh. She has them changed every night.
+Laulieh is lounging on a couch at the far end of the gallery where she is certainly not supposed to be, eating sugared almonds and admiring her own reflection in a polished shield. She waggles her fingers at you as you pass, and Nocticula ignores her magnificently.{/n}
+"This," {n}Nocticula says, stopping at last in the middle of the gallery and spreading her arms,{/n} "is what I keep. Everything here was somebody's, once. Now it's mine." {n}She turns to you.{/n} "And this end of the room is what you helped me take. The harbor, the court, the lodge. Come and look."
+{n}At the near end of the gallery, on a table of black wood, lies the brass lens from the cliff door.{/n}''',
+      c('"The lens. Is the road still yours?"', "chart", requires=f("chart_intact")),
+      c('"The lens is cracked."', "broken", requires=f("chart_lost")),
+      c('"The door is shut. What did you keep of it?"', "limited", requires=f("chart_limited"))),
+    n("chart", "Nocticula", '''"Of course it is." {n}She picks up the lens and holds it to her eye and looks at you through it, and laughs.{/n} "Whole. Not a scratch. And out on the coast there's a door in the cliff with my flower burning in it, and every captain who sails past at night can see it."
+{n}She sets the lens down.{/n}
+"Two of them have already come to me, asking to buy passage. One of them was the man who used to buy from Ilvara. He didn't recognize me. He thought I'd be grateful for the custom." {n}She smiles.{/n} "He's in the cells. His ship is mine. The other I let through, at three times what Ilvara charged, because she was polite, and I wanted to see whether the door would hold for a stranger." {n}Her eyes go to the window, toward the coast you cannot see.{/n} "It held. My road. Built on my old permission, opened by your stolen magician, and now it opens for whoever I like. A share of what comes through it is yours, darling. If you can stand being seen holding it."''',
+      c('"Show me what became of Ilvara."', "disposition")),
+    n("broken", "Nocticula", '''"Cracked right across." {n}She turns it in the light so that the crack throws a thin bright line onto the wall.{/n} "Rhez had it in her hand when the door shut. It's never worked since. The road's gone; the cliff is only a cliff."
+{n}She does not sound sorry. She sounds interested, as if the crack were a new kind of jewel.{/n}
+"Vessa is downstairs," {n}she says.{/n} "In the Harem. Her hand is splinted, and she'll never hold a bell with it again, and she knows exactly whose door it went into. She wears my flower on her collar now. The girls down there are terrified of her." {n}She sets the lens down with the crack facing you.{/n} "I lost a road. I gained a woman who put her own hand in a closing rock to save my property. I've made worse trades." {n}She glances at you.{/n} "You told me to hold the door narrow. I'll remember that it was you, every time I look at that crack. Don't worry; I don't mind remembering it."''',
+      c('"Show me what became of Ilvara."', "disposition")),
+    n("limited", "Nocticula", '''{n}She does not pick up the lens. Beside it on the table there is a shallow glass dish, and in the dish a little heap of black threads, brittle and coming apart, that was once a flower worked into an old sail.{/n}
+"It fell to pieces in Rhez's pack when the door shut," {n}Nocticula says.{/n} "My old permission. Centuries old. Ilvara cut it off some ship I'd let pass and sewed it into her harbor, and when your count ran out, it simply gave up." {n}She touches the threads with one fingernail, and one of them breaks.{/n} "Nobody will ever open that door again. Including me. You made the price so small I couldn't keep the door afterwards."
+"You agreed to it."
+"I agreed to it. I didn't agree to like it." {n}She looks at you sideways.{/n} "I keep this dish to remind me that I paid. I always remember what I paid, and to whom. Most people find that alarming."''',
+      c('"Show me what became of Ilvara."', "disposition")),
+    n("disposition", "Narrator", '''{n}Beyond the lens there is an alcove in the gallery wall, lined with black velvet, the kind of alcove in which a better-run house would keep a statue. Nocticula leads you to it by the hand and stops in front of it.{/n}
+"And the magician," {n}she says.{/n} "You haven't asked about her. You've been very good. I can see you wanting to."''',
+      c('"Is she still burning?"', "confined", requires=f("ilvara_confined")),
+      c('"Is she still working the door?"', "commissioned", requires=f("ilvara_commissioned")),
+      c('"Who bought her?"', "exiled", requires=f("ilvara_exiled"))),
+    n("confined", "Nocticula", '''"Every night." {n}The alcove is empty. Nocticula points down instead, through the slatted floor, to the far end of the Harem below.{/n}
+{n}You look. Over the great bed at the end of the Harem, the one with the black silk hangings, a small brass lamp hangs on a chain, and in the lamp there is a light that is not quite a flame. If you look at it long enough, the light has a shape. The shape is a woman, very small, standing in the glass with her palms pressed against it, watching the bed.{/n}
+"She's been watching for weeks," {n}Nocticula says.{/n} "Everything that happens on that bed. Everything. She can't close her eyes; lamps don't have eyelids. I've been down there twice myself, just to give her something to look at." {n}She sounds pleased.{/n} "The Harem thinks she's the most beautiful lamp in the islands. Two people have tried to buy her. One of them was a magician."
+"Did you sell?"
+"Darling. I never sell anything that's still suffering usefully."''',
+      c('"And what do you believe we learned about each other?"', "ambition")),
+    n("commissioned", "Nocticula", '''"Day and night." {n}The alcove is not empty. In it, on a black velvet cushion, lies a length of iron chain with a broken link at one end, as if somebody had kept a souvenir.{/n}
+"She's on the coast," {n}Nocticula says.{/n} "Collared to the rock, beside her door, with my flower burned on the collar. She opens it when I want it open and shuts it when I'm bored, and every time it bites, it bites her first." {n}She lifts the chain and lets it run through her fingers.{/n} "The guards send me word when it bites. It's bitten her four times. She's lost two fingers and most of an ear, and she's still the best door-warden I've ever had, because she knows that the day she stops being useful, I'll stop feeding her."
+{n}She drops the chain back on the cushion.{/n}
+"She sends me messages. She has things she'd like to say about the conditions of her work."''',
+      c('"Does she still say it, the thing she admitted in the hall?"', "fee_admission", requires=f("hearing_proof")),
+      c('"Is she still hiding the danger she would not name?"', "extra_observer", requires=f("hearing_uncertain")),
+      c('"Does she still swear she never sold anyone who couldn\'t leave?"', "return_condition", requires=f("hearing_limits")),
+      c('"Have her old buyers come looking for her?"', "new_price", requires=f("hearing_business"))),
+    n("fee_admission", "Nocticula", '''"Every time she tries to complain. She starts to say the passengers were never prisoners, and the guard reminds her what she admitted in front of my whole court, and she stops." {n}Nocticula smiles.{/n} "You broke her in the hall. She stays broken. I find that very restful."''',
+      c('"And what do you believe we learned about each other?"', "ambition")),
+    n("extra_observer", "Nocticula", '''"Yes. She held out on you in the hall, and she holds out still. There's something about that door she won't tell me." {n}Nocticula's eyes glitter.{/n} "So I've put a second guard on her, whose only work is to watch her face whenever the door bites, and tell me what she flinches at. Sooner or later she'll flinch at the right thing. I can wait. I'm very good at waiting."''',
+      c('"And what do you believe we learned about each other?"', "ambition")),
+    n("return_condition", "Nocticula", '''"She swore it in the hall. She swears it to the guards. She swore it to the door, the last time it bit her, at the top of her voice." {n}Nocticula laughs.{/n} "Now she's the one who can't leave. I don't think she's noticed the joke. I've stopped explaining it. Some jokes are better when only the audience gets them."''',
+      c('"And what do you believe we learned about each other?"', "ambition")),
+    n("new_price", "Nocticula", '''"Three of them, so far. Courtiers from my own steps, the ones who went somewhere else to stand when you asked the hall who'd bought from her." {n}She examines her nails.{/n} "They came to the coast to make sure she wasn't talking. I had them collared beside her. She has company now. They don't get on."''',
+      c('"And what do you believe we learned about each other?"', "ambition")),
+    n("exiled", "Nocticula", '''"A tanner." {n}The alcove is empty, except for a little card propped on the velvet, the kind they hang round a slave's neck on the Fleshmarket block. It has a number on it.{/n}
+"That's what she fetched," {n}Nocticula says, tapping the card.{/n} "Less than her shoes, which I sold separately, to a dancer in the Ten Thousand Delights who wears them on stage. Ilvara's at the tannery on the eastern canal now, scraping hides. They say she still tells the other slaves she was a great magician once, and they don't believe her, and beat her for putting on airs." {n}She props the card straight.{/n} "I go and look at her sometimes, from a carriage. She never sees me. I like that best of all."''',
+      c('"And what do you believe we learned about each other?"', "ambition")),
+    n("ambition", "Nocticula", '''"That you'll help me take things," {n}she says.{/n} "Willingly. With your own hands, and your own voice, and sometimes with an appetite you'd rather I didn't notice. I noticed."
+{n}She walks to the end of the gallery, past Laulieh, who sits up very straight, and stops at the window, which looks out over the Midnight Isles toward the open sea.{/n}
+"And that you'll sometimes refuse me, and mean it, and stand there afterwards waiting to find out what it costs. Most people who refuse me run. You wait." {n}She turns.{/n} "I find that more interesting than anything in this room."
+"Is that what you wanted to show me?"
+"I wanted to show you what I'm going to do with it." {n}She spreads her hand against the glass, over the islands.{/n} "All this. And more than this. I didn't build the Midnight Isles out of dead lords so that I could sit on them and be content. I want more than a harbor and a house and a magician in a lamp. I want things I haven't thought of yet." {n}She looks back at you over her shoulder.{/n} "And I want to know what you want from me, darling, while I take them. Say it carefully. I'll hold you to it."''',
       c('"You told me why you want to leave the Abyss. This work has not made that ambition smaller."', "known", requires=f("parent_ambition_heard")),
       c('"I want to stand beside someone who can hear a rival answer. I do not need you harmless."', "rival"),
       c('"I want power with you. I will argue over its use, not pretend I have no appetite for it."', "power")),
-    n("known", "Nocticula", '''"No. It has not."
-{n}The admission costs her less than the original disclosure. It also contains less performance. She has already told you that abandoning the Abyss without another source of power would expose her to enemies with long memories.
-The harbor was one opportunity, not a substitute for that larger design.{/n}
-"Do not imagine that because I have let you see me irritated over a merchant's trick, I will become content with a small, manageable life. I am capable of enjoying small things without accepting a small future."
-"I would not have believed the promise if you made it."
-"Good. You should reserve disbelief for occasions on which it will save us time."
-{n}She reaches across the threshold for your hand. Her grip tightens as you step over it.{/n}
-"When we meet at the Worldwound, remember this conversation before you decide what I can afford to lose."
+    n("known", "Nocticula", '''"No. It hasn't." {n}She does not turn from the window.{/n} "I told you once what I want past the Abyss, and why I can't walk away from it empty-handed. Every lord I ever killed has friends with long memories. A harbor doesn't change that. A hunting lodge doesn't change it. I don't intend to leave with a small life and a nice view."
+{n}She turns then, and comes back down the gallery to you, and takes your face in both hands.{/n}
+"So don't imagine, because you've seen me pleased with a lamp and a pair of shoes, that I'll ever be content with a small, manageable future. I'm capable of enjoying small things. I'm not capable of settling for them."
+"I wouldn't believe you if you promised."
+"Good. Save your disbelief for when it's useful." {n}Her grip tightens.{/n} "When we meet at the Worldwound, remember this room before you decide what I can afford to lose."
 "Remember it before you decide what I can afford to give."
-{n}She looks down at your joined hands. Slowly, she loosens her grip.{/n}
-"Yes. That will be the troublesome part."''', c('"Then let us decide what we are willing to build between those ambitions."', flags=f("ambition_discussed", "future_rivals"))),
-    n("rival", "Nocticula", '''"A rival answer is tolerable. I have heard quite enough about your conscience."
-{n}You challenge her to make better arguments.{/n}
-{n}She laughs, delighted enough to be momentarily careless about showing it.{/n}
-"I intend to. I may also make offers you ought to refuse. It would disappoint me if you accepted them merely to prove that you were not afraid."
-"You saw what I wanted from that harbor. I have other ships, Commander. Next time I shall choose an offer you find harder to refuse."
-{n}She crosses the threshold herself. Her hand closes at the back of your neck and draws you in for a kiss that is not a question.
-When she steps back, the unfinished room has a second doorway. A breeze passes between them, lifting the edge of a report. She catches it with her heel.{/n}
-"Come back with another answer I have not already considered," {n}she says.{/n} "And occasionally with no answer at all. I do not wish to discover that the only thing we can enjoy together is being correct."''', c('[Take her hand.] "Then come back with a better argument."', flags=f("ambition_discussed", "future_rivals"))),
-    n("power", "Nocticula", '''"There. An appetite you have not dressed as a sacrifice."
-{n}She comes close, studying you with an attention more intimate than the room's earlier invitations.{/n}
-"Then understand mine. Try to tame me, Commander, and discover which of us leaves the cage. I will want things which inconvenience you, and I will take them first and tell you afterwards, if I remember."
-"And if I do the same?"
-"We discover whether our agreements were specific enough."
-{n}She takes your hand and presses it flat against the unbuilt wall. For an instant you feel cold stone. Then the wall disappears, leaving your palm against hers.{/n}
-"Remember what we agreed about Shamira," {n}she says.{/n} "My bed has not given her my throne. Yours has not given you mine. Sell a word from this room and I will come collecting it from your tongue."
-{n}She kisses you, and bites your lower lip when she is done, not quite hard enough to draw blood.{/n}''', c('"Then let us see what we can take together."', flags=f("ambition_discussed", "future_power"))),
+{n}She laughs, low, and lets you go.{/n} "Yes. That'll be the troublesome part."''',
+      c('"Then let us decide what we are willing to build between those ambitions."', flags=f("ambition_discussed", "future_rivals"))),
+    n("rival", "Nocticula", '''"A rival answer," {n}she repeats, delighted.{/n} "From a mortal. In my own gallery, with my servant listening." {n}Behind her Laulieh says "Fie!" under her breath, scandalized and thrilled.{/n} "Oh, I'll hear it. I'll hear every one you have. And then I'll do as I like, and you'll have to stand there and watch me, and come up with a better one for next time."
+"And if I never do?"
+"Then I'll be bored, and you'll be dead. One of those comes first." {n}She crosses to you and takes the back of your neck in her hand and kisses you, hard, in front of Laulieh and the moths and every mask on the wall, a kiss that is not a question.{/n}
+"Come back with an argument I haven't already thought of," {n}she says against your mouth.{/n} "And sometimes with no argument at all. I don't want to find out that the only thing we enjoy together is winning."''',
+      c('[Take her hand.] "Then come back with a better argument."', flags=f("ambition_discussed", "future_rivals"))),
+    n("power", "Nocticula", '''"There." {n}She looks at you as if you had just handed her something heavy and gold.{/n} "An appetite you haven't dressed up as a sacrifice. I was beginning to think you'd never show me one."
+{n}She comes close. Behind her, very quietly, Laulieh stops eating almonds.{/n}
+"Then understand mine. Try to tame me, Commander, and you'll find out which of us leaves the cage. I'll want things that ruin your plans, and I'll take them first and tell you afterwards, if I remember. And if you do the same to me—" {n}she smiles{/n} "—I'll admire it, and then I'll make you pay for it, and then I'll admire that too."
+{n}She takes your hand and presses it flat against the black velvet of the empty alcove beside her, where a trophy would go.{/n}
+"Remember what we agreed about Shamira. My bed hasn't given her my throne. Yours hasn't given you mine. Sell a word from this room and I'll come and collect it from your tongue."
+{n}She kisses you, and bites your lower lip when she is finished, not quite hard enough to bleed.{/n}''',
+      c('"Then let us see what we can take together."', flags=f("ambition_discussed", "future_power"))),
 ], "lodge_consequences_finished")
 
 s("second_door", "The second door", [
-    n("start", "Narrator", '''{n}The room on the quay is finished when you next arrive. It has two doors, a roof, and one window which looks onto water that was absent at the beginning. Nocticula has kept the old bollard beside the hearth. It serves no useful purpose there.
-She catches you looking at it.{/n}
-"I considered removing it. Then I decided I liked knowing why it was there."
-{n}A table holds a bottle, two glasses, and the brass lens. She has preserved the scratch acquired during the real crossing in this dream copy. When she moves the lamp, a thin line of light runs over your hand.
-She brings the bottle to the window and works the stopper free. The first attempt leaves it crooked.{/n}
-"You could make it open," {n}you say.{/n}
-"You could stop watching."
-{n}On the second attempt the stopper comes free. She considers it for a moment, then drops it over the sill. You hear it strike water below.{/n}
-"There. An extravagant celebration."
-{n}She gives you a glass and waits until you have tasted it before pouring her own. The drink is dry, with a flavor you recognize from no waking vineyard.{/n}''',
+    n("start", "Narrator", '''{n}She does not take you to her gallery this time. She takes you down into the Harem itself, by the front stair, in front of everyone.
+The Harem of Ardent Dreams is full tonight. Couches in tiers under a dome painted with things that move when you are not looking at them; incense; music from somewhere you cannot see; succubi and incubi and their guests tangled on the cushions, and slaves with trays, and courtiers in jewels doing business in low voices in the alcoves. Everyone who matters in the Middle City comes here to buy the Lady's favor from the Ardent Dream's court. They are buying it now. They stop when she comes down the stair.
+They stop because she is holding your hand.
+She walks you the whole length of the Harem. She does not hurry. She lets them look: at her, at you, at your hand in hers, and the whole vast room goes quiet tier by tier as you pass, the way a crowd goes quiet at an execution when the prisoner is brought out. A courtier with a lapful of contracts lets them slide to the floor. A succubus on the nearest couch stops in the middle of something and stays stopped. The highest couch, the Ardent Dream's, stands empty tonight. That is better. A court tells everything to the one who is not in the room.
+Behind the dais at the far end there is a door. It is small and black and has no handle on the outside, and every person in the Harem knows what is behind it, because every person in the Harem has at some time wished to be invited through it.
+Nocticula stops in front of it and turns round to face the room.{/n}
+"This door is mine," {n}she says. She does not raise her voice; the dome carries it.{/n} "Nobody opens it unbidden. Nobody ever has." {n}She lifts your hand in hers, so that they can all see it.{/n} "Except the Commander, now. Look at the Commander's face, all of you. You'll be seeing it."
+{n}Nobody breathes. Then, very quietly, somewhere up in the tiers, someone begins to applaud, and is hushed, and stops.
+Nocticula turns her back on them. She looks at you, close, under the dome, with the whole Harem watching and listening, and she is smiling the way she smiled in the bell chamber.{/n}
+"There," {n}she says, for you alone.{/n} "Now they know. Everything we did together, and now this. Say something, darling. They're all waiting to hear what the Lady's favorite sounds like."''',
       c('"I would have liked to see them step ashore."', "rescue", requires=f("purpose_rescue")),
-      c('"You have hidden the accounts. Should I be suspicious?"', "advantage", requires=f("purpose_power")),
-      c('"You finished the room. What are you still deciding?"', "curiosity", requires=f("purpose_curiosity"))),
-    n("rescue", "Nocticula", '''"Rhez could provide another account. You could learn precisely which passenger fell over the rope and which one asked to be paid before he had dried his boots."
-"I meant in person."
-"I know."
-{n}She looks toward the empty doorway, then back at you.{/n}
-"I could fill this room with the people she described. I would find it a tedious use of the room."
-"So would I. That would be another account."
-"Then we have settled who is invited tonight."
-{n}She catches your sleeve as you pass her the bottle. Her fingers draw you closer; the bottle hangs forgotten between you until she takes it and sets it on the sill.{/n}
-"You came all this way to think about a wet sailor," {n}she says.{/n} "I shall try not to be offended."
-"You chose to mention him."
-"An error I intend to correct."
-{n}The kiss is deliberate and warm. When she lets you go, she reaches past you for her glass and finds your hand in the way. She leaves it there, drinking over your fingers.{/n}
-"You have a habit of spoiling a perfectly efficient plan," {n}she says.{/n} "I begin making allowances for it, and then you choose a different objection."
-"I could tell you my objections in advance."
-"Spare me. I would spend the entire evening improving the plan before you arrived."''', c('"Then invite me before you finish planning the next evening."', "future")),
-    n("advantage", "Nocticula", '''"Yes. You should suspect that I have grown tired of watching you read them."
-{n}You glance toward the table. She catches the movement and sets her glass directly in your line of sight.{/n}
-"Are you searching for something?"
-"The part you thought I would object to."
-"You found several. I have put them away with the rest."
-{n}You lift the glass from her hand and move it aside. Her eyes follow yours, amused and intent.{/n}
-"There is one advantage of doing business with you," {n}you say.{/n} "I need never pretend to believe that you intended to lose."
-"I should be very disappointed if affection made you credulous."
-{n}You move closer. She watches the decision, then meets you with a kiss which offers no apology for ambition.
-When you draw apart, her hand remains against your shoulder.{/n}
-"I had begun planning what to do with that passage before we had finished rescuing its passengers," {n}she says.{/n} "You noticed."
-"You were looking at the chart while I was talking."
-"I was listening. I simply found the chart less argumentative."
-{n}Her hand slips from your shoulder to your neck. She draws you back for another kiss, then leaves you close enough to feel the laugh she has suppressed.{/n}
-"There. My undivided attention. Make something of it."''', c('"I expect you to remain difficult to win. I would like you to keep wanting the contest."', "future")),
-    n("curiosity", "Nocticula", '''"Whether to ask you to stop inspecting it."
-{n}You turn toward the window. She follows your glance, then puts her hand between you and the glass.{/n}
-"There. Now you must either look at me or admit that you would rather look through me."
-"You spent several evenings building this."
-"I have spent rather longer arranging other things which you manage to overlook."
-{n}You let your eyes move from her hand to her face, slowly enough that she knows you have understood. She keeps the hand where it is.{/n}
-"Better?"
-"Possibly. I am still deciding."
-{n}She takes your glass, sets it beside hers, and kisses you. You catch her wrist as she begins to draw away, and she stays for the second kiss.
-When she steps back, she touches the scratch on the lens.{/n}
-"Keep asking the question which makes the conversation less convenient. Occasionally I may answer it before making you earn the privilege of hearing me complain."''', c('"Then I have another question: what do you want our next evening to be?"', "future")),
-    n("future", "Nocticula", '''"An evening. An undertaking. Something I have not yet decided to name. I refuse to choose every future invitation because this one happens to be ending."
-{n}She takes you to the window. The water beyond it carries no ships. For once it is simply water, present because she liked the view.{/n}
-"Our original bargain still has its own terms. Nothing we have done here closes the Worldwound or supplies an answer to what you will do when you reach its heart. Do not let a pleasant room persuade you otherwise."
-{n}You ask whether she thinks you might choose against her.{/n}
-"You took my bargain and still consider choosing against me. I should find that less enticing."
-{n}She turns toward you. Her reflection in the window has become faint against the dark water; you can see her hand more clearly than her face.{/n}
-"Come back. Bring an argument worth winning, or come without one and I will find a better use for your mouth. I turn away petitioners every night, Commander. Be the one I keep admitting."''',
+      c('"You\'ve shown them your hand. What are you buying with it?"', "advantage", requires=f("purpose_power")),
+      c('"You wanted them to see this. What are you still deciding?"', "curiosity", requires=f("purpose_curiosity"))),
+    n("rescue", "Nocticula", '''"They did," {n}she says.{/n} "Into my city."
+{n}She laughs at your face, softly, so that only the first tier can hear it.{/n}
+"You wanted the passengers found. I found them. You stood on my rock and watched them come out of the cliff, wet and blinking, and then you decided where they went. That was you, darling. Not me. I only held the lantern." {n}She brushes something from your collar that is not there.{/n} "Whatever you told yourself in that cell about rescuing people, you've seen now what rescue means in Alushinyrra. It means changing hands."
+"You could have let them go."
+"I did what you told me. I always do what you tell me, in the end, if it amuses me." {n}She glances out over the silent tiers.{/n} "And it always amuses me to see what you'll choose. That's why they're all looking at you. They've never seen me take orders. They're trying to work out what you cost."''',
+      c('"Then let them wonder. Ask me what you brought me here to ask."', "future")),
+    n("advantage", "Nocticula", '''"Everything." {n}She is pleased you asked.{/n} "Every one of these people sells my favor for a living. Now they know whose favor is worth more than theirs. By morning half of them will be trying to buy you a drink, and the other half will be trying to have you killed, and all of them will be telling me which is which, to curry favor." {n}She smiles.{/n} "I'll learn more about my own court in a week than I have in a century. You're the best bait I've ever owned."
+"Bait?"
+"Don't be offended. Bait is the most important part of the hook." {n}She lifts your hand to her mouth and bites the knuckle, lightly, in front of everyone.{/n} "And the most expensive. I don't put just anything on the end of my line."
+{n}Up in the tiers someone drops a glass.{/n}''',
+      c('"Then let them bite. Ask me what you brought me here to ask."', "future")),
+    n("curiosity", "Nocticula", '''"What you'll do," {n}she says.{/n} "With the door. With them watching. I've given you something nobody else in my city has, in front of everybody who could ever take it from you, and I want to know whether you'll walk through it, or stand here and make a speech, or turn round and leave me holding your hand in front of my own court like a fool." {n}Her eyes are very bright.{/n} "I genuinely don't know. Do you understand how rare that is? I always know."
+"And if I leave?"
+"Then they'll have seen the Lady in Shadow refused, and I'll have to do something very memorable to make them forget it." {n}She smiles.{/n} "So you see, there's no wrong answer. Only interesting ones."''',
+      c('"Then let me give you an interesting one. Ask."', "future")),
+    n("future", "Nocticula", '''{n}She lets go of your hand. The door stands at her back, black and closed. Behind you, the whole Harem waits.{/n}
+"Our old bargain stands," {n}she says.{/n} "The Worldwound. What you'll do when you reach its heart. Nothing in this room changes that, and I'd think less of you if you imagined it did." {n}She tilts her head.{/n} "But this is not the Worldwound. This is my house, and my door, and my court watching. So I'll ask you here, where they can hear the answer."
+{n}She leans back against the black door.{/n}
+"Will you come back? Not because I've caught you, though I have, or because I've marked you, though I may have. Because you want to stand in my city and choose who runs. Because you want to open this door with your own hand and have all of them hear the latch." {n}Her smile is slow.{/n} "Or will you keep what we already have, and no more, and walk back up that stair in front of everyone with your hands empty? Either way, darling, I'll remember. I remember everything."''',
       c('"Yes. More private evenings and more arguments worth having."', "yes", requires=f("future_rivals")),
       c('"Yes. I want the company and the dangerous work we may choose together."', "power", requires=f("future_power")),
       c('"I want to keep what we already agreed, without making this undertaking a larger promise."', "limited")),
-    n("yes", "Nocticula", '''"Then I will invite you. You may occasionally improve the arrangement by inviting me first."
-{n}She looks toward the two doors, then back at you.{/n}
-"I have built two doors and you have yet to comment on either. I could have brought you a warship with less effort."
-{n}You tell her you have chosen to stay.{/n}
-"An excellent beginning."
-{n}You stay. Nocticula tells you of an ambassador who brought six interpreters to conceal his fear of speaking to her. She dismissed five, then spent the audience addressing the sixth. By the end the ambassador was begging to be questioned himself.{/n}
-{n}You remark on her enjoyment of the ambassador's fear.{/n}
-"Immensely. His interpreter was the interesting one. She had spent years correcting his threats into requests."
-{n}You ask whether she dismissed the interpreter too.{/n}
-"I asked what she would charge to translate his apology. He became very fluent."
-{n}You laugh against her shoulder. She turns her face toward yours, and the next remark is lost between you, and then she stops talking altogether. She strips the coat off your shoulders without troubling to unfasten it and drops it across the old bollard. Her own gown has no fastening you can find; she laughs at you for searching and opens it herself, one-handed, and walks you backward to the couch by the hearth until the backs of your knees meet it. She pushes. You go down. She follows, astride you in the firelight with her hair unbound and her palms flat on your chest, and holds you there exactly as long as it pleases her to watch you wait. She bends to your mouth, her hair brushing your bare chest. "You wanted another evening. Let us see how much of this one you can bear." Her hand closes around your wrist. The hearthlight disappears behind her loosened hair.
-Later, the lamp burns beside the couch. She has left one arm across your waist. When you reach to turn down the flame, her fingers close briefly at your side.{/n}
-"Leave it."
-{n}You glance toward the book.{/n}
-"I want to look at you. You have been awake long enough to stop arranging your expression."''', c('[Keep the invitation to further private company.]', "end", flags=f("chosen_company"))),
-    n("power", "Nocticula", '''"Then let us avoid the common mistake of pretending an alliance becomes permanent merely because its first quarrel was enjoyable."
-{n}She wants no oath of obedience; obedient allies bore her within a year. Every new scheme will be bargained for fresh, and she will take a refusal from you the way she takes a bad wine: with contempt, and then with you, in the same bed, the same night. One rule she states flatly: nothing said in this room is ever sold. The first of you to sell a pillow confidence may expect the other to come collecting in person, and she tells you, with some relish, what she would collect.
-It will not be an easy alliance. She would be insulted if you had expected one.{/n}
-"I may be angry when you refuse me."
-{n}You tell her unvarying delight would make you suspicious.{/n}
-{n}Her laugh is low and pleased. She kisses you, then keeps her hand against your cheek.{/n}
-"I almost sent you another proposal tonight."
-{n}You ask about the proposal.{/n}
-"A minor courtier has been selling introductions to me. I thought you might enjoy deciding what he ought to receive for his trouble."
-{n}You ask whether she thought you would prefer this.{/n}
-"I decided I would. He can spend another night imagining how prosperous he is about to become."
-{n}She takes the glass from your hand and puts it well beyond reach. Her next kiss leaves you with very little interest in recovering it. She undresses you the way she dictates letters, quickly and without waste; when you reach for the laces at her back she turns in your arms so you can pull them, lets the gown fall to her hips, and drags you down with her onto the rug before the hearth. She rolls you beneath her and braces a hand beside your head. Her open gown brushes your bare skin; she kisses you until the thought of the courtier is gone. "There. Now you may have what I kept you for."
-The curtains close across the window. Much later, she asks what you would have proposed for the courtier.{/n}
-{n}Your answer is brief: Send him an introduction to his creditors.{/n}
-{n}She lifts her head from your shoulder.{/n}
-"I knew there was a reason I kept you."''', c('[Keep the ambitious alliance and the private company within it.]', "end", flags=f("chosen_alliance"))),
-    n("limited", "Nocticula", '''{n}She is still for a moment. Then she inclines her head.{/n}
-"An answer I dislike. Not an answer I failed to offer."
-"I enjoyed this."
-"I know. That is part of what makes the limit interesting."
-{n}She puts the lens back on the table, lining its scratch up with the grain in the wood. She takes rather longer than necessary.{/n}
-"Our earlier arrangement remains what it was. I assume you will tell me if you decide to become more irritating."
-"You may notice before I do."
-"Almost certainly."
-{n}You share the drink. Nocticula asks about a Drezen merchant's attempt to sell winter clothing to an Abyssal buyer, and soon has three suggestions for improving his sales. The fourth makes you ask whether the customer is expected to survive the fitting. She looks offended that you needed to ask.
-When your glasses are empty, she places them together on the table and rises.{/n}''', c('[Keep the earlier arrangement without enlarging it.]', "end", flags=f("chosen_limit"))),
-    n("end", "Narrator", '''{n}At the door, Nocticula stops you with a hand against your sleeve.
-For a moment she seems about to make a joke. Instead she adjusts the fold where her fingers have caught it.{/n}
-"I will remember the questions," {n}she says.{/n} "And the answers I disliked. You should not expect me to become gracious about all of them."
-"I will remember the room without a sea."
-"It was unfinished."
-"I noticed."
-{n}She smiles then, freely enough that you know why she almost chose the joke instead.
-Morning arrives beyond the dream. The room in Drezen smells of cold lamp oil. Outside, boots cross the passage and stop at your door.
-Someone knocks. You answer, still trying to remember the flavor of the wine.{/n}''', c('[Return to the waking world.]', flags=f("complete"))),
+    n("yes", "Nocticula", '''"Then open it."
+{n}She steps aside.
+The door has no handle. You put your palm flat against the black wood instead, where a handle would be, and for a moment nothing happens, and somewhere behind you somebody laughs nervously. Then you feel it: the Gift, under your skin, answering something in the wood. The latch lifts on the inside with a sound like a key turning in a lock, very loud in the silent Harem, and the door swings inward on darkness and the smell of her.
+Behind you, a whole room full of people lets out its breath.{/n}
+"There," {n}Nocticula says, at your shoulder, very softly.{/n} "They heard it. Every one of them. They'll be telling that story in the Fleshmarkets for a hundred years." {n}Her mouth is at your ear.{/n} "I've wanted to do this in front of them since the first night. Get in."
+{n}She puts her hand flat on your back and pushes you through, not gently, and follows, and kicks the door shut behind her without looking. Inside it is dark and warm, and she has you against the closed door before your eyes have adjusted, her mouth on your throat, her hands already busy. Much later, the room comes back. You are lying on something soft in the dark, with her weight on you and her hair over both your faces, and from very far away, through the door, the Harem has started talking again: one voice, then many, the sound of a whole court beginning to sell what it saw.{/n}
+"Listen to them," {n}she says against your neck.{/n} "Every one of them is going to remember tonight. So am I."
+{n}You reach to push the hair out of your eyes. She catches your wrist and pins it.{/n}
+"Leave it. I want to look at you without your face arranged."''',
+      c('[Keep the door. Keep the invitation.]', "end", flags=f("chosen_company"))),
+    n("power", "Nocticula", '''"Company and dangerous work." {n}She tastes it, and laughs, low, and the front tier of the Harem shivers.{/n} "Oh, you greedy thing. Yes."
+{n}She does not open the door yet. She turns to the room instead, and takes your arm, and walks you along the front of the dais, past the first tier of couches, where the most important of her court sit.{/n}
+"You'll want no oath from me, and you won't get one; sworn allies bore me within a year. Every scheme we make, we bargain for fresh. When you refuse me, I'll be furious, and then I'll have you anyway, the same night, in the same bed. And one rule." {n}She stops in front of a courtier in green, a soft man with clever eyes who has been, until tonight, one of the people who sell her favor.{/n} "Nothing said behind that door is ever sold. The first of us who sells a pillow confidence may expect the other to come and collect it in person." {n}She smiles down at the courtier.{/n} "With tongs."
+{n}The courtier, who has sold a great many things in his time, goes grey.{/n}
+"This one," {n}she tells you, not lowering her voice,{/n} "has been selling introductions to me. He thinks I don't know. I was going to deal with him tonight. I'll do it later. Much later. He can spend tonight imagining what I'll do." {n}She pats the courtier's cheek, twice.{/n} "Don't leave the Harem, sweetheart. I'll want you where I can find you."
+{n}Then she takes you back to the black door and opens it herself, with one hand, and the latch sounds through the whole room like a blow, and she pulls you through by the front of your shirt. A long while afterwards she asks what you would have proposed for the courtier. You are lying in the dark with your head on her stomach, and through the door the Harem is still very quiet, as though nobody out there dares to move.
+Your answer is brief: send him an introduction to his creditors.{/n}
+{n}She lifts her head.{/n}
+"I knew there was a reason I kept you."''',
+      c('[Keep the alliance, and the door inside it.]', "end", flags=f("chosen_alliance"))),
+    n("limited", "Nocticula", '''{n}She is still for a moment. Behind you, the Harem has heard. You can feel it hear: a long, slow shifting along every tier, couches creaking, silk, a whisper starting somewhere high up and being smothered.
+Nocticula does not look at them. She looks at you, and her face does not change at all.{/n}
+"No," {n}she says.{/n} "In front of all of them."
+"I'll keep what we agreed. I won't promise more than that."
+"I heard." {n}She reaches past you and lays her palm on the black door, and you hear the latch move inside it, for her, and stop, and not open.{/n} "Then it stays shut. It will stay shut for you until I decide otherwise, and I'll decide it when it suits me, not when you change your mind." {n}She smiles, quite pleasantly.{/n} "I collect my debts, Commander. And I'm in no hurry. Hurry is for mortals."
+{n}She takes your arm, as she took it coming in, and turns you round to face the room, and walks you back the whole length of the Harem toward the stair, slowly, with every eye on you. Nobody laughs. Nobody would dare. But they all see your empty hands, and they all see her face, which is smiling, and they all know what it means when the Lady in Shadow smiles like that at someone who has refused her.
+At the foot of the stair she lets go.{/n}
+"You'll come when I send for you," {n}she says.{/n} "That's what we agreed, and I always keep what I agree. And one night, darling, I'll send for you to collect. You won't know which night until you're standing in it."''',
+      c('[Keep the earlier bargain. Leave the door shut.]', "end", flags=f("chosen_limit"))),
+    n("end", "Narrator", '''{n}At the last she catches your sleeve, the way she always does, and pulls you back for one more look at you.{/n}
+"Wake up," {n}she says.{/n} "I'm finished with you for tonight. Tell your crusaders whatever you like about where you were. Half of them will believe you, and the other half will be right."
+{n}You wake in Drezen with the smell of incense in your hair. The room is cold, the lamp gone out. Someone in the corridor is knocking: the morning dispatch, late as usual. You lie still for a moment with your eyes closed, listening, half expecting to hear a latch.{/n}''', c('[Return to the waking world.]', flags=f("complete"))),
 ], "ambition_discussed")
 
 
@@ -1856,18 +1664,18 @@ def ending(id, title, text, requires=(), forbids=(), owner="Epilogue"):
 # Supplementary recollections of this undertaking, not replacements for native
 # or parent political/romantic endings. Root must review epilogue delivery/order.
 ORDINARY_BAD = ("noct.dead", "inhuman", "ascended", "sacrifice")
-ending("company", "The questions she remembered", '''{n}The public accounts of the harbor affair omitted the room beside the quay. They named the passengers, the stolen protection, and the claims Nocticula had acquired along with her victory. Nobody thought to ask where she had spent the evenings between those reports.
-The Commander remembered a book left facedown beside a lamp, a tale about an ambassador whose interpreter had frightened him more than the Lady in Shadow, and Nocticula asking that the flame be left burning. She had wanted to look at the person beside her. For once she had said so before inventing a more elaborate reason.
-The last invitation of that undertaking had been accepted. There would be other questions at the Worldwound, with far more than an evening at stake. At the quay, the question had been whether they wanted to meet again.
-Nocticula had built a second door before she asked. The Commander had stayed.{/n}''', requires=f("chosen_company"), forbids=ORDINARY_BAD)
-ending("alliance", "A bargain with witnesses", '''{n}The harbor affair occupied a small place in the history of Nocticula's ambitions. Its account ran to several volumes, partly because every attempt to shorten Ilvara's testimony had exposed another useful omission.
-The Commander had become familiar with the Lady in Shadow's expression when a good argument cost her money. Nocticula, in turn, had learned when a question was about to spoil her preferred answer. They had ended the undertaking by choosing further company and the prospect of further work.
-That evening she had put aside a courtier's misdeeds to take the Commander's glass and kiss the hand holding it. Later she had remembered the courtier. The suggested punishment had pleased her enough to interrupt the quiet with laughter.
-The older Worldwound bargain still awaited its reckoning. Before it, there had been this alliance on a smaller matter, and the considerable pleasure each had taken in making the other attend to an inconvenient detail.{/n}''', requires=f("chosen_alliance"), forbids=ORDINARY_BAD)
-ending("limit", "An undertaking completed", '''{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept the earlier arrangement and declined to enlarge it.
-She spent a while aligning the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.
-They had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.
-Nocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}''', requires=f("chosen_limit"), forbids=ORDINARY_BAD)
+ending("company", "The door she keeps", '''{n}The door behind the dais in the Harem of Ardent Dreams stayed the Commander's to open unbidden. Nobody else ever did. The Ardent Dream's court counted the visits, and sold the count, and Nocticula bought it back from them now and then for the pleasure of reading how often she had been seen to want something.
+She did not soften. She still sat in judgment in her throne hall and carried out the sentences herself; she still let her court bet on how long the condemned would last, and still won. She still read the Commander's thoughts whenever the Gift held, and laughed out loud at the parts the Commander had meant to keep, sometimes in company. When the Commander pronounced a sentence at her trials, she carried it out. When the sentence bored her, she said so, and chose a better one.
+The harbor and the lodge became stories in the Middle City, and then songs, and the songs got the details wrong, which she preferred. The bell from Istrava's house hung somewhere she could reach it.
+She never once said she loved anyone. Once, at a window over the burning city, she told the Commander: "You are mine to disappoint." It was the closest she came, and it was close enough.{/n}''', requires=f("chosen_company"), forbids=ORDINARY_BAD)
+ending("alliance", "The chosen instrument", '''{n}The harbor and the lodge were the first things the Commander helped Nocticula take. They were not the last.
+She called the Commander "the chosen instrument of my will" in front of her court, and meant it as the highest praise she had, and the court understood it exactly. Instruments are used. This one was used often, and well, and argued about every use, and was kept anyway, because nothing else in her city could surprise her twice.
+The courtier who had sold introductions to her waited in the Harem for nine days, as he had been told to, and on the tenth she remembered him. She had his creditors introduced to him one at a time, in a locked room, and the Middle City talked about the result for a season. She told the Commander about it in bed, in detail, and laughed until she cried.
+Her rule spread. Houses that had hunted under her protection closed, or burned, or were taken and hunted in by her. Captains who sold passage under borrowed flowers learned to stop. Each of these things she called ours when she was pleased, and mine the rest of the time, and both were true.{/n}''', requires=f("chosen_alliance"), forbids=ORDINARY_BAD)
+ending("limit", "An undertaking completed", '''{n}At the end of the harbor undertaking Nocticula offered the Commander her door, in front of her whole court, and the Commander refused it and walked back up the Harem stair with empty hands.
+She did not forgive it. She did not punish it, either, not then. She kept the bargain they had made, exactly, to the letter, the way she kept everything she agreed to. She sent for the Commander when the Gift allowed and the Commander came. The door behind the dais stayed shut.
+She remembered. The Midnight Isles learned, over that time, that the Lady in Shadow had been refused by a mortal and had smiled about it, and the smile frightened them more than any punishment would have.
+Long afterwards, on a night of her own choosing, she sent for the Commander and collected. What she collected, and how, the Commander never told anyone. It was not gold. It was exactly as unpleasant as she had promised, and she enjoyed every moment of it, and at the end of it she laid her hand on the Commander's cheek and said, "There. Paid. I'll think of something else you owe me."{/n}''', requires=f("chosen_limit"), forbids=ORDINARY_BAD)
 ending("death", "The unused question", '''{n}After Nocticula's death, the room beside the quay could only be remembered. The dream which once supplied its light no longer brought an invitation from her.
 During the harbor affair she had made an entire sea because the Commander noticed its absence. She had kept a damaged lens and an old bollard long after each had ceased to be useful to the conversation. None explained what she might have wanted from another evening.
 The passengers had come out of their borrowed harbor before she died. Their names remained in the account, beside the fees she disputed and the questions she had sent back for a better answer. Between two of those reports there had been a private meeting. She had rested her hand beside the Commander's, close enough to touch, and waited.
@@ -1875,10 +1683,10 @@ The next movement belonged to a time when both were still there.{/n}''', require
 ending("sacrifice", "An answer no longer possible", '''{n}After the Commander's sacrifice, the harbor account still contained the questions asked before the crossing. A reader could follow them through amended instructions, the names called at the door, and the reports delivered afterward. The person who had asked them would never read another reply.
 Nocticula had once completed a room while deciding how to invite that person back. She had kept a useless bollard beside its hearth and made a window overlooking water that had not been there at first.
 On their final visit of the undertaking she had asked whether there should be more evenings. The Commander had given an answer. Now the unfinished invitations belonged to her alone, and even a perfectly chosen question would receive no new answer from the one she had intended to ask.{/n}''', requires=("sacrifice",), forbids=("noct.dead", "inhuman", "ascended"))
-ending("ascent", "Before the greater claim", '''{n}Long before the tales of the Commander's ascent found their grandest words, there had been an argument over a harbor chart in a room with no sea.
-Nocticula had wanted the passage. The Commander had wanted an answer to the problem she brought. As the investigation continued, each discovered that the other's questions could be as troublesome as an enemy's offer. Several missing people returned to the world while they argued about the price.
-In the last dream of that undertaking, a scratch on a copied lens caught the lamplight. Nocticula could have removed it with a thought. She kept it, turning the glass until the light crossed the flaw.
-The Commander's later glory gave that small decision no larger purpose. It remained among the things that had pleased her in the company of someone she had first addressed as a possible instrument, and eventually asked to stay for another evening.{/n}''', requires=("ascended",), forbids=("noct.dead", "inhuman"))
+ending("ascent", "Her champion comes home", '''{n}When Pharasma summoned the Commander to her court, another summons drowned her out: the Lady in Shadow, calling her champion home. The Commander went.
+Nocticula met them in the throne hall in front of everyone, on the dais where she had once sat the Commander at her right hand to let her court wonder what the crusader cost her. Now there was no need to wonder. The Commander came up the steps in true demonic form, and the court went down on its faces, and she laughed, long and hard, and the hall laughed with her because it had learned to.
+"I bet on you," she said. "Everyone told me not to. I so rarely lose."
+The harbor had been the first thing they took together, and the lodge the second, and they were small things, a door in a cliff and a house in a garden. She kept the bell from Istrava's lodge by her throne anyway, and rang it sometimes when the Commander was away, to see who in her court would flinch. The conquests that followed were not small. They were only beginning.{/n}''', requires=("ascended",), forbids=("noct.dead", "inhuman"))
 ending("changed", "The earlier company", '''{n}The Commander of the harbor affair belonged to an earlier time. Nocticula had asked that person for advice, resented some of it, and finished the undertaking with an invitation beside a window overlooking dark water.
 Then the Commander changed, and the old invitation ceased to describe the being who might answer it. Nocticula knew the danger of trusting a familiar name after its owner had become something else.
 The earlier account still held the missing passengers' names. It held the magician's evasions, the cost of a crossing, and the questions that had exposed an awkward truth. Its final private evening was harder to record. Nocticula had caught a fold of the Commander's sleeve, nearly made a joke, and chosen to speak plainly instead.
