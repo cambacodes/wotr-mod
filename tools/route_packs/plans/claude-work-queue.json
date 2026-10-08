@@ -765,20 +765,6 @@
     "ruling": 17
   },
   {
-    "scene": "targona.trickster.free.furlough",
-    "woman": "targona",
-    "node": "greet_wayhouse_unspent",
-    "beat": "fix-inherited2 finding 2: saved unspent greeting now continues to greet_wayhouse so both ward histories reach the placed correspondence arrival. Rewrite this locked node and its choice 0 as a concise arrival bridge retaining the actual last-wand work and eastern-road wayhouse origin, without repeating the canonical greeting or the Commander explanation that follows it. Keep IDs and choice index, the earned ward/correspondence gates, and the continuation to greet_wayhouse. Authored addition; prose unchanged pending Claude ownership.",
-    "ruling": "fix-inherited2"
-  },
-  {
-    "scene": "targona.trickster.free.furlough",
-    "woman": "targona",
-    "node": "greet_treated_unspent",
-    "beat": "fix-inherited2 finding 2 class sweep: the saved unspent arrival now continues to greet_treated. Rewrite this locked node and choice 0 as a concise arrival bridge retaining the actual last-wand ward work and origin in Heaven after the earned wing treatment; preserve physician recognition. Avoid the repeated greeting and Commander explanation now preceding the canonical greeting. Keep IDs, index, continuation and existing gates. Authored addition; prose unchanged pending Claude ownership.",
-    "ruling": "fix-inherited2"
-  },
-  {
     "scene": "aranka.react.arueshalae.dreamer",
     "node": "start",
     "woman": "aranka",
