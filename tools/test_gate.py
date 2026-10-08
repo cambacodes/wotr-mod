@@ -50,8 +50,8 @@ def ownership_commands(commands, args, full):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--full', action='store_true')
-    parser.add_argument('--voice-job', type=Path, help='signed reviewed voice/scaffold job record')
-    parser.add_argument('--append-approvals', type=Path, help='signed pending-choice append approval record')
+    parser.add_argument('--voice-job', type=Path, help='coordinator-reviewed held scaffold job record')
+    parser.add_argument('--append-approvals', type=Path, help='coordinator-reviewed pending-choice append records')
     parser.add_argument('--base', help='include committed changes since this git ref')
     parser.add_argument('--files', nargs='+', help='explicit changed-file list; replaces git detection')
     parser.add_argument('--plan', action='store_true', help='print selection without running commands')
