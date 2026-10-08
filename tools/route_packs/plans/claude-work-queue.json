@@ -1189,66 +1189,6 @@
     "dependency": "storylines/nenio_folios.py: all three hubs need the same field survey, specimen/check or threat and earned return receipt; the section 6 expanded route encounter scope is required."
   },
   {
-    "scene": "nurah.a_page_with_teeth",
-    "node": "start",
-    "woman": "nurah",
-    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
-    "why": "Sava's arrival, evidence presentation and negotiation exist entirely inside Nurah's arrival-hub text. The implemented scene supplies only Nurah's ContactUnit and no visitor placement or encounter staging. This is a substantial new quest participant delivered as a reading sequence rather than an encounter in the game world.",
-    "finding": "nurah:D06",
-    "ruling": "r5-S1",
-    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
-  },
-  {
-    "scene": "nurah.the_borrowed_audience",
-    "node": "start",
-    "woman": "nurah",
-    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
-    "why": "The implemented host remains nurah.arrival on NurahCapital. The borrowed rehearsal room, movement and props are narrated without a corresponding placement or staging action. The location change separates the mechanics from what the player is told happens.",
-    "finding": "nurah:D07",
-    "ruling": "r5-S1",
-    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
-  },
-  {
-    "scene": "nurah.the_editor_opens",
-    "node": "start",
-    "woman": "nurah",
-    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
-    "why": "The interview still executes through nurah.arrival with only Nurah's contact. Carrow, his case and the visiting subscribers have no implemented world presence; their encounter is contained in a long dialogue at the unrelated arrival host.",
-    "finding": "nurah:D08",
-    "ruling": "r5-S1",
-    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
-  },
-  {
-    "scene": "nurah.the_case_goes_missing",
-    "node": "access",
-    "woman": "nurah",
-    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
-    "why": "The burglary is narrated from the arrival hub. Its stair, locked room, warning thread, hiding from footsteps and escape never become world actions. The Trickery check does carry consequences, but it does not satisfy the binding requirement to implement showable gameplay.",
-    "finding": "nurah:D09",
-    "ruling": "r5-S1",
-    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
-  },
-  {
-    "scene": "nurah.the_subscribers_evening",
-    "node": "start",
-    "woman": "nurah",
-    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
-    "why": "The public confrontation is another nurah.arrival conversation. Vhal, Edran, Carrow, Sava and the audience appear only in prose, including the secretary's consequential departure with the record. The route's principal public payoff lacks its implemented public setting.",
-    "finding": "nurah:D10",
-    "ruling": "r5-S1",
-    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
-  },
-  {
-    "scene": "nurah.the_unpurchased_sentence",
-    "node": "settle",
-    "woman": "nurah",
-    "beat": "Write this finding's scoped encounter presentation, actor/prop actions and consequential record custody to match actual world delivery. Retain the existing choices, failed-check warning and Nurah's sharp voice; do not narrate travel or transfer unsupported by the encounter.",
-    "why": "The final confrontation and transfer of the collection occur entirely in arrival-hub narration. No Vhal, Edran, chest or transferred materials are staged. Following the previous narrated encounters, this makes the continuation's climax predominantly a document-negotiation reading sequence.",
-    "finding": "nurah:D11",
-    "ruling": "r5-S1",
-    "dependency": "storylines/nurah_continuation.py: the audit-requested actors, room/props, visible entry/escape or record transfer require route-local encounter staging and Claude text, outside the S1 shared allow-list."
-  },
-  {
     "scene": "konomi.private_reunion",
     "node": "start",
     "woman": "konomi",
