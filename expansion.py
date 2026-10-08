@@ -760,6 +760,9 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-camellia (cloud): Camellia's text-only voice layer, last for the same reason.
     from storylines import camellia_cloud
     camellia_cloud.integrate(payload)
+    # villain-route-devarra (cloud): Devarra's text-only layer, after every appender so indices stay put.
+    from storylines import devarra_cloud
+    devarra_cloud.integrate(payload)
     return payload
 
 

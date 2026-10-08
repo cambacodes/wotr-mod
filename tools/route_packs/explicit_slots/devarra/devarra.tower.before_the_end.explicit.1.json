@@ -1,0 +1,44 @@
+{
+  "slot_id": "devarra.tower.before_the_end.explicit.1",
+  "host_scene": "devarra.tower.before_the_end",
+  "host_node": "owe_free",
+  "source_nodes": [
+    "if",
+    "owe_free"
+  ],
+  "participants": [
+    "Devarra",
+    "Commander"
+  ],
+  "speakers": {
+    "D": "Devarra"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Concrete short threats and questions, food-and-fear words for people, a possessive 'mine'; 'what happened next?' as her one hunger besides meat. Possessive affection does not redeem her. No swearing, no therapy language, consent tutoring, sentimental diagnosis or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Native dragon/woundwyrm with scaled hide, wings and fire; she roars, hisses and threatens to burn, bite in half and trample.\nShe demanded an impressive story in exchange for a captive's life and says she loves to play with her food.\nHer clutch was pillaged and her offspring died before birth; she does not forget it.\nNo verified native humanoid transformation or dragon sexual anatomy is supplied; do not invent either, or fire immunity for the Commander.",
+  "scene": "EXPLICIT CONTINUATION (tracking only): Chapter 5, the authored north-ridge watchtower above Drezen, the last night before the march to Threshold, after the coronation. The Commander climbed to see her before a road that may not come back. Two hosts lead here: in 'if' her wing has already closed the Commander in against her flank ('That is what I do with what is mine'); in 'owe_free' she has laid her brow against the Commander's, hot as a forge stone ('It is still a threat. Come back and pay.'). Continue that touch into an explicit encounter beneath her lowered wing on the unlit side of the tower: predatory, possessive, food-and-fear words, a creditor collecting before the debtor can die. Her appetite stays cruel; she does not become gentle because the Commander may not return. No bite (the annual bite belongs to its day), no new price, no settlement of the smallest-egg debt or the generals' battle. Only Devarra and the Commander. STRUCTURE HOOK NEEDED: both hosts go straight to end_her today; the insert needs its own slot node between them and end_her, gated on devarra.tower.first_bite so this is a return and never a first night (the first night belongs to devarra.tower.first_bite.explicit.1), with an ungated plain path kept at the current choice index. Until that node exists this brief is tracking only.",
+  "required_beats": [
+    "Begin from her closing touch in the host node (wing closed round the Commander, or brow to brow).",
+    "She speaks of the Commander as hers and as food she has not finished; the threat to fetch and eat what is left of the Commander stays a threat.",
+    "Keep her dragon form throughout; no shapechange, no invented dragon sexual anatomy, no fire immunity for the Commander.",
+    "No bite, no tariff, no payment; the smallest-egg debt and the generals' battle stay exactly as the host left them.",
+    "End before her existing line sending the Commander down the mountain, which resumes verbatim."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored watchtower; no native romance is claimed.",
+    "history": "devarra.committed and coronation.seen (host gate); the slot node must also require devarra.tower.first_bite. Flight history only (the moult variant 'owe' is retired with its device).",
+    "resumption": "devarra.tower.before_the_end/climb -> if | owe_free -> reserved node -> end_her"
+  },
+  "last_line": "D: Go down. When you leave Drezen, look back.",
+  "last_lines": {
+    "end_her": "D: Go down. When you leave Drezen, look back."
+  },
+  "default_text": "{n}The wing stays closed. The heat of her goes on a long time, and the lamps of Drezen go out one by one below the parapet.{/n}",
+  "example": "N: The wing comes down over you both, and the city goes away.\nD: Tomorrow you go where I cannot follow. Tonight you are still mine.\nN: Her claws close on the stone either side of you.",
+  "min_lines": 8,
+  "max_lines": 12,
+  "content_scope": "Reserved explicit continuation for the Commander and Devarra only, for the separate writer. Both Commander variants are required. Preserve her sapient dragon body, cruelty and appetite; no invented humanoid transformation or undocumented dragon sexual organs."
+}
