@@ -524,3 +524,17 @@ def finish(scenes):
     endings(scenes)
     late_locations(scenes)
     attributed_variants(scenes)
+    commander_back(scenes)
+
+
+def commander_back(scenes):
+    """fix-inherited2 finding 1: her own word on an earned return, appended last."""
+    start = page(scenes['soana.ending_kept_life'], 'start')
+    start.setdefault('Paragraphs', []).append(p(
+        "{n}Word of the Commander's death had reached Wintersun before any word of the return. Soana did not believe the second messenger. "
+        'When the Commander came up the path in person, she stood in the cave mouth and sniffed the air the way the beasts did, '
+        'then hit the returned fool across the shins with her stick.{/n}\n'
+        '"Dead is dead, bloody hunter. The forest gives nothing back for free. Whatever sent you up my path again will want paying, '
+        'and it will not ask an old woman first."\n'
+        '{n}She let the Commander in all the same. Every spring after that she checked the cave mouth for a shadow, and counted it.{/n}',
+        requires=('trickster.commander_back',)))
