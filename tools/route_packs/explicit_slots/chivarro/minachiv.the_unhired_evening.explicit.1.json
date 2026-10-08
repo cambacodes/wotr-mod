@@ -1,13 +1,22 @@
 {
-  "voice": "CHIVARRO: imperious, appraising, impatient, proprietorial, sexually frank; hospitality is a weapon, a bill can be a joke, a refusal can be vicious. Enjoys controlling a room and embarrassing arrogance. Her chosen affection does not redeem her cruelty or end her attachment to Minagho. Avoid repeated accounting metaphors, maxims, therapy language, consent choreography and professional-client reassurance. MINAGHO, when present: spiteful, proud, quick to threaten, hungry for her lover, amused by the Commander's discomfort; independently chooses every invitation. Write fresh short dialogue from these traits, not copied native sentences.",
+  "slot_id": "minachiv.the_unhired_evening.explicit.1",
+  "source": {
+    "scene": "minachiv.the_unhired_evening",
+    "node": "minagho_kiss",
+    "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
+  },
+  "source_nodes": [
+    "minagho_kiss"
+  ],
+  "voice": "MINAGHO: proud, spiteful, impatient, sexually frank, sharply possessive; her appetite and her attachment to Chivarro remain independent of the Commander. No therapy language, gratitude-for-rescue script or stock seductress monologue. CHIVARRO: imperious former madam, jealous and carnal; she acts only in the surrounding scene if actually present. Write fresh short dialogue from traits.",
   "facts": "Canon facts only: Chivarro is a female eyeless lilitu, former mistress of the Ten Thousand Delights. Minagho is her established female lilitu lover. Their native history includes separations, dangerous craving, and a failed attempt to kill Minagho that became sex. Do not recreate that violence as coercion presented as love. No unverified horns, wings, tails, genital details, feeding powers, brand changes or healing. Locations, furniture, coins, gowns and the current arrangement are authored scene staging, not racial lore. All participants are adults; Commander anatomy is unspecified by this route.",
-  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: the already-used gaming-house room in Drezen, after the mask game. SCENE: minachiv.the_unhired_evening; existing node variants: chivarro_kiss. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Chivarro. Gaming-house couch after business correspondence has been put away. Minagho knowingly gives them an hour and goes for wine. This is shared permission, not cheating. Chivarro initiates an unpaid personal night; if a prior route night happened, she remembers it. End before Minagho's already-written wine complaint. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
-  "last_line": "C: If she brings the wine, she can leave it outside.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: the already-used gaming-house room in Drezen, after the mask game. SCENE: minachiv.the_unhired_evening; existing node variant: minagho_kiss. Trickster-only authored insert for the inspected Trickster history; retain native/off-path continuation unchanged. Participants: Commander and Minagho. Shared route solo Minagho encounter on the gaming-house couch. Chivarro knowingly leaves an hour; no affair is inferred. Minagho initiates and wants impatient company after the mask game. End before the existing cushion/wine aftermath. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "M: The game is finished. Put that stone down.",
   "speakers": {
     "N": "Narrator",
-    "C": "Chivarro"
+    "M": "Minagho"
   },
-  "example": "N: Chivarro sets the unopened account aside and catches your collar.\nC: That can wait. You have kept me waiting long enough.\nN: She draws you close.",
+  "example": "N: Minagho catches your sleeve before you can turn away.\nM: You have admired that door long enough.\nN: She draws you back to her.",
   "commander": "a man",
   "commander_variants": [
     "a man",
@@ -15,16 +24,13 @@
   ],
   "min_lines": 12,
   "max_lines": 20,
-  "slot_id": "minachiv.the_unhired_evening.explicit.1",
-  "default_text": "{n}Chivarro pushes the empty game tray aside. She loosens her bodice, lets you watch it fall, then draws you close enough to feel her impatient breath against your mouth.{/n}\n\"If she brings the wine, she can leave it outside.\"",
-  "source_nodes": [
-    "chivarro_kiss"
-  ],
+  "default_text": "{n}Minagho drops the recovered game stone beyond the couch, slips the dress from her shoulders and catches your belt. She bites your lower lip, then draws you back to her.{/n}\n\"The game is finished. Put that stone down.\"",
   "canon_refs": [
     "C1",
     "C2",
     "C3",
-    "C4"
+    "C4",
+    "C10"
   ],
   "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
 }

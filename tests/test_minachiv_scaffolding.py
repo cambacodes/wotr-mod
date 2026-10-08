@@ -82,15 +82,14 @@ class MinachivScaffoldingTests(unittest.TestCase):
             self.assertTrue(set(route.flags("show_kept", "entrance_chosen", "ending_rehearsed", flag))
                             <= set(selectable[0]["Set"]))
 
-    def test_new_nodes_use_one_placeholder_and_no_conditional_paragraphs(self):
-        for sid in ("the_remaining_customers", "what_the_offer_bought", "minaghos_unfinished_sentence",
-                    "the_performer_and_the_key", "the_price_of_her_name", "the_first_small_audience",
-                    "when_the_door_opens"):
-            placeholders = [n for n in self.page(sid)["Nodes"] if n["Text"].startswith("[PROSE PENDING:")]
-            self.assertTrue(placeholders, sid)
-            for node in placeholders:
-                self.assertEqual("[PROSE PENDING: minachiv." + sid + "]", node["Text"])
-                self.assertFalse(node.get("Paragraphs"))
+    def test_job9_prose_replaced_every_placeholder(self):
+        for page in self.story["Scenes"]:
+            if not page["Id"].startswith(route.PREFIX):
+                continue
+            for node in page["Nodes"]:
+                texts = [node["Text"]] + [a["Text"] for a in node["Choices"]] + [
+                    p["Text"] for p in node.get("Paragraphs", [])]
+                self.assertFalse(any("[PROSE PENDING:" in t for t in texts), page["Id"] + "/" + node["Id"])
 
     def test_street_and_door_deliver_as_drezen_book_visits(self):
         for sid in ("minaghos_unfinished_sentence", "when_the_door_opens"):

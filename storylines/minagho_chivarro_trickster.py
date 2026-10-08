@@ -1068,6 +1068,9 @@ def integrate(payload):
     # Job 4: minachiv-only scaffolding after legacy prose and slot overlays.
     from storylines import minachiv_scaffolding
     minachiv_scaffolding.integrate(payload)
+    # Job 9: Claude voice for the rebuilt base chain (text only; locked scenes).
+    from storylines import minachiv_voice
+    minachiv_voice.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

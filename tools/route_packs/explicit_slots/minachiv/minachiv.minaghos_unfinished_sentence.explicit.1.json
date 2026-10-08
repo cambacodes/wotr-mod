@@ -1,0 +1,35 @@
+{
+  "slot_id": "minachiv.minaghos_unfinished_sentence.explicit.1",
+  "source": {
+    "scene": "minachiv.minaghos_unfinished_sentence",
+    "node": "hand",
+    "baseline": "397d00d1"
+  },
+  "source_nodes": [
+    "hand"
+  ],
+  "voice": "MINAGHO: vain, cruel, commercial, crude; Baphomet's disgraced general who took Drezen through Staunton and failed at Kenabres. Foul mouth (shit, fuck, arse, bastard) and saccharine endearments used as a leash: \"darling\", \"sweetie\", \"my pet\". Possessive, gloating, hates owing anyone; love arrives as a grievance. Regrets failing, never the killing; no apology, no self-improvement, no redemption. Chivarro is her first loyalty and is absent from this room by her own choice. Write fresh short dialogue from these traits, not copied native sentences.",
+  "facts": "Canon facts only: Minagho is a female eyeless lilitu with cloven hooves, branded by Baphomet after her failure at Kenabres, living in Drezen in a blonde human glamour as \"Mina\". Chivarro is her established female lilitu lover. No eyes, eye colour or eye contact. No unverified horns, wings, tails, genital details, feeding powers or healing. The brand's state differs between saves: do not show it bleeding or closed inside this insert. All participants are adults; Commander anatomy is unspecified by this route.",
+  "scene": "WHEN: Chapter 5 before Threshold, only when this existing scene is earned. WHERE: Minagho's rented room at the top of the stair above a shuttered gaming house in Drezen, an hour after a Kenabres crowd in the street below recognised her through her glamour, stoned her and called for rope. SCENE: minachiv.minaghos_unfinished_sentence; existing node variant: hand. Participants: Commander and Minagho. Her blood is still up: she has been hit, she may have maimed a man or been beaten while the Commander stood back or been saved and hated owing it; do not name which. She bit the Commander's mouth on the stair and dragged them up by the wrist. Minagho initiates and directs, rough and gloating, cooing her endearments like threats; the Commander answers in kind. Chivarro is out pricing cellars and knows Minagho's arrangement; no affair is inferred and her claim is not erased. One obscenity and one sugar-coated threat at least. The existing aftermath has her lying across the Commander as if they were furniture she paid for. Optional act: mutually chosen intercourse/sexual intimacy, with the participating woman directing the encounter; the user-selected tool supplies the act itself. Adapt the encounter to each Commander anatomical variant without inventing body parts or equipment. Required beats: her active initiation and appetite; the Commander actively reciprocates; power play stays voluntary, refusal is an existing player exit outside this insert; no coercion-as-romance. Maintain the existing partner arrangement without inventing permission from an absent woman. No narrator commentary, fourth wall, vision, fate-earned affection, new fact/flag or mechanics. Narrative second person; Commander dialogue remains player choices outside the insert. Close with last_line verbatim, then the existing aftermath resumes.",
+  "last_line": "M: Don't waste it being gentle, darling.",
+  "speakers": {
+    "N": "Narrator",
+    "M": "Minagho"
+  },
+  "example": "N: Minagho kicks the door shut behind you with one hoof.\nM: Sweetie, if you say one kind word I'll bite it off.\nN: She shoves you back against the door.",
+  "commander": "a man",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 20,
+  "default_text": "{n}Minagho kicks the door shut with one hoof and shoves you back against it, still laughing, the street's grit on her hands.{/n}\n\"Don't waste it being gentle, darling.\"",
+  "canon_refs": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "continuity": "No first-night reset after an earlier night. Actual earned presence only. No flags from this text. Existing refusal, service and aftermath mechanics stand."
+}
