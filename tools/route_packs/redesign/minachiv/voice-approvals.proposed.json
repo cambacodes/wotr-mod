@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "proposed": [
+    {
+      "scene": "minachiv.after_the_last_lamp",
+      "before_sha": "917fb655590e6445a025a2a6a0cd08ccb240c5cf65341cb982faf2a02c0cf1c2",
+      "after_sha": "26a54f9b9c950de7a05902187fa5cc7ca0d9b42562b4e015ea18abba64d75213",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.before_the_last_road",
+      "before_sha": "daba0b5a68943fead80e971742773e92bb777b238d2f90602503a8c4e1d07346",
+      "after_sha": "9f405a58a8af5c0af07c43a06dd021e7c630dd35f3aacbce1585fe5858314eb7",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_aeon",
+      "before_sha": "ef7c6f35afd612980141c7ae82363432578ab10b91a777f2fdeba0aaea2065cb",
+      "after_sha": "587a13a34cac152859ff76cc7ab1babd784e3d0e6ecb5ceef0cd6d65efeac2db",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_aeon_completed",
+      "before_sha": "ef7c6f35afd612980141c7ae82363432578ab10b91a777f2fdeba0aaea2065cb",
+      "after_sha": "587a13a34cac152859ff76cc7ab1babd784e3d0e6ecb5ceef0cd6d65efeac2db",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_ascent",
+      "before_sha": "dc6b9597f8b6734a81a7523f5d2c11eb24a8ece7136ea8cb770ab3657faf8572",
+      "after_sha": "b01b76d64cc2030843ad2da2d0aa63fa3d660d91fc9be94762ba4c38028c7a52",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_ascent_completed",
+      "before_sha": "dc6b9597f8b6734a81a7523f5d2c11eb24a8ece7136ea8cb770ab3657faf8572",
+      "after_sha": "b01b76d64cc2030843ad2da2d0aa63fa3d660d91fc9be94762ba4c38028c7a52",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_both_lost",
+      "before_sha": "cdb148bacaf956baf836f52e7d44b6437c81a8b833b67bd2787530a52a32a706",
+      "after_sha": "bb7745c96065c10027f6f3cdae3247161e66c37bdcd280f7caf01ce6731e924b",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_both_lost_completed",
+      "before_sha": "cdb148bacaf956baf836f52e7d44b6437c81a8b833b67bd2787530a52a32a706",
+      "after_sha": "bb7745c96065c10027f6f3cdae3247161e66c37bdcd280f7caf01ce6731e924b",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_changed",
+      "before_sha": "8572020a4855c92380ce85d99ba4955208fbc5bfe254bcea9864609a2a94b633",
+      "after_sha": "42dff951f1e83ad6fa2538358e738781a75e85243f2e95590c21326a22168b74",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_changed_completed",
+      "before_sha": "8572020a4855c92380ce85d99ba4955208fbc5bfe254bcea9864609a2a94b633",
+      "after_sha": "42dff951f1e83ad6fa2538358e738781a75e85243f2e95590c21326a22168b74",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_chivarro",
+      "before_sha": "15b33b4b5f87ebc913c727730a4926e1bffb39cdd994c6d02937fe3cdf2756f5",
+      "after_sha": "786788b07ed86ced8b9255aa57bc31b1113be986a4490ae46d4ecc3d6820d9ab",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_chivarro_lost",
+      "before_sha": "b52330abd5e6d6ca9fc9002e37ba8384a315aad78861609edfe85dcf6a58429b",
+      "after_sha": "0b2236bc4fb9b51fde29fd8a94380578d6604941b579ea433774b9960cc01f2e",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_chivarro_lost_completed",
+      "before_sha": "b52330abd5e6d6ca9fc9002e37ba8384a315aad78861609edfe85dcf6a58429b",
+      "after_sha": "0b2236bc4fb9b51fde29fd8a94380578d6604941b579ea433774b9960cc01f2e",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_chivarro_service",
+      "before_sha": "b83e210b077528bc940a3a1f500f8185dc3d2130e1c9c043fdb0094aa40b7735",
+      "after_sha": "c9e0a6bf6b5f95c15e2c56ff1ac75687613f7a7846c41eaa7103b454f13b9f90",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_friends",
+      "before_sha": "6083559b261bf637f36905794bdd19c22428e10050a4de588d1460b4aaa37f9a",
+      "after_sha": "caf287570a6b416333f926cada30d19cf1483bbb748118a6e3471836141e884b",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_minagho",
+      "before_sha": "29f383c95eec1308d8bc9dd50c7833db760e20c421d94ec68be51e2beffac341",
+      "after_sha": "c1d408250adea61b63fcb24cb2ee662105fd6c8eac02f5ca3703aa812c43810d",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_minagho_lost",
+      "before_sha": "39939675b059635c3a49f2f0d27d861b227898a6578d466e318aa24547f72edf",
+      "after_sha": "44dba9e1a061864c641761fcf141578e1a77d883ac39817e34c783abd8da74c1",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_minagho_lost_completed",
+      "before_sha": "39939675b059635c3a49f2f0d27d861b227898a6578d466e318aa24547f72edf",
+      "after_sha": "44dba9e1a061864c641761fcf141578e1a77d883ac39817e34c783abd8da74c1",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_open",
+      "before_sha": "d6339e19094d8f06d562aa7581f4ea02041a0af11368e09b8b7c9523195e7b61",
+      "after_sha": "955faabede7d9d222d86df107df3c2a7dd6f1b13b5572f60133624cdff906144",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_sacrifice",
+      "before_sha": "7126a890440354508d087c1202c068b201f2f4e1d44d85c8c5a3d128a754194b",
+      "after_sha": "3a948f1837310c5f1cd1c6199e71ba528a030d2270349b2179253f7d72fccfda",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_sacrifice_completed",
+      "before_sha": "7126a890440354508d087c1202c068b201f2f4e1d44d85c8c5a3d128a754194b",
+      "after_sha": "3a948f1837310c5f1cd1c6199e71ba528a030d2270349b2179253f7d72fccfda",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_service",
+      "before_sha": "816aada57cfcd012bc43c05007d91774f5a58b7208c8d9598a1fe0d8285aa60b",
+      "after_sha": "bec8add707850445a2ae832fbd3e34b40fa54c6dcad96afda9f7b2428ba53d07",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_together",
+      "before_sha": "0329622372a3cb830b511b0f89ed6ad2f96d70b329ac689886c6905f8086c01a",
+      "after_sha": "d73d10752e98e30916103d078796921017551543318f6de543b92ca527f5db14",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_two",
+      "before_sha": "7dfed537a365d105c5ea495b314b5df61afc4f99cdf17f716133162a14c1d2dc",
+      "after_sha": "dfedf795590c029645210de25e96c59bfa36884bde518998d59140247225db02",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_unfinished",
+      "before_sha": "5c045edd082c428abbbdfd01ed6185b9c341d8460847d1806347e8255fbac494",
+      "after_sha": "1d32820210ccf691df092560b41d5a1be695152b3e30509e95c010f0e8f31b3f",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.ending_unfinished_lasting",
+      "before_sha": "14a17661924314ba16cee4d18c6653e58055e2fec20e80e2daf2b8347734c0fc",
+      "after_sha": "b003aa4624daf47bae340eda0def819a78bc9770bee858d784bc1406cbb29fed",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.her_own_arrival",
+      "before_sha": "131d6f3c90acd722eb623b6f7f57dcc1db06eebb8f52faeb66b45a9095b01e0a",
+      "after_sha": "d3b9581dfe5a6035928083b3918a550596523531083ce9ba3b68dfa16dd7cdd0",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.lastcall.page",
+      "before_sha": "d854bef1cb3fbc754d1be3ed383eb067e27f4c5a3d0eaa3ce90a02353b0a9552",
+      "after_sha": "fa11d3526cab202c1cbd6885e017b5ba56a9bbccc2ed745e5169b2089a8db3a0",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.minaghos_unfinished_sentence",
+      "before_sha": "e1224b860c6d9b2e2b807cf82e74696d16c552609f6e348133a409d37c6b57d8",
+      "after_sha": "77f7436f7927e82c8c40033117c2512ee2c9a2554bc846fb2f455fe562db9d0f",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.the_unhired_evening",
+      "before_sha": "df80bc36426bd27521e61c5a9b665845d6a239b78d9c252b6c64c79918a88968",
+      "after_sha": "a5f2c2be75257130274e71f36935f35ba7a19ebba81c9460d67c235edab701ee",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    },
+    {
+      "scene": "minachiv.what_she_will_take",
+      "before_sha": "eef90fa3dc9e379d25ba5ba71cc25951d3b8f25c36cf47ec8b87d3d0947b1660",
+      "after_sha": "6524aaed40338f9c2e43bfb0b6712a6431aff97b08643a659d96a1c2acf98d22",
+      "owner": "claude",
+      "source_branch": "claude/villain-route-minachiv-azq80e",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-minachiv design-first pass: grudge payoffs, in-room stances, re-voiced failing prose (see tools/route_packs/redesign/minachiv/cloud-review.md)"
+    }
+  ]
+}
