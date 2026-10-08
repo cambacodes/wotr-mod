@@ -1,13 +1,8 @@
 {
   "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
-  "facts": [
-    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
-    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
-    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
-    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
-  ],
+  "facts": "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles. Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne. Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat. No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon.",
   "scene": "Chapter 5, Drezen desk, erotic correspondence through authored half-seal after her personal yes and the current partner terms. Nocticula writes from elsewhere; Commander answers on paper. The user supplies the detailed intimate letter continuation. Keep frank appetite and deliberate waiting; mention her retained undertaking as danger, not a promise of harmlessness. No touch across the page, no body, room view, opened fold, Gift, palace access or physical arrival. Both provisional and letters-only channels stay limited. End before the existing dawn burn instruction and discovery dispatch.",
-  "last_line": "N: At dawn, the dispatch still waits.",
+  "last_line": "N: At dawn, a last line waits beside your answer: \"That was worth reading. Burn it before your clerk arrives. I keep my copy.\"",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"

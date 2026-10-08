@@ -1,13 +1,8 @@
 {
   "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
-  "facts": [
-    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
-    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
-    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
-    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
-  ],
+  "facts": "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles. Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne. Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat. No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon.",
   "scene": "Chapter 6, Threshold, authored private space within the existing projection audience after her spoken yes. Commander and Nocticula projection only. User-supplied continuation of consensual intimacy. Preserve authored one-way touch: she touches them, their reaching hand does not hold a body. No projection eye descriptions, restored body or invented new power. Her control is desired here, not compelled. Current Shamira terms precede this moment. Paid/refused price never changes whether her personal yes was heard; finish before the current morning branch, nail marks and unpaid/paid debt accounting. Her secret and the coming Worldwound battle remain real.",
-  "last_line": "N: Beyond the darkness, Threshold's fires burn through the night.",
+  "last_line": "N: You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"

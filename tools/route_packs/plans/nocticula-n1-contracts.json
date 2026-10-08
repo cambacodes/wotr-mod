@@ -644,6 +644,38 @@
       "presence": "Commander wakes in Drezen; companion node is reachable only through its verified in_party gate",
       "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
       "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.last_buyer",
+      "node": "noct.last_buyer.explicit.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.last_buyer",
+      "node": "noct.last_buyer.aftermath.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "noct.empty_chair.explicit.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
+    },
+    {
+      "scene": "noct.empty_chair",
+      "node": "noct.empty_chair.aftermath.1",
+      "kind": "inherited dream sending",
+      "presence": "sleeping Commander carried into her real court by the existing Gift",
+      "departure": "inherits host's existing loss/epoch guard; companion replies read verified in_party",
+      "payoff": "route progression only; inherited earned ending contract, no new commitment requirement"
     }
   ],
   "new_paragraphs": [

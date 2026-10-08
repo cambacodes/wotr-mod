@@ -5,8 +5,12 @@ this module fills the placeholder text of nodes N1 created, re-texts the
 choices N1 appended, voices the second_door discovery chain, and writes the
 redeemed-epilogue paragraphs. It runs once, after nocticula_n1.finish_partners,
 and refuses to overwrite anything that is not the text it expects, so a
-structural change surfaces as an error here.
+structural change surfaces as an error here. The one exception is
+cloud_slots() at the end: two append-only explicit-slot hosts.
 """
+from copy import deepcopy
+
+from story_format import c, n
 from storylines import nocticula_continuation as route
 
 PENDING = "[N2 PROSE PENDING: "
@@ -213,3 +217,33 @@ def write(payload):
                   if x.get("Requires") == ["noct.redeemed_epilogue"]]
         assert len(blocks) == 1 and blocks[0]["Text"].startswith("{n}" + PENDING), sid
         blocks[0]["Text"] = text
+    cloud_slots(payload)
+
+
+# Cloud noct-reconcile: two optional explicit slots (briefs in
+# tools/route_packs/explicit_slots/nocticula/). Append-only: the host keeps its
+# text, choices and positions; the appended choice leads to the heated cut,
+# whose aftermath re-offers the host's own exits unchanged.
+CLOUD_SLOTS = (
+    ("noct.last_buyer", "named", "[Make her collect for it here, under the lamps.]",
+     "{n}She does not wait for the stair to empty. She has you against the wall under the nearest lamp, and every chained face in the row is turned toward the light, toward the two of you, unable to look away; she makes sure of that.{/n}",
+     '''{n}Afterwards she sits on the bottom stair with her gown pulled straight and your blood under one fingernail, which she examines in the lamplight with interest. Down the row the chained heads are still turned toward you as far as their chains allow. None of them has closed their eyes. None of them can.{/n}
+"They'll remember that longer than the merchant will," {n}she says, pleased.{/n} "Go and wake up, darling. Your crusade will want to know where you've been. Soon someone will tell them."'''),
+    ("noct.empty_chair", "vow_guard", "[Keep the mask on.]",
+     "{n}She does not untie the mask. She puts you against the edge of the table instead, among the wax and the charcoal, and keeps one hand on the ribbon at the back of your head, where the hook is.{/n}",
+     '''{n}Later the model of the lodge has lost one of its stairs, crushed flat under somebody's shoulder, and the charcoal plan is smeared past reading. Nocticula does not mind. She has it by heart. She unhooks the mask from your hair at last, with one fingernail, slowly, and keeps the strand that tore on the steel, winding it round her finger.{/n}
+"Now you know how her quarry feel when the bell rings," {n}she says.{/n} "Remember it. Plan the entrance, darling, and then we'll go and make Istrava wear something much worse."'''),
+)
+
+
+def cloud_slots(payload):
+    by = {s["Id"]: s for s in payload["Scenes"]}
+    for sid, host, label, cut, aftermath in CLOUD_SLOTS:
+        scene = by[sid]
+        key, after = sid + ".explicit.1", sid + ".aftermath.1"
+        if any(x["Id"] == key for x in scene["Nodes"]):
+            continue
+        exits = deepcopy(_node(scene, host)["Choices"])
+        _node(scene, host)["Choices"].append(c(label, key))
+        scene["Nodes"].append(n(key, "Narrator", cut, c("Continue", after), portrait="Nocticula"))
+        scene["Nodes"].append(n(after, "Narrator", aftermath, *exits, portrait="Nocticula"))

@@ -1,13 +1,13 @@
 {
   "slot_id": "noct.last_buyer.explicit.1",
-  "host_scene": "noct.last_buyer",
-  "host_node": "named",
-  "after_text": "It is why she is smiling.{/n}",
-  "participants": ["Commander", "Nocticula"],
+  "participants": [
+    "Commander",
+    "Nocticula"
+  ],
   "voice": "NOCTICULA, the Lady in Shadow, Queen of the Succubi: regal, amused, sexually frank, possessive, cruel. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. Native register to match: \"How many of them I have... tasted?\" (eb394ace-5e24-4dc7-89a7-d5dc07cc4e9a); \"I am the Queen of the Succubi, the ruler of passions and secret desires.\" (8cc20b45-8d05-4c38-b2e9-167812022be4); \"Few are courageous enough, or stupid enough, to do that... And fewer still are those who lived to tell the tale.\" (afa1bd23-01f4-4e64-9ea9-e53323d92171). She never reassures, never asks permission, never offers an exit, never says she needs anything. Write NEW dialogue; do not reuse any sentence from this brief.",
   "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. The Commander is here because her Gift carried the sleeping mind into her cells under the palace; the body sleeps in Drezen. Rhez is her servant and stays out of the act. The merchant Ossin has just fled up the stair to spread the story that the Knight-Commander is hers; the Commander chose to let the name go with the merchant. No fixed Commander gender or anatomy; invent no physical feature beyond those stated. Explicit scope: the Commander with Nocticula only. The chained prisoners under the lamps are a silent audience who cannot turn their heads; they never touch or join.",
-  "scene": "Chapter 5, Drezen sleep; the foot of the stair in Nocticula's cells, the lamp room close by, dozens of chained prisoners with their eyes held open to the light. The merchant has just run up the stair with the Commander's name, and she has kissed the Commander in front of the merchant to make sure the story is told right. She is delighted and hungry; the Commander has just given away a secret for her and she wants to be paid for it at once, here, in front of the lamps. She pins the Commander to the stair wall and takes what she wants; she tells the Commander the prisoners will remember this, since they cannot look away; she uses the Commander's name like a brand. Fast and possessive, then slow because she decides so. Stop with her mouth at the Commander's ear; the host resumes with her murmured line.",
-  "last_line": "L: There,",
+  "scene": "Chapter 5, Drezen sleep; the foot of the stair in Nocticula's cells, the lamp room close by, dozens of chained prisoners with their eyes held open to the light. The merchant has just run up the stair with the Commander's name; she kissed the Commander in front of him to make sure the story is told right, and murmured that now everyone knows the Commander is hers. The Commander chose '[Make her collect for it here, under the lamps.]': the Commander has just given away a secret for her and she wants to be paid for it at once, here, in front of the lamps. She pins the Commander to the stair wall and takes what she wants; she tells the Commander the prisoners will remember this, since they cannot look away; she uses the Commander's name like a brand. Fast and possessive, then slow because she decides so. She draws a little of the Commander's blood with a fingernail. Stop before she sits down on the stair; the aftermath node opens with her on the bottom stair examining the blood under her nail.",
+  "last_line": "N: Afterwards she sits on the bottom stair with her gown pulled straight and your blood under one fingernail, which she examines in the lamplight with interest. Down the row the chained heads are still turned toward you as far as their chains allow. None of them has closed their eyes. None of them can.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"
@@ -19,7 +19,7 @@
   ],
   "min_lines": 10,
   "max_lines": 18,
-  "aftermath": "The host node continues unchanged: her line against the Commander's ear, 'Now everyone knows you're mine.' No added aftermath prose.",
+  "aftermath": "Dedicated aftermath node noct.last_buyer.aftermath.1 (authored): she sits on the bottom stair with the Commander's blood under one fingernail; the prisoners are still looking; she sends the Commander back to wake. Then the host's own exit, unchanged.",
   "heat": "Her native heat: frank appetite and domination, cruelty as foreplay (the lamps, the watching prisoners), never tender, never reassuring.",
   "default_text": "{n}She does not wait for the stair to empty. She has you against the wall under the nearest lamp, and every chained face in the row is turned toward the light, toward the two of you, unable to look away; she makes sure of that.{/n}"
 }
