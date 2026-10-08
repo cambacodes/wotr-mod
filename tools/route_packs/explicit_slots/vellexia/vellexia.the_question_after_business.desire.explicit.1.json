@@ -1,0 +1,38 @@
+{
+  "slot_id": "vellexia.the_question_after_business.desire.explicit.1",
+  "host_scene": "vellexia.the_question_after_business",
+  "host_node": "desire",
+  "participants": [
+    "Vellexia",
+    "Commander"
+  ],
+  "speakers": {
+    "V": "Vellexia"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "VELLEXIA: gushing hostess over an ancient, clawed sadist; delighted exclamations, 'darling', 'sweetheart', short particular demands, vanity, boredom as a threat. She directs, interrupts, makes the Commander repeat what she liked and punishes what bored her. No love maxim, no therapy or consent choreography, no modern negotiation language. Write new dialogue; do not quote native lines or this brief's example.",
+  "facts": "Vellexia is an ancient succubus of Alushinyrra's Upper City whom the Commander met in Chapter 4.\nOthers call her old, cruel and insane, and dangerous behind a friendly mask (native, Arueshalae 51d80804).\nShe turns guests who bore her into furniture; her house is furnished with them.\nAuthored continuity: the echo shell is a palm-sized silver shell with a cloudy glass cover; it carries voice and a small moving image, nothing else, and closes on her whim.\nNo canon genital detail, measurements, or hair, eye or skin colour beyond 'fake blond hair' (native, Wenduag 8115c490) is supplied; do not fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION, REMOTE: ordinary (non-Trickster) route, Chapter 5, the Commander's quarters in Drezen and her salon in Alushinyrra, through the echo shell. She has dismissed a guest and left her dinner cold to call; she has asked the Commander to be her lover and heard yes, and the Commander is describing how they would welcome her. She makes the Commander repeat how close they would stand, forbids touching her hair until she has finished kissing, and says she wants the Commander to go to bed hungry. Continue as a remote encounter only: she undresses for the glass at her own pace and makes the Commander do the same and describe it; each is alone in their own room; no touch crosses the shell. Only Vellexia and the Commander; her servants are sent out; no furnishing is an audience or participant. STRUCTURE HOOK NEEDED: desire is terminal ([Tell her you want another evening as her lover.] sets the lovers flags and exits); a reserved slot node between that answer and the exit is required before generation. Until it exists this brief is tracking only.",
+  "required_beats": [
+    "She directs from the far side of the glass and treats the Commander's hunger as her entertainment; one cruel aside about the guest she dismissed.",
+    "Strictly remote: each in their own room, the shell propped where it can see; nothing physical crosses it; the cold silver rim stays a felt limit.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "She closes the cover on her own timing, before the Commander is finished, because leaving them hungry was the point.",
+    "No promise to come to Drezen is made or kept here; that stays with the later invitation choices.",
+    "Close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored shell call (vellexia.the_question_after_business/desire); the echo shell is mod continuity from vellexia.the_unused_reply.",
+    "history": "Ordinary route: native dates finished, Ilveris broken or won, the Commander answered 'I want you' (renewed_lovers, committed). Not reachable on the Trickster in-person night (vellexia.trickster.after.night has its own first-night slot).",
+    "resumption": "vellexia.the_question_after_business/desire -> [Tell her you want another evening as her lover.] -> reserved node (to be added) -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: The glass clouds while she is still watching you, and the shell goes cold in your hand.",
+  "default_text": "{n}She props the shell against her cold dinner and begins, very slowly, on the fastenings of her gown, watching you watch her.{/n}",
+  "example": "N: Vellexia sets the shell against a candlestick and stands back from it.\nV: No, darling. Further from the glass. I want to see all of what I am missing.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit remote continuation for the Commander and Vellexia only, for the separate writer. Both Commander variants are required. Keep her cruelty, vanity and control; no touch across the shell, no new mechanic, no invented anatomy."
+}

@@ -281,6 +281,11 @@ def _gate(paragraph):
     return (sorted(paragraph.get("Requires", [])), sorted(paragraph.get("Forbids", [])))
 
 
+def _optional(scenes, sid):
+    """The S50 rows exist only when the harem rows are registered (test fixtures build without them)."""
+    return sid.startswith(PAIR) and sid not in scenes
+
+
 def apply(payload):
     scenes = _scenes(payload)
     for (sid, nid), (old, new) in NODES.items():
@@ -290,6 +295,8 @@ def apply(payload):
                 raise ValueError(f"devarra cloud: {sid}:{nid} text changed upstream")
             node["Text"] = new
     for (sid, nid), pairs in SUBS.items():
+        if _optional(scenes, sid):
+            continue
         node = _node(scenes, sid, nid)
         for old, new in pairs:
             if new in node["Text"]:
@@ -298,6 +305,8 @@ def apply(payload):
                 raise ValueError(f"devarra cloud: {sid}:{nid} missing {old[:50]!r}")
             node["Text"] = node["Text"].replace(old, new)
     for (sid, nid, index), (old, new) in CHOICES.items():
+        if _optional(scenes, sid):
+            continue
         choice = _node(scenes, sid, nid)["Choices"][index]
         if choice["Text"] not in (old, new):
             raise ValueError(f"devarra cloud: {sid}:{nid}>{index} choice text changed upstream")

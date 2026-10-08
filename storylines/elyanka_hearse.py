@@ -23,6 +23,8 @@ ANATOMY_LEFT = E + "anatomy.left"
 HUNT_ATE = E + "hunt.ate"
 HUNT_SANG = E + "hunt.sang"
 HUNT_WATCHED = E + "hunt.watched"
+HUNT_HELD = E + "hunt.held"            # villain-route-elyanka (cloud): the checked interception held the hart for her knife
+HUNT_GORED = E + "hunt.gored"          # ... and the failed one: the tine through the Commander's thigh
 COURIER_HUNGRY = E + "courier.come_back_hungry"
 COURIER_RIPENING = E + "courier.ripening"
 COURIER_SILENT = E + "courier.silent"
@@ -141,13 +143,25 @@ visit(E + "beat.hunt", "Venison", [
     el("stag", '''"There is a stag in these woods. A real one, not one of your Wound's things with too many eyes. My people have been driving him toward this clearing since sundown." {n}She tests the knife's edge with her thumb.{/n}
 "Nobody in Drezen gave me leave to kill him. Nobody in Drezen owns him. That is how venison tastes best." {n}She tilts her head, listening.{/n} "Here he comes. Be still, or be quick. Not both."''',
        c("[Be still.]", "kill"),
-       c("[Be quick. Get between the stag and the trees.]", "kill_quick")),
+       c("[Be quick. Get between the stag and the trees.]", "kill_quick"),
+       # villain-route-elyanka (cloud; claude-work-queue elyanka-and-camilary:D08): the interception is a real Athletics
+       # check with a distinct success and failure. Trailing answer: indices 0 and 1 keep their saved identity.
+       c("[Athletics] Take him yourself: get between the stag and the trees, and get your hands on the antlers.",
+         check=dict(Skill="SkillAthletics", DC=24, Success="held", Failure="gored", CommanderOnly=True))),
     nar("kill", '''{n}He comes out of the dark at a run, a big grey hart with a heavy neck, and her escort close in behind him without a sound, and he turns, and turns again, and there is nowhere left. She walks up to him while he is still deciding. She does not hurry.{/n}
 {n}The knife goes in under the jaw. She holds his head against her body with one arm until he stops, and then a while longer.{/n}''',
         c("Continue", "fire")),
     nar("kill_quick", '''{n}He comes out of the dark at a run, a big grey hart, and you are where he wants to go. For one moment there is nothing in the world but his antlers and your arms, and then he swerves, and stumbles, and she is there, and the knife goes in under his jaw.{/n}
 {n}She holds his head against her body while he dies. Then she looks at you, flushed and breathless and bruised across the forearm, and laughs out loud.{/n} "Useful after all."''',
         c("Continue", "fire")),
+    nar("held", '''{n}He comes out of the dark at a run, a big grey hart with a heavy neck, and you are where he wants to go. You take one tine in your left hand and one in your right and go down on a knee in the leaf-mould, and he drags you a body's length across the clearing and cannot drag you any further. For a moment the whole forest is his breath in your face.{/n}
+{n}Then she is there. She does not hurry. She puts the knife in under his jaw while you hold his head up for her like a dish, and she watches your face, not his, the whole time he is dying.{/n}
+"Hold," {n}she says, when your arms begin to shake.{/n} "Hold. Let him finish. It is rude to drop the meat while it is still saying grace."''',
+        c("Continue", "fire", flags=(HUNT_HELD,))),
+    nar("gored", '''{n}He comes out of the dark at a run, and you are where he wants to go, and you are a heartbeat late. Your hand closes on a tine and slides off it. The next one goes into your thigh above the knee, lifts you, and throws you into the bracken like a sack of grain.{/n}
+{n}You hear the rest rather than see it: the men in grey closing without a sound, the hart turning and turning again, a wet grunt, then nothing. When you can sit up she is kneeling over you with the knife still red, and she has put her thumb into the hole in your leg, quite deliberately, the way a cook tests a roast.{/n}
+"Wasteful," {n}she says, and licks the thumb clean.{/n} "Look at it, running into the leaves for nothing. You are my collateral, Commander. You do not get to spill it on a stag." {n}She binds the leg with a strip torn from her own grey hem, hard enough to make you shout, and does not apologize.{/n}''',
+        c("Continue", "fire", flags=(HUNT_GORED,))),
     el("fire", '''{n}Her escort build a fire. She opens the stag herself, sleeves rolled, quick and neat, and cuts the heart out and lays it on a flat stone at the edge of the flames, just long enough to sear.{/n}
 "When I was sixteen I ate like this every night. Half raw, with the blood running. There was singing, and nobody asked whose deer it was, and I have never been so happy before or since." {n}She cuts the heart in two, and holds out one half to you on the blade of the knife, red to the middle and steaming.{/n}
 "Eat. Or do not. My Lady keeps a very long memory of who refused her table."''',

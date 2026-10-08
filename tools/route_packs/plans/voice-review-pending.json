@@ -300,26 +300,6 @@
     "finding": "galfrey:D15"
   },
   {
-    "scene": "herrax.house.the_stain",
-    "route": "herrax",
-    "finding": "herrax:D25"
-  },
-  {
-    "scene": "herrax.house.rehearsal",
-    "route": "herrax",
-    "finding": "herrax:D26"
-  },
-  {
-    "scene": "herrax.house.rokhorn.sounding",
-    "route": "herrax",
-    "finding": "herrax:D26"
-  },
-  {
-    "scene": "herrax.trickster.late.next_move",
-    "route": "herrax",
-    "finding": "herrax:D26"
-  },
-  {
     "scene": "horzalah.trickster.unmet.knife",
     "route": "horzalah",
     "finding": "horzalah:D02"

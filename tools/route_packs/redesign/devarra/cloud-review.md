@@ -1,6 +1,6 @@
 # Devarra: cloud design-first review (villain-route-devarra)
 
-Owner: cloud voice owner, 2026-10-08. Base: wotr-mod `main` 723ccae. Scope (CLOUD-QUEUE villain row 14): `devarra.*`,
+Owner: cloud voice owner, 2026-10-08. Base: wotr-mod `main` 723ccae, merged with `main` 069c708 before push. Scope (CLOUD-QUEUE villain row 14): `devarra.*`,
 the S50 pair `household.pair.nidalynn_devarra.*`, her Last Call account (`trickster.lastcall.account.devarra`), and
 every page of another woman that speaks about her (Nidalynn's epilogues and Last Call page). Truth pages read: writer
 `knowledge/characters/devarra/` (canon, voice, states, decisions, relationships, native-lines.json, 19 lines),
@@ -8,12 +8,12 @@ every page of another woman that speaks about her (Nidalynn's epilogues and Last
 `plans/route-redesign-pipeline.md`.
 
 Presence read from the export (`development/Story.json`): 73 owned scenes (4 retired moult-device scenes, 4 flight
-scenes, 2 after-scenes, 3 judgment/proposal scenes, 5 reactions, 44 tower scenes, 9 epilogue pages, native egg slide,
+scenes, 2 after-scenes, 3 judgment/proposal scenes, 5 reactions, 44 tower scenes, 8 epilogue pages, native egg slide,
 Last Call page and call) and her appearances: `household.pair.nidalynn_devarra.{notice,custody,repair}.{widow,chosen}`
 (6), `trickster.lastcall.account.devarra`, `trickster.lastcall.last_joke(.areelu)` and `trickster.lastcall.page.last_word`
 (gating and the Commander's S50 line only), `dorgelinda.ledger.{other,changed}_columns` (the Commander's disclosure
 choice only), Nidalynn's route (`nidalynn.trickster.eggs.*`, `kiln.*`, `steps.widow`, `after.first_demon`,
-`door.own_form`, eight epilogue pages and `nidalynn.lastcall.page`), and the Ledger (`owed.devarra`,
+`door.own_form`, seven epilogue pages and `nidalynn.lastcall.page`), and the Ledger (`owed.devarra`,
 `guest.devarra`, `household.pair.nidalynn_devarra.custody.record`). No other villain shares a scene with her, so every
 scene above is this row's to edit; Nidalynn is not a villain row, and her lines were left in her voice (only the claims
 about Devarra were aligned).
@@ -144,7 +144,7 @@ following paragraphs `#33-#37` (the slot paragraph is `#23`; every later paragra
 possible next beat). New brief: `devarra.tower.before_the_end.explicit.1.json` (Commander + Devarra, the last night
 before the march to Threshold, from `if` or `owe_free` to `end_her`; tracking only until a slot node gated on
 `devarra.tower.first_bite` exists, so it is never a first night). Both Commander variants; dragon body only.
-slot_brief_lint (strict, all briefs) on main 346 briefs / 213 hard / 184 warnings -> branch 347 / 213 / 184; Devarra
+slot_brief_lint (strict, all briefs) on main 069c708 351 briefs / 213 hard / 189 warnings -> branch 352 / 213 / 189; Devarra
 briefs: 0 hard, 2 warnings (pre-existing background "Greybor" mentions).
 
 ## 6. Validation
@@ -152,8 +152,9 @@ briefs: 0 hard, 2 warnings (pre-existing background "Greybor" mentions).
 - Build: `python expansion.py` cannot run here (no blueprints.zip). Stubbed full build (only the zip readers stubbed:
   `storylines.native_facts.verify`, `tools.native_fact_inventory.verify_inventory`, `storylines.native_overrides.finalize`,
   `tools.crossroute_checks.other_woman.native_participation_contexts`; then `expansion.make_expansion()`) of untouched
-  origin/main (723ccae, git worktree) reproduces main's committed export scene for scene (0 differing scenes, including
-  RequiresAnyGroups order); only the zip-derived `NativeOverrides` differs, carried from main.
+  origin/main (723ccae, and again 069c708 after the merge, git worktree) reproduces main's committed export scene for
+  scene (0 differing scenes after RequiresAnyGroups member order); only the zip-derived `NativeOverrides` differs, carried
+  from main.
 - Branch export = branch stubbed build serialized with `authoring._serialization.serialize(payload, 'expansion', ...)`,
   `NativeOverrides` carried from main. Diff vs main: 26 scenes (15 `devarra.*`, 2 S50 `notice.*`, the Last Call account,
   7 Nidalynn epilogue pages, `nidalynn.lastcall.page`); checked structurally: identical node ids, choices (all fields but
@@ -161,11 +162,11 @@ briefs: 0 hard, 2 warnings (pre-existing background "Greybor" mentions).
   17 existing paragraph texts and 3 titles/entries changed. `targona.lastcall.page` (RequiresAnyGroups member order only,
   run-to-run) carried from main.
 - savecompat 0, payoff_lint 0, prose_pending_lint (integration) 0, claude_work_queue_lint 0 (220 entries; D03-D06
-  resolved), voice_lock_lint: no Devarra or Nidalynn lock; changed-lock set identical to main's (233, pending other
-  rows' enrolment); player_text_lint 5506 review rows = main, therapy warnings 19 = main; text_structure_lint 10 hard =
+  resolved), voice_lock_lint: no Devarra or Nidalynn lock; changed-lock set identical to main's (236, pending other
+  rows' enrolment); player_text_lint 5494 review rows = main, therapy warnings 19 = main; text_structure_lint 10 hard =
   main 10 (none Devarra); edge_lint devarra/trickster business:menace 0.535 -> 0.47 (menace 43 -> 51), devarra/base
   0.163 -> 0.168 (the copies of existing lines on `epilogue.commit` and "Those were my terms").
-- Unit tests and C#: see the commit message (stubbed run; C# not run, no dotnet build here).
+- Unit tests (stubbed, RRT_TEST_STORY = the branch export): test_devarra_round2, test_devarra_round3, test_devarra_round4, test_lastcall_history_inventory, test_nidalynn_round2, test_nidalynn_round4, test_voice_lock_lint, test_edge_lint, test_payoff_departure_contracts, test_savecompat_baseline: 80 run, 0 failures, 0 errors, 1 skipped. Before the brief fix, test_devarra_round2.test_farewell_and_epilogue_current_fates failed with KeyError 'last_lines' (the under_the_wing and epilogue.commit briefs had none; pre-existing on main), now passes. test_harem_row_s50 cannot run here: its fixture rebuilds in a subprocess that needs blueprints.zip, and the harem-less stubbed build (RRT_TEST_BASE_STORY) stops in hub_attachment_lint on missing household.ensemble.ch5.arrows / household.docket.gesmerha_jerribeth.account, identically on main (before this layer runs; the layer skips S50 edits when the rows are absent). C# tests not run (no dotnet build here).
 - claude-work-queue.json: D03-D06 removed (resolved, S5); D02 kept (R1). prose-pending.json: no Devarra entries.
 - Voice approvals: no Devarra, Nidalynn or S50 scene is voice-locked; `voice-approvals.proposed.json` lists before/after
   `text_sha` for every changed scene so the coordinator can enrol them.

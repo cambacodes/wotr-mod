@@ -94,11 +94,17 @@ class HorzalahRound2Tests(unittest.TestCase):
     def test_slots_have_briefs_and_one_first_night_per_history(self):
         directory = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/horzalah"
         briefs = [json.loads(p.read_text(encoding="utf-8")) for p in directory.glob("*.json")]
-        self.assertEqual(len(briefs), 4)
+        # Four built slots; tracker briefs (host_scene/host_node, no reserved node yet) name a live host instead.
+        built = [b for b in briefs if "host_scene" not in b]
+        trackers = [b for b in briefs if "host_scene" in b]
+        self.assertEqual(len(built), 4)
         slots = {n["Id"] for s in self.scenes.values() for n in s["Nodes"] if ".explicit." in n["Id"]}
         slots.update(p["Id"] for s in self.scenes.values() for n in s["Nodes"]
                      for p in n.get("Paragraphs", ()) if ".explicit." in p.get("Id", ""))
-        self.assertTrue({b["slot_id"] for b in briefs} <= slots)
+        self.assertTrue({b["slot_id"] for b in built} <= slots)
+        for brief in trackers:
+            host = self.scenes[brief["host_scene"]]
+            self.assertIn(brief["host_node"], {n["Id"] for n in host["Nodes"]})
         together = self.node("epilogue.together", "page")
         first = next(p for p in together["Paragraphs"] if p.get("Id") == route.H + "epilogue.together.explicit.1")
         self.assertTrue(shown(first, set()))

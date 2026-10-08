@@ -792,19 +792,25 @@
       "findings": [
         "elyanka-and-camilary:D08"
       ],
-      "status": "blocked",
+      "status": "fixed",
       "requirement": "Give interception a suitable Athletics or Mobility check with a distinct failure outcome, and make remaining still a deliberate alternative with its own consequence. Test both successful and failed histories.",
-      "checks": {},
-      "blockers": [
-        "storylines/elyanka_trickster.py: the specified checked interception and distinct stillness/failure branches require route-local choices and Claude outcomes, outside the S1 shared allow-list."
-      ],
+      "checks": {
+        "Areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ]
+      },
+      "blockers": [],
       "delivery": {
-        "entry": null,
+        "entry": "bounded narrated visit",
         "areas": [
           "2570015799edf594daf2f076f2f975d8"
         ],
         "participants": [],
-        "completion_action": null
+        "completion_action": {
+          "kind": "skill_check",
+          "node": "stag",
+          "choice": 2
+        }
       },
       "requires_world_action": true,
       "action_kinds": [

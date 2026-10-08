@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "note": "No Elyanka scene is in voice_locks.json today; these are proposed new Claude locks for every scene whose text this pass changed. trickster.lastcall.page.collectors is a shared Last Call roll-up: only its three Elyanka-gated paragraphs changed; lock it only with the other creditors' owners.",
+  "proposed": [
+    {
+      "scene": "elyanka.trickster.executor.haggle",
+      "before_sha": "09d3c5e923ec38f0c53da473212654cb86e8622df627660500f58eb5e5fec463",
+      "after_sha": "78780817d2118841b57b5109f8b90b24eb4fcf12607067baa09812589eebd1dd",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.straight.offer",
+      "before_sha": "5cdfba04000b0b71accc3607e6756ebcfa337775397c629d2fe4ffe3abdcee67",
+      "after_sha": "f5e22281be31134d60de19531812f0f4f7b3f8857493eee4b65735b55efe0925",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.test.the_dead",
+      "before_sha": "a2c8097bd0d68e1f96ccde03863f6d2c815db02859f3db25c41a14850a97aea2",
+      "after_sha": "8765cb8be9b077d77cc2810a55037d2eea895b10387097020b0d4d33a4544628",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.epilogue.claim",
+      "before_sha": "9a3240326558eb360962d7a0c5608957048e1d5a6da6c0020149157797b02b40",
+      "after_sha": "01a1da1ee076ab563e37616ea5003d04286eb79c1e7922a51ad27152979a8c99",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.epilogue.debt",
+      "before_sha": "8cd5a00e84caf9db8cd79b6b8efb8863ec31f3e4c256bacebd81446ed94f7dec",
+      "after_sha": "b27012af157c6eed90cfd9e094910d52e55a33b5aa837a56ca52d5d247cbd423",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.epilogue.lock",
+      "before_sha": "a71e26d5b7f32869a4e7ee12405374d32c2ba2172fbfa94eba6086eeaddd30cf",
+      "after_sha": "591d2e5bbe457a91a4648d4326d9f95310503e9963b51fd4fc6802b8705d6786",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.epilogue.left_free",
+      "before_sha": "1b5080f3b590279168b0b38af502539f64496f47e68e94d8b24a4fe85c31bab2",
+      "after_sha": "736f67e377a8f782e0f88fd5e9232ec5f4b64a23dbdac828c8c918cd0cbe8ef8",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.lastcall.page",
+      "before_sha": "294058ccabd710c4886c9eee7828e6951e604073bfe047650222b3cf12dbdec7",
+      "after_sha": "87a454d2c0e753109550399561ce5195fe528b41928ceb1b2df54275c0612963",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.beat.writ",
+      "before_sha": "84598c4e9377b580a60f268de5e3025fb5efcb63c67c2685c3fa182b63835657",
+      "after_sha": "67eb22c20a9387a31037638376f4f4cfd849795d59c99efcc3b8ec1179e0d061",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.beat.hunt",
+      "before_sha": "d022bf59fd8346e41bdefe1a81752f844da614c433a7aaeb92054593a6668c03",
+      "after_sha": "26f72ad6f3cf100fb1f3e0f2d95880c774d325c3c98adb03e30b8225ead9cfc8",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.ch6.collateral",
+      "before_sha": "6ce1d1ba4d275917570d7c7bb2366b203069afb462cc47e2734e593fb3cd5392",
+      "after_sha": "5e35079165be54a4c28695b73370ff91e379632630a4b209b5051b027ca0024d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "elyanka.trickster.beat.master",
+      "before_sha": "57525553124719818605cb6cf32c09825f1b28a78ed49ee93f9a62e4a5a8e4a9",
+      "after_sha": "aad377a4be9281bccccd56b7b56db860835bfe43d6a65016ed9fe9644ce308eb",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    },
+    {
+      "scene": "trickster.lastcall.page.collectors",
+      "before_sha": "5b9d05b8cf6019d83f34e51584ac17ce420ed4d5e884cbee30b5f02785c5b9e6",
+      "after_sha": "b6513cbbb513a9f81f59492c77757b7813c35be03fa368adeaa8dd2a9b899e2a",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-elyanka",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-elyanka design-first pass (see tools/route_packs/redesign/elyanka/cloud-review.md)"
+    }
+  ]
+}

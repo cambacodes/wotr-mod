@@ -1,0 +1,38 @@
+{
+  "slot_id": "herrax.house.a_night_out.explicit.1",
+  "host_scene": "herrax.house.a_night_out",
+  "host_node": "home",
+  "participants": [
+    "Herrax",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Herrax"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HERRAX: a scarred, amused succubus madam who prices everything; warm pet names (honey, my sweet, lover), one appraisal of the Commander's body, sexual frankness as commerce ('an exchange of life forces'), insolent laughter, cruelty spoken as housekeeping. Her yes is framed as the one unpriced thing in her house. Never shame about her scars, pity for slaves, sentimental 'free of charge' talk, therapy language or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Herrax is a chaotic evil succubus who took the Ten Thousand Delights in Alushinyrra by force and runs it as madam; she buys, trains and rents out slaves and does not know their names.\nNative description: a jagged scar across her cheek through her lips, a left eye gone to grey cataract amid caustic wounds, and wings like tattered rags; she keeps the scars on purpose and calls them spice to her perfection.\nShe curses by Lamashtu as an oath, not a faith.\nNo mechanical life-drain, cost or healing is part of this encounter.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 4, Alushinyrra, after the Battlebliss. Herrax, who never sits in the arena stands, went down on the Commander's arm so the bookmaker on the east steps, who paid her boys in clipped coin, would see her face while she bit every coin of the settlement, and so the whole Battlebliss would see whom she brought. On the walk back up through the lamplit streets she kept her arm through the Commander's without noticing. At her own door she said it was loud, it stank and she enjoyed it, and that she would never forgive the Commander for it; the Commander said 'I'll live with it.' Continue: she takes the Commander through the Delights' street door, past the bar and up her own stair to the private floor, door shut; the house below is filling with the drunk, bloody arena crowd and its money, and she does not stop to count it. A RETURN night, not a first night. Her heat is arena blood and winnings turned into appetite: the smell of the sand still on both of them, her pleasure at having been seen, frank trade-talk about life force and taking a little more than she gives, the one thing she will not charge for; insolent, laughing and proprietary, the scars and ragged wings shown, not hidden. Only Herrax and the Commander. End before dawn.",
+  "required_beats": [
+    "Begin at her door from 'I'll live with it'; she leads the Commander upstairs herself, past the returning crowd.",
+    "The arena is in the encounter (blood, noise, the bitten coins, being seen together); no fee or price for her: she makes a point of what she does not charge.",
+    "If the Commander lost the bet, she may tease about the thousand still owed; it is not collected here and no new price is set.",
+    "Frank commercial bed-talk (life force, taking a little more than given) without any actual drain, cost or wound.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "Her scars, grey eye and ragged wings are part of the encounter; nothing is healed or apologised for. No worker, client or voyeur enters; she remains a slaver and madam; close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored arena outing; the move to her private floor follows the host's terminal exchange at her door.",
+    "history": "Committed Trickster Herrax after herrax.trickster.madam.reachable or reachable_restored (her first night); this is a later return. herrax.house.arena.bet_lost may or may not be set.",
+    "resumption": "herrax.house.a_night_out/home -> \"I'll live with it.\" -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: Toward dawn the arena crowd is still roaring in the hall below. Herrax sleeps through it with sand in her hair and one ragged wing across your chest.",
+  "default_text": "{n}She does not let go of your arm at the door. She takes you up her stair instead, past the crowd coming in from the arena.{/n}",
+  "example": "N: Herrax shoulders her door shut on the noise from the hall.\nH: Sand in your hair, lover. You smell like a winning bet.",
+  "min_lines": 14,
+  "max_lines": 20,
+  "content_scope": "Reserved explicit continuation for the Commander and Herrax only, for the separate writer. Both Commander variants are required. Keep her scars, wings and commercial cruelty; no drain mechanic, healing or invented anatomy."
+}
