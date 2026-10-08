@@ -178,13 +178,20 @@ class HerraxRound2Tests(unittest.TestCase):
     def test_all_four_briefs_have_reachable_default_nodes(self):
         folder = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/herrax"
         files = list(folder.glob("*.json"))
-        self.assertEqual(4, len(files))
+        # Four reserved slot nodes; later briefs map to an existing host node (host_scene/host_node).
+        self.assertGreaterEqual(len(files), 4)
         nodes = {n["Id"] for event in SCENES.values() for n in event["Nodes"]}
+        reserved = 0
         for brief in files:
             data = json.loads(brief.read_text(encoding="utf-8-sig"))
-            self.assertIn(brief.stem, nodes)
+            if brief.stem in nodes:
+                reserved += 1
+            else:
+                host = SCENES[data["host_scene"]]
+                self.assertIn(data["host_node"], {n["Id"] for n in host["Nodes"]}, brief.stem)
             self.assertEqual(["a man", "a woman"], data["commander_variants"])
             self.assertIn("last_line", data)
+        self.assertEqual(4, reserved)
 
 
 if __name__ == "__main__":

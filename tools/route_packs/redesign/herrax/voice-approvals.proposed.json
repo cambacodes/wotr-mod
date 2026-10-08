@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "note": "villain-route-herrax (cloud): no scene changed by this pass is Claude-locked in tools/route_packs/voice_locks.json (no Herrax scene is locked yet), so no approval is needed. The coordinator may enroll the changed herrax.* scenes listed in cloud-review.md as Claude-locked after merge.",
+  "proposed": []
+}
