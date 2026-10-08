@@ -862,20 +862,6 @@
     "ruling": 21
   },
   {
-    "scene": "household.docket.horzalah_hepzamirah.account",
-    "node": "j05_instructions_destroyed",
-    "woman": "Horzalah",
-    "beat": "Keep captivity accusation; inspect and destroy surrendered mundane trap instructions; spend inspection/destruction, no pardon",
-    "ruling": "05"
-  },
-  {
-    "scene": "household.docket.horzalah_hepzamirah.account_table",
-    "node": "j05_instructions_destroyed",
-    "woman": "Horzalah",
-    "beat": "Keep captivity accusation; inspect and destroy surrendered mundane trap instructions; spend inspection/destruction, no pardon",
-    "ruling": "05"
-  },
-  {
     "scene": "household.pair.seelah_camellia.settle",
     "node": "reasoned",
     "woman": "camellia",
@@ -1021,104 +1007,6 @@
     "woman": "nocticula",
     "beat": "want rank acknowledged / reject the repeated renunciation / public claim remains disputed",
     "ruling": 2
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "start",
-    "woman": "horzalah",
-    "beat": "want Guild leverage / give the approaching crusade patrol one real warning instead of selling it / lose that sale",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "second",
-    "woman": "hepzamirah",
-    "beat": "want dominance / accept Horzalah's control of this warning and leave her agent unmolested / yield this interception and Guild claim",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "held",
-    "woman": "hepzamirah",
-    "beat": "want a useful patrol alive / warning reaches the patrol, agent departs unmolested, each sister acknowledges her kept term / lost sale and lost domination",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "missed",
-    "woman": "horzalah",
-    "beat": "want the task done / reject the botched relay / neither promised deed is completed",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "refused",
-    "woman": "horzalah",
-    "beat": "want her own advantage / leave the limited bargain unsigned / dispute remains",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "broken_horzalah",
-    "woman": "horzalah",
-    "beat": "want the warning's sale price / sell this warning instead of delivering it to the patrol / break her own Guild-warning concession",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.truce",
-    "node": "broken_hepzamirah",
-    "woman": "hepzamirah",
-    "beat": "want mastery of the Guild warning / intercept Horzalah's agent and seize this warning / break her own noninterception concession",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "start",
-    "woman": "horzalah",
-    "beat": "want Guild leverage / give the approaching crusade patrol one real warning instead of selling it / lose that sale",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "second",
-    "woman": "hepzamirah",
-    "beat": "want dominance / accept Horzalah's control of this warning and leave her agent unmolested / yield this interception and Guild claim",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "held",
-    "woman": "hepzamirah",
-    "beat": "want a useful patrol alive / warning reaches the patrol, agent departs unmolested, each sister acknowledges her kept term / lost sale and lost domination",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "missed",
-    "woman": "horzalah",
-    "beat": "want the task done / reject the botched relay / neither promised deed is completed",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "refused",
-    "woman": "horzalah",
-    "beat": "want her own advantage / leave the limited bargain unsigned / dispute remains",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "broken_horzalah",
-    "woman": "horzalah",
-    "beat": "want the warning's sale price / sell this warning instead of delivering it to the patrol / break her own Guild-warning concession",
-    "ruling": 4
-  },
-  {
-    "scene": "household.pair.horzalah_hepzamirah.retry",
-    "node": "broken_hepzamirah",
-    "woman": "hepzamirah",
-    "beat": "want mastery of the Guild warning / intercept Horzalah's agent and seize this warning / break her own noninterception concession",
-    "ruling": 4
   },
   {
     "scene": "household.pair.nocticula_shamira.precedence.live",

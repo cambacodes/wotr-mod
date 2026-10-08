@@ -1,22 +1,6 @@
 {
   "voice": "HEPZAMIRAH: proud, vicious, blunt, possessive, easily insulted; former archpriestess and commander who thinks in quarry, spoil and practical leverage. Appetite is direct; tenderness appears through chosen contact and returning, never moral reform. She initiates and counters rather than reciting agreements. Short harsh clauses, impatient humor, occasional profanity suited to a discarded daughter of Baphomet. Write new dialogue; voice instructions are traits, not lines to quote.",
-  "facts": [
-    {
-      "fact": "Hepzamirah is a mortal nephilim daughter of Baphomet, not an ordinary demon.",
-      "blueprint_guid": "c1c8de1235d14cc4b85b2454855b90a5",
-      "enGB_key": "7962aba1-180c-4b6f-8eec-d4c4b9777dec"
-    },
-    {
-      "fact": "Her native ghost has a crushed skull and one displaced eye.",
-      "blueprint_guid": "5e4a94e4f9a58974583be0c79bfe8e55",
-      "enGB_key": "a757af15-e373-4c05-983f-9619d5ffcc06"
-    },
-    {
-      "fact": "She sacrificed her mother and hundreds of siblings and resents her father discarding her.",
-      "blueprint_guid": "f99fcbc6f6ad7734a94346de8517b73b",
-      "enGB_key": "84523473-150d-4d3f-ab64-bd7103184dd4"
-    }
-  ],
+  "facts": "Hepzamirah is a mortal nephilim daughter of Baphomet, not an ordinary demon.\nHer native ghost has a crushed skull and one displaced eye.\nShe sacrificed her mother and hundreds of siblings and resents her father discarding her.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
   "scene": "SCENE: Authored Trickster romance, Chapter 5, the same Drezen forge room on a later night after the sortie and first morning. Only Hepzamirah and Commander are present. This is a mutual return encounter, not another first night. She has chosen darkness and drawn Commander onto the mended cot. Required beats: she initiates; Commander reciprocates; bring forward the selected scar/healed/plain history once in her reaction; her appetite coexists with anger on the ordered-healing road, without forgiveness, punishment-as-love, new penance or wound cure. Broken door swings open and cannot lock. Stage a consensual intimate encounter with this history; do not invent a specific required sexual act. End at the forge bell and her continued chosen presence.",
   "last_line": "N: When the forge bell sounds, she is still beside you, one hand closed around your wrist.",
   "speakers": {
@@ -33,6 +17,7 @@
   "default_text": "{n}She catches your mouth again and draws you close. Behind you, the broken door swings open; she lets it.{/n}",
   "authored_continuity": {
     "body": "Same authored returned vessel, horn and eye continuity as first night. Select one incoming branch: crooked stitches from Commander treatment; smooth skin from ordered priest healing with anger unpardoned; plain darkness without asserted treatment. No exposed open spear wound is eroticized.",
-    "props": "Mended cot; broken door stays unlocked/open. No horn root removed; no sight restored."
+    "props": "Mended cot; broken door stays unlocked/open. No horn root removed; no sight restored.",
+    "fact_sources": "Hepzamirah is a mortal nephilim daughter...: blueprint c1c8de1235d14cc4b85b2454855b90a5, enGB 7962aba1-180c-4b6f-8eec-d4c4b9777dec; Her native ghost has a crushed skull and...: blueprint 5e4a94e4f9a58974583be0c79bfe8e55, enGB a757af15-e373-4c05-983f-9619d5ffcc06; She sacrificed her mother and hundreds o...: blueprint f99fcbc6f6ad7734a94346de8517b73b, enGB 84523473-150d-4d3f-ab64-bd7103184dd4"
   }
 }
