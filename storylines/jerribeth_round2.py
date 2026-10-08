@@ -284,6 +284,10 @@ def integrate(payload):
     jerribeth_voice.revoice(payload)
     from storylines import jerribeth_scaffolding
     jerribeth_scaffolding.integrate(payload)
+    # Cloud voice-owner layer (villain-route-jerribeth): last text over existing pages,
+    # after the scaffolding so its saved-prose contract stays a Codex-side guarantee.
+    from storylines import jerribeth_cloud
+    jerribeth_cloud.apply(payload)
 
 
 def write_situations(events):
@@ -443,7 +447,7 @@ def write_situations(events):
                     item.setdefault("Paragraphs", []).extend((
                         p('{n}Her collection survived the Drezen rendezvous. The hiding place did not. She had left with everything she meant to keep, then come back for the Commander. She still complained about the lost room whenever she opened a case.{/n}', requires=(LOST,)),
                         p('{n}The tenant kept her collected memories in the space she rented. The room she had built around them was gone: she had come back into the collapsing imagining to lead the Commander out. She demanded a better room the next time.{/n}', requires=(MIND_LOST,)),
-                        p('{n}The scale remained beside the frame. She returned to collect the hours owed for keeping it, and spoke through the next watch, possessive and awake. The forfeit remained a separate account.{/n}', requires=(SCALE, SCALE_PAID), forbids=(SCALE_BACK,)),
+                        p('{n}The scale remained beside the frame. She returned to collect the hours owed for keeping it, and spoke through the next watch, possessive and awake. The forfeit she would take some other time, in some other way.{/n}', requires=(SCALE, SCALE_PAID), forbids=(SCALE_BACK,)),
                         p('{n}The scale was returned. Jerribeth never again charged an hour for it. She found other reasons to claim an evening.{/n}', requires=(SCALE_BACK,)),
                     ))
                     if event["Id"] == "jerribeth.ending_sacrifice":
@@ -451,7 +455,7 @@ def write_situations(events):
                         # living Commander. Keep this ending wholly historical.
                         item["Paragraphs"][-3]["Text"] = '{n}The tenant had given up her private arrangement to lead the Commander out of their imagining. She never rebuilt that shared room. There was no Commander left to invite into it.{/n}'
                         item["Paragraphs"][-2]["Text"] = '{n}The scale had bought her an hour before the last march. After the Commander\'s death it lay beside the dark frame; there were no further hours to collect.{/n}'
-                        item["Paragraphs"][-1]["Text"] = '{n}The scale had been returned before the last march. The account was square. She could claim no further evening from the dead Commander.{/n}'
+                        item["Paragraphs"][-1]["Text"] = '{n}The scale had been returned before the last march. They were square, which she had found so disappointing. She could claim no further evening from the dead.{/n}'
     late = events["jerribeth.trickster.epilogue.commit"]
     for paragraph in node(late, "offer")["Paragraphs"]:
         paragraph["Text"] = paragraph["Text"].replace(
@@ -462,15 +466,15 @@ def write_situations(events):
         item = node(event, id)
         item["Text"] = item["Text"].replace("Rent received.", "The evening was mine. Rent follows the lease.")
     node(late, "torn")["Text"] = '''{n}The Commander kept both hands folded on the table. Jerribeth waited, then shut the smaller case.{/n}
-"No forfeit, no contract. I heard you."
-{n}She took her cases away. Once she returned for a specimen left beneath the table; she found it herself, without sitting down. The Commander kept the war, including the parts worth losing. There was no signed promise for her to collect.{/n}'''
+"No forfeit, no promise. I heard you."
+{n}She took her cases away. Once she returned for a specimen left beneath the table; she found it herself, without sitting down. The Commander kept the war, including the parts worth losing. There was no promise for her to collect, and she never let the Commander forget it.{/n}'''
     node(late, "torn_mind")["Text"] = '''{n}The Commander finished the tea without answering. The voice behind the left eye thinned.{/n}
-"No forfeit, no contract. Only the lease. You pay that already."
-{n}She withdrew to the space she had rented. Later she returned to complain about the rent; she did not call it a lover's invitation. The Commander kept the war. She had no new signature to collect.{/n}'''
+"No forfeit, no promise. Only the lease. You pay that already."
+{n}She withdrew to the space she had rented. Later she returned to complain about the rent; she did not call it a lover's invitation. The Commander kept the war. She had nothing new to collect, and she said so on the first of every month.{/n}'''
     for item in late["Nodes"]:
         for paragraph in item.get("Paragraphs", ()):
-            if paragraph["Text"] == '{n}No arrangement with Marhevok had been settled. Jerribeth\'s unfinished correspondence did not settle it in his absence.{/n}':
-                paragraph["Text"] = "{n}Marhevok's name remained in their correspondence. Neither the war nor the Commander's answer could erase what she had kept, lost, or left behind.{/n}"
+            if paragraph["Text"] == '{n}Nothing about Marhevok was ever settled between them. Jerribeth preferred it that way: an open question is a hook, and she liked the Commander hooked.{/n}':
+                paragraph["Text"] = "{n}Marhevok's name stayed between them like a pin left in a cushion. Neither the war nor the Commander's answer ever drew it out, and she never tried.{/n}"
     # Exposure has a consequence in her next on-page invitation, not a claim
     # that a single sentence saying 'not forgiven' settles the broken bargain.
     for event in (visit, future, late):
@@ -499,9 +503,9 @@ def late_debts(event):
             paid["Forbids"] = [f for f in paid["Forbids"] if f != GRUDGE]
             paid["Requires"].extend((GRUDGE, PAID))
             old["Choices"].extend((paid, twin))
-            event["Nodes"].append(page(id, '"First, the account you left unpaid. Every toast before mine. I told you there would be interest. The forfeit buys something else."',
+            event["Nodes"].append(page(id, '"First, the toast you drank for free. Every cup before mine. I told you there would be interest. The forfeit buys something else."',
                 c('[Pay the interest, then answer her offer.]', id + "_paid"),
-                c('[Refuse. Keep your memories and leave the offer unsigned.]', "torn_mind" if target == "signed_mind" else "torn")))
+                c('[Refuse. Keep your memories, and keep your hand.]', "torn_mind" if target == "signed_mind" else "torn")))
             event["Nodes"].append(page(id + "_paid", '{n}The remembered cups empty. The faces across them vanish. One evening remains, the one when her voice first answered your toast.{/n}\n"Interest received. Now show me your hand. I still choose whether to take it."', c("Continue", target)))
 
 
@@ -561,9 +565,9 @@ def localize_late_choices(event):
                     notes = [out for para in partner.partner_paragraphs(closed=True)
                              if (out := resolved(para, state))]
                     conclusion = (
-                        '{n}After Threshold the Commander closed the frame after signing, and left Jerribeth. She kept the signed contract and its war-memory forfeit. Their evenings ended; no later invitation followed.{/n}'
+                        '{n}After Threshold the Commander gave her the hand, then closed the frame and left her. She kept the promise and the war it would cost. There were no more evenings. She did not ask twice.{/n}'
                         if "__signature" in state else
-                        '{n}After Threshold the Commander closed the frame before signing a new contract. Jerribeth kept her old accounts. No shared evenings followed.{/n}')
+                        '{n}After Threshold the Commander closed the frame without giving her a hand. She kept what was already owed and took it when it suited her. There were no more evenings.{/n}')
                     notes.append(p(conclusion, requires=("lastcall.active",)))
                     clones.append(n(label, original["Speaker"], original["Text"],
                                     c(), portrait="Jerribeth", paragraphs=notes))
@@ -579,20 +583,20 @@ def localize_late_choices(event):
                 for para in notes:
                     para['Text'] = para['Text'].replace(
                         'She kept the Commander alone as her lover, and the promised memory as her price.',
-                        'The promised memory was the price of severing Marhevok\'s claim. The Commander signed no commitment contract; that separate refusal left her with no new lover.')
+                        'The promised memory was the price of severing Marhevok\'s claim. The Commander never gave her a hand for the rest, and she took no new lover on credit.')
             if id == 'collected' and not signed:
                 key = (id, state)
                 if key not in cache:
                     label = 'job3_local_unsigned_' + hashlib.sha256('|'.join(sorted(state)).encode()).hexdigest()[:10]
                     cache[key] = label
-                    notes.append(p('{n}After Threshold the lease continued. No signed war-memory forfeit fell due; Jerribeth could collect only the prices already promised.{/n}', requires=('lastcall.active',)))
+                    notes.append(p('{n}After Threshold the lease ran on. Nobody had given her the war, so she did not take it; she took her rent instead, and complained about the difference.{/n}', requires=('lastcall.active',)))
                     clones.append(n(label, 'Narrator', '{n}She closed the frame when the evening ended. The Commander kept the memory of the war.{/n}', c(), portrait='Jerribeth', paragraphs=notes))
                 return cache[key]
             aftermath = (
-                '{n}After Threshold Jerribeth kept the signed contract beside the frame. The war-memory forfeit fell due under that signature; any earlier memory promised for exclusivity remained a separate price.{/n}'
+                '{n}After Threshold Jerribeth kept the pin beside the frame, with the Commander\'s blood dried on its point. The war fell due on that promise. Any memory still owed for Marhevok she meant to take separately, on a worse day.{/n}'
                 if signed else
-                '{n}The last call of the war left the tenant\'s lease intact. The Commander signed no new commitment or war-memory forfeit. Their private evening ended in conversation.{/n}' if private else
-                '{n}After Threshold the offered contract remained unsigned. Jerribeth could collect the old accounts; she could claim no lover under that refused signature.{/n}')
+                '{n}The last call of the war left the tenant\'s lease intact. The Commander promised her nothing new and gave her no war to take. Their private evening ended in talk, which she pretended to find tedious.{/n}' if private else
+                '{n}After Threshold the Commander\'s hand stayed in their lap. Jerribeth took what she was already owed and claimed nothing more. She never forgave the lap.{/n}')
             notes.append(p(aftermath, requires=("lastcall.active",)))
             key = (id, state)
             if key in cache:
@@ -654,7 +658,7 @@ def localize_late_choices(event):
                 answer[key] = [f for f in answer[key] if f not in local]
             if item is start:
                 answer["Forbids"].append("trickster.ever")
-    start['Text'] = '{n}Jerribeth opened the frame. The correspondence had survived Threshold; the new contract waited beside it.{/n}'
+    start['Text'] = '{n}Jerribeth opened the frame. It had survived Threshold, as she had. Beside it on the table lay one of her pins, bright, point toward the Commander, waiting for a hand.{/n}'
     # The compiled offer owns the arrival. Retain the original slots dormant.
     for block in start.get('Paragraphs', ()):
         block.setdefault('Forbids', []).append('trickster.ever')

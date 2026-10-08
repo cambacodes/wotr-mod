@@ -14,23 +14,7 @@
   ],
   "min_lines": 8,
   "max_lines": 14,
-  "facts": [
-    {
-      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
-      "guid": "8a632a5249b3c2541a1381111cae9e37",
-      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
-    },
-    {
-      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
-      "guid": "bf1542830cfa01d4c9db04546681084d",
-      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
-    },
-    {
-      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
-      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
-      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
-    }
-  ],
+  "facts": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head. (blueprint 8a632a5249b3c2541a1381111cae9e37, key 285126f8-f314-4a8f-a477-38282da07ef3)\nThe Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts. (blueprint bf1542830cfa01d4c9db04546681084d, key eb28ad3b-053d-4e46-9db2-055fd0a1b1d2)\nMarhevok's passionate blind devotion interests her; the village is her toy. (blueprint 52ada8be40232dc4eaccb8b1c3d79f55, key b003e047-ab44-4a8b-af47-b50108d50484)",
   "required_beats": [
     "She abandons perfect presentation voluntarily.",
     "The Commander answers the invitation instead of being assigned a line by narration.",

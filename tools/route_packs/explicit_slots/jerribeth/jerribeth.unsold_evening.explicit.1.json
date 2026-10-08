@@ -1,46 +1,39 @@
 {
   "slot_id": "jerribeth.unsold_evening.explicit.1",
-  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
-  "scene": "A private remote evening in Drezen or Nexus after her current unsold-evening invitation. She stops selling the setting and chooses the Commander's attention. The charm carries speech and images only; each remains in their own room. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
-  "last_line": "N: The image remains close while the ruined lamp goes dark.",
+  "voice": "JERRIBETH: chaotic evil demon, illusionist and collector; served Baphomet only while it paid. Her voice is telepathic, inside the listener's head: high, airy, precise, with laughter like a buzzing insect. Courtly and oblique in phrasing, near-zero profanity; contempt and precision instead. Cruelty is curation: she pins, preserves and watches the victim stay aware. Desire is collecting: to want someone is to want to keep them, and she resents the wanting. She enjoys the other's awareness and every small failure of their composure. Never tender for its own sake, never reassuring; no exits, permission rituals, therapy speech or remorse in her mouth. Write new lines from these traits; do not quote canon.",
+  "facts": "Jerribeth is a female demon with an insect-like form: a narrow insectile head with antennae, wings, a hard ridged carapace and delicate clawed hands (native Wintersun reveal and Ivory Sanctum cues).\nShe speaks telepathically, directly in the mind; her laughter is high and abrasive, like a buzzing insect (enGB 0b920731).\nShe pushes a needle into a living locust and watches it convulse (eb28ad3b); she preserves what she wants to keep, 'in some form' (de70b6ee).\nShe served her master only as long as it profited her (c4630d76) and calls deals with demons a losing game she enjoys playing (8ef95ea9).\nMarhevok, the Wintersun chief, loved her blindly (b003e047); in one canon fate he is a potted plant with human eyes (6edde3ab). He is never a participant.\nThe correspondence frame, the elven guise with its deliberate seam of light, and her tenancy in the Commander's skull are authored mod premises.\nNo canon genital anatomy is specified for her. Do not invent native physiology beyond carapace, wings, antennae, clawed hands and mouthparts.",
   "speakers": {
     "J": "Jerribeth",
     "N": "Narrator"
   },
-  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
-  "min_lines": 8,
-  "max_lines": 14,
-  "facts": [
-    {
-      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
-      "guid": "8a632a5249b3c2541a1381111cae9e37",
-      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
-    },
-    {
-      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
-      "guid": "bf1542830cfa01d4c9db04546681084d",
-      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
-    },
-    {
-      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
-      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
-      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
-    }
+  "participants": [
+    "Jerribeth",
+    "Commander"
   ],
+  "scene": "Chapter 4 or 5, a remote evening through the correspondence frame, days after the widow Aldane's supper where she wore the Commander's face. Each of them is in their own room; the charm carries only her image and her voice in the Commander's head. She has just bared the pale seam at her throat, the one unarmoured place on her, and told the Commander exactly what she would do. Now she directs: she tells the Commander what to do with their own hands, counts the sounds they make, makes them repeat what she likes, and shows herself in the frame as it pleases her, studying their face the way she studied the widow's. Nothing crosses the frame; the widow's dining room behind her goes dark when she decides. Explicit in voice and image, graphic where it fits her register; Commander and Jerribeth only.",
   "required_beats": [
-    "Show her initiating the close approach in the image, and the Commander choosing to answer.",
-    "Keep the private image out of her purchaser's display without presenting that choice as reform.",
-    "Return to after with her pleased, possessive irritation; quiet/frame branches bypass this slot."
+    "Entirely remote: no one crosses the frame or touches the other.",
+    "She directs; the Commander's compliance or resistance is the drama.",
+    "She watches and catalogues the Commander's face throughout.",
+    "Ends with her hands flat on her side of the glass."
   ],
-  "default_text": "{n}Her image fills the frame. The last lamp gutters while her voice stays close, and neither of you restores the light.{/n}",
+  "example": "N: Her claws close on your wrists and press them into the blanket.\nJ: Hold still. No. Stiller than that. I want to see how long you last.\nN: Her laughter buzzes behind your left eye, very pleased.",
+  "min_lines": 10,
+  "max_lines": 18,
+  "default_text": "{n}The candles behind her go out. Her voice stays close in the dark, telling you exactly what to do with your hands, and neither of you lights them again.{/n}",
   "placement": {
     "scene": "jerribeth.unsold_evening",
     "after_node": "kiss",
     "resume_node": "after"
   },
-  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+  "last_line": "N: She lets the widow's room go dark around her. Her hands stay pressed flat to her side of the glass, where yours were.",
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images, the elven guise and mental tenancy are authored premises. Canon physical facts are limited to the facts field. Rewritten by the cloud voice owner (villain-route-jerribeth).",
+  "last_lines": {
+    "after": "N: She lets the widow's room go dark around her. Her hands stay pressed flat to her side of the glass, where yours were.",
+    "story": "J: Before our first private evening, I rehearsed what I would say when you opened the connection. Four versions. In the third I was pleased to see you and concealed it so effectively that there was no reason for you to remain."
+  }
 }

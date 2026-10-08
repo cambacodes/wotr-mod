@@ -1,47 +1,36 @@
 {
   "slot_id": "jerribeth.trickster.epilogue.commit.explicit.2",
-  "voice": "JERRIBETH: oolioddroo demon; acquisitive, amused by dependence, impatient with dullness, possessive of people and private attention. Profitable allegiance and deliberate cruelty remain intact. High telepathic voice, abrasive buzzing laughter, precise teasing, collector's curiosity. She may desire closeness without becoming kind or reforming. Short concrete speech, no modern therapy jargon, no moral maxims, no narrator praise. Use traits to create new dialogue, not quotations from canon.",
-  "scene": "First spring after Threshold, earned returned tenant and chosen late mental evening. The real table is left; the shared room is imagined. A host, statue or locust vessel does not become a new lover body. Existing earlier intimacy changes this to a return. Write only non-graphic staging and emotional continuity. End before explicit sexual activity; supplied private continuation is outside this brief. No coerced or captive participant is sexualized.",
-  "last_line": "N: The real breakfast table stands empty until noon.",
+  "voice": "JERRIBETH: chaotic evil demon, illusionist and collector; served Baphomet only while it paid. Her voice is telepathic, inside the listener's head: high, airy, precise, with laughter like a buzzing insect. Courtly and oblique in phrasing, near-zero profanity; contempt and precision instead. Cruelty is curation: she pins, preserves and watches the victim stay aware. Desire is collecting: to want someone is to want to keep them, and she resents the wanting. She enjoys the other's awareness and every small failure of their composure. Never tender for its own sake, never reassuring; no exits, permission rituals, therapy speech or remorse in her mouth. Write new lines from these traits; do not quote canon.",
+  "facts": "Jerribeth is a female demon with an insect-like form: a narrow insectile head with antennae, wings, a hard ridged carapace and delicate clawed hands (native Wintersun reveal and Ivory Sanctum cues).\nShe speaks telepathically, directly in the mind; her laughter is high and abrasive, like a buzzing insect (enGB 0b920731).\nShe pushes a needle into a living locust and watches it convulse (eb28ad3b); she preserves what she wants to keep, 'in some form' (de70b6ee).\nShe served her master only as long as it profited her (c4630d76) and calls deals with demons a losing game she enjoys playing (8ef95ea9).\nMarhevok, the Wintersun chief, loved her blindly (b003e047); in one canon fate he is a potted plant with human eyes (6edde3ab). He is never a participant.\nThe correspondence frame, the elven guise with its deliberate seam of light, and her tenancy in the Commander's skull are authored mod premises.\nNo canon genital anatomy is specified for her. Do not invent native physiology beyond carapace, wings, antennae, clawed hands and mouthparts.",
   "speakers": {
     "J": "Jerribeth",
     "N": "Narrator"
   },
-  "example": "N: Her antennae turn toward the darkened frame.\nJ: You have been watching the scenery again. Come closer.\nN: She leaves the image still and waits for your answer.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
-  "min_lines": 8,
-  "max_lines": 14,
-  "facts": [
-    {
-      "fact": "Native greeting describes a narrow shadow, antennae and linked hands, with a high-pitched voice in the Commander's head.",
-      "guid": "8a632a5249b3c2541a1381111cae9e37",
-      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
-    },
-    {
-      "fact": "The Sanctum finale describes delicate clawed fingers and her fascination with pinning Xanthir's locusts.",
-      "guid": "bf1542830cfa01d4c9db04546681084d",
-      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
-    },
-    {
-      "fact": "Marhevok's passionate blind devotion interests her; the village is her toy.",
-      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
-      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
-    }
+  "participants": [
+    "Jerribeth",
+    "Commander"
   ],
+  "scene": "Epilogue, the first spring after Threshold. The tenant behind the Commander's left eye has built the Commander's own bedroom inside their mind, down to the crack in the ceiling, and sits on the bed in her own form with her carapace catching the light of a lamp that is not lit. She knows where every nerve runs from the Commander's memories and uses it. Narrate in third person, past tense. No host body, statue or locust vessel becomes a lover; the real body lies alone and feels all of it. Explicit, unhurried and graphic where the act is, in her own register (precise, possessive, amused); Commander and Jerribeth only. Marhevok's pot, the cabinet's specimens and any host body never take part. End at the stop line.",
   "required_beats": [
-    "Late acceptance, private evening and tenant survival are separate choices.",
-    "No body-materialization, no years claim, no physical marks or transported Marhevok.",
-    "Existing rent and late forfeit have separate receipts and collection owners.",
-    "Conclude into night_mind_after without changing the legacy collected/torn exits or setting epilogue flags."
+    "Third person past throughout.",
+    "Everything happens in the imagined room; no body materializes.",
+    "She uses what she knows from the Commander's memories, and says so.",
+    "The Commander wakes alone with no marks and the exact memory of where each would be."
   ],
-  "default_text": "{n}The room she makes closes around you both. The real breakfast table stands empty until noon.{/n}",
+  "example": "N: Her claws closed on the Commander's wrists and pressed them into the blanket.\nJ: Hold still. No. Stiller than that.\nN: Her laughter buzzed behind the Commander's eye, very pleased.",
+  "min_lines": 10,
+  "max_lines": 18,
+  "narration": "third-past",
+  "default_text": "{n}The room she made closed around them both. The real breakfast table stood empty until noon.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.epilogue.commit",
     "after_node": "night_mind",
     "resume_node": "night_mind_after"
   },
-  "authored_scope": "Authored romance continuation within the existing route guards. Charm images and mental tenancy are authored premises. Canon physical facts are limited to the cited facts array. The default remains a heated cut; no explicit prose is supplied."
+  "last_line": "N: The Commander woke alone, as the Commander had lain down, with no marks anywhere and the exact memory of where every one of them should be.",
+  "authored_scope": "Authored romance continuation within the existing route guards. Charm images, the elven guise and mental tenancy are authored premises. Canon physical facts are limited to the facts field. Rewritten by the cloud voice owner (villain-route-jerribeth)."
 }
