@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "note": "No Wenduag scene is in voice_locks.json today; these are proposed new Claude locks. 426 generated native-epilogue partner variants (wenduag.trickster.epilogue.native_*.partner.*) changed only by the same re-voiced continuity lines and are left to the generator, not proposed individually.",
+  "proposed": [
+    {
+      "scene": "wenduag.trickster.court.trial",
+      "before_sha": "57afca59334548c648fc4f6f64369c5cdbd843b8f83194c9b18fbad27e999909",
+      "after_sha": "69383b385de0dc52b618bd8030978249f826e574f8e93cd3fd82a77dd37da20c",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.gate",
+      "before_sha": "32321f5102d6b482a51a8131d856067f018f5e7334592e51f6d46452a224f04e",
+      "after_sha": "94484f2f2b00ba0cfd6408e0b10489252de2ddc38c90899bda8bf5236b8cad02",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.claim",
+      "before_sha": "af11e35f7f10e86872f1c36357718e1f85929b391746bcd0d251186bdc1c20a0",
+      "after_sha": "de47575c99fe4ddcf91da4e620693d7bde6e36138684bafaee34209f2681db99",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.claim_in_person",
+      "before_sha": "fc51890e6d639df7e0d3b87a31ac72f063bcf39ac8c5760d0ba472b816baa05d",
+      "after_sha": "4481a782f44a328840da961e4d677e403e94e24768c266c106edcdabd467e2cf",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.morning",
+      "before_sha": "46a9470d4fd79c940ccd99836067728892ff7ce2f533d4bc0a875e36494ac692",
+      "after_sha": "258412b5f8d9efab6fbbdd1dfe93871c65fa1e192559d6901bdb4d70206c2c66",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.vellexia",
+      "before_sha": "b2f59f326f50743724e7d3fdea5733e75abac7ca09306e509fb927534a710ef9",
+      "after_sha": "1ab40e4ee4787ce9e5983dee023fa6330b9d72a8a2e9f6b9e45a09d0f7a8c964",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.pack",
+      "before_sha": "11ee1fc62a56c12c928d8f7e89c661a0956eca7f30ac92ffc38b27951c43e94e",
+      "after_sha": "6141bcf3d6f8e880f07da83c7f4c266391e053ca7e222bd6453a7aa2d402c008",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.unclaimed",
+      "before_sha": "201f07d07099733db07b9c0b2a02cb589bf76c5ba7033b50b2a793e15988e76b",
+      "after_sha": "995388a461684be64cacf5b7558600203f63392e853576328000cc6ddc210d91",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.dead",
+      "before_sha": "3108213371fce4951d3bb3c2a2cbb0537f80b4f1bb801ddbcf9084591582cd2f",
+      "after_sha": "2d5be0cea3fdc9e48761bb07461e92bec7ac58c96be7442741d59fc5d5076c5d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.refused",
+      "before_sha": "b9d1c88836cf3ab3ec8a7cb971811e20e13e74c46bfb9371f0bd589d31640228",
+      "after_sha": "b77b040700cc6708f8119a4ca929b354269f4b827defd84c73c702ab32f1f2b7",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.trial.native_visit",
+      "before_sha": "a0d3ca0863f73f6cfaf73009ae7e11c098731d9a3f6195d97290121c61984241",
+      "after_sha": "e6d5f42b1e71178784a992cd23947ba810880c18b58232918cd5fe5b854bbd03",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.gate.native_visit",
+      "before_sha": "32321f5102d6b482a51a8131d856067f018f5e7334592e51f6d46452a224f04e",
+      "after_sha": "94484f2f2b00ba0cfd6408e0b10489252de2ddc38c90899bda8bf5236b8cad02",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.court.morning.native_visit",
+      "before_sha": "46a9470d4fd79c940ccd99836067728892ff7ce2f533d4bc0a875e36494ac692",
+      "after_sha": "258412b5f8d9efab6fbbdd1dfe93871c65fa1e192559d6901bdb4d70206c2c66",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.echo.abyss.epilogue.departed",
+      "before_sha": "ecb550149c1d928b8c9ed628c9bd185e7edb2c9576918860ebd13d2d57d511ef",
+      "after_sha": "014cb2c62d1678a8c2a4b087d33a4a4183d4532e0466cbabd778c6a113ffad4f",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.native_ascent",
+      "before_sha": "fdaae9a76dc3eafff0870252154f45a994aa9e389c233418da58e5c711e3ee55",
+      "after_sha": "6609ae42a217428ef7dc6682580b4c821722e20a6b9236848b3e24d550691e7d",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.native_pack",
+      "before_sha": "823feb726ea6255f00c5bb8734f6bc065ecbef72bf36ae54025d9f17bbd7281c",
+      "after_sha": "78ec7b8cc27cf2cb357e63d0e4c44f6e5cd262e2878966da90be92c2a379e3ce",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.native_commander_back",
+      "before_sha": "d6b928110e897d33506cde35ce92488af41e5aa23d3a3f5ead91e770a1db4dbf",
+      "after_sha": "d219590dbfb4268c50c4062b3ab42d7160e6d361b25e05daf941ea4933396651",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.native_greybor",
+      "before_sha": "aa5959cd30046ef91376c173009f9eb0dfd1e9dd7b65aa96fa149b3e49abca96",
+      "after_sha": "6ab32dab195c87204f40247a68ae3790910fc4f45b3c9893c1d8d699110a64ed",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.native_ember",
+      "before_sha": "ff4e976ac8f8263a52353791d5d2fb33e554279a8b7a1d5c2ae54077b76b2362",
+      "after_sha": "154e8b27f0522c6e1410a83c9fff5eb6555e5e38fd87a2ce271a9a6155532658",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.native_greybor_back",
+      "before_sha": "aa5959cd30046ef91376c173009f9eb0dfd1e9dd7b65aa96fa149b3e49abca96",
+      "after_sha": "6ab32dab195c87204f40247a68ae3790910fc4f45b3c9893c1d8d699110a64ed",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.lastcall.page",
+      "before_sha": "a7104eeb941088e35d1bf1e972bfe63814e322b29fe969d3c5653df5bff150d0",
+      "after_sha": "07cdb3d6f947f585b82cafa274eec4481096c98f025073b365ee646c081a0590",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "wenduag.lastcall.call",
+      "before_sha": "51be0f1734d4f093637215a9b3680eb8280370e3237a71d1065311b1b41ca855",
+      "after_sha": "dd6ca9cd7d8f941bf9765463c40bd5200aa3825b417ea9001d02da92d035c5c7",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "household.pair.seelah_wenduag.restraint",
+      "before_sha": "05a2ba69d16432b7c4b645d620872183d484978c5aece96a551f27369d6bc908",
+      "after_sha": "92d2124e8aed395fa30ae55221ed31dfb7fc751fbde93f3253b5b07e274cd5da",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "household.pair.seelah_wenduag.restraint.after_stood",
+      "before_sha": "05a2ba69d16432b7c4b645d620872183d484978c5aece96a551f27369d6bc908",
+      "after_sha": "92d2124e8aed395fa30ae55221ed31dfb7fc751fbde93f3253b5b07e274cd5da",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "household.pair.seelah_wenduag.debt_repayment",
+      "before_sha": "187d5e12aac8fe26f7b5470836501331438215beb9adf664a5ef50630811ffc5",
+      "after_sha": "f7e0ce4f6a050adc1797f2535761492a02b9116d81ed0587f928b12664b380dc",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    },
+    {
+      "scene": "household.pair.seelah_wenduag.morning",
+      "before_sha": "df6311652a4e6c21a7814b9fb559a175abb8bdf75270e62dec00b65653fd2808",
+      "after_sha": "bb47b36c8edcec5820ee46fca80c43b4bb97ae1adc25537a5c3296c1565807c4",
+      "owner": "claude",
+      "source_branch": "cloud/villain-route-wenduag",
+      "source_commit": "(this branch head)",
+      "reason": "Cloud villain-route-wenduag design-first pass: promise readers, harem/epilogue integration, re-voiced partner-state lines and Seelah pair (see tools/route_packs/redesign/wenduag/cloud-review.md)"
+    }
+  ]
+}
