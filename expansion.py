@@ -742,6 +742,9 @@ def _make_expansion(*, independent_tirabade=True):
     crossroute_presence.integrate(payload)
     from storylines import engine_eng3_ab
     engine_eng3_ab.integrate(payload)
+    # villain-route-areelu (cloud): Areelu's text-only voice layer, after every appender so indices stay put.
+    from storylines import areelu_cloud
+    areelu_cloud.integrate(payload)
     return payload
 
 
