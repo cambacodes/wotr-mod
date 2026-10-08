@@ -1,4 +1,4 @@
-"""Arueshalae on the Trickster path: "Treatment" (Writer/handoffs/trickster/arueshalae.md; family F18, the sneaky quack).
+"""Arueshalae on the Trickster path: "Any caress" (Writer/handoffs/trickster/arueshalae.md; family F18; arue12 removed the clinic frame).
 
 A new native adapter. It reads ArueshalaeRomance d6a90c0f and never starts or completes it; her native romance stands on
 every path. Device redesign (2026-10-01, coordinator Option A, "Prevention, not resurrection"): nothing in this route
@@ -9,7 +9,7 @@ returns her from death. The Trickster keeps her through preparation made in life
   and with no scroll there is no touch. The ward lasts minutes; the scenes are timed to it;
 - dead in the party: the crusade's own Raise Dead a0fc99f0 and Resurrection 80a1a388 work on any dead companion; the mod
   adds nothing. The old return ("Starving, not dead") and its "Insurance" are retired by gating;
-- fallen at her lair (Ch5): the quack's house call leads into the native Trickster recruitment (Answer_0009 -> Cue_0011
+- fallen at her lair (Ch5): the Commander's held-out hand leads into the native Trickster recruitment (Answer_0009 -> Cue_0011
   -> Cue_0014 starts EvilArushaRecruited), and the fallen courtship continues on her evil hub. Killing her there closes the
   route by the player's own choice (coordinator ruling). The old referral to her queen is retired by gating;
 - romance failed: the crusade's new chaplain, appointed out loud at the shrine at the hour the second company kneels:
@@ -233,14 +233,14 @@ def drezen_pair(id, title, entry, nodes, requires, forbids, delay):
 # hundred, Sosiel's offer, terms_again and their reactions) are reachable only from saves that already hold
 # arueshalae.trickster.returned, and stay for them.
 R = RETIRED_TEXT
-letter(P + "dead.starving", "Diagnosis", 3, [
+letter(P + "dead.starving", "Starving", 3, [
     nar("start", R,
-        c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "treat", mythic="Trickster",
+        c('[Call her bluff] "You\'re not dead. You\'re starving. Eat."', "treat", mythic="Trickster",
           requires=("trickster.religion_tier1", GIFT), forbids=(GIFT,)),
         c("[Let her rest.]", abort=True),
-        c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
+        c('[Call her bluff] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
           requires=(GIFT,), forbids=("trickster.religion_tier1", GIFT)),
-        c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "thread", mythic="Trickster",
+        c('[Call her bluff] "You\'re not dead. You\'re starving. Eat."', "thread", mythic="Trickster",
           requires=(GIFT,))),
     nar("treat", R, c("Continue", "work", requires=(CLAIMED,)), c("Continue", "work", forbids=(CLAIMED,))),
     nar("wake", R, c("[Lie down beside her, skin to skin, and let her take]",
@@ -253,7 +253,7 @@ letter(P + "dead.starving", "Diagnosis", 3, [
         c("Continue", "plea", forbids=(CLAIMED,), flags=(GIFT_TORN,))),
     a("claimed", R, c("Continue", "plea")),
     a("plea", R,
-        c('[Give her your wrist] "Doctor\'s orders."', flags=(RETURNED, FED_ON_YOU, STARTED)),   # retired: no revive
+        c('[Give her your wrist] "Eat."', flags=(RETURNED, FED_ON_YOU, STARTED)),   # retired: no revive
         c('[Have the guards drag a condemned cultist to her] "Not me. Him."',
           alignment=("Evil", 2), flags=(RETURNED, FED_ON_PRISONER, STARTED)),
         c("[Let her keep her vow.]", "vow", flags=(DECLINED,))),
@@ -278,7 +278,7 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
       c("Continue", "you")),
     a("you", '''"Do you remember any of it? You were on the chapel floor by the end, and I was holding your hand to my cheek. The chaplain says I made no sound. I thought I was screaming."
 {n}Her eyes go to your hands. They have not quite stopped shaking since, and the bandage on your wrist is fresh again this morning.{/n} "You let me take too much. You knew I would. You lay there and let me." {n}She rubs her mouth with the back of her hand.{/n}
-"You made me eat. You made me want it, and then you smiled like a surgeon who'd done a clever stitch." {n}A small, shocked laugh escapes her.{/n} "Only you would call my death a bad diet. The novices think you performed a miracle. I didn't have the heart to tell them it was your wrist and a very bad bedside manner."''',
+"You made me eat. You made me want it, and then you smiled like a cardsharp who'd palmed the ace." {n}A small, shocked laugh escapes her.{/n} "Only you would call my death a bad diet. The novices think you performed a miracle. I didn't have the heart to tell them it was your wrist and a very bad joke."''',
       c("Continue", "test")),
     a("him", '''"They brought him up gagged. A Deskari lay preacher, condemned at the assize. I told you not to watch and you watched." {n}Her hands shake. She puts them flat against her thighs to stop them.{/n}
 "He screamed, you know. I didn't hear it at the time. I hear it now, whenever it's quiet. He's still breathing, in the east cells. He'll never be anybody again. You gave me back my life with a stranger's in my mouth, and I don't know whether to thank you."''',
@@ -286,7 +286,7 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
     a("test", '''{n}She makes herself look up.{/n} "Tell me the truth. Not the joke, the truth. If I die again, will you do it again?"''',
       c('"Every time."', "again", flags=(AFTERTASTE, EVERY_TIME)),
       c('"Only if you ask me to."', "ask", flags=(AFTERTASTE, IF_ASKED))),
-    a("again", '''{n}She nods slowly, as if you've confirmed a diagnosis she was afraid of.{/n} "Every time. Then hear my side of it, because it isn't a question. You don't do it again unless I ask. If I wake a second time with your wrist in my mouth and no say in it, I walk out of this crusade that same night, and you don't follow me."''', c()),
+    a("again", '''{n}She nods slowly, as if you've named a price she was afraid of.{/n} "Every time. Then hear my side of it, because it isn't a question. You don't do it again unless I ask. If I wake a second time with your wrist in my mouth and no say in it, I walk out of this crusade that same night, and you don't follow me."''', c()),
     a("ask", '''"Good. Then it's mine to ask." {n}Something in her shoulders comes down an inch, and then goes straight back up.{/n} "Which means one day I'll have to. Out loud. With my mouth still tasting of the last time." {n}She wipes her lips with the back of her hand, hard, though there is nothing on them.{/n}''', c()),
 ], requires=("trickster.ever", RETURNED), forbids=(AFTERTASTE, EVIL_DEAD, CLOSED), delay=24, chapters=(3, 5))
 
@@ -304,10 +304,10 @@ hub(P + "insurance", "Insurance", 3, '"If you died tomorrow, what would happen?"
 # Coordinator ruling (2026-10-01): killing the fallen Arueshalae at her lair closes her route by the player's own choice.
 # On Trickster the native line recruits her instead (Answer_0009 2afdcec9 -> Cue_0011 68cfcd11, "I had a lot of fun with
 # you -- I even missed you a little", -> Cue_0014 a12a569b starts EvilArushaRecruited 005c2284), and the fallen courtship
-# below (fallen.house_call / lock / roof) continues from there. The house call at the lair is the quack's own way into that
+# below (fallen.house_call / lock / roof) continues from there. The held-out hand at the lair is the Trickster's own way into that
 # native line. The old referral to her queen (diagnosis, late_referral, second_opinion) is RETIRED by gating, ids, nodes and
 # choice indices kept; the reunion, arcade and window scenes after it stay only for saves that already hold its return.
-SCENES.append(scene(P + "evil.diagnosis", "Bedside manner", "Arueshalae", 5, '[Take her pulse from across the room]', [
+SCENES.append(scene(P + "evil.diagnosis", "At the lair", "Arueshalae", 5, '[Look her over from across the lair]', [
     a("start", R, c("[Brace yourself.]", native_next=TASTE_CUE, flags=(PRIMED,))),
 ], requires=("trickster",), forbids=(PRIMED, EVIL_DEAD, RECRUITED), last=5, Relationship="arueshalae", Chapters=[5],
     AnswerLists=[MEET_EVIL_LIST], NativeReturnCue=GANG_CUE, EntryMythic="PlayerIsTrickster",
@@ -347,21 +347,21 @@ letter(P + "evil.second_opinion", "A second opinion", 5, [
 ], requires=("trickster.ever", PRIMED, EVIL_DEAD), forbids=(DEBT, FAVOUR, DECLINED), delay=72, chapters=(5,),
     TricksterDevice=True, TricksterState="evil_dead")
 
-# The house call at the lair (new, 2026-10-01): the quack's pulse joke, then straight into the native offer cue. One terminal
+# The hand at the lair (new, 2026-10-01; arue12 retext): the open palm, then straight into the native offer cue. One terminal
 # choice only, so nothing replays her gang line (Cue_0006 stays the validated return; retcheck OK); [Attack] and the native
 # Answer_0009 stand beside it on the list. This is the pivotal node of her fallen state: bring her home, or kill her.
 OFFER_CUE = "68cfcd112d6060141a492949392692aa"   # MeetEvilArusha/Cue_0011 "Hmm... A tempting offer. I had a lot of fun with you"
 HOME_VISIT = P + "evil.home_visit"
-SCENES.append(scene(HOME_VISIT, "Bedside manner", "Arueshalae", 5,
-    '[Take her pulse from across the room] "Pale, feverish, homicidal. Classic case. I didn\'t come to cure you. I came to bring you home."', [
+SCENES.append(scene(HOME_VISIT, "Come home", "Arueshalae", 5,
+    '[Hold out your hand across the rubble, palm up] "I didn\'t come to kill you. I came to bring you home."', [
     a("start", '''{n}Arueshalae stares at you. The balor behind her stares at you. Then she throws back her head and laughs, delighted, as if you had just told her the best joke of the war.{/n}
-"Home? Darling, I am home. I have a lair, and boys who'd die for me, and a balor who sits outside my door at night." {n}She licks her lip, slowly, and looks you over the way she used to look over a crowded street.{/n} "And you walked all the way down here to take my pulse. You still remember what my hand costs, and you're still holding yours out. That's either very brave or very stupid, doctor. It was always one or the other with you."''',
+"Home? Darling, I am home. I have a lair, and boys who'd die for me, and a balor who sits outside my door at night." {n}She licks her lip, slowly, and looks you over the way she used to look over a crowded street.{/n} "And you walked all the way down here with your hand out. You still remember what my hand costs, and you're still holding yours out to it. That's either very brave or very stupid, darling. It was always one or the other with you."''',
       c('[Keep your hand out, palm up] "Then come and take it. The war\'s more fun than this hole, and you know it."',
         native_next=OFFER_CUE, flags=(P + "evil.home_offered",))),
 ], requires=("trickster",), forbids=(EVIL_DEAD, RECRUITED, HOME_VISIT), last=5, Relationship="arueshalae", Chapters=[5],
     AnswerLists=[MEET_EVIL_LIST], NativeReturnCue=GANG_CUE, EntryMythic="PlayerIsTrickster"))
 
-REUNION_OPEN ='''"A second opinion." {n}She smiles with too many teeth.{/n} "You bought me back from her on credit. Don't ever let me see the bill."
+REUNION_OPEN ='''"Well." {n}She smiles with too many teeth.{/n} "You bought me back from her on credit. Don't ever let me see the bill."
 "I had a lot of fun with you, Commander. I even missed you a little, which was humiliating. Let's see if you can still keep up."'''
 # Her terms are evil terms (08 §2.3): she wants a life. Oblige with your own, oblige with a condemned man's, find the
 # third way a Trickster finds (canon: demons devour "other demons in their own way", hub Cue_0105), or refuse her.
@@ -385,13 +385,13 @@ REUNION_ENDS = [
     a("refuse", '''"No?" {n}She tilts her head, interested rather than hurt.{/n} "Then I'll find someone who says yes. There are always people who say yes. That was the whole trouble with you. You never did."
 "Don't wait up."''', c()),
 ]
-presence_scene(P + "evil.reunion", "The patient sits up", '"You look well, for a corpse."', [
-    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who prescribed it.\"",
+presence_scene(P + "evil.reunion", "She sits up", '"You look well, for a corpse."', [
+    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who killed me hungry.\"",
       c("Continue", "hiding", requires=(QUEEN_HIDING,)),
       c("Continue", "price", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's hiding, you know. Our Lady. First time in a thousand years nobody's watching me eat." {n}She says it lightly, and her eyes go to the dark corners of the lair anyway, as if the dark might be listening. In the Midnight Isles, it usually is.{/n}''',
       c("Continue", "price")),
-    a("price", '''"So. The fee for a house call, doctor." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
+    a("price", '''"So. You killed me; you can feed me." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
     *REUNION_ENDS,
 ], ("trickster.ever", RETURNED, EVIL_DEAD), (REUNITED, CLOSED, P + "evil.reunion_letter"), 24, LAIR_PRESENCE, LAIR,
     RequiresAnyGroups=[[DEBT, FAVOUR]])   # the queen's price was paid: not a redeemed return from an earlier death
@@ -416,12 +416,12 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
 # under the tailor's awning when the jeweller is gone. The lipstick note is left only for a world where all three anchors
 # fail, so the late-referral branch (late_referral, second_opinion) stays at two deliveries when the lair fails.
 CITY_REUNION = [
-    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who prescribed it.\"",
+    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who killed me hungry.\"",
       c("Continue", "hiding", requires=(QUEEN_HIDING,)),
       c("Continue", "price", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's hiding, you know. Our Lady. For once nobody's watching me eat." {n}She says it lightly, and her eyes go to the dark under the shutters anyway, as if the dark might be listening. In the Midnight Isles, it usually is.{/n}''',
       c("Continue", "price")),
-    a("price", '''"They left me at your gate like a parcel, and I've been sitting in your city all day waiting to be collected. So. The fee for a house call, doctor." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
+    a("price", '''"They left me at your gate like a parcel, and I've been sitting in your city all day waiting to be collected. You killed me; you can feed me." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
     *REUNION_ENDS,
 ]
 CITY_DROPPED = ("babau", "demon")
@@ -438,7 +438,7 @@ for _hub, _suffix, _extra, _unit in DREZEN_PLACES:
         for _ch in _node["Choices"]:
             if _ch["Text"].startswith("[Send a patrol into the rubble for a live one of her gang]"):
                 _ch["Text"] = "[Have the babau you dragged out of the lair rubble brought up from the cells] \"One of your boys survived. Eat him.\""
-    presence_scene(P + "evil.reunion_city" + _suffix, "The patient sits up", '"You look well, for a corpse."', _nodes,
+    presence_scene(P + "evil.reunion_city" + _suffix, "She sits up", '"You look well, for a corpse."', _nodes,
                    ("trickster.ever", RETURNED, EVIL_DEAD, LAIR_LATCHED, *_extra),
                    (REUNITED, CLOSED, P + "evil.reunion", P + "evil.reunion_letter"), 24, _hub, DREZEN, unit=_unit,
                    RequiresAnyGroups=[[DEBT, FAVOUR]])
@@ -460,7 +460,7 @@ TERMS_OPEN = [
       c("Continue", "hungry", requires=(HUNGRY,)),
       c("Continue", "hiding", requires=(QUEEN_HIDING,), forbids=(HUNGRY,)),
       c("Continue", "ask", forbids=(HUNGRY, QUEEN_HIDING))),
-    a("hungry", '''"You sent me away hungry once. I ate a patrol sergeant. Consider that my second opinion."''',
+    a("hungry", '''"You sent me away hungry once. I ate a patrol sergeant. Consider that my answer to 'no'."''',
       c("Continue", "hiding", requires=(QUEEN_HIDING,)),
       c("Continue", "ask", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's in hiding. She'll come out. Queens always do. Think about that before you lock any door."''',
@@ -473,7 +473,7 @@ TERMS_OPEN = [
     a("stay", '''"Stay? Darling, I don't stay. I visit." {n}Her smile does not move, but her voice does.{/n} "Ask me that again and I'll stop visiting."''', c()),
     a("no", '''"Then lock it." {n}She takes her ring back off your finger, slowly, and puts it on her own.{/n} "I'll know."''', c()),
 ]
-drezen_pair(P + "evil.terms", "House calls", '"You\'re sitting on the jeweller\'s counter."', TERMS_OPEN,
+drezen_pair(P + "evil.terms", "On the jeweller's counter", '"You\'re sitting on the jeweller\'s counter."', TERMS_OPEN,
             ("trickster.ever", RETURNED, EVIL_DEAD, REUNITED), (CLOSED, COMMITTED, ALLY), 48)
 
 
@@ -481,7 +481,7 @@ drezen_pair(P + "evil.terms", "House calls", '"You\'re sitting on the jeweller\'
 
 hub(P + "failed.chaplain", "Chaplain", 3,
     '[Announce it to the whole shrine] "Meet the crusade\'s new chaplain. She starts tomorrow."', [
-    a("start", '{n}You catch her in the vestry before vespers. Beyond the door the second company waits with swords to bless. A censer and a blade lie between you.{/n} "A succubus as their chaplain? They\'ll think you\'ve gone mad." {n}She takes the blade, then sets it down again.{/n} "Don\'t announce anything yet. I can hand this back. You can go out there yourself."',
+    a("start", '{n}You catch her in the vestry before vespers. Beyond the door the second company waits with swords to bless. A censer and a blade lie between you.{/n} "A succubus as their chaplain? They\'ll think you\'ve gone mad." {n}She takes the blade, then sets it down again.{/n} "Don\'t announce anything yet. I haven\'t said yes, and I won\'t be volunteered by a Trickster in front of a congregation."',
       c("Continue", "sword")),
     a("sword", '{n}She lifts the censer, examines its draught hole, and opens the vestry door herself. She blesses the first soldier\'s blade without touching his hands. He thanks her. When she comes back, she has kept the censer.{/n} "One sword. I chose that. Before tomorrow, tell me whether this is work you need done or a joke you\'ll be tired of by morning."',
       c('"Then do it anyway. That\'s the job."', "job", alignment=("Chaotic", 1), flags=(CHAPLAIN, STARTED)),
@@ -522,7 +522,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
 hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
     a("start", '''"Seven days. I counted twice, and then I made the novice who sweeps the chapel count, because I didn't trust myself." {n}She doesn't smile.{/n}
 "Before I answer, I want one promise from you, and you won't like it. The next time I'm dying, you don't decide for me. No wrist held out like a bowl while I'm too far gone to spit it out, and nobody dragged up from the cells to be eaten. If you want a thread in me for next time, you come and ask for it while I'm alive to bite you for asking, and look me in the eye while you do it."''',
-      c('''[Promise] "No more doctoring without your say. I swear it."''', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
+      c('''[Promise] "Nothing done to you again without your say. I swear it."''', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
       c('"I can\'t promise that."', "no", flags=(CLOSED, REFUSED))),
     a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as what you didn't kill of me lasts." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
     a("no", '''"Then we're done asking each other things." {n}She says it gently. That is the worst part.{/n}''', c()),
@@ -537,7 +537,7 @@ hub(P + "terms_again_chaplain", "Seven days at the rail", 5, '"It\'s been a week
       # Sol r4 (CAN): after her release from the Abyss the yes is about the appointment she keeps, not a hunger she fights.
       c('[Promise] "No more staging. Your altar, and your door."', "yes_e", flags=(COMMITTED, NO_STAGING), requires=(ELYSIUM_DONE,))),
     a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as I can stand at that rail without wanting to bite the hands on it." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
-    a("yes_e", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it." {n}She smooths the fringe of the stole flat.{/n} "I'm keeping the rail. Not because you put me there; because they still come, and I still want to be the one they come to. And I'm keeping you, because I've looked at every other road and I want this one." {n}She almost laughs.{/n} "The Abyss let go of me, and the first two things I chose were an altar rail and a quack. Desna must be laughing."''', c()),
+    a("yes_e", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it." {n}She smooths the fringe of the stole flat.{/n} "I'm keeping the rail. Not because you put me there; because they still come, and I still want to be the one they come to. And I'm keeping you, because I've looked at every other road and I want this one." {n}She almost laughs.{/n} "The Abyss let go of me, and the first two things I chose were an altar rail and a Trickster. Desna must be laughing."''', c()),
     a("no", '''"Then we're done asking each other things." {n}She says it gently, and folds the stole over her arm. That is the worst part.{/n}''', c()),
 ], ("trickster.ever", DECLINED, CHAPLAIN), forbids=(EVIL_DEAD, CLOSED, COMMITTED, AFTERTASTE, RECRUITED), delay=168, chapters=(5,))
 
@@ -590,23 +590,23 @@ def evil_hub(id, title, entry, nodes, requires=(), forbids=(), delay=0, **extra)
 
 
 FALLEN_ASK = [
-    a("ask", '''{n}She hooks one finger in your belt and pulls you the last half-step in, close enough that you can feel the cold coming off her skin like the air off a cellar door.{/n} "So. Is your door open tonight, doctor, or do I have to steal the key? I'm very good at keys."''',
+    a("ask", '''{n}She hooks one finger in your belt and pulls you the last half-step in, close enough that you can feel the cold coming off her skin like the air off a cellar door.{/n} "So. Is your door open tonight, darling, or do I have to steal the key? I'm very good at keys."''',
       c('[Open the door] "It\'s never locked."', "open", flags=(COMMITTED, OPEN_DOOR, FALLEN_MET)),
       c('"Not tonight."', "later", flags=(FALLEN_MET,)),
       c('"No. Never."', "never", flags=(CLOSED, FALLEN_MET, REFUSED))),
     a("open", '''"Never locked." {n}She lets go of your belt one finger at a time.{/n} "Liar. You lock everything. You'll unlock this one, though, and you'll lie awake listening to it not open, and that will be the best part of my evening." {n}She walks away backwards, smiling.{/n} "Leave a lamp. I like to see what I'm eating."''', c()),
-    a("later", '''"Not tonight." {n}She tastes the words and finds them interesting.{/n} "That isn't no. You'd have said no; you love saying no to people. You said 'not tonight', which is a doctor's way of saying 'come back when it's worse'." {n}She turns away.{/n} "It will be worse. I'll come back."''', c()),
+    a("later", '''"Not tonight." {n}She tastes the words and finds them interesting.{/n} "That isn't no. You'd have said no; you love saying no to people. You said 'not tonight', which is a coward's way of saying 'come back when it's worse'." {n}She turns away.{/n} "It will be worse. I'll come back."''', c()),
     a("never", '''{n}For a moment she says nothing at all, and you see exactly what she looked like on the other side of the Upper City's long table, when a guest had said the wrong thing and did not know it yet.{/n} "Never." {n}Then she smiles, sweetly.{/n} "Then I'll fight your war for the fun of it, and eat your enemies, and never think of you once. You'll hate how little it costs me."''', c()),
 ]
 
-evil_hub(FALLEN_MET, "House call", '[Take her wrist through her sleeve before she can stop you] "Pale, feverish, homicidal. Let me look at you."', [
+evil_hub(FALLEN_MET, "Through the silk", '[Take her wrist through her sleeve before she can stop you] "Still cold. Let me look at you."', [
     a("start", '''{n}She lets you take it, through the black silk of her sleeve. That is the first surprise. The second is that she laughs, low and delighted, and does not pull away while you count.{/n}
-"Oh, look at you. Still playing doctor." {n}She leans in until her mouth is at your ear.{/n} "I'm cured, darling. Not of the hunger. Of the cure. I worship one god now, and she's standing right here, and she's starving."''',
+"Oh, look at you. Still holding my hand through a sleeve." {n}She leans in until her mouth is at your ear.{/n} "I've given up the goddess, darling. Not the hunger. I worship one god now, and she's standing right here, and she's starving."''',
       c("Continue", "candles", requires=(TREATED,)),
       c("Continue", "price", forbids=(TREATED,))),
     a("candles", '''"All that reading in the shrine library at the second bell. All those prices worked out in the margins." {n}She draws one long nail along your cuff, over the pulse beneath it. The cloth catches on its point.{/n} "I burned the daybook, you know. It went up beautifully. All those careful little notes about mortals." {n}She smiles with too many teeth.{/n} "I remember what I was trying so hard not to want. I was just too frightened to eat it."''',
       c("Continue", "price")),
-    a("price", '''"So. Since you insist on making house calls." {n}She sits on the edge of the map table, crosses her legs, and looks at you the way she looks at a crowded street.{/n} "There's a fee. Somebody's life, a little of it. Yours, or anyone's; I'm not fussy. You keep a whole citadel full of people who'd never be missed. Choose."''',
+    a("price", '''"So. Since you insist on coming to my side of the table." {n}She sits on the edge of the map table, crosses her legs, and looks at you the way she looks at a crowded street.{/n} "I'm hungry. Somebody's life, a little of it. Yours, or anyone's; I'm not fussy. You keep a whole citadel full of people who'd never be missed. Choose."''',
       c('[Hold out your wrist] "Just a taste."', "taste", flags=(FED_ON_YOU,), requires=(FED_ON_YOU,), forbids=(FED_ON_YOU,)),   # retired
       c('[Have the guards bring up a condemned cultist from the cells] "Not me. Him."', "cultist", alignment=("Evil", 2),
         flags=(FED_ON_PRISONER,)),
@@ -615,7 +615,7 @@ evil_hub(FALLEN_MET, "House call", '[Take her wrist through her sleeve before sh
       c('[Spend a Scroll of Death Ward: step out to the chapel, come back warded, and hold out your wrist] "Just a taste. If you can find one."',
         "taste_warded", requires=(WARD_HELD,), remove_item=SCROLL, flags=(WARD_FEE,))),
     a("taste_warded", '''{n}She smells the chaplain's ink on you before you are through the door. She takes your wrist anyway, slowly, the way she would take a cup she had been promised, and puts her mouth to the inside of it, and drinks, and nothing comes. You watch her find the ward the way a thief finds a bolted shutter: with her whole body, and then with her temper.{/n}
-"You came to my fee in armour." {n}She lets go of you one finger at a time, and she is laughing, and her eyes are not.{/n} "Then that's the fee, darling. Every time I come to your door, you burn one of those for nothing, and I take nothing, and we both know exactly what it cost you. I'll find my dinner elsewhere. You'll pay for the privilege of not being it."''',
+"You came to my table in armour." {n}She lets go of you one finger at a time, and she is laughing, and her eyes are not.{/n} "Then that's the game, darling. Every time I come to your door, you burn one of those for nothing, and I take nothing, and we both know exactly what it cost you. I'll find my dinner elsewhere, and you'll know whose it was. You'll pay for the privilege of not being it."''',
       c("Continue", "terms")),
     nar("taste", '''{n}She takes her time. She holds your wrist as if it were a cup she had been looking forward to all day, and the cold goes into you in long, unhurried swallows, and she watches your face over it to see when you start to sway. You start to sway. She lets go exactly then, not a breath later, and licks her lip.{/n}
 "Still sweet. Everyone who's tasted me says it was worth it. Nobody's ever said it about the other way round." {n}She steadies you with one hand on your chest, a little too long.{/n} "Sit down before you fall down. Don't be embarrassed."''',
@@ -625,7 +625,7 @@ evil_hub(FALLEN_MET, "House call", '[Take her wrist through her sleeve before sh
       c("Continue", "terms")),
     a("refuse", '''"No?" {n}She tilts her head, interested rather than hurt.{/n} "Then I'll find someone who says yes. There's always someone who says yes. A sergeant at the back of Fye's, for instance. Red beard, kind when he's drunk." {n}She slides off the table.{/n} "I've had my eye on him for months. He'll never know what he paid for your 'no'. You will."''',
       c("Continue", "terms")),
-    a("terms", '''"Now. Terms, since you like them." {n}She counts on her fingers, the way she used to count days.{/n} "I fight for you because killing demons is fun and you're winning. Don't confuse that with love. I won't wear your colours, I won't bless anything, and I won't sit and wait while you read your little scrolls. I'll come to your bed when I'm hungry, and you'll open the door, and you'll pay what it costs, and you won't ask me to be sorry."''',
+    a("terms", '''"Now. How this goes, since you like to know." {n}She counts on her fingers, the way she used to count days.{/n} "I fight for you because killing demons is fun and you're winning. Don't confuse that with love. I won't wear your colours, I won't bless anything, and I won't sit and wait while you read your little scrolls. I'll come to your bed when I'm hungry, and you'll open the door, and you'll pay what it costs, and you won't ask me to be sorry."''',
       c("Continue", "ask")),
     *FALLEN_ASK,
 ], forbids=(FALLEN_MET, COMMITTED), EntryMythic="PlayerIsTrickster", Areas=[DREZEN])   # Sol r1 CAN: the map table, the chapel

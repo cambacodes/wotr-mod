@@ -11924,6 +11924,10 @@
           "letter": false
         },
         {
+          "scene": "arueshalae.treatment.old_acquaintance",
+          "letter": false
+        },
+        {
           "scene": "arueshalae.treatment.queen",
           "letter": false
         },

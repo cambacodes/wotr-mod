@@ -123,6 +123,72 @@ class RoundTwoTests(unittest.TestCase):
                 self.assertNotRegex(journal[field], clinic)
         self.assertIn('Scroll of Death Ward', journal['Description'])
 
+    def displayed(self, scene):
+        yield scene.get('Title', '')
+        yield scene.get('Entry', '')
+        for nd in scene['Nodes']:
+            yield nd['Text']
+            for par in nd.get('Paragraphs', []):
+                yield par['Text']
+            for answer in nd['Choices']:
+                yield answer['Text']
+
+    def test_route_text_drops_the_clinic_frame(self):
+        # arue12 (edge-fix-design §3.6, USER DECISIONS: "doctor" removed entirely), redeemed and fallen alike.
+        clinic = (r'(?i)\b(doctors?|patients?|prescri\w*|intake|relapse\w*|discharg\w*|doses?|dosage|case notes|quacks?|'
+                  r'treatment|diagnos\w*|bedside manner|house calls?|physician|medical|medicine)\b')
+        for sid, scene in self.scenes.items():
+            for text in self.displayed(scene):
+                with self.subTest(scene=sid):
+                    self.assertNotRegex(text, clinic)
+
+    def test_announced_exits_are_trimmed(self):
+        exits = ("Knock first", "Tell me if this is where you want to be", "Nobody's holding you here",
+                 "If you want to go, go", "It was always your choice", "before you reach for me",
+                 "with the door open", "the way you would leave a door ajar", "You can go out there yourself")
+        for sid, scene in self.scenes.items():
+            for text in self.displayed(scene):
+                for phrase in exits:
+                    with self.subTest(scene=sid, phrase=phrase):
+                        self.assertNotIn(phrase, text)
+        # The canon exit stays: "Please, go" is her fear (ca52a451), here as "send me away".
+        self.assertIn('send me away', self.node(polish.T + 'relapse', 'come')['Text'])
+
+    def test_rebuilt_scenes_rest_on_native_lines(self):
+        t = polish.T
+        self.assertIn("Demons don't", self.node(t + 'morning', 'count')['Text'])
+        self.assertIn('And what do you dream of?', self.node(t + 'morning', 'doctor')['Text'])
+        self.assertIn("I don't feel hunger. I don't want to kill", self.node(t + 'discharged', 'start')['Text'])
+        self.assertIn('Evil calls me back', self.node(t + 'abyss_dose', 'start')['Text'])
+        self.assertIn('Any caress, of any kind, sucks the life from mortals', self.node(t + 'touched', 'start')['Text'])
+
+    def test_chapter_four_edge_beat_costs_something(self):
+        t = polish.T
+        beat = self.scenes[t + 'old_acquaintance']
+        self.assertEqual((4, 4, [4]), (beat['MinChapter'], beat['MaxChapter'], beat['Chapters']))
+        self.assertEqual([arueshalae_treatment.MIDDLE_CITY], beat['Areas'])
+        self.assertIn(t + 'intake', beat['Requires'])
+        self.assertIn("Mortals always lie. If a mortal isn't talking", self.node(t + 'old_acquaintance', 'sister')['Text'])
+        answers = self.node(t + 'old_acquaintance', 'offer')['Choices']
+        costs = [arueshalae_treatment.ACQ_VOICE, arueshalae_treatment.ACQ_CLAWS, arueshalae_treatment.ACQ_LEASH]
+        self.assertEqual([[arueshalae_treatment.ACQ, cost] for cost in costs], [a['Set'] for a in answers])
+        self.assertFalse(any(a['Abort'] for a in answers))
+        self.assertEqual('PlayerIsTrickster', answers[2]['Mythic'])
+        # Chapter 5 reads every cost: old_name stops retelling the market and answers what the Commander saw.
+        start = self.node(t + 'old_name', 'start')['Choices']
+        self.assertIn(arueshalae_treatment.ACQ, start[0]['Forbids'])
+        self.assertEqual([[c] for c in costs], [a['Requires'] for a in start[1:]])
+        for answer in start[1:]:
+            self.assertEqual(['didnt', 'hand'], [c['Next'] for c in self.node(t + 'old_name', answer['Next'])['Choices']])
+
+    def test_fallen_daybook_burns_the_corner(self):
+        for sid in (polish.P + 'evil.daybook', polish.P + 'evil.daybook_yard'):
+            book = self.node(sid, 'book')['Text']
+            self.assertNotIn('I kept a corner', book)
+            self.assertIn('lets it catch', book)
+            self.assertNotIn('next to her skin', self.node(sid, 'end')['Text'])
+        self.assertIn('Then she was a fool', self.node(polish.P + 'evil.the_other_one', 'yes')['Text'])
+
     def test_changed_chaplain_question_and_refusal_are_not_hunger(self):
         sid = polish.P + 'terms'
         choices = self.node(sid, 'chaplain')['Choices']
