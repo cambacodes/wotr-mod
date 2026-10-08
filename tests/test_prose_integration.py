@@ -11,10 +11,10 @@ from tools import claude_work_queue_lint as queue, prepare_voice_job
 
 
 class IntegrationTests(AuthorityFixture, unittest.TestCase):
-    def invoke_pending(self, *args):
-        return subprocess.run([sys.executable, str(pending.ROOT / "tools/prose_pending_lint.py"),
+    def invoke_pending(self, *args, script=None):
+        return subprocess.run([sys.executable, str(script or pending.ROOT / "tools/prose_pending_lint.py"),
             "--repo", str(self.root), "--story", str(self.root / "Story.json"), *args],
-            capture_output=True, text=True, check=False)
+            capture_output=True, text=True, encoding="utf-8", check=False)
 
     def register(self, sid="route.new", surface="node"):
         node = {"Id": "start", "Text": "Ordinary", "Paragraphs": [{"Text": "Aside"}],
@@ -163,13 +163,14 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
         path = self.review(job, "held-job.json")
         self.assertEqual(0, self.invoke(job=path).returncode)
         before = (self.root / authority.LOCKS).read_bytes()
-        for mode in ("export", "source", "input-json", "pending", "base", "branch", "locked"):
+        for mode in ("export", "source", "input-json", "pending", "branch", "locked", "base"):
             with self.subTest(mode=mode):
                 self.story = sample()
                 self.register()
                 (self.root / "expansion.py").write_text("# generator\n", encoding="utf-8")
                 (self.root / "tools/settings.json").unlink(missing_ok=True)
                 self.command("git", "checkout", "claude/pol-forged")
+                self.assertEqual(0, self.invoke(job=path).returncode)
                 if mode == "export":
                     self.story["Scenes"][1]["Nodes"][0]["Text"] += " changed"
                     self.write("Story.json", self.story)
@@ -189,6 +190,18 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
                 self.assertEqual(1, self.invoke(job=path).returncode)
                 self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
 
+    def test_held_scaffold_cannot_authorize_registered_locked_placeholder(self):
+        node = self.story["Scenes"][0]["Nodes"][0]
+        node["Text"] = "[PROSE PENDING: locked]"
+        self.write("Story.json", self.story)
+        self.write(authority.PENDING, dict(version=1, pending=[dict(scene="route.scene", node="start",
+            surface="node", index=None, text_sha=authority.digest(node["Text"]))]))
+        path = self.review(self.job(), "held-job.json")
+        self.assertEqual(0, self.invoke_pending("--job", str(path)).returncode)
+        result = self.invoke(job=path)
+        self.assertEqual(1, result.returncode, result.stdout)
+        self.assertIn("changed prose requires reviewed Claude approval", result.stdout)
+
     def test_integration_never_waives_locked_placeholder_or_enrolls_pending_scene(self):
         self.register(sid="route.scene")
         self.story["Scenes"] = self.story["Scenes"][1:]
@@ -199,6 +212,21 @@ class IntegrationTests(AuthorityFixture, unittest.TestCase):
         before = (self.root / authority.LOCKS).read_bytes()
         self.assertEqual(0, self.invoke("--integration").returncode)
         self.assertEqual(before, (self.root / authority.LOCKS).read_bytes())
+
+    def test_mutations_prove_integration_target_and_milestone_policy(self):
+        entry = self.register()
+        folder = self.mutant("pending-target", "prose_pending_lint.py", '    targets = {}',
+                             '    if integration:\n        return []\n    targets = {}')
+        self.write(authority.PENDING, dict(version=1, pending=[dict(entry, text_sha="0" * 64)]))
+        self.assertEqual(1, self.invoke_pending("--integration").returncode)
+        result = self.invoke_pending("--integration", script=folder / "prose_pending_lint.py")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        self.write(authority.PENDING, dict(version=1, pending=[entry]))
+        folder = self.mutant("pending-milestone", "prose_pending_lint.py", '        if milestone:',
+                             '        if milestone and not integration:')
+        self.assertEqual(1, self.invoke_pending("--integration", "--milestone").returncode)
+        result = self.invoke_pending("--integration", "--milestone", script=folder / "prose_pending_lint.py")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
 
 
 class QueueTests(unittest.TestCase):

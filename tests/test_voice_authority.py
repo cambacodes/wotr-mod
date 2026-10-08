@@ -101,6 +101,18 @@ class AuthorityFixture:
         {"node": node, "paragraph": node["Paragraphs"][0], "choice": node["Choices"][0]}[surface]["Text"] += " revised"
         self.write("Story.json", self.story)
 
+    def mutant(self, label, filename, old, new):
+        """Copy the CLI seam to system temp and disable one protection."""
+        folder = Path(self.temp.name) / label
+        folder.mkdir()
+        for name in ("voice_authority.py", "voice_lock_lint.py", "prose_pending_lint.py"):
+            source = (lint.ROOT / "tools" / name).read_text(encoding="utf-8")
+            if name == filename:
+                self.assertEqual(1, source.count(old), "mutation no longer targets one protection")
+                source = source.replace(old, new)
+            (folder / name).write_text(source, encoding="utf-8")
+        return folder
+
 
 class AuthorityTests(AuthorityFixture, unittest.TestCase):
     def test_branch_message_env_cannot_authorize(self):
@@ -250,6 +262,21 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
                 self.review(data)
                 self.assertEqual(1, self.invoke().returncode)
 
+    def test_symlink_cannot_substitute_another_reviewed_record_for_voice_registry(self):
+        self.change()
+        other = self.review(dict(version=1, approvals=[self.approval()]), "append-approvals.json")
+        path = self.root / authority.APPROVALS
+        path.unlink()
+        path.symlink_to(other)
+        result = self.invoke()
+        self.assertEqual(1, result.returncode, result.stdout)
+        self.assertIn("approval record differs from coordinator-reviewed ref", result.stdout)
+        folder = self.mutant("record-path", "voice_authority.py",
+                             'root, path = Path(root).resolve(), Path(path).absolute()',
+                             'root, path = Path(root).resolve(), Path(path).resolve()')
+        result = self.invoke(script=folder / "voice_lock_lint.py")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+
     def test_absent_legacy_registry_bootstrap_grants_no_approval(self):
         self.command("git", "rm", authority.APPROVALS)
         self.command("git", "commit", "-qm", "Legacy reviewed inventory")
@@ -345,6 +372,42 @@ class AuthorityTests(AuthorityFixture, unittest.TestCase):
                 self.assertEqual(0, result.returncode, result.stdout + result.stderr)
                 # Restore empty reviewed registry before the next witness.
                 self.review(dict(version=1, approvals=[]))
+
+    def test_mutation_proves_unlocked_owned_scene_needs_approval(self):
+        self.story["Scenes"].append(dict(Id="route.new", Nodes=[dict(Id="start", Text="Unapproved")]))
+        self.write("Story.json", self.story)
+        folder = self.mutant("enrollment", "voice_lock_lint.py",
+                             'errors.append(f"{sid}: missing ownership enrollment/approval")',
+                             'pass  # mutant bypasses enrollment')
+        self.assertEqual(1, self.invoke().returncode)
+        result = self.invoke(script=folder / "voice_lock_lint.py")
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+
+    def test_mutation_proves_update_preserves_unapproved_locks(self):
+        other = dict(Id="route.other", Nodes=[dict(Id="start", Text="Keep")])
+        self.story["Scenes"].append(other)
+        self.locks["locked"]["route.other"] = dict(owner="claude", since="keep-since", text_sha=lint.text_sha(other))
+        target = self.write(authority.LOCKS, self.locks, crlf=True)
+        self.pin(target)
+        self.change()
+        self.approve()
+        before = target.read_bytes()
+        folder = self.mutant("update", "voice_lock_lint.py",
+                             'expected["locked"][sid]["text_sha"] = digest',
+                             'for record in expected["locked"].values():\n'
+                             '                        record["text_sha"] = digest')
+
+        def witness(script=None):
+            target.write_bytes(before)
+            result = self.invoke("--update", script=script)
+            self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+            updated = authority.read_json(target)["locked"]
+            self.assertEqual(lint.text_sha(self.story["Scenes"][0]), updated["route.scene"]["text_sha"])
+            self.assertEqual(self.locks["locked"]["route.other"], updated["route.other"])
+
+        witness()
+        with self.assertRaises(AssertionError):
+            witness(folder / "voice_lock_lint.py")
 
 
 if __name__ == "__main__":

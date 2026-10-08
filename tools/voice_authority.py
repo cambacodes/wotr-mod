@@ -142,7 +142,10 @@ def valid_sha(value):
 
 def reviewed_file(root, path):
     """Require the exact candidate bytes at the coordinator-controlled ref."""
-    root, path = Path(root).resolve(), Path(path).resolve()
+    # Keep the requested repository path: resolving a worker's symlink would
+    # compare against a different reviewed record (for example append-only
+    # approvals) instead of the voice registry at this path.
+    root, path = Path(root).resolve(), Path(path).absolute()
     try:
         relative = path.relative_to(root).as_posix()
     except ValueError as error:
@@ -186,7 +189,7 @@ def approvals(root, policy, path=None):
     # One-time bootstrap from the legacy reviewed inventory. An absent file
     # can only stand for the empty registry, never an approval of any change.
     paths = git(root, "ls-tree", "-r", "--name-only", reviewed_revision(root)).decode().splitlines()
-    if path.resolve() == (Path(root) / APPROVALS).resolve() and APPROVALS not in paths:
+    if path.absolute() == Path(root).resolve() / APPROVALS and APPROVALS not in paths:
         if data["approvals"]:
             raise ValueError("voice approvals are absent from coordinator-reviewed ref")
     else:
