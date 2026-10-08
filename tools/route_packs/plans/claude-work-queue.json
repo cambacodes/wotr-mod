@@ -1267,41 +1267,5 @@
     "finding": "konomi:D05",
     "ruling": "r5-S1",
     "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
-  },
-  {
-    "scene": "seelah.trickster.dead.pickpocket",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D01",
-    "ruling": "r5-S2"
-  },
-  {
-    "scene": "seelah.trickster.dead.pickpocket_effects",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D02",
-    "ruling": "r5-S2"
-  },
-  {
-    "scene": "seelah.trickster.dead.seller_word",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D05",
-    "ruling": "r5-S2"
-  },
-  {
-    "scene": "seelah.trickster.dead_no_unit.seller_word",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D06",
-    "ruling": "r5-S2"
   }
 ]
