@@ -765,13 +765,6 @@
     "ruling": 17
   },
   {
-    "scene": "household.pair.nocticula_shamira.precedence.live",
-    "node": "shamira_reply",
-    "woman": "shamira",
-    "beat": "want her own court rank / freely send her distinct correspondence claiming precedence beside Nocticula / acknowledge the queen's bounded counterclaim",
-    "ruling": 17
-  },
-  {
     "scene": "soana.ending_kept_life",
     "woman": "soana",
     "node": "start",

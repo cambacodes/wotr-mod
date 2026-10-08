@@ -330,6 +330,17 @@ def collector(payload):
             "hepzamirah_struck", "cost.hepzamirah_credit")
 
 
+# Shamira's free letter (voice owner). Her own rank beside the queen, the
+# queen's priority acknowledged only as far as the chair she sits in.
+SHAMIRA_PRECEDENCE = '''{n}The second sheet smells of incense and hot wax. The seal is the Ardent Dream's own, pressed hard enough to crack it. The hand is large and looping, and legible on purpose: the hand of a woman who expects to be read aloud.{/n}
+"To the Commander, at that table of yours, from Shamira the Ardent Dream, judge of Alushinyrra and mistress of the Harem of Ardent Dreams. Greetings, Golarian. Do try to read this in a voice worthy of it.
+I hear you keep a table now, and seat women at it in some order. I hear the Lady in Shadow has written to you about that order. Of course she has. My lady has never let a door close in her presence without first making sure it was her door.
+So enter my claim exactly as I give it. Wherever you seat the Lady, I sit beside her. Not behind her chair, not at her feet among the cushions and the pets: beside her, at her left hand, under my own title. The Ardent Dream does not wait in anybody's anteroom. Not hers, and certainly not yours.
+She will have told you she comes first. Let her. She always has, in her own court and in her own bed, and I have watched a great many fools die finding out. I acknowledge her claim: the head of your table is hers whenever she cares to visit it, and I will not contest the chair while she sits in it. Note the terms, Golarian. While she sits in it.
+Read both letters aloud, in front of everyone you keep. Let your crusaders hear a queen and her judge disagree about seating. Nothing frightens mortals more than a courtesy they do not understand.
+If anyone at that table smirks while you read, send me the name. False justice has a long reach, and nothing much to do this season."'''
+
+
 def precedence(payload):
     p = s05.P
     body = next(s for s in payload["Scenes"] if s["Id"] == p + "precedence")
@@ -350,7 +361,7 @@ def precedence(payload):
         deepcopy(body["Nodes"][1]),
         pending("queen_reply", "nocticula", "want court precedence / separately answer through her acquired seal and assert her priority / tolerate her lover's public counterclaim",
                 c('Continue', "shamira_reply")),
-        pending("shamira_reply", "shamira", "want her own court rank / freely send her distinct correspondence claiming precedence beside Nocticula / acknowledge the queen's bounded counterclaim",
+        n("shamira_reply", "Shamira", SHAMIRA_PRECEDENCE,
                 c('Continue', flags=flags(p, "precedence.seen", "resolved", "nocticula_claim_answered",
                   "shamira_title_answered", "cost.nocticula_counterclaim_public", "cost.shamira_rank_bounded"))),
     ], requires=(s05.LOVERS_SEEN, *req), forbids=(p + "precedence.seen", *no),
