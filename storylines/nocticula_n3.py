@@ -52,7 +52,7 @@ Suth is quick. He is over the rail and running before the note has finished; he 
 The attendants go after him. Mera goes first, in her mother's red shoes, with the comb from the trophy cabinet in her fist, teeth outward. The third girl follows, still masked. Edris comes down the stair last, with the baton.
 And then you are not at the rail. You are behind Nocticula's eyes, high on the lodge roof where she has gone to watch, and the garden below is black and silver and full of small drums, and you can hear every one of them: three servants' hearts, fast and furious, closing on one that is faster.
 They catch him at the second fountain. You watch, through her eyes, what three women can do to a man with a comb, a baton and their bare hands. Nocticula watches with her chin on her fist and laughs twice, quietly, at the good parts. When Rhez comes out of the hedge and pulls them off him he is still alive. Rhez is careful about that. Her lady wants him for later.{/n}
-"Look at them," {n}Nocticula murmurs, with your mouth.{/n} "Three days ago they were quarry. Now they're mine, and they've tasted it. I've made assassins out of less."
+"Look at them," {n}Nocticula murmurs, with your mouth.{/n} "An hour ago they were quarry. Now they're mine, and they've tasted it. I've made assassins out of less."
 {n}Then she comes down off the roof and walks back into the hall, where the hostess is still on her couch, and you are at your rail again in time to watch Istrava learn what becomes of the mistress of a house where the servants have been allowed to ring the bell.{/n}''',
     ("uninvited_guest", "hunt.guests"): '''"All of them." {n}For a moment Nocticula is quite still in the bell chamber. Then she laughs, softly, with real pleasure, the way a woman laughs when a lover has said something filthy in company.{/n} "Oh, you greedy thing."
 {n}She strikes the bell. One clear note.{/n}
@@ -104,7 +104,7 @@ At the bottom of the road, under the cookshop awning, the lean man in the plain 
 Suth brings them back up the hill himself, walking behind his men with his hands held carefully in front of him, and has them put on their knees before the bench, and bows.{/n}
 "Lady. Two runaways. Found on your road."
 {n}Nocticula looks at the sisters for a while. Mera is crying with rage. Edris is not crying at all; she is looking at you.{/n}
-"Not mine any more," {n}Nocticula says.{/n} "That was the point." {n}She sighs, as if at a tiresome expense.{/n} "Oh, they're crying. Fine. The Harem. Somebody there will find a use for girls who bite." {n}She waves Suth off.{/n} "And bring the shoe. I like the shoe."''',
+"Not mine any more," {n}Nocticula says.{/n} "That was the point." {n}She sighs, as if at a tiresome expense.{/n} "Oh, they're crying. Good; it raises the price. The Harem. Somebody there will find a use for girls who bite." {n}She waves Suth off.{/n} "And bring the shoe. I like the shoe."''',
     ("no_applause", "run.free"): '''{n}They make the docks.
 You watch them all the way down: two small figures and a cheap trunk going fast between the warehouses, past the cookshops, past a coffle climbing the other way on its chain, past a pair of dockside bravos who turn to look at the red shoes and then, for no reason either of them could have given, decide not to. Nobody stops them. Nobody is collecting in Alushinyrra this morning on paper with Suth's name on it.
 At the bottom of the hill they reach the water, and a boat, and a man in the boat who takes their coin. They go down into it out of sight behind the stacked crates, and are gone.
