@@ -1,0 +1,39 @@
+{
+  "slot_id": "devarra.trickster.epilogue.commit.explicit.1",
+  "host_scene": "devarra.trickster.epilogue.commit",
+  "host_node": "late_accepted",
+  "after_text": "The Commander stayed until dawn.",
+  "narration": "third-past",
+  "participants": [
+    "Devarra",
+    "Commander"
+  ],
+  "speakers": {
+    "D": "Devarra"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "DEVARRA: sapient female woundwyrm; cruel, territorial, demanding, amused by nerve and an unfinished story. Concrete short threats and questions, food-and-fear words for people, a possessive 'mine'; 'what happened next?' as her one hunger besides meat. Possessive affection does not redeem her. No swearing, no therapy language, consent tutoring, sentimental diagnosis or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Native dragon/woundwyrm with scaled hide, wings and fire; she roars, hisses and threatens to burn, bite in half and trample.\nShe demanded an impressive story in exchange for a captive's life and says she loves to play with her food.\nHer clutch was pillaged and her offspring died before birth; she does not forget it.\nNo verified native humanoid transformation or dragon sexual anatomy is supplied; do not invent either, or fire immunity for the Commander.",
+  "scene": "AUTHORED EPILOGUE CODA, third person past, inline after 'The Commander stayed until dawn.' Spring after the Threshold, the north ridge watchtower, after a late acceptance. The Commander climbed with the arm bared as promised before the Threshold; she took her small annual bite (the first, or another), watched it bound and said Stay. The Commander accepted the place she keeps. This paragraph is that night until dawn: an explicit encounter on the unlit side of the tower beneath her raised wing, consistent with her sapient dragon body and each Commander variant. Her possessive appetite remains cruel; she has not become benevolent. Only Devarra and the Commander.",
+  "required_beats": [
+    "This is the late-accepted night itself; no new bite beyond the one already taken and bound, no new price.",
+    "Keep her dragon form; no shapechange, invented dragon sexual anatomy or fire immunity.",
+    "She demands the rest of the Commander as hers; food-and-fear words, possessive 'mine'.",
+    "Neither intimacy nor the annual bite pays the missing-egg claim; do not settle the clutch.",
+    "Third person past throughout; the next existing sentence resumes the following spring."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored watchtower epilogue; no native romance is claimed.",
+    "history": "devarra.trickster.late_accepted and late_committed, returned and living; exclusive with devarra.trickster.epilogue.woken (which forbids late_accepted).",
+    "resumption": "devarra.trickster.epilogue.commit/page -> late_accepted text 'The Commander stayed until dawn.' -> inline reserved paragraph -> 'The stair bore a fresh scratch...' -> optional lastcall paragraph -> page_exit."
+  },
+  "last_line": "N: The stair bore a fresh scratch when Devarra returned the following spring; the appointment had been kept.",
+  "default_text": "{n}She drew the Commander under her raised wing on the unlit side of the tower and did not let the visitor go until the sky greyed.{/n}",
+  "example": "N: Her tail drew the Commander against her belly.\nD: You stayed. Then all of you stays.\nN: The wing came down over them both.",
+  "min_lines": 6,
+  "max_lines": 10,
+  "content_scope": "Reserved explicit epilogue paragraph for the Commander and Devarra only, for the separate writer. Both Commander variants are required. Preserve her sapient dragon body, cruelty and appetite; no invented humanoid transformation or undocumented dragon sexual organs."
+}

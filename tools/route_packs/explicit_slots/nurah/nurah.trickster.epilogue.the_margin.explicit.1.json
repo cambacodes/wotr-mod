@@ -1,0 +1,39 @@
+{
+  "slot_id": "nurah.trickster.epilogue.the_margin.explicit.1",
+  "host_scene": "nurah.trickster.epilogue.the_margin",
+  "host_node": "start",
+  "narration": "third-past",
+  "participants": [
+    "Nurah",
+    "Commander"
+  ],
+  "speakers": {
+    "U": "Nurah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "NURAH: quick, petty, gleeful and pleased with herself; a bookish brain with a gutter edge when the mask is off; short barbs, a gloat, an insult ('maggots', 'lout') and a conspirator's wink. Spite for the righteous survives the pleasure. Never innocent, never penitent, never thankful for being kept; no therapy language, generic porn voice or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Nurah Dendiwhar is a halfling historian of the Worldwound, formerly enslaved in Isger and educated as a secretary; a treacherous former cultist who was on the demons' side from the beginning, not a mage and not redeemed.\nAuthored epilogue: her banned book 'To the Abyss and Back' carries her name with nobody's above it; a bounty is on the author's head and the inquisitors never found her.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "AUTHORED EPILOGUE CODA, third person past, one reserved closing paragraph after the page's ledger paragraphs and before its Continue. Two years after the Threshold, the Commander's house: Nurah writes the sequel at the Commander's desk in the Commander's shirt and complains about the light. She read the bound book aloud in bed over four nights, arguing with her own sentences; on the fourth night she shut the book on the Commander's hand, climbed into the Commander's lap and demanded the Commander's attention elsewhere. This coda returns to that fourth night: gleeful, mocking and conspiratorial sex in which she leads, keeps her byline, sneers at the righteous who banned the book and treats the bounty on her head as the best review she ever got. Only Nurah and the Commander.",
+  "required_beats": [
+    "Return explicitly to the fourth night already named in the page; no new night or ceremony.",
+    "She leads and keeps playful control; the Commander answers actively.",
+    "One gloat about the ban or the bounty and one barb at a self-righteous reader; no penance or thanks for being kept.",
+    "Her name on the book stays hers; intimacy does not buy the Commander a byline.",
+    "Third person past throughout; act by Commander variant without inventing anatomy; halfling body without invented specifics.",
+    "End on the supplied last line; the host is terminal."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored epilogue page; the book, ban, bounty and four nights of reading are mod continuity.",
+    "history": "nurah.complete with ordinary payoff, living and not in prison; exclusive with nurah.trickster.epilogue.commit (which forbids nurah.complete).",
+    "resumption": "nurah.trickster.epilogue.the_margin/start head text -> conditional ledger paragraphs -> reserved closing paragraph -> Continue (scene exit). Every ledger paragraph is conditional, so there is no fixed following beat; last_line is the coda's own closing sentence."
+  },
+  "last_line": "N: In the morning she was back at the desk in the Commander's shirt, complaining about the light.",
+  "default_text": "{n}On the fourth night the book stayed shut. She did not let the Commander open it again until morning.{/n}",
+  "example": "N: Nurah dropped the book over the side of the bed.\nU: Footnote. The Commander has stopped reading. Good.",
+  "min_lines": 6,
+  "max_lines": 10,
+  "content_scope": "Reserved explicit epilogue paragraph for the Commander and Nurah only, for the separate writer. Both Commander variants are required. Keep her spite and treason unredeemed; no invented anatomy."
+}

@@ -1,0 +1,39 @@
+{
+  "slot_id": "camellia.trickster.evening.the_prisoner.explicit.1",
+  "host_scene": "camellia.trickster.evening.the_prisoner",
+  "host_node": "watch",
+  "participants": [
+    "Camellia",
+    "Commander"
+  ],
+  "speakers": {
+    "C": "Camellia"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "CAMELLIA: drawing-room precision and impeccable courtesy over a killer's appetite; she calls the Commander 'my friend', 'darling' or 'lover'. After a kill she is flushed, lips parted, breath short, and frank about wanting; bed-talk is direct but never gutter-crude, and the knife is part of it. One drop into a low, hoarse register when appetite wins; one class or body put-down in passing. No remorse for a kill, no cure, no promise not to kill the Commander, no therapy language, agreement choreography or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Camellia is an adult half-elf noblewoman, a rapier duellist and shaman with some magic, who wears a polished snake-skull amulet.\nShe is a serial killer who looks into the eyes of those she kills and is visibly aroused by blood and fear while affecting distaste (lip-licking, flushed cheeks, quick breath).\nShe invented 'Mireya' as the spirit her killings are offered to; never write Mireya as real or give her a voice.\nShe is mortal: no blood-bathing, blood-drinking or spirit-feeding.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 3 or 5, the last cell under the Drezen citadel, cold and badly lit. Camellia and the Commander are the only living participants. The Commander asked to watch her face, not the prisoner's; she has just killed the chained cultist with her small knife, washed the blade in the bucket, dried her hands finger by finger and asked 'Still watching?'. The Commander answered by taking hold of her. Continue from that hold into a mutually wanted sexual encounter driven by her after-kill flush: she turns the hold into her own, the clean knife stays in her hand or within reach and touches skin without cutting deep, and she wants her face watched now as she watched the dying. The dead cultist stays chained to the wall as background; nobody touches the body and it is never part of the sex. The stair guard stays up the stair and out of sight; no witness and no third participant. Keep the cold stone, the bucket and the smell of the cell. End with both dressed enough to climb the stair, the knife back in her sleeve.",
+  "required_beats": [
+    "Open on the hold the Commander chose; she answers it at once and takes the lead.",
+    "Her arousal comes from the kill she has just made and from being watched; it is not gratitude for permission, and the death is neither mourned nor excused.",
+    "The knife is part of the play: a point at throat or back, a threat said pleasantly, no maiming and nothing beyond a scratch on the Commander.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy for either partner.",
+    "One drawing-room put-down (class or body) and one low, hoarse moment when the polish drops.",
+    "No contact with the corpse, no audience, no promise to stop killing and no promise not to kill the Commander.",
+    "Close exactly on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored cell scene; the cultist's capture and death are mod continuity, not native canon.",
+    "history": "Committed, returned Trickster Camellia (camellia.killed, camellia.trickster.returned) after the witness bond; only the [Trickster] watch answer reaches this slot, never the yes or trial branches.",
+    "resumption": "camellia.trickster.evening.the_prisoner/watch -> [Hold her] (sets camellia.trickster.cost.prisoner) -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: When you climb back up into the light, the guard on the stair does not look at either of you.",
+  "default_text": "{n}She lets you hold her, and then she is holding you, the dried knife still between her fingers. Against the wall, the chains do not move again.{/n}",
+  "example": "N: Camellia turns in your arms with the clean knife still in her hand.\nC: You did watch. Then do not stop now, darling.\nN: The point rests against your collar while she unfastens it.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Camellia only, for the separate writer. Both Commander variants are required. The dead cultist is scenery, never a participant or object of desire. Preserve her murderous values and her knife; no invented anatomy."
+}

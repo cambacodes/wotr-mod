@@ -1,0 +1,38 @@
+{
+  "slot_id": "herrax.house.her_rooms.explicit.1",
+  "host_scene": "herrax.house.her_rooms",
+  "host_node": "beside",
+  "participants": [
+    "Herrax",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Herrax"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HERRAX: a scarred, amused succubus madam who prices everything; warm pet names (honey, my sweet, lover), one appraisal of the Commander's body, sexual frankness as commerce ('an exchange of life forces'), insolent laughter, cruelty spoken as housekeeping. Her yes is framed as the one unpriced thing in her house. Never shame about her scars, pity for slaves, sentimental 'free of charge' talk, therapy language or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Herrax is a chaotic evil succubus who took the Ten Thousand Delights in Alushinyrra by force and runs it as madam; she buys, trains and rents out slaves and does not know their names.\nNative description: a jagged scar across her cheek through her lips, a left eye gone to grey cataract amid caustic wounds, and wings like tattered rags; she keeps the scars on purpose and calls them spice to her perfection.\nShe curses by Lamashtu as an oath, not a faith.\nNo mechanical life-drain, cost or healing is part of this encounter.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 4, by daylight, the last door on the private floor of the Ten Thousand Delights: bare whitewashed stone, bare boards, a narrow window over the city roofs, a chair, a table with a jug, a locked chest and a hook for her knife sheath. Downstairs is for selling; up here there is nothing to buy. Herrax sits on the locked chest; the Commander sat beside her, shoulder to shoulder, while the Upper City came up through the window (carts, bells, a scream far off, laughter). She said it is only a room; her shoulder stayed against the Commander's. Continue from that unmoved shoulder into slow, proprietary sex in the bare room in daylight: the madam with nothing to sell, the scars and the grey eye shown in full light without shame. The chest stays locked and she leaves its lid only when she chooses; no revelation of its contents. A RETURN encounter. Only Herrax and the Commander; the street noise continues.",
+  "required_beats": [
+    "Begin from the shoulder she did not move; she makes the first real move and sets the pace.",
+    "Nothing is priced in this room; she may mock the idea of a price, never charge one.",
+    "Daylight shows her scars, cataract eye and ragged wings; no shame and no healing.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "The locked chest stays locked; no secret, backstory or confession is invented.",
+    "No worker, client or voyeur; her cruelty toward the house is unchanged; close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored private-floor room; the room and chest are mod continuity.",
+    "history": "Committed Trickster Herrax after her first night (herrax.trickster.madam.reachable); a later daylight return. rooms_seen/rooms_first history is preserved upstream.",
+    "resumption": "herrax.house.her_rooms/expected or chest -> beside -> \"It's only a room.\" -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: Afterwards the noise of the Upper City still comes up through the narrow window. Herrax sits on the locked chest again, her knife back on its hook, and lets you look at the walls.",
+  "default_text": "{n}She turns her head. Her mouth finds yours, and she does not get up off the chest to do it.{/n}",
+  "example": "N: Herrax hooks a finger through your belt without looking round.\nH: Only a room, honey. Nobody pays to come up here. You're the only one who never had to.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Herrax only, for the separate writer. Both Commander variants are required. Keep her scars, wings and commercial cruelty; no drain mechanic, healing, chest reveal or invented anatomy."
+}

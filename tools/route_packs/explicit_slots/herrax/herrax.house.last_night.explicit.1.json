@@ -1,0 +1,38 @@
+{
+  "slot_id": "herrax.house.last_night.explicit.1",
+  "host_scene": "herrax.house.last_night",
+  "host_node": "agreed",
+  "participants": [
+    "Herrax",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Herrax"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HERRAX: a scarred, amused succubus madam who prices everything; warm pet names (honey, my sweet, lover), one appraisal of the Commander's body, sexual frankness as commerce ('an exchange of life forces'), insolent laughter, cruelty spoken as housekeeping. Her yes is framed as the one unpriced thing in her house. Never shame about her scars, pity for slaves, sentimental 'free of charge' talk, therapy language or maxims. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Herrax is a chaotic evil succubus who took the Ten Thousand Delights in Alushinyrra by force and runs it as madam; she buys, trains and rents out slaves and does not know their names.\nNative description: a jagged scar across her cheek through her lips, a left eye gone to grey cataract amid caustic wounds, and wings like tattered rags; she keeps the scars on purpose and calls them spice to her perfection.\nShe curses by Lamashtu as an oath, not a faith.\nNo mechanical life-drain, cost or healing is part of this encounter.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 4, the Ten Thousand Delights. Herrax lay on Chivarro's cushions in the hall with her ragged wings over the back of the dais; the Commander is leaving the Isles soon. She refused the word goodbye because it implies a closed account, named the whole contract (letters up the Wound roads, and the stairs again in spring) with no paper, and held out her hand to be taken, not for a coin. The hall saw the madam shake on a bargain with no price; the Commander said 'Good.' Continue: she takes the Commander off the dais and up her own stairs to the private floor, door shut, the hall left to its business; this is not a display for the house. A RETURN night, not a first night. Her heat is frank trade-talk turned on herself, life force and appetite, the one thing she will not charge for; insolent, laughing and proprietary, the scars and ragged wings shown, not hidden. Only Herrax and the Commander. End before dawn.",
+  "required_beats": [
+    "Begin from the handshake the hall witnessed; she leads the Commander upstairs herself.",
+    "No fee, appraisal-as-price or contract paper: she makes a point of the missing price.",
+    "Frank commercial bed-talk (life force, taking a little more than given) without any actual drain, cost or wound.",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "Her scars, grey eye and ragged wings are part of the encounter; nothing is healed or apologised for.",
+    "No worker, client or voyeur enters; she remains a slaver and madam, no pity or reform; close on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored farewell scene; the move to her private floor follows the host's terminal handshake.",
+    "history": "Committed Trickster Herrax after herrax.trickster.madam.reachable (her first night); this is a later return.",
+    "resumption": "herrax.house.last_night/agreed -> \"Good.\" -> reserved node -> scene exit (reached via say or dead). The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: Before dawn Herrax is asleep across the wider half of the bed, one ragged wing over your legs. She does not wake when you dress.",
+  "default_text": "{n}She keeps hold of your hand off the dais and up her stairs, and shuts the door on the hall.{/n}",
+  "example": "N: Herrax kicks the door shut behind you without letting go of your hand.\nH: Nobody downstairs gets this for any price, lover. Try not to waste it.",
+  "min_lines": 14,
+  "max_lines": 20,
+  "content_scope": "Reserved explicit continuation for the Commander and Herrax only, for the separate writer. Both Commander variants are required. Keep her scars, wings and commercial cruelty; no drain mechanic, healing or invented anatomy."
+}
