@@ -328,8 +328,8 @@ TRICKSTER_PARAGRAPHS = (
       "never did stop asking for the favour back.{/n}", requires=(STATUE,)),
     p("{n}A locust lived for years under a glass on the Commander's desk, long past any locust's season. It cleaned its face "
       "whenever a letter was opened, and it read every one.{/n}", requires=(LOCUST,)),
-    p("{n}The man from the stockade served the Commander's household for the rest of his life, courteous and exact, and "
-      "smiling. Nobody who had known him before would sit near him at supper.{/n}", requires=(HOST,)),
+    p("{n}The man from the stockade never left the Commander's household. He served it until he died, courteous and exact, "
+      "and smiling. Nobody who had known him before would sit near him at supper.{/n}", requires=(HOST,)),
     p("{n}The Commander's physicians recorded a curious symptom: on the first of each month the Commander laughed at nothing, "
       "high and abrasive, and afterwards could not remember one small thing. The Commander never complained. The rent was "
       "always paid.{/n}", requires=(LODGER,)),
@@ -339,8 +339,8 @@ TRICKSTER_PARAGRAPHS = (
       "the one who made it. She considered this the finest betrayal of her career.{/n}", requires=(TOAST,)),
     p("{n}A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and "
       "smiling a little too widely. He never drank, and he never once poured a cup for anyone.{/n}", requires=(TOAST_HOST, LEVY)),
-    p("{n}A Wintersun deserter who had once put down his cup in the Fool King's tavern served in the Commander's household "
-      "after the war, exact and courteous and smiling a little too widely. He never drank again, in any tavern.{/n}",
+    p("{n}A Wintersun deserter served in the Commander's household after the war, exact and courteous and smiling a little "
+      "too widely. Once, in the Fool King's tavern, he had put down his cup. He never drank again, in any tavern.{/n}",
       requires=(TOAST_HOST,), forbids=(LEVY,)),
     p("{n}The toast drunk for free was charged to the future, as she had said it would be, with interest. The Commander never "
       "again remembered raising a cup to anyone before her.{/n}", requires=(GRUDGE_PAID,)),

@@ -363,11 +363,11 @@ def partner_paragraphs(aeon=False, closed=False):
             p("{n}The secret evenings were gone with the history that had held them. There was nothing left to betray, and nobody left who remembered the Commander's name in her bed.{/n}", requires=(SECRET,)),
         ]
     texts = {
-        "dead": "Marhevok stayed dead. Jerribeth still said his name when she listed the things she had lost, in the same breath as a broken needle and a good case of locusts, and watched the Commander's face while she did it.",
+        "dead": "Marhevok stayed dead. Jerribeth still counted him among the things she had lost. She said the name in the same breath as a broken needle and a good case of locusts, and watched the Commander's face while she did it.",
         "chief": "Marhevok stayed in Wintersun and ruled what was left of his people, and never answered her again. Once a year she wrote to him anyway, to tell him who was in her bed. She liked to imagine him reading it.",
         "plant": "Marhevok lived on in his pot beside Jerribeth's bed, and his human eyes followed her everywhere she went in the room. She kept him watered. She never gave him back his voice, and she always made sure he had something to watch.",
-        "distant": "Marhevok was left in his pot in the Ivory Sanctum when she lost her body, and nobody went back for him. Behind the Commander's eye she sometimes wondered aloud whether anyone was watering him. She never once asked the Commander to send somebody.",
-        "unknown": "Nobody ever learned what became of Marhevok. Jerribeth could have invented news of him whenever she liked, and sometimes did, a different story each time, to see which one the Commander would believe.",
+        "distant": "Marhevok was left in his pot in the Ivory Sanctum when she lost her body, and nobody went back for him. Behind the Commander's eye she sometimes wondered aloud whether anyone remembered to water the pot. She never once asked the Commander to send somebody.",
+        "unknown": "Nobody ever learned what became of Marhevok. Jerribeth could have invented news whenever she liked, and sometimes did, a different story each time, to see which one the Commander would swallow.",
     }
     paragraphs = [p("{n}" + text + "{/n}", **guard)
                   for fate, guard in fate_guards().items() for text in (texts[fate],)]
