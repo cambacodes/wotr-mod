@@ -7599,7 +7599,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minachiv.two_answers/start/2` — Continue; Need all: `minagho_chivarro.trickster.reunited`
    - `minachiv.two_answers/local_meeting/0` — "What does Chivarro want from this meeting?"
    - `minachiv.two_answers/reply/1` — "Have you agreed what you are asking of me?"
-   - `minachiv.two_answers/asking/2` — "I will meet her and hear this offer."
+   - `minachiv.two_answers/asking/2` — "I will meet her and hear what Veyr is selling."
    - `minachiv.two_answers/agreement/0` — [Keep the agreed meeting.]; records `minachiv.invitation_kept`
 
 615. **Delamere: Defenceless** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"delamere.trickster.woken.jester","chapter":5,"day":103,"completed":true,"choices":[["yard",0],["rumour",0],["kyado",0],["yes",0],["end",0]]} -->
@@ -8805,13 +8805,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.the_wager_with_an_edge/account/0` — "Publish the checked account. Keep the circlet and let this be enough."
    - `vellexia.the_wager_with_an_edge/publish/0` — [Let the checked account stand without a wager.]; records `vellexia.wager_chosen`, `vellexia.published_accounts`
 
-731. **Memory: The remaining customers** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.the_remaining_customers","chapter":5,"day":106,"completed":true,"choices":[["start",0],["plans",0],["document",0]]} -->
+731. **Memory: The list** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.the_remaining_customers","chapter":5,"day":106,"completed":true,"choices":[["start",0],["plans",0],["document",0]]} -->
    Scene `minachiv.the_remaining_customers`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
-   Open: The remaining customers
+   Open: The list
    Need all: `minagho.ran_complete`, `minagho.book_three_finished`, `minachiv.reunion_history`, `minachiv.arrival_kept`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `inhuman`, `minagho_chivarro.trickster.committed`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`.
-   - `minachiv.the_remaining_customers/start/0` — "What do you each want to send him?"
-   - `minachiv.the_remaining_customers/plans/0` — "Before choosing, show me exactly what he knows."
-   - `minachiv.the_remaining_customers/document/0` — [Agree to examine the evidence before committing anyone.]; records `minachiv.offer_heard`
+   - `minachiv.the_remaining_customers/start/0` — "Orven. Wait on the landing."
+   - `minachiv.the_remaining_customers/plans/0` — "Show me Veyr's letter."
+   - `minachiv.the_remaining_customers/document/0` — "Sell him the names. Keep your house alive."; records `minachiv.offer_heard`, `minachiv.terms_sent`, `minachiv.evidence_kept`, `minachiv.business_chosen`
 
 732. **Melazmera: What a thief takes** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.commit.stone","chapter":5,"day":106,"completed":true,"choices":[["start",0],["flight",0],["cave",0],["count",0],["why_takes",0],["open",0],["stone",0],["yes",0],["home",0]]} -->
    Scene `melazmera.trickster.commit.stone`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
