@@ -13,10 +13,14 @@ from pathlib import Path
 
 
 @lru_cache(maxsize=1)
-def j01_reference_contexts():
+def j01_contract():
     data = json.loads(Path(__file__).resolve().parents[1].joinpath(
         "route_packs/plans/j01-reference-contexts.json").read_text(encoding="utf-8"))
-    return {(c["scene"], c["text_sha256"], c["woman"]) for c in data["contexts"]}
+    return data
+
+
+def j01_reference_contexts():
+    return j01_contract()["contexts"]
 
 
 @lru_cache(maxsize=1)
@@ -257,11 +261,16 @@ def reference_reason(text, match, postwar=False):
 
 
 def live_mentions(text, pattern, postwar=False, scene_id=None):
+    reviewed = []
     if scene_id:
         digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
-        if any(scene == scene_id and checksum == digest and pattern.fullmatch(woman)
-               for scene, checksum, woman in j01_reference_contexts()):
-            return []
+        reviewed = [c for c in j01_reference_contexts()
+                    if c["scene"] == scene_id and c["text_sha256"] == digest
+                    and pattern.fullmatch(c["woman"])]
+    # Old reviewed blocks retain their contract. New S2 reviews bind each
+    # occurrence: another mention in the same text must earn its own proof.
+    def exempt(match):
+        return any("mentions" not in c or list(match.span()) in c["mentions"] for c in reviewed)
     # The final route merge classifies specific recollections and devotional references.
     # Match the entire reviewed text and scene; altered text or another route fails closed.
     if scene_id and scene_id.startswith("terendelev.trickster."):
@@ -269,4 +278,5 @@ def live_mentions(text, pattern, postwar=False, scene_id=None):
         if any(scene == scene_id and checksum == digest and pattern.fullmatch(woman)
                for scene, checksum, woman in terendelev_reference_contexts()):
             return []
-    return [m for m in pattern.finditer(text) if not reference_reason(text, m, postwar)]
+    return [m for m in pattern.finditer(text)
+            if not exempt(m) and not reference_reason(text, m, postwar)]

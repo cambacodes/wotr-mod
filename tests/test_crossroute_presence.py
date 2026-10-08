@@ -880,5 +880,163 @@ class GuardPassTests(unittest.TestCase):
         self.assertEqual(run(other_woman, s), [])
 
 
+
+
+class S2ProductionWitnessTests(unittest.TestCase):
+    """Read the final assembled export, including downstream contract passes."""
+
+    @classmethod
+    def setUpClass(cls):
+        from tests.story_fixture import fresh_story
+        cls.story = fresh_story()
+        cls.by = {s["Id"]: s for s in cls.story["Scenes"]}
+
+    def node(self, sid, nid):
+        return next(n for n in self.by[sid]["Nodes"] if n["Id"] == nid)
+
+    def assert_independent(self, block, woman):
+        route = {"nocticula": "noct"}.get(woman, woman)
+        forbidden = {woman + ".present_now", "crossroute." + woman + ".unavailable",
+                     "crossroute." + woman + ".available", route + ".closed"}
+        self.assertFalse(forbidden.intersection(block.get("Requires", []) + block.get("Forbids", [])))
+
+    def test_s2_galfrey_four_return_greetings_and_legend_transitions(self):
+        for suffix in ("", "_scarred", "_stall", "_scarred_stall"):
+            sid = "galfrey.trickster.return.kitrane" + suffix
+            for index, choice in enumerate(self.node(sid, "name")["Choices"][:3]):
+                with self.subTest(scene=sid, node="name", index=index):
+                    self.assert_independent(choice, "iomedae")
+            with self.subTest(scene=sid, node="heard", history="legend"):
+                legend = self.node(sid, "heard")["Choices"][1]
+                self.assertEqual(legend["Next"], "e_legend")
+                self.assertIn("galfrey.trickster.eulogy.legend", legend["Requires"])
+                self.assert_independent(legend, "iomedae")
+
+    def test_s2_mielarah_both_chains_survive_nocticula_closure(self):
+        for suffix in ("", ".arcade"):
+            for beat in ("correction", "captains", "other_voyage", "market", "wheel", "last_night"):
+                sid = "mielarah.deck." + beat + suffix
+                with self.subTest(scene=sid):
+                    self.assert_independent(self.by[sid], "nocticula")
+                    for node in self.by[sid]["Nodes"]:
+                        for choice in node["Choices"]:
+                            self.assert_independent(choice, "nocticula")
+
+    def test_s2_nenio_badges_survive_areelu_closure(self):
+        for suffix in ("", "_visitor", "_arcade"):
+            sid = "nenio.folio.edge" + suffix
+            with self.subTest(scene=sid):
+                self.assert_independent(self.by[sid], "areelu")
+                for node in self.by[sid]["Nodes"]:
+                    for choice in node["Choices"]:
+                        self.assert_independent(choice, "areelu")
+
+    def test_s2_audited_entry_guards(self):
+        cases = {
+            "eritrice.trickster.fought.tabled": "nocticula",
+            "galfrey.trickster.iz.offer": "seelah",
+            "galfrey.trickster.kitrane.hulrun": "iomedae",
+            "galfrey.trickster.kitrane.irabeth": "irabeth",
+            "galfrey.trickster.kitrane.iz": "terendelev",
+            "galfrey.trickster.commit.oath": "iomedae",
+            "galfrey.trickster.alive.oath": "iomedae",
+            "mielarah.trickster.tavern.captains": "nocticula",
+            "nenio.trickster.commit.result": "galfrey",
+            "nenio.folio.architect": "areelu",
+            "nenio.folio.abyss.lamp": "nocticula",
+            "kaylessa.clearing.where_i_was_meant_to_die": "camellia",
+            "seelah.trickster.dead.pickpocket": "irabeth",
+            "seelah.trickster.dead.pickpocket_effects": "irabeth",
+            "seelah.trickster.dead.seller_word": "irabeth",
+            "seelah.trickster.dead_no_unit.seller_word": "irabeth",
+            "kiana.trickster.after.temple": "seelah",
+            "chadali.fortunes.burnt_edges": "eritrice",
+            "chadali.hours.our_new_friend": "eritrice",
+        }
+        for sid, woman in cases.items():
+            for twin in (sid, sid + "_stall", sid + "_visitor", sid + "_arcade"):
+                if twin not in self.by:
+                    continue
+                with self.subTest(scene=twin, woman=woman):
+                    self.assert_independent(self.by[twin], woman)
+
+    def test_s2_chadali_all_audited_choices(self):
+        cases = {
+            "wagers.the_recipe": {"start": [2]},
+            "wagers.born_lucky": {"start": [1]},
+            "wagers.a_lucky_charm": {"start": [0, 2]},
+            "wagers.knucklebones": {"start": [0, 1], "honest": [0], "open_cheat": [0]},
+            "fortunes.a_great_big_fair": {"souls": [0]},
+            "fortunes.burnt_edges": {"open": [0, 1], "secret": [0], "start": [0],
+                                     "eat": [0, 1], "more": [0], "bed": [0]},
+            "sessions.what_you_said": {"question": [1]},
+            "hours.our_new_friend": {"start": [0, 1], "fast": [0], "why": [0, 1], "votes": [0]},
+            "hours.the_seat_beside_her": {"start": [1]},
+        }
+        for beat, nodes in cases.items():
+            for nid, indices in nodes.items():
+                for index in indices:
+                    with self.subTest(scene=beat, node=nid, index=index):
+                        self.assert_independent(self.node("chadali." + beat, nid)["Choices"][index], "eritrice")
+
+    def test_s2_kaylessa_completed_cover_history_survives_camellia_loss(self):
+        paragraph = self.node("kaylessa.trickster.epilogue.no_lamb", "page")["Paragraphs"][24]
+        self.assertIn("household.pair.kaylessa_camellia.cost.kaylessa_cover_changed", paragraph["Requires"])
+        self.assert_independent(paragraph, "camellia")
+
+    def test_s2_galfrey_all_audited_choice_guards(self):
+        cases = [("galfrey.early.kitrane", "guessed", "anevia"),
+                 ("galfrey.trickster.iz.offer", "mendev", "irabeth"),
+                 ("galfrey.trickster.iz.offer", "for_mendev", "irabeth")]
+        for beat, nid in (("elixir", "grow"), ("hulrun", "why"), ("likeness", "why")):
+            for suffix in ("", "_stall"):
+                sid = "galfrey.trickster.kitrane." + beat + suffix
+                # The likeness answer is addressed by its target, below.
+                if beat == "likeness":
+                    for node in self.by[sid]["Nodes"]:
+                        for index, choice in enumerate(node["Choices"]):
+                            if choice.get("Next") == "helps":
+                                with self.subTest(scene=sid, node=node["Id"], index=index):
+                                    self.assert_independent(choice, "iomedae")
+                else:
+                    cases.append((sid, nid, "iomedae"))
+        for sid, nid, woman in cases:
+            for index, choice in enumerate(self.node(sid, nid)["Choices"]):
+                with self.subTest(scene=sid, node=nid, index=index):
+                    self.assert_independent(choice, woman)
+
+    def test_s2_seelah_rescue_and_seller_choices_keep_their_own_gates(self):
+        for sid in ("seelah.trickster.dead.pickpocket", "seelah.trickster.dead.pickpocket_effects",
+                    "seelah.trickster.dead.seller_word", "seelah.trickster.dead_no_unit.seller_word"):
+            for node in self.by[sid]["Nodes"]:
+                for index, choice in enumerate(node["Choices"]):
+                    with self.subTest(scene=sid, node=node["Id"], index=index):
+                        self.assert_independent(choice, "irabeth")
+                        self.assert_independent(choice, "iomedae")
+            self.assertIn("seelah.closed", self.by[sid]["Forbids"])
+
+    def test_s2_mielarah_earned_limerick_remains_independent(self):
+        sid = "mielarah.trickster.colyphyr.landfall"
+        for node in self.by[sid]["Nodes"]:
+            for choice in node["Choices"]:
+                if choice.get("Next") == "limericks":
+                    self.assertIn("mielarah.limericks", choice["Requires"])
+                    self.assert_independent(choice, "nocticula")
+
+
+    def test_s2_actual_irabeth_branch_blocks_a_later_unrecovered_departure(self):
+        model = verify.Model(copy.deepcopy(self.story))
+        proof = Proof(model)
+        lost = AND(lit("chapter_later"), lit("trickster.ever"), lit("irabeth_gone"),
+                   lit("irabeth_dead", False), lit("irabeth.trickster.returned", False))
+        self.assertFalse(proof.implies(lost, lit("irabeth_gone", False)))
+        cameo = self.node("galfrey.trickster.iz.offer", "command")["Choices"][0]
+        self.assertTrue(proof.implies(lost, NOT(fields(cameo))))
+        dead = AND(lit("chapter_later"), lit("irabeth_dead"), lit("irabeth.trickster.returned", False))
+        self.assertTrue(proof.implies(dead, NOT(fields(cameo))))
+        self.assertEqual(cameo["Next"], "irabeth")
+        self.assertNotIn("crossroute.irabeth.unavailable", self.by["galfrey.trickster.iz.offer"]["Forbids"])
+
+
 if __name__ == "__main__":
     unittest.main()
