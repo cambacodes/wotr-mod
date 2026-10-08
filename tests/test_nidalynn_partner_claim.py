@@ -35,6 +35,7 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
         cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
         cls.model = verify.Model(cls.story)
         cls.contracts = {s["Id"]: s for s in cls.truth["scene_contracts"]}
+        cls.appends = {s["scene"]: s for s in cls.truth["audit_append_acceptance"]}
         cls.families = {f["id"]: {c["id"]: c for c in f["cases"]}
                         for f in cls.truth["history_families"]}
 
@@ -174,7 +175,11 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
     def test_lastcall_conditional_history_and_unconditional_disguise(self):
         page = self.scenes["nidalynn.lastcall.page"]["Nodes"][0]
         self.assertEqual(page["Id"], "page")
-        self.assertTrue(page["Paragraphs"][7]["Requires"])
+        self.assertEqual(page["Paragraphs"][7]["Requires"],
+                         ["lastcall.h2", "iomedae.trickster.buried_alive",
+                          "crossroute.nidalynn.available"])
+        self.assertEqual(page["Paragraphs"][7]["Forbids"], [])
+        self.assertEqual(page["Paragraphs"][7]["AnyGroups"], [])
         for field in ("Requires", "Forbids", "AnyGroups"):
             self.assertFalse(page["Paragraphs"][8][field])
 
@@ -384,19 +389,25 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
         index = dict(checked=0, hired=1, failed=0, refused=2)[road]
         self.walk(state, PAIR + "custody." + body, {"start": index},
                   ("start",) if road == "failed" else ())
+        # A paid terminal completes before its PostPayment continuation aborts.
+        self.assertIn(PAIR + "custody." + body, state.flags)
         self.assertEqual(state.crusade_resources["Materials"] - before, -100 if road == "hired" else 0)
+        if road == "hired":
+            scene = self.model.by_id[PAIR + "custody." + body]
+            hire = next(n for n in scene["Nodes"] if n["Id"] == "hire")
+            self.assertIn(verify.payment_key(scene, hire["Choices"][0]), state.flags)
         if road in ("failed", "refused"):
             self.assert_case("household_custody", "pair_" + road, state)
         else:
             self.assert_case("household_custody", "pair_paid_resolved", state)
         return state
 
-    def ending_history(self, source, ending):
+    def ending_history(self, source, ending, called=True, late=False):
         state = copy.deepcopy(source)
         if route.FORM not in state.flags:
             self.choose_form(state)
         self.walk(state, route.P + "wall.wings")
-        if ending != "late":
+        if ending != "late" and not late:
             self.walk(state, route.P + "ridge.first_flight", {"offer": 0})
             self.assert_case("romance", "committed", state)
         else:
@@ -405,7 +416,9 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
             state.chapter = 6
             # Native finale opens the existing Last Call; its call is actually played.
             state.flags.add("trickster.lastcall.open")
-            self.walk(state, "nidalynn.lastcall.call", {"call": 0})
+            if called:
+                self.assertFalse(late, "The existing call requires eaten salt")
+                self.walk(state, "nidalynn.lastcall.call", {"call": 0})
             state.flags.update(("trickster.lastcall.taken", "ending.trickster"))
         state.chapter = 6
         self.advance(state, 0)
@@ -414,12 +427,17 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
     def custody_memory(self, state, ending):
         sid, index = (("nidalynn.lastcall.page", 12) if ending == "lastcall" else
                       (route.P + "epilogue." + ending, 26 if ending == "salt" else 22))
+        return self.append_visible(state, sid, index)
+
+    def append_visible(self, state, sid, index):
+        """Render the containing page before matching an independently frozen claim."""
         scene = self.model.by_id[sid]
         if not verify.sim_available(self.model, scene, state):
             return False
         page = scene["Nodes"][0]
         rendered = [p["Text"] for p in page["Paragraphs"] if visible(p, state.flags)]
-        return page["Paragraphs"][index]["Text"] in rendered
+        expected = next(p for p in self.appends[sid]["appended"] if p["index"] == index)
+        return expected["Text"] in rendered
 
     def test_paid_delivery_and_repair_histories_render_in_each_earned_page(self):
         """PA-01/02: four positives × both bodies × salt/late/LastCall."""
@@ -441,11 +459,17 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                     self.assertEqual(state.crusade_resources["Materials"] - before, -150)
                     self.assertIn(verify.payment_key(repair, repair["Nodes"][0]["Choices"][0]), state.flags)
                     self.assert_case("household_custody", "pair_repaired_after_" + road, state)
+                    self.assertIn(PAIR + "custody." + road, state.flags)
+                    if road == "failed":
+                        self.assertIn(PAIR + "cost.commander_feed_spilled", state.flags)
+                    self.assertIn(PAIR + "repair.seen", state.flags)
                     self.assertFalse(verify.sim_available(self.model, repair, state))
                 self.assert_case("household_custody", "pair_paid_resolved", state)
-                for key in ("guardian_kept", "feed_delivered", "cost.commander_luxury_lost"):
+                for key in ("guardian_kept", "feed_delivered", "cost.commander_luxury_lost",
+                            "cost.nidalynn_guard_night", "cost.nidalynn_own_feed"):
                     self.assertIn(PAIR + key, state.flags)
                 self.assertEqual(PAIR + "cost.commander_delivery_paid" in state.flags, road != "checked")
+                self.assertFalse(verify.sim_available(self.model, self.model.by_id[PAIR + "repair." + body], state))
                 for ending in ("salt", "late", "lastcall"):
                     with self.subTest(body=body, road=road, ending=ending):
                         final = self.ending_history(state, ending)
@@ -483,9 +507,11 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                 for key in ("resolved", "feed_delivered", "cost.commander_delivery_paid",
                             "cost.commander_luxury_lost", "cost.nidalynn_guard_night", "cost.nidalynn_own_feed"):
                     self.assertNotIn(PAIR + key, state.flags)
+                self.assertEqual(PAIR + "repair.seen" in state.flags, outcome == "second_refusal")
                 if outcome == "second_refusal":
                     self.assert_case("household_custody", "pair_repair_refused", state)
                     self.assertIn(PAIR + "guardian_kept", state.flags)
+                    self.assertIn(PAIR + "unanswered", state.flags)
                 else:
                     self.assert_case("household_custody", "pair_repair_incomplete_after_" + first, state)
                 for ending in ("salt", "late", "lastcall"):
@@ -564,6 +590,7 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                         with self.subTest(body=body, outcome=outcome, ending=ending, claim=claim):
                             block = page["Paragraphs"][index]
                             self.assertEqual(visible(block, final.flags), outcome == claim)
+                            self.assertEqual(self.append_visible(final, sid, index), outcome == claim)
                             if outcome == claim:
                                 # Isolated predicate fixtures: each required reader/cost
                                 # is absent, without manufacturing an alternate traversal.
@@ -577,6 +604,7 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
                     verify.sim_complete(self.model, final)
                     block = self.model.by_id["nidalynn.lastcall.page"]["Nodes"][0]["Paragraphs"][13]
                     self.assertFalse(visible(block, final.flags))
+                    self.assertFalse(self.append_visible(final, "nidalynn.lastcall.page", 13))
                     self.assert_case("household_windstep", "accounted", final)
 
     def test_lastcall_named_refused_debt_is_history_not_a_creditor_cameo(self):
@@ -594,10 +622,132 @@ class NidalynnPartnerClaimTests(unittest.TestCase):
         self.assertNotIn("devarra.present_now", state.flags)
         block = page["Paragraphs"][11]
         self.assertTrue(visible(block, state.flags))
+        self.assertTrue(self.append_visible(state, "nidalynn.lastcall.page", 11))
         self.assertFalse(visible(page["Paragraphs"][10], state.flags))
         for missing in block["Requires"]:
             with self.subTest(missing=missing):
                 self.assertFalse(visible(block, state.flags - {missing}))
+
+    def test_lastcall_called_uncalled_and_late_histories_keep_local_staging(self):
+        """B27: earned salt enables the call; a late kiss enables only the page."""
+        for body, called, late in itertools.product(
+                self.truth["paid_repair_acceptance"]["bodies"], (False, True), (False, True)):
+            if called and late:
+                continue
+            with self.subTest(body=body, called=called, late=late):
+                source = self.initial_delivery(body, "hired")
+                state = self.ending_history(source, "lastcall", called=called, late=late)
+                self.assert_case("commander_and_finale", "lastcall_called" if called else "lastcall_uncalled", state)
+                scene = self.model.by_id["nidalynn.lastcall.page"]
+                self.assertTrue(verify.sim_available(self.model, scene, state))
+                self.assertTrue(self.custody_memory(state, "lastcall"))
+                page = scene["Nodes"][0]
+                for index, shown in ((0, called), (9, not called and not late), (5, late)):
+                    expected = self.appends[scene["Id"]]["prefix"][index]
+                    rendered = [p["Text"] for p in page["Paragraphs"] if visible(p, state.flags)]
+                    self.assertEqual(expected["Text"] in rendered, shown, index)
+                if late:
+                    call = self.model.by_id["nidalynn.lastcall.call"]
+                    # Isolate the native before-taken window; missing salt still rejects it.
+                    before_taken = copy.deepcopy(state)
+                    before_taken.flags.discard("trickster.lastcall.taken")
+                    verify.sim_complete(self.model, before_taken)
+                    self.assertFalse(verify.sim_available(self.model, call, before_taken))
+
+    def test_containing_pages_reject_each_missing_earned_history(self):
+        """T-SALT/LATE/LASTCALL: negative predicate fixtures cannot grant a page."""
+        source = self.initial_delivery("chosen", "hired")
+        for ending in ("salt", "late", "lastcall"):
+            final = self.ending_history(source, ending)
+            scene = self.model.by_id["nidalynn.lastcall.page" if ending == "lastcall"
+                                     else route.P + "epilogue." + ending]
+            # Remove producer inputs, then recompute all live readers. Never remove a
+            # derived output and treat that as a plausible alternative history.
+            for missing in ("trickster", "trickster.ever", route.KISSED, route.HATCHED,
+                            route.RENOUNCED, route.COMMITTED, route.SALT,
+                            "trickster.lastcall.taken"):
+                if ending in ("late", "lastcall") and missing in (route.HATCHED, route.RENOUNCED,
+                                                                   route.COMMITTED, route.SALT):
+                    continue  # Late eligibility is the existing earned kiss, not a new gate.
+                if ending != "lastcall" and missing == "trickster.lastcall.taken":
+                    continue
+                if ending != "late" and missing == "trickster":
+                    continue  # These existing historical consumers allow conversion.
+                with self.subTest(ending=ending, missing=missing):
+                    negative = copy.deepcopy(final)
+                    negative.flags.discard(missing)
+                    if missing == "trickster.ever":
+                        negative.flags.discard("trickster")  # prevent the native latch restoring it
+                    verify.sim_complete(self.model, negative)
+                    self.assertFalse(verify.sim_available(self.model, scene, negative))
+                    self.assertFalse(self.custody_memory(negative, ending))
+            with self.subTest(ending=ending, revoker="proposal_refused"):
+                negative = copy.deepcopy(final)
+                negative.flags.update(self.families["romance"]["proposal_refused"]["when"]["all"])
+                verify.sim_complete(self.model, negative)
+                self.assertFalse(verify.sim_available(self.model, scene, negative))
+                self.assertFalse(self.custody_memory(negative, ending))
+            # The kept-wolves producer writes closure as well as its history.
+            # Walk it after the earned kiss/salt, rather than inventing a lone
+            # goat marker that never occurred in a shipped history.
+            negative = copy.deepcopy(final)
+            negative.chapter = 5
+            self.walk(negative, route.P + "kiln.the_goat.chosen",
+                      {"her": 2, "after_wolves": 2})
+            self.assert_case("goat_consequence", "wolves_lie_kept", negative)
+            self.assertIn(route.CLOSED, negative.flags)
+            negative.chapter = 6
+            verify.sim_complete(self.model, negative)
+            with self.subTest(ending=ending, revoker="wolves_lie_kept"):
+                self.assertFalse(verify.sim_available(self.model, scene, negative))
+                self.assertFalse(self.custody_memory(negative, ending))
+        # A missed rescue followed by native disposition provides no earned kiss
+        # or commitment. Full native/derived readers reject every living page.
+        for case in ("unprimed_omelet", "unprimed_destroyed", "rescue_not_taken"):
+            state = self.native_start(5)
+            state.flags.update(self.families["entry"][case]["when"]["all"])
+            state.chapter = 6
+            state.flags.update(("trickster.lastcall.taken", "ending.trickster"))
+            verify.sim_complete(self.model, state)
+            for ending in ("salt", "late", "lastcall"):
+                with self.subTest(entry=case, ending=ending):
+                    self.assertFalse(self.custody_memory(state, ending))
+
+    def test_lastcall_buried_alive_memory_requires_all_three_facts(self):
+        """T-LASTCALL prefix[7] is conditional; disguise prefix[8] is unconditional."""
+        state = self.ending_history(self.courtship("chosen"), "lastcall")
+        state.flags.discard("ending.trickster")
+        state.flags.update(("ending.wound_closed", "sacrifice",
+                            "trickster.lastcall.pillar.bottle"))
+        # Independent predicate fixture for the other route's already-earned
+        # appointment, using its frozen source inputs, not a derived flag grant.
+        state.flags.update(self.truth["reader_contracts"]["Derived"]["iomedae.appointment_kept"][0])
+        verify.sim_complete(self.model, state)
+        self.assertIn("trickster.commander_back", state.flags)
+        scene = self.model.by_id["nidalynn.lastcall.page"]
+        self.assertTrue(verify.sim_available(self.model, scene, state))
+        block = scene["Nodes"][0]["Paragraphs"][7]
+        self.assertTrue(visible(block, state.flags))
+        for missing in self.appends[scene["Id"]]["prefix"][7]["Requires"]:
+            with self.subTest(missing=missing):
+                self.assertFalse(visible(block, state.flags - {missing}))
+
+    def test_historical_windstep_complaint_cannot_bypass_later_actor_loss(self):
+        """History can stay true when its containing living page is unavailable."""
+        prefix = "household.pair.nidalynn_areelu."
+        state = self.courtship("chosen")
+        self.walk(state, prefix + "notice.chosen", {"start": 1})
+        final = self.ending_history(state, "lastcall")
+        self.assertTrue(self.append_visible(final, "nidalynn.lastcall.page", 14))
+        for case in ("nidalynn_lost", "nidalynn_actor_lost", "own_route_closed"):
+            with self.subTest(loss=case):
+                lost = copy.deepcopy(final)
+                lost.flags.update(self.families["actor_loss_override"][case]["when"]["all"])
+                verify.sim_complete(self.model, lost)
+                self.assert_case("household_windstep", "unanswered", lost)
+                block = self.model.by_id["nidalynn.lastcall.page"]["Nodes"][0]["Paragraphs"][14]
+                self.assertTrue(visible(block, lost.flags))
+                self.assertFalse(self.append_visible(lost, "nidalynn.lastcall.page", 14))
 
 
 if __name__ == "__main__":
