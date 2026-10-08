@@ -487,23 +487,13 @@ def polish_situation(s):
         s["Nodes"][0].setdefault("Paragraphs", []).extend(harbor_receipts())
     if donor == "noct.unlit_quay":
         slot(s, "later", 1,
-             "{n}She pulls you close on the balcony cushions. Beyond the rail, the city's lights burn until morning.{/n}",
+             "{n}She pulls you down onto the cushions. Below the rail the quay goes quiet; beyond it, the city burns until morning.{/n}",
              split="Later, the flower")
     elif donor == "noct.her_own_face":
-        node(s, "start")["Text"] = '''{n}Nocticula sweeps the harbor accounts away. Their voices stop. A single lamp lights the couch, a bowl of pale fruit, and the book open on her knee. She closes it as you approach. The face she turns toward you is her own.{/n}
-"The captains can wait. I have heard enough about their appetites."
-{n}She eats one piece of fruit and holds the next at your mouth. Her thumb lingers against your lower lip, then withdraws. She shifts the book to leave a place beside her.{/n}
-"I know what obedience sounds like. It grows dull. Tonight I want your company. Well?"'''
-        node(s, "face")["Text"] = '''"My own face? You have developed an expensive preference."
-{n}She turns your hand palm upward. Her fingertip follows a line across it, stopping at your wrist. When you look up she is already close enough to kiss you. You meet her; she stays, then draws back just far enough to see your mouth.{/n}
-"There. No mask to blame when you come looking for it again."
-{n}She catches the fastening at your collar but leaves it closed. Her hand rests there while she waits for you to sit.{/n}'''
+        # N2: start/face prose now lives in the base scene (voice-locked).
         slot(s, "night", 1,
              "{n}She draws you down beside her, leaving the lamp where you can see her face. Later, the book lies open on the floor.{/n}",
              split="Later she lies beside you")
-        # She dismisses the work herself; no reconstructed witness is in the bed.
-        node(s, "start")["Text"] = node(s, "start")["Text"].replace(
-            "This time there is no harbor.", "Nocticula sweeps the harbor accounts away with one hand. No voices remain in the chamber.")
     elif donor == "noct.second_door":
         node(s, "end")["Text"] = '''{n}At the door, Nocticula catches your sleeve. She straightens the fold she has gripped, then draws you back for a last kiss.{/n}
 "I shall send for you. Keep the questions I disliked. I intend to win those arguments."

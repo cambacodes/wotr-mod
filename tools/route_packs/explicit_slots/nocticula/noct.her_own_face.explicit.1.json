@@ -1,12 +1,13 @@
 {
-  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
   "facts": [
-    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
-    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
-    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
-    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+    "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins.",
+    "Shamira is her chosen lover and covets her throne.",
+    "The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen.",
+    "No fixed Commander gender or anatomy. Invent no physical feature beyond those stated.",
+    "The crimson mark is narration only, with no mechanical effect."
   ],
-  "scene": "Chapter 5, Drezen sleep, authored hosted chamber and couch. Nocticula and Commander alone after Dessa extraction. Her own face, the unchanged lamp, the book on the floor; visible mutual desire. She initiates; no manipulation of Gift for desire. First encounter if the balcony was declined, otherwise a return. Refer to current Shamira agreement only if it is actually known. Consensual intimacy with the detailed continuation user-supplied; resume at flood/poisoner book joke, then the harbor-risk morning. Neither rescue nor bed sets commitment.",
+  "scene": "Chapter 5, Drezen sleep; her bedchamber off the Harem of Ardent Dreams, live. Shamira's harp is audible through the wall and falters when the bed goes quiet; Nocticula knows Shamira is listening and enjoys it. First night of the harbor undertaking. Her own face, not a mask; the lamp left burning so the Commander must look at her. Appetite; she leads; she says \"my own face\" once. Build toward the moment she bites at the side of the throat, where the crimson mark comes in the next node. Stop before the mark is made. Commander with Nocticula only. Resume at the fallen chronicle and the flood-and-poisoner joke.",
   "last_line": "N: Later, the book lies open on the floor.",
   "speakers": {
     "N": "Narrator",

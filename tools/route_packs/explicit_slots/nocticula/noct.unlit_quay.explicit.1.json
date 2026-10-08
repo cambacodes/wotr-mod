@@ -1,23 +1,24 @@
 {
-  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
   "facts": [
-    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
-    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
-    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
-    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+    "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins.",
+    "Shamira is her chosen lover and covets her throne.",
+    "The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen.",
+    "No fixed Commander gender or anatomy. Invent no physical feature beyond those stated.",
+    "The crimson mark is narration only, with no mechanical effect."
   ],
-  "scene": "Chapter 5, Drezen sleep, authored balcony overlooking dream Alushinyrra. Nocticula and Commander alone, optional private encounter before the harbor undertaking. Reciprocal approach already chosen; no Gift compulsion. This may be the first night; later harbor encounters are returns. Keep the flower waiting on the rail and her own work alive. A consensual intimate encounter; detailed continuation is user-supplied. Resume at flower/work and waking, not a new commitment.",
-  "last_line": "N: Beyond the rail, the city lights burn until morning.",
+  "scene": "Chapter 5, Drezen sleep; the Gift carries the Commander to her balcony above the Middle City quay of Alushinyrra, live. Orren Vale, the thief who sold passage under her black flower, hangs from a mooring ring below, out of sight; Rhez is with him. The flower lies folded on the balustrade. She chose tonight over the undertaking because the Commander asked for her instead of the work, and she means the Commander to remember having dared. She pins the Commander to the rail, then takes the cushions; she leads. She mentions the thief once, to show she has not forgotten him. Commander with Nocticula only. Resume at the flower on the rail and the waking; no commitment, no new terms.",
+  "last_line": "N: Below the rail the quay is quiet. Beyond it, the city burns until morning.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"
   },
-  "example": "N: Nocticula catches your sleeve before you can set the glass down.\nL: Leave it. I have had enough of watching you drink.",
+  "example": "N: Nocticula catches your wrist before you can reach for the rail.\nL: Leave it. You asked for me. Hold on to me.",
   "commander_variants": [
     "a man",
     "a woman"
   ],
   "min_lines": 10,
   "max_lines": 18,
-  "default_text": "{n}She pulls you close on the balcony cushions. Beyond the rail, the city's lights burn until morning.{/n}"
+  "default_text": "{n}She pulls you down onto the cushions. Below the rail the quay goes quiet; beyond it, the city burns until morning.{/n}"
 }
