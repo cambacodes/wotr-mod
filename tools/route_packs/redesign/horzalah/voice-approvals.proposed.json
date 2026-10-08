@@ -1,0 +1,84 @@
+{
+  "note": "Proposed by villain-route-horzalah (cloud). None of these scenes is in voice_locks.json today; the coordinator may enroll them as Claude-locked with the after_text_sha. No Claude-locked scene changed in this pass.",
+  "owner": "claude",
+  "scenes": [
+    {
+      "scene": "horzalah.trickster.late.at_night",
+      "locked": false,
+      "before_text_sha": "a09b3dd91d0e153a57c872a4023eb1f5e0e25756137498bcf3a20ebae73a36c0",
+      "after_text_sha": "1ef07e897b8b10ef3ef6ee52b33ae57b4e8dc2cdf781f879ad2b2483fd68bade"
+    },
+    {
+      "scene": "horzalah.trickster.epilogue.together",
+      "locked": false,
+      "before_text_sha": "969c0b51b6a3faa6222b655401d9be2d6422e2ab8d5e69d40df743feedee6dd6",
+      "after_text_sha": "c7983dd367b425a30cca310ef80d022d7ff0cc2bc2c7f41cabee81c45dff7eff"
+    },
+    {
+      "scene": "horzalah.trickster.epilogue.commit",
+      "locked": false,
+      "before_text_sha": "679e0f112ec54139946f902b46ecc1e29e39cb53b87ed616e6a1bea954f98d11",
+      "after_text_sha": "a0608090069d0410488912e333e5e155e23b33d7a30a7ebbb321dc28eb61236c"
+    },
+    {
+      "scene": "horzalah.trickster.epilogue.unanswered",
+      "locked": false,
+      "before_text_sha": "2903105013746b447c59c2753cadf25c4662df500e8520015d0e6ba7ffb21e3c",
+      "after_text_sha": "a57f45420d8216a60efe3eaa4c37a29424a92bb5b5738f3eef91abbb412cb613"
+    },
+    {
+      "scene": "horzalah.trickster.epilogue.ally",
+      "locked": false,
+      "before_text_sha": "e803796ffeba8f6d10c53350b03ce7ae667d3b29c392cbb27c1422d6591cbccc",
+      "after_text_sha": "d4c8cbf49014400e79ffa4c8c5b52d4da058b883ec80a55409c348b1b5f93c2b"
+    },
+    {
+      "scene": "horzalah.trickster.epilogue.mourned",
+      "locked": false,
+      "before_text_sha": "c16ee462780690b8014ac7a78d412137f491177dae2c14a192044bfd31253ccc",
+      "after_text_sha": "d1c11088dfe534ece08bdca2788379283741357fa4e26c26a82dc801b44285be"
+    },
+    {
+      "scene": "horzalah.trickster.beat.name",
+      "locked": false,
+      "before_text_sha": "86628c7a31eaf1a83659fe0e465040447707cbe74b4e29ead8daf83fcf4f9eb5",
+      "after_text_sha": "261922c2e43030f17ada5ebf079fa05779e0286dfadf597e95a1eadb110607c8"
+    },
+    {
+      "scene": "horzalah.trickster.beat.sister",
+      "locked": false,
+      "before_text_sha": "e150e2f1ec74a7c5cb14c40c908868e32a49e46154a71054162af8b63542a7b7",
+      "after_text_sha": "604ecf58f1bb0fd47ed0221ff66e16d65322fa68ef6867f84ab9f2913e09d736"
+    },
+    {
+      "scene": "horzalah.trickster.beat.yozz",
+      "locked": false,
+      "before_text_sha": "06e3b98991de889be6d66ed99ca16f0091eef9beca1f4098d8754f76774ee7ce",
+      "after_text_sha": "a0d58c9d0c1439dc6bd45b9dfbb48d36227e602c7f6f272adfc2514177b9ee37"
+    },
+    {
+      "scene": "horzalah.trickster.beat.ear",
+      "locked": false,
+      "before_text_sha": "73a488dd81488d6c5910a2e6b728967e2236cc85e0ae83bc276f9ae1a785fa69",
+      "after_text_sha": "6c8b040aaaf825934e7a41af73c00099c23046289f649a484cc29fffe470e39d"
+    },
+    {
+      "scene": "horzalah.trickster.beat.spit",
+      "locked": false,
+      "before_text_sha": "b814a9d4d07cc2b9978d7b27b312eee40b0d800ee4a664bd236e402360ff5bc0",
+      "after_text_sha": "70f39d38f26fc86cfe8b89e27dc56ee19ecc5b18b1a3106cadcf1e714e624d07"
+    },
+    {
+      "scene": "horzalah.trickster.beat.thousands",
+      "locked": false,
+      "before_text_sha": "e2c79e7286feab26ee4c6b845acc95a30b94133350a49315857b0a45e9748453",
+      "after_text_sha": "e1c2eff97b6f0d11e60adc226719d4c43920f34d4cf7a91b6dd85401314c0245"
+    },
+    {
+      "scene": "horzalah.trickster.letter.invoice",
+      "locked": false,
+      "before_text_sha": "e3f59c36db7b84f7a50095bdce16b6c0e8ce843b2d2b5e07bcec6d7bf9dac445",
+      "after_text_sha": "ec6f64ed08366b117d4cb792b2e8a8e13ad912a42469bf58a7d86449580096c7"
+    }
+  ]
+}
