@@ -557,6 +557,8 @@ def _slots(scenes):
     root = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/camellia"
     for path in sorted(root.glob("*.json")):
         brief = json.loads(path.read_text(encoding="utf-8"))
+        if "insertion" not in brief:
+            continue  # opportunity brief (no structure hook yet): tracking only, nothing to insert
         spec = brief["insertion"]
         h = scenes[spec["scene_id"]]
         anchor = spec["after_node"]
