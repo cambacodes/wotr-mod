@@ -1,0 +1,34 @@
+{
+  "slot_id": "elyanka.trickster.ch6.collateral.explicit.1",
+  "host_scene": "elyanka.trickster.ch6.collateral",
+  "host_node": "rift2",
+  "participants": [
+    "Elyanka",
+    "Commander"
+  ],
+  "speakers": {
+    "E": "Elyanka",
+    "N": "Narrator"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "ELYANKA: imperious proclamations with mad cackling under them; terms of endearment that are claims; boastful about her passion; disgust at warm living flesh mixed with greed for it; the Whispering Way's idiom of things said in whispers and never written. Never humble, never praising mortal life or death's peace, never a frail sweet old lady. No diagnosis, maxims or negotiated etiquette. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Canon: a tall old woman with tangled grey hair, an imperious face, a plain worn grey robe and no jewellery; royal bearing, bird-like eyes and strong white teeth.\nCanon: priestess of Urgathoa, the Pallid Princess, and Whispering Way envoy; still mortal and bitter about her delayed adoption; the cult's teaching passes in whispers.\nAuthored staging: Chapter 6, the army's camp on black glass outside Threshold, the Commander's tent; her glass-sided hearse behind the baggage train. She has just chosen to stand on the last ridge above the rift and watch her collateral, and kissed the Commander at the tent flap with a cold hand counting the heart.\nNo canon genital detail, ancestry, exact height or youthful body is asserted. Both are adults.",
+  "scene": "Explicit intimacy brief for the Commander and Elyanka only, on the eve of the Wound. Host: elyanka.trickster.ch6.collateral/rift2, after her line 'She likes an offering warm when it is pledged.' She comes back from the tent flap and does not leave: the creditor inspecting the collateral one last time before it may be lost whole to the Wound. Her fury at the chance of losing the body to Areelu's Wound and her greed for it now are the same feeling; she will not call it fear. The claim on the future corpse is an endearment and a debt, never control over the living body tonight. Mutual, active participation; the war camp is outside the canvas. Aftermath: she leaves for her hearse before dawn without a word of comfort, and the scene ends on the existing answer (collateral.at_rift). STRUCTURE HOOK NEEDED before generation: rift2 is terminal (its only answer sets elyanka.trickster.collateral.at_rift and ends the scene), so a slot node must be inserted by a structure job (gated like rift2 on elyanka.committed) without changing the existing answer's Set.",
+  "required_beats": [
+    "She initiates; possessive, contemptuous of warm flesh while greedy for it; one cackle or proclamation.",
+    "The Wound and the witch who made the Commander are named as rivals for the body; no fear spoken aloud.",
+    "Her claim stays a future debt; no vow, no adoption by Urgathoa, no change of the claim.",
+    "Act by Commander variant; an old woman's body without invented specifics.",
+    "No corpse contact, no undead participant, no witness; her six stay with the hearse.",
+    "Second person present for the Commander, as the host scene."
+  ],
+  "last_line": "E: For my Lady. She likes an offering warm when it is pledged.",
+  "example": "N: Elyanka lets the tent flap fall shut behind her.\nE: If the Wound means to have you, it can have what is left when I am done.",
+  "default_text": "{n}She does not go back to her hearse until the camp fires are ash.{/n}",
+  "min_lines": 6,
+  "max_lines": 10,
+  "content_scope": "Reserved explicit slot for the Commander and Elyanka only. Both Commander variants are required."
+}
