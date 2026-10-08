@@ -1,3 +1,54 @@
 {
-  "locked": {}
+  "locked": {
+    "noct.uninvited_guest": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "3def8562b7071715a55c1acc0272fa45735734d70383592aac5154b0ca9af22d"
+    },
+    "noct.unborrowed_evening": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "fde557adc6ef4349b5316fdf61493beb44ac12abc97b723d76c5bd754f478f01"
+    },
+    "noct.bell_without_master": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "ad31da370a879cf95aa8ca01a4c472e25223fe32311e6da9b7de3e1be6108112"
+    },
+    "noct.no_applause": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "2f43a1ee797dec74a7245744aafd4ddcfa131ab1e0c4f69aecc989a3d64f6e49"
+    },
+    "noct.what_she_keeps": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "555cf1f6945e361fbd001c0f8e220bf00dbee3a9a6d960daea52e3be48c7f3c7"
+    },
+    "noct.second_door": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "9cb5e1272aaaebfc93b9f9f685d2be368eb2137066bed437bb6c6e1df0e70ea0"
+    },
+    "noct.ending_company": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "8c104ec916507e0115edfce355d8db42a61d1cec72c8a364771b3a539a8076e3"
+    },
+    "noct.ending_alliance": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "e97285ce504ef5a62b48ff44d7dacf57de78134e67374542050c64d84cecc128"
+    },
+    "noct.ending_limit": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "862450865a8e833b2d153697cb799692291cea5a82278900211c9b6744deacc1"
+    },
+    "noct.ending_ascent": {
+      "owner": "claude",
+      "since": "fb03c99c",
+      "text_sha": "47e1e995872fdc2741f2128a9b8c1d98e656f5b56535669b344dde9e3cd75ba3"
+    }
+  }
 }
