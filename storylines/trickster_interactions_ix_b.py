@@ -62,20 +62,48 @@ for truth in (False, True):
 # enGB 19fd597c-eff5-46e5-9c1b-9838060f835c; DesnaTempleFinal/Cue_0020,
 # blueprint f21279d12e1c70449bd037e75d7fd4a7, enGB a4a8ff32-09b8-4296-88c5-a21126d9146b.
 # Her song here is ordinary music: no drain cure, ward or forced redemption.
-WELCOME = '''{n}Aranka stops tuning her lute when Arueshalae approaches. Behind them, a wagon rattles toward Drezen's gates, piled with spears.{/n}
+# Staging (r5-S1 D08-D11): the player asks Arueshalae at her own native hub and walks her to Aranka's actual
+# placement: the spice crates by the curio stall (aranka.presence) or, when the market stall is gone, the supply
+# wagon in the quartermaster's yard (aranka.presence.yard). AdditionalContactUnits verifies that copy is on the map.
+PLACE = {
+    False: dict(
+        entry='"Aranka is singing on the spice crates in the market. Come and hear her with me."',
+        dreamer_in='''{n}Arueshalae hesitates, then comes with you down to the market. A woman in Desnan blue is sitting on a stack of spice crates by the curio stall with a lute across her knees, and half the market has stopped haggling to hear her tune it.{/n}
+{n}Aranka stops tuning when Arueshalae halts in front of the crates. Behind them, a wagon piled with spears rattles across the square toward Drezen's gates.{/n}''',
+        dreamer_watch='{n}Arueshalae watches the soldiers haggling at the next stall.{/n}',
+        fallen_in='''{n}Arueshalae walks down to the market beside you like a woman choosing a stall. Aranka is on the spice crates by the curio stall, singing, with a ring of soldiers on leave standing close to listen.{/n}
+{n}The song breaks off as the succubus sits down on the crate beside her. Arueshalae glances at the listeners.{/n}''',
+        fallen_out='''{n}The soldiers have stopped haggling to listen. Aranka raises her voice.{/n} "That's all for today. There's work waiting at the gates."
+{n}The soldiers drift off toward the gates; one keeps looking back over his shoulder. Arueshalae watches them go, then gives the bard a small, contemptuous bow.{/n}'''),
+    True: dict(
+        entry='"The market is shuttered. Aranka is singing in the quartermaster\'s yard. Come and hear her with me."',
+        dreamer_in='''{n}Arueshalae hesitates, then comes with you past the shuttered market to the quartermaster's yard. A woman in Desnan blue is sitting on the tailgate of a supply wagon with a lute across her knees, and the carters have stopped unloading to hear her tune it.{/n}
+{n}Aranka stops tuning when Arueshalae halts beside the wagon. Behind them, another wagon piled with spears rattles out toward Drezen's gates.{/n}''',
+        dreamer_watch='{n}Arueshalae watches the carters pass.{/n}',
+        fallen_in='''{n}Arueshalae walks with you past the shuttered market to the quartermaster's yard like a woman choosing a stall. Aranka is singing on the tailgate of a supply wagon, and the carters have stopped unloading to listen.{/n}
+{n}The song breaks off as the succubus leans against the wagon beside her. Arueshalae glances at the listening men.{/n}''',
+        fallen_out='''{n}The carters have stopped to listen. Aranka raises her voice.{/n} "That's all for today. There's work waiting at the gates."
+{n}The men lift their load of spears. Arueshalae watches them go, then gives the bard a small, contemptuous bow.{/n}'''),
+}
+
+
+def welcome(place):
+    return '''%s
 "Another follower of Desna! I was beginning to think all the others had better sense than to come here. Do you sing?" {n}Aranka says.{/n}
 "I used to sing for people I meant to hurt." {n}Arueshalae says.{/n}
 {n}Aranka's fingers fall still on the strings.{/n} "That wasn't the answer I expected."
 "You should know who you are inviting." {n}Arueshalae says.{/n}
 "I invited you to sing. I didn't ask you to pretend. There's a difference." {n}Aranka says.{/n}
-{n}Arueshalae watches the carters pass.{/n} "I want to help them. Sometimes I hear their hearts before I hear their voices."
+%s "I want to help them. Sometimes I hear their hearts before I hear their voices."
 "Then start with mine. I'll make it very loud." {n}Aranka says.{/n}
 {n}Aranka strikes a chord. Arueshalae stays across from her, with the lute between them.{/n}
 "No. Something quieter. They have enough shouting waiting for them outside the walls." {n}Arueshalae says.{/n}
 "You're right. But if you sing as badly as you look frightened, I'm choosing the next tune." {n}Aranka says.{/n}
-{n}Arueshalae laughs once, in surprise. Aranka begins again, softer; this time she waits for the second voice. Neither reaches across the instrument.{/n}'''
+{n}Arueshalae laughs once, in surprise. Aranka begins again, softer; this time she waits for the second voice. Neither reaches across the instrument.{/n}''' % (place["dreamer_in"], place["dreamer_watch"])
 
-REFUSAL = '''{n}Aranka's song breaks off as Arueshalae leans against the wagon beside her. The succubus glances at the soldiers listening nearby.{/n}
+
+def refusal(place):
+    return '''%s
 "Keep singing. I like them with their mouths open." {n}Arueshalae says.{/n}
 "They're listening to a song, not asking to be eaten." {n}Aranka says.{/n}
 "Oh, a Desnan. Will you sing me back to goodness? How dreary. Can't you sing about something filthy?" {n}Arueshalae says.{/n}
@@ -84,12 +112,14 @@ REFUSAL = '''{n}Aranka's song breaks off as Arueshalae leans against the wagon b
 "I've seen enough demons in Kenabres to fill a songbook. You aren't getting a pretty verse because you have a pretty face." {n}Aranka says.{/n}
 {n}Arueshalae's smile thins. She looks Aranka over slowly.{/n} "You would sound sweeter begging."
 "And you would sound better with your mouth shut." {n}Aranka says.{/n}
-{n}The carters have stopped to listen. Aranka raises her voice.{/n} "That's all for today. There's work waiting at the gates."
-{n}The men lift their load of spears. Arueshalae watches them go, then gives the bard a small, contemptuous bow.{/n}
-"Keep your hymn. I'll find my own supper." {n}Arueshalae says.{/n}'''
+%s
+"Keep your hymn. I'll find my own supper." {n}Arueshalae says.{/n}''' % (place["fallen_in"], place["fallen_out"])
 
-for fallen, text in ((False, WELCOME), (True, REFUSAL)):
+
+for fallen in (False, True):
     for yard in (False, True):
+        place = PLACE[yard]
+        text = refusal(place) if fallen else welcome(place)
         sid = "aranka.react.arueshalae.%s%s" % ("fallen" if fallen else "dreamer", ".yard" if yard else "")
         hub = "aranka.presence.yard" if yard else "aranka.presence"
         SCENES.append(reaction("Aranka", sid,
@@ -101,7 +131,7 @@ for fallen, text in ((False, WELCOME), (True, REFUSAL)):
             forbids=(*(() if fallen else (FALLEN,)), *(("aranka.presence.failed",) if not yard else ())),
             RequiresAnyGroups=[["aranka.presence.failed"]] if yard else [], portrait="Aranka",
             ContactUnit="e3bc95db7e2181d41847b3a1d858258d" if fallen else "a352873d37ec6c54c9fa8f6da3a6b3e1",
-            entry='"What did Arueshalae make of your song?"'))
+            entry=place["entry"]))
 
 # Canon: EvilArueshalaeNenio/Banter_EvilArueshalaeNenio_banter1_pack2,
 # blueprint 02c00f71641c8a24d89fdb5a77fce468; enGB f7a10e86-6617-482b-9f28-bae38382e6bb
