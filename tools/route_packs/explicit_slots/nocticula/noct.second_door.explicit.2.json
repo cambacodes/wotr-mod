@@ -1,16 +1,8 @@
 {
   "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
-  "facts": [
-    "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins.",
-    "Shamira is her chosen lover and covets her throne.",
-    "The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen.",
-    "No fixed Commander gender or anatomy. Invent no physical feature beyond those stated.",
-    "The crimson mark is narration only, with no mechanical effect.",
-    "Explicit scope: the Commander with Nocticula only. No other participant.",
-    "In front of the Harem she has just put off punishing a courtier (keep it generic: 'the courtier') who sold introductions to her; she told him to wait where she can find him."
-  ],
+  "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. Shamira is her chosen lover and covets her throne. The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen. No fixed Commander gender or anatomy. Invent no physical feature beyond those stated. The crimson mark is narration only, with no mechanical effect. Explicit scope: the Commander with Nocticula only. No other participant. In front of the Harem she has just put off punishing a courtier (keep it generic: 'the courtier') who sold introductions to her; she told him to wait where she can find him.",
   "scene": "Chapter 5, Drezen sleep; alliance branch. Nocticula's bedchamber behind the black door off the Harem of Ardent Dreams; she opened it herself with one hand and pulled the Commander through by the shirt. She has put off the courtier's punishment for her own pleasure, and the Harem outside is silent with fear. Real ambition and delight in cruelty: she talks, once, about what they will take together, and enjoys the thought of the courtier waiting. No sex as the price of alliance; no oath. End before the aftermath, where she asks what the Commander would have done with the courtier.",
-  "last_line": "N: Much later, she remembers the courtier.",
+  "last_line": "N: A long while afterwards she asks what you would have proposed for the courtier. You are lying in the dark with your head on her stomach, and through the door the Harem is still very quiet, as though nobody out there dares to move.\nYour answer is brief: send him an introduction to his creditors.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"

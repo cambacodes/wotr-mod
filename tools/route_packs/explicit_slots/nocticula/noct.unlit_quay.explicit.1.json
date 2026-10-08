@@ -1,14 +1,8 @@
 {
   "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.",
-  "facts": [
-    "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins.",
-    "Shamira is her chosen lover and covets her throne.",
-    "The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen.",
-    "No fixed Commander gender or anatomy. Invent no physical feature beyond those stated.",
-    "The crimson mark is narration only, with no mechanical effect."
-  ],
+  "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. Shamira is her chosen lover and covets her throne. The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen. No fixed Commander gender or anatomy. Invent no physical feature beyond those stated. The crimson mark is narration only, with no mechanical effect.",
   "scene": "Chapter 5, Drezen sleep; the Gift carries the Commander to her balcony above the Middle City quay of Alushinyrra, live. Orren Vale, the thief who sold passage under her black flower, hangs from a mooring ring below, out of sight; Rhez is with him. The flower lies folded on the balustrade. She chose tonight over the undertaking because the Commander asked for her instead of the work, and she means the Commander to remember having dared. She pins the Commander to the rail, then takes the cushions; she leads. She mentions the thief once, to show she has not forgotten him. Commander with Nocticula only. Resume at the flower on the rail and the waking; no commitment, no new terms.",
-  "last_line": "N: Below the rail the quay is quiet. Beyond it, the city burns until morning.",
+  "last_line": "N: Later, the flower is still where she left it on the balustrade, folded over: a hook, not a question.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula"

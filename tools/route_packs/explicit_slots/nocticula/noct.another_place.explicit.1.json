@@ -1,16 +1,8 @@
 {
   "voice": "NOCTICULA, the Lady in Shadow: regal, amused, sexually frank, possessive. Short concrete lines; contempt and appetite; she gives orders in bed and enjoys the Commander's obedience and the Commander's defiance about equally. She never reassures, never asks permission, never offers an exit, never says she needs anything. She rarely swears; when she does it is a weapon. Write NEW dialogue; do not reuse any sentence from this brief.\nLAULIEH: Nocticula's green-eyed succubus, assassin and actress. Playful, arch, theatrical (\"Fie!\", \"Hah!\"); \"service\" as a double meaning; vain and easily slighted; courts the Commander's favor as a game and a hedge, but she is her lady's knife and wants to be praised by power. She never asks for freedom or rights and never criticizes Nocticula.",
-  "facts": [
-    "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins.",
-    "Shamira is her chosen lover and covets her throne.",
-    "The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen.",
-    "No fixed Commander gender or anatomy. Invent no physical feature beyond those stated.",
-    "The crimson mark is narration only, with no mechanical effect.",
-    "Laulieh is Nocticula's valued servant; she faked her death in the Nexus mines in canon.",
-    "Explicit scope: Nocticula with Laulieh (woman with woman); the Commander watches and is then drawn in by Nocticula. No man other than the Commander participates."
-  ],
+  "facts": "Nocticula is the Lady in Shadow, ruler of Alushinyrra in the Midnight Isles, patroness of succubi and assassins. Shamira is her chosen lover and covets her throne. The Commander is here because her Gift carried the sleeping mind into her court; the body sleeps in Drezen. No fixed Commander gender or anatomy. Invent no physical feature beyond those stated. The crimson mark is narration only, with no mechanical effect. Laulieh is Nocticula's valued servant; she faked her death in the Nexus mines in canon. Explicit scope: Nocticula with Laulieh (woman with woman); the Commander watches and is then drawn in by Nocticula. No man other than the Commander participates.",
   "scene": "Chapter 5, Drezen sleep; Nocticula's dressing room off the Harem, live. Laulieh has just brought back the messenger of Ilvara (the imprisoned harbor magician who wrote offers to Nocticula's people) in pieces, in a hatbox now leaking on the dressing table, and curtsied for praise. Nocticula rewards her on the couch, Nocticula with Laulieh, while the Commander watches; then Nocticula pulls the Commander in. Laulieh is playful and theatrical, flirts with the Commander as a hedge, defers to her lady in everything. The hatbox is mentioned once. Stop at the drowsy aftermath; the next node resumes with Laulieh humming at the foot of the couch.",
-  "last_line": "U: My lady, the hatbox. Shall I have it cleaned, or framed?",
+  "last_line": "N: Later, Laulieh is curled at the foot of the couch like a cat in a sunbeam, humming the singer's tune flawlessly, slightly sharp, out of malice. The hatbox has been decided: framed, over the bed. Nocticula lies against your shoulder with her eyes half closed, winding a lock of Laulieh's hair round one finger and pulling it now and then to hear her squeak.",
   "speakers": {
     "N": "Narrator",
     "L": "Nocticula",
