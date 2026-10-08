@@ -31,6 +31,17 @@ RELATIONSHIP = dict(
     StartedFlag="noct.started", ClosedFlag="noct.closed", CommittedFlag="noct.complete",
     UnavailableFlags=["noct.dead", "inhuman", "legend", "dragon"], FailureFlags=[])
 SCENES = []
+# The shared "leave the undertaking" answer (N2 harbor and N3 lodge voices reconciled).
+EARLY_WITHDRAW = '''{n}She doesn't get up. She doesn't even stop what she is doing.{/n}
+"Then go. I don't keep instruments that blunt themselves."
+"And our bargain?"
+"Was never about a harbor. It stands, and I'll collect on it when it suits me. You'll know when. You'll be asleep." {n}She looks at you a moment longer, the way one looks at a dish sent back from the table.{/n} "I'll find another pair of eyes. They'll be prettier, they'll do as they're told, and they'll never once surprise me. I'll blame you for every dull evening they give me."
+{n}She lifts two fingers. The dream goes out like a snuffed lamp, and your cot in Drezen is suddenly very hard.{/n}'''
+LATE_WITHDRAW = '''{n}She does not look away. She looks at you the way she looked at Istrava on the floor of her own hall: with interest, and in no hurry at all.{/n}
+"Settled? I settle things, darling. You merely stop arriving."
+"Then I'm stopping."
+"So I hear." {n}She turns a ring on her finger, once.{/n} "I'll remember the date. I remember all of them. Our old bargain stands, because I made it and I keep what I make; don't flatter yourself that you can unmake it by being tired. These evenings were mine to give, and you've handed one back to me unopened." {n}Her smile is small and perfectly pleasant.{/n} "People don't do that to me twice. Usually they don't get the chance."
+{n}She lifts two fingers. The dream goes out, and you wake in Drezen with the distinct feeling of having been written down.{/n}'''
 
 
 def f(*names):
@@ -40,21 +51,9 @@ def f(*names):
 def s(id, title, nodes, previous=None, delay=12):
     if previous is not None:
         late = id in ("counterseal", "no_applause", "what_she_keeps", "second_door")
-        answer = ('"The harbor business is settled. I do not want these private meetings to continue."' if late
+        answer = ('"Your harbor\'s settled. So are we. No more of these evenings."' if late
                   else '"I\'m done with your harbor. Find another pair of eyes."')
-        response = '''{n}She looks away from you. When she speaks, her voice has lost its teasing edge.{/n}
-"I invited you because the business was settled. You need not explain the distinction to me."
-"Then you understand what I am declining."
-"Perfectly. It is an unpleasant advantage of listening."
-{n}You wait. She lets the silence grow uncomfortable before she answers.{/n}
-"The work stands. So does the answer you have just given. There will be no further invitations to these meetings."
-"Our earlier bargain still stands too."
-"I did not confuse it with an evening's company. Do me the courtesy of remembering that."
-{n}She lifts two fingers. The dream fades around her, and you wake without a new promise.{/n}''' if late else '''{n}She doesn't get up.{/n}
-"Then go. I don't keep instruments that blunt themselves."
-"And our bargain?"
-"Was never about a harbor. I'll collect on it when it suits me. You'll know when." {n}She looks at you a moment longer, the way one looks at a dish sent back from the table.{/n} "I'll find another pair of eyes. They'll be prettier, and they'll do as they're told."
-{n}She lifts two fingers. The dream goes out like a snuffed lamp, and your cot in Drezen is suddenly very hard.{/n}'''
+        response = LATE_WITHDRAW if late else EARLY_WITHDRAW
         nodes[0]["Choices"].append(c(answer, "withdraw_undertaking"))
         nodes.append(n("withdraw_undertaking", "Nocticula", response,
             c('[Leave this undertaking. The earlier bargain remains unchanged.]', flags=f("closed", "undertaking_withdrawn"))))
@@ -883,79 +882,61 @@ Nocticula turns her slate face up. She had written Fleshmarket, and under it, sm
 ], "others_discussed")
 
 s("last_buyer", "The last buyer", [
-    n("start", "Narrator", '''{n}The buyer who planned Ilvara's escape has finally introduced himself. His name is Ossin. He represents a small consortium of merchants whose success depends upon knowing which borders can be crossed before their owners notice.
-Nocticula presents his letter as though serving a dish whose smell offends her.{/n}
-"He believes I have taken possession of the harbor. He wishes to buy exclusive access. In the event that I refuse, he proposes to inform several interested parties that I have been maintaining a private prison beneath my own protection."
-"An accusation made out of part of the truth."
-"The most economical kind."
-{n}Ossin knows the Black Flower was real. He knows passengers disappeared. He does not know which parts of the instrument survived, what happened at the final lamp, or what Ilvara told during her hearing.
-He assumes the missing information can be purchased from somebody who resents Nocticula enough to sell it.{/n}
-"I could kill him," {n}she says.{/n} "Then his partners would sell the accusation at a memorial dinner and congratulate themselves on having discovered my vulnerability. I would prefer they learn a more useful lesson first. I can always kill him afterward; he is not going anywhere I cannot reach."
-{n}She spreads the letter beside three intercepted invoices. The papers differ in age and handwriting. Each names a storage facility that has already changed owners twice.{/n}
-"If we answer the wrong person, we merely improve somebody else's understanding of my affairs. I would like the people who will profit from this threat to hear the answer together."''',
-      c('[Identify the common guarantor hidden in the invoices. Knowledge: World, DC 33.]', check=dict(Skill="SkillKnowledgeWorld", DC=33, Success="guarantor", Failure="false_lead", CommanderOnly=True)),
-      c('"Publish the passengers\' accounts and the limits of what you claimed."', "public"),
-      c('"Sell them the exclusive right to a route whose limits you describe exactly."', "auction", requires=("trickster",))),
-    n("guarantor", "Nocticula", '''{n}The companies do not share an owner. They share a guarantor, a woman whose signature appears only when a debt changes hands. She has promised to cover losses from an interrupted voyage. If the harbor is exposed as a fraud, she owes money to every buyer at once.
-You place the three signatures beneath Ossin's threat.{/n}
-"He is not simply trying to acquire your route. He needs you to acknowledge it exists so his guarantor can deny the claims."
-{n}Nocticula reads the arrangement and begins to smile.{/n}
-"A threatened scandal which protects the person threatening it. Yes. I should have expected a more interesting motive than greed."
-"Greed remains involved."
-"As it should. One must not neglect the fundamentals."
-{n}She can now send the answer to every insured buyer as well as the guarantor. The letter will state exactly what survived and which journeys were sold without a reliable return. Ossin must either contradict his own contracts or admit that his consortium helped finance Ilvara's operation.
-You have not made his accusation disappear. You have made it expensive for him to tell only the profitable half.{/n}
-"A very good afternoon's reading," {n}Nocticula says.{/n} "I am beginning to resent how much of our private time is improved by your ability to recognize a bad contract."''', c('"Send the complete account to everyone whose money depends on it."', "cost", flags=f("buyers_exposed"))),
-    n("false_lead", "Narrator", '''{n}One repeated name appears to be the owner you need. Nocticula recognizes it as a dead merchant whose identity has been used to conceal three different debts. Your comparison has found a mask, not the face behind it.
-The error costs the opportunity to answer quietly. By the time her agent verifies the name, Ossin has sent copies of the accusation to two buyers who have begun asking public questions.{/n}
-"We can still tell the truth," {n}Nocticula says.{/n} "We will now be doing it after someone else has supplied the first version."
-"Or buy the letters back."
-"No. I will pay to learn a secret. I will not pay a man to repeat a threat he has already demonstrated he cannot keep exclusive."
-{n}She destroys the dead merchant's false address and keeps the copies of the accusation. The investigation has lost surprise rather than acquired a fabricated culprit.
-The passengers' accounts can answer much of the claim. They will also reveal that Nocticula did not discover the stolen use of her protection immediately. She dislikes that part enough that you know the decision to include it is real.{/n}''', c('"Then publish the complete account, including the delay."', "public", flags=f("buyer_read_failed"))),
-    n("public", "Nocticula", '''"A public account will travel farther than your qualifications. Someone will say I sold the passengers. Someone else will say I rescued them out of love for mortals. I find both versions irritating."
-"The witnesses can describe what happened."
-"They can. They may also discover that people prefer the more flattering lie."
-{n}She releases the records and keeps the passengers' private histories back, because they are hers now and she does not give away what she owns for nothing. Vessa's drawings go out at Vessa's price. Sere's letters stay in Nocticula's cabinet. Tomar collects his wages and is told, very pleasantly, that the first time he sells the story in a tavern will be the last time he sells anything.
-The statement includes the use of the old protection, Ilvara's sales, the return, and the remaining uncertainties. It does not claim Nocticula had always intended the outcome.{/n}
-"Ossin will dislike the loss of his private audience," {n}she says.{/n} "He wanted me alone in a room with the accusation. Now he can explain it to everyone whose money he proposed to collect."
-{n}Nocticula sets the statement beside the threat. She has chosen to surrender some control over her reputation rather than purchase a fragile silence.
-It is not an act she intends to repeat every time somebody says something unkind.{/n}''', c('[Release the bounded account and protect the witnesses\' private details.]', "cost", flags=f("account_public"))),
-    n("auction", "Nocticula", '''"That sounds remarkably close to the business we have just dismantled."
-"Only if we sell what we do not possess. Offer exclusive access to the records, not the harbor. Let him explain to his investors why the difference disappoints him."
-"He may notice before paying."
-"Then he has learned to read. Either outcome improves the conversation."
-{n}You draft an invitation to bid on the technical account, with every absence listed plainly: no guaranteed passage, no ownership of travelers, no claim on Nocticula's future protection. The price includes a public acknowledgment of which voyages the buyer previously financed.
-Ossin can refuse. He can also accept and surrender the secrecy that made his accusation profitable. His competitors receive the same terms at the same time.{/n}
-"You have turned his threat into a question about whether he wants his rivals to know more than he does," {n}Nocticula says.{/n} "That is much better than pretending he will become honest because we caught him lying."
-{n}She makes one change. The proceeds will pay the outstanding claims from the voyages before the consortium receives a single page. If there is nothing left afterward, she will accept the pleasure of watching them calculate the loss.
-Nocticula seals the offers one at a time. Each bears the same closing hour. She saves Ossin's for last and puts his name inside, where the next clerk to open it will see what their principal has been buying.{/n}''', c('[Offer the exact, limited auction to every interested buyer.]', "cost", flags=f("records_auctioned"))),
-    n("cost", "Nocticula", '''"There is one more matter. Ilvara's disposition will become part of the answer whether we publish it or not."
-{n}She draws the three half-coins from the hearing out of the letter's shadow. Only the one you chose remains solid.{/n}
-"If I have confined her, Ossin will accuse me of hiding the witness. If I have employed her, he will say I have inherited the trade. If I have expelled her, he will try to buy her account. None is an argument for pretending we chose differently."
-"What will you say?"
-"What I did. With sufficient detail to make the useful questions possible and the useless ones expensive."
-{n}Nocticula's hand closes around the surviving coin. She looks tired of the affair without being tired of you, a distinction she has not previously made much effort to show.{/n}
-"You may take your share of the credit. You may also leave your name out. I do not need the Commander printed beneath my account as a certificate of good behavior."
-"How generous."
-"It is not generosity. I am deciding how much of you to spend in public, and I should like your opinion before I spend it. Do not waste the question by asking which answer would please me."''',
-      c('"Name my part accurately. I helped make the decisions."', "named"),
-      c('"Keep my name private. The witnesses do not need another famous person in their account."', "unnamed")),
-    n("named", "Nocticula", '''"Then they will know you helped me. Some will stop listening before the rest of the sentence."
-"They already do that when they hear your name."
-"Yes. It is occasionally convenient."
-{n}The final account names your questions and advice without crediting you for work Rhez, Vessa, or the carrier performed. Nocticula refuses a sentence praising your moral leadership. She replaces it with the particular decision for which you were responsible.
-One of Ossin's buyers has returned the notice with your name circled. He wants his passage money back from the crusade. Nocticula lays his demand beneath the signed account. "He has stopped asking me. How quickly a grateful merchant learns a new address."
-Nocticula studies the finished wording, then touches your signature with a finger.{/n}
-"There. You are in dangerous company again. I hope you continue to find it worth the trouble."''', c('[Stand by the part you actually played.]', flags=f("buyer_answered", "work_named"))),
-    n("unnamed", "Nocticula", '''"Very well. I will not invent a mysterious adviser merely to make the omission seem important."
-{n}The account credits the people who performed the work and the authority under which Nocticula commissioned it. Your private involvement remains between those who already know it. She warns that silence is not a lock; Ilvara and Ossin may still guess, and guessers are cheap to kill but tiresome to count.
-You accept the distinction.
-Nocticula folds the final statement and puts it aside. Then she steps close enough to straighten a crease in your collar which the dream did not need to supply.{/n}
-"I know what you did," {n}she says.{/n} "Do not imagine I will require a public document to remember an inconvenient answer."
-"Or a useful one."
-"Especially an answer which managed to be both."
-{n}She kisses you before allowing the room to fade. For a moment the seal on her letter remains visible in the darkness, a black flower pressed into red wax.{/n}''', c('[Keep the work private without denying it.]', flags=f("buyer_answered", "work_private"))),
+    n("start", "Narrator", '''{n}The letter is on your desk in Drezen when you come up from the evening muster. Nobody remembers carrying it in. The clerk says a tiefling brought it, a thin one with rings on every finger, who would not give his name and would not wait. The paper is good, the hand is better, and there are only three lines.{/n}
+"To the Knight-Commander. I know whose bed you dream in. So will others, unless the Lady sells me what I ask. O."
+{n}You burn it. It makes no difference. That night, the moment your eyes close, the Gift takes you down: stone stairs, more stone, the warm close corridor under her palace that smells of hot iron and old perfume. Her cells.
+Nocticula is waiting at the foot of the stair in a gown the color of a bruise, with the letter in her hand: the same letter, unburned, its seal still whole.{/n}
+"Don't wake up. I've had such a lovely evening planned since this arrived." {n}She gives it back to you.{/n} "Ossin. A merchant. He and his friends sank a great deal of money into a harbor that turned out to be mine, and when I took it back they lost every coin. Now he wants my flower flown over his own ships, so the losses come back to him with interest. If I don't sell it, he'll tell every house in the Isles that the Lady in Shadow keeps a private prison under her palace, and a crusader in her bed." {n}She smiles.{/n} "He's right about both. He came to Alushinyrra in person to sell me his threat. I said yes. I'm giving him the tour."
+{n}Ossin waits further down the corridor between two of her guards, in a merchant's good coat, with his rings turned inward as if someone had warned him they might be taken. He is very pale. He has the look of a man who expected to be refused at the gate and was instead shown in by name, with a bow. Rhez walks behind him, eating something out of a paper cone.{/n}
+"Lady." {n}He bows too low, and recovers.{/n} "I came to help you. Quietly. Before this becomes a matter for other people—"
+"Oh... you sincerely believe I am in need of help." {n}Nocticula looks at him as if he were an amusing animal mimicking human behavior.{/n} "How... sweet. Welcome, Ossin. The tour starts here and ends wherever I get bored."
+{n}She shows him everything. The good cells first, with rugs on the floors and the locks on the outsides of the doors, where a councillor who was caught plotting against her sits embroidering the same handkerchief he has been embroidering for eleven years, because she likes the pattern.{/n}
+"All my servants plot," {n}she tells Ossin.{/n} "He was caught. And in the Abyss, getting caught is not an option."
+{n}Then the worse cells. Then the room at the end, which is full of lamps.
+There are dozens of them, hung from the ceiling on chains, and under every lamp, chained so that they cannot turn their heads, someone sits with their eyes held open to the light. They have not slept in a very long time. Some of them no longer remember how.{/n}
+"The ones who saw me in the dark and talked about it afterwards," {n}she says.{/n} "Darkness is my gift, Ossin. I don't give it to everyone."
+{n}One of the prisoners begs her for it, in a voice like paper tearing. She reaches up, generously, and pinches out the lamp above him. In the dark of his cell something that is not him begins to move. He starts to scream, and she lets him scream until Ossin has heard enough of it, and then a little longer, before she lights the lamp again with a touch of her finger.{/n}
+"There," {n}she says.{/n} "Now you've seen my prison. Tell me about the other thing you know."''',
+      c('[Let him think the crusade will pay for his silence, and pay more for names. Bluff, DC 33.]', check=dict(Skill="SkillKnowledgeWorld", DC=33, Success="guarantor", Failure="false_lead", CommanderOnly=True)),
+      c('"Give him the whole tour. Then let him walk out and tell it."', "public"),
+      c('"Sell him exclusive access."', "auction", requires=("trickster",))),
+    n("guarantor", "Nocticula", '''{n}You take Ossin aside, two steps from the lamps, close enough that he must lean in to hear you and must look at you instead of at them. You tell him the crusade has money. You tell him a Knight-Commander has more to lose than a demon queen, and is prepared to pay for a quiet life, provided you know whom you are paying. One man can be bought. A consortium has to be bought one partner at a time.
+He believes you. He believes you because he badly wants there to be one person in this corridor who can be bargained with, and you have made yourself that person. He names them in a whisper, fast, the way men empty their pockets for a robber: a moneylender from the Ten Thousand Delights; a horned glass-merchant from the upper market; a mortal widow who buys house-slaves by the dozen and has never been known to keep one past a year. All three dine at the same table, above the old pleasure gardens, where a lamia called Istrava keeps a hunting lodge.{/n}
+"Oh, listen to that," {n}Nocticula says. She has heard every word. She is always in the room.{/n} "He's sold them to you. In my cells, with my lamps watching. And he thinks you're going to pay him for it." {n}She takes your chin in one hand and turns your face to the light, examining it the way a jeweler examines a stone she has just been told is real.{/n} "You lied to him to his face, darling, in my house, and he thanked you for it. I could eat you. I may."
+{n}Ossin looks from you to her and understands, slowly, what he has done. His lips move. Nothing comes out of them.{/n}
+"Istrava's table." {n}Her smile goes thin and bright.{/n} "I know it. I've let her keep it for years. I'll remember those three, Ossin. I'll remember them very particularly, and I'll tell them who gave me their names."''', c('"Now you have his friends. What about him?"', "cost", flags=f("buyers_exposed"))),
+    n("false_lead", "Narrator", '''{n}You take Ossin aside and offer him the crusade's money for his silence, and more for names. He looks at you for a long moment. Then, for the first time since he came down the stair, he laughs.{/n}
+"Commander. With respect. The crusade doesn't buy things; it begs, and calls it tithes." {n}He has found his footing again. You have handed it to him.{/n} "And you'd pay for my partners' names so that she could have them killed. I'm frightened. I'm not stupid."
+{n}Behind him Rhez stops eating and looks at her lady, to see whether she should start on his fingers. Nocticula waves her off, amused rather than angry, the way one waves away a dog that has brought back the wrong bird.{/n}
+"Never mind, darling. You can't read everyone; that's why I keep Rhez." {n}She takes Ossin's arm companionably, as if they were strolling in a garden.{/n} "I'll give him the tour anyway. He hasn't seen the best part."''', c('"Then show him the rest."', "public", flags=f("buyer_read_failed"))),
+    n("public", "Nocticula", '''"The whole tour. Oh, yes." {n}Nocticula claps, soundlessly, her palms stopping a finger's width apart.{/n}
+{n}She shows Ossin the rest of it, and she takes her time. The pit under the lamp room, where the ones who were brought down here to be forgotten are forgotten. The long room where her assassins practice on whoever has disappointed her this month, and where tonight a fat incubus in a torn silk coat is learning how many places a body can be opened without its dying. And at the end of the row, a little cell, clean and bare, with fresh straw on the floor, that nobody is in yet.{/n}
+"That one's for whoever disappoints me next," {n}she tells Ossin.{/n} "I like to keep one ready. It saves time."
+{n}By the end he is holding on to the wall. She does not let him sit down.{/n}
+"Now go and tell them," {n}she says.{/n} "Every house in the Isles. Tell them the Lady in Shadow keeps a private prison under her palace, and that it's worse than they thought. Tell them about the lamps. Tell them about the clean cell." {n}She straightens his collar for him, tenderly.{/n} "Tell it well, Ossin. You're the only man who has ever had the whole tour and walked out. By morning everyone who ever thought of crossing me will lie awake wondering which cell is theirs, and that, darling, is worth far more to me than any secret."''', c('"And everything else he knows?"', "cost", flags=f("account_public"))),
+    n("auction", "Nocticula", '''"Exclusive access?" {n}Nocticula looks at you, and then at Ossin, and her eyes go very bright.{/n} "Oh, you crooked thing. Yes."
+{n}She turns to the merchant with the warmth of a woman about to close a sale she has been looking forward to for a long time.{/n}
+"You wanted something of mine to sell, Ossin. Something no one else in the Isles can buy. Here it is." {n}At the end of the row there is a clean, bare cell with fresh straw on its floor. She opens the door and holds it for him like a footman.{/n} "Exclusive access to my prison. One cell, entirely yours. No one else will ever be put in it; nobody will ever share it with you. You may tell everyone you have it, and every word will be true." {n}She names a price. It is everything he brought to Alushinyrra, and his rings besides.{/n}
+{n}He understands it one heartbeat too late. Rhez is already behind him. He goes into the cell on his own feet, which is something he will be proud of later, and at the door Rhez takes his rings off him one at a time while Nocticula counts them aloud.{/n}
+"Sold," {n}she says, and turns the key.{/n} "Don't sulk, Ossin. Nobody has ever driven a harder bargain with me. Nobody has ever driven one at all." {n}She drops the key into your palm and closes your fingers over it.{/n} "There. Every bargain I make, I keep. Whether he ever comes out to tell anyone about his purchase is up to you."''', c('"Then let\\'s talk about what he knows of me."', "cost", flags=f("records_auctioned"))),
+    n("cost", "Nocticula", '''{n}Nocticula leaves Ossin where he is and comes back to you, past the lamps, close, so that the light is behind her and her face is all shadow.{/n}
+"There's one more thing he came to sell, and it isn't mine. It's yours." {n}She lays one finger on your breastbone.{/n} "He knows whose bed you dream in. He'd tell it to your crusade, to your knights, to your priests, to anyone in the Isles who'd like a Knight-Commander on a string. It's a very good secret, darling. I'd buy it myself."
+"And you don't care who hears it."
+"Care?" {n}She laughs.{/n} "I'm a Demon Lord. I've had worse in my bed than a crusader, and so has everyone who'd gasp at it. Let them gasp. I'd have the story sung in the Fleshmarket if it amused me." {n}Her finger presses, very slightly, and you feel her nail.{/n} "The question is whether you care. You're the one with a crusade full of saints."
+{n}Behind her Ossin is listening with his whole body. He has worked out that his life is no longer being discussed with him.{/n}
+"So. Your name. He has it. Does it leave these cells with him?"''',
+      c('"Let him tell them. I was here."', "named"),
+      c('"He doesn\\'t leave with my name."', "unnamed")),
+    n("named", "Nocticula", '''"Let him tell them." {n}Nocticula repeats it slowly, tasting it. Then she throws back her head and laughs, long and hard, and the lamps sway on their chains.{/n} "Oh, I adore you. Let him tell them. You were here."
+{n}She has Rhez bring Ossin out and walk him to the stair. At the foot of it she stops him with one hand flat on his chest. With the other she takes you by the collar and kisses you, thoroughly, while he watches; she makes sure he watches, turning your face so that he has the best possible view. When she lets you go she looks at him over your shoulder.{/n}
+"Remember the details," {n}she says.{/n} "Get them right. People will ask."
+{n}He goes up the stair at a run. Within the month the story will have reached Drezen in three versions, two of them true, and somewhere among the crusade's patrons a few pious purses will discover a sudden need to support someone more respectable. You will pay for this. She knows it. It is why she is smiling.{/n}
+"There," {n}she murmurs against your ear.{/n} "Now everyone knows you're mine. You did that yourself, darling. I never even had to ask."''', c('[Let your name leave with him.]', flags=f("buyer_answered", "work_named"))),
+    n("unnamed", "Nocticula", '''"He doesn't leave with your name." {n}Nocticula considers it, and nods, as if you had chosen the wine.{/n} "Then he doesn't leave."
+{n}Ossin hears it. He starts to talk, very fast: it is all written down, he says, it is all with a lawyer, if he does not come home by the new moon— and Nocticula lifts one finger, and he stops, because Rhez has laid the flat of her knife across his lips.{/n}
+"A lawyer." {n}She sounds touched.{/n} "In my city. Ossin, darling, who do you imagine he sold you to first?"
+{n}She chooses his place herself: in the lamp room, under a new lamp, which Rhez hangs and lights while he watches. They chain him the way the others are chained. His eyes are held open to the light. The prisoner beside him, who has not slept since before the Worldwound opened, turns his head the little that his chain allows to look at the newcomer, and smiles.{/n}
+"Look, darling, he's crying," {n}Nocticula says.{/n} "They always cry at the part with the lamps." {n}She takes your arm to walk you back up the stair.{/n} "He came all this way to sell me your secret, and now he'll keep it for me. Forever, in the light. Nothing that's mine leaves my house without my leave. Not even a rumor."''', c('[Leave him to the light.]', flags=f("buyer_answered", "work_private"))),
 ], "hearing_finished")
 
 s("empty_chair", "The guest who was not invited", [

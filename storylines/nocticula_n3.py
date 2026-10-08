@@ -7,6 +7,7 @@ redeemed-epilogue paragraphs. It runs once, after nocticula_n1.finish_partners,
 and refuses to overwrite anything that is not the text it expects, so a
 structural change surfaces as an error here.
 """
+from storylines import nocticula_continuation as route
 
 PENDING = "[N2 PROSE PENDING: "
 
@@ -175,21 +176,10 @@ REDEEMED = {
     "noct.ending_limit": '''{n}When the Lady in Shadow renounced the Abyss and became the Redeemer Queen, the Commander supposed the debt had gone with the old title. A letter from Midnight's Palette, in her own hand, corrected the error: she had changed a great many things about herself, and kept her memory. The next time she collected, it was gentler than the Lady in Shadow would have made it. She made sure the Commander understood that she had decided it would be.{/n}''',
 }
 
-# The late legacy exit (s() appends it; this is her answer for the three late scenes).
+# The legacy exits are voiced once, in nocticula_continuation.s() (EARLY_WITHDRAW /
+# LATE_WITHDRAW), reconciling the N2 and N3 drafts; these scenes must still carry them.
 LATE_WITHDRAW = ("no_applause", "what_she_keeps", "second_door")
-LATE_WITHDRAW_TEXT = '''{n}She does not look away. She looks at you the way she looked at Istrava on the floor of her own hall: with interest, and in no hurry at all.{/n}
-"Settled? I settle things, darling. You merely stop arriving."
-"Then I'm stopping."
-"So I hear." {n}She turns a ring on her finger, once.{/n} "I'll remember the date. I remember all of them. Our old bargain stands, because I made it and I keep what I make; don't flatter yourself that you can unmake it by being tired. These evenings were mine to give, and you've handed one back to me unopened." {n}Her smile is small and perfectly pleasant.{/n} "People don't do that to me twice. Usually they don't get the chance."
-{n}She lifts two fingers. The dream goes out, and you wake in Drezen with the distinct feeling of having been written down.{/n}'''
-
-# The early legacy exit, for the lodge scenes before the close.
 EARLY_WITHDRAW = ("uninvited_guest", "unborrowed_evening", "bell_without_master")
-EARLY_WITHDRAW_TEXT = '''{n}She doesn't get up. She doesn't even stop what she is doing.{/n}
-"Then go. I don't keep instruments that blunt themselves." {n}She considers you, briefly, the way she considered the dented bell.{/n} "Someone else will finish it. Someone always does. They're usually cheaper, and they never surprise me, and I'll blame you for every dull evening they give me."
-"And our bargain?"
-"Was never about a harbor. It stands. I'll collect on it when it suits me." {n}Her smile is lazy.{/n} "You'll know when. You'll be asleep."
-{n}She lifts two fingers, and your cot in Drezen is suddenly very hard.{/n}'''
 
 
 def _node(scene, nid):
@@ -215,14 +205,9 @@ def write(payload):
         for choice in node["Choices"]:
             if choice["Text"] == DISCOVERY_CHOICE[0]:
                 choice["Text"] = DISCOVERY_CHOICE[1]
-    for sid in LATE_WITHDRAW:
-        node = _node(by["noct." + sid], "withdraw_undertaking")
-        assert node["Text"].startswith("{n}She looks away from you."), sid
-        node["Text"] = LATE_WITHDRAW_TEXT
-    for sid in EARLY_WITHDRAW:
-        node = _node(by["noct." + sid], "withdraw_undertaking")
-        assert node["Text"].startswith("{n}For a moment she watches you without answering."), sid
-        node["Text"] = EARLY_WITHDRAW_TEXT
+    for sids, text in ((LATE_WITHDRAW, route.LATE_WITHDRAW), (EARLY_WITHDRAW, route.EARLY_WITHDRAW)):
+        for sid in sids:
+            assert _node(by["noct." + sid], "withdraw_undertaking")["Text"] == text, sid
     for sid, text in REDEEMED.items():
         blocks = [x for x in _node(by[sid], "end").get("Paragraphs", [])
                   if x.get("Requires") == ["noct.redeemed_epilogue"]]
