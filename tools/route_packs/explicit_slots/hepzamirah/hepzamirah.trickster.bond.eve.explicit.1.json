@@ -1,0 +1,39 @@
+{
+  "slot_id": "hepzamirah.trickster.bond.eve.explicit.1",
+  "host_scene": "hepzamirah.trickster.bond.eve",
+  "host_node": "face_say",
+  "participants": [
+    "Hepzamirah",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Hepzamirah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HEPZAMIRAH: foul-mouthed, martial, proprietary; terms stated, never asked. Two or three crude insults (whelp, worm, wench, scum), 'clown' kept for the Trickster Commander in private, one obscene or bodily threat spoken as appetite. Heat is domination, ownership and pain, never seduction or tenderness-led. Never an apology, mercy credited to herself, a built-in exit line, gratitude or redemption. Short harsh clauses. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Hepzamirah is a mortal nephilim daughter of Baphomet, once archpriestess of the cult and mistress of the Ivory Labyrinth templars; she is not an ordinary demon.\nShe sacrificed her mother and hundreds of siblings to Baphomet and hates having been discarded.\nHer native appetite is domination, owning bodies and inflicting pain; no native seduction line exists.\nHer living body is the mod's authored Trickster vessel: a scarred side of the face, a milk-white unseeing eye and a horn stump. These are authored continuity, not native anatomy evidence.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, the eve of the march to the Threshold, the Drezen wagon yard at night: wagons under repair, the smith's hammer going all night, chaplains singing somewhere across the city. Hepzamirah sat on the trough with the sharpened pick across her knees and told the Commander where her soul goes if this body dies. The Commander took her face in both hands, both sides; she breathed against the Commander's mouth without a kiss, made the Commander remember the scarred side and the milk-white eye, and ordered 'And you will come for me. Say it.' The Commander said 'I'll come.' Continue from that promise: she takes the Commander, rough and proprietary, in the dark between the repaired wagons out of the forge light, the pick laid on the flagstones within reach. Her heat is domination and ownership on the eve of a possible death: she claims, commands and bruises, and the Commander answers in kind. No witnesses; the hammering never stops. End with her back on the edge of the trough and the Commander against her, before she stands.",
+  "required_beats": [
+    "Begin from the spoken promise; she seals it with mouth and hands, hard, on her own terms.",
+    "Domination and possession lead: she gives orders, two or three crude insults (whelp, worm, clown), one bodily threat said as appetite.",
+    "Both sides of her face stay in the scene; the scar and blind eye are neither hidden nor healed.",
+    "Mutual, active participation; act by Commander variant; no horn, eye or body detail beyond the authored vessel.",
+    "Her dread of Baphomet's prison stays under the heat: no confession, tenderness speech, gratitude or apology.",
+    "No onlooker and no smith or chaplain intrusion; the yard noise continues.",
+    "Stop before she stands; the existing next beat has her stand, take up the pick and send the Commander to sleep."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored wagon-yard scene; the vessel body, the soul-return fear and the promise are mod continuity.",
+    "history": "Committed Trickster Hepzamirah after her first morning (hepzamirah.trickster.bond.morning), Areelu present; a return encounter, not a first night.",
+    "resumption": "hepzamirah.trickster.bond.eve/face -> face_say -> \"I'll come.\" (sets hepzamirah.trickster.eve_promise) -> reserved node -> last. The again and dont branches go straight to last and never reach this slot."
+  },
+  "last_line": "N: She stands, and takes up the pick, and puts her free hand on the back of your neck, hard, the way she held your wrist the day she stayed.",
+  "default_text": "{n}She drags your mouth down onto hers at last. The pick rings once on the flagstones; across the yard the hammer does not pause.{/n}",
+  "example": "N: Hepzamirah drops the pick on the stones and fists a hand in your collar.\nH: Said. Now you pay for saying it, clown.\nN: She hauls you into the dark between the wagons.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Hepzamirah only, for the separate writer. Both Commander variants are required. Keep her cruelty, foul mouth and domination intact; no invented anatomy, cure or redemption."
+}

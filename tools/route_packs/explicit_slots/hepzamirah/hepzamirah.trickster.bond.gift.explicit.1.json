@@ -1,0 +1,38 @@
+{
+  "slot_id": "hepzamirah.trickster.bond.gift.explicit.1",
+  "host_scene": "hepzamirah.trickster.bond.gift",
+  "host_node": "kiss",
+  "participants": [
+    "Hepzamirah",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Hepzamirah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HEPZAMIRAH: foul-mouthed, martial, proprietary; terms stated, never asked. Two or three crude insults (whelp, worm, wench, scum), 'clown' kept for the Trickster Commander in private, one obscene or bodily threat spoken as appetite. Heat is domination, ownership and pain, never seduction or tenderness-led. Never an apology, mercy credited to herself, a built-in exit line, gratitude or redemption. Short harsh clauses. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Hepzamirah is a mortal nephilim daughter of Baphomet, once archpriestess of the cult and mistress of the Ivory Labyrinth templars; she is not an ordinary demon.\nShe sacrificed her mother and hundreds of siblings to Baphomet and hates having been discarded.\nHer native appetite is domination, owning bodies and inflicting pain; no native seduction line exists.\nHer living body is the mod's authored Trickster vessel: a scarred side of the face, a milk-white unseeing eye and a horn stump. These are authored continuity, not native anatomy evidence.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, Drezen, her forge room, where the gift lies on forge-ash. She handed over a scraped ammunition box tied with red bell-rope; inside is either the finger-long horn knife filed from the splinters sawn from her, or the chiselled, hornless iron head of Baphomet's symbol. She said, fast, that in her temples a gift given downward meant a debt, and that she owes the Commander, paid in advance. The Commander kissed her; she caught the collar and kept the kiss until the Commander's hand tightened on her shoulder, then tied the gift round the Commander's neck herself, too tight, loosened it and stepped back. Continue: she does not let the step back stand. The thong at the Commander's throat becomes her handle; debt and possession are the heat. She decides what is owed and takes it on her own terms, rough and claiming. Only Hepzamirah and the Commander; the smith is not present. End before her next remark about how one thanks someone for a debt.",
+  "required_beats": [
+    "Begin from her stepping back; she closes the distance again herself, using the gift's thong.",
+    "The gift is not payment for sex and sex does not settle the debt; she names the terms, never asks.",
+    "Crude insults and one bodily threat as appetite; ownership spoken plainly ('mine').",
+    "Mutual, active participation; act by Commander variant without inventing anatomy.",
+    "Keep whichever gift the history supplies (horn knife or hornless head) and the authored vessel's scar, eye and horn stump.",
+    "No witness, no tenderness speech, apology or redemption; stop before the existing next line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored gift scene in her Drezen forge room; the box, rope and gifts are mod continuity.",
+    "history": "Committed Trickster Hepzamirah after her first morning; a return encounter, not a first night. horn_cut selects the horn knife, otherwise the chiselled symbol.",
+    "resumption": "hepzamirah.trickster.bond.gift/speech -> [Kiss her.] -> kiss -> reserved node -> kiss_say. The on and owe branches never reach this slot."
+  },
+  "last_line": "H: That is not how you thank someone for a debt,",
+  "default_text": "{n}She hooks two fingers through the thong at your throat and pulls you back into the kiss she ended.{/n}",
+  "example": "N: Hepzamirah twists the thong once round her fingers.\nH: Too tight? Good. Now you wear me.\nN: She drags you down onto the furs by it.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Hepzamirah only, for the separate writer. Both Commander variants are required. Keep debt-as-possession and her cruelty; no invented anatomy, no payment-for-sex framing."
+}

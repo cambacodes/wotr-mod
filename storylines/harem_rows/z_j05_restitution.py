@@ -82,7 +82,11 @@ def _wintersun(body):
             forbids=(s26.CLAN_DESTROYED,)),
           c('[Leave the remedy owed.]', "unresolved"), c('[Later.]', abort=True)),
         n("j05_cache_offer", "Jerribeth",
-          "[PROSE PENDING: Jerribeth - retain leverage over the Commander / yield the location and contents of one ordinary Wintersun timber-and-food cache to Gesmerha's named surviving households / lose the concealed supply and its leverage without remorse]",
+          '''{n}The answer comes behind your left eye before you have finished asking. Gesmerha goes on carving; she hears only the forge.{/n}
+"Timber and grain. For Wintersun. From me." {n}The laughter is high and abrasive and goes on a little too long.{/n} "Oh, I have a store. Every good host keeps a larder her guests do not know about. North of the worked fields, under the second ridge, there is a cellar the clan dug years ago and forgot, because I made them forget it. Roof beams. Grain. Enough for the families she named, if the damp has been kind."
+"Take it. I give it to you, Commander. Not to her, and not to them. They will eat my bread and roof their houses with my timber, and every one of them will know whose larder it came from, because you will have to tell them."
+{n}Something turns over in your memory, idly, like a guest picking up an ornament and putting it back in the wrong place.{/n}
+"And when they thank you, think of me. I shall be listening."''',
           c('[Take the directions and carry Gesmerha\'s instructions.]', "j05_cache_route",
             flags=(G + "cache.disclosed", G + "recipients.selected",
                    G + "cost.jerribeth_cache_surrendered"),

@@ -231,7 +231,7 @@ partner("jerribeth", "jerribeth", "jerribeth.committed", "jerribeth.closed", "Re
         page_p('''She sent the man she had taken in payment for the toast to pour the Commander's cup at the feast, smiling two finger-widths too wide. The toast had been paid for, she said, and she liked to see her property used.''', requires=(J + "cost.toast_host",)),
         # R2-6 (Sol r3): the late history (commission reached, no campaign commitment) plays this coda too. Whether the
         # contract is signed is the epilogue page's question; this line holds whichever answer is given there.
-        page_p('''There was no contract yet, only one she had drafted and left on the Commander's table, the clause she was saving written in very small, very neat print. She came to the feast anyway, uninvited, to watch the Commander not sign it. Whether the Commander ever would was a question she asked every spring, and she enjoyed the asking more than she would have enjoyed an answer.''', requires=(J + "late_committed",), forbids=("jerribeth.committed",)),
+        page_p('''There was no promise between them yet, only one of her pins left lying on the Commander's table, point toward the chair. She came to the feast anyway, uninvited, to watch the Commander not pick it up. Whether the Commander ever would was a question she asked every spring, and she enjoyed the asking more than she would have enjoyed an answer.''', requires=(J + "late_committed",), forbids=("jerribeth.committed",)),
     ), declined=J + "declined", page_forbids=(J + "parted",),
     page_commit_groups=[["jerribeth.committed"], [J + "late_committed"]],
     deal=[[J + "cost.tenant"], [J + "cost.lodger"], [J + "cost.host"], [J + "cost.toast"], [J + "cost.forfeit"]],

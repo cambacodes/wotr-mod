@@ -1049,6 +1049,1025 @@
       "woman": "minagho",
       "text_sha256": "f22aa9e35dbfcd566e269baf3970ba9952479fe2883b79249525421ebeabf920",
       "reason": "past couple/tenure or scar-story recollection, including a former target; Minagho does not act now"
+    },
+    {
+      "scene": "kiana.trickster.after.temple",
+      "node": "late_dog",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "d5846f45a7222e1150ad2952be71e0ed45963e7f20da401848b258fa40fea2f3",
+      "mentions": [
+        [
+          136,
+          142
+        ],
+        [
+          264,
+          270
+        ]
+      ],
+      "reason": "Seelah completed the earlier soul rescue; no present participation in Kiana's pivot.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "kiana.trickster.after.temple",
+      "node": "late_ransomed",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "d903437ecd72bb028862088ffa46a9264dc654ae2355efe1fa40fb98466da1fc",
+      "mentions": [
+        [
+          195,
+          201
+        ]
+      ],
+      "reason": "Seelah completed the earlier soul rescue; no present participation in Kiana's pivot.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "kiana.trickster.after.temple",
+      "node": "late",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "0a5fac1a9d35f65fa27aabf8f9373179b6c156bf9c6c0a20702c43d74098e9f9",
+      "mentions": [
+        [
+          150,
+          156
+        ],
+        [
+          315,
+          321
+        ]
+      ],
+      "reason": "Seelah completed the earlier soul rescue; no present participation in Kiana's pivot.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "kiana.trickster.after.temple",
+      "node": "told_late",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "139d93e5573dab5e92d5cfbdad0a1a2e2e7e30063abe8380cb4419d37683ad0d",
+      "mentions": [
+        [
+          38,
+          44
+        ],
+        [
+          193,
+          199
+        ]
+      ],
+      "reason": "Seelah completed the earlier soul rescue; no present participation in Kiana's pivot.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "kiana.trickster.after.temple",
+      "node": "told_ransomed_late",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "21c70186da2256d6dc609b25292b803a222cc703bbaeb3a8bbc4c5d3152237bd",
+      "mentions": [
+        [
+          169,
+          175
+        ]
+      ],
+      "reason": "Seelah completed the earlier soul rescue; no present participation in Kiana's pivot.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket",
+      "node": "coin",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "217cffd53ed65d247d63942e8528c4880917ada674fa89fecf6099870924e19f",
+      "mentions": [
+        [
+          1209,
+          1216
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket",
+      "node": "concealed",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "b1f0368ec01d2e3256f15a86aa13b5a38f74838c23c7e8efac3616dd878495c0",
+      "mentions": [
+        [
+          174,
+          181
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket",
+      "node": "taken",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "958f55a3ea96a6b2a1eea4e30b7d1cf26016fa60210f8b20e8b2b3794c3ec534",
+      "mentions": [
+        [
+          609,
+          616
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket",
+      "node": "paid",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "b1ebe9a1b49420308bdf50e6601e9e01e16f63adf7406aa91fd0f449692232dd",
+      "mentions": [
+        [
+          413,
+          420
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket_effects",
+      "node": "purse",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "9d559fdb25e43b163b1af783e26e9249df9dc39dee5e6ab67eedb6f8b072669c",
+      "mentions": [
+        [
+          609,
+          616
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket_effects",
+      "node": "concealed_rider",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "b1f0368ec01d2e3256f15a86aa13b5a38f74838c23c7e8efac3616dd878495c0",
+      "mentions": [
+        [
+          174,
+          181
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket_effects",
+      "node": "concealed_rider_word",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "b1f0368ec01d2e3256f15a86aa13b5a38f74838c23c7e8efac3616dd878495c0",
+      "mentions": [
+        [
+          174,
+          181
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket_effects",
+      "node": "taken",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "958f55a3ea96a6b2a1eea4e30b7d1cf26016fa60210f8b20e8b2b3794c3ec534",
+      "mentions": [
+        [
+          609,
+          616
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.pickpocket_effects",
+      "node": "paid",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "b1ebe9a1b49420308bdf50e6601e9e01e16f63adf7406aa91fd0f449692232dd",
+      "mentions": [
+        [
+          413,
+          420
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead.seller_word",
+      "node": "taken",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "10eee55f937df5aa75d5a1fb1c9bff5161a0b6f8be8c26cc5fa479dd2807b9be",
+      "mentions": [
+        [
+          46,
+          53
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "seelah.trickster.dead_no_unit.seller_word",
+      "node": "taken",
+      "slot": "text",
+      "woman": "irabeth",
+      "text_sha256": "10eee55f937df5aa75d5a1fb1c9bff5161a0b6f8be8c26cc5fa479dd2807b9be",
+      "mentions": [
+        [
+          46,
+          53
+        ]
+      ],
+      "reason": "Quotation of the retained theft list and its reporting outcome; Irabeth has no on-screen action. Absent-report wording remains Claude pending.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "eritrice.trickster.fought.tabled",
+      "node": "stranger",
+      "slot": "choice[1]",
+      "woman": "nocticula",
+      "text_sha256": "1e9b051f60ae298b1af129bfb9ece8807361a6cf10b335987363b7b076870683",
+      "mentions": [
+        [
+          53,
+          67
+        ]
+      ],
+      "reason": "Recorded Council allegiance and its grievance; Nocticula neither attends nor replies to these letters.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "eritrice.trickster.fought.tabled",
+      "node": "lover",
+      "slot": "choice[1]",
+      "woman": "nocticula",
+      "text_sha256": "1e9b051f60ae298b1af129bfb9ece8807361a6cf10b335987363b7b076870683",
+      "mentions": [
+        [
+          53,
+          67
+        ]
+      ],
+      "reason": "Recorded Council allegiance and its grievance; Nocticula neither attends nor replies to these letters.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "eritrice.trickster.fought.tabled",
+      "node": "ruling_betrayal",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "30c22e15bc3b17def3edf58b41bab7bb2e0e31e10d463bf7087f5e3b65f7413b",
+      "mentions": [
+        [
+          204,
+          218
+        ]
+      ],
+      "reason": "Recorded Council allegiance and its grievance; Nocticula neither attends nor replies to these letters.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.wagers.the_recipe",
+      "node": "right",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "e5bc27743b8bb3acad0ab6d02446dc923d9e462742c580012b5e720ad89f37ae",
+      "mentions": [
+        [
+          147,
+          155
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.wagers.born_lucky",
+      "node": "odds",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "57a88057f26a4e9f9373b4ab0caca696d260a87f29d439ba1ba66a71fb6bcbd3",
+      "mentions": [
+        [
+          129,
+          137
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.wagers.a_lucky_charm",
+      "node": "whose",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "f98cbae1dfbc5b17daacbfc78573550fb4d77ecd225fe0cf0d24f29ee8d995e7",
+      "mentions": [
+        [
+          232,
+          240
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.wagers.knucklebones",
+      "node": "open_cheat",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "c0c10477fdf141ea2a528fe90f6b990222b2fed5c07d0e7df9799cef04d324f4",
+      "mentions": [
+        [
+          347,
+          355
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.wagers.knucklebones",
+      "node": "fair",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "d8e76ab82a20bd4881bc11344f1fa33d75bf7a38447f7e5985409b193a270306",
+      "mentions": [
+        [
+          244,
+          252
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.sessions.what_you_said",
+      "node": "meant",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "baaff4552f6bbb701d3a2d4f5332f03effc7dbc77a19c6f8a23d6b58e96b5627",
+      "mentions": [
+        [
+          288,
+          296
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "chadali.hours.our_new_friend",
+      "node": "start",
+      "slot": "text",
+      "woman": "eritrice",
+      "text_sha256": "e7155f7bd6def9d0bfce3892bb752f6291a515674236c87dd74ddf9d8c9de1d9",
+      "mentions": [
+        [
+          262,
+          270
+        ]
+      ],
+      "reason": "Remembered Council participation or comparison; Eritrice has no present action in this beat.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "kaylessa.trickster.epilogue.no_lamb",
+      "node": "page",
+      "slot": "paragraph[24]",
+      "woman": "camellia",
+      "text_sha256": "cb46583593ed06439333c09624df5c2304b786dcc88670857addc424302bceb7",
+      "mentions": [
+        [
+          83,
+          91
+        ],
+        [
+          137,
+          145
+        ]
+      ],
+      "reason": "Completed diversion and returned clasp; the wardrobe consequence belongs to Kaylessa.",
+      "job": "r5-S2",
+      "remove_reference_guards": {
+        "Requires": [
+          "camellia.present_now"
+        ],
+        "Forbids": [
+          "camellia.closed"
+        ]
+      }
+    },
+    {
+      "scene": "kaylessa.clearing.where_i_was_meant_to_die",
+      "node": "s42_cover",
+      "slot": "text",
+      "woman": "camellia",
+      "text_sha256": "5b39ae8884295e403758c640a1c56e02893ab3c872f6de16cc21a332f301cbd3",
+      "mentions": [
+        [
+          229,
+          237
+        ]
+      ],
+      "reason": "Completed diversion and returned clasp; the wardrobe consequence belongs to Kaylessa.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.trickster.tavern.captains",
+      "node": "start",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "b6f3e7112dd23ff0889dc7dbc09241db77d02fa5aaa34b2304044e5f58c057f6",
+      "mentions": [
+        [
+          293,
+          307
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.trickster.colyphyr.landfall",
+      "node": "limericks",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "813fe1c5c4e6a6e0d1dc84053a7f37b57e69967116aa5ecc638bbf779387e7e6",
+      "mentions": [
+        [
+          143,
+          157
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.correction",
+      "node": "box_first",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "78960f78b314ee3ddd065a200c0e785c69f8ea1a06472c277c5c0ea232804a0a",
+      "mentions": [
+        [
+          470,
+          479
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.correction",
+      "node": "amulets",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "faf1d40f230add7bb3ea9945594726d946934fe2ad266a4bf8eda8d348f9b6c8",
+      "mentions": [
+        [
+          417,
+          426
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.correction.arcade",
+      "node": "box_first",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "78960f78b314ee3ddd065a200c0e785c69f8ea1a06472c277c5c0ea232804a0a",
+      "mentions": [
+        [
+          470,
+          479
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.correction.arcade",
+      "node": "amulets",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "faf1d40f230add7bb3ea9945594726d946934fe2ad266a4bf8eda8d348f9b6c8",
+      "mentions": [
+        [
+          417,
+          426
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.captains",
+      "node": "start",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "d4423c829f284a4934db28b3a24da6f7e0e3eba8c3420196bc5f368706483835",
+      "mentions": [
+        [
+          504,
+          518
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.captains.arcade",
+      "node": "start",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "d4423c829f284a4934db28b3a24da6f7e0e3eba8c3420196bc5f368706483835",
+      "mentions": [
+        [
+          504,
+          518
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.other_voyage",
+      "node": "nocta",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "8b86f92a1332a3893fddb20cd449f86e7a92e64afaefb61821f9422ecf68cf6a",
+      "mentions": [
+        [
+          12,
+          26
+        ],
+        [
+          95,
+          104
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "mielarah.deck.other_voyage.arcade",
+      "node": "nocta",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "8b86f92a1332a3893fddb20cd449f86e7a92e64afaefb61821f9422ecf68cf6a",
+      "mentions": [
+        [
+          12,
+          26
+        ],
+        [
+          95,
+          104
+        ]
+      ],
+      "reason": "Comparison of captains, retained betting list or completed voyage; Nocticula neither attends nor answers.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.trickster.commit.result",
+      "node": "clean",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "69052cfe3145a973e393568335e1e9c15e4fad9cf2b71b336d478bc1bec6591e",
+      "mentions": [
+        [
+          213,
+          228
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.trickster.commit.result_visitor",
+      "node": "clean",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "69052cfe3145a973e393568335e1e9c15e4fad9cf2b71b336d478bc1bec6591e",
+      "mentions": [
+        [
+          213,
+          228
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.trickster.commit.result_arcade",
+      "node": "clean",
+      "slot": "text",
+      "woman": "galfrey",
+      "text_sha256": "69052cfe3145a973e393568335e1e9c15e4fad9cf2b71b336d478bc1bec6591e",
+      "mentions": [
+        [
+          213,
+          228
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.architect",
+      "node": "open",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "caee633b4ff736936df2464e820d92b021ad7ff1816bab5e2bf10b421458d7a4",
+      "mentions": [
+        [
+          110,
+          116
+        ],
+        [
+          355,
+          361
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.architect_visitor",
+      "node": "open",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "caee633b4ff736936df2464e820d92b021ad7ff1816bab5e2bf10b421458d7a4",
+      "mentions": [
+        [
+          110,
+          116
+        ],
+        [
+          355,
+          361
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.architect_arcade",
+      "node": "open",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "caee633b4ff736936df2464e820d92b021ad7ff1816bab5e2bf10b421458d7a4",
+      "mentions": [
+        [
+          110,
+          116
+        ],
+        [
+          355,
+          361
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.abyss.lamp",
+      "node": "lady",
+      "slot": "text",
+      "woman": "nocticula",
+      "text_sha256": "ac879344af6f8ac751e1b59465cabad4e6808966056568e5fddff81afc6b59da",
+      "mentions": [
+        [
+          157,
+          171
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.edge",
+      "node": "sarkoris",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "aee4c6a44381d1b0a5dcef5c7a8076a3f055a99a2e6b6f94283fa677bcb4fc9c",
+      "mentions": [
+        [
+          244,
+          250
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.edge_visitor",
+      "node": "sarkoris",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "aee4c6a44381d1b0a5dcef5c7a8076a3f055a99a2e6b6f94283fa677bcb4fc9c",
+      "mentions": [
+        [
+          244,
+          250
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "nenio.folio.edge_arcade",
+      "node": "sarkoris",
+      "slot": "text",
+      "woman": "areelu",
+      "text_sha256": "aee4c6a44381d1b0a5dcef5c7a8076a3f055a99a2e6b6f94283fa677bcb4fc9c",
+      "mentions": [
+        [
+          244,
+          250
+        ]
+      ],
+      "reason": "Subject of dictation, forgotten name, measured statue or established Worldwound history; no current participant.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.early.kitrane",
+      "node": "guessed",
+      "slot": "text",
+      "woman": "anevia",
+      "text_sha256": "b33aa8a6a11383e1e1d9f4678d386e123b0c43dcafd5ee24a0fe3bdd9129a682",
+      "mentions": [
+        [
+          1,
+          7
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.iz.offer",
+      "node": "seelah",
+      "slot": "text",
+      "woman": "seelah",
+      "text_sha256": "b128f4874eead4e9aec9d4d8a7072a9759686fb8b9524d191ca57f9f6126739c",
+      "mentions": [
+        [
+          3,
+          9
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane",
+      "node": "e_legend",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "5c52873328c6a0579ace52d56bdda1f4c22d396ab4b0d15c78e52ac8e8c15445",
+      "mentions": [
+        [
+          44,
+          53
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane_scarred",
+      "node": "e_legend",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "5c52873328c6a0579ace52d56bdda1f4c22d396ab4b0d15c78e52ac8e8c15445",
+      "mentions": [
+        [
+          44,
+          53
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane_stall",
+      "node": "e_legend",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "5c52873328c6a0579ace52d56bdda1f4c22d396ab4b0d15c78e52ac8e8c15445",
+      "mentions": [
+        [
+          44,
+          53
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane_scarred_stall",
+      "node": "e_legend",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "5c52873328c6a0579ace52d56bdda1f4c22d396ab4b0d15c78e52ac8e8c15445",
+      "mentions": [
+        [
+          44,
+          53
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.elixir",
+      "node": "frighten",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "201f3f68f34d5ca13b39011bb93276ea1c2b30221329bdcbfb2d7beaebae0d80",
+      "mentions": [
+        [
+          121,
+          128
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.elixir_stall",
+      "node": "frighten",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "201f3f68f34d5ca13b39011bb93276ea1c2b30221329bdcbfb2d7beaebae0d80",
+      "mentions": [
+        [
+          121,
+          128
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hulrun",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "cae88d69481181f46ae152884a673502891061b5d2ad36b62e810f1d0be4742a",
+      "mentions": [
+        [
+          293,
+          302
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hulrun",
+      "node": "end",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "3909b21b4e1adf11a894734b28ae8847dc8a39fb8b26e688a88ab60074421710",
+      "mentions": [
+        [
+          145,
+          154
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hulrun_stall",
+      "node": "start",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "cae88d69481181f46ae152884a673502891061b5d2ad36b62e810f1d0be4742a",
+      "mentions": [
+        [
+          293,
+          302
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.hulrun_stall",
+      "node": "end",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "3909b21b4e1adf11a894734b28ae8847dc8a39fb8b26e688a88ab60074421710",
+      "mentions": [
+        [
+          145,
+          154
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.commit.oath",
+      "node": "oath",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "e0d2b21b90e7f1d2fd1a0dcb7e4abe83c59fc1fb4bb52c9cfa6ff1df79afadf7",
+      "mentions": [
+        [
+          168,
+          177
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.commit.oath_stall",
+      "node": "oath",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "e0d2b21b90e7f1d2fd1a0dcb7e4abe83c59fc1fb4bb52c9cfa6ff1df79afadf7",
+      "mentions": [
+        [
+          168,
+          177
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.likeness",
+      "node": "helps",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "575f722787b71b520e5150e443ccc074a1bb613e61707ebfc6804918cd9d5f53",
+      "mentions": [
+        [
+          126,
+          135
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.likeness_stall",
+      "node": "helps",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "575f722787b71b520e5150e443ccc074a1bb613e61707ebfc6804918cd9d5f53",
+      "mentions": [
+        [
+          126,
+          135
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
+    },
+    {
+      "scene": "galfrey.trickster.alive.oath",
+      "node": "tent",
+      "slot": "text",
+      "woman": "iomedae",
+      "text_sha256": "01e7854fba7d9b2fefcffa79ef0c919b0a194954483fa1e1113fa1f6ac4b19d3",
+      "mentions": [
+        [
+          368,
+          377
+        ]
+      ],
+      "reason": "Recorded recognition, deathbed witness, eulogy, prayer or institutional oath; the named woman has no current action.",
+      "job": "r5-S2"
     }
   ],
   "class_sweep": {
@@ -1057,5 +2076,175 @@
     "herrax": 33,
     "galfrey": 11,
     "yaniel": 41
-  }
+  },
+  "participant_branches": [
+    {
+      "scene": "galfrey.trickster.iz.offer",
+      "woman": "irabeth",
+      "relationship": "irabeth",
+      "incoming": [
+        [
+          "command",
+          0
+        ]
+      ],
+      "fallbacks": [
+        {
+          "node": "command",
+          "copy_node": "command",
+          "copy_choice": 1,
+          "remove_requires": [
+            "irabeth_dead"
+          ],
+          "requires": [],
+          "forbids": [
+            "irabeth_dead",
+            "galfrey.kc_after_fane"
+          ]
+        }
+      ],
+      "findings": [
+        "galfrey:D03"
+      ],
+      "why": "The Crows already carry the Queen without Irabeth; her live bedside branch must not block accepting the rescue."
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.irabeth",
+      "woman": "irabeth",
+      "relationship": "irabeth",
+      "incoming": [
+        [
+          "drezen",
+          0
+        ],
+        [
+          "drezen",
+          1
+        ],
+        [
+          "died_back",
+          0
+        ]
+      ],
+      "fallbacks": [],
+      "findings": [
+        "galfrey:D16"
+      ],
+      "why": "Only the disclosure at the barracks stages Irabeth. Retain the existing present_now alternatives and the mourning answers."
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.iz",
+      "woman": "terendelev",
+      "relationship": "terendelev",
+      "incoming": [
+        [
+          "dragon",
+          0
+        ],
+        [
+          "priestess",
+          0
+        ]
+      ],
+      "fallbacks": [
+        {
+          "node": "dragon",
+          "copy_node": "priestess",
+          "copy_choice": 1,
+          "remove_forbids": [
+            "terendelev.trickster.returned"
+          ],
+          "requires": [
+            "terendelev.trickster.returned"
+          ],
+          "forbids": []
+        },
+        {
+          "node": "priestess",
+          "copy_node": "priestess",
+          "copy_choice": 1,
+          "remove_forbids": [
+            "terendelev.trickster.returned"
+          ],
+          "requires": [
+            "terendelev.trickster.returned"
+          ],
+          "forbids": []
+        }
+      ],
+      "findings": [
+        "galfrey:D18"
+      ],
+      "why": "Only the returned-dragon discussion claims a current living woman. A later loss keeps the existing neutral scars exit; no historical resurrection is erased."
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.irabeth_stall",
+      "woman": "irabeth",
+      "relationship": "irabeth",
+      "incoming": [
+        [
+          "drezen",
+          0
+        ],
+        [
+          "drezen",
+          1
+        ],
+        [
+          "died_back",
+          0
+        ]
+      ],
+      "fallbacks": [],
+      "findings": [
+        "galfrey:D17"
+      ],
+      "why": "Only the disclosure at the barracks stages Irabeth. Retain the existing present_now alternatives and the mourning answers."
+    },
+    {
+      "scene": "galfrey.trickster.kitrane.iz_stall",
+      "woman": "terendelev",
+      "relationship": "terendelev",
+      "incoming": [
+        [
+          "dragon",
+          0
+        ],
+        [
+          "priestess",
+          0
+        ]
+      ],
+      "fallbacks": [
+        {
+          "node": "dragon",
+          "copy_node": "priestess",
+          "copy_choice": 1,
+          "remove_forbids": [
+            "terendelev.trickster.returned"
+          ],
+          "requires": [
+            "terendelev.trickster.returned"
+          ],
+          "forbids": []
+        },
+        {
+          "node": "priestess",
+          "copy_node": "priestess",
+          "copy_choice": 1,
+          "remove_forbids": [
+            "terendelev.trickster.returned"
+          ],
+          "requires": [
+            "terendelev.trickster.returned"
+          ],
+          "forbids": []
+        }
+      ],
+      "findings": [
+        "galfrey:D19"
+      ],
+      "why": "Only the returned-dragon discussion claims a current living woman. A later loss keeps the existing neutral scars exit; no historical resurrection is erased."
+    }
+  ]
 }

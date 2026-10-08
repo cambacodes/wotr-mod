@@ -163,5 +163,100 @@ class SolverTests(unittest.TestCase):
         self.assertEqual(proof.cache, {})
 
 
+
+
+class S2ClosureProofTests(unittest.TestCase):
+    def test_audited_reference_edges_do_not_depend_on_foreign_closed_flags(self):
+        from tests.story_fixture import fresh_story
+        from tools.crossroute_checks.common import fields
+        story = fresh_story()
+        model = verify.Model(story)
+        cases = [("eritrice.trickster.fought.tabled", None, "noct.closed"),
+                 ("nenio.folio.architect", None, "areelu.closed")]
+        for suffix in ("", ".arcade"):
+            for beat in ("correction", "captains", "other_voyage"):
+                cases.append(("mielarah.deck." + beat + suffix, None, "noct.closed"))
+        for suffix in ("", "_scarred", "_stall", "_scarred_stall"):
+            cases.append(("galfrey.trickster.return.kitrane" + suffix, "name", "iomedae.closed"))
+        for suffix in ("", "_visitor", "_arcade"):
+            cases.append(("nenio.folio.edge" + suffix, "*", "areelu.closed"))
+        for sid, nid, closed in cases:
+            scene = model.by_id[sid]
+            specs = ([scene] if nid is None else
+                     [c for n in scene["Nodes"] for c in n["Choices"]] if nid == "*" else
+                     next(n for n in scene["Nodes"] if n["Id"] == nid)["Choices"])
+            for index, spec in enumerate(specs):
+                with self.subTest(scene=sid, node=nid, index=index, closure=closed):
+                    self.assertNotIn(closed, dependencies(model, fields(spec)))
+
+    def test_four_greetings_are_selectable_with_iomedae_romance_closed(self):
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
+        model = verify.Model(story)
+        for suffix in ("", "_scarred", "_stall", "_scarred_stall"):
+            scene = model.by_id["galfrey.trickster.return.kitrane" + suffix]
+            nodes = {n["Id"]: n for n in scene["Nodes"]}
+            state = verify.SimState(5, 1000)
+            state.flags.update({"trickster", "chapter_later", "iomedae.closed",
+                                "galfrey.trickster.eulogy.legend"})
+            verify.sim_complete(model, state)
+            self.assertIn("iomedae.closed", state.flags)
+            self.assertIn("iomedae.present_now", state.flags)
+            for index, choice in enumerate(nodes["name"]["Choices"][:3]):
+                with self.subTest(scene=scene["Id"], node="name", index=index):
+                    self.assertTrue(verify.sim_choice_available(choice, state))
+
+
+    def test_complete_both_mielarah_chains_after_nocticula_romance_closes(self):
+        from tests.story_fixture import fresh_story
+        model = verify.Model(fresh_story())
+        romance_flags = {name: {r[field] for r in model.rels.values()}
+                         for name, field in (("committed", "CommittedFlag"), ("closed", "ClosedFlag"))}
+        for suffix in ("", ".arcade"):
+            state = verify.SimState(5, 1000)
+            state.area = "2570015799edf594daf2f076f2f975d8"
+            state.available_contacts = {"9d9c523bc2b17434bb66df212b127187"}
+            # Begin at her earned Chapter-5 flying lesson, before correction.
+            state.flags.update({"trickster", "chapter_later", "noct.closed",
+                                "mielarah.trickster.contact", "mielarah.deck.flown",
+                                "mielarah.deck.docked", "mielarah.deck.reckoned",
+                                "mielarah.trickster.landfall", "captain.kerz"})
+            if suffix:
+                state.flags.add("mielarah.presence.failed")
+            verify.sim_complete(model, state)
+            state.times = {flag: 0 for flag in state.flags}
+            for beat in ("correction", "market", "wheel", "quarterdeck", "morning", "captains", "last_night"):
+                scene = model.by_id["mielarah.deck." + beat + suffix]
+                state.hour += 100
+                verify.sim_complete(model, state)
+                with self.subTest(scene=scene["Id"]):
+                    self.assertTrue(verify.sim_available(model, scene, state))
+                    self.assertTrue(verify.sim_play(model, scene, state, romance_flags))
+            self.assertIn("mielarah.committed", state.flags)
+            self.assertIn("mielarah.deck.captains", state.flags)
+            self.assertIn("mielarah.deck.last_night", state.flags)
+            self.assertIn("noct.closed", state.flags)
+            self.assertNotIn("mielarah.closed", state.flags)
+
+    def test_nenio_reads_the_badges_after_areelu_romance_closes(self):
+        from tests.story_fixture import fresh_story
+        model = verify.Model(fresh_story())
+        for suffix in ("", "_visitor", "_arcade"):
+            state = verify.SimState(5, 1000)
+            state.flags.update({"trickster", "chapter_later", "areelu.closed", "nenio.trickster.scribe",
+                                "nenio.folio.architect.the_dead"})
+            verify.sim_complete(model, state)
+            scene = model.by_id["nenio.folio.edge" + suffix]
+            nodes = {n["Id"]: n for n in scene["Nodes"]}
+            for nid, index in (("open", 0), ("walk", 0), ("shields", 0), ("read", 0), ("sarkoris", 0), ("home", 0)):
+                choice = nodes[nid]["Choices"][index]
+                with self.subTest(scene=scene["Id"], node=nid, index=index):
+                    self.assertTrue(verify.sim_choice_available(choice, state))
+                state.flags.update(choice["Set"])
+                verify.sim_complete(model, state)
+            self.assertIn("nenio.folio.edge.shields", state.flags)
+            self.assertIn("areelu.closed", state.flags)
+
+
 if __name__ == '__main__':
     unittest.main()

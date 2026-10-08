@@ -2280,7 +2280,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 141. **Nenio: What survived the night** — Drezen. <!-- rrt-step {"scene":"nenio.trickster.commit.result","chapter":3,"day":13,"completed":true,"choices":[["open",1],["clean",0],["you",0],["decides",3],["receipt_scribe",0],["variable",0],["tonight",0]]} -->
    Scene `nenio.trickster.commit.result`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
    Open: "So. What's left of the world?"
-   Need all: `trickster.ever`, `nenio.trickster.test_running`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.trickster.commit.result`, `nenio.trickster.commit.result_visitor`, `nenio.trickster.commit.result_arcade`, `nenio.committed`, `nenio.trickster.declined`, `nenio.trickster.refused_her`, `nenio.trickster.visitor`, `nenio.folio.kenabres_judgment.pending`, `crossroute.galfrey.unavailable`.
+   Need all: `trickster.ever`, `nenio.trickster.test_running`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.trickster.commit.result`, `nenio.trickster.commit.result_visitor`, `nenio.trickster.commit.result_arcade`, `nenio.committed`, `nenio.trickster.declined`, `nenio.trickster.refused_her`, `nenio.trickster.visitor`, `nenio.folio.kenabres_judgment.pending`.
    Native answer-list host: `1ab909cc3a6194840b1475b99547c263`.
    Actor must be physically available: `1b893f7cf2b150e4f8bc2b3c389ba71d`.
    - `nenio.trickster.commit.result/open/1` — Continue; Blocked by: `nenio.trickster.tampered`
@@ -3236,7 +3236,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 224. **Nenio: Names worth remembering** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.architect","chapter":3,"day":17,"completed":true,"choices":[["open",0],["sacrifices",1],["agreed",0]]} -->
    Scene `nenio.folio.architect`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Which letter today?"
-   Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.architect`, `nenio.folio.architect_visitor`, `nenio.folio.architect_arcade`, `nenio.trickster.visitor`, `crossroute.areelu.unavailable`.
+   Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.architect`, `nenio.folio.architect_visitor`, `nenio.folio.architect_arcade`, `nenio.trickster.visitor`.
    Native answer-list host: `1ab909cc3a6194840b1475b99547c263`.
    Actor must be physically available: `1b893f7cf2b150e4f8bc2b3c389ba71d`.
    - `nenio.folio.architect/open/0` — Continue
@@ -4186,7 +4186,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 307. **Kaylessa: Where I was meant to die** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kaylessa.clearing.where_i_was_meant_to_die","chapter":3,"day":22,"completed":true,"choices":[["open",1],["bare",0],["why",0],["desire",0],["like_met",2],["kiss",0],["knife_held",0],["down",0],["cut",0],["explicit.1",0]]} -->
    Scene `kaylessa.clearing.where_i_was_meant_to_die`; chapters 3–5 (only 3, 5); wait at least 12h after the latest prerequisite; complete.
-   Need all: `trickster.ever`, `kaylessa.committed`, `kaylessa.present_now`; Blocked by: `kaylessa.closed`, `kaylessa.trickster.left_free`, `kaylessa.clearing.where_i_was_meant_to_die`, `crossroute.camellia.unavailable`; Need one of: `kaylessa.trickster.knife_held`, `kaylessa.trickster.knife_handed_back`.
+   Need all: `trickster.ever`, `kaylessa.committed`, `kaylessa.present_now`; Blocked by: `kaylessa.closed`, `kaylessa.trickster.left_free`, `kaylessa.clearing.where_i_was_meant_to_die`; Need one of: `kaylessa.trickster.knife_held`, `kaylessa.trickster.knife_handed_back`.
    - `kaylessa.clearing.where_i_was_meant_to_die/open/1` — Continue; Need all: `kaylessa.begged_death`; Blocked by: `kaylessa.tomb`, `household.pair.kaylessa_camellia.cost.kaylessa_cover_changed`
    - `kaylessa.clearing.where_i_was_meant_to_die/bare/0` — Continue
    - `kaylessa.clearing.where_i_was_meant_to_die/why/0` — Continue
@@ -6079,7 +6079,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 472. **Nenio: Hold the lamp still** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.abyss.lamp","chapter":4,"day":90,"completed":true,"choices":[["open",0],["lady",0],["entry",1],["space",0]]} -->
    Scene `nenio.folio.abyss.lamp`; chapters 4–4 (only 4); wait at least 12h after the latest prerequisite; complete.
    Open: "You want me to hold the lamp?"
-   Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.abyss.lamp`, `nenio.trickster.visitor`, `crossroute.nocticula.unavailable`.
+   Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.abyss.lamp`, `nenio.trickster.visitor`.
    Native answer-list host: `1ab909cc3a6194840b1475b99547c263`.
    Actor must be physically available: `1b893f7cf2b150e4f8bc2b3c389ba71d`.
    - `nenio.folio.abyss.lamp/open/0` — Continue
@@ -8983,7 +8983,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 747. **Mielarah: Disciplinary thought-correction** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.correction","chapter":5,"day":107,"completed":true,"choices":[["start",0],["cabin",1],["box_first",0],["freed",0],["after",0]]} -->
    Scene `mielarah.deck.correction`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I heard shouting on your deck."
-   Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.flown`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.correction.arcade`, `mielarah.deck.corrected`, `crossroute.nocticula.unavailable`.
+   Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.flown`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.correction.arcade`, `mielarah.deck.corrected`.
    Actor must be physically available: `9d9c523bc2b17434bb66df212b127187`.
    - `mielarah.deck.correction/start/0` — [Follow her to her cabin.]
    - `mielarah.deck.correction/cabin/1` — Continue; Blocked by: `mielarah.amulets_used`
@@ -9857,7 +9857,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 828. **Galfrey: The Crows' oath, by lamplight** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.oath","chapter":5,"day":110,"completed":true,"choices":[["start",0],["tent",0],["refuse",0],["threshold",0],["galfrey.trickster.alive.oath.explicit.1",0],["morning",0]]} -->
    Scene `galfrey.trickster.alive.oath`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "The Crows' sergeant says Kitrane has something to say to me."
-   Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.plan_kept`, `galfrey.trickster.alive.trial_kept`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.committed`, `galfrey.trickster.alive.oath_reserved`, `galfrey.trickster.alive.reserved_ally`, `galfrey.trickster.alive.reserved_refused`, `trickster.failed`, `crossroute.iomedae.unavailable`.
+   Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.plan_kept`, `galfrey.trickster.alive.trial_kept`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.committed`, `galfrey.trickster.alive.oath_reserved`, `galfrey.trickster.alive.reserved_ally`, `galfrey.trickster.alive.reserved_refused`, `trickster.failed`.
    Native answer-list host: `fed166af2f1d509478d18ea63a40339f`.
    - `galfrey.trickster.alive.oath/start/0` — [Go to the Crows' tent after the ninth bell.]
    - `galfrey.trickster.alive.oath/tent/0` — [Refuse her oath; offer your hand] "No. I don't want your sword. Get up."
@@ -10947,7 +10947,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 927. **Mielarah: The other captains** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.captains","chapter":5,"day":116,"completed":true,"choices":[["start",0],["kerz",1],["parcel",0],["sash",0],["rates",0]]} -->
    Scene `mielarah.deck.captains`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You've had post from the Midnight Isles."
-   Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.morning`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.captains.arcade`, `mielarah.deck.captains`, `crossroute.nocticula.unavailable`.
+   Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.morning`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.captains.arcade`, `mielarah.deck.captains`.
    Actor must be physically available: `9d9c523bc2b17434bb66df212b127187`.
    - `mielarah.deck.captains/start/0` — Continue
    - `mielarah.deck.captains/kerz/1` — "What's in the parcel?"
@@ -12650,19 +12650,19 @@ Commitment: `seelah.committed`; closure: `seelah.closed`.
 Unavailable states: `seelah_dead`, `seelah_gone`, `seelah.plot_departed`, `seelah.epoch_unavailable`; failure states: none.
 - `seelah_dead` is overridden only by earned `seelah.trickster.returned`.
 - `seelah_gone` is overridden only by earned `seelah.trickster.returned`.
-- Recovery for **dead**: `seelah.trickster.dead.pickpocket` (The dead thief's purse); rest delivery / Satchel: visit (Drezen); chapters 3–5; 24h delay. Need all: `trickster`, `trickster.ever`, `seelah_dead`, `seelah.dead.latched`, `seelah.finally_dead`; Blocked by: `seelah.closed`, `inhuman`, `seelah.trickster.returned`, `seelah_gone`, `trickster.failed`, `crossroute.irabeth.unavailable`. Return witness: `seelah.trickster.returned`.
+- Recovery for **dead**: `seelah.trickster.dead.pickpocket` (The dead thief's purse); rest delivery / Satchel: visit (Drezen); chapters 3–5; 24h delay. Need all: `trickster`, `trickster.ever`, `seelah_dead`, `seelah.dead.latched`, `seelah.finally_dead`; Blocked by: `seelah.closed`, `inhuman`, `seelah.trickster.returned`, `seelah_gone`, `trickster.failed`. Return witness: `seelah.trickster.returned`.
   - `seelah.trickster.dead.pickpocket/bier/0` — Continue; Need all: `seelah.trickster.lift_lesson`; Blocked by: `seelah.trickster.seller_resolved`
   - `seelah.trickster.dead.pickpocket/bier/1` — Continue; Blocked by: `seelah.trickster.lift_lesson`, `seelah.trickster.seller_resolved`
   - `seelah.trickster.dead.pickpocket/bier/2` — [Finish paying for the rite.]; Need all: `seelah.trickster.seller_resolved`
   - `seelah.trickster.dead.pickpocket/strings/0` — Continue
   - `seelah.trickster.dead.pickpocket/fumble/0` — Continue
-  - `seelah.trickster.dead.pickpocket/coin/0` — [Pick the dead thief's pocket] "Old habits, Seelah. Whatever's in the purse is mine. Including that."; Blocked by: `crossroute.irabeth.unavailable`, `iomedae.closed`; Mythic: PlayerIsTrickster
+  - `seelah.trickster.dead.pickpocket/coin/0` — [Pick the dead thief's pocket] "Old habits, Seelah. Whatever's in the purse is mine. Including that."; Blocked by: `iomedae.closed`; Mythic: PlayerIsTrickster
   - `seelah.trickster.dead.pickpocket/coin/1` — [Leave the purse tied] "Not like this."; ends without completing scene
   - `seelah.trickster.dead.pickpocket/stall/0` — [Lift his pouch the way she taught you] "Excuse me. So sorry."; PASS SkillThievery DC 15 (Commander only); success → `lifted`; failure → `grabbed`; Need all: `seelah.trickster.lift_lesson`
   - `seelah.trickster.dead.pickpocket/stall/1` — [Lift his pouch off his belt] "Excuse me."; PASS SkillThievery DC 25 (Commander only); success → `lifted`; failure → `grabbed`; Blocked by: `seelah.trickster.lift_lesson`
   - `seelah.trickster.dead.pickpocket/lifted/0` — Continue; records `seelah.trickster.seller_resolved`
-  - `seelah.trickster.dead.pickpocket/grabbed/0` — [Give him your word] "Your name stays off every report. Let go."; records `seelah.trickster.cost.broker_knows`; Blocked by: `crossroute.irabeth.unavailable`
-  - `seelah.trickster.dead.pickpocket/grabbed/1` — [Have him taken, and keep the stones] "Watch! This man robs the Kenabres dead. The stones stay with me, by my order."; crusade Favors -50; records `seelah.trickster.cost.seller_taken`; Blocked by: `crossroute.irabeth.unavailable`
+  - `seelah.trickster.dead.pickpocket/grabbed/0` — [Give him your word] "Your name stays off every report. Let go."; records `seelah.trickster.cost.broker_knows`
+  - `seelah.trickster.dead.pickpocket/grabbed/1` — [Have him taken, and keep the stones] "Watch! This man robs the Kenabres dead. The stones stay with me, by my order."; crusade Favors -50; records `seelah.trickster.cost.seller_taken`
   - `seelah.trickster.dead.pickpocket/grabbed/2` — [Buy the stones and his silence] "How much for the lot, and for forgetting my face?"; crusade Finances -500; records `seelah.trickster.cost.seller_paid`
   - `seelah.trickster.dead.pickpocket/concealed/0` — Continue; records `seelah.trickster.seller_resolved`
   - `seelah.trickster.dead.pickpocket/taken/0` — Continue; records `seelah.trickster.seller_resolved`
@@ -12670,19 +12670,19 @@ Unavailable states: `seelah_dead`, `seelah_gone`, `seelah.plot_departed`, `seela
   - `seelah.trickster.dead.pickpocket/pocketed/0` — [Put a diamond from your own coat in with them] "They were taken off the Kenabres dead. Let them buy one back. That's both stones. Begin."; consumes 1 item: `seelah.diamond_held`; records `seelah.trickster.returned`, `seelah.revived`, `seelah.trickster.cost.holds_her_death`, `seelah.started`; Need all: `seelah.diamond_held`
   - `seelah.trickster.dead.pickpocket/pocketed/1` — [Give him your word for the other stone] "They were taken off the Kenabres dead. Let them buy one back. Spend the chapel's stone; the crusade will make it good. Begin."; crusade Favors -100; records `seelah.trickster.returned`, `seelah.revived`, `seelah.trickster.cost.holds_her_death`, `seelah.trickster.cost.chaplains_word`, `seelah.started`; Blocked by: `seelah.diamond_held`
   - `seelah.trickster.dead.pickpocket/payment_resume/0` — [Bring the remaining payment.]
-- Recovery for **dead_no_unit**: `seelah.trickster.dead.pickpocket_effects` (Her effects, without her); rest delivery / Satchel: event (Drezen); chapters 3–5; 24h delay. Need all: `trickster`, `trickster.ever`, `seelah_dead`, `seelah.dead.latched`; Blocked by: `seelah.closed`, `inhuman`, `seelah.finally_dead`, `seelah.trickster.returned`, `seelah.trickster.stones_sent`, `trickster.failed`, `crossroute.irabeth.unavailable`. Return witness: `seelah.trickster.returned`.
+- Recovery for **dead_no_unit**: `seelah.trickster.dead.pickpocket_effects` (Her effects, without her); rest delivery / Satchel: event (Drezen); chapters 3–5; 24h delay. Need all: `trickster`, `trickster.ever`, `seelah_dead`, `seelah.dead.latched`; Blocked by: `seelah.closed`, `inhuman`, `seelah.finally_dead`, `seelah.trickster.returned`, `seelah.trickster.stones_sent`, `trickster.failed`. Return witness: `seelah.trickster.returned`.
   - `seelah.trickster.dead.pickpocket_effects/start/0` — Continue; Blocked by: `seelah.trickster.seller_resolved`
   - `seelah.trickster.dead.pickpocket_effects/start/1` — [Finish paying for the rite.]; Need all: `seelah.trickster.seller_resolved`
-  - `seelah.trickster.dead.pickpocket_effects/purse/0` — [Pick the dead thief's pocket] "Old habits, Seelah. Whatever's in the purse is mine. Including that."; Need all: `seelah.diamond_held`; Blocked by: `crossroute.irabeth.unavailable`, `iomedae.closed`; Mythic: PlayerIsTrickster
-  - `seelah.trickster.dead.pickpocket_effects/purse/1` — [Pick the dead thief's pocket] "Old habits, Seelah. Whatever's in the purse is mine. Including that."; Blocked by: `seelah.diamond_held`, `crossroute.irabeth.unavailable`, `iomedae.closed`; Mythic: PlayerIsTrickster
+  - `seelah.trickster.dead.pickpocket_effects/purse/0` — [Pick the dead thief's pocket] "Old habits, Seelah. Whatever's in the purse is mine. Including that."; Need all: `seelah.diamond_held`; Blocked by: `iomedae.closed`; Mythic: PlayerIsTrickster
+  - `seelah.trickster.dead.pickpocket_effects/purse/1` — [Pick the dead thief's pocket] "Old habits, Seelah. Whatever's in the purse is mine. Including that."; Blocked by: `seelah.diamond_held`, `iomedae.closed`; Mythic: PlayerIsTrickster
   - `seelah.trickster.dead.pickpocket_effects/purse/2` — [Leave the purse tied] "Not like this."; ends without completing scene
   - `seelah.trickster.dead.pickpocket_effects/stall/0` — [Lift his pouch the way she taught you] "Excuse me. So sorry."; PASS SkillThievery DC 15 (Commander only); success → `lifted`; failure → `grabbed`; Need all: `seelah.trickster.lift_lesson`
   - `seelah.trickster.dead.pickpocket_effects/stall/1` — [Lift his pouch off his belt] "Excuse me."; PASS SkillThievery DC 25 (Commander only); success → `lifted`; failure → `grabbed`; Blocked by: `seelah.trickster.lift_lesson`
   - `seelah.trickster.dead.pickpocket_effects/lifted/0` — Continue; records `seelah.trickster.seller_resolved`; Need all: `seelah.diamond_held`
   - `seelah.trickster.dead.pickpocket_effects/lifted/1` — Continue; records `seelah.trickster.seller_resolved`; Blocked by: `seelah.diamond_held`
-  - `seelah.trickster.dead.pickpocket_effects/grabbed/0` — [Give him your word] "Your name stays off every report. Let go."; records `seelah.trickster.cost.broker_knows`; Need all: `seelah.diamond_held`; Blocked by: `crossroute.irabeth.unavailable`
-  - `seelah.trickster.dead.pickpocket_effects/grabbed/1` — [Give him your word] "Your name stays off every report. Let go."; records `seelah.trickster.cost.broker_knows`; Blocked by: `seelah.diamond_held`, `crossroute.irabeth.unavailable`
-  - `seelah.trickster.dead.pickpocket_effects/grabbed/2` — [Have him taken, and keep the stones] "Watch! This man robs the Kenabres dead. The stones stay with me, by my order."; crusade Favors -50; records `seelah.trickster.cost.seller_taken`; Blocked by: `crossroute.irabeth.unavailable`
+  - `seelah.trickster.dead.pickpocket_effects/grabbed/0` — [Give him your word] "Your name stays off every report. Let go."; records `seelah.trickster.cost.broker_knows`; Need all: `seelah.diamond_held`
+  - `seelah.trickster.dead.pickpocket_effects/grabbed/1` — [Give him your word] "Your name stays off every report. Let go."; records `seelah.trickster.cost.broker_knows`; Blocked by: `seelah.diamond_held`
+  - `seelah.trickster.dead.pickpocket_effects/grabbed/2` — [Have him taken, and keep the stones] "Watch! This man robs the Kenabres dead. The stones stay with me, by my order."; crusade Favors -50; records `seelah.trickster.cost.seller_taken`
   - `seelah.trickster.dead.pickpocket_effects/grabbed/3` — [Buy the stones and his silence] "How much for the lot, and for forgetting my face?"; crusade Finances -500; records `seelah.trickster.cost.seller_paid`
   - `seelah.trickster.dead.pickpocket_effects/concealed_rider/0` — Continue; records `seelah.trickster.seller_resolved`
   - `seelah.trickster.dead.pickpocket_effects/concealed_rider_word/0` — Continue; records `seelah.trickster.seller_resolved`
@@ -14566,7 +14566,7 @@ On the Trickster path, move a motion from the floor in a private audience with E
 Commitment: `eritrice.committed`; closure: `eritrice.closed`.
 Unavailable states: `eritrice.lost_at_council`, `eritrice.epoch_unavailable`; failure states: none.
 - `eritrice.lost_at_council` is overridden only by earned `eritrice.trickster.returned`.
-- Recovery for **eritrice.lost_at_council**: `eritrice.trickster.fought.tabled` (Point of order); rest delivery / Satchel: letter (owner contact / rest); chapters 5–5; 24h delay. Need all: `trickster`, `eritrice.lost_at_council.latched`; Blocked by: `eritrice.trickster.returned`, `trickster.failed`, `crossroute.nocticula.unavailable`. Return witness: `eritrice.trickster.returned`.
+- Recovery for **eritrice.lost_at_council**: `eritrice.trickster.fought.tabled` (Point of order); rest delivery / Satchel: letter (owner contact / rest); chapters 5–5; 24h delay. Need all: `trickster`, `eritrice.lost_at_council.latched`; Blocked by: `eritrice.trickster.returned`, `trickster.failed`. Return witness: `eritrice.trickster.returned`.
   - `eritrice.trickster.fought.tabled/start/0` — Continue; Need all: `eritrice.committed`
   - `eritrice.trickster.fought.tabled/start/1` — Continue; Blocked by: `eritrice.committed`
   - `eritrice.trickster.fought.tabled/stranger/0` — [Raise a point of order] "Point of order: 'contribute your essence or I'll take it by force' was the chair's own motion. I seconded it. I move we table the grudge."; Need all: `eritrice.threatened_by_force`; Mythic: PlayerIsTrickster
@@ -15942,9 +15942,9 @@ Unavailable states: `galfrey.dead`, `galfrey.killed_by_commander`, `galfrey.epoc
 - Recovery for **dead**: `galfrey.trickster.return.kitrane` (A knight of the Green Crows); Drezen; hub `galfrey.presence.sergeant`; chapters 5–5; 24h delay. Need all: `trickster.ever`, `galfrey.trickster.kitrane_taken`, `galfrey.dead`, `coronation.seen`, `galfrey.trickster.cost.eulogy`, `trickster.now`; Blocked by: `galfrey.trickster.returned`, `galfrey.closed`, `galfrey.trickster.cost.rent_scar`, `galfrey.trickster.return.kitrane_scarred`, `galfrey.trickster.return.kitrane_stall`, `galfrey.presence.sergeant.failed`. Return witness: `galfrey.trickster.returned`.
   - `galfrey.trickster.return.kitrane/start/0` — Continue
   - `galfrey.trickster.return.kitrane/start/1` — Continue; Need all: `galfrey.trickster.return.kitrane`
-  - `galfrey.trickster.return.kitrane/name/0` — "Your Majesty."; Blocked by: `iomedae.closed`
-  - `galfrey.trickster.return.kitrane/name/1` — "Kitrane. You're late."; Blocked by: `iomedae.closed`
-  - `galfrey.trickster.return.kitrane/name/2` — [Say nothing. Look at her.]; Blocked by: `iomedae.closed`
+  - `galfrey.trickster.return.kitrane/name/0` — "Your Majesty."
+  - `galfrey.trickster.return.kitrane/name/1` — "Kitrane. You're late."
+  - `galfrey.trickster.return.kitrane/name/2` — [Say nothing. Look at her.]
   - `galfrey.trickster.return.kitrane/majesty/0` — Continue
   - `galfrey.trickster.return.kitrane/late/0` — Continue
   - `galfrey.trickster.return.kitrane/look/0` — Continue

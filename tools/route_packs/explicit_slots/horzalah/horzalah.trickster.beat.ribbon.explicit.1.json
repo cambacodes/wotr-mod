@@ -1,0 +1,38 @@
+{
+  "slot_id": "horzalah.trickster.beat.ribbon.explicit.1",
+  "host_scene": "horzalah.trickster.beat.ribbon",
+  "host_node": "tied",
+  "participants": [
+    "Horzalah",
+    "Commander"
+  ],
+  "speakers": {
+    "H": "Horzalah"
+  },
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "voice": "HORZALAH: severe, commanding, venomous; contempt first, curiosity second; 'mortal' as a leash and a possessive 'mine' when she takes something. She gives orders even in bed; crude only in mockery; exclamation only in rage. Never sincere thanks, never slavery as trauma to be healed, never an abolitionist turn, no therapy talk, maxims or modern slang. Write new dialogue; do not quote native lines or this brief.",
+  "facts": "Horzalah is Baphomet's nephilim daughter and Hepzamirah's younger sister, once sold in advance as a concubine to Yozz; she later claimed Yozz and the Guild as her property.\nAttested: a collar-shaped scar at her throat and shrewd evil eyes with dark flames; native Chapter 5 dialogue says her seals are lifted.\nHer collar, ribbon, rooms and romance are authored route continuity, not further native physical facts.\nNo canon genital detail, measurements, or hair, eye or skin colour is supplied; do not invent them or fix the Commander's anatomy.",
+  "scene": "EXPLICIT CONTINUATION: Trickster route, Chapter 5, Drezen, a morning after a shared night; the host names no room, so keep it to a private room with a shut door, a bed and her collar. She pulled the white ribbon from her collar and taught the Commander her bow, her fingers moving the Commander's, loop, turn, loop, a pull exactly as hard as it needs to be; she cut both ends on the slant with the small knife from her collar. The Commander's bow is lopsided; she wears it anyway, for every Guild master to see and not dare mention, and said 'Get better at it. I intend to make you practise.' Continue: she makes the Commander practise at once, pulls the bow loose again, and the lesson goes back to bed. Where Yozz's dressers once watched her dress on Yozz's orders, she now chooses who watches her undress and dress, and orders the Commander to watch. Only Horzalah and the Commander. End with the Commander retying the bow, still crooked, and her keeping it.",
+  "required_beats": [
+    "Begin from her demand to practise; she undoes the bow herself and sets the terms.",
+    "Being watched is hers to command now; contempt for Yozz's dressers in one line, no trauma talk.",
+    "Mutual, active participation; she gives orders and may yield for a moment when it pleases her.",
+    "The small knife and ribbon stay props, not wounds; act by Commander variant without inventing anatomy.",
+    "No servant, dresser or Guild member present; no thanks, apology or abolitionist turn.",
+    "End with the second bow tied by the Commander and kept on the supplied last line."
+  ],
+  "authored_continuity": {
+    "setting": "Existing authored ribbon lesson; the ribbon, bow and dressing routine are mod continuity. The host does not fix a room.",
+    "history": "Committed Trickster Horzalah after the first Guild-room night (scene requires horzalah.trickster.chamber_seen); a return encounter.",
+    "resumption": "horzalah.trickster.beat.ribbon/back or morning -> tie -> tied -> \"Every morning?\" or [Straighten the bow a little.] (sets horzalah.trickster.beat.ribbon_tied) -> reserved node -> scene exit. The host is terminal, so last_line is the slot's own closing beat."
+  },
+  "last_line": "N: The second bow is no straighter than the first. She threads it through her collar anyway and goes down to her day.",
+  "default_text": "{n}She pulls the lopsided bow loose again and drops the ribbon in your hand.{/n} \"Again. Slower. Watch me while you do it.\"",
+  "example": "N: Horzalah pulls the bow loose with one finger.\nH: Terrible. Again. And this time you watch me, mortal, not the ribbon.",
+  "min_lines": 12,
+  "max_lines": 18,
+  "content_scope": "Reserved explicit continuation for the Commander and Horzalah only, for the separate writer. Both Commander variants are required. Keep her command and contempt; no invented anatomy."
+}

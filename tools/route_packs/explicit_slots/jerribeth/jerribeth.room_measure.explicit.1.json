@@ -1,8 +1,8 @@
 {
   "slot_id": "jerribeth.room_measure.explicit.1",
-  "voice": "JERRIBETH: oolioddroo demon of the Abyss, collector, illusionist, mind-planter. Insect-like: narrow body, antennae, delicate clawed fingers, wings. She speaks inside the Commander's head in a high, airy voice even when she is close enough to touch; her laughter is high and abrasive, like a buzzing insect. Courtly, oblique, contemptuous, precise. Near-zero profanity: her edge is contempt and exact description, never vulgar words. Desire, for her, is collecting: she wants the Commander held still so she can look, arrange and keep, and she resents how much she wants it. She gives orders, not reassurances. She never offers an exit, never asks permission twice, never speaks of feelings in modern terms, never moralises. Cruel and amused; possessive, not tender. She improvises; she never recites.\nWrite NEW dialogue. Do not reuse any sentence from this brief or from the facts.",
+  "voice": "JERRIBETH: chaotic evil demon, illusionist and collector; served Baphomet only while it paid. Her voice is telepathic, inside the listener's head: high, airy, precise, with laughter like a buzzing insect. Courtly and oblique in phrasing, near-zero profanity; contempt and precision instead. Cruelty is curation: she pins, preserves and watches the victim stay aware. Desire is collecting: to want someone is to want to keep them, and she resents the wanting. She enjoys the other's awareness and every small failure of their composure. Never tender for its own sake, never reassuring; no exits, permission rituals, therapy speech or remorse in her mouth. Write new lines from these traits; do not quote canon.",
   "scene": "SCENE: Chapter 5, Drezen, the top room of a narrow rented house in the upper town: her cabinet. For the first time in the base route she is there in person, not in the correspondence frame. Shuttered windows, lamps in glass, every wall glass-fronted shelving full of pinned and preserved things that are still aware; some of their eyes move. She has just sent the Commander's companions down to wait in the street. She sits the Commander in her own chair, the one that faces the door and the shelves, and arranges them like a specimen: wrists on the chair arms, chin lifted with one claw, head turned toward the lamp. Her rule: if the Commander moves, she stops. Build the scene on that rule: she takes her time, tests how long the Commander can hold still, and enjoys every small failure. Explicit, unhurried, Commander and Jerribeth only; the things in the cases watch and are never touched or involved. Keep her in her own insectile form; she does not put on a guise tonight. If Marhevok's pot is in the room (plant fate), his human eyes are open on the sill, facing the chair, and she makes sure the Commander knows he is watching. End when she decides it is over.",
-  "last_line": "J: There. Now you have held still for me. I shall want it again.",
+  "last_line": "N: Toward the end of the night she unlocks the door herself.",
   "speakers": {
     "J": "Jerribeth",
     "N": "Narrator"
@@ -14,27 +14,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "facts": [
-    {
-      "fact": "Native greeting: a narrow shadow, antennae that quiver, hands linked tightly together, a high-pitched voice in the Commander's head.",
-      "guid": "8a632a5249b3c2541a1381111cae9e37",
-      "localization_key": "285126f8-f314-4a8f-a477-38282da07ef3"
-    },
-    {
-      "fact": "She holds a locust between two delicate clawed fingers and slowly pushes a needle into it, watching its convulsions with fascination: preserving beauty is a lot of work.",
-      "guid": "bf1542830cfa01d4c9db04546681084d",
-      "localization_key": "eb28ad3b-053d-4e46-9db2-055fd0a1b1d2"
-    },
-    {
-      "fact": "Her laughter is high and abrasive, like a buzzing insect, reverberating in the listener's mind.",
-      "localization_key": "0b920731"
-    },
-    {
-      "fact": "Marhevok loves her passionately and blindly; in the plant fate he is a potted plant with crazed human eyes in the bud.",
-      "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
-      "localization_key": "b003e047-ab44-4a8b-af47-b50108d50484"
-    }
-  ],
+  "facts": "Jerribeth is a female demon with an insect-like form: a narrow insectile head with antennae, wings, a hard ridged carapace and delicate clawed hands (native Wintersun reveal and Ivory Sanctum cues).\nShe speaks telepathically, directly in the mind; her laughter is high and abrasive, like a buzzing insect (enGB 0b920731).\nShe pushes a needle into a living locust and watches it convulse (eb28ad3b); she preserves what she wants to keep, 'in some form' (de70b6ee).\nShe served her master only as long as it profited her (c4630d76) and calls deals with demons a losing game she enjoys playing (8ef95ea9).\nMarhevok, the Wintersun chief, loved her blindly (b003e047); in one canon fate he is a potted plant with human eyes (6edde3ab). He is never a participant.\nThe correspondence frame, the elven guise with its deliberate seam of light, and her tenancy in the Commander's skull are authored mod premises.\nNo canon genital anatomy is specified for her. Do not invent native physiology beyond carapace, wings, antennae, clawed hands and mouthparts.",
   "required_beats": [
     "She arranges the Commander in the chair before anything else, like setting a specimen.",
     "Her rule is stated and kept: if the Commander moves, she stops; she enforces it at least once.",
@@ -48,5 +28,9 @@
     "after_node": "desire",
     "resume_node": "end"
   },
-  "authored_scope": "Authored romance continuation within the existing route guards (non-Trickster base layer, rebuild sheet §5.15 and §8). The Drezen cabinet room, her arrival by 'the road demons use' and the cabinet's contents are authored premises; canon physical facts are limited to the cited facts array. Explicit scope: Commander with Jerribeth only. The default remains a heated cut; no explicit prose is supplied here."
+  "authored_scope": "Authored romance continuation within the existing route guards (non-Trickster base layer, rebuild sheet §5.15 and §8). The Drezen cabinet room, her arrival by 'the road demons use' and the cabinet's contents are authored premises; canon physical facts are limited to the cited facts array. Explicit scope: Commander with Jerribeth only. The default remains a heated cut; no explicit prose is supplied here.",
+  "participants": [
+    "Jerribeth",
+    "Commander"
+  ]
 }
