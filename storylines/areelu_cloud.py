@@ -67,8 +67,7 @@ text(S, "start", "A lens of dark glass has appeared", '''
 {n}Then it wipes itself on a cloth, picks up a pen, and goes on writing in the margin of a page that is already full of you: your hours, your rations, which of your companions you laugh with and which you only answer. The hand is steady. The man is still screaming.{/n}''')
 
 text(S, "terms", "And you make the offer through my own lens", '''
-"Neither. And you make the offer through my own lens." {n}The glass stays clear for several breaths. Behind it the hand finds the strapped man's throat, counts something, and seems satisfied.{/n}
-"You send your wager by glass, instead of bringing it to my face. That is how debtors send their excuses, and I price it the way I price theirs. Late wagers carry late terms, Commander. If I burn at Threshold, you keep nothing of mine. Not a page. Not my name."
+"Neither. And you make the offer through my own lens." {n}The glass stays clear for several breaths. Behind it the hand finds the strapped man's throat, counts something, and seems satisfied.{/n} "You send your wager by glass, instead of bringing it to my face. That is how debtors send their excuses, and I price it the way I price theirs. Late wagers carry late terms, Commander. If I burn at Threshold, you keep nothing of mine. Not a page. Not my name."
 "Bring it to Threshold on those terms, or do not bring it. Keep the glass until then. I would like to watch what you do with the time you have left."''')
 
 S = "areelu.trickster.lens.watched"

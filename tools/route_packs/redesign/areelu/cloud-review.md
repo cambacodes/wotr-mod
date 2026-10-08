@@ -153,9 +153,28 @@ soldiers") fits the convicts and commission pages. Consistent.
 
 ## 7. Validation
 
-- `python expansion.py`: cannot run here (no `blueprints.zip`), and `main` fails independently (camellia briefs,
-  above). Instead the full build ran with the zip readers stubbed (`native_facts.verify`,
-  `native_fact_inventory.verify_inventory`, `native_overrides.finalize`,
-  `crossroute_checks.other_woman.native_participation_contexts`) and the two `insertion`-less camellia briefs skipped
-  in the scratch wrapper only. Results, baseline-vs-branch diff and lint counts are in the commit message of this
-  branch's last commit (VALIDATION section).
+- `python expansion.py` cannot run here (no `blueprints.zip`), and `main` abb97e4 fails independently of the zip: two
+  camellia briefs from e26d856 lack `insertion` (KeyError in `camellia_round2._slots`). The full build was run with
+  the four zip readers stubbed (`native_facts.verify`, `native_fact_inventory.verify_inventory`,
+  `native_overrides.finalize`, `crossroute_checks.other_woman.native_participation_contexts`) and those two briefs
+  skipped in the scratch wrapper only (not committed).
+- Baseline proof: the same stubbed build of untouched `main` (git worktree) reproduces the committed
+  `development/Story.json` exactly as data (every top-level key and all 4078 scenes equal; the bytes differ only in
+  the key order of one native-reader map, which the committed export keeps).
+- Baseline vs branch build: 21 scenes differ. 20 are this pass (the 17 voice-locked `areelu.*` scenes plus the three
+  pair scenes); the 21st, `targona.lastcall.page`, differs only in `RequiresAnyGroups` member order (run-to-run
+  nondeterminism) and keeps main's copy. In the 20: no id, node, choice, Next, Set, gate, check, cost or scene
+  metadata changed; existing paragraphs keep their gates and indices; 5 paragraphs appended
+  (`threshold.welcome/start` +2, `finale.unnamed/end` +1, `lastcall.page/page` +2), each reading a flag with a producer.
+  The committed export is main's export with exactly those 20 scenes replaced (NativeOverrides carried from main).
+- Export checks, main -> branch: `savecompat.check` 0 -> 0; `payoff_lint.check` 0 -> 0;
+  `prose_pending_lint.check(integration=True)` 0 -> 0; `claude_work_queue_lint` 0 -> 0; `player_text_lint`
+  unchanged (4 categories, identical findings); `text_structure_lint` unchanged (0 hard); `edge_lint`
+  locked regressions unchanged (1, not Areelu); `voice_lock_lint.check` 52 -> 69 changed locked scenes (the 17 here,
+  proposed in `voice-approvals.proposed.json`, every before_sha equal to the current lock). Edge screen, Areelu
+  Trickster layer: menace 80 -> 89, business 124 -> 129 (business:menace 1.55 -> 1.45), profanity 0 (target: clean).
+- `slot_brief_lint --strict`: 253 hard before, 253 after (new brief clean; 24 pre-existing hard findings on the 8
+  `areelu-vorlesh/` briefs: list-typed facts, missing `narration: third-past`, boundary drift).
+- Unit tests (stubs applied): `test_areelu_round2` 6/6 OK, `test_slot_brief_lint` OK; `test_contract_j01` and
+  `test_crossroute_presence` error in setUpClass because they rebuild with the real `blueprints.zip` (68 run, 0
+  failures, 2 setUpClass errors).
