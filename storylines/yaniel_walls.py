@@ -745,10 +745,12 @@ _ask = _node('ch5.minagho', 'ask')['Choices']
 _ask[0]['Requires'] = [_MINAGHO_BED, _MINAGHO_ACCOUNT]
 _ask[1]['Requires'] = [_MINAGHO_ACCOUNT]
 _ask[1]['Forbids'] = [_MINAGHO_BED]
-_ask.append(c('[PROSE PENDING: truthful account of the played Minagho arrangement without claiming debt or protection]',
+_ask.append(c("[Tell her the truth] \"I owe her nothing, and she isn't under my protection. I'll tell you exactly what passed between us, and I won't dress it up.\"",
     'truth_arrangement', forbids=(_MINAGHO_ACCOUNT,)))
 _by[Y + 'ch5.minagho']['Nodes'].append(yn('truth_arrangement',
-    '[PROSE PENDING: Yaniel responds to friendship, service or Chivarro-only history; no invented Minagho bed or protection]',
+    '''{n}She does not move. She listens to all of it with her eyes on the middle distance, the way she listens to a report from the wall: not for comfort, only for the places where it might give.{/n}
+"No debt. No protection." {n}She says it twice, slowly, turning it over for a hook.{/n} "That is not what I came up here braced for. I braced for a leash, Commander. A thing you had tied to yourself and called a kindness. What you are telling me is smaller than that, and I find I trust it more."
+{n}A short breath through the nose, not quite a laugh.{/n} "Smaller does not mean I like it. She kept me on a hook for years, and her name alone is enough to turn my stomach, whatever the reason. I will stand my watch. I will not go where she is. And if she ever lays a finger on me again, for any reason, I will kill her, and I will not ask your leave."''',
     c('Continue', 'truth_end')))
 _integrate_history = integrate
 def integrate(payload):

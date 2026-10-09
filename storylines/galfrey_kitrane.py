@@ -1473,7 +1473,11 @@ def _struct2_current_participants():
             nodes["start"]["Choices"].append(c("Continue", "struct2_irabeth_absent",
                 forbids=("irabeth.present_now",)))
             host["Nodes"].append(ki("struct2_irabeth_absent",
-                "[PROSE PENDING: Remember Irabeth's actual Iz service while acknowledging her current loss or departure.]",
+                "\"Knight Tirabade is not at her post.\" {n}She does not turn from the barracks door.{/n} "
+                "\"I will not pretend to know the whole of why. What I do know is Iz. Whatever she did there, and whatever it cost her, she did it on my order and not her own, "
+                "and she did it as a knight of Mendev should. The empty door does not alter that. Nor will I let the muster roll forget it.\" "
+                "{n}Her hands tighten on the pommel of her sword.{/n} \"I owe her a great deal, and the debt has no one left to receive it. "
+                "That is a hard sort of debt to carry. I intend to carry it anyway.\"",
                 c("Continue", "end")))
 
 

@@ -70,6 +70,11 @@ def arcade(nodes):
     return nodes
 
 
+# Fourth recollections when the answer came by the portal merchant's post, not across a table (no face-to-face survivor scene).
+POSTED_OWNED = '''"Your answer came through the merchant's post, on the back of a bill of sale, and I read it standing in the rigging because I could not sit still. 'The wrong order.' Four words in your hand." {n}She takes the pitch pot back from you.{/n} "I have it folded in my coat. It was the wrong order. And I was the wrong captain for it. Both of those can be true. Magisters are trained to hold two contradictory results at once and wait for a third experiment."'''
+POSTED_BLAMED = '''"Your answer came through the merchant's post. 'You let go of the wheel, Captain. Not me.' No salutation, no softening." {n}She takes the pitch pot back from you.{/n} "You were right. Nobody else would put it on paper where I could not argue with the ink, and I think it is the kindest thing anyone has done for me since Abaddon. Everybody else says it was not my fault. It was my fault. I would like very much to be allowed to have done something."'''
+
+
 def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
     """A beat opened from her presence (the tiefling's stall, or the arcade when he is gone): the same scene
     on each hub, each forbidding the other's completion."""
@@ -83,8 +88,7 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
             seam["Choices"].append(c("Continue", target,
                 requires=(posted, STORM_OWNED) if owned else (posted,),
                 forbids=() if owned else (STORM_OWNED,)))
-            nodes.append(mi(target, "[PROSE PENDING: Fourth recollection of the posted "
-                            + ("wrong-order answer" if owned else "wheel-blame answer") + "]",
+            nodes.append(mi(target, POSTED_OWNED if owned else POSTED_BLAMED,
                             c("Continue", "third_exp")))
     for hub, suffix, extra in PLACES:
         twin = id + ("" if suffix else ".arcade")

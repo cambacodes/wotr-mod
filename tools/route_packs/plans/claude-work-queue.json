@@ -561,76 +561,6 @@
     "ruling": "struct2-01 CONVERT collateral keep_as_is: Claude voice decision required across the physical-contact nodes and reserved explicit slot; preserve cost and choice outcomes. Coordinator must reconcile remote inspection with the approved physical slot before rewriting."
   },
   {
-    "scene": "melazmera.trickster.ch4.hunt",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 0: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch4.hunt",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 1: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch4.hunt",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 2: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch4.hunt_found",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 0: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch4.hunt_found",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 1: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch4.hunt_found",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 2: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch5.hunt_window",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 0: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch5.hunt_window",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 1: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.ch5.hunt_window",
-    "node": "owed",
-    "woman": "Melazmera",
-    "beat": "MEL-02 voyage 2: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
-    "scene": "melazmera.trickster.commit.stone",
-    "node": "count",
-    "woman": "Melazmera",
-    "beat": "MEL-02: sailor debt callback without assigning her fire as the meeting venue; samples in retired count paragraph 1 and tools/ideal-run-kit/natives/melazmera.txt.",
-    "ruling": "struct2-02: structure only; Claude owns replacement prose"
-  },
-  {
     "scene": "melazmera.trickster.commit.stone",
     "node": "count",
     "woman": "Melazmera",
@@ -776,34 +706,6 @@
     "ruling": "Await coordinator Chapter 5 house access and participant placement binding; existing shell copy retained pending approval."
   },
   {
-    "scene": "mielarah.deck.fourth",
-    "woman": "Mielarah",
-    "node": "owned_posted",
-    "beat": "Recall the wrong-order answer received through the portal merchant post; no face-to-face survivor exchange.",
-    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
-  },
-  {
-    "scene": "mielarah.deck.fourth",
-    "woman": "Mielarah",
-    "node": "blamed_posted",
-    "beat": "Recall the wheel-blame answer received through the portal merchant post; no face-to-face survivor exchange.",
-    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
-  },
-  {
-    "scene": "mielarah.deck.fourth.arcade",
-    "woman": "Mielarah",
-    "node": "owned_posted",
-    "beat": "Recall the wrong-order answer received through the portal merchant post; no face-to-face survivor exchange.",
-    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
-  },
-  {
-    "scene": "mielarah.deck.fourth.arcade",
-    "woman": "Mielarah",
-    "node": "blamed_posted",
-    "beat": "Recall the wheel-blame answer received through the portal merchant post; no face-to-face survivor exchange.",
-    "ruling": "MIE-A4-02: Claude owns postal recollection; preserve third_exp continuation."
-  },
-  {
     "scene": "anevia.ending_open",
     "woman": "Anevia",
     "beat": "Account for Irabeth returning and then dying or losing her returned actor before Threshold; keep historical return memory without a living-wife claim.",
@@ -854,23 +756,6 @@
     "beat": "galfrey currently absent; distinguish any historical return and Iz recollections",
     "ruling": "struct2-08 structure-only handoff",
     "finding": "TER-A4-02"
-  },
-  {
-    "scene": "yaniel.trickster.ch5.minagho",
-    "node": "ask",
-    "woman": "yaniel",
-    "beat": "truthful account of the played Minagho arrangement without claiming debt or protection",
-    "ruling": "struct2-08 structure-only handoff",
-    "finding": "YAN-A3-02",
-    "choice": 3
-  },
-  {
-    "scene": "yaniel.trickster.ch5.minagho",
-    "node": "truth_arrangement",
-    "woman": "yaniel",
-    "beat": "Yaniel responds to friendship, service or Chivarro-only history; no invented Minagho bed or protection",
-    "ruling": "struct2-08 structure-only handoff",
-    "finding": "YAN-A3-02"
   },
   {
     "scene": "devarra.tower.the_hoard",
@@ -952,22 +837,6 @@
     "woman": "Commander",
     "beat": "Worldwound encounter staging after coordinator approves an entry that preserves both native final-list contexts and final-choice continuation.",
     "ruling": "struct2-10: held for coordinator delivery decision; Claude owns subsequent text; no placeholder text authorized until target is bound."
-  },
-  {
-    "scene": "galfrey.trickster.kitrane.irabeth",
-    "node": "struct2_irabeth_absent",
-    "woman": "galfrey",
-    "beat": "Remember Irabeth's actual Iz service while acknowledging current loss or departure; do not stage her body or erase history.",
-    "finding": "RUBRIC D04",
-    "ruling": "struct2-11"
-  },
-  {
-    "scene": "galfrey.trickster.kitrane.irabeth_stall",
-    "node": "struct2_irabeth_absent",
-    "woman": "galfrey",
-    "beat": "Remember Irabeth's actual Iz service while acknowledging current loss or departure; do not stage her body or erase history.",
-    "finding": "RUBRIC D04",
-    "ruling": "struct2-11"
   },
   {
     "scene": "iomedae.trickster.threshold.banner",
