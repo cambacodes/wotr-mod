@@ -27,6 +27,6 @@
   ],
   "min_lines": 12,
   "max_lines": 22,
-  "default_text": "{n}Nobody picks up the case. Chivarro pulls Minagho down onto the couch by her collar and you with her, and the red lamp gutters over the three of you.{/n}",
+  "default_text": "{n}Nobody picks up the case. Chivarro pulls Minagho down by her collar and you with her, and the red lamp gutters over the three of you.{/n}",
   "continuity": "Chapter 5 farewell, after the_unhired_evening and a_room_she_likes: no first-night reset. Actual earned presence only. No flags from this text. The together exit and its Set remain the existing commitment answer."
 }

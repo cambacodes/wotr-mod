@@ -769,6 +769,10 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-nocticula (cloud): Nocticula's text-only layer and appended readers, after every appender.
     from storylines import nocticula_cloud
     nocticula_cloud.integrate(payload)
+    # heat-g4 (Claude prose): build-up to the explicit boundary for Minagho, Chivarro, Jerribeth, Wenduag, Gesmerha,
+    # Hepzamirah and Shamira. Text only, last, so no earlier layer can overwrite it and no index moves.
+    from storylines import heat_g4
+    heat_g4.integrate(payload)
     return payload
 
 
