@@ -659,5 +659,328 @@
     "beat": "Clarify that the undecided answer concerns answering the Commander in the fire, preserving the already accepted courtship.",
     "finding": "trickster_all_romance-c6-p1-001",
     "ruling": "struct2-11"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.kept",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning nurah; her later loss stands; no living postwar neighbor]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.kept",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning soana; her later loss stands; no living postwar neighbor]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.kept",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning kaylessa; her later loss stands; no living postwar neighbor]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.commit",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning nurah; her later loss stands; no living postwar neighbor]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.commit",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning soana; her later loss stands; no living postwar neighbor]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.commit",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - historical once-only oath concerning kaylessa; her later loss stands; no living postwar neighbor]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign convicts paid; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign convicts refused; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign convicts batch_funded; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign convicts batch_refused; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.commission",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign graft paid; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.commission",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign graft refused; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.commission",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign graft batch_funded; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.commission",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - summarize earned campaign graft batch_refused; retain independent procurement and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - request convicts preparation; state price and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - pay for convicts preparation]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 0
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - refuse convicts support]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 1
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - leave without deciding]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 2
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "paid",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - paid convicts preparation delivered; subjects and apparatus visible through projection]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "refused",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - independently procured convicts subjects and preparation; refuses to abandon experiment]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts",
+    "node": "witness",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - perform convicts experiment visibly through projection; subject resists; cruel method and immediate result]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts.outcome",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - later convicts failure and victims; independent response to paid or refused support]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts.outcome",
+    "node": "account",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - convicts result informs next experiment; request another batch without surrendering purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts.outcome",
+    "node": "account",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - fund next convicts batch]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 0
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts.outcome",
+    "node": "account",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - refuse next convicts batch]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 1
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts.outcome",
+    "node": "funded",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - paid next convicts batch proceeds]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.convicts.outcome",
+    "node": "unfunded",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - procures next convicts batch independently at her own expense]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - request graft preparation; state price and cruel scientific purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - pay for graft preparation]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 0
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - refuse graft support]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 1
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - leave without deciding]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 2
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "paid",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - paid graft preparation delivered; subjects and apparatus visible through projection]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "refused",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - independently procured graft subjects and preparation; refuses to abandon experiment]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft",
+    "node": "witness",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - perform graft experiment visibly through projection; subject resists; cruel method and immediate result]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft.outcome",
+    "node": "start",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - later graft failure and victims; independent response to paid or refused support]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft.outcome",
+    "node": "account",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - graft result informs next experiment; request another batch without surrendering purpose]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft.outcome",
+    "node": "account",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - fund next graft batch]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 0
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft.outcome",
+    "node": "account",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: choice - refuse next graft batch]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs",
+    "choice": 1
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft.outcome",
+    "node": "funded",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - paid next graft batch proceeds]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.experiment.graft.outcome",
+    "node": "unfunded",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - procures next graft batch independently at her own expense]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.afterlogue.departed",
+    "node": "line",
+    "woman": "Areelu",
+    "beat": "[PROSE PENDING: Areelu - spared and chose company; Commander later burned the hidden notebook; she departed, letters stopped, child claim and purpose remain hers]",
+    "ruling": "struct3-b: structure-only scaffold; Claude owns prose; preserve branch history, prices and IDs"
+  },
+  {
+    "scene": "areelu.trickster.report.convicts",
+    "woman": "Areelu",
+    "beat": "AREELU-03: revise the entire retrospective account to summarize the earned Chapter 5 laboratory-projection experiment and its paid/refused and later batch outcomes. Existing choices now read historical campaign receipts. Preserve her independent subject procurement and cruel purpose. Do not imply a new unpaid decision in the ending.",
+    "ruling": "struct3-b: Claude voice owner; current seventh/eighth-year report chronology needs reconciliation with campaign event"
+  },
+  {
+    "scene": "areelu.trickster.report.commission",
+    "woman": "Areelu",
+    "beat": "AREELU-03: revise the entire retrospective account to summarize the earned Chapter 5 laboratory-projection experiment and its paid/refused and later batch outcomes. Existing choices now read historical campaign receipts. Preserve her independent subject procurement and cruel purpose. Do not imply a new unpaid decision in the ending.",
+    "ruling": "struct3-b: Claude voice owner; current seventh/eighth-year report chronology needs reconciliation with campaign event"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.kept",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
+    "ruling": "struct3-b: keep anonymous legacy oath history without inventing identity or present life"
+  },
+  {
+    "scene": "camellia.trickster.epilogue.commit",
+    "node": "page",
+    "woman": "Camellia",
+    "beat": "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
+    "ruling": "struct3-b: keep anonymous legacy oath history without inventing identity or present life"
   }
 ]

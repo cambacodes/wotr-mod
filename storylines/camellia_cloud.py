@@ -374,3 +374,21 @@ def integrate(payload):
             texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
             if any(PENDING in t for t in texts):
                 raise ValueError("camellia cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+
+    # struct3-b: bind the anonymous living callback to the actual oath victim.
+    # Run after voice transformations; retain the original paragraph and index.
+    for ending in ("kept", "commit"):
+        page = _node(scenes, E + ending, "page")
+        callback = next(x for x in page["Paragraphs"]
+                        if x.get("Requires") == [P + "oath_loophole"])
+        callback["Requires"] = [*callback["Requires"], P + "oath_victim.available"]
+        for woman in ("nurah", "soana", "kaylessa"):
+            page["Paragraphs"].append(when(
+                (P + "oath_loophole", P + "oath_victim." + woman),
+                "[PROSE PENDING: Camellia - historical once-only oath concerning "
+                + woman + "; her later loss stands; no living postwar neighbor]",
+                forbids=(woman + ".present_now",)))
+        page["Paragraphs"].append(when(
+            P + "oath_loophole",
+            "[PROSE PENDING: Camellia - legacy once-only oath remains historical; no identified living victim inferred]",
+            forbids=(P + "oath_victim.recorded",)))

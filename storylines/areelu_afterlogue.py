@@ -35,10 +35,13 @@ COMMITS = [[at.COMMITTED]]
 CLOSES = ["!" + at.STAKE_ONLY, "!" + at.CLOSED, "!" + at.BURNED, "!" + at.INCINERATED, "!" + at.SAC_WOUND, "!" + at.SAC_BEFORE]
 BASE = ["trickster.now", at.STRUCK, at.WAGERED, at.SURVIVES, *CLOSES]
 REWRITTEN = [BASE + [at.REWRITTEN] + c for c in COMMITS]
-SPARED = [BASE + [at.CHEATED, "!" + at.SAC_TRICK, "!" + at.FIGHT] + c for c in COMMITS]
+SPARED = [BASE + ["!" + at.REPORT_DEPARTED, at.CHEATED, "!" + at.SAC_TRICK, "!" + at.FIGHT] + c for c in COMMITS]
 
 LINE_SPARED = "areelu.trickster.afterlogue.spared"
 LINE_MORTAL = "areelu.trickster.afterlogue.mortal"
+LINE_DEPARTED = "areelu.trickster.afterlogue.departed"
+DEPARTED = [BASE + [at.REPORT_DEPARTED, at.CHEATED, "!" + at.SAC_TRICK, "!" + at.FIGHT] + c
+            for c in COMMITS]
 
 
 def line(id, text, requires=None):
@@ -80,8 +83,11 @@ line(RETURN_MORTAL, '"The Commander went into the Wound and returned. My graft h
      'I remained without magic. I continued the work I could still do, and my child\'s fate remained unresolved."',
      requires=("trickster.now", at.STRUCK))
 
+line(LINE_DEPARTED, "[PROSE PENDING: Areelu - spared and chose company; Commander later burned the hidden notebook; she departed, letters stopped, child claim and purpose remain hers]")
+
 def spared_variants():
-    return [dict(Replacement=NEUTRAL_SPARED, When=NEUTRAL_KEEP, KeepNativeImage=False),
+    return [dict(Replacement=LINE_DEPARTED, When=DEPARTED, KeepNativeImage=False),
+            dict(Replacement=NEUTRAL_SPARED, When=NEUTRAL_KEEP, KeepNativeImage=False),
             dict(Replacement=RETURN_WITCH, When=RETURN_WITCH_WORLDS, KeepNativeImage=False),
             dict(Replacement=RETURN_MORTAL, When=RETURN_MORTAL_WORLDS, KeepNativeImage=False)]
 

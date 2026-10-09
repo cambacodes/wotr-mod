@@ -250,3 +250,15 @@ def integrate(payload):
             texts = [node["Text"]] + [c["Text"] for c in node["Choices"]] + [x["Text"] for x in node.get("Paragraphs", [])]
             if any("[PROSE PENDING" in t for t in texts):
                 raise ValueError("areelu cloud: prose still pending at %s/%s" % (sid, node["Id"]))
+
+    # struct3-b: campaign receipts survive into retrospective readers. Claude
+    # owns revising the existing accounts around these earned histories.
+    from storylines.areelu_trickster import EXPERIMENT
+    for kind in ("convicts", "graft"):
+        sid = "areelu.trickster.report." + ("commission" if kind == "graft" else kind)
+        node = _node(scenes, sid, "start")
+        for outcome in ("paid", "refused", "batch_funded", "batch_refused"):
+            node.setdefault("Paragraphs", []).append(p(
+                "[PROSE PENDING: Areelu - summarize earned campaign " + kind + " " + outcome
+                + "; retain independent procurement and cruel scientific purpose]",
+                requires=(EXPERIMENT + kind + "." + outcome,)))

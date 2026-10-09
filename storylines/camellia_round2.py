@@ -233,6 +233,11 @@ def _knowledge(scenes, payload):
         ["nurah.present_now", "nurah.dead_camellia"],
         ["soana.present_now", "soana.killed_by_camellia"],
         ["kaylessa.present_now", "kaylessa.camellia_killed"]]
+    payload["Derived"][P + "oath_victim.recorded"] = [
+        [P + "oath_victim." + woman] for woman in ("nurah", "soana", "kaylessa")]
+    payload["Derived"][P + "oath_victim.available"] = [
+        [P + "oath_victim." + woman, woman + ".present_now"]
+        for woman in ("nurah", "soana", "kaylessa")]
     h = scenes[P + "masks.mireya"]
     alternative(h, "who", "who_known", '"Mireya? We have already disposed of her, have we not?" '
                 '{n}She rolls the bone snake between her fingers.{/n} "I can still tell you what I used to '
@@ -443,6 +448,8 @@ def _continuity(scenes):
         for answer in node(h, "start")["Choices"]:
             if answer.get("Next") in ("nurah", "soana", "kaylessa"):
                 answer["Requires"].append(answer["Next"] + ".present_now")
+        for woman in ("nurah", "soana", "kaylessa"):
+            node(h, woman)["Choices"][0]["Set"].append(P + "oath_victim." + woman)
         # If the earlier historical victim has left, let the current one answer.
         node(h, "start")["Choices"].extend([
             c("Continue", "soana", requires=("soana.present_now", "soana.killed_by_camellia", "nurah.trickster.returned", "nurah.dead_camellia"), forbids=("nurah.present_now",)),
