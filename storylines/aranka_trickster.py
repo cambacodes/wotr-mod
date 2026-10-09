@@ -787,6 +787,32 @@ letter("aranka.thall.reply", "The low part", [
 ], requires=("trickster.ever", THALL_REQUESTED, THALL_SAFE, "aranka.present_now"), forbids=(CLOSED, THALL_ANSWERED, THALL_DEAD, KENABRES_ATTACKED), delay=24)
 
 
+# struct2-02: the letter's confrontation, face to face where she busks. Index False = Chapter 3, True = Chapter 5.
+LETTER_FACE = {
+    False: {
+        "start": '''{n}The woman on @SEAT@ sees you and stops in the middle of a chord. She sets the lute aside the way another woman would clear a table for a fight. Close by, a carter hums four bars of Starward Gaze, reaches the new verse, and Aranka's eyes follow him until he loses his nerve and stops.{/n}''',
+        "known": '''"Somebody has changed my song!" {n}She is on her feet before you reach her.{/n} "I sat down to earn my supper and the first man who stopped to listen hummed it at me! Starward Gaze, with a verse I never wrote, and when I said so he looked at me as if I had the words wrong. Everyone swears it was always sung that way. It wasn't. And it's better, which is the worst part!"
+"A tavern king in this city is telling anyone with a mug that his pops learned it from a Desnan girl with a voice like a lark, and the whole city has decided the girl was me. I have never met his pops. I have never met him. Old Marit heard it in his tavern. He has the song-sheet, she says, with your verse in charcoal, and he swears on his pops' tankard it was always there!"
+"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece. I did not ask you to rhyme it with a tambourine. I hear a Knight-Commander stood on a bench and paid for every mug in the house to learn it. Well?"
+{n}She waits with her arms folded over the lute-strap. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+        "unknown": '''"You. Knight-Commander. I am Aranka, I sing for Desna, and I would like a word." {n}She is on her feet before you reach her.{/n}
+"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in this city is telling everyone his pops learned it from a Desnan girl, and everyone has decided the girl was me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern. She says he has an old song-sheet with the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+"Well? I'm told that was you. A bench, a purse, and a rhyme for 'Thaberdine'."
+{n}She waits, chin up. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+    },
+    True: {
+        "start": '''{n}The woman on @SEAT@ sees you and stops in the middle of a chord. She sets the lute aside the way another woman would clear a table for a fight. Close by, a pikeman back from the line hums four bars of Starward Gaze, reaches the new verse, and Aranka's eyes follow him until he loses his nerve and stops.{/n}''',
+        "known": '''"Somebody has changed my song!" {n}She is on her feet before you reach her.{/n} "The pikemen at the ford sang it at me, with a verse I never wrote, and when I said so they looked at me as if I had the words wrong. Everyone swears it was always sung that way. It wasn't. And it's better, which is the worst part!"
+"The tavern king, crowned now and louder for it, is telling anyone with a mug that his pops learned it from a Desnan girl with a voice like a lark, and the whole city has decided the girl was me. I have never met his pops. I have never met him. Old Marit rode out to the ford to tell me. He has the song-sheet, she says, with your verse in charcoal, and he swears on his pops' tankard it was always there!"
+"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece. I did not ask you to rhyme it with a tambourine. I hear a Knight-Commander stood on a bench and paid for every mug in the house to learn it. Well?"
+{n}She waits with her arms folded over the lute-strap. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+        "unknown": '''"You. Knight-Commander. I am Aranka, I sing for Desna, and I would like a word." {n}She is on her feet before you reach her.{/n}
+"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! The King in this city is telling everyone his pops learned it from a Desnan girl, and everyone has decided the girl was me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, rode out to the ford to tell me. She says he has an old song-sheet with the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+"Well? I'm told that was you. A bench, a purse, and a rhyme for 'Thaberdine'."
+{n}She waits, chin up. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+    },
+}
+
 # struct2-02: retire the rest copy using the original IDs; offer the same
 # exchange on her established physical hubs, including the market fallback.
 for _letter_id in ("aranka.trickster.verse.her_letter", "aranka.trickster.verse.her_letter_late"):
@@ -795,12 +821,13 @@ for _letter_id in ("aranka.trickster.verse.her_letter", "aranka.trickster.verse.
     _letter.update(Remote=False, InteractionHub=HUB, ContactUnit=UNIT,
                    Entry=_letter["Title"])
     _letter["Forbids"].append(FYE_GONE)
-    for _page in _letter["Nodes"]:
-        _page["Text"] = "[PROSE PENDING: struct2-02 Aranka letter confrontation %s]" % _page["Id"]
     _yard_letter = copy.deepcopy(_letter)
     _yard_letter.update(Id=_letter_id + "_yard", InteractionHub=YARD, ContactUnit=YARD_UNIT)
     _yard_letter["Forbids"].remove(FYE_GONE)
     _yard_letter["Requires"].append(FYE_GONE)
     _yard_letter["Forbids"].append(_letter_id)
     _letter["Forbids"].append(_yard_letter["Id"])
+    for _copy, _place in ((_letter, "fye"), (_yard_letter, "yard")):
+        for _page in _copy["Nodes"]:
+            _page["Text"] = fit(LETTER_FACE[_letter_id.endswith("_late")][_page["Id"]], _place)
     SCENES.append(_yard_letter)

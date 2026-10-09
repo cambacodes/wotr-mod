@@ -1283,10 +1283,12 @@ for _room_node in list(_room_scene["Nodes"]):
             _room_answer["Forbids"].append(P + "market_mended")
             _room_node["Choices"].extend((_mended_answer, _legacy_answer))
 _room_paddle = next(n for n in _room_scene["Nodes"] if n["Id"] == "room_paddle")
-for _paddle_id, _paddle_beat in (
-        ("room_paddle_mended", "HEP-03 paddle trophy after successful repair; vats hot; no unsupported crooked wrist"),
-        ("room_paddle_unresolved", "HEP-03 paddle trophy with attack recorded but repair outcome unknown")):
+PADDLE_TEXT = {
+    "room_paddle_mended": '''{n}The laundress's paddle hangs over the bed, where a crusader would hang a holy symbol: the haft split and bound with wire where a wrist twisted in it. Under it, pinned with a nail, is the chaplains' petition, and at its foot a clerk's line that the Commander paid the debt the same day.{/n} "The bone-setter set it straight," {n}she says, following your eyes.{/n} "I looked. It cost you a month of her pay and a loud word in front of the whole yard, and the vats never went cold. The petition I use to light the lamp. Every woman in your laundry saw what happens to a stick raised at me, and then saw you pay to put her back together. I keep the stick. That was worth your purse, whelp. I am not thanking you for the rest."''',
+    "room_paddle_unresolved": '''{n}The laundress's paddle hangs over the bed, where a crusader would hang a holy symbol: the haft split and bound with wire where a wrist twisted in it. Under it, pinned with a nail, is a petition in the chaplains' hand.{/n} "She raised it at me," {n}she says, following your eyes.{/n} "What came of her afterwards is laundry business and the chaplains' trouble. The petition I use to light the lamp. Every woman in your laundry has seen what happens to a stick raised at me, and I keep the stick where they can see it from the door. That was worth your purse."''',
+}
+for _paddle_id in PADDLE_TEXT:
     _paddle_node = copy.deepcopy(_room_paddle)
     _paddle_node["Id"] = _paddle_id
-    _paddle_node["Text"] = "[PROSE PENDING: " + _paddle_beat + "]"
+    _paddle_node["Text"] = PADDLE_TEXT[_paddle_id]
     _room_scene["Nodes"].append(_paddle_node)
