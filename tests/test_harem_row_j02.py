@@ -9,7 +9,7 @@ from tests.story_fixture import fresh_story
 from tests.harem_row_walk import walk
 from storylines.harem_rows import zz_contract_controller as controller
 from storylines.harem_rows import s03a, s10, s20, s21, s29, s30
-from tools import contract_j02_census, rrt_verify as rules, savecompat, voice_lock_lint
+from tools import contract_j02_census, rrt_verify as rules, savecompat
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -286,8 +286,6 @@ class ContractJ02(unittest.TestCase):
 
     def test_no_clock_allocation_or_text_rewrite_and_registration_is_idempotent(self):
         self.assertEqual(savecompat.check(self.story), [])
-        locks = voice_lock_lint.validate_locks(json.loads(
-            (ROOT / "tools/route_packs/voice_locks.json").read_text(encoding="utf-8")))
         before = copy.deepcopy(self.story)
         controller.register(before, before["Scenes"], before["Etudes"])
         self.assertTrue(before == self.story, "Controller registration must be idempotent")

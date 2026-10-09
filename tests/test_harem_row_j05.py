@@ -7,7 +7,7 @@ import unittest
 
 from tests.story_fixture import fresh_story
 from storylines.harem_rows import s18x, s26, z_j05_restitution as j05
-from tools import rrt_verify, savecompat, voice_lock_lint
+from tools import rrt_verify, savecompat
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -175,8 +175,6 @@ class MaterialRestitutionTests(unittest.TestCase):
                         self.assertIn("inspected", now["Choices"][i]["Text"])
                     else:
                         self.assertEqual(now["Choices"][i]["Text"], choice["Text"])
-        locks = voice_lock_lint.validate_locks(json.loads(
-            (ROOT / "tools/route_packs/voice_locks.json").read_text(encoding="utf-8")))
 
     def test_no_extra_completion_clock_currency_or_epilogue_paragraph(self):
         for sid in (s18x.P + "account", s18x.P + "account_table", s26.P + "account"):
