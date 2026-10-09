@@ -157684,7 +157684,7 @@
       "Flags": [
         "noct.acq.renewed_agreement",
         "nocticula.acquisition.payoff.ordinary",
-        "nocticula.reachable_by_letter"
+        "nocticula.present_now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.acq.epilogue.correspondence"

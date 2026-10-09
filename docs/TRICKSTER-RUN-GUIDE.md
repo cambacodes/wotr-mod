@@ -12968,9 +12968,9 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `kiana.trickster.after.letter/claimed_licence/0` — [Keep the invitation.]; records `kiana.trickster.met`, `kiana.debt_claimed`, `kiana.started`, `kiana.closed`
 - `kiana.betrothal/marry/0` — [Promise to stand at the back.]; records `kiana.betrothed_kept`, `kiana.closed`
 - `kiana.trickster.epilogue.commit/partner_refuse/0` — [Leave her.]; records `kiana.partner_stance.exclusive`, `kiana.closed`, `kiana.stayed_married`; Need all: `trickster.now`; Blocked by: `trickster.now`
-- `kiana.trickster.epilogue.commit/partner_refuse/3` — [Leave her.]; records `kiana.partner_stance.exclusive`, `kiana.closed`, `kiana.stayed_married`; Need all: `kiana.outcome.route_open`
+- `kiana.trickster.epilogue.commit/partner_refuse/3` — [Leave her.]; records `kiana.partner_stance.exclusive`, `kiana.closed`, `kiana.stayed_married`
 - `kiana.trickster.epilogue.commit/partner_stop/0` — [End the courtship.]; records `kiana.closed`; Need all: `trickster.now`; Blocked by: `trickster.now`
-- `kiana.trickster.epilogue.commit/partner_stop/1` — [End the courtship.]; records `kiana.closed`; Need all: `kiana.outcome.route_open`
+- `kiana.trickster.epilogue.commit/partner_stop/1` — [End the courtship.]; records `kiana.closed`
 - `kiana.trickster.late_question/partner_refuse/0` — [Leave her.]; records `kiana.partner_stance.exclusive`, `kiana.closed`, `kiana.stayed_married`
 - `kiana.trickster.late_question/partner_stop/0` — [End the courtship.]; records `kiana.closed`
 - `kiana.trickster.late_question_letter/partner_refuse/0` — [Leave her.]; records `kiana.partner_stance.exclusive`, `kiana.closed`, `kiana.stayed_married`
@@ -15780,8 +15780,8 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `herrax.trickster.late.next_move/why_senior/1` — "Tell her I'm not for sale, and neither is anyone I know."; records `herrax.closed`
 - `herrax.trickster.late.next_move/earnest_senior/1` — "Keep your ring. Tell her I'm not for sale."; records `herrax.closed`
 - `herrax.trickster.owed.night/ask/1` — "Tell her not to wait for me."; records `herrax.closed`
-- `herrax.trickster.epilogue.after_hours.invitation/madam_offer/1` — "No. Keep the night."; records `herrax.closed`; Need all: `herrax.outcome.route_open`
-- `herrax.trickster.epilogue.after_hours.invitation/rooms_offer/1` — "No. Keep the night."; records `herrax.closed`; Need all: `herrax.outcome.route_open`
+- `herrax.trickster.epilogue.after_hours.invitation/madam_offer/1` — "No. Keep the night."; records `herrax.closed`
+- `herrax.trickster.epilogue.after_hours.invitation/rooms_offer/1` — "No. Keep the night."; records `herrax.closed`
 
 ### terendelev: Restitution
 
