@@ -813,7 +813,17 @@ _courier = next(s for s in SCENES if s["Id"] == E + "beat.courier")
 _courier["Nodes"][0]["EnterSet"] = [COURIER_AWAY]
 _courier["Forbids"].extend([COURIER_AWAY, COURIER_RETURNED])
 _message = next(page for page in _courier["Nodes"] if page["Id"] == "message2")
-_return_nodes = [nar("start", "[PROSE PENDING: courier return delivery selection]")]
+_DISPATCH_TEXT = {
+    "hungry": '''{n}He says it back to you once, in your own voice, which is a peculiar thing to hear, and then he turns and goes, and you hear his boots on the stair and nothing after. Whatever the master from Caliphas has come to look at, she will be looking at it without you for some days yet.{/n}''',
+    "ripening": '''{n}He says it back to you once, in your own voice, dry as dust, and goes. In the yard the grey escort fall in around him without a word, and the whole procession takes the south road at a walk. Somewhere down it a man who has never seen your face is about to be told his goods are ripening.{/n}''',
+    "silent": '''{n}He waits for a while longer, as if you might change your mind, and then he goes, and you hear his boots on the stair. Nothing of yours goes south with him but the silence, and she will have to make of it what she can.{/n}''',
+}
+_RETURN_TEXT = {
+    "hungry": '''{n}There is a sprig of white flower under your door, the stem bound round with a single silver-grey hair. Down the stair the dead-house is lit again. She has not come to find you. She has only let you know she is home, and that she knows exactly which door is yours.{/n}''',
+    "ripening": '''{n}The man in grey is in your doorway again, with the road still on his boots. He clears his throat and says, in her voice, "*Ripening. You insolent sack of meat. The master laughed. Nobody in the Way has heard him laugh in forty years. He gave me leave to stay. I hate you for making him laugh. I am coming back tonight.*" Then he goes, and forgets.{/n}''',
+    "silent": '''{n}She is back in the dead-house, trimming a lamp as if she had never left it. She does not mention the courier or the master or your silence. But she looks at you, the first time you meet, for rather longer than she needs to, with her head a little on one side, as if she were listening for something in you that she could name.{/n}''',
+}
+_return_nodes = [nar("start", '''{n}The days since the man in grey went south have been quiet in the way of a house waiting on its priestess. The dead-house door has stayed shut. This morning something of hers has come back up the Ustalav road ahead of her.{/n}''')]
 _return_nodes[0]["Choices"] = []
 for _index, (_branch, _answer_flag) in enumerate((
     ("hungry", COURIER_HUNGRY), ("ripening", COURIER_RIPENING), ("silent", COURIER_SILENT),
@@ -824,11 +834,11 @@ for _index, (_branch, _answer_flag) in enumerate((
     _old["Requires"].append(COURIER_RETURNED)
     _message["Choices"].append(_dispatch)
     _courier["Nodes"].append(nar(
-        "dispatch." + _branch, "[PROSE PENDING: courier dispatch " + _branch + "]",
+        "dispatch." + _branch, _DISPATCH_TEXT[_branch],
         c("Continue", flags=(_answer_flag,))))
     _return_nodes[0]["Choices"].append(c("Continue", _branch, requires=(_answer_flag,)))
     _return_nodes.append(nar(
-        _branch, "[PROSE PENDING: courier earned return " + _branch + "]",
+        _branch, _RETURN_TEXT[_branch],
         c("Continue", flags=(COURIER_RETURNED,))))
 SCENES.append(scene(
     E + "beat.courier_return", _courier["Title"], "Elyanka", 5, "", _return_nodes,
