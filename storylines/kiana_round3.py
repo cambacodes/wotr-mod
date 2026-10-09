@@ -270,7 +270,7 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
         book, ns = books["kiana.date"], pages("kiana.date")
         # Explicit brief: the existing first-night slot, at the initiating
         # motion; the dropped dress and promise precede this cut.
-        ns["kiana.date.explicit.1"]["Text"] = '''{n}Kiana pushes you back onto the bed and settles over you, her bare knees on either side of your hips. She catches your collar and draws you close.{/n}
+        ns["kiana.date.explicit.1"]["Text"] = '''{n}Kiana stays over you, her bare knees on either side of your hips, her fingers tight in your collar.{/n}
 "Stay. I haven't finished with you."
 {n}The candle burns beside the abandoned dress.{/n}'''
         old = ns["kiss"]["Choices"][0]
@@ -280,7 +280,7 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
             effects = tuple(twin["Set"])
             twin["Set"] = []
             retire(old)
-            book["Nodes"].append(page("kiana.date.explicit.2", '''{n}Kiana lets her dress fall beside the bed, pulls you down with her and settles over you. Her fingers leave your collar to draw you closer.{/n}
+            book["Nodes"].append(page("kiana.date.explicit.2", '''{n}Kiana stays over you, hot and flushed, her fingers tight in your collar.{/n}
 "Damn the line. Stay."
 {n}The candle burns beside the abandoned dress.{/n}''', c('[Spend the evening together.]', flags=effects)))
     for sid in ("kiana.ink_after", "kiana.unborrowed_evening"):
@@ -293,7 +293,7 @@ I am still in his life. He still hates part of this. If you expect me to turn hi
         retire(ns["kiss"]["Choices"][0])
         # Explicit brief: renewed intimacy on the desk / private bed, never
         # another first night. Default cuts at her initiating movement.
-        ns[slot]["Text"] = ('''{n}Kiana opens the last buttons and lets her dress slip to her waist. She climbs onto the cleared desk, draws you between her bare knees and pulls you against her. Her ink-stained hand leaves a mark on your collar.{/n}''' if sid == "kiana.ink_after" else '''{n}Kiana lets her dress fall beside the bed, draws you down and rolls over you, catching your hand against her bare waist. The key stays in the locked door.{/n}''')
+        ns[slot]["Text"] = ('''{n}Kiana holds you against her on the cleared desk, her bare knees locked round your hips. Her ink-stained hand leaves a mark on your collar.{/n}''' if sid == "kiana.ink_after" else '''{n}Kiana stays over you, catching your hand against her bare waist. The key stays in the locked door.{/n}''')
 
     from storylines import kiana_round4
     kiana_round4.integrate(payload)
