@@ -118,8 +118,13 @@ def spine(scenes):
         n('page', 'Narrator', '{n}The ending sent to Devarra remained unanswered. She hunted beyond the north ridge, '
           'far from the crusade\'s banners. No general pointed her toward a battle. No Commander climbed '
           'to collect a dragon promised by a story.{/n}')],
-        requires=('trickster.ever', P + 'returned', CLAIMED, 'devarra.present_now'),
+        requires=('trickster.ever', P + 'returned', CLAIMED, REFUSED, 'devarra.present_now'),
         forbids=(ANSWERED, 'devarra.closed'), last=6, Relationship='devarra'))
+
+    scenes.append(scene(P + 'epilogue.claimed_unjudged', '', 'DevarraEpilogue', 6, '', [
+        n('page', 'Narrator', '[PROSE PENDING: submitted conqueror ending without a played verdict]')],
+        requires=('trickster.ever', P + 'returned', CLAIMED, 'devarra.present_now'),
+        forbids=(REFUSED, ANSWERED, 'devarra.closed'), last=6, Relationship='devarra'))
 
     refused = _scene(scenes, P + 'epilogue.refused')['Nodes'][0]
     refused['Text'] = ('{n}A grey woundwyrm hunted the old Wound for years. She passed over Drezen once, '

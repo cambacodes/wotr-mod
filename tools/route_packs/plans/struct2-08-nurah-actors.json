@@ -1,0 +1,69 @@
+{
+  "job": "struct2-08",
+  "finding": "NUR-A03",
+  "status": "blocked-runtime-binding",
+  "hub": "nurah.arrival",
+  "area": "2570015799edf594daf2f076f2f975d8",
+  "actors": [
+    {
+      "identity": "nurah.visitor.sava",
+      "authored_name": "Sava Lorn",
+      "minimum_required_scene": "nurah.a_page_with_teeth",
+      "blueprint": null,
+      "placement": {
+        "anchor": "nurah.arrival",
+        "locator": null,
+        "role": "supporting interlocutor within conversation range at the private door"
+      },
+      "lifecycle": "selected-encounter entry to exit/abort/unload",
+      "binding_status": "coordinator must supply verified adult actor blueprint, hub locator and supported multi-actor registration"
+    },
+    {
+      "identity": "nurah.visitor.carrow",
+      "authored_name": "Reth Carrow",
+      "minimum_required_scene": "nurah.the_editor_opens",
+      "blueprint": null,
+      "placement": {
+        "anchor": "nurah.arrival",
+        "locator": null,
+        "role": "supporting interlocutor within conversation range at the private door"
+      },
+      "lifecycle": "selected-encounter entry to exit/abort/unload",
+      "binding_status": "coordinator must supply verified adult actor blueprint, hub locator and supported multi-actor registration"
+    },
+    {
+      "identity": "nurah.visitor.vhal",
+      "authored_name": "Istrene Vhal",
+      "minimum_required_scene": "nurah.the_subscribers_evening",
+      "blueprint": null,
+      "placement": {
+        "anchor": "nurah.arrival",
+        "locator": null,
+        "role": "supporting interlocutor within conversation range at the private door"
+      },
+      "lifecycle": "selected-encounter entry to exit/abort/unload",
+      "binding_status": "coordinator must supply verified adult actor blueprint, hub locator and supported multi-actor registration"
+    },
+    {
+      "identity": "nurah.visitor.edran",
+      "authored_name": "Edran",
+      "minimum_required_scene": "nurah.the_subscribers_evening",
+      "blueprint": null,
+      "placement": {
+        "anchor": "nurah.arrival",
+        "locator": null,
+        "role": "supporting interlocutor within conversation range at the private door"
+      },
+      "lifecycle": "selected-encounter entry to exit/abort/unload",
+      "binding_status": "coordinator must supply verified adult actor blueprint, hub locator and supported multi-actor registration"
+    }
+  ],
+  "owner": "encounter/runtime coordinator",
+  "acceptance": [
+    "At actual hub entry, spawn only the participants required by the selected scene before its first cue.",
+    "Maintain stable scene-local actor identities across node transitions; never substitute Nurah for a visitor.",
+    "On exit, abort, hub withdrawal or area unload, remove spawned visitors and their contacts.",
+    "Re-entry must not duplicate actors; saved scene/node/choice IDs remain stable.",
+    "Verify arrival and cleanup in managed runtime and live hub; authored plan is not placement evidence."
+  ]
+}

@@ -280,6 +280,10 @@ class StructSlotHostTests(unittest.TestCase):
         modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
         story = {"Scenes": [s for module in modules for s in module.SCENES]}
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        # This fixture contains only the slot-host modules, not the whole export.
+        # Exact registry targets are checked against the complete export below.
+        fixture_ids = {s['Id'] for s in story['Scenes']}
+        pending = dict(pending, pending=[e for e in pending['pending'] if e['scene'] in fixture_ids])
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
         self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
 
@@ -297,3 +301,7 @@ class StructSlotHostTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# Gate coverage for the assigned struct2-08 counterexample histories.
+from tests.test_struct2_08 import StructureHistories  # noqa: E402,F401
