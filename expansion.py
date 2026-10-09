@@ -769,6 +769,9 @@ def _make_expansion(*, independent_tirabade=True):
     # villain-route-nocticula (cloud): Nocticula's text-only layer and appended readers, after every appender.
     from storylines import nocticula_cloud
     nocticula_cloud.integrate(payload)
+    # heat pass g1 (HEAT, Directive 12): build-up text of the explicit slots, last, text only.
+    from storylines import anevia_heat
+    anevia_heat.integrate(payload)
     return payload
 
 
