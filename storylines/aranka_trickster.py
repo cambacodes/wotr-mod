@@ -832,3 +832,39 @@ for _letter_id in ("aranka.trickster.verse.her_letter", "aranka.trickster.verse.
         for _page in _copy["Nodes"]:
             _page["Text"] = fit(LETTER_FACE[_letter_id.endswith("_late")][_page["Id"]], _place)
     SCENES.append(_yard_letter)
+
+
+# struct3-a / ARA-A2-01: a paid primer survives coronation refusal and departure.
+# Keep legacy crowned nodes/answer targets; append native-history alternatives.
+for _consumer in SCENES:
+    if _consumer["Id"] not in {
+        "aranka.trickster.verse.her_letter", "aranka.trickster.verse.her_letter_yard",
+        "aranka.trickster.verse.her_letter_late", "aranka.trickster.verse.her_letter_late_yard",
+    }:
+        continue
+    _consumer_nodes = {node["Id"]: node for node in _consumer["Nodes"]}
+    for _knowledge in ("known", "unknown"):
+        for _history in ("uncrowned", "departed", "crown_refused"):
+            _variant = copy.deepcopy(_consumer_nodes[_knowledge])
+            _variant["Id"] = "struct3_a." + _knowledge + "." + _history
+            _variant["Text"] = "[PROSE PENDING: Aranka " + _knowledge + " confrontation; " + _history + " King's tavern and song-sheet history]"
+            _consumer["Nodes"].append(_variant)
+    for _parent in list(_consumer_nodes.values()):
+        _additions = []
+        for _answer in _parent["Choices"]:
+            if _answer.get("Next") not in ("known", "unknown"):
+                continue
+            for _history in ("uncrowned", "departed", "crown_refused"):
+                _alternate = copy.deepcopy(_answer)
+                _alternate["Next"] = "struct3_a." + _answer["Next"] + "." + _history
+                if _history == "departed":
+                    _alternate["Requires"].append(KING_GONE)
+                elif _history == "crown_refused":
+                    _alternate["Requires"].append("coronation.seen")
+                    _alternate["Forbids"].extend((CROWNED, KING_GONE))
+                else:
+                    _alternate["Forbids"].extend((CROWNED, KING_GONE, "coronation.seen"))
+                _additions.append(_alternate)
+            _answer["Requires"].append(CROWNED)
+            _answer["Forbids"].append(KING_GONE)
+        _parent["Choices"].extend(_additions)

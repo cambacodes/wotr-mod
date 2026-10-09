@@ -659,5 +659,229 @@
     "beat": "Clarify that the undecided answer concerns answering the Commander in the fire, preserving the already accepted courtship.",
     "finding": "trickster_all_romance-c6-p1-001",
     "ruling": "struct2-11"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "struct3_a.known.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "struct3_a.known.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "struct3_a.unknown.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "struct3_a.unknown.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "struct3_a.known.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "struct3_a.known.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "struct3_a.unknown.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "struct3_a.unknown.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "struct3_a.known.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "struct3_a.known.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "struct3_a.unknown.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "struct3_a.unknown.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "struct3_a.known.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "struct3_a.known.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "struct3_a.unknown.uncrowned",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King is currently uncrowned; do not claim coronation.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "struct3_a.unknown.departed",
+    "woman": "aranka",
+    "beat": "Preserve the earned primer, accusation, Starward Gaze origin, Commander response and venue staging. The King has departed; explicitly attribute the circulating verse to his earlier tavern performance and retained song-sheet, with no current speaking or possession claim.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "herrax.house.last_night",
+    "node": "herrax.house.last_night.explicit.1",
+    "woman": "herrax",
+    "beat": "Preserve possessive appetite, predatory life-force exchange, charged approach and consequential aftermath; cut before narrated sexual acts or culmination. Distinguish ancient personal history from recent succession after Chivarro; remove narrator assertion of millennium proprietorship. Native-evidence coordinator must attach verified official cut comparator excerpts before direct calibration; none are supplied in this job bundle.",
+    "ruling": "struct3-a:herrax:H02/H03"
+  },
+  {
+    "scene": "herrax.house.her_rooms",
+    "node": "herrax.house.her_rooms.explicit.1",
+    "woman": "herrax",
+    "beat": "Preserve appetite and charged approach, cut before narrated sexual acts and culmination, and retain consequential aftermath. Native-evidence coordinator must attach verified official cut comparator excerpts before direct calibration; none are supplied in this job bundle.",
+    "ruling": "struct3-a:herrax:H02"
+  },
+  {
+    "scene": "herrax.house.last_night",
+    "node": "agreed",
+    "woman": "herrax",
+    "beat": "Distinguish long personal history from recent succession as madam after Chivarro removal; preserve the unpriced invitation and predatory register.",
+    "ruling": "struct3-a:herrax:H03"
+  },
+  {
+    "scene": "herrax.house.last_night",
+    "node": "dead",
+    "woman": "herrax",
+    "beat": "Clarify claimed thousand-year closure history against recent madam succession; do not imply she has held the house for a millennium.",
+    "ruling": "struct3-a:herrax:H03-sibling"
+  },
+  {
+    "scene": "herrax.letters.before_the_wound",
+    "node": "letter2",
+    "woman": "herrax",
+    "beat": "Inspect the letter repeating the first closure in a thousand years; align with recent succession and preserve her threat and price.",
+    "ruling": "struct3-a:herrax:H03-sibling"
+  },
+  {
+    "scene": "horzalah.trickster.epilogue.decided",
+    "node": "page",
+    "woman": "horzalah",
+    "beat": "Rewrite paragraph Id horzalah.trickster.epilogue.decided.explicit.1: preserve commands, appetite, scars and consequential aftermath; cut before rhythm and sequential climax. Audit supplied comparator: Wenduag TooMuchStress/Cue_0099, cutscene b5a052441dcf408d9f1f67ea9ea0bd36. Bundle contains no verified official excerpts; native-evidence owner must attach keyed excerpts before calibration is certified.",
+    "ruling": "struct3-a:horzalah:H01"
+  },
+  {
+    "scene": "horzalah.trickster.beat.ribbon",
+    "node": "tied",
+    "woman": "horzalah",
+    "beat": "Stage travel from the Drezen Storyteller contact and name the actual private room before bedroom material, or keep this beat at the contact and remove bedroom, last-night and waiting-Guild-master assumptions. chamber_seen is historical, not current staging or intimacy last night; preserve bow, menace and charged approach.",
+    "ruling": "struct3-a:horzalah:H03"
+  },
+  {
+    "scene": "horzalah.trickster.beat.ribbon",
+    "node": "horzalah.trickster.beat.ribbon.explicit.1",
+    "woman": "horzalah",
+    "beat": "Align this continuation with the actual room/travel/time established by tied; no unsupported Guild hall, waiting masters or last-night marks. Preserve legacy choices and contact discovery.",
+    "ruling": "struct3-a:horzalah:H03"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "struct3_a.known.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "struct3_a.unknown.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "struct3_a.known.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "struct3_a.unknown.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "struct3_a.known.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "struct3_a.unknown.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "struct3_a.known.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "struct3_a.unknown.crown_refused",
+    "woman": "aranka",
+    "beat": "Coronation occurred without crowning the King; there is no current Chapter 5 King venue. Attribute the circulating verse explicitly to the earlier paid tavern performance and retained song-sheet without inventing a physical departure or current King speech. Preserve accusation, knowledge branch, earned primer and venue staging.",
+    "ruling": "struct3-a:ARA-A2-01"
   }
 ]

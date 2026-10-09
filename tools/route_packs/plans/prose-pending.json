@@ -1,4 +1,173 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "struct3_a.known.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f16fcbbd0e9a7ae1b31048ac32175d8c343e2ebef3ce15921db1657f0c6b602f"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "struct3_a.known.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f1e7da6952976545547c8cdf019d4be39be7eca558a7c22fdd72f5abdde69cd4"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "struct3_a.unknown.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5d6b40dcee65535eaba41ea01176cf6acfe0515bc3135c01ee08d597674c84df"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "struct3_a.unknown.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "909fecb3e308a9b58d58c4617d1533b4f536973cf6dd5c00b570388a9ade29f8"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "struct3_a.known.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f16fcbbd0e9a7ae1b31048ac32175d8c343e2ebef3ce15921db1657f0c6b602f"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "struct3_a.known.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f1e7da6952976545547c8cdf019d4be39be7eca558a7c22fdd72f5abdde69cd4"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "struct3_a.unknown.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5d6b40dcee65535eaba41ea01176cf6acfe0515bc3135c01ee08d597674c84df"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "struct3_a.unknown.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "909fecb3e308a9b58d58c4617d1533b4f536973cf6dd5c00b570388a9ade29f8"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "struct3_a.known.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f16fcbbd0e9a7ae1b31048ac32175d8c343e2ebef3ce15921db1657f0c6b602f"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "struct3_a.known.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f1e7da6952976545547c8cdf019d4be39be7eca558a7c22fdd72f5abdde69cd4"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "struct3_a.unknown.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5d6b40dcee65535eaba41ea01176cf6acfe0515bc3135c01ee08d597674c84df"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "struct3_a.unknown.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "909fecb3e308a9b58d58c4617d1533b4f536973cf6dd5c00b570388a9ade29f8"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "struct3_a.known.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f16fcbbd0e9a7ae1b31048ac32175d8c343e2ebef3ce15921db1657f0c6b602f"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "struct3_a.known.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f1e7da6952976545547c8cdf019d4be39be7eca558a7c22fdd72f5abdde69cd4"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "struct3_a.unknown.uncrowned",
+      "surface": "node",
+      "index": null,
+      "text_sha": "5d6b40dcee65535eaba41ea01176cf6acfe0515bc3135c01ee08d597674c84df"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "struct3_a.unknown.departed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "909fecb3e308a9b58d58c4617d1533b4f536973cf6dd5c00b570388a9ade29f8"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "struct3_a.known.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3d51e0116c235bcd26ad087b5a8557ceaa439ff13f6b8e5e1cdce7e8834994d5"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter",
+      "node": "struct3_a.unknown.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "72fbf0e59bd45c92790699e9111980260a53461ba5ebcab51bff2060296469b7"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "struct3_a.known.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3d51e0116c235bcd26ad087b5a8557ceaa439ff13f6b8e5e1cdce7e8834994d5"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late",
+      "node": "struct3_a.unknown.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "72fbf0e59bd45c92790699e9111980260a53461ba5ebcab51bff2060296469b7"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "struct3_a.known.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3d51e0116c235bcd26ad087b5a8557ceaa439ff13f6b8e5e1cdce7e8834994d5"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_yard",
+      "node": "struct3_a.unknown.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "72fbf0e59bd45c92790699e9111980260a53461ba5ebcab51bff2060296469b7"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "struct3_a.known.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "3d51e0116c235bcd26ad087b5a8557ceaa439ff13f6b8e5e1cdce7e8834994d5"
+    },
+    {
+      "scene": "aranka.trickster.verse.her_letter_late_yard",
+      "node": "struct3_a.unknown.crown_refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "72fbf0e59bd45c92790699e9111980260a53461ba5ebcab51bff2060296469b7"
+    }
+  ]
 }
