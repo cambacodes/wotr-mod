@@ -31,11 +31,13 @@ COURIER_SILENT = E + "courier.silent"
 
 
 def visit(id, title, nodes, requires, forbids=(), delay=24, last=5, chapter=5, chapters=(5,), optional=True, kind="visit",
-          portable=False, areas=None):
+          portable=False, areas=None, any_groups=()):
     """portable=False: a Drezen encounter, delivered at a rest in the capital. The courier and the Threshold visit travel."""
     SCENES.append(scene(id, title, "Elyanka", chapter, "", nodes, requires=("trickster.ever", *requires),
                         forbids=(CLOSED, *forbids), delay=delay, last=last, optional=optional, Relationship=REL,
-                        Remote=True, Kind=kind, Chapters=list(chapters), **(dict(Areas=areas) if areas else ({} if portable else dict(Areas=[DREZEN])))))
+                        Remote=True, Kind=kind, Chapters=list(chapters),
+                        **(dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}),
+                        **(dict(Areas=areas) if areas else ({} if portable else dict(Areas=[DREZEN])))))
     tag(id, "T")
 
 
@@ -417,7 +419,8 @@ visit(E + "beat.master", "A master from Caliphas", [
 "Then I will decide." {n}She rises, and takes the knife she has been holding all evening, and puts it in her sleeve.{/n} "Go to bed, Commander. Do not ask me in the morning what I decided. You gave it to me. It is mine."
 {n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask, and you never learn, and a certain master of the Way is never seen in Caliphas again.{/n}''',
        c("[Do not ask.]", flags=(MASTER_HERS,))),
-], requires=(BIER,), forbids=(MASTER_KILLED, MASTER_ESCORTED, MASTER_HERS), delay=120, last=5)
+], requires=(BIER,), forbids=(MASTER_KILLED, MASTER_ESCORTED, MASTER_HERS), delay=120, last=5,
+    any_groups=((BIER,), (COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT)))
 
 
 # --- 11. The King's bill (T, optional; only where the King holds court and his court wept at the wake). --------------------
