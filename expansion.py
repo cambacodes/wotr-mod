@@ -772,6 +772,8 @@ def _make_expansion(*, independent_tirabade=True):
     # heat pass g1 (HEAT, Directive 12): build-up text of the explicit slots, last, text only.
     from storylines import anevia_heat
     anevia_heat.integrate(payload)
+    from storylines import camellia_heat
+    camellia_heat.integrate(payload)
     return payload
 
 
