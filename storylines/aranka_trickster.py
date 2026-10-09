@@ -834,6 +834,62 @@ for _letter_id in ("aranka.trickster.verse.her_letter", "aranka.trickster.verse.
     SCENES.append(_yard_letter)
 
 
+# struct3-a / ARA-A2-01 prose: the face-to-face accusation when the King's standing differs from the legacy crowned page.
+# The frame is hers (hurt, then shrewd about the coppers); the history paragraph says only what that standing allows.
+_COPPERS = '''"And I took their coppers. Do not look at me like that. If the city wants to think I wrote it, the city can pay the woman who didn't."'''
+_COPPERS_SHORT = '''"I took their coppers, mind. If the city wants to think I wrote it, the city can pay the woman who didn't."'''
+_FACE_FRAME = {
+    (False, "known"): '''"Somebody has changed my song!" {n}She is on her feet before you reach her.{/n} "I sat down to earn my supper and the first man who stopped to listen hummed it at me! Starward Gaze, with a verse I never wrote, and when I said so he looked at me as if I had the words wrong. Everyone swears it was always sung that way. It wasn't. And it's better, which is the worst part!"
+@HISTORY@
+"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece. I did not ask you to rhyme it with a tambourine. I hear a Knight-Commander stood on a bench and paid for every mug in the house to learn it. Well?"
+{n}She waits with her arms folded over the lute-strap. The open case at her feet holds four coppers from people who think the verse is hers, and she has not handed one back. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+    (True, "known"): '''"Somebody has changed my song!" {n}She is on her feet before you reach her.{/n} "The pikemen at the ford sang it at me, with a verse I never wrote, and when I said so they looked at me as if I had the words wrong. Everyone swears it was always sung that way. It wasn't. And it's better, which is the worst part!"
+@HISTORY@
+"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece. I did not ask you to rhyme it with a tambourine. I hear a Knight-Commander stood on a bench and paid for every mug in the house to learn it. Well?"
+{n}She waits with her arms folded over the lute-strap. The open case at her feet holds four coppers from people who think the verse is hers, and she has not handed one back. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+    (False, "unknown"): '''"You. Knight-Commander. I am Aranka, I sing for Desna, and I would like a word." {n}She is on her feet before you reach her.{/n}
+"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part!"
+@HISTORY@
+"Well? I'm told that was you. A bench, a purse, and a rhyme for 'Thaberdine'."
+{n}She waits, chin up. The open case at her feet holds four coppers from people who think the verse is hers, and she has not handed one back. Nobody within earshot is selling anything; @CROWD@ is listening.{/n}''',
+}
+_FACE_FRAME[(True, "unknown")] = _FACE_FRAME[(False, "unknown")]
+
+_FACE_HISTORY = {
+    # The King is crownless and still holding court.
+    (False, "known", "uncrowned"): '''"A tavern king in this city is telling anyone with a mug that his pops learned it from a Desnan girl with a voice like a lark, and the whole city has decided the girl was me. I have never met his pops. I have never met him. Old Marit heard it in his tavern. He has the song-sheet, she says, with your verse in charcoal, and he swears on his pops' tankard it was always there!"
+''' + _COPPERS,
+    (True, "known", "uncrowned"): '''"The tavern king, crownless and loud with it, is telling anyone with a mug that his pops learned it from a Desnan girl with a voice like a lark, and the whole city has decided the girl was me. I have never met his pops. I have never met him. Old Marit rode out to the ford to tell me. He has the song-sheet, she says, with your verse in charcoal, and he swears on his pops' tankard it was always there!"
+''' + _COPPERS,
+    (False, "unknown", "uncrowned"): '''"A tavern king in this city is telling everyone his pops learned it from a Desnan girl, and everyone has decided the girl was me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern. She says he has an old song-sheet with the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+''' + _COPPERS_SHORT,
+    (True, "unknown", "uncrowned"): '''"The tavern king, crownless and loud with it, is telling everyone his pops learned it from a Desnan girl, and everyone has decided the girl was me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, rode out to the ford to tell me. She says he has an old song-sheet with the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+''' + _COPPERS_SHORT,
+    # The King has gone; the verse is what he left behind, so nothing of his is said in the present tense.
+    (False, "known", "departed"): '''"There was a tavern king in this city who told every mug in his house that his pops learned it from a Desnan girl with a voice like a lark, and the whole city decided the girl was me. I have never met his pops. I have never met him, and now I can't even shout at him, because he's gone and left the tune behind. Old Marit heard him do it, the night the beer was paid for. The song-sheet he kept had your verse on it in charcoal, she says, and he swore on his pops' tankard it was always there!"
+''' + _COPPERS,
+    (True, "known", "departed"): '''"There was a tavern king in this city who told every mug in his house that his pops learned it from a Desnan girl with a voice like a lark, and the whole city decided the girl was me. I have never met his pops. I have never met him, and now I can't even shout at him, because he's gone and left the tune behind. Old Marit heard him do it, the night the beer was paid for, and rode out to the ford to tell me. The song-sheet he kept had your verse on it in charcoal, she says, and he swore on his pops' tankard it was always there!"
+''' + _COPPERS,
+    (False, "unknown", "departed"): '''"There was a tavern king in this city who told everyone his pops learned it from a Desnan girl, and everyone decided the girl was me. I have never met his pops. I have never met him, and now he's gone, and I can't even shout at him. Old Marit, one of our pilgrims, heard him sing it in his tavern. She says the song-sheet he kept had the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+''' + _COPPERS_SHORT,
+    (True, "unknown", "departed"): '''"There was a tavern king in this city who told everyone his pops learned it from a Desnan girl, and everyone decided the girl was me. I have never met his pops. I have never met him, and now he's gone, and I can't even shout at him. Old Marit, one of our pilgrims, heard him sing it in his tavern and rode out to the ford to tell me. She says the song-sheet he kept had the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+''' + _COPPERS_SHORT,
+    # The coronation happened without a crown for him: no King to find, only the earlier paid-for performance.
+    (False, "known", "crown_refused"): '''"They tell me there was a coronation and the tavern king never got his crown, so I suppose he won't be singing it at me from a throne. It makes no difference. What he sang is out, from before. He told every mug in his house that his pops learned it from a Desnan girl with a voice like a lark, the night the beer was paid for, and the whole city decided the girl was me. I have never met his pops. I have never met him. Old Marit heard it. The song-sheet he kept had your verse on it in charcoal, she says, and he swore on his pops' tankard it was always there!"
+''' + _COPPERS,
+    (True, "known", "crown_refused"): '''"They tell me there was a coronation and the tavern king never got his crown, so I suppose he won't be singing it at me from a throne. It makes no difference. What he sang is out, from before. He told every mug in his house that his pops learned it from a Desnan girl with a voice like a lark, the night the beer was paid for, and the whole city decided the girl was me. I have never met his pops. I have never met him. Old Marit heard it, and rode out to the ford to tell me. The song-sheet he kept had your verse on it in charcoal, she says, and he swore on his pops' tankard it was always there!"
+''' + _COPPERS,
+    (False, "unknown", "crown_refused"): '''"They tell me there was a coronation and the tavern king never got his crown, so I suppose he won't be singing it at me from a throne. It makes no difference. What he sang is out, from before: that his pops learned it from a Desnan girl, and the whole city decided the girl was me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern. She says the song-sheet he kept had the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+''' + _COPPERS_SHORT,
+    (True, "unknown", "crown_refused"): '''"They tell me there was a coronation and the tavern king never got his crown, so I suppose he won't be singing it at me from a throne. It makes no difference. What he sang is out, from before: that his pops learned it from a Desnan girl, and the whole city decided the girl was me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and rode out to the ford to tell me. She says the song-sheet he kept had the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
+''' + _COPPERS_SHORT,
+}
+
+
+def _letter_face_history(late, knowledge, history):
+    return _FACE_FRAME[(late, knowledge)].replace("@HISTORY@", _FACE_HISTORY[(late, knowledge, history)])
+
+
 # struct3-a / ARA-A2-01: a paid primer survives coronation refusal and departure.
 # Keep legacy crowned nodes/answer targets; append native-history alternatives.
 for _consumer in SCENES:
@@ -847,7 +903,8 @@ for _consumer in SCENES:
         for _history in ("uncrowned", "departed", "crown_refused"):
             _variant = copy.deepcopy(_consumer_nodes[_knowledge])
             _variant["Id"] = "struct3_a." + _knowledge + "." + _history
-            _variant["Text"] = "[PROSE PENDING: Aranka " + _knowledge + " confrontation; " + _history + " King's tavern and song-sheet history]"
+            _variant["Text"] = fit(_letter_face_history(_consumer["Id"].endswith(("_late", "_late_yard")), _knowledge, _history),
+                                   "yard" if _consumer["Id"].endswith("_yard") else "fye")
             _consumer["Nodes"].append(_variant)
     for _parent in list(_consumer_nodes.values()):
         _additions = []
