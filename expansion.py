@@ -785,6 +785,9 @@ def _make_expansion(*, independent_tirabade=True):
     # heat calibration, batch b (Claude prose): official-register rewrite of the Minagho/Chivarro, Jerribeth and household cuts.
     from storylines import heat_cal_b
     heat_cal_b.integrate(payload)
+    # heat calibration batch g (Claude prose): official-register rewrite of the intimate scenes, text only, last.
+    from storylines import heat_cal_g
+    heat_cal_g.integrate(payload)
     return payload
 
 
