@@ -87,7 +87,18 @@ SEEN_CUES = {
     HUSHED: ["76349e9bb678de3468e70c87c8e777ae"],        # Logistics_5/Cue_0045 (Woljif's verdict: hushed up, sent away)
     REDEEMED: ["75690b4f1e8fa734b8699b454c9137d2"],      # Logistics_5/Cue_0046 (Arueshalae's verdict: a chance to atone)
 }
-DERIVED = {P + "late_committed": [["trickster.ever", COMMITTED, "dorgelinda.outcome.accepted"]],
+COLD_UNMENDED = "dorgelinda.ledger.cold_unmended"
+COMMITMENT_FORBIDS = ["dorgelinda.ledger.quarrel_unmended", COLD_UNMENDED]
+DERIVED_FORBIDS = {
+    COLD_UNMENDED: ["dorgelinda.ledger.quarrel_mended"],
+    "dorgelinda.outcome.accepted": COMMITMENT_FORBIDS,
+    P + "late_committed": COMMITMENT_FORBIDS,
+    "dorgelinda.harem.eligible": COMMITMENT_FORBIDS,
+}
+
+# Commitment records history; current readers withhold intimacy while the seal quarrel stands.
+DERIVED = {COLD_UNMENDED: [["dorgelinda.ledger.quarrel_cold"]],
+           P + "late_committed": [["trickster.ever", COMMITTED, "dorgelinda.outcome.accepted"]],
            "dorgelinda.outcome.accepted": [[COMMITTED]], HANGED: [[HANGED_LANN], [HANGED_WENDUAG]]}
 RENAMED = {"dorgelinda.weekly_count": P + "after.weekly_count", "dorgelinda.fellows_methods": P + "after.fellows_methods",
            "dorgelinda.commit": P + "after.commit", "dorgelinda.ending_committed": P + "epilogue.committed"}
@@ -465,6 +476,9 @@ def integrate(payload):
         payload["SeenCues"][key] = list(cues)
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
+    for key, forbids in DERIVED_FORBIDS.items():
+        have = payload.setdefault("DerivedForbids", {}).setdefault(key, [])
+        have.extend(flag for flag in forbids if flag not in have)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
