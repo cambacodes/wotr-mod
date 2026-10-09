@@ -889,46 +889,6 @@
     "ruling": "fix-inherited2"
   },
   {
-    "scene": "aranka.react.arueshalae.dreamer",
-    "node": "start",
-    "woman": "aranka",
-    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
-    "why": "The scene attaches to Arueshalae's native hub and checks only Arueshalae's ContactUnit. aranka.present_now establishes availability, not the presence of Aranka's market copy. The scene can describe both women together without verifying Aranka's actual actor, including when her placement fails.",
-    "finding": "aranka:D08",
-    "ruling": "r5-S1",
-    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
-  },
-  {
-    "scene": "aranka.react.arueshalae.dreamer.yard",
-    "node": "start",
-    "woman": "aranka",
-    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
-    "why": "The yard variant checks market-anchor failure but never checks that the fallback Aranka actor actually exists. It remains attached to Arueshalae's hub with only her ContactUnit, so both failed placements can still produce this joint encounter.",
-    "finding": "aranka:D09",
-    "ruling": "r5-S1",
-    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
-  },
-  {
-    "scene": "aranka.react.arueshalae.fallen",
-    "node": "start",
-    "woman": "aranka",
-    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
-    "why": "The market variant verifies only evil Arueshalae's actor. Aranka's logical availability does not establish that her copy is on screen, and the native Arueshalae hub does not establish this wagon encounter.",
-    "finding": "aranka:D10",
-    "ruling": "r5-S1",
-    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
-  },
-  {
-    "scene": "aranka.react.arueshalae.fallen.yard",
-    "node": "start",
-    "woman": "aranka",
-    "beat": "Write the explicit meeting/presentation for both women at the matching market or yard placement, consistent with the native Arueshalae contact host. Do not imply movement supplied only by availability flags; preserve both women's existing voices and the dreamer/fallen reactions.",
-    "why": "The yard variant requires market failure but does not verify successful yard placement. It can narrate Aranka beside the wagon when neither Aranka copy is available.",
-    "finding": "aranka:D11",
-    "ruling": "r5-S1",
-    "dependency": "Copy contact check repaired; the native Arueshalae hub still needs the explicit meeting/presentation specified by the audit. Claude staging text or scoped movement is pending."
-  },
-  {
     "scene": "household.ensemble.ch5.arrows",
     "node": "start",
     "woman": "delamere",
@@ -1307,41 +1267,5 @@
     "finding": "konomi:D05",
     "ruling": "r5-S1",
     "dependency": "storylines/konomi_private.py, storylines/konomi_private_absence.py, storylines/konomi_return_invitation.py, storylines/konomi_round3.py: supported reunion placement/fallback and both checked contests need the section 6 route-local scope."
-  },
-  {
-    "scene": "seelah.trickster.dead.pickpocket",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D01",
-    "ruling": "r5-S2"
-  },
-  {
-    "scene": "seelah.trickster.dead.pickpocket_effects",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D02",
-    "ruling": "r5-S2"
-  },
-  {
-    "scene": "seelah.trickster.dead.seller_word",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D05",
-    "ruling": "r5-S2"
-  },
-  {
-    "scene": "seelah.trickster.dead_no_unit.seller_word",
-    "node": "taken",
-    "woman": "seelah",
-    "beat": "Keep the retained theft list intact; distinguish reporting to the living Irabeth from reporting through the crusade watch/court when she is dead or gone.",
-    "why": "The historical list does not require Irabeth to attend. The taken outcome and the seller aftermath still say the named report is done in absent-Irabeth histories. Write only the local reporting variant; preserve the seller choices, payment, court consequences and Seelah's earned return/contact.",
-    "finding": "seelah:D06",
-    "ruling": "r5-S2"
   }
 ]

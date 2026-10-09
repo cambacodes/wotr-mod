@@ -166,7 +166,24 @@ GRABBED = '''{n}He feels it go. His hand closes on your wrist with the strings s
 CONCEALED = '''{n}You give it. His hand opens. It is the only thing you have bought tonight that you will have to keep, and it is the one line on her list she asked someone to finish: Tell Irabeth. He knows your face now, and he will tell the story to anyone who buys him a drink, everywhere but the Inheritor's door.{/n}'''
 
 SELLER_TAKEN = '''{n}You shout for the watch yourself. When the sergeant comes running you put the man in his hands and the pouch in your coat, and write the order on the sergeant's own slate: the stones are the crusade's business tonight, by the Commander's word, and the court may have them back as dust. The seller shouts about seals and sacrilege all the way to the cells.{/n}
-{n}By morning every clerk of the Inheritor's court knows the Commander broke a sacred-property seizure on a word, and they will remember it the next time the Commander wants a favour. But the man is in a cell, and the last line on her list, Tell Irabeth, is done.{/n}'''
+{n}By morning every clerk of the Inheritor's court knows the Commander broke a sacred-property seizure on a word, and they will remember it the next time the Commander wants a favour. But the man is in a cell.{/n}'''
+
+# r5-S2 (seelah:D01/D02/D05/D06): who hears the report. Her list says "Tell Irabeth"; the choices stay independent of
+# Irabeth, and only these read-only paragraphs follow whether she is alive and in Drezen to be told.
+IRABETH_DEAD, IRABETH_LEFT, IRABETH_RETURNED = "irabeth_dead", "irabeth_gone", "irabeth.trickster.returned"
+
+
+def irabeth_told(here, dead, left):
+    return (p(here, forbids=(IRABETH_DEAD, IRABETH_LEFT)),
+            p(here, requires=(IRABETH_RETURNED,), any_groups=[[IRABETH_DEAD, IRABETH_LEFT]]),
+            p(dead, requires=(IRABETH_DEAD,), forbids=(IRABETH_RETURNED,)),
+            p(left, requires=(IRABETH_LEFT,), forbids=(IRABETH_RETURNED, IRABETH_DEAD)))
+
+
+TAKEN_REPORT = irabeth_told(
+    '''{n}The sergeant's slate and the seller's name are on Irabeth's desk before breakfast. The last line on her list, Tell Irabeth, is done.{/n}''',
+    '''{n}Irabeth is dead, and cannot be told. The sergeant's slate and the seller's name go to the Inheritor's court instead, to be read by clerks who never knew Seelah. Her last line asked for Irabeth. The court is what is left.{/n}''',
+    '''{n}Irabeth has left Drezen, and a letter would take weeks to find her. The sergeant's slate and the seller's name go to the Inheritor's court instead. Her last line asked for Irabeth. Tonight the court is who you can tell.{/n}''')
 
 SELLER_PAID = '''{n}"Name it," you say. He does, and it is a jeweller's price for every stone, and a second one for forgetting your face. You pay it out of the crusade's chest with a note the quartermaster will read aloud at the next council.{/n}
 {n}He lets go and counts it twice. The stones are yours, honestly bought from a man who stole them from the Kenabres dead, and he walks off whistling. The last line on her list, Tell Irabeth, stays undone, and now you have paid him to keep it that way.{/n}'''
@@ -213,7 +230,7 @@ letter("seelah.trickster.dead.pickpocket", "The dead thief's purse", [
     nar("grabbed", GRABBED, *caught_choices(
         c('[Give him your word] "Your name stays off every report. Let go."', "concealed", flags=(BROKER,)))),
     nar("concealed", CONCEALED, c("Continue", "pocketed")),
-    nar("taken", SELLER_TAKEN, c("Continue", "pocketed")),
+    nar("taken", SELLER_TAKEN, c("Continue", "pocketed"), paragraphs=TAKEN_REPORT),
     nar("paid", SELLER_PAID, c("Continue", "pocketed")),
     nar("pocketed", '''{n}The chaplain is still at the bier when you come back. You tip the pouch into his bowl, and the stones rattle down on top of her coppers.{/n}
 {n}He picks one out and turns it to the candle. There is gilt on it.{/n}
@@ -276,7 +293,8 @@ letter("seelah.trickster.dead.pickpocket_effects", "Her effects, without her", [
           flags=(BROKER,)))),
     nar("concealed_rider", CONCEALED, c("Continue", "rider")),
     nar("concealed_rider_word", CONCEALED, c("Continue", "rider_word")),
-    nar("taken", SELLER_TAKEN, c("Continue", "rider", forbids=(CHAPLAIN,)), c("Continue", "rider_word", requires=(CHAPLAIN,))),
+    nar("taken", SELLER_TAKEN, c("Continue", "rider", forbids=(CHAPLAIN,)), c("Continue", "rider_word", requires=(CHAPLAIN,)),
+        paragraphs=TAKEN_REPORT),
     nar("paid", SELLER_PAID, c("Continue", "rider", forbids=(CHAPLAIN,)), c("Continue", "rider_word", requires=(CHAPLAIN,))),
     nar("rider", '''{n}You send the rider out with her savings, the relic-seller's stones and a diamond from your own coat: two stones' worth. You keep the list. Two days there, the chaplain's rite, two days back: nothing to do now but wait for the rider.{/n}''',
       c('"Ride fast."', requires=(DIAMOND_HELD,), remove_item=DIAMOND, flags=(DISPATCHED, HOLDS))),
@@ -574,6 +592,11 @@ visit_twin("seelah.trickster.dismissed.second_ask", "seelah.trickster.dismissed.
 
 # --- Q10 r2: Seelah's word on the relic-seller, after the caught lift (whichever answer the Commander chose) -----------
 
+SELLER_WORD_TOLD = irabeth_told(
+    '''"Tell Irabeth. You did it." {n}She crosses the line out, and writes "done" beside it, and then, after a moment, "not by me".{/n}''',
+    '''"Irabeth should have been the one to hear it." {n}She looks at the line a long while. Then she crosses it out anyway, writes "done, by the court" beside it, and after a moment, "not by me".{/n} "She'd have had him scrubbing Kenabres altars on his knees till they bled. A cell will have to do."''',
+    '''"Irabeth's gone where a letter takes a month to catch her. Fine. A court did the telling." {n}She crosses the line out, writes "done, by the court" beside it, and after a moment, "not by me".{/n} "I'll write to her anyway. She'll want to know some bastard was selling Kenabres off a stone at a time."''')
+
 SELLER_NODES = [
     s_("start", '''{n}She has a scrap of paper out with the last line of her list on it, copied fresh in her own hand, and she is looking at it.{/n}
 "Brother Haldis says the relic-seller's stall is empty. I want to know what you did with him, Commander. All of it."''',
@@ -582,10 +605,9 @@ SELLER_NODES = [
     s_("concealed", '''"Your word. In front of the saints. To a man who robs the dead." {n}She folds the scrap very small.{/n}
 "It's your word, not mine, so I'll let it stand. I'm not going to make a liar of you to feel clean. But every pilgrim he sold a stone to, I'm going to find, and buy it back, a coin at a time. Don't you dare offer me the money."''',
       c('"I won\'t."', flags=(SELLER_HEARD,))),
-    s_("taken", '''{n}Her grin is slow, and very wide.{/n}
-"Tell Irabeth. You did it." {n}She crosses the line out, and writes "done" beside it, and then, after a moment, "not by me".{/n}
-"The court clerks will hate you for a year. Good. Iomedae's courts can stand to be reminded that the dead come first."''',
-      c('"They can hate me. It was your line."', flags=(SELLER_HEARD,))),
+    n("taken", "Seelah", '''{n}Her grin is slow, and very wide.{/n}''',
+      c('"They can hate me. It was your line."', flags=(SELLER_HEARD,)), portrait="Seelah",
+      paragraphs=SELLER_WORD_TOLD + (p('''"The court clerks will hate you for a year. Good. Iomedae's courts can stand to be reminded that the dead come first."'''),)),
     s_("paid", '''"You paid him." {n}She says it flatly, the way she would say you had stepped in something.{/n}
 "With the crusade's gold. To a man who prised stones off the Kenabres dead." {n}She does not cross the line out. She writes beside it, small: "and the Commander paid him".{/n}
 "I know why. I'm alive, so I can't even shout at you properly. I'm going to shout at you a little anyway."''',
