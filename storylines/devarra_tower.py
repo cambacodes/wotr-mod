@@ -1539,11 +1539,13 @@ polish_tower(SCENES)
 _hoard = next(s for s in SCENES if s['Id'] == T + 'the_hoard')
 _hoard_nodes = {node['Id']: node for node in _hoard['Nodes']}
 _hoard_nodes['her']['Choices'].append(c(
-    '[PROSE PENDING: attempt the hoard climb with an Athletics check]',
+    '[Skip the carters\' switchbacks. Take the ridge face with the first sack on your back.]',
     check=dict(Skill='SkillAthletics', DC=25, Success='climb_checked', Failure='climb_noticed')))
 _hoard['Nodes'].extend([
-    nar('climb_checked', '[PROSE PENDING: successful hoard climb; Devarra notices the sure footing]',
+    nar('climb_checked', '''{n}You shoulder the first sack and ignore the switchbacks the carters cut. You take the face instead, fingers in the cracks, boots finding the ledges before you look for them, the weight riding high between your shoulders. You top the ridge without once stopping for breath.{/n}
+{n}Devarra has watched the whole climb from the gorge rim, wings half open, as a hawk watches a goat on scree.{/n} "Sure-footed." {n}She does not make it sound like praise.{/n} "A thing that climbs like that has climbed into other people's rooms. I will remember it when I count my doors."''',
         c('Continue', 'honest', flags=(T + 'hoard_climb_sure',))),
-    nar('climb_noticed', '[PROSE PENDING: failed hoard climb; Devarra notices the struggle before all loads are delivered]',
+    nar('climb_noticed', '''{n}You shoulder the first sack and ignore the switchbacks the carters cut. Halfway up the face a ledge crumbles under your boot, and the sack swings you out over the gorge by its straps. You hang by two fingers and a curse until your toe finds rock again. The rest of the climb you do slowly, with your cheek against the stone.{/n}
+{n}Devarra has watched all of it from the rim, and has not moved a claw.{/n} "Remember how that felt. There are ten more sacks." {n}Her tongue touches her teeth.{/n} "I wanted to see how you fall. It is useful to know, before I trust you with the rest."''',
         c('Continue', 'honest', flags=(T + 'hoard_climb_noticed',))),
 ])

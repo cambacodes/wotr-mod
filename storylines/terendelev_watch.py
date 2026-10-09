@@ -1191,6 +1191,12 @@ for _s in SCENES:
 
 
 # struct2-08: historical returns do not prove current availability. Sweep both hosts.
+_ABSENT_NOW = {
+    'irabeth': '''{n}Her eyes go to the barracks door, and stay there, though nobody comes out of it.{/n} "The half-orc knight. I asked after her at the mess this morning, and the sergeant looked at his boots. She is not at her post. I do not know whether she is dead, or sent away, or only gone where the war needed her."
+"I remember what I was told of Iz, that she fell there. I was also told that she came back from it. Both may be true, and neither keeps her on this street today." {n}She folds her hands in her lap.{/n} "I shall not ask you to explain it. Only, if you learn where she is, remember what I said about the song."''',
+    'galfrey': '''{n}She looks toward the chapel, then away from it, as one does from a seat that is no longer kept.{/n} "The yard is empty. Whatever brought Galfrey back across it, she is not in it now, and her knights will not say where she has gone."
+"Do not tell me it changes Iz. My claws, my sorcery: that was done on the field, and it stays done whether she walks, lies still, or has gone from my sight again." {n}Her voice is level.{/n} "I shall go on telling the Inheritor about her Queen until I know which of those it is I am telling."''',
+}
 for _scene in SCENES:
     _base = _scene['Id'].removesuffix('_awning')
     if _base not in (P + 'watch.irabeth', P + 'watch.galfrey'):
@@ -1210,6 +1216,4 @@ for _scene in SCENES:
     if _woman == 'irabeth':
         _start['Choices'].append(c('Continue', 'absent_now',
             requires=('irabeth_gone',), forbids=(_present, 'irabeth.trickster.returned', 'irabeth_dead')))
-    _scene['Nodes'].append(te('absent_now',
-        '[PROSE PENDING: ' + _woman + ' currently absent; distinguish any historical return and Iz recollections]',
-        c('Continue')))
+    _scene['Nodes'].append(te('absent_now', _ABSENT_NOW[_woman], c('Continue')))

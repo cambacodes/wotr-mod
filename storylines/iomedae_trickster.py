@@ -1228,7 +1228,7 @@ _struct2_disputation.update(Remote=False, Areas=[DREZEN], Entry=_struct2_disputa
 from copy import deepcopy as _struct2_copy
 _struct2_after = next(s for s in SCENES if s["Id"] == E + "epilogue.after")
 _struct2_page = _struct2_after["Nodes"][0]
-_struct2_page["Choices"].append(c("[PROSE PENDING: choice - Read the lifetime account without the vigil reunion.]", "struct2_lifetime_summary"))
+_struct2_page["Choices"].append(c("[Read the account of the years that followed, without the vigil.]", "struct2_lifetime_summary"))
 _struct2_after["Nodes"].append(nar("struct2_lifetime_summary",
-    "[PROSE PENDING: Read the lifetime account without requiring an intimate reunion.]",
+    "{n}The years went on whether or not anyone kept a vigil for them. Iomedae held her line in the east, and what the Commander had answered and carried followed after, as it always does.{/n}",
     paragraphs=_struct2_copy(_struct2_page["Paragraphs"][2:])))
