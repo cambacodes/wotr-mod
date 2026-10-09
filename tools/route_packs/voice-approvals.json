@@ -3411,6 +3411,60 @@
       "source_branch": "claude/cand-6",
       "source_commit": "eb9a613709829d1e93d772ce83d26667ba30c0a8",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.her_room",
+      "before_sha": "4743e2cbd8f4b38fd1952b29798b99cafbfcfec5a996f9463093392c27989d46",
+      "after_sha": "c9c912c4b858b2725f216d4bd5317911c4532d980b766a5f7aec109a5f815489",
+      "owner": "claude",
+      "source_branch": "claude/cand-7",
+      "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "jerribeth.ending_apart",
+      "before_sha": "df54a11a9952cb959b2b50b07660a1279899bf0250bfb0442efe3da39501d2ab",
+      "after_sha": "8b3c8a9cd83430e27be63acc22503b5ed42e23fd3737a3a713ba24ecb2e45bd1",
+      "owner": "claude",
+      "source_branch": "claude/cand-7",
+      "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt",
+      "before_sha": "537edd74353ee2cf1ad62d8bf8c27af990a12f24deac55d46802b5d60fdf140d",
+      "after_sha": "42ff64a0ba80910464c981c652a9db0460c641ec6336d16da072ab8aad06644a",
+      "owner": "claude",
+      "source_branch": "claude/cand-7",
+      "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.ch4.hunt_found",
+      "before_sha": "8b0078d68b5c24b486934c07610960dbb563a896658ae60ea49b8ab882c86ca1",
+      "after_sha": "356dec1dcefb583aa6b13638acc725f789e19694fba40d02034a11100569f95b",
+      "owner": "claude",
+      "source_branch": "claude/cand-7",
+      "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.ch5.hunt_window",
+      "before_sha": "c5dc54916378450edeea2a1142c5bfd75a61553533f8970a349c4e436f951514",
+      "after_sha": "d954f188a1ede59d7566b76b4bac27cd15708e68ffee359dbfb41f0993fb7be4",
+      "owner": "claude",
+      "source_branch": "claude/cand-7",
+      "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "melazmera.trickster.commit.stone",
+      "before_sha": "780b4b15409cc3fe16ef14a2b81eb54addba5efc06c712ed76289ac8cb690625",
+      "after_sha": "d8ae17dbcbfcecfd02e3e1b4177c7cd386ba0f77f8ff01b3c988f9b0dcaacc72",
+      "owner": "claude",
+      "source_branch": "claude/cand-7",
+      "source_commit": "5470719921677c6d7e93eec3628858a0b76f3de1",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
