@@ -263,3 +263,55 @@ rule([J + "unsold_evening"], "kiss",
 {n}She watches your face. She is not imagining it;''')
 
 _TOUCHED.update({"jerribeth.future", "jerribeth.room_measure", "jerribeth.unsold_evening"})
+
+# ======================================================================================
+# WENDUAG
+# ======================================================================================
+W = "wenduag.trickster."
+
+rule([W + "court.cairn", W + "court.cairn.native_visit"], "decide",
+     '''Her tail comes round your thigh, and tightens, and holds.{/n}''',
+     '''Her tail comes round your thigh, and tightens, and holds.{/n}
+"No talking," {n}she says, and her teeth close on your shoulder. Her hand goes down between you and finds you ready, and her breath hisses out against your neck, pleased and rough.{/n}
+"Good. I hate waiting."''')
+
+rule([W + "court.cairn", W + "court.cairn.native_visit"], "roll",
+     '''and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}''',
+     '''and you are not sure any longer who is winning, and neither, from the sound of her, is she.{/n}
+{n}Then she stops fighting. She hooks a leg behind yours and takes you down onto the cold stone with her on top, bare and furious with wanting, her hair across your face and her hands pinning yours.{/n}
+"That's three," {n}she says against your mouth.{/n} "I win. The prize is you."''')
+
+rule([W + "court.cairn", W + "court.cairn.native_visit"], "knife_down",
+     '''She catches your lower lip between her teeth as you draw her closer.{/n}''',
+     '''She catches your lower lip between her teeth as you draw her closer.{/n}
+"Good," {n}she breathes.{/n} "I wanted the knife away. Not because I'm afraid of it." {n}Her hand slides down your stomach and closes, firm and warm, and she smiles at what it finds.{/n} "I wanted both your hands free."''')
+
+rule([W + "court.gongs", W + "court.gongs.native_visit"], "saw",
+     '''"Come down. I want that mouth of yours busy before another bell starts."''',
+     '''"Come down. I want that mouth of yours busy before another bell starts."
+{n}Her thumb drags across your lower lip, and she watches your face to see what it does. Her tail has wound itself round your wrist without asking.{/n}
+"I have been thinking about it all night, up here with the bows. Every breath you took. I was not made for patience."''')
+
+rule([W + "court.gongs", W + "court.gongs.native_visit"], "stronger",
+     '''"Come down. You've had enough watchmen listening to you tonight."''',
+     '''"Come down. You've had enough watchmen listening to you tonight."
+{n}Her thumb drags across your lower lip. Her tail has wound itself round your wrist without asking, and she does not unwind it.{/n}
+"And I want to hear you say things you would never say with a sentry listening. Walk."''')
+
+rule([W + "court.hunt"], "ate",
+     '''{n}She reaches over and wipes it off your chin with her thumb, and licks the thumb.{/n}''',
+     '''{n}She shoves the deer aside with her knee and comes closer across the thorn, her leathers open at the throat and her breath coming quick. She takes your hand and drags it down inside them, to skin that is hot and tight and slick, and holds it there while she watches you understand. Then she reaches up with her other hand and wipes the blood off your chin with her thumb, and licks the thumb.{/n}''')
+
+prule(W + "epilogue.pack", "page", "wenduag.trickster.vellexia.hunted",
+      '''The succubus pulled her into the alcove, her open gown brushing the huntress's hands. Wenduag answered her kiss and drew her closer.''',
+      '''The succubus pulled her into the alcove, her open gown brushing the huntress's hands, and pinned her to the wall by the throat, lightly, to see what the huntress would do about it. Wenduag showed her teeth, hooked a leg behind Vellexia's knee and turned her against the stones. "Predictable," Vellexia breathed, and unfastened the huntress's leathers herself. Wenduag answered her kiss and drew her closer.''')
+
+# --- harem rows that carry Wenduag ------------------------------------------------------
+rule(["household.pair.seelah_wenduag.choice"], "wenduag_yes",
+     '''{n}Wenduag leads her toward the stairs, leaving her bow beside you.{/n}''',
+     '''{n}Her hand has gone under the paladin's tabard, and Seelah's breath comes out hard and amused against her mouth. Wenduag bites the line of her throat, once, to feel the pulse jump; Seelah's hand tangles in Wenduag's hair and drags her head back, and neither of them is pretending the contest is anything but this.{/n}
+{n}Wenduag leads her toward the stairs, leaving her bow beside you.{/n}''')
+
+rule(["household.pair.wenduag_arueshalae.choice"], "threshold",
+     '''Wenduag pulls her through the door.{/n}''',
+     '''Wenduag pulls her through the door and slams it with her heel. Arueshalae's wings fold round them both; a hand pushes under Wenduag's leathers, and Wenduag bites the succubus's lip hard enough to taste blood and growls her approval into the kiss.{/n}''')
