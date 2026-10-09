@@ -1,4 +1,4 @@
-"""S25: authored display quarrel; optional courtship retired pending a real stay.
+"""S25: authored display quarrel; table-hosted courtship with current-body guards.
 
 Canon anchors and the body-window blocker are documented in the S25 pack.
 Only deed witnesses are written here; household policy remains engine-owned.
@@ -88,7 +88,7 @@ def retry_nodes():
 
 
 def optional_nodes():
-    """Reserved sequence, structurally complete but unavailable in this build."""
+    """Optional sequence; current presence must survive every delayed step."""
     company = [
         n("start", "Narrator", '''{n}The march has thinned the Fool King's court. In the upper room, Camellia examines the half-dismantled display while Vellexia sends the last yawning guest downstairs.{/n}
 "You have left me with the only critic who was not begging to be invited," {n}Vellexia says.{/n}
@@ -197,13 +197,13 @@ def register(payload, scenes, refs):
         "morning": ("choice.both_yes",),
     }
     for step, nodes in optional_nodes().items():
-        # Deliberate retirement gate, not a fabricated stay producer. See lore
-        # check S25: current one-visit presence cannot warrant a 152-hour arc.
-        # Retain every reserved node/destination for later coordinator activation.
-        forbids = EXCLUSIONS + flags(step + ".seen", "ready") + tuple(household.enmity(a, b) for a, b in (PAIR, PAIR[::-1]))
+        # The assigned host repair removes the contradictory readiness veto.
+        # Keep the existing body, departure, deed and delay requirements;
+        # this does not extend either route's one-visit presence window.
+        forbids = EXCLUSIONS + flags(step + ".seen") + tuple(household.enmity(a, b) for a, b in (PAIR, PAIR[::-1]))
         body = scene(P + step, "Off the display", "Camellia", 5, '[Camellia and Vellexia: the empty salon]', nodes,
             requires=ENVELOPE + flags("ready", *needs[step]), forbids=forbids, delay=8 if step == "morning" else 48,
-            last=5, Relationship="household", Chapters=[5], Areas=[DREZEN], Remote=True, ManualOnly=True, Kind="event",
+            last=5, Relationship="household", Chapters=[5], Areas=[DREZEN], InteractionHub="household.table", Kind="event",
             Participants=list(PAIR), ParticipantWomen=[], Pair=list(PAIR), RestAllowance="household.pair",
             HouseholdCategory="pair", HouseholdArc=P.rstrip("."), HouseholdArcStart=step == "company",
             HouseholdWitness=P + step + ".seen",
