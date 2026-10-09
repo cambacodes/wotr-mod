@@ -1188,3 +1188,28 @@ for _s in SCENES:
             '"There. My place in the column is settled. Now go and sleep. You will have enough sleepless '
             'nights ahead." {n}She takes the roll back to the infirmary.{/n}', c("[Let her go.]")),
     ])
+
+
+# struct2-08: historical returns do not prove current availability. Sweep both hosts.
+for _scene in SCENES:
+    _base = _scene['Id'].removesuffix('_awning')
+    if _base not in (P + 'watch.irabeth', P + 'watch.galfrey'):
+        continue
+    _start = next(node for node in _scene['Nodes'] if node['Id'] == 'start')
+    _woman = 'irabeth' if _base.endswith('irabeth') else 'galfrey'
+    _present = _woman + '.present_now'
+    _targets = ('passes',) if _woman == 'irabeth' else ('alive', 'queen_back', 'queen_back_priestess', 'queen_back_by_you')
+    for _answer in _start['Choices']:
+        if _answer.get('Next') in _targets:
+            _answer['Requires'] = list(dict.fromkeys([*_answer.get('Requires', []), _present]))
+            if _woman == 'irabeth':
+                _answer['Requires'].append('crossroute.irabeth.available')
+    # Later loss has its own continuation; old choices and targets remain in place.
+    _start['Choices'].append(c('Continue', 'absent_now',
+        requires=(_woman + '.trickster.returned',), forbids=(_present,)))
+    if _woman == 'irabeth':
+        _start['Choices'].append(c('Continue', 'absent_now',
+            requires=('irabeth_gone',), forbids=(_present, 'irabeth.trickster.returned', 'irabeth_dead')))
+    _scene['Nodes'].append(te('absent_now',
+        '[PROSE PENDING: ' + _woman + ' currently absent; distinguish any historical return and Iz recollections]',
+        c('Continue')))

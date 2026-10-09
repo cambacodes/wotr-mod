@@ -1533,3 +1533,17 @@ def integrate(payload):
 # Authored round-2 set pieces; append-only repairs, with no new eligibility mechanics.
 from storylines.devarra_round2 import polish_tower
 polish_tower(SCENES)
+
+
+# struct2-08: append a playable climb without changing the four saved approaches.
+_hoard = next(s for s in SCENES if s['Id'] == T + 'the_hoard')
+_hoard_nodes = {node['Id']: node for node in _hoard['Nodes']}
+_hoard_nodes['her']['Choices'].append(c(
+    '[PROSE PENDING: attempt the hoard climb with an Athletics check]',
+    check=dict(Skill='SkillAthletics', DC=25, Success='climb_checked', Failure='climb_noticed')))
+_hoard['Nodes'].extend([
+    nar('climb_checked', '[PROSE PENDING: successful hoard climb; Devarra notices the sure footing]',
+        c('Continue', 'honest', flags=(T + 'hoard_climb_sure',))),
+    nar('climb_noticed', '[PROSE PENDING: failed hoard climb; Devarra notices the struggle before all loads are delivered]',
+        c('Continue', 'honest', flags=(T + 'hoard_climb_noticed',))),
+])

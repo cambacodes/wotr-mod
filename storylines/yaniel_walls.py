@@ -736,3 +736,22 @@ def integrate(payload):
 
 # Phase 4: append the five requested cross-character reaction encounters.
 from storylines import character_interactions_ix_a  # noqa: E402,F401
+
+
+# struct2-08: completed friendship/service and Chivarro's bed are not Minagho intimacy.
+_MINAGHO_BED = Y + 'minagho_played_intimacy'
+_MINAGHO_ACCOUNT = Y + 'minagho_debt_protection'
+_ask = _node('ch5.minagho', 'ask')['Choices']
+_ask[0]['Requires'] = [_MINAGHO_BED, _MINAGHO_ACCOUNT]
+_ask[1]['Requires'] = [_MINAGHO_ACCOUNT]
+_ask[1]['Forbids'] = [_MINAGHO_BED]
+_ask.append(c('[PROSE PENDING: truthful account of the played Minagho arrangement without claiming debt or protection]',
+    'truth_arrangement', forbids=(_MINAGHO_ACCOUNT,)))
+_by[Y + 'ch5.minagho']['Nodes'].append(yn('truth_arrangement',
+    '[PROSE PENDING: Yaniel responds to friendship, service or Chivarro-only history; no invented Minagho bed or protection]',
+    c('Continue', 'truth_end')))
+_integrate_history = integrate
+def integrate(payload):
+    _integrate_history(payload)
+    payload['Derived'][_MINAGHO_BED] = [[MC + 'night.minagho'], [MC + 'night.pair']]
+    payload['Derived'][_MINAGHO_ACCOUNT] = [[MC + 'claimed_debt', MC + 'minagho_in']]

@@ -321,7 +321,11 @@ def apply(payload):
         if scene["Id"].startswith(("devarra.", PAIR, "trickster.lastcall.account.devarra")):
             for node in scene["Nodes"]:
                 texts = [node.get("Text", "")] + [x.get("Text", "") for x in node.get("Paragraphs") or []]
-                if any(PENDING in t for t in texts):
+                if ((scene['Id'], node['Id']) not in {
+                        (D + 'epilogue.claimed_unjudged', 'page'),
+                        (T + 'the_hoard', 'climb_checked'),
+                        (T + 'the_hoard', 'climb_noticed')}
+                        and any(PENDING in t for t in texts)):
                     raise ValueError(f"devarra cloud: prose pending left in {scene['Id']}:{node['Id']}")
 
 

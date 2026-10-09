@@ -939,5 +939,103 @@
     "woman": "Eritrice",
     "beat": "Supply missing ALIGNMENT & REGISTER dossier section and five keyed native samples; inspect other women in the route.",
     "ruling": "ER-A4-02: coordinator/Claude handoff owner; missing pinned dossier and native pack, outside edit scope."
+  },
+  {
+    "scene": "devarra.trickster.epilogue.claimed_unjudged",
+    "node": "page",
+    "woman": "devarra",
+    "beat": "submitted conqueror ending without a played verdict",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "D1"
+  },
+  {
+    "scene": "terendelev.trickster.watch.irabeth",
+    "node": "absent_now",
+    "woman": "terendelev",
+    "beat": "irabeth currently absent; distinguish any historical return and Iz recollections",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "TER-A4-01"
+  },
+  {
+    "scene": "terendelev.trickster.watch.irabeth_awning",
+    "node": "absent_now",
+    "woman": "terendelev",
+    "beat": "irabeth currently absent; distinguish any historical return and Iz recollections",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "TER-A4-01"
+  },
+  {
+    "scene": "terendelev.trickster.watch.galfrey",
+    "node": "absent_now",
+    "woman": "terendelev",
+    "beat": "galfrey currently absent; distinguish any historical return and Iz recollections",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "TER-A4-02"
+  },
+  {
+    "scene": "terendelev.trickster.watch.galfrey_awning",
+    "node": "absent_now",
+    "woman": "terendelev",
+    "beat": "galfrey currently absent; distinguish any historical return and Iz recollections",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "TER-A4-02"
+  },
+  {
+    "scene": "yaniel.trickster.ch5.minagho",
+    "node": "ask",
+    "woman": "yaniel",
+    "beat": "truthful account of the played Minagho arrangement without claiming debt or protection",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "YAN-A3-02",
+    "choice": 3
+  },
+  {
+    "scene": "yaniel.trickster.ch5.minagho",
+    "node": "truth_arrangement",
+    "woman": "yaniel",
+    "beat": "Yaniel responds to friendship, service or Chivarro-only history; no invented Minagho bed or protection",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "YAN-A3-02"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "node": "her",
+    "woman": "devarra",
+    "beat": "attempt the hoard climb with an Athletics check",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "CONVERT devarra.tower.the_hoard",
+    "choice": 4
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "node": "climb_checked",
+    "woman": "devarra",
+    "beat": "successful hoard climb; Devarra notices the sure footing",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "CONVERT devarra.tower.the_hoard"
+  },
+  {
+    "scene": "devarra.tower.the_hoard",
+    "node": "climb_noticed",
+    "woman": "devarra",
+    "beat": "failed hoard climb; Devarra notices the struggle before all loads are delivered",
+    "ruling": "struct2-08 structure-only handoff",
+    "finding": "CONVERT devarra.tower.the_hoard"
+  },
+  {
+    "scene": "terendelev.trickster.watch.galfrey",
+    "node": "queen_back_by_you",
+    "woman": "terendelev",
+    "beat": "Review returned-by-Commander recollection against Kitrane identity and current-presence gate; preserve responsibility for the Iz kill.",
+    "ruling": "struct2-08 Claude continuity review",
+    "finding": "TER-A4-02"
+  },
+  {
+    "scene": "terendelev.trickster.watch.galfrey_awning",
+    "node": "queen_back_by_you",
+    "woman": "terendelev",
+    "beat": "Review returned-by-Commander recollection against Kitrane identity and current-presence gate; preserve responsibility for the Iz kill.",
+    "ruling": "struct2-08 Claude continuity review",
+    "finding": "TER-A4-02"
   }
 ]

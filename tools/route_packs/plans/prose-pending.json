@@ -322,6 +322,76 @@
       "surface": "node",
       "index": null,
       "text_sha": "d2c08cd19ff631171a0a03eec2483db21ccc21857a3cfde2612f4f688dfbdde1"
+    },
+    {
+      "scene": "devarra.trickster.epilogue.claimed_unjudged",
+      "node": "page",
+      "surface": "node",
+      "index": null,
+      "text_sha": "19f294d376b48e72eac2fe0edebbfe270d95befa7f8f78ff567b006a950ca8bb"
+    },
+    {
+      "scene": "terendelev.trickster.watch.irabeth",
+      "node": "absent_now",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0ffe7b98d6b450a7a5c027d2ebba626af2a804612f04e5adcacc11f8e264cfa5"
+    },
+    {
+      "scene": "terendelev.trickster.watch.irabeth_awning",
+      "node": "absent_now",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0ffe7b98d6b450a7a5c027d2ebba626af2a804612f04e5adcacc11f8e264cfa5"
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey",
+      "node": "absent_now",
+      "surface": "node",
+      "index": null,
+      "text_sha": "ee49f31a9c258c3d4eb0aaa44e2c9d01127562bfd574416dfe9090288ddee02a"
+    },
+    {
+      "scene": "terendelev.trickster.watch.galfrey_awning",
+      "node": "absent_now",
+      "surface": "node",
+      "index": null,
+      "text_sha": "ee49f31a9c258c3d4eb0aaa44e2c9d01127562bfd574416dfe9090288ddee02a"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.minagho",
+      "node": "ask",
+      "surface": "choice",
+      "index": 3,
+      "text_sha": "89613524e08428450f347aff428ff40e10b156248a7cbc4afd0fb5c3481e397d"
+    },
+    {
+      "scene": "yaniel.trickster.ch5.minagho",
+      "node": "truth_arrangement",
+      "surface": "node",
+      "index": null,
+      "text_sha": "4d8eb43854d3cbc8a02692e54e4284dae31a63395a14606c063a31a5fc874316"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "node": "her",
+      "surface": "choice",
+      "index": 4,
+      "text_sha": "c3273735811e0e2785bfc1ac4431d20bfe63a63686695673a27b026402f11ccc"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "node": "climb_checked",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e63a83da4b2e8aedb3ab9a575aaeed308d1f8f8eef5c7ad044b7df7b8b459ae1"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "node": "climb_noticed",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7eeb6ed7f8cda8ef47bea17580c47bbbf1013973b5440ef00f4eb82308519e59"
     }
   ]
 }
