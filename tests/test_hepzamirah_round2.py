@@ -59,7 +59,7 @@ class HepzamirahRound2Tests(unittest.TestCase):
         self.assertEqual(node('ghost.deed_by_fire', 'answer_from_cell')['Choices'][1]['Set'], [core.CLOSED])
         self.assertIn(core.PRIMED, node('ghost.deed_by_fire', 'crossing')['Choices'][0]['Set'])
         remote = [s for s in core.SCENES if (s.get('Remote') or s.get('Owner') == 'Memory') and s['MinChapter'] == 5]
-        self.assertEqual(len(remote), 2)
+        self.assertEqual([s["Id"] for s in remote], [core.P + "ghost.body"])
 
     def test_old_ending_exits_are_inert(self):
         for suffix in ['epilogue.leavable', 'epilogue.leavable_on_record', 'epilogue.commit', 'epilogue.refused']:

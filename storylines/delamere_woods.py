@@ -706,3 +706,14 @@ for _scene in SCENES:
                c('"Kyado. He was a shepherd boy with a witch in his temple."', "mourned_later", flags=(TABLE, KYADO_MOURNED)),
                c('"Kyado. Let him rest."', "mourned_later", flags=(TABLE, KYADO_MOURNED))),
             dl("mourned_later", '"Kyado." {n}She sets the finger bones in a row.{/n} "I will say it. He opened my door to a witch, and he kept the place when better men ran. Both belong beside his name."', c("Continue", "baphomet"))))
+
+
+# struct2-05: both chapter variants of the gate conversation use the same
+# native Drezen hub. No household commitment is required to open the visit.
+for _local_scene in SCENES:
+    if _local_scene["Id"] in (P + "woken.count", P + "woken.count_late", P + "woken.first_meat"):
+        _local_scene.pop("Remote", None)
+        _local_scene.pop("Kind", None)
+        _local_scene["AnswerLists"] = ["1a17d8053a3be7f47a7908eb6706f2fe",
+                                       "6dccfd39947ef4242a8afbe36b21a46c"]
+        _local_scene["Entry"] = _local_scene["Title"]

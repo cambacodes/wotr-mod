@@ -483,3 +483,15 @@ for _scene in SCENES:
         _scene["Nodes"].append(dl("names_paid",
             '{n}You give the names, one by one. She repeats each, slowly, and knots the cord when she has heard the last.{/n} "Good. When I come to your fire, introduce me. I will do my own asking."',
             c("Continue", "promise")))
+
+
+# struct2-05: local Drezen visits are selected on the existing tavern hub.
+# Keep their clocks, outcome flags and saved nodes; retire remote delivery.
+for _local_scene in SCENES:
+    if _local_scene["Id"] in (P + "woken.glory", P + "woken.jester", P + "woken.demon"):
+        _local_scene.pop("Remote", None)
+        _local_scene.pop("Kind", None)
+        _local_scene["Areas"] = [DREZEN]
+        _local_scene["AnswerLists"] = ["1a17d8053a3be7f47a7908eb6706f2fe",
+                                       "6dccfd39947ef4242a8afbe36b21a46c"]
+        _local_scene["Entry"] = _local_scene["Title"]

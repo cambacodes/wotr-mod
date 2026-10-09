@@ -277,8 +277,10 @@ class StructSlotHostTests(unittest.TestCase):
         self.assertEqual(5, len(page["Paragraphs"]))
         self.assertEqual("horzalah.trickster.epilogue.decided.explicit.1", page["Paragraphs"][4]["Id"])
         self.assertIsNone(page["Choices"][0]["Next"])
-        modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
-        story = {"Scenes": [s for module in modules for s in module.SCENES]}
+        # The registry covers the full export, including route-owned placeholders.
+        # A partial host fixture cannot validate unrelated registered targets.
+        from tests.story_fixture import fresh_story
+        story = fresh_story()
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
         self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
@@ -293,6 +295,10 @@ class StructSlotHostTests(unittest.TestCase):
         flags.add("devarra.tower.first_bite")
         self.assertTrue(sim_choice_available(answer, SimpleNamespace(flags=flags)))
         self.assertTrue(sim_choice_available(climb["Choices"][0], SimpleNamespace(flags=set())))
+
+
+# struct2-05 production witnesses belong to the selected writing gate.
+from tests.test_struct2_05 import Structure05Tests
 
 
 if __name__ == "__main__":

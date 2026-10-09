@@ -172,3 +172,13 @@ s("letter_work", "The price she names", [
 {n}She reaches for your hand.{/n}
 "Don't expect me to admit that every time. You'd become impossible."''', c('[Walk beside her.]', flags=("seelah.copyist_followed",))),
 ], requires=("seelah.letter_discussed",))
+
+
+# struct2-05: the letter and its two follow-ups are companion interactions
+# at the Nexus, selected through Seelah's existing native dialogue.
+for _local_scene in SCENES:
+    if _local_scene["Id"] in ("seelah.letter", "seelah.letter_after", "seelah.letter_work"):
+        _local_scene.pop("Remote", None)
+        _local_scene.pop("Kind", None)
+        _local_scene["AnswerLists"] = ["417fa384f3250634bb71859fbc913453"]
+        _local_scene["Entry"] = _local_scene["Title"]

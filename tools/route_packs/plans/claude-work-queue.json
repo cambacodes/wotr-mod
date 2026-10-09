@@ -759,5 +759,32 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "hepzamirah.trickster.bond.her_room",
+    "woman": "hepzamirah",
+    "node": "room_paddle_mended",
+    "beat": "[PROSE PENDING: HEP-03 paddle trophy after successful repair; vats hot; no unsupported crooked wrist]",
+    "ruling": "struct2-05 HEP-03: preserve trophy; aftermath must match repair result. Claude owns prose."
+  },
+  {
+    "scene": "hepzamirah.trickster.bond.her_room",
+    "woman": "hepzamirah",
+    "node": "room_paddle_unresolved",
+    "beat": "[PROSE PENDING: HEP-03 paddle trophy with attack recorded but repair outcome unknown]",
+    "ruling": "struct2-05 HEP-03: preserve trophy; aftermath must match repair result. Claude owns prose."
+  },
+  {
+    "scene": "hepzamirah.trickster.bond.her_room",
+    "woman": "hepzamirah",
+    "node": "room_paddle",
+    "beat": "HEP-03 failed repair aftermath: review idle vats and wrist consequences against market_strike; successful repairs use room_paddle_mended.",
+    "ruling": "struct2-05 HEP-03: Claude owns the failure variant; retain existing text pending review."
+  },
+  {
+    "scene": "hepzamirah.trickster.ghost.body",
+    "woman": "hepzamirah",
+    "beat": "CONVERT The lodger: separate ghost negotiation, overnight reply and physical delivery/awakening; preserve original IDs/choices. Current quarters haunting cannot be recast as immediate gate delivery.",
+    "ruling": "struct2-05: coordinator must approve lifecycle/arrival entry before Claude writes variants."
   }
 ]
