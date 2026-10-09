@@ -1,3 +1,8 @@
 runs/*/trace.json
 runs/*/chapter-*.md
 runs/*/index.md
+runs/*/states.json
+runs/*/dossier-manifest.json
+runs/*/review/
+runs/review-manifest.json
+runs/review-summary.json

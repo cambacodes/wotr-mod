@@ -2,7 +2,7 @@
 
 Deterministic simulated playthroughs of the export (`development/Story.json`) under named player
 policies, turned into per-chapter dossiers for LLM continuity reviewers (Luna per chapter part,
-Terra for findings marked uncertain). No game install, no `expansion.py`, no test suites.
+Terra for findings marked uncertain). Walking/rendering needs no game install or provider.
 
 ```sh
 python tools/playthrough/walker.py --all                          # 4 policies, one process each, ~4 min
@@ -22,11 +22,35 @@ Both scripts re-run themselves with `PYTHONHASHSEED=0 PYTHONUTF8=1` so output is
 - `policies.json`: the four policies, as data: path flag, which parts of the ideal-run kit to use,
   pursued relationships, objective tuples, choice-weight rules, scheduled natives.
 - `dossier.py`: writes `runs/<policy>/chapter-<N>[-part-<k>].md` (each <= `--max-kb`, default 120
-  KB) and `runs/<policy>/index.md`.
+  KB), a whole-chapter timeline, `states.json`, `dossier-manifest.json`, and `runs/<policy>/index.md`.
 - `reviewer-contract.md` + `reviewer-schema.json`: the reviewer checklist and strict JSON output.
 
-`runs/*/trace.json` and the chapter dossiers are generated and git-ignored; `runs/*/index.md`
-(run statistics) is committed. Regenerate them after any export change.
+Runs, state references, manifests and dossiers are generated and ignored (apart from the
+legacy committed summaries). Regenerate them after an export change. Legacy summaries
+are unpinned leads; the new aggregator requires admitted manifest-declared outputs.
+
+Reviewing invokes providers and requires separate authorization for that run:
+
+```sh
+bash tools/playthrough/review.sh hostile 4 --knowledge /path/to/Writer/knowledge
+python tools/playthrough/aggregate.py --manifest tools/playthrough/runs/review-manifest.json
+```
+
+The shell wrapper propagates the Python runner's exit. Each call hashes all supplied
+inputs, export and contract/schema plus model/effort/prompt, validates strict output,
+and atomically publishes an admitted output and receipt under its digest. Failed calls
+retain diagnostics and usage; missing usage is `unknown`. The manifest declares parts
+and one chapter synthesis per policy/chapter; aggregation ignores undeclared outputs,
+keeps pending/dropped/artifact dispositions and raw scores, and fails on missing coverage
+or unresolved verification. Chapter metrics use equal chapter weights within policy,
+then equal policy weights, independent of dossier size. An incomplete metric is null.
+Review receipts do not replace the integration runner's gate receipts.
+
+Offline regressions (fake provider only):
+
+```sh
+python -m unittest tests.test_playthrough_loop
+```
 
 ## How a run works
 
