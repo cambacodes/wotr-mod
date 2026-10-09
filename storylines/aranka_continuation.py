@@ -477,6 +477,7 @@ s("the_story_that_follows", "The story that follows", '\"I heard a new version o
         c('"I meant both."', "both")),
     n("private", "Aranka", '''"Good," {n}she says.{/n} "I have been listened to all evening. I would like to be touched now."
 {n}Her hand settles at the back of your neck and she kisses you as if she had rehearsed it, which, knowing her, she has. Then she draws you off the path into the sheltered hollow behind the wall, unpins her cloak and lets it fall on the grass, and pulls you down onto it after her, her fingers already busy with your buckles and one knee hooked over your hip.{/n}
+{n}She is warm through the wool and her laces are already loose. She guides your mouth to the hollow of her throat so you can feel the song she is not singing, and arches under your hands when they find the bare small of her back, and a breath leaves her that is mostly laugh and not entirely.{/n}
 "Not one anyone else gets to hear," {n}she says against your mouth, and drags your shirt up over your head.{/n}''',
         c('[Draw her close as she strips off your shirt.]', "hollow_morning"),
         c('[Catch her hands, laughing. "Another night."]', flags=("aranka.story_conversation_done",))),
