@@ -474,7 +474,7 @@ DERIVED = {
  'delamere.crypt_known': [['kyado.initiated'], ['kyado.crypt_door_seen']],
  'delamere.trickster.late_committed': [['trickster.ever', 'delamere.trickster.hunted']],
  'devarra.trickster.late_committed': [['trickster.ever', 'devarra.trickster.tested']],
- 'dorgelinda.trickster.late_committed': [['trickster.ever', 'dorgelinda.trickster.methods_heard']],
+ 'dorgelinda.trickster.late_committed': [['trickster.ever', 'dorgelinda.committed', 'dorgelinda.outcome.accepted']],
  'eliandra.trickster.late_committed': [['trickster.ever', 'eliandra.trickster.heard']],
  'elyanka.trickster.late_committed': [['trickster.ever', 'elyanka.committed']],   # R5: no late romance (review r5 BEL)
  'ember.trickster.late_committed': [['trickster.ever', 'ember.trickster.visited']],
