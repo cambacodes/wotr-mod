@@ -782,6 +782,9 @@ def _make_expansion(*, independent_tirabade=True):
     # Hepzamirah and Shamira. Text only, last, so no earlier layer can overwrite it and no index moves.
     from storylines import heat_g4
     heat_g4.integrate(payload)
+    # heat calibration, batch b (Claude prose): official-register rewrite of the Minagho/Chivarro, Jerribeth and household cuts.
+    from storylines import heat_cal_b
+    heat_cal_b.integrate(payload)
     return payload
 
 
