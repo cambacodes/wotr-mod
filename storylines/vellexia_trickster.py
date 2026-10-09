@@ -707,10 +707,10 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
       c("Continue", "threshold")),
     nar("threshold", '''{n}Vellexia catches your lower lip between her teeth, then kisses the small hurt she has made. She watches your face as you unlace her gown. The silk slips down her body and pools at her feet.{/n}
 "Slowly, darling. I came all this way to be looked at."
-{n}She stands naked in the lamplight while you shed your own clothes. When you reach for her, she draws you down onto the bed. Her knees press against your hips; her hair brushes your bare chest. She bends close enough for you to feel her breath against your throat.{/n}
+{n}She stands naked in the lamplight while you shed your own clothes. When you reach for her, she draws you down onto the bed. Her hair brushes your bare chest. She bends close enough for you to feel her breath against your throat.{/n}
 "Bare it. I want to see whether you still trust me with it."
-{n}You tilt your head back. She takes your throat between her teeth, not gently, and sucks until the skin burns and the mark is certain. The sound that comes out of you makes her purr against it. Her clawed hands go down your ribs and your belly, nails dragging, and her thigh presses hard between yours; she is hot and wet against your hip and grinding on it without the slightest shame.{/n}
-"Mine for the night, darling. The war can have you back at dawn, and not before." {n}She pins your wrist above your head against the pillow, and with her free hand reaches between your bodies, guiding the two of you together with the unhurried certainty of a woman who has never been refused anything she wanted.{/n}''',
+{n}You tilt your head back. She takes your throat between her teeth, not gently, and sucks until the skin burns and the mark is certain. The sound that comes out of you makes her purr against it. Her clawed hands go down your ribs, nails dragging, and she presses her whole length to you, hot and hungry and without the slightest shame.{/n}
+"Mine for the night, darling. The war can have you back at dawn, and not before." {n}She pins your wrist above your head against the pillow with the unhurried certainty of a woman who has never been refused anything she wanted.{/n}''',
       c("Continue", "vellexia.trickster.after.night.explicit.1")),
     nar("morning", '''{n}At dawn she sits on the edge of the bed, watching you discover the bruise on your throat. Your abandoned clothes cover the Worldwound map. She lifts one corner, finds the lip-paint print beneath it, and laughs.{/n}
 "Leave it. Your officers can argue over that position next."
@@ -718,7 +718,7 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
 "Come back alive. I have not finished with you, and I refuse to be bored by a monument."''',
       c('[Wind a scarf over the bruise.]', flags=("vellexia.trickster.night_kept",))),
     # Explicit-slot brief: her possessive first bodily night; external prose only.
-    nar("vellexia.trickster.after.night.explicit.1", '{n}Vellexia draws you against her. Your abandoned clothes lie across the Worldwound map; she leaves them there and turns the lamp low.{/n}',
+    nar("vellexia.trickster.after.night.explicit.1", '{n}Vellexia draws you against her, and the war goes out of your head along with the lamp. There is her mouth, her nails and her low delighted laugh in the dark, and she does not once let you set the pace. Your abandoned clothes lie across the Worldwound map; she leaves them there.{/n}',
         c("Continue", "morning")),
 ], ("trickster.ever", "vellexia.committed", "vellexia.farewell_lovers"), (KEPT, NIGHT_KEPT), 12,
     # Q11: the peaceful commit reaches the night as well as the recovery; she comes because she was asked to Drezen

@@ -738,8 +738,8 @@ NICHE_NODES = [
 {n}You get her out of the borrowed crusader's tunic, and the shirt under it. She is lean and hard and scarred all over, a hundred old white lines across her ribs and shoulders, the marks of the hooks in a neat row under her collarbones, and she does not hide any of it. When your hand pauses at an old scar she covers it with hers and guides it to her waist. Her mouth finds yours again.{/n}''',
         c("Continue", "threshold2")),
     nar("threshold2", '''"Closer," {n}she says against your mouth.{/n}
-{n}She spreads her cloak on the flags and pulls you down into the lamplight. Her knee crosses your hips. She strips your shirt from your shoulders, her gray hair falling into her eyes, and bends to kiss you again, bare skin hot against yours.{/n}
-{n}Above you the stone martyr keeps her eyes on heaven and Yaniel does not so much as glance at her. She is straddling you in nothing but the lamplight, scars and hook-marks and all, flushed to the collarbone, and she rolls her hips down against yours once, hard, with a short rough breath that is half a curse. Her calloused hands pin yours to the cloak, then let go and take them, and put them on her breasts, her ribs, the hard lean line of her thigh. "All those years I kept this to myself," {n}she says into your mouth.{/n} "Damned if I will keep it another night." {n}When you reach for the last fastening between you, she catches your hand and drags it there herself.{/n}''',
+{n}She spreads her cloak on the flags and pulls you down into the lamplight. She strips your shirt from your shoulders, her gray hair falling into her eyes, and bends to kiss you again, bare skin hot against yours.{/n}
+{n}Above you the stone martyr keeps her eyes on heaven and Yaniel does not so much as glance at her. She is in nothing but the lamplight, scars and hook-marks and all, flushed to the collarbone, and her breath comes short and rough, half a curse. Her calloused hands pin yours to the cloak, then let go and take them, and put them on her ribs, her waist, the hard lean line of her hip. "All those years I kept this to myself," {n}she says into your mouth.{/n} "Damned if I will keep it another night." {n}When you reach for the last fastening, she catches your hand and drags it there herself.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}Afterwards the lamp has burned down to a blue bead. She sits against the plinth of her own statue, one knee drawn up, your shirt around her shoulders. Her thumb rests on the sheared link of the iron you kept.{/n}''',
         c("Continue", "morning2")),
@@ -955,7 +955,7 @@ _nn = {n["Id"]: n for n in _niche["Nodes"]}
 # Explicit slot: mutually chosen first night under the martyr statue; brief supplies continuity.
 _nn["threshold2"]["Choices"][0]["Next"] = Y + "visit.niche.explicit.1"
 _niche["Nodes"].append(nar(Y + "visit.niche.explicit.1",
-    "{n}She catches your hand at the last fastening and draws you down onto her cloak. Above you, the painted martyr keeps her eyes on heaven.{/n}",
+    "{n}She catches your hand at the last fastening and draws you down onto her cloak. Above you, the painted martyr keeps her eyes on heaven. The flags are cold and she is not; her breath goes ragged, her nails find your shoulders, and the vault gives her cry back twice.{/n}",
     c("Continue", "morning", forbids=(CUFF_WORN,)), c("Continue", "morning_worn", requires=(CUFF_WORN,), forbids=(DECLINED,)), c("Continue", "morning", requires=(CUFF_WORN, DECLINED))))
 # Old saves pointing straight to morning still receive location-neutral staging.
 _nn["morning"]["Text"] = "{n}Afterwards the lamp has burned down to a blue bead. She sits against the plinth, one knee drawn up, your shirt around her shoulders. Her thumb finds the sheared link of the iron you kept.{/n}"

@@ -724,7 +724,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
 {n}You lie down in the hollow of a dragon's bed. It is shaped for something very much bigger than you, and the stones fit themselves to your back in a way that is not quite comfortable and not quite not. She stands over you with the rift's light behind her, and looks, with her head on one side.{/n}
 "Yes," {n}she says, very softly.{/n} "That is better. That is much better than a ring."''',
         c("Continue", "her")),
-    mz("her", '''{n}The woman she wears is tall and dark and wears a rock for a crown, and she comes down onto the heap on her knees astride your legs and puts one hand flat on your chest, and watches your breath lift it. She is smiling. It is not a nice smile, and it is not meant to be.{/n}
+    mz("her", '''{n}The woman she wears is tall and dark and wears a rock for a crown, and she comes down onto the heap on her knees beside your hip and puts one hand flat on your chest, and watches your breath lift it. She is smiling. It is not a nice smile, and it is not meant to be.{/n}
 "I have eaten everything that ever stayed in my reach," {n}she says.{/n} "Everything. It stays, and I eat it. That is what reach is for." {n}Her fingers spread over your heart.{/n} "You keep staying."''',
         c("[Touch her throat.]", "throat"),
         c("[Take her hand and put the sapphire in it.]", "sapphire")),
@@ -746,8 +746,8 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
     nar("harpoon", '''{n}Under her ribs on the left side there is a welt the length of your forearm, pink and raised and newer than the rest of her. She sees you find it.{/n}
 "Your captain," {n}she says against your mouth.{/n} "Touch it. I want you to know I let you."''',
         c("Continue", "cut")),
-    nar("cut", '''{n}She pushes you back down into the stones with one hand flat on your chest, and settles astride your hips, and her hair comes down round your face like a tent, with the rock still in it, knocking against your brow. Behind her, all along the roof of the cave, her shadow spreads its wings.{/n}
-{n}She is heavy and hot and bare against you, and she does not hold herself still. She grinds down once, slow, to feel what she has caught, and makes a small greedy sound in her throat, the sound she makes at a good kill. Her breasts brush your chest. Her thighs are tight round your hips and wet where they slide against you, and where the cold plate runs under the skin of her belly it chills you and the heat of her swallows the chill. She laughs, the giggle, low and delighted. She puts her mouth at your ear and her teeth in the lobe and bites, not hard enough to cut, just hard enough to count.{/n}
+    nar("cut", '''{n}She pushes you back down into the stones with one hand flat on your chest, and her hair comes down round your face like a tent, with the rock still in it, knocking against your brow. Behind her, all along the roof of the cave, her shadow spreads its wings.{/n}
+{n}She is heavy and hot and bare against you, and she does not hold herself still. She makes a small greedy sound in her throat, the sound she makes at a good kill, and where the cold plate runs under the skin of her belly it chills you and the heat of her swallows the chill. She laughs, the giggle, low and delighted. She puts her mouth at your ear and her teeth in the lobe and bites, not hard enough to cut, just hard enough to count.{/n}
 "Mine," {n}she says. Her other hand is already at your belt, pulling it open.{/n} "Say it, thief."''',
         c('"Yours."', M + "visit.heap.explicit.1"),
         c("[Pull her down to you.]", M + "visit.heap.explicit.1")),
@@ -774,7 +774,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
 tag(M + "visit.heap")
 # Intimacy insert: her chosen predatory first night on her own hoard; preserve belt and morning continuity.
 SCENES[-1]["Nodes"].append(nar(M + "visit.heap.explicit.1",
-    "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones.{/n}",
+    "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones. The heap shifts and clatters beneath you, a ruby skitters away down the slope, and she takes you the way she takes everything that stays within her reach: greedily, noisily, with her teeth, and without once letting go.{/n}",
     c("Continue", "morning")))
 
 

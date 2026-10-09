@@ -227,7 +227,7 @@ def polish_tower(scenes):
         nodes[id]['Choices'][0]['Next'] = T + 'first_bite.explicit.1'
     # Slot brief: private first-night continuation after payment, then bandaged morning.
     first['Nodes'].append(n(T + 'first_bite.explicit.1', 'Narrator',
-        '{n}The fire burns low around the ruined tower. Before dawn, the path remains empty.{/n}', c('Continue', 'morning'), portrait='Devarra'))
+        '{n}Her heat closes around you, her claws grind slow furrows in the stone, and the sound she makes in her chest is not a word. The fire burns low around the ruined tower, and her breath is still loud in the dark under the wing. Before dawn, the path remains empty.{/n}', c('Continue', 'morning'), portrait='Devarra'))
     nodes['after']['Text'] = ('"Small. I said it would be small." {n}She lifts her tail from the stair, '
         'then turns her head to keep you in sight.{/n} "The old man went home. The watch will have seen the fire die. '
         'Let them count another hour. Stay."')
@@ -416,7 +416,7 @@ def polish_epilogue(page):
                 'counted it whenever the Commander climbed.{/n}')
     # Slot brief: established annual return; no first-night replay or payment flags.
     page.setdefault('Paragraphs', []).extend([
-        dict(p('{n}On a later visit the Commander climbed after the watch bells rang. Devarra lay on the unlit side of the tower, away from the brush fire. The Commander set down the armor and knelt beneath her raised wing, a hand against her warm scales.{/n} "You kept me waiting." {n}Her tail drew the visitor against her belly; the hand moved under her wing, over the seam where the old blow had gone in, and she shuddered the whole length of her. The Commander undressed in the glow of her breath while she watched, her eye a coal, and her claws ground slowly at the stone. "Mine," she said. "Late, and still mine. I have not finished you." The tail wound up the Commander\'s thigh and held, and the scales ran hot and ridged beneath bare palms as the wing came down and drew them in beneath her.{/n}',
+        dict(p('{n}On a later visit the Commander climbed after the watch bells rang. Devarra lay on the unlit side of the tower, away from the brush fire. The Commander set down the armor and knelt beneath her raised wing, a hand against her warm scales.{/n} "You kept me waiting." {n}Her tail drew the visitor close; the hand moved under her wing, over the seam where the old blow had gone in, and she shuddered the whole length of her. The Commander undressed in the glow of her breath while she watched, her eye a coal, and her claws ground slowly at the stone. "Mine," she said. "Late, and still mine. I have not finished you." The tail wound up the Commander\'s calf and held, and the wing came down and drew them in beneath her, into the heat and the dark.{/n}',
                requires=(T + 'first_bite',)), Id=P + 'epilogue.woken.explicit.1'),
         p('{n}After she had lain among them in the vault, the eggs were carried east to the druids. '
           'The vault stood empty. On that night in later years she looked east from her ridge; the '

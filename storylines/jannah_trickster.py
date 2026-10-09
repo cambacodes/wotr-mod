@@ -727,7 +727,7 @@ meet(P + "circle_night", "Inside the chalk", '[Go to the practice yard tonight, 
 {n}She walks you backwards across the circle a step at a time until your heels are at the chalk, and holds you there on its edge with her mouth at your throat and her hands learning you the way she'd learn a new blade: the weight, the balance, the places it wants to move.{/n}
 "Seven years I only wanted to win," {n}she says against your skin.{/n} "Tonight I want this more."''',
         c("Continue", "down")),
-    jan("down", '''"This is where I'd take your sword," {n}she says, breathing hard, her forehead against yours,{/n} "if you'd brought it into measure." {n}She pushes her breeches down off her hips with one hand and doesn't let go of you with the other.{/n}
+    jan("down", '''"This is where I'd take your sword," {n}she says, breathing hard, her forehead against yours,{/n} "if you'd brought it into measure." {n}She works at your belt with one hand and doesn't let go of you with the other.{/n}
 "You did. So I will."''',
         c("[Let her.]", "cut"),
         c("[Take hers first.]", "cut")),
@@ -1080,16 +1080,14 @@ _r2_challenge["Nodes"].extend([
 _r2_night = _r2_by[NIGHT]
 _r2_cut = next(n for n in _r2_night["Nodes"] if n["Id"] == "cut")
 _r2_cut["Text"] = ('{n}She hooks your heel with hers and takes you down onto the cold sand. '
-                   'Her mouth finds yours before you can catch your breath. '
-                   'She comes down with you, all of her bare against all of you, the sand grinding cold under your shoulders and her skin burning above it, the red light of the Wound running along her ribs as she rises and sinks against you with no pretence of measure left. '
-                   'Her thighs close either side of your hips. She is slick and shaking and not ashamed of it.{/n} '
-                   '"Look at me," {n}she says.{/n} "No. Do not look at the light. Me." '
-                   '{n}Her hand closes on you, deliberate, and guides you to where she wants you.{/n}')
+                   'Her mouth finds yours before you can catch your breath, the sand grinding cold under your shoulders and her skin burning above it, the red light of the Wound running along her ribs. '
+                   'There is no pretence of measure left, and she is shaking and not ashamed of it.{/n} '
+                   '"Look at me," {n}she says.{/n} "No. Do not look at the light. Me."')
 _r2_cut["Choices"][0]["Next"] = NIGHT + ".explicit.1"
 # Brief: mutually chosen first yard night; crossed blades stay aside.
 _r2_night["Nodes"].append(nar(NIGHT + ".explicit.1",
-    '{n}The chalk smears beneath your shoulder. Jannah pulls you close, impatient with the last space between you. '
-    'The watch bell sounds beyond the barracks.{/n}',
+    '{n}The chalk smears beneath your shoulder and the circle stops meaning anything. Her breath comes ragged against your ear, her nails find your back, and all her fencer\'s discipline goes the way of the forms; there is only heat, cold sand and the sound she makes when she stops holding it in. '
+    'The watch bell sounds beyond the barracks, and neither of you answers it.{/n}',
     c("[Stay with her.]")))
 
 

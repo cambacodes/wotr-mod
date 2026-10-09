@@ -544,14 +544,14 @@ SCENES.append(scene("targona.ward_evening", "An hour off the rows", "Targona", 5
     nar("wall", '''{n}The wall walk above the stores is empty at this hour. Below, the ward's canvas glows like a lantern, and from up here you cannot hear the coughing.{/n}
 "An hour," {n}she says. She stands at the parapet with her hands on the stone. Then she turns and draws you close, her palm warm at the back of your neck.{/n} "I want you. And I want to hear you breathe without wondering whether I ought to send for a surgeon." {n}She kisses you before you can answer, hard enough to drive you back against the parapet.{/n}
 {n}There is a watchtower door at the end of the walk, and a guardroom behind it with a brazier nobody has lit. She lights it. Then she pulls her plain habit over her head and lets it fall, and her white-feathered wing brushes the rafters, and she pulls you down with her onto the bench beside the brazier, her mouth at your throat, her hands already at your belt.{/n}
-{n}The bench is narrow and she solves that with her knees, straddling you with a soldier's economy, and for a moment you are both laughing, breath hot against each other's faces, your elbow caught between her and the wall. Then her hands are inside your shirt and her teeth are on your collar, and she is dragging your clothes open with none of the patience a healer is known for. Her breasts rock free of the habit pooled at her waist; you take one in your mouth and she hisses and grips your hair. The brazier throws her wing across the ceiling, huge and white.{/n}
-"One hour. I mean to use all of it." {n}She hauls your hand down between her thighs, shows you how, rocks against it with her head back and her lip caught in her teeth, and when she can no longer wait reaches down between you to guide the two of you together.{/n}''',
+{n}The bench is narrow and for a moment you are both laughing, breath hot against each other's faces, your elbow caught between her and the wall. Then her hands are inside your shirt and her teeth are on your collar, and she is dragging your clothes open with none of the patience a healer is known for. The brazier throws her wing across the ceiling, huge and white.{/n}
+"I have had my hands on more men this month than I can count, and not one of them was mine to keep. One hour. I mean to use all of it." {n}She takes your hand and puts it on her hip, where she wants it, and her breath is not steady.{/n}''',
       c("[Let the hour run.]", "targona.ward_evening.explicit.1")),
     nar("bell", '''{n}At the second bell she straightens your collar, kisses the hollow beneath your jaw, and is on the stair before you have found your other boot. At the foot she stops, turns back, and kisses you once more, hard.{/n}
 "Next time I will ask for two hours," {n}she says,{/n} "The chaplain and I can arrange the watch ourselves." {n}At the rows she sets down her basin, smooths her smock with a distracted smile, and starts the waiting dressing.{/n}''',
       c("Go back to your war.", flags=("targona.ward_evening_kept",))),
     # Explicit interval: her chosen hour away from the covered cots; heated cut.
-    nar("targona.ward_evening.explicit.1", "{n}She draws you into another hungry kiss, her hands tightening at your back. For a while the brazier is the only sound in the room.{/n}",
+    nar("targona.ward_evening.explicit.1", "{n}Her hands tighten at your back and the walk, the ward and the war go out of your head together. There is her heat, her mouth at your throat, the hiss of her breath through her teeth, and the brazier throwing the shadow of her wing over the two of you. When the hour is nearly gone she is laughing against your shoulder, out of breath and not sorry.{/n}",
         c("Continue", "bell")),
 ], requires=("trickster.ever", MET, "targona.what_she_keeps", CORR_ROMANCED), forbids=(CLOSED, DEAD, CONDEMNED, "targona.dead_lair"),
     delay=24, last=5, optional=True, Relationship="targona", Areas=[DREZEN], Chapters=[5], ContactUnit=UNIT, InteractionHub=HUB))
@@ -565,9 +565,9 @@ def night_nodes(scene_id, oath=False, prefix=""):
         if oath else
         '{n}She takes the lamp from beside the sleeping sergeant. At the foot of the ladder she leans into you for a moment, tired enough to close her eyes; then she kisses you and climbs.{/n}')
     cut = (
-        '{n}Targona draws you down beside her and holds you there, her breath warm against your neck. Upstairs, neither of you reaches for the lamp.{/n}'
+        '{n}Targona draws you down beside her and the blanket, and her breath goes hot against your neck. The lamp burns down unattended; for a long while there is only her skin warm under your hands and the rafters creaking when her wing opens. Upstairs, neither of you reaches for it.{/n}'
         if oath else
-        '{n}She pulls you close again, impatient with the space between you. The lamp burns low beside the blanket.{/n}')
+        '{n}She pulls you close again, impatient with the space between you, and the night\'s long list of the dying goes out of her face. Her mouth finds yours, then your throat, and she is laughing and cursing in the same breath, and for the length of a lamp\'s oil the ward does not exist. It burns low beside the blanket.{/n}')
     waking = (
         '{n}Before the watch she catches your hand under the blanket and holds it against her cheek. When she finally rises, she finds your shirt beneath her smock and returns it with a kiss.{/n}'
         if oath else
@@ -577,8 +577,8 @@ def night_nodes(scene_id, oath=False, prefix=""):
 {n}The drying loft is warm from the stove chimney. Clean bandages hang from its rafters; she has laid a blanket beside the crate. She sets down the lamp and flexes fingers stiff from the last dressing.{/n}
 "Look at me." {n}She turns toward the light. You touch her cheek, and she kisses you before you can draw another breath.{/n}
 "I have tended every body in this ward. Tonight I want yours." {n}Her smock falls to the boards. She unfastens your buckles, laughing softly when one sticks; her hands are quicker than yours. The white-feathered wing brushes the linen. She draws you onto the blanket, puts your hands on her hips and bends to kiss you again.{/n}
-{n}Her kiss turns hungry and unhurried at once. She guides one of your hands up her ribs to her breast and holds it there, breathing out against your mouth when your thumb moves, and the stiff fingers that folded bandages all evening go to work on your clothes until the shirt, the belt and the last of the buckles are on the boards with her smock. The loft is warm; the linen overhead sways when her wing opens, careful of the rafters. She sits back on her heels over you, naked in the lamplight, soldier-lean and scarred along the ribs, and looks at you the way she looks at a wound she is certain she can mend.{/n}
-"There you are. No, hold still. I have waited all night for this and I want to look first." {n}She laughs at herself, then drops her weight onto your hips, wet and warm against you, grinds once, slowly, and takes you in hand to guide the two of you together.{/n}''',
+{n}Her kiss turns hungry and unhurried at once, and the stiff fingers that folded bandages all evening go to work on your clothes until the shirt, the belt and the last of the buckles are on the boards with her smock. The loft is warm; the linen overhead sways when her wing opens, careful of the rafters. She looks at you in the lamplight, soldier-lean and scarred along the ribs, the way she looks at a wound she is certain she can mend.{/n}
+"There you are. No, hold still. I have waited all night for this and I want to look first. Every body in this ward I have handled for someone else's sake, and never once been allowed to be selfish with one. Tonight I am going to be very selfish." {n}Her breath is already unsteady, and she does not hide it.{/n}''',
             c("Continue", scene_id + ".explicit.1")),
         nar(prefix + "morning", waking + '''
 {n}When you come down the ladder she is already feeding the drummer. One man hides a laugh in his blanket; another stares up at the canvas.{/n}

@@ -760,10 +760,9 @@ visit(P + "night", "Night one", [
         c("Continue", "lose")),
     nen("lose", '''{n}She kisses you in the middle of a number and presses you down onto the blanket. Her bare shoulder is warm beneath your hand; she catches that hand and draws it closer.{/n} "I am stopping the measurement." {n}Her breath breaks against your throat. She pushes the watch aside.{/n} "I want this. The number can wait."''',
         c("Continue", "watch")),
-    nar("watch", '''{n}She leaves the watch on the blanket, still ticking, and neither of you reaches for it. She is over you, her hair falling around both your faces like a curtain around a lamp, her knees either side of your hips, pulling the last of your clothes away with more determination than skill, and she looks down at you the way she looks at a ruin nobody has catalogued: as if everything in it were about to be hers.{/n}
-{n}She does it properly, because she does everything properly: one palm flat on your sternum to feel the pulse she was counting, the other sliding down your belly, her eyes narrowed in concentration. "Elevated. Increasing. Further," she mutters, and you feel the shiver in her thighs against your hips. Then she has no more words for it. She bends and kisses your throat, your chest, bites once, gets a sound out of you she clearly did not predict, and answers it with a small, startled, delighted laugh. Her own shirt is open and she is bare under it, flushed, breathing hard, her nipples tight against your skin when she lowers herself to kiss you again, and when your hands find her waist she takes one and puts it where she wants it and rolls her hips down against you with the dazed concentration of someone discovering a theorem.{/n}
-"This is not in any of the accounts," {n}she says, against your mouth.{/n} "Every one of them was lying by omission. Hold still. I intend to do this correctly."
-{n}She shifts her weight, one hand braced beside your head, the other between your bodies, positioning, her gaze fixed on yours and her lip caught in her teeth.{/n}
+    nar("watch", '''{n}She leaves the watch on the blanket, still ticking, and neither of you reaches for it. Her hair falls around both your faces like a curtain around a lamp, and she looks down at you the way she looks at a ruin nobody has catalogued: as if everything in it were about to be hers.{/n}
+{n}She lays one palm flat on your chest to feel the pulse she was counting. "Elevated. Increasing. Further," she mutters. Her own shirt hangs open, she is flushed to the collarbones, and she has not covered herself, because it has not occurred to her that she might.{/n}
+"What we are about to do is copulation for pleasure alone, with the main purpose of copulation set aside on purpose. I have read nine accounts of it and every one of them was lying by omission. Hold still, and take off the rest. I intend to do this correctly." {n}Her lip is caught in her teeth.{/n}
 {n}"Night one," she says. "Beginning now."{/n}''',
         c("[Let the watch run down.]")),
     nar("friend_declined", '''{n}She writes: "SEE ALSO: FRIENDSHIP, POINT FIVE. PREVIOUS TRIAL DECLINED. PRESENT TRIAL: CHOSEN."{/n}''', c("Continue", "begin")),
@@ -1090,7 +1089,7 @@ for _physical in SCENES:
         _watch = next(node for node in _physical["Nodes"] if node["Id"] == "watch")
         _slot_id = _physical["Id"] + ".explicit.1"
         # Brief: Nenio abandons measurement for her first chosen encounter.
-        _cut = '{n}Still astride you, Nenio bends to kiss you. Her hands settle on your shoulders; she holds you close as the kiss deepens. The watch keeps ticking beside the blanket.{/n} "Leave it. I want you here."'
+        _cut = '{n}She pulls the last of your clothes away with more determination than skill, and the blanket, the candle and the neglected stopwatch go out of your head together. Her hair comes down over both of you, her breath breaks against your throat, and for a long while there is nothing in the storeroom but skin, heat and a small, startled, delighted laugh. The watch keeps ticking beside the blanket, unobserved.{/n} "Leave it. I want you here."'
         import copy as _slot_copy
         _exit = _slot_copy.deepcopy(_watch["Choices"][0])
         _watch["Choices"][0]["Forbids"] = list(dict.fromkeys([*_watch["Choices"][0]["Forbids"], "trickster.ever"]))
@@ -1110,9 +1109,9 @@ _page["Choices"].append(c("[Read on.]", _late_slot))
 _late_cut = ('{n}Nenio sat on the bed and drew the Commander down beside her. '
              'She caught {mf|his|her} face in both hands and kissed {mf|him|her} again, '
              'then pulled {mf|him|her} close enough that neither could reach the notes.{/n} '
-              '"The library can wait until morning." '
-             '{n}She pulled off the remaining clothes and drew the Commander between her knees. '
-             'Her hands closed on {mf|his|her} hips; she stopped {mf|him|her} with one more kiss, then lifted her hips to meet {mf|his|hers}.{/n}')
+              '"The library can wait until morning. Copulation for pleasure alone. I have been meaning to attempt it." '
+             '{n}The rest of her clothes went to the floor after the pencil, and the candle burned down a finger\'s width '
+             'with no one left to observe it. Whatever she had meant to record, she did not record it.{/n}')
 _late["Nodes"].append(nar(_late_slot, _late_cut, c("Continue", "morning_after")))
 _late["Nodes"].append(nar("morning_after", _morning))
 
