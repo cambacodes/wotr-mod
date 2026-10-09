@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.a_key_that_is_hers.explicit.1",
   "source_node": "night",
-  "default_text": "{n}Anevia draws you down onto her bed. The key hangs beside the door, where she put it.{/n}",
+  "default_text": "{n}Anevia draws you down onto her bed. Her skin is warm under your hands and her breath comes quick and uneven against your mouth, and for a long while the landlady, the stove ticking down and the whole of Drezen cease to matter. The key hangs beside the door, where she put it.{/n}",
   "continuation": "Existing key_morning node and its commitment/future/share terminal effects unchanged."
 }

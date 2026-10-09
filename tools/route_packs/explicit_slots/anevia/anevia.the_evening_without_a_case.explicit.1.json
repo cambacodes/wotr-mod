@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.the_evening_without_a_case.explicit.1",
   "source_node": "night",
-  "default_text": "{n}Anevia pulls you close enough to stop the next joke. The crooked goat faces the wall; she has forgotten it entirely.{/n}",
+  "default_text": "{n}Anevia pulls you close enough to stop the next joke. Her laugh turns into a breath against your mouth, her hands go quiet and sure on your skin, and for once nobody in Drezen is waiting on her. The crooked goat faces the wall; she has forgotten it entirely.{/n}",
   "continuation": "Resume embedded morning paragraph, then existing breakfast answer to morning; retain private_night effect."
 }

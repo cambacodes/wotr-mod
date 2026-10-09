@@ -41,7 +41,7 @@ def insert_slot(book, brief):
         page["Text"] = {
             "threshold": "{n}The lantern has burned low beside the cloak. Anevia wakes at the sound of the relief watch outside.{/n}",
             "night": "{n}The room is quiet when Anevia reaches for you again. Beyond the shutter, a ration cart rattles over the stones.{/n}",
-        }.get(page["Id"], "{n}Before the muster bell, Anevia sits up and reaches for her boots. Her ring catches the last of the lantern light.{/n}")
+        }.get(page["Id"], '{n}Before the muster bell, Anevia sits up and reaches for her boots. Her ring catches the last of the lantern light.{/n}\n"That was good," {n}she says to the boots, flat, the way she reports a body count.{/n} "And the worst of it is I\'d come back tomorrow. Get dressed."')
     buildup_id = "round2.buildup." + page["Id"]
     for old in book["Nodes"]:
         for answer in old["Choices"]:

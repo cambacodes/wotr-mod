@@ -14,7 +14,7 @@
     "This is one first night; alternative approach briefs are mutually exclusive, not subsequent encounters.",
     "End on the exact last_line and leave the original aftermath to carry dressing, drill or dispatches."
   ],
-  "default_text": "{n}She draws you close beneath the blanket. This time she has come with her answer, and she means to stay.{/n}",
+  "default_text": "{n}She draws you close beneath the blanket, her skin hot, her breath unsteady, her answer plain in every touch. This time she has come with it, and she means to stay.{/n}",
   "last_line": "N: At first light she dresses and returns to her dispatches. Later you find her crowned at the table; a small bruise shows above her collar. She catches you looking and pushes the next order toward you.",
   "speakers": {
     "G": "Galfrey",

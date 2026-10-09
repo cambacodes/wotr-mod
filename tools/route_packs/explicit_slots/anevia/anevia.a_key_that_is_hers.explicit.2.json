@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.a_key_that_is_hers.explicit.2",
   "source_node": "partner_secret_night",
-  "default_text": "{n}Anevia pulls you against her, and the next watch passes with her boots still beside your bed.{/n}",
+  "default_text": "{n}Anevia pulls you against her, bare skin warm and hungry under your hands, her wedding ring cold at the back of your neck. She does not say Beth's name, and neither do you; the room holds nothing but her breath breaking against your ear. The next watch passes with her boots still beside your bed.{/n}",
   "continuation": "Existing partner_secret_morning; keep secret commitment effects and later farewell discovery."
 }

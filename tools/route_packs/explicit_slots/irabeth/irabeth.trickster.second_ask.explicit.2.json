@@ -15,7 +15,7 @@
   "min_lines": 10,
   "max_lines": 16,
   "slot_id": "irabeth.trickster.second_ask.explicit.2",
-  "default_text": "{n}She holds your gaze, then draws you close. The sword remains beside her hand.{/n}",
+  "default_text": "{n}She holds your gaze, then draws you close, hard enough that the breath leaves you both. There is no gentleness in it and no hurry either; her mouth finds yours, her scarred hands close on your skin, and what she will not say aloud she says against your jaw. The sword remains beside her hand.{/n}",
   "continuity": "Exact last_line once at the end. Tagged N narration and I dialogue; Commander speaks through player choices, never embedded invented speech. No extra speakers or offscreen arrivals. Do not set flags, invent vows, add costs, alter spouse state or infer commitment. Existing branch and next node retain ownership.",
   "last_lines": {
     "morning": "N: Irabeth is back in armour, all but one gauntlet. The sword belt still lies along the edge of the desk, within reach. She holds out her bare hand to you without a word.",

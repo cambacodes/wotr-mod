@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.a_key_that_is_hers.explicit.3",
   "source_node": "partner_absent_night",
-  "default_text": "{n}Anevia draws you down beside her. The unfinished letter remains under the scout reports.{/n}",
+  "default_text": "{n}Anevia draws you down beside her. Her wedding ring is cold against your back and she makes no move to hide it; her mouth finds yours, and her breath, her hands, the long hunger of a woman who has been lying for weeks answer for her. The unfinished letter remains under the scout reports.{/n}",
   "continuation": "Original terminal choices/effects of partner_absent_night unchanged; do not add forced discovery."
 }

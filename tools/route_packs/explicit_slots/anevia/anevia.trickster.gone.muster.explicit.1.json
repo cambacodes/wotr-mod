@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.trickster.gone.muster.explicit.1",
   "source_node": "threshold",
-  "default_text": "{n}Anevia lowers the lantern beside the spread cloak and draws you down after her. Outside, the smith's hammer falls silent.{/n}",
+  "default_text": "{n}Anevia lowers the lantern beside the spread cloak and draws you down after her. Her bare skin is warm against yours and her breath is ragged at your ear, and everything she rationed all the way up the road ends in a kiss with nothing left to hide. Outside, the smith's hammer falls silent.{/n}",
   "continuation": "Existing morning node and terminal choice unchanged; retain portrait as widow-specific aftermath."
 }

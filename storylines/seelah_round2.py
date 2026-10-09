@@ -132,7 +132,9 @@ def prepare(scenes, presences, derived):
             '"Ha! Your belt. Didn\'t even need to apologize."')
         add_cut(s, "threshold", threshold,
             '{n}She pulls you against her, still laughing, then buries the laugh in '
-            'a hungry kiss. The door stays shut; the next call to muster is hours away.{/n}\n'
+            'a hungry kiss. Her skin is hot under your hands and scarred where the gambeson '
+            'rubs it raw, and her breath comes ragged in your ear, saying your name like a thing she '
+            'has finally stolen clean. The door stays shut; the next call to muster is hours away.{/n}\n'
             + ('{n}At dawn, Seelah sits beside you and reaches for her boots.{/n}' if suffix == "commit" else
                '{n}Dawn catches Seelah reaching beneath the bed for one of her boots.{/n}'),
             '{n}A soldier knocks on the door: '
@@ -192,7 +194,8 @@ def prepare(scenes, presences, derived):
         threshold = node(s, "threshold")["Text"]
         add_cut(s, "threshold", threshold,
             '{n}She tosses the belt from her hand and draws you down '
-            'into a kiss that leaves no room for another speech.{/n}\n'
+            'into a kiss that leaves no room for another speech. Her heartbeat knocks against your palm, '
+            'her breath goes short, and what she says next is not a word anyone could write in a ledger.{/n}\n'
             + ('{n}In the pale light from the window, Seelah begins lacing her boots.{/n}' if suffix == "second_ask" else
                '{n}By dawn, Seelah has found your shirt and is looking for her boots.{/n}'),
             '{n}'
@@ -276,7 +279,8 @@ def prepare(scenes, presences, derived):
         'In the room above, she closed the door with her heel, kicked off her boots')
     # Explicit brief: postwar leave; this paragraph has its reserved identifier.
     block = p('{n}She drew the Commander closer, her laughter giving way to '
-        'another hungry kiss.{/n}')
+        'another hungry kiss. The old scars on her hands were rough against bare skin, her breath came '
+        'ragged, and for a long while the leave she had counted so carefully stopped being counted.{/n}')
     block["Id"] = late["Id"] + ".explicit.1"
     node(late, "end")["Paragraphs"] = [block, p(text[split:])]
     # A custody disagreement cannot disappear inside an alley kiss.
@@ -553,10 +557,14 @@ def ordinary_situations(by):
         'She pulls')
     add_cut(door, "night", approach,
         '{n}She catches your mouth again and draws you down against her, '
-        'the impatient tug of her hand giving way to a grip she keeps. The lamp '
+        'the impatient tug of her hand giving way to a grip she keeps. Her skin is '
+        'warm and freckled under your palms, her breath comes short against your throat, '
+        'and the narrow bed, the borrowed room and the whole of Drezen stop mattering. The lamp '
         'survives, though neither of you reaches to put it out for a long while.{/n}',
         '{n}When the room is quiet, Seelah finds your hand beneath the blanket '
-        'and holds it as she falls asleep, one foot hooked over yours.{/n}')
+        'and holds it as she falls asleep, one foot hooked over yours.{/n}\n'
+        '"For the record," {n}she mumbles into your shoulder,{/n} "I am not sorry. '
+        'Not even a little. Iomedae can take it up with me in the morning."')
     morning = by["seelah.morning"]
     start = node(morning, "start")
     # Ordinary quiet/changed histories still lead to their original bread day.

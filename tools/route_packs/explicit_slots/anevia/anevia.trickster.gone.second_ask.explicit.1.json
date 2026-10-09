@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.trickster.gone.second_ask.explicit.1",
   "source_node": "night",
-  "default_text": "{n}Anevia pulls you away from the shut door and down beside her. For once, she leaves the last question unanswered.{/n}",
+  "default_text": "{n}Anevia pulls you away from the shut door and down beside her. Her hands are cold from the road and then they are not; her mouth finds your throat, and her breath breaks once, ragged, against your skin. For once, she leaves the last question unanswered.{/n}",
   "continuation": "Existing dawn node with Probably note; preserve all legacy terminal effects."
 }

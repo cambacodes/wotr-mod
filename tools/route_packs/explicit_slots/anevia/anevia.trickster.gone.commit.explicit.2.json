@@ -16,6 +16,6 @@
   "max_lines": 16,
   "slot_id": "anevia.trickster.gone.commit.explicit.2",
   "source_node": "partner_answer_1_secret_night",
-  "default_text": "{n}Anevia draws you close on the narrow bed. Beyond the shutter, the watch changes.{/n}",
+  "default_text": "{n}Anevia draws you close on the narrow bed. Her skin is warm under your hands, her ring cold on your shoulder, and her breath breaks against your ear on a word she will not say twice. Beyond the shutter, the watch changes.{/n}",
   "continuation": "Existing partner_answer_1_discovered then partner_answer_1_over; keep exposure/closed/parted outcome."
 }

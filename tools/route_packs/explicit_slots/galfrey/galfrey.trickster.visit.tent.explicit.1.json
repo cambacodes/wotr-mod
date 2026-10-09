@@ -14,7 +14,7 @@
     "This is one first night; alternative approach briefs are mutually exclusive, not subsequent encounters.",
     "End on the exact last_line and leave the original aftermath to carry dressing, drill or dispatches."
   ],
-  "default_text": "{n}She pulls you against her, the cloak tangled beneath your shoulders. Outside, the camp falls quiet. She has no intention of letting you go yet.{/n}",
+  "default_text": "{n}She pulls you against her, the cloak tangled beneath your shoulders. Her skin is hot, her breath ragged at your ear, and the commander in her, for one night, gives no orders at all. Outside, the camp falls quiet. She has no intention of letting you go yet.{/n}",
   "last_line": "N: Before dawn she lies against you, her hand spread on your chest. When you stir, she draws you back for a kiss.",
   "speakers": {
     "G": "Galfrey",

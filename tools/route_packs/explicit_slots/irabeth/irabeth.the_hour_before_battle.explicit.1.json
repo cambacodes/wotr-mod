@@ -15,6 +15,6 @@
   "min_lines": 10,
   "max_lines": 16,
   "slot_id": "irabeth.the_hour_before_battle.explicit.1",
-  "default_text": "{n}She kisses you again, fiercely. Dawn finds the discarded armor beside the chair.{/n}",
+  "default_text": "{n}She kisses you again, fiercely, and nothing is left of the Knight-Captain in it: her scarred hands are on your skin, her breath is hot at your ear, and the muster, the Wound and the morning stop mattering. Dawn finds the discarded armor beside the chair.{/n}",
   "continuity": "Exact last_line once at the end. Tagged N narration and I dialogue; Commander speaks through player choices, never embedded invented speech. No extra speakers or offscreen arrivals. Do not set flags, invent vows, add costs, alter spouse state or infer commitment. Existing branch and next node retain ownership."
 }
