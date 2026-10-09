@@ -24,11 +24,9 @@ def _assembled(include_harem=True):
     path = os.environ.get('RRT_TEST_STORY' if include_harem else 'RRT_TEST_BASE_STORY')
     if path:
         return json.loads(Path(path).read_text(encoding='utf-8-sig'))
-    # A harem-less build is partial: overlay layers may not find harem-row text, so they relax their hit checks (A109).
-    setup = '' if include_harem else 'import os; os.environ["RRT_PARTIAL_BUILD"] = "1"; import storylines.harem_rows as rows; rows.register_all = lambda *args: None; '
-    run = subprocess.run([sys.executable, '-B', '-c',
-                          setup + 'import expansion,json; print(json.dumps(expansion.make_expansion()))'],
-                         cwd=ROOT, env=dict(os.environ, PYTHONHASHSEED='0'),
+    # The harem-less variant is a partial build (A109); the entry is a named script, not inline -c code (A114).
+    argv = [sys.executable, '-B', str(ROOT / 'tests/build_fixture_story.py'), *([] if include_harem else ['--no-harem'])]
+    run = subprocess.run(argv, cwd=ROOT, env=dict(os.environ, PYTHONHASHSEED='0', PYTHONPATH=str(ROOT)),
                          capture_output=True, text=True)
     if run.returncode:
         raise RuntimeError(run.stderr)
