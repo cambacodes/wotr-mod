@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}She pushes the knife clear of the silk and pulls you back by the collar. Her hair brushes your cheek as she kisses you; the cards shift beneath your shoulders.{/n}\n\"Leave the cards. Come closer.\"",
+  "default_text": "{n}She pushes the knife clear of the silk and pulls you back by the collar. Her hair brushes your cheek as she kisses you; the cards shift beneath your shoulders.{/n}\n\"Leave the cards. Come closer.\"\n{n}The candles gutter. She is hot and greedy and unbearably quiet about it, until she is not, and then her cry goes into your shoulder and the cards crackle under you like dry leaves.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.cards.the_deck_again_alive",
     "after_node": "silk",

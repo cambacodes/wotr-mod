@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}The knife lands beside the guttered candle. Camellia catches your collar, kisses you without finishing the turn, and pulls you down with her onto the boards.{/n}\n\"The buckle can wait until morning.\"",
+  "default_text": "{n}The knife lands beside the guttered candle. Camellia catches your collar, kisses you without finishing the turn, and pulls you down with her onto the boards.{/n}\n\"The buckle can wait until morning.\"\n{n}The candles burn down on the cleared floor. The boards are hard and she does not mind them at all; her nails mark your back, her breath comes sharp and low against your throat, and the only count either of you keeps is lost somewhere past three.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.day.the_second_dance",
     "after_node": "end",

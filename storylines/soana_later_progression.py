@@ -647,7 +647,7 @@ s("after_the_last_visitor", "After the last visitor", '"You asked me to come whe
 "The stone is hard. Get that blanket under us. No, child, the other end. I folded it for a reason."
 {n}You spread it with one hand while she works at your collar. She pulls the cloth free and puts her mouth against the warm skin beneath.{/n}
 "All day I have wanted this. Hunters at the cave mouth, hunters on the path. Not the hunter I wanted."
-{n}Her braid comes loose under your fingers. She shakes it out, lifts her clothes over her head and drops them across the tools. Bare skin meets yours as she drags you onto the blanket. Her knees press into the folded wool on either side of your hips. She bends over you and kisses you hard, her fingers digging into your shoulders. Her breath catches against your mouth.{/n}
+{n}Her braid comes loose under your fingers. She shakes it out, lifts her clothes over her head and drops them across the tools. Bare skin meets yours as she drags you onto the blanket. She bends over you and kisses you hard, her fingers digging into your shoulders. Her breath catches against your mouth.{/n}
 {n}In the morning she is awake first. Her hand lies over yours beneath the blanket. A fold of your discarded shirt props up her shoulder.{/n}
 "Worth moving the tools," {n}she says.{/n} "Do not grow proud. You put the blanket down badly."
 {n}She catches your chin and kisses you again. When you get up, she points to a piece of smoked fish beside the cold hearth.{/n}

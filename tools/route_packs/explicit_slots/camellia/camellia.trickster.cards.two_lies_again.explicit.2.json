@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Her shift slips from her shoulders. She draws you down into a kiss, then catches your hand and brings it back to her waist; the knife stays beside the pillow.{/n}\n\"Look at me. That boast can wait.\"",
+  "default_text": "{n}She draws you down into a kiss, then catches your hand and brings it back to her waist; the knife stays beside the pillow.{/n}\n\"Look at me. That boast can wait.\"\n{n}Her skin burns under your hands and her breath is ragged against your neck. She wanted your pulse afraid and she gets it, and finds she likes what it does to hers. The candle burns down unnoticed.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.cards.two_lies_again",
     "after_node": "mine",

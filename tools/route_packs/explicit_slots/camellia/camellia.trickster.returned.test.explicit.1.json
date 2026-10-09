@@ -21,7 +21,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Camellia draws you down against her, her loosened dress caught beneath your hand. She kisses you again, harder, and reaches past you to lay the knife on the pillow, point toward the door.{/n}\n\"Stay here. I want to see your face.\"",
+  "default_text": "{n}Camellia draws you down against her, her loosened dress caught beneath your hand. She kisses you again, harder, and reaches past you to lay the knife on the pillow, point toward the door.{/n}\n\"Stay here. I want to see your face.\"\n{n}Her laughter breaks off against your mouth. Skin, breath, the lamp guttering, the hilt of the knife cold on the pillow beside your head; she is merciless about wanting, and she wants for a very long time.{/n}",
   "insertion": {
     "scene_id": "camellia.trickster.returned.test",
     "after_node": "threshold",
