@@ -484,10 +484,14 @@ beat(STAIRS, "The stairs", '"You might have warned me about the stairs."', [
        c("Continue", "close")),
     hx("close", '''{n}She puts a hand flat on your chest and feels your heart going under it, and she laughs, low, as if it were a joke only the two of you knew.{/n}
 "There it is. The thing in your chest that burns where it shouldn't. It runs so fast when you've climbed." {n}She leans in, and you feel it again, the faint pull as she breathes you in: a thread of warmth going out of you and into her, light as a pickpocket's fingers.{/n}
+{n}Her hand does not stay flat. It drags down your sternum, slow, over the sweat the climb left in your shirt, and hooks in your belt. She is close enough that the heat of her comes through the gown, and the gown is very little. The scar through her lips pulls wet and red when she smiles at what your body is doing without your leave.{/n}
+"All that climbing, honey, and every step of it you were thinking about this. Don't lie. Your pulse is a worse liar than you are."
 "Stay the night, and I'll send you down in the morning by the servants' stair. It's shorter. I'll never tell you where it is."''',
        c('"Then I\'ll stay."', STAIRS + ".explicit.1"),
        c('"I\'ll find it myself one day."', "find")),
-    hx("find", '''"No, you won't." {n}She kisses the corner of your mouth, where the scar would be if you had hers.{/n} "But I'll enjoy watching you try."''',
+    hx("find", '''"No, you won't." {n}She kisses the corner of your mouth, where the scar would be if you had hers, and then the corner of your jaw, and then your throat, open-mouthed, with a little scrape of teeth that is not an accident.{/n} "But I'll enjoy watching you try."
+{n}She backs you off the top step and against the doorframe of her private floor by the belt she is already unbuckling, one ragged wing swinging shut across the stair behind you like a curtain drawn on the house. Her other hand finds yours and drags it flat against the left side of her ribs, where the beat under the skin is every bit as fast as your own.{/n}
+"Feel that? You did that. Nobody climbs this far for nothing, lover, and nobody gets me like this for nothing, so we'll call it even and not mention it again."''',
        c("[Stay.]", STAIRS + ".explicit.1")),
     nar("stairs_no_coin", '''{n}Without her coin, getting to the Delights means walking the streets. Inside, the climb takes you through the smoke rooms, round the mirrored gallery, and through three doors that open onto other doors.{/n}
 {n}Herrax waits at the top in a gown the colour of old wine. The little hourglass beside her has run out.{/n}''', c("Continue", "timed")),
@@ -535,7 +539,9 @@ beat(LAST_NIGHT, "Not goodbye", '"I\'ll be leaving the Isles soon."', [
     hx("dead", '''"Then I'll hear it from the Lady's people before your crusade does, and I'll close the Delights for one night, the first time in a thousand years." {n}She says it lightly.{/n} "It'll cost me a fortune. Don't make me do it."''',
        c("Continue", "agreed")),
     hx("agreed", '''{n}She holds out her hand. Not for a coin, not to be kissed; only to be taken.{/n}
-"There. Everyone in the hall saw that," {n}she says, when you do.{/n} "The madam of the Ten Thousand Delights shook a mortal's hand on a bargain with no price in it. I'll never live it down."''',
+"There. Everyone in the hall saw that," {n}she says, when you do.{/n} "The madam of the Ten Thousand Delights shook a mortal's hand on a bargain with no price in it. I'll never live it down."
+{n}She does not let go. Her thumb works the hollow of your palm in a slow circle, and then she lifts your hand and sets her teeth against the heel of it, not hard, just enough to leave the print of a bite that will be gone by the time the hall has finished laughing. Her ragged wings slide down off the dais back and fold about her shoulders. Her eye, the good one, is on your mouth.{/n}
+"A thousand years I have kept this house, and not once have I given a guest the thing I'm about to give you for nothing." {n}She stands, drawing you up with her, and she is flush against you before the cushions have settled, the cut of her lip hot against your cheek.{/n} "Don't say it, lover. You'll spoil it. Sex is an exchange of life forces, and I intend to take a little more than I give. You'll let me. You'll even thank me."''',
        c('"Good."'))],
     requires=(COMMITTED,), delay=48)
 
@@ -1046,8 +1052,10 @@ beat(B + "a_night_out", "Battlebliss", '"Come down to the arena with me."', [
     hx("big", '''{n}The big one loses. It takes him a long time and it is not pretty, and when it is over the crowd howls and Herrax turns to you with her good eye very bright.{/n}
 "Angrier." {n}She laughs.{/n} "Angry is how you lose in Alushinyrra, honey. The angry ones always think the fight is the point." {n}She taps your chest.{/n} "You owe me a thousand. I'll think of something."''',
        c("Continue", "home", flags=(BET_LOST,))),
-    hx("home", '''{n}On the walk back up to the Delights through the lamplit streets, she keeps her arm through yours the whole way, and does not seem to notice she is doing it.{/n}
-"There. I've been to the arena," {n}she says at her own door.{/n} "It was loud, and it stank, and I enjoyed it." {n}She looks at you, accusing.{/n} "I told you I'd never forgive you."''',
+    hx("home", '''{n}On the walk back up to the Delights through the lamplit streets, she keeps her arm through yours the whole way, and does not seem to notice she is doing it. The sand is still on both of you. She smells of pit-smoke and spilled blood and clipped silver, and every few steps her thumb drags once across the inside of your wrist, idly, the way she counts coins she already owns.{/n}
+"There. I've been to the arena," {n}she says at her own door.{/n} "It was loud, and it stank, and I enjoyed it." {n}She looks at you, accusing. Her good eye is very bright, and her breath is not that of a woman who has only been walking. Behind her the street door of the Delights booms as the crowd from the sand starts to pour in, and she makes no move to go to it.{/n} "I told you I'd never forgive you."
+{n}She keeps your arm trapped against her ribs and puts the other hand in your collar, and her ragged wing comes round behind you, a torn, warm curtain, and draws you in until your mouths are a breath apart. The scar through her lip is hot against yours when she speaks.{/n}
+"Tell me you'll live with it, lover. I love hearing a mortal promise what they can't afford. I bit every coin that man counted out tonight, and I'm still hungry."''',
        c('"I\'ll live with it."'))],
     requires=(COMMITTED,), delay=24)
 
@@ -1120,7 +1128,8 @@ beat(B + "her_rooms", "The private floor", '"Show me your rooms. By daylight."',
        c("[Sit beside her.]", "beside")),
     hx("beside", '''{n}She makes room without seeming to. For a while neither of you says anything, and the noise of the Upper City comes up through the narrow window: carts, bells, someone screaming a long way off, someone laughing.{/n}
 "The ones who come up here at night never look at the walls," {n}she says eventually.{/n} "Don't make anything of it. It's only a room."
-{n}Her shoulder is against yours. She doesn't move it.{/n}''',
+{n}Her shoulder is against yours. She doesn't move it. The shoulder is not the only thing: her thigh lies along yours, a line of heat through the cloth, and the daylight from the narrow window falls across her face and does not flatter it, and she has never asked it to. It finds the jagged scar through her lips, the milky ruin of the left eye, the ragged wings hung off her back like wet washing. She watches you see all of it. She is smiling, slowly, at the wall, the way she smiles at a price she has decided to be insulted by.{/n}
+"You haven't looked at the walls once since you sat down." {n}Her hand comes down flat on your thigh and stays there, heavy, the claws of her fingertips resting against the seam.{/n} "Nothing in this room has a price. Not the chair, not the jug, not what I am about to do to you. I'd hate for you to think it was a mistake, lover, so I'll say it in daylight where nobody can pretend they didn't hear."''',
        c('"It\'s only a room."')),
     nar("rooms_seen", '''{n}In daylight, the room where Rokhorn walked into his ambush looks smaller. The chair faces the same door. Herrax catches you looking at it and sits on her locked chest instead.{/n}''', c("Continue", "expected")),
     nar("rooms_first", '''{n}You saw the punishment below, in the great hall. Here there are bare boards beneath your boots and no cushions on the chair. Somebody screams in the street below the narrow window. Herrax pays it no attention.{/n}''', c("Continue", "expected"))],
