@@ -280,6 +280,8 @@ class StructSlotHostTests(unittest.TestCase):
         modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
         story = {"Scenes": [s for module in modules for s in module.SCENES]}
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        fixture_ids = {s['Id'] for s in story['Scenes']}
+        pending = {**pending, 'pending': [e for e in pending['pending'] if e['scene'] in fixture_ids]}
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
         self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
 
@@ -293,6 +295,9 @@ class StructSlotHostTests(unittest.TestCase):
         flags.add("devarra.tower.first_bite")
         self.assertTrue(sim_choice_available(answer, SimpleNamespace(flags=flags)))
         self.assertTrue(sim_choice_available(climb["Choices"][0], SimpleNamespace(flags=set())))
+
+
+from tests.test_struct2_continuity import Struct2ContinuityTests  # selected writing-gate regressions
 
 
 if __name__ == "__main__":

@@ -149,6 +149,17 @@ def _return(scenes):
             'skirt and watches you cover the grave. The watch bell sounds again before you finish.{/n} '
             '"Tomorrow night. Somewhere with a lock. You have agreed; now I want to see you keep your word."',
             c('[Put the spade away.]', flags=(ct.FILLED,)))
+    # CAM-A4-02: the prepared fallback retains its saved terminal answers.
+    # Retire unpaid exits and append copies that deliver the approved sibling beat.
+    prepared = scenes[P + "killed.late_curtain_prepared"]
+    stones = copy.deepcopy(node(late, "r2.stones"))
+    prepared["Nodes"].append(stones)
+    price = node(prepared, "eng8.price")
+    for original in list(price["Choices"][:2]):
+        paid = copy.deepcopy(original)
+        paid["Next"] = "r2.stones"
+        original["Requires"].append(ct.FILLED)
+        price["Choices"].append(paid)
     h = scenes[ct.PERFORMANCE]
     h["DelayHours"] = 0
     text(h, "late", '"The sexton told me what you paid him, after I woke. He hoped I would pay him again '

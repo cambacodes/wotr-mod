@@ -16639,13 +16639,25 @@
       "provenance": "derived: current relationship losses, existing return-provenance and participant inventories; handoffs/trickster/elyanka.md",
       "losses": [
         "elyanka.trickster.left_free",
-        "elyanka.returned_actor_lost"
+        "elyanka.returned_actor_lost",
+        "elyanka.trickster.courier.away"
       ],
-      "overrides": {},
-      "returns": [],
+      "overrides": {
+        "elyanka.trickster.courier.away": "elyanka.trickster.courier.returned"
+      },
+      "returns": ["elyanka.trickster.courier.returned"],
       "body_requires": [],
-      "letter_terms": [],
+      "letter_terms": [
+        {
+          "requires": ["elyanka.trickster.courier.away"],
+          "forbids": ["elyanka.trickster.left_free", "elyanka.returned_actor_lost"]
+        }
+      ],
       "surfaces": [
+        {
+          "scene": "elyanka.trickster.beat.courier_return",
+          "letter": true
+        },
         {
           "scene": "elyanka.trickster.door.hearse",
           "letter": false

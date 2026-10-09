@@ -406,6 +406,55 @@
       "surface": "node",
       "index": null,
       "text_sha": "d1ae6b5f1d7ec8e54b0fbe710fc7187bbf5e98defedf9d9155fe3844df34553e"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier",
+      "node": "dispatch.hungry",
+      "surface": "node",
+      "index": null,
+      "text_sha": "48ab3c6f06e7bcde11f680f68cf5352899f517d9e7dc14ce33b721be30dd4349"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier_return",
+      "node": "hungry",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d575c391a9ee42f19826b5757e075479b7b37f714ae1d7e15d5b6fa1421f13e2"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier",
+      "node": "dispatch.ripening",
+      "surface": "node",
+      "index": null,
+      "text_sha": "dc76b1232ecc8ae925c37bdcc72b580c35b0c6089b70b5e27679e2f84c4291d5"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier_return",
+      "node": "ripening",
+      "surface": "node",
+      "index": null,
+      "text_sha": "836cca984a8b88cd927934e9d3bc0ec8cd66ee2c08f2fd19a6cd264ebe93dd3d"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier",
+      "node": "dispatch.silent",
+      "surface": "node",
+      "index": null,
+      "text_sha": "b5340127fe424e7304d2c384a0a07a3498c89196fd8bf11da34642b3c1bc8939"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier_return",
+      "node": "silent",
+      "surface": "node",
+      "index": null,
+      "text_sha": "1e866d04495d338d2dbdfda9aef44110b9a621a6111f54860034d2dad289dc4d"
+    },
+    {
+      "scene": "elyanka.trickster.beat.courier_return",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d2ec3e377a60635f3b14b8d3a4a2209dc63ae47b374526640c0481d212a47009"
     }
   ]
 }
