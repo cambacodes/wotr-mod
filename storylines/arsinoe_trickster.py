@@ -522,6 +522,8 @@ def integrate(payload):
     _prior_integrate(payload)
     # A settled ordinary future supersedes the earlier invitation for every reader.
     payload.setdefault("DerivedForbids", {})[LATE_COMMITTED] = ["arsinoe.future_spoken"]
+    from storylines import arsinoe_rubric2
+    arsinoe_rubric2.integrate(payload)
 
 # Business recollections do not stage Konomi in Arsinoe's shop.
 _collection = next(s for s in SCENES if s["Id"] == COLLECTION)

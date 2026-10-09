@@ -1,4 +1,103 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "devarra.tower.before_the_end",
+      "node": "rubric2_purchased_battle",
+      "surface": "node",
+      "index": null,
+      "text_sha": "003865979749cd734bb4b465ce4f5581fb79cd2b61b63ca93159dfe57388281b"
+    },
+    {
+      "scene": "devarra.tower.before_the_end",
+      "node": "rubric2_voluntary_battle",
+      "surface": "node",
+      "index": null,
+      "text_sha": "93afba2a78f53df5bd59c98b9bf2cb70b1cbe69bd09ba84852f28a41e7d03519"
+    },
+    {
+      "scene": "devarra.tower.the_dwarf",
+      "node": "rubric2_protection_warning",
+      "surface": "node",
+      "index": null,
+      "text_sha": "be708a4ab2b91a930d457a69344550ce011c533a8ae779c025cbb981fcdc1987"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "node": "rubric2_clutch_debt_honest_her",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f4f9b56fcfc46b978b05a021cc23f8bceaf9859c18f19e0234193c5f2f4a5604"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "node": "rubric2_clutch_debt_steal_her",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f4f9b56fcfc46b978b05a021cc23f8bceaf9859c18f19e0234193c5f2f4a5604"
+    },
+    {
+      "scene": "devarra.tower.the_hoard",
+      "node": "rubric2_clutch_debt_ask_her",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f4f9b56fcfc46b978b05a021cc23f8bceaf9859c18f19e0234193c5f2f4a5604"
+    },
+    {
+      "scene": "eritrice.trickster.reconciled_debate",
+      "node": "open",
+      "surface": "node",
+      "index": null,
+      "text_sha": "fdc9ff3da42edca28684547798e0ac145cbbf388a5bff9758a69cf606a6f9d98"
+    },
+    {
+      "scene": "eritrice.trickster.reconciled_debate",
+      "node": "exchange",
+      "surface": "node",
+      "index": null,
+      "text_sha": "dc0df17ebcd5ec0953a5cb0babc9275d5ce567807a87e890fe1cea610ee94c3a"
+    },
+    {
+      "scene": "eritrice.trickster.reconciled_debate",
+      "node": "record",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d5e3c4bfceb892c0d3328fb74ce0e40bb09b31a50b758afe59896daff9d567d6"
+    },
+    {
+      "scene": "eritrice.trickster.reconciled_debate",
+      "node": "open",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "9ed04b3738b4389c036219d6ead554e71fd60de98ea2a1cb6b430e2fa1a5be35"
+    },
+    {
+      "scene": "eritrice.trickster.reconciled_debate",
+      "node": "open",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "a8f948ba6cdbc5eca6affb1908d6ce7b63711b8693d52e5f234fe5b8e1e634d7"
+    },
+    {
+      "scene": "arsinoe.trickster.late.commit",
+      "node": "rubric2_cauldron_night",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0b7b8143ea61362aaf6be68cde14cf010ed60e4e943a4af0da86be33a4410224"
+    },
+    {
+      "scene": "arsinoe.trickster.late.commit",
+      "node": "rubric2_cauldron_return",
+      "surface": "node",
+      "index": null,
+      "text_sha": "749e963ca1abe1484a7c05f969c1950be5fcec02036d99b5f9d0fdf2317607c6"
+    },
+    {
+      "scene": "eritrice.trickster.reconciled_debate",
+      "node": "open",
+      "surface": "paragraph",
+      "index": 0,
+      "text_sha": "c40d213ba23fd835ab8b6133f1d4b653a16f53c40c799664d02369cb9177d5bb"
+    }
+  ]
 }
