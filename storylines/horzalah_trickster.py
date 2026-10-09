@@ -706,26 +706,26 @@ SCENES.append(scene(H + "visit.chamber", "Everything I own, I took", "Horzalah",
 "Do not touch it. It is the only thing in this room I did not buy, inherit or take off a corpse."''',
        c("[Turn round.]", "her")),
     hz("her", '''{n}She is standing very close. She unbuckles the high collar and lets it drop onto the nearest strongbox, where it lands across somebody's name.{/n}
-"Everything I own, I took," {n}she says.{/n} "The Guild. This room. Yozz's household, and his debts. My own name back from my sister's mouth. Everything." {n}She lifts a hand and sets her claws, very lightly, in your hair.{/n}
+"Everything I own, I took," {n}she says.{/n} "The Guild. This room. Yozz's household, and his debts. My own name back from my sister's mouth. Everything." {n}She lifts a hand and sets her fingers, very lightly, in your hair.{/n}
 "You, I am asking for."''',
        c('"Then ask."', "ask"),
        c("[Say nothing. Wait for her, as she taught you.]", "wait")),
-    hz("ask", '''{n}Her claws tighten in your hair, and her eyes narrow, and for a heartbeat she looks as if she might cut you for your insolence. Then she laughs, low, against your mouth.{/n}
+    hz("ask", '''{n}Her fingers tighten in your hair, and her eyes narrow, and for a heartbeat she looks as if she might cut you for your insolence. Then she laughs, low, against your mouth.{/n}
 "I just did, mortal. You were not listening. You never are, on that side."''',
        c("Continue", "threshold")),
-    nar("wait", '''{n}You leave your hands at your sides. She watches them, then your face. Her claws loosen in your hair. She draws you closer herself.{/n}''',
+    nar("wait", '''{n}You leave your hands at your sides. She watches them, then your face. Her fingers loosen in your hair. She draws you closer herself.{/n}''',
         c("Continue", "threshold")),
-    nar("threshold", '''{n}She kisses you like a woman taking something she has decided is hers: slowly, thoroughly, with her claws holding your head exactly where she wants it. Her mouth goes from yours to your jaw, and along it, and finds the puckered ruin where your ear used to be, and stays there, her breath hot on the scar, her tongue tracing the edge of it as though she were reading her own signature.{/n}
+    nar("threshold", '''{n}She kisses you like a woman taking something she has decided is hers: slowly, thoroughly, with her fingers holding your head exactly where she wants it. Her mouth goes from yours to your jaw, and along it, and finds the puckered ruin where your ear used to be, and stays there, her breath hot on the scar, her tongue tracing the edge of it as though she were reading her own signature.{/n}
 {n}Your hands find the laces of her leathers, and she lets you undo them, one at a time, and says nothing, and then says, "Faster," and you are.{/n}''',
         c("Continue", "threshold2")),
-    nar("threshold2", '''{n}She is lean and hard and very hot under your hands, all long muscle and sharp bone, and there is not a brand or a seal left on her anywhere; her father took them all back. There is only the band of pale skin around her throat. When your mouth finds it she makes a sound you would not have believed she could make, and her claws go down your back, not quite gently.{/n}
+    nar("threshold2", '''{n}She is lean and hard and very hot under your hands, all long muscle and sharp bone, and there is not a brand or a seal left on her anywhere; her father took them all back. There is only the band of pale skin around her throat. When your mouth finds it she makes a sound you would not have believed she could make, and her nails go down your back, not quite gently.{/n}
 "Mine," {n}she says into your hair.{/n} "The ear, and the rest of you with it. Say it."''',
         c('"Yours."', "cut"),
         c('"Tonight, anyway."', "cut_tonight")),
-    nar("cut", '''{n}She pulls you down onto the bed among the strongboxes, and rolls you under her, and the ribboned box watches from its shelf, and below you the Guild goes on about its business and never once looks up. Her leathers are on the floor with your clothes. She is all heat and hard lines above you, claws set in the pillow either side of your head, and she lowers herself onto you by degrees, taking her time over it, watching your face the whole way as a buyer watches a seller who has just named too low a price.{/n}
+    nar("cut", '''{n}She pulls you down onto the bed among the strongboxes, and rolls you under her, and the ribboned box watches from its shelf, and below you the Guild goes on about its business and never once looks up. Her leathers are on the floor with your clothes. She is all heat and hard lines above you, fingers set in the pillow either side of your head, and she lowers herself onto you by degrees, taking her time over it, watching your face the whole way as a buyer watches a seller who has just named too low a price.{/n}
 "Say it again," {n}she breathes.{/n} "I like how it sounds in your mouth."''',
         c("Continue", "morning")),
-    nar("cut_tonight", '''{n}"We will see about tonight," she says, and bites your shoulder for it, and pulls you down onto the bed among the strongboxes, and rolls you under her. The ribboned box watches from its shelf. Below you, the Guild goes on about its business and never once looks up. Her leathers are on the floor with your clothes. She is all heat and hard lines above you, claws set in the pillow either side of your head, and she lowers herself onto you by degrees, taking her time over it, watching your face the whole way as a buyer watches a seller who has just named too low a price.{/n}
+    nar("cut_tonight", '''{n}"We will see about tonight," she says, and bites your shoulder for it, and pulls you down onto the bed among the strongboxes, and rolls you under her. The ribboned box watches from its shelf. Below you, the Guild goes on about its business and never once looks up. Her leathers are on the floor with your clothes. She is all heat and hard lines above you, fingers set in the pillow either side of your head, and she lowers herself onto you by degrees, taking her time over it, watching your face the whole way as a buyer watches a seller who has just named too low a price.{/n}
 "We will see," {n}she breathes.{/n} "I would not mind finding out how long tonight lasts."''',
         c("Continue", "morning")),
     nar("morning", '''{n}There is no dawn in the room above the old hall; there are no windows. There is a bell, somewhere below, that rings for the change of watch, and she is already up when it does, buckling on her collar in front of a mirror of black glass.{/n}
@@ -773,7 +773,7 @@ tag(H + "epilogue.together", "T")
 SCENES.append(scene(H + "epilogue.commit", "", "HorzalahEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Horzalah had finished thinking about what she wanted. She finished it anyway, the spring after the Threshold, in her own time and on her own terms.{/n}
 {n}She came to Drezen through no door at all, stood in the Commander's rooms until she was noticed, and unbuckled her collar. The Commander waited, as the Commander had learned to do around her, and she took the Commander's hand and put it on the scar herself.{/n}
-{n}That night she stayed. The collar lay beside the war maps while the Commander loosened her leathers. Horzalah caught the Commander's mouth with hers and pulled the last laces free herself. Bare skin pressed against the Commander's open shirt; her claws tightened in the cloth.{/n}
+{n}That night she stayed. The collar lay beside the war maps while the Commander loosened her leathers. Horzalah caught the Commander's mouth with hers and pulled the last laces free herself. Bare skin pressed against the Commander's open shirt; her fingers tightened in the cloth.{/n}
 "Enough waiting, mortal. I want the rest of you."
 {n}She pulled the Commander onto the bed and reached past their shoulder to snuff the candle.{/n}
 {n}By morning the collar was fastened again. Horzalah sent the sentry for breakfast, then shut the door in his face. The Commander's councils could wait until she had eaten.{/n}
@@ -1114,7 +1114,7 @@ def _round2_situations():
     for suffix, prefix in (("guild.kept", ""), ("unmet.knife", "eng8.guild."), ("late.at_night", "eng8.guild.")):
         ns = nodes(suffix)
         ns[prefix + "hall"]["Text"] = '''"They passed it from hand to hand. One sniffed it. The one in my chair asked whether you were still alive. I told him to come here and count the scars himself." {n}She smiles.{/n} "He put my chair back. He did not volunteer."
-"The Guild bowed to the box." {n}She taps the lid with one claw.{/n} "Father has sent no answer. His silence was all I needed from him."
+"The Guild bowed to the box." {n}She taps the lid with one finger.{/n} "Father has sent no answer. His silence was all I needed from him."
 "I brought the box back to Yozz's old hall in Alushinyrra. We still take city contracts there; I keep rooms above them. The masters want to know why I keep coming to Drezen. They think a lover might be cheaper to buy than a mistress is to kill. I shall let them see how wrong they are."'''
         ns[prefix + "pivot"]["Text"] = '''{n}She sets the box beside your war maps and keeps her hand on the lid.{/n}
 "The chair is mine again. Your ear helped me keep it. It did not purchase anything else." {n}Her eyes travel over you.{/n} "My masters would like to know what I am doing here. So would I. Tell me what you want before I decide whether to come back."'''
@@ -1193,7 +1193,7 @@ def _round2_situations():
     deferred=page["Paragraphs"][-1]
     deferred["Text"] = '''{n}After the war, Horzalah brought the Commander to her rooms above the old Alushinyrra hall. She dropped her collar across a strongbox and caught the Commander's open shirt.{/n}
 "The Guild can wait. You have kept me waiting long enough."
-{n}Her mouth found the scar beside the missing ear and stayed there, her tongue tracing its ruined edge as though she were checking her own signature. "Mine," she said into it. "The ear, and everything it is attached to." Her claws went down the Commander's chest, opening what was left of the shirt, and her breath was hot and uneven against the Commander's throat. She pulled the last leather laces loose herself, stepped out of the leathers with no ceremony at all, and put the Commander down on the bed among the strongboxes, lean and fever-hot above them, a knee between the Commander's thighs.{/n}'''
+{n}Her mouth found the scar beside the missing ear and stayed there, her tongue tracing its ruined edge as though she were checking her own signature. "Mine," she said into it. "The ear, and everything it is attached to." Her fingers went down the Commander's chest, opening what was left of the shirt, and her breath was hot and uneven against the Commander's throat. She pulled the last leather laces loose herself, stepped out of the leathers with no ceremony at all, and put the Commander down on the bed among the strongboxes, lean and fever-hot above them, a knee between the Commander's thighs.{/n}'''
     slot=p("{n}Bare skin met bare skin; Horzalah pulled the Commander closer and put out the lamp. A watch bell rings in the old hall.{/n}", forbids=(CHAMBER,))
     slot["Id"]=H + "epilogue.together.explicit.1"  # Brief: delayed first night, no prewar stair receipt.
     page["Paragraphs"].extend([slot,
@@ -1205,7 +1205,7 @@ def _round2_situations():
     page["Text"]=page["Text"][:start].replace("the spring after the Threshold", "that first spring")
     page["Paragraphs"].append(p('''{n}That first night in Drezen she stayed. The collar lay across the war maps while the Commander loosened her leathers. Horzalah pulled the last laces free herself, her mouth on the Commander's mouth.{/n}
 "Enough waiting, mortal. I want the rest of you."
-{n}She did not wait for an answer. Her claws unpicked the Commander's belt in one pull, and she pushed the Commander down onto the bed, shed the leathers and came over them, lean and hot and absolutely sure, one hand fisted in the Commander's hair to hold the Commander's mouth where she wanted it. "I have waited through a war," she said against the Commander's teeth. "I have been patient with you for months. I intend to be repaid in full."{/n}'''))
+{n}She did not wait for an answer. Her fingers unpicked the Commander's belt in one pull, and she pushed the Commander down onto the bed, shed the leathers and came over them, lean and hot and absolutely sure, one hand fisted in the Commander's hair to hold the Commander's mouth where she wanted it. "I have waited through a war," she said against the Commander's teeth. "I have been patient with you for months. I intend to be repaid in full."{/n}'''))
     slot=p("{n}She pressed close against the Commander's open shirt and reached past their shoulder to snuff the candle. Bootsteps stop outside the Commander's door.{/n}")
     slot["Id"]=H + "epilogue.commit.explicit.1"  # Brief: her spring decision, first night, breakfast interruption follows.
     page["Paragraphs"].extend([slot,p("{n}By morning the collar was fastened again. Horzalah sent the sentry for breakfast, then shut the door in his face. The councils waited until she had eaten. She left to run her Guild and returned a fortnight later, demanding the same room and a less inquisitive watch.{/n}")])
