@@ -11591,11 +11591,6 @@
           "provenance": "Last Call depicts the currently living creditor or correspondent; historical debts remain in their separate ledger variants"
         },
         {
-          "scene": "chadali.trickster.react.ember_penny",
-          "letter": true,
-          "provenance": "contracts-r2a: correspondence/history of a delivered letter"
-        },
-        {
           "scene": "chadali.trickster.after.market_wager",
           "letter": false,
           "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
@@ -11615,6 +11610,10 @@
         {
           "scene": "chadali.trickster.fought.lucky",
           "reason": "existing recovery/explicit loss or rewritten-history context; retained original gates"
+        },
+        {
+          "scene": "chadali.trickster.react.ember_penny",
+          "reason": "Ember's in-person report about Chadali; Chadali herself is absent, no body implied (coordinator ruling 2026-10-09, canary-letters escalation)"
         }
       ],
       "presences": [],
