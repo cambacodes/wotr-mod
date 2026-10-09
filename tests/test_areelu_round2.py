@@ -5,6 +5,7 @@ import unittest
 
 from storylines import areelu_afterlogue as after
 from storylines import areelu_trickster as route
+from tools.slot_brief_lint import first_beat
 
 
 class AreeluRoundTwoTests(unittest.TestCase):
@@ -39,7 +40,10 @@ class AreeluRoundTwoTests(unittest.TestCase):
             scene = self.scenes[slot.rsplit(".explicit.", 1)[0]]
             nodes = {n["Id"]: n for n in scene["Nodes"]}
             self.assertEqual(nodes[slot]["Text"], brief["default_text"])
-            self.assertEqual(brief["last_line"], "N: " + brief["default_text"].removeprefix("{n}").removesuffix("{/n}"))
+            # Stop line = first beat of the node the slot continues to.
+            following = nodes[nodes[slot]["Choices"][0]["Next"]]
+            self.assertEqual(brief["last_line"], first_beat(following, brief["speakers"]))
+            self.assertEqual(brief["prior_stop_line"], "N: " + brief["default_text"].removeprefix("{n}").removesuffix("{/n}"))
             self.assertIn(nodes[slot]["Choices"][0]["Next"], nodes)
             self.assertFalse(nodes[slot]["Choices"][0]["Set"])
             self.assertTrue(any(c["Next"] == slot for n in nodes.values() for c in n["Choices"]))

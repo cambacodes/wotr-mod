@@ -230,7 +230,12 @@ class S25Tests(unittest.TestCase):
         self.assertEqual(brief["commander"], "absent")
         self.assertEqual(brief["speakers"], {"C": "Camellia", "V": "Vellexia"})
         self.assertTrue(brief["status"].startswith("blocked"))
-        self.assertEqual(brief["last_line"], "V: That display was hideous anyway.")
+        # Stop line = first beat of the retained `after` node; the authored
+        # closing line is kept for editorial use.
+        self.assertEqual(brief["last_line"], "N: The room stays locked. Below, the court's noise dwindles; "
+                                             "beyond the walls, the watch calls the hour.")
+        self.assertEqual(brief["prior_stop_line"], "V: That display was hideous anyway.")
+        self.assertEqual((brief["host_scene"], brief["host_node"]), (s25.P + "choice", "explicit.1"))
         # All six surfaces are household interactions, not route epilogues,
         # departure reports, revival producers or committed-romance payoffs.
         for body in self.rows.values():

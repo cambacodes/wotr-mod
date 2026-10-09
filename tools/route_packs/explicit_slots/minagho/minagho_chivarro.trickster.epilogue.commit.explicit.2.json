@@ -6,12 +6,7 @@
     "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
   },
   "voice": "Chivarro: exact appraisal, a madam's mercantile wit, jealous pride, predatory appetite, impatience with gratitude, sensual assurance and harsh temper when cheated. Affection for Minagho remains independent of the Commander. Write new dialogue from traits; do not copy brief sentences or native quotations.",
-  "facts": [
-    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
-    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
-    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
-    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
-  ],
+  "facts": "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship. Both are eyeless: no eyes, eye color, exchanged glances or eye contact. Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed. Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end.",
   "scene": "Authored expansion of minagho_chivarro.trickster.epilogue.commit/went_alone. After the war, Trickster history at Drezen, the women's postwar house below the citadel; the waiting-solo branch uses Chivarro's own room. Present: Chivarro and the Commander only. Existing accepting choice and the actual partner answer precede the slot. This source combines threshold and aftermath: insert before the existing later/dawn paragraph. This is a neutral production brief; write no additional event outside that interval.",
   "required_beats": [
     "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
@@ -23,8 +18,8 @@
     "This is the accepted late invitation or the mapped secret branch, not a new fate return. Annual visits follow only the preserved accepting history; exposed branches retain their closure.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}Chivarro catches your hands against her bare waist and kisses you back onto the mattress. She draws you close, her loosened hair brushing your face.{/n}",
-  "last_line": "N: At dawn, a folded receipt waits beside the pillow.",
+  "default_text": "{n}Chivarro keeps the Commander's wrists against the pillow and kisses the next excuse away. Her bare thighs tighten at their hips; she leans down until her loosened hair brushes their throat.{/n}\n\"Pay the interest, honey. I have waited long enough.\"",
+  "last_line": "N: In the morning there was a bill on the pillow, itemised, with the interest compounded by the hour, and her signature across the total. The Commander went every year after that. The rent went up every time.",
   "speakers": {
     "C": "Chivarro"
   },
@@ -35,5 +30,7 @@
     "a woman"
   ],
   "min_lines": 12,
-  "max_lines": 18
+  "max_lines": 18,
+  "prior_stop_line": "N: At dawn, a folded receipt waits beside the pillow.",
+  "narration": "third-past"
 }

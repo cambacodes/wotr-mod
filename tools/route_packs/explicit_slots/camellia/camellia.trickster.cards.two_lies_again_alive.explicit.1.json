@@ -2,20 +2,14 @@
   "slot_id": "camellia.trickster.cards.two_lies_again_alive.explicit.1",
   "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
   "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Living companion: no coffin injuries, widow identity loss or resurrection debt. All branch: she has claimed three truths, demanded later public repetition and discarded the pillow knife onto the floor. This is mutual deepening after her own love claim; reserve the adult sexual passage for the user fill. Public debt persists; morning retains the knife under the bed, fingertip crosses on the hand and the muster bell. Required beats: Her satisfied teasing concerns the three truths. She chooses bodily closeness; knife stays on floor away from bodies. No promise of reform or exclusivity. Private intimacy does not collect public declaration debt; breakfast does that on-page.",
-  "facts": [
-    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
-    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
-    "She values successful deception and seeks the disbelief of trusting victims.",
-    "She is frank about sex and finds ordinary sex boring.",
-    "Rillik/Rellik was her murdered victim, not a live husband."
-  ],
+  "facts": "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter. Her bone-snake amulet is associated with Mireya, a spirit she invented. She values successful deception and seeks the disbelief of trusting victims. She is frank about sex and finds ordinary sex boring. Rillik/Rellik was her murdered victim, not a live husband.",
   "required_beats": [
     "Her satisfied teasing concerns the three truths.",
     "She chooses bodily closeness; knife stays on floor away from bodies.",
     "No promise of reform or exclusivity.",
     "Private intimacy does not collect public declaration debt; breakfast does that on-page."
   ],
-  "last_line": "C: You still owe me three truths.",
+  "last_line": "N: Morning finds the knife under the bed. Camellia retrieves it, then draws three small crosses on the back of your hand with her fingertip.",
   "speakers": {
     "C": "Camellia"
   },
@@ -42,5 +36,6 @@
     "C4",
     "C5",
     "C6"
-  ]
+  ],
+  "prior_stop_line": "C: You still owe me three truths."
 }

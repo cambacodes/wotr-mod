@@ -16,5 +16,5 @@
   "max_lines": 20,
   "default_text": "{n}Eliandra draws you down beside her and catches your mouth with hers. Her robes lie across the foot of the bed; she does not reach for them.{/n}",
   "placement": "epilogue.unasked/page: paragraph anchor after door proposal/answer and initiation, before existing morning",
-  "narration": "third-past"
+  "narration": "second-present"
 }

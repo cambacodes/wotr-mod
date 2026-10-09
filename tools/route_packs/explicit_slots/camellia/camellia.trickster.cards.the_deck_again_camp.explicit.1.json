@@ -2,20 +2,14 @@
   "slot_id": "camellia.trickster.cards.the_deck_again_camp.explicit.1",
   "voice": "CAMELLIA: aristocratic precision; affected modesty dropping when appetite wins; calculating curiosity; possessiveness; delight in successful liars; impatient with bland sex; frank adult vocabulary; watches faces and hands; affection intensifies danger rather than curing it. No therapy language, redemption, maxims, childish mannerisms or generic seductress voice. Write new dialogue, no copied canon catchphrases. Physical description uses only verified canon; do not invent measurements, scars or physiology.",
   "scene": "SCENE: current Trickster, existing Chapter 3/5 Drezen host, Commander's private quarters, adult Camellia and adult Commander only. Retained-body paid return: no borrowed clawed-coffin injuries or automatic widow identity. Stacked-deck branch only: she pulls the Commander onto black silk and scatters cards. The blade that opened clothing is now set aside. This is a mutually wanted intimate return; reserve the adult sexual passage for the user fill. End together during the night so the retained close node near the collar follows, then morning alone with the card at the door. The quiet kept-spread branch never enters. Required beats: She refuses to settle whether the trick happened; no magic truth or affection. She directs closeness on silk; cards are scenery, not fate. Keep blade aside and her appetite intact without sexual compulsion. No dawn/departure inside this slot: close and morning retain their own actions.",
-  "facts": [
-    "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter.",
-    "Her bone-snake amulet is associated with Mireya, a spirit she invented.",
-    "She values successful deception and seeks the disbelief of trusting victims.",
-    "She is frank about sex and finds ordinary sex boring.",
-    "Rillik/Rellik was her murdered victim, not a live husband."
-  ],
+  "facts": "Camellia is an adult woman and Horgus Gwerm's illegitimate daughter. Her bone-snake amulet is associated with Mireya, a spirit she invented. She values successful deception and seeks the disbelief of trusting victims. She is frank about sex and finds ordinary sex boring. Rillik/Rellik was her murdered victim, not a live husband.",
   "required_beats": [
     "She refuses to settle whether the trick happened; no magic truth or affection.",
     "She directs closeness on silk; cards are scenery, not fate.",
     "Keep blade aside and her appetite intact without sexual compulsion.",
     "No dawn/departure inside this slot: close and morning retain their own actions."
   ],
-  "last_line": "C: Leave the cards. Come closer.",
+  "last_line": "C: Whatever the truth is,",
   "speakers": {
     "C": "Camellia"
   },
@@ -42,5 +36,6 @@
     "C4",
     "C5",
     "C6"
-  ]
+  ],
+  "prior_stop_line": "C: Leave the cards. Come closer."
 }

@@ -1,10 +1,8 @@
 {
   "voice": "AREELU: exact, proud, impatient, contemptuous of pity and moral reproach; possessive attention, spare forceful demands, appetite owned without sentimental surrender. She can care about the Commander while remaining evil and pursuing her unresolved personal purpose. Clinical precision belongs to soul research and wager terms, not every touch. No maxims, modern therapy language, observer/subject flirt routine, gratitude redemption, parental endearments, narrator judgments or visions. Write new dialogue; do not copy the example's wording.\nPHYSICAL FACTS: Verified native facts: Areelu is a Sarkorian spellcaster who opened the Worldwound for a deeply personal purpose; she joined her soul to the Abyss; the current Commander shares a soul with her child, whose gender follows the native token. Cue_0021 confirms crimson eyes. The Commander is an independent adult romantic participant, never treated as her child. No extra hair color, genital description, limbs, permanent scars or demonic appendages are established by this brief.",
-  "facts": [
-    "Verified native facts: Areelu is a Sarkorian spellcaster who opened the Worldwound for a deeply personal purpose; she joined her soul to the Abyss; the current Commander shares a soul with her child, whose gender follows the native token. Cue_0021 confirms crimson eyes. The Commander is an independent adult romantic participant, never treated as her child. No extra hair color, genital description, limbs, permanent scars or demonic appendages are established by this brief."
-  ],
+  "facts": "Verified native facts: Areelu is a Sarkorian spellcaster who opened the Worldwound for a deeply personal purpose; she joined her soul to the Abyss; the current Commander shares a soul with her child, whose gender follows the native token. Cue_0021 confirms crimson eyes. The Commander is an independent adult romantic participant, never treated as her child. No extra hair color, genital description, limbs, permanent scars or demonic appendages are established by this brief.",
   "scene": "Iomedae-return finale continuation, authored Commander's lodging after recovery. Adult Commander and committed Areelu; accepted nb_across approach. Use the actual appointment-kept or rescued history, never assume both happened. Required beats: her irritation at the intervention she did not build; she sets the instruments aside and pursues chosen closeness; Commander reciprocates; bodily contact matches the existing changed-skin/scar account. End at the heated cut, before describing sexual acts. Next existing node: nb_morning with a definite return invitation and continuing research.\nHISTORY-SPECIFIC AUTHORED STAGING: Outside divine intervention is an authored route continuation of the actual run. No H2 flask, bottled death, invented injury or claim that Areelu performed the return.\nOutput the Commander as 'you'; no embedded Commander dialogue. This brief stages intimacy without graphic detail.",
-  "last_line": "N: She kisses you hard and pulls you close. The lamp and the closed notebook stay on the floor.",
+  "last_line": "N: She wakes with her palm against your chest. The notebook is still on the floor.",
   "speakers": {
     "A": "Areelu"
   },
@@ -17,5 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.finale.not_burned.explicit.1",
-  "default_text": "{n}She kisses you hard and pulls you close. The lamp and the closed notebook stay on the floor.{/n}"
+  "default_text": "{n}She kisses you hard and pulls you close. The lamp and the closed notebook stay on the floor.{/n}",
+  "narration": "second-present",
+  "prior_stop_line": "N: She kisses you hard and pulls you close. The lamp and the closed notebook stay on the floor."
 }

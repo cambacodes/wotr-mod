@@ -6,12 +6,7 @@
     "baseline": "219bcbebe010c892d8532b68b83183958b0e1ec3"
   },
   "voice": "Minagho: wounded arrogance, contemptuous brevity, impatient commands, amused cruelty, possessive appetite, unsoftened memory of the war. Desired closeness is a claim she makes herself; it does not redeem her or repay a rescue. Write new dialogue from traits; do not copy brief sentences or native quotations.",
-  "facts": [
-    "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship.",
-    "Both are eyeless: no eyes, eye color, exchanged glances or eye contact.",
-    "Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed.",
-    "Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end."
-  ],
+  "facts": "Minagho and Chivarro are adult lilitu; native Chivarro dialogue describes their sexual relationship. Both are eyeless: no eyes, eye color, exchanged glances or eye contact. Minagho was maimed and branded by Baphomet after failure in Kenabres. Relief does not establish that her brand was removed. Their canon bond includes passion, irritation, separation and renewed attraction; a Commander visit does not establish its end.",
   "scene": "Authored expansion of minagho_chivarro.trickster.alone.minagho_letter/stance_2_night_minagho. Chapter 5, before Threshold, Trickster history at Drezen, the Commander's private quarters after the watch change. Present: Minagho and the Commander only. Secret affair; the partner is not present in this slot. The mapped discovery is later, not Kiana's mid-act interruption. Continue to the existing morning or terminal exit. This is a neutral production brief; write no additional event outside that interval.",
   "required_beats": [
     "Expand only the already chosen private intimacy threshold, after visible willing initiation by the woman and the Commander's accepting choice. Act: consensual sex between the listed adult participants; no compelled service or incapacity.",
@@ -24,7 +19,7 @@
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
   "default_text": "{n}Minagho catches your mouth again and draws you against her. Your hand closes on her bare waist; she keeps it there and presses closer.{/n}",
-  "last_line": "N: Dawn finds the discarded clothes beside the locked door.",
+  "last_line": "N: Dawn.",
   "speakers": {
     "M": "Minagho"
   },
@@ -35,5 +30,6 @@
     "a woman"
   ],
   "min_lines": 12,
-  "max_lines": 18
+  "max_lines": 18,
+  "prior_stop_line": "N: Dawn finds the discarded clothes beside the locked door."
 }
