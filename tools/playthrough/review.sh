@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # review.sh <policy|all> [parallel]: Luna (gpt-6-luna, medium) reviews every checkpoint dossier under the strict
-# reviewer contract; then the investigator (gpt-6.1-sol, medium: Terra's role - no Terra model on this account)
+# reviewer contract; then Terra (gpt-5.6-terra, medium)
 # re-checks only dossiers with "uncertain" findings. Read-only; outputs runs/<policy>/review/<dossier>.{luna,terra}.json.
 set -u
 cd "$(dirname "${BASH_SOURCE[0]}")"
 policies=${1:-all}; par=${2:-4}
 [ "$policies" = all ] && policies="trickster_all_romance trickster_villain nontrickster_good hostile"
 KNOW=${RRT_KNOWLEDGE:-C:/Users/Z/Documents/Projects/Writer/knowledge}
-LUNA=${RRT_LUNA:-gpt-6-luna}; TERRA=${RRT_TERRA:-gpt-6.1-sol}
+LUNA=${RRT_LUNA:-gpt-6-luna}; TERRA=${RRT_TERRA:-gpt-5.6-terra}
 ROOT=$(cd ../.. && pwd)
 
 luna() {  # $1 = dossier path relative to tools/playthrough
