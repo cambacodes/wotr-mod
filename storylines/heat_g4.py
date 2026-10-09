@@ -358,12 +358,6 @@ rule([H + "body.terms"], "threshold",
      '''"Mine tonight." {n}She bends to kiss you again. You meet her halfway. Her teeth close on your lip and stay. A hand fists in your hair and drags your head back; the other drives down your stomach and under your belt and closes, with no gentleness at all. The horn stump rakes your cheek as she brings her mouth to your ear.{/n}
 "Hold still, whelp. I am deciding how much of you I want."''')
 
-rule([H + "bond.crooked"], "down",
-     '''as she bends her head to your mouth.{/n}''',
-     '''as she bends her head to your mouth.{/n}
-{n}She takes your wrists and drags them to her hips, over the scars, and holds them there hard enough to bruise.{/n}
-"There. Both hands. You do not let go until I say. Understood, whelp?"''')
-
 rule([H + "bond.eve"], "face_say",
      '''{n}The good eye opens.{/n} "And you will come for me. Say it."''',
      '''{n}The good eye opens. Her hand fists in your shirt and drags you down until the heat of her is against you through the cloth, her hips driving into yours once, hard, a demand, and the pick slides off her lap and rings on the stones. She does not look at it.{/n} "And you will come for me. Say it."''')
