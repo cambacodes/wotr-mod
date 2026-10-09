@@ -242,7 +242,8 @@ visit(SNOWFIELD, "Where the snow stays", [
         c('"Then don\'t be."', "cut"),
         c("[Answer her with your hands.]", "cut")),
     nar("cut", '''{n}She comes over you, a knee on either side, and presses your wrists into the sheepskin. Her loose hair falls forward. She releases one wrist; you brush the hair out of her eyes and she kisses your palm.{/n}
-"No citadel bell. No knocking at the door." {n}She lowers herself to kiss you, slow and hungry.{/n} "You're here. Stay here."''',
+"No citadel bell. No knocking at the door." {n}She lowers herself to kiss you, slow and hungry.{/n} "You're here. Stay here."
+{n}She is bare over you on the sheepskin, white hair in a curtain round both your faces, and nothing about her is in a hurry and nothing about her is gentle either. Her mouth goes down your throat and your chest and the long muscle of your stomach, unhurried, finding every place the cold has left you aching and making it burn. Her breasts drag over your skin; the heavy silver weight of her thighs settles either side of your hips and you feel exactly how wet and ready she is, and that she has chosen to make you wait for it. She is older than the citadel and she has never in her life wanted anything the way she wants this, and she lets you see it on her face.{/n} "Look at me, warmblood," {n}she says, and lowers herself until there is nothing left between you.{/n}''',
         c("Continue", "explicit.1")),
     nar("morning", '''{n}Grey light on the snowfield. Your eyelashes have frozen together, and when you get them open the first thing you see is a red-black face, upside down, with a great many teeth in it, a hand's breadth from your own.{/n}
 {n}The young dragon has found you. She has one forefoot planted on your chest, which hurts, and her head hung over you, looking down with an expression of enormous disapproval, and every time you breathe the foot rises and falls.{/n}''',
