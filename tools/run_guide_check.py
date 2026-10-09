@@ -553,8 +553,9 @@ def validate(text, model, trace=None, expected_manifest=None):
                 errors.append(f"{rel} misses its Chapter {ch} commitment checkpoint")
         romance = committed - {"ember", "aivu", "shamira_barracks", "tirabade", "longcon", "lastcall", "foresight", "household", "nocticula.acquisition"}
         final = set(trace["final_flags"])
-        if any(rel + ".harem.eligible" not in final or model.rels[rel]["ClosedFlag"] in final for rel in romance):
-            errors.append("A committed woman is no longer eligible/present at Last Call")
+        lost = sorted(rel for rel in romance if rel + ".harem.eligible" not in final or model.rels[rel]["ClosedFlag"] in final)
+        if lost:
+            errors.append("A committed woman is no longer eligible/present at Last Call: " + ", ".join(lost))
         if any(not set(woman.get("Requires", [])).issubset(final)
                for woman in model.story.get("SeatWomen", {}).values()):
             errors.append("A named woman's earned presence is missing at Last Call")
