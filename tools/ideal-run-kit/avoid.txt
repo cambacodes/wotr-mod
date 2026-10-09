@@ -6,3 +6,5 @@ terendelev.trickster.cost.bled_white
 iomedae.trickster.declined
 iomedae.trickster.cost.boasted
 iomedae.trickster.rescue_only
+dorgelinda.ledger.quarrel_cold
+dorgelinda.ledger.quarrel_unmended

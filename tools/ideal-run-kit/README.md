@@ -31,6 +31,14 @@ F8 corrections:
   after-scene injection of `cost.carts_signed` is removed from both copies of the
   extras. The cost now appears in the executed `rider/0` choice's `Set`.
 
+The all-romance policy also avoids Dorgelinda's `ledger.quarrel_cold` and
+`ledger.quarrel_unmended` outcomes. The shortest unsteered path walks out of
+**Hammer and tongs** and later lets **Cold counts** stand, which withholds current
+eligibility despite the earlier commitment. The kit instead writes the existing
+letter and earns `ledger.quarrel_mended`, including the allotment cuts and powder
+restoration. If the Commander already walked out, the same policy steers the
+later **Cold counts** apology and letter. No route gate or derived forbid changes.
+
 The unchanged simulator policy uses successful checks, a deeper planner for
 folded pages, daily physical visits, and 45 simulated Chapter 6 days to play the
 consecutive entries on the Threshold answer list. Its default 30-day Chapter 3
