@@ -1,4 +1,40 @@
 {
   "version": 1,
-  "pending": []
+  "pending": [
+    {
+      "scene": "elyanka.trickster.beat.master",
+      "node": "kill",
+      "surface": "node",
+      "index": null,
+      "text_sha": "e55e82ce55babaf5201b47e2c4cafcaf061b990ec9202704b8c8f11de597c75f"
+    },
+    {
+      "scene": "elyanka.trickster.beat.master",
+      "node": "kill2",
+      "surface": "node",
+      "index": null,
+      "text_sha": "4990b020fc2f7bc74e912b9d48713ba5e850dfcd4b2419af84b07791c49470e7"
+    },
+    {
+      "scene": "elyanka.trickster.beat.master",
+      "node": "hers",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d87075b6844705b5c2c66fc671a09222819fba7c1c401714f1ac0e66479beef3"
+    },
+    {
+      "scene": "chadali.fortunes.honey",
+      "node": "look",
+      "surface": "node",
+      "index": null,
+      "text_sha": "294138a33a4210743da1b4a98a4c3163013e29b4409267a87ef8205602247555"
+    },
+    {
+      "scene": "chadali.sessions.what_chance_wishes",
+      "node": "stay",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7192e6d78811e28d1801dd8dab35465f8bd927c55c09bfabc2dba4d83da61c54"
+    }
+  ]
 }
