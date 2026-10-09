@@ -313,7 +313,7 @@ session(ACQ, "Old acquaintance", 4, '"You keep looking at that door."', [
         c("Continue", "offer")),
     nar("offer", '''{n}The succubus claps, delighted. She crosses the street and takes Arueshalae's arm as if they had parted last week, and the merchant follows on his leash like a dog that has forgotten it was ever anything else.{/n}
 {n}"There she is. I knew she was still in there." She puts her mouth to Arueshalae's ear and does not trouble to lower her voice. "There's a room upstairs, and two of these in it who've paid to be emptied. Paid, sister. They'll thank you while you do it. Come and eat. You're so thin I can see your goddess through you."{/n}
-{n}Arueshalae does not take her arm away. Her nostrils flare. You know what she is smelling; she told you once, behind the stables. The edge of them.{/n}''',
+{n}Arueshalae does not take her arm away. Her nostrils flare. You know what she is smelling; she told you once, when you held out your hand. The edge of them.{/n}''',
         c("[Say nothing. Let her answer for herself.]", "voice", flags=(ACQ, ACQ_VOICE)),
         c('"She isn\'t hungry. And I\'m not on the menu."', "claws", flags=(ACQ, ACQ_CLAWS)),
         c('[Take the leash out of the succubus\'s hand and put it in Arueshalae\'s] "Your friend brought you a present."', "leash",
@@ -328,7 +328,7 @@ session(ACQ, "Old acquaintance", 4, '"You keep looking at that door."', [
 {n}She never reaches it. Arueshalae's hand closes on her wrist. Her teeth bare, her claws come out long and black, and for one moment you see the old Arueshalae, the demon of the Abyss, whole. She opens the other succubus's cheek to the bone in one stroke, and the sound the woman makes is a laugh.{/n}
 {n}"There she is," the succubus says through the blood. She backs towards the Delights' door with her hand to her face, still laughing, and the merchant goes after her on his hands and knees to lick it off her fingers.{/n}''',
         c("Continue", "after_claws")),
-    a("after_claws", '''{n}Arueshalae looks at her own hand. There is blood under every nail, and she does not wipe it.{/n} "That was the best I've felt since the goddess." {n}She says it to the hand, not to you.{/n} "Better than the sergeant. Better than your seven minutes. She'll tell every girl in that house that I'm back, and whose I am, and they'll come out to look at you, and some of them will want to try."
+    a("after_claws", '''{n}Arueshalae looks at her own hand. There is blood under every nail, and she does not wipe it.{/n} "That was the best I've felt since the goddess." {n}She says it to the hand, not to you.{/n} "Better than any hour I've spent with my hands behind my back. She'll tell every girl in that house that I'm back, and whose I am, and they'll come out to look at you, and some of them will want to try."
 {n}Now she looks at you.{/n} "Let them. I'll do it again, and I'll enjoy it again. Know that about me before you hold out your hand next time."''',
         c("[Walk her back to the camp.]")),
     nar("leash", '''{n}You take the silver leash out of the succubus's fingers before she knows it has gone, put the loop of it in Arueshalae's hand, and close her fingers over it.{/n}
@@ -520,19 +520,19 @@ session(MORNING, "First light", 5, '"Good morning."', [
     # arue12 REBUILD (edge-fix-design §3.6): "Demons do not dream when they sleep" (6a868525); Desna's question, "And what
     # do you dream of?" (83f5c486); and the dying priestess whose mind she went into (ae2ee587). She lay awake beside a
     # dreaming mortal, wanting to go in after the dream, and did not.
-    a("count", '''"You dreamed." {n}She says it the way another woman would say you snored.{/n} "Demons don't. We don't sleep and we don't dream; we want, and we do what we want. So I lay here and watched you do it. Your eyes moved under the lids. Your hand kept closing on the cloak." {n}Her wing settles over your shoulders.{/n}
+    a("count", '''"You dreamed." {n}She says it the way another woman would say you snored.{/n} "Demons don't, or so we were all taught. We don't sleep so much as wait; we want, and we do what we want. So I lay here and watched you do it. Your eyes moved under the lids. Your hand kept closing on the cloak." {n}Her wing settles over your shoulders.{/n}
 "The last mortal I watched dream, I went in after it, the only way I know: through her mouth, while she died of it. I was inside her head at the end, looking round, the way you'd look round a house you'd broken into." {n}She does not lower her eyes.{/n} "I wanted to, last night. All night. The ward was long gone, and your mouth was right there, and I lay here and wanted to, and I didn't."''',
         c('"What would you have found in there?"', "recovering", flags=(MORNING,)),
         c('"Why didn\'t you?"', "doctor", flags=(MORNING,))),
     a("recovering", '''"A supply wagon, I think. You're very dull asleep." {n}A flicker of teeth.{/n} "And me, if I'd gone in. Inside your own head, where you couldn't wake up and tell me no." {n}She leans over and kisses your brow through a fold of the cloak, quickly, hard.{/n}
-"Desna asked me what I dream of. I still haven't an answer for her. But I know what I want, and this morning I'd rather have it awake, where it can see me coming."''', c()),
-    a("doctor", '''"Because I'd have liked it." {n}She doesn't soften it.{/n} "And because the goddess was waiting inside the last one, and asked me a question I still can't answer. 'And what do you dream of?'"
-{n}She looks down at you for a long moment.{/n} "Not of you. I don't dream. But I lay beside you all night, wanting, and didn't take, and I'm going to call that the nearest I've come to an answer. Stay till the sun's up. I'll fly you down when you can stand."''', c()),
+"I don't know what I dream of, or if I ever will. But I know what I want, and this morning I'd rather have it awake, where it can see me coming."''', c()),
+    a("doctor", '''"Because I'd have liked it." {n}She doesn't soften it.{/n} "And because the last one died of my going in, and I would rather not be the woman who does that twice."
+{n}She looks down at you for a long moment.{/n} "I lay beside you all night, wanting, and didn't take, and I'm going to call that the nearest I've come to being something else. Stay till the sun's up. I'll fly you down when you can stand."''', c()),
     # After the native Elysium ending her touch no longer drains (BestEnding cues 0c5b3449, f3f59947): nothing was taken.
     a("count_e", '''"You dreamed. I watched." {n}She lays her palm flat over your heart.{/n} "I kept waiting for the hunger to sit up beside me in the dark, the way it always used to, and lick its lips. It never came. I lay here beside a warm mortal all night and wanted only to wake you for another kiss." {n}She leans forward.{/n} "Now you're awake."''',
         c('"What would you have found in my dream?"', "recovering_e", flags=(MORNING,)),
         c('"Why didn\'t you wake me?"', "doctor_e", flags=(MORNING,))),
-    a("recovering_e", '''"I don't know, and I'm not going in to find out." {n}She looks at you, and then out at the grey light.{/n} "The last time I went into a mortal's dream, she was dying in my arms and I was eating the end of it. Desna was waiting there, and asked me what I dream of." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "I'm going to find my own. I don't need yours."''', c()),
+    a("recovering_e", '''"I don't know, and I'm not going in to find out." {n}She looks at you, and then out at the grey light.{/n} "The last time I went into a mortal's dream, she was dying in my arms and I was eating the end of it." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "I'm going to have my own, someday. I don't need yours."''', c()),
     a("doctor_e", '''{n}She looks you over, frankly, from your hair to your bare feet.{/n} "Because you're pink. Because you slept like a baby on a bell-floor beside a succubus, and I lay awake all night beside a warm mortal and didn't take one thing, and I wanted to watch that for as long as it lasted." {n}She kisses your forehead and then, because she can, your mouth.{/n} "Stay till the sun's up. That's an order. Mine."''', c()),
 ], (NIGHT, "trickster.ever"), forbids=(MORNING,), delay=6, chapters=(5,), Areas=[DREZEN_AREA])   # PP2 post-cap: first light on the tower
 

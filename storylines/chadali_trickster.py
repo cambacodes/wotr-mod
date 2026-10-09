@@ -227,7 +227,7 @@ letter(P + "fought.lucky", "Lucky you", [
       c("[Look at the bottom of the parcel.]", "shut_coin", requires=(PRIMED,)),
       c("[Put the parcel away.]", forbids=(PRIMED,))),
     ch("shut_coin", '{n}A sun has been drawn on the bottom of the parcel. The actual coin remains where you put it after her first letter. Nothing else has come back.{/n}',
-      c("[Put the coin away.]")),
+      c("[Put the parcel away.]")),
 ], requires=("trickster", LATCHED), forbids=(RETURNED,), delay=24, TricksterDevice=True, TricksterState=LOST)
 
 

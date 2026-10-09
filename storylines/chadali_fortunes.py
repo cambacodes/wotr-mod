@@ -427,7 +427,7 @@ fortune(REPAID, "Paid back", '"You said you always pay back."', [
 EPILOGUE_PARAGRAPHS = [
     (PROMISED_SAFE, "{n}She kept, in the drawer where she kept her ribbons, a note in the Commander's hand from the week of the cauldron: \"Nobody takes it by force.\" She never needed to show it to anyone. She liked to read it anyway.{/n}"),
     (HELD_AFTER, "{n}Every time the Commander came to her, for the rest of their life, the first thing the Commander asked was \"Is it growing?\" and every time she said yes. By the end, it was true.{/n}"),
-    (SAW_THE_FAIR, "{n}Her fair was built, in the end, at the edge of what had been the Wound: acrobats, lollipops, and a three-headed puppy that ate nobody. There was a devil's stall. It sold lollipops. Chadali watched it herself, every day, with a very big one.{/n}"),
+    (SAW_THE_FAIR, "{n}Her fair was built, in the end, on ground the crusade had held against the Wound: acrobats, lollipops, and a three-headed puppy that ate nobody. There was a devil's stall. It sold lollipops. Chadali watched it herself, every day, with a very big one.{/n}"),
     (FORGAVE_MEAN, "{n}She still snapped when someone spoiled her mood. The Commander brought tea after their quarrels; she brought cookies, sometimes burnt. Neither always got the answer they wanted.{/n}"),
     (NO_MORE_RIGGING, "{n}Her priests in Drezen had ordinary luck after that, good months and bad. The Commander mended their roof once more, openly, with a sign. She kept the sign.{/n}"),
     (KEPT_RIGGING, "{n}When her priests went hungry the Commander fed them, with the crusade's stamp on every sack, and she never once complained about it, and once she was seen kissing a sack.{/n}"),
