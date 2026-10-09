@@ -383,38 +383,34 @@
       "introducing_text": "n(\"early\", \"Narrator\", '''{n}The older traveler introduces herself as Tesvara. She is grateful for help with her bundle and less grateful for suggestions about where to put her painful leg. Ember stops giving those when Tesvara asks, then holds the cushion where she points.{/n}",
       "authored": true,
       "finding": "canon-fix1 B11"
-    }
-  ],
-  "pending_entities": [
+    },
     {
       "name": "Nerethi",
-      "source": "storylines/nocticula_trickster_concession.py",
+      "source": "storylines/nocticula_cloud.py",
       "introducing_route": "nocticula.acquisition",
       "role": "clerk investigating Salven",
-      "introducing_text": "Your clerk Neris has held it back from the incoming petitioners. She asks whether the seal is yours.",
+      "introducing_text": "Your clerk Nerethi held it back from the petitioners' table. She asks whether the seal is yours.",
       "authored": true,
-      "finding": "canon-fix1 B1",
-      "pending_voice_rename": "Neris"
+      "finding": "canon-fix1 B1 (renamed in the villain-route-nocticula layer)"
     },
     {
       "name": "Vezhara",
-      "source": "storylines/nocticula_partners.py",
+      "source": "storylines/nocticula_cloud.py",
       "introducing_route": "nocticula",
       "role": "repair-yard harbor passenger",
-      "introducing_text": "p(\"{n}Vessa's damaged hand never vanished from the account of the narrower crossing. The crushed bell went back to her; Nocticula kept the broken instrument and sent away buyers who mistook it for a working road.{/n}\", requires=(\"noct.door_unreinforced\", \"noct.vessa_injured\", \"noct.chart_lost\")),",
+      "introducing_text": "He knew two of them. Vezhara, who ran the repair yard",
       "authored": true,
-      "finding": "canon-fix1 B4",
-      "pending_voice_rename": "Vessa"
+      "finding": "canon-fix1 B4 (renamed in the villain-route-nocticula layer)"
     },
     {
       "name": "Merzila",
-      "source": "storylines/nocticula_continuation.py",
+      "source": "storylines/nocticula_cloud.py",
       "introducing_route": "nocticula",
       "role": "lodge captive beside Istrava's trophies",
-      "introducing_text": "Edris cuts the ribbon rather than pulling against its hidden hook. The freed attendant runs into the yard. Her sister, Mera, remains beside the cabinet.",
+      "introducing_text": "Her sister, Merzila, remains beside the cabinet.",
       "authored": true,
-      "finding": "canon-fix1 B7",
-      "pending_voice_rename": "Mera"
+      "finding": "canon-fix1 B7 (renamed in the villain-route-nocticula layer)"
     }
-  ]
+  ],
+  "pending_entities": []
 }
