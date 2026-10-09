@@ -378,3 +378,33 @@ rule([H + "bond.her_room"], "sit_say",
      '''"Do not argue. You have seen what I do to people who take my things."
 {n}Her hand is still round yours. She drags it up inside her coat, over her ribs and the old scars, and holds it flat against her pounding heart, then lower. Her mouth is at your ear, her voice a low hot rasp.{/n}
 "You are mine, so I will have the use of you tonight. All of it. Do not talk to me about gentleness."''')
+
+# ======================================================================================
+# SHAMIRA
+# ======================================================================================
+SH = "shamira.trickster."
+
+rule([SH + "after.night_alone"], "read",
+     '''You may look at me while I warm these hands."''',
+     '''You may look at me while I warm these hands."
+{n}She tilts her head toward the blanket you hold up, and the grey lips curve. Her hands, when she holds them out for you to see, shake very slightly.{/n}
+"Cold to the bone, mortal. The coal was a gift and a leash both. Tonight I do not want to be clever. I want skin on skin, and your heat in every place that went coldest."''')
+
+rule([SH + "after.night_alone"], "offered",
+     '''You offered. I never give anything back."''',
+     '''You offered. I never give anything back."
+{n}Her mouth finds the corner of yours, cold, then not cold. She draws your hand under the red silk and flat against her ribs, and holds it there until you feel her shiver and her breath catch.{/n}
+"Now, Commander. Warm me. It is the least you can do for a queen you have robbed."''')
+
+rule([SH + "epilogue.late"], "late_initiation",
+     '''then drew her lover down onto the warm steps.{/n}''',
+     '''then drew her lover down onto the warm steps.{/n}
+{n}Her cold hands worked under the Commander's shirt and found the heat there, and she made a low sound of pure hunger against the Commander's throat.{/n}
+"Still warm," {n}she said.{/n} "How rude, to be so warm. I mean to take all of it."''')
+
+rule([SH + "harem", SH + "harem_awning"], "cut",
+     '''and her palm presses against your hammering heart.{/n}''',
+     '''and her palm presses against your hammering heart.{/n}
+"Warm, and trembling, and mine for the length of one bell," {n}she says, rocking once against you, slow, to feel it land.{/n}''')
+
+_TOUCHED.update({"wenduag.trickster.court.cairn", "gesmerha.the_room_she_chose", "hepzamirah.trickster.bond.gift"})
