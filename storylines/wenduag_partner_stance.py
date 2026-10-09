@@ -275,6 +275,15 @@ def integrate(payload):
         next(node for node in claim["Nodes"] if node["Id"] == "why")["Choices"][0]["Next"] = "partner_intro"
         claim["Nodes"].extend(_claim_nodes())
 
+    # struct2-09: exclusivity refusal is a distinct closure. It never records
+    # the old claim_refused receipt, whose page says Brask was released.
+    refused = copy.deepcopy(scenes[W + "epilogue.refused"])
+    refused["Id"] = W + "epilogue.exclusive_refused"
+    refused["Requires"] = [REFUSED if flag == W + "court.claim_refused" else flag
+                           for flag in refused["Requires"]]
+    refused["Nodes"][0]["Text"] = "[PROSE PENDING: exclusive-refusal ending and Brask consequence]"
+    payload["Scenes"].append(refused)
+
     # Keep the saved original morning reaction for openly chosen / unchosen bonds.
     # The concealed claim uses the same scent event, host, chapter and presence guard.
     morning = scenes[W + "react.lann_morning"]

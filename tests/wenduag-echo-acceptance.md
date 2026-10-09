@@ -19,10 +19,12 @@ The existing identity, paid preparation, transport, journey and live-Trickster c
 
 ## Foresight producer
 
-The Shyka branch is absent here.
-The TODO-shyka Derived binding for `foresight.page_taken` requires the live Trickster path and `trickster.foresight.accepted`.
-No scene in this unit grants that ownership flag.
-When merging Shyka, register this allocated Wenduag Chapter 4 echo through the real API and replace the stub with its paid-page producer.
+At the struct2-09 pinned base `78f9b714dd8b5ea35e58c0a37609d6a9defdbd36`,
+the assembled `trickster.foresight.page` scene already grants `trickster.foresight.accepted` through its paid-page choices.
+The exported `foresight.page_taken` reader requires `trickster.now` and that acceptance receipt.
+The old instruction to merge Shyka and replace this producer stub is therefore stale; Wenduag's module consumes the shared producer.
+This source/export inspection resolves the producer TODO only. The retained-original destination, click, occupancy,
+reload and later-loss acceptance above still requires candidate-bound coordinator/runtime evidence. No live capture is supplied by this checklist update.
 
 ## Native encounter and custody
 

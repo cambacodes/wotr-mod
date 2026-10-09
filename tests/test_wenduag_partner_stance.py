@@ -96,7 +96,7 @@ class WenduagPartnerStanceTests(unittest.TestCase):
                    if s.get("Relationship") == "wenduag" and s["Owner"].endswith("Epilogue")
                    and ".partner." not in s["Id"]]
         endings.append(self.scenes["wenduag.lastcall.page"])
-        self.assertEqual(12, len(endings))
+        self.assertEqual(13, len(endings))
         state_guards = [({stance.LANN_IN}, set(stance.LANN_GONE)),
                         ({"lann.dead"}, set()),
                         ({"lann.kicked_out"}, {"lann.dead"}),

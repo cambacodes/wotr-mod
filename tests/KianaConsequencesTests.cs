@@ -14,6 +14,7 @@ internal static class KianaConsequencesTests
         foreach (bool otherLoss in new[] { false, true })
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = scenes[0].Areas.Single() };
+            initial.AvailableContacts.Add("180b0eaa5dce387458d2ebf0ee943985");
             initial.Flags.UnionWith(Program.Prerequisites(scenes[0]));
             initial.Flags.Add("seelah.committed");
             if (committed) initial.Flags.Add("kiana.committed");
@@ -54,6 +55,7 @@ internal static class KianaConsequencesTests
         foreach (var scene in scenes)
         {
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = scene.Areas.Single() };
+            ready.AvailableContacts.Add("180b0eaa5dce387458d2ebf0ee943985");
             ready.Flags.UnionWith(Program.Prerequisites(scene));
             foreach (string blocker in new[] { "kiana.closed", "kiana.farewell", "inhuman" })
             {

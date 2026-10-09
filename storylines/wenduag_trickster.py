@@ -427,6 +427,18 @@ page(W + "killed.cairn", "The Mongrel cairn", [
 ], requires=("trickster", KILLED, STAGED), forbids=(CAIRN,), delay=2, chapters=(3,), kind="event", areas=(),
     **device("killed"))
 
+# struct2-09: inspect the actual cairn with Lann after the staged killing.
+# Act 3 Neathholm area; Lann's existing companion dialogue supplies the entry.
+_cairn_scene = SCENES[-1]
+_cairn_scene.pop("Remote", None)
+_cairn_scene.pop("Kind", None)
+_cairn_scene.update(Entry=_cairn_scene["Title"],
+                    Areas=["3091eaedc174f2c45a95a9e9743e9b09"],
+                    ContactUnit="cb29621d99b902e4da6f5d232352fbda",
+                    AnswerLists=[LANN_HUB])
+_cairn_scene["Requires"].append(LANN_IN)
+_cairn_scene["Forbids"].extend(LANN_GONE)
+
 # The page's closing choices each record the cairn and the lie together.
 for _node in SCENES[-1]["Nodes"]:
     for _choice in _node["Choices"]:

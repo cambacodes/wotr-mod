@@ -841,7 +841,9 @@ s("the_visits_she_can_end", "A familiar question",
 def ending(id, title, text, requires, forbids=(), owner="Epilogue"):
     SCENES.append(scene("ember." + id, title, owner, 1, "",
         [n("end", "Narrator", text, portrait="Ember")],
-        requires=requires, forbids=forbids, last=6, Relationship="ember"))
+        requires=requires, forbids=forbids, last=6, Relationship="ember",
+        **({"ForbidOverrides": {"sacrifice": "trickster.commander_back"}}
+           if "sacrifice" in forbids else {})))
 
 
 ORDINARY = ("ember.closed", "ember_dead", "ember_gone", "ember.absent", "sacrifice", "ascended", "ember.native_devastated")

@@ -9,8 +9,9 @@ def s(id, title, nodes, after, delay=48):
     for page in nodes:
         page["Portrait"] = "Kiana" if page["Speaker"] == "Kiana" else ""
     SCENES.append(scene(
-        "kiana." + id, title, "Kiana", 5, "", nodes,
-        Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN],
+        "kiana." + id, title, "Kiana", 5, title, nodes,
+        Relationship="kiana", ContactUnit="180b0eaa5dce387458d2ebf0ee943985",
+        InteractionHub="kiana.presence", Chapters=[5], Areas=[DREZEN],
         requires=("seelah.souls_returned", "kiana.lovers", "kiana.consequences_ready", after),
         forbids=("kiana.closed", "kiana.farewell", "inhuman"), delay=delay, optional=True,
         ForbidOverrides={"kiana.farewell": "kiana.catchup_requested"}))

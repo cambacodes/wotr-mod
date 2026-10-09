@@ -30,6 +30,7 @@ internal static class KianaFollowthroughTests
         foreach (bool committed in new[] { false, true })
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = scenes[0].Areas.Single() };
+            initial.AvailableContacts.Add("180b0eaa5dce387458d2ebf0ee943985");
             initial.Flags.UnionWith(new[] { "seelah.souls_returned", "kiana.lovers", "kiana.morning",
                 "seelah.committed", "arueshalae.committed", "loss",
                 committed ? "kiana.committed" : "kiana.uncertain", committed ? "kiana.moon" : "kiana.guest" });
@@ -107,6 +108,7 @@ internal static class KianaFollowthroughTests
             check(scene.Nodes[0].Choices.Any(choice => choice.Abort && choice.Set.Length == 0),
                 "Kiana follow-through lacks an initial deferral without progress.");
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = scene.Areas.Single() };
+            ready.AvailableContacts.Add("180b0eaa5dce387458d2ebf0ee943985");
             ready.Flags.UnionWith(Program.Prerequisites(scene));
             check(Program.CurrentAvailable(story, scene, ready), "Kiana follow-through eligibility fixture is not ready.");
             foreach (string blocker in new[] { "kiana.closed", "kiana.farewell", "inhuman" })

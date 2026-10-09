@@ -44,6 +44,20 @@ internal static class EmberAssembledTests
             check(endings.Length == 1, "Full played Ember history has missing or overlapping endings.");
             var finished = Program.Walk(endings.Single(), state).ToArray();
             check(finished.Any(result => result.Has(endings[0].Id)), "Ember's earned ending cannot finish.");
+
+            // Keep the played friendship. The native Trickster punchline sets
+            // sacrifice + ending.trickster; Complete derives the earned return.
+            if (trickster)
+            {
+                var returned = Program.Copy(state);
+                returned.Flags.UnionWith(new[] { "sacrifice", "ending.trickster", "ember.native_q3_complete", "ember.native_good" });
+                Program.CurrentAvailable(story, endings[0], returned);
+                check(returned.Has("trickster.commander_back"), "Native punchline did not produce the Commander's return.");
+                var living = story.Scenes.Where(s => s.Relationship == "ember" && s.Owner == "Epilogue"
+                    && Program.CurrentAvailable(story, s, returned)).ToArray();
+                check(living.Length == 1 && living[0].Id == "ember.ending_good_friend",
+                    "Played friendship plus earned native return strands Ember's good ending.");
+            }
         }
     }
 }

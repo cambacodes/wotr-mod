@@ -280,8 +280,18 @@ class StructSlotHostTests(unittest.TestCase):
         modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
         story = {"Scenes": [s for module in modules for s in module.SCENES]}
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        # This fixture owns only its slot-host scenes; unrelated registered
+        # targets are validated against the complete exported story below.
+        scene_ids = {scene["Id"] for scene in story["Scenes"]}
+        pending = {"version": pending["version"],
+                   "pending": [entry for entry in pending["pending"] if entry["scene"] in scene_ids]}
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
         self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
+
+    def test_exported_pending_registry_targets_are_current(self):
+        from tests.story_fixture import fresh_story
+        pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        self.assertEqual([], prose_pending_lint.check(fresh_story(), pending, integration=True))
 
     def test_before_the_end_requires_first_bite_on_flown_branch(self):
         scene = next(s for s in devarra_tower.SCENES if s["Id"] == "devarra.tower.before_the_end")

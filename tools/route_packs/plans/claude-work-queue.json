@@ -759,5 +759,28 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "wenduag.trickster.epilogue.exclusive_refused",
+    "node": "page",
+    "woman": "Wenduag",
+    "beat": "Dedicated exclusive-refusal closure ending; do not claim Brask was released. Preserve her refusal and CLOSED. Await coordinator Brask aftermath disposition.",
+    "ruling": "struct2-09 WEN-A4-02"
+  },
+  {
+    "scene": "wenduag.trickster.court.claim",
+    "node": "partner_exclusive_refused",
+    "choice": 2,
+    "woman": "Wenduag",
+    "beat": "Exclusive-refusal aftermath with bound, bleeding Brask. Coordinator must select consequence and a legal continuation that preserves the saved terminal Next and closure; Claude owns consequence prose.",
+    "ruling": "struct2-09 WEN-A4-02"
+  },
+  {
+    "scene": "wenduag.trickster.court.claim_in_person",
+    "node": "partner_exclusive_refused",
+    "choice": 2,
+    "woman": "Wenduag",
+    "beat": "Exclusive-refusal aftermath with bound, bleeding Brask. Coordinator must select consequence and a legal continuation that preserves the saved terminal Next and closure; Claude owns consequence prose.",
+    "ruling": "struct2-09 WEN-A4-02"
   }
 ]
