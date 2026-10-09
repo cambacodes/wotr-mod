@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.finale.ascended.explicit.1",
-  "default_text": "{n}She takes your hand and draws you down beside her. Both names remain on the closed notebook.{/n}",
+  "default_text": "{n}She takes your hand and draws you down beside her, and the report, the wager and her own cool reason are put aside one at a time, each with a kiss; her laugh, low and surprised, is the last thing the room records. Both names remain on the closed notebook.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She takes your hand and draws you down beside her. Both names remain on the closed notebook."
+  "prior_stop_line": "N: She takes your hand and draws you down beside her, and the report, the wager and her own cool reason are put aside one at a time, each with a kiss; her laugh, low and surprised, is the last thing the room records. Both names remain on the closed notebook."
 }

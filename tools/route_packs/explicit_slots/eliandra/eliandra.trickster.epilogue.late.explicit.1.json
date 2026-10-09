@@ -14,7 +14,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Eliandra keeps her hand where it is, her forehead against yours, and does not let go of your gaze. The candle gutters beside the bed.{/n}",
+  "default_text": "{n}Her forehead rests against yours and she does not let go of your gaze. The candle gutters beside the bed; her breath comes unevenly, and when the peak reaches her she holds your eyes through it, unguarded, as she holds nothing else.{/n}",
   "placement": "epilogue.late/page: paragraph anchor after arrival, reply/judgement and initiating kiss, before existing morning",
   "narration": "second-present"
 }

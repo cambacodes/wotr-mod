@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.report.participation.explicit.1",
-  "default_text": "{n}She catches your face between her hands and kisses you again. The notebook lies forgotten beside the bed.{/n}",
+  "default_text": "{n}She catches your face between her hands and kisses you as though the notebook had never mattered. Her fingers are cold against your back and warm within a minute; she says your name once into your shoulder, unobserved by any instrument, and the notebook lies forgotten beside the bed.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She catches your face between her hands and kisses you again. The notebook lies forgotten beside the bed."
+  "prior_stop_line": "N: She catches your face between her hands and kisses you as though the notebook had never mattered. Her fingers are cold against your back and warm within a minute; she says your name once into your shoulder, unobserved by any instrument, and the notebook lies forgotten beside the bed."
 }

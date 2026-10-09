@@ -30,7 +30,7 @@
     "resumption": "herrax.house.a_night_out/home -> appended Continue (same existing receipt effects) -> herrax.house.a_night_out.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Toward dawn the arena crowd is still roaring in the hall below. Herrax sleeps through it with sand in her hair and one ragged wing across your chest.",
-  "default_text": "[PROSE PENDING: herrax.house.a_night_out.explicit.1]",
+  "default_text": "{n}The door of her rooms shuts on the roar of the crowd, and her ragged wing folds round the two of you like a torn curtain drawn across the world. Pit-smoke and clipped silver, the scar hot against your mouth, her claws in your collar and then in your shirt, and the clothes that come off come off without ceremony. She takes more than she gives, exactly as she promised, and when the breath goes out of you she laughs against your neck, low and well paid. Far below, the Delights goes on booming without her.{/n}",
   "example": "N: Herrax shoulders her door shut on the noise from the hall.\nH: Sand in your hair, lover. You smell like a winning bet.",
   "min_lines": 14,
   "max_lines": 20,

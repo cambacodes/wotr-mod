@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.report.participation.explicit.2",
-  "default_text": "{n}Her grip loosens as you draw her close. Her hair hides the lamp from both of you.{/n}",
+  "default_text": "{n}Her grip loosens as you draw her close, and her hair hides the lamp from both of you. The violet light above her heart flares between you with every breath she takes, and for once she makes no note of what it does.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: Her grip loosens as you draw her close. Her hair hides the lamp from both of you."
+  "prior_stop_line": "N: Her grip loosens as you draw her close, and her hair hides the lamp from both of you. The violet light above her heart flares between you with every breath she takes, and for once she makes no note of what it does."
 }

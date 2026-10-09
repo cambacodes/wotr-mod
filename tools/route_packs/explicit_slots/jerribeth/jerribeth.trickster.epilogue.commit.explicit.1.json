@@ -25,7 +25,7 @@
   "min_lines": 10,
   "max_lines": 18,
   "narration": "third-past",
-  "default_text": "{n}She pulled the Commander away from the uncleared table. Behind the bedroom door her wings scraped once against the frame, and the household found reasons to be elsewhere until noon.{/n}",
+  "default_text": "{n}She pulled the Commander away from the uncleared table. Behind the bedroom door her wings scraped once against the frame, the buzzing rose until the window glass sang with it, and the household found reasons to be elsewhere until noon.{/n}",
   "placement": {
     "scene": "jerribeth.trickster.epilogue.commit",
     "after_node": "night",

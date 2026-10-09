@@ -22,7 +22,7 @@
   ],
   "min_lines": 12,
   "max_lines": 18,
-  "default_text": "{n}Vellexia draws you against her. Your abandoned clothes lie across the Worldwound map; she leaves them there and turns the lamp low.{/n}",
+  "default_text": "{n}Vellexia draws you against her, and the war goes out of your head along with the lamp. There is her mouth, her nails and her low delighted laugh in the dark, and she does not once let you set the pace. Your abandoned clothes lie across the Worldwound map; she leaves them there.{/n}",
   "insertion": {
     "scene": "vellexia.trickster.after.night",
     "after_node": "threshold",

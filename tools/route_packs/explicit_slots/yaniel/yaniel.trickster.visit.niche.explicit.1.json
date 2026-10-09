@@ -22,7 +22,7 @@
   ],
   "min_lines": 12,
   "max_lines": 18,
-  "default_text": "{n}She catches your hand at the last fastening and draws you down onto her cloak. Above you, the painted martyr keeps her eyes on heaven.{/n}",
+  "default_text": "{n}She catches your hand at the last fastening and draws you down onto her cloak. Above you, the painted martyr keeps her eyes on heaven. The flags are cold and she is not; her breath goes ragged, her nails find your shoulders, and the vault gives her cry back twice.{/n}",
   "continuity": {
     "scene_id": "yaniel.trickster.visit.niche",
     "predecessor_node": "threshold2",

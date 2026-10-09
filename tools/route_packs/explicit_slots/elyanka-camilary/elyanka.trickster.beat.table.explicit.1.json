@@ -27,7 +27,7 @@
   ],
   "last_line": "E: Come inside when they have gone. There is food left, and I am still hungry.",
   "example": "N: She pushes the last plate across the table to you with two fingers.\nE: Eat. My Lady's door has been kept long enough.",
-  "default_text": "[PROSE PENDING: elyanka.trickster.beat.table.explicit.1]",
+  "default_text": "{n}The last of the masks files out past you with their eyes lowered, and she bars the dead-house door behind them without a word. Then the cold of her is against your back, her teeth are at your neck, and the table, the wine and the bones she promised are the last things you think of. In the grey hours before the morning watch the candles gutter, and her cackle carries a long way down the empty lane.{/n} \"Hound,\" {n}she says, into your shoulder, when she can speak.{/n} \"My Lady will be pleased with how you keep a door.\"",
   "min_lines": 6,
   "max_lines": 10,
   "content_scope": "Reserved explicit slot for the Commander and Elyanka only. Both Commander variants are required."

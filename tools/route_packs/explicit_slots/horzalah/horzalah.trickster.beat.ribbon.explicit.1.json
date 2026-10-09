@@ -30,7 +30,7 @@
     "resumption": "horzalah.trickster.beat.ribbon/tied -> appended Continue (same existing receipt effects) -> horzalah.trickster.beat.ribbon.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: The second bow is no straighter than the first. She threads it through her collar anyway and goes down to her day.",
-  "default_text": "[PROSE PENDING: horzalah.trickster.beat.ribbon.explicit.1]",
+  "default_text": "{n}She winds the cut ribbon once around your wrist and draws you down onto the bed she never left, and the masters can wait. The collar falls open; her mouth finds last night's marks on your shoulder before her thumb does, and her eyes, dark with the flame, never leave yours. She is slow this time, which is worse, and when her breath finally breaks it breaks against your throat in a low, unguarded laugh. The day goes on without her in the hall.{/n}",
   "example": "N: Horzalah pulls the bow loose with one finger.\nH: Terrible. Again. And this time you watch me, mortal, not the ribbon.",
   "min_lines": 12,
   "max_lines": 18,

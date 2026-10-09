@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.finale.lien_bottled.explicit.1",
-  "default_text": "{n}She draws you down beside her. On the washstand, the flask remains sealed.{/n}",
+  "default_text": "{n}She draws you down beside her and does not speak again; her palm stays over the closed scar as if she were counting a pulse she cannot afford to lose, and her mouth finds your shoulder in the dark. On the washstand, the flask remains sealed.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She draws you down beside her. On the washstand, the flask remains sealed."
+  "prior_stop_line": "N: She draws you down beside her and does not speak again; her palm stays over the closed scar as if she were counting a pulse she cannot afford to lose, and her mouth finds your shoulder in the dark. On the washstand, the flask remains sealed."
 }

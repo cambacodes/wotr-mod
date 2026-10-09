@@ -14,7 +14,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Eliandra keeps hold of your wrist, her breath warm against your ear. The road map lies forgotten beyond the candle.{/n}",
+  "default_text": "{n}Eliandra keeps hold of your wrist, her breath warm against your ear, and the candle burns down while the road map lies forgotten beyond it. When the peak takes her she laughs, startled, like a woman who has watched a star move, and holds on.{/n}",
   "placement": "epilogue.together/page: appended established-lovers return paragraph under existing heart_seen; no new commitment condition",
   "narration": "second-present"
 }

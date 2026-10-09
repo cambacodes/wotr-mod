@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.finale.company.explicit.1",
-  "default_text": "{n}She draws you onto the bed, her mouth against yours. The lamp burns low beside the closed notebook.{/n}",
+  "default_text": "{n}She draws you onto the bed, her mouth against yours, and the marks the graft left are warm now under your palms. She says your name against your throat without any of her usual precision, and the lamp burns low beside the closed notebook.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She draws you onto the bed, her mouth against yours. The lamp burns low beside the closed notebook."
+  "prior_stop_line": "N: She draws you onto the bed, her mouth against yours, and the marks the graft left are warm now under your palms. She says your name against your throat without any of her usual precision, and the lamp burns low beside the closed notebook."
 }

@@ -30,7 +30,7 @@
     "resumption": "herrax.house.her_rooms/beside -> appended Continue (same existing receipt effects) -> herrax.house.her_rooms.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Afterwards the noise of the Upper City still comes up through the narrow window. Herrax sits on the locked chest again, her knife back on its hook, and lets you look at the walls.",
-  "default_text": "[PROSE PENDING: herrax.house.her_rooms.explicit.1]",
+  "default_text": "{n}Her hand slides from your forearm to the back of your neck, and the chair, the jug and the bare boards stop being a room at all. The window light lies across her scarred mouth and the wings she has not troubled to hide, and she is rough and unhurried by turns, her claws leaving their marks on your shoulders like a signature on a deed. At the peak of it she says your name once, with nothing after it, which is the only thing in the house she has ever given away for nothing. Afterwards the carts and bells of the Upper City go on beneath the window, and neither of you remarks on it.{/n}",
   "example": "N: Herrax hooks a finger through your belt without looking round.\nH: Only a room, honey. Nobody pays to come up here. You're the only one who never had to.",
   "min_lines": 12,
   "max_lines": 18,

@@ -30,7 +30,7 @@
     "resumption": "horzalah.trickster.beat.ramparts/hand -> appended Continue (same existing receipt effects) -> horzalah.trickster.beat.ramparts.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Before the relief comes up the stair, she fastens her collar again and lets go of your hand.",
-  "default_text": "[PROSE PENDING: horzalah.trickster.beat.ramparts.explicit.1]",
+  "default_text": "{n}The next watch has long since gone down the stair when she turns and pulls you in by the belt she has been holding all this time. Her mouth is hard and hot and tastes of smoke, the collar comes open under your hand, and the cold of the stone stops mattering. She is a demon and makes no effort to be gentle about it: a bite at your shoulder, a rasp of claws down your back, and at the end a sound out of her throat that carries over the camp like some night bird's cry. Below, the forge-glow burns on, and the Worldwound with it.{/n}",
   "example": "N: Horzalah presses your palm harder against the scar.\nH: The watch ran, mortal. You did not. Stay where I put you.",
   "min_lines": 12,
   "max_lines": 18,

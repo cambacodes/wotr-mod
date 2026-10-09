@@ -21,6 +21,6 @@
   ],
   "min_lines": 12,
   "max_lines": 18,
-  "default_text": "[PROSE PENDING: melazmera.trickster.beat.count.explicit.1]",
+  "default_text": "{n}She does not finish counting. Her fist stays shut on the sapphire between your bodies, her mouth never leaves your pulse, and somewhere between the shirt and the bed the count runs out of numbers. The lamp gutters; the sword on its hooks and the drawer of other people's letters watch nothing at all. Later her voice comes muffled against your shoulder, hoarse and very pleased with itself.{/n} \"Mine,\" {n}she says.{/n} \"Counted, and not one piece missing. I will count again in the morning.\"",
   "continuity": "Chapter 5, after visit.heap's first night: no first-night reset. Earned presence only (the scene requires committed and heap_seen). No new flag, cost, gate or relationship effect; beat.count's existing Set (melazmera.trickster.beat.counted) stays on its existing Continue."
 }

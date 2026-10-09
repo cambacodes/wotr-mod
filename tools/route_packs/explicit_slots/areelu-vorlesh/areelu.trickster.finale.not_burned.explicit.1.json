@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.finale.not_burned.explicit.1",
-  "default_text": "{n}She kisses you hard and pulls you close. The lamp and the closed notebook stay on the floor.{/n}",
+  "default_text": "{n}She kisses you hard and pulls you close, and her hands, which have measured so much, forget to measure. The lamp and the closed notebook stay on the floor.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She kisses you hard and pulls you close. The lamp and the closed notebook stay on the floor."
+  "prior_stop_line": "N: She kisses you hard and pulls you close, and her hands, which have measured so much, forget to measure. The lamp and the closed notebook stay on the floor."
 }

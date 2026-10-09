@@ -30,7 +30,7 @@
     "resumption": "herrax.house.last_night/agreed -> appended Continue (same existing receipt effects) -> herrax.house.last_night.explicit.1 -> scene exit. Legacy answers retain their original terminal targets and positions. last_line is the slot closing beat."
   },
   "last_line": "N: Before dawn Herrax is asleep across the wider half of the bed, one ragged wing over your legs. She does not wake when you dress.",
-  "default_text": "[PROSE PENDING: herrax.house.last_night.explicit.1]",
+  "default_text": "{n}She leads you up the stair with your hand still in hers and does not let it go until the door shuts. Then it is her mouth, her wings closing about your shoulders, her claws finding the buttons of your coat and the bare skin beneath it, and the long, slow taking of a succubus who meant every word. You feel the pull of it low in your chest, as if something were being drawn out of you and handed back warmer; when she reaches the peak she bites down on your shoulder to keep from crying out, and fails. A thousand years she has kept that house, and for a while it keeps no time at all.{/n}",
   "example": "N: Herrax kicks the door shut behind you without letting go of your hand.\nH: Nobody downstairs gets this for any price, lover. Try not to waste it.",
   "min_lines": 14,
   "max_lines": 20,

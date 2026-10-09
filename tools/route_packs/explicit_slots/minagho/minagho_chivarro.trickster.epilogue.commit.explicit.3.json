@@ -19,7 +19,7 @@
     "This is the accepted late invitation or the mapped secret branch, not a new fate return. Annual visits follow only the preserved accepting history; exposed branches retain their closure.",
     "Use existing night history to distinguish their one first night from a later return. Do not require a new first-night gate, or reset familiarity after a physical/letter fallback."
   ],
-  "default_text": "{n}On the mattress she catches the Commander against her bare body. Her hand closes at their hip; the next kiss stops their reply.{/n}\n\"Quiet, honey. That letter can wait.\"",
+  "default_text": "{n}Chivarro comes late, without a lamp. She opens her gown and catches your hands against her bare waist. Her kiss drives you back against the bed.{/n}\n\"You want a secret, honey? Lock the door. And remember whose place you asked for.\"\n{n}She pushes you onto the mattress and follows.{/n}\n{n}On the mattress she catches the Commander against her bare body, and the next kiss stops their reply. The letter, the lock and Minagho's name are all somewhere outside the door.{/n}\n\"Quiet, honey. That letter can wait.\"",
   "last_line": "N: Chivarro puts your purse on the shelf and writes a line in her private account. She folds its copy and slips it inside your belt. When you lean to read the book she closes it against your fingers.",
   "speakers": {
     "C": "Chivarro"

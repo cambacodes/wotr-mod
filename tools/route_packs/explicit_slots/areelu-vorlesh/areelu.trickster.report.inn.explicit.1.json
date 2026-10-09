@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.report.inn.explicit.1",
-  "default_text": "{n}She catches your sleeve before you can turn toward the lamp and pulls you back into the kiss.{/n}",
+  "default_text": "{n}She catches your sleeve before you can turn toward the lamp and pulls you back into the kiss, and the fire, the alias and the hunters watching your door are all somewhere else. Her breath is hot at your ear, and she is not pretending to be anyone at all.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She catches your sleeve before you can turn toward the lamp and pulls you back into the kiss."
+  "prior_stop_line": "N: She catches your sleeve before you can turn toward the lamp and pulls you back into the kiss, and the fire, the alias and the hunters watching your door are all somewhere else. Her breath is hot at your ear, and she is not pretending to be anyone at all."
 }

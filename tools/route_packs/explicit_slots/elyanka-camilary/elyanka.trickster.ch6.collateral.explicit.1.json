@@ -27,7 +27,7 @@
   ],
   "last_line": "E: For my Lady. She likes an offering warm when it is pledged.",
   "example": "N: Elyanka lets the tent flap fall shut behind her.\nE: If the Wound means to have you, it can have what is left when I am done.",
-  "default_text": "[PROSE PENDING: elyanka.trickster.ch6.collateral.explicit.1]",
+  "default_text": "{n}The tent pole shudders, then the lamp goes over, and neither of you reaches for it. There is her cold hand dragging down your back, her breath saw-edged at your ear, her laughter breaking in the dark loud enough for her six to hear. Beyond the canvas the black glass ticks as it cools, and the Wound waits for tomorrow.{/n} \"Warm,\" {n}she mutters, wrecked and scornful and not letting go.{/n} \"Hold it for me until the settlement.\"",
   "min_lines": 6,
   "max_lines": 10,
   "content_scope": "Reserved explicit slot for the Commander and Elyanka only. Both Commander variants are required."

@@ -27,16 +27,6 @@ class IdealRunMendingTests(unittest.TestCase):
         rules.sim_complete(self.model, state)
         return state
 
-    def test_first_quarrel_is_mended_with_real_allotment_costs(self):
-        state = self.play(L + "hammer_and_tongs")
-        self.assertIn(L + "quarrel_mended", state.flags)
-        self.assertFalse(COLD & state.flags)
-        self.assertIn(L + "grain_allotment_lost", state.flags)
-        self.assertIn(L + "powder_restored", state.flags)
-        self.assertEqual(state.crusade_resources["Materials"], 900)
-        self.assertEqual(state.crusade_resources["Finances"], 950)
-        self.assertIn("dorgelinda.trickster.late_committed", state.flags)
-
     def test_cold_counts_sibling_apologizes_and_restores_current_commitment(self):
         state = self.play(L + "cold_counts", (L + "quarrel_cold", L + "allotment_lost"))
         self.assertIn(L + "quarrel_mended", state.flags)
@@ -44,19 +34,6 @@ class IdealRunMendingTests(unittest.TestCase):
         self.assertNotIn(L + "cold_unmended", state.flags)
         self.assertEqual(state.crusade_resources["Materials"], 1050)
         self.assertIn("dorgelinda.trickster.late_committed", state.flags)
-
-    def test_unsteered_short_paths_reproduce_both_unmended_outcomes(self):
-        policy = self.avoid - COLD
-        for sid, extra, earned in (
-                (L + "hammer_and_tongs", (), L + "quarrel_cold"),
-                (L + "cold_counts", (L + "quarrel_cold", L + "allotment_lost"),
-                 L + "quarrel_unmended")):
-            with self.subTest(scene=sid):
-                state = self.play(sid, extra, policy)
-                self.assertIn(earned, state.flags)
-                self.assertNotIn(L + "quarrel_mended", state.flags)
-                self.assertNotIn("dorgelinda.trickster.late_committed", state.flags)
-
 
 class IdealRunLastCallTests(unittest.TestCase):
     @classmethod

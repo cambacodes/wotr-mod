@@ -9,7 +9,7 @@
   },
   "commander": "absent",
   "last_line": "N: Camellia straightens her clothes and steps away before the ward expires. Arueshalae laughs from the other side of the bench.",
-  "default_text": "{n}Their shadows move across the workbench in the lamplight.{/n}\n\"You will not tell them I asked.\"",
+  "default_text": "{n}Their shadows move across the workbench in the lamplight, and the vials on the rack chime every time a wing strikes them. Camellia's laugh breaks off once into something she will not admit to, and Arueshalae's answering gasp is not at all innocent.{/n}\n\"You will not tell them I asked.\"",
   "insertion": {
     "scene_id": "household.pair.camellia_arueshalae.choice",
     "after_node": "cut",

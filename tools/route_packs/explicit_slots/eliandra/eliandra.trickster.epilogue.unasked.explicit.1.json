@@ -14,7 +14,7 @@
   ],
   "min_lines": 14,
   "max_lines": 20,
-  "default_text": "{n}Eliandra keeps her hand low on your belly, her breath unsteady against your mouth. The lamp stays lit.{/n}",
+  "default_text": "{n}Eliandra's breath goes ragged against your mouth and the lamp stays lit; she wants to see all of it. When the peak takes her she says your name as if learning a word in a new tongue.{/n}",
   "placement": "epilogue.unasked/page: paragraph anchor after door proposal/answer and initiation, before existing morning",
   "narration": "second-present"
 }

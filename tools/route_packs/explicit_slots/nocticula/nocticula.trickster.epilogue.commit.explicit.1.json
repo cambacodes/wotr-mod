@@ -14,7 +14,7 @@
   ],
   "min_lines": 10,
   "max_lines": 18,
-  "default_text": "{n}She kept the Commander close in the royal chair. The last lamp burned low before morning.{/n}",
+  "default_text": "{n}She kept the Commander close in the royal chair, her hands in their hair, and bent to the Commander's ear. \"Now,\" said the Queen of Shadows, with a smile that promised to take its time, and her mouth closed over theirs. Her palace, her chair and the long years of shadow ceased to matter until morning.{/n}",
   "last_lines": {
     "after_paid": "N: In the morning her chair stood at the Commander's right hand at the palace's long table. No servant admitted moving it. She had left her glass there, its rim marked with lipstick. The steward who tried to move it back found his fingers would not close on it. On the mirror, in lipstick, in a hand the Commander knew: \"My favour. The chair at your right hand, at every table you will ever sit at. I have just collected the first night of it.\"",
     "after_refused": "N: In the morning she was gone, and so was every other chair in the room but two. On the mirror, in lipstick: \"You refused my price. You did not refuse me. Do not confuse them again.\""

@@ -15,7 +15,7 @@
   "min_lines": 14,
   "max_lines": 20,
   "slot_id": "areelu.trickster.finale.company.explicit.2",
-  "default_text": "{n}She pulls you close; the violet light above her heart falls across the discarded robe.{/n}",
+  "default_text": "{n}She pulls you close, and no glass stands between you. The violet light above her heart pulses with her breath and falls across the discarded robe, and her mouth, hungry and unhurried, tells you what her notes never could.{/n}",
   "narration": "second-present",
-  "prior_stop_line": "N: She pulls you close; the violet light above her heart falls across the discarded robe."
+  "prior_stop_line": "N: She pulls you close, and no glass stands between you. The violet light above her heart pulses with her breath and falls across the discarded robe, and her mouth, hungry and unhurried, tells you what her notes never could."
 }

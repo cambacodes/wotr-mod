@@ -25,7 +25,7 @@
   "slot_id": "nenio.trickster.epilogue.commit.explicit.1",
   "host_scene": "nenio.trickster.epilogue.commit",
   "anchor": "dedicated node nenio.trickster.epilogue.commit.explicit.1; before morning_after",
-  "default_text": "{n}Nenio sat on the bed and drew the Commander down beside her. She caught {mf|his|her} face in both hands and kissed {mf|him|her} again, then pulled {mf|him|her} close enough that neither could reach the notes.{/n} \"The library can wait until morning.\"",
+  "default_text": "{n}Nenio sat on the bed and drew the Commander down beside her. She caught {mf|his|her} face in both hands and kissed {mf|him|her} again, then pulled {mf|him|her} close enough that neither could reach the notes.{/n} \"The library can wait until morning. Copulation for pleasure alone. I have been meaning to attempt it.\" {n}The rest of her clothes went to the floor after the pencil, and the candle burned down a finger's width with no one left to observe it. Whatever she had meant to record, she did not record it.{/n}",
   "continuity": "Alternative host of the same event; never render alongside its sibling. Supplied facts are canon constraints; the room and romantic event are labelled authored. The example demonstrates tags and voice only and is not required dialogue.",
   "narration": "third-past"
 }
