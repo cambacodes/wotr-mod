@@ -6463,7 +6463,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.trickster.madam.reachable/desire/0` — [Trace the scar with your thumb, down through her lip.]
    - `herrax.trickster.madam.reachable/thumb/0` — Continue
    - `herrax.trickster.madam.reachable/threshold/0` — [Open the clasp.]
-   - `herrax.trickster.madam.reachable/threshold2/0` — "You'd better."
+   - `herrax.trickster.madam.reachable/threshold2/0` — "You'd better."; Blocked by: `crossroute.chivarro.unavailable`
    - `herrax.trickster.madam.reachable/cut/0` — Continue
    - `herrax.trickster.madam.reachable/herrax.trickster.madam.reachable.explicit.1/0` — Continue
    - `herrax.trickster.madam.reachable/morning/0` — Continue
