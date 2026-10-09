@@ -1393,7 +1393,7 @@ The first kiss is brief. The second is her answer to its brevity. She pulls your
 {n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve, and when you set her down she does not let go of it; she pulls, and you come down with her.
 Outside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}
 "Much better," {n}she says.{/n} "They have learned to miss the interesting part."
-{n}She rolls you onto your back with a small grunt of effort and climbs astride you, her hair closing round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
+{n}She pulls you down beside her with a small grunt of effort, her hair closing round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
     n("stay", "Nurah", '''"That is a long time to leave you without assistance."
 {n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.
 You draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}
@@ -1483,9 +1483,9 @@ _margin = next(s for s in SCENES if s['Id'] == 'nurah.a_margin_for_you')
 for _nid, _number, _cut in (
     ('teasing', 1, '{n}She settles against you in the chair, bare shoulders warm beneath your '
      'hands, and kisses away the clever answer you were about to give.{/n}'),
-    ('kiss', 2, '{n}Nurah presses closer astride you, her open bodice brushing your chest. '
+    ('kiss', 2, '{n}Nurah presses closer, her open bodice brushing your chest. '
      'Her hand finds your belt while her mouth keeps yours occupied.{/n}'),
-    ('stay', 3, '{n}Nurah hooks a knee over your hip on the bed and catches your mouth again. '
+    ('stay', 3, '{n}Nurah pulls you close on the bed and catches your mouth again. '
      'When the passage falls quiet, she draws your hand down her bare side.{/n}'),
 ):
     _branch = next(n for n in _margin['Nodes'] if n['Id'] == _nid)

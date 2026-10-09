@@ -1229,7 +1229,7 @@ _HOME_HEAT = '''
 {n}She lets you carry her to the bed that way, heels locked at the small of your back, teeth working at your shoulder. At the edge of the mattress she drags your shirt up and off and spreads her palms across your chest with the greed of someone finally allowed to touch.{/n}
 "Yes. That. Write that one down." {n}She hauls at your belt with ink-black fingers and curses the buckle.{/n}'''
 _RUN_HEAT = '''
-{n}Her hands are cold from the night air and then not cold at all. She pushes you flat, kneels over you and drags your shirt up with both hands, impatient and amused at once, and presses her open mouth to your stomach in a trail of small stinging bites she plainly means to chronicle. Footsteps pass in the passage; she freezes with her teeth in your hip, grins, and bites down harder.{/n}
+{n}Her hands are cold from the night air and then not cold at all. She pushes you flat and drags your shirt up with both hands, impatient and amused at once, and her open mouth leaves a trail of small stinging bites along your ribs that she plainly means to chronicle. Footsteps pass in the passage; she freezes with her teeth in your shoulder, grins, and bites down harder.{/n}
 "Quiet, Commander. A fugitive has to be discreet."'''
 _HEAT = {
     'nurah.trickster.prison.terms': _PRISON_HEAT,
@@ -1244,8 +1244,8 @@ _CUTS = {
     'nurah.trickster.prison.terms_late': '''{n}She hooks her ankle behind your knee and pulls you closer on the narrow bunk, her mouth at your ear. "Late," she breathes, "and worth it. Now stop being clever and let me write you into this mattress." The straw crackles, and the candle is long out.{/n}''',
     'nurah.trickster.terms': '''{n}You go down onto the mattress together, her legs wound round you, her hands everywhere at once, and she keeps your eyes on hers for as long as she can. "Tonight I touch everything," she reminds you, breathless, and then she stops being able to talk.{/n}''',
     'nurah.trickster.terms_night': '''{n}The dispatches slide off the bed and nobody picks them up. Her thighs lock round you and her breath is hot in your ear. "Do not stop at the draft," she says. "I want the finished copy." What she says after that is not a sentence.{/n}''',
-    'nurah.trickster.ran_off.terms': '''{n}She climbs back up your body and pins your wrist to the pillow with ink-black fingers, lips parted around a breath she means to make you earn. The night pours in through the window, and for a while neither of you is being discreet at all.{/n}''',
-    'nurah.trickster.ran_off.terms_night': '''{n}"I left the road for this," she whispers, rolling astride you and dragging your hand to her hip to hold it there. The pamphlets rustle off the bed. Her thighs shake against yours, and the rest of the night is hers.{/n}''',
+    'nurah.trickster.ran_off.terms': '''{n}She pins your wrist to the pillow with ink-black fingers, lips parted around a breath she means to make you earn. The night pours in through the window, and for a while neither of you is being discreet at all.{/n}''',
+    'nurah.trickster.ran_off.terms_night': '''{n}"I left the road for this," she whispers, and pulls you down to her by the shirt until your hand rests on her hip and stays there. The pamphlets rustle off the bed. Her breath breaks against your mouth, and the rest of the night is hers.{/n}''',
 }
 _COMMIT_HEAT = {
     'read.build_up': '''

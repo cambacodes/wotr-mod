@@ -335,8 +335,8 @@ hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
 {n}She does not say anything. She takes your face in her long cold hands, and her mouth tastes of cinders.{/n}''',
         c("Continue", "cut")),
     nar("cut", '''{n}The heat behind your forehead becomes want. She tastes it and smiles. Her hands undo your coat, fastening by fastening, and drop it among the black glass pins. She pulls your shirt over your head. Her mouth is hot and demanding against yours; when she draws back, you follow it.{/n}
-{n}She pushes you onto the steps of her throne. The stone is warm against your bare back. She settles astride you, one knee beside each hip. Her naked belly presses against yours. Her hair falls around your faces, and her palm presses against your hammering heart.{/n}
-{n}You reach for her. Her hand slides down your stomach. The fountains drown the sound of your next breath.{/n}''',
+{n}She pushes you onto the steps of her throne. The stone is warm against your bare back. She follows you down, long and pale and burning cold, skin against your skin. Her hair falls around your faces, and her palm presses against your hammering heart.{/n}
+{n}You reach for her. Her hand slides down your chest. The fountains drown the sound of your next breath.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}
 {n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. She has not slept. She has been watching the whole night.{/n}''',

@@ -355,12 +355,12 @@ H = "hepzamirah.trickster."
 
 rule([H + "body.terms"], "threshold",
      '''"Mine tonight." {n}She bends to kiss you again. You meet her halfway.{/n}''',
-     '''"Mine tonight." {n}She bends to kiss you again. You meet her halfway. Her teeth close on your lip and stay. A hand fists in your hair and drags your head back; the other drives down your stomach and under your belt and closes, with no gentleness at all. The horn stump rakes your cheek as she brings her mouth to your ear.{/n}
+     '''"Mine tonight." {n}She bends to kiss you again. You meet her halfway. Her teeth close on your lip and stay. A hand fists in your hair and drags your head back; the other fists in your belt and hauls you against her, with no gentleness at all. The horn stump rakes your cheek as she brings her mouth to your ear.{/n}
 "Hold still, whelp. I am deciding how much of you I want."''')
 
 rule([H + "bond.eve"], "face_say",
      '''{n}The good eye opens.{/n} "And you will come for me. Say it."''',
-     '''{n}The good eye opens. Her hand fists in your shirt and drags you down until the heat of her is against you through the cloth, her hips driving into yours once, hard, a demand, and the pick slides off her lap and rings on the stones. She does not look at it.{/n} "And you will come for me. Say it."''')
+     '''{n}The good eye opens. Her hand fists in your shirt and drags you down until the heat of her is against you through the cloth, a demand, and the pick slides off her lap and rings on the stones. She does not look at it.{/n} "And you will come for me. Say it."''')
 
 rule([H + "bond.gift"], "kiss",
      '''and loosens it, and steps back.{/n}''',
@@ -370,7 +370,7 @@ rule([H + "bond.gift"], "kiss",
 rule([H + "bond.her_room"], "sit_say",
      '''"Do not argue. You have seen what I do to people who take my things."''',
      '''"Do not argue. You have seen what I do to people who take my things."
-{n}Her hand is still round yours. She drags it up inside her coat, over her ribs and the old scars, and holds it flat against her pounding heart, then lower. Her mouth is at your ear, her voice a low hot rasp.{/n}
+{n}Her hand is still round yours. She drags it up inside her coat, over her ribs and the old scars, and holds it flat against her pounding heart. Her mouth is at your ear, her voice a low hot rasp.{/n}
 "You are mine, so I will have the use of you tonight. All of it. Do not talk to me about gentleness."''')
 
 # ======================================================================================
@@ -399,6 +399,6 @@ rule([SH + "epilogue.late"], "late_initiation",
 rule([SH + "harem", SH + "harem_awning"], "cut",
      '''and her palm presses against your hammering heart.{/n}''',
      '''and her palm presses against your hammering heart.{/n}
-"Warm, and trembling, and mine for the length of one bell," {n}she says, rocking once against you, slow, to feel it land.{/n}''')
+"Warm, and trembling, and mine for the length of one bell," {n}she says against your mouth, slow, to feel it land.{/n}''')
 
 _TOUCHED.update({"wenduag.trickster.court.cairn", "gesmerha.the_room_she_chose", "hepzamirah.trickster.bond.gift"})
