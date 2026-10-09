@@ -280,6 +280,20 @@
       "surface": "node",
       "index": null,
       "text_sha": "e05674b15feeedb60fef0870879f9ef17c7d3b29c491881f7d8e4995b5bff055"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.her_room",
+      "node": "room_paddle_mended",
+      "surface": "node",
+      "index": null,
+      "text_sha": "32d6f65a1b289d21f326e23fe520f16428c88dfd19c522836cd753f7091bef8c"
+    },
+    {
+      "scene": "hepzamirah.trickster.bond.her_room",
+      "node": "room_paddle_unresolved",
+      "surface": "node",
+      "index": null,
+      "text_sha": "f7c279d57e506ab6ffbccce898d1b02cded93fca80600ae640a1c479deef0a82"
     }
   ]
 }

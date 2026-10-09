@@ -708,3 +708,12 @@ _r2_node(_r2_scene("epilogue.leavable_on_record"), "page")["Paragraphs"] = [
     p('{n}The march cut her training short. After the death at Threshold, she left the unfinished regiment to its sergeants.{/n}', requires=(P + "drilled_troops",), forbids=(P + "flesh.drill_result",)),
 ]
 PATH_FIT.update({s["Id"]: "T" for s in SCENES})
+
+
+# struct2-05: the courier confrontation is selected with Hepzamirah
+# physically present in Drezen, using her existing forge hub.
+_courier_scene = next(s for s in SCENES if s["Id"] == P + "body.hounds")
+_courier_scene.pop("Remote", None)
+_courier_scene.pop("Kind", None)
+_courier_scene.update(Owner="Hepzamirah", Areas=[DREZEN], ContactUnit=BODY_UNIT,
+                      InteractionHub=PRESENCE, Entry=_courier_scene["Title"])

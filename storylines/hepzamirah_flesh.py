@@ -1263,3 +1263,30 @@ yard(P + "bond.scouts_result", "Under the approach", '"The scouts tested your wa
 ], requires=("trickster.ever", RET, "hepzamirah.present_now", COUNCIL, P + "council_heard"), delay=24)
 
 PATH_FIT = {s["Id"]: "T" for s in SCENES}
+
+
+import copy
+
+# struct2-05 / HEP-03: an attack is not its repair outcome. Retain every
+# original answer and target, and append the repaired and legacy alternatives.
+_room_scene = next(s for s in SCENES if s["Id"] == ROOM)
+for _room_node in list(_room_scene["Nodes"]):
+    for _room_answer in list(_room_node["Choices"]):
+        if _room_answer.get("Next") == "room_paddle":
+            _mended_answer = copy.deepcopy(_room_answer)
+            _mended_answer["Next"] = "room_paddle_mended"
+            _mended_answer["Requires"].append(P + "market_mended")
+            _legacy_answer = copy.deepcopy(_room_answer)
+            _legacy_answer["Next"] = "room_paddle_unresolved"
+            _legacy_answer["Forbids"].extend((P + "market_strike", P + "market_mended"))
+            _room_answer["Requires"].append(P + "market_strike")
+            _room_answer["Forbids"].append(P + "market_mended")
+            _room_node["Choices"].extend((_mended_answer, _legacy_answer))
+_room_paddle = next(n for n in _room_scene["Nodes"] if n["Id"] == "room_paddle")
+for _paddle_id, _paddle_beat in (
+        ("room_paddle_mended", "HEP-03 paddle trophy after successful repair; vats hot; no unsupported crooked wrist"),
+        ("room_paddle_unresolved", "HEP-03 paddle trophy with attack recorded but repair outcome unknown")):
+    _paddle_node = copy.deepcopy(_room_paddle)
+    _paddle_node["Id"] = _paddle_id
+    _paddle_node["Text"] = "[PROSE PENDING: " + _paddle_beat + "]"
+    _room_scene["Nodes"].append(_paddle_node)

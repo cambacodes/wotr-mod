@@ -635,3 +635,15 @@ def integrate(payload):
     payload["Relationships"][REL] = dict(RELATIONSHIP)
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
+
+
+# struct2-05: the prisoner is heard at the Chapter 2 command-camp hub.
+# Native WarCamp is 7a25c101fe6f7aa46b192db13373d03b; Irabeth's common
+# answer list is already this route's command briefing surface.
+for _camp_scene in SCENES:
+    if _camp_scene["Id"] in (P + "prisoner_loud", P + "prisoner_quiet"):
+        _camp_scene.pop("Remote", None)
+        _camp_scene.pop("Kind", None)
+        _camp_scene["Areas"] = ["7a25c101fe6f7aa46b192db13373d03b"]
+        _camp_scene["AnswerLists"] = [IRABETH_HUB]
+        _camp_scene["Entry"] = _camp_scene["Title"]
