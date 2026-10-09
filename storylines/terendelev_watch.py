@@ -1106,7 +1106,13 @@ for _s in SCENES:
             'withdraws her hand. Her fingers catch your jaw instead. She kisses you hard enough to press your '
             'shoulders against the stone; when you pull her closer she laughs against your mouth and kisses you again.{/n}')
         _nodes["cut"]["Text"] = ('{n}"Closer," she says, with her hands spread on your back. '
-            'She pulls the edge of the cloak over your shoulders.{/n}')
+            'She pulls the edge of the cloak over your shoulders.{/n} '
+            '{n}Her breeches are gone, and yours, kicked away across the stones in the red light of the brazier. '
+            'Under the cloak she is nothing but heat and the cool silver ridge of her spine, bare skin against bare skin, '
+            'her breasts crushed to your chest, her thighs open and trembling round your hips. She has kept a thousand watches '
+            'and has never once wanted to be relieved of one. Her hand slides between you, closes, guides, and she lifts '
+            'her hips to meet you with a low sound in her throat that is half a laugh and half a growl.{/n} '
+            '"I have held this post a long time," {n}she says against your mouth.{/n} "Do not make me wait at it."')
         _slot = _s["Id"] + ".explicit.1"
         _nodes["cut"]["Choices"][0]["Next"] = _slot
         # Explicit slot: her chosen night beneath the cloak; continue into the grey hour and shirt dressing.
