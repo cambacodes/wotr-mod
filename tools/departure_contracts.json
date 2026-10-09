@@ -3809,6 +3809,14 @@
           "scene": "aranka.react.arueshalae.fallen.yard",
           "letter": false,
           "provenance": "Authored ix-b current encounter; both named women must be present."
+        },
+        {
+          "scene": "aranka.trickster.verse.her_letter_yard",
+          "letter": false
+        },
+        {
+          "scene": "aranka.trickster.verse.her_letter_late_yard",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -12478,6 +12486,10 @@
         {
           "scene": "devarra.trickster.epilogue.claimed",
           "letter": false
+        },
+        {
+          "scene": "devarra.trickster.epilogue.claimed_unjudged",
+          "letter": false
         }
       ],
       "absence_variants": [
@@ -16639,12 +16651,19 @@
       "overrides": {
         "elyanka.trickster.courier.away": "elyanka.trickster.courier.returned"
       },
-      "returns": ["elyanka.trickster.courier.returned"],
+      "returns": [
+        "elyanka.trickster.courier.returned"
+      ],
       "body_requires": [],
       "letter_terms": [
         {
-          "requires": ["elyanka.trickster.courier.away"],
-          "forbids": ["elyanka.trickster.left_free", "elyanka.returned_actor_lost"]
+          "requires": [
+            "elyanka.trickster.courier.away"
+          ],
+          "forbids": [
+            "elyanka.trickster.left_free",
+            "elyanka.returned_actor_lost"
+          ]
         }
       ],
       "surfaces": [
@@ -19307,6 +19326,10 @@
           "scene": "horzalah.trickster.react.wenduag_cheek",
           "letter": false,
           "provenance": "Wenduag speaks on her own hub; Horzalah is recalled"
+        },
+        {
+          "scene": "wenduag.trickster.epilogue.exclusive_refused",
+          "letter": false
         }
       ],
       "absence_variants": [

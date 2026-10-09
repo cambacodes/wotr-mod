@@ -40,6 +40,16 @@ def _legacy_module(name):
 SCENE_KINDS = ("letter", "visit", "sending", "memory", "event", "invitation")
 
 
+def delivery_errors(scene):
+    if scene.get("Kind") is not None and scene["Kind"] not in SCENE_KINDS:
+        return ["Kind must be one of " + "/".join(SCENE_KINDS)]
+    remote = bool(scene.get("Remote")) or scene.get("Owner") == "Memory"
+    if remote:
+        physical_only = [k for k in ("EntryMythic", "EntryAlignment", "ContinueBefore", "ReturnToList") if scene.get(k)]
+        return [k + " needs a physical scene" for k in physical_only]
+    return [k + " needs a remote scene" for k in ("Kind", "ManualOnly", "TableHosted") if scene.get(k)]
+
+
 def compile_story(profile, inputs=None, *, independent_tirabade=True):
     """Compile the base or expansion with its existing order and copy policy.
 
@@ -52,11 +62,10 @@ def compile_story(profile, inputs=None, *, independent_tirabade=True):
         payload = _legacy_module("expansion")._make_expansion(independent_tirabade=independent_tirabade)
     else:
         raise ValueError("Unknown story profile: " + str(profile))
-    # E15c mirrors Story.Validate: a presentation Kind is legal only on a remote scene (A96).
-    bad = [s["Id"] for s in payload["Scenes"] if s.get("Kind") is not None and (s.get("Kind") not in SCENE_KINDS
-           or not (s.get("Remote") or s.get("Owner") == "Memory"))]
+    # Mirrors Story.Validate's remote/physical field rules, the ones a remote->in-person conversion breaks (A96, A100).
+    bad = [f"{s['Id']} ({rule})" for s in payload["Scenes"] for rule in delivery_errors(s)]
     if bad:
-        raise ValueError("Invalid scene kind (E15c, remote scenes only): " + ", ".join(bad))
+        raise ValueError("Scene delivery fields contradict remote/physical (Story.Validate): " + ", ".join(bad))
     destination = None if inputs is None else inputs.destination
     text, newline, raw = serialize(payload, profile, destination)
     return CompiledStory(payload, raw, text, newline)

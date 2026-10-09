@@ -294,7 +294,7 @@ s("parting", "The words outside the play", [
 {n}She reaches for her pages.{/n}
 "Please go. I'll write if I want to talk."''', c('[End the relationship.]', flags=("kiana.closed",))),
     n("stay", "Kiana", '''"Then ask. I have wasted an excellent expression of concern on a perfectly pleasant invitation."''', c('[Arrange the evening.]', abort=True)),
-], requires=("kiana.lovers",), optional=True, ManualOnly=True)
+], requires=("kiana.lovers",), optional=True)
 
 
 def ending(id, text, requires=(), forbids=(), owner="Epilogue"):
