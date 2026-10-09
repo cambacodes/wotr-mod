@@ -315,3 +315,35 @@ rule(["household.pair.seelah_wenduag.choice"], "wenduag_yes",
 rule(["household.pair.wenduag_arueshalae.choice"], "threshold",
      '''Wenduag pulls her through the door.{/n}''',
      '''Wenduag pulls her through the door and slams it with her heel. Arueshalae's wings fold round them both; a hand pushes under Wenduag's leathers, and Wenduag bites the succubus's lip hard enough to taste blood and growls her approval into the kiss.{/n}''')
+
+# ======================================================================================
+# GESMERHA
+# ======================================================================================
+G = "gesmerha."
+
+rule([G + "the_room_she_chose"], "lover",
+     '''{n}Her mouth is still close to yours.{/n}''',
+     '''{n}Her hand finds the hem of your shirt and goes under it, rough palm flat against your stomach, reading you the way she reads stone, and what she learns makes her breath catch. Her thumb crosses your hip bone and then lower, and rests there.{/n}
+{n}Her mouth is still close to yours.{/n}''')
+
+rule([G + "the_room_she_chose"], "first_kiss",
+     '''Then she asks for another kiss.{/n}''',
+     '''Then she asks for another kiss.{/n}
+{n}It is a longer kiss than the first. Her palms go over your face, your throat, your shoulders, learning the shape of you with all the slow patience of her trade, and where they pass your pulse jumps and she feels it and smiles into your mouth. When she draws back she is breathing hard.{/n}
+"I have spent weeks wanting the shape of you. Tell me you want me to learn the rest."''')
+
+rule([G + "trickster.returned.bench"], "terms",
+     '''She reaches for your hand and draws it against her waist.{/n}''',
+     '''She reaches for your hand and draws it against her waist.{/n}
+"I have chiselled since dawn and I am still not tired enough to stop thinking about your hands." {n}Her other hand finds your collar and stays there, and she tips her head so that her mouth is at your ear, her breath warm and unsteady.{/n}''')
+
+rule([G + "trickster.returned.second_ask"], "sat",
+     '''I have been thinking about it through every damned finger."''',
+     '''I have been thinking about it through every damned finger."
+{n}She sets the carving down and puts both your hands, the real ones, against her ribs, and holds them over the quick drum of her heart. Her thumb rubs once across your knuckle, as if checking the grain.{/n}
+"Three days I have had your hands in front of me and not once been allowed to do more than measure them. Come here. Let me find out what they do when nobody is posing."''')
+
+rule([G + "what_she_asks"], "touch",
+     '''"The door," {n}she says against your mouth.{/n} "Or this bench''',
+     '''{n}Her hand has gone to the front of your shirt, firm and unhesitating, and her other cups the back of your head as she kisses her way along your jaw. You feel her smile when your breath stutters.{/n}
+"The door," {n}she says against your mouth.{/n} "Or this bench''')
