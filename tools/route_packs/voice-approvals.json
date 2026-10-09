@@ -3024,6 +3024,33 @@
       "source_branch": "claude/cand-1",
       "source_commit": "71904c2f5e6037ded3e09b04d94cbb282c8c24d3",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.demonstration",
+      "before_sha": "70472c59e80f83efafb2f09b4604d1f8559269890cd9bce2c196a942e54de114",
+      "after_sha": "c163686e419c5a157cb89dbf05df2154b11c2bf5c4db31877b65563b90c5eae5",
+      "owner": "claude",
+      "source_branch": "claude/cand-1",
+      "source_commit": "ea4fc2bfdcd19ac601df0565f4c431c26a6ad36f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.return_count",
+      "before_sha": "a9df2d8d88cc26579859e49ab4cbc6b43dcbcf96dbd3fc0c9e726330267cd471",
+      "after_sha": "fe1d3191d9b63d7501343b48da20bbbfc0894f7df8483bac3711f71a064aea3d",
+      "owner": "claude",
+      "source_branch": "claude/cand-1",
+      "source_commit": "ea4fc2bfdcd19ac601df0565f4c431c26a6ad36f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "noct.sixth_passenger",
+      "before_sha": "627fe9b72aa81a755566b0e3776b4e1a28c541c637cedc16bdce75016198dea0",
+      "after_sha": "13209fb3c111a0119ea0335ace42f41a48972d08bfe4f5f7967af8a29c6463d2",
+      "owner": "claude",
+      "source_branch": "claude/cand-1",
+      "source_commit": "ea4fc2bfdcd19ac601df0565f4c431c26a6ad36f",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
