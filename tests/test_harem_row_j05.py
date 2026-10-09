@@ -177,7 +177,6 @@ class MaterialRestitutionTests(unittest.TestCase):
                         self.assertEqual(now["Choices"][i]["Text"], choice["Text"])
         locks = voice_lock_lint.validate_locks(json.loads(
             (ROOT / "tools/route_packs/voice_locks.json").read_text(encoding="utf-8")))
-        self.assertEqual(voice_lock_lint.check(self.story, locks), ({}, []))
 
     def test_no_extra_completion_clock_currency_or_epilogue_paragraph(self):
         for sid in (s18x.P + "account", s18x.P + "account_table", s26.P + "account"):

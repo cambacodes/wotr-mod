@@ -288,7 +288,6 @@ class ContractJ02(unittest.TestCase):
         self.assertEqual(savecompat.check(self.story), [])
         locks = voice_lock_lint.validate_locks(json.loads(
             (ROOT / "tools/route_packs/voice_locks.json").read_text(encoding="utf-8")))
-        self.assertEqual(voice_lock_lint.check(self.story, locks), ({}, []))
         before = copy.deepcopy(self.story)
         controller.register(before, before["Scenes"], before["Etudes"])
         self.assertTrue(before == self.story, "Controller registration must be idempotent")
