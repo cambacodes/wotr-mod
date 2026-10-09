@@ -485,7 +485,7 @@ The native travel instructions above correct the simulation's timing substitutio
 | eritrice | 1 | `eritrice.minutes.stay_in_your_seats` |
 | areelu | 1 | `areelu.trickster.audience.notes` |
 | chadali | 1 | `chadali.fortunes.what_he_went_for` |
-| arueshalae | 1 | `arueshalae.treatment.alushinyrra` |
+| arueshalae | 2 | `arueshalae.treatment.old_acquaintance` |
 | mielarah | 5 | `mielarah.trickster.colyphyr.landfall` |
 | shamira | 2 | `shamira.trickster.ch4.bird` |
 | nenio | 3 | `nenio.folio.abyss.drink` |
@@ -1661,7 +1661,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 83. **Arueshalae: An open hand** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.intake","chapter":3,"day":11,"completed":true,"choices":[["start",0],["laugh",0],["answer",0],["diagnosis",0],["her",0],["watch",0]]} -->
    Scene `arueshalae.treatment.intake`; chapters 3–5 (only 3, 4, 5); wait at least 0h after the latest prerequisite; complete.
-   Open: [Hold out your hand, palm up] "You look pale. Let me take your pulse. When did you last eat?"
+   Open: [Hold out your hand, palm up] "Give me your wrist. Through the sleeve. When did you last eat?"
    Need all: `trickster`, `arueshalae.treatment.studied`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.intake`, `arueshalae.changed`, `trickster.failed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`; EntryMythic: PlayerIsTrickster.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
@@ -1924,13 +1924,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 108. **Arueshalae: At the table** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.mealtimes","chapter":3,"day":12,"completed":true,"choices":[["start",0],["watch",0],["evening",0],["better",0]]} -->
    Scene `arueshalae.treatment.mealtimes`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
-   Open: "How is the patient?"
+   Open: "What's in the book?"
    Need all: `arueshalae.treatment.intake`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.mealtimes`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
    - `arueshalae.treatment.mealtimes/start/0` — Continue; Need all: `arueshalae.treatment.rx_watch`
    - `arueshalae.treatment.mealtimes/watch/0` — Continue
-   - `arueshalae.treatment.mealtimes/evening/0` — "You're getting better. That's what treatment is for."; records `arueshalae.treatment.mealtimes`, `arueshalae.treatment.said_better`
+   - `arueshalae.treatment.mealtimes/evening/0` — "Making you better at being here."; records `arueshalae.treatment.mealtimes`, `arueshalae.treatment.said_better`
    - `arueshalae.treatment.mealtimes/better/0` — Continue
 
 109. **Kyado: Kyado's word** — native dialogue listed below. <!-- rrt-step {"scene":"delamere.trickster.react.kyado_woken","chapter":3,"day":12,"completed":true,"choices":[["start",0]]} -->
@@ -2220,7 +2220,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
    - `arueshalae.treatment.the_cat/start/1` — Continue; Blocked by: `arueshalae.treatment.rx_want`
    - `arueshalae.treatment.the_cat/watch/0` — Continue
-   - `arueshalae.treatment.the_cat/science/0` — "Congratulations. The patient has a pet."
+   - `arueshalae.treatment.the_cat/science/0` — "Congratulations. The demon has a pet."
    - `arueshalae.treatment.the_cat/pet/0` — [Let her go and buy it a fish.]; records `arueshalae.treatment.the_cat`
 
 137. **Devarra: The lizard is on an errand** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.trickster.flight.leash","chapter":3,"day":13,"completed":true,"choices":[["report",0],["amended",0]]} -->
@@ -3606,7 +3606,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
    - `arueshalae.treatment.bad_day/start/0` — Continue
-   - `arueshalae.treatment.bad_day/tirade/0` — [Snap back] "Then stop. Go on. Nobody's holding you here. Not me, not the goddess."; records `arueshalae.treatment.bad_day`, `arueshalae.treatment.snapped_back`
+   - `arueshalae.treatment.bad_day/tirade/0` — [Snap back] "Then stop pretending. Show me the demon. Go on."; records `arueshalae.treatment.bad_day`, `arueshalae.treatment.snapped_back`
    - `arueshalae.treatment.bad_day/snap/0` — Continue
 
 257. **Devarra: The watchtower** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.first_climb","chapter":3,"day":19,"completed":true,"choices":[["path",1],["tower_free",0],["look",2],["flying",0],["didnt_know_free",0],["claim",0],["hers",0],["leave",0]]} -->
@@ -5959,8 +5959,8 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Actor must be physically available: `417ce3dcf3a9707488f2b9b2a790814b`.
    - `jerribeth.fate_envelope/start/2` — "I have declined to tell the letter."
    - `jerribeth.fate_envelope/start.reply.1/0` — "I would like a reply that can find me without asking your patron where I am."
-   - `jerribeth.fate_envelope/test/2` — "An answer arriving before it has been sent. Damage is not an answer."
-   - `jerribeth.fate_envelope/test.reply.1/0` — "The address is fixed. The answer is yours."
+   - `jerribeth.fate_envelope/test/2` — "It was meant to carry an answer. Not a death."
+   - `jerribeth.fate_envelope/test.reply.1/0` — "It has one address. Mine. The answer is yours to write."
    - `jerribeth.fate_envelope/test.reply.2/1` — "I wanted a reply you could not take back."
    - `jerribeth.fate_envelope/refused/0` — [Put away the paper. Leave her answer unchanged.]; records `jerribeth.fate_experiment_refused`
 
@@ -6050,7 +6050,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.alushinyrra/start/0` — Continue
    - `arueshalae.treatment.alushinyrra/table/0` — Continue
    - `arueshalae.treatment.alushinyrra/question/0` — Continue
-   - `arueshalae.treatment.alushinyrra/meal/0` — "Noted. That's going in the treatment plan."; records `arueshalae.treatment.alushinyrra`, `arueshalae.treatment.wants_a_meal`
+   - `arueshalae.treatment.alushinyrra/meal/0` — "Noted. I'm writing that down."; records `arueshalae.treatment.alushinyrra`, `arueshalae.treatment.wants_a_meal`
    - `arueshalae.treatment.alushinyrra/noted/0` — Continue
 
 470. **Mielarah: The Gravedragger's arithmetic** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.arithmetic","chapter":4,"day":90,"completed":true,"choices":[["start",0],["list",1],["doctrine",0],["rule",0],["choose",0]]} -->
@@ -6271,7 +6271,19 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.masks.a_dance_with_a_knife_in_it/silent/0` — Continue; records `camellia.trickster.masks.danced`
    - `camellia.trickster.masks.a_dance_with_a_knife_in_it/anticipation/0` — [Go]
 
-495. **Mielarah: Does it repeat?** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.repeat","chapter":4,"day":91,"completed":true,"choices":[["start",0],["wait",0],["talk",0],["knife",0],["result",0],["brave",0]]} -->
+495. **Arueshalae: Old acquaintance** — 180cdb4b48d561f4cb4ef9a066727960. <!-- rrt-step {"scene":"arueshalae.treatment.old_acquaintance","chapter":4,"day":91,"completed":true,"choices":[["start",0],["sister",0],["offer",0],["voice",0],["after_voice",0]]} -->
+   Scene `arueshalae.treatment.old_acquaintance`; chapters 4–4 (only 4); wait at least 24h after the latest prerequisite; complete.
+   Open: "You keep looking at that door."
+   Need all: `arueshalae.treatment.intake`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.old_acquaintance`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
+   Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
+   Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
+   - `arueshalae.treatment.old_acquaintance/start/0` — Continue
+   - `arueshalae.treatment.old_acquaintance/sister/0` — Continue
+   - `arueshalae.treatment.old_acquaintance/offer/0` — [Say nothing. Let her answer for herself.]; records `arueshalae.treatment.old_acquaintance`, `arueshalae.treatment.old_acquaintance.voice`
+   - `arueshalae.treatment.old_acquaintance/voice/0` — Continue
+   - `arueshalae.treatment.old_acquaintance/after_voice/0` — [Walk her back to the camp.]
+
+496. **Mielarah: Does it repeat?** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.repeat","chapter":4,"day":91,"completed":true,"choices":[["start",0],["wait",0],["talk",0],["knife",0],["result",0],["brave",0]]} -->
    Scene `mielarah.trickster.tavern.repeat`; chapters 4–4 (only 4); wait at least 12h after the latest prerequisite; complete.
    Open: [Take the stool at her elbow.]
    Need all: `trickster`, `mielarah.trickster.primed.pattern`, `mielarah.present_now`; Blocked by: `mielarah.voyage_begun`, `mielarah.trickster.repeated`, `trickster.failed`.
@@ -6283,7 +6295,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.trickster.tavern.repeat/result/0` — "Brave, or careless?"; records `mielarah.trickster.repeated`
    - `mielarah.trickster.tavern.repeat/brave/0` — [Leave her the knife.]
 
-496. **Shamira: A dream is a bird** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.ch4.bird","chapter":4,"day":91,"completed":true,"choices":[["start",0],["sower",0],["bird",1],["miss",0],["chair",0],["invite",0],["t_sleep",0],["t_critic",0],["t_fix",0],["t_wake",0]]} -->
+497. **Shamira: A dream is a bird** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.ch4.bird","chapter":4,"day":91,"completed":true,"choices":[["start",0],["sower",0],["bird",1],["miss",0],["chair",0],["invite",0],["t_sleep",0],["t_critic",0],["t_fix",0],["t_wake",0]]} -->
    Scene `shamira.trickster.ch4.bird`; chapters 4–4 (only 4); wait at least 8h after the latest prerequisite; complete.
    Open: "You said my dreams were loud. What does a demon want with a mortal's dreams?"
    Need all: `trickster`, `shamira.trickster.read`, `shamira.present_now`; Blocked by: `shamira.killed`, `shamira.no_more_ch4`, `shamira.trickster.bird`, `trickster.failed`.
@@ -6299,7 +6311,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.ch4.bird/t_fix/0` — Continue
    - `shamira.trickster.ch4.bird/t_wake/0` — [Get up. There's a war.]; records `shamira.trickster.tasted`
 
-497. **Nenio: A sentence finished** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.abyss.shoulder","chapter":4,"day":91,"completed":true,"choices":[["open",0],["sleep",0],["finished",0]]} -->
+498. **Nenio: A sentence finished** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.abyss.shoulder","chapter":4,"day":91,"completed":true,"choices":[["open",0],["sleep",0],["finished",0]]} -->
    Scene `nenio.folio.abyss.shoulder`; chapters 4–4 (only 4); wait at least 24h after the latest prerequisite; complete.
    Open: "Sit down before you fall down, Nenio."
    Need all: `trickster.ever`, `nenio.folio.abyss.lamp`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.abyss.shoulder`, `nenio.trickster.visitor`.
@@ -6309,7 +6321,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.folio.abyss.shoulder/sleep/0` — [Finish her sentence, as well as you can: "...which, according to the author's follower, smells like the inside of an old boot and should not be eaten."]; records `nenio.folio.abyss.finished_sentence`
    - `nenio.folio.abyss.shoulder/finished/0` — [Let her have been thinking.]
 
-498. **Herrax: Her night, for sale** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.madam.sell_the_night","chapter":4,"day":91,"completed":true,"choices":[["start",0],["wary",0],["bait",3],["bait_plain",0],["bait_end",0]]} -->
+499. **Herrax: Her night, for sale** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.madam.sell_the_night","chapter":4,"day":91,"completed":true,"choices":[["start",0],["wary",0],["bait",3],["bait_plain",0],["bait_end",0]]} -->
    Scene `herrax.trickster.madam.sell_the_night`; chapters 4–4; wait at least 0h after the latest prerequisite; complete.
    Open: "Let's talk about business, not pleasure."
    Need all: `trickster`, `herrax.trickster.primed`, `herrax.coin_held`, `herrax.present_now`; Blocked by: `herrax.trickster.bait_taken`, `herrax.trickster.cost.con_blown`, `herrax.closed`, `trickster.failed`.
@@ -6320,13 +6332,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.trickster.madam.sell_the_night/bait_plain/0` — Continue
    - `herrax.trickster.madam.sell_the_night/bait_end/0` — [Let him keep the coin.]; consumes 1 item: `herrax.coin_held`; records `herrax.trickster.bait_taken`, `herrax.trickster.cost.coin_lost`; Need all: `herrax.coin_held`
 
-499. **Memory: The empty chair** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"abyss_dream","chapter":4,"day":91,"completed":true,"choices":[["start",0],["awake",0]]} -->
+500. **Memory: The empty chair** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"abyss_dream","chapter":4,"day":91,"completed":true,"choices":[["start",0],["awake",0]]} -->
    Scene `abyss_dream`; chapters 4–4; wait at least 48h after the latest prerequisite; complete.
    Need all: `anevia.present_now`, `irabeth.present_now`; Blocked by: `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`; Need one: `abyss_letter`, `tirabade.negotiated_letter`.
    - `abyss_dream/start/0` — [Sit with the memory.]
    - `abyss_dream/awake/0` — [Rest.]; records `kept_letter`
 
-500. **Jerribeth: The house she left behind** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.refuge","chapter":4,"day":91,"completed":true,"choices":[["start",9],["refuge_outcome_0_0",8],["marhevok_early_unknown",0],["need",0],["stay",0]]} -->
+501. **Jerribeth: The house she left behind** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.refuge","chapter":4,"day":91,"completed":true,"choices":[["start",9],["refuge_outcome_0_0",8],["marhevok_early_unknown",0],["need",0],["stay",0]]} -->
    Scene `jerribeth.refuge`; chapters 4–5 (only 4); wait at least 24h after the latest prerequisite; complete.
    Need all: `jerribeth.evening`, `jerribeth.refuge_known`, `jerribeth.present_now`; Blocked by: `jerribeth.trickster.met_by_toast`.
    - `jerribeth.refuge/start/9` — [Hear what happened at the manor.]; Blocked by: `jerribeth.patron_lost`, `jerribeth.harem.vellexia_defection_seen`
@@ -6335,7 +6347,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jerribeth.refuge/need/0` — "I can offer the conversation tonight. We can consider the rest carefully."
    - `jerribeth.refuge/stay/0` — [Arrange another conversation.]; records `jerribeth.refuge_acknowledged`
 
-501. **Iomedae: A borrowed face** — rest delivery / Satchel: event (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.abyss.face","chapter":4,"day":91,"completed":true,"choices":[["start",0],["smile",0],["word",0],["seen",0]]} -->
+502. **Iomedae: A borrowed face** — rest delivery / Satchel: event (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.abyss.face","chapter":4,"day":91,"completed":true,"choices":[["start",0],["smile",0],["word",0],["seen",0]]} -->
    Scene `iomedae.trickster.abyss.face`; chapters 4–4 (only 4); wait at least 96h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.trickster.dream.banner`, `iomedae.present_now`; Blocked by: `iomedae.closed`, `iomedae.trickster.false_face_seen`.
    - `iomedae.trickster.abyss.face/start/0` — Continue
@@ -6345,7 +6357,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 92
 
-502. **Vellexia: The artist's second account** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.price_of_novelty","chapter":4,"day":92,"completed":true,"choices":[["start",0],["history",0],["found",0],["answer",0],["keep",0]]} -->
+503. **Vellexia: The artist's second account** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.price_of_novelty","chapter":4,"day":92,"completed":true,"choices":[["start",0],["history",0],["found",0],["answer",0],["keep",0]]} -->
    Scene `vellexia.price_of_novelty`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "What did the artist admit?"
    Need all: `vellexia.greeted`, `vellexia.panel_examined`, `vellexia.present_now`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `inhuman`, `vellexia.arena_invited`, `vellexia.native_finished`.
@@ -6357,7 +6369,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.price_of_novelty/answer/0` — "Keep it, with the account corrected. I want to see what the older work was trying to do."
    - `vellexia.price_of_novelty/keep/0` — "Keep the key here. I will return."; records `vellexia.price_settled`, `vellexia.kept_picture`
 
-503. **Camellia: Where a friend would stand** — native dialogue listed below. <!-- rrt-step {"scene":"camellia.trickster.beat.lesson_alive","chapter":4,"day":92,"completed":true,"choices":[["open",0],["where",0],["heart",0],["throat",0],["steady",0],["done",0]]} -->
+504. **Camellia: Where a friend would stand** — native dialogue listed below. <!-- rrt-step {"scene":"camellia.trickster.beat.lesson_alive","chapter":4,"day":92,"completed":true,"choices":[["open",0],["where",0],["heart",0],["throat",0],["steady",0],["done",0]]} -->
    Scene `camellia.trickster.beat.lesson_alive`; chapters 3–5; wait at least 24h after the latest prerequisite; complete.
    Open: "You said you wanted to teach me something."
    Need all: `trickster.ever`, `camellia.trickster.masks.a_dance_with_a_knife_in_it`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`, `camellia.trickster.beat.lesson`.
@@ -6370,7 +6382,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.beat.lesson_alive/steady/0` — Continue; records `camellia.trickster.beat.lesson`, `camellia.trickster.lesson.steady`; Blocked by: `camellia.trickster.terms_named`
    - `camellia.trickster.beat.lesson_alive/done/0` — [Go]
 
-504. **Mielarah: The chart of the Midnight Isles** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.charts","chapter":4,"day":92,"completed":true,"choices":[["start",0],["isles",2],["weather",0],["joy",0]]} -->
+505. **Mielarah: The chart of the Midnight Isles** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.charts","chapter":4,"day":92,"completed":true,"choices":[["start",0],["isles",2],["weather",0],["joy",0]]} -->
    Scene `mielarah.trickster.tavern.charts`; chapters 4–4 (only 4); wait at least 8h after the latest prerequisite; complete.
    Open: "Show me the way to Colyphyr. The way you would fly it."
    Need all: `trickster`, `mielarah.trickster.primed.pattern`, `mielarah.present_now`; Blocked by: `mielarah.voyage_begun`, `mielarah.trickster.charted`, `trickster.failed`.
@@ -6380,7 +6392,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.trickster.tavern.charts/weather/0` — [Flirt] "You look happier over that chart than I've seen anyone look in Alushinyrra."
    - `mielarah.trickster.tavern.charts/joy/0` — [Help her roll up the chart.]; records `mielarah.trickster.charted`
 
-505. **Herrax: The night** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.madam.the_night","chapter":4,"day":92,"completed":true,"choices":[["start",0],["arch",0],["arch2",0],["arch3",0],["knife",0],["cut_you",0],["cut_you2",0],["coin_kept",0]]} -->
+506. **Herrax: The night** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.madam.the_night","chapter":4,"day":92,"completed":true,"choices":[["start",0],["arch",0],["arch2",0],["arch3",0],["knife",0],["cut_you",0],["cut_you2",0],["coin_kept",0]]} -->
    Scene `herrax.trickster.madam.the_night`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "Is it time?"
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.present_now`; Blocked by: `herrax.closed`, `herrax.trickster.lesson_given`; Need one of: `herrax.trickster.bait_taken`, `herrax.trickster.cost.con_blown`.
@@ -6394,7 +6406,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.trickster.madam.the_night/cut_you2/0` — Continue; Need all: `herrax.trickster.bait_taken`
    - `herrax.trickster.madam.the_night/coin_kept/0` — "I'll like the stairs."
 
-506. **Seelah: An audience for cruelty** — rest delivery / Satchel: visit (Nexus). <!-- rrt-step {"scene":"seelah.letter","chapter":4,"day":92,"completed":true,"choices":[["start",0],["stall",0],["direct",0],["public",0],["return",0]]} -->
+507. **Seelah: An audience for cruelty** — rest delivery / Satchel: visit (Nexus). <!-- rrt-step {"scene":"seelah.letter","chapter":4,"day":92,"completed":true,"choices":[["start",0],["stall",0],["direct",0],["public",0],["return",0]]} -->
    Scene `seelah.letter`; chapters 4–4 (only 4); wait at least 24h after the latest prerequisite; complete.
    Need all: `seelah.abyss_together`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.plot_departed`.
    - `seelah.letter/start/0` — [Accompany her.]
@@ -6405,7 +6417,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 93
 
-507. **Vellexia: The view from the other chair** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.two_observers","chapter":4,"day":93,"completed":true,"choices":[["start",0],["object",0],["kept",0],["question",0],["ordinary",0]]} -->
+508. **Vellexia: The view from the other chair** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.two_observers","chapter":4,"day":93,"completed":true,"choices":[["start",0],["object",0],["kept",0],["question",0],["ordinary",0]]} -->
    Scene `vellexia.two_observers`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "What do you intend to try today?"
    Need all: `vellexia.greeted`, `vellexia.price_settled`, `vellexia.present_now`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `inhuman`, `vellexia.arena_invited`, `vellexia.native_finished`.
@@ -6417,7 +6429,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.two_observers/question/0` — "I want an evening in which I am neither a commander nor an exhibit. I want to find out whether you can offer one."
    - `vellexia.two_observers/ordinary/0` — "An hour, then. No audience."; records `vellexia.observers_kept`, `vellexia.private_hour`
 
-508. **Mielarah: The bosun** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.minder","chapter":4,"day":93,"completed":true,"choices":[["start",0],["oskel",0],["who",0],["order",1],["lie",0]]} -->
+509. **Mielarah: The bosun** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.tavern.minder","chapter":4,"day":93,"completed":true,"choices":[["start",0],["oskel",0],["who",0],["order",1],["lie",0]]} -->
    Scene `mielarah.trickster.tavern.minder`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "Before we sail. Who is the most dangerous man on your crew?"
    Need all: `trickster`, `mielarah.trickster.primed.pattern`, `mielarah.hired`; Blocked by: `mielarah.voyage_begun`, `mielarah.trickster.primed.minder`, `mielarah.trickster.minder.refused`, `mielarah.trickster.primed.self`, `trickster.failed`.
@@ -6428,7 +6440,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.trickster.tavern.minder/order/1` — [Lie] "A cursed captain makes a crew nervous. Let them see the biggest man aboard standing at your back."; records `mielarah.trickster.primed.minder`, `mielarah.trickster.minder.lied`, `trickster.secret.mielarah_oskel`
    - `mielarah.trickster.tavern.minder/lie/0` — [Let her think so.]
 
-509. **Nenio: Once a year, where nobody sees** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.abyss.drink","chapter":4,"day":93,"completed":true,"choices":[["open",0],["rule",0],["drink",0],["honest",1],["pour",0]]} -->
+510. **Nenio: Once a year, where nobody sees** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.abyss.drink","chapter":4,"day":93,"completed":true,"choices":[["open",0],["rule",0],["drink",0],["honest",1],["pour",0]]} -->
    Scene `nenio.folio.abyss.drink`; chapters 4–4 (only 4); wait at least 48h after the latest prerequisite; complete.
    Open: "You're up late."
    Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.abyss.drink`, `nenio.trickster.visitor`; Need one of: `nenio.folio.abyss.lamp`, `nenio.folio.abyss.shoulder`.
@@ -6440,7 +6452,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.folio.abyss.drink/honest/1` — [Say nothing, and pour her another half cup.]; Blocked by: `nenio.trickster.name_gone`
    - `nenio.folio.abyss.drink/pour/0` — [See her back to her tent.]
 
-510. **Herrax: At closing** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.madam.reachable","chapter":4,"day":93,"completed":true,"choices":[["closing",0],["cut_bait",0],["offer",0],["desire",0],["thumb",0],["threshold",0],["threshold2",0],["cut",0],["herrax.trickster.madam.reachable.explicit.1",0],["morning",0],["morning2",0]]} -->
+511. **Herrax: At closing** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.madam.reachable","chapter":4,"day":93,"completed":true,"choices":[["closing",0],["cut_bait",0],["offer",0],["desire",0],["thumb",0],["threshold",0],["threshold2",0],["cut",0],["herrax.trickster.madam.reachable.explicit.1",0],["morning",0],["morning2",0]]} -->
    Scene `herrax.trickster.madam.reachable`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "The house is closing."
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.trickster.lesson_given`, `herrax.present_now`; Blocked by: `herrax.closed`, `herrax.trickster.declined`, `herrax.committed`.
@@ -6457,7 +6469,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.trickster.madam.reachable/morning/0` — Continue
    - `herrax.trickster.madam.reachable/morning2/0` — "I'll be back."
 
-511. **Horzalah: The collar-shaped scar** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.ch4.scar","chapter":4,"day":93,"completed":true,"choices":[["look",0],["you",0]]} -->
+512. **Horzalah: The collar-shaped scar** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.ch4.scar","chapter":4,"day":93,"completed":true,"choices":[["look",0],["you",0]]} -->
    Scene `horzalah.trickster.ch4.scar`; chapters 4–4; wait at least 0h after the latest prerequisite; complete.
    Open: [Look at the scar on her throat, not at the seals.]
    Need all: `horzalah.scar_seen`, `horzalah.present_now`; Blocked by: `horzalah.trickster.scar_noted`.
@@ -6465,7 +6477,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.ch4.scar/look/0` — "Everyone looks at the seals. I was looking at you."
    - `horzalah.trickster.ch4.scar/you/0` — [Let her go back to her questions.]; records `horzalah.trickster.scar_noted`
 
-512. **Seelah: What we meant to do** — rest delivery / Satchel: visit (Nexus). <!-- rrt-step {"scene":"seelah.letter_after","chapter":4,"day":93,"completed":true,"choices":[["start",0],["public",0],["admit",0],["end",0]]} -->
+513. **Seelah: What we meant to do** — rest delivery / Satchel: visit (Nexus). <!-- rrt-step {"scene":"seelah.letter_after","chapter":4,"day":93,"completed":true,"choices":[["start",0],["public",0],["admit",0],["end",0]]} -->
    Scene `seelah.letter_after`; chapters 4–4 (only 4); wait at least 24h after the latest prerequisite; complete.
    Need all: `seelah.letter_unsettled`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.plot_departed`.
    - `seelah.letter_after/start/0` — "I thought stopping him was worth the attention it would draw."; Need all: `seelah.letter_public`
@@ -6475,7 +6487,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 94
 
-513. **Vellexia: An hour with no witnesses** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.unadvertised_hour","chapter":4,"day":94,"completed":true,"choices":[["start",0],["opening",0],["private",0],["play",0],["read",0],["intent",0],["court",0]]} -->
+514. **Vellexia: An hour with no witnesses** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.unadvertised_hour","chapter":4,"day":94,"completed":true,"choices":[["start",0],["opening",0],["private",0],["play",0],["read",0],["intent",0],["court",0]]} -->
    Scene `vellexia.unadvertised_hour`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "You offered an hour without a performance."
    Need all: `vellexia.greeted`, `vellexia.observers_kept`, `vellexia.present_now`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `inhuman`, `vellexia.arena_invited`, `vellexia.native_finished`.
@@ -6489,7 +6501,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.unadvertised_hour/intent/0` — "I want you. And I intend to make you want another evening."
    - `vellexia.unadvertised_hour/court/0` — "I would rather spend the time with you than outside the door."; records `vellexia.hour_kept`, `vellexia.courting`
 
-514. **Mielarah: Landfall** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.colyphyr.landfall","chapter":4,"day":94,"completed":true,"choices":[["start",1],["lied",1],["voyage",3],["close",0],["north",0]]} -->
+515. **Mielarah: Landfall** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.colyphyr.landfall","chapter":4,"day":94,"completed":true,"choices":[["start",1],["lied",1],["voyage",3],["close",0],["north",0]]} -->
    Scene `mielarah.trickster.colyphyr.landfall`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "Before you go back to your crew. A word."
    Need all: `trickster.ever`, `mielarah.arrived`, `mielarah.present_now`; Blocked by: `mielarah.trickster.landfall`.
@@ -6500,14 +6512,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.trickster.colyphyr.landfall/close/0` — "Drezen. When the Abyss is done with me, bring your ship north. My city needs a ship that stops for people in distress."; records `mielarah.trickster.landfall`, `mielarah.started`
    - `mielarah.trickster.colyphyr.landfall/north/0` — [Let her go back to her crew.]
 
-515. **Regill: Regill's word** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.react.regill_night","chapter":4,"day":94,"completed":true,"choices":[["start",0]]} -->
+516. **Regill: Regill's word** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.trickster.react.regill_night","chapter":4,"day":94,"completed":true,"choices":[["start",0]]} -->
    Scene `herrax.trickster.react.regill_night`; chapters 4–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About the Delights..."
    Need all: `trickster.ever`, `herrax.trickster.lesson_given`, `participant.regill.available`, `herrax.present_now`; Blocked by: `regill.dead`, `regill.kicked_out`, `regill.left_plot`, `herrax.trickster.declined`.
    Native answer-list host: `2366a8db6481070439fee222c0c52e45`.
    - `herrax.trickster.react.regill_night/start/0` — Continue
 
-516. **Seelah: The price she names** — rest delivery / Satchel: visit (Nexus). <!-- rrt-step {"scene":"seelah.letter_work","chapter":4,"day":94,"completed":true,"choices":[["start",0],["meeting",0],["public",0],["customer",1],["person_seen",0],["bargain",0],["return",0],["tease",0]]} -->
+517. **Seelah: The price she names** — rest delivery / Satchel: visit (Nexus). <!-- rrt-step {"scene":"seelah.letter_work","chapter":4,"day":94,"completed":true,"choices":[["start",0],["meeting",0],["public",0],["customer",1],["person_seen",0],["bargain",0],["return",0],["tease",0]]} -->
    Scene `seelah.letter_work`; chapters 4–4 (only 4); wait at least 24h after the latest prerequisite; complete.
    Need all: `seelah.letter_discussed`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.plot_departed`.
    - `seelah.letter_work/start/0` — [Go with her to meet the copyist.]
@@ -6521,7 +6533,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 95
 
-517. **Vellexia: The question she chooses** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.a_question_kept","chapter":4,"day":95,"completed":true,"choices":[["start",0],["wager",1],["unowed",0],["answer",0],["kiss_offer",0]]} -->
+518. **Vellexia: The question she chooses** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.a_question_kept","chapter":4,"day":95,"completed":true,"choices":[["start",0],["wager",1],["unowed",0],["answer",0],["kiss_offer",0]]} -->
    Scene `vellexia.a_question_kept`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "You had another hour for me."
    Need all: `vellexia.greeted`, `vellexia.hour_kept`, `vellexia.present_now`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `inhuman`, `vellexia.arena_invited`, `vellexia.native_finished`.
@@ -6533,7 +6545,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.a_question_kept/answer/0` — "A kiss, if you still want to discover how that earnest word sounds."; Need all: `vellexia.courting`
    - `vellexia.a_question_kept/kiss_offer/0` — [Stay close and steal another kiss.]; records `vellexia.opening_kept`, `vellexia.first_kiss`
 
-518. **Herrax: The only free thing** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.first_price","chapter":4,"day":95,"completed":true,"choices":[["start",0],["price",0],["not_for_sale",0]]} -->
+519. **Herrax: The only free thing** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.first_price","chapter":4,"day":95,"completed":true,"choices":[["start",0],["price",0],["not_for_sale",0]]} -->
    Scene `herrax.house.first_price`; chapters 4–4; wait at least 0h after the latest prerequisite; complete.
    Open: "You look at everyone as if you were pricing them."
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6544,7 +6556,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 96
 
-519. **Vellexia: A reply she has not written** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.the_unused_reply","chapter":4,"day":96,"completed":true,"choices":[["start",0],["asking",0],["shell",0],["test",0],["choice",0],["accepted",0]]} -->
+520. **Vellexia: A reply she has not written** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.the_unused_reply","chapter":4,"day":96,"completed":true,"choices":[["start",0],["asking",0],["shell",0],["test",0],["choice",0],["accepted",0]]} -->
    Scene `vellexia.the_unused_reply`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "You said I might return. What if I am somewhere you cannot hear me knock?"
    Need all: `vellexia.greeted`, `vellexia.opening_kept`, `vellexia.present_now`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`, `vellexia.arena_invited`, `vellexia.native_finished`.
@@ -6557,7 +6569,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.the_unused_reply/choice/0` — "I will take it. Ask when you have something you want me to hear."
    - `vellexia.the_unused_reply/accepted/0` — [Keep the echo shell and accept another look at the seller's claim.]; records `vellexia.seal_agreed`
 
-520. **Herrax: Behind every door** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.labyrinth","chapter":4,"day":96,"completed":true,"choices":[["start",0],["doors",0],["cultists",1],["asset_empty",0],["dais",1],["dais_end",0]]} -->
+521. **Herrax: Behind every door** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.labyrinth","chapter":4,"day":96,"completed":true,"choices":[["start",0],["doors",0],["cultists",1],["asset_empty",0],["dais",1],["dais_end",0]]} -->
    Scene `herrax.house.labyrinth`; chapters 4–4; wait at least 20h after the latest prerequisite; complete.
    Open: "Show me your house."
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.first_price`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6571,7 +6583,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 97
 
-521. **Vellexia: A taste for being wrong** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.the_price_of_tomorrow","chapter":4,"day":97,"completed":true,"choices":[["start",0],["kept",0],["offer",0],["victory",0],["reply",1],["part",0]]} -->
+522. **Vellexia: A taste for being wrong** — Alushinyrra Higher City. <!-- rrt-step {"scene":"vellexia.the_price_of_tomorrow","chapter":4,"day":97,"completed":true,"choices":[["start",0],["kept",0],["offer",0],["victory",0],["reply",1],["part",0]]} -->
    Scene `vellexia.the_price_of_tomorrow`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "Show me what the seller thinks he knows about you."
    Need all: `vellexia.greeted`, `vellexia.seal_agreed`, `vellexia.present_now`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`, `vellexia.arena_invited`, `vellexia.native_finished`.
@@ -6584,7 +6596,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.the_price_of_tomorrow/reply/1` — "Ask when you decide. I will answer then."
    - `vellexia.the_price_of_tomorrow/part/0` — [Leave her to her schemes.]; records `vellexia.prediction_known`
 
-522. **Herrax: Forgotten things** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.forgotten_things","chapter":4,"day":97,"completed":true,"choices":[["start",0],["guests",0],["token",1],["token_plain",0],["token_choice",0],["took",0]]} -->
+523. **Herrax: Forgotten things** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.forgotten_things","chapter":4,"day":97,"completed":true,"choices":[["start",0],["guests",0],["token",1],["token_plain",0],["token_choice",0],["took",0]]} -->
    Scene `herrax.house.forgotten_things`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "What have you got there?"
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.labyrinth`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6596,7 +6608,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.house.forgotten_things/token_choice/0` — [Take the ring, finger and all.]; records `herrax.house.ring.kept`
    - `herrax.house.forgotten_things/took/0` — "That's why I took it."
 
-523. **Melazmera: Nobody leaves** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.ch4.plan","chapter":4,"day":97,"completed":true,"choices":[["start",0],["sense",0],["rocks",0],["crown",0]]} -->
+524. **Melazmera: Nobody leaves** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.ch4.plan","chapter":4,"day":97,"completed":true,"choices":[["start",0],["sense",0],["rocks",0],["crown",0]]} -->
    Scene `melazmera.trickster.ch4.plan`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "Everyone who walks into that cave takes something. What would she do if someone left her something?"
    Need all: `trickster`, `melazmera.hoard_known`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.trickster.plan`, `melazmera.closed`, `trickster.failed`, `crossroute.nocticula.unavailable`; EntryMythic: PlayerIsTrickster.
@@ -6606,7 +6618,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.ch4.plan/rocks/0` — Continue
    - `melazmera.trickster.ch4.plan/crown/0` — [Promise her the crown] "If I can reach it, it's yours."; records `melazmera.trickster.plan`, `melazmera.trickster.queen_promised`
 
-524. **Melazmera: Salt the hoard** — rest delivery / Satchel: event (Colyphyr dungeon). <!-- rrt-step {"scene":"melazmera.trickster.ch4.salt","chapter":4,"day":97,"completed":true,"choices":[["start",1],["told",0],["salt_rocks",1],["salt_shiny_bait",0],["ring",0],["heap",1],["set",0],["out",0]]} -->
+525. **Melazmera: Salt the hoard** — rest delivery / Satchel: event (Colyphyr dungeon). <!-- rrt-step {"scene":"melazmera.trickster.ch4.salt","chapter":4,"day":97,"completed":true,"choices":[["start",1],["told",0],["salt_rocks",1],["salt_shiny_bait",0],["ring",0],["heap",1],["set",0],["out",0]]} -->
    Scene `melazmera.trickster.ch4.salt`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`; Blocked by: `melazmera.dead.latched`, `melazmera.trickster.salted`, `melazmera.closed`, `trickster.failed`; Need one of: `melazmera.trickster.plan`, `melazmera.illusion_lifted`, `melazmera.illusion_lifted_b`.
    - `melazmera.trickster.ch4.salt/start/1` — Continue; Blocked by: `melazmera.illusion_seen`
@@ -6620,7 +6632,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 98
 
-525. **Herrax: Her riches** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.predecessor","chapter":4,"day":98,"completed":true,"choices":[["start",2],["deposit",0],["riches",0],["enemies",0]]} -->
+526. **Herrax: Her riches** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.predecessor","chapter":4,"day":98,"completed":true,"choices":[["start",2],["deposit",0],["riches",0],["enemies",0]]} -->
    Scene `herrax.house.predecessor`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "Why did you want Chivarro gone?"
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.first_price`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6630,7 +6642,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.house.predecessor/riches/0` — "And her enemies?"
    - `herrax.house.predecessor/enemies/0` — "I have."
 
-526. **Melazmera: Where is my crown?** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.ch4.queen_after","chapter":4,"day":98,"completed":true,"choices":[["start",0],["trick",0],["crown",1],["truth",0]]} -->
+527. **Melazmera: Where is my crown?** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.ch4.queen_after","chapter":4,"day":98,"completed":true,"choices":[["start",0],["trick",0],["crown",1],["truth",0]]} -->
    Scene `melazmera.trickster.ch4.queen_after`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "I went into the dragon's cave."
    Need all: `trickster.ever`, `melazmera.trickster.salted`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.queen_gone`, `melazmera.trickster.queen_crowned`, `melazmera.trickster.queen_refused_crown`, `melazmera.closed`.
@@ -6640,7 +6652,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.ch4.queen_after/crown/1` — "It was a rock, your majesty. Everything in that cave that shines is a rock. You said so yourself."
    - `melazmera.trickster.ch4.queen_after/truth/0` — [Go away.]; records `melazmera.trickster.queen_refused_crown`, `melazmera.trickster.queen_truth_told`
 
-527. **Melazmera: The thief who gave** — rest delivery / Satchel: visit (Colyphyr dungeon). <!-- rrt-step {"scene":"melazmera.trickster.ch4.hunt","chapter":4,"day":98,"completed":true,"choices":[["start",1],["stranger",0],["arrive",0],["speech",0],["swamp",0],["why",0],["takes",0],["crew",5],["crew_unknown",0],["truce",1],["truce_alive",0],["name",3],["rent",0],["leaves",0]]} -->
+528. **Melazmera: The thief who gave** — rest delivery / Satchel: visit (Colyphyr dungeon). <!-- rrt-step {"scene":"melazmera.trickster.ch4.hunt","chapter":4,"day":98,"completed":true,"choices":[["start",1],["stranger",0],["arrive",0],["speech",0],["swamp",0],["why",0],["takes",0],["crew",5],["crew_unknown",0],["truce",1],["truce_alive",0],["name",3],["rent",0],["leaves",0]]} -->
    Scene `melazmera.trickster.ch4.hunt`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.salted`, `trickster.now`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.trickster.returned`, `melazmera.closed`.
    - `melazmera.trickster.ch4.hunt/start/1` — Continue; Blocked by: `melazmera.trickster.cost.grey_hand`
@@ -6658,7 +6670,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.ch4.hunt/rent/0` — [Watch her go.]
    - `melazmera.trickster.ch4.hunt/leaves/0` — Continue; records `melazmera.trickster.returned`, `melazmera.started`
 
-528. **Melazmera: The cave with the hole in its roof** — rest delivery / Satchel: visit (Colyphyr dungeon). <!-- rrt-step {"scene":"melazmera.trickster.ch4.old_hoard","chapter":4,"day":98,"completed":true,"choices":[["start",0],["crown",0],["rain",0],["heap",0],["ring",0],["out",0]]} -->
+529. **Melazmera: The cave with the hole in its roof** — rest delivery / Satchel: visit (Colyphyr dungeon). <!-- rrt-step {"scene":"melazmera.trickster.ch4.old_hoard","chapter":4,"day":98,"completed":true,"choices":[["start",0],["crown",0],["rain",0],["heap",0],["ring",0],["out",0]]} -->
    Scene `melazmera.trickster.ch4.old_hoard`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.returned`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.old_hoard_seen`.
    - `melazmera.trickster.ch4.old_hoard/start/0` — Continue
@@ -6670,7 +6682,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 99
 
-529. **Herrax: Whose she is** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.the_lady","chapter":4,"day":99,"completed":true,"choices":[["start",1],["lady",0],["willodus",1],["patronless",1]]} -->
+530. **Herrax: Whose she is** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.the_lady","chapter":4,"day":99,"completed":true,"choices":[["start",1],["lady",0],["willodus",1],["patronless",1]]} -->
    Scene `herrax.house.the_lady`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "Who does a madam answer to, in Alushinyrra?"
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.labyrinth`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6680,14 +6692,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.house.the_lady/willodus/1` — Continue; Blocked by: `herrax.willodus_told`
    - `herrax.house.the_lady/patronless/1` — "I'll remember."
 
-530. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.react.greybor_colyphyr","chapter":4,"day":99,"completed":true,"choices":[["start",0]]} -->
+531. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.react.greybor_colyphyr","chapter":4,"day":99,"completed":true,"choices":[["start",0]]} -->
    Scene `melazmera.trickster.react.greybor_colyphyr`; chapters 4–4 (only 4); wait at least 0h after the latest prerequisite; complete.
    Open: "What do you make of the dragon following me?"
    Need all: `trickster.ever`, `melazmera.trickster.returned`, `greybor.in_party`, `greybor.declined_queen`, `melazmera.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`, `greybor.away`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `melazmera.trickster.react.greybor_colyphyr/start/0` — Continue
 
-531. **Melazmera: A stone through the roof** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"melazmera.trickster.stone.first","chapter":4,"day":99,"completed":true,"choices":[["start",0],["words",0],["reply",0],["done",0]]} -->
+532. **Melazmera: A stone through the roof** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"melazmera.trickster.stone.first","chapter":4,"day":99,"completed":true,"choices":[["start",0],["words",0],["reply",0],["done",0]]} -->
    Scene `melazmera.trickster.stone.first`; chapters 4–4 (only 4); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.returned`, `melazmera.reachable_by_letter`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.stone.first_read`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.stone.first/start/0` — [Read it.]
@@ -6697,7 +6709,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 100
 
-532. **Herrax: The eye, once** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.eye.one","chapter":4,"day":100,"completed":true,"choices":[["start",1],["end",0]]} -->
+533. **Herrax: The eye, once** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.eye.one","chapter":4,"day":100,"completed":true,"choices":[["start",1],["end",0]]} -->
    Scene `herrax.house.eye.one`; chapters 4–4; wait at least 12h after the latest prerequisite; complete.
    Open: "Your eye. Who did that?"
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.first_price`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6707,7 +6719,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 101
 
-533. **Herrax: The eye, twice** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.eye.two","chapter":4,"day":101,"completed":true,"choices":[["start",0],["caught",0]]} -->
+534. **Herrax: The eye, twice** — native dialogue listed below. <!-- rrt-step {"scene":"herrax.house.eye.two","chapter":4,"day":101,"completed":true,"choices":[["start",0],["caught",0]]} -->
    Scene `herrax.house.eye.two`; chapters 4–4; wait at least 24h after the latest prerequisite; complete.
    Open: "You never did tell me about the eye."
    Need all: `trickster.ever`, `herrax.madam`, `herrax.met`, `herrax.house.eye.one`, `herrax.present_now`; Blocked by: `herrax.closed`.
@@ -6715,7 +6727,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.house.eye.two/start/0` — "Last time it was a priestess of Shelyn with holy water."
    - `herrax.house.eye.two/caught/0` — "Please don't be."
 
-534. **Melazmera: A stone in the porridge** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"melazmera.trickster.stone.second","chapter":4,"day":101,"completed":true,"choices":[["start",0],["honest",0],["tail",0]]} -->
+535. **Melazmera: A stone in the porridge** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"melazmera.trickster.stone.second","chapter":4,"day":101,"completed":true,"choices":[["start",0],["honest",0],["tail",0]]} -->
    Scene `melazmera.trickster.stone.second`; chapters 4–4 (only 4); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.returned`, `melazmera.trickster.stone.first_read`, `melazmera.reachable_by_letter`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.stone.second_read`, `crossroute.nocticula.unavailable`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.stone.second/start/0` — Continue; Need all: `melazmera.trickster.stone.reply_honest`
@@ -6726,7 +6738,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 102
 
-535. **Together: People who kept living** — owner contact / rest. <!-- rrt-step {"scene":"return","chapter":5,"day":102,"completed":true,"choices":[["start",1],["now",0],["future",0]]} -->
+536. **Together: People who kept living** — owner contact / rest. <!-- rrt-step {"scene":"return","chapter":5,"day":102,"completed":true,"choices":[["start",1],["now",0],["future",0]]} -->
    Scene `return`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "Can we make time for one another again?"
    Need all: `ordinary`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`.
@@ -6734,7 +6746,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `return/now/0` — "I want to know the people you are becoming."
    - `return/future/0` — [Begin again from where you actually are.]
 
-536. **Seelah: After they opened their eyes** — Drezen. <!-- rrt-step {"scene":"seelah.souls","chapter":5,"day":102,"completed":true,"choices":[["start",0],["care",0],["grief",1],["survived",0],["quiet",0],["end",0]]} -->
+537. **Seelah: After they opened their eyes** — Drezen. <!-- rrt-step {"scene":"seelah.souls","chapter":5,"day":102,"completed":true,"choices":[["start",0],["care",0],["grief",1],["survived",0],["quiet",0],["end",0]]} -->
    Scene `seelah.souls`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You have been very quiet since the souls were returned."
    Need all: `seelah.morning`, `seelah.souls_returned`, `seelah.present_now`; Blocked by: `seelah.plot_departed`.
@@ -6746,7 +6758,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.souls/quiet/0` — "I meant it."; Blocked by: `crossroute.arsinoe.unavailable`
    - `seelah.souls/end/0` — [Keep the evening with her.]; records `seelah.aftercare`
 
-537. **Konomi: An account for her alone** — Drezen. <!-- rrt-step {"scene":"konomi.return","chapter":5,"day":102,"completed":true,"choices":[["start",2],["hers",0],["talk",0]]} -->
+538. **Konomi: An account for her alone** — Drezen. <!-- rrt-step {"scene":"konomi.return","chapter":5,"day":102,"completed":true,"choices":[["start",2],["hers",0],["talk",0]]} -->
    Scene `konomi.return`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There are things about the Abyss I would like to tell you privately."
    Need all: `konomi.present`, `konomi.reckoning`, `konomi.present_now`.
@@ -6756,13 +6768,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.return/hers/0` — [Give her an honest account.]
    - `konomi.return/talk/0` — [Choose another evening together.]; records `konomi.returned`
 
-538. **Jerribeth: An evening before the promises** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.short_invitation","chapter":5,"day":102,"completed":true,"choices":[["start",0],["short",0]]} -->
+539. **Jerribeth: An evening before the promises** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.short_invitation","chapter":5,"day":102,"completed":true,"choices":[["start",0],["short",0]]} -->
    Scene `jerribeth.short_invitation`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `jerribeth.commission`, `jerribeth.terms`, `jerribeth.lovers`, `jerribeth.reachable_by_letter`; Blocked by: `jerribeth.farewell`, `jerribeth.future`, `jerribeth.settlement_kept`; Block `jerribeth.farewell` lifted by: `jerribeth.catchup_requested`.
    - `jerribeth.short_invitation/start/0` — "I want to keep seeing you after the war, even if we cannot make time for the longer visits before it ends."
    - `jerribeth.short_invitation/short/0` — [Arrange a conversation about continuing the shorter courtship.]; records `jerribeth.short_future_requested`
 
-539. **Ember: Someone who can say no** — Drezen. <!-- rrt-step {"scene":"ember.where_she_is_needed","chapter":5,"day":102,"completed":true,"choices":[["start",2],["today",0],["view",0]]} -->
+540. **Ember: Someone who can say no** — Drezen. <!-- rrt-step {"scene":"ember.where_she_is_needed","chapter":5,"day":102,"completed":true,"choices":[["start",2],["today",0],["view",0]]} -->
    Scene `ember.where_she_is_needed`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Have you decided where to spend the afternoon?"
    Need all: `ember.present`, `ember.answer_kept`, `ember.an_answer_from_elsewhere`, `ember.present_now`; Blocked by: `ember.closed`, `ember_dead`, `ember_gone`, `ember.absent`, `ember.native_devastated`.
@@ -6772,7 +6784,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `ember.where_she_is_needed/today/0` — "Ask Dervan what he likes about the view."
    - `ember.where_she_is_needed/view/0` — "Walk back together."; records `ember.deren_visited`, `ember.wishes_answered`
 
-540. **Soana: When the road returns** — Wintersun. <!-- rrt-step {"scene":"soana.when_the_road_returns","chapter":5,"day":102,"completed":true,"choices":[["start",0],["welcome",0],["nursery",0],["saved",0],["path",0],["cleft",0],["end",0]]} -->
+541. **Soana: When the road returns** — Wintersun. <!-- rrt-step {"scene":"soana.when_the_road_returns","chapter":5,"day":102,"completed":true,"choices":[["start",0],["welcome",0],["nursery",0],["saved",0],["path",0],["cleft",0],["end",0]]} -->
    Scene `soana.when_the_road_returns`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "I wondered what you would say when I came back."
    Need all: `soana.after_quest`, `soana.progression_kept`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `inhuman`; Need one: `soana.old_defender`, `soana.bear_dead`.
@@ -6786,7 +6798,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.when_the_road_returns/cleft/0` — [Agree to inspect the eastern ground in daylight.]
    - `soana.when_the_road_returns/end/0` — [Return in daylight to follow the trail.]; records `soana.late_returned`
 
-541. **Arsinoe: The road she has not taken** — Drezen. <!-- rrt-step {"scene":"arsinoe_where_she_stays","chapter":5,"day":102,"completed":true,"choices":[["start",1],["miss",0],["journey",0]]} -->
+542. **Arsinoe: The road she has not taken** — Drezen. <!-- rrt-step {"scene":"arsinoe_where_she_stays","chapter":5,"day":102,"completed":true,"choices":[["start",1],["miss",0],["journey",0]]} -->
    Scene `arsinoe_where_she_stays`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Have you time to walk with me?"
    Need all: `arsinoe.capital`, `arsinoe.continuation_kept`, `arsinoe_what_she_asks`, `arsinoe.present_now`; Blocked by: `arsinoe.closed`.
@@ -6796,7 +6808,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arsinoe_where_she_stays/miss/0` — "I would like to see a city with you when we can travel for pleasure."
    - `arsinoe_where_she_stays/journey/0` — "Keep the possibility of a journey together."; records `arsinoe.staying_chosen`, `arsinoe.future_journey`
 
-542. **Gesmerha: The voice that came back** — Drezen. <!-- rrt-step {"scene":"gesmerha.the_voice_at_court","chapter":5,"day":102,"completed":true,"choices":[["start",0],["lover",0],["songs",1],["board",0],["future",0],["leaving",0],["choice",0],["kiss",0]]} -->
+543. **Gesmerha: The voice that came back** — Drezen. <!-- rrt-step {"scene":"gesmerha.the_voice_at_court","chapter":5,"day":102,"completed":true,"choices":[["start",0],["lover",0],["songs",1],["board",0],["future",0],["leaving",0],["choice",0],["kiss",0]]} -->
    Scene `gesmerha.the_voice_at_court`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Before you go, may we speak about something of our own?"
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.campaign_kept`, `gesmerha.capital_guest`, `gesmerha.heard_future`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`, `gesmerha.marhevok_rules`, `gesmerha.late_arrived`, `gesmerha.trickster.cost.catchup`, `gesmerha.trickster.cost.first_meeting`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -6810,7 +6822,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.the_voice_at_court/choice/0` — "I'm still yours. Kiss me before you go."; Need all: `gesmerha.lover`
    - `gesmerha.the_voice_at_court/kiss/0` — [Let her finish her native audience when she is ready.]; records `gesmerha.reunion_kept`, `gesmerha.reunion_lovers`
 
-543. **Anevia: The answer you could not guess** — Drezen. <!-- rrt-step {"scene":"anevia.the_life_she_lived","chapter":5,"day":102,"completed":true,"choices":[["start",0],["absence",0],["moment",0],["her_days",0],["end",0]]} -->
+544. **Anevia: The answer you could not guess** — Drezen. <!-- rrt-step {"scene":"anevia.the_life_she_lived","chapter":5,"day":102,"completed":true,"choices":[["start",0],["absence",0],["moment",0],["her_days",0],["end",0]]} -->
    Scene `anevia.the_life_she_lived`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There was something I wanted to speak with you about."
    Need all: `anevia.ordinary_life_kept`, `anevia.lover`, `anevia.present_now`; Blocked by: `closed`, `anevia.closed`, `inhuman`, `irabeth_dead`, `irabeth_gone`, `anevia_away`, `swarm`, `true_lich`; Block `irabeth_dead` lifted by: `irabeth.trickster.returned`; Block `anevia_away` lifted by: `anevia.trickster.returned`.
@@ -6822,7 +6834,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `anevia.the_life_she_lived/her_days/0` — "Tell me about it. You don't have to take me along to all of it."
    - `anevia.the_life_she_lived/end/0` — "Then let's meet the new ones."; records `anevia.return_ready`
 
-544. **Irabeth: The person at the door** — Drezen. <!-- rrt-step {"scene":"irabeth.the_person_who_returns","chapter":5,"day":102,"completed":true,"choices":[["start",0],["returned",0],["history",3],["ahead",0],["end",0]]} -->
+545. **Irabeth: The person at the door** — Drezen. <!-- rrt-step {"scene":"irabeth.the_person_who_returns","chapter":5,"day":102,"completed":true,"choices":[["start",0],["returned",0],["history",3],["ahead",0],["end",0]]} -->
    Scene `irabeth.the_person_who_returns`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "We have time to speak again. What has changed for you?"
    Need all: `irabeth.private_evening_kept`, `irabeth.present_now`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`.
@@ -6834,7 +6846,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `irabeth.the_person_who_returns/ahead/0` — "I would like to see what you choose."
    - `irabeth.the_person_who_returns/end/0` — [Keep the day.]; records `irabeth.return_kept`
 
-545. **Baphomet: The collateral** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.baphomet","chapter":5,"day":102,"completed":true,"choices":[["open",2],["base",0],["terms",2],["laugh",0]]} -->
+546. **Baphomet: The collateral** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.baphomet","chapter":5,"day":102,"completed":true,"choices":[["open",2],["base",0],["terms",2],["laugh",0]]} -->
    Scene `minagho_chivarro.trickster.react.baphomet`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Minagho."
    Need all: `trickster.ever`, `trickster.now`; Blocked by: `minagho_chivarro.trickster.returned_minagho`, `minagho_chivarro.trickster.cost.baphomet_terms`, `minagho_chivarro.trickster.baphomet_refused`, `minagho_chivarro.trickster.baphomet_heard`, `crossroute.horzalah.unavailable`; Need one of: `minagho_chivarro.trickster.primed`, `minagho.dead`; Need one of: `minagho_chivarro.trickster.primed`, `trickster`.
@@ -6844,7 +6856,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minagho_chivarro.trickster.react.baphomet/terms/2` — [Take him at his word] "You said it: the debt is mine, and she is the collateral. Collateral goes where the debt sleeps."; Blocked by: `minagho_chivarro.trickster.cost.late_claim`; Mythic: PlayerIsTrickster
    - `minagho_chivarro.trickster.react.baphomet/laugh/0` — "At my door, then. Mind the stairs."; records `minagho_chivarro.trickster.cost.baphomet_terms`, `minagho_chivarro.trickster.collateral_delivered`
 
-546. **Nocticula: A request before departure** — native dialogue listed below. <!-- rrt-step {"scene":"noct.acq.audience_missed","chapter":5,"day":102,"completed":true,"choices":[["history",0],["request",0],["price",0],["bounded",0]]} -->
+547. **Nocticula: A request before departure** — native dialogue listed below. <!-- rrt-step {"scene":"noct.acq.audience_missed","chapter":5,"day":102,"completed":true,"choices":[["history",0],["request",0],["price",0],["bounded",0]]} -->
    Scene `noct.acq.audience_missed`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Before I leave, there is another question."
    Need all: `trickster`, `noct.acq.audience_question`, `nocticula.present_now`; Blocked by: `noct.dead`, `noct.acq.council_fight`, `noct.acq.closed`, `noct.acq.requested`, `noct.parent_active`, `noct.parent_rejected`, `trickster.failed`; Block `noct.dead` lifted by: `noct.defeated_not_dead`; Block `noct.acq.council_fight` lifted by: `nocticula.trickster.returned`.
@@ -6854,7 +6866,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `noct.acq.audience_missed/price/0` — "Give you the possibility of refusing. I want an answer worth hearing."; records `noct.acq.petition_candid`
    - `noct.acq.audience_missed/bounded/0` — [Return to the audience and give your own account of the Council.]; records `noct.acq.requested`, `noct.acq.seal_received`
 
-547. **Dorgelinda: The second book** — Drezen. <!-- rrt-step {"scene":"dorgelinda.trickster.after.fellows_methods","chapter":5,"day":102,"completed":true,"choices":[["door",2],["crumbs",0],["start",0],["clean",0]]} -->
+548. **Dorgelinda: The second book** — Drezen. <!-- rrt-step {"scene":"dorgelinda.trickster.after.fellows_methods","chapter":5,"day":102,"completed":true,"choices":[["door",2],["crumbs",0],["start",0],["clean",0]]} -->
    Scene `dorgelinda.trickster.after.fellows_methods`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Shut the door. No, all the way."
    Need all: `trickster.ever`, `dorgelinda.trickster.counted`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.trickster.methods_heard`.
@@ -6865,7 +6877,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.trickster.after.fellows_methods/start/0` — "Burn the scheme. I'll stand behind my own issues."
    - `dorgelinda.trickster.after.fellows_methods/clean/0` — [Leave it there.]; records `dorgelinda.trickster.methods_heard`, `dorgelinda.trickster.hands_clean`
 
-548. **Hepzamirah: Leavable, again** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.ghost.second_time","chapter":5,"day":102,"completed":true,"choices":[["open",0],["recognized",1],["sneer",0]]} -->
+549. **Hepzamirah: Leavable, again** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.ghost.second_time","chapter":5,"day":102,"completed":true,"choices":[["open",0],["recognized",1],["sneer",0]]} -->
    Scene `hepzamirah.trickster.ghost.second_time`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Trust your intuition] "I stole the cell next door already. I'm stealing yours too. It's called 'Leavable' now. Coming?"
    Need all: `trickster`, `hepzamirah.dead`, `alderpash.leavable`; Blocked by: `hepzamirah.trickster.primed`, `hepzamirah.closed`, `hepzamirah.ghost_dispersed`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
@@ -6874,7 +6886,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.ghost.second_time/recognized/1` — Continue; Blocked by: `baphomet.boasted_souls`
    - `hepzamirah.trickster.ghost.second_time/sneer/0` — "After you."; records `hepzamirah.trickster.primed`, `hepzamirah.trickster.cost.baphomet_grudge`, `hepzamirah.started`
 
-549. **Camellia: What she wants** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.returned.terms_alive","chapter":5,"day":102,"completed":true,"choices":[["start",0],["flies",0],["lead",0],["bowl",0],["fed",2],["steady",1],["price",0],["named",0]]} -->
+550. **Camellia: What she wants** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.returned.terms_alive","chapter":5,"day":102,"completed":true,"choices":[["start",0],["flies",0],["lead",0],["bowl",0],["fed",2],["steady",1],["price",0],["named",0]]} -->
    Scene `camellia.trickster.returned.terms_alive`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Camellia. You said you had a price."
    Need all: `trickster.ever`, `camellia.trickster.beat.lesson`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`, `camellia.trickster.terms_named`.
@@ -6889,7 +6901,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.returned.terms_alive/price/0` — [Give her your blood] "Whenever you ask. From your knife. I won't flinch."; records `camellia.trickster.cost.bled`, `camellia.trickster.terms_named`
    - `camellia.trickster.returned.terms_alive/named/0` — [Watch her go]
 
-550. **Eritrice: What the truth could not read** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.minutes.the_cipher","chapter":5,"day":102,"completed":true,"choices":[["start",0],["both",0],["humbled",0],["teach",0]]} -->
+551. **Eritrice: What the truth could not read** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.minutes.the_cipher","chapter":5,"day":102,"completed":true,"choices":[["start",0],["both",0],["humbled",0],["teach",0]]} -->
    Scene `eritrice.minutes.the_cipher`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You looked at the Lexicon pages again."
    Need all: `trickster.ever`, `eritrice.minutes.point_one`, `eritrice.cipher_unread`, `eritrice.present_now`; Blocked by: `eritrice.closed`, `eritrice.lost_at_council`, `eritrice.minutes.the_cipher`.
@@ -6899,7 +6911,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eritrice.minutes.the_cipher/humbled/0` — "Close your eyes. Tell me something you know is true, and something you know is false."; Blocked by: `crossroute.areelu.unavailable`
    - `eritrice.minutes.the_cipher/teach/0` — [Promise to.]; records `eritrice.minutes.conceded_a_point`, `eritrice.minutes.exercise_promised`
 
-551. **Areelu: My money's on neither** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.rivalry.iz_bet","chapter":5,"day":102,"completed":true,"choices":[["start",0],["debts",0],["stake",0]]} -->
+552. **Areelu: My money's on neither** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.rivalry.iz_bet","chapter":5,"day":102,"completed":true,"choices":[["start",0],["debts",0],["stake",0]]} -->
    Scene `areelu.trickster.rivalry.iz_bet`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Offer the Architect a bet] "One of us has to die so the other can live and the Wound can close. I'll take that bet. My money's on 'neither'."
    Need all: `trickster`, `areelu.present_now`; Blocked by: `areelu.trickster.bet_offered`, `areelu.trickster.primed`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
@@ -6908,7 +6920,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.rivalry.iz_bet/debts/0` — Continue
    - `areelu.trickster.rivalry.iz_bet/stake/0` — "Then tell me about the trap."; records `areelu.trickster.primed`, `areelu.trickster.bet_offered`
 
-552. **Chadali: Will it hurt?** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.will_it_hurt","chapter":5,"day":102,"completed":true,"choices":[["open",0],["start",0],["promise",0],["keep",0]]} -->
+553. **Chadali: Will it hurt?** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.will_it_hurt","chapter":5,"day":102,"completed":true,"choices":[["open",0],["start",0],["promise",0],["keep",0]]} -->
    Scene `chadali.fortunes.will_it_hurt`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You've been quiet since the cauldron."
    Need all: `trickster.ever`, `chadali.started`, `council.cauldron_given`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.fortunes.will_it_hurt`.
@@ -6918,14 +6930,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.fortunes.will_it_hurt/promise/0` — "I'll keep it. I'll find the other way."; records `chadali.fortunes.promised_no_force`
    - `chadali.fortunes.will_it_hurt/keep/0` — [Promise that too.]
 
-553. **Arueshalae: Bedside manner** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.trickster.evil.home_visit","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
+554. **Arueshalae: Come home** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.trickster.evil.home_visit","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
    Scene `arueshalae.trickster.evil.home_visit`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
-   Open: [Take her pulse from across the room] "Pale, feverish, homicidal. Classic case. I didn't come to cure you. I came to bring you home."
+   Open: [Hold out your hand across the rubble, palm up] "I didn't come to kill you. I came to bring you home."
    Need all: `trickster`, `arueshalae.present_now`; Blocked by: `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.trickster.evil.home_visit`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
    Native answer-list host: `3ef227bb0ba84104387fd9b4865a4ce0`.
    - `arueshalae.trickster.evil.home_visit/start/0` — [Keep your hand out, palm up] "Then come and take it. The war's more fun than this hole, and you know it."; records `arueshalae.trickster.evil.home_offered`
 
-554. **Devarra: The next part of the story** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.what_happened_next","chapter":5,"day":102,"completed":true,"choices":[["start",3],["pact_told",0],["climb",0],["tell",0],["plain",0],["end",0]]} -->
+555. **Devarra: The next part of the story** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.what_happened_next","chapter":5,"day":102,"completed":true,"choices":[["start",3],["pact_told",0],["climb",0],["tell",0],["plain",0],["end",0]]} -->
    Scene `devarra.tower.what_happened_next`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "She wants the next part, doesn't she."
    Need all: `devarra.committed`, `devarra.tower.first_bite`, `devarra.present_now`; Blocked by: `storyteller.dead`, `devarra.closed`, `devarra.tower.next_told`, `devarra.trickster.ending_claimed`, `devarra.trickster.judgment_refused`; Block `devarra.trickster.ending_claimed` lifted by: `devarra.trickster.judgment_answered`; Block `devarra.trickster.judgment_refused` lifted by: `devarra.trickster.judgment_answered`.
@@ -6937,7 +6949,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `devarra.tower.what_happened_next/plain/0` — Continue
    - `devarra.tower.what_happened_next/end/0` — [Go down the mountain.]; records `devarra.tower.next_told`
 
-555. **Kaylessa: After** — Drezen; hub `kaylessa.presence`. <!-- rrt-step {"scene":"kaylessa.clearing.after_the_war","chapter":5,"day":102,"completed":true,"choices":[["open",0],["start",0],["what",0],["kyonin",1],["letter",0],["you",0],["rules",0]]} -->
+556. **Kaylessa: After** — Drezen; hub `kaylessa.presence`. <!-- rrt-step {"scene":"kaylessa.clearing.after_the_war","chapter":5,"day":102,"completed":true,"choices":[["open",0],["start",0],["what",0],["kyonin",1],["letter",0],["you",0],["rules",0]]} -->
    Scene `kaylessa.clearing.after_the_war`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Do you ever think about after?"
    Need all: `trickster.ever`, `kaylessa.committed`, `kaylessa.clearing.once_when_it_counts`, `kaylessa.present_now`; Blocked by: `kaylessa.closed`, `kaylessa.trickster.left_free`, `kaylessa.clearing.after_the_war`; Need one of: `kaylessa.trickster.knife_held`, `kaylessa.trickster.knife_handed_back`.
@@ -6950,7 +6962,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kaylessa.clearing.after_the_war/you/0` — "I'll mind the rules."
    - `kaylessa.clearing.after_the_war/rules/0` — [Go and win the war.]
 
-556. **Mielarah: Cargo for the market** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.cargo","chapter":5,"day":102,"completed":true,"choices":[["start",0],["third",2],["body",0],["circle",0],["moored",0],["close",0]]} -->
+557. **Mielarah: Cargo for the market** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.cargo","chapter":5,"day":102,"completed":true,"choices":[["start",0],["third",2],["body",0],["circle",0],["moored",0],["close",0]]} -->
    Scene `mielarah.deck.cargo`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You came through the Worldwound."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.cargo.arcade`, `mielarah.deck.docked`.
@@ -6962,7 +6974,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.cargo/moored/0` — "I'll come up."; records `mielarah.deck.docked`
    - `mielarah.deck.cargo/close/0` — [Leave her to her crates.]
 
-557. **Nidalynn: Salt on bread** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"nidalynn.trickster.ridge.first_flight","chapter":5,"day":102,"completed":true,"choices":[["boy",0],["kiln",0],["table",0],["salt",0],["ask",1],["offer",0],["yes",0],["yes2",0]]} -->
+558. **Nidalynn: Salt on bread** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"nidalynn.trickster.ridge.first_flight","chapter":5,"day":102,"completed":true,"choices":[["boy",0],["kiln",0],["table",0],["salt",0],["ask",1],["offer",0],["yes",0],["yes2",0]]} -->
    Scene `nidalynn.trickster.ridge.first_flight`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Is she ready to fly?"
    Need all: `trickster.ever`, `nidalynn.trickster.kissed`, `nidalynn.trickster.cost.claim_given_up`, `nidalynn.trickster.hatched`, `nidalynn.present_now`; Blocked by: `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.trickster.proposed`, `nidalynn.committed`.
@@ -6976,7 +6988,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nidalynn.trickster.ridge.first_flight/yes/0` — Continue
    - `nidalynn.trickster.ridge.first_flight/yes2/0` — "Tonight."
 
-558. **Shamira: What's left of her** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.killed.setup","chapter":5,"day":102,"completed":true,"choices":[["rest",0],["her_words",0],["open",0],["carpets",1],["story",1]]} -->
+559. **Shamira: What's left of her** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.killed.setup","chapter":5,"day":102,"completed":true,"choices":[["rest",0],["her_words",0],["open",0],["carpets",1],["story",1]]} -->
    Scene `shamira.trickster.killed.setup`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Touch your temple] "Her essence goes in your cauldron. What happens to the rest of her?"
    Need all: `trickster`, `shamira.plan_known`, `shamira.present_now`; Blocked by: `shamira.trickster.primed`, `shamira.killed`, `shamira.trickster.made_room`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
@@ -6987,7 +6999,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.killed.setup/carpets/1` — Continue; Blocked by: `shamira.trickster.hid`
    - `shamira.trickster.killed.setup/story/1` — "And the closet you're lending me. How does that work, exactly?"
 
-559. **Nenio: A riddle only she can answer** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.trickster.taken.riddle","chapter":5,"day":102,"completed":true,"choices":[["start",0],["posed",0],["stake",1],["told",0]]} -->
+560. **Nenio: A riddle only she can answer** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.trickster.taken.riddle","chapter":5,"day":102,"completed":true,"choices":[["start",0],["posed",0],["stake",1],["told",0]]} -->
    Scene `nenio.trickster.taken.riddle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Pose her a riddle] "You love riddles. You said so at the Nameless Ruins. Answer me one, and only one."
    Need all: `trickster`, `nenio.asked_to_leave`; Blocked by: `nenio.trickster.riddle_done`, `nenio.trickster.riddle_declined`, `nenio.dissolved`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
@@ -6997,7 +7009,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.trickster.taken.riddle/stake/1` — [Tell her the answer] "It's you, Nenio. The answer is Nenio. Say it."
    - `nenio.trickster.taken.riddle/told/0` — [Step back from the riddle.]; records `nenio.trickster.riddle_declined`
 
-560. **Terendelev: Restitution** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.bones.restitution","chapter":5,"day":102,"completed":true,"choices":[["start",0],["host",0],["found",0],["scale",0],["call",2],["gap.voice",0],["knows",0],["task",0],["want",0],["offer",0],["pitch",1],["pitch_guess",0],["hook",0],["risk",0],["choose",0],["cut",1],["unmeasured",0],["burn",0],["shape",0],["born",0],["warm",0],["bones_left",0],["shift",1],["gap.wings",0],["see",0],["answer",0]]} -->
+561. **Terendelev: Restitution** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.bones.restitution","chapter":5,"day":102,"completed":true,"choices":[["start",0],["host",0],["found",0],["scale",0],["call",2],["gap.voice",0],["knows",0],["task",0],["want",0],["offer",0],["pitch",1],["pitch_guess",0],["hook",0],["risk",0],["choose",0],["cut",1],["unmeasured",0],["burn",0],["shape",0],["born",0],["warm",0],["bones_left",0],["shift",1],["gap.wings",0],["see",0],["answer",0]]} -->
    Scene `terendelev.trickster.bones.restitution`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Walk over to the burning bones.]
    Need all: `trickster`, `iz.terendelev_battle`; Blocked by: `terendelev.trickster.returned`, `terendelev.trickster.search_failed`, `terendelev.trickster.refused_claim`, `terendelev.trickster.flinched`, `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.bones.restitution_irabeth`, `terendelev.continuation.returned_finale_seen`, `terendelev.parent_lich_bind`, `trickster.failed`, `crossroute.galfrey.unavailable`.
@@ -7029,7 +7041,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.bones.restitution/see/0` — Continue
    - `terendelev.trickster.bones.restitution/answer/0` — "She's alive, Your Majesty. Take it up with me, not with her."; records `terendelev.trickster.returned`, `terendelev.started`, `terendelev.trickster.cost.wound_open`, `terendelev.trickster.grounded`
 
-561. **Eliandra: Who was lost** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.first_words","chapter":5,"day":102,"completed":true,"choices":[["start",2],["found",0],["watched",0],["hello",0],["end",0]]} -->
+562. **Eliandra: Who was lost** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.first_words","chapter":5,"day":102,"completed":true,"choices":[["start",2],["found",0],["watched",0],["hello",0],["end",0]]} -->
    Scene `eliandra.trickster.ch5.first_words`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Who did you lose?"
    Need all: `eliandra.met_ch5`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.dead_named`.
@@ -7040,7 +7052,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.first_words/hello/0` — Continue
    - `eliandra.trickster.ch5.first_words/end/0` — [Leave her to her dead.]; records `eliandra.trickster.dead_named`
 
-562. **Galfrey: As Kitrane** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.kitrane","chapter":5,"day":102,"completed":true,"choices":[["start",1],["never",0],["offer",0],["tell",0],["accept",0]]} -->
+563. **Galfrey: As Kitrane** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.kitrane","chapter":5,"day":102,"completed":true,"choices":[["start",1],["never",0],["offer",0],["tell",0],["accept",0]]} -->
    Scene `galfrey.trickster.alive.kitrane`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Will you hear one of my plans before I put it into motion?"
    Need all: `trickster`, `galfrey.final`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.trickster.alive.evening`, `trickster.failed`.
@@ -7051,7 +7063,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `galfrey.trickster.alive.kitrane/tell/0` — [Tell her the whole plan: the empty wagons up the eastern road, loudly, and the real column a day behind by the dry riverbed.]; records `galfrey.trickster.alive.plan_told`
    - `galfrey.trickster.alive.kitrane/accept/0` — [Bow to the Queen.]
 
-563. **Horzalah: What she has left** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.mercy.gift","chapter":5,"day":102,"completed":true,"choices":[["guess",1],["called",0],["guild",1],["ear",0],["cut",0],["box",0],["exit",0]]} -->
+564. **Horzalah: What she has left** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.mercy.gift","chapter":5,"day":102,"completed":true,"choices":[["guess",1],["called",0],["guild",1],["ear",0],["cut",0],["box",0],["exit",0]]} -->
    Scene `horzalah.trickster.mercy.gift`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Here is a guess, since you say you have nothing left: your father won't take your Guild. He won't bother."
    Need all: `trickster`; Blocked by: `horzalah.trickster.primed`, `horzalah.trickster.refused`, `horzalah.closed`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
@@ -7064,14 +7076,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.mercy.gift/box/0` — "It's yours."
    - `horzalah.trickster.mercy.gift/exit/0` — [Let her have her exit.]; records `horzalah.trickster.primed`, `horzalah.trickster.cost.ear`, `horzalah.started`
 
-564. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.ch5.message","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
+565. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.ch5.message","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
    Scene `melazmera.trickster.ch5.message`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "You look like a man with something to deliver."
    Need all: `trickster.ever`, `melazmera.trickster.returned`, `greybor.in_party`, `greybor.declined_queen`, `melazmera.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`, `greybor.away`, `melazmera.trickster.greybor_carried`, `melazmera.trickster.message`, `melazmera.closed`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `melazmera.trickster.ch5.message/start/0` — Continue; records `melazmera.trickster.greybor_carried`
 
-565. **Yaniel: I held your wall** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.ch5.found","chapter":5,"day":102,"completed":true,"choices":[["start",0],["carries",2],["stay",0]]} -->
+566. **Yaniel: I held your wall** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.ch5.found","chapter":5,"day":102,"completed":true,"choices":[["start",0],["carries",2],["stay",0]]} -->
    Scene `yaniel.trickster.ch5.found`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You came to Drezen."
    Need all: `trickster.ever`, `yaniel.trickster.swapped`, `yaniel.ch5.latched`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.trickster.returned`, `yaniel.trickster.cost.late`.
@@ -7080,7 +7092,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.ch5.found/carries/2` — Continue; Blocked by: `yaniel.trickster.cuff_worn`, `yaniel.trickster.why.come_back`
    - `yaniel.trickster.ch5.found/stay/0` — "I'll come up."; records `yaniel.trickster.returned`, `yaniel.started`
 
-566. **Wenduag: Weak things die in their sleep** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.trial","chapter":5,"day":102,"completed":true,"choices":[["start",0],["her",1],["which_kept",0],["which",1],["won_word",0]]} -->
+567. **Wenduag: Weak things die in their sleep** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.trial","chapter":5,"day":102,"completed":true,"choices":[["start",0],["her",1],["which_kept",0],["which",1],["won_word",0]]} -->
    Scene `wenduag.trickster.court.trial`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: Weak things die in their sleep
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.trial`, `wenduag.trickster.native`, `wenduag.closed`, `wenduag.trickster.proved`; Need one of: `wenduag.trickster.returned`, `wenduag.trickster.bought`, `wenduag.q3_turned_on_him`, `wenduag.q3_spared`, `wenduag.redeemed`.
@@ -7091,7 +7103,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.trial/which/1` — "Get off me, or finish it. You won't get a second try."; PASS CheckIntimidate DC 26 (party check); success → `won_word`; failure → `lost`
    - `wenduag.trickster.court.trial/won_word/0` — Continue; records `wenduag.trickster.proved`, `wenduag.trickster.trial.won`, `wenduag.started`
 
-567. **Iomedae: Leave** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.summit.precedent","chapter":5,"day":102,"completed":true,"choices":[["ask",0],["answer",0],["banner",0]]} -->
+568. **Iomedae: Leave** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.summit.precedent","chapter":5,"day":102,"completed":true,"choices":[["ask",0],["answer",0],["banner",0]]} -->
    Scene `iomedae.trickster.summit.precedent`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Before you answer] "One question first, about when you were mortal."
    Need all: `trickster`, `trickster.ever`, `iomedae.key_dies_revealed`, `iomedae.present_now`; Blocked by: `iomedae.trickster.summit_asked`, `iomedae.closed`, `trickster.failed`, `crossroute.nocticula.unavailable`; EntryMythic: PlayerIsTrickster.
@@ -7100,7 +7112,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `iomedae.trickster.summit.precedent/answer/0` — Continue; Need all: `iomedae.trickster.dream.banner`
    - `iomedae.trickster.summit.precedent/banner/0` — [Nod, and turn back to the matter at hand.]; records `iomedae.trickster.summit_asked`, `iomedae.started`
 
-568. **Fool King: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.lastcall.bottle.king","chapter":5,"day":102,"completed":true,"choices":[["offer",0],["drink",0],["round.late",0]]} -->
+569. **Fool King: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.lastcall.bottle.king","chapter":5,"day":102,"completed":true,"choices":[["offer",0],["drink",0],["round.late",0]]} -->
    Scene `trickster.lastcall.bottle.king`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Show the King the flask] "Your Majesty, you once offered me your kingly help. I'm taking you up on it."
    Need all: `trickster`, `trickster.ever`, `lastcall.vessel`, `fool_king.available`; Blocked by: `trickster.lastcall.primed.bottle`, `trickster.failed`.
@@ -7109,7 +7121,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `trickster.lastcall.bottle.king/drink/0` — [Decide your first words] "Sorry I'm late."
    - `trickster.lastcall.bottle.king/round.late/0` — [Stand the whole court a round] "Everybody drinks. On the crusade."; crusade Finances -200; records `trickster.lastcall.primed.bottle`, `trickster.lastcall.king_blessed`, `trickster.lastcall.started`, `trickster.lastcall.joke.late`, `trickster.lastcall.cost.royal_round`
 
-569. **Shyka: The page, settled** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.foresight.offer_line","chapter":5,"day":102,"completed":true,"choices":[["start",6],["gate",0],["gate_watched",0],["cost_p",2],["ask",0],["count",0]]} -->
+570. **Shyka: The page, settled** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.foresight.offer_line","chapter":5,"day":102,"completed":true,"choices":[["start",6],["gate",0],["gate_watched",0],["cost_p",2],["ask",0],["count",0]]} -->
    Scene `trickster.foresight.offer_line`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Before you ask me anything: the page."
    Need all: `trickster.now`, `trickster.foresight.accepted`; Blocked by: `shyka.gone`; Need one of: `trickster.foresight.cost.promise`, `trickster.foresight.cost.square`, `trickster.foresight.cost.caves`; EntryMythic: PlayerIsTrickster.
@@ -7121,7 +7133,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `trickster.foresight.offer_line/ask/0` — Continue; Need all: `kaylessa.trickster.cost.shyka_price`
    - `trickster.foresight.offer_line/count/0` — [Go on.]
 
-570. **Nidalynn: The next feed** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"household.pair.nidalynn_devarra.notice.chosen","chapter":5,"day":102,"completed":true,"choices":[["start",1],["refused",0]]} -->
+571. **Nidalynn: The next feed** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"household.pair.nidalynn_devarra.notice.chosen","chapter":5,"day":102,"completed":true,"choices":[["start",1],["refused",0]]} -->
    Scene `household.pair.nidalynn_devarra.notice.chosen`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "About the little one's next feed."
    Need all: `trickster`, `household.pair.nidalynn_devarra.ready`, `nidalynn.trickster.form_chosen`, `nidalynn.presence.route_open`, `nidalynn.present_now`, `trickster.now`; Blocked by: `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.epoch_unavailable`, `trickster.failed`, `household.pair.nidalynn_devarra.notice.seen`, `engine.l12.commander_unreturned`.
@@ -7131,7 +7143,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nidalynn_devarra.notice.chosen/start/1` — "I am not answering for this."
    - `household.pair.nidalynn_devarra.notice.chosen/refused/0` — [Leave.]; records `household.pair.nidalynn_devarra.notice.seen`, `household.pair.nidalynn_devarra.notice.refused`, `household.pair.nidalynn_devarra.unanswered`
 
-571. **Narrator: The place beside the throne** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.nocticula_shamira.precedence","chapter":5,"day":102,"completed":true,"choices":[["start",0],["history",0]]} -->
+572. **Narrator: The place beside the throne** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.nocticula_shamira.precedence","chapter":5,"day":102,"completed":true,"choices":[["start",0],["history",0]]} -->
    Scene `household.pair.nocticula_shamira.precedence`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Recall Shamira's account of her place beside Nocticula.]
    Need all: `trickster`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `household.pair.nocticula_shamira.lovers_seen`, `trickster.now`; Blocked by: `trickster.failed`, `fool_king.gone`, `household.pair.nocticula_shamira.precedence.seen`, `engine.l12.commander_unreturned`, `crossroute.nocticula.unavailable`, `crossroute.shamira.unavailable`.
@@ -7139,7 +7151,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nocticula_shamira.precedence/start/0` — [Keep the account of their existing bond.]
    - `household.pair.nocticula_shamira.precedence/history/0` — Continue; records `household.pair.nocticula_shamira.precedence.seen`, `household.pair.nocticula_shamira.historical`
 
-572. **Jerribeth: A future she has not rehearsed** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.future","chapter":5,"day":102,"completed":true,"choices":[["future_entry",7],["partner_name",4],["partner_unknown",0],["partner_share_unknown",0],["partner_resume",0],["partner_continue_future_entry",3],["her_terms_short",0],["short_future",5],["arrival_note",1],["short_end",0]]} -->
+573. **Jerribeth: A future she has not rehearsed** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.future","chapter":5,"day":102,"completed":true,"choices":[["future_entry",7],["partner_name",4],["partner_unknown",0],["partner_share_unknown",0],["partner_resume",0],["partner_continue_future_entry",3],["her_terms_short",0],["short_future",5],["arrival_note",1],["short_end",0]]} -->
    Scene `jerribeth.future`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `jerribeth.commission`, `jerribeth.reachable_by_letter`; Need one: `jerribeth.settlement_kept`, `jerribeth.short_future_requested`.
    - `jerribeth.future/future_entry/7` — "We have not had those longer evenings. I still want this courtship to continue."; records `jerribeth.partner_origin.future.future_entry`; Need all: `jerribeth.short_future_requested`, `trickster.ever`; Blocked by: `jerribeth.settlement_kept`, `jerribeth.partner_terms_chosen`
@@ -7153,23 +7165,23 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jerribeth.future/arrival_note/1` — [Keep the next evening for her.]; Need all: `jerribeth.short_future_chosen`
    - `jerribeth.future/short_end/0` — [Keep the shorter courtship open.]; records `jerribeth.chosen_future`, `jerribeth.future_settled`; Blocked by: `jerribeth.late_start`
 
-573. **Kiana: One unfinished sentence** — rest delivery / Satchel: letter (Drezen). <!-- rrt-step {"scene":"kiana.invitation","chapter":5,"day":102,"completed":true,"choices":[["start",0],["reply",0]]} -->
+574. **Kiana: One unfinished sentence** — rest delivery / Satchel: letter (Drezen). <!-- rrt-step {"scene":"kiana.invitation","chapter":5,"day":102,"completed":true,"choices":[["start",0],["reply",0]]} -->
    Scene `kiana.invitation`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `seelah.souls_returned`, `kiana.aftermath_seen`, `kiana.reachable_by_letter`; Blocked by: `kiana.trickster.met`, `kiana.trickster.returned`.
    - `kiana.invitation/start/0` — [Write: The princess stole the moon and discovered she had nowhere to put it.]; records `kiana.moon`
    - `kiana.invitation/reply/0` — [Leave room in your schedule for her reply.]; records `kiana.started`
 
-574. **Memory: The invitation after the affair** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_second_invitation_drezen","chapter":5,"day":102,"completed":true,"choices":[["start",0],["dismissed",0],["evidence",0],["clerk",0],["terms_clerk",0]]} -->
+575. **Memory: The invitation after the affair** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_second_invitation_drezen","chapter":5,"day":102,"completed":true,"choices":[["start",0],["dismissed",0],["evidence",0],["clerk",0],["terms_clerk",0]]} -->
    Scene `vellexia.the_second_invitation_drezen`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Open the echo shell. Its light has followed you back to Drezen.]
    Need all: `vellexia.native_finished`, `vellexia.prediction_known`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`, `vellexia.the_second_invitation`, `vellexia.case_opened`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`.
    - `vellexia.the_second_invitation_drezen/start/0` — "You said you did not intend for us to meet again."; Need all: `vellexia.dismissed_native`
    - `vellexia.the_second_invitation_drezen/dismissed/0` — "I will hear the evidence. I will not pretend our dates ended differently to improve your position."
-   - `vellexia.the_second_invitation_drezen/evidence/0` — "Buy the account, not the clerk. I want a witness with a reason to tell us the truth."
-   - `vellexia.the_second_invitation_drezen/clerk/0` — [Accept that limited commission.]
-   - `vellexia.the_second_invitation_drezen/terms_clerk/0` — [Agree to examine the account when it arrives.]; records `vellexia.case_opened`, `vellexia.clerk_terms`
+   - `vellexia.the_second_invitation_drezen/evidence/0` — "Hear her as a witness. Don't make her a chair. A witness who is afraid of you will not lie to us."
+   - `vellexia.the_second_invitation_drezen/clerk/0` — [Let Tessar walk out a witness.]
+   - `vellexia.the_second_invitation_drezen/terms_clerk/0` — [Agree to hear Tessar when she is ready.]; records `vellexia.case_opened`, `vellexia.clerk_terms`
 
-575. **Memory: The missing line** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"noct.acq.the_missing_line","chapter":5,"day":102,"completed":true,"choices":[["start",0],["fine",0],["question",0],["her_hand.arrives",0],["her_hand.start",0],["her_hand.narrow_account",0],["her_hand.history",2],["her_hand.no_bargain",0],["her_hand.patronage",2],["her_hand.terms",0],["borrowed_signature.arrives",0],["borrowed_signature.start",0],["borrowed_signature.channel",0],["borrowed_signature.narrow",0],["borrowed_signature.offer",0],["borrowed_signature.public",0]]} -->
+576. **Memory: The missing line** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"noct.acq.the_missing_line","chapter":5,"day":102,"completed":true,"choices":[["start",0],["fine",0],["question",0],["her_hand.arrives",0],["her_hand.start",0],["her_hand.narrow_account",0],["her_hand.history",2],["her_hand.no_bargain",0],["her_hand.patronage",2],["her_hand.terms",0],["borrowed_signature.arrives",0],["borrowed_signature.start",0],["borrowed_signature.channel",0],["borrowed_signature.narrow",0],["borrowed_signature.offer",0],["borrowed_signature.public",0]]} -->
    Scene `noct.acq.the_missing_line`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: The missing line
    Need all: `trickster`, `noct.acq.requested`, `noct.acq.seal_received`, `nocticula.reachable_by_letter`; Blocked by: `noct.dead`, `noct.acq.council_fight`, `noct.acq.closed`, `noct.acq.the_missing_line_done`, `trickster.failed`; Need one of: `noct.acq.council_disclosed`, `noct.acq.shamira_permission`, `noct.acq.shamira_reported`, `noct.acq.amused`; Block `noct.dead` lifted by: `noct.defeated_not_dead`; Block `noct.acq.council_fight` lifted by: `nocticula.trickster.returned`.
@@ -7184,13 +7196,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `noct.acq.the_missing_line/her_hand.patronage/2` — "I will discuss patronage separately. This channel must carry words before it carries any promise of obedience."; Blocked by: `noct.gift`, `noct.acq.gift_renewed`
    - `noct.acq.the_missing_line/her_hand.terms/0` — Keep the trial correspondence. Prepare an actual concession before asking for more.; records `noct.acq.her_hand_done`, `noct.acq.correspondence_trial`; Blocked by: `noct.acq.pledge_names`, `noct.acq.pledge_fear`, `nocticula.gresilla_credited`, `noct.acq.pledge_con`
    - `noct.acq.the_missing_line/borrowed_signature.arrives/0` — Continue
-   - `noct.acq.the_missing_line/borrowed_signature.start/0` — Explain how the guarantee reached Neris, and show the false central line.
+   - `noct.acq.the_missing_line/borrowed_signature.start/0` — Explain how the guarantee reached Nerethi, and show the false central line.
    - `noct.acq.the_missing_line/borrowed_signature.channel/0` — The narrow fold has remained closed except for your answering mark.; Need all: `noct.acq.channel_provisional`; Blocked by: `noct.acq.channel_letters_only`
    - `noct.acq.the_missing_line/borrowed_signature.narrow/0` — Copy the guarantee without supplying the missing line.
    - `noct.acq.the_missing_line/borrowed_signature.offer/0` — [Good] Use the bait once, then publish a denial and destroy the reusable pattern. People who bought protection should hear the truth.; records `noct.acq.concession_public`
-   - `noct.acq.the_missing_line/borrowed_signature.public/0` — Let her retain the undertaking and prepare the single bait letter.; records `noct.acq.borrowed_signature_done`, `noct.acq.undertaking_held`
+   - `noct.acq.the_missing_line/borrowed_signature.public/0` — Let her keep your signature. Prepare the one bait letter.; records `noct.acq.borrowed_signature_done`, `noct.acq.undertaking_held`
 
-576. **Memory: Through the wrong wardrobe** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minagho_chivarro.trickster.reunion.wardrobe","chapter":5,"day":102,"completed":true,"choices":[["start",1],["silk",0],["cellar",1],["press",1],["alone",0]]} -->
+577. **Memory: Through the wrong wardrobe** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minagho_chivarro.trickster.reunion.wardrobe","chapter":5,"day":102,"completed":true,"choices":[["start",1],["silk",0],["cellar",1],["press",1],["alone",0]]} -->
    Scene `minagho_chivarro.trickster.reunion.wardrobe`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `trickster.ever`, `closets.known`; Blocked by: `minagho_chivarro.trickster.reunited`, `minagho_chivarro.trickster.chivarro_in`, `chivarro.searching`, `chivarro.dead`, `minagho_chivarro.trickster.returned_chivarro`, `minagho_chivarro.trickster.chivarro_sent_back`, `trickster.failed`.
    - `minagho_chivarro.trickster.reunion.wardrobe/start/1` — Continue; Blocked by: `closets.door_kept`
@@ -7199,7 +7211,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minagho_chivarro.trickster.reunion.wardrobe/press/1` — "She's not here. That's the other half of the joke."; Blocked by: `minagho.life.arrived`
    - `minagho_chivarro.trickster.reunion.wardrobe/alone/0` — "I'm working on it. She's still owed."; records `minagho_chivarro.trickster.chivarro_in`, `minagho_chivarro.trickster.chivarro_waiting`
 
-577. **Delamere: Fifty-three, again** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"delamere.trickster.woken.village","chapter":5,"day":102,"completed":true,"choices":[["arrive",0],["both_legs",0],["given",0],["given2",0],["end",0]]} -->
+578. **Delamere: Fifty-three, again** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"delamere.trickster.woken.village","chapter":5,"day":102,"completed":true,"choices":[["arrive",0],["both_legs",0],["given",0],["given2",0],["end",0]]} -->
    Scene `delamere.trickster.woken.village`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `delamere.trickster.counted`; Blocked by: `delamere.closed`, `delamere.trickster.village_seen`, `delamere.trickster.counted_after_the_abyss`; Need one of: `delamere.trickster.village.given`, `delamere.trickster.village.forced`, `delamere.trickster.village.refused`, `delamere.trickster.village.clans`.
    - `delamere.trickster.woken.village/arrive/0` — Continue; Blocked by: `delamere.trickster.bark_answered`
@@ -7208,7 +7220,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `delamere.trickster.woken.village/given2/0` — [Take the carved deer.]; records `delamere.trickster.village_seen`
    - `delamere.trickster.woken.village/end/0` — [Watch her go back up the road.]
 
-578. **Jannah: From the last cell** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"jannah.trickster.alive.letter","chapter":5,"day":102,"completed":true,"choices":[["open",6],["joined_free",0],["wagon",0],["sign",0]]} -->
+579. **Jannah: From the last cell** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"jannah.trickster.alive.letter","chapter":5,"day":102,"completed":true,"choices":[["open",6],["joined_free",0],["wagon",0],["sign",0]]} -->
    Scene `jannah.trickster.alive.letter`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster`, `jannah.reachable_by_letter`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.dead`, `jannah.dead_known`, `jannah.trickster.returned`, `jannah.trickster.alive.in_cells`, `seelah.q3_started`, `trickster.failed`, `crossroute.arsinoe.unavailable`; Need one of: `jannah.joined`, `jannah.refused_q3`, `coronation.seen`; Block `seelah.q3_started` lifted by: `jannah.trickster.alive.q3_settled`.
    - `jannah.trickster.alive.letter/open/6` — Continue; Need all: `jannah.joined`; Blocked by: `jannah.condemned`, `jannah.trickster.guests_home`
@@ -7216,7 +7228,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.trickster.alive.letter/wagon/0` — Continue
    - `jannah.trickster.alive.letter/sign/0` — [Fold the letter.]; records `jannah.trickster.alive.in_cells`
 
-579. **Herrax: The courier** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"herrax.letters.the_courier","chapter":5,"day":102,"completed":true,"choices":[["start",0],["letter",0],["letter_cut",0],["letter_end",0],["b_healers",0],["b_healers2",1],["b_lady",0],["b_news",2],["b_news_empty",0],["b_gift",0],["b_gift_letter",0],["b_gift_cut",0],["b_gift_end",0],["b_last",0],["b_last2",0],["reply",0],["b_offer",0],["b_offer2",0],["b_refused",0]]} -->
+580. **Herrax: The courier** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"herrax.letters.the_courier","chapter":5,"day":102,"completed":true,"choices":[["start",0],["letter",0],["letter_cut",0],["letter_end",0],["b_healers",0],["b_healers2",1],["b_lady",0],["b_news",2],["b_news_empty",0],["b_gift",0],["b_gift_letter",0],["b_gift_cut",0],["b_gift_end",0],["b_last",0],["b_last2",0],["reply",0],["b_offer",0],["b_offer2",0],["b_refused",0]]} -->
    Scene `herrax.letters.the_courier`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `herrax.committed`, `herrax.reachable_by_letter`; Blocked by: `herrax.closed`.
    - `herrax.letters.the_courier/start/0` — Continue; records `herrax.letters.bundle`
@@ -7239,23 +7251,23 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `herrax.letters.the_courier/b_offer2/0` — "No. Get back down the Wound road."; records `herrax.letters.offer.refused`
    - `herrax.letters.the_courier/b_refused/0` — [Watch him go.]
 
-580. **Melazmera: A stone with your seal on it** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"melazmera.trickster.ch5.message_read","chapter":5,"day":102,"completed":true,"choices":[["start",0],["words",0]]} -->
+581. **Melazmera: A stone with your seal on it** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"melazmera.trickster.ch5.message_read","chapter":5,"day":102,"completed":true,"choices":[["start",0],["words",0]]} -->
    Scene `melazmera.trickster.ch5.message_read`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.greybor_carried`, `melazmera.reachable_by_letter`; Blocked by: `melazmera.trickster.message`, `melazmera.closed`.
    - `melazmera.trickster.ch5.message_read/start/0` — Continue
    - `melazmera.trickster.ch5.message_read/words/0` — [Set it on the windowsill, face out.]; records `melazmera.trickster.message`
 
-581. **Targona: Two survivors** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"targona.trickster.react.ix_a.yaniel","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
+582. **Targona: Two survivors** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"targona.trickster.react.ix_a.yaniel","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
    Scene `targona.trickster.react.ix_a.yaniel`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `targona.present_now`, `yaniel.present_now`, `targona.trickster.in_drezen`, `yaniel.trickster.returned`; Blocked by: `targona.closed`, `trickster.failed`, `crossroute.yaniel.unavailable`, `yaniel.killed.latched`, `yaniel.trickster.left_free`.
    - `targona.trickster.react.ix_a.yaniel/start/0` — Continue
 
-582. **Yaniel: The veteran and the company** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"yaniel.trickster.react.ix_a.galfrey.queen","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
+583. **Yaniel: The veteran and the company** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"yaniel.trickster.react.ix_a.galfrey.queen","chapter":5,"day":102,"completed":true,"choices":[["start",0]]} -->
    Scene `yaniel.trickster.react.ix_a.galfrey.queen`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `yaniel.present_now`, `galfrey.present_now`, `yaniel.trickster.returned`, `galfrey.final`; Blocked by: `yaniel.closed`, `galfrey.trickster.returned`, `trickster.failed`, `crossroute.galfrey.unavailable`, `galfrey.dead`, `galfrey.killed_by_commander`; Block `galfrey.dead` lifted by: `galfrey.trickster.returned`.
    - `yaniel.trickster.react.ix_a.galfrey.queen/start/0` — Continue
 
-583. **Iomedae: Back in your hands** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.iz.night","chapter":5,"day":102,"completed":true,"choices":[["start",0],["stirs",0],["first",0],["first.aroden",1],["plan_q",0],["plan",0],["form",0]]} -->
+584. **Iomedae: Back in your hands** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.iz.night","chapter":5,"day":102,"completed":true,"choices":[["start",0],["stirs",0],["first",0],["first.aroden",1],["plan_q",0],["plan",0],["form",0]]} -->
    Scene `iomedae.trickster.iz.night`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.started`, `iomedae.banner_in_hand`, `iomedae.trickster.bridge_known`, `iomedae.key_dies_revealed.latched`, `trickster.now`, `iomedae.reachable_by_letter`; Blocked by: `iomedae.closed`, `iomedae.trickster.iz_night`.
    - `iomedae.trickster.iz.night/start/0` — "You can stop observing now. I know you're there."
@@ -7266,7 +7278,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `iomedae.trickster.iz.night/plan/0` — "A disputation."
    - `iomedae.trickster.iz.night/form/0` — "I'll be there."; records `iomedae.trickster.iz_night`, `iomedae.trickster.disputation.called`, `iomedae.trickster.first_spoken`
 
-584. **Nenio: A specimen that answers back** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.nenio_camellia.settle","chapter":5,"day":102,"completed":true,"choices":[["start",1],["spoiled",0]]} -->
+585. **Nenio: A specimen that answers back** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.nenio_camellia.settle","chapter":5,"day":102,"completed":true,"choices":[["start",1],["spoiled",0]]} -->
    Scene `household.pair.nenio_camellia.settle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Nenio and Camellia: the sample]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `nenio.harem.eligible`, `nenio.present_now`, `camellia.harem.eligible`, `camellia.present_now`, `household.pair.nenio_camellia.ready`; Blocked by: `household.closed`, `fool_king.gone`, `trickster.failed`, `sacrifice`, `engine.l12.commander_unreturned`, `nenio.life.unavailable`, `nenio.closed`, `nenio.epoch_unavailable`, `nenio.returned_actor_lost`, `camellia.closed`, `camellia.epoch_unavailable`, `camellia.returned_actor_lost`, `household.pair.nenio_camellia.settle.seen`, `nenio.harem.enmity.camellia`, `camellia.harem.enmity.nenio`, `nenio.dead`, `nenio.killed_by_commander`, `nenio.sent_away`, `nenio.kicked_out`, `nenio.dissolved`, `camellia.killed`, `camellia.dead`, `camellia.kicked_out`; Block `nenio.harem.enmity.camellia` lifted by: `nenio.harem.reconciled.camellia`; Block `camellia.harem.enmity.nenio` lifted by: `camellia.harem.reconciled.nenio`; Block `sacrifice` lifted by: `trickster.commander_back`; Block `nenio.dead` lifted by: `nenio.life.recreated`; Block `nenio.killed_by_commander` lifted by: `nenio.life.unremembered`; Block `nenio.sent_away` lifted by: `nenio.life.probation`; Block `nenio.kicked_out` lifted by: `nenio.life.probation`; Block `camellia.killed` lifted by: `camellia.trickster.cost.knows_you_tried`; Block `camellia.dead` lifted by: `camellia.trickster.coffin_life`; Block `camellia.kicked_out` lifted by: `camellia.trickster.killed_held`.
@@ -7275,7 +7287,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nenio_camellia.settle/start/1` — "The sample proves what its owner is. Finish there."
    - `household.pair.nenio_camellia.settle/spoiled/0` — Continue; records `household.pair.nenio_camellia.settle.seen`, `household.pair.nenio_camellia.settle.failed`, `household.pair.nenio_camellia.cost.commander_lesson_spoiled`
 
-585. **Kaylessa: The wrong passenger** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.kaylessa_camellia.settle","chapter":5,"day":102,"completed":true,"choices":[["start",0],["landed",0]]} -->
+586. **Kaylessa: The wrong passenger** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.kaylessa_camellia.settle","chapter":5,"day":102,"completed":true,"choices":[["start",0],["landed",0]]} -->
    Scene `household.pair.kaylessa_camellia.settle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Kaylessa and Camellia: the shipment]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `kaylessa.committed`, `kaylessa.harem.eligible`, `camellia.harem.eligible`, `kaylessa.trickster.returned`, `kaylessa.trickster.clock_named`, `kaylessa.present_now`, `camellia.present_now`; Blocked by: `kaylessa.harem.enmity.camellia`, `camellia.harem.enmity.kaylessa`, `fool_king.gone`, `trickster.failed`, `kaylessa.closed`, `kaylessa.trickster.left_free`, `inhuman`, `kaylessa.dead`, `kaylessa.epoch_unavailable`, `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.kicked_out`, `camellia.epoch_unavailable`, `kaylessa.camellia_killed`, `household.pair.kaylessa_camellia.settle.seen`, `household.pair.kaylessa_camellia.retry.seen`; Block `kaylessa.dead` lifted by: `kaylessa.trickster.returned`; Block `camellia.killed` lifted by: `camellia.trickster.cost.knows_you_tried`; Block `camellia.dead` lifted by: `camellia.trickster.coffin_life`; Block `camellia.kicked_out` lifted by: `camellia.trickster.killed_held`; Block `kaylessa.harem.enmity.camellia` lifted by: `kaylessa.harem.reconciled.camellia`; Block `camellia.harem.enmity.kaylessa` lifted by: `camellia.harem.reconciled.kaylessa`.
@@ -7286,14 +7298,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 103
 
-586. **Together: No exception for power** — owner contact / rest. <!-- rrt-step {"scene":"power","chapter":5,"day":103,"completed":true,"choices":[["start",9],["terms",0]]} -->
+587. **Together: No exception for power** — owner contact / rest. <!-- rrt-step {"scene":"power","chapter":5,"day":103,"completed":true,"choices":[["start",9],["terms",0]]} -->
    Scene `power`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "We should talk about what my power means for us."
    Need all: `return`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`.
    - `power/start/9` — "Whatever power I wield, your choices remain yours."
    - `power/terms/0` — "Hold me to that."; records `power_terms`
 
-587. **Seelah: The road and the room** — Drezen. <!-- rrt-step {"scene":"seelah.road","chapter":5,"day":103,"completed":true,"choices":[["future_entry",0],["future_abyss",1],["future_activity",2],["short_quest",3],["short_returned",0],["short_elan",1],["short_elan_other",0],["short_choice",0],["short_end",0]]} -->
+588. **Seelah: The road and the room** — Drezen. <!-- rrt-step {"scene":"seelah.road","chapter":5,"day":103,"completed":true,"choices":[["future_entry",0],["future_abyss",1],["future_activity",2],["short_quest",3],["short_returned",0],["short_elan",1],["short_elan_other",0],["short_choice",0],["short_end",0]]} -->
    Scene `seelah.road`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I want to talk about a life after the fighting."
    Need all: `seelah.weight`, `seelah.trickster.custody_clear`, `seelah.present_now`; Blocked by: `seelah.plot_departed`.
@@ -7308,7 +7320,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.road/short_choice/0` — "I will come back for another evening. That much I can promise."
    - `seelah.road/short_end/0` — [Agree to keep seeing each other, one evening at a time.]; records `seelah.committed`, `seelah.chosen_future`, `seelah.short_future_chosen`
 
-588. **Konomi: Opinions she intends to keep** — Drezen. <!-- rrt-step {"scene":"konomi.political_account","chapter":5,"day":103,"completed":true,"choices":[["start",0],["situation",1],["domestic",0],["council",1],["unconcluded",0],["respect",1],["unearned",0],["offer",0],["questions",0]]} -->
+589. **Konomi: Opinions she intends to keep** — Drezen. <!-- rrt-step {"scene":"konomi.political_account","chapter":5,"day":103,"completed":true,"choices":[["start",0],["situation",1],["domestic",0],["council",1],["unconcluded",0],["respect",1],["unearned",0],["offer",0],["questions",0]]} -->
    Scene `konomi.political_account`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What part of your work do you want to keep for yourself?"
    Need all: `konomi.present`, `konomi.return`, `konomi.present_now`; Blocked by: `konomi.dismissed`, `konomi.farewell`.
@@ -7324,13 +7336,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.political_account/offer/0` — "Show me how you frame the questions, when you have one you can afford to show."
    - `konomi.political_account/questions/0` — [Stay and tell her.]
 
-589. **Jerribeth: Before the unfinished evenings** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.farewell_review","chapter":5,"day":103,"completed":true,"choices":[["start",0],["leave",0]]} -->
+590. **Jerribeth: Before the unfinished evenings** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.farewell_review","chapter":5,"day":103,"completed":true,"choices":[["start",0],["leave",0]]} -->
    Scene `jerribeth.farewell_review`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `jerribeth.commission`, `jerribeth.terms`, `jerribeth.lovers`, `jerribeth.future`, `jerribeth.committed`, `jerribeth.future_settled`, `jerribeth.reachable_by_letter`; Blocked by: `jerribeth.farewell`, `jerribeth.developed_future`, `jerribeth.short_farewell_requested`, `jerribeth.catchup_requested`, `jerribeth.trickster.met_by_toast`; Block `jerribeth.farewell` lifted by: `jerribeth.catchup_requested`.
    - `jerribeth.farewell_review/start/0` — "I need to say farewell before we finish those evenings. Keep our promise as it stands."
    - `jerribeth.farewell_review/leave/0` — [Arrange the farewell, leaving the remaining work for an invitation you can explicitly renew.]; records `jerribeth.short_farewell_requested`
 
-590. **Soana: A track with two ends** — Wintersun. <!-- rrt-step {"scene":"soana.a_track_with_two_ends","chapter":5,"day":103,"completed":true,"choices":[["start",0],["read",0],["found_end",0]]} -->
+591. **Soana: A track with two ends** — Wintersun. <!-- rrt-step {"scene":"soana.a_track_with_two_ends","chapter":5,"day":103,"completed":true,"choices":[["start",0],["read",0],["found_end",0]]} -->
    Scene `soana.a_track_with_two_ends`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Show me where Mervika found the wire."
    Need all: `soana.after_quest`, `soana.progression_kept`, `soana.late_returned`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `inhuman`; Need one: `soana.old_defender`, `soana.bear_dead`.
@@ -7340,7 +7352,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.a_track_with_two_ends/read/0` — [Mark the other loops before following the tether toward its owner.]
    - `soana.a_track_with_two_ends/found_end/0` — [Return knowing who set the snares and where they ran.]; records `soana.late_track_read`, `soana.late_trail_known`
 
-591. **Arsinoe: An evening she intends to keep** — Drezen. <!-- rrt-step {"scene":"arsinoe_the_window_opens","chapter":5,"day":103,"completed":true,"choices":[["start",2],["near",0]]} -->
+592. **Arsinoe: An evening she intends to keep** — Drezen. <!-- rrt-step {"scene":"arsinoe_the_window_opens","chapter":5,"day":103,"completed":true,"choices":[["start",2],["near",0]]} -->
    Scene `arsinoe_the_window_opens`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Have you written your answer?"
    Need all: `arsinoe.capital`, `arsinoe.continuation_kept`, `arsinoe_where_she_stays`, `arsinoe.present_now`; Blocked by: `arsinoe.closed`.
@@ -7349,7 +7361,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arsinoe_the_window_opens/start/2` — "Sit close to her. Let the evening take its time."; Need all: `arsinoe.campaign_lover`
    - `arsinoe_the_window_opens/near/0` — "Promise another ordinary evening."; records `arsinoe.campaign_developed`, `arsinoe.last_evening_kept`
 
-592. **Gesmerha: The things left to carry** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_things_still_here","chapter":5,"day":103,"completed":true,"choices":[["start",0],["after_court",0],["work",0],["chief",0],["claim",0],["hand",0]]} -->
+593. **Gesmerha: The things left to carry** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_things_still_here","chapter":5,"day":103,"completed":true,"choices":[["start",0],["after_court",0],["work",0],["chief",0],["claim",0],["hand",0]]} -->
    Scene `gesmerha.the_things_still_here`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Gesmerha? May I come closer?"
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.post_resolution_contact`, `gesmerha.campaign_kept`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -7362,7 +7374,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.the_things_still_here/claim/0` — [Take her hand briefly before the others return.]; Need all: `gesmerha.lover`
    - `gesmerha.the_things_still_here/hand/0` — [Stay to hear the claim.]; records `gesmerha.late_arrived`
 
-593. **Irabeth: A standing order** — native dialogue listed below. <!-- rrt-step {"scene":"irabeth.trickster.dead.standing_order","chapter":5,"day":103,"completed":true,"choices":[["start",0],["roster",0]]} -->
+594. **Irabeth: A standing order** — native dialogue listed below. <!-- rrt-step {"scene":"irabeth.trickster.dead.standing_order","chapter":5,"day":103,"completed":true,"choices":[["start",0],["roster",0]]} -->
    Scene `irabeth.trickster.dead.standing_order`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "When we reach the Queen, you'll stand in front of her. I know you. Fine. Afterwards you report to me. In person. That order doesn't lapse until I sign it off."
    Need all: `trickster`, `storyteller.asked_queen`, `irabeth.present_now`; Blocked by: `irabeth.closed`, `irabeth_dead`, `irabeth.trickster.standing_order`, `irabeth.trickster.primed`, `trickster.failed`; EntryMythic: PlayerIsTrickster.
@@ -7370,7 +7382,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `irabeth.trickster.dead.standing_order/start/0` — [Hold her gaze] "In person."
    - `irabeth.trickster.dead.standing_order/roster/0` — [Let her write it into the roster] "Your hand. Your roster. I'll sign it off when I sign it off."; records `irabeth.trickster.standing_order`
 
-594. **Minagho: Technically, she did it** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.minagho_dead.brand","chapter":5,"day":103,"completed":true,"choices":[["start",0],["wake",2],["wake_kyado",0],["wake_staunton",2]]} -->
+595. **Minagho: Technically, she did it** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.minagho_dead.brand","chapter":5,"day":103,"completed":true,"choices":[["start",0],["wake",2],["wake_kyado",0],["wake_staunton",2]]} -->
    Scene `minagho_chivarro.trickster.minagho_dead.brand`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minagho.dead`, `minagho_chivarro.trickster.primed`, `minagho_chivarro.trickster.cost.baphomet_terms`, `minagho_chivarro.trickster.collateral_delivered`, `trickster.now`; Blocked by: `minagho_chivarro.trickster.returned_minagho`, `minagho_chivarro.trickster.declined_minagho`.
    Actor must be physically available: `565ccab37e2475742b043ec912a750fa`.
@@ -7379,7 +7391,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minagho_chivarro.trickster.minagho_dead.brand/wake_kyado/0` — Continue; Need all: `minagho.killed_by_staunton`
    - `minagho_chivarro.trickster.minagho_dead.brand/wake_staunton/2` — "Chivarro has been on the quartermaster's bench for days. Ask her."; records `minagho_chivarro.trickster.returned_minagho`, `minagho_chivarro.trickster.cost.palm_scar`, `minagho_chivarro.trickster.minagho_in`, `minachiv.started`, `minagho_chivarro.trickster.reunited`; Need all: `minagho_chivarro.trickster.chivarro_in`; Blocked by: `minagho_chivarro.partner_stance.secret`, `minagho_chivarro.partner_stance.share`
 
-595. **Dorgelinda: Receipts** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.receipts","chapter":5,"day":103,"completed":true,"choices":[["door",0],["awe",0],["column",0],["pack",0],["close",0],["collar",0]]} -->
+596. **Dorgelinda: Receipts** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.receipts","chapter":5,"day":103,"completed":true,"choices":[["door",0],["awe",0],["column",0],["pack",0],["close",0],["collar",0]]} -->
    Scene `dorgelinda.ledger.receipts`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You kept my column open?"
    Need all: `trickster.ever`, `dorgelinda.trickster.counted`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.receipts`, `dorgelinda.trickster.cost.abyss_signed`, `dorgelinda.trickster.cost.tribunal_books`.
@@ -7392,7 +7404,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.receipts/close/0` — [Let her straighten your coat.]
    - `dorgelinda.ledger.receipts/collar/0` — [Leave her to it.]
 
-596. **Camellia: A knife at the right height** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.returned.test_alive","chapter":5,"day":103,"completed":true,"choices":[["start",0],["bowl",0],["lead_c",2],["she_won",0],["danced",1],["judge_c",0],["steady",0],["yes_a",0],["threshold",0],["camellia.trickster.returned.test_alive.explicit.1",0],["morning",0]]} -->
+597. **Camellia: A knife at the right height** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.returned.test_alive","chapter":5,"day":103,"completed":true,"choices":[["start",0],["bowl",0],["lead_c",2],["she_won",0],["danced",1],["judge_c",0],["steady",0],["yes_a",0],["threshold",0],["camellia.trickster.returned.test_alive.explicit.1",0],["morning",0]]} -->
    Scene `camellia.trickster.returned.test_alive`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Come to your quarters tonight. Alone. Bring the knife I gave you."
    Need all: `trickster.ever`, `camellia.trickster.terms_named`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`, `camellia.committed`.
@@ -7410,7 +7422,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.returned.test_alive/camellia.trickster.returned.test_alive.explicit.1/0` — Continue
    - `camellia.trickster.returned.test_alive/morning/0` — [Close your eyes again]
 
-597. **Eritrice: A very serious matter** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.minutes.a_serious_matter","chapter":5,"day":103,"completed":true,"choices":[["start",0],["hurt",0],["choice",0],["promised",0]]} -->
+598. **Eritrice: A very serious matter** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.minutes.a_serious_matter","chapter":5,"day":103,"completed":true,"choices":[["start",0],["hurt",0],["choice",0],["promised",0]]} -->
    Scene `eritrice.minutes.a_serious_matter`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The cauldron. The essences."
    Need all: `trickster.ever`, `eritrice.minutes.the_convening`, `council.cauldron_given`, `eritrice.present_now`; Blocked by: `eritrice.closed`, `eritrice.lost_at_council`, `eritrice.minutes.a_serious_matter`, `eritrice.essence_given`, `council.walked_out`, `eritrice.minutes.extracted`, `council.debrief_motion`.
@@ -7420,7 +7432,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eritrice.minutes.a_serious_matter/choice/0` — "Nobody takes anything from you. Not the Council, not by force. I'll see to it."; records `eritrice.minutes.essence_promised`
    - `eritrice.minutes.a_serious_matter/promised/0` — [Watch her write it.]
 
-598. **Areelu: Whoever burns pays up** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.struck","chapter":5,"day":103,"completed":true,"choices":[["start",0],["iz",0],["terms",0],["sealed",0]]} -->
+599. **Areelu: Whoever burns pays up** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.struck","chapter":5,"day":103,"completed":true,"choices":[["start",0],["iz",0],["terms",0],["sealed",0]]} -->
    Scene `areelu.trickster.wager.struck`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "One of us must burn. About that: I have a bet for you."
    Need all: `trickster`, `trickster.ever`, `areelu.trickster.primed`, `areelu.one_must_burn`, `areelu.present_now`; Blocked by: `areelu.trickster.wager_struck`, `areelu.closed`, `trickster.failed`.
@@ -7430,7 +7442,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.wager.struck/terms/0` — [Name your stake] "You stake what is left of you. I stake my wound. Whoever burns at Threshold pays up."; Mythic: PlayerIsTrickster
    - `areelu.trickster.wager.struck/sealed/0` — [Shake the hand that isn't there.]; records `areelu.trickster.wager_struck`, `areelu.started`, `areelu.trickster.cost.bet_with_the_witch`
 
-599. **Chadali: A great big fair** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.a_great_big_fair","chapter":5,"day":103,"completed":true,"choices":[["start",1],["puppy",0],["close",0]]} -->
+600. **Chadali: A great big fair** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.a_great_big_fair","chapter":5,"day":103,"completed":true,"choices":[["start",1],["puppy",0],["close",0]]} -->
    Scene `chadali.fortunes.a_great_big_fair`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "About your fair..."
    Need all: `trickster.ever`, `chadali.started`, `chadali.fair_proposed`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.fortunes.a_great_big_fair`.
@@ -7439,7 +7451,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.fortunes.a_great_big_fair/puppy/0` — Continue
    - `chadali.fortunes.a_great_big_fair/close/0` — [Promise to come.]
 
-600. **Arueshalae: A meal someone made** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.kitchen","chapter":5,"day":103,"completed":true,"choices":[["start",0],["sit",0],["taste",0],["hand_cure",0],["after",0]]} -->
+601. **Arueshalae: A meal someone made** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.kitchen","chapter":5,"day":103,"completed":true,"choices":[["start",0],["sit",0],["taste",0],["hand_cure",0],["after",0]]} -->
    Scene `arueshalae.treatment.kitchen`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Seventh bell. You said kitchens."
    Need all: `arueshalae.treatment.touched`, `arueshalae.treatment.alushinyrra`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.kitchen`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -7451,7 +7463,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.kitchen/hand_cure/0` — Continue
    - `arueshalae.treatment.kitchen/after/0` — [Leave the bowls to dry.]; records `arueshalae.treatment.kitchen`
 
-601. **Devarra: Snow on the ridge** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.first_snow_free","chapter":5,"day":103,"completed":true,"choices":[["start",0],["braziers",0],["braziers_her",1],["both",0],["end",0]]} -->
+602. **Devarra: Snow on the ridge** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.first_snow_free","chapter":5,"day":103,"completed":true,"choices":[["start",0],["braziers",0],["braziers_her",1],["both",0],["end",0]]} -->
    Scene `devarra.tower.first_snow_free`; chapters 5–5 (only 5); wait at least 96h after the latest prerequisite; complete.
    Open: "It snowed on the ridge last night. Is she...?"
    Need all: `devarra.tower.climbed`, `devarra.trickster.flown`, `devarra.present_now`; Blocked by: `storyteller.dead`, `devarra.closed`, `devarra.tower.first_snow`, `devarra.trickster.ending_claimed`, `devarra.trickster.judgment_refused`; Block `devarra.trickster.ending_claimed` lifted by: `devarra.trickster.judgment_answered`; Block `devarra.trickster.judgment_refused` lifted by: `devarra.trickster.judgment_answered`.
@@ -7462,7 +7474,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `devarra.tower.first_snow_free/both/0` — Continue
    - `devarra.tower.first_snow_free/end/0` — "Send her a copy."; records `devarra.tower.first_snow`
 
-602. **Kaylessa: The next one** — Drezen; hub `kaylessa.presence`. <!-- rrt-step {"scene":"kaylessa.clearing.the_next_hunter","chapter":5,"day":103,"completed":true,"choices":[["open",1],["letter_source",0],["ask",0],["turned",0]]} -->
+603. **Kaylessa: The next one** — Drezen; hub `kaylessa.presence`. <!-- rrt-step {"scene":"kaylessa.clearing.the_next_hunter","chapter":5,"day":103,"completed":true,"choices":[["open",1],["letter_source",0],["ask",0],["turned",0]]} -->
    Scene `kaylessa.clearing.the_next_hunter`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You've got blood on your sleeve."
    Need all: `trickster.ever`, `kaylessa.committed`, `kaylessa.present_now`; Blocked by: `kaylessa.closed`, `kaylessa.trickster.left_free`, `kaylessa.clearing.the_next_hunter`; Need one of: `kaylessa.trickster.knife_held`, `kaylessa.trickster.knife_handed_back`; Need one of: `kaylessa.trickster.cost.council_knows`, `kaylessa.wasps.letter_sent`, `kaylessa.wasps.claimed_as_scout`, `kaylessa.wasps.let_them_look`.
@@ -7472,7 +7484,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kaylessa.clearing.the_next_hunter/ask/0` — "Send him home with a message: every hunter they send comes back like this, or doesn't come back."; records `kaylessa.clearing.hunter_turned_back`
    - `kaylessa.clearing.the_next_hunter/turned/0` — [Let her go to the cellar.]
 
-603. **Mielarah: The nearest** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.nearest","chapter":5,"day":103,"completed":true,"choices":[["start",3],["secret",0],["confess",0],["demand",0],["promised",0]]} -->
+604. **Mielarah: The nearest** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.nearest","chapter":5,"day":103,"completed":true,"choices":[["start",3],["secret",0],["confess",0],["demand",0],["promised",0]]} -->
    Scene `mielarah.deck.nearest`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I came to see the ship."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.docked`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.nearest.arcade`, `mielarah.deck.reckoned`.
@@ -7483,7 +7495,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.nearest/demand/0` — [Promise] "Never again. Nobody stands nearest you who didn't choose it."; records `mielarah.deck.reckoned`, `mielarah.deck.promised`
    - `mielarah.deck.nearest/promised/0` — [Go and look at the ship.]
 
-604. **Nidalynn: Where the snow stays** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"nidalynn.trickster.ridge.snowfield","chapter":5,"day":103,"completed":true,"choices":[["lane",0],["change",0],["climb",0],["fly",0],["field",0],["cold",1],["go",0],["slow",0],["laces",0],["down",0],["want",0],["cut",0],["explicit.1",0],["morning",0],["found",0],["standing",0],["breakfast",0],["now",0],["down_the_hill",0]]} -->
+605. **Nidalynn: Where the snow stays** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"nidalynn.trickster.ridge.snowfield","chapter":5,"day":103,"completed":true,"choices":[["lane",0],["change",0],["climb",0],["fly",0],["field",0],["cold",1],["go",0],["slow",0],["laces",0],["down",0],["want",0],["cut",0],["explicit.1",0],["morning",0],["found",0],["standing",0],["breakfast",0],["now",0],["down_the_hill",0]]} -->
    Scene `nidalynn.trickster.ridge.snowfield`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "Tonight?"
    Need all: `trickster.ever`, `nidalynn.committed`, `nidalynn.present_now`; Blocked by: `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.trickster.snowfield`.
@@ -7508,7 +7520,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nidalynn.trickster.ridge.snowfield/now/0` — Continue
    - `nidalynn.trickster.ridge.snowfield/down_the_hill/0` — [Go in out of the cold.]; records `nidalynn.trickster.snowfield`
 
-605. **Nenio: A confounding variable** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.tail","chapter":5,"day":103,"completed":true,"choices":[["open",0],["measure",1],["help",0],["curl",0],["flirt",0]]} -->
+606. **Nenio: A confounding variable** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.tail","chapter":5,"day":103,"completed":true,"choices":[["open",0],["measure",1],["help",0],["curl",0],["flirt",0]]} -->
    Scene `nenio.folio.tail`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Nenio? Is that... your tail?"
    Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.fox_revealed`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.tail`, `nenio.trickster.visitor`.
@@ -7520,14 +7532,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.folio.tail/curl/0` — [Flirt] "I don't mind being confounded."
    - `nenio.folio.tail/flirt/0` — [Stay until she has written it all down.]
 
-606. **Storyteller: Storyteller's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.storyteller.quiet","chapter":5,"day":103,"completed":true,"choices":[["start",0]]} -->
+607. **Storyteller: Storyteller's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.storyteller.quiet","chapter":5,"day":103,"completed":true,"choices":[["start",0]]} -->
    Scene `terendelev.trickster.react.storyteller.quiet`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "You look rested, old man."
    Need all: `terendelev.trickster.returned`, `terendelev.voice_heard`, `terendelev.present_now`; Blocked by: `storyteller.dead`, `terendelev.closed`.
    Native answer-list host: `2f5b7e0b76d3c5a42a431e1e33a8db09`.
    - `terendelev.trickster.react.storyteller.quiet/start/0` — Continue
 
-607. **Eliandra: My dear rebels** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.lovers","chapter":5,"day":103,"completed":true,"choices":[["start",0],["rooms",2],["herself",0],["decide",0]]} -->
+608. **Eliandra: My dear rebels** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.lovers","chapter":5,"day":103,"completed":true,"choices":[["start",0],["rooms",2],["herself",0],["decide",0]]} -->
    Scene `eliandra.trickster.ch5.lovers`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Tell me about Vestari and Cristry."
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.lovers.spoken`.
@@ -7537,7 +7549,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.lovers/herself/0` — "Someone who gets to decide."; records `eliandra.trickster.lovers.spoken`
    - `eliandra.trickster.ch5.lovers/decide/0` — [Leave her with it.]
 
-608. **Galfrey: One plan, kept** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.plan","chapter":5,"day":103,"completed":true,"choices":[["start",0],["kept",0],["kept_her",0]]} -->
+609. **Galfrey: One plan, kept** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.plan","chapter":5,"day":103,"completed":true,"choices":[["start",0],["kept",0],["kept_her",0]]} -->
    Scene `galfrey.trickster.alive.plan`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "The eastern road marches at dawn, Your Majesty."
    Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.evening`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.trickster.alive.plan_kept`, `galfrey.trickster.alive.plan_dispatched`, `trickster.failed`.
@@ -7546,14 +7558,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `galfrey.trickster.alive.plan/kept/0` — Continue
    - `galfrey.trickster.alive.plan/kept_her/0` — [Bow to the Queen.]
 
-609. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.react.greybor_ear","chapter":5,"day":103,"completed":true,"choices":[["start",0]]} -->
+610. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.react.greybor_ear","chapter":5,"day":103,"completed":true,"choices":[["start",0]]} -->
    Scene `horzalah.trickster.react.greybor_ear`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Horzalah."
    Need all: `trickster.ever`, `greybor.in_party`, `horzalah.trickster.cost.ear`, `horzalah.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`, `horzalah.met_q3_a`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `horzalah.trickster.react.greybor_ear/start/0` — Continue
 
-610. **Yaniel: The lilitu on the crate** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.ch5.minagho","chapter":5,"day":103,"completed":true,"choices":[["start",0],["here",0],["ask",2],["hide",0]]} -->
+611. **Yaniel: The lilitu on the crate** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.ch5.minagho","chapter":5,"day":103,"completed":true,"choices":[["start",0],["here",0],["ask",2],["hide",0]]} -->
    Scene `yaniel.trickster.ch5.minagho`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look like you want to hit something."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `minagho_chivarro.started`, `yaniel.trickster.minagho_known`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.trickster.minagho_seen`, `crossroute.chivarro.unavailable`.
@@ -7563,7 +7575,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.ch5.minagho/ask/2` — [Keep it from her] "Nothing you need to carry. Leave her to me."
    - `yaniel.trickster.ch5.minagho/hide/0` — [Go.]; records `yaniel.trickster.minagho_seen`, `trickster.secret.yaniel_minagho`
 
-611. **Wenduag: Sergeant Brask** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.gate","chapter":5,"day":103,"completed":true,"choices":[["start",0],["gate",0],["choose",0],["hers",0],["after_hers",0]]} -->
+612. **Wenduag: Sergeant Brask** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.gate","chapter":5,"day":103,"completed":true,"choices":[["start",0],["gate",0],["choose",0],["hers",0],["after_hers",0]]} -->
    Scene `wenduag.trickster.court.gate`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: Sergeant Brask
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.trickster.proved`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.gate`, `wenduag.trickster.native`, `wenduag.closed`, `wenduag.trickster.gate_seen`.
@@ -7574,7 +7586,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.gate/hers/0` — Continue
    - `wenduag.trickster.court.gate/after_hers/0` — Continue; records `wenduag.trickster.gate_seen`, `wenduag.trickster.gate.hers`
 
-612. **Nidalynn: The mare beneath the stars** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"household.pair.nidalynn_areelu.notice.chosen","chapter":5,"day":103,"completed":true,"choices":[["start",0],["carried",0]]} -->
+613. **Nidalynn: The mare beneath the stars** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"household.pair.nidalynn_areelu.notice.chosen","chapter":5,"day":103,"completed":true,"choices":[["start",0],["carried",0]]} -->
    Scene `household.pair.nidalynn_areelu.notice.chosen`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "What do you want Areelu to hear?"
    Need all: `trickster`, `nidalynn.present_now`, `nidalynn.trickster.form_chosen`, `household.pair.nidalynn_areelu.ready`, `nidalynn.presence.route_open`, `trickster.now`; Blocked by: `trickster.failed`, `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.epoch_unavailable`, `household.pair.nidalynn_areelu.notice.seen`, `crossroute.areelu.unavailable`, `engine.l12.commander_unreturned`.
@@ -7583,7 +7595,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nidalynn_areelu.notice.chosen/start/0` — "I'll carry their name to her."
    - `household.pair.nidalynn_areelu.notice.chosen/carried/0` — [Take the cloth.]; records `household.pair.nidalynn_areelu.notice.seen`, `household.pair.nidalynn_areelu.notice.carried`, `household.pair.nidalynn_areelu.cost.nidalynn_memory_given`
 
-613. **Seelah: The singer's night** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.knowledge.seelah_aranka","chapter":5,"day":103,"completed":true,"choices":[["start",0],["learned",0]]} -->
+614. **Seelah: The singer's night** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.knowledge.seelah_aranka","chapter":5,"day":103,"completed":true,"choices":[["start",0],["learned",0]]} -->
    Scene `household.knowledge.seelah_aranka`; chapters 3–5 (only 3, 5); wait at least 0h after the latest prerequisite; complete.
    Open: [The singer's night]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `household.stance_eligible`, `seelah.harem.eligible`, `seelah.present_now`, `aranka.trickster.night_kept`; Blocked by: `fool_king.gone`, `trickster.failed`, `household.knowledge.seelah_aranka.seen`, `household.cap.ch5.dynamic`.
@@ -7592,7 +7604,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.knowledge.seelah_aranka/start/0` — "I remember Aranka singing from the roof after our night together."
    - `household.knowledge.seelah_aranka/learned/0` — [Leave her to her drink.]; records `household.knowledge.seelah_aranka.seen`, `seelah.harem.strain.aranka.1`
 
-614. **Memory: A message with two answers** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.two_answers","chapter":5,"day":103,"completed":true,"choices":[["start",2],["local_meeting",0],["reply",1],["asking",2],["agreement",0]]} -->
+615. **Memory: A message with two answers** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.two_answers","chapter":5,"day":103,"completed":true,"choices":[["start",2],["local_meeting",0],["reply",1],["asking",2],["agreement",0]]} -->
    Scene `minachiv.two_answers`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: A message with two answers
    Need all: `minagho.ran_complete`, `minagho.book_three_finished`, `minachiv.reunion_history`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `inhuman`, `minagho_chivarro.trickster.committed`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`.
@@ -7602,7 +7614,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minachiv.two_answers/asking/2` — "I will meet her and hear what Veyr is selling."
    - `minachiv.two_answers/agreement/0` — [Keep the agreed meeting.]; records `minachiv.invitation_kept`
 
-615. **Delamere: Defenceless** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"delamere.trickster.woken.jester","chapter":5,"day":103,"completed":true,"choices":[["yard",0],["rumour",0],["kyado",0],["yes",0],["end",0]]} -->
+616. **Delamere: Defenceless** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"delamere.trickster.woken.jester","chapter":5,"day":103,"completed":true,"choices":[["yard",0],["rumour",0],["kyado",0],["yes",0],["end",0]]} -->
    Scene `delamere.trickster.woken.jester`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `delamere.trickster.first_meat`; Blocked by: `delamere.closed`, `delamere.trickster.jester_seen`.
    - `delamere.trickster.woken.jester/yard/0` — Continue
@@ -7611,12 +7623,12 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `delamere.trickster.woken.jester/yes/0` — Continue; records `delamere.trickster.jester_seen`
    - `delamere.trickster.woken.jester/end/0` — [Nod.]
 
-616. **Iomedae: The ruler's answer** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.react.ix_a.galfrey.queen","chapter":5,"day":103,"completed":true,"choices":[["start",0]]} -->
+617. **Iomedae: The ruler's answer** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.react.ix_a.galfrey.queen","chapter":5,"day":103,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.ix_a.galfrey.queen`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `galfrey.present_now`, `galfrey.final`, `iomedae.reachable_by_letter`, `iomedae.trickster.first_spoken`, `iomedae.trickster.disputation.called`; Blocked by: `iomedae.closed`, `galfrey.trickster.returned`, `trickster.failed`, `crossroute.galfrey.unavailable`, `galfrey.dead`, `galfrey.killed_by_commander`; Need one: `iomedae.banner_in_hand`, `iomedae.trickster.order_banner`; Block `galfrey.dead` lifted by: `galfrey.trickster.returned`.
    - `iomedae.trickster.react.ix_a.galfrey.queen/start/0` — Continue
 
-617. **Seelah: An unfinished prayer** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_camellia.settle","chapter":5,"day":103,"completed":true,"choices":[["start",0],["reasoned",0]]} -->
+618. **Seelah: An unfinished prayer** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_camellia.settle","chapter":5,"day":103,"completed":true,"choices":[["start",0],["reasoned",0]]} -->
    Scene `household.pair.seelah_camellia.settle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Seelah and Camellia: the prayer for the dead.]
    Need all: `trickster`, `household.table.kept`, `seelah.harem.eligible`, `camellia.harem.eligible`, `seelah.present_now`, `camellia.present_now`, `camellia.life.available`, `household.pair.seelah_camellia.seelah_body`, `household.pair.seelah_camellia.camellia_body`, `foresight.page_taken`, `household.stance_eligible`, `trickster.now`; Blocked by: `fool_king.gone`, `trickster.failed`, `household.pair.seelah_camellia.settle.seen`, `seelah.closed`, `camellia.closed`, `seelah.harem.enmity.camellia`, `camellia.harem.enmity.seelah`, `household.pair.seelah_camellia.resolved`, `household.pair.seelah_camellia.permanent_refusal`, `engine.l12.commander_unreturned`; Block `seelah.harem.enmity.camellia` lifted by: `seelah.harem.reconciled.camellia`; Block `camellia.harem.enmity.seelah` lifted by: `camellia.harem.reconciled.seelah`.
@@ -7625,7 +7637,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_camellia.settle/start/0` — [Lore (Religion): distinguish mercy from a blessing.]; PASS SkillLoreReligion DC 30 (Commander only); success → `reasoned`; failure → `missed`
    - `household.pair.seelah_camellia.settle/reasoned/0` — Continue; records `household.pair.seelah_camellia.settle.seen`, `household.pair.seelah_camellia.resolved`, `household.pair.seelah_camellia.seelah_blessing_withheld`, `household.pair.seelah_camellia.camellia_cover_limited`, `household.pair.seelah_camellia.cost.seelah_company_kept`, `household.pair.seelah_camellia.cost.camellia_public_cover`, `household.pair.seelah_camellia.method.religion`
 
-618. **Yaniel: The labelled face** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.yaniel_minagho.hearing","chapter":5,"day":103,"completed":true,"choices":[["start",1],["concealed.start",2],["concealed.declined",0]]} -->
+619. **Yaniel: The labelled face** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.yaniel_minagho.hearing","chapter":5,"day":103,"completed":true,"choices":[["start",1],["concealed.start",2],["concealed.declined",0]]} -->
    Scene `household.pair.yaniel_minagho.hearing`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "About Minagho's collection."
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `yaniel.trickster.returned`, `yaniel.freed.latched`, `yaniel.present_now`, `yaniel.trickster.minagho_seen`; Blocked by: `household.pair.yaniel_minagho.hearing.seen`, `yaniel.closed`, `yaniel.killed.latched`, `yaniel.trickster.left_free`, `yaniel.epoch_unavailable`, `fool_king.gone`, `trickster.failed`, `inhuman`, `crossroute.minagho.unavailable`; Need one of: `yaniel.trickster.minagho_told`, `household.pair.yaniel_minagho.truth_now_told`, `trickster.secret.yaniel_minagho`.
@@ -7634,7 +7646,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.yaniel_minagho.hearing/concealed.start/2` — "Let Minagho keep her souvenirs."
    - `household.pair.yaniel_minagho.hearing/concealed.declined/0` — "Minagho is under my protection. I meant to keep her close, and hid it from you." [Leave the claim on the docket.]; records `household.pair.yaniel_minagho.hearing.seen`, `household.pair.yaniel_minagho.hearing.declined`, `household.pair.yaniel_minagho.claim.unanswered`, `household.pair.yaniel_minagho.truth_now_told`
 
-619. **Seelah: The question after the curse** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_nenio.question","chapter":5,"day":103,"completed":true,"choices":[["start",1],["declined",0]]} -->
+620. **Seelah: The question after the curse** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_nenio.question","chapter":5,"day":103,"completed":true,"choices":[["start",1],["declined",0]]} -->
    Scene `household.pair.seelah_nenio.question`; chapters 3–5 (only 3, 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Seelah and Nenio: a question about the watch]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `household.stance_eligible`, `household.pair.seelah_nenio.ready`, `seelah.harem.eligible`, `nenio.harem.eligible`; Blocked by: `fool_king.gone`, `trickster.failed`, `household.pair.seelah_nenio.question.seen`, `seelah.harem.enmity.nenio`, `nenio.harem.enmity.seelah`, `household.cap.ch5.dynamic`, `crossroute.iomedae.unavailable`; Block `seelah.harem.enmity.nenio` lifted by: `seelah.harem.reconciled.nenio`; Block `nenio.harem.enmity.seelah` lifted by: `nenio.harem.reconciled.seelah`.
@@ -7645,7 +7657,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 104
 
-620. **Seelah: An evening with nothing to prove** — Drezen. <!-- rrt-step {"scene":"seelah.ordinary","chapter":5,"day":104,"completed":true,"choices":[["start",0],["rest",0],["end",0]]} -->
+621. **Seelah: An evening with nothing to prove** — Drezen. <!-- rrt-step {"scene":"seelah.ordinary","chapter":5,"day":104,"completed":true,"choices":[["start",0],["rest",0],["end",0]]} -->
    Scene `seelah.ordinary`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I came to see you. No emergency."
    Need all: `seelah.road`, `seelah.committed`, `seelah.present_now`; Blocked by: `seelah.plot_departed`.
@@ -7654,7 +7666,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.ordinary/rest/0` — [Listen to the complaints and offer a few of your own.]
    - `seelah.ordinary/end/0` — [Promise another ordinary evening.]; records `seelah.at_home`
 
-621. **Konomi: The person beneath the title** — Drezen. <!-- rrt-step {"scene":"konomi.power","chapter":5,"day":104,"completed":true,"choices":[["start",0],["trickster",0],["choice",0],["commit",0]]} -->
+622. **Konomi: The person beneath the title** — Drezen. <!-- rrt-step {"scene":"konomi.power","chapter":5,"day":104,"completed":true,"choices":[["start",0],["trickster",0],["choice",0],["commit",0]]} -->
    Scene `konomi.power`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "My power has grown. I expect you have an opinion about it."
    Need all: `konomi.present`, `konomi.return`, `konomi.political_account`, `konomi.present_now`.
@@ -7665,7 +7677,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.power/choice/0` — "I want a life with you in it. Draft the terms."; records `konomi.committed`
    - `konomi.power/commit/0` — [Begin making those plans.]; records `konomi.chosen_future`
 
-622. **Jerribeth: Collected in person** — Drezen; hub `jerribeth.presence`. <!-- rrt-step {"scene":"jerribeth.trickster.visit","chapter":5,"day":104,"completed":true,"choices":[["arrival",2],["collector_return",0],["collector_after",0],["arrival_terms",12],["own",0],["ask",2],["visit_pause",0]]} -->
+623. **Jerribeth: Collected in person** — Drezen; hub `jerribeth.presence`. <!-- rrt-step {"scene":"jerribeth.trickster.visit","chapter":5,"day":104,"completed":true,"choices":[["arrival",2],["collector_return",0],["collector_after",0],["arrival_terms",12],["own",0],["ask",2],["visit_pause",0]]} -->
    Scene `jerribeth.trickster.visit`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You said you collect in person."
    Need all: `trickster.ever`, `jerribeth.committed`, `jerribeth.trickster.cost.forfeit`, `jerribeth.trickster.visit_due`, `jerribeth.present_now`; Blocked by: `jerribeth.trickster.returned`, `jerribeth.trickster.visited`, `jerribeth.trickster.declined`, `jerribeth.trickster.parted`.
@@ -7678,7 +7690,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jerribeth.trickster.visit/ask/2` — "Stay. Tonight I only want your company."
    - `jerribeth.trickster.visit/visit_pause/0` — [Keep the evening, without going to bed.]; records `jerribeth.trickster.visited`
 
-623. **Ember: Something you can ask for** — Drezen. <!-- rrt-step {"scene":"ember.the_afternoon_not_promised","chapter":5,"day":104,"completed":true,"choices":[["start",0],["promise",0],["whistle",0]]} -->
+624. **Ember: Something you can ask for** — Drezen. <!-- rrt-step {"scene":"ember.the_afternoon_not_promised","chapter":5,"day":104,"completed":true,"choices":[["start",0],["promise",0],["whistle",0]]} -->
    Scene `ember.the_afternoon_not_promised`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "We kept the time you asked for."
    Need all: `ember.present`, `ember.wishes_answered`, `ember.where_she_is_needed`, `ember.present_now`; Blocked by: `ember.closed`, `ember_dead`, `ember_gone`, `ember.absent`, `ember.native_devastated`.
@@ -7688,7 +7700,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `ember.the_afternoon_not_promised/promise/0` — "Try the uneven tune again."; Need all: `ember.shared_whistle`
    - `ember.the_afternoon_not_promised/whistle/0` — "Keep the next invitation possible."; records `ember.trusted_friend`, `ember.campaign_developed`
 
-624. **Soana: What the hollow costs** — Wintersun. <!-- rrt-step {"scene":"soana.what_the_hollow_costs","chapter":5,"day":104,"completed":true,"choices":[["start",0],["stores",0],["ground",0],["thorn",0],["reserve",0]]} -->
+625. **Soana: What the hollow costs** — Wintersun. <!-- rrt-step {"scene":"soana.what_the_hollow_costs","chapter":5,"day":104,"completed":true,"choices":[["start",0],["stores",0],["ground",0],["thorn",0],["reserve",0]]} -->
    Scene `soana.what_the_hollow_costs`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Hesvara said she would bring someone to answer for the stores."
    Need all: `soana.after_quest`, `soana.progression_kept`, `soana.late_trail_known`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `inhuman`; Need one: `soana.old_defender`, `soana.bear_dead`.
@@ -7700,7 +7712,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.what_the_hollow_costs/thorn/0` — "Close the hollow. They have a road out. Leave its food for the animals."
    - `soana.what_the_hollow_costs/reserve/0` — [Agree to test the closed approach with her.]; records `soana.late_reserve`, `soana.late_boundary_agreed`
 
-625. **Arsinoe: Property of the Treasury** — Drezen. <!-- rrt-step {"scene":"arsinoe.trickster.cauldron.lease","chapter":5,"day":104,"completed":true,"choices":[["start",1],["terms",0],["rent",0],["leased",0]]} -->
+626. **Arsinoe: Property of the Treasury** — Drezen. <!-- rrt-step {"scene":"arsinoe.trickster.cauldron.lease","chapter":5,"day":104,"completed":true,"choices":[["start",1],["terms",0],["rent",0],["leased",0]]} -->
    Scene `arsinoe.trickster.cauldron.lease`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "I have something a priestess of Abadar should see."
    Need all: `trickster`, `arsinoe.capital`, `council.cauldron_given`, `arsinoe.present_now`; Blocked by: `arsinoe.trickster.primed`, `arsinoe.closed`, `trickster.failed`.
@@ -7711,7 +7723,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arsinoe.trickster.cauldron.lease/rent/0` — "Agreed."; Blocked by: `arsinoe.trickster.cost.rent_raised`, `arsinoe.trickster.cost.rent_grace`
    - `arsinoe.trickster.cauldron.lease/leased/0` — "Then I'm a tenant of Abadar."; records `arsinoe.trickster.primed`, `arsinoe.trickster.cost.lien`; Blocked by: `council.fought`
 
-626. **Gesmerha: The name beneath the clan's** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_box_with_two_names","chapter":5,"day":104,"completed":true,"choices":[["start",0],["person",0],["offers",0],["copies",0],["copies_end",0]]} -->
+627. **Gesmerha: The name beneath the clan's** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_box_with_two_names","chapter":5,"day":104,"completed":true,"choices":[["start",0],["person",0],["offers",0],["copies",0],["copies_end",0]]} -->
    Scene `gesmerha.the_box_with_two_names`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Let us hear Selvra before we decide what the box contains."
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.post_resolution_contact`, `gesmerha.late_arrived`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -7723,7 +7735,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.the_box_with_two_names/copies/0` — [Keep the three-copy agreement.]
    - `gesmerha.the_box_with_two_names/copies_end/0` — [Agree to help with the carrying, and keep time for an afternoon of your own.]; records `gesmerha.patterns_agreed`, `gesmerha.teaching_copies`
 
-627. **Anevia: What she wants to keep** — Drezen. <!-- rrt-step {"scene":"anevia.a_key_that_is_hers","chapter":5,"day":104,"completed":true,"choices":[["start",0],["yes",0],["key",0],["room",1],["end",0]]} -->
+628. **Anevia: What she wants to keep** — Drezen. <!-- rrt-step {"scene":"anevia.a_key_that_is_hers","chapter":5,"day":104,"completed":true,"choices":[["start",0],["yes",0],["key",0],["room",1],["end",0]]} -->
    Scene `anevia.a_key_that_is_hers`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "There was something I wanted to speak with you about."
    Need all: `anevia.return_ready`, `anevia.case_consequence_kept`, `anevia.lover`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `closed`, `anevia.closed`, `inhuman`, `irabeth_dead`, `irabeth_gone`, `anevia_away`, `swarm`, `true_lich`; Block `irabeth_dead` lifted by: `irabeth.trickster.returned`; Block `anevia_away` lifted by: `anevia.trickster.returned`.
@@ -7735,7 +7747,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `anevia.a_key_that_is_hers/room/1` — [Hold her and listen to the street.]; Need all: `irabeth.present_now`
    - `anevia.a_key_that_is_hers/end/0` — [Choose a lasting relationship with Anevia.]; records `anevia.committed`, `anevia.future_chosen`, `anevia.partner_stance.share`
 
-628. **Irabeth: A rule in somebody else's hands** — Drezen. <!-- rrt-step {"scene":"irabeth.when_the_instruction_is_used","chapter":5,"day":104,"completed":true,"choices":[["start",0],["hearing",0],["vela",0],["result",0],["name",0],["last_cost",0],["sealed_end",0],["end",0]]} -->
+629. **Irabeth: A rule in somebody else's hands** — Drezen. <!-- rrt-step {"scene":"irabeth.when_the_instruction_is_used","chapter":5,"day":104,"completed":true,"choices":[["start",0],["hearing",0],["vela",0],["result",0],["name",0],["last_cost",0],["sealed_end",0],["end",0]]} -->
    Scene `irabeth.when_the_instruction_is_used`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You wanted to see the instruction used without you directing every answer."
    Need all: `irabeth.return_kept`, `irabeth.present_now`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`.
@@ -7750,14 +7762,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `irabeth.when_the_instruction_is_used/sealed_end/0` — [Leave the case at work.]
    - `irabeth.when_the_instruction_is_used/end/0` — [Keep the appointment with Selruna.]; records `irabeth.instruction_tested`
 
-629. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.daeran","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+630. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.daeran","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `minagho_chivarro.trickster.react.daeran`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Minagho is back."
    Need all: `minagho_chivarro.trickster.returned_minagho`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `daeran.dead`, `daeran.kicked_out`.
    Native answer-list host: `4d978cbd2aa780d46874255282039f3f`.
    - `minagho_chivarro.trickster.react.daeran/start/0` — Continue
 
-630. **Dorgelinda: The open line** — Drezen. <!-- rrt-step {"scene":"dorgelinda.trickster.after.commit","chapter":5,"day":104,"completed":true,"choices":[["open",0],["recall_clean",0],["confessed",0],["ask",0],["yes",0]]} -->
+631. **Dorgelinda: The open line** — Drezen. <!-- rrt-step {"scene":"dorgelinda.trickster.after.commit","chapter":5,"day":104,"completed":true,"choices":[["open",0],["recall_clean",0],["confessed",0],["ask",0],["yes",0]]} -->
    Scene `dorgelinda.trickster.after.commit`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Sit. I've got your column open."
    Need all: `trickster.ever`, `dorgelinda.trickster.methods_heard`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.committed`, `dorgelinda.trickster.declined`.
@@ -7769,14 +7781,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.trickster.after.commit/ask/0` — [Flirt] "You, Dorgelinda. I'd come back with nothing to account for."; Blocked by: `dorgelinda.trickster.cost.boots_owed`
    - `dorgelinda.trickster.after.commit/yes/0` — [Take her cup and stay.]; records `dorgelinda.committed`; Need all: `trickster.now`
 
-631. **Regill: Regill's word** — native dialogue listed below. <!-- rrt-step {"scene":"camellia.trickster.react.regill_quarters","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+632. **Regill: Regill's word** — native dialogue listed below. <!-- rrt-step {"scene":"camellia.trickster.react.regill_quarters","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `camellia.trickster.react.regill_quarters`; chapters 3–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Camellia..."
    Need all: `camellia.committed`, `regill.in_party`, `camellia.present_now`; Blocked by: `regill.dead`, `regill.kicked_out`, `regill.left_plot`, `camellia.dead`; Block `camellia.dead` lifted by: `camellia.trickster.coffin_life`.
    Native answer-list host: `2366a8db6481070439fee222c0c52e45`.
    - `camellia.trickster.react.regill_quarters/start/0` — Continue
 
-632. **Eritrice: Just imagine** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.just_imagine","chapter":5,"day":104,"completed":true,"choices":[["start",0],["ask",0],["truth",0]]} -->
+633. **Eritrice: Just imagine** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.just_imagine","chapter":5,"day":104,"completed":true,"choices":[["start",0],["ask",0],["truth",0]]} -->
    Scene `eritrice.council.just_imagine`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The next session..."
    Need all: `trickster.ever`, `eritrice.minutes.the_convening`, `eritrice.minutes.a_serious_matter`, `eritrice.present_now`; Blocked by: `eritrice.closed`, `eritrice.lost_at_council`, `eritrice.council.just_imagine`, `eritrice.essence_given`, `council.walked_out`, `eritrice.minutes.extracted`, `council.debrief_motion`, `council.walked_out`, `eritrice.essence_given`.
@@ -7785,14 +7797,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eritrice.council.just_imagine/ask/0` — [Tell her the truth: it may end in blood.] "They'll turn on you. When they do, I won't stand between you and them. I'll stand where I have to."; records `eritrice.council.told_her_the_plan`
    - `eritrice.council.just_imagine/truth/0` — [Stay with her tonight.]
 
-633. **Nenio: Nenio's word** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.react.nenio_two_drafts","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+634. **Nenio: Nenio's word** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.react.nenio_two_drafts","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `areelu.trickster.react.nenio_two_drafts`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "I made a wager with Areelu."
    Need all: `areelu.trickster.wager_struck`, `crossroute.nenio.available`, `areelu.present_now`; Blocked by: `nenio.dead`, `nenio.killed_by_commander`, `nenio.sent_away`, `nenio.kicked_out`, `crossroute.nenio.unavailable`, `nenio.dissolved`, `nenio.life.unavailable`; Block `nenio.dead` lifted by: `nenio.life.recreated`; Block `nenio.killed_by_commander` lifted by: `nenio.life.unremembered`; Block `nenio.sent_away` lifted by: `nenio.life.probation`; Block `nenio.kicked_out` lifted by: `nenio.life.probation`.
    Native answer-list host: `1ab909cc3a6194840b1475b99547c263`.
    - `areelu.trickster.react.nenio_two_drafts/start/0` — Continue
 
-634. **Chadali: Matching ribbons** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.matching_ribbons","chapter":5,"day":104,"completed":true,"choices":[["start",0],["killed",0],["close",0]]} -->
+635. **Chadali: Matching ribbons** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.matching_ribbons","chapter":5,"day":104,"completed":true,"choices":[["start",0],["killed",0],["close",0]]} -->
    Scene `chadali.fortunes.matching_ribbons`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You offered Nocticula ribbons."
    Need all: `trickster.ever`, `chadali.started`, `chadali.bows_for_nocticula`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.fortunes.matching_ribbons`, `crossroute.nocticula.unavailable`.
@@ -7801,7 +7813,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.fortunes.matching_ribbons/killed/0` — Continue
    - `chadali.fortunes.matching_ribbons/close/0` — [Leave the bow on.]
 
-635. **Arueshalae: A missed night** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.rite_slipped","chapter":5,"day":104,"completed":true,"choices":[["start",0],["her",0],["distance",0],["vow",0]]} -->
+636. **Arueshalae: A missed night** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.rite_slipped","chapter":5,"day":104,"completed":true,"choices":[["start",0],["her",0],["distance",0],["vow",0]]} -->
    Scene `arueshalae.treatment.rite_slipped`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're awake. Don't get up."
    Need all: `arueshalae.treatment.touched`, `arueshalae.treatment.kitchen`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.rite_slipped`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -7812,7 +7824,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.rite_slipped/distance/0` — "Then I'll never touch you again without the ward read. I swear it on the road."; records `arueshalae.treatment.rite_slipped`, `arueshalae.trickster.cost.drained`, `arueshalae.treatment.vow_rite`
    - `arueshalae.treatment.rite_slipped/vow/0` — Continue
 
-636. **Mielarah: The best job in the whole world** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.best_job","chapter":5,"day":104,"completed":true,"choices":[["start",0],["wheel",0],["joy",4],["sky",0],["storms",0],["home",0]]} -->
+637. **Mielarah: The best job in the whole world** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.best_job","chapter":5,"day":104,"completed":true,"choices":[["start",0],["wheel",0],["joy",4],["sky",0],["storms",0],["home",0]]} -->
    Scene `mielarah.deck.best_job`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said you'd show me what she can do."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.reckoned`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.best_job.arcade`, `mielarah.deck.flown`.
@@ -7824,14 +7836,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.best_job/storms/0` — Continue
    - `mielarah.deck.best_job/home/0` — "She was. So were you."; records `mielarah.deck.flown`
 
-637. **Ulbrig: Ulbrig's word** — native dialogue listed below. <!-- rrt-step {"scene":"nidalynn.trickster.react.ulbrig.snowfield","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+638. **Ulbrig: Ulbrig's word** — native dialogue listed below. <!-- rrt-step {"scene":"nidalynn.trickster.react.ulbrig.snowfield","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `nidalynn.trickster.react.ulbrig.snowfield`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "You've a look on you, Ulbrig."
    Need all: `nidalynn.trickster.snowfield`, `ulbrig.in_party`, `nidalynn.present_now`; Blocked by: `ulbrig.dead`, `ulbrig.kicked_out`, `nidalynn.closed`.
    Native answer-list host: `0a50c9c878844ed4a69b8d6131304c5e`.
    - `nidalynn.trickster.react.ulbrig.snowfield/start/0` — Continue
 
-638. **Jannah: Blood and tale** — Drezen; hub `jannah.presence.cells`. <!-- rrt-step {"scene":"jannah.trickster.alive.stories","chapter":5,"day":104,"completed":true,"choices":[["open",0],["start",0],["pardon",0],["choose",0],["challenge",0],["rules",0],["stake",0],["your_tale",1],["kind_lie",0],["won",0]]} -->
+639. **Jannah: Blood and tale** — Drezen; hub `jannah.presence.cells`. <!-- rrt-step {"scene":"jannah.trickster.alive.stories","chapter":5,"day":104,"completed":true,"choices":[["open",0],["start",0],["pardon",0],["choose",0],["challenge",0],["rules",0],["stake",0],["your_tale",1],["kind_lie",0],["won",0]]} -->
    Scene `jannah.trickster.alive.stories`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "About the Condemned wagon."
    Need all: `trickster.ever`, `jannah.trickster.alive.in_cells`, `trickster.now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.dead`, `jannah.dead_known`, `jannah.trickster.returned`, `jannah.trickster.alive.posted`.
@@ -7847,7 +7859,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.trickster.alive.stories/kind_lie/0` — Continue
    - `jannah.trickster.alive.stories/won/0` — [Let the forms stand.]; records `jannah.trickster.alive.posted`
 
-639. **Nenio: Page one** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.page_one","chapter":5,"day":104,"completed":true,"choices":[["open",4],["resolved",0],["entry",0],["habits",1],["assoc",0],["written",0]]} -->
+640. **Nenio: Page one** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.page_one","chapter":5,"day":104,"completed":true,"choices":[["open",4],["resolved",0],["entry",0],["habits",1],["assoc",0],["written",0]]} -->
    Scene `nenio.folio.page_one`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You've got a clean sheet. That's a bad sign."
    Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.page_one`, `nenio.folio.page_one_visitor`, `nenio.folio.page_one_arcade`, `nenio.trickster.visitor`.
@@ -7860,7 +7872,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.folio.page_one/assoc/0` — [Write your name in her entry.]
    - `nenio.folio.page_one/written/0` — [Write on.]
 
-640. **Galfrey: A letter for the dragon** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.react.galfrey.letter","chapter":5,"day":104,"completed":true,"choices":[["start",0],["royal",0]]} -->
+641. **Galfrey: A letter for the dragon** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.react.galfrey.letter","chapter":5,"day":104,"completed":true,"choices":[["start",0],["royal",0]]} -->
    Scene `terendelev.trickster.react.galfrey.letter`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You have a letter for me?"
    Need all: `terendelev.trickster.returned`, `terendelev.present_now`; Blocked by: `galfrey.dead`, `galfrey.killed_by_commander`, `terendelev.closed`, `terendelev.trickster.react.galfrey.letter_awning`; Block `galfrey.dead` lifted by: `galfrey.trickster.returned`.
@@ -7868,7 +7880,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.react.galfrey.letter/start/0` — Continue; Blocked by: `galfrey.trickster.returned`
    - `terendelev.trickster.react.galfrey.letter/royal/0` — Continue
 
-641. **Eliandra: The evening reading** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.observe","chapter":5,"day":104,"completed":true,"choices":[["start",0],["heart",0],["reading",0],["hands",0],["century",0],["rest",0]]} -->
+642. **Eliandra: The evening reading** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.observe","chapter":5,"day":104,"completed":true,"choices":[["start",0],["heart",0],["reading",0],["hands",0],["century",0],["rest",0]]} -->
    Scene `eliandra.trickster.ch5.observe`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "May I watch your evening observation?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.observed`.
@@ -7880,7 +7892,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.observe/century/0` — "Thank you for letting me."; records `eliandra.trickster.observed`
    - `eliandra.trickster.ch5.observe/rest/0` — [Leave her under her stars.]
 
-642. **Galfrey: The riverbed muster** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.plan_report","chapter":5,"day":104,"completed":true,"choices":[["start",0],["kept_her",0]]} -->
+643. **Galfrey: The riverbed muster** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.plan_report","chapter":5,"day":104,"completed":true,"choices":[["start",0],["kept_her",0]]} -->
    Scene `galfrey.trickster.alive.plan_report`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The riverbed column is through, Your Majesty."
    Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.plan_dispatched`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.trickster.alive.plan_kept`, `trickster.failed`.
@@ -7888,7 +7900,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `galfrey.trickster.alive.plan_report/start/0` — Continue
    - `galfrey.trickster.alive.plan_report/kept_her/0` — [Bow to the Queen.]; records `galfrey.trickster.alive.plan_kept`
 
-643. **Yaniel: The city as it was** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.walls","chapter":5,"day":104,"completed":true,"choices":[["start",0],["one",0],["last",0],["you",0],["laugh",0],["end",0]]} -->
+644. **Yaniel: The city as it was** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.walls","chapter":5,"day":104,"completed":true,"choices":[["start",0],["one",0],["last",0],["you",0],["laugh",0],["end",0]]} -->
    Scene `yaniel.trickster.beat.walls`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Walk the wall with me?"
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -7900,7 +7912,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.walls/laugh/0` — Continue
    - `yaniel.trickster.beat.walls/end/0` — [Go down into the city.]; records `yaniel.trickster.beat.walls`
 
-644. **Wenduag: What she caught** — Drezen. <!-- rrt-step {"scene":"wenduag.trickster.court.claim_in_person","chapter":5,"day":104,"completed":true,"choices":[["start",0],["her",1],["why",0],["partner_intro",2],["partner_secret",0],["want",0],["given",0],["after_given",0]]} -->
+645. **Wenduag: What she caught** — Drezen. <!-- rrt-step {"scene":"wenduag.trickster.court.claim_in_person","chapter":5,"day":104,"completed":true,"choices":[["start",0],["her",1],["why",0],["partner_intro",2],["partner_secret",0],["want",0],["given",0],["after_given",0]]} -->
    Scene `wenduag.trickster.court.claim_in_person`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look pleased with yourself."
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.in_party`, `wenduag.trickster.proved`, `wenduag.trickster.gate_seen`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.native`, `wenduag.closed`, `wenduag.committed`, `wenduag.trickster.court.claim_in_person`.
@@ -7914,42 +7926,34 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.claim_in_person/given/0` — Continue
    - `wenduag.trickster.court.claim_in_person/after_given/0` — Continue; records `wenduag.committed`, `wenduag.started`, `wenduag.trickster.claim.given`; Need all: `trickster.now`
 
-645. **Jerribeth: The parting gift** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.farewell","chapter":5,"day":104,"completed":true,"choices":[["start",0],["return",0]]} -->
+646. **Jerribeth: The parting gift** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.farewell","chapter":5,"day":104,"completed":true,"choices":[["start",0],["return",0]]} -->
    Scene `jerribeth.farewell`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `jerribeth.future`, `jerribeth.future_settled`, `jerribeth.reachable_by_letter`; Blocked by: `jerribeth.trickster.met_by_toast`, `jerribeth.late_start`; Need one: `jerribeth.developed_future`, `jerribeth.short_farewell_requested`, `jerribeth.trickster.short_farewell`.
    - `jerribeth.farewell/start/0` — "Keep an evening for me. I will come back for it."
    - `jerribeth.farewell/return/0` — [Carry the promise into what comes next.]; records `jerribeth.farewell_kept`, `jerribeth.ordinary`
 
-646. **Memory: What the account can prove** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_claim_before_the_event","chapter":5,"day":104,"completed":true,"choices":[["start",0],["found",0],["yours",0],["method",0]]} -->
+647. **Memory: What the account can prove** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_claim_before_the_event","chapter":5,"day":104,"completed":true,"choices":[["start",0],["found",0],["yours",0],["method",0]]} -->
    Scene `vellexia.the_claim_before_the_event`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Open the echo shell to examine Tessar's account.]
    Need all: `vellexia.native_finished`, `vellexia.case_opened`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`.
-   - `vellexia.the_claim_before_the_event/start/0` — [Compare the dated predictions with the later descriptions of the results.]; PASS SkillKnowledgeWorld DC 29 (Commander only); success → `found`; failure → `missed`
+   - `vellexia.the_claim_before_the_event/start/0` — [Look for pages written after the evenings they predict.]; PASS SkillKnowledgeWorld DC 29 (Commander only); success → `found`; failure → `missed`
    - `vellexia.the_claim_before_the_event/found/0` — [Read the sealed prediction about the Commander.]
-   - `vellexia.the_claim_before_the_event/yours/0` — "Expose how he changes the account after the event. Leave your tastes out of it."
-   - `vellexia.the_claim_before_the_event/method/0` — [Keep the accounting approach available.]; records `vellexia.account_read`, `vellexia.method_first`
+   - `vellexia.the_claim_before_the_event/yours/0` — "Break his trade in front of everyone who ever bought from him. Leave your tastes out of it."
+   - `vellexia.the_claim_before_the_event/method/0` — [Keep the public unmasking in mind.]; records `vellexia.account_read`, `vellexia.method_first`
 
-647. **Socothbenoth: A perfumed note** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"arsinoe.trickster.cauldron_seen.react_socothbenoth","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+648. **Socothbenoth: A perfumed note** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"arsinoe.trickster.cauldron_seen.react_socothbenoth","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `arsinoe.trickster.cauldron_seen.react_socothbenoth`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `arsinoe.trickster.cost.lien`, `arsinoe.present_now`; Blocked by: `socot.gone`, `council.fought`, `council.fought_nocta_allied`.
    - `arsinoe.trickster.cauldron_seen.react_socothbenoth/start/0` — Continue
 
-648. **Nocticula: The address he sold** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"noct.acq.the_paid_address","chapter":5,"day":104,"completed":true,"choices":[["start",0],["read",0],["decision",0],["public",0],["the_retained_copy.arrives",0],["the_retained_copy.start",0],["the_retained_copy.known",0],["the_retained_copy.bargain",0],["the_retained_copy.honesty",0],["the_retained_copy.history",2],["the_retained_copy.missed",0],["the_retained_copy.end",0],["an_answer_of_her_own.arrives",0],["an_answer_of_her_own.start",0],["an_answer_of_her_own.terms",0],["an_answer_of_her_own.narrow",0],["an_answer_of_her_own.risk",2],["an_answer_of_her_own.partner_terms.risk.0",0],["an_answer_of_her_own.partner_terms.risk.0.name.alive",0],["an_answer_of_her_own.partner_terms.risk.0.alive.share",0],["an_answer_of_her_own.partner_terms.risk.0.alive.share_answer",0],["an_answer_of_her_own.partner_terms.risk.0.accepted",0],["an_answer_of_her_own.accept",0],["noct.acq.the_paid_address.explicit.1",0],["noct.acq.the_paid_address.aftermath.1",0]]} -->
+649. **Nocticula: The address he sold** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"noct.acq.the_paid_address","chapter":5,"day":104,"completed":true,"choices":[["start",0],["read",0],["decision",0],["public",0],["an_answer_of_her_own.arrives",0],["an_answer_of_her_own.start",0],["an_answer_of_her_own.terms",0],["an_answer_of_her_own.narrow",0],["an_answer_of_her_own.risk",2],["an_answer_of_her_own.partner_terms.risk.0",0],["an_answer_of_her_own.partner_terms.risk.0.name.alive",0],["an_answer_of_her_own.partner_terms.risk.0.alive.share",0],["an_answer_of_her_own.partner_terms.risk.0.alive.share_answer",0],["an_answer_of_her_own.partner_terms.risk.0.accepted",0],["an_answer_of_her_own.accept",0],["noct.acq.the_paid_address.explicit.1",0],["noct.acq.the_paid_address.aftermath.1",0]]} -->
    Scene `noct.acq.the_paid_address`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: The address he sold
    Need all: `trickster`, `noct.acq.correspondence_trial`, `noct.acq.borrowed_signature_done`, `nocticula.reachable_by_letter`; Blocked by: `noct.dead`, `noct.acq.council_fight`, `noct.acq.closed`, `noct.acq.the_paid_address_done`, `trickster.failed`; Need one of: `noct.acq.channel_provisional`, `noct.acq.channel_letters_only`; Block `noct.dead` lifted by: `noct.defeated_not_dead`; Block `noct.acq.council_fight` lifted by: `nocticula.trickster.returned`.
    - `noct.acq.the_paid_address/start/0` — [Knowledge: World 35] Separate the copied date from the merchant's own hand before anyone questions him.; PASS SkillKnowledgeWorld DC 35 (Commander only); success → `read`; failure → `mistake`; records `noct.acq.address_check_tried`; Blocked by: `noct.acq.address_check_tried`
-   - `noct.acq.the_paid_address/read/0` — Account for the held letters and identified buyers.; records `noct.acq.buyers_identified`, `noct.acq.merchant_held`
+   - `noct.acq.the_paid_address/read/0` — Give her the names.; records `noct.acq.buyers_identified`, `noct.acq.merchant_held`
    - `noct.acq.the_paid_address/decision/0` — Publish the denial, reserve the recovered payments for claimants and burn the pattern.; Need all: `noct.acq.concession_public`
-   - `noct.acq.the_paid_address/public/0` — Keep the restitution account and relinquish the reusable pattern.; records `noct.acq.the_paid_address_done`, `noct.acq.concession_delivered`, `noct.acq.pattern_destroyed`, `noct.acq.restitution_reserved`
-   - `noct.acq.the_paid_address/the_retained_copy.arrives/0` — Continue
-   - `noct.acq.the_paid_address/the_retained_copy.start/0` — Read her answer about the buyers whose names you recovered.; Need all: `noct.acq.buyers_identified`
-   - `noct.acq.the_paid_address/the_retained_copy.known/0` — Answer her about the bargain you actually carried out.
-   - `noct.acq.the_paid_address/the_retained_copy.bargain/0` — I chose to end the fraud. You can use my signature to embarrass me, but you cannot make that choice yours.; Need all: `noct.acq.pattern_destroyed`, `noct.acq.restitution_reserved`
-   - `noct.acq.the_paid_address/the_retained_copy.honesty/0` — Send the corrected advertisement to Neris and return to the private letter.
-   - `noct.acq.the_paid_address/the_retained_copy.history/2` — There was no agreement to resume. I want an evening that begins with what we have actually done.; Blocked by: `noct.parent_active`, `noct.parent_rejected`
-   - `noct.acq.the_paid_address/the_retained_copy.missed/0` — Wait for an actual invitation.
-   - `noct.acq.the_paid_address/the_retained_copy.end/0` — Keep the offered time and finish the remaining work.; records `noct.acq.the_retained_copy_done`, `noct.acq.personal_answer_invited`
+   - `noct.acq.the_paid_address/public/0` — Burn the pattern. Hold the money for the cheated.; records `noct.acq.the_paid_address_done`, `noct.acq.concession_delivered`, `noct.acq.pattern_destroyed`, `noct.acq.restitution_reserved`, `noct.acq.the_retained_copy_done`
    - `noct.acq.the_paid_address/an_answer_of_her_own.arrives/0` — Continue
    - `noct.acq.the_paid_address/an_answer_of_her_own.start/0` — I want more of your evenings. Tell me what they will cost me.
    - `noct.acq.the_paid_address/an_answer_of_her_own.terms/0` — Ask what the narrow fold permits now.; Need all: `noct.acq.channel_provisional`; Blocked by: `noct.acq.channel_letters_only`
@@ -7964,12 +7968,12 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `noct.acq.the_paid_address/noct.acq.the_paid_address.explicit.1/0` — Continue
    - `noct.acq.the_paid_address/noct.acq.the_paid_address.aftermath.1/0` — Keep the agreed correspondence and spend the rest of this evening in it.; records `noct.acq.an_answer_of_her_own_done`; Blocked by: `nocticula.partner_stance.secret`
 
-649. **Memory: What the offer bought** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.what_the_offer_bought","chapter":5,"day":104,"completed":true,"choices":[["start",1]]} -->
+650. **Memory: What the offer bought** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.what_the_offer_bought","chapter":5,"day":104,"completed":true,"choices":[["start",1]]} -->
    Scene `minagho_chivarro.trickster.after.what_the_offer_bought`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minagho_chivarro.trickster.reunited`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `minagho_chivarro.trickster.tprev.offer`, `minagho_chivarro.trickster.cost.half_the_pair`, `minagho_chivarro.trickster.chivarro_owned`, `crossroute.herrax.unavailable`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`; Block `minagho_chivarro.trickster.chivarro_owned` lifted by: `minagho_chivarro.trickster.bill_burned`.
    - `minagho_chivarro.trickster.after.what_the_offer_bought/start/1` — "Sell her an evening at her table. Her hands stay flat on the cloth."; records `minagho_chivarro.trickster.tprev.offer`, `minagho_chivarro.trickster.offer_sold_back`; Blocked by: `minagho_chivarro.trickster.bill_burned`
 
-650. **Memory: The lodger** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"hepzamirah.trickster.ghost.body","chapter":5,"day":104,"completed":true,"choices":[["start",2],["flesh_ask",0],["terms",0],["body",0],["body_blood",2],["rename",0],["flesh",2],["flesh_offer",0],["first_rent",0],["sister_news",1]]} -->
+651. **Memory: The lodger** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"hepzamirah.trickster.ghost.body","chapter":5,"day":104,"completed":true,"choices":[["start",2],["flesh_ask",0],["terms",0],["body",0],["body_blood",2],["rename",0],["flesh",2],["flesh_offer",0],["first_rent",0],["sister_news",1]]} -->
    Scene `hepzamirah.trickster.ghost.body`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `hepzamirah.trickster.primed`, `trickster.now`; Blocked by: `hepzamirah.trickster.returned`, `hepzamirah.closed`.
    - `hepzamirah.trickster.ghost.body/start/2` — Continue; Blocked by: `hepzamirah.mutasafen_letter`, `hepzamirah.mutasafen_secret`
@@ -7983,7 +7987,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.ghost.body/first_rent/0` — "I'll bring snacks."
    - `hepzamirah.trickster.ghost.body/sister_news/1` — [Let her dress.]; Blocked by: `hepzamirah.trickster.sister_here`
 
-651. **Delamere: Be the stag again** — rest delivery / Satchel: visit (Drezen / bb6d82794aae9d94d9cc94d1a05e5f20). <!-- rrt-step {"scene":"delamere.trickster.woken.demon","chapter":5,"day":104,"completed":true,"choices":[["sign",0],["babau",0],["want",1],["where",0],["clean",0],["kill",0],["after_clean",0],["burn",0]]} -->
+652. **Delamere: Be the stag again** — rest delivery / Satchel: visit (Drezen / bb6d82794aae9d94d9cc94d1a05e5f20). <!-- rrt-step {"scene":"delamere.trickster.woken.demon","chapter":5,"day":104,"completed":true,"choices":[["sign",0],["babau",0],["want",1],["where",0],["clean",0],["kill",0],["after_clean",0],["burn",0]]} -->
    Scene `delamere.trickster.woken.demon`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `delamere.trickster.white_stag_told`; Blocked by: `delamere.closed`, `delamere.trickster.demon_hunted`.
    - `delamere.trickster.woken.demon/sign/0` — Continue
@@ -7995,7 +7999,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `delamere.trickster.woken.demon/after_clean/0` — Continue
    - `delamere.trickster.woken.demon/burn/0` — [Help her drag it.]; records `delamere.trickster.demon_hunted`
 
-652. **Horzalah: The Guild bowed to the box** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.guild.kept","chapter":5,"day":104,"completed":true,"choices":[["start",0],["looks",0],["hall",3],["sister",0],["pivot",0],["wants",0]]} -->
+653. **Horzalah: The Guild bowed to the box** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.guild.kept","chapter":5,"day":104,"completed":true,"choices":[["start",0],["looks",0],["hall",3],["sister",0],["pivot",0],["wants",0]]} -->
    Scene `horzalah.trickster.guild.kept`; chapters 5–6; wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `horzalah.trickster.primed`, `horzalah.present_now`; Blocked by: `horzalah.trickster.returned`, `horzalah.closed`.
    - `horzalah.trickster.guild.kept/start/0` — Continue
@@ -8005,24 +8009,24 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.guild.kept/pivot/0` — [Hear what she wants] "Because you came. You didn't have to. What do you want?"; Blocked by: `chapter.six`
    - `horzalah.trickster.guild.kept/wants/0` — "Nobody will watch you."; records `horzalah.trickster.returned`, `horzalah.trickster.wants_heard`
 
-653. **Melazmera: Salt** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.crew","chapter":5,"day":104,"completed":true,"choices":[["start",4],["arrival",0]]} -->
+654. **Melazmera: Salt** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.crew","chapter":5,"day":104,"completed":true,"choices":[["start",4],["arrival",0]]} -->
    Scene `melazmera.trickster.beat.crew`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.crew`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.crew/start/4` — Continue; Blocked by: `melazmera.ate_sailors`, `melazmera.harpooned`, `melazmera.voyage.crevice`, `melazmera.voyage.scream`
    - `melazmera.trickster.beat.crew/arrival/0` — Continue; records `melazmera.trickster.beat.crew`
 
-654. **Iomedae: The blade before the banner** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.react.ix_a.targona","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+655. **Iomedae: The blade before the banner** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.react.ix_a.targona","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.ix_a.targona`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `targona.present_now`, `targona.trickster.in_drezen`, `iomedae.reachable_by_letter`, `iomedae.trickster.first_spoken`, `iomedae.trickster.disputation.called`; Blocked by: `iomedae.closed`, `trickster.failed`, `crossroute.targona.unavailable`, `targona.dead_lab`, `targona.dead_lair`, `targona.condemned`, `swarm`, `demon`, `lich`, `devil`; Need one: `iomedae.banner_in_hand`, `iomedae.trickster.order_banner`; Block `targona.dead_lab` lifted by: `targona.trickster.returned`.
    - `iomedae.trickster.react.ix_a.targona/start/0` — Continue
 
-655. **Wenduag: An unfinished challenge** — rest delivery / Satchel: invitation (owner contact / rest). <!-- rrt-step {"scene":"household.pair.seelah_wenduag.invite","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+656. **Wenduag: An unfinished challenge** — rest delivery / Satchel: invitation (owner contact / rest). <!-- rrt-step {"scene":"household.pair.seelah_wenduag.invite","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `household.pair.seelah_wenduag.invite`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `wenduag.harem.eligible`, `seelah.harem.eligible`, `seelah.present_now`, `wenduag.present_now`; Blocked by: `household.pair.seelah_wenduag.invite.seen`, `fool_king.gone`, `household.pair.seelah_wenduag.invited`, `trickster.failed`.
    Participants must have open, eligible routes: `seelah`, `wenduag`; named women: none.
    - `household.pair.seelah_wenduag.invite/start/0` — Reply; records `household.pair.seelah_wenduag.invite.seen`, `household.pair.seelah_wenduag.invited`
 
-656. **Camellia: The snare facing the wrong way** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.camellia_wenduag.settle","chapter":5,"day":104,"completed":true,"choices":[["start",0],["reversed",0]]} -->
+657. **Camellia: The snare facing the wrong way** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.camellia_wenduag.settle","chapter":5,"day":104,"completed":true,"choices":[["start",0],["reversed",0]]} -->
    Scene `household.pair.camellia_wenduag.settle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Camellia and Wenduag: the cult patrol.]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `camellia.harem.eligible`, `wenduag.harem.eligible`, `camellia.present_now`, `wenduag.present_now`, `household.pair.camellia_wenduag.ready`; Blocked by: `fool_king.gone`, `trickster.failed`, `camellia.closed`, `wenduag.closed`, `camellia.epoch_unavailable`, `wenduag.epoch_unavailable`, `camellia.returned_actor_lost`, `wenduag.returned_actor_lost`, `wenduag.trickster.echo.abyss.unavailable`, `sacrifice`, `household.pair.camellia_wenduag.settle.seen`, `camellia.harem.enmity.wenduag`, `wenduag.harem.enmity.camellia`; Block `camellia.harem.enmity.wenduag` lifted by: `camellia.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.camellia` lifted by: `wenduag.harem.reconciled.camellia`; Block `sacrifice` lifted by: `trickster.commander_back`.
@@ -8031,7 +8035,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.camellia_wenduag.settle/start/0` — [Turn the snare toward the approach Camellia identifies.]
    - `household.pair.camellia_wenduag.settle/reversed/0` — [Return to the Table.]; records `household.pair.camellia_wenduag.settle.seen`, `household.pair.camellia_wenduag.settle.done`, `household.pair.camellia_wenduag.deed.camellia_approach`, `household.pair.camellia_wenduag.deed.wenduag_hunters_moved`, `household.pair.camellia_wenduag.cost.camellia_mask_read`, `household.pair.camellia_wenduag.cost.wenduag_plan_yielded`, `household.pair.camellia_wenduag.cost.commander_snare_labour`
 
-657. **Seelah: First blood** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.spar","chapter":5,"day":104,"completed":true,"choices":[["start",0],["held",0]]} -->
+658. **Seelah: First blood** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.spar","chapter":5,"day":104,"completed":true,"choices":[["start",0],["held",0]]} -->
    Scene `household.pair.seelah_wenduag.spar`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Seelah and Wenduag: First blood]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.seelah_wenduag.invited`, `seelah.harem.eligible`, `wenduag.harem.eligible`, `seelah.harem.attitude.wenduag.rival`, `wenduag.harem.attitude.seelah.rival`, `seelah.present_now`, `wenduag.present_now`; Blocked by: `seelah.harem.enmity.wenduag`, `wenduag.harem.enmity.seelah`, `seelah.harem.attitude.wenduag.respect`, `wenduag.harem.attitude.seelah.respect`, `household.pair.seelah_wenduag.spar.seen`, `fool_king.gone`, `trickster.failed`; Block `seelah.harem.enmity.wenduag` lifted by: `seelah.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.seelah` lifted by: `wenduag.harem.reconciled.seelah`.
@@ -8040,14 +8044,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_wenduag.spar/start/0` — "First blood, my rules, my ring."; PASS SkillAthletics DC 20 (party check); success → `held`; failure → `failed`
    - `household.pair.seelah_wenduag.spar/held/0` — Continue; records `household.pair.seelah_wenduag.spar.seen`, `household.pair.seelah_wenduag.spar.held`
 
-658. **Kiana: A very unsuitable castle** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.rehearsal","chapter":5,"day":104,"completed":true,"choices":[["start",0],["moon",0],["company",0]]} -->
+659. **Kiana: A very unsuitable castle** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.rehearsal","chapter":5,"day":104,"completed":true,"choices":[["start",0],["moon",0],["company",0]]} -->
    Scene `kiana.rehearsal`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `seelah.souls_returned`, `kiana.invitation`, `kiana.present_now`.
    - `kiana.rehearsal/start/0` — "How does a princess store a stolen moon?"; Need all: `kiana.moon`
    - `kiana.rehearsal/moon/0` — "We can leave the chairs empty tonight."
    - `kiana.rehearsal/company/0` — [Stay until she is ready to finish.]; records `kiana.company`
 
-659. **Memory: The woman who answered** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.her_own_arrival","chapter":5,"day":104,"completed":true,"choices":[["start",1],["local_meeting",0],["account",1],["place",0],["interest",0]]} -->
+660. **Memory: The woman who answered** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.her_own_arrival","chapter":5,"day":104,"completed":true,"choices":[["start",1],["local_meeting",0],["account",1],["place",0],["interest",0]]} -->
    Scene `minachiv.her_own_arrival`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: The woman who answered
    Need all: `minagho.ran_complete`, `minagho.book_three_finished`, `minachiv.reunion_history`, `minachiv.invitation_kept`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `inhuman`, `minagho_chivarro.trickster.committed`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`.
@@ -8057,7 +8061,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minachiv.her_own_arrival/place/0` — [Flirt] "I want to find out what you've omitted, too."
    - `minachiv.her_own_arrival/interest/0` — [Stay and hear the offer.]; records `minachiv.arrival_kept`, `minachiv.chivarro_interest`
 
-660. **Melazmera: When the moon is thin** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.ch5.hunger","chapter":5,"day":104,"completed":true,"choices":[["start",0],["hunger_arrival",0],["sister",0],["city",0],["ask",0],["cultists",0],["cultists_after",0]]} -->
+661. **Melazmera: When the moon is thin** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.ch5.hunger","chapter":5,"day":104,"completed":true,"choices":[["start",0],["hunger_arrival",0],["sister",0],["city",0],["ask",0],["cultists",0],["cultists_after",0]]} -->
    Scene `melazmera.trickster.ch5.hunger`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.present_now`; Blocked by: `melazmera.trickster.fed`, `melazmera.closed`; Block `melazmera.trickster.fed` lifted by: `melazmera.trickster.herd.pending`.
    - `melazmera.trickster.ch5.hunger/start/0` — Continue; Need all: `participant.hepzamirah.available`; Blocked by: `melazmera.trickster.fed.herd`
@@ -8068,12 +8072,12 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.ch5.hunger/cultists/0` — Continue
    - `melazmera.trickster.ch5.hunger/cultists_after/0` — Continue; records `melazmera.trickster.fed`, `melazmera.trickster.fed.cultists`, `trickster.secret.melazmera_cultists`; on entering page: `melazmera.trickster.fed`, `melazmera.trickster.fed.cultists`, `trickster.secret.melazmera_cultists`
 
-661. **Iomedae: An oath still standing** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.react.ix_a.yaniel","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
+662. **Iomedae: An oath still standing** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.react.ix_a.yaniel","chapter":5,"day":104,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.ix_a.yaniel`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `yaniel.present_now`, `yaniel.trickster.returned`, `iomedae.reachable_by_letter`, `iomedae.trickster.first_spoken`, `iomedae.trickster.disputation.called`; Blocked by: `iomedae.closed`, `trickster.failed`, `crossroute.yaniel.unavailable`, `yaniel.killed.latched`, `yaniel.trickster.left_free`; Need one: `iomedae.banner_in_hand`, `iomedae.trickster.order_banner`.
    - `iomedae.trickster.react.ix_a.yaniel/start/0` — Continue
 
-662. **Nenio: A specimen that answers back** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.nenio_camellia.retry","chapter":5,"day":104,"completed":true,"choices":[["start",1],["refused",0]]} -->
+663. **Nenio: A specimen that answers back** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.nenio_camellia.retry","chapter":5,"day":104,"completed":true,"choices":[["start",1],["refused",0]]} -->
    Scene `household.pair.nenio_camellia.retry`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Nenio and Camellia: the sample]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `nenio.harem.eligible`, `nenio.present_now`, `camellia.harem.eligible`, `camellia.present_now`, `household.pair.nenio_camellia.settle.failed`; Blocked by: `household.closed`, `fool_king.gone`, `trickster.failed`, `sacrifice`, `engine.l12.commander_unreturned`, `nenio.life.unavailable`, `nenio.closed`, `nenio.epoch_unavailable`, `nenio.returned_actor_lost`, `camellia.closed`, `camellia.epoch_unavailable`, `camellia.returned_actor_lost`, `household.pair.nenio_camellia.retry.seen`, `household.pair.nenio_camellia.settle.done`, `household.pair.nenio_camellia.unsettled`, `nenio.harem.enmity.camellia`, `camellia.harem.enmity.nenio`, `nenio.dead`, `nenio.killed_by_commander`, `nenio.sent_away`, `nenio.kicked_out`, `nenio.dissolved`, `camellia.killed`, `camellia.dead`, `camellia.kicked_out`; Block `nenio.harem.enmity.camellia` lifted by: `nenio.harem.reconciled.camellia`; Block `camellia.harem.enmity.nenio` lifted by: `camellia.harem.reconciled.nenio`; Block `sacrifice` lifted by: `trickster.commander_back`; Block `nenio.dead` lifted by: `nenio.life.recreated`; Block `nenio.killed_by_commander` lifted by: `nenio.life.unremembered`; Block `nenio.sent_away` lifted by: `nenio.life.probation`; Block `nenio.kicked_out` lifted by: `nenio.life.probation`; Block `camellia.killed` lifted by: `camellia.trickster.cost.knows_you_tried`; Block `camellia.dead` lifted by: `camellia.trickster.coffin_life`; Block `camellia.kicked_out` lifted by: `camellia.trickster.killed_held`.
@@ -8082,7 +8086,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nenio_camellia.retry/start/1` — "Leave the lesson."
    - `household.pair.nenio_camellia.retry/refused/0` — Continue; records `household.pair.nenio_camellia.retry.seen`, `household.pair.nenio_camellia.retry.refused`, `household.pair.nenio_camellia.unsettled`, `nenio.harem.enmity.camellia`, `nenio.harem.stance.tolerated`; Blocked by: `nenio.harem.enmity_any`
 
-663. **Kaylessa: A trail outside Drezen** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.kaylessa_anevia.settle.solo","chapter":5,"day":104,"completed":true,"choices":[["start",0],["broken",0]]} -->
+664. **Kaylessa: A trail outside Drezen** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.kaylessa_anevia.settle.solo","chapter":5,"day":104,"completed":true,"choices":[["start",0],["broken",0]]} -->
    Scene `household.pair.kaylessa_anevia.settle.solo`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Kaylessa and Anevia: the scout's trail]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.table.kept`, `household.stance_eligible`, `kaylessa.harem.eligible`, `kaylessa.trickster.returned`, `kaylessa.trickster.clock_named`, `kaylessa.present_now`, `anevia.present_now`, `kaylessa.trickster.presence_on`, `anevia.harem.eligible`, `kaylessa.committed`; Blocked by: `kaylessa.closed`, `kaylessa.trickster.left_free`, `inhuman`, `kaylessa.dead`, `anevia.closed`, `anevia_dead`, `anevia_gone`, `swarm`, `true_lich`, `kaylessa.harem.enmity.w.anevia`, `anevia.harem.enmity.kaylessa`, `household.pair.kaylessa_anevia.retry.seen`, `household.pair.kaylessa_anevia.settle.seen`, `household.pair.kaylessa_anevia.anevia_pair_member`, `trickster.failed`; Block `kaylessa.harem.enmity.w.anevia` lifted by: `kaylessa.harem.reconciled.w.anevia`; Block `anevia.harem.enmity.kaylessa` lifted by: `anevia.harem.reconciled.kaylessa`; Block `kaylessa.dead` lifted by: `kaylessa.trickster.returned`; Block `anevia_gone` lifted by: `anevia.trickster.returned`.
@@ -8093,7 +8097,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 105
 
-664. **Together: A door worth coming home through** — Drezen. <!-- rrt-step {"scene":"future","chapter":5,"day":105,"completed":true,"choices":[["start",0],["room",0],["own",2],["choice_negotiated",3],["yes_negotiated",0]]} -->
+665. **Together: A door worth coming home through** — Drezen. <!-- rrt-step {"scene":"future","chapter":5,"day":105,"completed":true,"choices":[["start",0],["room",0],["own",2],["choice_negotiated",3],["yes_negotiated",0]]} -->
    Scene `future`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "When the war is over, what would you want our life to look like?"
    Need all: `power`, `a_self`, `i_self`, `power_terms`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `anevia_away`, `irabeth_away`, `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`.
@@ -8104,7 +8108,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `future/choice_negotiated/3` — "Yes. I choose a life with you both."; records `committed`; Need all: `tirabade.negotiated_table`
    - `future/yes_negotiated/0` — [Stay with them.]
 
-665. **Seelah: Before the last road** — Drezen. <!-- rrt-step {"scene":"seelah.farewell","chapter":5,"day":105,"completed":true,"choices":[["farewell_entry",1],["start",2],["boots",0],["end",0]]} -->
+666. **Seelah: Before the last road** — Drezen. <!-- rrt-step {"scene":"seelah.farewell","chapter":5,"day":105,"completed":true,"choices":[["farewell_entry",1],["start",2],["boots",0],["end",0]]} -->
    Scene `seelah.farewell`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Before we go any further, I want a moment with you."
    Need all: `seelah.ordinary`, `seelah.present_now`; Blocked by: `seelah.plot_departed`.
@@ -8114,7 +8118,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.farewell/boots/0` — "Then we should have as many as we can."
    - `seelah.farewell/end/0` — [Go forward together.]; records `seelah.farewell_kept`
 
-666. **Konomi: The price of a quiet street** — Drezen. <!-- rrt-step {"scene":"konomi.a_useful_supper","chapter":5,"day":105,"completed":true,"choices":[["start",0],["walk",0],["table",0],["needs",0]]} -->
+667. **Konomi: The price of a quiet street** — Drezen. <!-- rrt-step {"scene":"konomi.a_useful_supper","chapter":5,"day":105,"completed":true,"choices":[["start",0],["walk",0],["table",0],["needs",0]]} -->
    Scene `konomi.a_useful_supper`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You mentioned an invitation."
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.present_now`; Blocked by: `konomi.closed`, `konomi.dismissed`, `inhuman`, `konomi.ordinary`, `konomi.farewell`; Block `konomi.ordinary` lifted by: `konomi.ordinary_expansion_requested`; Block `konomi.farewell` lifted by: `konomi.ordinary_expansion_requested`.
@@ -8125,12 +8129,12 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.a_useful_supper/table/0` — [Ask what it would take for each of them to agree.]
    - `konomi.a_useful_supper/needs/0` — [Agree to meet them for the trial.]; records `konomi.supper_trial`
 
-667. **Jerribeth: An invitation after farewell** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.another_evening","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+668. **Jerribeth: An invitation after farewell** — rest delivery / Satchel: sending (Drezen / Nexus). <!-- rrt-step {"scene":"jerribeth.another_evening","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `jerribeth.another_evening`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `jerribeth.farewell`, `jerribeth.committed`, `jerribeth.reachable_by_letter`; Blocked by: `jerribeth.catchup_requested`, `jerribeth.trickster.met_by_toast`.
    - `jerribeth.another_evening/start/0` — "I want to return to it. There is time for more than the farewell we already said."; records `jerribeth.catchup_requested`
 
-668. **Soana: Where the steps end** — Wintersun. <!-- rrt-step {"scene":"soana.where_the_steps_end","chapter":5,"day":105,"completed":true,"choices":[["start",1],["role",0],["placing",0],["strong",0],["strong_end",0]]} -->
+669. **Soana: Where the steps end** — Wintersun. <!-- rrt-step {"scene":"soana.where_the_steps_end","chapter":5,"day":105,"completed":true,"choices":[["start",1],["role",0],["placing",0],["strong",0],["strong_end",0]]} -->
    Scene `soana.where_the_steps_end`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "I am ready to hear the thorn before anyone has to trust it."
    Need all: `soana.after_quest`, `soana.progression_kept`, `soana.late_boundary_agreed`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `inhuman`; Need one: `soana.old_defender`, `soana.bear_dead`.
@@ -8142,14 +8146,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.where_the_steps_end/strong/0` — [Stay while she marks the beginning and checks where the sound ends.]
    - `soana.where_the_steps_end/strong_end/0` — [Keep the stronger warning and return to hear about the gatherers.]; records `soana.late_thorn_strong`, `soana.late_thorn_tested`
 
-669. **Konomi: Konomi's word** — native dialogue listed below. <!-- rrt-step {"scene":"arsinoe.trickster.cauldron_seen.react_konomi","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+670. **Konomi: Konomi's word** — native dialogue listed below. <!-- rrt-step {"scene":"arsinoe.trickster.cauldron_seen.react_konomi","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `arsinoe.trickster.cauldron_seen.react_konomi`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "The priestess of Abadar has leased me a Council artefact."
    Need all: `arsinoe.trickster.cost.lien`, `konomi.in_office`, `arsinoe.present_now`; Blocked by: `konomi.dismissed`, `konomi.retained_dead`, `konomi.dead.unreturned`, `crossroute.konomi.unavailable`; Block `konomi.dismissed` lifted by: `arsinoe.trickster.konomi_serving`.
    Native answer-list host: `0dc8b8604bb33c846a63f3eb62443674`.
    - `arsinoe.trickster.cauldron_seen.react_konomi/start/0` — Continue
 
-670. **Gesmerha: The weight on the road** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_long_way_with_company","chapter":5,"day":105,"completed":true,"choices":[["start",0],["copies",0],["road",0],["read_water",0]]} -->
+671. **Gesmerha: The weight on the road** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_long_way_with_company","chapter":5,"day":105,"completed":true,"choices":[["start",0],["copies",0],["road",0],["read_water",0]]} -->
    Scene `gesmerha.the_long_way_with_company`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Are the things ready to be carried?"
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.post_resolution_contact`, `gesmerha.patterns_agreed`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -8160,7 +8164,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.the_long_way_with_company/road/0` — [Examine the current and the bank before choosing a crossing.]; PASS SkillLoreNature DC 26 (Commander only); success → `read_water`; failure → `mistaken`
    - `gesmerha.the_long_way_with_company/read_water/0` — [Carry the box the rest of the way without hurrying her.]; records `gesmerha.delivery_kept`, `gesmerha.crossing_read`
 
-671. **Anevia: Before the next road** — Drezen. <!-- rrt-step {"scene":"anevia.the_last_ordinary_thing","chapter":5,"day":105,"completed":true,"choices":[["start",0],["remember",0],["future",0]]} -->
+672. **Anevia: Before the next road** — Drezen. <!-- rrt-step {"scene":"anevia.the_last_ordinary_thing","chapter":5,"day":105,"completed":true,"choices":[["start",0],["remember",0],["future",0]]} -->
    Scene `anevia.the_last_ordinary_thing`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There was something I wanted to speak with you about."
    Need all: `anevia.future_chosen`, `anevia.case_consequence_kept`, `anevia.ordinary_life_kept`, `anevia.lover`, `anevia.present_now`; Blocked by: `closed`, `anevia.closed`, `inhuman`, `irabeth_dead`, `irabeth_gone`, `anevia_away`, `swarm`, `true_lich`; Block `irabeth_dead` lifted by: `irabeth.trickster.returned`; Block `anevia_away` lifted by: `anevia.trickster.returned`.
@@ -8170,21 +8174,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `anevia.the_last_ordinary_thing/remember/0` — [Hold her close.]
    - `anevia.the_last_ordinary_thing/future/0` — [Kiss her goodbye.]; records `anevia.developed`
 
-672. **Irabeth: Relieved** — native dialogue listed below. <!-- rrt-step {"scene":"irabeth.trickster.dead.setup","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+673. **Irabeth: Relieved** — native dialogue listed below. <!-- rrt-step {"scene":"irabeth.trickster.dead.setup","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `irabeth.trickster.dead.setup`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Relieved of duty, Knight-Captain. Not dismissed. You still have my order: take care of your Nevi."
    Need all: `trickster`, `irabeth.deathbed`; Blocked by: `irabeth.closed`, `irabeth.trickster.primed`, `trickster.failed`, `swarm`, `true_lich`, `crossroute.anevia.unavailable`; EntryMythic: PlayerIsTrickster.
    Native answer-list host: `09b65ca563cc63141aebf70b7abe7270`.
    - `irabeth.trickster.dead.setup/start/0` — [Refuse her salute] "Not dismissed, Irabeth. You hear me? Not dismissed."; records `irabeth.trickster.primed`, `irabeth.started`
 
-673. **Chivarro: The price of her name** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.the_price_of_her_name","chapter":5,"day":105,"completed":true,"choices":[["start",3],["walk",0]]} -->
+674. **Chivarro: The price of her name** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.the_price_of_her_name","chapter":5,"day":105,"completed":true,"choices":[["start",3],["walk",0]]} -->
    Scene `minagho_chivarro.trickster.after.the_price_of_her_name`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minagho_chivarro.trickster.tprev.offer`, `minagho_chivarro.trickster.chivarro_in`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `minagho_chivarro.trickster.tprev.name`, `minagho_chivarro.trickster.chivarro_walked`, `minagho_chivarro.trickster.chivarro_owned`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`; Block `minagho_chivarro.trickster.chivarro_owned` lifted by: `minagho_chivarro.trickster.bill_burned`.
    Actor must be physically available: `b7e819e2a9bb0804abcbffe8e7d91ba6`.
    - `minagho_chivarro.trickster.after.the_price_of_her_name/start/3` — "It's worth a joke. Most things are."; Blocked by: `minagho_chivarro.trickster.chivarro_owned`, `minagho_chivarro.trickster.pursuers_given`
    - `minagho_chivarro.trickster.after.the_price_of_her_name/walk/0` — [Let her go.]; records `minagho_chivarro.trickster.chivarro_walked`
 
-674. **Nocticula: Something behind your eyes** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.court.shamira","chapter":5,"day":105,"completed":true,"choices":[["sniff",0],["found",0],["lie",0],["hello",0]]} -->
+675. **Nocticula: Something behind your eyes** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.court.shamira","chapter":5,"day":105,"completed":true,"choices":[["sniff",0],["found",0],["lie",0],["hello",0]]} -->
    Scene `nocticula.trickster.court.shamira`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Keep your thoughts on the carpet.] "I've done what I came to do, Lady."
    Need all: `trickster`, `shamira.killed`, `shamira.trickster.primed`, `nocticula.present_now`; Blocked by: `nocticula.trickster.secret_known.shamira`, `shamira.trickster.declined`, `shamira.trickster.cast_out`, `shamira.trickster.embodied`, `trickster.failed`.
@@ -8194,7 +8198,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nocticula.trickster.court.shamira/lie/0` — Continue
    - `nocticula.trickster.court.shamira/hello/0` — [Say nothing more.]; records `nocticula.trickster.secret_known.shamira`
 
-675. **Dorgelinda: Two out of three** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.half_rations","chapter":5,"day":105,"completed":true,"choices":[["start",3],["short",0],["share",0],["after",0],["last",0]]} -->
+676. **Dorgelinda: Two out of three** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.half_rations","chapter":5,"day":105,"completed":true,"choices":[["start",3],["short",0],["share",0],["after",0],["last",0]]} -->
    Scene `dorgelinda.ledger.half_rations`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You weren't at the mess."
    Need all: `trickster.ever`, `dorgelinda.trickster.counted`, `dorgelinda.present`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.half_rations`, `dorgelinda.conscience_kept`.
@@ -8206,14 +8210,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.half_rations/after/0` — "Is that why you ate last?"; Blocked by: `dorgelinda.ledger.ordered_to_eat`
    - `dorgelinda.ledger.half_rations/last/0` — [Leave her to the letters.]
 
-676. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.react.greybor","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+677. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.react.greybor","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `hepzamirah.trickster.react.greybor`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Hepzamirah is back. In a body."
    Need all: `hepzamirah.trickster.returned`, `hepzamirah.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `hepzamirah.trickster.react.greybor/start/0` — Continue
 
-677. **Camellia: The funeral I would like** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.masks.the_funeral_i_would_like","chapter":5,"day":105,"completed":true,"choices":[["open",0],["critic",0],["hers",0],["promise",0],["close",0]]} -->
+678. **Camellia: The funeral I would like** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.masks.the_funeral_i_would_like","chapter":5,"day":105,"completed":true,"choices":[["open",0],["critic",0],["hers",0],["promise",0],["close",0]]} -->
    Scene `camellia.trickster.masks.the_funeral_i_would_like`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You're watching the procession."
    Need all: `trickster`, `camellia.trickster.masks.game`, `camellia.present_now`; Blocked by: `camellia.killed`, `camellia.dead`, `camellia.kicked_out`, `camellia.closed`, `trickster.failed`.
@@ -8225,7 +8229,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.masks.the_funeral_i_would_like/promise/0` — Continue; records `camellia.trickster.masks.funeral_promised`
    - `camellia.trickster.masks.the_funeral_i_would_like/close/0` — [Watch the procession go]
 
-678. **Eritrice: A lie for the chair** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.a_lie_for_the_chair","chapter":5,"day":105,"completed":true,"choices":[["start",0],["want",0],["agree",0],["close",0]]} -->
+679. **Eritrice: A lie for the chair** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.a_lie_for_the_chair","chapter":5,"day":105,"completed":true,"choices":[["start",0],["want",0],["agree",0],["close",0]]} -->
    Scene `eritrice.council.a_lie_for_the_chair`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You sent for me. Alone."
    Need all: `trickster.ever`, `eritrice.minutes.point_one`, `council.cauldron_given`, `eritrice.present_now`; Blocked by: `eritrice.closed`, `eritrice.lost_at_council`, `eritrice.council.a_lie_for_the_chair`, `eritrice.minutes.extracted`, `council.debrief_motion`, `council.walked_out`, `eritrice.essence_given`, `crossroute.chadali.unavailable`.
@@ -8235,14 +8239,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eritrice.council.a_lie_for_the_chair/agree/0` — [Let her write it.]
    - `eritrice.council.a_lie_for_the_chair/close/0` — [Leave her to her reckoning.]
 
-679. **Ember: Ember's word** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.react.ember_regret","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+680. **Ember: Ember's word** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.react.ember_regret","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `areelu.trickster.react.ember_regret`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "About Areelu..."
    Need all: `areelu.trickster.bet_offered`, `areelu.present_now`; Blocked by: `ember_dead`, `ember_gone`, `crossroute.ember.unavailable`, `ember.absent`.
    Native answer-list host: `f2a35965e9bc601449498bd022b04d9d`.
    - `areelu.trickster.react.ember_regret/start/0` — Continue
 
-680. **Chadali: Worthless** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.worthless","chapter":5,"day":105,"completed":true,"choices":[["open",0],["start",0],["frightened",0],["forgive",0],["close",0]]} -->
+681. **Chadali: Worthless** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.worthless","chapter":5,"day":105,"completed":true,"choices":[["open",0],["start",0],["frightened",0],["forgive",0],["close",0]]} -->
    Scene `chadali.fortunes.worthless`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "About what you said to Socothbenoth."
    Need all: `trickster.ever`, `chadali.started`, `chadali.worthless_essence`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.fortunes.worthless`.
@@ -8253,17 +8257,17 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.fortunes.worthless/forgive/0` — Continue
    - `chadali.fortunes.worthless/close/0` — [Go.]
 
-681. **Arueshalae: What they called me** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.old_name","chapter":5,"day":105,"completed":true,"choices":[["start",0],["offer",0],["didnt",0]]} -->
+682. **Arueshalae: What they called me** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.old_name","chapter":5,"day":105,"completed":true,"choices":[["start",1],["seen_voice",0],["didnt",0]]} -->
    Scene `arueshalae.treatment.old_name`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The woman in the Alushinyrra market. Who was she?"
    Need all: `trickster.ever`, `arueshalae.treatment.intake`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.old_name`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
-   - `arueshalae.treatment.old_name/start/0` — Continue
-   - `arueshalae.treatment.old_name/offer/0` — "You didn't say it."
+   - `arueshalae.treatment.old_name/start/1` — Continue; Need all: `arueshalae.treatment.old_acquaintance.voice`
+   - `arueshalae.treatment.old_name/seen_voice/0` — "You didn't say yes."
    - `arueshalae.treatment.old_name/didnt/0` — Continue; records `arueshalae.treatment.old_name`
 
-682. **Devarra: What you still owe** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.before_the_end","chapter":5,"day":105,"completed":true,"choices":[["start",0],["climb",0],["if",0],["end_her",0]]} -->
+683. **Devarra: What you still owe** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.tower.before_the_end","chapter":5,"day":105,"completed":true,"choices":[["start",0],["climb",0],["if",0],["end_her",0]]} -->
    Scene `devarra.tower.before_the_end`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "I'm going somewhere I might not come back from. I want to see her."
    Need all: `devarra.committed`, `coronation.seen`, `devarra.present_now`; Blocked by: `storyteller.dead`, `devarra.closed`, `devarra.tower.last_night`, `devarra.trickster.ending_claimed`, `devarra.trickster.judgment_refused`; Block `devarra.trickster.ending_claimed` lifted by: `devarra.trickster.judgment_answered`; Block `devarra.trickster.judgment_refused` lifted by: `devarra.trickster.judgment_answered`.
@@ -8273,7 +8277,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `devarra.tower.before_the_end/if/0` — Continue
    - `devarra.tower.before_the_end/end_her/0` — [Go down the mountain. Look back.]; records `devarra.tower.last_night`
 
-683. **Kaylessa: That blasted Kaylessa** — Drezen; hub `kaylessa.presence`. <!-- rrt-step {"scene":"kaylessa.wasps.anemora","chapter":5,"day":105,"completed":true,"choices":[["start",2],["else",0],["come",0],["after",1],["hand",0]]} -->
+684. **Kaylessa: That blasted Kaylessa** — Drezen; hub `kaylessa.presence`. <!-- rrt-step {"scene":"kaylessa.wasps.anemora","chapter":5,"day":105,"completed":true,"choices":[["start",2],["else",0],["come",0],["after",1],["hand",0]]} -->
    Scene `kaylessa.wasps.anemora`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You've been to Iz."
    Need all: `trickster.ever`, `kaylessa.trickster.after.rules`, `kaylessa.present_now`; Blocked by: `kaylessa.closed`, `kaylessa.trickster.left_free`, `kaylessa.wasps.anemora`; Need one of: `iz.done`, `iz.anemora_dead`, `kaylessa.anemora_told`.
@@ -8284,14 +8288,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kaylessa.wasps.anemora/after/1` — [Put your hand over hers on the bow.]
    - `kaylessa.wasps.anemora/hand/0` — [Stay with her.]
 
-684. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.react.lann_captain","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+685. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.react.lann_captain","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `mielarah.trickster.react.lann_captain`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You went up on Mielarah's ship?"
    Need all: `mielarah.deck.flown`, `mielarah.present_now`; Blocked by: `lann.dead`, `lann.kicked_out`.
    Native answer-list host: `66385ad77fa743e4bb1234078dbd804c`.
    - `mielarah.trickster.react.lann_captain/start/0` — Continue
 
-685. **Nidalynn: What she hunts** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"nidalynn.trickster.after.first_demon","chapter":5,"day":105,"completed":true,"choices":[["wall",0],["her",0],["well",0],["fed",0],["demons",0],["house",0],["bill",0],["end",0]]} -->
+686. **Nidalynn: What she hunts** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"nidalynn.trickster.after.first_demon","chapter":5,"day":105,"completed":true,"choices":[["wall",0],["her",0],["well",0],["fed",0],["demons",0],["house",0],["bill",0],["end",0]]} -->
    Scene `nidalynn.trickster.after.first_demon`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "I heard the sentries shouting in the night."
    Need all: `trickster.ever`, `nidalynn.trickster.snowfield`, `nidalynn.present_now`; Blocked by: `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.trickster.after.first_demon`.
@@ -8305,7 +8309,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nidalynn.trickster.after.first_demon/bill/0` — Continue
    - `nidalynn.trickster.after.first_demon/end/0` — [Sit on the step with them.]; records `nidalynn.trickster.after.first_demon`
 
-686. **Shamira: Someone behind your eyes** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.killed.voice","chapter":5,"day":105,"completed":true,"choices":[["start",0],["heavy",0],["moment",0],["voice",2],["cold",0],["socoth",0],["noct",0],["choose",0],["honest",0],["after",1]]} -->
+687. **Shamira: Someone behind your eyes** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.killed.voice","chapter":5,"day":105,"completed":true,"choices":[["start",0],["heavy",0],["moment",0],["voice",2],["cold",0],["socoth",0],["noct",0],["choose",0],["honest",0],["after",1]]} -->
    Scene `shamira.trickster.killed.voice`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Put a hand to your head. There is a second heartbeat in it.] "Wait. Before we go anywhere."
    Need all: `trickster.ever`, `shamira.killed`, `shamira.trickster.primed`, `trickster.now`; Blocked by: `shamira.trickster.heard`, `socot.gone`.
@@ -8321,7 +8325,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.killed.voice/honest/0` — Continue
    - `shamira.trickster.killed.voice/after/1` — [Say nothing.]
 
-687. **Terendelev: The first night** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.after.first_night","chapter":5,"day":105,"completed":true,"choices":[["start",0],["deaths",0],["iz",0],["sums",2],["owed",0]]} -->
+688. **Terendelev: The first night** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.after.first_night","chapter":5,"day":105,"completed":true,"choices":[["start",0],["deaths",0],["iz",0],["sums",2],["owed",0]]} -->
    Scene `terendelev.trickster.after.first_night`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look as though you haven't slept."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.after.first_night_awning`, `terendelev.trickster.first_night_seen`.
@@ -8332,7 +8336,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.after.first_night/sums/2` — [You owe me] "You owe me your life."; records `terendelev.trickster.first_night_seen`, `terendelev.trickster.owed`
    - `terendelev.trickster.after.first_night/owed/0` — [Leave her to her sums.]
 
-688. **Eliandra: Where the road goes** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.sarkoris","chapter":5,"day":105,"completed":true,"choices":[["start",0],["ash",0],["after",0]]} -->
+689. **Eliandra: Where the road goes** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.sarkoris","chapter":5,"day":105,"completed":true,"choices":[["start",0],["ash",0],["after",0]]} -->
    Scene `eliandra.trickster.ch5.sarkoris`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Where will you take them, when you go?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.sarkoris.told`.
@@ -8341,7 +8345,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.sarkoris/ash/0` — Continue
    - `eliandra.trickster.ch5.sarkoris/after/0` — [Leave her to her prayer.]; records `eliandra.trickster.sarkoris.told`
 
-689. **Galfrey: The next one** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.trial","chapter":5,"day":105,"completed":true,"choices":[["start",0],["objects",0],["answered",0],["four_days",0]]} -->
+690. **Galfrey: The next one** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.trial","chapter":5,"day":105,"completed":true,"choices":[["start",0],["objects",0],["answered",0],["four_days",0]]} -->
    Scene `galfrey.trickster.alive.trial`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "I have the next one, Your Majesty. Before anyone."
    Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.plan_kept`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.trickster.alive.trial_kept`, `galfrey.committed`, `galfrey.trickster.alive.trial_started`, `trickster.failed`.
@@ -8351,7 +8355,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `galfrey.trickster.alive.trial/answered/0` — Continue
    - `galfrey.trickster.alive.trial/four_days/0` — [Bow to the Queen.]; records `galfrey.trickster.alive.trial_started`
 
-690. **Horzalah: Not Hepzamirah** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.name","chapter":5,"day":105,"completed":true,"choices":[["start",0],["sister_here",0],["choice",0],["sergeant",0],["sergeant2",0]]} -->
+691. **Horzalah: Not Hepzamirah** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.name","chapter":5,"day":105,"completed":true,"choices":[["start",0],["sister_here",0],["choice",0],["sergeant",0],["sergeant2",0]]} -->
    Scene `horzalah.trickster.beat.name`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You look like you want to kill someone."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.name_said`, `horzalah.trickster.ally`.
@@ -8362,14 +8366,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.name/sergeant/0` — Continue
    - `horzalah.trickster.beat.name/sergeant2/0` — [Let her not thank you.]; records `horzalah.trickster.beat.name_said`
 
-691. **Nenio: Nenio's word** — Drezen. <!-- rrt-step {"scene":"melazmera.trickster.react.nenio_specimen","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
+692. **Nenio: Nenio's word** — Drezen. <!-- rrt-step {"scene":"melazmera.trickster.react.nenio_specimen","chapter":5,"day":105,"completed":true,"choices":[["start",0]]} -->
    Scene `melazmera.trickster.react.nenio_specimen`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You're watching the Wound."
    Need all: `trickster.ever`, `melazmera.trickster.fed`, `crossroute.nenio.available`, `melazmera.present_now`; Blocked by: `nenio.dead`, `nenio.killed_by_commander`, `nenio.sent_away`, `nenio.kicked_out`, `nenio.dissolved`, `crossroute.nenio.unavailable`, `nenio.life.unavailable`; Block `nenio.dead` lifted by: `nenio.life.recreated`; Block `nenio.killed_by_commander` lifted by: `nenio.life.unremembered`; Block `nenio.sent_away` lifted by: `nenio.life.probation`; Block `nenio.kicked_out` lifted by: `nenio.life.probation`.
    Native answer-list host: `1ab909cc3a6194840b1475b99547c263`.
    - `melazmera.trickster.react.nenio_specimen/start/0` — Continue
 
-692. **Yaniel: What Iz was like** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.verdict.letter","chapter":5,"day":105,"completed":true,"choices":[["start",0],["letter",1],["quiet",0],["letter_iz",1],["end_quiet",0]]} -->
+693. **Yaniel: What Iz was like** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.verdict.letter","chapter":5,"day":105,"completed":true,"choices":[["start",0],["letter",1],["quiet",0],["letter_iz",1],["end_quiet",0]]} -->
    Scene `yaniel.trickster.verdict.letter`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You weren't on the wall."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `iz.done`, `yaniel.trickster.carries`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.trickster.verdict`, `yaniel.trickster.handed_after_iz`.
@@ -8380,7 +8384,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.verdict.letter/letter_iz/1` — Continue; Blocked by: `yaniel.trickster.carries_holy`
    - `yaniel.trickster.verdict.letter/end_quiet/0` — "After the watch."; records `yaniel.trickster.verdict`
 
-693. **Wenduag: In the dark, the strong one decides** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.cairn","chapter":5,"day":105,"completed":true,"choices":[["start",0],["dark",0],["stones",2],["own_kept",0],["top",0],["decide",0],["wenduag.trickster.court.cairn.explicit.1",0],["cut",0]]} -->
+694. **Wenduag: In the dark, the strong one decides** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.cairn","chapter":5,"day":105,"completed":true,"choices":[["start",0],["dark",0],["stones",2],["own_kept",0],["top",0],["decide",0],["wenduag.trickster.court.cairn.explicit.1",0],["cut",0]]} -->
    Scene `wenduag.trickster.court.cairn`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: In the dark, the strong one decides
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.committed`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.cairn`, `wenduag.trickster.native`, `wenduag.closed`.
@@ -8394,24 +8398,24 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.cairn/wenduag.trickster.court.cairn.explicit.1/0` — Continue; Blocked by: `wenduag.trickster.echo.abyss.returned`
    - `wenduag.trickster.court.cairn/cut/0` — Continue; records `wenduag.trickster.court.cairn`
 
-694. **Memory: The woman who kept the accounts** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_clerks_own_price","chapter":5,"day":105,"completed":true,"choices":[["start",0],["reason",0],["sample",0],["named",0],["named_end",0]]} -->
+695. **Memory: The woman who kept the accounts** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_clerks_own_price","chapter":5,"day":105,"completed":true,"choices":[["start",0],["reason",0],["sample",0],["named",0],["named_end",0]]} -->
    Scene `vellexia.the_clerks_own_price`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Hear Tessar's terms through the echo shell.]
    Need all: `vellexia.native_finished`, `vellexia.account_read`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`.
-   - `vellexia.the_clerks_own_price/start/0` — "Then tell me why you are willing to sell the account."
+   - `vellexia.the_clerks_own_price/start/0` — "Then tell me why you are selling him."
    - `vellexia.the_clerks_own_price/reason/0` — [Examine the sample she wants to use.]
    - `vellexia.the_clerks_own_price/sample/0` — "It is clear. You may use this account, including my name, once the alterations are independently checked."
    - `vellexia.the_clerks_own_price/named/0` — [Let her finish the arrangement before she leaves.]
    - `vellexia.the_clerks_own_price/named_end/0` — [Await Ilveris's answer.]; records `vellexia.witness_heard`, `vellexia.named_sample`
 
-695. **Melazmera: The thing in the swamp** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.queen","chapter":5,"day":105,"completed":true,"choices":[["start",4],["denied",0],["dismiss",0]]} -->
+696. **Melazmera: The thing in the swamp** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.queen","chapter":5,"day":105,"completed":true,"choices":[["start",4],["denied",0],["dismiss",0]]} -->
    Scene `melazmera.trickster.beat.queen`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.queen_contract_offered`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.queen`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.queen/start/4` — Continue; Need all: `melazmera.trickster.queen_refused_crown`; Blocked by: `melazmera.queen_gone`, `melazmera.trickster.queen_crowned`, `melazmera.trickster.queen_withheld`
    - `melazmera.trickster.beat.queen/denied/0` — "She's back in her swamp. Let her keep it."
    - `melazmera.trickster.beat.queen/dismiss/0` — Continue; records `melazmera.trickster.beat.queen`
 
-696. **Iomedae: The canons** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.canons","chapter":5,"day":105,"completed":true,"choices":[["start",1],["canon_new",0],["rules",0],["told",0],["lesson",0],["win",0]]} -->
+697. **Iomedae: The canons** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.canons","chapter":5,"day":105,"completed":true,"choices":[["start",1],["canon_new",0],["rules",0],["told",0],["lesson",0],["win",0]]} -->
    Scene `iomedae.trickster.canons`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.started`, `iomedae.trickster.disputation.called`, `iomedae.present_now`; Blocked by: `iomedae.closed`, `iomedae.trickster.canons_studied`, `iomedae.trickster.disputed`.
    - `iomedae.trickster.canons/start/1` — Continue; Blocked by: `iomedae.trickster.order_banner`
@@ -8423,7 +8427,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 106
 
-697. **Together: No one at the door** — owner contact / rest. <!-- rrt-step {"scene":"shared_night","chapter":5,"day":106,"completed":true,"choices":[["start",0],["near",0],["close",0],["morning",0]]} -->
+698. **Together: No one at the door** — owner contact / rest. <!-- rrt-step {"scene":"shared_night","chapter":5,"day":106,"completed":true,"choices":[["start",0],["near",0],["close",0],["morning",0]]} -->
    Scene `shared_night`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "I would like an evening with you both. No promises beyond tonight."
    Need all: `future`, `committed`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`.
@@ -8432,7 +8436,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shared_night/close/0` — [Let the night remain private.]
    - `shared_night/morning/0` — [Enjoy the five minutes.]; records `shared_evening`
 
-698. **Seelah: Time before the gates** — Drezen. <!-- rrt-step {"scene":"seelah.farewell_catchup","chapter":5,"day":106,"completed":true,"choices":[["start",0],["yes",0]]} -->
+699. **Seelah: Time before the gates** — Drezen. <!-- rrt-step {"scene":"seelah.farewell_catchup","chapter":5,"day":106,"completed":true,"choices":[["start",0],["yes",0]]} -->
    Scene `seelah.farewell_catchup`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "We said goodbye, but the gates are still ahead of us. Shall we take that outing we missed?"
    Need all: `seelah.farewell`, `seelah.committed`, `seelah.present_now`; Blocked by: `seelah.closed`, `seelah_dead`, `seelah_gone`, `inhuman`, `seelah.catchup_requested`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -8440,7 +8444,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.farewell_catchup/start/0` — "Then let us take those outings we missed."
    - `seelah.farewell_catchup/yes/0` — [Keep your farewell, and take another outing together before leaving Drezen.]; records `seelah.catchup_requested`
 
-699. **Konomi: What reaches the rooms above** — Drezen. <!-- rrt-step {"scene":"konomi.the_upper_passage","chapter":5,"day":106,"completed":true,"choices":[["start",0],["hear",0],["repair",0],["early_end",0]]} -->
+700. **Konomi: What reaches the rooms above** — Drezen. <!-- rrt-step {"scene":"konomi.the_upper_passage","chapter":5,"day":106,"completed":true,"choices":[["start",0],["hear",0],["repair",0],["early_end",0]]} -->
    Scene `konomi.the_upper_passage`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Shall we see what the yard sounds like?"
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.supper_trial`, `konomi.present_now`; Blocked by: `konomi.closed`, `konomi.dismissed`, `inhuman`, `konomi.ordinary`, `konomi.farewell`; Block `konomi.ordinary` lifted by: `konomi.ordinary_expansion_requested`; Block `konomi.farewell` lifted by: `konomi.ordinary_expansion_requested`.
@@ -8451,14 +8455,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.the_upper_passage/repair/0` — [Measure the carrying distance with her.]
    - `konomi.the_upper_passage/early_end/0` — [Agree to hear the revised proposal.]; records `konomi.yard_heard`, `konomi.yard_precise`
 
-700. **Woljif: Woljif's word** — native dialogue listed below. <!-- rrt-step {"scene":"jerribeth.trickster.reaction.woljif_visitor","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
+701. **Woljif: Woljif's word** — native dialogue listed below. <!-- rrt-step {"scene":"jerribeth.trickster.reaction.woljif_visitor","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
    Scene `jerribeth.trickster.reaction.woljif_visitor`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Jerribeth's visit..."
    Need all: `jerribeth.trickster.cost.forfeit`, `jerribeth.committed`, `jerribeth.trickster.visited`, `jerribeth.present_now`; Blocked by: `woljif.dead`, `woljif.kicked_out`, `jerribeth.trickster.returned`, `jerribeth.trickster.met_by_toast`.
    Native answer-list host: `e41585da330233143b34ef64d7d62d69`.
    - `jerribeth.trickster.reaction.woljif_visitor/start/0` — Continue
 
-701. **Soana: The spirits' portion, again** — native dialogue listed below. <!-- rrt-step {"scene":"soana.trickster.handover.winter_portion","chapter":5,"day":106,"completed":true,"choices":[["start",0],["shared",0]]} -->
+702. **Soana: The spirits' portion, again** — native dialogue listed below. <!-- rrt-step {"scene":"soana.trickster.handover.winter_portion","chapter":5,"day":106,"completed":true,"choices":[["start",0],["shared",0]]} -->
    Scene `soana.trickster.handover.winter_portion`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "The spirits came, didn't they?"
    Need all: `trickster.ever`, `soana.trickster.cost.blood_given`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `soana.trickster.cost.portion_shared`, `soana.trickster.portion_watched`.
@@ -8466,7 +8470,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.trickster.handover.winter_portion/start/0` — [Hold out your own palm] "My joke. My blood. Pay them from me this winter."; records `soana.trickster.cost.portion_shared`
    - `soana.trickster.handover.winter_portion/shared/0` — [Leave her to the frost]
 
-702. **Gesmerha: The work someone else began** — Wintersun. <!-- rrt-step {"scene":"gesmerha.a_lesson_without_her","chapter":5,"day":106,"completed":true,"choices":[["start",0],["present",0],["patterns",0],["copies",0],["hers",0],["invitation",0]]} -->
+703. **Gesmerha: The work someone else began** — Wintersun. <!-- rrt-step {"scene":"gesmerha.a_lesson_without_her","chapter":5,"day":106,"completed":true,"choices":[["start",0],["present",0],["patterns",0],["copies",0],["hers",0],["invitation",0]]} -->
    Scene `gesmerha.a_lesson_without_her`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What did the learners make of the patterns?"
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.post_resolution_contact`, `gesmerha.delivery_kept`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -8479,7 +8483,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.a_lesson_without_her/hers/0` — "Yes. Tell me where you would like to meet."
    - `gesmerha.a_lesson_without_her/invitation/0` — [Keep the private invitation.]; records `gesmerha.work_settled`
 
-703. **Irabeth: A road without an assignment** — Drezen. <!-- rrt-step {"scene":"irabeth.a_road_she_would_choose","chapter":5,"day":106,"completed":true,"choices":[["start",0],["drawings",0],["towns",0],["practice",0],["measured",0],["want",0],["lasting",0],["end",0]]} -->
+704. **Irabeth: A road without an assignment** — Drezen. <!-- rrt-step {"scene":"irabeth.a_road_she_would_choose","chapter":5,"day":106,"completed":true,"choices":[["start",0],["drawings",0],["towns",0],["practice",0],["measured",0],["want",0],["lasting",0],["end",0]]} -->
    Scene `irabeth.a_road_she_would_choose`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Selruna is expecting us. Have you decided what you want to ask?"
    Need all: `irabeth.instruction_tested`, `irabeth.present_now`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`, `swarm`, `true_lich`.
@@ -8494,7 +8498,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `irabeth.a_road_she_would_choose/lasting/0` — [Kiss her back and let the onion go.]; records `irabeth.committed`, `irabeth.partner_stance.share`; Blocked by: `anevia_dead`
    - `irabeth.a_road_she_would_choose/end/0` — [Carry the onions home.]; records `irabeth.future_chosen`
 
-704. **Dorgelinda: After hours** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.after_hours","chapter":5,"day":106,"completed":true,"choices":[["start",0],["bolted",2],["count",0],["tell",0],["threshold",0],["dorgelinda.ledger.after_hours.explicit.1",0]]} -->
+705. **Dorgelinda: After hours** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.after_hours","chapter":5,"day":106,"completed":true,"choices":[["start",0],["bolted",2],["count",0],["tell",0],["threshold",0],["dorgelinda.ledger.after_hours.explicit.1",0]]} -->
    Scene `dorgelinda.ledger.after_hours`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "The clerks have gone home."
    Need all: `trickster.ever`, `dorgelinda.committed`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.after_hours`.
@@ -8507,14 +8511,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.after_hours/threshold/0` — [The lamp gutters out.]
    - `dorgelinda.ledger.after_hours/dorgelinda.ledger.after_hours.explicit.1/0` — [Stay with her.]; records `dorgelinda.ledger.night_kept`
 
-705. **Ember: Ember's word** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.react.ember","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
+706. **Ember: Ember's word** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.react.ember","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
    Scene `hepzamirah.trickster.react.ember`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Hepzamirah is out."
    Need all: `hepzamirah.trickster.returned`, `ember.present`, `hepzamirah.present_now`; Blocked by: `ember_dead`, `ember_gone`, `ember.killed_in_kenabres`, `ember.native_devastated`, `crossroute.ember.unavailable`, `ember.absent`.
    Native answer-list host: `f2a35965e9bc601449498bd022b04d9d`.
    - `hepzamirah.trickster.react.ember/start/0` — Continue
 
-706. **Camellia: The shelf** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.bond.shelf_alive","chapter":5,"day":106,"completed":true,"choices":[["open",0],["shelf",0],["list",0],["what_a",0],["kept",0]]} -->
+707. **Camellia: The shelf** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.bond.shelf_alive","chapter":5,"day":106,"completed":true,"choices":[["open",0],["shelf",0],["list",0],["what_a",0],["kept",0]]} -->
    Scene `camellia.trickster.bond.shelf_alive`; chapters 3–5 (only 3, 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Camellia. What have you done to my room?"
    Need all: `trickster.ever`, `camellia.committed`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`, `camellia.trickster.bond.shelf`.
@@ -8526,7 +8530,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.bond.shelf_alive/what_a/0` — [Fold it and put it back on the shelf]
    - `camellia.trickster.bond.shelf_alive/kept/0` — [Leave it where it is]; records `camellia.trickster.bond.shelf`, `camellia.trickster.bond.list_kept`
 
-707. **Eritrice: The Lady in Shadow** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.the_lady_in_shadow","chapter":5,"day":106,"completed":true,"choices":[["start",0],["dealings",0],["more",0],["close",0]]} -->
+708. **Eritrice: The Lady in Shadow** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.the_lady_in_shadow","chapter":5,"day":106,"completed":true,"choices":[["start",0],["dealings",0],["more",0],["close",0]]} -->
    Scene `eritrice.council.the_lady_in_shadow`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You mentioned Nocticula in session."
    Need all: `trickster.ever`, `eritrice.minutes.point_one`, `eritrice.nocticula_named`, `eritrice.present_now`; Blocked by: `eritrice.closed`, `eritrice.lost_at_council`, `eritrice.council.the_lady_in_shadow`, `crossroute.nocticula.unavailable`.
@@ -8536,7 +8540,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eritrice.council.the_lady_in_shadow/more/0` — Continue
    - `eritrice.council.the_lady_in_shadow/close/0` — [Go.]
 
-708. **Chadali: Sharp needles** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.sharp_needles","chapter":5,"day":106,"completed":true,"choices":[["open",0],["start",0],["sit",0],["joke",0]]} -->
+709. **Chadali: Sharp needles** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.fortunes.sharp_needles","chapter":5,"day":106,"completed":true,"choices":[["open",0],["start",0],["sit",0],["joke",0]]} -->
    Scene `chadali.fortunes.sharp_needles`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "How are you?"
    Need all: `trickster.ever`, `chadali.started`, `chadali.needle_hurt`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.fortunes.sharp_needles`.
@@ -8546,7 +8550,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.fortunes.sharp_needles/sit/0` — [Tell her a very bad joke.]
    - `chadali.fortunes.sharp_needles/joke/0` — [Stay.]
 
-709. **Arueshalae: The hunger returns** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.relapse_two","chapter":5,"day":106,"completed":true,"choices":[["start",0],["want",0],["ask",0],["fast",0]]} -->
+710. **Arueshalae: The hunger returns** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.relapse_two","chapter":5,"day":106,"completed":true,"choices":[["start",0],["want",0],["ask",0],["fast",0]]} -->
    Scene `arueshalae.treatment.relapse_two`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You look as though you haven't rested."
    Need all: `arueshalae.treatment.kitchen`, `arueshalae.treatment.rite_slipped`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.relapse_two`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -8557,7 +8561,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.relapse_two/ask/0` — "Then we stop. A week. No hands. I'll still come and see you."; records `arueshalae.treatment.relapse_two`, `arueshalae.treatment.fast`
    - `arueshalae.treatment.relapse_two/fast/0` — Continue
 
-710. **Mielarah: Special cargo** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.special_cargo","chapter":5,"day":106,"completed":true,"choices":[["start",0],["cargo",0],["abaddon",0],["spite",0],["differently",0],["version",0]]} -->
+711. **Mielarah: Special cargo** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.special_cargo","chapter":5,"day":106,"completed":true,"choices":[["start",0],["cargo",0],["abaddon",0],["spite",0],["differently",0],["version",0]]} -->
    Scene `mielarah.deck.special_cargo`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "There is more to your work for the Arcanamirium than carrying passengers."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.flown`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.special_cargo.arcade`, `mielarah.deck.cargo_told`.
@@ -8569,14 +8573,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.special_cargo/differently/0` — "The woman who walked out untouched finds someone to stand beside her who knows the rule. And he has to watch that."; records `mielarah.deck.cargo_told`
    - `mielarah.deck.special_cargo/version/0` — [Stay until the singing stops.]
 
-711. **Shyka: Shyka's word** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.react.shyka","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
+712. **Shyka: Shyka's word** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.react.shyka","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
    Scene `shamira.trickster.react.shyka`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: [Let Shyka look at you, and at whoever is looking out.]
    Need all: `trickster.ever`, `shamira.trickster.returned`, `shamira.present_now`; Blocked by: `shyka.gone`.
    Native answer-list host: `d3d0efb4dfcc1964c923d7b2d6e0dc77`.
    - `shamira.trickster.react.shyka/start/0` — Continue
 
-712. **Jannah: The ninth bell, and after** — Drezen; hub `jannah.presence.back`. <!-- rrt-step {"scene":"jannah.trickster.alive.wagon","chapter":5,"day":106,"completed":true,"choices":[["open",0],["old_scar",0],["ford",0],["said",0],["stay",0]]} -->
+713. **Jannah: The ninth bell, and after** — Drezen; hub `jannah.presence.back`. <!-- rrt-step {"scene":"jannah.trickster.alive.wagon","chapter":5,"day":106,"completed":true,"choices":[["open",0],["old_scar",0],["ford",0],["said",0],["stay",0]]} -->
    Scene `jannah.trickster.alive.wagon`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Open: "You came back."
    Need all: `trickster.ever`, `jannah.trickster.alive.posted`, `trickster.now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.trickster.returned`.
@@ -8587,7 +8591,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.trickster.alive.wagon/said/0` — "Then stay."; records `jannah.trickster.returned`, `jannah.started`, `jannah.trickster.cost.story_lost`, `jannah.trickster.cost.posting`
    - `jannah.trickster.alive.wagon/stay/0` — [Let her have the cell.]
 
-713. **Nenio: Volume one** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.volume_one","chapter":5,"day":106,"completed":true,"choices":[["open",0],["give",0],["committed",0],["back",0]]} -->
+714. **Nenio: Volume one** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.volume_one","chapter":5,"day":106,"completed":true,"choices":[["open",0],["give",0],["committed",0],["back",0]]} -->
    Scene `nenio.folio.volume_one`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You're packing."
    Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.volume_one`, `nenio.folio.volume_one_visitor`, `nenio.folio.volume_one_arcade`, `nenio.trickster.visitor`; Need one of: `nenio.folio.page_one`, `nenio.folio.page_one_visitor`, `nenio.folio.page_one_arcade`.
@@ -8598,7 +8602,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.folio.volume_one/committed/0` — "I'll carry it. And I'll bring it back."
    - `nenio.folio.volume_one/back/0` — [Put volume one in your pack.]
 
-714. **Terendelev: Pry loose the grip** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.proof","chapter":5,"day":106,"completed":true,"choices":[["start",0],["cut",0],["healed",0],["living",1],["fear",1],["gap.try",0],["promise",0],["end",0]]} -->
+715. **Terendelev: Pry loose the grip** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.proof","chapter":5,"day":106,"completed":true,"choices":[["start",0],["cut",0],["healed",0],["living",1],["fear",1],["gap.try",0],["promise",0],["end",0]]} -->
    Scene `terendelev.trickster.watch.proof`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You sent a boy to find me."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.proof_awning`.
@@ -8612,7 +8616,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.proof/promise/0` — "You kept the part that mattered."; records `terendelev.trickster.watch.proof_seen`
    - `terendelev.trickster.watch.proof/end/0` — [Leave her with her hand still warm from yours.]
 
-715. **Eliandra: A cup for the dead** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.remembrance","chapter":5,"day":106,"completed":true,"choices":[["start",0],["later",0],["cup",0],["after",0]]} -->
+716. **Eliandra: A cup for the dead** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.remembrance","chapter":5,"day":106,"completed":true,"choices":[["start",0],["later",0],["cup",0],["after",0]]} -->
    Scene `eliandra.trickster.ch5.remembrance`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Odden is pouring wine for the dead. Will you drink with them?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.remembrance`.
@@ -8622,7 +8626,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.remembrance/cup/0` — [Drink with them.]
    - `eliandra.trickster.ch5.remembrance/after/0` — [Set your cup down beside hers.]; records `eliandra.trickster.remembrance`
 
-716. **Horzalah: A gift in the Abyss's idiom** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.test.the_gift","chapter":5,"day":106,"completed":true,"choices":[["start",0],["gift",0],["decline",0],["decline_end",0]]} -->
+717. **Horzalah: A gift in the Abyss's idiom** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.test.the_gift","chapter":5,"day":106,"completed":true,"choices":[["start",0],["gift",0],["decline",0],["decline_end",0]]} -->
    Scene `horzalah.trickster.test.the_gift`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Who is your friend?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.test.the_gift_night`, `horzalah.trickster.tested`, `horzalah.trickster.ally`, `horzalah.trickster.left_free`.
@@ -8632,7 +8636,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.test.the_gift/decline/0` — Continue
    - `horzalah.trickster.test.the_gift/decline_end/0` — [Watch them go.]; records `horzalah.trickster.tested`
 
-717. **Yaniel: Yaniel of Drezen, the Holy Martyr** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.statue","chapter":5,"day":106,"completed":true,"choices":[["start",0],["sheet",1],["appearance",0],["appears",0],["meal",1],["look",0],["lie",0],["end",0]]} -->
+718. **Yaniel: Yaniel of Drezen, the Holy Martyr** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.statue","chapter":5,"day":106,"completed":true,"choices":[["start",0],["sheet",1],["appearance",0],["appears",0],["meal",1],["look",0],["lie",0],["end",0]]} -->
    Scene `yaniel.trickster.beat.statue`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There's a crowd at the east gate."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.trickster.beat.walls`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -8646,7 +8650,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.statue/lie/0` — Continue
    - `yaniel.trickster.beat.statue/end/0` — [Leave her there.]; records `yaniel.trickster.beat.statue`
 
-718. **Wenduag: Grit in your hair** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.morning","chapter":5,"day":106,"completed":true,"choices":[["start",0],["stone",0],["stairs",0],["given",0],["end",0],["stone_shown",0]]} -->
+719. **Wenduag: Grit in your hair** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.morning","chapter":5,"day":106,"completed":true,"choices":[["start",0],["stone",0],["stairs",0],["given",0],["end",0],["stone_shown",0]]} -->
    Scene `wenduag.trickster.court.morning`; chapters 5–5 (only 5); wait at least 8h after the latest prerequisite; complete.
    Open: Grit in your hair
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.trickster.court.cairn`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.morning`, `wenduag.trickster.native`, `wenduag.closed`, `wenduag.trickster.morning.stone`.
@@ -8658,7 +8662,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.morning/end/0` — [Put the stone on the table beside her.]; records `wenduag.trickster.morning.stone`
    - `wenduag.trickster.court.morning/stone_shown/0` — Continue
 
-719. **Delamere: A claim on the temple** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_hepzamirah.open","chapter":5,"day":106,"completed":true,"choices":[["start",0],["impounded",0]]} -->
+720. **Delamere: A claim on the temple** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_hepzamirah.open","chapter":5,"day":106,"completed":true,"choices":[["start",0],["impounded",0]]} -->
    Scene `household.pair.delamere_hepzamirah.open`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Visit: A claim on the temple]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `delamere.harem.eligible`, `delamere.trickster.returned`, `hepzamirah.trickster.returned`; Blocked by: `delamere.closed`, `delamere.epoch_unavailable`, `sacrifice`, `household.pair.delamere_hepzamirah.open.seen`, `trickster.failed`; Block `sacrifice` lifted by: `trickster.commander_back`.
@@ -8667,7 +8671,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.delamere_hepzamirah.open/start/0` — "Keep the stone and the requisition. I'll take her the claim in her own name."
    - `household.pair.delamere_hepzamirah.open/impounded/0` — Continue; records `household.pair.delamere_hepzamirah.open.seen`, `household.pair.delamere_hepzamirah.open.ready`, `household.pair.delamere_hepzamirah.known.present_claim`, `household.pair.delamere_hepzamirah.goods.equipment_impounded`
 
-720. **Arueshalae: A name without kneeling** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.arueshalae_nocticula.settle.redeemed","chapter":5,"day":106,"completed":true,"choices":[["start",2],["refused",0]]} -->
+721. **Arueshalae: A name without kneeling** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.arueshalae_nocticula.settle.redeemed","chapter":5,"day":106,"completed":true,"choices":[["start",2],["refused",0]]} -->
    Scene `household.pair.arueshalae_nocticula.settle.redeemed`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Arueshalae’s renunciation]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `arueshalae.harem.eligible`, `nocticula.harem.eligible`, `arueshalae.present_now`, `nocticula.reachable_by_letter`, `noct.acq.renewed_agreement`, `noct.acq.seal_received`, `noct.acq.an_answer_of_her_own_done`, `arueshalae.redeemed`; Blocked by: `fool_king.gone`, `trickster.failed`, `noct.closed`, `noct.acq.closed`, `noct.acq.council_fight`, `arueshalae.closed`, `arueshalae.epoch_unavailable`, `nocticula.epoch_unavailable`, `household.pair.arueshalae_nocticula.resolved`, `household.pair.arueshalae_nocticula.permanent_refusal`, `arueshalae.harem.enmity.nocticula`, `nocticula.harem.enmity.arueshalae`, `household.pair.arueshalae_nocticula.settle.seen`, `arueshalae.corrupted`, `engine.l12.commander_unreturned`; Need one of: `noct.acq.channel_provisional`, `noct.acq.channel_letters_only`; Block `arueshalae.harem.enmity.nocticula` lifted by: `arueshalae.harem.reconciled.nocticula`; Block `nocticula.harem.enmity.arueshalae` lifted by: `nocticula.harem.reconciled.arueshalae`.
@@ -8676,7 +8680,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.arueshalae_nocticula.settle.redeemed/start/2` — "Then leave the claim disputed."
    - `household.pair.arueshalae_nocticula.settle.redeemed/refused/0` — Continue; records `household.pair.arueshalae_nocticula.settle.seen`, `household.pair.arueshalae_nocticula.permanent_refusal`, `household.pair.arueshalae_nocticula.unsettled`, `arueshalae.harem.enmity.nocticula`, `arueshalae.harem.stance.tolerated`; Blocked by: `arueshalae.harem.enmity_any`
 
-721. **Seelah: The false trail** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.watch","chapter":5,"day":106,"completed":true,"choices":[["start",0],["result_0",1],["brask_0",0]]} -->
+722. **Seelah: The false trail** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.watch","chapter":5,"day":106,"completed":true,"choices":[["start",0],["result_0",1],["brask_0",0]]} -->
    Scene `household.pair.seelah_wenduag.watch`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Seelah and Wenduag: The false trail]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.seelah_wenduag.invited`, `seelah.harem.eligible`, `wenduag.harem.eligible`, `seelah.harem.attitude.wenduag.respect`, `wenduag.harem.attitude.seelah.respect`, `seelah.present_now`, `wenduag.present_now`; Blocked by: `seelah.harem.enmity.wenduag`, `wenduag.harem.enmity.seelah`, `household.pair.seelah_wenduag.watch.seen`, `fool_king.gone`, `trickster.failed`, `household.cap.ch5.arcs`; Need one of: `household.pair.seelah_wenduag.spar.held`, `household.pair.seelah_wenduag.rematch.held`; Block `seelah.harem.enmity.wenduag` lifted by: `seelah.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.seelah` lifted by: `wenduag.harem.reconciled.seelah`.
@@ -8686,7 +8690,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_wenduag.watch/result_0/1` — Continue; Need all: `wenduag.trickster.claim.given`
    - `household.pair.seelah_wenduag.watch/brask_0/0` — Continue; records `household.pair.seelah_wenduag.watch.seen`, `household.pair.seelah_wenduag.watch.done`
 
-722. **Memory: Won back** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.won_back","chapter":5,"day":106,"completed":true,"choices":[["start",0],["answer",0],["hand",0],["house_too",0]]} -->
+723. **Memory: Won back** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.won_back","chapter":5,"day":106,"completed":true,"choices":[["start",0],["answer",0],["hand",0],["house_too",0]]} -->
    Scene `minagho_chivarro.trickster.after.won_back`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minagho_chivarro.trickster.chivarro_walked`, `minagho_chivarro.trickster.chivarro_in`, `minagho.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `minagho_chivarro.trickster.tprev.name`, `minagho_chivarro.trickster.chivarro_owned`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`; Block `minagho_chivarro.trickster.chivarro_owned` lifted by: `minagho_chivarro.trickster.bill_burned`.
    - `minagho_chivarro.trickster.after.won_back/start/0` — [Send the silk] "A bolt of Nerosyan silk, dyed Delights red, and a card: 'Your price. Name it again.'"; crusade Finances -200
@@ -8694,7 +8698,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minagho_chivarro.trickster.after.won_back/hand/0` — Continue
    - `minagho_chivarro.trickster.after.won_back/house_too/0` — "You keep the house. Minagho keeps the door."; records `minagho_chivarro.trickster.tprev.name`, `minagho_chivarro.trickster.cost.won_back`, `minagho_chivarro.trickster.cost.palm_on_table`, `minagho_chivarro.trickster.tprev.house`, `minachiv.host_ending`
 
-723. **Memory: The Apprentice at the gate** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"hepzamirah.trickster.body.hounds","chapter":5,"day":106,"completed":true,"choices":[["door",0],["sister_at_gate",0],["wrong_princess",0],["her_flesh",0],["sister_counter",0],["throat",0],["paid_blood",3],["joke",1]]} -->
+724. **Memory: The Apprentice at the gate** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"hepzamirah.trickster.body.hounds","chapter":5,"day":106,"completed":true,"choices":[["door",0],["sister_at_gate",0],["wrong_princess",0],["her_flesh",0],["sister_counter",0],["throat",0],["paid_blood",3],["joke",1]]} -->
    Scene `hepzamirah.trickster.body.hounds`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.courier_seen`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
    - `hepzamirah.trickster.body.hounds/door/0` — Continue
@@ -8706,7 +8710,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.body.hounds/paid_blood/3` — Continue; Blocked by: `hepzamirah.trickster.cost.lab_funded`, `hepzamirah.trickster.cost.mutasafen_grudge`, `minagho_chivarro.trickster.debt.collectors`
    - `hepzamirah.trickster.body.hounds/joke/1` — [Let her have him] "He's yours."; records `hepzamirah.trickster.courier_seen`, `hepzamirah.trickster.cost.courier_killed`
 
-724. **Shamira: The first night** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"shamira.trickster.mind.first_night","chapter":5,"day":106,"completed":true,"choices":[["start",1],["c_heard",1],["c_nirvana",0],["c_socoth",0],["look",0],["sleep",1],["want",0],["steward",0],["noct",0],["l_throne",0],["l_no",0],["sleep_now",0],["in_again",0],["wt_start",0],["wt_tour",0],["wt_afraid",0],["wt_list",0],["wt_hang",0],["wt_after",0],["h_start",0],["h_wardrobe",1],["h_house",0],["h_market",1],["h_street",2],["h_inside",0],["h_choose",0],["h_clean",0],["h_home",0]]} -->
+725. **Shamira: The first night** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"shamira.trickster.mind.first_night","chapter":5,"day":106,"completed":true,"choices":[["start",1],["c_heard",1],["c_nirvana",0],["c_socoth",0],["look",0],["sleep",1],["want",0],["steward",0],["noct",0],["l_throne",0],["l_no",0],["sleep_now",0],["in_again",0],["wt_start",0],["wt_tour",0],["wt_afraid",0],["wt_list",0],["wt_hang",0],["wt_after",0],["h_start",0],["h_wardrobe",1],["h_house",0],["h_market",1],["h_street",2],["h_inside",0],["h_choose",0],["h_clean",0],["h_home",0]]} -->
    Scene `shamira.trickster.mind.first_night`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `shamira.trickster.returned`, `shamira.trickster.heard`, `shamira.reachable_by_letter`; Blocked by: `shamira.trickster.first_night`, `shamira.trickster.embodied`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
    - `shamira.trickster.mind.first_night/start/1` — Continue; Need all: `shamira.trickster.primed`, `shamira.cauldron_shown.latched`; Blocked by: `shamira.trickster.council_heard`
@@ -8738,7 +8742,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.mind.first_night/h_clean/0` — Continue; records `shamira.trickster.shell`
    - `shamira.trickster.mind.first_night/h_home/0` — [Close the wardrobe.]
 
-725. **Melazmera: Over the Wound** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.flight","chapter":5,"day":106,"completed":true,"choices":[["start",0],["up",0],["see",0],["sees",0],["dive",0],["hold",0],["home",0]]} -->
+726. **Melazmera: Over the Wound** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.flight","chapter":5,"day":106,"completed":true,"choices":[["start",0],["up",0],["see",0],["sees",0],["dive",0],["hold",0],["home",0]]} -->
    Scene `melazmera.trickster.beat.flight`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.flight`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.flight/start/0` — [Climb up behind her head.]
@@ -8749,7 +8753,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.beat.flight/hold/0` — Continue
    - `melazmera.trickster.beat.flight/home/0` — [Go down to bed.]; records `melazmera.trickster.beat.flight`
 
-726. **Iomedae: Disputation** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.disputation","chapter":5,"day":106,"completed":true,"choices":[["start",0],["sword",0],["open",0],["arrive",0],["called",0],["obj1",0],["obj1_ok",0],["obj2",0],["obj2_ok",0],["obj_power",0],["power_ok",0],["obj3",2],["plain",0],["after3",2],["concede",0],["privilege",4],["concession.postponed",0]]} -->
+727. **Iomedae: Disputation** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"iomedae.trickster.disputation","chapter":5,"day":106,"completed":true,"choices":[["start",0],["sword",0],["open",0],["arrive",0],["called",0],["obj1",0],["obj1_ok",0],["obj2",0],["obj2_ok",0],["obj_power",0],["power_ok",0],["obj3",2],["plain",0],["after3",2],["concede",0],["privilege",4],["concession.postponed",0]]} -->
    Scene `iomedae.trickster.disputation`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.started`, `iomedae.trickster.bridge_known`, `iomedae.trickster.disputation.called`, `iz.done`, `trickster.now`, `iomedae.reachable_by_letter`; Blocked by: `iomedae.closed`, `iomedae.committed`, `iomedae.trickster.declined`, `iomedae.trickster.argument_only`, `iomedae.herald_spite`; Block `iomedae.herald_spite` lifted by: `iomedae.trickster.herald_accounted`.
    - `iomedae.trickster.disputation/start/0` — Continue; Need all: `iomedae.banner_in_hand`
@@ -8770,7 +8774,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `iomedae.trickster.disputation/privilege/4` — [Leave the personal question for another night.]; Blocked by: `iomedae.trickster.courted`
    - `iomedae.trickster.disputation/concession.postponed/0` — [Leave the banner raised.]; records `iomedae.trickster.disputed`, `iomedae.trickster.argument_only`, `iomedae.trickster.concession.postponed`
 
-727. **Horzalah: The patrol's warning** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.horzalah_hepzamirah.truce","chapter":5,"day":106,"completed":true,"choices":[["start",1],["refused",0]]} -->
+728. **Horzalah: The patrol's warning** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.horzalah_hepzamirah.truce","chapter":5,"day":106,"completed":true,"choices":[["start",1],["refused",0]]} -->
    Scene `household.pair.horzalah_hepzamirah.truce`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [The patrol's warning]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `horzalah.present_now`, `hepzamirah.present_now`, `hepzamirah.trickster.returned`; Blocked by: `fool_king.gone`, `trickster.failed`, `engine.l12.commander_unreturned`, `horzalah.epoch_unavailable`, `horzalah.returned_actor_lost`, `horzalah.closed`, `horzalah.dead`, `horzalah.trickster.left_free`, `horzalah.presence.failed`, `hepzamirah.epoch_unavailable`, `hepzamirah.returned_actor_lost`, `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`, `hepzamirah.presence.failed`, `household.pair.horzalah_hepzamirah.truce.seen`, `household.pair.horzalah_hepzamirah.resolved`, `household.pair.horzalah_hepzamirah.permanent_refusal`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -8779,7 +8783,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.horzalah_hepzamirah.truce/start/1` — [Leave it unsettled.]
    - `household.pair.horzalah_hepzamirah.truce/refused/0` — Continue; records `household.pair.horzalah_hepzamirah.truce.seen`, `household.pair.horzalah_hepzamirah.permanent_refusal`, `household.pair.horzalah_hepzamirah.unsettled`
 
-728. **Seelah: The shield on the bench** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_arueshalae.company","chapter":5,"day":106,"completed":true,"choices":[["start",1],["declined",0]]} -->
+729. **Seelah: The shield on the bench** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_arueshalae.company","chapter":5,"day":106,"completed":true,"choices":[["start",1],["declined",0]]} -->
    Scene `household.pair.seelah_arueshalae.company`; chapters 3–5 (only 3, 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Seelah and Arueshalae: company]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.table.kept`, `household.stance_eligible`, `household.pair.seelah_arueshalae.ready`, `arueshalae.redeemed`, `household.pair.seelah_arueshalae.arueshalae_body`, `seelah.harem.eligible`, `seelah.present_now`, `arueshalae.harem.eligible`, `arueshalae.present_now`; Blocked by: `fool_king.gone`, `trickster.failed`, `arueshalae.corrupted`, `sacrifice`, `household.pair.seelah_arueshalae.company.seen`, `household.pair.seelah_arueshalae.arc.declined`, `seelah.closed`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`, `seelah.returned_actor_lost`, `seelah.harem.enmity.arueshalae`, `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.returned_actor_lost`, `arueshalae.harem.enmity.seelah`, `household.cap.ch5.arcs`; Block `sacrifice` lifted by: `trickster.commander_back`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`; Block `seelah.harem.enmity.arueshalae` lifted by: `seelah.harem.reconciled.arueshalae`; Block `arueshalae.harem.enmity.seelah` lifted by: `arueshalae.harem.reconciled.seelah`.
@@ -8788,7 +8792,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_arueshalae.company/start/1` — "Keep it to supper tonight."
    - `household.pair.seelah_arueshalae.company/declined/0` — Continue; records `household.pair.seelah_arueshalae.company.seen`, `household.pair.seelah_arueshalae.company.declined`, `household.pair.seelah_arueshalae.arc.declined`
 
-729. **Kiana: The trouble with an entrance** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.stagecraft","chapter":5,"day":106,"completed":true,"choices":[["start",0],["play",0],["laugh",0],["threat",0],["end",0]]} -->
+730. **Kiana: The trouble with an entrance** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.stagecraft","chapter":5,"day":106,"completed":true,"choices":[["start",0],["play",0],["laugh",0],["threat",0],["end",0]]} -->
    Scene `kiana.stagecraft`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `kiana.present_now`; Blocked by: `kiana.farewell_kept`; Need one of: `seelah.souls_returned`, `kiana.trickster.met`; Need one of: `kiana.company`, `kiana.trickster.met`.
    - `kiana.stagecraft/start/0` — "I have climbed seven mountains, crossed a desert, and been directed to the wrong staircase twice."
@@ -8797,15 +8801,15 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kiana.stagecraft/threat/0` — [Help her rehearse the rest of the scene.]; records `kiana.quiet_entrance`
    - `kiana.stagecraft/end/0` — [Step carefully over the cliff.]; records `kiana.rehearsed`
 
-730. **Memory: The cost of a certain answer** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_wager_with_an_edge","chapter":5,"day":106,"completed":true,"choices":[["start",0],["account",0],["publish",0]]} -->
+731. **Memory: The cost of a certain answer** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_wager_with_an_edge","chapter":5,"day":106,"completed":true,"choices":[["start",0],["account",0],["publish",0]]} -->
    Scene `vellexia.the_wager_with_an_edge`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Hear Ilveris's response to the proposed challenge.]
    Need all: `vellexia.native_finished`, `vellexia.witness_heard`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`.
-   - `vellexia.the_wager_with_an_edge/start/0` — [Ask about exposing the altered accounts without taking his wager.]
-   - `vellexia.the_wager_with_an_edge/account/0` — "Publish the checked account. Keep the circlet and let this be enough."
-   - `vellexia.the_wager_with_an_edge/publish/0` — [Let the checked account stand without a wager.]; records `vellexia.wager_chosen`, `vellexia.published_accounts`
+   - `vellexia.the_wager_with_an_edge/start/0` — [Ask about breaking his trade without taking his wager.]
+   - `vellexia.the_wager_with_an_edge/account/0` — "Break his trade in front of them all. Keep the circlet and let that be enough."
+   - `vellexia.the_wager_with_an_edge/publish/0` — [Let the unmasking stand without a wager.]; records `vellexia.wager_chosen`, `vellexia.published_accounts`
 
-731. **Memory: The list** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.the_remaining_customers","chapter":5,"day":106,"completed":true,"choices":[["start",0],["plans",0],["document",0]]} -->
+732. **Memory: The list** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"minachiv.the_remaining_customers","chapter":5,"day":106,"completed":true,"choices":[["start",0],["plans",0],["document",0]]} -->
    Scene `minachiv.the_remaining_customers`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: The list
    Need all: `minagho.ran_complete`, `minagho.book_three_finished`, `minachiv.reunion_history`, `minachiv.arrival_kept`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minagho.dead`, `chivarro.dead`, `inhuman`, `minagho_chivarro.trickster.committed`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`.
@@ -8813,7 +8817,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minachiv.the_remaining_customers/plans/0` — "Show me Veyr's letter."
    - `minachiv.the_remaining_customers/document/0` — "Sell him the names. Keep your house alive."; records `minachiv.offer_heard`, `minachiv.terms_sent`, `minachiv.evidence_kept`, `minachiv.business_chosen`
 
-732. **Melazmera: What a thief takes** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.commit.stone","chapter":5,"day":106,"completed":true,"choices":[["start",0],["flight",0],["cave",0],["count",0],["why_takes",0],["open",0],["stone",0],["yes",0],["home",0]]} -->
+733. **Melazmera: What a thief takes** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.commit.stone","chapter":5,"day":106,"completed":true,"choices":[["start",0],["flight",0],["cave",0],["count",0],["why_takes",0],["open",0],["stone",0],["yes",0],["home",0]]} -->
    Scene `melazmera.trickster.commit.stone`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `trickster.now`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.committed`, `melazmera.trickster.declined`, `melazmera.closed`.
    - `melazmera.trickster.commit.stone/start/0` — [Climb up behind her head.]
@@ -8826,7 +8830,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.commit.stone/yes/0` — "I understand you."
    - `melazmera.trickster.commit.stone/home/0` — [Let her see the sapphire in your pocket.]; records `melazmera.committed`, `melazmera.trickster.stone_kept`; Need all: `trickster.now`
 
-733. **Iomedae: Her herald** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.herald","chapter":5,"day":106,"completed":true,"choices":[["start",2],["fought",1],["known",0]]} -->
+734. **Iomedae: Her herald** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.herald","chapter":5,"day":106,"completed":true,"choices":[["start",2],["fought",1],["known",0]]} -->
    Scene `iomedae.trickster.dream.herald`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.started`, `iomedae.key_dies_revealed.latched`, `iomedae.reachable_by_letter`; Blocked by: `iomedae.closed`, `iomedae.trickster.herald_dream`; Need one of: `iomedae.herald_saved`, `iomedae.herald_fell`, `iomedae.herald_fought`.
    - `iomedae.trickster.dream.herald/start/2` — Continue; Need all: `iomedae.herald_fought`; Blocked by: `iomedae.herald_saved`, `iomedae.herald_fell`, `iomedae.herald_spite`
@@ -8835,7 +8839,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 107
 
-734. **Together: The days behind the promise** — Drezen. <!-- rrt-step {"scene":"three_kept_days","chapter":5,"day":107,"completed":true,"choices":[["start",0],["unfinished",0],["beth",0],["keep",0]]} -->
+735. **Together: The days behind the promise** — Drezen. <!-- rrt-step {"scene":"three_kept_days","chapter":5,"day":107,"completed":true,"choices":[["start",0],["unfinished",0],["beth",0],["keep",0]]} -->
    Scene `three_kept_days`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "We have made time for each other. What do you want to keep building?"
    Need all: `future`, `committed`, `kept_terms`, `three_rooms_unlocked.kept`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `closed`, `loss`, `inhuman`, `irabeth_away`, `anevia_away`, `last_watch`, `three_progression.developed`, `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`; Block `last_watch` lifted by: `three_progression.catchup_requested`.
@@ -8844,7 +8848,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `three_kept_days/beth/0` — "I want to keep building a life with you both, with room for the people and work we each love."
    - `three_kept_days/keep/0` — [Keep the promise with the days you have already shared behind it.]; records `three_progression.developed`
 
-735. **Seelah: The missing teeth** — Drezen. <!-- rrt-step {"scene":"seelah.borrowed_saw","chapter":5,"day":107,"completed":true,"choices":[["start",0],["yard",1],["person",0],["listened",0],["broken",0],["work",0],["repayment",0],["gift",0],["walk",0],["practice",0],["thanks",0]]} -->
+736. **Seelah: The missing teeth** — Drezen. <!-- rrt-step {"scene":"seelah.borrowed_saw","chapter":5,"day":107,"completed":true,"choices":[["start",0],["yard",1],["person",0],["listened",0],["broken",0],["work",0],["repayment",0],["gift",0],["walk",0],["practice",0],["thanks",0]]} -->
    Scene `seelah.borrowed_saw`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said you wanted a second pair of hands."
    Need all: `seelah.courting`, `seelah.weight`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -8861,7 +8865,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.borrowed_saw/practice/0` — "Mera needed help too. That saw earns her bread."
    - `seelah.borrowed_saw/thanks/0` — [Stay until they have agreed on the repair.]; records `seelah.saw_arranged`
 
-736. **Konomi: Who pays for the improvement** — Drezen. <!-- rrt-step {"scene":"konomi.two_bad_prices","chapter":5,"day":107,"completed":true,"choices":[["start",0],["preference",0],["trade",0],["evening",0]]} -->
+737. **Konomi: Who pays for the improvement** — Drezen. <!-- rrt-step {"scene":"konomi.two_bad_prices","chapter":5,"day":107,"completed":true,"choices":[["start",0],["preference",0],["trade",0],["evening",0]]} -->
    Scene `konomi.two_bad_prices`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What will you propose to Varine?"
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.yard_heard`, `konomi.present_now`; Blocked by: `konomi.closed`, `konomi.dismissed`, `inhuman`, `konomi.ordinary`, `konomi.farewell`; Block `konomi.ordinary` lifted by: `konomi.ordinary_expansion_requested`; Block `konomi.farewell` lifted by: `konomi.ordinary_expansion_requested`.
@@ -8872,7 +8876,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.two_bad_prices/trade/0` — "Try one evening wagon, with the repair, two paid porters and a firm stopping time. It is worth learning whether that opening can work."
    - `konomi.two_bad_prices/evening/0` — [Stay for supper after the agreement.]; records `konomi.trial_chosen`, `konomi.evening_trial`
 
-737. **Arsinoe: Collateral** — Drezen. <!-- rrt-step {"scene":"arsinoe.trickster.cauldron.collection","chapter":5,"day":107,"completed":true,"choices":[["start",0],["pledge",0],["still",0],["stay",2]]} -->
+738. **Arsinoe: Collateral** — Drezen. <!-- rrt-step {"scene":"arsinoe.trickster.cauldron.collection","chapter":5,"day":107,"completed":true,"choices":[["start",0],["pledge",0],["still",0],["stay",2]]} -->
    Scene `arsinoe.trickster.cauldron.collection`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You wanted to see me about the lease?"
    Need all: `trickster.ever`, `arsinoe.capital`, `arsinoe.trickster.primed`, `arsinoe.trickster.cauldron.lease`, `arsinoe.present_now`; Blocked by: `arsinoe.trickster.cauldron.collection`, `arsinoe.closed`.
@@ -8883,7 +8887,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arsinoe.trickster.cauldron.collection/still/0` — Continue
    - `arsinoe.trickster.cauldron.collection/stay/2` — "Business, then. May Abadar keep you."; records `arsinoe.trickster.collection_closed`
 
-738. **Gesmerha: After the last knock** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_room_she_chose","chapter":5,"day":107,"completed":true,"choices":[["start",0],["lover",1],["gentle",0]]} -->
+739. **Gesmerha: After the last knock** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_room_she_chose","chapter":5,"day":107,"completed":true,"choices":[["start",0],["lover",1],["gentle",0]]} -->
    Scene `gesmerha.the_room_she_chose`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "It is me. May I come in?"
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.post_resolution_contact`, `gesmerha.work_settled`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -8893,7 +8897,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.the_room_she_chose/lover/1` — "Talk and kisses tonight. The rest another night."
    - `gesmerha.the_room_she_chose/gentle/0` — [Keep the gentle evening as lovers.]; records `gesmerha.private_evening_kept`, `gesmerha.late_lovers`
 
-739. **Irabeth: What she asked you to keep** — Drezen. <!-- rrt-step {"scene":"irabeth.the_hour_before_battle","chapter":5,"day":107,"completed":true,"choices":[["start",0],["wanted",0],["future",0],["lasting",0],["wife",0],["wife_living",0],["choice",1],["hold",0],["end",0]]} -->
+740. **Irabeth: What she asked you to keep** — Drezen. <!-- rrt-step {"scene":"irabeth.the_hour_before_battle","chapter":5,"day":107,"completed":true,"choices":[["start",0],["wanted",0],["future",0],["lasting",0],["wife",0],["wife_living",0],["choice",1],["hold",0],["end",0]]} -->
    Scene `irabeth.the_hour_before_battle`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Before the final fighting, I want to see you."
    Need all: `irabeth.future_chosen`, `irabeth.present_now`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`, `swarm`, `true_lich`.
@@ -8909,7 +8913,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `irabeth.the_hour_before_battle/hold/0` — [Let her release you when it is time.]; records `irabeth.farewell_held`
    - `irabeth.the_hour_before_battle/end/0` — [Go and do your part.]; records `irabeth.campaign_kept`
 
-740. **Minagho: Before the last road** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.before_the_last_road","chapter":5,"day":107,"completed":true,"choices":[["start",0],["terms",0],["stance_0_share",0],["threshold",0],["minagho_chivarro.trickster.after.before_the_last_road.explicit.1",0]]} -->
+741. **Minagho: Before the last road** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.before_the_last_road","chapter":5,"day":107,"completed":true,"choices":[["start",0],["terms",0],["stance_0_share",0],["threshold",0],["minagho_chivarro.trickster.after.before_the_last_road.explicit.1",0]]} -->
    Scene `minagho_chivarro.trickster.after.before_the_last_road`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minagho_chivarro.trickster.tprev.house`, `minagho_chivarro.trickster.minagho_in`, `minagho_chivarro.trickster.chivarro_in`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minachiv.closed`, `minachiv.complete`, `minagho_chivarro.trickster.declined`, `minagho_chivarro.trickster.kept_in_service`, `minagho_chivarro.trickster.chivarro_owned`, `minachiv.closed`, `minagho.dead`, `chivarro.dead`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`; Block `minagho_chivarro.trickster.chivarro_owned` lifted by: `minagho_chivarro.trickster.bill_burned`.
    Actor must be physically available: `b7e819e2a9bb0804abcbffe8e7d91ba6`.
@@ -8919,7 +8923,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minagho_chivarro.trickster.after.before_the_last_road/threshold/0` — Continue; records `minagho_chivarro.trickster.night.pair`
    - `minagho_chivarro.trickster.after.before_the_last_road/minagho_chivarro.trickster.after.before_the_last_road.explicit.1/0` — Continue
 
-741. **Dorgelinda: The morning count** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.morning_count","chapter":5,"day":107,"completed":true,"choices":[["start",0],["book",0],["sergeant",0],["consequence",0],["understood",0]]} -->
+742. **Dorgelinda: The morning count** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.morning_count","chapter":5,"day":107,"completed":true,"choices":[["start",0],["book",0],["sergeant",0],["consequence",0],["understood",0]]} -->
    Scene `dorgelinda.ledger.morning_count`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: "Mornin'."
    Need all: `trickster.ever`, `dorgelinda.ledger.after_hours`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.morning_count`.
@@ -8931,14 +8935,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.morning_count/consequence/0` — "Quartermaster. Understood."
    - `dorgelinda.ledger.morning_count/understood/0` — [Put your boot on.]; records `dorgelinda.ledger.office_rules`
 
-742. **Woljif: Woljif's word** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.react.woljif_promised","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
+743. **Woljif: Woljif's word** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.trickster.react.woljif_promised","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
    Scene `hepzamirah.trickster.react.woljif_promised`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Hepzamirah is back. In a body."
    Need all: `hepzamirah.trickster.returned`, `woljif.moon_promised`, `hepzamirah.present_now`; Blocked by: `woljif.dead`, `woljif.kicked_out`, `woljif.moon_doubt`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
    Native answer-list host: `e41585da330233143b34ef64d7d62d69`.
    - `hepzamirah.trickster.react.woljif_promised/start/0` — Continue
 
-743. **Camellia: Breakfast** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.evening.breakfast_alive","chapter":5,"day":107,"completed":true,"choices":[["open",0],["cook",0],["ate",0],["close",0]]} -->
+744. **Camellia: Breakfast** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.evening.breakfast_alive","chapter":5,"day":107,"completed":true,"choices":[["open",0],["cook",0],["ate",0],["close",0]]} -->
    Scene `camellia.trickster.evening.breakfast_alive`; chapters 3–5 (only 3, 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're awake early."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.trickster.bond.shelf`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -8949,7 +8953,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.evening.breakfast_alive/ate/0` — Continue
    - `camellia.trickster.evening.breakfast_alive/close/0` — [Finish breakfast]; Blocked by: `camellia.trickster.encounter.all`
 
-744. **Eritrice: The rules of the Crossroads** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.rules_of_the_crossroads","chapter":5,"day":107,"completed":true,"choices":[["start",0],["minutes",0],["two",0],["you",0],["close",0]]} -->
+745. **Eritrice: The rules of the Crossroads** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.council.rules_of_the_crossroads","chapter":5,"day":107,"completed":true,"choices":[["start",0],["minutes",0],["two",0],["you",0],["close",0]]} -->
    Scene `eritrice.council.rules_of_the_crossroads`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You're drafting something."
    Need all: `trickster.ever`, `eritrice.committed`, `eritrice.minutes.the_convening`, `eritrice.present_now`; Blocked by: `eritrice.closed`, `eritrice.lost_at_council`, `eritrice.council.rules_of_the_crossroads`.
@@ -8960,7 +8964,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eritrice.council.rules_of_the_crossroads/you/0` — [Help her write it.]
    - `eritrice.council.rules_of_the_crossroads/close/0` — [Sign.]; records `eritrice.council.crossroads_drafted`
 
-745. **Chadali: We are friends, right?** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.sessions.we_are_friends_right","chapter":5,"day":107,"completed":true,"choices":[["start",0],["not_jar",0],["close",0]]} -->
+746. **Chadali: We are friends, right?** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.sessions.we_are_friends_right","chapter":5,"day":107,"completed":true,"choices":[["start",0],["not_jar",0],["close",0]]} -->
    Scene `chadali.sessions.we_are_friends_right`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "About what I asked you in session..."
    Need all: `trickster.ever`, `chadali.started`, `chadali.pressed_on_essence`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.sessions.we_are_friends_right`.
@@ -8969,7 +8973,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.sessions.we_are_friends_right/not_jar/0` — Continue
    - `chadali.sessions.we_are_friends_right/close/0` — [Promise to write it down.]
 
-746. **Arueshalae: Beside your bed** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.the_wound","chapter":5,"day":107,"completed":true,"choices":[["start",0],["helpless",0],["stitch",0],["go",0]]} -->
+747. **Arueshalae: Beside your bed** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.the_wound","chapter":5,"day":107,"completed":true,"choices":[["start",0],["helpless",0],["stitch",0],["go",0]]} -->
    Scene `arueshalae.treatment.the_wound`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're sitting up. Good."
    Need all: `trickster.ever`, `arueshalae.treatment.kitchen`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.the_wound`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -8977,10 +8981,10 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
    - `arueshalae.treatment.the_wound/start/0` — Continue
    - `arueshalae.treatment.the_wound/helpless/0` — Continue
-   - `arueshalae.treatment.the_wound/stitch/0` — "Doctor's orders. Go ahead."; records `arueshalae.treatment.the_wound`
+   - `arueshalae.treatment.the_wound/stitch/0` — "Go ahead. Steady hands."; records `arueshalae.treatment.the_wound`
    - `arueshalae.treatment.the_wound/go/0` — Continue
 
-747. **Mielarah: Disciplinary thought-correction** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.correction","chapter":5,"day":107,"completed":true,"choices":[["start",0],["cabin",1],["box_first",0],["freed",0],["after",0]]} -->
+748. **Mielarah: Disciplinary thought-correction** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.correction","chapter":5,"day":107,"completed":true,"choices":[["start",0],["cabin",1],["box_first",0],["freed",0],["after",0]]} -->
    Scene `mielarah.deck.correction`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I heard shouting on your deck."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.flown`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.correction.arcade`, `mielarah.deck.corrected`.
@@ -8991,21 +8995,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.correction/freed/0` — Continue; Blocked by: `mielarah.amulets_used`
    - `mielarah.deck.correction/after/0` — [Go back through the portal.]
 
-748. **Arueshalae: Arueshalae's word** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.react.arueshalae_inside_unseen","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
+749. **Arueshalae: Arueshalae's word** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.react.arueshalae_inside_unseen","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
    Scene `shamira.trickster.react.arueshalae_inside_unseen`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "You won't look at me."
    Need all: `trickster.ever`, `shamira.trickster.returned`, `shamira.present_now`; Blocked by: `shamira.trickster.embodied`, `shamira.closed`, `shamira.saw_arueshalae`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.corrupted`, `crossroute.arueshalae.unavailable`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`; Block `arueshalae.evil_dead` lifted by: `arueshalae.trickster.returned`.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    - `shamira.trickster.react.arueshalae_inside_unseen/start/0` — Continue
 
-749. **Irabeth: Irabeth's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.irabeth_wagon_free","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
+750. **Irabeth: Irabeth's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.irabeth_wagon_free","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
    Scene `jannah.trickster.react.irabeth_wagon_free`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "About the deserter in the gaol..."
    Need all: `jannah.trickster.returned`, `irabeth.present_now`, `jannah.present_now`; Blocked by: `irabeth_dead`, `jannah.dead.latched`, `jannah.condemned`, `irabeth_gone`, `swarm`, `true_lich`; Block `irabeth_dead` lifted by: `irabeth.trickster.returned`.
    Native answer-list host: `871af36f2ab2b1f40b5de77976c54276`.
    - `jannah.trickster.react.irabeth_wagon_free/start/0` — Continue
 
-750. **Nenio: Five minutes in Kenabres** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.inquisitors","chapter":5,"day":107,"completed":true,"choices":[["open",0],["remembered_open",0],["run",2],["remember_new",0],["believe",0]]} -->
+751. **Nenio: Five minutes in Kenabres** — native dialogue listed below. <!-- rrt-step {"scene":"nenio.folio.inquisitors","chapter":5,"day":107,"completed":true,"choices":[["open",0],["remembered_open",0],["run",2],["remember_new",0],["believe",0]]} -->
    Scene `nenio.folio.inquisitors`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "What have you recorded about Kenabres?"
    Need all: `trickster.ever`, `nenio.trickster.scribe`, `nenio.present_now`; Blocked by: `nenio.closed`, `nenio.folio.inquisitors`, `nenio.folio.inquisitors_visitor`, `nenio.folio.inquisitors_arcade`, `nenio.trickster.visitor`; Need one of: `nenio.folio.page_one`, `nenio.folio.page_one_visitor`, `nenio.folio.page_one_arcade`.
@@ -9017,7 +9021,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nenio.folio.inquisitors/remember_new/0` — "What do you believe?"
    - `nenio.folio.inquisitors/believe/0` — [Leave her to compare the notes.]
 
-751. **Terendelev: The shape she cannot take** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.wings","chapter":5,"day":107,"completed":true,"choices":[["start",0],["wall",0],["fail",0],["after",1],["kind",0]]} -->
+752. **Terendelev: The shape she cannot take** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.wings","chapter":5,"day":107,"completed":true,"choices":[["start",0],["wall",0],["fail",0],["after",1],["kind",0]]} -->
    Scene `terendelev.trickster.watch.wings`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The sentries say you were on the wall at midnight."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.wings_awning`.
@@ -9028,7 +9032,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.wings/after/1` — "You don't need wings to be what you are."; records `terendelev.trickster.watch.wings_tried`
    - `terendelev.trickster.watch.wings/kind/0` — [Stay a while.]
 
-752. **Eliandra: The strongest of her servants** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.healer","chapter":5,"day":107,"completed":true,"choices":[["start",0],["talk",0],["strongest",0],["end",0]]} -->
+753. **Eliandra: The strongest of her servants** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.healer","chapter":5,"day":107,"completed":true,"choices":[["start",0],["talk",0],["strongest",0],["end",0]]} -->
    Scene `eliandra.trickster.ch5.healer`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You should rest. You've been healing since the fighting stopped."
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.healing_seen`.
@@ -9038,7 +9042,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.healer/strongest/0` — Continue
    - `eliandra.trickster.ch5.healer/end/0` — [Help her to her feet.]; records `eliandra.trickster.healing_seen`
 
-753. **Horzalah: The collar** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.commit.collar","chapter":5,"day":107,"completed":true,"choices":[["start",1],["noted",0],["look",0],["word",0],["word2",0],["word3",0]]} -->
+754. **Horzalah: The collar** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.commit.collar","chapter":5,"day":107,"completed":true,"choices":[["start",1],["noted",0],["look",0],["word",0],["word2",0],["word3",0]]} -->
    Scene `horzalah.trickster.commit.collar`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Walk with me."
    Need all: `trickster.ever`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.commit.collar_night`, `horzalah.committed`, `horzalah.trickster.declined`.
@@ -9050,7 +9054,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.commit.collar/word2/0` — Continue
    - `horzalah.trickster.commit.collar/word3/0` — [Draw her closer.]; records `horzalah.committed`; Need all: `trickster.now`
 
-754. **Yaniel: Joran's brand** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.staunton","chapter":5,"day":107,"completed":true,"choices":[["start",1],["learned",0],["brand",0],["carries",0],["grief",0],["ashamed",0],["end",0]]} -->
+755. **Yaniel: Joran's brand** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.staunton","chapter":5,"day":107,"completed":true,"choices":[["start",1],["learned",0],["brand",0],["carries",0],["grief",0],["ashamed",0],["end",0]]} -->
    Scene `yaniel.trickster.beat.staunton`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look like you have a question."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.trickster.beat.walls`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -9063,7 +9067,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.staunton/ashamed/0` — Continue
    - `yaniel.trickster.beat.staunton/end/0` — "I'll come."; records `yaniel.trickster.beat.staunton`
 
-755. **Wenduag: The paladin in the cage** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.yaniel","chapter":5,"day":107,"completed":true,"choices":[["start",2],["returned_yaniel",0],["returned_answer",0]]} -->
+756. **Wenduag: The paladin in the cage** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.yaniel","chapter":5,"day":107,"completed":true,"choices":[["start",2],["returned_yaniel",0],["returned_answer",0]]} -->
    Scene `wenduag.trickster.court.yaniel`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: The paladin in the cage
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.trickster.gate_seen`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.yaniel`, `wenduag.trickster.native`, `wenduag.closed`, `wenduag.trickster.early.yaniel`, `wenduag.yaniel_death`, `crossroute.areelu.unavailable`, `crossroute.minagho.unavailable`; Need one of: `yaniel.freed`, `yaniel.killed`; Block `wenduag.trickster.early.yaniel` lifted by: `yaniel.trickster.returned`.
@@ -9072,14 +9076,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.yaniel/returned_yaniel/0` — "We need her against the demons. I answered for what I did."
    - `wenduag.trickster.court.yaniel/returned_answer/0` — Continue; records `wenduag.trickster.yaniel.watched`
 
-756. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.seelah","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
+757. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.seelah","chapter":5,"day":107,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.seelah`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "About last night, on the citadel."
    Need all: `trickster.ever`, `iomedae.trickster.disputed`, `seelah.in_party`, `iomedae.present_now`; Blocked by: `seelah_dead`, `seelah_gone`, `crossroute.seelah.unavailable`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
    Native answer-list host: `417fa384f3250634bb71859fbc913453`.
    - `iomedae.trickster.react.seelah/start/0` — Continue
 
-757. **Horzalah: The jailer named** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"household.docket.horzalah_hepzamirah.account_table","chapter":5,"day":107,"completed":true,"choices":[["start",1],["unresolved",0],["reply",0],["named",0]]} -->
+758. **Horzalah: The jailer named** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"household.docket.horzalah_hepzamirah.account_table","chapter":5,"day":107,"completed":true,"choices":[["start",1],["unresolved",0],["reply",0],["named",0]]} -->
    Scene `household.docket.horzalah_hepzamirah.account_table`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Horzalah and Hepzamirah: the imprisonment]
    Need all: `trickster`, `foresight.page_taken`, `horzalah.present_now`, `horzalah.trickster.wants_heard`, `horzalah.presence.route_open`, `household.table.kept`, `household.stance_eligible`, `horzalah.harem.eligible`, `hepzamirah.harem.eligible`, `hepzamirah.present_now`, `hepzamirah.trickster.returned`; Blocked by: `trickster.failed`, `horzalah.closed`, `horzalah.dead`, `horzalah.trickster.left_free`, `horzalah.presence.failed`, `horzalah.epoch_unavailable`, `household.docket.horzalah_hepzamirah.account.seen`, `fool_king.gone`, `hepzamirah.closed`, `hepzamirah.presence.failed`, `hepzamirah.trickster.cost.confined`, `hepzamirah.epoch_unavailable`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -9091,7 +9095,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.docket.horzalah_hepzamirah.account_table/reply/0` — [Continue.]
    - `household.docket.horzalah_hepzamirah.account_table/named/0` — [Continue.]; records `household.docket.horzalah_hepzamirah.account.seen`, `household.docket.horzalah_hepzamirah.unsettled`, `household.docket.horzalah_hepzamirah.horzalah_captivity_named`
 
-758. **Arueshalae: The lot nobody pities** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.arueshalae_minagho.settle.good","chapter":5,"day":107,"completed":true,"choices":[["start",0],["draw",0]]} -->
+759. **Arueshalae: The lot nobody pities** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.arueshalae_minagho.settle.good","chapter":5,"day":107,"completed":true,"choices":[["start",0],["draw",0]]} -->
    Scene `household.pair.arueshalae_minagho.settle.good`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Arueshalae and Minagho: the war dispatch]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.arueshalae_minagho.ready`, `arueshalae.harem.eligible`, `participant.minagho.available`, `arueshalae.present_now`, `minagho.present_now`, `arueshalae.redeemed`; Blocked by: `arueshalae.harem.enmity.minagho_chivarro`, `minagho_chivarro.harem.enmity.arueshalae`, `household.pair.arueshalae_minagho.settle.seen`, `household.closed`, `fool_king.gone`, `trickster.failed`, `engine.l12.commander_unreturned`, `minachiv.closed`, `minagho_chivarro.trickster.declined_minagho`, `inhuman`, `arueshalae.harem.enmity.w.minagho`, `minagho_chivarro.harem.enmity.minagho.arueshalae`, `arueshalae.corrupted`; Block `arueshalae.harem.enmity.w.minagho` lifted by: `arueshalae.harem.reconciled.w.minagho`; Block `minagho_chivarro.harem.enmity.minagho.arueshalae` lifted by: `minagho_chivarro.harem.reconciled.minagho.arueshalae`; Block `arueshalae.harem.enmity.minagho_chivarro` lifted by: `arueshalae.harem.reconciled.minagho_chivarro`; Block `minagho_chivarro.harem.enmity.arueshalae` lifted by: `minagho_chivarro.harem.reconciled.arueshalae`.
@@ -9100,14 +9104,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.arueshalae_minagho.settle.good/start/0` — "No exemptions. Put every slip back."; PASS SkillPerception DC 20 (Commander only); success → `draw`; failure → `botched`
    - `household.pair.arueshalae_minagho.settle.good/draw/0` — Continue; records `household.pair.arueshalae_minagho.settle.seen`, `household.pair.arueshalae_minagho.settle.kept`, `household.pair.arueshalae_minagho.lot.restored`, `household.pair.arueshalae_minagho.minagho.burden_carried`, `household.pair.arueshalae_minagho.arueshalae.part_carried`, `household.pair.arueshalae_minagho.cost.minagho.exemption_refused`, `household.pair.arueshalae_minagho.cost.arueshalae.safe_assignment_yielded`, `household.pair.arueshalae_minagho.cost.commander.burden_taken`, `household.pair.arueshalae_minagho.good.pity_without_exemption`
 
-759. **Kiana: The person in the room** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.marriage","chapter":5,"day":107,"completed":true,"choices":[["start",0],["attraction",0],["wait",0]]} -->
+760. **Kiana: The person in the room** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.marriage","chapter":5,"day":107,"completed":true,"choices":[["start",0],["attraction",0],["wait",0]]} -->
    Scene `kiana.marriage`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `kiana.present_now`; Blocked by: `seelah.elan_dead`, `kiana.history_betrothed`; Need one of: `seelah.souls_returned`, `kiana.trickster.met`; Need one of: `kiana.company`, `kiana.trickster.met`.
    - `kiana.marriage/start/0` — "I have been hoping for your letters too."
    - `kiana.marriage/attraction/0` — "Speak to him first. I want you, but I can wait."; records `kiana.waited`
    - `kiana.marriage/wait/0` — [Give her time.]; records `kiana.attracted`
 
-760. **Shamira: Where you sleep** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"shamira.trickster.mind.dream","chapter":5,"day":107,"completed":true,"choices":[["start",0],["tour",1],["show",0],["heaven",0],["again",0],["noct",0],["fire_start",1],["choice",1],["kept",0],["morning_kept",0],["a_start",0],["a_look",1],["a_water",0],["a_almost",0],["a_no",0],["a_wake",0],["f_start",2],["f_good",0],["f_fire",0],["f_mine",0],["f_demand",2],["f_demand_plain",0],["f_choose",0],["f_only_mine",0],["f_w_start",0],["f_w_walk",0],["f_w_cold",0],["f_w_last",0],["f_w_dream_home",0],["f_w_taken",0],["f_w_risen",2],["f_w_risen_small",0],["f_w_first_words",0],["f_w_understand",0],["f_w_go",0],["f_fc_start",0],["f_fc_home",0],["f_fc_sits",0],["f_fc_yes",0],["f_fc_coal",0]]} -->
+761. **Shamira: Where you sleep** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"shamira.trickster.mind.dream","chapter":5,"day":107,"completed":true,"choices":[["start",0],["tour",1],["show",0],["heaven",0],["again",0],["noct",0],["fire_start",1],["choice",1],["kept",0],["morning_kept",0],["a_start",0],["a_look",1],["a_water",0],["a_almost",0],["a_no",0],["a_wake",0],["f_start",2],["f_good",0],["f_fire",0],["f_mine",0],["f_demand",2],["f_demand_plain",0],["f_choose",0],["f_only_mine",0],["f_w_start",0],["f_w_walk",0],["f_w_cold",0],["f_w_last",0],["f_w_dream_home",0],["f_w_taken",0],["f_w_risen",2],["f_w_risen_small",0],["f_w_first_words",0],["f_w_understand",0],["f_w_go",0],["f_fc_start",0],["f_fc_home",0],["f_fc_sits",0],["f_fc_yes",0],["f_fc_coal",0]]} -->
    Scene `shamira.trickster.mind.dream`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `shamira.trickster.returned`, `shamira.trickster.first_night`, `shamira.reachable_by_letter`; Blocked by: `shamira.trickster.dreamed`, `shamira.trickster.embodied`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
    - `shamira.trickster.mind.dream/start/0` — Continue
@@ -9151,7 +9155,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.mind.dream/f_fc_yes/0` — Continue
    - `shamira.trickster.mind.dream/f_fc_coal/0` — [Get up.]
 
-761. **Horzalah: Pinned** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.letter.first","chapter":5,"day":107,"completed":true,"choices":[["start",0],["read",0],["board",0],["knife",0],["vials",0]]} -->
+762. **Horzalah: Pinned** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.letter.first","chapter":5,"day":107,"completed":true,"choices":[["start",0],["read",0],["board",0],["knife",0],["vials",0]]} -->
    Scene `horzalah.trickster.letter.first`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.reachable_by_letter`; Blocked by: `horzalah.closed`, `horzalah.trickster.letter.first_read`, `horzalah.trickster.ally`.
    - `horzalah.trickster.letter.first/start/0` — Continue
@@ -9160,7 +9164,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.letter.first/knife/0` — Continue
    - `horzalah.trickster.letter.first/vials/0` — [Keep the knife.]; records `horzalah.trickster.letter.first_read`
 
-762. **Elyanka: A hearse at the south gate** — rest delivery / Satchel: event (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.door.hearse","chapter":5,"day":107,"completed":true,"choices":[["start",0],["sergeant",0],["king",0],["choice",2]]} -->
+763. **Elyanka: A hearse at the south gate** — rest delivery / Satchel: event (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.door.hearse","chapter":5,"day":107,"completed":true,"choices":[["start",0],["sergeant",0],["king",0],["choice",2]]} -->
    Scene `elyanka.trickster.door.hearse`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Need all: `trickster`, `elyanka.trickster.funeral.latched`, `iz.done`, `elyanka.present_now`; Blocked by: `elyanka.trickster.door_seen`, `elyanka.closed`, `trickster.failed`.
    - `elyanka.trickster.door.hearse/start/0` — Continue
@@ -9168,7 +9172,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.door.hearse/king/0` — Continue
    - `elyanka.trickster.door.hearse/choice/2` — [Go as yourself] "Tell her the late Knight Commander will see her tomorrow. Let her make of that what she likes."; records `elyanka.trickster.straight`, `elyanka.trickster.door_seen`
 
-763. **Melazmera: The woman she wears** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.illusion","chapter":5,"day":107,"completed":true,"choices":[["start",0],["why",0],["edge",0],["show",0],["after_shown",0]]} -->
+764. **Melazmera: The woman she wears** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.illusion","chapter":5,"day":107,"completed":true,"choices":[["start",0],["why",0],["edge",0],["show",0],["after_shown",0]]} -->
    Scene `melazmera.trickster.beat.illusion`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.illusion`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.illusion/start/0` — "Why this shape?"
@@ -9177,7 +9181,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.beat.illusion/show/0` — [Look properly.]
    - `melazmera.trickster.beat.illusion/after_shown/0` — Continue; records `melazmera.trickster.beat.illusion`; on entering page: `melazmera.trickster.cost.chair_scores`
 
-764. **Iomedae: Not in any report** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.questions","chapter":5,"day":107,"completed":true,"choices":[["start",2],["returning_white",0],["ask",0],["nobody",0],["hers",0],["miss",0],["fear",0],["right",0]]} -->
+765. **Iomedae: Not in any report** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.questions","chapter":5,"day":107,"completed":true,"choices":[["start",2],["returning_white",0],["ask",0],["nobody",0],["hers",0],["miss",0],["fear",0],["right",0]]} -->
    Scene `iomedae.trickster.dream.questions`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.started`, `iomedae.key_dies_revealed.latched`, `iomedae.trickster.disputation.called`, `iomedae.reachable_by_letter`; Blocked by: `iomedae.closed`, `iomedae.trickster.personal_exchange`, `iomedae.trickster.declined`, `iomedae.closed`, `iomedae.herald_spite`; Block `iomedae.herald_spite` lifted by: `iomedae.trickster.herald_accounted`.
    - `iomedae.trickster.dream.questions/start/2` — Continue; Need all: `iomedae.trickster.herald_dream`; Blocked by: `iomedae.trickster.dream.summit`
@@ -9189,7 +9193,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `iomedae.trickster.dream.questions/fear/0` — "That you won't come, and I'll have been right to go anyway."
    - `iomedae.trickster.dream.questions/right/0` — [Sleep.]; records `iomedae.trickster.personal_exchange`
 
-765. **Chivarro: The turf named twice** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.herrax_chivarro.turf","chapter":5,"day":107,"completed":true,"choices":[["start",0],["historical",0]]} -->
+766. **Chivarro: The turf named twice** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.herrax_chivarro.turf","chapter":5,"day":107,"completed":true,"choices":[["start",0],["historical",0]]} -->
    Scene `household.pair.herrax_chivarro.turf`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Herrax asked me to kill you."
    Need all: `trickster`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `herrax.asked_kill_chivarro`, `participant.chivarro.available`, `chivarro.present_now`, `minagho_chivarro.trickster.chivarro_in`, `trickster.now`; Blocked by: `trickster.failed`, `fool_king.gone`, `household.pair.herrax_chivarro.turf.seen`, `minagho_chivarro.trickster.chivarro_declined`, `sacrifice`, `engine.l12.commander_unreturned`, `crossroute.herrax.unavailable`; Block `sacrifice` lifted by: `trickster.commander_back`.
@@ -9198,7 +9202,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.herrax_chivarro.turf/start/0` — "Your quarrel remains unsettled."
    - `household.pair.herrax_chivarro.turf/historical/0` — Continue; records `household.pair.herrax_chivarro.turf.seen`, `household.pair.herrax_chivarro.historical`
 
-766. **Minagho: The collector at the approach** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.hepzamirah_minagho.job","chapter":5,"day":107,"completed":true,"choices":[["start",3],["refused",0]]} -->
+767. **Minagho: The collector at the approach** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.hepzamirah_minagho.job","chapter":5,"day":107,"completed":true,"choices":[["start",3],["refused",0]]} -->
    Scene `household.pair.hepzamirah_minagho.job`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [The collector at the approach]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `minagho.present_now`, `participant.minagho.available`, `hepzamirah.present_now`, `hepzamirah.trickster.returned`; Blocked by: `fool_king.gone`, `trickster.failed`, `engine.l12.commander_unreturned`, `minagho.epoch_unavailable`, `minagho.returned_actor_lost`, `minachiv.closed`, `minagho_chivarro.trickster.declined_minagho`, `hepzamirah.epoch_unavailable`, `hepzamirah.returned_actor_lost`, `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`, `hepzamirah.presence.failed`, `household.pair.hepzamirah_minagho.job.seen`, `household.pair.hepzamirah_minagho.resolved`, `household.pair.hepzamirah_minagho.permanent_refusal`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -9209,7 +9213,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 108
 
-767. **Together: Until the last watch ends** — owner contact / rest. <!-- rrt-step {"scene":"last_watch","chapter":5,"day":108,"completed":true,"choices":[["start",0],["life",0],["end",0]]} -->
+768. **Together: Until the last watch ends** — owner contact / rest. <!-- rrt-step {"scene":"last_watch","chapter":5,"day":108,"completed":true,"choices":[["start",0],["life",0],["end",0]]} -->
    Scene `last_watch`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "Before the final battles, there are things I want to say."
    Need all: `future`, `anevia.present_now`, `irabeth.present_now`; Blocked by: `tirabade.group_closed`, `anevia.closed`, `irabeth.closed`, `irabeth.future_friends`; Need one: `three_progression.developed`, `three_progression.short_chosen`.
@@ -9217,7 +9221,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `last_watch/life/0` — "Keep the list. We will need it."
    - `last_watch/end/0` — [Return to the crusade.]; records `last_words`
 
-768. **Seelah: One person at a time** — Drezen. <!-- rrt-step {"scene":"seelah.platform_finished","chapter":5,"day":108,"completed":true,"choices":[["start",0],["yard",0],["gift",0],["same",0],["outside",0],["invited",0]]} -->
+769. **Seelah: One person at a time** — Drezen. <!-- rrt-step {"scene":"seelah.platform_finished","chapter":5,"day":108,"completed":true,"choices":[["start",0],["yard",0],["gift",0],["same",0],["outside",0],["invited",0]]} -->
    Scene `seelah.platform_finished`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "How did the repair go?"
    Need all: `seelah.courting`, `seelah.weight`, `seelah.saw_arranged`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -9229,7 +9233,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.platform_finished/outside/0` — "I would like to be there."; records `seelah.prayer_company`
    - `seelah.platform_finished/invited/0` — [Make time to meet her.]; records `seelah.platform_kept`
 
-769. **Konomi: The names admitted to the room** — Drezen. <!-- rrt-step {"scene":"konomi.the_names_admitted","chapter":5,"day":108,"completed":true,"choices":[["start",0],["context",3],["unconfirmed",0],["terms",0],["choice",0],["recognized",0]]} -->
+770. **Konomi: The names admitted to the room** — Drezen. <!-- rrt-step {"scene":"konomi.the_names_admitted","chapter":5,"day":108,"completed":true,"choices":[["start",0],["context",3],["unconfirmed",0],["terms",0],["choice",0],["recognized",0]]} -->
    Scene `konomi.the_names_admitted`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Did you receive the political reply you wanted to show me?"
    Need all: `konomi.present`, `konomi.political_account`, `konomi.present_now`; Blocked by: `konomi.dismissed`, `konomi.closed`, `konomi.farewell`, `inhuman`.
@@ -9242,7 +9246,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.the_names_admitted/choice/0` — "Take the established place. Make them answer the record you can actually examine, including what Marenne submits."
    - `konomi.the_names_admitted/recognized/0` — [Stay for the rereading, then leave together.]; records `konomi.political_recognized`, `konomi.political_terms_sent`
 
-770. **Soana: The days she counted** — Wintersun. <!-- rrt-step {"scene":"soana.the_days_she_counted","chapter":5,"day":108,"completed":true,"choices":[["start",0],["reserve",0],["meret",0],["guardian",0],["bound",0],["letter",0],["future",0],["commit",0]]} -->
+771. **Soana: The days she counted** — Wintersun. <!-- rrt-step {"scene":"soana.the_days_she_counted","chapter":5,"day":108,"completed":true,"choices":[["start",0],["reserve",0],["meret",0],["guardian",0],["bound",0],["letter",0],["future",0],["commit",0]]} -->
    Scene `soana.the_days_she_counted`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "How did Hesvara and Mava keep the bargain?"
    Need all: `soana.after_quest`, `soana.progression_kept`, `soana.late_thorn_tested`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `inhuman`; Need one: `soana.old_defender`, `soana.bear_dead`.
@@ -9257,7 +9261,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.the_days_she_counted/future/0` — "I want a life with you. Keep that place beside your blanket for me."
    - `soana.the_days_she_counted/commit/0` — [Keep your place beside her and return before the final fighting.]; records `soana.committed`, `soana.late_future_chosen`; Need all: `soana.partner.agreed`, `soana.round2.partner_answer`, `soana.round2.renewed_welcome`
 
-771. **Gesmerha: A place in the days ahead** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_work_left_finished","chapter":5,"day":108,"completed":true,"choices":[["start",0],["future",0],["migration",0],["offer",0],["lovers",0]]} -->
+772. **Gesmerha: A place in the days ahead** — Wintersun. <!-- rrt-step {"scene":"gesmerha.the_work_left_finished","chapter":5,"day":108,"completed":true,"choices":[["start",0],["future",0],["migration",0],["offer",0],["lovers",0]]} -->
    Scene `gesmerha.the_work_left_finished`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Is everything ready for you to leave?"
    Need all: `gesmerha.wintersun_resolved`, `gesmerha.post_resolution_contact`, `gesmerha.private_evening_kept`, `gesmerha.present_now`; Blocked by: `gesmerha.dead`, `gesmerha.closed`, `inhuman`, `demon`, `devil`; Need one: `gesmerha.truth`, `gesmerha.illusions`; Block `gesmerha.dead` lifted by: `gesmerha.trickster.returned`.
@@ -9269,14 +9273,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `gesmerha.the_work_left_finished/offer/0` — "You. As my lover, wherever the roads go."; Need all: `gesmerha.late_lovers`
    - `gesmerha.the_work_left_finished/lovers/0` — [Keep the love and the practical promise you made together.]; records `gesmerha.late_complete`, `gesmerha.future_lovers`, `gesmerha.committed`
 
-772. **Minagho: What the ledger says** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.debt.collectors","chapter":5,"day":108,"completed":true,"choices":[["start",0],["irons",1]]} -->
+773. **Minagho: What the ledger says** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.debt.collectors","chapter":5,"day":108,"completed":true,"choices":[["start",0],["irons",1]]} -->
    Scene `minagho_chivarro.trickster.debt.collectors`; chapters 5–5 (only 5); wait at least 120h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minagho_chivarro.trickster.cost.baphomet_debtor`, `minagho_chivarro.trickster.minagho_in`, `minagho_chivarro.trickster.returned_minagho`, `minagho.present_now`; Blocked by: `minagho_chivarro.trickster.pursuers_met`, `minachiv.closed`.
    Actor must be physically available: `565ccab37e2475742b043ec912a750fa`.
    - `minagho_chivarro.trickster.debt.collectors/start/0` — Continue; Need all: `minagho_chivarro.trickster.cost.baphomet_terms`
    - `minagho_chivarro.trickster.debt.collectors/irons/1` — "Hang them at the gate. Iron and all."; records `minagho_chivarro.trickster.pursuers_met`
 
-773. **Dorgelinda: A weight discrepancy** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.weight_discrepancy","chapter":5,"day":108,"completed":true,"choices":[["start",2],["plain",0],["how",0],["stealing",2],["returned_all",1]]} -->
+774. **Dorgelinda: A weight discrepancy** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.weight_discrepancy","chapter":5,"day":108,"completed":true,"choices":[["start",2],["plain",0],["how",0],["stealing",2],["returned_all",1]]} -->
    Scene `dorgelinda.ledger.weight_discrepancy`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "That's a lot of barrels for a crusade with no money."
    Need all: `trickster.ever`, `dorgelinda.trickster.counted`, `dorgelinda.present`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.weight_discrepancy`.
@@ -9288,7 +9292,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.weight_discrepancy/stealing/2` — "Send every barrel back. Enter the true loss."
    - `dorgelinda.ledger.weight_discrepancy/returned_all/1` — [Help load the returning cart.]; records `dorgelinda.ledger.all_barrels_returned`; Blocked by: `dorgelinda.trickster.hands_dirty`
 
-774. **Hepzamirah: Flesh itches** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.first_morning","chapter":5,"day":108,"completed":true,"choices":[["yard",1],["itch",0],["priest",0],["hungry",0],["end_speak",0]]} -->
+775. **Hepzamirah: Flesh itches** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.first_morning","chapter":5,"day":108,"completed":true,"choices":[["yard",1],["itch",0],["priest",0],["hungry",0],["end_speak",0]]} -->
    Scene `hepzamirah.trickster.flesh.first_morning`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "How is the body?"
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -9299,7 +9303,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.first_morning/hungry/0` — "I'll speak to him."
    - `hepzamirah.trickster.flesh.first_morning/end_speak/0` — [Leave her to the forge.]
 
-775. **Camellia: The deck, again** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.cards.the_deck_again_alive","chapter":5,"day":108,"completed":true,"choices":[["open",1],["cards",0],["turned",0],["meaning",0],["wont",0],["wont_close",0]]} -->
+776. **Camellia: The deck, again** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.cards.the_deck_again_alive","chapter":5,"day":108,"completed":true,"choices":[["open",1],["cards",0],["turned",0],["meaning",0],["wont",0],["wont_close",0]]} -->
    Scene `camellia.trickster.cards.the_deck_again_alive`; chapters 3–5 (only 3, 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You brought the cards."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -9312,7 +9316,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.cards.the_deck_again_alive/wont/0` — Continue
    - `camellia.trickster.cards.the_deck_again_alive/wont_close/0` — [Stay where you are]
 
-776. **Chadali: The last evening** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.sessions.the_last_evening","chapter":5,"day":108,"completed":true,"choices":[["open",0],["start",0],["carry",0],["together_home",0],["together",0]]} -->
+777. **Chadali: The last evening** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.sessions.the_last_evening","chapter":5,"day":108,"completed":true,"choices":[["open",0],["start",0],["carry",0],["together_home",0],["together",0]]} -->
    Scene `chadali.sessions.the_last_evening`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "The hall feels different tonight."
    Need all: `trickster.ever`, `chadali.committed`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.sessions.the_last_evening`, `chadali.wagers.coin_lost`.
@@ -9323,17 +9327,17 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.sessions.the_last_evening/together_home/0` — Continue; records `chadali.sessions.coin_taken_home`
    - `chadali.sessions.the_last_evening/together/0` — [Walk her home, slowly.]
 
-777. **Arueshalae: Music in the square** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.the_dance","chapter":5,"day":108,"completed":true,"choices":[["start",2],["dance_sleeve",0],["after",0]]} -->
+778. **Arueshalae: Music in the square** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.the_dance","chapter":5,"day":108,"completed":true,"choices":[["start",2],["dance_sleeve",0],["after",0]]} -->
    Scene `arueshalae.treatment.the_dance`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There's music in the square."
    Need all: `trickster.ever`, `arueshalae.treatment.touched`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.the_dance`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
-   - `arueshalae.treatment.the_dance/start/2` — [Offer her your sleeve] "Recommended exercise. Twice a week. The sleeve's free."
+   - `arueshalae.treatment.the_dance/start/2` — [Offer her your sleeve] "Dance with me. Twice a week. The sleeve's free."
    - `arueshalae.treatment.the_dance/dance_sleeve/0` — Continue
    - `arueshalae.treatment.the_dance/after/0` — [Promise twice a week.]; records `arueshalae.treatment.the_dance`
 
-778. **Mielarah: Nearest, in Drezen** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.market","chapter":5,"day":108,"completed":true,"choices":[["start",0],["crowd",0],["stays",0],["boy",0]]} -->
+779. **Mielarah: Nearest, in Drezen** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.market","chapter":5,"day":108,"completed":true,"choices":[["start",0],["crowd",0],["stays",0],["boy",0]]} -->
    Scene `mielarah.deck.market`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Something happened in the market."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.corrected`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.market.arcade`, `mielarah.deck.market`.
@@ -9343,21 +9347,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.market/stays/0` — Continue
    - `mielarah.deck.market/boy/0` — [Help clear the timber.]
 
-779. **Arueshalae: Arueshalae's word** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.react.arueshalae_walking","chapter":5,"day":108,"completed":true,"choices":[["start",0]]} -->
+780. **Arueshalae: Arueshalae's word** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.trickster.react.arueshalae_walking","chapter":5,"day":108,"completed":true,"choices":[["start",0]]} -->
    Scene `shamira.trickster.react.arueshalae_walking`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "Something on your mind?"
    Need all: `trickster.ever`, `shamira.trickster.embodied`, `shamira.present_now`; Blocked by: `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.corrupted`, `crossroute.arueshalae.unavailable`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`; Block `arueshalae.evil_dead` lifted by: `arueshalae.trickster.returned`.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    - `shamira.trickster.react.arueshalae_walking/start/0` — Continue
 
-780. **Thaberdine: Thaberdine's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.king_gaol","chapter":5,"day":108,"completed":true,"choices":[["start",0]]} -->
+781. **Thaberdine: Thaberdine's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.king_gaol","chapter":5,"day":108,"completed":true,"choices":[["start",0]]} -->
    Scene `jannah.trickster.react.king_gaol`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Your Majesty. Heard any news from the gaol?"
    Need all: `jannah.trickster.returned`, `fool_king.available`, `jannah.present_now`; Blocked by: `fool_king.gone`.
    Native answer-list host: `6dccfd39947ef4242a8afbe36b21a46c`.
    - `jannah.trickster.react.king_gaol/start/0` — Continue
 
-781. **Terendelev: Who lived** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.kenabres","chapter":5,"day":108,"completed":true,"choices":[["start",0],["names",0],["ask",0],["wardstone",0],["home",0]]} -->
+782. **Terendelev: Who lived** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.kenabres","chapter":5,"day":108,"completed":true,"choices":[["start",0],["names",0],["ask",0],["wardstone",0],["home",0]]} -->
    Scene `terendelev.trickster.watch.kenabres`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You were asking the sergeants about Kenabres."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.kenabres_awning`.
@@ -9368,7 +9372,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.kenabres/wardstone/0` — "It wasn't yours to hold alone."; records `terendelev.trickster.watch.kenabres_told`
    - `terendelev.trickster.watch.kenabres/home/0` — [Leave her to her list.]
 
-782. **Eliandra: Regnard's swords** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.regnard","chapter":5,"day":108,"completed":true,"choices":[["start",1],["swords",0],["hands",0]]} -->
+783. **Eliandra: Regnard's swords** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.regnard","chapter":5,"day":108,"completed":true,"choices":[["start",1],["swords",0],["hands",0]]} -->
    Scene `eliandra.trickster.ch5.regnard`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Regnard's cell is full of swords."
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.regnard_swords`.
@@ -9377,14 +9381,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.regnard/swords/0` — "I'll lend you hands. The crusade can spare a day."
    - `eliandra.trickster.ch5.regnard/hands/0` — [Leave her with his wall of swords.]; records `eliandra.trickster.regnard_swords`, `eliandra.trickster.regnard_swords_home`
 
-783. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.react.greybor_witness","chapter":5,"day":108,"completed":true,"choices":[["start",0]]} -->
+784. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.react.greybor_witness","chapter":5,"day":108,"completed":true,"choices":[["start",0]]} -->
    Scene `horzalah.trickster.react.greybor_witness`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Horzalah."
    Need all: `trickster.ever`, `greybor.in_party`, `horzalah.trickster.cost.ear`, `horzalah.met_q3_a`, `horzalah.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`, `horzalah.trickster.cost.late`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `horzalah.trickster.react.greybor_witness/start/0` — Continue
 
-784. **Yaniel: The masquerade** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.areelu","chapter":5,"day":108,"completed":true,"choices":[["start",2],["plain",0],["areelu",0],["wanted",0],["courted",2],["end_unknown",0],["robbed",0]]} -->
+785. **Yaniel: The masquerade** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.areelu","chapter":5,"day":108,"completed":true,"choices":[["start",2],["plain",0],["areelu",0],["wanted",0],["courted",2],["end_unknown",0],["robbed",0]]} -->
    Scene `yaniel.trickster.beat.areelu`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Something's wrong."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.areelu_unmasked`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -9397,7 +9401,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.areelu/end_unknown/0` — "No. The first one was a liar. You're the one I robbed."
    - `yaniel.trickster.beat.areelu/robbed/0` — [Go.]; records `yaniel.trickster.beat.areelu`
 
-785. **Wenduag: The weak get eaten** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.neathers","chapter":5,"day":108,"completed":true,"choices":[["start",0],["her",0],["ask",0],["cull",0]]} -->
+786. **Wenduag: The weak get eaten** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.neathers","chapter":5,"day":108,"completed":true,"choices":[["start",0],["her",0],["ask",0],["cull",0]]} -->
    Scene `wenduag.trickster.court.neathers`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: The weak get eaten
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.committed`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.neathers`, `wenduag.trickster.native`, `wenduag.closed`.
@@ -9407,7 +9411,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.neathers/ask/0` — "Nobody asks. He went down on his own feet, and that is what the chaplain hears."
    - `wenduag.trickster.court.neathers/cull/0` — Continue; records `wenduag.trickster.neathers.culled`
 
-786. **Nenio: An hour for the paladin** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.knowledge.nenio_seelah","chapter":5,"day":108,"completed":true,"choices":[["start",0],["learned",0]]} -->
+787. **Nenio: An hour for the paladin** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.knowledge.nenio_seelah","chapter":5,"day":108,"completed":true,"choices":[["start",0],["learned",0]]} -->
    Scene `household.knowledge.nenio_seelah`; chapters 3–5 (only 3, 5); wait at least 0h after the latest prerequisite; complete.
    Open: [An hour for the paladin]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `household.stance_eligible`, `nenio.harem.eligible`, `nenio.present_now`, `seelah.platform_kept`; Blocked by: `fool_king.gone`, `trickster.failed`, `household.knowledge.nenio_seelah.seen`, `household.cap.ch5.dynamic`.
@@ -9416,16 +9420,16 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.knowledge.nenio_seelah/start/0` — "I remember Seelah asking to meet in private after the yard work. I made time for her."
    - `household.knowledge.nenio_seelah/learned/0` — [Leave the stool where it is.]; records `household.knowledge.nenio_seelah.seen`
 
-787. **Memory: The result he must keep** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.an_hour_that_counts","chapter":5,"day":108,"completed":true,"choices":[["start",0],["published",0],["unspent",0],["published_end",0]]} -->
+788. **Memory: The result he must keep** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.an_hour_that_counts","chapter":5,"day":108,"completed":true,"choices":[["start",0],["published",0],["unspent",0],["published_end",0]]} -->
    Scene `vellexia.an_hour_that_counts`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Answer Vellexia's request on the evening of the decision.]
    Need all: `vellexia.native_finished`, `vellexia.wager_chosen`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`.
-   - `vellexia.an_hour_that_counts/start/0` — [Ask about the published account.]; Need all: `vellexia.published_accounts`
+   - `vellexia.an_hour_that_counts/start/0` — [Ask how the unmasking went.]; Need all: `vellexia.published_accounts`
    - `vellexia.an_hour_that_counts/published/0` — [Ask what she intends to do with the rest of the evening.]
    - `vellexia.an_hour_that_counts/unspent/0` — [Stay for the conversation after the account.]
-   - `vellexia.an_hour_that_counts/published_end/0` — [Let the work end with the account actually settled.]; records `vellexia.verdict_kept`, `vellexia.account_published`
+   - `vellexia.an_hour_that_counts/published_end/0` — [Let the work end with Ilveris broken and alive.]; records `vellexia.verdict_kept`, `vellexia.account_published`
 
-788. **Horzalah: Everything I own, I took** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.visit.chamber","chapter":5,"day":108,"completed":true,"choices":[["start",0],["room",2],["her",0],["ask",0],["threshold",0],["threshold2",0],["cut",0],["horzalah.trickster.visit.chamber.explicit.1",0],["morning",0],["morning2",0]]} -->
+789. **Horzalah: Everything I own, I took** — rest delivery / Satchel: visit (owner contact / rest). <!-- rrt-step {"scene":"horzalah.trickster.visit.chamber","chapter":5,"day":108,"completed":true,"choices":[["start",0],["room",2],["her",0],["ask",0],["threshold",0],["threshold2",0],["cut",0],["horzalah.trickster.visit.chamber.explicit.1",0],["morning",0],["morning2",0]]} -->
    Scene `horzalah.trickster.visit.chamber`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `horzalah.committed`, `horzalah.present_now`; Blocked by: `horzalah.trickster.chamber_seen`, `horzalah.closed`.
    - `horzalah.trickster.visit.chamber/start/0` — Continue
@@ -9439,7 +9443,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.visit.chamber/morning/0` — Continue
    - `horzalah.trickster.visit.chamber/morning2/0` — "I'll be waiting."; records `horzalah.trickster.chamber_seen`, `horzalah.trickster.morning_seen`
 
-789. **Melazmera: On the heap** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.visit.heap","chapter":5,"day":108,"completed":true,"choices":[["start",0],["lie",0],["her",0],["throat",1],["threshold",1],["cut",0],["melazmera.trickster.visit.heap.explicit.1",0],["morning",0],["count",0],["go",0],["home",1]]} -->
+790. **Melazmera: On the heap** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.visit.heap","chapter":5,"day":108,"completed":true,"choices":[["start",0],["lie",0],["her",0],["throat",1],["threshold",1],["cut",0],["melazmera.trickster.visit.heap.explicit.1",0],["morning",0],["count",0],["go",0],["home",1]]} -->
    Scene `melazmera.trickster.visit.heap`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.committed`, `melazmera.present_now`; Blocked by: `melazmera.trickster.heap_seen`, `melazmera.closed`.
    - `melazmera.trickster.visit.heap/start/0` — Continue
@@ -9454,7 +9458,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.visit.heap/go/0` — Continue
    - `melazmera.trickster.visit.heap/home/1` — [Go about your day.]; records `melazmera.trickster.heap_seen`; Blocked by: `melazmera.greybor_gone`
 
-790. **Seelah: A bound enemy** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.restraint","chapter":5,"day":108,"completed":true,"choices":[["start",0],["result_0",0]]} -->
+791. **Seelah: A bound enemy** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.restraint","chapter":5,"day":108,"completed":true,"choices":[["start",0],["result_0",0]]} -->
    Scene `household.pair.seelah_wenduag.restraint`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Seelah and Wenduag: A bound enemy]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.seelah_wenduag.invited`, `seelah.harem.eligible`, `wenduag.harem.eligible`, `household.pair.seelah_wenduag.watch.done`, `seelah.harem.attitude.wenduag.respect`, `seelah.present_now`, `wenduag.present_now`; Blocked by: `seelah.harem.enmity.wenduag`, `wenduag.harem.enmity.seelah`, `household.pair.seelah_wenduag.restraint.seen`, `household.pair.seelah_wenduag.stood.seen`, `seelah.harem.attitude.wenduag.friend`, `seelah.harem.attitude.wenduag.lover`, `fool_king.gone`, `trickster.failed`; Block `seelah.harem.enmity.wenduag` lifted by: `seelah.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.seelah` lifted by: `wenduag.harem.reconciled.seelah`.
@@ -9463,7 +9467,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_wenduag.restraint/start/0` — "Let her decide."
    - `household.pair.seelah_wenduag.restraint/result_0/0` — Continue; records `household.pair.seelah_wenduag.restraint.seen`, `household.pair.seelah_wenduag.restraint_witnessed`, `household.pair.seelah_wenduag.boundary.prisoners_kept_alive`, `household.pair.seelah_wenduag.captive.rusk_in_custody`, `household.pair.seelah_wenduag.cost.kill_yielded`, `household.pair.seelah_wenduag.cost.seelah_first_watch`
 
-791. **Elyanka: The corpse comes to supper** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.straight.offer","chapter":5,"day":108,"completed":true,"choices":[["start",0],["her",0],["sit",0],["hands",0],["terms",0],["sold",0]]} -->
+792. **Elyanka: The corpse comes to supper** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.straight.offer","chapter":5,"day":108,"completed":true,"choices":[["start",0],["her",0],["sit",0],["hands",0],["terms",0],["sold",0]]} -->
    Scene `elyanka.trickster.straight.offer`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.straight`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.owned`.
    - `elyanka.trickster.straight.offer/start/0` — Continue
@@ -9473,7 +9477,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.straight.offer/terms/0` — [Bequeath it] "When I die, it's yours. No payment. Keep your carriage polished."
    - `elyanka.trickster.straight.offer/sold/0` — [Finish her wine.]; records `elyanka.trickster.owned`, `elyanka.trickster.cost.corpse_bequeathed`, `elyanka.started`
 
-792. **Melazmera: Even dead souls** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.souls","chapter":5,"day":108,"completed":true,"choices":[["start",0],["boast",0],["mine",0],["no",0]]} -->
+793. **Melazmera: Even dead souls** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.souls","chapter":5,"day":108,"completed":true,"choices":[["start",0],["boast",0],["mine",0],["no",0]]} -->
    Scene `melazmera.trickster.beat.souls`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.souls`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.souls/start/0` — "You sound as if you've eaten souls. Even dead ones."
@@ -9483,7 +9487,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 109
 
-793. **Seelah: Words she has said before** — Drezen. <!-- rrt-step {"scene":"seelah.inheritors_corner","chapter":5,"day":109,"completed":true,"choices":[["start",0],["prayer",0],["own",0],["outcomes",2],["rescued",0],["friends",1],["elan_living",0],["plans",0]]} -->
+794. **Seelah: Words she has said before** — Drezen. <!-- rrt-step {"scene":"seelah.inheritors_corner","chapter":5,"day":109,"completed":true,"choices":[["start",0],["prayer",0],["own",0],["outcomes",2],["rescued",0],["friends",1],["elan_living",0],["plans",0]]} -->
    Scene `seelah.inheritors_corner`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You asked me to find you today."
    Need all: `seelah.courting`, `seelah.weight`, `seelah.platform_kept`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -9497,7 +9501,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.inheritors_corner/elan_living/0` — "I came to see you."
    - `seelah.inheritors_corner/plans/0` — [Arrange the evening on the roof.]; records `seelah.faith_spoken`
 
-794. **Konomi: An improvement with a bill attached** — Drezen. <!-- rrt-step {"scene":"konomi.the_trial_day","chapter":5,"day":109,"completed":true,"choices":[["start",0],["evening",0],["evening_cost",0],["walk",0],["kiss",0]]} -->
+795. **Konomi: An improvement with a bill attached** — Drezen. <!-- rrt-step {"scene":"konomi.the_trial_day","chapter":5,"day":109,"completed":true,"choices":[["start",0],["evening",0],["evening_cost",0],["walk",0],["kiss",0]]} -->
    Scene `konomi.the_trial_day`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "How is the trial going?"
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.trial_chosen`, `konomi.present_now`; Blocked by: `konomi.closed`, `konomi.dismissed`, `inhuman`, `konomi.ordinary`, `konomi.farewell`; Block `konomi.ordinary` lifted by: `konomi.ordinary_expansion_requested`; Block `konomi.farewell` lifted by: `konomi.ordinary_expansion_requested`.
@@ -9509,7 +9513,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.the_trial_day/walk/0` — [Kiss her, and let the unhurried moment last.]
    - `konomi.the_trial_day/kiss/0` — [Arrange another evening.]; records `konomi.trial_lived`, `konomi.trial_kissed`
 
-795. **Soana: Before the far road** — Wintersun. <!-- rrt-step {"scene":"soana.before_the_far_road","chapter":5,"day":109,"completed":true,"choices":[["start",0],["beloved",0],["desire",1],["kiss",0]]} -->
+796. **Soana: Before the far road** — Wintersun. <!-- rrt-step {"scene":"soana.before_the_far_road","chapter":5,"day":109,"completed":true,"choices":[["start",0],["beloved",0],["desire",1],["kiss",0]]} -->
    Scene `soana.before_the_far_road`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I came for the evening, before I have to leave."
    Need all: `soana.after_quest`, `soana.progression_kept`, `soana.late_future_chosen`, `soana.present_now`; Blocked by: `soana.dead`, `soana.killed_by_camellia`, `soana.forest_dead`, `soana.closed`, `inhuman`; Need one: `soana.old_defender`, `soana.bear_dead`.
@@ -9520,7 +9524,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `soana.before_the_far_road/desire/1` — "Your kisses, and the evening. I must leave before the night is over."
    - `soana.before_the_far_road/kiss/0` — [Leave before the night is over, carrying her last kiss.]; records `soana.late_farewell_kiss`, `soana.late_campaign_kept`
 
-796. **Chivarro: The morning after** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.the_morning_after","chapter":5,"day":109,"completed":true,"choices":[["start",0],["minagho",0],["terms",0]]} -->
+797. **Chivarro: The morning after** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"minagho_chivarro.trickster.after.the_morning_after","chapter":5,"day":109,"completed":true,"choices":[["start",0],["minagho",0],["terms",0]]} -->
    Scene `minagho_chivarro.trickster.after.the_morning_after`; chapters 5–5 (only 5); wait at least 8h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `minachiv.complete`, `minagho_chivarro.trickster.committed`, `minachiv.future_two`, `minagho_chivarro.trickster.chivarro_in`, `minagho_chivarro.trickster.minagho_in`, `minagho_chivarro.trickster.night.pair`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `minagho_chivarro.trickster.cost.morning_after`, `minachiv.closed`, `minagho.dead`, `chivarro.dead`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`; Block `chivarro.dead` lifted by: `minagho_chivarro.trickster.returned_chivarro`.
    Actor must be physically available: `b7e819e2a9bb0804abcbffe8e7d91ba6`.
@@ -9528,7 +9532,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `minagho_chivarro.trickster.after.the_morning_after/minagho/0` — "Noted."
    - `minagho_chivarro.trickster.after.the_morning_after/terms/0` — "I'll knock."; records `minagho_chivarro.trickster.cost.morning_after`
 
-797. **Dorgelinda: The inquiry** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.the_inquiry","chapter":5,"day":109,"completed":true,"choices":[["start",1],["clean",0],["offer",1],["choice",0],["true_books",0],["after",0]]} -->
+798. **Dorgelinda: The inquiry** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.the_inquiry","chapter":5,"day":109,"completed":true,"choices":[["start",1],["clean",0],["offer",1],["choice",0],["true_books",0],["after",0]]} -->
    Scene `dorgelinda.ledger.the_inquiry`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You look like you've had a letter."
    Need all: `trickster.ever`, `dorgelinda.ledger.morning_count`, `dorgelinda.trickster.methods_heard`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.the_inquiry`.
@@ -9541,7 +9545,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.the_inquiry/true_books/0` — Continue; records `dorgelinda.ledger.true_books_sent`
    - `dorgelinda.ledger.the_inquiry/after/0` — [Wait for her.]
 
-798. **Hepzamirah: A pick for Baphomet's daughter** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_pick","chapter":5,"day":109,"completed":true,"choices":[["smith",0],["paid",0],["weigh",0],["test",0],["bout",1],["yielded",0],["end",0]]} -->
+799. **Hepzamirah: A pick for Baphomet's daughter** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_pick","chapter":5,"day":109,"completed":true,"choices":[["smith",0],["paid",0],["weigh",0],["test",0],["bout",1],["yielded",0],["end",0]]} -->
    Scene `hepzamirah.trickster.flesh.the_pick`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "About that weapon."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.first_morning`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -9554,7 +9558,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.the_pick/yielded/0` — [Nod, and pick up your sword again.]; records `hepzamirah.trickster.armed`, `hepzamirah.trickster.sparred_yielded`
    - `hepzamirah.trickster.flesh.the_pick/end/0` — [Leave her with the pick.]
 
-799. **Camellia: The witness** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.bond.witness_alive","chapter":5,"day":109,"completed":true,"choices":[["open",0],["alive_w",0],["choice",1],["hers",0]]} -->
+800. **Camellia: The witness** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.bond.witness_alive","chapter":5,"day":109,"completed":true,"choices":[["open",0],["alive_w",0],["choice",1],["hers",0]]} -->
    Scene `camellia.trickster.bond.witness_alive`; chapters 3–5 (only 3, 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You're worried. You never look worried."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.trickster.bond.shelf`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`, `camellia.trickster.bond.witness_lied`, `camellia.trickster.cost.witness`.
@@ -9565,7 +9569,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.bond.witness_alive/choice/1` — "Do it your way."
    - `camellia.trickster.bond.witness_alive/hers/0` — [Hold her gaze]; records `camellia.trickster.cost.witness`
 
-800. **Chadali: Pretend we never met** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.hours.pretend_we_never_met","chapter":5,"day":109,"completed":true,"choices":[["start",1],["promise",0]]} -->
+801. **Chadali: Pretend we never met** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.hours.pretend_we_never_met","chapter":5,"day":109,"completed":true,"choices":[["start",1],["promise",0]]} -->
    Scene `chadali.hours.pretend_we_never_met`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look worried."
    Need all: `trickster.ever`, `chadali.started`, `council.cauldron_given`, `chadali.present_now`; Blocked by: `chadali.closed`, `chadali.lost_at_council`, `chadali.hours.pretend_we_never_met`.
@@ -9573,14 +9577,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `chadali.hours.pretend_we_never_met/start/1` — "I won't pretend."; records `chadali.hours.promised_to_remember`
    - `chadali.hours.pretend_we_never_met/promise/0` — [Hold on.]
 
-801. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.react.lann_kitchen","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
+802. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.react.lann_kitchen","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
    Scene `arueshalae.treatment.react.lann_kitchen`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Arueshalae..."
    Need all: `arueshalae.treatment.kitchen`, `arueshalae.present_now`; Blocked by: `lann.dead`, `lann.kicked_out`.
    Native answer-list host: `66385ad77fa743e4bb1234078dbd804c`.
    - `arueshalae.treatment.react.lann_kitchen/start/0` — Continue
 
-802. **Mielarah: The captain's table** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.supper","chapter":5,"day":109,"completed":true,"choices":[["start",0],["chair",0],["sat",0],["rift",0],["toast",0]]} -->
+803. **Mielarah: The captain's table** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.supper","chapter":5,"day":109,"completed":true,"choices":[["start",0],["chair",0],["sat",0],["rift",0],["toast",0]]} -->
    Scene `mielarah.deck.supper`; chapters 5–5 (only 5); wait at least 8h after the latest prerequisite; complete.
    Open: "Your crew eats at the captain's table?"
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.flown`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.supper.arcade`, `mielarah.deck.supper`.
@@ -9591,7 +9595,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.supper/rift/0` — [Toast her] "To the manoeuvre."
    - `mielarah.deck.supper/toast/0` — [Stay and listen.]; records `mielarah.deck.supper`
 
-803. **Jannah: The forms** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.forms","chapter":5,"day":109,"completed":true,"choices":[["open",2],["story_won",0],["salute",0],["measure",1],["yield",1],["yield_never",2],["yield_won",0],["grip",0],["grip_her",0],["flirt",0]]} -->
+804. **Jannah: The forms** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.forms","chapter":5,"day":109,"completed":true,"choices":[["open",2],["story_won",0],["salute",0],["measure",1],["yield",1],["yield_never",2],["yield_won",0],["grip",0],["grip_her",0],["flirt",0]]} -->
    Scene `jannah.circle.forms`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You're drawing circles again."
    Need all: `trickster.ever`, `jannah.trickster.returned`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.forms`.
@@ -9607,14 +9611,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.forms/grip_her/0` — [Flirt] "Is this part of the forms?"; Need all: `jannah.outcome.eligible`
    - `jannah.circle.forms/flirt/0` — [Leave her to the chalk.]; Need all: `jannah.outcome.eligible`
 
-804. **Anevia: Anevia's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.anevia.kenabres","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
+805. **Anevia: Anevia's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.anevia.kenabres","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
    Scene `terendelev.trickster.react.anevia.kenabres`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "Terendelev asked after you."
    Need all: `terendelev.trickster.returned`, `terendelev.trickster.watch.kenabres_told`, `crossroute.anevia.available`, `anevia.present_now`, `terendelev.present_now`; Blocked by: `anevia_gone`, `anevia_dead`, `terendelev.closed`, `swarm`, `true_lich`; Block `anevia_dead` lifted by: `anevia.trickster.returned`; Block `anevia_gone` lifted by: `anevia.trickster.returned`.
    Native answer-list host: `33960c7f7af40cd43b7f801a76c87a0b`.
    - `terendelev.trickster.react.anevia.kenabres/start/0` — Continue
 
-805. **Eliandra: Seen from inside** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.veil","chapter":5,"day":109,"completed":true,"choices":[["start",0],["inside",0],["through",0],["seam",0]]} -->
+806. **Eliandra: Seen from inside** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.veil","chapter":5,"day":109,"completed":true,"choices":[["start",0],["inside",0],["through",0],["seam",0]]} -->
    Scene `eliandra.trickster.ch5.veil`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "How did your Lady hide this place? What does the veil actually do?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.veil_known`.
@@ -9624,7 +9628,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.veil/through/0` — "Admire it. Then look for the seam."; records `eliandra.trickster.veil_known`; Blocked by: `eliandra.trickster.cost.lights_given`
    - `eliandra.trickster.ch5.veil/seam/0` — [Let that settle.]
 
-806. **Galfrey: Four days of orders** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.trial_report","chapter":5,"day":109,"completed":true,"choices":[["start",0],["report",1],["judgment_never",0],["message",0]]} -->
+807. **Galfrey: Four days of orders** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.trial_report","chapter":5,"day":109,"completed":true,"choices":[["start",0],["report",1],["judgment_never",0],["message",0]]} -->
    Scene `galfrey.trickster.alive.trial_report`; chapters 5–5 (only 5); wait at least 96h after the latest prerequisite; complete.
    Open: "The Crows have returned, Your Majesty."
    Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.trial_started`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.trickster.alive.trial_kept`, `galfrey.committed`, `trickster.failed`.
@@ -9634,35 +9638,35 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `galfrey.trickster.alive.trial_report/judgment_never/0` — Continue
    - `galfrey.trickster.alive.trial_report/message/0` — [Bow to the Queen.]; records `galfrey.trickster.alive.trial_kept`
 
-807. **Wenduag: Wenduag's word** — Drezen. <!-- rrt-step {"scene":"horzalah.trickster.react.wenduag_morning","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
+808. **Wenduag: Wenduag's word** — Drezen. <!-- rrt-step {"scene":"horzalah.trickster.react.wenduag_morning","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
    Scene `horzalah.trickster.react.wenduag_morning`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "The woman in the collar."
    Need all: `trickster.ever`, `wenduag.in_party`, `horzalah.trickster.morning_seen`, `horzalah.present_now`; Blocked by: `wenduag.killed`, `wenduag.kicked_out`, `crossroute.wenduag.unavailable`, `wenduag.dead_any`, `wenduag.q3_sent_away`, `wenduag.q3_killed`, `wenduag.hello_sent_away`, `wenduag.hello_attacked`, `wenduag.trickster.echo.abyss.unavailable`; Block `wenduag.dead_any` lifted by: `wenduag.trickster.echo.abyss.returned_available`.
    Native answer-list host: `ced27e744d2dded40bbb5adf17816dbb`.
    - `horzalah.trickster.react.wenduag_morning/start/0` — Continue
 
-808. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.trickster.react.daeran_door","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
+809. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.trickster.react.daeran_door","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
    Scene `elyanka.trickster.react.daeran_door`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About the hearse at the south gate."
    Need all: `trickster.ever`, `elyanka.trickster.owned`, `elyanka.present_now`; Blocked by: `daeran.dead`, `daeran.kicked_out`, `daeran.plot_absent`, `elyanka.trickster.bier_seen`.
    Native answer-list host: `4d978cbd2aa780d46874255282039f3f`.
    - `elyanka.trickster.react.daeran_door/start/0` — Continue
 
-809. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.react.greybor_after","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
+810. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.trickster.react.greybor_after","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
    Scene `melazmera.trickster.react.greybor_after`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Something on your mind, Greybor?"
    Need all: `trickster.ever`, `melazmera.trickster.heap_seen`, `greybor.in_party`, `melazmera.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`, `greybor.away`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `melazmera.trickster.react.greybor_after/start/0` — Continue; records `melazmera.trickster.greybor_wary`
 
-810. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"yaniel.trickster.react.sosiel_iron","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
+811. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"yaniel.trickster.react.sosiel_iron","chapter":5,"day":109,"completed":true,"choices":[["start",0]]} -->
    Scene `yaniel.trickster.react.sosiel_iron`; chapters 5–5; wait at least 168h after the latest prerequisite; complete.
    Open: "What are you drawing?"
    Need all: `trickster.ever`, `yaniel.trickster.swapped`, `yaniel.sosiel_promised`, `yaniel.trickster.returned`, `yaniel.present_now`; Blocked by: `sosiel.dead`, `sosiel.kicked_out`, `yaniel.closed`, `yaniel.killed.latched`.
    Native answer-list host: `129b55b8b5d50974f84f7c607d894fd0`.
    - `yaniel.trickster.react.sosiel_iron/start/0` — Continue
 
-811. **Wenduag: Outside the south postern** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.hunt","chapter":5,"day":109,"completed":true,"choices":[["start",0],["quiet",0],["kill",0],["thrown",0],["eat",0],["ate",0]]} -->
+812. **Wenduag: Outside the south postern** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.hunt","chapter":5,"day":109,"completed":true,"choices":[["start",0],["quiet",0],["kill",0],["thrown",0],["eat",0],["ate",0]]} -->
    Scene `wenduag.trickster.court.hunt`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: Outside the south postern
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.trickster.gate_seen`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.hunt`, `wenduag.trickster.native`, `wenduag.closed`.
@@ -9674,7 +9678,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.hunt/eat/0` — [Eat.]
    - `wenduag.trickster.court.hunt/ate/0` — Continue; records `wenduag.trickster.hunt.ate`
 
-812. **Soana: Blood at the cave threshold** — rest delivery / Satchel: event (Wintersun). <!-- rrt-step {"scene":"household.pair.soana_camellia.settle","chapter":5,"day":109,"completed":true,"choices":[["start",2],["declined",0]]} -->
+813. **Soana: Blood at the cave threshold** — rest delivery / Satchel: event (Wintersun). <!-- rrt-step {"scene":"household.pair.soana_camellia.settle","chapter":5,"day":109,"completed":true,"choices":[["start",2],["declined",0]]} -->
    Scene `household.pair.soana_camellia.settle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Visit Soana's cave with Camellia.]
    Need all: `trickster`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `household.pair.soana_camellia.ready`, `soana.present_now`, `camellia.present_now`; Blocked by: `household.closed`, `trickster.failed`, `engine.l12.commander_unreturned`, `soana.closed`, `camellia.closed`, `soana.harem.enmity.camellia`, `camellia.harem.enmity.soana`, `household.pair.soana_camellia.settle.seen`; Block `soana.harem.enmity.camellia` lifted by: `soana.harem.reconciled.camellia`; Block `camellia.harem.enmity.soana` lifted by: `camellia.harem.reconciled.soana`.
@@ -9684,7 +9688,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.soana_camellia.settle/start/2` — "Leave this between you."
    - `household.pair.soana_camellia.settle/declined/0` — Continue; records `household.pair.soana_camellia.settle.seen`, `household.pair.soana_camellia.settle.declined`
 
-813. **Memory: What she asks without a fee** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"vellexia.the_question_after_business","chapter":5,"day":109,"completed":true,"choices":[["start",0],["want",0],["terms",0],["near",0],["desire",0]]} -->
+814. **Memory: What she asks without a fee** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"vellexia.the_question_after_business","chapter":5,"day":109,"completed":true,"choices":[["start",0],["want",0],["terms",0],["near",0],["desire",0]]} -->
    Scene `vellexia.the_question_after_business`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Open the shell for a conversation without an account to settle.]
    Need all: `vellexia.native_finished`, `vellexia.verdict_kept`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`.
@@ -9694,7 +9698,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.the_question_after_business/near/0` — [Tell her how you would welcome her, and keep the private conversation between you.]
    - `vellexia.the_question_after_business/desire/0` — [Tell her you want another evening as her lover.]; records `vellexia.departure_kept`, `vellexia.renewed_lovers`, `vellexia.committed`
 
-814. **Melazmera: The new seal** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.seal","chapter":5,"day":109,"completed":true,"choices":[["start",0],["stone",0],["visit",0],["orders",0]]} -->
+815. **Melazmera: The new seal** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.seal","chapter":5,"day":109,"completed":true,"choices":[["start",0],["stone",0],["visit",0],["orders",0]]} -->
    Scene `melazmera.trickster.beat.seal`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.cost.seal_given`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.seal_asked`, `melazmera.trickster.beat.seal_left`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.seal/start/0` — Continue
@@ -9702,7 +9706,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.beat.seal/visit/0` — "It gave a lot of orders. Some of them killed people. Most of them saved more."
    - `melazmera.trickster.beat.seal/orders/0` — Continue; records `melazmera.trickster.beat.seal_left`
 
-815. **Jerribeth: The patron's audience** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.jerribeth_vellexia.settle.client","chapter":5,"day":109,"completed":true,"choices":[["start",2],["declined",0]]} -->
+816. **Jerribeth: The patron's audience** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.jerribeth_vellexia.settle.client","chapter":5,"day":109,"completed":true,"choices":[["start",2],["declined",0]]} -->
    Scene `household.pair.jerribeth_vellexia.settle.client`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Jerribeth and Vellexia: the patron's audience]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `jerribeth.harem.eligible`, `vellexia.harem.eligible`, `jerribeth.reachable_by_letter`, `vellexia.reachable_by_letter`, `household.pair.jerribeth_vellexia.ready`; Blocked by: `jerribeth.closed`, `vellexia.closed`, `jerribeth.epoch_unavailable`, `vellexia.epoch_unavailable`, `sacrifice`, `household.pair.jerribeth_vellexia.settle.seen`, `jerribeth.harem.vellexia_defection_seen`, `jerribeth.trickster.returned`, `trickster.failed`; Block `sacrifice` lifted by: `trickster.commander_back`.
@@ -9713,7 +9717,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 110
 
-816. **Seelah: Enough sky for an evening** — Drezen. <!-- rrt-step {"scene":"seelah.roof_evening","chapter":5,"day":110,"completed":true,"choices":[["start",0],["pickle",0],["sky",1],["road",0],["future",0],["kiss",0],["leave",0],["promised",0]]} -->
+817. **Seelah: Enough sky for an evening** — Drezen. <!-- rrt-step {"scene":"seelah.roof_evening","chapter":5,"day":110,"completed":true,"choices":[["start",0],["pickle",0],["sky",1],["road",0],["future",0],["kiss",0],["leave",0],["promised",0]]} -->
    Scene `seelah.roof_evening`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You promised me a view."
    Need all: `seelah.courting`, `seelah.weight`, `seelah.faith_spoken`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -9727,7 +9731,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.roof_evening/leave/0` — [Ask how her journeys will fit the life you have promised each other.]; Need all: `seelah.committed`
    - `seelah.roof_evening/promised/0` — [Keep your promise, with her journeys and doubts still ahead.]; records `seelah.aftermath_ready`
 
-817. **Konomi: The readers she wanted** — Drezen. <!-- rrt-step {"scene":"konomi.a_name_beside_hers","chapter":5,"day":110,"completed":true,"choices":[["start",0],["offer",0],["time",0],["joint",0]]} -->
+818. **Konomi: The readers she wanted** — Drezen. <!-- rrt-step {"scene":"konomi.a_name_beside_hers","chapter":5,"day":110,"completed":true,"choices":[["start",0],["offer",0],["time",0],["joint",0]]} -->
    Scene `konomi.a_name_beside_hers`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Has Varine answered about the report?"
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.trial_lived`, `konomi.present_now`; Blocked by: `konomi.closed`, `konomi.dismissed`, `inhuman`, `konomi.ordinary`, `konomi.farewell`; Block `konomi.ordinary` lifted by: `konomi.ordinary_expansion_requested`; Block `konomi.farewell` lifted by: `konomi.ordinary_expansion_requested`.
@@ -9738,14 +9742,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.a_name_beside_hers/time/0` — "You want the private readers and the steady work. Ask for joint terms. I can arrange around a few definite evenings better than an ambition you keep setting aside for me."
    - `konomi.a_name_beside_hers/joint/0` — [Agree on an evening that belongs to you both.]; records `konomi.readers_answered`, `konomi.joint_offer`
 
-818. **Wenduag: Wenduag's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.wenduag","chapter":5,"day":110,"completed":true,"choices":[["start",0]]} -->
+819. **Wenduag: Wenduag's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.wenduag","chapter":5,"day":110,"completed":true,"choices":[["start",0]]} -->
    Scene `minagho_chivarro.trickster.react.wenduag`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Minagho is back."
    Need all: `minagho_chivarro.trickster.returned_minagho`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `wenduag.killed`, `wenduag.kicked_out`, `crossroute.wenduag.unavailable`, `wenduag.dead_any`, `wenduag.q3_sent_away`, `wenduag.q3_killed`, `wenduag.hello_sent_away`, `wenduag.hello_attacked`, `wenduag.trickster.echo.abyss.unavailable`; Block `wenduag.dead_any` lifted by: `wenduag.trickster.echo.abyss.returned_available`.
    Native answer-list host: `ced27e744d2dded40bbb5adf17816dbb`.
    - `minagho_chivarro.trickster.react.wenduag/start/0` — Continue
 
-819. **Dorgelinda: The cellar bill** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.the_kings_bill","chapter":5,"day":110,"completed":true,"choices":[["start",1],["merry",0],["bill",0],["mine",0],["end",0],["back",0]]} -->
+820. **Dorgelinda: The cellar bill** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.the_kings_bill","chapter":5,"day":110,"completed":true,"choices":[["start",1],["merry",0],["bill",0],["mine",0],["end",0],["back",0]]} -->
    Scene `dorgelinda.ledger.the_kings_bill`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You look like you've had a very long night."
    Need all: `trickster.ever`, `dorgelinda.trickster.counted`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.the_kings_bill`; Need one of: `dorgelinda.merry_city`, `dorgelinda.king_revel`.
@@ -9758,7 +9762,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.the_kings_bill/end/0` — "We came back."
    - `dorgelinda.ledger.the_kings_bill/back/0` — [Help her count the empty racks.]
 
-820. **Hepzamirah: Terms, in person** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.body.terms","chapter":5,"day":110,"completed":true,"choices":[["open",0],["ember",0],["killed",2],["price",0],["rent",0],["sealed",0],["threshold",0],["hepzamirah.trickster.body.terms.explicit.1",0]]} -->
+821. **Hepzamirah: Terms, in person** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.body.terms","chapter":5,"day":110,"completed":true,"choices":[["open",0],["ember",0],["killed",2],["price",0],["rent",0],["sealed",0],["threshold",0],["hepzamirah.trickster.body.terms.explicit.1",0]]} -->
    Scene `hepzamirah.trickster.body.terms`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You wanted the clown."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.courier_seen`, `hepzamirah.trickster.flesh.first_morning`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`, `hepzamirah.committed`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -9772,7 +9776,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.body.terms/threshold/0` — [Let her have her rule.]
    - `hepzamirah.trickster.body.terms/hepzamirah.trickster.body.terms.explicit.1/0` — Continue
 
-821. **Camellia: Two lies and a truth, again** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.cards.two_lies_again_alive","chapter":5,"day":110,"completed":true,"choices":[["open",1],["lost",0],["hers",1],["two",1],["else_won",0],["all",0],["camellia.trickster.cards.two_lies_again_alive.explicit.1",0],["morning.all",0]]} -->
+822. **Camellia: Two lies and a truth, again** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.cards.two_lies_again_alive","chapter":5,"day":110,"completed":true,"choices":[["open",1],["lost",0],["hers",1],["two",1],["else_won",0],["all",0],["camellia.trickster.cards.two_lies_again_alive.explicit.1",0],["morning.all",0]]} -->
    Scene `camellia.trickster.cards.two_lies_again_alive`; chapters 3–5 (only 3, 5); wait at least 72h after the latest prerequisite; complete.
    Open: "Play a game with me?"
    Need all: `trickster.ever`, `camellia.committed`, `camellia.trickster.masks.game`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -9787,16 +9791,16 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.cards.two_lies_again_alive/camellia.trickster.cards.two_lies_again_alive.explicit.1/0` — Continue
    - `camellia.trickster.cards.two_lies_again_alive/morning.all/0` — [Rise for the muster.]; records `camellia.trickster.encounter.all.morning`
 
-822. **Arueshalae: The Abyss in her ears** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.abyss_dose","chapter":5,"day":110,"completed":true,"choices":[["start",1],["sit",0]]} -->
+823. **Arueshalae: The Abyss in her ears** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.abyss_dose","chapter":5,"day":110,"completed":true,"choices":[["start",1],["sit",0]]} -->
    Scene `arueshalae.treatment.abyss_dose`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
-   Open: "You're thinking about the Abyss again."
+   Open: "Who are you watching?"
    Need all: `trickster.ever`, `arueshalae.treatment.touched`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.abyss_dose`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
    Native answer-list host: `03ebad9587cbea0438d901a0f8df44f1`.
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
-   - `arueshalae.treatment.abyss_dose/start/1` — "Then don't ask. I'll sit here instead."; records `arueshalae.treatment.abyss_dose`
+   - `arueshalae.treatment.abyss_dose/start/1` — "Then don't find out. I'll sit here instead, between you and the wall."; records `arueshalae.treatment.abyss_dose`
    - `arueshalae.treatment.abyss_dose/sit/0` — Continue
 
-823. **Mielarah: What he was for** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.oskel","chapter":5,"day":110,"completed":true,"choices":[["start",0],["why",0],["yes",0],["ask",0],["end",0]]} -->
+824. **Mielarah: What he was for** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.oskel","chapter":5,"day":110,"completed":true,"choices":[["start",0],["why",0],["yes",0],["ask",0],["end",0]]} -->
    Scene `mielarah.deck.oskel`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "Oskel wants a word?"
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.reckoned`, `mielarah.trickster.cost.meant`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.oskel.arcade`, `mielarah.deck.oskel_spoke`, `mielarah.trickster.cost.oskel`, `mielarah.trickster.cost.ship_lost`.
@@ -9807,7 +9811,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.oskel/ask/0` — "I intend to."; records `mielarah.deck.oskel_spoke`
    - `mielarah.deck.oskel/end/0` — [Leave him to his work.]
 
-824. **Shamira: Who sat in my chair** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.city","chapter":5,"day":110,"completed":true,"choices":[["start",0],["home",0],["chair",0],["talk",1],["lady",1],["attends",0],["cold",0]]} -->
+825. **Shamira: Who sat in my chair** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.city","chapter":5,"day":110,"completed":true,"choices":[["start",0],["home",0],["chair",0],["talk",1],["lady",1],["attends",0],["cold",0]]} -->
    Scene `shamira.trickster.after.city`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You look well, for a dead woman."
    Need all: `trickster.ever`, `shamira.trickster.embodied`, `shamira.present_now`; Blocked by: `shamira.trickster.after.city_awning`, `shamira.trickster.city`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
@@ -9820,7 +9824,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.after.city/attends/0` — Continue
    - `shamira.trickster.after.city/cold/0` — [Leave her to her wine.]; records `shamira.trickster.city`
 
-825. **Jannah: Houndheart** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.houndheart","chapter":5,"day":110,"completed":true,"choices":[["open",0],["rain",2],["told",0],["league",0],["camp",0],["legs",0],["blame",0],["honest",0]]} -->
+826. **Jannah: Houndheart** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.houndheart","chapter":5,"day":110,"completed":true,"choices":[["open",0],["rain",2],["told",0],["league",0],["camp",0],["legs",0],["blame",0],["honest",0]]} -->
    Scene `jannah.circle.houndheart`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You're quiet today."
    Need all: `trickster.ever`, `jannah.circle.forms`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.houndheart`, `crossroute.kiana.unavailable`, `crossroute.seelah.unavailable`.
@@ -9834,7 +9838,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.houndheart/blame/0` — "You ran. That stays true. What you do next is true as well."; records `jannah.circle.hh.honest`
    - `jannah.circle.houndheart/honest/0` — [Leave her with the rain.]
 
-826. **Terendelev: The Queen** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.galfrey","chapter":5,"day":110,"completed":true,"choices":[["start",0],["alive",0],["alive_end",0]]} -->
+827. **Terendelev: The Queen** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.galfrey","chapter":5,"day":110,"completed":true,"choices":[["start",0],["alive",0],["alive_end",0]]} -->
    Scene `terendelev.trickster.watch.galfrey`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The chaplain says you've been in the chapel every night."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.galfrey_awning`.
@@ -9843,7 +9847,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.galfrey/alive/0` — "She'll come round. She's been wrong about me before."; records `terendelev.trickster.watch.galfrey_spoken`
    - `terendelev.trickster.watch.galfrey/alive_end/0` — [Leave her to her chapel.]
 
-827. **Eliandra: What she gave at thirteen** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.thirteen","chapter":5,"day":110,"completed":true,"choices":[["start",0],["vow",0],["gave",0],["believe",0],["never",0]]} -->
+828. **Eliandra: What she gave at thirteen** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.thirteen","chapter":5,"day":110,"completed":true,"choices":[["start",0],["vow",0],["gave",0],["believe",0],["never",0]]} -->
    Scene `eliandra.trickster.ch5.thirteen`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "How old were you, when you made your vow?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.vow_told`.
@@ -9854,7 +9858,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.thirteen/believe/0` — "Never is a long time."; records `eliandra.trickster.vow_told`
    - `eliandra.trickster.ch5.thirteen/never/0` — [Let the question hang.]
 
-828. **Galfrey: The Crows' oath, by lamplight** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.oath","chapter":5,"day":110,"completed":true,"choices":[["start",0],["tent",0],["refuse",0],["threshold",0],["galfrey.trickster.alive.oath.explicit.1",0],["morning",0]]} -->
+829. **Galfrey: The Crows' oath, by lamplight** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.alive.oath","chapter":5,"day":110,"completed":true,"choices":[["start",0],["tent",0],["refuse",0],["threshold",0],["galfrey.trickster.alive.oath.explicit.1",0],["morning",0]]} -->
    Scene `galfrey.trickster.alive.oath`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "The Crows' sergeant says Kitrane has something to say to me."
    Need all: `trickster`, `galfrey.final`, `galfrey.trickster.alive.plan_kept`, `galfrey.trickster.alive.trial_kept`, `galfrey.present_now`; Blocked by: `galfrey.dead`, `galfrey.closed`, `galfrey.romance_finished`, `galfrey.romance_active`, `galfrey.committed`, `galfrey.trickster.alive.oath_reserved`, `galfrey.trickster.alive.reserved_ally`, `galfrey.trickster.alive.reserved_refused`, `trickster.failed`.
@@ -9866,14 +9870,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `galfrey.trickster.alive.oath/galfrey.trickster.alive.oath.explicit.1/0` — Continue
    - `galfrey.trickster.alive.oath/morning/0` — [Bow to the Queen.]; records `galfrey.committed`, `galfrey.trickster.alive.committed`; Need all: `trickster.now`
 
-829. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.react.greybor_morning","chapter":5,"day":110,"completed":true,"choices":[["start",0]]} -->
+830. **Greybor: Greybor's word** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.trickster.react.greybor_morning","chapter":5,"day":110,"completed":true,"choices":[["start",0]]} -->
    Scene `horzalah.trickster.react.greybor_morning`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "About Horzalah."
    Need all: `trickster.ever`, `greybor.in_party`, `horzalah.trickster.morning_seen`, `horzalah.present_now`; Blocked by: `greybor.dead`, `greybor.kicked_out`.
    Native answer-list host: `174d6c94b6725f44aad1d2a76993a926`.
    - `horzalah.trickster.react.greybor_morning/start/0` — Continue
 
-830. **Yaniel: Not all enemies** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.bout","chapter":5,"day":110,"completed":true,"choices":[["start",0],["fight",2],["yield",0],["end",0]]} -->
+831. **Yaniel: Not all enemies** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.bout","chapter":5,"day":110,"completed":true,"choices":[["start",0],["fight",2],["yield",0],["end",0]]} -->
    Scene `yaniel.trickster.beat.bout`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Those are practice swords."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.trickster.beat.walls`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -9883,7 +9887,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.bout/yield/0` — Continue
    - `yaniel.trickster.beat.bout/end/0` — [Take your hand back, eventually.]; records `yaniel.trickster.beat.bout`
 
-831. **Wenduag: Counted in gongs** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.gongs","chapter":5,"day":110,"completed":true,"choices":[["start",0],["her",0],["father",0],["maze_chosen",0],["saw",1],["wenduag.trickster.court.gongs.explicit.1",0]]} -->
+832. **Wenduag: Counted in gongs** — Drezen; hub `wenduag.presence`. <!-- rrt-step {"scene":"wenduag.trickster.court.gongs","chapter":5,"day":110,"completed":true,"choices":[["start",0],["her",0],["father",0],["maze_chosen",0],["saw",1],["wenduag.trickster.court.gongs.explicit.1",0]]} -->
    Scene `wenduag.trickster.court.gongs`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: Counted in gongs
    Need all: `trickster.ever`, `wenduag.trickster.with_you`, `wenduag.committed`, `trickster.now`, `wenduag.present_now`; Blocked by: `wenduag.trickster.court.gongs`, `wenduag.trickster.native`, `wenduag.closed`.
@@ -9895,7 +9899,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `wenduag.trickster.court.gongs/saw/1` — Continue; records `wenduag.trickster.gongs.saw`; Need all: `wenduag.trickster.court.cairn`
    - `wenduag.trickster.court.gongs/wenduag.trickster.court.gongs.explicit.1/0` — Continue
 
-832. **Narrator: The courier sent back twice** — rest delivery / Satchel: event (Drezen). <!-- rrt-step {"scene":"household.pair.galfrey_konomi.settle","chapter":5,"day":110,"completed":true,"choices":[["start",0],["carried",0]]} -->
+833. **Narrator: The courier sent back twice** — rest delivery / Satchel: event (Drezen). <!-- rrt-step {"scene":"household.pair.galfrey_konomi.settle","chapter":5,"day":110,"completed":true,"choices":[["start",0],["carried",0]]} -->
    Scene `household.pair.galfrey_konomi.settle`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `household.pair.galfrey_konomi.ready`, `galfrey.present_now`, `galfrey.final`, `konomi.present_now`; Blocked by: `household.closed`, `fool_king.gone`, `trickster.failed`, `engine.l12.commander_unreturned`, `galfrey.closed`, `galfrey.killed_by_commander`, `galfrey.epoch_unavailable`, `galfrey.returned_actor_lost`, `konomi.closed`, `konomi.retained_dead`, `konomi.returned_actor_lost`, `household.pair.galfrey_konomi.settle.seen`, `galfrey.dead`, `galfrey.trickster.returned`, `konomi.private_departed`, `konomi.epoch_unavailable`; Need one of: `konomi.present`, `konomi.trickster.presence_on`.
    Actor must be physically available: `8c5dcc93d68d0ed44afd43902201da40`; also `ca2d58c5c65723945857e04fb85d30ce`.
@@ -9904,7 +9908,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.galfrey_konomi.settle/start/0` — [Diplomacy DC 22] "I’ll carry the correction as each of you wrote it."; PASS CheckDiplomacy DC 22 (Commander only); success → `carried`; failure → `misquoted`
    - `household.pair.galfrey_konomi.settle/carried/0` — Continue; records `household.pair.galfrey_konomi.settle.seen`, `household.pair.galfrey_konomi.settle.kept`, `household.pair.galfrey_konomi.correction.delivered`, `household.pair.galfrey_konomi.galfrey.name_withheld`, `household.pair.galfrey_konomi.konomi.office_named`, `household.pair.galfrey_konomi.cost.galfrey.endorsement_withheld`, `household.pair.galfrey_konomi.cost.konomi.joint_cover_lost`, `household.pair.galfrey_konomi.cost.commander.errand`
 
-833. **Seelah: The blade on the bank** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.stood.after_restraint","chapter":5,"day":110,"completed":true,"choices":[["start",0],["held",0]]} -->
+834. **Seelah: The blade on the bank** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.stood.after_restraint","chapter":5,"day":110,"completed":true,"choices":[["start",0],["held",0]]} -->
    Scene `household.pair.seelah_wenduag.stood.after_restraint`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Seelah and Wenduag: The blade on the bank]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.seelah_wenduag.invited`, `seelah.harem.eligible`, `wenduag.harem.eligible`, `household.pair.seelah_wenduag.watch.done`, `household.pair.seelah_wenduag.restraint.seen`, `wenduag.harem.attitude.seelah.respect`, `seelah.present_now`, `wenduag.present_now`; Blocked by: `seelah.harem.enmity.wenduag`, `wenduag.harem.enmity.seelah`, `household.pair.seelah_wenduag.stood.seen`, `wenduag.harem.attitude.seelah.friend`, `wenduag.harem.attitude.seelah.lover`, `fool_king.gone`, `trickster.failed`; Block `seelah.harem.enmity.wenduag` lifted by: `seelah.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.seelah` lifted by: `wenduag.harem.reconciled.seelah`.
@@ -9913,14 +9917,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_wenduag.stood.after_restraint/start/0` — Continue; PASS SkillAthletics DC 18 (party check); success → `held`; failure → `failed`
    - `household.pair.seelah_wenduag.stood.after_restraint/held/0` — Continue; records `household.pair.seelah_wenduag.stood.seen`, `household.pair.seelah_wenduag.stood_witnessed`, `household.pair.seelah_wenduag.stood.debt_owed`, `household.pair.seelah_wenduag.cost.seelah_wounded`
 
-834. **Melazmera: The little man with the axe** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.greybor","chapter":5,"day":110,"completed":true,"choices":[["start",0],["him",0],["mine",0]]} -->
+835. **Melazmera: The little man with the axe** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.greybor","chapter":5,"day":110,"completed":true,"choices":[["start",0],["him",0],["mine",0]]} -->
    Scene `melazmera.trickster.beat.greybor`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.greybor_carried`, `melazmera.trickster.fed`, `participant.greybor.available`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.greybor_heard`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.greybor/start/0` — Continue
    - `melazmera.trickster.beat.greybor/him/0` — "He's not for sale. He's mine."; records `melazmera.trickster.beat.greybor_claimed`
    - `melazmera.trickster.beat.greybor/mine/0` — Continue; records `melazmera.trickster.beat.greybor_heard`
 
-835. **Galfrey: The place under the banner** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.galfrey_arueshalae.settle.good","chapter":5,"day":110,"completed":true,"choices":[["start",0],["placed",0]]} -->
+836. **Galfrey: The place under the banner** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.galfrey_arueshalae.settle.good","chapter":5,"day":110,"completed":true,"choices":[["start",0],["placed",0]]} -->
    Scene `household.pair.galfrey_arueshalae.settle.good`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Galfrey and Arueshalae: the place under the banner]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.stance_eligible`, `household.table.kept`, `household.pair.galfrey_arueshalae.bodies_current`, `galfrey.harem.eligible`, `arueshalae.harem.eligible`, `galfrey.present_now`, `arueshalae.present_now`, `arueshalae.redeemed`, `household.pair.galfrey_arueshalae.ready.good`; Blocked by: `fool_king.gone`, `trickster.failed`, `galfrey.closed`, `galfrey.killed_by_commander`, `galfrey.epoch_unavailable`, `galfrey.returned_actor_lost`, `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.epoch_unavailable`, `arueshalae.returned_actor_lost`, `galfrey.harem.enmity.arueshalae`, `arueshalae.harem.enmity.galfrey`, `household.pair.galfrey_arueshalae.settle.seen`, `arueshalae.corrupted`; Block `galfrey.harem.enmity.arueshalae` lifted by: `galfrey.harem.reconciled.arueshalae`; Block `arueshalae.harem.enmity.galfrey` lifted by: `arueshalae.harem.reconciled.galfrey`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`; Block `arueshalae.evil_dead` lifted by: `arueshalae.trickster.returned`.
@@ -9929,7 +9933,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.galfrey_arueshalae.settle.good/start/0` — "Give her the place you have named."
    - `household.pair.galfrey_arueshalae.settle.good/placed/0` — [Keep the queen's chosen placement.]; records `household.pair.galfrey_arueshalae.settle.seen`, `household.pair.galfrey_arueshalae.settle.done`, `household.pair.galfrey_arueshalae.settle.good_done`, `household.pair.galfrey_arueshalae.deed.galfrey_place_kept`, `household.pair.galfrey_arueshalae.deed.arueshalae_place_kept`, `household.pair.galfrey_arueshalae.cost.galfrey_public_judgment`, `household.pair.galfrey_arueshalae.cost.arueshalae_unclaimed_place_yielded`, `household.pair.galfrey_arueshalae.cost.commander_placement`; Need all: `household.pair.galfrey_arueshalae.voice.queen`
 
-836. **Kiana: No second secret** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.answer","chapter":5,"day":110,"completed":true,"choices":[["start",1],["apart",0],["later",1],["partner_old_breakup",0]]} -->
+837. **Kiana: No second secret** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.answer","chapter":5,"day":110,"completed":true,"choices":[["start",1],["apart",0],["later",1],["partner_old_breakup",0]]} -->
    Scene `kiana.answer`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Need all: `kiana.marriage`, `kiana.attracted`, `kiana.present_now`; Blocked by: `seelah.elan_dead`, `kiana.history_betrothed`; Need one of: `seelah.souls_returned`, `kiana.trickster.met`.
    - `kiana.answer/start/1` — "What did you tell him you wanted?"; Blocked by: `kiana.affair`, `kiana.partner_unsettled`
@@ -9937,19 +9941,19 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kiana.answer/later/1` — [Read Elan's answer before leaving.]; Need all: `trickster.now`
    - `kiana.answer/partner_old_breakup/0` — [Leave them that evening.]; records `kiana.available`, `kiana.separated`, `kiana.partner_breakup_spoken`
 
-837. **Memory: A different room for the same voice** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_voice_after_the_abyss","chapter":5,"day":110,"completed":true,"choices":[["start",0],["lovers",0],["result",0],["papers",0],["tessar",0],["named",0],["end",0]]} -->
+838. **Memory: A different room for the same voice** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_voice_after_the_abyss","chapter":5,"day":110,"completed":true,"choices":[["start",0],["lovers",0],["result",0],["papers",0],["tessar",0],["named",0],["end",0]]} -->
    Scene `vellexia.the_voice_after_the_abyss`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Answer the echo shell in Drezen.]
    Need all: `vellexia.native_finished`, `vellexia.departure_kept`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Need one of: `vellexia.dismissed_native`, `vellexia.spared`, `vellexia.farewell`; Block `vellexia.dead` lifted by: `vellexia.trickster.returned`; Block `vellexia.early_fight` lifted by: `vellexia.trickster.returned`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`; Block `vellexia.mirrored` lifted by: `vellexia.trickster.returned`.
    - `vellexia.the_voice_after_the_abyss/start/0` — "I wanted to hear you again."; Need all: `vellexia.renewed_lovers`
    - `vellexia.the_voice_after_the_abyss/lovers/0` — [Settle in and ask what became of her own business.]
-   - `vellexia.the_voice_after_the_abyss/result/0` — [Ask about the published corrections and the circlet she kept.]; Need all: `vellexia.account_published`
+   - `vellexia.the_voice_after_the_abyss/result/0` — [Ask what became of Ilveris after the unmasking.]; Need all: `vellexia.account_published`
    - `vellexia.the_voice_after_the_abyss/papers/0` — [Ask about Tessar.]
    - `vellexia.the_voice_after_the_abyss/tessar/0` — [Ask about the sample carrying both your names.]; Need all: `vellexia.named_sample`
    - `vellexia.the_voice_after_the_abyss/named/0` — [Let the completed work remain completed.]
    - `vellexia.the_voice_after_the_abyss/end/0` — [Agree to another private call.]; records `vellexia.return_kept`
 
-838. **Elyanka: Sixty-one under canvas** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.test.the_dead","chapter":5,"day":110,"completed":true,"choices":[["start",2],["plain",0],["rows",0],["paladin",0],["ask",1],["carrion",0],["carrion2",0]]} -->
+839. **Elyanka: Sixty-one under canvas** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.test.the_dead","chapter":5,"day":110,"completed":true,"choices":[["start",2],["plain",0],["rows",0],["paladin",0],["ask",1],["carrion",0],["carrion2",0]]} -->
    Scene `elyanka.trickster.test.the_dead`; chapters 5–5; wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.owned`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.tested`.
    - `elyanka.trickster.test.the_dead/start/2` — Continue; Blocked by: `elyanka.trickster.exposed`, `elyanka.trickster.bluffed`
@@ -9960,7 +9964,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.test.the_dead/carrion/0` — Continue
    - `elyanka.trickster.test.the_dead/carrion2/0` — [Let her have the head.]; records `elyanka.trickster.tested`, `elyanka.trickster.gave_carrion`
 
-839. **Melazmera: What giving is** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.dinner","chapter":5,"day":110,"completed":true,"choices":[["start",0],["gift",2],["teach",0]]} -->
+840. **Melazmera: What giving is** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.dinner","chapter":5,"day":110,"completed":true,"choices":[["start",0],["gift",2],["teach",0]]} -->
    Scene `melazmera.trickster.beat.dinner`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.dinner`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.dinner/start/0` — Continue
@@ -9969,7 +9973,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 111
 
-840. **Seelah: The turn she means to take** — Drezen. <!-- rrt-step {"scene":"seelah.late_course","chapter":5,"day":111,"completed":true,"choices":[["start",0],["course",0],["runner",0],["invitation",0],["fixed",0],["end",0]]} -->
+841. **Seelah: The turn she means to take** — Drezen. <!-- rrt-step {"scene":"seelah.late_course","chapter":5,"day":111,"completed":true,"choices":[["start",0],["course",0],["runner",0],["invitation",0],["fixed",0],["end",0]]} -->
    Scene `seelah.late_course`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You have chalk on your sleeve. What are you planning?"
    Need all: `seelah.courting`, `seelah.aftermath_ready`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -9981,14 +9985,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.late_course/fixed/0` — "I will come and see you both teach."
    - `seelah.late_course/end/0` — [Keep the invitation.]; records `seelah.late_course_planned`
 
-841. **Socothbenoth: Socothbenoth's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.socoth_fee","chapter":5,"day":111,"completed":true,"choices":[["start",0]]} -->
+842. **Socothbenoth: Socothbenoth's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.socoth_fee","chapter":5,"day":111,"completed":true,"choices":[["start",0]]} -->
    Scene `minagho_chivarro.trickster.react.socoth_fee`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About the linen press."
    Need all: `trickster.ever`, `minagho_chivarro.trickster.cost.socoth_owed`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `council.expired`.
    Native answer-list host: `db7f69fa013c7ec49b651e7ad26c67de`.
    - `minagho_chivarro.trickster.react.socoth_fee/start/0` — Continue
 
-842. **Dorgelinda: Carried forward** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.carried_forward","chapter":5,"day":111,"completed":true,"choices":[["start",0],["going",0],["wasnt",0],["boots",1],["choose",0],["receipt",0],["end",0]]} -->
+843. **Dorgelinda: Carried forward** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.carried_forward","chapter":5,"day":111,"completed":true,"choices":[["start",0],["going",0],["wasnt",0],["boots",1],["choose",0],["receipt",0],["end",0]]} -->
    Scene `dorgelinda.ledger.carried_forward`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You're ridin' with the wagons?"
    Need all: `trickster.ever`, `dorgelinda.ledger.the_inquiry`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.carried_forward`.
@@ -10002,7 +10006,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.carried_forward/receipt/0` — Continue; records `dorgelinda.ledger.receipt_signed`
    - `dorgelinda.ledger.carried_forward/end/0` — [Leave her to the preparations.]
 
-843. **Hepzamirah: The chaplains' petition** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.chaplains","chapter":5,"day":111,"completed":true,"choices":[["petition",0],["priest",0],["her",0],["confined",0],["confined_say",0]]} -->
+844. **Hepzamirah: The chaplains' petition** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.chaplains","chapter":5,"day":111,"completed":true,"choices":[["petition",0],["priest",0],["her",0],["confined",0],["confined_say",0]]} -->
    Scene `hepzamirah.trickster.flesh.chaplains`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The chaplains came to me about you."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.first_morning`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -10013,7 +10017,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.chaplains/confined/0` — Continue
    - `hepzamirah.trickster.flesh.chaplains/confined_say/0` — [Let the guard take her.]
 
-844. **Camellia: The prisoner** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.evening.the_prisoner_alive","chapter":5,"day":111,"completed":true,"choices":[["open",0],["her",0],["ask",0],["yes",0]]} -->
+845. **Camellia: The prisoner** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.evening.the_prisoner_alive","chapter":5,"day":111,"completed":true,"choices":[["open",0],["her",0],["ask",0],["yes",0]]} -->
    Scene `camellia.trickster.evening.the_prisoner_alive`; chapters 3–5 (only 3, 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Camellia. They told me you were in the cells."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`; Need one of: `camellia.trickster.bond.witness_lied`, `camellia.trickster.cost.witness`.
@@ -10024,7 +10028,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.evening.the_prisoner_alive/ask/0` — "He's yours."
    - `camellia.trickster.evening.the_prisoner_alive/yes/0` — [Walk up into the light]; records `camellia.trickster.cost.prisoner`
 
-845. **Arueshalae: The one trick** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.teach_me","chapter":5,"day":111,"completed":true,"choices":[["start",0],["try",0],["cant",0],["need",0]]} -->
+846. **Arueshalae: The one trick** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.teach_me","chapter":5,"day":111,"completed":true,"choices":[["start",0],["try",0],["cant",0],["need",0]]} -->
    Scene `arueshalae.treatment.teach_me`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Teach me how you do it."
    Need all: `trickster.ever`, `arueshalae.treatment.kitchen`, `arueshalae.treatment.cure_works`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.teach_me`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -10035,7 +10039,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.teach_me/cant/0` — "Good. A ward you could carry for anyone, you'd spend on the baker's girl."; records `arueshalae.treatment.teach_me`; Blocked by: `crossroute.vellexia.unavailable`
    - `arueshalae.treatment.teach_me/need/0` — Continue
 
-846. **Mielarah: Hold her** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.wheel","chapter":5,"day":111,"completed":true,"choices":[["start",0],["why",0],["storm",1],["spade_first",0],["letgo",0],["held",1],["above_repeat",0],["kiss_first",1],["take_home",0]]} -->
+847. **Mielarah: Hold her** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.wheel","chapter":5,"day":111,"completed":true,"choices":[["start",0],["why",0],["storm",1],["spade_first",0],["letgo",0],["held",1],["above_repeat",0],["kiss_first",1],["take_home",0]]} -->
    Scene `mielarah.deck.wheel`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You are taking Starcatcher out tonight?"
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.market`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.wheel.arcade`, `mielarah.committed`, `mielarah.trickster.declined`, `mielarah.trickster.cost.oskel`, `mielarah.trickster.cost.meant`; Block `mielarah.trickster.cost.oskel` lifted by: `mielarah.deck.oskel_settled`; Block `mielarah.trickster.cost.meant` lifted by: `mielarah.deck.oskel_settled`.
@@ -10050,7 +10054,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.wheel/kiss_first/1` — [Take her home.]
    - `mielarah.deck.wheel/take_home/0` — [Bring her down to Drezen.]
 
-847. **Jannah: Wings over the north wall** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.walls","chapter":5,"day":111,"completed":true,"choices":[["open",0],["freeze",0],["salute",0],["after_salute",0],["end",0]]} -->
+848. **Jannah: Wings over the north wall** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.walls","chapter":5,"day":111,"completed":true,"choices":[["open",0],["freeze",0],["salute",0],["after_salute",0],["end",0]]} -->
    Scene `jannah.circle.walls`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The Watch sergeant says you asked for the north wall."
    Need all: `trickster.ever`, `jannah.circle.houndheart`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.walls`.
@@ -10061,7 +10065,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.walls/after_salute/0` — Continue
    - `jannah.circle.walls/end/0` — [Help her up.]
 
-848. **Terendelev: Keepsakes** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.keepsakes","chapter":5,"day":111,"completed":true,"choices":[["start",1],["scale",0],["scale_end",0]]} -->
+849. **Terendelev: Keepsakes** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.keepsakes","chapter":5,"day":111,"completed":true,"choices":[["start",1],["scale",0],["scale_end",0]]} -->
    Scene `terendelev.trickster.watch.keepsakes`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "I've been carrying something of yours."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.keepsakes_awning`; Need one of: `terendelev.claw_held`, `terendelev.scale_held`.
@@ -10070,7 +10074,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.keepsakes/scale/0` — "It's yours."; records `terendelev.trickster.watch.scale_kept`
    - `terendelev.trickster.watch.keepsakes/scale_end/0` — [Leave her to her street.]
 
-849. **Eliandra: A hundred years in crates** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.packing","chapter":5,"day":111,"completed":true,"choices":[["start",0],["her",0],["careful",0],["leave",0],["end",0]]} -->
+850. **Eliandra: A hundred years in crates** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.packing","chapter":5,"day":111,"completed":true,"choices":[["start",0],["her",0],["careful",0],["leave",0],["end",0]]} -->
    Scene `eliandra.trickster.ch5.packing`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Can I help with the packing?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.shrine_left`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.packed`.
@@ -10081,14 +10085,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.packing/leave/0` — Continue
    - `eliandra.trickster.ch5.packing/end/0` — [Leave her in the empty library.]; records `eliandra.trickster.packed`
 
-850. **Irabeth: Irabeth's word** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.react.irabeth.queen_night","chapter":5,"day":111,"completed":true,"choices":[["start",0]]} -->
+851. **Irabeth: Irabeth's word** — native dialogue listed below. <!-- rrt-step {"scene":"galfrey.trickster.react.irabeth.queen_night","chapter":5,"day":111,"completed":true,"choices":[["start",0]]} -->
    Scene `galfrey.trickster.react.irabeth.queen_night`; chapters 5–5; wait at least 12h after the latest prerequisite; complete.
    Open: "Anything to report, knight?"
    Need all: `galfrey.trickster.alive.committed`, `irabeth.present_now`, `galfrey.present_now`; Blocked by: `irabeth_dead`, `galfrey.closed`, `irabeth_gone`, `swarm`, `true_lich`; Block `irabeth_dead` lifted by: `irabeth.trickster.returned`.
    Native answer-list host: `871af36f2ab2b1f40b5de77976c54276`.
    - `galfrey.trickster.react.irabeth.queen_night/start/0` — Continue
 
-851. **Horzalah: The only man who does not look** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.storyteller","chapter":5,"day":111,"completed":true,"choices":[["start",1],["herself",0],["storyteller",0],["end_peace",0]]} -->
+852. **Horzalah: The only man who does not look** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.storyteller","chapter":5,"day":111,"completed":true,"choices":[["start",1],["herself",0],["storyteller",0],["end_peace",0]]} -->
    Scene `horzalah.trickster.beat.storyteller`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Is he bothering you?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.beat.name_said`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.storyteller_heard`, `horzalah.trickster.ally`.
@@ -10098,7 +10102,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.storyteller/storyteller/0` — "This one's supposed to end one."
    - `horzalah.trickster.beat.storyteller/end_peace/0` — [Leave them to argue.]; records `horzalah.trickster.beat.storyteller_heard`
 
-852. **Yaniel: The roast** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.roast","chapter":5,"day":111,"completed":true,"choices":[["start",0],["wall",0],["terrible",0],["tree",0],["spring",0],["end",0]]} -->
+853. **Yaniel: The roast** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.roast","chapter":5,"day":111,"completed":true,"choices":[["start",0],["wall",0],["terrible",0],["tree",0],["spring",0],["end",0]]} -->
    Scene `yaniel.trickster.beat.roast`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What is that smell?"
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.trickster.beat.walls`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -10110,7 +10114,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.roast/spring/0` — Continue
    - `yaniel.trickster.beat.roast/end/0` — [Go down.]; records `yaniel.trickster.beat.roast`
 
-853. **Melazmera: The ridge above the wagons** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.melazmera_hepzamirah.open","chapter":5,"day":111,"completed":true,"choices":[["start",1],["refused",0]]} -->
+854. **Melazmera: The ridge above the wagons** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.melazmera_hepzamirah.open","chapter":5,"day":111,"completed":true,"choices":[["start",1],["refused",0]]} -->
    Scene `household.pair.melazmera_hepzamirah.open`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Visit the outer stockyard.]
    Need all: `trickster`, `trickster.now`, `foresight.page_taken`, `household.table.kept`, `melazmera.harem.eligible`, `hepzamirah.harem.eligible`, `melazmera.trickster.returned`, `hepzamirah.trickster.returned`; Blocked by: `household.pair.melazmera_hepzamirah.open.seen`, `melazmera.harem.enmity.hepzamirah`, `hepzamirah.harem.enmity.melazmera`, `melazmera.closed`, `melazmera.dead.latched`, `melazmera.trickster.left_free`, `hepzamirah.closed`, `trickster.failed`; Block `melazmera.harem.enmity.hepzamirah` lifted by: `melazmera.harem.reconciled.hepzamirah`; Block `hepzamirah.harem.enmity.melazmera` lifted by: `hepzamirah.harem.reconciled.melazmera`.
@@ -10119,7 +10123,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.melazmera_hepzamirah.open/start/1` — "Use the ridge. Let the two of you sort it out."; records `household.pair.melazmera_hepzamirah.open.seen`, `household.pair.melazmera_hepzamirah.open.declined`, `household.pair.melazmera_hepzamirah.permanent_refusal`, `hepzamirah.harem.enmity.melazmera`, `hepzamirah.harem.stance.tolerated`; Blocked by: `hepzamirah.harem.enmity_any`
    - `household.pair.melazmera_hepzamirah.open/refused/0` — Continue
 
-854. **Melazmera: A stone and a shield** — rest delivery / Satchel: letter (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.stone.shield","chapter":5,"day":111,"completed":true,"choices":[["start",0],["words",0]]} -->
+855. **Melazmera: A stone and a shield** — rest delivery / Satchel: letter (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.stone.shield","chapter":5,"day":111,"completed":true,"choices":[["start",0],["words",0]]} -->
    Scene `melazmera.trickster.stone.shield`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.returned`, `melazmera.trickster.fed`, `melazmera.reachable_by_letter`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.stone.shield`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.stone.shield/start/0` — Continue
@@ -10127,7 +10131,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 112
 
-855. **Seelah: A shield held low** — Drezen. <!-- rrt-step {"scene":"seelah.late_lesson","chapter":5,"day":112,"completed":true,"choices":[["start",0],["arrangement",0],["fixed",0],["pressure",0],["one",0],["after",0],["practice",0]]} -->
+856. **Seelah: A shield held low** — Drezen. <!-- rrt-step {"scene":"seelah.late_lesson","chapter":5,"day":112,"completed":true,"choices":[["start",0],["arrangement",0],["fixed",0],["pressure",0],["one",0],["after",0],["practice",0]]} -->
    Scene `seelah.late_lesson`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You invited me to Istra's lesson."
    Need all: `seelah.courting`, `seelah.aftermath_ready`, `seelah.late_course_planned`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -10140,7 +10144,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.late_lesson/after/0` — [Stay for her practice.]
    - `seelah.late_lesson/practice/0` — [Leave with her when the yard is clear.]; records `seelah.late_lesson_kept`
 
-856. **Chivarro: Their own door** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"household.pair.minagho_chivarro.ack","chapter":5,"day":112,"completed":true,"choices":[["start",0],["minagho",0],["held",0]]} -->
+857. **Chivarro: Their own door** — Drezen; hub `minagho_chivarro.presence.chivarro`. <!-- rrt-step {"scene":"household.pair.minagho_chivarro.ack","chapter":5,"day":112,"completed":true,"choices":[["start",0],["minagho",0],["held",0]]} -->
    Scene `household.pair.minagho_chivarro.ack`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "About your place in the household."
    Need all: `trickster`, `foresight.page_taken`, `chivarro.present_now`, `participant.chivarro.available`, `minagho_chivarro.trickster.reunited`, `minagho.present_now`, `participant.minagho.available`, `minagho_chivarro.presence.chivarro.route_open`, `minagho_chivarro.trickster.chivarro_in`, `minagho.dead`, `minagho_chivarro.trickster.returned_minagho`, `minagho_chivarro.trickster.minagho_in`, `household.pair.minagho_chivarro.minagho_here`, `household.pair.minagho_chivarro.chivarro_here`; Blocked by: `household.pair.minagho_chivarro.ack.seen`, `minachiv.closed`, `trickster.failed`, `sacrifice`, `minagho_chivarro.presence.chivarro.failed`, `minagho_chivarro.trickster.chivarro_sent_back`, `minagho_chivarro.presence.minagho.failed`, `minagho_chivarro.trickster.declined_minagho`; Block `sacrifice` lifted by: `trickster.commander_back`.
@@ -10150,7 +10154,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.minagho_chivarro.ack/minagho/0` — "Your house, your invitations."
    - `household.pair.minagho_chivarro.ack/held/0` — Continue; records `household.pair.minagho_chivarro.ack.seen`, `household.pair.minagho_chivarro.own_house_acknowledged`
 
-857. **Dorgelinda: Buying forgiveness** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.buying_forgiveness","chapter":5,"day":112,"completed":true,"choices":[["start",1],["plain",1],["restrained",0],["hammer",0],["want",0],["end",0]]} -->
+858. **Dorgelinda: Buying forgiveness** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.buying_forgiveness","chapter":5,"day":112,"completed":true,"choices":[["start",1],["plain",1],["restrained",0],["hammer",0],["want",0],["end",0]]} -->
    Scene `dorgelinda.ledger.buying_forgiveness`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "I didn't know you prayed."
    Need all: `trickster.ever`, `dorgelinda.ledger.half_rations`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.buying_forgiveness`.
@@ -10163,7 +10167,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.buying_forgiveness/want/0` — Continue
    - `dorgelinda.ledger.buying_forgiveness/end/0` — [Leave her to think.]
 
-858. **Camellia: Not today** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.bond.not_today_alive","chapter":5,"day":112,"completed":true,"choices":[["open",0],["lead",0],["kept",2],["steps",0],["after",0],["smile",0],["night",0],["camellia.trickster.bond.not_today_alive.explicit.1",0],["morning.not_today",0]]} -->
+859. **Camellia: Not today** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.bond.not_today_alive","chapter":5,"day":112,"completed":true,"choices":[["open",0],["lead",0],["kept",2],["steps",0],["after",0],["smile",0],["night",0],["camellia.trickster.bond.not_today_alive.explicit.1",0],["morning.not_today",0]]} -->
    Scene `camellia.trickster.bond.not_today_alive`; chapters 3–5 (only 3, 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You're very quiet tonight."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`, `camellia.trickster.bond.not_today`; Need one of: `camellia.trickster.bond.witness_lied`, `camellia.trickster.cost.witness`.
@@ -10179,7 +10183,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.bond.not_today_alive/camellia.trickster.bond.not_today_alive.explicit.1/0` — Continue
    - `camellia.trickster.bond.not_today_alive/morning.not_today/0` — [Rise for the muster.]; records `camellia.trickster.encounter.not_today.morning`
 
-859. **Mielarah: Above the clouds** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.quarterdeck","chapter":5,"day":112,"completed":true,"choices":[["start",0],["lash",0],["kiss",0],["coat",0],["threshold",0],["explicit.1",0]]} -->
+860. **Mielarah: Above the clouds** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.quarterdeck","chapter":5,"day":112,"completed":true,"choices":[["start",0],["lash",0],["kiss",0],["coat",0],["threshold",0],["explicit.1",0]]} -->
    Scene `mielarah.deck.quarterdeck`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "Starcatcher's going up tonight?"
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.committed`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.quarterdeck.arcade`, `mielarah.deck.quarterdeck`.
@@ -10191,7 +10195,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.quarterdeck/threshold/0` — [The ship holds her course.]; records `mielarah.deck.quarterdeck`
    - `mielarah.deck.quarterdeck/explicit.1/0` — Continue
 
-860. **Shamira: Out of the wardrobe** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.visit","chapter":5,"day":112,"completed":true,"choices":[["start",0],["watching",0],["did",1],["body",1],["arueshalae",0],["aru_redeemed",0],["next",0],["kind",0]]} -->
+861. **Shamira: Out of the wardrobe** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.visit","chapter":5,"day":112,"completed":true,"choices":[["start",0],["watching",0],["did",1],["body",1],["arueshalae",0],["aru_redeemed",0],["next",0],["kind",0]]} -->
    Scene `shamira.trickster.after.visit`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You were in my room last night. On the bed, not in the dream."
    Need all: `trickster.ever`, `shamira.trickster.embodied`, `shamira.trickster.city`, `shamira.present_now`; Blocked by: `shamira.trickster.after.visit_awning`, `shamira.trickster.visited`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
@@ -10205,7 +10209,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.after.visit/next/0` — "What kind of game?"
    - `shamira.trickster.after.visit/kind/0` — [Let her go.]; records `shamira.trickster.visited`, `shamira.trickster.game_proposed`
 
-861. **Jannah: The rematch** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.trickster.challenge","chapter":5,"day":112,"completed":true,"choices":[["open",0],["start",1],["why",2],["why_won",0],["stake_won",0],["yard",0],["account",1],["account_saw",0],["challenge",0],["bout",0],["you_first",0],["you_honour",0],["you_up",0],["after",0],["yes",0]]} -->
+862. **Jannah: The rematch** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.trickster.challenge","chapter":5,"day":112,"completed":true,"choices":[["open",0],["start",1],["why",2],["why_won",0],["stake_won",0],["yard",0],["account",1],["account_saw",0],["challenge",0],["bout",0],["you_first",0],["you_honour",0],["you_up",0],["after",0],["yes",0]]} -->
    Scene `jannah.trickster.challenge`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You look like someone about to do something in public."
    Need all: `trickster.ever`, `jannah.circle.walls`, `jannah.trickster.cage_reckoning_clear`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.committed`, `jannah.trickster.declined`.
@@ -10226,7 +10230,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.trickster.challenge/after/0` — Continue; Blocked by: `jannah.trickster.held_the_lie`, `jannah.circle.your_part.say_outside`
    - `jannah.trickster.challenge/yes/0` — "I'll be here."; records `jannah.committed`; Need all: `trickster.now`
 
-862. **Terendelev: The watch** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.commit","chapter":5,"day":112,"completed":true,"choices":[["start",1],["ask",0],["oath",0],["debt",0],["declined",0]]} -->
+863. **Terendelev: The watch** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.commit","chapter":5,"day":112,"completed":true,"choices":[["start",1],["ask",0],["oath",0],["debt",0],["declined",0]]} -->
    Scene `terendelev.trickster.commit`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You said you had something to ask me."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.trickster.watch.proof_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.commit_awning`, `terendelev.committed`, `terendelev.trickster.declined`, `terendelev.continuation.returned_finale_seen`, `terendelev.parent_lich_bind`, `galfrey.killed_by_commander`; Need one of: `terendelev.trickster.watch.wings_tried`, `terendelev.trickster.watch.kenabres_told`, `terendelev.trickster.watch.deskari_vow`, `terendelev.trickster.watch.deskari_let_go`, `terendelev.trickster.watch.galfrey_spoken`, `terendelev.trickster.watch.infirmary_seen`, `terendelev.trickster.watch.infirmary_flogged`, `terendelev.trickster.watch.letter_written`, `terendelev.trickster.watch.storyteller_thanked`, `terendelev.trickster.watch.sat_up`, `terendelev.trickster.watch.faith`; Block `galfrey.killed_by_commander` lifted by: `terendelev.trickster.watch.queen_answered`.
@@ -10237,7 +10241,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.commit/debt/0` — [Hold her to the debt] "You owe me. Pay it however you like."; records `terendelev.trickster.declined`
    - `terendelev.trickster.commit/declined/0` — [Leave her to her watch.]
 
-863. **Eliandra: Below the dry fall** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.burial","chapter":5,"day":112,"completed":true,"choices":[["start",0],["ground",1],["place_plain",0],["lovers",0],["say",0],["words",0]]} -->
+864. **Eliandra: Below the dry fall** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.burial","chapter":5,"day":112,"completed":true,"choices":[["start",0],["ground",1],["place_plain",0],["lovers",0],["say",0],["words",0]]} -->
    Scene `eliandra.trickster.ch5.burial`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Where will you bury them?"
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.buried`.
@@ -10249,7 +10253,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.burial/say/0` — Continue
    - `eliandra.trickster.ch5.burial/words/0` — [Stand with her until the last stone is set.]; records `eliandra.trickster.buried`
 
-864. **Horzalah: The weaker branch** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.father","chapter":5,"day":112,"completed":true,"choices":[["start",3],["seals",1],["silence",0],["end",0]]} -->
+865. **Horzalah: The weaker branch** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.father","chapter":5,"day":112,"completed":true,"choices":[["start",3],["seals",1],["silence",0],["end",0]]} -->
    Scene `horzalah.trickster.beat.father`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Do you ever hear from your father?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.father_heard`.
@@ -10259,7 +10263,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.father/silence/0` — "You live in it well."
    - `horzalah.trickster.beat.father/end/0` — [Leave her to it.]; records `horzalah.trickster.beat.father_heard`
 
-865. **Yaniel: What Minagho told me** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.night","chapter":5,"day":112,"completed":true,"choices":[["start",0],["room",0],["talk",0],["dream",0],["true_power",0],["sleep",0],["stayed",0]]} -->
+866. **Yaniel: What Minagho told me** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.beat.night","chapter":5,"day":112,"completed":true,"choices":[["start",0],["room",0],["talk",0],["dream",0],["true_power",0],["sleep",0],["stayed",0]]} -->
    Scene `yaniel.trickster.beat.night`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look like you haven't slept."
    Need all: `trickster.ever`, `yaniel.trickster.returned`, `yaniel.trickster.beat.walls`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`.
@@ -10272,7 +10276,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.beat.night/sleep/0` — [Stay where you are until she wakes.]
    - `yaniel.trickster.beat.night/stayed/0` — [Get out, eventually.]; records `yaniel.trickster.beat.night`, `yaniel.trickster.night_stayed`
 
-866. **Delamere: The captain's requisition** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_hepzamirah.hearing","chapter":5,"day":112,"completed":true,"choices":[["start",0],["relic",0]]} -->
+867. **Delamere: The captain's requisition** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_hepzamirah.hearing","chapter":5,"day":112,"completed":true,"choices":[["start",0],["relic",0]]} -->
    Scene `household.pair.delamere_hepzamirah.hearing`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Visit: The captain's requisition]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `delamere.harem.eligible`, `delamere.trickster.returned`, `hepzamirah.trickster.returned`, `hepzamirah.harem.eligible`, `household.pair.delamere_hepzamirah.open.ready`, `household.pair.delamere_hepzamirah.goods.equipment_impounded`; Blocked by: `delamere.closed`, `delamere.epoch_unavailable`, `hepzamirah.closed`, `hepzamirah.epoch_unavailable`, `sacrifice`, `household.pair.delamere_hepzamirah.hearing.seen`, `trickster.failed`; Block `sacrifice` lifted by: `trickster.commander_back`.
@@ -10281,7 +10285,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.delamere_hepzamirah.hearing/start/0` — [Return the recovered temple stone to Delamere and revoke the captain's requisition in his presence.]
    - `household.pair.delamere_hepzamirah.hearing/relic/0` — Continue; records `household.pair.delamere_hepzamirah.hearing.seen`, `household.pair.delamere_hepzamirah.proof.relic_returned`, `household.pair.delamere_hepzamirah.claim.revoked`, `household.pair.delamere_hepzamirah.resolved`, `household.pair.delamere_hepzamirah.cost.delamere_stone_received`, `household.pair.delamere_hepzamirah.cost.hepzamirah_captain_dismissed`, `household.pair.delamere_hepzamirah.cost.commander_prize_yielded`
 
-867. **Seelah: The extraction watch** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.debt_repayment","chapter":5,"day":112,"completed":true,"choices":[["start",0],["result_0",0]]} -->
+868. **Seelah: The extraction watch** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.debt_repayment","chapter":5,"day":112,"completed":true,"choices":[["start",0],["result_0",0]]} -->
    Scene `household.pair.seelah_wenduag.debt_repayment`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Seelah and Wenduag: The extraction watch]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.seelah_wenduag.invited`, `seelah.harem.eligible`, `wenduag.harem.eligible`, `household.pair.seelah_wenduag.restraint_witnessed`, `household.pair.seelah_wenduag.stood_witnessed`, `household.pair.seelah_wenduag.boundary.prisoners_kept_alive`, `household.pair.seelah_wenduag.captive.rusk_in_custody`, `household.pair.seelah_wenduag.stood.debt_owed`, `seelah.present_now`, `wenduag.present_now`; Blocked by: `seelah.harem.enmity.wenduag`, `wenduag.harem.enmity.seelah`, `household.pair.seelah_wenduag.stood.debt_paid`, `fool_king.gone`, `trickster.failed`; Block `seelah.harem.enmity.wenduag` lifted by: `seelah.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.seelah` lifted by: `wenduag.harem.reconciled.seelah`.
@@ -10290,7 +10294,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_wenduag.debt_repayment/start/0` — Continue
    - `household.pair.seelah_wenduag.debt_repayment/result_0/0` — Continue; records `household.pair.seelah_wenduag.debt_repayment.seen`, `household.pair.seelah_wenduag.stood.debt_paid`, `household.pair.seelah_wenduag.cost.hunt_forgone`, `household.pair.seelah_wenduag.boundary.kept`
 
-868. **Memory: What she does with an unclaimed evening** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.two_unremarkable_pleasures","chapter":5,"day":112,"completed":true,"choices":[["start",0],["page",0],["keep",0],["chosen",0],["meeting",0]]} -->
+869. **Memory: What she does with an unclaimed evening** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.two_unremarkable_pleasures","chapter":5,"day":112,"completed":true,"choices":[["start",0],["page",0],["keep",0],["chosen",0],["meeting",0]]} -->
    Scene `vellexia.two_unremarkable_pleasures`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Open the shell for the evening you agreed to share.]
    Need all: `vellexia.return_kept`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Block `vellexia.dead` lifted by: `vellexia.trickster.returned`; Block `vellexia.early_fight` lifted by: `vellexia.trickster.returned`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`; Block `vellexia.mirrored` lifted by: `vellexia.trickster.returned`.
@@ -10300,7 +10304,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.two_unremarkable_pleasures/chosen/0` — "Come to Drezen. I want considerably less glass between us."; Need all: `vellexia.renewed_lovers`
    - `vellexia.two_unremarkable_pleasures/meeting/0` — [Stay on the shell with her until the lamp burns down.]; records `vellexia.private_kept`, `vellexia.invited`
 
-869. **Elyanka: The Way's tongue** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.whisper","chapter":5,"day":112,"completed":true,"choices":[["start",0],["lesson",0],["again",0],["fear",0],["hers",0]]} -->
+870. **Elyanka: The Way's tongue** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.whisper","chapter":5,"day":112,"completed":true,"choices":[["start",0],["lesson",0],["again",0],["fear",0],["hers",0]]} -->
    Scene `elyanka.trickster.beat.whisper`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.tested`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.whisper.fear`, `elyanka.trickster.whisper.wake`, `elyanka.trickster.whisper.lie`.
    - `elyanka.trickster.beat.whisper/start/0` — Continue
@@ -10309,14 +10313,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.beat.whisper/fear/0` — Continue; records `elyanka.trickster.whisper.fear`
    - `elyanka.trickster.beat.whisper/hers/0` — [Go home, and never repeat it.]
 
-870. **Melazmera: The Commander's hoard** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.count","chapter":5,"day":112,"completed":true,"choices":[["start",0],["count",0],["ate",0]]} -->
+871. **Melazmera: The Commander's hoard** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.count","chapter":5,"day":112,"completed":true,"choices":[["start",0],["count",0],["ate",0]]} -->
    Scene `melazmera.trickster.beat.count`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.heap_seen`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.counted`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.count/start/0` — Continue
    - `melazmera.trickster.beat.count/count/0` — "Everything in yours is from somebody you ate."
    - `melazmera.trickster.beat.count/ate/0` — Continue; records `melazmera.trickster.beat.counted`
 
-871. **Melazmera: Not in anybody's lines** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.war","chapter":5,"day":112,"completed":true,"choices":[["start",0],["lines",0],["enough",0]]} -->
+872. **Melazmera: Not in anybody's lines** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.war","chapter":5,"day":112,"completed":true,"choices":[["start",0],["lines",0],["enough",0]]} -->
    Scene `melazmera.trickster.beat.war`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.committed`, `melazmera.trickster.heap_seen`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.war`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.war/start/0` — Continue
@@ -10325,7 +10329,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 113
 
-872. **Seelah: A page she keeps** — Drezen. <!-- rrt-step {"scene":"seelah.late_page","chapter":5,"day":113,"completed":true,"choices":[["start",0],["outcome",2],["hope",0],["elan_gate",1],["elan_letter",0],["own",0],["chosen",0]]} -->
+873. **Seelah: A page she keeps** — Drezen. <!-- rrt-step {"scene":"seelah.late_page","chapter":5,"day":113,"completed":true,"choices":[["start",0],["outcome",2],["hope",0],["elan_gate",1],["elan_letter",0],["own",0],["chosen",0]]} -->
    Scene `seelah.late_page`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said you had something to show me."
    Need all: `seelah.courting`, `seelah.aftermath_ready`, `seelah.late_lesson_kept`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -10338,7 +10342,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.late_page/own/0` — "I want to take you to something I like. One hour with no errands."; records `seelah.late_pc_delight`
    - `seelah.late_page/chosen/0` — [Arrange the afternoon of the race.]; records `seelah.late_page_kept`
 
-873. **Dorgelinda: After the war** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.after_the_war","chapter":5,"day":113,"completed":true,"choices":[["start",0],["sort",0],["tin",0],["after",0],["miss",0],["where",0],["boots",0],["end",0]]} -->
+874. **Dorgelinda: After the war** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.after_the_war","chapter":5,"day":113,"completed":true,"choices":[["start",0],["sort",0],["tin",0],["after",0],["miss",0],["where",0],["boots",0],["end",0]]} -->
    Scene `dorgelinda.ledger.after_the_war`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "It's cold in here."
    Need all: `trickster.ever`, `dorgelinda.ledger.morning_count`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.after_the_war`.
@@ -10353,7 +10357,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.after_the_war/boots/0` — Continue; records `dorgelinda.ledger.boot_shop`
    - `dorgelinda.ledger.after_the_war/end/0` — [Stay.]
 
-874. **Camellia: The amulet** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.cards.the_amulet_alive","chapter":5,"day":113,"completed":true,"choices":[["open",0],["tell",0],["knew",0],["close",0]]} -->
+875. **Camellia: The amulet** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.cards.the_amulet_alive","chapter":5,"day":113,"completed":true,"choices":[["open",0],["tell",0],["knew",0],["close",0]]} -->
    Scene `camellia.trickster.cards.the_amulet_alive`; chapters 3–5 (only 3, 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You have stopped feeding Mireya."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -10364,7 +10368,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.cards.the_amulet_alive/knew/0` — Continue
    - `camellia.trickster.cards.the_amulet_alive/close/0` — [Keep it]; records `camellia.trickster.amulet_kept`
 
-875. **Arueshalae: Her offer** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.prescription","chapter":5,"day":113,"completed":true,"choices":[["start",0],["fast",1],["risk",0],["ask",0],["both",0]]} -->
+876. **Arueshalae: Her offer** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.prescription","chapter":5,"day":113,"completed":true,"choices":[["start",0],["fast",1],["risk",0],["ask",0],["both",0]]} -->
    Scene `arueshalae.treatment.prescription`; chapters 5–5 (only 5); wait at least 168h after the latest prerequisite; complete.
    Open: "You asked me to meet you here."
    Need all: `arueshalae.treatment.relapse_two`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.committed`, `arueshalae.trickster.declined`, `arueshalae.trickster.aftertaste`, `arueshalae.trickster.cost.chaplain`, `arueshalae.failed`, `arueshalae.changed`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -10376,7 +10380,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.prescription/ask/0` — "Yes. Both of you."; records `arueshalae.committed`; Need all: `trickster.now`
    - `arueshalae.treatment.prescription/both/0` — Continue
 
-876. **Mielarah: The block on the planks** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.morning","chapter":5,"day":113,"completed":true,"choices":[["start",1],["block_repeat",0],["joke",0],["spade",0],["shield",0],["crew",0]]} -->
+877. **Mielarah: The block on the planks** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.morning","chapter":5,"day":113,"completed":true,"choices":[["start",1],["block_repeat",0],["joke",0],["spade",0],["shield",0],["crew",0]]} -->
    Scene `mielarah.deck.morning`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: [Wake on the quarterdeck.]
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.quarterdeck`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.morning.arcade`, `mielarah.deck.morning`.
@@ -10388,7 +10392,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.morning/shield/0` — Continue; Blocked by: `mielarah.trickster.cost.oskel`, `mielarah.trickster.cost.ship_lost`
    - `mielarah.deck.morning/crew/0` — [Go back down to Drezen.]; records `mielarah.deck.morning`, `mielarah.trickster.cost.noticed`
 
-877. **Shamira: Think of anything but me** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.harem","chapter":5,"day":113,"completed":true,"choices":[["start",0],["harem",1],["sits",1],["where_read",0],["rules",0],["begin",0],["wound",0],["search",0],["lost",0],["partner_status",3],["partner_status_alive",0],["partner_start",0],["partner_share",3],["partner_share_alive",0],["partner_share_answer",0],["rise",1],["steps_plain",0],["cut",0],["explicit.1",0],["morning",0],["watch",0],["last_home",0],["want",0],["go",0],["bell",0],["partner_court",0],["partner_public_court",0],["fool",0],["bell_end",0],["mask_known",0]]} -->
+878. **Shamira: Think of anything but me** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.harem","chapter":5,"day":113,"completed":true,"choices":[["start",0],["harem",1],["sits",1],["where_read",0],["rules",0],["begin",0],["wound",0],["search",0],["lost",0],["partner_status",3],["partner_status_alive",0],["partner_start",0],["partner_share",3],["partner_share_alive",0],["partner_share_answer",0],["rise",1],["steps_plain",0],["cut",0],["explicit.1",0],["morning",0],["watch",0],["last_home",0],["want",0],["go",0],["bell",0],["partner_court",0],["partner_public_court",0],["fool",0],["bell_end",0],["mask_known",0]]} -->
    Scene `shamira.trickster.harem`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said you had a game."
    Need all: `trickster.ever`, `shamira.trickster.embodied`, `shamira.trickster.visited`, `shamira.trickster.game_proposed`, `shamira.present_now`; Blocked by: `shamira.trickster.harem_awning`, `shamira.committed`, `shamira.trickster.ally`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
@@ -10424,7 +10428,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.harem/bell_end/0` — Continue; Need all: `shamira.trickster.bird`
    - `shamira.trickster.harem/mask_known/0` — [Go home through the arch.]
 
-878. **Jannah: Inside the chalk** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.trickster.circle_night","chapter":5,"day":113,"completed":true,"choices":[["open",0],["salute_or",0],["saluted",0],["close",3],["record_lost",1],["mark_arm",0],["kiss",0],["learn",0],["down",0],["cut",0],["jannah.trickster.circle_night.explicit.1",0]]} -->
+879. **Jannah: Inside the chalk** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.trickster.circle_night","chapter":5,"day":113,"completed":true,"choices":[["open",0],["salute_or",0],["saluted",0],["close",3],["record_lost",1],["mark_arm",0],["kiss",0],["learn",0],["down",0],["cut",0],["jannah.trickster.circle_night.explicit.1",0]]} -->
    Scene `jannah.trickster.circle_night`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Go to the practice yard tonight, with your sword.]
    Need all: `trickster.ever`, `jannah.committed`, `jannah.trickster.truth_clear`, `jannah.trickster.cage_reckoning_clear`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.trickster.circle_night`.
@@ -10441,7 +10445,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.trickster.circle_night/cut/0` — [Go down with her.]
    - `jannah.trickster.circle_night/jannah.trickster.circle_night.explicit.1/0` — [Stay with her.]
 
-879. **Terendelev: The man with the knife** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.infirmary","chapter":5,"day":113,"completed":true,"choices":[["start",0],["knight",0],["flog",1],["stands",0]]} -->
+880. **Terendelev: The man with the knife** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.infirmary","chapter":5,"day":113,"completed":true,"choices":[["start",0],["knight",0],["flog",1],["stands",0]]} -->
    Scene `terendelev.trickster.watch.infirmary`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There was trouble in the infirmary, they tell me."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.infirmary_awning`.
@@ -10451,7 +10455,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.infirmary/flog/1` — "The order stands. He drew steel on the wounded. Take him out."; records `terendelev.trickster.watch.infirmary_flogged`
    - `terendelev.trickster.watch.infirmary/stands/0` — [Let her go.]
 
-880. **Eliandra: What the demon wanted** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.research","chapter":5,"day":113,"completed":true,"choices":[["start",0],["ask",0],["burn",0]]} -->
+881. **Eliandra: What the demon wanted** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.research","chapter":5,"day":113,"completed":true,"choices":[["start",0],["ask",0],["burn",0]]} -->
    Scene `eliandra.trickster.ch5.research`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Tell me what he wanted from your research. Exactly."
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.research.burn`, `eliandra.trickster.research.keep`.
@@ -10460,7 +10464,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.research/ask/0` — "Then I'll burn whatever I find in his hands. On my word."; records `eliandra.trickster.research.burn`
    - `eliandra.trickster.ch5.research/burn/0` — [Leave it there.]
 
-881. **Horzalah: The belch of Lamashtu** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.sister","chapter":5,"day":113,"completed":true,"choices":[["start",0],["cell",0],["last",0],["canary",0],["laughed",0],["now",3],["back_unavailable",0]]} -->
+882. **Horzalah: The belch of Lamashtu** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.sister","chapter":5,"day":113,"completed":true,"choices":[["start",0],["cell",0],["last",0],["canary",0],["laughed",0],["now",3],["back_unavailable",0]]} -->
    Scene `horzalah.trickster.beat.sister`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Tell me about Hepzamirah."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.beat.father_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.sister_heard`, `horzalah.trickster.ally`.
@@ -10473,7 +10477,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.sister/now/3` — Continue; Need all: `hepzamirah.trickster.returned`; Blocked by: `participant.hepzamirah.available`, `horzalah.trickster.sister_departed`
    - `horzalah.trickster.beat.sister/back_unavailable/0` — "Understood."; records `horzalah.trickster.beat.sister_heard`
 
-882. **Yaniel: Your sword for my shackle** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.commit.trade","chapter":5,"day":113,"completed":true,"choices":[["start",0],["room",0],["carries",2],["carries_quiet",3],["household_minagho_told_later",0],["ask",0],["yes",1],["yes2",0]]} -->
+883. **Yaniel: Your sword for my shackle** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.commit.trade","chapter":5,"day":113,"completed":true,"choices":[["start",0],["room",0],["carries",2],["carries_quiet",3],["household_minagho_told_later",0],["ask",0],["yes",1],["yes2",0]]} -->
    Scene `yaniel.trickster.commit.trade`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said we had a thing to settle."
    Need all: `trickster.ever`, `yaniel.trickster.verdict`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.committed`, `yaniel.trickster.declined`, `yaniel.trickster.oath_broken`, `yaniel.trickster.distrust`; Need one of: `yaniel.trickster.drawn.walls`, `yaniel.trickster.drawn.bite`, `yaniel.trickster.drawn.tree`, `yaniel.trickster.raid_kiss`, `yaniel.trickster.statue_scars`, `yaniel.trickster.night_stayed`; Need one of: `yaniel.trickster.beat.night`, `yaniel.trickster.beat.refugee`, `yaniel.trickster.beat.raid`, `yaniel.trickster.beat.staunton`; Block `yaniel.trickster.distrust` lifted by: `yaniel.trickster.trusted`.
@@ -10487,7 +10491,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.commit.trade/yes/1` — Continue; Blocked by: `yaniel.trickster.raid_kiss`
    - `yaniel.trickster.commit.trade/yes2/0` — "Close."
 
-883. **Delamere: A hunter's warrant** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_minagho.open","chapter":5,"day":113,"completed":true,"choices":[["start",0],["ready",0]]} -->
+884. **Delamere: A hunter's warrant** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_minagho.open","chapter":5,"day":113,"completed":true,"choices":[["start",0],["ready",0]]} -->
    Scene `household.pair.delamere_minagho.open`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Visit the sanctuary dispatch docket.]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `delamere.harem.eligible`, `delamere.trickster.returned`; Blocked by: `delamere.closed`, `inhuman`, `household.pair.delamere_minagho.open.seen`, `trickster.failed`, `crossroute.minagho.unavailable`.
@@ -10495,7 +10499,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.delamere_minagho.open/start/0` — "Keep the copy. I'll stop the message before the runner reaches the shelter."
    - `household.pair.delamere_minagho.open/ready/0` — Continue; records `household.pair.delamere_minagho.open.seen`, `household.pair.delamere_minagho.open.ready`, `household.pair.delamere_minagho.known.dispatch`
 
-884. **Shamira: A name and a loose bracelet** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.shamira_arueshalae.settle.good","chapter":5,"day":113,"completed":true,"choices":[["start",0],["held",0]]} -->
+885. **Shamira: A name and a loose bracelet** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.shamira_arueshalae.settle.good","chapter":5,"day":113,"completed":true,"choices":[["start",0],["held",0]]} -->
    Scene `household.pair.shamira_arueshalae.settle.good`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Shamira and Arueshalae: the upper landing]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `shamira.trickster.game_proposed`, `shamira.harem.eligible`, `arueshalae.harem.eligible`, `shamira.trickster.embodied`, `shamira.present_now`, `arueshalae.present_now`, `arueshalae.redeemed`; Blocked by: `shamira.harem.enmity.arueshalae`, `arueshalae.harem.enmity.shamira`, `fool_king.gone`, `trickster.failed`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`, `shamira.trickster.ally`, `shamira.killed`, `shamira.epoch_unavailable`, `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.plot_absent`, `arueshalae.epoch_unavailable`, `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.retry.seen`, `arueshalae.corrupted`; Need one of: `arueshalae.recruited_drezen`, `arueshalae.recruited_redoubt`; Block `shamira.killed` lifted by: `shamira.trickster.returned`; Block `shamira.harem.enmity.arueshalae` lifted by: `shamira.harem.reconciled.arueshalae`; Block `arueshalae.harem.enmity.shamira` lifted by: `arueshalae.harem.reconciled.shamira`.
@@ -10504,7 +10508,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.shamira_arueshalae.settle.good/start/0` — [Keep the landing clear while they try the hold.]; PASS SkillAthletics DC 26 (party check); success → `held`; failure → `fell`
    - `household.pair.shamira_arueshalae.settle.good/held/0` — [Clear the landing. Shamira opens her grip: "Arueshalae, then." Arueshalae slips free and returns the fallen bracelet.]; records `household.pair.shamira_arueshalae.settle.seen`, `household.pair.shamira_arueshalae.settle.done`, `household.pair.shamira_arueshalae.shamira_released`, `household.pair.shamira_arueshalae.arueshalae_ornament_returned`, `household.pair.shamira_arueshalae.claim.name_relinquished`, `household.pair.shamira_arueshalae.cost.shamira_public_release`, `household.pair.shamira_arueshalae.cost.arueshalae_trophy_yielded`
 
-885. **Memory: Before the next silence** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_cover_before_the_battle","chapter":5,"day":113,"completed":true,"choices":[["start",1],["meaning",0],["lovers",0],["warm",0]]} -->
+886. **Memory: Before the next silence** — rest delivery / Satchel: sending (Drezen). <!-- rrt-step {"scene":"vellexia.the_cover_before_the_battle","chapter":5,"day":113,"completed":true,"choices":[["start",1],["meaning",0],["lovers",0],["warm",0]]} -->
    Scene `vellexia.the_cover_before_the_battle`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I want to speak before I leave again."
    Need all: `vellexia.private_kept`, `vellexia.reachable_by_letter`; Blocked by: `vellexia.dead`, `vellexia.early_fight`, `vellexia.final_fight`, `vellexia.closed`, `vellexia.mirrored`, `vellexia.native_coercion`, `inhuman`; Block `vellexia.dead` lifted by: `vellexia.trickster.returned`; Block `vellexia.early_fight` lifted by: `vellexia.trickster.returned`; Block `vellexia.final_fight` lifted by: `vellexia.fight_survived`; Block `vellexia.mirrored` lifted by: `vellexia.trickster.returned`.
@@ -10513,7 +10517,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.the_cover_before_the_battle/lovers/0` — [Describe a lingering kiss and let her answer in her own words.]
    - `vellexia.the_cover_before_the_battle/warm/0` — [Keep the affection and the farewell you gave each other.]; records `vellexia.farewell_kept`, `vellexia.farewell_lovers`
 
-886. **Elyanka: An exchange of claims** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.commit.claims","chapter":5,"day":113,"completed":true,"choices":[["start",0],["story",0],["story2",2],["reason_carrion",1],["true_secret",0],["claim",0],["yes",0],["rites",0]]} -->
+887. **Elyanka: An exchange of claims** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.commit.claims","chapter":5,"day":113,"completed":true,"choices":[["start",0],["story",0],["story2",2],["reason_carrion",1],["true_secret",0],["claim",0],["yes",0],["rites",0]]} -->
    Scene `elyanka.trickster.commit.claims`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.tested`, `elyanka.trickster.beat.whisper`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.committed`, `elyanka.trickster.declined`.
    - `elyanka.trickster.commit.claims/start/0` — [Eat with her.]
@@ -10525,7 +10529,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.commit.claims/yes/0` — Continue
    - `elyanka.trickster.commit.claims/rites/0` — [Keep her secret.]; records `elyanka.committed`, `trickster.secret.elyanka_rites`; Need all: `trickster.now`
 
-887. **Melazmera: Rain over Drezen** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.rain","chapter":5,"day":113,"completed":true,"choices":[["start",0],["rain",1],["stand",0],["hold",0]]} -->
+888. **Melazmera: Rain over Drezen** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.rain","chapter":5,"day":113,"completed":true,"choices":[["start",0],["rain",1],["stand",0],["hold",0]]} -->
    Scene `melazmera.trickster.beat.rain`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.rain_stood`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.rain/start/0` — Continue
@@ -10535,7 +10539,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 114
 
-888. **Konomi: After the answer arrived** — Drezen. <!-- rrt-step {"scene":"konomi.the_evening_she_kept","chapter":5,"day":114,"completed":true,"choices":[["start",0],["joint_reply",0],["supper",0],["plans",1],["air",0]]} -->
+889. **Konomi: After the answer arrived** — Drezen. <!-- rrt-step {"scene":"konomi.the_evening_she_kept","chapter":5,"day":114,"completed":true,"choices":[["start",0],["joint_reply",0],["supper",0],["plans",1],["air",0]]} -->
    Scene `konomi.the_evening_she_kept`; chapters 5–5 (only 5); wait at least 96h after the latest prerequisite; complete.
    Open: "You asked me to come to supper."
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.readers_answered`, `konomi.present_now`; Blocked by: `konomi.closed`, `konomi.dismissed`, `inhuman`, `konomi.ordinary`, `konomi.farewell`; Block `konomi.ordinary` lifted by: `konomi.ordinary_expansion_requested`; Block `konomi.farewell` lifted by: `konomi.ordinary_expansion_requested`.
@@ -10547,7 +10551,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.the_evening_she_kept/plans/1` — [Kiss her, then ask for a little air together before you leave.]
    - `konomi.the_evening_she_kept/air/0` — [Keep the next evening you have arranged.]; records `konomi.ordinary_expanded`, `konomi.ordinary_walk`
 
-889. **Vellexia: Less glass** — Drezen. <!-- rrt-step {"scene":"vellexia.trickster.after.night","chapter":5,"day":114,"completed":true,"choices":[["start",1],["arrived",0],["threshold",0],["vellexia.trickster.after.night.explicit.1",0],["morning",0]]} -->
+890. **Vellexia: Less glass** — Drezen. <!-- rrt-step {"scene":"vellexia.trickster.after.night","chapter":5,"day":114,"completed":true,"choices":[["start",1],["arrived",0],["threshold",0],["vellexia.trickster.after.night.explicit.1",0],["morning",0]]} -->
    Scene `vellexia.trickster.after.night`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "Anything I should know tonight, Garms?"
    Need all: `trickster.ever`, `vellexia.committed`, `vellexia.farewell_lovers`, `vellexia.present_now`; Blocked by: `vellexia.closed`, `inhuman`, `vellexia.trickster.kept_as_mirror`, `vellexia.trickster.night_kept`; Need one of: `vellexia.trickster.visited`, `vellexia.invited`.
@@ -10558,7 +10562,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `vellexia.trickster.after.night/vellexia.trickster.after.night.explicit.1/0` — Continue
    - `vellexia.trickster.after.night/morning/0` — [Wind a scarf over the bruise.]; records `vellexia.trickster.night_kept`
 
-890. **Dorgelinda: Half an army** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.half_an_army","chapter":5,"day":114,"completed":true,"choices":[["start",0],["table",0],["help",0],["count",0],["hand",0],["end",0]]} -->
+891. **Dorgelinda: Half an army** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.half_an_army","chapter":5,"day":114,"completed":true,"choices":[["start",0],["table",0],["help",0],["count",0],["hand",0],["end",0]]} -->
    Scene `dorgelinda.ledger.half_an_army`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "How many came back?"
    Need all: `trickster.ever`, `dorgelinda.trickster.counted`, `coronation.seen`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.half_an_army`.
@@ -10571,7 +10575,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.half_an_army/hand/0` — Continue; records `dorgelinda.ledger.hand_eased`
    - `dorgelinda.ledger.half_an_army/end/0` — [Walk her back through the gate.]
 
-891. **Hepzamirah: Three nights** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.released","chapter":5,"day":114,"completed":true,"choices":[["out",0],["say",0]]} -->
+892. **Hepzamirah: Three nights** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.released","chapter":5,"day":114,"completed":true,"choices":[["out",0],["say",0]]} -->
    Scene `hepzamirah.trickster.flesh.released`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "They let you out."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.cost.confined`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`.
@@ -10579,7 +10583,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.released/out/0` — Continue
    - `hepzamirah.trickster.flesh.released/say/0` — [Leave her to the forge.]
 
-892. **Camellia: The second dance** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.day.the_second_dance_alive","chapter":5,"day":114,"completed":true,"choices":[["open",0],["danced_d",0],["dance",0],["strap",0],["camellia.trickster.day.the_second_dance_alive.explicit.1",0],["end",0],["morning.dance",0],["morning.knife_off",0]]} -->
+893. **Camellia: The second dance** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.day.the_second_dance_alive","chapter":5,"day":114,"completed":true,"choices":[["open",0],["danced_d",0],["dance",0],["strap",0],["camellia.trickster.day.the_second_dance_alive.explicit.1",0],["end",0],["morning.dance",0],["morning.knife_off",0]]} -->
    Scene `camellia.trickster.day.the_second_dance_alive`; chapters 3–5 (only 3, 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You cleared the floor."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.trickster.bond.shelf`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -10594,7 +10598,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.day.the_second_dance_alive/morning.dance/0` — Continue; Need all: `camellia.trickster.day.the_second_dance_alive.knife_off`
    - `camellia.trickster.day.the_second_dance_alive/morning.knife_off/0` — [Rise for the muster.]; records `camellia.trickster.encounter.knife_off.morning`
 
-893. **Arueshalae: Under the Tender of Dreams** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.night","chapter":5,"day":114,"completed":true,"choices":[["start",0],["stair",0],["tower",1],["stars",3],["cure",0],["undress",1],["arueshalae.treatment.night.explicit.1",0],["morning_after_paid",0]]} -->
+894. **Arueshalae: Under the Tender of Dreams** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.night","chapter":5,"day":114,"completed":true,"choices":[["start",0],["stair",0],["tower",1],["stars",3],["cure",0],["undress",1],["arueshalae.treatment.night.explicit.1",0],["morning_after_paid",0]]} -->
    Scene `arueshalae.treatment.night`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Where are we going?"
    Need all: `arueshalae.committed`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.night`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -10609,7 +10613,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.night/arueshalae.treatment.night.explicit.1/0` — Continue
    - `arueshalae.treatment.night/morning_after_paid/0` — [Let her listen.]; records `arueshalae.treatment.night`
 
-894. **Mielarah: The spade** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.trickster.spade.dream","chapter":5,"day":114,"completed":true,"choices":[["start",0],["measure",0],["wake",0]]} -->
+895. **Mielarah: The spade** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.trickster.spade.dream","chapter":5,"day":114,"completed":true,"choices":[["start",0],["measure",0],["wake",0]]} -->
    Scene `mielarah.trickster.spade.dream`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There is grey grit on your quarterdeck."
    Need all: `trickster.ever`, `mielarah.trickster.cost.noticed`, `mielarah.deck.morning`, `mielarah.present_now`; Blocked by: `mielarah.trickster.cost.dreamt`, `mielarah.closed`.
@@ -10618,7 +10622,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.trickster.spade.dream/measure/0` — [Call to him] "You'll need a longer cord. I don't keep still."
    - `mielarah.trickster.spade.dream/wake/0` — [Wash your hands a third time.]; records `mielarah.trickster.cost.dreamt`
 
-895. **Jannah: A scuffed circle** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.trickster.morning","chapter":5,"day":114,"completed":true,"choices":[["open",1],["talk_won",0],["told",0],["houndheart",1],["friend_told",0]]} -->
+896. **Jannah: A scuffed circle** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.trickster.morning","chapter":5,"day":114,"completed":true,"choices":[["open",1],["talk_won",0],["told",0],["houndheart",1],["friend_told",0]]} -->
    Scene `jannah.trickster.morning`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: "You've got sand in your hair."
    Need all: `trickster.ever`, `jannah.trickster.circle_night`, `jannah.trickster.truth_clear`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`.
@@ -10629,7 +10633,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.trickster.morning/houndheart/1` — Continue; Need all: `jannah.joined`; Blocked by: `crossroute.seelah.unavailable`
    - `jannah.trickster.morning/friend_told/0` — [Leave her to her grip.]
 
-896. **Terendelev: Honey and fried bread** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.market","chapter":5,"day":114,"completed":true,"choices":[["start",0],["market",1],["coat",0],["grey",0],["child",1],["gap.ice",0],["believe",2],["children",0]]} -->
+897. **Terendelev: Honey and fried bread** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.market","chapter":5,"day":114,"completed":true,"choices":[["start",0],["market",1],["coat",0],["grey",0],["child",1],["gap.ice",0],["believe",2],["children",0]]} -->
    Scene `terendelev.trickster.watch.market`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look like someone who wants to go somewhere."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.market_awning`.
@@ -10643,7 +10647,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.market/believe/2` — "You're good with children."; records `terendelev.trickster.watch.market_seen`
    - `terendelev.trickster.watch.market/children/0` — [Walk her back through the market.]
 
-897. **Eliandra: The Shimmering Maiden** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.maiden","chapter":5,"day":114,"completed":true,"choices":[["start",1],["want",0],["looked",0]]} -->
+898. **Eliandra: The Shimmering Maiden** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.maiden","chapter":5,"day":114,"completed":true,"choices":[["start",1],["want",0],["looked",0]]} -->
    Scene `eliandra.trickster.ch5.maiden`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Tell me about your Lady. Not the prayers. Her."
    Need all: `eliandra.met_ch5`, `eliandra.trickster.dead_named`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `demon`, `devil`, `lich`, `swarm`, `angel`, `eliandra.met_ch3`, `eliandra.trickster.maiden_told`.
@@ -10652,7 +10656,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.maiden/want/0` — "Maybe she likes being looked at by you."
    - `eliandra.trickster.ch5.maiden/looked/0` — [Leave her with her Lady.]; records `eliandra.trickster.maiden_told`
 
-898. **Horzalah: Property** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.yozz","chapter":5,"day":114,"completed":true,"choices":[["start",3],["leash_unvisited",0],["keep",0]]} -->
+899. **Horzalah: Property** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.yozz","chapter":5,"day":114,"completed":true,"choices":[["start",3],["leash_unvisited",0],["keep",0]]} -->
    Scene `horzalah.trickster.beat.yozz`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What became of Yozz?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.yozz_heard`.
@@ -10661,7 +10665,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.yozz/leash_unvisited/0` — "Why keep any of it?"
    - `horzalah.trickster.beat.yozz/keep/0` — [Leave her with it.]; records `horzalah.trickster.beat.yozz_heard`
 
-899. **Yaniel: In front of her** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.visit.niche","chapter":5,"day":114,"completed":true,"choices":[["start",0],["statue",0],["lamp",0],["want",0],["threshold",0],["threshold2",0],["yaniel.trickster.visit.niche.explicit.1",0],["morning",0],["morning2",0],["morning_sword",0],["morning_carries",0],["morning_depart",0],["sexton_seelah",0]]} -->
+900. **Yaniel: In front of her** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.visit.niche","chapter":5,"day":114,"completed":true,"choices":[["start",0],["statue",0],["lamp",0],["want",0],["threshold",0],["threshold2",0],["yaniel.trickster.visit.niche.explicit.1",0],["morning",0],["morning2",0],["morning_sword",0],["morning_carries",0],["morning_depart",0],["sexton_seelah",0]]} -->
    Scene `yaniel.trickster.visit.niche`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: [Go to her when the watch changes.]
    Need all: `trickster.ever`, `yaniel.committed`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`, `yaniel.trickster.niche_seen`.
@@ -10680,7 +10684,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.visit.niche/morning_depart/0` — Continue; Need all: `seelah.present_now`; Blocked by: `seelah_dead`, `seelah_gone`
    - `yaniel.trickster.visit.niche/sexton_seelah/0` — [Go up into the day.]; records `yaniel.trickster.niche_seen`, `yaniel.trickster.morning_seen`, `yaniel.trickster.morning.seelah_witness`
 
-900. **Galfrey: The price of passage** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.galfrey_nocticula.open","chapter":5,"day":114,"completed":true,"choices":[["start",0],["sent",0]]} -->
+901. **Galfrey: The price of passage** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.galfrey_nocticula.open","chapter":5,"day":114,"completed":true,"choices":[["start",0],["sent",0]]} -->
    Scene `household.pair.galfrey_nocticula.open`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [Visit the Drezen departure office.]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `galfrey.harem.eligible`, `nocticula.harem.eligible`; Blocked by: `household.pair.galfrey_nocticula.open.seen`, `noct.acq.council_fight`, `galfrey.closed`, `galfrey.dead`, `galfrey.killed_by_commander`, `noct.closed`, `noct.dead`, `inhuman`, `legend`, `dragon`, `galfrey.trickster.returned`, `trickster.failed`; Block `noct.acq.council_fight` lifted by: `nocticula.trickster.returned`; Block `galfrey.dead` lifted by: `galfrey.trickster.returned`; Block `noct.dead` lifted by: `noct.defeated_not_dead`.
@@ -10689,7 +10693,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.galfrey_nocticula.open/start/0` — "Her rank, plainly. No scouts. Put my name on the undertaking."
    - `household.pair.galfrey_nocticula.open/sent/0` — Continue; crusade Finances -200; records `household.pair.galfrey_nocticula.open.seen`, `household.pair.galfrey_nocticula.open.ready`, `household.pair.galfrey_nocticula.survey.acquired`, `household.pair.galfrey_nocticula.sortie.mustered`, `household.pair.galfrey_nocticula.cost.courier_fares`, `household.pair.galfrey_nocticula.cost.commander_guarantor_promised`
 
-901. **Seelah: The unfinished bout** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.choice","chapter":5,"day":114,"completed":true,"choices":[["start",1],["result_1",0]]} -->
+902. **Seelah: The unfinished bout** — Drezen; hub `household.table`. <!-- rrt-step {"scene":"household.pair.seelah_wenduag.choice","chapter":5,"day":114,"completed":true,"choices":[["start",1],["result_1",0]]} -->
    Scene `household.pair.seelah_wenduag.choice`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Seelah and Wenduag: The unfinished bout]
    Need all: `trickster`, `household.table.kept`, `foresight.page_taken`, `household.stance_eligible`, `household.pair.seelah_wenduag.invited`, `seelah.harem.eligible`, `wenduag.harem.eligible`, `seelah.harem.attitude.wenduag.friend`, `wenduag.harem.attitude.seelah.friend`, `household.pair.seelah_wenduag.restraint_witnessed`, `household.pair.seelah_wenduag.stood_witnessed`, `household.pair.seelah_wenduag.boundary.prisoners_kept_alive`, `household.pair.seelah_wenduag.captive.rusk_in_custody`, `household.pair.seelah_wenduag.stood.debt_owed`, `household.pair.seelah_wenduag.stood.debt_paid`, `household.pair.seelah_wenduag.cost.hunt_forgone`, `household.pair.seelah_wenduag.boundary.kept`, `seelah.present_now`, `wenduag.present_now`, `household.pair.seelah_wenduag.debt_repayment.seen`; Blocked by: `seelah.harem.enmity.wenduag`, `wenduag.harem.enmity.seelah`, `seelah.harem.attitude.wenduag.lover`, `wenduag.harem.attitude.seelah.lover`, `household.pair.seelah_wenduag.choice.seen`, `household.pair.seelah_wenduag.debt.betrayed`, `household.pair.seelah_wenduag.captive.rusk_dead`, `household.pair.seelah_wenduag.boundary.breached`, `fool_king.gone`, `trickster.failed`; Block `seelah.harem.enmity.wenduag` lifted by: `seelah.harem.reconciled.wenduag`; Block `wenduag.harem.enmity.seelah` lifted by: `wenduag.harem.reconciled.seelah`.
@@ -10698,7 +10702,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.seelah_wenduag.choice/start/1` — a household evening
    - `household.pair.seelah_wenduag.choice/result_1/0` — Continue; records `household.pair.seelah_wenduag.choice.seen`, `household.pair.seelah_wenduag.choice.household_evening`
 
-902. **Kiana: The guest stays** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.date","chapter":5,"day":114,"completed":true,"choices":[["start",0],["want",0],["close",1],["read",0]]} -->
+903. **Kiana: The guest stays** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.date","chapter":5,"day":114,"completed":true,"choices":[["start",0],["want",0],["close",1],["read",0]]} -->
    Scene `kiana.date`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Need all: `kiana.available`, `kiana.present_now`; Need one of: `seelah.souls_returned`, `kiana.trickster.met`.
    - `kiana.date/start/0` — "Have you decided what the princess wants?"; Blocked by: `inhuman`
@@ -10706,14 +10710,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kiana.date/close/1` — "Stay beside me. I want to hear the rest in your own voice."; Blocked by: `inhuman`
    - `kiana.date/read/0` — [Spend the evening together.]; records `kiana.lovers`
 
-903. **Melazmera: The one who makes jokes** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.joke","chapter":5,"day":114,"completed":true,"choices":[["start",0],["riddle",0],["joke",0]]} -->
+904. **Melazmera: The one who makes jokes** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.joke","chapter":5,"day":114,"completed":true,"choices":[["start",0],["riddle",0],["joke",0]]} -->
    Scene `melazmera.trickster.beat.joke`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.joke_told`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.joke/start/0` — "What do you call a dragon who gives things away?"
    - `melazmera.trickster.beat.joke/riddle/0` — "A lizard. A very fat lizard."
    - `melazmera.trickster.beat.joke/joke/0` — Continue; records `melazmera.trickster.beat.joke_told`; on entering page: `melazmera.trickster.cost.chair_scores`
 
-904. **Elyanka: The velvet in the hearse** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.visit.hearse","chapter":5,"day":114,"completed":true,"choices":[["start",0],["inside",0],["velvet",0],["scars",2],["down",0],["threshold",0],["elyanka.trickster.visit.hearse.explicit.1",0],["morning",0],["cord",0],["horses",0],["horses2",0]]} -->
+905. **Elyanka: The velvet in the hearse** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.visit.hearse","chapter":5,"day":114,"completed":true,"choices":[["start",0],["inside",0],["velvet",0],["scars",2],["down",0],["threshold",0],["elyanka.trickster.visit.hearse.explicit.1",0],["morning",0],["cord",0],["horses",0],["horses2",0]]} -->
    Scene `elyanka.trickster.visit.hearse`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.committed`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.bier_seen`.
    - `elyanka.trickster.visit.hearse/start/0` — Continue
@@ -10728,7 +10732,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.visit.hearse/horses/0` — Continue
    - `elyanka.trickster.visit.hearse/horses2/0` — [Go back to the war.]; records `elyanka.trickster.bier_seen`, `elyanka.trickster.horses_balked`
 
-905. **Melazmera: The drowned king's stone** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.drowned_king","chapter":5,"day":114,"completed":true,"choices":[["start",0],["story",0],["king",0]]} -->
+906. **Melazmera: The drowned king's stone** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.drowned_king","chapter":5,"day":114,"completed":true,"choices":[["start",0],["story",0],["king",0]]} -->
    Scene `melazmera.trickster.beat.drowned_king`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.stone_kept`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.king_heard`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.drowned_king/start/0` — "Where did it come from?"
@@ -10737,7 +10741,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 115
 
-906. **Seelah: A song worth losing** — Drezen. <!-- rrt-step {"scene":"seelah.late_race","chapter":5,"day":115,"completed":true,"choices":[["start",0],["preparation",0],["fixed",0],["role",0],["running",0],["narrow",0],["won",0],["clear",0]]} -->
+907. **Seelah: A song worth losing** — Drezen. <!-- rrt-step {"scene":"seelah.late_race","chapter":5,"day":115,"completed":true,"choices":[["start",0],["preparation",0],["fixed",0],["role",0],["running",0],["narrow",0],["won",0],["clear",0]]} -->
    Scene `seelah.late_race`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Is this the afternoon you become intolerable?"
    Need all: `seelah.courting`, `seelah.aftermath_ready`, `seelah.late_lesson_kept`, `seelah.late_page_kept`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -10751,7 +10755,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.late_race/won/0` — [Help clear the course.]
    - `seelah.late_race/clear/0` — "Ask me."; records `seelah.late_race_kept`
 
-907. **Konomi: A place for the papers** — Drezen. <!-- rrt-step {"scene":"konomi.ordinary","chapter":5,"day":115,"completed":true,"choices":[["start",2],["news",0],["end",0]]} -->
+908. **Konomi: A place for the papers** — Drezen. <!-- rrt-step {"scene":"konomi.ordinary","chapter":5,"day":115,"completed":true,"choices":[["start",2],["news",0],["end",0]]} -->
    Scene `konomi.ordinary`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Have we found an evening without an emergency?"
    Need all: `konomi.present`, `konomi.power`, `konomi.committed`, `konomi.present_now`; Need one: `konomi.ordinary_expanded`, `inhuman`.
@@ -10761,14 +10765,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.ordinary/news/0` — [Enjoy her good news with her.]
    - `konomi.ordinary/end/0` — [Keep the evening for each other.]; records `konomi.at_home`
 
-908. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"vellexia.trickster.reaction.daeran_night","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
+909. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"vellexia.trickster.reaction.daeran_night","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
    Scene `vellexia.trickster.reaction.daeran_night`; chapters 5–5; wait at least 6h after the latest prerequisite; complete.
    Open: "About Lady Vellexia..."
    Need all: `vellexia.trickster.night_kept`, `vellexia.present_now`; Blocked by: `daeran.dead`, `daeran.kicked_out`, `vellexia.trickster.kept_as_mirror`, `vellexia.farewell_friends`, `vellexia.closed`.
    Native answer-list host: `4d978cbd2aa780d46874255282039f3f`.
    - `vellexia.trickster.reaction.daeran_night/start/0` — Continue
 
-909. **Dorgelinda: Other columns** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.other_columns","chapter":5,"day":115,"completed":true,"choices":[["start",0],["says",2],["unblessed",0]]} -->
+910. **Dorgelinda: Other columns** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.other_columns","chapter":5,"day":115,"completed":true,"choices":[["start",0],["says",2],["unblessed",0]]} -->
    Scene `dorgelinda.ledger.other_columns`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're quiet today."
    Need all: `trickster.ever`, `dorgelinda.ledger.morning_count`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.other_columns`, `swarm`.
@@ -10778,7 +10782,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.other_columns/says/2` — "That's my business, Quartermaster."
    - `dorgelinda.ledger.other_columns/unblessed/0` — [Leave.]; records `dorgelinda.ledger.unblessed`
 
-910. **Hepzamirah: The face he grew** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.mirror","chapter":5,"day":115,"completed":true,"choices":[["mirror",1],["mirror_confined",0],["face",0],["ask",0],["looked",0],["mother",0],["why",0]]} -->
+911. **Hepzamirah: The face he grew** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.mirror","chapter":5,"day":115,"completed":true,"choices":[["mirror",1],["mirror_confined",0],["face",0],["ask",0],["looked",0],["mother",0],["why",0]]} -->
    Scene `hepzamirah.trickster.flesh.mirror`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You asked for a mirror."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -10791,7 +10795,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.mirror/mother/0` — "Why tell me?"
    - `hepzamirah.trickster.flesh.mirror/why/0` — [Leave her with the shield turned to the wall.]
 
-911. **Camellia: The eve** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.day.the_eve_alive","chapter":5,"day":115,"completed":true,"choices":[["open",0],["ask",0],["intend",0],["close",0]]} -->
+912. **Camellia: The eve** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.day.the_eve_alive","chapter":5,"day":115,"completed":true,"choices":[["open",0],["ask",0],["intend",0],["close",0]]} -->
    Scene `camellia.trickster.day.the_eve_alive`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Tomorrow we march on the Threshold."
    Need all: `trickster.ever`, `camellia.committed`, `camellia.trickster.bond.not_today`, `iz.done`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -10802,7 +10806,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.day.the_eve_alive/intend/0` — Continue; Blocked by: `camellia.trickster.returned`
    - `camellia.trickster.day.the_eve_alive/close/0` — [Sleep]
 
-912. **Arueshalae: First light** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.morning","chapter":5,"day":115,"completed":true,"choices":[["start",0],["notes_count",0],["count",0],["recovering",0]]} -->
+913. **Arueshalae: First light** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.morning","chapter":5,"day":115,"completed":true,"choices":[["start",0],["notes_count",0],["count",0],["recovering",0]]} -->
    Scene `arueshalae.treatment.morning`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: "Good morning."
    Need all: `arueshalae.treatment.night`, `trickster.ever`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.morning`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -10810,24 +10814,24 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Actor must be physically available: `a352873d37ec6c54c9fa8f6da3a6b3e1`.
    - `arueshalae.treatment.morning/start/0` — Continue; Need all: `arueshalae.treatment.intake`; Blocked by: `arueshalae.changed`
    - `arueshalae.treatment.morning/notes_count/0` — Continue
-   - `arueshalae.treatment.morning/count/0` — "Put it in the case notes: patient recovering."; records `arueshalae.treatment.morning`; Need all: `arueshalae.treatment.intake`
+   - `arueshalae.treatment.morning/count/0` — "What would you have found in there?"; records `arueshalae.treatment.morning`; Need all: `arueshalae.treatment.intake`
    - `arueshalae.treatment.morning/recovering/0` — Continue
 
-913. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.react.lann_spade","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
+914. **Lann: Lann's word** — native dialogue listed below. <!-- rrt-step {"scene":"mielarah.trickster.react.lann_spade","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
    Scene `mielarah.trickster.react.lann_spade`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Something bothering you?"
    Need all: `mielarah.trickster.cost.noticed`, `mielarah.deck.morning`, `mielarah.present_now`; Blocked by: `lann.dead`, `lann.kicked_out`.
    Native answer-list host: `66385ad77fa743e4bb1234078dbd804c`.
    - `mielarah.trickster.react.lann_spade/start/0` — Continue
 
-914. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.seelah_muster","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
+915. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.seelah_muster","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
    Scene `jannah.trickster.react.seelah_muster`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You were at the muster."
    Need all: `jannah.committed`, `jannah.present_now`; Blocked by: `seelah_dead`, `seelah_gone`, `crossroute.seelah.unavailable`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
    Native answer-list host: `417fa384f3250634bb71859fbc913453`.
    - `jannah.trickster.react.seelah_muster/start/0` — Continue
 
-915. **Terendelev: A debt forgiven** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.commit.release","chapter":5,"day":115,"completed":true,"choices":[["start",0],["talk",0],["release",0],["sworn",0],["yes",0]]} -->
+916. **Terendelev: A debt forgiven** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.commit.release","chapter":5,"day":115,"completed":true,"choices":[["start",0],["talk",0],["release",0],["sworn",0],["yes",0]]} -->
    Scene `terendelev.trickster.commit.release`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "We need to talk about the debt."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.declined`, `terendelev.trickster.watch.proof_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.commit.release_awning`, `terendelev.committed`, `terendelev.continuation.returned_finale_seen`, `terendelev.parent_lich_bind`, `galfrey.killed_by_commander`; Need one of: `terendelev.trickster.watch.wings_tried`, `terendelev.trickster.watch.kenabres_told`, `terendelev.trickster.watch.deskari_vow`, `terendelev.trickster.watch.deskari_let_go`, `terendelev.trickster.watch.galfrey_spoken`, `terendelev.trickster.watch.infirmary_seen`, `terendelev.trickster.watch.infirmary_flogged`, `terendelev.trickster.watch.letter_written`, `terendelev.trickster.watch.storyteller_thanked`, `terendelev.trickster.watch.sat_up`, `terendelev.trickster.watch.faith`; Block `galfrey.killed_by_commander` lifted by: `terendelev.trickster.watch.queen_answered`.
@@ -10838,7 +10842,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.commit.release/sworn/0` — [Ask her to stay] "Stand your watch over me. Because you want to."
    - `terendelev.trickster.commit.release/yes/0` — "I'll be there."; records `terendelev.committed`, `terendelev.trickster.dressing`, `terendelev.trickster.debt_free`; Need all: `trickster.now`
 
-916. **Eliandra: What the Maiden takes** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.terms","chapter":5,"day":115,"completed":true,"choices":[["start",0],["taught",0],["taught2",0],["rules",0],["warn",0]]} -->
+917. **Eliandra: What the Maiden takes** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.terms","chapter":5,"day":115,"completed":true,"choices":[["start",0],["taught",0],["taught2",0],["rules",0],["warn",0]]} -->
    Scene `eliandra.trickster.ch5.terms`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "What does your Lady take, in return for what she gives?"
    Need all: `trickster`, `eliandra.met_ch5`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.terms_read`, `eliandra.trickster.terms_guessed`, `eliandra.trickster.ch5.terms_drezen`, `eliandra.trickster.ch5.terms_drezen_mark`, `trickster.failed`.
@@ -10849,7 +10853,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.terms/rules/0` — Continue; records `eliandra.trickster.terms_read`, `eliandra.started`
    - `eliandra.trickster.ch5.terms/warn/0` — [Leave it there.]
 
-917. **Horzalah: The notice board** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.board","chapter":5,"day":115,"completed":true,"choices":[["start",0],["who",0],["agent",0],["agent_who",0]]} -->
+918. **Horzalah: The notice board** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.board","chapter":5,"day":115,"completed":true,"choices":[["start",0],["who",0],["agent",0],["agent_who",0]]} -->
    Scene `horzalah.trickster.beat.board`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "How does your Guild work, exactly?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.board_heard`.
@@ -10859,21 +10863,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.board/agent/0` — "Tell me who."
    - `horzalah.trickster.beat.board/agent_who/0` — "Fair."; records `horzalah.trickster.beat.board_heard`, `horzalah.trickster.beat.agent_asked`
 
-918. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.trickster.react.daeran_after","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
+919. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.trickster.react.daeran_after","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
    Scene `elyanka.trickster.react.daeran_after`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "You're staring, Daeran."
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `daeran.dead`, `daeran.kicked_out`, `daeran.plot_absent`.
    Native answer-list host: `4d978cbd2aa780d46874255282039f3f`.
    - `elyanka.trickster.react.daeran_after/start/0` — Continue; records `elyanka.trickster.daeran_ally`
 
-919. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"yaniel.trickster.react.seelah_after","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
+920. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"yaniel.trickster.react.seelah_after","chapter":5,"day":115,"completed":true,"choices":[["start",0]]} -->
    Scene `yaniel.trickster.react.seelah_after`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "Something on your mind, Seelah?"
    Need all: `trickster.ever`, `yaniel.trickster.niche_seen`, `yaniel.trickster.morning.seelah_witness`, `yaniel.present_now`; Blocked by: `seelah_dead`, `seelah_gone`, `yaniel.closed`, `yaniel.killed.latched`, `crossroute.seelah.unavailable`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
    Native answer-list host: `417fa384f3250634bb71859fbc913453`.
    - `yaniel.trickster.react.seelah_after/start/0` — Continue; records `yaniel.trickster.seelah_blessed`
 
-920. **Minagho: The message at the relay** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_minagho.interception","chapter":5,"day":115,"completed":true,"choices":[["start",0],["seized",0]]} -->
+921. **Minagho: The message at the relay** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"household.pair.delamere_minagho.interception","chapter":5,"day":115,"completed":true,"choices":[["start",0],["seized",0]]} -->
    Scene `household.pair.delamere_minagho.interception`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Visit the sanctuary dispatch docket.]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `delamere.harem.eligible`, `delamere.trickster.returned`, `household.pair.delamere_minagho.open.ready`, `minagho.harem.eligible`, `minagho_chivarro.trickster.minagho_in`; Blocked by: `delamere.closed`, `inhuman`, `household.pair.delamere_minagho.interception.seen`, `minachiv.closed`, `minagho.dead`, `trickster.failed`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`.
@@ -10881,7 +10885,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.delamere_minagho.interception/start/0` — [Seize the runner's original dispatch at the Drezen relay.]
    - `household.pair.delamere_minagho.interception/seized/0` — Continue; records `household.pair.delamere_minagho.interception.seen`, `household.pair.delamere_minagho.proof.dispatch_seized`, `household.pair.delamere_minagho.claim.withdrawn`, `household.pair.delamere_minagho.resolved`, `household.pair.delamere_minagho.cost.delamere_shelter_watch`, `household.pair.delamere_minagho.cost.minagho_runner_exposed`, `household.pair.delamere_minagho.cost.commander_denounced`
 
-921. **Melazmera: Somebody is asking** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.inquisitor","chapter":5,"day":115,"completed":true,"choices":[["start",0],["her",1],["prove",0]]} -->
+922. **Melazmera: Somebody is asking** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.inquisitor","chapter":5,"day":115,"completed":true,"choices":[["start",0],["her",1],["prove",0]]} -->
    Scene `melazmera.trickster.beat.inquisitor`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.trickster.fed.cultists`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.inquisitor_lied`, `melazmera.trickster.beat.inquisitor_watched`, `melazmera.trickster.beat.inquisitor_eaten`, `melazmera.trickster.beat.inquisitor_reported`, `crossroute.iomedae.unavailable`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.inquisitor/start/0` — Continue
@@ -10890,7 +10894,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 116
 
-922. **Seelah: The verse she remembers** — Drezen. <!-- rrt-step {"scene":"seelah.late_afterglow","chapter":5,"day":116,"completed":true,"choices":[["start",0],["race",0],["victory",0],["ask",1],["kisses",0],["plans",0]]} -->
+923. **Seelah: The verse she remembers** — Drezen. <!-- rrt-step {"scene":"seelah.late_afterglow","chapter":5,"day":116,"completed":true,"choices":[["start",0],["race",0],["victory",0],["ask",1],["kisses",0],["plans",0]]} -->
    Scene `seelah.late_afterglow`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You were going to ask me for an evening."
    Need all: `seelah.courting`, `seelah.aftermath_ready`, `seelah.late_race_kept`, `seelah.trickster.custody_clear`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -10902,7 +10906,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.late_afterglow/kisses/0` — [Hold her close before leaving.]; records `seelah.kissed`
    - `seelah.late_afterglow/plans/0` — [Make time for the next visit.]; records `seelah.late_evening_kept`
 
-923. **Konomi: The letter she does not seal** — Drezen. <!-- rrt-step {"scene":"konomi.farewell","chapter":5,"day":116,"completed":true,"choices":[["start",0],["promise",0]]} -->
+924. **Konomi: The letter she does not seal** — Drezen. <!-- rrt-step {"scene":"konomi.farewell","chapter":5,"day":116,"completed":true,"choices":[["start",0],["promise",0]]} -->
    Scene `konomi.farewell`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Before the final fighting, there is something I want to say."
    Need all: `konomi.present`, `konomi.ordinary`, `konomi.present_now`.
@@ -10911,7 +10915,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `konomi.farewell/start/0` — "I would like that day. And the one after it."
    - `konomi.farewell/promise/0` — [Carry her letter into what comes next.]; records `konomi.farewell_kept`
 
-924. **Hepzamirah: The first rent** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.rent","chapter":5,"day":116,"completed":true,"choices":[["sack",0],["rent_history",1],["sack_say",2],["choose",0],["taken",0]]} -->
+925. **Hepzamirah: The first rent** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.rent","chapter":5,"day":116,"completed":true,"choices":[["sack",0],["rent_history",1],["sack_say",2],["choose",0],["taken",0]]} -->
    Scene `hepzamirah.trickster.flesh.rent`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said you had something for me."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -10922,7 +10926,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.rent/choose/0` — [Take the sack] "Hang it over the east gate. Let the others see."; records `hepzamirah.trickster.rent_taken`
    - `hepzamirah.trickster.flesh.rent/taken/0` — [Let her take it to the gate.]
 
-925. **Camellia: A new friend** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.day.a_new_friend_alive","chapter":5,"day":116,"completed":true,"choices":[["open",0],["list",0],["ask",1],["warn",0],["warned",0]]} -->
+926. **Camellia: A new friend** — Drezen. <!-- rrt-step {"scene":"camellia.trickster.day.a_new_friend_alive","chapter":5,"day":116,"completed":true,"choices":[["open",0],["list",0],["ask",1],["warn",0],["warned",0]]} -->
    Scene `camellia.trickster.day.a_new_friend_alive`; chapters 3–5 (only 3, 5); wait at least 96h after the latest prerequisite; complete.
    Open: "Who was that you were laughing with?"
    Need all: `trickster.ever`, `camellia.committed`, `camellia.trickster.bond.not_today`, `camellia.present_now`; Blocked by: `camellia.closed`, `camellia.killed`, `camellia.dead`, `camellia.trickster.returned`.
@@ -10934,7 +10938,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `camellia.trickster.day.a_new_friend_alive/warn/0` — Continue
    - `camellia.trickster.day.a_new_friend_alive/warned/0` — [Take her hand]; records `camellia.trickster.friend.warned`
 
-926. **Arueshalae: After the war** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.after_the_war","chapter":5,"day":116,"completed":true,"choices":[["start",0],["you",0],["burn",0]]} -->
+927. **Arueshalae: After the war** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.after_the_war","chapter":5,"day":116,"completed":true,"choices":[["start",0],["you",0],["burn",0]]} -->
    Scene `arueshalae.treatment.after_the_war`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What will you do, after?"
    Need all: `trickster.ever`, `arueshalae.treatment.morning`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.after_the_war`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -10944,7 +10948,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.after_the_war/you/0` — "I'll come back to the kitchen. Burn something for me."; records `arueshalae.treatment.after_the_war`
    - `arueshalae.treatment.after_the_war/burn/0` — Continue
 
-927. **Mielarah: The other captains** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.captains","chapter":5,"day":116,"completed":true,"choices":[["start",0],["kerz",1],["parcel",0],["sash",0],["rates",0]]} -->
+928. **Mielarah: The other captains** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.captains","chapter":5,"day":116,"completed":true,"choices":[["start",0],["kerz",1],["parcel",0],["sash",0],["rates",0]]} -->
    Scene `mielarah.deck.captains`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You've had post from the Midnight Isles."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.morning`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.captains.arcade`, `mielarah.deck.captains`.
@@ -10955,7 +10959,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.captains/sash/0` — "Minus nothing?"; records `mielarah.deck.captains`; Need all: `mielarah.outcome.eligible`
    - `mielarah.deck.captains/rates/0` — [Leave her to her letter.]
 
-928. **Shamira: The chair she wants** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.throne","chapter":5,"day":116,"completed":true,"choices":[["start",0],["chair",1],["not_hiding",0],["ask",0],["not_her",0],["socoth",1],["socoth_here",0],["end",0]]} -->
+929. **Shamira: The chair she wants** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.throne","chapter":5,"day":116,"completed":true,"choices":[["start",0],["chair",1],["not_hiding",0],["ask",0],["not_her",0],["socoth",1],["socoth_here",0],["end",0]]} -->
    Scene `shamira.trickster.after.throne`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "You have that look. The one from the Harem."
    Need all: `trickster.ever`, `shamira.trickster.embodied`, `shamira.committed`, `shamira.present_now`; Blocked by: `shamira.trickster.after.throne_awning`, `shamira.trickster.throne_told`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
@@ -10969,21 +10973,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.after.throne/socoth_here/0` — Continue
    - `shamira.trickster.after.throne/end/0` — [Let her go.]
 
-929. **Thaberdine: Thaberdine's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.king_muster","chapter":5,"day":116,"completed":true,"choices":[["start",0]]} -->
+930. **Thaberdine: Thaberdine's word** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.trickster.react.king_muster","chapter":5,"day":116,"completed":true,"choices":[["start",0]]} -->
    Scene `jannah.trickster.react.king_muster`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You were at the muster, Your Majesty?"
    Need all: `jannah.committed`, `fool_king.available`, `jannah.present_now`; Blocked by: `fool_king.gone`.
    Native answer-list host: `6dccfd39947ef4242a8afbe36b21a46c`.
    - `jannah.trickster.react.king_muster/start/0` — Continue
 
-930. **Irabeth: Irabeth's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.irabeth.dressing","chapter":5,"day":116,"completed":true,"choices":[["start",0]]} -->
+931. **Irabeth: Irabeth's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.irabeth.dressing","chapter":5,"day":116,"completed":true,"choices":[["start",0]]} -->
    Scene `terendelev.trickster.react.irabeth.dressing`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "Anything to report, knight?"
    Need all: `terendelev.trickster.dressing`, `irabeth.present_now`, `terendelev.present_now`; Blocked by: `irabeth_dead`, `terendelev.closed`, `irabeth_gone`, `swarm`, `true_lich`; Block `irabeth_dead` lifted by: `irabeth.trickster.returned`.
    Native answer-list host: `871af36f2ab2b1f40b5de77976c54276`.
    - `terendelev.trickster.react.irabeth.dressing/start/0` — Continue
 
-931. **Eliandra: The last rite** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.last_rite","chapter":5,"day":116,"completed":true,"choices":[["start",0],["leave",0],["place",0],["heart_known",0],["rite",1],["name",4],["walk",0]]} -->
+932. **Eliandra: The last rite** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.ch5.last_rite","chapter":5,"day":116,"completed":true,"choices":[["start",0],["leave",0],["place",0],["heart_known",0],["rite",1],["name",4],["walk",0]]} -->
    Scene `eliandra.trickster.ch5.last_rite`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Will you hold one last rite at the star-heart? For yourself, this time."
    Need all: `trickster`, `eliandra.met_ch5`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.leave_granted`, `eliandra.trickster.no_leave`, `eliandra.trickster.ch5.last_rite_drezen`, `eliandra.trickster.ch5.last_rite_drezen_mark`, `trickster.failed`; Need one of: `eliandra.trickster.terms_read`, `eliandra.trickster.observed`.
@@ -10996,7 +11000,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.last_rite/name/4` — [Walk away from the basin.]
    - `eliandra.trickster.ch5.last_rite/walk/0` — [Leave the star-heart.]; records `eliandra.trickster.no_leave`
 
-932. **Horzalah: Her city** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.lady","chapter":5,"day":116,"completed":true,"choices":[["start",0],["dead",0],["end",0]]} -->
+933. **Horzalah: Her city** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.lady","chapter":5,"day":116,"completed":true,"choices":[["start",0],["dead",0],["end",0]]} -->
    Scene `horzalah.trickster.beat.lady`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Does the Lady in Shadow know what you do in her city?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.beat.board_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.lady_heard`, `crossroute.nocticula.unavailable`.
@@ -11005,7 +11009,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.lady/dead/0` — Continue
    - `horzalah.trickster.beat.lady/end/0` — "Keep it wherever you like."; records `horzalah.trickster.beat.lady_heard`
 
-933. **Yaniel: The night watch** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.after.watch","chapter":5,"day":116,"completed":true,"choices":[["start",1],["s45.watch",3],["s45.watch.unanswered",0],["s45.watch.late",0],["s45.watch.resume",0],["talk",0],["owed",0],["end",0]]} -->
+934. **Yaniel: The night watch** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.after.watch","chapter":5,"day":116,"completed":true,"choices":[["start",1],["s45.watch",3],["s45.watch.unanswered",0],["s45.watch.late",0],["s45.watch.resume",0],["talk",0],["owed",0],["end",0]]} -->
    Scene `yaniel.trickster.after.watch`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Is that second spear for me?"
    Need all: `trickster.ever`, `yaniel.committed`, `yaniel.trickster.niche_seen`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`.
@@ -11019,7 +11023,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.after.watch/owed/0` — Continue
    - `yaniel.trickster.after.watch/end/0` — [Go down.]; records `yaniel.trickster.after.watch_stood`
 
-934. **Galfrey: Two undertakings** — rest delivery / Satchel: letter (Drezen). <!-- rrt-step {"scene":"household.pair.galfrey_nocticula.undertaking","chapter":5,"day":116,"completed":true,"choices":[["start",0],["kept",0]]} -->
+935. **Galfrey: Two undertakings** — rest delivery / Satchel: letter (Drezen). <!-- rrt-step {"scene":"household.pair.galfrey_nocticula.undertaking","chapter":5,"day":116,"completed":true,"choices":[["start",0],["kept",0]]} -->
    Scene `household.pair.galfrey_nocticula.undertaking`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [Visit the Drezen departure office.]
    Need all: `trickster`, `foresight.page_taken`, `household.table.kept`, `household.pair.galfrey_nocticula.open.ready`, `household.pair.galfrey_nocticula.survey.acquired`, `household.pair.galfrey_nocticula.sortie.mustered`, `galfrey.harem.eligible`, `nocticula.harem.eligible`; Blocked by: `household.pair.galfrey_nocticula.undertaking.seen`, `household.pair.galfrey_nocticula.permanent_refusal`, `noct.acq.council_fight`, `galfrey.closed`, `galfrey.dead`, `galfrey.killed_by_commander`, `noct.closed`, `noct.dead`, `inhuman`, `legend`, `dragon`, `galfrey.trickster.returned`, `trickster.failed`; Block `noct.acq.council_fight` lifted by: `nocticula.trickster.returned`; Block `galfrey.dead` lifted by: `galfrey.trickster.returned`; Block `noct.dead` lifted by: `noct.defeated_not_dead`.
@@ -11028,7 +11032,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.galfrey_nocticula.undertaking/start/0` — [Carry both answers unchanged and challenge the renewed levy in your own name.]; PASS CheckDiplomacy DC 24 (Commander only); success → `kept`; failure → `mistranslated`
    - `household.pair.galfrey_nocticula.undertaking/kept/0` — Continue; records `household.pair.galfrey_nocticula.undertaking.seen`, `household.pair.galfrey_nocticula.undertaking.held`, `household.pair.galfrey_nocticula.resolved`, `household.pair.galfrey_nocticula.cost.galfrey_sponsorship_withdrawn`, `household.pair.galfrey_nocticula.cost.nocticula_factor_overruled`, `household.pair.galfrey_nocticula.cost.commander_guarantor_kept`, `household.pair.galfrey_nocticula.cost.reconnaissance_forgone`
 
-935. **Kiana: An ordinary difficulty** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.morning","chapter":5,"day":116,"completed":true,"choices":[["start",1],["settling",0],["work",0],["seat",0],["promise",0],["yes",1]]} -->
+936. **Kiana: An ordinary difficulty** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.morning","chapter":5,"day":116,"completed":true,"choices":[["start",1],["settling",0],["work",0],["seat",0],["promise",0],["yes",1]]} -->
    Scene `kiana.morning`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `kiana.lovers`, `kiana.present_now`; Blocked by: `kiana.trickster.late_yes`, `kiana.trickster.late_no`; Need one of: `seelah.souls_returned`, `kiana.trickster.met`.
    - `kiana.morning/start/1` — [Listen.]; Need all: `kiana.separated`
@@ -11038,7 +11042,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `kiana.morning/promise/0` — "Yes. Keep a chair for me after the war."
    - `kiana.morning/yes/1` — [Keep her chair, and the separation she chose.]; records `kiana.committed`, `kiana.partner_stance.exclusive`; Need all: `kiana.separated`
 
-936. **Elyanka: What the Abyss does to meat** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.anatomy","chapter":5,"day":116,"completed":true,"choices":[["start",0],["who",0],["open",0],["lady",2],["leave",0]]} -->
+937. **Elyanka: What the Abyss does to meat** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.anatomy","chapter":5,"day":116,"completed":true,"choices":[["start",0],["who",0],["open",0],["lady",2],["leave",0]]} -->
    Scene `elyanka.trickster.beat.anatomy`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.anatomy.knife`, `elyanka.trickster.anatomy.watched`, `elyanka.trickster.anatomy.left`.
    - `elyanka.trickster.beat.anatomy/start/0` — Continue
@@ -11047,7 +11051,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.beat.anatomy/lady/2` — "I've seen enough of him. Burn it."
    - `elyanka.trickster.beat.anatomy/leave/0` — [Go.]; records `elyanka.trickster.anatomy.left`
 
-937. **Melazmera: A stronger claim** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.putting_down","chapter":5,"day":116,"completed":true,"choices":[["start",0],["happened",0],["coin",0],["keep",0]]} -->
+938. **Melazmera: A stronger claim** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"melazmera.trickster.beat.putting_down","chapter":5,"day":116,"completed":true,"choices":[["start",0],["happened",0],["coin",0],["keep",0]]} -->
    Scene `melazmera.trickster.beat.putting_down`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `melazmera.trickster.message`, `melazmera.committed`, `melazmera.trickster.heap_seen`, `melazmera.present_now`; Blocked by: `melazmera.dead.latched`, `melazmera.closed`, `melazmera.trickster.left_free`, `melazmera.trickster.declined`, `melazmera.trickster.beat.put_down`; Block `melazmera.trickster.declined` lifted by: `melazmera.committed`.
    - `melazmera.trickster.beat.putting_down/start/0` — "What kind of experiment?"
@@ -11055,14 +11059,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `melazmera.trickster.beat.putting_down/coin/0` — "Don't. You lost fairly. Keep the coin."
    - `melazmera.trickster.beat.putting_down/keep/0` — Continue; records `melazmera.trickster.beat.put_down`, `melazmera.trickster.beat.copper_kept`
 
-938. **Kiana: What she has heard** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.seelah","chapter":5,"day":116,"completed":true,"choices":[["start",1],["waited",0],["end",0]]} -->
+939. **Kiana: What she has heard** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"kiana.seelah","chapter":5,"day":116,"completed":true,"choices":[["start",1],["waited",0],["end",0]]} -->
    Scene `kiana.seelah`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `kiana.lovers`, `seelah.in_party`, `kiana.present_now`; Blocked by: `crossroute.seelah.unavailable`; Need one of: `seelah.souls_returned`, `kiana.trickster.met`.
    - `kiana.seelah/start/1` — "We waited until she had spoken to Elan."; Need all: `kiana.waited`; Blocked by: `kiana.partner_stance.secret`
    - `kiana.seelah/waited/0` — "It was a good thing to hope for."
    - `kiana.seelah/end/0` — [Promise nothing about the crown.]; records `kiana.seelah_spoke`
 
-939. **Elyanka: A writ from the chaplains** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.writ","chapter":5,"day":116,"completed":true,"choices":[["start",0],["writ",0],["yard",0],["oath",0],["chaplain",0],["upheld",0],["upheld2",0]]} -->
+940. **Elyanka: A writ from the chaplains** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.writ","chapter":5,"day":116,"completed":true,"choices":[["start",0],["writ",0],["yard",0],["oath",0],["chaplain",0],["upheld",0],["upheld2",0]]} -->
    Scene `elyanka.trickster.beat.writ`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.writ.upheld`, `elyanka.trickster.writ.lied`, `elyanka.trickster.writ.hers`.
    - `elyanka.trickster.beat.writ/start/0` — Continue
@@ -11075,7 +11079,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 117
 
-940. **Seelah: Something left for next time** — Drezen. <!-- rrt-step {"scene":"seelah.late_first_step","chapter":5,"day":117,"completed":true,"choices":[["start",0],["wish",0],["music",0],["quiet_phrase",0],["carry",0],["committed",0],["end",0]]} -->
+941. **Seelah: Something left for next time** — Drezen. <!-- rrt-step {"scene":"seelah.late_first_step","chapter":5,"day":117,"completed":true,"choices":[["start",0],["wish",0],["music",0],["quiet_phrase",0],["carry",0],["committed",0],["end",0]]} -->
    Scene `seelah.late_first_step`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Let us try the thing we talked about."
    Need all: `seelah.courting`, `seelah.aftermath_ready`, `seelah.late_evening_kept`, `seelah.present_now`; Blocked by: `inhuman`, `seelah.farewell`, `seelah_dead`, `seelah_gone`, `seelah.plot_departed`; Block `seelah.farewell` lifted by: `seelah.catchup_requested`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
@@ -11088,7 +11092,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `seelah.late_first_step/committed/0` — [Keep her hand as you walk back.]
    - `seelah.late_first_step/end/0` — [Keep the next visit in mind.]; records `seelah.late_campaign_kept`
 
-941. **Dorgelinda: Hammer and tongs** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.hammer_and_tongs","chapter":5,"day":117,"completed":true,"choices":[["start",0],["grain_receipt",0],["friends",2],["seal",1],["cold",0]]} -->
+942. **Dorgelinda: Hammer and tongs** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.hammer_and_tongs","chapter":5,"day":117,"completed":true,"choices":[["start",0],["grain_receipt",0],["friends",2],["seal",1],["cold",0]]} -->
    Scene `dorgelinda.ledger.hammer_and_tongs`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You wanted to see me?"
    Need all: `trickster.ever`, `dorgelinda.ledger.other_columns`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.hammer_and_tongs`.
@@ -11100,7 +11104,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.hammer_and_tongs/seal/1` — [Leave.]
    - `dorgelinda.ledger.hammer_and_tongs/cold/0` — [Go.]; records `dorgelinda.ledger.quarrel_cold`
 
-942. **Hepzamirah: Ygefeles's blood** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.bloodline","chapter":5,"day":117,"completed":true,"choices":[["watching",0],["want",0],["locked",0]]} -->
+943. **Hepzamirah: Ygefeles's blood** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.bloodline","chapter":5,"day":117,"completed":true,"choices":[["watching",0],["want",0],["locked",0]]} -->
    Scene `hepzamirah.trickster.flesh.bloodline`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You've been watching my tiefling."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.first_morning`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`, `woljif.dead`, `woljif.kicked_out`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11109,7 +11113,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.bloodline/want/0` — "Touch Woljif and the door is locked. From the outside. For good."; records `hepzamirah.trickster.bloodline_spared`
    - `hepzamirah.trickster.flesh.bloodline/locked/0` — [Leave it there.]
 
-943. **Arueshalae: A race over the roofs** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.the_race","chapter":5,"day":117,"completed":true,"choices":[["start",1],["rules",0],["fair",0]]} -->
+944. **Arueshalae: A race over the roofs** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.the_race","chapter":5,"day":117,"completed":true,"choices":[["start",1],["rules",0],["fair",0]]} -->
    Scene `arueshalae.treatment.the_race`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I challenge you."
    Need all: `trickster.ever`, `arueshalae.treatment.morning`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.the_race`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -11119,7 +11123,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.the_race/rules/0` — [Race her fair, and lose]; records `arueshalae.treatment.the_race`
    - `arueshalae.treatment.the_race/fair/0` — Continue
 
-944. **Mielarah: Those in distress** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.wounded","chapter":5,"day":117,"completed":true,"choices":[["start",0],["sum",0],["carry",0],["home",0]]} -->
+945. **Mielarah: Those in distress** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.wounded","chapter":5,"day":117,"completed":true,"choices":[["start",0],["sum",0],["carry",0],["home",0]]} -->
    Scene `mielarah.deck.wounded`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "A column was cut up in the Wound. They need a ship."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.corrected`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.wounded.arcade`, `mielarah.deck.wounded`.
@@ -11129,7 +11133,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.wounded/carry/0` — [Fly with her.]
    - `mielarah.deck.wounded/home/0` — [Stay at the helm.]; records `mielarah.deck.wounded`, `mielarah.deck.wounded_joined`
 
-945. **Jannah: The League of the Inspiring Cart** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.seelah","chapter":5,"day":117,"completed":true,"choices":[["open",2],["living",2],["q3",1],["elan_lives",0],["q3_end",0],["end",0]]} -->
+946. **Jannah: The League of the Inspiring Cart** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.seelah","chapter":5,"day":117,"completed":true,"choices":[["open",2],["living",2],["q3",1],["elan_lives",0],["q3_end",0],["end",0]]} -->
    Scene `jannah.circle.seelah`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Tell me about Seelah."
    Need all: `trickster.ever`, `jannah.trickster.returned`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.seelah`, `crossroute.seelah.unavailable`.
@@ -11141,7 +11145,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.seelah/q3_end/0` — "Then it's yours to tell."
    - `jannah.circle.seelah/end/0` — [Leave her with it.]
 
-946. **Terendelev: The north turret** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.night.watch","chapter":5,"day":117,"completed":true,"choices":[["start",0],["want",0],["wound",0],["hoard",0],["throat",0],["cloak",0],["cut",0],["terendelev.trickster.night.watch.explicit.1",0],["grey",0],["morning",0],["sentry",0],["end",0]]} -->
+947. **Terendelev: The north turret** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.night.watch","chapter":5,"day":117,"completed":true,"choices":[["start",0],["want",0],["wound",0],["hoard",0],["throat",0],["cloak",0],["cut",0],["terendelev.trickster.night.watch.explicit.1",0],["grey",0],["morning",0],["sentry",0],["end",0]]} -->
    Scene `terendelev.trickster.night.watch`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: [Climb to the north turret after the second bell.]
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.committed`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.night.watch_awning`.
@@ -11159,7 +11163,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.night.watch/sentry/0` — "I wasn't going to argue."
    - `terendelev.trickster.night.watch/end/0` — [Go down and find her a shirt.]; records `terendelev.trickster.night.seen`
 
-947. **Horzalah: The dwarf** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.dwarf","chapter":5,"day":117,"completed":true,"choices":[["start",1],["betrayed_plain",0],["demand",0],["no",0]]} -->
+948. **Horzalah: The dwarf** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.dwarf","chapter":5,"day":117,"completed":true,"choices":[["start",1],["betrayed_plain",0],["demand",0],["no",0]]} -->
    Scene `horzalah.trickster.beat.dwarf`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're watching Greybor."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `greybor.in_party`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.dwarf_heard`, `greybor.dead`, `greybor.kicked_out`.
@@ -11169,14 +11173,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.dwarf/demand/0` — "No. He's under my protection."
    - `horzalah.trickster.beat.dwarf/no/0` — [Leave them watching each other.]; records `horzalah.trickster.beat.dwarf_heard`
 
-948. **Regill: Regill's word** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.trickster.react.regill_writ","chapter":5,"day":117,"completed":true,"choices":[["start",0]]} -->
+949. **Regill: Regill's word** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.trickster.react.regill_writ","chapter":5,"day":117,"completed":true,"choices":[["start",0]]} -->
    Scene `elyanka.trickster.react.regill_writ`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About the Ustalavic priestess."
    Need all: `trickster.ever`, `regill.in_party`, `elyanka.present_now`; Blocked by: `regill.dead`, `regill.kicked_out`, `regill.plot_absent`; Need one of: `elyanka.trickster.writ.upheld`, `elyanka.trickster.writ.hers`.
    Native answer-list host: `2366a8db6481070439fee222c0c52e45`.
    - `elyanka.trickster.react.regill_writ/start/0` — Continue
 
-949. **Yaniel: The mark it leaves** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.after.wrist","chapter":5,"day":117,"completed":true,"choices":[["start",1],["packed",0],["unwrapped",0],["unwrapped2",0],["end",0]]} -->
+950. **Yaniel: The mark it leaves** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"yaniel.trickster.after.wrist","chapter":5,"day":117,"completed":true,"choices":[["start",1],["packed",0],["unwrapped",0],["unwrapped2",0],["end",0]]} -->
    Scene `yaniel.trickster.after.wrist`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You want something."
    Need all: `trickster.ever`, `yaniel.committed`, `yaniel.trickster.niche_seen`, `yaniel.trickster.after.watch_stood`, `yaniel.present_now`; Blocked by: `yaniel.killed.latched`, `yaniel.closed`.
@@ -11187,7 +11191,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `yaniel.trickster.after.wrist/unwrapped2/0` — [Wrap it again.]
    - `yaniel.trickster.after.wrist/end/0` — Continue; records `yaniel.trickster.after.wrist_seen`
 
-950. **Minagho: Whose knife?** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"household.pair.herrax_minagho.notice.minagho","chapter":5,"day":117,"completed":true,"choices":[["start",0],["sent",0]]} -->
+951. **Minagho: Whose knife?** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"household.pair.herrax_minagho.notice.minagho","chapter":5,"day":117,"completed":true,"choices":[["start",0],["sent",0]]} -->
    Scene `household.pair.herrax_minagho.notice.minagho`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: [The request against Chivarro.]
    Need all: `trickster`, `household.pair.herrax_minagho.ready`, `minagho.present_now`, `participant.minagho.available`, `household.pair.herrax_minagho.herrax_channel`, `household.pair.herrax_minagho.target_current`, `minagho.dead`, `minagho_chivarro.presence.minagho.route_open`; Blocked by: `trickster.failed`, `herrax.closed`, `minachiv.closed`, `minagho_chivarro.trickster.declined_minagho`, `inhuman`, `minagho.epoch_redeparted`, `minagho.returned_actor_lost`, `household.pair.herrax_minagho.notice.seen`, `herrax.trickster.cost.contract_unfinished`, `minagho.dead`; Need one of: `minagho_chivarro.trickster.minagho_in`, `minagho_chivarro.trickster.collateral_delivered`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`.
@@ -11197,7 +11201,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.herrax_minagho.notice.minagho/start/0` — "Send her your answer. I'll carry it."
    - `household.pair.herrax_minagho.notice.minagho/sent/0` — [Carry the warning.]; records `household.pair.herrax_minagho.notice.seen`, `household.pair.herrax_minagho.notice.sent`, `household.pair.herrax_minagho.cost.minagho_hunters_committed`
 
-951. **Elyanka: Venison** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.hunt","chapter":5,"day":117,"completed":true,"choices":[["start",0],["stag",0],["kill",0],["fire",0],["ate",0]]} -->
+952. **Elyanka: Venison** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.hunt","chapter":5,"day":117,"completed":true,"choices":[["start",0],["stag",0],["kill",0],["fire",0],["ate",0]]} -->
    Scene `elyanka.trickster.beat.hunt`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.hunt.ate`, `elyanka.trickster.hunt.sang`, `elyanka.trickster.hunt.watched`.
    - `elyanka.trickster.beat.hunt/start/0` — Continue
@@ -11208,7 +11212,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 118
 
-952. **Hepzamirah: Wildflowers** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.flowers","chapter":5,"day":118,"completed":true,"choices":[["jar",0],["ember",0],["pity_history",1],["hep",1],["warned",0],["keep",0],["kept",0]]} -->
+953. **Hepzamirah: Wildflowers** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.flowers","chapter":5,"day":118,"completed":true,"choices":[["jar",0],["ember",0],["pity_history",1],["hep",1],["warned",0],["keep",0],["kept",0]]} -->
    Scene `hepzamirah.trickster.flesh.flowers`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Ember's been visiting you."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.first_morning`, `ember.present`, `hepzamirah.trickster.flesh.the_pick`, `ember.present_now`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`, `ember.native_devastated`, `crossroute.ember.unavailable`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11221,7 +11225,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.flowers/keep/0` — "Keep them."; records `hepzamirah.trickster.flowers_kept`; Blocked by: `crossroute.ember.unavailable`
    - `hepzamirah.trickster.flesh.flowers/kept/0` — [Leave them to it.]
 
-953. **Arueshalae: Faces in the dark** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.nightmare","chapter":5,"day":118,"completed":true,"choices":[["start",1],["dream.history_neutral",1],["sit",0]]} -->
+954. **Arueshalae: Faces in the dark** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.nightmare","chapter":5,"day":118,"completed":true,"choices":[["start",1],["dream.history_neutral",1],["sit",0]]} -->
    Scene `arueshalae.treatment.nightmare`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "I'm sorry I woke you."
    Need all: `trickster.ever`, `arueshalae.treatment.morning`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.nightmare`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -11231,7 +11235,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.nightmare/dream.history_neutral/1` — [Sit with her till dawn, and say nothing.]; records `arueshalae.treatment.nightmare`
    - `arueshalae.treatment.nightmare/sit/0` — Continue
 
-954. **Mielarah: Before the march** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.last_night","chapter":5,"day":118,"completed":true,"choices":[["start",0],["carry",0],["token",1],["block",0],["end",0]]} -->
+955. **Mielarah: Before the march** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.last_night","chapter":5,"day":118,"completed":true,"choices":[["start",0],["carry",0],["token",1],["block",0],["end",0]]} -->
    Scene `mielarah.deck.last_night`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "The quartermasters say the crusade marches soon."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.captains`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.last_night.arcade`, `mielarah.deck.last_night`.
@@ -11242,7 +11246,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.last_night/block/0` — Continue
    - `mielarah.deck.last_night/end/0` — [Leave her counting.]; records `mielarah.deck.last_night`
 
-955. **Jannah: Home** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.mivon","chapter":5,"day":118,"completed":true,"choices":[["open",2],["alive",0],["father",1],["write",0],["truth",0]]} -->
+956. **Jannah: Home** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.mivon","chapter":5,"day":118,"completed":true,"choices":[["open",2],["alive",0],["father",1],["write",0],["truth",0]]} -->
    Scene `jannah.circle.mivon`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Is that a letter?"
    Need all: `trickster.ever`, `jannah.circle.forms`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.mivon`.
@@ -11253,14 +11257,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.mivon/write/0` — "Write him the truth. He asked about his daughter, not about a legend."
    - `jannah.circle.mivon/truth/0` — [Leave her to her letter.]; records `jannah.circle.mivon.truth`
 
-956. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.seelah.watch","chapter":5,"day":118,"completed":true,"choices":[["start",0]]} -->
+957. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.seelah.watch","chapter":5,"day":118,"completed":true,"choices":[["start",0]]} -->
    Scene `terendelev.trickster.react.seelah.watch`; chapters 5–5; wait at least 12h after the latest prerequisite; complete.
    Open: "You look like you've heard something, Seelah."
    Need all: `terendelev.trickster.night.seen`, `seelah.present_now`, `terendelev.present_now`; Blocked by: `seelah_dead`, `seelah_gone`, `terendelev.closed`, `crossroute.seelah.unavailable`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
    Native answer-list host: `417fa384f3250634bb71859fbc913453`.
    - `terendelev.trickster.react.seelah.watch/start/0` — Continue
 
-957. **Eliandra: Her own offering** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.ch5.self_offering","chapter":5,"day":118,"completed":true,"choices":[["start",0],["heart",2],["walked",0],["mine",0],["kneel",0],["free",0]]} -->
+958. **Eliandra: Her own offering** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.ch5.self_offering","chapter":5,"day":118,"completed":true,"choices":[["start",0],["heart",2],["walked",0],["mine",0],["kneel",0],["free",0]]} -->
    Scene `eliandra.trickster.ch5.self_offering`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You sent for me?"
    Need all: `trickster.ever`, `eliandra.met_ch5`, `eliandra.trickster.no_leave`, `trickster.now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.ch5.self_offering_mark`, `eliandra.trickster.leave_granted`, `eliandra.met_ch3`.
@@ -11272,7 +11276,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.self_offering/kneel/0` — Continue
    - `eliandra.trickster.ch5.self_offering/free/0` — [Help her up.]; records `eliandra.trickster.leave_granted`, `eliandra.trickster.cost.reward_returned`
 
-958. **Horzalah: Hold it like this** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.knife","chapter":5,"day":118,"completed":true,"choices":[["start",0],["hold",0],["take",1],["pass",0]]} -->
+959. **Horzalah: Hold it like this** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.knife","chapter":5,"day":118,"completed":true,"choices":[["start",0],["hold",0],["take",1],["pass",0]]} -->
    Scene `horzalah.trickster.beat.knife`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Show me how you do it."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.knife_lesson`, `horzalah.trickster.ally`.
@@ -11282,14 +11286,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.knife/take/1` — "I'll pass on the mark."
    - `horzalah.trickster.beat.knife/pass/0` — [Keep your hands pretty.]; records `horzalah.trickster.beat.knife_lesson`
 
-959. **Yaniel: Yaniel's comparison** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"household.pair.yaniel_areelu.commission","chapter":5,"day":118,"completed":true,"choices":[["start",0]]} -->
+960. **Yaniel: Yaniel's comparison** — Drezen; hub `yaniel.presence`. <!-- rrt-step {"scene":"household.pair.yaniel_areelu.commission","chapter":5,"day":118,"completed":true,"choices":[["start",0]]} -->
    Scene `household.pair.yaniel_areelu.commission`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "What do you want done about your stolen face?"
    Need all: `trickster`, `foresight.page_taken`, `yaniel.areelu_unmasked`, `yaniel.trickster.returned`, `yaniel.freed.latched`, `yaniel.present_now`; Blocked by: `yaniel.closed`, `yaniel.killed.latched`, `yaniel.trickster.left_free`, `household.pair.yaniel_areelu.commission.seen`, `trickster.failed`; Need one of: `yaniel.committed`, `yaniel.trickster.beat.areelu`.
    Actor must be physically available: `d914111e83e44194db99ab91d8c04632`.
    - `household.pair.yaniel_areelu.commission/start/0` — [Carry the comparison and her demand for an inspection.]; records `household.pair.yaniel_areelu.commission.seen`, `household.pair.yaniel_areelu.proof.ready`, `household.pair.yaniel_areelu.cost.yaniel_comparison`
 
-960. **Areelu: The borrowed face** — native dialogue listed below. <!-- rrt-step {"scene":"household.pair.yaniel_areelu.inspection","chapter":5,"day":118,"completed":true,"choices":[["start",1],["declined",0]]} -->
+961. **Areelu: The borrowed face** — native dialogue listed below. <!-- rrt-step {"scene":"household.pair.yaniel_areelu.inspection","chapter":5,"day":118,"completed":true,"choices":[["start",1],["declined",0]]} -->
    Scene `household.pair.yaniel_areelu.inspection`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Yaniel sent evidence. I brought it without borrowing her face."
    Need all: `trickster`, `foresight.page_taken`, `household.pair.yaniel_areelu.proof.ready`, `household.pair.yaniel_areelu.contact.open`, `yaniel.trickster.returned`, `yaniel.freed.latched`, `yaniel.present_now`; Blocked by: `yaniel.closed`, `yaniel.killed.latched`, `yaniel.trickster.left_free`, `areelu.closed`, `household.pair.yaniel_areelu.projector.destroyed`, `household.pair.yaniel_areelu.inspection.seen`, `household.pair.yaniel_areelu.commission.declined`, `trickster.failed`.
@@ -11298,13 +11302,13 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.yaniel_areelu.inspection/start/1` — "Forget it. Keep using what you took."
    - `household.pair.yaniel_areelu.inspection/declined/0` — [End the inspection.]; records `household.pair.yaniel_areelu.inspection.seen`, `household.pair.yaniel_areelu.inspection.declined`, `household.pair.yaniel_areelu.face.unanswered`
 
-961. **Mielarah: Back from the Wound** — rest delivery / Satchel: event (owner contact / rest). <!-- rrt-step {"scene":"mielarah.deck.wounded.return","chapter":5,"day":118,"completed":true,"choices":[["start",0],["home",0]]} -->
+962. **Mielarah: Back from the Wound** — rest delivery / Satchel: event (owner contact / rest). <!-- rrt-step {"scene":"mielarah.deck.wounded.return","chapter":5,"day":118,"completed":true,"choices":[["start",0],["home",0]]} -->
    Scene `mielarah.deck.wounded.return`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `mielarah.deck.wounded`, `mielarah.deck.wounded_joined`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.wounded_resolved`.
    - `mielarah.deck.wounded.return/start/0` — Continue
    - `mielarah.deck.wounded.return/home/0` — [Help her down the ladder.]; records `mielarah.deck.wounded_carried`, `mielarah.deck.wounded_resolved`
 
-962. **Elyanka: A man in grey** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"elyanka.trickster.beat.courier","chapter":5,"day":118,"completed":true,"choices":[["start",0],["message",0],["message2",0],["hungry",0]]} -->
+963. **Elyanka: A man in grey** — rest delivery / Satchel: letter (owner contact / rest). <!-- rrt-step {"scene":"elyanka.trickster.beat.courier","chapter":5,"day":118,"completed":true,"choices":[["start",0],["message",0],["message2",0],["hungry",0]]} -->
    Scene `elyanka.trickster.beat.courier`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.reachable_by_letter`; Blocked by: `elyanka.closed`, `elyanka.trickster.courier.come_back_hungry`, `elyanka.trickster.courier.ripening`, `elyanka.trickster.courier.silent`.
    - `elyanka.trickster.beat.courier/start/0` — [Listen.]
@@ -11312,7 +11316,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.beat.courier/message2/0` — [Send back] "Tell her: come back hungry."
    - `elyanka.trickster.beat.courier/hungry/0` — Continue; records `elyanka.trickster.courier.come_back_hungry`
 
-963. **Elyanka: Her Lady's table** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.table","chapter":5,"day":118,"completed":true,"choices":[["start",0],["welcome",0],["targona",0],["choose",2],["left",0]]} -->
+964. **Elyanka: Her Lady's table** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.table","chapter":5,"day":118,"completed":true,"choices":[["start",0],["welcome",0],["targona",0],["choose",2],["left",0]]} -->
    Scene `elyanka.trickster.beat.table`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `trickster.secret.elyanka_rites`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.table.sat`, `elyanka.trickster.table.kept_door`, `elyanka.trickster.table.left`.
    - `elyanka.trickster.beat.table/start/0` — Continue
@@ -11323,7 +11327,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 119
 
-964. **Hepzamirah: The broken horn** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_horn","chapter":5,"day":119,"completed":true,"choices":[["saw",0],["catch",1],["leave",0]]} -->
+965. **Hepzamirah: The broken horn** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_horn","chapter":5,"day":119,"completed":true,"choices":[["saw",0],["catch",1],["leave",0]]} -->
    Scene `hepzamirah.trickster.flesh.the_horn`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The smith says you asked for a saw."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.mirror`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11332,7 +11336,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.the_horn/catch/1` — "Leave it. It's yours. He wanted you to hate it."
    - `hepzamirah.trickster.flesh.the_horn/leave/0` — [Leave her with the rasp.]; records `hepzamirah.trickster.horn_kept`
 
-965. **Arueshalae: Before Threshold** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.the_eve","chapter":5,"day":119,"completed":true,"choices":[["start",0],["fear",0],["joke",0]]} -->
+966. **Arueshalae: Before Threshold** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.the_eve","chapter":5,"day":119,"completed":true,"choices":[["start",0],["fear",0],["joke",0]]} -->
    Scene `arueshalae.treatment.the_eve`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "When it comes, then."
    Need all: `trickster.ever`, `arueshalae.treatment.morning`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.the_eve`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -11342,7 +11346,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.the_eve/fear/0` — "Look for me. I'll be the one making a bad joke."; records `arueshalae.treatment.the_eve`
    - `arueshalae.treatment.the_eve/joke/0` — Continue
 
-966. **Mielarah: The Commander's place** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.the_place","chapter":5,"day":119,"completed":true,"choices":[["start",0],["brass",0],["measure",0],["stand",0]]} -->
+967. **Mielarah: The Commander's place** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.the_place","chapter":5,"day":119,"completed":true,"choices":[["start",0],["brass",0],["measure",0],["stand",0]]} -->
    Scene `mielarah.deck.the_place`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Why is your carpenter cutting up the quarterdeck?"
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.morning`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.the_place.arcade`, `mielarah.deck.the_place`.
@@ -11352,7 +11356,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.the_place/measure/0` — [Stand on the brass.]
    - `mielarah.deck.the_place/stand/0` — [Stay on it.]; records `mielarah.deck.the_place`
 
-967. **Shamira: One night alone** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.night_alone","chapter":5,"day":119,"completed":true,"choices":[["start",0],["court",0],["kneel",0],["private",1],["offered",0]]} -->
+968. **Shamira: One night alone** — Drezen; hub `shamira.presence`. <!-- rrt-step {"scene":"shamira.trickster.after.night_alone","chapter":5,"day":119,"completed":true,"choices":[["start",0],["court",0],["kneel",0],["private",1],["offered",0]]} -->
    Scene `shamira.trickster.after.night_alone`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "One night alone. You said I could ask."
    Need all: `trickster.ever`, `shamira.trickster.embodied`, `shamira.committed`, `shamira.trickster.throne_told`, `shamira.present_now`; Blocked by: `shamira.trickster.after.night_alone_awning`, `shamira.trickster.night_alone.asked`, `shamira.closed`, `shamira.trickster.cost.kept_captive`, `shamira.trickster.cast_out`.
@@ -11363,7 +11367,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `shamira.trickster.after.night_alone/private/1` — "No. I only wanted to hear you offer it."; records `shamira.trickster.night_alone.given_back`
    - `shamira.trickster.after.night_alone/offered/0` — [Stay on the steps with her a while.]
 
-968. **Jannah: Four days** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.kenabres","chapter":5,"day":119,"completed":true,"choices":[["open",0],["start",1],["before",0],["found",0],["laugh",0]]} -->
+969. **Jannah: Four days** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.kenabres","chapter":5,"day":119,"completed":true,"choices":[["open",0],["start",1],["before",0],["found",0],["laugh",0]]} -->
    Scene `jannah.circle.kenabres`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You used to laugh louder."
    Need all: `trickster.ever`, `jannah.circle.forms`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.kenabres`.
@@ -11374,7 +11378,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.kenabres/found/0` — "I'd like to hear it again one day. A real one."
    - `jannah.circle.kenabres/laugh/0` — [Leave her to her apple.]
 
-969. **Terendelev: What you are** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.what_are_you","chapter":5,"day":119,"completed":true,"choices":[["start",0],["cheat",1],["rules",0],["cards",0]]} -->
+970. **Terendelev: What you are** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.what_are_you","chapter":5,"day":119,"completed":true,"choices":[["start",0],["cheat",1],["rules",0],["cards",0]]} -->
    Scene `terendelev.trickster.watch.what_are_you`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You've been watching me all afternoon."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.what_are_you_awning`.
@@ -11384,14 +11388,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.what_are_you/rules/0` — Continue
    - `terendelev.trickster.watch.what_are_you/cards/0` — "I'll tell you. I'll probably laugh first."; records `terendelev.trickster.watch.what_you_are`
 
-970. **Thaberdine: Thaberdine's word** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.react.king_stone","chapter":5,"day":119,"completed":true,"choices":[["start",0]]} -->
+971. **Thaberdine: Thaberdine's word** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.react.king_stone","chapter":5,"day":119,"completed":true,"choices":[["start",0]]} -->
    Scene `eliandra.trickster.react.king_stone`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "Your Majesty. Anyone interesting in tonight?"
    Need all: `trickster.ever`, `eliandra.trickster.leave_granted`, `fool_king.tablet_brought`, `fool_king.available`, `eliandra.present_now`; Blocked by: `fool_king.gone`, `eliandra.closed`, `eliandra.attacked`, `eliandra.trickster.away`.
    Native answer-list host: `6dccfd39947ef4242a8afbe36b21a46c`.
    - `eliandra.trickster.react.king_stone/start/0` — Continue
 
-971. **Horzalah: Hers** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.ear","chapter":5,"day":119,"completed":true,"choices":[["start",1],["road",0],["ask",0],["flirt",0]]} -->
+972. **Horzalah: Hers** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.ear","chapter":5,"day":119,"completed":true,"choices":[["start",1],["road",0],["ask",0],["flirt",0]]} -->
    Scene `horzalah.trickster.beat.ear`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Stop staring at my head."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.ear_seen`, `horzalah.trickster.ally`.
@@ -11401,7 +11405,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.ear/ask/0` — "Only when you look at it like that."
    - `horzalah.trickster.beat.ear/flirt/0` — [Stand there for a while.]; records `horzalah.trickster.beat.ear_seen`
 
-972. **Minagho: Whose knife?** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"household.pair.herrax_minagho.reply.minagho","chapter":5,"day":119,"completed":true,"choices":[["start",1]]} -->
+973. **Minagho: Whose knife?** — Drezen; hub `minagho_chivarro.presence.minagho`. <!-- rrt-step {"scene":"household.pair.herrax_minagho.reply.minagho","chapter":5,"day":119,"completed":true,"choices":[["start",1]]} -->
    Scene `household.pair.herrax_minagho.reply.minagho`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: [The request against Chivarro.]
    Need all: `trickster`, `household.pair.herrax_minagho.ready`, `minagho.present_now`, `participant.minagho.available`, `household.pair.herrax_minagho.herrax_channel`, `household.pair.herrax_minagho.notice.sent`, `household.pair.herrax_minagho.target_current`, `minagho.dead`, `minagho_chivarro.presence.minagho.route_open`; Blocked by: `trickster.failed`, `herrax.closed`, `minachiv.closed`, `minagho_chivarro.trickster.declined_minagho`, `inhuman`, `minagho.epoch_redeparted`, `minagho.returned_actor_lost`, `household.pair.herrax_minagho.reply.seen`, `household.pair.herrax_minagho.notice.dismissed`, `minagho.dead`; Need one of: `minagho_chivarro.trickster.minagho_in`, `minagho_chivarro.trickster.collateral_delivered`; Block `minagho.dead` lifted by: `minagho_chivarro.trickster.returned_minagho`.
@@ -11410,7 +11414,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Rest allowance `household.protected`: 2 before another successful rest.
    - `household.pair.herrax_minagho.reply.minagho/start/1` — "I will escort the exchange and answer for either of you breaking it."; crusade Finances -200; records `household.pair.herrax_minagho.reply.seen`, `household.pair.herrax_minagho.settled`, `household.pair.herrax_minagho.herrax_order_withdrawn`, `household.pair.herrax_minagho.minagho_hunters_recalled`, `household.pair.herrax_minagho.cost.herrax_contract_yielded`, `household.pair.herrax_minagho.cost.minagho_revenge_yielded`, `household.pair.herrax_minagho.cost.commander_guarantor`, `household.pair.herrax_minagho.cost.escort_paid`, `household.friction.herrax.minagho.settled`
 
-973. **Elyanka: A box that pinches** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.fitting","chapter":5,"day":119,"completed":true,"choices":[["start",0],["her",2],["refuse",0]]} -->
+974. **Elyanka: A box that pinches** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.fitting","chapter":5,"day":119,"completed":true,"choices":[["start",0],["her",2],["refuse",0]]} -->
    Scene `elyanka.trickster.beat.fitting`; chapters 5–5 (only 5); wait at least 60h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.fitting.lay`, `elyanka.trickster.fitting.her_first`, `elyanka.trickster.fitting.refused`.
    - `elyanka.trickster.beat.fitting/start/0` — Continue
@@ -11419,7 +11423,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 120
 
-974. **Hepzamirah: The door** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.morning","chapter":5,"day":120,"completed":true,"choices":[["door",0],["door_horn",0],["door_confined",0],["city",0],["talk",0],["rules",0],["back",0]]} -->
+975. **Hepzamirah: The door** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.morning","chapter":5,"day":120,"completed":true,"choices":[["door",0],["door_horn",0],["door_confined",0],["city",0],["talk",0],["rules",0],["back",0]]} -->
    Scene `hepzamirah.trickster.bond.morning`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: "About last night."
    Need all: `trickster.ever`, `hepzamirah.committed`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11432,14 +11436,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.bond.morning/rules/0` — "Agreed. And my rule: you come back."
    - `hepzamirah.trickster.bond.morning/back/0` — [Take the cloak.]
 
-975. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.react.sosiel_morning","chapter":5,"day":120,"completed":true,"choices":[["start",0]]} -->
+976. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.react.sosiel_morning","chapter":5,"day":120,"completed":true,"choices":[["start",0]]} -->
    Scene `arueshalae.treatment.react.sosiel_morning`; chapters 5–5; wait at least 0h after the latest prerequisite; complete.
    Open: "About Arueshalae..."
    Need all: `arueshalae.treatment.morning`, `arueshalae.treatment.intake`, `arueshalae.treatment.night.warded`, `arueshalae.present_now`; Blocked by: `sosiel.dead`, `sosiel.kicked_out`, `arueshalae.changed`.
    Native answer-list host: `129b55b8b5d50974f84f7c607d894fd0`.
    - `arueshalae.treatment.react.sosiel_morning/start/0` — Continue
 
-976. **Mielarah: Accurate records** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.names","chapter":5,"day":120,"completed":true,"choices":[["start",0],["book",0],["column",0],["when",0],["last",1],["space",0],["last_page",0],["wrote",0]]} -->
+977. **Mielarah: Accurate records** — Drezen; hub `mielarah.presence`. <!-- rrt-step {"scene":"mielarah.deck.names","chapter":5,"day":120,"completed":true,"choices":[["start",0],["book",0],["column",0],["when",0],["last",1],["space",0],["last_page",0],["wrote",0]]} -->
    Scene `mielarah.deck.names`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "You wrote his name down. The boy under the scaffold."
    Need all: `trickster.ever`, `mielarah.trickster.contact`, `mielarah.deck.market`, `mielarah.present_now`; Blocked by: `mielarah.closed`, `mielarah.killed_at_colyphyr`, `mielarah.deck.names.arcade`, `mielarah.deck.names`.
@@ -11453,7 +11457,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `mielarah.deck.names/last_page/0` — [Take the pen and write your name.]; records `mielarah.deck.names`, `mielarah.deck.named`
    - `mielarah.deck.names/wrote/0` — [Leave her with the book.]
 
-977. **Jannah: The ford** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.ford","chapter":5,"day":120,"completed":true,"choices":[["open",0],["start",0],["hold",0],["and",0],["names",0],["why",0]]} -->
+978. **Jannah: The ford** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.ford","chapter":5,"day":120,"completed":true,"choices":[["open",0],["start",0],["hold",0],["and",0],["names",0],["why",0]]} -->
    Scene `jannah.circle.ford`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Tell me about the ford."
    Need all: `trickster.ever`, `jannah.trickster.cost.posting`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.ford`.
@@ -11465,7 +11469,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.ford/names/0` — "You'd won in the cell. Why come back at all?"
    - `jannah.circle.ford/why/0` — [Leave her to her grip.]
 
-978. **Terendelev: A letter to the mountains** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.letter","chapter":5,"day":120,"completed":true,"choices":[["start",0],["tell",1],["true",0],["watchline",0],["seal",0],["pass",0]]} -->
+979. **Terendelev: A letter to the mountains** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.letter","chapter":5,"day":120,"completed":true,"choices":[["start",0],["tell",1],["true",0],["watchline",0],["seal",0],["pass",0]]} -->
    Scene `terendelev.trickster.watch.letter`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Open: "Who are you writing to?"
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.letter_awning`.
@@ -11477,7 +11481,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.letter/seal/0` — [Leave her to her ink.]; Blocked by: `terendelev.trickster.watch.hal_refuge_delivery`
    - `terendelev.trickster.watch.letter/pass/0` — [Leave her to her ink.]
 
-979. **Eliandra: Two people on a wall** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.ch5.evening","chapter":5,"day":120,"completed":true,"choices":[["start",0],["ask",0],["first",0],["close",0]]} -->
+980. **Eliandra: Two people on a wall** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.ch5.evening","chapter":5,"day":120,"completed":true,"choices":[["start",0],["ask",0],["first",0],["close",0]]} -->
    Scene `eliandra.trickster.ch5.evening`; chapters 5–5 (only 5); wait at least 6h after the latest prerequisite; complete.
    Open: "You look as if you haven't slept since the basin."
    Need all: `trickster.ever`, `eliandra.met_ch5`, `eliandra.trickster.leave_granted`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.ch5.evening_mark`, `eliandra.committed`, `eliandra.trickster.declined`, `eliandra.trickster.drezen.evening`, `eliandra.met_ch3`.
@@ -11487,7 +11491,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.evening/first/0` — Continue
    - `eliandra.trickster.ch5.evening/close/0` — [Promise to walk with her.]; records `eliandra.trickster.drezen.evening`
 
-980. **Horzalah: The rest of the Abyss** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.threshold","chapter":5,"day":120,"completed":true,"choices":[["start",0],["come",0],["promise",0]]} -->
+981. **Horzalah: The rest of the Abyss** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.threshold","chapter":5,"day":120,"completed":true,"choices":[["start",0],["come",0],["promise",0]]} -->
    Scene `horzalah.trickster.beat.threshold`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The crusade marches on the Threshold soon."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.committed`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.threshold_heard`.
@@ -11496,7 +11500,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.threshold/come/0` — Continue
    - `horzalah.trickster.beat.threshold/promise/0` — "I'll come back."; records `horzalah.trickster.beat.threshold_heard`
 
-981. **Areelu: A usable trail** — native dialogue listed below. <!-- rrt-step {"scene":"household.pair.nidalynn_areelu.cell","chapter":5,"day":120,"completed":true,"choices":[["start",0],["erased",0]]} -->
+982. **Areelu: A usable trail** — native dialogue listed below. <!-- rrt-step {"scene":"household.pair.nidalynn_areelu.cell","chapter":5,"day":120,"completed":true,"choices":[["start",0],["erased",0]]} -->
    Scene `household.pair.nidalynn_areelu.cell`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Nidalynn remembers Windstep. Your field work may still lead hunters to its survivors."
    Need all: `trickster`, `household.pair.nidalynn_areelu.notice.carried`, `household.pair.nidalynn_areelu.cost.nidalynn_memory_given`, `trickster.now`; Blocked by: `trickster.failed`, `areelu.closed`, `areelu.epoch_unavailable`, `household.pair.nidalynn_areelu.projector_broken`, `household.pair.nidalynn_areelu.cell.seen`, `household.pair.nidalynn_areelu.notice.refused`, `crossroute.nidalynn.unavailable`, `engine.l12.commander_unreturned`.
@@ -11506,7 +11510,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nidalynn_areelu.cell/start/0` — [Perception] Find the pursuit slip before burning the route.; PASS SkillPerception DC 24 (Commander only); success → `erased`; failure → `incomplete`
    - `household.pair.nidalynn_areelu.cell/erased/0` — [Leave the ashes; carry back the cover.]; records `household.pair.nidalynn_areelu.cell.seen`, `household.pair.nidalynn_areelu.cell.chart_erased`, `household.pair.nidalynn_areelu.chart.original_burned`, `household.pair.nidalynn_areelu.chart.pursuit_slip_burned`, `household.pair.nidalynn_areelu.cost.areelu_field_notes_lost`, `household.pair.nidalynn_areelu.cost.commander_research_lost`
 
-982. **Elyanka: A master from Caliphas** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.master","chapter":5,"day":120,"completed":true,"choices":[["start",0],["courier",0],["master",0],["how",0],["her",0],["choice",1],["escort",0]]} -->
+983. **Elyanka: A master from Caliphas** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.master","chapter":5,"day":120,"completed":true,"choices":[["start",0],["courier",0],["master",0],["how",0],["her",0],["choice",1],["escort",0]]} -->
    Scene `elyanka.trickster.beat.master`; chapters 5–5 (only 5); wait at least 120h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.master.killed`, `elyanka.trickster.master.escorted`, `elyanka.trickster.master.hers`.
    - `elyanka.trickster.beat.master/start/0` — Continue; Need all: `elyanka.trickster.courier.come_back_hungry`
@@ -11517,7 +11521,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.beat.master/choice/1` — [Give him an escort] "He came under your oath. He leaves under mine. Twelve crusaders to the border."
    - `elyanka.trickster.beat.master/escort/0` — [Give the orders.]; records `elyanka.trickster.master.escorted`
 
-983. **Elyanka: A bottle older than she is** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.daeran_bottle","chapter":5,"day":120,"completed":true,"choices":[["start",0],["her",0],["pour",0],["verdict",0]]} -->
+984. **Elyanka: A bottle older than she is** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.daeran_bottle","chapter":5,"day":120,"completed":true,"choices":[["start",0],["her",0],["pour",0],["verdict",0]]} -->
    Scene `elyanka.trickster.beat.daeran_bottle`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.daeran_ally`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.daeran.bottle_tasted`.
    - `elyanka.trickster.beat.daeran_bottle/start/0` — Continue
@@ -11527,7 +11531,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 121
 
-984. **Hepzamirah: The archpriestess's call** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.the_call","chapter":5,"day":121,"completed":true,"choices":[["rite",0],["call",0],["if",0],["sworn",0]]} -->
+985. **Hepzamirah: The archpriestess's call** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.the_call","chapter":5,"day":121,"completed":true,"choices":[["rite",0],["call",0],["if",0],["sworn",0]]} -->
    Scene `hepzamirah.trickster.bond.the_call`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You were praying. Out loud."
    Need all: `trickster.ever`, `hepzamirah.committed`, `hepzamirah.trickster.bond.morning`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11537,7 +11541,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.bond.the_call/if/0` — [Swear] "When you call him, I'll be standing where he can see me."; records `hepzamirah.trickster.call_sworn`; Need all: `areelu.present_now`
    - `hepzamirah.trickster.bond.the_call/sworn/0` — [Leave it there.]
 
-985. **Arueshalae: A quarrel** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.first_quarrel","chapter":5,"day":121,"completed":true,"choices":[["start",0],["fear",0],["promise",0]]} -->
+986. **Arueshalae: A quarrel** — native dialogue listed below. <!-- rrt-step {"scene":"arueshalae.treatment.first_quarrel","chapter":5,"day":121,"completed":true,"choices":[["start",0],["fear",0],["promise",0]]} -->
    Scene `arueshalae.treatment.first_quarrel`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You're angry with me."
    Need all: `trickster.ever`, `arueshalae.treatment.morning`, `arueshalae.treatment.cure_works`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.first_quarrel`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -11547,7 +11551,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.first_quarrel/fear/0` — "I'll tell you. Before. Every time."; records `arueshalae.treatment.first_quarrel`
    - `arueshalae.treatment.first_quarrel/promise/0` — Continue; records `arueshalae.treatment.price_disclosed`
 
-986. **Jannah: Your part** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.your_part","chapter":5,"day":121,"completed":true,"choices":[["open",0],["start",3],["nothing",0]]} -->
+987. **Jannah: Your part** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.your_part","chapter":5,"day":121,"completed":true,"choices":[["open",0],["start",3],["nothing",0]]} -->
    Scene `jannah.circle.your_part`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look like you're about to ask me something."
    Need all: `trickster.ever`, `jannah.circle.houndheart`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.your_part`.
@@ -11556,7 +11560,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.your_part/start/3` — "I don't go over things at night."
    - `jannah.circle.your_part/nothing/0` — [Drink the gaol's terrible beer with her.]
 
-987. **Terendelev: Someone was listening** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.listener","chapter":5,"day":121,"completed":true,"choices":[["start",0],["heard",0],["shelves",0],["thanks",0],["elf",0]]} -->
+988. **Terendelev: Someone was listening** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.listener","chapter":5,"day":121,"completed":true,"choices":[["start",0],["heard",0],["shelves",0],["thanks",0],["elf",0]]} -->
    Scene `terendelev.trickster.watch.listener`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The Storyteller asked me to tell you something."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.trickster.voice.asked`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.listener_awning`, `storyteller.dead`.
@@ -11567,7 +11571,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.listener/thanks/0` — Continue
    - `terendelev.trickster.watch.listener/elf/0` — [Leave them to talk.]; records `terendelev.trickster.watch.storyteller_thanked`
 
-988. **Eliandra: The first mile** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.ch5.first_mile","chapter":5,"day":121,"completed":true,"choices":[["start",0],["gate",1],["tired",1],["road",0],["ask",0],["yes",0]]} -->
+989. **Eliandra: The first mile** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.ch5.first_mile","chapter":5,"day":121,"completed":true,"choices":[["start",0],["gate",1],["tired",1],["road",0],["ask",0],["yes",0]]} -->
    Scene `eliandra.trickster.ch5.first_mile`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Walk with you? Where?"
    Need all: `trickster.ever`, `eliandra.met_ch5`, `eliandra.trickster.leave_granted`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.ch5.first_mile_mark`, `eliandra.committed`, `eliandra.trickster.declined`, `eliandra.met_ch3`; Need one of: `eliandra.trickster.lovers.spoken`, `eliandra.trickster.observed`, `eliandra.trickster.flirted`, `eliandra.trickster.eyes_kissed`, `eliandra.trickster.vow_told`, `eliandra.trickster.remembrance`, `eliandra.trickster.sarkoris.told`, `eliandra.trickster.drezen.evening`.
@@ -11579,7 +11583,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.ch5.first_mile/ask/0` — [Either. Ask me every morning.] "Either. Both. Ask me every morning, and I'll give you a different answer every day."; records `eliandra.committed`; Need all: `trickster.now`
    - `eliandra.trickster.ch5.first_mile/yes/0` — [Walk back to the gate with her.]
 
-989. **Horzalah: The bow** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.ribbon","chapter":5,"day":121,"completed":true,"choices":[["start",0],["back",0],["tie",0],["tied",0]]} -->
+990. **Horzalah: The bow** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.ribbon","chapter":5,"day":121,"completed":true,"choices":[["start",0],["back",0],["tie",0],["tied",0]]} -->
    Scene `horzalah.trickster.beat.ribbon`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Teach me to tie that bow."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.chamber_seen`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.ribbon_tied`.
@@ -11589,7 +11593,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.ribbon/tie/0` — Continue
    - `horzalah.trickster.beat.ribbon/tied/0` — "Every morning?"; records `horzalah.trickster.beat.ribbon_tied`
 
-990. **Elyanka: Her Lady's mercy** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.wards","chapter":5,"day":121,"completed":true,"choices":[["start",0],["her",0],["explain",0],["explain2",0],["stop",0],["stop2",0]]} -->
+991. **Elyanka: Her Lady's mercy** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.wards","chapter":5,"day":121,"completed":true,"choices":[["start",0],["her",0],["explain",0],["explain2",0],["stop",0],["stop2",0]]} -->
    Scene `elyanka.trickster.beat.wards`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.wards.stopped`, `elyanka.trickster.wards.let`, `elyanka.trickster.wards.hopeless_only`.
    - `elyanka.trickster.beat.wards/start/0` — Continue
@@ -11601,7 +11605,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 122
 
-991. **Hepzamirah: Nobody follows** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.the_hunt","chapter":5,"day":122,"completed":true,"choices":[["pack",0],["pack_killed",2],["where",0],["go",0]]} -->
+992. **Hepzamirah: Nobody follows** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.the_hunt","chapter":5,"day":122,"completed":true,"choices":[["pack",0],["pack_killed",2],["where",0],["go",0]]} -->
    Scene `hepzamirah.trickster.bond.the_hunt`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're leaving."
    Need all: `trickster.ever`, `hepzamirah.committed`, `hepzamirah.trickster.bond.morning`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11611,7 +11615,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.bond.the_hunt/where/0` — [Let her go] "Five days. Bring me back something."; records `hepzamirah.trickster.let_go`
    - `hepzamirah.trickster.bond.the_hunt/go/0` — [Watch her go.]
 
-992. **Arueshalae: The second chair** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.the_second_chair","chapter":5,"day":122,"completed":true,"choices":[["start",0],["why",0],["sit",0]]} -->
+993. **Arueshalae: The second chair** — Drezen. <!-- rrt-step {"scene":"arueshalae.treatment.the_second_chair","chapter":5,"day":122,"completed":true,"choices":[["start",0],["why",0],["sit",0]]} -->
    Scene `arueshalae.treatment.the_second_chair`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You bought furniture?"
    Need all: `trickster.ever`, `arueshalae.committed`, `arueshalae.treatment.morning`, `arueshalae.present_now`; Blocked by: `arueshalae.closed`, `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.evil_recruited`, `arueshalae.treatment.the_second_chair`; Block `arueshalae_dead` lifted by: `arueshalae.trickster.returned`.
@@ -11621,7 +11625,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `arueshalae.treatment.the_second_chair/why/0` — [Sit in the chair.]; records `arueshalae.treatment.the_second_chair`
    - `arueshalae.treatment.the_second_chair/sit/0` — Continue
 
-993. **Jannah: The Houndhearts' camp** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.houndhearts_camp","chapter":5,"day":122,"completed":true,"choices":[["open",0],["road",0],["camp",0],["here",0],["beside",0],["circle",0],["after_beside",1],["end_post",0]]} -->
+994. **Jannah: The Houndhearts' camp** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.houndhearts_camp","chapter":5,"day":122,"completed":true,"choices":[["open",0],["road",0],["camp",0],["here",0],["beside",0],["circle",0],["after_beside",1],["end_post",0]]} -->
    Scene `jannah.circle.houndhearts_camp`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "Show me the place at Houndheart. We'll ride out together."
    Need all: `trickster.ever`, `jannah.circle.houndheart`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.houndhearts_camp`, `crossroute.seelah.unavailable`.
@@ -11635,7 +11639,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.houndhearts_camp/after_beside/1` — Continue; Need all: `jannah.committed`
    - `jannah.circle.houndhearts_camp/end_post/0` — [Take her back to Drezen.]
 
-994. **Terendelev: The dressing** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.morning","chapter":5,"day":122,"completed":true,"choices":[["start",0],["ask",0],["fear",0],["together",0],["end",0]]} -->
+995. **Terendelev: The dressing** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.morning","chapter":5,"day":122,"completed":true,"choices":[["start",0],["ask",0],["fear",0],["together",0],["end",0]]} -->
    Scene `terendelev.trickster.watch.morning`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're early."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.night.seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.morning_awning`.
@@ -11646,7 +11650,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.morning/together/0` — Continue
    - `terendelev.trickster.watch.morning/end/0` — [Finish dressing.]
 
-995. **Eliandra: The shrine's last night** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.visit.star_heart","chapter":5,"day":122,"completed":true,"choices":[["start",0],["walk_back",0],["heart",0],["her",1],["look_up",0],["want",0],["robes",0],["wrist",0],["learn",0],["charts",0],["eliandra.trickster.visit.star_heart.explicit.1",0],["morning",0],["katair",0],["answer",1],["answer_self",0],["wrong",0],["end",0]]} -->
+996. **Eliandra: The shrine's last night** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.visit.star_heart","chapter":5,"day":122,"completed":true,"choices":[["start",0],["walk_back",0],["heart",0],["her",1],["look_up",0],["want",0],["robes",0],["wrist",0],["learn",0],["charts",0],["eliandra.trickster.visit.star_heart.explicit.1",0],["morning",0],["katair",0],["answer",1],["answer_self",0],["wrong",0],["end",0]]} -->
    Scene `eliandra.trickster.visit.star_heart`; chapters 5–5 (only 5); wait at least 12h after the latest prerequisite; complete.
    Open: "Is the heart still open?"
    Need all: `trickster.ever`, `eliandra.met_ch5`, `eliandra.committed`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.visit.star_heart_mark`, `eliandra.trickster.heart_seen`, `eliandra.met_ch3`.
@@ -11669,7 +11673,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.visit.star_heart/wrong/0` — "The column still has its priestess."
    - `eliandra.trickster.visit.star_heart/end/0` — [Help her carry them out.]; records `eliandra.trickster.heart_seen`, `eliandra.trickster.charts`
 
-996. **Horzalah: In the street** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.spit","chapter":5,"day":122,"completed":true,"choices":[["start",0],["her",0],["backed",0],["backed2",0]]} -->
+997. **Horzalah: In the street** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.spit","chapter":5,"day":122,"completed":true,"choices":[["start",0],["her",0],["backed",0],["backed2",0]]} -->
    Scene `horzalah.trickster.beat.spit`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Open: "What happened here?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.crusader_seen`.
@@ -11679,7 +11683,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.spit/backed/0` — Continue
    - `horzalah.trickster.beat.spit/backed2/0` — [Don't ask.]; records `horzalah.trickster.beat.crusader_seen`
 
-997. **Nidalynn: The cover without the road** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"household.pair.nidalynn_areelu.receipt.chosen","chapter":5,"day":122,"completed":true,"choices":[["start",0],["inspected",0]]} -->
+998. **Nidalynn: The cover without the road** — Drezen; hub `nidalynn.presence.chosen`. <!-- rrt-step {"scene":"household.pair.nidalynn_areelu.receipt.chosen","chapter":5,"day":122,"completed":true,"choices":[["start",0],["inspected",0]]} -->
    Scene `household.pair.nidalynn_areelu.receipt.chosen`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Here is what remains of the chart."
    Need all: `trickster`, `nidalynn.present_now`, `nidalynn.trickster.form_chosen`, `household.pair.nidalynn_areelu.cell.chart_erased`, `household.pair.nidalynn_areelu.chart.original_burned`, `household.pair.nidalynn_areelu.chart.pursuit_slip_burned`, `household.pair.nidalynn_areelu.cost.commander_research_lost`, `nidalynn.presence.route_open`, `trickster.now`; Blocked by: `trickster.failed`, `nidalynn.closed`, `nidalynn.trickster.left_with_it`, `nidalynn.epoch_unavailable`, `household.pair.nidalynn_areelu.receipt.seen`, `engine.l12.commander_unreturned`.
@@ -11689,7 +11693,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `household.pair.nidalynn_areelu.receipt.chosen/start/0` — [Show the cover and describe the destruction of the original and pursuit slip.]
    - `household.pair.nidalynn_areelu.receipt.chosen/inspected/0` — [Leave the inspected cover with her.]; records `household.pair.nidalynn_areelu.receipt.seen`, `household.pair.nidalynn_areelu.accounted`, `household.pair.nidalynn_areelu.cost.nidalynn_answer_heard`, `household.pair.nidalynn_areelu.no_absolution`
 
-998. **Elyanka: The Tyrant's seals** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.tyrant","chapter":5,"day":122,"completed":true,"choices":[["start",0],["map",1],["talk",0],["choice",0],["kept",0]]} -->
+999. **Elyanka: The Tyrant's seals** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.tyrant","chapter":5,"day":122,"completed":true,"choices":[["start",0],["map",1],["talk",0],["choice",0],["kept",0]]} -->
    Scene `elyanka.trickster.beat.tyrant`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.tyrant.kept`, `elyanka.trickster.tyrant.lastwall_warned`, `elyanka.trickster.tyrant.told_her`.
    - `elyanka.trickster.beat.tyrant/start/0` — Continue
@@ -11698,7 +11702,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.beat.tyrant/choice/0` — [Remember every word. Say nothing. Tell no one yet.]
    - `elyanka.trickster.beat.tyrant/kept/0` — [Save it.]; records `elyanka.trickster.tyrant.kept`
 
-999. **Elyanka: Six sisters** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.sisters","chapter":5,"day":122,"completed":true,"choices":[["start",0],["case",0],["after",0],["what",0]]} -->
+1000. **Elyanka: Six sisters** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.sisters","chapter":5,"day":122,"completed":true,"choices":[["start",0],["case",0],["after",0],["what",0]]} -->
    Scene `elyanka.trickster.beat.sisters`; chapters 5–5 (only 5); wait at least 96h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.sisters.asked`, `elyanka.trickster.sisters.let_be`.
    - `elyanka.trickster.beat.sisters/start/0` — Continue
@@ -11708,7 +11712,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 123
 
-1000. **Jannah: One question** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.one_question","chapter":5,"day":123,"completed":true,"choices":[["open",0],["start",2],["question",0],["told",0],["paper",0]]} -->
+1001. **Jannah: One question** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.one_question","chapter":5,"day":123,"completed":true,"choices":[["open",0],["start",2],["question",0],["told",0],["paper",0]]} -->
    Scene `jannah.circle.one_question`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Someone's been down here. There's a second stool."
    Need all: `trickster.ever`, `jannah.trickster.returned`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.one_question`, `crossroute.irabeth.unavailable`.
@@ -11719,7 +11723,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.one_question/told/0` — "Why the blank paper?"
    - `jannah.circle.one_question/paper/0` — [Leave her with the paper.]
 
-1001. **Terendelev: The north turret: a report** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.letter.watch_report","chapter":5,"day":123,"completed":true,"choices":[["start",0],["more",0]]} -->
+1002. **Terendelev: The north turret: a report** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.letter.watch_report","chapter":5,"day":123,"completed":true,"choices":[["start",0],["more",0]]} -->
    Scene `terendelev.trickster.letter.watch_report`; chapters 5–5 (only 5); wait at least 96h after the latest prerequisite; complete.
    Open: "Let me read your watch report."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.night.seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.letter.watch_report_awning`.
@@ -11727,14 +11731,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.letter.watch_report/start/0` — Continue
    - `terendelev.trickster.letter.watch_report/more/0` — [Fold the letter into your coat.]
 
-1002. **Ulbrig: Ulbrig's word** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.react.ulbrig_ordinary","chapter":5,"day":123,"completed":true,"choices":[["start",0]]} -->
+1003. **Ulbrig: Ulbrig's word** — native dialogue listed below. <!-- rrt-step {"scene":"eliandra.trickster.react.ulbrig_ordinary","chapter":5,"day":123,"completed":true,"choices":[["start",0]]} -->
    Scene `eliandra.trickster.react.ulbrig_ordinary`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "You look like you've heard something, Ulbrig."
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `ulbrig.in_party`, `eliandra.present_now`; Blocked by: `ulbrig.dead`, `ulbrig.kicked_out`, `eliandra.closed`, `eliandra.trickster.cost.lights_given`, `eliandra.attacked`, `eliandra.trickster.away`.
    Native answer-list host: `0a50c9c878844ed4a69b8d6131304c5e`.
    - `eliandra.trickster.react.ulbrig_ordinary/start/0` — Continue
 
-1003. **Horzalah: Bare** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.bare","chapter":5,"day":123,"completed":true,"choices":[["start",0],["why",0],["end",0],["end_dresser",0],["end_ribbon",0]]} -->
+1004. **Horzalah: Bare** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.bare","chapter":5,"day":123,"completed":true,"choices":[["start",0],["why",0],["end",0],["end_dresser",0],["end_ribbon",0]]} -->
    Scene `horzalah.trickster.beat.bare`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Open: "You're not wearing the collar."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.chamber_seen`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.collar_bare`.
@@ -11745,7 +11749,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.bare/end_dresser/0` — Continue; Need all: `horzalah.trickster.beat.ribbon_tied`
    - `horzalah.trickster.beat.bare/end_ribbon/0` — [Tell them.]; records `horzalah.trickster.beat.collar_bare`
 
-1004. **Elyanka: The stone they raised** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.grave","chapter":5,"day":123,"completed":true,"choices":[["start",0],["stone",1],["down",0]]} -->
+1005. **Elyanka: The stone they raised** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.grave","chapter":5,"day":123,"completed":true,"choices":[["start",0],["stone",1],["down",0]]} -->
    Scene `elyanka.trickster.beat.grave`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.grave.lay`, `elyanka.trickster.grave.stone_down`, `elyanka.trickster.grave.stone_kept`.
    - `elyanka.trickster.beat.grave/start/0` — Continue
@@ -11754,7 +11758,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 124
 
-1005. **Dorgelinda: Cold counts** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.cold_counts","chapter":5,"day":124,"completed":true,"choices":[["start",1],["stand",0]]} -->
+1006. **Dorgelinda: Cold counts** — Drezen. <!-- rrt-step {"scene":"dorgelinda.ledger.cold_counts","chapter":5,"day":124,"completed":true,"choices":[["start",1],["stand",0]]} -->
    Scene `dorgelinda.ledger.cold_counts`; chapters 5–5 (only 5); wait at least 168h after the latest prerequisite; complete.
    Open: "Line thirty-one, Quartermaster?"
    Need all: `trickster.ever`, `dorgelinda.ledger.quarrel_cold`, `dorgelinda.present_now`; Blocked by: `dorgelinda.closed`, `dorgelinda.ledger.cold_counts`, `dorgelinda.ledger.quarrel_mended`.
@@ -11763,7 +11767,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `dorgelinda.ledger.cold_counts/start/1` — [Sign for your kit and go. Let it stand.]
    - `dorgelinda.ledger.cold_counts/stand/0` — [Go.]; records `dorgelinda.ledger.quarrel_unmended`
 
-1006. **Jannah: Yielding the circle** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.yielding_the_circle","chapter":5,"day":124,"completed":true,"choices":[["open",1],["start_one",0],["warn",0],["explain",1],["not",0]]} -->
+1007. **Jannah: Yielding the circle** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.yielding_the_circle","chapter":5,"day":124,"completed":true,"choices":[["open",1],["start_one",0],["warn",0],["explain",1],["not",0]]} -->
    Scene `jannah.circle.yielding_the_circle`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "The muster's in an hour."
    Need all: `trickster.ever`, `jannah.committed`, `jannah.trickster.bout.commander_first`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.yielding_the_circle`, `jannah.trickster.cost.public_yield`.
@@ -11774,7 +11778,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.yielding_the_circle/explain/1` — "You're right. I won't."
    - `jannah.circle.yielding_the_circle/not/0` — [Leave her with her notches.]
 
-1007. **Terendelev: The Wound's weather** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.war_table","chapter":5,"day":124,"completed":true,"choices":[["start",0],["feel",0],["cost",2],["no",0]]} -->
+1008. **Terendelev: The Wound's weather** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.war_table","chapter":5,"day":124,"completed":true,"choices":[["start",0],["feel",0],["cost",2],["no",0]]} -->
    Scene `terendelev.trickster.watch.war_table`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You wanted to see the war table."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.trickster.watch.proof_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.war_table_awning`.
@@ -11784,7 +11788,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.war_table/cost/2` — "No. You're not a map, and I won't use you as one."; records `terendelev.trickster.watch.not_a_map`
    - `terendelev.trickster.watch.war_table/no/0` — [Walk her out of the war room.]
 
-1008. **Eliandra: A city with walls** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.city","chapter":5,"day":124,"completed":true,"choices":[["start",0],["others",0],["ask",0],["dispatches",0],["end",0]]} -->
+1009. **Eliandra: A city with walls** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.city","chapter":5,"day":124,"completed":true,"choices":[["start",0],["others",0],["ask",0],["dispatches",0],["end",0]]} -->
    Scene `eliandra.trickster.drezen.city`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "How are you finding Drezen?"
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.city_mark`, `eliandra.trickster.drezen.first_question`, `eliandra.met_ch3`.
@@ -11795,7 +11799,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.city/dispatches/0` — "I'll save you the Council's next letter."
    - `eliandra.trickster.drezen.city/end/0` — [Leave her to her chart.]
 
-1009. **Horzalah: Thin** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.hunger","chapter":5,"day":124,"completed":true,"choices":[["start",2],["food",0],["eat",0],["grease",0],["tomorrow",0]]} -->
+1010. **Horzalah: Thin** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.hunger","chapter":5,"day":124,"completed":true,"choices":[["start",2],["food",0],["eat",0],["grease",0],["tomorrow",0]]} -->
    Scene `horzalah.trickster.beat.hunger`; chapters 5–5 (only 5); wait at least 18h after the latest prerequisite; complete.
    Open: "When did you last eat?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.fed`.
@@ -11806,14 +11810,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `horzalah.trickster.beat.hunger/grease/0` — "Same time tomorrow?"
    - `horzalah.trickster.beat.hunger/tomorrow/0` — [Promise to look at the street.]; records `horzalah.trickster.beat.fed`
 
-1010. **Elyanka: Where they lock the shutters** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.ustalav","chapter":5,"day":124,"completed":true,"choices":[["start",0],["road",1],["promise",0]]} -->
+1011. **Elyanka: Where they lock the shutters** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.ustalav","chapter":5,"day":124,"completed":true,"choices":[["start",0],["road",1],["promise",0]]} -->
    Scene `elyanka.trickster.beat.ustalav`; chapters 5–5 (only 5); wait at least 84h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.ustalav.promised`, `elyanka.trickster.ustalav.refused`, `elyanka.trickster.ustalav.woods`.
    - `elyanka.trickster.beat.ustalav/start/0` — Continue
    - `elyanka.trickster.beat.ustalav/road/1` — "I'll see it one day."
    - `elyanka.trickster.beat.ustalav/promise/0` — [Look south with her until the watch changes.]; records `elyanka.trickster.ustalav.promised`
 
-1011. **Elyanka: The collector at night** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.night","chapter":5,"day":124,"completed":true,"choices":[["start",0],["feign",0],["feign2",0]]} -->
+1012. **Elyanka: The collector at night** — rest delivery / Satchel: visit (Drezen). <!-- rrt-step {"scene":"elyanka.trickster.beat.night","chapter":5,"day":124,"completed":true,"choices":[["start",0],["feign",0],["feign2",0]]} -->
    Scene `elyanka.trickster.beat.night`; chapters 5–5 (only 5); wait at least 84h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.bier_seen`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.night.woke`, `elyanka.trickster.night.feigned`.
    - `elyanka.trickster.beat.night/start/0` — [Keep your eyes shut and your breathing slow.]
@@ -11822,7 +11826,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 125
 
-1012. **Jannah: Eyes open** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.eyes_open","chapter":5,"day":125,"completed":true,"choices":[["open",0],["start",0],["down",0],["hard",0],["still",0],["jannah.circle.eyes_open.explicit.1",0],["future",0],["end",0]]} -->
+1013. **Jannah: Eyes open** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.eyes_open","chapter":5,"day":125,"completed":true,"choices":[["open",0],["start",0],["down",0],["hard",0],["still",0],["jannah.circle.eyes_open.explicit.1",0],["future",0],["end",0]]} -->
    Scene `jannah.circle.eyes_open`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You said you had another lesson for me tonight."
    Need all: `trickster.ever`, `jannah.trickster.circle_night`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.eyes_open`.
@@ -11836,7 +11840,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.eyes_open/future/0` — "I'll come."
    - `jannah.circle.eyes_open/end/0` — [Stay in the chalk.]
 
-1013. **Terendelev: The ribbon-seller** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.refugees","chapter":5,"day":125,"completed":true,"choices":[["start",0],["old",0],["choice",0],["decide",0],["crowd",0],["after",0]]} -->
+1014. **Terendelev: The ribbon-seller** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.refugees","chapter":5,"day":125,"completed":true,"choices":[["start",0],["old",0],["choice",0],["decide",0],["crowd",0],["after",0]]} -->
    Scene `terendelev.trickster.watch.refugees`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There's a crowd round your crate."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.trickster.watch.kenabres_told`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.refugees_awning`.
@@ -11848,7 +11852,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.refugees/crowd/0` — Continue
    - `terendelev.trickster.watch.refugees/after/0` — [Sit down on the cobbles beside her crate.]; records `terendelev.trickster.watch.known_to_kenabres`
 
-1014. **Eliandra: The stone under the cloth** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.stone","chapter":5,"day":125,"completed":true,"choices":[["start",0],["truth",0],["choice",0],["home",0]]} -->
+1015. **Eliandra: The stone under the cloth** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.stone","chapter":5,"day":125,"completed":true,"choices":[["start",0],["truth",0],["choice",0],["home",0]]} -->
    Scene `eliandra.trickster.drezen.stone`; chapters 5–5 (only 5); wait at least 0h after the latest prerequisite; complete.
    Open: "You've been looking at the King's stone."
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `fool_king.tablet_brought`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.stone_seen`, `eliandra.met_ch3`.
@@ -11858,7 +11862,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.stone/choice/0` — "When the war's done, I'll carry it back myself. The King can come and drink at the cairn."; records `eliandra.trickster.drezen.stone_seen`, `eliandra.trickster.drezen.stone_home`
    - `eliandra.trickster.drezen.stone/home/0` — [Leave the stone to its cloth.]
 
-1015. **Horzalah: One of thousands** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.thousands","chapter":5,"day":125,"completed":true,"choices":[["start",1],["stand_out",0],["end",0]]} -->
+1016. **Horzalah: One of thousands** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.thousands","chapter":5,"day":125,"completed":true,"choices":[["start",1],["stand_out",0],["end",0]]} -->
    Scene `horzalah.trickster.beat.thousands`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "How many brothers and sisters do you have?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.beat.father_heard`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.thousands_heard`, `horzalah.trickster.ally`.
@@ -11869,7 +11873,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 126
 
-1016. **Jannah: The fourth of the League** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.curl","chapter":5,"day":126,"completed":true,"choices":[["open",0],["start",0],["camp",0],["did",1],["which_home",0],["room",0]]} -->
+1017. **Jannah: The fourth of the League** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.curl","chapter":5,"day":126,"completed":true,"choices":[["open",0],["start",0],["camp",0],["did",1],["which_home",0],["room",0]]} -->
    Scene `jannah.circle.curl`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You never talk about Curl."
    Need all: `trickster.ever`, `jannah.circle.houndheart`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.curl`, `crossroute.seelah.unavailable`, `crossroute.arsinoe.unavailable`.
@@ -11881,7 +11885,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.curl/which_home/0` — "Keep him facing the room."
    - `jannah.circle.curl/room/0` — [Leave her with the League.]
 
-1017. **Terendelev: The north turret: a second report** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.letter.second_report","chapter":5,"day":126,"completed":true,"choices":[["start",0],["end",0]]} -->
+1018. **Terendelev: The north turret: a second report** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.letter.second_report","chapter":5,"day":126,"completed":true,"choices":[["start",0],["end",0]]} -->
    Scene `terendelev.trickster.letter.second_report`; chapters 5–5 (only 5); wait at least 192h after the latest prerequisite; complete.
    Open: "You have another report for me?"
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.night.seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.letter.second_report_awning`.
@@ -11889,7 +11893,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.letter.second_report/start/0` — Continue
    - `terendelev.trickster.letter.second_report/end/0` — [Read it again.]
 
-1018. **Eliandra: One wound at a time** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.ordinary","chapter":5,"day":126,"completed":true,"choices":[["start",0],["shrine",0],["choice",0],["regret",0],["end",0]]} -->
+1019. **Eliandra: One wound at a time** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.ordinary","chapter":5,"day":126,"completed":true,"choices":[["start",0],["shrine",0],["choice",0],["regret",0],["end",0]]} -->
    Scene `eliandra.trickster.drezen.ordinary`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You look exhausted. What happened?"
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.trickster.cost.reward_returned`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.ordinary_mark`, `eliandra.trickster.drezen.ordinary`, `eliandra.met_ch3`.
@@ -11900,7 +11904,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.ordinary/regret/0` — Continue
    - `eliandra.trickster.drezen.ordinary/end/0` — [Leave her to her hour.]; records `eliandra.trickster.drezen.ordinary`
 
-1019. **Horzalah: Her cell** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.labyrinth","chapter":5,"day":126,"completed":true,"choices":[["start",0],["long",0],["jailers",0],["now",0]]} -->
+1020. **Horzalah: Her cell** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.labyrinth","chapter":5,"day":126,"completed":true,"choices":[["start",0],["long",0],["jailers",0],["now",0]]} -->
    Scene `horzalah.trickster.beat.labyrinth`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I've walked the Ivory Labyrinth."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.beat.sister_heard`, `baphomet.parley.latched`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.labyrinth_heard`.
@@ -11912,7 +11916,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 127
 
-1020. **Hepzamirah: Something you will not like** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.the_eye","chapter":5,"day":127,"completed":true,"choices":[["home",1],["eye",0],["seized",0],["joke",0],["rent_eye",0],["kept",0]]} -->
+1021. **Hepzamirah: Something you will not like** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.the_eye","chapter":5,"day":127,"completed":true,"choices":[["home",1],["eye",0],["seized",0],["joke",0],["rent_eye",0],["kept",0]]} -->
    Scene `hepzamirah.trickster.bond.the_eye`; chapters 5–5 (only 5); wait at least 120h after the latest prerequisite; complete.
    Open: "You're back."
    Need all: `trickster.ever`, `hepzamirah.committed`, `hepzamirah.trickster.bond.the_hunt`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11924,7 +11928,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.bond.the_eye/rent_eye/0` — [Keep it] "On the shelf. Facing the door."; records `hepzamirah.trickster.eye_kept`
    - `hepzamirah.trickster.bond.the_eye/kept/0` — [Take the jar.]
 
-1021. **Jannah: The ritual** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_ritual","chapter":5,"day":127,"completed":true,"choices":[["open",0],["start",0],["cage",0],["waiting",0],["remember",0]]} -->
+1022. **Jannah: The ritual** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_ritual","chapter":5,"day":127,"completed":true,"choices":[["open",0],["start",0],["cage",0],["waiting",0],["remember",0]]} -->
    Scene `jannah.circle.the_ritual`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You were shaking on the wall. Before."
    Need all: `trickster.ever`, `jannah.circle.walls`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.the_ritual`.
@@ -11935,7 +11939,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.the_ritual/waiting/0` — "You moved. Remember that part."
    - `jannah.circle.the_ritual/remember/0` — [Leave the lamp turned up.]
 
-1022. **Terendelev: Why she came down** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.mountains","chapter":5,"day":127,"completed":true,"choices":[["start",0],["wound",0],["regret",0],["kenabres",0],["now",0],["such",0]]} -->
+1023. **Terendelev: Why she came down** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.mountains","chapter":5,"day":127,"completed":true,"choices":[["start",0],["wound",0],["regret",0],["kenabres",0],["now",0],["such",0]]} -->
    Scene `terendelev.trickster.watch.mountains`; chapters 5–5 (only 5); wait at least 36h after the latest prerequisite; complete.
    Open: "Where did you live, before Kenabres?"
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.mountains_awning`.
@@ -11947,7 +11951,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.mountains/now/0` — [Flirt] "Such as?"; records `terendelev.trickster.watch.mountains`
    - `terendelev.trickster.watch.mountains/such/0` — [Hold her gaze.]
 
-1023. **Eliandra: A name on a tombstone** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.katair","chapter":5,"day":127,"completed":true,"choices":[["start",0],["stone_tree",0],["stop",1],["hers",0],["looks",0],["her",1],["chose_you",0],["end",0]]} -->
+1024. **Eliandra: A name on a tombstone** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.katair","chapter":5,"day":127,"completed":true,"choices":[["start",0],["stone_tree",0],["stop",1],["hers",0],["looks",0],["her",1],["chose_you",0],["end",0]]} -->
    Scene `eliandra.trickster.drezen.katair`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Katair wants a word with me?"
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.katair_mark`, `eliandra.trickster.drezen.katair_grave`, `eliandra.met_ch3`.
@@ -11961,7 +11965,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.katair/chose_you/0` — "I won't."
    - `eliandra.trickster.drezen.katair/end/0` — [Stay with her.]; records `eliandra.trickster.drezen.katair_grave`
 
-1024. **Horzalah: What you were** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.ramparts","chapter":5,"day":127,"completed":true,"choices":[["start",0],["ask",0],["nobody",0],["end",0],["take",0]]} -->
+1025. **Horzalah: What you were** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.ramparts","chapter":5,"day":127,"completed":true,"choices":[["start",0],["ask",0],["nobody",0],["end",0],["take",0]]} -->
    Scene `horzalah.trickster.beat.ramparts`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Walk the walls with me tonight."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.committed`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.ramparts_walked`.
@@ -11974,7 +11978,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 128
 
-1025. **Hepzamirah: Before the Threshold** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.eve","chapter":5,"day":128,"completed":true,"choices":[["eve",1],["eve_sworn",0],["soul",0],["again",0],["last",0]]} -->
+1026. **Hepzamirah: Before the Threshold** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.bond.eve","chapter":5,"day":128,"completed":true,"choices":[["eve",1],["eve_sworn",0],["soul",0],["again",0],["last",0]]} -->
    Scene `hepzamirah.trickster.bond.eve`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "When we march."
    Need all: `trickster.ever`, `hepzamirah.committed`, `hepzamirah.trickster.bond.morning`, `hepzamirah.present_now`, `areelu.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Need one of: `hepzamirah.trickster.bond.the_eye`, `hepzamirah.trickster.bond.the_call`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -11985,7 +11989,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.bond.eve/again/0` — Continue; records `hepzamirah.trickster.eve_promise`; Need all: `areelu.present_now`
    - `hepzamirah.trickster.bond.eve/last/0` — [Leave her keeping watch.]
 
-1026. **Jannah: The old man** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_old_man","chapter":5,"day":128,"completed":true,"choices":[["open",0],["start",0],["salle",0],["keep",0],["now",0],["again",0]]} -->
+1027. **Jannah: The old man** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_old_man","chapter":5,"day":128,"completed":true,"choices":[["open",0],["start",0],["salle",0],["keep",0],["now",0],["again",0]]} -->
    Scene `jannah.circle.the_old_man`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Tell me about your master."
    Need all: `trickster.ever`, `jannah.circle.forms`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.the_old_man`.
@@ -11997,7 +12001,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.the_old_man/now/0` — "Again, then."
    - `jannah.circle.the_old_man/again/0` — [Get up.]
 
-1027. **Terendelev: At the gate** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.at_the_gate","chapter":5,"day":128,"completed":true,"choices":[["start",0],["look",1],["down",0],["angry",0],["war",0]]} -->
+1028. **Terendelev: At the gate** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.at_the_gate","chapter":5,"day":128,"completed":true,"choices":[["start",0],["look",1],["down",0],["angry",0],["war",0]]} -->
    Scene `terendelev.trickster.watch.at_the_gate`; chapters 5–5 (only 5); wait at least 60h after the latest prerequisite; complete.
    Open: "Walk with me to the citadel."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.trickster.dressing`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.at_the_gate_awning`.
@@ -12008,7 +12012,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.at_the_gate/angry/0` — "I can't promise that. It's a war."; records `terendelev.trickster.watch.quarrel`
    - `terendelev.trickster.watch.at_the_gate/war/0` — [Let her help you up.]
 
-1028. **Eliandra: What she saw at Threshold** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.threshold","chapter":5,"day":128,"completed":true,"choices":[["start",0],["nobody",0],["going",1],["sighted",0],["end",0]]} -->
+1029. **Eliandra: What she saw at Threshold** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.threshold","chapter":5,"day":128,"completed":true,"choices":[["start",0],["nobody",0],["going",1],["sighted",0],["end",0]]} -->
    Scene `eliandra.trickster.drezen.threshold`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You've been to Threshold, haven't you? Before the Wound."
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.threshold_mark`, `eliandra.trickster.drezen.threshold`, `eliandra.met_ch3`, `crossroute.areelu.unavailable`.
@@ -12019,7 +12023,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.threshold/sighted/0` — "I'll look."
    - `eliandra.trickster.drezen.threshold/end/0` — [Promise her.]; records `eliandra.trickster.drezen.threshold`
 
-1029. **Horzalah: Wear a hat** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.hat","chapter":5,"day":128,"completed":true,"choices":[["start",1],["dresser",0],["fitted",0]]} -->
+1030. **Horzalah: Wear a hat** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.hat","chapter":5,"day":128,"completed":true,"choices":[["start",1],["dresser",0],["fitted",0]]} -->
    Scene `horzalah.trickster.beat.hat`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "I bought a hat."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.hat_worn`, `horzalah.trickster.ally`.
@@ -12030,7 +12034,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 129
 
-1030. **Hepzamirah: Stock that bit** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_market","chapter":5,"day":129,"completed":true,"choices":[["gate",0],["woman",0],["hep",0],["swing",0],["swing_say",0]]} -->
+1031. **Hepzamirah: Stock that bit** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_market","chapter":5,"day":129,"completed":true,"choices":[["gate",0],["woman",0],["hep",0],["swing",0],["swing_say",0]]} -->
    Scene `hepzamirah.trickster.flesh.the_market`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "There's a woman at the gate asking for you."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -12041,7 +12045,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.the_market/swing/0` — Continue
    - `hepzamirah.trickster.flesh.the_market/swing_say/0` — [Leave her with the paddle.]; crusade Finances -150; records `hepzamirah.trickster.market_strike`
 
-1031. **Jannah: Again** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.recruits","chapter":5,"day":129,"completed":true,"choices":[["open",0],["start",1],["how",0],["good",0]]} -->
+1032. **Jannah: Again** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.recruits","chapter":5,"day":129,"completed":true,"choices":[["open",0],["start",1],["how",0],["good",0]]} -->
    Scene `jannah.circle.recruits`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "I hear you've been drilling the Watch recruits."
    Need all: `trickster.ever`, `jannah.committed`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.recruits`.
@@ -12051,7 +12055,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.recruits/how/0` — "You're good at this."
    - `jannah.circle.recruits/good/0` — [Watch the drill.]
 
-1032. **Terendelev: The prayer that will not come** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.faith","chapter":5,"day":129,"completed":true,"choices":[["start",1],["why",0],["nothing",0]]} -->
+1033. **Terendelev: The prayer that will not come** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.faith","chapter":5,"day":129,"completed":true,"choices":[["start",1],["why",0],["nothing",0]]} -->
    Scene `terendelev.trickster.watch.faith`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You were in the chapel again last night."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.first_night_seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.faith_awning`.
@@ -12060,7 +12064,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.faith/why/0` — "Then give her nothing. Kneel there anyway. She'll know what it means."; records `terendelev.trickster.watch.faith`
    - `terendelev.trickster.watch.faith/nothing/0` — [Leave her with it.]
 
-1033. **Eliandra: Your lights sit low in the north** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.chart","chapter":5,"day":129,"completed":true,"choices":[["start",0],["truth",0],["reading",1],["plain",0],["end",0]]} -->
+1034. **Eliandra: Your lights sit low in the north** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.chart","chapter":5,"day":129,"completed":true,"choices":[["start",0],["truth",0],["reading",1],["plain",0],["end",0]]} -->
    Scene `eliandra.trickster.drezen.chart`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "What are you drawing?"
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.trickster.drezen.first_question`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.chart_mark`, `eliandra.trickster.drezen.chart`, `eliandra.met_ch3`.
@@ -12071,7 +12075,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.chart/plain/0` — [Take the chart.]
    - `eliandra.trickster.drezen.chart/end/0` — [Carry the chart away where she can see it.]; records `eliandra.trickster.drezen.chart`
 
-1034. **Horzalah: A cup of wine** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.cup","chapter":5,"day":129,"completed":true,"choices":[["start",0],["spotted",0]]} -->
+1035. **Horzalah: A cup of wine** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.cup","chapter":5,"day":129,"completed":true,"choices":[["start",0],["spotted",0]]} -->
    Scene `horzalah.trickster.beat.cup`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Is that for me?"
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.cup_drunk`, `horzalah.trickster.ally`.
@@ -12081,7 +12085,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 130
 
-1035. **Hepzamirah: The weaker branch** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.sister","chapter":5,"day":130,"completed":true,"choices":[["canary",0],["canary_seen",0],["sister",1],["sister_state",1],["state_alive",0],["ask",0],["neither",0]]} -->
+1036. **Hepzamirah: The weaker branch** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.sister","chapter":5,"day":130,"completed":true,"choices":[["canary",0],["canary_seen",0],["sister",1],["sister_state",1],["state_alive",0],["ask",0],["neither",0]]} -->
    Scene `hepzamirah.trickster.flesh.sister`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Tell me about Horzalah."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.first_morning`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -12094,7 +12098,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.sister/ask/0` — "Neither. That's the point. He shouldn't have been choosing."
    - `hepzamirah.trickster.flesh.sister/neither/0` — [Leave it there.]
 
-1036. **Jannah: Aldori, sorry** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_song","chapter":5,"day":130,"completed":true,"choices":[["open",0],["inside",0],["verse",0],["right",0]]} -->
+1037. **Jannah: Aldori, sorry** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_song","chapter":5,"day":130,"completed":true,"choices":[["open",0],["inside",0],["verse",0],["right",0]]} -->
    Scene `jannah.circle.the_song`; chapters 5–5 (only 5); wait at least 72h after the latest prerequisite; complete.
    Open: "Take me down to hear this song of theirs."
    Need all: `trickster.ever`, `jannah.committed`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.the_song`.
@@ -12104,7 +12108,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.the_song/verse/0` — "You made them sing it right."
    - `jannah.circle.the_song/right/0` — [Walk her home.]
 
-1037. **Terendelev: The silver that stayed** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.scales","chapter":5,"day":130,"completed":true,"choices":[["start",0],["hurt",0],["hope",0],["end",0]]} -->
+1038. **Terendelev: The silver that stayed** — Drezen; hub `terendelev.presence`. <!-- rrt-step {"scene":"terendelev.trickster.watch.scales","chapter":5,"day":130,"completed":true,"choices":[["start",0],["hurt",0],["hope",0],["end",0]]} -->
    Scene `terendelev.trickster.watch.scales`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "You're wearing your shirt open at the throat."
    Need all: `trickster.ever`, `terendelev.trickster.returned`, `terendelev.trickster.night.seen`, `terendelev.present_now`; Blocked by: `terendelev.closed`, `terendelev.aeon_spared`, `terendelev.trickster.watch.scales_awning`.
@@ -12114,7 +12118,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `terendelev.trickster.watch.scales/hope/0` — "Then I'll hope for both of us, so you don't have to."; records `terendelev.trickster.watch.scales_stayed`
    - `terendelev.trickster.watch.scales/end/0` — [Leave her to her street.]
 
-1038. **Eliandra: The road into Sarkoris** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.road","chapter":5,"day":130,"completed":true,"choices":[["start",0],["yes",0]]} -->
+1039. **Eliandra: The road into Sarkoris** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.road","chapter":5,"day":130,"completed":true,"choices":[["start",0],["yes",0]]} -->
    Scene `eliandra.trickster.drezen.road`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Planning the route already?"
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.trickster.drezen.chart`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.road_mark`, `eliandra.trickster.drezen.road_promised`, `eliandra.met_ch3`.
@@ -12122,7 +12126,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.road/start/0` — "The first spring. I'll be there."; records `eliandra.trickster.drezen.road_promised`
    - `eliandra.trickster.drezen.road/yes/0` — [Leave her to her map.]
 
-1039. **Horzalah: What you want** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.question","chapter":5,"day":130,"completed":true,"choices":[["opening",2],["start",0],["sell",0],["end",0]]} -->
+1040. **Horzalah: What you want** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.question","chapter":5,"day":130,"completed":true,"choices":[["opening",2],["start",0],["sell",0],["end",0]]} -->
    Scene `horzalah.trickster.beat.question`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "You're frowning at me."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.tested`, `horzalah.trickster.beat.cup_drunk`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.question_asked`, `horzalah.trickster.ally`.
@@ -12134,7 +12138,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 131
 
-1040. **Hepzamirah: The corner** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_corner","chapter":5,"day":131,"completed":true,"choices":[["night",0],["listen",1],["left",0]]} -->
+1041. **Hepzamirah: The corner** — Drezen; hub `hepzamirah.presence`. <!-- rrt-step {"scene":"hepzamirah.trickster.flesh.the_corner","chapter":5,"day":131,"completed":true,"choices":[["night",0],["listen",1],["left",0]]} -->
    Scene `hepzamirah.trickster.flesh.the_corner`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "The watch says you don't sleep."
    Need all: `trickster.ever`, `hepzamirah.trickster.returned`, `hepzamirah.trickster.flesh.first_morning`, `hepzamirah.trickster.flesh.the_pick`, `hepzamirah.present_now`; Blocked by: `hepzamirah.closed`, `hepzamirah.trickster.cost.confined`; Block `hepzamirah.trickster.cost.confined` lifted by: `hepzamirah.trickster.flesh.released`.
@@ -12143,7 +12147,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `hepzamirah.trickster.flesh.the_corner/listen/1` — "Nothing's coming. The corner's Leavable. You left."
    - `hepzamirah.trickster.flesh.the_corner/left/0` — [Leave her in the dark.]
 
-1041. **Jannah: The door she kept** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_door","chapter":5,"day":131,"completed":true,"choices":[["open",1],["start_lives",0],["elan_lives",0],["post",0]]} -->
+1042. **Jannah: The door she kept** — Drezen; hub `jannah.presence`. <!-- rrt-step {"scene":"jannah.circle.the_door","chapter":5,"day":131,"completed":true,"choices":[["open",1],["start_lives",0],["elan_lives",0],["post",0]]} -->
    Scene `jannah.circle.the_door`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Tell me about the jeweller's."
    Need all: `trickster.ever`, `jannah.joined`, `jannah.circle.forms`, `jannah.present_now`; Blocked by: `jannah.closed`, `jannah.trickster.gone`, `jannah.circle.the_door`, `crossroute.kiana.unavailable`, `crossroute.seelah.unavailable`.
@@ -12153,14 +12157,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `jannah.circle.the_door/elan_lives/0` — "You kept your post. That's all a soldier gets to know."
    - `jannah.circle.the_door/post/0` — [Leave her to the blade.]
 
-1042. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.seelah.alive","chapter":5,"day":131,"completed":true,"choices":[["start",0]]} -->
+1043. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.trickster.react.seelah.alive","chapter":5,"day":131,"completed":true,"choices":[["start",0]]} -->
    Scene `terendelev.trickster.react.seelah.alive`; chapters 5–5; wait at least 24h after the latest prerequisite; complete.
    Open: "You look like you've seen a ghost, Seelah."
    Need all: `terendelev.trickster.returned`, `seelah.present_now`, `terendelev.present_now`; Blocked by: `seelah_dead`, `seelah_gone`, `terendelev.closed`, `crossroute.seelah.unavailable`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
    Native answer-list host: `417fa384f3250634bb71859fbc913453`.
    - `terendelev.trickster.react.seelah.alive/start/0` — Continue
 
-1043. **Eliandra: The dwarf and the cooper** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.odden","chapter":5,"day":131,"completed":true,"choices":[["start",0],["odden",0],["remembered",1],["say",0],["after",0],["cards",0]]} -->
+1044. **Eliandra: The dwarf and the cooper** — Drezen; hub `eliandra.presence`. <!-- rrt-step {"scene":"eliandra.trickster.drezen.odden","chapter":5,"day":131,"completed":true,"choices":[["start",0],["odden",0],["remembered",1],["say",0],["after",0],["cards",0]]} -->
    Scene `eliandra.trickster.drezen.odden`; chapters 5–5 (only 5); wait at least 24h after the latest prerequisite; complete.
    Open: "Odden looks happier than I've ever seen him."
    Need all: `trickster.ever`, `eliandra.trickster.heart_seen`, `eliandra.trickster.drezen.first_question`, `eliandra.present_now`; Blocked by: `eliandra.closed`, `eliandra.dead`, `eliandra.attacked`, `eliandra.trickster.away`, `eliandra.trickster.drezen.odden_mark`, `eliandra.trickster.drezen.odden`, `eliandra.met_ch3`.
@@ -12172,7 +12176,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `eliandra.trickster.drezen.odden/after/0` — "For the record, it's a fair question. Whether I cheat at cards."
    - `eliandra.trickster.drezen.odden/cards/0` — [Leave the question unanswered.]; records `eliandra.trickster.drezen.odden`
 
-1044. **Horzalah: Your turn** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.second_night","chapter":5,"day":131,"completed":true,"choices":[["start",0],["night",0],["night2",0],["draw",0],["cut",0],["horzalah.trickster.beat.second_night.explicit.1",0],["after",0]]} -->
+1045. **Horzalah: Your turn** — Drezen; hub `horzalah.presence`. <!-- rrt-step {"scene":"horzalah.trickster.beat.second_night","chapter":5,"day":131,"completed":true,"choices":[["start",0],["night",0],["night2",0],["draw",0],["cut",0],["horzalah.trickster.beat.second_night.explicit.1",0],["after",0]]} -->
    Scene `horzalah.trickster.beat.second_night`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Come up tonight."
    Need all: `trickster.ever`, `horzalah.trickster.wants_heard`, `horzalah.trickster.chamber_seen`, `horzalah.present_now`; Blocked by: `horzalah.closed`, `horzalah.trickster.left_free`, `horzalah.trickster.beat.second_night`.
@@ -12189,7 +12193,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 132
 
-1045. **Nocticula: Only your shadow** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.defeated.shadow","chapter":6,"day":132,"completed":true,"choices":[["start",1],["dress",0]]} -->
+1046. **Nocticula: Only your shadow** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.defeated.shadow","chapter":6,"day":132,"completed":true,"choices":[["start",1],["dress",0]]} -->
    Scene `nocticula.trickster.defeated.shadow`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "Still hiding behind a projection, Lady?"
    Need all: `trickster`, `noct.dead`, `noct.acq.council_fight`; Blocked by: `nocticula.trickster.primed`, `trickster.failed`.
@@ -12197,7 +12201,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nocticula.trickster.defeated.shadow/start/1` — Continue; Need all: `noct.fooled`; Blocked by: `nocticula.trickster.primed_shadow`
    - `nocticula.trickster.defeated.shadow/dress/0` — [Play a prank on the Queen of Shadows] "Kill you? I wouldn't dream of it. I killed your shadow. Mind you don't trip over it."; records `nocticula.trickster.primed`, `nocticula.trickster.cost.shade_secret`, `noct.started`; Mythic: PlayerIsTrickster
 
-1046. **Areelu: The wager stands** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.threshold.welcome","chapter":6,"day":132,"completed":true,"choices":[["start",0],["sleep",0]]} -->
+1047. **Areelu: The wager stands** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.threshold.welcome","chapter":6,"day":132,"completed":true,"choices":[["start",0],["sleep",0]]} -->
    Scene `areelu.trickster.threshold.welcome`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "Before I come in: the wager stands?"
    Need all: `trickster.ever`, `areelu.trickster.wager_struck`, `areelu.present_now`; Blocked by: `areelu.closed`, `areelu.trickster.threshold_reminded`.
@@ -12205,7 +12209,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.threshold.welcome/start/0` — "Sounds like you're losing sleep over me."
    - `areelu.trickster.threshold.welcome/sleep/0` — "See you inside."; records `areelu.trickster.threshold_reminded`
 
-1047. **Iomedae: Her own bridge** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.threshold.banner","chapter":6,"day":132,"completed":true,"choices":[["plant",1],["comes",6],["nocticula_objection",0],["areelu_objection",5],["argued",1],["other_yes",0],["decide",0]]} -->
+1048. **Iomedae: Her own bridge** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.threshold.banner","chapter":6,"day":132,"completed":true,"choices":[["plant",1],["comes",6],["nocticula_objection",0],["areelu_objection",5],["argued",1],["other_yes",0],["decide",0]]} -->
    Scene `iomedae.trickster.threshold.banner`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Unfurl the banner] "Before anyone goes in: I'm carrying something."
    Need all: `trickster`, `trickster.ever`, `iomedae.started`, `iomedae.present_now`; Blocked by: `iomedae.trickster.banner_carried`, `iomedae.closed`, `iomedae.herald_spite`, `trickster.failed`; Need one of: `iomedae.banner_in_hand`, `iomedae.trickster.order_banner`; Block `iomedae.herald_spite` lifted by: `iomedae.trickster.herald_accounted`.
@@ -12218,14 +12222,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `iomedae.trickster.threshold.banner/other_yes/0` — Continue
    - `iomedae.trickster.threshold.banner/decide/0` — [Turn to the Wound.]; records `iomedae.trickster.banner_carried`, `iomedae.committed`, `iomedae.trickster.conceded_at_wound`, `iomedae.trickster.cost.buried_to_the_world`; Need all: `trickster.now`
 
-1048. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.lastcall.threshold","chapter":6,"day":132,"completed":true,"choices":[["flask",0]]} -->
+1049. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.lastcall.threshold","chapter":6,"day":132,"completed":true,"choices":[["flask",0]]} -->
    Scene `trickster.lastcall.threshold`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call last orders] "Before anyone does anything final: last orders. I've a tab to settle."
    Need all: `trickster`, `trickster.ever`, `lastcall.vessel`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `trickster.lastcall.open`, `crossroute.areelu.unavailable`; EntryMythic: PlayerIsTrickster.
    Native answer-list host: `294126e3264796e488ce19bfb1851355`, `16994192cfa484744bd10852b8dc806f`, `b6bc1d5fb28e115499b8bcbbc0d541f9`, `3d3357c0474ce5a4bb13d68730faecb8`, `e77c405d6dde5804bb1f873f971958b8`.
    - `trickster.lastcall.threshold/flask/0` — [Show the corked flask] "See this? My death. Bottled in Drezen. You'll have to go through the bottle."; records `trickster.lastcall.open`, `trickster.lastcall.pillar.bottle`; Need all: `trickster.lastcall.primed.bottle`
 
-1049. **Elyanka: The collateral, inspected** — rest delivery / Satchel: visit (Threshold exterior). <!-- rrt-step {"scene":"elyanka.trickster.ch6.collateral","chapter":6,"day":132,"completed":true,"choices":[["start",0],["inspect",0],["tomorrow",2],["drezen",0]]} -->
+1050. **Elyanka: The collateral, inspected** — rest delivery / Satchel: visit (Threshold exterior). <!-- rrt-step {"scene":"elyanka.trickster.ch6.collateral","chapter":6,"day":132,"completed":true,"choices":[["start",0],["inspect",0],["tomorrow",2],["drezen",0]]} -->
    Scene `elyanka.trickster.ch6.collateral`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `elyanka.trickster.owned`, `elyanka.present_now`; Blocked by: `elyanka.closed`, `elyanka.trickster.collateral.at_rift`, `elyanka.trickster.collateral.in_drezen`.
    - `elyanka.trickster.ch6.collateral/start/0` — Continue; Need all: `elyanka.trickster.bier_seen`
@@ -12233,7 +12237,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `elyanka.trickster.ch6.collateral/tomorrow/2` — [Tell her to wait in Drezen] "In the dead-house. If I don't come back, you won't need to see it."
    - `elyanka.trickster.ch6.collateral/drezen/0` — [Let her go.]; records `elyanka.trickster.collateral.in_drezen`
 
-1050. **Iomedae: The night before** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.eve","chapter":6,"day":132,"completed":true,"choices":[["open",0],["o_start",0],["o_write",0],["o_true",0],["o_seal",0],["start",0],["committed",0],["others",0],["if_not",0]]} -->
+1051. **Iomedae: The night before** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.eve","chapter":6,"day":132,"completed":true,"choices":[["open",0],["o_start",0],["o_write",0],["o_true",0],["o_seal",0],["start",0],["committed",0],["others",0],["if_not",0]]} -->
    Scene `iomedae.trickster.dream.eve`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.started`, `iomedae.key_dies_revealed.latched`, `iomedae.reachable_by_letter`; Blocked by: `iomedae.closed`, `iomedae.trickster.eve_seen`, `iomedae.herald_spite`; Need one of: `iomedae.banner_in_hand`, `iomedae.trickster.order_banner`; Block `iomedae.herald_spite` lifted by: `iomedae.trickster.herald_accounted`.
    - `iomedae.trickster.dream.eve/open/0` — Continue; Need all: `iomedae.committed`, `iomedae.trickster.cost.buried_to_the_world`
@@ -12248,7 +12252,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 133
 
-1051. **Nocticula: The price of a shadow** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.defeated.call_in","chapter":6,"day":133,"completed":true,"choices":[["price",0],["terms",0]]} -->
+1052. **Nocticula: The price of a shadow** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.defeated.call_in","chapter":6,"day":133,"completed":true,"choices":[["price",0],["terms",0]]} -->
    Scene `nocticula.trickster.defeated.call_in`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "You didn't say I was wrong."
    Need all: `trickster.ever`, `nocticula.trickster.primed`, `trickster.now`; Blocked by: `nocticula.trickster.returned`.
@@ -12256,7 +12260,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nocticula.trickster.defeated.call_in/price/0` — "Name your price, then."; Blocked by: `nocticula.trickster.cost.late`, `noct.acq.threshold_projection_answer`
    - `nocticula.trickster.defeated.call_in/terms/0` — "Agreed."; records `nocticula.trickster.returned`, `nocticula.trickster.cost.shade_paid`
 
-1052. **Areelu: At the desk** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.truth.the_desk","chapter":6,"day":133,"completed":true,"choices":[["start",0],["wait",0]]} -->
+1053. **Areelu: At the desk** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.truth.the_desk","chapter":6,"day":133,"completed":true,"choices":[["start",0],["wait",0]]} -->
    Scene `areelu.trickster.truth.the_desk`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "You were at your desk, writing, when they came. You've been sitting at that desk ever since."
    Need all: `trickster.ever`, `areelu.trickster.wager_struck`, `areelu.present_now`; Blocked by: `areelu.closed`.
@@ -12264,21 +12268,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.truth.the_desk/start/0` — "Then don't get up yet. Finish the entry. I'll wait."
    - `areelu.trickster.truth.the_desk/wait/0` — [Let her go on.]
 
-1053. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.sosiel","chapter":6,"day":133,"completed":true,"choices":[["start",0]]} -->
+1054. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.sosiel","chapter":6,"day":133,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.sosiel`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "What are you painting?"
    Need all: `trickster.ever`, `iomedae.committed`, `iomedae.trickster.disputed`, `iomedae.present_now`; Blocked by: `sosiel.dead`, `sosiel.kicked_out`.
    Native answer-list host: `129b55b8b5d50974f84f7c607d894fd0`.
    - `iomedae.trickster.react.sosiel/start/0` — Continue
 
-1054. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"arsinoe.lastcall.call","chapter":6,"day":133,"completed":true,"choices":[["call",0]]} -->
+1055. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"arsinoe.lastcall.call","chapter":6,"day":133,"completed":true,"choices":[["call",0]]} -->
    Scene `arsinoe.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Return the cauldron] "Returnable at the end of the world. This is the end of the world. Here."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `arsinoe.lastcall.callable`, `arsinoe.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `arsinoe.lastcall.resolved`; Need one of: `arsinoe.trickster.cost.lien`.
    Native answer-list host: `294126e3264796e488ce19bfb1851355`, `16994192cfa484744bd10852b8dc806f`, `b6bc1d5fb28e115499b8bcbbc0d541f9`, `3d3357c0474ce5a4bb13d68730faecb8`, `e77c405d6dde5804bb1f873f971958b8`.
    - `arsinoe.lastcall.call/call/0` — Continue; records `arsinoe.lastcall.called`, `arsinoe.lastcall.resolved`, `trickster.lastcall.creditors_called`
 
-1055. **Iomedae: What the banner did not see** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.mortal","chapter":6,"day":133,"completed":true,"choices":[["start",0],["seen",0],["sit",0],["hand",0],["palm",0],["kiss",0],["not_here",0]]} -->
+1056. **Iomedae: What the banner did not see** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"iomedae.trickster.dream.mortal","chapter":6,"day":133,"completed":true,"choices":[["start",0],["seen",0],["sit",0],["hand",0],["palm",0],["kiss",0],["not_here",0]]} -->
    Scene `iomedae.trickster.dream.mortal`; chapters 5–6 (only 5, 6); wait at least 24h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `iomedae.committed`, `iomedae.reachable_by_letter`; Blocked by: `iomedae.closed`, `iomedae.trickster.mortal_seen`.
    - `iomedae.trickster.dream.mortal/start/0` — Continue; Need all: `iomedae.trickster.bridge_seen`
@@ -12291,7 +12295,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 134
 
-1056. **Nocticula: Beside me** — Threshold exterior / Threshold interior. <!-- rrt-step {"scene":"nocticula.trickster.defeated.chair","chapter":6,"day":134,"completed":true,"choices":[["test",0],["verdict_true",0],["reason_paid",2],["why_dress",0],["yes",0],["threshold",0],["nocticula.trickster.defeated.chair.explicit.1",0]]} -->
+1057. **Nocticula: Beside me** — Threshold exterior / Threshold interior. <!-- rrt-step {"scene":"nocticula.trickster.defeated.chair","chapter":6,"day":134,"completed":true,"choices":[["test",0],["verdict_true",0],["reason_paid",2],["why_dress",0],["yes",0],["threshold",0],["nocticula.trickster.defeated.chair.explicit.1",0]]} -->
    Scene `nocticula.trickster.defeated.chair`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "One more question, Lady. Off the record."
    Need all: `trickster.ever`, `nocticula.trickster.returned`, `nocticula.present_now`; Blocked by: `noct.complete`, `noct.closed`, `nocticula.trickster.declined`.
@@ -12304,7 +12308,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nocticula.trickster.defeated.chair/threshold/0` — "...Flawless."; Blocked by: `nocticula.trickster.cost.late`
    - `nocticula.trickster.defeated.chair/nocticula.trickster.defeated.chair.explicit.1/0` — "...Flawless."; Blocked by: `nocticula.trickster.cost.late`
 
-1057. **Areelu: What the winner keeps** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.rift.odds","chapter":6,"day":134,"completed":true,"choices":[["start",0],["neither",0],["after",0]]} -->
+1058. **Areelu: What the winner keeps** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.rift.odds","chapter":6,"day":134,"completed":true,"choices":[["start",0],["neither",0],["after",0]]} -->
    Scene `areelu.trickster.rift.odds`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "Before we fight: if you win the wager, what will you do with my wound?"
    Need all: `trickster.ever`, `areelu.trickster.wager_struck`, `areelu.present_now`; Blocked by: `areelu.closed`.
@@ -12313,21 +12317,21 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.rift.odds/neither/0` — "Ask me after."
    - `areelu.trickster.rift.odds/after/0` — [Let her turn back to the rift.]
 
-1058. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.daeran","chapter":6,"day":134,"completed":true,"choices":[["start",0]]} -->
+1059. **Daeran: Daeran's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.daeran","chapter":6,"day":134,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.daeran`; chapters 5–6; wait at least 0h after the latest prerequisite; complete.
    Open: "You look pleased with yourself."
    Need all: `trickster.ever`, `iomedae.committed`, `iomedae.trickster.disputed`, `iomedae.present_now`; Blocked by: `daeran.dead`, `daeran.kicked_out`.
    Native answer-list host: `4d978cbd2aa780d46874255282039f3f`.
    - `iomedae.trickster.react.daeran/start/0` — Continue
 
-1059. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"jerribeth.lastcall.call","chapter":6,"day":134,"completed":true,"choices":[["call",2]]} -->
+1060. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"jerribeth.lastcall.call","chapter":6,"day":134,"completed":true,"choices":[["call",2]]} -->
    Scene `jerribeth.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call in Jerribeth's paper] "Lady of the Sun. You hold paper on me. Collect it from a living debtor, or not at all."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `jerribeth.lastcall.callable`, `jerribeth.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `jerribeth.lastcall.resolved`; Need one of: `jerribeth.trickster.cost.forfeit`, `jerribeth.trickster.cost.host`, `jerribeth.trickster.cost.lodger`, `jerribeth.trickster.cost.tenant`, `jerribeth.trickster.cost.toast`.
    Native answer-list host: `294126e3264796e488ce19bfb1851355`, `16994192cfa484744bd10852b8dc806f`, `b6bc1d5fb28e115499b8bcbbc0d541f9`, `3d3357c0474ce5a4bb13d68730faecb8`, `e77c405d6dde5804bb1f873f971958b8`.
    - `jerribeth.lastcall.call/call/2` — "One memory, your choice, when you choose. Choose after tonight. I want to have something worth taking."; records `jerribeth.lastcall.called`, `jerribeth.lastcall.resolved`; Need all: `jerribeth.trickster.cost.forfeit`; Blocked by: `jerribeth.trickster.cost.tenant`, `jerribeth.trickster.cost.toast`
 
-1060. **Nocticula: Four crescents** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"nocticula.trickster.defeated.morning","chapter":6,"day":134,"completed":true,"choices":[["start",4],["note_paid_alone",0]]} -->
+1061. **Nocticula: Four crescents** — rest delivery / Satchel: sending (owner contact / rest). <!-- rrt-step {"scene":"nocticula.trickster.defeated.morning","chapter":6,"day":134,"completed":true,"choices":[["start",4],["note_paid_alone",0]]} -->
    Scene `nocticula.trickster.defeated.morning`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Need all: `trickster.ever`, `nocticula.trickster.said_yes`, `nocticula.reachable_by_letter`; Blocked by: `nocticula.trickster.cost.late`.
    - `nocticula.trickster.defeated.morning/start/4` — [Read the rest of the dust.]; Need all: `nocticula.trickster.cost.shade_paid`; Blocked by: `nocticula.daeran_present`, `daeran.dead`, `daeran.kicked_out`
@@ -12335,14 +12339,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 135
 
-1061. **Nenio: Nenio's word** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.reaction.nenio","chapter":6,"day":135,"completed":true,"choices":[["start",0]]} -->
+1062. **Nenio: Nenio's word** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.reaction.nenio","chapter":6,"day":135,"completed":true,"choices":[["start",0]]} -->
    Scene `nocticula.trickster.reaction.nenio`; chapters 6–6; wait at least 0h after the latest prerequisite; complete.
    Open: "About Nocticula's shadow..."
    Need all: `noct.defeated_not_dead`, `nocticula.trickster.cost.shade_secret`, `crossroute.nenio.available`, `nocticula.present_now`; Blocked by: `nenio.dead`, `nenio.killed_by_commander`, `nenio.sent_away`, `nenio.kicked_out`, `nenio.dissolved`, `crossroute.nenio.unavailable`, `nenio.life.unavailable`; Block `nenio.dead` lifted by: `nenio.life.recreated`; Block `nenio.killed_by_commander` lifted by: `nenio.life.unremembered`; Block `nenio.sent_away` lifted by: `nenio.life.probation`; Block `nenio.kicked_out` lifted by: `nenio.life.probation`.
    Native answer-list host: `1ab909cc3a6194840b1475b99547c263`.
    - `nocticula.trickster.reaction.nenio/start/0` — Continue
 
-1062. **Areelu: The clause** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.witch.the_clause","chapter":6,"day":135,"completed":true,"choices":[["start",2],["forfeit",0]]} -->
+1063. **Areelu: The clause** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.witch.the_clause","chapter":6,"day":135,"completed":true,"choices":[["start",2],["forfeit",0]]} -->
    Scene `areelu.trickster.witch.the_clause`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "Whatever you've hidden in this room, remember our terms. Whoever burns pays up. That includes burning yourself."
    Need all: `trickster.ever`, `areelu.trickster.wager_struck`, `areelu.present_now`; Blocked by: `areelu.closed`.
@@ -12350,14 +12354,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.witch.the_clause/start/2` — [Joke] "I'd hate to win by forfeit. It's so undignified."
    - `areelu.trickster.witch.the_clause/forfeit/0` — [Wait.]
 
-1063. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.seelah_eve","chapter":6,"day":135,"completed":true,"choices":[["start",0]]} -->
+1064. **Seelah: Seelah's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.seelah_eve","chapter":6,"day":135,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.seelah_eve`; chapters 6–6; wait at least 0h after the latest prerequisite; complete.
    Open: "You look like you want to say something."
    Need all: `trickster.ever`, `iomedae.committed`, `seelah.in_party`, `iomedae.present_now`; Blocked by: `seelah_dead`, `seelah_gone`, `crossroute.seelah.unavailable`, `seelah.plot_departed`; Block `seelah_dead` lifted by: `seelah.trickster.returned`; Block `seelah_gone` lifted by: `seelah.trickster.returned`.
    Native answer-list host: `417fa384f3250634bb71859fbc913453`.
    - `iomedae.trickster.react.seelah_eve/start/0` — Continue
 
-1064. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.lastcall.call","chapter":6,"day":135,"completed":true,"choices":[["call",1]]} -->
+1065. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.lastcall.call","chapter":6,"day":135,"completed":true,"choices":[["call",1]]} -->
    Scene `nocticula.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Read the Lady in Shadow's account] "One favour, still owing."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `nocticula.lastcall.callable`, `nocticula.lastcall.account_due`, `nocticula.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `nocticula.lastcall.resolved`; Need one of: `nocticula.trickster.cost.shade_paid`, `nocticula.trickster.cost.shade_refused`.
@@ -12366,7 +12370,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 136
 
-1065. **Nocticula: An ear in my city** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.court.horzalah","chapter":6,"day":136,"completed":true,"choices":[["start",2],["kept",0]]} -->
+1066. **Nocticula: An ear in my city** — native dialogue listed below. <!-- rrt-step {"scene":"nocticula.trickster.court.horzalah","chapter":6,"day":136,"completed":true,"choices":[["start",2],["kept",0]]} -->
    Scene `nocticula.trickster.court.horzalah`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "The Guild in your city has a new story, Lady."
    Need all: `trickster.ever`, `horzalah.trickster.returned`, `nocticula.present_now`; Blocked by: `nocticula.trickster.secret_known.horzalah`, `noct.acq.council_fight`; Block `noct.acq.council_fight` lifted by: `nocticula.trickster.returned`.
@@ -12374,7 +12378,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `nocticula.trickster.court.horzalah/start/2` — Continue; Blocked by: `horzalah.trickster.threatened`, `horzalah.trickster.left_free`
    - `nocticula.trickster.court.horzalah/kept/0` — "She would rather have a knife than your patience, Lady."; records `nocticula.trickster.secret_known.horzalah`
 
-1066. **Areelu: A longitudinal experiment** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.raised","chapter":6,"day":136,"completed":true,"choices":[["start",0],["thirty",0],["collect",0],["priced",0],["her_choice",0]]} -->
+1067. **Areelu: A longitudinal experiment** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.raised","chapter":6,"day":136,"completed":true,"choices":[["start",0],["thirty",0],["collect",0],["priced",0],["her_choice",0]]} -->
    Scene `areelu.trickster.wager.raised`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "The wager, Areelu."
    Need all: `trickster.ever`, `areelu.trickster.wager_struck`, `areelu.present_now`; Blocked by: `areelu.committed`, `areelu.closed`, `areelu.trickster.declined`, `areelu.trickster.stake_only`, `areelu.trickster.graft_drawn`.
@@ -12385,14 +12389,14 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.wager.raised/priced/0` — "Agreed."; records `areelu.trickster.stake_named`, `areelu.trickster.cost.wound_ceded`
    - `areelu.trickster.wager.raised/her_choice/0` — [Shake on it] "Then it's settled."; records `areelu.committed`; Need all: `trickster.now`
 
-1067. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.sosiel_frame","chapter":6,"day":136,"completed":true,"choices":[["start",0]]} -->
+1068. **Sosiel: Sosiel's word** — native dialogue listed below. <!-- rrt-step {"scene":"iomedae.trickster.react.sosiel_frame","chapter":6,"day":136,"completed":true,"choices":[["start",0]]} -->
    Scene `iomedae.trickster.react.sosiel_frame`; chapters 6–6; wait at least 0h after the latest prerequisite; complete.
    Open: "You brought the portrait."
    Need all: `trickster.ever`, `iomedae.committed`, `iomedae.trickster.react.sosiel`, `iomedae.present_now`; Blocked by: `sosiel.dead`, `sosiel.kicked_out`.
    Native answer-list host: `129b55b8b5d50974f84f7c607d894fd0`.
    - `iomedae.trickster.react.sosiel_frame/start/0` — Continue
 
-1068. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.lastcall.call","chapter":6,"day":136,"completed":true,"choices":[["call",0]]} -->
+1069. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.lastcall.call","chapter":6,"day":136,"completed":true,"choices":[["call",0]]} -->
    Scene `minagho_chivarro.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call in what the demons are owed] "Whoever holds my debts tonight, collect from me alive, or not at all."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `minagho_chivarro.lastcall.callable`, `minagho.present_now`, `chivarro.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `minagho_chivarro.lastcall.resolved`; Need one of: `minagho_chivarro.trickster.cost.baphomet_branded`, `minagho_chivarro.trickster.cost.baphomet_debtor`, `minagho_chivarro.trickster.cost.baphomet_knelt`, `minagho_chivarro.trickster.cost.baphomet_terms`, `minagho_chivarro.trickster.cost.herrax_favor`, `minagho_chivarro.trickster.cost.socoth_owed`.
@@ -12401,7 +12405,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 137
 
-1069. **Areelu: Into the cauldron** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.collect","chapter":6,"day":137,"completed":true,"choices":[["start",0],["contest",0],["drawn",1],["full",0],["after",0]]} -->
+1070. **Areelu: Into the cauldron** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.collect","chapter":6,"day":137,"completed":true,"choices":[["start",0],["contest",0],["drawn",1],["full",0],["after",0]]} -->
    Scene `areelu.trickster.wager.collect`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Take out the soul cauldron] "Time to collect the stake."
    Need all: `trickster.now`, `areelu.trickster.wager_struck`, `areelu.trickster.stake_named`, `areelu.trickster.cost.wound_ceded`, `areelu.trickster.cauldron_full`, `areelu.present_now`; Blocked by: `areelu.trickster.graft_drawn`, `areelu.closed`, `areelu.trickster.stake_only`, `areelu.trickster.declined`, `areelu.trickster.term.life`.
@@ -12412,7 +12416,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.wager.collect/full/0` — Continue
    - `areelu.trickster.wager.collect/after/0` — [Turn to the final choice.]; records `areelu.trickster.graft_drawn`
 
-1070. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"soana.lastcall.call","chapter":6,"day":137,"completed":true,"choices":[["call",0]]} -->
+1071. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"soana.lastcall.call","chapter":6,"day":137,"completed":true,"choices":[["call",0]]} -->
    Scene `soana.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Name the Wintersun debt] "What was promised is still owed. Collect from the living."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `soana.lastcall.callable`, `soana.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `soana.lastcall.resolved`; Need one of: `soana.trickster.cost.blood_given`, `soana.trickster.cost.guardian_paid`, `soana.trickster.cost.knot_bearer`, `soana.trickster.cost.leash_held`.
@@ -12421,7 +12425,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 138
 
-1071. **Areelu: Nothing to regret** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.last_words","chapter":6,"day":138,"completed":true,"choices":[["start",0],["will",0]]} -->
+1072. **Areelu: Nothing to regret** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.trickster.wager.last_words","chapter":6,"day":138,"completed":true,"choices":[["start",0],["will",0]]} -->
    Scene `areelu.trickster.wager.last_words`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "Regret nothing? Good. You'll want a clear head for what comes after."
    Need all: `trickster.ever`, `areelu.trickster.wager_struck`, `areelu.present_now`; Blocked by: `areelu.closed`, `areelu.trickster.stake_only`.
@@ -12429,7 +12433,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `areelu.trickster.wager.last_words/start/0` — "We will."
    - `areelu.trickster.wager.last_words/will/0` — [Turn to the final choice.]
 
-1072. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"aranka.lastcall.call","chapter":6,"day":138,"completed":true,"choices":[["call",0]]} -->
+1073. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"aranka.lastcall.call","chapter":6,"day":138,"completed":true,"choices":[["call",0]]} -->
    Scene `aranka.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call in the second verse] "Aranka! Second verse! Loud enough for the Wound to learn the words!"
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `aranka.lastcall.callable`, `aranka.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `aranka.lastcall.resolved`; Need one of: `aranka.trickster.cost.announced`, `aranka.trickster.cost.credited`, `aranka.trickster.cost.denied`.
@@ -12438,7 +12442,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 139
 
-1073. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"gesmerha.lastcall.call","chapter":6,"day":139,"completed":true,"choices":[["call",0]]} -->
+1074. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"gesmerha.lastcall.call","chapter":6,"day":139,"completed":true,"choices":[["call",0]]} -->
    Scene `gesmerha.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call to the carver] "Gesmerha! Listen for this step."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `gesmerha.lastcall.callable`, `gesmerha.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `gesmerha.lastcall.resolved`; Need one of: `gesmerha.trickster.cost.advance_paid`, `gesmerha.trickster.cost.ancestor_debt`.
@@ -12447,7 +12451,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 140
 
-1074. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"dorgelinda.lastcall.call","chapter":6,"day":140,"completed":true,"choices":[["call",0]]} -->
+1075. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"dorgelinda.lastcall.call","chapter":6,"day":140,"completed":true,"choices":[["call",0]]} -->
    Scene `dorgelinda.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Settle the open line] "Quartermaster: the account marked 'used, quietly'. I'm ready to explain."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `dorgelinda.lastcall.callable`, `dorgelinda.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `dorgelinda.lastcall.resolved`; Need one of: `dorgelinda.trickster.cost.boots_owed`, `dorgelinda.trickster.cost.carts_signed`, `dorgelinda.trickster.cost.line_open`.
@@ -12456,7 +12460,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 141
 
-1075. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.lastcall.call","chapter":6,"day":141,"completed":true,"choices":[["call",0]]} -->
+1076. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"hepzamirah.lastcall.call","chapter":6,"day":141,"completed":true,"choices":[["call",0]]} -->
    Scene `hepzamirah.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call in the rent] "Rent's due: a front-row seat when you kill your father. I'll need to be alive for it."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `hepzamirah.lastcall.callable`, `hepzamirah.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `hepzamirah.lastcall.resolved`; Need one of: `hepzamirah.trickster.cost.baphomet_grudge`, `hepzamirah.trickster.cost.blood_sample`, `hepzamirah.trickster.cost.favour_owed`, `hepzamirah.trickster.cost.lab_funded`, `hepzamirah.trickster.cost.mutasafen_grudge`, `hepzamirah.trickster.cost.vial_forged`, `hepzamirah.trickster.cost.vial_paid`.
@@ -12465,7 +12469,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 142
 
-1076. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.lastcall.call","chapter":6,"day":142,"completed":true,"choices":[["call",0]]} -->
+1077. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"eritrice.lastcall.call","chapter":6,"day":142,"completed":true,"choices":[["call",0]]} -->
    Scene `eritrice.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Move a last motion] "I move that the Commander is not dead. All in favour?"
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `eritrice.lastcall.callable`, `eritrice.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `eritrice.lastcall.resolved`; Need one of: `eritrice.trickster.cost.apologised`, `eritrice.trickster.cost.censured`, `eritrice.trickster.cost.grudge_on_agenda`, `eritrice.trickster.cost.on_the_record`.
@@ -12474,7 +12478,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 143
 
-1077. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.lastcall.call","chapter":6,"day":143,"completed":true,"choices":[["call",0]]} -->
+1078. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"areelu.lastcall.call","chapter":6,"day":143,"completed":true,"choices":[["call",0]]} -->
    Scene `areelu.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call in the wager] "Whoever burns at Threshold pays up. Watch closely, Areelu. You'll want notes."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `areelu.lastcall.callable`, `areelu.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `areelu.lastcall.resolved`; Need one of: `areelu.trickster.cost.bet_with_the_witch`, `areelu.trickster.wager_struck`.
@@ -12483,7 +12487,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 144
 
-1078. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.lastcall.call","chapter":6,"day":144,"completed":true,"choices":[["call",0],["luck",0]]} -->
+1079. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"chadali.lastcall.call","chapter":6,"day":144,"completed":true,"choices":[["call",0],["luck",0]]} -->
    Scene `chadali.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call to Chadali] "Chadali. Our accounts, before the end."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `chadali.lastcall.callable`, `chadali.lastcall.account_due`, `chadali.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `chadali.lastcall.resolved`; Need one of: `chadali.trickster.cost.luck_lent`, `chadali.trickster.cost.luck_owed`, `chadali.trickster.cost.needle_owed`.
@@ -12493,7 +12497,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 145
 
-1079. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"delamere.lastcall.call","chapter":6,"day":145,"completed":true,"choices":[["call",0]]} -->
+1080. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"delamere.lastcall.call","chapter":6,"day":145,"completed":true,"choices":[["call",0]]} -->
    Scene `delamere.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Sound the horn] "Delamere! You're owed a day. Come and collect it."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `delamere.lastcall.callable`, `delamere.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `delamere.lastcall.resolved`, `crossroute.delamere.unavailable`; Need one of: `delamere.trickster.cost.hunt_owed`.
@@ -12502,7 +12506,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 146
 
-1080. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"nidalynn.lastcall.call","chapter":6,"day":146,"completed":true,"choices":[["call",0]]} -->
+1081. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"nidalynn.lastcall.call","chapter":6,"day":146,"completed":true,"choices":[["call",0]]} -->
    Scene `nidalynn.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `nidalynn.lastcall.callable`, `nidalynn.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `nidalynn.lastcall.resolved`, `crossroute.nidalynn.unavailable`; Need one of: `nidalynn.trickster.cost.salt_eaten`.
@@ -12511,7 +12515,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 147
 
-1081. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.lastcall.call","chapter":6,"day":147,"completed":true,"choices":[["call",0]]} -->
+1082. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"shamira.lastcall.call","chapter":6,"day":147,"completed":true,"choices":[["call",0]]} -->
    Scene `shamira.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Think of her] "Shamira. Stand up."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `shamira.lastcall.callable`, `shamira.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `shamira.lastcall.resolved`; Need one of: `shamira.trickster.cost.never_alone`.
@@ -12520,7 +12524,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 148
 
-1082. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.lastcall.call","chapter":6,"day":148,"completed":true,"choices":[["call",0]]} -->
+1083. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"jannah.lastcall.call","chapter":6,"day":148,"completed":true,"choices":[["call",0]]} -->
    Scene `jannah.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call the salute] "Jannah Aldori! To the first blood!"
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `jannah.lastcall.callable`, `jannah.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `jannah.lastcall.resolved`; Need one of: `jannah.trickster.cost.first_loss`, `jannah.trickster.cost.story_lost`.
@@ -12529,7 +12533,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 149
 
-1083. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.lastcall.call","chapter":6,"day":149,"completed":true,"choices":[["call",0]]} -->
+1084. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"terendelev.lastcall.call","chapter":6,"day":149,"completed":true,"choices":[["call",0]]} -->
    Scene `terendelev.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Put your hand on the wound] "Terendelev. Stand to."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `terendelev.lastcall.callable`, `terendelev.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `terendelev.lastcall.resolved`, `crossroute.terendelev.unavailable`; Need one of: `terendelev.trickster.cost.wound_open`.
@@ -12538,7 +12542,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 150
 
-1084. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.lastcall.call","chapter":6,"day":150,"completed":true,"choices":[["call",0]]} -->
+1085. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"horzalah.lastcall.call","chapter":6,"day":150,"completed":true,"choices":[["call",0]]} -->
    Scene `horzalah.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Turn your deaf side to the rift] "Horzalah. Listen."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `horzalah.lastcall.callable`, `horzalah.lastcall.account_due`, `horzalah.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `horzalah.lastcall.resolved`; Need one of: `horzalah.trickster.cost.ear`.
@@ -12547,7 +12551,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 151
 
-1085. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.lastcall.call","chapter":6,"day":151,"completed":true,"choices":[["call",0]]} -->
+1086. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"elyanka.lastcall.call","chapter":6,"day":151,"completed":true,"choices":[["call",0]]} -->
    Scene `elyanka.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Call in the bequest] "Elyanka, if I fall at the rift, your claim falls due. Stand where you can collect."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `elyanka.lastcall.callable`, `elyanka.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `elyanka.lastcall.resolved`; Need one of: `elyanka.trickster.cost.corpse_bequeathed`.
@@ -12556,7 +12560,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 152
 
-1086. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.lastcall.call","chapter":6,"day":152,"completed":true,"choices":[["call",0]]} -->
+1087. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"melazmera.lastcall.call","chapter":6,"day":152,"completed":true,"choices":[["call",0]]} -->
    Scene `melazmera.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Hold up the stone] "Melazmera. Come and count me."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `melazmera.lastcall.callable`, `melazmera.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `melazmera.lastcall.resolved`; Need one of: `melazmera.trickster.stone_kept`.
@@ -12565,7 +12569,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 153
 
-1087. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"yaniel.lastcall.call","chapter":6,"day":153,"completed":true,"choices":[["call",0]]} -->
+1088. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"yaniel.lastcall.call","chapter":6,"day":153,"completed":true,"choices":[["call",0]]} -->
    Scene `yaniel.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Hold up her iron] "Yaniel. Your watch."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `yaniel.lastcall.callable`, `yaniel.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `yaniel.lastcall.resolved`; Need one of: `yaniel.trickster.cost.oath_deskari`, `yaniel.trickster.cost.shackle_kept`.
@@ -12574,16 +12578,16 @@ A completed scene also records its scene ID. Read all letters before waiting for
 
 #### Checkpoint day 154
 
-1088. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.lastcall.call","chapter":6,"day":154,"completed":true,"choices":[["call",0]]} -->
+1089. **Commander: Last orders** — native dialogue listed below. <!-- rrt-step {"scene":"devarra.lastcall.call","chapter":6,"day":154,"completed":true,"choices":[["call",0]]} -->
    Scene `devarra.lastcall.call`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: [Read the grey dragon's bill] "The smallest egg. Still on account."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`, `devarra.lastcall.callable`, `devarra.lastcall.account_due`, `devarra.present_now`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `devarra.lastcall.resolved`; Need one of: `devarra.trickster.cost.egg_withheld`.
    Native answer-list host: `294126e3264796e488ce19bfb1851355`, `16994192cfa484744bd10852b8dc806f`, `b6bc1d5fb28e115499b8bcbbc0d541f9`, `3d3357c0474ce5a4bb13d68730faecb8`, `e77c405d6dde5804bb1f873f971958b8`.
-   - `devarra.lastcall.call/call/0` — Continue; records `devarra.lastcall.called`, `devarra.lastcall.resolved`; Need all: `devarra.lastcall.route_open`; Blocked by: `devarra.trickster.refused`
+   - `devarra.lastcall.call/call/0` — [Turn north] "Devarra. The smallest egg. Name it, and I'll pay."; records `devarra.lastcall.called`, `devarra.lastcall.resolved`; Need all: `devarra.lastcall.route_open`; Blocked by: `devarra.trickster.refused`
 
 #### Checkpoint day 155
 
-1089. **Commander: The last joke** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.lastcall.last_joke","chapter":6,"day":155,"completed":true,"choices":[["wound",0]]} -->
+1090. **Commander: The last joke** — native dialogue listed below. <!-- rrt-step {"scene":"trickster.lastcall.last_joke","chapter":6,"day":155,"completed":true,"choices":[["wound",0]]} -->
    Scene `trickster.lastcall.last_joke`; chapters 6–6 (only 6); wait at least 0h after the latest prerequisite; complete.
    Open: "That's everyone. Last call."
    Need all: `trickster`, `trickster.ever`, `trickster.lastcall.open`; Blocked by: `trickster.lastcall.taken`, `trickster.failed`, `trickster.lastcall.last_joke.areelu`, `anevia.lastcall.callable`, `irabeth.lastcall.callable`, `arsinoe.lastcall.callable`, `jerribeth.lastcall.callable`, `konomi.lastcall.account_due`, `nocticula.lastcall.account_due`, `vellexia.lastcall.callable`, `nurah.lastcall.callable`, `kiana.lastcall.callable`, `minagho_chivarro.lastcall.callable`, `soana.lastcall.callable`, `aranka.lastcall.callable`, `gesmerha.lastcall.callable`, `seelah.lastcall.account_due`, `targona.lastcall.callable`, `dorgelinda.lastcall.callable`, `hepzamirah.lastcall.callable`, `eritrice.lastcall.callable`, `areelu.lastcall.callable`, `chadali.lastcall.account_due`, `camellia.lastcall.callable`, `arueshalae.lastcall.callable`, `delamere.lastcall.callable`, `nidalynn.lastcall.callable`, `shamira.lastcall.callable`, `jannah.lastcall.callable`, `nenio.lastcall.callable`, `terendelev.lastcall.callable`, `horzalah.lastcall.account_due`, `eliandra.lastcall.callable`, `galfrey.lastcall.callable`, `elyanka.lastcall.callable`, `melazmera.lastcall.callable`, `yaniel.lastcall.callable`, `wenduag.lastcall.callable`, `devarra.lastcall.account_due`, `crossroute.areelu.unavailable`.
@@ -13675,9 +13679,9 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `minagho_chivarro.trickster.epilogue.commit/late_exclusive_chivarro/0` — Continue; records `minagho_chivarro.partner_stance.cooled`, `minachiv.closed`
 - `minagho_chivarro.trickster.epilogue.commit/late_secret_chivarro_dawn/0` — Continue; records `minagho_chivarro.partner_stance.cooled`, `minachiv.closed`
 
-### nocticula: The uncounted shore
+### nocticula: Under her black flower
 
-An existing dream relationship can lead to this undertaking after accepting Nocticula's Chapter 5 offer. Rest in Drezen while she lives and her Profane Gift remains. A Trickster who missed or refused that offer can instead earn a separate invitation through personal correspondence. The Trickster correspondence ends in its own agreement, kept by letter. Her invitation does not accept an earlier refused offer, restore a lost Gift or settle the Worldwound. Each undertaking and private invitation can still be declined. On the Trickster path, a Nocticula defeated at the Council may not be as gone as the Abyss believes; look carefully after the fight, and speak to her at Threshold.
+An existing dream relationship can lead to this undertaking after accepting Nocticula's Chapter 5 offer. Rest in Drezen while she lives and her Profane Gift remains. A Trickster who missed or refused that offer can instead earn a separate invitation through personal correspondence. The Trickster correspondence ends in its own agreement, kept by letter. While the Gift holds, her dreams carry you into her court; what you decide there happens. Her invitation does not accept an earlier refused offer, restore a lost Gift or settle the Worldwound. Each undertaking and private invitation can still be declined. On the Trickster path, a Nocticula defeated at the Council may not be as gone as the Abyss believes; look carefully after the fight, and speak to her at Threshold.
 
 Commitment: `noct.complete`; closure: `noct.closed`.
 Unavailable states: `noct.dead`, `inhuman`, `legend`, `dragon`, `nocticula.epoch_unavailable`; failure states: none.
@@ -14664,11 +14668,11 @@ Commitment: `arueshalae.committed`; closure: `arueshalae.closed`.
 Unavailable states: `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.epoch_unavailable`; failure states: none.
 - `arueshalae_dead` is overridden only by earned `arueshalae.trickster.returned`.
 - `arueshalae.evil_dead` is overridden only by earned `arueshalae.trickster.returned`.
-- Recovery for **dead**: `arueshalae.trickster.dead.starving` (Diagnosis); rest delivery / Satchel: visit (owner contact / rest); chapters 3–5; 24h delay. Need all: `trickster`, `trickster.ever`, `arueshalae_dead`, `arueshalae_dead.latched`; Blocked by: `arueshalae.trickster.returned`, `arueshalae.trickster.declined`, `arueshalae.evil_dead`, `arueshalae.closed`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.changed`, `chapter_later`, `trickster.failed`. Return witness: `arueshalae.trickster.returned`.
-  - `arueshalae.trickster.dead.starving/start/0` — [Treat her like a patient] "You're not dead. You're starving. Eat."; Need all: `trickster.religion_tier1`, `arueshalae.trickster.gift_held`; Blocked by: `arueshalae.trickster.gift_held`; Mythic: PlayerIsTrickster
+- Recovery for **dead**: `arueshalae.trickster.dead.starving` (Starving); rest delivery / Satchel: visit (owner contact / rest); chapters 3–5; 24h delay. Need all: `trickster`, `trickster.ever`, `arueshalae_dead`, `arueshalae_dead.latched`; Blocked by: `arueshalae.trickster.returned`, `arueshalae.trickster.declined`, `arueshalae.evil_dead`, `arueshalae.closed`, `arueshalae.kicked_out`, `arueshalae.kicked_out_evil`, `arueshalae.changed`, `chapter_later`, `trickster.failed`. Return witness: `arueshalae.trickster.returned`.
+  - `arueshalae.trickster.dead.starving/start/0` — [Call her bluff] "You're not dead. You're starving. Eat."; Need all: `trickster.religion_tier1`, `arueshalae.trickster.gift_held`; Blocked by: `arueshalae.trickster.gift_held`; Mythic: PlayerIsTrickster
   - `arueshalae.trickster.dead.starving/start/1` — [Let her rest.]; ends without completing scene
-  - `arueshalae.trickster.dead.starving/start/2` — [Treat her like a patient] "You're not dead. You're starving. Eat."; Need all: `arueshalae.trickster.gift_held`; Blocked by: `trickster.religion_tier1`, `arueshalae.trickster.gift_held`; Mythic: PlayerIsTrickster
-  - `arueshalae.trickster.dead.starving/start/3` — [Treat her like a patient] "You're not dead. You're starving. Eat."; Need all: `arueshalae.trickster.gift_held`; Mythic: PlayerIsTrickster
+  - `arueshalae.trickster.dead.starving/start/2` — [Call her bluff] "You're not dead. You're starving. Eat."; Need all: `arueshalae.trickster.gift_held`; Blocked by: `trickster.religion_tier1`, `arueshalae.trickster.gift_held`; Mythic: PlayerIsTrickster
+  - `arueshalae.trickster.dead.starving/start/3` — [Call her bluff] "You're not dead. You're starving. Eat."; Need all: `arueshalae.trickster.gift_held`; Mythic: PlayerIsTrickster
   - `arueshalae.trickster.dead.starving/treat/0` — Continue; Need all: `arueshalae.nocticula_claimed`
   - `arueshalae.trickster.dead.starving/treat/1` — Continue; Blocked by: `arueshalae.nocticula_claimed`
   - `arueshalae.trickster.dead.starving/wake/0` — [Lie down beside her, skin to skin, and let her take]; PASS SkillLoreReligion DC 22 (party check); success → `rite_holds`; failure → `rite_fails`
@@ -14679,7 +14683,7 @@ Unavailable states: `arueshalae_dead`, `arueshalae.evil_dead`, `arueshalae.kicke
   - `arueshalae.trickster.dead.starving/thread/0` — Continue; records `arueshalae.trickster.cost.gift_torn`; Need all: `arueshalae.nocticula_claimed`
   - `arueshalae.trickster.dead.starving/thread/1` — Continue; records `arueshalae.trickster.cost.gift_torn`; Blocked by: `arueshalae.nocticula_claimed`
   - `arueshalae.trickster.dead.starving/claimed/0` — Continue
-  - `arueshalae.trickster.dead.starving/plea/0` — [Give her your wrist] "Doctor's orders."; records `arueshalae.trickster.returned`, `arueshalae.trickster.cost.fed_on_you`, `arueshalae.started`
+  - `arueshalae.trickster.dead.starving/plea/0` — [Give her your wrist] "Eat."; records `arueshalae.trickster.returned`, `arueshalae.trickster.cost.fed_on_you`, `arueshalae.started`
   - `arueshalae.trickster.dead.starving/plea/1` — [Have the guards drag a condemned cultist to her] "Not me. Him."; records `arueshalae.trickster.returned`, `arueshalae.trickster.cost.fed_on_prisoner`, `arueshalae.started`
   - `arueshalae.trickster.dead.starving/plea/2` — [Let her keep her vow.]; records `arueshalae.trickster.declined`
   - `arueshalae.trickster.dead.starving/vow/0` — Continue
