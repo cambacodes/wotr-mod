@@ -15,9 +15,8 @@ def integrate(payload):
     # a_crossing: first night, Drezen room, Beth has not agreed; the door left unbarred.
     extend(payload, [("a_crossing", "round2.buildup.night")],
            "Then she leans down, her hair falling around both your faces, and drags you up against her.{/n}", '''
-{n}Bare, she is all scout: lean muscle, a pale seam down one thigh, a bruise going yellow over her ribs. She gives you one breath to look before she tows you out of the last of your clothes and tosses them after the scarf. She settles her weight on you and the heat of her lands on your hip, slick and unmistakable. She snorts at herself, caught out.{/n}
-"Don't. Don't say it." {n}She catches your hand and drags it between her thighs, makes you feel exactly how wet she is, and holds it there. Her voice has gone rough.{/n} "That ain't Beth's doin'. That's all me, and I've been carryin' it round for weeks. Damn me for it."
-{n}A boot scrapes in the corridor, a runner's, slowing at her unbarred door. Anevia freezes above you with her own fist against her mouth, eyes bright and wicked over her knuckles, and her hips do not stop: a slow, shameless roll that wrings a sound out of both of you. The footsteps drift on. She lets her breath out, half a laugh and half a moan, takes the fist from her mouth and rises on her knees, thighs shaking, palms flat on your chest, hovering over you.{/n}
+"Don't. Don't say it." {n}Her voice has gone rough; she has caught the look on your face and knows exactly what it says about the look on hers.{/n} "That ain't Beth's doin'. That's all me, and I've been carryin' it round for weeks. Damn me for it."
+{n}A boot scrapes in the corridor, a runner's, slowing at her unbarred door. Anevia freezes above you with her own fist against her mouth, eyes bright and wicked over her knuckles. The footsteps drift on. She lets her breath out, half a laugh and half a groan, takes the fist from her mouth and hangs there over you, palms flat on your chest.{/n}
 "Eyes on me. No lyin'. Tell me you want it too."''')
 
     # a_key_that_is_hers: her leased room, honest share, Beth knows what a key means.

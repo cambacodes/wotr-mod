@@ -787,7 +787,7 @@ You kiss the corner of her mouth. She turns toward you and makes you begin again
 "The bed. Quickly, before this thing breaks."
 {n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.
 At the bed she twists out of your arms before you can set her down, lands on her knees on the cover, and hauls you after her by the collar she has already half unfastened.{/n}
-"Still thinking about Vhal?" {n}she catches your collar again.{/n} "She can wait. I want you here." {n}She pulls the pins out of her hair one at a time and drops them on the floor, and then her dress after them, and puts one ink-stained hand flat on your chest and pushes you down onto your back, and follows.{/n}
+"Still thinking about Vhal?" {n}she catches your collar again.{/n} "She can wait. I want you here." {n}She pulls the pins out of her hair one at a time and drops them on the floor, and puts one ink-stained hand flat on your chest and pushes.{/n}
 {n}In the morning she retrieves the letter without hurrying, folds it into her sleeve, and steals the warmer side of the cover before you can object. When you reach for her she does not pretend to be asleep. From that night she stops knocking at your door; she simply comes in, and tells you what she has been writing, and sits where she likes.{/n}''', c('[Let the work wait until she comes up the stair again.]', flags=f("letter_faced"))),
 ], "papers_recovered")
 
@@ -1381,8 +1381,8 @@ There are no proofs under her arm tonight. No list of paid subscribers. She noti
 You kiss the inside of her wrist. Her breath catches, briefly enough that she could deny it, and her fingers curl against your cheek.{/n}
 "That was not in my order," {n}she says.{/n}
 "Do that again."
-{n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress, and draws it up over her head in one motion, and drops it on the floor on top of Vhal's prospectus.{/n}
-"Now," {n}she says, and takes your hands, and puts them on her bare waist, and leans down into you.{/n}''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
+{n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress and stays there, deliberately, to see how long you will let her.{/n}
+"Now," {n}she says, and takes your hands, and puts them at her waist, and leans down into you.{/n}''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
     n("kiss", "Nurah", '''"I could ask someone to stand outside and become embarrassed at the appropriate moment."
 {n}You rub two fingers together in a show of avarice. Nurah grins.{/n}
 "Only if you insisted on being impressive."
@@ -1393,7 +1393,7 @@ The first kiss is brief. The second is her answer to its brevity. She pulls your
 {n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve, and when you set her down she does not let go of it; she pulls, and you come down with her.
 Outside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}
 "Much better," {n}she says.{/n} "They have learned to miss the interesting part."
-{n}She rolls you onto your back with a small grunt of effort, climbs astride you, and unlaces her bodice with quick, practised fingers, watching your face as the laces slip free. She lets it fall open and leans down until her hair closes round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
+{n}She rolls you onto your back with a small grunt of effort and climbs astride you, her hair closing round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
     n("stay", "Nurah", '''"That is a long time to leave you without assistance."
 {n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.
 You draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}
@@ -1401,7 +1401,7 @@ You draw her into an embrace. For a moment she stands still inside it, her face 
 "I have more than ink to work with tonight."
 {n}She lifts her head. The smile that follows is slow and very much aware of what she has to work with instead.
 When you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed: your belt, which she dislikes; your shirt, which she likes better on the floor; a kiss against the bedpost that she says is research.
-At the bed she stops you with one hand flat on your chest and pushes, and you sit. She stands between your knees, which puts her eyes level with yours for once, and unhooks her dress at the back without looking, and lets it go.{/n}
+At the bed she stops you with one hand flat on your chest and pushes, and you sit. She stands between your knees, which puts her eyes level with yours for once, and reaches behind her for the hooks of her dress without looking.{/n}
 "I am staying," {n}she says again, quieter, and climbs into your lap, and takes your face in both inky hands and pulls you down onto the bed with her.{/n}''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
     n("quiet", "Nurah", '''{n}Nurah leaves the fastening open, as though declining to surrender the small victory entirely.{/n}
 "A dangerous preference. I could talk until you regret it."
@@ -1498,25 +1498,24 @@ for _nid, _number, _cut in (
 # Heat pass: each build-up reaches the start of the act; the cuts lead into the reserved segments.
 _HEAT = {
     ('nurah.the_letter_she_wrote', 'near.build_up'): '''
-{n}Her mouth goes down your throat and chest in quick, hungry bites, and her laugh is short and low where it brushes your stomach. She tugs at the last of your clothes until they are gone, kneels over you in the dark, bare and unhurried, and drags your hand to her breast and then lower.{/n}
-"I want you here, and I want you loud." {n}Her breath is ragged. She settles her thighs on either side of your hips and moves against you, slick and impatient, until you hear yourself say her name.{/n}''',
+{n}Her mouth goes down your throat in quick, hungry bites, and her laugh is short and low against your skin.{/n}
+"I have spent a month writing other people's passion. I want you here, and I want you loud." {n}Her breath is ragged at your ear and her fingers are quick at your belt.{/n}''',
     ('nurah.a_margin_for_you', 'teasing'): '''
-{n}Her mouth is on your throat, then lower, as she works your shirt open one button at a time and hisses in satisfaction at what she finds. Your hands find the warm weight of her breasts; she arches into them, shameless, and drags her hips along your lap until the chair groans and neither of you can pretend to be amused.{/n}
+{n}Her mouth is on your throat as she works your shirt open one button at a time, and she hisses in satisfaction at what she finds. The chair groans, and neither of you can pretend to be amused.{/n}
 "Revisions," {n}she pants,{/n} "are best done by hand."''',
     ('nurah.a_margin_for_you', 'kiss'): '''
-{n}Her bodice is open and her breasts brush your chest with each unsteady breath. She kisses you again, deeper, then pulls back with a wicked look and tugs your belt loose.{/n}
+{n}She kisses you again, deeper, then pulls back with a wicked look and tugs your belt loose.{/n}
 "There. Now you are as exposed as my footnotes."
-{n}She slides down your body, kissing as she goes, and back up again, flushed and dishevelled, pushing the last of her clothes from her hips and settling her bare thighs on either side of yours.{/n}''',
+{n}The laces of her bodice slip under her fingers while she watches your face.{/n}''',
     ('nurah.a_margin_for_you', 'stay'): '''
-{n}The bed takes your weight; she takes the rest. Her mouth drags down your chest and her fingers close hard on your hip. She rolls you beneath her, bare skin against yours, and smiles with her teeth when your breath breaks.{/n}
-"I am staying," {n}she says a third time, as if the word were a thrilling new vice,{/n} "and I intend to be thorough."
-{n}She kisses a path to your ear, thighs bracketing yours, her hips already moving against you in a slow, deliberate roll.{/n}''',
+{n}The bed takes your weight; she takes the rest. Her mouth drags down your throat and her fingers close hard on your hip, and she smiles with her teeth when your breath breaks.{/n}
+"I am staying," {n}she says a third time, as if the word were a thrilling new vice,{/n} "and I intend to be thorough."''',
 }
 _CUT = {
-    'nurah.the_letter_she_wrote.explicit.1': '{n}Nurah braces a hand beside your head, kisses you hard, and lowers herself over you with a shuddering breath. "Mine," she murmurs, "for the length of one letter." The cold lamp and the old letter stay out of reach on the table.{/n}',
-    'nurah.a_margin_for_you.explicit.1': '{n}Nurah rises on her knees in the chair, drags the last of the cloth between you out of the way, and settles over you, her thumb still on your jaw. "Eyes on me," she breathes. "I am not done editing."{/n}',
-    'nurah.a_margin_for_you.explicit.2': '{n}Nurah pins your hands against the pillow, kisses you open-mouthed, and settles over you, hips rolling. "Footsteps," she whispers, "and they still miss the interesting part."{/n}',
-    'nurah.a_margin_for_you.explicit.3': '{n}Nurah catches your mouth, draws your hand along her bare side and down between her thighs, and lifts her hips to meet yours. "Chapter and verse," she murmurs, breathless.{/n}',
+    'nurah.the_letter_she_wrote.explicit.1': '{n}The dress comes off in the dark, and the rest follows. Her skin is hot under your hands, her ink-stained fingers are fisted in your shirt, and her breath breaks against your ear. "Mine," she murmurs, "for the length of one letter." The cold lamp and the old letter stay out of reach on the table.{/n}',
+    'nurah.a_margin_for_you.explicit.1': '{n}She kisses away the clever answer you were about to give, and the chair takes the rest of the argument. Her skin is warm under your hands, the hem of her dress rides up, and "I am not done editing" is the last thing either of you says for a long while.{/n}',
+    'nurah.a_margin_for_you.explicit.2': '{n}The laces give, her hair falls round you both, and her mouth finds yours again, open and unhurried. Skin, breath, the complaint of the bedframe. In the corridor the footsteps pass. "They still miss the interesting part," she whispers against your lips.{/n}',
+    'nurah.a_margin_for_you.explicit.3': '{n}She kisses a path to your ear and draws your hand along her bare side. "Chapter and verse," she murmurs, breathless, and the dark keeps the rest of it.{/n}',
 }
 for _scene in SCENES:
     for _node in _scene['Nodes']:

@@ -508,8 +508,8 @@ DATE_NODES = [
     k("threshold", '''{n}She breaks the kiss first, and only far enough to talk.{/n}
 "Act three," {n}she says against your mouth.{/n} "The princess dismisses the guards, and the guest forgets every line. Come here and forget them."
 {n}She shuts the door with her heel and stage-directs the rest: you, there, by the bed; the candle, here, where it will do her the most good. Then she unlaces the dark dress herself, slowly, one hook at a time, watching your face over her shoulder to see how each one lands and making you wait for the next. When you reach for her she catches both your wrists and kisses you until you forget what you were reaching for.{/n}
-{n}The dress goes to the floor in a whisper of borrowed velvet. She steps out of it wearing nothing but the ribbon at her throat, and pushes you down onto the bed with one hand flat on your chest, a princess who has had quite enough of mystery. She climbs over you, knees either side of your hips, lets her hair fall around both your faces, and laughs, low and delighted, at whatever she finds in yours.{/n}
-"No speeches," {n}she whispers, and settles astride you, and reaches down between you.{/n}''',
+{n}The dress slips to the floor in a whisper of borrowed velvet. She pushes you down onto the bed with one hand flat on your chest, a princess who has had quite enough of mystery, and leans over you, her hair falling around both your faces, and laughs, low and delighted, at whatever she finds in yours.{/n}
+"No speeches," {n}she whispers.{/n} "Elan will have his answer, and it will cost me. Tonight I want what I am not allowed."''',
       c("Continue", "morning_after")),
     k("morning_after", '''{n}Morning. She is sitting up in bed with the blanket round her shoulders and ink on her fingers, writing on the back of a playbill, and she does not look up when you wake.{/n}
 "It's staying in the play." {n}She crosses something out.{/n} "Heavily edited. There are children in Drezen." {n}Another line.{/n} "You were very good, so you get a bigger part. Don't let it go to your head. The princess still gets the last word."''',
