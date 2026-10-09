@@ -1888,7 +1888,7 @@
     "arueshalae.trickster.epilogue.commit": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "e297d8ce49393a6917a2ab021359eb7b168f2b2a4d436b93a0f15a44fb45343e"
+      "text_sha": "7ec882e39299d6e4646331c0bf165459af5c1ac19be8096bf05960d8866119e0"
     },
     "arueshalae.trickster.epilogue.kept": {
       "owner": "claude",
@@ -1903,7 +1903,7 @@
     "arueshalae.trickster.epilogue.declined": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "ff6c0afe3d39f9bca2f26836090b5fe070bc3ea5f60127665161dcb8065f9793"
+      "text_sha": "29ac04d7c36429d4088ad05c7ba3cbeeba762abbc3237eac96156d267720f695"
     },
     "arueshalae.trickster.epilogue.fallen": {
       "owner": "claude",
@@ -2038,7 +2038,7 @@
     "arueshalae.treatment.morning": {
       "owner": "claude",
       "since": "6b313d36",
-      "text_sha": "0d5ca17dae77e617ca749161106e36cd52b88cf0f0dbc6e93b62b224adc97c62"
+      "text_sha": "b1ae8ecdac40ef6df01a22176bea4d863042aa99d330021ae2635d1d7d5f8c6e"
     },
     "arueshalae.treatment.discharged": {
       "owner": "claude",
