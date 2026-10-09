@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rrt-checkpoint-review/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "dossier", "policy", "chapter", "part", "reviewer", "findings", "characters", "verdict"],
+  "properties": {
+    "schema": {"const": "rrt-checkpoint-review/1"},
+    "dossier": {"type": "string"},
+    "policy": {"type": "string"},
+    "chapter": {"type": "string"},
+    "part": {"type": "integer", "minimum": 1},
+    "reviewer": {"enum": ["luna", "terra"]},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "chapter", "scene", "node", "flag", "kind", "claim", "evidence", "certainty", "severity", "recommended_form", "recommendation"],
+        "properties": {
+          "id": {"type": "string"},
+          "chapter": {"type": "string"},
+          "scene": {"type": "string"},
+          "node": {"type": ["string", "null"]},
+          "flag": {"type": ["string", "null"]},
+          "kind": {"enum": ["fact", "chronology", "character_knowledge", "continuity", "game_feel", "character_truth", "fun", "gameplay_integration"]},
+          "claim": {"type": "string", "minLength": 1},
+          "evidence": {"type": "string", "minLength": 1},
+          "certainty": {"enum": ["certain", "uncertain"]},
+          "severity": {"enum": ["hard", "major", "minor"]},
+          "recommended_form": {"enum": ["sidequest", "companion_interaction", "area_encounter", "camp_event", "journal_quest", "crusade_event", "check", "combat", "item", "keep_as_is", "cut", null]},
+          "recommendation": {"type": "string"}
+        },
+        "if": {"properties": {"kind": {"enum": ["fun", "gameplay_integration"]}}},
+        "then": {"properties": {"recommended_form": {"type": "string"}}}
+      }
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["character_id", "present_in", "state", "voice", "truth", "notes"],
+        "properties": {
+          "character_id": {"type": "string"},
+          "present_in": {"type": "array", "items": {"type": "string"}},
+          "state": {"enum": ["present", "committed", "departed", "dead", "absent"]},
+          "voice": {"enum": ["on", "drifting", "off"]},
+          "truth": {"enum": ["on", "sanitized", "flanderized", "off"]},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chapter_status", "hard", "major", "minor", "fun", "feels_like_part_of_the_game", "summary"],
+      "properties": {
+        "chapter_status": {"enum": ["pass", "pass_with_minor", "needs_fixes", "blocking"]},
+        "hard": {"type": "integer", "minimum": 0},
+        "major": {"type": "integer", "minimum": 0},
+        "minor": {"type": "integer", "minimum": 0},
+        "fun": {"$ref": "#/$defs/score"},
+        "feels_like_part_of_the_game": {"$ref": "#/$defs/score"},
+        "summary": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "justification"],
+      "properties": {"score": {"type": "integer", "minimum": 1, "maximum": 10}, "justification": {"type": "string", "minLength": 1}}
+    }
+  }
+}

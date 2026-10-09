@@ -1,0 +1,98 @@
+{
+  "_doc": "Player policies for tools/playthrough/walker.py. Data only: walker.py interprets every key; see README.md. Objective keys (lower tuple wins, ties keep the first choice in story order): commit = path sets a CommittedFlag of a pursued relationship (0) or not (1); no_commit = path sets any CommittedFlag (1) or not (0); closures = number of ClosedFlags/avoid flags gained (fewer first); closures_desc = more first; weight = sum of rule weights (higher first); complete = path finishes the scene (0) or aborts/stalls (1); depth = shorter path first. wanted: romance = the E9 rule (commits, or completes without closing anything); complete = completes or commits; closes_or_completes = completes or gains a closure.",
+  "chapter_days": {"3": 80, "5": 30, "6": 45},
+  "policies": {
+    "trickster_all_romance": {
+      "description": "The F8 ideal run: Trickster path, every romance pursued to commitment, harem and Last Call. Identical planner, natives and bans to tools/ideal-run-kit/final_sim.py (kit planner).",
+      "mythic": "trickster",
+      "kit": {"natives": true, "skip": true, "bans": true, "avoid_text": true, "avoid_flags": true},
+      "planner": "kit",
+      "enforce_mythic": false,
+      "epilogues": true
+    },
+    "trickster_villain": {
+      "description": "Trickster path with a cruel, evil Commander: villain partners are pursued to commitment and their demands accepted; every other woman is still met but answered with the cruelest option available.",
+      "mythic": "trickster",
+      "kit": {"natives": true, "skip": true, "bans": false, "avoid_text": false, "avoid_flags": false},
+      "planner": "policy",
+      "enforce_mythic": true,
+      "epilogues": true,
+      "pursue": ["nocticula", "nocticula.acquisition", "camellia", "wenduag", "areelu", "hepzamirah", "minagho_chivarro", "jerribeth", "vellexia", "nurah", "herrax", "horzalah", "elyanka", "melazmera", "devarra", "lastcall", "foresight", "household", "longcon"],
+      "objective_pursued": ["commit", "weight", "complete", "closures", "depth"],
+      "objective_other": ["weight", "complete", "depth"],
+      "wanted_pursued": "romance",
+      "wanted_other": "complete",
+      "rules": [
+        {"alignment": "Evil", "weight": 4},
+        {"alignment": "Good", "weight": -4},
+        {"text": "(?i)\\[(attack|kill|threaten|intimidat|lie|blackmail|cruel|sneer|laugh at|mock|demand|take|torture|feed|sacrifice)", "weight": 3},
+        {"text": "(?i)\\b(kill|cruel|blood|bleed|pain|beg|kneel|obey|own you|mine|use you|sell|slave|leash|debt)\\b", "weight": 1},
+        {"text": "(?i)\\b(yes|accept|agree|deal|done|i'?ll do it|as you wish)\\b", "weight": 1},
+        {"text": "(?i)\\b(mercy|forgive|spare|sorry|please|gently|kindly)\\b", "weight": -1},
+        {"set": "\\.(cruel|evil|blackmail|threat|betray|demand|price|paid|bargain|deal|cost)\\b", "weight": 2},
+        {"set": "\\.(kind|mercy|spared|refused_demand)\\b", "weight": -2}
+      ]
+    },
+    "nontrickster_good": {
+      "description": "A good Angel Commander (not Trickster). Only romances the export opens off the Trickster path are reachable; Trickster-gated scenes, devices, harem and Last Call stay shut.",
+      "mythic": "angel",
+      "kit": {"natives": true, "natives_exclude": "trickster|dead|killed|kill|prison|gone|kicked|absent|sacrifice|fight|exiled|removed|failure|condemned|lost", "skip": false, "bans": false, "avoid_text": false, "avoid_flags": false},
+      "planner": "policy",
+      "enforce_mythic": true,
+      "epilogues": true,
+      "pursue": "*",
+      "objective_pursued": ["commit", "closures", "weight", "complete", "depth"],
+      "objective_other": ["closures", "weight", "complete", "depth"],
+      "wanted_pursued": "romance",
+      "wanted_other": "romance",
+      "rules": [
+        {"alignment": "Good", "weight": 4},
+        {"alignment": "Evil", "weight": -6},
+        {"text": "(?i)\\[(attack|kill|threaten|intimidat|blackmail|lie|mock|sneer)", "weight": -3},
+        {"text": "(?i)\\b(mercy|forgive|spare|help|protect|promise|gently|thank)\\b", "weight": 1},
+        {"set": "\\.(cruel|evil|blackmail|threat|betray)\\b", "weight": -3}
+      ]
+    },
+    "hostile": {
+      "description": "Trickster Commander who refuses, betrays and abandons: every route is closed where a choice allows it, Trickster devices are declined ('let her stay gone'), and the natives below let women leave or die where the game allows it.",
+      "mythic": "trickster",
+      "kit": {"natives": false, "skip": false, "bans": false, "avoid_text": false, "avoid_flags": false},
+      "planner": "policy",
+      "enforce_mythic": true,
+      "epilogues": true,
+      "pursue": [],
+      "objective_pursued": ["closures_desc", "no_commit", "weight", "complete", "depth"],
+      "objective_other": ["closures_desc", "no_commit", "weight", "complete", "depth"],
+      "wanted_pursued": "closes_or_completes",
+      "wanted_other": "closes_or_completes",
+      "natives_on": {
+        "ember_gone": 1,
+        "jerribeth.unavailable": 3,
+        "seelah_dead": 3,
+        "camellia.killed": 3,
+        "camellia.dead": 3,
+        "wenduag.killed": 3,
+        "wenduag.dead_any": 3,
+        "arueshalae_dead": 3,
+        "nenio.sent_away": 3,
+        "kaylessa.dead": 3,
+        "targona.dead_lab": 3,
+        "aranka.ran_failure": 3,
+        "nurah.dead_drezen": 4,
+        "chivarro.dead": 4,
+        "galfrey.killed_by_commander": 5,
+        "galfrey.dead": 5,
+        "jannah.dead": 5,
+        "shamira.killed": 5,
+        "devarra.dead_lair": 6
+      },
+      "rules": [
+        {"text": "(?i)\\b(no|leave|go away|get out|stay gone|let her|refuse|not interested|enough|never|dismiss|send her|walk away|goodbye)\\b", "weight": 2},
+        {"text": "(?i)\\[(leave|refuse|decline|walk away|attack|dismiss|ignore)", "weight": 3},
+        {"text": "(?i)\\b(yes|i'?ll stay|kiss|love|mine|promise|together)\\b", "weight": -2},
+        {"set": "\\.(declined|refused|rejected|dismissed|closed|left|betray|abandon|sent_away|gone|stay_gone)\\b", "weight": 3},
+        {"set": "\\.(courting|kiss|committed|together|returned)\\b", "weight": -3}
+      ]
+    }
+  }
+}
