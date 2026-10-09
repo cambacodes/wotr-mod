@@ -59,7 +59,7 @@ NODES = [
     (A + "retry.corrupted", "refused", A_REFUSED, ARUE_REFUSED),
     (A + "retry.corrupted", "failed", RETRY_FAILED, NOCT_RETRY_FAILED),
     (S, "queen_reply", "[PROSE PENDING: nocticula - want court precedence / separately answer through her acquired seal and assert her priority / tolerate her lover's public counterclaim]", QUEEN_REPLY),
-    (S, "shamira_reply", "[PROSE PENDING: shamira - want her own court rank / freely send her distinct correspondence claiming precedence beside Nocticula / acknowledge the queen's bounded counterclaim]", SHAMIRA_REPLY),
+    # shamira_reply is written in z_j03_contracts.py (her full false-justice letter); this row writes only the queen.
 ]
 
 # (scene prefix, old substring, new substring, minimum hits)
