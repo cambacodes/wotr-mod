@@ -122,7 +122,8 @@ def nodes(step):
             n("cut_warded", "Arueshalae", '''{n}The scroll burns away in the chaplain's hand. Back at the bench, Arueshalae kisses Seelah; Seelah pulls her against her chest and answers.{/n}
 "Not sister like that."
 "No. Not like that," {n}Seelah answers.{/n}
-{n}Seelah glances at the chapel clock, then draws her toward the quarters. The shield remains on the bench.{/n}''', c("Continue", "explicit.1.warded")),
+{n}Seelah glances at the chapel clock, then draws her toward the quarters. The shield remains on the bench.{/n}
+{n}They do not make it decently down the corridor. Seelah has her pinned against the door of her room before it is shut, laughing against her neck, one hand already working the ties of the succubus's dress. Arueshalae's wings shudder and fold. "Seven minutes," she breathes. "I want every one of them." "Then stop talking, sister," Seelah says, and kisses her again, deep and greedy, and shoves the door closed with her boot. The dress goes. The shirt goes. Seelah's armour was left on the bench, and there is nothing now between the paladin's warm bare skin and the demon's, only the ward on Seelah's wrist and the loud, honest want in both of them. Arueshalae takes her in with her eyes, devout and starving. "Look at you," she says. "Gods. Look at you." Seelah drags her onto the bed.{/n}''', c("Continue", "explicit.1.warded")),
             n("explicit.1", "Narrator", "{n}Their door closes. The shield waits where Seelah left it.{/n}", c("Continue", "kept_safe")),
             n("explicit.1.warded", "Narrator", "{n}Their door closes. Before the seven minutes end, Arueshalae draws back and Seelah gathers the fallen blanket between them.{/n}", c("Continue", "kept_warded")),
             terminal(step, "kept_safe", "Arueshalae", '''"Your shield is still on the bench."
