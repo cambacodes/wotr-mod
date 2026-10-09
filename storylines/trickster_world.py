@@ -855,6 +855,14 @@ def integrate_participant_inventory(payload):
 def integrate(payload):
     """Bind every world key read by a registered scene (transitively through Derived/Latches). Never overrides an
     existing binding: the registered routes' own keys win, and a conflicting GUID is an error."""
+    # Arsinoe's sole promise checks accepted romance commitments, not interest or
+    # friendship. Use registered flags (including legacy "committed"), so new
+    # romances join this check without a second hand-maintained route inventory.
+    derived = dict(DERIVED)
+    derived["arsinoe.other_romance_committed"] = [
+        [flag] for flag in sorted({rel["CommittedFlag"]
+            for name, rel in payload.get("Relationships", {}).items()
+            if name not in {"arsinoe", "ember", "aivu"} and rel.get("CommittedFlag")})]
     # Ledger row 16 (R6 audit, COX): a page that mourns a sacrificed Commander never plays beside a Commander who came back
     # (the punchline groups, Last Call's flask, Iomedae's bridge). Like Last Call's L6, but for every commander_back world.
     for s in payload["Scenes"]:
@@ -877,9 +885,9 @@ def integrate(payload):
                 raise ValueError("Conflicting world binding %s: %r vs %r" % (key, have, value))
             if not _bound(payload, key):
                 payload.setdefault(kind, {})[key] = value
-        elif key in DERIVED and not _bound(payload, key):
-            payload.setdefault("Derived", {})[key] = [list(g) for g in DERIVED[key]]
-            pending.extend(k for g in DERIVED[key] for k in g)
+        elif key in derived and not _bound(payload, key):
+            payload.setdefault("Derived", {})[key] = [list(g) for g in derived[key]]
+            pending.extend(k for g in derived[key] for k in g)
         elif key in LATCHES and not _bound(payload, key):
             payload.setdefault("Latches", {})[key] = list(LATCHES[key])
             pending.extend(LATCHES[key])
