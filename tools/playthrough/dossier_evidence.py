@@ -21,6 +21,31 @@ def evidence(ctx, scene):
 
 def node_states(ctx, event, before):
     scene = ctx.model.by_id[event['id']]
+    if event.get('execution_schema'):
+        if event['execution_schema'] != 'rrt-sim-observation/1':
+            raise ValueError('unsupported execution observation schema')
+        states, observations = event['states'], event['observations']
+        if (not observations or observations[-1]['kind'] != 'terminal'
+                or states[observations[-1]['after_state']] != states[event['after_state']]
+                or observations[-1]['completed'] != event['completed']):
+            raise ValueError('execution observer final state mismatch')
+        rows = []
+        for i, step in enumerate(event['steps'] + ([event['end_node']] if event.get('end_node') else [])):
+            node = ctx.model.nodes[event['id']][step['node']]
+            index = step.get('index')
+            choice = node['Choices'][index] if index is not None else {}
+            rows.append(dict(address=event['id'] + '/' + step['node'], step=i,
+                             evidence_level='simulator_observed',
+                             before_entry=states[step['before_entry_state']]['flags'],
+                             visible=states[step['visible_state']]['flags'],
+                             after_choice=states[step['after_choice_state']]['flags'] if index is not None else None,
+                             state_references={k: 'trace.json#/events/%s/states/%s' % (event['event'], step[k])
+                                               for k in ('before_entry_state', 'visible_state', 'after_choice_state') if k in step},
+                             choice_index=index, answer_guid=step.get('answer_guid'), answer_name=step.get('answer_name'),
+                             paragraphs=step['paragraphs'],
+                             choice_gates={k: choice[k] for k in ('Requires', 'Forbids', 'Mythic', 'Check', 'RemoveItem', 'Crusade') if k in choice},
+                             paragraph_gates=[dict(index=p, **{k: node['Paragraphs'][p].get(k, []) for k in ('Requires', 'Forbids', 'AnyGroups')}) for p in step['paragraphs']]))
+        return rows
     held = set(before)
     sf = ctx.model.rels.get(scene['Relationship'], {}).get('StartedFlag')
     if sf and not ctx.V.is_epilogue(scene) and scene.get('NativeReturnCue') is None: held.add(sf)
@@ -33,6 +58,7 @@ def node_states(ctx, event, before):
         choice = node['Choices'][step['index']]
         held.update(step.get('set', choice.get('Set', [])))
         rows.append(dict(address=event['id'] + '/' + step['node'], step=i,
+                         evidence_level='legacy_export_replay_unverified',
                          before_entry=sorted(entry), visible=sorted(visible), after_choice=sorted(held),
                          choice_index=step['index'], paragraphs=step['paragraphs'],
                          choice_gates={k: choice[k] for k in ('Requires', 'Forbids', 'Mythic', 'Check', 'RemoveItem', 'Crusade') if k in choice},
@@ -41,6 +67,7 @@ def node_states(ctx, event, before):
         end = event['end_node']; node = ctx.model.nodes[event['id']][end['node']]
         entry = set(held); held.update(node.get('EnterSet', []))
         rows.append(dict(address=event['id'] + '/' + end['node'], step=len(rows),
+                         evidence_level='legacy_export_replay_unverified',
                          before_entry=sorted(entry), visible=sorted(held), after_choice=None,
                          choice_index=None, paragraphs=end['paragraphs']))
     return rows
@@ -62,7 +89,8 @@ def timeline(ctx, chapter, items, trace):
     windows = collections.Counter(it[1]['hour'] for it in scenes)
     lines = ['# Whole-chapter timeline: ' + str(chapter), '',
              'Evidence level: simulated. Days/gaps are simulated, not in-game pacing or access proof.',
-             'Node states are export replay; scene before/after states are trace-recorded.',
+             ('Node states are simulator-observed with trace state references.' if trace.get('schema') == 'rrt-playthrough-trace/2'
+              else 'Legacy trace: node states are export replay and lack exact execution evidence; scene deltas are trace-recorded.'),
              'Checks always succeed; resources, area and contacts are assumed. Unvisited branches are uncovered.',
              'Native keys scheduled by the kit and derived world state are not played native-choice history.', '',
              '| Event | Day/hour | Origin | Address | Delivery | Words | Longest text span before choice | Choices with distinct exported outcomes | Costs / checks | Setup/payoff flags |',
