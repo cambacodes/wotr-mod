@@ -162,5 +162,72 @@ class SaveCompatibilityTests(unittest.TestCase):
             story["Scenes"][0], story["Scenes"][0]["Nodes"][0])[0]["GuidFor"])
 
 
+CHAPLAIN_PREFIX = "nidalynn.trickster."
+CHAPLAIN_PRAYED = CHAPLAIN_PREFIX + "chaplain_prayed"
+CHAPLAIN_SENT_AWAY = CHAPLAIN_PREFIX + "chaplain_sent_away"
+
+
+def chaplain_available(item, flags):
+    return (set(item["Requires"]) <= flags
+            and not set(item["Forbids"]) & flags
+            and all(set(group) & flags for group in item.get("AnyGroups", [])))
+
+
+class NidalynnChaplainTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from tests.story_fixture import fresh_story
+        cls.story = fresh_story()
+        cls.scene = next(scene for scene in cls.story["Scenes"]
+                         if scene["Id"] == CHAPLAIN_PREFIX + "kiln.the_chaplain")
+        cls.nodes = {node["Id"]: node for node in cls.scene["Nodes"]}
+
+    def test_all_three_paths_record_only_the_played_outcome(self):
+        for index, target in enumerate(("hers", "pray", "leave")):
+            with self.subTest(target=target):
+                self.assertEqual(self.nodes["want"]["Choices"][index]["Next"], target)
+                flags = set()
+                node_id = target
+                visited = []
+                while node_id:
+                    self.assertNotIn(node_id, visited)
+                    visited.append(node_id)
+                    choices = self.nodes[node_id]["Choices"]
+                    self.assertEqual(len(choices), 1)
+                    choice = choices[0]
+                    self.assertTrue(chaplain_available(choice, flags))
+                    flags.update(choice["Set"])
+                    if node_id == "prayer":
+                        self.assertNotIn(CHAPLAIN_PRAYED, flags)
+                    if node_id in ("after_prayer", "leave"):
+                        self.assertEqual(flags & {CHAPLAIN_PRAYED, CHAPLAIN_SENT_AWAY},
+                                         {CHAPLAIN_SENT_AWAY} if target == "leave" else {CHAPLAIN_PRAYED})
+                    node_id = choice["Next"]
+                self.assertEqual(flags & {CHAPLAIN_PRAYED, CHAPLAIN_SENT_AWAY},
+                                 {CHAPLAIN_SENT_AWAY} if target == "leave" else {CHAPLAIN_PRAYED})
+                self.assertEqual("prayer" in visited, target != "leave")
+                self.assertEqual(self.nodes["end"]["Choices"][0]["Set"], [])
+
+    def test_either_outcome_blocks_repeating_the_visit(self):
+        flags = set(self.scene["Requires"])
+        self.assertTrue(chaplain_available(self.scene, flags))
+        for outcome in (CHAPLAIN_PRAYED, CHAPLAIN_SENT_AWAY):
+            with self.subTest(outcome=outcome):
+                self.assertFalse(chaplain_available(self.scene, flags | {outcome}))
+
+    def test_report_readers_cover_both_outcomes_but_not_an_unplayed_visit(self):
+        reports = [paragraph for scene in self.story["Scenes"]
+                   if scene["Id"].startswith(CHAPLAIN_PREFIX + "epilogue.")
+                   for node in scene["Nodes"]
+                   for paragraph in node.get("Paragraphs", [])
+                   if CHAPLAIN_PRAYED in paragraph["Requires"]
+                   or any(CHAPLAIN_PRAYED in group for group in paragraph.get("AnyGroups", []))]
+        self.assertTrue(reports)
+        for paragraph in reports:
+            self.assertFalse(chaplain_available(paragraph, set()))
+            self.assertTrue(chaplain_available(paragraph, {CHAPLAIN_PRAYED}))
+            self.assertTrue(chaplain_available(paragraph, {CHAPLAIN_SENT_AWAY}))
+
+
 if __name__ == "__main__":
     unittest.main()
