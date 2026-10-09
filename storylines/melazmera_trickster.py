@@ -774,7 +774,7 @@ SCENES.append(scene(M + "visit.heap", "On the heap", "Melazmera", 5, "", [
 tag(M + "visit.heap")
 # Intimacy insert: her chosen predatory first night on her own hoard; preserve belt and morning continuity.
 SCENES[-1]["Nodes"].append(nar(M + "visit.heap.explicit.1",
-    "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones. The heap shifts and clatters beneath you, a ruby skitters away down the slope, and she takes you the way she takes everything that stays within her reach: greedily, noisily, with her teeth, and without once letting go.{/n}",
+    "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones. The heap shifts and clatters beneath you, a ruby skitters away down the slope, and she has you the way she has everything that stays within her reach: greedily, noisily, with her teeth, and without once letting go.{/n}",
     c("Continue", "morning")))
 
 

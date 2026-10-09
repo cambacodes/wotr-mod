@@ -226,7 +226,7 @@ rule([J + "future"], "tenant_pinned",
 
 rule([J + "future"], "tenant_free",
      '''in a room that is only real because you both agree it is. She lowers herself onto you''',
-     '''in a room that is only real because you both agree it is. You find the seam beneath the carapace, the one soft place on her, and the sound she makes is like a held note breaking. Her claws shake against your shoulder.{/n}
+     '''in a room that is only real because you both agree it is. You find the pale seam where her wing meets the carapace, the one soft place on her, and the sound she makes is like a held note breaking. Her claws shake against your shoulder.{/n}
 "Careful," {n}she says, and does not mean it.{/n} "I am not accustomed to being handled. Do that again, and I may let you keep the hand."
 {n}She lowers herself onto you''')
 
@@ -253,8 +253,8 @@ rule([J + "trickster.visit"], "threshold",
 
 rule([J + "trickster.visit"], "threshold_free",
      '''She lets you pull her down. Her wings open''',
-     '''She lets you pull her down. Your fingers find the pale seam under the carapace, the one place on her that is not armoured, and she hisses, a long dry rasp, and arches into it before she remembers to disapprove.{/n}
-"Not there," {n}she says, and moves your hand back to it.{/n}
+     '''She lets you pull her down. Your fingers find the pale seam where her wing meets the carapace, the one place on her that is not armoured, and she hisses, a long dry rasp, and arches into it before she remembers to disapprove.{/n}
+"Not there," {n}she says, and moves your hand to the curve of her back, and leaves it.{/n}
 {n}Her wings open''')
 
 rule([J + "unsold_evening"], "kiss",
@@ -300,7 +300,7 @@ rule([W + "court.gongs", W + "court.gongs.native_visit"], "stronger",
 
 rule([W + "court.hunt"], "ate",
      '''{n}She reaches over and wipes it off your chin with her thumb, and licks the thumb.{/n}''',
-     '''{n}She shoves the deer aside with her knee and comes closer across the thorn, her leathers open at the throat and her breath coming quick. She takes your hand and drags it down inside them, to skin that is hot and tight and slick, and holds it there while she watches you understand. Then she reaches up with her other hand and wipes the blood off your chin with her thumb, and licks the thumb.{/n}''')
+     '''{n}She shoves the deer aside with her knee and comes closer across the thorn, her leathers open at the throat and her breath coming quick. She takes your hand and presses it flat against her ribs, her skin hot with the chase, and holds it there while she watches you understand. Then she reaches up with her other hand and wipes the blood off your chin with her thumb, and licks the thumb.{/n}''')
 
 prule(W + "epilogue.pack", "page", "wenduag.trickster.vellexia.hunted",
       '''The succubus pulled her into the alcove, her open gown brushing the huntress's hands. Wenduag answered her kiss and drew her closer.''',

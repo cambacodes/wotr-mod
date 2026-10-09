@@ -90,7 +90,7 @@ def terms_nodes(late=False):
 "There is no arrangement to make with her now. If she comes back, she will answer for herself. Until then, I shall keep her place. If you mean to demand I give it up, my answer is no. You may decide whether that is enough."''',
            c('"Keep her place. I will share if she returns."', next_yes, flags=(SHARE, *yes)),
            c('"Then we stop here. I will have you for myself, or not at all."', no, flags=(DEMANDED, EXCLUSIVE, CLOSED))),
-        sh("partner_share_answer", '''"Her city." {n}Shamira says it through her teeth. Then she draws you between her knees.{/n} "There. She has her announcement. You have your answer. I have two lovers and a court that will start counting which one I look at first."
+        sh("partner_share_answer", '''"Her city." {n}Shamira says it through her teeth. Then she draws you down beside her.{/n} "There. She has her announcement. You have your answer. I have two lovers and a court that will start counting which one I look at first."
 {n}Her hand closes on the back of your neck.{/n} "Do not grow tedious about it. Either of you."''',
            c("[Kiss her.]", next_yes, flags=(SHARE, PAID, *yes))),
     ]
@@ -112,7 +112,7 @@ def terms_nodes(late=False):
 {n}Shamira's fingers pass through the shadow. Her mouth hardens.{/n} "She heard me."''', c("Continue", "partner_chosen_yes")),
         sh("partner_chosen_dead", '''"No reply. I have named what I am ending. I will not invent an answer from her to make this easy."
 {n}She leaves the letter by the throne.{/n} "If she answers, she will hear the same words."''', c("Continue", "partner_chosen_yes")),
-        sh("partner_chosen_yes", '''{n}She draws you between her knees.{/n} "You will still feed this body. I shall still reach into your dreams. If you hoped to shut that door by shutting hers, you have made a very bad bargain."
+        sh("partner_chosen_yes", '''{n}She draws you in against her.{/n} "You will still feed this body. I shall still reach into your dreams. If you hoped to shut that door by shutting hers, you have made a very bad bargain."
 {n}Her mouth catches yours; the throne's arm digs into your back.{/n} "Now show me why I made it."''',
            c('[Kiss her.]', next_yes, flags=(EXCLUSIVE, CHOSEN, *yes))),
     ])

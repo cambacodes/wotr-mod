@@ -15,7 +15,7 @@
   "min_lines": 12,
   "max_lines": 18,
   "slot_id": "melazmera.trickster.visit.heap.explicit.1",
-  "default_text": "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones. The heap shifts and clatters beneath you, a ruby skitters away down the slope, and she takes you the way she takes everything that stays within her reach: greedily, noisily, with her teeth, and without once letting go.{/n}",
+  "default_text": "{n}She catches your belt before it slides down the heap. Your answer draws her close; her teeth brush your jaw, and the shadow of her wings covers the stones. The heap shifts and clatters beneath you, a ruby skitters away down the slope, and she has you the way she has everything that stays within her reach: greedily, noisily, with her teeth, and without once letting go.{/n}",
   "continuity": {
     "from": "melazmera.trickster.visit.heap/cut, existing choices 0 and 1",
     "to": "melazmera.trickster.visit.heap/morning",

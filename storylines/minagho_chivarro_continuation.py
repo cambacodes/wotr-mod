@@ -625,7 +625,7 @@ When they turn toward you, both are plainly waiting to see what you will bid.{/n
       c('"Stay close. Just the hour, tonight."', "minagho_close")),
     n("minagho_kiss", "Narrator", '''{n}Minagho catches your collar and kisses you. Her knee strikes the table; she catches a falling game stone without letting go.{/n}
 "A witness. Dispose of it."
-{n}You put it aside. She shoves the tray off the couch, slips her dress from her shoulders and climbs into your lap. Her bare back arches beneath your hands. She bites your lower lip, then smiles against it.{/n}
+{n}You put it aside. She shoves the tray off the couch, slips her dress from her shoulders and pulls you down along the couch. Her bare back arches beneath your hands. She bites your lower lip, then smiles against it.{/n}
 "One hour. Do not waste it being gentle."
 {n}Her fingers close on your belt.{/n}
 

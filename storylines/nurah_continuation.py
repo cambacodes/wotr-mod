@@ -1377,11 +1377,11 @@ There are no proofs under her arm tonight. No list of paid subscribers. She noti
 "You hid behind it. There is nothing to hide behind tonight."
 {n}The fastening gives. Nurah looks down at her success with exaggerated surprise, then catches your hand before you can reach for hers.{/n}
 "Patience. I am revising the order of events."
-{n}She draws you toward the chair and climbs into your lap when you sit. For a while she seems content to examine the face of the person who helped her ruin an evening, acquire an enemy, and get an old letter back. Her thumb moves along your jaw, stopping where she wants your attention.
+{n}She draws you toward the chair and sits you down in it, close enough that her knee presses yours. For a while she seems content to examine the face of the person who helped her ruin an evening, acquire an enemy, and get an old letter back. Her thumb moves along your jaw, stopping where she wants your attention.
 You kiss the inside of her wrist. Her breath catches, briefly enough that she could deny it, and her fingers curl against your cheek.{/n}
 "That was not in my order," {n}she says.{/n}
 "Do that again."
-{n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress and stays there, deliberately, to see how long you will let her.{/n}
+{n}She leans down over the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress and stays there, deliberately, to see how long you will let her.{/n}
 "Now," {n}she says, and takes your hands, and puts them at her waist, and leans down into you.{/n}''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
     n("kiss", "Nurah", '''"I could ask someone to stand outside and become embarrassed at the appropriate moment."
 {n}You rub two fingers together in a show of avarice. Nurah grins.{/n}
@@ -1402,7 +1402,7 @@ You draw her into an embrace. For a moment she stands still inside it, her face 
 {n}She lifts her head. The smile that follows is slow and very much aware of what she has to work with instead.
 When you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed: your belt, which she dislikes; your shirt, which she likes better on the floor; a kiss against the bedpost that she says is research.
 At the bed she stops you with one hand flat on your chest and pushes, and you sit. She stands between your knees, which puts her eyes level with yours for once, and reaches behind her for the hooks of her dress without looking.{/n}
-"I am staying," {n}she says again, quieter, and climbs into your lap, and takes your face in both inky hands and pulls you down onto the bed with her.{/n}''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
+"I am staying," {n}she says again, quieter, and takes your face in both inky hands and pulls you down onto the bed with her.{/n}''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
     n("quiet", "Nurah", '''{n}Nurah leaves the fastening open, as though declining to surrender the small victory entirely.{/n}
 "A dangerous preference. I could talk until you regret it."
 "And yet you continue inviting me. A mystery for a more diligent historian."

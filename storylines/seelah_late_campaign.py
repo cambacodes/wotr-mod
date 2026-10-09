@@ -333,7 +333,7 @@ s("late_afterglow", "The verse she remembers", '"You were going to ask me for an
 "Worth it. Every time I looked, there you were. And now I'm trying to say how much I liked that without comparing you to a barrel. Blasted race. It's eaten all my best words."''', c('"You are doing rather well."', "ask")),
     n("ask", "Seelah", '''{n}She steps in. There is a smear of chalk she missed at the side of one finger, and she does not care about it now.{/n}
 "Then let me finish before I improve it to death. I want you. I want to kiss you until I run out of clever things to say, and then I want to keep going."
-{n}Her hand finds your waist and pulls, not gently, until your hips meet hers. Her breath has gone short. The swagger of the race is still in her, and something hungrier underneath it.{/n}
+{n}Her hand finds your waist and pulls, not gently, until there is no room left between you. Her breath has gone short. The swagger of the race is still in her, and something hungrier underneath it.{/n}
 "Or we sit on that bed and laugh about the song all night, and I tell everyone that was the plan." {n}She grins up at you.{/n} "It wasn't the plan."''',
       c('[Kiss her and ask to stay the night.]', "night", flags=("seelah.late_night_chosen",)),
       c('[Kiss her. Spend the evening trading kisses.]', "kisses", flags=("seelah.late_kisses_chosen",)),

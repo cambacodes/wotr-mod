@@ -76,7 +76,7 @@ APPEND = {
 {n}Her robe fell open. The Commander's coat went wherever she flicked it, and her mouth followed her hands down the Commander's throat and chest, hungry and entirely unapologetic. She took the Commander's hands and set them on her hips and held them there, her eyes half closed.{/n}
 "Years of shadow," {n}she said,{/n} "and you are warm. Let me find out how warm."''',
     ("nocticula.trickster.epilogue.commit", "knelt"): '''
-{n}The Commander's hands found her bare hips unforbidden, and she let them, with a long breath through her teeth. Whatever authority she wore, she wore it for the pleasure of being met; when the Commander drew her down to meet them, the sound she made was nothing like a command.{/n}''',
+{n}The Commander's hands found her bare hips unforbidden, and she let them, with a long breath through her teeth. Whatever authority she wore, she wore it for the pleasure of being met; when the Commander pulled her mouth down to theirs, the sound she made was nothing like a command.{/n}''',
     ("nocticula.trickster.epilogue.commit", "walked"): '''
 {n}Her gown parted at the Commander's hands and fell. She dragged the Commander's shirt up and off, pressed bare skin to bare skin, and bent to bite the Commander's lower lip.{/n}
 "Say it again," {n}she whispered,{/n} "that you wanted to hear it twice. I will say it as often as you like. Yes."''',

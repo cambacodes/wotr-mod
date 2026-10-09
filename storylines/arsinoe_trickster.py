@@ -340,7 +340,7 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
          )),
     late("night", '''{n}Arsinoe stood close while the Commander opened her collar, gold eyes fixed on theirs. At the next clasp she caught their hands and kissed them hard.{/n}
 "I waited for the campaign to end. These fastenings have had quite enough of my patience."
-{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed the Commander back toward the bed. She climbed over them, put their hands on her bare waist, and held them there until their fingers tightened. Then she bent to their mouth, and her composure broke on a breath.{/n}
+{n}She undid the rest herself and let the robes fall. Her hair came loose as she pushed the Commander back toward the bed. She drew them down beside her, put their hands on her bare waist, and held them there until their fingers tightened. Then she bent to their mouth, and her composure broke on a breath.{/n}
 "Higher. I have wanted your hands there since the roof above Tovin's shop."
 {n}The Commander cupped her breasts and she arched into them, nipples hard against their palms, a low curse in a priestess's mouth. She stripped them with the exactness she gave a ledger and none of the patience, kissed down their chest while their hands knotted in her loosened hair, and came back up with her thighs spread wide over them. She was wet against their skin and shaking with the effort of not hurrying. Her hand slid down between them, and her gold eyes did not leave theirs.{/n}''',
          c("Continue", "morning")),

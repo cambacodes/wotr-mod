@@ -227,7 +227,7 @@ def polish_tower(scenes):
         nodes[id]['Choices'][0]['Next'] = T + 'first_bite.explicit.1'
     # Slot brief: private first-night continuation after payment, then bandaged morning.
     first['Nodes'].append(n(T + 'first_bite.explicit.1', 'Narrator',
-        '{n}Her heat closes around you, her claws grind slow furrows in the stone, and the sound she makes in her chest is not a word. The fire burns low around the ruined tower, and her breath is still loud in the dark under the wing. Before dawn, the path remains empty.{/n}', c('Continue', 'morning'), portrait='Devarra'))
+        '{n}Her heat folds over you, her claws grind slow furrows in the stone, and the sound she makes in her chest is not a word. The fire burns low around the ruined tower, and her breath is still loud in the dark under the wing. Before dawn, the path remains empty.{/n}', c('Continue', 'morning'), portrait='Devarra'))
     nodes['after']['Text'] = ('"Small. I said it would be small." {n}She lifts her tail from the stair, '
         'then turns her head to keep you in sight.{/n} "The old man went home. The watch will have seen the fire die. '
         'Let them count another hour. Stay."')

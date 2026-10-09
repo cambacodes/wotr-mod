@@ -13,7 +13,7 @@
   "min_lines": 8,
   "max_lines": 12,
   "slot_id": "devarra.tower.first_bite.explicit.1",
-  "default_text": "{n}Her heat closes around you, her claws grind slow furrows in the stone, and the sound she makes in her chest is not a word. The fire burns low around the ruined tower, and her breath is still loud in the dark under the wing. Before dawn, the path remains empty.{/n}",
+  "default_text": "{n}Her heat folds over you, her claws grind slow furrows in the stone, and the sound she makes in her chest is not a word. The fire burns low around the ruined tower, and her breath is still loud in the dark under the wing. Before dawn, the path remains empty.{/n}",
   "facts": "Native dragon/woundwyrm with scaled hide and wings (native hunt and egg cues).\nShe held the Storyteller captive and demanded an impressive story in exchange for his life.\nGreybor can strike the weak hide beneath her wing; only the observed strike supports that recollection.\nThe Ivory Sanctum constructs threaten her eggs under Xanthir Vang's orders.\nNo verified native humanoid transformation or sexual anatomy is supplied.",
   "required_beats": [
     "Preserve her independent invitation; rescue did not buy affection.",
