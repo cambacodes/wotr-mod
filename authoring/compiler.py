@@ -67,7 +67,7 @@ def compile_story(profile, inputs=None, *, independent_tirabade=True):
     else:
         raise ValueError("Unknown story profile: " + str(profile))
     # Mirrors Story.Validate's remote/physical field rules, the ones a remote->in-person conversion breaks (A96, A100).
-    bad = [f"{s['Id']} ({rule})" for s in payload["Scenes"] for rule in delivery_errors(s)]
+    bad = [f"{s['Id']} ({rule})" for s in payload.get("Scenes", []) for rule in delivery_errors(s)]
     if bad:
         raise ValueError("Scene delivery fields contradict remote/physical (Story.Validate): " + ", ".join(bad))
     destination = None if inputs is None else inputs.destination
