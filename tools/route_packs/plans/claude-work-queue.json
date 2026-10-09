@@ -759,5 +759,166 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "melazmera.trickster.ch4.hunt",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 0: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch4.hunt",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 1: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch4.hunt",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 2: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch4.hunt_found",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 0: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch4.hunt_found",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 1: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch4.hunt_found",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 2: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch5.hunt_window",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 0: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch5.hunt_window",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 1: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.ch5.hunt_window",
+    "node": "owed",
+    "woman": "Melazmera",
+    "beat": "MEL-02 voyage 2: preserve the owed answer and appetite; use the current meeting venue, and finish this first meeting before promising a later visit. Native samples: tools/ideal-run-kit/natives/melazmera.txt; existing retired owed paragraphs retain the register.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.commit.stone",
+    "node": "count",
+    "woman": "Melazmera",
+    "beat": "MEL-02: sailor debt callback without assigning her fire as the meeting venue; samples in retired count paragraph 1 and tools/ideal-run-kit/natives/melazmera.txt.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "start",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "known",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter",
+    "node": "unknown",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "start",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "known",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late",
+    "node": "unknown",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the market stall; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "start",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "known",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_yard",
+    "node": "unknown",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "start",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "known",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "aranka.trickster.verse.her_letter_late_yard",
+    "node": "unknown",
+    "woman": "Aranka",
+    "beat": "CONVERT her_letter: face-to-face song confrontation at the quartermaster yard; preserve both old answers, known/unknown history, Chapter 3/5 timing and paid boast. Native samples: tools/ideal-run-kit/natives/aranka.txt; original letter prose is in the pinned base. Remove correspondence/arrival framing.",
+    "ruling": "struct2-02: structure only; Claude owns replacement prose"
+  },
+  {
+    "scene": "melazmera.trickster.commit.stone",
+    "node": "count",
+    "woman": "Melazmera",
+    "beat": "PROPOSE MEL-02 sibling: paragraph 0 says rent was named on her island even after first contact in Drezen. Provide venue-neutral rent recollection; inspect window/rent against the same history.",
+    "ruling": "struct2-02 class sweep; Claude voice-owner review; no prose replacement authored"
   }
 ]
