@@ -420,7 +420,7 @@ visit(E + "beat.master", "A master from Caliphas", [
 {n}In the morning she is in the dead-house as usual, eating. Her sleeve is clean. You do not ask, and you never learn, and a certain master of the Way is never seen in Caliphas again.{/n}''',
        c("[Do not ask.]", flags=(MASTER_HERS,))),
 ], requires=(BIER,), forbids=(MASTER_KILLED, MASTER_ESCORTED, MASTER_HERS), delay=120, last=5,
-    any_groups=((BIER,), (COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT)))
+    any_groups=((BIER, COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT),))
 
 
 # --- 11. The King's bill (T, optional; only where the King holds court and his court wept at the wake). --------------------
@@ -801,3 +801,41 @@ for _slot_scene_id, _slot_host_id in (
     _slot_entry["Next"] = _slot_id
     _slot_host["Choices"].append(_slot_entry)
     _slot_scene["Nodes"].append(_slot_node(_slot_id, "Narrator", _slot_text, c("Continue")))
+
+
+# struct2-01 / ELY-A4-02: dispatch and earned return are different deliveries.
+# Legacy answer positions and Next targets remain; only appended answers dispatch.
+import copy as _structure_copy
+
+COURIER_AWAY = E + "courier.away"
+COURIER_RETURNED = E + "courier.returned"
+_courier = next(s for s in SCENES if s["Id"] == E + "beat.courier")
+_courier["Nodes"][0]["EnterSet"] = [COURIER_AWAY]
+_courier["Forbids"].extend([COURIER_AWAY, COURIER_RETURNED])
+_message = next(page for page in _courier["Nodes"] if page["Id"] == "message2")
+_return_nodes = [nar("start", "[PROSE PENDING: courier return delivery selection]")]
+_return_nodes[0]["Choices"] = []
+for _index, (_branch, _answer_flag) in enumerate((
+    ("hungry", COURIER_HUNGRY), ("ripening", COURIER_RIPENING), ("silent", COURIER_SILENT),
+)):
+    _old = _message["Choices"][_index]
+    _dispatch = _structure_copy.deepcopy(_old)
+    _dispatch["Next"] = "dispatch." + _branch
+    _old["Requires"].append(COURIER_RETURNED)
+    _message["Choices"].append(_dispatch)
+    _courier["Nodes"].append(nar(
+        "dispatch." + _branch, "[PROSE PENDING: courier dispatch " + _branch + "]",
+        c("Continue", flags=(_answer_flag,))))
+    _return_nodes[0]["Choices"].append(c("Continue", _branch, requires=(_answer_flag,)))
+    _return_nodes.append(nar(
+        _branch, "[PROSE PENDING: courier earned return " + _branch + "]",
+        c("Continue", flags=(COURIER_RETURNED,))))
+SCENES.append(scene(
+    E + "beat.courier_return", _courier["Title"], "Elyanka", 5, "", _return_nodes,
+    requires=("trickster.ever", COURIER_AWAY), forbids=(CLOSED, COURIER_RETURNED,
+        E + "left_free", "elyanka.returned_actor_lost"), delay=96, last=6,
+    optional=True, Relationship=REL, Remote=True, Kind="letter", Chapters=[5, 6],
+    RequiresAnyGroups=[[COURIER_HUNGRY, COURIER_RIPENING, COURIER_SILENT]]))
+tag(E + "beat.courier_return", "T")
+# All groups are ANDed; the master's single OR group keeps the courier optional
+# while counting any held answer in Story.cs's latest-required-flag delay anchor.

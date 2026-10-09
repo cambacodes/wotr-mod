@@ -504,5 +504,60 @@
     "ruling": "struct-slot-hosts",
     "finding": "struct-slot-hosts:melazmera.trickster.beat.count.explicit.1",
     "why": "Claude owns this registered reserved-node placeholder. Fill from tools/route_packs/explicit_slots/melazmera/melazmera.trickster.beat.count.explicit.1.json. The appended Continue answer preserves the legacy exit; no new cost or receipt is introduced."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier",
+    "node": "dispatch.hungry",
+    "woman": "elyanka",
+    "beat": "courier dispatch hungry",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier_return",
+    "node": "hungry",
+    "woman": "elyanka",
+    "beat": "courier earned return hungry",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier",
+    "node": "dispatch.ripening",
+    "woman": "elyanka",
+    "beat": "courier dispatch ripening",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier_return",
+    "node": "ripening",
+    "woman": "elyanka",
+    "beat": "courier earned return ripening",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier",
+    "node": "dispatch.silent",
+    "woman": "elyanka",
+    "beat": "courier dispatch silent",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier_return",
+    "node": "silent",
+    "woman": "elyanka",
+    "beat": "courier earned return silent",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.beat.courier_return",
+    "node": "start",
+    "woman": "elyanka",
+    "beat": "courier return delivery selection",
+    "ruling": "struct2-01 ELY-A4-02; connecting text belongs to Claude. Dispatch ends before any return. The separate return is eligible at least 96 hours after the answer and restores physical availability. Preserve existing answer intent and the original return imagery."
+  },
+  {
+    "scene": "elyanka.trickster.ch6.collateral",
+    "woman": "elyanka",
+    "beat": "Remote contact for the collateral inspection and creditor exchange",
+    "ruling": "struct2-01 CONVERT collateral keep_as_is: Claude voice decision required across the physical-contact nodes and reserved explicit slot; preserve cost and choice outcomes. Coordinator must reconcile remote inspection with the approved physical slot before rewriting."
   }
 ]
