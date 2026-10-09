@@ -36,6 +36,9 @@
     ]
   },
   "exemptions": {
+    "kiana.trickster.epilogue.commit/partner_resolved_stop": "The courtship ends with an unsigned page; no accepted promise or romantic reward.",
+    "herrax.trickster.epilogue.after_hours.invitation/declined": "The Commander declines her private invitation and takes an ordinary paid room; no romantic reward.",
+    "kiana.trickster.epilogue.commit/partner_resolved_refuse": "Her refusal ends the demand and leaves the promise unsigned; no romantic reward. Commitment producers remain checked before this prose exemption.",
     "shamira.trickster.epilogue.late/partner_late_no": "Partner-stance refusal: the romance has ended; only the existing body debt remains.",
     "shamira.trickster.epilogue.late/partner_broken": "Partner discovery ends the affair on-page; no romantic reward or repair is granted.",
     "AeonEpilogue": "Native rewritten history has separate fate states (existing L4 doctrine).",

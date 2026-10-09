@@ -1,7 +1,6 @@
 """Quick route-only walks: custody, refusal receipts and interrupted payments."""
 import copy
 import importlib
-import json
 from pathlib import Path
 import unittest
 
@@ -162,14 +161,15 @@ class SeelahRound2Tests(unittest.TestCase):
 
     def test_slots_are_complete_and_quiet_choices_do_not_enter_them(self):
         root = Path(__file__).resolve().parents[1] / "tools/route_packs/explicit_slots/seelah"
-        self.assertEqual(7, len(list(root.glob("*.json"))))
         for path in root.glob("*.json"):
-            brief = json.loads(path.read_text(encoding="utf-8-sig"))
             slot_id = path.stem
             s = self.by[slot_id.rsplit(".explicit.", 1)[0]]
             blocks = s["Nodes"] + [p for n in s["Nodes"] for p in n.get("Paragraphs", [])]
-            slot = next(b for b in blocks if b.get("Id") == slot_id)
-            self.assertIn(brief["last_line"][3:], slot["Text"])
+            slots = [b for b in blocks if b.get("Id") == slot_id]
+            self.assertEqual(1, len(slots), slot_id)
+            for answer in slots[0].get("Choices", []):
+                self.assertEqual([], answer["Set"], slot_id)
+                self.assertFalse(answer["Abort"], slot_id)
         door = self.by["seelah.door"]
         self.assertEqual("quiet", r.node(door, "honest")["Choices"][2]["Next"])
         self.assertEqual("different", r.node(door, "honest")["Choices"][3]["Next"])

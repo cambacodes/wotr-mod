@@ -1,7 +1,7 @@
 """Seelah's situation continuity and current Last Call custody contract."""
 import unittest
 
-from test_seelah_round2 import Walk, route_story
+from tests.test_seelah_round2 import Walk, route_story
 from storylines import lastcall, lastcall_partners as partners, seelah_round2 as r
 
 

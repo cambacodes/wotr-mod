@@ -3,7 +3,7 @@ from copy import deepcopy
 import unittest
 
 from storylines import devarra_trickster as spine, devarra_tower as tower
-from test_devarra_round2 import visible
+from tests.test_devarra_round2 import visible
 from storylines.endings_job3 import offer
 from storylines.devarra_round3 import accepted_ending
 

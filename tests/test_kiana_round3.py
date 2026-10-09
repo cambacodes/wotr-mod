@@ -5,7 +5,7 @@ import unittest
 from storylines import kiana, kiana_further, kiana_followthrough, kiana_round2
 from storylines import kiana_round3 as r3, kiana_partner as kp, kiana_trickster as kt
 from story_format import c, n, scene
-import test_kiana_partner as partner_tests
+from tests import test_kiana_partner as partner_tests
 
 holds = partner_tests.holds
 walk = partner_tests.walk
