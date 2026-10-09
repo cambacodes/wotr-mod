@@ -105,7 +105,10 @@ He kneels on the rock where the guards dropped him, his red coat black with seaw
 
     # noct.another_place
     ("another_place", "noct.another_place.explicit.1"): '''{n}Nocticula looks at Laulieh, at the blood she has kept on her cheek for effect, and smiles.{/n} "Come here, Laulieh. You've earned it, and the Commander has never seen you earn anything properly."
-{n}She crooks a finger at Laulieh, and then at you. The hatbox stays where it is, on the dressing table, for the rest of the night.{/n}''',
+{n}She crooks a finger at Laulieh, and then at you. The hatbox stays where it is, on the dressing table, for the rest of the night.{/n}
+{n}Laulieh is on the couch before the finger has finished curling, green skirts crushed, horns tipped back as Nocticula slips the black robe from her own shoulders and lets it pool on the cushions. The succubus laughs, hot-eyed, and glances up at you with her wicked, bloodied smile, as if to say she has been practising for an audience.{/n}
+"Eyes on her, darling," {n}Nocticula murmurs, one fist in green hair, her other hand held out to you, palm up, waiting.{/n} "Then on me. I want you to learn which of us you cannot stop looking at."
+{n}You take the hand. Laulieh's laugh is the last clear sound; after it come skin and breath and the three of you, and the night forgets its own length.{/n}''',
     ("another_place", "noct.another_place.aftermath.1"): '''{n}Later, Laulieh is curled at the foot of the couch like a cat in a sunbeam, humming the singer's tune flawlessly, slightly sharp, out of malice. The hatbox has been decided: framed, over the bed. Nocticula lies against your shoulder with her eyes half closed, winding a lock of Laulieh's hair round one finger and pulling it now and then to hear her squeak.{/n}
 "Fie, my lady."
 "Hush." {n}She turns her head on your shoulder, and her eyes are not drowsy at all.{/n} "Now. Back to Ilvara. She asked your price."''',
