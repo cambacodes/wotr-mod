@@ -857,5 +857,47 @@
     "woman": "hepzamirah",
     "beat": "CONVERT The lodger: separate ghost negotiation, overnight reply and physical delivery/awakening; preserve original IDs/choices. Current quarters haunting cannot be recast as immediate gate delivery.",
     "ruling": "struct2-05: coordinator must approve lifecycle/arrival entry before Claude writes variants."
+  },
+  {
+    "scene": "vellexia.the_second_invitation_drezen",
+    "woman": "Vellexia",
+    "beat": "struct2-06 VEL-A4-004: verify native speaker attribution and supply five keyed register samples; approve the voice brief.",
+    "ruling": "Canon extraction owner first; missing from pinned bundle."
+  },
+  {
+    "scene": "arsinoe_what_she_asks",
+    "woman": "Arsinoe / Konomi",
+    "beat": "struct2-06 ARS-A5-03: supply participant briefs, Arsinoe creed/appetites/weaknesses/cruelty and five keyed Konomi edge samples.",
+    "ruling": "Coordinator binds complete dossier to next audit bundle."
+  },
+  {
+    "scene": "horzalah.trickster.visit.chamber",
+    "woman": "Horzalah",
+    "beat": "struct2-06 CONVERT: physical portal approach and optional entry into the Guild hall, preserving existing scene/node/choice IDs.",
+    "ruling": "Await coordinator-approved Chapter 5 portal host and engine travel/return binding; preserve failed-presence histories."
+  },
+  {
+    "scene": "vellexia.the_second_invitation_drezen",
+    "woman": "Vellexia",
+    "beat": "struct2-06 CONVERT: retain invitation briefing and stage Tessar investigation in the world.",
+    "ruling": "Await coordinator Chapter 5 travel/host decision; no automatic return to Alushinyrra assumed."
+  },
+  {
+    "scene": "vellexia.the_unused_reply",
+    "woman": "Vellexia",
+    "beat": "struct2-06 CONVERT: usable echo-shell interaction supporting subsequent calls.",
+    "ruling": "Existing local shell demonstration is retained. Await engine owner item GUID/use-action binding or approved hub interaction."
+  },
+  {
+    "scene": "vellexia.the_claim_before_the_event",
+    "woman": "Vellexia",
+    "beat": "struct2-06 CONVERT: stage forged-page examination and Tessar testimony as an in-person investigation.",
+    "ruling": "Await coordinator Chapter 5 host/travel binding; preserve checks and name-use choices."
+  },
+  {
+    "scene": "vellexia.the_clerks_own_price",
+    "woman": "Vellexia / Tessar",
+    "beat": "struct2-06 CONVERT: witness Tessar terms and Vellexia response in her house.",
+    "ruling": "Await coordinator Chapter 5 house access and participant placement binding; existing shell copy retained pending approval."
   }
 ]
