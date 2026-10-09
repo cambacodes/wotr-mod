@@ -168,6 +168,307 @@
       "surface": "node",
       "index": null,
       "text_sha": "72fbf0e59bd45c92790699e9111980260a53461ba5ebcab51bff2060296469b7"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.kept",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 31,
+      "text_sha": "d4dba682019a848c8e37b8f12fc4ba2e377e981a94086f174832f844975543c6"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.kept",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 32,
+      "text_sha": "80bc2a6a0ccb07b95bb3c440fdac03aa0c7f8b32686fdb0ec763ad58b4850d53"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.kept",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 33,
+      "text_sha": "f26a2f7388b501a9b40c9d311d51621f180f84c45b31f5e714702253659e2be7"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.commit",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 12,
+      "text_sha": "d4dba682019a848c8e37b8f12fc4ba2e377e981a94086f174832f844975543c6"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.commit",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 13,
+      "text_sha": "80bc2a6a0ccb07b95bb3c440fdac03aa0c7f8b32686fdb0ec763ad58b4850d53"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.commit",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 14,
+      "text_sha": "f26a2f7388b501a9b40c9d311d51621f180f84c45b31f5e714702253659e2be7"
+    },
+    {
+      "scene": "areelu.trickster.report.convicts",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 2,
+      "text_sha": "e583560fbaa214c748928e7868c0509c6efc9ef3f0250d1c600c07cc4aaf21f3"
+    },
+    {
+      "scene": "areelu.trickster.report.convicts",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 3,
+      "text_sha": "c50da24e29b7ca67ac6d2117212fe200277fd9998d84744955563cdaf7050e67"
+    },
+    {
+      "scene": "areelu.trickster.report.convicts",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 4,
+      "text_sha": "f7ca12232e8a4ad4824803101f87ce9bea73ae3932decf74680fa2e2273ec0c8"
+    },
+    {
+      "scene": "areelu.trickster.report.convicts",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 5,
+      "text_sha": "85db55210bd78bfa0ad2142ceb2d37f96268c499c541bd3476707378d14252e3"
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 0,
+      "text_sha": "0c262d961d6395736ee21f6eaf6f55bd8caaf865c5c844d2b855bb33faaa45b6"
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 1,
+      "text_sha": "231228404117e53fc8972be26dda099e3fddb34fcc7f0899dc0b77c0a5c55190"
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 2,
+      "text_sha": "d4c4421746b03cbd11e10a085ae25b8e07947453a05371c83c20f2d4897df1e6"
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "node": "start",
+      "surface": "paragraph",
+      "index": 3,
+      "text_sha": "1965e0d20bd63a77fd793049c1cdccd91062d7fbc716d516004587fac7e1738d"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "d265726f3f1a4239c39a8dae0f8e996ee1f767e841dbb3cd97eed4030b9b635e"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "start",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "0e713026c3322793bd20f38adf063329814b415d252d30cb61e17e93c3e66685"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "start",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "c20ece2ead3830e0c2b0ad4b07b5aa0a014ba97a9215727715c48ffe4cf6c1df"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "start",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "7403b948044021cb63d7d8f887309f836f804598a6fce36f60ab70055216a1cb"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "paid",
+      "surface": "node",
+      "index": null,
+      "text_sha": "04608a2f87e8fa2a09acbf4e3eba50df00ac1d2961def624fe23d6c7fe1a91a9"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c142d0da021e03b9b510da28242d68d2a8d7dc223bbf70409390790bdb03deab"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts",
+      "node": "witness",
+      "surface": "node",
+      "index": null,
+      "text_sha": "04fc0c5fb2653d4077c5e807ebd0d1b408a8b270e107d27a1a3a143601b3a375"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts.outcome",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "7a2b30e4334bc994cb67129988d396f908b4b5c0c07b1932101d10529df5d14b"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts.outcome",
+      "node": "account",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c79f273c611248708fa9dc81a79fa1ea903730b89449f21707394cad934074a2"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts.outcome",
+      "node": "account",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "357b14936112145b209b64dd956c5ed7ebec97fb3a9c36fb4bf37127501144db"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts.outcome",
+      "node": "account",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "a54dec0e5f00a22e1e6bd34dcd2040a8879610c89ce35d7d6e05300152a8248e"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts.outcome",
+      "node": "funded",
+      "surface": "node",
+      "index": null,
+      "text_sha": "6cea1ca855df3489a99044dfc9dff2d20903a83b5561c7bdd94dac25d1e1b039"
+    },
+    {
+      "scene": "areelu.trickster.experiment.convicts.outcome",
+      "node": "unfunded",
+      "surface": "node",
+      "index": null,
+      "text_sha": "8a82c0cbc70e0092d77b687858824939bad56d1fe84c29c08287765bb54e63af"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "0bebfeba222c904d3a409f6bffdccbf2e88baaab2cdacad4061e93ccf06867da"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "start",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "3a32d5648e698abc04ba577a016877f453d803d27c06a8efd404cc6fc63287f1"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "start",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "0b3d55add913be5d14c513ec156c598cedb4b75929b3602a1532547bf03875a3"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "start",
+      "surface": "choice",
+      "index": 2,
+      "text_sha": "7403b948044021cb63d7d8f887309f836f804598a6fce36f60ab70055216a1cb"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "paid",
+      "surface": "node",
+      "index": null,
+      "text_sha": "873cd9d5791b7347b769d67532d9212e90630b510dfd7d0c0ac1f8c12cda8504"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "refused",
+      "surface": "node",
+      "index": null,
+      "text_sha": "c76cc0a9627e05a893aa5116163af1a41ff18f9bff6cf7d9c0dd2781ec5eead6"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft",
+      "node": "witness",
+      "surface": "node",
+      "index": null,
+      "text_sha": "b46dccfbbcb50cedf9166fe1561d0de44cf7fa389f5df0f04b9cfdaed9423625"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft.outcome",
+      "node": "start",
+      "surface": "node",
+      "index": null,
+      "text_sha": "a7e133da788874acc3cbaaa594df6f2167a37201df6ffe6e165185ab7db742de"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft.outcome",
+      "node": "account",
+      "surface": "node",
+      "index": null,
+      "text_sha": "9e976ecdc8576825f633e86afe90beb15ab590392c84448b6a9a68aae900515f"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft.outcome",
+      "node": "account",
+      "surface": "choice",
+      "index": 0,
+      "text_sha": "9dcfbde81296880acb884374410f97c861c730a39c6f810f273d2e144bd3ab2b"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft.outcome",
+      "node": "account",
+      "surface": "choice",
+      "index": 1,
+      "text_sha": "2c2576960066c3fee668bf0047b7d8210e7ad903742a0b2ae926cddea27d8c0d"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft.outcome",
+      "node": "funded",
+      "surface": "node",
+      "index": null,
+      "text_sha": "6c966b178428912960931db56fa4f302973b106b0754e539d17baf7657dd6f17"
+    },
+    {
+      "scene": "areelu.trickster.experiment.graft.outcome",
+      "node": "unfunded",
+      "surface": "node",
+      "index": null,
+      "text_sha": "6132b916fe21ff35f392cb1555e8b7d51070de6f63344849805969347b7bd26b"
+    },
+    {
+      "scene": "areelu.trickster.afterlogue.departed",
+      "node": "line",
+      "surface": "node",
+      "index": null,
+      "text_sha": "973685bc533660ea8f7584aa09e1cc76042c113d703b242a767f6f0fc7dd990e"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.kept",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 34,
+      "text_sha": "36b4fa3183d9ddb6f048285494e30ae962876d2697115dbb39d7c10c2e2d224e"
+    },
+    {
+      "scene": "camellia.trickster.epilogue.commit",
+      "node": "page",
+      "surface": "paragraph",
+      "index": 15,
+      "text_sha": "36b4fa3183d9ddb6f048285494e30ae962876d2697115dbb39d7c10c2e2d224e"
     }
   ]
 }

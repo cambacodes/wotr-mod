@@ -11279,6 +11279,26 @@
           "scene": "areelu.trickster.finale.unraised",
           "letter": false,
           "provenance": "contracts-r2a: current in-person meeting; existing earned history and return guards retained"
+        },
+        {
+          "scene": "areelu.trickster.experiment.convicts",
+          "letter": false,
+          "provenance": "struct3-b: witnessed campaign experiment or later outcome correspondence"
+        },
+        {
+          "scene": "areelu.trickster.experiment.convicts.outcome",
+          "letter": true,
+          "provenance": "struct3-b: witnessed campaign experiment or later outcome correspondence"
+        },
+        {
+          "scene": "areelu.trickster.experiment.graft",
+          "letter": false,
+          "provenance": "struct3-b: witnessed campaign experiment or later outcome correspondence"
+        },
+        {
+          "scene": "areelu.trickster.experiment.graft.outcome",
+          "letter": true,
+          "provenance": "struct3-b: witnessed campaign experiment or later outcome correspondence"
         }
       ],
       "absence_variants": [
@@ -11297,6 +11317,10 @@
         {
           "scene": "areelu.trickster.afterlogue.return_mortal",
           "reason": "Retrospective account to Pharasma in the native afterlogue; exact wager/survival or Commander-return selector retained, no currently living woman staged."
+        },
+        {
+          "scene": "areelu.trickster.afterlogue.departed",
+          "reason": "struct3-b: retrospective spared survival, followed by chosen notebook-burning departure; no currently placed living woman"
         }
       ],
       "presences": [],

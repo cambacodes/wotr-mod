@@ -103,6 +103,7 @@ DAGGER_HELD = "areelu.dagger_held"              # InventoryItems CrystalDaggerIt
 WARDSTONE_CLEANSED = "areelu.wardstone_cleansed"  # Wardstone_BookEvent/Answer_0021: the cleansing spends the dagger
 WAGERED = P + "wager_on_screen"         # Derived: the bet offered at Iz, through the lens, or first at Threshold
 REWRITTEN = P + "rewritten"             # Derived: the Trickster finale rewritten on the collected stake
+REPORT_DEPARTED = P + "report.departed"
 RETIRED = (P + "react.seelah_objects",)
 
 DERIVED = {SURVIVES: [[SAC_TRICK, DRAWN], [CHEATED]], BURNED: [["sacrifice", "ending.wound_closed"]],
@@ -1714,9 +1715,9 @@ report("areelu.trickster.report.promise", "The report: the promise", [
     nar("back", '''{n}The Commander returns the notebook to its hiding place. That evening Areelu lays it on the table. A fine hair hangs from the binding, its ends no longer joined.{/n} "You opened it. And put it back." {n}She holds the broken hair between two fingers.{/n} "I would like to know why you left me the method."''',
         c("Continue", "kept")),
     nar("burn_mortal", '{n}The Commander burns the hidden notebook in the kitchen grate. Areelu watches without moving.{/n} "I remember every word. I allowed you to take the graft. This was not part of it." {n}The packed case is waiting beside her desk. She takes it and her daily notebook the next morning, without giving an address.{/n}',
-        c("Continue", "burned")),
+        c("Continue", "burned", flags=(REPORT_DEPARTED,))),
     nar("burn_witch", '{n}The Commander burns the hidden notebook in the kitchen grate. Areelu watches, holding the fire violet and very still.{/n} "I remember every word. I could write it again tonight. Neither burned at Threshold; you had no claim on my notes then. You have none now." {n}She takes the packed case and her daily notebook the next morning. She leaves without giving an address.{/n}',
-        c("Continue", "burned")),
+        c("Continue", "burned", flags=(REPORT_DEPARTED,))),
     nar("burned", '''{n}Letters came for a while: from Nex, and from Geb, and once from somewhere that was not on any map. Each was a single line of observation about the Commander, sent from very far away, and each was correct. Then they stopped.{/n}
 {n}The last entry of the report, found years later among the Commander's papers, is in her hand: "Subject intervened. Experiment terminated by the subject. The bet is still open."{/n}''',
         c("Continue", "burned_mortal", requires=MORTAL),
@@ -1946,6 +1947,60 @@ page("areelu.trickster.finale.unraised", "The stake, without company", [
         ))
 ], requires=("trickster.now", STRUCK, WAGERED, SURVIVES), forbids=(COMMITTED, CLOSED, *NATIVE_DEATHS),
    overrides={SAC_TRICK: REWRITTEN, FIGHT: REWRITTEN}, sequence=False)
+
+# struct3-b: authored campaign experiments, offered through the existing laboratory
+# projection answer list. Decisions precede the observed operation. Refusal changes
+# who procures/pays, not Areelu's independent scientific purpose.
+EXPERIMENT = P + "experiment."
+for kind, price in (("convicts", 500), ("graft", 300)):
+    key = EXPERIMENT + kind
+    inline(key, "", 5,
+        "Continue", [
+        ar("start", "[PROSE PENDING: Areelu - request " + kind + " preparation; state price and cruel scientific purpose]",
+           c("[PROSE PENDING: choice - pay for " + kind + " preparation]", "paid",
+             flags=(key + ".paid",), crusade=("Finances", -price)),
+           c("[PROSE PENDING: choice - refuse " + kind + " support]", "refused", flags=(key + ".refused",)),
+           c("[PROSE PENDING: choice - leave without deciding]", abort=True)),
+        ar("paid", "[PROSE PENDING: Areelu - paid " + kind + " preparation delivered; subjects and apparatus visible through projection]",
+           c("Continue", "witness")),
+        ar("refused", "[PROSE PENDING: Areelu - independently procured " + kind + " subjects and preparation; refuses to abandon experiment]",
+           c("Continue", "witness")),
+        ar("witness", "[PROSE PENDING: Areelu - perform " + kind + " experiment visibly through projection; subject resists; cruel method and immediate result]",
+           c("Continue", flags=(key + ".witnessed",))),
+    ], requires=("trickster",), forbids=(key + ".witnessed", CLOSED),
+       lists=(CELL_LIST,), return_cue=CELL_RETURN)
+    SCENES.append(scene(key + ".outcome", "", "Areelu", 5, "", [
+        ar("start", "[PROSE PENDING: Areelu - later " + kind + " failure and victims; independent response to paid or refused support]",
+           c("Continue", "account", flags=(key + ".outcome_read",))),
+        ar("account", "[PROSE PENDING: Areelu - " + kind + " result informs next experiment; request another batch without surrendering purpose]",
+           c("[PROSE PENDING: choice - fund next " + kind + " batch]", "funded",
+             flags=(key + ".batch_funded",), crusade=("Finances", -price)),
+           c("[PROSE PENDING: choice - refuse next " + kind + " batch]", "unfunded",
+             flags=(key + ".batch_refused",))),
+        ar("funded", "[PROSE PENDING: Areelu - paid next " + kind + " batch proceeds]"),
+        ar("unfunded", "[PROSE PENDING: Areelu - procures next " + kind + " batch independently at her own expense]"),
+    ], requires=(key + ".witnessed", "trickster.ever"), forbids=(CLOSED,),
+       delay=48, last=5, optional=True, Relationship="areelu", Remote=True, Chapters=[5]))
+
+# Old report answers now select the remembered campaign decision. They do not
+# debit resources in an ending. Preserve every saved answer index and target.
+for kind, targets in (("convicts", {"sign": "paid", "refuse": "refused", "fund": "batch_funded", "joke": "paid"}),
+                      ("graft", {"fund": "paid", "away": "refused", "joke": "paid"})):
+    key = EXPERIMENT + kind
+    sid = P + "report." + ("commission" if kind == "graft" else kind)
+    host = next(sc for sc in SCENES if sc["Id"] == sid)
+    for page_node in host["Nodes"]:
+        for answer in page_node["Choices"]:
+            target = answer.get("Next")
+            if target in targets:
+                answer["Requires"].append(key + "." + targets[target])
+            elif page_node["Id"] == "start" and target is not None:
+                answer["Requires"].append(key + ".witnessed")
+
+# A later departed witch cannot write a fresh line in the shared house.
+# The original historical-cover answer remains selectable.
+_afterword = next(sc for sc in SCENES if sc["Id"] == P + "report.afterword")
+_afterword["Nodes"][0]["Choices"][0]["Forbids"].append(REPORT_DEPARTED)
 
 PATH_FIT = {s["Id"]: "T" for s in SCENES}
 PATH_FIT_V2 = {}
