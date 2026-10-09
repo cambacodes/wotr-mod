@@ -104,7 +104,9 @@ s("chosen_evening", "The evening she asked for", [
 {n}Her fingers close on your collar. She draws you back when you start to speak.{/n}
 "You may tell me afterward. I have waited through an entire correspondence for this; I am not waiting through a speech."
 {n}She walks you backward to the bed by your collar, then releases it to shrug off her coat and pull her sash free. You open the robe. She presses into your hands, warm and quick-breathing, and gives a low, impatient laugh when your fingers pause. Her own fingers finish your fastenings.{/n}
-{n}She pushes you back onto the bed and follows, kissing you until both of you need breath. Her loose hair brushes your chest. She draws your hands to her bare sides and pulls you closer.{/n}''', c('[Stay together through the night.]', "morning")),
+{n}She pushes you back onto the bed and follows, kissing you until both of you need breath. Her loose hair brushes your chest. She draws your hands to her bare sides and pulls you closer.{/n}
+{n}Her knees settle either side of you and she lowers her weight onto you, flushed to the collarbone, and presses down once, slowly, with her eyes shut and her lower lip caught in her teeth. The breath that leaves her is nearer a curse than a sigh. When she looks at you again the cool, composed correspondent has been dismissed from the room.{/n}
+"There. You may stop being polite." {n}Her fingers go to your belt and are not delicate about it.{/n}''', c('[Stay together through the night.]', "morning")),
     n("quiet", "Konomi", '''"Gladly."
 {n}She settles beside you. At first she keeps finding reasons to speak; then she puts her head against your shoulder and lets one unfinished sentence remain unfinished.{/n}
 {n}You stay like that until a noise in the passage makes her lift her head. She looks toward the door, then settles back against you with a small, satisfied breath.{/n}
