@@ -4095,6 +4095,15 @@
       "source_branch": "claude/cand-13",
       "source_commit": "4e9650b5ca67cb34e296d75bf90c935b16b57b97",
       "reason": "Claude-lane prose, coordinator-reviewed"
+    },
+    {
+      "scene": "areelu.trickster.report.commission",
+      "before_sha": "3aa0210f20b774ad443f54a33ec18bf34b44fbd4a087a030b1854d47340c3276",
+      "after_sha": "de71fd2fb7f598f76ce2a3d1d34943a542a4c7a5112931f37d128de8840415c7",
+      "owner": "claude",
+      "source_branch": "claude/cand-13",
+      "source_commit": "42b6be97b536f3327066d14ac4b8858357de9174",
+      "reason": "Claude-lane prose, coordinator-reviewed"
     }
   ]
 }
