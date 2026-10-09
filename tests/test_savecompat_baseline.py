@@ -5,6 +5,7 @@ import json
 import unittest
 
 from tools import savecompat
+from tests.test_struct2_07 import Struct207Tests  # selected gate covers scoped saved-answer histories
 
 
 def sample():
@@ -280,6 +281,12 @@ class StructSlotHostTests(unittest.TestCase):
         modules = {entry[0] for entry in HOSTS} | {horzalah_trickster}
         story = {"Scenes": [s for module in modules for s in module.SCENES]}
         pending = json.loads((ROOT / "tools/route_packs/plans/prose-pending.json").read_text(encoding="utf-8"))
+        # This raw-authoring fixture contains only the named slot hosts;
+        # unrelated registered integration targets belong to the full export
+        # check in Struct207Tests, not to this subset fixture.
+        fixture_ids = {scene["Id"] for scene in story["Scenes"]}
+        pending = dict(pending, pending=[entry for entry in pending["pending"]
+                                        if entry["scene"] in fixture_ids])
         self.assertEqual([], prose_pending_lint.check(story, pending, integration=True))
         self.assertTrue(prose_pending_lint.check(story, {"version": 1, "pending": []}, integration=True))
 
