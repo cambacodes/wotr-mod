@@ -515,3 +515,82 @@ def integrate(payload):
     for sids, node_id, paragraph in PARAGRAPHS:
         for sid in sids:
             _node(by_id, sid, node_id).setdefault("Paragraphs", []).append(dict(paragraph))
+
+    _player_answer_exchanges(by_id)
+
+
+# VEL-A4-003: run after owned prose transformations so they cannot restore
+# embedded Commander speech. Original choices remain in their saved positions.
+PLAYER_ANSWER_EXCHANGES = [('unfinished_likeness', 'start', ['"Have you looked?"']),
+ ('unfinished_likeness',
+  'terms',
+  ['"And you paid him?"',
+   '"You want me to break that agreement for you."',
+   '"What happens to him if I don\'t?"']),
+ ('second_painter', 'start', ['"What did you say?"', '"You sound disappointed."']),
+ ('second_painter',
+  'ask',
+  ['"I decline to damage something merely to avoid asking a question. He knows how he assembled '
+   'it. Let him show us."',
+   '"Then we can compare what he says with what he does."',
+   '"Why?"']),
+ ('two_observers', 'question', ['"I know you are dangerous."', '"You asked why I return."']),
+ ('unadvertised_hour',
+  'intent',
+  ['"You have been watching me notice it."', '"Since when has that stopped you?"']),
+ ('a_question_kept',
+  'result',
+  ['"Even if you helped find the answer?"', '"What would you most enjoy taking from me?"']),
+ ('the_price_of_tomorrow',
+  'offer',
+  ['"Does she make the predictions?"',
+   '"He could use those answers to arrange the result," {n}you say.{/n}']),
+ ('the_cover_before_the_battle',
+  'start',
+  ['"You still can. I wanted to tell you that I am preparing to leave again. The next part may be '
+   'difficult to come back from."',
+   '"Enough for you to waste on me."']),
+ ('the_cover_before_the_battle',
+  'lovers',
+  ['"I want to come back. I want to hear you complain about the singer."'])]
+
+
+def _player_answer_exchanges(by_id):
+    from copy import deepcopy
+
+    for suffix, node_id, lines in PLAYER_ANSWER_EXCHANGES:
+        sid = V + suffix
+        scene = by_id[sid]
+        node = _node(by_id, sid, node_id)
+        text = node["Text"]
+        offsets = []
+        cursor = 0
+        for line in lines:
+            needle = "\n" + line + "\n"
+            offset = text.find(needle, cursor)
+            if offset < 0:
+                raise ValueError(f"VEL-A4-003: missing embedded answer {sid}:{node_id}")
+            offsets.append(offset)
+            cursor = offset + len(needle)
+        original_choices = deepcopy(node["Choices"])
+        node["Text"] = text[:offsets[0]]
+        current = node
+        for index, _ in enumerate(lines, 1):
+            reply_id = f"{node_id}_commander_reply_{index}"
+            if any(item["Id"] == reply_id for item in scene["Nodes"]):
+                raise ValueError(f"VEL-A4-003: duplicate reply {sid}:{reply_id}")
+            beat = f"VEL-A4-003 {suffix}/{node_id} exchange {index}"
+            current["Choices"].append({
+                "Text": f"[PROSE PENDING: {beat} Commander answer]",
+                "Next": reply_id, "Set": [], "Requires": [],
+                "Forbids": [], "Abort": False,
+            })
+            reply = {
+                "Id": reply_id, "Speaker": node["Speaker"],
+                "Text": f"[PROSE PENDING: {beat} Vellexia reply and continuation]",
+                "Choices": deepcopy(original_choices) if index == len(lines) else [],
+            }
+            if "Portrait" in node:
+                reply["Portrait"] = node["Portrait"]
+            scene["Nodes"].append(reply)
+            current = reply
