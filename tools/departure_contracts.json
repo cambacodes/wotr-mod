@@ -721,7 +721,7 @@
         },
         {
           "scene": "konomi.trickster.dismissed.arrival",
-          "letter": true
+          "letter": false
         },
         {
           "scene": "konomi.trickster.dismissed.terms",
@@ -757,7 +757,7 @@
         },
         {
           "scene": "konomi.trickster.never_arrived.arrival",
-          "letter": true
+          "letter": false
         },
         {
           "scene": "konomi.trickster.epilogue.commit",
@@ -9065,7 +9065,7 @@
         },
         {
           "scene": "noct.acq.epilogue.correspondence",
-          "letter": true
+          "letter": false
         },
         {
           "scene": "nocticula.trickster.partner_terms.threshold",
