@@ -154,6 +154,68 @@ class RoundTwoTests(unittest.TestCase):
         # The canon exit stays: "Please, go" is her fear (ca52a451), here as "send me away".
         self.assertIn('send me away', self.node(polish.T + 'relapse', 'come')['Text'])
 
+    def test_morning_first_dream_variants_preserve_answer_positions(self):
+        sid = polish.T + 'morning'
+        fact = 'native.history.arueshalae.first_dream'
+        for changed in (False, True):
+            for seen in (False, True):
+                flags = {polish.INTAKE}
+                if changed:
+                    flags.add(polish.CHANGED)
+                if seen:
+                    flags.add(fact)
+                start = self.node(sid, 'start')
+                first = [a for a in start['Choices'] if self.visible(a, flags)]
+                self.assertEqual(1, len(first))
+                notes = self.node(sid, first[0]['Next'])
+                next_answers = [a for a in notes['Choices'] if self.visible(a, flags)]
+                self.assertEqual(1, len(next_answers))
+                count_id = ('count_e' if changed else 'count') + ('.first_dream_seen' if seen and not changed else '')
+                self.assertEqual(count_id, next_answers[0]['Next'])
+                count = self.node(sid, count_id)
+                original_count = self.node(sid, 'count_e' if changed else 'count')
+                self.assertEqual(['recovering_e', 'doctor_e'] if changed else ['recovering', 'doctor'],
+                                 [a['Next'] for a in original_count['Choices'][:2]])
+                for index, base in enumerate(('recovering_e', 'doctor_e') if changed else ('recovering', 'doctor')):
+                    answers = [a for a in count['Choices'] if self.visible(a, flags) and a['Text'] == count['Choices'][index]['Text']]
+                    self.assertEqual(1, len(answers))
+                    target = base + ('.first_dream_seen' if seen and base != 'doctor_e' else '')
+                    self.assertEqual(target, answers[0]['Next'])
+                    text = self.node(sid, target)['Text']
+                    self.assertEqual(seen and base != 'doctor_e', text.startswith('[PROSE PENDING:'))
+
+    def test_old_acquaintance_callback_histories_are_disjoint(self):
+        sid = polish.T + 'old_acquaintance'
+        for confessed in (False, True):
+            for touched in (False, True):
+                flags = set()
+                if confessed:
+                    flags.add(polish.T + 'relapse')
+                if touched:
+                    flags.add(polish.T + 'cure_works')
+                # Entering a no-scroll session alone must not earn the callback.
+                flags.add(polish.T + 'touched')
+                for incoming, retained, earned in (('sister', 'offer', confessed),
+                                                   ('claws', 'after_claws', confessed and touched)):
+                    answers = [a for a in self.node(sid, incoming)['Choices'] if self.visible(a, flags)]
+                    self.assertEqual(1, len(answers))
+                    self.assertEqual(earned, answers[0]['Next'] == retained)
+                    self.assertEqual(not earned, self.node(sid, answers[0]['Next'])['Text'].startswith('[PROSE PENDING:'))
+
+    def test_epilogue_recollections_require_prescription_answer(self):
+        t, p = polish.T, polish.P
+        answers = self.node(t + 'prescription', 'ask')['Choices']
+        for index, result in enumerate(('both', 'saint', 'not_yet', 'neither')):
+            self.assertIn(t + 'prescription.' + result, answers[index]['Set'])
+        commit = self.node(p + 'epilogue.commit', 'page')['Paragraphs'][1]
+        self.assertIn(t + 'prescription.both', commit['Requires'])
+        declined = self.node(p + 'epilogue.declined', 'page')['Paragraphs'][-2:]
+        for paragraph, result in zip(declined, ('saint', 'not_yet')):
+            flags = {t + 'relapse_two', p + 'cost.saint_only'} if result == 'saint' else {t + 'relapse_two'}
+            self.assertFalse(self.visible(paragraph, flags))
+            flags.add(t + 'prescription.' + result)
+            self.assertTrue(self.visible(paragraph, flags))
+
     def test_rebuilt_scenes_rest_on_native_lines(self):
         t = polish.T
         self.assertIn("Demons don't", self.node(t + 'morning', 'count')['Text'])

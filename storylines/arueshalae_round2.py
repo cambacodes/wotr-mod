@@ -338,3 +338,64 @@ def integrate(payload):
     # Expense disclosure also covers an offered scroll, not only a kiss.
     answer = node(T + 'teach_me', 'cant')['Choices'][2]
     answer['Text'] = '[Tell her the scroll costs 700 gold, then put it in her hand] "This one is yours. Spend it on whoever you like."'
+
+    # struct-arueshalae: run after the prose transformations above. Old answers
+    # retain their index and destination; disjoint history answers append.
+    def split_history(sid, nid, variants):
+        original = node(sid, nid)
+        ids = []
+        retained = variants[-1]
+        for suffix, text, required, forbidden in variants[:-1]:
+            twin = deepcopy(original)
+            twin['Id'] = nid + suffix
+            twin['Text'] = text
+            scenes[sid]['Nodes'].append(twin)
+            ids.append((twin['Id'], required, forbidden))
+        for incoming in scenes[sid]['Nodes']:
+            appended = []
+            for answer in incoming['Choices']:
+                if answer.get('Next') != nid:
+                    continue
+                for target, required, forbidden in ids:
+                    twin = deepcopy(answer)
+                    twin['Next'] = target
+                    twin['Requires'].extend(required)
+                    twin['Forbids'].extend(forbidden)
+                    appended.append(twin)
+                answer['Requires'].extend(retained[2])
+                answer['Forbids'].extend(retained[3])
+            incoming['Choices'].extend(appended)
+
+    first_dream = 'native.history.arueshalae.first_dream'
+    for nid, beat in (('count', 'watching'), ('recovering', 'dreams'),
+                      ('doctor', 'restraint'), ('recovering_e', 'redeemed dreams')):
+        split_history(T + 'morning', nid, [
+            ('.first_dream_seen', '[PROSE PENDING: morning ' + beat + ' after native first dream]',
+             [first_dream], []),
+            ('.retained', node(T + 'morning', nid)['Text'], [], [first_dream]),
+        ])
+
+    # The confession behind the stables establishes the sergeant's edges;
+    # the successful paid touch, not entry into that session, earns seven minutes.
+    relapse, cured = T + 'relapse', T + 'cure_works'
+    sid = T + 'old_acquaintance'
+    split_history(sid, 'offer', [
+        ('.unheard', '[PROSE PENDING: old acquaintance offer without stables sergeant confession]', [], [relapse]),
+        ('.retained', node(sid, 'offer')['Text'], [relapse], []),
+    ])
+    split_history(sid, 'after_claws', [
+        ('.no_callbacks', '[PROSE PENDING: after claws without stables sergeant or seven minutes]', [], [relapse, cured]),
+        ('.confession_only', '[PROSE PENDING: after claws with stables sergeant but without seven minutes]', [relapse], [cured]),
+        ('.touch_only', '[PROSE PENDING: after claws with seven minutes but without stables sergeant]', [cured], [relapse]),
+        ('.retained', node(sid, 'after_claws')['Text'], [relapse, cured], []),
+    ])
+
+    # Shared COMMITTED/DECLINED/saint-only flags have other producers.
+    for index, result in enumerate(('both', 'saint', 'not_yet', 'neither')):
+        guard(node(T + 'prescription', 'ask')['Choices'][index], 'Set', T + 'prescription.' + result)
+    guard(node(P + 'epilogue.commit', 'page')['Paragraphs'][1], 'Requires', T + 'prescription.both')
+    for paragraph in node(P + 'epilogue.declined', 'page')['Paragraphs']:
+        if paragraph['Requires'] == [P + 'cost.saint_only']:
+            guard(paragraph, 'Requires', T + 'prescription.saint')
+        elif paragraph['Requires'] == [T + 'relapse_two']:
+            guard(paragraph, 'Requires', T + 'prescription.not_yet')
