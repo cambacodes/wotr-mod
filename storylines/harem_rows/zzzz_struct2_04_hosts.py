@@ -27,6 +27,7 @@ def register(payload, scenes, refs):
         native["Id"] += ".native"
         _physical(native)
         native.pop("ContactUnit", None)  # native audience return: answer list only (Story.Validate)
+        native.pop("AdditionalContactUnits", None)
         native["AnswerLists"] = [soana.HER_LIST]
         native["NativeReturnCue"] = soana.HER_RETURN
         native["Forbids"].append(soana.RETURNED)
